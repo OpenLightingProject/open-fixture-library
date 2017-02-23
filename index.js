@@ -1,5 +1,4 @@
 var express = require('express');
-var cool = require('cool-ascii-faces');
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
@@ -11,23 +10,35 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
-  response.render('pages/index');
+  response.render('pages/index', {
+    title: 'Open Fixture Library'
+  });
 });
 
-app.get('/cool', function(request, response) {
-  response.send(cool());
+app.get('/about', function(request, response) {
+  response.render('pages/about', {
+    title: 'About - Open Fixture Library'
+  });
 });
 
-app.get('/times', function(request, response) {
-  var result = ''
-  var times = process.env.TIMES || 5
-  for (i=0; i < times; i++)
-    result += i + ' ';
-  response.send(result);
+app.get('/search', function(request, response) {
+  response.render('pages/search', {
+    title: 'Search - Open Fixture Library'
+  });
+});
+
+app.get('/manufacturers', function(request, response) {
+  response.render('pages/manufacturers', {
+    title: 'Manufacturers - Open Fixture Library'
+  });
+});
+
+app.get('/categories', function(request, response) {
+  response.render('pages/categories', {
+    title: 'Categories - Open Fixture Library'
+  });
 });
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
-
-

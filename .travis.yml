@@ -6,4 +6,4 @@ node_js:
   - "4"
 cache:
   directories:
-- node_modules # cache NPM dependencies
+    - node_modules # cache NPM dependencies
