@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 61 25">
+  <!-- knob ticks -->
+  <path d="m12.5 21.43v2.6162" stroke="#bbb" />
+  <path d="m8.833 20.55-1.1521 2.322" stroke="#bbb" />
+  <path d="m5.633 17.98-2.0148 1.652" stroke="#bbb" />
+  <path d="m3.784 14.37-2.5101.616" stroke="#bbb" />
+  <path d="m3.843 10.4-2.4915-.6856" stroke="#bbb" />
+  <path d="m5.788 6.83-1.9749-1.701" stroke="#bbb" />
+  <path d="m9.046 4.34-1.0909-2.3489" stroke="#bbb" />
+  <path d="m12.5 3.57v-2.6162" stroke="#bbb" />
+
+  <!-- knob -->
+  <circle stroke-width="1.8981" stroke="#000" cy="12.5" cx="12.5" r="6.5" fill="none" />
+  <path d="m11 11-2-2" stroke="#000" />
+
+  <!-- button -->
+  <rect ry="2" height="22" width="22" stroke="#bbb" y="1.5" x="23.5" stroke-width="1" fill="none" />
+  <path d="m30 5v15h2v-6h7v-2h-7v-5h7v-2h-7z" />
+
+  <!-- slider ticks -->
+  <rect height="1" width="5" fill="#bbb" x="52" y="19" />
+  <rect height="1" width="2" fill="#bbb" x="52" y="16.7" />
+  <rect height="1" width="2" fill="#bbb" x="52" y="14.3" />
+  <rect height="1" width="5" fill="#bbb" x="52" y="12" />
+  <rect height="1" width="2" fill="#bbb" x="52" y="9.7" />
+  <rect height="1" width="2" fill="#bbb" x="52" y="7.3" />
+  <rect height="1" width="5" fill="#bbb" x="52" y="5" />
+
+  <!-- slider handle -->
+  <rect height="3" width="9" y="17" x="51" fill="#555" />
+  <rect height="1" width="9" y="18" x="51" fill="#aaa" />
+
+  <!-- slider -->
+  <rect height="15" width="2" y="5" x="50" />
+</svg>
