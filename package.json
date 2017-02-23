@@ -1,27 +1,30 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.2.5",
-  "description": "A sample Node.js app using Express 4",
+  "name": "open-fixture-library",
+  "version": "0.1",
+  "description": "An open source library for lighting technology's fixture definition files",
   "engines": {
-    "node": "5.9.1"
+    "node": "6.10.0"
   },
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "cool-ascii-faces": "1.3.4",
-    "ejs": "2.4.1",
-    "express": "4.13.3"
+    "ejs": "2.5.6",
+    "express": "4.14.1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "https://github.com/FloEdelmann/open-fixture-library"
   },
   "keywords": [
-    "node",
-    "heroku",
-    "express"
+    "dmx",
+    "dmx512",
+    "ecue",
+    "fixture",
+    "fixtures",
+    "lighting",
+    "qlc"
   ],
-  "license": "MIT"
+  "license": "GPL-3"
 }
