@@ -1,0 +1,186 @@
+{
+    "name": "Outdoor PAR Tri 12",
+    "shortName": "OutTri12",
+    "type": "Color Changer",
+    "meta": {
+        "authors": ["FloEdelmann"],
+        "createDate": "2017-02-24",
+        "lastModifyDate": "2017-02-24"
+    },
+    "physical": {
+        "dimensions": [203, 203, 193],
+        "weight": 3.6,
+        "power": 50,
+        "DMXconnector": "3-pin",
+        "bulb": {
+            "type": "LED"
+        },
+        "lens": {
+            "degreesMinMax": [25, 25]
+        },
+        "focus": {
+            "type": "Fixed"
+        }
+    },
+    "availableChannels": {
+        "Master dimmer": {
+            "type": "Intensity",
+            "crossfade": true
+        },
+        "Color Macro Simple": {
+            "type": "MultiColor",
+            "capabilities": [
+                {
+                    "range": [0, 31],
+                    "name": "Blackout",
+                    "color": "#000000"
+                },
+                {
+                    "range": [32, 63],
+                    "name": "Red",
+                    "color": "#ff0000"
+                },
+                {
+                    "range": [64, 95],
+                    "name": "Green",
+                    "color": "#00ff00"
+                },
+                {
+                    "range": [96, 127],
+                    "name": "Blue",
+                    "color": "#0000ff"
+                },
+                {
+                    "range": [128, 159],
+                    "name": "Yellow",
+                    "color": "#ffff00"
+                },
+                {
+                    "range": [160, 191],
+                    "name": "Cyan",
+                    "color": "#00ffff"
+                },
+                {
+                    "range": [192, 223],
+                    "name": "Magenta",
+                    "color": "#ff00ff"
+                },
+                {
+                    "range": [224, 255],
+                    "name": "White",
+                    "color": "#ffffff"
+                }
+            ]
+        },
+        "Strobe": {
+            "type": "Strobe"
+        },
+        "Color Macro Advanced": {
+            "type": "MultiColor",
+            "capabilities": [
+                {
+                    "range": [0, 4],
+                    "name": "Blackout",
+                    "color": "#000000"
+                },
+                {
+                    "range": [5, 15],
+                    "name": "Red",
+                    "color": "#ff0000"
+                },
+                {
+                    "range": [16, 26],
+                    "name": "Green",
+                    "color": "#00ff00"
+                },
+                {
+                    "range": [27, 37],
+                    "name": "Blue",
+                    "color": "#0000ff"
+                },
+                {
+                    "range": [38, 48],
+                    "name": "Yellow",
+                    "color": "#ffff00"
+                },
+                {
+                    "range": [49, 59],
+                    "name": "Cyan",
+                    "color": "#00ffff"
+                },
+                {
+                    "range": [60, 70],
+                    "name": "Magenta",
+                    "color": "#ff00ff"
+                },
+                {
+                    "range": [71, 80],
+                    "name": "White",
+                    "color": "#ffffff"
+                },
+                {
+                    "range": [81, 150],
+                    "name": "Color change"
+                },
+                {
+                    "range": [151, 255],
+                    "name": "Color blending"
+                }
+            ]
+        },
+        "Red": {
+            "type": "SingleColor",
+            "crossfade": true,
+            "color": "Red"
+        },
+        "Green": {
+            "type": "SingleColor",
+            "crossfade": true,
+            "color": "Green"
+        },
+        "Blue": {
+            "type": "SingleColor",
+            "crossfade": true,
+            "color": "Blue"
+        }
+    },
+    "modes": [
+        {
+            "name": "2-channel Mode",
+            "shortName": "2ch",
+            "channels": [
+                "Master dimmer",
+                "Color Macro Simple"
+            ]
+        },
+        {
+            "name": "3-channel Mode 1",
+            "shortName": "3ch1",
+            "channels": [
+                "Master dimmer",
+                "Color Macro Advanced"
+            ]
+        },
+        {
+            "name": "3-channel Mode 2",
+            "shortName": "3ch2",
+            "channels": [
+                "Red",
+                "Green",
+                "Blue"
+            ]
+        },
+        {
+            "name": "6-channel Mode",
+            "shortName": "6ch",
+            "channels": [
+                "Master dimmer",
+                "Strobe",
+                "Red",
+                "Green",
+                "Blue",
+                "Color Macro Advanced"
+            ]
+        }
+    ]
+}

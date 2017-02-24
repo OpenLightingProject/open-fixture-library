@@ -1,0 +1,91 @@
+{
+    "name": "Ventilator",
+    "shortName": "Venti",
+    "type": "Fan",
+    "comment": "(C) Görli + Edelnörd 2016",
+    "meta": {
+        "authors": ["FloEdelmann"],
+        "createDate": "2017-02-24",
+        "lastModifyDate": "2017-02-24"
+    },
+    "physical": {
+        "dimensions": [1000, 1000, 160],
+        "weight": 10.0,
+        "power": 48,
+        "DMXconnector": "3-pin",
+        "bulb": {
+            "type": "LED"
+        },
+        "focus": {
+            "type": "Fixed"
+        }
+    },
+    "availableChannels": {
+        "Motor Speed": {
+            "type": "Speed",
+            "defaultValue": 128,
+            "crossfade": true,
+            "capabilities": [
+                {
+                    "range": [0, 3],
+                    "name": "Off"
+                },
+                {
+                    "range": [4, 4],
+                    "name": "CCW full speed"
+                },
+                {
+                    "range": [5, 119],
+                    "name": "CCW",
+                    "center": true
+                },
+                {
+                    "range": [120, 139],
+                    "name": "Off",
+                    "center": true
+                },
+                {
+                    "range": [140, 254],
+                    "name": "CW",
+                    "center": true
+                },
+                {
+                    "range": [255, 255],
+                    "name": "CW full speed"
+                }
+            ]
+        },
+        "Red": {
+            "type": "SingleColor",
+            "color": "Red",
+            "highlightValue": 255,
+            "crossfade": true,
+            "precendence": "HTP"
+        },
+        "Green": {
+            "type": "SingleColor",
+            "color": "Green",
+            "highlightValue": 255,
+            "crossfade": true,
+            "precendence": "HTP"
+        },
+        "Blue": {
+            "type": "SingleColor",
+            "color": "Blue",
+            "highlightValue": 255,
+            "crossfade": true,
+            "precendence": "HTP"
+        },
+        "Strobe": {
+            "type": "Strobe",
+            "highlightValue": 230
+        }
+    },
+    "modes": [
+        {
+            "name": "5-channel Mode",
+            "shortName": "5ch",
+            "channels": ["Motor Speed", "Red", "Green", "Blue", "Strobe"]
+        }
+    ]
+}
