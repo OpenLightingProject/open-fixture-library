@@ -25,3 +25,6 @@
 </nav>
 </header>
 <div id="main">
+<% messages.forEach(function(message) { %>
+<div class="message message-<%= message.type %>"><%- message.text %></div>
+<% }); %>

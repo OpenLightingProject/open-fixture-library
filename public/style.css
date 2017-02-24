@@ -110,3 +110,25 @@ header a:focus {
   overflow: hidden;
   padding: 70px 10px 10px;
 }
+
+.message {
+  margin: 1em 0;
+  padding: 5px 10px;
+  border: 1px solid;
+}
+.message-error {
+  border-color: #b00;
+  background: #faa;
+}
+.message-warning {
+  border-color: #bb0;
+  background: #ffa;
+}
+.message-success {
+  border-color: #0b0;
+  background: #afa;
+}
+.message-info {
+  border-color: #05b;
+  background: #adf;
+}
