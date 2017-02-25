@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const http = require('http');
+const colors = require('colors');
 
 let failed = false;
 
@@ -39,7 +40,7 @@ serverProcess.stdout.on('data', chunk => {
   console.log(chunk);
 });
 serverProcess.stderr.on('data', chunk => {
-  console.error('\x1b[31mServer error (stderr):\x1b[0m');
+  console.error(colors.red('Server error (stderr)'));
   console.error(chunk);
   failed = true;
 });
@@ -56,11 +57,11 @@ require('timers').setTimeout(() => {
         const url = 'http://localhost:5000/' + page;
         http.get(url, res => {
           if (res.statusCode == code) {
-            console.log(`\x1b[32mPASS\x1b[0m ${url} (${res.statusCode})`);
+            console.log(colors.green('PASS') + ` ${url} (${res.statusCode})`);
             resolve(true);
           }
           else {
-            console.error(`\x1b[31mFAIL\x1b[0m in ${url} (${res.statusCode}, ${code} expected)`);
+            console.error(colors.red('FAIL') + `in ${url} (${res.statusCode}, ${code} expected)`);
             resolve(false);
           }
         });
@@ -77,10 +78,10 @@ require('timers').setTimeout(() => {
     }
 
     if (fails == 0) {
-      console.log(`\x1b[32mAll ${results.length} tests passed.\x1b[0m`);
+      console.log(colors.green(`All ${results.length} tests passed.`));
     }
     else {
-      console.error(`\x1b[31m${fails} of ${results.length} tests failed.\x1b[0m`);
+      console.error(colors.red(`${fails} of ${results.length} tests failed.`));
       failed = true;
     }
 
