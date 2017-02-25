@@ -26,28 +26,28 @@ let typesIndex = null;
 
 // read in the JSON files to fill those data structures
 fs.readFile('fixtures/manufacturers.json', 'utf8', (error, data) => {
-    if (error) {
-      addFileReadError('There was an error reading in the manufacturer data.', error);
-      return;
-    }
+  if (error) {
+    addFileReadError('There was an error reading in the manufacturer data.', error);
+    return;
+  }
 
-    manufacturers = JSON.parse(data);
+  manufacturers = JSON.parse(data);
 });
 fs.readFile('fixtures/index_manufacturers.json', 'utf8', (error, data) => {
-    if (error) {
-      addFileReadError('There was an error reading in the manufacturer index data.', error);
-      return;
-    }
+  if (error) {
+    addFileReadError('There was an error reading in the manufacturer index data.', error);
+    return;
+  }
 
-    manufacturersIndex = JSON.parse(data);
+  manufacturersIndex = JSON.parse(data);
 });
 fs.readFile('fixtures/index_types.json', 'utf8', (error, data) => {
-    if (error) {
-      addFileReadError('There was an error reading in the category index data.', error);
-      return;
-    }
+  if (error) {
+    addFileReadError('There was an error reading in the category index data.', error);
+    return;
+  }
 
-    typesIndex = JSON.parse(data);
+  typesIndex = JSON.parse(data);
 });
 
 
