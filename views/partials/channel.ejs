@@ -1,0 +1,83 @@
+<section class="channel-type">
+  <label>Type</label>
+  <span class="value"><data data-key="channel-type"><%= channel.type %></data></span>
+</section>
+
+<section class="channel-color">
+  <label>Color</label>
+  <span class="value"><data data-key="channel-color"><%= channel.color %></data> <span class="hint">(only useful if <em>Type</em> is <em>SingleColor</em>)</span></span>
+</section>
+
+<section class="channel-defaultValue">
+  <label>Default value</label>
+  <span class="value"><data data-key="channel-defaultValue"><%= channel.defaultValue %></data></span>
+</section>
+
+<section class="channel-highlightValue">
+  <label>Highlight value</label>
+  <span class="value"><data data-key="channel-highlightValue"><%= channel.highlightValue %></data></span>
+</section>
+
+<section class="channel-invert">
+  <label>Invert</label>
+  <span class="value"><data class="checkbox" data-key="channel-invert" data-value="<%= channel.invert %>"><%= channel.invert %></data></span>
+</section>
+
+<section class="channel-constant">
+  <label>Constant</label>
+  <span class="value"><data class="checkbox" data-key="channel-constant" data-value="<%= channel.constant %>"><%= channel.constant %></data></span>
+</section>
+
+<section class="channel-crossfade">
+  <label>Crossfade</label>
+  <span class="value"><data class="checkbox" data-key="channel-crossfade" data-value="<%= channel.crossfade %>"><%= channel.crossfade %></data></span>
+</section>
+
+<section class="channel-precedence">
+  <label>Precedence</label>
+  <span class="value"><data data-key="channel-precedence"><%= channel.precedence %></data></span>
+</section>
+
+<% if (channel.capabilities) { %>
+  <details class="channel-capabilities">
+    <summary>Capabilities</summary>
+    <table>
+      <tbody>
+        <% channel.capabilities.forEach(cap => { %>
+          <tr>
+            <td class="capability-range0" title="DMX value start">
+              <data data-key="capability-range-0"><%= cap.range[0] %></data>
+            </td>
+            <td class="capability-range1" title="DMX value end">
+              <data data-key="capability-range-1"><%= cap.range[1] %></data>
+            </td>
+            <td class="capability-name" title="name">
+              <data data-key="capability-name"><%= cap.name %></data>
+            </td>
+            <td class="capability-showInMenu" title="show in menu? <%= cap.showInMenu || 'unset' %>">
+              <data class="checkbox" data-key="capability-showInMenu" data-value="<%= cap.showInMenu %>"><%= cap.showInMenu %></data>
+            </td>
+            <td class="capability-center" title="use center value on menu click? <%= cap.center || 'unset' %>">
+              <data class="checkbox" data-key="capability-center" data-value="<%= cap.center %>"><%= cap.center %></data>
+            </td>
+            <td class="capability-color" title="color: <%= cap.color || 'unset' %>">
+              <data class="color" data-key="capability-color" data-value="<%= cap.color %>"><%= cap.color %></data>
+            </td>
+            <td class="capability-color2" title="color 2: <%= cap.color2 || 'unset' %>">
+              <data class="color" data-key="capability-color2" data-value="<%= cap.color2 %>"><%= cap.color2 %></data>
+            </td>
+            <td class="capability-image" title="image">
+              <data data-key="capability-image"><%= cap.image %></data>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </details>
+<% }
+else { %>
+  <details class="channel-capabilities empty">
+    <summary>No capabilities</summary>
+    <table><tbody></tbody></table>
+  </details>
+<%} %>
