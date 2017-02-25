@@ -1,0 +1,264 @@
+{
+  "name": "Vega Zoom Wash",
+  "shortName": "VegaZoomWash",
+  "type": "Moving Head",
+  "manualURL": "https://www.musicstore.de/INTERSHOP/web/WFS/MusicStore-MusicStoreShop-Site/de_DE/-/EUR/ViewProductAttachment-ResolveManualURL?File=DE_LIG0013617-000.pdf",
+  "meta": {
+    "authors": ["FloEdelmann"],
+    "createDate": "2017-02-24",
+    "lastModifyDate": "2017-02-24"
+  },
+  "physical": {
+    "dimensions": [260, 280, 340],
+    "weight": 4.5,
+    "power": 95,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [6, 45]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 190
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan"
+    },
+    "Pan fine": {
+      "type": "Pan"
+    },
+    "Tilt": {
+      "type": "Tilt"
+    },
+    "Tilt fine": {
+      "type": "Tilt"
+    },
+    "Pan / Tilt Speed": {
+      "type": "Speed"
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "crossfade": true
+    },
+    "Shutter": {
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "closed"
+        },
+        {
+          "range": [10, 245],
+          "name": "strobe"
+        },
+        {
+          "range": [246, 255],
+          "name": "open"
+        }
+      ]
+    },
+    "Red": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Red"
+    },
+    "Green": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Green"
+    },
+    "Blue": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Blue"
+    },
+    "White": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "White"
+    },
+    "Color Temperature": {
+      "type": "Maintenance"
+    },
+    "Color Macro": {
+      "type": "MultiColor",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "open"
+        },
+        {
+          "range": [11, 20],
+          "name": "red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [21, 30],
+          "name": "green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [31, 40],
+          "name": "blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [41, 50],
+          "name": "white",
+          "color": "#ffffff"
+        },
+        {
+          "range": [51, 60],
+          "name": "yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [61, 70],
+          "name": "cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [71, 80],
+          "name": "lightblue",
+          "color": "#64c8ff"
+        },
+        {
+          "range": [81, 90],
+          "name": "pink",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [91, 100],
+          "name": "lightgreen",
+          "color": "#7fff3c"
+        },
+        {
+          "range": [101, 110],
+          "name": "lightred",
+          "color": "#ff7f7f"
+        },
+        {
+          "range": [111, 120],
+          "name": "RGB"
+        },
+        {
+          "range": [121, 130],
+          "name": "RGW"
+        },
+        {
+          "range": [131, 140],
+          "name": "GBW"
+        },
+        {
+          "range": [141, 150],
+          "name": "RGBW"
+        },
+        {
+          "range": [151, 255],
+          "name": "jump"
+        }
+      ]
+    },
+    "Macro Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "macro off"
+        },
+        {
+          "range": [11, 255],
+          "name": "speed"
+        }
+      ]
+    },
+    "Focus": {
+      "type": "Beam"
+    },
+    "Program": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 20],
+          "name": "no function"
+        },
+        {
+          "range": [21, 40],
+          "name": "program 1"
+        },
+        {
+          "range": [41, 60],
+          "name": "program 2"
+        },
+        {
+          "range": [61, 80],
+          "name": "program 3"
+        },
+        {
+          "range": [81, 100],
+          "name": "program 4"
+        },
+        {
+          "range": [101, 120],
+          "name": "program 5"
+        },
+        {
+          "range": [121, 140],
+          "name": "program 6"
+        },
+        {
+          "range": [141, 160],
+          "name": "program 7"
+        },
+        {
+          "range": [161, 180],
+          "name": "program 8"
+        },
+        {
+          "range": [181, 200],
+          "name": "no function"
+        },
+        {
+          "range": [201, 225],
+          "name": "motor reset"
+        },
+        {
+          "range": [226, 255],
+          "name": "no function"
+        }
+      ]
+    }
+  },
+  "multiByteChannels": [
+    ["Pan", "Pan fine"],
+    ["Tilt", "Tilt fine"]
+  ],
+  "modes": [
+    {
+      "name": "16ch Mode",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan / Tilt Speed",
+        "Dimmer",
+        "Shutter",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Temperature",
+        "Color Macro",
+        "Macro Speed",
+        "Program",
+        "Focus"
+      ]
+    }
+  ]
+}

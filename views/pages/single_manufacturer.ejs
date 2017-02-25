@@ -1,0 +1,20 @@
+<% include ../partials/header.ejs %>
+
+<h1><%= manufacturer.name %> fixtures</h1>
+
+<section class="manufacturer manufacturer-info">
+  <% if ('website' in manufacturer) { %>
+    <div class="website"><a href="<%= manufacturer.website %>">Website</a></div>
+  <% }
+  if ('comment' in manufacturer) { %>
+    <p class="comment"><%= manufacturer.comment %></p>
+  <% } %>
+</section>
+
+<ul class="fixtures">
+<% fixtures.forEach((fix) => { %>
+  <li><a href="<%= fix.path %>"><%= fix.name %></a></li>
+<% }); %>
+</ul>
+
+<% include ../partials/footer.ejs %>

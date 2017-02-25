@@ -6,6 +6,9 @@ html, body {
   color: #222;
 }
 
+
+/* header */
+
 header {
   position: fixed;
   top: 0;
@@ -103,10 +106,95 @@ header a:focus {
   color: #000;
 }
 
+
+/* main */
+
 #main {
   max-width: 1000px;
   margin: 0 auto;
   min-height: calc(100vh - 70px - 10px);
   overflow: hidden;
   padding: 70px 10px 10px;
+}
+
+.message {
+  margin: 1em 0;
+  padding: 5px 10px;
+  border: 1px solid;
+}
+.message-error {
+  border-color: #b00;
+  background: #faa;
+}
+.message-warning {
+  border-color: #bb0;
+  background: #ffa;
+}
+.message-success {
+  border-color: #0b0;
+  background: #afa;
+}
+.message-info {
+  border-color: #05b;
+  background: #adf;
+}
+
+
+/* fixture page */
+
+data:empty {
+  border: 1px solid #cfd6e6;
+  padding: 0 2px;
+  cursor: default;
+}
+data:empty::before {
+  content: '?';
+  display: inline;
+  color: #cfd6e6;
+}
+
+data.checkbox {
+  display: inline-block;
+  border: 1px solid #cfd6e6;
+  border-radius: 3px;
+  height: 14px;
+  line-height: 14px;
+  padding: 0 0 0 14px;
+  width: 0px;
+  overflow: hidden;
+  vertical-align: middle;
+  color: #cfd6e6;
+  cursor: default;
+}
+data.checkbox::before {
+  display: block;
+  text-align: center;
+  width: 14px;
+  margin-left: -14px;
+}
+data.checkbox:empty::before {
+  content: '?';
+}
+data.checkbox[data-value='false'] {
+  border-color: #b00;
+}
+data.checkbox[data-value='false']::before {
+  color: #b00;
+  content: '\d7';
+  font-weight: bold;
+}
+data.checkbox[data-value='true'] {
+  border-color: #0b5;
+}
+data.checkbox[data-value='true']::before {
+  color: #0b5;
+  content: '\2714';
+}
+
+
+a[href=''] {
+  color: inherit;
+  text-decoration: none;
+  cursor: default;
+  pointer-events: none;
 }
