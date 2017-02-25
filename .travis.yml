@@ -1,9 +1,12 @@
 language: node_js
 node_js:
-  - "node" # latest
+  #- "node" # latest
   - "6"
-  - "5"
-  - "4"
+script:
+  - node tests/http_status.js
+  - node tests/index_complete.js
 cache:
   directories:
     - node_modules # cache NPM dependencies
+git:
+  depth: 3 # makes cloning faster
