@@ -19,7 +19,7 @@ const statusCodes = {
   ]
 }
 // add manufacturers and fixtures
-const manufacturersIndex = JSON.parse(fs.readFileSync('../fixtures/index_manufacturers.json', 'utf8'));
+const manufacturersIndex = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'fixtures', 'index_manufacturers.json'), 'utf8'));
 for (let man in manufacturersIndex) {
   statusCodes['200'].push(man);
 
@@ -32,7 +32,7 @@ for (let man in manufacturersIndex) {
 // start server
 const serverProcess = require('child_process').execFile(
   'node',
-  ['../index.js']
+  [path.join(__dirname, '..', 'index.js')]
 );
 serverProcess.stdout.on('data', chunk => {
   console.log('Server message (stdout):');
