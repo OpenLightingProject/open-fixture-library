@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const fs = require('fs');
+const path = require('path');
 
 // setup port
 app.set('port', (process.env.PORT || 5000));
@@ -40,7 +41,7 @@ let manufacturersIndex = null;
 let typesIndex = null;
 
 // read in the JSON files to fill those data structures
-fs.readFile('fixtures/manufacturers.json', 'utf8', (error, data) => {
+fs.readFile(path.join(__dirname, 'fixtures', 'manufacturers.json'), 'utf8', (error, data) => {
   if (error) {
     addFileReadError('There was an error reading in the manufacturer data.', error);
     return;
@@ -48,7 +49,7 @@ fs.readFile('fixtures/manufacturers.json', 'utf8', (error, data) => {
 
   manufacturers = JSON.parse(data);
 });
-fs.readFile('fixtures/index_manufacturers.json', 'utf8', (error, data) => {
+fs.readFile(path.join(__dirname, 'fixtures', 'index_manufacturers.json'), 'utf8', (error, data) => {
   if (error) {
     addFileReadError('There was an error reading in the manufacturer index data.', error);
     return;
@@ -56,7 +57,7 @@ fs.readFile('fixtures/index_manufacturers.json', 'utf8', (error, data) => {
 
   manufacturersIndex = JSON.parse(data);
 });
-fs.readFile('fixtures/index_types.json', 'utf8', (error, data) => {
+fs.readFile(path.join(__dirname, 'fixtures', 'index_types.json'), 'utf8', (error, data) => {
   if (error) {
     addFileReadError('There was an error reading in the category index data.', error);
     return;
@@ -128,7 +129,7 @@ function renderSingleManufacturer(response, man) {
   let fixtures = [];
 
   for (let fix of manufacturersIndex[man]) {
-    const fixData = JSON.parse(fs.readFileSync(`fixtures/${man}/${fix}.json`, 'utf-8'));
+    const fixData = JSON.parse(fs.readFileSync(path.join(__dirname, 'fixtures', man, fix + '.json'), 'utf-8'));
 
     fixtures.push({
       path: man + '/' + fix,
@@ -144,7 +145,7 @@ function renderSingleManufacturer(response, man) {
 }
 
 function renderSingleFixture(response, man, fix) {
-  const fixData = JSON.parse(fs.readFileSync(`fixtures/${man}/${fix}.json`, 'utf-8'));
+  const fixData = JSON.parse(fs.readFileSync(path.join(__dirname, 'fixtures', man, fix + '.json'), 'utf-8'));
 
   response.render('pages/single_fixture', {
     title: `${manufacturers[man].name} ${fixData.name} - Open Fixture Library`,
@@ -171,6 +172,7 @@ function getMessages() {
 }
 
 function addFileReadError(text, error) {
+  console.error(text, error.toString());
   messages.push({
     type: 'error',
     text: `${text}<br /><code>${error.toString()}</code>`
