@@ -2,9 +2,11 @@ language: node_js
 node_js:
   #- "node" # latest
   - "6"
+env:
+  - TESTFILE=tests/http_status.js
+  - TESTFILE=tests/index_complete.js
 script:
-  - node tests/http_status.js
-  - node tests/index_complete.js
+  - node "$TESTFILE"
 cache:
   directories:
     - node_modules # cache NPM dependencies
