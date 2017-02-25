@@ -1,305 +1,305 @@
 {
-    "name": "Thunder Wash 600 RGB",
-    "shortName": "CLTW600RGB",
-    "type": "Strobe",
-    "manualURL": "http://adamhall.invaliddomain.de/out/media/downloads/MARKEN/CAMEO/CLTW600RGB/CLTW600RGB_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf",
-    "meta": {
-        "authors": ["FloEdelmann"],
-        "createDate": "2017-02-24",
-        "lastModifyDate": "2017-02-24"
+  "name": "Thunder Wash 600 RGB",
+  "shortName": "CLTW600RGB",
+  "type": "Strobe",
+  "manualURL": "http://adamhall.invaliddomain.de/out/media/downloads/MARKEN/CAMEO/CLTW600RGB/CLTW600RGB_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf",
+  "meta": {
+    "authors": ["FloEdelmann"],
+    "createDate": "2017-02-24",
+    "lastModifyDate": "2017-02-24"
+  },
+  "physical": {
+    "dimensions": [335, 182, 93],
+    "weight": 3.25,
+    "power": 130,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
     },
-    "physical": {
-        "dimensions": [335, 182, 93],
-        "weight": 3.25,
-        "power": 130,
-        "DMXconnector": "3-pin",
-        "bulb": {
-            "type": "LED"
-        },
-        "lens": {
-            "degreesMinMax": [75.0, 75.0]
-        },
-        "focus": {
-            "type": "Fixed"
-        }
+    "lens": {
+      "degreesMinMax": [75.0, 75.0]
     },
-    "availableChannels": {
-        "strobe1": {
-            "name": "Strobe",
-            "type": "Strobe",
-            "highlightValue": 220,
-            "capabilities": [
-                {
-                    "range": [0, 10],
-                    "name": "Strobe closed"
-                },
-                {
-                    "range": [11, 255],
-                    "name": "Strobe 0Hz-30Hz",
-                    "center": true
-                }
-            ]
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "strobe1": {
+      "name": "Strobe",
+      "type": "Strobe",
+      "highlightValue": 220,
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "Strobe closed"
         },
-        "strobe2": {
-            "name": "Strobe",
-            "type": "Strobe",
-            "highlightValue": 220,
-            "capabilities": [
-                {
-                    "range": [0, 5],
-                    "name": "Strobe open"
-                },
-                {
-                    "range": [6, 10],
-                    "name": "Strobe closed"
-                },
-                {
-                    "range": [11, 250],
-                    "name": "Strobe 0Hz-30Hz",
-                    "center": true
-                },
-                {
-                    "range": [250, 255],
-                    "name": "Strobe open",
-                    "showInMenu": false
-                }
-            ]
-        },
-        "strobe3": {
-            "name": "Strobe",
-            "type": "Strobe",
-            "highlightValue": 220,
-            "capabilities": [
-                {
-                    "range": [0, 5],
-                    "name": "Strobe open"
-                },
-                {
-                    "range": [6, 10],
-                    "name": "Strobe closed"
-                },
-                {
-                    "range": [11, 33],
-                    "name": "Puls random slow-fast",
-                    "center": true
-                },
-                {
-                    "range": [34, 56],
-                    "name": "Ramp up random slow-fast",
-                    "center": true
-                },
-                {
-                    "range": [57, 79],
-                    "name": "Ramp down random slow-fast",
-                    "center": true
-                },
-                {
-                    "range": [80, 102],
-                    "name": "Random Strobe Effect slow-fast",
-                    "center": true
-                },
-                {
-                    "range": [103, 127],
-                    "name": "Strobe Break Effect 5s-1s",
-                    "center": true
-                },
-                {
-                    "range": [128, 250],
-                    "name": "Strobe 0Hz-30Hz",
-                    "center": true
-                },
-                {
-                    "range": [250, 255],
-                    "name": "Strobe open",
-                    "showInMenu": false
-                }
-            ]
-        },
-        "Dimmer": {
-            "type": "Intensity",
-            "highlightValue": 255,
-            "crossfade": true
-        },
-        "Color Macros": {
-            "type": "MultiColor",
-            "capabilities": [
-                {
-                    "range": [0, 5],
-                    "name": "Color off",
-                    "color": "#000000"
-                },
-                {
-                    "range": [6, 13],
-                    "name": "Red",
-                    "color": "#ff0000"
-                },
-                {
-                    "range": [14, 21],
-                    "name": "Amber",
-                    "color": "#ffbf00"
-                },
-                {
-                    "range": [22, 29],
-                    "name": "Yellow warm",
-                    "color": "#f9ba16"
-                },
-                {
-                    "range": [30, 37],
-                    "name": "Yellow",
-                    "color": "#ffff00"
-                },
-                {
-                    "range": [38, 45],
-                    "name": "Green",
-                    "color": "#00ff00"
-                },
-                {
-                    "range": [46, 53],
-                    "name": "Turquoise",
-                    "color": "#40e0d0"
-                },
-                {
-                    "range": [54, 61],
-                    "name": "Cyan",
-                    "color": "#00ffff"
-                },
-                {
-                    "range": [62, 69],
-                    "name": "Blue",
-                    "color": "#0000ff"
-                },
-                {
-                    "range": [70, 77],
-                    "name": "Lavender",
-                    "color": "#e6e6fa"
-                },
-                {
-                    "range": [78, 85],
-                    "name": "Mauve",
-                    "color": "#e0b0ff"
-                },
-                {
-                    "range": [86, 93],
-                    "name": "Magenta",
-                    "color": "#ff00ff"
-                },
-                {
-                    "range": [94, 101],
-                    "name": "Pink",
-                    "color": "#ffc0cb"
-                },
-                {
-                    "range": [102, 109],
-                    "name": "Warm White",
-                    "color": "#fffbf2"
-                },
-                {
-                    "range": [110, 117],
-                    "name": "White",
-                    "color": "#ffffff"
-                },
-                {
-                    "range": [118, 125],
-                    "name": "Cold White",
-                    "color": "#f2f6fe"
-                },
-                {
-                    "range": [126, 128],
-                    "name": "Jump Stop"
-                },
-                {
-                    "range": [129, 192],
-                    "name": "Jump slow-fast"
-                },
-                {
-                    "range": [193, 255],
-                    "name": "Fade slow-fast",
-                    "color": "Others/rainbow.png"
-                }
-            ]
-        },
-        "Flash Duration": {
-            "type": "Speed",
-            "capabilities": [
-                {
-                    "range": [0, 255],
-                    "name": "0-512ms"
-                }
-            ]
-        },
-        "Sound Control": {
-            "type": "Speed",
-            "capabilities": [
-                {
-                    "range": [0, 5],
-                    "name": "Sound Control Off"
-                },
-                {
-                    "range": [6, 255],
-                    "name": "Mic Sensitivity Low-High",
-                    "center": true
-                }
-            ]
-        },
-        "Red": {
-            "type": "SingleColor",
-            "color": "Red",
-            "highlightValue": 255,
-            "crossfade": true
-        },
-        "Green": {
-            "type": "SingleColor",
-            "color": "Green",
-            "highlightValue": 255,
-            "crossfade": true
-        },
-        "Blue": {
-            "type": "SingleColor",
-            "color": "Blue",
-            "highlightValue": 255,
-            "crossfade": true
+        {
+          "range": [11, 255],
+          "name": "Strobe 0Hz-30Hz",
+          "center": true
         }
+      ]
     },
-    "modes": [
+    "strobe2": {
+      "name": "Strobe",
+      "type": "Strobe",
+      "highlightValue": 220,
+      "capabilities": [
         {
-            "name": "1-channel Mode",
-            "shortName": "1ch",
-            "channels": ["strobe1"]
+          "range": [0, 5],
+          "name": "Strobe open"
         },
         {
-            "name": "2-channel Mode 1",
-            "shortName": "2ch1",
-            "channels": ["Dimmer", "Color Macros"]
+          "range": [6, 10],
+          "name": "Strobe closed"
         },
         {
-            "name": "2-channel Mode 2",
-            "shortName": "2ch2",
-            "channels": ["Dimmer", "strobe2"]
+          "range": [11, 250],
+          "name": "Strobe 0Hz-30Hz",
+          "center": true
         },
         {
-            "name": "3-channel Mode 1",
-            "shortName": "3ch1",
-            "channels": ["Dimmer", "strobe2", "Flash Duration"]
-        },
-        {
-            "name": "3-channel Mode 2",
-            "shortName": "3ch2",
-            "channels": ["Dimmer", "strobe2", "Color Macros"]
-        },
-        {
-            "name": "3-channel Mode 3",
-            "shortName": "3ch3",
-            "channels": ["Red", "Green", "Blue"]
-        },
-        {
-            "name": "4-channel Mode",
-            "shortName": "4ch",
-            "channels": ["Dimmer", "strobe3", "Color Macros", "Sound Control"]
-        },
-        {
-            "name": "6-channel Mode",
-            "shortName": "6ch",
-            "channels": ["Dimmer", "strobe3", "Red", "Green", "Blue", "Sound Control"]
+          "range": [250, 255],
+          "name": "Strobe open",
+          "showInMenu": false
         }
-    ]
+      ]
+    },
+    "strobe3": {
+      "name": "Strobe",
+      "type": "Strobe",
+      "highlightValue": 220,
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Strobe open"
+        },
+        {
+          "range": [6, 10],
+          "name": "Strobe closed"
+        },
+        {
+          "range": [11, 33],
+          "name": "Puls random slow-fast",
+          "center": true
+        },
+        {
+          "range": [34, 56],
+          "name": "Ramp up random slow-fast",
+          "center": true
+        },
+        {
+          "range": [57, 79],
+          "name": "Ramp down random slow-fast",
+          "center": true
+        },
+        {
+          "range": [80, 102],
+          "name": "Random Strobe Effect slow-fast",
+          "center": true
+        },
+        {
+          "range": [103, 127],
+          "name": "Strobe Break Effect 5s-1s",
+          "center": true
+        },
+        {
+          "range": [128, 250],
+          "name": "Strobe 0Hz-30Hz",
+          "center": true
+        },
+        {
+          "range": [250, 255],
+          "name": "Strobe open",
+          "showInMenu": false
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Color Macros": {
+      "type": "MultiColor",
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Color off",
+          "color": "#000000"
+        },
+        {
+          "range": [6, 13],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [14, 21],
+          "name": "Amber",
+          "color": "#ffbf00"
+        },
+        {
+          "range": [22, 29],
+          "name": "Yellow warm",
+          "color": "#f9ba16"
+        },
+        {
+          "range": [30, 37],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [38, 45],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [46, 53],
+          "name": "Turquoise",
+          "color": "#40e0d0"
+        },
+        {
+          "range": [54, 61],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [62, 69],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [70, 77],
+          "name": "Lavender",
+          "color": "#e6e6fa"
+        },
+        {
+          "range": [78, 85],
+          "name": "Mauve",
+          "color": "#e0b0ff"
+        },
+        {
+          "range": [86, 93],
+          "name": "Magenta",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [94, 101],
+          "name": "Pink",
+          "color": "#ffc0cb"
+        },
+        {
+          "range": [102, 109],
+          "name": "Warm White",
+          "color": "#fffbf2"
+        },
+        {
+          "range": [110, 117],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [118, 125],
+          "name": "Cold White",
+          "color": "#f2f6fe"
+        },
+        {
+          "range": [126, 128],
+          "name": "Jump Stop"
+        },
+        {
+          "range": [129, 192],
+          "name": "Jump slow-fast"
+        },
+        {
+          "range": [193, 255],
+          "name": "Fade slow-fast",
+          "color": "Others/rainbow.png"
+        }
+      ]
+    },
+    "Flash Duration": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0-512ms"
+        }
+      ]
+    },
+    "Sound Control": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Sound Control Off"
+        },
+        {
+          "range": [6, 255],
+          "name": "Mic Sensitivity Low-High",
+          "center": true
+        }
+      ]
+    },
+    "Red": {
+      "type": "SingleColor",
+      "color": "Red",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Green": {
+      "type": "SingleColor",
+      "color": "Green",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Blue": {
+      "type": "SingleColor",
+      "color": "Blue",
+      "highlightValue": 255,
+      "crossfade": true
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel Mode",
+      "shortName": "1ch",
+      "channels": ["strobe1"]
+    },
+    {
+      "name": "2-channel Mode 1",
+      "shortName": "2ch1",
+      "channels": ["Dimmer", "Color Macros"]
+    },
+    {
+      "name": "2-channel Mode 2",
+      "shortName": "2ch2",
+      "channels": ["Dimmer", "strobe2"]
+    },
+    {
+      "name": "3-channel Mode 1",
+      "shortName": "3ch1",
+      "channels": ["Dimmer", "strobe2", "Flash Duration"]
+    },
+    {
+      "name": "3-channel Mode 2",
+      "shortName": "3ch2",
+      "channels": ["Dimmer", "strobe2", "Color Macros"]
+    },
+    {
+      "name": "3-channel Mode 3",
+      "shortName": "3ch3",
+      "channels": ["Red", "Green", "Blue"]
+    },
+    {
+      "name": "4-channel Mode",
+      "shortName": "4ch",
+      "channels": ["Dimmer", "strobe3", "Color Macros", "Sound Control"]
+    },
+    {
+      "name": "6-channel Mode",
+      "shortName": "6ch",
+      "channels": ["Dimmer", "strobe3", "Red", "Green", "Blue", "Sound Control"]
+    }
+  ]
 }

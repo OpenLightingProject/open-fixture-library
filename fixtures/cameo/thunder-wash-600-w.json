@@ -1,213 +1,213 @@
 {
-    "name": "Thunder Wash 600 W",
-    "shortName": "CLTW600W",
-    "type": "Strobe",
-    "manualURL": "http://adamhall.invaliddomain.de/out/media/downloads/MARKEN/CAMEO/CLTW600W/CLTW600W_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf",
-    "meta": {
-        "authors": ["FloEdelmann"],
-        "createDate": "2017-02-24",
-        "lastModifyDate": "2017-02-24"
+  "name": "Thunder Wash 600 W",
+  "shortName": "CLTW600W",
+  "type": "Strobe",
+  "manualURL": "http://adamhall.invaliddomain.de/out/media/downloads/MARKEN/CAMEO/CLTW600W/CLTW600W_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf",
+  "meta": {
+    "authors": ["FloEdelmann"],
+    "createDate": "2017-02-24",
+    "lastModifyDate": "2017-02-24"
+  },
+  "physical": {
+    "dimensions": [335, 182, 93],
+    "weight": 3.25,
+    "power": 130,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
     },
-    "physical": {
-        "dimensions": [335, 182, 93],
-        "weight": 3.25,
-        "power": 130,
-        "DMXconnector": "3-pin",
-        "bulb": {
-            "type": "LED"
+    "lens": {
+      "degreesMinMax": [75.0, 75.0]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "strobe1": {
+      "name": "Strobe",
+      "type": "Strobe",
+      "highlightValue": 220,
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "Strobe closed"
         },
-        "lens": {
-            "degreesMinMax": [75.0, 75.0]
-        },
-        "focus": {
-            "type": "Fixed"
+        {
+          "range": [11, 255],
+          "name": "Strobe 0Hz-30Hz",
+          "center": true
         }
+      ]
     },
-    "availableChannels": {
-        "strobe1": {
-            "name": "Strobe",
-            "type": "Strobe",
-            "highlightValue": 220,
-            "capabilities": [
-                {
-                    "range": [0, 10],
-                    "name": "Strobe closed"
-                },
-                {
-                    "range": [11, 255],
-                    "name": "Strobe 0Hz-30Hz",
-                    "center": true
-                }
-            ]
+    "strobe2": {
+      "name": "Strobe",
+      "type": "Strobe",
+      "highlightValue": 220,
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Strobe open"
         },
-        "strobe2": {
-            "name": "Strobe",
-            "type": "Strobe",
-            "highlightValue": 220,
-            "capabilities": [
-                {
-                    "range": [0, 5],
-                    "name": "Strobe open"
-                },
-                {
-                    "range": [6, 10],
-                    "name": "Strobe closed"
-                },
-                {
-                    "range": [11, 250],
-                    "name": "Strobe 0Hz-30Hz",
-                    "center": true
-                },
-                {
-                    "range": [250, 255],
-                    "name": "Strobe open",
-                    "showInMenu": false
-                }
-            ]
+        {
+          "range": [6, 10],
+          "name": "Strobe closed"
         },
-        "strobe3": {
-            "name": "Strobe",
-            "type": "Strobe",
-            "highlightValue": 220,
-            "capabilities": [
-                {
-                    "range": [0, 5],
-                    "name": "Strobe open"
-                },
-                {
-                    "range": [6, 10],
-                    "name": "Strobe closed"
-                },
-                {
-                    "range": [11, 33],
-                    "name": "Puls random slow-fast",
-                    "center": true
-                },
-                {
-                    "range": [34, 56],
-                    "name": "Ramp up random slow-fast",
-                    "center": true
-                },
-                {
-                    "range": [57, 79],
-                    "name": "Ramp down random slow-fast",
-                    "center": true
-                },
-                {
-                    "range": [80, 102],
-                    "name": "Random Strobe Effect slow-fast",
-                    "center": true
-                },
-                {
-                    "range": [103, 127],
-                    "name": "Strobe Break Effect 5s-1s",
-                    "center": true
-                },
-                {
-                    "range": [128, 250],
-                    "name": "Strobe 0Hz-30Hz",
-                    "center": true
-                },
-                {
-                    "range": [250, 255],
-                    "name": "Strobe open",
-                    "showInMenu": false
-                }
-            ]
+        {
+          "range": [11, 250],
+          "name": "Strobe 0Hz-30Hz",
+          "center": true
         },
-        "Dimmer": {
-            "type": "Intensity",
-            "highlightValue": 255,
-            "crossfade": true
-        },
-        "Flash Duration": {
-            "type": "Speed",
-            "capabilities": [
-                {
-                    "range": [0, 255],
-                    "name": "0-512ms"
-                }
-            ]
-        },
-        "Sound Control": {
-            "type": "Speed",
-            "capabilities": [
-                {
-                    "range": [0, 5],
-                    "name": "Sound Control Off"
-                },
-                {
-                    "range": [6, 255],
-                    "name": "Mic Sensitivity Low-High",
-                    "center": true
-                }
-            ]
-        },
-        "Programs": {
-            "type": "Effect",
-            "capabilities": [
-                {
-                    "range": [0, 10],
-                    "name": "No function"
-                },
-                {
-                    "range": [11, 255],
-                    "name": "Strobe Programs (alternating segments)"
-                }
-            ]
-        },
-        "Program Speed": {
-            "type": "Speed",
-            "crossfade": true
-        },
-        "LED1 Dimmer": {
-            "type": "Intensity",
-            "crossfade": true
-        },
-        "LED2 Dimmer": {
-            "type": "Intensity",
-            "crossfade": true
-        },
-        "LED3 Dimmer": {
-            "type": "Intensity",
-            "crossfade": true
-        },
-        "LED4 Dimmer": {
-            "type": "Intensity",
-            "crossfade": true
+        {
+          "range": [250, 255],
+          "name": "Strobe open",
+          "showInMenu": false
         }
+      ]
     },
-    "heads": {
-        "LED1": ["LED1 Dimmer"],
-        "LED2": ["LED2 Dimmer"],
-        "LED3": ["LED3 Dimmer"],
-        "LED4": ["LED4 Dimmer"]
-    },
-    "modes": [
+    "strobe3": {
+      "name": "Strobe",
+      "type": "Strobe",
+      "highlightValue": 220,
+      "capabilities": [
         {
-            "name": "1-channel Mode",
-            "shortName": "1ch",
-            "channels": ["strobe1"]
+          "range": [0, 5],
+          "name": "Strobe open"
         },
         {
-            "name": "2-channel Mode",
-            "shortName": "2ch",
-            "channels": ["Dimmer", "strobe2"]
+          "range": [6, 10],
+          "name": "Strobe closed"
         },
         {
-            "name": "3-channel Mode",
-            "shortName": "3ch",
-            "channels": ["Dimmer", "strobe2", "Flash Duration"]
+          "range": [11, 33],
+          "name": "Puls random slow-fast",
+          "center": true
         },
         {
-            "name": "5-channel Mode",
-            "shortName": "5ch",
-            "channels": ["Dimmer", "strobe3", "Programs", "Program Speed", "Sound Control"]
+          "range": [34, 56],
+          "name": "Ramp up random slow-fast",
+          "center": true
         },
         {
-            "name": "7-channel Mode",
-            "shortName": "7ch",
-            "channels": ["Dimmer", "strobe2", "Flash Duration", "LED1 Dimmer", "LED2 Dimmer", "LED3 Dimmer", "LED4 Dimmer"]
+          "range": [57, 79],
+          "name": "Ramp down random slow-fast",
+          "center": true
+        },
+        {
+          "range": [80, 102],
+          "name": "Random Strobe Effect slow-fast",
+          "center": true
+        },
+        {
+          "range": [103, 127],
+          "name": "Strobe Break Effect 5s-1s",
+          "center": true
+        },
+        {
+          "range": [128, 250],
+          "name": "Strobe 0Hz-30Hz",
+          "center": true
+        },
+        {
+          "range": [250, 255],
+          "name": "Strobe open",
+          "showInMenu": false
         }
-    ]
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Flash Duration": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0-512ms"
+        }
+      ]
+    },
+    "Sound Control": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Sound Control Off"
+        },
+        {
+          "range": [6, 255],
+          "name": "Mic Sensitivity Low-High",
+          "center": true
+        }
+      ]
+    },
+    "Programs": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "No function"
+        },
+        {
+          "range": [11, 255],
+          "name": "Strobe Programs (alternating segments)"
+        }
+      ]
+    },
+    "Program Speed": {
+      "type": "Speed",
+      "crossfade": true
+    },
+    "LED1 Dimmer": {
+      "type": "Intensity",
+      "crossfade": true
+    },
+    "LED2 Dimmer": {
+      "type": "Intensity",
+      "crossfade": true
+    },
+    "LED3 Dimmer": {
+      "type": "Intensity",
+      "crossfade": true
+    },
+    "LED4 Dimmer": {
+      "type": "Intensity",
+      "crossfade": true
+    }
+  },
+  "heads": {
+    "LED1": ["LED1 Dimmer"],
+    "LED2": ["LED2 Dimmer"],
+    "LED3": ["LED3 Dimmer"],
+    "LED4": ["LED4 Dimmer"]
+  },
+  "modes": [
+    {
+      "name": "1-channel Mode",
+      "shortName": "1ch",
+      "channels": ["strobe1"]
+    },
+    {
+      "name": "2-channel Mode",
+      "shortName": "2ch",
+      "channels": ["Dimmer", "strobe2"]
+    },
+    {
+      "name": "3-channel Mode",
+      "shortName": "3ch",
+      "channels": ["Dimmer", "strobe2", "Flash Duration"]
+    },
+    {
+      "name": "5-channel Mode",
+      "shortName": "5ch",
+      "channels": ["Dimmer", "strobe3", "Programs", "Program Speed", "Sound Control"]
+    },
+    {
+      "name": "7-channel Mode",
+      "shortName": "7ch",
+      "channels": ["Dimmer", "strobe2", "Flash Duration", "LED1 Dimmer", "LED2 Dimmer", "LED3 Dimmer", "LED4 Dimmer"]
+    }
+  ]
 }

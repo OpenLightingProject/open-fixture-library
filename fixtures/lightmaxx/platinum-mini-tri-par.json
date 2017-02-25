@@ -1,164 +1,164 @@
 {
-    "name": "Platinum Mini TRI-PAR",
-    "shortName": "MiniTri",
-    "type": "Color Changer",
-    "comment": "Platinum Line Mini TRI-PAR 7x3 Watt",
-    "meta": {
-        "authors": ["FloEdelmann"],
-        "createDate": "2017-02-24",
-        "lastModifyDate": "2017-02-24"
+  "name": "Platinum Mini TRI-PAR",
+  "shortName": "MiniTri",
+  "type": "Color Changer",
+  "comment": "Platinum Line Mini TRI-PAR 7x3 Watt",
+  "meta": {
+    "authors": ["FloEdelmann"],
+    "createDate": "2017-02-24",
+    "lastModifyDate": "2017-02-24"
+  },
+  "physical": {
+    "dimensions": [170, 170, 160],
+    "weight": 2.0,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
     },
-    "physical": {
-        "dimensions": [170, 170, 160],
-        "weight": 2.0,
-        "power": 30,
-        "DMXconnector": "3-pin",
-        "bulb": {
-            "type": "LED"
-        },
-        "lens": {
-            "degreesMinMax": [25.0, 25.0]
-        },
-        "focus": {
-            "type": "Fixed"
-        }
+    "lens": {
+      "degreesMinMax": [25.0, 25.0]
     },
-    "availableChannels": {
-        "Intensity": {
-            "type": "Intensity",
-            "highlightValue": 255,
-            "crossfade": true,
-            "precendence": "HTP"
-        },
-        "Red": {
-            "type": "SingleColor",
-            "color": "Red",
-            "highlightValue": 255,
-            "crossfade": true,
-            "precendence": "HTP"
-        },
-        "Green": {
-            "type": "SingleColor",
-            "color": "Green",
-            "highlightValue": 255,
-            "crossfade": true,
-            "precendence": "HTP"
-        },
-        "Blue": {
-            "type": "SingleColor",
-            "color": "Blue",
-            "highlightValue": 255,
-            "crossfade": true,
-            "precendence": "HTP"
-        },
-        "Macro": {
-            "name": "Macro",
-            "type": "MultiColor",
-            "capabilities": [
-                {
-                    "range": [0, 4],
-                    "name": "Off"
-                },
-                {
-                    "range": [5, 9],
-                    "name": "White",
-                    "color": "#ffffff"
-                },
-                {
-                    "range": [10, 14],
-                    "name": "Light blue",
-                    "color": "#add8e6"
-                },
-                {
-                    "range": [15, 19],
-                    "name": "Blue",
-                    "color": "#0000ff"
-                },
-                {
-                    "range": [20, 24],
-                    "name": "Purple",
-                    "color": "#800080"
-                },
-                {
-                    "range": [25, 29],
-                    "name": "Light pink",
-                    "color": "#ffb6c1"
-                },
-                {
-                    "range": [30, 34],
-                    "name": "Magenta",
-                    "color": "#ca1f7b"
-                },
-                {
-                    "range": [35, 39],
-                    "name": "Pink",
-                    "color": "#ffc0cb"
-                },
-                {
-                    "range": [40, 44],
-                    "name": "Dark pink",
-                    "color": "#e75480"
-                },
-                {
-                    "range": [45, 49],
-                    "name": "Red",
-                    "color": "#ff0000"
-                },
-                {
-                    "range": [50, 54],
-                    "name": "Orange",
-                    "color": "#ff7f00"
-                },
-                {
-                    "range": [55, 59],
-                    "name": "Light orange",
-                    "color": "#ff7f00"
-                },
-                {
-                    "range": [60, 64],
-                    "name": "Yellow",
-                    "color": "#ffff00"
-                },
-                {
-                    "range": [65, 69],
-                    "name": "Light green",
-                    "color": "#90ee90"
-                },
-                {
-                    "range": [70, 74],
-                    "name": "Green",
-                    "color": "#00ff00"
-                },
-                {
-                    "range": [75, 79],
-                    "name": "Aquamarine",
-                    "color": "#7fffd4"
-                },
-                {
-                    "range": [80, 84],
-                    "name": "Cyan",
-                    "color": "#00ffff"
-                },
-                {
-                    "range": [85, 169],
-                    "name": "jump slow-fast"
-                },
-                {
-                    "range": [170, 255],
-                    "name": "fade slow-fast"
-                }
-            ]
-        },
-        "Strobe": {
-            "type": "Strobe",
-            "highlightValue": 200
-        }
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "type": "Intensity",
+      "highlightValue": 255,
+      "crossfade": true,
+      "precendence": "HTP"
     },
-    "modes": [
+    "Red": {
+      "type": "SingleColor",
+      "color": "Red",
+      "highlightValue": 255,
+      "crossfade": true,
+      "precendence": "HTP"
+    },
+    "Green": {
+      "type": "SingleColor",
+      "color": "Green",
+      "highlightValue": 255,
+      "crossfade": true,
+      "precendence": "HTP"
+    },
+    "Blue": {
+      "type": "SingleColor",
+      "color": "Blue",
+      "highlightValue": 255,
+      "crossfade": true,
+      "precendence": "HTP"
+    },
+    "Macro": {
+      "name": "Macro",
+      "type": "MultiColor",
+      "capabilities": [
         {
-            "name": "6-channel Mode",
-            "shortName": "6ch",
-            "channels": ["Intensity", "Red", "Green", "Blue", "Macro", "Strobe"]
+          "range": [0, 4],
+          "name": "Off"
+        },
+        {
+          "range": [5, 9],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [10, 14],
+          "name": "Light blue",
+          "color": "#add8e6"
+        },
+        {
+          "range": [15, 19],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [20, 24],
+          "name": "Purple",
+          "color": "#800080"
+        },
+        {
+          "range": [25, 29],
+          "name": "Light pink",
+          "color": "#ffb6c1"
+        },
+        {
+          "range": [30, 34],
+          "name": "Magenta",
+          "color": "#ca1f7b"
+        },
+        {
+          "range": [35, 39],
+          "name": "Pink",
+          "color": "#ffc0cb"
+        },
+        {
+          "range": [40, 44],
+          "name": "Dark pink",
+          "color": "#e75480"
+        },
+        {
+          "range": [45, 49],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [50, 54],
+          "name": "Orange",
+          "color": "#ff7f00"
+        },
+        {
+          "range": [55, 59],
+          "name": "Light orange",
+          "color": "#ff7f00"
+        },
+        {
+          "range": [60, 64],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [65, 69],
+          "name": "Light green",
+          "color": "#90ee90"
+        },
+        {
+          "range": [70, 74],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [75, 79],
+          "name": "Aquamarine",
+          "color": "#7fffd4"
+        },
+        {
+          "range": [80, 84],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [85, 169],
+          "name": "jump slow-fast"
+        },
+        {
+          "range": [170, 255],
+          "name": "fade slow-fast"
         }
-    ]
+      ]
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "highlightValue": 200
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel Mode",
+      "shortName": "6ch",
+      "channels": ["Intensity", "Red", "Green", "Blue", "Macro", "Strobe"]
+    }
+  ]
 }
