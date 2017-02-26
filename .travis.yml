@@ -3,6 +3,7 @@ node_js:
   #- "node" # latest
   - "6"
 env:
+  - TESTFILE=tests/fixtures_valid.js
   - TESTFILE=tests/http_status.js
   - TESTFILE=tests/manufacturers_index_correct.js
 script:
