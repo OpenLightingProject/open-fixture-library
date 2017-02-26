@@ -38,13 +38,13 @@ for (const man of fs.readdirSync(fixturePath)) {
 for (const man in index) {
   if (index[man].length > 0) {
     if (data[man] === undefined) {
-      console.error(colors.red(`Error: Manufacturer '${man}' is mentioned in index but not present in file structure.`));
+      console.error(colors.red('Error:') + ` Manufacturer '${man}' is mentioned in index but not present in file structure.`);
       failed = true;
     }
     else {
       for (const fixture of index[man]) {
         if (!data[man].includes(fixture)) {
-          console.error(colors.red(`Error: Fixture '${fixture}' is mentioned in index but not present in file structure.`));
+          console.error(colors.red('Error:') + ` Fixture '${fixture}' is mentioned in index but not present in file structure.`);
           failed = true;
         }
       }
@@ -55,13 +55,13 @@ for (const man in index) {
 // all manufacturers and fixtures mentioned in data must be in index
 for (const man in data) {
   if (index[man] === undefined) {
-    console.error(colors.red(`Error: Manufacturer '${man}' is present in file structure but not mentioned in index.`));
+    console.error(colors.red('Error:') + ` Manufacturer '${man}' is present in file structure but not mentioned in index.`);
     failed = true;
   }
   else {
     for (const fixture of data[man]) {
       if (!index[man].includes(fixture)) {
-        console.error(colors.red(`Error: Fixture '${fixture}' is present in file structure but not mentioned in index.`));
+        console.error(colors.red('Error:') + ` Fixture '${fixture}' is present in file structure but not mentioned in index.`);
         failed = true;
       }
     }
@@ -69,7 +69,8 @@ for (const man in data) {
 }
 
 if (!failed) {
-  console.log(colors.green('PASS') + ' Data in index file has no conflicts with actual data in file system.');
+  console.log(colors.green('[PASS]') + ' Data in index file has no conflicts with actual data in file system.');
   process.exit(0);
 }
+console.error(colors.red('[FAIL]') + ' Test failed with errors (see above).');
 process.exit(1);

@@ -61,11 +61,11 @@ require('timers').setTimeout(() => {
         const url = 'http://localhost:5000/' + page;
         http.get(url, res => {
           if (res.statusCode == code) {
-            console.log(colors.green('PASS') + ` ${url} (${res.statusCode})`);
+            console.log(colors.green('[PASS]') + ` ${url} (${res.statusCode})`);
             resolve(true);
           }
           else {
-            console.error(colors.red('FAIL') + `in ${url} (${res.statusCode}, ${code} expected)`);
+            console.error(colors.red('[FAIL]') + ` ${url} (got ${res.statusCode}, expected ${code})`);
             resolve(false);
           }
         });
@@ -82,10 +82,10 @@ require('timers').setTimeout(() => {
     }
 
     if (fails == 0) {
-      console.log(colors.green(`All ${results.length} tests passed.`));
+      console.log('\n' + colors.green('[PASS]') + ` All ${results.length} tests passed.`);
     }
     else {
-      console.error(colors.red(`${fails} of ${results.length} tests failed.`));
+      console.error('\n' + colors.red('[FAIL]') + ` ${fails} of ${results.length} tests failed.`);
       failed = true;
     }
 
