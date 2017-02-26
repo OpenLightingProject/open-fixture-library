@@ -22,10 +22,10 @@ const statusCodes = {
 }
 // add manufacturers and fixtures
 const manufacturersIndex = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'fixtures', 'index_manufacturers.json'), 'utf8'));
-for (let man in manufacturersIndex) {
+for (const man in manufacturersIndex) {
   statusCodes['200'].push(man);
 
-  for (fixture of manufacturersIndex[man]) {
+  for (const fixture of manufacturersIndex[man]) {
     statusCodes['200'].push(path.join(man, fixture));
   }
 }
@@ -51,9 +51,9 @@ console.log(`Starting server with process id ${serverProcess.pid}`);
 require('timers').setTimeout(() => {
   console.log('start tests');
 
-  const promises = [];
-  for (let code in statusCodes) {
-    for (let page of statusCodes[code]) {
+  let promises = [];
+  for (const code in statusCodes) {
+    for (const page of statusCodes[code]) {
       promises.push(new Promise((resolve, reject) => {
         const url = 'http://localhost:5000/' + page;
         http.get(url, res => {
@@ -71,8 +71,8 @@ require('timers').setTimeout(() => {
   }
 
   Promise.all(promises).then(results => {
-    fails = 0;
-    for (let result of results) {
+    let fails = 0;
+    for (const result of results) {
       if (!result) {
         fails++;
       }
