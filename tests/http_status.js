@@ -16,8 +16,11 @@ const statusCodes = {
   ],
   '404': [
     'bla',
+    'about/bla',
+    'manufacturers/gruft',
     'gruft/bla',
-    'gruft/ventilator/bla'
+    'cameo/ventilator',
+    'gruft/ventilator/bla',
   ]
 }
 // add manufacturers and fixtures
