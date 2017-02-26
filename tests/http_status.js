@@ -15,8 +15,9 @@ const statusCodes = {
     'search'
   ],
   '404': [
-    'e',
-    'f'
+    'bla',
+    'gruft/bla',
+    'gruft/ventilator/bla'
   ]
 }
 // add manufacturers and fixtures
