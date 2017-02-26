@@ -7,7 +7,9 @@ let failed = false;
 const fixturePath = path.join(__dirname, '..', 'fixtures');
 
 // get index (and adjust the fixtures' names)
-let index = JSON.parse(fs.readFileSync(path.join(fixturePath, 'index_manufacturers.json'), 'utf8'));
+const indexPath = path.join(fixturePath, 'index_manufacturers.json')
+let index = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
+console.log('Parsing index file ' + indexPath);
 for (const man in index) {
   for (const i in index[man]) {
     index[man][i] = path.join(man, index[man][i]);
@@ -67,7 +69,7 @@ for (const man in data) {
 }
 
 if (!failed) {
-  console.log(colors.green('Test passed.'));
+  console.log(colors.green('PASS') + ' Data in index file has no conflicts with actual data in file system.');
   process.exit(0);
 }
 process.exit(1);
