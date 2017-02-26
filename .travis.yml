@@ -4,7 +4,7 @@ node_js:
   - "6"
 env:
   - TESTFILE=tests/http_status.js
-  - TESTFILE=tests/index_complete.js
+  - TESTFILE=tests/manufacturers_index_correct.js
 script:
   - node "$TESTFILE"
 cache:
