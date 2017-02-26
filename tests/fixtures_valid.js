@@ -22,7 +22,6 @@ for (const man of fs.readdirSync(fixturePath)) {
 }
 
 let shortNames = [];
-const validTypes = ['Other', 'Color Changer', 'Dimmer', 'Effect', 'Fan', 'Flower', 'Hazer', 'Laser', 'Moving Head', 'Scanner', 'Smoke', 'Strobe'];
 const dateRegExp = /^\d{4}-\d{2}-\d{2}$/;
 
 function checkFixture(filename) {
@@ -66,8 +65,8 @@ function checkFixture(filename) {
         delete fixture.name;
         delete fixture.shortName;
 
-        if (!fixture.type || validTypes.indexOf(fixture.type) == -1) {
-          resolveError(`type missing / not valid in file '${filename}'.`, null, resolve);
+        if (!fixture.type || typeof fixture.type !== 'string') {
+          resolveError(`type missing / wrong type in file '${filename}'.`, null, resolve);
           return;
         }
         delete fixture.type;
@@ -99,23 +98,24 @@ function checkFixture(filename) {
           resolveError(`meta.createDate missing / wrong format in file '${filename}'.`, null, resolve);
           return;
         }
-        delete fixture.meta.createDate;
 
-        if (!fixture.meta.lastModifyDate || !dateRegExp.test(fixture.meta.lastModifyDate)) {
+        if (!fixture.meta.lastModifyDate
+          || !dateRegExp.test(fixture.meta.lastModifyDate)
+          || new Date(fixture.meta.lastModifyDate) < new Date(fixture.meta.createDate)
+          ) {
           resolveError(`meta.lastModifyDate missing / wrong format in file '${filename}'.`, null, resolve);
           return;
         }
+        delete fixture.meta.createDate;
         delete fixture.meta.lastModifyDate;
 
-        let leftoverMetaKeys = Object.keys(fixture.meta).map(key => 'meta.' + key);
-        if (leftoverMetaKeys.length > 0) {
-          resolveError(`There are leftover keys ${leftoverMetaKeys.toString()} in file '${filename}'.`, null, resolve);
+        if (!handleLeftoverKeys(fixture.meta, 'meta.', resolve, `in file '${filename}'`)) {
           return;
         }
         delete fixture.meta;
 
         if (fixture.physical) {
-          let success = handlePhysical(fixture.physical, resolve);
+          let success = handlePhysical(fixture.physical, resolve, `in file '${filename}'`);
 
           if (!success) {
             return;
@@ -167,7 +167,7 @@ function checkFixture(filename) {
           delete mode.shortName;
 
           if (mode.physical) {
-            let success = handlePhysical(mode.physical, resolve);
+            let success = handlePhysical(mode.physical, resolve, `in mode #${i} in file '${filename}'`);
 
             if (!success) {
               return;
@@ -189,9 +189,7 @@ function checkFixture(filename) {
           }
           delete mode.channels;
 
-          const leftoverKeys = Object.keys(mode);
-          if (leftoverKeys.length > 0) {
-            resolveError(`There are leftover keys ${leftoverKeys.toString()} in mode #${i} in file '${filename}'.`, null, resolve);
+          if (!handleLeftoverKeys(mode, '', resolve, `in mode #${i} in file '${filename}'`)) {
             return;
           }
         }
@@ -252,16 +250,14 @@ function checkFixture(filename) {
             console.warn(colors.yellow(`Warning: Channel '${ch}' defined but never used in file '${filename}'.`));
           }
 
-          const success = handleChannel(fixture, ch, resolve);
+          const success = handleChannel(fixture, ch, resolve, filename);
           if (!success) {
             return;
           }
         }
         delete fixture.availableChannels;
 
-        const leftoverKeys = Object.keys(fixture);
-        if (leftoverKeys.length > 0) {
-          resolveError(`There are leftover keys ${leftoverKeys.toString()} in file '${filename}'.`, null, resolve);
+        if (!handleLeftoverKeys(fixture, '', resolve, `in file '${filename}'`)) {
           return;
         }
       }
@@ -275,24 +271,142 @@ function checkFixture(filename) {
   });
 }
 
-function handlePhysical(physical, resolve) {
+function handlePhysical(physical, resolve, position) {
+  if (typeof physical !== 'object') {
+    return resolveError(`physical has wrong type ${position}.`, null, resolve);
+  }
+
+  if (physical.dimensions
+    && (!Array.isArray(physical.dimensions)
+      || physical.dimensions.length != 3
+      || typeof physical.dimensions[0] !== 'number'
+      || typeof physical.dimensions[1] !== 'number'
+      || typeof physical.dimensions[2] !== 'number'
+      || physical.dimensions[0] <= 0
+      || physical.dimensions[1] <= 0
+      || physical.dimensions[2] <= 0
+    )) {
+    return resolveError(`physical.dimensions has wrong type / format ${position}.`, null, resolve);
+  }
+  delete physical.dimensions;
+
+  if (physical.weight && (typeof physical.weight !== 'number' || physical.weight <= 0)) {
+    return resolveError(`physical.weight has wrong type ${position}.`, null, resolve);
+  }
+  delete physical.weight;
+
+  if (physical.power && (typeof physical.power !== 'number' || physical.power <= 0)) {
+    return resolveError(`physical.power has wrong type ${position}.`, null, resolve);
+  }
+  delete physical.power;
+
+  if (physical.DMXconnector && typeof physical.DMXconnector !== 'string') {
+    return resolveError(`physical.DMXconnector has wrong type ${position}.`, null, resolve);
+  }
+  delete physical.DMXconnector;
+
+  if (physical.bulb) {
+    if (physical.bulb.type && typeof physical.bulb.type !== 'string') {
+      return resolveError(`physical.bulb.type has wrong type ${position}.`, null, resolve);
+    }
+    delete physical.bulb.type;
+
+    if (physical.bulb.colorTemperature && (typeof physical.bulb.colorTemperature !== 'number' || physical.bulb.colorTemperature <= 0)) {
+      return resolveError(`physical.bulb.colorTemperature has wrong type ${position}.`, null, resolve);
+    }
+    delete physical.bulb.colorTemperature;
+
+    if (physical.bulb.lumens && (typeof physical.bulb.lumens !== 'number' || physical.bulb.lumens <= 0)) {
+      return resolveError(`physical.bulb.lumens has wrong type ${position}.`, null, resolve);
+    }
+    delete physical.bulb.lumens;
+
+    if (!handleLeftoverKeys(physical.bulb, 'physical.bulb.', resolve, position)) {
+      return false;
+    }
+
+    delete physical.bulb;
+  }
+
+  if (physical.lens) {
+    if (physical.lens.name && typeof physical.lens.name !== 'string') {
+      return resolveError(`physical.lens.name has wrong type ${position}.`, null, resolve);
+    }
+    delete physical.lens.name;
+
+    if (physical.lens.degreesMinMax
+      && (!Array.isArray(physical.lens.degreesMinMax)
+        || physical.lens.degreesMinMax.length !== 2
+        || typeof physical.lens.degreesMinMax[0] !== 'number'
+        || typeof physical.lens.degreesMinMax[1] !== 'number'
+        || physical.lens.degreesMinMax[0] < 0
+        || physical.lens.degreesMinMax[1] > 360
+        || physical.lens.degreesMinMax[0] > physical.lens.degreesMinMax[1]
+      )) {
+      return resolveError(`physical.lens.degreesMinMax is an invalid range ${position}.`, null, resolve);
+    }
+    delete physical.lens.degreesMinMax;
+
+    if (!handleLeftoverKeys(physical.lens, 'physical.lens.', resolve, position)) {
+      return false;
+    }
+
+    delete physical.lens;
+  }
+
+  if (physical.focus) {
+    if (physical.focus.type && typeof physical.focus.type !== 'string') {
+      return resolveError(`physical.focus.type has wrong type ${position}.`, null, resolve);
+    }
+    delete physical.focus.type;
+
+    if (physical.focus.panMax && (typeof physical.focus.panMax !== 'number' || physical.focus.panMax <= 0)) {
+      return resolveError(`physical.focus.panMax has wrong type ${position}.`, null, resolve);
+    }
+    delete physical.focus.panMax;
+
+    if (physical.focus.tiltMax && (typeof physical.focus.tiltMax !== 'number' || physical.focus.tiltMax <= 0)) {
+      return resolveError(`physical.focus.tiltMax has wrong type ${position}.`, null, resolve);
+    }
+    delete physical.focus.tiltMax;
+
+    if (!handleLeftoverKeys(physical.focus, 'physical.focus.', resolve, position)) {
+      return false;
+    }
+
+    delete physical.focus;
+  }
+
+  if (!handleLeftoverKeys(physical, 'physical.', resolve, position)) {
+    return false;
+  }
+
+  return true;
+}
+
+function handleChannel(fixture, ch, resolve, filename) {
   // TODO stub
   return true;
 }
 
-function handleChannel(fixture, ch, resolve) {
-  // TODO stub
+function handleLeftoverKeys(object, prefix, resolve, position) {
+  let leftoverKeys = Object.keys(object).map(key => prefix + key);
+  if (leftoverKeys.length > 0) {
+    return resolveError(`There are leftover keys ${leftoverKeys.toString()} ${position}.`, null, resolve);
+  }
+
   return true;
 }
 
 function resolveError(str, error, resolve) {
   if (error) {
-    console.error(colors.red(`Error: ${str}\n`), error);
+    console.error(colors.red('Error: ') + str + '\n', error);
   }
   else {
-    console.error(colors.red(`Error: ${str}`));
+    console.error(colors.red('Error: ') + str);
   }
   resolve(false);
+  return false;
 }
 
 
@@ -305,10 +419,10 @@ Promise.all(promises).then(results => {
   }
 
   if (fails == 0) {
-    console.log(colors.green(`All ${results.length} tests passed.`));
+    console.log(colors.green('[PASS]') + ` All ${results.length} tested fixtures were valid.`);
     process.exit(0);
   }
 
-  console.error(colors.red(`${fails} of ${results.length} tests failed.`));
+  console.error(colors.red('[FAIL]') + ` ${fails} of ${results.length} tested fixtures failed.`);
   process.exit(1);
 });
