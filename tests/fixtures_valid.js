@@ -291,15 +291,7 @@ function handlePhysical(physical, resolve, position) {
     }
     delete physical.lens.name;
 
-    if ('degreesMinMax' in physical.lens
-      && (!Array.isArray(physical.lens.degreesMinMax)
-        || physical.lens.degreesMinMax.length !== 2
-        || typeof physical.lens.degreesMinMax[0] !== 'number'
-        || typeof physical.lens.degreesMinMax[1] !== 'number'
-        || physical.lens.degreesMinMax[0] < 0
-        || physical.lens.degreesMinMax[1] > 360
-        || physical.lens.degreesMinMax[0] > physical.lens.degreesMinMax[1]
-      )) {
+    if ('degreesMinMax' in physical.lens && !isRange(physical.lens.degreesMinMax, 0, 360)) {
       resolveError(`physical.lens.degreesMinMax is an invalid range ${position}.`, null, resolve);
     }
     delete physical.lens.degreesMinMax;
@@ -407,12 +399,7 @@ function handleChannel(fixture, ch, resolve, filename) {
         return resolveError(`capability #${i} in channel '${ch}' has wrong type in file '${filename}'.`, null, resolve);
       }
 
-      if (!('range' in cap)
-        || !Array.isArray(cap.range)
-        || cap.range[0] < 0
-        || cap.range[1] > 255
-        || cap.range[0] > cap.range[1]
-        ) {
+      if (!('range' in cap) || !isRange(cap.range, 0, 255)) {
         resolveError(`range missing / invalid in capability #${i} in channel '${ch}' in file '${filename}'.`, null, resolve);
       }
       delete cap.range;
@@ -475,6 +462,16 @@ function resolveError(str, error, resolve) {
     console.error(colors.red('[FAIL] ') + str);
   }
   resolve(false);
+}
+
+function isRange(array, min, max) {
+  return Array.isArray(array)
+    && array.length == 2
+    && typeof array[0] === 'number'
+    && typeof array[1] === 'number'
+    && array[0] >= min
+    && array[1] <= max
+    && array[0] <= array[1];
 }
 
 
