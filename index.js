@@ -14,7 +14,22 @@ app.use(express.static(__dirname + '/public'));
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
+
+// custom renderer
+app.engine('js', (filePath, options, callback) => {
+  const renderer = require(filePath);
+
+  let opts = {
+    manufacturers: manufacturers,
+    manufacturersIndex: manufacturersIndex,
+    typesIndex: typesIndex,
+    messages: getMessages()
+  };
+  Object.assign(opts, options);
+
+  callback(null, renderer(opts));
+});
+app.set('view engine', 'js');
 
 
 // message objects to show to the user
@@ -66,8 +81,7 @@ app.use((request, response, next) => {
 
   if (page in staticPages) {
     response.render('pages' + page, {
-      title: staticPages[page],
-      messages: getMessages()
+      title: staticPages[page]
     });
   }
   else {
@@ -77,17 +91,13 @@ app.use((request, response, next) => {
 
 app.get('/manufacturers', (request, response) => {
   response.render('pages/manufacturers', {
-    title: 'Manufacturers - Open Fixture Library',
-    messages: getMessages(),
-    manufacturers: manufacturers,
-    manufacturersIndex: manufacturersIndex
+    title: 'Manufacturers - Open Fixture Library'
   });
 });
 
 app.get('/search', (request, response) => {
   response.render('pages/search', {
-    title: 'Search - Open Fixture Library',
-    messages: getMessages()
+    title: 'Search - Open Fixture Library'
   });
 });
 
@@ -110,8 +120,7 @@ app.use((request, response, next) => {
   }
 
   response.status(404).render('pages/404', {
-    title: 'Page not found - Open Fixture Library',
-    messages: getMessages()
+    title: 'Page not found - Open Fixture Library'
   })
 });
 
@@ -130,7 +139,6 @@ function renderSingleManufacturer(response, man) {
 
   response.render('pages/single_manufacturer', {
     title: manufacturers[man].name + ' - Open Fixture Library',
-    messages: getMessages(),
     manufacturer: manufacturers[man],
     fixtures: fixtures
   });
@@ -141,7 +149,6 @@ function renderSingleFixture(response, man, fix) {
 
   response.render('pages/single_fixture', {
     title: `${manufacturers[man].name} ${fixData.name} - Open Fixture Library`,
-    messages: getMessages(),
     manufacturer: manufacturers[man],
     manufacturerPath: '/' + man,
     fixture: fixData

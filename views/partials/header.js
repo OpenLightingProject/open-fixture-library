@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+module.exports = function(options) {
+  let str = `<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8" />
-<title><%= title %></title>
+<title>${options.title}</title>
 <link rel="stylesheet" type="text/css" href="/style.css" />
 </head>
 <body>
@@ -24,7 +25,11 @@
 
 </nav>
 </header>
-<div id="main">
-<% messages.forEach(function(message) { %>
-<div class="message message-<%= message.type %>"><%- message.text %></div>
-<% }); %>
+<div id="main">`;
+
+  options.messages.forEach(function(message) {
+    str += `<div class="message message-${message.type}">${message.text}</div>`;
+  });
+
+  return str;
+};
