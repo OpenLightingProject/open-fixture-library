@@ -226,7 +226,7 @@ function checkFixture(filename) {
         return resolveError(`Access error happened in '${filename}'.`, accessError, resolve);
       }
 
-      resolve(true);
+      resolve(filename);
     });
   });
 }
@@ -469,10 +469,10 @@ function handleLeftoverKeys(object, prefix, resolve, position) {
 
 function resolveError(str, error, resolve) {
   if (error) {
-    console.error(colors.red('Error: ') + str + '\n', error);
+    console.error(colors.red('[FAIL] ') + str + '\n', error);
   }
   else {
-    console.error(colors.red('Error: ') + str);
+    console.error(colors.red('[FAIL] ') + str);
   }
   resolve(false);
 }
@@ -481,16 +481,19 @@ function resolveError(str, error, resolve) {
 Promise.all(promises).then(results => {
   let fails = 0;
   for (const result of results) {
-    if (!result) {
+    if (result === false) {
       fails++;
+    }
+    else {
+      console.log(colors.green('[PASS]') + ' ' + result);
     }
   }
 
   if (fails == 0) {
-    console.log(colors.green('[PASS]') + ` All ${results.length} tested fixtures were valid.`);
+    console.log('\n' + colors.green('[PASS]') + ` All ${results.length} tested fixtures were valid.`);
     process.exit(0);
   }
 
-  console.error(colors.red('[FAIL]') + ` ${fails} of ${results.length} tested fixtures failed.`);
+  console.error('\n' + colors.red('[FAIL]') + ` ${fails} of ${results.length} tested fixtures failed.`);
   process.exit(1);
 });
