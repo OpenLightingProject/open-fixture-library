@@ -6,17 +6,15 @@ let failed = false;
 
 const fixturePath = path.join(__dirname, '..', 'fixtures');
 
-let manData = JSON.parse(fs.readFileSync(path.join(fixturePath, 'manufacturers.json'), 'utf8'));
+// get manufacturer data
+const manDataPath = path.join(fixturePath, 'manufacturers.json');
+let manData = JSON.parse(fs.readFileSync(manDataPath, 'utf8'));
+console.log('Parsing manufacturer data file ' + manDataPath);
 
-// get index (and adjust the fixtures' names)
+// get index
 const indexPath = path.join(fixturePath, 'index_manufacturers.json');
 let index = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
-console.log('Parsing index file ' + indexPath);
-for (const man in index) {
-  for (const i in index[man]) {
-    index[man][i] = path.join(man, index[man][i]);
-  }
-}
+console.log('Parsing manufacturers index file ' + indexPath);
 
 // get actual data from file system
 let fsData = {};
@@ -30,66 +28,81 @@ for (const man of fs.readdirSync(fixturePath)) {
     for (const fixture of fs.readdirSync(manDir)) {
       const ext = path.extname(fixture);
       if (ext == '.json') {
-        fsData[man].push(path.join(man, path.basename(fixture, ext)));
+        fsData[man].push(path.basename(fixture, ext));
       }
     }
   }
 }
 
-// manData and index must mention the same manufacturers
-const sameManufacturers = Object.keys(index).every(man => {
+
+console.log('\nTesting if manufacturer data and index mention the same manufacturers.')
+for (const man in index) {
   if (man in manData) {
     delete manData[man];
-    return true;
-  }
-  console.error(colors.red('Error:') + ` Manufacturer '${man}' mentioned in index but not in manufacturer data.`);
-  return false;
-});
-if (!sameManufacturers) {
-  failed = true;
-}
-else if (Object.keys(manData).length > 0) {
-  console.error(colors.red('Error:') + ` Manufacturers [${Object.keys(manData)}] mentioned in manufacturer data but not in index.`);
-  failed = true;
-}
-
-// all manufacturers with fixtures and all fixtures themselves mentioned in index must be in fsData
-for (const man in index) {
-  if (index[man].length > 0) {
-    if (fsData[man] === undefined) {
-      console.error(colors.red('Error:') + ` Manufacturer '${man}' is mentioned in index but not present in file structure.`);
-      failed = true;
-    }
-    else {
-      for (const fixture of index[man]) {
-        if (!fsData[man].includes(fixture)) {
-          console.error(colors.red('Error:') + ` Fixture '${fixture}' is mentioned in index but not present in file structure.`);
-          failed = true;
-        }
-      }
-    }
-  }
-}
-
-// all manufacturers and fixtures mentioned in fsData must be in index
-for (const man in fsData) {
-  if (index[man] === undefined) {
-    console.error(colors.red('Error:') + ` Manufacturer '${man}' is present in file structure but not mentioned in index.`);
-    failed = true;
   }
   else {
-    for (const fixture of fsData[man]) {
-      if (!index[man].includes(fixture)) {
-        console.error(colors.red('Error:') + ` Fixture '${fixture}' is present in file structure but not mentioned in index.`);
-        failed = true;
-      }
+    failed = true;
+    console.error(colors.red('Error:') + ` Manufacturer '${man}' is mentioned in index but not in manufacturer data.`);
+  }
+}
+if (Object.keys(manData).length > 0) {
+  for (const man in manData) {
+    console.error(colors.red('Error:') + ` Manufacturer '${man}' is mentioned in manufacturer data but not in index.`);
+  }
+  failed = true;
+}
+if (!failed) {
+  console.log(colors.green('[PASS]') + ' Manufacturer data and index mention the same manufacturers.');
+}
+
+
+console.log('\nTesting if index mentions all manufacturers which are present in file structure.');
+let lastFailed = failed;
+failed = false;
+for (const man in fsData) {
+  if (!(man in index)) {
+    failed = true;
+    console.error(colors.red('Error:') + ` Manufacturer '${man}' is present in file structure but not mentioned in index.`);
+  }
+}
+if (!failed) {
+  console.log(colors.green('[PASS]') + ' Index mentions all manufacturers which are present in file structure.');
+  failed = lastFailed;
+}
+
+
+console.log('\nTesting if index and file structure mention the same fixtures.');
+lastFailed = failed;
+failed = false;
+for (const man in index) {
+  const indexFixtures = index[man];
+  const fsDataFixtures = fsData[man];
+
+  if (indexFixtures.length > 0 || fsDataFixtures !== undefined) {
+    indexFixtures.sort();
+    if (fsDataFixtures !== undefined) {
+      fsDataFixtures.sort();
+    }
+
+    const indexFixturesJSON = JSON.stringify(indexFixtures);
+    const fsDataFixturesJSON = JSON.stringify(fsDataFixtures);
+
+    if (indexFixturesJSON != fsDataFixturesJSON) {
+      failed = true;
+      console.error(colors.red('Error:') + ` Fixtures of manufacturer '${man}' mentioned in index doen't equal the fixtures which are present in file structure.`);
+      console.error('From index:     ' + indexFixturesJSON);
+      console.error('File structure: ' + fsDataFixturesJSON);
     }
   }
 }
-
 if (!failed) {
-  console.log('\n' + colors.green('[PASS]') + ' Data in index file has no conflicts with actual data in file system.');
-  process.exit(0);
+  console.log(colors.green('[PASS]') + ' Index and file structure mention the same fixtures.');
+  failed = lastFailed;
 }
-console.error('\n' + colors.red('[FAIL]') + ' Test failed with errors (see above).');
-process.exit(1);
+
+
+if (failed) {
+  console.error('\n' + colors.red('[FAIL]') + ' Test failed with errors (see above).');
+  process.exit(1);
+}
+process.exit(0);
