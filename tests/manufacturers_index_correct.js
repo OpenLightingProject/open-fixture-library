@@ -6,7 +6,7 @@ let failed = false;
 
 const fixturePath = path.join(__dirname, '..', 'fixtures');
 
-const manData = JSON.parse(fs.readFileSync(path.join(fixturePath, 'manufacturers.json'), 'utf8'));
+let manData = JSON.parse(fs.readFileSync(path.join(fixturePath, 'manufacturers.json'), 'utf8'));
 
 // get index (and adjust the fixtures' names)
 const indexPath = path.join(fixturePath, 'index_manufacturers.json');
