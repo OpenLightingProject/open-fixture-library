@@ -115,7 +115,7 @@ app.use((request, response, next) => {
     return;
   }
 
-  console.error(`page ${request.originalUrl} ${segments} not found`);
+  console.log(`page ${request.originalUrl} [${segments}] not found`);
 
   response.status(404).render('pages/404');
 });
