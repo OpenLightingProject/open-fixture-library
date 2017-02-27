@@ -45,11 +45,9 @@ for (const man in index) {
     console.error(colors.red('Error:') + ` Manufacturer '${man}' is mentioned in index but not in manufacturer data.`);
   }
 }
-if (Object.keys(manData).length > 0) {
-  for (const man in manData) {
-    console.error(colors.red('Error:') + ` Manufacturer '${man}' is mentioned in manufacturer data but not in index.`);
-  }
+for (const man in manData) {
   failed = true;
+  console.error(colors.red('Error:') + ` Manufacturer '${man}' is mentioned in manufacturer data but not in index.`);
 }
 if (!failed) {
   console.log(colors.green('[PASS]') + ' Manufacturer data and index mention the same manufacturers.');
@@ -79,19 +77,29 @@ for (const man in index) {
   const fsDataFixtures = fsData[man];
 
   if (indexFixtures.length > 0 || fsDataFixtures !== undefined) {
-    indexFixtures.sort();
-    if (fsDataFixtures !== undefined) {
-      fsDataFixtures.sort();
+    for (const i in indexFixtures) {
+      const fixture = indexFixtures[i];
+      if (fsDataFixtures !== undefined && fsDataFixtures.includes(fixture)) {
+        delete fsDataFixtures[fsDataFixtures.indexOf(fixture)];
+      }
+      else {
+        failed = true;
+        if (indexFixtures.indexOf(fixture) != i) {
+          console.error(colors.red('Error:') + ` Index has already mentioned fixture '${fixture}' of manufacturer '${man}' before.`);
+        }
+        else {
+          console.error(colors.red('Error:') + ` Index mentions fixture '${fixture}' of manufacturer '${man}' which is not present in file structure.`);
+        }
+      }
     }
 
-    const indexFixturesJSON = JSON.stringify(indexFixtures);
-    const fsDataFixturesJSON = JSON.stringify(fsDataFixtures);
-
-    if (indexFixturesJSON != fsDataFixturesJSON) {
-      failed = true;
-      console.error(colors.red('Error:') + ` Fixtures of manufacturer '${man}' mentioned in index doen't equal the fixtures which are present in file structure.`);
-      console.error('From index:     ' + indexFixturesJSON);
-      console.error('File structure: ' + fsDataFixturesJSON);
+    if (fsDataFixtures !== undefined) {
+      for (const fixture of fsDataFixtures) {
+        if (fixture !== undefined) {
+          failed = true;
+          console.error(colors.red('Error:') + ` Fixture '${fixture}' of manufacturer '${man}' is present in file structure but not mentioned in index.`);
+        }
+      }
     }
   }
 }
