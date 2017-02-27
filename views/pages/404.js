@@ -1,4 +1,6 @@
 module.exports = function(options) {
+  options.title = 'Page not found - Open Fixture Library';
+  
   let str = require('../partials/header')(options);
 
   str += '<h1>404 - Not found</h1>';
