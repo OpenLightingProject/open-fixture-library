@@ -1,7 +1,7 @@
 module.exports = function(options) {
-  options.title = 'Categories - Open Fixture Library';
-  
   const {register} = options;
+  
+  options.title = 'Categories - Open Fixture Library';
 
   let str = require('../partials/header')(options);
 
