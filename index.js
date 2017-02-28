@@ -23,6 +23,7 @@ app.engine('js', (filePath, options, callback) => {
     manufacturers: manufacturers,
     manufacturersIndex: manufacturersIndex,
     typesIndex: typesIndex,
+    namesIndex: namesIndex,
     baseDir: __dirname,
     messages: getMessages()
   };
@@ -40,6 +41,7 @@ let messages = [];
 let manufacturers = null;
 let manufacturersIndex = null;
 let typesIndex = null;
+let namesIndex = null;
 
 // read in the JSON files to fill those data structures
 fs.readFile(path.join(__dirname, 'fixtures', 'manufacturers.json'), 'utf8', (error, data) => {
@@ -66,6 +68,14 @@ fs.readFile(path.join(__dirname, 'fixtures', 'index_types.json'), 'utf8', (error
 
   typesIndex = JSON.parse(data);
 });
+fs.readFile(path.join(__dirname, 'fixtures', 'index_names.json'), 'utf8', (error, data) => {
+  if (error) {
+    addFileReadError('There was an error reading in the name index data.', error);
+    return;
+  }
+
+  namesIndex = JSON.parse(data);
+});
 
 
 app.get('/', (request, response) => {
@@ -85,7 +95,9 @@ app.get('/manufacturers', (request, response) => {
 });
 
 app.get('/search', (request, response) => {
-  response.render('pages/search');
+  response.render('pages/search', {
+    query: request.query
+  });
 });
 
 // if no other route applies
@@ -126,7 +138,7 @@ function getMessages() {
     return messages;
   }
 
-  if (manufacturers == null || manufacturersIndex == null || typesIndex == null) {
+  if (manufacturers == null || manufacturersIndex == null || typesIndex == null || namesIndex == null) {
     return [{
       type: 'info',
       text: 'We are still reading the data. Please reload the page in a few moments.'
