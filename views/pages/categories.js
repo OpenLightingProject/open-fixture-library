@@ -7,8 +7,8 @@ module.exports = function(options) {
 
   str += '<h1>Categories</h1>';
 
-  for (type in register.types) {
-    const num = register.types[type].length;
+  for (type in register.categories) {
+    const num = register.categories[type].length;
     const numFixtures = `${num} fixture${num == 1 ? '' : 's'}`;
     const link = '/categories/' + encodeURIComponent(type);
 

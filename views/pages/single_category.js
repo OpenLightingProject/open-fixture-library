@@ -13,7 +13,7 @@ module.exports = function(options) {
 
   str += '<ul class="fixtures">';
   
-  for (let filename of register.types[type]) {
+  for (let filename of register.categories[type]) {
     const [man, fix] = filename.split('/');
     const fixData = JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', man, fix + '.json'), 'utf-8'));
     const manData = manufacturers[man];

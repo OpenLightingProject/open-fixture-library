@@ -6,7 +6,7 @@ const path = require('path');
 let register = {
   filesystem: {},
   manufacturers: {},
-  types: {}
+  categories: {}
 };
 
 const fixturePath = path.join(__dirname, 'fixtures');
@@ -38,10 +38,12 @@ try {
             manufacturerName: manufacturers[man].name
           };
 
-          if (!(fixData.type in register.types)) {
-            register.types[fixData.type] = [];
+          for (const cat of fixData.categories) {
+            if (!(cat in register.categories)) {
+              register.categories[cat] = [];
+            }
+            register.categories[cat].push(man + '/' + fix);
           }
-          register.types[fixData.type].push(man + '/' + fix);
         }
       }
     }

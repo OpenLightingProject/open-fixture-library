@@ -99,7 +99,7 @@ app.use((request, response, next) => {
     });
     return;
   }
-  else if (segments.length == 2 && segments[0] === 'categories' && decodeURIComponent(segments[1]) in register.types) {
+  else if (segments.length == 2 && segments[0] === 'categories' && decodeURIComponent(segments[1]) in register.categories) {
     response.render('pages/single_category', {
       type: decodeURIComponent(segments[1])
     });
