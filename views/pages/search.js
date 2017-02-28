@@ -35,6 +35,7 @@ module.exports = function(options) {
   else if (typeof query.c == 'string') {
     query.c = [query.c];
   }
+  query.c = query.c.map(decodeURIComponent);
 
   let results = [];
   for (const key in register.filesystem) {
@@ -64,7 +65,7 @@ module.exports = function(options) {
   str += '  </select>';
   str += '  <select name="c" multiple>';
   str += '    <option value="">Filter by category</option>';
-  str += Object.keys(register.categories).map(cat => `<option value="${encodeURIComponent(cat)}"${query.c.indexOf(encodeURIComponent(cat)) > -1 ? ' selected' : ''}>${cat}</option>`).join('');
+  str += Object.keys(register.categories).map(cat => `<option value="${cat}"${query.c.indexOf(cat) > -1 ? ' selected' : ''}>${cat}</option>`).join('');
   str += '  </select>';
   str += '  <button type="submit">Search</button>';
   str += '</form>';
@@ -87,8 +88,7 @@ module.exports = function(options) {
 };
 
 function categoryMatch(categoryQuery, key, register) {
-  for (const category of categoryQuery) {
-    const cat = decodeURIComponent(category);
+  for (const cat of categoryQuery) {
     if (cat in register.categories && register.categories[cat].indexOf(key) > -1) {
       return true;
     }
