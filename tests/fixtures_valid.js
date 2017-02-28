@@ -1,3 +1,5 @@
+#!/usr/bin/node
+
 const fs = require('fs');
 const path = require('path');
 const colors = require('colors');
@@ -25,6 +27,7 @@ let usedShortNames = [];
 
 const dateRegExp = /^\d{4}-\d{2}-\d{2}$/;
 const hexRegExp = /^#[0-9a-f]{6}$/;
+const fixtureCategories = ['Other', 'Color Changer', 'Dimmer', 'Effect', 'Fan', 'Flower', 'Hazer', 'Laser', 'Moving Head', 'Scanner', 'Smoke', 'Strobe', 'Blinder'];
 const channelTypes = ['Intensity', 'Strobe', 'Shutter', 'Speed', 'SingleColor', 'MultiColor', 'Gobo', 'Prism', 'Pan', 'Tilt', 'Beam', 'Effect', 'Maintenance', 'Nothing'];
 const channelColors = ['Generic', 'Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime'];
 
@@ -64,10 +67,15 @@ function checkFixture(filename) {
         delete fixture.name;
         delete fixture.shortName;
 
-        if (!('type' in fixture) || typeof fixture.type !== 'string') {
-          resolveError(`type missing / wrong type in file '${filename}'.`, null, resolve);
+        if (!('categories' in fixture) || !Array.isArray(fixture.categories)) {
+          return resolveError(`categories missing / wrong type in file '${filename}'.`, null, resolve);
         }
-        delete fixture.type;
+        for (const cat of fixture.categories) {
+          if (fixtureCategories.indexOf(cat) == -1) {
+            resolveError(`category '${cat}' invalid in file '${filename}'.`, null, resolve);
+          }
+        }
+        delete fixture.categories;
 
         if ('comment' in fixture && typeof fixture.comment !== 'string') {
           resolveError(`comment has wrong type in file '${filename}'.`, null, resolve);

@@ -9,9 +9,9 @@
   "engines": {
     "node": "6.10.0"
   },
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node main.js"
   },
   "dependencies": {
     "express": "4.14.1"

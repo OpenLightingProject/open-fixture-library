@@ -1,3 +1,5 @@
+#!/usr/bin/node
+
 const fs = require('fs');
 const path = require('path');
 const http = require('http');
@@ -12,14 +14,17 @@ const statusCodes = {
     'manufacturers',
     'categories',
     'about',
-    'search'
+    'search',
+    'search?q=bla'
   ],
   '404': [
     'bla',
     'about/bla',
+    'categories/bla',
+    'categories/Blinder/bla',
     'manufacturers/gruft',
     'gruft/bla',
-    'cameo/ventilator',
+    'gruft/thunder-wash-600-rgb',
     'gruft/ventilator/bla',
   ]
 }
@@ -32,12 +37,18 @@ for (const man in register.manufacturers) {
     statusCodes['200'].push(path.join(man, fixture));
   }
 }
+for (const cat in register.categories) {
+  statusCodes['200'].push('categories/' + cat);
+  if (cat !== encodeURIComponent(cat)) {
+    statusCodes['200'].push('categories/' + encodeURIComponent(cat));
+  }
+}
 
 
 // start server
 const serverProcess = require('child_process').execFile(
   'node',
-  [path.join(__dirname, '..', 'index.js')]
+  [path.join(__dirname, '..', 'main.js')]
 );
 serverProcess.stdout.on('data', chunk => {
   console.log('Server message (stdout):');

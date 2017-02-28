@@ -1,16 +1,33 @@
+const fs = require('fs');
+const path = require('path');
+
 module.exports = function(options) {
-  const {manufacturer, manufacturerPath, fixture} = options;
+  const {manufacturers, man, fix} = options;
+  const manufacturer = manufacturers[man];
+
+  const fixture = JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', man, fix + '.json'), 'utf-8'));
+  
+  options.title = `${manufacturer.name} ${fixture.name} - Open Fixture Library`;
 
   let str = require('../partials/header')(options);
 
-  str += `<h1><a href="${manufacturerPath}"><data data-key="manufacturer">${manufacturer.name}</data></a> <data data-key="name">${fixture.name}</data> <code><data data-key="shortName">${_(fixture.shortName)}</data></code></h1>`;
+  str += `<h1><a href="/${man}"><data data-key="manufacturer">${manufacturer.name}</data></a> <data data-key="name">${fixture.name}</data> <code><data data-key="shortName">${_(fixture.shortName)}</data></code></h1>`;
+
+  str += '<section class="fixture-meta">';
+  str += `  <span class="last-modify-date">Last modified: <date>${fixture.meta.lastModifyDate}</date></span>`;
+  str += `  <span class="create-date">Created: <date>${fixture.meta.createDate}</date></span>`;
+  str += `  <span class="authors">Authors: <data>${fixture.meta.authors.join(', ')}</data></span>`;
+  str += `  <span class="revisions"><a href="http://github.com/FloEdelmann/open-fixture-library/commits/master/fixtures/${man}/${fix}.json">Revisions</a></span>`;
+  str += '</section>';
 
   str += `<section class="fixture-info">`;
 
-  str += `<section class="type">
-    <label>Category</label>
-    <span class="value"><data data-key="type">${_(fixture.type)}</data></span>
-  </section>`;
+  str += '<section class="categories">';
+  str += '  <label>Categories</label>';
+  str += '  <span class="value">';
+  str += fixture.categories.map(cat => `<a href="/categories/${encodeURIComponent(cat)}"><data data-key="category">${cat}</data></a>`).join(', ');
+  str += '  </span>';
+  str += '</section>';
 
   str += `<section class="comment">
     <label>Comment</label>
@@ -28,6 +45,7 @@ module.exports = function(options) {
   str += `</details>`;
 
   fixture.modes.forEach(mode => {
+    str += '<section class="mode">';
     str += `<h2>${mode.name} <code>${_(mode.shortName)}</code></h2>`;
 
     if (mode.physical) {
@@ -48,14 +66,54 @@ module.exports = function(options) {
       let channel = fixture.availableChannels[ch];
 
       str += `<li data-index="${i}">`;
-      str += `<details class="channel">`;
+      str += `<details class="channel" data-channel="${ch}">`;
       str += `<summary>${channel.name || ch}</summary>`;
       str += handleChannel(channel);
       str += `</details>`;
       str += `</li>`;
     });
     str += `</ol>`;
+    str += `</section>`;
   });
+
+  str += '<section class="multi-byte-channels">';
+  str += '<h2>Multi-byte channels</h2>';
+  if (fixture.multiByteChannels) {
+    str += '<ul>';
+    fixture.multiByteChannels.forEach(multiByteChannel => {
+      str += '<li>';
+      str += multiByteChannel.map(channel => {
+        const name = fixture.availableChannels[channel].name || channel;
+        return `<data class="channel" data-channel="${channel}">${name}</data>`;
+      }).join(', ');
+      str += `</li>`;
+    });
+    str += '</ul>';
+  }
+  else {
+    str += '<p>None</p>';
+  }
+  str += `</section>`;
+
+  str += '<section class="heads">';
+  str += '<h2>Heads</h2>';
+  if (fixture.heads) {
+    str += '<ul>';
+    for (const head in fixture.heads) {
+      str += '<li>';
+      str += `<strong>${head}:</strong> `;
+      str += fixture.heads[head].map(channel => {
+        const name = fixture.availableChannels[channel].name || channel;
+        return `<data class="channel" data-channel="${channel}">${name}</data>`;
+      }).join(', ');
+      str += `</li>`;
+    }
+    str += '</ul>';
+  }
+  else {
+    str += '<p>None</p>';
+  }
+  str += `</section>`;
 
   str += `</section>`;
 
