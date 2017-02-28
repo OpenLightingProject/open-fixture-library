@@ -1,3 +1,5 @@
+#!/usr/bin/node
+
 const fs = require('fs');
 const path = require('path');
 const http = require('http');
@@ -46,7 +48,7 @@ for (const cat in register.categories) {
 // start server
 const serverProcess = require('child_process').execFile(
   'node',
-  [path.join(__dirname, '..', 'index.js')]
+  [path.join(__dirname, '..', 'main.js')]
 );
 serverProcess.stdout.on('data', chunk => {
   console.log('Server message (stdout):');

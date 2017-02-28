@@ -12,4 +12,4 @@ Every contribution is welcome, even in this early stage!
 
 1. Clone this repository (or a fork of it).
 2. Run `npm install` after first cloning or every time new dependencies are added in [package.json](package.json) in order to install the needed Node dependencies. (You can identify missing dependencies when the error "Cannot find module" is given.)
-3. To start the server locally at [localhost:5000](http://localhost:5000/), run `node index.js` (or `heroku local`, which lets you use environment variables in the `.env` file).
+3. To start the server locally at [localhost:5000](http://localhost:5000/), run `node main.js` (or `heroku local`, which lets you use environment variables in the `.env` file).
