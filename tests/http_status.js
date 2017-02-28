@@ -18,6 +18,8 @@ const statusCodes = {
   '404': [
     'bla',
     'about/bla',
+    'categories/bla',
+    'categories/Blinder/bla',
     'manufacturers/gruft',
     'gruft/bla',
     'gruft/thunder-wash-600-rgb',
@@ -31,6 +33,12 @@ for (const man in register.manufacturers) {
 
   for (const fixture of register.manufacturers[man]) {
     statusCodes['200'].push(path.join(man, fixture));
+  }
+}
+for (const cat in register.categories) {
+  statusCodes['200'].push('categories/' + cat);
+  if (cat !== encodeURIComponent(cat)) {
+    statusCodes['200'].push('categories/' + encodeURIComponent(cat));
   }
 }
 
