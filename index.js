@@ -21,9 +21,7 @@ app.engine('js', (filePath, options, callback) => {
 
   let opts = {
     manufacturers: manufacturers,
-    manufacturersIndex: register.manufacturers,
-    typesIndex: register.types,
-    namesIndex: register.filesystem,
+    register: register,
     baseDir: __dirname,
     messages: getMessages()
   };

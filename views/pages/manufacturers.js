@@ -1,5 +1,5 @@
 module.exports = function(options) {
-  const {manufacturers, manufacturersIndex} = options;
+  const {manufacturers, register} = options;
 
   let str = require('../partials/header')(options);
 
@@ -7,7 +7,7 @@ module.exports = function(options) {
 
   for (man in manufacturers) {
     const manufacturer = manufacturers[man];
-    const num = (man in manufacturersIndex) ? manufacturersIndex[man].length : 0;
+    const num = (man in register.manufacturers) ? register.manufacturers[man].length : 0;
     const numFixtures = `${num} fixture${num == 1 ? '' : 's'}`;
 
     str += '<section class="manufacturer">';

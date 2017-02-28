@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = function(options) {
-  const {manufacturers, manufacturersIndex, man} = options;
+  const {manufacturers, register, man} = options;
   const manufacturer = manufacturers[man];
 
   options.title = man + ' - Open Fixture Library';
@@ -23,7 +23,7 @@ module.exports = function(options) {
 
   str += '<ul class="fixtures">';
 
-  for (let fix of manufacturersIndex[man]) {
+  for (let fix of register.manufacturers[man]) {
     const fixData = JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', man, fix + '.json'), 'utf-8'));
 
     str += `<li><a href="/${man}/${fix}">${fixData.name}</a></li>`;

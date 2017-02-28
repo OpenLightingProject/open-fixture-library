@@ -1,14 +1,14 @@
 module.exports = function(options) {
   options.title = 'Categories - Open Fixture Library';
   
-  const {typesIndex} = options;
+  const {register} = options;
 
   let str = require('../partials/header')(options);
 
   str += '<h1>Categories</h1>';
 
-  for (type in typesIndex) {
-    const num = typesIndex[type].length;
+  for (type in register.types) {
+    const num = register.types[type].length;
     const numFixtures = `${num} fixture${num == 1 ? '' : 's'}`;
     const link = '/categories/' + encodeURIComponent(type);
 
