@@ -15,10 +15,12 @@ module.exports = function(options) {
 
   str += `<section class="fixture-info">`;
 
-  str += `<section class="type">
-    <label>Category</label>
-    <span class="value"><data data-key="type">${_(fixture.type)}</data></span>
-  </section>`;
+  str += '<section class="categories">';
+  str += '  <label>Categories</label>';
+  str += '  <span class="value">';
+  str += fixture.categories.map(cat => `<a href="/categories/${encodeURIComponent(cat)}"><data data-key="category">${cat}</data></a>`).join(', ');
+  str += '  </span>';
+  str += '</section>';
 
   str += `<section class="comment">
     <label>Comment</label>
