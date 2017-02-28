@@ -5,7 +5,7 @@ module.exports = function(options) {
   const {manufacturers, register, man} = options;
   const manufacturer = manufacturers[man];
 
-  options.title = man + ' - Open Fixture Library';
+  options.title = manufacturer.name + ' - Open Fixture Library';
 
   
   let str = require('../partials/header')(options);

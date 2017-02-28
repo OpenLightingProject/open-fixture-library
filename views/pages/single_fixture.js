@@ -5,9 +5,9 @@ module.exports = function(options) {
   const {manufacturers, man, fix} = options;
   const manufacturer = manufacturers[man];
 
-  options.title = `${man} ${fix} - Open Fixture Library`;
-  
   const fixture = JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', man, fix + '.json'), 'utf-8'));
+  
+  options.title = `${manufacturer.name} ${fixture.name} - Open Fixture Library`;
 
   let str = require('../partials/header')(options);
 
