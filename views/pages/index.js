@@ -1,4 +1,6 @@
 module.exports = function(options) {
+  options.title = 'Open Fixture Library';
+  
   let str = require('../partials/header')(options);
 
   str += '<h1>Open Fixture Library</h1>';

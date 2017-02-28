@@ -1,6 +1,13 @@
-module.exports = function(options) {
-  const {manufacturer, fixtures} = options;
+const fs = require('fs');
+const path = require('path');
 
+module.exports = function(options) {
+  const {manufacturers, register, man} = options;
+  const manufacturer = manufacturers[man];
+
+  options.title = man + ' - Open Fixture Library';
+
+  
   let str = require('../partials/header')(options);
 
   str += `<h1>${manufacturer.name} fixtures</h1>`;
@@ -15,9 +22,13 @@ module.exports = function(options) {
   str += '</section>';
 
   str += '<ul class="fixtures">';
-  fixtures.forEach((fix) => {
-    str += `<li><a href="${fix.path}">${fix.name}</a></li>`;
-  });
+
+  for (let fix of register.manufacturers[man]) {
+    const fixData = JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', man, fix + '.json'), 'utf-8'));
+
+    str += `<li><a href="/${man}/${fix}">${fixData.name}</a></li>`;
+  }
+
   str += '</ul>';
 
   str += require('../partials/footer')(options);

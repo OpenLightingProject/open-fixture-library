@@ -1,16 +1,26 @@
+const fs = require('fs');
+const path = require('path');
+
 module.exports = function(options) {
-  const {manufacturer, manufacturerPath, fixture} = options;
+  const {manufacturers, man, fix} = options;
+  const manufacturer = manufacturers[man];
+
+  options.title = `${man} ${fix} - Open Fixture Library`;
+  
+  const fixture = JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', man, fix + '.json'), 'utf-8'));
 
   let str = require('../partials/header')(options);
 
-  str += `<h1><a href="${manufacturerPath}"><data data-key="manufacturer">${manufacturer.name}</data></a> <data data-key="name">${fixture.name}</data> <code><data data-key="shortName">${_(fixture.shortName)}</data></code></h1>`;
+  str += `<h1><a href="/${man}"><data data-key="manufacturer">${manufacturer.name}</data></a> <data data-key="name">${fixture.name}</data> <code><data data-key="shortName">${_(fixture.shortName)}</data></code></h1>`;
 
   str += `<section class="fixture-info">`;
 
-  str += `<section class="type">
-    <label>Category</label>
-    <span class="value"><data data-key="type">${_(fixture.type)}</data></span>
-  </section>`;
+  str += '<section class="categories">';
+  str += '  <label>Categories</label>';
+  str += '  <span class="value">';
+  str += fixture.categories.map(cat => `<a href="/categories/${encodeURIComponent(cat)}"><data data-key="category">${cat}</data></a>`).join(', ');
+  str += '  </span>';
+  str += '</section>';
 
   str += `<section class="comment">
     <label>Comment</label>

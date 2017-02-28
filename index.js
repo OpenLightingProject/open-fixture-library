@@ -21,8 +21,8 @@ app.engine('js', (filePath, options, callback) => {
 
   let opts = {
     manufacturers: manufacturers,
-    manufacturersIndex: register.manufacturers,
-    typesIndex: register.types,
+    register: register,
+    baseDir: __dirname,
     messages: getMessages()
   };
   Object.assign(opts, options);
@@ -57,38 +57,25 @@ fs.readFile(path.join(__dirname, 'fixtures', 'register.json'), 'utf8', (error, d
   register = JSON.parse(data);
 });
 
+app.get('/', (request, response) => {
+  response.render('pages/index');
+});
 
-const staticPages = {
-  '/index': 'Open Fixture Library',
-  '/about': 'About - Open Fixture Library',
-  '/categories': 'Categories - Open Fixture Library'
-};
+app.get('/about', (request, response) => {
+  response.render('pages/about');
+});
 
-app.use((request, response, next) => {
-  let page = request.originalUrl;
-  if (page == '/') {
-    page = '/index';
-  }
-
-  if (page in staticPages) {
-    response.render('pages' + page, {
-      title: staticPages[page]
-    });
-  }
-  else {
-    next();
-  }
+app.get('/categories', (request, response) => {
+  response.render('pages/categories');
 });
 
 app.get('/manufacturers', (request, response) => {
-  response.render('pages/manufacturers', {
-    title: 'Manufacturers - Open Fixture Library'
-  });
+  response.render('pages/manufacturers');
 });
 
 app.get('/search', (request, response) => {
   response.render('pages/search', {
-    title: 'Search - Open Fixture Library'
+    query: request.query
   });
 });
 
@@ -100,51 +87,29 @@ app.use((request, response, next) => {
 
 
   if (segments.length == 1 && segments[0] in manufacturers) {
-    renderSingleManufacturer(response, segments[0]);
+    response.render('pages/single_manufacturer', {
+      man: segments[0]
+    });
     return;
   }
-  else {
-    if (segments.length == 2 && segments[0] in manufacturers && register.manufacturers[segments[0]].indexOf(segments[1]) != -1) {
-      renderSingleFixture(response, segments[0], segments[1]);
-      return;
-    }
-  }
-
-  response.status(404).render('pages/404', {
-    title: 'Page not found - Open Fixture Library'
-  })
-});
-
-
-function renderSingleManufacturer(response, man) {
-  let fixtures = [];
-
-  for (let fix of register.manufacturers[man]) {
-    const fixData = JSON.parse(fs.readFileSync(path.join(__dirname, 'fixtures', man, fix + '.json'), 'utf-8'));
-
-    fixtures.push({
-      path: man + '/' + fix,
-      name: fixData.name
+  else if (segments.length == 2 && segments[0] in manufacturers && register.manufacturers[segments[0]].indexOf(segments[1]) != -1) {
+    response.render('pages/single_fixture', {
+      man: segments[0],
+      fix: segments[1]
     });
+    return;
+  }
+  else if (segments.length == 2 && segments[0] === 'categories' && decodeURIComponent(segments[1]) in register.categories) {
+    response.render('pages/single_category', {
+      type: decodeURIComponent(segments[1])
+    });
+    return;
   }
 
-  response.render('pages/single_manufacturer', {
-    title: manufacturers[man].name + ' - Open Fixture Library',
-    manufacturer: manufacturers[man],
-    fixtures: fixtures
-  });
-}
+  console.log(`page ${request.originalUrl} [${segments}] not found`);
 
-function renderSingleFixture(response, man, fix) {
-  const fixData = JSON.parse(fs.readFileSync(path.join(__dirname, 'fixtures', man, fix + '.json'), 'utf-8'));
-
-  response.render('pages/single_fixture', {
-    title: `${manufacturers[man].name} ${fixData.name} - Open Fixture Library`,
-    manufacturer: manufacturers[man],
-    manufacturerPath: '/' + man,
-    fixture: fixData
-  });
-}
+  response.status(404).render('pages/404');
+});
 
 
 function getMessages() {
