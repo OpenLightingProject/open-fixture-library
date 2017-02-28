@@ -24,11 +24,11 @@ const statusCodes = {
   ]
 }
 // add manufacturers and fixtures
-const manufacturersIndex = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'fixtures', 'index_manufacturers.json'), 'utf8'));
-for (const man in manufacturersIndex) {
+const register = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'fixtures', 'register.json'), 'utf8'));
+for (const man in register.manufacturers) {
   statusCodes['200'].push(man);
 
-  for (const fixture of manufacturersIndex[man]) {
+  for (const fixture of register.manufacturers[man]) {
     statusCodes['200'].push(path.join(man, fixture));
   }
 }
