@@ -2,29 +2,32 @@ module.exports = function(options) {
   let str = `<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
-<title>${options.title}</title>
-<link rel="stylesheet" type="text/css" href="/style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${options.title}</title>
+  <link rel="stylesheet" type="text/css" href="/style.css" />
 </head>
 <body>
-<header>
-<nav>
+  <header>
+    <nav>
+      <div id="left-nav">
+        <a href="/" id="home-logo" title="Open Fixture Library">Open Fixture Library</a>
 
-<a href="/" class="home-logo" title="Open Fixture Library">Open Fixture Library</a>
+        <form action="/search">
+          <div>
+            <input type="search" name="q" placeholder="Search fixture" />
+          </div>
+          <button type="submit">Search</button>
+        </form>
+      </div>
 
-<form action="/search">
-<input type="search" name="q" placeholder="Search fixture" />
-<button type="submit">Search</button>
-</form>
-
-<div class="right-nav">
-<a href="/manufacturers">Manufacturers</a>
-<a href="/categories">Categories</a>
-<a href="/about">About</a>
-</div>
-
-</nav>
-</header>
+      <div id="right-nav">
+        <a href="/manufacturers">Manufacturers</a>
+        <a href="/categories">Categories</a>
+        <a href="/about">About</a>
+      </div>
+    </nav>
+  </header>
 <div id="main">`;
 
   options.messages.forEach(function(message) {

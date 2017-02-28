@@ -2,7 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
   background: #fff;
-  font: 11pt/2 'Droid Sans','Source Sans Pro',Ubuntu,Helvetica,Arial,sans-serif;
+  font: 16px/2 'Droid Sans','Source Sans Pro',Ubuntu,Helvetica,Arial,sans-serif;
   color: #222;
 }
 
@@ -14,42 +14,51 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  height: 70px;
   background: #fafafa;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  text-align: center;
 }
 
-header>nav {
+header nav {
   max-width: 1000px;
   margin: 0 auto;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
 }
 
-header .home-logo {
-  flex-grow: 0;
-  flex-shrink: 0;
+header a {
+  display: inline-block;
+  height: 4.5em;
+  line-height: 4.5em;
+  text-decoration: none;
+  color: inherit;
+}
+header a:hover,
+header a:focus {
+  background-color: #e8e8e8;
+  color: #000;
+}
+
+header #left-nav {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1ex;
+}
+
+header #home-logo {
   text-indent: -9999px;
   display: inline-block;
   width: 122px;
   background: url(ofl-logo.svg) center center no-repeat;
   background-origin: content-box;
 }
-header .home-logo>svg {
-  height: 50px;
-  vertical-align: middle;
-}
 
 header form {
   flex-grow: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
-}
-
-header .right-nav {
-  flex-grow: 0;
-  white-space: nowrap;
 }
 
 header input {
@@ -61,6 +70,7 @@ header input {
   border-radius: 3px;
   font-size: 0.95rem;
   line-height: 1.2;
+  width: 100%;
 }
 
 header input:focus {
@@ -93,17 +103,8 @@ header button:active {
   color: #fff;
 }
 
-header a {
-  display: inline-block;
-  line-height: 70px;
+header #right-nav a {
   padding: 0 1ex;
-  text-decoration: none;
-  color: inherit;
-}
-header a:hover,
-header a:focus {
-  background-color: #e8e8e8;
-  color: #000;
 }
 
 
@@ -197,4 +198,58 @@ a[href=''] {
   text-decoration: none;
   cursor: default;
   pointer-events: none;
+}
+
+
+
+/** MOBILE LAYOUT **/
+
+/* Tablet */
+@media (max-width: 800px) {
+  header {
+    font-size: 14px;
+  }
+
+  header nav > div {
+    flex-basis: 100%;
+  }
+
+  header #home-logo {
+    width: 92px;
+    padding-right: 1ex;
+    line-height: 3em;
+    height: 3em;
+  }
+
+  header form {
+    flex-grow: 0;
+  }
+
+  header #right-nav {
+    justify-content: center;
+  }
+
+  header #right-nav a {
+    line-height: 2.7em;
+    height: 2.7em;
+  }
+}
+
+/* Phone */
+@media (max-width: 500px) {
+  header form {
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+
+  header form div {
+    width: 100%;
+  }
+
+  header #home-logo {
+    width: 82px;
+    padding-right: 1ex;
+    line-height: 2.8em;
+    height: 2.8em;
+  }
 }
