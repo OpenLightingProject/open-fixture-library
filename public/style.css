@@ -53,6 +53,7 @@ header #home-logo {
   width: 122px;
   background: url(ofl-logo.svg) center center no-repeat;
   background-origin: content-box;
+  transition: width .2s, padding .2s;
 }
 
 header form {
@@ -236,7 +237,7 @@ a[href=''] {
 }
 
 /* Phone */
-@media (max-width: 500px) {
+@media (max-width: 440px) {
   header form {
     flex-grow: 1;
     flex-basis: 0;
@@ -251,5 +252,10 @@ a[href=''] {
     padding-right: 1ex;
     line-height: 2.8em;
     height: 2.8em;
+  }
+
+  header #home-logo.searchUsed {
+    width: 0;
+    padding: 0;
   }
 }

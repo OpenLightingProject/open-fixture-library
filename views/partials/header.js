@@ -6,6 +6,7 @@ module.exports = function(options) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${options.title}</title>
   <link rel="stylesheet" type="text/css" href="/style.css" />
+  <script type="text/javascript" src="client.js"></script>
 </head>
 <body>
   <header>
