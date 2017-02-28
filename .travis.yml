@@ -5,7 +5,7 @@ node_js:
 env:
   - TESTFILE=tests/fixtures_valid.js
   - TESTFILE=tests/http_status.js
-  - TESTFILE=tests/manufacturers_index_correct.js
+  - TESTFILE=tests/register_correct.js
 script:
   - node "$TESTFILE"
 cache:
