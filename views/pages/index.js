@@ -9,7 +9,7 @@ module.exports = function(options) {
 
   str += '<p><abbr title="Open Fixture Library">OFL</abbr> tries to solve those problems by collecting fixture definitions and making them downloadable in various formats. Everybody can <a href="https://github.com/FloEdelmann/open-fixture-library">contribute</a> and help to improve!</p>';
 
-  str += '<p>The project is still in a very early status, but you can still check out the progress on <a href="https://github.com/FloEdelmann/open-fixture-library">GitHub</a> and also already report issues or feature requests or even contribute some code. Thanks!</p>';
+  str += '<p>The project is still in a very early state, but you can still check out the progress on <a href="https://github.com/FloEdelmann/open-fixture-library">GitHub</a> and also already report issues or feature requests or even contribute some code. Thanks!</p>';
 
   str += require('../partials/footer')(options);
 

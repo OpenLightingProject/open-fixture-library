@@ -73,6 +73,7 @@ module.exports = function(options) {
       str += `</li>`;
     });
     str += `</ol>`;
+    str += `</section>`;
   });
 
   str += '<section class="multi-byte-channels">';
