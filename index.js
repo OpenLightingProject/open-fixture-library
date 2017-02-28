@@ -21,8 +21,8 @@ app.engine('js', (filePath, options, callback) => {
 
   let opts = {
     manufacturers: manufacturers,
-    manufacturersIndex: manufacturersIndex,
-    typesIndex: typesIndex,
+    manufacturersIndex: register.manufacturers,
+    typesIndex: register.types,
     messages: getMessages()
   };
   Object.assign(opts, options);
@@ -37,8 +37,7 @@ let messages = [];
 
 // the interesting data
 let manufacturers = null;
-let manufacturersIndex = null;
-let typesIndex = null;
+let register = null;
 
 // read in the JSON files to fill those data structures
 fs.readFile(path.join(__dirname, 'fixtures', 'manufacturers.json'), 'utf8', (error, data) => {
@@ -49,21 +48,13 @@ fs.readFile(path.join(__dirname, 'fixtures', 'manufacturers.json'), 'utf8', (err
 
   manufacturers = JSON.parse(data);
 });
-fs.readFile(path.join(__dirname, 'fixtures', 'index_manufacturers.json'), 'utf8', (error, data) => {
+fs.readFile(path.join(__dirname, 'fixtures', 'register.json'), 'utf8', (error, data) => {
   if (error) {
-    addFileReadError('There was an error reading in the manufacturer index data.', error);
+    addFileReadError('There was an error reading in the register.', error);
     return;
   }
 
-  manufacturersIndex = JSON.parse(data);
-});
-fs.readFile(path.join(__dirname, 'fixtures', 'index_types.json'), 'utf8', (error, data) => {
-  if (error) {
-    addFileReadError('There was an error reading in the category index data.', error);
-    return;
-  }
-
-  typesIndex = JSON.parse(data);
+  register = JSON.parse(data);
 });
 
 
@@ -113,7 +104,7 @@ app.use((request, response, next) => {
     return;
   }
   else {
-    if (segments.length == 2 && segments[0] in manufacturers && manufacturersIndex[segments[0]].indexOf(segments[1]) != -1) {
+    if (segments.length == 2 && segments[0] in manufacturers && register.manufacturers[segments[0]].indexOf(segments[1]) != -1) {
       renderSingleFixture(response, segments[0], segments[1]);
       return;
     }
@@ -128,7 +119,7 @@ app.use((request, response, next) => {
 function renderSingleManufacturer(response, man) {
   let fixtures = [];
 
-  for (let fix of manufacturersIndex[man]) {
+  for (let fix of register.manufacturers[man]) {
     const fixData = JSON.parse(fs.readFileSync(path.join(__dirname, 'fixtures', man, fix + '.json'), 'utf-8'));
 
     fixtures.push({
@@ -161,7 +152,7 @@ function getMessages() {
     return messages;
   }
 
-  if (manufacturers == null || manufacturersIndex == null || typesIndex == null) {
+  if (manufacturers == null || register == null) {
     return [{
       type: 'info',
       text: 'We are still reading the data. Please reload the page in a few moments.'

@@ -7,7 +7,7 @@ module.exports = function(options) {
 
   for (man in manufacturers) {
     let manufacturer = manufacturers[man];
-    let num = manufacturersIndex[man].length;
+    let num = (man in manufacturersIndex) ? manufacturersIndex[man].length : 0;
     let numFixtures = `${num} fixture${num == 1 ? '' : 's'}`;
 
     str += '<section class="manufacturer">';

@@ -1,0 +1,70 @@
+{
+  "filesystem": {
+    "cameo/outdoor-par-tri-12": {
+      "name": "Outdoor PAR Tri 12",
+      "manufacturerName": "cameo"
+    },
+    "cameo/thunder-wash-100-rgb": {
+      "name": "Thunder Wash 100 RGB",
+      "manufacturerName": "cameo"
+    },
+    "cameo/thunder-wash-100-w": {
+      "name": "Thunder Wash 100 W",
+      "manufacturerName": "cameo"
+    },
+    "cameo/thunder-wash-600-rgb": {
+      "name": "Thunder Wash 600 RGB",
+      "manufacturerName": "cameo"
+    },
+    "cameo/thunder-wash-600-w": {
+      "name": "Thunder Wash 600 W",
+      "manufacturerName": "cameo"
+    },
+    "gruft/ventilator": {
+      "name": "Ventilator",
+      "manufacturerName": "Gruft"
+    },
+    "lightmaxx/vega-zoom-wash": {
+      "name": "Vega Zoom Wash",
+      "manufacturerName": "lightmaXX"
+    },
+    "lightmaxx/platinum-mini-tri-par": {
+      "name": "Platinum Mini TRI-PAR",
+      "manufacturerName": "lightmaXX"
+    }
+  },
+  "manufacturers": {
+    "cameo": [
+      "outdoor-par-tri-12",
+      "thunder-wash-100-rgb",
+      "thunder-wash-100-w",
+      "thunder-wash-600-rgb",
+      "thunder-wash-600-w"
+    ],
+    "gruft": [
+      "ventilator"
+    ],
+    "lightmaxx": [
+      "platinum-mini-tri-par",
+      "vega-zoom-wash"
+    ]
+  },
+  "types": {
+    "Color Changer": [
+      "cameo/outdoor-par-tri-12",
+      "lightmaxx/platinum-mini-tri-par"
+    ],
+    "Strobe": [
+      "cameo/thunder-wash-100-rgb",
+      "cameo/thunder-wash-100-w",
+      "cameo/thunder-wash-600-rgb",
+      "cameo/thunder-wash-600-w"
+    ],
+    "Fan": [
+      "gruft/ventilator"
+    ],
+    "Moving Head": [
+      "lightmaxx/vega-zoom-wash"
+    ]
+  }
+}
