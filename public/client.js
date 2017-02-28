@@ -9,27 +9,24 @@ window.addEventListener("load", function(event) {
 
   checkSearchInput();
 
-  searchInput.addEventListener("focus", function(event) {
-    showLogo();
-  }, true);
-  searchInput.addEventListener("blur", function(event) {
-    checkSearchInput();
-  }, true);
+
+  searchInput.addEventListener("focus", hideLogo, true);
+  searchInput.addEventListener("blur", checkSearchInput, true);
 });
 
-function showLogo() {
+function hideLogo() {
   logo.classList.add("searchUsed");
 }
 
 function checkSearchInput() {
-  if (searchInput.value.length == 0) {
-    hideLogo();
+  if (searchInput.value === undefined || searchInput.value.length == 0) {
+    showLogo();
   }
   else {
-    showLogo();
+    hideLogo();
   }
 }
 
-function hideLogo() {
+function showLogo() {
   logo.classList.remove("searchUsed");
 }

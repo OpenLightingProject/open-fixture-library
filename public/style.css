@@ -4,6 +4,10 @@ html, body {
   background: #fff;
   font: 16px/2 'Droid Sans','Source Sans Pro',Ubuntu,Helvetica,Arial,sans-serif;
   color: #222;
+
+  --blue-100: #bbdefb;
+  --blue-300: #64b5f6;
+  --blue-700: #1976d2;
 }
 
 
@@ -11,8 +15,6 @@ html, body {
 
 header {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   background: #fafafa;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
@@ -32,6 +34,7 @@ header a {
   line-height: 4.5em;
   text-decoration: none;
   color: inherit;
+  padding: 0 1ex;
 }
 header a:hover,
 header a:focus {
@@ -39,19 +42,20 @@ header a:focus {
   color: #000;
 }
 
-header #left-nav {
+#left-nav {
   flex-grow: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 1ex;
 }
 
-header #home-logo {
+#home-logo {
   text-indent: -9999px;
   display: inline-block;
   width: 122px;
-  background: url(ofl-logo.svg) center center no-repeat;
+  background-image: url(ofl-logo.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
   background-origin: content-box;
   transition: width .2s, padding .2s;
 }
@@ -60,11 +64,13 @@ header form {
   flex-grow: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 header input {
   -webkit-appearance: none;
   -moz-appearance: none;
+  appearance: none;
   padding: 5px;
   background: #fff;
   border: 1px solid #cfd6e6;
@@ -75,15 +81,16 @@ header input {
 }
 
 header input:focus {
-  border-color: #5294e2;
+  border-color: var(--blue-300);
 }
 
 header button {
   -webkit-appearance: none;
   -moz-appearance: none;
+  appearance: none;
   margin-left: 4px;
   padding: 5px 1ex;
-  background: #fbfbfb;
+  background-color: #fbfbfb;
   border: 1px solid #cfd6e6;
   border-radius: 3px;
   font-size: 0.95rem;
@@ -93,19 +100,22 @@ header button::-moz-focus-inner {
   border: 0;
 }
 
-header button:hover,
 header button:focus {
-  background: #fff;
-  border-color: #abb1be;
+  border-color: var(--blue-300);
 }
 
-header button:active {
-  background: #5294e2;
+header button:hover {
+  background-color: var(--blue-300);
+  border-color: transparent;
   color: #fff;
 }
 
-header #right-nav a {
-  padding: 0 1ex;
+header button:active {
+  background-color: var(--blue-700);
+}
+
+header svg {
+  display: none;
 }
 
 
@@ -114,9 +124,9 @@ header #right-nav a {
 #main {
   max-width: 1000px;
   margin: 0 auto;
-  min-height: calc(100vh - 70px - 10px);
+  min-height: calc(100vh - 5em - 10px);
   overflow: hidden;
-  padding: 70px 10px 10px;
+  padding: 5em 10px 10px;
 }
 
 .message {
@@ -215,22 +225,24 @@ a[href=''] {
     flex-basis: 100%;
   }
 
-  header #home-logo {
+  #home-logo {
     width: 92px;
-    padding-right: 1ex;
+    padding-right: .5ex;
     line-height: 3em;
     height: 3em;
   }
 
   header form {
     flex-grow: 0;
+    padding-left: .5ex;
+    padding-right: 1ex;
   }
 
-  header #right-nav {
+  #right-nav {
     justify-content: center;
   }
 
-  header #right-nav a {
+  #right-nav a {
     line-height: 2.7em;
     height: 2.7em;
   }
@@ -238,24 +250,47 @@ a[href=''] {
 
 /* Phone */
 @media (max-width: 440px) {
+  #home-logo {
+    width: 82px;
+    padding-right: .5ex;
+    line-height: 2.8em;
+    height: 2.8em;
+  }
+
+  #home-logo.searchUsed {
+    width: 0;
+    padding: 0;
+  }
+
   header form {
     flex-grow: 1;
     flex-basis: 0;
   }
 
   header form div {
-    width: 100%;
+    flex-grow: 1;
+    flex-basis: 0;
   }
 
-  header #home-logo {
-    width: 82px;
-    padding-right: 1ex;
-    line-height: 2.8em;
-    height: 2.8em;
+  header button {
+    --icon-size: 20.24px;
+    --padding: 4px;
+    position: relative;
+    padding: var(--padding);
+    width: var(--icon-size);
+    height: var(--icon-size);
+    box-sizing: content-box;
+    text-indent: -9999px;
+    border-color: transparent;
   }
 
-  header #home-logo.searchUsed {
-    width: 0;
-    padding: 0;
+  header svg {
+    display: block;
+    position: absolute;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    top: var(--padding);
+    left: var(--padding);
+    fill: currentcolor;
   }
 }
