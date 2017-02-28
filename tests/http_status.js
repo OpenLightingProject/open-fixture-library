@@ -12,14 +12,15 @@ const statusCodes = {
     'manufacturers',
     'categories',
     'about',
-    'search'
+    'search',
+    'search?q=bla'
   ],
   '404': [
     'bla',
     'about/bla',
     'manufacturers/gruft',
     'gruft/bla',
-    'cameo/ventilator',
+    'gruft/thunder-wash-600-rgb',
     'gruft/ventilator/bla',
   ]
 }

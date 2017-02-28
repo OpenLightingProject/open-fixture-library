@@ -1,11 +1,9 @@
 module.exports = function(options) {
   const {query, register} = options;
 
-  const searchQuery = query.q.trim();
-  const searchQueryEscaped = htmlescape(searchQuery);
-  let results = [];
+  let searchQuery;
 
-  if (searchQuery.length == 0) {
+  if (!('q' in query) || (searchQuery = query.q.trim()).length == 0) {
     options.title = 'Search - Open Fixture Library';
 
     let str = require('../partials/header')(options);
@@ -18,8 +16,11 @@ module.exports = function(options) {
     return str;
   }
 
+  const searchQueryEscaped = htmlescape(searchQuery);
+
   options.title = `Search "${searchQueryEscaped}" - Open Fixture Library`;
 
+  let results = [];
   for (const fix in register.filesystem) {
     const fixData = register.filesystem[fix];
     if (fix.indexOf(query.q.toLowerCase()) > -1 || (fixData.manufacturerName + ' ' + fixData.name).toLowerCase().indexOf(query.q.toLowerCase()) > -1) {
