@@ -1,6 +1,4 @@
 module.exports = function(options) {
-  options.title = 'Manufacturers - Open Fixture Library';
-  
   const {manufacturers, manufacturersIndex} = options;
 
   let str = require('../partials/header')(options);
@@ -9,7 +7,7 @@ module.exports = function(options) {
 
   for (man in manufacturers) {
     const manufacturer = manufacturers[man];
-    const num = manufacturersIndex[man].length;
+    const num = (man in manufacturersIndex) ? manufacturersIndex[man].length : 0;
     const numFixtures = `${num} fixture${num == 1 ? '' : 's'}`;
 
     str += '<section class="manufacturer">';

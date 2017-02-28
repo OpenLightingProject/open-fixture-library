@@ -21,9 +21,9 @@ app.engine('js', (filePath, options, callback) => {
 
   let opts = {
     manufacturers: manufacturers,
-    manufacturersIndex: manufacturersIndex,
-    typesIndex: typesIndex,
-    namesIndex: namesIndex,
+    manufacturersIndex: register.manufacturers,
+    typesIndex: register.types,
+    namesIndex: register.filesystem,
     baseDir: __dirname,
     messages: getMessages()
   };
@@ -39,9 +39,7 @@ let messages = [];
 
 // the interesting data
 let manufacturers = null;
-let manufacturersIndex = null;
-let typesIndex = null;
-let namesIndex = null;
+let register = null;
 
 // read in the JSON files to fill those data structures
 fs.readFile(path.join(__dirname, 'fixtures', 'manufacturers.json'), 'utf8', (error, data) => {
@@ -52,31 +50,14 @@ fs.readFile(path.join(__dirname, 'fixtures', 'manufacturers.json'), 'utf8', (err
 
   manufacturers = JSON.parse(data);
 });
-fs.readFile(path.join(__dirname, 'fixtures', 'index_manufacturers.json'), 'utf8', (error, data) => {
+fs.readFile(path.join(__dirname, 'fixtures', 'register.json'), 'utf8', (error, data) => {
   if (error) {
-    addFileReadError('There was an error reading in the manufacturer index data.', error);
+    addFileReadError('There was an error reading in the register.', error);
     return;
   }
 
-  manufacturersIndex = JSON.parse(data);
+  register = JSON.parse(data);
 });
-fs.readFile(path.join(__dirname, 'fixtures', 'index_types.json'), 'utf8', (error, data) => {
-  if (error) {
-    addFileReadError('There was an error reading in the category index data.', error);
-    return;
-  }
-
-  typesIndex = JSON.parse(data);
-});
-fs.readFile(path.join(__dirname, 'fixtures', 'index_names.json'), 'utf8', (error, data) => {
-  if (error) {
-    addFileReadError('There was an error reading in the name index data.', error);
-    return;
-  }
-
-  namesIndex = JSON.parse(data);
-});
-
 
 app.get('/', (request, response) => {
   response.render('pages/index');
@@ -113,14 +94,14 @@ app.use((request, response, next) => {
     });
     return;
   }
-  else if (segments.length == 2 && segments[0] in manufacturers && manufacturersIndex[segments[0]].indexOf(segments[1]) != -1) {
+  else if (segments.length == 2 && segments[0] in manufacturers && register.manufacturers[segments[0]].indexOf(segments[1]) != -1) {
     response.render('pages/single_fixture', {
       man: segments[0],
       fix: segments[1]
     });
     return;
   }
-  else if (segments.length == 2 && segments[0] === 'categories' && decodeURIComponent(segments[1]) in typesIndex) {
+  else if (segments.length == 2 && segments[0] === 'categories' && decodeURIComponent(segments[1]) in register.types) {
     response.render('pages/single_category', {
       type: decodeURIComponent(segments[1])
     });
@@ -138,7 +119,7 @@ function getMessages() {
     return messages;
   }
 
-  if (manufacturers == null || manufacturersIndex == null || typesIndex == null || namesIndex == null) {
+  if (manufacturers == null || register == null) {
     return [{
       type: 'info',
       text: 'We are still reading the data. Please reload the page in a few moments.'
