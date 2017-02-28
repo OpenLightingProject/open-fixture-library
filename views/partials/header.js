@@ -20,7 +20,7 @@ module.exports = function(options) {
           </div>
           <button type="submit">
             Search
-            ${require('../partials/svg')('magnify')}
+            ${require('../partials/svg')({svgBasename: 'magnify'})}
           </button>
         </form>
       </div>

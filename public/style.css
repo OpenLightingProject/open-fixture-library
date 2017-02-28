@@ -4,7 +4,12 @@ html, body {
   background: #fff;
   font: 16px/2 'Droid Sans','Source Sans Pro',Ubuntu,Helvetica,Arial,sans-serif;
   color: #222;
+  word-wrap: break-word;
 
+  /*
+   Google material color palette
+   https://material.io/guidelines/style/color.html
+  */
   --blue-100: #bbdefb;
   --blue-300: #64b5f6;
   --blue-700: #1976d2;
@@ -273,7 +278,7 @@ a[href=''] {
   }
 
   header button {
-    --icon-size: 20.24px;
+    --icon-size: calc(1.2em + 2px);
     --padding: 4px;
     position: relative;
     padding: var(--padding);
