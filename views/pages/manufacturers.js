@@ -1,6 +1,8 @@
 module.exports = function(options) {
   const {manufacturers, register} = options;
 
+  options.title = 'Manufacturers - Open Fixture Library';
+
   let str = require('../partials/header')(options);
 
   str += '<h1>Manufacturers</h1>';
