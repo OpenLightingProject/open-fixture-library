@@ -10,6 +10,8 @@ $phone: 440px;
   --blue-300: #64b5f6;
   --blue-700: #1976d2;
 
+  --grey-200: #eeeeee;
+
   --primary-text-dark:    rgba(#000, .87);
   --secondary-text-dark:  rgba(#000, .54);
   --disabled-text-dark:   rgba(#000, .38);
@@ -23,3 +25,5 @@ $phone: 440px;
 @import 'header.scss';
 @import 'content.scss';
 @import 'fixture.scss';
+
+@import '/fonts/LatoLatin/latolatinfonts.css';

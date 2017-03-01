@@ -108,12 +108,12 @@ header {
 
 #home-logo {
   --logo-width: 122px;
-  --logo-padding: .5ex;
+  --logo-padding: 2ex;
   display: inline-block;
   width: 0;
   padding-left: calc(var(--logo-width) + 2 * var(--logo-padding));
   overflow: hidden;
-  background-image: url(ofl-logo.svg);
+  background-image: url('ofl-logo.svg');
   background-position: var(--logo-padding) center;
   background-size: calc(100% - 2 * var(--logo-padding)) auto;
   background-repeat: no-repeat;
@@ -139,6 +139,7 @@ header {
 
   #home-logo {
     --logo-width: 92px;
+    --logo-padding: .5ex;
     line-height: 3em;
     height: 3em;
   }
