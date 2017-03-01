@@ -16,7 +16,7 @@ module.exports = function(options) {
 
         <form action="/search">
           <div>
-            <input type="search" name="q" placeholder="Search fixture" />
+            <input type="search" name="q" placeholder="Search fixtures" value="${options.searchQueryEscaped || ''}" />
           </div>
           <button type="submit">
             Search
