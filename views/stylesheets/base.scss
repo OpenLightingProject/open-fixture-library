@@ -1,7 +1,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  font: 16px/2 LatoLatinWeb, Helvetica, Arial, sans-serif;
+  font: 16px/2 LatoLatinRegular, Helvetica, Arial, sans-serif;
   color: var(--primary-text-dark);
   background: var(--grey-200);
   word-wrap: break-word;
@@ -12,4 +12,13 @@ a[href=''] {
   text-decoration: none;
   cursor: default;
   pointer-events: none;
+}
+
+h1 {
+  font-family: LatoLatinLight;
+  font-weight: normal
+}
+
+h2 {
+  font-weight: normal
 }
