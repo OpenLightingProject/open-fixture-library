@@ -13,7 +13,7 @@ module.exports = function(options) {
 <a href="/" class="home-logo" title="Open Fixture Library">Open Fixture Library</a>
 
 <form action="/search">
-<input type="search" name="q" placeholder="Search fixture" />
+<input type="search" name="q" placeholder="Search fixtures" value="${options.searchQueryEscaped || ''}" />
 <button type="submit">Search</button>
 </form>
 
