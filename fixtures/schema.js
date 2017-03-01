@@ -52,14 +52,14 @@ const Capability = schema({
   'name': String,
   '?hideInMenu': Boolean,
   '?center': Boolean,
-  '?color': Color,
-  '?color2': Color,
+  '?color': [Color, ''],
+  '?color2': [Color, ''],
   '?image': String,
   '*': Function
 });
 
 const Channel = schema({
-  '?name': String, // if unset, channel key will be used
+  '?name': [String, null], // null: use channel key
   'type': ['Intensity', 'Strobe', 'Shutter', 'Speed', 'SingleColor', 'MultiColor', 'Gobo', 'Prism', 'Pan', 'Tilt', 'Beam', 'Effect', 'Maintenance', 'Nothing'],
   '?color': ['Generic', 'Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime'],
   '?defaultValue': DMXValue,
@@ -76,7 +76,7 @@ const ChannelKey = String;
 
 const Mode = schema({
   'name': String,
-  '?shortName': String,
+  '?shortName': [String, null], // null: use name
   '?physical': Physical, // overrides fixture's Physical
   'channels': Array.of([null, ChannelKey]), // null for unused channels
   '*': Function
@@ -84,8 +84,8 @@ const Mode = schema({
 
 const Fixture = schema({
   'name': String,
-  '?shortName': String,
-  'categories': Array.of(Category),
+  '?shortName': [String, null], // null: use name
+  'categories': Array.of(1, Infinity, Category),
   'meta': schema({
     'authors': Array.of(String),
     'createDate': ISODate,
@@ -93,7 +93,7 @@ const Fixture = schema({
     '*': Function
   }),
   '?comment': String,
-  '?manualURL': URL,
+  '?manualURL': [URL, ''],
   '?physical': Physical,
   'availableChannels': schema({
     '*': Channel // '*' is the channel key
