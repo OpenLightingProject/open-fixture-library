@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 const path = require('path');
+const sassMiddleware = require('node-sass-middleware');
 
 // setup port
 app.set('port', (process.env.PORT || 5000));
@@ -11,11 +12,18 @@ app.listen(app.get('port'), () => {
   console.log('Node app is running on port', app.get('port'));
 });
 
+// compile sass
+app.use(sassMiddleware({
+    src: path.join(__dirname, 'stylesheets'),
+    dest: path.join(__dirname, 'public'),
+    outputStyle: 'compressed'
+}));
+
 // static files that shall be accessible
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // views is directory for all template files
-app.set('views', __dirname + '/views');
+app.set('views', path.join(__dirname, 'views'));
 
 // custom renderer
 app.engine('js', (filePath, options, callback) => {

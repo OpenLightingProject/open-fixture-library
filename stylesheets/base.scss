@@ -1,0 +1,15 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  font: 16px/2 'Droid Sans', 'Source Sans Pro', Ubuntu, Helvetica, Arial, sans-serif;
+  color: #222;
+  word-wrap: break-word;
+}
+
+a[href=''] {
+  color: inherit;
+  text-decoration: none;
+  cursor: default;
+  pointer-events: none;
+}

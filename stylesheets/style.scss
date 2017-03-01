@@ -1,0 +1,17 @@
+$tablet: 800px;
+$phone: 440px;
+
+:root {
+  /*
+   From Google's material color palette
+   https://material.io/guidelines/style/color.html
+  */
+  --blue-100: #bbdefb;
+  --blue-300: #64b5f6;
+  --blue-700: #1976d2;
+}
+
+@import 'base.scss';
+@import 'header.scss';
+@import 'content.scss';
+@import 'fixture.scss';

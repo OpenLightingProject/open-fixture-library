@@ -1,23 +1,3 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  background: #fff;
-  font: 16px/2 'Droid Sans','Source Sans Pro',Ubuntu,Helvetica,Arial,sans-serif;
-  color: #222;
-  word-wrap: break-word;
-
-  /*
-   Google material color palette
-   https://material.io/guidelines/style/color.html
-  */
-  --blue-100: #bbdefb;
-  --blue-300: #64b5f6;
-  --blue-700: #1976d2;
-}
-
-
-/* header */
-
 header {
   position: fixed;
   width: 100%;
@@ -145,104 +125,8 @@ header svg {
 }
 
 
-/* main */
-
-#main {
-  max-width: 1000px;
-  margin: 0 auto;
-  min-height: calc(100vh - 5em - 10px);
-  overflow: hidden;
-  padding: 5em 10px 10px;
-}
-
-.message {
-  margin: 1em 0;
-  padding: 5px 10px;
-  border: 1px solid;
-}
-.message-error {
-  border-color: #b00;
-  background: #faa;
-}
-.message-warning {
-  border-color: #bb0;
-  background: #ffa;
-}
-.message-success {
-  border-color: #0b0;
-  background: #afa;
-}
-.message-info {
-  border-color: #05b;
-  background: #adf;
-}
-
-
-/* fixture page */
-
-data:empty {
-  border: 1px solid #cfd6e6;
-  padding: 0 2px;
-  cursor: default;
-}
-data:empty::before {
-  content: '?';
-  display: inline;
-  color: #cfd6e6;
-}
-
-data.checkbox {
-  display: inline-block;
-  border: 1px solid #cfd6e6;
-  border-radius: 3px;
-  height: 14px;
-  line-height: 14px;
-  padding: 0 0 0 14px;
-  width: 0px;
-  overflow: hidden;
-  vertical-align: middle;
-  color: #cfd6e6;
-  cursor: default;
-}
-data.checkbox::before {
-  display: block;
-  text-align: center;
-  width: 14px;
-  margin-left: -14px;
-}
-data.checkbox:empty::before {
-  content: '?';
-}
-data.checkbox[data-value='false'] {
-  border-color: #b00;
-}
-data.checkbox[data-value='false']::before {
-  color: #b00;
-  content: '\d7';
-  font-weight: bold;
-}
-data.checkbox[data-value='true'] {
-  border-color: #0b5;
-}
-data.checkbox[data-value='true']::before {
-  color: #0b5;
-  content: '\2714';
-}
-
-
-a[href=''] {
-  color: inherit;
-  text-decoration: none;
-  cursor: default;
-  pointer-events: none;
-}
-
-
-
-/** MOBILE LAYOUT **/
-
 /* Tablet */
-@media (max-width: 800px) {
+@media (max-width: $tablet) {
   header {
     font-size: 14px;
   }
@@ -273,7 +157,7 @@ a[href=''] {
 }
 
 /* Phone */
-@media (max-width: 440px) {
+@media (max-width: $phone) {
   #home-logo {
     --logo-width: 82px;
     line-height: 2.8em;

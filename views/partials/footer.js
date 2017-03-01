@@ -1,3 +1,3 @@
-module.exports = (options => `</div> <!-- #main -->
+module.exports = (options => `</div> <!-- #content -->
 </body>
 </html>`);

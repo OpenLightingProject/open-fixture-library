@@ -32,7 +32,7 @@ module.exports = function(options) {
       </div>
     </nav>
   </header>
-<div id="main">`;
+<div id="content">`;
 
   options.messages.forEach(function(message) {
     str += `<div class="message message-${message.type}">${message.text}</div>`;
