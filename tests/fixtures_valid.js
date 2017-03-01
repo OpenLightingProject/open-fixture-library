@@ -23,6 +23,34 @@ for (const man of fs.readdirSync(fixturePath)) {
   }
 }
 
+// check manufacturers file, too
+promises.push(new Promise((resolve, reject) => {
+  const filename = path.join(fixturePath, 'manufacturers.json');
+
+  fs.readFile(filename, 'utf8', (readError, data) => {
+    if (readError) {
+      return resolveError(`File '${filename}' could not be read.`, readError, resolve);
+    }
+
+    let manufacturers;
+
+    try {
+      manufacturers = JSON.parse(data);
+    }
+    catch (parseError) {
+      return resolveError(`File '${filename}' could not be parsed.`, parseError, resolve);
+    }
+
+    const schemaErrors = schemas.Manufacturers.errors(manufacturers);
+    if (schemaErrors !== false) {
+      return resolveError(`File '${filename}' does not match schema.`, schemaErrors, resolve);
+    }
+
+    resolve(filename);
+  });
+}));
+
+
 let usedShortNames = [];
 
 function checkFixture(filename) {

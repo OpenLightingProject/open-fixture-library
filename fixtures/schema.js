@@ -95,5 +95,15 @@ const Fixture = schema({
   '*': Function // no additional properties allowed
 });
 
+const Manufacturers = schema({
+  '*': schema({
+    'name': String,
+    '?comment': String,
+    '?website': URL,
+    '*': Function // no additional properties allowed
+  })
+});
+
 
 module.exports.Fixture = Fixture;
+module.exports.Manufacturers = Manufacturers;
