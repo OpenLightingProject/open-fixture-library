@@ -15,12 +15,12 @@ app.listen(app.get('port'), () => {
 // compile sass
 app.use(sassMiddleware({
     src: path.join(__dirname, 'stylesheets'),
-    dest: path.join(__dirname, 'public'),
+    dest: path.join(__dirname, 'static'),
     outputStyle: 'compressed'
 }));
 
 // static files that shall be accessible
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'static')));
 
 // views is directory for all template files
 app.set('views', path.join(__dirname, 'views'));
