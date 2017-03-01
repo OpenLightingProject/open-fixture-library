@@ -1,7 +1,7 @@
 module.exports = function(options) {
   options.title = 'Open Fixture Library';
   
-  let str = require('../partials/header')(options);
+  let str = require('../includes/header')(options);
 
   str += '<h1>Open Fixture Library</h1>';
 
@@ -11,7 +11,7 @@ module.exports = function(options) {
 
   str += '<p>The project is still in a very early state, but you can still check out the progress on <a href="https://github.com/FloEdelmann/open-fixture-library">GitHub</a> and also already report issues or feature requests or even contribute some code. Thanks!</p>';
 
-  str += require('../partials/footer')(options);
+  str += require('../includes/footer')(options);
 
   return str;
 };

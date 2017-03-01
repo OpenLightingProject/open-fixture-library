@@ -7,7 +7,7 @@ module.exports = function(options) {
   options.title = type + ' - Open Fixture Library';
 
 
-  let str = require('../partials/header')(options);
+  let str = require('../includes/header')(options);
 
   str += `<h1>${type} fixtures</h1>`;
 
@@ -23,7 +23,7 @@ module.exports = function(options) {
 
   str += '</ul>';
 
-  str += require('../partials/footer')(options);
+  str += require('../includes/footer')(options);
 
   return str;
 };

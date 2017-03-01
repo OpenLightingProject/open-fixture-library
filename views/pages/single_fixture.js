@@ -9,7 +9,7 @@ module.exports = function(options) {
   
   options.title = `${manufacturer.name} ${fixture.name} - Open Fixture Library`;
 
-  let str = require('../partials/header')(options);
+  let str = require('../includes/header')(options);
 
   str += `<h1><a href="/${man}"><data data-key="manufacturer">${manufacturer.name}</data></a> <data data-key="name">${fixture.name}</data> <code><data data-key="shortName">${_(fixture.shortName)}</data></code></h1>`;
 
@@ -118,7 +118,7 @@ module.exports = function(options) {
   str += `</section>`;
 
 
-  str += require('../partials/footer')(options);
+  str += require('../includes/footer')(options);
 
   return str;
 };

@@ -6,12 +6,12 @@ module.exports = function(options) {
   if (!('q' in query) || (searchQuery.length == 0)) {
     options.title = 'Search - Open Fixture Library';
 
-    let str = require('../partials/header')(options);
+    let str = require('../includes/header')(options);
 
     str += '<h1>Search</h1>';
     str += '<p>Please enter a search query in the form above.</p>';
 
-    str += require('../partials/footer')(options);
+    str += require('../includes/footer')(options);
 
     return str;
   }
@@ -53,7 +53,7 @@ module.exports = function(options) {
     }
   }
 
-  let str = require('../partials/header')(options);
+  let str = require('../includes/header')(options);
 
   str += `<h1>Search <em>${searchQueryEscaped}</em></h1>`;
 
@@ -82,7 +82,7 @@ module.exports = function(options) {
   }
   str += '</div>';
 
-  str += require('../partials/footer')(options);
+  str += require('../includes/footer')(options);
 
   return str;
 };

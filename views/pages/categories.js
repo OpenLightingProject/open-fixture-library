@@ -3,7 +3,7 @@ module.exports = function(options) {
   
   options.title = 'Categories - Open Fixture Library';
 
-  let str = require('../partials/header')(options);
+  let str = require('../includes/header')(options);
 
   str += '<h1>Categories</h1>';
 
@@ -24,7 +24,7 @@ module.exports = function(options) {
     str += '</section>';
   }
 
-  str += require('../partials/footer')(options);
+  str += require('../includes/footer')(options);
 
   return str;
 };
