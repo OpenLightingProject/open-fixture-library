@@ -53,17 +53,16 @@ header a:focus {
 
 #home-logo {
   --logo-width: 122px;
-  --logo-padding-left: .5ex;
-  --logo-padding-right: .5ex;
+  --logo-padding: .5ex;
   display: inline-block;
-  width: 0px;
-  padding-left: calc(var(--logo-width) + var(--logo-padding-left) + var(--logo-padding-right));
+  width: 0;
+  padding-left: calc(var(--logo-width) + 2 * var(--logo-padding));
   overflow: hidden;
   background-image: url(ofl-logo.svg);
-  background-position: var(--logo-padding-left) center;
-  background-size: calc(100% - var(--logo-padding-left) - var(--logo-padding-right)) auto;
+  background-position: var(--logo-padding) center;
+  background-size: calc(100% - 2 * var(--logo-padding)) auto;
   background-repeat: no-repeat;
-  transition: width .2s, padding .2s;
+  transition: padding .2s;
 }
 
 header form {
@@ -282,7 +281,6 @@ a[href=''] {
   }
 
   #home-logo.searchUsed {
-    width: 0;
     padding: 0;
   }
 
