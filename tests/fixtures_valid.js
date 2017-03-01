@@ -169,6 +169,10 @@ function checkFixture(filename) {
                 resolveError(`center is unused since hideInMenu is set in capability #${i} in channel '${ch}' in file '${filename}'.`, null, resolve);
               }
 
+              if (('color' in cap || 'image' in cap) && ['MultiColor', 'Effect', 'Gobo'].indexOf(channel.type) == -1) {
+                resolveError(`color or image present in capability #${i} but improper channel type '${channel.type}' in channel '${ch}' in file '${filename}'.`, null, resolve);
+              }
+
               if ('color2' in cap && !('color' in cap)) {
                 resolveError(`color2 present but color missing in capability #${i} in channel '${ch}' in file '${filename}'.`, null, resolve);
               }
