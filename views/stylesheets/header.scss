@@ -129,12 +129,8 @@ header {
 
 /* Tablet */
 @media (max-width: $tablet) {
-  header {
-    font-size: 14px;
-
-    > nav > div {
-      flex-basis: 100%;
-    }
+  header > nav > div {
+    flex-basis: 100%;
   }
 
   #home-logo {

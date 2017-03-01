@@ -10,15 +10,22 @@ html, body {
 a[href=''] {
   color: inherit;
   text-decoration: none;
-  cursor: default;
+  cursor: text;
   pointer-events: none;
 }
 
 h1 {
   font-family: LatoLatinLight;
-  font-weight: normal
+  font-weight: normal;
 }
 
 h2 {
-  font-weight: normal
+  font-weight: normal;
+  margin: 0;
+}
+
+@media (max-width: $tablet) {
+  html, body {
+    font-size: 14px;
+  }
 }

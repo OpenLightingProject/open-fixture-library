@@ -14,9 +14,9 @@ app.listen(app.get('port'), () => {
 
 // compile sass
 app.use(sassMiddleware({
-    src: path.join(__dirname, 'views', 'stylesheets'),
-    dest: path.join(__dirname, 'static'),
-    outputStyle: 'compressed'
+  src: path.join(__dirname, 'views', 'stylesheets'),
+  dest: path.join(__dirname, 'static'),
+  outputStyle: 'compressed'
 }));
 
 // static files that shall be accessible

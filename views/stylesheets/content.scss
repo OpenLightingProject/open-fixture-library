@@ -6,6 +6,62 @@
   padding: 5em 10px 10px;
 }
 
+.card {
+  color: var(--primary-text-dark);
+  text-decoration: none;
+  padding: 1em;
+  margin-bottom: 1em;
+  box-shadow: 0 2px 4px var(--divider-dark);
+  box-sizing: border-box;
+  background-color: #fff;
+  transition: background-color .2s;
+  display: block;
+
+  &:hover,
+  &:focus {
+    background-color: var(--grey-50);
+    outline: none;
+  }
+
+  &:active {
+    background-color: var(--grey-100);
+  }
+}
+
+@media (min-width: $phone-landscape) {
+  .categories .card {
+    display: inline-block;
+    width: calc(50% - .5em);
+
+    &:nth-child(2n+1) {
+      margin-right: .5em;
+    }
+    &:nth-child(2n+2) {
+      margin-left: .5em;
+    }
+  }
+}
+
+@media (min-width: $tablet) {
+  .categories .card {
+    &:nth-child(3n+1) {
+      margin-left: 0;
+      margin-right: .5em;
+      width: calc(33% - .5em);
+    }
+    &:nth-child(3n+2) {
+      margin-left: .5em;
+      margin-right: .5em;
+      width: calc(34% - 1em);
+    }
+    &:nth-child(3n+3) {
+      margin-left: .5em;
+      margin-right: 0;
+      width: calc(33% - .5em);
+    }
+  }
+}
+
 .message {
   margin: 1em 0;
   padding: 5px 10px;

@@ -7,22 +7,18 @@ module.exports = function(options) {
 
   str += '<h1>Categories</h1>';
 
-  for (type in register.categories) {
-    const num = register.categories[type].length;
+  str += '<div class="categories">';
+  for (cat in register.categories) {
+    const num = register.categories[cat].length;
     const numFixtures = `${num} fixture${num == 1 ? '' : 's'}`;
-    const link = '/categories/' + encodeURIComponent(type);
+    const link = '/categories/' + encodeURIComponent(cat);
 
-    str += '<section class="type">';
-    str += '<h2>' + (num > 0 ? `<a href="${link}">${type}</a>` : type) + '</h2>';
-
-    str += '<div class="fixtures">' + numFixtures;
-    if (num > 0) {
-      str += ` - <a href="${link}">View them</a>`;
-    }
-    str += '</div>';
-
-    str += '</section>';
+    str += `<a href="${link}" class="card">`;
+    str += `<h2>${cat}</h2>`;
+    str += `<div class="fixtures">${numFixtures}</div>`;
+    str += '</a>';
   }
+  str += '</div>'
 
   str += require('../includes/footer')(options);
 

@@ -1,6 +1,3 @@
-$tablet: 800px;
-$phone: 440px;
-
 :root {
   /*
    From Google's material color palette
@@ -10,16 +7,26 @@ $phone: 440px;
   --blue-300: #64b5f6;
   --blue-700: #1976d2;
 
+  --grey-50:  #fafafa;
+  --grey-100: #f5f5f5;
   --grey-200: #eeeeee;
 
   --primary-text-dark:    rgba(#000, .87);
   --secondary-text-dark:  rgba(#000, .54);
   --disabled-text-dark:   rgba(#000, .38);
+  --divider-dark:         rgba(#000, .12);
 
   --primary-text-light:   rgba(#fff, 1);
   --secondary-text-light: rgba(#fff, .7);
   --disabled-text-light:  rgba(#fff, .5);
+  --divider-light:        rgba(#fff, .12);
 }
+
+/* Width value for media queries */
+$tablet: 800px;
+$phone-landscape: 600px;
+$phone: 440px;
+
 
 $base-url: '/fonts/LatoLatin/fonts/LatoLatin-';
 @mixin lato-font($flavor, $suffix, $style) {
