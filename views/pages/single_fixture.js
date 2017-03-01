@@ -273,8 +273,8 @@ function handleChannel(channel) {
       str += `  <data data-key="capability-name">${_(cap.name)}</data>`;
       str += `</td>`;
 
-      str += `<td class="capability-showInMenu" title="show in menu? ${cap.showInMenu}">`;
-      str += `  <data class="checkbox" data-key="capability-showInMenu" data-value="${cap.showInMenu}">${_(cap.showInMenu)}</data>`;
+      str += `<td class="capability-hideInMenu" title="hide in menu? ${cap.hideInMenu}">`;
+      str += `  <data class="checkbox" data-key="capability-hideInMenu" data-value="${cap.hideInMenu}">${_(cap.hideInMenu)}</data>`;
       str += `</td>`;
 
       str += `<td class="capability-center" title="use center value on menu click? ${cap.center}">`;

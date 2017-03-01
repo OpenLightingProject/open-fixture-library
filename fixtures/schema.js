@@ -39,7 +39,7 @@ const Physical = schema({
 const Capability = schema({
   'range': Array.of(2, DMXValue), // Range
   'name': String,
-  '?showInMenu': Boolean,
+  '?hideInMenu': Boolean,
   '?center': Boolean,
   '?color': Color,
   '?color2': Color,

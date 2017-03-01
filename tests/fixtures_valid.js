@@ -137,6 +137,10 @@ function checkFixture(filename) {
                 resolveError(`range invalid in capability #${i} in channel '${ch}' in file '${filename}'.`, null, resolve);
               }
 
+              if ('center' in cap && 'hideInMenu' in cap && cap.hideInMenu) {
+                resolveError(`center is unused since hideInMenu is set in capability #${i} in channel '${ch}' in file '${filename}'.`, null, resolve);
+              }
+
               if ('color2' in cap && !('color' in cap)) {
                 resolveError(`color2 present but color missing in capability #${i} in channel '${ch}' in file '${filename}'.`, null, resolve);
               }
@@ -159,7 +163,7 @@ function checkFixture(filename) {
 
 function resolveError(str, error, resolve) {
   if (error) {
-    console.error(colors.red('[FAIL] ') + str + '\n', error);
+    console.error(colors.red('[FAIL] ') + str + '\n', JSON.stringify(error, null, 2));
   }
   else {
     console.error(colors.red('[FAIL] ') + str);
