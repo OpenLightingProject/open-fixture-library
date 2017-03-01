@@ -14,7 +14,7 @@ app.listen(app.get('port'), () => {
 
 // compile sass
 app.use(sassMiddleware({
-    src: path.join(__dirname, 'stylesheets'),
+    src: path.join(__dirname, 'views', 'stylesheets'),
     dest: path.join(__dirname, 'static'),
     outputStyle: 'compressed'
 }));
