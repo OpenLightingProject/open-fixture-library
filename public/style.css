@@ -26,7 +26,7 @@ header {
   text-align: center;
 }
 
-header nav {
+header > nav {
   max-width: 1000px;
   margin: 0 auto;
   display: flex;
@@ -37,9 +37,6 @@ header a {
   display: inline-block;
   height: 4.5em;
   line-height: 4.5em;
-  text-decoration: none;
-  color: inherit;
-  padding: 0 1ex;
 }
 header a:hover,
 header a:focus {
@@ -55,13 +52,17 @@ header a:focus {
 }
 
 #home-logo {
-  text-indent: -9999px;
+  --logo-width: 122px;
+  --logo-padding-left: .5ex;
+  --logo-padding-right: .5ex;
   display: inline-block;
-  width: 122px;
+  width: 0px;
+  padding-left: calc(var(--logo-width) + var(--logo-padding-left) + var(--logo-padding-right));
+  overflow: hidden;
   background-image: url(ofl-logo.svg);
-  background-position: center center;
+  background-position: var(--logo-padding-left) center;
+  background-size: calc(100% - var(--logo-padding-left) - var(--logo-padding-right)) auto;
   background-repeat: no-repeat;
-  background-origin: content-box;
   transition: width .2s, padding .2s;
 }
 
@@ -97,16 +98,17 @@ header button {
   appearance: none;
   margin-left: 4px;
   position: relative;
-  padding: var(--padding);
-  width: var(--icon-size);
-  height: var(--icon-size);
+  padding: 0 0 0 calc(var(--icon-size) + 2 * var(--padding));
+  width: 0;
+  height: calc(var(--icon-size) + 2 * var(--padding));
   box-sizing: content-box;
+  overflow: hidden;
   background-color: #fbfbfb;
   border: 1px solid transparent;
   border-radius: 3px;
   font-size: 1.05em;
   line-height: 1.2;
-  text-indent: -9999px;
+  cursor: pointer;
 }
 header button::-moz-focus-inner {
   border: 0;
@@ -118,7 +120,6 @@ header button:focus {
 
 header button:hover {
   background-color: var(--blue-300);
-  border-color: transparent;
   color: #fff;
 }
 
@@ -136,6 +137,12 @@ header svg {
   top: var(--padding);
   left: var(--padding);
   fill: currentcolor;
+}
+
+#right-nav > a {
+  padding: 0 1ex;
+  text-decoration: none;
+  color: inherit;
 }
 
 
@@ -241,13 +248,12 @@ a[href=''] {
     font-size: 14px;
   }
 
-  header nav > div {
+  header > nav > div {
     flex-basis: 100%;
   }
 
   #home-logo {
-    width: 92px;
-    padding: 0 .5ex;
+    --logo-width: 92px;
     line-height: 3em;
     height: 3em;
   }
@@ -261,7 +267,7 @@ a[href=''] {
     justify-content: center;
   }
 
-  #right-nav a {
+  #right-nav > a {
     line-height: 2.7em;
     height: 2.7em;
   }
@@ -270,8 +276,7 @@ a[href=''] {
 /* Phone */
 @media (max-width: 440px) {
   #home-logo {
-    width: 82px;
-    padding-right: .5ex;
+    --logo-width: 82px;
     line-height: 2.8em;
     height: 2.8em;
   }
