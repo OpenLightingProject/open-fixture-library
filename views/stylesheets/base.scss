@@ -3,7 +3,7 @@ html, body {
   padding: 0;
   background: #fff;
   font: 16px/2 'Droid Sans', 'Source Sans Pro', Ubuntu, Helvetica, Arial, sans-serif;
-  color: #222;
+  color: var(--primary-text-dark);
   word-wrap: break-word;
 }
 

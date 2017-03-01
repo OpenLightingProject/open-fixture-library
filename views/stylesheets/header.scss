@@ -4,24 +4,99 @@ header {
   background: #fafafa;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
   text-align: center;
-}
 
-header > nav {
-  max-width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  flex-flow: row wrap;
-}
+  > nav {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+  }
 
-header a {
-  display: inline-block;
-  height: 4.5em;
-  line-height: 4.5em;
-}
-header a:hover,
-header a:focus {
-  background-color: #e8e8e8;
-  color: #000;
+  a {
+    display: inline-block;
+    height: 4.5em;
+    line-height: 4.5em;
+  }
+  a:hover,
+  a:focus {
+    background-color: #e8e8e8;
+    color: #000;
+  }
+
+  form {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 5px;
+    background: #fff;
+    border: 1px solid #cfd6e6;
+    border-radius: 3px;
+    font-size: 1.05em;
+    line-height: 1.2;
+    width: 100%;
+  }
+
+  input:focus {
+    border-color: var(--blue-300);
+  }
+
+  button {
+    --icon-size: calc(1.2em + 2px);
+    --padding: 4px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin-left: 4px;
+    position: relative;
+    padding: 0 0 0 calc(var(--icon-size) + 2 * var(--padding));
+    width: 0;
+    height: calc(var(--icon-size) + 2 * var(--padding));
+    box-sizing: content-box;
+    overflow: hidden;
+    background-color: #fbfbfb;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    font-size: 1.05em;
+    line-height: 1.2;
+    cursor: pointer;
+    color: var(--secondary-text-dark);
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
+
+    > svg {
+      display: block;
+      position: absolute;
+      width: var(--icon-size);
+      height: var(--icon-size);
+      top: var(--padding);
+      left: var(--padding);
+      fill: currentcolor;
+    }
+
+    &:focus {
+      border-color: var(--blue-300);
+    }
+
+    &:hover {
+      background-color: var(--blue-300);
+      color: var(--primary-text-light);
+    }
+
+    &:active {
+      background-color: var(--blue-700);
+      border-color: transparent;
+      color: var(--primary-text-light);
+    }
+  }
 }
 
 #left-nav {
@@ -45,79 +120,6 @@ header a:focus {
   transition: padding .2s;
 }
 
-header form {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-header input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  padding: 5px;
-  background: #fff;
-  border: 1px solid #cfd6e6;
-  border-radius: 3px;
-  font-size: 1.05em;
-  line-height: 1.2;
-  width: 100%;
-}
-
-header input:focus {
-  border-color: var(--blue-300);
-}
-
-header button {
-  --icon-size: calc(1.2em + 2px);
-  --padding: 4px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  margin-left: 4px;
-  position: relative;
-  padding: 0 0 0 calc(var(--icon-size) + 2 * var(--padding));
-  width: 0;
-  height: calc(var(--icon-size) + 2 * var(--padding));
-  box-sizing: content-box;
-  overflow: hidden;
-  background-color: #fbfbfb;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  font-size: 1.05em;
-  line-height: 1.2;
-  cursor: pointer;
-}
-header button::-moz-focus-inner {
-  border: 0;
-}
-
-header button:focus {
-  border-color: var(--blue-300);
-}
-
-header button:hover {
-  background-color: var(--blue-300);
-  color: #fff;
-}
-
-header button:active {
-  background-color: var(--blue-700);
-  border-color: transparent;
-  color: #fff;
-}
-
-header svg {
-  display: block;
-  position: absolute;
-  width: var(--icon-size);
-  height: var(--icon-size);
-  top: var(--padding);
-  left: var(--padding);
-  fill: currentcolor;
-}
-
 #right-nav > a {
   padding: 0 1ex;
   text-decoration: none;
@@ -129,10 +131,10 @@ header svg {
 @media (max-width: $tablet) {
   header {
     font-size: 14px;
-  }
 
-  header > nav > div {
-    flex-basis: 100%;
+    > nav > div {
+      flex-basis: 100%;
+    }
   }
 
   #home-logo {
@@ -148,11 +150,11 @@ header svg {
 
   #right-nav {
     justify-content: center;
-  }
 
-  #right-nav > a {
-    line-height: 2.7em;
-    height: 2.7em;
+    > a {
+      line-height: 2.7em;
+      height: 2.7em;
+    }
   }
 }
 
@@ -162,19 +164,19 @@ header svg {
     --logo-width: 82px;
     line-height: 2.8em;
     height: 2.8em;
-  }
 
-  #home-logo.searchUsed {
-    padding: 0;
+    &.searchUsed {
+      padding: 0;
+    }
   }
 
   header form {
     flex-grow: 1;
     flex-basis: 0;
-  }
 
-  header form div {
-    flex-grow: 1;
-    flex-basis: 0;
+    div {
+      flex-grow: 1;
+      flex-basis: 0;
+    }
   }
 }
