@@ -19,12 +19,12 @@
 
   &:hover,
   &:focus {
-    background-color: var(--grey-50);
+    background-color: var(--grey-100);
     outline: none;
   }
 
   &:active {
-    background-color: var(--grey-100);
+    background-color: var(--grey-200);
   }
 }
 
@@ -32,6 +32,12 @@
   .categories .card {
     display: inline-block;
     width: calc(50% - .5em);
+
+    & > h2 {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
 
     &:nth-child(2n+1) {
       margin-right: .5em;
