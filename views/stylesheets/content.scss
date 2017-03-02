@@ -17,13 +17,13 @@
   transition: background-color .2s;
   display: block;
 
-  &[href]:hover,
-  &[href]:focus {
+  &:hover,
+  &:focus {
     background-color: var(--grey-100);
     outline: none;
   }
 
-  &[href]:active {
+  &:active {
     background-color: var(--grey-200);
   }
 }

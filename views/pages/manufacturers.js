@@ -8,18 +8,12 @@ module.exports = function(options) {
   str += '<h1>Manufacturers</h1>';
 
   str += '<div class="manufacturers">';
-  for (man in manufacturers) {
+  for (man in register.manufacturers) {
     const manufacturer = manufacturers[man];
-
-    let num = 0;
-    let link = '';
-    if (man in register.manufacturers) {
-      num = register.manufacturers[man].length;
-      link = `href="${encodeURIComponent(man)}"`;
-    }
+    const num = register.manufacturers[man].length;
     const numFixtures = `${num} fixture${num == 1 ? '' : 's'}`;
 
-    str += `<a ${link} class="card">`;
+    str += `<a href="${encodeURIComponent(man)}" class="card">`;
     str += `<h2>${manufacturer.name}</h2>`;
     str += `<div class="fixtures">${numFixtures}</div>`;
     str += '</a>';
