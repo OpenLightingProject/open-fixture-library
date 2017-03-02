@@ -17,19 +17,19 @@
   transition: background-color .2s;
   display: block;
 
-  &:hover,
-  &:focus {
+  &[href]:hover,
+  &[href]:focus {
     background-color: var(--grey-100);
     outline: none;
   }
 
-  &:active {
+  &[href]:active {
     background-color: var(--grey-200);
   }
 }
 
 @media (min-width: $phone-landscape) {
-  .categories .card {
+  .card {
     display: inline-block;
     width: calc(50% - .5em);
 
@@ -49,7 +49,7 @@
 }
 
 @media (min-width: $tablet) {
-  .categories .card {
+  .card {
     &:nth-child(3n+1) {
       margin-left: 0;
       margin-right: .5em;

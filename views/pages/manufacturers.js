@@ -7,29 +7,24 @@ module.exports = function(options) {
 
   str += '<h1>Manufacturers</h1>';
 
+  str += '<div class="manufacturers">';
   for (man in manufacturers) {
     const manufacturer = manufacturers[man];
-    const num = (man in register.manufacturers) ? register.manufacturers[man].length : 0;
+
+    let num = 0;
+    let link = '';
+    if (man in register.manufacturers) {
+      num = register.manufacturers[man].length;
+      link = `href="${encodeURIComponent(man)}"`;
+    }
     const numFixtures = `${num} fixture${num == 1 ? '' : 's'}`;
 
-    str += '<section class="manufacturer">';
-    str += '<h2>' + (num > 0 ? `<a href="${man}">${manufacturer.name}</a>` : manufacturer.name) + '</h2>';
-
-    if ('website' in manufacturer) {
-      str += `<div class="website"><a href="${manufacturer.website}">Website</a></div>`;
-    }
-    if ('comment' in manufacturer) {
-      str += `<p class="comment">${manufacturer.comment}</p>`;
-    }
-
-    str += '<div class="fixtures">' + numFixtures;
-    if (num > 0) {
-      str += ` - <a href="/${man}">View them</a>`;
-    }
-    str += '</div>';
-
-    str += '</section>';
+    str += `<a ${link} class="card">`;
+    str += `<h2>${manufacturer.name}</h2>`;
+    str += `<div class="fixtures">${numFixtures}</div>`;
+    str += '</a>';
   }
+  str += '</div>'
 
   str += require('../includes/footer')(options);
 
