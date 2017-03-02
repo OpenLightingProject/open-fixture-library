@@ -27,28 +27,24 @@ $tablet: 800px;
 $phone-landscape: 600px;
 $phone: 440px;
 
-
-$base-url: '/fonts/LatoLatin/fonts/LatoLatin-';
+/* Font faces for all lato font flavors and their italic variant */
 @mixin lato-font($flavor, $suffix, $style) {
-  font-family: 'LatoLatin' + $flavor;
-  src: url($base-url + $flavor + $suffix + '.eot'); /* IE9 Compat Modes */
-  src: url($base-url + $flavor + $suffix + '.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url($base-url + $flavor + $suffix + '.woff2') format('woff2'), /* Modern Browsers */
-       url($base-url + $flavor + $suffix + '.woff') format('woff'), /* Modern Browsers */
-       url($base-url + $flavor + $suffix + '.ttf') format('truetype');
-  font-style: $style;
-  font-weight: normal;
-  text-rendering: optimizeLegibility;
+  $url: '/fonts/LatoLatin/fonts/LatoLatin-' + $flavor + $suffix;
+  @font-face {
+    font-family: 'LatoLatin' + $flavor;
+    src: url($url + '.woff2') format('woff2'),
+         url($url + '.woff')  format('woff');
+    font-style: $style;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+  }
 }
 $lato-flavor-list: 'Light', 'Regular', 'Semibold', 'Heavy';
 @each $flavor in $lato-flavor-list {
-  @font-face {
-    @include lato-font($flavor, '',       normal);
-  }
-  @font-face {
-    @include lato-font($flavor, 'Italic', italic);
-  }
+  @include lato-font($flavor, '',       normal);
+  @include lato-font($flavor, 'Italic', italic);
 }
+
 
 @import 'base.scss';
 @import 'header.scss';
