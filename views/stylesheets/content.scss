@@ -12,6 +12,7 @@
   box-shadow: 0 2px 4px var(--divider-dark);
   box-sizing: border-box;
   background-color: #fff;
+  border-radius: 3px;
   position: relative;
   fill: var(--secondary-text-dark);
 
@@ -49,7 +50,7 @@ a.card, .list a {
 .card-category {
   padding-left: 5em;
 
-  &>svg {
+  & > svg {
     position: absolute;
     top: 1em;
     left: 1em;

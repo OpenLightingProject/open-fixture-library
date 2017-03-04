@@ -10,11 +10,13 @@ html, body {
 h1 {
   font-family: LatoLatinLight;
   font-weight: normal;
+  font-size: 2em;
 }
 
 h2 {
   font-weight: normal;
   margin: 0;
+  font-size: 1.5em;
 }
 
 @media (max-width: $tablet) {
