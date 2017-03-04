@@ -23,7 +23,13 @@ module.exports = function(options) {
   for (let fix of register.manufacturers[man]) {
     const fixData = JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', man, fix + '.json'), 'utf-8'));
 
-    str += `<li><a href="/${man}/${fix}">${fixData.name}</a></li>`;
+    str += `<li><a href="/${man}/${fix}">`
+    str += `<span class="name">${fixData.name}</span>`;
+    for (const cat of fixData.categories) {
+      const icon = 'category-' + cat.toLowerCase().replace(/[^\w]+/g, '-');
+      str += require('../includes/svg')({svgBasename: icon});
+    }
+    str += '</a></li>';
   }
   str += '</ul>';
 

@@ -26,6 +26,17 @@
 
   > a {
     padding: .5em;
+    display: flex;
+
+    > .name {
+      margin-right: auto;
+    }
+
+    > svg {
+      width: 32px;
+      height: 32px;
+      margin-left: 1em;
+    }
   }
 }
 
