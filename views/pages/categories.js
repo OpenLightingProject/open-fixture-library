@@ -7,7 +7,7 @@ module.exports = function(options) {
 
   str += '<h1>Categories</h1>';
 
-  str += '<div class="categories">';
+  str += '<div class="categories grid">';
   for (cat of Object.keys(register.categories).sort()) {
     const num = register.categories[cat].length;
     const numFixtures = `${num} fixture${num == 1 ? '' : 's'}`;

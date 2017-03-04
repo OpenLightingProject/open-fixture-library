@@ -7,7 +7,7 @@ module.exports = function(options) {
 
   str += '<h1>Manufacturers</h1>';
 
-  str += '<div class="manufacturers">';
+  str += '<div class="manufacturers grid">';
 
   // we can rely on register's sorting here
   for (man in register.manufacturers) {
