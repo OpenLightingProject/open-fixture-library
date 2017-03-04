@@ -15,17 +15,23 @@
   --secondary-text-dark:  rgba(#000, .54);
   --disabled-text-dark:   rgba(#000, .38);
   --divider-dark:         rgba(#000, .12);
+  --icon-dark:            rgba(#000, .54);
+  --icon-inactive-dark:   rgba(#000, .27);
 
   --primary-text-light:   rgba(#fff, 1);
   --secondary-text-light: rgba(#fff, .7);
   --disabled-text-light:  rgba(#fff, .5);
   --divider-light:        rgba(#fff, .12);
+  --icon-light:           rgba(#fff, 1);
+  --icon-inactive-light:  rgba(#fff, .5);
 }
 
 /* Width value for media queries */
 $tablet: 800px;
 $phone-landscape: 600px;
 $phone: 440px;
+
+$categories: other color-changer dimmer effect fan flower hazer laser moving-head scanner smoke strobe blinder;
 
 /* Font faces for all lato font flavors and their italic variant */
 @mixin lato-font($flavor, $suffix, $style) {
