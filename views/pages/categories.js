@@ -8,12 +8,14 @@ module.exports = function(options) {
   str += '<h1>Categories</h1>';
 
   str += '<div class="categories">';
-  for (cat in register.categories) {
+  for (cat of Object.keys(register.categories).sort()) {
     const num = register.categories[cat].length;
     const numFixtures = `${num} fixture${num == 1 ? '' : 's'}`;
     const link = '/categories/' + encodeURIComponent(cat);
+    const icon = 'category-' + cat.toLowerCase().replace(/[^\w]+/g, '-');
 
-    str += `<a href="${link}" class="card">`;
+    str += `<a href="${link}" class="card card-category">`;
+    str += require('../includes/svg')({svgBasename: icon});
     str += `<h2>${cat}</h2>`;
     str += `<div class="fixtures">${numFixtures}</div>`;
     str += '</a>';
