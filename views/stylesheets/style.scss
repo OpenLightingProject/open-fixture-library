@@ -29,7 +29,7 @@ $phone: 440px;
 
 /* Font faces for all lato font flavors and their italic variant */
 @mixin lato-font($flavor, $suffix, $style) {
-  $url: '/fonts/LatoLatin/fonts/LatoLatin-' + $flavor + $suffix;
+  $url: '/fonts/LatoLatin/LatoLatin-' + $flavor + $suffix;
   @font-face {
     font-family: 'LatoLatin' + $flavor;
     src: url($url + '.woff2') format('woff2'),
