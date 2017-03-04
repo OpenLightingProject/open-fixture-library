@@ -26,8 +26,7 @@ module.exports = function(options) {
     str += `<li><a href="/${man}/${fix}">`
     str += `<span class="name">${fixData.name}</span>`;
     for (const cat of fixData.categories) {
-      const icon = 'category-' + cat.toLowerCase().replace(/[^\w]+/g, '-');
-      str += require('../includes/svg')({svgBasename: icon});
+      str += require('../includes/svg')({categoryName: cat});
     }
     str += '</a></li>';
   }

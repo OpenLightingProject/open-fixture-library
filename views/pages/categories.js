@@ -12,10 +12,9 @@ module.exports = function(options) {
     const num = register.categories[cat].length;
     const numFixtures = `${num} fixture${num == 1 ? '' : 's'}`;
     const link = '/categories/' + encodeURIComponent(cat);
-    const icon = 'category-' + cat.toLowerCase().replace(/[^\w]+/g, '-');
 
     str += `<a href="${link}" class="card card-category">`;
-    str += require('../includes/svg')({svgBasename: icon});
+    str += require('../includes/svg')({categoryName: cat});
     str += `<h2>${cat}</h2>`;
     str += `<div class="fixtures">${numFixtures}</div>`;
     str += '</a>';
