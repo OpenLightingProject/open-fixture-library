@@ -14,17 +14,32 @@
   box-shadow: 0 2px 4px var(--divider-dark);
   box-sizing: border-box;
   background-color: #fff;
-  transition: background-color .2s;
+  transition: background-color .2s, fill .2s;
   display: block;
+  position: relative;
+  fill: var(--secondary-text-dark);
 
   &:hover,
   &:focus {
     background-color: var(--grey-100);
+    fill: var(--primary-text-dark);
     outline: none;
   }
 
   &:active {
     background-color: var(--grey-200);
+  }
+}
+
+.card-category {
+  padding-left: 5em;
+
+  &>svg {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    width: 3em;
+    height: 3em;
   }
 }
 
