@@ -4,6 +4,7 @@ header {
   background: #fafafa;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
   text-align: center;
+  z-index: 100;
 
   & > nav {
     max-width: 1000px;

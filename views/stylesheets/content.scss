@@ -21,18 +21,18 @@
   }
 }
 
-.list > li {
+.list  > li {
   list-style: none;
 
-  > a {
+  & > a {
     padding: .5em;
     display: flex;
 
-    > .name {
+    & > .name {
       margin-right: auto;
     }
 
-    > svg {
+    & > svg {
       width: 32px;
       height: 32px;
       margin-left: 1em;
@@ -67,6 +67,14 @@ a.card, .list a {
     left: 1em;
     width: 3em;
     height: 3em;
+  }
+}
+
+@media (max-width: $phone) {
+  .list > li > a > svg {
+      width: 24px;
+      height: 24px;
+      margin-left: .6em;
   }
 }
 

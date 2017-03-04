@@ -6,7 +6,7 @@ module.exports = function(options) {
   let svg = require("fs").readFileSync(require("path").join(__dirname, '..', '..', 'static', 'icons', options.svgBasename + '.svg'), 'utf8');
 
   if (options.categoryName) {
-    svg = svg.replace(/<svg([^>]*)>/, `<svg$1><title>${options.categoryName}</title>`);
+    svg = svg.replace(/<svg([^>]*)>/, `<svg$1><title>Category: ${options.categoryName}</title>`);
   }
 
   return svg;
