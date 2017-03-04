@@ -8,14 +8,16 @@
 
 .card {
   color: var(--primary-text-dark);
-  text-decoration: none;
   padding: 1em;
   margin-bottom: 1em;
   box-shadow: 0 2px 4px var(--divider-dark);
   box-sizing: border-box;
   background-color: #fff;
-  transition: background-color .2s;
   display: block;
+}
+a.card {
+  transition: background-color .2s;
+  text-decoration: none;
 
   &:hover,
   &:focus {
@@ -29,7 +31,8 @@
 }
 
 @media (min-width: $phone-landscape) {
-  .card {
+  .manufacturers .card,
+  .categories .card {
     display: inline-block;
     width: calc(50% - .5em);
 
@@ -49,7 +52,8 @@
 }
 
 @media (min-width: $tablet) {
-  .card {
+  .manufacturers .card,
+  .categories .card {
     &:nth-child(3n+1) {
       margin-left: 0;
       margin-right: .5em;
