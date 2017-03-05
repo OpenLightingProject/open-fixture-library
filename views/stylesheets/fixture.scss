@@ -54,7 +54,8 @@ label {
 }
 
 .hint {
-  margin-left: 1ex;
+  display: block;
+  margin: -0.5rem 0 0;
   color: var(--secondary-text-dark);
   font-size: 0.8rem;
 }
@@ -108,13 +109,6 @@ data.checkbox {
   &[data-value='true']::before {
     color: #0b5;
     content: '\2714';
-  }
-}
-
-@media (max-width: $phone) {
-  .hint {
-    display: block;
-    margin: -0.5rem 0 0;
   }
 }
 
