@@ -1,3 +1,64 @@
+.fixture-meta {
+  margin: -1.5rem 0 1rem;
+  font-size: 0.8rem;
+  color: var(--secondary-text-dark);
+
+  & > span:not(:last-child)::after {
+    content: '|';
+    padding: 0 1ex;
+  }
+}
+
+.categories {
+  margin: 0 0 0.5rem;
+
+  & svg {
+    height: 2em;
+    width: 2em;
+    vertical-align: middle;
+  }
+}
+
+.manualURL {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  & > .value {
+    display: inline;
+  }
+}
+
+section.physical {
+  -moz-columns: 2 350px;
+  -moz-column-gap: 3rem;
+  columns: 2 350px;
+  column-gap: 3rem;
+
+  & > section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
+
+label {
+  display: inline-block;
+  min-width: 10rem;
+  cursor: text;
+  color: var(--secondary-text-dark);
+}
+
+.value {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.hint {
+  margin-left: 1ex;
+  color: var(--secondary-text-dark);
+  font-size: 0.8rem;
+}
+
 data:empty {
   border: 1px solid #cfd6e6;
   padding: 0 2px;
@@ -47,5 +108,40 @@ data.checkbox {
   &[data-value='true']::before {
     color: #0b5;
     content: '\2714';
+  }
+}
+
+@media (max-width: $phone) {
+  .hint {
+    display: block;
+    margin: -0.5rem 0 0;
+  }
+}
+
+/* display mode cards in a 2-col layout */
+@media (min-width: $tablet) {
+  .card.fixture-mode {
+    width: calc(50% - .5em);
+
+    & > h2 {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    &:nth-of-type(2n+1) {
+      margin-right: .5em;
+      float: left;
+      clear: left;
+    }
+    &:nth-of-type(2n) {
+      margin-left: .5em;
+      float: right;
+      clear: right;
+    }
+  }
+
+  .card.fixture-multi-byte-channels {
+    clear: both;
   }
 }

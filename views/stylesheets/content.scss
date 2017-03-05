@@ -7,8 +7,8 @@
 }
 
 .card {
-  padding: 1em;
-  margin-bottom: 1em;
+  padding: 1rem;
+  margin-bottom: 1rem;
   box-shadow: 0 2px 4px var(--divider-dark);
   box-sizing: border-box;
   background-color: #fff;
@@ -21,7 +21,7 @@
   }
 }
 
-.list  > li {
+.list > li {
   list-style: none;
 
   & > a {
@@ -98,7 +98,7 @@ a.card, .list a {
     &:nth-child(2n+1) {
       margin-right: .5em;
     }
-    &:nth-child(2n+2) {
+    &:nth-child(2n) {
       margin-left: .5em;
     }
   }
@@ -116,7 +116,7 @@ a.card, .list a {
       margin-right: .5em;
       width: calc(34% - 1em);
     }
-    &:nth-child(3n+3) {
+    &:nth-child(3n) {
       margin-left: .5em;
       margin-right: 0;
       width: calc(33% - .5em);

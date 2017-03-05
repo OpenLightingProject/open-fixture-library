@@ -14,50 +14,55 @@ module.exports = function(options) {
   str += `<h1><a href="/${man}"><data data-key="manufacturer">${manufacturer.name}</data></a> <data data-key="name">${fixture.name}</data> <code><data data-key="shortName">${_(fixture.shortName)}</data></code></h1>`;
 
   str += '<section class="fixture-meta">';
-  str += `  <span class="last-modify-date">Last modified: <date>${fixture.meta.lastModifyDate}</date></span>`;
-  str += `  <span class="create-date">Created: <date>${fixture.meta.createDate}</date></span>`;
-  str += `  <span class="authors">Authors: <data>${fixture.meta.authors.join(', ')}</data></span>`;
-  str += `  <span class="revisions"><a href="http://github.com/FloEdelmann/open-fixture-library/commits/master/fixtures/${man}/${fix}.json">Revisions</a></span>`;
+  str += `<span class="last-modify-date">Last modified: <date>${fixture.meta.lastModifyDate}</date></span>`;
+  str += `<span class="create-date">Created: <date>${fixture.meta.createDate}</date></span>`;
+  str += `<span class="authors">Authors: <data>${fixture.meta.authors.join(', ')}</data></span>`;
+  str += `<span class="revisions"><a href="http://github.com/FloEdelmann/open-fixture-library/commits/master/fixtures/${man}/${fix}.json">Revisions</a></span>`;
   str += '</section>';
 
-  str += `<section class="fixture-info">`;
+  str += `<section class="fixture-info card">`;
 
-  str += '<section class="categories">';
-  str += '  <label>Categories</label>';
-  str += '  <span class="value">';
-  str += fixture.categories.map(cat => `<a href="/categories/${encodeURIComponent(cat)}"><data data-key="category">${cat}</data></a>`).join(', ');
-  str += '  </span>';
-  str += '</section>';
+  str += '  <section class="categories">';
+  str += '    <label>Categories</label>';
+  str += '    <span class="value">';
+  str += fixture.categories.map(cat => {
+    const svg = require('../includes/svg')({categoryName: cat});
+    return `<a href="/categories/${encodeURIComponent(cat)}">${svg} <data data-key="category">${cat}</data></a>`;
+  }).join('<br />');
+  str += '    </span>';
+  str += '  </section>';
 
-  str += `<section class="comment">
-    <label>Comment</label>
-    <span class="value"><data data-key="comment">${_(fixture.comment)}</data></span>
-  </section>`;
+  str += '  <section class="comment">';
+  str += '    <label>Comment</label>';
+  str += `    <span class="value"><data data-key="comment">${_(fixture.comment)}</data></span>`;
+  str += '  </section>';
 
-  str += `<section class="manualURL">
-    <label>Manual</label>
-    <span class="value"><a href="${_(fixture.manualURL)}"><data data-key="manualURL">${_(fixture.manualURL)}</data></a></span>
-  </section>`;
+  str += '  <section class="manualURL">';
+  str += '    <label>Manual</label>';
+  str += `    <span class="value"><a href="${_(fixture.manualURL)}"><data data-key="manualURL">${_(fixture.manualURL)}</data></a></span>`;
+  str += '  </section>';
 
-  str += `<details class="physical">`;
-  str += `  <summary>Physical data</summary>`;
+  str += '  <h3 class="physical">Physical data</h3>';
+  str += '  <section class="physical">';
   str += handlePhysicalData(fixture.physical);
-  str += `</details>`;
+  str += '  </section>';
+
+  str += `</section>`;
 
   fixture.modes.forEach(mode => {
-    str += '<section class="mode">';
+    str += '<section class="fixture-mode card">';
     str += `<h2>${mode.name} <code>${_(mode.shortName)}</code></h2>`;
 
+    str += '<h3>Physical overrides</h3>';
     if (mode.physical) {
-      str += `<details class="physical physical-override">`;
-      str += `  <summary>Physical overrides</summary>`;
+      str += '<section class="physical physical-override">';
       str += handlePhysicalData(mode.physical);
-      str += `</details>`;
+      str += '</section>';
     }
     else {
-      str += `<details class="physical physical-override empty">`;
-      str += `  <summary>No physical overrides</summary>`;
-      str += `</details>`;
+      str += '<section class="physical physical-override empty">';
+      str += '  No physical overrides';
+      str += '</section>';
     }
 
     str += `<h3>Channels</h3>`;
@@ -76,7 +81,7 @@ module.exports = function(options) {
     str += `</section>`;
   });
 
-  str += '<section class="multi-byte-channels">';
+  str += '<section class="fixture-multi-byte-channels card">';
   str += '<h2>Multi-byte channels</h2>';
   if (fixture.multiByteChannels) {
     str += '<ul>';
@@ -91,11 +96,11 @@ module.exports = function(options) {
     str += '</ul>';
   }
   else {
-    str += '<p>None</p>';
+    str += 'None';
   }
   str += `</section>`;
 
-  str += '<section class="heads">';
+  str += '<section class="fixture-heads card">';
   str += '<h2>Heads</h2>';
   if (fixture.heads) {
     str += '<ul>';
@@ -111,12 +116,9 @@ module.exports = function(options) {
     str += '</ul>';
   }
   else {
-    str += '<p>None</p>';
+    str += 'None';
   }
   str += `</section>`;
-
-  str += `</section>`;
-
 
   str += require('../includes/footer')(options);
 
@@ -160,53 +162,51 @@ function handlePhysicalData(physical) {
   </section>`;
 
 
-  str += `<h3>Bulb</h3>`;
-
-  str += `<section class="physical-bulb-type">
+  str += '<section class="physical-bulb">';
+  str += '  <h4>Bulb</h4>';
+  str += `  <section class="physical-bulb-type">
     <label>Bulb type</label>
     <span class="value"><data data-key="physical-bulb-type">${physical.bulb ? _(physical.bulb.type) : ''}</data></span>
   </section>`;
-
-  str += `<section class="physical-bulb-colorTemperature">
+  str += `  <section class="physical-bulb-colorTemperature">
     <label>Color temperature</label>
     <span class="value"><data data-key="physical-bulb-colorTemperature">${physical.bulb ? _(physical.bulb.colorTemperature) : ''}</data>K</span>
   </section>`;
-
-  str += `<section class="physical-bulb-lumens">
+  str += `  <section class="physical-bulb-lumens">
     <label>Lumens</label>
     <span class="value"><data data-key="physical-bulb-lumens">${physical.bulb ? _(physical.bulb.lumens) : ''}</data></span>
   </section>`;
+  str += '</section>';
 
 
-  str += `<h3>Lens</h3>`;
-
-  str += `<section class="physical-lens-name">
+  str += '<section class="physical-lens">';
+  str += '  <h4>Lens</h4>';
+  str += `  <section class="physical-lens-name">
     <label>Name</label>
     <span class="value"><data data-key="physical-lens-name">${physical.lens ? _(physical.lens.name) : ''}</data></span>
   </section>`;
-
-  str += `<section class="physical-lens-degreesMinMax">
+  str += `  <section class="physical-lens-degreesMinMax">
     <label>Light cone</label>
     <span class="value"><data data-key="physical-lens-degreesMin">${physical.lens && physical.lens.degreesMinMax ? _(physical.lens.degreesMinMax[0]) : ''}</data>..<data data-key="physical-lens-degreesMin">${physical.lens && physical.lens.degreesMinMax ? _(physical.lens.degreesMinMax[1]) : ''}</data>°</span>
   </section>`;
+  str += '</section>';
 
 
-  str += '<h3>Focus</h3>';
-
-  str += `<section class="physical-focus-type">
+  str += '<section class="physical-focus">';
+  str += '  <h4>Focus</h4>';
+  str += `  <section class="physical-focus-type">
     <label>Type</label>
     <span class="value"><data data-key="physical-focus-type">${physical.focus ? _(physical.focus.type) : ''}</data></span>
   </section>`;
-
-  str += `<section class="physical-focus-panMax">
+  str += `  <section class="physical-focus-panMax">
     <label>Max. pan</label>
     <span class="value"><data data-key="physical-focus-panMax">${physical.focus ? _(physical.focus.panMax) : ''}</data>°</span>
   </section>`
-
-  str += `<section class="physical-focus-tiltMax">
+  str += `  <section class="physical-focus-tiltMax">
     <label>Max. tilt</label>
     <span class="value"><data data-key="physical-focus-tiltMax">${physical.focus ? _(physical.focus.tiltMax) : ''}</data>°</span>
   </section>`;
+  str += '</section>';
 
   return str;
 }
@@ -219,7 +219,7 @@ function handleChannel(channel) {
 
   str += `<section class="channel-color">
     <label>Color</label>
-    <span class="value"><data data-key="channel-color">${_(channel.color)}</data> <span class="hint">(only useful if <em>Type</em> is <em>SingleColor</em>)</span></span>
+    <span class="value"><data data-key="channel-color">${_(channel.color)}</data> <span class="hint">(only useful if <code>Type</code> is <code>SingleColor</code>)</span></span>
   </section>`;
 
   str += `<section class="channel-defaultValue">
