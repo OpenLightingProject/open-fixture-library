@@ -17,6 +17,7 @@ module.exports = function(options) {
   str += `<span class="last-modify-date">Last modified: <date>${fixture.meta.lastModifyDate}</date></span>`;
   str += `<span class="create-date">Created: <date>${fixture.meta.createDate}</date></span>`;
   str += `<span class="authors">Authors: <data>${fixture.meta.authors.join(', ')}</data></span>`;
+  str += `<span class="source"><a href="http://github.com/FloEdelmann/open-fixture-library/tree/master/fixtures/${man}/${fix}.json">Source</a></span>`;
   str += `<span class="revisions"><a href="http://github.com/FloEdelmann/open-fixture-library/commits/master/fixtures/${man}/${fix}.json">Revisions</a></span>`;
   str += '</section>';
 
