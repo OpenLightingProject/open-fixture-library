@@ -9,23 +9,26 @@
   }
 }
 
-.categories {
-  margin: 0 0 0.5rem;
+.fixture-info {
+  & > .categories a {
+    display: inline-block;
+    margin: 0 0 0.4rem;
 
-  & svg {
-    height: 2em;
-    width: 2em;
-    vertical-align: middle;
+    & svg {
+      height: 2em;
+      width: 2em;
+      vertical-align: middle;
+    }
   }
-}
 
-.manualURL {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  & > .manualURL {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
-  & > .value {
-    display: inline;
+    & > .value {
+      display: inline;
+    }
   }
 }
 
