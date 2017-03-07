@@ -32,8 +32,9 @@
   }
 }
 
-section.physical {
-  -moz-columns: 2 350px;
+section.physical,
+.channel-groups {
+  -moz-columns: 2 300px;
   -moz-column-gap: 3rem;
   columns: 2 350px;
   column-gap: 3rem;

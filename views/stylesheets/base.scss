@@ -37,6 +37,10 @@ p {
   margin: 1rem 0;
 }
 
+.clearfix {
+  clear: both;
+}
+
 code {
   font-family: Inconsolata, 'Roboto Mono', 'Source Code Pro', monospace;
   color: var(--secondary-text-dark);

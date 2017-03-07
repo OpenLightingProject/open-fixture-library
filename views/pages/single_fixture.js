@@ -21,7 +21,7 @@ module.exports = function(options) {
   str += `<span class="revisions"><a href="http://github.com/FloEdelmann/open-fixture-library/commits/master/fixtures/${man}/${fix}.json">Revisions</a></span>`;
   str += '</section>';
 
-  str += `<section class="fixture-info card">`;
+  str += '<section class="fixture-info card">';
 
   str += '  <section class="categories">';
   str += '    <label>Categories</label>';
@@ -48,14 +48,58 @@ module.exports = function(options) {
   str += handlePhysicalData(fixture.physical);
   str += '  </section>';
 
-  str += `</section>`;
+  str += '  <h3 class="channel-groups">Channel groups</h3>';
+  str += '  <section class="channel-groups">';
+
+  str += '    <section class="multi-byte-channels">';
+  str += '      <h4>Multi-byte channels</h4>';
+  if ('multiByteChannels' in fixture) {
+    str += '<ul>';
+    fixture.multiByteChannels.forEach(multiByteChannel => {
+      str += '<li>';
+      str += multiByteChannel.map(channel => {
+        const name = fixture.availableChannels[channel].name || channel;
+        return `<data class="channel" data-channel="${channel}">${name}</data>`;
+      }).join(', ');
+      str += `</li>`;
+    });
+    str += '</ul>';
+  }
+  else {
+    str += 'None';
+  }
+  str += '    </section>'; // .multi-byte-channes
+
+  str += '    <section class="heads">';
+  str += '      <h4>Heads</h4>';
+  if ('heads' in fixture) {
+    str += '<ul>';
+    for (const head in fixture.heads) {
+      str += '<li>';
+      str += `<strong>${head}:</strong> `;
+      str += fixture.heads[head].map(channel => {
+        const name = fixture.availableChannels[channel].name || channel;
+        return `<data class="channel" data-channel="${channel}">${name}</data>`;
+      }).join(', ');
+      str += `</li>`;
+    }
+    str += '</ul>';
+  }
+  else {
+    str += 'None';
+  }
+  str += '    </section>'; // .heads
+
+  str += '  </section>'; // .channel-groups
+
+  str += '</section>'; // .fixture-info
 
   fixture.modes.forEach(mode => {
     str += '<section class="fixture-mode card">';
     str += `<h2>${mode.name} <code>${_(mode.shortName)}</code></h2>`;
 
     str += '<h3>Physical overrides</h3>';
-    if (mode.physical) {
+    if ('physical' in mode) {
       str += '<section class="physical physical-override">';
       str += handlePhysicalData(mode.physical);
       str += '</section>';
@@ -82,44 +126,7 @@ module.exports = function(options) {
     str += `</section>`;
   });
 
-  str += '<section class="fixture-multi-byte-channels card">';
-  str += '<h2>Multi-byte channels</h2>';
-  if (fixture.multiByteChannels) {
-    str += '<ul>';
-    fixture.multiByteChannels.forEach(multiByteChannel => {
-      str += '<li>';
-      str += multiByteChannel.map(channel => {
-        const name = fixture.availableChannels[channel].name || channel;
-        return `<data class="channel" data-channel="${channel}">${name}</data>`;
-      }).join(', ');
-      str += `</li>`;
-    });
-    str += '</ul>';
-  }
-  else {
-    str += 'None';
-  }
-  str += `</section>`;
-
-  str += '<section class="fixture-heads card">';
-  str += '<h2>Heads</h2>';
-  if (fixture.heads) {
-    str += '<ul>';
-    for (const head in fixture.heads) {
-      str += '<li>';
-      str += `<strong>${head}:</strong> `;
-      str += fixture.heads[head].map(channel => {
-        const name = fixture.availableChannels[channel].name || channel;
-        return `<data class="channel" data-channel="${channel}">${name}</data>`;
-      }).join(', ');
-      str += `</li>`;
-    }
-    str += '</ul>';
-  }
-  else {
-    str += 'None';
-  }
-  str += `</section>`;
+  str += '<div class="clearfix"></div>';
 
   str += require('../includes/footer')(options);
 
@@ -253,7 +260,7 @@ function handleChannel(channel) {
     <span class="value"><data data-key="channel-precedence">${_(channel.precedence)}</data></span>
   </section>`;
 
-  if (channel.capabilities) {
+  if ('capabilities' in channel) {
     str += '<details class="channel-capabilities">';
     str += '  <summary>Capabilities</summary>';
     str += '  <table>';
