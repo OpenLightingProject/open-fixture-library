@@ -89,7 +89,8 @@ module.exports = function(options) {
       str += '</section>';
     }
 
-    str += '  </section>'; // .channel-groups
+    str += '<div class="clearfix"></div>';
+    str += '</section>'; // .channel-groups
   }
 
   str += '</section>'; // .fixture-info
