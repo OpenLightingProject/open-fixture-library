@@ -4,8 +4,8 @@
   color: var(--secondary-text-dark);
 
   & > span:not(:last-child)::after {
-    content: '|';
-    padding: 0 1ex;
+    content: ' | ';
+    padding: 0 0.7ex;
   }
 }
 
