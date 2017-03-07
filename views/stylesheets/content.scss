@@ -1,0 +1,147 @@
+#content {
+  max-width: 1000px;
+  margin: 0 auto;
+  min-height: calc(100vh - 5em - 10px);
+  overflow: hidden;
+  padding: 5em 10px 10px;
+}
+
+.card {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px var(--divider-dark);
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 3px;
+  position: relative;
+  fill: var(--icon-dark);
+
+  &.list {
+    padding: 0;
+  }
+}
+
+.list > li {
+  list-style: none;
+
+  & > a {
+    padding: .5em;
+    display: flex;
+
+    & > .name {
+      margin-right: auto;
+    }
+
+    & > svg {
+      width: 32px;
+      height: 32px;
+      margin-left: 1em;
+    }
+  }
+}
+
+@each $cat in $categories {
+  .list.category-#{$cat} svg:not(.category-#{$cat}) {
+    fill: var(--icon-inactive-dark);
+  }
+}
+
+a.card, .list a {
+  transition: background-color .2s, fill .2s;
+  text-decoration: none;
+  display: block;
+  color: var(--primary-text-dark);
+
+  &:hover,
+  &:focus {
+    background-color: var(--grey-100);
+    fill: var(--primary-text-dark);
+    outline: none;
+  }
+
+  &:active {
+    background-color: var(--grey-200);
+  }
+}
+
+.card-category {
+  padding-left: 5em;
+
+  & > svg {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    width: 3em;
+    height: 3em;
+  }
+}
+
+@media (max-width: $phone) {
+  .list > li > a > svg {
+      width: 24px;
+      height: 24px;
+      margin-left: .6em;
+  }
+}
+
+@media (min-width: $phone-landscape) {
+  .grid .card {
+    display: inline-block;
+    width: calc(50% - .5em);
+
+    & > h2 {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    &:nth-child(2n+1) {
+      margin-right: .5em;
+    }
+    &:nth-child(2n) {
+      margin-left: .5em;
+    }
+  }
+}
+
+@media (min-width: $tablet) {
+  .grid .card {
+    &:nth-child(3n+1) {
+      margin-left: 0;
+      margin-right: .5em;
+      width: calc(33% - .5em);
+    }
+    &:nth-child(3n+2) {
+      margin-left: .5em;
+      margin-right: .5em;
+      width: calc(34% - 1em);
+    }
+    &:nth-child(3n) {
+      margin-left: .5em;
+      margin-right: 0;
+      width: calc(33% - .5em);
+    }
+  }
+}
+
+.message {
+  margin: 1em 0;
+  padding: 5px 10px;
+  border: 1px solid;
+}
+.message-error {
+  border-color: #b00;
+  background: #faa;
+}
+.message-warning {
+  border-color: #bb0;
+  background: #ffa;
+}
+.message-success {
+  border-color: #0b0;
+  background: #afa;
+}
+.message-info {
+  border-color: #05b;
+  background: #adf;
+}

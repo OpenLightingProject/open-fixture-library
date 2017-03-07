@@ -3,28 +3,25 @@ module.exports = function(options) {
   
   options.title = 'Categories - Open Fixture Library';
 
-  let str = require('../partials/header')(options);
+  let str = require('../includes/header')(options);
 
   str += '<h1>Categories</h1>';
 
-  for (type in register.categories) {
-    const num = register.categories[type].length;
+  str += '<div class="categories grid">';
+  for (cat of Object.keys(register.categories).sort()) {
+    const num = register.categories[cat].length;
     const numFixtures = `${num} fixture${num == 1 ? '' : 's'}`;
-    const link = '/categories/' + encodeURIComponent(type);
+    const link = '/categories/' + encodeURIComponent(cat);
 
-    str += '<section class="type">';
-    str += '<h2>' + (num > 0 ? `<a href="${link}">${type}</a>` : type) + '</h2>';
-
-    str += '<div class="fixtures">' + numFixtures;
-    if (num > 0) {
-      str += ` - <a href="${link}">View them</a>`;
-    }
-    str += '</div>';
-
-    str += '</section>';
+    str += `<a href="${link}" class="card card-category">`;
+    str += require('../includes/svg')({categoryName: cat});
+    str += `<h2>${cat}</h2>`;
+    str += `<div class="fixtures">${numFixtures}</div>`;
+    str += '</a>';
   }
+  str += '</div>'
 
-  str += require('../partials/footer')(options);
+  str += require('../includes/footer')(options);
 
   return str;
 };

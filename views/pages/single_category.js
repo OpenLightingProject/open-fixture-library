@@ -2,28 +2,32 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = function(options) {
-  const {manufacturers, register, type} = options;
+  const {manufacturers, register, category} = options;
+  const categoryClass = category.toLowerCase().replace(/[^\w]+/g, '-');
 
-  options.title = type + ' - Open Fixture Library';
+  options.title = category + ' - Open Fixture Library';
 
 
-  let str = require('../partials/header')(options);
+  let str = require('../includes/header')(options);
 
-  str += `<h1>${type} fixtures</h1>`;
+  str += `<h1>${category} fixtures</h1>`;
 
-  str += '<ul class="fixtures">';
-  
-  for (let filename of register.categories[type]) {
+  str += `<ul class="card list fixtures category-${categoryClass}">`;
+  for (let filename of register.categories[category]) {
     const [man, fix] = filename.split('/');
     const fixData = JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', man, fix + '.json'), 'utf-8'));
     const manData = manufacturers[man];
 
-    str += `<li><a href="/${man}/${fix}">${manData.name} ${fixData.name}</a></li>`;
+    str += `<li><a href="/${man}/${fix}">`
+    str += `<span class="name">${manData.name} ${fixData.name}</span>`;
+    for (const cat of fixData.categories) {
+      str += require('../includes/svg')({categoryName: cat});
+    }
+    str += '</a></li>';
   }
-
   str += '</ul>';
 
-  str += require('../partials/footer')(options);
+  str += require('../includes/footer')(options);
 
   return str;
 };

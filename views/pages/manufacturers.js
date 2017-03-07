@@ -3,35 +3,26 @@ module.exports = function(options) {
 
   options.title = 'Manufacturers - Open Fixture Library';
 
-  let str = require('../partials/header')(options);
+  let str = require('../includes/header')(options);
 
   str += '<h1>Manufacturers</h1>';
 
-  for (man in manufacturers) {
+  str += '<div class="manufacturers grid">';
+
+  // we can rely on register's sorting here
+  for (man in register.manufacturers) {
     const manufacturer = manufacturers[man];
-    const num = (man in register.manufacturers) ? register.manufacturers[man].length : 0;
+    const num = register.manufacturers[man].length;
     const numFixtures = `${num} fixture${num == 1 ? '' : 's'}`;
 
-    str += '<section class="manufacturer">';
-    str += '<h2>' + (num > 0 ? `<a href="${man}">${manufacturer.name}</a>` : manufacturer.name) + '</h2>';
-
-    if ('website' in manufacturer) {
-      str += `<div class="website"><a href="${manufacturer.website}">Website</a></div>`;
-    }
-    if ('comment' in manufacturer) {
-      str += `<p class="comment">${manufacturer.comment}</p>`;
-    }
-
-    str += '<div class="fixtures">' + numFixtures;
-    if (num > 0) {
-      str += ` - <a href="/${man}">View them</a>`;
-    }
-    str += '</div>';
-
-    str += '</section>';
+    str += `<a href="/${man}" class="card">`;
+    str += `<h2>${manufacturer.name}</h2>`;
+    str += `<div class="fixtures">${numFixtures}</div>`;
+    str += '</a>';
   }
+  str += '</div>'
 
-  str += require('../partials/footer')(options);
+  str += require('../includes/footer')(options);
 
   return str;
 };

@@ -1,0 +1,73 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font: 16px/2 LatoLatinRegular, Helvetica, Arial, sans-serif;
+  color: var(--primary-text-dark);
+  background: var(--grey-200);
+  word-wrap: break-word;
+}
+
+h1 {
+  font-family: LatoLatinLight;
+  font-weight: normal;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  margin: 1.5rem 0 1.5rem;
+}
+
+h2 {
+  font-weight: normal;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 1rem 0 0;
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 0.8rem 0 0;
+}
+
+p {
+  margin: 1rem 0;
+}
+
+.clearfix {
+  clear: both;
+}
+
+code {
+  font-family: Inconsolata, 'Roboto Mono', 'Source Code Pro', monospace;
+  color: var(--secondary-text-dark);
+}
+
+h1 code,
+h2 code,
+h3 code,
+code.channel-key {
+  margin: 0 1ex;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: var(--blue-700);
+  fill: var(--icon-dark);
+  transition: all 0.1s;
+}
+a:hover,
+a:focus {
+  color: var(--blue-300);
+  fill: var(--icon-dark-hover);
+}
+
+@media (max-width: $tablet) {
+  html, body {
+    font-size: 14px;
+  }
+}

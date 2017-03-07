@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 const path = require('path');
+const sassMiddleware = require('node-sass-middleware');
 
 // setup port
 app.set('port', (process.env.PORT || 5000));
@@ -11,11 +12,18 @@ app.listen(app.get('port'), () => {
   console.log('Node app is running on port', app.get('port'));
 });
 
+// compile sass
+app.use(sassMiddleware({
+  src: path.join(__dirname, 'views', 'stylesheets'),
+  dest: path.join(__dirname, 'static'),
+  outputStyle: 'compressed'
+}));
+
 // static files that shall be accessible
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'static')));
 
 // views is directory for all template files
-app.set('views', __dirname + '/views');
+app.set('views', path.join(__dirname, 'views'));
 
 // custom renderer
 app.engine('js', (filePath, options, callback) => {
@@ -103,7 +111,7 @@ app.use((request, response, next) => {
   }
   else if (segments.length == 2 && segments[0] === 'categories' && decodeURIComponent(segments[1]) in register.categories) {
     response.render('pages/single_category', {
-      type: decodeURIComponent(segments[1])
+      category: decodeURIComponent(segments[1])
     });
     return;
   }

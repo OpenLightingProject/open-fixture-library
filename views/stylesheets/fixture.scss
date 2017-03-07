@@ -1,0 +1,152 @@
+.fixture-meta {
+  margin: -1.5rem 0 1rem;
+  font-size: 0.8rem;
+  color: var(--secondary-text-dark);
+
+  & > span:not(:last-child)::after {
+    content: ' | ';
+    padding: 0 0.7ex;
+  }
+}
+
+.fixture-info {
+  & > .categories a {
+    display: inline-block;
+    margin: 0 0 0.4rem;
+
+    & svg {
+      height: 2em;
+      width: 2em;
+      vertical-align: middle;
+    }
+  }
+
+  & > .manualURL {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    & > .value {
+      display: inline;
+    }
+  }
+}
+
+section.physical {
+  -moz-columns: 2 300px;
+  -moz-column-gap: 3rem;
+  columns: 2 350px;
+  column-gap: 3rem;
+
+  & > section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
+
+label {
+  display: inline-block;
+  min-width: 10rem;
+  cursor: text;
+  color: var(--secondary-text-dark);
+}
+
+.value {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.hint {
+  display: block;
+  margin: -0.5rem 0 0;
+  color: var(--secondary-text-dark);
+  font-size: 0.8rem;
+}
+
+data:empty {
+  border: 1px solid #cfd6e6;
+  padding: 0 2px;
+  cursor: default;
+
+  &::before {
+    content: '?';
+    display: inline;
+    color: #cfd6e6;
+  }
+}
+
+data.checkbox {
+  display: inline-block;
+  border: 1px solid #cfd6e6;
+  border-radius: 3px;
+  height: 14px;
+  line-height: 14px;
+  padding: 0 0 0 14px;
+  width: 0px;
+  overflow: hidden;
+  vertical-align: middle;
+  color: #cfd6e6;
+  cursor: default;
+
+  &[data-value='false'] {
+    border-color: #b00;
+  }
+  &[data-value='true'] {
+    border-color: #0b5;
+  }
+
+  &::before {
+    display: block;
+    text-align: center;
+    width: 14px;
+    margin-left: -14px;
+  }
+  &:empty::before {
+    content: '?';
+  }
+  &[data-value='false']::before {
+    color: #b00;
+    content: '\d7';
+    font-weight: bold;
+  }
+  &[data-value='true']::before {
+    color: #0b5;
+    content: '\2714';
+  }
+}
+
+/* display mode cards in a 2-col layout */
+@media (min-width: $tablet) {
+  .card.fixture-mode {
+    width: calc(50% - .5rem);
+
+    & > h2 {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    &:nth-of-type(2n+1) {
+      margin-right: .5rem;
+      float: left;
+      clear: left;
+    }
+    &:nth-of-type(2n) {
+      margin-left: .5rem;
+      float: right;
+      clear: right;
+    }
+  }
+
+  .channel-groups > section {
+    width: calc(50% - 1.5em);
+    float: left;
+
+    &:nth-of-type(2n+1) {
+      margin-right: 1.5rem;
+    }
+    &:nth-of-type(2n) {
+      margin-left: 1.5rem;
+    }
+  }
+}
