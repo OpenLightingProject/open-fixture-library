@@ -57,9 +57,8 @@ module.exports = function(options) {
     str += '<ul>';
     fixture.multiByteChannels.forEach(multiByteChannel => {
       str += '<li>';
-      str += multiByteChannel.map(channel => {
-        const name = fixture.availableChannels[channel].name || channel;
-        return `<data class="channel" data-channel="${channel}">${name}</data>`;
+      str += multiByteChannel.map(ch => {
+        return `<data class="channel" data-channel="${ch}">${getChannelHeading(ch, fixture)}</data>`;
       }).join(', ');
       str += `</li>`;
     });
@@ -77,9 +76,8 @@ module.exports = function(options) {
     for (const head in fixture.heads) {
       str += '<li>';
       str += `<strong>${head}:</strong> `;
-      str += fixture.heads[head].map(channel => {
-        const name = fixture.availableChannels[channel].name || channel;
-        return `<data class="channel" data-channel="${channel}">${name}</data>`;
+      str += fixture.heads[head].map(ch => {
+        return `<data class="channel" data-channel="${ch}">${getChannelHeading(ch, fixture)}</data>`;
       }).join(', ');
       str += `</li>`;
     }
@@ -113,11 +111,11 @@ module.exports = function(options) {
     str += `<h3>Channels</h3>`;
     str += `<ol>`
     mode.channels.forEach((ch, i) => {
-      let channel = fixture.availableChannels[ch];
+      const channel = fixture.availableChannels[ch];
 
       str += `<li data-index="${i}">`;
       str += `<details class="channel" data-channel="${ch}">`;
-      str += `<summary>${channel.name || ch}</summary>`;
+      str += `<summary>${getChannelHeading(ch, fixture)}</summary>`;
       str += handleChannel(channel);
       str += `</details>`;
       str += `</li>`;
@@ -132,6 +130,15 @@ module.exports = function(options) {
 
   return str;
 };
+
+function getChannelHeading(key, fixture) {
+  let str = key;
+  if ('name' in fixture.availableChannels[key]) {
+    str = `${fixture.availableChannels[key].name} <code class="channel-key">${key}</code>`;
+  }
+
+  return str;
+}
 
 /**
  * Helper function for easy output of variables.
