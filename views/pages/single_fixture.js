@@ -33,78 +33,80 @@ module.exports = function(options) {
   str += '    </span>';
   str += '  </section>';
 
-  str += '  <section class="comment">';
-  str += '    <label>Comment</label>';
-  str += `    <span class="value"><data data-key="comment">${_(fixture.comment)}</data></span>`;
-  str += '  </section>';
-
-  str += '  <section class="manualURL">';
-  str += '    <label>Manual</label>';
-  str += `    <span class="value"><a href="${_(fixture.manualURL)}"><data data-key="manualURL">${_(fixture.manualURL)}</data></a></span>`;
-  str += '  </section>';
-
-  str += '  <h3 class="physical">Physical data</h3>';
-  str += '  <section class="physical">';
-  str += handlePhysicalData(fixture.physical);
-  str += '  </section>';
-
-  str += '  <h3 class="channel-groups">Channel groups</h3>';
-  str += '  <section class="channel-groups">';
-
-  str += '    <section class="multi-byte-channels">';
-  str += '      <h4>Multi-byte channels</h4>';
-  if ('multiByteChannels' in fixture) {
-    str += '<ul>';
-    fixture.multiByteChannels.forEach(multiByteChannel => {
-      str += '<li>';
-      str += multiByteChannel.map(ch => {
-        return `<data class="channel" data-channel="${ch}">${getChannelHeading(ch, fixture)}</data>`;
-      }).join(', ');
-      str += `</li>`;
-    });
-    str += '</ul>';
+  if ('comment' in fixture) {
+    str += '<section class="comment">';
+    str += '  <label>Comment</label>';
+    str += `  <span class="value"><data data-key="comment">${fixture.comment}</data></span>`;
+    str += '</section>';
   }
-  else {
-    str += 'None';
-  }
-  str += '    </section>'; // .multi-byte-channes
 
-  str += '    <section class="heads">';
-  str += '      <h4>Heads</h4>';
-  if ('heads' in fixture) {
-    str += '<ul>';
-    for (const head in fixture.heads) {
-      str += '<li>';
-      str += `<strong>${head}:</strong> `;
-      str += fixture.heads[head].map(ch => {
-        return `<data class="channel" data-channel="${ch}">${getChannelHeading(ch, fixture)}</data>`;
-      }).join(', ');
-      str += `</li>`;
+  if ('manualURL' in fixture) {
+    str += '<section class="manualURL">';
+    str += '  <label>Manual</label>';
+    str += `  <span class="value"><a href="${fixture.manualURL}"><data data-key="manualURL">${fixture.manualURL}</data></a></span>`;
+    str += '</section>';
+  }
+
+  if ('physical' in fixture) {
+    str += '<h3 class="physical">Physical data</h3>';
+    str += '<section class="physical">';
+    str += handlePhysicalData(fixture.physical);
+    str += '</section>';
+  }
+
+  if ('multiByteChannel' in fixture || 'heads' in fixture) {
+    str += '<h3 class="channel-groups">Channel groups</h3>';
+    str += '<section class="channel-groups">';
+
+    if ('multiByteChannels' in fixture) {
+      str += '<section class="multi-byte-channels">';
+      str += '<h4>Multi-byte channels</h4>';
+      str += '<ul>';
+      fixture.multiByteChannels.forEach(multiByteChannel => {
+        str += '<li>';
+        str += multiByteChannel.map(ch => {
+          return `<data class="channel" data-channel="${ch}">${getChannelHeading(ch, fixture)}</data>`;
+        }).join(', ');
+        str += `</li>`;
+      });
+      str += '</ul>';
+      str += '</section>';
     }
-    str += '</ul>';
-  }
-  else {
-    str += 'None';
-  }
-  str += '    </section>'; // .heads
 
-  str += '  </section>'; // .channel-groups
+    if ('heads' in fixture) {
+      str += '<section class="heads">';
+      str += '<h4>Heads</h4>';
+      str += '<ul>';
+      for (const head in fixture.heads) {
+        str += '<li>';
+        str += `<strong>${head}:</strong> `;
+        str += fixture.heads[head].map(ch => {
+          return `<data class="channel" data-channel="${ch}">${getChannelHeading(ch, fixture)}</data>`;
+        }).join(', ');
+        str += `</li>`;
+      }
+      str += '</ul>';
+      str += '</section>';
+    }
+
+    str += '  </section>'; // .channel-groups
+  }
 
   str += '</section>'; // .fixture-info
 
   fixture.modes.forEach(mode => {
-    str += '<section class="fixture-mode card">';
-    str += `<h2>${mode.name} <code>${_(mode.shortName)}</code></h2>`;
+    let heading = mode.name;
+    if ('shortName' in mode) {
+      heading += ` <code>${mode.shortName}</code>`;
+    }
 
-    str += '<h3>Physical overrides</h3>';
+    str += '<section class="fixture-mode card">';
+    str += `<h2>${heading}</h2>`;
+
     if ('physical' in mode) {
+      str += '<h3>Physical overrides</h3>';
       str += '<section class="physical physical-override">';
       str += handlePhysicalData(mode.physical);
-      str += '</section>';
-    }
-    else {
-      str += '<section class="physical physical-override empty">';
-      str += '  No physical overrides';
       str += '</section>';
     }
 
@@ -117,11 +119,11 @@ module.exports = function(options) {
       str += `<details class="channel" data-channel="${ch}">`;
       str += `<summary>${getChannelHeading(ch, fixture)}</summary>`;
       str += handleChannel(channel);
-      str += `</details>`;
-      str += `</li>`;
+      str += '</details>';
+      str += '</li>';
     });
-    str += `</ol>`;
-    str += `</section>`;
+    str += '</ol>';
+    str += '</section>';
   });
 
   str += '<div class="clearfix"></div>';
@@ -151,77 +153,117 @@ function _(variable) {
 }
 
 function handlePhysicalData(physical) {
-  let str = `<section class="physical-dimensions">
-    <label>Dimensions</label>
-    <span class="value">
-      <data data-key="physical-dimensions-0">${physical.dimensions ? physical.dimensions[0] : ''}</data> &times;
-      <data data-key="physical-dimensions-1">${physical.dimensions ? physical.dimensions[1] : ''}</data> &times;
-      <data data-key="physical-dimensions-2">${physical.dimensions ? physical.dimensions[2] : ''}</data>mm
-      <span class="hint">width &times; height &times; depth</span>
-    </span>
-  </section>`;
+  let str = '';
 
-  str += `<section class="physical-weight">
-    <label>Weight</label>
-    <span class="value"><data data-key="physical-weight">${_(physical.weight)}</data>kg</span>
-  </section>`;
+  if ('dimensions' in physical) {
+    str += `<section class="physical-dimensions">
+      <label>Dimensions</label>
+      <span class="value">
+        <data data-key="physical-dimensions-0">${physical.dimensions[0]}</data> &times;
+        <data data-key="physical-dimensions-1">${physical.dimensions[1]}</data> &times;
+        <data data-key="physical-dimensions-2">${physical.dimensions[2]}</data>mm
+        <span class="hint">width &times; height &times; depth</span>
+      </span>
+    </section>`;
+  }
 
-  str += `<section class="physical-power">
-    <label>Power</label>
-    <span class="value"><data data-key="physical-power">${_(physical.power)}</data>W</span>
-  </section>`;
+  if ('weight' in physical) {
+    str += `<section class="physical-weight">
+      <label>Weight</label>
+      <span class="value"><data data-key="physical-weight">${physical.weight}</data>kg</span>
+    </section>`;
+  }
 
-  str += `<section class="physical-DMXconnector">
-    <label>DMX connector</label>
-    <span class="value"><data data-key="physical-DMXconnector">${_(physical.DMXconnector)}</data></span>
-  </section>`;
+  if ('power' in physical) {
+    str += `<section class="physical-power">
+      <label>Power</label>
+      <span class="value"><data data-key="physical-power">${physical.power}</data>W</span>
+    </section>`;
+  }
 
+  if ('DMXconnector' in physical) {
+    str += `<section class="physical-DMXconnector">
+      <label>DMX connector</label>
+      <span class="value"><data data-key="physical-DMXconnector">${physical.DMXconnector}</data></span>
+    </section>`;
+  }
 
-  str += '<section class="physical-bulb">';
-  str += '  <h4>Bulb</h4>';
-  str += `  <section class="physical-bulb-type">
-    <label>Bulb type</label>
-    <span class="value"><data data-key="physical-bulb-type">${physical.bulb ? _(physical.bulb.type) : ''}</data></span>
-  </section>`;
-  str += `  <section class="physical-bulb-colorTemperature">
-    <label>Color temperature</label>
-    <span class="value"><data data-key="physical-bulb-colorTemperature">${physical.bulb ? _(physical.bulb.colorTemperature) : ''}</data>K</span>
-  </section>`;
-  str += `  <section class="physical-bulb-lumens">
-    <label>Lumens</label>
-    <span class="value"><data data-key="physical-bulb-lumens">${physical.bulb ? _(physical.bulb.lumens) : ''}</data></span>
-  </section>`;
-  str += '</section>';
+  if ('bulb' in physical) {
+    str += '<section class="physical-bulb">';
+    str += '<h4>Bulb</h4>';
 
+    if ('type' in physical.bulb) {
+      str += `<section class="physical-bulb-type">
+        <label>Bulb type</label>
+        <span class="value"><data data-key="physical-bulb-type">${physical.bulb.type}</data></span>
+      </section>`;
+    }
 
-  str += '<section class="physical-lens">';
-  str += '  <h4>Lens</h4>';
-  str += `  <section class="physical-lens-name">
-    <label>Name</label>
-    <span class="value"><data data-key="physical-lens-name">${physical.lens ? _(physical.lens.name) : ''}</data></span>
-  </section>`;
-  str += `  <section class="physical-lens-degreesMinMax">
-    <label>Light cone</label>
-    <span class="value"><data data-key="physical-lens-degreesMin">${physical.lens && physical.lens.degreesMinMax ? _(physical.lens.degreesMinMax[0]) : ''}</data>..<data data-key="physical-lens-degreesMin">${physical.lens && physical.lens.degreesMinMax ? _(physical.lens.degreesMinMax[1]) : ''}</data>°</span>
-  </section>`;
-  str += '</section>';
+    if ('colorTemperature' in physical.bulb) {
+      str += `<section class="physical-bulb-colorTemperature">
+        <label>Color temperature</label>
+        <span class="value"><data data-key="physical-bulb-colorTemperature">${physical.bulb.colorTemperature}</data>K</span>
+      </section>`;
+    }
 
+    if ('lumens' in physical.bulb) {
+      str += `<section class="physical-bulb-lumens">
+        <label>Lumens</label>
+        <span class="value"><data data-key="physical-bulb-lumens">${physical.bulb.lumens}</data></span>
+      </section>`;
+    }
 
-  str += '<section class="physical-focus">';
-  str += '  <h4>Focus</h4>';
-  str += `  <section class="physical-focus-type">
-    <label>Type</label>
-    <span class="value"><data data-key="physical-focus-type">${physical.focus ? _(physical.focus.type) : ''}</data></span>
-  </section>`;
-  str += `  <section class="physical-focus-panMax">
-    <label>Max. pan</label>
-    <span class="value"><data data-key="physical-focus-panMax">${physical.focus ? _(physical.focus.panMax) : ''}</data>°</span>
-  </section>`
-  str += `  <section class="physical-focus-tiltMax">
-    <label>Max. tilt</label>
-    <span class="value"><data data-key="physical-focus-tiltMax">${physical.focus ? _(physical.focus.tiltMax) : ''}</data>°</span>
-  </section>`;
-  str += '</section>';
+    str += '</section>';
+  }
+
+  if ('lens' in physical) {
+    str += '<section class="physical-lens">';
+    str += '<h4>Lens</h4>';
+
+    if ('name' in physical.lens) {
+      str += `<section class="physical-lens-name">
+        <label>Name</label>
+        <span class="value"><data data-key="physical-lens-name">${physical.lens.name}</data></span>
+      </section>`;
+    }
+
+    if ('degreesMinMax' in physical.lens) {
+      str += `<section class="physical-lens-degreesMinMax">
+        <label>Light cone</label>
+        <span class="value"><data data-key="physical-lens-degreesMin">${physical.lens.degreesMinMax[0]}</data>..<data data-key="physical-lens-degreesMin">${physical.lens.degreesMinMax[1]}</data>°</span>
+      </section>`;
+    }
+
+    str += '</section>';
+  }
+
+  if ('focus' in physical) {
+    str += '<section class="physical-focus">';
+    str += '<h4>Focus</h4>';
+
+    if ('type' in physical.focus) {
+      str += `<section class="physical-focus-type">
+        <label>Type</label>
+        <span class="value"><data data-key="physical-focus-type">${physical.focus.type}</data></span>
+      </section>`;
+    }
+
+    if ('panMax' in physical.focus) {
+      str += `<section class="physical-focus-panMax">
+        <label>Max. pan</label>
+        <span class="value"><data data-key="physical-focus-panMax">${physical.focus.panMax}</data>°</span>
+      </section>`;
+    }
+
+    if ('tiltMax' in physical.focus) {
+      str += `<section class="physical-focus-tiltMax">
+        <label>Max. tilt</label>
+        <span class="value"><data data-key="physical-focus-tiltMax">${physical.focus.tiltMax}</data>°</span>
+      </section>`;
+    }
+
+    str += '</section>';
+  }
 
   return str;
 }
@@ -229,43 +271,57 @@ function handlePhysicalData(physical) {
 function handleChannel(channel) {
   let str = `<section class="channel-type">
     <label>Type</label>
-    <span class="value"><data data-key="channel-type">${_(channel.type)}</data></span>
+    <span class="value"><data data-key="channel-type">${channel.type}</data></span>
   </section>`;
 
-  str += `<section class="channel-color">
-    <label>Color</label>
-    <span class="value"><data data-key="channel-color">${_(channel.color)}</data> <span class="hint">(only useful if <code>Type</code> is <code>SingleColor</code>)</span></span>
-  </section>`;
+  if ('color' in channel) {
+    str += `<section class="channel-color">
+      <label>Color</label>
+      <span class="value"><data data-key="channel-color">${channel.color}</data></span>
+    </section>`;
+  }
 
-  str += `<section class="channel-defaultValue">
-    <label>Default value</label>
-    <span class="value"><data data-key="channel-defaultValue">${_(channel.defaultValue)}</data></span>
-  </section>`;
+  if ('defaultValue' in channel) {
+    str += `<section class="channel-defaultValue">
+      <label>Default value</label>
+      <span class="value"><data data-key="channel-defaultValue">${channel.defaultValue}</data></span>
+    </section>`;
+  }
 
-  str += `<section class="channel-highlightValue">
-    <label>Highlight value</label>
-    <span class="value"><data data-key="channel-highlightValue">${_(channel.highlightValue)}</data></span>
-  </section>`;
+  if ('highlightValue' in channel) {
+    str += `<section class="channel-highlightValue">
+      <label>Highlight value</label>
+      <span class="value"><data data-key="channel-highlightValue">${channel.highlightValue}</data></span>
+    </section>`;
+  }
 
-  str += `<section class="channel-invert">
-    <label>Invert</label>
-    <span class="value"><data class="checkbox" data-key="channel-invert" data-value="${channel.invert}">${_(channel.invert)}</data></span>
-  </section>`;
+  if ('invert' in channel) {
+    str += `<section class="channel-invert">
+      <label>Invert</label>
+      <span class="value"><data class="checkbox" data-key="channel-invert" data-value="${channel.invert}">${channel.invert}</data></span>
+    </section>`;
+  }
 
-  str += `<section class="channel-constant">
-    <label>Constant</label>
-    <span class="value"><data class="checkbox" data-key="channel-constant" data-value="${channel.constant}">${_(channel.constant)}</data></span>
-  </section>`;
+  if ('constant' in channel) {
+    str += `<section class="channel-constant">
+      <label>Constant</label>
+      <span class="value"><data class="checkbox" data-key="channel-constant" data-value="${channel.constant}">${channel.constant}</data></span>
+    </section>`;
+  }
 
-  str += `<section class="channel-crossfade">
-    <label>Crossfade</label>
-    <span class="value"><data class="checkbox" data-key="channel-crossfade" data-value="${channel.crossfade}">${_(channel.crossfade)}</data></span>
-  </section>`;
+  if ('crossfade' in channel) {
+    str += `<section class="channel-crossfade">
+      <label>Crossfade</label>
+      <span class="value"><data class="checkbox" data-key="channel-crossfade" data-value="${channel.crossfade}">${channel.crossfade}</data></span>
+    </section>`;
+  }
 
-  str += `<section class="channel-precedence">
-    <label>Precedence</label>
-    <span class="value"><data data-key="channel-precedence">${_(channel.precedence)}</data></span>
-  </section>`;
+  if ('precedence' in channel) {
+    str += `<section class="channel-precedence">
+      <label>Precedence</label>
+      <span class="value"><data data-key="channel-precedence">${channel.precedence}</data></span>
+    </section>`;
+  }
 
   if ('capabilities' in channel) {
     str += '<details class="channel-capabilities">';
@@ -313,12 +369,6 @@ function handleChannel(channel) {
 
     str += '    </tbody>';
     str += '  </table>';
-    str += '</details>';
-  }
-  else {
-    str += '<details class="channel-capabilities empty">';
-    str += '  <summary>No capabilities</summary>';
-    str += '  <table><tbody></tbody></table>';
     str += '</details>';
   }
 
