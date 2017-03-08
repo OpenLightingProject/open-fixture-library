@@ -67,6 +67,10 @@ fs.readFile(path.join(__dirname, 'fixtures', 'register.json'), 'utf8', (error, d
   register = JSON.parse(data);
 });
 
+// load available plugins
+const plugins = fs.readdirSync(path.join(__dirname, 'plugins'));
+
+
 app.get('/', (request, response) => {
   response.render('pages/index');
 });
@@ -102,14 +106,33 @@ app.use((request, response, next) => {
     });
     return;
   }
-  else if (segments.length == 2 && segments[0] in manufacturers && register.manufacturers[segments[0]].indexOf(segments[1]) != -1) {
-    response.render('pages/single_fixture', {
-      man: segments[0],
-      fix: segments[1]
-    });
-    return;
+
+  if (segments.length == 2 && segments[0] in manufacturers) {
+    const man = segments[0];
+    const fix = segments[1];
+
+    if (register.manufacturers[man].indexOf(fix) != -1) {
+      response.render('pages/single_fixture', {
+        man: man,
+        fix: fix
+      });
+      return;
+    }
+
+    const [key, plugin] = fix.split('.');
+    if (plugins.indexOf(plugin) != -1) {
+      const exporter = require(path.join(__dirname, 'plugins', plugin, 'export'));
+      const outfiles = exporter.export([{
+        'manufacturerKey': man,
+        'fixtureKey': key
+      }]);
+
+      downloadFiles(response, outfiles, plugin);
+      return;
+    }
   }
-  else if (segments.length == 2 && segments[0] === 'categories' && decodeURIComponent(segments[1]) in register.categories) {
+
+  if (segments.length == 2 && segments[0] === 'categories' && decodeURIComponent(segments[1]) in register.categories) {
     response.render('pages/single_category', {
       category: decodeURIComponent(segments[1])
     });
@@ -121,6 +144,33 @@ app.use((request, response, next) => {
   response.status(404).render('pages/404');
 });
 
+
+function downloadFiles(response, files, zipname) {
+  if (files.length == 1) {
+    response
+      .status(201)
+      .attachment(files[0].name)
+      .type(files[0].mimetype)
+      .send(Buffer.from(files[0].content));
+    return;
+  }
+
+  // else zip all together
+  const zip = new require('node-zip')();
+  for (const file of files) {
+    zip.file(file.name, file.content);
+  }
+  const data = zip.generate({
+    base64: false,
+    compression: 'DEFLATE'
+  });
+
+  response
+    .status(201)
+    .attachment('ofl_export_' + zipname + '.zip')
+    .type('application/zip')
+    .send(Buffer.from(data, 'binary'));
+}
 
 function getMessages() {
   if (messages.length > 0) {

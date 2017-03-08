@@ -11,7 +11,7 @@ module.exports = function(options) {
 
   let str = require('../includes/header')(options);
 
-  str += `<h1><a href="/${man}"><data data-key="manufacturer">${manufacturer.name}</data></a> <data data-key="name">${fixture.name}</data> <code><data data-key="shortName">${_(fixture.shortName)}</data></code></h1>`;
+  str += `<h1><a href="/${man}"><data data-key="manufacturer">${manufacturer.name}</data></a> <data data-key="name">${fixture.name}</data> <code><data data-key="shortName">${_(fixture.shortName)}</data></code><a href="/${man}/${fix}.qlcplus">QLC+</a></h1>`;
 
   str += '<section class="fixture-meta">';
   str += `<span class="last-modify-date">Last modified:&nbsp;<date>${fixture.meta.lastModifyDate}</date></span>`;
