@@ -56,7 +56,7 @@ module.exports = function(options) {
 
   str += '<section class="fixture-shortname">';
   str += '<label>Unique short name</label>'
-  str += '<input required />'
+  str += '<input placeholder="Defaults to name" />'
   str += '</section>'
 
   str += '<section class="categories">';
@@ -66,18 +66,21 @@ module.exports = function(options) {
     str += `<option>${cat}</option>`;
   }
   str += '</select>';
+  str += '</section>'
 
   str += '<section class="comment">';
   str += '<label>Comment</label>'
   str += '<textarea></textarea>'
   str += '</section>'
 
-  str += '<section class="website">';
-  str += '<label>Website</label>'
+  str += '<section class="manual">';
+  str += '<label>Manual URL</label>'
   str += '<input />'
   str += '</section>'
 
   str += '</section>'
+
+  str += '<button class="save-fixture">Save</button>'
 
 
   str += '<script src="/client-fixture-editor.js"></script>';
