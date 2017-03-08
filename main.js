@@ -83,6 +83,10 @@ app.get('/manufacturers', (request, response) => {
   response.render('pages/manufacturers');
 });
 
+app.get('/fixture-editor', (request, response) => {
+  response.render('pages/fixture_editor');
+});
+
 app.get('/search', (request, response) => {
   response.render('pages/search', {
     query: request.query
