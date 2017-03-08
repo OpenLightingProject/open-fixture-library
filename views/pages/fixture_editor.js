@@ -5,10 +5,12 @@ module.exports = function(options) {
 
   str += '<h1>Fixture Editor</h1>';
 
-  str += '<section class="manufacturer">';
-  str += '<h3>Manufacturer</h3>';
+  // Manufacturer
+  str += '<section class="manufacturer card">';
+  str += '<h2>Manufacturer</h2>';
 
   str += '<section class="manufacturer-shortname">';
+  str += '<label>Choose from list</label>'
   str += `<select required>`;
   for (const man in options.manufacturers) {
     str += `<option value="${man}">${options.manufacturers[man].name}</option>`;
@@ -41,6 +43,42 @@ module.exports = function(options) {
   str += '</section>'
 
   str += '</section>'
+
+
+  // Fixture info
+  str += '<section class="fixture-info card">';
+  str += '<h2>Fixture info</h2>';
+
+  str += '<section class="fixture-name">';
+  str += '<label>Name</label>'
+  str += '<input required />'
+  str += '</section>'
+
+  str += '<section class="fixture-shortname">';
+  str += '<label>Unique short name</label>'
+  str += '<input required />'
+  str += '</section>'
+
+  str += '<section class="categories">';
+  str += '<label>Category(s)</label>'
+  str += `<select multiple required size="${Object.keys(options.register.categories).length}">`;
+  for (const cat in options.register.categories) {
+    str += `<option>${cat}</option>`;
+  }
+  str += '</select>';
+
+  str += '<section class="comment">';
+  str += '<label>Comment</label>'
+  str += '<textarea></textarea>'
+  str += '</section>'
+
+  str += '<section class="website">';
+  str += '<label>Website</label>'
+  str += '<input />'
+  str += '</section>'
+
+  str += '</section>'
+
 
   str += '<script src="/client-fixture-editor.js"></script>';
 
