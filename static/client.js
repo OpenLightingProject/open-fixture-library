@@ -1,21 +1,32 @@
-"use strict";
+'use strict';
 
 var logo;
 var searchInput;
 
-window.addEventListener("load", function(event) {
-  logo = document.querySelector("#home-logo");
-  searchInput = document.querySelector("header input");
+window.addEventListener('load', function() {
+  logo = document.querySelector('#home-logo');
+  searchInput = document.querySelector('#header input');
 
   checkSearchInput();
 
+  searchInput.addEventListener('focus', hideLogo, true);
+  searchInput.addEventListener('blur', checkSearchInput, true);
 
-  searchInput.addEventListener("focus", hideLogo, true);
-  searchInput.addEventListener("blur", checkSearchInput, true);
-});
+  var downloadButton = document.querySelector('.download-button');
+
+  if (downloadButton !== undefined) {
+    var links = downloadButton.querySelectorAll('a');
+
+    for (var i=0; i<links.length; i++) {
+      links[i].addEventListener('click', function() {
+        this.blur();
+      }, false);
+    }
+  }
+}, false);
 
 function hideLogo() {
-  logo.classList.add("searchUsed");
+  logo.classList.add('searchUsed');
 }
 
 function checkSearchInput() {
@@ -28,5 +39,5 @@ function checkSearchInput() {
 }
 
 function showLogo() {
-  logo.classList.remove("searchUsed");
+  logo.classList.remove('searchUsed');
 }
