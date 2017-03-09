@@ -25,7 +25,7 @@ module.exports = function(options) {
   str += '</div>';
 
   str += '<div class="download-button">';
-  str += '<span class="title">Download as &hellip;</span>';
+  str += '<a href="#" class="title">Download as &hellip;</a>';
   str += '<ul>';
   for (const plugin in plugins) {
     if ('export' in plugins[plugin]) {

@@ -71,16 +71,26 @@
     }
   }
 
-  &:hover,
-  &:focus-within {
-    & > .title {
-      border-radius: 2px 2px 0 0;
-      background: var(--light-green-700);
-    }
+  &:hover > .title,
+  & > .title:focus,
+  & > .title:active {
+    border-radius: 2px 2px 0 0;
+    background: var(--light-green-700);
+  }
 
-    & > ul {
-      left: 0;
-    }
+  &:hover > ul,
+  & > .title:focus + ul,
+  & > .title:active + ul {
+    left: 0;
+  }
+
+  /* single rule since unsupporting browsers skip the whole rule */
+  &:focus-within > .title {
+    border-radius: 2px 2px 0 0;
+    background: var(--light-green-700);
+  }
+  &:focus-within > ul {
+    left: 0;
   }
 }
 
