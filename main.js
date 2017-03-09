@@ -32,6 +32,7 @@ app.engine('js', (filePath, options, callback) => {
   let opts = {
     manufacturers: manufacturers,
     register: register,
+    plugins: plugins,
     baseDir: __dirname,
     messages: getMessages()
   };
@@ -68,7 +69,10 @@ fs.readFile(path.join(__dirname, 'fixtures', 'register.json'), 'utf8', (error, d
 });
 
 // load available plugins
-const plugins = fs.readdirSync(path.join(__dirname, 'plugins'));
+let plugins = {};
+for (const filename of fs.readdirSync(path.join(__dirname, 'plugins'))) {
+  plugins[path.basename(filename, '.js')] = require(path.join(__dirname, 'plugins', filename));
+}
 
 
 app.get('/', (request, response) => {
@@ -120,9 +124,8 @@ app.use((request, response, next) => {
     }
 
     const [key, pluginName] = fix.split('.');
-    if (plugins.indexOf(pluginName + '.js') != -1) {
-      const plugin = require(path.join(__dirname, 'plugins', pluginName));
-      const outfiles = plugin.export([{
+    if (pluginName in plugins && 'export' in plugins[pluginName]) {
+      const outfiles = plugins[pluginName].export([{
         manufacturerKey: man,
         fixtureKey: key
       }], {
@@ -130,7 +133,7 @@ app.use((request, response, next) => {
         manufacturers: manufacturers
       });
 
-      downloadFiles(response, outfiles, plugin);
+      downloadFiles(response, outfiles, pluginName);
       return;
     }
   }

@@ -1,3 +1,5 @@
+
+
 .fixture-meta {
   margin: -1.5rem 0 1rem;
   font-size: 0.8rem;
@@ -6,6 +8,79 @@
   & > span:not(:last-child)::after {
     content: ' | ';
     padding: 0 0.7ex;
+  }
+}
+
+.download-button {
+  display: block;
+  position: relative;
+  margin: 0 1ex 1em auto;
+  width: 14em;
+
+  & > .title {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.5ex 2ex;
+    border-radius: 2px;
+    background: var(--light-green-500);
+    font-family: LatoLatinSemibold;
+    color: var(--primary-text-light);
+    cursor: pointer;
+    box-shadow: 0 2px 2px rgba(#000, 0.2);
+    transition: all 0.2s;
+
+    /* down arrow */
+    &::before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-width: 0.4em 0.4em 0;
+      border-style: solid;
+      border-color: currentcolor transparent transparent;
+      float: right;
+      margin: 0.8em 0 0 1ex;
+    }
+  }
+
+  & > ul {
+    position: absolute;
+    left: -9999px;
+    top: calc(2em + 1ex);
+    padding: 0.7em 0;
+    margin: 0;
+    width: 100%;
+    list-style: none;
+    background: var(--grey-50);
+    border-radius: 0 0 2px 2px;
+    box-shadow: 0 2px 2px rgba(#000, 0.2);
+    z-index: 90;
+
+    & a {
+      display: block;
+      padding: 0.2ex 2ex;
+      color: var(--primary-text-dark);
+      transition: background 0.2s;
+    }
+
+    & a:hover,
+    & a:focus {
+      background: var(--grey-200);
+      outline: 0;
+    }
+  }
+
+  &:hover,
+  &:focus-within {
+    & > .title {
+      border-radius: 2px 2px 0 0;
+      background: var(--light-green-700);
+    }
+
+    & > ul {
+      left: 0;
+    }
   }
 }
 
@@ -147,6 +222,25 @@ data.checkbox {
     }
     &:nth-of-type(2n) {
       margin-left: 1.5rem;
+    }
+  }
+}
+
+/* move download button to the right */
+@media (min-width: 650px) {
+  .fixture-header {
+    display: flex;
+    flex-direction: row;
+
+    & > .title {
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+
+    & > .download-button {
+      flex-grow: 0;
+      flex-shrink: 0;
+      margin: 1.5rem 0 0;
     }
   }
 }
