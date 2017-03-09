@@ -22,26 +22,24 @@ useExistingMan.addEventListener("click", function() {
 var saveButton = document.querySelector('.save-fixture');
 saveButton.addEventListener("click", function() {
   var man;
-  var manData;
+  var manData = {};
   var fixData = {};
 
   if (!manShortname.hidden) {
-    man = manShortname.querySelector("select").value;
+    man = readSingle(".manufacturer-shortname select");
   }
   else {
-    man = newMan.querySelector(".new-manufacturer-shortname input").value;
-    manData = {
-      name: newMan.querySelector(".new-manufacturer-name input").value,
-      website: newMan.querySelector(".new-manufacturer-website input").value,
-      comment: newMan.querySelector(".new-manufacturer-comment input").value,
-    };
+    man = readSingle(".new-manufacturer-shortname input");
+    readSingle(".new-manufacturer-name input",    manData, "name");
+    readSingle(".new-manufacturer-website input", manData, "website");
+    readSingle(".new-manufacturer-comment input", manData, "comment");
   }
 
-  readInput('.fixture-name input',      fixData, "name");
-  readInput('.fixture-shortname input', fixData, "shortname");
-  readSelect('.categories select',      fixData, "categories");
-  readInput('.comment textarea',        fixData, "comment");
-  readInput('.manual input',            fixData, "manualURL");
+  readSingle('.fixture-name input',      fixData, "name");
+  readSingle('.fixture-shortname input', fixData, "shortname");
+  readMultiple('.categories select',     fixData, "categories");
+  readSingle('.comment textarea',        fixData, "comment");
+  readSingle('.manual input',            fixData, "manualURL");
 
   console.log("\n### Generated data:");
   console.log(man);
@@ -50,29 +48,40 @@ saveButton.addEventListener("click", function() {
 });
 
 
-function readInput(selector, data, property) {
+function readSingle(selector, data, property) {
   var input = document.querySelector(selector);
-  if (input.value == '') {
-    if (input.required) {
-      console.error(selector + ' is required and is empty');
-    }
+  if (!input.validity.valid) {
+      console.error(selector + ' is invalid');
   }
-  else {
-    data[property] = input.value;
+  else if (input.value) {
+    if (data && property) {
+      data[property] = input.value;
+    }
+    else {
+      return input.value;
+    }
   }
 }
 
-function readSelect(selector, data, property) {
+function readMultiple(selector, data, property) {
   var select = document.querySelector(selector);
 
-  for (var option of select.selectedOptions) {
-    if (data[property] === undefined) {
-      data[property] = [];
-    }
-    data[property].push(option.value);
+  if (!select.validity.valid) {
+    console.error(selector + ' is invalid');
   }
+  else {
+    if (select.selectedOptions.length > 0) {
+      var output = [];
+      for (var option of select.selectedOptions) {
+        output.push(option.value);
+      }
 
-  if (data[property] === undefined && select.required) {
-    console.error(selector + ' is required and is empty');
+      if (data && property) {
+        data[property] = output;
+      }
+      else {
+        return output;
+      }
+    }
   }
 }
