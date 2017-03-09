@@ -14,7 +14,7 @@ module.exports = function(options) {
   <script type="text/javascript" src="/client.js"></script>
 </head>
 <body>
-  <header>
+  <header id="header">
     <nav>
       <div id="left-nav">
         <a href="/" id="home-logo" title="Open Fixture Library">Open Fixture Library</a>
