@@ -209,12 +209,12 @@ data.checkbox {
       overflow: hidden;
     }
 
-    &:nth-of-type(2n+1) {
+    &:nth-of-type(even) {
       margin-right: .5rem;
       float: left;
       clear: left;
     }
-    &:nth-of-type(2n) {
+    &:nth-of-type(odd) {
       margin-left: .5rem;
       float: right;
       clear: right;
