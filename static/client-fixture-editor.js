@@ -18,6 +18,12 @@ useExistingMan.addEventListener("click", function() {
 });
 
 
+// Clone physical template into fixture 
+var templatePhysical = document.querySelector('.template-physical');
+var physical = document.querySelector('.physical');
+physical.appendChild(document.importNode(templatePhysical.content, true));
+
+
 // Generate json file(s)
 var saveButton = document.querySelector('.save-fixture');
 saveButton.addEventListener("click", function() {

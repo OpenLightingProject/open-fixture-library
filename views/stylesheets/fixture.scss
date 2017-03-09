@@ -113,17 +113,17 @@
       display: inline;
     }
   }
-}
 
-section.physical {
-  -moz-columns: 2 300px;
-  -moz-column-gap: 3rem;
-  columns: 2 350px;
-  column-gap: 3rem;
+  section.physical {
+    -moz-columns: 2 300px;
+    -moz-column-gap: 3rem;
+    columns: 2 350px;
+    column-gap: 3rem;
 
-  & > section {
-    page-break-inside: avoid;
-    break-inside: avoid;
+    & > section {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
   }
 }
 

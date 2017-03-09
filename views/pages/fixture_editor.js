@@ -80,6 +80,22 @@ module.exports = function(options) {
 
   str += '</section>'
 
+
+  // Fixture physical
+  str += '<section class="physical card">';
+  str += '<h2>Physical data</h2>';
+  str += '</section>';
+
+
+  // Physical template
+  str += '<template class="template-physical">';
+  str += '<section class="power">';
+  str += '<label>Power</label>'
+  str += '<input />'
+  str += '</section>'
+  str += '</template>';
+
+
   str += '<button class="save-fixture">Save</button>'
 
 
