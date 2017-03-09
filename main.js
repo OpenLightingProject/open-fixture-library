@@ -119,13 +119,16 @@ app.use((request, response, next) => {
       return;
     }
 
-    const [key, plugin] = fix.split('.');
-    if (plugins.indexOf(plugin) != -1) {
-      const exporter = require(path.join(__dirname, 'plugins', plugin, 'export'));
-      const outfiles = exporter.export([{
-        'manufacturerKey': man,
-        'fixtureKey': key
-      }]);
+    const [key, pluginName] = fix.split('.');
+    if (plugins.indexOf(pluginName + '.js') != -1) {
+      const plugin = require(path.join(__dirname, 'plugins', pluginName));
+      const outfiles = plugin.export([{
+        manufacturerKey: man,
+        fixtureKey: key
+      }], {
+        baseDir: __dirname,
+        manufacturers: manufacturers
+      });
 
       downloadFiles(response, outfiles, plugin);
       return;
