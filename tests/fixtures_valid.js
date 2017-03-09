@@ -116,18 +116,21 @@ function checkFixture(fixture, filename, resolve) {
       }
       usedModeShortNames.push(modeShortName);
 
+      if (/\bmode\b/i.test(mode.name) || /\bmode\b/i.test(mode.shortName)) {
+        resolveError(`mode name and shortName must not contain the word 'mode' in mode '${modeShortName}' (#${i}) in file '${filename}'.`, null, resolve);
+      }
 
       if ('physical' in mode
         && 'lens' in mode.physical
         && 'degreesMinMax' in mode.physical.lens
         && mode.physical.lens.degreesMinMax[0] > mode.physical.lens.degreesMinMax[1]
         ) {
-        resolveError(`physical.lens.degreesMinMax is an invalid range in mode #${i} in file '${filename}'.`, null, resolve);
+        resolveError(`physical.lens.degreesMinMax is an invalid range in mode '${modeShortName}' (#${i}) in file '${filename}'.`, null, resolve);
       }
 
       for (const ch of mode.channels) {
-        if (!fixture.availableChannels[ch]) {
-          resolveError(`channel '${ch}' referenced from mode #${i} but missing in file '${filename}'.`, null, resolve);
+        if (!(ch in fixture.availableChannels) && ch !== null) {
+          resolveError(`channel '${ch}' referenced from mode '${modeShortName}' (#${i}) but missing in file '${filename}'.`, null, resolve);
         }
         usedChannels.push(ch);
       }
@@ -172,7 +175,9 @@ function checkFixture(fixture, filename, resolve) {
         for (let i=0; i<channel.capabilities.length; i++) {
           const cap = channel.capabilities[i];
 
-          if (cap.range[0] > cap.range[1]) {
+          if (cap.range[0] > cap.range[1]
+            || (i > 0 && cap.range[0] <= channel.capabilities[i-1].range[1])
+            ) {
             resolveError(`range invalid in capability #${i} in channel '${ch}' in file '${filename}'.`, null, resolve);
           }
 

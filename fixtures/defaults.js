@@ -57,7 +57,7 @@ module.exports = {
   "heads": {},
   "modes": [ // required
     {
-      "name": "1-channel Mode", // required
+      "name": "1-channel", // required
       "shortName": null, // default: name
       "physical": {},
       "channels": ["channel key"] // required
