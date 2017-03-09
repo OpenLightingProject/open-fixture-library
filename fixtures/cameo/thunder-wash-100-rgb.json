@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["FloEdelmann"],
     "createDate": "2017-02-24",
-    "lastModifyDate": "2017-03-01"
+    "lastModifyDate": "2017-03-09"
   },
   "physical": {
     "dimensions": [310, 70, 70],
@@ -59,7 +59,7 @@
           "center": true
         },
         {
-          "range": [250, 255],
+          "range": [251, 255],
           "name": "Strobe open",
           "hideInMenu": true
         }
@@ -109,7 +109,7 @@
           "center": true
         },
         {
-          "range": [250, 255],
+          "range": [251, 255],
           "name": "Strobe open",
           "hideInMenu": true
         }
@@ -262,42 +262,42 @@
   },
   "modes": [
     {
-      "name": "1-channel Mode",
+      "name": "1-channel",
       "shortName": "1ch",
       "channels": ["strobe1"]
     },
     {
-      "name": "2-channel Mode 1",
+      "name": "2-channel 1",
       "shortName": "2ch1",
       "channels": ["Dimmer", "Color Macros"]
     },
     {
-      "name": "2-channel Mode 2",
+      "name": "2-channel 2",
       "shortName": "2ch2",
       "channels": ["Dimmer", "strobe2"]
     },
     {
-      "name": "3-channel Mode 1",
+      "name": "3-channel 1",
       "shortName": "3ch1",
       "channels": ["Dimmer", "strobe2", "Flash Duration"]
     },
     {
-      "name": "3-channel Mode 2",
+      "name": "3-channel 2",
       "shortName": "3ch2",
       "channels": ["Dimmer", "strobe2", "Color Macros"]
     },
     {
-      "name": "3-channel Mode 3",
+      "name": "3-channel 3",
       "shortName": "3ch3",
       "channels": ["Red", "Green", "Blue"]
     },
     {
-      "name": "4-channel Mode",
+      "name": "4-channel",
       "shortName": "4ch",
       "channels": ["Dimmer", "strobe3", "Color Macros", "Sound Control"]
     },
     {
-      "name": "6-channel Mode",
+      "name": "6-channel",
       "shortName": "6ch",
       "channels": ["Dimmer", "strobe3", "Red", "Green", "Blue", "Sound Control"]
     }

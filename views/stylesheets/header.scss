@@ -1,4 +1,4 @@
-header {
+#header {
   position: fixed;
   width: 100%;
   background: #fafafa;
@@ -109,7 +109,7 @@ header {
   justify-content: center;
 }
 
-#home-logo {
+#header #home-logo {
   --logo-width: 122px;
   --logo-padding: 2ex;
   display: inline-block;
@@ -132,18 +132,18 @@ header {
 
 /* Tablet */
 @media (max-width: $tablet) {
-  header > nav > div {
+  #header > nav > div {
     flex-basis: 100%;
   }
 
-  #home-logo {
+  #header #home-logo {
     --logo-width: 92px;
     --logo-padding: .5ex;
     line-height: 3em;
     height: 3em;
   }
 
-  header form {
+  #header form {
     flex-grow: 0;
     padding: 0 .5ex;
   }
@@ -160,7 +160,7 @@ header {
 
 /* Phone */
 @media (max-width: $phone) {
-  #home-logo {
+  #header #home-logo {
     --logo-width: 82px;
     line-height: 2.8em;
     height: 2.8em;
@@ -170,7 +170,7 @@ header {
     }
   }
 
-  header form {
+  #header form {
     flex-grow: 1;
     flex-basis: 0;
 
