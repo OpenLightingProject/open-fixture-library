@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["FloEdelmann", "FelixEdelmann"],
     "createDate": "2017-02-24",
-    "lastModifyDate": "2017-03-07"
+    "lastModifyDate": "2017-03-09"
   },
   "physical": {
     "dimensions": [203, 203, 193],
@@ -148,7 +148,7 @@
   },
   "modes": [
     {
-      "name": "2-channel Mode",
+      "name": "2-channel",
       "shortName": "2ch",
       "channels": [
         "Master dimmer",
@@ -156,7 +156,7 @@
       ]
     },
     {
-      "name": "3-channel Mode 1",
+      "name": "3-channel 1",
       "shortName": "3ch1",
       "channels": [
         "Master dimmer",
@@ -165,7 +165,7 @@
       ]
     },
     {
-      "name": "3-channel Mode 2",
+      "name": "3-channel 2",
       "shortName": "3ch2",
       "channels": [
         "Red",
@@ -174,7 +174,7 @@
       ]
     },
     {
-      "name": "6-channel Mode",
+      "name": "6-channel",
       "shortName": "6ch",
       "channels": [
         "Master dimmer",

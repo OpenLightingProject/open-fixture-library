@@ -96,7 +96,7 @@ module.exports = function(options) {
   str += '</section>'; // .fixture-info
 
   fixture.modes.forEach(mode => {
-    let heading = mode.name;
+    let heading = mode.name + ' mode';
     if ('shortName' in mode) {
       heading += ` <code>${mode.shortName}</code>`;
     }
