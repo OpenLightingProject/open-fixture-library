@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = function(options) {
-  const {manufacturers, man, fix} = options;
+  const {manufacturers, man, fix, plugins} = options;
   const manufacturer = manufacturers[man];
 
   const fixture = JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', man, fix + '.json'), 'utf-8'));
@@ -11,8 +11,10 @@ module.exports = function(options) {
 
   let str = require('../includes/header')(options);
 
-  str += `<h1><a href="/${man}"><data data-key="manufacturer">${manufacturer.name}</data></a> <data data-key="name">${fixture.name}</data> <code><data data-key="shortName">${_(fixture.shortName)}</data></code></h1>`;
+  str += '<header class="fixture-header">';
 
+  str += '<div class="title">';
+  str += `<h1><a href="/${man}"><data data-key="manufacturer">${manufacturer.name}</data></a> <data data-key="name">${fixture.name}</data> <code><data data-key="shortName">${_(fixture.shortName)}</data></code></h1>`;
   str += '<section class="fixture-meta">';
   str += `<span class="last-modify-date">Last modified:&nbsp;<date>${fixture.meta.lastModifyDate}</date></span>`;
   str += `<span class="create-date">Created:&nbsp;<date>${fixture.meta.createDate}</date></span>`;
@@ -20,6 +22,21 @@ module.exports = function(options) {
   str += `<span class="source"><a href="http://github.com/FloEdelmann/open-fixture-library/tree/master/fixtures/${man}/${fix}.json">Source</a></span>`;
   str += `<span class="revisions"><a href="http://github.com/FloEdelmann/open-fixture-library/commits/master/fixtures/${man}/${fix}.json">Revisions</a></span>`;
   str += '</section>';
+  str += '</div>';
+
+  str += '<div class="download-button">';
+  str += '<a href="#" class="title">Download as &hellip;</a>';
+  str += '<ul>';
+  for (const plugin in plugins) {
+    if ('export' in plugins[plugin]) {
+      str += `<li><a href="/${man}/${fix}.${plugin}">${plugins[plugin].name}</a></li>`;
+    }
+  }
+  str += '</ul>';
+  str += '</div>';
+
+  str += '</header>';
+
 
   str += '<section class="fixture-info card">';
 
