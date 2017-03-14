@@ -1,6 +1,6 @@
 # Open Fixture Library [![Build Status](https://travis-ci.org/FloEdelmann/open-fixture-library.svg?branch=master)](https://travis-ci.org/FloEdelmann/open-fixture-library)
 
-![OFL logo](static/ofl-logo.svg)
+<img alt="OFL logo" src="https://cdn.rawgit.com/FloEdelmann/open-fixture-library/04aad444/static/ofl-logo.svg" width="250" />
 
 To use lighting control software like [QLC+](http://www.qlcplus.org/) or [e:cue](http://www.ecue.de/), you need proprietary fixture definition files that describe your lighting hardware. Those can be difficult to create, find or convert from one format into another.
 
