@@ -10,7 +10,7 @@ module.exports.export = function exportQLCplus(library, options) {
   const defaults = require(path.join(options.baseDir, 'fixtures', 'defaults'));
 
   for (const data of library) {
-    const fixture = Object.assign({}, defaults, JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', data.manufacturerKey, data.fixtureKey + '.json'), 'utf-8')));
+    let fixture = Object.assign({}, defaults, JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', data.manufacturerKey, data.fixtureKey + '.json'), 'utf-8')));
 
     const manufacturer = options.manufacturers[data.manufacturerKey];
 
@@ -70,9 +70,9 @@ module.exports.export = function exportQLCplus(library, options) {
     str += '</FixtureDefinition>';
 
     outfiles.push({
-      'name': data.manufacturerKey + '/' + data.fixtureKey + '.qxf',
-      'content': str,
-      'mimetype': 'application/x-qlc-fixture'
+      name: data.manufacturerKey + '/' + data.fixtureKey + '.qxf',
+      content: str,
+      mimetype: 'application/x-qlc-fixture'
     });
   }
 
