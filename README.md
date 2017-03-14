@@ -1,5 +1,7 @@
 # Open Fixture Library [![Build Status](https://travis-ci.org/FloEdelmann/open-fixture-library.svg?branch=master)](https://travis-ci.org/FloEdelmann/open-fixture-library)
 
+![OFL logo](static/ofl-logo.svg)
+
 To use lighting control software like [QLC+](http://www.qlcplus.org/) or [e:cue](http://www.ecue.de/), you need proprietary fixture definition files that describe your lighting hardware. Those can be difficult to create, find or convert from one format into another.
 
 <abbr title="Open Fixture Library">OFL</abbr> ([open-fixture-library.herokuapp.com](https://open-fixture-library.herokuapp.com/)) tries to solve those problems by collecting fixture definitions and making them downloadable in various formats.
@@ -64,9 +66,9 @@ module.exports.export = function exportPluginName(library, options) {
 
 ### UI
 
-Static files are located in the `static` directory (surprise!), the dynamic stuff is `views`.
+Static files are located in the `static` directory (surprise!), the dynamic stuff is in `views`.
 
-The `views/stylesheets` subfolder contains all SASS stylesheets. Try to keep the styles organized, feel free to add a new file if needed.
+The `views/stylesheets` subfolder contains the SASS stylesheets. Try to keep them organized, feel free to add a new file if needed.
 
 We use [Express](http://expressjs.com/) to handle and delegate web requests to the respective page modules. Those templates reside in the `views/pages` subdirectory. A template module has to export a single function that returns a string which will be treated as HTML. The function receives a single `options` parameter. See [main.js](main.js#L32) for the guaranteed options.
 
@@ -75,4 +77,4 @@ We use [Express](http://expressjs.com/) to handle and delegate web requests to t
 
 Every time a new commit is pushed to GitHub, [Travis CI](https://travis-ci.org/FloEdelmann/open-fixture-library) runs all the tests in the `tests` directory (configured by [.travis.yml](.travis.yml)). That helps spotting bugs early.
 
-We want to ensure good code style and fixture validity, so if you have an idea for a new test or on how to improve an existing one -- awesome!
+We want to ensure good code style and fixture validity, so if you have an idea for a new test or on how to improve an existing one – awesome!
