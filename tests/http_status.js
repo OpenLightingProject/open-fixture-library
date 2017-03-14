@@ -126,6 +126,7 @@ function testPage(page, allowedCodes, isFoundLink) {
 
   if (urlObject.protocol !== 'http:' && urlObject.port !== 'https:') {
     // we can only handle the HTTP and HTTPS protocols
+    return;
   }
 
   return new Promise((resolve, reject) => {
@@ -159,18 +160,10 @@ function testPage(page, allowedCodes, isFoundLink) {
         while (match = linkRegex.exec(rawData)) {
           // found a link
 
-          if (match[1].startsWith('#')) {
-            // do not test same-page links
-            continue;
-          }
-
-          if (foundLinks.indexOf(match[1]) != -1) {
-            // already found earlier
-            continue;
-          }
-
-          if (Object.keys(statusCodes).some(code => statusCodes[code].indexOf(match[1]) != -1)) {
-            // already defined above
+          if (match[1].startsWith('#')  // do not test same-page links
+            || foundLinks.indexOf(match[1]) != -1  // already found earlier
+            || Object.keys(statusCodes).some(code => statusCodes[code].indexOf(match[1]) != -1)  // already defined above
+            ) {
             continue;
           }
 
