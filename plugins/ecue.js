@@ -153,7 +153,7 @@ function exportHandleModes(fixture, defaults, physical) {
         const chKeyLsb = multiByteChannels[1];
         const channelLsb = fixture.availableChannels[chKeyLsb];
 
-        const chDataLsb = Object.assign({}, defaults.fixtures[0].availableChannels["Unique channel name"], channelLsb);
+        const chDataLsb = Object.assign({}, defaults.availableChannels['channel key'], channelLsb);
 
         chData.defaultValue *= 256;
         chData.defaultValue += chDataLsb.defaultValue;
