@@ -70,12 +70,10 @@ const serverProcess = require('child_process').execFile(
   [path.join(__dirname, '..', 'main.js')]
 );
 serverProcess.stdout.on('data', chunk => {
-  console.log('Server message (stdout):');
-  console.log(chunk);
+  console.log('Server message (stdout): ' + chunk);
 });
 serverProcess.stderr.on('data', chunk => {
-  console.error(colors.red('Server error (stderr)'));
-  console.error(chunk);
+  console.error(colors.red('Server error (stderr): ') + chunk);
   failed = true;
 });
 console.log(`Starting server with process id ${serverProcess.pid}`);
@@ -124,8 +122,10 @@ function testPage(page, allowedCodes, isFoundLink) {
   const path = url.resolve('http://localhost:5000', page);
   const urlObject = url.parse(path);
 
-  if (urlObject.protocol !== 'http:' && urlObject.port !== 'https:') {
+  if (urlObject.protocol !== 'http:' && urlObject.protocol !== 'https:') {
     // we can only handle the HTTP and HTTPS protocols
+    console.error(colors.red('[FAIL]') + ` ${path} (protocol '${urlObject.protocol}' is not supported)`);
+    failed = true;
     return;
   }
 
@@ -138,7 +138,7 @@ function testPage(page, allowedCodes, isFoundLink) {
         return;
       }
 
-      console.log(colors.green('[PASS]') + ` ${path} (${res.statusCode}${isFoundLink ? ', found link' : ''})`);
+      console.log(colors.green('[PASS]') + ` ${path} (${res.statusCode})`);
 
       if (res.statusCode === 302) {
         console.warn(colors.yellow('[WARN]') + '   return code 302 (moved temporarily)');
