@@ -11,6 +11,13 @@ let failed = false;
 
 const linkRegex = /<a [^>]*href="([^"]+)"/g;
 
+let exportPlugins = [];
+for (const filename of fs.readdirSync(path.join(__dirname, '..', 'plugins'))) {
+  if ('export' in require(path.join(__dirname, '..', 'plugins', filename))) {
+    exportPlugins.push(path.basename(filename, '.js'));
+  }
+}
+
 // define which pages should have which status code
 const statusCodes = {
   '200': [
@@ -21,6 +28,7 @@ const statusCodes = {
     '/search',
     '/search?q=bla'
   ],
+  '201': [],
   '404': [
     '/bla',
     '/about/bla',
@@ -39,6 +47,10 @@ for (const man in register.manufacturers) {
 
   for (const fixture of register.manufacturers[man]) {
     statusCodes['200'].push(`/${man}/${fixture}`);
+
+    for (const plugin of exportPlugins) {
+      statusCodes['201'].push(`/${man}/${fixture}.${plugin}`);
+    }
   }
 }
 for (const cat in register.categories) {
@@ -146,10 +158,24 @@ function testPage(page, allowedCodes, isFoundLink) {
 
         while (match = linkRegex.exec(rawData)) {
           // found a link
-          if (statusCodes['200'].indexOf(match[1]) == -1 && foundLinks.indexOf(match[1]) == -1) {
-            foundLinkPromises.push(testPage(match[1], ['200', '201', '302'], true));
-            foundLinks.push(match[1]);
+
+          if (match[1].startsWith('#')) {
+            // do not test same-page links
+            continue;
           }
+
+          if (foundLinks.indexOf(match[1]) != -1) {
+            // already found earlier
+            continue;
+          }
+
+          if (Object.keys(statusCodes).some(code => statusCodes[code].indexOf(match[1]) != -1)) {
+            // already defined above
+            continue;
+          }
+
+          foundLinkPromises.push(testPage(match[1], ['200', '201', '302'], true));
+          foundLinks.push(match[1]);
         }
 
         resolve(true);
