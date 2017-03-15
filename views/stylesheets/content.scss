@@ -64,15 +64,34 @@ a.card, .list a {
   }
 }
 
-.card-category {
-  padding-left: 5em;
+.card-category,
+.banner > .card {
+  padding-left: 5rem;
+  min-height: 5rem;
 
   & > svg {
     position: absolute;
-    top: 1em;
-    left: 1em;
-    width: 3em;
-    height: 3em;
+    top: 1rem;
+    left: 1rem;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  & > h2 {
+    line-height: 3rem;
+  }
+}
+
+.banner {
+  margin: 2rem 0;
+  text-align: center;
+
+  & > .card {
+    text-align: left;
+
+    & > h2 {
+      font-size: 1.2rem;
+    }
   }
 }
 
@@ -87,7 +106,7 @@ a.card, .list a {
 @media (min-width: $phone-landscape) {
   .grid .card {
     display: inline-block;
-    width: calc(50% - .5em);
+    width: calc(50% - 0.5rem);
 
     & > h2 {
       white-space: nowrap;
@@ -96,30 +115,26 @@ a.card, .list a {
     }
 
     &:nth-child(2n+1) {
-      margin-right: .5em;
+      margin-right: 0.5rem;
     }
     &:nth-child(2n) {
-      margin-left: .5em;
+      margin-left: 0.5rem;
     }
   }
 }
 
 @media (min-width: $tablet) {
   .grid .card {
+    width: calc((100% - 2rem) / 3);
+
     &:nth-child(3n+1) {
       margin-left: 0;
-      margin-right: .5em;
-      width: calc(33% - .5em);
-    }
-    &:nth-child(3n+2) {
-      margin-left: .5em;
-      margin-right: .5em;
-      width: calc(34% - 1em);
-    }
-    &:nth-child(3n) {
-      margin-left: .5em;
       margin-right: 0;
-      width: calc(33% - .5em);
+    }
+    &:nth-child(3n+2),
+    &:nth-child(3n) {
+      margin-left: 1rem;
+      margin-right: 0;
     }
   }
 }
