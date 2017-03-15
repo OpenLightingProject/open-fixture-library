@@ -1,3 +1,9 @@
+const path = require("path");
+const schemas = require(path.join(__dirname, '..', '..', 'fixtures', 'schema'));
+const manProperties = schemas.Manufacturers.toJSON().additionalProperties.properties;
+const fixProperties = schemas.Fixture.toJSON().properties;
+const physProperties = fixProperties.physical.properties;
+
 module.exports = function(options) {
   options.title = 'Fixture Editor - Open Fixture Library';
 
@@ -22,7 +28,7 @@ module.exports = function(options) {
   str += '<section class="new-manufacturer" hidden>';
   str += '<section class="new-manufacturer-name">';
   str += '<label>Name</label>'
-  str += '<input required />'
+  str += textInput(manProperties.name);
   str += '</section>'
 
   str += '<section class="new-manufacturer-shortname">';
@@ -32,12 +38,12 @@ module.exports = function(options) {
 
   str += '<section class="new-manufacturer-website">';
   str += '<label>Website</label>'
-  str += '<input />'
+  str += textInput(manProperties.website);
   str += '</section>'
 
   str += '<section class="new-manufacturer-comment">';
   str += '<label>Comment</label>'
-  str += '<input />'
+  str += textInput(manProperties.comment);
   str += '</section> or ';
   str += '<a href="#" class="use-existing-manufacturer">Use existing manufacturer</a>';
   str += '</section>'
@@ -51,18 +57,18 @@ module.exports = function(options) {
 
   str += '<section class="fixture-name">';
   str += '<label>Name</label>'
-  str += '<input required />'
+  str += textInput(fixProperties.name);
   str += '</section>'
 
   str += '<section class="fixture-shortname">';
   str += '<label>Unique short name</label>'
-  str += '<input placeholder="Defaults to name" />'
+  str += textInput(fixProperties.name, "Defaults to name");
   str += '</section>'
 
   str += '<section class="categories">';
   str += '<label>Category(s)</label>'
   str += `<select multiple required size="${Object.keys(options.register.categories).length}">`;
-  for (const cat in options.register.categories) {
+  for (const cat of fixProperties.categories.items.enum) {
     str += `<option>${cat}</option>`;
   }
   str += '</select>';
@@ -73,9 +79,9 @@ module.exports = function(options) {
   str += '<textarea></textarea>'
   str += '</section>'
 
-  str += '<section class="manual">';
+  str += '<section class="manualURL">';
   str += '<label>Manual URL</label>'
-  str += '<input />'
+  str += '<input type="url" />'
   str += '</section>'
 
   str += '</section>'
@@ -89,10 +95,48 @@ module.exports = function(options) {
 
   // Physical template
   str += '<template class="template-physical">';
-  str += '<section class="power">';
-  str += '<label>Power</label>'
+
+  str += '<section class="physical-dimensions">';
+  str += '<label>Dimensions</label>'
+  str += '<div class="value">';
+  str += numberInput(physProperties.dimensions.items, "width") + ' &times; ';
+  str += numberInput(physProperties.dimensions.items, "height") + ' &times; ';
+  str += numberInput(physProperties.dimensions.items, "depth") + ' mm';
+  str += '</div>';
+  str += '</section>'
+
+  str += '<section class="physical-weight">';
+  str += '<label>Weight</label>';
+  str += numberInput(physProperties.weight) + ' kg';
+  str += '</section>'
+
+  str += '<section class="physical-power">';
+  str += '<label>Power</label>';
+  str += numberInput(physProperties.power) + ' W';
+  str += '</section>'
+
+  str += '<section class="physical-DMXconnector">';
+  str += '<label>DMX connector</label>';
+  str += '<input placeholder="e.g. 3-pin" />'
+  str += '</section>'
+
+  str += '<h3>Bulb</h3>';
+
+  str += '<section class="physical-bulb-type">';
+  str += '<label>Bulb type</label>';
   str += '<input />'
   str += '</section>'
+
+  str += '<section class="physical-bulb-colorTemperature">';
+  str += '<label>Color temperature</label>';
+  str += '<input type="number" /> K'
+  str += '</section>'
+
+  str += '<section class="physical-bulb-lumens">';
+  str += '<label>Lumens</label>';
+  str += '<input type="number" /> lm'
+  str += '</section>'
+
   str += '</template>';
 
 
@@ -105,3 +149,25 @@ module.exports = function(options) {
 
   return str;
 };
+
+function textInput(property, hint) {
+  const required = property.required ? ' required' : '';
+  const placeholder = hint ? ` placeholder="${hint}"` : '';
+  return `<input type="text" ${required}${placeholder} />`;
+}
+
+function suggestedTextInput(property, hint) {
+  const required = property.required ? ' required' : '';
+  const placeholder = hint ? ` placeholder="${hint}"` : '';
+  return `<input type="text" ${required}${placeholder} />`;
+}
+
+function numberInput(property, hint) {
+  console.log(property);
+  const required = property.required !== undefined ? ' required' : '';
+  const min = property.minimum !== undefined ? ` min="${property.minimum}"` : '';
+  const max = property.maximum !== undefined ? ` min="${property.maximum}"` : '';
+  const placeholder = hint ? ` placeholder="${hint}"` : '';
+
+  return `<input type="number" ${required}${min}${max}${placeholder} step="any" />`;
+}
