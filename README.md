@@ -4,12 +4,12 @@
 
 To use lighting control software like [QLC+](http://www.qlcplus.org/) or [e:cue](http://www.ecue.de/), you need proprietary fixture definition files that describe your lighting hardware. Those can be difficult to create, find or convert from one format into another.
 
-<abbr title="Open Fixture Library">OFL</abbr> ([open-fixture-library.herokuapp.com](https://open-fixture-library.herokuapp.com/)) tries to solve those problems by collecting fixture definitions and making them downloadable in various formats.
-
-The project is still in a very early stage, but we're happy to see new issues or pull requests anyway!
+The *Open Fixture Library* ([open-fixture-library.herokuapp.com](https://open-fixture-library.herokuapp.com/)) tries to solve those problems by collecting fixture definitions and making them downloadable in various formats.
 
 
 ## Contribute
+
+The project is still in a very early stage, but we're happy to see new issues or pull requests anyway!
 
 Pushing to the `master` branch here on GitHub deploys a new version on [Heroku](http://heroku.com/) each time. So we have to make sure that the `master` branch is always clean and ready to deploy. Thus, we will make heavy use of pull requests (so, do always create feature branches `git checkout -b new-feature`) and let [Travis CI](https://travis-ci.org/FloEdelmann/open-fixture-library) check that everything new is passing all tests.
 
