@@ -5,10 +5,10 @@ const schema = require('js-schema');
  *
  * in short:
  *   'property' is required
- *   '?property' is unused
- *   '*' has to match all other properties
+ *   '?property' is optional
+ *   '*' has to match all properties that have no own rule
  *
- * we use "'*': Function" to disallow additional properties
+ * we use `'*': Function` to disallow additional properties
  * since JSON has no function type
  */
 
