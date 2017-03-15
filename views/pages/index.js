@@ -12,7 +12,7 @@ module.exports = function(options) {
   str += '<div class="banner grid">';
   str += '<a href="/manufacturers/" class="card">' + require('../includes/svg')({svgBasename: 'folder-multiple'}) + '<h2>Browse fixtures</h2></a>';
   str += '<a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Abug" class="card">' + require('../includes/svg')({svgBasename: 'bug'}) + '<h2>Report problem</h2></a>';
-  str += '<a href="https://github.com/FloEdelmann/open-fixture-library/issues" class="card">' + require('../includes/svg')({svgBasename: 'lightbulb-on-outline'}) + '<h2>Request feature</h2></a>';
+  str += '<a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+-label%3Abug" class="card">' + require('../includes/svg')({svgBasename: 'lightbulb-on-outline'}) + '<h2>Request feature</h2></a>';
   str += '<a href="https://github.com/FloEdelmann/open-fixture-library" class="card">' + require('../includes/svg')({svgBasename: 'github-circle'}) + '<h2>View source</h2></a>';
   str += '</div>';
 
