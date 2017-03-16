@@ -1,8 +1,6 @@
-const path = require("path");
-const schemas = require(path.join(__dirname, '..', '..', 'fixtures', 'schema'));
-const manProperties = schemas.Manufacturers.toJSON().additionalProperties.properties;
-const fixProperties = schemas.Fixture.toJSON().properties;
-const physProperties = fixProperties.physical.properties;
+const path = require('path');
+const properties = require(path.join(__dirname, '..', '..', 'fixtures', 'schema')).properties;
+// console.log(properties);
 
 module.exports = function(options) {
   options.title = 'Fixture Editor - Open Fixture Library';
@@ -23,12 +21,12 @@ module.exports = function(options) {
   }
   str += '</select> or ';
   str += '<a href="#" class="add-manufacturer">+ Add manufacturer</a>';
-  str += '</section>'
+  str += '</section>' // Existing manufacturer
 
   str += '<section class="new-manufacturer" hidden>';
   str += '<section class="new-manufacturer-name">';
   str += '<label>Name</label>'
-  str += textInput(manProperties.name);
+  str += textInput(properties.manufacturer.name);
   str += '</section>'
 
   str += '<section class="new-manufacturer-shortname">';
@@ -38,17 +36,17 @@ module.exports = function(options) {
 
   str += '<section class="new-manufacturer-website">';
   str += '<label>Website</label>'
-  str += textInput(manProperties.website);
+  str += textInput(properties.manufacturer.website);
   str += '</section>'
 
   str += '<section class="new-manufacturer-comment">';
   str += '<label>Comment</label>'
-  str += textInput(manProperties.comment);
+  str += textInput(properties.manufacturer.comment);
   str += '</section> or ';
   str += '<a href="#" class="use-existing-manufacturer">Use existing manufacturer</a>';
-  str += '</section>'
+  str += '</section>' // New manufacturer
 
-  str += '</section>'
+  str += '</section>' // Manufacturer
 
 
   // Fixture info
@@ -57,18 +55,18 @@ module.exports = function(options) {
 
   str += '<section class="fixture-name">';
   str += '<label>Name</label>'
-  str += textInput(fixProperties.name);
+  str += textInput(properties.fixture.name);
   str += '</section>'
 
   str += '<section class="fixture-shortname">';
   str += '<label>Unique short name</label>'
-  str += textInput(fixProperties.name, "Defaults to name");
+  str += textInput(properties.fixture.name, "Defaults to name");
   str += '</section>'
 
   str += '<section class="categories">';
   str += '<label>Category(s)</label>'
   str += `<select multiple required size="${Object.keys(options.register.categories).length}">`;
-  for (const cat of fixProperties.categories.items.enum) {
+  for (const cat of properties.category.enum) {
     str += `<option>${cat}</option>`;
   }
   str += '</select>';
@@ -76,15 +74,15 @@ module.exports = function(options) {
 
   str += '<section class="comment">';
   str += '<label>Comment</label>'
-  str += '<textarea></textarea>'
+  str += textareaInput(properties.fixture.comment);
   str += '</section>'
 
   str += '<section class="manualURL">';
   str += '<label>Manual URL</label>'
-  str += '<input type="url" />'
+  str += urlInput(properties.fixture.manualURL);
   str += '</section>'
 
-  str += '</section>'
+  str += '</section>' // Fixture info
 
 
   // Fixture physical
@@ -99,45 +97,77 @@ module.exports = function(options) {
   str += '<section class="physical-dimensions">';
   str += '<label>Dimensions</label>'
   str += '<div class="value">';
-  str += numberInput(physProperties.dimensions.items, "width") + ' &times; ';
-  str += numberInput(physProperties.dimensions.items, "height") + ' &times; ';
-  str += numberInput(physProperties.dimensions.items, "depth") + ' mm';
+  str += numberInput(properties.physical.dimensions.items, 'width') + ' &times; ';
+  str += numberInput(properties.physical.dimensions.items, 'height') + ' &times; ';
+  str += numberInput(properties.physical.dimensions.items, 'depth') + ' mm';
   str += '</div>';
-  str += '</section>'
+  str += '</section>';
 
   str += '<section class="physical-weight">';
   str += '<label>Weight</label>';
-  str += numberInput(physProperties.weight) + ' kg';
+  str += numberInput(properties.physical.weight) + ' kg';
   str += '</section>'
 
   str += '<section class="physical-power">';
   str += '<label>Power</label>';
-  str += numberInput(physProperties.power) + ' W';
+  str += numberInput(properties.physical.power) + ' W';
   str += '</section>'
 
   str += '<section class="physical-DMXconnector">';
   str += '<label>DMX connector</label>';
-  str += '<input placeholder="e.g. 3-pin" />'
+  str += textInput(properties.physical.DMXconnector, 'e.g. 3-pin', 'physical-DMXconnector');
   str += '</section>'
 
   str += '<h3>Bulb</h3>';
 
   str += '<section class="physical-bulb-type">';
   str += '<label>Bulb type</label>';
-  str += '<input />'
+  str += textInput(properties.bulb.type, 'e.g. LED', 'physical-bulb-type');
   str += '</section>'
 
   str += '<section class="physical-bulb-colorTemperature">';
   str += '<label>Color temperature</label>';
-  str += '<input type="number" /> K'
+  str += numberInput(properties.bulb.colorTemperature) + ' K';
   str += '</section>'
 
   str += '<section class="physical-bulb-lumens">';
   str += '<label>Lumens</label>';
-  str += '<input type="number" /> lm'
+  str += numberInput(properties.bulb.lumens) + ' lm';
   str += '</section>'
 
-  str += '</template>';
+  str += '<h3>Lens</h3>';
+
+  str += '<section class="physical-lens-name">';
+  str += '<label>Lens name</label>';
+  str += textInput(properties.lens.name);
+  str += '</section>'
+
+  str += '<section class="physical-lens-degrees">';
+  str += '<label>Light cone</label>'
+  str += '<div class="value">';
+  str += numberInput(properties.lens.degreesMinMax.items, 'min') + ' .. ';
+  str += numberInput(properties.lens.degreesMinMax.items, 'max') + ' °';
+  str += '</div>';
+  str += '</section>';
+
+  str += '<h3>Focus</h3>';
+
+  str += '<section class="physical-focus-type">';
+  str += '<label>Focus type</label>';
+  str += textInput(properties.focus.type, '', 'physical-focus-type');
+  str += '</section>'
+
+  str += '<section class="physical-focus-panMax">';
+  str += '<label>Pan maximum</label>';
+  str += numberInput(properties.focus.panMax, '', 'physical-focus-panMax');
+  str += '</section>'
+
+  str += '<section class="physical-focus-tiltMax">';
+  str += '<label>Tilt maximum</label>';
+  str += numberInput(properties.focus.tiltMax, '', 'physical-focus-tiltMax');
+  str += '</section>'
+
+  str += '</template>'; // Physical template
 
 
   str += '<button class="save-fixture">Save</button>'
@@ -150,24 +180,66 @@ module.exports = function(options) {
   return str;
 };
 
-function textInput(property, hint) {
-  const required = property.required ? ' required' : '';
-  const placeholder = hint ? ` placeholder="${hint}"` : '';
-  return `<input type="text" ${required}${placeholder} />`;
+
+function textInput(property, hint, id) {
+  let html = '<input type="text" ';
+  html += getRequiredAttr(property);
+
+  if (property.enum) {
+    html += `list="${id}-list"`;
+  }
+
+  html += getPlaceholderAttr(hint);
+  html += '/>'
+
+  if (property.enum) {
+    html += `<datalist id="${id}-list">`;
+    for (const item of property.enum) {
+      html += `<option>${item}</option>`;
+    }
+    html += '</datalist>';
+  }
+
+  return html;
 }
 
-function suggestedTextInput(property, hint) {
-  const required = property.required ? ' required' : '';
-  const placeholder = hint ? ` placeholder="${hint}"` : '';
-  return `<input type="text" ${required}${placeholder} />`;
+function urlInput(property, hint) {
+  let html = '<input type="url" ';
+  html += getRequiredAttr(property);
+  html += getPlaceholderAttr(hint);
+  html += '/>'
+  return html;
+}
+
+function textareaInput(property, hint) {
+  let html = '<textarea ';
+  html += getRequiredAttr(property);
+  html += getPlaceholderAttr(hint);
+  html += '></textarea>'
+  return html;
 }
 
 function numberInput(property, hint) {
-  console.log(property);
-  const required = property.required !== undefined ? ' required' : '';
-  const min = property.minimum !== undefined ? ` min="${property.minimum}"` : '';
-  const max = property.maximum !== undefined ? ` min="${property.maximum}"` : '';
-  const placeholder = hint ? ` placeholder="${hint}"` : '';
+  let html = '<input type="number" step="any" ';
+  html += getRequiredAttr(property);
 
-  return `<input type="number" ${required}${min}${max}${placeholder} step="any" />`;
+  if (property.minimum !== undefined) {
+    html += ` min="${property.minimum}"`;
+  }
+
+  if (property.maximum !== undefined) {
+    html += ` max="${property.maximum}"`;
+  }
+
+  html += getPlaceholderAttr(hint);
+  html += '/>'
+
+  return html;
+}
+
+function getRequiredAttr(property) {
+  return property.required ? 'required ' : '';
+}
+function getPlaceholderAttr(hint) {
+  return hint ? `placeholder="${hint}" ` : '';
 }

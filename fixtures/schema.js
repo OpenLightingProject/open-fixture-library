@@ -116,5 +116,24 @@ const Manufacturers = schema({
 });
 
 
-module.exports.Fixture = Fixture;
-module.exports.Manufacturers = Manufacturers;
+exports.Fixture = Fixture;
+exports.Manufacturers = Manufacturers;
+
+exports.properties = {
+  manufacturer: Manufacturers.toJSON().additionalProperties.properties,
+  fixture:      Fixture.toJSON().properties,
+  mode:         Mode.toJSON().properties,
+  channelKey:   ChannelKey.schema.toJSON(),
+  channel:      Channel.toJSON().properties,
+  capability:   Capability.toJSON().properties,
+  physical:     Physical.toJSON().properties,
+  category:     Category.toJSON(),
+  color:        Color.toJSON(),
+  ISODate:      ISODate.toJSON(),
+  URL:          URL.toJSON(),
+  DMXValue:     DMXValue.toJSON(),
+}
+exports.properties.meta  = exports.properties.fixture.meta.properties;
+exports.properties.bulb  = exports.properties.physical.bulb.properties;
+exports.properties.lens  = exports.properties.physical.lens.properties;
+exports.properties.focus = exports.properties.physical.focus.properties;
