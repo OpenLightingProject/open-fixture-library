@@ -139,11 +139,15 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
         for (let i=0; i<channel.capabilities.length; i++) {
           const cap = channel.capabilities[i];
 
-          if (cap.range[0] > cap.range[1]
-            || (i > 0 && cap.range[0] <= channel.capabilities[i-1].range[1])
-            ) {
+          if (cap.range[0] > cap.range[1]) {
             result.errors.push({
               description: `range invalid in capability #${i} in channel '${ch}'.`,
+              error: null
+            });
+          }
+          if (i > 0 && cap.range[0] <= channel.capabilities[i-1].range[1]) {
+            result.errors.push({
+              description: `ranges overlapping in capabilities #${i-1} and #${i} in channel '${ch}'.`,
               error: null
             });
           }
