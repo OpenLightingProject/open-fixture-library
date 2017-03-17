@@ -90,6 +90,12 @@ const Fixture = schema({
     'authors': Array.of(String),
     'createDate': ISODate,
     'lastModifyDate': ISODate,
+    '?importPlugin': schema({
+      'plugin': String,
+      'date': ISODate,
+      '?comment': String,
+      '*': Function
+    }),
     '*': Function
   }),
   '?comment': String,
