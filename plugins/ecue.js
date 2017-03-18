@@ -223,11 +223,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
 
     try {
       if (!('Library' in xml.Document) || !('Fixtures' in xml.Document.Library[0]) || !('Manufacturer' in xml.Document.Library[0].Fixtures[0])) {
-        out.warnings.push({
-          fixture: null,
-          description: 'Nothing to import.'
-        });
-        return resolve(out);
+        return reject('Nothing to import.');
       }
 
       for (const manufacturer of xml.Document.Library[0].Fixtures[0].Manufacturer) {
