@@ -39,13 +39,17 @@ module.exports.version = '0.1.0';  // plugin version, required
 // optional
 module.exports.export = function exportPluginName(library, options) {
   /*
-    library is an array of {
-      manufacturerKey: '...',
-      fixtureKey: '...'
-    } objects
-
-    options includes the `manufacturer` object and `baseDir`
-  */
+   * library: array of {
+   *                     manufacturerKey: '...',
+   *                     fixtureKey: '...'
+   *                   } objects
+   * 
+   * options: {
+   *            manufacturers: {...},
+   *            baseDir: '...',
+   *            // maybe more
+   *          }
+   */
 
   let outfiles = [];
 
@@ -65,6 +69,13 @@ module.exports.export = function exportPluginName(library, options) {
 
 // also optional
 module.exports.import = function importPluginName(str, filename, resolve, reject) {
+  /*
+   * str:      'import file contents'
+   * filename: 'importFilename.ext'
+   * resolve:  function to call if everything goes right, see below
+   * reject:   function to call if something goes wrong, see below
+   */
+
   let out = {
     manufacturers: {},  // like in manufacturers.json
     fixtures: {},       // key: 'manufacturer-key/fixture-key', value: like in a fixture JSON
