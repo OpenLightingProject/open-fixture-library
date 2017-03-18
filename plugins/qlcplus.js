@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const xml2js = require('xml2js');
 
 module.exports.name = 'QLC+';
 module.exports.version = '0.1.0';
@@ -189,4 +190,259 @@ function exportHandleModes(fixture, defaults, physical) {
   }
 
   return str;
+}
+
+module.exports.import = function importQLCplus(str, filename, resolve, reject) {
+  const parser = new xml2js.Parser();
+  const timestamp = new Date().toISOString().replace(/T.*/, '');
+
+  parser.parseString(str, (parseError, xml) => {
+    if (parseError) {
+      return reject(`Error parsing '${filename}' as XML.\n` + parseError.toString());
+    }
+
+    let out = {
+      manufacturers: {},
+      fixtures: {},
+      warnings: {}
+    };
+    let fix = {};
+
+    try {
+      const fixture = xml.FixtureDefinition
+      fix.name = fixture.Model[0];
+
+      const manKey = fixture.Manufacturer[0].toLowerCase().replace(/[^a-z0-9\-]+/g, '-');
+      const fixKey = manKey + '/' + fix.name.toLowerCase().replace(/[^a-z0-9\-]+/g, '-');
+      out.warnings[fixKey] = ['Please check if manufacturer is correct.'];
+
+      fix.categories = [fixture.Type[0]];
+
+      fix.meta = {
+        authors: fixture.Creator[0].Author[0].split(/,\s*/),
+        createDate: timestamp,
+        lastModifyDate: timestamp,
+        importPlugin: {
+          plugin: 'qlcplus',
+          date: timestamp,
+          comment: `created by ${fixture.Creator[0].Name[0]} (version ${fixture.Creator[0].Version[0]})`
+        }
+      };
+
+      fix.physical = {};
+      fix.availableChannels = {};
+
+      let doubleByteChannels = [];
+
+      for (const channel of fixture.Channel || []) {
+        let ch = {
+          type: channel.Group[0]._
+        };
+
+        if (ch.type == 'Colour') {
+          ch.type = 'MultiColor';
+        }
+        else if (channel.Colour) {
+          ch.type = 'SingleColor';
+          ch.color = channel.Colour[0];
+        }
+        else if (channel.$.Name.toLowerCase().includes('strob')) {
+          ch.type = 'Strobe';
+        }
+        else if (ch.type == 'Intensity') {
+          ch.crossfade = true;
+        }
+
+        if (channel.Group[0].$.Byte == '1') {
+          doubleByteChannels.push([channel.$.Name]);
+        }
+
+        ch.capabilities = [];
+        for (const capability of channel.Capability || []) {
+          let cap = {
+            range: [parseInt(capability.$.Min), parseInt(capability.$.Max)],
+            name: capability._
+          };
+
+          if ('Color' in capability.$) {
+            cap.color = capability.$.Color;
+          }
+
+          if ('Color2' in capability.$) {
+            cap.color2 = capability.$.Color2;
+          }
+
+          if ('res' in capability.$) {
+            cap.image = capability.$.res;
+          }
+
+          ch.capabilities.push(cap);
+        }
+        if (ch.capabilities.length == 0) {
+          delete ch.capabilities;
+        }
+
+        fix.availableChannels[channel.$.Name] = ch;
+      }
+
+      if (doubleByteChannels.length > 0) {
+        fix.multiByteChannels = doubleByteChannels;
+        out.warnings[fixKey].push('Please validate the 16-bit channels.');
+      }
+
+      fix.heads = {};
+      fix.modes = [];
+
+      for (const mode of fixture.Mode || []) {
+        let mod = {
+          name: mode.$.Name
+        };
+
+        let physical = {};
+
+        if ('Dimensions' in mode.Physical[0]) {
+          const dimWidth = parseInt(mode.Physical[0].Dimensions[0].$.Width);
+          const dimHeight = parseInt(mode.Physical[0].Dimensions[0].$.Height);
+          const dimDepth = parseInt(mode.Physical[0].Dimensions[0].$.Depth);
+          if (dimWidth + dimHeight + dimDepth != 0
+            && (!('dimensions' in fix.physical)
+              || fix.physical.dimensions[0] != dimWidth
+              || fix.physical.dimensions[1] != dimHeight
+              || fix.physical.dimensions[2] != dimDepth
+            )) {
+            physical.dimensions = [dimWidth, dimHeight, dimDepth];
+          }
+
+          const weight = parseFloat(mode.Physical[0].Dimensions[0].$.Weight);
+          if (weight != 0.0 && fix.physical.weight != weight) {
+            physical.weight = weight;
+          }
+        }
+
+        if ('Technical' in mode.Physical[0]) {
+          const power = parseInt(mode.Physical[0].Technical[0].$.PowerConsumption);
+          if (power != 0 && fix.physical.power != power) {
+            physical.power = power;
+          }
+
+          const DMXconnector = mode.Physical[0].Technical[0].$.DmxConnector;
+          if (DMXconnector != '' && fix.physical.DMXconnector != DMXconnector) {
+            physical.DMXconnector = DMXconnector;
+          }
+        }
+
+        if ('Bulb' in mode.Physical[0]) {
+          let bulbData = {};
+
+          const bulbType = mode.Physical[0].Bulb[0].$.Type;
+          if (bulbType != '' && (!('bulb' in fix.physical) || fix.physical.bulb.type != bulbType)) {
+            bulbData.type = bulbType;
+          }
+
+          const bulbColorTemp = parseInt(mode.Physical[0].Bulb[0].$.ColourTemperature);
+          if (bulbColorTemp != 0 && (!('bulb' in fix.physical) || fix.physical.bulb.colorTemperature != bulbColorTemp)) {
+            bulbData.colorTemperature = bulbColorTemp;
+          }
+
+          const bulbLumens = parseInt(mode.Physical[0].Bulb[0].$.Lumens);
+          if (bulbLumens != 0 && (!('bulb' in fix.physical) || fix.physical.bulb.lumens != bulbLumens)) {
+            bulbData.lumens = bulbLumens;
+          }
+
+          if (JSON.stringify(bulbData) != '{}') {
+            physical.bulb = bulbData;
+          }
+        }
+
+        if ('Lens' in mode.Physical[0]) {
+          let lensData = {};
+
+          const lensName = mode.Physical[0].Lens[0].$.Name;
+          if (lensName != '' && (!('lens' in fix.physical) || fix.physical.lens.name != lensName)) {
+            lensData.name = lensName;
+          }
+
+          const lensDegMin = parseFloat(mode.Physical[0].Lens[0].$.DegreesMin);
+          const lensDegMax = parseFloat(mode.Physical[0].Lens[0].$.DegreesMax);
+          if ((lensDegMin != 0.0 || lensDegMax != 0.0)
+            && (!('lens' in fix.physical)
+              || !('degreesMinMax' in fix.physical.lens)
+              || fix.physical.lens.degreesMinMax[0] != lensDegMin
+              || fix.physical.lens.degreesMinMax[1] != lensDegMax
+            )) {
+            lensData.degreesMinMax = [lensDegMin, lensDegMax];
+          }
+
+          if (JSON.stringify(lensData) != '{}') {
+            physical.lens = lensData;
+          }
+        }
+
+        if ('Focus' in mode.Physical[0]) {
+          let focusData = {};
+
+          const focusType = mode.Physical[0].Focus[0].$.Type;
+          if (focusType != '' && (!('focus' in fix.physical) || fix.physical.focus.type != focusType)) {
+            focusData.type = focusType;
+          }
+
+          const focusPanMax = parseInt(mode.Physical[0].Focus[0].$.PanMax);
+          if (focusPanMax != 0 && (!('focus' in fix.physical) || fix.physical.focus.panMax != focusPanMax)) {
+            focusData.panMax = focusPanMax;
+          }
+
+          const focusTiltMax = parseInt(mode.Physical[0].Focus[0].$.TiltMax);
+          if (focusTiltMax != 0 && (!('focus' in fix.physical) || fix.physical.focus.tiltMax != focusTiltMax)) {
+            focusData.tiltMax = focusTiltMax;
+          }
+
+          if (JSON.stringify(focusData) != '{}') {
+            physical.focus = focusData;
+          }
+        }
+
+        if (JSON.stringify(physical) != '{}') {
+          if (fix.modes.length == 0) {
+            // this is the first mode -> fixture defaults
+            fix.physical = physical;
+          }
+          else {
+            mod.physical = physical;
+          }
+        }
+
+        mod.channels = [];
+        for (const ch of mode.Channel || []) {
+          mod.channels[parseInt(ch.$.Number)] = ch._;
+        }
+
+        for (const i in mode.Head || []) {
+          let head = [];
+
+          if (mode.Head[i].Channel === undefined)
+            continue;
+
+          for (const ch of mode.Head[i].Channel) {
+            const chNum = parseInt(ch);
+            head.push(mod.channels[chNum]);
+          }
+
+          fix.heads[mod.name + '-head' + i] = head;
+        }
+
+        fix.modes.push(mod);
+      }
+
+      if (JSON.stringify(fix.heads) == '{}') {
+        delete fix.heads;
+      }
+
+      out.fixtures[fixKey] = fix;
+    }
+    catch (parseError) {
+      return reject(`Error parsing '${filename}'.\n` + parseError.toString());
+    }
+
+    resolve(out);
+  });
 }

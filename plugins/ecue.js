@@ -210,7 +210,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
   const parser = new xml2js.Parser();
   const timestamp = new Date().toISOString().replace(/T.*/, '');
 
-  parser.parseString(str, function(parseError, xml) {
+  parser.parseString(str, (parseError, xml) => {
     if (parseError) {
       return reject(`Error parsing '${filename}' as XML.\n` + parseError.toString());
     }
