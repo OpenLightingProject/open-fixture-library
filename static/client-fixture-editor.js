@@ -1,21 +1,39 @@
 'use strict';
 
 // Toggle between existing and new manufacturer
-var manShortname = document.querySelector(".manufacturer-shortname");
-var addMan = manShortname.querySelector(".add-manufacturer");
+var manShortname = document.querySelector('.manufacturer-shortname');
+var addManLink = manShortname.querySelector('.add-manufacturer');
 
-var newMan = document.querySelector(".new-manufacturer");
-var useExistingMan = newMan.querySelector(".use-existing-manufacturer");
+var newMan = document.querySelector('.new-manufacturer');
+var useExistingManLink = newMan.querySelector('.use-existing-manufacturer');
 
-addMan.addEventListener("click", function() {
+function addManufacturer() {
   manShortname.hidden = true;
-  newMan.hidden = false;
-});
+  manShortname.querySelectorAll('select, input').forEach(function(element) {
+    element.disabled = true;
+  });
 
-useExistingMan.addEventListener("click", function() {
+  newMan.hidden = false;
+  newMan.querySelectorAll('select, input').forEach(function(element) {
+    element.disabled = false;
+  });
+}
+
+function useExistingManufacturer() {
   manShortname.hidden = false;
+  manShortname.querySelectorAll('select, input').forEach(function(element) {
+    element.disabled = false;
+  });
+
   newMan.hidden = true;
-});
+  newMan.querySelectorAll('select, input').forEach(function(element) {
+    element.disabled = true;
+  });
+}
+
+addManLink.addEventListener('click', addManufacturer);
+useExistingManLink.addEventListener('click', useExistingManufacturer);
+useExistingManufacturer(); // this should be shown at the start
 
 
 // Clone physical template into fixture 
@@ -25,29 +43,31 @@ physical.appendChild(document.importNode(templatePhysical.content, true));
 
 
 // Generate json file(s)
-var saveButton = document.querySelector('.save-fixture');
-saveButton.addEventListener("click", function() {
+var editorForm = document.querySelector('#fixture-editor');
+editorForm.addEventListener('submit', function() {
+  // browser validation has already happened
+
   var man;
   var manData = {};
   var fixData = {};
 
   if (!manShortname.hidden) {
-    man = readSingle(".manufacturer-shortname select");
+    man = readSingle('.manufacturer-shortname select');
   }
   else {
-    man = readSingle(".new-manufacturer-shortname input");
-    readSingle(".new-manufacturer-name input",    manData, "name");
-    readSingle(".new-manufacturer-website input", manData, "website");
-    readSingle(".new-manufacturer-comment input", manData, "comment");
+    man = readSingle('.new-manufacturer-shortname input');
+    readSingle('.new-manufacturer-name input',    manData, 'name');
+    readSingle('.new-manufacturer-website input', manData, 'website');
+    readSingle('.new-manufacturer-comment input', manData, 'comment');
   }
 
-  readSingle('.fixture-name input',      fixData, "name");
-  readSingle('.fixture-shortname input', fixData, "shortname");
-  readMultiple('.categories select',     fixData, "categories");
-  readSingle('.comment textarea',        fixData, "comment");
-  readSingle('.manual input',            fixData, "manualURL");
+  readSingle('.fixture-name input',      fixData, 'name');
+  readSingle('.fixture-shortname input', fixData, 'shortname');
+  readMultiple('.categories select',     fixData, 'categories');
+  readSingle('.comment textarea',        fixData, 'comment');
+  readSingle('.manualURL input',         fixData, 'manualURL');
 
-  console.log("\n### Generated data:");
+  console.log('\n### Generated data:');
   console.log(man);
   console.log(JSON.stringify(manData, null, 2));
   console.log(JSON.stringify(fixData, null, 2));
@@ -57,7 +77,7 @@ saveButton.addEventListener("click", function() {
 function readSingle(selector, data, property) {
   var input = document.querySelector(selector);
   if (!input.validity.valid) {
-      console.error(selector + ' is invalid');
+    console.error(selector + ' is invalid');
   }
   else if (input.value) {
     if (data && property) {

@@ -14,7 +14,7 @@ window.addEventListener('load', function() {
 
   var downloadButton = document.querySelector('.download-button');
 
-  if (downloadButton !== undefined) {
+  if (downloadButton !== undefined && downloadButton !== null) {
     var links = downloadButton.querySelectorAll('a');
 
     for (var i=0; i<links.length; i++) {

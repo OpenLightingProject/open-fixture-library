@@ -9,6 +9,8 @@ module.exports = function(options) {
 
   str += '<h1>Fixture Editor</h1>';
 
+  str += '<form id="fixture-editor" action="#">'; // for now
+
   // Manufacturer
   str += '<section class="manufacturer card">';
   str += '<h2>Manufacturer</h2>';
@@ -23,7 +25,7 @@ module.exports = function(options) {
   str += '<a href="#" class="add-manufacturer">+ Add manufacturer</a>';
   str += '</section>'; // Existing manufacturer
 
-  str += '<section class="new-manufacturer" hidden>';
+  str += '<section class="new-manufacturer">';
   str += '<section class="new-manufacturer-name">';
   str += '<label>Name</label>';
   str += textInput(properties.manufacturer.name);
@@ -31,7 +33,7 @@ module.exports = function(options) {
 
   str += '<section class="new-manufacturer-shortname">';
   str += '<label>Unique short name</label>';
-  str += '<input required />';
+  str += '<input required pattern="[a-z0-9\-]+" />';
   str += '</section>';
 
   str += '<section class="new-manufacturer-website">';
@@ -118,7 +120,7 @@ module.exports = function(options) {
   str += textInput(properties.physical.DMXconnector, 'e.g. 3-pin', 'physical-DMXconnector');
   str += '</section>';
 
-  str += '<h3>Bulb</h3>';
+  str += '<h4>Bulb</h4>';
 
   str += '<section class="physical-bulb-type">';
   str += '<label>Bulb type</label>';
@@ -135,7 +137,7 @@ module.exports = function(options) {
   str += numberInput(properties.bulb.lumens) + ' lm';
   str += '</section>';
 
-  str += '<h3>Lens</h3>';
+  str += '<h4>Lens</h4>';
 
   str += '<section class="physical-lens-name">';
   str += '<label>Lens name</label>';
@@ -150,7 +152,7 @@ module.exports = function(options) {
   str += '</div>';
   str += '</section>';
 
-  str += '<h3>Focus</h3>';
+  str += '<h4>Focus</h4>';
 
   str += '<section class="physical-focus-type">';
   str += '<label>Focus type</label>';
@@ -171,6 +173,8 @@ module.exports = function(options) {
 
 
   str += '<button class="save-fixture">Save</button>';
+
+  str += '</form>';
 
 
   str += '<script src="/client-fixture-editor.js"></script>';
