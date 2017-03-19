@@ -1,7 +1,7 @@
 .fixture-meta {
   margin: -1.5rem 0 1rem;
   font-size: 0.8rem;
-  color: var(--secondary-text-dark);
+  color: $secondary-text-dark;
 
   & > span:not(:last-child)::after {
     content: ' | ';
@@ -21,9 +21,9 @@
     width: 100%;
     padding: 0.5ex 2ex;
     border-radius: 2px;
-    background: var(--light-green-500);
+    background: $light-green-500;
     font-family: LatoLatinSemibold;
-    color: var(--primary-text-light);
+    color: $primary-text-light;
     cursor: pointer;
     box-shadow: 0 2px 2px rgba(#000, 0.2);
     transition: all 0.2s;
@@ -50,7 +50,7 @@
     margin: 0;
     width: 100%;
     list-style: none;
-    background: var(--grey-50);
+    background: $grey-50;
     border-radius: 0 0 2px 2px;
     box-shadow: 0 2px 2px rgba(#000, 0.2);
     z-index: 90;
@@ -58,13 +58,13 @@
     & a {
       display: block;
       padding: 0.2ex 2ex;
-      color: var(--primary-text-dark);
+      color: $primary-text-dark;
       transition: background 0.2s;
     }
 
     & a:hover,
     & a:focus {
-      background: var(--grey-200);
+      background: $grey-200;
       outline: 0;
     }
   }
@@ -73,7 +73,7 @@
   & > .title:focus,
   & > .title:active {
     border-radius: 2px 2px 0 0;
-    background: var(--light-green-700);
+    background: $light-green-700;
   }
 
   &:hover > ul,
@@ -85,7 +85,7 @@
   /* single rule since unsupporting browsers skip the whole rule */
   &:focus-within > .title {
     border-radius: 2px 2px 0 0;
-    background: var(--light-green-700);
+    background: $light-green-700;
   }
   &:focus-within > ul {
     left: 0;
@@ -131,7 +131,7 @@ label {
   display: inline-block;
   min-width: 10rem;
   cursor: text;
-  color: var(--secondary-text-dark);
+  color: $secondary-text-dark;
 }
 
 .value {
@@ -142,7 +142,7 @@ label {
 .hint {
   display: block;
   margin: -0.5rem 0 0;
-  color: var(--secondary-text-dark);
+  color: $secondary-text-dark;
   font-size: 0.8rem;
 }
 
