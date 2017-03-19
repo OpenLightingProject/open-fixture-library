@@ -4,7 +4,6 @@ const fs = require('fs');
 const path = require('path');
 const util = require('util')
 const colors = require('colors');
-const validUrl = require('valid-url');
 
 const fixturePath = path.join(__dirname, '..', 'fixtures');
 const schemas = require(path.join(fixturePath, 'schema'));
