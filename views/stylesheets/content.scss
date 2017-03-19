@@ -9,12 +9,12 @@
 .card {
   padding: 1rem;
   margin-bottom: 1rem;
-  box-shadow: 0 2px 4px var(--divider-dark);
+  box-shadow: 0 2px 4px $divider-dark;
   box-sizing: border-box;
   background-color: #fff;
   border-radius: 3px;
   position: relative;
-  fill: var(--icon-dark);
+  fill: $icon-dark;
 
   &.list {
     padding: 0;
@@ -42,7 +42,7 @@
 
 @each $cat in $categories {
   .list.category-#{$cat} svg:not(.category-#{$cat}) {
-    fill: var(--icon-inactive-dark);
+    fill: $icon-inactive-dark;
   }
 }
 
@@ -50,17 +50,17 @@ a.card, .list a {
   transition: background-color .2s, fill .2s;
   text-decoration: none;
   display: block;
-  color: var(--primary-text-dark);
+  color: $primary-text-dark;
 
   &:hover,
   &:focus {
-    background-color: var(--grey-100);
-    fill: var(--primary-text-dark);
+    background-color: $grey-100;
+    fill: $primary-text-dark;
     outline: none;
   }
 
   &:active {
-    background-color: var(--grey-200);
+    background-color: $grey-200;
   }
 }
 
