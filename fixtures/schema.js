@@ -5,10 +5,10 @@ const schema = require('js-schema');
  *
  * in short:
  *   'property' is required
- *   '?property' is unused
- *   '*' has to match all other properties
+ *   '?property' is optional
+ *   '*' has to match all properties that have no own rule
  *
- * we use "'*': Function" to disallow additional properties
+ * we use `'*': Function` to disallow additional properties
  * since JSON has no function type
  */
 
@@ -116,10 +116,10 @@ const Manufacturers = schema({
 });
 
 
-exports.Fixture = Fixture;
-exports.Manufacturers = Manufacturers;
+module.exports.Fixture = Fixture;
+module.exports.Manufacturers = Manufacturers;
 
-exports.properties = {
+let properties = {
   manufacturer: Manufacturers.toJSON().additionalProperties.properties,
   fixture:      Fixture.toJSON().properties,
   mode:         Mode.toJSON().properties,
@@ -133,7 +133,9 @@ exports.properties = {
   URL:          URL.toJSON(),
   DMXValue:     DMXValue.toJSON(),
 }
-exports.properties.meta  = exports.properties.fixture.meta.properties;
-exports.properties.bulb  = exports.properties.physical.bulb.properties;
-exports.properties.lens  = exports.properties.physical.lens.properties;
-exports.properties.focus = exports.properties.physical.focus.properties;
+properties.meta  = properties.fixture.meta.properties;
+properties.bulb  = properties.physical.bulb.properties;
+properties.lens  = properties.physical.lens.properties;
+properties.focus = properties.physical.focus.properties;
+
+module.exports.properties = properties;
