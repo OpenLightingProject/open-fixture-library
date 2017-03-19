@@ -242,7 +242,7 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
         if (ch.type == 'Colour') {
           ch.type = 'MultiColor';
         }
-        else if (channel.Colour) {
+        else if ('Colour' in channel && channel.Colour[0] != 'Generic') {
           ch.type = 'SingleColor';
           ch.color = channel.Colour[0];
         }
