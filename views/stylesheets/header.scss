@@ -17,10 +17,12 @@
     display: inline-block;
     height: 4.5em;
     line-height: 4.5em;
+    background-color: rgba(#e8e8e8, 0);
+    transition: all 0.2s;
 
     &:hover,
     &:focus {
-      background-color: #e8e8e8;
+      background-color: rgba(#e8e8e8, 1);
       color: #000;
       outline: 0;
     }
@@ -37,30 +39,31 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    padding: 5px;
+    padding: 0.4em;
     background: #fff;
     border: 1px solid #cfd6e6;
     border-radius: 3px;
     font-size: 1.05em;
     line-height: 1.2;
     width: 100%;
+    transition: all 0.2s;
 
     &:focus {
-      border-color: var(--blue-300);
+      border-color: $blue-300;
     }
   }
 
   button {
-    --icon-size: calc(1.2em + 2px);
-    --padding: 4px;
+    /* icon size: 1.4em, padding: 0.3em */
+
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     margin-left: 4px;
     position: relative;
-    padding: 0 0 0 calc(var(--icon-size) + 2 * var(--padding));
+    padding: 0 0 0 2em; /* icon size + 2*padding */
     width: 0;
-    height: calc(var(--icon-size) + 2 * var(--padding));
+    height: 2em; /* icon size + 2*padding */
     box-sizing: content-box;
     overflow: hidden;
     background-color: #fbfbfb;
@@ -69,7 +72,8 @@
     font-size: 1.05em;
     line-height: 1.2;
     cursor: pointer;
-    color: var(--secondary-text-dark);
+    color: $secondary-text-dark;
+    transition: all 0.2s;
 
     &::-moz-focus-inner {
       border: 0;
@@ -78,26 +82,26 @@
     & > svg {
       display: block;
       position: absolute;
-      width: var(--icon-size);
-      height: var(--icon-size);
-      top: var(--padding);
-      left: var(--padding);
+      width: 1.4em;
+      height: 1.4em;
+      top: 0.3em;
+      left: 0.3em;
       fill: currentcolor;
     }
 
     &:focus {
-      border-color: var(--blue-300);
+      border-color: $blue-300;
     }
 
     &:hover {
-      background-color: var(--blue-300);
-      color: var(--primary-text-light);
+      background-color: $blue-300;
+      color: $primary-text-light;
     }
 
     &:active {
-      background-color: var(--blue-700);
+      background-color: $blue-700;
       border-color: transparent;
-      color: var(--primary-text-light);
+      color: $primary-text-light;
     }
   }
 }
@@ -110,17 +114,16 @@
 }
 
 #header #home-logo {
-  --logo-width: 122px;
-  --logo-padding: 2ex;
+  /* width: 122px, padding: 2ex */
+
   display: inline-block;
   width: 0;
-  padding-left: calc(var(--logo-width) + 2 * var(--logo-padding));
+  padding-left: calc(122px + 2 * 2ex);
   overflow: hidden;
   background-image: url('ofl-logo.svg');
-  background-position: var(--logo-padding) center;
-  background-size: calc(100% - 2 * var(--logo-padding)) auto;
+  background-position: 2ex center;
+  background-size: calc(100% - 2 * 2ex) auto;
   background-repeat: no-repeat;
-  transition: padding .2s;
 }
 
 #right-nav > a {
@@ -137,8 +140,12 @@
   }
 
   #header #home-logo {
-    --logo-width: 92px;
-    --logo-padding: .5ex;
+    /* width: 92px, padding: 0.5ex */
+
+    padding-left: calc(92px + 2 * 0.5ex);
+    background-position: 0.5ex center;
+    background-size: calc(100% - 2 * 0.5ex) auto;
+
     line-height: 3em;
     height: 3em;
   }
@@ -161,7 +168,10 @@
 /* Phone */
 @media (max-width: $phone) {
   #header #home-logo {
-    --logo-width: 82px;
+    /* width: 82px */
+
+    padding-left: calc(82px + 2 * 0.5ex);
+
     line-height: 2.8em;
     height: 2.8em;
 
