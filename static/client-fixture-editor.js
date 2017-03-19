@@ -62,7 +62,30 @@ addModeLink.addEventListener('click', function(e) {
     e.preventDefault();
     newMode.remove();
   });
+
+  var physicalOverride = newMode.querySelector('.physical-override');
+  physicalOverride.appendChild(document.importNode(templatePhysical.content, true));
+  var usePhysicalOverride = newMode.querySelector('.use-physical-override');
+  usePhysicalOverride.addEventListener('change', function() {
+    togglePhysicalOverride(usePhysicalOverride, physicalOverride);
+  });
+  togglePhysicalOverride(usePhysicalOverride, physicalOverride);
 });
+
+function togglePhysicalOverride(usePhysicalOverride, physicalOverride) {
+  if (usePhysicalOverride.checked) {
+    physicalOverride.hidden = false;
+    physicalOverride.querySelectorAll('select, input').forEach(function(element) {
+      element.disabled = false;
+    });
+  }
+  else {
+    physicalOverride.hidden = true;
+    physicalOverride.querySelectorAll('select, input').forEach(function(element) {
+      element.disabled = true;
+    });
+  }
+}
 
 
 // Generate json file(s)
@@ -114,8 +137,8 @@ function readMultiple(selector, data, property) {
   var select = document.querySelector(selector);
   if (select.selectedOptions.length > 0) {
     var output = [];
-    for (var option of select.selectedOptions) {
-      output.push(option.value);
+    for (var i = 0; i < select.selectedOptions.length; i++) {
+      output.push(select.selectedOptions[i].value);
     }
 
     if (data && property) {

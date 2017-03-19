@@ -206,6 +206,15 @@ module.exports = function(options) {
   str += textInput(properties.mode.shortName, "Defaults to name");
   str += '</section>';
 
+  str += '<h3>Physical override</h3>';
+
+  str += '<label>';
+  str += '<input type="checkbox" class="use-physical-override" />';
+  str += 'Enable physical override';
+  str += '</label>';
+  str += '<section class="physical-override">';
+  str += '</section>';
+
   str += '</section>'; // .fixture-mode
   str += '</template>'; // .template-mode
 
