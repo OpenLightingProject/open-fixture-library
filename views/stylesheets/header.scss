@@ -54,16 +54,16 @@
   }
 
   button {
-    /* icon size: 1.4em, padding: 0.3em */
-
+    $icon-size: 1.4em;
+    $padding: 0.3em;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     margin-left: 4px;
     position: relative;
-    padding: 0 0 0 2em; /* icon size + 2*padding */
+    padding: 0 0 0 calc(#{$icon-size} + #{2*$padding});
     width: 0;
-    height: 2em; /* icon size + 2*padding */
+    height: calc(#{$icon-size} + #{2*$padding});
     box-sizing: content-box;
     overflow: hidden;
     background-color: #fbfbfb;
@@ -82,10 +82,10 @@
     & > svg {
       display: block;
       position: absolute;
-      width: 1.4em;
-      height: 1.4em;
-      top: 0.3em;
-      left: 0.3em;
+      width: $icon-size;
+      height: $icon-size;
+      top: $padding;
+      left: $padding;
       fill: currentcolor;
     }
 
@@ -113,17 +113,18 @@
   justify-content: center;
 }
 
+@mixin home-logo-sizing($width, $padding) {
+  padding-left: calc(#{$width} + #{2*$padding});
+  background-position: $padding center;
+  background-size: calc(100% - #{2*$padding}) auto;
+}
 #header #home-logo {
-  /* width: 122px, padding: 2ex */
-
   display: inline-block;
   width: 0;
-  padding-left: calc(122px + 2 * 2ex);
   overflow: hidden;
   background-image: url('ofl-logo.svg');
-  background-position: 2ex center;
-  background-size: calc(100% - 2 * 2ex) auto;
   background-repeat: no-repeat;
+  @include home-logo-sizing(122px, 2ex);
 }
 
 #right-nav > a {
@@ -140,11 +141,7 @@
   }
 
   #header #home-logo {
-    /* width: 92px, padding: 0.5ex */
-
-    padding-left: calc(92px + 2 * 0.5ex);
-    background-position: 0.5ex center;
-    background-size: calc(100% - 2 * 0.5ex) auto;
+    @include home-logo-sizing(92px, .5ex);
 
     line-height: 3em;
     height: 3em;
@@ -168,9 +165,7 @@
 /* Phone */
 @media (max-width: $phone) {
   #header #home-logo {
-    /* width: 82px */
-
-    padding-left: calc(82px + 2 * 0.5ex);
+    @include home-logo-sizing(82px, .5ex);
 
     line-height: 2.8em;
     height: 2.8em;
