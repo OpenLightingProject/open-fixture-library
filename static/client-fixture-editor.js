@@ -18,7 +18,6 @@ function addManufacturer() {
     element.disabled = false;
   });
 }
-
 function useExistingManufacturer() {
   manShortname.hidden = false;
   manShortname.querySelectorAll('select, input').forEach(function(element) {
@@ -30,7 +29,6 @@ function useExistingManufacturer() {
     element.disabled = true;
   });
 }
-
 addManLink.addEventListener('click', addManufacturer);
 useExistingManLink.addEventListener('click', useExistingManufacturer);
 useExistingManufacturer(); // this should be shown at the start
@@ -42,10 +40,36 @@ var physical = document.querySelector('.physical');
 physical.appendChild(document.importNode(templatePhysical.content, true));
 
 
+// Enable mode adding
+var templateMode = document.querySelector('.template-mode');
+var modesContainer = document.querySelector('.fixture-modes');
+var addModeLink = document.querySelector('a.fixture-mode');
+addModeLink.addEventListener('click', function(e) {
+  e.preventDefault();
+
+  var newMode = document.importNode(templateMode.content, true);
+  modesContainer.insertBefore(
+    newMode,
+    addModeLink
+  );
+  newMode = addModeLink.previousSibling;
+
+  var newModeName = newMode.querySelector('.mode-name > input');
+  newModeName.focus();
+
+  var removeModeButton = newMode.querySelector('.remove-mode');
+  removeModeButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    newMode.remove();
+  });
+});
+
+
 // Generate json file(s)
 var editorForm = document.querySelector('#fixture-editor');
 editorForm.addEventListener('submit', function() {
   // browser validation has already happened
+  // -> all inputs are valid
 
   var man;
   var manData = {};
@@ -76,10 +100,7 @@ editorForm.addEventListener('submit', function() {
 
 function readSingle(selector, data, property) {
   var input = document.querySelector(selector);
-  if (!input.validity.valid) {
-    console.error(selector + ' is invalid');
-  }
-  else if (input.value) {
+  if (input.value) {
     if (data && property) {
       data[property] = input.value;
     }
@@ -91,23 +112,17 @@ function readSingle(selector, data, property) {
 
 function readMultiple(selector, data, property) {
   var select = document.querySelector(selector);
+  if (select.selectedOptions.length > 0) {
+    var output = [];
+    for (var option of select.selectedOptions) {
+      output.push(option.value);
+    }
 
-  if (!select.validity.valid) {
-    console.error(selector + ' is invalid');
-  }
-  else {
-    if (select.selectedOptions.length > 0) {
-      var output = [];
-      for (var option of select.selectedOptions) {
-        output.push(option.value);
-      }
-
-      if (data && property) {
-        data[property] = output;
-      }
-      else {
-        return output;
-      }
+    if (data && property) {
+      data[property] = output;
+    }
+    else {
+      return output;
     }
   }
 }

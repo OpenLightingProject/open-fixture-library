@@ -11,10 +11,12 @@ module.exports = function(options) {
 
   str += '<form id="fixture-editor" action="#">'; // for now
 
+
   // Manufacturer
   str += '<section class="manufacturer card">';
   str += '<h2>Manufacturer</h2>';
 
+  // Existing manufacturer
   str += '<section class="manufacturer-shortname">';
   str += '<label>Choose from list</label>';
   str += `<select required>`;
@@ -23,8 +25,9 @@ module.exports = function(options) {
   }
   str += '</select> or ';
   str += '<a href="#" class="add-manufacturer">+ Add manufacturer</a>';
-  str += '</section>'; // Existing manufacturer
+  str += '</section>'; // .manufacturer-shortname (existing manufacturer)
 
+  // New manufacturer
   str += '<section class="new-manufacturer">';
   str += '<section class="new-manufacturer-name">';
   str += '<label>Name</label>';
@@ -46,9 +49,9 @@ module.exports = function(options) {
   str += textInput(properties.manufacturer.comment);
   str += '</section> or ';
   str += '<a href="#" class="use-existing-manufacturer">Use existing manufacturer</a>';
-  str += '</section>'; // New manufacturer
+  str += '</section>'; // .new-manufacturer
 
-  str += '</section>'; // Manufacturer
+  str += '</section>'; // .manufacturer
 
 
   // Fixture info
@@ -62,7 +65,7 @@ module.exports = function(options) {
 
   str += '<section class="fixture-shortname">';
   str += '<label>Unique short name</label>';
-  str += textInput(properties.fixture.name, "Defaults to name");
+  str += textInput(properties.fixture.shortName, "Defaults to name");
   str += '</section>';
 
   str += '<section class="categories">';
@@ -84,13 +87,23 @@ module.exports = function(options) {
   str += urlInput(properties.fixture.manualURL);
   str += '</section>';
 
-  str += '</section>'; // Fixture info
+  str += '</section>'; // .fixture-info
 
 
   // Fixture physical
   str += '<section class="physical card">';
   str += '<h2>Physical data</h2>';
   str += '</section>';
+
+
+  // Fixture modes
+  str += '<section class="fixture-modes">';
+  str += '<a class="fixture-mode card" href="#">';
+  str += '<h2>+ Add mode</h2>'
+  str += '</a>';
+  str += '<div class="clearfix"></div>';
+  str += '</section>'; // .fixture-modes
+
 
 
   // Physical template
@@ -169,7 +182,32 @@ module.exports = function(options) {
   str += numberInput(properties.focus.tiltMax, '', 'physical-focus-tiltMax') + ' °';
   str += '</section>';
 
-  str += '</template>'; // Physical template
+  str += '</template>'; // .template-physical
+
+
+  // Mode template
+  str += '<template class="template-mode">';
+  str += '<section class="fixture-mode card">';
+
+  str += '<a class="remove-mode" href="#">';
+  str += 'Remove mode';
+  str += require('../includes/svg')({svgBasename: 'close'});
+  str += '</a>';
+
+  str += '<h2>Mode</h2>'
+
+  str += '<section class="mode-name">';
+  str += '<label>Name</label>';
+  str += textInput(properties.mode.name);
+  str += '</section>';
+
+  str += '<section class="mode-shortname">';
+  str += '<label>Unique short name</label>';
+  str += textInput(properties.mode.shortName, "Defaults to name");
+  str += '</section>';
+
+  str += '</section>'; // .fixture-mode
+  str += '</template>'; // .template-mode
 
 
   str += '<button class="save-fixture">Save</button>';

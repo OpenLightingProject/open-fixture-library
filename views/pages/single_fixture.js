@@ -112,6 +112,7 @@ module.exports = function(options) {
 
   str += '</section>'; // .fixture-info
 
+  str += '<section class="fixture-modes">';
   fixture.modes.forEach(mode => {
     let heading = mode.name + ' mode';
     if ('shortName' in mode) {
@@ -141,10 +142,10 @@ module.exports = function(options) {
       str += '</li>';
     });
     str += '</ol>';
-    str += '</section>';
+    str += '</section>'; // .fixture-mode
   });
-
   str += '<div class="clearfix"></div>';
+  str += '</section>'; // .fixture-modes
 
   str += require('../includes/footer')(options);
 

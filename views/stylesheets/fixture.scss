@@ -198,9 +198,18 @@ data.checkbox {
   }
 }
 
+a.fixture-mode {
+  text-align: center;
+}
+
+.fixture-mode > .remove-mode {
+  float: right;
+  @include icon-button($red-700, $red-300);
+}
+
 /* display mode cards in a 2-col layout */
 @media (min-width: $tablet) {
-  .card.fixture-mode {
+  .fixture-modes > .card.fixture-mode {
     width: calc(50% - .5rem);
 
     & > h2 {
@@ -209,12 +218,12 @@ data.checkbox {
       overflow: hidden;
     }
 
-    &:nth-of-type(even) {
+    &:nth-child(odd) {
       margin-right: .5rem;
       float: left;
       clear: left;
     }
-    &:nth-of-type(odd) {
+    &:nth-child(even) {
       margin-left: .5rem;
       float: right;
       clear: right;
@@ -225,10 +234,10 @@ data.checkbox {
     width: calc(50% - 1.5em);
     float: left;
 
-    &:nth-of-type(2n+1) {
+    &:nth-of-type(odd) {
       margin-right: 1.5rem;
     }
-    &:nth-of-type(2n) {
+    &:nth-of-type(even) {
       margin-left: 1.5rem;
     }
   }
