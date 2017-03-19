@@ -56,6 +56,7 @@
   button {
     $icon-size: 1.4em;
     $padding: 0.3em;
+
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -124,6 +125,7 @@
   overflow: hidden;
   background-image: url('ofl-logo.svg');
   background-repeat: no-repeat;
+
   @include home-logo-sizing(122px, 2ex);
 }
 
