@@ -1,0 +1,46 @@
+#!/usr/bin/node
+
+const fs = require('fs');
+const path = require('path');
+const checkFixture = require(path.join(__dirname, 'tests', 'fixture_valid')).checkFixture;
+
+let importPlugins = {};
+for (const filename of fs.readdirSync(path.join(__dirname, 'plugins'))) {
+  const plugin = require(path.join(__dirname, 'plugins', filename));
+  if ('import' in plugin) {
+    importPlugins[path.basename(filename, '.js')] = plugin;
+  }
+}
+
+const selectedPlugin = process.argv[2];
+const filename = process.argv[3];
+
+if (process.argv.length != 4 || !(selectedPlugin in importPlugins)) {
+  console.error(`Usage: ${process.argv[1]} [plugin] [filename]\n\navailable plugins: ${Object.keys(importPlugins).join(', ')}`);
+  process.exit(1);
+}
+
+fs.readFile(filename, 'utf8', (error, data) => {
+  if (error) {
+    console.error('read error', error);
+    process.exit(1);
+    return;
+  }
+
+  new Promise((resolve, reject) => {
+    importPlugins[selectedPlugin].import(data, filename, resolve, reject);
+  }).then(result => {
+    result.errors = {};
+
+    for (const fixKey in result.fixtures) {
+      const checkResult = checkFixture(result.fixtures[fixKey]);
+
+      result.warnings[fixKey] = result.warnings[fixKey].concat(checkResult.warnings);
+      result.errors[fixKey] = checkResult.errors;
+    }
+
+    console.log(JSON.stringify(result, null, 2));
+  }).catch(error => {
+    console.error(error);
+  })
+});

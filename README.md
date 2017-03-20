@@ -30,21 +30,26 @@ In the future, it will be possible to add fixtures via a graphical fixture edito
 
 ### Plugins
 
-A plugin is a module that handles import from and/or export to a fixture format. Just add a new file to the `plugins` directory, it will be automatically detected.
+A plugin is a module that handles import from and/or export to a fixture format. Just add a new file to the `plugins` directory, it will be automatically detected. If your plugin does not support both import and export, just define one of the functions.
 
 ```js
-module.exports.name = 'e:cue';  // display name
-module.exports.version = '0.1.0';  // plugin version
+module.exports.name = 'e:cue';     // display name, required
+module.exports.version = '0.1.0';  // plugin version, required
 
+// optional
 module.exports.export = function exportPluginName(library, options) {
   /*
-    library is an array of {
-      manufacturerKey: '...',
-      fixtureKey: '...'
-    } objects
-
-    options includes the `manufacturer` object and `baseDir`
-  */
+   * library: array of {
+   *                     manufacturerKey: '...',
+   *                     fixtureKey: '...'
+   *                   } objects
+   * 
+   * options: {
+   *            manufacturers: {...},
+   *            baseDir: '...',
+   *            // maybe more
+   *          }
+   */
 
   let outfiles = [];
 
@@ -60,8 +65,43 @@ module.exports.export = function exportPluginName(library, options) {
   // ...
 
   return outfiles;
-}
+};
+
+// also optional
+module.exports.import = function importPluginName(str, filename, resolve, reject) {
+  /*
+   * str:      'import file contents'
+   * filename: 'importFilename.ext'
+   * resolve:  function to call if everything goes right, see below
+   * reject:   function to call if something goes wrong, see below
+   */
+
+  let out = {
+    manufacturers: {},  // like in manufacturers.json
+    fixtures: {},       // key: 'manufacturer-key/fixture-key', value: like in a fixture JSON
+    warnings: {}        // key: 'manufacturer-key/fixture-key' to which a warning belongs, value: string
+  };
+
+  // ...
+
+  // example
+  const manKey = 'cameo';
+  const fixKey = 'thunder-wash-600-rgb'
+
+  if (couldNotParse) {
+    return reject(`Could not parse '${filename}'.`);
+  }
+
+  // Add warning if a necessary property is not included in parsed file
+  out.warnings[manKey + '/' + fixKey].push('Please specify categories.');
+
+  out.fixtures[manKey + '/' + fixKey] = fixtureObject;
+
+  resolve(out);
+};
 ```
+
+You can try import plugins by running `node cli-import.js [pluginName] [importFileName]`.
 
 
 ### UI
