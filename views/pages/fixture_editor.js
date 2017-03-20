@@ -17,7 +17,7 @@ module.exports = function(options) {
   str += '<h2>Manufacturer</h2>';
 
   // Existing manufacturer
-  str += '<section class="manufacturer-shortname">';
+  str += '<section class="manufacturer-shortName">';
   str += '<label>Choose from list</label>';
   str += `<select required>`;
   for (const man in options.manufacturers) {
@@ -25,7 +25,7 @@ module.exports = function(options) {
   }
   str += '</select> or ';
   str += '<a href="#" class="add-manufacturer">+ Add manufacturer</a>';
-  str += '</section>'; // .manufacturer-shortname (existing manufacturer)
+  str += '</section>'; // .manufacturer-shortName (existing manufacturer)
 
   // New manufacturer
   str += '<section class="new-manufacturer">';
@@ -34,7 +34,7 @@ module.exports = function(options) {
   str += textInput(properties.manufacturer.name);
   str += '</section>';
 
-  str += '<section class="new-manufacturer-shortname">';
+  str += '<section class="new-manufacturer-shortName">';
   str += '<label>Unique short name</label>';
   str += '<input required pattern="[a-z0-9\-]+" />';
   str += '</section>';
@@ -63,7 +63,7 @@ module.exports = function(options) {
   str += textInput(properties.fixture.name);
   str += '</section>';
 
-  str += '<section class="fixture-shortname">';
+  str += '<section class="fixture-shortName">';
   str += '<label>Unique short name</label>';
   str += textInput(properties.fixture.shortName, "Defaults to name");
   str += '</section>';
@@ -201,7 +201,7 @@ module.exports = function(options) {
   str += textInput(properties.mode.name);
   str += '</section>';
 
-  str += '<section class="mode-shortname">';
+  str += '<section class="mode-shortName">';
   str += '<label>Unique short name</label>';
   str += textInput(properties.mode.shortName, "Defaults to name");
   str += '</section>';

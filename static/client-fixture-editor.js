@@ -1,15 +1,15 @@
 'use strict';
 
 // Toggle between existing and new manufacturer
-var manShortname = document.querySelector('.manufacturer-shortname');
-var addManLink = manShortname.querySelector('.add-manufacturer');
+var manShortName = document.querySelector('.manufacturer-shortName');
+var addManLink = manShortName.querySelector('.add-manufacturer');
 
 var newMan = document.querySelector('.new-manufacturer');
 var useExistingManLink = newMan.querySelector('.use-existing-manufacturer');
 
 function addManufacturer() {
-  manShortname.hidden = true;
-  manShortname.querySelectorAll('select, input').forEach(function(element) {
+  manShortName.hidden = true;
+  manShortName.querySelectorAll('select, input').forEach(function(element) {
     element.disabled = true;
   });
 
@@ -19,8 +19,8 @@ function addManufacturer() {
   });
 }
 function useExistingManufacturer() {
-  manShortname.hidden = false;
-  manShortname.querySelectorAll('select, input').forEach(function(element) {
+  manShortName.hidden = false;
+  manShortName.querySelectorAll('select, input').forEach(function(element) {
     element.disabled = false;
   });
 
@@ -88,7 +88,7 @@ function togglePhysicalOverride(usePhysicalOverride, physicalOverride) {
 }
 
 
-// Generate json file(s)
+// Generate json data
 var editorForm = document.querySelector('#fixture-editor');
 editorForm.addEventListener('submit', function() {
   // browser validation has already happened
@@ -98,21 +98,31 @@ editorForm.addEventListener('submit', function() {
   var manData = {};
   var fixData = {};
 
-  if (!manShortname.hidden) {
-    man = readSingle('.manufacturer-shortname select');
+  if (!manShortName.hidden) {
+    readSelect(document, '.manufacturer-shortName',     manData, 'shortName');
   }
   else {
-    man = readSingle('.new-manufacturer-shortname input');
-    readSingle('.new-manufacturer-name input',    manData, 'name');
-    readSingle('.new-manufacturer-website input', manData, 'website');
-    readSingle('.new-manufacturer-comment input', manData, 'comment');
+    readSingle(document, '.new-manufacturer-shortName', manData, 'shortName');
+    readSingle(document, '.new-manufacturer-name',      manData, 'name');
+    readSingle(document, '.new-manufacturer-website',   manData, 'website');
+    readSingle(document, '.new-manufacturer-comment',   manData, 'comment');
   }
+  man = manData.shortName;
+  delete manData.shortName;
 
-  readSingle('.fixture-name input',      fixData, 'name');
-  readSingle('.fixture-shortname input', fixData, 'shortname');
-  readMultiple('.categories select',     fixData, 'categories');
-  readSingle('.comment textarea',        fixData, 'comment');
-  readSingle('.manualURL input',         fixData, 'manualURL');
+  readSingle(document, '.fixture-name',      fixData, 'name');
+  readSingle(document, '.fixture-shortName', fixData, 'shortName');
+  readSelect(document, '.categories',        fixData, 'categories');
+  readSingle(document, '.comment',           fixData, 'comment');
+  readSingle(document, '.manualURL',         fixData, 'manualURL');
+
+  readPhysical(document, '.physical.card', fixData, 'physical')
+
+  var modes = document.querySelectorAll('section.fixture-mode');
+  fixData.modes = [];
+  modes.forEach(function(mode) {
+    fixData.modes.push(readMode(mode));
+  })
 
   console.log('\n### Generated data:');
   console.log(man);
@@ -121,31 +131,109 @@ editorForm.addEventListener('submit', function() {
 });
 
 
-function readSingle(selector, data, property) {
-  var input = document.querySelector(selector);
-  if (input.value) {
-    if (data && property) {
-      data[property] = input.value;
+function readMode(modeContainer) {
+  var modeData = {};
+
+  readSingle(modeContainer, '.mode-name',      modeData, 'name');
+  readSingle(modeContainer, '.mode-shortName', modeData, 'shortName');
+
+  var usePhysicalOverride = modeContainer.querySelector('.use-physical-override');
+  if (usePhysicalOverride.checked) {
+    readPhysical(modeContainer, '.physical-override', modeData, 'physical');
+  }
+
+  return modeData;
+}
+
+function readPhysical(container, selector, data, property) {
+  readObject(function(physical) {
+    var inputsContainer = container.querySelector(selector);
+
+    readArray(inputsContainer,  '.physical-dimensions',   physical, 'dimensions');
+    readSingle(inputsContainer, '.physical-weight',       physical, 'weight');
+    readSingle(inputsContainer, '.physical-power',        physical, 'power');
+    readSingle(inputsContainer, '.physical-DMXconnector', physical, 'DMXconnector');
+
+    readObject(function(bulb) {
+      readSingle(inputsContainer, '.physical-bulb-type',             bulb, 'type');
+      readSingle(inputsContainer, '.physical-bulb-colorTemperature', bulb, 'colorTemperature');
+      readSingle(inputsContainer, '.physical-bulb-lumens',           bulb, 'lumens');
+    }, physical, "bulb");
+
+    readObject(function(lens) {
+      readSingle(inputsContainer, '.physical-lens-name',    lens, 'name');
+      readArray(inputsContainer,  '.physical-lens-degrees', lens, 'degreesMinMax');
+    }, physical, "lens");
+
+    readObject(function(focus) {
+      readSingle(inputsContainer, '.physical-focus-type',    focus, 'type');
+      readSingle(inputsContainer, '.physical-focus-panMax',  focus, 'panMax');
+      readSingle(inputsContainer, '.physical-focus-tiltMax', focus, 'tiltMax');
+    }, physical, "focus");
+  }, data, property);
+}
+
+function readObject(parserFunction, data, property) {
+  var obj = {};
+
+  parserFunction(obj);
+
+  if (JSON.stringify(obj) !== "{}") {
+    data[property] = obj;
+  }
+}
+
+function readSingle(container, selector, data, property) {
+  var input = container.querySelector(selector + ' input, ' + selector + ' textarea');
+  if (input.type === "number") {
+    if (!isNaN(input.valueAsNumber)) {
+      data[property] = input.valueAsNumber;
     }
-    else {
-      return input.value;
+  }
+  else {
+    if (input.value != "") {
+      data[property] = input.value;
     }
   }
 }
 
-function readMultiple(selector, data, property) {
-  var select = document.querySelector(selector);
-  if (select.selectedOptions.length > 0) {
-    var output = [];
-    for (var i = 0; i < select.selectedOptions.length; i++) {
-      output.push(select.selectedOptions[i].value);
-    }
+function readArray(container, selector, data, property) {
+  var inputs = container.querySelectorAll(selector + ' input, ' + selector + ' textarea');
 
-    if (data && property) {
-      data[property] = output;
+  var array = [];
+  var filled = false;
+  inputs.forEach(function(input) {
+    if (input.type === "number") {
+      if (!isNaN(input.valueAsNumber)) {
+        filled = true;
+        array.push(input.valueAsNumber);
+      }
+      else {
+        array.push(0);
+      }
     }
     else {
-      return output;
+      if (input.value != "") {
+        filled = true;
+        array.push(input.value);
+      }
+      else {
+        array.push("");
+      }
+    }
+  });
+
+  if (filled) {
+    data[property] = array;
+  }
+}
+
+function readSelect(container, selector, data, property) {
+  var select = container.querySelector(selector + ' select');
+  if (select.selectedOptions.length > 0) {
+    data[property] = [];
+    for (var i = 0; i < select.selectedOptions.length; i++) {
+      data[property].push(select.selectedOptions[i].value);
     }
   }
 }
