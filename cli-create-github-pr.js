@@ -34,9 +34,13 @@ const github = new GitHubApi({
   timeout: 5000
 });
 
-let manufacturersAction;
-let addedFixtures = [];
+let changedFiles = [];
 let warnings = [];
+let newRegister = {
+  filesystem: {},
+  manufacturers: {},
+  categories: {}
+};
 let pullRequestUrl;
 
 const timestamp = new Date().toISOString().replace(/:/g, '-').replace(/\..+/, '');
@@ -69,30 +73,67 @@ github.gitdata.getReference({
 .then(() => {
   console.log('done');
 
-  return addOrUpdateManufacturers();
+  if (Object.keys(out.manufacturers).length == 0) {
+    return Promise.resolve();
+  }
+
+  return addOrUpdateFile('fixtures/manufacturers.json', 'manufacturers.json', oldFileContent => {
+    if (oldFileContent == null) {
+      return prettyStringify(out.manufacturers);
+    }
+    out.manufacturers = Object.assign({}, JSON.parse(oldFileContent), out.manufacturers);
+    return prettyStringify(out.manufacturers);
+  });
 })
 .then(() => {
   let chain = Promise.resolve();
 
   for (const fixtureKey in out.fixtures) {
-    chain = chain.then(() => addOrUpdateFixture(fixtureKey));
+    const [manKey, fixKey] = fixtureKey.split('/');
+
+    newRegister.filesystem[fixtureKey] = {
+      name: out.fixtures[fixtureKey].name,
+      manufacturerName: out.manufacturers[manKey].name
+    };
+
+    if (!(manKey in newRegister.manufacturers)) {
+      newRegister.manufacturers[manKey] = [];
+    }
+    newRegister.manufacturers[manKey].push(fixKey);
+
+    for (const cat of out.fixtures[fixtureKey].categories) {
+      if (!(cat in newRegister.categories)) {
+        newRegister.categories[cat] = [];
+      }
+      newRegister.categories[cat].push(fixKey);
+    }
+
+    chain = chain.then(() => addOrUpdateFile(`fixtures/${fixtureKey}.json`, `fixture '${fixtureKey}'`, oldFileContent => {
+      return prettyStringify(out.fixtures[fixtureKey]);
+    }));
   }
 
   return chain;
 })
 .then(() => {
+  return addOrUpdateFile('fixtures/register.json', 'register.json', oldFileContent => {
+    if (oldFileContent == null) {
+      return prettyStringify(newRegister);
+    }
+    return prettyStringify(Object.assign({}, JSON.parse(oldFileContent), newRegister));
+  });
+})
+.then(() => {
   console.log('create pull request ...');
 
+  const addedFixtures = changedFiles.filter(line => line.startsWith('add fixture'));
   let title = `Added ${addedFixtures.length} new fixtures`;
   if (addedFixtures.length == 1) {
     title = `Added fixture '${addedFixtures[0]}'`;
   }
 
-  if (manufacturersAction) {
-    addedFixtures.unshift(manufacturersAction);
-  }
 
-  let body = addedFixtures.map(fix => '* ' + fix).join('\n');
+  let body = changedFiles.map(line => '* ' + line).join('\n');
   if (warnings.length > 0) {
     body += '\n\nWarnings:\n' + warnings.join('\n');
   }
@@ -127,64 +168,9 @@ github.gitdata.getReference({
 });
 
 
-function addOrUpdateManufacturers() {
-  if (Object.keys(out.manufacturers).length == 0) {
-    return Promise.resolve();
-  }
+function addOrUpdateFile(filename, context, newContentFunction) {
+  console.log(`does ${context} exist?`);
 
-  console.log('does manufacturers.json exist?');
-  return github.repos.getContent({
-    owner: 'FloEdelmann',
-    repo: repository,
-    path: 'fixtures/manufacturers.json'
-  })
-  .then(result => {
-    console.log('yes -> update it ...');
-
-    const oldManufacturersStr = Buffer.from(result.data.content, result.data.encoding).toString('utf8');
-    const newManufacturersStr = prettyStringify(Object.assign({}, JSON.parse(oldManufacturersStr), out.manufacturers));
-
-    if (oldManufacturersStr == newManufacturersStr) {
-      console.log('no need to update, files are the same');
-      return;
-    }
-
-    return github.repos.updateFile({
-      owner: 'FloEdelmann',
-      repo: repository,
-      path: 'fixtures/manufacturers.json',
-      message: 'Update manufacturers.json via editor',
-      content: encodeBase64(newManufacturersStr),
-      sha: result.data.sha,
-      branch: newBranchName
-    })
-    .then(() => {
-      console.log('done');
-      manufacturersAction = 'updated manufacturers.json';
-    })
-    .catch(error => addWarning(error, 'manufacturers'));
-  })
-  .catch(error => {
-    console.log('no -> create it ...');
-    return github.repos.createFile({
-      owner: 'FloEdelmann',
-      repo: repository,
-      path: 'fixtures/manufacturers.json',
-      message: 'Add manufacturers.json via editor',
-      content: encodeBase64(prettyStringify(out.manufacturers)),
-      branch: newBranchName
-    })
-    .then(() => {
-      console.log('done');
-      manufacturersAction = 'added manufacturers.json';
-    })
-    .catch(error => addWarning(error, 'manufacturers'));
-  });
-}
-
-function addOrUpdateFixture(fixtureKey) {
-  console.log(`does fixture '${fixtureKey}' exist?`);
-  const filename = `fixtures/${fixtureKey}.json`;
   return github.repos.getContent({
     owner: 'FloEdelmann',
     repo: repository,
@@ -193,10 +179,10 @@ function addOrUpdateFixture(fixtureKey) {
   .then(result => {
     console.log('yes -> update it ...');
 
-    const oldFixtureStr = Buffer.from(result.data.content, result.data.encoding).toString('utf8');
-    const newFixtureStr = prettyStringify(out.fixtures[fixtureKey]);
+    const oldFileContent = Buffer.from(result.data.content, result.data.encoding).toString('utf8');
+    const newFileContent = newContentFunction(oldFileContent);
 
-    if (oldFixtureStr == newFixtureStr) {
+    if (oldFileContent == newFileContent) {
       console.log('no need to update, files are the same');
       return;
     }
@@ -205,13 +191,19 @@ function addOrUpdateFixture(fixtureKey) {
       owner: 'FloEdelmann',
       repo: repository,
       path: filename,
-      message: `Update fixture '${fixtureKey}' via editor`,
-      content: encodeBase64(newFixtureStr),
+      message: `Update ${context} via editor`,
+      content: encodeBase64(newFileContent),
       sha: result.data.sha,
       branch: newBranchName
     })
-    .then(() => addFixtureSuccess(fixtureKey))
-    .catch(error => addWarning(error, fixtureKey));
+    .then(() => {
+      console.log('done');
+      changedFiles.push(`update ${context}`);
+    })
+    .catch(error => {
+      console.error(`Error updating ${context}: ${error.message}`);
+      warnings.push(`* ${context}: \`${error.message}\``);
+    });
   })
   .catch(error => {
     console.log('no -> create it ...');
@@ -219,12 +211,18 @@ function addOrUpdateFixture(fixtureKey) {
       owner: 'FloEdelmann',
       repo: repository,
       path: filename,
-      message: `Add fixture '${fixtureKey}' via editor`,
-      content: encodeBase64(prettyStringify(out.fixtures[fixtureKey])),
+      message: `Add ${context} via editor`,
+      content: encodeBase64(newContentFunction(null)),
       branch: newBranchName
     })
-    .then(() => addFixtureSuccess(fixtureKey))
-    .catch(error => addWarning(error, fixtureKey));
+    .then(() => {
+      console.log('done');
+      changedFiles.push(`add ${context}`);
+    })
+    .catch(error => {
+      console.error(`Error adding ${context}: ${error.message}`);
+      warnings.push(`* ${context}: \`${error.message}\``);
+    });
   });
 }
 
@@ -264,5 +262,5 @@ function addFixtureSuccess(fixtureKey) {
 
 function addWarning(error, context) {
   console.error('Error: ' + error.message);
-  warnings.push(`* '${context}': \`${error.message}\``);
+  warnings.push(`* ${context}: \`${error.message}\``);
 }
