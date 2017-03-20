@@ -153,7 +153,7 @@ module.exports = function createPullRequest(additions) {
   })
   .then(result => {
     console.log('done');
-    pullRequestUrl = result.data.url;
+    pullRequestUrl = result.data.html_url;
 
     console.log('add labels to pull request ...');
     return github.issues.addLabels({
