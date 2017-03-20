@@ -135,6 +135,13 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
         result.warnings.push(`color in channel '${ch}' defined but channel type is not 'SingleColor'.`);
       }
 
+      if (!('color' in channel) && channel.type === 'SingleColor') {
+        result.errors.push({
+          description: `color in channel '${ch}' undefined but channel type is 'SingleColor'.`,
+          error: null
+        });
+      }
+
       if ('capabilities' in channel) {
         for (let i=0; i<channel.capabilities.length; i++) {
           const cap = channel.capabilities[i];
