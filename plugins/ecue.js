@@ -5,7 +5,7 @@ const colorNames = require('color-names');
 const xml2js = require('xml2js');
 
 module.exports.name = 'e:cue';
-module.exports.version = '0.1.0';
+module.exports.version = '0.1.1';
 
 const fileTemplate = `<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <Document Owner="user" TypeVersion="2" SaveTimeStamp="%s">
@@ -349,14 +349,17 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
               }
               else {
                 ch.type = 'SingleColor';
-                ch.color = 'Generic';
-                ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime'].some((color) => {
+                const colorFound = ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime'].some(color => {
                   if (testName.includes(color.toLowerCase())) {
                     ch.color = color;
                     return true;
                   }
                   return false;
                 });
+
+                if (!colorFound) {
+                  out.warnings[fixKey].push(`Please add a color to channel '${shortName}'.`);
+                }
               }
             }
             else if (testName.includes('speed')) {

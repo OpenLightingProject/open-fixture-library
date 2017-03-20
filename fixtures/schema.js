@@ -52,8 +52,8 @@ const Capability = schema({
   'name': String,
   '?hideInMenu': Boolean,
   '?center': Boolean,
-  '?color': [Color, ''],
-  '?color2': [Color, ''],
+  '?color': Color,
+  '?color2': Color,
   '?image': String,
   '*': Function
 });
@@ -61,7 +61,7 @@ const Capability = schema({
 const Channel = schema({
   '?name': [String, null], // null: use channel key
   'type': ['Intensity', 'Strobe', 'Shutter', 'Speed', 'SingleColor', 'MultiColor', 'Gobo', 'Prism', 'Pan', 'Tilt', 'Beam', 'Effect', 'Maintenance', 'Nothing'],
-  '?color': ['Generic', 'Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime'],
+  '?color': ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime'],
   '?defaultValue': DMXValue,
   '?highlightValue': DMXValue,
   '?invert': Boolean,
@@ -85,7 +85,7 @@ const Mode = schema({
 const Fixture = schema({
   'name': String,
   '?shortName': [String, null], // null: use name
-  'categories': Array.of(1, Infinity, Category),
+  'categories': Array.of(1, Infinity, Category), // most important category first
   'meta': schema({
     'authors': Array.of(String),
     'createDate': ISODate,
@@ -99,7 +99,7 @@ const Fixture = schema({
     '*': Function
   }),
   '?comment': String,
-  '?manualURL': [URL, ''],
+  '?manualURL': URL,
   '?physical': Physical,
   'availableChannels': schema({
     '*': Channel // '*' is the channel key

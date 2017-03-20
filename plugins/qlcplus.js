@@ -3,7 +3,7 @@ const path = require('path');
 const xml2js = require('xml2js');
 
 module.exports.name = 'QLC+';
-module.exports.version = '0.1.0';
+module.exports.version = '0.1.1';
 
 module.exports.export = function exportQLCplus(library, options) {
   let outfiles = [];
@@ -112,7 +112,7 @@ function exportHandleAvailableChannels(fixture, defaults) {
 
     str += `  <Group Byte="${byte}">${chData.type}</Group>\n`;
     if (chData.type == 'Intensity') {
-      str += `  <Colour>${chData.color}</Colour>\n`;
+      str += `  <Colour>${'color' in chData ? chData.color : 'Generic'}</Colour>\n`;
     }
 
 
@@ -122,13 +122,13 @@ function exportHandleAvailableChannels(fixture, defaults) {
       capData.name = capData.name.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
       let attrs = `Min="${capData.range[0]}" Max="${capData.range[1]}"`;
-      if (capData.image != '') {
+      if ('image' in capData) {
         attrs += ` res="${capData.image}"`;
       }
-      else if (capData.color != '') {
+      else if ('color' in capData) {
         attrs += ` Color="${capData.color}"`;
 
-        if (capData.color2 != '') {
+        if ('color2' in capData) {
           attrs += ` Color2="${capData.color2}"`;
         }
       }
