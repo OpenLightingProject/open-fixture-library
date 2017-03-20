@@ -8,7 +8,6 @@ module.exports = {
     "lastModifyDate": "1970-01-01"
   },
   "comment": "",
-  "manualURL": "",
   "physical": {
     "dimensions": [0, 0, 0],
     "weight": 0,
@@ -32,8 +31,7 @@ module.exports = {
   "availableChannels": { // required
     "channel key": {
       "name": null, // default: channel key
-      "type": "SingleColor", // required
-      "color": "Generic",
+      "type": "Intensity", // required
       "defaultValue": 0,
       "highlightValue": 0,
       "invert": false,
@@ -45,10 +43,7 @@ module.exports = {
           "range": [0, 255], // required
           "name": "0-100%", // required
           "hideInMenu": false,
-          "center": false,
-          "color": "",
-          "color2": "",
-          "image": ""
+          "center": false
         }
       ]
     }
