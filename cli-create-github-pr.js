@@ -1,5 +1,3 @@
-#!/usr/bin/node
-
 const GitHubApi = require('github');
 
 const repository = 'ofl-test'; // 'open-fixture-library';
@@ -11,7 +9,7 @@ if (userToken === undefined) {
   const env = require('fs').readFileSync(require('path').join(__dirname, '.env'), 'utf8');
 
   let match;
-  if (match = /^GITHUB_USER_TOKEN=(.*?)$/.exec(env)) {
+  if (match = /^GITHUB_USER_TOKEN=(.*?)$/m.exec(env)) {
     userToken = match[1];
   }
   else {
@@ -19,9 +17,6 @@ if (userToken === undefined) {
     process.exit(1);
   }
 }
-
-// actually should be a parameter filled by the fixture editor
-const out = JSON.parse(require('fs').readFileSync(require('path').join(__dirname, 'github-test-import.json'), 'utf8'));
 
 const github = new GitHubApi({
   debug: false,
@@ -34,138 +29,148 @@ const github = new GitHubApi({
   timeout: 5000
 });
 
-let changedFiles = [];
-let warnings = [];
-let newRegister = {
-  filesystem: {},
-  manufacturers: {},
-  categories: {}
-};
-let pullRequestUrl;
+let branchName;
+let out;
+let warnings;
+let changedFiles;
+let newRegister;
 
-const timestamp = new Date().toISOString().replace(/:/g, '-').replace(/\..+/, '');
-const newBranchName = 'branch' + timestamp;
+module.exports = function createPullRequest(additions) {
+  out = additions;
 
-github.authenticate({
-  type: "token",
-  token: userToken
-});
+  const timestamp = new Date().toISOString().replace(/:/g, '-').replace(/\..+/, '');
+  branchName = 'branch' + timestamp;
+
+  changedFiles = [];
+  warnings = [];
+  newRegister = {
+    filesystem: {},
+    manufacturers: {},
+    categories: {}
+  };
+  let pullRequestUrl;
+
+  github.authenticate({
+    type: "token",
+    token: userToken
+  });
 
 
-console.log('get latest commit hash ...');
-github.gitdata.getReference({
-  owner: 'FloEdelmann',
-  repo: repository,
-  ref: 'heads/master'
-})
-.then(result => {
-  const latestCommitHash = result.data.object.sha;
-  console.log(latestCommitHash);
-
-  console.log(`create new branch '${newBranchName}' ...`);
-  return github.gitdata.createReference({
+  console.log('get latest commit hash ...');
+  return github.gitdata.getReference({
     owner: 'FloEdelmann',
     repo: repository,
-    ref: 'refs/heads/' + newBranchName,
-    sha: latestCommitHash
-  });
-})
-.then(() => {
-  console.log('done');
+    ref: 'heads/master'
+  })
+  .then(result => {
+    const latestCommitHash = result.data.object.sha;
+    console.log(latestCommitHash);
 
-  if (Object.keys(out.manufacturers).length == 0) {
-    return Promise.resolve();
-  }
+    console.log(`create new branch '${branchName}' ...`);
+    return github.gitdata.createReference({
+      owner: 'FloEdelmann',
+      repo: repository,
+      ref: 'refs/heads/' + branchName,
+      sha: latestCommitHash
+    });
+  })
+  .then(() => {
+    console.log('done');
 
-  return addOrUpdateFile('fixtures/manufacturers.json', 'manufacturers.json', oldFileContent => {
-    if (oldFileContent == null) {
-      return prettyStringify(out.manufacturers);
+    if (Object.keys(out.manufacturers).length == 0) {
+      return Promise.resolve();
     }
-    out.manufacturers = Object.assign({}, JSON.parse(oldFileContent), out.manufacturers);
-    return prettyStringify(out.manufacturers);
-  });
-})
-.then(() => {
-  let chain = Promise.resolve();
 
-  for (const fixtureKey in out.fixtures) {
-    const [manKey, fixKey] = fixtureKey.split('/');
-
-    newRegister.filesystem[fixtureKey] = {
-      name: out.fixtures[fixtureKey].name,
-      manufacturerName: out.manufacturers[manKey].name
-    };
-
-    if (!(manKey in newRegister.manufacturers)) {
-      newRegister.manufacturers[manKey] = [];
-    }
-    newRegister.manufacturers[manKey].push(fixKey);
-
-    for (const cat of out.fixtures[fixtureKey].categories) {
-      if (!(cat in newRegister.categories)) {
-        newRegister.categories[cat] = [];
+    return addOrUpdateFile('fixtures/manufacturers.json', 'manufacturers.json', oldFileContent => {
+      if (oldFileContent == null) {
+        return prettyStringify(out.manufacturers);
       }
-      newRegister.categories[cat].push(fixKey);
+      out.manufacturers = Object.assign({}, JSON.parse(oldFileContent), out.manufacturers);
+      return prettyStringify(out.manufacturers);
+    }, branchName, out, warnings, changedFiles, newRegister);
+  })
+  .then(() => {
+    let chain = Promise.resolve();
+
+    for (const fixtureKey in out.fixtures) {
+      const [manKey, fixKey] = fixtureKey.split('/');
+
+      newRegister.filesystem[fixtureKey] = {
+        name: out.fixtures[fixtureKey].name,
+        manufacturerName: out.manufacturers[manKey].name
+      };
+
+      if (!(manKey in newRegister.manufacturers)) {
+        newRegister.manufacturers[manKey] = [];
+      }
+      newRegister.manufacturers[manKey].push(fixKey);
+
+      for (const cat of out.fixtures[fixtureKey].categories) {
+        if (!(cat in newRegister.categories)) {
+          newRegister.categories[cat] = [];
+        }
+        newRegister.categories[cat].push(fixKey);
+      }
+
+      chain = chain.then(() => addOrUpdateFile(`fixtures/${fixtureKey}.json`, `fixture '${fixtureKey}'`, oldFileContent => {
+        return prettyStringify(out.fixtures[fixtureKey]);
+      }, branchName, out, warnings, changedFiles, newRegister));
     }
 
-    chain = chain.then(() => addOrUpdateFile(`fixtures/${fixtureKey}.json`, `fixture '${fixtureKey}'`, oldFileContent => {
-      return prettyStringify(out.fixtures[fixtureKey]);
-    }));
-  }
+    return chain;
+  })
+  .then(() => {
+    return addOrUpdateFile('fixtures/register.json', 'register.json', oldFileContent => {
+      if (oldFileContent == null) {
+        return prettyStringify(newRegister);
+      }
+      return prettyStringify(Object.assign({}, JSON.parse(oldFileContent), newRegister));
+    }, branchName, out, warnings, changedFiles, newRegister);
+  })
+  .then(() => {
+    console.log('create pull request ...');
 
-  return chain;
-})
-.then(() => {
-  return addOrUpdateFile('fixtures/register.json', 'register.json', oldFileContent => {
-    if (oldFileContent == null) {
-      return prettyStringify(newRegister);
+    const addedFixtures = changedFiles.filter(line => line.startsWith('add fixture'));
+    let title = `Added ${addedFixtures.length} new fixtures`;
+    if (addedFixtures.length == 1) {
+      title = `Added fixture '${addedFixtures[0]}'`;
     }
-    return prettyStringify(Object.assign({}, JSON.parse(oldFileContent), newRegister));
+
+
+    let body = changedFiles.map(line => '* ' + line).join('\n');
+    if (warnings.length > 0) {
+      body += '\n\nWarnings:\n' + warnings.join('\n');
+    }
+
+    return github.pullRequests.create({
+      owner: 'FloEdelmann',
+      repo: repository,
+      title: title,
+      body: body,
+      head: branchName,
+      base: 'master'
+    });
+  })
+  .then(result => {
+    console.log('done');
+    pullRequestUrl = result.data.url;
+
+    console.log('add labels to pull request ...');
+    return github.issues.addLabels({
+      owner: 'FloEdelmann',
+      repo: repository,
+      number: result.data.number,
+      labels: ['new-fixture', 'via-editor']
+    });
+  })
+  .then(() => {
+    console.log('done');
+    console.log('View the pull request at ' + pullRequestUrl);
+  })
+  .catch(error => {
+    console.error('Error: ' + error.message);
   });
-})
-.then(() => {
-  console.log('create pull request ...');
-
-  const addedFixtures = changedFiles.filter(line => line.startsWith('add fixture'));
-  let title = `Added ${addedFixtures.length} new fixtures`;
-  if (addedFixtures.length == 1) {
-    title = `Added fixture '${addedFixtures[0]}'`;
-  }
-
-
-  let body = changedFiles.map(line => '* ' + line).join('\n');
-  if (warnings.length > 0) {
-    body += '\n\nWarnings:\n' + warnings.join('\n');
-  }
-
-  return github.pullRequests.create({
-    owner: 'FloEdelmann',
-    repo: repository,
-    title: title,
-    body: body,
-    head: newBranchName,
-    base: 'master'
-  });
-})
-.then(result => {
-  console.log('done');
-  pullRequestUrl = result.data.url;
-
-  console.log('add labels to pull request ...');
-  return github.issues.addLabels({
-    owner: 'FloEdelmann',
-    repo: repository,
-    number: result.data.number,
-    labels: ['new-fixture', 'via-editor']
-  });
-})
-.then(() => {
-  console.log('done');
-  console.log('View the pull request at ' + pullRequestUrl);
-})
-.catch(error => {
-  console.error('Error: ' + error.message);
-});
+};
 
 
 function addOrUpdateFile(filename, context, newContentFunction) {
@@ -194,7 +199,7 @@ function addOrUpdateFile(filename, context, newContentFunction) {
       message: `Update ${context} via editor`,
       content: encodeBase64(newFileContent),
       sha: result.data.sha,
-      branch: newBranchName
+      branch: branchName
     })
     .then(() => {
       console.log('done');
@@ -213,7 +218,7 @@ function addOrUpdateFile(filename, context, newContentFunction) {
       path: filename,
       message: `Add ${context} via editor`,
       content: encodeBase64(newContentFunction(null)),
-      branch: newBranchName
+      branch: branchName
     })
     .then(() => {
       console.log('done');
@@ -252,15 +257,4 @@ function prettyStringify(obj) {
     return `${spaces}"multiByteChannels": [\n` + channelLists.join(',\n') + `\n${spaces}]`;
   });
   return str;
-}
-
-
-function addFixtureSuccess(fixtureKey) {
-  console.log('done');
-  addedFixtures.push(fixtureKey);
-}
-
-function addWarning(error, context) {
-  console.error('Error: ' + error.message);
-  warnings.push(`* ${context}: \`${error.message}\``);
 }
