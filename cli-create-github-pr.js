@@ -142,7 +142,7 @@ function addOrUpdateManufacturers() {
     console.log('yes -> update it ...');
 
     const oldManufacturersStr = Buffer.from(result.data.content, result.data.encoding).toString('utf8');
-    const newManufacturersStr = prettifyJSON(Object.assign({}, JSON.parse(oldManufacturersStr), out.manufacturers));
+    const newManufacturersStr = prettyStringify(Object.assign({}, JSON.parse(oldManufacturersStr), out.manufacturers));
 
     if (oldManufacturersStr == newManufacturersStr) {
       console.log('no need to update, files are the same');
@@ -171,7 +171,7 @@ function addOrUpdateManufacturers() {
       repo: repository,
       path: 'fixtures/manufacturers.json',
       message: 'Add manufacturers.json via editor',
-      content: encodeBase64(prettifyJSON(out.manufacturers)),
+      content: encodeBase64(prettyStringify(out.manufacturers)),
       branch: newBranchName
     })
     .then(() => {
@@ -194,7 +194,7 @@ function addOrUpdateFixture(fixtureKey) {
     console.log('yes -> update it ...');
 
     const oldFixtureStr = Buffer.from(result.data.content, result.data.encoding).toString('utf8');
-    const newFixtureStr = prettifyJSON(out.fixtures[fixtureKey]);
+    const newFixtureStr = prettyStringify(out.fixtures[fixtureKey]);
 
     if (oldFixtureStr == newFixtureStr) {
       console.log('no need to update, files are the same');
@@ -220,7 +220,7 @@ function addOrUpdateFixture(fixtureKey) {
       repo: repository,
       path: filename,
       message: `Add fixture '${fixtureKey}' via editor`,
-      content: encodeBase64(prettifyJSON(out.fixtures[fixtureKey])),
+      content: encodeBase64(prettyStringify(out.fixtures[fixtureKey])),
       branch: newBranchName
     })
     .then(() => addFixtureSuccess(fixtureKey))
@@ -233,8 +233,27 @@ function encodeBase64(string) {
   return Buffer.from(string).toString('base64');
 }
 
-function prettifyJSON(obj) {
-  return JSON.stringify(obj, null, 2);
+function prettyStringify(obj) {
+  let str = JSON.stringify(obj, null, 2);
+
+  // make number arrays fit in one line
+  str = str.replace(/^( +)"(range|dimensions|degreesMinMax)": (\[\n(?:.|\n)*?^\1\])/mg, (match, spaces, key, values) => {
+    return `${spaces}"${key}": [` + JSON.parse(values).join(', ') + ']';
+  });
+
+  // make string arrays fit in one line
+  str = str.replace(/^( +)"(categories|authors)": (\[\n(?:.|\n)*?^\1\])/mg, (match, spaces, key, values) => {
+    return `${spaces}"${key}": [` + JSON.parse(values).map(val => `"${val}"`).join(', ') + ']';
+  });
+
+  // make multiByteChannel arrays fit in one line
+  str = str.replace(/^( +)"multiByteChannels": (\[\n(?:.|\n)*?^\1\])/mg, (match, spaces, values) => {
+    const channelLists = JSON.parse(values).map(channelList => {
+      return spaces + '  [' + channelList.map(val => `"${val}"`).join(', ') + ']';
+    });
+    return `${spaces}"multiByteChannels": [\n` + channelLists.join(',\n') + `\n${spaces}]`;
+  });
+  return str;
 }
 
 
