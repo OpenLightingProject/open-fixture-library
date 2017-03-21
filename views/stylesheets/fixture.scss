@@ -154,8 +154,8 @@
 }
 
 .label {
-  display: inline-block;
-  min-width: 10rem;
+  display: block;
+  margin-top: 1.2ex;
   color: $secondary-text-dark;
 }
 
@@ -241,8 +241,13 @@ a.fixture-mode {
   display: none;
 }
 
-/* display mode cards in a 2-col layout */
+/* display mode cards in a 2-col layout, labels left of values */
 @media (min-width: $tablet) {
+  .label {
+    display: inline-block;
+    min-width: 10rem;
+  }
+
   .fixture-modes > .card.fixture-mode {
     width: calc(50% - .5rem);
 

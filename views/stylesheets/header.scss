@@ -36,21 +36,9 @@
   }
 
   input {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    padding: 0.4em;
-    background: #fff;
-    border: 1px solid #cfd6e6;
-    border-radius: 3px;
     font-size: 1.05em;
     line-height: 1.2;
     width: 100%;
-    transition: all 0.2s;
-
-    &:focus {
-      border-color: $blue-300;
-    }
   }
 
   button {

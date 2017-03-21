@@ -7,7 +7,7 @@ var addManLink = manShortName.querySelector('.add-manufacturer');
 var newMan = document.querySelector('.new-manufacturer');
 var useExistingManLink = newMan.querySelector('.use-existing-manufacturer');
 
-function addManufacturer() {
+function addManufacturer(event) {
   manShortName.hidden = true;
   manShortName.querySelectorAll('select, input').forEach(function(element) {
     element.disabled = true;
@@ -17,8 +17,12 @@ function addManufacturer() {
   newMan.querySelectorAll('select, input').forEach(function(element) {
     element.disabled = false;
   });
+
+  if (event !== undefined) {
+    event.preventDefault();
+  }
 }
-function useExistingManufacturer() {
+function useExistingManufacturer(event) {
   manShortName.hidden = false;
   manShortName.querySelectorAll('select, input').forEach(function(element) {
     element.disabled = false;
@@ -28,6 +32,10 @@ function useExistingManufacturer() {
   newMan.querySelectorAll('select, input').forEach(function(element) {
     element.disabled = true;
   });
+
+  if (event !== undefined) {
+    event.preventDefault();
+  }
 }
 addManLink.addEventListener('click', addManufacturer);
 useExistingManLink.addEventListener('click', useExistingManufacturer);
@@ -73,7 +81,6 @@ function addMode(event) {
     newMode.querySelector('.mode-name > input').focus();
   }
 }
-
 function togglePhysicalOverride(usePhysicalOverride, physicalOverride) {
   if (usePhysicalOverride.checked) {
     physicalOverride.hidden = false;
@@ -88,7 +95,6 @@ function togglePhysicalOverride(usePhysicalOverride, physicalOverride) {
     });
   }
 }
-
 addModeLink.addEventListener('click', addMode);
 addMode(); // all fixtures have at least one mode
 

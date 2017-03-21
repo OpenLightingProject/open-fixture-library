@@ -67,6 +67,41 @@ a:focus {
   outline: 0;
 }
 
+select,
+textarea,
+input[type=text],
+input[type=email],
+input[type=search],
+input[type=url],
+input[type=number] {
+  padding: 0.4em;
+  background: #fff;
+  border: 1px solid #cfd6e6;
+  border-radius: 3px;
+  font-size: 0.95em;
+  font-family: LatoLatinRegular;
+  transition: all 0.2s;
+
+  &:focus {
+    border-color: $blue-300;
+  }
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type=number] {
+  width: 8ex;
+}
+textarea,
+input[type=text],
+input[type=email],
+input[type=search],
+input[type=url] {
+  width: 40ex;
+}
+
 @media (max-width: $tablet) {
   html, body {
     font-size: 14px;
