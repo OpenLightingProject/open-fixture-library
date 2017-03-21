@@ -1,10 +1,13 @@
 #!/usr/bin/node
 
-const express = require('express');
-const app = express();
 const fs = require('fs');
 const path = require('path');
+const express = require('express');
+const compression = require('compression');
 const sassMiddleware = require('node-sass-middleware');
+const minifyHTML = require('html-minifier').minify;
+
+const app = express();
 
 // setup port
 app.set('port', (process.env.PORT || 5000));
@@ -12,15 +15,28 @@ app.listen(app.get('port'), () => {
   console.log('Node app is running on port', app.get('port'));
 });
 
-// compile sass
+// enable compression
+app.use(compression({
+  threshold: '500B'
+}));
+
+// compile SASS
 app.use(sassMiddleware({
   src: path.join(__dirname, 'views', 'stylesheets'),
   dest: path.join(__dirname, 'static'),
   outputStyle: 'compressed'
 }));
 
-// static files that shall be accessible
-app.use(express.static(path.join(__dirname, 'static')));
+// static files that need no processing (some of them may never change -> let the users cache them)
+const longMaxAgeExtensions = ['.ico', '.json', '.png', '.svg', '.ttf', '.woff', '.woff2', '.xml'];
+const secondsInOneYear = 60 * 60 * 24 * 365;
+app.use(express.static(path.join(__dirname, 'static'), {
+  setHeaders: (res, filename, stat) => {
+    if (process.env.NODE_ENV === 'production' && longMaxAgeExtensions.indexOf(path.extname(filename)) != -1) {
+      res.append('Cache-Control', 'public, max-age=' + secondsInOneYear);
+    }
+  }
+}));
 
 // views is directory for all template files
 app.set('views', path.join(__dirname, 'views'));
@@ -38,7 +54,21 @@ app.engine('js', (filePath, options, callback) => {
   };
   Object.assign(opts, options);
 
-  callback(null, renderer(opts));
+  const html = renderer(opts);
+
+  if (process.env.NODE_ENV === 'production') {
+    callback(null, minifyHTML(html, {
+      collapseWhitespace: true,
+      conservativeCollapse: true,
+
+      // to help gzip compression
+      sortAttributes: true,
+      sortClassName: true
+    }));
+  }
+  else {
+    callback(null, html);
+  }
 });
 app.set('view engine', 'js');
 
