@@ -45,8 +45,8 @@ module.exports = function(options) {
   str += '    <span class="value">';
   str += fixture.categories.map(cat => {
     const svg = require('../includes/svg')({categoryName: cat});
-    return `<a href="/categories/${encodeURIComponent(cat)}">${svg} <data data-key="category">${cat}</data></a>`;
-  }).join('<br />');
+    return `<a href="/categories/${encodeURIComponent(cat)}" class="category-badge">${svg} <data data-key="category">${cat}</data></a>`;
+  }).join(' ');
   str += '    </span>';
   str += '  </section>';
 
