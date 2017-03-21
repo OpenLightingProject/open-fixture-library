@@ -27,8 +27,16 @@ app.use(sassMiddleware({
   outputStyle: 'compressed'
 }));
 
-// static files that shall be accessible
-app.use(express.static(path.join(__dirname, 'static')));
+// static files that need no processing (some of them may never change -> let the users cache them)
+const longMaxAgeExtensions = ['.ico', '.json', '.png', '.svg', '.ttf', '.woff', '.woff2', '.xml'];
+const secondsInOneYear = 60 * 60 * 24 * 365;
+app.use(express.static(path.join(__dirname, 'static'), {
+  setHeaders: (res, filename, stat) => {
+    if (longMaxAgeExtensions.indexOf(path.extname(filename)) != -1) {
+      res.append('Cache-Control', 'public, max-age=' + secondsInOneYear);
+    }
+  }
+}));
 
 // views is directory for all template files
 app.set('views', path.join(__dirname, 'views'));
