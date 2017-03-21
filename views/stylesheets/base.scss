@@ -64,6 +64,7 @@ a:hover,
 a:focus {
   color: $blue-300;
   fill: $icon-dark-hover;
+  outline: 0;
 }
 
 @media (max-width: $tablet) {
