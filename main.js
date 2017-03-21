@@ -16,7 +16,9 @@ app.listen(app.get('port'), () => {
 });
 
 // enable compression
-app.use(compression());
+app.use(compression({
+  threshold: '500B'
+}));
 
 // compile SASS
 app.use(sassMiddleware({
