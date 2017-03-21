@@ -1,10 +1,13 @@
 #!/usr/bin/node
 
-const express = require('express');
-const app = express();
 const fs = require('fs');
 const path = require('path');
+const express = require('express');
+const compression = require('compression');
 const sassMiddleware = require('node-sass-middleware');
+const minifyHTML = require('html-minifier').minify;
+
+const app = express();
 
 // setup port
 app.set('port', (process.env.PORT || 5000));
@@ -12,7 +15,10 @@ app.listen(app.get('port'), () => {
   console.log('Node app is running on port', app.get('port'));
 });
 
-// compile sass
+// enable compression
+app.use(compression());
+
+// compile SASS
 app.use(sassMiddleware({
   src: path.join(__dirname, 'views', 'stylesheets'),
   dest: path.join(__dirname, 'static'),
@@ -38,7 +44,14 @@ app.engine('js', (filePath, options, callback) => {
   };
   Object.assign(opts, options);
 
-  callback(null, renderer(opts));
+  callback(null, minifyHTML(renderer(opts), {
+    collapseWhitespace: true,
+    conservativeCollapse: true,
+
+    // to help gzip compression
+    sortAttributes: true,
+    sortClassName: true
+  }));
 });
 app.set('view engine', 'js');
 
