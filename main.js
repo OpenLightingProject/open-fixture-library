@@ -32,7 +32,7 @@ const longMaxAgeExtensions = ['.ico', '.json', '.png', '.svg', '.ttf', '.woff', 
 const secondsInOneYear = 60 * 60 * 24 * 365;
 app.use(express.static(path.join(__dirname, 'static'), {
   setHeaders: (res, filename, stat) => {
-    if (longMaxAgeExtensions.indexOf(path.extname(filename)) != -1) {
+    if (process.env.NODE_ENV === 'production' && longMaxAgeExtensions.indexOf(path.extname(filename)) != -1) {
       res.append('Cache-Control', 'public, max-age=' + secondsInOneYear);
     }
   }
@@ -54,14 +54,21 @@ app.engine('js', (filePath, options, callback) => {
   };
   Object.assign(opts, options);
 
-  callback(null, minifyHTML(renderer(opts), {
-    collapseWhitespace: true,
-    conservativeCollapse: true,
+  const html = renderer(opts);
 
-    // to help gzip compression
-    sortAttributes: true,
-    sortClassName: true
-  }));
+  if (process.env.NODE_ENV === 'production') {
+    callback(null, minifyHTML(html, {
+      collapseWhitespace: true,
+      conservativeCollapse: true,
+
+      // to help gzip compression
+      sortAttributes: true,
+      sortClassName: true
+    }));
+  }
+  else {
+    callback(null, html);
+  }
 });
 app.set('view engine', 'js');
 
