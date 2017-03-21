@@ -58,7 +58,7 @@ a:visited {
   text-decoration: none;
   color: $blue-700;
   fill: $icon-dark;
-  transition: all 0.1s;
+  transition: color 0.1s, fill 0.1s, background-color 0.1s;
 }
 a:hover,
 a:focus {
@@ -80,7 +80,7 @@ input[type=number] {
   border-radius: 3px;
   font-size: 0.95em;
   font-family: LatoLatinRegular;
-  transition: all 0.2s;
+  transition: border-color 0.2s;
 
   &:focus {
     border-color: $blue-300;
@@ -123,7 +123,7 @@ input[type=url] {
   border-radius: 3px;
   cursor: pointer;
   color: $secondary-text-dark;
-  transition: all 0.2s;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
 
   &::-moz-focus-inner {
     border: 0;

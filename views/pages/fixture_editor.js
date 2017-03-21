@@ -40,7 +40,7 @@ module.exports = function(options) {
   str += '<section class="new-manufacturer-shortName">';
   str += '<label>';
   str += '<span class="label">Unique short name</span>';
-  str += '<input required pattern="[a-z0-9\-]+" />';
+  str += '<input type="text" required pattern="[a-z0-9\-]+" />';
   str += '</label>';
   str += '</section>';
 

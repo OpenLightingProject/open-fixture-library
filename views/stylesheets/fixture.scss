@@ -26,7 +26,7 @@
     color: $primary-text-light;
     cursor: pointer;
     box-shadow: 0 2px 2px rgba(#000, 0.2);
-    transition: all 0.2s;
+    transition: bprder-radius 0.2s, background-color 0.2s;
 
     /* down arrow */
     &::before {
@@ -50,7 +50,7 @@
     margin: 0;
     width: 100%;
     list-style: none;
-    background: $grey-50;
+    background-color: $grey-50;
     border-radius: 0 0 2px 2px;
     box-shadow: 0 2px 2px rgba(#000, 0.2);
     z-index: 90;
@@ -59,12 +59,12 @@
       display: block;
       padding: 0.2ex 2ex;
       color: $primary-text-dark;
-      transition: background 0.2s;
+      transition: background-color 0.2s;
     }
 
     & a:hover,
     & a:focus {
-      background: $grey-200;
+      background-color: $grey-200;
       outline: 0;
     }
   }
@@ -98,7 +98,6 @@
   margin: 0 0 4px;
   border-radius: 5000px; /* see http://stackoverflow.com/a/18795153/451391 */
   background: $grey-100;
-  transition: background 0.2s;
 
   &:link,
   &:visited {
@@ -107,11 +106,11 @@
   }
   &:hover,
   &:focus {
-    background: $grey-300;
+    background-color: $grey-300;
   }
 
   &.selected {
-    background: $blue-700;
+    background-color: $blue-700;
 
     &:link,
     &:visited {
@@ -120,7 +119,7 @@
     }
     &:hover,
     &:focus {
-      background: $blue-300;
+      background-color: $blue-300;
     }
   }
 
@@ -161,7 +160,7 @@
 
 .value {
   display: inline-block;
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 .hint {
