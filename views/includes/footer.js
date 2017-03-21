@@ -1,3 +1,4 @@
-module.exports = (options => `</div> <!-- #content -->
-</body>
-</html>`);
+module.exports = function(options) {
+  return '</div>' + // #content
+    '</body></html>';
+};

@@ -1,7 +1,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  font: 16px/2 LatoLatinRegular, Helvetica, Arial, sans-serif;
+  font: 12pt/2 LatoLatinRegular, Helvetica, Arial, sans-serif;
   color: $primary-text-dark;
   background: $grey-200;
   word-wrap: break-word;
@@ -53,17 +53,40 @@ code.channel-key {
   margin: 0 1ex;
 }
 
-a:link,
-a:visited {
+a {
   text-decoration: none;
   color: $blue-700;
   fill: $icon-dark;
-  transition: all 0.1s;
+  transition: color 0.1s, fill 0.1s;
+
+  &:hover,
+  &:focus {
+    color: $blue-300;
+    fill: $icon-dark-hover;
+  }
 }
-a:hover,
-a:focus {
-  color: $blue-300;
-  fill: $icon-dark-hover;
+
+.accessibility {
+  position: absolute;
+  top: -1000px;
+  left: -1000px;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  z-index: 9999;
+
+  &:active,
+  &:focus,
+  &:hover {
+    left: 0;
+    top: 0;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    background: red;
+    color: #fff;
+    padding: 4px;
+  }
 }
 
 @media (max-width: $tablet) {
