@@ -11,9 +11,10 @@
   },
   "main": "main.js",
   "scripts": {
-    "start": "node main.js"
+    "start": "nodemon main.js"
   },
   "dependencies": {
+    "browserify-middleware": "^7.1.0",
     "color-names": "^2.0.0",
     "express": "4.14.1",
     "node-sass-middleware": "^0.11.0",
@@ -23,7 +24,8 @@
   "devDependencies": {
     "colors": "^1.1.2",
     "diff": "^3.2.0",
-    "js-schema": "^1.0.1"
+    "js-schema": "^1.0.1",
+    "nodemon": "^1.11.0"
   },
   "homepage": "http://open-fixture-library.herokuapp.com/",
   "repository": {
