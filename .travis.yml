@@ -7,7 +7,7 @@ env:
   - TESTFILE=tests/http_status.js
   - TESTFILE=tests/register_correct.js
 script:
-  - node "$TESTFILE"
+  - NODE_ENV=production node "$TESTFILE"
 cache:
   directories:
     - node_modules # cache NPM dependencies

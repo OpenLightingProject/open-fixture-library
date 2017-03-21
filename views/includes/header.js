@@ -1,6 +1,6 @@
 module.exports = function(options) {
   let str = `<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,17 +11,18 @@ module.exports = function(options) {
   <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
   <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#64b5f6">
-  <script type="text/javascript" src="/js/main.js"></script>
+  <script type="text/javascript" src="/js/main.js" async></script>
 </head>
 <body>
+  <a href="#content" class="accessibility">Skip to content</a>
   <header id="header">
     <nav>
       <div id="left-nav">
-        <a href="/" id="home-logo" title="Open Fixture Library">Open Fixture Library</a>
+        <a href="/" id="home-logo" title="Home">Open Fixture Library</a>
 
         <form action="/search">
           <div>
-            <input type="search" name="q" placeholder="Search fixtures" value="${options.searchQueryEscaped || ''}" />
+            <input type="search" name="q" placeholder="Search fixtures" aria-label="Search fixtures" value="${options.searchQueryEscaped || ''}" />
           </div>
           <button type="submit">
             Search
