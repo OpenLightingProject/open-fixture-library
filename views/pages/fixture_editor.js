@@ -18,37 +18,46 @@ module.exports = function(options) {
 
   // Existing manufacturer
   str += '<section class="manufacturer-shortName">';
-  str += '<label>Choose from list</label>';
-  str += `<select required>`;
+  str += '<label>';
+  str += '<span class="label">Choose from list</span>';
+  str += `<select required autofocus>`;
   for (const man in options.manufacturers) {
     str += `<option value="${man}">${options.manufacturers[man].name}</option>`;
   }
-  str += '</select> or ';
-  str += '<a href="#" class="add-manufacturer">+ Add manufacturer</a>';
+  str += '</select></label>';
+  str += '<div class="button-bar">or <a href="#" class="add-manufacturer">add a new manufacturer</a></div>';
   str += '</section>'; // .manufacturer-shortName (existing manufacturer)
 
   // New manufacturer
   str += '<section class="new-manufacturer">';
   str += '<section class="new-manufacturer-name">';
-  str += '<label>Name</label>';
+  str += '<label>';
+  str += '<span class="label">Name</span>';
   str += textInput(properties.manufacturer.name);
+  str += '</label>';
   str += '</section>';
 
   str += '<section class="new-manufacturer-shortName">';
-  str += '<label>Unique short name</label>';
+  str += '<label>';
+  str += '<span class="label">Unique short name</span>';
   str += '<input required pattern="[a-z0-9\-]+" />';
+  str += '</label>';
   str += '</section>';
 
   str += '<section class="new-manufacturer-website">';
-  str += '<label>Website</label>';
-  str += textInput(properties.manufacturer.website);
+  str += '<label>';
+  str += '<span class="label">Website</span>';
+  str += urlInput(properties.manufacturer.website);
+  str += '</label>';
   str += '</section>';
 
   str += '<section class="new-manufacturer-comment">';
-  str += '<label>Comment</label>';
+  str += '<label>';
+  str += '<span class="label">Comment</span>';
   str += textInput(properties.manufacturer.comment);
-  str += '</section> or ';
-  str += '<a href="#" class="use-existing-manufacturer">Use existing manufacturer</a>';
+  str += '</label>';
+  str += '</section>';
+  str += '<div class="button-bar">or <a href="#" class="use-existing-manufacturer">choose an existing manufacturer</a></div>';
   str += '</section>'; // .new-manufacturer
 
   str += '</section>'; // .manufacturer
@@ -59,32 +68,41 @@ module.exports = function(options) {
   str += '<h2>Fixture info</h2>';
 
   str += '<section class="fixture-name">';
-  str += '<label>Name</label>';
+  str += '<label>';
+  str += '<span class="label">Name</span>';
   str += textInput(properties.fixture.name);
+  str += '</label>';
   str += '</section>';
 
   str += '<section class="fixture-shortName">';
-  str += '<label>Unique short name</label>';
-  str += textInput(properties.fixture.shortName, "Defaults to name");
+  str += '<label>';
+  str += '<span class="label">Unique short name</span>';
+  str += textInput(properties.fixture.shortName, 'defaults to name');
+  str += '</label>';
   str += '</section>';
 
   str += '<section class="categories">';
-  str += '<label>Category(s)</label>';
+  str += '<label>';
+  str += '<span class="label">Categories</span>';
   str += `<select multiple required size="${Object.keys(options.register.categories).length}">`;
   for (const cat of properties.category.enum) {
     str += `<option>${cat}</option>`;
   }
-  str += '</select>';
+  str += '</select></label>';
   str += '</section>';
 
   str += '<section class="comment">';
-  str += '<label>Comment</label>';
+  str += '<label>';
+  str += '<span class="label">Comment</span>';
   str += textareaInput(properties.fixture.comment);
+  str += '</label>';
   str += '</section>';
 
   str += '<section class="manualURL">';
-  str += '<label>Manual URL</label>';
+  str += '<label>';
+  str += '<span class="label">Manual URL</span>';
   str += urlInput(properties.fixture.manualURL);
+  str += '</label>';
   str += '</section>';
 
   str += '</section>'; // .fixture-info
@@ -110,7 +128,7 @@ module.exports = function(options) {
   str += '<template class="template-physical">';
 
   str += '<section class="physical-dimensions">';
-  str += '<label>Dimensions</label>';
+  str += '<span class="label">Dimensions</span>';
   str += '<div class="value">';
   str += numberInput(properties.physical.dimensions.items, 'width') + ' &times; ';
   str += numberInput(properties.physical.dimensions.items, 'height') + ' &times; ';
@@ -119,46 +137,60 @@ module.exports = function(options) {
   str += '</section>';
 
   str += '<section class="physical-weight">';
-  str += '<label>Weight</label>';
+  str += '<label>';
+  str += '<span class="label">Weight</span>';
   str += numberInput(properties.physical.weight) + ' kg';
+  str += '</label>';
   str += '</section>';
 
   str += '<section class="physical-power">';
-  str += '<label>Power</label>';
+  str += '<label>';
+  str += '<span class="label">Power</span>';
   str += numberInput(properties.physical.power) + ' W';
+  str += '</label>';
   str += '</section>';
 
   str += '<section class="physical-DMXconnector">';
-  str += '<label>DMX connector</label>';
+  str += '<label>';
+  str += '<span class="label">DMX connector</span>';
   str += textInput(properties.physical.DMXconnector, 'e.g. 3-pin', 'physical-DMXconnector');
+  str += '</label>';
   str += '</section>';
 
   str += '<h4>Bulb</h4>';
 
   str += '<section class="physical-bulb-type">';
-  str += '<label>Bulb type</label>';
+  str += '<label>';
+  str += '<span class="label">Bulb type</span>';
   str += textInput(properties.bulb.type, 'e.g. LED', 'physical-bulb-type');
+  str += '</label>';
   str += '</section>';
 
   str += '<section class="physical-bulb-colorTemperature">';
-  str += '<label>Color temperature</label>';
+  str += '<label>';
+  str += '<span class="label">Color temperature</span>';
   str += numberInput(properties.bulb.colorTemperature) + ' K';
+  str += '</label>';
   str += '</section>';
 
   str += '<section class="physical-bulb-lumens">';
-  str += '<label>Lumens</label>';
+  str += '<label>';
+  str += '<span class="label">Lumens</span>';
   str += numberInput(properties.bulb.lumens) + ' lm';
+  str += '</label>';
   str += '</section>';
 
   str += '<h4>Lens</h4>';
 
   str += '<section class="physical-lens-name">';
-  str += '<label>Lens name</label>';
+  str += '<label>';
+  str += '<span class="label">Lens name</span>';
   str += textInput(properties.lens.name);
+  str += '</label>';
   str += '</section>';
 
   str += '<section class="physical-lens-degrees">';
-  str += '<label>Light cone</label>';
+  str += '<span class="label">Light cone</span>';
   str += '<div class="value">';
   str += numberInput(properties.lens.degreesMinMax.items, 'min') + ' .. ';
   str += numberInput(properties.lens.degreesMinMax.items, 'max') + ' °';
@@ -168,18 +200,24 @@ module.exports = function(options) {
   str += '<h4>Focus</h4>';
 
   str += '<section class="physical-focus-type">';
-  str += '<label>Focus type</label>';
+  str += '<label>';
+  str += '<span class="label">Focus type</span>';
   str += textInput(properties.focus.type, '', 'physical-focus-type');
+  str += '</label>';
   str += '</section>';
 
   str += '<section class="physical-focus-panMax">';
-  str += '<label>Pan maximum</label>';
+  str += '<label>';
+  str += '<span class="label">Pan maximum</span>';
   str += numberInput(properties.focus.panMax, '', 'physical-focus-panMax') + ' °';
+  str += '</label>';
   str += '</section>';
 
   str += '<section class="physical-focus-tiltMax">';
-  str += '<label>Tilt maximum</label>';
+  str += '<label>';
+  str += '<span class="label">Tilt maximum</span>';
   str += numberInput(properties.focus.tiltMax, '', 'physical-focus-tiltMax') + ' °';
+  str += '</label>';
   str += '</section>';
 
   str += '</template>'; // .template-physical
@@ -197,13 +235,17 @@ module.exports = function(options) {
   str += '<h2>Mode</h2>'
 
   str += '<section class="mode-name">';
-  str += '<label>Name</label>';
+  str += '<label>';
+  str += '<span class="label">Name</span>';
   str += textInput(properties.mode.name);
+  str += '</label>';
   str += '</section>';
 
   str += '<section class="mode-shortName">';
-  str += '<label>Unique short name</label>';
-  str += textInput(properties.mode.shortName, "Defaults to name");
+  str += '<label>';
+  str += '<span class="label">Unique short name</span>';
+  str += textInput(properties.mode.shortName, 'defaults to name');
+  str += '</label>';
   str += '</section>';
 
   str += '<h3>Physical override</h3>';
@@ -219,7 +261,9 @@ module.exports = function(options) {
   str += '</template>'; // .template-mode
 
 
+  str += '<div class="button-bar">';
   str += '<button class="save-fixture">Save</button>';
+  str += '</div>';
 
   str += '</form>';
 

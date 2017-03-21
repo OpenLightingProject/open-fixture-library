@@ -153,10 +153,9 @@
   }
 }
 
-label {
+.label {
   display: inline-block;
   min-width: 10rem;
-  cursor: text;
   color: $secondary-text-dark;
 }
 
@@ -224,6 +223,10 @@ data.checkbox {
   }
 }
 
+.button-bar {
+  margin: 2ex 0 0;
+}
+
 a.fixture-mode {
   text-align: center;
 }
@@ -231,6 +234,11 @@ a.fixture-mode {
 .fixture-mode > .remove-mode {
   float: right;
   @include icon-button($red-700, $red-300);
+}
+
+/* if a mode is the only mode, hide its remove button */
+.fixture-modes > .fixture-mode:first-child:nth-last-child(3) > .remove-mode {
+  display: none;
 }
 
 /* display mode cards in a 2-col layout */

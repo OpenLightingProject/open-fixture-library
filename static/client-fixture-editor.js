@@ -44,18 +44,14 @@ physical.appendChild(document.importNode(templatePhysical.content, true));
 var templateMode = document.querySelector('.template-mode');
 var modesContainer = document.querySelector('.fixture-modes');
 var addModeLink = document.querySelector('a.fixture-mode');
-addModeLink.addEventListener('click', function(e) {
-  e.preventDefault();
 
+function addMode(event) {
   var newMode = document.importNode(templateMode.content, true);
   modesContainer.insertBefore(
     newMode,
     addModeLink
   );
   newMode = addModeLink.previousSibling;
-
-  var newModeName = newMode.querySelector('.mode-name > input');
-  newModeName.focus();
 
   var removeModeButton = newMode.querySelector('.remove-mode');
   removeModeButton.addEventListener('click', function(e) {
@@ -65,12 +61,18 @@ addModeLink.addEventListener('click', function(e) {
 
   var physicalOverride = newMode.querySelector('.physical-override');
   physicalOverride.appendChild(document.importNode(templatePhysical.content, true));
+
   var usePhysicalOverride = newMode.querySelector('.use-physical-override');
   usePhysicalOverride.addEventListener('change', function() {
     togglePhysicalOverride(usePhysicalOverride, physicalOverride);
   });
   togglePhysicalOverride(usePhysicalOverride, physicalOverride);
-});
+
+  if (event !== undefined) {
+    event.preventDefault();
+    newMode.querySelector('.mode-name > input').focus();
+  }
+}
 
 function togglePhysicalOverride(usePhysicalOverride, physicalOverride) {
   if (usePhysicalOverride.checked) {
@@ -86,6 +88,9 @@ function togglePhysicalOverride(usePhysicalOverride, physicalOverride) {
     });
   }
 }
+
+addModeLink.addEventListener('click', addMode);
+addMode(); // all fixtures have at least one mode
 
 
 // Generate json data
