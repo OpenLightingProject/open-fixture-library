@@ -92,26 +92,52 @@
   }
 }
 
-.fixture-info {
-  & > .categories a {
-    display: inline-block;
-    margin: 0 0 0.4rem;
+.category-badge {
+  display: inline-block;
+  padding: 4px 1.5ex 4px 1ex;
+  margin: 0 0 4px;
+  border-radius: 5000px; /* see http://stackoverflow.com/a/18795153/451391 */
+  background: $grey-100;
+  transition: background 0.2s;
 
-    & svg {
-      height: 2em;
-      width: 2em;
-      vertical-align: middle;
+  &:link,
+  &:visited {
+    color: $primary-text-dark;
+    fill: $icon-dark;
+  }
+  &:hover,
+  &:focus {
+    background: $grey-300;
+  }
+
+  &.selected {
+    background: $blue-700;
+
+    &:link,
+    &:visited {
+      color: $primary-text-light;
+      fill: $icon-light;
+    }
+    &:hover,
+    &:focus {
+      background: $blue-300;
     }
   }
 
-  & > .manualURL {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  & > svg {
+    height: 1.7em;
+    width: 1.7em;
+    vertical-align: middle;
+  }
+}
 
-    & > .value {
-      display: inline;
-    }
+.fixture-info > .manualURL {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  & > .value {
+    display: inline;
   }
 
   section.physical {
