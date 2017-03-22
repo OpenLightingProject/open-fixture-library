@@ -26,7 +26,7 @@ app.use(sassMiddleware({
   src: path.join(__dirname, 'views', 'stylesheets'),
   dest: path.join(__dirname, 'static'),
   outputStyle: 'compressed',
-  maxAge: 60 * 60 // let user's browser cache stylesheet for one hour
+  response: false // let express.static below handle Cache-Control before sending
 }));
 
 // client scripts
@@ -38,7 +38,12 @@ const secondsInOneYear = 60 * 60 * 24 * 365;
 app.use(express.static(path.join(__dirname, 'static'), {
   setHeaders: (res, filename, stat) => {
     if (process.env.NODE_ENV === 'production') {
-      res.append('Cache-Control', `public, max-age=${secondsInOneYear}, immutable`);
+      if (path.extname(filename) == '.css') {
+        res.append('Cache-Control', 'public, max-age=3600'); // cache for one hour
+      }
+      else {
+        res.append('Cache-Control', `public, max-age=${secondsInOneYear}, immutable`); // cache indefinitely
+      }
     }
   }
 }));
