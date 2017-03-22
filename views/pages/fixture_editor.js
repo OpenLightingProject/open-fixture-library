@@ -268,7 +268,7 @@ module.exports = function(options) {
   str += '</form>';
 
 
-  str += '<script src="/client-fixture-editor.js"></script>';
+  str += '<script src="/js/fixture-editor.js"></script>';
 
   str += require('../includes/footer')(options);
 
