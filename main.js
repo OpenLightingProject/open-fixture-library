@@ -6,6 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const sassMiddleware = require('node-sass-middleware');
 const browserify = require('browserify-middleware');
+const babelify = require("babelify");
 
 // setup port
 app.set('port', (process.env.PORT || 5000));
@@ -21,7 +22,11 @@ app.use(sassMiddleware({
 }));
 
 // client scripts
-app.use('/js', browserify('./client'));
+app.use('/js', browserify(path.join(__dirname, 'views', 'scripts'), {
+  transform: [babelify.configure({
+    presets: ['env']
+  })]
+}));
 
 // static files that shall be accessible
 app.use(express.static(path.join(__dirname, 'static')));

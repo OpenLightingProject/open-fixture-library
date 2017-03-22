@@ -3,7 +3,8 @@
 var logo;
 var searchInput;
 
-window.addEventListener('load', function() {
+
+window.addEventListener('load', () => {
   logo = document.querySelector('#home-logo');
   searchInput = document.querySelector('#header input');
 
@@ -12,13 +13,13 @@ window.addEventListener('load', function() {
   searchInput.addEventListener('focus', hideLogo, true);
   searchInput.addEventListener('blur', checkSearchInput, true);
 
-  var downloadButton = document.querySelector('.download-button');
+  const downloadButton = document.querySelector('.download-button');
 
   if (downloadButton !== undefined) {
-    var links = downloadButton.querySelectorAll('a');
+    const links = downloadButton.querySelectorAll('a');
 
-    for (var i=0; i<links.length; i++) {
-      links[i].addEventListener('click', function() {
+    for (const link of links) {
+      link.addEventListener('click', function() {
         this.blur();
       }, false);
     }

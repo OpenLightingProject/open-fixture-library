@@ -11,9 +11,12 @@
   },
   "main": "main.js",
   "scripts": {
-    "start": "nodemon main.js"
+    "watch": "nodemon main.js",
+    "start": "node main.js"
   },
   "dependencies": {
+    "babel-preset-env": "^1.2.2",
+    "babelify": "^7.3.0",
     "browserify-middleware": "^7.1.0",
     "color-names": "^2.0.0",
     "express": "4.14.1",
