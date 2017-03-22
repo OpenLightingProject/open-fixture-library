@@ -154,7 +154,7 @@ module.exports = function(options) {
   str += '<section class="physical-DMXconnector">';
   str += '<label>';
   str += '<span class="label">DMX connector</span>';
-  str += selectInput(properties.physical.DMXconnector, 'unknown', 'physical-DMXconnector');
+  str += selectInput(properties.physical.DMXconnector, 'other DMX connector', 'physical-DMXconnector');
   str += '</label>';
   str += '</section>';
 
@@ -203,7 +203,7 @@ module.exports = function(options) {
   str += '<section class="physical-focus-type">';
   str += '<label>';
   str += '<span class="label">Focus type</span>';
-  str += selectInput(properties.focus.type, 'unknown', 'physical-focus-type');
+  str += selectInput(properties.focus.type, 'other focus type', 'physical-focus-type');
   str += '</label>';
   str += '</section>';
 
@@ -339,16 +339,16 @@ function selectInput(property, hint, allowAdditions=true) {
   html += allowAdditions ? ' data-allow-additions="true"' : '';
   html += '>';
 
-  html += '<option value="">' + hint + '</option>';
+  html += '<option value="">unknown</option>';
   for (const item of property.enum) {
     html += `<option value="${item}">${item}</option>`;
   }
 
-  html += allowAdditions ? '<option value="[add-value]">something different</option>' : '';
+  html += allowAdditions ? `<option value="[add-value]">${hint}</option>` : '';
 
   html += '</select>';
 
-  html += allowAdditions ? ' <input type="text" class="addition" required disabled />' : '';
+  html += allowAdditions ? ' <input type="text" class="addition"' + getPlaceholderAttr(hint) + ' required disabled />' : '';
 
   return html;
 }

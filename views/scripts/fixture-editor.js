@@ -60,9 +60,16 @@ physical.appendChild(document.importNode(templatePhysical.content, true));
 function addSelectAdditionEventListeners(element) {
   element.querySelectorAll('[data-allow-additions]').forEach(function(select) {
     select.addEventListener('change', function() {
-      this.nextElementSibling.disabled = (this.value != '[add-value]');
+      updateSelectAddition(this, true);
     }, false);
   });
+}
+function updateSelectAddition(select, updateFocus) {
+  var addValue = select.value == '[add-value]';
+  select.nextElementSibling.disabled = !addValue;
+  if (addValue && updateFocus) {
+    select.nextElementSibling.focus();
+  }
 }
 addSelectAdditionEventListeners(editorForm);
 
@@ -103,11 +110,14 @@ function addMode(event) {
 function togglePhysicalOverride(usePhysicalOverride, physicalOverride) {
   if (usePhysicalOverride.checked) {
     physicalOverride.hidden = false;
-    physicalOverride.querySelectorAll('select, input').forEach(function(element) {
+    physicalOverride.querySelectorAll('select, input').forEach(function(element, index) {
       element.disabled = false;
+      if (index == 0) {
+        element.focus();
+      }
     });
     physicalOverride.querySelectorAll('[data-allow-additions]').forEach(function(select) {
-      select.change();
+      updateSelectAddition(select, false);
     });
   }
   else {
