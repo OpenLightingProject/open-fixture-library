@@ -26,7 +26,8 @@ app.use(compression({
 app.use(sassMiddleware({
   src: path.join(__dirname, 'views', 'stylesheets'),
   dest: path.join(__dirname, 'static'),
-  outputStyle: 'compressed'
+  outputStyle: 'compressed',
+  maxAge: 60 * 60 // let user's browser cache stylesheet for one hour
 }));
 
 // client scripts
@@ -36,12 +37,11 @@ app.use('/js', browserify(path.join(__dirname, 'views', 'scripts'), {
   })]
 }));
 
-// static files that need no processing (some of them may never change -> let the users cache them)
-const longMaxAgeExtensions = ['.ico', '.json', '.png', '.svg', '.ttf', '.woff', '.woff2', '.xml'];
+// static files that need no processing -> let the users' browser cache them
 const secondsInOneYear = 60 * 60 * 24 * 365;
 app.use(express.static(path.join(__dirname, 'static'), {
   setHeaders: (res, filename, stat) => {
-    if (process.env.NODE_ENV === 'production' && longMaxAgeExtensions.indexOf(path.extname(filename)) != -1) {
+    if (process.env.NODE_ENV === 'production') {
       res.append('Cache-Control', 'public, max-age=' + secondsInOneYear);
     }
   }
