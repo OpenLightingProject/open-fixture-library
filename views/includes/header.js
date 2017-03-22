@@ -11,7 +11,7 @@ module.exports = function(options) {
   <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
   <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#64b5f6">
-  <script type="text/javascript" src="/client.js" async></script>
+  <script type="text/javascript" src="/js/main.js" async></script>
 </head>
 <body>
   <a href="#content" class="accessibility">Skip to content</a>
