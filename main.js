@@ -5,6 +5,7 @@ const path = require('path');
 const express = require('express');
 const compression = require('compression');
 const sassMiddleware = require('node-sass-middleware');
+const browserify = require('browserify-middleware');
 const minifyHTML = require('html-minifier').minify;
 
 const app = express();
@@ -24,16 +25,25 @@ app.use(compression({
 app.use(sassMiddleware({
   src: path.join(__dirname, 'views', 'stylesheets'),
   dest: path.join(__dirname, 'static'),
-  outputStyle: 'compressed'
+  outputStyle: 'compressed',
+  response: false // let express.static below handle Cache-Control before sending
 }));
 
-// static files that need no processing (some of them may never change -> let the users cache them)
-const longMaxAgeExtensions = ['.ico', '.json', '.png', '.svg', '.ttf', '.woff', '.woff2', '.xml'];
+// client scripts
+browserify.settings.production('cache', '1 hour');
+app.use('/js', browserify(path.join(__dirname, 'views', 'scripts')));
+
+// static files that need no processing -> let the users' browser cache them
 const secondsInOneYear = 60 * 60 * 24 * 365;
 app.use(express.static(path.join(__dirname, 'static'), {
   setHeaders: (res, filename, stat) => {
-    if (process.env.NODE_ENV === 'production' && longMaxAgeExtensions.indexOf(path.extname(filename)) != -1) {
-      res.append('Cache-Control', 'public, max-age=' + secondsInOneYear);
+    if (process.env.NODE_ENV === 'production') {
+      if (path.extname(filename) == '.css') {
+        res.append('Cache-Control', 'public, max-age=3600'); // cache for one hour
+      }
+      else {
+        res.append('Cache-Control', `public, max-age=${secondsInOneYear}, immutable`); // cache indefinitely
+      }
     }
   }
 }));
