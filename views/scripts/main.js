@@ -1,7 +1,5 @@
-'use strict';
-
-var logo;
-var searchInput;
+let logo;
+let searchInput;
 
 
 window.addEventListener('load', () => {
@@ -19,7 +17,7 @@ window.addEventListener('load', () => {
     const links = downloadButton.querySelectorAll('a');
 
     for (const link of links) {
-      link.addEventListener('click', function() {
+      link.addEventListener('click', () => {
         this.blur();
       }, false);
     }

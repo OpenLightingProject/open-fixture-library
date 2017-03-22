@@ -18,7 +18,7 @@ Pushing to the `master` branch here on GitHub deploys a new version on [Heroku](
 
 1. Clone this repository (or a fork of it).
 2. Run `npm install` after first cloning or every time new dependencies are added in [package.json](package.json) in order to install the needed Node dependencies. (You can identify missing dependencies when the error "Cannot find module" is given.)
-3. To start the server locally at [localhost:5000](http://localhost:5000/), run `npm start` / `npm run watch` (or `heroku local`, which lets you use environment variables in the `.env` file).
+3. To start the server locally at [localhost:5000](http://localhost:5000/), run `npm start` or `npm run watch` (to restart the server everytime a file is changed).
 
 
 ### New fixtures
