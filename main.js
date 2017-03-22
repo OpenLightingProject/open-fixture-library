@@ -6,7 +6,6 @@ const express = require('express');
 const compression = require('compression');
 const sassMiddleware = require('node-sass-middleware');
 const browserify = require('browserify-middleware');
-const babelify = require("babelify");
 const minifyHTML = require('html-minifier').minify;
 
 const app = express();
@@ -31,18 +30,15 @@ app.use(sassMiddleware({
 }));
 
 // client scripts
-app.use('/js', browserify(path.join(__dirname, 'views', 'scripts'), {
-  transform: [babelify.configure({
-    presets: ['env']
-  })]
-}));
+browserify.settings.production('cache', '1 hour');
+app.use('/js', browserify(path.join(__dirname, 'views', 'scripts')));
 
 // static files that need no processing -> let the users' browser cache them
 const secondsInOneYear = 60 * 60 * 24 * 365;
 app.use(express.static(path.join(__dirname, 'static'), {
   setHeaders: (res, filename, stat) => {
     if (process.env.NODE_ENV === 'production') {
-      res.append('Cache-Control', 'public, max-age=' + secondsInOneYear);
+      res.append('Cache-Control', `public, max-age=${secondsInOneYear}, immutable`);
     }
   }
 }));

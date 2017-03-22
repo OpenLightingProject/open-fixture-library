@@ -1,10 +1,9 @@
-require("babel-polyfill");
+'use strict';
 
-let logo;
-let searchInput;
+var logo;
+var searchInput;
 
-
-window.addEventListener('load', () => {
+window.addEventListener('load', function() {
   logo = document.querySelector('#home-logo');
   searchInput = document.querySelector('#header input');
 
@@ -13,13 +12,13 @@ window.addEventListener('load', () => {
   searchInput.addEventListener('focus', hideLogo, true);
   searchInput.addEventListener('blur', checkSearchInput, true);
 
-  const downloadButton = document.querySelector('.download-button');
+  var downloadButton = document.querySelector('.download-button');
 
   if (downloadButton !== undefined) {
-    const links = downloadButton.querySelectorAll('a');
+    var links = downloadButton.querySelectorAll('a');
 
-    for (const link of links) {
-      link.addEventListener('click', () => {
+    for (var i=0; i<links.length; i++) {
+      links[i].addEventListener('click', function() {
         this.blur();
       }, false);
     }
