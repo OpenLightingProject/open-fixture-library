@@ -20,7 +20,8 @@ module.exports = function(options) {
   str += '<section class="manufacturer-shortName">';
   str += '<label>';
   str += '<span class="label">Choose from list</span>';
-  str += `<select required autofocus>`;
+  str += `<select required>`;
+  str += `<option value="">Please select a manufacturer</option>`;
   for (const man in options.manufacturers) {
     str += `<option value="${man}">${options.manufacturers[man].name}</option>`;
   }
@@ -153,7 +154,7 @@ module.exports = function(options) {
   str += '<section class="physical-DMXconnector">';
   str += '<label>';
   str += '<span class="label">DMX connector</span>';
-  str += textInput(properties.physical.DMXconnector, 'e.g. 3-pin', 'physical-DMXconnector');
+  str += selectInput(properties.physical.DMXconnector, 'unknown', 'physical-DMXconnector');
   str += '</label>';
   str += '</section>';
 
@@ -202,7 +203,7 @@ module.exports = function(options) {
   str += '<section class="physical-focus-type">';
   str += '<label>';
   str += '<span class="label">Focus type</span>';
-  str += textInput(properties.focus.type, '', 'physical-focus-type');
+  str += selectInput(properties.focus.type, 'unknown', 'physical-focus-type');
   str += '</label>';
   str += '</section>';
 
@@ -277,11 +278,11 @@ module.exports = function(options) {
 
 
 function textInput(property, hint, id) {
-  let html = '<input type="text" ';
+  let html = '<input type="text"';
   html += getRequiredAttr(property);
 
   if (property.enum) {
-    html += `list="${id}-list"`;
+    html += ` list="${id}-list"`;
   }
 
   html += getPlaceholderAttr(hint);
@@ -299,7 +300,7 @@ function textInput(property, hint, id) {
 }
 
 function urlInput(property, hint) {
-  let html = '<input type="url" ';
+  let html = '<input type="url"';
   html += getRequiredAttr(property);
   html += getPlaceholderAttr(hint);
   html += '/>';
@@ -307,7 +308,7 @@ function urlInput(property, hint) {
 }
 
 function textareaInput(property, hint) {
-  let html = '<textarea ';
+  let html = '<textarea';
   html += getRequiredAttr(property);
   html += getPlaceholderAttr(hint);
   html += '></textarea>';
@@ -315,7 +316,7 @@ function textareaInput(property, hint) {
 }
 
 function numberInput(property, hint) {
-  let html = '<input type="number" step="any" ';
+  let html = '<input type="number" step="any"';
   html += getRequiredAttr(property);
 
   if (property.minimum !== undefined) {
@@ -332,9 +333,29 @@ function numberInput(property, hint) {
   return html;
 }
 
+function selectInput(property, hint, allowAdditions=true) {
+  let html = '<select';
+  html += getRequiredAttr(property);
+  html += allowAdditions ? ' data-allow-additions="true"' : '';
+  html += '>';
+
+  html += '<option value="">' + hint + '</option>';
+  for (const item of property.enum) {
+    html += `<option value="${item}">${item}</option>`;
+  }
+
+  html += allowAdditions ? '<option value="[add-value]">something different</option>' : '';
+
+  html += '</select>';
+
+  html += allowAdditions ? ' <input type="text" class="addition" required disabled />' : '';
+
+  return html;
+}
+
 function getRequiredAttr(property) {
-  return property.required ? 'required ' : '';
+  return property.required ? ' required' : '';
 }
 function getPlaceholderAttr(hint) {
-  return hint ? `placeholder="${hint}" ` : '';
+  return hint ? ` placeholder="${hint}"` : '';
 }

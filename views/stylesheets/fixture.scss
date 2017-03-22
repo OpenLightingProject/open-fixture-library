@@ -230,6 +230,10 @@ data.checkbox {
   margin: 2ex 0 0;
 }
 
+select[data-allow-additions] + input:disabled {
+  display: none;
+}
+
 a.fixture-mode {
   text-align: center;
 }

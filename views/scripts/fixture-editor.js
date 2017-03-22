@@ -1,5 +1,7 @@
 'use strict';
 
+var editorForm = document.querySelector('#fixture-editor');
+
 // Toggle between existing and new manufacturer
 var manShortName = document.querySelector('.manufacturer-shortName');
 var addManLink = manShortName.querySelector('.add-manufacturer');
@@ -14,8 +16,11 @@ function addManufacturer(event) {
   });
 
   newMan.hidden = false;
-  newMan.querySelectorAll('select, input').forEach(function(element) {
+  newMan.querySelectorAll('select, input').forEach(function(element, index) {
     element.disabled = false;
+    if (index == 0) {
+      element.focus();
+    }
   });
 
   if (event !== undefined) {
@@ -24,8 +29,11 @@ function addManufacturer(event) {
 }
 function useExistingManufacturer(event) {
   manShortName.hidden = false;
-  manShortName.querySelectorAll('select, input').forEach(function(element) {
+  manShortName.querySelectorAll('select, input').forEach(function(element, index) {
     element.disabled = false;
+    if (index == 0) {
+      element.focus();
+    }
   });
 
   newMan.hidden = true;
@@ -48,6 +56,16 @@ var physical = document.querySelector('.physical');
 physical.appendChild(document.importNode(templatePhysical.content, true));
 
 
+// Allow select additions
+function addSelectAdditionEventListeners(element) {
+  element.querySelectorAll('[data-allow-additions]').forEach(function(select) {
+    select.addEventListener('change', function() {
+      this.nextElementSibling.disabled = (this.value != '[add-value]');
+    }, false);
+  });
+}
+addSelectAdditionEventListeners(editorForm);
+
 // Enable mode adding
 var templateMode = document.querySelector('.template-mode');
 var modesContainer = document.querySelector('.fixture-modes');
@@ -69,6 +87,7 @@ function addMode(event) {
 
   var physicalOverride = newMode.querySelector('.physical-override');
   physicalOverride.appendChild(document.importNode(templatePhysical.content, true));
+  addSelectAdditionEventListeners(physicalOverride);
 
   var usePhysicalOverride = newMode.querySelector('.use-physical-override');
   usePhysicalOverride.addEventListener('change', function() {
@@ -87,6 +106,9 @@ function togglePhysicalOverride(usePhysicalOverride, physicalOverride) {
     physicalOverride.querySelectorAll('select, input').forEach(function(element) {
       element.disabled = false;
     });
+    physicalOverride.querySelectorAll('[data-allow-additions]').forEach(function(select) {
+      select.change();
+    });
   }
   else {
     physicalOverride.hidden = true;
@@ -100,7 +122,6 @@ addMode(); // all fixtures have at least one mode
 
 
 // Generate json data
-var editorForm = document.querySelector('#fixture-editor');
 editorForm.addEventListener('submit', function() {
   // browser validation has already happened
   // -> all inputs are valid
