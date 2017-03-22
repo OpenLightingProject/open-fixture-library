@@ -152,15 +152,19 @@
   }
 }
 
+section {
+  padding-top: 1.2ex;
+}
+
 .label {
   display: block;
-  margin-top: 1.2ex;
   color: $secondary-text-dark;
+  vertical-align: top;
 }
 
 .value {
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: top;
 }
 
 .hint {
@@ -240,13 +244,8 @@ a.fixture-mode {
   display: none;
 }
 
-/* display mode cards in a 2-col layout, labels left of values */
+/* display mode cards in a 2-col layout */
 @media (min-width: $tablet) {
-  .label {
-    display: inline-block;
-    min-width: 10rem;
-  }
-
   .fixture-modes > .card.fixture-mode {
     width: calc(50% - .5rem);
 
@@ -268,6 +267,10 @@ a.fixture-mode {
     }
   }
 
+  .card.fixture-mode .value {
+    max-width: none;
+  }
+
   .channel-groups > section {
     width: calc(50% - 1.5em);
     float: left;
@@ -281,7 +284,7 @@ a.fixture-mode {
   }
 }
 
-/* move download button to the right */
+/* move download button to the right, labels left of values */
 @media (min-width: 650px) {
   .fixture-header {
     display: flex;
@@ -297,5 +300,13 @@ a.fixture-mode {
       flex-shrink: 0;
       margin: 1.5rem 0 0;
     }
+  }
+
+  .label {
+    display: inline-block;
+    min-width: 10rem;
+  }
+  .value {
+    max-width: calc(100% - 12rem - 1ex);
   }
 }
