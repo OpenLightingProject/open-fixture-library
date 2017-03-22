@@ -1,3 +1,5 @@
+require("babel-polyfill");
+
 let logo;
 let searchInput;
 
