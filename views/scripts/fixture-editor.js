@@ -1,5 +1,8 @@
 'use strict';
 
+const A11yDialog = require('a11y-dialog');
+
+
 var editorForm = document.querySelector('#fixture-editor');
 
 // Toggle between existing and new manufacturer
@@ -104,7 +107,7 @@ function addMode(event) {
 
   if (event !== undefined) {
     event.preventDefault();
-    newMode.querySelector('.mode-name > input').focus();
+    newMode.querySelector('.mode-name input').focus();
   }
 }
 function togglePhysicalOverride(usePhysicalOverride, physicalOverride) {
@@ -129,6 +132,14 @@ function togglePhysicalOverride(usePhysicalOverride, physicalOverride) {
 }
 addModeLink.addEventListener('click', addMode);
 addMode(); // all fixtures have at least one mode
+
+
+// initialize dialogs
+window.addEventListener('load', function() {
+  ['add-channel-to-mode'].forEach(function(id) {
+    new A11yDialog(document.getElementById(id));
+  });
+}, false);
 
 
 // Generate json data

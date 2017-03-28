@@ -13,7 +13,7 @@ window.addEventListener('load', function() {
   searchInput.addEventListener('blur', checkSearchInput, true);
 
   var downloadButton = document.querySelector('.download-button');
-  if (downloadButton !== null) {
+  if (downloadButton != null) {
     var links = downloadButton.querySelectorAll('a');
 
     for (var i=0; i<links.length; i++) {

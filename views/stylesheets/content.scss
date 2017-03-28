@@ -95,6 +95,31 @@ a.card, .list a {
   }
 }
 
+
+.dialog-container[aria-hidden="true"] {
+  display: none;
+}
+
+.dialog-overlay {
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.66);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.dialog {
+  background-color: rgb(255, 255, 255);
+  z-index: 1010;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 @media (max-width: $phone) {
   .list > li > a > svg {
     width: 24px;

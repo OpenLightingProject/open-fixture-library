@@ -258,6 +258,9 @@ module.exports = function(options) {
   str += '<section class="physical-override">';
   str += '</section>';
 
+  str += '<h3>Channels</h3>';
+  str += '<a href="#" data-a11y-dialog-show="add-channel-to-mode">Open the dialog window</a>';
+
   str += '</section>'; // .fixture-mode
   str += '</template>'; // .template-mode
 
@@ -268,6 +271,14 @@ module.exports = function(options) {
 
   str += '</form>';
 
+
+  options.dialogs = [
+    {
+      id: 'add-channel-to-mode',
+      title: 'Add channel to mode',
+      content: '<p>Test</p>'
+    }
+  ];
 
   str += '<script src="/js/fixture-editor.js"></script>';
 
