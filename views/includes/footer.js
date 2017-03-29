@@ -4,7 +4,7 @@ module.exports = function(options) {
   for (dialog of options.dialogs || []) {
     str += `<div class="dialog-container" id="${dialog.id}" aria-hidden="true">`;
     str += '  <div class="dialog-overlay" tabindex="-1" data-a11y-dialog-hide></div>';
-    str += `  <div class="dialog" aria-labelledby="${dialog.id}-title" role="dialog">`;
+    str += `  <div class="dialog card" aria-labelledby="${dialog.id}-title" role="dialog">`;
     str += '    <div role="document">';
     str += `      <h1 id="${dialog.id}-title" tabindex="0">${dialog.title}</h1>`;
     str += dialog.content;

@@ -1,7 +1,10 @@
 'use strict';
 
-const A11yDialog = require('a11y-dialog');
+var A11yDialog = require('a11y-dialog');
 
+var modals = {
+  'add-channel-to-mode': null
+};
 
 var editorForm = document.querySelector('#fixture-editor');
 
@@ -12,45 +15,35 @@ var addManLink = manShortName.querySelector('.add-manufacturer');
 var newMan = document.querySelector('.new-manufacturer');
 var useExistingManLink = newMan.querySelector('.use-existing-manufacturer');
 
-function addManufacturer(event) {
-  manShortName.hidden = true;
-  manShortName.querySelectorAll('select, input').forEach(function(element) {
+function toggleManufacturer(event) {
+  var toShow = manShortName;
+  var toHide = newMan;
+
+  if (newMan.hidden) {
+    toShow = newMan;
+    toHide = manShortName;
+  }
+
+  toHide.hidden = true;
+  [].forEach.call(toHide.querySelectorAll('select, input'), function(element) {
     element.disabled = true;
   });
 
-  newMan.hidden = false;
-  newMan.querySelectorAll('select, input').forEach(function(element, index) {
+  toShow.hidden = false;
+  [].forEach.call(toShow.querySelectorAll('select, input'), function(element, index) {
     element.disabled = false;
     if (index == 0) {
       element.focus();
     }
   });
 
-  if (event !== undefined) {
+  if (event) {
     event.preventDefault();
   }
 }
-function useExistingManufacturer(event) {
-  manShortName.hidden = false;
-  manShortName.querySelectorAll('select, input').forEach(function(element, index) {
-    element.disabled = false;
-    if (index == 0) {
-      element.focus();
-    }
-  });
-
-  newMan.hidden = true;
-  newMan.querySelectorAll('select, input').forEach(function(element) {
-    element.disabled = true;
-  });
-
-  if (event !== undefined) {
-    event.preventDefault();
-  }
-}
-addManLink.addEventListener('click', addManufacturer);
-useExistingManLink.addEventListener('click', useExistingManufacturer);
-useExistingManufacturer(); // this should be shown at the start
+addManLink.addEventListener('click', toggleManufacturer);
+useExistingManLink.addEventListener('click', toggleManufacturer);
+toggleManufacturer(); // initialize by only showing manShortName
 
 
 // Clone physical template into fixture 
@@ -61,7 +54,7 @@ physical.appendChild(document.importNode(templatePhysical.content, true));
 
 // Allow select additions
 function addSelectAdditionEventListeners(element) {
-  element.querySelectorAll('[data-allow-additions]').forEach(function(select) {
+  [].forEach.call(element.querySelectorAll('[data-allow-additions]'), function(select) {
     select.addEventListener('change', function() {
       updateSelectAddition(this, true);
     }, false);
@@ -105,6 +98,9 @@ function addMode(event) {
   });
   togglePhysicalOverride(usePhysicalOverride, physicalOverride);
 
+  var openChannelModalLink = newMode.querySelector('a.show-dialog');
+  openChannelModalLink.addEventListener('click', openModal, false);
+
   if (event !== undefined) {
     event.preventDefault();
     newMode.querySelector('.mode-name input').focus();
@@ -113,19 +109,19 @@ function addMode(event) {
 function togglePhysicalOverride(usePhysicalOverride, physicalOverride) {
   if (usePhysicalOverride.checked) {
     physicalOverride.hidden = false;
-    physicalOverride.querySelectorAll('select, input').forEach(function(element, index) {
+    [].forEach.call(physicalOverride.querySelectorAll('select, input'), function(element, index) {
       element.disabled = false;
       if (index == 0) {
         element.focus();
       }
     });
-    physicalOverride.querySelectorAll('[data-allow-additions]').forEach(function(select) {
+    [].forEach.call(physicalOverride.querySelectorAll('[data-allow-additions]'), function(select) {
       updateSelectAddition(select, false);
     });
   }
   else {
     physicalOverride.hidden = true;
-    physicalOverride.querySelectorAll('select, input').forEach(function(element) {
+    [].forEach.call(physicalOverride.querySelectorAll('select, input'), function(element) {
       element.disabled = true;
     });
   }
@@ -134,11 +130,18 @@ addModeLink.addEventListener('click', addMode);
 addMode(); // all fixtures have at least one mode
 
 
+function openModal(event) {
+  event.preventDefault();
+
+  var key = event.target.getAttribute('href').slice(1);
+  modals[key].show();
+}
+
 // initialize dialogs
 window.addEventListener('load', function() {
-  ['add-channel-to-mode'].forEach(function(id) {
-    new A11yDialog(document.getElementById(id));
-  });
+  for (var key in modals) {
+    modals[key] = new A11yDialog(document.getElementById(key));
+  }
 }, false);
 
 
@@ -255,7 +258,7 @@ function readArray(container, selector, data, property) {
 
   var array = [];
   var filled = false;
-  inputs.forEach(function(input) {
+  [].forEach.call(inputs, function(input) {
     if (input.type === "number") {
       if (!isNaN(input.valueAsNumber)) {
         filled = true;

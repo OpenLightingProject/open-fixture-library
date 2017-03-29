@@ -259,7 +259,7 @@ module.exports = function(options) {
   str += '</section>';
 
   str += '<h3>Channels</h3>';
-  str += '<a href="#" data-a11y-dialog-show="add-channel-to-mode">Open the dialog window</a>';
+  str += '<a href="#add-channel-to-mode" class="show-dialog">Open the dialog window</a>';
 
   str += '</section>'; // .fixture-mode
   str += '</template>'; // .template-mode
