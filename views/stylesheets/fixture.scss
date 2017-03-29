@@ -238,13 +238,8 @@ a.fixture-mode {
   text-align: center;
 }
 
-.fixture-mode > .remove-mode {
-  float: right;
-  @include icon-button($red-700, $red-300);
-}
-
 /* if a mode is the only mode, hide its remove button */
-.fixture-modes > .fixture-mode:first-child:nth-last-child(3) > .remove-mode {
+.fixture-modes > .fixture-mode:first-child:nth-last-child(3) > .close {
   display: none;
 }
 

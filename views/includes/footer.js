@@ -6,9 +6,12 @@ module.exports = function(options) {
     str += '  <div class="dialog-overlay" tabindex="-1" data-a11y-dialog-hide></div>';
     str += `  <div class="dialog card" aria-labelledby="${dialog.id}-title" role="dialog">`;
     str += '    <div role="document">';
-    str += `      <h1 id="${dialog.id}-title" tabindex="0">${dialog.title}</h1>`;
+    str += `      <h2 id="${dialog.id}-title" tabindex="0">${dialog.title}</h2>`;
     str += dialog.content;
-    str += `      <button data-a11y-dialog-hide class="dialog-close" aria-label="Close this dialog window">&times;</button>`;
+    str += '      <button data-a11y-dialog-hide class="close">'
+    str += 'Close';
+    str += require('./svg')({svgBasename: 'close'});
+    str += '</button>';
     str += '    </div>';  // div[role=document]
     str += '  </div>';  // .dialog
     str += '</div>';  // .dialog-container

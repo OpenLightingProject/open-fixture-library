@@ -228,7 +228,7 @@ module.exports = function(options) {
   str += '<template class="template-mode">';
   str += '<section class="fixture-mode card">';
 
-  str += '<a class="remove-mode" href="#">';
+  str += '<a class="close" href="#">';
   str += 'Remove mode';
   str += require('../includes/svg')({svgBasename: 'close'});
   str += '</a>';
@@ -276,7 +276,7 @@ module.exports = function(options) {
     {
       id: 'add-channel-to-mode',
       title: 'Add channel to mode',
-      content: '<p>Test</p>'
+      content: '<p>Test uogitzbdz uzjujgj 7tubhttrh ziuzihkioj fzhjfvtz rtutzgzjoh8 zjhtztzer trbztuhiuzjiuh kjgztbhvfzc tvzhzjozhokubft tzrztfgguzhtj iuihjuztzv trguztuzjiu tzhghz tzhzzuvctz fvgvhzuiuhoj gghcuzgtuhzu iuhjiuztbzvz hjnbzvbch vcvjkh bfvgcvgtvfj bujzngvch vuvvhhuj vvfzftzuj oubvghcf vzt buzzc tfvgizgzjhuoj hgvg uu ijkjbjhzctuvzhb iujhihu hhg hubijoihoigubv hbhjnknjnhbv ghbjhbnvghcg ghn bjnkhnvz bvcvfchgvgh gb vchfvhjknjuvbh cfvfghjj bgcv tzbdz uzjujgj 7tubhttrh ziuzihkioj fzhjfvtz rtutzgzjoh8 zjhtztzer trbztuhiuzjiuh kjgztbhvfzc tvzhzjozhokubft tzrztfgguzhtj iuihjuztzv trguztuzjiu tzhghz tzhzzuvctz fvgvhzuiuhoj gghcuzgtuhzu iuhjiuztbzvz hjnbzvbch vcvjkh bfvgcvgtvfj bujzngvch vuvvhhuj vvfzftzuj oubvghtzbdz uzjujgj 7tubhttrh ziuzihkioj fzhjfvtz rtutzgzjoh8 zjhtztzer trbztuhiuzjiuh kjgztbhvfzc tvzhzjozhokubft tzrztfgguzhtj iuihjuztzv trguztuzjiu tzhghz tzhzzuvctz fvgvhzuiuhoj gghcuzgtuhzu iuhjiuztbzvz hjnbzvbch vcvjkh bfvgcvgtvfj bujzngvch vuvvhhuj vvfzftzuj oubvgh</p>'
     }
   ];
 

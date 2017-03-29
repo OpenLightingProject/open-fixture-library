@@ -2,7 +2,7 @@
 
 var A11yDialog = require('a11y-dialog');
 
-var modals = {
+var dialogs = {
   'add-channel-to-mode': null
 };
 
@@ -82,7 +82,7 @@ function addMode(event) {
   );
   newMode = addModeLink.previousSibling;
 
-  var removeModeButton = newMode.querySelector('.remove-mode');
+  var removeModeButton = newMode.querySelector('.close');
   removeModeButton.addEventListener('click', function(e) {
     e.preventDefault();
     newMode.remove();
@@ -98,10 +98,10 @@ function addMode(event) {
   });
   togglePhysicalOverride(usePhysicalOverride, physicalOverride);
 
-  var openChannelModalLink = newMode.querySelector('a.show-dialog');
-  openChannelModalLink.addEventListener('click', openModal, false);
+  var openChannelDialogLink = newMode.querySelector('a.show-dialog');
+  openChannelDialogLink.addEventListener('click', openDialog, false);
 
-  if (event !== undefined) {
+  if (event) {
     event.preventDefault();
     newMode.querySelector('.mode-name input').focus();
   }
@@ -130,17 +130,17 @@ addModeLink.addEventListener('click', addMode);
 addMode(); // all fixtures have at least one mode
 
 
-function openModal(event) {
+function openDialog(event) {
   event.preventDefault();
 
   var key = event.target.getAttribute('href').slice(1);
-  modals[key].show();
+  dialogs[key].show();
 }
 
 // initialize dialogs
 window.addEventListener('load', function() {
-  for (var key in modals) {
-    modals[key] = new A11yDialog(document.getElementById(key));
+  for (var key in dialogs) {
+    dialogs[key] = new A11yDialog(document.getElementById(key));
   }
 }, false);
 
