@@ -8,10 +8,10 @@ module.exports = function(options) {
     str += '    <div role="document">';
     str += `      <h2 id="${dialog.id}-title" tabindex="0">${dialog.title}</h2>`;
     str += dialog.content;
-    str += '      <button data-a11y-dialog-hide class="close">'
+    str += '      <a href="#_" data-a11y-dialog-hide class="close">'
     str += 'Close';
     str += require('./svg')({svgBasename: 'close'});
-    str += '</button>';
+    str += '</a>';
     str += '    </div>';  // div[role=document]
     str += '  </div>';  // .dialog
     str += '</div>';  // .dialog-container

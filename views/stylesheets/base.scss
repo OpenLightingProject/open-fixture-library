@@ -96,6 +96,8 @@ input[type=email],
 input[type=search],
 input[type=url],
 input[type=number] {
+  box-sizing: border-box;
+  max-width: 100%;
   padding: 0.4em;
   background: #fff;
   border: 1px solid #cfd6e6;
@@ -142,9 +144,9 @@ input[type=url] {
   width: 0;
   height: calc(#{$icon-size} + #{2*$padding});
   overflow: hidden;
-  border: 1px solid transparent;
+  border: 1px solid rgba($hover-color, 0);
   border-radius: 3px;
-  background-color: transparent;
+  background-color: rgba($hover-color, 0);
   cursor: pointer;
   color: $secondary-text-dark;
   transition: color 0.2s, background-color 0.2s, border-color 0.2s;
