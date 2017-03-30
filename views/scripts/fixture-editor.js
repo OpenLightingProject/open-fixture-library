@@ -13,6 +13,8 @@ var useExistingManLink = newMan.querySelector('.use-existing-manufacturer');
 var physical = document.querySelector('.physical');
 var modesContainer = document.querySelector('.fixture-modes');
 var addModeLink = document.querySelector('a.fixture-mode');
+var channelEditor;
+var channelTypeSelect;
 
 
 // templates
@@ -24,6 +26,8 @@ var dialogs = {
   'add-channel-to-mode': null,
   'channel-editor': null,
 };
+var dialogOpener = null;
+var dialogClosingHandled = false;
 
 
 window.addEventListener('load', function() {
@@ -33,11 +37,23 @@ window.addEventListener('load', function() {
     dialogs[key] = new A11yDialog(dialogElement);
     addComboboxEventListeners(dialogElement);
   }
+  dialogs['channel-editor'].on('hide', function() {
+    if (!dialogClosingHandled) {
+      var chData = getChannelFromEditor();
+      if (JSON.stringify(chData) != '{}' && !window.confirm('Do you want to lose the entered channel data?')) {
+        dialogs['channel-editor'].show();
+        return false;
+      }
+    }
+
+    channelEditor.reset();
+    updateChannelColorVisibility();
+  });
 
   // enable toggling between existing and new manufacturer
   addManLink.addEventListener('click', toggleManufacturer);
   useExistingManLink.addEventListener('click', toggleManufacturer);
-  toggleManufacturer();  // initialize by only showing manShortName
+  toggleManufacturer();
 
   // clone physical template into fixture
   physical.appendChild(document.importNode(templatePhysical.content, true));
@@ -46,7 +62,19 @@ window.addEventListener('load', function() {
 
   addModeLink.addEventListener('click', addMode);
   addMode();  // every fixture has at least one mode
-}, false);
+
+  // add channel editor submit
+  channelEditor = document.querySelector('#channel-editor form');
+  channelEditor.addEventListener('submit', addChannel);
+
+  // enable channel color only if the channel type is SingleColor
+  channelTypeSelect = document.querySelector('#channel-editor .channel-type select');
+  channelTypeSelect.addEventListener('change', updateChannelColorVisibility);
+  updateChannelColorVisibility();
+
+  // enable submit button
+  editorForm.querySelector('.save-fixture').disabled = false;
+});
 
 
 function toggleManufacturer(event) {
@@ -80,7 +108,7 @@ function addComboboxEventListeners(element) {
   [].forEach.call(element.querySelectorAll('[data-allow-additions]'), function(select) {
     select.addEventListener('change', function() {
       updateCombobox(this, true);
-    }, false);
+    });
   });
 }
 function updateCombobox(select, updateFocus) {
@@ -89,6 +117,13 @@ function updateCombobox(select, updateFocus) {
   if (addValue && updateFocus) {
     select.nextElementSibling.focus();
   }
+}
+
+function updateChannelColorVisibility(event) {
+  var channelColor = document.querySelector('#channel-editor .channel-color');
+  var colorEnabled = channelTypeSelect.value == 'SingleColor';
+  channelColor.hidden = !colorEnabled;
+  channelColor.querySelector('select').disabled = !colorEnabled;
 }
 
 function addMode(event) {
@@ -116,7 +151,7 @@ function addMode(event) {
   togglePhysicalOverride(usePhysicalOverride, physicalOverride);
 
   var openChannelDialogLink = newMode.querySelector('a.show-dialog');
-  openChannelDialogLink.addEventListener('click', openDialogFromLink, false);
+  openChannelDialogLink.addEventListener('click', openDialogFromLink);
 
   if (event) {
     event.preventDefault();
@@ -147,41 +182,90 @@ function togglePhysicalOverride(usePhysicalOverride, physicalOverride) {
 function openDialogFromLink(event) {
   event.preventDefault();
 
+  dialogOpener = event.target;
+  dialogClosingHandled = false;
   var key = event.target.getAttribute('href').slice(1);
   dialogs[key].show();
+}
+function closeDialog() {
+  var key = dialogOpener.getAttribute('href').slice(1);
+  dialogs[key].hide();
+  dialogOpener = null;
+}
+
+function addChannel(event) {
+  // browser validation has already caught the big mistakes
+
+  event.preventDefault();
+
+  var chData = getChannelFromEditor();
+  var channelKey = chData.name;
+  if (true) {  // TODO: if (!(channelKey in availableChannels))
+    delete chData.name;
+  }
+  else {
+    channelKey = getKeyFromName(channelKey, null); // TODO availableChannels
+  }
+
+  var newChannelItem = document.createElement('li');
+  newChannelItem.textContent = ('name' in chData) ? chData.name : channelKey;
+  dialogOpener.previousElementSibling.appendChild(newChannelItem);
+
+  dialogClosingHandled = true;
+  closeDialog();
+}
+function getChannelFromEditor() {
+  var chData = {};
+
+  readSingle(channelEditor, '.channel-name', chData, 'name');
+  readSingleSelect(channelEditor, '.channel-type', chData, 'type');
+
+  if (chData.type == 'SingleColor') {
+    readSingleSelect(channelEditor, '.channel-color', chData, 'color');
+  }
+
+  readSingle(channelEditor, '.channel-defaultValue', chData, 'defaultValue');
+  readSingle(channelEditor, '.channel-highlightValue', chData, 'highlightValue');
+  readSingleSelect(channelEditor, '.channel-invert', chData, 'invert');
+  readSingleSelect(channelEditor, '.channel-constant', chData, 'constant');
+  readSingleSelect(channelEditor, '.channel-crossfade', chData, 'crossfade');
+  readSingleSelect(channelEditor, '.channel-precedence', chData, 'precedence');
+
+  return chData;
 }
 
 
 // Generate json data
-editorForm.addEventListener('submit', function() {
-  // browser validation has already happened
-  // -> all inputs are valid
+editorForm.addEventListener('submit', function(event) {
+  // browser validation has already caught the big mistakes
+
+  event.preventDefault();
 
   var man;
   var manData = {};
   var fixData = {};
 
   if (!manShortName.hidden) {
-    readSelect(document, '.manufacturer-shortName',     manData, 'shortName');
+    readSingleSelect(editorForm, '.manufacturer-shortName', manData, 'shortName');
   }
   else {
-    readSingle(document, '.new-manufacturer-shortName', manData, 'shortName');
-    readSingle(document, '.new-manufacturer-name',      manData, 'name');
-    readSingle(document, '.new-manufacturer-website',   manData, 'website');
-    readSingle(document, '.new-manufacturer-comment',   manData, 'comment');
+    readSingle(editorForm, '.new-manufacturer-shortName', manData, 'shortName');
+    readSingle(editorForm, '.new-manufacturer-name', manData, 'name');
+    readSingle(editorForm, '.new-manufacturer-website', manData, 'website');
+    readSingle(editorForm, '.new-manufacturer-comment', manData, 'comment');
   }
   man = manData.shortName;
   delete manData.shortName;
 
-  readSingle(document, '.fixture-name',      fixData, 'name');
-  readSingle(document, '.fixture-shortName', fixData, 'shortName');
-  readSelect(document, '.categories',        fixData, 'categories');
-  readSingle(document, '.comment',           fixData, 'comment');
-  readSingle(document, '.manualURL',         fixData, 'manualURL');
+  readSingle(editorForm, '.fixture-name', fixData, 'name');
+  readSingle(editorForm, '.fixture-shortName', fixData, 'shortName');
+  readMultiSelect(editorForm, '.categories', fixData, 'categories');
+  readSingle(editorForm, '.comment', fixData, 'comment');
+  readSingle(editorForm, '.manualURL', fixData, 'manualURL');
 
-  readPhysical(document, '.physical.card', fixData, 'physical')
+  readPhysical(editorForm, '.physical.card', fixData, 'physical')
 
-  var modes = document.querySelectorAll('section.fixture-mode');
+  var modes = editorForm.querySelectorAll('section.fixture-mode');
   fixData.modes = [];
   modes.forEach(function(mode) {
     fixData.modes.push(readMode(mode));
@@ -196,7 +280,7 @@ editorForm.addEventListener('submit', function() {
 function readMode(modeContainer) {
   var modeData = {};
 
-  readSingle(modeContainer, '.mode-name',      modeData, 'name');
+  readSingle(modeContainer, '.mode-name', modeData, 'name');
   readSingle(modeContainer, '.mode-shortName', modeData, 'shortName');
 
   var usePhysicalOverride = modeContainer.querySelector('.use-physical-override');
@@ -220,18 +304,18 @@ function readPhysical(container, selector, data, property) {
       readSingle(inputsContainer, '.physical-bulb-type',             bulb, 'type');
       readSingle(inputsContainer, '.physical-bulb-colorTemperature', bulb, 'colorTemperature');
       readSingle(inputsContainer, '.physical-bulb-lumens',           bulb, 'lumens');
-    }, physical, "bulb");
+    }, physical, 'bulb');
 
     readObject(function(lens) {
       readSingle(inputsContainer, '.physical-lens-name',    lens, 'name');
       readArray(inputsContainer,  '.physical-lens-degrees', lens, 'degreesMinMax');
-    }, physical, "lens");
+    }, physical, 'lens');
 
     readObject(function(focus) {
       readSingle(inputsContainer, '.physical-focus-type',    focus, 'type');
       readSingle(inputsContainer, '.physical-focus-panMax',  focus, 'panMax');
       readSingle(inputsContainer, '.physical-focus-tiltMax', focus, 'tiltMax');
-    }, physical, "focus");
+    }, physical, 'focus');
   }, data, property);
 }
 
@@ -240,20 +324,20 @@ function readObject(parserFunction, data, property) {
 
   parserFunction(obj);
 
-  if (JSON.stringify(obj) !== "{}") {
+  if (JSON.stringify(obj) !== '{}') {
     data[property] = obj;
   }
 }
 
 function readSingle(container, selector, data, property) {
   var input = container.querySelector(selector + ' input, ' + selector + ' textarea');
-  if (input.type === "number") {
+  if (input.type === 'number') {
     if (!isNaN(input.valueAsNumber)) {
       data[property] = input.valueAsNumber;
     }
   }
   else {
-    if (input.value != "") {
+    if (input.value != '') {
       data[property] = input.value;
     }
   }
@@ -265,7 +349,7 @@ function readArray(container, selector, data, property) {
   var array = [];
   var filled = false;
   [].forEach.call(inputs, function(input) {
-    if (input.type === "number") {
+    if (input.type === 'number') {
       if (!isNaN(input.valueAsNumber)) {
         filled = true;
         array.push(input.valueAsNumber);
@@ -275,12 +359,12 @@ function readArray(container, selector, data, property) {
       }
     }
     else {
-      if (input.value != "") {
+      if (input.value != '') {
         filled = true;
         array.push(input.value);
       }
       else {
-        array.push("");
+        array.push('');
       }
     }
   });
@@ -290,7 +374,7 @@ function readArray(container, selector, data, property) {
   }
 }
 
-function readSelect(container, selector, data, property) {
+function readMultiSelect(container, selector, data, property) {
   var select = container.querySelector(selector + ' select');
   if (select.selectedOptions.length > 0) {
     data[property] = [];
@@ -298,4 +382,34 @@ function readSelect(container, selector, data, property) {
       data[property].push(select.selectedOptions[i].value);
     }
   }
+}
+
+function readSingleSelect(container, selector, data, property) {
+  var select = container.querySelector(selector + ' select');
+  if (select.value != '') {
+    if (select.className == 'boolean') {
+      data[property] = select.value == 'true';
+    }
+    else {
+      data[property] = select.value == '[add-value]' ? select.nextElementSibling.value : select.value;
+    }
+  }
+}
+
+function getKeyFromName(name, uniqueInList) {
+  name = name.toLowerCase().replace(/[^a-z0-9\-]+/g, '-');
+
+  if (!uniqueInList) {
+    return name;
+  }
+
+  var nameRegexp = new RegExp('^' + name + '\s*\d+$');
+  var occurences = uniqueInList.reduce(function(acc, value) {
+    if (nameRegexp.test(value)) {
+      return acc + 1;
+    }
+    return acc;
+  }, 0);
+
+  return name + ' ' + (occurences + 1);
 }

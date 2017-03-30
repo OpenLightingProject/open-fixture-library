@@ -259,6 +259,7 @@ module.exports = function(options) {
   str += '</section>';
 
   str += '<h3>Channels</h3>';
+  str += '<ul class="mode-channels"></ul>';
   //str += '<a href="#add-channel-to-mode" class="show-dialog">add channels</a>';
   str += '<a href="#channel-editor" class="show-dialog">create new channel</a>';
 
@@ -267,7 +268,7 @@ module.exports = function(options) {
 
 
   str += '<div class="button-bar">';
-  str += '<button class="save-fixture">Save</button>';
+  str += '<button type="submit" class="save-fixture" disabled>Save</button>';
   str += '</div>';
 
   str += '</form>';
@@ -286,7 +287,7 @@ module.exports = function(options) {
     }
   ];
 
-  str += '<script src="/js/fixture-editor.js"></script>';
+  str += '<script type="text/javascript" src="/js/fixture-editor.js" async></script>';
 
   str += require('../includes/footer')(options);
 
@@ -313,7 +314,7 @@ function getChannelEditorString() {
   str += '<section class="channel-color">';
   str += '<label>';
   str += '<span class="label">Color</span>';
-  str += selectInput(properties.channel.color, 'other channel color', 'channel-type');
+  str += selectInput(properties.channel.color, 'other channel color', 'channel-type', true);
   str += '</label>';
   str += '</section>';
 
@@ -433,9 +434,9 @@ function numberInput(property, hint) {
   return html;
 }
 
-function selectInput(property, hint, allowAdditions=true) {
+function selectInput(property, hint, allowAdditions=true, forceRequired=false) {
   let html = '<select';
-  html += getRequiredAttr(property);
+  html += getRequiredAttr(property, forceRequired);
   html += allowAdditions ? ' data-allow-additions="true"' : '';
   html += '>';
 
@@ -454,7 +455,7 @@ function selectInput(property, hint, allowAdditions=true) {
 }
 
 function booleanInput(property, hint) {
-  let html = '<select' + getRequiredAttr(property) + '>';
+  let html = '<select' + getRequiredAttr(property) + ' class="boolean">';
   html += '<option value="">unknown</option>';
   html += '<option value="true">yes</option>';
   html += '<option value="false">no</option>';
@@ -463,8 +464,8 @@ function booleanInput(property, hint) {
   return html;
 }
 
-function getRequiredAttr(property) {
-  return property.required ? ' required' : '';
+function getRequiredAttr(property, forceRequired=false) {
+  return forceRequired || property.required ? ' required' : '';
 }
 function getPlaceholderAttr(hint) {
   return hint ? ` placeholder="${hint}"` : '';
