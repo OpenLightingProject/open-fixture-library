@@ -126,7 +126,7 @@ module.exports = function(options) {
 
 
   // Physical template
-  str += '<template class="template-physical">';
+  str += '<template id="template-physical">';
 
   str += '<section class="physical-dimensions">';
   str += '<span class="label">Dimensions</span>';
@@ -221,11 +221,11 @@ module.exports = function(options) {
   str += '</label>';
   str += '</section>';
 
-  str += '</template>'; // .template-physical
+  str += '</template>'; // #template-physical
 
 
   // Mode template
-  str += '<template class="template-mode">';
+  str += '<template id="template-mode">';
   str += '<section class="fixture-mode card">';
 
   str += '<a class="close" href="#">';
@@ -263,7 +263,7 @@ module.exports = function(options) {
   str += '<a href="#channel-editor" class="show-dialog">create new channel</a>';
 
   str += '</section>'; // .fixture-mode
-  str += '</template>'; // .template-mode
+  str += '</template>'; // #template-mode
 
 
   str += '<div class="button-bar">';

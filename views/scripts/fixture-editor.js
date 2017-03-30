@@ -1,20 +1,53 @@
 'use strict';
 
+// modules
 var A11yDialog = require('a11y-dialog');
+
+
+// elements
+var editorForm = document.getElementById('fixture-editor');
+var manShortName = document.querySelector('.manufacturer-shortName');
+var addManLink = manShortName.querySelector('.add-manufacturer');
+var newMan = document.querySelector('.new-manufacturer');
+var useExistingManLink = newMan.querySelector('.use-existing-manufacturer');
+var physical = document.querySelector('.physical');
+var modesContainer = document.querySelector('.fixture-modes');
+var addModeLink = document.querySelector('a.fixture-mode');
+
+
+// templates
+var templatePhysical = document.getElementById('template-physical');
+var templateMode = document.getElementById('template-mode');
+
 
 var dialogs = {
   'add-channel-to-mode': null,
   'channel-editor': null,
 };
 
-var editorForm = document.querySelector('#fixture-editor');
 
-// Toggle between existing and new manufacturer
-var manShortName = document.querySelector('.manufacturer-shortName');
-var addManLink = manShortName.querySelector('.add-manufacturer');
+window.addEventListener('load', function() {
+  // initialize dialogs
+  for (var key in dialogs) {
+    var dialogElement = document.getElementById(key)
+    dialogs[key] = new A11yDialog(dialogElement);
+    addComboboxEventListeners(dialogElement);
+  }
 
-var newMan = document.querySelector('.new-manufacturer');
-var useExistingManLink = newMan.querySelector('.use-existing-manufacturer');
+  // enable toggling between existing and new manufacturer
+  addManLink.addEventListener('click', toggleManufacturer);
+  useExistingManLink.addEventListener('click', toggleManufacturer);
+  toggleManufacturer();  // initialize by only showing manShortName
+
+  // clone physical template into fixture
+  physical.appendChild(document.importNode(templatePhysical.content, true));
+
+  addComboboxEventListeners(editorForm);
+
+  addModeLink.addEventListener('click', addMode);
+  addMode();  // every fixture has at least one mode
+}, false);
+
 
 function toggleManufacturer(event) {
   var toShow = manShortName;
@@ -42,38 +75,21 @@ function toggleManufacturer(event) {
     event.preventDefault();
   }
 }
-addManLink.addEventListener('click', toggleManufacturer);
-useExistingManLink.addEventListener('click', toggleManufacturer);
-toggleManufacturer(); // initialize by only showing manShortName
 
-
-// Clone physical template into fixture 
-var templatePhysical = document.querySelector('.template-physical');
-var physical = document.querySelector('.physical');
-physical.appendChild(document.importNode(templatePhysical.content, true));
-
-
-// Allow select additions
-function addSelectAdditionEventListeners(element) {
+function addComboboxEventListeners(element) {
   [].forEach.call(element.querySelectorAll('[data-allow-additions]'), function(select) {
     select.addEventListener('change', function() {
-      updateSelectAddition(this, true);
+      updateCombobox(this, true);
     }, false);
   });
 }
-function updateSelectAddition(select, updateFocus) {
+function updateCombobox(select, updateFocus) {
   var addValue = select.value == '[add-value]';
   select.nextElementSibling.disabled = !addValue;
   if (addValue && updateFocus) {
     select.nextElementSibling.focus();
   }
 }
-addSelectAdditionEventListeners(editorForm);
-
-// Enable mode adding
-var templateMode = document.querySelector('.template-mode');
-var modesContainer = document.querySelector('.fixture-modes');
-var addModeLink = document.querySelector('a.fixture-mode');
 
 function addMode(event) {
   var newMode = document.importNode(templateMode.content, true);
@@ -91,7 +107,7 @@ function addMode(event) {
 
   var physicalOverride = newMode.querySelector('.physical-override');
   physicalOverride.appendChild(document.importNode(templatePhysical.content, true));
-  addSelectAdditionEventListeners(physicalOverride);
+  addComboboxEventListeners(physicalOverride);
 
   var usePhysicalOverride = newMode.querySelector('.use-physical-override');
   usePhysicalOverride.addEventListener('change', function() {
@@ -100,7 +116,7 @@ function addMode(event) {
   togglePhysicalOverride(usePhysicalOverride, physicalOverride);
 
   var openChannelDialogLink = newMode.querySelector('a.show-dialog');
-  openChannelDialogLink.addEventListener('click', openDialog, false);
+  openChannelDialogLink.addEventListener('click', openDialogFromLink, false);
 
   if (event) {
     event.preventDefault();
@@ -117,7 +133,7 @@ function togglePhysicalOverride(usePhysicalOverride, physicalOverride) {
       }
     });
     [].forEach.call(physicalOverride.querySelectorAll('[data-allow-additions]'), function(select) {
-      updateSelectAddition(select, false);
+      updateCombobox(select, false);
     });
   }
   else {
@@ -127,25 +143,13 @@ function togglePhysicalOverride(usePhysicalOverride, physicalOverride) {
     });
   }
 }
-addModeLink.addEventListener('click', addMode);
-addMode(); // all fixtures have at least one mode
 
-
-function openDialog(event) {
+function openDialogFromLink(event) {
   event.preventDefault();
 
   var key = event.target.getAttribute('href').slice(1);
   dialogs[key].show();
 }
-
-// initialize dialogs
-window.addEventListener('load', function() {
-  for (var key in dialogs) {
-    var element = document.getElementById(key)
-    dialogs[key] = new A11yDialog(element);
-    addSelectAdditionEventListeners(element);
-  }
-}, false);
 
 
 // Generate json data
@@ -188,7 +192,6 @@ editorForm.addEventListener('submit', function() {
   console.log(JSON.stringify(manData, null, 2));
   console.log(JSON.stringify(fixData, null, 2));
 });
-
 
 function readMode(modeContainer) {
   var modeData = {};
