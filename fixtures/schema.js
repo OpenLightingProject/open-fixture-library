@@ -67,7 +67,7 @@ const Channel = schema({
   '?invert': Boolean,
   '?constant': Boolean,
   '?crossfade': Boolean,
-  '?precendence': ['LTP', 'HTP'],
+  '?precedence': ['LTP', 'HTP'],
   '?capabilities': Array.of(Capability),
   '*': Function
 });
