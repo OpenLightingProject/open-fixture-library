@@ -3,7 +3,8 @@
 var A11yDialog = require('a11y-dialog');
 
 var dialogs = {
-  'add-channel-to-mode': null
+  'add-channel-to-mode': null,
+  'channel-editor': null,
 };
 
 var editorForm = document.querySelector('#fixture-editor');
@@ -140,7 +141,9 @@ function openDialog(event) {
 // initialize dialogs
 window.addEventListener('load', function() {
   for (var key in dialogs) {
-    dialogs[key] = new A11yDialog(document.getElementById(key));
+    var element = document.getElementById(key)
+    dialogs[key] = new A11yDialog(element);
+    addSelectAdditionEventListeners(element);
   }
 }, false);
 

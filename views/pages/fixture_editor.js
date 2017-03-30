@@ -259,7 +259,8 @@ module.exports = function(options) {
   str += '</section>';
 
   str += '<h3>Channels</h3>';
-  str += '<a href="#add-channel-to-mode" class="show-dialog">Open the dialog window</a>';
+  //str += '<a href="#add-channel-to-mode" class="show-dialog">add channels</a>';
+  str += '<a href="#channel-editor" class="show-dialog">create new channel</a>';
 
   str += '</section>'; // .fixture-mode
   str += '</template>'; // .template-mode
@@ -277,6 +278,11 @@ module.exports = function(options) {
       id: 'add-channel-to-mode',
       title: 'Add channel to mode',
       content: '<p>Test uogitzbdz uzjujgj 7tubhttrh ziuzihkioj fzhjfvtz rtutzgzjoh8 zjhtztzer trbztuhiuzjiuh kjgztbhvfzc tvzhzjozhokubft tzrztfgguzhtj iuihjuztzv trguztuzjiu tzhghz tzhzzuvctz fvgvhzuiuhoj gghcuzgtuhzu iuhjiuztbzvz hjnbzvbch vcvjkh bfvgcvgtvfj bujzngvch vuvvhhuj vvfzftzuj oubvghcf vzt buzzc tfvgizgzjhuoj hgvg uu ijkjbjhzctuvzhb iujhihu hhg hubijoihoigubv hbhjnknjnhbv ghbjhbnvghcg ghn bjnkhnvz bvcvfchgvgh gb vchfvhjknjuvbh cfvfghjj bgcv tzbdz uzjujgj 7tubhttrh ziuzihkioj fzhjfvtz rtutzgzjoh8 zjhtztzer trbztuhiuzjiuh kjgztbhvfzc tvzhzjozhokubft tzrztfgguzhtj iuihjuztzv trguztuzjiu tzhghz tzhzzuvctz fvgvhzuiuhoj gghcuzgtuhzu iuhjiuztbzvz hjnbzvbch vcvjkh bfvgcvgtvfj bujzngvch vuvvhhuj vvfzftzuj oubvghtzbdz uzjujgj 7tubhttrh ziuzihkioj fzhjfvtz rtutzgzjoh8 zjhtztzer trbztuhiuzjiuh kjgztbhvfzc tvzhzjozhokubft tzrztfgguzhtj iuihjuztzv trguztuzjiu tzhghz tzhzzuvctz fvgvhzuiuhoj gghcuzgtuhzu iuhjiuztbzvz hjnbzvbch vcvjkh bfvgcvgtvfj bujzngvch vuvvhhuj vvfzftzuj oubvgh</p>'
+    },
+    {
+      id: 'channel-editor',
+      title: 'Create new channel',
+      content: getChannelEditorString()
     }
   ];
 
@@ -286,6 +292,89 @@ module.exports = function(options) {
 
   return str;
 };
+
+function getChannelEditorString() {
+  let str = '<form action="#">';
+
+  str += '<section class="channel-name">';
+  str += '<label>';
+  str += '<span class="label">Name</span>';
+  str += '<input type="text" required />';
+  str += '</label>';
+  str += '</section>';
+
+  str += '<section class="channel-type">';
+  str += '<label>';
+  str += '<span class="label">Type</span>';
+  str += selectInput(properties.channel.type, 'other channel type', 'channel-type');
+  str += '</label>';
+  str += '</section>';
+
+  str += '<section class="channel-color">';
+  str += '<label>';
+  str += '<span class="label">Color</span>';
+  str += selectInput(properties.channel.color, 'other channel color', 'channel-type');
+  str += '</label>';
+  str += '</section>';
+
+  str += '<h3>DMX values</h3>';
+
+  str += '<section class="channel-16bit">';
+  str += '<label>';
+  str += '<input type="checkbox"> Is 16-bit channel?';
+  str += '</label>';
+  str += '</section>';
+
+  str += '<section class="channel-defaultValue">';
+  str += '<label>';
+  str += '<span class="label">Default</span>';
+  str += numberInput(properties.channel.defaultValue);
+  str += '</label>';
+  str += '</section>';
+
+  str += '<section class="channel-highlightValue">';
+  str += '<label>';
+  str += '<span class="label">Highlight</span>';
+  str += numberInput(properties.channel.highlightValue);
+  str += '</label>';
+  str += '</section>';
+
+  str += '<section class="channel-invert">';
+  str += '<label>';
+  str += '<span class="label">Invert?</span>';
+  str += booleanInput(properties.channel.invert);
+  str += '</label>';
+  str += '</section>';
+
+  str += '<section class="channel-constant">';
+  str += '<label>';
+  str += '<span class="label">Constant?</span>';
+  str += booleanInput(properties.channel.constant);
+  str += '</label>';
+  str += '</section>';
+
+  str += '<section class="channel-crossfade">';
+  str += '<label>';
+  str += '<span class="label">Crossfade?</span>';
+  str += booleanInput(properties.channel.crossfade);
+  str += '</label>';
+  str += '</section>';
+
+  str += '<section class="channel-precedence">';
+  str += '<label>';
+  str += '<span class="label">Precedence</span>';
+  str += selectInput(properties.channel.precedence, null, false);
+  str += '</label>';
+  str += '</section>';
+
+  str += '<div class="button-bar">';
+  str += '<input type="submit" value="Add channel" />';
+  str += '</div>';
+
+  str += '</form>';
+
+  return str;
+}
 
 
 function textInput(property, hint, id) {
@@ -360,6 +449,16 @@ function selectInput(property, hint, allowAdditions=true) {
   html += '</select>';
 
   html += allowAdditions ? ' <input type="text" class="addition"' + getPlaceholderAttr(hint) + ' required disabled />' : '';
+
+  return html;
+}
+
+function booleanInput(property, hint) {
+  let html = '<select' + getRequiredAttr(property) + '>';
+  html += '<option value="">unknown</option>';
+  html += '<option value="true">yes</option>';
+  html += '<option value="false">no</option>';
+  html += '</select>';
 
   return html;
 }
