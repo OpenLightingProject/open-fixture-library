@@ -37,7 +37,7 @@ module.exports = {
       "invert": false,
       "constant": false,
       "crossfade": false,
-      "precendence": "LTP",
+      "precedence": "LTP",
       "capabilities": [
         {
           "range": [0, 255], // required

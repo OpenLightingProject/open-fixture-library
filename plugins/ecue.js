@@ -175,7 +175,7 @@ function exportHandleModes(fixture, defaults, physical) {
 
       const hasCapabilities = ('capabilities' in channel);
 
-      str += `                    <Channel${chType} Name="${chData.name}" DefaultValue="${chData.defaultValue}" Highlight="${chData.highlightValue}" Deflection="0" DmxByte0="${dmxByte0}" DmxByte1="${dmxByte1}" Constant="${chData.constant ? 1 : 0}" Crossfade="${chData.crossfade ? 1 : 0}" Invert="${chData.invert ? 1 : 0}" Precedence="${chData.precendence}" ClassicPos="${viewPosCount++}"` + (hasCapabilities ? '' : ' /') + '>\n';
+      str += `                    <Channel${chType} Name="${chData.name}" DefaultValue="${chData.defaultValue}" Highlight="${chData.highlightValue}" Deflection="0" DmxByte0="${dmxByte0}" DmxByte1="${dmxByte1}" Constant="${chData.constant ? 1 : 0}" Crossfade="${chData.crossfade ? 1 : 0}" Invert="${chData.invert ? 1 : 0}" Precedence="${chData.precedence}" ClassicPos="${viewPosCount++}"` + (hasCapabilities ? '' : ' /') + '>\n';
 
       if (hasCapabilities) {
         for (const cap of channel.capabilities) {
@@ -413,7 +413,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
               ch.crossfade = true;
             }
             if (channel.$.Precedence == 'HTP') {
-              ch.precendence = 'HTP';
+              ch.precedence = 'HTP';
             }
 
             if ('Range' in channel) {
