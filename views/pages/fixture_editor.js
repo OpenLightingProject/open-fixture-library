@@ -261,7 +261,7 @@ module.exports = function(options) {
   str += '<h3>Channels</h3>';
   str += '<ul class="mode-channels"></ul>';
   //str += '<a href="#add-channel-to-mode" class="show-dialog">add channels</a>';
-  str += '<a href="#channel-editor" class="show-dialog">create new channel</a>';
+  str += '<a href="#channel-dialog" class="show-dialog">create new channel</a>';
 
   str += '</section>'; // .fixture-mode
   str += '</template>'; // #template-mode
@@ -281,7 +281,7 @@ module.exports = function(options) {
       content: '<p>Test uogitzbdz uzjujgj 7tubhttrh ziuzihkioj fzhjfvtz rtutzgzjoh8 zjhtztzer trbztuhiuzjiuh kjgztbhvfzc tvzhzjozhokubft tzrztfgguzhtj iuihjuztzv trguztuzjiu tzhghz tzhzzuvctz fvgvhzuiuhoj gghcuzgtuhzu iuhjiuztbzvz hjnbzvbch vcvjkh bfvgcvgtvfj bujzngvch vuvvhhuj vvfzftzuj oubvghcf vzt buzzc tfvgizgzjhuoj hgvg uu ijkjbjhzctuvzhb iujhihu hhg hubijoihoigubv hbhjnknjnhbv ghbjhbnvghcg ghn bjnkhnvz bvcvfchgvgh gb vchfvhjknjuvbh cfvfghjj bgcv tzbdz uzjujgj 7tubhttrh ziuzihkioj fzhjfvtz rtutzgzjoh8 zjhtztzer trbztuhiuzjiuh kjgztbhvfzc tvzhzjozhokubft tzrztfgguzhtj iuihjuztzv trguztuzjiu tzhghz tzhzzuvctz fvgvhzuiuhoj gghcuzgtuhzu iuhjiuztbzvz hjnbzvbch vcvjkh bfvgcvgtvfj bujzngvch vuvvhhuj vvfzftzuj oubvghtzbdz uzjujgj 7tubhttrh ziuzihkioj fzhjfvtz rtutzgzjoh8 zjhtztzer trbztuhiuzjiuh kjgztbhvfzc tvzhzjozhokubft tzrztfgguzhtj iuihjuztzv trguztuzjiu tzhghz tzhzzuvctz fvgvhzuiuhoj gghcuzgtuhzu iuhjiuztbzvz hjnbzvbch vcvjkh bfvgcvgtvfj bujzngvch vuvvhhuj vvfzftzuj oubvgh</p>'
     },
     {
-      id: 'channel-editor',
+      id: 'channel-dialog',
       title: 'Create new channel',
       content: getChannelEditorString()
     }

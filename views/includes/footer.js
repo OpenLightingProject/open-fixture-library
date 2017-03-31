@@ -1,5 +1,5 @@
 module.exports = function(options) {
-  let str = '</div>'; // #content
+  let str = '</div>';  // #content
 
   for (dialog of options.dialogs || []) {
     str += `<div class="dialog-container" id="${dialog.id}" aria-hidden="true">`;
@@ -8,7 +8,7 @@ module.exports = function(options) {
     str += '    <div role="document">';
     str += `      <h2 id="${dialog.id}-title" tabindex="0">${dialog.title}</h2>`;
     str += dialog.content;
-    str += '      <a href="#_" data-a11y-dialog-hide class="close">'
+    str += '      <a href="#_" data-a11y-dialog-hide class="close">';
     str += 'Close';
     str += require('./svg')({svgBasename: 'close'});
     str += '</a>';

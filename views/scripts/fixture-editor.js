@@ -13,7 +13,7 @@ var useExistingManLink = newMan.querySelector('.use-existing-manufacturer');
 var physical = document.querySelector('.physical');
 var modesContainer = document.querySelector('.fixture-modes');
 var addModeLink = document.querySelector('a.fixture-mode');
-var channelEditor;
+var channelForm;
 var channelTypeSelect;
 
 
@@ -24,7 +24,7 @@ var templateMode = document.getElementById('template-mode');
 
 var dialogs = {
   'add-channel-to-mode': null,
-  'channel-editor': null,
+  'channel-dialog': null,
 };
 var dialogOpener = null;
 var dialogClosingHandled = false;
@@ -36,17 +36,20 @@ window.addEventListener('load', function() {
     var dialogElement = document.getElementById(key)
     dialogs[key] = new A11yDialog(dialogElement);
     addComboboxEventListeners(dialogElement);
+    dialogElement.querySelector('.close').addEventListener('click', function(event) {
+      event.preventDefault();
+    });
   }
-  dialogs['channel-editor'].on('hide', function() {
+  dialogs['channel-dialog'].on('hide', function() {
     if (!dialogClosingHandled) {
       var chData = getChannelFromEditor();
       if (JSON.stringify(chData) != '{}' && !window.confirm('Do you want to lose the entered channel data?')) {
-        dialogs['channel-editor'].show();
+        dialogs['channel-dialog'].show();
         return false;
       }
     }
 
-    channelEditor.reset();
+    channelForm.reset();
     updateChannelColorVisibility();
   });
 
@@ -64,11 +67,11 @@ window.addEventListener('load', function() {
   addMode();  // every fixture has at least one mode
 
   // add channel editor submit
-  channelEditor = document.querySelector('#channel-editor form');
-  channelEditor.addEventListener('submit', addChannel);
+  channelForm = document.querySelector('#channel-dialog form');
+  channelForm.addEventListener('submit', addChannel);
 
   // enable channel color only if the channel type is SingleColor
-  channelTypeSelect = document.querySelector('#channel-editor .channel-type select');
+  channelTypeSelect = document.querySelector('#channel-dialog .channel-type select');
   channelTypeSelect.addEventListener('change', updateChannelColorVisibility);
   updateChannelColorVisibility();
 
@@ -120,7 +123,7 @@ function updateCombobox(select, updateFocus) {
 }
 
 function updateChannelColorVisibility(event) {
-  var channelColor = document.querySelector('#channel-editor .channel-color');
+  var channelColor = channelForm.querySelector('.channel-color');
   var colorEnabled = channelTypeSelect.value == 'SingleColor';
   channelColor.hidden = !colorEnabled;
   channelColor.querySelector('select').disabled = !colorEnabled;
@@ -217,19 +220,19 @@ function addChannel(event) {
 function getChannelFromEditor() {
   var chData = {};
 
-  readSingle(channelEditor, '.channel-name', chData, 'name');
-  readSingleSelect(channelEditor, '.channel-type', chData, 'type');
+  readSingle(channelForm, '.channel-name', chData, 'name');
+  readSingleSelect(channelForm, '.channel-type', chData, 'type');
 
   if (chData.type == 'SingleColor') {
-    readSingleSelect(channelEditor, '.channel-color', chData, 'color');
+    readSingleSelect(channelForm, '.channel-color', chData, 'color');
   }
 
-  readSingle(channelEditor, '.channel-defaultValue', chData, 'defaultValue');
-  readSingle(channelEditor, '.channel-highlightValue', chData, 'highlightValue');
-  readSingleSelect(channelEditor, '.channel-invert', chData, 'invert');
-  readSingleSelect(channelEditor, '.channel-constant', chData, 'constant');
-  readSingleSelect(channelEditor, '.channel-crossfade', chData, 'crossfade');
-  readSingleSelect(channelEditor, '.channel-precedence', chData, 'precedence');
+  readSingle(channelForm, '.channel-defaultValue', chData, 'defaultValue');
+  readSingle(channelForm, '.channel-highlightValue', chData, 'highlightValue');
+  readSingleSelect(channelForm, '.channel-invert', chData, 'invert');
+  readSingleSelect(channelForm, '.channel-constant', chData, 'constant');
+  readSingleSelect(channelForm, '.channel-crossfade', chData, 'crossfade');
+  readSingleSelect(channelForm, '.channel-precedence', chData, 'precedence');
 
   return chData;
 }
@@ -403,7 +406,7 @@ function getKeyFromName(name, uniqueInList) {
     return name;
   }
 
-  var nameRegexp = new RegExp('^' + name + '\s*\d+$');
+  var nameRegexp = new RegExp('^' + name + '(?:\s+\d+)?$');
   var occurences = uniqueInList.reduce(function(acc, value) {
     if (nameRegexp.test(value)) {
       return acc + 1;

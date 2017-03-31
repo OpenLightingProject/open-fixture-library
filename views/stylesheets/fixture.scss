@@ -26,7 +26,7 @@
     color: $primary-text-light;
     cursor: pointer;
     box-shadow: 0 2px 2px rgba(#000, 0.2);
-    transition: bprder-radius 0.2s, background-color 0.2s;
+    transition: border-radius 0.2s, background-color 0.2s;
 
     /* down arrow */
     &::before {
