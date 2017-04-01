@@ -300,21 +300,21 @@ function getChannelEditorString() {
   str += '<section class="channel-name">';
   str += '<label>';
   str += '<span class="label">Name</span>';
-  str += '<input type="text" required />';
+  str += '<input type="text" required data-key="name" />';
   str += '</label>';
   str += '</section>';
 
   str += '<section class="channel-type">';
   str += '<label>';
   str += '<span class="label">Type</span>';
-  str += selectInput('', properties.channel.type, 'other channel type', 'channel-type');
+  str += selectInput('type', properties.channel.type, 'other channel type', 'channel-type');
   str += '</label>';
   str += '</section>';
 
   str += '<section class="channel-color">';
   str += '<label>';
   str += '<span class="label">Color</span>';
-  str += selectInput('', properties.channel.color, 'other channel color', 'channel-type', true);
+  str += selectInput('color', properties.channel.color, 'other channel color', 'channel-type', true);
   str += '</label>';
   str += '</section>';
 
@@ -322,49 +322,49 @@ function getChannelEditorString() {
 
   str += '<section class="channel-16bit">';
   str += '<label>';
-  str += '<input type="checkbox"> Is 16-bit channel?';
+  str += '<input type="checkbox" data-key="16bit"> Is 16-bit channel?';
   str += '</label>';
   str += '</section>';
 
   str += '<section class="channel-defaultValue">';
   str += '<label>';
   str += '<span class="label">Default</span>';
-  str += numberInput('', properties.channel.defaultValue);
+  str += numberInput('defaultValue', properties.channel.defaultValue);
   str += '</label>';
   str += '</section>';
 
   str += '<section class="channel-highlightValue">';
   str += '<label>';
   str += '<span class="label">Highlight</span>';
-  str += numberInput('', properties.channel.highlightValue);
+  str += numberInput('highlightValue', properties.channel.highlightValue);
   str += '</label>';
   str += '</section>';
 
   str += '<section class="channel-invert">';
   str += '<label>';
   str += '<span class="label">Invert?</span>';
-  str += booleanInput('', properties.channel.invert);
+  str += booleanInput('invert', properties.channel.invert);
   str += '</label>';
   str += '</section>';
 
   str += '<section class="channel-constant">';
   str += '<label>';
   str += '<span class="label">Constant?</span>';
-  str += booleanInput('', properties.channel.constant);
+  str += booleanInput('constant', properties.channel.constant);
   str += '</label>';
   str += '</section>';
 
   str += '<section class="channel-crossfade">';
   str += '<label>';
   str += '<span class="label">Crossfade?</span>';
-  str += booleanInput('', properties.channel.crossfade);
+  str += booleanInput('crossfade', properties.channel.crossfade);
   str += '</label>';
   str += '</section>';
 
   str += '<section class="channel-precedence">';
   str += '<label>';
   str += '<span class="label">Precedence</span>';
-  str += selectInput('', properties.channel.precedence, null, false);
+  str += selectInput('precedence', properties.channel.precedence, null, false);
   str += '</label>';
   str += '</section>';
 

@@ -38,8 +38,10 @@ var out = {
   errors: {}
 };
 var currentFixture = {
+  availableChannels: {},
   modes: []
 };
+var currentChannel = {};
 
 
 window.addEventListener('load', function() {
@@ -54,8 +56,7 @@ window.addEventListener('load', function() {
   }
   dialogs['channel-dialog'].on('hide', function() {
     if (!dialogClosingHandled) {
-      var chData = getChannelFromEditor();
-      if (JSON.stringify(chData) != '{}' && !window.confirm('Do you want to lose the entered channel data?')) {
+      if (JSON.stringify(currentChannel) != '{}' && !window.confirm('Do you want to lose the entered channel data?')) {
         dialogs['channel-dialog'].show();
         return false;
       }
@@ -81,6 +82,7 @@ window.addEventListener('load', function() {
 
   // add channel editor submit
   channelForm = document.querySelector('#channel-dialog form');
+  bindValuesToObject(channelForm, currentChannel);
   channelForm.addEventListener('submit', addChannel);
 
   // enable channel color only if the channel type is SingleColor
@@ -198,7 +200,9 @@ function addMode(event) {
   var openChannelDialogLink = newMode.querySelector('a.show-dialog');
   openChannelDialogLink.addEventListener('click', openDialogFromLink);
 
-  var modeCount = currentFixture.modes.push({});
+  var modeCount = currentFixture.modes.push({
+    channels: []
+  });
   bindValuesToObject(newMode, currentFixture.modes[modeCount - 1]);
 
   if (event) {
@@ -246,40 +250,21 @@ function addChannel(event) {
 
   event.preventDefault();
 
-  var chData = getChannelFromEditor();
-  var channelKey = chData.name;
-  if (true) {  // TODO: if (!(channelKey in availableChannels))
-    delete chData.name;
-  }
-  else {
-    channelKey = getKeyFromName(channelKey, null); // TODO availableChannels
-  }
+  var channelKey = getKeyFromName(currentChannel.name, Object.keys(currentFixture.availableChannels));
 
   var newChannelItem = document.createElement('li');
-  newChannelItem.textContent = ('name' in chData) ? chData.name : channelKey;
+  newChannelItem.textContent = ('name' in currentChannel) ? currentChannel.name : channelKey;
   dialogOpener.previousElementSibling.appendChild(newChannelItem);
+
+  var currentMode = dialogOpener.parentNode;
+  var allModes = Array.prototype.slice.call(currentMode.parentNode.children);
+  var modeNumber = allModes.indexOf(currentMode);
+
+  currentFixture.modes[modeNumber].channels.push(channelKey);
+  currentFixture.availableChannels[channelKey] = JSON.parse(JSON.stringify(currentChannel));
 
   dialogClosingHandled = true;
   closeDialog();
-}
-function getChannelFromEditor() {
-  var chData = {};
-
-  readSingle(channelForm, '.channel-name', chData, 'name');
-  readSingleSelect(channelForm, '.channel-type', chData, 'type');
-
-  if (chData.type == 'SingleColor') {
-    readSingleSelect(channelForm, '.channel-color', chData, 'color');
-  }
-
-  readSingle(channelForm, '.channel-defaultValue', chData, 'defaultValue');
-  readSingle(channelForm, '.channel-highlightValue', chData, 'highlightValue');
-  readSingleSelect(channelForm, '.channel-invert', chData, 'invert');
-  readSingleSelect(channelForm, '.channel-constant', chData, 'constant');
-  readSingleSelect(channelForm, '.channel-crossfade', chData, 'crossfade');
-  readSingleSelect(channelForm, '.channel-precedence', chData, 'precedence');
-
-  return chData;
 }
 
 
@@ -292,157 +277,7 @@ editorForm.addEventListener('submit', function(event) {
   var man;
   var manData = {};
   var fixData = {};
-
-  if (!manShortName.hidden) {
-    readSingleSelect(editorForm, '.manufacturer-shortName', manData, 'shortName');
-  }
-  else {
-    readSingle(editorForm, '.new-manufacturer-shortName', manData, 'shortName');
-    readSingle(editorForm, '.new-manufacturer-name', manData, 'name');
-    readSingle(editorForm, '.new-manufacturer-website', manData, 'website');
-    readSingle(editorForm, '.new-manufacturer-comment', manData, 'comment');
-  }
-  man = manData.shortName;
-  delete manData.shortName;
-
-  readSingle(editorForm, '.fixture-name', fixData, 'name');
-  readSingle(editorForm, '.fixture-shortName', fixData, 'shortName');
-  readMultiSelect(editorForm, '.categories', fixData, 'categories');
-  readSingle(editorForm, '.comment', fixData, 'comment');
-  readSingle(editorForm, '.manualURL', fixData, 'manualURL');
-
-  readPhysical(editorForm, '.physical.card', fixData, 'physical')
-
-  var modes = editorForm.querySelectorAll('section.fixture-mode');
-  fixData.modes = [];
-  modes.forEach(function(mode) {
-    fixData.modes.push(readMode(mode));
-  })
-
-  console.log('\n### Generated data:');
-  console.log(man);
-  console.log(JSON.stringify(manData, null, 2));
-  console.log(JSON.stringify(fixData, null, 2));
 });
-
-function readMode(modeContainer) {
-  var modeData = {};
-
-  readSingle(modeContainer, '.mode-name', modeData, 'name');
-  readSingle(modeContainer, '.mode-shortName', modeData, 'shortName');
-
-  var usePhysicalOverride = modeContainer.querySelector('.enable-physical-override');
-  if (usePhysicalOverride.checked) {
-    readPhysical(modeContainer, '.physical-override', modeData, 'physical');
-  }
-
-  return modeData;
-}
-
-function readPhysical(container, selector, data, property) {
-  readObject(function(physical) {
-    var inputsContainer = container.querySelector(selector);
-
-    readArray(inputsContainer,  '.physical-dimensions',   physical, 'dimensions');
-    readSingle(inputsContainer, '.physical-weight',       physical, 'weight');
-    readSingle(inputsContainer, '.physical-power',        physical, 'power');
-    readSingle(inputsContainer, '.physical-DMXconnector', physical, 'DMXconnector');
-
-    readObject(function(bulb) {
-      readSingle(inputsContainer, '.physical-bulb-type',             bulb, 'type');
-      readSingle(inputsContainer, '.physical-bulb-colorTemperature', bulb, 'colorTemperature');
-      readSingle(inputsContainer, '.physical-bulb-lumens',           bulb, 'lumens');
-    }, physical, 'bulb');
-
-    readObject(function(lens) {
-      readSingle(inputsContainer, '.physical-lens-name',    lens, 'name');
-      readArray(inputsContainer,  '.physical-lens-degrees', lens, 'degreesMinMax');
-    }, physical, 'lens');
-
-    readObject(function(focus) {
-      readSingle(inputsContainer, '.physical-focus-type',    focus, 'type');
-      readSingle(inputsContainer, '.physical-focus-panMax',  focus, 'panMax');
-      readSingle(inputsContainer, '.physical-focus-tiltMax', focus, 'tiltMax');
-    }, physical, 'focus');
-  }, data, property);
-}
-
-function readObject(parserFunction, data, property) {
-  var obj = {};
-
-  parserFunction(obj);
-
-  if (JSON.stringify(obj) !== '{}') {
-    data[property] = obj;
-  }
-}
-
-function readSingle(container, selector, data, property) {
-  var input = container.querySelector(selector + ' input, ' + selector + ' textarea');
-  if (input.type === 'number') {
-    if (!isNaN(input.valueAsNumber)) {
-      data[property] = input.valueAsNumber;
-    }
-  }
-  else {
-    if (input.value != '') {
-      data[property] = input.value;
-    }
-  }
-}
-
-function readArray(container, selector, data, property) {
-  var inputs = container.querySelectorAll(selector + ' input, ' + selector + ' textarea');
-
-  var array = [];
-  var filled = false;
-  [].forEach.call(inputs, function(input) {
-    if (input.type === 'number') {
-      if (!isNaN(input.valueAsNumber)) {
-        filled = true;
-        array.push(input.valueAsNumber);
-      }
-      else {
-        array.push(0);
-      }
-    }
-    else {
-      if (input.value != '') {
-        filled = true;
-        array.push(input.value);
-      }
-      else {
-        array.push('');
-      }
-    }
-  });
-
-  if (filled) {
-    data[property] = array;
-  }
-}
-
-function readMultiSelect(container, selector, data, property) {
-  var select = container.querySelector(selector + ' select');
-  if (select.selectedOptions.length > 0) {
-    data[property] = [];
-    for (var i = 0; i < select.selectedOptions.length; i++) {
-      data[property].push(select.selectedOptions[i].value);
-    }
-  }
-}
-
-function readSingleSelect(container, selector, data, property) {
-  var select = container.querySelector(selector + ' select');
-  if (select.value != '') {
-    if (select.className == 'boolean') {
-      data[property] = select.value == 'true';
-    }
-    else {
-      data[property] = select.value == '[add-value]' ? select.nextElementSibling.value : select.value;
-    }
-  }
-}
 
 function getKeyFromName(name, uniqueInList) {
   name = name.toLowerCase().replace(/[^a-z0-9\-]+/g, '-');
@@ -458,6 +293,10 @@ function getKeyFromName(name, uniqueInList) {
     }
     return acc;
   }, 0);
+
+  if (occurences == 0) {
+    return name;
+  }
 
   return name + ' ' + (occurences + 1);
 }
