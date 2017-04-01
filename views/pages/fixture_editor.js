@@ -20,7 +20,7 @@ module.exports = function(options) {
   str += '<section class="manufacturer-shortName">';
   str += '<label>';
   str += '<span class="label">Choose from list</span>';
-  str += `<select required>`;
+  str += `<select required data-key="manufacturer-shortName">`;
   str += `<option value="">Please select a manufacturer</option>`;
   for (const man in options.manufacturers) {
     str += `<option value="${man}">${options.manufacturers[man].name}</option>`;
@@ -34,28 +34,28 @@ module.exports = function(options) {
   str += '<section class="new-manufacturer-name">';
   str += '<label>';
   str += '<span class="label">Name</span>';
-  str += textInput(properties.manufacturer.name);
+  str += textInput('new-manufacturer-name', properties.manufacturer.name);
   str += '</label>';
   str += '</section>';
 
   str += '<section class="new-manufacturer-shortName">';
   str += '<label>';
   str += '<span class="label">Unique short name</span>';
-  str += '<input type="text" required pattern="[a-z0-9\-]+" />';
+  str += '<input type="text" required pattern="[a-z0-9\-]+" data-key="new-manufacturer-shortName" />';
   str += '</label>';
   str += '</section>';
 
   str += '<section class="new-manufacturer-website">';
   str += '<label>';
   str += '<span class="label">Website</span>';
-  str += urlInput(properties.manufacturer.website);
+  str += urlInput('new-manufacturer-website', properties.manufacturer.website);
   str += '</label>';
   str += '</section>';
 
   str += '<section class="new-manufacturer-comment">';
   str += '<label>';
   str += '<span class="label">Comment</span>';
-  str += textInput(properties.manufacturer.comment);
+  str += textInput('new-manufacturer-comment', properties.manufacturer.comment);
   str += '</label>';
   str += '</section>';
   str += '<div class="button-bar">or <a href="#" class="use-existing-manufacturer">choose an existing manufacturer</a></div>';
@@ -71,21 +71,21 @@ module.exports = function(options) {
   str += '<section class="fixture-name">';
   str += '<label>';
   str += '<span class="label">Name</span>';
-  str += textInput(properties.fixture.name);
+  str += textInput('name', properties.fixture.name);
   str += '</label>';
   str += '</section>';
 
   str += '<section class="fixture-shortName">';
   str += '<label>';
   str += '<span class="label">Unique short name</span>';
-  str += textInput(properties.fixture.shortName, 'defaults to name');
+  str += textInput('shortName', properties.fixture.shortName, 'defaults to name');
   str += '</label>';
   str += '</section>';
 
   str += '<section class="categories">';
   str += '<label>';
   str += '<span class="label">Categories</span>';
-  str += `<select multiple required size="${Object.keys(options.register.categories).length}">`;
+  str += `<select multiple required size="${Object.keys(options.register.categories).length}" data-key="categories">`;
   for (const cat of properties.category.enum) {
     str += `<option>${cat}</option>`;
   }
@@ -95,14 +95,14 @@ module.exports = function(options) {
   str += '<section class="comment">';
   str += '<label>';
   str += '<span class="label">Comment</span>';
-  str += textareaInput(properties.fixture.comment);
+  str += textareaInput('comment', properties.fixture.comment);
   str += '</label>';
   str += '</section>';
 
   str += '<section class="manualURL">';
   str += '<label>';
   str += '<span class="label">Manual URL</span>';
-  str += urlInput(properties.fixture.manualURL);
+  str += urlInput('manualURL', properties.fixture.manualURL);
   str += '</label>';
   str += '</section>';
 
@@ -131,30 +131,30 @@ module.exports = function(options) {
   str += '<section class="physical-dimensions">';
   str += '<span class="label">Dimensions</span>';
   str += '<div class="value">';
-  str += numberInput(properties.physical.dimensions.items, 'width') + ' &times; ';
-  str += numberInput(properties.physical.dimensions.items, 'height') + ' &times; ';
-  str += numberInput(properties.physical.dimensions.items, 'depth') + ' mm';
+  str += numberInput('physical-dimensions-width', properties.physical.dimensions.items, 'width') + ' &times; ';
+  str += numberInput('physical-dimensions-height', properties.physical.dimensions.items, 'height') + ' &times; ';
+  str += numberInput('physical-dimensions-depth', properties.physical.dimensions.items, 'depth') + ' mm';
   str += '</div>';
   str += '</section>';
 
   str += '<section class="physical-weight">';
   str += '<label>';
   str += '<span class="label">Weight</span>';
-  str += numberInput(properties.physical.weight) + ' kg';
+  str += numberInput('physical-weight', properties.physical.weight) + ' kg';
   str += '</label>';
   str += '</section>';
 
   str += '<section class="physical-power">';
   str += '<label>';
   str += '<span class="label">Power</span>';
-  str += numberInput(properties.physical.power) + ' W';
+  str += numberInput('physical-power', properties.physical.power) + ' W';
   str += '</label>';
   str += '</section>';
 
   str += '<section class="physical-DMXconnector">';
   str += '<label>';
   str += '<span class="label">DMX connector</span>';
-  str += selectInput(properties.physical.DMXconnector, 'other DMX connector', 'physical-DMXconnector');
+  str += selectInput('physical-DMXconnector', properties.physical.DMXconnector, 'other DMX connector', 'physical-DMXconnector');
   str += '</label>';
   str += '</section>';
 
@@ -163,21 +163,21 @@ module.exports = function(options) {
   str += '<section class="physical-bulb-type">';
   str += '<label>';
   str += '<span class="label">Bulb type</span>';
-  str += textInput(properties.bulb.type, 'e.g. LED', 'physical-bulb-type');
+  str += textInput('physical-bulb-type', properties.bulb.type, 'e.g. LED', 'physical-bulb-type');
   str += '</label>';
   str += '</section>';
 
   str += '<section class="physical-bulb-colorTemperature">';
   str += '<label>';
   str += '<span class="label">Color temperature</span>';
-  str += numberInput(properties.bulb.colorTemperature) + ' K';
+  str += numberInput('physical-bulb-colorTemperature', properties.bulb.colorTemperature) + ' K';
   str += '</label>';
   str += '</section>';
 
   str += '<section class="physical-bulb-lumens">';
   str += '<label>';
   str += '<span class="label">Lumens</span>';
-  str += numberInput(properties.bulb.lumens) + ' lm';
+  str += numberInput('physical-bulb-lumens', properties.bulb.lumens) + ' lm';
   str += '</label>';
   str += '</section>';
 
@@ -186,15 +186,15 @@ module.exports = function(options) {
   str += '<section class="physical-lens-name">';
   str += '<label>';
   str += '<span class="label">Lens name</span>';
-  str += textInput(properties.lens.name);
+  str += textInput('physical-lens-name', properties.lens.name);
   str += '</label>';
   str += '</section>';
 
   str += '<section class="physical-lens-degrees">';
   str += '<span class="label">Light cone</span>';
   str += '<div class="value">';
-  str += numberInput(properties.lens.degreesMinMax.items, 'min') + ' .. ';
-  str += numberInput(properties.lens.degreesMinMax.items, 'max') + ' °';
+  str += numberInput('physical-lens-degrees-min', properties.lens.degreesMinMax.items, 'min') + ' .. ';
+  str += numberInput('physical-lens-degrees-max', properties.lens.degreesMinMax.items, 'max') + ' °';
   str += '</div>';
   str += '</section>';
 
@@ -203,21 +203,21 @@ module.exports = function(options) {
   str += '<section class="physical-focus-type">';
   str += '<label>';
   str += '<span class="label">Focus type</span>';
-  str += selectInput(properties.focus.type, 'other focus type', 'physical-focus-type');
+  str += selectInput('physical-focus-type', properties.focus.type, 'other focus type', 'physical-focus-type');
   str += '</label>';
   str += '</section>';
 
   str += '<section class="physical-focus-panMax">';
   str += '<label>';
   str += '<span class="label">Pan maximum</span>';
-  str += numberInput(properties.focus.panMax, '', 'physical-focus-panMax') + ' °';
+  str += numberInput('physical-focus-panMax', properties.focus.panMax, '', 'physical-focus-panMax') + ' °';
   str += '</label>';
   str += '</section>';
 
   str += '<section class="physical-focus-tiltMax">';
   str += '<label>';
   str += '<span class="label">Tilt maximum</span>';
-  str += numberInput(properties.focus.tiltMax, '', 'physical-focus-tiltMax') + ' °';
+  str += numberInput('physical-focus-tiltMax', properties.focus.tiltMax, '', 'physical-focus-tiltMax') + ' °';
   str += '</label>';
   str += '</section>';
 
@@ -238,21 +238,21 @@ module.exports = function(options) {
   str += '<section class="mode-name">';
   str += '<label>';
   str += '<span class="label">Name</span>';
-  str += textInput(properties.mode.name);
+  str += textInput('name', properties.mode.name);
   str += '</label>';
   str += '</section>';
 
   str += '<section class="mode-shortName">';
   str += '<label>';
   str += '<span class="label">Unique short name</span>';
-  str += textInput(properties.mode.shortName, 'defaults to name');
+  str += textInput('shortName', properties.mode.shortName, 'defaults to name');
   str += '</label>';
   str += '</section>';
 
   str += '<h3>Physical override</h3>';
 
   str += '<label>';
-  str += '<input type="checkbox" class="use-physical-override" />';
+  str += '<input type="checkbox" class="enable-physical-override" data-key="enable-physical-override" />';
   str += 'Enable physical override';
   str += '</label>';
   str += '<section class="physical-override">';
@@ -307,14 +307,14 @@ function getChannelEditorString() {
   str += '<section class="channel-type">';
   str += '<label>';
   str += '<span class="label">Type</span>';
-  str += selectInput(properties.channel.type, 'other channel type', 'channel-type');
+  str += selectInput('', properties.channel.type, 'other channel type', 'channel-type');
   str += '</label>';
   str += '</section>';
 
   str += '<section class="channel-color">';
   str += '<label>';
   str += '<span class="label">Color</span>';
-  str += selectInput(properties.channel.color, 'other channel color', 'channel-type', true);
+  str += selectInput('', properties.channel.color, 'other channel color', 'channel-type', true);
   str += '</label>';
   str += '</section>';
 
@@ -329,42 +329,42 @@ function getChannelEditorString() {
   str += '<section class="channel-defaultValue">';
   str += '<label>';
   str += '<span class="label">Default</span>';
-  str += numberInput(properties.channel.defaultValue);
+  str += numberInput('', properties.channel.defaultValue);
   str += '</label>';
   str += '</section>';
 
   str += '<section class="channel-highlightValue">';
   str += '<label>';
   str += '<span class="label">Highlight</span>';
-  str += numberInput(properties.channel.highlightValue);
+  str += numberInput('', properties.channel.highlightValue);
   str += '</label>';
   str += '</section>';
 
   str += '<section class="channel-invert">';
   str += '<label>';
   str += '<span class="label">Invert?</span>';
-  str += booleanInput(properties.channel.invert);
+  str += booleanInput('', properties.channel.invert);
   str += '</label>';
   str += '</section>';
 
   str += '<section class="channel-constant">';
   str += '<label>';
   str += '<span class="label">Constant?</span>';
-  str += booleanInput(properties.channel.constant);
+  str += booleanInput('', properties.channel.constant);
   str += '</label>';
   str += '</section>';
 
   str += '<section class="channel-crossfade">';
   str += '<label>';
   str += '<span class="label">Crossfade?</span>';
-  str += booleanInput(properties.channel.crossfade);
+  str += booleanInput('', properties.channel.crossfade);
   str += '</label>';
   str += '</section>';
 
   str += '<section class="channel-precedence">';
   str += '<label>';
   str += '<span class="label">Precedence</span>';
-  str += selectInput(properties.channel.precedence, null, false);
+  str += selectInput('', properties.channel.precedence, null, false);
   str += '</label>';
   str += '</section>';
 
@@ -378,7 +378,7 @@ function getChannelEditorString() {
 }
 
 
-function textInput(property, hint, id) {
+function textInput(key, property, hint, id) {
   let html = '<input type="text"';
   html += getRequiredAttr(property);
 
@@ -387,7 +387,7 @@ function textInput(property, hint, id) {
   }
 
   html += getPlaceholderAttr(hint);
-  html += '/>';
+  html += ` data-key="${key}" />`;
 
   if (property.enum) {
     html += `<datalist id="${id}-list">`;
@@ -400,23 +400,23 @@ function textInput(property, hint, id) {
   return html;
 }
 
-function urlInput(property, hint) {
+function urlInput(key, property, hint) {
   let html = '<input type="url"';
   html += getRequiredAttr(property);
   html += getPlaceholderAttr(hint);
-  html += '/>';
+  html += ` data-key="${key}" />`;
   return html;
 }
 
-function textareaInput(property, hint) {
+function textareaInput(key, property, hint) {
   let html = '<textarea';
   html += getRequiredAttr(property);
   html += getPlaceholderAttr(hint);
-  html += '></textarea>';
+  html += ` data-key="${key}"></textarea>`;
   return html;
 }
 
-function numberInput(property, hint) {
+function numberInput(key, property, hint) {
   let html = '<input type="number" step="any"';
   html += getRequiredAttr(property);
 
@@ -429,16 +429,16 @@ function numberInput(property, hint) {
   }
 
   html += getPlaceholderAttr(hint);
-  html += '/>';
+  html += ` data-key="${key}" />`;
 
   return html;
 }
 
-function selectInput(property, hint, allowAdditions=true, forceRequired=false) {
+function selectInput(key, property, hint, allowAdditions=true, forceRequired=false) {
   let html = '<select';
   html += getRequiredAttr(property, forceRequired);
   html += allowAdditions ? ' data-allow-additions="true"' : '';
-  html += '>';
+  html += ` data-key="${key}">`;
 
   html += '<option value="">unknown</option>';
   for (const item of property.enum) {
@@ -449,13 +449,13 @@ function selectInput(property, hint, allowAdditions=true, forceRequired=false) {
 
   html += '</select>';
 
-  html += allowAdditions ? ' <input type="text" class="addition"' + getPlaceholderAttr(hint) + ' required disabled />' : '';
+  html += allowAdditions ? ` <input type="text" class="addition"${getPlaceholderAttr(hint)} required disabled data-key="${key}-new" />` : '';
 
   return html;
 }
 
-function booleanInput(property, hint) {
-  let html = '<select' + getRequiredAttr(property) + ' class="boolean">';
+function booleanInput(key, property, hint) {
+  let html = `<select${getRequiredAttr(property)} class="boolean" data-key="${key}">`;
   html += '<option value="">unknown</option>';
   html += '<option value="true">yes</option>';
   html += '<option value="false">no</option>';

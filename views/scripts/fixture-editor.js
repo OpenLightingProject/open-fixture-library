@@ -30,12 +30,24 @@ var dialogOpener = null;
 var dialogClosingHandled = false;
 
 
+// could be handed over by importer / localStorage
+var out = {
+  manufacturers: {},
+  fixtures: {},
+  warnings: {},
+  errors: {}
+};
+var currentFixture = {
+  modes: []
+};
+
+
 window.addEventListener('load', function() {
   // initialize dialogs
   for (var key in dialogs) {
     var dialogElement = document.getElementById(key)
     dialogs[key] = new A11yDialog(dialogElement);
-    addComboboxEventListeners(dialogElement);
+    initComboboxes(dialogElement);
     dialogElement.querySelector('.close').addEventListener('click', function(event) {
       event.preventDefault();
     });
@@ -61,7 +73,8 @@ window.addEventListener('load', function() {
   // clone physical template into fixture
   physical.appendChild(document.importNode(templatePhysical.content, true));
 
-  addComboboxEventListeners(editorForm);
+  initComboboxes(editorForm);
+  bindValuesToObject(editorForm, currentFixture);
 
   addModeLink.addEventListener('click', addMode);
   addMode();  // every fixture has at least one mode
@@ -83,11 +96,15 @@ window.addEventListener('load', function() {
 function toggleManufacturer(event) {
   var toShow = manShortName;
   var toHide = newMan;
+  var newState = true;
 
   if (newMan.hidden) {
     toShow = newMan;
     toHide = manShortName;
+    newState = false;
   }
+
+  currentFixture.useExistingManufacturer = newState;
 
   toHide.hidden = true;
   [].forEach.call(toHide.querySelectorAll('select, input'), function(element) {
@@ -107,8 +124,8 @@ function toggleManufacturer(event) {
   }
 }
 
-function addComboboxEventListeners(element) {
-  [].forEach.call(element.querySelectorAll('[data-allow-additions]'), function(select) {
+function initComboboxes(container) {
+  [].forEach.call(container.querySelectorAll('[data-allow-additions]'), function(select) {
     select.addEventListener('change', function() {
       updateCombobox(this, true);
     });
@@ -122,6 +139,34 @@ function updateCombobox(select, updateFocus) {
   }
 }
 
+function bindValuesToObject(container, context) {
+  [].forEach.call(container.querySelectorAll('select, input, textarea'), function(element) {
+    element.addEventListener('change', function() {
+      var key = this.getAttribute('data-key');
+
+      if (this.value != '') {
+        if (this.type == 'select-multiple') {
+          context[key] = [];
+          for (var i = 0; i < this.selectedOptions.length; i++) {
+            context[key].push(this.selectedOptions[i].value);
+          }
+        }
+        else if (this.type == 'number') {
+          context[key] = this.valueAsNumber;
+        }
+        else {
+          context[key] = this.value;
+        }
+      }
+      else {
+        delete context[key];
+      }
+
+      console.log(currentFixture);
+    });
+  });
+}
+
 function updateChannelColorVisibility(event) {
   var channelColor = channelForm.querySelector('.channel-color');
   var colorEnabled = channelTypeSelect.value == 'SingleColor';
@@ -131,10 +176,7 @@ function updateChannelColorVisibility(event) {
 
 function addMode(event) {
   var newMode = document.importNode(templateMode.content, true);
-  modesContainer.insertBefore(
-    newMode,
-    addModeLink
-  );
+  modesContainer.insertBefore(newMode, addModeLink);
   newMode = addModeLink.previousSibling;
 
   var removeModeButton = newMode.querySelector('.close');
@@ -145,9 +187,9 @@ function addMode(event) {
 
   var physicalOverride = newMode.querySelector('.physical-override');
   physicalOverride.appendChild(document.importNode(templatePhysical.content, true));
-  addComboboxEventListeners(physicalOverride);
+  initComboboxes(physicalOverride);
 
-  var usePhysicalOverride = newMode.querySelector('.use-physical-override');
+  var usePhysicalOverride = newMode.querySelector('.enable-physical-override');
   usePhysicalOverride.addEventListener('change', function() {
     togglePhysicalOverride(usePhysicalOverride, physicalOverride);
   });
@@ -155,6 +197,9 @@ function addMode(event) {
 
   var openChannelDialogLink = newMode.querySelector('a.show-dialog');
   openChannelDialogLink.addEventListener('click', openDialogFromLink);
+
+  var modeCount = currentFixture.modes.push({});
+  bindValuesToObject(newMode, currentFixture.modes[modeCount - 1]);
 
   if (event) {
     event.preventDefault();
@@ -286,7 +331,7 @@ function readMode(modeContainer) {
   readSingle(modeContainer, '.mode-name', modeData, 'name');
   readSingle(modeContainer, '.mode-shortName', modeData, 'shortName');
 
-  var usePhysicalOverride = modeContainer.querySelector('.use-physical-override');
+  var usePhysicalOverride = modeContainer.querySelector('.enable-physical-override');
   if (usePhysicalOverride.checked) {
     readPhysical(modeContainer, '.physical-override', modeData, 'physical');
   }
