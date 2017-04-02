@@ -131,10 +131,20 @@ module.exports = function(options) {
   str += '<section class="author">';
   str += '<label>';
   str += '<span class="label">Your name</span>';
-  str += '<div class="value">';
+  str += '<span class="value">';
   str += '<input type="text" placeholder="e.g. Anonymous" required data-key="meta-author" />';
   str += '<span class="hint">You can instead enter your GitHub username to be mentioned in the pull request.</span>';
-  str += '</div>';
+  str += '</span>';
+  str += '</label>';
+  str += '</section>';
+
+  str += '<section class="honeypot" hidden aria-hidden="true">';
+  str += '<label>';
+  str += '<span class="label">Ignore this!</span>';
+  str += '<span class="value">';
+  str += '<input type="text" />';
+  str += '<span class="hint">Spammers are likely to fill this field. Leave it empty to show that you\'re a human.</span>';
+  str += '</span>';
   str += '</label>';
   str += '</section>';
 
@@ -147,11 +157,11 @@ module.exports = function(options) {
 
   str += '<section class="physical-dimensions">';
   str += '<span class="label">Dimensions</span>';
-  str += '<div class="value">';
+  str += '<span class="value">';
   str += numberInput('physical-dimensions-width', properties.physical.dimensions.items, 'width') + ' &times; ';
   str += numberInput('physical-dimensions-height', properties.physical.dimensions.items, 'height') + ' &times; ';
   str += numberInput('physical-dimensions-depth', properties.physical.dimensions.items, 'depth') + ' mm';
-  str += '</div>';
+  str += '</span>';
   str += '</section>';
 
   str += '<section class="physical-weight">';
@@ -209,10 +219,10 @@ module.exports = function(options) {
 
   str += '<section class="physical-lens-degrees">';
   str += '<span class="label">Light cone</span>';
-  str += '<div class="value">';
+  str += '<span class="value">';
   str += numberInput('physical-lens-degrees-min', properties.lens.degreesMinMax.items, 'min') + ' .. ';
   str += numberInput('physical-lens-degrees-max', properties.lens.degreesMinMax.items, 'max') + ' °';
-  str += '</div>';
+  str += '</span>';
   str += '</section>';
 
   str += '<h4>Focus</h4>';

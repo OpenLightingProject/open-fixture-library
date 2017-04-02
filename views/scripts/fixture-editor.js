@@ -288,6 +288,11 @@ function saveFixture(event) {
 
   event.preventDefault();
 
+  if (editorForm.querySelector('.honeypot input').value != '') {
+    alert('Do not fill the "Ignore" fields!');
+    return;
+  }
+
   var manKey = currentFixture['manufacturer-shortName'];
   if (!currentFixture.useExistingManufacturer) {
     manKey = currentFixture['new-manufacturer-shortName'];
