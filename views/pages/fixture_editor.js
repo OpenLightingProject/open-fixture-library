@@ -118,10 +118,27 @@ module.exports = function(options) {
   // Fixture modes
   str += '<section class="fixture-modes">';
   str += '<a class="fixture-mode card" href="#">';
-  str += '<h2>+ Add mode</h2>'
+  str += '<h2>+ Add mode</h2>';
   str += '</a>';
   str += '<div class="clearfix"></div>';
   str += '</section>'; // .fixture-modes
+
+
+  // User
+  str += '<section class="user card">';
+  str += '<h2>Author data</h2>';
+
+  str += '<section class="author">';
+  str += '<label>';
+  str += '<span class="label">Your name</span>';
+  str += '<div class="value">';
+  str += '<input type="text" placeholder="e.g. Anonymous" required data-key="meta-author" />';
+  str += '<span class="hint">You can instead enter your GitHub username to be mentioned in the pull request.</span>';
+  str += '</div>';
+  str += '</label>';
+  str += '</section>';
+
+  str += '</section>'; // .user
 
 
 
@@ -238,14 +255,14 @@ module.exports = function(options) {
   str += '<section class="mode-name">';
   str += '<label>';
   str += '<span class="label">Name</span>';
-  str += textInput('name', properties.mode.name);
+  str += textInput('name', properties.mode.name, 'e.g. Extended');
   str += '</label>';
   str += '</section>';
 
   str += '<section class="mode-shortName">';
   str += '<label>';
   str += '<span class="label">Unique short name</span>';
-  str += textInput('shortName', properties.mode.shortName, 'defaults to name');
+  str += textInput('shortName', properties.mode.shortName, 'e.g. ext; defaults to name');
   str += '</label>';
   str += '</section>';
 
@@ -322,7 +339,7 @@ function getChannelEditorString() {
 
   str += '<section class="channel-16bit">';
   str += '<label>';
-  str += '<input type="checkbox" data-key="16bit"> Is 16-bit channel?';
+  str += '<input type="checkbox" data-key="16bit" disabled> <strike>Is 16-bit channel?</strike> (not yet implemented)';
   str += '</label>';
   str += '</section>';
 

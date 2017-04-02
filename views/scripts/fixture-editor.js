@@ -2,6 +2,7 @@
 
 // modules
 var A11yDialog = require('a11y-dialog');
+var properties = properties = require('../../fixtures/schema').properties;
 
 
 // elements
@@ -30,13 +31,14 @@ var dialogOpener = null;
 var dialogClosingHandled = false;
 
 
-// could be handed over by importer / localStorage
 var out = {
   manufacturers: {},
   fixtures: {},
   warnings: {},
   errors: {}
 };
+
+// could be handed over by importer / localStorage
 var currentFixture = {
   availableChannels: {},
   modes: []
@@ -64,6 +66,11 @@ window.addEventListener('load', function() {
 
     channelForm.reset();
     updateChannelColorVisibility();
+
+    // clear currentChannel (resetting to {} would remove bindings)
+    for (var key in currentChannel) {
+      delete currentChannel[key];
+    }
   });
 
   // enable toggling between existing and new manufacturer
@@ -91,6 +98,7 @@ window.addEventListener('load', function() {
   updateChannelColorVisibility();
 
   // enable submit button
+  editorForm.addEventListener('submit', saveFixture);
   editorForm.querySelector('.save-fixture').disabled = false;
 });
 
@@ -107,6 +115,7 @@ function toggleManufacturer(event) {
   }
 
   currentFixture.useExistingManufacturer = newState;
+  autoSave();
 
   toHide.hidden = true;
   [].forEach.call(toHide.querySelectorAll('select, input'), function(element) {
@@ -164,7 +173,7 @@ function bindValuesToObject(container, context) {
         delete context[key];
       }
 
-      console.log(currentFixture);
+      autoSave();
     });
   });
 }
@@ -204,6 +213,7 @@ function addMode(event) {
     channels: []
   });
   bindValuesToObject(newMode, currentFixture.modes[modeCount - 1]);
+  autoSave();
 
   if (event) {
     event.preventDefault();
@@ -231,20 +241,6 @@ function togglePhysicalOverride(usePhysicalOverride, physicalOverride) {
   }
 }
 
-function openDialogFromLink(event) {
-  event.preventDefault();
-
-  dialogOpener = event.target;
-  dialogClosingHandled = false;
-  var key = event.target.getAttribute('href').slice(1);
-  dialogs[key].show();
-}
-function closeDialog() {
-  var key = dialogOpener.getAttribute('href').slice(1);
-  dialogs[key].hide();
-  dialogOpener = null;
-}
-
 function addChannel(event) {
   // browser validation has already caught the big mistakes
 
@@ -262,22 +258,159 @@ function addChannel(event) {
 
   currentFixture.modes[modeNumber].channels.push(channelKey);
   currentFixture.availableChannels[channelKey] = JSON.parse(JSON.stringify(currentChannel));
+  autoSave();
 
   dialogClosingHandled = true;
   closeDialog();
 }
 
+function openDialogFromLink(event) {
+  event.preventDefault();
 
-// Generate json data
-editorForm.addEventListener('submit', function(event) {
+  dialogOpener = event.target;
+  dialogClosingHandled = false;
+  var key = event.target.getAttribute('href').slice(1);
+  dialogs[key].show();
+}
+function closeDialog() {
+  var key = dialogOpener.getAttribute('href').slice(1);
+  dialogs[key].hide();
+  dialogOpener = null;
+}
+
+
+function autoSave() {
+  console.log(currentFixture, currentChannel);
+}
+
+function saveFixture(event) {
   // browser validation has already caught the big mistakes
 
   event.preventDefault();
 
-  var man;
-  var manData = {};
-  var fixData = {};
-});
+  var manKey = currentFixture['manufacturer-shortName'];
+  if (!currentFixture.useExistingManufacturer) {
+    manKey = currentFixture['new-manufacturer-shortName'];
+    out.manufacturers[manKey] = {
+      name: currentFixture['new-manufacturer-name']
+    };
+
+    if ('new-manufacturer-comment' in currentFixture) {
+      out.manufacturers[manKey].comment = currentFixture['new-manufacturer-comment'];
+    }
+
+    if ('new-manufacturer-website' in currentFixture) {
+      out.manufacturers[manKey].website = currentFixture['new-manufacturer-website'];
+    }
+  }
+
+  var otherFixtureKeys = [];
+  for (var key in out.fixtures) {
+    if (key.indexOf(manKey) == 0) {
+      otherFixtureKeys.push(key.slice(manKey.length + 1));
+    }
+  }
+
+  var fixKey = manKey + '/' + getKeyFromName(currentFixture.name, otherFixtureKeys);
+
+  out.fixtures[fixKey] = {};
+  for (var key in properties.fixture) {
+    if (key == 'physical') {
+      savePhysical(out.fixtures[fixKey], currentFixture);
+    }
+    else if (key == 'meta') {
+      var now = (new Date()).toISOString().replace(/T.*/, '');
+
+      out.fixtures[fixKey].meta = {
+        authors: [currentFixture['meta-author']],
+        createDate: now,
+        lastModifyDate: now
+      };
+    }
+    else if (key == 'availableChannels') {
+      out.fixtures[fixKey].availableChannels = {};
+      for (var channelKey in currentFixture.availableChannels) {
+        out.fixtures[fixKey].availableChannels[channelKey] = {};
+        saveChannel(out.fixtures[fixKey].availableChannels[channelKey], currentFixture.availableChannels[channelKey]);
+      }
+    }
+    else if (key == 'modes') {
+      out.fixtures[fixKey].modes = [];
+      currentFixture.modes.forEach(function(mode) {
+        var modeNumber = out.fixtures[fixKey].modes.push({});
+        saveMode(out.fixtures[fixKey].modes[modeNumber - 1], mode);
+      });
+    }
+    else if (key in currentFixture) {
+      out.fixtures[fixKey][key] = currentFixture[key];
+    }
+  }
+
+  console.log(JSON.stringify(out, null, 2));
+}
+
+function savePhysical(to, from) {
+  to.physical = {};
+
+  for (var key in properties.physical) {
+    if (key == 'dimensions' && 'physical-dimensions-width' in from) {
+      to.physical.dimensions = [
+        from['physical-dimensions-width'],
+        from['physical-dimensions-height'],
+        from['physical-dimensions-depth']
+      ];
+    }
+    else if ('type' in properties.physical[key] && properties.physical[key].type == 'object') {
+      to.physical[key] = {};
+
+      for (var subKey in properties.physical[key].properties) {
+        if (subKey == 'degreesMinMax' && 'physical-lens-degrees-min' in from) {
+          to.physical.lens.degreesMinMax = [
+            from['physical-lens-degrees-min'],
+            from['physical-lens-degrees-max']
+          ];
+        }
+        else if ('physical-' + key + '-' + subKey in from) {
+          to.physical[key][subKey] = getCurrentFixtureValue('physical-' + key + '-' + subKey, from);
+        }
+      }
+
+      if (JSON.stringify(to.physical[key]) == '{}') {
+        delete to.physical[key];
+      }
+    }
+    else if ('physical-' + key in from) {
+      to.physical[key] = getCurrentFixtureValue('physical-' + key, from);
+    }
+  }
+
+  if (JSON.stringify(to.physical) == '{}') {
+    delete to.physical;
+  }
+}
+
+function saveChannel(to, from) {
+  for (var key in properties.channel) {
+    if (key in from) {
+      to[key] = from[key];
+    }
+  }
+}
+
+function saveMode(to, from) {
+  for (var key in properties.mode) {
+    if (key == 'physical') {
+      savePhysical(to, from);
+    }
+    else if (key in from) {
+      to[key] = from[key];
+    }
+  }
+}
+
+function getCurrentFixtureValue(key, from) {
+  return from[key] == '[add-value]' && key + '-new' in from ? from[key + '-new'] : from[key];
+}
 
 function getKeyFromName(name, uniqueInList) {
   name = name.toLowerCase().replace(/[^a-z0-9\-]+/g, '-');
@@ -298,5 +431,5 @@ function getKeyFromName(name, uniqueInList) {
     return name;
   }
 
-  return name + ' ' + (occurences + 1);
+  return name + '-' + (occurences + 1);
 }
