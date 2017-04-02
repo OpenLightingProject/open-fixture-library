@@ -7,13 +7,10 @@ var properties = properties = require('../../fixtures/schema').properties;
 
 // elements
 var editorForm = document.getElementById('fixture-editor');
-var manShortName = document.querySelector('.manufacturer-shortName');
-var addManLink = manShortName.querySelector('.add-manufacturer');
-var newMan = document.querySelector('.new-manufacturer');
-var useExistingManLink = newMan.querySelector('.use-existing-manufacturer');
-var physical = document.querySelector('.physical');
-var modesContainer = document.querySelector('.fixture-modes');
-var addModeLink = document.querySelector('a.fixture-mode');
+var manShortName = editorForm.querySelector('.manufacturer-shortName');
+var newMan = editorForm.querySelector('.new-manufacturer');
+var addModeLink = editorForm.querySelector('a.fixture-mode');
+var submitButton = editorForm.querySelector('.save-fixture');
 var channelForm;
 var channelTypeSelect;
 
@@ -74,12 +71,12 @@ window.addEventListener('load', function() {
   });
 
   // enable toggling between existing and new manufacturer
-  addManLink.addEventListener('click', toggleManufacturer);
-  useExistingManLink.addEventListener('click', toggleManufacturer);
+  manShortName.querySelector('.add-manufacturer').addEventListener('click', toggleManufacturer);
+  newMan.querySelector('.use-existing-manufacturer').addEventListener('click', toggleManufacturer);
   toggleManufacturer();
 
   // clone physical template into fixture
-  physical.appendChild(document.importNode(templatePhysical.content, true));
+  editorForm.querySelector('.physical').appendChild(document.importNode(templatePhysical.content, true));
 
   initComboboxes(editorForm);
   bindValuesToObject(editorForm, currentFixture);
@@ -99,7 +96,7 @@ window.addEventListener('load', function() {
 
   // enable submit button
   editorForm.addEventListener('submit', saveFixture);
-  editorForm.querySelector('.save-fixture').disabled = false;
+  submitButton.disabled = false;
 });
 
 
@@ -187,7 +184,7 @@ function updateChannelColorVisibility(event) {
 
 function addMode(event) {
   var newMode = document.importNode(templateMode.content, true);
-  modesContainer.insertBefore(newMode, addModeLink);
+  editorForm.querySelector('.fixture-modes').insertBefore(newMode, addModeLink);
   newMode = addModeLink.previousSibling;
 
   var removeModeButton = newMode.querySelector('.close');
@@ -292,6 +289,8 @@ function saveFixture(event) {
     alert('Do not fill the "Ignore" fields!');
     return;
   }
+
+  submitButton.disabled = true;
 
   var manKey = currentFixture['manufacturer-shortName'];
   if (!currentFixture.useExistingManufacturer) {

@@ -4,6 +4,8 @@ var logo;
 var searchInput;
 
 window.addEventListener('load', function() {
+  document.querySelector('html').classList.add('js');
+
   logo = document.querySelector('#home-logo');
   searchInput = document.querySelector('#header input');
 

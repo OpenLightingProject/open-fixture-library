@@ -169,9 +169,9 @@ section {
 
 .hint {
   display: block;
-  margin: -0.5rem 0 0;
   color: $secondary-text-dark;
   font-size: 0.8rem;
+  line-height: 1.5;
 }
 
 data:empty {
@@ -224,6 +224,10 @@ data.checkbox {
     color: #0b5;
     content: '\2714';
   }
+}
+
+html:not(.js) #fixture-editor {
+  display: none;
 }
 
 .button-bar {
