@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const checkFixture = require(path.join(__dirname, 'tests', 'fixture_valid')).checkFixture;
+const createPullRequest = require(path.join(__dirname, 'lib', 'create-github-pr'));
 
 let importPlugins = {};
 for (const filename of fs.readdirSync(path.join(__dirname, 'plugins'))) {
@@ -40,6 +41,14 @@ fs.readFile(filename, 'utf8', (error, data) => {
     }
 
     console.log(JSON.stringify(result, null, 2));
+    createPullRequest(result, (error, pullRequestUrl) => {
+      if (error) {
+        console.error('cli Error: ' + error);
+        return;
+      }
+
+      console.log('cli URL: ' + pullRequestUrl);
+    });
   }).catch(error => {
     console.error(error);
   })
