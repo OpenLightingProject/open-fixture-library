@@ -9,6 +9,8 @@ module.exports = function(options) {
 
   str += '<h1>Fixture Editor</h1>';
 
+  str += '<noscript>Please enable JavaScript to use the Fixture Editor!</noscript>';
+
   str += '<form id="fixture-editor" action="#">'; // for now
 
 
@@ -305,12 +307,18 @@ module.exports = function(options) {
     {
       id: 'add-channel-to-mode',
       title: 'Add channel to mode',
-      content: '<p>Test uogitzbdz uzjujgj 7tubhttrh ziuzihkioj fzhjfvtz rtutzgzjoh8 zjhtztzer trbztuhiuzjiuh kjgztbhvfzc tvzhzjozhokubft tzrztfgguzhtj iuihjuztzv trguztuzjiu tzhghz tzhzzuvctz fvgvhzuiuhoj gghcuzgtuhzu iuhjiuztbzvz hjnbzvbch vcvjkh bfvgcvgtvfj bujzngvch vuvvhhuj vvfzftzuj oubvghcf vzt buzzc tfvgizgzjhuoj hgvg uu ijkjbjhzctuvzhb iujhihu hhg hubijoihoigubv hbhjnknjnhbv ghbjhbnvghcg ghn bjnkhnvz bvcvfchgvgh gb vchfvhjknjuvbh cfvfghjj bgcv tzbdz uzjujgj 7tubhttrh ziuzihkioj fzhjfvtz rtutzgzjoh8 zjhtztzer trbztuhiuzjiuh kjgztbhvfzc tvzhzjozhokubft tzrztfgguzhtj iuihjuztzv trguztuzjiu tzhghz tzhzzuvctz fvgvhzuiuhoj gghcuzgtuhzu iuhjiuztbzvz hjnbzvbch vcvjkh bfvgcvgtvfj bujzngvch vuvvhhuj vvfzftzuj oubvghtzbdz uzjujgj 7tubhttrh ziuzihkioj fzhjfvtz rtutzgzjoh8 zjhtztzer trbztuhiuzjiuh kjgztbhvfzc tvzhzjozhokubft tzrztfgguzhtj iuihjuztzv trguztuzjiu tzhghz tzhzzuvctz fvgvhzuiuhoj gghcuzgtuhzu iuhjiuztbzvz hjnbzvbch vcvjkh bfvgcvgtvfj bujzngvch vuvvhhuj vvfzftzuj oubvgh</p>'
+      content: 'The user should here be able to choose if they want to use an existing channel or create a new one.'
     },
     {
       id: 'channel-dialog',
       title: 'Create new channel',
-      content: getChannelEditorString()
+      content: getChannelDialogString()
+    },
+    {
+      id: 'submit-dialog',
+      title: 'Submitting your new fixture...',
+      content: getSubmitDialogString(),
+      cancellable: false
     }
   ];
 
@@ -321,7 +329,7 @@ module.exports = function(options) {
   return str;
 };
 
-function getChannelEditorString() {
+function getChannelDialogString() {
   let str = '<form action="#">';
 
   str += '<section class="channel-name">';
@@ -400,6 +408,37 @@ function getChannelEditorString() {
   str += '</div>';
 
   str += '</form>';
+
+  return str;
+}
+
+function getSubmitDialogString() {
+  let str = '<div class="state loading">';
+  str += 'Uploading...';
+  str += '</div>';  // .loading
+
+  str += '<div class="state done">';
+  str += 'Your fixture was successfully uploaded to GitHub (see the <a href="#" class="pull-request-url" target="_blank">pull request</a>). It will be now reviewed and then merged into the library. Thank you for your contribution!';
+  str += '<div class="button-bar">';
+  str += '<button class="primary">Back to homepage</button>';
+  str += '</div>';
+  str += '</div>';  // .done
+
+  str += '<div class="state error">';
+  str += 'Unfortunately, there was an error while uploading. Please copy the following data and <a href="https://github.com/FloEdelmann/open-fixture-library/issues/new" target="_blank">manually submit them to GitHub</a>.';
+  str += '<pre></pre>';
+  str += '<div class="button-bar">';
+  str += '<button class="primary">Back to homepage</button>';
+  str += '</div>';
+  str += '</div>';  // .error
+
+  str += '<div class="state invalid">';
+  str += 'Unfortunately, the fixture you uploaded was invalid. Please correct the following mistakes before trying again.';
+  str += '<pre></pre>';
+  str += '<div class="button-bar">';
+  str += '<button class="primary">Back to homepage</button>';
+  str += '</div>';
+  str += '</div>';  // .invalid
 
   return str;
 }

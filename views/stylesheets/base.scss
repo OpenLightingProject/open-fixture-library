@@ -89,6 +89,15 @@ a {
   }
 }
 
+pre {
+  line-height: 1.3;
+  font-size: 0.9em;
+  background: $grey-100;
+  padding: 1em;
+  overflow: auto;
+  max-height: 15em;
+}
+
 select,
 textarea,
 input[type=text],

@@ -23,6 +23,7 @@ var templateMode = document.getElementById('template-mode');
 var dialogs = {
   'add-channel-to-mode': null,
   'channel-dialog': null,
+  'submit-dialog': null
 };
 var dialogOpener = null;
 var dialogClosingHandled = false;
@@ -49,9 +50,13 @@ window.addEventListener('load', function() {
     var dialogElement = document.getElementById(key)
     dialogs[key] = new A11yDialog(dialogElement);
     initComboboxes(dialogElement);
-    dialogElement.querySelector('.close').addEventListener('click', function(event) {
-      event.preventDefault();
-    });
+
+    var closeButton = dialogElement.querySelector('.close');
+    if (closeButton != null) {
+      closeButton.addEventListener('click', function(event) {
+        event.preventDefault();
+      });
+    }
   }
   dialogs['channel-dialog'].on('hide', function() {
     if (!dialogClosingHandled) {
@@ -68,6 +73,17 @@ window.addEventListener('load', function() {
     for (var key in currentChannel) {
       delete currentChannel[key];
     }
+  });
+  dialogs['submit-dialog'].setState = function(newState) {
+    [].forEach.call(this.node.querySelectorAll('.state:not(.' + newState + ')'), function(state) {
+      state.hidden = true;
+    });
+    this.node.querySelector('.state.' + newState).hidden = false;
+  };
+  [].forEach.call(dialogs['submit-dialog'].node.querySelectorAll('button'), function(button) {
+    button.addEventListener('click', function() {
+      location.href = '/';
+    });
   });
 
   // enable toggling between existing and new manufacturer
@@ -291,6 +307,8 @@ function saveFixture(event) {
   }
 
   submitButton.disabled = true;
+  dialogs['submit-dialog'].setState('loading');
+  dialogs['submit-dialog'].show();
 
   var manKey = currentFixture['manufacturer-shortName'];
   if (!currentFixture.useExistingManufacturer) {
@@ -349,6 +367,40 @@ function saveFixture(event) {
       out.fixtures[fixKey][key] = currentFixture[key];
     }
   }
+
+  const sendObject = {
+    out: out
+  };
+
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    try {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 201) {
+          var data = JSON.parse(xhr.responseText);
+
+          if (data.error == null) {
+            dialogs['submit-dialog'].node.querySelector('.pull-request-url').href = data.pullRequestUrl;
+            dialogs['submit-dialog'].setState('done');
+          }
+          else {
+            throw new Error(data.error);
+          }
+        }
+        else {
+          throw new Error('HTTP status not 201.');
+        }
+      }
+    }
+    catch (error) {
+      console.error('There was a problem with the request. Error message: ' + error.message);
+      dialogs['submit-dialog'].node.querySelector('.error pre').innerHTML = JSON.stringify(out, null, 2) + '\n\n' + error.message;
+      dialogs['submit-dialog'].setState('error');
+    }
+  }
+  xhr.open('POST', '/ajax/add-fixtures');
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(JSON.stringify(sendObject));
 
   console.log(JSON.stringify(out, null, 2));
 }
