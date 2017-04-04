@@ -89,7 +89,7 @@ module.exports = function(options) {
   str += '<span class="label">Categories</span>';
   str += `<select multiple required size="${Object.keys(options.register.categories).length}" data-key="categories">`;
   for (const cat of properties.category.enum) {
-    str += `<option>${cat}</option>`;
+    str += `<option value="${cat}">${cat}</option>`;
   }
   str += '</select></label>';
   str += '</section>';
@@ -310,6 +310,12 @@ module.exports = function(options) {
       content: 'The user should here be able to choose if they want to use an existing channel or create a new one.'
     },
     {
+      id: 'auto-save-dialog',
+      title: 'Auto-saved fixture data found',
+      content: getAutoSaveDialogString(),
+      cancellable: false
+    },
+    {
       id: 'channel-dialog',
       title: 'Create new channel',
       content: getChannelDialogString()
@@ -328,6 +334,16 @@ module.exports = function(options) {
 
   return str;
 };
+
+function getAutoSaveDialogString() {
+  let str = 'Do you want to restore the data (auto-saved <time></time>) to continue to create the fixture?';
+  str += '<div class="button-bar">';
+  str += '<button class="discard secondary">Discard data</button> ';
+  str += '<button class="restore primary">Restore to continue work</button>';
+  str += '</div>';
+
+  return str;
+}
 
 function getChannelDialogString() {
   let str = '<form action="#">';

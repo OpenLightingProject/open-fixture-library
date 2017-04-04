@@ -22,6 +22,7 @@ var templateMode = document.getElementById('template-mode');
 
 var dialogs = {
   'add-channel-to-mode': null,
+  'auto-save-dialog': null,
   'channel-dialog': null,
   'submit-dialog': null
 };
@@ -42,6 +43,19 @@ var currentFixture = {
   modes: []
 };
 var currentChannel = {};
+
+
+var storageAvailable;
+var readyToAutoSave = false;
+try {
+  var x = '__storage_test__';
+  localStorage.setItem(x, x);
+  localStorage.removeItem(x);
+  storageAvailable = true;
+}
+catch (e) {
+  storageAvailable = false;
+}
 
 
 window.addEventListener('load', function() {
@@ -73,6 +87,8 @@ window.addEventListener('load', function() {
     for (var key in currentChannel) {
       delete currentChannel[key];
     }
+
+    autoSave();
   });
   dialogs['submit-dialog'].setState = function(newState) {
     [].forEach.call(this.node.querySelectorAll('.state:not(.' + newState + ')'), function(state) {
@@ -89,7 +105,7 @@ window.addEventListener('load', function() {
   // enable toggling between existing and new manufacturer
   manShortName.querySelector('.add-manufacturer').addEventListener('click', toggleManufacturer);
   newMan.querySelector('.use-existing-manufacturer').addEventListener('click', toggleManufacturer);
-  toggleManufacturer();
+  toggleManufacturer(null, true);
 
   // clone physical template into fixture
   injectPhysical(editorForm.querySelector('.physical'));
@@ -109,25 +125,29 @@ window.addEventListener('load', function() {
   channelTypeSelect.addEventListener('change', updateChannelColorVisibility);
   updateChannelColorVisibility();
 
+  restoreAutoSave();
+
   // enable submit button
   editorForm.addEventListener('submit', saveFixture);
   submitButton.disabled = false;
 });
 
 
-function toggleManufacturer(event) {
+function toggleManufacturer(event, init) {
   var toShow = manShortName;
   var toHide = newMan;
   var newState = true;
 
-  if (newMan.hidden) {
-    toShow = newMan;
-    toHide = manShortName;
-    newState = false;
-  }
+  if (!init) {
+    if (newMan.hidden) {
+      toShow = newMan;
+      toHide = manShortName;
+      newState = false;
+    }
 
-  currentFixture.useExistingManufacturer = newState;
-  autoSave();
+    currentFixture.useExistingManufacturer = newState;
+    autoSave();
+  }
 
   toHide.hidden = true;
   [].forEach.call(toHide.querySelectorAll('select, input'), function(element) {
@@ -196,6 +216,9 @@ function bindValuesToObject(container, context) {
             context[key].push(this.selectedOptions[i].value);
           }
         }
+        else if (this.type == 'checkbox') {
+          context[key] = this.checked;
+        }
         else if (this.type == 'number') {
           context[key] = this.valueAsNumber;
         }
@@ -235,9 +258,9 @@ function addMode(event) {
 
   var usePhysicalOverride = newMode.querySelector('.enable-physical-override');
   usePhysicalOverride.addEventListener('change', function() {
-    togglePhysicalOverride(usePhysicalOverride, physicalOverride);
+    updatePhysicalOverrideVisibility(usePhysicalOverride, physicalOverride);
   });
-  togglePhysicalOverride(usePhysicalOverride, physicalOverride);
+  updatePhysicalOverrideVisibility(usePhysicalOverride, physicalOverride);
 
   var openChannelDialogLink = newMode.querySelector('a.show-dialog');
   openChannelDialogLink.addEventListener('click', openDialogFromLink);
@@ -246,14 +269,13 @@ function addMode(event) {
     channels: []
   });
   bindValuesToObject(newMode, currentFixture.modes[modeCount - 1]);
-  autoSave();
 
   if (event) {
     event.preventDefault();
     newMode.querySelector('.mode-name input').focus();
   }
 }
-function togglePhysicalOverride(usePhysicalOverride, physicalOverride) {
+function updatePhysicalOverrideVisibility(usePhysicalOverride, physicalOverride) {
   if (usePhysicalOverride.checked) {
     physicalOverride.hidden = false;
     [].forEach.call(physicalOverride.querySelectorAll('select, input'), function(element, index) {
@@ -277,7 +299,9 @@ function togglePhysicalOverride(usePhysicalOverride, physicalOverride) {
 function addChannel(event) {
   // browser validation has already caught the big mistakes
 
-  event.preventDefault();
+  if (event) {
+    event.preventDefault();
+  }
 
   var channelKey = getKeyFromName(currentChannel.name, Object.keys(currentFixture.availableChannels));
 
@@ -313,7 +337,130 @@ function closeDialog() {
 
 
 function autoSave() {
-  console.log(currentFixture, currentChannel);
+  if (!storageAvailable || !readyToAutoSave) {
+    return;
+  }
+
+  // use an array to be future-proof (maybe we want to support multiple browser tabs)
+  localStorage.setItem('autoSave', JSON.stringify([
+    {
+      currentFixture: currentFixture,
+      currentChannel: currentChannel,
+      timestamp: Date.now()
+    }
+  ]));
+
+  console.log('autoSave!', currentFixture, currentChannel);
+}
+
+function restoreAutoSave() {
+  if (!storageAvailable) {
+    return;
+  }
+
+  var autoSaved = localStorage.getItem('autoSave');
+  if (!autoSaved) {
+    return;
+  }
+
+  autoSaved = JSON.parse(autoSaved);
+  if (autoSaved.length == 0) {
+    return;
+  }
+
+  var latestData = autoSaved.pop();
+  console.log('restore', latestData);
+
+  dialogs['auto-save-dialog'].node.querySelector('time').textContent = (new Date(latestData.timestamp)).toLocaleString('en-US');
+
+  dialogs['auto-save-dialog'].node.querySelector('.restore').addEventListener('click', function() {
+    dialogs['auto-save-dialog'].hide();
+
+    for (var key in latestData.currentFixture) {
+      if (!(key in currentFixture)) {
+        currentFixture[key] = latestData.currentFixture[key];
+      }
+    }
+
+    prefillFormElements(editorForm, latestData.currentFixture);
+
+    latestData.currentFixture.modes.forEach(function(mode, index) {
+      if (index > 0) {
+        addMode();
+      }
+
+      for (var key in mode) {
+        if (!(key in currentFixture.modes[index])) {
+          currentFixture.modes[index][key] = mode[key];
+        }
+      }
+
+      var modeElem = editorForm.querySelector('.fixture-modes > .fixture-mode:nth-child(' + (index+1) + ')');
+      prefillFormElements(modeElem, mode);
+
+      var physicalOverride = modeElem.querySelector('.physical-override');
+      var usePhysicalOverride = modeElem.querySelector('.enable-physical-override');
+      updatePhysicalOverrideVisibility(usePhysicalOverride, physicalOverride);
+
+      mode.channels.forEach(function(channel) {
+        for (var key in latestData.currentFixture.availableChannels[channel]) {
+          currentChannel[key] = latestData.currentFixture.availableChannels[channel][key];
+        }
+        dialogOpener = modeElem.querySelector('.show-dialog');
+        addChannel(null);
+      });
+    });
+
+    if (latestData.currentFixture.useExistingManufacturer === false) {
+      toggleManufacturer();
+    }
+
+    /*if (JSON.stringify(latestData.currentChannel) != '{}') {
+      for (var key in latestData.currentChannel) {
+        currentChannel[key] = latestData.currentChannel[key];
+      }
+
+      // TODO: save / restore dialogOpener and open channel dialog here
+      // maybe refactor the whole dialog opening / closing completely
+    }*/
+
+    readyToAutoSave = true;
+  });
+
+  dialogs['auto-save-dialog'].node.querySelector('.discard').addEventListener('click', function() {
+    editorForm.reset();
+    dialogs['auto-save-dialog'].hide();
+
+    // last element was popped before
+    localStorage.setItem('autoSave', JSON.stringify(autoSaved));
+
+    readyToAutoSave = true;
+  });
+
+  dialogs['auto-save-dialog'].show();
+}
+
+function prefillFormElements(container, object) {
+  for (var key in object) {
+    var formElem = container.querySelector('[data-key="' + key + '"]');
+    if (formElem != null) {
+      if (formElem.type == 'select-multiple') {
+        object[key].forEach(function(selectedOption) {
+          formElem.querySelector('option[value="' + selectedOption + '"]').selected = true;
+        });
+      }
+      else if (formElem.type == 'checkbox') {
+        formElem.checked = object[key];
+      }
+      else {
+        formElem.value = object[key];
+      }
+
+      if (formElem.matches('[data-allow-additions]')) {
+        updateCombobox(formElem);
+      }
+    }
+  }
 }
 
 function saveFixture(event) {
