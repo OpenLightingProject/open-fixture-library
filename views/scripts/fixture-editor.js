@@ -92,9 +92,8 @@ window.addEventListener('load', function() {
   toggleManufacturer();
 
   // clone physical template into fixture
-  editorForm.querySelector('.physical').appendChild(document.importNode(templatePhysical.content, true));
+  injectPhysical(editorForm.querySelector('.physical'));
 
-  initComboboxes(editorForm);
   bindValuesToObject(editorForm, currentFixture);
 
   addModeLink.addEventListener('click', addMode);
@@ -146,6 +145,28 @@ function toggleManufacturer(event) {
   if (event) {
     event.preventDefault();
   }
+}
+
+function injectPhysical(container) {
+  container.appendChild(document.importNode(templatePhysical.content, true));
+  initComboboxes(container);
+
+  fillTogether(container.querySelectorAll('.physical-dimensions input'));
+  fillTogether(container.querySelectorAll('.physical-lens-degrees input'));
+}
+
+function fillTogether(inputNodeList) {
+  [].forEach.call(inputNodeList, function(input) {
+    input.addEventListener('change', function() {
+      var required = [].some.call(inputNodeList, function(input) {
+        return input.value != '';
+      });
+
+      [].forEach.call(inputNodeList, function(input) {
+        input.required = required;
+      });
+    });
+  });
 }
 
 function initComboboxes(container) {
@@ -210,8 +231,7 @@ function addMode(event) {
   });
 
   var physicalOverride = newMode.querySelector('.physical-override');
-  physicalOverride.appendChild(document.importNode(templatePhysical.content, true));
-  initComboboxes(physicalOverride);
+  injectPhysical(physicalOverride);
 
   var usePhysicalOverride = newMode.querySelector('.enable-physical-override');
   usePhysicalOverride.addEventListener('change', function() {
