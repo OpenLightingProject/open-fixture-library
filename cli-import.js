@@ -21,7 +21,7 @@ if ((process.argv.length < 4) ||
     (process.argv.length == 5 && !makePR) ||
     (process.argv.length > 5) ||
     !(selectedPlugin in importPlugins)) {
-  console.error(`Usage: ${process.argv[1]} [plugin] [filename] <--pr>\n\navailable plugins: ${Object.keys(importPlugins).join(', ')}`);
+  console.error(`Usage: ${process.argv[1]} <plugin> <filename> [--pr]\n\navailable plugins: ${Object.keys(importPlugins).join(', ')}`);
   process.exit(1);
 }
 
