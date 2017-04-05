@@ -15,9 +15,13 @@ for (const filename of fs.readdirSync(path.join(__dirname, 'plugins'))) {
 
 const selectedPlugin = process.argv[2];
 const filename = process.argv[3];
+const makePR = process.argv[4] == '--pr';
 
-if (process.argv.length != 4 || !(selectedPlugin in importPlugins)) {
-  console.error(`Usage: ${process.argv[1]} [plugin] [filename]\n\navailable plugins: ${Object.keys(importPlugins).join(', ')}`);
+if ((process.argv.length < 4) ||
+    (process.argv.length == 5 && !makePR) ||
+    (process.argv.length > 5) ||
+    !(selectedPlugin in importPlugins)) {
+  console.error(`Usage: ${process.argv[1]} [plugin] [filename] <--pr>\n\navailable plugins: ${Object.keys(importPlugins).join(', ')}`);
   process.exit(1);
 }
 
@@ -41,14 +45,16 @@ fs.readFile(filename, 'utf8', (error, data) => {
     }
 
     console.log(JSON.stringify(result, null, 2));
-    createPullRequest(result, (error, pullRequestUrl) => {
-      if (error) {
-        console.error('cli Error: ' + error);
-        return;
-      }
+    if (makePR) {
+      createPullRequest(result, (error, pullRequestUrl) => {
+        if (error) {
+          console.error('cli Error: ' + error);
+          return;
+        }
 
-      console.log('cli URL: ' + pullRequestUrl);
-    });
+        console.log('cli URL: ' + pullRequestUrl);
+      });
+    }
   }).catch(error => {
     console.error(error);
   })
