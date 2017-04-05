@@ -1,4 +1,6 @@
-const schema = require('js-schema');
+// we use `var` instead of `let` and `const` here since this file will also be required from the client side
+
+var schema = require('js-schema');
 
 /**
  * see https://github.com/molnarg/js-schema
@@ -12,17 +14,17 @@ const schema = require('js-schema');
  * since JSON has no function type
  */
 
-const DMXValue = Number.min(0).max(255).step(1);
+var DMXValue = Number.min(0).max(255).step(1);
 
-const URL = schema(/^(ftp|http|https):\/\/[^ "]+$/);
+var URL = schema(/^(ftp|http|https):\/\/[^ "]+$/);
 
-const ISODate = schema(/^\d{4}-\d{2}-\d{2}$/);
+var ISODate = schema(/^\d{4}-\d{2}-\d{2}$/);
 
-const Color = schema(/^#[0-9a-f]{6}$/);
+var Color = schema(/^#[0-9a-f]{6}$/);
 
-const Category = schema(['Other', 'Color Changer', 'Dimmer', 'Effect', 'Fan', 'Flower', 'Hazer', 'Laser', 'Moving Head', 'Scanner', 'Smoke', 'Strobe', 'Blinder']);
+var Category = schema(['Other', 'Color Changer', 'Dimmer', 'Effect', 'Fan', 'Flower', 'Hazer', 'Laser', 'Moving Head', 'Scanner', 'Smoke', 'Strobe', 'Blinder']);
 
-const Physical = schema({
+var Physical = schema({
   '?dimensions': Array.of(3, Number.min(0)), // width, height, depth (in mm)
   '?weight': Number.min(0), // in kg
   '?power': Number.min(0), // in W
@@ -47,7 +49,7 @@ const Physical = schema({
   '*': Function
 });
 
-const Capability = schema({
+var Capability = schema({
   'range': Array.of(2, DMXValue),
   'name': String,
   '?hideInMenu': Boolean,
@@ -58,7 +60,7 @@ const Capability = schema({
   '*': Function
 });
 
-const Channel = schema({
+var Channel = schema({
   '?name': [String, null], // null: use channel key
   'type': ['Intensity', 'Strobe', 'Shutter', 'Speed', 'SingleColor', 'MultiColor', 'Gobo', 'Prism', 'Pan', 'Tilt', 'Beam', 'Effect', 'Maintenance', 'Nothing'],
   '?color': ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime'],
@@ -72,9 +74,9 @@ const Channel = schema({
   '*': Function
 });
 
-const ChannelKey = String;
+var ChannelKey = String;
 
-const Mode = schema({
+var Mode = schema({
   'name': String,
   '?shortName': [String, null], // null: use name
   '?physical': Physical, // overrides fixture's Physical
@@ -82,7 +84,7 @@ const Mode = schema({
   '*': Function
 });
 
-const Fixture = schema({
+var Fixture = schema({
   'name': String,
   '?shortName': [String, null], // null: use name
   'categories': Array.of(1, Infinity, Category), // most important category first
@@ -112,7 +114,7 @@ const Fixture = schema({
   '*': Function
 });
 
-const Manufacturers = schema({
+var Manufacturers = schema({
   '*': schema({ // '*' is the manufacturer key
     'name': String,
     '?comment': String,
@@ -125,7 +127,7 @@ const Manufacturers = schema({
 module.exports.Fixture = Fixture;
 module.exports.Manufacturers = Manufacturers;
 
-let properties = {
+var properties = {
   manufacturer: Manufacturers.toJSON().additionalProperties.properties,
   fixture:      Fixture.toJSON().properties,
   mode:         Mode.toJSON().properties,
