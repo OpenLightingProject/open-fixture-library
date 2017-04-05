@@ -21,13 +21,10 @@ var templateMode = document.getElementById('template-mode');
 
 
 var dialogs = {
-  'add-channel-to-mode': null,
-  'auto-save-dialog': null,
-  'channel-dialog': null,
-  'submit-dialog': null
+  channel: 'channel-dialog',
+  restore: 'restore-dialog',
+  submit: 'submit-dialog'
 };
-var dialogOpener = null;
-var dialogClosingHandled = false;
 
 
 var out = {
@@ -59,48 +56,13 @@ catch (e) {
 
 
 window.addEventListener('load', function() {
-  // initialize dialogs
-  for (var key in dialogs) {
-    var dialogElement = document.getElementById(key)
-    dialogs[key] = new A11yDialog(dialogElement);
-    initComboboxes(dialogElement);
+  initDialogs();
 
-    var closeButton = dialogElement.querySelector('.close');
-    if (closeButton != null) {
-      closeButton.addEventListener('click', function(event) {
-        event.preventDefault();
-      });
+  window.onpopstate = function(event) {
+    if (event.state == null && dialogs.channel.shown) {
+      dialogs.channel.hide();
     }
-  }
-  dialogs['channel-dialog'].on('hide', function() {
-    if (!dialogClosingHandled) {
-      if (JSON.stringify(currentChannel) != '{}' && !window.confirm('Do you want to lose the entered channel data?')) {
-        dialogs['channel-dialog'].show();
-        return false;
-      }
-    }
-
-    channelForm.reset();
-    updateChannelColorVisibility();
-
-    // clear currentChannel (resetting to {} would remove bindings)
-    for (var key in currentChannel) {
-      delete currentChannel[key];
-    }
-
-    autoSave();
-  });
-  dialogs['submit-dialog'].setState = function(newState) {
-    [].forEach.call(this.node.querySelectorAll('.state:not(.' + newState + ')'), function(state) {
-      state.hidden = true;
-    });
-    this.node.querySelector('.state.' + newState).hidden = false;
   };
-  [].forEach.call(dialogs['submit-dialog'].node.querySelectorAll('button'), function(button) {
-    button.addEventListener('click', function() {
-      location.href = '/';
-    });
-  });
 
   // enable toggling between existing and new manufacturer
   manShortName.querySelector('.add-manufacturer').addEventListener('click', toggleManufacturer);
@@ -123,7 +85,6 @@ window.addEventListener('load', function() {
   // enable channel color only if the channel type is SingleColor
   channelTypeSelect = document.querySelector('#channel-dialog .channel-type select');
   channelTypeSelect.addEventListener('change', updateChannelColorVisibility);
-  updateChannelColorVisibility();
 
   restoreAutoSave();
 
@@ -132,6 +93,71 @@ window.addEventListener('load', function() {
   submitButton.disabled = false;
 });
 
+function initDialogs() {
+  for (var key in dialogs) {
+    dialogs[key] = new A11yDialog(document.getElementById(dialogs[key]));
+  }
+
+
+  // channel dialog
+  initComboboxes(dialogs.channel.node);
+
+  dialogs.channel.node.querySelector('.close').addEventListener('click', function(event) {
+    event.preventDefault();
+  });
+
+  dialogs.channel.on('show', function(node) {
+    dialogs.channel.closingHandled = false;
+    updateChannelColorVisibility();
+
+    if ('pushState' in history) {
+      history.pushState('channel-dialog', '');
+    }
+  });
+
+  dialogs.channel.on('hide', function() {
+    if ('pushState' in history) {
+      // return from the newly created state
+      history.back();
+    }
+
+    if (!dialogs.channel.closingHandled) {
+      var changed = Object.keys(currentChannel).some(function(key) {
+        return key != 'modeIndex';
+      });
+
+      if (changed && !window.confirm('Do you want to lose the entered channel data?')) {
+        dialogs.channel.show();
+        return false;
+      }
+    }
+
+    channelForm.reset();
+    updateChannelColorVisibility();
+
+    // clear currentChannel (resetting to {} would remove bindings)
+    for (var key in currentChannel) {
+      delete currentChannel[key];
+    }
+
+    autoSave();
+  });
+
+
+  // submit dialog
+  dialogs.submit.setState = function(newState) {
+    [].forEach.call(this.node.querySelectorAll('.state:not(.' + newState + ')'), function(state) {
+      state.hidden = true;
+    });
+    this.node.querySelector('.state.' + newState).hidden = false;
+  };
+
+  [].forEach.call(dialogs.submit.node.querySelectorAll('button'), function(button) {
+    button.addEventListener('click', function() {
+      location.href = '/';
+    });
+  });
+}
 
 function toggleManufacturer(event, init) {
   var toShow = manShortName;
@@ -247,12 +273,6 @@ function addMode(event) {
   editorForm.querySelector('.fixture-modes').insertBefore(newMode, addModeLink);
   newMode = addModeLink.previousSibling;
 
-  var removeModeButton = newMode.querySelector('.close');
-  removeModeButton.addEventListener('click', function(e) {
-    e.preventDefault();
-    newMode.remove();
-  });
-
   var physicalOverride = newMode.querySelector('.physical-override');
   injectPhysical(physicalOverride);
 
@@ -262,13 +282,24 @@ function addMode(event) {
   });
   updatePhysicalOverrideVisibility(usePhysicalOverride, physicalOverride);
 
-  var openChannelDialogLink = newMode.querySelector('a.show-dialog');
-  openChannelDialogLink.addEventListener('click', openDialogFromLink);
-
-  var modeCount = currentFixture.modes.push({
+  currentFixture.modes.push({
     channels: []
   });
-  bindValuesToObject(newMode, currentFixture.modes[modeCount - 1]);
+
+  var modeIndex = currentFixture.modes.length - 1;
+  bindValuesToObject(newMode, currentFixture.modes[modeIndex]);
+
+  newMode.querySelector('.close').addEventListener('click', function(e) {
+    e.preventDefault();
+    currentFixture.modes.splice(modeIndex, 1);
+    newMode.remove();
+  });
+
+  newMode.querySelector('a.show-dialog').addEventListener('click', function(e) {
+    e.preventDefault();
+    currentChannel.modeIndex = modeIndex;
+    openChannelDialog();
+  });
 
   if (event) {
     event.preventDefault();
@@ -296,6 +327,21 @@ function updatePhysicalOverrideVisibility(usePhysicalOverride, physicalOverride)
   }
 }
 
+function openChannelDialog() {
+  var modeName = currentChannel.modeIndex + 1;
+
+  if ('shortName' in currentFixture.modes[currentChannel.modeIndex]) {
+    modeName = currentFixture.modes[currentChannel.modeIndex].shortName;
+  }
+  else if ('name' in currentFixture.modes[currentChannel.modeIndex]) {
+    modeName = currentFixture.modes[currentChannel.modeIndex].name;
+  }
+
+  dialogs.channel.node.querySelector('.mode-name').textContent = modeName;
+
+  dialogs.channel.show();
+}
+
 function addChannel(event) {
   // browser validation has already caught the big mistakes
 
@@ -303,36 +349,20 @@ function addChannel(event) {
     event.preventDefault();
   }
 
+  var modeElem = editorForm.querySelector('.fixture-modes > .fixture-mode:nth-child(' + (currentChannel.modeIndex + 1) + ')');
+
   var channelKey = getKeyFromName(currentChannel.name, Object.keys(currentFixture.availableChannels));
 
   var newChannelItem = document.createElement('li');
   newChannelItem.textContent = ('name' in currentChannel) ? currentChannel.name : channelKey;
-  dialogOpener.previousElementSibling.appendChild(newChannelItem);
+  modeElem.querySelector('.mode-channels').appendChild(newChannelItem);
 
-  var currentMode = dialogOpener.parentNode;
-  var allModes = Array.prototype.slice.call(currentMode.parentNode.children);
-  var modeNumber = allModes.indexOf(currentMode);
-
-  currentFixture.modes[modeNumber].channels.push(channelKey);
+  currentFixture.modes[currentChannel.modeIndex].channels.push(channelKey);
   currentFixture.availableChannels[channelKey] = JSON.parse(JSON.stringify(currentChannel));
   autoSave();
 
-  dialogClosingHandled = true;
-  closeDialog();
-}
-
-function openDialogFromLink(event) {
-  event.preventDefault();
-
-  dialogOpener = event.target;
-  dialogClosingHandled = false;
-  var key = event.target.getAttribute('href').slice(1);
-  dialogs[key].show();
-}
-function closeDialog() {
-  var key = dialogOpener.getAttribute('href').slice(1);
-  dialogs[key].hide();
-  dialogOpener = null;
+  dialogs.channel.closingHandled = true;
+  dialogs.channel.hide();
 }
 
 
@@ -360,21 +390,23 @@ function restoreAutoSave() {
 
   var autoSaved = localStorage.getItem('autoSave');
   if (!autoSaved) {
+    readyToAutoSave = true;
     return;
   }
 
   autoSaved = JSON.parse(autoSaved);
   if (autoSaved.length == 0) {
+    readyToAutoSave = true;
     return;
   }
 
   var latestData = autoSaved.pop();
   console.log('restore', latestData);
 
-  dialogs['auto-save-dialog'].node.querySelector('time').textContent = (new Date(latestData.timestamp)).toLocaleString('en-US');
+  dialogs.restore.node.querySelector('time').textContent = (new Date(latestData.timestamp)).toLocaleString('en-US');
 
-  dialogs['auto-save-dialog'].node.querySelector('.restore').addEventListener('click', function() {
-    dialogs['auto-save-dialog'].hide();
+  dialogs.restore.node.querySelector('.restore').addEventListener('click', function() {
+    dialogs.restore.hide();
 
     for (var key in latestData.currentFixture) {
       if (!(key in currentFixture)) {
@@ -406,8 +438,7 @@ function restoreAutoSave() {
         for (var key in latestData.currentFixture.availableChannels[channel]) {
           currentChannel[key] = latestData.currentFixture.availableChannels[channel][key];
         }
-        dialogOpener = modeElem.querySelector('.show-dialog');
-        addChannel(null);
+        addChannel();
       });
     });
 
@@ -415,21 +446,20 @@ function restoreAutoSave() {
       toggleManufacturer();
     }
 
-    /*if (JSON.stringify(latestData.currentChannel) != '{}') {
+    if (JSON.stringify(latestData.currentChannel) != '{}') {
       for (var key in latestData.currentChannel) {
         currentChannel[key] = latestData.currentChannel[key];
       }
-
-      // TODO: save / restore dialogOpener and open channel dialog here
-      // maybe refactor the whole dialog opening / closing completely
-    }*/
+      prefillFormElements(dialogs.channel.node, currentChannel);
+      openChannelDialog();
+    }
 
     readyToAutoSave = true;
   });
 
-  dialogs['auto-save-dialog'].node.querySelector('.discard').addEventListener('click', function() {
+  dialogs.restore.node.querySelector('.discard').addEventListener('click', function() {
     editorForm.reset();
-    dialogs['auto-save-dialog'].hide();
+    dialogs.restore.hide();
 
     // last element was popped before
     localStorage.setItem('autoSave', JSON.stringify(autoSaved));
@@ -437,7 +467,7 @@ function restoreAutoSave() {
     readyToAutoSave = true;
   });
 
-  dialogs['auto-save-dialog'].show();
+  dialogs.restore.show();
 }
 
 function prefillFormElements(container, object) {
@@ -457,7 +487,7 @@ function prefillFormElements(container, object) {
       }
 
       if (formElem.matches('[data-allow-additions]')) {
-        updateCombobox(formElem);
+        updateCombobox(formElem, false);
       }
     }
   }
@@ -474,8 +504,8 @@ function saveFixture(event) {
   }
 
   submitButton.disabled = true;
-  dialogs['submit-dialog'].setState('loading');
-  dialogs['submit-dialog'].show();
+  dialogs.submit.setState('loading');
+  dialogs.submit.show();
 
   var manKey = currentFixture['manufacturer-shortName'];
   if (!currentFixture.useExistingManufacturer) {
@@ -547,8 +577,8 @@ function saveFixture(event) {
           var data = JSON.parse(xhr.responseText);
 
           if (data.error == null) {
-            dialogs['submit-dialog'].node.querySelector('.pull-request-url').href = data.pullRequestUrl;
-            dialogs['submit-dialog'].setState('done');
+            dialogs.submit.node.querySelector('.pull-request-url').href = data.pullRequestUrl;
+            dialogs.submit.setState('done');
           }
           else {
             throw new Error(data.error);
@@ -561,8 +591,8 @@ function saveFixture(event) {
     }
     catch (error) {
       console.error('There was a problem with the request. Error message: ' + error.message);
-      dialogs['submit-dialog'].node.querySelector('.error pre').innerHTML = JSON.stringify(out, null, 2) + '\n\n' + error.message;
-      dialogs['submit-dialog'].setState('error');
+      dialogs.submit.node.querySelector('.error pre').textContent = JSON.stringify(out, null, 2) + '\n\n' + error.message;
+      dialogs.submit.setState('error');
     }
   }
   xhr.open('POST', '/ajax/add-fixtures');

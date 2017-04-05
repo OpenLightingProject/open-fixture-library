@@ -289,7 +289,6 @@ module.exports = function(options) {
 
   str += '<h3>Channels</h3>';
   str += '<ul class="mode-channels"></ul>';
-  //str += '<a href="#add-channel-to-mode" class="show-dialog">add channels</a>';
   str += '<a href="#channel-dialog" class="show-dialog">create new channel</a>';
 
   str += '</section>'; // .fixture-mode
@@ -305,20 +304,16 @@ module.exports = function(options) {
 
   options.dialogs = [
     {
-      id: 'add-channel-to-mode',
-      title: 'Add channel to mode',
-      content: 'The user should here be able to choose if they want to use an existing channel or create a new one.'
-    },
-    {
-      id: 'auto-save-dialog',
-      title: 'Auto-saved fixture data found',
-      content: getAutoSaveDialogString(),
-      cancellable: false
-    },
-    {
       id: 'channel-dialog',
-      title: 'Create new channel',
-      content: getChannelDialogString()
+      title: 'Create new channel for mode <span class="mode-name"></span>',
+      content: getChannelDialogString(),
+      cancellable: true
+    },
+    {
+      id: 'restore-dialog',
+      title: 'Auto-saved fixture data found',
+      content: getRestoreDialogString(),
+      cancellable: false
     },
     {
       id: 'submit-dialog',
@@ -335,7 +330,7 @@ module.exports = function(options) {
   return str;
 };
 
-function getAutoSaveDialogString() {
+function getRestoreDialogString() {
   let str = 'Do you want to restore the data (auto-saved <time></time>) to continue to create the fixture?';
   str += '<div class="button-bar">';
   str += '<button class="discard secondary">Discard data</button> ';
