@@ -247,6 +247,15 @@ a.fixture-mode {
   display: none;
 }
 
+#fixture-editor {
+  counter-reset: modes;
+}
+
+#fixture-editor .fixture-mode h2::after {
+  counter-increment: modes;
+  content: " #" counter(modes);
+}
+
 /* display mode cards in a 2-col layout */
 @media (min-width: $tablet) {
   .fixture-modes > .card.fixture-mode {

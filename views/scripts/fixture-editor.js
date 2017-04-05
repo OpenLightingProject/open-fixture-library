@@ -328,13 +328,13 @@ function updatePhysicalOverrideVisibility(usePhysicalOverride, physicalOverride)
 }
 
 function openChannelDialog() {
-  var modeName = currentChannel.modeIndex + 1;
+  var modeName = '#' + (currentChannel.modeIndex + 1);
 
   if ('shortName' in currentFixture.modes[currentChannel.modeIndex]) {
-    modeName = currentFixture.modes[currentChannel.modeIndex].shortName;
+    modeName = '"' + currentFixture.modes[currentChannel.modeIndex].shortName + '"';
   }
   else if ('name' in currentFixture.modes[currentChannel.modeIndex]) {
-    modeName = currentFixture.modes[currentChannel.modeIndex].name;
+    modeName = '"' + currentFixture.modes[currentChannel.modeIndex].name + '"';
   }
 
   dialogs.channel.node.querySelector('.mode-name').textContent = modeName;

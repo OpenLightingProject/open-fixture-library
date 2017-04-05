@@ -262,7 +262,7 @@ module.exports = function(options) {
   str += require('../includes/svg')({svgBasename: 'close'});
   str += '</a>';
 
-  str += '<h2>Mode</h2>'
+  str += '<h2>Mode</h2>';
 
   str += '<section class="mode-name">';
   str += '<label>';
