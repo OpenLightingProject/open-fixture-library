@@ -116,7 +116,7 @@ function initDialogs() {
   });
 
   dialogs.channel.on('hide', function() {
-    if ('pushState' in history) {
+    if ('pushState' in history && history.state == 'channel-dialog') {
       // return from the newly created state
       history.back();
     }
