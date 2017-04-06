@@ -80,7 +80,10 @@ window.addEventListener('load', function() {
   // add channel editor submit
   channelForm = document.querySelector('#channel-dialog form');
   bindValuesToObject(channelForm, currentChannel);
-  channelForm.addEventListener('submit', addChannel);
+  channelForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    editChannel();
+  });
 
   // enable channel color only if the channel type is SingleColor
   channelTypeSelect = document.querySelector('#channel-dialog .channel-type select');
@@ -349,23 +352,45 @@ function openChannelDialog() {
   dialogs.channel.show();
 }
 
-function addChannel(event) {
+function editChannel() {
   // browser validation has already caught the big mistakes
 
-  if (event) {
-    event.preventDefault();
+  /* Edit mode                                                create   addToMode
+   *
+   * 1. add new channel to current mode                       true     true
+   * 2. add existing channel to current mode                  false    true
+   * 3. edit existing channel in all modes                    false    false
+   * 4. duplicate and edit existing channel to current mode   true     true     (= 1.)
+   */
+  var create = false;
+  var addToMode = false;
+
+  var channelKey = currentChannel.key;
+  if (channelKey === undefined) {
+    channelKey = getKeyFromName(currentChannel.name, Object.keys(currentFixture.availableChannels));
+    create = true;
   }
 
-  var modeElem = editorForm.querySelector('.fixture-modes > .fixture-mode:nth-child(' + (currentChannel.modeIndex + 1) + ')');
+  if ('modeIndex' in currentChannel) {
+    addToMode = true;
+    currentFixture.modes[currentChannel.modeIndex].channels.push(channelKey);
 
-  var channelKey = getKeyFromName(currentChannel.name, Object.keys(currentFixture.availableChannels));
+    var modeElem = editorForm.querySelector('.fixture-modes > .fixture-mode:nth-child(' + (currentChannel.modeIndex + 1) + ')');
+    updateChannelName(modeElem, channelKey);
+  }
 
-  var newChannelItem = document.createElement('li');
-  newChannelItem.textContent = ('name' in currentChannel) ? currentChannel.name : channelKey;
-  modeElem.querySelector('.mode-channels').appendChild(newChannelItem);
+  if (!create && !addToMode) {  // edit mode == 3.
+    [].forEach.call(editorForm.querySelectorAll('.fixture-mode'), function(modeElem) {
+      updateChannelName(modeElem, channelKey);
+    });
+  }
 
-  currentFixture.modes[currentChannel.modeIndex].channels.push(channelKey);
-  currentFixture.availableChannels[channelKey] = JSON.parse(JSON.stringify(currentChannel));
+  if (create || !addToMode) {  // edit mode != 2.
+    delete currentChannel.key;
+    delete currentChannel.modeIndex;
+
+    currentFixture.availableChannels[channelKey] = JSON.parse(JSON.stringify(currentChannel));
+  }
 
   // clear currentChannel (resetting to {} would remove bindings)
   for (var key in currentChannel) {
@@ -377,6 +402,18 @@ function addChannel(event) {
   channelForm.reset();
   dialogs.channel.closingHandled = true;
   dialogs.channel.hide();
+}
+
+function updateChannelName(modeElem, channelKey) {
+  var channelItem = modeElem.querySelector('.mode[data-channel-key=' + channelKey + ']');
+
+  if (channelItem == null) {
+    channelItem = document.createElement('li');
+    channelItem.dataset.channelKey = channelKey;
+    modeElem.querySelector('.mode-channels').appendChild(channelItem);
+  }
+
+  channelItem.textContent = ('name' in currentChannel) ? currentChannel.name : channelKey;
 }
 
 
@@ -454,7 +491,7 @@ function restoreAutoSave() {
         for (var key in latestData.currentFixture.availableChannels[channel]) {
           currentChannel[key] = latestData.currentFixture.availableChannels[channel][key];
         }
-        addChannel();
+        editChannel();
       });
     });
 
@@ -689,12 +726,9 @@ function getKeyFromName(name, uniqueInList) {
   }
 
   var nameRegexp = new RegExp('^' + name + '(?:\s+\d+)?$');
-  var occurences = uniqueInList.reduce(function(acc, value) {
-    if (nameRegexp.test(value)) {
-      return acc + 1;
-    }
-    return acc;
-  }, 0);
+  var occurences = uniqueInList.filter(function(value) {
+    return nameRegexp.test(value);
+  }).length;
 
   if (occurences == 0) {
     return name;
