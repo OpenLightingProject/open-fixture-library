@@ -121,26 +121,17 @@ function initDialogs() {
       history.back();
     }
 
-    if (!dialogs.channel.closingHandled) {
-      var changed = Object.keys(currentChannel).some(function(key) {
-        return key != 'modeIndex';
-      });
-
-      if (changed && !window.confirm('Do you want to lose the entered channel data?')) {
-        dialogs.channel.show();
-        return false;
-      }
+    if (dialogs.channel.closingHandled) {
+      return;
     }
 
-    channelForm.reset();
-    updateChannelColorVisibility();
+    var changed = Object.keys(currentChannel).some(function(key) {
+      return key != 'modeIndex';
+    });
 
-    // clear currentChannel (resetting to {} would remove bindings)
-    for (var key in currentChannel) {
-      delete currentChannel[key];
+    if (changed && !window.confirm('Do you want to lose the entered channel data?')) {
+      dialogs.channel.show();  // closing was a mistake -> show it again
     }
-
-    autoSave();
   });
 
 
@@ -359,8 +350,15 @@ function addChannel(event) {
 
   currentFixture.modes[currentChannel.modeIndex].channels.push(channelKey);
   currentFixture.availableChannels[channelKey] = JSON.parse(JSON.stringify(currentChannel));
+
+  // clear currentChannel (resetting to {} would remove bindings)
+  for (var key in currentChannel) {
+    delete currentChannel[key];
+  }
+
   autoSave();
 
+  channelForm.reset();
   dialogs.channel.closingHandled = true;
   dialogs.channel.hide();
 }
