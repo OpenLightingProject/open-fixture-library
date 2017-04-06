@@ -43,7 +43,7 @@ module.exports = function(options) {
   str += '<section class="new-manufacturer-shortName">';
   str += '<label>';
   str += '<span class="label">Unique short name</span>';
-  str += '<input type="text" required pattern="[a-z0-9\-]+" data-key="new-manufacturer-shortName" />';
+  str += '<input type="text" required pattern="[a-z0-9\-]+" title="Use only lowercase letters, numbers and dashes." data-key="new-manufacturer-shortName" />';
   str += '</label>';
   str += '</section>';
 
@@ -267,14 +267,14 @@ module.exports = function(options) {
   str += '<section class="mode-name">';
   str += '<label>';
   str += '<span class="label">Name</span>';
-  str += textInput('name', properties.mode.name, 'e.g. Extended');
+  str += '<input type="text"' + getRequiredAttr(properties.mode.name) + ' pattern="^((?!mode)(?!Mode).)*$" title="The name must not contain the word \'mode\'." placeholder="e.g. Extended" data-key="name" />';
   str += '</label>';
   str += '</section>';
 
   str += '<section class="mode-shortName">';
   str += '<label>';
   str += '<span class="label">Unique short name</span>';
-  str += textInput('shortName', properties.mode.shortName, 'e.g. ext; defaults to name');
+  str += '<input type="text"' + getRequiredAttr(properties.mode.shortName) + ' pattern="^((?!mode)(?!Mode).)*$" title="The name must not contain the word \'mode\'." placeholder="e.g. ext; defaults to name" data-key="shortName" />';
   str += '</label>';
   str += '</section>';
 

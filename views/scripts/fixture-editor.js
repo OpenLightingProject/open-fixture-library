@@ -190,6 +190,7 @@ function injectPhysical(container) {
 
   fillTogether(container.querySelectorAll('.physical-dimensions input'));
   fillTogether(container.querySelectorAll('.physical-lens-degrees input'));
+  initRangeInputs(container.querySelectorAll('.physical-lens-degrees input'));
 }
 
 function fillTogether(inputNodeList) {
@@ -204,6 +205,21 @@ function fillTogether(inputNodeList) {
       });
     });
   });
+}
+
+function initRangeInputs(inputNodeList) {
+  inputNodeList[0].addEventListener('change', function() {
+    updateRangeInputs(inputNodeList);
+  });
+  inputNodeList[1].addEventListener('change', function() {
+    updateRangeInputs(inputNodeList);
+  });
+  inputNodeList[0].dataset.max = inputNodeList[0].max;
+  inputNodeList[1].dataset.min = inputNodeList[1].min;
+}
+function updateRangeInputs(inputNodeList) {
+  inputNodeList[1].min = (inputNodeList[0].value == '') ? inputNodeList[1].dataset.min : inputNodeList[0].value;
+  inputNodeList[0].max = (inputNodeList[1].value == '') ? inputNodeList[0].dataset.max : inputNodeList[1].value;
 }
 
 function initComboboxes(container) {
@@ -413,6 +429,7 @@ function restoreAutoSave() {
     }
 
     prefillFormElements(editorForm, latestData.currentFixture);
+    updateRangeInputs(editorForm.querySelectorAll('.physical-lens-degrees input'));
 
     latestData.currentFixture.modes.forEach(function(mode, index) {
       if (index > 0) {
@@ -427,6 +444,7 @@ function restoreAutoSave() {
 
       var modeElem = editorForm.querySelector('.fixture-modes > .fixture-mode:nth-child(' + (index+1) + ')');
       prefillFormElements(modeElem, mode);
+      updateRangeInputs(modeElem.querySelectorAll('.physical-lens-degrees input'));
 
       var physicalOverride = modeElem.querySelector('.physical-override');
       var usePhysicalOverride = modeElem.querySelector('.enable-physical-override');
