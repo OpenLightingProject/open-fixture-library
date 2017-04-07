@@ -462,18 +462,19 @@ function getSubmitDialogString() {
   str += 'Uploading...';
   str += '</div>';  // .loading
 
-  str += '<div class="state done">';
+  str += '<div class="state success">';
   str += 'Your fixture was successfully uploaded to GitHub (see the <a href="#" class="pull-request-url" target="_blank">pull request</a>). It will be now reviewed and then merged into the library. Thank you for your contribution!';
   str += '<div class="button-bar">';
-  str += '<button class="primary">Back to homepage</button>';
+  str += '<button class="primary" data-action="home">Back to homepage</button> ';
+  str += '<button class="secondary" data-action="restart">Create another fixture</button>';
   str += '</div>';
-  str += '</div>';  // .done
+  str += '</div>';  // .success
 
   str += '<div class="state error">';
   str += 'Unfortunately, there was an error while uploading. Please copy the following data and <a href="https://github.com/FloEdelmann/open-fixture-library/issues/new" target="_blank">manually submit them to GitHub</a>.';
   str += '<pre></pre>';
   str += '<div class="button-bar">';
-  str += '<button class="primary">Back to homepage</button>';
+  str += '<button class="primary" data-action="home">Back to homepage</button>';
   str += '</div>';
   str += '</div>';  // .error
 
@@ -481,7 +482,7 @@ function getSubmitDialogString() {
   str += 'Unfortunately, the fixture you uploaded was invalid. Please correct the following mistakes before trying again.';
   str += '<pre></pre>';
   str += '<div class="button-bar">';
-  str += '<button class="primary">Back to homepage</button>';
+  str += '<button class="primary" data-action="home">Back to homepage</button>';
   str += '</div>';
   str += '</div>';  // .invalid
 

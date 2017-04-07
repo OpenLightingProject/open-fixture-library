@@ -162,10 +162,14 @@ function initDialogs() {
     this.node.querySelector('.state.' + newState).hidden = false;
   };
 
-  [].forEach.call(dialogs.submit.node.querySelectorAll('button'), function(button) {
+  [].forEach.call(dialogs.submit.node.querySelectorAll('[data-action="home"]'), function(button) {
     button.addEventListener('click', function() {
       location.href = '/';
     });
+  });
+
+  dialogs.submit.node.querySelector('[data-action="restart"]').addEventListener('click', function() {
+    location.reload();
   });
 }
 
@@ -752,7 +756,7 @@ function saveFixture(event) {
 
           if (data.error == null) {
             dialogs.submit.node.querySelector('.pull-request-url').href = data.pullRequestUrl;
-            dialogs.submit.setState('done');
+            dialogs.submit.setState('success');
             clearAutoSave();
           }
           else {
