@@ -118,7 +118,6 @@ function initDialogs() {
 
   dialogs.channel.on('show', function(node) {
     dialogs.channel.closingHandled = false;
-    updateChannelColorVisibility();
 
     if ('pushState' in history) {
       history.pushState('channel-dialog', '');
@@ -290,7 +289,7 @@ function bindValuesToObject(container, context) {
   });
 }
 
-function updateChannelColorVisibility(event) {
+function updateChannelColorVisibility() {
   var channelColor = channelForm.querySelector('.channel-color');
   var colorEnabled = channelTypeSelect.value == 'SingleColor';
   channelColor.hidden = !colorEnabled;
@@ -381,12 +380,10 @@ function openChannelDialog(editMode) {
 
     [].forEach.call(element.querySelectorAll('[required]'), function(input) {
       if (hidden) {
-        input.dataset.disabled = input.disabled;
         input.disabled = true;
       }
-      else if ('disabled' in input.dataset) {
-        input.disabled = (input.dataset.disabled == 'true');
-        delete input.dataset.disabled;
+      else if (input.className == 'addition') {
+        updateCombobox(input.previousElementSibling, false);
       }
       else {
         input.disabled = false;
@@ -394,7 +391,7 @@ function openChannelDialog(editMode) {
     });
   });
 
-  if (editMode == 'edit-all' || editMode == 'edit-duplicate') {
+  if ((editMode == 'edit-all' || editMode == 'edit-duplicate') && !('changed' in currentChannel)) {
     for (var key in currentFixture.availableChannels[currentChannel.key]) {
       currentChannel[key] = clone(currentFixture.availableChannels[currentChannel.key][key]);
     }
@@ -411,6 +408,10 @@ function openChannelDialog(editMode) {
       modeName = '"' + currentFixture.modes[currentChannel.modeIndex].name + '"';
     }
     dialogs.channel.node.querySelector('.mode-name').textContent = modeName;
+  }
+
+  if (editMode != 'add-existing') {
+    updateChannelColorVisibility();
   }
 
   dialogs.channel.show();
