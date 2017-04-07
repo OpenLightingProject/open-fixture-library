@@ -144,12 +144,6 @@ function initDialogs() {
   // channel edit dialog
   [].forEach.call(dialogs.chooseChannelEditMode.node.querySelectorAll('button'), function(button) {
     button.addEventListener('click', function() {
-      for (var key in currentFixture.availableChannels[currentChannel.key]) {
-        currentChannel[key] = clone(currentFixture.availableChannels[currentChannel.key][key]);
-      }
-
-      prefillFormElements(dialogs.channel.node, currentChannel);
-
       dialogs.chooseChannelEditMode.hide();
       openChannelDialog(this.dataset.action);
     });
@@ -362,6 +356,12 @@ function openChannelDialog(editMode) {
 
   if (editMode == 'edit-all' || editMode == 'edit-duplicate') {
     dialogs.channel.node.dataset.state = 'edit';
+
+    for (var key in currentFixture.availableChannels[currentChannel.key]) {
+      currentChannel[key] = clone(currentFixture.availableChannels[currentChannel.key][key]);
+    }
+
+    prefillFormElements(dialogs.channel.node, currentChannel);
   }
   else if (editMode == 'create') {
     dialogs.channel.node.dataset.state = 'create';
@@ -454,7 +454,17 @@ function editChannel() {
       event.preventDefault();
       currentChannel.key = channelItem.dataset.channelKey;
       currentChannel.modeIndex = modeIndex;
-      dialogs.chooseChannelEditMode.show();
+
+      var channelUsages = currentFixture.modes.filter(function(mode) {
+        return mode.channels.indexOf(channelItem.dataset.channelKey) != -1;
+      }).length;
+
+      if (channelUsages > 1) {
+        dialogs.chooseChannelEditMode.show();
+      }
+      else {
+        openChannelDialog('edit-all');
+      }
     });
 
     channelItem.querySelector('.display-name').textContent = currentChannel.name;
