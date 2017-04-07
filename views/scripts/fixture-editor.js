@@ -18,10 +18,12 @@ var channelTypeSelect;
 // templates
 var templatePhysical = document.getElementById('template-physical');
 var templateMode = document.getElementById('template-mode');
+var templateChannelLi = document.getElementById('template-channel-li');
 
 
 var dialogs = {
   channel: 'channel-dialog',
+  chooseChannelEditMode: 'choose-channel-edit-mode-dialog',
   restore: 'restore-dialog',
   submit: 'submit-dialog'
 };
@@ -124,17 +126,33 @@ function initDialogs() {
       history.back();
     }
 
-    if (dialogs.channel.closingHandled) {
-      return;
+    if (dialogs.channel.closingHandled || !currentChannel.changed) {
+      clear(currentChannel);
+      channelForm.reset();
     }
-
-    var changed = Object.keys(currentChannel).some(function(key) {
-      return key != 'modeIndex';
-    });
-
-    if (changed && !window.confirm('Do you want to lose the entered channel data?')) {
+    else if (window.confirm('Do you want to lose the entered channel data?')) {
+      clear(currentChannel);
+      channelForm.reset();
+      autoSave();
+    }
+    else {
       dialogs.channel.show();  // closing was a mistake -> show it again
     }
+  });
+
+
+  // channel edit dialog
+  [].forEach.call(dialogs.chooseChannelEditMode.node.querySelectorAll('button'), function(button) {
+    button.addEventListener('click', function() {
+      for (var key in currentFixture.availableChannels[currentChannel.key]) {
+        currentChannel[key] = clone(currentFixture.availableChannels[currentChannel.key][key]);
+      }
+
+      prefillFormElements(dialogs.channel.node, currentChannel);
+
+      dialogs.chooseChannelEditMode.hide();
+      openChannelDialog(this.dataset.action);
+    });
   });
 
 
@@ -266,6 +284,8 @@ function bindValuesToObject(container, context) {
         delete context[key];
       }
 
+      context.changed = true;
+
       autoSave();
     });
   });
@@ -308,7 +328,7 @@ function addMode(event) {
   newMode.querySelector('a.show-dialog').addEventListener('click', function(e) {
     e.preventDefault();
     currentChannel.modeIndex = modeIndex;
-    openChannelDialog();
+    openChannelDialog('create');
   });
 
   if (event) {
@@ -337,17 +357,25 @@ function updatePhysicalOverrideVisibility(usePhysicalOverride, physicalOverride)
   }
 }
 
-function openChannelDialog() {
-  var modeName = '#' + (currentChannel.modeIndex + 1);
+function openChannelDialog(editMode) {
+  currentChannel.editMode = editMode;
 
-  if ('shortName' in currentFixture.modes[currentChannel.modeIndex]) {
-    modeName = '"' + currentFixture.modes[currentChannel.modeIndex].shortName + '"';
+  if (editMode == 'edit-all' || editMode == 'edit-duplicate') {
+    dialogs.channel.node.dataset.state = 'edit';
   }
-  else if ('name' in currentFixture.modes[currentChannel.modeIndex]) {
-    modeName = '"' + currentFixture.modes[currentChannel.modeIndex].name + '"';
-  }
+  else if (editMode == 'create') {
+    dialogs.channel.node.dataset.state = 'create';
 
-  dialogs.channel.node.querySelector('.mode-name').textContent = modeName;
+    var modeName = '#' + (currentChannel.modeIndex + 1);
+
+    if ('shortName' in currentFixture.modes[currentChannel.modeIndex]) {
+      modeName = '"' + currentFixture.modes[currentChannel.modeIndex].shortName + '"';
+    }
+    else if ('name' in currentFixture.modes[currentChannel.modeIndex]) {
+      modeName = '"' + currentFixture.modes[currentChannel.modeIndex].name + '"';
+    }
+    dialogs.channel.node.querySelector('.mode-name').textContent = modeName;
+  }
 
   dialogs.channel.show();
 }
@@ -355,65 +383,84 @@ function openChannelDialog() {
 function editChannel() {
   // browser validation has already caught the big mistakes
 
-  /* Edit mode                                                create   addToMode
-   *
-   * 1. add new channel to current mode                       true     true
-   * 2. add existing channel to current mode                  false    true
-   * 3. edit existing channel in all modes                    false    false
-   * 4. duplicate and edit existing channel to current mode   true     true     (= 1.)
-   */
-  var create = false;
-  var addToMode = false;
-
   var channelKey = currentChannel.key;
-  if (channelKey === undefined) {
+  var modeIndex = currentChannel.modeIndex;
+
+  if (currentChannel.editMode == 'create') {
     channelKey = getKeyFromName(currentChannel.name, Object.keys(currentFixture.availableChannels));
-    create = true;
+
+    // update UI
+    var modeElem = editorForm.querySelector('.fixture-modes > .fixture-mode:nth-child(' + (modeIndex + 1) + ')');
+    createChannelLi(modeElem, channelKey, modeIndex);
+
+    // update model
+    currentFixture.modes[modeIndex].channels.push(channelKey);
   }
-
-  if ('modeIndex' in currentChannel) {
-    addToMode = true;
-    currentFixture.modes[currentChannel.modeIndex].channels.push(channelKey);
-
-    var modeElem = editorForm.querySelector('.fixture-modes > .fixture-mode:nth-child(' + (currentChannel.modeIndex + 1) + ')');
-    updateChannelName(modeElem, channelKey);
-  }
-
-  if (!create && !addToMode) {  // edit mode == 3.
-    [].forEach.call(editorForm.querySelectorAll('.fixture-mode'), function(modeElem) {
-      updateChannelName(modeElem, channelKey);
+  else if (currentChannel.editMode == 'edit-all') {
+    // update UI
+    [].forEach.call(editorForm.querySelectorAll(':not(a).fixture-mode'), function(modeElem) {
+      var channelItem = modeElem.querySelector('.mode-channels > [data-channel-key="' + channelKey + '"]');
+      channelItem.querySelector('.display-name').textContent = currentChannel.name;
     });
   }
+  else if (currentChannel.editMode == 'edit-duplicate') {
+    var oldChannelKey = channelKey;
+    channelKey = getKeyFromName(currentChannel.name, Object.keys(currentFixture.availableChannels));
 
-  if (create || !addToMode) {  // edit mode != 2.
+    // update UI
+    var modeElem = editorForm.querySelector('.fixture-modes > .fixture-mode:nth-child(' + (currentChannel.modeIndex + 1) + ')');
+    var channelItem = modeElem.querySelector('.mode-channels > [data-channel-key="' + oldChannelKey + '"]');
+    channelItem.dataset.channelKey = channelKey;
+    channelItem.querySelector('.display-name').textContent = currentChannel.name;
+
+    // update model
+    currentFixture.modes[modeIndex].channels = currentFixture.modes[modeIndex].channels.map(function(key) {
+      if (key == oldChannelKey) {
+        return channelKey;
+      }
+      return key;
+    });
+  }
+  else if (currentChannel.editMode == 'add-existing') {
+    // update UI
+    var modeElem = editorForm.querySelector('.fixture-modes > .fixture-mode:nth-child(' + (modeIndex + 1) + ')');
+    createChannelLi(modeElem, channelKey, modeIndex);
+
+    // update model
+    currentFixture.modes[modeIndex].channels.push(channelKey);
+  }
+
+  if (currentChannel.editMode != 'add-existing') {
+    // add or update current channel
     delete currentChannel.key;
     delete currentChannel.modeIndex;
+    delete currentChannel.changed;
+    delete currentChannel.editMode;
 
-    currentFixture.availableChannels[channelKey] = JSON.parse(JSON.stringify(currentChannel));
+    currentFixture.availableChannels[channelKey] = clone(currentChannel);
   }
 
-  // clear currentChannel (resetting to {} would remove bindings)
-  for (var key in currentChannel) {
-    delete currentChannel[key];
-  }
-
+  clear(currentChannel);
   autoSave();
 
-  channelForm.reset();
   dialogs.channel.closingHandled = true;
   dialogs.channel.hide();
 }
 
-function updateChannelName(modeElem, channelKey) {
-  var channelItem = modeElem.querySelector('.mode[data-channel-key=' + channelKey + ']');
+function createChannelLi(modeElem, channelKey, modeIndex) {
+  var channelItem = document.importNode(templateChannelLi.content, true).firstElementChild;
+  channelItem.setAttribute('data-channel-key', channelKey);
 
-  if (channelItem == null) {
-    channelItem = document.createElement('li');
-    channelItem.dataset.channelKey = channelKey;
-    modeElem.querySelector('.mode-channels').appendChild(channelItem);
-  }
+  channelItem.querySelector('.edit').addEventListener('click', function(event) {
+    event.preventDefault();
+    currentChannel.key = channelItem.dataset.channelKey;
+    currentChannel.modeIndex = modeIndex;
+    dialogs.chooseChannelEditMode.show();
+  });
 
-  channelItem.textContent = ('name' in currentChannel) ? currentChannel.name : channelKey;
+  channelItem.querySelector('.display-name').textContent = currentChannel.name;
+
+  modeElem.querySelector('.mode-channels').appendChild(channelItem);
 }
 
 
@@ -465,6 +512,8 @@ function restoreAutoSave() {
       }
     }
 
+    currentFixture.availableChannels = clone(latestData.currentFixture.availableChannels);
+
     prefillFormElements(editorForm, latestData.currentFixture);
     updateRangeInputs(editorForm.querySelectorAll('.physical-lens-degrees input'));
 
@@ -487,10 +536,13 @@ function restoreAutoSave() {
       var usePhysicalOverride = modeElem.querySelector('.enable-physical-override');
       updatePhysicalOverrideVisibility(usePhysicalOverride, physicalOverride);
 
-      mode.channels.forEach(function(channel) {
-        for (var key in latestData.currentFixture.availableChannels[channel]) {
-          currentChannel[key] = latestData.currentFixture.availableChannels[channel][key];
+      mode.channels.forEach(function(channelKey) {
+        for (var key in latestData.currentFixture.availableChannels[channelKey]) {
+          currentChannel[key] = latestData.currentFixture.availableChannels[channelKey][key];
         }
+        currentChannel.key = channelKey;
+        currentChannel.modeIndex = index;
+        currentChannel.editMode = 'add-existing';
         editChannel();
       });
     });
@@ -504,7 +556,7 @@ function restoreAutoSave() {
         currentChannel[key] = latestData.currentChannel[key];
       }
       prefillFormElements(dialogs.channel.node, currentChannel);
-      openChannelDialog();
+      openChannelDialog(currentChannel.editMode);
     }
 
     readyToAutoSave = true;
@@ -735,4 +787,14 @@ function getKeyFromName(name, uniqueInList) {
   }
 
   return name + '-' + (occurences + 1);
+}
+
+function clear(obj) {
+  for (var key in obj) {
+    delete obj[key];
+  }
+}
+
+function clone(obj) {
+  return JSON.parse(JSON.stringify(obj));
 }

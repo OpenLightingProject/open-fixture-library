@@ -288,11 +288,20 @@ module.exports = function(options) {
   str += '</section>';
 
   str += '<h3>Channels</h3>';
-  str += '<ul class="mode-channels"></ul>';
+  str += '<ol class="mode-channels"></ol>';
   str += '<a href="#channel-dialog" class="show-dialog">create new channel</a>';
 
   str += '</section>'; // .fixture-mode
   str += '</template>'; // #template-mode
+
+
+  // Channel list item template
+  str += '<template id="template-channel-li">';
+  str += '<li data-channel-key="">';
+  str += '<span class="display-name"></span>';
+  str += '<a href="#channel-editor" class="edit" title="Edit channel">' + require('../includes/svg')({svgBasename: 'pencil'}) + '</a>';
+  str += '</li>';
+  str += '</template>'; // # template-channel-li
 
 
   str += '<div class="button-bar">';
@@ -305,9 +314,15 @@ module.exports = function(options) {
   options.dialogs = [
     {
       id: 'channel-dialog',
-      title: 'Create new channel for mode <span class="mode-name"></span>',
+      title: '<span class="state-create">Create new channel for mode <span class="mode-name"></span></span><span class="state-edit">Edit channel</span>',
       content: getChannelDialogString(),
       cancellable: true
+    },
+    {
+      id: 'choose-channel-edit-mode-dialog',
+      title: 'Edit channel in all modes or just in this one?',
+      content: getChooseChannelEditModeDialogString(),
+      cancellable: false
     },
     {
       id: 'restore-dialog',
@@ -415,10 +430,19 @@ function getChannelDialogString() {
   str += '</section>';
 
   str += '<div class="button-bar">';
-  str += '<input type="submit" value="Add channel" />';
+  str += '<button type="submit"><span class="state-create">Create channel</span><span class="state-edit">Save changes</span></button>';
   str += '</div>';
 
   str += '</form>';
+
+  return str;
+}
+
+function getChooseChannelEditModeDialogString() {
+  let str = '<div class="button-bar">';
+  str += '<button class="secondary" data-action="edit-duplicate">Only in this mode</button> ';
+  str += '<button class="primary" data-action="edit-all">In all modes</button>';
+  str += '</div>';
 
   return str;
 }
