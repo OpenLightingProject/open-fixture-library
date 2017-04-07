@@ -299,6 +299,7 @@ module.exports = function(options) {
   str += '<template id="template-channel-li">';
   str += '<li data-channel-key="">';
   str += '<span class="display-name"></span>';
+  str += '<a href="#remove" class="remove" title="Remove channel">' + require('../includes/svg')({svgBasename: 'close'}) + '</a>';
   str += '<a href="#channel-editor" class="edit" title="Edit channel">' + require('../includes/svg')({svgBasename: 'pencil'}) + '</a>';
   str += '</li>';
   str += '</template>'; // # template-channel-li

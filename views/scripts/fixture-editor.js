@@ -134,7 +134,7 @@ function initDialogs() {
       clear(currentChannel);
       channelForm.reset();
     }
-    else if (window.confirm('Do you want to lose the entered channel data?')) {
+    else if (currentChannel.editMode == 'add-existing' || window.confirm('Do you want to lose the entered channel data?')) {
       clear(currentChannel);
       channelForm.reset();
       autoSave();
@@ -321,6 +321,8 @@ function addMode(event) {
     e.preventDefault();
     currentFixture.modes.splice(modeIndex, 1);
     newMode.remove();
+
+    autoSave();
   });
 
   newMode.querySelector('.add-channel').addEventListener('click', function(e) {
@@ -502,6 +504,16 @@ function editChannel() {
       else {
         openChannelDialog('edit-all');
       }
+    });
+
+    channelItem.querySelector('.remove').addEventListener('click', function(event) {
+      event.preventDefault();
+
+      var channels = currentFixture.modes[modeIndex].channels;
+      channels.splice(channels.indexOf(channelItem.dataset.channelKey), 1);
+      channelItem.remove();
+
+      autoSave();
     });
 
     channelItem.querySelector('.display-name').textContent = ('name' in currentChannel) ? currentChannel.name : currentFixture.availableChannels[channelKey].name;
