@@ -141,6 +141,10 @@ a.card, .list a {
   transform: translate(-50%, -50%) scale(1);
 }
 
+.dialog h2:focus {
+  outline: none;
+}
+
 @media (max-width: $phone) {
   .list > li > a > svg {
     width: 24px;
