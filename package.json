@@ -21,17 +21,18 @@
     "express": "4.14.1",
     "github": "^9.2.0",
     "html-minifier": "^3.4.2",
-    "minimist": "^1.2.0",
     "node-sass-middleware": "^0.11.0",
     "node-zip": "^1.1.1",
+    "prettydiff": "^99.0.1",
     "xml2js": "^0.4.17"
   },
   "devDependencies": {
     "colors": "^1.1.2",
     "diff": "^3.2.0",
     "js-schema": "^1.0.1",
-    "nodemon": "^1.11.0",
-    "simple-git": "^1.70.0"
+    "minimist": "^1.2.0",
+    "node-delete": "^0.1.2",
+    "nodemon": "^1.11.0"
   },
   "homepage": "http://open-fixture-library.herokuapp.com/",
   "repository": {

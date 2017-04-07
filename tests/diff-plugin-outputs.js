@@ -2,9 +2,12 @@
 
 const fs = require('fs');
 const path = require('path');
-const del = require('node-delete');
+const child_process = require('child_process');
 const minimist = require('minimist');
-const git = require('simple-git')();
+const del = require('node-delete');
+const zip = require('node-zip');
+const colors = require('colors');
+const diff = require('diff');
 
 const args = minimist(process.argv.slice(2), {
   string: ['p', 'r'],
@@ -17,7 +20,8 @@ const args = minimist(process.argv.slice(2), {
 if (args.help) {
   const helpMessage = [
     'This script compares the output of the given fixtures with another version in the current repository.',
-    `Usage: ${process.argv[1]} <-p plugin> [-r ref] <fixtures>`,
+    'Fixtures have to be declared with the path to its file in the fixtures/ directory.',
+    `Usage: ${process.argv[1]} -p <plugin name> [-r <git reference>] <fixture> [<more fixtures>]`,
     'Options:',
     '  --plugin, -p: Which plugin should be used to output fixtures.',
     '                E. g. ecue or qlcplus',
@@ -35,8 +39,10 @@ if (!args.plugin) {
   process.exit(1);
 }
 
+console.log(`== Diffing the output of ${args._.length} fixture(s) ==\n`);
 
-// get manufacturer and fixture data
+
+// get manufacturer and fixture data later used by export plugins
 const options = {
   manufacturers: JSON.parse(fs.readFileSync(
     path.join(__dirname, '..', 'fixtures', 'manufacturers.json')
@@ -45,6 +51,7 @@ const options = {
 }
 let library = [];
 for (let fixture of args._) {
+  // fixture path is relative to user's working directory
   const fixPath = path.join(process.env.PWD, fixture);
   library.push({
     manufacturerKey: path.basename(path.dirname(fixPath)),
@@ -52,30 +59,134 @@ for (let fixture of args._) {
   });
 }
 
-const pluginScript = path.join(__dirname, '..', 'plugins', args.plugin + '.js');
-
+const scriptName = path.join('plugins', args.plugin + '.js');
 const currentOut = path.join(__dirname, 'current_output');
+const compareOut = path.join(__dirname, 'compare_output');
+
+// export with current plugin script
 del.sync([currentOut]);
-exportFixtures(currentOut);
+exportFixtures(
+  currentOut,
+  path.join(__dirname, '..', scriptName)
+);
 
 // get compare plugin script
-git.checkout([args.ref, '--', pluginScript]);
-const compareOut = path.join(__dirname, 'compare_output');
-del.sync([compareOut]);
-exportFixtures(compareOut);
+const compareArchive = path.join(__dirname, `${args.plugin}-compare.zip`);
+child_process.exec(
+  `git archive ${args.ref} ${scriptName} -o ${compareArchive}`,
+  {
+    cwd: path.join(__dirname, '..')
+  },
+  (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error downloading compare plugin script: ${error.message}`);
+      return;
+    }
+    if (stderr) {
+      console.error(`Error downloading compare plugin script: ${stderr}`);
+      return;
+    }
+    if (stdout) {
+      console.log(stdout);
+    }
 
-// restore plugin script
-git.reset(['HEAD', pluginScript]);
-git.checkout(['--', pluginScript]);
+    // unzip archive to get compare script file
+    const unzip = new zip(fs.readFileSync(compareArchive));
+    const compareScript = path.join(__dirname, scriptName);
+    if (!fs.existsSync(path.dirname(compareScript))) {
+      fs.mkdirSync(path.dirname(compareScript));
+    }
+    fs.writeFileSync(compareScript, unzip.files[scriptName].asNodeBuffer());
+    del(compareArchive);
 
-// get compare plugin script:
-// $ git checkout 0ece5c4 -- plugins/ecue.js
+    // export with compare plugin script
+    del.sync([compareOut]);
+    exportFixtures(
+      compareOut,
+      compareScript
+    );
+    del(path.join(__dirname, 'plugins'));
 
-// restore plugin script:
-// $ git checkout -- plugins/ecue.js
+    // make recursive diff
+    diffDir('');
+    findAddedFiles('');
+    console.log('Done.');
+  }
+)
 
-function exportFixtures(outputPath) {
-  delete require.cache[require.resolve(pluginScript)]
+// diffs recursively compare output vs. current output
+function diffDir(subdir) {
+  const dir = path.join(compareOut, subdir);
+  const files = fs.readdirSync(dir);
+
+  for (const file of files) {
+    const filePath = path.join(subdir, file);
+    const filePathCompare = path.join(compareOut, filePath);
+    const filePathCurrent = path.join(currentOut, filePath);
+
+    if (!fs.existsSync(filePathCurrent)) {
+      console.log(colors.red(`File or directory ${filePath} was removed.`))
+    }
+    else {
+      if (fs.lstatSync(filePathCompare).isDirectory()) {
+        diffDir(filePath);
+      }
+      else {
+        const diffs = diff.diffWords(
+          fs.readFileSync(filePathCompare, 'utf-8'),
+          fs.readFileSync(filePathCurrent, 'utf-8')
+        );
+
+        if (diffs.length > 1) {
+          console.log(colors.yellow(`Diff for ${filePath}`));
+          diffs.forEach(function(part) {
+            if (part.added) {
+              process.stdout.write(colors.green(part.value));
+            }
+            else if (part.removed) {
+              process.stdout.write(colors.red(part.value));
+            }
+            else {
+              process.stdout.write(colors.grey(part.value));
+            }
+          });
+          console.log();
+        }
+      }
+    }
+  }
+}
+
+// checks if files exist in current output but not in compare output
+// -> that's the diff that's not covered by diffDir(..)
+function findAddedFiles(subdir) {
+  const dir = path.join(currentOut, subdir);
+  const files = fs.readdirSync(dir);
+
+  for (const file of files) {
+    const filePath = path.join(subdir, file);
+    const filePathCompare = path.join(compareOut, filePath);
+    const filePathCurrent = path.join(currentOut, filePath);
+
+    if (!fs.existsSync(filePathCompare)) {
+      console.log(colors.green(`File or directory ${filePath} was added.`))
+    }
+    else if (fs.lstatSync(filePathCurrent).isDirectory()) {
+      findAddedFiles(filePath);
+    }
+  }
+}
+
+
+function exportFixtures(outputPath, pluginScript) {
+  try {
+    fs.accessSync(pluginScript, fs.constants.R_OK);
+  }
+  catch (e) {
+    console.error(e.message);
+    return;
+  }
+
   let plugin = require(pluginScript);
 
   if (!fs.existsSync(outputPath)) {
@@ -87,7 +198,6 @@ function exportFixtures(outputPath) {
     if (!fs.existsSync(path.dirname(outFilePath))) {
       fs.mkdirSync(path.dirname(outFilePath));
     }
-    console.log(outFilePath);
     fs.writeFileSync(outFilePath, outFile.content);
   }
 }
