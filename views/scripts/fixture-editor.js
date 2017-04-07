@@ -539,6 +539,15 @@ function autoSave() {
   console.log('autoSave!', currentFixture, currentChannel);
 }
 
+function clearAutoSave() {
+  if (!storageAvailable || !readyToAutoSave) {
+    return;
+  }
+
+  // use an array to be future-proof (maybe we want to support multiple browser tabs)
+  localStorage.removeItem('autoSave');
+}
+
 function restoreAutoSave() {
   if (!storageAvailable) {
     return;
@@ -546,12 +555,14 @@ function restoreAutoSave() {
 
   var autoSaved = localStorage.getItem('autoSave');
   if (!autoSaved) {
+    editorForm.reset();
     readyToAutoSave = true;
     return;
   }
 
   autoSaved = JSON.parse(autoSaved);
   if (autoSaved.length == 0) {
+    editorForm.reset();
     readyToAutoSave = true;
     return;
   }
@@ -742,6 +753,7 @@ function saveFixture(event) {
           if (data.error == null) {
             dialogs.submit.node.querySelector('.pull-request-url').href = data.pullRequestUrl;
             dialogs.submit.setState('done');
+            clearAutoSave();
           }
           else {
             throw new Error(data.error);
