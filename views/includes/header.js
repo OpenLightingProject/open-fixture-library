@@ -41,7 +41,7 @@ module.exports = function(options) {
   </header>
 <div id="content">`;
 
-  for (message of options.messages) {
+  for (let message of options.messages) {
     str += `<div class="message message-${message.type}">${message.text}</div>`;
   }
 

@@ -445,24 +445,23 @@ function editChannel() {
 
   dialogs.channel.closingHandled = true;
   dialogs.channel.hide();
+
+  function createChannelLi(modeElem, channelKey, modeIndex) {
+    var channelItem = document.importNode(templateChannelLi.content, true).firstElementChild;
+    channelItem.setAttribute('data-channel-key', channelKey);
+
+    channelItem.querySelector('.edit').addEventListener('click', function(event) {
+      event.preventDefault();
+      currentChannel.key = channelItem.dataset.channelKey;
+      currentChannel.modeIndex = modeIndex;
+      dialogs.chooseChannelEditMode.show();
+    });
+
+    channelItem.querySelector('.display-name').textContent = currentChannel.name;
+
+    modeElem.querySelector('.mode-channels').appendChild(channelItem);
+  }
 }
-
-function createChannelLi(modeElem, channelKey, modeIndex) {
-  var channelItem = document.importNode(templateChannelLi.content, true).firstElementChild;
-  channelItem.setAttribute('data-channel-key', channelKey);
-
-  channelItem.querySelector('.edit').addEventListener('click', function(event) {
-    event.preventDefault();
-    currentChannel.key = channelItem.dataset.channelKey;
-    currentChannel.modeIndex = modeIndex;
-    dialogs.chooseChannelEditMode.show();
-  });
-
-  channelItem.querySelector('.display-name').textContent = currentChannel.name;
-
-  modeElem.querySelector('.mode-channels').appendChild(channelItem);
-}
-
 
 function autoSave() {
   if (!storageAvailable || !readyToAutoSave) {
@@ -705,69 +704,69 @@ function saveFixture(event) {
   xhr.send(JSON.stringify(sendObject));
 
   console.log(JSON.stringify(out, null, 2));
-}
 
-function savePhysical(to, from) {
-  to.physical = {};
+  function savePhysical(to, from) {
+    to.physical = {};
 
-  for (var key in properties.physical) {
-    if (key == 'dimensions' && 'physical-dimensions-width' in from) {
-      to.physical.dimensions = [
-        from['physical-dimensions-width'],
-        from['physical-dimensions-height'],
-        from['physical-dimensions-depth']
-      ];
-    }
-    else if ('type' in properties.physical[key] && properties.physical[key].type == 'object') {
-      to.physical[key] = {};
+    for (var key in properties.physical) {
+      if (key == 'dimensions' && 'physical-dimensions-width' in from) {
+        to.physical.dimensions = [
+          from['physical-dimensions-width'],
+          from['physical-dimensions-height'],
+          from['physical-dimensions-depth']
+        ];
+      }
+      else if ('type' in properties.physical[key] && properties.physical[key].type == 'object') {
+        to.physical[key] = {};
 
-      for (var subKey in properties.physical[key].properties) {
-        if (subKey == 'degreesMinMax' && 'physical-lens-degrees-min' in from) {
-          to.physical.lens.degreesMinMax = [
-            from['physical-lens-degrees-min'],
-            from['physical-lens-degrees-max']
-          ];
+        for (var subKey in properties.physical[key].properties) {
+          if (subKey == 'degreesMinMax' && 'physical-lens-degrees-min' in from) {
+            to.physical.lens.degreesMinMax = [
+              from['physical-lens-degrees-min'],
+              from['physical-lens-degrees-max']
+            ];
+          }
+          else if ('physical-' + key + '-' + subKey in from) {
+            to.physical[key][subKey] = getCurrentFixtureValue('physical-' + key + '-' + subKey, from);
+          }
         }
-        else if ('physical-' + key + '-' + subKey in from) {
-          to.physical[key][subKey] = getCurrentFixtureValue('physical-' + key + '-' + subKey, from);
+
+        if (JSON.stringify(to.physical[key]) == '{}') {
+          delete to.physical[key];
         }
       }
-
-      if (JSON.stringify(to.physical[key]) == '{}') {
-        delete to.physical[key];
+      else if ('physical-' + key in from) {
+        to.physical[key] = getCurrentFixtureValue('physical-' + key, from);
       }
     }
-    else if ('physical-' + key in from) {
-      to.physical[key] = getCurrentFixtureValue('physical-' + key, from);
+
+    if (JSON.stringify(to.physical) == '{}') {
+      delete to.physical;
     }
   }
 
-  if (JSON.stringify(to.physical) == '{}') {
-    delete to.physical;
-  }
-}
-
-function saveChannel(to, from) {
-  for (var key in properties.channel) {
-    if (key in from) {
-      to[key] = from[key];
+  function saveChannel(to, from) {
+    for (var key in properties.channel) {
+      if (key in from) {
+        to[key] = from[key];
+      }
     }
   }
-}
 
-function saveMode(to, from) {
-  for (var key in properties.mode) {
-    if (key == 'physical') {
-      savePhysical(to, from);
-    }
-    else if (key in from) {
-      to[key] = from[key];
+  function saveMode(to, from) {
+    for (var key in properties.mode) {
+      if (key == 'physical') {
+        savePhysical(to, from);
+      }
+      else if (key in from) {
+        to[key] = from[key];
+      }
     }
   }
-}
 
-function getCurrentFixtureValue(key, from) {
-  return from[key] == '[add-value]' && key + '-new' in from ? from[key + '-new'] : from[key];
+  function getCurrentFixtureValue(key, from) {
+    return from[key] == '[add-value]' && key + '-new' in from ? from[key + '-new'] : from[key];
+  }
 }
 
 function getKeyFromName(name, uniqueInList) {
