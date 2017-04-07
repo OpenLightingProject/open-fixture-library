@@ -671,7 +671,7 @@ function saveFixture(event) {
   dialogs.submit.show();
 
   var manKey = currentFixture['manufacturer-shortName'];
-  if (!currentFixture.useExistingManufacturer) {
+  if (currentFixture.useExistingManufacturer === false) {
     manKey = currentFixture['new-manufacturer-shortName'];
     out.manufacturers[manKey] = {
       name: currentFixture['new-manufacturer-name']
