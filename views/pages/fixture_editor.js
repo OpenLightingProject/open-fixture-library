@@ -11,7 +11,7 @@ module.exports = function(options) {
 
   str += '<noscript>Please enable JavaScript to use the Fixture Editor!</noscript>';
 
-  str += '<form id="fixture-editor" action="#">'; // for now
+  str += '<form id="fixture-editor" action="#">';
 
 
   // Manufacturer
@@ -289,7 +289,7 @@ module.exports = function(options) {
 
   str += '<h3>Channels</h3>';
   str += '<ol class="mode-channels"></ol>';
-  str += '<a href="#channel-dialog" class="show-dialog">create new channel</a>';
+  str += '<a href="#channel-dialog" class="add-channel">add channel</a>';
 
   str += '</section>'; // .fixture-mode
   str += '</template>'; // #template-mode
@@ -314,7 +314,7 @@ module.exports = function(options) {
   options.dialogs = [
     {
       id: 'channel-dialog',
-      title: '<span class="state-create">Create new channel for mode <span class="mode-name"></span></span><span class="state-edit">Edit channel</span>',
+      title: '<span data-edit-modes="add-existing">Add channel to mode </span><span data-edit-modes="create">Create new channel for mode </span><span class="mode-name" data-edit-modes="create add-existing"></span><span data-edit-modes="edit-all edit-duplicate">Edit channel</span>',
       content: getChannelDialogString(),
       cancellable: true
     },
@@ -357,6 +357,13 @@ function getRestoreDialogString() {
 
 function getChannelDialogString() {
   let str = '<form action="#">';
+
+  str += '<div data-edit-modes="add-existing">';
+  str += '<select size="10" required data-key="key"></select>';
+  str += ' or <a href="#channel-dialog" class="create-channel">create a new channel</a>';
+  str += '</div>';
+
+  str += '<div data-edit-modes="create edit-all edit-duplicate">';
 
   str += '<section class="channel-name">';
   str += '<label>';
@@ -429,8 +436,10 @@ function getChannelDialogString() {
   str += '</label>';
   str += '</section>';
 
+  str += '</div>';  // [data-edit-modes]
+
   str += '<div class="button-bar">';
-  str += '<button type="submit"><span class="state-create">Create channel</span><span class="state-edit">Save changes</span></button>';
+  str += '<button type="submit"><span data-edit-modes="add-existing">Add channel</span><span data-edit-modes="create">Create channel</span><span data-edit-modes="edit-all edit-duplicate">Save changes</span></button>';
   str += '</div>';
 
   str += '</form>';

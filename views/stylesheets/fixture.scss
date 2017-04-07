@@ -269,11 +269,6 @@ a.fixture-mode {
   opacity: 1;
 }
 
-.dialog-container:not([data-state="create"]) .state-create,
-.dialog-container:not([data-state="edit"]) .state-edit {
-  display: none;
-}
-
 
 /* display mode cards in a 2-col layout */
 @media (min-width: $tablet) {

@@ -111,6 +111,11 @@ function initDialogs() {
     event.preventDefault();
   });
 
+  dialogs.channel.node.querySelector('.create-channel').addEventListener('click', function(event) {
+    event.preventDefault();
+    openChannelDialog('create');
+  });
+
   dialogs.channel.on('show', function(node) {
     dialogs.channel.closingHandled = false;
     updateChannelColorVisibility();
@@ -319,10 +324,10 @@ function addMode(event) {
     newMode.remove();
   });
 
-  newMode.querySelector('a.show-dialog').addEventListener('click', function(e) {
+  newMode.querySelector('.add-channel').addEventListener('click', function(e) {
     e.preventDefault();
     currentChannel.modeIndex = modeIndex;
-    openChannelDialog('create');
+    openChannelDialog('add-existing');
   });
 
   if (event) {
@@ -354,18 +359,49 @@ function updatePhysicalOverrideVisibility(usePhysicalOverride, physicalOverride)
 function openChannelDialog(editMode) {
   currentChannel.editMode = editMode;
 
-  if (editMode == 'edit-all' || editMode == 'edit-duplicate') {
-    dialogs.channel.node.dataset.state = 'edit';
+  if (editMode == 'add-existing') {
+    var unchosenChannels = Object.keys(currentFixture.availableChannels).filter(function(key) {
+      return currentFixture.modes[currentChannel.modeIndex].channels.indexOf(key) == -1;
+    });
 
+    if (unchosenChannels.length == 0) {
+      currentChannel.editMode = editMode = 'create';
+    }
+    else {
+      var options = '';
+      unchosenChannels.forEach(function(key) {
+        options += '<option value="' + key + '">' + key + '</option>';
+      });
+      dialogs.channel.node.querySelector('[data-key="key"]').innerHTML = options;
+    }
+  }
+
+  [].forEach.call(dialogs.channel.node.querySelectorAll('[data-edit-modes]'), function(element) {
+    var hidden = element.hidden = (element.dataset.editModes.indexOf(editMode) == -1);
+
+    [].forEach.call(element.querySelectorAll('[required]'), function(input) {
+      if (hidden) {
+        input.dataset.disabled = input.disabled;
+        input.disabled = true;
+      }
+      else if ('disabled' in input.dataset) {
+        input.disabled = (input.dataset.disabled == 'true');
+        delete input.dataset.disabled;
+      }
+      else {
+        input.disabled = false;
+      }
+    });
+  });
+
+  if (editMode == 'edit-all' || editMode == 'edit-duplicate') {
     for (var key in currentFixture.availableChannels[currentChannel.key]) {
       currentChannel[key] = clone(currentFixture.availableChannels[currentChannel.key][key]);
     }
 
     prefillFormElements(dialogs.channel.node, currentChannel);
   }
-  else if (editMode == 'create') {
-    dialogs.channel.node.dataset.state = 'create';
-
+  else if (editMode == 'create' || editMode == 'add-existing') {
     var modeName = '#' + (currentChannel.modeIndex + 1);
 
     if ('shortName' in currentFixture.modes[currentChannel.modeIndex]) {
@@ -467,7 +503,7 @@ function editChannel() {
       }
     });
 
-    channelItem.querySelector('.display-name').textContent = currentChannel.name;
+    channelItem.querySelector('.display-name').textContent = ('name' in currentChannel) ? currentChannel.name : currentFixture.availableChannels[channelKey].name;
 
     modeElem.querySelector('.mode-channels').appendChild(channelItem);
   }
