@@ -20,15 +20,9 @@
     padding: 0;
   }
 
-  & h2:first-of-type {
-    margin-right: 3rem; /* To make room for a close button */
-  }
-
   & .close {
     @include icon-button($red-700, $red-300);
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
+    float: right;
   }
 }
 

@@ -305,8 +305,8 @@ module.exports = function(options) {
   str += '</template>'; // # template-channel-li
 
 
-  str += '<div class="button-bar">';
-  str += '<button type="submit" class="save-fixture" disabled>Save</button>';
+  str += '<div class="button-bar right">';
+  str += '<button type="submit" class="save-fixture primary" disabled>Create fixture</button>';
   str += '</div>';
 
   str += '</form>';
@@ -348,7 +348,7 @@ module.exports = function(options) {
 
 function getRestoreDialogString() {
   let str = 'Do you want to restore the data (auto-saved <time></time>) to continue to create the fixture?';
-  str += '<div class="button-bar">';
+  str += '<div class="button-bar right">';
   str += '<button class="discard secondary">Discard data</button> ';
   str += '<button class="restore primary">Restore to continue work</button>';
   str += '</div>';
@@ -439,8 +439,8 @@ function getChannelDialogString() {
 
   str += '</div>';  // [data-edit-modes]
 
-  str += '<div class="button-bar">';
-  str += '<button type="submit"><span data-edit-modes="add-existing">Add channel</span><span data-edit-modes="create">Create channel</span><span data-edit-modes="edit-all edit-duplicate">Save changes</span></button>';
+  str += '<div class="button-bar right">';
+  str += '<button type="submit" class="primary"><span data-edit-modes="add-existing">Add channel</span><span data-edit-modes="create">Create channel</span><span data-edit-modes="edit-all edit-duplicate">Save changes</span></button>';
   str += '</div>';
 
   str += '</form>';
@@ -449,7 +449,7 @@ function getChannelDialogString() {
 }
 
 function getChooseChannelEditModeDialogString() {
-  let str = '<div class="button-bar">';
+  let str = '<div class="button-bar right">';
   str += '<button class="secondary" data-action="edit-duplicate">Only in this mode</button> ';
   str += '<button class="primary" data-action="edit-all">In all modes</button>';
   str += '</div>';
@@ -464,7 +464,7 @@ function getSubmitDialogString() {
 
   str += '<div class="state success">';
   str += 'Your fixture was successfully uploaded to GitHub (see the <a href="#" class="pull-request-url" target="_blank">pull request</a>). It will be now reviewed and then merged into the library. Thank you for your contribution!';
-  str += '<div class="button-bar">';
+  str += '<div class="button-bar right">';
   str += '<button class="primary" data-action="home">Back to homepage</button> ';
   str += '<button class="secondary" data-action="restart">Create another fixture</button>';
   str += '</div>';
@@ -473,7 +473,7 @@ function getSubmitDialogString() {
   str += '<div class="state error">';
   str += 'Unfortunately, there was an error while uploading. Please copy the following data and <a href="https://github.com/FloEdelmann/open-fixture-library/issues/new" target="_blank">manually submit them to GitHub</a>.';
   str += '<pre></pre>';
-  str += '<div class="button-bar">';
+  str += '<div class="button-bar right">';
   str += '<button class="primary" data-action="home">Back to homepage</button>';
   str += '</div>';
   str += '</div>';  // .error
@@ -481,7 +481,7 @@ function getSubmitDialogString() {
   str += '<div class="state invalid">';
   str += 'Unfortunately, the fixture you uploaded was invalid. Please correct the following mistakes before trying again.';
   str += '<pre></pre>';
-  str += '<div class="button-bar">';
+  str += '<div class="button-bar right">';
   str += '<button class="primary" data-action="home">Back to homepage</button>';
   str += '</div>';
   str += '</div>';  // .invalid

@@ -101,6 +101,9 @@ window.addEventListener('load', function() {
 function initDialogs() {
   for (var key in dialogs) {
     dialogs[key] = new A11yDialog(document.getElementById(dialogs[key]));
+    dialogs[key].on('show', function(node) {
+      node.querySelector('h2').focus();
+    });
   }
 
 

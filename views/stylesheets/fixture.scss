@@ -230,10 +230,6 @@ html:not(.js) #fixture-editor {
   display: none;
 }
 
-.button-bar {
-  margin: 2ex 0 0;
-}
-
 select[data-allow-additions] + input:disabled {
   display: none;
 }
@@ -251,7 +247,7 @@ a.fixture-mode {
   counter-reset: modes;
 }
 
-#fixture-editor .fixture-mode h2::after {
+#fixture-editor .fixture-mode:not(a) h2::after {
   counter-increment: modes;
   content: " #" counter(modes);
 }
