@@ -14,7 +14,10 @@ const testFixtures = [
 ]
 
 // load any undefined environment variables and complain about missing ones
-env(path.join(__dirname, '..', '.env'));
+const envFile = path.join(__dirname, '..', '.env');
+if (fs.existsSync(envFile)) {
+  env(envFile);
+}
 const requiredEnvVars = [
   'GITHUB_USER_TOKEN',
   'TRAVIS_REPO_SLUG',
