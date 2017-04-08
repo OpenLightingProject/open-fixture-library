@@ -133,9 +133,16 @@ module.exports = function(options) {
   str += '<section class="author">';
   str += '<label>';
   str += '<span class="label">Your name</span>';
-  str += '<span class="value">';
   str += '<input type="text" placeholder="e.g. Anonymous" required data-key="meta-author" />';
-  str += '<span class="hint">You can instead enter your GitHub username to be mentioned in the pull request.</span>';
+  str += '</label>';
+  str += '</section>';
+
+  str += '<section class="github-username">';
+  str += '<label>';
+  str += '<span class="label">GitHub username</span>';
+  str += '<span class="value">';
+  str += '<input type="text" data-key="meta-github-username" />';
+  str += '<span class="hint">If you want to be mentioned in the pull request.</span>';
   str += '</span>';
   str += '</label>';
   str += '</section>';

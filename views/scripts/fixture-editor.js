@@ -31,9 +31,7 @@ var dialogs = {
 
 var out = {
   manufacturers: {},
-  fixtures: {},
-  warnings: {},
-  errors: {}
+  fixtures: {}
 };
 
 // could be handed over by importer / localStorage
@@ -744,6 +742,10 @@ function saveFixture(event) {
     else if (key in currentFixture) {
       out.fixtures[fixKey][key] = currentFixture[key];
     }
+  }
+
+  if ('meta-github-username' in currentFixture) {
+    out.submitter = currentFixture['meta-github-username'];
   }
 
   const sendObject = {
