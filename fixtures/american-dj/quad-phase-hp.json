@@ -27,14 +27,14 @@
     "color": {
       "name": "Color",
       "type": "MultiColor",
-      "crossfade": "false"
+      "crossfade": false
     },
     "rotation": {
       "name": "Rotation",
       "type": "Speed",
       "defaultValue": 128,
       "highlightValue": 220,
-      "crossfade": "true"
+      "crossfade": true
     },
     "strobe": {
       "name": "Strobe",
