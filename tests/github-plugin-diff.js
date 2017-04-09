@@ -22,7 +22,6 @@ const requiredEnvVars = [
   'GITHUB_USER_TOKEN',
   'TRAVIS_REPO_SLUG',
   'TRAVIS_PULL_REQUEST',
-  'TRAVIS_EVENT_TYPE',
   'TRAVIS_BRANCH'
 ];
 for (let envVar of requiredEnvVars) {
@@ -32,7 +31,7 @@ for (let envVar of requiredEnvVars) {
   }
 }
 
-if (process.env.TRAVIS_EVENT_TYPE != 'pull_request') {
+if (isNaN(parseInt(process.env.TRAVIS_PULL_REQUEST))) {
   console.error('This test can only be run on pull requests.');
   process.exit(0);
 }
@@ -182,11 +181,11 @@ github.pullRequests.getFiles({
     for (let comment of comments) {
       if (comment.body.match(identification)) {
         lastEqualsMessage = comment.body.replace(/[\r]/g, '') === message;
-        console.log(lastEqualsMessage);
       }
     }
 
     if (!lastEqualsMessage) {
+      console.log(`Creating comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}`);
       github.issues.createComment({
         owner: repoOwner,
         repo: repoName,
