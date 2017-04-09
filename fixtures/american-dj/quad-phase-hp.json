@@ -1,0 +1,62 @@
+{
+  "name": "Quad Phase HP",
+  "shortName": "QPHP",
+  "categories": ["Flower"],
+  "meta": {
+    "authors": ["FloEdelmann"],
+    "createDate": "2017-04-09",
+    "lastModifyDate": "2017-04-09"
+  },
+  "manualURL": "http://intranet.americandj.com/ItemRelatedFiles/6976/quad_phase_hp.pdf",
+  "physical": {
+    "dimensions": [312, 198, 279],
+    "weight": 4,
+    "power": 64,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [65, 65]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "color": {
+      "name": "Color",
+      "type": "MultiColor",
+      "crossfade": "false"
+    },
+    "rotation": {
+      "name": "Rotation",
+      "type": "Speed",
+      "defaultValue": 128,
+      "highlightValue": 220,
+      "crossfade": "true"
+    },
+    "strobe": {
+      "name": "Strobe",
+      "type": "Strobe",
+      "highlightValue": 200
+    },
+    "shutter": {
+      "name": "Shutter",
+      "type": "Shutter",
+      "highlightValue": 255
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "color",
+        "rotation",
+        "strobe",
+        "shutter"
+      ]
+    }
+  ]
+}
