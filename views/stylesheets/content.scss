@@ -19,6 +19,11 @@
   &.list {
     padding: 0;
   }
+
+  & .close {
+    @include icon-button($red-700, $red-300);
+    float: right;
+  }
 }
 
 .list > li {
@@ -95,11 +100,59 @@ a.card, .list a {
   }
 }
 
+
+.dialog-container[aria-hidden="true"] {
+  visibility: hidden;
+}
+
+.dialog-overlay {
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.66);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.dialog {
+  background-color: rgb(255, 255, 255);
+  z-index: 1010;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) scale(0.9);
+  transform: translate(-50%, -50%) scale(0.9);
+  min-width: 20rem;
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+  transition: transform 0.1s, -webkit-transform 0.1s;
+}
+
+.dialog-container:not([aria-hidden="true"]) .dialog {
+  -webkit-transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.dialog h2:focus {
+  outline: none;
+}
+
 @media (max-width: $phone) {
   .list > li > a > svg {
     width: 24px;
     height: 24px;
     margin-left: .6em;
+  }
+
+  /* make dialogs cover the whole screen */
+  .dialog {
+    box-sizing: border-box;
+    max-width: none;
+    max-height: none;
+    width: 100%;
+    height: 100%;
   }
 }
 

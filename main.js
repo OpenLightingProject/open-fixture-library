@@ -7,6 +7,7 @@ const compression = require('compression');
 const sassMiddleware = require('node-sass-middleware');
 const browserify = require('browserify-middleware');
 const minifyHTML = require('html-minifier').minify;
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -131,10 +132,21 @@ app.get('/manufacturers', (request, response) => {
   response.render('pages/manufacturers');
 });
 
+app.get('/fixture-editor', (request, response) => {
+  response.render('pages/fixture_editor');
+});
+
 app.get('/search', (request, response) => {
   response.render('pages/search', {
     query: request.query
   });
+});
+
+// support json encoded bodies
+app.use(bodyParser.json());
+
+app.post('/ajax/add-fixtures', (request, response) => {
+  require(path.join(__dirname, 'lib', 'add-fixtures'))(request, response);
 });
 
 // if no other route applies

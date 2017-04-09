@@ -4,6 +4,8 @@ var logo;
 var searchInput;
 
 window.addEventListener('load', function() {
+  document.querySelector('html').classList.add('js');
+
   logo = document.querySelector('#home-logo');
   searchInput = document.querySelector('#header input');
 
@@ -13,8 +15,7 @@ window.addEventListener('load', function() {
   searchInput.addEventListener('blur', checkSearchInput, true);
 
   var downloadButton = document.querySelector('.download-button');
-
-  if (downloadButton !== undefined) {
+  if (downloadButton != null) {
     var links = downloadButton.querySelectorAll('a');
 
     for (var i=0; i<links.length; i++) {
