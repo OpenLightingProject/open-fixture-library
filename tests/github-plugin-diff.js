@@ -29,6 +29,9 @@ for (let envVar of requiredEnvVars) {
     console.error(`Environment variable ${envVar} is required for this script. Please define it in your system or in the .env file.`);
     process.exit(1);
   }
+  if (envVar != 'GITHUB_USER_TOKEN') {
+    console.log(`${envVar}=${process.env[envVar]}`);
+  }
 }
 
 if (isNaN(parseInt(process.env.TRAVIS_PULL_REQUEST))) {
