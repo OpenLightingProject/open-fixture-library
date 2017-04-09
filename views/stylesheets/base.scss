@@ -57,7 +57,7 @@ a {
   text-decoration: none;
   color: $blue-700;
   fill: $icon-dark;
-  transition: color 0.1s, fill 0.1s;
+  transition: color 0.1s, fill 0.1s, background-color 0.1s;
 
   &:hover,
   &:focus {
@@ -89,8 +89,152 @@ a {
   }
 }
 
+pre {
+  line-height: 1.3;
+  font-size: 0.9em;
+  background: $grey-100;
+  padding: 1em;
+  overflow: auto;
+  max-height: 15em;
+}
+
+select,
+textarea,
+input[type=text],
+input[type=email],
+input[type=search],
+input[type=url],
+input[type=number] {
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 0.4em;
+  background: #fff;
+  border: 1px solid #cfd6e6;
+  border-radius: 3px;
+  font-size: 0.95em;
+  font-family: LatoLatinRegular;
+  transition: border-color 0.2s;
+
+  &:focus {
+    border-color: $blue-300;
+  }
+}
+
+textarea {
+  min-height: 4em;
+  resize: vertical;
+}
+
+input[type=number] {
+  width: 8ex;
+}
+textarea,
+input[type=text],
+input[type=email],
+input[type=search],
+input[type=url] {
+  width: 40ex;
+}
+
+.button-bar {
+  margin: 2ex 0 0;
+}
+.button-bar.right {
+  text-align: right;
+}
+
+button.primary,
+button.secondary,
+input.primary,
+input.secondary {
+  background-color: $blue-700;
+  border-radius: 2px;
+  border: 1px solid $blue-700;
+  display: inline-block;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  padding: 0.5em 3ex;
+  transition: 0.1s background-color;
+}
+button.secondary,
+input.secondary {
+  background-color: $grey-50;
+  border-color: $grey-300;
+  color: $secondary-text-dark;
+}
+button.primary:hover,
+button.primary:focus,
+input.primary:hover,
+input.primary:focus {
+  background-color: $blue-300;
+}
+button.secondary:hover,
+button.secondary:focus,
+input.secondary:hover,
+input.secondary:focus {
+  background-color: $grey-300;
+}
+button.primary:active,
+button.secondary:active,
+input.primary:active,
+input.secondary:active {
+  position: relative;
+  top: 1px;
+}
+
+
 @media (max-width: $tablet) {
   html, body {
     font-size: 14px;
+  }
+}
+
+
+@mixin icon-button($hover-color, $active-color) {
+  $icon-size: 1.4em;
+  $padding: 0.3em;
+
+  display: block;
+  position: relative;
+  padding: 0 0 0 calc(#{$icon-size} + #{2*$padding});
+  width: 0;
+  height: calc(#{$icon-size} + #{2*$padding});
+  overflow: hidden;
+  border: 1px solid rgba($hover-color, 0);
+  border-radius: 3px;
+  background-color: rgba($hover-color, 0);
+  cursor: pointer;
+  color: $secondary-text-dark;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  & > svg {
+    display: block;
+    position: absolute;
+    width: $icon-size;
+    height: $icon-size;
+    top: $padding;
+    left: $padding;
+    fill: currentcolor;
+  }
+
+  &:focus {
+    border-color: $hover-color;
+    outline: none;
+  }
+
+  &:hover {
+    background-color: $hover-color;
+    color: $primary-text-light;
+  }
+
+  &:active {
+    background-color: $active-color;
+    border-color: transparent;
+    color: $primary-text-light;
   }
 }

@@ -18,7 +18,7 @@
     height: 4.5em;
     line-height: 4.5em;
     background-color: rgba(#e8e8e8, 0);
-    transition: all 0.2s;
+    transition: background-color 0.2s, color 0.2s;
 
     &:hover,
     &:focus {
@@ -36,74 +36,23 @@
   }
 
   input {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    padding: 0.4em;
-    background: #fff;
-    border: 1px solid #cfd6e6;
-    border-radius: 3px;
     font-size: 1.05em;
     line-height: 1.2;
     width: 100%;
-    transition: all 0.2s;
-
-    &:focus {
-      border-color: $blue-300;
-    }
   }
 
   button {
-    $icon-size: 1.4em;
-    $padding: 0.3em;
-
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     margin-left: 4px;
-    position: relative;
-    padding: 0 0 0 calc(#{$icon-size} + #{2*$padding});
-    width: 0;
-    height: calc(#{$icon-size} + #{2*$padding});
+
     box-sizing: content-box;
-    overflow: hidden;
     background-color: #fbfbfb;
-    border: 1px solid transparent;
-    border-radius: 3px;
     font-size: 1.05em;
     line-height: 1.2;
-    cursor: pointer;
-    color: $secondary-text-dark;
-    transition: all 0.2s;
 
-    &::-moz-focus-inner {
-      border: 0;
-    }
-
-    & > svg {
-      display: block;
-      position: absolute;
-      width: $icon-size;
-      height: $icon-size;
-      top: $padding;
-      left: $padding;
-      fill: currentcolor;
-    }
-
-    &:focus {
-      border-color: $blue-300;
-    }
-
-    &:hover {
-      background-color: $blue-300;
-      color: $primary-text-light;
-    }
-
-    &:active {
-      background-color: $blue-700;
-      border-color: transparent;
-      color: $primary-text-light;
-    }
+    @include icon-button($blue-300, $blue-700);
   }
 }
 
