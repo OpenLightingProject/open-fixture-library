@@ -878,7 +878,7 @@ function getKeyFromName(name, uniqueInList, forceSanitize) {
   }
 
   var sanitizeRegex = forceSanitize ? '' : '|^' + sanitize(name) + '(?:\-\d+)?$';
-  var nameRegexp = new RegExp('^' + name + '(?:\s+\d+)?' + sanitizeRegex +'$');
+  var nameRegexp = new RegExp('^' + name + '(?:\s+\d+)?' + sanitizeRegex +'$', 'i');
   var occurences = uniqueInList.filter(function(value) {
     return nameRegexp.test(value);
   }).length;
