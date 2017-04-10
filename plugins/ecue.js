@@ -7,7 +7,7 @@ const xml2js = require('xml2js');
 module.exports.name = 'e:cue';
 module.exports.version = '0.1.1';
 
-const fileTemplate = `<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+const fileTemplate = `<?xmlx version="1.0" encoding="UTF-8" standalone="yes" ?>
 <Document Owner="user" TypeVersion="2" SaveTimeStamp="%s">
     <Library>
         <Fixtures>
