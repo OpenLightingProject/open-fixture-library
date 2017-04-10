@@ -22,7 +22,8 @@ const requiredEnvVars = [
   'GITHUB_USER_TOKEN',
   'TRAVIS_REPO_SLUG',
   'TRAVIS_PULL_REQUEST',
-  'TRAVIS_BRANCH'
+  'TRAVIS_BRANCH',
+  'TRAVIS_COMMIT'
 ];
 for (let envVar of requiredEnvVars) {
   if (!(envVar in process.env)) {
@@ -34,7 +35,7 @@ for (let envVar of requiredEnvVars) {
   }
 }
 
-if (isNaN(parseInt(process.env.TRAVIS_PULL_REQUEST))) {
+if (!process.env.TRAVIS_PULL_REQUEST) {
   console.error('This test can only be run on pull requests.');
   process.exit(0);
 }
@@ -108,6 +109,7 @@ github.pullRequests.getFiles({
 
   const identification = '<!-- github-plugin-diff -->';
   let message = `${identification}\n`;
+  let message += `<!-- commit = ${process.env.TRAVIS_COMMIT} -->`;
 
   for (let fixture in fixtureData) {
     message += `## Modified \`${fixture}\` in this PR\n`;
