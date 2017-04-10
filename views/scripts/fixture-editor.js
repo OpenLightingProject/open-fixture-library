@@ -447,7 +447,7 @@ function editChannel() {
     // update UI
     [].forEach.call(editorForm.querySelectorAll(':not(a).fixture-mode'), function(modeElem) {
       var channelItem = modeElem.querySelector('.mode-channels > [data-channel-key="' + channelKey + '"]');
-      channelItem.querySelector('.display-name').textContent = currentChannel.name;
+      channelItem.querySelector('.display-name').textContent = getChannelName();
     });
   }
   else if (currentChannel.editMode == 'edit-duplicate') {
@@ -458,7 +458,7 @@ function editChannel() {
     var modeElem = editorForm.querySelector('.fixture-modes > .fixture-mode:nth-child(' + (currentChannel.modeIndex + 1) + ')');
     var channelItem = modeElem.querySelector('.mode-channels > [data-channel-key="' + oldChannelKey + '"]');
     channelItem.dataset.channelKey = channelKey;
-    channelItem.querySelector('.display-name').textContent = currentChannel.name;
+    channelItem.querySelector('.display-name').textContent = getChannelName();
 
     // update model
     currentFixture.modes[modeIndex].channels = currentFixture.modes[modeIndex].channels.map(function(key) {
@@ -528,9 +528,21 @@ function editChannel() {
       autoSave();
     });
 
-    channelItem.querySelector('.display-name').textContent = ('name' in currentChannel) ? currentChannel.name : currentFixture.availableChannels[channelKey].name;
+    channelItem.querySelector('.display-name').textContent = getChannelName();
 
     modeElem.querySelector('.mode-channels').appendChild(channelItem);
+  }
+
+  function getChannelName() {
+    if ('name' in currentChannel) {
+      return currentChannel.name;
+    }
+
+    if ('name' in currentFixture.availableChannels[channelKey]) {
+      return currentFixture.availableChannels[channelKey].name;
+    }
+
+    return channelKey;
   }
 }
 
