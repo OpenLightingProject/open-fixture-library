@@ -67,7 +67,10 @@ let foundLinkPromises = [];
 // start server
 const serverProcess = require('child_process').execFile(
   'node',
-  [path.join(__dirname, '..', 'main.js')]
+  [path.join(__dirname, '..', 'main.js')],
+  {
+    env: process.env
+  }
 );
 serverProcess.stdout.on('data', chunk => {
   console.log('Server message (stdout): ' + chunk);
