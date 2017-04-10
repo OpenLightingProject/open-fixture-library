@@ -484,6 +484,10 @@ function editChannel() {
     delete currentChannel.changed;
     delete currentChannel.editMode;
 
+    if (channelKey === currentChannel.name) {
+      delete currentChannel.name;
+    }
+
     currentFixture.availableChannels[channelKey] = clone(currentChannel);
   }
 
@@ -712,7 +716,7 @@ function saveFixture(event) {
     }
   }
 
-  var fixKey = manKey + '/' + getKeyFromName(currentFixture.name, otherFixtureKeys);
+  var fixKey = manKey + '/' + getKeyFromName(currentFixture.name, otherFixtureKeys, true);
 
   out.fixtures[fixKey] = {};
   for (var key in properties.fixture) {
@@ -852,14 +856,17 @@ function saveFixture(event) {
   }
 }
 
-function getKeyFromName(name, uniqueInList) {
-  name = name.toLowerCase().replace(/[^a-z0-9\-]+/g, '-');
+function getKeyFromName(name, uniqueInList, forceSanitize) {
+  if (forceSanitize) {
+    name = sanitze(name);
+  }
 
   if (!uniqueInList) {
     return name;
   }
 
-  var nameRegexp = new RegExp('^' + name + '(?:\s+\d+)?$');
+  var sanitizeRegex = forceSanitize ? '' : '|^' + sanitize(name) + '(?:-\d+)?$';
+  var nameRegexp = new RegExp('^' + name + '(?:\s+\d+)?' + sanitizeRegex +'$');
   var occurences = uniqueInList.filter(function(value) {
     return nameRegexp.test(value);
   }).length;
@@ -868,7 +875,11 @@ function getKeyFromName(name, uniqueInList) {
     return name;
   }
 
-  return name + '-' + (occurences + 1);
+  return sanitize(name) + '-' + (occurences + 1);
+
+  function sanitize(val) {
+    return val.toLowerCase().replace(/[^a-z0-9\-]+/g, '-');
+  }
 }
 
 function clear(obj) {
