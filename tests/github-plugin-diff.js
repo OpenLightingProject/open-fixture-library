@@ -30,6 +30,7 @@ for (let envVar of requiredEnvVars) {
     console.error(`Environment variable ${envVar} is required for this script. Please define it in your system or in the .env file.`);
     process.exit(1);
   }
+  // debug
   if (envVar != 'GITHUB_USER_TOKEN') {
     console.log(`${envVar}=${process.env[envVar]}`);
   }
@@ -72,165 +73,237 @@ const repoName = process.env.TRAVIS_REPO_SLUG.split('/')[1];
 let fixtureData = {};
 let pluginData = {};
 
-github.pullRequests.getFiles({
-  owner: repoOwner,
-  repo: repoName,
-  number: process.env.TRAVIS_PULL_REQUEST,
-  per_page: 100
-}, (err, res) => {
-  if (err) {
-    console.error(err);
-    process.exit(1);
-  }
+const identification = '<!-- github-plugin-diff -->';
+let prComment = null;
 
-  let criticalFiles = [];
-  for (let file of res.data) {
-    if (file.status === 'modified') {
-      const filename = file.filename;
-      if (filename.match(/fixtures\/(.+)\/(.+)\.json/)) {
-        fixtureData[filename] = {};
-        diffFixture(filename, 0);
-      }
-      else if (filename.match(/plugins\/(.+)\.js/)) {
-        criticalFiles.push(filename);
-        const plugin = path.basename(filename, '.js');
-        if (plugins.includes(plugin)) {
-          diffPluginOutputs({
-            plugin: plugin,
-            ref: process.env.TRAVIS_BRANCH,
-            fixtures: testFixtures
-          }, (outputData) => {
-            pluginData[plugin] = outputData;
-          });
+new Promise((resolve, reject) => {
+  getTestComment(1);
+
+  function getTestComment(page) {
+    github.issues.getComments({
+      owner: repoOwner,
+      repo: repoName,
+      number: process.env.TRAVIS_PULL_REQUEST,
+      per_page: 100,
+      page: page
+    }, (err, res) => {
+      if (res.data.length > 0) {
+        for (let comment of res.data) {
+          // get rid of \r linebreaks
+          comment.body = comment.body.replace(/[\r]/g, '');
+
+          if (comment.body.startsWith(identification)) {
+            prComment = comment;
+            const secondLine = comment.body.split('\n')[1];
+            return resolve(secondLine.match(/<!-- commit = (.*) -->/)[1]);
+          }
         }
+        getTestComment(page + 1);
       }
-    }
+      else {
+        resolve(process.env.TRAVIS_BRANCH);
+      }
+    });
   }
+})
+.then(ref => {
+  return github.repos.compareCommits({
+    owner: repoOwner,
+    repo: repoName,
+    base: ref,
+    head: process.env.TRAVIS_COMMIT
+  });
+})
+.then(res => {
+  return new Promise((resolve, reject) => {
+    criticalFiles(
+      res.data.files,
+      fixtureFilename => {
+        return resolve();
+      },
+      pluginFilename => {
+        return resolve();
+      },
+      reject
+    );
+  });
+})
+.then(
+  () => {
+    return new Promise((resolve, reject) => {
+      getFiles(1, []);
 
-  const identification = '<!-- github-plugin-diff -->';
+      function getFiles(page, files) {
+        github.pullRequests.getFiles({
+          owner: repoOwner,
+          repo: repoName,
+          number: process.env.TRAVIS_PULL_REQUEST,
+          per_page: 100,
+          page: page
+        }, (err, res) => {
+          if (res.data.length > 0) {
+            getFiles(page + 1, files.concat(res.data));
+          }
+          else {
+            criticalFiles(
+              files,
+              fixtureFilename => {
+                fixtureData[fixtureFilename] = {};
+                diffFixture(fixtureFilename, 0);
+              },
+              pluginFilename => {
+                const plugin = path.basename(pluginFilename, '.js');
+                if (plugins.includes(plugin)) {
+                  diffPluginOutputs({
+                    plugin: plugin,
+                    ref: process.env.TRAVIS_BRANCH,
+                    fixtures: testFixtures
+                  }, (outputData) => {
+                    pluginData[plugin] = outputData;
+                  });
+                }
+              },
+              resolve
+            );
+
+            function diffFixture(fixture, pluginIndex) {
+              if (pluginIndex in plugins) {
+                diffPluginOutputs({
+                  plugin: plugins[pluginIndex],
+                  ref: process.env.TRAVIS_BRANCH,
+                  fixtures: [fixture]
+                },
+                (outputData) => {
+                  fixtureData[fixture][plugins[pluginIndex]] = outputData;
+                  diffFixture(fixture, pluginIndex + 1);
+                });
+              }
+            }
+          }
+        });
+      }
+    });
+  },
+  () => {
+    console.log('No changes in plugin or fixture files since last commit.');
+    process.exit(0);
+  }
+)
+.then(() => {
   let message = [];
   message.push(`${identification}`);
   message.push(`<!-- commit = ${process.env.TRAVIS_COMMIT} -->`);
 
-  for (let fixture in fixtureData) {
-    message.push(`### Modified \`${fixture}\` in this PR`);
+  if (Object.keys(fixtureData) == 0 && Object.keys(pluginData) == 0) {
+    message.push('*No fixture or plugin files were changed in this commit.*')
+  }
+  else {
+    for (let fixture in fixtureData) {
+      message.push(`### Modified \`${fixture}\` in this PR`);
 
-    let hasContent = false;
-    for (let plugin in fixtureData[fixture]) {
-      const outputData = fixtureData[fixture][plugin];
+      let hasContent = false;
+      for (let plugin in fixtureData[fixture]) {
+        const pluginMessage = printPlugin(fixtureData[fixture][plugin])
+        if (pluginMessage.length > 0) {
+          hasContent = true;
+          message.push(`#### Output changed for plugin \`${plugin}\``);
+          message = message.concat(pluginMessage);
+        }
+      }
 
-      const hasRemoved = outputData.removedFiles.length > 0;
-      const hasAdded = outputData.addedFiles.length > 0;
-      const hasChanged = Object.keys(outputData.changedFiles).length > 0;
-      if (hasRemoved || hasAdded || hasChanged) {
-        hasContent = true;
-        message.push(`#### Output changed for plugin \`${plugin}\``);
-
-        if (hasRemoved) {
-          message += '#### Removed files\n';
-          for (let file of outputData.removedFiles) {
-            message.push(`- ${file}`);
-          }
-        }
-        if (hasAdded) {
-          message.push('#### Added files');
-          for (let file of outputData.addedFiles) {
-            message.push(`- ${file}`);
-          }
-        }
-        if (hasChanged && (hasRemoved || hasAdded)) {
-          message.push('#### Changed files');
-        }
-        for (let file in outputData.changedFiles) {
-          message.push('```diff');
-          message.push(`${outputData.changedFiles[file]}`);
-          message.push('```');
-        }
+      if (!hasContent) {
+        message.push('Output files not changed.');
       }
     }
 
-    if (!hasContent) {
-      message.push('Output files not changed.');
+    for (let plugin in pluginData) {
+      message.push(`### Modified plugin \`${plugin}\` in this PR`);
+
+      const pluginMessage = printPlugin(pluginData[plugin]);
+      if (pluginMessage.length > 0) {
+        message = message.concat(pluginMessage);
+      }
+      else {
+        message.push('Output files not changed.');
+      }
     }
   }
 
-  for (let plugin in pluginData) {
-    message.push(`## Modified plugin \`${plugin}\` in this PR`);
-
-    const outputData = pluginData[plugin];
+  function printPlugin(outputData) {
+    let pluginMessage = [];
 
     const hasRemoved = outputData.removedFiles.length > 0;
     const hasAdded = outputData.addedFiles.length > 0;
     const hasChanged = Object.keys(outputData.changedFiles).length > 0;
     if (hasRemoved || hasAdded || hasChanged) {
       if (hasRemoved) {
-        message += '### Removed files\n';
+        pluginMessage += '*Removed files*';
         for (let file of outputData.removedFiles) {
-          message.push(`- ${file}`);
+          pluginMessage.push(`- ${file}`);
         }
+        pluginMessage += '';
       }
+
       if (hasAdded) {
-        message += '### Added files\n';
+        pluginMessage.push('*Added files*');
         for (let file of outputData.addedFiles) {
-          message.push(`- ${file}`);
+          pluginMessage.push(`- ${file}`);
         }
+        pluginMessage += '';
+      }
+
+      if (hasChanged && (hasRemoved || hasAdded)) {
+        pluginMessage.push('*Changed files*');
       }
       for (let file in outputData.changedFiles) {
-        message.push(`### Changed file \`${file}\``);
-        message.push('```diff');
-        message.push(`${outputData.changedFiles[file]}`);
-        message.push('```');
+        pluginMessage.push('```diff');
+        pluginMessage.push(`${outputData.changedFiles[file]}`);
+        pluginMessage.push('```');
       }
     }
+
+    return pluginMessage;
   }
 
-  getLatestComment(1, [], comments => {
-    let lastEqualsMessage = false;
-    for (let comment of comments) {
-      if (comment.body.match(identification)) {
-        lastEqualsMessage = comment.body === message.join('\r\n');
-      }
-    }
-
-    if (!lastEqualsMessage) {
-      console.log(`Creating comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}`);
+  if (prComment == null) {
+    console.log(`Creating comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}`);
+    github.issues.createComment({
+      owner: repoOwner,
+      repo: repoName,
+      number: process.env.TRAVIS_PULL_REQUEST,
+      body: message.join('\n')
+    });
+  }
+  else {
+    if (prComment.body != message.join('\n')) {
+      console.log(`Updating comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST} and creating notify comment`);
+      github.issues.editComment({
+        owner: repoOwner,
+        repo: repoName,
+        id: prComment.id,
+        body: message.join('\n')
+      });
       github.issues.createComment({
         owner: repoOwner,
         repo: repoName,
         number: process.env.TRAVIS_PULL_REQUEST,
-        body: message.join('\n')
+        body: `*[Updated plugin output diff comment](#issuecomment-${prComment.id})*`
       });
     }
-  });
+  }
 });
 
-function diffFixture(fixture, pluginIndex) {
-  if (pluginIndex in plugins) {
-    diffPluginOutputs({
-      plugin: plugins[pluginIndex],
-      ref: process.env.TRAVIS_BRANCH,
-      fixtures: [fixture]
-    },
-    (outputData) => {
-      fixtureData[fixture][plugins[pluginIndex]] = outputData;
-      diffFixture(fixture, pluginIndex + 1);
-    });
+function criticalFiles(files, fixtureCallback, pluginCallback, endCallback) {
+  for (let file of files) {
+    if (file.status === 'modified') {
+      const filename = file.filename;
+      if (filename.match(/fixtures\/(.+)\/(.+)\.json/)) {
+        fixtureCallback(filename);
+      }
+      else if (filename.match(/plugins\/(.+)\.js/)) {
+        pluginCallback(filename);
+      }
+    }
   }
-}
-
-function getLatestComment(page, data, resolve) {
-  github.issues.getComments({
-    owner: repoOwner,
-    repo: repoName,
-    number: process.env.TRAVIS_PULL_REQUEST,
-    per_page: 100,
-    page: page
-  }, (err, res) => {
-    if (res.data.length > 0) {
-      getLatestComment(page + 1, data.concat(res.data), resolve);
-    }
-    else {
-      resolve(data);
-    }
-  });
+  endCallback();
 }
