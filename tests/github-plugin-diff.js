@@ -108,11 +108,12 @@ github.pullRequests.getFiles({
   }
 
   const identification = '<!-- github-plugin-diff -->';
-  let message = `${identification}\n`;
-  let message += `<!-- commit = ${process.env.TRAVIS_COMMIT} -->`;
+  let message = [];
+  message.push(`${identification}`);
+  message.push(`<!-- commit = ${process.env.TRAVIS_COMMIT} -->`);
 
   for (let fixture in fixtureData) {
-    message += `## Modified \`${fixture}\` in this PR\n`;
+    message.push(`### Modified \`${fixture}\` in this PR`);
 
     let hasContent = false;
     for (let plugin in fixtureData[fixture]) {
@@ -123,36 +124,38 @@ github.pullRequests.getFiles({
       const hasChanged = Object.keys(outputData.changedFiles).length > 0;
       if (hasRemoved || hasAdded || hasChanged) {
         hasContent = true;
-        message += `### Output for plugin \`${plugin}\`\n`;
+        message.push(`#### Output changed for plugin \`${plugin}\``);
 
         if (hasRemoved) {
           message += '#### Removed files\n';
           for (let file of outputData.removedFiles) {
-            message += `- ${file}\n`;
+            message.push(`- ${file}`);
           }
         }
         if (hasAdded) {
-          message += '#### Added files\n';
+          message.push('#### Added files');
           for (let file of outputData.addedFiles) {
-            message += `- ${file}\n`;
+            message.push(`- ${file}`);
           }
         }
+        if (hasChanged && (hasRemoved || hasAdded)) {
+          message.push('#### Changed files');
+        }
         for (let file in outputData.changedFiles) {
-          message += `#### Changed file \`${file}\`\n`;
-          message += '```diff\n';
-          message += `${outputData.changedFiles[file]}\n`;
-          message += '```\n';
+          message.push('```diff');
+          message.push(`${outputData.changedFiles[file]}`);
+          message.push('```');
         }
       }
     }
 
     if (!hasContent) {
-      message += 'Output files not changed.'
+      message.push('Output files not changed.');
     }
   }
 
   for (let plugin in pluginData) {
-    message += `## Modified plugin \`${plugin}\` in this PR\n`;
+    message.push(`## Modified plugin \`${plugin}\` in this PR`);
 
     const outputData = pluginData[plugin];
 
@@ -163,20 +166,20 @@ github.pullRequests.getFiles({
       if (hasRemoved) {
         message += '### Removed files\n';
         for (let file of outputData.removedFiles) {
-          message += `- ${file}\n`;
+          message.push(`- ${file}`);
         }
       }
       if (hasAdded) {
         message += '### Added files\n';
         for (let file of outputData.addedFiles) {
-          message += `- ${file}\n`;
+          message.push(`- ${file}`);
         }
       }
       for (let file in outputData.changedFiles) {
-        message += `### Changed file \`${file}\`\n`;
-        message += '```diff\n';
-        message += `${outputData.changedFiles[file]}\n`;
-        message += '```\n';
+        message.push(`### Changed file \`${file}\``);
+        message.push('```diff');
+        message.push(`${outputData.changedFiles[file]}`);
+        message.push('```');
       }
     }
   }
@@ -185,7 +188,7 @@ github.pullRequests.getFiles({
     let lastEqualsMessage = false;
     for (let comment of comments) {
       if (comment.body.match(identification)) {
-        lastEqualsMessage = comment.body.replace(/[\r]/g, '') === message;
+        lastEqualsMessage = comment.body === message.join('\r\n');
       }
     }
 
@@ -195,7 +198,7 @@ github.pullRequests.getFiles({
         owner: repoOwner,
         repo: repoName,
         number: process.env.TRAVIS_PULL_REQUEST,
-        body: message
+        body: message.join('\n')
       });
     }
   });
