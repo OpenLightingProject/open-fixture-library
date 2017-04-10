@@ -279,6 +279,9 @@ function bindValuesToObject(container, context) {
         else if (this.type == 'number') {
           context[key] = this.valueAsNumber;
         }
+        else if (this.className == 'boolean') {
+          context[key] = this.value == 'true';
+        }
         else {
           context[key] = this.value;
         }

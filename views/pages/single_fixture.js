@@ -9,6 +9,12 @@ module.exports = function(options) {
   
   options.title = `${manufacturer.name} ${fixture.name} - Open Fixture Library`;
 
+  let branch = 'master';
+  if ('TRAVIS_BRANCH' in process.env) {
+    branch = process.env.TRAVIS_BRANCH;
+  }
+  const githubRepoPath = 'https://github.com/FloEdelmann/open-fixture-library';
+
   let str = require('../includes/header')(options);
 
   str += '<header class="fixture-header">';
@@ -19,8 +25,8 @@ module.exports = function(options) {
   str += `<span class="last-modify-date">Last modified:&nbsp;<date>${fixture.meta.lastModifyDate}</date></span>`;
   str += `<span class="create-date">Created:&nbsp;<date>${fixture.meta.createDate}</date></span>`;
   str += `<span class="authors">Author${fixture.meta.authors.length == 1 ? '' : 's'}:&nbsp;<data>${fixture.meta.authors.join(', ')}</data></span>`;
-  str += `<span class="source"><a href="https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/${man}/${fix}.json">Source</a></span>`;
-  str += `<span class="revisions"><a href="https://github.com/FloEdelmann/open-fixture-library/commits/master/fixtures/${man}/${fix}.json">Revisions</a></span>`;
+  str += `<span class="source"><a href="${githubRepoPath}/blob/${branch}/fixtures/${man}/${fix}.json">Source</a></span>`;
+  str += `<span class="revisions"><a href="${githubRepoPath}/commits/${branch}/fixtures/${man}/${fix}.json">Revisions</a></span>`;
   str += '</section>';
   str += '</div>';
 
