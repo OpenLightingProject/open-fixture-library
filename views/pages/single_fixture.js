@@ -10,7 +10,7 @@ module.exports = function(options) {
   options.title = `${manufacturer.name} ${fixture.name} - Open Fixture Library`;
 
   let branch = 'master';
-  if ('TRAVIS_PULL_REQUEST_BRANCH' in process.env) {
+  if ('TRAVIS_PULL_REQUEST_BRANCH' in process.env && process.env.TRAVIS_PULL_REQUEST_BRANCH !== '') {
     branch = process.env.TRAVIS_PULL_REQUEST_BRANCH;
   }
   else if ('TRAVIS_BRANCH' in process.env) {
