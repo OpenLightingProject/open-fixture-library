@@ -35,7 +35,7 @@ for (let envVar of requiredEnvVars) {
   }
 }
 
-if (!process.env.TRAVIS_PULL_REQUEST) {
+if (process.env.TRAVIS_PULL_REQUEST == 'false') {
   console.error('This test can only be run on pull requests.');
   process.exit(0);
 }
