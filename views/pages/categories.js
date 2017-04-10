@@ -8,7 +8,7 @@ module.exports = function(options) {
   str += '<h1>Categories</h1>';
 
   str += '<div class="categories grid">';
-  for (cat of Object.keys(register.categories).sort()) {
+  for (const cat of Object.keys(register.categories).sort(sortCategories)) {
     const num = register.categories[cat].length;
     const numFixtures = `${num} fixture${num == 1 ? '' : 's'}`;
     const link = '/categories/' + encodeURIComponent(cat);
@@ -24,4 +24,14 @@ module.exports = function(options) {
   str += require('../includes/footer')(options);
 
   return str;
+
+  function sortCategories(a, b) {
+    const aName = a.toLowerCase();
+    const bName = b.toLowerCase();
+
+    if (aName < bName) {
+      return -1;
+    }
+    return aName > bName ? 1 : 0;
+  }
 };
