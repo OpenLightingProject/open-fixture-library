@@ -148,8 +148,8 @@ function exportHandleModes(fixture, defaults, physical) {
           chType = 'Intensity';
       }
 
-      let dmxByte0 = dmxCount;
-      let dmxByte1 = -1;
+      let dmxByte1 = dmxCount;
+      let dmxByte0 = -1;
 
       if (doubleByte) {
         const chKeyLsb = multiByteChannels[1];
