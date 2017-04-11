@@ -192,6 +192,8 @@ new Promise((resolve, reject) => {
     message.push('*No fixture or plugin files were changed in this commit.*')
   }
   else {
+    message.push('Last updated: ' + new Date(Date.now()).toLocalString());
+
     for (let fixture in fixtureData) {
       message.push(`### Modified \`${fixture}\` in this PR`);
 
@@ -270,21 +272,19 @@ new Promise((resolve, reject) => {
     });
   }
   else {
-    if (prComment.body != message.join('\n')) {
-      console.log(`Updating comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST} and creating notify comment`);
-      github.issues.editComment({
-        owner: repoOwner,
-        repo: repoName,
-        id: prComment.id,
-        body: message.join('\n')
-      });
-      github.issues.createComment({
-        owner: repoOwner,
-        repo: repoName,
-        number: process.env.TRAVIS_PULL_REQUEST,
-        body: `*[Updated plugin output diff comment](${prComment.html_url})*`
-      });
-    }
+    console.log(`Updating comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST} and creating notify comment`);
+    github.issues.editComment({
+      owner: repoOwner,
+      repo: repoName,
+      id: prComment.id,
+      body: message.join('\n')
+    });
+    github.issues.createComment({
+      owner: repoOwner,
+      repo: repoName,
+      number: process.env.TRAVIS_PULL_REQUEST,
+      body: `*[Updated plugin output diff comment](${prComment.html_url})*`
+    });
   }
 });
 
