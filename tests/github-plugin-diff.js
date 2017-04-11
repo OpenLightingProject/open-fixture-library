@@ -192,7 +192,7 @@ new Promise((resolve, reject) => {
     message.push('*No fixture or plugin files were changed in this commit.*')
   }
   else {
-    message.push('Last updated: ' + new Date(Date.now()).toLocalString());
+    message.push('Last updated: ' + new Date(Date.now()).toLocaleString());
 
     for (let fixture in fixtureData) {
       message.push(`### Modified \`${fixture}\` in this PR`);
