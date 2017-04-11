@@ -6,7 +6,7 @@ const args = minimist(process.argv.slice(2), {
   string: ['p', 'r'],
   boolean: 'h',
   alias: { p: 'plugin', r: 'ref', h: 'help' },
-  default: { r: 'HEAD~1' },
+  default: { r: 'HEAD' },
   unknown: function () { },
 });
 
@@ -20,7 +20,7 @@ if (args.help) {
     '                E. g. ecue or qlcplus',
     '  --ref,    -r: The Git reference with which the current repo should be compared.',
     '                E. g. 02ba13, HEAD~1 or master.',
-    '                Defaults to HEAD~1.',
+    '                Defaults to HEAD.',
     '  --help,   -h: Show this help message.',
   ];
   console.log(helpMessage.join('\n'));
