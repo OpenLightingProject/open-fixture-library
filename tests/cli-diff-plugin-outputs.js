@@ -1,6 +1,7 @@
 #!/usr/bin/node
 const path = require('path');
 const minimist = require('minimist');
+const colors = require('colors');
 
 const args = minimist(process.argv.slice(2), {
   string: ['p', 'r'],
@@ -28,8 +29,12 @@ if (args.help) {
 }
 
 if (!args.plugin) {
-  console.error('Error, plugin has to be specified using --plugin');
+  console.error(colors.red('[Error]') + ' Plugin has to be specified using --plugin');
   process.exit(1);
+}
+
+if (args._.length == 0) {
+  console.error(colors.yellow('[Warning]') + ' No fixtures specified');
 }
 
 require(path.join(__dirname, '..', 'lib', 'diff-plugin-outputs'))({
