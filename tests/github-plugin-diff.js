@@ -124,67 +124,65 @@ new Promise((resolve, reject) => {
     );
   });
 })
-.then(
-  () => {
-    return new Promise((resolve, reject) => {
-      getFiles(1, []);
+.then(() => {
+  return new Promise((resolve, reject) => {
+    getFiles(1, []);
 
-      function getFiles(page, files) {
-        github.pullRequests.getFiles({
-          owner: repoOwner,
-          repo: repoName,
-          number: process.env.TRAVIS_PULL_REQUEST,
-          per_page: 100,
-          page: page
-        }, (err, res) => {
-          if (res.data.length > 0) {
-            getFiles(page + 1, files.concat(res.data));
-          }
-          else {
-            criticalFiles(
-              files,
-              fixtureFilename => {
-                fixtureData[fixtureFilename] = {};
-                diffFixture(fixtureFilename, 0);
-              },
-              pluginFilename => {
-                const plugin = path.basename(pluginFilename, '.js');
-                if (plugins.includes(plugin)) {
-                  diffPluginOutputs({
-                    plugin: plugin,
-                    ref: process.env.TRAVIS_BRANCH,
-                    fixtures: testFixtures
-                  }, (outputData) => {
-                    pluginData[plugin] = outputData;
-                  });
-                }
-              },
-              resolve
-            );
-
-            function diffFixture(fixture, pluginIndex) {
-              if (pluginIndex in plugins) {
+    function getFiles(page, files) {
+      github.pullRequests.getFiles({
+        owner: repoOwner,
+        repo: repoName,
+        number: process.env.TRAVIS_PULL_REQUEST,
+        per_page: 100,
+        page: page
+      }, (err, res) => {
+        if (res.data.length > 0) {
+          getFiles(page + 1, files.concat(res.data));
+        }
+        else {
+          criticalFiles(
+            files,
+            fixtureFilename => {
+              fixtureData[fixtureFilename] = {};
+              diffFixture(fixtureFilename, 0);
+            },
+            pluginFilename => {
+              const plugin = path.basename(pluginFilename, '.js');
+              if (plugins.includes(plugin)) {
                 diffPluginOutputs({
-                  plugin: plugins[pluginIndex],
+                  plugin: plugin,
                   ref: process.env.TRAVIS_BRANCH,
-                  fixtures: [fixture]
-                },
-                (outputData) => {
-                  fixtureData[fixture][plugins[pluginIndex]] = outputData;
-                  diffFixture(fixture, pluginIndex + 1);
+                  fixtures: testFixtures
+                }, (outputData) => {
+                  pluginData[plugin] = outputData;
                 });
               }
+            },
+            resolve
+          );
+
+          function diffFixture(fixture, pluginIndex) {
+            if (pluginIndex in plugins) {
+              diffPluginOutputs({
+                plugin: plugins[pluginIndex],
+                ref: process.env.TRAVIS_BRANCH,
+                fixtures: [fixture]
+              },
+              (outputData) => {
+                fixtureData[fixture][plugins[pluginIndex]] = outputData;
+                diffFixture(fixture, pluginIndex + 1);
+              });
             }
           }
-        });
-      }
-    });
-  },
-  () => {
-    console.log('No changes in plugin or fixture files since last commit.');
-    process.exit(0);
-  }
-)
+        }
+      });
+    }
+  });
+})
+.catch(() => {
+  console.log('No changes in plugin or fixture files since last commit.');
+  process.exit(0);
+})
 .then(() => {
   let message = [];
   message.push(`${identification}`);
@@ -217,6 +215,7 @@ new Promise((resolve, reject) => {
 
       const pluginMessage = printPlugin(pluginData[plugin]);
       if (pluginMessage.length > 0) {
+        message.push(`Plugins are always tested with the following fixtures: ${testFixtures}`);
         message = message.concat(pluginMessage);
       }
       else {
@@ -283,7 +282,7 @@ new Promise((resolve, reject) => {
         owner: repoOwner,
         repo: repoName,
         number: process.env.TRAVIS_PULL_REQUEST,
-        body: `*[Updated plugin output diff comment](#issuecomment-${prComment.id})*`
+        body: `*[Updated plugin output diff comment](${prComment.html_url})*`
       });
     }
   }
