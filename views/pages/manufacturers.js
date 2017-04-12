@@ -8,9 +8,7 @@ module.exports = function(options) {
   str += '<h1>Manufacturers</h1>';
 
   str += '<div class="manufacturers grid">';
-
-  // we can rely on register's sorting here
-  for (man in register.manufacturers) {
+  for (const man of Object.keys(register.manufacturers).sort(sortManufacturers)) {
     const manufacturer = manufacturers[man];
     const num = register.manufacturers[man].length;
     const numFixtures = `${num} fixture${num == 1 ? '' : 's'}`;
@@ -25,4 +23,14 @@ module.exports = function(options) {
   str += require('../includes/footer')(options);
 
   return str;
+
+  function sortManufacturers(a, b) {
+    const aName = manufacturers[a].name.toLowerCase();
+    const bName = manufacturers[b].name.toLowerCase();
+
+    if (aName < bName) {
+      return -1;
+    }
+    return aName > bName ? 1 : 0;
+  }
 };
