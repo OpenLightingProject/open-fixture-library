@@ -18,7 +18,6 @@ const args = minimist(process.argv.slice(2), {
   boolean: 'p',
   alias: { p: 'pr' }
 });
-console.log(args);
 
 const selectedPlugin = args._[0];
 const filename = args._[1];
