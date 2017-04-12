@@ -10,7 +10,8 @@ const diffPluginOutputs = require(path.join(__dirname, '..', 'lib', 'diff-plugin
 // so they are good for testing plugin output.
 // (Testing all fixtures would be overkill.)
 const testFixtures = [
-  'fixtures/cameo/outdoor-par-tri-12.json'
+  'fixtures/cameo/thunder-wash-600-w.json',
+  'fixtures/lightmaxx/vega-zoom-wash.json'
 ]
 
 // load any undefined environment variables and complain about missing ones
