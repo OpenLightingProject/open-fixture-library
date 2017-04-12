@@ -1,0 +1,168 @@
+{
+  "name": "Quad Phase HP",
+  "shortName": "QPHP",
+  "categories": ["Flower"],
+  "meta": {
+    "authors": ["FloEdelmann"],
+    "createDate": "2017-04-09",
+    "lastModifyDate": "2017-04-10"
+  },
+  "manualURL": "http://intranet.americandj.com/ItemRelatedFiles/6976/quad_phase_hp.pdf",
+  "physical": {
+    "dimensions": [198, 279, 312],
+    "weight": 4,
+    "power": 64,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [65, 65]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Color": {
+      "type": "MultiColor",
+      "crossfade": false,
+      "capabilities": [
+        {
+          "range": [0, 16],
+          "name": "Color 1"
+        },
+        {
+          "range": [17, 33],
+          "name": "Color 2"
+        },
+        {
+          "range": [34, 50],
+          "name": "Color 3"
+        },
+        {
+          "range": [51, 67],
+          "name": "Color 4"
+        },
+        {
+          "range": [68, 84],
+          "name": "Color 5"
+        },
+        {
+          "range": [85, 101],
+          "name": "Color 6"
+        },
+        {
+          "range": [102, 118],
+          "name": "Color 7"
+        },
+        {
+          "range": [119, 135],
+          "name": "Color 8"
+        },
+        {
+          "range": [136, 152],
+          "name": "Color 9"
+        },
+        {
+          "range": [153, 169],
+          "name": "Color 10"
+        },
+        {
+          "range": [170, 186],
+          "name": "Color 11"
+        },
+        {
+          "range": [187, 203],
+          "name": "Color 12"
+        },
+        {
+          "range": [204, 220],
+          "name": "Color 13"
+        },
+        {
+          "range": [221, 237],
+          "name": "Color 14"
+        },
+        {
+          "range": [238, 255],
+          "name": "Color 15"
+        }
+      ]
+    },
+    "Rotation": {
+      "type": "Speed",
+      "defaultValue": 128,
+      "highlightValue": 220,
+      "crossfade": true,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "No Rotation"
+        },
+        {
+          "range": [10, 120],
+          "name": "CW fast-slow"
+        },
+        {
+          "range": [121, 134],
+          "name": "No Rotation",
+          "hideInMenu": true
+        },
+        {
+          "range": [135, 245],
+          "name": "CCW slow-fast"
+        },
+        {
+          "range": [246, 249],
+          "name": "No Rotation",
+          "hideInMenu": true
+        },
+        {
+          "range": [250, 255],
+          "name": "Sound"
+        }
+      ]
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "highlightValue": 200,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "No Strobe"
+        },
+        {
+          "range": [1, 255],
+          "name": "Strobe slow-fast"
+        }
+      ]
+    },
+    "Shutter": {
+      "type": "Shutter",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "Shutter closed"
+        },
+        {
+          "range": [16, 255],
+          "name": "Shutter open"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Color",
+        "Rotation",
+        "Strobe",
+        "Shutter"
+      ]
+    }
+  ]
+}
