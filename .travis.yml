@@ -6,6 +6,7 @@ env:
   - TESTFILE=tests/fixtures_valid.js
   - TESTFILE=tests/http_status.js
   - TESTFILE=tests/register_correct.js
+  - TESTFILE=tests/github-plugin-diff.js
 script:
   - NODE_ENV=production node "$TESTFILE"
 cache:
