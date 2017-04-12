@@ -188,13 +188,13 @@ new Promise((resolve, reject) => {
   let message = [];
   message.push(`${identification}`);
   message.push(`<!-- commit = ${process.env.TRAVIS_COMMIT} -->`);
+  message.push('Last updated: ' + new Date(Date.now()).toLocaleString());
+  message.push('## Diff plugin outputs test');
 
   if (Object.keys(fixtureData) == 0 && Object.keys(pluginData) == 0) {
-    message.push('*No fixture or plugin files were changed in this commit.*')
+    message.push('*No fixture or plugin files were changed in this PR.*')
   }
   else {
-    message.push('Last updated: ' + new Date(Date.now()).toLocaleString());
-
     for (let fixture in fixtureData) {
       message.push(`### Modified \`${fixture}\` in this PR`);
 
