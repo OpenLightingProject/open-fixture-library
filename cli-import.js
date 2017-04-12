@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const minimist = require('minimist');
 const checkFixture = require(path.join(__dirname, 'tests', 'fixture_valid')).checkFixture;
 const createPullRequest = require(path.join(__dirname, 'lib', 'create-github-pr'));
 
@@ -13,14 +14,17 @@ for (const filename of fs.readdirSync(path.join(__dirname, 'plugins'))) {
   }
 }
 
-const selectedPlugin = process.argv[2];
-const filename = process.argv[3];
-const makePR = process.argv[4] == '--pr';
+const args = minimist(process.argv.slice(2), {
+  boolean: 'p',
+  alias: { p: 'pr' }
+});
+console.log(args);
 
-if ((process.argv.length < 4) ||
-    (process.argv.length == 5 && !makePR) ||
-    (process.argv.length > 5) ||
-    !(selectedPlugin in importPlugins)) {
+const selectedPlugin = args._[0];
+const filename = args._[1];
+const makePR = args.pr;
+
+if (args._.length != 2 || !(selectedPlugin in importPlugins)) {
   console.error(`Usage: ${process.argv[1]} <plugin> <filename> [--pr]\n\navailable plugins: ${Object.keys(importPlugins).join(', ')}`);
   process.exit(1);
 }
