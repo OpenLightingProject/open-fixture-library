@@ -21,6 +21,10 @@ module.exports = function(options) {
     str += '</div>';  // .dialog-container
   }
 
+  if ('footerHtml' in options) {
+    str += options.footerHtml;
+  }
+
   str += '</body></html>';
 
   return str;

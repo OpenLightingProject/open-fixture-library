@@ -11,14 +11,15 @@ var manShortName = editorForm.querySelector('.manufacturer-shortName');
 var newMan = editorForm.querySelector('.new-manufacturer');
 var addModeLink = editorForm.querySelector('a.fixture-mode');
 var submitButton = editorForm.querySelector('.save-fixture');
-var channelForm;
-var channelTypeSelect;
+var channelForm = document.querySelector('#channel-dialog form');
+var channelTypeSelect = document.querySelector('#channel-dialog .channel-type select');
 
 
 // templates
 var templatePhysical = document.getElementById('template-physical');
 var templateMode = document.getElementById('template-mode');
 var templateChannelLi = document.getElementById('template-channel-li');
+var templateCapability = document.getElementById('template-capability');
 
 
 var dialogs = {
@@ -78,7 +79,6 @@ window.addEventListener('load', function() {
   addMode();  // every fixture has at least one mode
 
   // add channel editor submit
-  channelForm = document.querySelector('#channel-dialog form');
   bindValuesToObject(channelForm, currentChannel);
   channelForm.addEventListener('submit', function(event) {
     event.preventDefault();
@@ -86,7 +86,6 @@ window.addEventListener('load', function() {
   });
 
   // enable channel color only if the channel type is SingleColor
-  channelTypeSelect = document.querySelector('#channel-dialog .channel-type select');
   channelTypeSelect.addEventListener('change', updateChannelColorVisibility);
 
   restoreAutoSave();
@@ -117,7 +116,7 @@ function initDialogs() {
     openChannelDialog('create');
   });
 
-  dialogs.channel.on('show', function(node) {
+  dialogs.channel.on('show', function() {
     dialogs.channel.closingHandled = false;
 
     if ('pushState' in history) {
@@ -219,16 +218,19 @@ function injectPhysical(container) {
 
 function fillTogether(inputNodeList) {
   [].forEach.call(inputNodeList, function(input) {
-    input.addEventListener('change', function() {
-      var required = [].some.call(inputNodeList, function(input) {
-        return input.value != '';
-      });
-
-      [].forEach.call(inputNodeList, function(input) {
-        input.required = required;
-      });
-    });
+    input.addEventListener('change', updateRequired);
   });
+  updateRequired();
+
+  function updateRequired() {
+    var required = [].some.call(inputNodeList, function(input) {
+      return input.value != '';
+    });
+
+    [].forEach.call(inputNodeList, function(input) {
+      input.required = required;
+    });
+  }
 }
 
 function initRangeInputs(inputNodeList) {
@@ -240,6 +242,8 @@ function initRangeInputs(inputNodeList) {
   });
   inputNodeList[0].dataset.max = inputNodeList[0].max;
   inputNodeList[1].dataset.min = inputNodeList[1].min;
+
+  updateRangeInputs(inputNodeList);
 }
 function updateRangeInputs(inputNodeList) {
   inputNodeList[1].min = (inputNodeList[0].value == '') ? inputNodeList[1].dataset.min : inputNodeList[0].value;
@@ -422,9 +426,61 @@ function openChannelDialog(editMode) {
 
   if (editMode != 'add-existing') {
     updateChannelColorVisibility();
+
+    var capabilitiesContainer = dialogs.channel.node.querySelector('.capabilities');
+    capabilitiesContainer.innerHTML = '';
+
+    if ('capabilities' in currentChannel && currentChannel.capabilities.length > 0) {
+      currentChannel.capabilities.forEach(function(cap, index) {
+        addCapabilityToUI(capabilitiesContainer, index);
+      });
+
+      if (JSON.stringify(currentChannel.capabilities[currentChannel.capabilities.length - 1]) != '{}') {
+        addCapability(capabilitiesContainer);
+      }
+    }
+    else {
+      currentChannel.capabilities = [];
+      addCapability(capabilitiesContainer);
+    }
   }
 
   dialogs.channel.show();
+
+  function addCapability(container) {
+    var length = currentChannel.capabilities.push({});
+
+    addCapabilityToUI(container, length - 1);
+  }
+  function addCapabilityToUI(container, index) {
+    var capabilityItem = document.importNode(templateCapability.content, true).firstElementChild;
+
+    bindValuesToObject(capabilityItem, currentChannel.capabilities[index]);
+    prefillFormElements(capabilityItem, currentChannel.capabilities[index]);
+
+    initRangeInputs(capabilityItem.querySelectorAll('[type="number"]'));
+    fillTogether(capabilityItem.querySelectorAll('[type="number"], [data-key="name"]'));
+
+    capabilityItem.querySelector('.remove').addEventListener('click', function(event) {
+      event.preventDefault();
+      currentChannel.capabilities.splice(index, 1);
+      capabilityItem.remove();
+
+      autoSave();
+    });
+
+    [].forEach.call(capabilityItem.querySelectorAll('input'), function(input) {
+      input.addEventListener('change', function(event) {
+        currentChannel.changed = true;  // enables "cancel" confirmation
+
+        if (index === currentChannel.capabilities.length - 1) {
+          addCapability(container);
+        }
+      });
+    });
+
+    container.appendChild(capabilityItem);
+  }
 }
 
 function editChannel() {
@@ -657,6 +713,7 @@ function restoreAutoSave() {
 
   dialogs.restore.node.querySelector('.discard').addEventListener('click', function() {
     editorForm.reset();
+    channelForm.reset();
     dialogs.restore.hide();
 
     // last element was popped before

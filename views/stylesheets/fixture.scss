@@ -252,17 +252,48 @@ a.fixture-mode {
   content: " #" counter(modes);
 }
 
-.mode-channels a {
+.mode-channels a,
+.capabilities a {
   opacity: 0;
   float: right;
   width: 1.4em;
   height: 1.4em;
-  margin: 0.3em;
+  padding: 0.3em;
   transition: opacity 0.1s;
+  display: inline-block;
 }
 .mode-channels > li:hover > a,
-.mode-channels a:focus {
+.mode-channels a:focus,
+.capabilities > li:hover > a,
+.capabilities a:focus {
   opacity: 1;
+}
+
+.capabilities {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  & > li {
+    margin: 1rem 0 0;
+
+    & > .value {
+      margin-left: 2ex;
+    }
+
+    & [data-key="name"] {
+      width: 25ex;
+    }
+    & [data-key="color"],
+    & [data-key="color2"] {
+      width: 10ex;
+    }
+  }
+
+  /* if a capability is the only one, hide its remove button */
+  & > li:first-child:last-child > .remove {
+    display: none;
+  }
 }
 
 

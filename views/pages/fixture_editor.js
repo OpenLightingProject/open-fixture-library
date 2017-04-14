@@ -296,7 +296,7 @@ module.exports = function(options) {
 
   str += '<h3>Channels</h3>';
   str += '<ol class="mode-channels"></ol>';
-  str += '<a href="#channel-dialog" class="add-channel">add channel</a>';
+  str += '<a href="#channel-dialog" class="add-channel button primary">add channel</a>';
 
   str += '</section>'; // .fixture-mode
   str += '</template>'; // #template-mode
@@ -346,7 +346,7 @@ module.exports = function(options) {
     }
   ];
 
-  str += '<script type="text/javascript" src="/js/fixture-editor.js" async></script>';
+  options.footerHtml = '<script type="text/javascript" src="/js/fixture-editor.js" async></script>';
 
   str += require('../includes/footer')(options);
 
@@ -444,7 +444,23 @@ function getChannelDialogString() {
   str += '</label>';
   str += '</section>';
 
-  str += '</div>';  // [data-edit-modes]
+  str += '<h3>Capabilities</h3>';
+  str += '<ul class="capabilities"></ul>';
+
+  str += '<template id="template-capability">';
+  str += '<li>';
+  str += '<input type="number" min="0" max="255" placeholder="start" title="DMX value range start" data-key="start"> .. ';
+  str += '<input type="number" min="0" max="255" placeholder="end" title="DMX value range end" data-key="end"> ';
+  str += '<span class="value">';
+  str += '<input type="text" placeholder="name" title="name" data-key="name"><br/>';
+  str += '<input type="text" placeholder="color" pattern="^#[0-9a-f]{6}$" title="color (#rrggbb)" data-key="color"> ';
+  str += '<input type="text" placeholder="color 2" pattern="^#[0-9a-f]{6}$" title="color 2 (#rrggbb)" data-key="color2">';
+  str += '</span>';
+  str += '<a href="#remove" class="remove" title="Remove capability">' + require('../includes/svg')({svgBasename: 'close'}) + '</a>';
+  str += '</li>';
+  str += '</template>'; // # template-channel-li
+
+  str += '</div>';  // [data-edit-modes="create edit-all edit-duplicate"]
 
   str += '<div class="button-bar right">';
   str += '<button type="submit" class="primary"><span data-edit-modes="add-existing">Add channel</span><span data-edit-modes="create">Create channel</span><span data-edit-modes="edit-all edit-duplicate">Save changes</span></button>';
