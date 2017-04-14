@@ -396,11 +396,11 @@ function getChannelDialogString() {
 
   str += '<h3>DMX values</h3>';
 
-  str += '<section class="channel-16bit">';
-  str += '<label>';
-  str += '<input type="checkbox" data-key="16bit" disabled> <strike>Is 16-bit channel?</strike> (not yet implemented)';
-  str += '</label>';
-  str += '</section>';
+  // str += '<section class="channel-16bit">';
+  // str += '<label>';
+  // str += '<input type="checkbox" data-key="16bit" disabled> <strike>Is 16-bit channel?</strike> (not yet implemented)';
+  // str += '</label>';
+  // str += '</section>';
 
   str += '<section class="channel-defaultValue">';
   str += '<label>';
