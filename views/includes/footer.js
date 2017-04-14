@@ -3,7 +3,7 @@ module.exports = function(options) {
 
   for (dialog of options.dialogs || []) {
     str += `<div class="dialog-container" id="${dialog.id}" aria-hidden="true">`;
-    str += `  <div class="dialog-overlay" tabindex="-1"${dialog.cancellable ? 'data-a11y-dialog-hide' : ''}></div>`;
+    str += `  <div class="dialog-overlay" tabindex="-1"${dialog.cancellable ? ' data-a11y-dialog-hide' : ''}></div>`;
     str += `  <div class="dialog card" aria-labelledby="${dialog.id}-title" role="dialog">`;
     str += '    <div role="document">';
 
