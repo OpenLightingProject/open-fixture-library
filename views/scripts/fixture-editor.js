@@ -410,6 +410,10 @@ function openChannelDialog(editMode) {
       currentChannel[key] = clone(currentFixture.availableChannels[currentChannel.key][key]);
     }
 
+    if (!('name' in currentChannel)) {
+      currentChannel.name = currentChannel.key;
+    }
+
     prefillFormElements(dialogs.channel.node, currentChannel);
   }
   else if (editMode == 'create' || editMode == 'add-existing') {
@@ -828,7 +832,7 @@ function saveFixture(event) {
     out: out
   };
 
-  var xhr = new XMLHttpRequest();
+  /*var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     try {
       if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -857,7 +861,7 @@ function saveFixture(event) {
   }
   xhr.open('POST', '/ajax/add-fixtures');
   xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.send(JSON.stringify(sendObject));
+  xhr.send(JSON.stringify(sendObject));*/
 
   console.log(JSON.stringify(out, null, 2));
 
@@ -903,7 +907,32 @@ function saveFixture(event) {
 
   function saveChannel(to, from) {
     for (var key in properties.channel) {
-      if (key in from) {
+      if (key == 'capabilities') {
+        to.capabilities = [];
+
+        from.capabilities.forEach(function(cap) {
+          if (!('start' in cap)) {
+            return;
+          }
+
+          var capability = {
+            range: [cap.start, cap.end]
+          };
+
+          for (var key in properties.capability) {
+            if (key in cap) {
+              capability[key] = cap[key];
+            }
+          }
+
+          to.capabilities.push(capability);
+        });
+
+        if (to.capabilities.length == 0) {
+          delete to.capabilities;
+        }
+      }
+      else if (key in from) {
         to[key] = from[key];
       }
     }
@@ -927,7 +956,7 @@ function saveFixture(event) {
 
 function getKeyFromName(name, uniqueInList, forceSanitize) {
   if (forceSanitize) {
-    name = sanitze(name);
+    name = sanitize(name);
   }
 
   if (!uniqueInList) {
