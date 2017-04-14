@@ -1,8 +1,10 @@
 'use strict';
 
 // modules
+require('./polyfills');
 var A11yDialog = require('a11y-dialog');
 var properties = properties = require('../../fixtures/schema').properties;
+var uuidV4 = require('uuid/v4');
 
 
 // elements
@@ -309,9 +311,11 @@ function updateChannelColorVisibility() {
 }
 
 function addMode(event) {
-  var newMode = document.importNode(templateMode.content, true);
+  var modeId = uuidV4();
+
+  var newMode = document.importNode(templateMode.content, true).firstElementChild;
+  newMode.dataset.uuid = modeId;
   editorForm.querySelector('.fixture-modes').insertBefore(newMode, addModeLink);
-  newMode = addModeLink.previousSibling;
 
   var physicalOverride = newMode.querySelector('.physical-override');
   injectPhysical(physicalOverride);
@@ -322,16 +326,16 @@ function addMode(event) {
   });
   updatePhysicalOverrideVisibility(usePhysicalOverride, physicalOverride);
 
-  currentFixture.modes.push({
+  var length = currentFixture.modes.push({
+    uuid: modeId,
     channels: []
   });
 
-  var modeIndex = currentFixture.modes.length - 1;
-  bindValuesToObject(newMode, currentFixture.modes[modeIndex]);
+  bindValuesToObject(newMode, currentFixture.modes[length - 1]);
 
   newMode.querySelector('.close').addEventListener('click', function(e) {
     e.preventDefault();
-    currentFixture.modes.splice(modeIndex, 1);
+    removeUuidObjectFromArray(newMode.dataset.uuid, currentFixture.modes);
     newMode.remove();
 
     autoSave();
@@ -339,7 +343,7 @@ function addMode(event) {
 
   newMode.querySelector('.add-channel').addEventListener('click', function(e) {
     e.preventDefault();
-    currentChannel.modeIndex = modeIndex;
+    currentChannel.modeIndex = getUuidObjectIndexInArray(newMode.dataset.uuid, currentFixture.modes);
     openChannelDialog('add-existing');
   });
 
@@ -435,11 +439,15 @@ function openChannelDialog(editMode) {
     capabilitiesContainer.innerHTML = '';
 
     if ('capabilities' in currentChannel && currentChannel.capabilities.length > 0) {
-      currentChannel.capabilities.forEach(function(cap, index) {
-        addCapabilityToUI(capabilitiesContainer, index);
+      currentChannel.capabilities.forEach(function(cap) {
+        addCapabilityToUI(capabilitiesContainer, cap);
       });
 
-      if (JSON.stringify(currentChannel.capabilities[currentChannel.capabilities.length - 1]) != '{}') {
+      var lastModeIsNotEmpty = Object.keys(currentChannel.capabilities[currentChannel.capabilities.length - 1]).some(function(key) {
+        return key != 'uuid';
+      });
+
+      if (lastModeIsNotEmpty) {
         addCapability(capabilitiesContainer);
       }
     }
@@ -454,20 +462,24 @@ function openChannelDialog(editMode) {
   function addCapability(container) {
     var length = currentChannel.capabilities.push({});
 
-    addCapabilityToUI(container, length - 1);
+    addCapabilityToUI(container, currentChannel.capabilities[length - 1]);
   }
-  function addCapabilityToUI(container, index) {
-    var capabilityItem = document.importNode(templateCapability.content, true).firstElementChild;
+  function addCapabilityToUI(container, object) {
+    var capabilityId = uuidV4();
+    object.uuid = capabilityId;
 
-    bindValuesToObject(capabilityItem, currentChannel.capabilities[index]);
-    prefillFormElements(capabilityItem, currentChannel.capabilities[index]);
+    var capabilityItem = document.importNode(templateCapability.content, true).firstElementChild;
+    capabilityItem.dataset.uuid = capabilityId;
+
+    bindValuesToObject(capabilityItem, object);
+    prefillFormElements(capabilityItem, object);
 
     initRangeInputs(capabilityItem.querySelectorAll('[type="number"]'));
     fillTogether(capabilityItem.querySelectorAll('[type="number"], [data-key="name"]'));
 
     capabilityItem.querySelector('.remove').addEventListener('click', function(event) {
       event.preventDefault();
-      currentChannel.capabilities.splice(index, 1);
+      removeUuidObjectFromArray(capabilityItem.dataset.uuid, currentChannel.capabilities);
       capabilityItem.remove();
 
       autoSave();
@@ -477,7 +489,8 @@ function openChannelDialog(editMode) {
       input.addEventListener('change', function(event) {
         currentChannel.changed = true;  // enables "cancel" confirmation
 
-        if (index === currentChannel.capabilities.length - 1) {
+        // if this is the last capability
+        if (!input.parentElement.nextElementSibling) {
           addCapability(container);
         }
       });
@@ -978,6 +991,22 @@ function getKeyFromName(name, uniqueInList, forceSanitize) {
   function sanitize(val) {
     return val.toLowerCase().replace(/[^a-z0-9\-]+/g, '-');
   }
+}
+
+function getUuidObjectIndexInArray(uuid, array) {
+  var index = array.findIndex(function(element) {
+    return 'uuid' in element && element.uuid === uuid;
+  });
+
+  if (index === -1) {
+    throw new Error('uuid "' + uuid + '" was not found in array');
+  }
+
+  return index;
+}
+
+function removeUuidObjectFromArray(uuid, array) {
+  array.splice(getUuidObjectIndexInArray(uuid, array), 1);
 }
 
 function clear(obj) {

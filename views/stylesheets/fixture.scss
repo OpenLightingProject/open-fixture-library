@@ -290,8 +290,8 @@ a.fixture-mode {
     }
   }
 
-  /* if a capability is the only one, hide its remove button */
-  & > li:first-child:last-child > .remove {
+  /* last (empty) capability is not removable */
+  & > li:last-child > .remove {
     display: none;
   }
 }
