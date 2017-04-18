@@ -80,7 +80,7 @@ module.exports = function(options) {
     str += '</section>';
   }
 
-  if ('multiByteChannel' in fixture || 'heads' in fixture) {
+  if ('multiByteChannels' in fixture || 'heads' in fixture) {
     str += '<h3 class="channel-groups">Channel groups</h3>';
     str += '<section class="channel-groups">';
 
@@ -372,12 +372,8 @@ function handleChannel(channel) {
       str += `  <data data-key="capability-name">${_(cap.name)}</data>`;
       str += `</td>`;
 
-      str += `<td class="capability-hideInMenu" title="hide in menu? ${cap.hideInMenu}">`;
-      str += `  <data class="checkbox" data-key="capability-hideInMenu" data-value="${cap.hideInMenu}">${_(cap.hideInMenu)}</data>`;
-      str += `</td>`;
-
-      str += `<td class="capability-center" title="use center value on menu click? ${cap.center}">`;
-      str += `  <data class="checkbox" data-key="capability-center" data-value="${cap.center}">${_(cap.center)}</data>`;
+      str += `<td class="capability-menuClick" title="menu click action">`;
+      str += `  <data data-key="capability-menuClick">${_(cap.menuClick)}</data>`;
       str += `</td>`;
 
       str += `<td class="capability-color" title="color: ${cap.color}">`;

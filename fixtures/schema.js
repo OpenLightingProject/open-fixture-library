@@ -22,7 +22,7 @@ var ISODate = schema(/^\d{4}-\d{2}-\d{2}$/);
 
 var Color = schema(/^#[0-9a-f]{6}$/);
 
-var Category = schema(['Other', 'Color Changer', 'Dimmer', 'Effect', 'Fan', 'Flower', 'Hazer', 'Laser', 'Moving Head', 'Scanner', 'Smoke', 'Strobe', 'Blinder']);
+var Category = schema(['Blinder', 'Color Changer', 'Dimmer', 'Effect', 'Fan', 'Flower', 'Hazer', 'Laser', 'Moving Head', 'Scanner', 'Smoke', 'Strobe', 'Other']);
 
 var Physical = schema({
   '?dimensions': Array.of(3, Number.min(0)), // width, height, depth (in mm)
@@ -52,8 +52,7 @@ var Physical = schema({
 var Capability = schema({
   'range': Array.of(2, DMXValue),
   'name': String,
-  '?hideInMenu': Boolean,
-  '?center': Boolean,
+  '?menuClick': ['start', 'center', 'end', 'hidden'],
   '?color': Color,
   '?color2': Color,
   '?image': String,

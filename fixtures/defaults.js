@@ -42,8 +42,7 @@ module.exports = {
         {
           "range": [0, 255], // required
           "name": "0-100%", // required
-          "hideInMenu": false,
-          "center": false
+          "menuClick": "start"
         }
       ]
     }
