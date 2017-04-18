@@ -63,7 +63,7 @@ var Capability = schema({
 var Channel = schema({
   '?name': [String, null], // null: use channel key
   'type': ['Intensity', 'Strobe', 'Shutter', 'Speed', 'SingleColor', 'MultiColor', 'Gobo', 'Prism', 'Pan', 'Tilt', 'Beam', 'Effect', 'Maintenance', 'Nothing'],
-  '?color': ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime'],
+  '?color': ['Amber', 'Blue', 'Cyan', 'Green', 'Indigo', 'Lime', 'Magenta', 'Red', 'UV', 'White', 'Yellow'],
   '?defaultValue': DMXValue,
   '?highlightValue': DMXValue,
   '?invert': Boolean,
