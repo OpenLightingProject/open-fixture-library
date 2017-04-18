@@ -437,7 +437,7 @@ function openChannelDialog(editMode) {
     updateChannelColorVisibility();
 
     var capabilitiesContainer = dialogs.channel.node.querySelector('.capabilities');
-    capabilitiesContainer.innerHTML = '';
+    capabilitiesContainer.innerHTML = '';  // it could be non-empty when the dialog was already opened before
 
     if ('capabilities' in currentChannel && currentChannel.capabilities.length > 0) {
       currentChannel.capabilities.forEach(function(cap, index) {
@@ -1041,7 +1041,7 @@ function saveFixture(event) {
     out: out
   };
 
-  /*var xhr = new XMLHttpRequest();
+  var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     try {
       if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -1070,7 +1070,7 @@ function saveFixture(event) {
   }
   xhr.open('POST', '/ajax/add-fixtures');
   xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.send(JSON.stringify(sendObject));*/
+  xhr.send(JSON.stringify(sendObject));
 
   console.log(JSON.stringify(out, null, 2));
 
