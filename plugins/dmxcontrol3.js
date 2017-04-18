@@ -55,34 +55,55 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
         fix.modes[0].name = info.mode[0];
       }
 
+      // make sure that channels.length is dmxaddresscount.
+      // (undefined channels will later be set to null)
       if (device.$.dmxaddresscount) {
-        fix.modes[0].channels[device.$.dmxaddresscount] = undefined;
+        fix.modes[0].channels[device.$.dmxaddresscount] = null;
       }
 
       const functions = device.functions[0];
       for (const functionType in functions) {
-        for (const singleFunction of functions[functionType]) {
+        for (let i = 0; i < functions[functionType].length; i++) {
+          const singleFunction = functions[functionType][i]
+
           switch(functionType) {
             case 'dimmer':
             case 'colortemp':
+            case 'raw':
               let channel = {
-                name: capitalize(functionType),
                 type: 'Intensity',
               }
 
-              channel.capabilities = getCapabilities(singleFunction);
+              const caps = getCapabilities(singleFunction);
+              if (caps.length > 0) {
+                channel.capabilities = caps;
+              }
 
-              const channelKey = getUniqueChannelKey(functionType);
+              let channelKey;
+              if ('name' in singleFunction.$) {
+                channelKey = singleFunction.$.name;
+              }
+              else {
+                // "Dimmer" if there's only one dimmer
+                // "Dimmer 1", "Dimmer 2", ... if there are more dimmers
+                channelKey = capitalize(functionType);
+                if (functions[functionType].length > 1) {
+                  channelKey += ` ${i+1}`;
+                }
+              }
+
+              // append " 2", " 3", ... to channel key if it isn't unique
+              channelKey = getUniqueChannelKey(channelKey);
               fix.availableChannels[channelKey] = channel;
-              fix.modes[0].channels[singleFunction.$.dmxchannel] = channelKey;
+
+              addChannelToMode(channelKey, singleFunction.$.dmxchannel, channel);
 
               if ('finedmxchannel' in singleFunction.$) {
-                const fineChannelKey = getUniqueChannelKey(channelKey + '-fine');
+                const fineChannelKey = channelKey + ' fine';
                 fix.availableChannels[fineChannelKey] = {
-                  name: channel.name + ' fine',
                   type: channel.type,
                 };
-                fix.modes[0].channels[singleFunction.$.finedmxchannel] = fineChannelKey;
+                addChannelToMode(finedmxchannel, singleFunction.$.finedmxchannel);
 
                 if (fix.multiByteChannels === undefined) {
                   fix.multiByteChannels = [];
@@ -90,7 +111,8 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
                 fix.multiByteChannels.push([channelKey, fineChannelKey]);
               }
 
-              warnUnknownAttributes(functionType, singleFunction, ['dmxchannel', 'mindmx', 'maxdmx']);
+              warnUnknownAttributes(functionType, singleFunction, ['name', 'dmxchannel', 'mindmx', 'maxdmx', 'finedmxchannel']);
+              warnUnknownChildren(functionType, singleFunction, ['range']);
               break;
 
             default:
@@ -106,8 +128,22 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
                   continue attrs;
                 }
               }
-              out.warnings[fixKey].push(`Unknown attribute ${attr} = ${node.$[attr]} in ${nodeName}`);
+              out.warnings[fixKey].push(`Unknown attribute '${attr}=${node.$[attr]}' in '${nodeName}'`);
             }
+          }
+        }
+
+        function warnUnknownChildren(nodeName, node, knownAttributes) {
+          children: for (const child in node) {
+            if (child === '$') {
+              continue children;
+            }
+            for (const knownAttr of knownAttributes) {
+              if (child == knownAttr) {
+                continue children;
+              }
+            }
+            out.warnings[fixKey].push(`Unknown child '${child}' in '${nodeName}'`);
           }
         }
 
@@ -137,10 +173,16 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
                 }
 
                 if (minval != '?' || maxval != '?') {
-                  capability.name = `${minval}-${maxval}`;
+                  if (minval == maxval) {
+                    // not a real range
+                    capability.name = `${minval}`;
+                  }
+                  else {
+                    capability.name = `${minval}-${maxval}`;
 
-                  if ('type' in range.$) {
-                    capability.name += ` (${range.$.type})`;
+                    if ('type' in range.$) {
+                      capability.name += ` (${range.$.type})`;
+                    }
                   }
                 }
                 else if ('type' in range.$) {
@@ -164,6 +206,10 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             });
           }
 
+          capabilities.sort(function(a, b) {
+            return a.range[0] - b.range[0];
+          });
+
           return capabilities;
         }
 
@@ -172,10 +218,22 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             return key;
           }
           let i = 2;
-          while (`${key}-${i}` in fix.availableChannels) {
+          while (`${key} ${i}` in fix.availableChannels) {
             i++;
           }
-          return `${key}-${i}`;
+          return `${key} ${i}`;
+        }
+
+        function addChannelToMode(key, dmxchannel) {
+          const existingChannels = fix.modes[0].channels;
+          const existingChannel = existingChannels[dmxchannel];
+          if (existingChannel !== undefined &&
+              existingChannel !== null) {
+            out.warnings[fixKey].push(`Attempting to use DMX channel ${dmxchannel} for '${key}' but it is already used by '${existingChannel}'`);
+          }
+          else {
+            existingChannels[dmxchannel] = key;
+          }
         }
       }
 
