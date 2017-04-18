@@ -1,5 +1,9 @@
 {
   "filesystem": {
+    "american-dj/quad-phase-hp": {
+      "name": "Quad Phase HP",
+      "manufacturerName": "American DJ"
+    },
     "cameo/outdoor-par-tri-12": {
       "name": "Outdoor PAR Tri 12",
       "manufacturerName": "cameo"
@@ -32,12 +36,15 @@
       "name": "Vega Zoom Wash",
       "manufacturerName": "lightmaXX"
     },
-    "american-dj/quad-phase-hp": {
-      "name": "Quad Phase HP",
-      "manufacturerName": "American DJ"
+    "martin/roboscan-812": {
+      "name": "RoboScan 812",
+      "manufacturerName": "Martin"
     }
   },
   "manufacturers": {
+    "american-dj": [
+      "quad-phase-hp"
+    ],
     "cameo": [
       "outdoor-par-tri-12",
       "thunder-wash-100-rgb",
@@ -52,11 +59,14 @@
       "platinum-mini-tri-par",
       "vega-zoom-wash"
     ],
-    "american-dj": [
-      "quad-phase-hp"
+    "martin": [
+      "roboscan-812"
     ]
   },
   "categories": {
+    "Flower": [
+      "american-dj/quad-phase-hp"
+    ],
     "Color Changer": [
       "cameo/outdoor-par-tri-12",
       "cameo/thunder-wash-100-rgb",
@@ -82,8 +92,8 @@
     "Moving Head": [
       "lightmaxx/vega-zoom-wash"
     ],
-    "Flower": [
-      "american-dj/quad-phase-hp"
+    "Scanner": [
+      "martin/roboscan-812"
     ]
   }
 }
