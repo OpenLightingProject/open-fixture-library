@@ -28,7 +28,7 @@ var Physical = schema({
   '?dimensions': Array.of(3, Number.min(0)), // width, height, depth (in mm)
   '?weight': Number.min(0), // in kg
   '?power': Number.min(0), // in W
-  '?DMXconnector': ['3-pin', '5-pin', '3-pin and 5-pin', '3.5mm stereo jack'], // additions are welcome
+  '?DMXconnector': ['3-pin', '5-pin', '3-pin (swapped +/-)', '3-pin and 5-pin', '3.5mm stereo jack'], // additions are welcome
   '?bulb': schema({
     '?type': String, // e.g. 'LED'
     '?colorTemperature': Number.min(0), // in K
