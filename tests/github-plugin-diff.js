@@ -215,10 +215,10 @@ new Promise((resolve, reject) => {
 
     for (let plugin in pluginData) {
       message.push(`### Modified plugin \`${plugin}\` in this PR`);
+      message.push(`Plugins are always tested with the following fixtures: ${testFixtures}`);
 
       const pluginMessage = printPlugin(pluginData[plugin]);
       if (pluginMessage.length > 0) {
-        message.push(`Plugins are always tested with the following fixtures: ${testFixtures}`);
         message = message.concat(pluginMessage);
       }
       else {
