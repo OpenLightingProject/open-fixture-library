@@ -64,7 +64,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
       const functions = device.functions[0];
       for (const functionType in functions) {
         for (let i = 0; i < functions[functionType].length; i++) {
-          const singleFunction = functions[functionType][i]
+          const singleFunction = functions[functionType][i];
 
           switch(functionType) {
             case 'dimmer':
@@ -79,9 +79,26 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
                 channel.capabilities = caps;
               }
 
+              if ('defaultval' in singleFunction.$) {
+                channel.defaultValue = parseInt(singleFunction.$.defaultval);
+              }
+
               let channelKey;
               if ('name' in singleFunction.$) {
                 channelKey = singleFunction.$.name;
+
+                if (functionType == 'raw') {
+                  const testName = channelKey.toLowerCase();
+                  if (testName.includes('intensity')) {
+                    channel.type = 'Intensity';
+                  }
+                  else if (testName.includes('speed')) {
+                    channel.type = 'Speed';
+                  }
+                  else {
+                    out.warnings[fixKey].push(`Please check channel type of '${channelKey}'`);
+                  }
+                }
               }
               else {
                 // "Dimmer" if there's only one dimmer
@@ -103,7 +120,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
                 fix.availableChannels[fineChannelKey] = {
                   type: channel.type,
                 };
-                addChannelToMode(finedmxchannel, singleFunction.$.finedmxchannel);
+                addChannelToMode(fineChannelKey, singleFunction.$.finedmxchannel);
 
                 if (fix.multiByteChannels === undefined) {
                   fix.multiByteChannels = [];
@@ -111,8 +128,8 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
                 fix.multiByteChannels.push([channelKey, fineChannelKey]);
               }
 
-              warnUnknownAttributes(functionType, singleFunction, ['name', 'dmxchannel', 'mindmx', 'maxdmx', 'finedmxchannel']);
-              warnUnknownChildren(functionType, singleFunction, ['range']);
+              warnUnknownAttributes(functionType, singleFunction, ['name', 'defaultval', 'dmxchannel', 'mindmx', 'maxdmx', 'finedmxchannel']);
+              warnUnknownChildren(functionType, singleFunction, ['range', 'step']);
               break;
 
             default:
@@ -122,28 +139,19 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
 
         function warnUnknownAttributes(nodeName, node, knownAttributes) {
           if ('$' in node) {
-            attrs: for (const attr in node.$) {
-              for (const knownAttr of knownAttributes) {
-                if (attr == knownAttr) {
-                  continue attrs;
-                }
+            for (const attr in node.$) {
+              if (!knownAttributes.includes(attr)) {
+                out.warnings[fixKey].push(`Unknown attribute '${attr}=${node.$[attr]}' in '${nodeName}'`);
               }
-              out.warnings[fixKey].push(`Unknown attribute '${attr}=${node.$[attr]}' in '${nodeName}'`);
             }
           }
         }
 
-        function warnUnknownChildren(nodeName, node, knownAttributes) {
-          children: for (const child in node) {
-            if (child === '$') {
-              continue children;
+        function warnUnknownChildren(nodeName, node, knownChildren) {
+          for (const child in node) {
+            if (child !== '$' && !knownChildren.includes(child)) {
+              out.warnings[fixKey].push(`Unknown child '${child}' in '${nodeName}'`);
             }
-            for (const knownAttr of knownAttributes) {
-              if (child == knownAttr) {
-                continue children;
-              }
-            }
-            out.warnings[fixKey].push(`Unknown child '${child}' in '${nodeName}'`);
           }
         }
 
@@ -152,46 +160,18 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
 
           if ('range' in node) {
             for (const range of node.range) {
-              if (typeof range !== 'object') {
-                // skip empty <range />
-                continue;
+              const cap = getCapability(range);
+              if (cap != null) {
+                capabilities.push(cap);
               }
-              else if ('$' in range) {
-                let capability = {
-                  range: [0, 255],
-                  name: 'Generic'
-                };
+            }
+          }
 
-                capability.range[0] = parseInt(range.$.mindmx);
-                capability.range[1] = parseInt(range.$.maxdmx);
-                let minval = 'minval' in range.$ ? range.$.minval : '?';
-                let maxval = 'maxval' in range.$ ? range.$.maxval : '?';
-
-                if (capability.range[1] < capability.range[0]) {
-                  [capability.range[0], capability.range[1]] = [capability.range[1], capability.range[0]];
-                  [minval, maxval] = [maxval, minval];
-                }
-
-                if (minval != '?' || maxval != '?') {
-                  if (minval == maxval) {
-                    // not a real range
-                    capability.name = `${minval}`;
-                  }
-                  else {
-                    capability.name = `${minval}-${maxval}`;
-
-                    if ('type' in range.$) {
-                      capability.name += ` (${range.$.type})`;
-                    }
-                  }
-                }
-                else if ('type' in range.$) {
-                  capability.name = range.$.type;
-                }
-
-                warnUnknownAttributes('range', range, ['type', 'mindmx', 'maxdmx', 'minval', 'maxval'])
-
-                capabilities.push(capability);
+          if ('step' in node) {
+            for (const step of node.step) {
+              const cap = getCapability(step);
+              if (cap != null) {
+                capabilities.push(cap);
               }
             }
           }
@@ -211,6 +191,54 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           });
 
           return capabilities;
+        }
+
+        // node can be step or range
+        function getCapability(node) {
+          if (typeof node !== 'object') {
+            // skip empty <range /> or <step />
+            return null;
+          }
+          else if ('$' in node) {
+            let capability = {
+              range: [0, 255],
+              name: 'Generic'
+            };
+
+            capability.range[0] = parseInt(node.$.mindmx);
+            capability.range[1] = parseInt(node.$.maxdmx);
+            let minval = 'minval' in node.$ ? node.$.minval : '?';
+            let maxval = 'maxval' in node.$ ? node.$.maxval : '?';
+
+            if (capability.range[1] < capability.range[0]) {
+              [capability.range[0], capability.range[1]] = [capability.range[1], capability.range[0]];
+              [minval, maxval] = [maxval, minval];
+            }
+
+            if (minval != '?' || maxval != '?') {
+              if (minval == maxval) {
+                // not a real range
+                capability.name = `${minval}`;
+              }
+              else {
+                capability.name = `${minval}-${maxval}`;
+
+                if ('type' in node.$) {
+                  capability.name += ` (${node.$.type})`;
+                }
+              }
+            }
+            else if ('val' in node.$) {
+              capability.name = node.$.val;
+            }
+            else if ('type' in node.$) {
+              capability.name = node.$.type;
+            }
+
+            warnUnknownAttributes('range/step', node, ['type', 'mindmx', 'maxdmx', 'minval', 'maxval', 'val'])
+
+            return capability;
+          }
         }
 
         function getUniqueChannelKey(key) {
