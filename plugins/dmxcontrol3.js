@@ -66,7 +66,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
         for (let i = 0; i < functions[functionType].length; i++) {
           const singleFunction = functions[functionType][i];
 
-          switch(functionType) {
+          switch (functionType) {
             case 'dimmer':
             case 'colortemp':
             case 'raw':
@@ -114,26 +114,64 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
               fix.availableChannels[channelKey] = channel;
 
               addChannelToMode(channelKey, singleFunction.$.dmxchannel, channel);
-
-              if ('finedmxchannel' in singleFunction.$) {
-                const fineChannelKey = channelKey + ' fine';
-                fix.availableChannels[fineChannelKey] = {
-                  type: channel.type,
-                };
-                addChannelToMode(fineChannelKey, singleFunction.$.finedmxchannel);
-
-                if (fix.multiByteChannels === undefined) {
-                  fix.multiByteChannels = [];
-                }
-                fix.multiByteChannels.push([channelKey, fineChannelKey]);
-              }
+              addPossibleFineChannel(singleFunction, channelKey);
 
               warnUnknownAttributes(functionType, singleFunction, ['name', 'defaultval', 'dmxchannel', 'mindmx', 'maxdmx', 'finedmxchannel']);
               warnUnknownChildren(functionType, singleFunction, ['range', 'step']);
               break;
 
+            case 'rgb':
+              warnUnknownAttributes(functionType, singleFunction, []);
+
+              for (const colorFunctionName in singleFunction) {
+                let color = colorFunctionName.toLowerCase();
+
+                switch (color) {
+                  case 'r':
+                    color = 'Red';
+                    break;
+
+                  case 'g':
+                    color = 'Green';
+                    break;
+
+                  case 'b':
+                    color = 'Blue';
+                    break;
+
+                  case 'w':
+                    color = 'White';
+                    break;
+
+                  case 'uv':
+                    color = 'UV';
+                    break;
+
+                  default:
+                    color = capitalize(color);
+                }
+
+                const colorFunction = singleFunction[colorFunctionName][0];
+
+                let channel = {
+                  type: 'SingleColor',
+                  color: color
+                }
+
+                const channelKey = getUniqueChannelKey(color);
+                fix.availableChannels[channelKey] = channel;
+
+                addChannelToMode(channelKey, colorFunction.$.dmxchannel);
+                addPossibleFineChannel(colorFunction, channelKey);
+
+                warnUnknownAttributes(colorFunctionName, colorFunction, ['dmxchannel', 'finedmxchannel']);
+                warnUnknownChildren(colorFunctionName, colorFunction, ['']);
+              }
+
+              break;
+
             default:
-              // out.warnings[fixKey].push(`Unknown function type ${functionType}`);
+              out.warnings[fixKey].push(`Unknown function type ${functionType}`);
           }
         }
 
@@ -261,6 +299,27 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           }
           else {
             existingChannels[dmxchannel] = key;
+          }
+        }
+
+        function addPossibleFineChannel(singleFunction, normalChannelKey) {
+          if ('finedmxchannel' in singleFunction.$) {
+            const normalChannel = fix.availableChannels[normalChannelKey];
+            let fineChannel = {
+              type: normalChannel.type,
+            };
+            if ('color' in normalChannel) {
+              fineChannel.color = normalChannel.color;
+            }
+
+            const fineChannelKey = normalChannelKey + ' fine';
+            fix.availableChannels[fineChannelKey] = fineChannel;
+            addChannelToMode(fineChannelKey, singleFunction.$.finedmxchannel);
+
+            if (fix.multiByteChannels === undefined) {
+              fix.multiByteChannels = [];
+            }
+            fix.multiByteChannels.push([normalChannelKey, fineChannelKey]);
           }
         }
       }
