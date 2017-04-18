@@ -496,6 +496,7 @@ function openChannelDialog(editMode) {
         delete currentChannel.capabilities[index][input.dataset.key];
       });
       updateRangeInputs(capItem.querySelectorAll('[type="number"]'));
+      capItem.querySelector('[data-key="color2"]').hidden = true;
       capItem.classList.remove('changed');
 
       collapseEmptyCapabilityWithNeighbors(capItem);
@@ -607,6 +608,10 @@ function openChannelDialog(editMode) {
           }
         }
       }
+    });
+
+    capabilityItem.querySelector('[data-key="color"]').addEventListener('change', function(event) {
+      capabilityItem.querySelector('[data-key="color2"]').hidden = this.value == '';
     });
 
     if (beforeElement === undefined) {

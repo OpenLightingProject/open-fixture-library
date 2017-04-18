@@ -454,7 +454,7 @@ function getChannelDialogString() {
   str += '<span class="value">';
   str += '<input type="text" placeholder="name" data-key="name"><br/>';
   str += '<input type="text" placeholder="color" pattern="^#[0-9a-f]{6}$" title="#rrggbb" data-key="color"> ';
-  str += '<input type="text" placeholder="color 2" pattern="^#[0-9a-f]{6}$" title="#rrggbb" data-key="color2">';
+  str += '<input type="text" placeholder="color 2" pattern="^#[0-9a-f]{6}$" title="#rrggbb" data-key="color2" hidden>';
   str += '</span>';
   str += '<a href="#remove" class="remove" title="Remove capability">' + require('../includes/svg')({svgBasename: 'close'}) + '</a>';
   str += '</li>';
