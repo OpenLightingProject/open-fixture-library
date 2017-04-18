@@ -148,7 +148,7 @@ function initDialogs() {
 
 
   // channel edit dialog
-  [].forEach.call(dialogs.chooseChannelEditMode.node.querySelectorAll('button'), function(button) {
+  dialogs.chooseChannelEditMode.node.querySelectorAll('button').forEach(function(button) {
     button.addEventListener('click', function() {
       dialogs.chooseChannelEditMode.hide();
       openChannelDialog(this.dataset.action);
@@ -158,13 +158,13 @@ function initDialogs() {
 
   // submit dialog
   dialogs.submit.setState = function(newState) {
-    [].forEach.call(this.node.querySelectorAll('.state:not(.' + newState + ')'), function(state) {
+    this.node.querySelectorAll('.state:not(.' + newState + ')').forEach(function(state) {
       state.hidden = true;
     });
     this.node.querySelector('.state.' + newState).hidden = false;
   };
 
-  [].forEach.call(dialogs.submit.node.querySelectorAll('[data-action="home"]'), function(button) {
+  dialogs.submit.node.querySelectorAll('[data-action="home"]').forEach(function(button) {
     button.addEventListener('click', function() {
       location.href = '/';
     });
@@ -192,12 +192,12 @@ function toggleManufacturer(event, init) {
   }
 
   toHide.hidden = true;
-  [].forEach.call(toHide.querySelectorAll('select, input'), function(element) {
+  toHide.querySelectorAll('select, input').forEach(function(element) {
     element.disabled = true;
   });
 
   toShow.hidden = false;
-  [].forEach.call(toShow.querySelectorAll('select, input'), function(element, index) {
+  toShow.querySelectorAll('select, input').forEach(function(element, index) {
     element.disabled = false;
     if (index == 0) {
       element.focus();
@@ -219,7 +219,7 @@ function injectPhysical(container) {
 }
 
 function fillTogether(inputNodeList) {
-  [].forEach.call(inputNodeList, function(input) {
+  inputNodeList.forEach(function(input) {
     input.addEventListener('change', updateRequired);
   });
   updateRequired();
@@ -229,7 +229,7 @@ function fillTogether(inputNodeList) {
       return input.value != '';
     });
 
-    [].forEach.call(inputNodeList, function(input) {
+    inputNodeList.forEach(function(input) {
       input.required = required;
     });
   }
@@ -253,7 +253,7 @@ function updateRangeInputs(inputNodeList) {
 }
 
 function initComboboxes(container) {
-  [].forEach.call(container.querySelectorAll('[data-allow-additions]'), function(select) {
+  container.querySelectorAll('[data-allow-additions]').forEach(function(select) {
     select.addEventListener('change', function() {
       updateCombobox(this, true);
     });
@@ -268,7 +268,7 @@ function updateCombobox(select, updateFocus) {
 }
 
 function bindValuesToObject(container, context) {
-  [].forEach.call(container.querySelectorAll('select, input, textarea'), function(element) {
+  container.querySelectorAll('select, input, textarea').forEach(function(element) {
     element.addEventListener('change', function() {
       var key = this.getAttribute('data-key');
 
@@ -355,19 +355,19 @@ function addMode(event) {
 function updatePhysicalOverrideVisibility(usePhysicalOverride, physicalOverride) {
   if (usePhysicalOverride.checked) {
     physicalOverride.hidden = false;
-    [].forEach.call(physicalOverride.querySelectorAll('select, input'), function(element, index) {
+    physicalOverride.querySelectorAll('select, input').forEach(function(element, index) {
       element.disabled = false;
       if (index == 0) {
         element.focus();
       }
     });
-    [].forEach.call(physicalOverride.querySelectorAll('[data-allow-additions]'), function(select) {
+    physicalOverride.querySelectorAll('[data-allow-additions]').forEach(function(select) {
       updateCombobox(select, false);
     });
   }
   else {
     physicalOverride.hidden = true;
-    [].forEach.call(physicalOverride.querySelectorAll('select, input'), function(element) {
+    physicalOverride.querySelectorAll('select, input').forEach(function(element) {
       element.disabled = true;
     });
   }
@@ -393,10 +393,10 @@ function openChannelDialog(editMode) {
     }
   }
 
-  [].forEach.call(dialogs.channel.node.querySelectorAll('[data-edit-modes]'), function(element) {
+  dialogs.channel.node.querySelectorAll('[data-edit-modes]').forEach(function(element) {
     var hidden = element.hidden = (element.dataset.editModes.indexOf(editMode) == -1);
 
-    [].forEach.call(element.querySelectorAll('[required]'), function(input) {
+    element.querySelectorAll('[required]').forEach(function(input) {
       if (hidden) {
         input.disabled = true;
       }
@@ -489,7 +489,7 @@ function openChannelDialog(editMode) {
       var index = getUuidObjectIndexInArray(capItem.dataset.uuid, currentChannel.capabilities);
 
       // reset capability
-      [].forEach.call(capItem.querySelectorAll('input'), function(input) {
+      capItem.querySelectorAll('input').forEach(function(input) {
         input.value = '';
         input.required = false;
         delete currentChannel.capabilities[index][input.dataset.key];
@@ -502,7 +502,7 @@ function openChannelDialog(editMode) {
       autoSave();
     });
 
-    [].forEach.call(capabilityItem.querySelectorAll('input'), function(input) {
+    capabilityItem.querySelectorAll('input').forEach(function(input) {
       input.addEventListener('change', function(event) {
         // enable "cancel" confirmation
         currentChannel.changed = true;
@@ -706,7 +706,7 @@ function editChannel() {
   }
   else if (currentChannel.editMode == 'edit-all') {
     // update UI
-    [].forEach.call(editorForm.querySelectorAll(':not(a).fixture-mode'), function(modeElem) {
+    editorForm.querySelectorAll(':not(a).fixture-mode').forEach(function(modeElem) {
       var channelItem = modeElem.querySelector('.mode-channels > [data-channel-key="' + channelKey + '"]');
       channelItem.querySelector('.display-name').textContent = getChannelName();
     });

@@ -105,3 +105,8 @@ if (window.Element && !Element.prototype.closest) {
     elPlate.content = docContent;
   }
 })(document);
+
+
+if (!('forEach' in NodeList.prototype)) {
+  NodeList.prototype.forEach = Array.prototype.forEach;
+}
