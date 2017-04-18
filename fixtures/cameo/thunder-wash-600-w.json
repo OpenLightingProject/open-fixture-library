@@ -36,7 +36,7 @@
         {
           "range": [11, 255],
           "name": "Strobe 0Hz-30Hz",
-          "center": true
+          "menuClick": "center"
         }
       ]
     },
@@ -56,12 +56,12 @@
         {
           "range": [11, 250],
           "name": "Strobe 0Hz-30Hz",
-          "center": true
+          "menuClick": "center"
         },
         {
           "range": [251, 255],
           "name": "Strobe open",
-          "hideInMenu": true
+          "menuClick": "hidden"
         }
       ]
     },
@@ -81,37 +81,37 @@
         {
           "range": [11, 33],
           "name": "Puls random slow-fast",
-          "center": true
+          "menuClick": "center"
         },
         {
           "range": [34, 56],
           "name": "Ramp up random slow-fast",
-          "center": true
+          "menuClick": "center"
         },
         {
           "range": [57, 79],
           "name": "Ramp down random slow-fast",
-          "center": true
+          "menuClick": "center"
         },
         {
           "range": [80, 102],
           "name": "Random Strobe Effect slow-fast",
-          "center": true
+          "menuClick": "center"
         },
         {
           "range": [103, 127],
           "name": "Strobe Break Effect 5s-1s",
-          "center": true
+          "menuClick": "center"
         },
         {
           "range": [128, 250],
           "name": "Strobe 0Hz-30Hz",
-          "center": true
+          "menuClick": "center"
         },
         {
           "range": [251, 255],
           "name": "Strobe open",
-          "hideInMenu": true
+          "menuClick": "hidden"
         }
       ]
     },
@@ -139,7 +139,7 @@
         {
           "range": [6, 255],
           "name": "Mic Sensitivity Low-High",
-          "center": true
+          "menuClick": "center"
         }
       ]
     },
