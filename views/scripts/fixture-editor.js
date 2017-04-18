@@ -15,6 +15,7 @@ var addModeLink = editorForm.querySelector('a.fixture-mode');
 var submitButton = editorForm.querySelector('.save-fixture');
 var channelForm = document.querySelector('#channel-dialog form');
 var channelTypeSelect = document.querySelector('#channel-dialog .channel-type select');
+var channelDialogScrollElement = document.querySelector('#channel-dialog .dialog');
 
 
 // templates
@@ -558,6 +559,8 @@ function openChannelDialog(editMode) {
           else {
             var newItem = addCapability(container, this.parentElement);
             setMinMax(newItem, min, value - 1);
+
+            channelDialogScrollElement.scrollTop += newItem.clientHeight;
           }
         }
       }
