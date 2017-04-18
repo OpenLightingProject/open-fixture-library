@@ -181,7 +181,7 @@ function exportHandleModes(fixture, defaults, physical) {
         for (const cap of channel.capabilities) {
           const capData = Object.assign({}, defaults.availableChannels['channel key'].capabilities[0], cap);
 
-          str += `                        <Range Name="${capData.name}" Start="${capData.range[0]}" End="${capData.range[1]}" AutoMenu="${capData.hideInMenu ? 0 : 1}" Centre="${capData.center ? 1 : 0}" />\n`;
+          str += `                        <Range Name="${capData.name}" Start="${capData.range[0]}" End="${capData.range[1]}" AutoMenu="${capData.menuClick == 'hidden' ? 0 : 1}" Centre="${capData.menuClick == 'center' ? 1 : 0}" />\n`;
         }
         str += `                    </Channel${chType}>\n`;
       }
@@ -436,10 +436,10 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
                 }
 
                 if (range.$.AutoMenu != '1') {
-                  cap.hideInMenu = true;
+                  cap.menuClick = 'hidden';
                 }
-                if (range.$.Centre != '0') {
-                  cap.center = true;
+                else if (range.$.Centre != '0') {
+                  cap.menuClick = 'center';
                 }
 
                 ch.capabilities.push(cap);
