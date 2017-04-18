@@ -1,0 +1,360 @@
+{
+  "name": "RoboScan 812",
+  "shortName": "RoboScan812",
+  "categories": ["Scanner"],
+  "meta": {
+    "authors": ["FloEdelmann"],
+    "createDate": "2017-04-18",
+    "lastModifyDate": "2017-04-18"
+  },
+  "manualURL": "http://www.martin.com/files/files/productdocuments/11_MANUALS/999/UM_RoboScan812_DE_B.pdf",
+  "physical": {
+    "dimensions": [190, 165, 436],
+    "weight": 9.4,
+    "power": 170,
+    "DMXconnector": "3-pin (swapped +/-)",
+    "lens": {
+      "degreesMinMax": [15.5, 15.5]
+    },
+    "focus": {
+      "type": "Mirror",
+      "panMax": 173,
+      "tiltMax": 83
+    }
+  },
+  "availableChannels": {
+    "Strobe": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "highlightValue": 200,
+      "invert": false,
+      "constant": false,
+      "crossfade": false,
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "No strobe"
+        },
+        {
+          "range": [11, 74],
+          "name": "Gobo strobe fast-slow"
+        },
+        {
+          "range": [75, 138],
+          "name": "Color strobe fast-slow"
+        },
+        {
+          "range": [139, 170],
+          "name": "Remote Autotrigger"
+        },
+        {
+          "range": [171, 202],
+          "name": "Remote Musictrigger"
+        },
+        {
+          "range": [203, 235],
+          "name": "Reset fixture"
+        },
+        {
+          "range": [236, 255],
+          "name": "Lamp on"
+        }
+      ]
+    },
+    "Color": {
+      "type": "MultiColor",
+      "capabilities": [
+        {
+          "range": [0, 8],
+          "name": "Black",
+          "color": "#000000"
+        },
+        {
+          "range": [9, 22],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [23, 37],
+          "name": "Magenta",
+          "color": "#ca1f7b"
+        },
+        {
+          "range": [38, 52],
+          "name": "Pink",
+          "color": "#ffc0cb"
+        },
+        {
+          "range": [53, 67],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [68, 82],
+          "name": "Orange",
+          "color": "#ff7f00"
+        },
+        {
+          "range": [83, 97],
+          "name": "Amber",
+          "color": "#ffbf00"
+        },
+        {
+          "range": [98, 112],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [113, 127],
+          "name": "Light Green",
+          "color": "#90ee90"
+        },
+        {
+          "range": [128, 142],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [143, 157],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [158, 172],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [173, 184],
+          "name": "Dark Blue",
+          "color": "#00008b"
+        },
+        {
+          "range": [185, 189],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [190, 194],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [195, 199],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [200, 204],
+          "name": "Light Green",
+          "color": "#90ee90"
+        },
+        {
+          "range": [205, 209],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [210, 214],
+          "name": "Amber",
+          "color": "#ffbf00"
+        },
+        {
+          "range": [215, 219],
+          "name": "Orange",
+          "color": "#ff7f00"
+        },
+        {
+          "range": [220, 224],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [225, 229],
+          "name": "Pink",
+          "color": "#ffc0cb"
+        },
+        {
+          "range": [230, 234],
+          "name": "Magenta",
+          "color": "#ca1f7b"
+        },
+        {
+          "range": [235, 239],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [240, 255],
+          "name": "Black",
+          "color": "#000000"
+        }
+      ]
+    },
+    "Gobo": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 22],
+          "name": "Dimmer"
+        },
+        {
+          "range": [23, 37],
+          "name": "Dot"
+        },
+        {
+          "range": [38, 52],
+          "name": "Line"
+        },
+        {
+          "range": [53, 67],
+          "name": "Stars"
+        },
+        {
+          "range": [68, 82],
+          "name": "Triangles"
+        },
+        {
+          "range": [83, 97],
+          "name": "Star"
+        },
+        {
+          "range": [98, 112],
+          "name": "Dots"
+        },
+        {
+          "range": [113, 127],
+          "name": "Bells"
+        },
+        {
+          "range": [128, 142],
+          "name": "Cone"
+        },
+        {
+          "range": [143, 157],
+          "name": "Phone"
+        },
+        {
+          "range": [158, 172],
+          "name": "Window"
+        },
+        {
+          "range": [173, 184],
+          "name": "Triangle"
+        },
+        {
+          "range": [185, 189],
+          "name": "Window"
+        },
+        {
+          "range": [190, 194],
+          "name": "Phone"
+        },
+        {
+          "range": [195, 199],
+          "name": "Cone"
+        },
+        {
+          "range": [200, 204],
+          "name": "Bells"
+        },
+        {
+          "range": [205, 209],
+          "name": "Dots"
+        },
+        {
+          "range": [210, 214],
+          "name": "Star"
+        },
+        {
+          "range": [215, 219],
+          "name": "Triangles"
+        },
+        {
+          "range": [220, 224],
+          "name": "Stars"
+        },
+        {
+          "range": [225, 229],
+          "name": "Line"
+        },
+        {
+          "range": [230, 234],
+          "name": "Dot"
+        },
+        {
+          "range": [235, 239],
+          "name": "open",
+          "color": "#ffffff"
+        },
+        {
+          "range": [240, 255],
+          "name": "closed",
+          "color": "#000000"
+        }
+      ]
+    },
+    "Pan": {
+      "type": "Pan",
+      "defaultValue": 127
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "defaultValue": 127
+    },
+    "Movement Speed": {
+      "type": "Speed",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Tracking mode"
+        },
+        {
+          "range": [1, 255],
+          "name": "fast-slow"
+        }
+      ]
+    },
+    "Color/Gobo Speed": {
+      "type": "Speed",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Tracking mode"
+        },
+        {
+          "range": [1, 255],
+          "name": "fast-slow"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel tracking",
+      "shortName": "tracking",
+      "channels": [
+        "Strobe",
+        "Color",
+        "Gobo",
+        "Pan",
+        "Tilt"
+      ]
+    },
+    {
+      "name": "7-channel vector",
+      "shortName": "vector",
+      "channels": [
+        "Strobe",
+        "Color",
+        "Gobo",
+        "Pan",
+        "Tilt",
+        "Movement Speed",
+        "Color/Gobo Speed"
+      ]
+    }
+  ]
+}
