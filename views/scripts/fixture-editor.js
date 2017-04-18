@@ -1,8 +1,10 @@
 'use strict';
 
 // modules
+require('./polyfills');
 var A11yDialog = require('a11y-dialog');
 var properties = properties = require('../../fixtures/schema').properties;
+var uuidV4 = require('uuid/v4');
 
 
 // elements
@@ -11,14 +13,16 @@ var manShortName = editorForm.querySelector('.manufacturer-shortName');
 var newMan = editorForm.querySelector('.new-manufacturer');
 var addModeLink = editorForm.querySelector('a.fixture-mode');
 var submitButton = editorForm.querySelector('.save-fixture');
-var channelForm;
-var channelTypeSelect;
+var channelForm = document.querySelector('#channel-dialog form');
+var channelTypeSelect = document.querySelector('#channel-dialog .channel-type select');
+var channelDialogScrollElement = document.querySelector('#channel-dialog .dialog');
 
 
 // templates
 var templatePhysical = document.getElementById('template-physical');
 var templateMode = document.getElementById('template-mode');
 var templateChannelLi = document.getElementById('template-channel-li');
+var templateCapability = document.getElementById('template-capability');
 
 
 var dialogs = {
@@ -78,7 +82,6 @@ window.addEventListener('load', function() {
   addMode();  // every fixture has at least one mode
 
   // add channel editor submit
-  channelForm = document.querySelector('#channel-dialog form');
   bindValuesToObject(channelForm, currentChannel);
   channelForm.addEventListener('submit', function(event) {
     event.preventDefault();
@@ -86,7 +89,6 @@ window.addEventListener('load', function() {
   });
 
   // enable channel color only if the channel type is SingleColor
-  channelTypeSelect = document.querySelector('#channel-dialog .channel-type select');
   channelTypeSelect.addEventListener('change', updateChannelColorVisibility);
 
   restoreAutoSave();
@@ -117,7 +119,7 @@ function initDialogs() {
     openChannelDialog('create');
   });
 
-  dialogs.channel.on('show', function(node) {
+  dialogs.channel.on('show', function() {
     dialogs.channel.closingHandled = false;
 
     if ('pushState' in history) {
@@ -147,7 +149,7 @@ function initDialogs() {
 
 
   // channel edit dialog
-  [].forEach.call(dialogs.chooseChannelEditMode.node.querySelectorAll('button'), function(button) {
+  dialogs.chooseChannelEditMode.node.querySelectorAll('button').forEach(function(button) {
     button.addEventListener('click', function() {
       dialogs.chooseChannelEditMode.hide();
       openChannelDialog(this.dataset.action);
@@ -157,13 +159,13 @@ function initDialogs() {
 
   // submit dialog
   dialogs.submit.setState = function(newState) {
-    [].forEach.call(this.node.querySelectorAll('.state:not(.' + newState + ')'), function(state) {
+    this.node.querySelectorAll('.state:not(.' + newState + ')').forEach(function(state) {
       state.hidden = true;
     });
     this.node.querySelector('.state.' + newState).hidden = false;
   };
 
-  [].forEach.call(dialogs.submit.node.querySelectorAll('[data-action="home"]'), function(button) {
+  dialogs.submit.node.querySelectorAll('[data-action="home"]').forEach(function(button) {
     button.addEventListener('click', function() {
       location.href = '/';
     });
@@ -191,12 +193,12 @@ function toggleManufacturer(event, init) {
   }
 
   toHide.hidden = true;
-  [].forEach.call(toHide.querySelectorAll('select, input'), function(element) {
+  toHide.querySelectorAll('select, input').forEach(function(element) {
     element.disabled = true;
   });
 
   toShow.hidden = false;
-  [].forEach.call(toShow.querySelectorAll('select, input'), function(element, index) {
+  toShow.querySelectorAll('select, input').forEach(function(element, index) {
     element.disabled = false;
     if (index == 0) {
       element.focus();
@@ -218,17 +220,20 @@ function injectPhysical(container) {
 }
 
 function fillTogether(inputNodeList) {
-  [].forEach.call(inputNodeList, function(input) {
-    input.addEventListener('change', function() {
-      var required = [].some.call(inputNodeList, function(input) {
-        return input.value != '';
-      });
-
-      [].forEach.call(inputNodeList, function(input) {
-        input.required = required;
-      });
-    });
+  inputNodeList.forEach(function(input) {
+    input.addEventListener('change', updateRequired);
   });
+  updateRequired();
+
+  function updateRequired() {
+    var required = [].some.call(inputNodeList, function(input) {
+      return input.value != '';
+    });
+
+    inputNodeList.forEach(function(input) {
+      input.required = required;
+    });
+  }
 }
 
 function initRangeInputs(inputNodeList) {
@@ -240,6 +245,8 @@ function initRangeInputs(inputNodeList) {
   });
   inputNodeList[0].dataset.max = inputNodeList[0].max;
   inputNodeList[1].dataset.min = inputNodeList[1].min;
+
+  updateRangeInputs(inputNodeList);
 }
 function updateRangeInputs(inputNodeList) {
   inputNodeList[1].min = (inputNodeList[0].value == '') ? inputNodeList[1].dataset.min : inputNodeList[0].value;
@@ -247,7 +254,7 @@ function updateRangeInputs(inputNodeList) {
 }
 
 function initComboboxes(container) {
-  [].forEach.call(container.querySelectorAll('[data-allow-additions]'), function(select) {
+  container.querySelectorAll('[data-allow-additions]').forEach(function(select) {
     select.addEventListener('change', function() {
       updateCombobox(this, true);
     });
@@ -262,7 +269,7 @@ function updateCombobox(select, updateFocus) {
 }
 
 function bindValuesToObject(container, context) {
-  [].forEach.call(container.querySelectorAll('select, input, textarea'), function(element) {
+  container.querySelectorAll('select, input, textarea').forEach(function(element) {
     element.addEventListener('change', function() {
       var key = this.getAttribute('data-key');
 
@@ -305,9 +312,11 @@ function updateChannelColorVisibility() {
 }
 
 function addMode(event) {
-  var newMode = document.importNode(templateMode.content, true);
+  var modeId = uuidV4();
+
+  var newMode = document.importNode(templateMode.content, true).firstElementChild;
+  newMode.dataset.uuid = modeId;
   editorForm.querySelector('.fixture-modes').insertBefore(newMode, addModeLink);
-  newMode = addModeLink.previousSibling;
 
   var physicalOverride = newMode.querySelector('.physical-override');
   injectPhysical(physicalOverride);
@@ -318,16 +327,16 @@ function addMode(event) {
   });
   updatePhysicalOverrideVisibility(usePhysicalOverride, physicalOverride);
 
-  currentFixture.modes.push({
+  var length = currentFixture.modes.push({
+    uuid: modeId,
     channels: []
   });
 
-  var modeIndex = currentFixture.modes.length - 1;
-  bindValuesToObject(newMode, currentFixture.modes[modeIndex]);
+  bindValuesToObject(newMode, currentFixture.modes[length - 1]);
 
   newMode.querySelector('.close').addEventListener('click', function(e) {
     e.preventDefault();
-    currentFixture.modes.splice(modeIndex, 1);
+    removeUuidObjectFromArray(newMode.dataset.uuid, currentFixture.modes);
     newMode.remove();
 
     autoSave();
@@ -335,7 +344,7 @@ function addMode(event) {
 
   newMode.querySelector('.add-channel').addEventListener('click', function(e) {
     e.preventDefault();
-    currentChannel.modeIndex = modeIndex;
+    currentChannel.modeIndex = getUuidObjectIndexInArray(newMode.dataset.uuid, currentFixture.modes);
     openChannelDialog('add-existing');
   });
 
@@ -347,19 +356,19 @@ function addMode(event) {
 function updatePhysicalOverrideVisibility(usePhysicalOverride, physicalOverride) {
   if (usePhysicalOverride.checked) {
     physicalOverride.hidden = false;
-    [].forEach.call(physicalOverride.querySelectorAll('select, input'), function(element, index) {
+    physicalOverride.querySelectorAll('select, input').forEach(function(element, index) {
       element.disabled = false;
       if (index == 0) {
         element.focus();
       }
     });
-    [].forEach.call(physicalOverride.querySelectorAll('[data-allow-additions]'), function(select) {
+    physicalOverride.querySelectorAll('[data-allow-additions]').forEach(function(select) {
       updateCombobox(select, false);
     });
   }
   else {
     physicalOverride.hidden = true;
-    [].forEach.call(physicalOverride.querySelectorAll('select, input'), function(element) {
+    physicalOverride.querySelectorAll('select, input').forEach(function(element) {
       element.disabled = true;
     });
   }
@@ -385,10 +394,10 @@ function openChannelDialog(editMode) {
     }
   }
 
-  [].forEach.call(dialogs.channel.node.querySelectorAll('[data-edit-modes]'), function(element) {
+  dialogs.channel.node.querySelectorAll('[data-edit-modes]').forEach(function(element) {
     var hidden = element.hidden = (element.dataset.editModes.indexOf(editMode) == -1);
 
-    [].forEach.call(element.querySelectorAll('[required]'), function(input) {
+    element.querySelectorAll('[required]').forEach(function(input) {
       if (hidden) {
         input.disabled = true;
       }
@@ -404,6 +413,10 @@ function openChannelDialog(editMode) {
   if ((editMode == 'edit-all' || editMode == 'edit-duplicate') && !('changed' in currentChannel)) {
     for (var key in currentFixture.availableChannels[currentChannel.key]) {
       currentChannel[key] = clone(currentFixture.availableChannels[currentChannel.key][key]);
+    }
+
+    if (!('name' in currentChannel)) {
+      currentChannel.name = currentChannel.key;
     }
 
     prefillFormElements(dialogs.channel.node, currentChannel);
@@ -422,9 +435,265 @@ function openChannelDialog(editMode) {
 
   if (editMode != 'add-existing') {
     updateChannelColorVisibility();
+
+    var capabilitiesContainer = dialogs.channel.node.querySelector('.capabilities');
+    capabilitiesContainer.innerHTML = '';  // it could be non-empty when the dialog was already opened before
+
+    if ('capabilities' in currentChannel && currentChannel.capabilities.length > 0) {
+      currentChannel.capabilities.forEach(function(cap, index) {
+        var newItem = addCapabilityToUI(capabilitiesContainer, cap);
+        setMinMax(newItem, getMinCapabilityBound(index), getMaxCapabilityBound(index));
+      });
+    }
+    else {
+      currentChannel.capabilities = [];
+      addCapability(capabilitiesContainer);
+    }
   }
 
   dialogs.channel.show();
+
+  function addCapability(container, beforeElement) {
+    var object = {};
+
+    if (!beforeElement) {
+      currentChannel.capabilities.push(object);
+    }
+    else {
+      var index = getUuidObjectIndexInArray(beforeElement.dataset.uuid, currentChannel.capabilities);
+      currentChannel.capabilities.splice(index, 0, object);
+    }
+
+    return addCapabilityToUI(container, object, beforeElement);
+  }
+  function addCapabilityToUI(container, object, beforeElement) {
+    var capabilityId = uuidV4();
+    object.uuid = capabilityId;
+
+    var capabilityItem = document.importNode(templateCapability.content, true).firstElementChild;
+    capabilityItem.dataset.uuid = capabilityId;
+
+    if (isChanged(object)) {
+      capabilityItem.classList.add('changed');
+    }
+
+    bindValuesToObject(capabilityItem, object);
+    prefillFormElements(capabilityItem, object);
+
+    initRangeInputs(capabilityItem.querySelectorAll('[type="number"]'));
+    fillTogether(capabilityItem.querySelectorAll('[type="number"], [data-key="name"]'));
+
+    capabilityItem.querySelector('.remove').addEventListener('click', function(event) {
+      event.preventDefault();
+
+      var capItem = this.parentElement;
+      var index = getUuidObjectIndexInArray(capItem.dataset.uuid, currentChannel.capabilities);
+
+      // reset capability
+      capItem.querySelectorAll('input').forEach(function(input) {
+        input.value = '';
+        input.required = false;
+        delete currentChannel.capabilities[index][input.dataset.key];
+      });
+      updateRangeInputs(capItem.querySelectorAll('[type="number"]'));
+      capItem.querySelector('[data-key="color2"]').hidden = true;
+      capItem.classList.remove('changed');
+
+      collapseEmptyCapabilityWithNeighbors(capItem);
+
+      autoSave();
+    });
+
+    capabilityItem.querySelectorAll('input').forEach(function(input) {
+      input.addEventListener('change', function(event) {
+        // enable "cancel" confirmation
+        currentChannel.changed = true;
+
+        var capabilityItem = input.closest('li');
+        var changed = [].some.call(capabilityItem.querySelectorAll('input'), function(input) {
+          return input.value != '';
+        });
+        capabilityItem.classList[changed ? 'add' : 'remove']('changed');
+
+        if (!changed) {
+          collapseEmptyCapabilityWithNeighbors(capabilityItem);
+        }
+      });
+    });
+
+    capabilityItem.querySelector('.start').addEventListener('change', function(event) {
+      if (!this.checkValidity() || this.value === '') {
+        // don't let invalid inputs change other field's min / max attributes
+        return;
+      }
+
+      var index = getUuidObjectIndexInArray(this.parentElement.dataset.uuid, currentChannel.capabilities);
+
+      var previousCapabilityItem = this.parentElement.previousElementSibling;
+      var value = this.valueAsNumber;
+
+      if (!previousCapabilityItem) {
+        if (value == 0) {
+          // do nothing
+        }
+        else {
+          var newItem = addCapability(container, this.parentElement);
+          setMinMax(newItem, 0, value - 1);
+        }
+      }
+      else {
+        if (!isChanged(previousCapabilityItem)) {
+          if (value == getMinCapabilityBound(index)) {
+            removeUuidObjectFromArray(previousCapabilityItem.dataset.uuid, currentChannel.capabilities);
+            previousCapabilityItem.remove();
+          }
+          else {
+            setMinMax(previousCapabilityItem, null, value - 1);
+          }
+        }
+        else {
+          var min = getMinCapabilityBound(index);
+
+          if (value == min) {
+            setMinMax(previousCapabilityItem, null, value - 1);
+          }
+          else {
+            var newItem = addCapability(container, this.parentElement);
+            setMinMax(newItem, min, value - 1);
+
+            channelDialogScrollElement.scrollTop += newItem.clientHeight;
+          }
+        }
+      }
+    });
+    capabilityItem.querySelector('.end').addEventListener('change', function(event) {
+      if (!this.checkValidity() || this.value === '') {
+        // don't let invalid inputs change other field's min / max attributes
+        return;
+      }
+
+      var index = getUuidObjectIndexInArray(this.parentElement.dataset.uuid, currentChannel.capabilities);
+
+      var nextCapabilityItem = this.parentElement.nextElementSibling;
+      var value = this.valueAsNumber;
+
+      if (!nextCapabilityItem) {
+        if (value == 255) {
+          // do nothing
+        }
+        else {
+          var newItem = addCapability(container);
+          setMinMax(newItem, value + 1, 255);
+        }
+      }
+      else {
+        if (!isChanged(nextCapabilityItem)) {
+          if (value == getMaxCapabilityBound(index)) {
+            removeUuidObjectFromArray(nextCapabilityItem.dataset.uuid, currentChannel.capabilities);
+            nextCapabilityItem.remove();
+          }
+          else {
+            setMinMax(nextCapabilityItem, value + 1, null);
+          }
+        }
+        else {
+          var max = getMaxCapabilityBound(index);
+
+          if (value == max) {
+            setMinMax(nextCapabilityItem, value + 1, null);
+          }
+          else {
+            var newItem = addCapability(container, nextCapabilityItem);
+            setMinMax(newItem, value + 1, max);
+          }
+        }
+      }
+    });
+
+    capabilityItem.querySelector('[data-key="color"]').addEventListener('change', function(event) {
+      capabilityItem.querySelector('[data-key="color2"]').hidden = this.value == '';
+    });
+
+    if (beforeElement === undefined) {
+      container.appendChild(capabilityItem);
+    }
+    else {
+      container.insertBefore(capabilityItem, beforeElement);
+    }
+
+    return capabilityItem;
+  }
+
+  function isChanged(capability) {
+    console.log('isChanged?', capability);
+
+    if (capability instanceof HTMLElement) {
+      console.log('capability instanceof HTMLElement');
+      return capability.classList.contains('changed');
+    }
+
+    console.log('capability not instanceof HTMLElement');
+    return Object.keys(capability).some(function(key) {
+      return key != 'uuid' && key != 'changed';
+    });
+  }
+
+  function setMinMax(capability, min, max) {
+    if (typeof min === 'number') {
+      capability.querySelector('.start').min = min;
+    }
+    if (typeof max === 'number') {
+      capability.querySelector('.end').max = max;
+    }
+  }
+
+  function getMinCapabilityBound(index) {
+    index--;
+
+    while (index >= 0) {
+      if ('end' in currentChannel.capabilities[index]) {
+        return currentChannel.capabilities[index].end + 1;
+      }
+      if ('start' in currentChannel.capabilities[index]) {
+        return currentChannel.capabilities[index].start + 1;
+      }
+      index--;
+    }
+
+    return 0;
+  }
+
+  function getMaxCapabilityBound(index) {
+    index++;
+
+    while (index < currentChannel.capabilities.length) {
+      if ('start' in currentChannel.capabilities[index]) {
+        return currentChannel.capabilities[index].start - 1;
+      }
+      if ('end' in currentChannel.capabilities[index]) {
+        return currentChannel.capabilities[index].end - 1;
+      }
+      index++;
+    }
+
+    return 255;
+  }
+
+  function collapseEmptyCapabilityWithNeighbors(capabilityItem) {
+    var previousCapabilityItem = capabilityItem.previousElementSibling;
+    var nextCapabilityItem = capabilityItem.nextElementSibling;
+
+    if (previousCapabilityItem && !isChanged(previousCapabilityItem)) {
+      setMinMax(capabilityItem, parseInt(previousCapabilityItem.querySelector('.start').min) || 0, null);
+      removeUuidObjectFromArray(previousCapabilityItem.dataset.uuid, currentChannel.capabilities);
+      previousCapabilityItem.remove();
+    }
+    if (nextCapabilityItem && !isChanged(nextCapabilityItem)) {
+      setMinMax(capabilityItem, null, parseInt(nextCapabilityItem.querySelector('.end').max) || 255);
+      removeUuidObjectFromArray(nextCapabilityItem.dataset.uuid, currentChannel.capabilities);
+      nextCapabilityItem.remove();
+    }
+  }
 }
 
 function editChannel() {
@@ -445,7 +714,7 @@ function editChannel() {
   }
   else if (currentChannel.editMode == 'edit-all') {
     // update UI
-    [].forEach.call(editorForm.querySelectorAll(':not(a).fixture-mode'), function(modeElem) {
+    editorForm.querySelectorAll(':not(a).fixture-mode').forEach(function(modeElem) {
       var channelItem = modeElem.querySelector('.mode-channels > [data-channel-key="' + channelKey + '"]');
       channelItem.querySelector('.display-name').textContent = getChannelName();
     });
@@ -657,6 +926,7 @@ function restoreAutoSave() {
 
   dialogs.restore.node.querySelector('.discard').addEventListener('click', function() {
     editorForm.reset();
+    channelForm.reset();
     dialogs.restore.hide();
 
     // last element was popped before
@@ -846,7 +1116,32 @@ function saveFixture(event) {
 
   function saveChannel(to, from) {
     for (var key in properties.channel) {
-      if (key in from) {
+      if (key == 'capabilities') {
+        to.capabilities = [];
+
+        from.capabilities.forEach(function(cap) {
+          if (!('start' in cap)) {
+            return;
+          }
+
+          var capability = {
+            range: [cap.start, cap.end]
+          };
+
+          for (var key in properties.capability) {
+            if (key in cap) {
+              capability[key] = cap[key];
+            }
+          }
+
+          to.capabilities.push(capability);
+        });
+
+        if (to.capabilities.length == 0) {
+          delete to.capabilities;
+        }
+      }
+      else if (key in from) {
         to[key] = from[key];
       }
     }
@@ -870,7 +1165,7 @@ function saveFixture(event) {
 
 function getKeyFromName(name, uniqueInList, forceSanitize) {
   if (forceSanitize) {
-    name = sanitze(name);
+    name = sanitize(name);
   }
 
   if (!uniqueInList) {
@@ -892,6 +1187,22 @@ function getKeyFromName(name, uniqueInList, forceSanitize) {
   function sanitize(val) {
     return val.toLowerCase().replace(/[^a-z0-9\-]+/g, '-');
   }
+}
+
+function getUuidObjectIndexInArray(uuid, array) {
+  var index = array.findIndex(function(element) {
+    return 'uuid' in element && element.uuid === uuid;
+  });
+
+  if (index === -1) {
+    throw new Error('uuid "' + uuid + '" was not found in array');
+  }
+
+  return index;
+}
+
+function removeUuidObjectFromArray(uuid, array) {
+  array.splice(getUuidObjectIndexInArray(uuid, array), 1);
 }
 
 function clear(obj) {

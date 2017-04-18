@@ -130,6 +130,15 @@ a.card, .list a {
   transition: transform 0.1s, -webkit-transform 0.1s;
 }
 
+/* fixes padding not being visible when scrollbar is present */
+.dialog.card {
+  padding-bottom: 0;
+
+  & > div {
+    margin-bottom: 1rem;
+  }
+}
+
 .dialog-container:not([aria-hidden="true"]) .dialog {
   -webkit-transform: translate(-50%, -50%) scale(1);
   transform: translate(-50%, -50%) scale(1);
