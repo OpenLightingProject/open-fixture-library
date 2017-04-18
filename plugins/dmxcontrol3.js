@@ -92,7 +92,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
                   if (testName.includes('intensity')) {
                     channel.type = 'Intensity';
                   }
-                  else if (testName.includes('speed')) {
+                  else if (testName.includes('speed') || testName.includes('duration')) {
                     channel.type = 'Speed';
                   }
                   else {
