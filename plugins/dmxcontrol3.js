@@ -69,9 +69,13 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           switch (functionType) {
             case 'dimmer':
             case 'colortemp':
+            case 'strobe':
             case 'raw':
               let channel = {
                 type: 'Intensity',
+              }
+              if (functionType == 'strobe') {
+                channel.type = 'Strobe';
               }
 
               const caps = getCapabilities(singleFunction);
