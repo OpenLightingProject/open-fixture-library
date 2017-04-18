@@ -121,6 +121,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
               break;
 
             case 'rgb':
+            case 'cmy':
               warnUnknownAttributes(functionType, singleFunction, []);
 
               for (const colorFunctionName in singleFunction) {
@@ -137,6 +138,18 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
 
                   case 'b':
                     color = 'Blue';
+                    break;
+
+                  case 'c':
+                    color = 'Cyan';
+                    break;
+
+                  case 'm':
+                    color = 'Magenta';
+                    break;
+
+                  case 'y':
+                    color = 'Yellow';
                     break;
 
                   case 'w':
