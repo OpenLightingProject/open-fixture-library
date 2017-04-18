@@ -70,6 +70,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             case 'dimmer':
             case 'colortemp':
             case 'strobe':
+            case 'shutter':
             case 'raw':
               parseSimpleFunction(functionType, functions[functionType], i);
               break;
@@ -138,8 +139,6 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
               break;
 
             case 'position':
-                console.log(fixKey);
-
               if ('pan' in singleFunction) {
                 parseSimpleFunction('pan', singleFunction.pan, 0);
               }
@@ -183,7 +182,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             let channel = {
               type: 'Intensity',
             }
-            if (['strobe', 'pan', 'tilt'].includes(functionType)) {
+            if (['strobe', 'shutter', 'pan', 'tilt'].includes(functionType)) {
               channel.type = capitalize(functionType);
             }
 
@@ -263,9 +262,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             });
           }
 
-          capabilities.sort(function(a, b) {
-            return a.range[0] - b.range[0];
-          });
+          capabilities.sort(sortCapabilities);
 
           return capabilities;
         }
@@ -356,15 +353,46 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
 
         function addChannelToMode(key, dmxchannel, channel) {
           const existingChannels = fix.modes[0].channels;
-          const existingChannel = existingChannels[dmxchannel];
-          if (existingChannel !== undefined &&
-              existingChannel !== null) {
-            out.warnings[fixKey].push(`Attempting to use DMX channel ${dmxchannel} for '${key}' but it is already used by '${existingChannel}'`);
+          const existingChannelKey = existingChannels[dmxchannel];
+
+          // check if there already is a channel for this DMX channel index
+          if (existingChannelKey !== undefined &&
+              existingChannelKey !== null) {
+            existingChannel = fix.availableChannels[existingChannelKey];
+
+            // do both channels' capabilities overlap?
+            let overlap = false;
+            if (!('capabilities' in channel)) {
+              channel.capabilities = [];
+            }
+            if (!('capabilities' in existingChannel)) {
+              existingChannel.capabilities = [];
+            }
+            checkOverlap: for (capability of channel.capabilities) {
+              for (existingCapability of existingChannel.capabilities) {
+                if ((capability.range[0] <= existingCapability.range[0] &&
+                     capability.range[1] >= existingCapability.range[0]) ||
+                    (capability.range[0] <= existingCapability.range[1] &&
+                     capability.range[1] >= existingCapability.range[1])) {
+                  overlap = true;
+                  break checkOverlap;
+                }
+              }
+            }
+
+            if (overlap) {
+              out.warnings[fixKey].push(`Channels '${existingChannelKey}' and '${key}' have same DMX channel ${dmxchannel} and can't be merged because their capabilities overlap.`);
+              fix.availableChannels[key] = channel;
+            }
+            else {
+              existingChannel.capabilities = existingChannel.capabilities.concat(channel.capabilities).sort(sortCapabilities);
+              out.warnings[fixKey].push(`Merged '${key}'´s capabilities into '${existingChannelKey}' as they have the same DMX channel ${dmxchannel}. Please check if type of the channel are correct. '${key}'´s type was ${channel.type}.`);
+            }
           }
           else {
+            fix.availableChannels[key] = channel;
             existingChannels[dmxchannel] = key;
           }
-          fix.availableChannels[key] = channel;
         }
 
         function addPossibleFineChannel(singleFunction, normalChannelKey) {
@@ -410,6 +438,10 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
 
 function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function sortCapabilities(a, b) {
+  return a.range[0] - b.range[0];
 }
 
 function logXML(obj) {
