@@ -288,11 +288,10 @@ a.fixture-mode {
     & [data-key="color2"] {
       width: 10ex;
     }
-  }
 
-  /* last (empty) capability is not removable */
-  & > li:last-child > .remove {
-    display: none;
+    &:not(.changed) > .remove {
+      display: none;
+    }
   }
 }
 

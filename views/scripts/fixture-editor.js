@@ -439,17 +439,10 @@ function openChannelDialog(editMode) {
     capabilitiesContainer.innerHTML = '';
 
     if ('capabilities' in currentChannel && currentChannel.capabilities.length > 0) {
-      currentChannel.capabilities.forEach(function(cap) {
-        addCapabilityToUI(capabilitiesContainer, cap);
+      currentChannel.capabilities.forEach(function(cap, index) {
+        var newItem = addCapabilityToUI(capabilitiesContainer, cap);
+        setMinMax(newItem, getMinCapabilityBound(index), getMaxCapabilityBound(index));
       });
-
-      var lastModeIsNotEmpty = Object.keys(currentChannel.capabilities[currentChannel.capabilities.length - 1]).some(function(key) {
-        return key != 'uuid';
-      });
-
-      if (lastModeIsNotEmpty) {
-        addCapability(capabilitiesContainer);
-      }
     }
     else {
       currentChannel.capabilities = [];
@@ -459,17 +452,29 @@ function openChannelDialog(editMode) {
 
   dialogs.channel.show();
 
-  function addCapability(container) {
-    var length = currentChannel.capabilities.push({});
+  function addCapability(container, beforeElement) {
+    var object = {};
 
-    addCapabilityToUI(container, currentChannel.capabilities[length - 1]);
+    if (!beforeElement) {
+      currentChannel.capabilities.push(object);
+    }
+    else {
+      var index = getUuidObjectIndexInArray(beforeElement.dataset.uuid, currentChannel.capabilities);
+      currentChannel.capabilities.splice(index, 0, object);
+    }
+
+    return addCapabilityToUI(container, object, beforeElement);
   }
-  function addCapabilityToUI(container, object) {
+  function addCapabilityToUI(container, object, beforeElement) {
     var capabilityId = uuidV4();
     object.uuid = capabilityId;
 
     var capabilityItem = document.importNode(templateCapability.content, true).firstElementChild;
     capabilityItem.dataset.uuid = capabilityId;
+
+    if (isChanged(object)) {
+      capabilityItem.classList.add('changed');
+    }
 
     bindValuesToObject(capabilityItem, object);
     prefillFormElements(capabilityItem, object);
@@ -479,24 +484,207 @@ function openChannelDialog(editMode) {
 
     capabilityItem.querySelector('.remove').addEventListener('click', function(event) {
       event.preventDefault();
-      removeUuidObjectFromArray(capabilityItem.dataset.uuid, currentChannel.capabilities);
-      capabilityItem.remove();
+
+      var capItem = this.parentElement;
+      var index = getUuidObjectIndexInArray(capItem.dataset.uuid, currentChannel.capabilities);
+
+      // reset capability
+      [].forEach.call(capItem.querySelectorAll('input'), function(input) {
+        input.value = '';
+        input.required = false;
+        delete currentChannel.capabilities[index][input.dataset.key];
+      });
+      updateRangeInputs(capItem.querySelectorAll('[type="number"]'));
+      capItem.classList.remove('changed');
+
+      collapseEmptyCapabilityWithNeighbors(capItem);
 
       autoSave();
     });
 
     [].forEach.call(capabilityItem.querySelectorAll('input'), function(input) {
       input.addEventListener('change', function(event) {
-        currentChannel.changed = true;  // enables "cancel" confirmation
+        // enable "cancel" confirmation
+        currentChannel.changed = true;
 
-        // if this is the last capability
-        if (!input.parentElement.nextElementSibling) {
-          addCapability(container);
+        var capabilityItem = input.closest('li');
+        var changed = [].some.call(capabilityItem.querySelectorAll('input'), function(input) {
+          return input.value != '';
+        });
+        capabilityItem.classList[changed ? 'add' : 'remove']('changed');
+
+        if (!changed) {
+          collapseEmptyCapabilityWithNeighbors(capabilityItem);
         }
       });
     });
 
-    container.appendChild(capabilityItem);
+    capabilityItem.querySelector('.start').addEventListener('change', function(event) {
+      if (!this.checkValidity() || this.value === '') {
+        // don't let invalid inputs change other field's min / max attributes
+        return;
+      }
+
+      var index = getUuidObjectIndexInArray(this.parentElement.dataset.uuid, currentChannel.capabilities);
+
+      var previousCapabilityItem = this.parentElement.previousElementSibling;
+      var value = this.valueAsNumber;
+
+      if (!previousCapabilityItem) {
+        if (value == 0) {
+          // do nothing
+        }
+        else {
+          var newItem = addCapability(container, this.parentElement);
+          setMinMax(newItem, 0, value - 1);
+        }
+      }
+      else {
+        if (!isChanged(previousCapabilityItem)) {
+          if (value == getMinCapabilityBound(index)) {
+            removeUuidObjectFromArray(previousCapabilityItem.dataset.uuid, currentChannel.capabilities);
+            previousCapabilityItem.remove();
+          }
+          else {
+            setMinMax(previousCapabilityItem, null, value - 1);
+          }
+        }
+        else {
+          var min = getMinCapabilityBound(index);
+
+          if (value == min) {
+            setMinMax(previousCapabilityItem, null, value - 1);
+          }
+          else {
+            var newItem = addCapability(container, this.parentElement);
+            setMinMax(newItem, min, value - 1);
+          }
+        }
+      }
+    });
+    capabilityItem.querySelector('.end').addEventListener('change', function(event) {
+      if (!this.checkValidity() || this.value === '') {
+        // don't let invalid inputs change other field's min / max attributes
+        return;
+      }
+
+      var index = getUuidObjectIndexInArray(this.parentElement.dataset.uuid, currentChannel.capabilities);
+
+      var nextCapabilityItem = this.parentElement.nextElementSibling;
+      var value = this.valueAsNumber;
+
+      if (!nextCapabilityItem) {
+        if (value == 255) {
+          // do nothing
+        }
+        else {
+          var newItem = addCapability(container);
+          setMinMax(newItem, value + 1, 255);
+        }
+      }
+      else {
+        if (!isChanged(nextCapabilityItem)) {
+          if (value == getMaxCapabilityBound(index)) {
+            removeUuidObjectFromArray(nextCapabilityItem.dataset.uuid, currentChannel.capabilities);
+            nextCapabilityItem.remove();
+          }
+          else {
+            setMinMax(nextCapabilityItem, value + 1, null);
+          }
+        }
+        else {
+          var max = getMaxCapabilityBound(index);
+
+          if (value == max) {
+            setMinMax(nextCapabilityItem, value + 1, null);
+          }
+          else {
+            var newItem = addCapability(container, nextCapabilityItem);
+            setMinMax(newItem, value + 1, max);
+          }
+        }
+      }
+    });
+
+    if (beforeElement === undefined) {
+      container.appendChild(capabilityItem);
+    }
+    else {
+      container.insertBefore(capabilityItem, beforeElement);
+    }
+
+    return capabilityItem;
+  }
+
+  function isChanged(capability) {
+    console.log('isChanged?', capability);
+
+    if (capability instanceof HTMLElement) {
+      console.log('capability instanceof HTMLElement');
+      return capability.classList.contains('changed');
+    }
+
+    console.log('capability not instanceof HTMLElement');
+    return Object.keys(capability).some(function(key) {
+      return key != 'uuid' && key != 'changed';
+    });
+  }
+
+  function setMinMax(capability, min, max) {
+    if (typeof min === 'number') {
+      capability.querySelector('.start').min = min;
+    }
+    if (typeof max === 'number') {
+      capability.querySelector('.end').max = max;
+    }
+  }
+
+  function getMinCapabilityBound(index) {
+    index--;
+
+    while (index >= 0) {
+      if ('end' in currentChannel.capabilities[index]) {
+        return currentChannel.capabilities[index].end + 1;
+      }
+      if ('start' in currentChannel.capabilities[index]) {
+        return currentChannel.capabilities[index].start + 1;
+      }
+      index--;
+    }
+
+    return 0;
+  }
+
+  function getMaxCapabilityBound(index) {
+    index++;
+
+    while (index < currentChannel.capabilities.length) {
+      if ('start' in currentChannel.capabilities[index]) {
+        return currentChannel.capabilities[index].start - 1;
+      }
+      if ('end' in currentChannel.capabilities[index]) {
+        return currentChannel.capabilities[index].end - 1;
+      }
+      index++;
+    }
+
+    return 255;
+  }
+
+  function collapseEmptyCapabilityWithNeighbors(capabilityItem) {
+    var previousCapabilityItem = capabilityItem.previousElementSibling;
+    var nextCapabilityItem = capabilityItem.nextElementSibling;
+
+    if (previousCapabilityItem && !isChanged(previousCapabilityItem)) {
+      setMinMax(capabilityItem, parseInt(previousCapabilityItem.querySelector('.start').min) || 0, null);
+      removeUuidObjectFromArray(previousCapabilityItem.dataset.uuid, currentChannel.capabilities);
+      previousCapabilityItem.remove();
+    }
+    if (nextCapabilityItem && !isChanged(nextCapabilityItem)) {
+      setMinMax(capabilityItem, null, parseInt(nextCapabilityItem.querySelector('.end').max) || 255);
+      removeUuidObjectFromArray(nextCapabilityItem.dataset.uuid, currentChannel.capabilities);
+      nextCapabilityItem.remove();
+    }
   }
 }
 

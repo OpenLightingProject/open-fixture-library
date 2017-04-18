@@ -449,16 +449,16 @@ function getChannelDialogString() {
 
   str += '<template id="template-capability">';
   str += '<li>';
-  str += '<input type="number" min="0" max="255" placeholder="start" title="DMX value range start" data-key="start"> .. ';
-  str += '<input type="number" min="0" max="255" placeholder="end" title="DMX value range end" data-key="end"> ';
+  str += '<input type="number" min="0" max="255" placeholder="start" class="start" data-key="start"> .. ';
+  str += '<input type="number" min="0" max="255" placeholder="end" class="end" data-key="end"> ';
   str += '<span class="value">';
-  str += '<input type="text" placeholder="name" title="name" data-key="name"><br/>';
-  str += '<input type="text" placeholder="color" pattern="^#[0-9a-f]{6}$" title="color (#rrggbb)" data-key="color"> ';
-  str += '<input type="text" placeholder="color 2" pattern="^#[0-9a-f]{6}$" title="color 2 (#rrggbb)" data-key="color2">';
+  str += '<input type="text" placeholder="name" data-key="name"><br/>';
+  str += '<input type="text" placeholder="color" pattern="^#[0-9a-f]{6}$" title="#rrggbb" data-key="color"> ';
+  str += '<input type="text" placeholder="color 2" pattern="^#[0-9a-f]{6}$" title="#rrggbb" data-key="color2">';
   str += '</span>';
   str += '<a href="#remove" class="remove" title="Remove capability">' + require('../includes/svg')({svgBasename: 'close'}) + '</a>';
   str += '</li>';
-  str += '</template>'; // # template-channel-li
+  str += '</template>'; // # template-capability
 
   str += '</div>';  // [data-edit-modes="create edit-all edit-duplicate"]
 
