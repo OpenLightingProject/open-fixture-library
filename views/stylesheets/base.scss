@@ -41,6 +41,10 @@ p {
   clear: both;
 }
 
+template {
+  display: none !important;
+}
+
 code {
   font-family: Inconsolata, 'Roboto Mono', 'Source Code Pro', monospace;
   color: $secondary-text-dark;
