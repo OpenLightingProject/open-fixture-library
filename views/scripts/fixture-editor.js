@@ -1037,7 +1037,7 @@ function saveFixture(event) {
     out.submitter = currentFixture['meta-github-username'];
   }
 
-  const sendObject = {
+  var sendObject = {
     out: out
   };
 
