@@ -152,7 +152,7 @@ function initDialogs() {
   dialogs.chooseChannelEditMode.node.querySelectorAll('button').forEach(function(button) {
     button.addEventListener('click', function() {
       dialogs.chooseChannelEditMode.hide();
-      openChannelDialog(this.dataset.action);
+      openChannelDialog(this.getAttribute("data-action"));
     });
   });
 
@@ -243,14 +243,14 @@ function initRangeInputs(inputNodeList) {
   inputNodeList[1].addEventListener('change', function() {
     updateRangeInputs(inputNodeList);
   });
-  inputNodeList[0].dataset.max = inputNodeList[0].max;
-  inputNodeList[1].dataset.min = inputNodeList[1].min;
+  inputNodeList[0].setAttribute("data-max", inputNodeList[0].max);
+  inputNodeList[1].setAttribute("data-min", inputNodeList[1].min);
 
   updateRangeInputs(inputNodeList);
 }
 function updateRangeInputs(inputNodeList) {
-  inputNodeList[1].min = (inputNodeList[0].value == '') ? inputNodeList[1].dataset.min : inputNodeList[0].value;
-  inputNodeList[0].max = (inputNodeList[1].value == '') ? inputNodeList[0].dataset.max : inputNodeList[1].value;
+  inputNodeList[1].min = (inputNodeList[0].value == '') ? inputNodeList[1].getAttribute("data-min") : inputNodeList[0].value;
+  inputNodeList[0].max = (inputNodeList[1].value == '') ? inputNodeList[0].getAttribute("data-max") : inputNodeList[1].value;
 }
 
 function initComboboxes(container) {
@@ -315,7 +315,7 @@ function addMode(event) {
   var modeId = uuidV4();
 
   var newMode = document.importNode(templateMode.content, true).firstElementChild;
-  newMode.dataset.uuid = modeId;
+  newMode.setAttribute("data-uuid", modeId);
   editorForm.querySelector('.fixture-modes').insertBefore(newMode, addModeLink);
 
   var physicalOverride = newMode.querySelector('.physical-override');
@@ -336,7 +336,7 @@ function addMode(event) {
 
   newMode.querySelector('.close').addEventListener('click', function(e) {
     e.preventDefault();
-    removeUuidObjectFromArray(newMode.dataset.uuid, currentFixture.modes);
+    removeUuidObjectFromArray(newMode.getAttribute("data-uuid"), currentFixture.modes);
     newMode.remove();
 
     autoSave();
@@ -344,7 +344,7 @@ function addMode(event) {
 
   newMode.querySelector('.add-channel').addEventListener('click', function(e) {
     e.preventDefault();
-    currentChannel.modeIndex = getUuidObjectIndexInArray(newMode.dataset.uuid, currentFixture.modes);
+    currentChannel.modeIndex = getUuidObjectIndexInArray(newMode.getAttribute("data-uuid"), currentFixture.modes);
     openChannelDialog('add-existing');
   });
 
@@ -395,7 +395,7 @@ function openChannelDialog(editMode) {
   }
 
   dialogs.channel.node.querySelectorAll('[data-edit-modes]').forEach(function(element) {
-    var hidden = element.hidden = (element.dataset.editModes.indexOf(editMode) == -1);
+    var hidden = element.hidden = (element.getAttribute("data-edit-modes").indexOf(editMode) == -1);
 
     element.querySelectorAll('[required]').forEach(function(input) {
       if (hidden) {
@@ -460,7 +460,7 @@ function openChannelDialog(editMode) {
       currentChannel.capabilities.push(object);
     }
     else {
-      var index = getUuidObjectIndexInArray(beforeElement.dataset.uuid, currentChannel.capabilities);
+      var index = getUuidObjectIndexInArray(beforeElement.getAttribute("data-uuid"), currentChannel.capabilities);
       currentChannel.capabilities.splice(index, 0, object);
     }
 
@@ -471,7 +471,7 @@ function openChannelDialog(editMode) {
     object.uuid = capabilityId;
 
     var capabilityItem = document.importNode(templateCapability.content, true).firstElementChild;
-    capabilityItem.dataset.uuid = capabilityId;
+    capabilityItem.setAttribute("data-uuid", capabilityId);
 
     if (isChanged(object)) {
       capabilityItem.classList.add('changed');
@@ -487,13 +487,13 @@ function openChannelDialog(editMode) {
       event.preventDefault();
 
       var capItem = this.parentElement;
-      var index = getUuidObjectIndexInArray(capItem.dataset.uuid, currentChannel.capabilities);
+      var index = getUuidObjectIndexInArray(capItem.getAttribute("data-uuid"), currentChannel.capabilities);
 
       // reset capability
       capItem.querySelectorAll('input').forEach(function(input) {
         input.value = '';
         input.required = false;
-        delete currentChannel.capabilities[index][input.dataset.key];
+        delete currentChannel.capabilities[index][input.getAttribute("data-key")];
       });
       updateRangeInputs(capItem.querySelectorAll('[type="number"]'));
       capItem.querySelector('[data-key="color2"]').hidden = true;
@@ -527,7 +527,7 @@ function openChannelDialog(editMode) {
         return;
       }
 
-      var index = getUuidObjectIndexInArray(this.parentElement.dataset.uuid, currentChannel.capabilities);
+      var index = getUuidObjectIndexInArray(this.parentElement.getAttribute("data-uuid"), currentChannel.capabilities);
 
       var previousCapabilityItem = this.parentElement.previousElementSibling;
       var value = this.valueAsNumber;
@@ -544,7 +544,7 @@ function openChannelDialog(editMode) {
       else {
         if (!isChanged(previousCapabilityItem)) {
           if (value == getMinCapabilityBound(index)) {
-            removeUuidObjectFromArray(previousCapabilityItem.dataset.uuid, currentChannel.capabilities);
+            removeUuidObjectFromArray(previousCapabilityItem.getAttribute("data-uuid"), currentChannel.capabilities);
             previousCapabilityItem.remove();
           }
           else {
@@ -572,7 +572,7 @@ function openChannelDialog(editMode) {
         return;
       }
 
-      var index = getUuidObjectIndexInArray(this.parentElement.dataset.uuid, currentChannel.capabilities);
+      var index = getUuidObjectIndexInArray(this.parentElement.getAttribute("data-uuid"), currentChannel.capabilities);
 
       var nextCapabilityItem = this.parentElement.nextElementSibling;
       var value = this.valueAsNumber;
@@ -589,7 +589,7 @@ function openChannelDialog(editMode) {
       else {
         if (!isChanged(nextCapabilityItem)) {
           if (value == getMaxCapabilityBound(index)) {
-            removeUuidObjectFromArray(nextCapabilityItem.dataset.uuid, currentChannel.capabilities);
+            removeUuidObjectFromArray(nextCapabilityItem.getAttribute("data-uuid"), currentChannel.capabilities);
             nextCapabilityItem.remove();
           }
           else {
@@ -685,12 +685,12 @@ function openChannelDialog(editMode) {
 
     if (previousCapabilityItem && !isChanged(previousCapabilityItem)) {
       setMinMax(capabilityItem, parseInt(previousCapabilityItem.querySelector('.start').min) || 0, null);
-      removeUuidObjectFromArray(previousCapabilityItem.dataset.uuid, currentChannel.capabilities);
+      removeUuidObjectFromArray(previousCapabilityItem.getAttribute("data-uuid"), currentChannel.capabilities);
       previousCapabilityItem.remove();
     }
     if (nextCapabilityItem && !isChanged(nextCapabilityItem)) {
       setMinMax(capabilityItem, null, parseInt(nextCapabilityItem.querySelector('.end').max) || 255);
-      removeUuidObjectFromArray(nextCapabilityItem.dataset.uuid, currentChannel.capabilities);
+      removeUuidObjectFromArray(nextCapabilityItem.getAttribute("data-uuid"), currentChannel.capabilities);
       nextCapabilityItem.remove();
     }
   }
@@ -726,7 +726,7 @@ function editChannel() {
     // update UI
     var modeElem = editorForm.querySelector('.fixture-modes > .fixture-mode:nth-child(' + (currentChannel.modeIndex + 1) + ')');
     var channelItem = modeElem.querySelector('.mode-channels > [data-channel-key="' + oldChannelKey + '"]');
-    channelItem.dataset.channelKey = channelKey;
+    channelItem.setAttribute("data-channel-key", channelKey);
     channelItem.querySelector('.display-name').textContent = getChannelName();
 
     // update model
@@ -772,11 +772,11 @@ function editChannel() {
 
     channelItem.querySelector('.edit').addEventListener('click', function(event) {
       event.preventDefault();
-      currentChannel.key = channelItem.dataset.channelKey;
+      currentChannel.key = channelItem.getAttribute("data-channel-key");
       currentChannel.modeIndex = modeIndex;
 
       var channelUsages = currentFixture.modes.filter(function(mode) {
-        return mode.channels.indexOf(channelItem.dataset.channelKey) != -1;
+        return mode.channels.indexOf(channelItem.getAttribute("data-channel-key")) != -1;
       }).length;
 
       if (channelUsages > 1) {
@@ -791,7 +791,7 @@ function editChannel() {
       event.preventDefault();
 
       var channels = currentFixture.modes[modeIndex].channels;
-      channels.splice(channels.indexOf(channelItem.dataset.channelKey), 1);
+      channels.splice(channels.indexOf(channelItem.getAttribute("data-channel-key")), 1);
       channelItem.remove();
 
       autoSave();
