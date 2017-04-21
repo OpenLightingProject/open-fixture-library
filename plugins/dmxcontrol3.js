@@ -81,7 +81,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             }
           }
         }
-      }
+      };
 
       const warnUnknownChildren = function(nodeName, node, knownChildren) {
         for (const child in node) {
@@ -89,7 +89,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             out.warnings[fixKey].push(`Unknown child '${child}' in '${nodeName}'`);
           }
         }
-      }
+      };
 
       const parseSimpleFunction = function(functionType, functionContainer, functionIndex) {
         const singleFunction = functionContainer[functionIndex];
@@ -146,11 +146,11 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           warnUnknownAttributes(functionType, singleFunction, ['name', 'defaultval', 'dmxchannel', 'mindmx', 'maxdmx', 'finedmxchannel']);
           warnUnknownChildren(functionType, singleFunction, ['range', 'step']);
         }
-      }
+      };
 
       const sortCapabilities = function(a, b) {
         return a.range[0] - b.range[0];
-      }
+      };
 
       // node can be step or range
       const getCapability = function(node, functionType) {
@@ -179,7 +179,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             }
           }
           if (minval !== '?' || maxval !== '?') {
-            if (minval == maxval) {
+            if (minval === maxval) {
               // not a real range
               capability.name = `${minval}`;
             }
@@ -191,7 +191,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
               }
             }
 
-            if (maxval != '?' && (functionType === 'pan' || functionType === 'tilt')) {
+            if (maxval !== '?' && (functionType === 'pan' || functionType === 'tilt')) {
               if (!('physical' in fix)) {
                 fix.physical = {};
               }
@@ -223,7 +223,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           }
         }
         return null;
-      }
+      };
 
       const getCapabilities = function(node, functionType) {
         let capabilities = [];
@@ -259,7 +259,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
         capabilities.sort(sortCapabilities);
 
         return capabilities;
-      }
+      };
 
       const getUniqueChannelKey = function(key) {
         if (!(key in fix.availableChannels)) {
@@ -270,7 +270,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           i++;
         }
         return `${key} ${i}`;
-      }
+      };
 
       const addChannelToMode = function(key, dmxchannel, channel) {
         const existingChannels = fix.modes[0].channels;
@@ -279,7 +279,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
         // check if there already is a channel for this DMX channel index
         if (existingChannelKey !== undefined &&
             existingChannelKey !== null) {
-          existingChannel = fix.availableChannels[existingChannelKey];
+          const existingChannel = fix.availableChannels[existingChannelKey];
 
           // do both channels' capabilities overlap?
           let overlap = false;
@@ -289,7 +289,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           if (!('capabilities' in existingChannel)) {
             existingChannel.capabilities = [];
           }
-          checkOverlap: for (capability of channel.capabilities) {
+          checkOverlap: for (const capability of channel.capabilities) {
             for (existingCapability of existingChannel.capabilities) {
               if ((capability.range[0] <= existingCapability.range[0] &&
                    capability.range[1] >= existingCapability.range[0]) ||
@@ -314,7 +314,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           fix.availableChannels[key] = channel;
           existingChannels[dmxchannel] = key;
         }
-      }
+      };
 
       const addPossibleFineChannel = function(singleFunction, normalChannelKey) {
         if ('finedmxchannel' in singleFunction.$) {
@@ -334,7 +334,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           }
           fix.multiByteChannels.push([normalChannelKey, fineChannelKey]);
         }
-      }
+      };
 
       const functions = device.functions[0];
       for (const functionType in functions) {
@@ -438,7 +438,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
         }
       }
 
-      if (fix.categories.length == 0) {
+      if (fix.categories.length === 0) {
         fix.categories.push('Other');
       }
 
