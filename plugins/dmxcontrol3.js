@@ -106,6 +106,10 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           }
           else {
             switch (functionType) {
+              case 'strobo':
+                channelKey = 'Strobe';
+                break;
+
               case 'ptspeed':
                 channelKey = 'Pan/Tilt Speed';
                 break;
@@ -133,6 +137,9 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           }
           else if (['rotation', 'ptspeed'].includes(functionType)) {
             channel.type = 'Speed';
+          }
+          else if (['strobo'].includes(functionType)) {
+            channel.type = 'Strobe';
           }
           else if ('name' in singleFunction.$) {
             // maybe channel name gives us more information
@@ -411,6 +418,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             case 'colortemp':
             case 'fog':
             case 'strobe':
+            case 'strobo':
             case 'shutter':
             case 'rotation':
             case 'ptspeed':
