@@ -466,6 +466,48 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
 
               break;
 
+            case 'hsv':
+              warnUnknownAttributes(functionType, singleFunction, []);
+
+              for (const hsvFunctionType in singleFunction) {
+                let hsvType = hsvFunctionType.toLowerCase();
+
+                switch (hsvType) {
+                  case 'h':
+                    hsvType = 'Hue';
+                    break;
+
+                  case 's':
+                    hsvType = 'Saturation';
+                    break;
+
+                  case 'v':
+                  case 'value':
+                    hsvType = 'HSV Value';
+                    break;
+
+                  default:
+                    hsvType = capitalize(hsvType);
+                }
+
+                const hsvFunction = singleFunction[hsvFunctionType][0];
+
+                let channel = {
+                  type: 'Intensity',
+                }
+
+                const channelKey = getUniqueChannelKey(hsvType);
+                fix.availableChannels[channelKey] = channel;
+
+                addChannelToMode(channelKey, hsvFunction.$.dmxchannel, channel);
+                addPossibleFineChannel(hsvFunction, channelKey);
+
+                warnUnknownAttributes(hsvFunctionType, hsvFunction, ['dmxchannel', 'finedmxchannel']);
+                warnUnknownChildren(hsvFunctionType, hsvFunction, ['']);
+              }
+
+              break;
+
             case 'position':
               if ('pan' in singleFunction) {
                 parseSimpleFunction('pan', singleFunction, 0);
