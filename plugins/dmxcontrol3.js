@@ -105,9 +105,17 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             channelKey = singleFunction.$.name;
           }
           else {
+            switch (functionType) {
+              case 'ptspeed':
+                channelKey = 'Pan/Tilt Speed';
+                break;
+
+              default:
+                channelKey = capitalize(functionType);
+            }
+
             // "Dimmer" if there's only one dimmer
             // "Dimmer 1", "Dimmer 2", ... if there are more dimmers
-            channelKey = capitalize(functionType);
             if (functionContainer[functionType].length > 1) {
               channelKey += ` ${functionIndex+1}`;
             }
@@ -123,7 +131,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           else if (['dimmer', 'colortemp', 'fog'].includes(functionType)) {
             channel.type = 'Intensity';
           }
-          else if (functionType === 'rotation') {
+          else if (['rotation', 'ptspeed'].includes(functionType)) {
             channel.type = 'Speed';
           }
           else if ('name' in singleFunction.$) {
@@ -405,6 +413,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             case 'strobe':
             case 'shutter':
             case 'rotation':
+            case 'ptspeed':
             case 'raw':
             case 'rawstep':
             case 'const':
@@ -459,8 +468,8 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
 
                 let channel = {
                   type: 'SingleColor',
-                  color: color
-                }
+                  color: color,
+                };
 
                 const channelKey = getUniqueChannelKey(color);
                 fix.availableChannels[channelKey] = channel;
@@ -502,7 +511,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
 
                 let channel = {
                   type: 'Intensity',
-                }
+                };
 
                 const channelKey = getUniqueChannelKey(hsvType);
                 fix.availableChannels[channelKey] = channel;
