@@ -141,6 +141,9 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           else if (['strobo'].includes(functionType)) {
             channel.type = 'Strobe';
           }
+          else if (['zoom'].includes(functionType)) {
+            channel.type = 'Beam';
+          }
           else if ('name' in singleFunction.$) {
             // maybe channel name gives us more information
             // about channel type than the function type does
@@ -188,7 +191,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           }
         }
 
-        warnUnknownChildren(functionType, singleFunction, ['range', 'step', 'raw']);
+        warnUnknownChildren(functionType, singleFunction, ['range', 'step', 'raw', 'focus']);
       };
 
       const sortCapabilities = function(a, b) {
@@ -202,6 +205,10 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             range: [0, 255],
             name: 'Generic'
           };
+
+          if ('range' in node && '$' in node.range[0]) {
+            node.$ = Object.assign({}, node.$, node.range[0].$);
+          }
 
           capability.range[0] = parseInt(node.$.mindmx);
           capability.range[1] = parseInt(node.$.maxdmx);
@@ -287,10 +294,10 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             }
           }
 
-          warnUnknownAttributes('range/step', node, ['type', 'mindmx', 'maxdmx', 'minval', 'maxval', 'val', 'range', 'caption']);
-          warnUnknownChildren('range/step', node, []);
+          warnUnknownAttributes('range/step', node, ['type', 'mindmx', 'maxdmx', 'minval', 'maxval', 'val', 'range', 'caption', 'handler']);
+          warnUnknownChildren('range/step', node, ['range']);
 
-          if ('mindmx' in node.$ && 'maxdmx' in node.$) {
+          if (isFinite(capability.range[0]) && isFinite(capability.range[1])) {
             return capability;
           }
         }
@@ -422,6 +429,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             case 'shutter':
             case 'rotation':
             case 'ptspeed':
+            case 'zoom':
             case 'raw':
             case 'rawstep':
             case 'const':
