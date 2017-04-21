@@ -141,7 +141,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           else if (['strobo'].includes(functionType)) {
             channel.type = 'Strobe';
           }
-          else if (['zoom'].includes(functionType)) {
+          else if (['zoom', 'iris'].includes(functionType)) {
             channel.type = 'Beam';
           }
           else if ('name' in singleFunction.$) {
@@ -431,6 +431,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             case 'rotation':
             case 'ptspeed':
             case 'zoom':
+            case 'iris':
             case 'raw':
             case 'rawstep':
             case 'const':
