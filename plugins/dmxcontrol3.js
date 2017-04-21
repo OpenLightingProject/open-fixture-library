@@ -120,7 +120,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           if (['strobe', 'shutter', 'pan', 'tilt'].includes(functionType)) {
             channel.type = capitalize(functionType);
           }
-          else if (['dimmer', 'colortemp'].includes(functionType)) {
+          else if (['dimmer', 'colortemp', 'fog'].includes(functionType)) {
             channel.type = 'Intensity';
           }
           else if (functionType === 'rotation') {
@@ -222,6 +222,13 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           }
           else if ('val' in node.$) {
             rangeString = node.$.val;
+
+            if (rangeString === 'true') {
+              rangeString = 'On';
+            }
+            else if (rangeString === 'false') {
+              rangeString = 'Off';
+            }
           }
 
           if ('caption' in node.$) {
@@ -394,6 +401,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           switch (functionType) {
             case 'dimmer':
             case 'colortemp':
+            case 'fog':
             case 'strobe':
             case 'shutter':
             case 'rotation':
