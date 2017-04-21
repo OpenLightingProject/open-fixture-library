@@ -191,7 +191,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             }
           }
 
-          if (node.$.mindmx > node.$.maxdmx) {
+          if (capability.range[0] > capability.range[1]) {
             // swap min/max
             capability.range = [capability.range[1], capability.range[0]];
             [minval, maxval] = [maxval, minval];
