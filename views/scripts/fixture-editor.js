@@ -283,7 +283,7 @@ function bindValuesToObject(container, context) {
         else if (this.type === 'checkbox') {
           context[key] = this.checked;
         }
-        else if (this.type === 'number' && this.step === 'any') {
+        else if (this.type === 'number' && this.getAttribute('step') === 'any') {
           context[key] = parseFloat(this.value.replace(',', '.'));
         }
         else if (this.type === 'number') {
@@ -628,14 +628,10 @@ function openChannelDialog(editMode) {
   }
 
   function isChanged(capability) {
-    console.log('isChanged?', capability);
-
     if (capability instanceof HTMLElement) {
-      console.log('capability instanceof HTMLElement');
       return capability.classList.contains('changed');
     }
 
-    console.log('capability not instanceof HTMLElement');
     return Object.keys(capability).some(function(key) {
       return key !== 'uuid' && key !== 'changed';
     });
@@ -966,7 +962,6 @@ function prefillFormElements(container, object) {
 
 function saveFixture(event) {
   // browser validation has already caught the big mistakes
-
   event.preventDefault();
 
   if (editorForm.querySelector('.honeypot input').value !== '') {
