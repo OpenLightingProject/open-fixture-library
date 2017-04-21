@@ -94,7 +94,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
       };
 
       const parseSimpleFunction = function(functionType, functionContainer, functionIndex) {
-        const singleFunction = functionContainer[functionIndex];
+        const singleFunction = functionContainer[functionType][functionIndex];
         const caps = getCapabilities(singleFunction, functionType);
 
         if ('$' in singleFunction && 'dmxchannel' in singleFunction.$) {
@@ -155,7 +155,13 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           warnUnknownAttributes(functionType, singleFunction, ['name', 'defaultval', 'val', 'constant', 'dmxchannel', 'mindmx', 'maxdmx', 'finedmxchannel']);
         }
 
-        warnUnknownChildren(functionType, singleFunction, ['range', 'step']);
+        if ('raw' in singleFunction) {
+          for (let i = 0; i < singleFunction.raw.length; i++) {
+            parseSimpleFunction('raw', singleFunction, i);
+          }
+        }
+
+        warnUnknownChildren(functionType, singleFunction, ['range', 'step', 'raw']);
       };
 
       const sortCapabilities = function(a, b) {
@@ -172,14 +178,10 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
 
           capability.range[0] = parseInt(node.$.mindmx);
           capability.range[1] = parseInt(node.$.maxdmx);
+
           let minval = 'minval' in node.$ ? node.$.minval : '?';
           let maxval = 'maxval' in node.$ ? node.$.maxval : '?';
-
-          if (capability.range[1] < capability.range[0]) {
-            capability.range = [capability.range[1], capability.range[0]];
-            [minval, maxval] = [maxval, minval];
-          }
-
+          // range="X" can be a shorthand for 0-X
           if ('range' in node.$) {
             if (minval === '?') {
               minval = 0;
@@ -188,45 +190,71 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
               maxval = node.$.range;
             }
           }
+
+          if (node.$.mindmx > node.$.maxdmx) {
+            // swap min/max
+            capability.range = [capability.range[1], capability.range[0]];
+            [minval, maxval] = [maxval, minval];
+          }
+
+          /// Naming
+          let rangeString = '';
           if (minval !== '?' || maxval !== '?') {
             if (minval === maxval) {
               // not a real range
-              capability.name = `${minval}`;
+              rangeString = `${minval}`;
             }
             else {
-              capability.name = `${minval}-${maxval}`;
-
-              if ('type' in node.$) {
-                capability.name += ` (${node.$.type})`;
-              }
-            }
-
-            if (maxval !== '?' && (functionType === 'pan' || functionType === 'tilt')) {
-              if (!('physical' in fix)) {
-                fix.physical = {};
-              }
-              if (!('focus' in fix.physical)) {
-                fix.physical.focus = {};
-              }
-              if (functionType + 'Max' in fix.physical.focus) {
-                fix.physical.focus[functionType + 'Max'] = Math.max(
-                  fix.physical.focus[functionType + 'Max'],
-                  parseInt(maxval)
-                );
-              }
-              else {
-                fix.physical.focus[functionType + 'Max'] = parseInt(maxval);
-              }
+              rangeString = `${minval}–${maxval}`;
             }
           }
           else if ('val' in node.$) {
-            capability.name = node.$.val;
+            rangeString = node.$.val;
+          }
+
+          if ('caption' in node.$) {
+            capability.name = node.$.caption;
+
+            if (rangeString.length > 0) {
+              capability.name += ` ${rangeString}`;
+            }
+
+            if ('type' in node.$) {
+              capability.name += ` (${node.$.type})`;
+            }
+          }
+          else if (rangeString.length > 0) {
+            capability.name = rangeString;
+
+            if ('type' in node.$) {
+              capability.name += ` (${node.$.type})`;
+            }
           }
           else if ('type' in node.$) {
             capability.name = node.$.type;
           }
 
-          warnUnknownAttributes('range/step', node, ['type', 'mindmx', 'maxdmx', 'minval', 'maxval', 'val', 'range'])
+          // physical information about panMax or tiltMax
+          if (maxval !== '?' && (functionType === 'pan' || functionType === 'tilt')) {
+            if (!('physical' in fix)) {
+              fix.physical = {};
+            }
+            if (!('focus' in fix.physical)) {
+              fix.physical.focus = {};
+            }
+            if (functionType + 'Max' in fix.physical.focus) {
+              fix.physical.focus[functionType + 'Max'] = Math.max(
+                fix.physical.focus[functionType + 'Max'],
+                parseInt(maxval)
+              );
+            }
+            else {
+              fix.physical.focus[functionType + 'Max'] = parseInt(maxval);
+            }
+          }
+
+          warnUnknownAttributes('range/step', node, ['type', 'mindmx', 'maxdmx', 'minval', 'maxval', 'val', 'range', 'caption']);
+          warnUnknownChildren('range/step', node, []);
 
           if ('mindmx' in node.$ && 'maxdmx' in node.$) {
             return capability;
@@ -357,8 +385,9 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             case 'strobe':
             case 'shutter':
             case 'raw':
+            case 'rawstep':
             case 'const':
-              parseSimpleFunction(functionType, functions[functionType], i);
+              parseSimpleFunction(functionType, functions, i);
               break;
 
             case 'rgb':
@@ -426,10 +455,10 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
 
             case 'position':
               if ('pan' in singleFunction) {
-                parseSimpleFunction('pan', singleFunction.pan, 0);
+                parseSimpleFunction('pan', singleFunction, 0);
               }
               if ('tilt' in singleFunction) {
-                parseSimpleFunction('tilt', singleFunction.tilt, 0);
+                parseSimpleFunction('tilt', singleFunction, 0);
               }
 
               warnUnknownAttributes(functionType, singleFunction, []);
