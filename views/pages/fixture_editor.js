@@ -563,6 +563,8 @@ function numberInput(key, property, hint) {
     html += ` max="${property.maximum}"`;
   }
 
+  html += ` step="${property.type === 'integer' ? '1' : 'any'}"`;
+
   html += getPlaceholderAttr(hint);
   html += ` data-key="${key}" />`;
 

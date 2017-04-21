@@ -212,8 +212,8 @@ function toggleManufacturer(event, init) {
 
 function injectPhysical(container) {
   container.appendChild(document.importNode(templatePhysical.content, true));
-  initComboboxes(container);
 
+  initComboboxes(container);
   fillTogether(container.querySelectorAll('.physical-dimensions input'));
   fillTogether(container.querySelectorAll('.physical-lens-degrees input'));
   initRangeInputs(container.querySelectorAll('.physical-lens-degrees input'));
@@ -283,8 +283,11 @@ function bindValuesToObject(container, context) {
         else if (this.type === 'checkbox') {
           context[key] = this.checked;
         }
+        else if (this.type === 'number' && this.step === 'any') {
+          context[key] = parseFloat(this.value.replace(',', '.'));
+        }
         else if (this.type === 'number') {
-          context[key] = this.valueAsNumber;
+          context[key] = parseInt(this.value);
         }
         else if (this.className === 'boolean') {
           context[key] = this.value === 'true';
@@ -530,7 +533,7 @@ function openChannelDialog(editMode) {
       var index = getUuidObjectIndexInArray(this.parentElement.getAttribute('data-uuid'), currentChannel.capabilities);
 
       var previousCapabilityItem = this.parentElement.previousElementSibling;
-      var value = this.valueAsNumber;
+      var value = parseInt(this.value);
 
       if (!previousCapabilityItem) {
         if (value === 0) {
@@ -575,7 +578,7 @@ function openChannelDialog(editMode) {
       var index = getUuidObjectIndexInArray(this.parentElement.getAttribute('data-uuid'), currentChannel.capabilities);
 
       var nextCapabilityItem = this.parentElement.nextElementSibling;
-      var value = this.valueAsNumber;
+      var value = parseInt(this.value);
 
       if (!nextCapabilityItem) {
         if (value === 255) {
