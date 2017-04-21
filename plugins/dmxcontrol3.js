@@ -9,7 +9,9 @@ function capitalize(string) {
 }
 
 function logXML(obj) {
-  var builder = new xml2js.Builder();
+  var builder = new xml2js.Builder({
+    headless: true,
+  });
   var xml = builder.buildObject(obj);
   console.log(xml);
 }
@@ -110,12 +112,19 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           if ('defaultval' in singleFunction.$) {
             channel.defaultValue = parseInt(singleFunction.$.defaultval);
           }
+          else if ('val' in singleFunction.$) {
+            channel.defaultValue = parseInt(singleFunction.$.val);
+          }
+
+          if (functionType === 'const') {
+            channel.constant = true;
+          }
 
           let channelKey;
           if ('name' in singleFunction.$) {
             channelKey = singleFunction.$.name;
 
-            if (functionType === 'raw') {
+            if (['raw', 'const'].includes(functionType)) {
               const testName = channelKey.toLowerCase();
               if (testName.includes('intensity')) {
                 channel.type = 'Intensity';
@@ -143,9 +152,10 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           addChannelToMode(channelKey, singleFunction.$.dmxchannel, channel);
           addPossibleFineChannel(singleFunction, channelKey);
 
-          warnUnknownAttributes(functionType, singleFunction, ['name', 'defaultval', 'dmxchannel', 'mindmx', 'maxdmx', 'finedmxchannel']);
-          warnUnknownChildren(functionType, singleFunction, ['range', 'step']);
+          warnUnknownAttributes(functionType, singleFunction, ['name', 'defaultval', 'val', 'constant', 'dmxchannel', 'mindmx', 'maxdmx', 'finedmxchannel']);
         }
+
+        warnUnknownChildren(functionType, singleFunction, ['range', 'step']);
       };
 
       const sortCapabilities = function(a, b) {
@@ -307,7 +317,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           }
           else {
             existingChannel.capabilities = existingChannel.capabilities.concat(channel.capabilities).sort(sortCapabilities);
-            out.warnings[fixKey].push(`Merged '${key}'´s capabilities into '${existingChannelKey}' as they have the same DMX channel ${dmxchannel}. Please check if type of the channel are correct. '${key}'´s type was ${channel.type}.`);
+            out.warnings[fixKey].push(`Merged '${key}'´s capabilities into '${existingChannelKey}' as they have the same DMX channel ${dmxchannel}. Please check if ${existingChannel.type} is the correct type of the combined channel. Type of '${key}' was ${channel.type}.`);
           }
         }
         else {
@@ -347,6 +357,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             case 'strobe':
             case 'shutter':
             case 'raw':
+            case 'const':
               parseSimpleFunction(functionType, functions[functionType], i);
               break;
 
