@@ -98,11 +98,52 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
         const caps = getCapabilities(singleFunction, functionType);
 
         if ('$' in singleFunction && 'dmxchannel' in singleFunction.$) {
-          let channel = {
-            type: 'Intensity',
+          let channel = {};
+
+          let channelKey;
+          if ('name' in singleFunction.$) {
+            channelKey = singleFunction.$.name;
           }
+          else {
+            // "Dimmer" if there's only one dimmer
+            // "Dimmer 1", "Dimmer 2", ... if there are more dimmers
+            channelKey = capitalize(functionType);
+            if (functionContainer[functionType].length > 1) {
+              channelKey += ` ${functionIndex+1}`;
+            }
+          }
+
+          // append " 2", " 3", ... to channel key if it isn't unique
+          channelKey = getUniqueChannelKey(channelKey);
+
+          /// Channel type
           if (['strobe', 'shutter', 'pan', 'tilt'].includes(functionType)) {
             channel.type = capitalize(functionType);
+          }
+          else if (['dimmer', 'colortemp'].includes(functionType)) {
+            channel.type = 'Intensity';
+          }
+          else if (functionType === 'rotation') {
+            channel.type = 'Speed';
+          }
+          else if ('name' in singleFunction.$) {
+            // maybe channel name gives us more information
+            // about channel type than the function type does
+            const testName = singleFunction.$.name.toLowerCase();
+            if (testName.includes('intensity')) {
+              channel.type = 'Intensity';
+            }
+            else if (testName.includes('speed') || testName.includes('duration')) {
+              channel.type = 'Speed';
+            }
+            else {
+              channel.type = 'Intensity';
+              out.warnings[fixKey].push(`Please check channel type of '${channelKey}'`);
+            }
+          }
+          else {
+            channel.type = 'Intensity';
+            out.warnings[fixKey].push(`Please check channel type of '${channelKey}'`);
           }
 
           if (caps.length > 0) {
@@ -119,35 +160,6 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           if (functionType === 'const') {
             channel.constant = true;
           }
-
-          let channelKey;
-          if ('name' in singleFunction.$) {
-            channelKey = singleFunction.$.name;
-
-            if (['raw', 'const'].includes(functionType)) {
-              const testName = channelKey.toLowerCase();
-              if (testName.includes('intensity')) {
-                channel.type = 'Intensity';
-              }
-              else if (testName.includes('speed') || testName.includes('duration')) {
-                channel.type = 'Speed';
-              }
-              else {
-                out.warnings[fixKey].push(`Please check channel type of '${channelKey}'`);
-              }
-            }
-          }
-          else {
-            // "Dimmer" if there's only one dimmer
-            // "Dimmer 1", "Dimmer 2", ... if there are more dimmers
-            channelKey = capitalize(functionType);
-            if (functionContainer.length > 1) {
-              channelKey += ` ${functionIndex+1}`;
-            }
-          }
-
-          // append " 2", " 3", ... to channel key if it isn't unique
-          channelKey = getUniqueChannelKey(channelKey);
 
           addChannelToMode(channelKey, singleFunction.$.dmxchannel, channel);
           addPossibleFineChannel(singleFunction, channelKey);
@@ -384,6 +396,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             case 'colortemp':
             case 'strobe':
             case 'shutter':
+            case 'rotation':
             case 'raw':
             case 'rawstep':
             case 'const':
