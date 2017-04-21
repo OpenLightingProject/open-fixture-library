@@ -63,7 +63,7 @@ window.addEventListener('load', function() {
   initDialogs();
 
   window.onpopstate = function(event) {
-    if (event.state == null && dialogs.channel.shown) {
+    if (!event.state && dialogs.channel.shown) {
       dialogs.channel.hide();
     }
   };
@@ -128,7 +128,7 @@ function initDialogs() {
   });
 
   dialogs.channel.on('hide', function() {
-    if ('pushState' in history && history.state == 'channel-dialog') {
+    if ('pushState' in history && history.state === 'channel-dialog') {
       // return from the newly created state
       history.back();
     }
@@ -137,7 +137,7 @@ function initDialogs() {
       clear(currentChannel);
       channelForm.reset();
     }
-    else if (currentChannel.editMode == 'add-existing' || window.confirm('Do you want to lose the entered channel data?')) {
+    else if (currentChannel.editMode === 'add-existing' || window.confirm('Do you want to lose the entered channel data?')) {
       clear(currentChannel);
       channelForm.reset();
       autoSave();
@@ -200,7 +200,7 @@ function toggleManufacturer(event, init) {
   toShow.hidden = false;
   toShow.querySelectorAll('select, input').forEach(function(element, index) {
     element.disabled = false;
-    if (index == 0) {
+    if (index === 0) {
       element.focus();
     }
   });
@@ -227,7 +227,7 @@ function fillTogether(inputNodeList) {
 
   function updateRequired() {
     var required = [].some.call(inputNodeList, function(input) {
-      return input.value != '';
+      return input.value !== '';
     });
 
     inputNodeList.forEach(function(input) {
@@ -249,8 +249,8 @@ function initRangeInputs(inputNodeList) {
   updateRangeInputs(inputNodeList);
 }
 function updateRangeInputs(inputNodeList) {
-  inputNodeList[1].min = (inputNodeList[0].value == '') ? inputNodeList[1].getAttribute('data-min') : inputNodeList[0].value;
-  inputNodeList[0].max = (inputNodeList[1].value == '') ? inputNodeList[0].getAttribute('data-max') : inputNodeList[1].value;
+  inputNodeList[1].min = (inputNodeList[0].value === '') ? inputNodeList[1].getAttribute('data-min') : inputNodeList[0].value;
+  inputNodeList[0].max = (inputNodeList[1].value === '') ? inputNodeList[0].getAttribute('data-max') : inputNodeList[1].value;
 }
 
 function initComboboxes(container) {
@@ -261,7 +261,7 @@ function initComboboxes(container) {
   });
 }
 function updateCombobox(select, updateFocus) {
-  var addValue = select.value == '[add-value]';
+  var addValue = select.value === '[add-value]';
   select.nextElementSibling.disabled = !addValue;
   if (addValue && updateFocus) {
     select.nextElementSibling.focus();
@@ -273,21 +273,21 @@ function bindValuesToObject(container, context) {
     element.addEventListener('change', function() {
       var key = this.getAttribute('data-key');
 
-      if (this.value != '') {
-        if (this.type == 'select-multiple') {
+      if (this.value !== '') {
+        if (this.type === 'select-multiple') {
           context[key] = [];
           for (var i = 0; i < this.selectedOptions.length; i++) {
             context[key].push(this.selectedOptions[i].value);
           }
         }
-        else if (this.type == 'checkbox') {
+        else if (this.type === 'checkbox') {
           context[key] = this.checked;
         }
-        else if (this.type == 'number') {
+        else if (this.type === 'number') {
           context[key] = this.valueAsNumber;
         }
-        else if (this.className == 'boolean') {
-          context[key] = this.value == 'true';
+        else if (this.className === 'boolean') {
+          context[key] = this.value === 'true';
         }
         else {
           context[key] = this.value;
@@ -306,7 +306,7 @@ function bindValuesToObject(container, context) {
 
 function updateChannelColorVisibility() {
   var channelColor = channelForm.querySelector('.channel-color');
-  var colorEnabled = channelTypeSelect.value == 'SingleColor';
+  var colorEnabled = channelTypeSelect.value === 'SingleColor';
   channelColor.hidden = !colorEnabled;
   channelColor.querySelector('select').disabled = !colorEnabled;
 }
@@ -358,7 +358,7 @@ function updatePhysicalOverrideVisibility(usePhysicalOverride, physicalOverride)
     physicalOverride.hidden = false;
     physicalOverride.querySelectorAll('select, input').forEach(function(element, index) {
       element.disabled = false;
-      if (index == 0) {
+      if (index === 0) {
         element.focus();
       }
     });
@@ -377,12 +377,12 @@ function updatePhysicalOverrideVisibility(usePhysicalOverride, physicalOverride)
 function openChannelDialog(editMode) {
   currentChannel.editMode = editMode;
 
-  if (editMode == 'add-existing') {
+  if (editMode === 'add-existing') {
     var unchosenChannels = Object.keys(currentFixture.availableChannels).filter(function(key) {
-      return currentFixture.modes[currentChannel.modeIndex].channels.indexOf(key) == -1;
+      return currentFixture.modes[currentChannel.modeIndex].channels.indexOf(key) === -1;
     });
 
-    if (unchosenChannels.length == 0) {
+    if (unchosenChannels.length === 0) {
       currentChannel.editMode = editMode = 'create';
     }
     else {
@@ -395,13 +395,13 @@ function openChannelDialog(editMode) {
   }
 
   dialogs.channel.node.querySelectorAll('[data-edit-modes]').forEach(function(element) {
-    var hidden = element.hidden = (element.getAttribute('data-edit-modes').indexOf(editMode) == -1);
+    var hidden = element.hidden = (element.getAttribute('data-edit-modes').indexOf(editMode) === -1);
 
     element.querySelectorAll('[required]').forEach(function(input) {
       if (hidden) {
         input.disabled = true;
       }
-      else if (input.className == 'addition') {
+      else if (input.className === 'addition') {
         updateCombobox(input.previousElementSibling, false);
       }
       else {
@@ -410,7 +410,7 @@ function openChannelDialog(editMode) {
     });
   });
 
-  if ((editMode == 'edit-all' || editMode == 'edit-duplicate') && !('changed' in currentChannel)) {
+  if ((editMode === 'edit-all' || editMode === 'edit-duplicate') && !('changed' in currentChannel)) {
     for (var key in currentFixture.availableChannels[currentChannel.key]) {
       currentChannel[key] = clone(currentFixture.availableChannels[currentChannel.key][key]);
     }
@@ -421,7 +421,7 @@ function openChannelDialog(editMode) {
 
     prefillFormElements(dialogs.channel.node, currentChannel);
   }
-  else if (editMode == 'create' || editMode == 'add-existing') {
+  else if (editMode === 'create' || editMode === 'add-existing') {
     var modeName = '#' + (currentChannel.modeIndex + 1);
 
     if ('shortName' in currentFixture.modes[currentChannel.modeIndex]) {
@@ -433,7 +433,7 @@ function openChannelDialog(editMode) {
     dialogs.channel.node.querySelector('.mode-name').textContent = modeName;
   }
 
-  if (editMode != 'add-existing') {
+  if (editMode !== 'add-existing') {
     updateChannelColorVisibility();
 
     var capabilitiesContainer = dialogs.channel.node.querySelector('.capabilities');
@@ -511,7 +511,7 @@ function openChannelDialog(editMode) {
 
         var capabilityItem = input.closest('li');
         var changed = [].some.call(capabilityItem.querySelectorAll('input'), function(input) {
-          return input.value != '';
+          return input.value !== '';
         });
         capabilityItem.classList[changed ? 'add' : 'remove']('changed');
 
@@ -533,7 +533,7 @@ function openChannelDialog(editMode) {
       var value = this.valueAsNumber;
 
       if (!previousCapabilityItem) {
-        if (value == 0) {
+        if (value === 0) {
           // do nothing
         }
         else {
@@ -543,7 +543,7 @@ function openChannelDialog(editMode) {
       }
       else {
         if (!isChanged(previousCapabilityItem)) {
-          if (value == getMinCapabilityBound(index)) {
+          if (value === getMinCapabilityBound(index)) {
             removeUuidObjectFromArray(previousCapabilityItem.getAttribute('data-uuid'), currentChannel.capabilities);
             previousCapabilityItem.remove();
           }
@@ -554,7 +554,7 @@ function openChannelDialog(editMode) {
         else {
           var min = getMinCapabilityBound(index);
 
-          if (value == min) {
+          if (value === min) {
             setMinMax(previousCapabilityItem, null, value - 1);
           }
           else {
@@ -578,7 +578,7 @@ function openChannelDialog(editMode) {
       var value = this.valueAsNumber;
 
       if (!nextCapabilityItem) {
-        if (value == 255) {
+        if (value === 255) {
           // do nothing
         }
         else {
@@ -588,7 +588,7 @@ function openChannelDialog(editMode) {
       }
       else {
         if (!isChanged(nextCapabilityItem)) {
-          if (value == getMaxCapabilityBound(index)) {
+          if (value === getMaxCapabilityBound(index)) {
             removeUuidObjectFromArray(nextCapabilityItem.getAttribute('data-uuid'), currentChannel.capabilities);
             nextCapabilityItem.remove();
           }
@@ -599,7 +599,7 @@ function openChannelDialog(editMode) {
         else {
           var max = getMaxCapabilityBound(index);
 
-          if (value == max) {
+          if (value === max) {
             setMinMax(nextCapabilityItem, value + 1, null);
           }
           else {
@@ -611,7 +611,7 @@ function openChannelDialog(editMode) {
     });
 
     capabilityItem.querySelector('[data-key="color"]').addEventListener('change', function(event) {
-      capabilityItem.querySelector('[data-key="color2"]').hidden = this.value == '';
+      capabilityItem.querySelector('[data-key="color2"]').hidden = this.value === '';
     });
 
     if (beforeElement === undefined) {
@@ -634,7 +634,7 @@ function openChannelDialog(editMode) {
 
     console.log('capability not instanceof HTMLElement');
     return Object.keys(capability).some(function(key) {
-      return key != 'uuid' && key != 'changed';
+      return key !== 'uuid' && key !== 'changed';
     });
   }
 
@@ -702,7 +702,7 @@ function editChannel() {
   var channelKey = currentChannel.key;
   var modeIndex = currentChannel.modeIndex;
 
-  if (currentChannel.editMode == 'create') {
+  if (currentChannel.editMode === 'create') {
     channelKey = getKeyFromName(currentChannel.name, Object.keys(currentFixture.availableChannels));
 
     // update UI
@@ -712,14 +712,14 @@ function editChannel() {
     // update model
     currentFixture.modes[modeIndex].channels.push(channelKey);
   }
-  else if (currentChannel.editMode == 'edit-all') {
+  else if (currentChannel.editMode === 'edit-all') {
     // update UI
     editorForm.querySelectorAll(':not(a).fixture-mode').forEach(function(modeElem) {
       var channelItem = modeElem.querySelector('.mode-channels > [data-channel-key="' + channelKey + '"]');
       channelItem.querySelector('.display-name').textContent = getChannelName();
     });
   }
-  else if (currentChannel.editMode == 'edit-duplicate') {
+  else if (currentChannel.editMode === 'edit-duplicate') {
     var oldChannelKey = channelKey;
     channelKey = getKeyFromName(currentChannel.name, Object.keys(currentFixture.availableChannels));
 
@@ -731,13 +731,13 @@ function editChannel() {
 
     // update model
     currentFixture.modes[modeIndex].channels = currentFixture.modes[modeIndex].channels.map(function(key) {
-      if (key == oldChannelKey) {
+      if (key === oldChannelKey) {
         return channelKey;
       }
       return key;
     });
   }
-  else if (currentChannel.editMode == 'add-existing') {
+  else if (currentChannel.editMode === 'add-existing') {
     // update UI
     var modeElem = editorForm.querySelector('.fixture-modes > .fixture-mode:nth-child(' + (modeIndex + 1) + ')');
     createChannelLi(modeElem, channelKey, modeIndex);
@@ -746,7 +746,7 @@ function editChannel() {
     currentFixture.modes[modeIndex].channels.push(channelKey);
   }
 
-  if (currentChannel.editMode != 'add-existing') {
+  if (currentChannel.editMode !== 'add-existing') {
     // add or update current channel
     delete currentChannel.key;
     delete currentChannel.modeIndex;
@@ -776,7 +776,7 @@ function editChannel() {
       currentChannel.modeIndex = modeIndex;
 
       var channelUsages = currentFixture.modes.filter(function(mode) {
-        return mode.channels.indexOf(channelItem.getAttribute('data-channel-key')) != -1;
+        return mode.channels.indexOf(channelItem.getAttribute('data-channel-key')) !== -1;
       }).length;
 
       if (channelUsages > 1) {
@@ -854,7 +854,7 @@ function restoreAutoSave() {
   }
 
   autoSaved = JSON.parse(autoSaved);
-  if (autoSaved.length == 0) {
+  if (autoSaved.length === 0) {
     editorForm.reset();
     readyToAutoSave = true;
     return;
@@ -913,7 +913,7 @@ function restoreAutoSave() {
       toggleManufacturer();
     }
 
-    if (JSON.stringify(latestData.currentChannel) != '{}') {
+    if (JSON.stringify(latestData.currentChannel) !== '{}') {
       for (var key in latestData.currentChannel) {
         currentChannel[key] = latestData.currentChannel[key];
       }
@@ -941,13 +941,13 @@ function restoreAutoSave() {
 function prefillFormElements(container, object) {
   for (var key in object) {
     var formElem = container.querySelector('[data-key="' + key + '"]');
-    if (formElem != null) {
-      if (formElem.type == 'select-multiple') {
+    if (formElem) {
+      if (formElem.type === 'select-multiple') {
         object[key].forEach(function(selectedOption) {
           formElem.querySelector('option[value="' + selectedOption + '"]').selected = true;
         });
       }
-      else if (formElem.type == 'checkbox') {
+      else if (formElem.type === 'checkbox') {
         formElem.checked = object[key];
       }
       else {
@@ -966,7 +966,7 @@ function saveFixture(event) {
 
   event.preventDefault();
 
-  if (editorForm.querySelector('.honeypot input').value != '') {
+  if (editorForm.querySelector('.honeypot input').value !== '') {
     alert('Do not fill the "Ignore" fields!');
     return;
   }
@@ -993,7 +993,7 @@ function saveFixture(event) {
 
   var otherFixtureKeys = [];
   for (var key in out.fixtures) {
-    if (key.indexOf(manKey) == 0) {
+    if (key.indexOf(manKey) === 0) {
       otherFixtureKeys.push(key.slice(manKey.length + 1));
     }
   }
@@ -1002,10 +1002,10 @@ function saveFixture(event) {
 
   out.fixtures[fixKey] = {};
   for (var key in properties.fixture) {
-    if (key == 'physical') {
+    if (key === 'physical') {
       savePhysical(out.fixtures[fixKey], currentFixture);
     }
-    else if (key == 'meta') {
+    else if (key === 'meta') {
       var now = (new Date()).toISOString().replace(/T.*/, '');
 
       out.fixtures[fixKey].meta = {
@@ -1014,14 +1014,14 @@ function saveFixture(event) {
         lastModifyDate: now
       };
     }
-    else if (key == 'availableChannels') {
+    else if (key === 'availableChannels') {
       out.fixtures[fixKey].availableChannels = {};
       for (var channelKey in currentFixture.availableChannels) {
         out.fixtures[fixKey].availableChannels[channelKey] = {};
         saveChannel(out.fixtures[fixKey].availableChannels[channelKey], currentFixture.availableChannels[channelKey]);
       }
     }
-    else if (key == 'modes') {
+    else if (key === 'modes') {
       out.fixtures[fixKey].modes = [];
       currentFixture.modes.forEach(function(mode) {
         var modeNumber = out.fixtures[fixKey].modes.push({});
@@ -1048,7 +1048,7 @@ function saveFixture(event) {
         if (xhr.status === 201) {
           var data = JSON.parse(xhr.responseText);
 
-          if (data.error == null) {
+          if (!data.error) {
             dialogs.submit.node.querySelector('.pull-request-url').href = data.pullRequestUrl;
             dialogs.submit.setState('success');
             clearAutoSave();
@@ -1078,18 +1078,18 @@ function saveFixture(event) {
     to.physical = {};
 
     for (var key in properties.physical) {
-      if (key == 'dimensions' && 'physical-dimensions-width' in from) {
+      if (key === 'dimensions' && 'physical-dimensions-width' in from) {
         to.physical.dimensions = [
           from['physical-dimensions-width'],
           from['physical-dimensions-height'],
           from['physical-dimensions-depth']
         ];
       }
-      else if ('type' in properties.physical[key] && properties.physical[key].type == 'object') {
+      else if ('type' in properties.physical[key] && properties.physical[key].type === 'object') {
         to.physical[key] = {};
 
         for (var subKey in properties.physical[key].properties) {
-          if (subKey == 'degreesMinMax' && 'physical-lens-degrees-min' in from) {
+          if (subKey === 'degreesMinMax' && 'physical-lens-degrees-min' in from) {
             to.physical.lens.degreesMinMax = [
               from['physical-lens-degrees-min'],
               from['physical-lens-degrees-max']
@@ -1100,7 +1100,7 @@ function saveFixture(event) {
           }
         }
 
-        if (JSON.stringify(to.physical[key]) == '{}') {
+        if (JSON.stringify(to.physical[key]) === '{}') {
           delete to.physical[key];
         }
       }
@@ -1109,14 +1109,14 @@ function saveFixture(event) {
       }
     }
 
-    if (JSON.stringify(to.physical) == '{}') {
+    if (JSON.stringify(to.physical) === '{}') {
       delete to.physical;
     }
   }
 
   function saveChannel(to, from) {
     for (var key in properties.channel) {
-      if (key == 'capabilities') {
+      if (key === 'capabilities') {
         to.capabilities = [];
 
         from.capabilities.forEach(function(cap) {
@@ -1137,7 +1137,7 @@ function saveFixture(event) {
           to.capabilities.push(capability);
         });
 
-        if (to.capabilities.length == 0) {
+        if (to.capabilities.length === 0) {
           delete to.capabilities;
         }
       }
@@ -1149,7 +1149,7 @@ function saveFixture(event) {
 
   function saveMode(to, from) {
     for (var key in properties.mode) {
-      if (key == 'physical') {
+      if (key === 'physical') {
         savePhysical(to, from);
       }
       else if (key in from) {
@@ -1159,7 +1159,7 @@ function saveFixture(event) {
   }
 
   function getCurrentFixtureValue(key, from) {
-    return from[key] == '[add-value]' && key + '-new' in from ? from[key + '-new'] : from[key];
+    return from[key] === '[add-value]' && key + '-new' in from ? from[key + '-new'] : from[key];
   }
 }
 
@@ -1178,7 +1178,7 @@ function getKeyFromName(name, uniqueInList, forceSanitize) {
     return nameRegexp.test(value);
   }).length;
 
-  if (occurences == 0) {
+  if (occurences === 0) {
     return name;
   }
 

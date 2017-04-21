@@ -15,7 +15,7 @@ window.addEventListener('load', function() {
   searchInput.addEventListener('blur', checkSearchInput, true);
 
   var downloadButton = document.querySelector('.download-button');
-  if (downloadButton != null) {
+  if (downloadButton) {
     var links = downloadButton.querySelectorAll('a');
 
     for (var i=0; i<links.length; i++) {
@@ -31,7 +31,7 @@ function hideLogo() {
 }
 
 function checkSearchInput() {
-  if (searchInput.value === undefined || searchInput.value.length == 0) {
+  if (searchInput.value === undefined || searchInput.value.length === 0) {
     showLogo();
   }
   else {
