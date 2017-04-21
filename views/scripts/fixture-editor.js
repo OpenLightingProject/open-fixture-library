@@ -992,9 +992,9 @@ function saveFixture(event) {
   }
 
   var otherFixtureKeys = [];
-  for (var key in out.fixtures) {
-    if (key.indexOf(manKey) === 0) {
-      otherFixtureKeys.push(key.slice(manKey.length + 1));
+  for (var fKey in out.fixtures) {
+    if (fKey.indexOf(manKey) === 0) {
+      otherFixtureKeys.push(fKey.slice(manKey.length + 1));
     }
   }
 
