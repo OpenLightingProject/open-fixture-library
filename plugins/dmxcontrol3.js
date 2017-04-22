@@ -356,7 +356,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           else if (['dimmer', 'colortemp', 'fog', 'frost'].includes(functionType)) {
             channel.type = 'Intensity';
           }
-          else if (['rotation', 'ptspeed', 'fan'].includes(functionType)) {
+          else if (['rotation', 'ptspeed', 'fan', 'bladetop', 'bladeright', 'bladebottom', 'bladeleft'].includes(functionType)) {
             channel.type = 'Speed';
           }
           else if (['strobo'].includes(functionType)) {
@@ -625,6 +625,18 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
 
               warnUnknownAttributes(functionType, singleFunction, []);
               warnUnknownChildren(functionType, singleFunction, ['pan', 'tilt']);
+
+              break;
+
+            case 'blades':
+              const children = ['bladetop', 'bladeright', 'bladebottom', 'bladeleft'];
+              for (const child of children) {
+                for (let n = 0; n < singleFunction[child].length; n++) {
+                  parseSimpleFunction(child, singleFunction, n);
+                }
+              }
+
+              warnUnknownChildren(functionType, singleFunction, children);
 
               break;
 
