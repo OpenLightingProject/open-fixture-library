@@ -10,7 +10,7 @@ function capitalize(string) {
 
 function logXML(obj) {
   var builder = new xml2js.Builder({
-    headless: true,
+    headless: true
   });
   var xml = builder.buildObject(obj);
   console.log(xml);
@@ -51,13 +51,13 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
         categories: [],
         meta: {
           createDate: timestamp,
-          lastModifyDate: timestamp,
+          lastModifyDate: timestamp
         },
         availableChannels: {},
         modes: [{
           name: 'Default',
-          channels: [],
-        }],
+          channels: []
+        }]
       };
 
       if (info.author) {
@@ -369,7 +369,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             existingChannel.capabilities = [];
           }
           checkOverlap: for (const capability of channel.capabilities) {
-            for (existingCapability of existingChannel.capabilities) {
+            for (const existingCapability of existingChannel.capabilities) {
               if ((capability.range[0] <= existingCapability.range[0] &&
                    capability.range[1] >= existingCapability.range[0]) ||
                   (capability.range[0] <= existingCapability.range[1] &&
@@ -399,7 +399,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
         if ('finedmxchannel' in singleFunction.$) {
           const normalChannel = fix.availableChannels[normalChannelKey];
           let fineChannel = {
-            type: normalChannel.type,
+            type: normalChannel.type
           };
           if ('color' in normalChannel) {
             fineChannel.color = normalChannel.color;
@@ -497,7 +497,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
 
                 let channel = {
                   type: 'SingleColor',
-                  color: color,
+                  color: color
                 };
 
                 const channelKey = getUniqueChannelKey(color);
@@ -539,7 +539,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
                 const hsvFunction = singleFunction[hsvFunctionType][0];
 
                 let channel = {
-                  type: 'Intensity',
+                  type: 'Intensity'
                 };
 
                 const channelKey = getUniqueChannelKey(hsvType);

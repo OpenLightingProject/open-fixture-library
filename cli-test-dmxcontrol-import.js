@@ -38,7 +38,7 @@ for (const file of fs.readdirSync(fixturesDir)) {
 Promise.all(promises).then(fixtures => {
   const result = {
     warnings: {},
-    errors: {}, 
+    errors: {} 
   };
   for (const fixture of fixtures) {
     fixture.errors = {};
