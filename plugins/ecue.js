@@ -54,7 +54,7 @@ module.exports.export = function exportEcue(library, options) {
   for (const man in outFixtures) {
     const manData = options.manufacturers[man];
 
-    const manStr = `<Manufacturer _CreationDate="${timestamp}" _ModifiedDate="${timestamp}" Header="" Name="${manData.name}" Comment="${manData.comment || ''}" Web="${manData.website || ''}"`;
+    const manStr = `<Manufacturer _CreationDate="${timestamp}" _ModifiedDate="${timestamp}" Name="${manData.name}" Comment="${manData.comment || ''}" Web="${manData.website || ''}"`;
 
     tilesStr += `            ${manStr} />\n`;
 
@@ -92,9 +92,8 @@ function exportHandleModes(fixture, defaults, physical) {
     let fixName = fixture.name + (fixture.modes.length > 1 ? ` (${modeData.shortName} mode)` : '');
     let fixShortName = fixture.shortName + (fixture.modes.length > 1 ? '-' + modeData.shortName : '');
 
-    str += `                <Fixture _CreationDate="${fixCreationDate}" _ModifiedDate="${fixModifiedDate}" Header="" Name="${fixName}" NameShort="${fixShortName}" Comment="${fixture.comment}" AllocateDmxChannels="${mode.channels.length}" Weight="${modeData.physical.weight}" Power="${modeData.physical.power}" DimWidth="${modeData.physical.dimensions[0]}" DimHeight="${modeData.physical.dimensions[1]}" DimDepth="${modeData.physical.dimensions[2]}">\n`;
+    str += `                <Fixture _CreationDate="${fixCreationDate}" _ModifiedDate="${fixModifiedDate}" Name="${fixName}" NameShort="${fixShortName}" Comment="${fixture.comment}" AllocateDmxChannels="${mode.channels.length}" Weight="${modeData.physical.weight}" Power="${modeData.physical.power}" DimWidth="${modeData.physical.dimensions[0]}" DimHeight="${modeData.physical.dimensions[1]}" DimDepth="${modeData.physical.dimensions[2]}">\n`;
 
-    let viewPosCount = 1;
     for (let dmxCount=0; dmxCount<mode.channels.length; dmxCount++) {
       let chKey = mode.channels[dmxCount];
 
@@ -175,7 +174,7 @@ function exportHandleModes(fixture, defaults, physical) {
 
       const hasCapabilities = ('capabilities' in channel);
 
-      str += `                    <Channel${chType} Name="${chData.name}" DefaultValue="${chData.defaultValue}" Highlight="${chData.highlightValue}" Deflection="0" DmxByte0="${dmxByte0}" DmxByte1="${dmxByte1}" Constant="${chData.constant ? 1 : 0}" Crossfade="${chData.crossfade ? 1 : 0}" Invert="${chData.invert ? 1 : 0}" Precedence="${chData.precedence}" ClassicPos="${viewPosCount++}"` + (hasCapabilities ? '' : ' /') + '>\n';
+      str += `                    <Channel${chType} Name="${chData.name}" DefaultValue="${chData.defaultValue}" Highlight="${chData.highlightValue}" Deflection="0" DmxByte0="${dmxByte0}" DmxByte1="${dmxByte1}" Constant="${chData.constant ? 1 : 0}" Crossfade="${chData.crossfade ? 1 : 0}" Invert="${chData.invert ? 1 : 0}" Precedence="${chData.precedence}" ClassicPos="${dmxCount+1}"` + (hasCapabilities ? '' : ' /') + '>\n';
 
       if (hasCapabilities) {
         for (const cap of channel.capabilities) {
