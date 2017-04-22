@@ -417,6 +417,9 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
 
       const functions = device.functions[0];
       for (const functionType in functions) {
+        if (['colorwheel'].includes(functionType)) {
+          console.log(manName, fixName, fix.modes[0].name);
+        }
         for (let i = 0; i < functions[functionType].length; i++) {
           const singleFunction = functions[functionType][i];
 
@@ -438,6 +441,11 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             case 'raw':
             case 'rawstep':
             case 'const':
+              parseSimpleFunction(functionType, functions, i);
+              break;
+
+            case 'colorwheel':
+              logXML({'colorwheel': singleFunction});
               parseSimpleFunction(functionType, functions, i);
               break;
 
@@ -583,4 +591,4 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
       return reject(`Error parsing '${filename}'.\n` + parseError.toString());
     }
   });
-}
+};
