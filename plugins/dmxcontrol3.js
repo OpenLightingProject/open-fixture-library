@@ -93,105 +93,68 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
         }
       };
 
-      const parseSimpleFunction = function(functionType, functionContainer, functionIndex) {
-        const singleFunction = functionContainer[functionType][functionIndex];
-        const caps = getCapabilities(singleFunction, functionType);
+      const addChannelToMode = function(key, dmxchannel, channel) {
+        const existingChannels = fix.modes[0].channels;
+        const existingChannelKey = existingChannels[dmxchannel];
 
-        if ('$' in singleFunction && 'dmxchannel' in singleFunction.$) {
-          let channel = {};
+        // check if there already is a channel for this DMX channel index
+        if (existingChannelKey !== undefined &&
+            existingChannelKey !== null) {
+          const existingChannel = fix.availableChannels[existingChannelKey];
 
-          let channelKey;
-          if ('name' in singleFunction.$) {
-            channelKey = singleFunction.$.name;
+          // do both channels' capabilities overlap?
+          let overlap = false;
+          if (!('capabilities' in channel)) {
+            channel.capabilities = [];
+          }
+          if (!('capabilities' in existingChannel)) {
+            existingChannel.capabilities = [];
+          }
+          checkOverlap: for (const capability of channel.capabilities) {
+            for (const existingCapability of existingChannel.capabilities) {
+              if ((capability.range[0] <= existingCapability.range[0] &&
+                   capability.range[1] >= existingCapability.range[0]) ||
+                  (capability.range[0] <= existingCapability.range[1] &&
+                   capability.range[1] >= existingCapability.range[1])) {
+                overlap = true;
+                break checkOverlap;
+              }
+            }
+          }
+
+          if (overlap) {
+            out.warnings[fixKey].push(`Channels '${existingChannelKey}' and '${key}' have same DMX channel ${dmxchannel} and can't be merged because their capabilities overlap.`);
+            fix.availableChannels[key] = channel;
           }
           else {
-            switch (functionType) {
-              case 'strobo':
-                channelKey = 'Strobe';
-                break;
-
-              case 'ptspeed':
-                channelKey = 'Pan/Tilt Speed';
-                break;
-
-              default:
-                channelKey = capitalize(functionType);
-            }
-
-            // "Dimmer" if there's only one dimmer
-            // "Dimmer 1", "Dimmer 2", ... if there are more dimmers
-            if (functionContainer[functionType].length > 1) {
-              channelKey += ` ${functionIndex+1}`;
-            }
-          }
-
-          // append " 2", " 3", ... to channel key if it isn't unique
-          channelKey = getUniqueChannelKey(channelKey);
-
-          /// Channel type
-          if (['strobe', 'shutter', 'pan', 'tilt'].includes(functionType)) {
-            channel.type = capitalize(functionType);
-          }
-          else if (['dimmer', 'colortemp', 'fog', 'frost'].includes(functionType)) {
-            channel.type = 'Intensity';
-          }
-          else if (['rotation', 'ptspeed', 'fan'].includes(functionType)) {
-            channel.type = 'Speed';
-          }
-          else if (['strobo'].includes(functionType)) {
-            channel.type = 'Strobe';
-          }
-          else if (['focus', 'zoom', 'iris'].includes(functionType)) {
-            channel.type = 'Beam';
-          }
-          else if ('name' in singleFunction.$) {
-            // maybe channel name gives us more information
-            // about channel type than the function type does
-            const testName = singleFunction.$.name.toLowerCase();
-            if (testName.includes('intensity')) {
-              channel.type = 'Intensity';
-            }
-            else if (testName.includes('speed') || testName.includes('duration')) {
-              channel.type = 'Speed';
-            }
-            else {
-              channel.type = 'Intensity';
-              out.warnings[fixKey].push(`Please check channel type of '${channelKey}'`);
-            }
-          }
-          else {
-            channel.type = 'Intensity';
-            out.warnings[fixKey].push(`Please check channel type of '${channelKey}'`);
-          }
-
-          if (caps.length > 0) {
-            channel.capabilities = caps;
-          }
-
-          if ('defaultval' in singleFunction.$) {
-            channel.defaultValue = parseInt(singleFunction.$.defaultval);
-          }
-          else if ('val' in singleFunction.$) {
-            channel.defaultValue = parseInt(singleFunction.$.val);
-          }
-
-          if (functionType === 'const') {
-            channel.constant = true;
-          }
-
-          addChannelToMode(channelKey, singleFunction.$.dmxchannel, channel);
-          addPossibleFineChannel(singleFunction, channelKey);
-
-          warnUnknownAttributes(functionType, singleFunction, ['name', 'defaultval', 'val', 'constant', 'dmxchannel', 'mindmx', 'maxdmx', 'finedmxchannel']);
-        }
-
-        if ('raw' in singleFunction) {
-          for (let i = 0; i < singleFunction.raw.length; i++) {
-            parseSimpleFunction('raw', singleFunction, i);
+            existingChannel.capabilities = existingChannel.capabilities.concat(channel.capabilities).sort(sortCapabilities);
+            out.warnings[fixKey].push(`Merged '${key}'´s capabilities into '${existingChannelKey}' as they have the same DMX channel ${dmxchannel}. Please check if ${existingChannel.type} is the correct type of the combined channel. Type of '${key}' was ${channel.type}.`);
           }
         }
+        else {
+          fix.availableChannels[key] = channel;
+          existingChannels[dmxchannel] = key;
+        }
+      };
 
-        warnUnknownChildren(functionType, singleFunction, ['range', 'step', 'raw', 'focus']);
+      const addPossibleFineChannel = function(singleFunction, normalChannelKey) {
+        if ('finedmxchannel' in singleFunction.$) {
+          const normalChannel = fix.availableChannels[normalChannelKey];
+          let fineChannel = {
+            type: normalChannel.type
+          };
+          if ('color' in normalChannel) {
+            fineChannel.color = normalChannel.color;
+          }
+
+          const fineChannelKey = normalChannelKey + ' fine';
+          addChannelToMode(fineChannelKey, singleFunction.$.finedmxchannel, fineChannel);
+
+          if (fix.multiByteChannels === undefined) {
+            fix.multiByteChannels = [];
+          }
+          fix.multiByteChannels.push([normalChannelKey, fineChannelKey]);
+        }
       };
 
       const sortCapabilities = function(a, b) {
@@ -351,75 +314,189 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
         return `${key} ${i}`;
       };
 
-      const addChannelToMode = function(key, dmxchannel, channel) {
-        const existingChannels = fix.modes[0].channels;
-        const existingChannelKey = existingChannels[dmxchannel];
+      const parseSimpleFunction = function(functionType, functionContainer, functionIndex) {
+        const singleFunction = functionContainer[functionType][functionIndex];
+        const caps = getCapabilities(singleFunction, functionType);
 
-        // check if there already is a channel for this DMX channel index
-        if (existingChannelKey !== undefined &&
-            existingChannelKey !== null) {
-          const existingChannel = fix.availableChannels[existingChannelKey];
+        if ('$' in singleFunction && 'dmxchannel' in singleFunction.$) {
+          let channel = {};
 
-          // do both channels' capabilities overlap?
-          let overlap = false;
-          if (!('capabilities' in channel)) {
-            channel.capabilities = [];
+          let channelKey;
+          if ('name' in singleFunction.$) {
+            channelKey = singleFunction.$.name;
           }
-          if (!('capabilities' in existingChannel)) {
-            existingChannel.capabilities = [];
-          }
-          checkOverlap: for (const capability of channel.capabilities) {
-            for (const existingCapability of existingChannel.capabilities) {
-              if ((capability.range[0] <= existingCapability.range[0] &&
-                   capability.range[1] >= existingCapability.range[0]) ||
-                  (capability.range[0] <= existingCapability.range[1] &&
-                   capability.range[1] >= existingCapability.range[1])) {
-                overlap = true;
-                break checkOverlap;
-              }
+          else {
+            switch (functionType) {
+              case 'strobo':
+                channelKey = 'Strobe';
+                break;
+
+              case 'ptspeed':
+                channelKey = 'Pan/Tilt Speed';
+                break;
+
+              default:
+                channelKey = capitalize(functionType);
+            }
+
+            // "Dimmer" if there's only one dimmer
+            // "Dimmer 1", "Dimmer 2", ... if there are more dimmers
+            if (functionContainer[functionType].length > 1) {
+              channelKey += ` ${functionIndex+1}`;
             }
           }
 
-          if (overlap) {
-            out.warnings[fixKey].push(`Channels '${existingChannelKey}' and '${key}' have same DMX channel ${dmxchannel} and can't be merged because their capabilities overlap.`);
-            fix.availableChannels[key] = channel;
+          // append " 2", " 3", ... to channel key if it isn't unique
+          channelKey = getUniqueChannelKey(channelKey);
+
+          /// Channel type
+          if (['strobe', 'shutter', 'pan', 'tilt'].includes(functionType)) {
+            channel.type = capitalize(functionType);
+          }
+          else if (['dimmer', 'colortemp', 'fog', 'frost'].includes(functionType)) {
+            channel.type = 'Intensity';
+          }
+          else if (['rotation', 'ptspeed', 'fan'].includes(functionType)) {
+            channel.type = 'Speed';
+          }
+          else if (['strobo'].includes(functionType)) {
+            channel.type = 'Strobe';
+          }
+          else if (['focus', 'zoom', 'iris'].includes(functionType)) {
+            channel.type = 'Beam';
+          }
+          else if ('name' in singleFunction.$) {
+            // maybe channel name gives us more information
+            // about channel type than the function type does
+            const testName = singleFunction.$.name.toLowerCase();
+            if (testName.includes('intensity')) {
+              channel.type = 'Intensity';
+            }
+            else if (testName.includes('speed') || testName.includes('duration')) {
+              channel.type = 'Speed';
+            }
+            else {
+              channel.type = 'Intensity';
+              out.warnings[fixKey].push(`Please check channel type of '${channelKey}'`);
+            }
           }
           else {
-            existingChannel.capabilities = existingChannel.capabilities.concat(channel.capabilities).sort(sortCapabilities);
-            out.warnings[fixKey].push(`Merged '${key}'´s capabilities into '${existingChannelKey}' as they have the same DMX channel ${dmxchannel}. Please check if ${existingChannel.type} is the correct type of the combined channel. Type of '${key}' was ${channel.type}.`);
+            channel.type = 'Intensity';
+            out.warnings[fixKey].push(`Please check channel type of '${channelKey}'`);
+          }
+
+          if (caps.length > 0) {
+            channel.capabilities = caps;
+          }
+
+          if ('defaultval' in singleFunction.$) {
+            channel.defaultValue = parseInt(singleFunction.$.defaultval);
+          }
+          else if ('val' in singleFunction.$) {
+            channel.defaultValue = parseInt(singleFunction.$.val);
+          }
+
+          if (functionType === 'const') {
+            channel.constant = true;
+          }
+
+          addChannelToMode(channelKey, singleFunction.$.dmxchannel, channel);
+          addPossibleFineChannel(singleFunction, channelKey);
+
+          warnUnknownAttributes(functionType, singleFunction, ['name', 'defaultval', 'val', 'constant', 'dmxchannel', 'mindmx', 'maxdmx', 'finedmxchannel']);
+        }
+
+        if ('raw' in singleFunction) {
+          for (let i = 0; i < singleFunction.raw.length; i++) {
+            parseSimpleFunction('raw', singleFunction, i);
           }
         }
-        else {
-          fix.availableChannels[key] = channel;
-          existingChannels[dmxchannel] = key;
-        }
+
+        warnUnknownChildren(functionType, singleFunction, ['range', 'step', 'raw', 'focus']);
       };
 
-      const addPossibleFineChannel = function(singleFunction, normalChannelKey) {
-        if ('finedmxchannel' in singleFunction.$) {
-          const normalChannel = fix.availableChannels[normalChannelKey];
-          let fineChannel = {
-            type: normalChannel.type
+      const parseMultiColorFunction = function(multiColorFunctionType, multiColorFunction, x, y) {
+        for (const singleColorFunctionType in multiColorFunction) {
+          let color = singleColorFunctionType.toLowerCase();
+
+          switch (color) {
+            case 'r':
+              color = 'Red';
+              break;
+
+            case 'g':
+              color = 'Green';
+              break;
+
+            case 'b':
+              color = 'Blue';
+              break;
+
+            case 'c':
+              color = 'Cyan';
+              break;
+
+            case 'm':
+              color = 'Magenta';
+              break;
+
+            case 'y':
+              color = 'Yellow';
+              break;
+
+            case 'w':
+              color = 'White';
+              break;
+
+            case 'uv':
+              color = 'UV';
+              break;
+
+            default:
+              color = capitalize(color);
+          }
+
+          const singleColorFunction = multiColorFunction[singleColorFunctionType][0];
+
+          let channel = {
+            type: 'SingleColor',
+            color: color
           };
-          if ('color' in normalChannel) {
-            fineChannel.color = normalChannel.color;
+
+          let position;
+          if (x !== undefined && y !== undefined) {
+            position = `(${x+1}|${y+1})`;
           }
 
-          const fineChannelKey = normalChannelKey + ' fine';
-          addChannelToMode(fineChannelKey, singleFunction.$.finedmxchannel, fineChannel);
-
-          if (fix.multiByteChannels === undefined) {
-            fix.multiByteChannels = [];
+          let channelKey = color;
+          if (position !== undefined) {
+            channelKey += ` ${position}`;
           }
-          fix.multiByteChannels.push([normalChannelKey, fineChannelKey]);
+          channelKey = getUniqueChannelKey(channelKey);
+          fix.availableChannels[channelKey] = channel;
+
+          if (position !== undefined) {
+            if (!('heads' in fix)) {
+              fix.heads = {};
+            }
+            if (!(position in fix.heads)) {
+              fix.heads[position] = [];
+            }
+            fix.heads[position].push(channelKey);
+          }
+
+          addChannelToMode(channelKey, singleColorFunction.$.dmxchannel, channel);
+          addPossibleFineChannel(singleColorFunction, channelKey);
+
+          warnUnknownAttributes(singleColorFunctionType, singleColorFunction, ['dmxchannel', 'finedmxchannel']);
+          warnUnknownChildren(singleColorFunctionType, singleColorFunction, ['']);
         }
+
+        warnUnknownAttributes(multiColorFunctionType, multiColorFunction, []);
       };
 
       const functions = device.functions[0];
       for (const functionType in functions) {
-        if (['colorwheel'].includes(functionType)) {
-          console.log(manName, fixName, fix.modes[0].name);
-        }
         for (let i = 0; i < functions[functionType].length; i++) {
           const singleFunction = functions[functionType][i];
 
@@ -444,72 +521,9 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
               parseSimpleFunction(functionType, functions, i);
               break;
 
-            case 'colorwheel':
-              logXML({'colorwheel': singleFunction});
-              parseSimpleFunction(functionType, functions, i);
-              break;
-
             case 'rgb':
             case 'cmy':
-              warnUnknownAttributes(functionType, singleFunction, []);
-
-              for (const colorFunctionName in singleFunction) {
-                let color = colorFunctionName.toLowerCase();
-
-                switch (color) {
-                  case 'r':
-                    color = 'Red';
-                    break;
-
-                  case 'g':
-                    color = 'Green';
-                    break;
-
-                  case 'b':
-                    color = 'Blue';
-                    break;
-
-                  case 'c':
-                    color = 'Cyan';
-                    break;
-
-                  case 'm':
-                    color = 'Magenta';
-                    break;
-
-                  case 'y':
-                    color = 'Yellow';
-                    break;
-
-                  case 'w':
-                    color = 'White';
-                    break;
-
-                  case 'uv':
-                    color = 'UV';
-                    break;
-
-                  default:
-                    color = capitalize(color);
-                }
-
-                const colorFunction = singleFunction[colorFunctionName][0];
-
-                let channel = {
-                  type: 'SingleColor',
-                  color: color
-                };
-
-                const channelKey = getUniqueChannelKey(color);
-                fix.availableChannels[channelKey] = channel;
-
-                addChannelToMode(channelKey, colorFunction.$.dmxchannel, channel);
-                addPossibleFineChannel(colorFunction, channelKey);
-
-                warnUnknownAttributes(colorFunctionName, colorFunction, ['dmxchannel', 'finedmxchannel']);
-                warnUnknownChildren(colorFunctionName, colorFunction, ['']);
-              }
-
+              parseMultiColorFunction(functionType, singleFunction);
               break;
 
             case 'hsv':
@@ -550,6 +564,53 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
 
                 warnUnknownAttributes(hsvFunctionType, hsvFunction, ['dmxchannel', 'finedmxchannel']);
                 warnUnknownChildren(hsvFunctionType, hsvFunction, ['']);
+              }
+
+              break;
+
+            case 'matrix':
+              const rows = singleFunction.$.rows;
+              const columns = singleFunction.$.columns;
+              const monochrome = singleFunction.$.monochrome === 'true';
+              const dmxchannel = 'dmxchannel' in singleFunction.$ ? parseInt(singleFunction.$.dmxchannel) : -1;
+
+              warnUnknownAttributes(functionType, singleFunction, ['rows', 'columns', 'monochrome', 'dmxchannel']);
+
+              if (dmxchannel < 0) {
+                warnUnknownChildren(functionType, singleFunction, ['rgb']);
+              }
+              else {
+                warnUnknownChildren(functionType, singleFunction, []);
+              }
+
+              for (let y = 0; y < rows; y++) {
+                for (let x = 0; x < columns; x++) {
+                  let multiColorFunction;
+                  if (dmxchannel < 0) {
+                    multiColorFunction = singleFunction.rgb[y*columns+x]
+                  }
+                  else {
+                    multiColorFunction = {
+                      red: [{
+                        $: {
+                          dmxchannel: dmxchannel + 3*(y*columns+x)
+                        }
+                      }],
+                      green: [{
+                        $: {
+                          dmxchannel: dmxchannel + 3*(y*columns+x) + 1
+                        }
+                      }],
+                      blue: [{
+                        $: {
+                          dmxchannel: dmxchannel + 3*(y*columns+x) + 2
+                        }
+                      }]
+                    }
+                  }
+
+                  parseMultiColorFunction('rgb', multiColorFunction, x, y);
+                }
               }
 
               break;
