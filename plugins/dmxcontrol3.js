@@ -135,7 +135,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           else if (['dimmer', 'colortemp', 'fog', 'frost'].includes(functionType)) {
             channel.type = 'Intensity';
           }
-          else if (['rotation', 'ptspeed'].includes(functionType)) {
+          else if (['rotation', 'ptspeed', 'fan'].includes(functionType)) {
             channel.type = 'Speed';
           }
           else if (['strobo'].includes(functionType)) {
@@ -430,9 +430,11 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             case 'shutter':
             case 'rotation':
             case 'ptspeed':
+            case 'fan':
             case 'focus':
             case 'zoom':
             case 'iris':
+            case 'switch':
             case 'raw':
             case 'rawstep':
             case 'const':
