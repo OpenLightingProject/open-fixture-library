@@ -34,8 +34,7 @@ try {
           const fixData = JSON.parse(fs.readFileSync(path.join(fixturePath, man, filename), 'utf8'));
 
           register.filesystem[man + '/' + fix] = {
-            name: fixData.name,
-            manufacturerName: manufacturers[man].name
+            name: fixData.name
           };
 
           for (const cat of fixData.categories) {
