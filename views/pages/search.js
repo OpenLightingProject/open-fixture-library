@@ -41,7 +41,7 @@ module.exports = function(options) {
   for (const key in register.filesystem) {
     const [man, fix] = key.split('/');
     const fixData = register.filesystem[key];
-    const name = (fixData.manufacturerName + ' ' + fixData.name).toLowerCase();
+    const name = (manufacturers[man].name + ' ' + fixData.name).toLowerCase();
 
     // very primitive match algorithm, maybe put more effort into it sometime
     if (
@@ -49,7 +49,10 @@ module.exports = function(options) {
       && (query.m.length == 0 || query.m.indexOf(man) > -1) // manufacturer is not relevant or matches
       && (query.c.length == 0 || categoryMatch(query.c, key, register)) // categories are not relevant or match
       ) {
-      results.push(key);
+      results.push(Object.assign({}, fixData, {
+        key: key,
+        manufacturerName: manufacturers[man].name
+      }));
     }
   }
 
@@ -72,9 +75,8 @@ module.exports = function(options) {
 
   str += '<div class="search-results">';
   if (results.length > 0) {
-    for (const key of results) {
-      const fixData = register.filesystem[key];
-      str += `<p><a href="/${key}">${fixData.manufacturerName} ${fixData.name}</p>`;
+    for (const fixData of results) {
+      str += `<p><a href="/${fixData.key}">${fixData.manufacturerName} ${fixData.name}</p>`;
     }
   }
   else {
