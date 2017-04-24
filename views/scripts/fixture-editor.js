@@ -444,8 +444,8 @@ function openChannelDialog(editMode) {
 
     if ('capabilities' in currentChannel && currentChannel.capabilities.length > 0) {
       currentChannel.capabilities.forEach(function(cap, index) {
-        var newItem = addCapabilityToUI(capabilitiesContainer, cap);
-        setMinMax(newItem, getMinCapabilityBound(index), getMaxCapabilityBound(index));
+        var newCapItem = addCapabilityToUI(capabilitiesContainer, cap);
+        setMinMax(newCapItem, getMinCapabilityBound(index), getMaxCapabilityBound(index));
       });
     }
     else {
@@ -1065,7 +1065,7 @@ function saveFixture(event) {
       dialogs.submit.node.querySelector('.error pre').textContent = JSON.stringify(out, null, 2) + '\n\n' + error.message;
       dialogs.submit.setState('error');
     }
-  }
+  };
   xhr.open('POST', '/ajax/add-fixtures');
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify(sendObject));

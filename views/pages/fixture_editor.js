@@ -22,8 +22,8 @@ module.exports = function(options) {
   str += '<section class="manufacturer-shortName">';
   str += '<label>';
   str += '<span class="label">Choose from list</span>';
-  str += `<select required data-key="manufacturer-shortName">`;
-  str += `<option value="">Please select a manufacturer</option>`;
+  str += '<select required data-key="manufacturer-shortName">';
+  str += '<option value="">Please select a manufacturer</option>';
   for (const man in options.manufacturers) {
     str += `<option value="${man}">${options.manufacturers[man].name}</option>`;
   }

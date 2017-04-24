@@ -69,10 +69,12 @@ if (window.Element && !Element.prototype.closest) {
         i,
         el = this;
     do {
-      i = matches.length;
-      while (--i >= 0 && matches.item(i) !== el) {};
+      i = matches.length - 1;
+      while (i >= 0 && matches.item(i) !== el) {
+        i--;
+      }
     }
-    while ((i < 0) && (el = el.parentElement));
+    while (i < 0 && (el = el.parentElement));
 
     return el;
   };
@@ -82,20 +84,18 @@ if (window.Element && !Element.prototype.closest) {
 // https://jsfiddle.net/brianblakely/h3EmY/
 (function templatePolyfill(d) {
   if ('content' in d.createElement('template')) {
-    return false;
+    return;
   }
 
   var qPlates = d.getElementsByTagName('template'),
     plateLen = qPlates.length,
     elPlate,
     qContent,
-    contentLen,
     docContent;
 
   for (var x=0; x<plateLen; ++x) {
     elPlate = qPlates[x];
     qContent = elPlate.childNodes;
-    contentLen = qContent.length;
     docContent = d.createDocumentFragment();
 
     while (qContent[0]) {
@@ -115,10 +115,10 @@ if (window.Element && !Element.prototype.closest) {
   if (constructor && constructor.prototype && !constructor.prototype.firstElementChild) {
     Object.defineProperty(constructor.prototype, 'firstElementChild', {
       get: function() {
-        var node, nodes = this.childNodes, i = 0;
-        while (node = nodes[i]) {
-          if (node.nodeType === 1) {
-            return node;
+        var nodes = this.childNodes, i = 0;
+        while (nodes[i]) {
+          if (nodes[i].nodeType === 1) {
+            return nodes[i];
           }
           i++;
         }
@@ -129,7 +129,7 @@ if (window.Element && !Element.prototype.closest) {
 })(window.Node || window.Element);
 
 
-if (!('forEach' in NodeList.prototype)) {
+if (NodeList.prototype.forEach) {
   NodeList.prototype.forEach = Array.prototype.forEach;
 }
 
@@ -143,8 +143,10 @@ if (!Element.prototype.matches) {
     Element.prototype.webkitMatchesSelector ||
     function(s) {
       var matches = (this.document || this.ownerDocument).querySelectorAll(s),
-          i = matches.length;
-      while (--i >= 0 && matches.item(i) !== this) {}
+          i = matches.length - 1;
+      while (i >= 0 && matches.item(i) !== this) {
+        i--;
+      }
       return i > -1;
     };
 }
