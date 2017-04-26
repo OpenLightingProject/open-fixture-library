@@ -93,6 +93,10 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
         }
       };
 
+      const sortCapabilities = function(a, b) {
+        return a.range[0] - b.range[0];
+      };
+
       const addChannelToMode = function(key, dmxchannel, channel) {
         const existingChannels = fix.modes[0].channels;
         const existingChannelKey = existingChannels[dmxchannel];
@@ -157,10 +161,6 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
         }
       };
 
-      const sortCapabilities = function(a, b) {
-        return a.range[0] - b.range[0];
-      };
-
       // node can be step or range
       const getCapability = function(node, functionType) {
         if (typeof node === 'object' && '$' in node) {
@@ -194,6 +194,18 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             [minval, maxval] = [maxval, minval];
           }
 
+          let valUsed = false;
+          if ('type' in node.$ && 'val' in node.$) {
+            if (node.$.type === 'color') {
+              capability.color = node.$.val.toLowerCase();
+              valUsed = true;
+            }
+            else if (node.$.type === 'image') {
+              capability.image = node.$.val;
+              valUsed = true;
+            }
+          }
+
           /// Naming
           let rangeString = '';
           if (minval !== '?' || maxval !== '?') {
@@ -205,7 +217,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
               rangeString = `${minval}–${maxval}`;
             }
           }
-          else if ('val' in node.$) {
+          else if ('val' in node.$ && !valUsed) {
             rangeString = node.$.val;
 
             if (rangeString === 'true') {
@@ -223,18 +235,18 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
               capability.name += ` ${rangeString}`;
             }
 
-            if ('type' in node.$) {
+            if ('type' in node.$ && !valUsed) {
               capability.name += ` (${node.$.type})`;
             }
           }
           else if (rangeString.length > 0) {
             capability.name = rangeString;
 
-            if ('type' in node.$) {
+            if ('type' in node.$ && !valUsed) {
               capability.name += ` (${node.$.type})`;
             }
           }
-          else if ('type' in node.$) {
+          else if ('type' in node.$ && !valUsed) {
             capability.name = node.$.type;
           }
 
@@ -267,24 +279,23 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
         return null;
       };
 
-      const getCapabilities = function(node, functionType) {
+      const getCapabilities = function(node, functionType, caption) {
         let capabilities = [];
-
+        let capabilityNodes = [];
         if ('range' in node) {
-          for (const range of node.range) {
-            const cap = getCapability(range, functionType);
-            if (cap != null) {
-              capabilities.push(cap);
-            }
-          }
+          capabilityNodes = capabilityNodes.concat(node.range);
+        }
+        if ('step' in node) {
+          capabilityNodes = capabilityNodes.concat(node.step);
         }
 
-        if ('step' in node) {
-          for (const step of node.step) {
-            const cap = getCapability(step, functionType);
-            if (cap != null) {
-              capabilities.push(cap);
-            }
+        for (const node of capabilityNodes) {
+          if (caption !== undefined) {
+            node.$.caption = caption;
+          }
+          const cap = getCapability(node, functionType);
+          if (cap !== null) {
+            capabilities.push(cap);
           }
         }
 
@@ -297,8 +308,6 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             name: 'Generic'
           });
         }
-
-        capabilities.sort(sortCapabilities);
 
         return capabilities;
       };
@@ -349,45 +358,50 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           // append " 2", " 3", ... to channel key if it isn't unique
           channelKey = getUniqueChannelKey(channelKey);
 
-          /// Channel type
-          if (['strobe', 'shutter', 'pan', 'tilt'].includes(functionType)) {
+          if (['pan', 'shutter', 'strobe', 'tilt'].includes(functionType)) {
             channel.type = capitalize(functionType);
           }
-          else if (['dimmer', 'colortemp', 'fog', 'frost'].includes(functionType)) {
-            channel.type = 'Intensity';
-          }
-          else if (['rotation', 'ptspeed', 'fan', 'bladetop', 'bladeright', 'bladebottom', 'bladeleft'].includes(functionType)) {
-            channel.type = 'Speed';
-          }
-          else if (['strobo'].includes(functionType)) {
-            channel.type = 'Strobe';
-          }
-          else if (['focus', 'zoom', 'iris'].includes(functionType)) {
-            channel.type = 'Beam';
-          }
-          else if ('name' in singleFunction.$) {
-            // maybe channel name gives us more information
-            // about channel type than the function type does
-            const testName = singleFunction.$.name.toLowerCase();
-            if (testName.includes('intensity')) {
-              channel.type = 'Intensity';
-            }
-            else if (testName.includes('speed') || testName.includes('duration')) {
-              channel.type = 'Speed';
-            }
-            else {
-              channel.type = 'Intensity';
-              out.warnings[fixKey].push(`Please check channel type of '${channelKey}'`);
-            }
-          }
           else {
-            channel.type = 'Intensity';
-            out.warnings[fixKey].push(`Please check channel type of '${channelKey}'`);
+            const channelTypes = {
+              Beam: ['focus', 'iris', 'zoom'],
+              Intensity: ['colortemp', 'dimmer', 'fog', 'frost'],
+              MultiColor: ['colorwheel'],
+              Speed: ['bladebottom', 'bladeleft', 'bladeright', 'bladetop', 'fan', 'ptspeed', 'rotation'],
+              Strobe: ['strobo']
+            }
+            let typeFound = false;
+            for (const type in channelTypes) {
+              typeFound = channelTypes[type].includes(functionType);
+              if (typeFound) {
+                channel.type = type;
+                break;
+              }
+            }
+
+            if (!typeFound) {
+              if ('name' in singleFunction.$) {
+                // maybe channel name gives us more information
+                // about channel type than the function type does
+                const testName = singleFunction.$.name.toLowerCase();
+                if (testName.includes('intensity')) {
+                  channel.type = 'Intensity';
+                }
+                else if (testName.includes('speed') || testName.includes('duration')) {
+                  channel.type = 'Speed';
+                }
+                else {
+                  channel.type = 'Intensity';
+                  out.warnings[fixKey].push(`Please check channel type of '${channelKey}'`);
+                }
+              }
+              else {
+                channel.type = 'Intensity';
+                out.warnings[fixKey].push(`Please check channel type of '${channelKey}'`);
+              }
+            }
           }
 
-          if (caps.length > 0) {
-            channel.capabilities = caps;
-          }
+          channel.capabilities = caps;
 
           if ('defaultval' in singleFunction.$) {
             channel.defaultValue = parseInt(singleFunction.$.defaultval);
@@ -398,6 +412,25 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
 
           if (functionType === 'const') {
             channel.constant = true;
+          }
+
+          const subFunctions = {
+            rainbow: 'Rainbow',
+            random: 'Random',
+            wheelrotation: 'Rotation'
+          };
+          for (const subFunction in subFunctions) {
+            if (subFunction in singleFunction) {
+              for (const singleSubFunction of singleFunction[subFunction]) {
+                const caps = getCapabilities(singleSubFunction, subFunction, subFunctions[subFunction]);
+                channel.capabilities = channel.capabilities.concat(caps);
+              }
+            }
+          }
+
+          channel.capabilities.sort(sortCapabilities);
+          if (channel.capabilities.length === 0) {
+            delete channel.capabilities;
           }
 
           addChannelToMode(channelKey, singleFunction.$.dmxchannel, channel);
@@ -415,8 +448,8 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
         warnUnknownChildren(functionType, singleFunction, ['range', 'step', 'raw', 'focus']);
       };
 
-      const parseMultiColorFunction = function(multiColorFunctionType, multiColorFunction, x, y) {
-        for (const singleColorFunctionType in multiColorFunction) {
+      const parseColorFunctionCompound = function(colorFunctionCompoundType, colorFunctionCompound, x, y) {
+        for (const singleColorFunctionType in colorFunctionCompound) {
           let color = singleColorFunctionType.toLowerCase();
 
           switch (color) {
@@ -456,7 +489,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
               color = capitalize(color);
           }
 
-          const singleColorFunction = multiColorFunction[singleColorFunctionType][0];
+          const singleColorFunction = colorFunctionCompound[singleColorFunctionType][0];
 
           let channel = {
             type: 'SingleColor',
@@ -492,7 +525,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           warnUnknownChildren(singleColorFunctionType, singleColorFunction, ['']);
         }
 
-        warnUnknownAttributes(multiColorFunctionType, multiColorFunction, []);
+        warnUnknownAttributes(colorFunctionCompoundType, colorFunctionCompound, []);
       };
 
       const functions = device.functions[0];
@@ -501,29 +534,30 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           const singleFunction = functions[functionType][i];
 
           switch (functionType) {
-            case 'dimmer':
             case 'colortemp':
+            case 'colorwheel':
+            case 'const':
+            case 'dimmer':
+            case 'fan':
+            case 'focus':
             case 'fog':
             case 'frost':
+            case 'iris':
+            case 'ptspeed':
+            case 'raw':
+            case 'rawstep':
+            case 'rotation':
             case 'strobe':
             case 'strobo':
             case 'shutter':
-            case 'rotation':
-            case 'ptspeed':
-            case 'fan':
-            case 'focus':
-            case 'zoom':
-            case 'iris':
             case 'switch':
-            case 'raw':
-            case 'rawstep':
-            case 'const':
+            case 'zoom':
               parseSimpleFunction(functionType, functions, i);
               break;
 
             case 'rgb':
             case 'cmy':
-              parseMultiColorFunction(functionType, singleFunction);
+              parseColorFunctionCompound(functionType, singleFunction);
               break;
 
             case 'hsv':
@@ -585,12 +619,12 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
 
               for (let y = 0; y < rows; y++) {
                 for (let x = 0; x < columns; x++) {
-                  let multiColorFunction;
+                  let colorFunctionCompound;
                   if (dmxchannel < 0) {
-                    multiColorFunction = singleFunction.rgb[y*columns+x]
+                    colorFunctionCompound = singleFunction.rgb[y*columns+x]
                   }
                   else {
-                    multiColorFunction = {
+                    colorFunctionCompound = {
                       red: [{
                         $: {
                           dmxchannel: dmxchannel + 3*(y*columns+x)
@@ -609,7 +643,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
                     }
                   }
 
-                  parseMultiColorFunction('rgb', multiColorFunction, x, y);
+                  parseColorFunctionCompound('rgb', colorFunctionCompound, x, y);
                 }
               }
 
