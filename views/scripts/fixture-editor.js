@@ -160,7 +160,7 @@ function initDialogs() {
   // submit dialog
   dialogs.submit.setState = function(newState) {
     this.node.querySelectorAll('.state:not(.' + newState + ')').forEach(function(state) {
-      state.hidden = true;
+      setHidden(state, true);
     });
     this.node.querySelector('.state.' + newState).hidden = false;
   };
@@ -182,7 +182,7 @@ function toggleManufacturer(event, init) {
   var newState = true;
 
   if (!init) {
-    if (newMan.hidden) {
+    if (!('useExistingManufacturer' in currentFixture) || currentFixture.useExistingManufacturer) {
       toShow = newMan;
       toHide = manShortName;
       newState = false;
@@ -192,12 +192,12 @@ function toggleManufacturer(event, init) {
     autoSave();
   }
 
-  toHide.hidden = true;
+  setHidden(toHide, true);
   toHide.querySelectorAll('select, input').forEach(function(element) {
     element.disabled = true;
   });
 
-  toShow.hidden = false;
+  setHidden(toShow, false);
   toShow.querySelectorAll('select, input').forEach(function(element, index) {
     element.disabled = false;
     if (index === 0) {
@@ -310,7 +310,7 @@ function bindValuesToObject(container, context) {
 function updateChannelColorVisibility() {
   var channelColor = channelForm.querySelector('.channel-color');
   var colorEnabled = channelTypeSelect.value === 'SingleColor';
-  channelColor.hidden = !colorEnabled;
+  setHidden(channelColor, !colorEnabled);
   channelColor.querySelector('select').disabled = !colorEnabled;
 }
 
@@ -358,7 +358,7 @@ function addMode(event) {
 }
 function updatePhysicalOverrideVisibility(usePhysicalOverride, physicalOverride) {
   if (usePhysicalOverride.checked) {
-    physicalOverride.hidden = false;
+    setHidden(physicalOverride, false);
     physicalOverride.querySelectorAll('select, input').forEach(function(element, index) {
       element.disabled = false;
       if (index === 0) {
@@ -370,7 +370,7 @@ function updatePhysicalOverrideVisibility(usePhysicalOverride, physicalOverride)
     });
   }
   else {
-    physicalOverride.hidden = true;
+    setHidden(physicalOverride, true);
     physicalOverride.querySelectorAll('select, input').forEach(function(element) {
       element.disabled = true;
     });
@@ -398,7 +398,8 @@ function openChannelDialog(editMode) {
   }
 
   dialogs.channel.node.querySelectorAll('[data-edit-modes]').forEach(function(element) {
-    var hidden = element.hidden = (element.getAttribute('data-edit-modes').indexOf(editMode) === -1);
+    var hidden = element.getAttribute('data-edit-modes').indexOf(editMode) === -1;
+    setHidden(element, hidden);
 
     element.querySelectorAll('[required]').forEach(function(input) {
       if (hidden) {
@@ -616,6 +617,7 @@ function openChannelDialog(editMode) {
     capabilityItem.querySelector('[data-key="color"]').addEventListener('change', function(event) {
       capabilityItem.querySelector('[data-key="color2"]').hidden = this.value === '';
     });
+    capabilityItem.querySelector('[data-key="color2"]').hidden = capabilityItem.querySelector('[data-key="color"]').value === '';
 
     if (beforeElement === undefined) {
       container.appendChild(capabilityItem);
@@ -1211,4 +1213,9 @@ function clear(obj) {
 
 function clone(obj) {
   return JSON.parse(JSON.stringify(obj));
+}
+
+// dumb bug in Edge
+function setHidden(element, hidden) {
+  element.style.display = hidden ? 'none' : '';
 }
