@@ -368,7 +368,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
               MultiColor: ['colorwheel'],
               Speed: ['bladebottom', 'bladeleft', 'bladeright', 'bladetop', 'fan', 'ptspeed', 'rotation'],
               Strobe: ['strobo']
-            }
+            };
             let typeFound = false;
             for (const type in channelTypes) {
               typeFound = channelTypes[type].includes(functionType);
@@ -621,7 +621,16 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
                 for (let x = 0; x < columns; x++) {
                   let colorFunctionCompound;
                   if (dmxchannel < 0) {
-                    colorFunctionCompound = singleFunction.rgb[y*columns+x]
+                    colorFunctionCompound = singleFunction.rgb[y*columns+x];
+                  }
+                  else if (monochrome) {
+                    colorFunctionCompound = {
+                      white: [{
+                        $: {
+                          dmxchannel: dmxchannel + y*columns+x
+                        }
+                      }]
+                    };
                   }
                   else {
                     colorFunctionCompound = {
@@ -640,7 +649,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
                           dmxchannel: dmxchannel + 3*(y*columns+x) + 2
                         }
                       }]
-                    }
+                    };
                   }
 
                   parseColorFunctionCompound('rgb', colorFunctionCompound, x, y);
