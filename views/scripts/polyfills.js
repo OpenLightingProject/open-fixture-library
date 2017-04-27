@@ -129,7 +129,7 @@ if (window.Element && !Element.prototype.closest) {
 })(window.Node || window.Element);
 
 
-if (NodeList.prototype.forEach) {
+if (!NodeList.prototype.forEach) {
   NodeList.prototype.forEach = Array.prototype.forEach;
 }
 
