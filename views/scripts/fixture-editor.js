@@ -162,7 +162,7 @@ function initDialogs() {
     this.node.querySelectorAll('.state:not(.' + newState + ')').forEach(function(state) {
       setHidden(state, true);
     });
-    this.node.querySelector('.state.' + newState).hidden = false;
+    setHidden(this.node.querySelector('.state.' + newState), false);
   };
 
   dialogs.submit.node.querySelectorAll('[data-action="home"]').forEach(function(button) {
@@ -500,7 +500,7 @@ function openChannelDialog(editMode) {
         delete currentChannel.capabilities[index][input.getAttribute('data-key')];
       });
       updateRangeInputs(capItem.querySelectorAll('[type="number"]'));
-      capItem.querySelector('[data-key="color2"]').hidden = true;
+      setHidden(capItem.querySelector('[data-key="color2"]'), true);
       capItem.classList.remove('changed');
 
       collapseEmptyCapabilityWithNeighbors(capItem);
@@ -615,9 +615,9 @@ function openChannelDialog(editMode) {
     });
 
     capabilityItem.querySelector('[data-key="color"]').addEventListener('change', function(event) {
-      capabilityItem.querySelector('[data-key="color2"]').hidden = this.value === '';
+      setHidden(capabilityItem.querySelector('[data-key="color2"]'), this.value === '');
     });
-    capabilityItem.querySelector('[data-key="color2"]').hidden = capabilityItem.querySelector('[data-key="color"]').value === '';
+    setHidden(capabilityItem.querySelector('[data-key="color2"]'), capabilityItem.querySelector('[data-key="color"]').value === '');
 
     if (beforeElement === undefined) {
       container.appendChild(capabilityItem);
