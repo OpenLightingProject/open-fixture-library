@@ -62,25 +62,6 @@ if (!Array.prototype.findIndex) {
 })([Element.prototype, CharacterData.prototype, DocumentType.prototype]);
 
 
-// https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
-if (window.Element && !Element.prototype.closest) {
-  Element.prototype.closest = function(s) {
-    var matches = (this.document || this.ownerDocument).querySelectorAll(s),
-        i,
-        el = this;
-    do {
-      i = matches.length - 1;
-      while (i >= 0 && matches.item(i) !== el) {
-        i--;
-      }
-    }
-    while (i < 0 && (el = el.parentElement));
-
-    return el;
-  };
-}
-
-
 // https://jsfiddle.net/brianblakely/h3EmY/
 (function templatePolyfill(d) {
   if ('content' in d.createElement('template')) {
@@ -149,4 +130,19 @@ if (!Element.prototype.matches) {
       }
       return i > -1;
     };
+}
+
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
+if (window.Element && !Element.prototype.closest) {
+  Element.prototype.closest = function(s) {
+    var el = this;
+    while (el) {
+      if (el.matches(s)) {
+        return el;
+      }
+      el = el.parentElement;
+    }
+    return null;
+  };
 }
