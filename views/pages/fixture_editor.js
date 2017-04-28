@@ -159,6 +159,12 @@ module.exports = function(options) {
 
   str += '</section>'; // .user
 
+  str += '<div class="button-bar right">';
+  str += '<button type="submit" class="save-fixture primary" disabled>Create fixture</button>';
+  str += '</div>';
+
+  str += '</form>';
+
 
 
   // Physical template
@@ -312,13 +318,6 @@ module.exports = function(options) {
   str += '</template>'; // # template-channel-li
 
 
-  str += '<div class="button-bar right">';
-  str += '<button type="submit" class="save-fixture primary" disabled>Create fixture</button>';
-  str += '</div>';
-
-  str += '</form>';
-
-
   options.dialogs = [
     {
       id: 'channel-dialog',
@@ -447,6 +446,14 @@ function getChannelDialogString() {
   str += '<h3>Capabilities</h3>';
   str += '<ul class="capabilities"></ul>';
 
+  str += '</div>';  // [data-edit-modes="create edit-all edit-duplicate"]
+
+  str += '<div class="button-bar right">';
+  str += '<button type="submit" class="primary"><span data-edit-modes="add-existing">Add channel</span><span data-edit-modes="create">Create channel</span><span data-edit-modes="edit-all edit-duplicate">Save changes</span></button>';
+  str += '</div>';
+
+  str += '</form>';
+
   str += '<template id="template-capability">';
   str += '<li>';
   str += '<input type="number" min="0" max="255" placeholder="start" class="start" data-key="start"> .. ';
@@ -459,14 +466,6 @@ function getChannelDialogString() {
   str += '<a href="#remove" class="remove" title="Remove capability">' + require('../includes/svg')({svgBasename: 'close'}) + '</a>';
   str += '</li>';
   str += '</template>'; // # template-capability
-
-  str += '</div>';  // [data-edit-modes="create edit-all edit-duplicate"]
-
-  str += '<div class="button-bar right">';
-  str += '<button type="submit" class="primary"><span data-edit-modes="add-existing">Add channel</span><span data-edit-modes="create">Create channel</span><span data-edit-modes="edit-all edit-duplicate">Save changes</span></button>';
-  str += '</div>';
-
-  str += '</form>';
 
   return str;
 }
