@@ -135,10 +135,16 @@ function initDialogs() {
 
     if (dialogs.channel.closingHandled || !currentChannel.changed) {
       clear(currentChannel);
+      channelForm.querySelectorAll('.changed').forEach(function(changedInput) {
+        changedInput.classList.remove('changed');
+      });
       channelForm.reset();
     }
     else if (currentChannel.editMode === 'add-existing' || window.confirm('Do you want to lose the entered channel data?')) {
       clear(currentChannel);
+      channelForm.querySelectorAll('.changed').forEach(function(changedInput) {
+        changedInput.classList.remove('changed');
+      });
       channelForm.reset();
       autoSave();
     }
@@ -300,6 +306,7 @@ function bindValuesToObject(container, context) {
         delete context[key];
       }
 
+      this.classList.add('changed');
       context.changed = true;
 
       autoSave();
@@ -877,7 +884,7 @@ function restoreAutoSave() {
 
     currentFixture.availableChannels = clone(latestData.currentFixture.availableChannels);
 
-    prefillFormElements(editorForm, latestData.currentFixture);
+    prefillFormElements(editorForm, latestData.currentFixture, true);
     updateRangeInputs(editorForm.querySelectorAll('.physical-lens-degrees input'));
 
     latestData.currentFixture.modes.forEach(function(mode, index) {
@@ -892,7 +899,7 @@ function restoreAutoSave() {
       }
 
       var modeElem = editorForm.querySelector('.fixture-modes > .fixture-mode:nth-child(' + (index+1) + ')');
-      prefillFormElements(modeElem, mode);
+      prefillFormElements(modeElem, mode, true);
       updateRangeInputs(modeElem.querySelectorAll('.physical-lens-degrees input'));
 
       var physicalOverride = modeElem.querySelector('.physical-override');
@@ -918,7 +925,7 @@ function restoreAutoSave() {
       for (var key in latestData.currentChannel) {
         currentChannel[key] = latestData.currentChannel[key];
       }
-      prefillFormElements(dialogs.channel.node, currentChannel);
+      prefillFormElements(dialogs.channel.node, currentChannel, true);
       openChannelDialog(currentChannel.editMode);
     }
 
@@ -939,7 +946,7 @@ function restoreAutoSave() {
   dialogs.restore.show();
 }
 
-function prefillFormElements(container, object) {
+function prefillFormElements(container, object, isChange) {
   for (var key in object) {
     var formElem = container.querySelector('[data-key="' + key + '"]');
     if (formElem) {
@@ -957,6 +964,10 @@ function prefillFormElements(container, object) {
 
       if (formElem.matches('[data-allow-additions]')) {
         updateCombobox(formElem, false);
+      }
+
+      if (isChange) {
+        formElem.classList.add('changed');
       }
     }
   }

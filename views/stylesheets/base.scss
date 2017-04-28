@@ -140,6 +140,11 @@ input[type=url] {
   width: 40ex;
 }
 
+.changed:invalid {
+  border-color: red;
+  box-shadow: 0 0 3px red;
+}
+
 .button-bar {
   margin: 2ex 0 0;
 }
