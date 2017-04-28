@@ -9,7 +9,10 @@
   & > nav {
     max-width: 1000px;
     margin: 0 auto;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-direction: row;
+    -ms-flex-wrap: wrap;
     flex-flow: row wrap;
   }
 
@@ -29,7 +32,9 @@
   }
 
   form {
+    -ms-flex: 1 1 auto;
     flex-grow: 1;
+    display: -ms-flexbox;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,7 +62,9 @@
 }
 
 #left-nav {
+  -ms-flex: 1 1 auto;
   flex-grow: 1;
+  display: -ms-flexbox;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,6 +95,7 @@
 /* Tablet */
 @media (max-width: $tablet) {
   #header > nav > div {
+    -ms-flex: 0 1 100%;
     flex-basis: 100%;
   }
 
@@ -99,6 +107,7 @@
   }
 
   #header form {
+    -ms-flex: 0 1 auto;
     flex-grow: 0;
     padding: 0 .5ex;
   }
@@ -127,10 +136,12 @@
   }
 
   #header form {
+    -ms-flex: 1 1 0px;
     flex-grow: 1;
     flex-basis: 0;
 
     & div {
+      -ms-flex: 1 1 0px;
       flex-grow: 1;
       flex-basis: 0;
     }

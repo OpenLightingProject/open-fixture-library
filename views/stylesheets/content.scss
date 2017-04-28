@@ -31,6 +31,7 @@
 
   & > a {
     padding: .5em;
+    display: -ms-flexbox;
     display: flex;
 
     & > .name {
