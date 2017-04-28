@@ -709,12 +709,13 @@ function editChannel() {
 
   var channelKey = currentChannel.key;
   var modeIndex = currentChannel.modeIndex;
+  var modeElem;
 
   if (currentChannel.editMode === 'create') {
     channelKey = getKeyFromName(currentChannel.name, Object.keys(currentFixture.availableChannels));
 
     // update UI
-    var modeElem = editorForm.querySelector('.fixture-modes > .fixture-mode:nth-child(' + (modeIndex + 1) + ')');
+    modeElem = editorForm.querySelector('.fixture-modes > .fixture-mode:nth-child(' + (modeIndex + 1) + ')');
     createChannelLi(modeElem, channelKey, modeIndex);
 
     // update model
@@ -732,7 +733,7 @@ function editChannel() {
     channelKey = getKeyFromName(currentChannel.name, Object.keys(currentFixture.availableChannels));
 
     // update UI
-    var modeElem = editorForm.querySelector('.fixture-modes > .fixture-mode:nth-child(' + (currentChannel.modeIndex + 1) + ')');
+    modeElem = editorForm.querySelector('.fixture-modes > .fixture-mode:nth-child(' + (currentChannel.modeIndex + 1) + ')');
     var channelItem = modeElem.querySelector('.mode-channels > [data-channel-key="' + oldChannelKey + '"]');
     channelItem.setAttribute('data-channel-key', channelKey);
     channelItem.querySelector('.display-name').textContent = getChannelName();
@@ -747,7 +748,7 @@ function editChannel() {
   }
   else if (currentChannel.editMode === 'add-existing') {
     // update UI
-    var modeElem = editorForm.querySelector('.fixture-modes > .fixture-mode:nth-child(' + (modeIndex + 1) + ')');
+    modeElem = editorForm.querySelector('.fixture-modes > .fixture-mode:nth-child(' + (modeIndex + 1) + ')');
     createChannelLi(modeElem, channelKey, modeIndex);
 
     // update model
@@ -876,9 +877,9 @@ function restoreAutoSave() {
   dialogs.restore.node.querySelector('.restore').addEventListener('click', function() {
     dialogs.restore.hide();
 
-    for (var key in latestData.currentFixture) {
-      if (!(key in currentFixture)) {
-        currentFixture[key] = latestData.currentFixture[key];
+    for (var fKey in latestData.currentFixture) {
+      if (!(fKey in currentFixture)) {
+        currentFixture[fKey] = latestData.currentFixture[fKey];
       }
     }
 
@@ -892,9 +893,9 @@ function restoreAutoSave() {
         addMode();
       }
 
-      for (var key in mode) {
-        if (!(key in currentFixture.modes[index])) {
-          currentFixture.modes[index][key] = mode[key];
+      for (var mKey in mode) {
+        if (!(mKey in currentFixture.modes[index])) {
+          currentFixture.modes[index][mKey] = mode[mKey];
         }
       }
 
@@ -907,8 +908,8 @@ function restoreAutoSave() {
       updatePhysicalOverrideVisibility(usePhysicalOverride, physicalOverride);
 
       mode.channels.forEach(function(channelKey) {
-        for (var key in latestData.currentFixture.availableChannels[channelKey]) {
-          currentChannel[key] = latestData.currentFixture.availableChannels[channelKey][key];
+        for (var cKey in latestData.currentFixture.availableChannels[channelKey]) {
+          currentChannel[cKey] = latestData.currentFixture.availableChannels[channelKey][cKey];
         }
         currentChannel.key = channelKey;
         currentChannel.modeIndex = index;
