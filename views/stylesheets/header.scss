@@ -81,6 +81,7 @@
   overflow: hidden;
   background-image: url('ofl-logo.svg');
   background-repeat: no-repeat;
+  transition: background-color 0.2s, color 0.2s, padding 0.2s;
 
   @include home-logo-sizing(122px, 2ex);
 }
