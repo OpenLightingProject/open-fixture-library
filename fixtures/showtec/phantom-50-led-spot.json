@@ -1,0 +1,477 @@
+{
+  "name": "Phantom 50 LED Spot",
+  "shortName": "Phant50",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2017-04-29",
+    "lastModifyDate": "2017-04-29"
+  },
+  "comment": "Ordercode 40187",
+  "manualURL": "http://images.thomann.de/pics/atg/atgdata/document/manual/277209_phantom_50_spot_de.pdf",
+  "physical": {
+    "weight": 5.64,
+    "power": 185,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 1298
+    },
+    "lens": {
+      "degreesMinMax": [17, 17]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 270
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "defaultValue": 128
+    },
+    "Pan fine": {
+      "type": "Pan"
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "defaultValue": 128
+    },
+    "Tilt fine": {
+      "type": "Tilt"
+    },
+    "Pan/Tilt Speed": {
+      "type": "Speed",
+      "defaultValue": 128,
+      "invert": true
+    },
+    "Color Wheel": {
+      "type": "MultiColor",
+      "capabilities": [
+        {
+          "range": [0, 6],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [7, 13],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [14, 20],
+          "name": "Pink",
+          "color": "#ffc0cb"
+        },
+        {
+          "range": [21, 27],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [28, 34],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [35, 41],
+          "name": "Lightblue",
+          "color": "#add8e6"
+        },
+        {
+          "range": [42, 48],
+          "name": "Lightgreen",
+          "color": "#90ee90"
+        },
+        {
+          "range": [49, 55],
+          "name": "Orange",
+          "color": "#ff7f00"
+        },
+        {
+          "range": [56, 64],
+          "name": "Darkblue",
+          "color": "#00008b"
+        },
+        {
+          "range": [65, 71],
+          "name": "White-Yellow",
+          "color": "#ffffff",
+          "color2": "#ffff00"
+        },
+        {
+          "range": [72, 78],
+          "name": "Yellow-Pink",
+          "color": "#ffff00",
+          "color2": "#ffc0cb"
+        },
+        {
+          "range": [79, 85],
+          "name": "Pink-Green",
+          "color": "#ffc0cb",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [86, 92],
+          "name": "Green-Red",
+          "color": "#00ff00",
+          "color2": "#ff0000"
+        },
+        {
+          "range": [93, 99],
+          "name": "Red-Lightblue",
+          "color": "#ff0000",
+          "color2": "#add8e6"
+        },
+        {
+          "range": [100, 106],
+          "name": "Blue-Green",
+          "color": "#add8e6",
+          "color2": "#90ee90"
+        },
+        {
+          "range": [107, 113],
+          "name": "Green-Orange",
+          "color": "#90ee90",
+          "color2": "#ff7f00"
+        },
+        {
+          "range": [114, 120],
+          "name": "Orange-Darkblue",
+          "color": "#ff7f00",
+          "color2": "#00008b"
+        },
+        {
+          "range": [121, 127],
+          "name": "Darkblue-White",
+          "color": "#00008b",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [128, 191],
+          "name": "Rainbow (CW)"
+        },
+        {
+          "range": [192, 255],
+          "name": "Rainbow (CCW)"
+        }
+      ]
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "defaultValue": 255,
+      "highlightValue": 200,
+      "capabilities": [
+        {
+          "range": [0, 3],
+          "name": "Closed"
+        },
+        {
+          "range": [4, 7],
+          "name": "Shutter open"
+        },
+        {
+          "range": [8, 215],
+          "name": "Strobe 0-10Hz"
+        },
+        {
+          "range": [216, 255],
+          "name": "Shutter open"
+        }
+      ]
+    },
+    "Intensity": {
+      "type": "Intensity",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Gobo": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Open - White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [8, 15],
+          "name": "Gobo 1 Glass"
+        },
+        {
+          "range": [16, 23],
+          "name": "Gobo 2 Glass"
+        },
+        {
+          "range": [24, 31],
+          "name": "Gobo 3 Metal"
+        },
+        {
+          "range": [32, 39],
+          "name": "Gobo 4 Metal"
+        },
+        {
+          "range": [40, 47],
+          "name": "Gobo 5 Metal"
+        },
+        {
+          "range": [48, 55],
+          "name": "Gobo 6 Metal"
+        },
+        {
+          "range": [56, 63],
+          "name": "Gobo 7 Metal"
+        },
+        {
+          "range": [64, 71],
+          "name": "Gobo-Shake 7 slow-to-fast"
+        },
+        {
+          "range": [74, 79],
+          "name": "Gobo-Shake 6 slow-to-fast"
+        },
+        {
+          "range": [80, 87],
+          "name": "Gobo-Shake 5 slow-to-fast"
+        },
+        {
+          "range": [88, 95],
+          "name": "Gobo-Shake 4 slow-to-fast"
+        },
+        {
+          "range": [96, 103],
+          "name": "Gobo-Shake 3 slow-to-fast"
+        },
+        {
+          "range": [104, 111],
+          "name": "Gobo-Shake 2 slow-to-fast"
+        },
+        {
+          "range": [112, 119],
+          "name": "Gobo-Shake 1 slow-to-fast"
+        },
+        {
+          "range": [120, 127],
+          "name": "Open - White"
+        },
+        {
+          "range": [128, 191],
+          "name": "Rainbow slow-to-fast (CW)"
+        },
+        {
+          "range": [192, 255],
+          "name": "Rainbow slow-to-fast (CCW)"
+        }
+      ]
+    },
+    "Gobo Rotation": {
+      "type": "Speed",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "No rotation"
+        },
+        {
+          "range": [8, 119],
+          "name": "Slow-to-fast (CW)"
+        },
+        {
+          "range": [120, 231],
+          "name": "Slow-to-fast (CCW)"
+        },
+        {
+          "range": [232, 255],
+          "name": "Gobo Bounce"
+        }
+      ]
+    },
+    "Prism": {
+      "type": "Prism",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "Open"
+        },
+        {
+          "range": [16, 255],
+          "name": "3x Prism"
+        }
+      ]
+    },
+    "Functions": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "No function"
+        },
+        {
+          "range": [8, 27],
+          "name": "Blackout while Pan/Tilt"
+        },
+        {
+          "range": [28, 47],
+          "name": "Blackout while Gobowheel"
+        },
+        {
+          "range": [48, 67],
+          "name": "Disabled blackout while Pan/Tilt/Gobowheel"
+        },
+        {
+          "range": [68, 87],
+          "name": "Blackout while Colorwheel"
+        },
+        {
+          "range": [88, 107],
+          "name": "Disabled blackout while Pan/Tilt/Colorwheel"
+        },
+        {
+          "range": [108, 127],
+          "name": "Disabled blackout while Gobowheel/Colorwheel"
+        },
+        {
+          "range": [128, 147],
+          "name": "Disabled blackout while Pan/Tilt/Gobowheel/Colorwheel"
+        },
+        {
+          "range": [148, 157],
+          "name": "Reset Pan"
+        },
+        {
+          "range": [158, 167],
+          "name": "Reset Tilt"
+        },
+        {
+          "range": [168, 177],
+          "name": "Reset Colorwheel"
+        },
+        {
+          "range": [178, 187],
+          "name": "Reset Gobowheel"
+        },
+        {
+          "range": [188, 197],
+          "name": "Reset Prism"
+        },
+        {
+          "range": [198, 207],
+          "name": "Reset all channels"
+        },
+        {
+          "range": [208, 255],
+          "name": "No function"
+        }
+      ]
+    },
+    "Programs": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "No function"
+        },
+        {
+          "range": [8, 23],
+          "name": "Built-in Program 1"
+        },
+        {
+          "range": [24, 39],
+          "name": "Built-in Program 2"
+        },
+        {
+          "range": [40, 55],
+          "name": "Built-in Program 3"
+        },
+        {
+          "range": [56, 71],
+          "name": "Built-in Program 4"
+        },
+        {
+          "range": [72, 87],
+          "name": "Built-in Program 5"
+        },
+        {
+          "range": [88, 103],
+          "name": "Built-in Program 6"
+        },
+        {
+          "range": [104, 119],
+          "name": "Built-in Program 7"
+        },
+        {
+          "range": [120, 135],
+          "name": "Built-in Program 8"
+        },
+        {
+          "range": [136, 151],
+          "name": "Sound-controlled Program 1"
+        },
+        {
+          "range": [152, 167],
+          "name": "Sound-controlled Program 2"
+        },
+        {
+          "range": [168, 183],
+          "name": "Sound-controlled Program 3"
+        },
+        {
+          "range": [184, 199],
+          "name": "Sound-controlled Program 4"
+        },
+        {
+          "range": [200, 215],
+          "name": "Sound-controlled Program 5"
+        },
+        {
+          "range": [216, 231],
+          "name": "Sound-controlled Program 6"
+        },
+        {
+          "range": [232, 247],
+          "name": "Sound-controlled Program 7"
+        },
+        {
+          "range": [248, 255],
+          "name": "Sound-controlled Program 8"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Advanced 13-channel",
+      "shortName": "13ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Color Wheel",
+        "Strobe",
+        "Intensity",
+        "Gobo",
+        "Gobo Rotation",
+        "Prism",
+        "Functions",
+        "Programs"
+      ]
+    },
+    {
+      "name": "Basic 8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color Wheel",
+        "Strobe",
+        "Intensity",
+        "Gobo",
+        "Gobo Rotation",
+        "Prism"
+      ]
+    }
+  ]
+}
