@@ -5,9 +5,9 @@ module.exports = function(options) {
 
   str += '<h1>Open Fixture Library</h1>';
 
-  str += '<p>To use lighting control software like <a href="http://www.qlcplus.org/">QLC+</a> or <a href="http://www.ecue.de/">e:cue</a>, you need proprietary fixture definition files that describe your lighting hardware. Those can be difficult to create, find or convert from one format into another.</p>';
+  str += '<h3>Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!</h3>';
 
-  str += '<p><abbr title="Open Fixture Library">OFL</abbr> tries to solve those problems by collecting fixture definitions and making them downloadable in various formats. Everybody can <a href="https://github.com/FloEdelmann/open-fixture-library">contribute</a> and help to improve! Thanks!</p>';
+  str += '<p><abbr title="Open Fixture Library">OFL</abbr> collects fixture definitions in a JSON format and automatically exports them to the right format for every supported software. Everybody can <a href="https://github.com/FloEdelmann/open-fixture-library">contribute</a> and help to improve! Thanks!</p>';
 
   str += '<div class="banner grid">';
   str += '<a href="/manufacturers" class="card">' + require('../includes/svg')({svgBasename: 'folder-multiple'}) + '<h2>Browse fixtures</h2></a>';

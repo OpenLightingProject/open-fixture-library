@@ -5,7 +5,13 @@ module.exports = function(options) {
 
   str += '<h1>About</h1>';
 
-  str += '<p><em>Open Fixture Library</em> is a project by Florian Edelmann. It is <a href="https://github.com/FloEdelmann/open-fixture-library">open source</a> (licensed under <a href="https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)" title="Gnu General Public License v3">GPL-3</a>) and everybody is invited to contribute!</p>';
+  str += '<p>Created by Florian and Felix Edelmann.</p>';
+  str += '<p>The full code of the <em>Open Fixture Library</em> is <a href="https://github.com/FloEdelmann/open-fixture-library">open source</a> (licensed under <a href="https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)" title="Gnu General Public License v3">GPL-3</a>) and everybody is invited to contribute!</p>';
+
+  str += '<h2>History</h2>';
+  str += '<p>We were used to programming lighting shows with the <a href="http://www.ecue.de/">e:cue</a> software and – because at some point we found it being limited in functionality – wanted to try out other programs. I built a DMX interface with <a href="https://www.openlighting.org/ola/">Open Lighting Architecture</a> and tried <a href="http://www.qlcplus.org/">QLC+</a> and we kept on using that combination since then.</p>';
+  str += '<p>The problem we noticed during our testing phase was that all the fixture definitions we created for e:cue could not be easily converted for use with other software.</p>';
+  str += '<p>The idea for a converter was born. Since we wanted our work to be as useful for other people as possible, we decided to build a website that would store the fixtures in a wiki-like way (everybody can help improve it) and allow auto-generated fixture files in various formats to be downloaded. Creating new fixtures should be made as simple as possible with an online <a href="/fixture-editor">Fixture Editor</a> that could also import from existing fixture definitions.</p>';
 
   str += '<h2>Contribute</h2>';
   str += '<p>See the <a href="https://github.com/FloEdelmann/open-fixture-library#contribute">project page on GitHub</a> to see how you can help.</p>';
