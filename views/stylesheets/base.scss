@@ -140,6 +140,30 @@ input[type=url] {
   width: 40ex;
 }
 
+.changed:invalid {
+  border-color: red;
+  box-shadow: 0 0 3px red;
+}
+
+input::-webkit-input-placeholder {
+  color: $secondary-text-dark;
+  font-style: italic;
+}
+input::-moz-placeholder {
+  color: $secondary-text-dark;
+  font-style: italic;
+  opacity: 1;
+}
+input:-ms-input-placeholder {
+  color: $secondary-text-dark;
+  font-style: italic;
+}
+input::placeholder {
+  color: $secondary-text-dark;
+  font-style: italic;
+  opacity: 1;
+}
+
 .button-bar {
   margin: 2ex 0 0;
 }

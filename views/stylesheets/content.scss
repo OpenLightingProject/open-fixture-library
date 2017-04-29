@@ -31,6 +31,7 @@
 
   & > a {
     padding: .5em;
+    display: -ms-flexbox;
     display: flex;
 
     & > .name {
@@ -187,7 +188,7 @@ a.card, .list a {
 
 @media (min-width: $tablet) {
   .grid .card {
-    width: calc((100% - 2rem) / 3);
+    width: calc(33.33% - 2rem / 3);
 
     &:nth-child(3n+1) {
       margin-left: 0;
