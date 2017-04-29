@@ -22,8 +22,8 @@ module.exports = function(options) {
   str += '<section class="manufacturer-shortName">';
   str += '<label>';
   str += '<span class="label">Choose from list</span>';
-  str += `<select required data-key="manufacturer-shortName">`;
-  str += `<option value="">Please select a manufacturer</option>`;
+  str += '<select required data-key="manufacturer-shortName">';
+  str += '<option value="">Please select a manufacturer</option>';
   for (const man in options.manufacturers) {
     str += `<option value="${man}">${options.manufacturers[man].name}</option>`;
   }
@@ -158,6 +158,12 @@ module.exports = function(options) {
   str += '</section>';
 
   str += '</section>'; // .user
+
+  str += '<div class="button-bar right">';
+  str += '<button type="submit" class="save-fixture primary" disabled>Create fixture</button>';
+  str += '</div>';
+
+  str += '</form>';
 
 
 
@@ -312,13 +318,6 @@ module.exports = function(options) {
   str += '</template>'; // # template-channel-li
 
 
-  str += '<div class="button-bar right">';
-  str += '<button type="submit" class="save-fixture primary" disabled>Create fixture</button>';
-  str += '</div>';
-
-  str += '</form>';
-
-
   options.dialogs = [
     {
       id: 'channel-dialog',
@@ -447,19 +446,6 @@ function getChannelDialogString() {
   str += '<h3>Capabilities</h3>';
   str += '<ul class="capabilities"></ul>';
 
-  str += '<template id="template-capability">';
-  str += '<li>';
-  str += '<input type="number" min="0" max="255" placeholder="start" class="start" data-key="start"> .. ';
-  str += '<input type="number" min="0" max="255" placeholder="end" class="end" data-key="end"> ';
-  str += '<span class="value">';
-  str += '<input type="text" placeholder="name" data-key="name"><br/>';
-  str += '<input type="text" placeholder="color" pattern="^#[0-9a-f]{6}$" title="#rrggbb" data-key="color"> ';
-  str += '<input type="text" placeholder="color 2" pattern="^#[0-9a-f]{6}$" title="#rrggbb" data-key="color2" hidden>';
-  str += '</span>';
-  str += '<a href="#remove" class="remove" title="Remove capability">' + require('../includes/svg')({svgBasename: 'close'}) + '</a>';
-  str += '</li>';
-  str += '</template>'; // # template-capability
-
   str += '</div>';  // [data-edit-modes="create edit-all edit-duplicate"]
 
   str += '<div class="button-bar right">';
@@ -467,6 +453,19 @@ function getChannelDialogString() {
   str += '</div>';
 
   str += '</form>';
+
+  str += '<template id="template-capability">';
+  str += '<li>';
+  str += '<input type="number" min="0" max="255" placeholder="start" class="start" data-key="start"> .. ';
+  str += '<input type="number" min="0" max="255" placeholder="end" class="end" data-key="end"> ';
+  str += '<span class="value">';
+  str += '<input type="text" placeholder="name" data-key="name"><br/>';
+  str += '<input type="text" placeholder="color" pattern="^#[0-9a-f]{6}$" title="#rrggbb" data-key="color"> ';
+  str += '<input type="text" placeholder="color 2" pattern="^#[0-9a-f]{6}$" title="#rrggbb" data-key="color2">';
+  str += '</span>';
+  str += '<a href="#remove" class="remove" title="Remove capability">' + require('../includes/svg')({svgBasename: 'close'}) + '</a>';
+  str += '</li>';
+  str += '</template>'; // # template-capability
 
   return str;
 }
@@ -562,6 +561,8 @@ function numberInput(key, property, hint) {
   if (property.maximum !== undefined) {
     html += ` max="${property.maximum}"`;
   }
+
+  html += ` step="${property.type === 'integer' ? '1' : 'any'}"`;
 
   html += getPlaceholderAttr(hint);
   html += ` data-key="${key}" />`;

@@ -62,40 +62,21 @@ if (!Array.prototype.findIndex) {
 })([Element.prototype, CharacterData.prototype, DocumentType.prototype]);
 
 
-// https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
-if (window.Element && !Element.prototype.closest) {
-  Element.prototype.closest = function(s) {
-    var matches = (this.document || this.ownerDocument).querySelectorAll(s),
-        i,
-        el = this;
-    do {
-      i = matches.length;
-      while (--i >= 0 && matches.item(i) !== el) {};
-    }
-    while ((i < 0) && (el = el.parentElement));
-
-    return el;
-  };
-}
-
-
 // https://jsfiddle.net/brianblakely/h3EmY/
 (function templatePolyfill(d) {
   if ('content' in d.createElement('template')) {
-    return false;
+    return;
   }
 
   var qPlates = d.getElementsByTagName('template'),
     plateLen = qPlates.length,
     elPlate,
     qContent,
-    contentLen,
     docContent;
 
   for (var x=0; x<plateLen; ++x) {
     elPlate = qPlates[x];
     qContent = elPlate.childNodes;
-    contentLen = qContent.length;
     docContent = d.createDocumentFragment();
 
     while (qContent[0]) {
@@ -107,6 +88,61 @@ if (window.Element && !Element.prototype.closest) {
 })(document);
 
 
-if (!('forEach' in NodeList.prototype)) {
+// https://developer.mozilla.org/de/docs/Web/API/ParentNode/firstElementChild
+// Overwrites native 'firstElementChild' prototype.
+// Adds Document & DocumentFragment support for IE9 & Safari.
+// Returns array instead of HTMLCollection.
+(function(constructor) {
+  if (constructor && constructor.prototype && !constructor.prototype.firstElementChild) {
+    Object.defineProperty(constructor.prototype, 'firstElementChild', {
+      get: function() {
+        var nodes = this.childNodes, i = 0;
+        while (nodes[i]) {
+          if (nodes[i].nodeType === 1) {
+            return nodes[i];
+          }
+          i++;
+        }
+        return null;
+      }
+    });
+  }
+})(window.Node || window.Element);
+
+
+if (!NodeList.prototype.forEach) {
   NodeList.prototype.forEach = Array.prototype.forEach;
+}
+
+
+if (!Element.prototype.matches) {
+  Element.prototype.matches =
+    Element.prototype.matchesSelector ||
+    Element.prototype.mozMatchesSelector ||
+    Element.prototype.msMatchesSelector ||
+    Element.prototype.oMatchesSelector ||
+    Element.prototype.webkitMatchesSelector ||
+    function(s) {
+      var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+          i = matches.length - 1;
+      while (i >= 0 && matches.item(i) !== this) {
+        i--;
+      }
+      return i > -1;
+    };
+}
+
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
+if (window.Element && !Element.prototype.closest) {
+  Element.prototype.closest = function(s) {
+    var el = this;
+    while (el) {
+      if (el.matches(s)) {
+        return el;
+      }
+      el = el.parentElement;
+    }
+    return null;
+  };
 }

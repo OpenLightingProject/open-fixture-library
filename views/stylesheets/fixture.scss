@@ -339,15 +339,19 @@ a.fixture-mode {
 /* move download button to the right, labels left of values */
 @media (min-width: 650px) {
   .fixture-header {
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-direction: row;
     flex-direction: row;
 
     & > .title {
+      -ms-flex: 1 1 auto;
       flex-grow: 1;
       flex-shrink: 1;
     }
 
     & > .download-button {
+      -ms-flex: 0 0 auto;
       flex-grow: 0;
       flex-shrink: 0;
       margin: 1.5rem 0 0;
