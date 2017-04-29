@@ -396,11 +396,20 @@ function openChannelDialog(editMode) {
       currentChannel.editMode = editMode = 'create';
     }
     else {
-      var options = '';
+      var options = document.createDocumentFragment();
       unchosenChannels.forEach(function(key) {
-        options += '<option value="' + key + '">' + key + '</option>';
+        var option = document.createElement('option');
+        option.value = key;
+        option.textContent = key;
+        options.appendChild(option);
       });
-      dialogs.channel.node.querySelector('[data-key="key"]').innerHTML = options;
+
+      var selectElem = dialogs.channel.node.querySelector('[data-key="key"]');
+      // empty selectElem
+      while (selectElem.firstChild) {
+        selectElem.removeChild(selectElem.firstChild);
+      }
+      selectElem.appendChild(options);
     }
   }
 
