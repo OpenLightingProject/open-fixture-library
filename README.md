@@ -23,7 +23,7 @@ Pushing to the `master` branch here on GitHub deploys a new version on [Heroku](
 
 ### New fixtures
 
-Ideally, just use the [Fixture Editor](https://open-fixture-library.herokuapp.com/fixture-editor) and submit it from there (however, some features are still missing, see #77). Please try to include as much information as possible!
+Ideally, just use the [Fixture Editor](https://open-fixture-library.herokuapp.com/fixture-editor) and submit it from there (however, some features are still missing, see [#77](https://github.com/FloEdelmann/open-fixture-library/issues/77)). Please try to include as much information as possible!
 
 If you have to manually edit fixtures, see [schema.js](fixtures/schema.js) and [defaults.js](fixtures/defaults.js) in the `fixtures` directory and use the existing fixtures as a reference.
 
