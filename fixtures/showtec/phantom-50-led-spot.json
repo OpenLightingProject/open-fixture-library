@@ -8,8 +8,9 @@
     "lastModifyDate": "2017-04-29"
   },
   "comment": "Ordercode 40187",
-  "manualURL": "http://images.thomann.de/pics/atg/atgdata/document/manual/277209_phantom_50_spot_de.pdf",
+  "manualURL": "http://www.highlite.nl/de/silver.download/Documents@extern@Manuals/40187_MANUAL_GB_V1.pdf",
   "physical": {
+    "dimensions": [225, 340, 210],
     "weight": 5.64,
     "power": 185,
     "DMXconnector": "3-pin",
@@ -150,11 +151,13 @@
         },
         {
           "range": [128, 191],
-          "name": "Rainbow (CW)"
+          "name": "Rainbow (CW)",
+          "menuClick": "center"
         },
         {
           "range": [192, 255],
-          "name": "Rainbow (CCW)"
+          "name": "Rainbow (CCW)",
+          "menuClick": "center"
         }
       ]
     },
@@ -173,7 +176,8 @@
         },
         {
           "range": [8, 215],
-          "name": "Strobe 0-10Hz"
+          "name": "Strobe 0-10Hz",
+          "menuClick": "center"
         },
         {
           "range": [216, 255],
@@ -224,31 +228,38 @@
         },
         {
           "range": [64, 71],
-          "name": "Gobo-Shake 7 slow-to-fast"
+          "name": "Gobo-Shake 7 slow-to-fast",
+          "menuClick": "center"
         },
         {
           "range": [74, 79],
-          "name": "Gobo-Shake 6 slow-to-fast"
+          "name": "Gobo-Shake 6 slow-to-fast",
+          "menuClick": "center"
         },
         {
           "range": [80, 87],
-          "name": "Gobo-Shake 5 slow-to-fast"
+          "name": "Gobo-Shake 5 slow-to-fast",
+          "menuClick": "center"
         },
         {
           "range": [88, 95],
-          "name": "Gobo-Shake 4 slow-to-fast"
+          "name": "Gobo-Shake 4 slow-to-fast",
+          "menuClick": "center"
         },
         {
           "range": [96, 103],
-          "name": "Gobo-Shake 3 slow-to-fast"
+          "name": "Gobo-Shake 3 slow-to-fast",
+          "menuClick": "center"
         },
         {
           "range": [104, 111],
-          "name": "Gobo-Shake 2 slow-to-fast"
+          "name": "Gobo-Shake 2 slow-to-fast",
+          "menuClick": "center"
         },
         {
           "range": [112, 119],
-          "name": "Gobo-Shake 1 slow-to-fast"
+          "name": "Gobo-Shake 1 slow-to-fast",
+          "menuClick": "center"
         },
         {
           "range": [120, 127],
@@ -256,11 +267,13 @@
         },
         {
           "range": [128, 191],
-          "name": "Rainbow slow-to-fast (CW)"
+          "name": "Rainbow slow-to-fast (CW)",
+          "menuClick": "center"
         },
         {
           "range": [192, 255],
-          "name": "Rainbow slow-to-fast (CCW)"
+          "name": "Rainbow slow-to-fast (CCW)",
+          "menuClick": "center"
         }
       ]
     },
@@ -274,11 +287,13 @@
         },
         {
           "range": [8, 119],
-          "name": "Slow-to-fast (CW)"
+          "name": "Slow-to-fast (CW)",
+          "menuClick": "center"
         },
         {
           "range": [120, 231],
-          "name": "Slow-to-fast (CCW)"
+          "name": "Slow-to-fast (CCW)",
+          "menuClick": "center"
         },
         {
           "range": [232, 255],
@@ -361,7 +376,8 @@
         },
         {
           "range": [208, 255],
-          "name": "No function"
+          "name": "No function",
+          "menuClick": "hidden"
         }
       ]
     },
@@ -439,6 +455,10 @@
       ]
     }
   },
+  "multiByteChannels": [
+    ["Pan", "Pan fine"],
+    ["Tilt", "Tilt fine"]
+  ],
   "modes": [
     {
       "name": "Advanced 13-channel",
