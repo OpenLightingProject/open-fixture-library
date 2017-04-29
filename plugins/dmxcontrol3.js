@@ -8,14 +8,6 @@ function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function logXML(obj) {
-  var builder = new xml2js.Builder({
-    headless: true
-  });
-  var xml = builder.buildObject(obj);
-  console.log(xml);
-}
-
 
 module.exports.import = function importDmxControl3(str, filename, resolve, reject) {
   new xml2js.Parser().parseString(str, (parseError, xml) => {
@@ -74,6 +66,15 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
         fix.modes[0].channels[device.$.dmxaddresscount - 1] = null;
       }
 
+      const logNode = function(nodeName, node) {
+        const obj = {};
+        obj[nodeName] = node;
+        const xml = new xml2js.Builder({
+          headless: true
+        }).buildObject(obj);
+        console.log(manName, fixName, fix.modes[0].name);
+        console.log(xml);
+      }
 
       const warnUnknownAttributes = function(nodeName, node, knownAttributes) {
         if ('$' in node) {
@@ -323,8 +324,13 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
         return `${key} ${i}`;
       };
 
-      const parseSimpleFunction = function(functionType, functionContainer, functionIndex) {
-        const singleFunction = functionContainer[functionType][functionIndex];
+      const parseSimpleFunction = function(functionType, singleFunction, functionIndex, functionCount) {
+        const subFunctions = {
+          rainbow: 'Rainbow',
+          random: 'Random',
+          wheelrotation: 'Rotation'
+        };
+
         const caps = getCapabilities(singleFunction, functionType);
 
         if ('$' in singleFunction && 'dmxchannel' in singleFunction.$) {
@@ -335,6 +341,8 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             channelKey = singleFunction.$.name;
           }
           else {
+            let suffix = '';
+
             switch (functionType) {
               case 'strobo':
                 channelKey = 'Strobe';
@@ -344,14 +352,24 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
                 channelKey = 'Pan/Tilt Speed';
                 break;
 
+              case 'goborotation':
+                channelKey = 'Gobo';
+                suffix = 'Rotation';
+                break;
+
               default:
                 channelKey = capitalize(functionType);
             }
 
             // "Dimmer" if there's only one dimmer
             // "Dimmer 1", "Dimmer 2", ... if there are more dimmers
-            if (functionContainer[functionType].length > 1) {
+            if (functionCount > 1) {
               channelKey += ` ${functionIndex+1}`;
+            }
+
+            // E.g. "Gobo Rotation" or "Gobo 2 Rotation"
+            if (suffix.length > 0) {
+              channelKey += ` ${suffix}`;
             }
           }
 
@@ -366,7 +384,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
               Beam: ['focus', 'iris', 'zoom'],
               Intensity: ['colortemp', 'dimmer', 'fog', 'frost'],
               MultiColor: ['colorwheel'],
-              Speed: ['bladebottom', 'bladeleft', 'bladeright', 'bladetop', 'fan', 'ptspeed', 'rotation'],
+              Speed: ['bladebottom', 'bladeleft', 'bladeright', 'bladetop', 'goborotation', 'fan', 'ptspeed', 'rotation'],
               Strobe: ['strobo']
             };
             let typeFound = false;
@@ -414,11 +432,6 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             channel.constant = true;
           }
 
-          const subFunctions = {
-            rainbow: 'Rainbow',
-            random: 'Random',
-            wheelrotation: 'Rotation'
-          };
           for (const subFunction in subFunctions) {
             if (subFunction in singleFunction) {
               for (const singleSubFunction of singleFunction[subFunction]) {
@@ -436,16 +449,25 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
           addChannelToMode(channelKey, singleFunction.$.dmxchannel, channel);
           addPossibleFineChannel(singleFunction, channelKey);
 
-          warnUnknownAttributes(functionType, singleFunction, ['name', 'defaultval', 'val', 'constant', 'dmxchannel', 'mindmx', 'maxdmx', 'finedmxchannel']);
+          warnUnknownAttributes(
+            functionType,
+            singleFunction,
+            ['name', 'defaultval', 'val', 'constant', 'dmxchannel', 'mindmx', 'maxdmx', 'finedmxchannel']
+          );
         }
 
         if ('raw' in singleFunction) {
-          for (let i = 0; i < singleFunction.raw.length; i++) {
-            parseSimpleFunction('raw', singleFunction, i);
+          const raws = singleFunction.raw;
+          for (let i = 0; i < raws.length; i++) {
+            parseSimpleFunction('raw', raws[i], i, raws.length);
           }
         }
 
-        warnUnknownChildren(functionType, singleFunction, ['range', 'step', 'raw', 'focus']);
+        warnUnknownChildren(
+          functionType,
+          singleFunction,
+          ['range', 'step', 'raw', 'focus'].concat(Object.keys(subFunctions))
+        );
       };
 
       const parseColorFunctionCompound = function(colorFunctionCompoundType, colorFunctionCompound, x, y) {
@@ -532,6 +554,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
       for (const functionType in functions) {
         for (let i = 0; i < functions[functionType].length; i++) {
           const singleFunction = functions[functionType][i];
+          const functionCount = functions[functionType].length;
 
           switch (functionType) {
             case 'colortemp':
@@ -552,7 +575,7 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
             case 'shutter':
             case 'switch':
             case 'zoom':
-              parseSimpleFunction(functionType, functions, i);
+              parseSimpleFunction(functionType, singleFunction, i, functionCount);
               break;
 
             case 'rgb':
@@ -660,10 +683,10 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
 
             case 'position':
               if ('pan' in singleFunction) {
-                parseSimpleFunction('pan', singleFunction, 0);
+                parseSimpleFunction('pan', singleFunction.pan[0], i, functionCount);
               }
               if ('tilt' in singleFunction) {
-                parseSimpleFunction('tilt', singleFunction, 0);
+                parseSimpleFunction('tilt', singleFunction.tilt[0], i, functionCount);
               }
 
               warnUnknownAttributes(functionType, singleFunction, []);
@@ -681,6 +704,13 @@ module.exports.import = function importDmxControl3(str, filename, resolve, rejec
 
               warnUnknownChildren(functionType, singleFunction, children);
 
+              break;
+
+            case 'gobowheel':
+              if ('goborotation' in singleFunction) {
+                parseSimpleFunction('goborotation', singleFunction.goborotation[0], i, functionCount);
+              }
+              warnUnknownChildren(functionType, singleFunction, ['goborotation', 'goboindex', 'goboshake', 'random', 'step', 'shake', 'wheelrotation'])
               break;
 
             default:
