@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
-const compression = require('compression');
+const shrinkRay = require('shrink-ray');
 const sassMiddleware = require('node-sass-middleware');
 const browserify = require('browserify-middleware');
 const minifyHTML = require('html-minifier').minify;
@@ -18,7 +18,7 @@ app.listen(app.get('port'), () => {
 });
 
 // enable compression
-app.use(compression({
+app.use(shrinkRay({
   threshold: '500B'
 }));
 
