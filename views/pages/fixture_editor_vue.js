@@ -360,7 +360,7 @@ function getDialogTemplate() {
   let str = '<script type="text/x-template" id="template-dialog">';
 
   str += '<div class="dialog-container" aria-hidden="true">';
-  str += '  <div class="dialog-overlay" tabindex="-1" @click="hide"></div>';
+  str += '  <div class="dialog-overlay" tabindex="-1" @click="overlayClick"></div>';
   str += '  <div class="dialog card" :aria-labelledby="id + \'-dialog-title\'" role="dialog">';
   str += '    <div role="document">';
 
@@ -397,10 +397,10 @@ function getRestoreDialogString() {
 }
 
 function getChannelDialogString() {
-  let str = '<a11y-dialog id="channel" :cancellable="true" :shown="openDialogs.channel" @show="openDialogs.channel = true" @hide="openDialogs.channel = false">';
+  let str = '<a11y-dialog id="channel" :cancellable="true" :shown="openDialogs.channel" @show="openDialogs.channel = true" @hide="onChannelDialogClose">';
   str += '<span slot="title">{{ channel.editMode === "add-existing" ? "Add channel to mode " + currentModeDisplayName : channel.editMode === "create" ? "Create new channel for mode " + currentModeDisplayName : "Edit channel" }}</span>';
 
-  str += '<form action="#" @submit.prevent="saveChannel">';
+  str += '<form action="#" @submit.prevent="saveChannel" ref="channelForm">';
 
   str += '<div v-if="channel.editMode == \'add-existing\'">';
   str += '<select size="10" required v-model="channel.key">';

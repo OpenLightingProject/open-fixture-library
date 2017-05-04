@@ -30,6 +30,11 @@ Vue.component('a11y-dialog', {
     },
     hide: function() {
       this.dialog.hide();
+    },
+    overlayClick: function() {
+      if (this.cancellable) {
+        this.hide();
+      }
     }
   }
 });
@@ -134,11 +139,12 @@ function getEmptyChannel() {
   };
 }
 
-window.app = new Vue({
+var app = window.app = new Vue({
   el: '#fixture-editor',
   data: {
     fixture: getEmptyFixture(),
     channel: getEmptyChannel(),
+    channelChanged: false,
     honeypot: '',
     readyToAutoSave: false,
     openDialogs: {
@@ -157,9 +163,8 @@ window.app = new Vue({
       return this.fixture.modes[modeIndex];
     },
     currentModeUnchosenChannels: function() {
-      var self = this;
       return Object.keys(this.fixture.availableChannels).filter(function(chKey) {
-        return self.currentMode.channels.indexOf(chKey) === -1;
+        return app.currentMode.channels.indexOf(chKey) === -1;
       });
     },
     currentModeDisplayName: function() {
@@ -183,6 +188,7 @@ window.app = new Vue({
     channel: {
       handler: function() {
         this.autoSave();
+        this.channelChanged = true;
       },
       deep: true
     }
@@ -201,6 +207,8 @@ window.app = new Vue({
       this.fixture.modes.push(getEmptyMode());
     },
     openChannelDialog: openChannelDialog,
+    onChannelDialogClose: onChannelDialogClose,
+    resetChannelForm: resetChannelForm,
     saveChannel: saveChannel,
     autoSave: autoSave,
     saveFixture: saveFixture
@@ -232,10 +240,28 @@ function openChannelDialog(editMode) {
   }
 
   // open channel dialog after next DOM update to prevent focus confusion when chooseChannelEditMode dialog is still open
-  var self = this;
   Vue.nextTick(function() {
-    self.openDialogs.channel = true;
+    app.channelChanged = false;
+    app.openDialogs.channel = true;
   });
+}
+
+function onChannelDialogClose() {
+  this.openDialogs.channel = false;
+
+  if (this.channel.editMode === '') {
+    // saving did already manage everything
+    return;
+  }
+
+  if (this.channelChanged && !window.confirm('Do you want to lose the entered channel data?')) {
+    Vue.nextTick(function() {
+      app.openDialogs.channel = true;
+    });
+    return;
+  }
+
+  this.resetChannelForm();
 }
 
 function saveChannel() {
@@ -265,8 +291,15 @@ function saveChannel() {
     this.currentMode.channels.push(this.channel.key);
   }
 
-  this.channel = getEmptyChannel();
   this.openDialogs.channel = false;
+  this.resetChannelForm();
+}
+
+function resetChannelForm() {
+  this.channel = getEmptyChannel();
+  Vue.nextTick(function() {
+    app.$refs.channelForm.reset();  // resets browser validation status
+  });
 }
 
 function autoSave() {
