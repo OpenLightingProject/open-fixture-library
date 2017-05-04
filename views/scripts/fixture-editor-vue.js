@@ -133,6 +133,13 @@ Vue.component('channel-capability', {
       var index = this.capabilities.indexOf(this.capability);
       var prevCap = this.capabilities[index - 1];
 
+      if (typeof this.capability.start !== 'number') {
+        if (!this.isChanged) {
+          this.collapseWithNeighbors();
+        }
+        return;
+      }
+
       if (prevCap) {
         if (isCapabilityChanged(prevCap)) {
           if (this.capability.start > this.startMin) {
@@ -154,6 +161,13 @@ Vue.component('channel-capability', {
       var index = this.capabilities.indexOf(this.capability);
       var nextCap = this.capabilities[index + 1];
 
+      if (typeof this.capability.end !== 'number') {
+        if (!this.isChanged) {
+          this.collapseWithNeighbors();
+        }
+        return;
+      }
+
       if (nextCap) {
         if (isCapabilityChanged(nextCap)) {
           if (this.capability.end < this.endMax) {
@@ -169,6 +183,32 @@ Vue.component('channel-capability', {
       else if (this.capability.end < this.dmxMax) {
         // add item after
         this.capabilities.splice(index + 1, 0, getEmptyCapability());
+      }
+    }
+  },
+  methods: {
+    remove: function() {
+      this.capability = getEmptyCapability();
+      this.collapseWithNeighbors();
+    },
+    collapseWithNeighbors: function() {
+      var index = this.capabilities.indexOf(this.capability);
+      var prevCap = this.capabilities[index - 1];
+      var nextCap = this.capabilities[index + 1];
+
+      if (prevCap && !isCapabilityChanged(prevCap)) {
+        if (nextCap && !isCapabilityChanged(nextCap)) {
+          // remove previous and current item
+          this.capabilities.splice(index - 1, 2);
+        }
+        else {
+          // remove previous item
+          this.capabilities.splice(index - 1, 1);
+        }
+      }
+      else if (nextCap && !isCapabilityChanged(nextCap)) {
+        // remove next item
+        this.capabilities.splice(index + 1, 1);
       }
     }
   }

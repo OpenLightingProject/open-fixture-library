@@ -352,7 +352,7 @@ function getCapabilityTemplate() {
   str += '<input type="text" placeholder="color" pattern="^#[0-9a-f]{6}$" title="#rrggbb" v-model="capability.color" class="color"> ';
   str += '<input type="text" placeholder="color 2" pattern="^#[0-9a-f]{6}$" title="#rrggbb" v-model="capability.color2" v-if="capability.color !== \'\'" class="color">';
   str += '</span>';
-  str += '<a href="#remove" class="remove" title="Remove capability" v-if="isChanged">' + require('../includes/svg')({svgBasename: 'close'}) + '</a>';
+  str += '<a href="#remove" class="remove" title="Remove capability" v-if="isChanged" @click.prevent="remove">' + require('../includes/svg')({svgBasename: 'close'}) + '</a>';
   str += '</li>';
   str += '</script>'; // #template-capability
 
