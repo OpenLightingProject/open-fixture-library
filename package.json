@@ -1,6 +1,6 @@
 {
   "name": "open-fixture-library",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "An open source library for lighting technology's fixture definition files",
   "author": "Florian Edelmann <florian-edelmann@online.de>",
   "contributors": [
@@ -19,9 +19,9 @@
     "body-parser": "^1.17.1",
     "browserify-middleware": "^7.1.0",
     "color-names": "^2.0.0",
-    "express": "4.14.1",
+    "express": "^4.15.2",
     "github": "^9.2.0",
-    "html-minifier": "^3.4.2",
+    "html-minifier": "^3.4.3",
     "js-schema": "^1.0.1",
     "node-env-file": "^0.1.8",
     "node-sass-middleware": "^0.11.0",
@@ -51,5 +51,5 @@
     "lighting",
     "qlc"
   ],
-  "license": "GPL-3.0"
+  "license": "MIT"
 }

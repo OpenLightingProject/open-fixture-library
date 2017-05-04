@@ -1,10 +1,10 @@
-# Open Fixture Library [![Build Status](https://travis-ci.org/FloEdelmann/open-fixture-library.svg?branch=master)](https://travis-ci.org/FloEdelmann/open-fixture-library)
+# Open Fixture Library [![Build Status](https://travis-ci.org/FloEdelmann/open-fixture-library.svg?branch=master)](https://travis-ci.org/FloEdelmann/open-fixture-library) [![Dependencies](https://david-dm.org/FloEdelmann/open-fixture-library/status.svg)](https://david-dm.org/FloEdelmann/open-fixture-library)
 
 <img alt="OFL logo" src="https://cdn.rawgit.com/FloEdelmann/open-fixture-library/04aad444/static/ofl-logo.svg" width="250" />
 
-To use lighting control software like [QLC+](http://www.qlcplus.org/) or [e:cue](http://www.ecue.de/), you need proprietary fixture definition files that describe your lighting hardware. Those can be difficult to create, find or convert from one format into another.
+To use lighting control software like [QLC+](http://www.qlcplus.org/), [DMXControl](https://www.dmxcontrol.org/) or [e:cue](http://www.ecue.de/), you need fixture definition files that describe your lighting hardware. Since one software can usually only understand its own fixture definition format, switching between different programs can be difficult.
 
-The *Open Fixture Library* ([open-fixture-library.herokuapp.com](https://open-fixture-library.herokuapp.com/)) tries to solve those problems by collecting fixture definitions and making them downloadable in various formats.
+The *Open Fixture Library* ([open-fixture-library.herokuapp.com](https://open-fixture-library.herokuapp.com/)) tries to solve this problem by collecting fixture definitions and making them downloadable in various formats. Internally, it uses a [JSON format](fixtures/schema.js) that tries to bundle as much information as possible for the different output formats.
 
 
 ## Contribute
@@ -23,9 +23,11 @@ Pushing to the `master` branch here on GitHub deploys a new version on [Heroku](
 
 ### New fixtures
 
-See [schema.js](fixtures/schema.js) and [defaults.js](fixtures/defaults.js) in the `fixtures` directory and use the existing fixtures as a reference. Please try to include as much information as possible!
+Ideally, just use the [Fixture Editor](https://open-fixture-library.herokuapp.com/fixture-editor) and submit it from there (however, some features are still missing, see [#77](https://github.com/FloEdelmann/open-fixture-library/issues/77)). Please try to include as much information as possible!
 
-In the future, it will be possible to add fixtures via a graphical fixture editor that will also allow importing from other formats.
+If you have to manually edit fixtures, see [schema.js](fixtures/schema.js) and [defaults.js](fixtures/defaults.js) in the `fixtures` directory and use the existing fixtures as a reference.
+
+You can also import existing fixture definitions using import plugins. See [cli-import.js](cli-import.js) for that. In the future, this will be integrated into the Fixture Editor.
 
 
 ### Plugins
