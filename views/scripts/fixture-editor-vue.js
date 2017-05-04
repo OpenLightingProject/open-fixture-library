@@ -74,6 +74,106 @@ Vue.component('fixture-mode', {
   }
 });
 
+Vue.component('channel-capability', {
+  template: '#template-capability',
+  props: ['capability', 'capabilities'],
+  data: function() {
+    return {
+      dmxMin: 0,
+      dmxMax: 255
+    };
+  },
+  computed: {
+    isChanged: function() {
+      return isCapabilityChanged(this.capability);
+    },
+    startMin: function() {
+      var min = this.dmxMin;
+      var index = this.capabilities.indexOf(this.capability) - 1;
+      while (index >= 0) {
+        var cap = this.capabilities[index];
+        if (cap.end !== '') {
+          min = cap.end + 1;
+          break;
+        }
+        if (cap.start !== '') {
+          min = cap.start + 1;
+          break;
+        }
+        index--;
+      }
+      return min;
+    },
+    startMax: function() {
+      return this.capability.end !== '' ? this.capability.end : this.endMax;
+    },
+    endMin: function() {
+      return this.capability.start !== '' ? this.capability.start : this.startMin;
+    },
+    endMax: function() {
+      var max = this.dmxMax;
+      var index = this.capabilities.indexOf(this.capability) + 1;
+      while (index < this.capabilities.length) {
+        var cap = this.capabilities[index];
+        if (cap.start !== '') {
+          max = cap.start - 1;
+          break;
+        }
+        if (cap.end !== '') {
+          max = cap.end - 1;
+          break;
+        }
+        index++;
+      }
+      return max;
+    }
+  },
+  watch: {
+    'capability.start': function() {
+      var index = this.capabilities.indexOf(this.capability);
+      var prevCap = this.capabilities[index - 1];
+
+      if (prevCap) {
+        if (isCapabilityChanged(prevCap)) {
+          if (this.capability.start > this.startMin) {
+            // add item before
+            this.capabilities.splice(index, 0, getEmptyCapability());
+          }
+        }
+        else if (this.capability.start <= this.startMin) {
+          // remove previous item
+          this.capabilities.splice(index - 1, 1);
+        }
+      }
+      else if (this.capability.start > this.dmxMin) {
+        // add item before
+        this.capabilities.splice(index, 0, getEmptyCapability());
+      }
+    },
+    'capability.end': function() {
+      var index = this.capabilities.indexOf(this.capability);
+      var nextCap = this.capabilities[index + 1];
+
+      if (nextCap) {
+        if (isCapabilityChanged(nextCap)) {
+          if (this.capability.end < this.endMax) {
+            // add item after
+            this.capabilities.splice(index + 1, 0, getEmptyCapability());
+          }
+        }
+        else if (this.capability.end >= this.endMax) {
+          // remove next item
+          this.capabilities.splice(index + 1, 1);
+        }
+      }
+      else if (this.capability.end < this.dmxMax) {
+        // add item after
+        this.capabilities.splice(index + 1, 0, getEmptyCapability());
+      }
+    }
+  }
+});
+
 function getEmptyFixture() {
   return {
     useExistingManufacturer: true,
@@ -143,7 +243,18 @@ function getEmptyChannel() {
     constant: '',
     crossfade: '',
     precedence: '',
-    capabilities: []
+    capabilities: [getEmptyCapability()]
+  };
+}
+
+function getEmptyCapability() {
+  return {
+    uuid: uuidV4(),
+    start: '',
+    end: '',
+    name: '',
+    color: '',
+    color2: ''
   };
 }
 
@@ -357,6 +468,15 @@ function getSanitizedChannel(channel) {
     }
   }
   return retChannel;
+}
+
+function isCapabilityChanged(cap) {
+  return Object.keys(cap).some(function(prop) {
+    if (prop === 'uuid') {
+      return false;
+    }
+    return cap[prop] !== '';
+  });
 }
 
 function clone(obj) {

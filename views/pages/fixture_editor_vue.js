@@ -177,7 +177,7 @@ module.exports = function(options) {
 
   str += getPhysicalTemplate();
   str += getModeTemplate();
-  //str += getChannelTemplate();
+  str += getCapabilityTemplate();
   str += getDialogTemplate();
 
   options.footerHtml = '<script type="text/javascript" src="/js/fixture-editor-vue.js" async></script>';
@@ -326,14 +326,12 @@ function getModeTemplate() {
   str += '</section>';
 
   str += '<h3>Channels</h3>';
-  str += '<ol class="mode-channels" v-if="mode.channels.length">';
-  str += '<template v-for="(chKey, index) in mode.channels">';
-  str += '<li>';
+  str += '<ol class="mode-channels">';
+  str += '<li v-for="(chKey, index) in mode.channels">';
   str += '<span class="display-name">{{ getChannelName(chKey) }}</span>';
   str += '<a href="#remove" title="Remove channel" @click.prevent="mode.channels.splice(index, 1)">' + require('../includes/svg')({svgBasename: 'close'}) + '</a>';
   str += '<a href="#channel-editor" title="Edit channel" @click.prevent="editChannel(chKey)">' + require('../includes/svg')({svgBasename: 'pencil'}) + '</a>';
   str += '</li>';
-  str += '</template>';
   str += '</ol>';
 
   str += '<a href="#add-channel" class="button primary" @click.prevent="addChannel">add channel</a>';
@@ -344,14 +342,19 @@ function getModeTemplate() {
   return str;
 }
 
-function getChannelTemplate() {
-  let str = '<script type="text/x-template" id="template-channel-li">';
-  str += '<li data-channel-key="">';
-  str += '<span class="display-name"></span>';
-  str += '<a href="#remove" class="remove" title="Remove channel">' + require('../includes/svg')({svgBasename: 'close'}) + '</a>';
-  str += '<a href="#channel-editor" class="edit" title="Edit channel">' + require('../includes/svg')({svgBasename: 'pencil'}) + '</a>';
+function getCapabilityTemplate() {
+  let str = '<script type="text/x-template" id="template-capability">';
+  str += '<li>';
+  str += '<input type="number" :min="startMin" :max="startMax" placeholder="start" v-model.lazy.number="capability.start" :required="isChanged"> .. ';
+  str += '<input type="number" :min="endMin" :max="endMax" placeholder="end" v-model.lazy.number="capability.end" :required="isChanged"> ';
+  str += '<span class="value">';
+  str += '<input type="text" placeholder="name" v-model="capability.name" class="name" :required="isChanged"><br/>';
+  str += '<input type="text" placeholder="color" pattern="^#[0-9a-f]{6}$" title="#rrggbb" v-model="capability.color" class="color"> ';
+  str += '<input type="text" placeholder="color 2" pattern="^#[0-9a-f]{6}$" title="#rrggbb" v-model="capability.color2" v-if="capability.color !== \'\'" class="color">';
+  str += '</span>';
+  str += '<a href="#remove" class="remove" title="Remove capability" v-if="isChanged">' + require('../includes/svg')({svgBasename: 'close'}) + '</a>';
   str += '</li>';
-  str += '</script>'; // # template-channel-li
+  str += '</script>'; // #template-capability
 
   return str;
 }
@@ -483,7 +486,9 @@ function getChannelDialogString() {
   str += '</section>';
 
   str += '<h3>Capabilities</h3>';
-  str += '<ul class="capabilities"></ul>';
+  str += '<ul class="capabilities">';
+  str += '<channel-capability v-for="cap in channel.capabilities" :key="cap.uuid" :capability="cap" :capabilities="channel.capabilities"></channel-capability>';
+  str += '</ul>';
 
   str += '</div>';  // [v-else]
 
@@ -494,20 +499,6 @@ function getChannelDialogString() {
   str += '</form>';
 
   str += '</a11y-dialog>';
-
-  /*str += '<template id="template-capability">';
-  str += '<li>';
-  str += '<input type="number" min="0" max="255" placeholder="start" class="start" v-model="fixture.start"> .. ';
-  str += '<input type="number" min="0" max="255" placeholder="end" class="end" v-model="fixture.end"> ';
-  str += '<span class="value">';
-  str += '<input type="text" placeholder="name" v-model="fixture.name"><br/>';
-  str += '<input type="text" placeholder="color" pattern="^#[0-9a-f]{6}$" title="#rrggbb" v-model="fixture.color"> ';
-  str += '<input type="text" placeholder="color 2" pattern="^#[0-9a-f]{6}$" title="#rrggbb" v-model="fixture.color2">';
-  str += '</span>';
-  str += '<a href="#remove" class="remove" title="Remove capability">' + require('../includes/svg')({svgBasename: 'close'}) + '</a>';
-  str += '</li>';
-  str += '</template>'; // # template-capability
-  */
   return str;
 }
 
