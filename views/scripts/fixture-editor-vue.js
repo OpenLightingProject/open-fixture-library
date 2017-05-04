@@ -145,6 +145,7 @@ Vue.component('channel-capability', {
           if (this.capability.start > this.startMin) {
             // add item before
             this.capabilities.splice(index, 0, getEmptyCapability());
+            this.$emit('scroll-item-inserted', index);
           }
         }
         else if (this.capability.start <= this.startMin) {
@@ -155,6 +156,7 @@ Vue.component('channel-capability', {
       else if (this.capability.start > this.dmxMin) {
         // add item before
         this.capabilities.splice(index, 0, getEmptyCapability());
+        this.$emit('scroll-item-inserted', index);
       }
     },
     'capability.end': function() {
@@ -367,6 +369,7 @@ var app = window.app = new Vue({
     },
     openChannelDialog: openChannelDialog,
     onChannelDialogClose: onChannelDialogClose,
+    capabilitiesScroll: capabilitiesScroll,
     resetChannelForm: resetChannelForm,
     saveChannel: saveChannel,
     autoSave: autoSave,
@@ -421,6 +424,14 @@ function onChannelDialogClose() {
   }
 
   this.resetChannelForm();
+}
+
+function capabilitiesScroll(capabilityIndex) {
+  var dialog = this.$refs.channelDialog.$el.querySelector('.dialog');
+  console.log('scroll', dialog, capabilityIndex);
+  Vue.nextTick(function() {
+    dialog.scrollTop += dialog.querySelector('.capabilities li:nth-child(' + (capabilityIndex + 1) + ')').clientHeight;
+  });
 }
 
 function saveChannel() {

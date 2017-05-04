@@ -400,7 +400,7 @@ function getRestoreDialogString() {
 }
 
 function getChannelDialogString() {
-  let str = '<a11y-dialog id="channel" :cancellable="true" :shown="openDialogs.channel" @show="openDialogs.channel = true" @hide="onChannelDialogClose">';
+  let str = '<a11y-dialog id="channel" :cancellable="true" :shown="openDialogs.channel" @show="openDialogs.channel = true" @hide="onChannelDialogClose" ref="channelDialog">';
   str += '<span slot="title">{{ channel.editMode === "add-existing" ? "Add channel to mode " + currentModeDisplayName : channel.editMode === "create" ? "Create new channel for mode " + currentModeDisplayName : "Edit channel" }}</span>';
 
   str += '<form action="#" @submit.prevent="saveChannel" ref="channelForm">';
@@ -487,7 +487,7 @@ function getChannelDialogString() {
 
   str += '<h3>Capabilities</h3>';
   str += '<ul class="capabilities">';
-  str += '<channel-capability v-for="cap in channel.capabilities" :key="cap.uuid" :capability="cap" :capabilities="channel.capabilities"></channel-capability>';
+  str += '<channel-capability v-for="cap in channel.capabilities" :key="cap.uuid" :capability="cap" :capabilities="channel.capabilities" @item-before-inserted="capabilitiesScroll"></channel-capability>';
   str += '</ul>';
 
   str += '</div>';  // [v-else]
