@@ -41,7 +41,15 @@ Vue.component('a11y-dialog', {
 
 Vue.component('physical-data', {
   template: '#template-physical',
-  props: ['value']
+  props: ['value'],
+  computed: {
+    dimensionRequired: function() {
+      return this.value.dimensionsWidth !== '' || this.value.dimensionsHeight !== '' || this.value.dimensionsDepth !== '';
+    },
+    degreesRequired: function() {
+      return this.value.lensDegreesMin !== '' || this.value.lensDegreesMax !== '';
+    }
+  }
 });
 
 Vue.component('fixture-mode', {

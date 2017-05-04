@@ -194,9 +194,9 @@ function getPhysicalTemplate() {
   str += '<section class="physical-dimensions">';
   str += '<span class="label">Dimensions</span>';
   str += '<span class="value">';
-  str += numberInput('value.dimensionsWidth', properties.physical.dimensions.items, 'width') + ' &times; ';
-  str += numberInput('value.dimensionsHeight', properties.physical.dimensions.items, 'height') + ' &times; ';
-  str += numberInput('value.dimensionsDepth', properties.physical.dimensions.items, 'depth') + ' mm';
+  str += numberInput('value.dimensionsWidth', properties.physical.dimensions.items, 'width', ' :required="dimensionRequired"') + ' &times; ';
+  str += numberInput('value.dimensionsHeight', properties.physical.dimensions.items, 'height', ' :required="dimensionRequired"') + ' &times; ';
+  str += numberInput('value.dimensionsDepth', properties.physical.dimensions.items, 'depth', ' :required="dimensionRequired"') + ' mm';
   str += '</span>';
   str += '</section>';
 
@@ -256,8 +256,8 @@ function getPhysicalTemplate() {
   str += '<section class="physical-lens-degrees">';
   str += '<span class="label">Light cone</span>';
   str += '<span class="value">';
-  str += numberInput('value.lensDegreesMin', properties.lens.degreesMinMax.items, 'min') + ' .. ';
-  str += numberInput('value.lensDegreesMax', properties.lens.degreesMinMax.items, 'max') + ' °';
+  str += numberInput('value.lensDegreesMin', properties.lens.degreesMinMax.items, 'min', ' :required="degreesRequired"') + ' .. ';
+  str += numberInput('value.lensDegreesMax', properties.lens.degreesMinMax.items, 'max', ' :required="degreesRequired"') + ' °';
   str += '</span>';
   str += '</section>';
 
@@ -601,21 +601,34 @@ function textareaInput(key, property, hint) {
   return html;
 }
 
-function numberInput(key, property, hint) {
+function numberInput(key, property, hint, additionalAttributes='') {
   let html = '<input type="number"';
   html += getRequiredAttr(property);
 
   if (property.minimum !== undefined) {
-    html += ` min="${property.minimum}"`;
+    if (/max/i.test(key)) {
+      const minKey = key.replace(/([mM])ax/, '$1in');
+      html += ` :min="typeof ${minKey} === 'number' ? ${minKey} : ${property.minimum}"`;
+    }
+    else {
+      html += ` min="${property.minimum}"`;
+    }
   }
 
   if (property.maximum !== undefined) {
-    html += ` max="${property.maximum}"`;
+    if (/min/i.test(key)) {
+      const maxKey = key.replace(/([mM])in/, '$1ax');
+      html += ` :max="typeof ${maxKey} === 'number' ? ${maxKey} : ${property.maximum}"`;
+    }
+    else {
+      html += ` max="${property.maximum}"`;
+    }
   }
 
   html += ` step="${property.type === 'integer' ? '1' : 'any'}"`;
 
   html += getPlaceholderAttr(hint);
+  html += additionalAttributes;
   html += ` v-model.number="${key}" />`;
 
   return html;
