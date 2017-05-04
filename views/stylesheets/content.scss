@@ -16,10 +16,6 @@
   position: relative;
   fill: $icon-dark;
 
-  &.list {
-    padding: 0;
-  }
-
   & .close {
     @include icon-button($red-700, $red-300);
     float: right;
@@ -30,20 +26,8 @@
     fill: $secondary-text-light;
   }
 
-  &.blue-grey {
-    background: $blue-grey-500;
-  }
-
   &.light-green {
     background: $light-green-600;
-  }
-
-  &.yellow {
-    background: $yellow-500;
-  }
-
-  &.red {
-    background: $red-500;
   }
 
   &.blue {
@@ -51,21 +35,32 @@
   }
 }
 
-.list > li {
-  list-style: none;
+.list {
+  padding: 0;
 
-  & > a {
+  li {
+    list-style: none;
+  }
+
+  a {
     padding: .5em;
     display: -ms-flexbox;
     display: flex;
+  }
 
-    & > .name {
-      margin-right: auto;
+  .name {
+    margin-right: auto;
+  }
+
+  svg {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+
+    &.left {
+      margin-right: 1em;
     }
-
-    & > svg {
-      width: 32px;
-      height: 32px;
+    &.right {
       margin-left: 1em;
     }
   }
@@ -80,7 +75,6 @@
 a.card, .list a {
   transition: background-color .2s, fill .2s;
   text-decoration: none;
-  display: block;
   color: $primary-text-dark;
 
   &:hover,
@@ -93,20 +87,8 @@ a.card, .list a {
       fill: $primary-text-light;
     }
 
-    &.blue-grey {
-      background-color: $blue-grey-600;
-    }
-
     &.light-green {
       background-color: $light-green-700;
-    }
-
-    &.yellow {
-      background-color: $yellow-600;
-    }
-
-    &.red {
-      background-color: $red-600;
     }
 
     &.blue {
@@ -117,20 +99,8 @@ a.card, .list a {
   &:active {
     background-color: $grey-200;
 
-    &.blue-grey {
-      background-color: $blue-grey-700;
-    }
-
     &.light-green {
       background-color: $light-green-800;
-    }
-
-    &.yellow {
-      background-color: $yellow-700;
-    }
-
-    &.red {
-      background-color: $red-700;
     }
 
     &.blue {
@@ -222,7 +192,13 @@ a.card, .list a {
   .list > li > a > svg {
     width: 24px;
     height: 24px;
-    margin-left: .6em;
+
+    &.left {
+      margin-rights: .6em;
+    }
+    &.right {
+      margin-left: .6em;
+    }
   }
 
   /* make dialogs cover the whole screen */
