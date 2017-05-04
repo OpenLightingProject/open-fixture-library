@@ -24,6 +24,31 @@
     @include icon-button($red-700, $red-300);
     float: right;
   }
+
+  &.dark {
+    color: $primary-text-light;
+    fill: $secondary-text-light;
+  }
+
+  &.blue-grey {
+    background: $blue-grey-500;
+  }
+
+  &.light-green {
+    background: $light-green-600;
+  }
+
+  &.yellow {
+    background: $yellow-500;
+  }
+
+  &.red {
+    background: $red-500;
+  }
+
+  &.blue {
+    background: $blue-500;
+  }
 }
 
 .list > li {
@@ -63,10 +88,54 @@ a.card, .list a {
     background-color: $grey-100;
     fill: $primary-text-dark;
     outline: none;
+
+    &.dark {
+      fill: $primary-text-light;
+    }
+
+    &.blue-grey {
+      background-color: $blue-grey-600;
+    }
+
+    &.light-green {
+      background-color: $light-green-700;
+    }
+
+    &.yellow {
+      background-color: $yellow-600;
+    }
+
+    &.red {
+      background-color: $red-600;
+    }
+
+    &.blue {
+      background-color: $blue-600;
+    }
   }
 
   &:active {
     background-color: $grey-200;
+
+    &.blue-grey {
+      background-color: $blue-grey-700;
+    }
+
+    &.light-green {
+      background-color: $light-green-800;
+    }
+
+    &.yellow {
+      background-color: $yellow-700;
+    }
+
+    &.red {
+      background-color: $red-700;
+    }
+
+    &.blue {
+      background-color: $blue-700;
+    }
   }
 }
 
