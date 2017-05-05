@@ -487,7 +487,7 @@ function getChannelDialogString() {
 
   str += '<h3>Capabilities</h3>';
   str += '<ul class="capabilities">';
-  str += '<channel-capability v-for="cap in channel.capabilities" :key="cap.uuid" :capability="cap" :capabilities="channel.capabilities" @item-before-inserted="capabilitiesScroll"></channel-capability>';
+  str += '<channel-capability v-for="cap in channel.capabilities" :key="cap.uuid" :capability="cap" :capabilities="channel.capabilities" @scroll-item-inserted="capabilitiesScroll"></channel-capability>';
   str += '</ul>';
 
   str += '</div>';  // [v-else]

@@ -385,8 +385,19 @@ function openChannelDialog(editMode) {
   }
 
   if (this.channel.editMode === 'edit-?') {
-    this.openDialogs.chooseChannelEditMode = true;
-    return;
+    var channelUsedElsewhere = this.fixture.modes.some(function(mode) {
+      return mode.uuid !== app.channel.modeId && mode.channels.indexOf(app.channel.key) !== -1;
+    });
+
+    if (channelUsedElsewhere) {
+      // let user first choose if they want to edit all or a duplicate
+      this.openDialogs.chooseChannelEditMode = true;
+      return;
+    }
+    else {
+      // duplicate makes no sense here -> continue directly
+      this.channel.editMode = 'edit-all';
+    }
   }
 
   if (this.channel.editMode === 'add-existing' && this.currentModeUnchosenChannels.length === 0) {
