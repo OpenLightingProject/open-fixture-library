@@ -76,6 +76,7 @@ a.card, .list a {
   transition: background-color .2s, fill .2s;
   text-decoration: none;
   color: $primary-text-dark;
+  display: block;
 
   &:hover,
   &:focus {
