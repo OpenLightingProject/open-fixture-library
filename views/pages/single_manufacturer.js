@@ -26,7 +26,7 @@ module.exports = function(options) {
     str += `<li><a href="/${man}/${fix}">`
     str += `<span class="name">${fixData.name}</span>`;
     for (const cat of fixData.categories) {
-      str += require('../includes/svg')({categoryName: cat});
+      str += require('../includes/svg')({categoryName: cat, className: 'right'});
     }
     str += '</a></li>';
   }

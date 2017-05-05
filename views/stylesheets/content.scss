@@ -16,31 +16,51 @@
   position: relative;
   fill: $icon-dark;
 
-  &.list {
-    padding: 0;
-  }
-
   & .close {
     @include icon-button($red-700, $red-300);
     float: right;
   }
+
+  &.dark {
+    color: $primary-text-light;
+    fill: $icon-light;
+  }
+
+  &.light-green {
+    background: $light-green-500;
+  }
+
+  &.blue {
+    background: $blue-500;
+  }
 }
 
-.list > li {
-  list-style: none;
+.list {
+  padding: 0;
 
-  & > a {
+  li {
+    list-style: none;
+  }
+
+  a {
     padding: .5em;
     display: -ms-flexbox;
     display: flex;
+  }
 
-    & > .name {
-      margin-right: auto;
+  .name {
+    margin-right: auto;
+  }
+
+  svg {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+
+    &.left {
+      margin-right: 1em;
     }
-
-    & > svg {
-      width: 32px;
-      height: 32px;
+    &.right {
       margin-left: 1em;
     }
   }
@@ -55,7 +75,6 @@
 a.card, .list a {
   transition: background-color .2s, fill .2s;
   text-decoration: none;
-  display: block;
   color: $primary-text-dark;
 
   &:hover,
@@ -63,10 +82,30 @@ a.card, .list a {
     background-color: $grey-100;
     fill: $primary-text-dark;
     outline: none;
+
+    &.dark {
+      fill: $primary-text-light;
+    }
+
+    &.light-green {
+      background-color: $light-green-600;
+    }
+
+    &.blue {
+      background-color: $blue-600;
+    }
   }
 
   &:active {
     background-color: $grey-200;
+
+    &.light-green {
+      background-color: $light-green-700;
+    }
+
+    &.blue {
+      background-color: $blue-700;
+    }
   }
 }
 
@@ -153,7 +192,13 @@ a.card, .list a {
   .list > li > a > svg {
     width: 24px;
     height: 24px;
-    margin-left: .6em;
+
+    &.left {
+      margin-rights: .6em;
+    }
+    &.right {
+      margin-left: .6em;
+    }
   }
 
   /* make dialogs cover the whole screen */
