@@ -12,7 +12,7 @@ module.exports = function(options) {
 
   str += '<noscript>Please enable JavaScript to use the Fixture Editor!</noscript>';
 
-  str += '<form action="#" @submit.prevent="saveFixture">';
+  str += '<form action="#" @submit.prevent="submitFixture">';
 
 
   // Manufacturer
@@ -226,21 +226,21 @@ function getPhysicalTemplate() {
   str += '<section class="physical-bulb-type">';
   str += '<label>';
   str += '<span class="label">Bulb type</span>';
-  str += textInput('value.bulbType', properties.bulb.type, 'e.g. LED');
+  str += textInput('value.bulb.type', properties.bulb.type, 'e.g. LED');
   str += '</label>';
   str += '</section>';
 
   str += '<section class="physical-bulb-colorTemperature">';
   str += '<label>';
   str += '<span class="label">Color temperature</span>';
-  str += numberInput('value.bulbColorTemperature', properties.bulb.colorTemperature) + ' K';
+  str += numberInput('value.bulb.colorTemperature', properties.bulb.colorTemperature) + ' K';
   str += '</label>';
   str += '</section>';
 
   str += '<section class="physical-bulb-lumens">';
   str += '<label>';
   str += '<span class="label">Lumens</span>';
-  str += numberInput('value.bulbLumens', properties.bulb.lumens) + ' lm';
+  str += numberInput('value.bulb.lumens', properties.bulb.lumens) + ' lm';
   str += '</label>';
   str += '</section>';
 
@@ -249,15 +249,15 @@ function getPhysicalTemplate() {
   str += '<section class="physical-lens-name">';
   str += '<label>';
   str += '<span class="label">Lens name</span>';
-  str += textInput('value.lensName', properties.lens.name);
+  str += textInput('value.lens.name', properties.lens.name);
   str += '</label>';
   str += '</section>';
 
   str += '<section class="physical-lens-degrees">';
   str += '<span class="label">Light cone</span>';
   str += '<span class="value">';
-  str += numberInput('value.lensDegreesMin', properties.lens.degreesMinMax.items, 'min', ' :required="degreesRequired"') + ' .. ';
-  str += numberInput('value.lensDegreesMax', properties.lens.degreesMinMax.items, 'max', ' :required="degreesRequired"') + ' °';
+  str += numberInput('value.lens.degreesMin', properties.lens.degreesMinMax.items, 'min', ' :required="degreesRequired"') + ' .. ';
+  str += numberInput('value.lens.degreesMax', properties.lens.degreesMinMax.items, 'max', ' :required="degreesRequired"') + ' °';
   str += '</span>';
   str += '</section>';
 
@@ -266,21 +266,21 @@ function getPhysicalTemplate() {
   str += '<section class="physical-focus-type">';
   str += '<label>';
   str += '<span class="label">Focus type</span>';
-  str += selectInput('value.focusType', properties.focus.type, 'other focus type');
+  str += selectInput('value.focus.type', properties.focus.type, 'other focus type');
   str += '</label>';
   str += '</section>';
 
   str += '<section class="physical-focus-panMax">';
   str += '<label>';
   str += '<span class="label">Pan maximum</span>';
-  str += numberInput('value.focusPanMax', properties.focus.panMax) + ' °';
+  str += numberInput('value.focus.panMax', properties.focus.panMax) + ' °';
   str += '</label>';
   str += '</section>';
 
   str += '<section class="physical-focus-tiltMax">';
   str += '<label>';
   str += '<span class="label">Tilt maximum</span>';
-  str += numberInput('value.focusTiltMax', properties.focus.tiltMax) + ' °';
+  str += numberInput('value.focus.tiltMax', properties.focus.tiltMax) + ' °';
   str += '</label>';
   str += '</section>';
 
@@ -518,35 +518,37 @@ function getChooseChannelEditModeDialogString() {
 
 function getSubmitDialogString() {
   let str = '<a11y-dialog id="submit" :cancellable="false" :shown="openDialogs.submit" @show="openDialogs.submit = true" @hide="openDialogs.submit = false">';
-  str += '<span slot="title">Submitting your new fixture...</span>';
+  str += '<span slot="title">{{ submit.state === \'loading\' ? \'Submitting your new fixture...\' : submit.state === \'success\' ? \'Upload complete\' : \'Upload failed\' }}</span>';
 
-  str += '<div class="state loading">';
+  str += '<div v-if="submit.state === \'loading\'">';
   str += 'Uploading...';
-  str += '</div>';  // .loading
-
-  str += '<div class="state success">';
-  str += 'Your fixture was successfully uploaded to GitHub (see the <a href="#" class="pull-request-url" target="_blank">pull request</a>). It will be now reviewed and then merged into the library. Thank you for your contribution!';
-  str += '<div class="button-bar right">';
-  str += '<button class="primary" data-action="home">Back to homepage</button> ';
-  str += '<button class="secondary" data-action="restart">Create another fixture</button>';
   str += '</div>';
-  str += '</div>';  // .success
 
-  str += '<div class="state error">';
+  str += '<div v-if="submit.state === \'success\'">';
+  str += 'Your fixture was successfully uploaded to GitHub (see the <a :href="submit.pullRequestUrl" target="_blank">pull request</a>). It will be now reviewed and then merged into the library. Thank you for your contribution!';
+  str += '<div class="button-bar right">';
+  str += '<a href="/" class="button secondary">Back to homepage</a> ';
+  str += '<a href="/fixture-editor" class="button secondary">Create another fixture</a>';
+  str += '<a :href="submit.pullRequestUrl" class="button primary" target="_blank">See pull request</a>';
+  str += '</div>';
+  str += '</div>';
+
+  str += '<div v-if="submit.state === \'error\'">';
   str += 'Unfortunately, there was an error while uploading. Please copy the following data and <a href="https://github.com/FloEdelmann/open-fixture-library/issues/new" target="_blank">manually submit them to GitHub</a>.';
-  str += '<pre></pre>';
+  str += '<pre>{{ submit.rawData }}</pre>';
   str += '<div class="button-bar right">';
-  str += '<button class="primary" data-action="home">Back to homepage</button>';
+  str += '<a href="/" class="button secondary">Back to homepage</a>';
+  str += '<a href="https://github.com/FloEdelmann/open-fixture-library/issues/new" class="button primary" target="_blank">Submit manually</a>';
   str += '</div>';
-  str += '</div>';  // .error
+  str += '</div>';
 
-  str += '<div class="state invalid">';
-  str += 'Unfortunately, the fixture you uploaded was invalid. Please correct the following mistakes before trying again.';
-  str += '<pre></pre>';
-  str += '<div class="button-bar right">';
-  str += '<button class="primary" data-action="home">Back to homepage</button>';
-  str += '</div>';
-  str += '</div>';  // .invalid
+  // str += '<div v-if="submit.state === \'invalid\'">';
+  // str += 'Unfortunately, the fixture you uploaded was invalid. Please correct the following mistakes before trying again.';
+  // str += '<pre>{{ submit.mistakes }}</pre>';
+  // str += '<div class="button-bar right">';
+  // str += '<button class="primary" data-action="home">Back to homepage</button>';
+  // str += '</div>';
+  // str += '</div>';
 
   str += '</a11y-dialog>';
 
