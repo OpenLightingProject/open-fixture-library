@@ -319,7 +319,6 @@ var app = window.app = new Vue({
     channel: getEmptyChannel(),
     channelChanged: false,
     honeypot: '',
-    readyToAutoSave: false,
     submit: {
       state: '',
       pullRequestUrl: '',
@@ -371,9 +370,6 @@ var app = window.app = new Vue({
       deep: true
     }
   },
-  mounted: function() {
-    this.readyToAutoSave = true;
-  },
   methods: {
     newManufacturer: function() {
       this.fixture.useExistingManufacturer = false;
@@ -390,6 +386,7 @@ var app = window.app = new Vue({
     resetChannelForm: resetChannelForm,
     saveChannel: saveChannel,
     autoSave: autoSave,
+    clearAutoSave: clearAutoSave,
     submitFixture: submitFixture
   }
 });
@@ -500,7 +497,14 @@ function resetChannelForm() {
 }
 
 function autoSave() {
-  //console.log('autoSave!', ' fixture:', JSON.parse(JSON.stringify(this.fixture, null, 2)), ' channel:', JSON.parse(JSON.stringify(this.channel, null, 2)));
+  // TODO
+  console.log('autoSave!');
+  console.log('fixture:', JSON.parse(JSON.stringify(this.fixture, null, 2)));
+  console.log('channel:', JSON.parse(JSON.stringify(this.channel, null, 2)));
+}
+
+function clearAutoSave() {
+  // TODO
 }
 
 function submitFixture() {
