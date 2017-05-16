@@ -60,5 +60,5 @@ fs.readFile(filename, 'utf8', (error, data) => {
     }
   }).catch(error => {
     console.error(error);
-  })
+  });
 });

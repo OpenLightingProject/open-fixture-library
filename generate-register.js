@@ -12,11 +12,9 @@ let register = {
 const fixturePath = path.join(__dirname, 'fixtures');
 
 try {
-  const manufacturers = JSON.parse(fs.readFileSync(path.join(fixturePath, 'manufacturers.json')));
-
   // add all fixture.json files to the register
   for (const man of fs.readdirSync(fixturePath).sort()) {
-    manDir = path.join(fixturePath, man);
+    const manDir = path.join(fixturePath, man);
 
     // only directories
     if (fs.statSync(manDir).isDirectory()) {
