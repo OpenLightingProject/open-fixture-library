@@ -9,7 +9,21 @@
   },
   "manualURL": "http://media.steinigke.de/documents_t/51786060-MANUAL-1.00-de-en_00095278.pdf",
   "physical": {
-    "dimensions": [260, 145, 360]
+    "dimensions": [260, 145, 360],
+    "weight": 5.8,
+    "power": 125,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [3, 3]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 200
+    }
   },
   "availableChannels": {
     "Internal Programs": {
