@@ -23,7 +23,7 @@ module.exports = function(options) {
   str += '<section v-if="fixture.useExistingManufacturer">';
   str += '<label>';
   str += '<span class="label">Choose from list</span>';
-  str += '<select required v-model="fixture.manufacturerShortName">';
+  str += '<select required v-model="fixture.manufacturerShortName" :class="{ empty: fixture.manufacturerShortName === \'\' }">';
   str += '<option value="">Please select a manufacturer</option>';
   for (const man in options.manufacturers) {
     str += `<option value="${man}">${options.manufacturers[man].name}</option>`;
@@ -631,7 +631,8 @@ function selectInput(key, property, hint, allowAdditions=true, forceRequired=fal
   let html = '<select';
   html += getRequiredAttr(property, forceRequired);
   html += allowAdditions ? ' data-allow-additions="true"' : '';
-  html += ` v-model="${key}">`;
+  html += ` v-model="${key}"`;
+  html += ` :class="{ empty: ${key} === '' }">`;
 
   html += '<option value="">unknown</option>';
   for (const item of property.enum) {
@@ -648,7 +649,10 @@ function selectInput(key, property, hint, allowAdditions=true, forceRequired=fal
 }
 
 function booleanInput(key, property, hint) {
-  let html = `<select${getRequiredAttr(property)} class="boolean" v-model="${key}">`;
+  let html = '<select';
+  html += getRequiredAttr(property);
+  html += ` v-model="${key}"`;
+  html += ` class="boolean" :class="{ empty: ${key} === '' }">`;
   html += '<option value="">unknown</option>';
   html += '<option value="true">yes</option>';
   html += '<option value="false">no</option>';
