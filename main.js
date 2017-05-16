@@ -133,7 +133,7 @@ app.get('/manufacturers', (request, response) => {
 });
 
 app.get('/fixture-editor', (request, response) => {
-  response.render('pages/fixture_editor_vue');
+  response.render('pages/fixture_editor');
 });
 
 app.get('/search', (request, response) => {
