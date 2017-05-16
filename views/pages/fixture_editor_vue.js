@@ -121,7 +121,7 @@ module.exports = function(options) {
 
   // Fixture modes
   str += '<section class="fixture-modes">';
-  str += '<fixture-mode v-for="(mode, index) in fixture.modes" :mode="mode" :fixture="fixture" :channel="channel" :key="mode.uuid" @remove="fixture.modes.splice(index, 1)" @open-channel-dialog="openChannelDialog"></fixture-mode>';
+  str += '<fixture-mode v-for="(mode, index) in fixture.modes" :mode="mode" :fixture="fixture" :channel="channel" :key="mode.uuid" @remove="fixture.modes.splice(index, 1)"></fixture-mode>';
   str += '<a class="fixture-mode card" href="#add-mode" @click.prevent="addNewMode">';
   str += '<h2>+ Add mode</h2>';
   str += '</a>';
@@ -385,7 +385,7 @@ function getDialogTemplate() {
 
 
 function getRestoreDialogString() {
-  let str = '<a11y-dialog id="restore" :cancellable="false" :shown="openDialogs.restore" @show="openDialogs.restore = true" @hide="openDialogs.restore = false">';
+  let str = '<a11y-dialog id="restore" :cancellable="false" :shown="restoredData !== \'\'">';
   str += '<span slot="title">Auto-saved fixture data found</span>';
 
   str += 'Do you want to restore the data (auto-saved <time>{{ restoredDate }}</time>) to continue to create the fixture?';
@@ -400,7 +400,7 @@ function getRestoreDialogString() {
 }
 
 function getChannelDialogString() {
-  let str = '<a11y-dialog id="channel" :cancellable="true" :shown="openDialogs.channel" @show="openDialogs.channel = true" @hide="onChannelDialogClose" ref="channelDialog">';
+  let str = '<a11y-dialog id="channel" :cancellable="true" :shown="channel.editMode !== \'\' && channel.editMode !== \'edit-?\'" @show="onChannelDialogOpen" @hide="onChannelDialogClose" ref="channelDialog">';
   str += '<span slot="title">{{ channel.editMode === "add-existing" ? "Add channel to mode " + currentModeDisplayName : channel.editMode === "create" ? "Create new channel for mode " + currentModeDisplayName : "Edit channel" }}</span>';
 
   str += '<form action="#" @submit.prevent="saveChannel" ref="channelForm">';
@@ -503,12 +503,12 @@ function getChannelDialogString() {
 }
 
 function getChooseChannelEditModeDialogString() {
-  let str = '<a11y-dialog id="chooseChannelEditMode" :cancellable="false" :shown="openDialogs.chooseChannelEditMode" @show="openDialogs.chooseChannelEditMode = true" @hide="openDialogs.chooseChannelEditMode = false">';
+  let str = '<a11y-dialog id="chooseChannelEditMode" :cancellable="false" :shown="this.channel.editMode === \'edit-?\'" @show="onChooseChannelEditModeDialogOpen">';
   str += '<span slot="title">Edit channel in all modes or just in this one?</span>';
 
   str += '<div class="button-bar right">';
-  str += '<button class="secondary" @click.prevent="openChannelDialog(\'edit-duplicate\')">Only in this mode</button> ';
-  str += '<button class="primary" @click.prevent="openChannelDialog(\'edit-all\')">In all modes</button>';
+  str += '<button class="secondary" @click.prevent="chooseChannelEditMode(\'edit-duplicate\')">Only in this mode</button> ';
+  str += '<button class="primary" @click.prevent="chooseChannelEditMode(\'edit-all\')">In all modes</button>';
   str += '</div>';
 
   str += '</a11y-dialog>';
@@ -517,7 +517,7 @@ function getChooseChannelEditModeDialogString() {
 }
 
 function getSubmitDialogString() {
-  let str = '<a11y-dialog id="submit" :cancellable="false" :shown="openDialogs.submit" @show="openDialogs.submit = true" @hide="openDialogs.submit = false">';
+  let str = '<a11y-dialog id="submit" :cancellable="false" :shown="submit.state !== \'closed\'">';
   str += '<span slot="title">{{ submit.state === \'loading\' ? \'Submitting your new fixture...\' : submit.state === \'success\' ? \'Upload complete\' : \'Upload failed\' }}</span>';
 
   str += '<div v-if="submit.state === \'loading\'">';

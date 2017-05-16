@@ -83,12 +83,10 @@ Vue.component('fixture-mode', {
       this.channel.modeId = this.mode.uuid;
       this.channel.editMode = 'edit-?';
       this.channel.key = chKey;
-      this.$emit('open-channel-dialog');
     },
     addChannel: function() {
       this.channel.modeId = this.mode.uuid;
       this.channel.editMode = 'add-existing';
-      this.$emit('open-channel-dialog');
     }
   }
 });
@@ -334,17 +332,11 @@ var app = window.app = new Vue({
     readyToAutoSave: false,
     honeypot: '',
     submit: {
-      state: '',
+      state: 'closed',
       pullRequestUrl: '',
       rawData: ''
     },
-    restoredData: '',
-    openDialogs: {
-      channel: false,
-      chooseChannelEditMode: false,
-      restore: false,
-      submit: false
-    }
+    restoredData: ''
   },
   computed: {
     currentMode: function() {
@@ -396,8 +388,10 @@ var app = window.app = new Vue({
     addNewMode: function() {
       this.fixture.modes.push(getEmptyMode());
     },
-    openChannelDialog: openChannelDialog,
+    onChannelDialogOpen: onChannelDialogOpen,
     onChannelDialogClose: onChannelDialogClose,
+    onChooseChannelEditModeDialogOpen: onChooseChannelEditModeDialogOpen,
+    chooseChannelEditMode: chooseChannelEditMode,
     capabilitiesScroll: capabilitiesScroll,
     resetChannelForm: resetChannelForm,
     saveChannel: saveChannel,
@@ -409,28 +403,7 @@ var app = window.app = new Vue({
   }
 });
 
-function openChannelDialog(editMode) {
-  this.openDialogs.chooseChannelEditMode = false;
-
-  if (editMode) {
-    this.channel.editMode = editMode;
-  }
-
-  if (this.channel.editMode === 'edit-?') {
-    var channelUsedElsewhere = this.fixture.modes.some(function(mode) {
-      return mode.uuid !== app.channel.modeId && mode.channels.indexOf(app.channel.key) !== -1;
-    });
-
-    if (channelUsedElsewhere) {
-      // let user first choose if they want to edit all or a duplicate
-      this.openDialogs.chooseChannelEditMode = true;
-      return;
-    }
-
-    // else duplicate makes no sense here -> continue directly
-    this.channel.editMode = 'edit-all';
-  }
-
+function onChannelDialogOpen() {
   if (this.channel.editMode === 'add-existing' && this.currentModeUnchosenChannels.length === 0) {
     this.channel.editMode = 'create';
   }
@@ -443,29 +416,50 @@ function openChannelDialog(editMode) {
     }
   }
 
-  // open channel dialog after next DOM update to prevent focus confusion when chooseChannelEditMode dialog is still open
+  // after dialog is opened
   Vue.nextTick(function() {
     app.channelChanged = false;
-    app.openDialogs.channel = true;
   });
 }
 
 function onChannelDialogClose() {
-  this.openDialogs.channel = false;
-
   if (this.channel.editMode === '') {
     // saving did already manage everything
     return;
   }
 
+  var editMode = this.channel.editMode;
+  this.channel.editMode = '';
+
   if (this.channelChanged && !window.confirm('Do you want to lose the entered channel data?')) {
     Vue.nextTick(function() {
-      app.openDialogs.channel = true;
+      app.channel.editMode = editMode;
     });
     return;
   }
 
   this.resetChannelForm();
+}
+
+function onChooseChannelEditModeDialogOpen() {
+  var channelUsedElsewhere = this.fixture.modes.some(function(mode) {
+    return mode.uuid !== app.channel.modeId && mode.channels.indexOf(app.channel.key) !== -1;
+  });
+
+  if (channelUsedElsewhere) {
+    // let user first choose if they want to edit all or a duplicate
+    return;
+  }
+
+  // else duplicate makes no sense here -> continue directly
+  this.chooseChannelEditMode('edit-all');
+}
+
+function chooseChannelEditMode(editMode) {
+  this.channel.editMode = '';
+  Vue.nextTick(function() {
+    app.channel.editMode = editMode;
+  });
 }
 
 function capabilitiesScroll(capabilityIndex) {
@@ -503,7 +497,6 @@ function saveChannel() {
     this.currentMode.channels.push(this.channel.key);
   }
 
-  this.openDialogs.channel = false;
   this.resetChannelForm();
 }
 
@@ -576,25 +569,28 @@ function restoreAutoSave() {
   }
 
   console.log('restore', this.restoredData);
-
-  this.openDialogs.restore = true;
 }
 function discardRestored() {
   // put all items except the last one back
   localStorage.setItem('autoSave', JSON.stringify(JSON.parse(localStorage.getItem('autoSave')).slice(0, -1)));
 
   this.restoredData = '';
-  this.openDialogs.restore = false;
   this.readyToAutoSave = true;
 }
 function applyRestored() {
-  this.fixture = this.restoredData.fixture;
-  this.channel = this.restoredData.channel;
+  var restoredData = this.restoredData;
 
+  // closes dialog
   this.restoredData = '';
-  this.openDialogs.restore = false;
+
+  // restoring could open another dialog -> wait for DOM being up-to-date
   Vue.nextTick(function() {
-    app.readyToAutoSave = true;
+    app.fixture = restoredData.fixture;
+    app.channel = restoredData.channel;
+
+    Vue.nextTick(function() {
+      app.readyToAutoSave = true;
+    });
   });
 }
 
@@ -605,7 +601,6 @@ function submitFixture() {
   }
 
   this.submit.state = 'loading';
-  this.openDialogs.submit = true;
 
   var manKey = this.fixture.manufacturerShortName;
   if (!this.fixture.useExistingManufacturer) {
