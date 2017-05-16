@@ -18,6 +18,9 @@
     "cameo/thunder-wash-600-w": {
       "name": "Thunder Wash 600 W"
     },
+    "eurolite/led-tmh-18": {
+      "name": "LED TMH-18"
+    },
     "gruft/ventilator": {
       "name": "Ventilator"
     },
@@ -44,6 +47,9 @@
       "thunder-wash-100-w",
       "thunder-wash-600-rgb",
       "thunder-wash-600-w"
+    ],
+    "eurolite": [
+      "led-tmh-18"
     ],
     "gruft": [
       "ventilator"
@@ -82,12 +88,13 @@
       "cameo/thunder-wash-600-rgb",
       "cameo/thunder-wash-600-w"
     ],
-    "Fan": [
-      "gruft/ventilator"
-    ],
     "Moving Head": [
+      "eurolite/led-tmh-18",
       "lightmaxx/vega-zoom-wash",
       "showtec/phantom-50-led-spot"
+    ],
+    "Fan": [
+      "gruft/ventilator"
     ],
     "Scanner": [
       "martin/roboscan-812"
