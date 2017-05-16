@@ -24,6 +24,12 @@ var storageAvailable = (function() {
   }
 })();
 
+Vue.directive('focus', {
+  inserted: function(el) {
+    el.focus()
+  }
+});
+
 Vue.component('a11y-dialog', {
   template: '#template-dialog',
   props: ['id', 'cancellable', 'shown'],
@@ -68,12 +74,18 @@ Vue.component('physical-data', {
     degreesRequired: function() {
       return this.value.lens.degreesMin !== '' || this.value.lens.degreesMax !== '';
     }
+  },
+  mounted: function() {
+    this.$refs.firstInput.focus();
   }
 });
 
 Vue.component('fixture-mode', {
   template: '#template-mode',
   props: ['mode', 'fixture', 'channel'],
+  mounted: function() {
+    this.$refs.firstInput.focus();
+  },
   methods: {
     getChannelName: function(chKey) {
       var channel = this.fixture.availableChannels[chKey];
@@ -388,6 +400,7 @@ var app = window.app = new Vue({
     addNewMode: function() {
       this.fixture.modes.push(getEmptyMode());
     },
+    switchManufacturer: switchManufacturer,
     onChannelDialogOpen: onChannelDialogOpen,
     onChannelDialogClose: onChannelDialogClose,
     onChooseChannelEditModeDialogOpen: onChooseChannelEditModeDialogOpen,
@@ -402,6 +415,13 @@ var app = window.app = new Vue({
     submitFixture: submitFixture
   }
 });
+
+function switchManufacturer(useExisting) {
+  this.fixture.useExistingManufacturer = useExisting;
+  Vue.nextTick(function() {
+    app.$refs[useExisting ? 'existingManufacturerSelect' : 'newManufacturerNameInput'].focus();
+  });
+}
 
 function onChannelDialogOpen() {
   if (this.channel.editMode === 'add-existing' && this.currentModeUnchosenChannels.length === 0) {

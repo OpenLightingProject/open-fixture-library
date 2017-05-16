@@ -23,13 +23,13 @@ module.exports = function(options) {
   str += '<section v-if="fixture.useExistingManufacturer">';
   str += '<label>';
   str += '<span class="label">Choose from list</span>';
-  str += '<select required v-model="fixture.manufacturerShortName" :class="{ empty: fixture.manufacturerShortName === \'\' }">';
+  str += '<select required v-model="fixture.manufacturerShortName" :class="{ empty: fixture.manufacturerShortName === \'\' }" ref="existingManufacturerSelect">';
   str += '<option value="">Please select a manufacturer</option>';
   for (const man in options.manufacturers) {
     str += `<option value="${man}">${options.manufacturers[man].name}</option>`;
   }
   str += '</select></label>';
-  str += '<div class="button-bar">or <a href="#add-new-manufacturer" @click.prevent="fixture.useExistingManufacturer = false">add a new manufacturer</a></div>';
+  str += '<div class="button-bar">or <a href="#add-new-manufacturer" @click.prevent="switchManufacturer(false)">add a new manufacturer</a></div>';
   str += '</section>'; // [v-if="fixture.useExistingManufacturer"]
 
   // New manufacturer
@@ -37,7 +37,7 @@ module.exports = function(options) {
   str += '<section class="new-manufacturer-name">';
   str += '<label>';
   str += '<span class="label">Name</span>';
-  str += textInput('fixture.newManufacturerName', properties.manufacturer.name);
+  str += textInput('fixture.newManufacturerName', properties.manufacturer.name, null, null, ' ref="newManufacturerNameInput"');
   str += '</label>';
   str += '</section>';
 
@@ -61,7 +61,7 @@ module.exports = function(options) {
   str += textInput('fixture.newManufacturerComment', properties.manufacturer.comment);
   str += '</label>';
   str += '</section>';
-  str += '<div class="button-bar">or <a href="#use-existing-manufacturer" @click.prevent="fixture.useExistingManufacturer = true">choose an existing manufacturer</a></div>';
+  str += '<div class="button-bar">or <a href="#use-existing-manufacturer" @click.prevent="switchManufacturer(true)">choose an existing manufacturer</a></div>';
   str += '</div>'; // [v-else]
 
   str += '</section>'; // .manufacturer
@@ -194,7 +194,7 @@ function getPhysicalTemplate() {
   str += '<section class="physical-dimensions">';
   str += '<span class="label">Dimensions</span>';
   str += '<span class="value">';
-  str += numberInput('value.dimensionsWidth', properties.physical.dimensions.items, 'width', ' :required="dimensionRequired"') + ' &times; ';
+  str += numberInput('value.dimensionsWidth', properties.physical.dimensions.items, 'width', ' :required="dimensionRequired" ref="firstInput"') + ' &times; ';
   str += numberInput('value.dimensionsHeight', properties.physical.dimensions.items, 'height', ' :required="dimensionRequired"') + ' &times; ';
   str += numberInput('value.dimensionsDepth', properties.physical.dimensions.items, 'depth', ' :required="dimensionRequired"') + ' mm';
   str += '</span>';
@@ -304,7 +304,7 @@ function getModeTemplate() {
   str += '<section class="mode-name">';
   str += '<label>';
   str += '<span class="label">Name</span>';
-  str += '<input type="text"' + getRequiredAttr(properties.mode.name) + ' pattern="^((?!mode)(?!Mode).)*$" title="The name must not contain the word \'mode\'." placeholder="e.g. Extended" v-model="mode.name" />';
+  str += '<input type="text"' + getRequiredAttr(properties.mode.name) + ' pattern="^((?!mode)(?!Mode).)*$" title="The name must not contain the word \'mode\'." placeholder="e.g. Extended" v-model="mode.name" ref="firstInput" />';
   str += '</label>';
   str += '</section>';
 
@@ -556,7 +556,7 @@ function getSubmitDialogString() {
 }
 
 
-function textInput(key, property, hint, id) {
+function textInput(key, property, hint, id, additionalAttributes='') {
   let html = '<input type="text"';
   html += getRequiredAttr(property);
 
@@ -565,6 +565,7 @@ function textInput(key, property, hint, id) {
   }
 
   html += getPlaceholderAttr(hint);
+  html += additionalAttributes;
   html += ` v-model="${key}" />`;
 
   if (property.enum) {
@@ -643,7 +644,7 @@ function selectInput(key, property, hint, allowAdditions=true, forceRequired=fal
 
   html += '</select>';
 
-  html += allowAdditions ? ` <input type="text" class="addition"${getPlaceholderAttr(hint)} v-if="${key} === '[add-value]'" required v-model="${key}New" />` : '';
+  html += allowAdditions ? ` <input type="text" class="addition"${getPlaceholderAttr(hint)} v-if="${key} === '[add-value]'" v-focus required v-model="${key}New" />` : '';
 
   return html;
 }
