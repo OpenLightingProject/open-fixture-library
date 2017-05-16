@@ -18,7 +18,7 @@ module.exports = function(options) {
     const fixData = JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', man, fix + '.json'), 'utf-8'));
     const manData = manufacturers[man];
 
-    str += `<li><a href="/${man}/${fix}">`
+    str += `<li><a href="/${man}/${fix}">`;
     str += `<span class="name">${manData.name} ${fixData.name}</span>`;
     for (const cat of fixData.categories) {
       str += require('../includes/svg')({categoryName: cat, className: 'right'});

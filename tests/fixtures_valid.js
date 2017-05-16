@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const util = require('util')
+const util = require('util');
 const colors = require('colors');
 
 const fixturePath = path.join(__dirname, '..', 'fixtures');
@@ -13,12 +13,12 @@ let usedShortNames = [];
 
 let promises = [];
 for (const man of fs.readdirSync(fixturePath)) {
-  manDir = path.join(fixturePath, man);
+  const manDir = path.join(fixturePath, man);
 
   // only directories
   if (fs.statSync(manDir).isDirectory()) {
     for (const fixture of fs.readdirSync(manDir)) {
-      if (path.extname(fixture) == '.json') {
+      if (path.extname(fixture) === '.json') {
         promises.push(handleFile(path.join(manDir, fixture)));
       }
     }
@@ -37,21 +37,23 @@ promises.push(new Promise((resolve, reject) => {
 
   fs.readFile(filename, 'utf8', (readError, data) => {
     if (readError) {
-      return resolveError(`File '${filename}' could not be read.`, readError, resolve);
+      resolveError(`File '${filename}' could not be read.`, readError, resolve);
+      return;
     }
 
     let manufacturers;
-
     try {
       manufacturers = JSON.parse(data);
     }
     catch (parseError) {
-      return resolveError(`File '${filename}' could not be parsed.`, parseError, resolve);
+      resolveError(`File '${filename}' could not be parsed.`, parseError, resolve);
+      return;
     }
 
     const schemaErrors = schemas.Manufacturers.errors(manufacturers);
     if (schemaErrors !== false) {
-      return resolveError(`File '${filename}' does not match schema.`, schemaErrors, resolve);
+      resolveError(`File '${filename}' does not match schema.`, schemaErrors, resolve);
+      return;
     }
 
     resolve(filename);
@@ -62,7 +64,8 @@ function handleFile(filename) {
   return new Promise((resolve, reject) => {
     fs.readFile(filename, 'utf8', (readError, data) => {
       if (readError) {
-        return resolveError(`File '${filename}' could not be read.`, readError, resolve);
+        resolveError(`File '${filename}' could not be read.`, readError, resolve);
+        return;
       }
 
       let fixture;
@@ -71,7 +74,8 @@ function handleFile(filename) {
         fixture = JSON.parse(data);
       }
       catch (parseError) {
-        return resolveError(`File '${filename}' could not be parsed.`, parseError, resolve);
+        resolveError(`File '${filename}' could not be parsed.`, parseError, resolve);
+        return;
       }
 
       handleFixture(fixture, filename, resolve);
@@ -90,7 +94,7 @@ function handleFixture(fixture, filename, resolve) {
     console.warn(colors.yellow('Warning: ') + warning);
   }
 
-  if (result.errors.length == 0) {
+  if (result.errors.length === 0) {
     resolve(filename);
   }
 }
@@ -117,7 +121,7 @@ Promise.all(promises).then(results => {
     }
   }
 
-  if (fails == 0) {
+  if (fails === 0) {
     console.log('\n' + colors.green('[PASS]') + ` All ${results.length} tested fixtures were valid.`);
     process.exit(0);
   }

@@ -11,14 +11,14 @@ module.exports = function(options) {
   for (const man of Object.keys(register.manufacturers).sort(sortManufacturers)) {
     const manufacturer = manufacturers[man];
     const num = register.manufacturers[man].length;
-    const numFixtures = `${num} fixture${num == 1 ? '' : 's'}`;
+    const numFixtures = `${num} fixture${num === 1 ? '' : 's'}`;
 
     str += `<a href="/${man}" class="card">`;
     str += `<h2>${manufacturer.name}</h2>`;
     str += `<div class="fixtures">${numFixtures}</div>`;
     str += '</a>';
   }
-  str += '</div>'
+  str += '</div>';
 
   str += require('../includes/footer')(options);
 

@@ -10,7 +10,7 @@ module.exports = function(options) {
     }
   }
 
-  let svg = require("fs").readFileSync(require("path").join(__dirname, '..', '..', 'static', 'icons', options.svgBasename + '.svg'), 'utf8');
+  let svg = require('fs').readFileSync(require('path').join(__dirname, '..', '..', 'static', 'icons', options.svgBasename + '.svg'), 'utf8');
 
   if ('className' in options) {
     svg = svg.replace(/<svg([^>]*)>/, `<svg$1 class="${options.className}">`);
@@ -20,4 +20,4 @@ module.exports = function(options) {
   }
 
   return svg;
-}
+};

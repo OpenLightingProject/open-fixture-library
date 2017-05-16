@@ -138,8 +138,8 @@ var properties = {
   color:        Color.toJSON(),
   ISODate:      ISODate.toJSON(),
   URL:          URL.toJSON(),
-  DMXValue:     DMXValue.toJSON(),
-}
+  DMXValue:     DMXValue.toJSON()
+};
 properties.meta  = properties.fixture.meta.properties;
 properties.bulb  = properties.physical.bulb.properties;
 properties.lens  = properties.physical.lens.properties;
