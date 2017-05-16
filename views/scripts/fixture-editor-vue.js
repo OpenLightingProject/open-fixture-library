@@ -11,6 +11,19 @@ var out = {
   fixtures: {}
 };
 
+
+var storageAvailable = (function() {
+  try {
+    var x = '__storage_test__';
+    localStorage.setItem(x, x);
+    localStorage.removeItem(x);
+    return true;
+  }
+  catch (e) {
+    return false;
+  }
+})();
+
 Vue.component('a11y-dialog', {
   template: '#template-dialog',
   props: ['id', 'cancellable', 'shown'],
@@ -318,12 +331,14 @@ var app = window.app = new Vue({
     fixture: getEmptyFixture(),
     channel: getEmptyChannel(),
     channelChanged: false,
+    readyToAutoSave: false,
     honeypot: '',
     submit: {
       state: '',
       pullRequestUrl: '',
       rawData: ''
     },
+    restoredData: '',
     openDialogs: {
       channel: false,
       chooseChannelEditMode: false,
@@ -353,30 +368,31 @@ var app = window.app = new Vue({
         modeName = '"' + this.currentMode.name + '"';
       }
       return modeName;
+    },
+    restoredDate: function() {
+      if (this.restoredData === '') {
+        return '';
+      }
+      return (new Date(this.restoredData.timestamp)).toLocaleString('en-US');
     }
   },
   watch: {
     fixture: {
       handler: function() {
-        this.autoSave();
+        this.autoSave('fixture');
       },
       deep: true
     },
     channel: {
       handler: function() {
-        this.autoSave();
+        this.autoSave('channel');
         this.channelChanged = true;
       },
       deep: true
     }
   },
+  mounted: restoreAutoSave,
   methods: {
-    newManufacturer: function() {
-      this.fixture.useExistingManufacturer = false;
-    },
-    existingManufacturer: function() {
-      this.fixture.useExistingManufacturer = true;
-    },
     addNewMode: function() {
       this.fixture.modes.push(getEmptyMode());
     },
@@ -387,6 +403,8 @@ var app = window.app = new Vue({
     saveChannel: saveChannel,
     autoSave: autoSave,
     clearAutoSave: clearAutoSave,
+    discardRestored: discardRestored,
+    applyRestored: applyRestored,
     submitFixture: submitFixture
   }
 });
@@ -496,15 +514,88 @@ function resetChannelForm() {
   });
 }
 
-function autoSave() {
-  // TODO
-  console.log('autoSave!');
-  console.log('fixture:', JSON.parse(JSON.stringify(this.fixture, null, 2)));
-  console.log('channel:', JSON.parse(JSON.stringify(this.channel, null, 2)));
+function autoSave(objectName) {
+  if (!storageAvailable || !this.readyToAutoSave) {
+    return;
+  }
+
+  if (objectName === 'fixture') {
+    console.log('autoSave fixture:', JSON.parse(JSON.stringify(this.fixture, null, 2)));
+  }
+  else if (objectName === 'channel') {
+    var channelChanged = Object.keys(this.channel).some(function(prop) {
+      if (prop === 'uuid' || prop === 'editMode' || prop === 'modeId') {
+        return false;
+      }
+      if (prop === 'capabilities') {
+        return app.channel.capabilities.some(isCapabilityChanged);
+      }
+      return app.channel[prop] !== '';
+    });
+
+    if (!channelChanged) {
+      return;
+    }
+
+    console.log('autoSave channel:', JSON.parse(JSON.stringify(this.channel, null, 2)));
+  }
+
+  // use an array to be future-proof (maybe we want to support multiple browser tabs sometime)
+  localStorage.setItem('autoSave', JSON.stringify([
+    {
+      fixture: this.fixture,
+      channel: this.channel,
+      timestamp: Date.now()
+    }
+  ]));
 }
 
 function clearAutoSave() {
-  // TODO
+  if (!storageAvailable) {
+    return;
+  }
+  localStorage.removeItem('autoSave');
+}
+
+function restoreAutoSave() {
+  if (!storageAvailable) {
+    return;
+  }
+
+  try {
+    this.restoredData = JSON.parse(localStorage.getItem('autoSave')).pop();
+
+    if (this.restoredData === undefined) {
+      throw new Error('this.restoredData is undefined.');
+    }
+  }
+  catch (error) {
+    this.readyToAutoSave = true;
+    this.restoredData = '';
+    return;
+  }
+
+  console.log('restore', this.restoredData);
+
+  this.openDialogs.restore = true;
+}
+function discardRestored() {
+  // put all items except the last one back
+  localStorage.setItem('autoSave', JSON.stringify(JSON.parse(localStorage.getItem('autoSave')).slice(0, -1)));
+
+  this.restoredData = '';
+  this.openDialogs.restore = false;
+  this.readyToAutoSave = true;
+}
+function applyRestored() {
+  this.fixture = this.restoredData.fixture;
+  this.channel = this.restoredData.channel;
+
+  this.restoredData = '';
+  this.openDialogs.restore = false;
+  Vue.nextTick(function() {
+    app.readyToAutoSave = true;
+  });
 }
 
 function submitFixture() {

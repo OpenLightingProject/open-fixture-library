@@ -29,11 +29,11 @@ module.exports = function(options) {
     str += `<option value="${man}">${options.manufacturers[man].name}</option>`;
   }
   str += '</select></label>';
-  str += '<div class="button-bar">or <a href="#add-new-manufacturer" @click.prevent="newManufacturer">add a new manufacturer</a></div>';
+  str += '<div class="button-bar">or <a href="#add-new-manufacturer" @click.prevent="fixture.useExistingManufacturer = false">add a new manufacturer</a></div>';
   str += '</section>'; // [v-if="fixture.useExistingManufacturer"]
 
   // New manufacturer
-  str += '<section v-else>';
+  str += '<div v-else>';
   str += '<section class="new-manufacturer-name">';
   str += '<label>';
   str += '<span class="label">Name</span>';
@@ -61,8 +61,8 @@ module.exports = function(options) {
   str += textInput('fixture.newManufacturerComment', properties.manufacturer.comment);
   str += '</label>';
   str += '</section>';
-  str += '<div class="button-bar">or <a href="#use-existing-manufacturer" @click.prevent="existingManufacturer">choose an existing manufacturer</a></div>';
-  str += '</section>'; // [v-else]
+  str += '<div class="button-bar">or <a href="#use-existing-manufacturer" @click.prevent="fixture.useExistingManufacturer = true">choose an existing manufacturer</a></div>';
+  str += '</div>'; // [v-else]
 
   str += '</section>'; // .manufacturer
 
@@ -388,10 +388,10 @@ function getRestoreDialogString() {
   let str = '<a11y-dialog id="restore" :cancellable="false" :shown="openDialogs.restore" @show="openDialogs.restore = true" @hide="openDialogs.restore = false">';
   str += '<span slot="title">Auto-saved fixture data found</span>';
 
-  str += 'Do you want to restore the data (auto-saved <time></time>) to continue to create the fixture?';
+  str += 'Do you want to restore the data (auto-saved <time>{{ restoredDate }}</time>) to continue to create the fixture?';
   str += '<div class="button-bar right">';
-  str += '<button class="discard secondary">Discard data</button> ';
-  str += '<button class="restore primary">Restore to continue work</button>';
+  str += '<button class="discard secondary" @click.prevent="discardRestored">Discard data</button> ';
+  str += '<button class="restore primary" @click.prevent="applyRestored">Restore to continue work</button>';
   str += '</div>';
 
   str += '</a11y-dialog>';
