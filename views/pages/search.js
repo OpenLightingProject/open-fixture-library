@@ -3,7 +3,7 @@ module.exports = function(options) {
 
   const searchQuery = (query.q || '').trim();
 
-  if (!('q' in query) || (searchQuery.length == 0)) {
+  if (!('q' in query) || (searchQuery.length === 0)) {
     options.title = 'Search - Open Fixture Library';
 
     let str = require('../includes/header')(options);
@@ -25,29 +25,29 @@ module.exports = function(options) {
   if (!('m' in query) || query.m === '') {
     query.m = [];
   }
-  else if (typeof query.m == 'string') {
+  else if (typeof query.m === 'string') {
     query.m = [query.m];
   }
 
   if (!('c' in query) || query.c === '') {
     query.c = [];
   }
-  else if (typeof query.c == 'string') {
+  else if (typeof query.c === 'string') {
     query.c = [query.c];
   }
   query.c = query.c.map(decodeURIComponent);
 
   let results = [];
   for (const key in register.filesystem) {
-    const [man, fix] = key.split('/');
+    const man = key.split('/')[0];
     const fixData = register.filesystem[key];
     const name = (manufacturers[man].name + ' ' + fixData.name).toLowerCase();
 
     // very primitive match algorithm, maybe put more effort into it sometime
     if (
       (key.indexOf(searchQueryCompare) > -1 || name.indexOf(searchQueryCompare) > -1) // name matches
-      && (query.m.length == 0 || query.m.indexOf(man) > -1) // manufacturer is not relevant or matches
-      && (query.c.length == 0 || categoryMatch(query.c, key, register)) // categories are not relevant or match
+      && (query.m.length === 0 || query.m.indexOf(man) > -1) // manufacturer is not relevant or matches
+      && (query.c.length === 0 || categoryMatch(query.c, key, register)) // categories are not relevant or match
       ) {
       results.push(Object.assign({}, fixData, {
         key: key,

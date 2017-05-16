@@ -93,7 +93,7 @@ module.exports = function(options) {
         str += multiByteChannel.map(ch => {
           return `<data class="channel" data-channel="${ch}">${getChannelHeading(ch, fixture)}</data>`;
         }).join(', ');
-        str += `</li>`;
+        str += '</li>';
       });
       str += '</ul>';
       str += '</section>';
@@ -138,8 +138,8 @@ module.exports = function(options) {
       str += '</section>';
     }
 
-    str += `<h3>Channels</h3>`;
-    str += `<ol>`
+    str += '<h3>Channels</h3>';
+    str += '<ol>';
     mode.channels.forEach((ch, i) => {
       const channel = fixture.availableChannels[ch];
 
@@ -360,33 +360,33 @@ function handleChannel(channel) {
     channel.capabilities.forEach(cap => {
       str += '<tr>';
 
-      str += `<td class="capability-range0" title="DMX value start">`;
+      str += '<td class="capability-range0" title="DMX value start">';
       str += `  <data data-key="capability-range-0">${_(cap.range[0])}</data>`;
-      str += `</td>`;
+      str += '</td>';
 
-      str += `<td class="capability-range1" title="DMX value end">`;
+      str += '<td class="capability-range1" title="DMX value end">';
       str += `  <data data-key="capability-range-1">${_(cap.range[1])}</data>`;
-      str += `</td>`;
+      str += '</td>';
 
-      str += `<td class="capability-name" title="name">`;
+      str += '<td class="capability-name" title="name">';
       str += `  <data data-key="capability-name">${_(cap.name)}</data>`;
-      str += `</td>`;
+      str += '</td>';
 
-      str += `<td class="capability-menuClick" title="menu click action">`;
+      str += '<td class="capability-menuClick" title="menu click action">';
       str += `  <data data-key="capability-menuClick">${_(cap.menuClick)}</data>`;
-      str += `</td>`;
+      str += '</td>';
 
       str += `<td class="capability-color" title="color: ${cap.color}">`;
       str += `  <data class="color" data-key="capability-color" data-value="${cap.color}">${_(cap.color)}</data>`;
-      str += `</td>`;
+      str += '</td>';
 
       str += `<td class="capability-color2" title="color 2: ${cap.color2}">`;
       str += `  <data class="color" data-key="capability-color2" data-value="${cap.color2}">${_(cap.color2)}</data>`;
-      str += `</td>`;
+      str += '</td>';
 
-      str += `<td class="capability-image" title="image">`;
+      str += '<td class="capability-image" title="image">';
       str += `  <data data-key="capability-image">${_(cap.image)}</data>`;
-      str += `</td>`;
+      str += '</td>';
 
       str += '</tr>';
     });

@@ -1,10 +1,6 @@
 const path = require('path');
-const util = require('util');
-const colors = require('colors');
 
 const schemas = require(path.join(__dirname, '..', 'fixtures', 'schema'));
-
-let usedShortNames = [];
 
 module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) {
   let result = {
@@ -24,7 +20,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
   try {
     const shortName = fixture.shortName || fixture.name;
-    if (usedShortNames.indexOf(shortName) != -1) {
+    if (usedShortNames.indexOf(shortName) !== -1) {
       result.errors.push({
         description: `shortName '${shortName}' not unique.`,
         error: null
@@ -34,7 +30,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
     if (new Date(fixture.meta.lastModifyDate) < new Date(fixture.meta.createDate)) {
       result.errors.push({
-        description: `meta.lastModifyDate is earlier than meta.createDate.`,
+        description: 'meta.lastModifyDate is earlier than meta.createDate.',
         error: null
       });
     }
@@ -45,7 +41,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
       && fixture.physical.lens.degreesMinMax[0] > fixture.physical.lens.degreesMinMax[1]
       ) {
       result.errors.push({
-        description: `physical.lens.degreesMinMax is an invalid range.`,
+        description: 'physical.lens.degreesMinMax is an invalid range.',
         error: null
       });
     }
@@ -57,7 +53,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
       const mode = fixture.modes[i];
 
       const modeShortName = mode.shortName || mode.name;
-      if (usedModeShortNames.indexOf(modeShortName) != -1) {
+      if (usedModeShortNames.indexOf(modeShortName) !== -1) {
         result.errors.push({
           description: `shortName '${modeShortName}' not unique in mode #${i}.`,
           error: null
@@ -125,7 +121,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
     }
 
     for (const ch in fixture.availableChannels) {
-      if (usedChannels.indexOf(ch) == -1) {
+      if (usedChannels.indexOf(ch) === -1) {
         result.warnings.push(`Channel '${ch}' defined but never used.`);
       }
 
@@ -169,7 +165,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
           if ((
             ('color' in cap && cap.color.length > 0)
             || ('image' in cap && cap.image.length > 0)
-            ) && ['MultiColor', 'Effect', 'Gobo'].indexOf(channel.type) == -1) {
+            ) && ['MultiColor', 'Effect', 'Gobo'].indexOf(channel.type) === -1) {
             result.errors.push({
               description: `color or image present in capability #${i} but improper channel type '${channel.type}' in channel '${ch}'.`,
               error: null
@@ -177,7 +173,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
           }
 
           if ('color2' in cap && cap.color2.length > 0
-            && (!('color' in cap) || cap.color.length == 0)) {
+            && (!('color' in cap) || cap.color.length === 0)) {
             result.errors.push({
               description: `color2 present but color missing in capability #${i} in channel '${ch}'.`,
               error: null
@@ -203,4 +199,4 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
   }
 
   return result;
-}
+};
