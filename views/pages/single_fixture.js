@@ -376,11 +376,11 @@ function handleChannel(channel) {
       str += `  <data data-key="capability-menuClick">${_(cap.menuClick)}</data>`;
       str += '</td>';
 
-      str += '<td class="capability-color" title="color: ${cap.color}">';
+      str += `<td class="capability-color" title="color: ${cap.color}">`;
       str += `  <data class="color" data-key="capability-color" data-value="${cap.color}">${_(cap.color)}</data>`;
       str += '</td>';
 
-      str += '<td class="capability-color2" title="color 2: ${cap.color2}">';
+      str += `<td class="capability-color2" title="color 2: ${cap.color2}">`;
       str += `  <data class="color" data-key="capability-color2" data-value="${cap.color2}">${_(cap.color2)}</data>`;
       str += '</td>';
 
