@@ -82,7 +82,7 @@ serverProcess.stderr.on('data', chunk => {
 console.log(`Starting server with process id ${serverProcess.pid}`);
 
 // wait 2s before starting tests
-require('timers').setTimeout(function() {
+require('timers').setTimeout(() => {
   console.log('start tests');
 
   let promises = [];
