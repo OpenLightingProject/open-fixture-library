@@ -23,7 +23,7 @@ const selectedPlugin = args._[0];
 const filename = args._[1];
 const makePR = args.pr;
 
-if (args._.length != 2 || !(selectedPlugin in importPlugins)) {
+if (args._.length !== 2 || !(selectedPlugin in importPlugins)) {
   console.error(`Usage: ${process.argv[1]} <plugin> <filename> [--pr]\n\navailable plugins: ${Object.keys(importPlugins).join(', ')}`);
   process.exit(1);
 }
