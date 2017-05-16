@@ -96,7 +96,6 @@ module.exports.export = function exportQLCplus(library, options) {
 }
 
 function exportHandleAvailableChannels(fixture, defaults) {
-  let str = '';
   let xmlChannels = [];
 
   for (const chKey in fixture.availableChannels) {

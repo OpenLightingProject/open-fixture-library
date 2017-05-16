@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const util = require('util');
 const colorNames = require('color-names');
 const xml2js = require('xml2js');
 const xmlbuilder = require('xmlbuilder');
