@@ -160,9 +160,9 @@ function testPage(page, allowedCodes, isFoundLink) {
         rawData += chunk;
       });
       res.on('end', () => {
-        let match = linkRegex.exec(rawData);
+        let match;
 
-        while (match) {
+        while ((match = linkRegex.exec(rawData)) != null) {
           // found a link
 
           if (match[1].startsWith('#')  // do not test same-page links
@@ -174,8 +174,6 @@ function testPage(page, allowedCodes, isFoundLink) {
 
           foundLinkPromises.push(testPage(match[1], ['200', '201', '302'], true));
           foundLinks.push(match[1]);
-
-          match = linkRegex.exec(rawData);
         }
 
         resolve(true);
