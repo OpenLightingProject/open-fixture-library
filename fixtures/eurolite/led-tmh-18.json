@@ -1,0 +1,706 @@
+{
+  "name": "LED TMH-18",
+  "shortName": "TMH18",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2017-05-16",
+    "lastModifyDate": "2017-05-16"
+  },
+  "manualURL": "http://media.steinigke.de/documents_t/51786060-MANUAL-1.00-de-en_00095278.pdf",
+  "physical": {
+    "dimensions": [260, 145, 360]
+  },
+  "availableChannels": {
+    "Internal Programs": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "No function"
+        },
+        {
+          "range": [8, 67],
+          "name": "Internal program 1"
+        },
+        {
+          "range": [68, 127],
+          "name": "Internal program 2"
+        },
+        {
+          "range": [128, 187],
+          "name": "Internal program 3"
+        },
+        {
+          "range": [188, 247],
+          "name": "Internal program 4"
+        },
+        {
+          "range": [248, 255],
+          "name": "Internal program 5"
+        }
+      ]
+    },
+    "Pan": {
+      "type": "Pan",
+      "defaultValue": 128,
+      "crossfade": true
+    },
+    "Pan fine": {
+      "type": "Pan",
+      "defaultValue": 128,
+      "crossfade": true
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "defaultValue": 128,
+      "crossfade": true
+    },
+    "Tilt fine": {
+      "type": "Tilt",
+      "defaultValue": 128,
+      "crossfade": true
+    },
+    "Pan/Tilt Speed": {
+      "type": "Speed",
+      "defaultValue": 128,
+      "invert": true,
+      "crossfade": true
+    },
+    "Macros": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "No function"
+        },
+        {
+          "range": [16, 35],
+          "name": "Macro 1"
+        },
+        {
+          "range": [36, 55],
+          "name": "Macro 2"
+        },
+        {
+          "range": [56, 75],
+          "name": "Macro 3"
+        },
+        {
+          "range": [76, 95],
+          "name": "Macro 4"
+        },
+        {
+          "range": [96, 115],
+          "name": "Macro 5"
+        },
+        {
+          "range": [116, 135],
+          "name": "Macro 6"
+        },
+        {
+          "range": [136, 155],
+          "name": "Macro 7"
+        },
+        {
+          "range": [156, 175],
+          "name": "Macro 8"
+        },
+        {
+          "range": [176, 195],
+          "name": "Macro 9"
+        },
+        {
+          "range": [196, 215],
+          "name": "Macro 10"
+        },
+        {
+          "range": [216, 235],
+          "name": "Macro 11"
+        },
+        {
+          "range": [236, 255],
+          "name": "Macro 12"
+        }
+      ]
+    },
+    "Macro Speed": {
+      "type": "Speed",
+      "defaultValue": 128,
+      "crossfade": true
+    },
+    "Function": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 69],
+          "name": "No function"
+        },
+        {
+          "range": [79, 79],
+          "name": "Dimmer off Pan/Tilt"
+        },
+        {
+          "range": [80, 200],
+          "name": "No function",
+          "menuClick": "hidden"
+        },
+        {
+          "range": [201, 207],
+          "name": "Reset"
+        },
+        {
+          "range": [208, 255],
+          "name": "No function",
+          "menuClick": "hidden"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "crossfade": true
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "highlightValue": 200,
+      "capabilities": [
+        {
+          "range": [0, 3],
+          "name": "No function"
+        },
+        {
+          "range": [4, 255],
+          "name": "Strobe slow–fast"
+        }
+      ]
+    },
+    "Red": {
+      "type": "SingleColor",
+      "color": "Red",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Green": {
+      "type": "SingleColor",
+      "color": "Green",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Blue": {
+      "type": "SingleColor",
+      "color": "Blue",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "White": {
+      "type": "SingleColor",
+      "color": "White",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Red 1": {
+      "type": "SingleColor",
+      "color": "Red",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Green 1": {
+      "type": "SingleColor",
+      "color": "Green",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Blue 1": {
+      "type": "SingleColor",
+      "color": "Blue",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "White 1": {
+      "type": "SingleColor",
+      "color": "White",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Red 2": {
+      "type": "SingleColor",
+      "color": "Red",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Green 2": {
+      "type": "SingleColor",
+      "color": "Green",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Blue 2": {
+      "type": "SingleColor",
+      "color": "Blue",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "White 2": {
+      "type": "SingleColor",
+      "color": "White",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Red 3": {
+      "type": "SingleColor",
+      "color": "Red",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Green 3": {
+      "type": "SingleColor",
+      "color": "Green",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Blue 3": {
+      "type": "SingleColor",
+      "color": "Blue",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "White 3": {
+      "type": "SingleColor",
+      "color": "White",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Red 4": {
+      "type": "SingleColor",
+      "color": "Red",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Green 4": {
+      "type": "SingleColor",
+      "color": "Green",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Blue 4": {
+      "type": "SingleColor",
+      "color": "Blue",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "White 4": {
+      "type": "SingleColor",
+      "color": "White",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Red 5": {
+      "type": "SingleColor",
+      "color": "Red",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Green 5": {
+      "type": "SingleColor",
+      "color": "Green",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Blue 5": {
+      "type": "SingleColor",
+      "color": "Blue",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "White 5": {
+      "type": "SingleColor",
+      "color": "White",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Red 6": {
+      "type": "SingleColor",
+      "color": "Red",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Green 6": {
+      "type": "SingleColor",
+      "color": "Green",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Blue 6": {
+      "type": "SingleColor",
+      "color": "Blue",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "White 6": {
+      "type": "SingleColor",
+      "color": "White",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Red 7": {
+      "type": "SingleColor",
+      "color": "Red",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Green 7": {
+      "type": "SingleColor",
+      "color": "Green",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Blue 7": {
+      "type": "SingleColor",
+      "color": "Blue",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "White 7": {
+      "type": "SingleColor",
+      "color": "White",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Red 8": {
+      "type": "SingleColor",
+      "color": "Red",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Green 8": {
+      "type": "SingleColor",
+      "color": "Green",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Blue 8": {
+      "type": "SingleColor",
+      "color": "Blue",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "White 8": {
+      "type": "SingleColor",
+      "color": "White",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Red 9": {
+      "type": "SingleColor",
+      "color": "Red",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Green 9": {
+      "type": "SingleColor",
+      "color": "Green",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Blue 9": {
+      "type": "SingleColor",
+      "color": "Blue",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "White 9": {
+      "type": "SingleColor",
+      "color": "White",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Color Macros": {
+      "type": "MultiColor",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "No function"
+        },
+        {
+          "range": [8, 15],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [16, 23],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [24, 31],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [32, 39],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [40, 47],
+          "name": "Red-Green",
+          "color": "#ff0000",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [48, 55],
+          "name": "Red-Blue",
+          "color": "#ff0000",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [56, 63],
+          "name": "Red-White",
+          "color": "#ff0000",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [64, 71],
+          "name": "Green-Blue",
+          "color": "#00ff00",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [72, 79],
+          "name": "Green-White",
+          "color": "#00ff00",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [80, 87],
+          "name": "Blue-White",
+          "color": "#0000ff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [88, 95],
+          "name": "Red-Green-Blue"
+        },
+        {
+          "range": [96, 103],
+          "name": "Red-Green-White"
+        },
+        {
+          "range": [104, 111],
+          "name": "Red-Blue-White"
+        },
+        {
+          "range": [112, 119],
+          "name": "Green-Blue-White"
+        },
+        {
+          "range": [120, 127],
+          "name": "Red-Green-Blue-White"
+        },
+        {
+          "range": [128, 131],
+          "name": "Program 1"
+        },
+        {
+          "range": [132, 135],
+          "name": "Program 2"
+        },
+        {
+          "range": [136, 139],
+          "name": "Program 3"
+        },
+        {
+          "range": [140, 143],
+          "name": "Program 4"
+        },
+        {
+          "range": [144, 147],
+          "name": "Program 5"
+        },
+        {
+          "range": [148, 151],
+          "name": "Program 6"
+        },
+        {
+          "range": [152, 155],
+          "name": "Program 7"
+        },
+        {
+          "range": [156, 159],
+          "name": "Program 8"
+        },
+        {
+          "range": [160, 167],
+          "name": "Program 9"
+        },
+        {
+          "range": [168, 171],
+          "name": "Program 10"
+        },
+        {
+          "range": [172, 175],
+          "name": "Program 11"
+        },
+        {
+          "range": [176, 179],
+          "name": "Program 12"
+        },
+        {
+          "range": [180, 183],
+          "name": "Program 13"
+        },
+        {
+          "range": [184, 187],
+          "name": "Program 14"
+        },
+        {
+          "range": [188, 191],
+          "name": "Program 15"
+        },
+        {
+          "range": [192, 195],
+          "name": "Program 16"
+        },
+        {
+          "range": [196, 199],
+          "name": "Program 17"
+        },
+        {
+          "range": [200, 203],
+          "name": "Program 18"
+        },
+        {
+          "range": [204, 207],
+          "name": "Program 19"
+        },
+        {
+          "range": [208, 211],
+          "name": "Program 20"
+        },
+        {
+          "range": [212, 215],
+          "name": "Program 21"
+        },
+        {
+          "range": [216, 219],
+          "name": "Program 22"
+        },
+        {
+          "range": [220, 223],
+          "name": "Program 23"
+        },
+        {
+          "range": [224, 227],
+          "name": "Program 24"
+        },
+        {
+          "range": [228, 231],
+          "name": "Program 25"
+        },
+        {
+          "range": [232, 235],
+          "name": "Program 26"
+        },
+        {
+          "range": [236, 239],
+          "name": "Program 27"
+        },
+        {
+          "range": [240, 243],
+          "name": "Program 28"
+        },
+        {
+          "range": [244, 247],
+          "name": "Program 29"
+        },
+        {
+          "range": [248, 251],
+          "name": "Program 30"
+        },
+        {
+          "range": [252, 255],
+          "name": "No function",
+          "menuClick": "hidden"
+        }
+      ]
+    },
+    "Color Speed": {
+      "type": "Speed",
+      "defaultValue": 128,
+      "crossfade": true
+    }
+  },
+  "multiByteChannels": [
+    ["Pan", "Pan fine"],
+    ["Tilt", "Tilt fine"]
+  ],
+  "heads": {
+    "top left": ["Red 1", "Green 1", "Blue 1", "White 1"],
+    "top center": ["Red 2", "Green 2", "Blue 2", "White 2"],
+    "top right": ["Red 3", "Green 3", "Blue 3", "White 3"],
+    "center left": ["Red 4", "Green 4", "Blue 4", "White 4"],
+    "center center": ["Red 5", "Green 5", "Blue 5", "White 5"],
+    "center right": ["Red 6", "Green 6", "Blue 6", "White 6"],
+    "bottom left": ["Red 7", "Green 7", "Blue 7", "White 7"],
+    "bottom center": ["Red 8", "Green 8", "Blue 8", "White 8"],
+    "bottom right": ["Red 9", "Green 9", "Blue 9", "White 9"]
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Internal Programs"
+      ]
+    },
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Macros",
+        "Macro Speed",
+        "Function",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Color Speed"
+      ]
+    },
+    {
+      "name": "48-channel",
+      "shortName": "48ch",
+      "channels": [
+          "Pan",
+          "Pan fine",
+          "Tilt",
+          "Tilt fine",
+          "Pan/Tilt Speed",
+          "Macros",
+          "Macro Speed",
+          "Function",
+          "Dimmer",
+          "Strobe",
+          "Red 1", "Green 1", "Blue 1", "White 1",
+          "Red 2", "Green 2", "Blue 2", "White 2",
+          "Red 3", "Green 3", "Blue 3", "White 3",
+          "Red 4", "Green 4", "Blue 4", "White 4",
+          "Red 5", "Green 5", "Blue 5", "White 5",
+          "Red 6", "Green 6", "Blue 6", "White 6",
+          "Red 7", "Green 7", "Blue 7", "White 7",
+          "Red 8", "Green 8", "Blue 8", "White 8",
+          "Red 9", "Green 9", "Blue 9", "White 9",
+          "Color Macros",
+          "Color Speed"
+      ]
+    }
+  ]
+}
