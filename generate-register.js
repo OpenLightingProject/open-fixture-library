@@ -22,7 +22,7 @@ try {
 
       for (const filename of fs.readdirSync(manDir).sort()) {
         const ext = path.extname(filename);
-        if (ext == '.json') {
+        if (ext === '.json') {
           const fix = path.basename(filename, ext);
 
           // add to manufacturer register
@@ -51,7 +51,7 @@ catch (readError) {
   process.exit(1);
 }
 
-const filename = path.join(fixturePath, (process.argv.length == 3 ? process.argv[2] : 'register.json'));
+const filename = path.join(fixturePath, (process.argv.length === 3 ? process.argv[2] : 'register.json'));
 
 fs.writeFile(filename, JSON.stringify(register, null, 2), 'utf8', error => {
   if (error) {

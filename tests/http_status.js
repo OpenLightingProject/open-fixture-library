@@ -118,7 +118,6 @@ require('timers').setTimeout(() => {
       serverProcess.kill();
     });
   });
-
 }, 2000);
 
 function testPage(page, allowedCodes, isFoundLink) {
