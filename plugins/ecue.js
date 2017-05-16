@@ -3,30 +3,45 @@ const path = require('path');
 const util = require('util');
 const colorNames = require('color-names');
 const xml2js = require('xml2js');
+const xmlbuilder = require('xmlbuilder');
 
 module.exports.name = 'e:cue';
-module.exports.version = '0.1.1';
-
-const fileTemplate = `<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<Document Owner="user" TypeVersion="2" SaveTimeStamp="%s">
-    <Library>
-        <Fixtures>
-%s        </Fixtures>
-        <Tiles>
-%s        </Tiles>
-    </Library>
-</Document>
-`;
+module.exports.version = '0.2.0';
 
 module.exports.export = function exportEcue(library, options) {
   let outfiles = [];
 
   const defaults = require(path.join(options.baseDir, 'fixtures', 'defaults'));
 
-  let outFixtures = {};  
+  const timestamp = new Date().toISOString().replace(/T/, '#').replace(/\..+/, '');
 
+  let xml = xmlbuilder.create(
+    {
+      Document: {
+        '@Owner': 'user',
+        '@TypeVersion': 2,
+        '@SaveTimeStamp': timestamp
+      }
+    },
+    {
+      encoding: 'UTF-8',
+      standalone: true
+    }
+  );
+  let xmlLibrary = xml.ele({
+    Library: {}
+  });
+  let xmlFixtures = xmlLibrary.ele({
+    Fixtures: {}
+  })
+  let xmlTiles = xmlLibrary.ele({
+    Tiles: {}
+  });
+
+  let xmlManFixtures = {};
   for (const data of library) {
-    let fixture = Object.assign({}, defaults, JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', data.manufacturerKey, data.fixtureKey + '.json'), 'utf-8')));
+    const filePath = path.join(options.baseDir, 'fixtures', data.manufacturerKey, data.fixtureKey + '.json');
+    let fixture = Object.assign({}, defaults, JSON.parse(fs.readFileSync(filePath, 'utf-8')));
 
     if (fixture.shortName === null) {
       fixture.shortName = fixture.name;
@@ -37,44 +52,38 @@ module.exports.export = function exportEcue(library, options) {
     physical.lens = Object.assign({}, defaults.physical.lens, fixture.physical.lens);
     physical.focus = Object.assign({}, defaults.physical.focus, fixture.physical.focus);
 
+    if (!(data.manufacturerKey in xmlManFixtures)) {
+      const manData = options.manufacturers[data.manufacturerKey];
 
-    const fixtureStr = exportHandleModes(fixture, defaults, physical);
-
-    if (!(data.manufacturerKey in outFixtures)) {
-      outFixtures[data.manufacturerKey] = '';
+      let xmlMan = {
+        'Manufacturer': {
+          '@_CreationDate': timestamp,
+          '@_ModifiedDate': timestamp,
+          '@Name': manData.name,
+          '@Comment': manData.comment || '',
+          '@Web': manData.website || ''
+        }
+      };
+      xmlManFixtures[data.manufacturerKey] = xmlFixtures.ele(xmlMan);
+      xmlTiles.ele(xmlMan);
     }
-    outFixtures[data.manufacturerKey] += fixtureStr;
-  }
 
-  const timestamp = new Date().toISOString().replace(/T/, '#').replace(/\..+/, '');
-
-  let fixturesStr = '';
-  let tilesStr = '';
-
-  for (const man in outFixtures) {
-    const manData = options.manufacturers[man];
-
-    const manStr = `<Manufacturer _CreationDate="${timestamp}" _ModifiedDate="${timestamp}" Name="${manData.name}" Comment="${manData.comment || ''}" Web="${manData.website || ''}"`;
-
-    tilesStr += `            ${manStr} />\n`;
-
-    fixturesStr += `            ${manStr}>\n`;
-    fixturesStr += outFixtures[man];
-    fixturesStr += '            </Manufacturer>\n';
+    exportHandleModes(fixture, defaults, physical, xmlManFixtures[data.manufacturerKey])
   }
 
   outfiles.push({
     name: 'UserLibrary.xml',
-    content: util.format(fileTemplate, timestamp, fixturesStr, tilesStr),
+    content: xml.end({
+      pretty: true,
+      indent: '    '
+    }),
     mimetype: 'application/xml'
   });
 
   return outfiles;
 }
 
-function exportHandleModes(fixture, defaults, physical) {
-  let str = '';
-
+function exportHandleModes(fixture, defaults, physical, xmlMan) {
   const fixCreationDate = fixture.meta.createDate + '#00:00:00';
   const fixModifiedDate = fixture.meta.lastModifyDate + '#00:00:00';
 
@@ -89,10 +98,21 @@ function exportHandleModes(fixture, defaults, physical) {
       modeData.shortName = modeData.name;
     }
 
-    let fixName = fixture.name + (fixture.modes.length > 1 ? ` (${modeData.shortName} mode)` : '');
-    let fixShortName = fixture.shortName + (fixture.modes.length > 1 ? '-' + modeData.shortName : '');
-
-    str += `                <Fixture _CreationDate="${fixCreationDate}" _ModifiedDate="${fixModifiedDate}" Name="${fixName}" NameShort="${fixShortName}" Comment="${fixture.comment}" AllocateDmxChannels="${mode.channels.length}" Weight="${modeData.physical.weight}" Power="${modeData.physical.power}" DimWidth="${modeData.physical.dimensions[0]}" DimHeight="${modeData.physical.dimensions[1]}" DimDepth="${modeData.physical.dimensions[2]}">\n`;
+    let xmlFixture = xmlMan.ele({
+      'Fixture': {
+        '@_CreationDate': fixCreationDate,
+        '@_ModifiedDate': fixModifiedDate,
+        '@Name': fixture.name + (fixture.modes.length > 1 ? ` (${modeData.shortName} mode)` : ''),
+        '@NameShort': fixture.shortName + (fixture.modes.length > 1 ? '-' + modeData.shortName : ''),
+        '@Comment': fixture.comment,
+        '@AllocateDmxChannels': mode.channels.length,
+        '@Weight': modeData.physical.weight,
+        '@Power': modeData.physical.power,
+        '@DimWidth': modeData.physical.dimensions[0],
+        '@DimHeight': modeData.physical.dimensions[1],
+        '@DimDepth': modeData.physical.dimensions[2]
+      }
+    });
 
     let viewPosCount = 1;
     for (let dmxCount=0; dmxCount<mode.channels.length; dmxCount++) {
@@ -106,8 +126,8 @@ function exportHandleModes(fixture, defaults, physical) {
       let doubleByte = false;
       const multiByteChannels = getCorrespondingMultiByteChannels(chKey, fixture);
       if (multiByteChannels !== null
-        && mode.channels.indexOf(multiByteChannels[0]) != -1
-        && mode.channels.indexOf(multiByteChannels[1]) != -1
+        && mode.channels.includes(multiByteChannels[0])
+        && mode.channels.includes(multiByteChannels[1])
         ) {
         // it is a 16-bit channel and both 8-bit parts are used in this mode
         chKey = multiByteChannels[0];
@@ -173,23 +193,38 @@ function exportHandleModes(fixture, defaults, physical) {
       dmxByte0++;
       dmxByte1++;
 
-      const hasCapabilities = ('capabilities' in channel);
+      let xmlChannelObj = {};
+      xmlChannelObj[`Channel${chType}`] = {
+        '@Name': chData.name,
+        '@DefaultValue': chData.defaultValue,
+        '@Highlight': chData.highlightValue,
+        '@Deflection': 0,
+        '@DmxByte0': dmxByte0,
+        '@DmxByte1': dmxByte1,
+        '@Constant': chData.constant ? 1 : 0,
+        '@Crossfade': chData.crossfade ? 1 : 0,
+        '@Invert': chData.invert ? 1 : 0,
+        '@Precedence': chData.precedence,
+        '@ClassicPos': viewPosCount++
+      };
+      let xmlChannel = xmlFixture.ele(xmlChannelObj);
 
-      str += `                    <Channel${chType} Name="${chData.name}" DefaultValue="${chData.defaultValue}" Highlight="${chData.highlightValue}" Deflection="0" DmxByte0="${dmxByte0}" DmxByte1="${dmxByte1}" Constant="${chData.constant ? 1 : 0}" Crossfade="${chData.crossfade ? 1 : 0}" Invert="${chData.invert ? 1 : 0}" Precedence="${chData.precedence}" ClassicPos="${viewPosCount++}"` + (hasCapabilities ? '' : ' /') + '>\n';
-
-      if (hasCapabilities) {
+      if ('capabilities' in channel) {
         for (const cap of channel.capabilities) {
           const capData = Object.assign({}, defaults.availableChannels['channel key'].capabilities[0], cap);
-
-          str += `                        <Range Name="${capData.name}" Start="${capData.range[0]}" End="${capData.range[1]}" AutoMenu="${capData.menuClick == 'hidden' ? 0 : 1}" Centre="${capData.menuClick == 'center' ? 1 : 0}" />\n`;
+          xmlChannel.ele({
+            'Range': {
+              '@Name': capData.name,
+              '@Start': capData.range[0],
+              '@End': capData.range[1],
+              '@AutoMenu': capData.menuClick == 'hidden' ? 0 : 1,
+              '@Centre': capData.menuClick == 'center' ? 1 : 0
+            }
+          });
         }
-        str += `                    </Channel${chType}>\n`;
       }
     }
-    str += '                </Fixture>\n';
   }
-
-  return str;
 }
 
 function getCorrespondingMultiByteChannels(channelKey, fixture) {
