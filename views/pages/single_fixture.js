@@ -27,7 +27,7 @@ module.exports = function(options) {
   str += '<section class="fixture-meta">';
   str += `<span class="last-modify-date">Last modified:&nbsp;<date>${fixture.meta.lastModifyDate}</date></span>`;
   str += `<span class="create-date">Created:&nbsp;<date>${fixture.meta.createDate}</date></span>`;
-  str += `<span class="authors">Author${fixture.meta.authors.length == 1 ? '' : 's'}:&nbsp;<data>${fixture.meta.authors.join(', ')}</data></span>`;
+  str += `<span class="authors">Author${fixture.meta.authors.length === 1 ? '' : 's'}:&nbsp;<data>${fixture.meta.authors.join(', ')}</data></span>`;
   str += `<span class="source"><a href="${githubRepoPath}/blob/${branch}/fixtures/${man}/${fix}.json">Source</a></span>`;
   str += `<span class="revisions"><a href="${githubRepoPath}/commits/${branch}/fixtures/${man}/${fix}.json">Revisions</a></span>`;
   str += '</section>';
@@ -109,7 +109,7 @@ module.exports = function(options) {
         str += fixture.heads[head].map(ch => {
           return `<data class="channel" data-channel="${ch}">${getChannelHeading(ch, fixture)}</data>`;
         }).join(', ');
-        str += `</li>`;
+        str += '</li>';
       }
       str += '</ul>';
       str += '</section>';

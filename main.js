@@ -213,11 +213,12 @@ function downloadFiles(response, files, zipname) {
   }
 
   // else zip all together
-  const zip = new require('node-zip')();
+  const Zip = require('node-zip');
+  const archive = new Zip();
   for (const file of files) {
-    zip.file(file.name, file.content);
+    archive.file(file.name, file.content);
   }
-  const data = zip.generate({
+  const data = archive.generate({
     base64: false,
     compression: 'DEFLATE'
   });
