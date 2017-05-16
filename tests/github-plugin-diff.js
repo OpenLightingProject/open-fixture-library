@@ -162,22 +162,22 @@ new Promise((resolve, reject) => {
             },
             resolve
           );
-
-          function diffFixture(fixture, pluginIndex) {
-            if (pluginIndex in plugins) {
-              diffPluginOutputs({
-                plugin: plugins[pluginIndex],
-                ref: process.env.TRAVIS_BRANCH,
-                fixtures: [fixture]
-              },
-              outputData => {
-                fixtureData[fixture][plugins[pluginIndex]] = outputData;
-                diffFixture(fixture, pluginIndex + 1);
-              });
-            }
-          }
         }
       });
+
+      function diffFixture(fixture, pluginIndex) {
+        if (pluginIndex in plugins) {
+          diffPluginOutputs({
+            plugin: plugins[pluginIndex],
+            ref: process.env.TRAVIS_BRANCH,
+            fixtures: [fixture]
+          },
+          outputData => {
+            fixtureData[fixture][plugins[pluginIndex]] = outputData;
+            diffFixture(fixture, pluginIndex + 1);
+          });
+        }
+      }
     }
   });
 })

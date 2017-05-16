@@ -397,4 +397,4 @@ function handleChannel(channel) {
   }
 
   return str;
-};
+}

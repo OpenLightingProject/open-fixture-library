@@ -160,24 +160,30 @@ function testPage(page, allowedCodes, isFoundLink) {
         rawData += chunk;
       });
       res.on('end', () => {
-        let match;
+        let match = linkRegex.exec(rawData);
 
-        while (match = linkRegex.exec(rawData)) {
+        while (match) {
           // found a link
 
           if (match[1].startsWith('#')  // do not test same-page links
             || foundLinks.indexOf(match[1]) !== -1  // already found earlier
-            || Object.keys(statusCodes).some(code => statusCodes[code].indexOf(match[1]) !== -1)  // already defined above
+            || staticTestPagesContain(match[1])  // already defined above
             ) {
             continue;
           }
 
           foundLinkPromises.push(testPage(match[1], ['200', '201', '302'], true));
           foundLinks.push(match[1]);
+
+          match = linkRegex.exec(rawData);
         }
 
         resolve(true);
       });
     });
   });
+}
+
+function staticTestPagesContain(page) {
+  return Object.keys(statusCodes).some(code => statusCodes[code].indexOf(page) !== -1);
 }
