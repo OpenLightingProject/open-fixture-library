@@ -82,7 +82,7 @@ serverProcess.stderr.on('data', chunk => {
 console.log(`Starting server with process id ${serverProcess.pid}`);
 
 // wait 2s before starting tests
-require('timers').setTimeout(() => {
+require('timers').setTimeout(function() {
   console.log('start tests');
 
   let promises = [];
@@ -118,7 +118,6 @@ require('timers').setTimeout(() => {
       serverProcess.kill();
     });
   });
-
 }, 2000);
 
 function testPage(page, allowedCodes, isFoundLink) {
