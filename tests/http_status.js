@@ -37,9 +37,9 @@ const statusCodes = {
     '/manufacturers/gruft',
     '/gruft/bla',
     '/gruft/thunder-wash-600-rgb',
-    '/gruft/ventilator/bla',
+    '/gruft/ventilator/bla'
   ]
-}
+};
 // add manufacturers and fixtures
 const register = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'fixtures', 'register.json'), 'utf8'));
 for (const man in register.manufacturers) {
@@ -104,7 +104,7 @@ require('timers').setTimeout(() => {
         }
       }
 
-      if (fails == 0) {
+      if (fails === 0) {
         console.log('\n' + colors.green('[PASS]') + ` All ${results.length} tests passed.`);
       }
       else {
@@ -129,12 +129,12 @@ function testPage(page, allowedCodes, isFoundLink) {
     // we can only handle the HTTP and HTTPS protocols
     console.error(colors.red('[FAIL]') + ` ${path} (protocol '${urlObject.protocol}' is not supported)`);
     failed = true;
-    return;
+    return Promise.resolve();
   }
 
   return new Promise((resolve, reject) => {
     (urlObject.protocol === 'http:' ? http : https).get(path, res => {
-      if (allowedCodes.indexOf('' + res.statusCode) == -1) {
+      if (allowedCodes.indexOf('' + res.statusCode) === -1) {
         console.error(colors.red('[FAIL]') + ` ${path} (was ${isFoundLink ? '' : 'not '}a found link, got ${res.statusCode}, expected one of ${allowedCodes})`);
         resolve(false);
         res.resume();
@@ -156,16 +156,18 @@ function testPage(page, allowedCodes, isFoundLink) {
       res.setEncoding('utf8');
 
       let rawData = '';
-      res.on('data', chunk => rawData += chunk);
+      res.on('data', chunk => {
+        rawData += chunk;
+      });
       res.on('end', () => {
         let match;
 
-        while (match = linkRegex.exec(rawData)) {
+        while ((match = linkRegex.exec(rawData)) != null) {
           // found a link
 
           if (match[1].startsWith('#')  // do not test same-page links
-            || foundLinks.indexOf(match[1]) != -1  // already found earlier
-            || Object.keys(statusCodes).some(code => statusCodes[code].indexOf(match[1]) != -1)  // already defined above
+            || foundLinks.indexOf(match[1]) !== -1  // already found earlier
+            || staticTestPagesContain(match[1])  // already defined above
             ) {
             continue;
           }
@@ -178,4 +180,8 @@ function testPage(page, allowedCodes, isFoundLink) {
       });
     });
   });
+}
+
+function staticTestPagesContain(page) {
+  return Object.keys(statusCodes).some(code => statusCodes[code].indexOf(page) !== -1);
 }

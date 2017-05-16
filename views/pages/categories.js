@@ -10,7 +10,7 @@ module.exports = function(options) {
   str += '<div class="categories grid">';
   for (const cat of Object.keys(register.categories).sort(sortCategories)) {
     const num = register.categories[cat].length;
-    const numFixtures = `${num} fixture${num == 1 ? '' : 's'}`;
+    const numFixtures = `${num} fixture${num === 1 ? '' : 's'}`;
     const link = '/categories/' + encodeURIComponent(cat);
 
     str += `<a href="${link}" class="card card-category">`;
@@ -19,7 +19,7 @@ module.exports = function(options) {
     str += `<div class="fixtures">${numFixtures}</div>`;
     str += '</a>';
   }
-  str += '</div>'
+  str += '</div>';
 
   str += require('../includes/footer')(options);
 
