@@ -655,8 +655,8 @@ function booleanInput(key, property, hint) {
   html += ` v-model="${key}"`;
   html += ` class="boolean" :class="{ empty: ${key} === '' }">`;
   html += '<option value="">unknown</option>';
-  html += '<option value="true">yes</option>';
-  html += '<option value="false">no</option>';
+  html += '<option :value="true">yes</option>';
+  html += '<option :value="false">no</option>';
   html += '</select>';
 
   return html;
