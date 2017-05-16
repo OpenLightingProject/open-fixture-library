@@ -26,7 +26,7 @@ var storageAvailable = (function() {
 
 Vue.directive('focus', {
   inserted: function(el) {
-    el.focus()
+    el.focus();
   }
 });
 
