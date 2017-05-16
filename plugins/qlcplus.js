@@ -107,7 +107,7 @@ function exportHandleAvailableChannels(fixture, defaults) {
     let byte = 0;
     for (const multiByteChannel of fixture.multiByteChannels) {
       for (const i in multiByteChannel) {
-        if (multiByteChannel[i] == chKey) {
+        if (multiByteChannel[i] === chKey) {
           byte = i;
           break;
         }
@@ -133,7 +133,7 @@ function exportHandleAvailableChannels(fixture, defaults) {
 
     xmlChannel.Group = {
       $: {
-        Byte: byte,
+        Byte: byte
       },
       _: chData.type
     };
@@ -148,7 +148,7 @@ function exportHandleAvailableChannels(fixture, defaults) {
 
       capData.name = capData.name.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-      xmlCapability = {
+      let xmlCapability = {
         $: {
           Min: capData.range[0],
           Max: capData.range[1]
@@ -233,7 +233,7 @@ function exportHandleModes(fixture, defaults, physical) {
     for (let i=0; i<modeData.channels.length; i++) {
       xmlMode.Channel.push({
         $: {
-          Number: i,
+          Number: i
         },
         _: fixture.availableChannels[modeData.channels[i]].name
       });

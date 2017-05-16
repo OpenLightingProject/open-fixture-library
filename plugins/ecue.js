@@ -33,7 +33,7 @@ module.exports.export = function exportEcue(library, options) {
   });
   let xmlFixtures = xmlLibrary.ele({
     Fixtures: {}
-  })
+  });
   let xmlTiles = xmlLibrary.ele({
     Tiles: {}
   });
@@ -68,7 +68,7 @@ module.exports.export = function exportEcue(library, options) {
       xmlTiles.ele(xmlMan);
     }
 
-    exportHandleModes(fixture, defaults, physical, xmlManFixtures[data.manufacturerKey])
+    exportHandleModes(fixture, defaults, physical, xmlManFixtures[data.manufacturerKey]);
   }
 
   outfiles.push({
@@ -217,8 +217,8 @@ function exportHandleModes(fixture, defaults, physical, xmlMan) {
               '@Name': capData.name,
               '@Start': capData.range[0],
               '@End': capData.range[1],
-              '@AutoMenu': capData.menuClick == 'hidden' ? 0 : 1,
-              '@Centre': capData.menuClick == 'center' ? 1 : 0
+              '@AutoMenu': capData.menuClick === 'hidden' ? 0 : 1,
+              '@Centre': capData.menuClick === 'center' ? 1 : 0
             }
           });
         }
