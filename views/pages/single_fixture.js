@@ -80,43 +80,20 @@ module.exports = function(options) {
     str += '</section>';
   }
 
-  if ('multiByteChannels' in fixture || 'heads' in fixture) {
-    str += '<h3 class="channel-groups">Channel groups</h3>';
-    str += '<section class="channel-groups">';
-
-    if ('multiByteChannels' in fixture) {
-      str += '<section class="multi-byte-channels">';
-      str += '<h4>Multi-byte channels</h4>';
-      str += '<ul>';
-      fixture.multiByteChannels.forEach(multiByteChannel => {
-        str += '<li>';
-        str += multiByteChannel.map(ch => {
-          return `<data class="channel" data-channel="${ch}">${getChannelHeading(ch, fixture)}</data>`;
-        }).join(', ');
-        str += '</li>';
-      });
-      str += '</ul>';
-      str += '</section>';
+  if ('heads' in fixture) {
+    str += '<section class="heads">';
+    str += '<h3>Heads</h3>';
+    str += '<ul>';
+    for (const head in fixture.heads) {
+      str += '<li>';
+      str += `<strong>${head}:</strong> `;
+      str += fixture.heads[head].map(ch => {
+        return `<data class="channel" data-channel="${ch}">${getChannelHeading(ch, fixture)}</data>`;
+      }).join(', ');
+      str += '</li>';
     }
-
-    if ('heads' in fixture) {
-      str += '<section class="heads">';
-      str += '<h4>Heads</h4>';
-      str += '<ul>';
-      for (const head in fixture.heads) {
-        str += '<li>';
-        str += `<strong>${head}:</strong> `;
-        str += fixture.heads[head].map(ch => {
-          return `<data class="channel" data-channel="${ch}">${getChannelHeading(ch, fixture)}</data>`;
-        }).join(', ');
-        str += '</li>';
-      }
-      str += '</ul>';
-      str += '</section>';
-    }
-
-    str += '<div class="clearfix"></div>';
-    str += '</section>'; // .channel-groups
+    str += '</ul>';
+    str += '</section>';
   }
 
   str += '</section>'; // .fixture-info
@@ -141,12 +118,28 @@ module.exports = function(options) {
     str += '<h3>Channels</h3>';
     str += '<ol>';
     mode.channels.forEach((ch, i) => {
-      const channel = fixture.availableChannels[ch];
-
       str += `<li data-index="${i}">`;
       str += `<details class="channel" data-channel="${ch}">`;
       str += `<summary>${getChannelHeading(ch, fixture)}</summary>`;
-      str += handleChannel(channel);
+
+      if (ch === null) {
+        // no details
+      }
+      else if (ch in fixture.availableChannels) {
+        const channel = fixture.availableChannels[ch];
+        str += handleChannel(channel);
+      }
+      else {
+        // fine channel
+        const coarseIndex = mode.channels.findIndex(chKey =>
+          chKey !== null
+          && chKey in fixture.availableChannels
+          && 'fineChannelAliases' in fixture.availableChannels[chKey]
+          && fixture.availableChannels[chKey].fineChannelAliases.includes(ch)
+        ) + 1;
+        str += `<div>see channel ${coarseIndex}</div>`;
+      }
+
       str += '</details>';
       str += '</li>';
     });
@@ -162,12 +155,32 @@ module.exports = function(options) {
 };
 
 function getChannelHeading(key, fixture) {
-  let str = key;
-  if ('name' in fixture.availableChannels[key]) {
-    str = `${fixture.availableChannels[key].name} <code class="channel-key">${key}</code>`;
+  if (key === null) {
+    return 'Unused';
   }
 
-  return str;
+  if (key in fixture.availableChannels) {
+    if ('name' in fixture.availableChannels[key]) {
+      return `${fixture.availableChannels[key].name} <code class="channel-key">${key}</code>`;
+    }
+    return key;
+  }
+
+  for (const chKey in fixture.availableChannels) {
+    const coarseChannel = fixture.availableChannels[chKey];
+
+    if ('fineChannelAliases' in coarseChannel) {
+      const fineIndex = coarseChannel.fineChannelAliases.indexOf(key);
+      if (fineIndex !== -1) {
+        let name = 'name' in coarseChannel ? coarseChannel.name : chKey + ' fine';
+        name += fineIndex > 0 ? '^' + (fineIndex+1) : '';
+        name += name === key ? '' : ` <code class="channel-key">${key}</code>`;
+        return name;
+      }
+    }
+  }
+
+  return key;
 }
 
 /**
@@ -306,6 +319,13 @@ function handleChannel(channel) {
     str += `<section class="channel-color">
       <span class="label">Color</span>
       <span class="value"><data data-key="channel-color">${channel.color}</data></span>
+    </section>`;
+  }
+
+  if ('fineChannelAliases' in channel) {
+    str += `<section class="channel-fineChannelAliases">
+      <span class="label">Has fine channels</span>
+      <span class="value"><data data-key="channel-fineChannelAliases">${channel.fineChannelAliases.length}</data></span>
     </section>`;
   }
 

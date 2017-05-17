@@ -317,18 +317,6 @@ a.fixture-mode {
   .card.fixture-mode .value {
     max-width: none;
   }
-
-  .channel-groups > section {
-    width: calc(50% - 1.5em);
-    float: left;
-
-    &:nth-of-type(odd) {
-      margin-right: 1.5rem;
-    }
-    &:nth-of-type(even) {
-      margin-left: 1.5rem;
-    }
-  }
 }
 
 /* move download button to the right, labels left of values */
