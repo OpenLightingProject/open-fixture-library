@@ -48,6 +48,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
     let usedModeShortNames = [];
     let usedChannels = [];
+    let definedChannels = Object.keys(fixture.availableChannels);
 
     for (let i=0; i<fixture.modes.length; i++) {
       const mode = fixture.modes[i];
@@ -135,6 +136,13 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
           if (usedChannels.indexOf(alias) === -1) {
             result.warnings.push(`Fine channel alias '${alias}' defined in channel '${ch}' but never used.`);
           }
+          if (definedChannels.indexOf(alias) !== -1) {
+            result.errors.push({
+              description: `Fine channel alias '${alias}' in channel '${ch}' is already defined.`,
+              error: null
+            });
+          }
+          definedChannels.push(alias);
         });
       }
 
