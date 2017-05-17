@@ -57,22 +57,14 @@
     },
     "Pan": {
       "type": "Pan",
-      "defaultValue": 128,
-      "crossfade": true
-    },
-    "Pan fine": {
-      "type": "Pan",
-      "defaultValue": 128,
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32896,
       "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
-      "defaultValue": 128,
-      "crossfade": true
-    },
-    "Tilt fine": {
-      "type": "Tilt",
-      "defaultValue": 128,
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32896,
       "crossfade": true
     },
     "Pan/Tilt Speed": {
@@ -644,10 +636,6 @@
       "crossfade": true
     }
   },
-  "multiByteChannels": [
-    ["Pan", "Pan fine"],
-    ["Tilt", "Tilt fine"]
-  ],
   "heads": {
     "top left": ["Red 1", "Green 1", "Blue 1", "White 1"],
     "top center": ["Red 2", "Green 2", "Blue 2", "White 2"],
