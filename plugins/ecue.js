@@ -80,7 +80,7 @@ module.exports.export = function exportEcue(library, options) {
   });
 
   return outfiles;
-}
+};
 
 function exportHandleModes(fixture, defaults, physical, xmlMan) {
   const fixCreationDate = fixture.meta.createDate + '#00:00:00';
@@ -228,7 +228,7 @@ function exportHandleModes(fixture, defaults, physical, xmlMan) {
 
 function getCorrespondingMultiByteChannels(channelKey, fixture) {
   for (let channelList of fixture.multiByteChannels) {
-    if (channelList.indexOf(channelKey) != -1) {
+    if (channelList.indexOf(channelKey) !== -1) {
       return channelList;
     }
   }
@@ -246,7 +246,8 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
 
   parser.parseString(str, (parseError, xml) => {
     if (parseError) {
-      return reject(`Error parsing '${filename}' as XML.\n` + parseError.toString());
+      reject(`Error parsing '${filename}' as XML.\n` + parseError.toString());
+      return;
     }
 
     let out = {
@@ -257,7 +258,8 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
 
     try {
       if (!('Library' in xml.Document) || !('Fixtures' in xml.Document.Library[0]) || !('Manufacturer' in xml.Document.Library[0].Fixtures[0])) {
-        return reject('Nothing to import.');
+        reject('Nothing to import.');
+        return;
       }
 
       for (const manufacturer of xml.Document.Library[0].Fixtures[0].Manufacturer) {
@@ -268,10 +270,10 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
           name: manName
         };
 
-        if (manufacturer.$.Comment != '') {
+        if (manufacturer.$.Comment !== '') {
           out.manufacturers[manKey].comment = manufacturer.$.Comment;
         }
-        if (manufacturer.$.Web != '') {
+        if (manufacturer.$.Web !== '') {
           out.manufacturers[manKey].website = manufacturer.$.Web;
         }
 
@@ -284,19 +286,19 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
             name: fixture.$.Name
           };
 
-          const fixKey = manKey + '/' + fix.name.toLowerCase().replace(/[^a-z0-9\-]+/g, '-');
+          let fixKey = manKey + '/' + fix.name.toLowerCase().replace(/[^a-z0-9\-]+/g, '-');
           if (fixKey in out.fixtures) {
             fixKey += '-' + Math.random().toString(36).substr(2, 5);
             out.warnings[fixKey].push('Fixture key is not unique, appended random characters.');
           }
           out.warnings[fixKey] = [];
 
-          if (fixture.$.NameShort != '') {
+          if (fixture.$.NameShort !== '') {
             fix.shortName = fixture.$.NameShort;
           }
 
           fix.categories = ['Other'];
-          out.warnings[fixKey].push(`Please specify categories.`);
+          out.warnings[fixKey].push('Please specify categories.');
 
           fix.meta = {
             authors: [],
@@ -307,21 +309,21 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
               date: timestamp
             }
           }
-          out.warnings[fixKey].push(`Please specify your name in meta.authors.`);
+          out.warnings[fixKey].push('Please specify your name in meta.authors.');
 
-          if (fixture.$.Comment != '') {
+          if (fixture.$.Comment !== '') {
             fix.comment = fixture.$.Comment;
           }
 
           let physical = {};
 
-          if (fixture.$.DimWidth != '10' && fixture.$.DimHeight != '10' && fixture.$.DimDepth != '10') {
+          if (fixture.$.DimWidth !== '10' && fixture.$.DimHeight !== '10' && fixture.$.DimDepth !== '10') {
             physical.dimensions = [parseInt(fixture.$.DimWidth), parseInt(fixture.$.DimHeight), parseInt(fixture.$.DimDepth)];
           }
-          if (fixture.$.Weight != '0') {
+          if (fixture.$.Weight !== '0') {
             physical.weight = parseFloat(fixture.$.Weight);
           }
-          if (fixture.$.Power != '0') {
+          if (fixture.$.Power !== '0') {
             physical.power = parseInt(fixture.$.Power);
           }
 
@@ -372,12 +374,12 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
               shortName += '-' + Math.random().toString(36).substr(2, 5);
             }
 
-            if (name != shortName) {
+            if (name !== shortName) {
               ch.name = name;
             }
 
             ch.type = 'Intensity';
-            if ('ChannelColor' in fixture && fixture.ChannelColor.indexOf(channel) != -1) {
+            if ('ChannelColor' in fixture && fixture.ChannelColor.indexOf(channel) !== -1) {
               if (('Range' in channel && channel.Range.length > 1) || /colou?r\s*macro/.test(testName)) {
                 ch.type = 'MultiColor';
               }
@@ -423,7 +425,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
             else if (testName.includes('reset')) {
               ch.type = 'Maintenance';
             }
-            else if (fixture.ChannelBeam && fixture.ChannelBeam.indexOf(channel) != -1) {
+            else if (fixture.ChannelBeam && fixture.ChannelBeam.indexOf(channel) !== -1) {
               ch.type = 'Beam';
             }
             else if (!testName.includes('intensity') && !testName.includes('master') && !testName.includes('dimmer')) {
@@ -431,22 +433,22 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
               out.warnings[fixKey].push(`Please check the type of channel '${shortName}'.`);
             }
 
-            if (channel.$.DefaultValue != '0') {
+            if (channel.$.DefaultValue !== '0') {
               ch.defaultValue = parseInt(channel.$.DefaultValue);
             }
-            if (channel.$.Highlight != '0') {
+            if (channel.$.Highlight !== '0') {
               ch.highlightValue = parseInt(channel.$.Highlight);
             }
-            if (channel.$.Invert == '1') {
+            if (channel.$.Invert === '1') {
               ch.invert = true;
             }
-            if (channel.$.Constant == '1') {
+            if (channel.$.Constant === '1') {
               ch.constant = true;
             }
-            if (channel.$.Crossfade == '1') {
+            if (channel.$.Crossfade === '1') {
               ch.crossfade = true;
             }
-            if (channel.$.Precedence == 'HTP') {
+            if (channel.$.Precedence === 'HTP') {
               ch.precedence = 'HTP';
             }
 
@@ -459,7 +461,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
                   name: range.$.Name
                 };
 
-                if (cap.range[1] == -1) {
+                if (cap.range[1] === -1) {
                   cap.range[1] = (i+1 < channel.Range.length) ? parseInt(channel.Range[i+1].$.Start) - 1 : 255;
                 }
 
@@ -469,10 +471,10 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
                   cap.color = colors[color];
                 }
 
-                if (range.$.AutoMenu != '1') {
+                if (range.$.AutoMenu !== '1') {
                   cap.menuClick = 'hidden';
                 }
-                else if (range.$.Centre != '0') {
+                else if (range.$.Centre !== '0') {
                   cap.menuClick = 'center';
                 }
 
@@ -483,7 +485,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
             fix.availableChannels[shortName] = ch;
             fix.modes[0].channels[parseInt(channel.$.DmxByte0) - 1] = shortName;
 
-            if (channel.$.DmxByte1 != '0') {
+            if (channel.$.DmxByte1 !== '0') {
               let chLsb = JSON.parse(JSON.stringify(ch)); // clone channel data
 
               const shortNameFine = shortName + ' fine';
@@ -509,7 +511,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
             }
           }
 
-          if (fix.multiByteChannels.length == 0) {
+          if (fix.multiByteChannels.length === 0) {
             delete fix.multiByteChannels;
           }
 
@@ -518,7 +520,8 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
       }
     }
     catch (parseError) {
-      return reject(`Error parsing '${filename}'.\n` + parseError.toString());
+      reject(`Error parsing '${filename}'.\n` + parseError.toString());
+      return;
     }
 
     resolve(out);
