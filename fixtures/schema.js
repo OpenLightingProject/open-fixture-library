@@ -14,8 +14,6 @@ var schema = require('js-schema');
  * since JSON has no function type
  */
 
-var DMXValue = Number.min(0).max(255).step(1);
-
 var URL = schema(/^(ftp|http|https):\/\/[^ "]+$/);
 
 var ISODate = schema(/^\d{4}-\d{2}-\d{2}$/);
@@ -49,6 +47,8 @@ var Physical = schema({
   '*': Function
 });
 
+var DMXValue = Number.min(0).step(1);  // max value depends on how many fine channels there are (255 if none, 65535 if one, etc.)
+
 var Capability = schema({
   'range': Array.of(2, DMXValue),
   'name': String,
@@ -59,10 +59,14 @@ var Capability = schema({
   '*': Function
 });
 
+var ChannelKey = String;  // channels in availableChannels
+var ChannelAliasKey = String;  // channel keys that are only defined inside other channels
+
 var Channel = schema({
   '?name': [String, null], // null: use channel key
   'type': ['Intensity', 'Strobe', 'Shutter', 'Speed', 'SingleColor', 'MultiColor', 'Gobo', 'Prism', 'Pan', 'Tilt', 'Beam', 'Effect', 'Maintenance', 'Nothing'],
   '?color': ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime'],
+  '?fineChannelAliases': Array.of(1, Infinity, ChannelAliasKey),
   '?defaultValue': DMXValue,
   '?highlightValue': DMXValue,
   '?invert': Boolean,
@@ -72,8 +76,6 @@ var Channel = schema({
   '?capabilities': Array.of(Capability),
   '*': Function
 });
-
-var ChannelKey = String;
 
 var Mode = schema({
   'name': String,
@@ -105,7 +107,6 @@ var Fixture = schema({
   'availableChannels': schema({
     '*': Channel // '*' is the channel key
   }),
-  '?multiByteChannels': Array.of(Array.of(ChannelKey)), // most significant channel first, e.g. [["ch1-coarse", "ch1-fine"], ["ch2-coarse", "ch2-fine"]]
   '?heads': schema({
     '*': Array.of(ChannelKey) // '*' is the head name
   }),

@@ -47,7 +47,6 @@ module.exports = {
       ]
     }
   },
-  multiByteChannels: [],
   heads: {},
   modes: [ // required
     {
