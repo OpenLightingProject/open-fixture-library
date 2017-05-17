@@ -80,27 +80,28 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
       }
 
       for (const ch of mode.channels) {
-        if (!(ch in fixture.availableChannels) && ch !== null) {
+        if (ch === null) {
+          continue;
+        }
+
+        usedChannels.push(ch);
+
+        if (ch in fixture.availableChannels) {
+          continue;
+        }
+
+        const isValidFineChannelAlias = mode.channels.some(function(modeCh) {
+          return modeCh !== null
+            && modeCh in fixture.availableChannels
+            && 'fineChannelAliases' in fixture.availableChannels[modeCh]
+            && fixture.availableChannels[modeCh].fineChannelAliases.includes(ch);
+        });
+
+        if (!isValidFineChannelAlias) {
           result.errors.push({
-            description: `channel '${ch}' referenced from mode '${modeShortName}' (#${i}) but missing.`,
+            description: `channel '${ch}' referenced from mode '${modeShortName}' (#${i}) but is not defined. Note: fine channels can only be used in the same mode as their coarse counterpart.`,
             error: null
           });
-        }
-        usedChannels.push(ch);
-      }
-    }
-
-    if ('multiByteChannels' in fixture) {
-      for (let i=0; i<fixture.multiByteChannels.length; i++) {
-        const chs = fixture.multiByteChannels[i];
-
-        for (let j=0; j<chs.length; j++) {
-          if (!fixture.availableChannels[chs[j]]) {
-            result.errors.push({
-              description: `channel '${chs[j]}' referenced from multiByteChannels but missing.`,
-              error: null
-            });
-          }
         }
       }
     }
@@ -127,6 +128,30 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
       const channel = fixture.availableChannels[ch];
 
+      let dmxMaxBound = 256;
+      if ('fineChannelAliases' in channel) {
+        channel.fineChannelAliases.forEach(alias => {
+          dmxMaxBound *= 256;
+          if (usedChannels.indexOf(alias) === -1) {
+            result.warnings.push(`Fine channel alias '${alias}' defined in channel '${ch}' but never used.`);
+          }
+        });
+      }
+
+      if ('defaultValue' in channel && channel.defaultValue >= dmxMaxBound) {
+        result.errors.push({
+          description: `defaultValue must be strictly less than ${dmxMaxBound} in channel '${ch}'.`,
+          error: null
+        });
+      }
+
+      if ('highlightValue' in channel && channel.highlightValue >= dmxMaxBound) {
+        result.errors.push({
+          description: `highlightValue must be strictly less than ${dmxMaxBound} in channel '${ch}'.`,
+          error: null
+        });
+      }
+
       if ('color' in channel && channel.type !== 'SingleColor') {
         result.warnings.push(`color in channel '${ch}' defined but channel type is not 'SingleColor'.`);
       }
@@ -142,46 +167,44 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
         for (let i=0; i<channel.capabilities.length; i++) {
           const cap = channel.capabilities[i];
 
+          if (cap.range[1] >= dmxMaxBound) {
+            result.errors.push({
+              description: `range values must be strictly less than ${dmxMaxBound} in capability #${i} in channel '${ch}'.`,
+              error: null
+            });
+            break;
+          }
           if (cap.range[0] > cap.range[1]) {
             result.errors.push({
               description: `range invalid in capability #${i} in channel '${ch}'.`,
               error: null
             });
+            break;
           }
           if (i > 0 && cap.range[0] <= channel.capabilities[i-1].range[1]) {
             result.errors.push({
               description: `ranges overlapping in capabilities #${i-1} and #${i} in channel '${ch}'.`,
               error: null
             });
+            break;
           }
 
-          if ('center' in cap && 'hideInMenu' in cap && cap.hideInMenu) {
-            result.errors.push({
-              description: `center is unused since hideInMenu is set in capability #${i} in channel '${ch}'.`,
-              error: null
-            });
-          }
-
-          if ((
-            ('color' in cap && cap.color.length > 0)
-            || ('image' in cap && cap.image.length > 0)
-            ) && ['MultiColor', 'Effect', 'Gobo'].indexOf(channel.type) === -1) {
+          if (('color' in cap || ('image' in cap && cap.image.length > 0))
+            && ['MultiColor', 'Effect', 'Gobo'].indexOf(channel.type) === -1) {
             result.errors.push({
               description: `color or image present in capability #${i} but improper channel type '${channel.type}' in channel '${ch}'.`,
               error: null
             });
           }
 
-          if ('color2' in cap && cap.color2.length > 0
-            && (!('color' in cap) || cap.color.length === 0)) {
+          if ('color2' in cap && !('color' in cap)) {
             result.errors.push({
               description: `color2 present but color missing in capability #${i} in channel '${ch}'.`,
               error: null
             });
           }
 
-          if ('image' in cap && cap.image.length > 0
-            && 'color' in cap && cap.color.length > 0) {
+          if ('image' in cap && cap.image.length > 0 && 'color' in cap) {
             result.errors.push({
               description: `color and image cannot be present at the same time in capability #${i} in channel '${ch}'.`,
               error: null
