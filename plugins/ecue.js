@@ -345,6 +345,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
           }
 
           fix.availableChannels = {};
+          fix.multiByteChannels = [];
           fix.modes = [{
             name: `${fixture.$.AllocateDmxChannels}-channel`,
             shortName: `${fixture.$.AllocateDmxChannels}ch`,
@@ -445,6 +446,12 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
               out.warnings[fixKey].push(`Please check the type of channel '${shortName}'.`);
             }
 
+            if (channel.$.DmxByte1 !== '0') {
+              const shortNameFine = shortName + ' fine';
+              ch.fineChannelAliases = [shortNameFine];
+              fix.modes[0].channels[parseInt(channel.$.DmxByte1) - 1] = shortNameFine;
+            }
+
             if (channel.$.DefaultValue !== '0') {
               ch.defaultValue = parseInt(channel.$.DefaultValue);
             }
@@ -496,29 +503,10 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
 
             fix.availableChannels[shortName] = ch;
             fix.modes[0].channels[parseInt(channel.$.DmxByte0) - 1] = shortName;
+          }
 
-            if (channel.$.DmxByte1 !== '0') {
-              let chLsb = JSON.parse(JSON.stringify(ch)); // clone channel data
-
-              const shortNameFine = shortName + ' fine';
-              if (chLsb.name) {
-                chLsb.name += ' fine';
-              }
-
-              if ('defaultValue' in ch) {
-                ch.defaultValue = Math.floor(ch.defaultValue / 256);
-                chLsb.defaultValue %= 256;
-              }
-
-              if ('highlightValue' in ch) {
-                ch.highlightValue = Math.floor(ch.highlightValue / 256);
-                chLsb.highlightValue %= 256;
-              }
-
-              fix.availableChannels[shortNameFine] = chLsb;
-
-              fix.modes[0].channels[parseInt(channel.$.DmxByte1) - 1] = shortNameFine;
-            }
+          if (fix.multiByteChannels.length === 0) {
+            delete fix.multiByteChannels;
           }
 
           out.fixtures[fixKey] = fix;
