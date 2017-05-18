@@ -63,7 +63,7 @@ var ChannelKey = String;  // channels in availableChannels
 var ChannelAliasKey = String;  // channel keys that are only defined inside other channels
 
 var Channel = schema({
-  '?name': [String, null], // null: use channel key
+  '?name': String,  // use channel key if name is missing
   'type': ['Intensity', 'Strobe', 'Shutter', 'Speed', 'SingleColor', 'MultiColor', 'Gobo', 'Prism', 'Pan', 'Tilt', 'Beam', 'Effect', 'Maintenance', 'Nothing'],
   '?color': ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime'],
   '?fineChannelAliases': Array.of(1, Infinity, ChannelAliasKey),

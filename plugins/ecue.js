@@ -345,7 +345,6 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
           }
 
           fix.availableChannels = {};
-          fix.multiByteChannels = [];
           fix.modes = [{
             name: `${fixture.$.AllocateDmxChannels}-channel`,
             shortName: `${fixture.$.AllocateDmxChannels}ch`,
@@ -503,10 +502,6 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
 
             fix.availableChannels[shortName] = ch;
             fix.modes[0].channels[parseInt(channel.$.DmxByte0) - 1] = shortName;
-          }
-
-          if (fix.multiByteChannels.length === 0) {
-            delete fix.multiByteChannels;
           }
 
           out.fixtures[fixKey] = fix;

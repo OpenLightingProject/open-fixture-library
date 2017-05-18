@@ -30,7 +30,6 @@ module.exports = {
   },
   availableChannels: { // required
     'channel key': {
-      name: null, // default: channel key
       type: 'Intensity', // required
       defaultValue: 0,
       highlightValue: 0,
