@@ -122,24 +122,56 @@ function exportHandleModes(fixture, defaults, physical, xmlMan) {
         continue;
       }
 
-      let doubleByte = false;
-      const multiByteChannels = getCorrespondingMultiByteChannels(chKey, fixture);
-      if (multiByteChannels !== null
-        && mode.channels.includes(multiByteChannels[0])
-        && mode.channels.includes(multiByteChannels[1])
-        ) {
-        // it is a 16-bit channel and both 8-bit parts are used in this mode
-        chKey = multiByteChannels[0];
-        doubleByte = true;
+      let channel = fixture.availableChannels[chKey];
+
+
+      let dmxByte0 = dmxCount;
+      let dmxByte1 = -1;
+
+      if (!(chKey in fixture.availableChannels)) {
+        // this is a fine channel
+
+        const coarseChannelKey = Object.keys(fixture.availableChannels).find(coarseKey => 'fineChannelAliases' in fixture.availableChannels[coarseKey] && fixture.availableChannels[coarseKey].fineChannelAliases.includes(chKey));
+
+        // use coarse channel's data
+        channel = fixture.availableChannels[coarseChannelKey];
+
+        const coarseChannelIndex = mode.channels.indexOf(coarseChannelKey);
+
+        if (coarseChannelIndex !== -1) {
+          dmxByte0 = coarseChannelIndex;
+          dmxByte1 = dmxCount;
+
+          mode.channels[dmxByte0] = null;
+          mode.channels[dmxByte1] = null;
+        }
+        else {
+          // coarse and first fine channel were already handled -> just pretend it's a single channel
+          channel.name = (channel.name || coarseChannelKey) + ' fine^' + (channel.fineChannelAliases.indexOf(chKey) + 1);
+          divideChannelDmxValues(channel, channel.fineChannelAliases.length - 1);
+        }
+      }
+      else if ('fineChannelAliases' in fixture.availableChannels[chKey]) {
+        const firstFineChannelIndex = mode.channels.indexOf(fixture.availableChannels[chKey].fineChannelAliases[0]);
+
+        if (firstFineChannelIndex !== -1) {
+          dmxByte1 = firstFineChannelIndex;
+
+          mode.channels[dmxByte1] = null;
+        }
+        else {
+          divideChannelDmxValues(channel, 1);
+        }
       }
 
-      const channel = fixture.availableChannels[chKey];
+      dmxByte0++;
+      dmxByte1++;
+
+      if (!('name' in channel)) {
+        channel.name = chKey;
+      }
 
       let chData = Object.assign({}, defaults.availableChannels['channel key'], channel);
-
-      if (chData.name === null) {
-        chData.name = chKey;
-      }
 
       let chType;
       switch (chData.type) {
@@ -166,31 +198,6 @@ function exportHandleModes(fixture, defaults, physical, xmlMan) {
         default:
           chType = 'Intensity';
       }
-
-      let dmxByte0 = dmxCount;
-      let dmxByte1 = -1;
-
-      if (doubleByte) {
-        const chKeyLsb = multiByteChannels[1];
-        const channelLsb = fixture.availableChannels[chKeyLsb];
-
-        const chDataLsb = Object.assign({}, defaults.availableChannels['channel key'], channelLsb);
-
-        chData.defaultValue *= 256;
-        chData.defaultValue += chDataLsb.defaultValue;
-
-        chData.highlightValue *= 256;
-        chData.highlightValue += chDataLsb.highlightValue;
-
-        dmxByte0 = mode.channels.indexOf(chKey);
-        dmxByte1 = mode.channels.indexOf(chKeyLsb);
-
-        // mark other part of 16-bit channel as already handled
-        mode.channels[Math.max(dmxByte1, dmxByte0)] = null;
-      }
-
-      dmxByte0++;
-      dmxByte1++;
 
       let xmlChannelObj = {};
       xmlChannelObj[`Channel${chType}`] = {
@@ -226,13 +233,19 @@ function exportHandleModes(fixture, defaults, physical, xmlMan) {
   }
 }
 
-function getCorrespondingMultiByteChannels(channelKey, fixture) {
-  for (let channelList of fixture.multiByteChannels) {
-    if (channelList.indexOf(channelKey) !== -1) {
-      return channelList;
+function divideChannelDmxValues(channel, times) {
+  if ('highlightValue' in channel) {
+    channel.highlightValue = Math.floor(channel.highlightValue / Math.pow(256, times));
+  }
+  if ('defaultValue' in channel) {
+    channel.defaultValue = Math.floor(channel.defaultValue / Math.pow(256, times));
+  }
+  if ('capabilities' in channel) {
+    for (const cap of channel.capabilities) {
+      cap.range[0] = Math.floor(cap.range[0] / Math.pow(256, times));
+      cap.range[1] = Math.floor(cap.range[1] / Math.pow(256, times));
     }
   }
-  return null;
 }
 
 module.exports.import = function importEcue(str, filename, resolve, reject) {
@@ -332,7 +345,6 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
           }
 
           fix.availableChannels = {};
-          fix.multiByteChannels = [];
           fix.modes = [{
             name: `${fixture.$.AllocateDmxChannels}-channel`,
             shortName: `${fixture.$.AllocateDmxChannels}ch`,
@@ -503,16 +515,10 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
                 chLsb.highlightValue %= 256;
               }
 
-              fix.multiByteChannels.push([shortName, shortNameFine]);
-
               fix.availableChannels[shortNameFine] = chLsb;
 
               fix.modes[0].channels[parseInt(channel.$.DmxByte1) - 1] = shortNameFine;
             }
-          }
-
-          if (fix.multiByteChannels.length === 0) {
-            delete fix.multiByteChannels;
           }
 
           out.fixtures[fixKey] = fix;
