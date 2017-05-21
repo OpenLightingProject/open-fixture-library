@@ -25,14 +25,14 @@ var Color = schema(/^#[0-9a-f]{6}$/);
 var Category = schema(['Blinder', 'Color Changer', 'Dimmer', 'Effect', 'Fan', 'Flower', 'Hazer', 'Laser', 'Moving Head', 'Scanner', 'Smoke', 'Strobe', 'Other']);
 
 var Physical = schema({
-  '?dimensions': Array.of(3, Number.min(0)), // width, height, depth (in mm)
-  '?weight': Number.min(0), // in kg
-  '?power': Number.min(0), // in W
+  '?dimensions': Array.of(3, Number.above(0)), // width, height, depth (in mm)
+  '?weight': Number.above(0), // in kg
+  '?power': Number.above(0), // in W
   '?DMXconnector': ['3-pin', '5-pin', '3-pin (swapped +/-)', '3-pin and 5-pin', '3.5mm stereo jack'], // additions are welcome
   '?bulb': schema({
     '?type': String, // e.g. 'LED'
-    '?colorTemperature': Number.min(0), // in K
-    '?lumens': Number.min(0),
+    '?colorTemperature': Number.above(0), // in K
+    '?lumens': Number.above(0),
     '*': Function
   }),
   '?lens': schema({
@@ -62,7 +62,7 @@ var Capability = schema({
 var Channel = schema({
   '?name': [String, null], // null: use channel key
   'type': ['Intensity', 'Strobe', 'Shutter', 'Speed', 'SingleColor', 'MultiColor', 'Gobo', 'Prism', 'Pan', 'Tilt', 'Beam', 'Effect', 'Maintenance', 'Nothing'],
-  '?color': ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime'],
+  '?color': ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime', 'Indigo'],
   '?defaultValue': DMXValue,
   '?highlightValue': DMXValue,
   '?invert': Boolean,
