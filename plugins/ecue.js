@@ -128,7 +128,7 @@ function exportHandleModes(fixture, physical, xmlMan) {
 }
 
 function exportHandleChannel(fixture, mode, dmxCount, viewPosCount) {
-  let chKey = mode.channels[dmxCount]
+  let chKey = mode.channels[dmxCount];
   let channel = fixture.availableChannels[chKey];
 
   let dmxByte0 = dmxCount;
