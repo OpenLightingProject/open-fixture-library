@@ -23,7 +23,11 @@ module.exports = function(options) {
   str += '<header class="fixture-header">';
 
   str += '<div class="title">';
-  str += `<h1><a href="/${man}"><data data-key="manufacturer">${manufacturer.name}</data></a> <data data-key="name">${fixture.name}</data> <code><data data-key="shortName">${_(fixture.shortName)}</data></code></h1>`;
+  str += `<h1><a href="/${man}"><data data-key="manufacturer">${manufacturer.name}</data></a> <data data-key="name">${fixture.name}</data>`;
+  if ('shortName' in fixture) {
+    str += ` <code><data data-key="shortName">${fixture.shortName || ''}</data></code>`;
+  }
+  str += '</h1>';
   str += '<section class="fixture-meta">';
   str += `<span class="last-modify-date">Last modified:&nbsp;<date>${fixture.meta.lastModifyDate}</date></span>`;
   str += `<span class="create-date">Created:&nbsp;<date>${fixture.meta.createDate}</date></span>`;
@@ -84,10 +88,10 @@ module.exports = function(options) {
     str += '<section class="heads">';
     str += '<h3>Heads</h3>';
     str += '<ul>';
-    for (const head in fixture.heads) {
+    for (const headName of Object.keys(fixture.heads)) {
       str += '<li>';
-      str += `<strong>${head}:</strong> `;
-      str += fixture.heads[head].map(ch => {
+      str += `<strong>${headName}:</strong> `;
+      str += fixture.heads[headName].map(ch => {
         return `<data class="channel" data-channel="${ch}">${getChannelHeading(ch, fixture)}</data>`;
       }).join(', ');
       str += '</li>';
@@ -166,7 +170,7 @@ function getChannelHeading(key, fixture) {
     return key;
   }
 
-  for (const chKey in fixture.availableChannels) {
+  for (const chKey of Object.keys(fixture.availableChannels)) {
     const coarseChannel = fixture.availableChannels[chKey];
 
     if ('fineChannelAliases' in coarseChannel) {
@@ -181,16 +185,6 @@ function getChannelHeading(key, fixture) {
   }
 
   return key;
-}
-
-/**
- * Helper function for easy output of variables.
- */
-function _(variable) {
-  if (variable === undefined) {
-    return '';
-  }
-  return variable;
 }
 
 function handlePhysicalData(physical) {
@@ -381,31 +375,31 @@ function handleChannel(channel) {
       str += '<tr>';
 
       str += '<td class="capability-range0" title="DMX value start">';
-      str += `  <data data-key="capability-range-0">${_(cap.range[0])}</data>`;
+      str += `  <data data-key="capability-range-0">${cap.range[0]}</data>`;
       str += '</td>';
 
       str += '<td class="capability-range1" title="DMX value end">';
-      str += `  <data data-key="capability-range-1">${_(cap.range[1])}</data>`;
+      str += `  <data data-key="capability-range-1">${cap.range[1]}</data>`;
       str += '</td>';
 
       str += '<td class="capability-name" title="name">';
-      str += `  <data data-key="capability-name">${_(cap.name)}</data>`;
+      str += `  <data data-key="capability-name">${cap.name}</data>`;
       str += '</td>';
 
       str += '<td class="capability-menuClick" title="menu click action">';
-      str += `  <data data-key="capability-menuClick">${_(cap.menuClick)}</data>`;
+      str += `  <data data-key="capability-menuClick">${cap.menuClick || ''}</data>`;
       str += '</td>';
 
       str += `<td class="capability-color" title="color: ${cap.color}">`;
-      str += `  <data class="color" data-key="capability-color" data-value="${cap.color}">${_(cap.color)}</data>`;
+      str += `  <data class="color" data-key="capability-color" data-value="${cap.color}">${cap.color || ''}</data>`;
       str += '</td>';
 
       str += `<td class="capability-color2" title="color 2: ${cap.color2}">`;
-      str += `  <data class="color" data-key="capability-color2" data-value="${cap.color2}">${_(cap.color2)}</data>`;
+      str += `  <data class="color" data-key="capability-color2" data-value="${cap.color2}">${cap.color2 || ''}</data>`;
       str += '</td>';
 
       str += '<td class="capability-image" title="image">';
-      str += `  <data data-key="capability-image">${_(cap.image)}</data>`;
+      str += `  <data data-key="capability-image">${cap.image || ''}</data>`;
       str += '</td>';
 
       str += '</tr>';
