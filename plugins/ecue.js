@@ -103,7 +103,7 @@ function exportHandleModes(fixture, defaults, physical, xmlMan) {
         '@_ModifiedDate': fixModifiedDate,
         '@Name': fixture.name + (fixture.modes.length > 1 ? ` (${modeData.shortName} mode)` : ''),
         '@NameShort': fixture.shortName + (fixture.modes.length > 1 ? '-' + modeData.shortName : ''),
-        '@Comment': fixture.comment,
+        '@Comment': fixture.comment || '',
         '@AllocateDmxChannels': mode.channels.length,
         '@Weight': modeData.physical.weight,
         '@Power': modeData.physical.power,

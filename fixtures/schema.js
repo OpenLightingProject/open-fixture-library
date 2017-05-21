@@ -14,6 +14,8 @@ var schema = require('js-schema');
  * since JSON has no function type
  */
 
+ var NotEmptyString = String.of(1, null, null);
+
 var DMXValue = Number.min(0).max(255).step(1);
 
 var URL = schema(/^(ftp|http|https):\/\/[^ "]+$/);
@@ -30,13 +32,13 @@ var Physical = schema({
   '?power': Number.above(0), // in W
   '?DMXconnector': ['3-pin', '5-pin', '3-pin (swapped +/-)', '3-pin and 5-pin', '3.5mm stereo jack'], // additions are welcome
   '?bulb': schema({
-    '?type': String, // e.g. 'LED'
+    '?type': NotEmptyString, // e.g. 'LED'
     '?colorTemperature': Number.above(0), // in K
     '?lumens': Number.above(0),
     '*': Function
   }),
   '?lens': schema({
-    '?name': String, // e.g. 'PC', 'Fresnel'
+    '?name': NotEmptyString, // e.g. 'PC', 'Fresnel'
     '?degreesMinMax': Array.of(2, Number.min(0).max(360)),
     '*': Function
   }),
@@ -51,11 +53,11 @@ var Physical = schema({
 
 var Capability = schema({
   'range': Array.of(2, DMXValue),
-  'name': String,
+  'name': NotEmptyString,
   '?menuClick': ['start', 'center', 'end', 'hidden'],
   '?color': Color,
   '?color2': Color,
-  '?image': String,
+  '?image': NotEmptyString,
   '*': Function
 });
 
@@ -73,33 +75,33 @@ var Channel = schema({
   '*': Function
 });
 
-var ChannelKey = String;
+var ChannelKey = NotEmptyString;
 
 var Mode = schema({
-  'name': String,
-  '?shortName': [String, null], // null: use name
+  'name': NotEmptyString,
+  '?shortName': [NotEmptyString, null], // null: use name
   '?physical': Physical, // overrides fixture's Physical
   'channels': Array.of([null, ChannelKey]), // null for unused channels
   '*': Function
 });
 
 var Fixture = schema({
-  'name': String,
-  '?shortName': [String, null], // null: use name
+  'name': NotEmptyString,
+  '?shortName': [NotEmptyString, null], // null: use name
   'categories': Array.of(1, Infinity, Category), // most important category first
   'meta': schema({
-    'authors': Array.of(String),
+    'authors': Array.of(NotEmptyString),
     'createDate': ISODate,
     'lastModifyDate': ISODate,
     '?importPlugin': schema({
-      'plugin': String,
+      'plugin': NotEmptyString,
       'date': ISODate,
-      '?comment': String,
+      '?comment': NotEmptyString,
       '*': Function
     }),
     '*': Function
   }),
-  '?comment': String,
+  '?comment': NotEmptyString,
   '?manualURL': URL,
   '?physical': Physical,
   'availableChannels': schema({
@@ -115,8 +117,8 @@ var Fixture = schema({
 
 var Manufacturers = schema({
   '*': schema({ // '*' is the manufacturer key
-    'name': String,
-    '?comment': String,
+    'name': NotEmptyString,
+    '?comment': NotEmptyString,
     '?website': URL,
     '*': Function
   })

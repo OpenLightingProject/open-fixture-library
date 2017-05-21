@@ -7,14 +7,13 @@ module.exports = {
     createDate: '1970-01-01',
     lastModifyDate: '1970-01-01'
   },
-  comment: '',
   physical: {
     dimensions: [0, 0, 0],
     weight: 0,
     power: 0,
     DMXconnector: '3-pin',
     bulb: {
-      type: '',
+      type: 'Other',
       colorTemperature: 0,
       lumens: 0
     },
