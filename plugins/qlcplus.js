@@ -93,12 +93,12 @@ module.exports.export = function exportQLCplus(library, options) {
   }
 
   return outfiles;
-}
+};
 
 function exportHandleAvailableChannels(fixture, defaults) {
   let xmlChannels = [];
 
-  for (const chKey in fixture.availableChannels) {
+  for (const chKey of Object.keys(fixture.availableChannels)) {
     const chData = Object.assign({}, defaults.availableChannels['channel key'], fixture.availableChannels[chKey]);
 
     chData.name = chData.name.replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -129,7 +129,7 @@ function exportHandleAvailableChannels(fixture, defaults) {
       xmlChannel.Colour = 'color' in chData ? chData.color : 'Generic';
     }
 
-    const insertedIndex = xmlChannels.push(xmlChannel) - 1;
+    xmlChannels.push(xmlChannel);
 
     let divisor = 1;
     if ('fineChannelAliases' in chData) {
@@ -266,8 +266,8 @@ function exportHandleModes(fixture, defaults, physical) {
       });
     }
 
-    for (const head in fixture.heads) {
-      const headLampList = fixture.heads[head];
+    for (const headName of Object.keys(fixture.heads)) {
+      const headLampList = fixture.heads[headName];
       let headChannelList = [];
       for (const channel of headLampList) {
         const chNum = modeData.channels.indexOf(channel);
@@ -543,19 +543,21 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
           mod.channels[parseInt(ch.$.Number)] = ch._;
         }
 
-        for (const i in mode.Head || []) {
-          let head = [];
+        if ('Head' in mode) {
+          mode.Head.forEach((head, index) => {
+            let channelList = [];
 
-          if (mode.Head[i].Channel === undefined) {
-            continue;
-          }
+            if (head.Channel === undefined) {
+              continue;
+            }
 
-          for (const ch of mode.Head[i].Channel) {
-            const chNum = parseInt(ch);
-            head.push(mod.channels[chNum]);
-          }
+            for (const ch of head.Channel) {
+              const chNum = parseInt(ch);
+              channelList.push(mod.channels[chNum]);
+            }
 
-          fix.heads[mod.name + '-head' + i] = head;
+            fix.heads[mod.name + '-head' + index] = channelList;
+          });
         }
 
         fix.modes.push(mod);
