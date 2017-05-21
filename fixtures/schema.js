@@ -108,7 +108,7 @@ var Fixture = schema({
     '*': Channel // '*' is the channel key
   }),
   '?heads': schema({
-    '*': Array.of(ChannelKey, ChannelAliasKey) // '*' is the head name
+    '*': Array.of([ChannelKey, ChannelAliasKey]) // '*' is the head name
   }),
   'modes': Array.of(1, Infinity, Mode),
   '*': Function
