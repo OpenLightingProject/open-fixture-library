@@ -1,11 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 
+let fixture;
+
 module.exports = function(options) {
   const {manufacturers, man, fix, plugins} = options;
   const manufacturer = manufacturers[man];
 
-  const fixture = JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', man, fix + '.json'), 'utf-8'));
+  fixture = JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', man, fix + '.json'), 'utf-8'));
   
   options.title = `${manufacturer.name} ${fixture.name} - Open Fixture Library`;
 
@@ -92,7 +94,7 @@ module.exports = function(options) {
       str += '<li>';
       str += `<strong>${headName}:</strong> `;
       str += fixture.heads[headName].map(ch => {
-        return `<data class="channel" data-channel="${ch}">${getChannelHeading(ch, fixture)}</data>`;
+        return `<data class="channel" data-channel="${ch}">${getChannelHeading(ch)}</data>`;
       }).join(', ');
       str += '</li>';
     }
@@ -121,27 +123,27 @@ module.exports = function(options) {
 
     str += '<h3>Channels</h3>';
     str += '<ol>';
-    mode.channels.forEach((ch, i) => {
-      str += `<li data-index="${i}">`;
-      str += `<details class="channel" data-channel="${ch}">`;
-      str += `<summary>${getChannelHeading(ch, fixture)}</summary>`;
+    mode.channels.forEach((chKey, index) => {
+      str += `<li data-index="${index}">`;
+      str += `<details class="channel" data-channel="${chKey}">`;
+      str += `<summary>${getChannelHeading(chKey)}</summary>`;
 
-      if (ch === null) {
+      if (chKey === null) {
         // no details
       }
-      else if (ch in fixture.availableChannels) {
-        const channel = fixture.availableChannels[ch];
-        str += handleChannel(channel);
+      else if (chKey in fixture.availableChannels) {
+        const channel = fixture.availableChannels[chKey];
+        str += handleChannel(channel, mode);
       }
       else {
         // fine channel
-        const coarseIndex = mode.channels.findIndex(chKey =>
-          chKey !== null
-          && chKey in fixture.availableChannels
-          && 'fineChannelAliases' in fixture.availableChannels[chKey]
-          && fixture.availableChannels[chKey].fineChannelAliases.includes(ch)
+        const coarseIndex = mode.channels.findIndex(ch =>
+          ch !== null
+          && ch in fixture.availableChannels
+          && 'fineChannelAliases' in fixture.availableChannels[ch]
+          && fixture.availableChannels[ch].fineChannelAliases.includes(chKey)
         ) + 1;
-        str += `<div>see channel ${coarseIndex}</div>`;
+        str += `<div>Fine channel of channel ${coarseIndex}</div>`;
       }
 
       str += '</details>';
@@ -158,33 +160,33 @@ module.exports = function(options) {
   return str;
 };
 
-function getChannelHeading(key, fixture) {
-  if (key === null) {
+function getChannelHeading(chKey) {
+  if (chKey === null) {
     return 'Unused';
   }
 
-  if (key in fixture.availableChannels) {
-    if ('name' in fixture.availableChannels[key]) {
-      return `${fixture.availableChannels[key].name} <code class="channel-key">${key}</code>`;
+  if (chKey in fixture.availableChannels) {
+    if ('name' in fixture.availableChannels[chKey]) {
+      return `${fixture.availableChannels[chKey].name} <code class="channel-key">${chKey}</code>`;
     }
-    return key;
+    return chKey;
   }
 
   for (const chKey of Object.keys(fixture.availableChannels)) {
     const coarseChannel = fixture.availableChannels[chKey];
 
     if ('fineChannelAliases' in coarseChannel) {
-      const fineIndex = coarseChannel.fineChannelAliases.indexOf(key);
+      const fineIndex = coarseChannel.fineChannelAliases.indexOf(chKey);
       if (fineIndex !== -1) {
         let name = 'name' in coarseChannel ? coarseChannel.name : chKey + ' fine';
         name += fineIndex > 0 ? '^' + (fineIndex+1) : '';
-        name += name === key ? '' : ` <code class="channel-key">${key}</code>`;
+        name += name === chKey ? '' : ` <code class="channel-key">${chKey}</code>`;
         return name;
       }
     }
   }
 
-  return key;
+  return chKey;
 }
 
 function handlePhysicalData(physical) {
@@ -303,7 +305,7 @@ function handlePhysicalData(physical) {
   return str;
 }
 
-function handleChannel(channel) {
+function handleChannel(channel, mode) {
   let str = `<section class="channel-type">
     <span class="label">Type</span>
     <span class="value"><data data-key="channel-type">${channel.type}</data></span>
@@ -317,10 +319,18 @@ function handleChannel(channel) {
   }
 
   if ('fineChannelAliases' in channel) {
-    str += `<section class="channel-fineChannelAliases">
-      <span class="label">Has fine channels</span>
-      <span class="value"><data data-key="channel-fineChannelAliases">${channel.fineChannelAliases.length}</data></span>
-    </section>`;
+    const fineChannelsUsedInMode = channel.fineChannelAliases.filter(chKey => mode.channels.includes(chKey));
+
+    if (fineChannelsUsedInMode.length > 0) {
+      str += '<section class="channel-fineChannelAliases">';
+      str += '  <span class="label">Fine channels</span>';
+      str += '  <span class="value"><data data-key="channel-fineChannelAliases">';
+      str += fineChannelsUsedInMode.map(chKey => getChannelHeading(chKey) + ` (channel ${mode.channels.indexOf(chKey) + 1})`).join(', ');
+      str += '</data></span>';
+      str += '</section>';
+    }
+
+    divideChannelDmxValues(channel, channel.fineChannelAliases.length - fineChannelsUsedInMode.length);
   }
 
   if ('defaultValue' in channel) {
@@ -411,4 +421,19 @@ function handleChannel(channel) {
   }
 
   return str;
+}
+
+function divideChannelDmxValues(channel, times) {
+  if ('highlightValue' in channel) {
+    channel.highlightValue = Math.floor(channel.highlightValue / Math.pow(256, times));
+  }
+  if ('defaultValue' in channel) {
+    channel.defaultValue = Math.floor(channel.defaultValue / Math.pow(256, times));
+  }
+  if ('capabilities' in channel) {
+    for (const cap of channel.capabilities) {
+      cap.range[0] = Math.floor(cap.range[0] / Math.pow(256, times));
+      cap.range[1] = Math.floor(cap.range[1] / Math.pow(256, times));
+    }
+  }
 }
