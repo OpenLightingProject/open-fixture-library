@@ -137,8 +137,9 @@ function exportHandleAvailableChannels(fixture, defaults) {
     }
 
     xmlChannel.Capability = [];
+    const defaultCapability = defaults.availableChannels['channel key'].capabilities[0];
     for (const capability of chData.capabilities) {
-      const capData = Object.assign({}, defaults.availableChannels['channel key'].capabilities[0], capability);
+      const capData = Object.assign({}, defaultCapability, capability);
 
       capData.name = capData.name.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
@@ -169,7 +170,13 @@ function exportHandleAvailableChannels(fixture, defaults) {
 
         fineXmlChannel.$.Name += getFineChannelSuffix(index);
         fineXmlChannel.Group.$.Byte = index + 1;
-        delete fineXmlChannel.Capability;
+        fineXmlChannel.Capability = [{
+          $: {
+            Min: defaultCapability.range[0],
+            Max: defaultCapability.range[1]
+          },
+          _: defaultCapability.name
+        }];
 
         xmlChannels.push(fineXmlChannel);
       });
