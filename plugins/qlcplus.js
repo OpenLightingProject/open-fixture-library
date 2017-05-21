@@ -545,19 +545,14 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
 
         if ('Head' in mode) {
           mode.Head.forEach((head, index) => {
-            let channelList = [];
-
             if (head.Channel === undefined) {
-              continue;
+              return;
             }
 
-            for (const ch of head.Channel) {
-              const chNum = parseInt(ch);
-              channelList.push(mod.channels[chNum]);
-            }
-
-            fix.heads[mod.name + '-head' + index] = channelList;
+            const channelList = head.Channel.map(ch => mod.channels[parseInt(ch)]);
+            fix.heads[mod.name + ' Head ' + (index + 1)] = channelList;
           });
+          out.warnings[fixKey].push('Please rename the heads in a meaningful way.');
         }
 
         fix.modes.push(mod);
