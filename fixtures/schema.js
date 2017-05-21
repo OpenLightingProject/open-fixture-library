@@ -81,7 +81,7 @@ var Mode = schema({
   'name': String,
   '?shortName': [String, null], // null: use name
   '?physical': Physical, // overrides fixture's Physical
-  'channels': Array.of([null, ChannelKey]), // null for unused channels
+  'channels': Array.of([null, ChannelKey, ChannelAliasKey]), // null for unused channels
   '*': Function
 });
 
@@ -108,7 +108,7 @@ var Fixture = schema({
     '*': Channel // '*' is the channel key
   }),
   '?heads': schema({
-    '*': Array.of(ChannelKey) // '*' is the head name
+    '*': Array.of(ChannelKey, ChannelAliasKey) // '*' is the head name
   }),
   'modes': Array.of(1, Infinity, Mode),
   '*': Function
@@ -128,18 +128,19 @@ module.exports.Fixture = Fixture;
 module.exports.Manufacturers = Manufacturers;
 
 var properties = {
-  manufacturer: Manufacturers.toJSON().additionalProperties.properties,
-  fixture:      Fixture.toJSON().properties,
-  mode:         Mode.toJSON().properties,
-  channelKey:   ChannelKey.schema.toJSON(),
-  channel:      Channel.toJSON().properties,
-  capability:   Capability.toJSON().properties,
-  physical:     Physical.toJSON().properties,
-  category:     Category.toJSON(),
-  color:        Color.toJSON(),
-  ISODate:      ISODate.toJSON(),
-  URL:          URL.toJSON(),
-  DMXValue:     DMXValue.toJSON()
+  manufacturer:     Manufacturers.toJSON().additionalProperties.properties,
+  fixture:          Fixture.toJSON().properties,
+  mode:             Mode.toJSON().properties,
+  channelKey:       ChannelKey.schema.toJSON(),
+  channelAliasKey:  ChannelAliasKey.schema.toJSON(),
+  channel:          Channel.toJSON().properties,
+  capability:       Capability.toJSON().properties,
+  physical:         Physical.toJSON().properties,
+  category:         Category.toJSON(),
+  color:            Color.toJSON(),
+  ISODate:          ISODate.toJSON(),
+  URL:              URL.toJSON(),
+  DMXValue:         DMXValue.toJSON()
 };
 properties.meta  = properties.fixture.meta.properties;
 properties.bulb  = properties.physical.bulb.properties;
