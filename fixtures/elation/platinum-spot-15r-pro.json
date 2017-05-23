@@ -477,7 +477,7 @@
         }
       ]
     },
-    "Rotating prism fine": {
+    "Rotating Prism fine": {
       "name": "Rotating Prism fine",
       "type": "Prism",
       "crossfade": true
@@ -860,6 +860,21 @@
       ]
     }
   },
+  "multiByteChannels": [
+    ["Pan", "Pan fine"],
+    ["Tilt", "Tilt fine"],
+    ["Color Wheel", "Color Wheel fine"],
+    ["Cyan", "Cyan fine"],
+    ["Magenta", "Magenta fine"],
+    ["Yellow", "Yellow fine"],
+    ["Gobo Rotation", "Gobo Rotation fine"],
+    ["Fixed Gobo", "Fixed Gobo Rotation fine"],
+    ["Rotating Prism", "Rotating Prism fine"],
+    ["Focus", "Focus fine"],
+    ["Zoom", "Zoom fine"],
+    ["Dimmer", "Dimmer fine"],
+    ["Iris", "Iris fine"]
+  ],
   "modes": [
     {
       "name": "Basic",
@@ -937,7 +952,7 @@
         "Fixed Gobo Rotation fine",
         "Prism/Gobo Macros",
         "Rotating Prism",
-        "Rotating prism fine",
+        "Rotating Prism fine",
         "Focus",
         "Focus fine",
         "Zoom",
