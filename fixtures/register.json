@@ -35,6 +35,9 @@
     },
     "showtec/phantom-50-led-spot": {
       "name": "Phantom 50 LED Spot"
+    },
+    "eurolite/led-tmh-x25": {
+      "name": "LED TMH-X25"
     }
   },
   "manufacturers": {
@@ -49,7 +52,8 @@
       "thunder-wash-600-w"
     ],
     "eurolite": [
-      "led-tmh-18"
+      "led-tmh-18",
+      "led-tmh-x25"
     ],
     "gruft": [
       "ventilator"
@@ -90,6 +94,7 @@
     ],
     "Moving Head": [
       "eurolite/led-tmh-18",
+      "eurolite/led-tmh-x25",
       "lightmaxx/vega-zoom-wash",
       "showtec/phantom-50-led-spot"
     ],
