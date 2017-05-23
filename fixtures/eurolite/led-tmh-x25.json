@@ -1,0 +1,485 @@
+{
+  "name": "LED TMH-X25",
+  "shortName": "TMHX25",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2017-05-23",
+    "lastModifyDate": "2017-05-23"
+  },
+  "comment": "Map channel is missing",
+  "manualURL": "http://media.steinigke.de/documents_t/51785991-MANUAL-1.10-de-en_00094116.pdf",
+  "physical": {
+    "dimensions": [220, 470, 370],
+    "weight": 10.6,
+    "power": 245,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "focus": {
+      "panMax": 540,
+      "tiltMax": 270
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "name": "Pan",
+      "type": "Pan",
+      "defaultValue": 128,
+      "crossfade": true
+    },
+    "Pan fine": {
+      "name": "Pan fine",
+      "type": "Pan",
+      "defaultValue": 128,
+      "crossfade": true
+    },
+    "Tilt": {
+      "name": "Tilt",
+      "type": "Tilt",
+      "defaultValue": 128,
+      "crossfade": true
+    },
+    "Tilt fine": {
+      "name": "Tilt fine",
+      "type": "Tilt",
+      "defaultValue": 128,
+      "crossfade": true
+    },
+    "Pan/Tilt Speed": {
+      "name": "Pan/Tilt Speed",
+      "type": "Speed",
+      "defaultValue": 113,
+      "invert": true,
+      "crossfade": true,
+      "capabilities": [
+        {
+          "range": [0, 225],
+          "name": "Speed fast–slow"
+        },
+        {
+          "range": [226, 255],
+          "name": "No function"
+        }
+      ]
+    },
+    "Strobe": {
+      "name": "Strobe",
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Shutter open"
+        },
+        {
+          "range": [128, 191],
+          "name": "Strobe 0–18Hz"
+        },
+        {
+          "range": [192, 255],
+          "name": "Random strobe 0–18Hz"
+        }
+      ]
+    },
+    "Dimmer": {
+      "name": "Dimmer",
+      "type": "Intensity",
+      "crossfade": true
+    },
+    "Dimmer Speed": {
+      "name": "Dimmer Speed",
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 49],
+          "name": "Dimmer speed 1"
+        },
+        {
+          "range": [50, 99],
+          "name": "Dimmer speed 2"
+        },
+        {
+          "range": [100, 149],
+          "name": "Dimmer speed 3"
+        },
+        {
+          "range": [150, 255],
+          "name": "Dimmer speed 4"
+        }
+      ]
+    },
+    "Color Presets": {
+      "name": "Color Presets",
+      "type": "MultiColor",
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "No function"
+        },
+        {
+          "range": [5, 29],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [30, 54],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [55, 79],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [80, 104],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [105, 129],
+          "name": "Color preset 1"
+        },
+        {
+          "range": [130, 154],
+          "name": "Color preset 2"
+        },
+        {
+          "range": [155, 174],
+          "name": "Color preset 3"
+        },
+        {
+          "range": [175, 179],
+          "name": "Color preset 4"
+        },
+        {
+          "range": [180, 184],
+          "name": "Color preset 5"
+        },
+        {
+          "range": [185, 189],
+          "name": "Color preset 6"
+        },
+        {
+          "range": [190, 194],
+          "name": "Color preset 7"
+        },
+        {
+          "range": [195, 199],
+          "name": "Color preset 8"
+        },
+        {
+          "range": [200, 204],
+          "name": "Color preset 9"
+        },
+        {
+          "range": [205, 209],
+          "name": "Color preset 10"
+        },
+        {
+          "range": [210, 210],
+          "name": "No function"
+        },
+        {
+          "range": [211, 255],
+          "name": "Color fade"
+        }
+      ]
+    },
+    "Patterns": {
+      "name": "Patterns",
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 3],
+          "name": "No function"
+        },
+        {
+          "range": [4, 10],
+          "name": "0"
+        },
+        {
+          "range": [11, 15],
+          "name": "1"
+        },
+        {
+          "range": [16, 20],
+          "name": "2"
+        },
+        {
+          "range": [21, 25],
+          "name": "3"
+        },
+        {
+          "range": [26, 30],
+          "name": "4"
+        },
+        {
+          "range": [31, 35],
+          "name": "5"
+        },
+        {
+          "range": [36, 40],
+          "name": "6"
+        },
+        {
+          "range": [41, 45],
+          "name": "7"
+        },
+        {
+          "range": [46, 50],
+          "name": "8"
+        },
+        {
+          "range": [51, 55],
+          "name": "9"
+        },
+        {
+          "range": [56, 60],
+          "name": "A"
+        },
+        {
+          "range": [61, 65],
+          "name": "B"
+        },
+        {
+          "range": [66, 70],
+          "name": "C"
+        },
+        {
+          "range": [71, 75],
+          "name": "D"
+        },
+        {
+          "range": [76, 80],
+          "name": "E"
+        },
+        {
+          "range": [81, 85],
+          "name": "F"
+        },
+        {
+          "range": [86, 90],
+          "name": "G"
+        },
+        {
+          "range": [91, 95],
+          "name": "H"
+        },
+        {
+          "range": [96, 100],
+          "name": "I"
+        },
+        {
+          "range": [101, 105],
+          "name": "J"
+        },
+        {
+          "range": [106, 110],
+          "name": "K"
+        },
+        {
+          "range": [111, 115],
+          "name": "L"
+        },
+        {
+          "range": [116, 120],
+          "name": "M"
+        },
+        {
+          "range": [121, 125],
+          "name": "N"
+        },
+        {
+          "range": [126, 130],
+          "name": "O"
+        },
+        {
+          "range": [131, 135],
+          "name": "P"
+        },
+        {
+          "range": [136, 140],
+          "name": "Q"
+        },
+        {
+          "range": [141, 145],
+          "name": "R"
+        },
+        {
+          "range": [146, 150],
+          "name": "S"
+        },
+        {
+          "range": [151, 155],
+          "name": "T"
+        },
+        {
+          "range": [156, 160],
+          "name": "U"
+        },
+        {
+          "range": [161, 165],
+          "name": "V"
+        },
+        {
+          "range": [166, 170],
+          "name": "W"
+        },
+        {
+          "range": [171, 175],
+          "name": "X"
+        },
+        {
+          "range": [176, 180],
+          "name": "Y"
+        },
+        {
+          "range": [181, 185],
+          "name": "Z"
+        },
+        {
+          "range": [186, 190],
+          "name": "0–9"
+        },
+        {
+          "range": [191, 195],
+          "name": "A–Z"
+        },
+        {
+          "range": [196, 200],
+          "name": "0–Z"
+        },
+        {
+          "range": [201, 205],
+          "name": "Pattern 1"
+        },
+        {
+          "range": [206, 210],
+          "name": "Pattern 2"
+        },
+        {
+          "range": [211, 215],
+          "name": "Pattern 3"
+        },
+        {
+          "range": [216, 220],
+          "name": "Pattern 4"
+        },
+        {
+          "range": [221, 225],
+          "name": "Pattern 5"
+        },
+        {
+          "range": [226, 230],
+          "name": "Pattern 6"
+        },
+        {
+          "range": [231, 235],
+          "name": "Pattern 7"
+        },
+        {
+          "range": [236, 240],
+          "name": "Pattern 8"
+        },
+        {
+          "range": [241, 245],
+          "name": "Pattern 9"
+        },
+        {
+          "range": [246, 250],
+          "name": "Pattern 10"
+        },
+        {
+          "range": [251, 255],
+          "name": "Pattern 11"
+        }
+      ]
+    },
+    "Pattern Speed": {
+      "name": "Pattern Speed",
+      "type": "Speed",
+      "crossfade": true,
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Forwards fast–slow"
+        },
+        {
+          "range": [128, 255],
+          "name": "Backwards slow–fast"
+        }
+      ]
+    },
+    "Red": {
+      "name": "Red",
+      "type": "SingleColor",
+      "color": "Red",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Green": {
+      "name": "Green",
+      "type": "SingleColor",
+      "color": "Green",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Blue": {
+      "name": "Blue",
+      "type": "SingleColor",
+      "color": "Blue",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "White": {
+      "name": "White",
+      "type": "SingleColor",
+      "color": "White",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Reset": {
+      "name": "Reset",
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 79],
+          "name": "No function"
+        },
+        {
+          "range": [80, 99],
+          "name": "Reset all motors"
+        },
+        {
+          "range": [100, 255],
+          "name": "No function"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Strobe",
+        "Dimmer",
+        "Dimmer Speed",
+        "Color Presets",
+        "Patterns",
+        "Pattern Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Reset"
+      ]
+    }
+  ]
+}
