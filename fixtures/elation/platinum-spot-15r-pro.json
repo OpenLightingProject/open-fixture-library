@@ -23,31 +23,26 @@
   },
   "availableChannels": {
     "Pan": {
-      "name": "Pan",
       "type": "Pan",
       "defaultValue": 127,
       "crossfade": true
     },
     "Pan fine": {
-      "name": "Pan fine",
       "type": "Pan",
       "defaultValue": 127,
       "crossfade": true
     },
     "Tilt": {
-      "name": "Tilt",
       "type": "Tilt",
       "defaultValue": 127,
       "crossfade": true
     },
     "Tilt fine": {
-      "name": "Tilt fine",
       "type": "Tilt",
       "defaultValue": 127,
       "crossfade": true
     },
     "Color Wheel": {
-      "name": "Color Wheel",
       "type": "MultiColor",
       "capabilities": [
         {
@@ -94,53 +89,45 @@
       ]
     },
     "Color Wheel fine": {
-      "name": "Color Wheel fine",
       "type": "MultiColor"
     },
     "Cyan": {
-      "name": "Cyan",
       "type": "SingleColor",
       "color": "Cyan",
       "highlightValue": 255,
       "crossfade": true
     },
     "Cyan fine": {
-      "name": "Cyan fine",
       "type": "SingleColor",
       "color": "Cyan",
       "highlightValue": 255,
       "crossfade": true
     },
     "Magenta": {
-      "name": "Magenta",
       "type": "SingleColor",
       "color": "Magenta",
       "highlightValue": 255,
       "crossfade": true
     },
     "Magenta fine": {
-      "name": "Magenta fine",
       "type": "SingleColor",
       "color": "Magenta",
       "highlightValue": 255,
       "crossfade": true
     },
     "Yellow": {
-      "name": "Yellow",
       "type": "SingleColor",
       "color": "Yellow",
       "highlightValue": 255,
       "crossfade": true
     },
     "Yellow fine": {
-      "name": "Yellow fine",
       "type": "SingleColor",
       "color": "Yellow",
       "highlightValue": 255,
       "crossfade": true
     },
     "Rotating Gobo": {
-      "name": "Rotating Gobo",
       "type": "Gobo",
       "capabilities": [
         {
@@ -218,7 +205,6 @@
       ]
     },
     "Gobo Rotation": {
-      "name": "Gobo Rotation",
       "type": "Speed",
       "crossfade": true,
       "capabilities": [
@@ -241,12 +227,10 @@
       ]
     },
     "Gobo Rotation fine": {
-      "name": "Gobo Rotation fine",
       "type": "Speed",
       "crossfade": true
     },
     "Fixed Gobo": {
-      "name": "Fixed Gobo",
       "type": "Gobo",
       "capabilities": [
         {
@@ -372,13 +356,11 @@
       ]
     },
     "Fixed Gobo Rotation fine": {
-      "name": "Fixed Gobo Rotation fine",
       "type": "Speed",
       "defaultValue": 127,
       "crossfade": true
     },
     "Prism/Gobo Macros": {
-      "name": "Prism/Gobo Macros",
       "type": "Effect",
       "capabilities": [
         {
@@ -456,7 +438,6 @@
       ]
     },
     "Rotating Prism": {
-      "name": "Rotating Prism",
       "type": "Prism",
       "capabilities": [
         {
@@ -478,12 +459,10 @@
       ]
     },
     "Rotating Prism fine": {
-      "name": "Rotating Prism fine",
       "type": "Prism",
       "crossfade": true
     },
     "Focus": {
-      "name": "Focus",
       "type": "Beam",
       "crossfade": true,
       "capabilities": [
@@ -494,12 +473,10 @@
       ]
     },
     "Focus fine": {
-      "name": "Focus fine",
       "type": "Beam",
       "crossfade": true
     },
     "Zoom": {
-      "name": "Zoom",
       "type": "Beam",
       "crossfade": true,
       "capabilities": [
@@ -510,12 +487,10 @@
       ]
     },
     "Zoom fine": {
-      "name": "Zoom fine",
       "type": "Beam",
       "crossfade": true
     },
     "Strobe": {
-      "name": "Strobe",
       "type": "Strobe",
       "crossfade": true,
       "capabilities": [
@@ -554,19 +529,16 @@
       ]
     },
     "Dimmer": {
-      "name": "Dimmer",
       "type": "Intensity",
       "highlightValue": 255,
       "crossfade": true
     },
     "Dimmer fine": {
-      "name": "Dimmer fine",
       "type": "Intensity",
       "highlightValue": 255,
       "crossfade": true
     },
     "Iris": {
-      "name": "Iris",
       "type": "Beam",
       "crossfade": true,
       "capabilities": [
@@ -585,12 +557,10 @@
       ]
     },
     "Iris fine": {
-      "name": "Iris fine",
       "type": "Beam",
       "crossfade": true
     },
     "Frost": {
-      "name": "Frost",
       "type": "Intensity",
       "highlightValue": 255,
       "crossfade": true,
@@ -614,14 +584,12 @@
       ]
     },
     "Color Macro Speed": {
-      "name": "Color Macro Speed",
       "type": "Speed",
       "highlightValue": 127,
       "invert": true,
       "crossfade": true
     },
     "Pan/Tilt Speed": {
-      "name": "Pan/Tilt Speed",
       "type": "Speed",
       "crossfade": true,
       "capabilities": [
@@ -644,7 +612,6 @@
       ]
     },
     "Color Macros": {
-      "name": "Color Macros",
       "type": "Effect",
       "capabilities": [
         {
@@ -778,7 +745,6 @@
       ]
     },
     "Maintenance / Programs": {
-      "name": "Maintenance / Programs",
       "type": "Maintenance",
       "capabilities": [
         {
