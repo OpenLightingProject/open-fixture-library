@@ -1,0 +1,236 @@
+{
+  "name": "Revo 4 IR",
+  "shortName": "Revo4IR",
+  "categories": ["Flower"],
+  "meta": {
+    "authors": ["FloEdelmann"],
+    "createDate": "2017-05-24",
+    "lastModifyDate": "2017-05-24"
+  },
+  "manualURL": "http://adjmedia.s3-website-eu-west-1.amazonaws.com/manuals/revo_4_ir.pdf",
+  "physical": {
+    "dimensions": [312, 334, 304],
+    "weight": 4.9,
+    "power": 34,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Function": {
+      "name": "Function",
+      "type": "Effect",
+      "defaultValue": 0,
+      "crossfade": false,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Off"
+        },
+        {
+          "range": [10, 99],
+          "name": "Pattern"
+        },
+        {
+          "range": [100, 239],
+          "name": "Chase"
+        },
+        {
+          "range": [240, 255],
+          "name": "Sound Active"
+        }
+      ]
+    },
+    "Pattern / Chase": {
+      "name": "Pattern / Chase",
+      "type": "Effect",
+      "crossfade": false,
+      "capabilities": [
+        {
+          "range": [0, 20],
+          "name": "Pattern / Chase 1"
+        },
+        {
+          "range": [21, 41],
+          "name": "Pattern / Chase 2"
+        },
+        {
+          "range": [42, 65],
+          "name": "Pattern / Chase 3"
+        },
+        {
+          "range": [66, 87],
+          "name": "Pattern / Chase 4"
+        },
+        {
+          "range": [88, 108],
+          "name": "Pattern / Chase 5"
+        },
+        {
+          "range": [109, 129],
+          "name": "Pattern / Chase 6"
+        },
+        {
+          "range": [130, 150],
+          "name": "Pattern / Chase 7"
+        },
+        {
+          "range": [151, 172],
+          "name": "Pattern / Chase 8"
+        },
+        {
+          "range": [173, 193],
+          "name": "Pattern / Chase 9"
+        },
+        {
+          "range": [194, 214],
+          "name": "Pattern / Chase 10"
+        },
+        {
+          "range": [215, 235],
+          "name": "Pattern / Chase 11"
+        },
+        {
+          "range": [236, 255],
+          "name": "Pattern / Chase 12"
+        }
+      ]
+    },
+    "Color": {
+      "name": "Color",
+      "type": "MultiColor",
+      "crossfade": false,
+      "capabilities": [
+        {
+          "range": [0, 17],
+          "name": "R",
+          "color": "#ff0000"
+        },
+        {
+          "range": [18, 34],
+          "name": "G",
+          "color": "#00ff00"
+        },
+        {
+          "range": [35, 51],
+          "name": "B",
+          "color": "#0000ff"
+        },
+        {
+          "range": [52, 68],
+          "name": "W",
+          "color": "#ffffff"
+        },
+        {
+          "range": [69, 85],
+          "name": "R+G",
+          "color": "#ffff00"
+        },
+        {
+          "range": [86, 102],
+          "name": "R+B",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [103, 119],
+          "name": "R+W",
+          "color": "#ffaaaa"
+        },
+        {
+          "range": [120, 136],
+          "name": "G+B",
+          "color": "#00ffff"
+        },
+        {
+          "range": [137, 153],
+          "name": "G+W",
+          "color": "#aaffaa"
+        },
+        {
+          "range": [154, 170],
+          "name": "B+W",
+          "color": "#aaaaff"
+        },
+        {
+          "range": [171, 187],
+          "name": "R+G+B"
+        },
+        {
+          "range": [188, 204],
+          "name": "R+G+W"
+        },
+        {
+          "range": [205, 221],
+          "name": "R+B+W"
+        },
+        {
+          "range": [222, 238],
+          "name": "G+B+W"
+        },
+        {
+          "range": [239, 255],
+          "name": "R+G+B+W"
+        }
+      ]
+    },
+    "Chase Speed": {
+      "name": "Chase Speed",
+      "type": "Speed",
+      "defaultValue": 128,
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Strobe": {
+      "name": "Strobe",
+      "type": "Strobe",
+      "defaultValue": 0,
+      "highlightValue": 128,
+      "crossfade": false,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "stop"
+        },
+        {
+          "range": [10, 255],
+          "name": "slow - fast"
+        }
+      ]
+    },
+    "Red 1": {
+      "name": "Red 1",
+      "type": "SingleColor",
+      "color": "Red",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": false,
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "off"
+        },
+        {
+          "range": [128, 255],
+          "name": "on"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4 channel",
+      "shortName": "4ch",
+      "channels": [
+        "Function",
+        "Pattern / Chase",
+        "Color",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "256 channel",
+      "shortName": "256ch",
+      "channels": [
+        "Red 1"
+      ]
+    }
+  ]
+}
