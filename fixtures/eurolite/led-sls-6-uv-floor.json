@@ -19,7 +19,6 @@
   },
   "availableChannels": {
     "UV": {
-      "name": "UV",
       "type": "SingleColor",
       "color": "UV",
       "defaultValue": 0,
@@ -27,7 +26,6 @@
       "crossfade": true
     },
     "Strobe": {
-      "name": "Strobe",
       "type": "Strobe",
       "defaultValue": 0,
       "highlightValue": 128,
@@ -44,7 +42,6 @@
       ]
     },
     "Programs": {
-      "name": "Programs",
       "type": "Effect",
       "capabilities": [
         {
@@ -62,7 +59,6 @@
       ]
     },
     "Speed": {
-      "name": "Speed",
       "type": "Speed",
       "defaultValue": 128,
       "highlightValue": 255,
