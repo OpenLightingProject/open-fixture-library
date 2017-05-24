@@ -23,31 +23,26 @@
   },
   "availableChannels": {
     "Pan": {
-      "name": "Pan",
       "type": "Pan",
       "defaultValue": 128,
       "crossfade": true
     },
     "Pan fine": {
-      "name": "Pan fine",
       "type": "Pan",
       "defaultValue": 128,
       "crossfade": true
     },
     "Tilt": {
-      "name": "Tilt",
       "type": "Tilt",
       "defaultValue": 128,
       "crossfade": true
     },
     "Tilt fine": {
-      "name": "Tilt fine",
       "type": "Tilt",
       "defaultValue": 128,
       "crossfade": true
     },
     "Pan/Tilt Speed": {
-      "name": "Pan/Tilt Speed",
       "type": "Speed",
       "defaultValue": 113,
       "invert": true,
@@ -64,7 +59,6 @@
       ]
     },
     "Strobe": {
-      "name": "Strobe",
       "type": "Strobe",
       "capabilities": [
         {
@@ -82,12 +76,10 @@
       ]
     },
     "Dimmer": {
-      "name": "Dimmer",
       "type": "Intensity",
       "crossfade": true
     },
     "Dimmer Speed": {
-      "name": "Dimmer Speed",
       "type": "Speed",
       "capabilities": [
         {
@@ -109,7 +101,6 @@
       ]
     },
     "Color Presets": {
-      "name": "Color Presets",
       "type": "MultiColor",
       "capabilities": [
         {
@@ -187,7 +178,6 @@
       ]
     },
     "Patterns": {
-      "name": "Patterns",
       "type": "Effect",
       "capabilities": [
         {
@@ -397,7 +387,6 @@
       ]
     },
     "Pattern Speed": {
-      "name": "Pattern Speed",
       "type": "Speed",
       "crossfade": true,
       "capabilities": [
@@ -412,35 +401,30 @@
       ]
     },
     "Red": {
-      "name": "Red",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green": {
-      "name": "Green",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue": {
-      "name": "Blue",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White": {
-      "name": "White",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Reset": {
-      "name": "Reset",
       "type": "Maintenance",
       "capabilities": [
         {
@@ -458,700 +442,600 @@
       ]
     },
     "Red 1": {
-      "name": "Red 1",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 1": {
-      "name": "Green 1",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 1": {
-      "name": "Blue 1",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 1": {
-      "name": "White 1",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 2": {
-      "name": "Red 2",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 2": {
-      "name": "Green 2",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 2": {
-      "name": "Blue 2",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 2": {
-      "name": "White 2",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 3": {
-      "name": "Red 3",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 3": {
-      "name": "Green 3",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 3": {
-      "name": "Blue 3",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 3": {
-      "name": "White 3",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 4": {
-      "name": "Red 4",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 4": {
-      "name": "Green 4",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 4": {
-      "name": "Blue 4",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 4": {
-      "name": "White 4",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 5": {
-      "name": "Red 5",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 5": {
-      "name": "Green 5",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 5": {
-      "name": "Blue 5",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 5": {
-      "name": "White 5",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 6": {
-      "name": "Red 6",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 6": {
-      "name": "Green 6",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 6": {
-      "name": "Blue 6",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 6": {
-      "name": "White 6",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 7": {
-      "name": "Red 7",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 7": {
-      "name": "Green 7",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 7": {
-      "name": "Blue 7",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 7": {
-      "name": "White 7",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 8": {
-      "name": "Red 8",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 8": {
-      "name": "Green 8",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 8": {
-      "name": "Blue 8",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 8": {
-      "name": "White 8",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 9": {
-      "name": "Red 9",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 9": {
-      "name": "Green 9",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 9": {
-      "name": "Blue 9",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 9": {
-      "name": "White 9",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 10": {
-      "name": "Red 10",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 10": {
-      "name": "Green 10",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 10": {
-      "name": "Blue 10",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 10": {
-      "name": "White 10",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 11": {
-      "name": "Red 11",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 11": {
-      "name": "Green 11",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 11": {
-      "name": "Blue 11",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 11": {
-      "name": "White 11",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 12": {
-      "name": "Red 12",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 12": {
-      "name": "Green 12",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 12": {
-      "name": "Blue 12",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 12": {
-      "name": "White 12",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 13": {
-      "name": "Red 13",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 13": {
-      "name": "Green 13",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 13": {
-      "name": "Blue 13",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 13": {
-      "name": "White 13",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 14": {
-      "name": "Red 14",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 14": {
-      "name": "Green 14",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 14": {
-      "name": "Blue 14",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 14": {
-      "name": "White 14",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 15": {
-      "name": "Red 15",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 15": {
-      "name": "Green 15",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 15": {
-      "name": "Blue 15",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 15": {
-      "name": "White 15",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 16": {
-      "name": "Red 16",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 16": {
-      "name": "Green 16",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 16": {
-      "name": "Blue 16",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 16": {
-      "name": "White 16",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 17": {
-      "name": "Red 17",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 17": {
-      "name": "Green 17",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 17": {
-      "name": "Blue 17",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 17": {
-      "name": "White 17",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 18": {
-      "name": "Red 18",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 18": {
-      "name": "Green 18",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 18": {
-      "name": "Blue 18",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 18": {
-      "name": "White 18",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 19": {
-      "name": "Red 19",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 19": {
-      "name": "Green 19",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 19": {
-      "name": "Blue 19",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 19": {
-      "name": "White 19",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 20": {
-      "name": "Red 20",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 20": {
-      "name": "Green 20",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 20": {
-      "name": "Blue 20",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 20": {
-      "name": "White 20",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 21": {
-      "name": "Red 21",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 21": {
-      "name": "Green 21",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 21": {
-      "name": "Blue 21",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 21": {
-      "name": "White 21",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 22": {
-      "name": "Red 22",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 22": {
-      "name": "Green 22",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 22": {
-      "name": "Blue 22",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 22": {
-      "name": "White 22",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 23": {
-      "name": "Red 23",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 23": {
-      "name": "Green 23",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 23": {
-      "name": "Blue 23",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 23": {
-      "name": "White 23",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 24": {
-      "name": "Red 24",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 24": {
-      "name": "Green 24",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 24": {
-      "name": "Blue 24",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 24": {
-      "name": "White 24",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Red 25": {
-      "name": "Red 25",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green 25": {
-      "name": "Green 25",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue 25": {
-      "name": "Blue 25",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White 25": {
-      "name": "White 25",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
