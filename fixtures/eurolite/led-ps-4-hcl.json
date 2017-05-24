@@ -22,7 +22,6 @@
   },
   "availableChannels": {
     "Color Presets": {
-      "name": "Color Presets",
       "type": "MultiColor",
       "crossfade": false,
       "capabilities": [
@@ -133,7 +132,6 @@
       ]
     },
     "Strobe": {
-      "name": "Strobe",
       "type": "Strobe",
       "defaultValue": 0,
       "highlightValue": 128,
@@ -150,7 +148,6 @@
       ]
     },
     "Programs": {
-      "name": "Programs",
       "type": "Effect",
       "crossfade": false,
       "capabilities": [
@@ -169,7 +166,6 @@
       ]
     },
     "Speed": {
-      "name": "Speed",
       "type": "Speed",
       "defaultValue": 128,
       "highlightValue": 255,
@@ -182,7 +178,6 @@
       ]
     },
     "Red": {
-      "name": "Red",
       "type": "SingleColor",
       "color": "Red",
       "defaultValue": 0,
@@ -190,7 +185,6 @@
       "crossfade": true
     },
     "Green": {
-      "name": "Green",
       "type": "SingleColor",
       "color": "Green",
       "defaultValue": 0,
@@ -198,7 +192,6 @@
       "crossfade": true
     },
     "Blue": {
-      "name": "Blue",
       "type": "SingleColor",
       "color": "Blue",
       "defaultValue": 0,
@@ -206,7 +199,6 @@
       "crossfade": true
     },
     "White": {
-      "name": "White",
       "type": "SingleColor",
       "color": "White",
       "defaultValue": 0,
@@ -214,7 +206,6 @@
       "crossfade": true
     },
     "Amber": {
-      "name": "Amber",
       "type": "SingleColor",
       "color": "Amber",
       "defaultValue": 0,
@@ -222,7 +213,6 @@
       "crossfade": true
     },
     "UV": {
-      "name": "UV",
       "type": "SingleColor",
       "color": "UV",
       "defaultValue": 0,
@@ -230,7 +220,6 @@
       "crossfade": true
     },
     "Dimmer": {
-      "name": "Dimmer",
       "type": "Intensity",
       "defaultValue": 0,
       "highlightValue": 255,
