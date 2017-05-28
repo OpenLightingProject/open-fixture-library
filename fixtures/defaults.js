@@ -1,6 +1,5 @@
 module.exports = {
   name: 'Fixture name', // required
-  shortName: null, // default: name
   categories: ['Other'], // required
   meta: {
     authors: [],
@@ -29,7 +28,6 @@ module.exports = {
   },
   availableChannels: { // required
     'channel key': {
-      name: null, // default: channel key
       type: 'Intensity', // required
       defaultValue: 0,
       highlightValue: 0,
@@ -51,7 +49,6 @@ module.exports = {
   modes: [ // required
     {
       name: '1-channel', // required
-      shortName: null, // default: name
       physical: {},
       channels: ['channel key'] // required
     }

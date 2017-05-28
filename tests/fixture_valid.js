@@ -83,50 +83,47 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
         usedChannels.push(ch);
 
         if (ch !== null) {
-          if (!(ch in fixture.availableChannels) && ch !== null) {
+          if (ch in fixture.availableChannels) {
+            if (fixture.availableChannels[ch].type === 'Pan') {
+              checkPanTiltMaxExistence(mode, ch, 'panMax');
+            }
+            else if (fixture.availableChannels[ch].type === 'Tilt') {
+              checkPanTiltMaxExistence(mode, ch, 'tiltMax');
+            }
+          }
+          else {
             result.errors.push({
               description: `channel '${ch}' referenced from mode '${modeShortName}' (#${i}) but missing.`,
               error: null
             });
           }
-          else {
-            switch (fixture.availableChannels[ch].type) {
-              case 'Pan':
-                checkPanTiltMaxExistence(mode, ch, 'panMax');
-                break;
-
-              case 'Tilt':
-                checkPanTiltMaxExistence(mode, ch, 'tiltMax');
-                break;
-            }
-          }
         }
       }
     }
 
-    function checkPanTiltMaxExistence(mode, chKey, panTiltMax) {
+    function checkPanTiltMaxExistence(mode, chKey, maxProp) {
       let maxDefined = false;
-      let maxIsNull = false;
+      let maxIsZero = false;
       if ('physical' in mode
         && 'focus' in mode.physical
-        && panTiltMax in mode.physical.focus) {
+        && maxProp in mode.physical.focus) {
         maxDefined = true;
-        maxIsNull = mode.physical.focus[panTiltMax] === 0;
+        maxIsZero = mode.physical.focus[maxProp] === 0;
       }
       else if ('physical' in fixture
         && 'focus' in fixture.physical
-        && panTiltMax in fixture.physical.focus) {
+        && maxProp in fixture.physical.focus) {
         maxDefined = true;
-        maxIsNull = fixture.physical.focus[panTiltMax] === 0;
+        maxIsZero = fixture.physical.focus[maxProp] === 0;
       }
 
       const chType = fixture.availableChannels[chKey].type;
       if (!maxDefined) {
-        result.warnings.push(`${panTiltMax} is not defined although there's the ${chType} channel '${chKey}'`);
+        result.warnings.push(`${maxProp} is not defined although there's a ${chType} channel '${chKey}'`);
       }
-      else if (maxIsNull) {
+      else if (maxIsZero) {
         result.errors.push({
-          description: `${panTiltMax} is 0 in mode '${mode.name || mode.shortName}' although it has the ${chType} channel '${chKey}'`,
+          description: `${maxProp} is 0 in mode '${mode.name || mode.shortName}' although it contains a ${chType} channel '${chKey}'`,
           error: null
         });
       }

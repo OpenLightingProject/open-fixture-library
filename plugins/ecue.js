@@ -42,7 +42,7 @@ module.exports.export = function exportEcue(library, options) {
     const filePath = path.join(options.baseDir, 'fixtures', data.manufacturerKey, data.fixtureKey + '.json');
     let fixture = Object.assign({}, defaults, JSON.parse(fs.readFileSync(filePath, 'utf-8')));
 
-    if (fixture.shortName === null) {
+    if (!('shortName' in fixture)) {
       fixture.shortName = fixture.name;
     }
 
@@ -93,7 +93,7 @@ function exportHandleModes(fixture, defaults, physical, xmlMan) {
     modeData.physical.lens = Object.assign({}, physical.lens, modeData.physical.lens);
     modeData.physical.focus = Object.assign({}, physical.focus, modeData.physical.focus);
 
-    if (modeData.shortName === null) {
+    if (!('shortName' in modeData)) {
       modeData.shortName = modeData.name;
     }
 
@@ -137,7 +137,7 @@ function exportHandleModes(fixture, defaults, physical, xmlMan) {
 
       let chData = Object.assign({}, defaults.availableChannels['channel key'], channel);
 
-      if (chData.name === null) {
+      if (!('name' in chData)) {
         chData.name = chKey;
       }
 
