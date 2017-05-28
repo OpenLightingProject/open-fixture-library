@@ -85,10 +85,10 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
         if (ch !== null) {
           if (ch in fixture.availableChannels) {
             if (fixture.availableChannels[ch].type === 'Pan') {
-              checkPanTiltMaxExistence(mode, ch, 'panMax');
+              checkPanTiltMaxExistence(fixture, mode, ch, 'panMax');
             }
             else if (fixture.availableChannels[ch].type === 'Tilt') {
-              checkPanTiltMaxExistence(mode, ch, 'tiltMax');
+              checkPanTiltMaxExistence(fixture, mode, ch, 'tiltMax');
             }
           }
           else {
@@ -98,34 +98,6 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
             });
           }
         }
-      }
-    }
-
-    function checkPanTiltMaxExistence(mode, chKey, maxProp) {
-      let maxDefined = false;
-      let maxIsZero = false;
-      if ('physical' in mode
-        && 'focus' in mode.physical
-        && maxProp in mode.physical.focus) {
-        maxDefined = true;
-        maxIsZero = mode.physical.focus[maxProp] === 0;
-      }
-      else if ('physical' in fixture
-        && 'focus' in fixture.physical
-        && maxProp in fixture.physical.focus) {
-        maxDefined = true;
-        maxIsZero = fixture.physical.focus[maxProp] === 0;
-      }
-
-      const chType = fixture.availableChannels[chKey].type;
-      if (!maxDefined) {
-        result.warnings.push(`${maxProp} is not defined although there's a ${chType} channel '${chKey}'`);
-      }
-      else if (maxIsZero) {
-        result.errors.push({
-          description: `${maxProp} is 0 in mode '${mode.name || mode.shortName}' although it contains a ${chType} channel '${chKey}'`,
-          error: null
-        });
       }
     }
 
@@ -239,3 +211,31 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
   return result;
 };
+
+function checkPanTiltMaxExistence(fixture, mode, chKey, maxProp) {
+  let maxDefined = false;
+  let maxIsZero = false;
+  if ('physical' in mode
+    && 'focus' in mode.physical
+    && maxProp in mode.physical.focus) {
+    maxDefined = true;
+    maxIsZero = mode.physical.focus[maxProp] === 0;
+  }
+  else if ('physical' in fixture
+    && 'focus' in fixture.physical
+    && maxProp in fixture.physical.focus) {
+    maxDefined = true;
+    maxIsZero = fixture.physical.focus[maxProp] === 0;
+  }
+
+  const chType = fixture.availableChannels[chKey].type;
+  if (!maxDefined) {
+    result.warnings.push(`${maxProp} is not defined although there's a ${chType} channel '${chKey}'`);
+  }
+  else if (maxIsZero) {
+    result.errors.push({
+      description: `${maxProp} is 0 in mode '${mode.name || mode.shortName}' although it contains a ${chType} channel '${chKey}'`,
+      error: null
+    });
+  }
+}
