@@ -1,0 +1,93 @@
+{
+  "name": "LED SLS-6 UV Floor",
+  "shortName": "LEDSLS6UV",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["FloEdelmann"],
+    "createDate": "2017-05-24",
+    "lastModifyDate": "2017-05-24"
+  },
+  "manualURL": "http://media.steinigke.de/download_t/51915282-MANUAL-1.10-en-de_00102317.pdf",
+  "physical": {
+    "dimensions": [230, 230, 110],
+    "weight": 1,
+    "power": 20,
+    "DMXconnector": "3-pin",
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "UV": {
+      "type": "SingleColor",
+      "color": "UV",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "highlightValue": 128,
+      "crossfade": false,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "No function"
+        },
+        {
+          "range": [10, 255],
+          "name": "slow - fast"
+        }
+      ]
+    },
+    "Programs": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "No function"
+        },
+        {
+          "range": [10, 199],
+          "name": "Auto mode"
+        },
+        {
+          "range": [200, 255],
+          "name": "Sound mode"
+        }
+      ]
+    },
+    "Speed": {
+      "type": "Speed",
+      "defaultValue": 128,
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow - fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2 channel",
+      "shortName": "2ch",
+      "channels": [
+        "UV",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "4 channel",
+      "shortName": "4ch",
+      "channels": [
+        "UV",
+        "Strobe",
+        "Programs",
+        "Speed"
+      ]
+    }
+  ]
+}
