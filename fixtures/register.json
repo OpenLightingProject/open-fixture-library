@@ -3,6 +3,9 @@
     "american-dj/quad-phase-hp": {
       "name": "Quad Phase HP"
     },
+    "american-dj/revo-4-ir": {
+      "name": "Revo 4 IR"
+    },
     "cameo/outdoor-par-tri-12": {
       "name": "Outdoor PAR Tri 12"
     },
@@ -18,8 +21,23 @@
     "cameo/thunder-wash-600-w": {
       "name": "Thunder Wash 600 W"
     },
+    "elation/platinum-spot-15r-pro": {
+      "name": "Platinum Spot 15R Pro"
+    },
+    "eurolite/led-par-56-tcl": {
+      "name": "LED PAR-56 TCL"
+    },
+    "eurolite/led-ps-4-hcl": {
+      "name": "LED PS-4 HCL"
+    },
+    "eurolite/led-sls-6-uv-floor": {
+      "name": "LED SLS-6 UV Floor"
+    },
     "eurolite/led-tmh-18": {
       "name": "LED TMH-18"
+    },
+    "eurolite/led-tmh-x25": {
+      "name": "LED TMH-X25"
     },
     "gruft/ventilator": {
       "name": "Ventilator"
@@ -33,13 +51,17 @@
     "martin/roboscan-812": {
       "name": "RoboScan 812"
     },
+    "showtec/phantom-140-led-spot": {
+      "name": "Phantom 140 LED Beam"
+    },
     "showtec/phantom-50-led-spot": {
       "name": "Phantom 50 LED Spot"
     }
   },
   "manufacturers": {
     "american-dj": [
-      "quad-phase-hp"
+      "quad-phase-hp",
+      "revo-4-ir"
     ],
     "cameo": [
       "outdoor-par-tri-12",
@@ -48,8 +70,15 @@
       "thunder-wash-600-rgb",
       "thunder-wash-600-w"
     ],
+    "elation": [
+      "platinum-spot-15r-pro"
+    ],
     "eurolite": [
-      "led-tmh-18"
+      "led-par-56-tcl",
+      "led-ps-4-hcl",
+      "led-sls-6-uv-floor",
+      "led-tmh-18",
+      "led-tmh-x25"
     ],
     "gruft": [
       "ventilator"
@@ -62,17 +91,22 @@
       "roboscan-812"
     ],
     "showtec": [
+      "phantom-140-led-spot",
       "phantom-50-led-spot"
     ]
   },
   "categories": {
     "Flower": [
-      "american-dj/quad-phase-hp"
+      "american-dj/quad-phase-hp",
+      "american-dj/revo-4-ir"
     ],
     "Color Changer": [
       "cameo/outdoor-par-tri-12",
       "cameo/thunder-wash-100-rgb",
       "cameo/thunder-wash-600-rgb",
+      "eurolite/led-par-56-tcl",
+      "eurolite/led-ps-4-hcl",
+      "eurolite/led-sls-6-uv-floor",
       "lightmaxx/platinum-mini-tri-par",
       "lightmaxx/vega-zoom-wash"
     ],
@@ -89,8 +123,11 @@
       "cameo/thunder-wash-600-w"
     ],
     "Moving Head": [
+      "elation/platinum-spot-15r-pro",
       "eurolite/led-tmh-18",
+      "eurolite/led-tmh-x25",
       "lightmaxx/vega-zoom-wash",
+      "showtec/phantom-140-led-spot",
       "showtec/phantom-50-led-spot"
     ],
     "Fan": [
