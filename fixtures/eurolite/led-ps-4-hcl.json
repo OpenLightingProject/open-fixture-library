@@ -1,0 +1,257 @@
+{
+  "name": "LED PS-4 HCL",
+  "shortName": "LEDPS4",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["FloEdelmann"],
+    "createDate": "2017-05-24",
+    "lastModifyDate": "2017-05-24"
+  },
+  "manualURL": "http://media.steinigke.de/download_t/51913503-MANUAL-1.10-de-en_00096357.pdf",
+  "physical": {
+    "dimensions": [188.5, 195.5, 117],
+    "weight": 1.5,
+    "power": 33,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12 W LED RGBAWUV"
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Color Presets": {
+      "type": "MultiColor",
+      "crossfade": false,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "No function"
+        },
+        {
+          "range": [10, 19],
+          "name": "Red"
+        },
+        {
+          "range": [20, 29],
+          "name": "Green"
+        },
+        {
+          "range": [30, 39],
+          "name": "Blue"
+        },
+        {
+          "range": [40, 49],
+          "name": "White"
+        },
+        {
+          "range": [50, 59],
+          "name": "Amber"
+        },
+        {
+          "range": [60, 69],
+          "name": "UV"
+        },
+        {
+          "range": [70, 79],
+          "name": "Red + Green"
+        },
+        {
+          "range": [80, 89],
+          "name": "Red + Blue"
+        },
+        {
+          "range": [90, 99],
+          "name": "Red + White"
+        },
+        {
+          "range": [100, 109],
+          "name": "Red + Amber"
+        },
+        {
+          "range": [110, 119],
+          "name": "Red + UV"
+        },
+        {
+          "range": [120, 129],
+          "name": "Green + Blue"
+        },
+        {
+          "range": [130, 139],
+          "name": "Green + White"
+        },
+        {
+          "range": [140, 149],
+          "name": "Green + Amber"
+        },
+        {
+          "range": [150, 159],
+          "name": "Green + UV"
+        },
+        {
+          "range": [160, 169],
+          "name": "Blue + White"
+        },
+        {
+          "range": [170, 179],
+          "name": "Blue + Amber"
+        },
+        {
+          "range": [180, 189],
+          "name": "Blue + UV"
+        },
+        {
+          "range": [190, 199],
+          "name": "White + Amber"
+        },
+        {
+          "range": [200, 209],
+          "name": "White + UV"
+        },
+        {
+          "range": [210, 219],
+          "name": "Amber + UV"
+        },
+        {
+          "range": [220, 229],
+          "name": "Red + Green + Blue"
+        },
+        {
+          "range": [230, 239],
+          "name": "Red + Blue + Amber"
+        },
+        {
+          "range": [240, 249],
+          "name": "Green + White + UV"
+        },
+        {
+          "range": [250, 255],
+          "name": "All"
+        }
+      ]
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "highlightValue": 128,
+      "crossfade": false,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "No function"
+        },
+        {
+          "range": [10, 255],
+          "name": "slow - fast"
+        }
+      ]
+    },
+    "Programs": {
+      "type": "Effect",
+      "crossfade": false,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "No function"
+        },
+        {
+          "range": [10, 199],
+          "name": "Auto mode"
+        },
+        {
+          "range": [200, 255],
+          "name": "Sound mode"
+        }
+      ]
+    },
+    "Speed": {
+      "type": "Speed",
+      "defaultValue": 128,
+      "highlightValue": 255,
+      "crossfade": true,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow - fast"
+        }
+      ]
+    },
+    "Red": {
+      "type": "SingleColor",
+      "color": "Red",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Green": {
+      "type": "SingleColor",
+      "color": "Green",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Blue": {
+      "type": "SingleColor",
+      "color": "Blue",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "White": {
+      "type": "SingleColor",
+      "color": "White",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Amber": {
+      "type": "SingleColor",
+      "color": "Amber",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "UV": {
+      "type": "SingleColor",
+      "color": "UV",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true
+    }
+  },
+  "modes": [
+    {
+      "name": "4 channel",
+      "shortName": "4ch",
+      "channels": [
+        "Color Presets",
+        "Strobe",
+        "Programs",
+        "Speed"
+      ]
+    },
+    {
+      "name": "10 channel",
+      "shortName": "10ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Dimmer",
+        "Strobe",
+        "Programs",
+        "Speed"
+      ]
+    }
+  ]
+}
