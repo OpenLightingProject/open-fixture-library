@@ -216,11 +216,12 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
             const lastRangeEnd = Math.floor(channel.capabilities[i-1].range[1] / Math.pow(256, channel.fineChannelAliases.length));
             const rangeStart = Math.floor(cap.range[0] / Math.pow(256, channel.fineChannelAliases.length));
 
-            if (lastRangeEnd <= rangeStart) {
+            if (rangeStart <= lastRangeEnd) {
               result.errors.push({
                 description: `ranges overlapping when used in coarse channel only mode in capabilities #${i-1} and #${i} in channel '${ch}'.`,
                 error: null
               });
+              break;
             }
           }
 
