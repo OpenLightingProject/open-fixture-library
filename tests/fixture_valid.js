@@ -85,10 +85,10 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
         if (ch !== null) {
           if (ch in fixture.availableChannels) {
             if (fixture.availableChannels[ch].type === 'Pan') {
-              checkPanTiltMaxExistence(fixture, mode, ch, 'panMax');
+              checkPanTiltMaxExistence(result, fixture, mode, ch, 'panMax');
             }
             else if (fixture.availableChannels[ch].type === 'Tilt') {
-              checkPanTiltMaxExistence(fixture, mode, ch, 'tiltMax');
+              checkPanTiltMaxExistence(result, fixture, mode, ch, 'tiltMax');
             }
           }
           else {
@@ -212,7 +212,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
   return result;
 };
 
-function checkPanTiltMaxExistence(fixture, mode, chKey, maxProp) {
+function checkPanTiltMaxExistence(result, fixture, mode, chKey, maxProp) {
   let maxDefined = false;
   let maxIsZero = false;
   if ('physical' in mode

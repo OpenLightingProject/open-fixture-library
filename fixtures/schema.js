@@ -62,7 +62,7 @@ var Capability = schema({
 });
 
 var Channel = schema({
-  '?name': [String, null], // null: use channel key
+  '?name': String,
   'type': ['Intensity', 'Strobe', 'Shutter', 'Speed', 'SingleColor', 'MultiColor', 'Gobo', 'Prism', 'Pan', 'Tilt', 'Beam', 'Effect', 'Maintenance', 'Nothing'],
   '?color': ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime', 'Indigo'],
   '?defaultValue': DMXValue,
@@ -79,7 +79,7 @@ var ChannelKey = NonEmptyString;
 
 var Mode = schema({
   'name': NonEmptyString,
-  '?shortName': NonEmptyString, // null: use name
+  '?shortName': NonEmptyString,
   '?physical': Physical, // overrides fixture's Physical
   'channels': Array.of([null, ChannelKey]), // null for unused channels
   '*': Function
@@ -87,7 +87,7 @@ var Mode = schema({
 
 var Fixture = schema({
   'name': NonEmptyString,
-  '?shortName': NonEmptyString, // null: use name
+  '?shortName': NonEmptyString,
   'categories': Array.of(1, Infinity, Category), // most important category first
   'meta': schema({
     'authors': Array.of(NonEmptyString),
