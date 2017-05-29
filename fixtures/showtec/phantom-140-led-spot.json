@@ -29,17 +29,15 @@
   "availableChannels": {
     "Pan": {
       "type": "Pan",
-      "defaultValue": 128
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32639,
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
-      "defaultValue": 128
-    },
-    "Pan fine": {
-      "type": "Pan"
-    },
-    "Tilt fine": {
-      "type": "Tilt"
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32639,
+      "crossfade": true
     },
     "Pan/Tilt Speed": {
       "type": "Speed",
@@ -619,10 +617,6 @@
       ]
     }
   },
-  "multiByteChannels": [
-    ["Pan", "Pan fine"],
-    ["Tilt", "Tilt fine"]
-  ],
   "modes": [
     {
       "name": "14-channel",
