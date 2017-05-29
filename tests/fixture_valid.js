@@ -137,6 +137,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
         });
       }
 
+      let testFineChannelCausesOverlapping = false;
       let dmxMaxBound = 256;
       if ('fineChannelAliases' in channel) {
         channel.fineChannelAliases.forEach(alias => {
@@ -151,6 +152,10 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
             });
           }
           definedChannels.push(alias);
+        });
+
+        testFineChannelCausesOverlapping = fixture.modes.some(mode => {
+          return mode.channels.indexOf(ch) !== -1 && channel.fineChannelAliases.every(chKey => mode.channels.indexOf(chKey) === -1);
         });
       }
 
@@ -190,6 +195,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
             });
             break;
           }
+
           if (cap.range[0] > cap.range[1]) {
             result.errors.push({
               description: `range invalid in capability #${i} in channel '${ch}'.`,
@@ -197,12 +203,25 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
             });
             break;
           }
+
           if (i > 0 && cap.range[0] <= channel.capabilities[i-1].range[1]) {
             result.errors.push({
               description: `ranges overlapping in capabilities #${i-1} and #${i} in channel '${ch}'.`,
               error: null
             });
             break;
+          }
+
+          if (i > 0 && testFineChannelCausesOverlapping) {
+            const lastRangeEnd = channel.capabilities[i-1].range[1] / Math.pow(256, channel.fineChannelAliases.length);
+            const rangeStart = cap.range[0] / Math.pow(256, channel.fineChannelAliases.length);
+
+            if (lastRangeEnd <= rangeStart) {
+              result.errors.push({
+                description: `ranges overlapping when used in coarse channel only mode in capabilities #${i-1} and #${i} in channel '${ch}'.`,
+                error: null
+              });
+            }
           }
 
           if (('color' in cap || ('image' in cap && cap.image.length > 0))
