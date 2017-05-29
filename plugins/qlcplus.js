@@ -131,37 +131,45 @@ function exportHandleAvailableChannels(fixture, defaults) {
 
     xmlChannels.push(xmlChannel);
 
-    let divisor = 1;
-    if ('fineChannelAliases' in chData) {
-      divisor = Math.pow(256, chData.fineChannelAliases.length);
-    }
+    const divisor = 'fineChannelAliases' in chData ? Math.pow(256, chData.fineChannelAliases.length) : 1;
 
     xmlChannel.Capability = [];
     const defaultCapability = defaults.availableChannels['channel key'].capabilities[0];
-    for (const capability of chData.capabilities) {
-      const capData = Object.assign({}, defaultCapability, capability);
+    if ('capabilities' in fixture.availableChannels[chKey]) {
+      for (const capability of chData.capabilities) {
+        const capData = Object.assign({}, defaultCapability, capability);
 
-      capData.name = capData.name.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        capData.name = capData.name.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-      let xmlCapability = {
-        $: {
-          Min: Math.floor(capData.range[0] / divisor),
-          Max: Math.floor(capData.range[1] / divisor)
-        },
-        _: capData.name
-      };
-      xmlChannel.Capability.push(xmlCapability);
+        let xmlCapability = {
+          $: {
+            Min: Math.floor(capData.range[0] / divisor),
+            Max: Math.floor(capData.range[1] / divisor)
+          },
+          _: capData.name
+        };
+        xmlChannel.Capability.push(xmlCapability);
 
-      if ('image' in capData) {
-        xmlCapability.$.res = capData.image;
-      }
-      else if ('color' in capData) {
-        xmlCapability.$.Color = capData.color;
+        if ('image' in capData) {
+          xmlCapability.$.res = capData.image;
+        }
+        else if ('color' in capData) {
+          xmlCapability.$.Color = capData.color;
 
-        if ('color2' in capData) {
-          xmlCapability.$.Color2 = capData.color2;
+          if ('color2' in capData) {
+            xmlCapability.$.Color2 = capData.color2;
+          }
         }
       }
+    }
+    else {
+      xmlChannel.Capability.push({
+        $: {
+          Min: defaultCapability.range[0],
+          Max: defaultCapability.range[1]
+        },
+        _: defaultCapability.name
+      });
     }
 
     if ('fineChannelAliases' in chData) {
