@@ -133,7 +133,7 @@ function exportHandleAvailableChannels(fixture, defaults) {
 
     let divisor = 1;
     if ('fineChannelAliases' in chData) {
-      divisor = Math.pow(256, chData.fineChannelAliases.length - 1);
+      divisor = Math.pow(256, chData.fineChannelAliases.length);
     }
 
     xmlChannel.Capability = [];

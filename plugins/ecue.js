@@ -129,7 +129,7 @@ function exportHandleModes(fixture, physical, xmlMan) {
 
 function exportHandleChannel(fixture, mode, dmxCount, viewPosCount) {
   let chKey = mode.channels[dmxCount];
-  let channel = fixture.availableChannels[chKey];
+  let channel = JSON.parse(JSON.stringify(fixture.availableChannels[chKey]));
 
   let dmxByte0 = dmxCount;
   let dmxByte1 = -1;
@@ -140,7 +140,7 @@ function exportHandleChannel(fixture, mode, dmxCount, viewPosCount) {
     const coarseChannelKey = Object.keys(fixture.availableChannels).find(coarseKey => 'fineChannelAliases' in fixture.availableChannels[coarseKey] && fixture.availableChannels[coarseKey].fineChannelAliases.includes(chKey));
 
     // use coarse channel's data
-    channel = fixture.availableChannels[coarseChannelKey];
+    channel = JSON.parse(JSON.stringify(fixture.availableChannels[coarseChannelKey]));
 
     const coarseChannelIndex = mode.channels.indexOf(coarseChannelKey);
 
