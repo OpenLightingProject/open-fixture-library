@@ -80,13 +80,24 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
       }
 
       for (const ch of mode.channels) {
-        if (!(ch in fixture.availableChannels) && ch !== null) {
-          result.errors.push({
-            description: `channel '${ch}' referenced from mode '${modeShortName}' (#${i}) but missing.`,
-            error: null
-          });
-        }
         usedChannels.push(ch);
+
+        if (ch !== null) {
+          if (ch in fixture.availableChannels) {
+            if (fixture.availableChannels[ch].type === 'Pan') {
+              checkPanTiltMaxExistence(result, fixture, mode, ch, 'panMax');
+            }
+            else if (fixture.availableChannels[ch].type === 'Tilt') {
+              checkPanTiltMaxExistence(result, fixture, mode, ch, 'tiltMax');
+            }
+          }
+          else {
+            result.errors.push({
+              description: `channel '${ch}' referenced from mode '${modeShortName}' (#${i}) but missing.`,
+              error: null
+            });
+          }
+        }
       }
     }
 
@@ -200,3 +211,31 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
   return result;
 };
+
+function checkPanTiltMaxExistence(result, fixture, mode, chKey, maxProp) {
+  let maxDefined = false;
+  let maxIsZero = false;
+  if ('physical' in mode
+    && 'focus' in mode.physical
+    && maxProp in mode.physical.focus) {
+    maxDefined = true;
+    maxIsZero = mode.physical.focus[maxProp] === 0;
+  }
+  else if ('physical' in fixture
+    && 'focus' in fixture.physical
+    && maxProp in fixture.physical.focus) {
+    maxDefined = true;
+    maxIsZero = fixture.physical.focus[maxProp] === 0;
+  }
+
+  const chType = fixture.availableChannels[chKey].type;
+  if (!maxDefined) {
+    result.warnings.push(`${maxProp} is not defined although there's a ${chType} channel '${chKey}'`);
+  }
+  else if (maxIsZero) {
+    result.errors.push({
+      description: `${maxProp} is 0 in mode '${mode.name || mode.shortName}' although it contains a ${chType} channel '${chKey}'`,
+      error: null
+    });
+  }
+}
