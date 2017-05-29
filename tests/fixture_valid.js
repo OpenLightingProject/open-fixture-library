@@ -213,8 +213,8 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
           }
 
           if (i > 0 && testFineChannelOverlapping) {
-            const lastRangeEnd = channel.capabilities[i-1].range[1] / Math.pow(256, channel.fineChannelAliases.length);
-            const rangeStart = cap.range[0] / Math.pow(256, channel.fineChannelAliases.length);
+            const lastRangeEnd = Math.floor(channel.capabilities[i-1].range[1] / Math.pow(256, channel.fineChannelAliases.length));
+            const rangeStart = Math.floor(cap.range[0] / Math.pow(256, channel.fineChannelAliases.length));
 
             if (lastRangeEnd <= rangeStart) {
               result.errors.push({
