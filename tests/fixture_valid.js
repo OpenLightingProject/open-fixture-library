@@ -137,7 +137,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
         });
       }
 
-      let testFineChannelCausesOverlapping = false;
+      let testFineChannelOverlapping = false;
       let dmxMaxBound = 256;
       if ('fineChannelAliases' in channel) {
         channel.fineChannelAliases.forEach(alias => {
@@ -154,7 +154,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
           definedChannels.push(alias);
         });
 
-        testFineChannelCausesOverlapping = fixture.modes.some(mode => {
+        testFineChannelOverlapping = fixture.modes.some(mode => {
           return mode.channels.indexOf(ch) !== -1 && channel.fineChannelAliases.every(chKey => mode.channels.indexOf(chKey) === -1);
         });
       }
@@ -212,7 +212,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
             break;
           }
 
-          if (i > 0 && testFineChannelCausesOverlapping) {
+          if (i > 0 && testFineChannelOverlapping) {
             const lastRangeEnd = channel.capabilities[i-1].range[1] / Math.pow(256, channel.fineChannelAliases.length);
             const rangeStart = cap.range[0] / Math.pow(256, channel.fineChannelAliases.length);
 
