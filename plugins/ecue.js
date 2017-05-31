@@ -129,7 +129,7 @@ function exportHandleModes(fixture, physical, xmlMan) {
 
 function exportHandleChannel(fixture, mode, dmxCount, viewPosCount) {
   let chKey = mode.channels[dmxCount];
-  let channel = JSON.parse(JSON.stringify(fixture.availableChannels[chKey]));
+  let channel = fixture.availableChannels[chKey];
 
   let dmxByte0 = dmxCount;
   let dmxByte1 = -1;
@@ -140,7 +140,7 @@ function exportHandleChannel(fixture, mode, dmxCount, viewPosCount) {
     const coarseChannelKey = Object.keys(fixture.availableChannels).find(coarseKey => 'fineChannelAliases' in fixture.availableChannels[coarseKey] && fixture.availableChannels[coarseKey].fineChannelAliases.includes(chKey));
 
     // use coarse channel's data
-    channel = JSON.parse(JSON.stringify(fixture.availableChannels[coarseChannelKey]));
+    channel = fixture.availableChannels[coarseChannelKey];
 
     const coarseChannelIndex = mode.channels.indexOf(coarseChannelKey);
 
@@ -154,7 +154,7 @@ function exportHandleChannel(fixture, mode, dmxCount, viewPosCount) {
     else {
       // coarse and first fine channel were already handled -> just pretend it's a single channel
       channel.name = (channel.name || coarseChannelKey) + ' fine^' + (channel.fineChannelAliases.indexOf(chKey) + 1);
-      divideChannelDmxValues(channel, channel.fineChannelAliases.length - 1);
+      channel = divideChannelDmxValues(channel, channel.fineChannelAliases.length - 1);
     }
   }
   else if ('fineChannelAliases' in fixture.availableChannels[chKey]) {
@@ -166,7 +166,7 @@ function exportHandleChannel(fixture, mode, dmxCount, viewPosCount) {
       mode.channels[dmxByte1] = null;
     }
     else {
-      divideChannelDmxValues(channel, 1);
+      channel = divideChannelDmxValues(channel, 1);
     }
   }
 
@@ -239,18 +239,22 @@ function exportHandleChannel(fixture, mode, dmxCount, viewPosCount) {
 }
 
 function divideChannelDmxValues(channel, times) {
-  if ('highlightValue' in channel) {
-    channel.highlightValue = Math.floor(channel.highlightValue / Math.pow(256, times));
+  let newChannel = JSON.parse(JSON.stringify(channel));
+
+  if ('highlightValue' in newChannel) {
+    newChannel.highlightValue = Math.floor(newChannel.highlightValue / Math.pow(256, times));
   }
-  if ('defaultValue' in channel) {
-    channel.defaultValue = Math.floor(channel.defaultValue / Math.pow(256, times));
+  if ('defaultValue' in newChannel) {
+    newChannel.defaultValue = Math.floor(newChannel.defaultValue / Math.pow(256, times));
   }
-  if ('capabilities' in channel) {
-    for (const cap of channel.capabilities) {
+  if ('capabilities' in newChannel) {
+    for (const cap of newChannel.capabilities) {
       cap.range[0] = Math.floor(cap.range[0] / Math.pow(256, times));
       cap.range[1] = Math.floor(cap.range[1] / Math.pow(256, times));
     }
   }
+
+  return newChannel;
 }
 
 module.exports.import = function importEcue(str, filename, resolve, reject) {
