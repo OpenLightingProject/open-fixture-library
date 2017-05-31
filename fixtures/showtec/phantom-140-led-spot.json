@@ -1,0 +1,662 @@
+{
+  "name": "Phantom 140 LED Beam",
+  "shortName": "Phant140",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["FloEdelmann", "Felix Edelmann"],
+    "createDate": "2017-05-24",
+    "lastModifyDate": "2017-05-24"
+  },
+  "comment": "Ordercode 40194",
+  "manualURL": "https://www.highlite.nl/de/silver.download/Documents@extern@Manuals/40194_MANUAL_GB_V2.pdf",
+  "physical": {
+    "dimensions": [330, 460, 245],
+    "weight": 17.28,
+    "power": 230,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [4, 4]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 270
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "defaultValue": 128
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "defaultValue": 128
+    },
+    "Pan fine": {
+      "type": "Pan"
+    },
+    "Tilt fine": {
+      "type": "Tilt"
+    },
+    "Pan/Tilt Speed": {
+      "type": "Speed",
+      "defaultValue": 128,
+      "invert": true
+    },
+    "Colorwheel": {
+      "type": "MultiColor",
+      "capabilities": [
+        {
+          "range": [0, 3],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [4, 7],
+          "name": "Yellow",
+          "color": "#fffc00"
+        },
+        {
+          "range": [8, 11],
+          "name": "Light Pink",
+          "color": "#ff8697"
+        },
+        {
+          "range": [12, 15],
+          "name": "Green",
+          "color": "#1c7403"
+        },
+        {
+          "range": [16, 19],
+          "name": "Red",
+          "color": "#cd000f"
+        },
+        {
+          "range": [20, 23],
+          "name": "Bright Blue",
+          "color": "#0065fd"
+        },
+        {
+          "range": [24, 27],
+          "name": "Light Green",
+          "color": "#60fb0a"
+        },
+        {
+          "range": [28, 31],
+          "name": "Dark Yellow",
+          "color": "#e1e900"
+        },
+        {
+          "range": [32, 35],
+          "name": "Old Yellow",
+          "color": "#ff9c03"
+        },
+        {
+          "range": [36, 39],
+          "name": "Violet",
+          "color": "#7173c8"
+        },
+        {
+          "range": [40, 43],
+          "name": "Hard Pink",
+          "color": "#ee008a"
+        },
+        {
+          "range": [44, 47],
+          "name": "Light Blue",
+          "color": "#6ea4ee"
+        },
+        {
+          "range": [48, 51],
+          "name": "Moon Yellow",
+          "color": "#f8d158"
+        },
+        {
+          "range": [52, 55],
+          "name": "Steel Blue",
+          "color": "#d6e5fc"
+        },
+        {
+          "range": [56, 63],
+          "name": "UV",
+          "color": "#33199e"
+        },
+        {
+          "range": [64, 67],
+          "name": "White + Yellow",
+          "color": "#ffffff",
+          "color2": "#fffc00"
+        },
+        {
+          "range": [68, 71],
+          "name": "Yellow + Light Pink",
+          "color": "#fffc00",
+          "color2": "#ff8697"
+        },
+        {
+          "range": [72, 75],
+          "name": "Light Pink + Green",
+          "color": "#ff8697",
+          "color2": "#1c7403"
+        },
+        {
+          "range": [76, 79],
+          "name": "Green + Red",
+          "color": "#1c7403",
+          "color2": "#cd000f"
+        },
+        {
+          "range": [80, 83],
+          "name": "Red + Bright Blue",
+          "color": "#cd000f",
+          "color2": "#0065fd"
+        },
+        {
+          "range": [84, 87],
+          "name": "Bright Blue + Light Blue",
+          "color": "#0065fd",
+          "color2": "#60fb0a"
+        },
+        {
+          "range": [88, 91],
+          "name": "Light Blue + Dark Yellow",
+          "color": "#60fb0a",
+          "color2": "#e1e900"
+        },
+        {
+          "range": [92, 95],
+          "name": "Dark Yellow + Old Yellow",
+          "color": "#e1e900",
+          "color2": "#ff9c03"
+        },
+        {
+          "range": [96, 99],
+          "name": "Old Yellow + Violet",
+          "color": "#ff9c03",
+          "color2": "#7173c8"
+        },
+        {
+          "range": [100, 103],
+          "name": "Violet + Hard Pink",
+          "color": "#7173c8",
+          "color2": "#ee008a"
+        },
+        {
+          "range": [104, 107],
+          "name": "Hard Pink + Light Green",
+          "color": "#ee008a",
+          "color2": "#6ea4ee"
+        },
+        {
+          "range": [108, 111],
+          "name": "Light Green + Moon Yellow",
+          "color": "#6ea4ee",
+          "color2": "#f8d158"
+        },
+        {
+          "range": [112, 115],
+          "name": "Moon Yellow + Steel Blue",
+          "color": "#f8d158",
+          "color2": "#d6e5fc"
+        },
+        {
+          "range": [116, 119],
+          "name": "Steel Blue + UV",
+          "color": "#d6e5fc",
+          "color2": "#33199e"
+        },
+        {
+          "range": [120, 127],
+          "name": "UV + White",
+          "color": "#33199e",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [128, 191],
+          "name": "Rainbow CW",
+          "menuClick": "center"
+        },
+        {
+          "range": [192, 255],
+          "name": "Rainbow CCW",
+          "menuClick": "center"
+        }
+      ]
+    },
+    "Shutter": {
+      "type": "Shutter",
+      "defaultValue": 255,
+      "highlightValue": 200,
+      "capabilities": [
+        {
+          "range": [0, 3],
+          "name": "closed"
+        },
+        {
+          "range": [4, 7],
+          "name": "shutter open"
+        },
+        {
+          "range": [8, 76],
+          "name": "strobe 0-10Hz",
+          "menuClick": "center"
+        },
+        {
+          "range": [77, 145],
+          "name": "pulse slow-fast",
+          "menuClick": "center"
+        },
+        {
+          "range": [146, 215],
+          "name": "random 0-10Hz",
+          "menuClick": "center"
+        },
+        {
+          "range": [216, 255],
+          "name": "shutter open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Gobo": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 3],
+          "name": "Open / White"
+        },
+        {
+          "range": [4, 7],
+          "name": "Gobo 1"
+        },
+        {
+          "range": [8, 11],
+          "name": "Gobo 2"
+        },
+        {
+          "range": [12, 15],
+          "name": "Gobo 3"
+        },
+        {
+          "range": [16, 19],
+          "name": "Gobo 4"
+        },
+        {
+          "range": [20, 23],
+          "name": "Gobo 5"
+        },
+        {
+          "range": [24, 27],
+          "name": "Gobo 6"
+        },
+        {
+          "range": [28, 31],
+          "name": "Gobo 7"
+        },
+        {
+          "range": [32, 35],
+          "name": "Gobo 8"
+        },
+        {
+          "range": [36, 39],
+          "name": "Gobo 9"
+        },
+        {
+          "range": [40, 43],
+          "name": "Gobo 10"
+        },
+        {
+          "range": [44, 47],
+          "name": "Gobo 11"
+        },
+        {
+          "range": [48, 51],
+          "name": "Gobo 12"
+        },
+        {
+          "range": [52, 55],
+          "name": "Gobo 13"
+        },
+        {
+          "range": [56, 59],
+          "name": "Gobo 14"
+        },
+        {
+          "range": [60, 63],
+          "name": "Gobo 15"
+        },
+        {
+          "range": [64, 67],
+          "name": "Gobo 16"
+        },
+        {
+          "range": [68, 71],
+          "name": "Gobo 17"
+        },
+        {
+          "range": [72, 77],
+          "name": "Gobo Shake 17 slow-fast"
+        },
+        {
+          "range": [78, 83],
+          "name": "Gobo Shake 16 slow-fast"
+        },
+        {
+          "range": [84, 89],
+          "name": "Gobo Shake 15 slow-fast"
+        },
+        {
+          "range": [90, 95],
+          "name": "Gobo Shake 14 slow-fast"
+        },
+        {
+          "range": [96, 101],
+          "name": "Gobo Shake 13 slow-fast"
+        },
+        {
+          "range": [102, 107],
+          "name": "Gobo Shake 12 slow-fast"
+        },
+        {
+          "range": [108, 113],
+          "name": "Gobo Shake 11 slow-fast"
+        },
+        {
+          "range": [114, 119],
+          "name": "Gobo Shake 10 slow-fast"
+        },
+        {
+          "range": [120, 125],
+          "name": "Gobo Shake 9 slow-fast"
+        },
+        {
+          "range": [126, 131],
+          "name": "Gobo Shake 8 slow-fast"
+        },
+        {
+          "range": [132, 137],
+          "name": "Gobo Shake 7 slow-fast"
+        },
+        {
+          "range": [138, 143],
+          "name": "Gobo Shake 6 slow-fast"
+        },
+        {
+          "range": [144, 149],
+          "name": "Gobo Shake 5 slow-fast"
+        },
+        {
+          "range": [150, 155],
+          "name": "Gobo Shake 4 slow-fast"
+        },
+        {
+          "range": [156, 161],
+          "name": "Gobo Shake 3 slow-fast"
+        },
+        {
+          "range": [162, 167],
+          "name": "Gobo Shake 2 slow-fast"
+        },
+        {
+          "range": [168, 173],
+          "name": "Gobo Shake 1 slow-fast"
+        },
+        {
+          "range": [174, 179],
+          "name": "Open / White"
+        },
+        {
+          "range": [180, 217],
+          "name": "Rainbow CW slow-fast",
+          "menuClick": "center"
+        },
+        {
+          "range": [218, 255],
+          "name": "Rainbow CCW slow-fast",
+          "menuClick": "center"
+        }
+      ]
+    },
+    "Functions": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "No Function"
+        },
+        {
+          "range": [8, 15],
+          "name": "Blackout while Pan/Tilt"
+        },
+        {
+          "range": [16, 23],
+          "name": "Blackout while Colorwheel"
+        },
+        {
+          "range": [24, 31],
+          "name": "Blackout while Gobowheel"
+        },
+        {
+          "range": [32, 39],
+          "name": "Blackout while Pan/Tilt/Colorwheel"
+        },
+        {
+          "range": [40, 47],
+          "name": "Blackout while Pan/Tilt/Gobowheel"
+        },
+        {
+          "range": [48, 55],
+          "name": "Blackout while Pan/Tilt/Gobowheel/Colorwheel"
+        },
+        {
+          "range": [56, 95],
+          "name": "No Function"
+        },
+        {
+          "range": [96, 103],
+          "name": "Reset Pan after 5 seconds"
+        },
+        {
+          "range": [104, 111],
+          "name": "Reset Tilt after 5 seconds"
+        },
+        {
+          "range": [112, 119],
+          "name": "Reset Colorwheel after 5 seconds"
+        },
+        {
+          "range": [120, 127],
+          "name": "Reset Gobowheel after 5 seconds"
+        },
+        {
+          "range": [128, 135],
+          "name": "No Function"
+        },
+        {
+          "range": [136, 143],
+          "name": "Reset Prism after 5 seconds"
+        },
+        {
+          "range": [144, 151],
+          "name": "Reset Focus after 5 seconds"
+        },
+        {
+          "range": [152, 159],
+          "name": "Reset all Channels after 5 seconds"
+        },
+        {
+          "range": [160, 255],
+          "name": "No Function"
+        }
+      ]
+    },
+    "Programs": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "No Function"
+        },
+        {
+          "range": [8, 23],
+          "name": "Built-in Program 1"
+        },
+        {
+          "range": [24, 39],
+          "name": "Built-in Program 2"
+        },
+        {
+          "range": [40, 55],
+          "name": "Built-in Program 3"
+        },
+        {
+          "range": [56, 71],
+          "name": "Built-in Program 4"
+        },
+        {
+          "range": [72, 87],
+          "name": "Built-in Program 5"
+        },
+        {
+          "range": [88, 103],
+          "name": "Built-in Program 6"
+        },
+        {
+          "range": [104, 119],
+          "name": "Built-in Program 7"
+        },
+        {
+          "range": [120, 135],
+          "name": "Built-in Program 8"
+        },
+        {
+          "range": [136, 151],
+          "name": "Sound control 1"
+        },
+        {
+          "range": [152, 167],
+          "name": "Sound control 2"
+        },
+        {
+          "range": [168, 183],
+          "name": "Sound control 3"
+        },
+        {
+          "range": [184, 199],
+          "name": "Sound control 4"
+        },
+        {
+          "range": [200, 215],
+          "name": "Sound control 5"
+        },
+        {
+          "range": [216, 231],
+          "name": "Sound control 6"
+        },
+        {
+          "range": [232, 247],
+          "name": "Sound control 7"
+        },
+        {
+          "range": [248, 255],
+          "name": "Sound control 8"
+        }
+      ]
+    },
+    "Prism": {
+      "type": "Prism",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "open"
+        },
+        {
+          "range": [8, 12],
+          "name": "8-facet Prism"
+        },
+        {
+          "range": [13, 130],
+          "name": "CW rotation slow-fast"
+        },
+        {
+          "range": [131, 247],
+          "name": "CCW rotation slow-fast"
+        },
+        {
+          "range": [248, 255],
+          "name": "8-facet Prism"
+        }
+      ]
+    },
+    "Focus": {
+      "type": "Beam",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "far–near"
+        }
+      ]
+    },
+    "Frost": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "No function"
+        },
+        {
+          "range": [8, 255],
+          "name": "Frost effect"
+        }
+      ]
+    }
+  },
+  "multiByteChannels": [
+    ["Pan", "Pan fine"],
+    ["Tilt", "Tilt fine"]
+  ],
+  "modes": [
+    {
+      "name": "14-channel",
+      "shortName": "14ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Colorwheel",
+        "Shutter",
+        "Dimmer",
+        "Gobo",
+        "Functions",
+        "Programs",
+        "Prism",
+        "Focus",
+        "Frost"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Colorwheel",
+        "Shutter",
+        "Gobo",
+        "Prism",
+        "Focus",
+        "Frost"
+      ]
+    }
+  ]
+}

@@ -39,7 +39,7 @@ const secondsInOneYear = 60 * 60 * 24 * 365;
 app.use(express.static(path.join(__dirname, 'static'), {
   setHeaders: (res, filename, stat) => {
     if (process.env.NODE_ENV === 'production') {
-      if (path.extname(filename) == '.css') {
+      if (path.extname(filename) === '.css') {
         res.append('Cache-Control', 'public, max-age=3600'); // cache for one hour
       }
       else {
@@ -76,10 +76,9 @@ app.engine('js', (filePath, options, callback) => {
       sortAttributes: true,
       sortClassName: true
     }));
+    return;
   }
-  else {
-    callback(null, html);
-  }
+  callback(null, html);
 });
 app.set('view engine', 'js');
 
@@ -152,22 +151,22 @@ app.post('/ajax/add-fixtures', (request, response) => {
 // if no other route applies
 app.use((request, response, next) => {
   // first char is always a slash, last char has to be tested
-  const sanitizedUrl = request.originalUrl.slice(1, (request.originalUrl.slice(-1) == '/') ? -1 : request.originalUrl.length);
+  const sanitizedUrl = request.originalUrl.slice(1, (request.originalUrl.slice(-1) === '/') ? -1 : request.originalUrl.length);
   const segments = sanitizedUrl.split('/');
 
 
-  if (segments.length == 1 && segments[0] in manufacturers) {
+  if (segments.length === 1 && segments[0] in manufacturers) {
     response.render('pages/single_manufacturer', {
       man: segments[0]
     });
     return;
   }
 
-  if (segments.length == 2 && segments[0] in manufacturers) {
+  if (segments.length === 2 && segments[0] in manufacturers) {
     const man = segments[0];
     const fix = segments[1];
 
-    if (register.manufacturers[man].indexOf(fix) != -1) {
+    if (register.manufacturers[man].indexOf(fix) !== -1) {
       response.render('pages/single_fixture', {
         man: man,
         fix: fix
@@ -190,7 +189,7 @@ app.use((request, response, next) => {
     }
   }
 
-  if (segments.length == 2 && segments[0] === 'categories' && decodeURIComponent(segments[1]) in register.categories) {
+  if (segments.length === 2 && segments[0] === 'categories' && decodeURIComponent(segments[1]) in register.categories) {
     response.render('pages/single_category', {
       category: decodeURIComponent(segments[1])
     });
@@ -204,7 +203,7 @@ app.use((request, response, next) => {
 
 
 function downloadFiles(response, files, zipname) {
-  if (files.length == 1) {
+  if (files.length === 1) {
     response
       .status(201)
       .attachment(files[0].name)
@@ -214,11 +213,12 @@ function downloadFiles(response, files, zipname) {
   }
 
   // else zip all together
-  const zip = new require('node-zip')();
+  const Zip = require('node-zip');
+  const archive = new Zip();
   for (const file of files) {
-    zip.file(file.name, file.content);
+    archive.file(file.name, file.content);
   }
-  const data = zip.generate({
+  const data = archive.generate({
     base64: false,
     compression: 'DEFLATE'
   });

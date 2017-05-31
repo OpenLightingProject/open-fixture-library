@@ -1,34 +1,48 @@
 const fs = require('fs');
 const path = require('path');
-const util = require('util');
 const colorNames = require('color-names');
 const xml2js = require('xml2js');
+const xmlbuilder = require('xmlbuilder');
 
 module.exports.name = 'e:cue';
-module.exports.version = '0.1.1';
-
-const fileTemplate = `<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<Document Owner="user" TypeVersion="2" SaveTimeStamp="%s">
-    <Library>
-        <Fixtures>
-%s        </Fixtures>
-        <Tiles>
-%s        </Tiles>
-    </Library>
-</Document>
-`;
+module.exports.version = '0.2.0';
 
 module.exports.export = function exportEcue(library, options) {
   let outfiles = [];
 
   const defaults = require(path.join(options.baseDir, 'fixtures', 'defaults'));
 
-  let outFixtures = {};  
+  const timestamp = new Date().toISOString().replace(/T/, '#').replace(/\..+/, '');
 
+  let xml = xmlbuilder.create(
+    {
+      Document: {
+        '@Owner': 'user',
+        '@TypeVersion': 2,
+        '@SaveTimeStamp': timestamp
+      }
+    },
+    {
+      encoding: 'UTF-8',
+      standalone: true
+    }
+  );
+  let xmlLibrary = xml.ele({
+    Library: {}
+  });
+  let xmlFixtures = xmlLibrary.ele({
+    Fixtures: {}
+  });
+  let xmlTiles = xmlLibrary.ele({
+    Tiles: {}
+  });
+
+  let xmlManFixtures = {};
   for (const data of library) {
-    let fixture = Object.assign({}, defaults, JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', data.manufacturerKey, data.fixtureKey + '.json'), 'utf-8')));
+    const filePath = path.join(options.baseDir, 'fixtures', data.manufacturerKey, data.fixtureKey + '.json');
+    let fixture = Object.assign({}, defaults, JSON.parse(fs.readFileSync(filePath, 'utf-8')));
 
-    if (fixture.shortName === null) {
+    if (!('shortName' in fixture)) {
       fixture.shortName = fixture.name;
     }
 
@@ -37,44 +51,38 @@ module.exports.export = function exportEcue(library, options) {
     physical.lens = Object.assign({}, defaults.physical.lens, fixture.physical.lens);
     physical.focus = Object.assign({}, defaults.physical.focus, fixture.physical.focus);
 
+    if (!(data.manufacturerKey in xmlManFixtures)) {
+      const manData = options.manufacturers[data.manufacturerKey];
 
-    const fixtureStr = exportHandleModes(fixture, defaults, physical);
-
-    if (!(data.manufacturerKey in outFixtures)) {
-      outFixtures[data.manufacturerKey] = '';
+      let xmlMan = {
+        'Manufacturer': {
+          '@_CreationDate': timestamp,
+          '@_ModifiedDate': timestamp,
+          '@Name': manData.name,
+          '@Comment': manData.comment || '',
+          '@Web': manData.website || ''
+        }
+      };
+      xmlManFixtures[data.manufacturerKey] = xmlFixtures.ele(xmlMan);
+      xmlTiles.ele(xmlMan);
     }
-    outFixtures[data.manufacturerKey] += fixtureStr;
-  }
 
-  const timestamp = new Date().toISOString().replace(/T/, '#').replace(/\..+/, '');
-
-  let fixturesStr = '';
-  let tilesStr = '';
-
-  for (const man in outFixtures) {
-    const manData = options.manufacturers[man];
-
-    const manStr = `<Manufacturer _CreationDate="${timestamp}" _ModifiedDate="${timestamp}" Name="${manData.name}" Comment="${manData.comment || ''}" Web="${manData.website || ''}"`;
-
-    tilesStr += `            ${manStr} />\n`;
-
-    fixturesStr += `            ${manStr}>\n`;
-    fixturesStr += outFixtures[man];
-    fixturesStr += '            </Manufacturer>\n';
+    exportHandleModes(fixture, defaults, physical, xmlManFixtures[data.manufacturerKey]);
   }
 
   outfiles.push({
     name: 'UserLibrary.xml',
-    content: util.format(fileTemplate, timestamp, fixturesStr, tilesStr),
+    content: xml.end({
+      pretty: true,
+      indent: '    '
+    }),
     mimetype: 'application/xml'
   });
 
   return outfiles;
-}
+};
 
-function exportHandleModes(fixture, defaults, physical) {
-  let str = '';
-
+function exportHandleModes(fixture, defaults, physical, xmlMan) {
   const fixCreationDate = fixture.meta.createDate + '#00:00:00';
   const fixModifiedDate = fixture.meta.lastModifyDate + '#00:00:00';
 
@@ -85,14 +93,25 @@ function exportHandleModes(fixture, defaults, physical) {
     modeData.physical.lens = Object.assign({}, physical.lens, modeData.physical.lens);
     modeData.physical.focus = Object.assign({}, physical.focus, modeData.physical.focus);
 
-    if (modeData.shortName === null) {
+    if (!('shortName' in modeData)) {
       modeData.shortName = modeData.name;
     }
 
-    let fixName = fixture.name + (fixture.modes.length > 1 ? ` (${modeData.shortName} mode)` : '');
-    let fixShortName = fixture.shortName + (fixture.modes.length > 1 ? '-' + modeData.shortName : '');
-
-    str += `                <Fixture _CreationDate="${fixCreationDate}" _ModifiedDate="${fixModifiedDate}" Name="${fixName}" NameShort="${fixShortName}" Comment="${fixture.comment}" AllocateDmxChannels="${mode.channels.length}" Weight="${modeData.physical.weight}" Power="${modeData.physical.power}" DimWidth="${modeData.physical.dimensions[0]}" DimHeight="${modeData.physical.dimensions[1]}" DimDepth="${modeData.physical.dimensions[2]}">\n`;
+    let xmlFixture = xmlMan.ele({
+      'Fixture': {
+        '@_CreationDate': fixCreationDate,
+        '@_ModifiedDate': fixModifiedDate,
+        '@Name': fixture.name + (fixture.modes.length > 1 ? ` (${modeData.shortName} mode)` : ''),
+        '@NameShort': fixture.shortName + (fixture.modes.length > 1 ? '-' + modeData.shortName : ''),
+        '@Comment': fixture.comment || '',
+        '@AllocateDmxChannels': mode.channels.length,
+        '@Weight': modeData.physical.weight,
+        '@Power': modeData.physical.power,
+        '@DimWidth': modeData.physical.dimensions[0],
+        '@DimHeight': modeData.physical.dimensions[1],
+        '@DimDepth': modeData.physical.dimensions[2]
+      }
+    });
 
     let viewPosCount = 1;
     for (let dmxCount=0; dmxCount<mode.channels.length; dmxCount++) {
@@ -106,8 +125,8 @@ function exportHandleModes(fixture, defaults, physical) {
       let doubleByte = false;
       const multiByteChannels = getCorrespondingMultiByteChannels(chKey, fixture);
       if (multiByteChannels !== null
-        && mode.channels.indexOf(multiByteChannels[0]) != -1
-        && mode.channels.indexOf(multiByteChannels[1]) != -1
+        && mode.channels.includes(multiByteChannels[0])
+        && mode.channels.includes(multiByteChannels[1])
         ) {
         // it is a 16-bit channel and both 8-bit parts are used in this mode
         chKey = multiByteChannels[0];
@@ -118,7 +137,7 @@ function exportHandleModes(fixture, defaults, physical) {
 
       let chData = Object.assign({}, defaults.availableChannels['channel key'], channel);
 
-      if (chData.name === null) {
+      if (!('name' in chData)) {
         chData.name = chKey;
       }
 
@@ -173,28 +192,43 @@ function exportHandleModes(fixture, defaults, physical) {
       dmxByte0++;
       dmxByte1++;
 
-      const hasCapabilities = ('capabilities' in channel);
+      let xmlChannelObj = {};
+      xmlChannelObj[`Channel${chType}`] = {
+        '@Name': chData.name,
+        '@DefaultValue': chData.defaultValue,
+        '@Highlight': chData.highlightValue,
+        '@Deflection': 0,
+        '@DmxByte0': dmxByte0,
+        '@DmxByte1': dmxByte1,
+        '@Constant': chData.constant ? 1 : 0,
+        '@Crossfade': chData.crossfade ? 1 : 0,
+        '@Invert': chData.invert ? 1 : 0,
+        '@Precedence': chData.precedence,
+        '@ClassicPos': viewPosCount++
+      };
+      let xmlChannel = xmlFixture.ele(xmlChannelObj);
 
-      str += `                    <Channel${chType} Name="${chData.name}" DefaultValue="${chData.defaultValue}" Highlight="${chData.highlightValue}" Deflection="0" DmxByte0="${dmxByte0}" DmxByte1="${dmxByte1}" Constant="${chData.constant ? 1 : 0}" Crossfade="${chData.crossfade ? 1 : 0}" Invert="${chData.invert ? 1 : 0}" Precedence="${chData.precedence}" ClassicPos="${viewPosCount++}"` + (hasCapabilities ? '' : ' /') + '>\n';
-
-      if (hasCapabilities) {
+      if ('capabilities' in channel) {
         for (const cap of channel.capabilities) {
           const capData = Object.assign({}, defaults.availableChannels['channel key'].capabilities[0], cap);
-
-          str += `                        <Range Name="${capData.name}" Start="${capData.range[0]}" End="${capData.range[1]}" AutoMenu="${capData.menuClick == 'hidden' ? 0 : 1}" Centre="${capData.menuClick == 'center' ? 1 : 0}" />\n`;
+          xmlChannel.ele({
+            'Range': {
+              '@Name': capData.name,
+              '@Start': capData.range[0],
+              '@End': capData.range[1],
+              '@AutoMenu': capData.menuClick === 'hidden' ? 0 : 1,
+              '@Centre': capData.menuClick === 'center' ? 1 : 0
+            }
+          });
         }
-        str += `                    </Channel${chType}>\n`;
       }
     }
-    str += '                </Fixture>\n';
   }
-
-  return str;
 }
 
 function getCorrespondingMultiByteChannels(channelKey, fixture) {
   for (let channelList of fixture.multiByteChannels) {
-    if (channelList.indexOf(channelKey) != -1) {
+    if (channelList.indexOf(channelKey) !== -1) {
       return channelList;
     }
   }
@@ -212,7 +246,8 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
 
   parser.parseString(str, (parseError, xml) => {
     if (parseError) {
-      return reject(`Error parsing '${filename}' as XML.\n` + parseError.toString());
+      reject(`Error parsing '${filename}' as XML.\n` + parseError.toString());
+      return;
     }
 
     let out = {
@@ -223,7 +258,8 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
 
     try {
       if (!('Library' in xml.Document) || !('Fixtures' in xml.Document.Library[0]) || !('Manufacturer' in xml.Document.Library[0].Fixtures[0])) {
-        return reject('Nothing to import.');
+        reject('Nothing to import.');
+        return;
       }
 
       for (const manufacturer of xml.Document.Library[0].Fixtures[0].Manufacturer) {
@@ -234,10 +270,10 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
           name: manName
         };
 
-        if (manufacturer.$.Comment != '') {
+        if (manufacturer.$.Comment !== '') {
           out.manufacturers[manKey].comment = manufacturer.$.Comment;
         }
-        if (manufacturer.$.Web != '') {
+        if (manufacturer.$.Web !== '') {
           out.manufacturers[manKey].website = manufacturer.$.Web;
         }
 
@@ -250,19 +286,19 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
             name: fixture.$.Name
           };
 
-          const fixKey = manKey + '/' + fix.name.toLowerCase().replace(/[^a-z0-9\-]+/g, '-');
+          let fixKey = manKey + '/' + fix.name.toLowerCase().replace(/[^a-z0-9\-]+/g, '-');
           if (fixKey in out.fixtures) {
             fixKey += '-' + Math.random().toString(36).substr(2, 5);
             out.warnings[fixKey].push('Fixture key is not unique, appended random characters.');
           }
           out.warnings[fixKey] = [];
 
-          if (fixture.$.NameShort != '') {
+          if (fixture.$.NameShort !== '') {
             fix.shortName = fixture.$.NameShort;
           }
 
           fix.categories = ['Other'];
-          out.warnings[fixKey].push(`Please specify categories.`);
+          out.warnings[fixKey].push('Please specify categories.');
 
           fix.meta = {
             authors: [],
@@ -273,21 +309,21 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
               date: timestamp
             }
           }
-          out.warnings[fixKey].push(`Please specify your name in meta.authors.`);
+          out.warnings[fixKey].push('Please specify your name in meta.authors.');
 
-          if (fixture.$.Comment != '') {
+          if (fixture.$.Comment !== '') {
             fix.comment = fixture.$.Comment;
           }
 
           let physical = {};
 
-          if (fixture.$.DimWidth != '10' && fixture.$.DimHeight != '10' && fixture.$.DimDepth != '10') {
+          if (fixture.$.DimWidth !== '10' && fixture.$.DimHeight !== '10' && fixture.$.DimDepth !== '10') {
             physical.dimensions = [parseInt(fixture.$.DimWidth), parseInt(fixture.$.DimHeight), parseInt(fixture.$.DimDepth)];
           }
-          if (fixture.$.Weight != '0') {
+          if (fixture.$.Weight !== '0') {
             physical.weight = parseFloat(fixture.$.Weight);
           }
-          if (fixture.$.Power != '0') {
+          if (fixture.$.Power !== '0') {
             physical.power = parseInt(fixture.$.Power);
           }
 
@@ -338,12 +374,12 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
               shortName += '-' + Math.random().toString(36).substr(2, 5);
             }
 
-            if (name != shortName) {
+            if (name !== shortName) {
               ch.name = name;
             }
 
             ch.type = 'Intensity';
-            if ('ChannelColor' in fixture && fixture.ChannelColor.indexOf(channel) != -1) {
+            if ('ChannelColor' in fixture && fixture.ChannelColor.indexOf(channel) !== -1) {
               if (('Range' in channel && channel.Range.length > 1) || /colou?r\s*macro/.test(testName)) {
                 ch.type = 'MultiColor';
               }
@@ -389,7 +425,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
             else if (testName.includes('reset')) {
               ch.type = 'Maintenance';
             }
-            else if (fixture.ChannelBeam && fixture.ChannelBeam.indexOf(channel) != -1) {
+            else if (fixture.ChannelBeam && fixture.ChannelBeam.indexOf(channel) !== -1) {
               ch.type = 'Beam';
             }
             else if (!testName.includes('intensity') && !testName.includes('master') && !testName.includes('dimmer')) {
@@ -397,22 +433,22 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
               out.warnings[fixKey].push(`Please check the type of channel '${shortName}'.`);
             }
 
-            if (channel.$.DefaultValue != '0') {
+            if (channel.$.DefaultValue !== '0') {
               ch.defaultValue = parseInt(channel.$.DefaultValue);
             }
-            if (channel.$.Highlight != '0') {
+            if (channel.$.Highlight !== '0') {
               ch.highlightValue = parseInt(channel.$.Highlight);
             }
-            if (channel.$.Invert == '1') {
+            if (channel.$.Invert === '1') {
               ch.invert = true;
             }
-            if (channel.$.Constant == '1') {
+            if (channel.$.Constant === '1') {
               ch.constant = true;
             }
-            if (channel.$.Crossfade == '1') {
+            if (channel.$.Crossfade === '1') {
               ch.crossfade = true;
             }
-            if (channel.$.Precedence == 'HTP') {
+            if (channel.$.Precedence === 'HTP') {
               ch.precedence = 'HTP';
             }
 
@@ -425,7 +461,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
                   name: range.$.Name
                 };
 
-                if (cap.range[1] == -1) {
+                if (cap.range[1] === -1) {
                   cap.range[1] = (i+1 < channel.Range.length) ? parseInt(channel.Range[i+1].$.Start) - 1 : 255;
                 }
 
@@ -435,10 +471,10 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
                   cap.color = colors[color];
                 }
 
-                if (range.$.AutoMenu != '1') {
+                if (range.$.AutoMenu !== '1') {
                   cap.menuClick = 'hidden';
                 }
-                else if (range.$.Centre != '0') {
+                else if (range.$.Centre !== '0') {
                   cap.menuClick = 'center';
                 }
 
@@ -449,7 +485,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
             fix.availableChannels[shortName] = ch;
             fix.modes[0].channels[parseInt(channel.$.DmxByte0) - 1] = shortName;
 
-            if (channel.$.DmxByte1 != '0') {
+            if (channel.$.DmxByte1 !== '0') {
               let chLsb = JSON.parse(JSON.stringify(ch)); // clone channel data
 
               const shortNameFine = shortName + ' fine';
@@ -475,7 +511,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
             }
           }
 
-          if (fix.multiByteChannels.length == 0) {
+          if (fix.multiByteChannels.length === 0) {
             delete fix.multiByteChannels;
           }
 
@@ -484,7 +520,8 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
       }
     }
     catch (parseError) {
-      return reject(`Error parsing '${filename}'.\n` + parseError.toString());
+      reject(`Error parsing '${filename}'.\n` + parseError.toString());
+      return;
     }
 
     resolve(out);

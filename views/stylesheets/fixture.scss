@@ -281,16 +281,11 @@ a.fixture-mode {
       margin-left: 2ex;
     }
 
-    & [data-key="name"] {
+    & .name {
       width: 25ex;
     }
-    & [data-key="color"],
-    & [data-key="color2"] {
+    & .color {
       width: 10ex;
-    }
-
-    &:not(.changed) > .remove {
-      display: none;
     }
   }
 }

@@ -12,7 +12,7 @@ const diffPluginOutputs = require(path.join(__dirname, '..', 'lib', 'diff-plugin
 const testFixtures = [
   'fixtures/cameo/thunder-wash-600-w.json',
   'fixtures/lightmaxx/vega-zoom-wash.json'
-]
+];
 
 // load any undefined environment variables and complain about missing ones
 const envFile = path.join(__dirname, '..', '.env');
@@ -33,7 +33,7 @@ for (let envVar of requiredEnvVars) {
   }
 }
 
-if (process.env.TRAVIS_PULL_REQUEST == 'false') {
+if (process.env.TRAVIS_PULL_REQUEST === 'false') {
   console.error('This test can only be run on pull requests.');
   process.exit(0);
 }
@@ -92,7 +92,8 @@ new Promise((resolve, reject) => {
           if (comment.body.startsWith(identification)) {
             prComment = comment;
             const secondLine = comment.body.split('\n')[1];
-            return resolve(secondLine.match(/<!-- commit = (.*) -->/)[1]);
+            resolve(secondLine.match(/<!-- commit = (.*) -->/)[1]);
+            return;
           }
         }
         getTestComment(page + 1);
@@ -154,29 +155,29 @@ new Promise((resolve, reject) => {
                   plugin: plugin,
                   ref: process.env.TRAVIS_BRANCH,
                   fixtures: testFixtures
-                }, (outputData) => {
+                }, outputData => {
                   pluginData[plugin] = outputData;
                 });
               }
             },
             resolve
           );
-
-          function diffFixture(fixture, pluginIndex) {
-            if (pluginIndex in plugins) {
-              diffPluginOutputs({
-                plugin: plugins[pluginIndex],
-                ref: process.env.TRAVIS_BRANCH,
-                fixtures: [fixture]
-              },
-              (outputData) => {
-                fixtureData[fixture][plugins[pluginIndex]] = outputData;
-                diffFixture(fixture, pluginIndex + 1);
-              });
-            }
-          }
         }
       });
+
+      function diffFixture(fixture, pluginIndex) {
+        if (pluginIndex in plugins) {
+          diffPluginOutputs({
+            plugin: plugins[pluginIndex],
+            ref: process.env.TRAVIS_BRANCH,
+            fixtures: [fixture]
+          },
+          outputData => {
+            fixtureData[fixture][plugins[pluginIndex]] = outputData;
+            diffFixture(fixture, pluginIndex + 1);
+          });
+        }
+      }
     }
   });
 })
@@ -191,8 +192,8 @@ new Promise((resolve, reject) => {
   message.push('Last updated: ' + new Date(Date.now()).toLocaleString());
   message.push('## Diff plugin outputs test');
 
-  if (Object.keys(fixtureData) == 0 && Object.keys(pluginData) == 0) {
-    message.push('*No fixture or plugin files were changed in this PR.*')
+  if (Object.keys(fixtureData) === 0 && Object.keys(pluginData) === 0) {
+    message.push('*No fixture or plugin files were changed in this PR.*');
   }
   else {
     for (let fixture in fixtureData) {
@@ -200,7 +201,7 @@ new Promise((resolve, reject) => {
 
       let hasContent = false;
       for (let plugin in fixtureData[fixture]) {
-        const pluginMessage = printPlugin(fixtureData[fixture][plugin])
+        const pluginMessage = printPlugin(fixtureData[fixture][plugin]);
         if (pluginMessage.length > 0) {
           hasContent = true;
           message.push(`#### Output changed for plugin \`${plugin}\``);
