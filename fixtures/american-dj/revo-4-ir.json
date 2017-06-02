@@ -19,22 +19,27 @@
       "type": "Effect",
       "defaultValue": 0,
       "crossfade": false,
+      "switchesChannels": ["Color / Chase Speed"],
       "capabilities": [
         {
           "range": [0, 9],
-          "name": "Off"
+          "name": "Off",
+          "switchToChannels": ["Color"]
         },
         {
           "range": [10, 99],
-          "name": "Pattern"
+          "name": "Pattern",
+          "switchToChannels": ["Color"]
         },
         {
           "range": [100, 239],
-          "name": "Chase"
+          "name": "Chase",
+          "switchToChannels": ["Chase Speed"]
         },
         {
           "range": [240, 255],
-          "name": "Sound Active"
+          "name": "Sound Active",
+          "switchToChannels": ["Chase Speed"]
         }
       ]
     },
@@ -4616,7 +4621,7 @@
       "channels": [
         "Function",
         "Pattern / Chase",
-        "Color",
+        "Color / Chase Speed",
         "Strobe"
       ]
     },
