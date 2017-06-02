@@ -57,11 +57,11 @@ var ChannelAliasKey = String;  // channel keys that are only defined inside othe
 var Capability = schema({
   'range': Array.of(2, DMXValue),
   'name': NonEmptyString,
-  '?switchToChannels': Array.of(1, Infinity, ChannelKey), // same array length as Channel.switchesChannels
   '?menuClick': ['start', 'center', 'end', 'hidden'],
   '?color': Color,
   '?color2': Color,
   '?image': NonEmptyString,
+  '?switchToChannels': Array.of(1, Infinity, ChannelKey), // same array length as Channel.switchesChannels
   '*': Function
 });
 
@@ -70,7 +70,7 @@ var Channel = schema({
   'type': ['Intensity', 'Strobe', 'Shutter', 'Speed', 'SingleColor', 'MultiColor', 'Gobo', 'Prism', 'Pan', 'Tilt', 'Beam', 'Effect', 'Maintenance', 'Nothing'],
   '?color': ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime', 'Indigo'],
   '?fineChannelAliases': Array.of(1, Infinity, ChannelAliasKey),
-  '?switchesChannels': Array.of(1, Infinity, ChannelAliasKey),// e.g. =["Strobe/Pan"] and switchToChannels="Strobe" or "Pan" in this channel's capabilities: Use "Strobe/Pan" in a mode, it's behavior switches between "Strobe" and "Pan", depending on this channel's value
+  '?switchesChannels': Array.of(1, Infinity, ChannelAliasKey), // e.g. =["Strobe/Pan"] and switchToChannels="Strobe" or "Pan" in this channel's capabilities: Use "Strobe/Pan" in a mode, it's behavior switches between "Strobe" and "Pan", depending on this channel's value
   '?capabilities': Array.of(1, Infinity, Capability),
   '?defaultValue': DMXValue,
   '?highlightValue': DMXValue,
