@@ -46,6 +46,26 @@ module.exports.export = function exportEcue(library, options) {
       fixture.shortName = fixture.name;
     }
 
+    let fineChannels = {}; // fine -> coarse, fine^2 -> coarse
+    let switchingChannels = {}; // switching channel alias -> trigger channel
+
+    for (const ch in fixture.availableChannels) {
+      const channel = fixture.availableChannels[ch];
+
+      if ('fineChannelAliases' in channel) {
+        for (const alias of channel.fineChannelAliases) {
+          fineChannels[alias] = ch;
+        }
+      }
+
+      let switchesCount = 0;
+      if ('switchesChannels' in channel) {
+        for (const alias of channel.switchesChannels) {
+          switchingChannels[alias] = ch;
+        }
+      }
+    }
+
     let physical = Object.assign({}, defaults.physical, fixture.physical);
     physical.bulb = Object.assign({}, defaults.physical.bulb, fixture.physical.bulb);
     physical.lens = Object.assign({}, defaults.physical.lens, fixture.physical.lens);
@@ -67,7 +87,7 @@ module.exports.export = function exportEcue(library, options) {
       xmlTiles.ele(xmlMan);
     }
 
-    exportHandleModes(fixture, physical, xmlManFixtures[data.manufacturerKey]);
+    exportHandleModes(fixture, physical, xmlManFixtures[data.manufacturerKey], fineChannels, switchingChannels);
   }
 
   outfiles.push({
@@ -82,7 +102,7 @@ module.exports.export = function exportEcue(library, options) {
   return outfiles;
 };
 
-function exportHandleModes(fixture, physical, xmlMan) {
+function exportHandleModes(fixture, physical, xmlMan, fineChannels, switchingChannels) {
   const fixCreationDate = fixture.meta.createDate + '#00:00:00';
   const fixModifiedDate = fixture.meta.lastModifyDate + '#00:00:00';
 
@@ -120,29 +140,37 @@ function exportHandleModes(fixture, physical, xmlMan) {
         continue;
       }
 
-      const xmlChannel = exportHandleChannel(fixture, mode, dmxCount, viewPosCount);
+      const xmlChannel = exportHandleChannel(fixture, mode, dmxCount, viewPosCount, fineChannels, switchingChannels);
       xmlFixture.ele(xmlChannel);
       viewPosCount++;
     }
   }
 }
 
-function exportHandleChannel(fixture, mode, dmxCount, viewPosCount) {
+function exportHandleChannel(fixture, mode, dmxCount, viewPosCount, fineChannels, switchingChannels) {
   let chKey = mode.channels[dmxCount];
   let channel = fixture.availableChannels[chKey];
 
   let dmxByte0 = dmxCount;
   let dmxByte1 = -1;
 
-  if (!(chKey in fixture.availableChannels)) {
-    // this is a fine channel
+  if (chKey in switchingChannels) {
+    const triggerChannel = fixture.availableChannels[switchingChannels[chKey]];
+    console.log(triggerChannel);
+    const switchesChannelsIndex = triggerChannel.switchesChannels.indexOf(chKey);
+    const defaultValue = triggerChannel.defaultValue;
 
-    const coarseChannelKey = Object.keys(fixture.availableChannels).find(coarseKey => 'fineChannelAliases' in fixture.availableChannels[coarseKey] && fixture.availableChannels[coarseKey].fineChannelAliases.includes(chKey));
-
+    for (const cap of triggerChannel.capabilities) {
+      if (cap.range[0] <= defaultValue && defaultValue <= cap.range[1]) {
+        channel = fixture.availableChannels[cap.switchToChannels[switchesChannelsIndex]];
+      }
+    }
+  }
+  else if (chKey in fineChannels) {
     // use coarse channel's data
-    channel = fixture.availableChannels[coarseChannelKey];
+    channel = fixture.availableChannels[fineChannels[chKey]];
 
-    const coarseChannelIndex = mode.channels.indexOf(coarseChannelKey);
+    const coarseChannelIndex = mode.channels.indexOf(fineChannels[chKey]);
 
     if (coarseChannelIndex !== -1) {
       dmxByte0 = coarseChannelIndex;
@@ -153,7 +181,7 @@ function exportHandleChannel(fixture, mode, dmxCount, viewPosCount) {
     }
     else {
       // coarse and first fine channel were already handled -> just pretend it's a single channel
-      channel.name = (channel.name || coarseChannelKey) + ' fine^' + (channel.fineChannelAliases.indexOf(chKey) + 1);
+      channel.name = (channel.name || fineChannels[chKey]) + ' fine^' + (channel.fineChannelAliases.indexOf(chKey) + 1);
       channel = divideChannelDmxValues(channel, channel.fineChannelAliases.length - 1);
     }
   }

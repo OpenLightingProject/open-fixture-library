@@ -52,7 +52,6 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
     let fineChannels = {}; // fine -> coarse, fine^2 -> coarse
     let switchingChannels = {}; // switching channel alias -> trigger channel
 
-    // pre-check channels
     for (const ch in fixture.availableChannels) {
       const channel = fixture.availableChannels[ch];
 
