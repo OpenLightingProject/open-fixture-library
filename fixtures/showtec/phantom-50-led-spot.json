@@ -30,17 +30,13 @@
   "availableChannels": {
     "Pan": {
       "type": "Pan",
-      "defaultValue": 128
-    },
-    "Pan fine": {
-      "type": "Pan"
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32768
     },
     "Tilt": {
       "type": "Tilt",
-      "defaultValue": 128
-    },
-    "Tilt fine": {
-      "type": "Tilt"
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32768
     },
     "Pan/Tilt Speed": {
       "type": "Speed",
@@ -455,10 +451,6 @@
       ]
     }
   },
-  "multiByteChannels": [
-    ["Pan", "Pan fine"],
-    ["Tilt", "Tilt fine"]
-  ],
   "modes": [
     {
       "name": "Advanced 13-channel",

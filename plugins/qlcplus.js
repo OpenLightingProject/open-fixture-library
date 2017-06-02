@@ -3,7 +3,7 @@ const path = require('path');
 const xml2js = require('xml2js');
 
 module.exports.name = 'QLC+';
-module.exports.version = '0.2.0';
+module.exports.version = '0.3.0';
 
 module.exports.export = function exportQLCplus(library, options) {
   let outfiles = [];
@@ -93,32 +93,15 @@ module.exports.export = function exportQLCplus(library, options) {
   }
 
   return outfiles;
-}
+};
 
 function exportHandleAvailableChannels(fixture, defaults) {
   let xmlChannels = [];
 
-  for (const chKey in fixture.availableChannels) {
+  for (const chKey of Object.keys(fixture.availableChannels)) {
     const chData = Object.assign({}, defaults.availableChannels['channel key'], fixture.availableChannels[chKey]);
 
     chData.name = chData.name.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-
-    let byte = 0;
-    for (const multiByteChannel of fixture.multiByteChannels) {
-      for (const i in multiByteChannel) {
-        if (multiByteChannel[i] === chKey) {
-          byte = i;
-          break;
-        }
-      }
-    }
-
-    let xmlChannel = {
-      $: {
-        Name: chData.name
-      }
-    };
-    xmlChannels.push(xmlChannel);
 
     if (chData.type === 'SingleColor') {
       chData.type = 'Intensity';
@@ -130,46 +113,89 @@ function exportHandleAvailableChannels(fixture, defaults) {
       chData.type = 'Shutter';
     }
 
-    xmlChannel.Group = {
+    let xmlChannel = {
       $: {
-        Byte: byte
+        Name: chData.name
       },
-      _: chData.type
+      Group: {
+        $: {
+          Byte: 0
+        },
+        _: chData.type
+      }
     };
 
     if (chData.type === 'Intensity') {
       xmlChannel.Colour = 'color' in chData ? chData.color : 'Generic';
     }
 
+    xmlChannels.push(xmlChannel);
+
+    const divisor = 'fineChannelAliases' in chData ? Math.pow(256, chData.fineChannelAliases.length) : 1;
+
     xmlChannel.Capability = [];
-    for (const capability of chData.capabilities) {
-      const capData = Object.assign({}, defaults.availableChannels['channel key'].capabilities[0], capability);
+    const defaultCapability = defaults.availableChannels['channel key'].capabilities[0];
+    if ('capabilities' in fixture.availableChannels[chKey]) {
+      for (const capability of chData.capabilities) {
+        const capData = Object.assign({}, defaultCapability, capability);
 
-      capData.name = capData.name.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        capData.name = capData.name.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-      let xmlCapability = {
-        $: {
-          Min: capData.range[0],
-          Max: capData.range[1]
-        },
-        _: capData.name
-      };
-      xmlChannel.Capability.push(xmlCapability);
+        let xmlCapability = {
+          $: {
+            Min: Math.floor(capData.range[0] / divisor),
+            Max: Math.floor(capData.range[1] / divisor)
+          },
+          _: capData.name
+        };
+        xmlChannel.Capability.push(xmlCapability);
 
-      if ('image' in capData) {
-        xmlCapability.$.res = capData.image;
-      }
-      else if ('color' in capData) {
-        xmlCapability.$.Color = capData.color;
+        if ('image' in capData) {
+          xmlCapability.$.res = capData.image;
+        }
+        else if ('color' in capData) {
+          xmlCapability.$.Color = capData.color;
 
-        if ('color2' in capData) {
-          xmlCapability.$.Color2 = capData.color2;
+          if ('color2' in capData) {
+            xmlCapability.$.Color2 = capData.color2;
+          }
         }
       }
+    }
+    else {
+      xmlChannel.Capability.push({
+        $: {
+          Min: defaultCapability.range[0],
+          Max: defaultCapability.range[1]
+        },
+        _: defaultCapability.name
+      });
+    }
+
+    if ('fineChannelAliases' in chData) {
+      chData.fineChannelAliases.forEach((alias, index) => {
+        let fineXmlChannel = JSON.parse(JSON.stringify(xmlChannel));
+
+        fineXmlChannel.$.Name += getFineChannelSuffix(index);
+        fineXmlChannel.Group.$.Byte = index + 1;
+        fineXmlChannel.Capability = [{
+          $: {
+            Min: defaultCapability.range[0],
+            Max: defaultCapability.range[1]
+          },
+          _: defaultCapability.name
+        }];
+
+        xmlChannels.push(fineXmlChannel);
+      });
     }
   }
 
   return xmlChannels;
+}
+
+function getFineChannelSuffix(index) {
+  return ' fine' + (index > 0 ? '^' + (index + 1) : '');
 }
 
 function exportHandleModes(fixture, defaults, physical) {
@@ -229,16 +255,34 @@ function exportHandleModes(fixture, defaults, physical) {
     xmlModes.push(xmlMode);
 
     for (let i=0; i<modeData.channels.length; i++) {
+      let channelName;
+
+      if (modeData.channels[i] in fixture.availableChannels) {
+        channelName = fixture.availableChannels[modeData.channels[i]].name;
+      }
+      else {
+        // it is a fine channel
+        for (const chKey in fixture.availableChannels) {
+          if ('fineChannelAliases' in fixture.availableChannels[chKey]) {
+            const fineIndex = fixture.availableChannels[chKey].fineChannelAliases.indexOf(modeData.channels[i]);
+            if (fineIndex !== -1) {
+              channelName = fixture.availableChannels[chKey].name + getFineChannelSuffix(fineIndex);
+              break;
+            }
+          }
+        }
+      }
+
       xmlMode.Channel.push({
         $: {
           Number: i
         },
-        _: fixture.availableChannels[modeData.channels[i]].name
+        _: channelName
       });
     }
 
-    for (const head in fixture.heads) {
-      const headLampList = fixture.heads[head];
+    for (const headName of Object.keys(fixture.heads)) {
+      const headLampList = fixture.heads[headName];
       let headChannelList = [];
       for (const channel of headLampList) {
         const chNum = modeData.channels.indexOf(channel);
@@ -307,8 +351,13 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
 
       for (const channel of fixture.Channel || []) {
         let ch = {
-          type: channel.Group[0]._
+          type: channel.Group[0]._,
+          fineChannelAliases: []
         };
+
+        if (channel.Group[0].$.Byte === '1') {
+          doubleByteChannels.push(channel.$.Name);
+        }
 
         if (ch.type === 'Colour') {
           ch.type = 'MultiColor';
@@ -322,10 +371,6 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
         }
         else if (ch.type === 'Intensity') {
           ch.crossfade = true;
-        }
-
-        if (channel.Group[0].$.Byte === '1') {
-          doubleByteChannels.push([channel.$.Name]);
         }
 
         ch.capabilities = [];
@@ -356,9 +401,35 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
         fix.availableChannels[channel.$.Name] = ch;
       }
 
-      if (doubleByteChannels.length > 0) {
-        fix.multiByteChannels = doubleByteChannels;
-        out.warnings[fixKey].push('Please validate the 16-bit channels.');
+      for (const chKey of doubleByteChannels) {
+        try {
+          const fineChannelRegex = /\sfine$|16[\-\s]*bit$/i;
+          if (!fineChannelRegex.test(chKey)) {
+            throw new Error('The corresponding coarse channel could not be detected.');
+          }
+
+          const coarseChannelKey = chKey.replace(fineChannelRegex, '');
+          if (!(coarseChannelKey in fix.availableChannels)) {
+            throw new Error('The corresponding coarse channel could not be detected.');
+          }
+
+          fix.availableChannels[coarseChannelKey].fineChannelAliases.push(chKey);
+
+          if ('capabilities' in fix.availableChannels[chKey]) {
+            throw new Error(`Merge its capabilities into channel '${coarseChannelKey}'.`);
+          }
+
+          delete fix.availableChannels[chKey];
+        }
+        catch (error) {
+          out.warnings[fixKey].push(`Please check 16bit channel '${chKey}': ${error.message}`);
+        }
+      }
+
+      for (const chKey in fix.availableChannels) {
+        if (fix.availableChannels[chKey].fineChannelAliases.length === 0) {
+          delete fix.availableChannels[chKey].fineChannelAliases;
+        }
       }
 
       fix.heads = {};
@@ -487,19 +558,16 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
           mod.channels[parseInt(ch.$.Number)] = ch._;
         }
 
-        for (const i in mode.Head || []) {
-          let head = [];
+        if ('Head' in mode) {
+          mode.Head.forEach((head, index) => {
+            if (head.Channel === undefined) {
+              return;
+            }
 
-          if (mode.Head[i].Channel === undefined) {
-            continue;
-          }
-
-          for (const ch of mode.Head[i].Channel) {
-            const chNum = parseInt(ch);
-            head.push(mod.channels[chNum]);
-          }
-
-          fix.heads[mod.name + '-head' + i] = head;
+            const channelList = head.Channel.map(ch => mod.channels[parseInt(ch)]);
+            fix.heads[mod.name + ' Head ' + (index + 1)] = channelList;
+          });
+          out.warnings[fixKey].push('Please rename the heads in a meaningful way.');
         }
 
         fix.modes.push(mod);

@@ -16,8 +16,6 @@ var schema = require('js-schema');
 
 var NonEmptyString = String.of(1, null, null);
 
-var DMXValue = Number.min(0).max(255).step(1);
-
 var URL = schema(/^(ftp|http|https):\/\/[^ "]+$/);
 
 var ISODate = schema(/^\d{4}-\d{2}-\d{2}$/);
@@ -51,6 +49,8 @@ var Physical = schema({
   '*': Function
 });
 
+var DMXValue = Number.min(0).step(1);  // max value depends on how many fine channels there are (255 if none, 65535 if one, etc.)
+
 var Capability = schema({
   'range': Array.of(2, DMXValue),
   'name': NonEmptyString,
@@ -61,10 +61,14 @@ var Capability = schema({
   '*': Function
 });
 
+var ChannelKey = String;  // channels in availableChannels
+var ChannelAliasKey = String;  // channel keys that are only defined inside other channels
+
 var Channel = schema({
   '?name': String, // if not set: use channel key
   'type': ['Intensity', 'Strobe', 'Shutter', 'Speed', 'SingleColor', 'MultiColor', 'Gobo', 'Prism', 'Pan', 'Tilt', 'Beam', 'Effect', 'Maintenance', 'Nothing'],
   '?color': ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime', 'Indigo'],
+  '?fineChannelAliases': Array.of(1, Infinity, ChannelAliasKey),
   '?defaultValue': DMXValue,
   '?highlightValue': DMXValue,
   '?invert': Boolean,
@@ -75,13 +79,11 @@ var Channel = schema({
   '*': Function
 });
 
-var ChannelKey = NonEmptyString;
-
 var Mode = schema({
   'name': NonEmptyString,
   '?shortName': NonEmptyString, // if not set: use name
   '?physical': Physical, // overrides fixture's Physical
-  'channels': Array.of([null, ChannelKey]), // null for unused channels
+  'channels': Array.of([null, ChannelKey, ChannelAliasKey]), // null for unused channels
   '*': Function
 });
 
@@ -107,9 +109,8 @@ var Fixture = schema({
   'availableChannels': schema({
     '*': Channel // '*' is the channel key
   }),
-  '?multiByteChannels': Array.of(Array.of(ChannelKey)), // most significant channel first, e.g. [["ch1-coarse", "ch1-fine"], ["ch2-coarse", "ch2-fine"]]
   '?heads': schema({
-    '*': Array.of(ChannelKey) // '*' is the head name
+    '*': Array.of([ChannelKey, ChannelAliasKey]) // '*' is the head name
   }),
   'modes': Array.of(1, Infinity, Mode),
   '*': Function
@@ -129,18 +130,19 @@ module.exports.Fixture = Fixture;
 module.exports.Manufacturers = Manufacturers;
 
 var properties = {
-  manufacturer: Manufacturers.toJSON().additionalProperties.properties,
-  fixture:      Fixture.toJSON().properties,
-  mode:         Mode.toJSON().properties,
-  channelKey:   ChannelKey.schema.toJSON(),
-  channel:      Channel.toJSON().properties,
-  capability:   Capability.toJSON().properties,
-  physical:     Physical.toJSON().properties,
-  category:     Category.toJSON(),
-  color:        Color.toJSON(),
-  ISODate:      ISODate.toJSON(),
-  URL:          URL.toJSON(),
-  DMXValue:     DMXValue.toJSON()
+  manufacturer:     Manufacturers.toJSON().additionalProperties.properties,
+  fixture:          Fixture.toJSON().properties,
+  mode:             Mode.toJSON().properties,
+  channelKey:       ChannelKey.schema.toJSON(),
+  channelAliasKey:  ChannelAliasKey.schema.toJSON(),
+  channel:          Channel.toJSON().properties,
+  capability:       Capability.toJSON().properties,
+  physical:         Physical.toJSON().properties,
+  category:         Category.toJSON(),
+  color:            Color.toJSON(),
+  ISODate:          ISODate.toJSON(),
+  URL:              URL.toJSON(),
+  DMXValue:         DMXValue.toJSON()
 };
 properties.meta  = properties.fixture.meta.properties;
 properties.bulb  = properties.physical.bulb.properties;

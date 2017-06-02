@@ -17,114 +17,89 @@
       "type": "Philips Platinum 15R"
     },
     "focus": {
-      "panMax": 540,
+      "panMax": 630,
       "tiltMax": 270
     }
   },
   "availableChannels": {
     "Pan": {
       "type": "Pan",
-      "defaultValue": 127,
-      "crossfade": true
-    },
-    "Pan fine": {
-      "type": "Pan",
-      "defaultValue": 127,
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32639,
       "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
-      "defaultValue": 127,
-      "crossfade": true
-    },
-    "Tilt fine": {
-      "type": "Tilt",
-      "defaultValue": 127,
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32639,
       "crossfade": true
     },
     "Color Wheel": {
       "type": "MultiColor",
+      "fineChannelAliases": ["Color Wheel fine"],
       "capabilities": [
         {
-          "range": [0, 18],
+          "range": [0, 4863],
           "name": "White",
           "color": "#ffffff"
         },
         {
-          "range": [19, 37],
+          "range": [4864, 9727],
           "name": "Color 1"
         },
         {
-          "range": [38, 56],
+          "range": [9728, 14591],
           "name": "Color 2"
         },
         {
-          "range": [57, 75],
+          "range": [14592, 19455],
           "name": "Color 3"
         },
         {
-          "range": [76, 94],
+          "range": [19456, 24319],
           "name": "Color 4"
         },
         {
-          "range": [95, 113],
+          "range": [24320, 29183],
           "name": "Color 5"
         },
         {
-          "range": [114, 127],
+          "range": [29184, 32767],
           "name": "Color 6"
         },
         {
-          "range": [128, 189],
+          "range": [32768, 48639],
           "name": "Rainbow forwards fast–slow"
         },
         {
-          "range": [190, 193],
+          "range": [48640, 49663],
           "name": "No rotation"
         },
         {
-          "range": [194, 255],
+          "range": [49664, 65535],
           "name": "Rainbow backwards slow–fast"
         }
       ]
     },
-    "Color Wheel fine": {
-      "type": "MultiColor"
-    },
     "Cyan": {
       "type": "SingleColor",
+      "fineChannelAliases": ["Cyan fine"],
       "color": "Cyan",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Cyan fine": {
-      "type": "SingleColor",
-      "color": "Cyan",
-      "highlightValue": 255,
+      "highlightValue": 65535,
       "crossfade": true
     },
     "Magenta": {
       "type": "SingleColor",
+      "fineChannelAliases": ["Magenta fine"],
       "color": "Magenta",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Magenta fine": {
-      "type": "SingleColor",
-      "color": "Magenta",
-      "highlightValue": 255,
+      "highlightValue": 65535,
       "crossfade": true
     },
     "Yellow": {
       "type": "SingleColor",
+      "fineChannelAliases": ["Yellow fine"],
       "color": "Yellow",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Yellow fine": {
-      "type": "SingleColor",
-      "color": "Yellow",
-      "highlightValue": 255,
+      "highlightValue": 65535,
       "crossfade": true
     },
     "Rotating Gobo": {
@@ -206,159 +181,152 @@
     },
     "Gobo Rotation": {
       "type": "Speed",
+      "fineChannelAliases": ["Gobo Rotation fine"],
       "crossfade": true,
       "capabilities": [
         {
-          "range": [0, 127],
+          "range": [0, 32767],
           "name": "Fixed angle"
         },
         {
-          "range": [128, 189],
+          "range": [32768, 48639],
           "name": "Rotating fast–slow"
         },
         {
-          "range": [190, 193],
+          "range": [48640, 49663],
           "name": "No rotation"
         },
         {
-          "range": [194, 255],
+          "range": [49664, 65535],
           "name": "Rotating slow–fast"
         }
       ]
-    },
-    "Gobo Rotation fine": {
-      "type": "Speed",
-      "crossfade": true
     },
     "Fixed Gobo": {
       "type": "Gobo",
+      "fineChannelAliases": ["Fixed Gobo fine"],
       "capabilities": [
         {
-          "range": [0, 7],
+          "range": [0, 2047],
           "name": "Open"
         },
         {
-          "range": [8, 15],
+          "range": [2048, 4095],
           "name": "Gobo 1"
         },
         {
-          "range": [16, 23],
+          "range": [4096, 6143],
           "name": "Gobo 2"
         },
         {
-          "range": [24, 31],
+          "range": [6144, 8191],
           "name": "Gobo 3"
         },
         {
-          "range": [32, 39],
+          "range": [8192, 10239],
           "name": "Gobo 4"
         },
         {
-          "range": [40, 47],
+          "range": [10240, 12287],
           "name": "Gobo 5"
         },
         {
-          "range": [48, 55],
+          "range": [12288, 14335],
           "name": "Gobo 6"
         },
         {
-          "range": [56, 63],
+          "range": [14336, 16383],
           "name": "Gobo 7"
         },
         {
-          "range": [64, 71],
+          "range": [16384, 18431],
           "name": "Gobo 8"
         },
         {
-          "range": [72, 79],
+          "range": [18432, 20479],
           "name": "Gobo 9"
         },
         {
-          "range": [80, 87],
+          "range": [20480, 22527],
           "name": "Gobo 10"
         },
         {
-          "range": [88, 95],
+          "range": [22528, 24575],
           "name": "Gobo 11"
         },
         {
-          "range": [96, 103],
+          "range": [24576, 26623],
           "name": "Gobo 12"
         },
         {
-          "range": [104, 111],
+          "range": [26624, 28671],
           "name": "Gobo 13"
         },
         {
-          "range": [112, 119],
+          "range": [28672, 30719],
           "name": "Gobo 14"
         },
         {
-          "range": [120, 126],
+          "range": [30720, 32511],
           "name": "Gobo shake 1 slow–fast"
         },
         {
-          "range": [127, 133],
+          "range": [32512, 34303],
           "name": "Gobo shake 2 slow–fast"
         },
         {
-          "range": [134, 140],
+          "range": [34304, 36095],
           "name": "Gobo shake 3 slow–fast"
         },
         {
-          "range": [141, 147],
+          "range": [36096, 37887],
           "name": "Gobo shake 4 slow–fast"
         },
         {
-          "range": [148, 154],
+          "range": [37888, 39679],
           "name": "Gobo shake 5 slow–fast"
         },
         {
-          "range": [155, 161],
+          "range": [39680, 41471],
           "name": "Gobo shake 6 slow–fast"
         },
         {
-          "range": [162, 168],
+          "range": [41472, 43263],
           "name": "Gobo shake 7 slow–fast"
         },
         {
-          "range": [169, 175],
+          "range": [43264, 45055],
           "name": "Gobo shake 8 slow–fast"
         },
         {
-          "range": [176, 182],
+          "range": [45056, 46847],
           "name": "Gobo shake 9 slow–fast"
         },
         {
-          "range": [183, 189],
+          "range": [46848, 48639],
           "name": "Gobo shake 10 slow–fast"
         },
         {
-          "range": [190, 196],
+          "range": [48640, 50431],
           "name": "Gobo shake 11 slow–fast"
         },
         {
-          "range": [197, 203],
+          "range": [50432, 52223],
           "name": "Gobo shake 12 slow–fast"
         },
         {
-          "range": [204, 210],
+          "range": [52224, 54015],
           "name": "Gobo shake 13 slow–fast"
         },
         {
-          "range": [211, 217],
+          "range": [54016, 55807],
           "name": "Gobo shake 14 slow–fast"
         },
         {
-          "range": [218, 255],
+          "range": [55808, 65535],
           "name": "Rotating slow–fast"
         }
       ]
-    },
-    "Fixed Gobo Rotation fine": {
-      "type": "Speed",
-      "defaultValue": 127,
-      "crossfade": true
     },
     "Prism/Gobo Macros": {
       "type": "Effect",
@@ -439,56 +407,47 @@
     },
     "Rotating Prism": {
       "type": "Prism",
+      "fineChannelAliases": ["Rotating Prism fine"],
       "capabilities": [
         {
-          "range": [0, 127],
+          "range": [0, 32767],
           "name": "Fixed angle"
         },
         {
-          "range": [128, 189],
+          "range": [32768, 48639],
           "name": "Rotating fast–slow (CW)"
         },
         {
-          "range": [190, 193],
+          "range": [48640, 49663],
           "name": "No rotation"
         },
         {
-          "range": [194, 255],
+          "range": [49664, 65535],
           "name": "Rotating slow–fast (CCW)"
         }
       ]
     },
-    "Rotating Prism fine": {
-      "type": "Prism",
-      "crossfade": true
-    },
     "Focus": {
       "type": "Beam",
+      "fineChannelAliases": ["Focus fine"],
       "crossfade": true,
       "capabilities": [
         {
-          "range": [0, 255],
+          "range": [0, 65535],
           "name": "near–far"
         }
       ]
     },
-    "Focus fine": {
-      "type": "Beam",
-      "crossfade": true
-    },
     "Zoom": {
       "type": "Beam",
+      "fineChannelAliases": ["Zoom fine"],
       "crossfade": true,
       "capabilities": [
         {
-          "range": [0, 255],
+          "range": [0, 65535],
           "name": "small–big"
         }
       ]
-    },
-    "Zoom fine": {
-      "type": "Beam",
-      "crossfade": true
     },
     "Strobe": {
       "type": "Strobe",
@@ -530,35 +489,28 @@
     },
     "Dimmer": {
       "type": "Intensity",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Dimmer fine": {
-      "type": "Intensity",
-      "highlightValue": 255,
+      "fineChannelAliases": ["Dimmer fine"],
+      "highlightValue": 65535,
       "crossfade": true
     },
     "Iris": {
       "type": "Beam",
+      "fineChannelAliases": ["Iris fine"],
       "crossfade": true,
       "capabilities": [
         {
-          "range": [0, 191],
+          "range": [0, 49151],
           "name": "Diameter max–min"
         },
         {
-          "range": [192, 223],
+          "range": [49152, 57343],
           "name": "Pulse closing fast–slow"
         },
         {
-          "range": [224, 255],
+          "range": [57344, 65535],
           "name": "Pulse opening slow–fast"
         }
       ]
-    },
-    "Iris fine": {
-      "type": "Beam",
-      "crossfade": true
     },
     "Frost": {
       "type": "Intensity",
@@ -826,21 +778,6 @@
       ]
     }
   },
-  "multiByteChannels": [
-    ["Pan", "Pan fine"],
-    ["Tilt", "Tilt fine"],
-    ["Color Wheel", "Color Wheel fine"],
-    ["Cyan", "Cyan fine"],
-    ["Magenta", "Magenta fine"],
-    ["Yellow", "Yellow fine"],
-    ["Gobo Rotation", "Gobo Rotation fine"],
-    ["Fixed Gobo", "Fixed Gobo Rotation fine"],
-    ["Rotating Prism", "Rotating Prism fine"],
-    ["Focus", "Focus fine"],
-    ["Zoom", "Zoom fine"],
-    ["Dimmer", "Dimmer fine"],
-    ["Iris", "Iris fine"]
-  ],
   "modes": [
     {
       "name": "Basic",
@@ -915,7 +852,7 @@
         "Gobo Rotation",
         "Gobo Rotation fine",
         "Fixed Gobo",
-        "Fixed Gobo Rotation fine",
+        "Fixed Gobo fine",
         "Prism/Gobo Macros",
         "Rotating Prism",
         "Rotating Prism fine",

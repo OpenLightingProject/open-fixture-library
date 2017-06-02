@@ -4,13 +4,13 @@ const colorNames = require('color-names');
 const xml2js = require('xml2js');
 const xmlbuilder = require('xmlbuilder');
 
+const defaults = require(path.join(__dirname, '..', 'fixtures', 'defaults'));
+
 module.exports.name = 'e:cue';
 module.exports.version = '0.2.0';
 
 module.exports.export = function exportEcue(library, options) {
   let outfiles = [];
-
-  const defaults = require(path.join(options.baseDir, 'fixtures', 'defaults'));
 
   const timestamp = new Date().toISOString().replace(/T/, '#').replace(/\..+/, '');
 
@@ -67,7 +67,7 @@ module.exports.export = function exportEcue(library, options) {
       xmlTiles.ele(xmlMan);
     }
 
-    exportHandleModes(fixture, defaults, physical, xmlManFixtures[data.manufacturerKey]);
+    exportHandleModes(fixture, physical, xmlManFixtures[data.manufacturerKey]);
   }
 
   outfiles.push({
@@ -82,7 +82,7 @@ module.exports.export = function exportEcue(library, options) {
   return outfiles;
 };
 
-function exportHandleModes(fixture, defaults, physical, xmlMan) {
+function exportHandleModes(fixture, physical, xmlMan) {
   const fixCreationDate = fixture.meta.createDate + '#00:00:00';
   const fixModifiedDate = fixture.meta.lastModifyDate + '#00:00:00';
 
@@ -115,129 +115,151 @@ function exportHandleModes(fixture, defaults, physical, xmlMan) {
 
     let viewPosCount = 1;
     for (let dmxCount=0; dmxCount<mode.channels.length; dmxCount++) {
-      let chKey = mode.channels[dmxCount];
-
-      if (chKey === null) {
+      if (mode.channels[dmxCount] === null) {
         // we already handled this as part of a 16-bit channel or it is a undefined channel, so just skip
         continue;
       }
 
-      let doubleByte = false;
-      const multiByteChannels = getCorrespondingMultiByteChannels(chKey, fixture);
-      if (multiByteChannels !== null
-        && mode.channels.includes(multiByteChannels[0])
-        && mode.channels.includes(multiByteChannels[1])
-        ) {
-        // it is a 16-bit channel and both 8-bit parts are used in this mode
-        chKey = multiByteChannels[0];
-        doubleByte = true;
-      }
-
-      const channel = fixture.availableChannels[chKey];
-
-      let chData = Object.assign({}, defaults.availableChannels['channel key'], channel);
-
-      if (!('name' in chData)) {
-        chData.name = chKey;
-      }
-
-      let chType;
-      switch (chData.type) {
-        case 'MultiColor':
-        case 'SingleColor':
-          chType = 'Color';
-          break;
-        case 'Beam':
-        case 'Shutter':
-        case 'Strobe':
-        case 'Gobo':
-        case 'Prism':
-        case 'Effect':
-        case 'Speed':
-        case 'Maintenance':
-        case 'Nothing':
-          chType = 'Beam';
-          break;
-        case 'Pan':
-        case 'Tilt':
-          chType = 'Focus';
-          break;
-        case 'Intensity':
-        default:
-          chType = 'Intensity';
-      }
-
-      let dmxByte0 = dmxCount;
-      let dmxByte1 = -1;
-
-      if (doubleByte) {
-        const chKeyLsb = multiByteChannels[1];
-        const channelLsb = fixture.availableChannels[chKeyLsb];
-
-        const chDataLsb = Object.assign({}, defaults.availableChannels['channel key'], channelLsb);
-
-        chData.defaultValue *= 256;
-        chData.defaultValue += chDataLsb.defaultValue;
-
-        chData.highlightValue *= 256;
-        chData.highlightValue += chDataLsb.highlightValue;
-
-        dmxByte0 = mode.channels.indexOf(chKey);
-        dmxByte1 = mode.channels.indexOf(chKeyLsb);
-
-        // mark other part of 16-bit channel as already handled
-        mode.channels[Math.max(dmxByte1, dmxByte0)] = null;
-      }
-
-      dmxByte0++;
-      dmxByte1++;
-
-      let xmlChannelObj = {};
-      xmlChannelObj[`Channel${chType}`] = {
-        '@Name': chData.name,
-        '@DefaultValue': chData.defaultValue,
-        '@Highlight': chData.highlightValue,
-        '@Deflection': 0,
-        '@DmxByte0': dmxByte0,
-        '@DmxByte1': dmxByte1,
-        '@Constant': chData.constant ? 1 : 0,
-        '@Crossfade': chData.crossfade ? 1 : 0,
-        '@Invert': chData.invert ? 1 : 0,
-        '@Precedence': chData.precedence,
-        '@ClassicPos': viewPosCount++
-      };
-      let xmlChannel = xmlFixture.ele(xmlChannelObj);
-
-      if ('capabilities' in channel) {
-        for (const cap of channel.capabilities) {
-          const capData = Object.assign({}, defaults.availableChannels['channel key'].capabilities[0], cap);
-          xmlChannel.ele({
-            'Range': {
-              '@Name': capData.name,
-              '@Start': capData.range[0],
-              '@End': capData.range[1],
-              '@AutoMenu': capData.menuClick === 'hidden' ? 0 : 1,
-              '@Centre': capData.menuClick === 'center' ? 1 : 0
-            }
-          });
-        }
-      }
+      const xmlChannel = exportHandleChannel(fixture, mode, dmxCount, viewPosCount);
+      xmlFixture.ele(xmlChannel);
+      viewPosCount++;
     }
   }
 }
 
-function getCorrespondingMultiByteChannels(channelKey, fixture) {
-  for (let channelList of fixture.multiByteChannels) {
-    if (channelList.indexOf(channelKey) !== -1) {
-      return channelList;
+function exportHandleChannel(fixture, mode, dmxCount, viewPosCount) {
+  let chKey = mode.channels[dmxCount];
+  let channel = fixture.availableChannels[chKey];
+
+  let dmxByte0 = dmxCount;
+  let dmxByte1 = -1;
+
+  if (!(chKey in fixture.availableChannels)) {
+    // this is a fine channel
+
+    const coarseChannelKey = Object.keys(fixture.availableChannels).find(coarseKey => 'fineChannelAliases' in fixture.availableChannels[coarseKey] && fixture.availableChannels[coarseKey].fineChannelAliases.includes(chKey));
+
+    // use coarse channel's data
+    channel = fixture.availableChannels[coarseChannelKey];
+
+    const coarseChannelIndex = mode.channels.indexOf(coarseChannelKey);
+
+    if (coarseChannelIndex !== -1) {
+      dmxByte0 = coarseChannelIndex;
+      dmxByte1 = dmxCount;
+
+      mode.channels[dmxByte0] = null;
+      mode.channels[dmxByte1] = null;
+    }
+    else {
+      // coarse and first fine channel were already handled -> just pretend it's a single channel
+      channel.name = (channel.name || coarseChannelKey) + ' fine^' + (channel.fineChannelAliases.indexOf(chKey) + 1);
+      channel = divideChannelDmxValues(channel, channel.fineChannelAliases.length - 1);
     }
   }
-  return null;
+  else if ('fineChannelAliases' in fixture.availableChannels[chKey]) {
+    const firstFineChannelIndex = mode.channels.indexOf(fixture.availableChannels[chKey].fineChannelAliases[0]);
+
+    if (firstFineChannelIndex !== -1) {
+      dmxByte1 = firstFineChannelIndex;
+
+      mode.channels[dmxByte1] = null;
+    }
+    else {
+      channel = divideChannelDmxValues(channel, 1);
+    }
+  }
+
+  dmxByte0++;
+  dmxByte1++;
+
+  if (!('name' in channel)) {
+    channel.name = chKey;
+  }
+
+  let chData = Object.assign({}, defaults.availableChannels['channel key'], channel);
+
+  let chType;
+  switch (chData.type) {
+    case 'MultiColor':
+    case 'SingleColor':
+      chType = 'ChannelColor';
+      break;
+    case 'Beam':
+    case 'Shutter':
+    case 'Strobe':
+    case 'Gobo':
+    case 'Prism':
+    case 'Effect':
+    case 'Speed':
+    case 'Maintenance':
+    case 'Nothing':
+      chType = 'ChannelBeam';
+      break;
+    case 'Pan':
+    case 'Tilt':
+      chType = 'ChannelFocus';
+      break;
+    case 'Intensity':
+    default:
+      chType = 'ChannelIntensity';
+  }
+
+  let xmlChannel = {
+    '@Name': chData.name,
+    '@DefaultValue': chData.defaultValue,
+    '@Highlight': chData.highlightValue,
+    '@Deflection': 0,
+    '@DmxByte0': dmxByte0,
+    '@DmxByte1': dmxByte1,
+    '@Constant': chData.constant ? 1 : 0,
+    '@Crossfade': chData.crossfade ? 1 : 0,
+    '@Invert': chData.invert ? 1 : 0,
+    '@Precedence': chData.precedence,
+    '@ClassicPos': viewPosCount
+  };
+
+  if ('capabilities' in channel) {
+    xmlChannel.Range = [];
+    for (const cap of channel.capabilities) {
+      const capData = Object.assign({}, defaults.availableChannels['channel key'].capabilities[0], cap);
+      xmlChannel.Range.push({
+        '@Name': capData.name,
+        '@Start': capData.range[0],
+        '@End': capData.range[1],
+        '@AutoMenu': capData.menuClick === 'hidden' ? 0 : 1,
+        '@Centre': capData.menuClick === 'center' ? 1 : 0
+      });
+    }
+  }
+
+  let xmlFragment = {};
+  xmlFragment[chType] = xmlChannel;
+  return xmlFragment;
+}
+
+function divideChannelDmxValues(channel, times) {
+  let newChannel = JSON.parse(JSON.stringify(channel));
+
+  if ('highlightValue' in newChannel) {
+    newChannel.highlightValue = Math.floor(newChannel.highlightValue / Math.pow(256, times));
+  }
+  if ('defaultValue' in newChannel) {
+    newChannel.defaultValue = Math.floor(newChannel.defaultValue / Math.pow(256, times));
+  }
+  if ('capabilities' in newChannel) {
+    for (const cap of newChannel.capabilities) {
+      cap.range[0] = Math.floor(cap.range[0] / Math.pow(256, times));
+      cap.range[1] = Math.floor(cap.range[1] / Math.pow(256, times));
+    }
+  }
+
+  return newChannel;
 }
 
 module.exports.import = function importEcue(str, filename, resolve, reject) {
   let colors = {};
-  for (const hex in colorNames) {
+  for (const hex of Object.keys(colorNames)) {
     colors[colorNames[hex].toLowerCase().replace(/\s/g, '')] = hex;
   }
 
@@ -308,7 +330,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
               plugin: 'ecue',
               date: timestamp
             }
-          }
+          };
           out.warnings[fixKey].push('Please specify your name in meta.authors.');
 
           if (fixture.$.Comment !== '') {
@@ -332,7 +354,6 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
           }
 
           fix.availableChannels = {};
-          fix.multiByteChannels = [];
           fix.modes = [{
             name: `${fixture.$.AllocateDmxChannels}-channel`,
             shortName: `${fixture.$.AllocateDmxChannels}ch`,
@@ -433,6 +454,12 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
               out.warnings[fixKey].push(`Please check the type of channel '${shortName}'.`);
             }
 
+            if (channel.$.DmxByte1 !== '0') {
+              const shortNameFine = shortName + ' fine';
+              ch.fineChannelAliases = [shortNameFine];
+              fix.modes[0].channels[parseInt(channel.$.DmxByte1) - 1] = shortNameFine;
+            }
+
             if (channel.$.DefaultValue !== '0') {
               ch.defaultValue = parseInt(channel.$.DefaultValue);
             }
@@ -484,35 +511,6 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
 
             fix.availableChannels[shortName] = ch;
             fix.modes[0].channels[parseInt(channel.$.DmxByte0) - 1] = shortName;
-
-            if (channel.$.DmxByte1 !== '0') {
-              let chLsb = JSON.parse(JSON.stringify(ch)); // clone channel data
-
-              const shortNameFine = shortName + ' fine';
-              if (chLsb.name) {
-                chLsb.name += ' fine';
-              }
-
-              if ('defaultValue' in ch) {
-                ch.defaultValue = Math.floor(ch.defaultValue / 256);
-                chLsb.defaultValue %= 256;
-              }
-
-              if ('highlightValue' in ch) {
-                ch.highlightValue = Math.floor(ch.highlightValue / 256);
-                chLsb.highlightValue %= 256;
-              }
-
-              fix.multiByteChannels.push([shortName, shortNameFine]);
-
-              fix.availableChannels[shortNameFine] = chLsb;
-
-              fix.modes[0].channels[parseInt(channel.$.DmxByte1) - 1] = shortNameFine;
-            }
-          }
-
-          if (fix.multiByteChannels.length === 0) {
-            delete fix.multiByteChannels;
           }
 
           out.fixtures[fixKey] = fix;
