@@ -71,14 +71,13 @@ var Channel = schema({
   '?color': ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime', 'Indigo'],
   '?fineChannelAliases': Array.of(1, Infinity, ChannelAliasKey),
   '?switchesChannels': Array.of(1, Infinity, ChannelAliasKey), // e.g. =["Strobe/Pan"] and switchToChannels="Strobe" or "Pan" in this channel's capabilities: Use "Strobe/Pan" in a mode, it's behavior switches between "Strobe" and "Pan", depending on this channel's value
-  '?capabilities': Array.of(1, Infinity, Capability),
   '?defaultValue': DMXValue,
   '?highlightValue': DMXValue,
   '?invert': Boolean,
   '?constant': Boolean,
   '?crossfade': Boolean,
   '?precedence': ['LTP', 'HTP'],
-  '?capabilities': Array.of(Capability),
+  '?capabilities': Array.of(1, Infinity, Capability),
   '*': Function
 });
 

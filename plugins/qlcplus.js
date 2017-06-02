@@ -53,7 +53,7 @@ module.exports.export = function exportQLCplus(library, options) {
     let fineChannels = {}; // fine -> coarse, fine^2 -> coarse
     let switchingChannels = {}; // switching channel alias -> trigger channel
 
-    for (const ch in fixture.availableChannels) {
+    for (const ch of Object.keys(fixture.availableChannels)) {
       const channel = fixture.availableChannels[ch];
 
       if ('fineChannelAliases' in channel) {
@@ -62,7 +62,6 @@ module.exports.export = function exportQLCplus(library, options) {
         }
       }
 
-      let switchesCount = 0;
       if ('switchesChannels' in channel) {
         for (const alias of channel.switchesChannels) {
           switchingChannels[alias] = ch;
@@ -122,11 +121,11 @@ function exportHandleChannels(fixture, defaults, switchingChannels) {
   let xmlChannels = [];
   let channel;
 
-  for (const chKey in fixture.availableChannels) {
+  for (const chKey of Object.keys(fixture.availableChannels)) {
     channel = fixture.availableChannels[chKey];
     exportHandleChannel(xmlChannels, channel, channel.name, defaults);
   }
-  for (const chKey in switchingChannels) {
+  for (const chKey of Object.keys(switchingChannels)) {
     const triggerChannel = fixture.availableChannels[switchingChannels[chKey]];
     const switchesChannelsIndex = triggerChannel.switchesChannels.indexOf(chKey);
     const defaultValue = triggerChannel.defaultValue;
@@ -301,7 +300,7 @@ function exportHandleModes(fixture, defaults, physical, fineChannels, switchingC
       let channelName;
 
       if (chKey in fineChannels) {
-        const triggerChannel = fixture.availableChannels[fineChannels[chKey]]
+        const triggerChannel = fixture.availableChannels[fineChannels[chKey]];
         channelName = triggerChannel.name + getFineChannelSuffix(triggerChannel.fineChannelAliases.indexOf(chKey));
       }
       else if (chKey in switchingChannels) {

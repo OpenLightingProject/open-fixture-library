@@ -52,7 +52,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
     let fineChannels = {}; // fine -> coarse, fine^2 -> coarse
     let switchingChannels = {}; // switching channel alias -> trigger channel
 
-    for (const ch in fixture.availableChannels) {
+    for (const ch of Object.keys(fixture.availableChannels)) {
       const channel = fixture.availableChannels[ch];
 
       const name = 'name' in channel ? channel.name : ch;
@@ -341,9 +341,6 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
   return result;
 };
-
-function checkModeChannel(result, fixture, mode, index, usedChannels, fineChannels, switchingChannels) {
-}
 
 function checkPanTiltMaxExistence(result, fixture, mode, chKey, maxProp) {
   let maxDefined = false;

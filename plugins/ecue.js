@@ -49,7 +49,7 @@ module.exports.export = function exportEcue(library, options) {
     let fineChannels = {}; // fine -> coarse, fine^2 -> coarse
     let switchingChannels = {}; // switching channel alias -> trigger channel
 
-    for (const ch in fixture.availableChannels) {
+    for (const ch of Object.keys(fixture.availableChannels)) {
       const channel = fixture.availableChannels[ch];
 
       if ('fineChannelAliases' in channel) {
@@ -58,7 +58,6 @@ module.exports.export = function exportEcue(library, options) {
         }
       }
 
-      let switchesCount = 0;
       if ('switchesChannels' in channel) {
         for (const alias of channel.switchesChannels) {
           switchingChannels[alias] = ch;
