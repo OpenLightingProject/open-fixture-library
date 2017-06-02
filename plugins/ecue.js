@@ -156,13 +156,13 @@ function exportHandleChannel(fixture, mode, dmxCount, viewPosCount, fineChannels
 
   if (chKey in switchingChannels) {
     const triggerChannel = fixture.availableChannels[switchingChannels[chKey]];
-    console.log(triggerChannel);
     const switchesChannelsIndex = triggerChannel.switchesChannels.indexOf(chKey);
     const defaultValue = triggerChannel.defaultValue;
 
     for (const cap of triggerChannel.capabilities) {
       if (cap.range[0] <= defaultValue && defaultValue <= cap.range[1]) {
         channel = fixture.availableChannels[cap.switchToChannels[switchesChannelsIndex]];
+        break;
       }
     }
   }
