@@ -21,7 +21,7 @@ module.exports = function(options) {
   const githubRepoPath = 'https://github.com/FloEdelmann/open-fixture-library';
 
   let fineChannels = {}; // fine -> coarse, fine^2 -> coarse
-  let switchingChannels = {}; // switching channel alias -> { triggerChannel: chKey, switchedChannels: [chKey] }
+  let switchingChannels = {}; // switching channel alias -> { triggerChannel: chKey, switchedChannels: [chKey], defaultChannel: chKey }
 
   for (const ch of Object.keys(fixture.availableChannels)) {
     const channel = fixture.availableChannels[ch];
@@ -36,14 +36,22 @@ module.exports = function(options) {
       for (const cap of channel.capabilities) {
         for (let i = 0; i < cap.switchToChannels.length; i++) {
           const switchingChannelAlias = channel.switchesChannels[i];
+          const switchedChannel = cap.switchToChannels[i];
+
           if (!(switchingChannelAlias in switchingChannels)) {
             switchingChannels[switchingChannelAlias] = {
               triggerChannel: ch,
-              switchedChannels: []
+              switchedChannels: [],
+              defaultChannel: null
             };
           }
-          if (!switchingChannels[switchingChannelAlias].switchedChannels.includes(cap.switchToChannels[i])) {
-            switchingChannels[switchingChannelAlias].switchedChannels.push(cap.switchToChannels[i]);
+          const switchingChannel = switchingChannels[switchingChannelAlias];
+
+          if (!switchingChannel.switchedChannels.includes(switchedChannel)) {
+            switchingChannel.switchedChannels.push(switchedChannel);
+          }
+          if (cap.range[0] <= channel.defaultValue && channel.defaultValue <= cap.range[1]) {
+            switchingChannel.defaultChannel = switchedChannel;
           }
         }
       }
@@ -174,9 +182,18 @@ module.exports = function(options) {
           str += '<ol>';
           switchingChannel.switchedChannels.forEach(switchedChannel => {
             str += '<li>';
+
             str += `<details class="channel" data-channel="${switchedChannel}">`;
-            str += `<summary>${getChannelHeading(switchedChannel)}</summary>`;
+
+            str += '<summary>';
+            str += getChannelHeading(switchedChannel)
+            if (switchingChannel.defaultChannel === switchedChannel) {
+              str += ' (default)';
+            }
+            str += '</summary>';
+
             str += handleChannel(fixture.availableChannels[switchedChannel], mode);
+
             str += '</li>';
           });
           str += '</ol>';
