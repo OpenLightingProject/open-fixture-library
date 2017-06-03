@@ -238,6 +238,16 @@ a.fixture-mode {
   text-align: center;
 }
 
+.switch-to-channel {
+  line-height: 1rem;
+  padding-bottom: .8rem;
+}
+
+/* switched channels */
+.fixture-mode ol ol {
+  list-style-type: lower-alpha;
+}
+
 /* if a mode is the only mode, hide its remove button */
 .fixture-modes > .fixture-mode:first-child:nth-last-child(3) > .close {
   display: none;
