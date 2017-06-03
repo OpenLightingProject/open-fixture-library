@@ -129,8 +129,8 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
       }
 
       if ('capabilities' in channel) {
-        for (const i in channel.capabilities) {
-          const cap = channel.capabilities[i];
+        for (let i = 1; i <= channel.capabilities.length; i++) {
+          const cap = channel.capabilities[i-1];
 
           // range valid / no overlapping
           if (cap.range[1] >= dmxMaxBound) {
@@ -145,14 +145,14 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
               error: null
             });
           }
-          else if (i > 0 && cap.range[0] <= channel.capabilities[i-1].range[1]) {
+          else if (i > 1 && cap.range[0] <= channel.capabilities[i-2].range[1]) {
             result.errors.push({
               description: `ranges overlapping in capabilities #${i-1} and #${i} in channel '${ch}'.`,
               error: null
             });
           }
-          else if (i > 0 && testFineChannelOverlapping) {
-            const lastRangeEnd = Math.floor(channel.capabilities[i-1].range[1] / Math.pow(256, channel.fineChannelAliases.length));
+          else if (i > 1 && testFineChannelOverlapping) {
+            const lastRangeEnd = Math.floor(channel.capabilities[i-2].range[1] / Math.pow(256, channel.fineChannelAliases.length));
             const rangeStart = Math.floor(cap.range[0] / Math.pow(256, channel.fineChannelAliases.length));
 
             if (rangeStart <= lastRangeEnd) {
@@ -187,13 +187,13 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
           if ('switchToChannels' in cap) {
             if (switchesCount === 0) {
               result.errors.push({
-                description: `Capability '${cap.name}' (#${i+1}) uses the 'switchToChannels' property, but its channel '${ch}' is missing the 'switchesChannels' property.`,
+                description: `Capability '${cap.name}' (#${i}) uses the 'switchToChannels' property, but its channel '${ch}' is missing the 'switchesChannels' property.`,
                 error: null
               });
             }
             else if (cap.switchToChannels.length !== switchesCount) {
               result.errors.push({
-                description: `Capability '${cap.name}' (#${i+1}) uses ${cap.switchToChannels.length} channels in 'switchToChannels', but its channel '${ch}' uses ${switchesCount} channels in 'switchesChannels'.`,
+                description: `Capability '${cap.name}' (#${i}) uses ${cap.switchToChannels.length} channels in 'switchToChannels', but its channel '${ch}' uses ${switchesCount} channels in 'switchesChannels'.`,
                 error: null
               });
             }
@@ -202,7 +202,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
             for (const switchedChannel of cap.switchToChannels) {
               if (!(switchedChannel in fixture.availableChannels)) {
                 result.errors.push({
-                  description: `channel '${switchedChannel}' is referenced from capability '${cap.name}' (#${i+1}) in channel '${ch}' but is not defined.`,
+                  description: `channel '${switchedChannel}' is referenced from capability '${cap.name}' (#${i}) in channel '${ch}' but is not defined.`,
                   error: null
                 });
               }
@@ -211,7 +211,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
           }
           else if (switchesCount > 0) {
             result.errors.push({
-              description: `Channel '${channel.name}' uses the 'switchesChannels' property, but its capability '${cap.name}' (#${i+1}) is missing the 'switchToChannels' property.`,
+              description: `Channel '${channel.name}' uses the 'switchesChannels' property, but its capability '${cap.name}' (#${i}) is missing the 'switchToChannels' property.`,
               error: null
             });
           }
@@ -219,8 +219,8 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
       }
     }
 
-    for (const i in fixture.modes) {
-      const mode = fixture.modes[i];
+    for (let i = 1; i <= fixture.modes.length; i++) {
+      const mode = fixture.modes[i-1];
 
       const modeShortName = mode.shortName || mode.name;
       if (usedModeShortNames.includes(modeShortName)) {
@@ -249,8 +249,8 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
         });
       }
 
-      for (const index in mode.channels) {
-        const ch = mode.channels[index];
+      for (let chIndex = 1; chIndex <= mode.channels.length; chIndex++) {
+        const ch = mode.channels[chIndex-1];
 
         if (ch === null) {
           continue;
@@ -273,7 +273,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
         if (ch in fineChannels) {
           if (!mode.channels.includes(fineChannels[ch])) {
             result.errors.push({
-              description: `mode '${modeShortName}' uses switching channel '${ch}' (#${index+1}) but is missing its trigger channel '${fineChannels[ch]}'`,
+              description: `mode '${modeShortName}' uses switching channel '${ch}' (#${chIndex}) but is missing its trigger channel '${fineChannels[ch]}'`,
               error: null
             });
           }
@@ -285,7 +285,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
           // the mode must also contain the trigger channel
           if (!mode.channels.includes(switchingChannels[ch])) {
             result.errors.push({
-              description: `mode '${modeShortName}' uses switching channel '${ch}' (#${index+1}) but is missing its trigger channel '${switchingChannels[ch]}'`,
+              description: `mode '${modeShortName}' uses switching channel '${ch}' (#${chIndex}) but is missing its trigger channel '${switchingChannels[ch]}'`,
               error: null
             });
           }
@@ -294,7 +294,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
         // the channel doesn't exist
         result.errors.push({
-          description: `channel '${ch}' (#${index+1}) referenced from mode '${modeShortName}' but is not defined. Note: fine channels can only be used in the same mode as their coarse counterpart.`,
+          description: `channel '${ch}' (#${chIndex}) referenced from mode '${modeShortName}' but is not defined. Note: fine channels can only be used in the same mode as their coarse counterpart.`,
           error: null
         });
       }
@@ -304,7 +304,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
       for (const key in fixture.heads) {
         const head = fixture.heads[key];
 
-        for (let i=0; i<head.length; i++) {
+        for (let i = 0; i < head.length; i++) {
           if (!fixture.availableChannels[head[i]]) {
             result.errors.push({
               description: `channel '${head[i]}' referenced from head '${key}' but missing.`,

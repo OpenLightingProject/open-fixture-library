@@ -295,7 +295,7 @@ function exportHandleModes(fixture, defaults, physical, fineChannels, switchingC
     };
     xmlModes.push(xmlMode);
 
-    for (const i in modeData.channels) {
+    for (let i = 0; i < modeData.channels.length; i++) {
       const chKey = modeData.channels[i];
       let channelName;
 
