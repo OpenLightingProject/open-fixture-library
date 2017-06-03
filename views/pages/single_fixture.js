@@ -186,7 +186,7 @@ module.exports = function(options) {
             str += `<details class="channel" data-channel="${switchedChannel}">`;
 
             str += '<summary>';
-            str += getChannelHeading(switchedChannel)
+            str += getChannelHeading(switchedChannel);
             if (switchingChannel.defaultChannel === switchedChannel) {
               str += ' (default)';
             }
