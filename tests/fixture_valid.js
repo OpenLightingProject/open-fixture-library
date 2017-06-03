@@ -193,7 +193,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
             }
             else if (cap.switchToChannels.length !== switchesCount) {
               result.errors.push({
-                description: `Capability '${cap.name}' (#${i}) uses ${cap.switchToChannels.length} channels in 'switchToChannels', but its channel '${ch}' uses ${switchesCount} channels in 'switchesChannels'.`,
+                description: `Capability '${cap.name}' (#${i}) uses ${cap.switchToChannels.length} channel(s) in 'switchToChannels', but its channel '${ch}' uses ${switchesCount} channel(s) in 'switchesChannels'.`,
                 error: null
               });
             }
@@ -211,11 +211,17 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
           }
           else if (switchesCount > 0) {
             result.errors.push({
-              description: `Channel '${channel.name}' uses the 'switchesChannels' property, but its capability '${cap.name}' (#${i}) is missing the 'switchToChannels' property.`,
+              description: `Channel '${ch}' uses the 'switchesChannels' property, but its capability '${cap.name}' (#${i}) is missing the 'switchToChannels' property.`,
               error: null
             });
           }
         }
+      }
+      else if (switchesCount > 0) {
+        result.errors.push({
+          description: `Channel '${ch}' uses the 'switchesChannels' property, but is missing capabilities (which define to which channels the switching channels should be switched).`,
+          error: null
+        });
       }
     }
 
