@@ -27,7 +27,7 @@ Ideally, just use the [Fixture Editor](https://open-fixture-library.herokuapp.co
 
 If you have to manually edit fixtures, see [schema.js](fixtures/schema.js) and [defaults.js](fixtures/defaults.js) in the `fixtures` directory and use the existing fixtures as a reference.
 
-You can also import existing fixture definitions using import plugins. See [cli/import.js](cli/import.js) for that. In the future, this will be integrated into the Fixture Editor.
+You can also import existing fixture definitions using import plugins. See [cli/import-fixture.js](cli/import-fixture.js) for that. In the future, this will be integrated into the Fixture Editor.
 
 
 ### Plugins
@@ -103,7 +103,7 @@ module.exports.import = function importPluginName(str, filename, resolve, reject
 };
 ```
 
-You can try import plugins by running `node cli/import.js [pluginName] [importFileName]`.
+You can try import plugins by running `node cli/import-fixture.js [pluginName] [importFileName]`.
 
 
 ### UI
