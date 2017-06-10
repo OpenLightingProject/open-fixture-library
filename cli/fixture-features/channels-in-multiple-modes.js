@@ -1,5 +1,6 @@
 module.exports.name = 'Reused channels';
 module.exports.description = 'Whether there is at least one channel that is used in different modes';
+module.exports.order = 40;
 
 module.exports.hasFeature = function(fixture, fineChannels) {
   let usedChannels = [];

@@ -6,12 +6,28 @@ const path = require('path');
 const fixFeaturesDir = path.join(__dirname, 'fixture-features');
 const fixturesDir = path.join(__dirname, '..', 'fixtures');
 
-let fixFeatures = {};
+let fixFeatures = [];
 for (const featureFile of fs.readdirSync(fixFeaturesDir)) {
   if (path.extname(featureFile) === '.js') {
-    fixFeatures[path.basename(featureFile, '.js')] = require(path.join(fixFeaturesDir, featureFile));
+    let fixFeature = require(path.join(fixFeaturesDir, featureFile));
+    fixFeature.id = path.basename(featureFile, '.js');
+    if (!('order' in fixFeature)) {
+      fixFeature.order = 0;
+    }
+    fixFeatures.push(fixFeature);
   }
 }
+fixFeatures.sort((a, b) => {
+  if (a.order == b.order) {
+    if (a.name.toLowerCase() > b.name.toLowerCase()) {
+      return 1;
+    }
+    else if (a.name.toLowerCase() < b.name.toLowerCase()) {
+      return -1;
+    }
+  }
+  return b.order - a.order;
+});
 
 fs.readFile(path.join(fixturesDir, 'register.json'), 'utf8', (error, data) => {
   if (error) {
@@ -42,9 +58,9 @@ fs.readFile(path.join(fixturesDir, 'register.json'), 'utf8', (error, data) => {
       }
 
       // check all features
-      for (const key of Object.keys(fixFeatures)) {
-        if (fixFeatures[key].hasFeature(fixData, fineChannels)) {
-          fixtures[manFix].push(key);
+      for (const fixFeature of fixFeatures) {
+        if (fixFeature.hasFeature(fixData, fineChannels)) {
+          fixtures[manFix].push(fixFeature.id);
         }
       }
     }
@@ -52,8 +68,7 @@ fs.readFile(path.join(fixturesDir, 'register.json'), 'utf8', (error, data) => {
 
   const markdown = [];
   markdown[0] = '|';
-  for (const key of Object.keys(fixFeatures)) {
-    const fixFeature = fixFeatures[key];
+  for (const fixFeature of fixFeatures) {
 
     markdown[0] += ' | ';
     if ('description' in fixFeature) {
@@ -63,13 +78,13 @@ fs.readFile(path.join(fixturesDir, 'register.json'), 'utf8', (error, data) => {
       markdown[0] += fixFeature.name;
     }
   }
-  markdown[1] = '|-'.repeat(Object.keys(fixFeatures).length + 1);
+  markdown[1] = '|-'.repeat(fixFeatures.length + 1);
   for (const manFix of Object.keys(fixtures)) {
     let line = `[${manFix}](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/${manFix}.json)`;
 
-    for (const fixFeature of Object.keys(fixFeatures)) {
+    for (const fixFeature of fixFeatures) {
       line += ' |';
-      if (fixtures[manFix].includes(fixFeature)) {
+      if (fixtures[manFix].includes(fixFeature.id)) {
         line += ' :white_check_mark:';
       }
       else {
