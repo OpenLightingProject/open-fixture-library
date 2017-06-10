@@ -3,7 +3,9 @@ Fixture features are specific fixture characteristics (like "uses heads" or "use
 Each fixture feature file looks like this:
 
 ```js
-module.exports.name = 'Heads'; // Required. Try to be as short as possible as it's used in generated table header
+module.exports.name = 'Fine channels'; // Required. Try to be as short as possible as it's used in generated table header. Markdown is allowed.
+
+module.exports.description = 'Whether fine channel aliases are defined'; // Optional. Is used as tooltip in generated table header. Markdown is not allowed.
 
 /**
  * Required. Checks if the given fixtures uses this file's feature.
@@ -12,6 +14,6 @@ module.exports.name = 'Heads'; // Required. Try to be as short as possible as it
  * @return {Boolean} true if fixture uses the feature
  */
 module.exports.hasFeature = function(fixture, fineChannels) {
-  return Object.keys(fixture).includes('heads');
+  return Object.keys(fineChannels).length > 0;
 }
 ```

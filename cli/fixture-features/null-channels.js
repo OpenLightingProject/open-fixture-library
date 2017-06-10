@@ -1,4 +1,5 @@
 module.exports.name = '`null` channels';
+module.exports.description = 'Channel list of a mode contains null, so it has an unused channel';
 
 module.exports.hasFeature = function(fixture, fineChannels) {
   for (const mode of fixture.modes) {

@@ -53,19 +53,27 @@ fs.readFile(path.join(fixturesDir, 'register.json'), 'utf8', (error, data) => {
   const markdown = [];
   markdown[0] = '|';
   for (const key of Object.keys(fixFeatures)) {
-    markdown[0] += '|' + fixFeatures[key].name;
+    const fixFeature = fixFeatures[key];
+
+    markdown[0] += ' | ';
+    if ('description' in fixFeature) {
+      markdown[0] += `<abbr title="${fixFeature.description}">${fixFeature.name}</abbr>`;
+    }
+    else {
+      markdown[0] += fixFeature.name;
+    }
   }
   markdown[1] = '|-'.repeat(Object.keys(fixFeatures).length + 1);
   for (const manFix of Object.keys(fixtures)) {
     let line = `[${manFix}](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/${manFix}.json)`;
 
     for (const fixFeature of Object.keys(fixFeatures)) {
-      line += '|';
+      line += ' |';
       if (fixtures[manFix].includes(fixFeature)) {
-        line += ':white_check_mark:';
+        line += ' :white_check_mark:';
       }
       else {
-        line += ':x:';
+        line += ' :x:';
       }
     }
 

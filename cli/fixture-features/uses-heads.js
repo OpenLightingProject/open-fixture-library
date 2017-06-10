@@ -1,5 +1,6 @@
 module.exports.name = 'Heads';
+module.exports.description = 'Whether there are heads defined';
 
 module.exports.hasFeature = function(fixture, fineChannels) {
-  return Object.keys(fixture).includes('heads');
+  return 'heads' in fixture && Object.keys(fixture.heads).length > 0;
 }
