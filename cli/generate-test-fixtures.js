@@ -51,104 +51,81 @@ fixFeatures.sort((a, b) => {
   return b.order - a.order;
 });
 
-fs.readFile(path.join(fixturesDir, 'register.json'), 'utf8', (error, data) => {
-  if (error) {
-    console.error('read error', error);
-    process.exit(1);
-    return;
-  }
 
-  let fixtures = []; // [{manFix: "man/fix", features: [used features]]
+// check which features each fixture supports
+let fixtures = []; // [{manFix: "man/fix", features: [used features]]
+const manufacturers = JSON.parse(fs.readFileSync(path.join(fixturesDir, 'register.json'), 'utf8')).manufacturers;
+for (const man of Object.keys(manufacturers)) {
+  for (const fix of manufacturers[man]) {
+    const manFix = `${man}/${fix}`;
+    let fixture = {
+      manFix: manFix,
+      features: []
+    };
+    fixtures.push(fixture);
 
-  const manufacturers = JSON.parse(data).manufacturers;
-  for (const man of Object.keys(manufacturers)) {
-    for (const fix of manufacturers[man]) {
-      const manFix = `${man}/${fix}`;
-      let fixture = {
-        manFix: manFix,
-        features: []
-      };
-      fixtures.push(fixture);
+    // pre-process data
+    const fixData = JSON.parse(fs.readFileSync(path.join(fixturesDir, man, fix + '.json'), 'utf8'));
+    let fineChannels = {};
+    for (const ch of Object.keys(fixData.availableChannels)) {
+      const channel = fixData.availableChannels[ch];
 
-      // pre-process data
-      const fixData = JSON.parse(fs.readFileSync(path.join(fixturesDir, man, fix + '.json'), 'utf8'));
-      let fineChannels = {};
-      for (const ch of Object.keys(fixData.availableChannels)) {
-        const channel = fixData.availableChannels[ch];
-
-        if ('fineChannelAliases' in channel) {
-          for (const alias of channel.fineChannelAliases) {
-            fineChannels[alias] = ch;
-          }
-        }
-      }
-
-      // check all features
-      for (const fixFeature of fixFeatures) {
-        if (fixFeature.hasFeature(fixData, fineChannels)) {
-          fixture.features.push(fixFeature.id);
-          featuresUsed[fixFeature.id]++;
+      if ('fineChannelAliases' in channel) {
+        for (const alias of channel.fineChannelAliases) {
+          fineChannels[alias] = ch;
         }
       }
     }
-  }
 
-  if (args.compress) {
-    fixtures.sort((a, b) => {
-      return a.features.length - b.features.length;
-    });
-    fixtures = fixtures.filter(fixture => {
-      for (const feature of fixture.features) {
-        if (featuresUsed[feature] === 1) {
-          return true;
-        }
-      }
-      // has no new features, so remove it
-      for (const feature of fixture.features) {
-        featuresUsed[feature]--;
-      }
-      return false;
-    });
-  }
-
-  fixtures.sort((a, b) => {
-    if (a.manFix > b.manFix) {
-      return 1;
-    }
-    if (a.manFix < b.manFix) {
-      return -1;
-    }
-    return 0;
-  });
-
-  const markdown = [];
-  markdown[0] = '|';
-  for (const fixFeature of fixFeatures) {
-
-    markdown[0] += ' | ';
-    if ('description' in fixFeature) {
-      markdown[0] += `<abbr title="${fixFeature.description}">${fixFeature.name}</abbr>`;
-    }
-    else {
-      markdown[0] += fixFeature.name;
-    }
-  }
-  markdown[1] = '|-'.repeat(fixFeatures.length + 1);
-  for (const fixture of fixtures) {
-    let line = `[${fixture.manFix}](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/${fixture.manFix}.json)`;
-
+    // check all features
     for (const fixFeature of fixFeatures) {
-      line += ' |';
-      if (fixture.features.includes(fixFeature.id)) {
-        line += ' :white_check_mark:';
-      }
-      else {
-        line += ' :x:';
+      if (fixFeature.hasFeature(fixData, fineChannels)) {
+        fixture.features.push(fixFeature.id);
+        featuresUsed[fixFeature.id]++;
       }
     }
+  }
+}
 
-    markdown.push(line);
+if (args.compress) {
+  fixtures.sort((a, b) => {
+    return a.features.length - b.features.length;
+  });
+  fixtures = fixtures.filter(fixture => {
+    for (const feature of fixture.features) {
+      if (featuresUsed[feature] === 1) {
+        return true;
+      }
+    }
+    // has no new features, so remove it
+    for (const feature of fixture.features) {
+      featuresUsed[feature]--;
+    }
+    return false;
+  });
+}
+
+fixtures.sort((a, b) => {
+  return a.manFix > b.manFix ? 1 : a.manFix < b.manFix ? -1 : 0;
+});
+
+// generate markdown code
+const markdown = []; // lines
+markdown[0] = '|';
+for (const fixFeature of fixFeatures) {
+  markdown[0] += ' | ';
+  markdown[0] += 'description' in fixFeature ? `<abbr title="${fixFeature.description}">${fixFeature.name}</abbr>` : fixFeature.name;
+}
+markdown[1] = '|-'.repeat(fixFeatures.length + 1);
+for (const fixture of fixtures) {
+  let line = `[${fixture.manFix}](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/${fixture.manFix}.json)`;
+
+  for (const fixFeature of fixFeatures) {
+    line += fixture.features.includes(fixFeature.id) ? ' | :white_check_mark:' : ' | :x:';
   }
 
-  console.log(markdown.join('\n'));
-});
+  markdown.push(line);
+}
+
+// output resulting markdown
+console.log(markdown.join('\n'));
