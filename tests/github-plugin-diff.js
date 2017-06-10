@@ -9,10 +9,10 @@ const diffPluginOutputs = require(path.join(__dirname, '..', 'lib', 'diff-plugin
 // These fixtures have the most possible different functions,
 // so they are good for testing plugin output.
 // (Testing all fixtures would be overkill.)
-const testFixtures = [
-  'fixtures/cameo/thunder-wash-600-w.json',
-  'fixtures/lightmaxx/vega-zoom-wash.json'
-];
+let testFixtures = [];
+for (const fixture of JSON.parse(fs.readFileSync(path.join(__dirname, 'test-fixtures.json'), 'utf8'))) {
+  testFixtures.push(path.join('fixtures', fixture.man, fixture.key) + '.json');
+}
 
 // load any undefined environment variables and complain about missing ones
 const envFile = path.join(__dirname, '..', '.env');
@@ -216,7 +216,10 @@ new Promise((resolve, reject) => {
 
     for (let plugin in pluginData) {
       message.push(`### Modified plugin \`${plugin}\` in this PR`);
-      message.push(`Plugins are always tested with the following fixtures: ${testFixtures.join(', ')}`);
+      message.push('Plugins are always tested with the following fixtures:');
+      for (const testFixture of testFixtures) {
+        message.push(` - ${testFixture}`);
+      }
 
       const pluginMessage = printPlugin(pluginData[plugin]);
       if (pluginMessage.length > 0) {

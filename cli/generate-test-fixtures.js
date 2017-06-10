@@ -3,19 +3,19 @@
 const fs = require('fs');
 const path = require('path');
 const minimist = require('minimist');
+const colors = require('colors');
 
 const args = minimist(process.argv.slice(2), {
-  boolean: ['compress', 'help'],
-  alias: { compress: 'c', help: 'h' }
+  boolean: ['all', 'help'],
+  alias: { all: 'a', help: 'h' }
 });
 
 const helpMessage = [
-  'Generates a markdown table with all fixtures and the features they support.',
-  `Usage: ${process.argv[1]} [-c <compress>]`,
+  'Generates a possibly small set of test fixtures that use all defined fixture features, outputs a markdown code to use in GitHub wiki and updates the tests/test-fixtures.json file.',
+  `Usage: ${process.argv[1]} [-a | --all]`,
   'Options:',
-  '  --compress, -c: Reduce fixture list size by sorting out fixtures that don\'t use new features,',
-  '                  beginning with the fixtures using the least count of features',
-  '  --help,     -h: Show this help message.'
+  '  --all,  -a: Output markdown with all fixtures and don\'t update test-fixtures.json.',
+  '  --help, -h: Show this help message.'
 ].join('\n');
 
 if (args.help) {
@@ -53,13 +53,13 @@ fixFeatures.sort((a, b) => {
 
 
 // check which features each fixture supports
-let fixtures = []; // [{manFix: "man/fix", features: [used features]]
+let fixtures = [];
 const manufacturers = JSON.parse(fs.readFileSync(path.join(fixturesDir, 'register.json'), 'utf8')).manufacturers;
 for (const man of Object.keys(manufacturers)) {
   for (const fix of manufacturers[man]) {
-    const manFix = `${man}/${fix}`;
     let fixture = {
-      manFix: manFix,
+      man: man,
+      key: fix,
       features: []
     };
     fixtures.push(fixture);
@@ -87,10 +87,13 @@ for (const man of Object.keys(manufacturers)) {
   }
 }
 
-if (args.compress) {
+// compress list
+if (!args.all) {
+  // sort out fixtures with least features first
   fixtures.sort((a, b) => {
     return a.features.length - b.features.length;
   });
+  // sort out
   fixtures = fixtures.filter(fixture => {
     for (const feature of fixture.features) {
       if (featuresUsed[feature] === 1) {
@@ -103,11 +106,21 @@ if (args.compress) {
     }
     return false;
   });
-}
+  // original ordering
+  fixtures.sort((a, b) => {
+    const manFixA = `${a.man}/${a.key}`;
+    const manFixB = `${b.man}/${b.key}`;
+    return manFixA > manFixB ? 1 : manFixA < manFixB ? -1 : 0;
+  });
 
-fixtures.sort((a, b) => {
-  return a.manFix > b.manFix ? 1 : a.manFix < b.manFix ? -1 : 0;
-});
+  console.log(colors.yellow('Generated list of test fixtures:'));
+  for (const fixture of fixtures) {
+    console.log(` - ${fixture.man}/${fixture.key}`);
+  }
+  let testFixturesFile = path.join(__dirname, '..', 'tests', 'test-fixtures.json');
+  fs.writeFileSync(testFixturesFile, JSON.stringify(fixtures, null, 2));
+  console.log(`\nSuccessfully updated ${testFixturesFile}.\n`);
+}
 
 // generate markdown code
 const markdown = []; // lines
@@ -118,7 +131,7 @@ for (const fixFeature of fixFeatures) {
 }
 markdown[1] = '|-'.repeat(fixFeatures.length + 1);
 for (const fixture of fixtures) {
-  let line = `[${fixture.manFix}](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/${fixture.manFix}.json)`;
+  let line = `[${fixture.man}/${fixture.key}](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/${fixture.man}/${fixture.key}.json)`;
 
   for (const fixFeature of fixFeatures) {
     line += fixture.features.includes(fixFeature.id) ? ' | :white_check_mark:' : ' | :x:';
@@ -126,6 +139,5 @@ for (const fixture of fixtures) {
 
   markdown.push(line);
 }
-
-// output resulting markdown
+console.log(colors.yellow('Markdown code (e.g. for usage in GitHub wiki):'));
 console.log(markdown.join('\n'));

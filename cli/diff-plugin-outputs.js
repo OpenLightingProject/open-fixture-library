@@ -7,8 +7,7 @@ const args = minimist(process.argv.slice(2), {
   string: ['p', 'r'],
   boolean: 'h',
   alias: { p: 'plugin', r: 'ref', h: 'help' },
-  default: { r: 'HEAD' },
-  unknown: function() {}
+  default: { r: 'HEAD' }
 });
 
 const helpMessage = [
