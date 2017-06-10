@@ -60,6 +60,6 @@ fs.writeFile(filename, JSON.stringify(register, null, 2), 'utf8', error => {
     process.exit(1);
   }
   console.log(colors.green('[Success]') + ` Register file ${filename} successfully written.`);
-  console.log(colors.yellow('[Info]') + ' If new fixtures were added, it may be worth generating a new set of test fixtures by running ' + colors.yellow('cli/generate-test-fixtures.js -c') + '.');
+  console.log(colors.yellow('[Info]') + ' If new fixtures were added, it may be worth generating a new set of test fixtures by running ' + colors.yellow('node cli/generate-test-fixtures.js -c') + '.');
   process.exit(0);
 });
