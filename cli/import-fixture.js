@@ -41,7 +41,7 @@ fs.readFile(filename, 'utf8', (error, data) => {
   }).then(result => {
     result.errors = {};
 
-    for (const fixKey in result.fixtures) {
+    for (const fixKey of Object.keys(result.fixtures)) {
       const checkResult = checkFixture(result.fixtures[fixKey]);
 
       result.warnings[fixKey] = result.warnings[fixKey].concat(checkResult.warnings);

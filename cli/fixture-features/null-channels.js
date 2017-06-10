@@ -9,4 +9,4 @@ module.exports.hasFeature = function(fixture, fineChannels) {
     }
   }
   return false;
-}
+};
