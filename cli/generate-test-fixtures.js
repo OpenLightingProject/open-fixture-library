@@ -57,13 +57,6 @@ let fixtures = [];
 const manufacturers = JSON.parse(fs.readFileSync(path.join(fixturesDir, 'register.json'), 'utf8')).manufacturers;
 for (const man of Object.keys(manufacturers)) {
   for (const fix of manufacturers[man]) {
-    let fixture = {
-      man: man,
-      key: fix,
-      features: []
-    };
-    fixtures.push(fixture);
-
     // pre-process data
     const fixData = JSON.parse(fs.readFileSync(path.join(fixturesDir, man, fix + '.json'), 'utf8'));
     let fineChannels = {};
@@ -76,6 +69,14 @@ for (const man of Object.keys(manufacturers)) {
         }
       }
     }
+
+    let fixture = {
+      man: man,
+      key: fix,
+      name: fixData.name,
+      features: []
+    };
+    fixtures.push(fixture);
 
     // check all features
     for (const fixFeature of fixFeatures) {
@@ -131,7 +132,7 @@ for (const fixFeature of fixFeatures) {
 }
 markdown[1] = '|-'.repeat(fixFeatures.length + 1);
 for (const fixture of fixtures) {
-  let line = `[${fixture.man}/${fixture.key}](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/${fixture.man}/${fixture.key}.json)`;
+  let line = `[*${fixture.man}* **${fixture.name}**](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/${fixture.man}/${fixture.key}.json)`;
 
   for (const fixFeature of fixFeatures) {
     line += fixture.features.includes(fixFeature.id) ? ' | :white_check_mark:' : ' | :x:';
