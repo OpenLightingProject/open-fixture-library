@@ -27,16 +27,12 @@
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan"
-    },
-    "Pan fine": {
-      "type": "Pan"
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"]
     },
     "Tilt": {
-      "type": "Tilt"
-    },
-    "Tilt fine": {
-      "type": "Tilt"
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"]
     },
     "Pan / Tilt Speed": {
       "type": "Speed"
@@ -234,10 +230,6 @@
       ]
     }
   },
-  "multiByteChannels": [
-    ["Pan", "Pan fine"],
-    ["Tilt", "Tilt fine"]
-  ],
   "modes": [
     {
       "name": "16-channel",

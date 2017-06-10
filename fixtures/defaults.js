@@ -1,20 +1,18 @@
 module.exports = {
   name: 'Fixture name', // required
-  shortName: null, // default: name
   categories: ['Other'], // required
   meta: {
     authors: [],
     createDate: '1970-01-01',
     lastModifyDate: '1970-01-01'
   },
-  comment: '',
   physical: {
     dimensions: [0, 0, 0],
     weight: 0,
     power: 0,
     DMXconnector: '3-pin',
     bulb: {
-      type: '',
+      type: 'Other',
       colorTemperature: 0,
       lumens: 0
     },
@@ -30,7 +28,6 @@ module.exports = {
   },
   availableChannels: { // required
     'channel key': {
-      name: null, // default: channel key
       type: 'Intensity', // required
       defaultValue: 0,
       highlightValue: 0,
@@ -47,12 +44,10 @@ module.exports = {
       ]
     }
   },
-  multiByteChannels: [],
   heads: {},
   modes: [ // required
     {
       name: '1-channel', // required
-      shortName: null, // default: name
       physical: {},
       channels: ['channel key'] // required
     }

@@ -1,10 +1,6 @@
 const path = require('path');
-const util = require('util');
-const colors = require('colors');
 
 const schemas = require(path.join(__dirname, '..', 'fixtures', 'schema'));
-
-let usedShortNames = [];
 
 module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) {
   let result = {
@@ -24,7 +20,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
   try {
     const shortName = fixture.shortName || fixture.name;
-    if (usedShortNames.indexOf(shortName) != -1) {
+    if (usedShortNames.indexOf(shortName) !== -1) {
       result.errors.push({
         description: `shortName '${shortName}' not unique.`,
         error: null
@@ -34,7 +30,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
     if (new Date(fixture.meta.lastModifyDate) < new Date(fixture.meta.createDate)) {
       result.errors.push({
-        description: `meta.lastModifyDate is earlier than meta.createDate.`,
+        description: 'meta.lastModifyDate is earlier than meta.createDate.',
         error: null
       });
     }
@@ -45,19 +41,20 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
       && fixture.physical.lens.degreesMinMax[0] > fixture.physical.lens.degreesMinMax[1]
       ) {
       result.errors.push({
-        description: `physical.lens.degreesMinMax is an invalid range.`,
+        description: 'physical.lens.degreesMinMax is an invalid range.',
         error: null
       });
     }
 
     let usedModeShortNames = [];
     let usedChannels = [];
+    let definedChannels = Object.keys(fixture.availableChannels);
 
     for (let i=0; i<fixture.modes.length; i++) {
       const mode = fixture.modes[i];
 
       const modeShortName = mode.shortName || mode.name;
-      if (usedModeShortNames.indexOf(modeShortName) != -1) {
+      if (usedModeShortNames.indexOf(modeShortName) !== -1) {
         result.errors.push({
           description: `shortName '${modeShortName}' not unique in mode #${i}.`,
           error: null
@@ -84,27 +81,35 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
       }
 
       for (const ch of mode.channels) {
-        if (!(ch in fixture.availableChannels) && ch !== null) {
+        if (ch === null) {
+          continue;
+        }
+
+        usedChannels.push(ch);
+
+        if (ch in fixture.availableChannels) {
+          if (fixture.availableChannels[ch].type === 'Pan') {
+            checkPanTiltMaxExistence(result, fixture, mode, ch, 'panMax');
+          }
+          else if (fixture.availableChannels[ch].type === 'Tilt') {
+            checkPanTiltMaxExistence(result, fixture, mode, ch, 'tiltMax');
+          }
+
+          continue;
+        }
+
+        const isValidFineChannelAlias = mode.channels.some(function(modeCh) {
+          return modeCh !== null
+            && modeCh in fixture.availableChannels
+            && 'fineChannelAliases' in fixture.availableChannels[modeCh]
+            && fixture.availableChannels[modeCh].fineChannelAliases.includes(ch);
+        });
+
+        if (!isValidFineChannelAlias) {
           result.errors.push({
-            description: `channel '${ch}' referenced from mode '${modeShortName}' (#${i}) but missing.`,
+            description: `channel '${ch}' referenced from mode '${modeShortName}' (#${i}) but is not defined. Note: fine channels can only be used in the same mode as their coarse counterpart.`,
             error: null
           });
-        }
-        usedChannels.push(ch);
-      }
-    }
-
-    if ('multiByteChannels' in fixture) {
-      for (let i=0; i<fixture.multiByteChannels.length; i++) {
-        const chs = fixture.multiByteChannels[i];
-
-        for (let j=0; j<chs.length; j++) {
-          if (!fixture.availableChannels[chs[j]]) {
-            result.errors.push({
-              description: `channel '${chs[j]}' referenced from multiByteChannels but missing.`,
-              error: null
-            });
-          }
         }
       }
     }
@@ -125,11 +130,55 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
     }
 
     for (const ch in fixture.availableChannels) {
-      if (usedChannels.indexOf(ch) == -1) {
+      if (usedChannels.indexOf(ch) === -1) {
         result.warnings.push(`Channel '${ch}' defined but never used.`);
       }
 
       const channel = fixture.availableChannels[ch];
+
+      const name = 'name' in channel ? channel.name : ch;
+      if (/\s+fine(?:^\d+)?$/i.test(name)) {
+        result.errors.push({
+          description: `Channel '${ch}' should rather be a fine channel alias of its corresponding coarse channel, or its name must not end with 'fine'.`,
+          error: null
+        });
+      }
+
+      let testFineChannelOverlapping = false;
+      let dmxMaxBound = 256;
+      if ('fineChannelAliases' in channel) {
+        channel.fineChannelAliases.forEach(alias => {
+          dmxMaxBound *= 256;
+          if (usedChannels.indexOf(alias) === -1) {
+            result.warnings.push(`Fine channel alias '${alias}' defined in channel '${ch}' but never used.`);
+          }
+          if (definedChannels.indexOf(alias) !== -1) {
+            result.errors.push({
+              description: `Fine channel alias '${alias}' in channel '${ch}' is already defined.`,
+              error: null
+            });
+          }
+          definedChannels.push(alias);
+        });
+
+        testFineChannelOverlapping = fixture.modes.some(mode => {
+          return mode.channels.indexOf(ch) !== -1 && channel.fineChannelAliases.every(chKey => mode.channels.indexOf(chKey) === -1);
+        });
+      }
+
+      if ('defaultValue' in channel && channel.defaultValue >= dmxMaxBound) {
+        result.errors.push({
+          description: `defaultValue must be strictly less than ${dmxMaxBound} in channel '${ch}'.`,
+          error: null
+        });
+      }
+
+      if ('highlightValue' in channel && channel.highlightValue >= dmxMaxBound) {
+        result.errors.push({
+          description: `highlightValue must be strictly less than ${dmxMaxBound} in channel '${ch}'.`,
+          error: null
+        });
+      }
 
       if ('color' in channel && channel.type !== 'SingleColor') {
         result.warnings.push(`color in channel '${ch}' defined but channel type is not 'SingleColor'.`);
@@ -146,46 +195,58 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
         for (let i=0; i<channel.capabilities.length; i++) {
           const cap = channel.capabilities[i];
 
+          if (cap.range[1] >= dmxMaxBound) {
+            result.errors.push({
+              description: `range values must be strictly less than ${dmxMaxBound} in capability #${i} in channel '${ch}'.`,
+              error: null
+            });
+            break;
+          }
+
           if (cap.range[0] > cap.range[1]) {
             result.errors.push({
               description: `range invalid in capability #${i} in channel '${ch}'.`,
               error: null
             });
+            break;
           }
+
           if (i > 0 && cap.range[0] <= channel.capabilities[i-1].range[1]) {
             result.errors.push({
               description: `ranges overlapping in capabilities #${i-1} and #${i} in channel '${ch}'.`,
               error: null
             });
+            break;
           }
 
-          if ('center' in cap && 'hideInMenu' in cap && cap.hideInMenu) {
-            result.errors.push({
-              description: `center is unused since hideInMenu is set in capability #${i} in channel '${ch}'.`,
-              error: null
-            });
+          if (i > 0 && testFineChannelOverlapping) {
+            const lastRangeEnd = Math.floor(channel.capabilities[i-1].range[1] / Math.pow(256, channel.fineChannelAliases.length));
+            const rangeStart = Math.floor(cap.range[0] / Math.pow(256, channel.fineChannelAliases.length));
+
+            if (rangeStart <= lastRangeEnd) {
+              result.errors.push({
+                description: `ranges overlapping when used in coarse channel only mode in capabilities #${i-1} and #${i} in channel '${ch}'.`,
+                error: null
+              });
+              break;
+            }
           }
 
-          if ((
-            ('color' in cap && cap.color.length > 0)
-            || ('image' in cap && cap.image.length > 0)
-            ) && ['MultiColor', 'Effect', 'Gobo'].indexOf(channel.type) == -1) {
+          if (('color' in cap || 'image' in cap) && ['MultiColor', 'Effect', 'Gobo'].indexOf(channel.type) === -1) {
             result.errors.push({
               description: `color or image present in capability #${i} but improper channel type '${channel.type}' in channel '${ch}'.`,
               error: null
             });
           }
 
-          if ('color2' in cap && cap.color2.length > 0
-            && (!('color' in cap) || cap.color.length == 0)) {
+          if ('color2' in cap && !('color' in cap)) {
             result.errors.push({
               description: `color2 present but color missing in capability #${i} in channel '${ch}'.`,
               error: null
             });
           }
 
-          if ('image' in cap && cap.image.length > 0
-            && 'color' in cap && cap.color.length > 0) {
+          if ('image' in cap && cap.image.length > 0 && 'color' in cap) {
             result.errors.push({
               description: `color and image cannot be present at the same time in capability #${i} in channel '${ch}'.`,
               error: null
@@ -203,4 +264,32 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
   }
 
   return result;
+};
+
+function checkPanTiltMaxExistence(result, fixture, mode, chKey, maxProp) {
+  let maxDefined = false;
+  let maxIsZero = false;
+  if ('physical' in mode
+    && 'focus' in mode.physical
+    && maxProp in mode.physical.focus) {
+    maxDefined = true;
+    maxIsZero = mode.physical.focus[maxProp] === 0;
+  }
+  else if ('physical' in fixture
+    && 'focus' in fixture.physical
+    && maxProp in fixture.physical.focus) {
+    maxDefined = true;
+    maxIsZero = fixture.physical.focus[maxProp] === 0;
+  }
+
+  const chType = fixture.availableChannels[chKey].type;
+  if (!maxDefined) {
+    result.warnings.push(`${maxProp} is not defined although there's a ${chType} channel '${chKey}'`);
+  }
+  else if (maxIsZero) {
+    result.errors.push({
+      description: `${maxProp} is 0 in mode '${mode.name || mode.shortName}' although it contains a ${chType} channel '${chKey}'`,
+      error: null
+    });
+  }
 }

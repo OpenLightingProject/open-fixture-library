@@ -1,4 +1,4 @@
-# Open Fixture Library [![Build Status](https://travis-ci.org/FloEdelmann/open-fixture-library.svg?branch=master)](https://travis-ci.org/FloEdelmann/open-fixture-library)
+# Open Fixture Library [![Build Status](https://img.shields.io/travis/FloEdelmann/open-fixture-library.svg?label=tests)](https://travis-ci.org/FloEdelmann/open-fixture-library) [![Codacy Badge](https://img.shields.io/codacy/grade/73096865e9f44a7bb246a318ffc8e68b.svg)](https://www.codacy.com/app/FloEdelmann/open-fixture-library) [![Dependencies](https://img.shields.io/david/FloEdelmann/open-fixture-library.svg)](https://david-dm.org/FloEdelmann/open-fixture-library)
 
 <img alt="OFL logo" src="https://cdn.rawgit.com/FloEdelmann/open-fixture-library/04aad444/static/ofl-logo.svg" width="250" />
 

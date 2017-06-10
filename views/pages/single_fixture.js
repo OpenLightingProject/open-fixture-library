@@ -1,11 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 
+let fixture;
+
 module.exports = function(options) {
   const {manufacturers, man, fix, plugins} = options;
   const manufacturer = manufacturers[man];
 
-  const fixture = JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', man, fix + '.json'), 'utf-8'));
+  fixture = JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', man, fix + '.json'), 'utf-8'));
   
   options.title = `${manufacturer.name} ${fixture.name} - Open Fixture Library`;
 
@@ -23,11 +25,15 @@ module.exports = function(options) {
   str += '<header class="fixture-header">';
 
   str += '<div class="title">';
-  str += `<h1><a href="/${man}"><data data-key="manufacturer">${manufacturer.name}</data></a> <data data-key="name">${fixture.name}</data> <code><data data-key="shortName">${_(fixture.shortName)}</data></code></h1>`;
+  str += `<h1><a href="/${man}"><data data-key="manufacturer">${manufacturer.name}</data></a> <data data-key="name">${fixture.name}</data>`;
+  if ('shortName' in fixture) {
+    str += ` <code><data data-key="shortName">${fixture.shortName || ''}</data></code>`;
+  }
+  str += '</h1>';
   str += '<section class="fixture-meta">';
   str += `<span class="last-modify-date">Last modified:&nbsp;<date>${fixture.meta.lastModifyDate}</date></span>`;
   str += `<span class="create-date">Created:&nbsp;<date>${fixture.meta.createDate}</date></span>`;
-  str += `<span class="authors">Author${fixture.meta.authors.length == 1 ? '' : 's'}:&nbsp;<data>${fixture.meta.authors.join(', ')}</data></span>`;
+  str += `<span class="authors">Author${fixture.meta.authors.length === 1 ? '' : 's'}:&nbsp;<data>${fixture.meta.authors.join(', ')}</data></span>`;
   str += `<span class="source"><a href="${githubRepoPath}/blob/${branch}/fixtures/${man}/${fix}.json">Source</a></span>`;
   str += `<span class="revisions"><a href="${githubRepoPath}/commits/${branch}/fixtures/${man}/${fix}.json">Revisions</a></span>`;
   str += '</section>';
@@ -80,43 +86,20 @@ module.exports = function(options) {
     str += '</section>';
   }
 
-  if ('multiByteChannels' in fixture || 'heads' in fixture) {
-    str += '<h3 class="channel-groups">Channel groups</h3>';
-    str += '<section class="channel-groups">';
-
-    if ('multiByteChannels' in fixture) {
-      str += '<section class="multi-byte-channels">';
-      str += '<h4>Multi-byte channels</h4>';
-      str += '<ul>';
-      fixture.multiByteChannels.forEach(multiByteChannel => {
-        str += '<li>';
-        str += multiByteChannel.map(ch => {
-          return `<data class="channel" data-channel="${ch}">${getChannelHeading(ch, fixture)}</data>`;
-        }).join(', ');
-        str += `</li>`;
-      });
-      str += '</ul>';
-      str += '</section>';
+  if ('heads' in fixture) {
+    str += '<section class="heads">';
+    str += '<h3>Heads</h3>';
+    str += '<ul>';
+    for (const headName of Object.keys(fixture.heads)) {
+      str += '<li>';
+      str += `<strong>${headName}:</strong> `;
+      str += fixture.heads[headName].map(ch => {
+        return `<data class="channel" data-channel="${ch}">${getChannelHeading(ch)}</data>`;
+      }).join(', ');
+      str += '</li>';
     }
-
-    if ('heads' in fixture) {
-      str += '<section class="heads">';
-      str += '<h4>Heads</h4>';
-      str += '<ul>';
-      for (const head in fixture.heads) {
-        str += '<li>';
-        str += `<strong>${head}:</strong> `;
-        str += fixture.heads[head].map(ch => {
-          return `<data class="channel" data-channel="${ch}">${getChannelHeading(ch, fixture)}</data>`;
-        }).join(', ');
-        str += `</li>`;
-      }
-      str += '</ul>';
-      str += '</section>';
-    }
-
-    str += '<div class="clearfix"></div>';
-    str += '</section>'; // .channel-groups
+    str += '</ul>';
+    str += '</section>';
   }
 
   str += '</section>'; // .fixture-info
@@ -138,15 +121,31 @@ module.exports = function(options) {
       str += '</section>';
     }
 
-    str += `<h3>Channels</h3>`;
-    str += `<ol>`
-    mode.channels.forEach((ch, i) => {
-      const channel = fixture.availableChannels[ch];
+    str += '<h3>Channels</h3>';
+    str += '<ol>';
+    mode.channels.forEach((chKey, index) => {
+      str += `<li data-index="${index}">`;
+      str += `<details class="channel" data-channel="${chKey}">`;
+      str += `<summary>${getChannelHeading(chKey)}</summary>`;
 
-      str += `<li data-index="${i}">`;
-      str += `<details class="channel" data-channel="${ch}">`;
-      str += `<summary>${getChannelHeading(ch, fixture)}</summary>`;
-      str += handleChannel(channel);
+      if (chKey === null) {
+        // no details
+      }
+      else if (chKey in fixture.availableChannels) {
+        const channel = fixture.availableChannels[chKey];
+        str += handleChannel(channel, mode);
+      }
+      else {
+        // fine channel
+        const coarseIndex = mode.channels.findIndex(ch =>
+          ch !== null
+          && ch in fixture.availableChannels
+          && 'fineChannelAliases' in fixture.availableChannels[ch]
+          && fixture.availableChannels[ch].fineChannelAliases.includes(chKey)
+        ) + 1;
+        str += `<div>Fine channel of channel ${coarseIndex}</div>`;
+      }
+
       str += '</details>';
       str += '</li>';
     });
@@ -161,23 +160,33 @@ module.exports = function(options) {
   return str;
 };
 
-function getChannelHeading(key, fixture) {
-  let str = key;
-  if ('name' in fixture.availableChannels[key]) {
-    str = `${fixture.availableChannels[key].name} <code class="channel-key">${key}</code>`;
+function getChannelHeading(chKey) {
+  if (chKey === null) {
+    return 'Unused';
   }
 
-  return str;
-}
-
-/**
- * Helper function for easy output of variables.
- */
-function _(variable) {
-  if (variable === undefined) {
-    return '';
+  if (chKey in fixture.availableChannels) {
+    if ('name' in fixture.availableChannels[chKey]) {
+      return `${fixture.availableChannels[chKey].name} <code class="channel-key">${chKey}</code>`;
+    }
+    return chKey;
   }
-  return variable;
+
+  for (const chKey of Object.keys(fixture.availableChannels)) {
+    const coarseChannel = fixture.availableChannels[chKey];
+
+    if ('fineChannelAliases' in coarseChannel) {
+      const fineIndex = coarseChannel.fineChannelAliases.indexOf(chKey);
+      if (fineIndex !== -1) {
+        let name = 'name' in coarseChannel ? coarseChannel.name : chKey + ' fine';
+        name += fineIndex > 0 ? '^' + (fineIndex+1) : '';
+        name += name === chKey ? '' : ` <code class="channel-key">${chKey}</code>`;
+        return name;
+      }
+    }
+  }
+
+  return chKey;
 }
 
 function handlePhysicalData(physical) {
@@ -296,7 +305,7 @@ function handlePhysicalData(physical) {
   return str;
 }
 
-function handleChannel(channel) {
+function handleChannel(channel, mode) {
   let str = `<section class="channel-type">
     <span class="label">Type</span>
     <span class="value"><data data-key="channel-type">${channel.type}</data></span>
@@ -307,6 +316,21 @@ function handleChannel(channel) {
       <span class="label">Color</span>
       <span class="value"><data data-key="channel-color">${channel.color}</data></span>
     </section>`;
+  }
+
+  if ('fineChannelAliases' in channel) {
+    const fineChannelsUsedInMode = channel.fineChannelAliases.filter(chKey => mode.channels.includes(chKey));
+
+    if (fineChannelsUsedInMode.length > 0) {
+      str += '<section class="channel-fineChannelAliases">';
+      str += '  <span class="label">Fine channels</span>';
+      str += '  <span class="value"><data data-key="channel-fineChannelAliases">';
+      str += fineChannelsUsedInMode.map(chKey => getChannelHeading(chKey) + ` (channel ${mode.channels.indexOf(chKey) + 1})`).join(', ');
+      str += '</data></span>';
+      str += '</section>';
+    }
+
+    divideChannelDmxValues(channel, channel.fineChannelAliases.length - fineChannelsUsedInMode.length);
   }
 
   if ('defaultValue' in channel) {
@@ -360,33 +384,33 @@ function handleChannel(channel) {
     channel.capabilities.forEach(cap => {
       str += '<tr>';
 
-      str += `<td class="capability-range0" title="DMX value start">`;
-      str += `  <data data-key="capability-range-0">${_(cap.range[0])}</data>`;
-      str += `</td>`;
+      str += '<td class="capability-range0" title="DMX value start">';
+      str += `  <data data-key="capability-range-0">${cap.range[0]}</data>`;
+      str += '</td>';
 
-      str += `<td class="capability-range1" title="DMX value end">`;
-      str += `  <data data-key="capability-range-1">${_(cap.range[1])}</data>`;
-      str += `</td>`;
+      str += '<td class="capability-range1" title="DMX value end">';
+      str += `  <data data-key="capability-range-1">${cap.range[1]}</data>`;
+      str += '</td>';
 
-      str += `<td class="capability-name" title="name">`;
-      str += `  <data data-key="capability-name">${_(cap.name)}</data>`;
-      str += `</td>`;
+      str += '<td class="capability-name" title="name">';
+      str += `  <data data-key="capability-name">${cap.name}</data>`;
+      str += '</td>';
 
-      str += `<td class="capability-menuClick" title="menu click action">`;
-      str += `  <data data-key="capability-menuClick">${_(cap.menuClick)}</data>`;
-      str += `</td>`;
+      str += '<td class="capability-menuClick" title="menu click action">';
+      str += `  <data data-key="capability-menuClick">${cap.menuClick || ''}</data>`;
+      str += '</td>';
 
       str += `<td class="capability-color" title="color: ${cap.color}">`;
-      str += `  <data class="color" data-key="capability-color" data-value="${cap.color}">${_(cap.color)}</data>`;
-      str += `</td>`;
+      str += `  <data class="color" data-key="capability-color" data-value="${cap.color}">${cap.color || ''}</data>`;
+      str += '</td>';
 
       str += `<td class="capability-color2" title="color 2: ${cap.color2}">`;
-      str += `  <data class="color" data-key="capability-color2" data-value="${cap.color2}">${_(cap.color2)}</data>`;
-      str += `</td>`;
+      str += `  <data class="color" data-key="capability-color2" data-value="${cap.color2}">${cap.color2 || ''}</data>`;
+      str += '</td>';
 
-      str += `<td class="capability-image" title="image">`;
-      str += `  <data data-key="capability-image">${_(cap.image)}</data>`;
-      str += `</td>`;
+      str += '<td class="capability-image" title="image">';
+      str += `  <data data-key="capability-image">${cap.image || ''}</data>`;
+      str += '</td>';
 
       str += '</tr>';
     });
@@ -397,4 +421,19 @@ function handleChannel(channel) {
   }
 
   return str;
+}
+
+function divideChannelDmxValues(channel, times) {
+  if ('highlightValue' in channel) {
+    channel.highlightValue = Math.floor(channel.highlightValue / Math.pow(256, times));
+  }
+  if ('defaultValue' in channel) {
+    channel.defaultValue = Math.floor(channel.defaultValue / Math.pow(256, times));
+  }
+  if ('capabilities' in channel) {
+    for (const cap of channel.capabilities) {
+      cap.range[0] = Math.floor(cap.range[0] / Math.pow(256, times));
+      cap.range[1] = Math.floor(cap.range[1] / Math.pow(256, times));
+    }
+  }
 }

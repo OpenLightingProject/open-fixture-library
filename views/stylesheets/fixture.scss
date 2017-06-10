@@ -281,16 +281,11 @@ a.fixture-mode {
       margin-left: 2ex;
     }
 
-    & [data-key="name"] {
+    & .name {
       width: 25ex;
     }
-    & [data-key="color"],
-    & [data-key="color2"] {
+    & .color {
       width: 10ex;
-    }
-
-    &:not(.changed) > .remove {
-      display: none;
     }
   }
 }
@@ -321,18 +316,6 @@ a.fixture-mode {
 
   .card.fixture-mode .value {
     max-width: none;
-  }
-
-  .channel-groups > section {
-    width: calc(50% - 1.5em);
-    float: left;
-
-    &:nth-of-type(odd) {
-      margin-right: 1.5rem;
-    }
-    &:nth-of-type(even) {
-      margin-left: 1.5rem;
-    }
   }
 }
 

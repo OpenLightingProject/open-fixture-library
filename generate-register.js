@@ -12,11 +12,9 @@ let register = {
 const fixturePath = path.join(__dirname, 'fixtures');
 
 try {
-  const manufacturers = JSON.parse(fs.readFileSync(path.join(fixturePath, 'manufacturers.json')));
-
   // add all fixture.json files to the register
   for (const man of fs.readdirSync(fixturePath).sort()) {
-    manDir = path.join(fixturePath, man);
+    const manDir = path.join(fixturePath, man);
 
     // only directories
     if (fs.statSync(manDir).isDirectory()) {
@@ -24,7 +22,7 @@ try {
 
       for (const filename of fs.readdirSync(manDir).sort()) {
         const ext = path.extname(filename);
-        if (ext == '.json') {
+        if (ext === '.json') {
           const fix = path.basename(filename, ext);
 
           // add to manufacturer register
@@ -53,7 +51,7 @@ catch (readError) {
   process.exit(1);
 }
 
-const filename = path.join(fixturePath, (process.argv.length == 3 ? process.argv[2] : 'register.json'));
+const filename = path.join(fixturePath, (process.argv.length === 3 ? process.argv[2] : 'register.json'));
 
 fs.writeFile(filename, JSON.stringify(register, null, 2), 'utf8', error => {
   if (error) {

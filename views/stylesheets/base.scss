@@ -129,6 +129,12 @@ textarea {
   resize: vertical;
 }
 
+select {
+  width: 30ex;
+}
+select.boolean {
+  width: 15ex;
+}
 input[type=number] {
   width: 10ex;
 }
@@ -140,9 +146,9 @@ input[type=url] {
   width: 40ex;
 }
 
-.changed:invalid {
-  border-color: red;
-  box-shadow: 0 0 3px red;
+select.empty {
+  color: $secondary-text-dark;
+  font-style: italic;
 }
 
 input::-webkit-input-placeholder {
