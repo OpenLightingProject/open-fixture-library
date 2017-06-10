@@ -76,6 +76,8 @@ let prComment = null;
 new Promise((resolve, reject) => {
   getTestComment(1);
 
+  // compare with the commit with which this test ran the last time
+  // if first run for this PR, use target branch (e.g. master)
   function getTestComment(page) {
     github.issues.getComments({
       owner: repoOwner,
@@ -192,7 +194,7 @@ new Promise((resolve, reject) => {
   message.push('Last updated: ' + new Date(Date.now()).toLocaleString());
   message.push('## Diff plugin outputs test');
 
-  if (Object.keys(fixtureData) === 0 && Object.keys(pluginData) === 0) {
+  if (Object.keys(fixtureData).length === 0 && Object.keys(pluginData).length === 0) {
     message.push('*No fixture or plugin files were changed in this PR.*');
   }
   else {
