@@ -9,7 +9,7 @@ let register = {
   categories: {}
 };
 
-const fixturePath = path.join(__dirname, 'fixtures');
+const fixturePath = path.join(__dirname, '..', 'fixtures');
 
 try {
   // add all fixture.json files to the register
