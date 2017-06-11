@@ -97,6 +97,8 @@ if (!args.all) {
   // sort out
   fixtures = fixtures.filter(fixture => {
     for (const feature of fixture.features) {
+      // there's only one fixture that has this feature
+      // this must be the current fixture, so we keep it
       if (featuresUsed[feature] === 1) {
         return true;
       }
@@ -124,13 +126,13 @@ if (!args.all) {
 }
 
 // generate markdown code
-const markdown = []; // lines
-markdown[0] = '|';
+let mdLines = [];
+mdLines[0] = '|';
 for (const fixFeature of fixFeatures) {
-  markdown[0] += ' | ';
-  markdown[0] += 'description' in fixFeature ? `<abbr title="${fixFeature.description}">${fixFeature.name}</abbr>` : fixFeature.name;
+  mdLines[0] += ' | ';
+  mdLines[0] += 'description' in fixFeature ? `<abbr title="${fixFeature.description}">${fixFeature.name}</abbr>` : fixFeature.name;
 }
-markdown[1] = '|-'.repeat(fixFeatures.length + 1);
+mdLines[1] = '|-'.repeat(fixFeatures.length + 1);
 for (const fixture of fixtures) {
   let line = `[*${fixture.man}* **${fixture.name}**](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/${fixture.man}/${fixture.key}.json)`;
 
@@ -138,7 +140,7 @@ for (const fixture of fixtures) {
     line += fixture.features.includes(fixFeature.id) ? ' | :white_check_mark:' : ' | :x:';
   }
 
-  markdown.push(line);
+  mdLines.push(line);
 }
 console.log(colors.yellow('Markdown code (e.g. for usage in GitHub wiki):'));
-console.log(markdown.join('\n'));
+console.log(mdLines.join('\n'));
