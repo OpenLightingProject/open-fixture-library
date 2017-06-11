@@ -9,10 +9,10 @@ const diffPluginOutputs = require(path.join(__dirname, '..', 'lib', 'diff-plugin
 // These fixtures have the most possible different functions,
 // so they are good for testing plugin output.
 // (Testing all fixtures would be overkill.)
-const testFixtures = [
-  'fixtures/cameo/thunder-wash-600-w.json',
-  'fixtures/lightmaxx/vega-zoom-wash.json'
-];
+let testFixtures = [];
+for (const fixture of JSON.parse(fs.readFileSync(path.join(__dirname, 'test-fixtures.json'), 'utf8'))) {
+  testFixtures.push(path.join('fixtures', fixture.man, fixture.key) + '.json');
+}
 
 // load any undefined environment variables and complain about missing ones
 const envFile = path.join(__dirname, '..', '.env');
@@ -76,6 +76,8 @@ let prComment = null;
 new Promise((resolve, reject) => {
   getTestComment(1);
 
+  // compare with the commit with which this test ran the last time
+  // if first run for this PR, use target branch (e.g. master)
   function getTestComment(page) {
     github.issues.getComments({
       owner: repoOwner,
@@ -192,7 +194,7 @@ new Promise((resolve, reject) => {
   message.push('Last updated: ' + new Date(Date.now()).toLocaleString());
   message.push('## Diff plugin outputs test');
 
-  if (Object.keys(fixtureData) === 0 && Object.keys(pluginData) === 0) {
+  if (Object.keys(fixtureData).length === 0 && Object.keys(pluginData).length === 0) {
     message.push('*No fixture or plugin files were changed in this PR.*');
   }
   else {
@@ -216,7 +218,10 @@ new Promise((resolve, reject) => {
 
     for (let plugin in pluginData) {
       message.push(`### Modified plugin \`${plugin}\` in this PR`);
-      message.push(`Plugins are always tested with the following fixtures: ${testFixtures.join(', ')}`);
+      message.push('Plugins are always tested with the following fixtures:');
+      for (const testFixture of testFixtures) {
+        message.push(` - ${testFixture}`);
+      }
 
       const pluginMessage = printPlugin(pluginData[plugin]);
       if (pluginMessage.length > 0) {
