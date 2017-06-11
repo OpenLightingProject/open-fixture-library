@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const colors = require('colors');
 
 let register = {
   filesystem: {},
@@ -9,7 +10,7 @@ let register = {
   categories: {}
 };
 
-const fixturePath = path.join(__dirname, 'fixtures');
+const fixturePath = path.join(__dirname, '..', 'fixtures');
 
 try {
   // add all fixture.json files to the register
@@ -58,6 +59,7 @@ fs.writeFile(filename, JSON.stringify(register, null, 2), 'utf8', error => {
     console.error('Could not write register file.', error);
     process.exit(1);
   }
-  console.log(`Register file ${filename} successfully written.`);
+  console.log(colors.green('[Success]') + ` Register file ${filename} successfully written.`);
+  console.log(colors.yellow('[Info]') + ' If new fixtures were added, it may be worth generating a new set of test fixtures by running ' + colors.yellow('node cli/generate-test-fixtures.js') + '.');
   process.exit(0);
 });

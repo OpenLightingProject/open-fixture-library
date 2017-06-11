@@ -9,7 +9,7 @@ const diff = require('diff');
 // generate test register
 require('child_process').execFileSync(
   'node',
-  [path.join(__dirname, '..', 'generate-register.js'), 'register-test.json']
+  [path.join(__dirname, '..', 'cli', 'generate-register.js'), 'register-test.json']
 );
 
 const actualRegisterPath = path.join(__dirname, '..', 'fixtures', 'register.json');
