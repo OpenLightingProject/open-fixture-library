@@ -97,7 +97,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
         if (!('defaultValue' in channel)) {
           result.errors.push({
-            description: `defaultValue is missing in channel '${ch}' as it defines switching channels.`,
+            description: `defaultValue is missing in channel '${ch}' although it defines switching channels.`,
             error: null
           });
         }
@@ -129,11 +129,16 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
       }
 
       if ('capabilities' in channel) {
+        let rangesInvalid = false;
         for (let i = 1; i <= channel.capabilities.length; i++) {
           const cap = channel.capabilities[i-1];
 
-          // range valid / no overlapping
-          if (cap.range[1] >= dmxMaxBound) {
+          // range invalid / overlapping
+          if (rangesInvalid) {
+            // one of the previous capabilities had an invalid range,
+            // so it doesn't make sense checking further ranges
+          }
+          else if (cap.range[1] >= dmxMaxBound) {
             result.errors.push({
               description: `range values must be strictly less than ${dmxMaxBound} in capability #${i} in channel '${ch}'.`,
               error: null
@@ -277,11 +282,25 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
         // or it is a fine channel
         if (ch in fineChannels) {
+          const coarseChannelKey = fineChannels[ch];
+          const fineChannelAliases = fixture.availableChannels[coarseChannelKey].fineChannelAliases;
+
+          // the mode must also contain the coarse channel
           if (!mode.channels.includes(fineChannels[ch])) {
             result.errors.push({
-              description: `mode '${modeShortName}' uses switching channel '${ch}' (#${chIndex}) but is missing its trigger channel '${fineChannels[ch]}'`,
+              description: `Mode '${modeShortName}' contains the fine channel '${ch}' (#${chIndex}) but is missing its coarse channel '${coarseChannelKey}'.`,
               error: null
             });
+          }
+          // the mode must also contain all coarser channel
+          for (let fineIndex = 0; fineIndex < fineChannelAliases.indexOf(ch); fineIndex++) {
+            let coarserChannelKey = fineChannelAliases[fineIndex];
+            if (!mode.channels.includes(coarserChannelKey)) {
+              result.errors.push({
+                description: `Mode '${modeShortName}' contains the fine channel '${ch}' (#${chIndex}) but is missing its coarser channel '${coarserChannelKey}'.`,
+                error: null
+              });
+            }
           }
           continue;
         }
@@ -311,7 +330,9 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
         const head = fixture.heads[key];
 
         for (let i = 0; i < head.length; i++) {
-          if (!fixture.availableChannels[head[i]]) {
+          if (!(head[i] in fixture.availableChannels) &&
+              !(head[i] in fineChannels) &&
+              !(head[i] in switchingChannels)) {
             result.errors.push({
               description: `channel '${head[i]}' referenced from head '${key}' but missing.`,
               error: null

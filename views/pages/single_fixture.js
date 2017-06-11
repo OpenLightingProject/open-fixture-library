@@ -473,7 +473,7 @@ function handleChannel(channel, mode) {
           const switchingChannel = channel.switchesChannels[i];
           const switchingChannelIndex = mode.channels.indexOf(switchingChannel);
           const switchTo = cap.switchToChannels[i];
-          str += `<tr><td colspan="7" class="switch-to-channel"><small>${switchingChannel} (channel ${switchingChannelIndex}) → ${switchTo}</small></td></tr>`;
+          str += `<tr><td colspan="7" class="switch-to-channel">${switchingChannel} (channel ${switchingChannelIndex}) → ${switchTo}</td></tr>`;
         }
       }
     });

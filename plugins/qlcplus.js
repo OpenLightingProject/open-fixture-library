@@ -17,12 +17,13 @@ module.exports.export = function exportQLCplus(library, options) {
 
     // make null references in channel list link to a "No function" channel
     for (const mode of fixture.modes) {
-      for (let i=0; i<mode.channels.length; i++) {
-        if (mode.channels[i] == null) {
-          mode.channels[i] = 'No Function';
+      for (let i = 0; i < mode.channels.length; i++) {
+        if (mode.channels[i] === null) {
+          const noFunctionChKey = `No Function ${mode.name} ${i}`;
+          mode.channels[i] = noFunctionChKey;
 
-          if (!('No Function' in fixture.availableChannels)) {
-            fixture.availableChannels['No Function'] = {
+          if (!(noFunctionChKey in fixture.availableChannels)) {
+            fixture.availableChannels[noFunctionChKey] = {
               name: 'No Function',
               type: 'Nothing'
             };
