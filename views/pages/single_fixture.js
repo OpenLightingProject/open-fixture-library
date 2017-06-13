@@ -32,26 +32,27 @@ module.exports = function(options) {
       }
     }
 
-    if ('switchesChannels' in channel) {
+    if ('capabilities' in channel ) {
       for (const cap of channel.capabilities) {
-        for (let i = 0; i < cap.switchToChannels.length; i++) {
-          const switchingChannelAlias = channel.switchesChannels[i];
-          const switchedChannel = cap.switchToChannels[i];
+        if ('switchChannels' in cap) {
+          for (const switchesChannel of Object.keys(cap.switchChannels)) {
+            const switchToChannel = cap.switchChannels[switchesChannel];
 
-          if (!(switchingChannelAlias in switchingChannels)) {
-            switchingChannels[switchingChannelAlias] = {
-              triggerChannel: ch,
-              switchedChannels: [],
-              defaultChannel: null
-            };
-          }
-          const switchingChannel = switchingChannels[switchingChannelAlias];
+            if (!(switchesChannel in switchingChannels)) {
+              switchingChannels[switchesChannel] = {
+                triggerChannel: ch,
+                switchedChannels: [],
+                defaultChannel: null
+              }
+            }
+            const switchingChannel = switchingChannels[switchesChannel];
 
-          if (!switchingChannel.switchedChannels.includes(switchedChannel)) {
-            switchingChannel.switchedChannels.push(switchedChannel);
-          }
-          if (cap.range[0] <= channel.defaultValue && channel.defaultValue <= cap.range[1]) {
-            switchingChannel.defaultChannel = switchedChannel;
+            if (!switchingChannel.switchedChannels.includes(switchToChannel)) {
+              switchingChannel.switchedChannels.push(switchToChannel);
+            }
+            if (cap.range[0] <= channel.defaultValue && channel.defaultValue <= cap.range[1]) {
+              switchingChannel.defaultChannel = switchToChannel;
+            }
           }
         }
       }
@@ -468,12 +469,12 @@ function handleChannel(channel, mode) {
 
       str += '</tr>';
 
-      if ('switchToChannels' in cap) {
-        for (let i = 0; i < cap.switchToChannels.length; i++) {
-          const switchingChannel = channel.switchesChannels[i];
+      if ('switchChannels' in cap) {
+        for (const switchingChannel of Object.keys(cap.switchChannels)) {
           const switchingChannelIndex = mode.channels.indexOf(switchingChannel);
-          const switchTo = cap.switchToChannels[i];
-          str += `<tr><td colspan="7" class="switch-to-channel">${switchingChannel} (channel ${switchingChannelIndex}) → ${switchTo}</td></tr>`;
+          const switchToChannel = cap.switchChannels[switchingChannel];
+
+          str += `<tr><td colspan="7" class="switch-to-channel">${switchingChannel} (channel ${switchingChannelIndex+1}) → ${switchToChannel}</td></tr>`;
         }
       }
     });
