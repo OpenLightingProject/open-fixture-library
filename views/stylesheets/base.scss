@@ -170,6 +170,10 @@ input::placeholder {
   opacity: 1;
 }
 
+summary {
+  display: list-item;
+}
+
 .button-bar {
   margin: 2ex 0 0;
 }
