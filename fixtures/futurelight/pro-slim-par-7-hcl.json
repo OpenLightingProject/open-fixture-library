@@ -199,42 +199,55 @@
     "Internal Programs": {
       "type": "Effect",
       "defaultValue": 0,
-      "switchesChannels": ["Program Speed / Mic Sensitivity"],
       "capabilities": [
         {
           "range": [0, 10],
           "name": "No function",
-          "switchToChannels": ["Program Speed"]
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [11, 60],
           "name": "Internal Program 1",
-          "switchToChannels": ["Program Speed"]
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [61, 120],
           "name": "Internal Program 2",
-          "switchToChannels": ["Program Speed"]
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [121, 180],
           "name": "Internal Program 3",
-          "switchToChannels": ["Program Speed"]
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [181, 240],
           "name": "Internal Program 4",
-          "switchToChannels": ["Program Speed"]
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [241, 250],
           "name": "Internal Program 5",
-          "switchToChannels": ["Program Speed"]
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [251, 255],
           "name": "Music Control",
-          "switchToChannels": ["Mic Sensitivity"]
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Mic Sensitivity"
+          }
         }
       ]
     },
