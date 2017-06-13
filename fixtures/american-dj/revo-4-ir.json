@@ -22,19 +22,31 @@
       "capabilities": [
         {
           "range": [0, 9],
-          "name": "Off"
+          "name": "Off",
+          "switchChannels": {
+            "Color / Chase Speed": "Color"
+          }
         },
         {
           "range": [10, 99],
-          "name": "Pattern"
+          "name": "Pattern",
+          "switchChannels": {
+            "Color / Chase Speed": "Color"
+          }
         },
         {
           "range": [100, 239],
-          "name": "Chase"
+          "name": "Chase",
+          "switchChannels": {
+            "Color / Chase Speed": "Chase Speed"
+          }
         },
         {
           "range": [240, 255],
-          "name": "Sound Active"
+          "name": "Sound Active",
+          "switchChannels": {
+            "Color / Chase Speed": "Chase Speed"
+          }
         }
       ]
     },
@@ -4616,7 +4628,7 @@
       "channels": [
         "Function",
         "Pattern / Chase",
-        "Color",
+        "Color / Chase Speed",
         "Strobe"
       ]
     },

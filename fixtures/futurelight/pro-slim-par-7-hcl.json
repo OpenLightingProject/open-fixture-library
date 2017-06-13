@@ -1,0 +1,370 @@
+{
+  "name": "PRO Slim PAR-7 HCL",
+  "shortName": "PROSlim7HCL",
+  "categories": ["Color Changer"],
+  "manualURL": "http://media.steinigke.de/documents_t/51842547-MANUAL-1.10-de-en_00094623.pdf",
+  "meta": {
+    "authors": ["FloEdelmann", "Felix Edelmann"],
+    "createDate": "2017-05-11",
+    "lastModifyDate": "2017-05-11"
+  },
+  "physical": {
+    "dimensions": [253, 259.8, 98],
+    "weight": 3.3,
+    "power": 60,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [23, 23]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "type": "Intensity",
+      "crossfade": true
+    },
+    "Red": {
+      "type": "SingleColor",
+      "color": "Red",
+      "crossfade": true
+    },
+    "Green": {
+      "type": "SingleColor",
+      "color": "Green",
+      "crossfade": true
+    },
+    "Blue": {
+      "type": "SingleColor",
+      "color": "Blue",
+      "crossfade": true
+    },
+    "Amber": {
+      "type": "SingleColor",
+      "color": "Amber",
+      "crossfade": true
+    },
+    "White": {
+      "type": "SingleColor",
+      "color": "White",
+      "crossfade": true
+    },
+    "UV": {
+      "type": "SingleColor",
+      "color": "UV",
+      "crossfade": true
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "No function"
+        },
+        {
+          "range": [1, 5],
+          "name": "Sound Control"
+        },
+        {
+          "range": [6, 10],
+          "name": "No function"
+        },
+        {
+          "range": [11, 255],
+          "name": "Strobe 0-100%"
+        }
+      ]
+    },
+    "Color Presets": {
+      "type": "MultiColor",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "No function"
+        },
+        {
+          "range": [11, 30],
+          "name": "Red 100% / Green increasing / Blue 0%",
+          "color": "#ff0000",
+          "color2": "#ffff00"
+        },
+        {
+          "range": [31, 50],
+          "name": "Red decreasing / Green 100% / Blue 0%",
+          "color": "#ffff00",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [51, 70],
+          "name": "Red 0% / Green 100% / Blue increasing",
+          "color": "#00ff00",
+          "color2": "#00ffff"
+        },
+        {
+          "range": [71, 90],
+          "name": "Red 0% / Green decreasing / Blue 100%",
+          "color": "#00ffff",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [91, 110],
+          "name": "Red increasing / Green 0% / Blue 100%",
+          "color": "#0000ff",
+          "color2": "#ff00ff"
+        },
+        {
+          "range": [111, 130],
+          "name": "Red 100% / Green 0% / Blue decreasing",
+          "color": "#ff00ff",
+          "color2": "#ff0000"
+        },
+        {
+          "range": [131, 150],
+          "name": "Red 100% / Green increasing / Blue increasing",
+          "color": "#ff0000",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [151, 170],
+          "name": "Red decreasing / Green decreasing / Blue 100%",
+          "color": "#ffffff",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [171, 200],
+          "name": "Red 100% / Green 100% / Blue 100% / White 100%",
+          "color": "#ffffff"
+        },
+        {
+          "range": [201, 205],
+          "name": "White 1: 3200 K",
+          "color": "#525252"
+        },
+        {
+          "range": [206, 210],
+          "name": "White 2: 3400 K",
+          "color": "#575757"
+        },
+        {
+          "range": [211, 215],
+          "name": "White 3: 4200 K",
+          "color": "#6b6b6b"
+        },
+        {
+          "range": [216, 220],
+          "name": "White 4: 4900 K",
+          "color": "#7d7d7d"
+        },
+        {
+          "range": [221, 225],
+          "name": "White 5: 5600 K",
+          "color": "#8f8f8f"
+        },
+        {
+          "range": [226, 230],
+          "name": "White 6: 5900 K",
+          "color": "#969696"
+        },
+        {
+          "range": [231, 235],
+          "name": "White 7: 6500 K",
+          "color": "#a6a6a6"
+        },
+        {
+          "range": [236, 240],
+          "name": "White 8: 7200 K",
+          "color": "#b8b8b8"
+        },
+        {
+          "range": [241, 245],
+          "name": "White 9: 8000 K",
+          "color": "#cccccc"
+        },
+        {
+          "range": [246, 250],
+          "name": "White 10: 8500 K",
+          "color": "#d9d9d9"
+        },
+        {
+          "range": [251, 255],
+          "name": "White 11: 10000 K",
+          "color": "#ffffff"
+        }
+      ]
+    },
+    "Internal Programs": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "No function",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [11, 60],
+          "name": "Internal Program 1",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [61, 120],
+          "name": "Internal Program 2",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [121, 180],
+          "name": "Internal Program 3",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [181, 240],
+          "name": "Internal Program 4",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [241, 250],
+          "name": "Internal Program 5",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [251, 255],
+          "name": "Music Control",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Mic Sensitivity"
+          }
+        }
+      ]
+    },
+    "Program Speed": {
+      "type": "Speed"
+    },
+    "Mic Sensitivity": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "No Mic Sensitivity"
+        },
+        {
+          "range": [11, 255],
+          "name": "Mic Sensitivity 0-99%"
+        }
+      ]
+    },
+    "Dimmer Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 51],
+          "name": "Control Board setting dimmer speed"
+        },
+        {
+          "range": [52, 101],
+          "name": "Neutral"
+        },
+        {
+          "range": [102, 152],
+          "name": "Dimmer Speed 1"
+        },
+        {
+          "range": [153, 203],
+          "name": "Dimmer Speed 2"
+        },
+        {
+          "range": [204, 255],
+          "name": "Dimmer Speed 3"
+        }
+      ]
+    },
+    "Hue": {
+      "type": "MultiColor",
+      "crossfade": true
+    },
+    "Saturation": {
+      "type": "Intensity",
+      "crossfade": true
+    },
+    "Value / Brightness": {
+      "type": "Intensity",
+      "crossfade": true
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White",
+        "UV"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White",
+        "UV",
+        "Intensity",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White",
+        "UV",
+        "Strobe",
+        "Color Presets",
+        "Internal Programs",
+        "Program Speed / Mic Sensitivity",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "HSV",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Value / Brightness"
+      ]
+    },
+    {
+      "name": "HSI",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Intensity"
+      ]
+    }
+  ]
+}

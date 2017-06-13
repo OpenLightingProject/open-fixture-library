@@ -17,13 +17,17 @@ module.exports.export = function exportQLCplus(library, options) {
 
     // make null references in channel list link to a "No function" channel
     for (const mode of fixture.modes) {
-      for (let i=0; i<mode.channels.length; i++) {
-        if (mode.channels[i] == null) {
-          mode.channels[i] = 'No Function ' + i;
-          fixture.availableChannels['No Function ' + i] = {
-            name: 'No Function',
-            type: 'Nothing'
-          };
+      for (let i = 0; i < mode.channels.length; i++) {
+        if (mode.channels[i] === null) {
+          const noFunctionChKey = `No Function ${mode.name} ${i}`;
+          mode.channels[i] = noFunctionChKey;
+
+          if (!(noFunctionChKey in fixture.availableChannels)) {
+            fixture.availableChannels[noFunctionChKey] = {
+              name: 'No Function',
+              type: 'Nothing'
+            };
+          }
         }
       }
     }
@@ -47,6 +51,26 @@ module.exports.export = function exportQLCplus(library, options) {
       usedChannels[name]++;
     }
 
+    let fineChannels = {}; // fine -> coarse, fine^2 -> coarse
+    let switchingChannels = {}; // switching channel alias -> trigger channel
+
+    for (const ch of Object.keys(fixture.availableChannels)) {
+      const channel = fixture.availableChannels[ch];
+
+      if ('fineChannelAliases' in channel) {
+        for (const alias of channel.fineChannelAliases) {
+          fineChannels[alias] = ch;
+        }
+      }
+
+      if ('capabilities' in channel &&
+          'switchChannels' in channel.capabilities[0]) {
+        for (const alias of Object.keys(channel.capabilities[0].switchChannels)) {
+          switchingChannels[alias] = ch;
+        }
+      }
+    }
+
     let physical = Object.assign({}, defaults.physical, fixture.physical);
     physical.bulb = Object.assign({}, defaults.physical.bulb, fixture.physical.bulb);
     physical.lens = Object.assign({}, defaults.physical.lens, fixture.physical.lens);
@@ -65,8 +89,8 @@ module.exports.export = function exportQLCplus(library, options) {
         Manufacturer: manufacturer.name,
         Model: fixture.name,
         Type: fixture.categories[0],
-        Channel: exportHandleAvailableChannels(fixture, defaults),
-        Mode: exportHandleModes(fixture, defaults, physical)
+        Channel: exportHandleChannels(fixture, defaults, switchingChannels),
+        Mode: exportHandleModes(fixture, defaults, physical, fineChannels, switchingChannels)
       }
     };
 
@@ -95,110 +119,128 @@ module.exports.export = function exportQLCplus(library, options) {
   return outfiles;
 };
 
-function exportHandleAvailableChannels(fixture, defaults) {
+function exportHandleChannels(fixture, defaults, switchingChannels) {
   let xmlChannels = [];
+  let channel;
 
   for (const chKey of Object.keys(fixture.availableChannels)) {
-    const chData = Object.assign({}, defaults.availableChannels['channel key'], fixture.availableChannels[chKey]);
+    channel = fixture.availableChannels[chKey];
+    exportHandleSingleChannel(xmlChannels, channel, channel.name, defaults);
+  }
+  for (const chKey of Object.keys(switchingChannels)) {
+    const triggerChannel = fixture.availableChannels[switchingChannels[chKey]];
+    const defaultValue = triggerChannel.defaultValue;
 
-    chData.name = chData.name.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    for (const cap of triggerChannel.capabilities) {
+      if (cap.range[0] <= defaultValue && defaultValue <= cap.range[1]) {
+        channel = fixture.availableChannels[cap.switchChannels[chKey]];
+        break;
+      }
+    }
+    exportHandleSingleChannel(xmlChannels, channel, chKey, defaults);
+  }
 
-    if (chData.type === 'SingleColor') {
-      chData.type = 'Intensity';
-    }
-    else if (chData.type === 'MultiColor') {
-      chData.type = 'Colour';
-    }
-    else if (chData.type === 'Strobe') {
-      chData.type = 'Shutter';
-    }
+  return xmlChannels;
+}
 
-    let xmlChannel = {
+function exportHandleSingleChannel(xmlChannels, channel, chName, defaults) {
+  const defaultChannel = defaults.availableChannels['channel key'];
+  const chData = Object.assign({}, defaultChannel, channel);
+
+  if (chData.type === 'SingleColor') {
+    chData.type = 'Intensity';
+  }
+  else if (chData.type === 'MultiColor') {
+    chData.type = 'Colour';
+  }
+  else if (chData.type === 'Strobe') {
+    chData.type = 'Shutter';
+  }
+
+  let xmlChannel = {
+    $: {
+      Name: chName
+    },
+    Group: {
       $: {
-        Name: chData.name
+        Byte: 0
       },
-      Group: {
+      _: chData.type
+    }
+  };
+
+  if (chData.type === 'Intensity') {
+    xmlChannel.Colour = 'color' in chData ? chData.color : 'Generic';
+  }
+
+  xmlChannels.push(xmlChannel);
+
+  const divisor = 'fineChannelAliases' in chData ? Math.pow(256, chData.fineChannelAliases.length) : 1;
+
+  xmlChannel.Capability = [];
+  const defaultCapability = defaultChannel.capabilities[0];
+
+  if ('capabilities' in channel) {
+    for (const capability of chData.capabilities) {
+      const capData = Object.assign({}, defaultCapability, capability);
+
+      capData.name = capData.name.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+      let xmlCapability = {
         $: {
-          Byte: 0
+          Min: Math.floor(capData.range[0] / divisor),
+          Max: Math.floor(capData.range[1] / divisor)
         },
-        _: chData.type
+        _: capData.name
+      };
+      xmlChannel.Capability.push(xmlCapability);
+
+      if ('image' in capData) {
+        xmlCapability.$.res = capData.image;
       }
-    };
+      else if ('color' in capData) {
+        xmlCapability.$.Color = capData.color;
 
-    if (chData.type === 'Intensity') {
-      xmlChannel.Colour = 'color' in chData ? chData.color : 'Generic';
-    }
-
-    xmlChannels.push(xmlChannel);
-
-    const divisor = 'fineChannelAliases' in chData ? Math.pow(256, chData.fineChannelAliases.length) : 1;
-
-    xmlChannel.Capability = [];
-    const defaultCapability = defaults.availableChannels['channel key'].capabilities[0];
-    if ('capabilities' in fixture.availableChannels[chKey]) {
-      for (const capability of chData.capabilities) {
-        const capData = Object.assign({}, defaultCapability, capability);
-
-        capData.name = capData.name.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-
-        let xmlCapability = {
-          $: {
-            Min: Math.floor(capData.range[0] / divisor),
-            Max: Math.floor(capData.range[1] / divisor)
-          },
-          _: capData.name
-        };
-        xmlChannel.Capability.push(xmlCapability);
-
-        if ('image' in capData) {
-          xmlCapability.$.res = capData.image;
-        }
-        else if ('color' in capData) {
-          xmlCapability.$.Color = capData.color;
-
-          if ('color2' in capData) {
-            xmlCapability.$.Color2 = capData.color2;
-          }
+        if ('color2' in capData) {
+          xmlCapability.$.Color2 = capData.color2;
         }
       }
     }
-    else {
-      xmlChannel.Capability.push({
+  }
+  else {
+    xmlChannel.Capability.push({
+      $: {
+        Min: defaultCapability.range[0],
+        Max: defaultCapability.range[1]
+      },
+      _: defaultCapability.name
+    });
+  }
+
+  if ('fineChannelAliases' in chData) {
+    chData.fineChannelAliases.forEach((alias, index) => {
+      let fineXmlChannel = JSON.parse(JSON.stringify(xmlChannel));
+
+      fineXmlChannel.$.Name += getFineChannelSuffix(index);
+      fineXmlChannel.Group.$.Byte = index + 1;
+      fineXmlChannel.Capability = [{
         $: {
           Min: defaultCapability.range[0],
           Max: defaultCapability.range[1]
         },
         _: defaultCapability.name
-      });
-    }
+      }];
 
-    if ('fineChannelAliases' in chData) {
-      chData.fineChannelAliases.forEach((alias, index) => {
-        let fineXmlChannel = JSON.parse(JSON.stringify(xmlChannel));
-
-        fineXmlChannel.$.Name += getFineChannelSuffix(index);
-        fineXmlChannel.Group.$.Byte = index + 1;
-        fineXmlChannel.Capability = [{
-          $: {
-            Min: defaultCapability.range[0],
-            Max: defaultCapability.range[1]
-          },
-          _: defaultCapability.name
-        }];
-
-        xmlChannels.push(fineXmlChannel);
-      });
-    }
+      xmlChannels.push(fineXmlChannel);
+    });
   }
-
-  return xmlChannels;
 }
 
 function getFineChannelSuffix(index) {
   return ' fine' + (index > 0 ? '^' + (index + 1) : '');
 }
 
-function exportHandleModes(fixture, defaults, physical) {
+function exportHandleModes(fixture, defaults, physical, fineChannels, switchingChannels) {
   let xmlModes = [];
 
   for (const mode of fixture.modes) {
@@ -254,23 +296,19 @@ function exportHandleModes(fixture, defaults, physical) {
     };
     xmlModes.push(xmlMode);
 
-    for (let i=0; i<modeData.channels.length; i++) {
+    for (let i = 0; i < modeData.channels.length; i++) {
+      const chKey = modeData.channels[i];
       let channelName;
 
-      if (modeData.channels[i] in fixture.availableChannels) {
-        channelName = fixture.availableChannels[modeData.channels[i]].name;
+      if (chKey in fineChannels) {
+        const triggerChannel = fixture.availableChannels[fineChannels[chKey]];
+        channelName = triggerChannel.name + getFineChannelSuffix(triggerChannel.fineChannelAliases.indexOf(chKey));
+      }
+      else if (chKey in switchingChannels) {
+        channelName = chKey;
       }
       else {
-        // it is a fine channel
-        for (const chKey in fixture.availableChannels) {
-          if ('fineChannelAliases' in fixture.availableChannels[chKey]) {
-            const fineIndex = fixture.availableChannels[chKey].fineChannelAliases.indexOf(modeData.channels[i]);
-            if (fineIndex !== -1) {
-              channelName = fixture.availableChannels[chKey].name + getFineChannelSuffix(fineIndex);
-              break;
-            }
-          }
-        }
+        channelName = fixture.availableChannels[modeData.channels[i]].name;
       }
 
       xmlMode.Channel.push({

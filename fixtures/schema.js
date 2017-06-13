@@ -51,6 +51,9 @@ var Physical = schema({
 
 var DMXValue = Number.min(0).step(1);  // max value depends on how many fine channels there are (255 if none, 65535 if one, etc.)
 
+var ChannelKey = String;  // channels in availableChannels
+var ChannelAliasKey = String;  // channel keys that are only defined inside other channels
+
 var Capability = schema({
   'range': Array.of(2, DMXValue),
   'name': NonEmptyString,
@@ -58,11 +61,11 @@ var Capability = schema({
   '?color': Color,
   '?color2': Color,
   '?image': NonEmptyString,
+  '?switchChannels': schema({
+    '*': ChannelKey // switch switching channel '*' to ChannelKey
+  }),
   '*': Function
 });
-
-var ChannelKey = String;  // channels in availableChannels
-var ChannelAliasKey = String;  // channel keys that are only defined inside other channels
 
 var Channel = schema({
   '?name': String, // if not set: use channel key
@@ -75,7 +78,7 @@ var Channel = schema({
   '?constant': Boolean,
   '?crossfade': Boolean,
   '?precedence': ['LTP', 'HTP'],
-  '?capabilities': Array.of(Capability),
+  '?capabilities': Array.of(1, Infinity, Capability),
   '*': Function
 });
 
