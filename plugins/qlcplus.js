@@ -63,8 +63,9 @@ module.exports.export = function exportQLCplus(library, options) {
         }
       }
 
-      if ('switchesChannels' in channel) {
-        for (const alias of channel.switchesChannels) {
+      if ('capabilities' in channel &&
+          'switchChannels' in channel.capabilities[0]) {
+        for (const alias of Object.keys(channel.capabilities[0].switchChannels)) {
           switchingChannels[alias] = ch;
         }
       }
@@ -128,12 +129,11 @@ function exportHandleChannels(fixture, defaults, switchingChannels) {
   }
   for (const chKey of Object.keys(switchingChannels)) {
     const triggerChannel = fixture.availableChannels[switchingChannels[chKey]];
-    const switchesChannelsIndex = triggerChannel.switchesChannels.indexOf(chKey);
     const defaultValue = triggerChannel.defaultValue;
 
     for (const cap of triggerChannel.capabilities) {
       if (cap.range[0] <= defaultValue && defaultValue <= cap.range[1]) {
-        channel = fixture.availableChannels[cap.switchToChannels[switchesChannelsIndex]];
+        channel = fixture.availableChannels[cap.switchChannels[chKey]];
         break;
       }
     }
