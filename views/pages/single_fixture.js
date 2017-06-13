@@ -20,6 +20,45 @@ module.exports = function(options) {
   }
   const githubRepoPath = 'https://github.com/FloEdelmann/open-fixture-library';
 
+  let fineChannels = {}; // fine -> coarse, fine^2 -> coarse
+  let switchingChannels = {}; // switching channel alias -> { triggerChannel: chKey, switchedChannels: [chKey], defaultChannel: chKey }
+
+  for (const ch of Object.keys(fixture.availableChannels)) {
+    const channel = fixture.availableChannels[ch];
+
+    if ('fineChannelAliases' in channel) {
+      for (const alias of channel.fineChannelAliases) {
+        fineChannels[alias] = ch;
+      }
+    }
+
+    if ('capabilities' in channel) {
+      for (const cap of channel.capabilities) {
+        if ('switchChannels' in cap) {
+          for (const switchesChannel of Object.keys(cap.switchChannels)) {
+            const switchToChannel = cap.switchChannels[switchesChannel];
+
+            if (!(switchesChannel in switchingChannels)) {
+              switchingChannels[switchesChannel] = {
+                triggerChannel: ch,
+                switchedChannels: [],
+                defaultChannel: null
+              };
+            }
+            const switchingChannel = switchingChannels[switchesChannel];
+
+            if (!switchingChannel.switchedChannels.includes(switchToChannel)) {
+              switchingChannel.switchedChannels.push(switchToChannel);
+            }
+            if (cap.range[0] <= channel.defaultValue && channel.defaultValue <= cap.range[1]) {
+              switchingChannel.defaultChannel = switchToChannel;
+            }
+          }
+        }
+      }
+    }
+  }
+
   let str = require('../includes/header')(options);
 
   str += '<header class="fixture-header">';
@@ -128,22 +167,38 @@ module.exports = function(options) {
       str += `<details class="channel" data-channel="${chKey}">`;
       str += `<summary>${getChannelHeading(chKey)}</summary>`;
 
-      if (chKey === null) {
-        // no details
-      }
-      else if (chKey in fixture.availableChannels) {
-        const channel = fixture.availableChannels[chKey];
-        str += handleChannel(channel, mode);
-      }
-      else {
-        // fine channel
-        const coarseIndex = mode.channels.findIndex(ch =>
-          ch !== null
-          && ch in fixture.availableChannels
-          && 'fineChannelAliases' in fixture.availableChannels[ch]
-          && fixture.availableChannels[ch].fineChannelAliases.includes(chKey)
-        ) + 1;
-        str += `<div>Fine channel of channel ${coarseIndex}</div>`;
+      if (chKey !== null) {
+        if (chKey in fixture.availableChannels) {
+          const channel = fixture.availableChannels[chKey];
+          str += handleChannel(channel, mode);
+        }
+        else if (chKey in fineChannels) {
+          str += `<div>Fine channel of ${fineChannels[chKey]} (channel ${mode.channels.indexOf(fineChannels[chKey])+1})</div>`;
+        }
+        else if (chKey in switchingChannels) {
+          const switchingChannel = switchingChannels[chKey];
+
+          str += `<div>Switches behavior between following channels depending on ${switchingChannel.triggerChannel}'s value (channel ${mode.channels.indexOf(switchingChannel.triggerChannel)+1}):</div>`;
+
+          str += '<ol>';
+          switchingChannel.switchedChannels.forEach(switchedChannel => {
+            str += '<li>';
+
+            str += `<details class="channel" data-channel="${switchedChannel}">`;
+
+            str += '<summary>';
+            str += getChannelHeading(switchedChannel);
+            if (switchingChannel.defaultChannel === switchedChannel) {
+              str += ' (default)';
+            }
+            str += '</summary>';
+
+            str += handleChannel(fixture.availableChannels[switchedChannel], mode);
+
+            str += '</li>';
+          });
+          str += '</ol>';
+        }
       }
 
       str += '</details>';
@@ -385,11 +440,11 @@ function handleChannel(channel, mode) {
       str += '<tr>';
 
       str += '<td class="capability-range0" title="DMX value start">';
-      str += `  <data data-key="capability-range-0">${cap.range[0]}</data>`;
+      str += `  <code><data data-key="capability-range-0">${cap.range[0]}</data></code>`;
       str += '</td>';
 
       str += '<td class="capability-range1" title="DMX value end">';
-      str += `  <data data-key="capability-range-1">${cap.range[1]}</data>`;
+      str += `  <code><data data-key="capability-range-1">${cap.range[1]}</data></code>`;
       str += '</td>';
 
       str += '<td class="capability-name" title="name">';
@@ -413,6 +468,15 @@ function handleChannel(channel, mode) {
       str += '</td>';
 
       str += '</tr>';
+
+      if ('switchChannels' in cap) {
+        for (const switchingChannel of Object.keys(cap.switchChannels)) {
+          const switchingChannelIndex = mode.channels.indexOf(switchingChannel);
+          const switchToChannel = cap.switchChannels[switchingChannel];
+
+          str += `<tr><td colspan="7" class="switch-to-channel">${switchingChannel} (channel ${switchingChannelIndex+1}) → ${switchToChannel}</td></tr>`;
+        }
+      }
     });
 
     str += '    </tbody>';
