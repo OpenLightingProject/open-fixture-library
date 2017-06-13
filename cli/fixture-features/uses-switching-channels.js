@@ -4,7 +4,10 @@ module.exports.order = 70;
 
 module.exports.hasFeature = function(fixture, fineChannels) {
   for (const ch of Object.keys(fixture.availableChannels)) {
-    if ('switchesChannels' in fixture.availableChannels[ch]) {
+    const channel = fixture.availableChannels[ch];
+
+    if ('capabilities' in channel &&
+        'switchChannels' in channel.capabilities[0]) {
       return true;
     }
   }
