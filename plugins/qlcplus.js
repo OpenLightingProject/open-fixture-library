@@ -125,7 +125,7 @@ function exportHandleChannels(fixture, defaults, switchingChannels) {
 
   for (const chKey of Object.keys(fixture.availableChannels)) {
     channel = fixture.availableChannels[chKey];
-    exportHandleChannel(xmlChannels, channel, channel.name, defaults);
+    exportHandleSingleChannel(xmlChannels, channel, channel.name, defaults);
   }
   for (const chKey of Object.keys(switchingChannels)) {
     const triggerChannel = fixture.availableChannels[switchingChannels[chKey]];
@@ -137,13 +137,13 @@ function exportHandleChannels(fixture, defaults, switchingChannels) {
         break;
       }
     }
-    exportHandleChannel(xmlChannels, channel, chKey, defaults);
+    exportHandleSingleChannel(xmlChannels, channel, chKey, defaults);
   }
 
   return xmlChannels;
 }
 
-function exportHandleChannel(xmlChannels, channel, chName, defaults) {
+function exportHandleSingleChannel(xmlChannels, channel, chName, defaults) {
   const defaultChannel = defaults.availableChannels['channel key'];
   const chData = Object.assign({}, defaultChannel, channel);
 

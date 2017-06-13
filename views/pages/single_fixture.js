@@ -32,7 +32,7 @@ module.exports = function(options) {
       }
     }
 
-    if ('capabilities' in channel ) {
+    if ('capabilities' in channel) {
       for (const cap of channel.capabilities) {
         if ('switchChannels' in cap) {
           for (const switchesChannel of Object.keys(cap.switchChannels)) {

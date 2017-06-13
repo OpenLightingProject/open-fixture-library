@@ -204,13 +204,11 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
             }
             else {
               // check that all capabilities mention the same switching channels
-              let sameAliases = switchesChannels.length === switchingChannelAliases.length;
-              for (let j = 0; sameAliases && j < switchesChannels.length; j++) {
-                sameAliases = switchingChannelAliases.includes(switchesChannels[j]);
-              }
+              const sameAliases = switchesChannels.length === switchingChannelAliases.length
+                && switchesChannels.every(alias => switchingChannelAliases.includes(alias));
               if (!sameAliases) {
                 result.errors.push({
-                  description: `Capability '${cap.name}' (#${i+1}) is using different switching channel alias in 'switchChannels' than previous capabilities.`,
+                  description: `Capability '${cap.name}' (#${i+1}) is using different switching channel aliases in 'switchChannels' than previous capabilities.`,
                   error: null
                 });
               }
