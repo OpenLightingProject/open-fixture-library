@@ -43,7 +43,7 @@ module.exports = function(options) {
                 triggerChannel: ch,
                 switchedChannels: [],
                 defaultChannel: null
-              }
+              };
             }
             const switchingChannel = switchingChannels[switchesChannel];
 
