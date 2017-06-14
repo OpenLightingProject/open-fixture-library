@@ -21,15 +21,15 @@ class Physical {
   get depth() {
     return this.dimensions !== null ? this.dimensions[2] : null;
   }
-  
+
   get weight() {
     return nullIfNotExists(this._jsonObject, 'weight');
   }
-  
+
   get power() {
     return nullIfNotExists(this._jsonObject, 'power');
   }
-  
+
   get DMXconnector() {
     return nullIfNotExists(this._jsonObject, 'DMXconnector');
   }
@@ -131,6 +131,19 @@ module.exports = class Fixture {
 
   get physical() {
     return new Physical(this._jsonObject.physical);
+  }
+
+  get modes() {
+    let modes = [];
+    for (const jsonMode of this._jsonObject.modes) {
+      modes.push({
+        name: jsonMode.name,
+        shortName: jsonMode.shortName || jsonMode.name,
+        physical: 'physical' in jsonMode ? new Physical(jsonMode.physical) : null,
+        channels: jsonMode.channels
+      });
+    }
+    return modes
   }
 
 
