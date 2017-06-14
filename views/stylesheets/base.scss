@@ -170,6 +170,12 @@ input::placeholder {
   opacity: 1;
 }
 
+.no-details {
+  details, summary {
+    display: block;
+  }
+}
+
 .button-bar {
   margin: 2ex 0 0;
 }

@@ -1,5 +1,7 @@
 'use strict';
 
+require('details-polyfill');
+
 var logo;
 var searchInput;
 
