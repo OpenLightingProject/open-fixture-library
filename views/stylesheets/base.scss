@@ -170,8 +170,10 @@ input::placeholder {
   opacity: 1;
 }
 
-summary {
-  display: list-item;
+.no-details {
+  details, summary {
+    display: block;
+  }
 }
 
 .button-bar {
