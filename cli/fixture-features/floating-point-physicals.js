@@ -45,6 +45,7 @@ function isFloatInPhysical(physical, propertyPath) {
 
 function getPropertyValues(object, propertyPath) {
   const property = propertyPath[0];
+
   if (Array.isArray(property)) {
     let endValues = [];
     for (const endProperty of property) {
@@ -52,16 +53,13 @@ function getPropertyValues(object, propertyPath) {
     }
     return endValues;
   }
-  else {
-    let values = object[property];
-    if (Array.isArray(values)) {
-      return values;
-    }
-    else if (values === undefined || propertyPath.length === 1) {
-      return [values];
-    }
-    else {
-      return getPropertyValues(values, propertyPath.slice(1, propertyPath.length));
-    }
+
+  let values = object[property];
+  if (Array.isArray(values)) {
+    return values;
   }
+  if (values === undefined || propertyPath.length === 1) {
+    return [values];
+  }
+  return getPropertyValues(values, propertyPath.slice(1, propertyPath.length));
 }
