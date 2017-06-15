@@ -9,13 +9,13 @@ let properties = [
 ];
 
 module.exports = [];
-for (const i in properties) {
-  const property = properties[i];
+let startOrder = 89 + properties.length;
+for (const property of properties) {
   module.exports.push({
     name: `Floating point ${property[0]}`,
     description: 'In fixture physical or in a mode\'s physical override.',
-    order: 94-i,
-    hasFeature: function(fixture, fineChannels) {
+    order: startOrder--,
+    hasFeature: (fixture, fineChannels) => {
       let propertyPath = property.slice(1, property.length);
       if (inPhysical(fixture.physical, propertyPath)) {
         return true;
@@ -34,7 +34,7 @@ function inPhysical(physical, propertyPath) {
   let values = physical;
   for (const property of propertyPath) {
     if (Array.isArray(property)) {
-      endValues = [];
+      let endValues = [];
       for (const endProperty of property) {
         if (endProperty in values) {
           endValues.push(values[endProperty]);
