@@ -17,11 +17,11 @@ for (const property of properties) {
     order: startOrder--,
     hasFeature: (fixture, fineChannels) => {
       let propertyPath = property.slice(1, property.length);
-      if (inPhysical(fixture.physical, propertyPath)) {
+      if (isFloatInPhysical(fixture.physical, propertyPath)) {
         return true;
       }
       for (const mode of fixture.modes) {
-        if ('physical' in mode && inPhysical(mode.physical, propertyPath)) {
+        if ('physical' in mode && isFloatInPhysical(mode.physical, propertyPath)) {
           return true;
         }
       }
@@ -30,31 +30,27 @@ for (const property of properties) {
   });
 }
 
-function inPhysical(physical, propertyPath) {
+function isFloatInPhysical(physical, propertyPath) {
   let values = physical;
   for (const property of propertyPath) {
     if (Array.isArray(property)) {
       let endValues = [];
       for (const endProperty of property) {
-        if (endProperty in values) {
-          endValues.push(values[endProperty]);
-        }
+        endValues.push(values[endProperty]);
       }
       values = endValues;
       break;
     }
-    else if (property in values) {
-      values = values[property];
-    }
-    else {
+    else if (!(property in values)) {
       return false;
     }
+    values = values[property];
   }
   if (!Array.isArray(values)) {
     values = [values];
   }
   for (const value of values) {
-    if (value % 1 !== 0) {
+    if (value !== undefined && value % 1 !== 0) {
       return true;
     }
   }
