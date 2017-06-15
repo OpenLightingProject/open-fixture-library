@@ -5,6 +5,7 @@
     "name": "Thunder Wash 600 W",
     "features": [
       "has-multiple-categories",
+      "floating-point-physicals-1",
       "uses-heads",
       "channels-in-multiple-modes"
     ]
@@ -14,7 +15,8 @@
     "key": "platinum-hfx",
     "name": "Platinum HFX",
     "features": [
-      "floating-point-dimensions",
+      "floating-point-physicals-0",
+      "floating-point-physicals-1",
       "uses-fine-channels",
       "channels-in-multiple-modes"
     ]
@@ -24,8 +26,19 @@
     "key": "pro-slim-par-7-hcl",
     "name": "PRO Slim PAR-7 HCL",
     "features": [
-      "floating-point-dimensions",
+      "floating-point-physicals-0",
+      "floating-point-physicals-1",
       "uses-switching-channels",
+      "channels-in-multiple-modes"
+    ]
+  },
+  {
+    "man": "martin",
+    "key": "roboscan-812",
+    "name": "RoboScan 812",
+    "features": [
+      "floating-point-physicals-1",
+      "floating-point-physicals-5",
       "channels-in-multiple-modes"
     ]
   }

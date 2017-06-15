@@ -23,3 +23,17 @@ module.exports.hasFeature = function(fixture, fineChannels) {
   return Object.keys(fineChannels).length > 0;
 };
 ```
+
+A single fixture feature module can also provide several features by exporting an array of features:
+```js
+module.exports = [
+  {
+    name: '...'
+    description: '...',
+    hasFeature: function(fixture, fineChannels) {
+      return true;
+    }
+  },
+  // ...
+];
+```

@@ -30,13 +30,26 @@ let fixFeatures = [];
 let featuresUsed = {}; // feature id -> times used
 for (const featureFile of fs.readdirSync(fixFeaturesDir)) {
   if (path.extname(featureFile) === '.js') {
-    let fixFeature = require(path.join(fixFeaturesDir, featureFile));
-    fixFeature.id = path.basename(featureFile, '.js');
-    if (!('order' in fixFeature)) {
-      fixFeature.order = 0;
+    let fixFeatureFile = require(path.join(fixFeaturesDir, featureFile));
+
+    if (!Array.isArray(fixFeatureFile)) {
+      fixFeatureFile = [fixFeatureFile];
     }
-    fixFeatures.push(fixFeature);
-    featuresUsed[fixFeature.id] = 0;
+
+    for (let i = 0; i < fixFeatureFile.length; i++) {
+      const fixFeature = fixFeatureFile[i];
+
+      fixFeature.id = path.basename(featureFile, '.js');
+      if (fixFeatureFile.length > 1) {
+        fixFeature.id += `-${i}`;
+      }
+
+      if (!('order' in fixFeature)) {
+        fixFeature.order = 0;
+      }
+      fixFeatures.push(fixFeature);
+      featuresUsed[fixFeature.id] = 0;
+    }
   }
 }
 fixFeatures.sort((a, b) => {
