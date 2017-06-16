@@ -30,11 +30,8 @@ let fixFeatures = [];
 let featuresUsed = {}; // feature id -> times used
 for (const featureFile of fs.readdirSync(fixFeaturesDir)) {
   if (path.extname(featureFile) === '.js') {
-    let fixFeatureFile = require(path.join(fixFeaturesDir, featureFile));
-
-    if (!Array.isArray(fixFeatureFile)) {
-      fixFeatureFile = [fixFeatureFile];
-    }
+    // module exports array of fix features
+    const fixFeatureFile = require(path.join(fixFeaturesDir, featureFile));
 
     for (let i = 0; i < fixFeatureFile.length; i++) {
       const fixFeature = fixFeatureFile[i];

@@ -1,16 +1,17 @@
-module.exports.name = 'Reused channels';
-module.exports.description = 'Whether there is at least one channel that is used in different modes';
-module.exports.order = 40;
-
-module.exports.hasFeature = function(fixture, fineChannels) {
-  let usedChannels = [];
-  for (const mode of fixture.modes) {
-    for (const ch of mode.channels) {
-      if (usedChannels.includes(ch)) {
-        return true;
+module.exports = [{
+  name: 'Reused channels',
+  description: 'Whether there is at least one channel that is used in different modes',
+  order: 40,
+  hasFeature: function(fixture, fineChannels) {
+    let usedChannels = [];
+    for (const mode of fixture.modes) {
+      for (const ch of mode.channels) {
+        if (usedChannels.includes(ch)) {
+          return true;
+        }
+        usedChannels.push(ch);
       }
-      usedChannels.push(ch);
     }
+    return false;
   }
-  return false;
-};
+}];

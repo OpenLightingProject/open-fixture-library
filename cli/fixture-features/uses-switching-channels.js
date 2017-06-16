@@ -1,15 +1,16 @@
-module.exports.name = 'Switching channels';
-module.exports.description = 'Whether switching channel aliases are defined';
-module.exports.order = 70;
+module.exports = [{
+  name: 'Switching channels',
+  description: 'Whether switching channel aliases are defined',
+  order: 70,
+  hasFeature: function(fixture, fineChannels) {
+    for (const ch of Object.keys(fixture.availableChannels)) {
+      const channel = fixture.availableChannels[ch];
 
-module.exports.hasFeature = function(fixture, fineChannels) {
-  for (const ch of Object.keys(fixture.availableChannels)) {
-    const channel = fixture.availableChannels[ch];
-
-    if ('capabilities' in channel &&
-        'switchChannels' in channel.capabilities[0]) {
-      return true;
+      if ('capabilities' in channel &&
+          'switchChannels' in channel.capabilities[0]) {
+        return true;
+      }
     }
+    return false;
   }
-  return false;
-};
+}];
