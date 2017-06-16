@@ -31,12 +31,12 @@ module.exports = [
   },
   {
     id: 'floating-point-pan-tilt-max',
-    name: 'Floating point pan/tilt max',
+    name: 'Floating point pan/tilt maximum',
     propertyPath: ['focus', ['panMax', 'tiltMax']]
   }
 ];
 
-let startOrder = 96;
+let startOrder = 90 + module.exports.length;
 for (const fixFeature of module.exports) {
   fixFeature.description = 'In fixture physical or in a mode\'s physical override.';
   fixFeature.order = startOrder--;
@@ -56,10 +56,10 @@ for (const fixFeature of module.exports) {
 function isFloatInPhysical(object, propertyPath) {
   const property = propertyPath[0];
 
-  // propertyPath defines multiple end values (only one floating point is sufficient)
+  // propertyPath defines multiple end properties
   if (Array.isArray(property)) {
+    // check íf any possible end value exists and is a floating point value
     return property.some(endProperty => {
-      // check for each possible end value if it is exist and is a floating point value
       return object[endProperty] !== undefined && object[endProperty] % 1 !== 0;
     });
   }
@@ -68,7 +68,7 @@ function isFloatInPhysical(object, propertyPath) {
   if (value === undefined) {
     return false;
   }
-  // end of property path: check if value is float
+  // end of property path: check if value is a floating point value
   else if (propertyPath.length === 1) {
     return value % 1 !== 0;
   }

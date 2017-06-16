@@ -36,6 +36,7 @@ for (const featureFile of fs.readdirSync(fixFeaturesDir)) {
     for (let i = 0; i < fixFeatureFile.length; i++) {
       const fixFeature = fixFeatureFile[i];
 
+      // default id
       if (!('id' in fixFeature)) {
         fixFeature.id = path.basename(featureFile, '.js');
         if (fixFeatureFile.length > 1) {
@@ -43,14 +44,17 @@ for (const featureFile of fs.readdirSync(fixFeaturesDir)) {
         }
       }
 
+      // check uniquness of id
       if (fixFeature.id in featuresUsed) {
         console.error(colors.red('[Error]') + ` Fix feature id ${fixFeature.id} used multiple times.`);
         process.exit(1);
       }
 
+      // default order
       if (!('order' in fixFeature)) {
         fixFeature.order = 0;
       }
+
       fixFeatures.push(fixFeature);
       featuresUsed[fixFeature.id] = 0;
     }
