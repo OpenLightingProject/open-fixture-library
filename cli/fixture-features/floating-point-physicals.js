@@ -33,7 +33,7 @@ module.exports = [
     id: 'floating-point-pan-tilt-max',
     name: 'Floating point pan/tilt max',
     propertyPath: ['focus', ['panMax', 'tiltMax']]
-  },
+  }
 ];
 
 let startOrder = 96;
@@ -60,7 +60,7 @@ function isFloatInPhysical(object, propertyPath) {
   if (Array.isArray(property)) {
     return property.some(endProperty => {
       // check for each possible end value if it is exist and is a floating point value
-      return object[endProperty] !== undefined && object[endProperty] % 1 !== 0
+      return object[endProperty] !== undefined && object[endProperty] % 1 !== 0;
     });
   }
 
@@ -70,7 +70,7 @@ function isFloatInPhysical(object, propertyPath) {
   }
   // end of property path: check if value is float
   else if (propertyPath.length === 1) {
-    return value % 1 !== 0
+    return value % 1 !== 0;
   }
 
   // next item in property path
