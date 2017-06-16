@@ -1,65 +1,78 @@
-let properties = {
-  'dimensions ([#133](https://github.com/FloEdelmann/open-fixture-library/issues/133))': ['dimensions'],
-  'weight': ['weight'],
-  'power': ['power'],
-  'color temperature': ['bulb', 'colorTemperature'],
-  'lumens': ['bulb', 'lumens'],
-  'lens degrees': ['lens', 'degreesMinMax'],
-  'pan/tilt max': ['focus', ['panMax', 'tiltMax']]
-};
+module.exports = [
+  {
+    id: 'floating-point-dimensions',
+    name: 'Floating point dimensions ([#133](https://github.com/FloEdelmann/open-fixture-library/issues/133))',
+    propertyPath: ['dimensions', [0, 1, 2]]
+  },
+  {
+    id: 'floating-point-weight',
+    name: 'Floating point weight',
+    propertyPath: ['weight']
+  },
+  {
+    id: 'floating-point-power',
+    name: 'Floating point power',
+    propertyPath: ['power']
+  },
+  {
+    id: 'floating-point-color-temperature',
+    name: 'Floating point color temperature',
+    propertyPath: ['bulb', 'colorTemperature']
+  },
+  {
+    id: 'floating-point-lumens',
+    name: 'Floating point lumens',
+    propertyPath: ['bulb', 'lumens']
+  },
+  {
+    id: 'floating-point-lens-degrees',
+    name: 'Floating point lens degrees',
+    propertyPath: ['lens', 'degreesMinMax', [0, 1]]
+  },
+  {
+    id: 'floating-point-pan-tilt-max',
+    name: 'Floating point pan/tilt max',
+    propertyPath: ['focus', ['panMax', 'tiltMax']]
+  },
+];
 
-module.exports = [];
 let startOrder = 96;
-for (const name of Object.keys(properties)) {
-  const property = properties[name];
-
-  module.exports.push({
-    name: `Floating point ${name}`,
-    description: 'In fixture physical or in a mode\'s physical override.',
-    order: startOrder--,
-    hasFeature: (fixture, fineChannels) => {
-      if (isFloatInPhysical(fixture.physical, property)) {
-        return true;
-      }
-      for (const mode of fixture.modes) {
-        if ('physical' in mode && isFloatInPhysical(mode.physical, property)) {
-          return true;
-        }
-      }
-      return false;
+for (const fixFeature of module.exports) {
+  fixFeature.description = 'In fixture physical or in a mode\'s physical override.';
+  fixFeature.order = startOrder--;
+  fixFeature.hasFeature = (fixture, fineChannels) => {
+    if (isFloatInPhysical(fixture.physical, fixFeature.propertyPath)) {
+      return true;
     }
-  });
-}
-
-function isFloatInPhysical(physical, propertyPath) {
-  const values = getPropertyValues(physical, propertyPath);
-  if (values !== undefined) {
-    for (const value of values) {
-      if (value !== undefined && value % 1 !== 0) {
+    for (const mode of fixture.modes) {
+      if ('physical' in mode && isFloatInPhysical(mode.physical, fixFeature.propertyPath)) {
         return true;
       }
     }
-  }
-  return false;
+    return false;
+  };
 }
 
-function getPropertyValues(object, propertyPath) {
+function isFloatInPhysical(object, propertyPath) {
   const property = propertyPath[0];
 
+  // propertyPath defines multiple end values (only one floating point is sufficient)
   if (Array.isArray(property)) {
-    let endValues = [];
-    for (const endProperty of property) {
-      endValues.push(object[endProperty]);
-    }
-    return endValues;
+    return property.some(endProperty => {
+      // check for each possible end value if it is exist and is a floating point value
+      return object[endProperty] !== undefined && object[endProperty] % 1 !== 0
+    });
   }
 
-  let values = object[property];
-  if (Array.isArray(values)) {
-    return values;
+  const value = object[property];
+  if (value === undefined) {
+    return false;
   }
-  if (values === undefined || propertyPath.length === 1) {
-    return [values];
+  // end of property path: check if value is float
+  else if (propertyPath.length === 1) {
+    return value % 1 !== 0
   }
-  return getPropertyValues(values, propertyPath.slice(1, propertyPath.length));
+
+  // next item in property path
+  return isFloatInPhysical(value, propertyPath.slice(1, propertyPath.length));
 }

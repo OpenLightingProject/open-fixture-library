@@ -4,6 +4,10 @@ Each fixture feature module has to export an array of one or more feature object
 
 ```js
 module.exports = [{
+  // Optional. Used internally and in test-fixtures.json.
+  // Default is the filename (without '.js'), succeded by `-${i}` if multiple features per module are provided.
+  id: 'uses-fine-channels',
+
   // Required. Try to be as short as possible as it's used in generated table header. Markdown is allowed.
   name: 'Fine channels',
 
