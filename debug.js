@@ -16,3 +16,17 @@ function reload() {
   fix3 = Fixture.fromRepository('eurolite', 'led-tmh-x25');
   fix4 = Fixture.fromRepository('futurelight', 'pro-slim-par-7-hcl');
 }
+reload();
+
+const benchmarkIterations = 10000000;
+function benchmark() {
+  const t0 = process.hrtime();
+
+  for (let i = 0; i < benchmarkIterations; i++) {
+    fix1.physical;
+  }
+
+  const deltaT = process.hrtime(t0);
+
+  console.log(deltaT);
+}
