@@ -1,6 +1,6 @@
 module.exports = [{
   name: 'Switching channels',
-  description: 'Whether switching channel aliases are defined',
+  description: 'Whether at least one channel defines switching channel aliases',
   order: 70,
   hasFeature: function(fixture, fineChannels) {
     for (const ch of Object.keys(fixture.availableChannels)) {
