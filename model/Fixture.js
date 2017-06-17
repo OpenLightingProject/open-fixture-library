@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 
+
 class Physical {
   constructor(_jsonObject) {
     this._jsonObject = _jsonObject;
@@ -88,6 +89,59 @@ class Physical {
   }
 }
 
+
+class Channel {
+  constructor(jsonObject, key) {
+    this._jsonObject = jsonObject;
+    this.key = key;
+  }
+
+  get name() {
+    return this._jsonObject.name || this.key;
+  }
+
+  get type() {
+    return nullIfNotExists(this._jsonObject, 'type');
+  }
+
+  get color() {
+    return nullIfNotExists(this._jsonObject, 'color');
+  }
+
+  get fineChannelAliases() {
+    return nullIfNotExists(this._jsonObject, 'fineChannelAliases');
+  }
+
+  get defaultValue() {
+    return nullIfNotExists(this._jsonObject, 'defaultValue');
+  }
+
+  get highlightValue() {
+    return nullIfNotExists(this._jsonObject, 'highlightValue');
+  }
+
+  get invert() {
+    return 'invert' in this._jsonObject && this._jsonObject.invert;
+  }
+
+  get constant() {
+    return 'constant' in this._jsonObject && this._jsonObject.constant;
+  }
+
+  get crossfade() {
+    return 'crossfade' in this._jsonObject && this._jsonObject.crossfade;
+  }
+
+  get isLTP() {
+    return 'precedence' in this._jsonObject && this._jsonObject.precedence === 'LTP';
+  }
+
+  get isHTP() {
+    return !this.isLTP;
+  }
+}
+
+
 module.exports = class Fixture {
   constructor(jsonObject) {
     this.jsonObject = jsonObject;
@@ -153,6 +207,16 @@ module.exports = class Fixture {
     return this._cache.physical;
   }
 
+  get channelKeys() {
+    return Object.keys(this._jsonObject.availableChannels);
+  }
+
+  getChannelByKey(key) {
+    if (key in this._jsonObject.availableChannels) {
+      return new Channel(this._jsonObject.availableChannels[key], key);
+    }
+  }
+
   get modes() {
     if (!('modes' in this._cache)) {
       this._cache.modes = [];
@@ -175,6 +239,7 @@ module.exports = class Fixture {
     return new this(JSON.parse(fs.readFileSync(fixPath, 'utf8')));
   }
 };
+
 
 function nullIfNotExists(object, key) {
   return key in object ? object[key] : null;
