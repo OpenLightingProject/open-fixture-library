@@ -6,11 +6,10 @@ class Physical {
   constructor(_jsonObject) {
     this._jsonObject = _jsonObject;
     this._cache = {};
-    this.now = new Date();
   }
 
   get dimensions() {
-    return nullIfNotExists(this._jsonObject, 'dimensions');
+    return this._jsonObject.dimensions || null;
   }
 
   get width() {
@@ -26,15 +25,15 @@ class Physical {
   }
 
   get weight() {
-    return nullIfNotExists(this._jsonObject, 'weight');
+    return this._jsonObject.weight || null;
   }
 
   get power() {
-    return nullIfNotExists(this._jsonObject, 'power');
+    return this._jsonObject.power || null;
   }
 
   get DMXconnector() {
-    return nullIfNotExists(this._jsonObject, 'DMXconnector');
+    return this._jsonObject.DMXconnector || null;
   }
 
 
@@ -43,15 +42,15 @@ class Physical {
   }
 
   get bulbType() {
-    return this.hasBulb ? nullIfNotExists(this._jsonObject.bulb, 'type') : null;
+    return this.hasBulb ? this._jsonObject.bulb.type || null : null;
   }
 
   get bulbColorTemperature() {
-    return this.hasBulb ? nullIfNotExists(this._jsonObject.bulb, 'colorTemperature') : null;
+    return this.hasBulb ? this._jsonObject.bulb.colorTemperature || null : null;
   }
 
   get bulbLumens() {
-    return this.hasBulb ? nullIfNotExists(this._jsonObject.bulb, 'lumens') : null;
+    return this.hasBulb ? this._jsonObject.bulb.lumens || null : null;
   }
 
 
@@ -60,7 +59,7 @@ class Physical {
   }
 
   get lensName() {
-    return this.hasLens ? nullIfNotExists(this._jsonObject.lens, 'name') : null;
+    return this.hasLens ? this._jsonObject.lens.name || null : null;
   }
 
   get lensDegreesMin() {
@@ -77,15 +76,15 @@ class Physical {
   }
 
   get focusType() {
-    return this.hasFocus ? nullIfNotExists(this._jsonObject.focus, 'type') : null;
+    return this.hasFocus ? this._jsonObject.focus.type || null : null;
   }
 
   get focusPanMax() {
-    return this.hasFocus ? nullIfNotExists(this._jsonObject.focus, 'panMax') : null;
+    return this.hasFocus ? this._jsonObject.focus.panMax || null : null;
   }
 
   get focusTiltMax() {
-    return this.hasFocus ? nullIfNotExists(this._jsonObject.focus, 'tiltMax') : null;
+    return this.hasFocus ? this._jsonObject.focus.tiltMax || null : null;
   }
 }
 
@@ -101,23 +100,31 @@ class Channel {
   }
 
   get type() {
-    return nullIfNotExists(this._jsonObject, 'type');
+    return this._jsonObject.type; // required
   }
 
   get color() {
-    return nullIfNotExists(this._jsonObject, 'color');
+    return this._jsonObject.color || null; // required if SingleColor, else forbidden
   }
 
   get fineChannelAliases() {
-    return nullIfNotExists(this._jsonObject, 'fineChannelAliases');
+    return this._jsonObject.fineChannelAliases || [];
   }
 
   get defaultValue() {
-    return nullIfNotExists(this._jsonObject, 'defaultValue');
+    return this._jsonObject.defaultValue || 0;
+  }
+
+  get hasDefaultValue() {
+    return 'defaultValue' in this._jsonObject;
   }
 
   get highlightValue() {
-    return nullIfNotExists(this._jsonObject, 'highlightValue');
+    return this._jsonObject.highlightValue || 255;
+  }
+
+  get hasHighlightValue() {
+    return 'highlightValue' in this._jsonObject;
   }
 
   get invert() {
@@ -153,7 +160,7 @@ module.exports = class Fixture {
   }
 
   get name() {
-    return this._jsonObject.name;
+    return this._jsonObject.name; // required
   }
 
   get shortName() {
@@ -161,7 +168,7 @@ module.exports = class Fixture {
   }
 
   get categories() {
-    return this._jsonObject.categories;
+    return this._jsonObject.categories; // required
   }
 
   get mainCategory() {
@@ -170,15 +177,16 @@ module.exports = class Fixture {
 
   get meta() {
     if (!('meta' in this._cache)) {
-      const jsonMeta = this._jsonObject.meta;
+      const jsonMeta = this._jsonObject.meta; // required
       this._cache.meta = {
-        authors: jsonMeta.authors,
-        createDate: new Date(jsonMeta.createDate),
-        lastModifyDate: new Date(jsonMeta.lastModifyDate),
+        authors: jsonMeta.authors, // required
+        createDate: new Date(jsonMeta.createDate), // required
+        lastModifyDate: new Date(jsonMeta.lastModifyDate), // required
         importPlugin: 'importPlugin' in jsonMeta ? {
-          plugin: jsonMeta.importPlugin.plugin,
-          date: new Date(jsonMeta.importPlugin.date),
-          comment: 'comment' in jsonMeta.importPlugin ? jsonMeta.importPlugin.comment : null
+          plugin: jsonMeta.importPlugin.plugin, // required
+          date: new Date(jsonMeta.importPlugin.date), // required
+          comment: jsonMeta.importPlugin.comment || '',
+          hasComment: 'comment' in jsonMeta.importPlugin
         } : null
       };
     }
@@ -186,18 +194,22 @@ module.exports = class Fixture {
   }
 
   get comment() {
-    return nullIfNotExists(this._jsonObject, 'comment');
+    return this._jsonObject.comment || '';
+  }
+
+  get hasComment() {
+    return 'comment' in this._jsonObject;
   }
 
   get manualURL() {
-    return nullIfNotExists(this._jsonObject, 'manualURL');
+    return this._jsonObject.manualURL || null;
   }
 
   /*
     benchmark results (10,000,000 iterations):
     - without cache: ~1.9s
     - with cache: ~0.52s (nearly 4 times faster!)
-    => that proofs why caching, even for these small objects, is useful
+    => that proves why caching, even for these small objects, is useful
   */
   get physical() {
     if (!('physical' in this._cache)) {
@@ -222,7 +234,7 @@ module.exports = class Fixture {
       this._cache.modes = [];
       for (const jsonMode of this._jsonObject.modes) {
         this._cache.modes.push({
-          name: jsonMode.name,
+          name: jsonMode.name, // required
           shortName: jsonMode.shortName || jsonMode.name,
           physical: 'physical' in jsonMode ? new Physical(jsonMode.physical) : null,
           channels: jsonMode.channels
@@ -239,8 +251,3 @@ module.exports = class Fixture {
     return new this(JSON.parse(fs.readFileSync(fixPath, 'utf8')));
   }
 };
-
-
-function nullIfNotExists(object, key) {
-  return key in object ? object[key] : null;
-}
