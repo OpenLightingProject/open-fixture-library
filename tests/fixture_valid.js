@@ -35,15 +35,8 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
       });
     }
 
-    if ('physical' in fixture
-      && 'lens' in fixture.physical
-      && 'degreesMinMax' in fixture.physical.lens
-      && fixture.physical.lens.degreesMinMax[0] > fixture.physical.lens.degreesMinMax[1]
-      ) {
-      result.errors.push({
-        description: 'physical.lens.degreesMinMax is an invalid range.',
-        error: null
-      });
+    if ('physical' in fixture) {
+      checkPhysical(result, fixture.physical);
     }
 
     let usedModeShortNames = [];
@@ -52,7 +45,14 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
     let fineChannels = {}; // fine -> coarse, fine^2 -> coarse
     let switchingChannels = {}; // switching channel alias -> trigger channel
 
-    for (const ch of Object.keys(fixture.availableChannels)) {
+    const channelKeys = Object.keys(fixture.availableChannels);
+    if (channelKeys.length === 0) {
+      result.errors.push({
+        description: `availableChannels is empty. Please add a channel.`,
+        error: null
+      });
+    }
+    for (const ch of channelKeys) {
       const channel = fixture.availableChannels[ch];
 
       const name = 'name' in channel ? channel.name : ch;
@@ -267,15 +267,8 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
         });
       }
 
-      if ('physical' in mode
-        && 'lens' in mode.physical
-        && 'degreesMinMax' in mode.physical.lens
-        && mode.physical.lens.degreesMinMax[0] > mode.physical.lens.degreesMinMax[1]
-        ) {
-        result.errors.push({
-          description: `physical.lens.degreesMinMax is an invalid range in mode '${modeShortName}' (#${i+1}).`,
-          error: null
-        });
+      if ('physical' in mode) {
+        checkPhysical(result, mode.physical, ` in mode '${modeShortName}' (#${i+1})`);
       }
 
       for (let chNumber = 1; chNumber <= mode.channels.length; chNumber++) {
@@ -344,7 +337,16 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
     }
 
     if ('heads' in fixture) {
-      for (const key in fixture.heads) {
+      const headKeys = Object.keys(fixture.heads);
+
+      if (headKeys.length === 0) {
+        result.errors.push({
+          description: `heads is empty. Please remove it or add a head.`,
+          error: null
+        });
+      }
+
+      for (const key of headKeys) {
         const head = fixture.heads[key];
 
         for (let i = 0; i < head.length; i++) {
@@ -410,6 +412,35 @@ function checkPanTiltMaxExistence(result, fixture, mode, chKey, maxProp) {
   else if (maxIsZero) {
     result.errors.push({
       description: `${maxProp} is 0 in mode '${mode.name || mode.shortName}' although it contains a ${chType} channel '${chKey}'`,
+      error: null
+    });
+  }
+}
+
+function checkPhysical(result, physical, modeDescription = '') {
+  if (Object.keys(physical).length === 0) {
+    result.errors.push({
+      description: `physical${modeDescription} is empty. Please remove it or add data.`,
+      error: null
+    });
+    return;
+  }
+
+  for (const property of ['bulb', 'lens', 'focus']) {
+    if (property in physical && Object.keys(physical[property]).length === 0) {
+      result.errors.push({
+        description: `physical.${property}${modeDescription} is empty. Please remove it or add data.`,
+        error: null
+      });
+    }
+  }
+
+  if ('lens' in physical &&
+    'degreesMinMax' in physical.lens &&
+    physical.lens.degreesMinMax[0] > physical.lens.degreesMinMax[1]
+  ) {
+    result.errors.push({
+      description: `physical.lens.degreesMinMax${modeDescription} is an invalid range.`,
       error: null
     });
   }
