@@ -337,24 +337,24 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
     }
 
     if ('heads' in fixture) {
-      const headKeys = Object.keys(fixture.heads);
+      const headNames = Object.keys(fixture.heads);
 
-      if (headKeys.length === 0) {
+      if (headNames.length === 0) {
         result.errors.push({
           description: `heads is empty. Please remove it or add a head.`,
           error: null
         });
       }
 
-      for (const key of headKeys) {
-        const head = fixture.heads[key];
+      for (const headName of headNames) {
+        const head = fixture.heads[headName];
 
         for (let i = 0; i < head.length; i++) {
           if (!(head[i] in fixture.availableChannels) &&
               !(head[i] in fineChannels) &&
               !(head[i] in switchingChannels)) {
             result.errors.push({
-              description: `channel '${head[i]}' referenced from head '${key}' but missing.`,
+              description: `channel '${head[i]}' referenced from head '${headName}' but missing.`,
               error: null
             });
           }
