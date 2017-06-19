@@ -6,7 +6,7 @@ module.exports = [
     order: 81,
     hasFeature: function(fixture, fineChannels) {
       for (const ch of Object.keys(fixture.availableChannels)) {
-        const channel = fixture.availableChannels[ch]
+        const channel = fixture.availableChannels[ch];
         if ('fineChannelAliases' in channel) {
           if (channel.fineChannelAliases.length === 1) {
             return true;
@@ -23,7 +23,7 @@ module.exports = [
     order: 80,
     hasFeature: function(fixture, fineChannels) {
       for (const ch of Object.keys(fixture.availableChannels)) {
-        const channel = fixture.availableChannels[ch]
+        const channel = fixture.availableChannels[ch];
         if ('fineChannelAliases' in channel) {
           if (channel.fineChannelAliases.length > 1) {
             return true;
