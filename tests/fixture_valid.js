@@ -435,9 +435,9 @@ function checkPhysical(result, physical, modeDescription = '') {
     }
   }
 
-  if ('lens' in physical &&
-    'degreesMinMax' in physical.lens &&
-    physical.lens.degreesMinMax[0] > physical.lens.degreesMinMax[1]
+  if ('lens' in physical
+    && 'degreesMinMax' in physical.lens
+    && physical.lens.degreesMinMax[0] > physical.lens.degreesMinMax[1]
   ) {
     result.errors.push({
       description: `physical.lens.degreesMinMax${modeDescription} is an invalid range.`,
