@@ -264,9 +264,9 @@ function exportHandleModes(fixture, defaults, physical, fineChannels, switchingC
         },
         Dimensions: {
           $: {
-            Width: modeData.physical.dimensions[0],
-            Height: modeData.physical.dimensions[1],
-            Depth: modeData.physical.dimensions[2],
+            Width: Math.round(modeData.physical.dimensions[0]),
+            Height: Math.round(modeData.physical.dimensions[1]),
+            Depth: Math.round(modeData.physical.dimensions[2]),
             Weight: modeData.physical.weight
           }
         },
