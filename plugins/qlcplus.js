@@ -319,23 +319,25 @@ function exportHandleModes(fixture, defaults, physical, fineChannels, switchingC
       });
     }
 
-    for (const headName of Object.keys(fixture.heads)) {
-      const headLampList = fixture.heads[headName];
-      let headChannelList = [];
-      for (const channel of headLampList) {
-        const chNum = modeData.channels.indexOf(channel);
-        if (chNum !== -1) {
-          headChannelList.push(chNum);
+    if ('heads' in fixture) {
+      for (const headName of Object.keys(fixture.heads)) {
+        const headLampList = fixture.heads[headName];
+        let headChannelList = [];
+        for (const channel of headLampList) {
+          const chNum = modeData.channels.indexOf(channel);
+          if (chNum !== -1) {
+            headChannelList.push(chNum);
+          }
         }
-      }
 
-      if (headChannelList.length > 0) {
-        let xmlHead = {
-          Channel: []
-        };
-        xmlMode.Head.push(xmlHead);
-        for (const chNum of headChannelList) {
-          xmlHead.Channel.push(chNum);
+        if (headChannelList.length > 0) {
+          let xmlHead = {
+            Channel: []
+          };
+          xmlMode.Head.push(xmlHead);
+          for (const chNum of headChannelList) {
+            xmlHead.Channel.push(chNum);
+          }
         }
       }
     }

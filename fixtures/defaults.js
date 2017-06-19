@@ -44,11 +44,9 @@ module.exports = {
       ]
     }
   },
-  heads: {},
   modes: [ // required
     {
       name: '1-channel', // required
-      physical: {},
       channels: ['channel key'] // required
     }
   ]
