@@ -48,7 +48,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
     const channelKeys = Object.keys(fixture.availableChannels);
     if (channelKeys.length === 0) {
       result.errors.push({
-        description: `availableChannels is empty. Please add a channel.`,
+        description: 'availableChannels is empty. Please add a channel.',
         error: null
       });
     }
@@ -341,7 +341,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
       if (headNames.length === 0) {
         result.errors.push({
-          description: `heads is empty. Please remove it or add a head.`,
+          description: 'heads is empty. Please remove it or add a head.',
           error: null
         });
       }
