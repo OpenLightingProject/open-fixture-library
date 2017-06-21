@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const Color = require('color');
 
 
 class Physical {
@@ -89,10 +90,56 @@ class Physical {
 }
 
 
+class Capability {
+  constructor(jsonObject) {
+    this._jsonObject = jsonObject;
+  }
+
+  get range() {
+    return this._jsonObject.range;
+  }
+
+  get name() {
+    return this._jsonObject.name;
+  }
+
+  get menuClick() {
+    return this._jsonObject.menuClick || 'start';
+  }
+
+  get color() {
+    if ('color' in this._jsonObject) {
+      return new Color(this._jsonObject.color);
+    }
+    return null;
+  }
+
+  get color2() {
+    if ('color2' in this._jsonObject) {
+      return new Color(this._jsonObject.color2);
+    }
+    return null;
+  }
+
+  get image() {
+    return this._jsonObject.image || null;
+  }
+
+  get switchChannels() {
+    return this._jsonObject.switchChannels || {};
+  }
+}
+
+
 class Channel {
   constructor(jsonObject, key) {
-    this._jsonObject = jsonObject;
+    this.jsonObject = jsonObject;
     this.key = key;
+  }
+
+  set jsonObject(jsonObject) {
+    this._jsonObject = jsonObject;
+    this._cache = {};
   }
 
   get name() {
@@ -145,6 +192,61 @@ class Channel {
 
   get isHTP() {
     return !this.isLTP;
+  }
+
+  /*
+    {
+      'switching channel alias': {
+        triggerChannel: 'trigger channel key',
+        switchToChannels: ['switch to channel key', ...],
+        defaultChannel: 'default channel key'
+      },
+      ...
+    }
+  */
+  get switchingChannels() {
+    if (!('switchingChannels' in this._cache)) {
+      let channels = {};
+
+      for (const cap of this.capabilities) {
+        for (const alias of Object.keys(cap.switchChannels)) {
+          const switchTo = cap.switchChannels[alias];
+
+          if (!(alias in channels)) {
+            channels[alias] = {
+              triggerChannel: this.key,
+              switchToChannels: [switchTo],
+              defaultChannel: null
+            };
+          }
+          else if (!channels[alias].switchToChannels.includes(switchTo)) {
+            channels[alias].switchToChannels.push(switchTo);
+          }
+
+          if (cap.range[0] <= this.defaultValue && this.defaultValue <= cap.range[1]) {
+            channels[alias].defaultChannel = switchTo;
+          }
+        }
+      }
+
+      this._cache.switchingChannels = channels;
+    }
+
+    return this._cache.switchingChannels;
+  }
+
+  get capabilities() {
+    if (!('capabilities' in this._cache)) {
+      this._cache.capabilities = [];
+
+      if ('capabilities' in this._jsonObject) {
+        for (const cap of this._jsonObject.capabilities) {
+          this._cache.capabilities.push(new Capability(cap));
+        }
+      }
+    }
+
+    return this._cache.capabilities;
   }
 }
 
@@ -231,11 +333,13 @@ module.exports = class Fixture {
         this._cache.channelKeys.push(ch);
 
         const channel = this.getChannelByKey(ch);
-        for (const fineAlias of channel.fineChannelAliases) {
-          this._cache.channelKeys.push(fineAlias);
+        for (const alias of channel.fineChannelAliases) {
+          this._cache.channelKeys.push(alias);
         }
 
-        // TODO: Add switching channels
+        for (const alias of Object.keys(channel.switchingChannels)) {
+          this._cache.channelKeys.push(alias);
+        }
       }
     }
 
@@ -251,13 +355,36 @@ module.exports = class Fixture {
 
       for (const ch of this.availableChannelKeys) {
         const channel = this.getChannelByKey(ch);
-        for (const fineAlias of channel.fineChannelAliases) {
-          this._cache.fineChannels[fineAlias] = ch;
+        for (const alias of channel.fineChannelAliases) {
+          this._cache.fineChannels[alias] = ch;
         }
       }
     }
 
     return this._cache.fineChannels;
+  }
+
+  /*
+    {
+      'switching channel alias': {
+        triggerChannel: 'trigger channel key',
+        switchToChannels: ['switch to channel key', ...],
+        defaultChannel: 'default channel key'
+      },
+      ...
+    }
+  */
+  get switchingChannels() {
+    if (!('fineChannels' in this._cache)) {
+      this._cache.switchingChannels = {};
+
+      for (const ch of this.availableChannelKeys) {
+        const channel = this.getChannelByKey(ch);
+        Object.assign(this._cache.switchingChannels, channel.switchingChannels);
+      }
+    }
+
+    return this._cache.switchingChannels;
   }
 
   // don't call this method with channel aliases!
