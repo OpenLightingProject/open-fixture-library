@@ -219,14 +219,61 @@ module.exports = class Fixture {
     return this._cache.physical;
   }
 
-  get channelKeys() {
+  get availableChannelKeys() {
     return Object.keys(this._jsonObject.availableChannels);
   }
 
-  getChannelByKey(key) {
-    if (key in this._jsonObject.availableChannels) {
-      return new Channel(this._jsonObject.availableChannels[key], key);
+  get channelKeys() {
+    if (!('channelKeys' in this._cache)) {
+      this._cache.channelKeys = [];
+
+      for (const ch of this.availableChannelKeys) {
+        this._cache.channelKeys.push(ch);
+
+        const channel = this.getChannelByKey(ch);
+        for (const fineAlias of channel.fineChannelAliases) {
+          this._cache.channelKeys.push(fineAlias);
+        }
+
+        // TODO: Add switching channels
+      }
     }
+
+    return this._cache.channelKeys;
+  }
+
+  /*
+    { 'fine channel alias': 'coarse channel key', ... }
+  */
+  get fineChannels() {
+    if (!('fineChannels' in this._cache)) {
+      this._cache.fineChannels = {};
+
+      for (const ch of this.availableChannelKeys) {
+        const channel = this.getChannelByKey(ch);
+        for (const fineAlias of channel.fineChannelAliases) {
+          this._cache.fineChannels[fineAlias] = ch;
+        }
+      }
+    }
+
+    return this._cache.fineChannels;
+  }
+
+  // don't call this method with channel aliases!
+  getChannelByKey(key) {
+    if (!('channels' in this._cache)) {
+      this._cache.channels = {};
+    }
+
+    if (this.availableChannelKeys.includes(key)) {
+      if (!(key in this._cache.channels)) {
+        this._cache.channels[key] = new Channel(this._jsonObject.availableChannels[key], key);
+      }
+      return this._cache.channels[key];
+    }
+
+    return null;
   }
 
   get modes() {
