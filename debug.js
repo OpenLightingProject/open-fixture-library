@@ -1,5 +1,5 @@
 const path = require('path');
-const modelPath = path.join(path.resolve(), 'model', 'Fixture.js');
+const modelPath = path.join(path.resolve(), 'lib', 'model', 'Fixture.js');
 
 let Fixture;
 let fix1;
