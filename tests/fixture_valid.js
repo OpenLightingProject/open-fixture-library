@@ -1,4 +1,5 @@
 const path = require('path');
+const util = require('util');
 
 const schemas = require(path.join(__dirname, '..', 'fixtures', 'schema'));
 
@@ -11,28 +12,19 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
   const schemaErrors = schemas.Fixture.errors(fixture);
   if (schemaErrors !== false) {
-    result.errors.push({
-      description: 'File does not match schema.',
-      error: schemaErrors
-    });
+    result.errors.push(printError('File does not match schema.', schemaErrors));
     return result;
   }
 
   try {
     const shortName = fixture.shortName || fixture.name;
     if (usedShortNames.includes(shortName)) {
-      result.errors.push({
-        description: `shortName '${shortName}' not unique.`,
-        error: null
-      });
+      result.errors.push(`shortName '${shortName}' not unique.`);
     }
     usedShortNames.push(shortName);
 
     if (new Date(fixture.meta.lastModifyDate) < new Date(fixture.meta.createDate)) {
-      result.errors.push({
-        description: 'meta.lastModifyDate is earlier than meta.createDate.',
-        error: null
-      });
+      result.errors.push('meta.lastModifyDate is earlier than meta.createDate.');
     }
 
     if ('physical' in fixture) {
@@ -47,20 +39,14 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
     const channelKeys = Object.keys(fixture.availableChannels);
     if (channelKeys.length === 0) {
-      result.errors.push({
-        description: 'availableChannels is empty. Please add a channel.',
-        error: null
-      });
+      result.errors.push('availableChannels is empty. Please add a channel.');
     }
     for (const ch of channelKeys) {
       const channel = fixture.availableChannels[ch];
 
       const name = 'name' in channel ? channel.name : ch;
       if (/\s+fine(?:^\d+)?$/i.test(name)) {
-        result.errors.push({
-          description: `Channel '${ch}' should rather be a fine channel alias of its corresponding coarse channel, or its name must not end with 'fine'.`,
-          error: null
-        });
+        result.errors.push(`Channel '${ch}' should rather be a fine channel alias of its corresponding coarse channel, or its name must not end with 'fine'.`);
       }
 
       let testFineChannelOverlapping = false;
@@ -69,10 +55,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
         for (const alias of channel.fineChannelAliases) {
           dmxMaxBound *= 256;
           if (alias in fixture.availableChannels || alias in fineChannels || alias in switchingChannels) {
-            result.errors.push({
-              description: `Fine channel alias '${alias}' in channel '${ch}' is already defined.`,
-              error: null
-            });
+            result.errors.push(`Fine channel alias '${alias}' in channel '${ch}' is already defined.`);
           }
           fineChannels[alias] = ch;
         }
@@ -83,17 +66,11 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
       }
 
       if ('defaultValue' in channel && channel.defaultValue >= dmxMaxBound) {
-        result.errors.push({
-          description: `defaultValue must be strictly less than ${dmxMaxBound} in channel '${ch}'.`,
-          error: null
-        });
+        result.errors.push(`defaultValue must be strictly less than ${dmxMaxBound} in channel '${ch}'.`);
       }
 
       if ('highlightValue' in channel && channel.highlightValue >= dmxMaxBound) {
-        result.errors.push({
-          description: `highlightValue must be strictly less than ${dmxMaxBound} in channel '${ch}'.`,
-          error: null
-        });
+        result.errors.push(`highlightValue must be strictly less than ${dmxMaxBound} in channel '${ch}'.`);
       }
 
       if ('color' in channel && channel.type !== 'SingleColor') {
@@ -101,10 +78,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
       }
 
       if (!('color' in channel) && channel.type === 'SingleColor') {
-        result.errors.push({
-          description: `color in channel '${ch}' undefined but channel type is 'SingleColor'.`,
-          error: null
-        });
+        result.errors.push(`color in channel '${ch}' undefined but channel type is 'SingleColor'.`);
       }
 
       if ('capabilities' in channel) {
@@ -120,54 +94,33 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
             // so it doesn't make sense checking further ranges
           }
           else if (cap.range[1] >= dmxMaxBound) {
-            result.errors.push({
-              description: `range values must be strictly less than ${dmxMaxBound} in capability #${i+1} in channel '${ch}'.`,
-              error: null
-            });
+            result.errors.push(`range values must be strictly less than ${dmxMaxBound} in capability #${i+1} in channel '${ch}'.`);
           }
           else if (cap.range[0] > cap.range[1]) {
-            result.errors.push({
-              description: `range invalid in capability #${i+1} in channel '${ch}'.`,
-              error: null
-            });
+            result.errors.push(`range invalid in capability #${i+1} in channel '${ch}'.`);
           }
           else if (i > 0 && cap.range[0] <= channel.capabilities[i-1].range[1]) {
-            result.errors.push({
-              description: `ranges overlapping in capabilities #${i} and #${i+1} in channel '${ch}'.`,
-              error: null
-            });
+            result.errors.push(`ranges overlapping in capabilities #${i} and #${i+1} in channel '${ch}'.`);
           }
           else if (i > 0 && testFineChannelOverlapping) {
             const lastRangeEnd = Math.floor(channel.capabilities[i-1].range[1] / Math.pow(256, channel.fineChannelAliases.length));
             const rangeStart = Math.floor(cap.range[0] / Math.pow(256, channel.fineChannelAliases.length));
 
             if (rangeStart <= lastRangeEnd) {
-              result.errors.push({
-                description: `ranges overlapping when used in coarse channel only mode in capabilities #${i} and #${i+1} in channel '${ch}'.`,
-                error: null
-              });
+              result.errors.push(`ranges overlapping when used in coarse channel only mode in capabilities #${i} and #${i+1} in channel '${ch}'.`);
             }
           }
 
           if (('color' in cap || 'image' in cap) && !['MultiColor', 'Effect', 'Gobo'].includes(channel.type)) {
-            result.errors.push({
-              description: `color or image present in capability #${i+1} but improper channel type '${channel.type}' in channel '${ch}'.`,
-              error: null
-            });
+            result.errors.push(`color or image present in capability #${i+1} but improper channel type '${channel.type}' in channel '${ch}'.`);
           }
 
           if ('color2' in cap && !('color' in cap)) {
-            result.errors.push({
-              description: `color2 present but color missing in capability #${i+1} in channel '${ch}'.`,
-              error: null
-            });
+            result.errors.push(`color2 present but color missing in capability #${i+1} in channel '${ch}'.`);
           }
 
           if ('color' in cap && 'image' in cap) {
-            result.errors.push({
-              description: `color and image cannot be present at the same time in capability #${i+1} in channel '${ch}'.`,
-              error: null
-            });
+            result.errors.push(`color and image cannot be present at the same time in capability #${i+1} in channel '${ch}'.`);
           }
 
           if ('switchChannels' in cap) {
@@ -179,27 +132,18 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
               for (const alias of switchingChannelAliases) {
                 if (alias in fixture.availableChannels || alias in fineChannels || alias in switchingChannels) {
-                  result.errors.push({
-                    description: `Switching channel alias '${alias}' in channel '${ch}' is already defined.`,
-                    error: null
-                  });
+                  result.errors.push(`Switching channel alias '${alias}' in channel '${ch}' is already defined.`);
                 }
                 switchingChannels[alias] = ch;
               }
 
               // one or more previous capabilities didn't use this property
               if (i > 0) {
-                result.errors.push({
-                  description: `All capabilities up to '${cap.name}' (#${i+1}) are missing the 'switchChannels' property.`,
-                  error: null
-                });
+                result.errors.push(`All capabilities up to '${cap.name}' (#${i+1}) are missing the 'switchChannels' property.`);
               }
 
               if (!('defaultValue' in channel)) {
-                result.errors.push({
-                  description: `defaultValue is missing in channel '${ch}' although it defines switching channels.`,
-                  error: null
-                });
+                result.errors.push(`defaultValue is missing in channel '${ch}' although it defines switching channels.`);
               }
             }
             else {
@@ -207,18 +151,12 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
               const sameAliases = switchesChannels.length === switchingChannelAliases.length
                 && switchesChannels.every(alias => switchingChannelAliases.includes(alias));
               if (!sameAliases) {
-                result.errors.push({
-                  description: `Capability '${cap.name}' (#${i+1}) is using different switching channel aliases in 'switchChannels' than previous capabilities.`,
-                  error: null
-                });
+                result.errors.push(`Capability '${cap.name}' (#${i+1}) is using different switching channel aliases in 'switchChannels' than previous capabilities.`);
               }
             }
 
             if (switchingChannelAliases.length === 0) {
-              result.errors.push({
-                description: `'switchChannels' in capability '${cap.name}' (#${i+1}) is empty.`,
-                error: null
-              });
+              result.errors.push(`'switchChannels' in capability '${cap.name}' (#${i+1}) is empty.`);
             }
 
             for (const alias of switchingChannelAliases) {
@@ -226,10 +164,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
               // check existence
               if (!(switchToChannel in fixture.availableChannels)) {
-                result.errors.push({
-                  description: `channel '${switchToChannel}' is referenced from capability '${cap.name}' (#${i+1}) in channel '${ch}' but is not defined.`,
-                  error: null
-                });
+                result.errors.push(`channel '${switchToChannel}' is referenced from capability '${cap.name}' (#${i+1}) in channel '${ch}' but is not defined.`);
               }
 
               // switched channels are used with the switching channel and don't need to be used somewhere else
@@ -239,10 +174,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
           }
           // one or more previous capabilities used this property
           else if (switchesChannels !== null) {
-            result.errors.push({
-              description: `Capability '${cap.name}' (#${i+1}) is missing the 'switchChannels' property.`,
-              error: null
-            });
+            result.errors.push(`Capability '${cap.name}' (#${i+1}) is missing the 'switchChannels' property.`);
           }
         }
       }
@@ -253,18 +185,12 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
       const modeShortName = mode.shortName || mode.name;
       if (usedModeShortNames.includes(modeShortName)) {
-        result.errors.push({
-          description: `shortName '${modeShortName}' not unique in mode #${i+1}.`,
-          error: null
-        });
+        result.errors.push(`shortName '${modeShortName}' not unique in mode #${i+1}.`);
       }
       usedModeShortNames.push(modeShortName);
 
       if (/\bmode\b/i.test(mode.name) || /\bmode\b/i.test(mode.shortName)) {
-        result.errors.push({
-          description: `mode name and shortName must not contain the word 'mode' in mode '${modeShortName}' (#${i+1}).`,
-          error: null
-        });
+        result.errors.push(`mode name and shortName must not contain the word 'mode' in mode '${modeShortName}' (#${i+1}).`);
       }
 
       if ('physical' in mode) {
@@ -298,19 +224,13 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
           // the mode must also contain the coarse channel
           if (!mode.channels.includes(fineChannels[ch])) {
-            result.errors.push({
-              description: `Mode '${modeShortName}' contains the fine channel '${ch}' (#${chNumber}) but is missing its coarse channel '${coarseChannelKey}'.`,
-              error: null
-            });
+            result.errors.push(`Mode '${modeShortName}' contains the fine channel '${ch}' (#${chNumber}) but is missing its coarse channel '${coarseChannelKey}'.`);
           }
           // the mode must also contain all coarser channel
           for (let fineIndex = 0; fineIndex < fineChannelAliases.indexOf(ch); fineIndex++) {
             let coarserChannelKey = fineChannelAliases[fineIndex];
             if (!mode.channels.includes(coarserChannelKey)) {
-              result.errors.push({
-                description: `Mode '${modeShortName}' contains the fine channel '${ch}' (#${chNumber}) but is missing its coarser channel '${coarserChannelKey}'.`,
-                error: null
-              });
+              result.errors.push(`Mode '${modeShortName}' contains the fine channel '${ch}' (#${chNumber}) but is missing its coarser channel '${coarserChannelKey}'.`);
             }
           }
           continue;
@@ -320,19 +240,13 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
         if (ch in switchingChannels) {
           // the mode must also contain the trigger channel
           if (!mode.channels.includes(switchingChannels[ch])) {
-            result.errors.push({
-              description: `mode '${modeShortName}' uses switching channel '${ch}' (#${chNumber}) but is missing its trigger channel '${switchingChannels[ch]}'`,
-              error: null
-            });
+            result.errors.push(`mode '${modeShortName}' uses switching channel '${ch}' (#${chNumber}) but is missing its trigger channel '${switchingChannels[ch]}'`);
           }
           continue;
         }
 
         // the channel doesn't exist
-        result.errors.push({
-          description: `channel '${ch}' (#${chNumber}) referenced from mode '${modeShortName}' but is not defined. Note: fine channels can only be used in the same mode as their coarse counterpart.`,
-          error: null
-        });
+        result.errors.push(`channel '${ch}' (#${chNumber}) referenced from mode '${modeShortName}' but is not defined. Note: fine channels can only be used in the same mode as their coarse counterpart.`);
       }
     }
 
@@ -340,10 +254,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
       const headNames = Object.keys(fixture.heads);
 
       if (headNames.length === 0) {
-        result.errors.push({
-          description: 'heads is empty. Please remove it or add a head.',
-          error: null
-        });
+        result.errors.push('heads is empty. Please remove it or add a head.');
       }
 
       for (const headName of headNames) {
@@ -353,10 +264,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
           if (!(head[i] in fixture.availableChannels) &&
               !(head[i] in fineChannels) &&
               !(head[i] in switchingChannels)) {
-            result.errors.push({
-              description: `channel '${head[i]}' referenced from head '${headName}' but missing.`,
-              error: null
-            });
+            result.errors.push(`channel '${head[i]}' referenced from head '${headName}' but missing.`);
           }
         }
       }
@@ -380,10 +288,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
     }
   }
   catch (accessError) {
-    result.errors.push({
-      description: 'Access error.',
-      error: accessError
-    });
+    result.errors.push(printError('Access error.', accessError));
   }
 
   return result;
@@ -410,28 +315,19 @@ function checkPanTiltMaxExistence(result, fixture, mode, chKey, maxProp) {
     result.warnings.push(`${maxProp} is not defined although there's a ${chType} channel '${chKey}'`);
   }
   else if (maxIsZero) {
-    result.errors.push({
-      description: `${maxProp} is 0 in mode '${mode.name || mode.shortName}' although it contains a ${chType} channel '${chKey}'`,
-      error: null
-    });
+    result.errors.push(`${maxProp} is 0 in mode '${mode.name || mode.shortName}' although it contains a ${chType} channel '${chKey}'`);
   }
 }
 
 function checkPhysical(result, physical, modeDescription = '') {
   if (Object.keys(physical).length === 0) {
-    result.errors.push({
-      description: `physical${modeDescription} is empty. Please remove it or add data.`,
-      error: null
-    });
+    result.errors.push(`physical${modeDescription} is empty. Please remove it or add data.`);
     return;
   }
 
   for (const property of ['bulb', 'lens', 'focus']) {
     if (property in physical && Object.keys(physical[property]).length === 0) {
-      result.errors.push({
-        description: `physical.${property}${modeDescription} is empty. Please remove it or add data.`,
-        error: null
-      });
+      result.errors.push(`physical.${property}${modeDescription} is empty. Please remove it or add data.`);
     }
   }
 
@@ -439,9 +335,10 @@ function checkPhysical(result, physical, modeDescription = '') {
     && 'degreesMinMax' in physical.lens
     && physical.lens.degreesMinMax[0] > physical.lens.degreesMinMax[1]
   ) {
-    result.errors.push({
-      description: `physical.lens.degreesMinMax${modeDescription} is an invalid range.`,
-      error: null
-    });
+    result.errors.push(`physical.lens.degreesMinMax${modeDescription} is an invalid range.`);
   }
+}
+
+function printError(description, error) {
+  return description + ' ' + util.inspect(error, false, null);
 }

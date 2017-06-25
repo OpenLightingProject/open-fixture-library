@@ -12,120 +12,110 @@ const checkFixture = require(path.join(__dirname, 'fixture_valid')).checkFixture
 let usedShortNames = [];
 
 let promises = [];
+
+// search fixture files
 for (const man of fs.readdirSync(fixturePath)) {
   const manDir = path.join(fixturePath, man);
 
-  // only directories
+  // files in manufacturer directory
   if (fs.statSync(manDir).isDirectory()) {
     for (const fixture of fs.readdirSync(manDir)) {
       if (path.extname(fixture) === '.json') {
-        promises.push(handleFile(path.join(manDir, fixture)));
+        handleFixtureFile(path.join(man, fixture))
       }
     }
   }
 }
 
-// check defaults
-promises.push(new Promise((resolve, reject) => {
-  const filename = path.join(fixturePath, 'defaults.js');
-  handleFixture(require(filename), filename, resolve);
-}));
+function handleFixtureFile(name) {
+  const filename = path.join(fixturePath, name);
 
-// check manufacturers file
-promises.push(new Promise((resolve, reject) => {
-  const filename = path.join(fixturePath, 'manufacturers.json');
-
-  fs.readFile(filename, 'utf8', (readError, data) => {
-    if (readError) {
-      resolveError(`File '${filename}' could not be read.`, readError, resolve);
-      return;
-    }
-
-    let manufacturers;
-    try {
-      manufacturers = JSON.parse(data);
-    }
-    catch (parseError) {
-      resolveError(`File '${filename}' could not be parsed.`, parseError, resolve);
-      return;
-    }
-
-    const schemaErrors = schemas.Manufacturers.errors(manufacturers);
-    if (schemaErrors !== false) {
-      resolveError(`File '${filename}' does not match schema.`, schemaErrors, resolve);
-      return;
-    }
-
-    resolve(filename);
-  });
-}));
-
-function handleFile(filename) {
-  return new Promise((resolve, reject) => {
+  promises.push(new Promise((resolve, reject) => {
     fs.readFile(filename, 'utf8', (readError, data) => {
       if (readError) {
-        resolveError(`File '${filename}' could not be read.`, readError, resolve);
-        return;
+        resolve({
+          name: name,
+          errors: [
+            printError('File could not be read.' readError)
+          ]
+        });
       }
-
-      let fixture;
 
       try {
-        fixture = JSON.parse(data);
+        handleFixture(name, JSON.parse(data), resolve);
       }
       catch (parseError) {
-        resolveError(`File '${filename}' could not be parsed.`, parseError, resolve);
-        return;
+        resolve({
+          name: name,
+          errors: [
+            printError('File could not be parsed.' parseError)
+          ]
+        });
       }
-
-      handleFixture(fixture, filename, resolve);
     });
+  }));
+}
+
+function handleFixture(name, fixture, resolve) {
+  const result = checkFixture(fixture, usedShortNames);
+  usedShortNames = result.usedShortNames;
+
+  resolve({
+    name: name,
+    errors: result.errors,
+    warnings: result.warnings
   });
 }
 
-function handleFixture(fixture, filename, resolve) {
-  const result = checkFixture(require(filename), usedShortNames);
-  usedShortNames = usedShortNames.concat(result.usedShortNames);
 
-  for (const error of result.errors) {
-    resolveError(error.description + ` (${filename})`, error.error, resolve);
-  }
-  for (const warning of result.warnings) {
-    console.warn(colors.yellow('Warning: ') + warning);
-  }
-
-  if (result.errors.length === 0) {
-    resolve(filename);
-  }
-}
-
-function resolveError(str, error, resolve) {
-  if (error) {
-    console.error(colors.red('[FAIL] ') + str + '\n', util.inspect(error, false, null));
-  }
-  else {
-    console.error(colors.red('[FAIL] ') + str);
-  }
-  resolve(null);
-}
-
-
+// print results
 Promise.all(promises).then(results => {
   let fails = 0;
-  for (const filename of results) {
-    if (filename === null) {
+  let warnings = 0;
+  for (const result of results) {
+    const failed = 'errors' in result && result.errors.length > 0;
+
+    console.log(
+      failed ? colors.red('[FAIL]') : colors.green('[PASS]'),
+      result.name
+    );
+
+    if (failed) {
       fails++;
+
+      for (const error of result.errors) {
+        console.log('└', colors.red('Error:'), error);
+      }
     }
-    else {
-      console.log(colors.green('[PASS]') + ' ' + filename);
+
+    if ('warnings' in result) {
+      for (const warning of result.warnings) {
+        warnings++;
+        console.log('└', colors.yellow('Warning:'), warning);
+      }
     }
+  }
+
+  // newline before summary
+  console.log();
+
+  if (warnings === 1) {
+    console.log(colors.yellow('[INFO]'), `There is 1 unresolved warning.`);
+  }
+  else if (warnings > 1) {
+    console.log(colors.yellow('[INFO]'), `There are ${warnings} unresolved warnings.`);
   }
 
   if (fails === 0) {
-    console.log('\n' + colors.green('[PASS]') + ` All ${results.length} tested fixtures were valid.`);
+    console.log(colors.green('[PASS]'), `All ${results.length} tested fixtures were valid.`);
     process.exit(0);
   }
 
-  console.error('\n' + colors.red('[FAIL]') + ` ${fails} of ${results.length} tested fixtures failed.`);
+  console.error(colors.red('[FAIL]'), `${fails} of ${results.length} tested fixtures failed.`);
   process.exit(1);
 });
+
+
+function printError(description, error) {
+  return description + ' ' + util.inspect(error, false, null);
+}
