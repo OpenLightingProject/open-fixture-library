@@ -7,8 +7,10 @@ let fix2;
 let fix3;
 let fix4;
 
-function reload() {  
-  delete require.cache[require.resolve(modelPath)];
+function reload() {
+  for (const cachedModule of Object.keys(require.cache)) {
+    delete require.cache[cachedModule];
+  }
   Fixture = require(modelPath);
 
   fix1 = Fixture.fromRepository('cameo', 'outdoor-par-tri-12');
