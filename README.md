@@ -4,7 +4,7 @@
 
 To use lighting control software like [QLC+](http://www.qlcplus.org/), [DMXControl](https://www.dmxcontrol.org/) or [e:cue](http://www.ecue.de/), you need fixture definition files that describe your lighting hardware. Since one software can usually only understand its own fixture definition format, switching between different programs can be difficult.
 
-The *Open Fixture Library* ([open-fixture-library.herokuapp.com](https://open-fixture-library.herokuapp.com/)) tries to solve this problem by collecting fixture definitions and making them downloadable in various formats. Internally, it uses a [JSON format](fixtures/schema.js) that tries to bundle as much information as possible for the different output formats.
+The *Open Fixture Library* ([open-fixture-library.herokuapp.com](https://open-fixture-library.herokuapp.com/)) tries to solve this problem by collecting fixture definitions and making them downloadable in various formats. Internally, it uses a [JSON format](fixtures/schema.js) that tries to bundle as much information as possible for all the different output formats.
 
 
 ## Contribute
@@ -112,11 +112,13 @@ Static files are located in the `static` directory (surprise!), the dynamic stuf
 
 The `views/stylesheets` subfolder contains the SASS stylesheets. Try to keep them organized, feel free to add a new file if needed.
 
-We use [Express](http://expressjs.com/) to handle and delegate web requests to the respective page modules. Those templates reside in the `views/pages` subdirectory. A template module has to export a single function that returns a string which will be treated as HTML. The function receives a single `options` parameter. See [main.js](main.js#L32) for the guaranteed options.
+We use [Express](http://expressjs.com/) to handle and delegate web requests to the respective page modules. Those templates reside in the `views/pages` subdirectory. A template module has to export a single function that returns a string which will be treated as HTML. The function receives a single `options` parameter. See [main.js](main.js#L59) for the guaranteed options.
 
 
 ### Tests
 
 Every time a new commit is pushed to GitHub, [Travis CI](https://travis-ci.org/FloEdelmann/open-fixture-library) runs all the tests in the `tests` directory (configured by [.travis.yml](.travis.yml)). That helps spotting bugs early.
+
+Additionally, [Codacy](https://www.codacy.com/app/FloEdelmann/open-fixture-library) helps with static code analysis.
 
 We want to ensure good code style and fixture validity, so if you have an idea for a new test or on how to improve an existing one – awesome!
