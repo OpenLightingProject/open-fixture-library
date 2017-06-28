@@ -8,22 +8,6 @@
     "createDate": "2017-02-24",
     "lastModifyDate": "2017-03-09"
   },
-  "physical": {
-    "dimensions": [203, 203, 193],
-    "weight": 4.25,
-    "power": 50,
-    "DMXconnector": "3-pin",
-    "bulb": {
-      "type": "LED",
-      "lumens": 911
-    },
-    "lens": {
-      "degreesMinMax": [25, 25]
-    },
-    "focus": {
-      "type": "Fixed"
-    }
-  },
   "availableChannels": {
     "Master dimmer": {
       "type": "Intensity",
