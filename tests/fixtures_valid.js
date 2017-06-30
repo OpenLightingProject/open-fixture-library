@@ -28,29 +28,24 @@ for (const man of fs.readdirSync(fixturePath)) {
 }
 
 function handleFixtureFile(name) {
+  let result = {
+    name: name
+  };
   const filename = path.join(fixturePath, name);
 
   promises.push(new Promise((resolve, reject) => {
     fs.readFile(filename, 'utf8', (readError, data) => {
       if (readError) {
-        resolve({
-          name: name,
-          errors: [
-            printError('File could not be read.' readError)
-          ]
-        });
+        result.errors = [printError('File could not be read.', readError)];
+        return resolve(result);
       }
 
       try {
         handleFixture(name, JSON.parse(data), resolve);
       }
       catch (parseError) {
-        resolve({
-          name: name,
-          errors: [
-            printError('File could not be parsed.' parseError)
-          ]
-        });
+        result.errors = [printError('File could not be parsed.', parseError)];
+        return resolve(result);
       }
     });
   }));
@@ -66,6 +61,37 @@ function handleFixture(name, fixture, resolve) {
     warnings: result.warnings
   });
 }
+
+// check manufacturers file
+promises.push(new Promise((resolve, reject) => {
+  let result = {
+    name: 'manufacturers.json'
+  };
+  const filename = path.join(fixturePath, result.name);
+
+  fs.readFile(filename, 'utf8', (readError, data) => {
+    if (readError) {
+      result.errors = [printError('File could not be read.', readError)];
+      return resolve(result);
+    }
+
+    let manufacturers;
+    try {
+      manufacturers = JSON.parse(data);
+    }
+    catch (parseError) {
+      result.errors = [printError('File could not be parsed.', parseError)];
+      return resolve(result);
+    }
+
+    const schemaErrors = schemas.Manufacturers.errors(manufacturers);
+    if (schemaErrors !== false) {
+      result.errors = [printError('File does not match schema.', schemaErrors)];
+    }
+
+    return resolve(result);
+  });
+}));
 
 
 // print results
