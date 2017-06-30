@@ -38,25 +38,24 @@ function handleFixtureFile(name) {
   promises.push(new Promise((resolve, reject) => {
     fs.readFile(filename, 'utf8', (readError, data) => {
       if (readError) {
-        result.errors.push(printError('File could not be read.', readError));
+        result.errors.push(getErrorString('File could not be read.', readError));
         return resolve(result);
       }
 
+      let fixture;
       try {
-        return resolve(handleFixture(result, JSON.parse(data)));
+        fixture = JSON.parse(data);
       }
       catch (parseError) {
-        result.errors.push(printError('File could not be parsed.', parseError));
+        result.errors.push(getErrorString('File could not be parsed.', parseError));
         return resolve(result);
       }
+
+      Object.assign(result, checkFixture(fixture, usedShortNames));
+      usedShortNames = result.usedShortNames;
+      return resolve(result);
     });
   }));
-}
-
-function handleFixture(result, fixture) {
-  Object.assign(result, checkFixture(fixture, usedShortNames));
-  usedShortNames = result.usedShortNames;
-  return result;
 }
 
 // check manufacturers file
@@ -70,7 +69,7 @@ promises.push(new Promise((resolve, reject) => {
 
   fs.readFile(filename, 'utf8', (readError, data) => {
     if (readError) {
-      result.errors.push(printError('File could not be read.', readError));
+      result.errors.push(getErrorString('File could not be read.', readError));
       return resolve(result);
     }
 
@@ -79,13 +78,13 @@ promises.push(new Promise((resolve, reject) => {
       manufacturers = JSON.parse(data);
     }
     catch (parseError) {
-      result.errors.push(printError('File could not be parsed.', parseError));
+      result.errors.push(getErrorString('File could not be parsed.', parseError));
       return resolve(result);
     }
 
     const schemaErrors = schemas.Manufacturers.errors(manufacturers);
     if (schemaErrors !== false) {
-      result.errors = [printError('File does not match schema.', schemaErrors)];
+      result.errors = [getErrorString('File does not match schema.', schemaErrors)];
     }
 
     return resolve(result);
@@ -136,6 +135,6 @@ Promise.all(promises).then(results => {
 });
 
 
-function printError(description, error) {
+function getErrorString(description, error) {
   return description + ' ' + util.inspect(error, false, null);
 }

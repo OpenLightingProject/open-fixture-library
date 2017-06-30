@@ -12,7 +12,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
   const schemaErrors = schemas.Fixture.errors(fixture);
   if (schemaErrors !== false) {
-    result.errors.push(printError('File does not match schema.', schemaErrors));
+    result.errors.push(getErrorString('File does not match schema.', schemaErrors));
     return result;
   }
 
@@ -288,7 +288,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
     }
   }
   catch (accessError) {
-    result.errors.push(printError('Access error.', accessError));
+    result.errors.push(getErrorString('Access error.', accessError));
   }
 
   return result;
@@ -339,6 +339,6 @@ function checkPhysical(result, physical, modeDescription = '') {
   }
 }
 
-function printError(description, error) {
+function getErrorString(description, error) {
   return description + ' ' + util.inspect(error, false, null);
 }
