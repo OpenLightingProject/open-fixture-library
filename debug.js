@@ -6,6 +6,7 @@ let Channel;
 let Fixture;
 let Physical;
 let SwitchingChannel;
+let Range;
 let fix1;
 let fix2;
 let fix3;
@@ -20,6 +21,7 @@ function reload() {
   Fixture = require(path.join(modelPath, 'Fixture.js'));
   Physical = require(path.join(modelPath, 'Physical.js'));
   SwitchingChannel = require(path.join(modelPath, 'SwitchingChannel.js'));
+  Range = require(path.join(modelPath, 'Range.js'));
 
   fix1 = Fixture.fromRepository('cameo', 'outdoor-par-tri-12');
   fix2 = Fixture.fromRepository('elation', 'platinum-hfx');
