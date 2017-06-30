@@ -5,6 +5,8 @@ const path = require('path');
 const minimist = require('minimist');
 const colors = require('colors');
 
+const Fixture = require(path.join(__dirname, '..', 'lib', 'model', 'Fixture.js'));
+
 const args = minimist(process.argv.slice(2), {
   boolean: ['all', 'help'],
   alias: { all: 'a', help: 'h' }
@@ -77,32 +79,21 @@ fixFeatures.sort((a, b) => {
 let fixtures = [];
 const manufacturers = JSON.parse(fs.readFileSync(path.join(fixturesDir, 'register.json'), 'utf8')).manufacturers;
 for (const man of Object.keys(manufacturers)) {
-  for (const fix of manufacturers[man]) {
+  for (const fixKey of manufacturers[man]) {
     // pre-process data
-    const fixData = JSON.parse(fs.readFileSync(path.join(fixturesDir, man, fix + '.json'), 'utf8'));
-    let fineChannels = {};
-    for (const ch of Object.keys(fixData.availableChannels)) {
-      const channel = fixData.availableChannels[ch];
-
-      if ('fineChannelAliases' in channel) {
-        for (const alias of channel.fineChannelAliases) {
-          fineChannels[alias] = ch;
-        }
-      }
-    }
-
-    let fixture = {
+    let fix = Fixture.fromRepository(man, fixKey);
+    let fixResult = {
       man: man,
-      key: fix,
-      name: fixData.name,
+      key: fixKey,
+      name: fix.name,
       features: []
     };
-    fixtures.push(fixture);
+    fixtures.push(fixResult);
 
     // check all features
     for (const fixFeature of fixFeatures) {
-      if (fixFeature.hasFeature(fixData, fineChannels)) {
-        fixture.features.push(fixFeature.id);
+      if (fixFeature.hasFeature(fix)) {
+        fixResult.features.push(fixFeature.id);
         featuresUsed[fixFeature.id]++;
       }
     }
