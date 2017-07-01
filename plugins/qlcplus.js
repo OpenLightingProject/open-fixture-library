@@ -626,4 +626,4 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
 
     resolve(out);
   });
-}
+};

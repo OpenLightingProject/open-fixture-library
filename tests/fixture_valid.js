@@ -45,8 +45,8 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
       const channel = fixture.availableChannels[ch];
 
       const name = 'name' in channel ? channel.name : ch;
-      if (/\s+fine(?:^\d+)?$/i.test(name)) {
-        result.errors.push(`Channel '${ch}' should rather be a fine channel alias of its corresponding coarse channel, or its name must not end with 'fine'.`);
+      if (/\s+fine(?:\^\d+)?$/i.test(name)) {
+        result.errors.push(`Channel '${ch}' should rather be a fine channel alias of its corresponding coarse channel, or its name must not end with 'fine' or 'fine^'+number.`);
       }
 
       let testFineChannelOverlapping = false;
