@@ -38,7 +38,7 @@ module.exports = function(options) {
   query.c = query.c.map(decodeURIComponent);
 
   let results = [];
-  for (const key in register.filesystem) {
+  for (const key of Object.keys(register.filesystem)) {
     const man = key.split('/')[0];
     const fixData = register.filesystem[key];
     const name = (manufacturers[man].name + ' ' + fixData.name).toLowerCase();

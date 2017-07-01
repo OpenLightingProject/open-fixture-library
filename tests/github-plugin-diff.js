@@ -198,11 +198,11 @@ new Promise((resolve, reject) => {
     message.push('*No fixture or plugin files were changed in this PR.*');
   }
   else {
-    for (let fixture in fixtureData) {
+    for (let fixture of Object.keys(fixtureData)) {
       message.push(`### Modified \`${fixture}\` in this PR`);
 
       let hasContent = false;
-      for (let plugin in fixtureData[fixture]) {
+      for (let plugin of Object.keys(fixtureData[fixture])) {
         const pluginMessage = printPlugin(fixtureData[fixture][plugin]);
         if (pluginMessage.length > 0) {
           hasContent = true;
@@ -216,7 +216,7 @@ new Promise((resolve, reject) => {
       }
     }
 
-    for (let plugin in pluginData) {
+    for (let plugin of Object.keys(pluginData)) {
       message.push(`### Modified plugin \`${plugin}\` in this PR`);
       message.push('Plugins are always tested with the following fixtures:');
       for (const testFixture of testFixtures) {
@@ -259,7 +259,7 @@ new Promise((resolve, reject) => {
       if (hasChanged && (hasRemoved || hasAdded)) {
         pluginMessage.push('*Changed files*');
       }
-      for (let file in outputData.changedFiles) {
+      for (let file of Object.keys(outputData.changedFiles)) {
         pluginMessage.push('```diff');
         pluginMessage.push(`${outputData.changedFiles[file]}`);
         pluginMessage.push('```');

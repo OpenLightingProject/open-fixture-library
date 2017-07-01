@@ -42,7 +42,7 @@ const statusCodes = {
 };
 // add manufacturers and fixtures
 const register = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'fixtures', 'register.json'), 'utf8'));
-for (const man in register.manufacturers) {
+for (const man of Object.keys(register.manufacturers)) {
   statusCodes['200'].push('/' + man);
 
   for (const fixture of register.manufacturers[man]) {
@@ -53,7 +53,7 @@ for (const man in register.manufacturers) {
     }
   }
 }
-for (const cat in register.categories) {
+for (const cat of Object.keys(register.categories)) {
   statusCodes['200'].push('/categories/' + cat);
   if (cat !== encodeURIComponent(cat)) {
     statusCodes['200'].push('/categories/' + encodeURIComponent(cat));
@@ -86,7 +86,7 @@ require('timers').setTimeout(() => {
   console.log('start tests');
 
   let promises = [];
-  for (const code in statusCodes) {
+  for (const code of Object.keys(statusCodes)) {
     for (const page of statusCodes[code]) {
       promises.push(testPage(page, [code], false));
     }
