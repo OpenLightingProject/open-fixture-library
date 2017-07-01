@@ -551,4 +551,4 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
 
     resolve(out);
   });
-}
+};
