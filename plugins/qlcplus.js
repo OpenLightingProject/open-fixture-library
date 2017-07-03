@@ -5,8 +5,10 @@ const xml2js = require('xml2js');
 module.exports.name = 'QLC+';
 module.exports.version = '0.3.0';
 
-module.exports.export = function exportQLCplus(library, options) {
+module.exports.export = function exportQLCplus(fixtures, options) {
+  console.log(fixtures);
   let outfiles = [];
+  return outfiles;
 
   const defaults = require(path.join(options.baseDir, 'fixtures', 'defaults'));
 

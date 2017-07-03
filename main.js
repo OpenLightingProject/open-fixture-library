@@ -9,6 +9,8 @@ const browserify = require('browserify-middleware');
 const minifyHTML = require('html-minifier').minify;
 const bodyParser = require('body-parser');
 
+const Fixture = require(path.join(__dirname, 'lib', 'model', 'Fixture.js'));
+
 const app = express();
 
 // setup port
@@ -176,12 +178,8 @@ app.use((request, response, next) => {
 
     const [key, pluginName] = fix.split('.');
     if (pluginName in plugins && 'export' in plugins[pluginName]) {
-      const outfiles = plugins[pluginName].export([{
-        manufacturerKey: man,
-        fixtureKey: key
-      }], {
-        baseDir: __dirname,
-        manufacturers: manufacturers
+      const outfiles = plugins[pluginName].export([Fixture.fromRepository(man, key)], {
+        baseDir: __dirname
       });
 
       downloadFiles(response, outfiles, pluginName);

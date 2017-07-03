@@ -9,8 +9,10 @@ const defaults = require(path.join(__dirname, '..', 'fixtures', 'defaults'));
 module.exports.name = 'e:cue';
 module.exports.version = '0.2.0';
 
-module.exports.export = function exportEcue(library, options) {
+module.exports.export = function exportEcue(fixtures, options) {
+  console.log(fixtures);
   let outfiles = [];
+  return outfiles;
 
   const timestamp = new Date().toISOString().replace(/T/, '#').replace(/\..+/, '');
 
