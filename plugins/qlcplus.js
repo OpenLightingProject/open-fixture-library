@@ -6,9 +6,21 @@ module.exports.name = 'QLC+';
 module.exports.version = '0.3.0';
 
 module.exports.export = function exportQLCplus(fixtures, options) {
-  console.log(fixtures);
+  const library = fixtures.map(fix => ({
+    fixtureKey: fix.key,
+    manufacturerKey: fix.manufacturer.key
+  }));
+
+  options.manufacturers = {};
+  for (const man of fixtures.map(fix => fix.manufacturer)) {
+    options.manufacturers[man.key] = {
+      name: man.name,
+      website: man.website,
+      comment: man.comment
+    };
+  }
+
   let outfiles = [];
-  return outfiles;
 
   const defaults = require(path.join(options.baseDir, 'fixtures', 'defaults'));
 

@@ -10,9 +10,21 @@ module.exports.name = 'e:cue';
 module.exports.version = '0.2.0';
 
 module.exports.export = function exportEcue(fixtures, options) {
-  console.log(fixtures);
+  const library = fixtures.map(fix => ({
+    fixtureKey: fix.key,
+    manufacturerKey: fix.manufacturer.key
+  }));
+
+  options.manufacturers = {};
+  for (const man of fixtures.map(fix => fix.manufacturer)) {
+    options.manufacturers[man.key] = {
+      name: man.name,
+      website: man.website,
+      comment: man.comment
+    };
+  }
+
   let outfiles = [];
-  return outfiles;
 
   const timestamp = new Date().toISOString().replace(/T/, '#').replace(/\..+/, '');
 
