@@ -14,10 +14,14 @@ module.exports.export = function exportQLCplus(fixtures, options) {
   options.manufacturers = {};
   for (const man of fixtures.map(fix => fix.manufacturer)) {
     options.manufacturers[man.key] = {
-      name: man.name,
-      website: man.website,
-      comment: man.comment
+      name: man.name
     };
+    if (man.website !== null) {
+      options.manufacturers[man.key].website = man.website;
+    }
+    if (man.hasComment) {
+      options.manufacturers[man.key].comment = man.comment;
+    }
   }
 
   let outfiles = [];
