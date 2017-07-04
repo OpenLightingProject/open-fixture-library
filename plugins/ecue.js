@@ -9,7 +9,25 @@ const defaults = require(path.join(__dirname, '..', 'fixtures', 'defaults'));
 module.exports.name = 'e:cue';
 module.exports.version = '0.2.0';
 
-module.exports.export = function exportEcue(library, options) {
+module.exports.export = function exportEcue(fixtures, options) {
+  const library = fixtures.map(fix => ({
+    fixtureKey: fix.key,
+    manufacturerKey: fix.manufacturer.key
+  }));
+
+  options.manufacturers = {};
+  for (const man of fixtures.map(fix => fix.manufacturer)) {
+    options.manufacturers[man.key] = {
+      name: man.name
+    };
+    if (man.website !== null) {
+      options.manufacturers[man.key].website = man.website;
+    }
+    if (man.hasComment) {
+      options.manufacturers[man.key].comment = man.comment;
+    }
+  }
+
   let outfiles = [];
 
   const timestamp = new Date().toISOString().replace(/T/, '#').replace(/\..+/, '');

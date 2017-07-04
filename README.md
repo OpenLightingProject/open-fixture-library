@@ -39,18 +39,14 @@ module.exports.name = 'e:cue';     // display name, required
 module.exports.version = '0.1.0';  // plugin version, required
 
 // optional
-module.exports.export = function exportPluginName(library, options) {
+module.exports.export = function exportPluginName(fixtures, options) {
   /*
-   * library: array of {
-   *                     manufacturerKey: '...',
-   *                     fixtureKey: '...'
-   *                   } objects
+   * fixtures: array of Fixture objects
    * 
    * options: {
-   *            manufacturers: {...},
-   *            baseDir: '...',
-   *            // maybe more
-   *          }
+   *   baseDir: '...',
+   *   // maybe more
+   * }
    */
 
   let outfiles = [];

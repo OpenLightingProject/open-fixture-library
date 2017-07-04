@@ -9,6 +9,8 @@ const browserify = require('browserify-middleware');
 const minifyHTML = require('html-minifier').minify;
 const bodyParser = require('body-parser');
 
+const Fixture = require(path.join(__dirname, 'lib', 'model', 'Fixture.js'));
+
 const app = express();
 
 // setup port
@@ -154,7 +156,7 @@ app.use((request, response, next) => {
   const sanitizedUrl = request.originalUrl.slice(1, (request.originalUrl.slice(-1) === '/') ? -1 : request.originalUrl.length);
   const segments = sanitizedUrl.split('/');
 
-
+  // manufacturer page
   if (segments.length === 1 && segments[0] in manufacturers) {
     response.render('pages/single_manufacturer', {
       man: segments[0]
@@ -166,7 +168,8 @@ app.use((request, response, next) => {
     const man = segments[0];
     const fix = segments[1];
 
-    if (register.manufacturers[man].indexOf(fix) !== -1) {
+    // fixture page
+    if (register.manufacturers[man].includes(fix)) {
       response.render('pages/single_fixture', {
         man: man,
         fix: fix
@@ -174,14 +177,13 @@ app.use((request, response, next) => {
       return;
     }
 
+    // fixture export
     const [key, pluginName] = fix.split('.');
-    if (pluginName in plugins && 'export' in plugins[pluginName]) {
-      const outfiles = plugins[pluginName].export([{
-        manufacturerKey: man,
-        fixtureKey: key
-      }], {
-        baseDir: __dirname,
-        manufacturers: manufacturers
+    if (register.manufacturers[man].includes(key)
+      && pluginName in plugins
+      && 'export' in plugins[pluginName]) {
+      const outfiles = plugins[pluginName].export([Fixture.fromRepository(man, key)], {
+        baseDir: __dirname
       });
 
       downloadFiles(response, outfiles, pluginName);
@@ -189,6 +191,7 @@ app.use((request, response, next) => {
     }
   }
 
+  // category page
   if (segments.length === 2 && segments[0] === 'categories' && decodeURIComponent(segments[1]) in register.categories) {
     response.render('pages/single_category', {
       category: decodeURIComponent(segments[1])
@@ -235,7 +238,7 @@ function getMessages() {
     return messages;
   }
 
-  if (manufacturers == null || register == null) {
+  if (manufacturers === null || register === null) {
     return [{
       type: 'info',
       text: 'We are still reading the data. Please reload the page in a few moments.'
