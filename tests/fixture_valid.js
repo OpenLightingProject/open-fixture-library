@@ -49,6 +49,12 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
         result.errors.push(`Channel '${ch}' should rather be a fine channel alias of its corresponding coarse channel, or its name must not end with 'fine' or 'fine^'+number.`);
       }
 
+      if (channel.type === 'Nothing'
+        && Object.keys(channel).some(property => !['type', 'name'].includes(property))) {
+        result.errors.push(`Channel '${ch}' with type 'Nothing' can only set 'name' as additional property.`);
+        continue;
+      }
+
       let testFineChannelOverlapping = false;
       let dmxMaxBound = 256;
       if ('fineChannelAliases' in channel) {
