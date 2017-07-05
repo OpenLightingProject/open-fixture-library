@@ -2,11 +2,8 @@ const path = require('path');
 const xml2js = require('xml2js');
 const xmlbuilder = require('xmlbuilder');
 
-const Capability = require(path.join(__dirname, '..', 'lib', 'model', 'Capability.js'));
-const Channel = require(path.join(__dirname, '..', 'lib', 'model', 'Channel.js'));
 const FineChannel = require(path.join(__dirname, '..', 'lib', 'model', 'FineChannel.js'));
 const SwitchingChannel = require(path.join(__dirname, '..', 'lib', 'model', 'SwitchingChannel.js'));
-const NullChannel = require(path.join(__dirname, '..', 'lib', 'model', 'NullChannel.js'));
 
 module.exports.name = 'QLC+';
 module.exports.version = '0.3.0';
