@@ -1,4 +1,3 @@
-const fs = require('fs');
 const path = require('path');
 const xml2js = require('xml2js');
 const xmlbuilder = require('xmlbuilder');
@@ -28,7 +27,7 @@ module.exports.export = function exportQLCplus(fixtures, options) {
         Model: fixture.name,
         Type: fixture.mainCategory
       }
-    })
+    });
 
     for (const channel of fixture.allChannels) {
       exportAddChannel(xml, channel, fixture);
@@ -54,21 +53,8 @@ function exportAddChannel(xml, channel, fixture) {
     }
   });
 
-  // fine or switching channels refer to a channel with additional data (e.g. capabilities)
-  const dataChannel = channel instanceof FineChannel
-    ? channel.coarseChannel
-    : channel instanceof SwitchingChannel
-      ? fixture.getChannelByKey(channel.defaultChannelKey)
-      : channel;
-
-  let chType =
-    dataChannel.type === 'SingleColor'
-    ? 'Intensity'
-    : dataChannel.type === 'MultiColor'
-      ? 'Colour'
-      : dataChannel.type === 'Strobe'
-        ? 'Shutter'
-        : dataChannel.type;
+  const dataChannel = getDataChannel(channel, fixture);
+  const chType = getChannelType(dataChannel);
 
   xmlChannel.ele({
     Group: {
@@ -82,6 +68,37 @@ function exportAddChannel(xml, channel, fixture) {
       Colour: dataChannel.color !== null ? dataChannel.color : 'Generic'
     });
   }
+}
+
+
+// fine or switching channels refer to a channel with additional data (e.g. color)
+// instead of providing this data themselves
+function getDataChannel(channel, fixture) {
+  if (channel instanceof FineChannel) {
+    return channel.coarseChannel;
+  }
+  else if (channel instanceof SwitchingChannel) {
+    return fixture.getChannelByKey(channel.defaultChannelKey);
+  }
+  return channel;
+}
+
+
+// converts a Channel's type into a valid QLC+ channel type
+function getChannelType(channel) {
+  let chType = channel.type;
+
+  if (chType === 'SingleColor') {
+    chType = 'Intensity';
+  }
+  if (chType === 'MultiColor') {
+    chType = 'Colour';
+  }
+  if (chType === 'Strobe') {
+    chType = 'Shutter';
+  }
+
+  return chType;
 }
 
 
