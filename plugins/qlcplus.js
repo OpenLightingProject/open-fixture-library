@@ -46,6 +46,7 @@ module.exports.export = function exportQLCplus(fixtures, options) {
   });
 };
 
+
 function exportAddChannel(xml, channel, fixture) {
   let xmlChannel = xml.ele({
     Channel: {
@@ -67,6 +68,31 @@ function exportAddChannel(xml, channel, fixture) {
     xmlChannel.ele({
       Colour: dataChannel.color !== null ? dataChannel.color : 'Generic'
     });
+  }
+
+  for (const cap of channel.capabilities || dataChannel.capabilities) {
+    exportAddCapability(xmlChannel, cap);
+  }
+}
+
+function exportAddCapability(xmlChannel, cap) {
+  let xmlCapability = xmlChannel.ele({
+    Capability: {
+      '@Min': cap.ranges[0].start,
+      '@Max': cap.ranges[0].end,
+      '#text': cap.name
+    }
+  });
+
+  if (cap.image !== null) {
+    xmlCapability.att('res', cap.image);
+  }
+  else if (cap.color !== null) {
+    xmlCapability.att('Color', cap.color.hex().toLowerCase());
+
+    if (cap.color2 !== null) {
+      xmlCapability.att('Color2', cap.color2.hex().toLowerCase());
+    }
   }
 }
 
