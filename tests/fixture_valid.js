@@ -169,7 +169,8 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
               const switchToChannel = cap.switchChannels[alias];
 
               // check existence
-              if (!(switchToChannel in fixture.availableChannels)) {
+              if (!(switchToChannel in fixture.availableChannels)
+                && !(switchToChannel in fineChannels)) {
                 result.errors.push(`channel '${switchToChannel}' is referenced from capability '${cap.name}' (#${i+1}) in channel '${ch}' but is not defined.`);
               }
 
