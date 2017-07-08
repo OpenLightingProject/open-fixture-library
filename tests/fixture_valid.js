@@ -233,10 +233,17 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
           if (!mode.channels.includes(fineChannels[ch])) {
             result.errors.push(`Mode '${modeShortName}' contains the fine channel '${ch}' (#${chNumber}) but is missing its coarse channel '${coarseChannelKey}'.`);
           }
-          // the mode must also contain all coarser channel
+          // the mode must also contain all coarser channels
           for (let fineIndex = 0; fineIndex < fineChannelAliases.indexOf(ch); fineIndex++) {
             let coarserChannelKey = fineChannelAliases[fineIndex];
-            if (!mode.channels.includes(coarserChannelKey)) {
+
+            // check if the coarse channel is used directly or as part of a switching channel
+            if (!mode.channels.some(
+              chKey => chKey === coarserChannelKey ||
+                (chKey in switchingChannels && fixture.availableChannels[switchingChannels[chKey]].capabilities.some(
+                  cap => Object.keys(cap.switchChannels).some(key => cap.switchChannels[key] === coarserChannelKey)
+                ))
+            )) {
               result.errors.push(`Mode '${modeShortName}' contains the fine channel '${ch}' (#${chNumber}) but is missing its coarser channel '${coarserChannelKey}'.`);
             }
           }

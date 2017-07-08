@@ -170,10 +170,10 @@ module.exports = function(options) {
       if (chKey !== null) {
         if (chKey in fixture.availableChannels) {
           const channel = fixture.availableChannels[chKey];
-          str += handleChannel(channel, mode);
+          str += handleChannel(channel, mode, switchingChannels);
         }
         else if (chKey in fineChannels) {
-          str += `<div>Fine channel of ${fineChannels[chKey]} (channel ${mode.channels.indexOf(fineChannels[chKey])+1})</div>`;
+          str += handleFineChannel(fineChannels[chKey], mode);
         }
         else if (chKey in switchingChannels) {
           const switchingChannel = switchingChannels[chKey];
@@ -193,7 +193,9 @@ module.exports = function(options) {
             }
             str += '</summary>';
 
-            str += handleChannel(fixture.availableChannels[switchedChannel], mode);
+            str += switchedChannel in fineChannels
+              ? handleFineChannel(fineChannels[switchedChannel], mode)
+              : handleChannel(fixture.availableChannels[switchedChannel], switchingChannels);
 
             str += '</li>';
           });
@@ -360,7 +362,7 @@ function handlePhysicalData(physical) {
   return str;
 }
 
-function handleChannel(channel, mode) {
+function handleChannel(channel, mode, switchingChannels) {
   let str = `<section class="channel-type">
     <span class="label">Type</span>
     <span class="value"><data data-key="channel-type">${channel.type}</data></span>
@@ -374,18 +376,30 @@ function handleChannel(channel, mode) {
   }
 
   if ('fineChannelAliases' in channel) {
-    const fineChannelsUsedInMode = channel.fineChannelAliases.filter(chKey => mode.channels.includes(chKey));
+    const fineChannelPositions = channel.fineChannelAliases.map(
+      fineAlias => mode.channels.findIndex(
+        chKey => chKey === fineAlias ||
+          (chKey in switchingChannels && switchingChannels[chKey].switchedChannels.includes(fineAlias))
+      ) + 1
+    )
+    // the tests make sure that only the first x finenesses can be used in a mode
+    // -> it's not possible that a mode contains 8bit and 24bit but no 16bit
+    // therefore we can safely assume that the fine channel aliases' indices haven't changed after filtering out finer channels in the end of the array
+    .filter(position => position !== 0);
 
-    if (fineChannelsUsedInMode.length > 0) {
+    if (fineChannelPositions.length > 0) {
       str += '<section class="channel-fineChannelAliases">';
       str += '  <span class="label">Fine channels</span>';
       str += '  <span class="value"><data data-key="channel-fineChannelAliases">';
-      str += fineChannelsUsedInMode.map(chKey => getChannelHeading(chKey) + ` (channel ${mode.channels.indexOf(chKey) + 1})`).join(', ');
+      str += fineChannelPositions.map((position, index) => {
+        const fineAlias = channel.fineChannelAliases[index];
+        return getChannelHeading(fineAlias) + ` (channel ${position})`
+      }).join(', ');
       str += '</data></span>';
       str += '</section>';
     }
 
-    divideChannelDmxValues(channel, channel.fineChannelAliases.length - fineChannelsUsedInMode.length);
+    divideChannelDmxValues(channel, channel.fineChannelAliases.length - fineChannelPositions.length);
   }
 
   if ('defaultValue' in channel) {
@@ -485,6 +499,10 @@ function handleChannel(channel, mode) {
   }
 
   return str;
+}
+
+function handleFineChannel(coarseChannel, mode) {
+  return `<div>Fine channel of ${coarseChannel} (channel ${mode.channels.indexOf(coarseChannel)+1})</div>`;
 }
 
 function divideChannelDmxValues(channel, times) {
