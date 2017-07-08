@@ -4,6 +4,7 @@ const xmlbuilder = require('xmlbuilder');
 
 const FineChannel = require(path.join(__dirname, '..', 'lib', 'model', 'FineChannel.js'));
 const SwitchingChannel = require(path.join(__dirname, '..', 'lib', 'model', 'SwitchingChannel.js'));
+const Capability = require(path.join(__dirname, '..', 'lib', 'model', 'Capability.js'));
 
 module.exports.name = 'QLC+';
 module.exports.version = '0.3.0';
@@ -51,24 +52,39 @@ function exportAddChannel(xml, channel, fixture) {
     }
   });
 
-  const dataChannel = getDataChannel(channel, fixture);
-  const chType = getChannelType(dataChannel);
+  // use default channel's data
+  channel = channel instanceof SwitchingChannel ? fixture.getChannelByKey(channel.defaultChannelKey) : channel;
 
-  xmlChannel.ele({
+  const isFine = channel instanceof FineChannel;
+
+  let xmlGroup = xmlChannel.ele({
     Group: {
-      '@Byte': channel instanceof FineChannel ? channel.fineness : 0,
-      '#text': chType
+      '@Byte': isFine ? channel.fineness : 0
     }
   });
 
+  // use coarse channel's data
+  channel = isFine ? channel.coarseChannel : channel;
+
+  const chType = getChannelType(channel);
+  xmlGroup.text(chType);
+
   if (chType === 'Intensity') {
     xmlChannel.ele({
-      Colour: dataChannel.color !== null ? dataChannel.color : 'Generic'
+      Colour: channel.color !== null ? channel.color : 'Generic'
     });
   }
 
-  for (const cap of channel.capabilities || dataChannel.capabilities) {
-    exportAddCapability(xmlChannel, cap);
+  if (isFine) {
+    exportAddCapability(xmlChannel, new Capability({
+      range: [0, channel.maxDmxBound],
+      name: `Precise ${channel.uniqueName}`
+    }, channel));
+  }
+  else {
+    for (const cap of channel.capabilities) {
+      exportAddCapability(xmlChannel, cap);
+    }
   }
 }
 
@@ -94,34 +110,14 @@ function exportAddCapability(xmlChannel, cap) {
 }
 
 
-// fine or switching channels refer to a channel with additional data (e.g. color)
-// instead of providing this data themselves
-function getDataChannel(channel, fixture) {
-  if (channel instanceof FineChannel) {
-    return channel.coarseChannel;
-  }
-  else if (channel instanceof SwitchingChannel) {
-    return fixture.getChannelByKey(channel.defaultChannelKey);
-  }
-  return channel;
-}
-
-
 // converts a Channel's type into a valid QLC+ channel type
 function getChannelType(channel) {
-  let chType = channel.type;
-
-  if (chType === 'SingleColor') {
-    chType = 'Intensity';
+  switch(channel.type) {
+    case 'SingleColor': return 'Intensity'
+    case 'MultiColor':  return 'Colour'
+    case 'Strobe':      return 'Shutter'
+    default:            return channel.type
   }
-  if (chType === 'MultiColor') {
-    chType = 'Colour';
-  }
-  if (chType === 'Strobe') {
-    chType = 'Shutter';
-  }
-
-  return chType;
 }
 
 
