@@ -167,23 +167,27 @@ function exportHandleModes(fixture, physical, xmlMan, fineChannels, switchingCha
 
 function exportHandleChannel(fixture, mode, dmxCount, viewPosCount, fineChannels, switchingChannels) {
   let chKey = mode.channels[dmxCount];
-  let channel = fixture.availableChannels[chKey];
 
   let dmxByte0 = dmxCount;
   let dmxByte1 = -1;
 
+  // if this is a switching channel, just use the default channel
   if (chKey in switchingChannels) {
     const triggerChannel = fixture.availableChannels[switchingChannels[chKey]];
     const defaultValue = triggerChannel.defaultValue;
 
     for (const cap of triggerChannel.capabilities) {
       if (cap.range[0] <= defaultValue && defaultValue <= cap.range[1]) {
-        channel = fixture.availableChannels[cap.switchChannels[chKey]];
+        chKey = cap.switchChannels[chKey];
         break;
       }
     }
   }
-  else if (chKey in fineChannels) {
+
+
+  let channel = fixture.availableChannels[chKey];
+
+  if (chKey in fineChannels) {
     // use coarse channel's data
     channel = fixture.availableChannels[fineChannels[chKey]];
 
