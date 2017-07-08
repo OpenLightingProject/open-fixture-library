@@ -393,7 +393,7 @@ function handleChannel(channel, mode, switchingChannels) {
       str += '  <span class="value"><data data-key="channel-fineChannelAliases">';
       str += fineChannelPositions.map((position, index) => {
         const fineAlias = channel.fineChannelAliases[index];
-        return getChannelHeading(fineAlias) + ` (channel ${position})`
+        return getChannelHeading(fineAlias) + ` (channel ${position})`;
       }).join(', ');
       str += '</data></span>';
       str += '</section>';

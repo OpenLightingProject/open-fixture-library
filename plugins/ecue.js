@@ -176,15 +176,11 @@ function exportHandleChannel(fixture, mode, dmxCount, viewPosCount, fineChannels
     const triggerChannel = fixture.availableChannels[switchingChannels[chKey]];
     const defaultValue = triggerChannel.defaultValue;
 
-    for (const cap of triggerChannel.capabilities) {
-      if (cap.range[0] <= defaultValue && defaultValue <= cap.range[1]) {
-        chKey = cap.switchChannels[chKey];
-        break;
-      }
-    }
+    chKey = triggerChannel.capabilities.find(
+      cap => cap.range[0] <= defaultValue && defaultValue <= cap.range[1]
+    ).switchChannels[chKey];
   }
-
-
+  
   let channel = fixture.availableChannels[chKey];
 
   if (chKey in fineChannels) {
@@ -223,7 +219,7 @@ function exportHandleChannel(fixture, mode, dmxCount, viewPosCount, fineChannels
   dmxByte1++;
 
   if (!('name' in channel)) {
-    channel.name = chKey;
+    channel.name = mode.channels[dmxCount];
   }
 
   let chData = Object.assign({}, defaults.availableChannels['channel key'], channel);
