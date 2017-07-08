@@ -113,10 +113,10 @@ function exportAddCapability(xmlChannel, cap) {
 // converts a Channel's type into a valid QLC+ channel type
 function getChannelType(channel) {
   switch(channel.type) {
-    case 'SingleColor': return 'Intensity'
-    case 'MultiColor':  return 'Colour'
-    case 'Strobe':      return 'Shutter'
-    default:            return channel.type
+    case 'SingleColor': return 'Intensity';
+    case 'MultiColor':  return 'Colour';
+    case 'Strobe':      return 'Shutter';
+    default:            return channel.type;
   }
 }
 
