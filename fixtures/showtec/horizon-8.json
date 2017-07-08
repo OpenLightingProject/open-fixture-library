@@ -53,7 +53,7 @@
       "color": "Amber"
     },
     "Macro Colors": {
-      "type": "Effect",
+      "type": "MultiColor",
       "capabilities": [
         {
           "range": [0, 10],
@@ -280,6 +280,7 @@
     },
     "Auto/Custom Programs": {
       "type": "Effect",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 40],
