@@ -62,7 +62,7 @@ var Capability = schema({
   '?color2': Color,
   '?image': NonEmptyString,
   '?switchChannels': schema({
-    '*': ChannelKey // switch switching channel '*' to ChannelKey
+    '*': [ChannelKey, ChannelAliasKey] // switch switching channel '*' to an already defined (fine) channel
   }),
   '*': Function
 });
