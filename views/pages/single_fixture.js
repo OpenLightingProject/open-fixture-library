@@ -376,16 +376,20 @@ function handleChannel(channel, mode, switchingChannels) {
   }
 
   if ('fineChannelAliases' in channel) {
-    const fineChannelPositions = channel.fineChannelAliases.map(
-      fineAlias => mode.channels.findIndex(
-        chKey => chKey === fineAlias ||
-          (chKey in switchingChannels && switchingChannels[chKey].switchedChannels.includes(fineAlias))
-      ) + 1
-    )
-    // the tests make sure that only the first x finenesses can be used in a mode
-    // -> it's not possible that a mode contains 8bit and 24bit but no 16bit
-    // therefore we can safely assume that the fine channel aliases' indices haven't changed after filtering out finer channels in the end of the array
-    .filter(position => position !== 0);
+    const fineChannelPositions = channel.fineChannelAliases.map(fineAlias => {
+      const index = mode.channels.findIndex(chKey => {
+        // used in a switching channel
+        if (chKey in switchingChannels) {
+          const switchedChannels = switchingChannels[chKey].switchedChannels;
+          return switchedChannels.includes(fineAlias)
+        }
+
+        // used directly
+        return chKey === fineAlias;
+      });
+      return index+1;
+    })
+    .filter(position => position !== 0); // filter out not used finer channels in the end of the array
 
     if (fineChannelPositions.length > 0) {
       str += '<section class="channel-fineChannelAliases">';

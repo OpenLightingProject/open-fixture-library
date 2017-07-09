@@ -35,7 +35,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
     let usedChannels = [];
 
     let fineChannels = {}; // fine -> coarse, fine^2 -> coarse
-    let switchingChannels = {}; // switching channel alias -> trigger channel
+    let switchingChannels = {}; // switching channel alias -> { triggerChannel: chKey, switchedChannels: [chKey], defaultChannel: chKey }
 
     const channelKeys = Object.keys(fixture.availableChannels);
     if (channelKeys.length === 0) {
@@ -140,7 +140,11 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
                 if (alias in fixture.availableChannels || alias in fineChannels || alias in switchingChannels) {
                   result.errors.push(`Switching channel alias '${alias}' in channel '${ch}' is already defined.`);
                 }
-                switchingChannels[alias] = ch;
+                switchingChannels[alias] = {
+                  triggerChannel: ch,
+                  switchedChannels: [],
+                  defaultChannel: null
+                };
               }
 
               // one or more previous capabilities didn't use this property
@@ -167,11 +171,20 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
             for (const alias of switchingChannelAliases) {
               const switchToChannel = cap.switchChannels[alias];
+              const switchingChannel = switchingChannels[alias];
 
               // check existence
               if (!(switchToChannel in fixture.availableChannels)
                 && !(switchToChannel in fineChannels)) {
                 result.errors.push(`channel '${switchToChannel}' is referenced from capability '${cap.name}' (#${i+1}) in channel '${ch}' but is not defined.`);
+              }
+
+              // save switching channel data for later use
+              if (!switchingChannel.switchedChannels.includes(switchToChannel)) {
+                switchingChannel.switchedChannels.push(switchToChannel);
+              }
+              if (cap.range[0] <= channel.defaultValue && channel.defaultValue <= cap.range[1]) {
+                switchingChannel.defaultChannel = switchToChannel;
               }
 
               // switched channels are used with the switching channel and don't need to be used somewhere else
@@ -226,36 +239,26 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
         // or it is a fine channel
         if (ch in fineChannels) {
-          const coarseChannelKey = fineChannels[ch];
-          const fineChannelAliases = fixture.availableChannels[coarseChannelKey].fineChannelAliases;
-
-          // the mode must also contain the coarse channel
-          if (!mode.channels.includes(fineChannels[ch])) {
-            result.errors.push(`Mode '${modeShortName}' contains the fine channel '${ch}' (#${chNumber}) but is missing its coarse channel '${coarseChannelKey}'.`);
-          }
-          // the mode must also contain all coarser channels
-          for (let fineIndex = 0; fineIndex < fineChannelAliases.indexOf(ch); fineIndex++) {
-            let coarserChannelKey = fineChannelAliases[fineIndex];
-
-            // check if the coarse channel is used directly or as part of a switching channel
-            if (!mode.channels.some(
-              chKey => chKey === coarserChannelKey ||
-                (chKey in switchingChannels && fixture.availableChannels[switchingChannels[chKey]].capabilities.some(
-                  cap => Object.keys(cap.switchChannels).some(key => cap.switchChannels[key] === coarserChannelKey)
-                ))
-            )) {
-              result.errors.push(`Mode '${modeShortName}' contains the fine channel '${ch}' (#${chNumber}) but is missing its coarser channel '${coarserChannelKey}'.`);
-            }
-          }
+          // the mode must contain coarser channels
+          checkCoarseChannelExistence(result, fixture, fineChannels, switchingChannels, ch, mode, chNumber)
           continue;
         }
 
         // or it is a switching channel
         if (ch in switchingChannels) {
+          const triggerChannelKey = switchingChannels[ch].triggerChannel;
+
           // the mode must also contain the trigger channel
-          if (!mode.channels.includes(switchingChannels[ch])) {
-            result.errors.push(`mode '${modeShortName}' uses switching channel '${ch}' (#${chNumber}) but is missing its trigger channel '${switchingChannels[ch]}'`);
+          if (!mode.channels.includes(triggerChannelKey)) {
+            result.errors.push(`mode '${modeShortName}' uses switching channel '${ch}' (#${chNumber}) but is missing its trigger channel '${triggerChannelKey}'`);
           }
+
+          // if the channel can be switched to a fine channel, the mode must also contain coarser channels
+          const switchedFineChannels = switchingChannels[ch].switchedChannels.filter(switchTo => switchTo in fineChannels);
+          for (const fineAlias of switchedFineChannels) {
+            checkCoarseChannelExistence(result, fixture, fineChannels, switchingChannels, fineAlias, mode, chNumber)
+          }
+
           continue;
         }
 
@@ -297,7 +300,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
     }
     for (const ch in switchingChannels) {
       if (!usedChannels.includes(ch)) {
-        result.warnings.push(`Switching channel alias '${ch}' defined in channel '${switchingChannels[ch]}' but never used.`);
+        result.warnings.push(`Switching channel alias '${ch}' defined in channel '${switchingChannels[ch].triggerChannel}' but never used.`);
       }
     }
   }
@@ -307,6 +310,35 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
   return result;
 };
+
+function checkCoarseChannelExistence(result, fixture, fineChannels, switchingChannels, ch, mode, chNumber) {
+  const coarseChannelKey = fineChannels[ch];
+
+  // the mode must also contain the coarse channel
+  if (!mode.channels.includes(coarseChannelKey)) {
+    result.errors.push(`Mode '${mode.name || mode.shortName}' contains the fine channel '${ch}' (#${chNumber}) but is missing its coarse channel '${coarseChannelKey}'.`);
+  }
+
+  // the mode must also contain all coarser channels
+  const fineChannelAliases = fixture.availableChannels[coarseChannelKey].fineChannelAliases;
+  const coarserChannelKeys = fineChannelAliases.slice(0, fineChannelAliases.indexOf(ch));
+  for (const coarserChannelKey of coarserChannelKeys) {
+    // check if the coarse channel is used directly or as part of a switching channel
+    const isCoarseUsedInMode = mode.channels.some(chKey => {
+      // used in a switching channel
+      if (chKey in switchingChannels) {
+        const switchedChannels = switchingChannels[chKey].switchedChannels;
+        return switchedChannels.includes(coarserChannelKey)
+      }
+
+      // used directly
+      return chKey === coarserChannelKey;
+    });
+    if (!isCoarseUsedInMode) {
+      result.errors.push(`Mode '${mode.name || mode.shortName}' contains the fine channel '${ch}' (#${chNumber}) but is missing its coarser channel '${coarserChannelKey}'.`);
+    }
+  }
+}
 
 function checkPanTiltMaxExistence(result, fixture, mode, chKey, maxProp) {
   let maxDefined = false;

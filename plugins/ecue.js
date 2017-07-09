@@ -65,7 +65,7 @@ module.exports.export = function exportEcue(fixtures, options) {
     }
 
     let fineChannels = {}; // fine -> coarse, fine^2 -> coarse
-    let switchingChannels = {}; // switching channel alias -> trigger channel
+    let switchingChannels = {}; // switching channel alias -> { triggerChannel: chKey, switchedChannels: [chKey], defaultChannel: chKey }
 
     for (const ch of Object.keys(fixture.availableChannels)) {
       const channel = fixture.availableChannels[ch];
@@ -76,10 +76,25 @@ module.exports.export = function exportEcue(fixtures, options) {
         }
       }
 
-      if ('capabilities' in channel &&
-          'switchChannels' in channel.capabilities[0]) {
-        for (const alias of Object.keys(channel.capabilities[0].switchChannels)) {
-          switchingChannels[alias] = ch;
+      for (const cap of channel.capabilities || []) {
+        for (const switchesChannel of Object.keys(cap.switchChannels || {})) {
+          const switchToChannel = cap.switchChannels[switchesChannel];
+
+          if (!(switchesChannel in switchingChannels)) {
+            switchingChannels[switchesChannel] = {
+              triggerChannel: ch,
+              switchedChannels: [],
+              defaultChannel: null
+            };
+          }
+          const switchingChannel = switchingChannels[switchesChannel];
+
+          if (!switchingChannel.switchedChannels.includes(switchToChannel)) {
+            switchingChannel.switchedChannels.push(switchToChannel);
+          }
+          if (cap.range[0] <= channel.defaultValue && channel.defaultValue <= cap.range[1]) {
+            switchingChannel.defaultChannel = switchToChannel;
+          }
         }
       }
     }
@@ -173,7 +188,7 @@ function exportHandleChannel(fixture, mode, dmxCount, viewPosCount, fineChannels
 
   // if this is a switching channel, just use the default channel
   if (chKey in switchingChannels) {
-    const triggerChannel = fixture.availableChannels[switchingChannels[chKey]];
+    const triggerChannel = fixture.availableChannels[switchingChannels[chKey].triggerChannel];
     const defaultValue = triggerChannel.defaultValue;
 
     chKey = triggerChannel.capabilities.find(
@@ -203,7 +218,16 @@ function exportHandleChannel(fixture, mode, dmxCount, viewPosCount, fineChannels
     }
   }
   else if ('fineChannelAliases' in fixture.availableChannels[chKey]) {
-    const firstFineChannelIndex = mode.channels.indexOf(fixture.availableChannels[chKey].fineChannelAliases[0]);
+    const firstFineAlias = fixture.availableChannels[chKey].fineChannelAliases[0];
+    const firstFineChannelIndex = mode.channels.findIndex(chKey => {
+      // used in a switching channel
+      if (chKey in switchingChannels) {
+        return switchingChannels[chKey].defaultChannel === firstFineAlias;
+      }
+
+      // used directly
+      return chKey === firstFineAlias;
+    });
 
     if (firstFineChannelIndex !== -1) {
       dmxByte1 = firstFineChannelIndex;
