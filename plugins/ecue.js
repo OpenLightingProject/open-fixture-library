@@ -65,7 +65,7 @@ module.exports.export = function exportEcue(fixtures, options) {
     }
 
     let fineChannels = {}; // fine -> coarse, fine^2 -> coarse
-    let switchingChannels = {}; // switching channel alias -> trigger channel
+    let switchingChannels = {}; // switching channel alias -> { triggerChannel: chKey, switchedChannels: [chKey], defaultChannel: chKey }
 
     for (const ch of Object.keys(fixture.availableChannels)) {
       const channel = fixture.availableChannels[ch];
@@ -76,10 +76,25 @@ module.exports.export = function exportEcue(fixtures, options) {
         }
       }
 
-      if ('capabilities' in channel &&
-          'switchChannels' in channel.capabilities[0]) {
-        for (const alias of Object.keys(channel.capabilities[0].switchChannels)) {
-          switchingChannels[alias] = ch;
+      for (const cap of channel.capabilities || []) {
+        for (const switchesChannel of Object.keys(cap.switchChannels || {})) {
+          const switchToChannel = cap.switchChannels[switchesChannel];
+
+          if (!(switchesChannel in switchingChannels)) {
+            switchingChannels[switchesChannel] = {
+              triggerChannel: ch,
+              switchedChannels: [],
+              defaultChannel: null
+            };
+          }
+          const switchingChannel = switchingChannels[switchesChannel];
+
+          if (!switchingChannel.switchedChannels.includes(switchToChannel)) {
+            switchingChannel.switchedChannels.push(switchToChannel);
+          }
+          if (cap.range[0] <= channel.defaultValue && channel.defaultValue <= cap.range[1]) {
+            switchingChannel.defaultChannel = switchToChannel;
+          }
         }
       }
     }
@@ -167,23 +182,23 @@ function exportHandleModes(fixture, physical, xmlMan, fineChannels, switchingCha
 
 function exportHandleChannel(fixture, mode, dmxCount, viewPosCount, fineChannels, switchingChannels) {
   let chKey = mode.channels[dmxCount];
-  let channel = fixture.availableChannels[chKey];
 
   let dmxByte0 = dmxCount;
   let dmxByte1 = -1;
 
+  // if this is a switching channel, just use the default channel
   if (chKey in switchingChannels) {
-    const triggerChannel = fixture.availableChannels[switchingChannels[chKey]];
+    const triggerChannel = fixture.availableChannels[switchingChannels[chKey].triggerChannel];
     const defaultValue = triggerChannel.defaultValue;
 
-    for (const cap of triggerChannel.capabilities) {
-      if (cap.range[0] <= defaultValue && defaultValue <= cap.range[1]) {
-        channel = fixture.availableChannels[cap.switchChannels[chKey]];
-        break;
-      }
-    }
+    chKey = triggerChannel.capabilities.find(
+      cap => cap.range[0] <= defaultValue && defaultValue <= cap.range[1]
+    ).switchChannels[chKey];
   }
-  else if (chKey in fineChannels) {
+  
+  let channel = fixture.availableChannels[chKey];
+
+  if (chKey in fineChannels) {
     // use coarse channel's data
     channel = fixture.availableChannels[fineChannels[chKey]];
 
@@ -203,7 +218,16 @@ function exportHandleChannel(fixture, mode, dmxCount, viewPosCount, fineChannels
     }
   }
   else if ('fineChannelAliases' in fixture.availableChannels[chKey]) {
-    const firstFineChannelIndex = mode.channels.indexOf(fixture.availableChannels[chKey].fineChannelAliases[0]);
+    const firstFineAlias = fixture.availableChannels[chKey].fineChannelAliases[0];
+    const firstFineChannelIndex = mode.channels.findIndex(chKey => {
+      // used in a switching channel
+      if (chKey in switchingChannels) {
+        return switchingChannels[chKey].defaultChannel === firstFineAlias;
+      }
+
+      // used directly
+      return chKey === firstFineAlias;
+    });
 
     if (firstFineChannelIndex !== -1) {
       dmxByte1 = firstFineChannelIndex;
@@ -219,7 +243,7 @@ function exportHandleChannel(fixture, mode, dmxCount, viewPosCount, fineChannels
   dmxByte1++;
 
   if (!('name' in channel)) {
-    channel.name = chKey;
+    channel.name = mode.channels[dmxCount];
   }
 
   let chData = Object.assign({}, defaults.availableChannels['channel key'], channel);
