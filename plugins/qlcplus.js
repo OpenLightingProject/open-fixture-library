@@ -7,25 +7,25 @@ const SwitchingChannel = require(path.join(__dirname, '..', 'lib', 'model', 'Swi
 const Capability = require(path.join(__dirname, '..', 'lib', 'model', 'Capability.js'));
 
 module.exports.name = 'QLC+';
-module.exports.version = '0.3.0';
+module.exports.version = '0.4.0';
 
 module.exports.export = function exportQLCplus(fixtures, options) {
   return fixtures.map(fixture => {
     let xml = xmlbuilder.begin()
-    .declaration('1.0', 'UTF-8')
-    .element({
-      FixtureDefinition: {
-        '@xmlns': 'http://www.qlcplus.org/FixtureDefinition',
-        Creator: {
-          Name: `Open Fixture Library ${module.exports.name} plugin`,
-          Version: module.exports.version,
-          Author: fixture.meta.authors.join(', ')
-        },
-        Manufacturer: fixture.manufacturer.name,
-        Model: fixture.name,
-        Type: fixture.mainCategory
-      }
-    });
+      .declaration('1.0', 'UTF-8')
+      .element({
+        FixtureDefinition: {
+          '@xmlns': 'http://www.qlcplus.org/FixtureDefinition',
+          Creator: {
+            Name: `Open Fixture Library ${module.exports.name} plugin`,
+            Version: module.exports.version,
+            Author: fixture.meta.authors.join(', ')
+          },
+          Manufacturer: fixture.manufacturer.name,
+          Model: fixture.name,
+          Type: fixture.mainCategory
+        }
+      });
 
     for (const channel of fixture.allChannels) {
       exportAddChannel(xml, channel, fixture);
@@ -122,40 +122,7 @@ function exportAddMode(xml, mode) {
     }
   });
 
-  let xmlPhysical = xmlMode.element({
-    Physical: {
-      Bulb: {
-        '@ColourTemperature': mode.physical.bulbColorTemperature || 0,
-        '@Type': mode.physical.bulbType || 'Other',
-        '@Lumens': mode.physical.bulbLumens || 0
-      },
-      Dimensions: {
-        '@Width': Math.round(mode.physical.width) || 0,
-        '@Height': Math.round(mode.physical.height) || 0,
-        '@Depth': Math.round(mode.physical.depth) || 0,
-        '@Weight': mode.physical.weight || 0
-      },
-      Lens: {
-        '@Name': mode.physical.lensName || 'Other',
-        '@DegreesMin': mode.physical.lensDegreesMin || 0,
-        '@DegreesMax': mode.physical.lensDegreesMax || 0
-      },
-      Focus: {
-        '@Type': mode.physical.focusType || 'Fixed',
-        '@TiltMax': mode.physical.focusTiltMax || 0,
-        '@PanMax': mode.physical.focusPanMax || 0
-      }
-    },
-  });
-
-  if (mode.physical.DMXconnector !== null || mode.physical.power !== null) {
-    xmlPhysical.element({
-      Technical: {
-        '@DmxConnector': mode.physical.DMXconnector || 'Other',
-        '@PowerConsumption': mode.physical.power || 0
-      }
-    });
-  }
+  exportAddPhysical(xmlMode, mode.physical);
 
   mode.channelKeys.forEach((chKey, index) => {
     const channel = mode.fixture.getChannelByKey(chKey);
@@ -172,12 +139,49 @@ function exportAddMode(xml, mode) {
   }
 }
 
+function exportAddPhysical(xmlMode, physical) {
+  let xmlPhysical = xmlMode.element({
+    Physical: {
+      Bulb: {
+        '@ColourTemperature': physical.bulbColorTemperature || 0,
+        '@Type': physical.bulbType || 'Other',
+        '@Lumens': physical.bulbLumens || 0
+      },
+      Dimensions: {
+        '@Width': Math.round(physical.width) || 0,
+        '@Height': Math.round(physical.height) || 0,
+        '@Depth': Math.round(physical.depth) || 0,
+        '@Weight': physical.weight || 0
+      },
+      Lens: {
+        '@Name': physical.lensName || 'Other',
+        '@DegreesMin': physical.lensDegreesMin || 0,
+        '@DegreesMax': physical.lensDegreesMax || 0
+      },
+      Focus: {
+        '@Type': physical.focusType || 'Fixed',
+        '@TiltMax': physical.focusTiltMax || 0,
+        '@PanMax': physical.focusPanMax || 0
+      }
+    }
+  });
+
+  if (physical.DMXconnector !== null || physical.power !== null) {
+    xmlPhysical.element({
+      Technical: {
+        '@DmxConnector': physical.DMXconnector || 'Other',
+        '@PowerConsumption': physical.power || 0
+      }
+    });
+  }
+}
+
 function exportAddHead(xmlMode, mode, headChannels) {
   const channelIndices = headChannels.map(chKey => mode.getChannelIndex(chKey))
-  .filter(index => index !== -1);
+    .filter(index => index !== -1);
 
   if (channelIndices.length > 0) {
-    xmlHead = xmlMode.element({
+    let xmlHead = xmlMode.element({
       Head: {}
     });
 
