@@ -1,368 +1,209 @@
-const fs = require('fs');
 const path = require('path');
 const xml2js = require('xml2js');
+const xmlbuilder = require('xmlbuilder');
+
+const FineChannel = require(path.join(__dirname, '..', 'lib', 'model', 'FineChannel.js'));
+const SwitchingChannel = require(path.join(__dirname, '..', 'lib', 'model', 'SwitchingChannel.js'));
+const Capability = require(path.join(__dirname, '..', 'lib', 'model', 'Capability.js'));
 
 module.exports.name = 'QLC+';
-module.exports.version = '0.3.0';
+module.exports.version = '0.4.0';
 
 module.exports.export = function exportQLCplus(fixtures, options) {
-  const library = fixtures.map(fix => ({
-    fixtureKey: fix.key,
-    manufacturerKey: fix.manufacturer.key
-  }));
+  return fixtures.map(fixture => {
+    let xml = xmlbuilder.begin()
+      .declaration('1.0', 'UTF-8')
+      .element({
+        FixtureDefinition: {
+          '@xmlns': 'http://www.qlcplus.org/FixtureDefinition',
+          Creator: {
+            Name: `Open Fixture Library ${module.exports.name} plugin`,
+            Version: module.exports.version,
+            Author: fixture.meta.authors.join(', ')
+          },
+          Manufacturer: fixture.manufacturer.name,
+          Model: fixture.name,
+          Type: fixture.mainCategory
+        }
+      });
 
-  options.manufacturers = {};
-  for (const man of fixtures.map(fix => fix.manufacturer)) {
-    options.manufacturers[man.key] = {
-      name: man.name
-    };
-    if (man.website !== null) {
-      options.manufacturers[man.key].website = man.website;
+    for (const channel of fixture.allChannels) {
+      exportAddChannel(xml, channel, fixture);
     }
-    if (man.hasComment) {
-      options.manufacturers[man.key].comment = man.comment;
-    }
-  }
 
-  let outfiles = [];
-
-  const defaults = require(path.join(options.baseDir, 'fixtures', 'defaults'));
-
-  for (const data of library) {
-    let fixture = Object.assign({}, defaults, JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', data.manufacturerKey, data.fixtureKey + '.json'), 'utf-8')));
-
-    const manufacturer = options.manufacturers[data.manufacturerKey];
-
-    // make null references in channel list link to a "No function" channel
     for (const mode of fixture.modes) {
-      for (let i = 0; i < mode.channels.length; i++) {
-        if (mode.channels[i] === null) {
-          const noFunctionChKey = `No Function ${mode.name} ${i}`;
-          mode.channels[i] = noFunctionChKey;
-
-          if (!(noFunctionChKey in fixture.availableChannels)) {
-            fixture.availableChannels[noFunctionChKey] = {
-              name: 'No Function',
-              type: 'Nothing'
-            };
-          }
-        }
-      }
+      exportAddMode(xml, mode);
     }
 
-    // all channel names must be unique
-    let usedChannels = {}; // keep track of how often a name was already used
-    for (const chKey in fixture.availableChannels) {
-      if (!('name' in fixture.availableChannels[chKey])) {
-        fixture.availableChannels[chKey].name = chKey;
-      }
-
-      const name = fixture.availableChannels[chKey].name;
-
-      if (name in usedChannels) {
-        fixture.availableChannels[chKey].name += ' ' + usedChannels[name];
-      }
-      else {
-        usedChannels[name] = 1;
-      }
-
-      usedChannels[name]++;
-    }
-
-    let fineChannels = {}; // fine -> coarse, fine^2 -> coarse
-    let switchingChannels = {}; // switching channel alias -> trigger channel
-
-    for (const ch of Object.keys(fixture.availableChannels)) {
-      const channel = fixture.availableChannels[ch];
-
-      if ('fineChannelAliases' in channel) {
-        for (const alias of channel.fineChannelAliases) {
-          fineChannels[alias] = ch;
-        }
-      }
-
-      if ('capabilities' in channel &&
-          'switchChannels' in channel.capabilities[0]) {
-        for (const alias of Object.keys(channel.capabilities[0].switchChannels)) {
-          switchingChannels[alias] = ch;
-        }
-      }
-    }
-
-    let physical = Object.assign({}, defaults.physical, fixture.physical);
-    physical.bulb = Object.assign({}, defaults.physical.bulb, fixture.physical.bulb);
-    physical.lens = Object.assign({}, defaults.physical.lens, fixture.physical.lens);
-    physical.focus = Object.assign({}, defaults.physical.focus, fixture.physical.focus);
-
-    let xml = {
-      FixtureDefinition: {
-        $: {
-          xmlns: 'http://www.qlcplus.org/FixtureDefinition'
-        },
-        Creator: {
-          Name: `Open Fixture Library ${module.exports.name} plugin`,
-          Version: module.exports.version,
-          Author: fixture.meta.authors.join(', ')
-        },
-        Manufacturer: manufacturer.name,
-        Model: fixture.name,
-        Type: fixture.categories[0],
-        Channel: exportHandleChannels(fixture, defaults, switchingChannels),
-        Mode: exportHandleModes(fixture, defaults, physical, fineChannels, switchingChannels)
-      }
-    };
-
-    const xmlBuilder = new xml2js.Builder({
-      xmldec: {
-        version: '1.0',
-        encoding: 'UTF-8'
-      },
-      doctype: {
-        pubID: ''
-      },
-      renderOpts: {
+    xml.doctype('');
+    return {
+      name: fixture.manufacturer.key + '/' + fixture.key + '.qxf',
+      content: xml.end({
         pretty: true,
-        indent: ' ',
-        newline: '\n'
-      }
-    });
-
-    outfiles.push({
-      name: data.manufacturerKey + '/' + data.fixtureKey + '.qxf',
-      content: xmlBuilder.buildObject(xml),
+        indent: ' '
+      }),
       mimetype: 'application/x-qlc-fixture'
-    });
-  }
-
-  return outfiles;
+    };
+  });
 };
 
-function exportHandleChannels(fixture, defaults, switchingChannels) {
-  let xmlChannels = [];
-  let channel;
 
-  for (const chKey of Object.keys(fixture.availableChannels)) {
-    channel = fixture.availableChannels[chKey];
-    exportHandleSingleChannel(xmlChannels, channel, channel.name, defaults);
-  }
-  for (const chKey of Object.keys(switchingChannels)) {
-    const triggerChannel = fixture.availableChannels[switchingChannels[chKey]];
-    const defaultValue = triggerChannel.defaultValue;
-
-    for (const cap of triggerChannel.capabilities) {
-      if (cap.range[0] <= defaultValue && defaultValue <= cap.range[1]) {
-        channel = fixture.availableChannels[cap.switchChannels[chKey]];
-        break;
-      }
+function exportAddChannel(xml, channel) {
+  let xmlChannel = xml.element({
+    Channel: {
+      '@Name': channel.uniqueName
     }
-    exportHandleSingleChannel(xmlChannels, channel, chKey, defaults);
+  });
+
+  // use default channel's data
+  if (channel instanceof SwitchingChannel) {
+    channel = channel.fixture.getChannelByKey(channel.defaultChannelKey);
   }
 
-  return xmlChannels;
-}
+  let xmlGroup = xmlChannel.element({
+    Group: {}
+  });
 
-function exportHandleSingleChannel(xmlChannels, channel, chName, defaults) {
-  const defaultChannel = defaults.availableChannels['channel key'];
-  const chData = Object.assign({}, defaultChannel, channel);
-
-  if (chData.type === 'SingleColor') {
-    chData.type = 'Intensity';
-  }
-  else if (chData.type === 'MultiColor') {
-    chData.type = 'Colour';
-  }
-  else if (chData.type === 'Strobe') {
-    chData.type = 'Shutter';
-  }
-
-  let xmlChannel = {
-    $: {
-      Name: chName
-    },
-    Group: {
-      $: {
-        Byte: 0
-      },
-      _: chData.type
-    }
-  };
-
-  if (chData.type === 'Intensity') {
-    xmlChannel.Colour = 'color' in chData ? chData.color : 'Generic';
-  }
-
-  xmlChannels.push(xmlChannel);
-
-  const divisor = 'fineChannelAliases' in chData ? Math.pow(256, chData.fineChannelAliases.length) : 1;
-
-  xmlChannel.Capability = [];
-  const defaultCapability = defaultChannel.capabilities[0];
-
-  if ('capabilities' in channel) {
-    for (const capability of chData.capabilities) {
-      const capData = Object.assign({}, defaultCapability, capability);
-
-      capData.name = capData.name.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-
-      let xmlCapability = {
-        $: {
-          Min: Math.floor(capData.range[0] / divisor),
-          Max: Math.floor(capData.range[1] / divisor)
-        },
-        _: capData.name
-      };
-      xmlChannel.Capability.push(xmlCapability);
-
-      if ('image' in capData) {
-        xmlCapability.$.res = capData.image;
-      }
-      else if ('color' in capData) {
-        xmlCapability.$.Color = capData.color;
-
-        if ('color2' in capData) {
-          xmlCapability.$.Color2 = capData.color2;
-        }
-      }
-    }
+  let capabilities;
+  if (channel instanceof FineChannel) {
+    xmlGroup.attribute('Byte', channel.fineness);
+    channel = channel.coarseChannel; // use coarse channel's data
+    capabilities = [
+      new Capability({
+        range: [0, channel.maxDmxBound],
+        name: `Fine adjustment for ${channel.uniqueName}`
+      }, channel)
+    ];
   }
   else {
-    xmlChannel.Capability.push({
-      $: {
-        Min: defaultCapability.range[0],
-        Max: defaultCapability.range[1]
-      },
-      _: defaultCapability.name
+    xmlGroup.attribute('Byte', 0);
+    capabilities = channel.capabilities;
+  }
+
+  const chType = getChannelType(channel);
+  xmlGroup.text(chType);
+
+  if (chType === 'Intensity') {
+    xmlChannel.element({
+      Colour: channel.color !== null ? channel.color : 'Generic'
     });
   }
 
-  if ('fineChannelAliases' in chData) {
-    chData.fineChannelAliases.forEach((alias, index) => {
-      let fineXmlChannel = JSON.parse(JSON.stringify(xmlChannel));
+  for (const cap of capabilities) {
+    exportAddCapability(xmlChannel, cap);
+  }
+}
 
-      fineXmlChannel.$.Name += getFineChannelSuffix(index);
-      fineXmlChannel.Group.$.Byte = index + 1;
-      fineXmlChannel.Capability = [{
-        $: {
-          Min: defaultCapability.range[0],
-          Max: defaultCapability.range[1]
-        },
-        _: defaultCapability.name
-      }];
+function exportAddCapability(xmlChannel, cap) {
+  let xmlCapability = xmlChannel.element({
+    Capability: {
+      '@Min': cap.rangesByFineness[0].start,
+      '@Max': cap.rangesByFineness[0].end,
+      '#text': cap.name
+    }
+  });
 
-      xmlChannels.push(fineXmlChannel);
+  if (cap.image !== null) {
+    xmlCapability.attribute('res', cap.image);
+  }
+  else if (cap.color !== null) {
+    xmlCapability.attribute('Color', cap.color.hex().toLowerCase());
+
+    if (cap.color2 !== null) {
+      xmlCapability.attribute('Color2', cap.color2.hex().toLowerCase());
+    }
+  }
+}
+
+function exportAddMode(xml, mode) {
+  let xmlMode = xml.element({
+    Mode: {
+      '@Name': mode.name
+    }
+  });
+
+  exportAddPhysical(xmlMode, mode.physical);
+
+  mode.channelKeys.forEach((chKey, index) => {
+    const channel = mode.fixture.getChannelByKey(chKey);
+    xmlMode.element({
+      Channel: {
+        '@Number': index,
+        '#text': channel.uniqueName
+      }
+    });
+  });
+
+  for (const headName of Object.keys(mode.fixture.heads)) {
+    exportAddHead(xmlMode, mode, mode.fixture.heads[headName]);
+  }
+}
+
+function exportAddPhysical(xmlMode, physical) {
+  let xmlPhysical = xmlMode.element({
+    Physical: {
+      Bulb: {
+        '@ColourTemperature': physical.bulbColorTemperature || 0,
+        '@Type': physical.bulbType || 'Other',
+        '@Lumens': physical.bulbLumens || 0
+      },
+      Dimensions: {
+        '@Width': Math.round(physical.width) || 0,
+        '@Height': Math.round(physical.height) || 0,
+        '@Depth': Math.round(physical.depth) || 0,
+        '@Weight': physical.weight || 0
+      },
+      Lens: {
+        '@Name': physical.lensName || 'Other',
+        '@DegreesMin': physical.lensDegreesMin || 0,
+        '@DegreesMax': physical.lensDegreesMax || 0
+      },
+      Focus: {
+        '@Type': physical.focusType || 'Fixed',
+        '@TiltMax': physical.focusTiltMax || 0,
+        '@PanMax': physical.focusPanMax || 0
+      }
+    }
+  });
+
+  if (physical.DMXconnector !== null || physical.power !== null) {
+    xmlPhysical.element({
+      Technical: {
+        '@DmxConnector': physical.DMXconnector || 'Other',
+        '@PowerConsumption': physical.power || 0
+      }
     });
   }
 }
 
-function getFineChannelSuffix(index) {
-  return ' fine' + (index > 0 ? '^' + (index + 1) : '');
-}
+function exportAddHead(xmlMode, mode, headChannels) {
+  const channelIndices = headChannels.map(chKey => mode.getChannelIndex(chKey))
+    .filter(index => index !== -1);
 
-function exportHandleModes(fixture, defaults, physical, fineChannels, switchingChannels) {
-  let xmlModes = [];
+  if (channelIndices.length > 0) {
+    let xmlHead = xmlMode.element({
+      Head: {}
+    });
 
-  for (const mode of fixture.modes) {
-    let modeData = Object.assign({}, defaults.modes[0], mode);
-    modeData.physical = Object.assign({}, physical, modeData.physical);
-    modeData.physical.bulb = Object.assign({}, physical.bulb, modeData.physical.bulb);
-    modeData.physical.lens = Object.assign({}, physical.lens, modeData.physical.lens);
-    modeData.physical.focus = Object.assign({}, physical.focus, modeData.physical.focus);
-
-    let xmlMode = {
-      $: {
-        Name: modeData.name
-      },
-      Physical: {
-        Bulb: {
-          $: {
-            ColourTemperature: modeData.physical.bulb.colorTemperature,
-            Type: modeData.physical.bulb.type,
-            Lumens: modeData.physical.bulb.lumens
-          }
-        },
-        Dimensions: {
-          $: {
-            Width: Math.round(modeData.physical.dimensions[0]),
-            Height: Math.round(modeData.physical.dimensions[1]),
-            Depth: Math.round(modeData.physical.dimensions[2]),
-            Weight: modeData.physical.weight
-          }
-        },
-        Lens: {
-          $: {
-            Name: modeData.physical.lens.name,
-            DegreesMin: modeData.physical.lens.degreesMinMax[0],
-            DegreesMax: modeData.physical.lens.degreesMinMax[1]
-          }
-        },
-        Focus: {
-          $: {
-            Type: modeData.physical.focus.type,
-            TiltMax: modeData.physical.focus.tiltMax,
-            PanMax: modeData.physical.focus.panMax
-          }
-        },
-        Technical: {
-          $: {
-            DmxConnector: modeData.physical.DMXconnector,
-            PowerConsumption: modeData.physical.power
-          }
-        }
-      },
-      Channel: [],
-      Head: []
-    };
-    xmlModes.push(xmlMode);
-
-    for (let i = 0; i < modeData.channels.length; i++) {
-      const chKey = modeData.channels[i];
-      let channelName;
-
-      if (chKey in fineChannels) {
-        const triggerChannel = fixture.availableChannels[fineChannels[chKey]];
-        channelName = triggerChannel.name + getFineChannelSuffix(triggerChannel.fineChannelAliases.indexOf(chKey));
-      }
-      else if (chKey in switchingChannels) {
-        channelName = chKey;
-      }
-      else {
-        channelName = fixture.availableChannels[modeData.channels[i]].name;
-      }
-
-      xmlMode.Channel.push({
-        $: {
-          Number: i
-        },
-        _: channelName
+    for (const index of channelIndices) {
+      xmlHead.element({
+        Channel: index
       });
     }
-
-    if ('heads' in fixture) {
-      for (const headName of Object.keys(fixture.heads)) {
-        const headLampList = fixture.heads[headName];
-        let headChannelList = [];
-        for (const channel of headLampList) {
-          const chNum = modeData.channels.indexOf(channel);
-          if (chNum !== -1) {
-            headChannelList.push(chNum);
-          }
-        }
-
-        if (headChannelList.length > 0) {
-          let xmlHead = {
-            Channel: []
-          };
-          xmlMode.Head.push(xmlHead);
-          for (const chNum of headChannelList) {
-            xmlHead.Channel.push(chNum);
-          }
-        }
-      }
-    }
   }
-
-  return xmlModes;
 }
+
+
+// converts a Channel's type into a valid QLC+ channel type
+function getChannelType(channel) {
+  switch(channel.type) {
+    case 'SingleColor': return 'Intensity';
+    case 'MultiColor':  return 'Colour';
+    case 'Strobe':      return 'Shutter';
+    default:            return channel.type;
+  }
+}
+
 
 module.exports.import = function importQLCplus(str, filename, resolve, reject) {
   const parser = new xml2js.Parser();
