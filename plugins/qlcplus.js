@@ -56,18 +56,29 @@ function exportAddChannel(xml, channel) {
   });
 
   // use default channel's data
-  channel = channel instanceof SwitchingChannel ? channel.fixture.getChannelByKey(channel.defaultChannelKey) : channel;
-
-  const isFine = channel instanceof FineChannel;
+  if (channel instanceof SwitchingChannel) {
+    channel = channel.fixture.getChannelByKey(channel.defaultChannelKey);
+  }
 
   let xmlGroup = xmlChannel.element({
-    Group: {
-      '@Byte': isFine ? channel.fineness : 0
-    }
+    Group: {}
   });
 
-  // use coarse channel's data
-  channel = isFine ? channel.coarseChannel : channel;
+  let capabilities;
+  if (channel instanceof FineChannel) {
+    xmlGroup.attribute('Byte', channel.fineness);
+    channel = channel.coarseChannel; // use coarse channel's data
+    capabilities = [
+      new Capability({
+        range: [0, channel.maxDmxBound],
+        name: `Fine adjustment for ${channel.uniqueName}`
+      }, channel)
+    ];
+  }
+  else {
+    xmlGroup.attribute('Byte', 0);
+    capabilities = channel.capabilities;
+  }
 
   const chType = getChannelType(channel);
   xmlGroup.text(chType);
@@ -78,16 +89,8 @@ function exportAddChannel(xml, channel) {
     });
   }
 
-  if (isFine) {
-    exportAddCapability(xmlChannel, new Capability({
-      range: [0, channel.maxDmxBound],
-      name: `Fine adjustment for ${channel.uniqueName}`
-    }, channel));
-  }
-  else {
-    for (const cap of channel.capabilities) {
-      exportAddCapability(xmlChannel, cap);
-    }
+  for (const cap of capabilities) {
+    exportAddCapability(xmlChannel, cap);
   }
 }
 
