@@ -507,7 +507,7 @@ function getChannelIndexInMode(ch, mode, switchingChannels) {
 
     // used in a switching channel
     const switchedChannels = switchingChannels[chKey].switchedChannels;
-    return switchedChannels.includes(ch)
+    return switchedChannels.includes(ch);
   });
 }
 
