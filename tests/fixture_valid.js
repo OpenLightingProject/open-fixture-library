@@ -313,15 +313,11 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
 
 function checkCoarseChannelExistence(result, fixture, fineChannels, switchingChannels, ch, mode, chNumber) {
   const coarseChannelKey = fineChannels[ch];
-
-  // the mode must also contain the coarse channel
-  if (!mode.channels.includes(coarseChannelKey)) {
-    result.errors.push(`Mode '${mode.name || mode.shortName}' contains the fine channel '${ch}' (#${chNumber}) but is missing its coarse channel '${coarseChannelKey}'.`);
-  }
-
-  // the mode must also contain all coarser channels
   const fineChannelAliases = fixture.availableChannels[coarseChannelKey].fineChannelAliases;
-  const coarserChannelKeys = fineChannelAliases.slice(0, fineChannelAliases.indexOf(ch));
+  const coarserChannelKeys = [coarseChannelKey].concat(
+    fineChannelAliases.slice(0, fineChannelAliases.indexOf(ch))
+  );
+
   for (const coarserChannelKey of coarserChannelKeys) {
     // check if the coarse channel is used directly or as part of a switching channel
     const isCoarseUsedInMode = mode.channels.some(chKey => {

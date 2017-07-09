@@ -173,7 +173,7 @@ module.exports = function(options) {
           str += handleChannel(channel, mode, switchingChannels);
         }
         else if (chKey in fineChannels) {
-          str += handleFineChannel(fineChannels[chKey], mode);
+          str += handleFineChannel(fineChannels[chKey], mode, switchingChannels);
         }
         else if (chKey in switchingChannels) {
           const switchingChannel = switchingChannels[chKey];
@@ -194,8 +194,8 @@ module.exports = function(options) {
             str += '</summary>';
 
             str += switchedChannel in fineChannels
-              ? handleFineChannel(fineChannels[switchedChannel], mode)
-              : handleChannel(fixture.availableChannels[switchedChannel], switchingChannels);
+              ? handleFineChannel(fineChannels[switchedChannel], mode, switchingChannels)
+              : handleChannel(fixture.availableChannels[switchedChannel], mode, switchingChannels);
 
             str += '</li>';
           });
@@ -376,20 +376,8 @@ function handleChannel(channel, mode, switchingChannels) {
   }
 
   if ('fineChannelAliases' in channel) {
-    const fineChannelPositions = channel.fineChannelAliases.map(fineAlias => {
-      const index = mode.channels.findIndex(chKey => {
-        // used in a switching channel
-        if (chKey in switchingChannels) {
-          const switchedChannels = switchingChannels[chKey].switchedChannels;
-          return switchedChannels.includes(fineAlias)
-        }
-
-        // used directly
-        return chKey === fineAlias;
-      });
-      return index+1;
-    })
-    .filter(position => position !== 0); // filter out not used finer channels in the end of the array
+    const fineChannelPositions = channel.fineChannelAliases.map(fineAlias => getChannelIndexInMode(fineAlias, mode, switchingChannels) + 1
+    ).filter(position => position !== 0); // filter out not used finer channels in the end of the array
 
     if (fineChannelPositions.length > 0) {
       str += '<section class="channel-fineChannelAliases">';
@@ -505,8 +493,22 @@ function handleChannel(channel, mode, switchingChannels) {
   return str;
 }
 
-function handleFineChannel(coarseChannel, mode) {
-  return `<div>Fine channel of ${coarseChannel} (channel ${mode.channels.indexOf(coarseChannel)+1})</div>`;
+function handleFineChannel(coarseChannel, mode, switchingChannels) {
+  const coarseChannelIndex = getChannelIndexInMode(coarseChannel, mode, switchingChannels);
+  return `<div>Fine channel of ${coarseChannel} (channel ${coarseChannelIndex+1})</div>`;
+}
+
+function getChannelIndexInMode(ch, mode, switchingChannels) {
+  return mode.channels.findIndex(chKey => {
+    // used in a switching channel
+    if (chKey in switchingChannels) {
+      const switchedChannels = switchingChannels[chKey].switchedChannels;
+      return switchedChannels.includes(ch)
+    }
+
+    // used directly
+    return chKey === ch;
+  });
 }
 
 function divideChannelDmxValues(channel, times) {
