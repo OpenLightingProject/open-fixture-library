@@ -12,8 +12,8 @@ module.exports.version = '0.3.0';
 module.exports.export = function exportQLCplus(fixtures, options) {
   return fixtures.map(fixture => {
     let xml = xmlbuilder.begin()
-    .dec('1.0', 'UTF-8')
-    .ele({
+    .declaration('1.0', 'UTF-8')
+    .element({
       FixtureDefinition: {
         '@xmlns': 'http://www.qlcplus.org/FixtureDefinition',
         Creator: {
@@ -31,8 +31,11 @@ module.exports.export = function exportQLCplus(fixtures, options) {
       exportAddChannel(xml, channel, fixture);
     }
 
-    // DOCTYPE
-    xml.dtd('');
+    for (const mode of fixture.modes) {
+      exportAddMode(xml, mode);
+    }
+
+    xml.doctype('');
     return {
       name: fixture.manufacturer.key + '/' + fixture.key + '.qxf',
       content: xml.end({
@@ -45,19 +48,19 @@ module.exports.export = function exportQLCplus(fixtures, options) {
 };
 
 
-function exportAddChannel(xml, channel, fixture) {
-  let xmlChannel = xml.ele({
+function exportAddChannel(xml, channel) {
+  let xmlChannel = xml.element({
     Channel: {
       '@Name': channel.uniqueName
     }
   });
 
   // use default channel's data
-  channel = channel instanceof SwitchingChannel ? fixture.getChannelByKey(channel.defaultChannelKey) : channel;
+  channel = channel instanceof SwitchingChannel ? channel.fixture.getChannelByKey(channel.defaultChannelKey) : channel;
 
   const isFine = channel instanceof FineChannel;
 
-  let xmlGroup = xmlChannel.ele({
+  let xmlGroup = xmlChannel.element({
     Group: {
       '@Byte': isFine ? channel.fineness : 0
     }
@@ -70,7 +73,7 @@ function exportAddChannel(xml, channel, fixture) {
   xmlGroup.text(chType);
 
   if (chType === 'Intensity') {
-    xmlChannel.ele({
+    xmlChannel.element({
       Colour: channel.color !== null ? channel.color : 'Generic'
     });
   }
@@ -78,7 +81,7 @@ function exportAddChannel(xml, channel, fixture) {
   if (isFine) {
     exportAddCapability(xmlChannel, new Capability({
       range: [0, channel.maxDmxBound],
-      name: `Precise ${channel.uniqueName}`
+      name: `Fine adjustment ${channel.uniqueName}`
     }, channel));
   }
   else {
@@ -89,7 +92,7 @@ function exportAddChannel(xml, channel, fixture) {
 }
 
 function exportAddCapability(xmlChannel, cap) {
-  let xmlCapability = xmlChannel.ele({
+  let xmlCapability = xmlChannel.element({
     Capability: {
       '@Min': cap.rangesByFineness[0].start,
       '@Max': cap.rangesByFineness[0].end,
@@ -98,15 +101,68 @@ function exportAddCapability(xmlChannel, cap) {
   });
 
   if (cap.image !== null) {
-    xmlCapability.att('res', cap.image);
+    xmlCapability.attribute('res', cap.image);
   }
   else if (cap.color !== null) {
-    xmlCapability.att('Color', cap.color.hex().toLowerCase());
+    xmlCapability.attribute('Color', cap.color.hex().toLowerCase());
 
     if (cap.color2 !== null) {
-      xmlCapability.att('Color2', cap.color2.hex().toLowerCase());
+      xmlCapability.attribute('Color2', cap.color2.hex().toLowerCase());
     }
   }
+}
+
+function exportAddMode(xml, mode) {
+  let xmlMode = xml.element({
+    Mode: {
+      '@Name': mode.name
+    }
+  });
+
+  let xmlPhysical = xmlMode.element({
+    Physical: {
+      Bulb: {
+        '@ColourTemperature': mode.physical.bulbColorTemperature || 0,
+        '@Type': mode.physical.bulbType || 'Other',
+        '@Lumens': mode.physical.bulbLumens || 0
+      },
+      Dimensions: {
+        '@Width': Math.round(mode.physical.width) || 0,
+        '@Height': Math.round(mode.physical.height) || 0,
+        '@Depth': Math.round(mode.physical.depth) || 0,
+        '@Weight': mode.physical.weight || 0
+      },
+      Lens: {
+        '@Name': mode.physical.lensName || 'Other',
+        '@DegreesMin': mode.physical.lensDegreesMin || 0,
+        '@DegreesMax': mode.physical.lensDegreesMax || 0
+      },
+      Focus: {
+        '@Type': mode.physical.focusType || 'Fixed',
+        '@TiltMax': mode.physical.focusTiltMax || 0,
+        '@PanMax': mode.physical.focusPanMax || 0
+      }
+    },
+  });
+
+  if (mode.physical.DMXconnector !== null || mode.physical.power !== null) {
+    xmlPhysical.element({
+      Technical: {
+        '@DmxConnector': mode.physical.DMXconnector || 'Other',
+        '@PowerConsumption': mode.physical.power || 0
+      }
+    });
+  }
+
+  mode.channelKeys.forEach((chKey, index) => {
+    const channel = mode.fixture.getChannelByKey(chKey);
+    xmlMode.element({
+      Channel: {
+        '@Number': index,
+        '#text': channel.uniqueName
+      }
+    });
+  });
 }
 
 
