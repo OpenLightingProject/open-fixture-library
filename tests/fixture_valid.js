@@ -321,14 +321,14 @@ function checkCoarseChannelExistence(result, fixture, fineChannels, switchingCha
   for (const coarserChannelKey of coarserChannelKeys) {
     // check if the coarse channel is used directly or as part of a switching channel
     const isCoarseUsedInMode = mode.channels.some(chKey => {
-      // used in a switching channel
-      if (chKey in switchingChannels) {
-        const switchedChannels = switchingChannels[chKey].switchedChannels;
-        return switchedChannels.includes(coarserChannelKey)
+      // used directly
+      if (!(chKey in switchingChannels)) {
+        return chKey === coarserChannelKey;
       }
 
-      // used directly
-      return chKey === coarserChannelKey;
+      // used in a switching channel
+      const switchedChannels = switchingChannels[chKey].switchedChannels;
+      return switchedChannels.includes(coarserChannelKey)
     });
     if (!isCoarseUsedInMode) {
       result.errors.push(`Mode '${mode.name || mode.shortName}' contains the fine channel '${ch}' (#${chNumber}) but is missing its coarser channel '${coarserChannelKey}'.`);

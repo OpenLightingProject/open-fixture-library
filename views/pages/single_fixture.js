@@ -500,14 +500,14 @@ function handleFineChannel(coarseChannel, mode, switchingChannels) {
 
 function getChannelIndexInMode(ch, mode, switchingChannels) {
   return mode.channels.findIndex(chKey => {
-    // used in a switching channel
-    if (chKey in switchingChannels) {
-      const switchedChannels = switchingChannels[chKey].switchedChannels;
-      return switchedChannels.includes(ch)
+    // used directly
+    if (!(chKey in switchingChannels)) {
+      return chKey === ch;
     }
 
-    // used directly
-    return chKey === ch;
+    // used in a switching channel
+    const switchedChannels = switchingChannels[chKey].switchedChannels;
+    return switchedChannels.includes(ch)
   });
 }
 
