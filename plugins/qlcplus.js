@@ -81,7 +81,7 @@ function exportAddChannel(xml, channel) {
   if (isFine) {
     exportAddCapability(xmlChannel, new Capability({
       range: [0, channel.maxDmxBound],
-      name: `Fine adjustment ${channel.uniqueName}`
+      name: `Fine adjustment for ${channel.uniqueName}`
     }, channel));
   }
   else {
@@ -163,6 +163,27 @@ function exportAddMode(xml, mode) {
       }
     });
   });
+
+  for (const headName of Object.keys(mode.fixture.heads)) {
+    exportAddHead(xmlMode, mode, mode.fixture.heads[headName]);
+  }
+}
+
+function exportAddHead(xmlMode, mode, headChannels) {
+  const channelIndices = headChannels.map(chKey => mode.getChannelIndex(chKey))
+  .filter(index => index !== -1);
+
+  if (channelIndices.length > 0) {
+    xmlHead = xmlMode.element({
+      Head: {}
+    });
+
+    for (const index of channelIndices) {
+      xmlHead.element({
+        Channel: index
+      });
+    }
+  }
 }
 
 
