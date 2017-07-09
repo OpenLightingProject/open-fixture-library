@@ -157,9 +157,6 @@
         }
       ]
     },
-    "Strobe": {
-      "type": "Strobe"
-    },
     "Clas Strobe": {
       "type": "Strobe",
       "capabilities": [
@@ -258,7 +255,7 @@
         },
         {
           "range": [10, 99],
-          "name": "Strobe slow-fast"
+          "name": "Strobe 0-10Hz"
         },
         {
           "range": [100, 109],
@@ -266,7 +263,7 @@
         },
         {
           "range": [110, 179],
-          "name": "Lightning strobe slow-fast"
+          "name": "Lightning strobe 0-10Hz"
         },
         {
           "range": [180, 189],
@@ -274,7 +271,7 @@
         },
         {
           "range": [190, 255],
-          "name": "Random strobe slow-fast"
+          "name": "Random strobe 0-10Hz"
         }
       ]
     },
@@ -588,7 +585,8 @@
   },
   "modes": [
     {
-      "name": "Tour",
+      "name": "Tour (Clas Strobe)",
+      "shortName": "Tour-Clas",
       "channels": [
         "Dimmer",
         "Red / Step Time",
@@ -597,15 +595,32 @@
         "White",
         "Amber",
         "Macro Colors",
-        "Strobe",
+        "Clas Strobe",
         "Auto/Custom Programs",
         "Auto Speed Adjustment",
         "Dimmer Speed"
       ]
     },
     {
-      "name": "Tour 16-bit",
-      "shortName": "TR16",
+      "name": "Tour (Spec Strobe)",
+      "shortName": "Tour-Spec",
+      "channels": [
+        "Dimmer",
+        "Red / Step Time",
+        "Green / Fade Time",
+        "Blue",
+        "White",
+        "Amber",
+        "Macro Colors",
+        "Spec Strobe",
+        "Auto/Custom Programs",
+        "Auto Speed Adjustment",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "Tour 16-bit (Class Strobe)",
+      "shortName": "TR16-Clas",
       "channels": [
         "Dimmer",
         "Dimmer fine / Step Time",
@@ -620,7 +635,30 @@
         "Amber",
         "Amber fine",
         "Macro Colors",
-        "Strobe",
+        "Clas Strobe",
+        "Auto/Custom Programs",
+        "Auto Speed Adjustment",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "Tour 16-bit (Spec Strobe)",
+      "shortName": "TR16-Spec",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine / Step Time",
+        "Red / Fade Time",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Amber",
+        "Amber fine",
+        "Macro Colors",
+        "Spec Strobe",
         "Auto/Custom Programs",
         "Auto Speed Adjustment",
         "Dimmer Speed"
@@ -674,7 +712,8 @@
       ]
     },
     {
-      "name": "AR3.S",
+      "name": "AR3.S (Clas Strobe)",
+      "shortName": "AR3.S-Clas",
       "channels": [
         "Dimmer",
         "Red",
@@ -682,7 +721,20 @@
         "Blue",
         "White",
         "Amber",
-        "Strobe"
+        "Clas Strobe"
+      ]
+    },
+    {
+      "name": "AR3.S (Spec Strobe)",
+      "shortName": "AR3.S-Spec",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Spec Strobe"
       ]
     },
     {
