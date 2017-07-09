@@ -91,8 +91,8 @@ function exportAddChannel(xml, channel, fixture) {
 function exportAddCapability(xmlChannel, cap) {
   let xmlCapability = xmlChannel.ele({
     Capability: {
-      '@Min': cap.ranges[0].start,
-      '@Max': cap.ranges[0].end,
+      '@Min': cap.rangesByFineness[0].start,
+      '@Max': cap.rangesByFineness[0].end,
       '#text': cap.name
     }
   });
