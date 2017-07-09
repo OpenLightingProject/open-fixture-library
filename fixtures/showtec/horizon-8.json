@@ -1,0 +1,775 @@
+{
+  "name": "Horizon 8",
+  "shortName": "Hrzn8",
+  "categories": ["Blinder", "Color Changer"],
+  "meta": {
+    "authors": ["FloEdelmann"],
+    "createDate": "2017-07-08",
+    "lastModifyDate": "2017-07-08"
+  },
+  "comment": "Beam Angle: 45x60°",
+  "manualURL": "https://www.highlite.nl/silver.download/Documents@extern@Manuals/43536_MANUAL_GB_V1.pdf",
+  "physical": {
+    "dimensions": [622, 299, 310],
+    "weight": 15,
+    "power": 298,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 7200
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "type": "Intensity",
+      "fineChannelAliases": ["Dimmer fine"]
+    },
+    "Red": {
+      "type": "SingleColor",
+      "fineChannelAliases": ["Red fine"],
+      "color": "Red"
+    },
+    "Green": {
+      "type": "SingleColor",
+      "fineChannelAliases": ["Green fine"],
+      "color": "Green"
+    },
+    "Blue": {
+      "type": "SingleColor",
+      "fineChannelAliases": ["Blue fine"],
+      "color": "Blue"
+    },
+    "White": {
+      "type": "SingleColor",
+      "fineChannelAliases": ["White fine"],
+      "color": "White"
+    },
+    "Amber": {
+      "type": "SingleColor",
+      "fineChannelAliases": ["Amber fine"],
+      "color": "Amber"
+    },
+    "Macro Colors": {
+      "type": "MultiColor",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "No function"
+        },
+        {
+          "range": [11, 30],
+          "name": "Red 100% / Green Up / Blue 0%",
+          "color": "#ff0000",
+          "color2": "#ffff00"
+        },
+        {
+          "range": [31, 50],
+          "name": "Red Down / Green 100% / Blue 0%",
+          "color": "#ffff00",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [51, 70],
+          "name": "Red 0% / Green 100% / Blue Up",
+          "color": "#00ff00",
+          "color2": "#00ffff"
+        },
+        {
+          "range": [71, 90],
+          "name": "Red 0% / Green Down / Blue 100%",
+          "color": "#00ffff",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [91, 110],
+          "name": "Red Up / Green 0% / Blue 100%",
+          "color": "#0000ff",
+          "color2": "#ff00ff"
+        },
+        {
+          "range": [111, 130],
+          "name": "Red 100% / Green 0% / Blue Down",
+          "color": "#ff00ff",
+          "color2": "#ff0000"
+        },
+        {
+          "range": [131, 150],
+          "name": "Red 100% / Green Up / Blue Up",
+          "color": "#ff0000",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [151, 170],
+          "name": "Red Down / Green Down / Blue 100%",
+          "color": "#ffffff",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [171, 200],
+          "name": "Red 100% / Green 100% / Blue 100% / White 100% / Amber 100%"
+        },
+        {
+          "range": [201, 205],
+          "name": "White 1: 3200K"
+        },
+        {
+          "range": [206, 210],
+          "name": "White 2: 3400K"
+        },
+        {
+          "range": [211, 215],
+          "name": "White 3: 4200K"
+        },
+        {
+          "range": [216, 220],
+          "name": "White 4: 4900K"
+        },
+        {
+          "range": [221, 225],
+          "name": "White 5: 5600K"
+        },
+        {
+          "range": [226, 230],
+          "name": "White 6: 5900K"
+        },
+        {
+          "range": [231, 235],
+          "name": "White 7: 6500K"
+        },
+        {
+          "range": [236, 240],
+          "name": "White 8: 7200K"
+        },
+        {
+          "range": [241, 245],
+          "name": "White 9: 8000K"
+        },
+        {
+          "range": [246, 250],
+          "name": "White 10: 8500K"
+        },
+        {
+          "range": [251, 255],
+          "name": "White 11: 10000K"
+        }
+      ]
+    },
+    "Clas Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "0"
+        },
+        {
+          "range": [10, 19],
+          "name": "1"
+        },
+        {
+          "range": [20, 29],
+          "name": "2"
+        },
+        {
+          "range": [30, 39],
+          "name": "3"
+        },
+        {
+          "range": [40, 49],
+          "name": "4"
+        },
+        {
+          "range": [50, 59],
+          "name": "5"
+        },
+        {
+          "range": [60, 69],
+          "name": "6"
+        },
+        {
+          "range": [70, 79],
+          "name": "7"
+        },
+        {
+          "range": [80, 89],
+          "name": "8"
+        },
+        {
+          "range": [90, 99],
+          "name": "9"
+        },
+        {
+          "range": [100, 109],
+          "name": "10"
+        },
+        {
+          "range": [110, 119],
+          "name": "11"
+        },
+        {
+          "range": [120, 129],
+          "name": "12"
+        },
+        {
+          "range": [130, 139],
+          "name": "13"
+        },
+        {
+          "range": [140, 149],
+          "name": "14"
+        },
+        {
+          "range": [150, 159],
+          "name": "15"
+        },
+        {
+          "range": [160, 169],
+          "name": "16"
+        },
+        {
+          "range": [170, 179],
+          "name": "17"
+        },
+        {
+          "range": [180, 189],
+          "name": "18"
+        },
+        {
+          "range": [190, 199],
+          "name": "19"
+        },
+        {
+          "range": [200, 255],
+          "name": "20"
+        }
+      ]
+    },
+    "Spec Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "No strobe"
+        },
+        {
+          "range": [10, 99],
+          "name": "Strobe 0-10Hz"
+        },
+        {
+          "range": [100, 109],
+          "name": "No strobe"
+        },
+        {
+          "range": [110, 179],
+          "name": "Lightning strobe 0-10Hz"
+        },
+        {
+          "range": [180, 189],
+          "name": "No strobe"
+        },
+        {
+          "range": [190, 255],
+          "name": "Random strobe 0-10Hz"
+        }
+      ]
+    },
+    "Auto/Custom Programs": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 40],
+          "name": "No function",
+          "switchChannels": {
+            "Red / Step Time": "Red",
+            "Green / Fade Time": "Green",
+            "Dimmer fine / Step Time": "Dimmer fine",
+            "Red / Fade Time": "Red"
+          }
+        },
+        {
+          "range": [41, 50],
+          "name": "Auto 1",
+          "switchChannels": {
+            "Red / Step Time": "Red",
+            "Green / Fade Time": "Green",
+            "Dimmer fine / Step Time": "Dimmer fine",
+            "Red / Fade Time": "Red"
+          }
+        },
+        {
+          "range": [51, 60],
+          "name": "Auto 2",
+          "switchChannels": {
+            "Red / Step Time": "Red",
+            "Green / Fade Time": "Green",
+            "Dimmer fine / Step Time": "Dimmer fine",
+            "Red / Fade Time": "Red"
+          }
+        },
+        {
+          "range": [61, 70],
+          "name": "Auto 3",
+          "switchChannels": {
+            "Red / Step Time": "Red",
+            "Green / Fade Time": "Green",
+            "Dimmer fine / Step Time": "Dimmer fine",
+            "Red / Fade Time": "Red"
+          }
+        },
+        {
+          "range": [71, 80],
+          "name": "Auto 4",
+          "switchChannels": {
+            "Red / Step Time": "Red",
+            "Green / Fade Time": "Green",
+            "Dimmer fine / Step Time": "Dimmer fine",
+            "Red / Fade Time": "Red"
+          }
+        },
+        {
+          "range": [81, 90],
+          "name": "Auto 5",
+          "switchChannels": {
+            "Red / Step Time": "Red",
+            "Green / Fade Time": "Green",
+            "Dimmer fine / Step Time": "Dimmer fine",
+            "Red / Fade Time": "Red"
+          }
+        },
+        {
+          "range": [91, 100],
+          "name": "Auto 6",
+          "switchChannels": {
+            "Red / Step Time": "Red",
+            "Green / Fade Time": "Green",
+            "Dimmer fine / Step Time": "Dimmer fine",
+            "Red / Fade Time": "Red"
+          }
+        },
+        {
+          "range": [101, 110],
+          "name": "Auto 7",
+          "switchChannels": {
+            "Red / Step Time": "Red",
+            "Green / Fade Time": "Green",
+            "Dimmer fine / Step Time": "Dimmer fine",
+            "Red / Fade Time": "Red"
+          }
+        },
+        {
+          "range": [111, 120],
+          "name": "Auto 8",
+          "switchChannels": {
+            "Red / Step Time": "Red",
+            "Green / Fade Time": "Green",
+            "Dimmer fine / Step Time": "Dimmer fine",
+            "Red / Fade Time": "Red"
+          }
+        },
+        {
+          "range": [121, 130],
+          "name": "Auto 9",
+          "switchChannels": {
+            "Red / Step Time": "Red",
+            "Green / Fade Time": "Green",
+            "Dimmer fine / Step Time": "Dimmer fine",
+            "Red / Fade Time": "Red"
+          }
+        },
+        {
+          "range": [131, 140],
+          "name": "Auto 10",
+          "switchChannels": {
+            "Red / Step Time": "Red",
+            "Green / Fade Time": "Green",
+            "Dimmer fine / Step Time": "Dimmer fine",
+            "Red / Fade Time": "Red"
+          }
+        },
+        {
+          "range": [141, 150],
+          "name": "Custom 1",
+          "switchChannels": {
+            "Red / Step Time": "Step Time",
+            "Green / Fade Time": "Fade Time",
+            "Dimmer fine / Step Time": "Step Time",
+            "Red / Fade Time": "Fade Time"
+          }
+        },
+        {
+          "range": [151, 160],
+          "name": "Custom 2",
+          "switchChannels": {
+            "Red / Step Time": "Step Time",
+            "Green / Fade Time": "Fade Time",
+            "Dimmer fine / Step Time": "Step Time",
+            "Red / Fade Time": "Fade Time"
+          }
+        },
+        {
+          "range": [161, 170],
+          "name": "Custom 3",
+          "switchChannels": {
+            "Red / Step Time": "Step Time",
+            "Green / Fade Time": "Fade Time",
+            "Dimmer fine / Step Time": "Step Time",
+            "Red / Fade Time": "Fade Time"
+          }
+        },
+        {
+          "range": [171, 180],
+          "name": "Custom 4",
+          "switchChannels": {
+            "Red / Step Time": "Step Time",
+            "Green / Fade Time": "Fade Time",
+            "Dimmer fine / Step Time": "Step Time",
+            "Red / Fade Time": "Fade Time"
+          }
+        },
+        {
+          "range": [181, 190],
+          "name": "Custom 5",
+          "switchChannels": {
+            "Red / Step Time": "Step Time",
+            "Green / Fade Time": "Fade Time",
+            "Dimmer fine / Step Time": "Step Time",
+            "Red / Fade Time": "Fade Time"
+          }
+        },
+        {
+          "range": [191, 200],
+          "name": "Custom 6",
+          "switchChannels": {
+            "Red / Step Time": "Step Time",
+            "Green / Fade Time": "Fade Time",
+            "Dimmer fine / Step Time": "Step Time",
+            "Red / Fade Time": "Fade Time"
+          }
+        },
+        {
+          "range": [201, 210],
+          "name": "Custom 7",
+          "switchChannels": {
+            "Red / Step Time": "Step Time",
+            "Green / Fade Time": "Fade Time",
+            "Dimmer fine / Step Time": "Step Time",
+            "Red / Fade Time": "Fade Time"
+          }
+        },
+        {
+          "range": [211, 220],
+          "name": "Custom 8",
+          "switchChannels": {
+            "Red / Step Time": "Step Time",
+            "Green / Fade Time": "Fade Time",
+            "Dimmer fine / Step Time": "Step Time",
+            "Red / Fade Time": "Fade Time"
+          }
+        },
+        {
+          "range": [221, 230],
+          "name": "Custom 9",
+          "switchChannels": {
+            "Red / Step Time": "Step Time",
+            "Green / Fade Time": "Fade Time",
+            "Dimmer fine / Step Time": "Step Time",
+            "Red / Fade Time": "Fade Time"
+          }
+        },
+        {
+          "range": [231, 255],
+          "name": "Custom 10",
+          "switchChannels": {
+            "Red / Step Time": "Step Time",
+            "Green / Fade Time": "Fade Time",
+            "Dimmer fine / Step Time": "Step Time",
+            "Red / Fade Time": "Fade Time"
+          }
+        }
+      ]
+    },
+    "Auto Speed Adjustment": {
+      "type": "Speed"
+    },
+    "Dimmer Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Return settings"
+        },
+        {
+          "range": [10, 29],
+          "name": "Linear dimmer"
+        },
+        {
+          "range": [30, 69],
+          "name": "Non-linear dimmer 1 (fastest)"
+        },
+        {
+          "range": [70, 129],
+          "name": "Non-linear dimmer 2"
+        },
+        {
+          "range": [130, 189],
+          "name": "Non-linear dimmer 3"
+        },
+        {
+          "range": [190, 255],
+          "name": "Non-linear dimmer 4 (slowest)"
+        }
+      ]
+    },
+    "Hue": {
+      "type": "MultiColor"
+    },
+    "Saturation": {
+      "type": "Intensity"
+    },
+    "Value": {
+      "type": "Intensity"
+    },
+    "P1 Red": {
+      "type": "SingleColor",
+      "color": "Red"
+    },
+    "P1 Green": {
+      "type": "SingleColor",
+      "color": "Green"
+    },
+    "P1 Blue": {
+      "type": "SingleColor",
+      "color": "Blue"
+    },
+    "P1 White": {
+      "type": "SingleColor",
+      "color": "White"
+    },
+    "P1 Amber": {
+      "type": "SingleColor",
+      "color": "Amber"
+    },
+    "P2 Red": {
+      "type": "SingleColor",
+      "color": "Red"
+    },
+    "P2 Green": {
+      "type": "SingleColor",
+      "color": "Green"
+    },
+    "P2 Blue": {
+      "type": "SingleColor",
+      "color": "Blue"
+    },
+    "P2 White": {
+      "type": "SingleColor",
+      "color": "White"
+    },
+    "P2 Amber": {
+      "type": "SingleColor",
+      "color": "Amber"
+    },
+    "Step Time": {
+      "type": "Speed"
+    },
+    "Fade Time": {
+      "type": "Speed"
+    }
+  },
+  "heads": {
+    "P1": ["P1 Red", "P1 Green", "P1 Blue", "P1 White", "P1 Amber"],
+    "P2": ["P2 Red", "P2 Green", "P2 Blue", "P2 White", "P2 Amber"]
+  },
+  "modes": [
+    {
+      "name": "Tour (Clas Strobe)",
+      "shortName": "Tour-Clas",
+      "channels": [
+        "Dimmer",
+        "Red / Step Time",
+        "Green / Fade Time",
+        "Blue",
+        "White",
+        "Amber",
+        "Macro Colors",
+        "Clas Strobe",
+        "Auto/Custom Programs",
+        "Auto Speed Adjustment",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "Tour (Spec Strobe)",
+      "shortName": "Tour-Spec",
+      "channels": [
+        "Dimmer",
+        "Red / Step Time",
+        "Green / Fade Time",
+        "Blue",
+        "White",
+        "Amber",
+        "Macro Colors",
+        "Spec Strobe",
+        "Auto/Custom Programs",
+        "Auto Speed Adjustment",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "Tour 16-bit (Clas Strobe)",
+      "shortName": "TR16-Clas",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine / Step Time",
+        "Red / Fade Time",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Amber",
+        "Amber fine",
+        "Macro Colors",
+        "Clas Strobe",
+        "Auto/Custom Programs",
+        "Auto Speed Adjustment",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "Tour 16-bit (Spec Strobe)",
+      "shortName": "TR16-Spec",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine / Step Time",
+        "Red / Fade Time",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Amber",
+        "Amber fine",
+        "Macro Colors",
+        "Spec Strobe",
+        "Auto/Custom Programs",
+        "Auto Speed Adjustment",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "ARC1",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "AR1.D",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "ARC2",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "ARC3",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber"
+      ]
+    },
+    {
+      "name": "AR3.D",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber"
+      ]
+    },
+    {
+      "name": "AR3.S (Clas Strobe)",
+      "shortName": "AR3.S-Clas",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Clas Strobe"
+      ]
+    },
+    {
+      "name": "AR3.S (Spec Strobe)",
+      "shortName": "AR3.S-Spec",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Spec Strobe"
+      ]
+    },
+    {
+      "name": "HSV",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Value"
+      ]
+    },
+    {
+      "name": "PIX1",
+      "channels": [
+        "P1 Red",
+        "P1 Green",
+        "P1 Blue",
+        "P2 Red",
+        "P2 Green",
+        "P2 Blue"
+      ]
+    },
+    {
+      "name": "PIX3",
+      "channels": [
+        "P1 Red",
+        "P1 Green",
+        "P1 Blue",
+        "P1 White",
+        "P1 Amber",
+        "P2 Red",
+        "P2 Green",
+        "P2 Blue",
+        "P2 White",
+        "P2 Amber"
+      ]
+    }
+  ]
+}
