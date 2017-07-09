@@ -376,7 +376,8 @@ function handleChannel(channel, mode, switchingChannels) {
   }
 
   if ('fineChannelAliases' in channel) {
-    const fineChannelPositions = channel.fineChannelAliases.map(fineAlias => getChannelIndexInMode(fineAlias, mode, switchingChannels) + 1
+    const fineChannelPositions = channel.fineChannelAliases.map(
+      fineAlias => getChannelIndexInMode(fineAlias, mode, switchingChannels) + 1
     ).filter(position => position !== 0); // filter out not used finer channels in the end of the array
 
     if (fineChannelPositions.length > 0) {
