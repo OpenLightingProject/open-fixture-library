@@ -135,10 +135,10 @@ function exportHandleMode(xmlFixture, mode) {
       dmxByte0 = mode.getChannelIndex(fineChannelKey) + 1;
     }
     else if (channel.fineChannelAliases.length > 0) {
-      dmxByte1 = mode.getChannelIndex(channel.fineChannelAliases[0]) + 1;
+      dmxByte1 = mode.getChannelIndex(channel.fineChannelAliases[0], 'defaultOnly') + 1;
     }
 
-    const channelFineness = channel.getFinenessInMode(mode) === 1 ? 1 : 0;
+    const channelFineness = channel.getFinenessInMode(mode, 'defaultOnly') === 1 ? 1 : 0;
 
     let xmlChannel = xmlFixture.element(getChannelType(channel), {
       'Name': switchingChannelName || channel.name,
