@@ -154,9 +154,7 @@ function exportHandleMode(xmlFixture, mode) {
       'ClassicPos': viewPosCount
     });
 
-    if (channel.hasCapabilities && channelFineness < 2) {
-      exportCapabilities(xmlChannel, channel);
-    }
+    exportCapabilities(xmlChannel, channel, channelFineness);
 
     viewPosCount++;
   }
@@ -186,16 +184,18 @@ function getChannelType(channel) {
   }
 }
 
-function exportCapabilities(xmlChannel, channel) {
-  for (const cap of channel.capabilities) {
-    const range = cap.getRangeWithFineness(channelFineness);
-    xmlChannel.element('Range', {
-      'Name': cap.name,
-      'Start': range.start,
-      'End': range.end,
-      'AutoMenu': cap.menuClick === 'hidden' ? 0 : 1,
-      'Centre': cap.menuClick === 'center' ? 1 : 0
-    });
+function exportCapabilities(xmlChannel, channel, channelFineness) {
+  if (channel.hasCapabilities && channelFineness < 2) {
+    for (const cap of channel.capabilities) {
+      const range = cap.getRangeWithFineness(channelFineness);
+      xmlChannel.element('Range', {
+        'Name': cap.name,
+        'Start': range.start,
+        'End': range.end,
+        'AutoMenu': cap.menuClick === 'hidden' ? 0 : 1,
+        'Centre': cap.menuClick === 'center' ? 1 : 0
+      });
+    }
   }
 }
 
