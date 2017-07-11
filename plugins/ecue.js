@@ -168,6 +168,7 @@ function getChannelType(channel) {
     case 'MultiColor':
     case 'SingleColor':
       return 'ChannelColor';
+
     case 'Beam':
     case 'Shutter':
     case 'Strobe':
@@ -178,9 +179,11 @@ function getChannelType(channel) {
     case 'Maintenance':
     case 'Nothing':
       return 'ChannelBeam';
+
     case 'Pan':
     case 'Tilt':
       return 'ChannelFocus';
+
     case 'Intensity':
     default:
       return 'ChannelIntensity';
