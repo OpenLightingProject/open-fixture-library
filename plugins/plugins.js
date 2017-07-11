@@ -19,13 +19,15 @@ for (const plugin of fs.readdirSync(__dirname)) {
   try {
     plugins.import[plugin] = require(importPath);
   }
-  catch (exception) {
+  catch (error) {
+    console.info(error.message);
   }
 
   try {
     plugins.export[plugin] = require(exportPath);
   }
-  catch (exception) {
+  catch (error) {
+    console.info(error.message);
   }
 }
 
