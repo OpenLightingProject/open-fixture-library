@@ -51,18 +51,16 @@ module.exports.export = function exportEcue(fixtures, options) {
   });
 
   for (const man of Object.keys(manufacturers)) {
-    const xmlMan = {
-      'Manufacturer': {
-        '@_CreationDate': timestamp,
-        '@_ModifiedDate': timestamp,
-        '@Name': manufacturers[man].data.name,
-        '@Comment': manufacturers[man].data.comment,
-        '@Web': manufacturers[man].data.website || ''
-      }
+    const manAttributes = {
+      '_CreationDate': timestamp,
+      '_ModifiedDate': timestamp,
+      'Name': manufacturers[man].data.name,
+      'Comment': manufacturers[man].data.comment,
+      'Web': manufacturers[man].data.website || ''
     };
-    xmlTiles.element(xmlMan);
+    xmlTiles.element('Manufacturer', manAttributes);
 
-    let xmlManFixtures = xmlFixtures.element(xmlMan);
+    let xmlManFixtures = xmlFixtures.element('Manufacturer', manAttributes);
     for (const fixture of manufacturers[man].fixtures) {
       exportHandleFixture(xmlManFixtures, fixture);
     }
