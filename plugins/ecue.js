@@ -138,12 +138,15 @@ function exportHandleMode(xmlFixture, mode) {
       dmxByte1 = mode.getChannelIndex(channel.fineChannelAliases[0], 'defaultOnly') + 1;
     }
 
-    const channelFineness = channel.getFinenessInMode(mode, 'defaultOnly') === 1 ? 1 : 0;
+    const fineness = channel.getFinenessInMode(mode, 'defaultOnly');
+
+    const defaultValue = channel.getDefaultValueWithFineness(fineness === 1 ? 1 : 0);
+    const highlightValue = channel.getHighlightValueWithFineness(fineness === 1 ? 1 : 0);
 
     let xmlChannel = xmlFixture.element(getChannelType(channel), {
       'Name': switchingChannelName || channel.name,
-      'DefaultValue': channel.getDefaultValueWithFineness(channelFineness),
-      'Highlight': channel.getHighlightValueWithFineness(channelFineness),
+      'DefaultValue': defaultValue,
+      'Highlight': highlightValue,
       'Deflection': 0,
       'DmxByte0': dmxByte0,
       'DmxByte1': dmxByte1,
@@ -154,7 +157,7 @@ function exportHandleMode(xmlFixture, mode) {
       'ClassicPos': viewPosCount
     });
 
-    exportCapabilities(xmlChannel, channel, channelFineness);
+    exportCapabilities(xmlChannel, channel, fineness);
 
     viewPosCount++;
   }
@@ -184,10 +187,10 @@ function getChannelType(channel) {
   }
 }
 
-function exportCapabilities(xmlChannel, channel, channelFineness) {
-  if (channel.hasCapabilities && channelFineness < 2) {
+function exportCapabilities(xmlChannel, channel, fineness) {
+  if (channel.hasCapabilities && fineness < 2) {
     for (const cap of channel.capabilities) {
-      const range = cap.getRangeWithFineness(channelFineness);
+      const range = cap.getRangeWithFineness(fineness);
       xmlChannel.element('Range', {
         'Name': cap.name,
         'Start': range.start,
