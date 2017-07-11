@@ -95,10 +95,12 @@ function exportAddChannel(xml, channel) {
 }
 
 function exportAddCapability(xmlChannel, cap) {
+  const range = cap.getRangeWithFineness(0);
+
   let xmlCapability = xmlChannel.element({
     Capability: {
-      '@Min': cap.rangesByFineness[0].start,
-      '@Max': cap.rangesByFineness[0].end,
+      '@Min': range.start,
+      '@Max': range.end,
       '#text': cap.name
     }
   });
