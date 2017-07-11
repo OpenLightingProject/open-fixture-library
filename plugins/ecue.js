@@ -83,20 +83,18 @@ function exportHandleFixture(xmlMan, fixture) {
   const fixModifiedDate = dateToString(fixture.meta.lastModifyDate);
 
   for (const mode of fixture.modes) {
-    let xmlFixture = xmlMan.element({
-      'Fixture': {
-        '@_CreationDate': fixCreationDate,
-        '@_ModifiedDate': fixModifiedDate,
-        '@Name': fixture.name + (fixture.modes.length > 1 ? ` (${mode.shortName} mode)` : ''),
-        '@NameShort': fixture.shortName + (fixture.modes.length > 1 ? '-' + mode.shortName : ''),
-        '@Comment': fixture.comment,
-        '@AllocateDmxChannels': mode.channels.length,
-        '@Weight': mode.physical.weight,
-        '@Power': mode.physical.power,
-        '@DimWidth': mode.physical.width,
-        '@DimHeight': mode.physical.height,
-        '@DimDepth': mode.physical.depth
-      }
+    let xmlFixture = xmlMan.element('Fixture', {
+      '_CreationDate': fixCreationDate,
+      '_ModifiedDate': fixModifiedDate,
+      'Name': fixture.name + (fixture.modes.length > 1 ? ` (${mode.shortName} mode)` : ''),
+      'NameShort': fixture.shortName + (fixture.modes.length > 1 ? '-' + mode.shortName : ''),
+      'Comment': fixture.comment,
+      'AllocateDmxChannels': mode.channels.length,
+      'Weight': mode.physical.weight,
+      'Power': mode.physical.power,
+      'DimWidth': mode.physical.width,
+      'DimHeight': mode.physical.height,
+      'DimDepth': mode.physical.depth
     });
 
     exportHandleMode(xmlFixture, mode);
@@ -132,32 +130,6 @@ function exportHandleMode(xmlFixture, mode) {
       channel = channel.coarseChannel;
     }
 
-    let chType;
-    switch (channel.type) {
-      case 'MultiColor':
-      case 'SingleColor':
-        chType = 'ChannelColor';
-        break;
-      case 'Beam':
-      case 'Shutter':
-      case 'Strobe':
-      case 'Gobo':
-      case 'Prism':
-      case 'Effect':
-      case 'Speed':
-      case 'Maintenance':
-      case 'Nothing':
-        chType = 'ChannelBeam';
-        break;
-      case 'Pan':
-      case 'Tilt':
-        chType = 'ChannelFocus';
-        break;
-      case 'Intensity':
-      default:
-        chType = 'ChannelIntensity';
-    }
-
     let dmxByte0 = dmxCount + 1;
     let dmxByte1 = 0;
 
@@ -170,34 +142,62 @@ function exportHandleMode(xmlFixture, mode) {
 
     const channelFineness = channel.getFinenessInMode(mode) === 1 ? 1 : 0;
 
-    let xmlChannel = xmlFixture.element(chType, {
-      Name: switchingChannelName || channel.name,
-      DefaultValue: channel.getDefaultValueWithFineness(channelFineness),
-      Highlight: channel.getHighlightValueWithFineness(channelFineness),
-      Deflection: 0,
-      DmxByte0: dmxByte0,
-      DmxByte1: dmxByte1,
-      Constant: channel.constant ? 1 : 0,
-      Crossfade: channel.crossfade ? 1 : 0,
-      Invert: channel.invert ? 1 : 0,
-      Precedence: channel.precedence,
-      ClassicPos: viewPosCount
+    let xmlChannel = xmlFixture.element(getChannelType(channel), {
+      'Name': switchingChannelName || channel.name,
+      'DefaultValue': channel.getDefaultValueWithFineness(channelFineness),
+      'Highlight': channel.getHighlightValueWithFineness(channelFineness),
+      'Deflection': 0,
+      'DmxByte0': dmxByte0,
+      'DmxByte1': dmxByte1,
+      'Constant': channel.constant ? 1 : 0,
+      'Crossfade': channel.crossfade ? 1 : 0,
+      'Invert': channel.invert ? 1 : 0,
+      'Precedence': channel.precedence,
+      'ClassicPos': viewPosCount
     });
 
     if (channel.hasCapabilities && channelFineness < 2) {
-      for (const cap of channel.capabilities) {
-        const range = cap.getRangeWithFineness(channelFineness);
-        xmlChannel.element('Range', {
-          Name: cap.name,
-          Start: range.start,
-          End: range.end,
-          AutoMenu: cap.menuClick === 'hidden' ? 0 : 1,
-          Centre: cap.menuClick === 'center' ? 1 : 0
-        });
-      }
+      exportCapabilities(xmlChannel, channel);
     }
 
     viewPosCount++;
+  }
+}
+
+function getChannelType(channel) {
+  switch (channel.type) {
+    case 'MultiColor':
+    case 'SingleColor':
+      return 'ChannelColor';
+    case 'Beam':
+    case 'Shutter':
+    case 'Strobe':
+    case 'Gobo':
+    case 'Prism':
+    case 'Effect':
+    case 'Speed':
+    case 'Maintenance':
+    case 'Nothing':
+      return 'ChannelBeam';
+    case 'Pan':
+    case 'Tilt':
+      return 'ChannelFocus';
+    case 'Intensity':
+    default:
+      return 'ChannelIntensity';
+  }
+}
+
+function exportCapabilities(xmlChannel, channel) {
+  for (const cap of channel.capabilities) {
+    const range = cap.getRangeWithFineness(channelFineness);
+    xmlChannel.element('Range', {
+      'Name': cap.name,
+      'Start': range.start,
+      'End': range.end,
+      'AutoMenu': cap.menuClick === 'hidden' ? 0 : 1,
+      'Centre': cap.menuClick === 'center' ? 1 : 0
+    });
   }
 }
 

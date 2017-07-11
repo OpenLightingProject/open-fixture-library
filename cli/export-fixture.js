@@ -31,7 +31,7 @@ if (!args.plugin) {
 }
 
 if (args._.length === 0) {
-  console.error(colors.red('[Warning]') + ' No fixtures specified. See --help for usage.');
+  console.error(colors.red('[Error]') + ' No fixtures specified. See --help for usage.');
   process.exit(1);
 }
 
