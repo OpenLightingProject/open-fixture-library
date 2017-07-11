@@ -63,6 +63,6 @@ exportPlugins[args.plugin].export(
     baseDir: path.join(__dirname, '..')
   }
 ).forEach(file => {
-  console.log(`File name: '${file.name}'`);
+  console.log('\n' + colors.yellow(`File name: '${file.name}'`));
   console.log(file.content);
 });
