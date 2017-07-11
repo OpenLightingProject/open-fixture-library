@@ -83,7 +83,7 @@ module.exports = function(options) {
   str += '<div class="download-button">';
   str += '<a href="#" class="title">Download as &hellip;</a>';
   str += '<ul>';
-  for (const plugin in plugins.export) {
+  for (const plugin of Object.keys(plugins.export)) {
     str += `<li><a href="/${man}/${fix}.${plugin}">${plugins.export[plugin].name}</a></li>`;
   }
   str += '</ul>';
