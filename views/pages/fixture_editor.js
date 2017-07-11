@@ -407,7 +407,7 @@ function getChannelDialogString() {
 
   str += '<div v-if="channel.editMode == \'add-existing\'">';
   str += '<select size="10" required v-model="channel.key">';
-  str += '<option v-for="chKey in currentModeUnchosenChannels" :value="chKey">{{ chKey }}</option>';
+  str += '<option v-for="chKey in currentModeUnchosenChannels" :value="chKey">{{ fixture.availableChannels[chKey].name }}</option>';
   str += '</select>';
   str += ' or <a href="#create-channel" @click.prevent="channel.editMode = \'create\'">create a new channel</a>';
   str += '</div>';

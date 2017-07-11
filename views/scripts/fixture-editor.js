@@ -2,7 +2,7 @@
 
 require('./polyfills');
 var A11yDialog = require('a11y-dialog');
-var properties = properties = require('../../fixtures/schema').properties;
+var properties = require('../../fixtures/schema').properties;
 var uuidV4 = require('uuid/v4');
 var Vue = require('vue/dist/vue');
 
@@ -492,7 +492,7 @@ function capabilitiesScroll(capabilityIndex) {
 
 function saveChannel() {
   if (this.channel.editMode === 'create') {
-    var channelKey = getKeyFromName(this.channel.name, Object.keys(this.fixture.availableChannels));
+    var channelKey = uuidV4();
 
     Vue.set(this.fixture.availableChannels, channelKey, getSanitizedChannel(this.channel));
     this.currentMode.channels.push(channelKey);
@@ -503,7 +503,7 @@ function saveChannel() {
   else if (this.channel.editMode === 'edit-duplicate') {
     var oldChannelKey = this.channel.key;
 
-    var newChannelKey = getKeyFromName(this.channel.name, Object.keys(this.fixture.availableChannels));
+    var newChannelKey = uuidV4();
     Vue.set(this.fixture.availableChannels, newChannelKey, getSanitizedChannel(this.channel));
 
     this.currentMode.channels = this.currentMode.channels.map(function(key) {
@@ -694,7 +694,7 @@ function submitFixture() {
     out: out
   };
 
-  var xhr = new XMLHttpRequest();
+  /*var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     try {
       if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -723,7 +723,7 @@ function submitFixture() {
   };
   xhr.open('POST', '/ajax/add-fixtures');
   xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.send(JSON.stringify(sendObject));
+  xhr.send(JSON.stringify(sendObject));*/
 
   this.submit.rawData = '```\n' + JSON.stringify(out, null, 2) + '\n```';
   console.log(this.submit.rawData);
@@ -852,12 +852,11 @@ function getKeyFromName(name, uniqueInList, forceSanitize) {
 }
 
 function getSanitizedChannel(channel) {
-  var retChannel = {};
-  for (var prop in channel) {
-    if (channel.hasOwnProperty(prop) && prop !== 'key' && prop !== 'editMode' && prop !== 'modeId') {
-      retChannel[prop] = clone(channel[prop]);
-    }
-  }
+  var retChannel = clone(channel);
+  delete retChannel.key;
+  delete retChannel.editMode;
+  delete retChannel.modeId;
+
   return retChannel;
 }
 
