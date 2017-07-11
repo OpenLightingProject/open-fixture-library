@@ -1,3 +1,4 @@
+const path = require('path');
 const xmlbuilder = require('xmlbuilder');
 
 const FineChannel = require(path.join(__dirname, '..', '..', 'lib', 'model', 'FineChannel.js'));

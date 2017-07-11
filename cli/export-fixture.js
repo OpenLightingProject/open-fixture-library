@@ -2,7 +2,6 @@
 const path = require('path');
 const minimist = require('minimist');
 const colors = require('colors');
-const fs = require('fs');
 
 const exportPlugins = require(path.join(__dirname, '..', 'plugins', 'plugins.js')).export;
 const Fixture = require(path.join(__dirname, '..', 'lib', 'model', 'Fixture.js'));

@@ -1,4 +1,3 @@
-const path = require('path');
 const xml2js = require('xml2js');
 
 module.exports.name = 'QLC+';
