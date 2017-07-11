@@ -7,16 +7,11 @@ const https = require('https');
 const url = require('url');
 const colors = require('colors');
 
+const plugins = Object.keys(require(path.join(__dirname, '..', 'plugins', 'plugins.js')).export);
+
 let failed = false;
 
 const linkRegex = /<a [^>]*href="([^"]+)"/g;
-
-let exportPlugins = [];
-for (const filename of fs.readdirSync(path.join(__dirname, '..', 'plugins'))) {
-  if ('export' in require(path.join(__dirname, '..', 'plugins', filename))) {
-    exportPlugins.push(path.basename(filename, '.js'));
-  }
-}
 
 // define which pages should have which status code
 const statusCodes = {
