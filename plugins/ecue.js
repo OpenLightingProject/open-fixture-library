@@ -1,4 +1,3 @@
-const fs = require('fs');
 const path = require('path');
 const colorNames = require('color-names');
 const xml2js = require('xml2js');
@@ -24,7 +23,7 @@ module.exports.export = function exportEcue(fixtures, options) {
       };
     }
     manufacturers[man].fixtures.push(fix);
-  };
+  }
 
   let xml = xmlbuilder.create(
     {
