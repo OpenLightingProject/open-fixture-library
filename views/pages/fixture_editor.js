@@ -328,7 +328,8 @@ function getModeTemplate() {
   str += '<h3>Channels</h3>';
   str += '<ol class="mode-channels">';
   str += '<li v-for="(chKey, index) in mode.channels">';
-  str += '<span class="display-name">{{ getChannelName(chKey) }}</span>';
+  str += '<span class="channel-name">{{ getChannel(chKey).name }}</span> ';
+  str += '<code v-if="isChannelNameAmbigous(chKey)" class="channel-uuid">{{ chKey }}</code>';
   str += '<a href="#remove" title="Remove channel" @click.prevent="mode.channels.splice(index, 1)">' + require('../includes/svg')({svgBasename: 'close'}) + '</a>';
   str += '<a href="#channel-editor" title="Edit channel" @click.prevent="editChannel(chKey)">' + require('../includes/svg')({svgBasename: 'pencil'}) + '</a>';
   str += '</li>';

@@ -87,9 +87,8 @@ Vue.component('fixture-mode', {
     this.$refs.firstInput.focus();
   },
   methods: {
-    getChannelName: function(chKey) {
-      var channel = this.fixture.availableChannels[chKey];
-      return channel.name;
+    getChannel: function(chKey) {
+      return this.fixture.availableChannels[chKey];
     },
     editChannel: function(chKey) {
       this.channel.modeId = this.mode.uuid;
@@ -99,6 +98,16 @@ Vue.component('fixture-mode', {
     addChannel: function() {
       this.channel.modeId = this.mode.uuid;
       this.channel.editMode = 'add-existing';
+    },
+    isChannelNameAmbigous: function(chKey) {
+      var chName = this.fixture.availableChannels[chKey].name;
+      for (var channelKey in this.fixture.availableChannels) {
+        var cmpName = this.fixture.availableChannels[channelKey].name;
+        if (cmpName === chName && channelKey !== chKey) {
+          return true;
+        }
+      }
+      return false;
     }
   }
 });
