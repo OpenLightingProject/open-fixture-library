@@ -293,10 +293,10 @@ function criticalFiles(files, fixtureCallback, pluginCallback, endCallback) {
   for (let file of files) {
     if (file.status === 'modified') {
       const filename = file.filename;
-      if (filename.match(/fixtures\/(?:.+?)\/(?:.+?)\.json$/)) {
+      if (filename.match(/fixtures\/[^/]+\/[^/]+\.json$/)) {
         fixtureCallback(filename);
       }
-      else if (filename.match(/plugins\/(?:.+)\/(?:im|ex)port\.js$/)) {
+      else if (filename.match(/plugins\/[^/]+\/export\.js$/)) {
         pluginCallback(filename);
       }
     }
