@@ -99,15 +99,8 @@ Vue.component('fixture-mode', {
       this.channel.modeId = this.mode.uuid;
       this.channel.editMode = 'add-existing';
     },
-    isChannelNameAmbigous: function(chKey) {
-      var chName = this.fixture.availableChannels[chKey].name;
-      for (var channelKey in this.fixture.availableChannels) {
-        var cmpName = this.fixture.availableChannels[channelKey].name;
-        if (cmpName === chName && channelKey !== chKey) {
-          return true;
-        }
-      }
-      return false;
+    isChannelNameUnique: function(chKey) {
+      return app.isChannelNameUnique(chKey);
     }
   }
 });
@@ -421,7 +414,17 @@ var app = window.app = new Vue({
     clearAutoSave: clearAutoSave,
     discardRestored: discardRestored,
     applyRestored: applyRestored,
-    submitFixture: submitFixture
+    submitFixture: submitFixture,
+    isChannelNameUnique: function(chKey) {
+      var chName = this.fixture.availableChannels[chKey].name;
+      for (var channelKey in this.fixture.availableChannels) {
+        var cmpName = this.fixture.availableChannels[channelKey].name;
+        if (cmpName === chName && channelKey !== chKey) {
+          return false;
+        }
+      }
+      return true;
+    }
   }
 });
 
