@@ -23,23 +23,25 @@
     ]
   },
   {
-    "man": "futurelight",
-    "key": "pro-slim-par-7-hcl",
-    "name": "PRO Slim PAR-7 HCL",
-    "features": [
-      "floating-point-dimensions",
-      "floating-point-weight",
-      "uses-switching-channels",
-      "channels-in-multiple-modes"
-    ]
-  },
-  {
     "man": "martin",
     "key": "roboscan-812",
     "name": "RoboScan 812",
     "features": [
       "floating-point-weight",
       "floating-point-lens-degrees",
+      "channels-in-multiple-modes"
+    ]
+  },
+  {
+    "man": "showtec",
+    "key": "horizon-8",
+    "name": "Horizon 8",
+    "features": [
+      "has-multiple-categories",
+      "fine-channel-alias",
+      "switching-fine-channels",
+      "uses-switching-channels",
+      "uses-heads",
       "channels-in-multiple-modes"
     ]
   }

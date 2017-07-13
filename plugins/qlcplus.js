@@ -95,10 +95,12 @@ function exportAddChannel(xml, channel) {
 }
 
 function exportAddCapability(xmlChannel, cap) {
+  const range = cap.getRangeWithFineness(0);
+
   let xmlCapability = xmlChannel.element({
     Capability: {
-      '@Min': cap.rangesByFineness[0].start,
-      '@Max': cap.rangesByFineness[0].end,
+      '@Min': range.start,
+      '@Max': range.end,
       '#text': cap.name
     }
   });
@@ -197,10 +199,17 @@ function exportAddHead(xmlMode, mode, headChannels) {
 // converts a Channel's type into a valid QLC+ channel type
 function getChannelType(channel) {
   switch(channel.type) {
-    case 'SingleColor': return 'Intensity';
-    case 'MultiColor':  return 'Colour';
-    case 'Strobe':      return 'Shutter';
-    default:            return channel.type;
+    case 'SingleColor':
+      return 'Intensity';
+
+    case 'MultiColor':
+      return 'Colour';
+
+    case 'Strobe':
+      return 'Shutter';
+
+    default:
+      return channel.type;
   }
 }
 
