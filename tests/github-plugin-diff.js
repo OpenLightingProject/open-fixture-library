@@ -4,7 +4,10 @@ const fs = require('fs');
 const path = require('path');
 const env = require('node-env-file');
 const GitHubApi = require('github');
+
 const diffPluginOutputs = require(path.join(__dirname, '..', 'lib', 'diff-plugin-outputs'));
+const plugins = Object.keys(require(path.join(__dirname, '..', 'plugins', 'plugins.js')).export);
+
 
 // These fixtures have the most possible different functions,
 // so they are good for testing plugin output.
@@ -36,15 +39,6 @@ for (let envVar of requiredEnvVars) {
 if (process.env.TRAVIS_PULL_REQUEST === 'false') {
   console.error('This test can only be run on pull requests.');
   process.exit(0);
-}
-
-// get export plugins (used when all plugins should be used)
-let plugins = [];
-const pluginDir = path.join(__dirname, '..', 'plugins');
-for (const filename of fs.readdirSync(pluginDir)) {
-  if (require(path.join(pluginDir, filename)).export) {
-    plugins.push(path.basename(filename, '.js'));
-  }
 }
 
 
@@ -299,10 +293,10 @@ function criticalFiles(files, fixtureCallback, pluginCallback, endCallback) {
   for (let file of files) {
     if (file.status === 'modified') {
       const filename = file.filename;
-      if (filename.match(/fixtures\/(.+)\/(.+)\.json/)) {
+      if (filename.match(/fixtures\/[^/]+\/[^/]+\.json$/)) {
         fixtureCallback(filename);
       }
-      else if (filename.match(/plugins\/(.+)\.js/)) {
+      else if (filename.match(/plugins\/[^/]+\/export\.js$/)) {
         pluginCallback(filename);
       }
     }

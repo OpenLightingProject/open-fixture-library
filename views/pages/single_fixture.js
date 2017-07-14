@@ -1,10 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 
+const plugins = require(path.join(__dirname, '..', '..', 'plugins', 'plugins.js'));
+
 let fixture;
 
 module.exports = function(options) {
-  const {manufacturers, man, fix, plugins} = options;
+  const {manufacturers, man, fix} = options;
   const manufacturer = manufacturers[man];
 
   fixture = JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', man, fix + '.json'), 'utf-8'));
@@ -81,10 +83,8 @@ module.exports = function(options) {
   str += '<div class="download-button">';
   str += '<a href="#" class="title">Download as &hellip;</a>';
   str += '<ul>';
-  for (const plugin in plugins) {
-    if ('export' in plugins[plugin]) {
-      str += `<li><a href="/${man}/${fix}.${plugin}">${plugins[plugin].name}</a></li>`;
-    }
+  for (const plugin of Object.keys(plugins.export)) {
+    str += `<li><a href="/${man}/${fix}.${plugin}">${plugins.export[plugin].name}</a></li>`;
   }
   str += '</ul>';
   str += '</div>';

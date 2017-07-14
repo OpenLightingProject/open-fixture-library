@@ -3,17 +3,10 @@
 const fs = require('fs');
 const path = require('path');
 const minimist = require('minimist');
+
 const checkFixture = require(path.join(__dirname, '..', 'tests', 'fixture_valid')).checkFixture;
 const createPullRequest = require(path.join(__dirname, '..', 'lib', 'create-github-pr'));
-
-let importPlugins = {};
-const pluginDir = path.join(__dirname, '..', 'plugins');
-for (const filename of fs.readdirSync(pluginDir)) {
-  const plugin = require(path.join(pluginDir, filename));
-  if ('import' in plugin) {
-    importPlugins[path.basename(filename, '.js')] = plugin;
-  }
-}
+const importPlugins = require(path.join(__dirname, '..', 'plugins', 'plugins.js')).import;
 
 const args = minimist(process.argv.slice(2), {
   boolean: 'p',
