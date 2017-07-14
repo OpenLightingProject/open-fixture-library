@@ -16,13 +16,11 @@
   },
   "availableChannels": {
     "Dimmer": {
-      "name": "Dimmer",
       "type": "Intensity",
       "highlightValue": 255,
       "crossfade": true
     },
-    "Color Macros": {
-      "name": "Color Macros Simple",
+    "Color Macro Simple": {
       "type": "MultiColor",
       "capabilities": [
         {
@@ -102,18 +100,7 @@
         }
       ]
     },
-    "Strobe": {
-      "name": "Strobe",
-      "type": "Strobe",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Strobe rate 0-100%"
-        }
-      ]
-    },
-    "Color Macros Advanced": {
-      "name": "Color Macros Advanced",
+    "Color Macro Advanced": {
       "type": "MultiColor",
       "capabilities": [
         {
@@ -128,59 +115,73 @@
         },
         {
           "range": [11, 15],
-          "name": "Green"
+          "name": "Green",
+          "color": "#00ff00"
         },
         {
           "range": [16, 20],
-          "name": "Blue"
+          "name": "Blue",
+          "color": "#0000ff"
         },
         {
           "range": [21, 25],
-          "name": "White"
+          "name": "White",
+          "color": "#ffffff"
         },
         {
           "range": [26, 30],
-          "name": "Amber"
+          "name": "Amber",
+          "color": "#ffbf00"
         },
         {
           "range": [31, 35],
-          "name": "Yellow"
+          "name": "Yellow",
+          "color": "#ffff00"
         },
         {
           "range": [36, 40],
-          "name": "Cyan"
+          "name": "Cyan",
+          "color": "#00ffff"
         },
         {
           "range": [41, 45],
-          "name": "Lavender"
+          "name": "Lavender",
+          "color": "#e6e6fa"
         },
         {
           "range": [46, 50],
-          "name": "Pink"
+          "name": "Pink",
+          "color": "#ffc0cb"
         },
         {
           "range": [51, 55],
-          "name": "Light Green"
+          "name": "Light Green",
+          "color": "#aaffaa"
         },
         {
           "range": [56, 60],
-          "name": "Magenta"
+          "name": "Magenta",
+          "color": "#ff00ff"
         },
         {
           "range": [61, 65],
-          "name": "Turquoise"
+          "name": "Turquoise",
+          "color": "#40e0d0"
         },
         {
           "range": [66, 70],
-          "name": "Orange"
+          "name": "Orange",
+          "color": "#ffcc00"
         },
         {
           "range": [71, 75],
-          "name": "Cool White"
+          "name": "Cool White",
+          "color": "#f2f6fe"
         },
         {
           "range": [76, 80],
-          "name": "Warm White"
+          "name": "Warm White",
+          "color": "#fffbf2"
         },
         {
           "range": [81, 150],
@@ -196,37 +197,42 @@
         }
       ]
     },
+    "Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Strobe rate 0-100%"
+        }
+      ]
+    },
     "Red": {
-      "name": "Red",
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green": {
-      "name": "Green",
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue": {
-      "name": "Blue",
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White": {
-      "name": "White",
       "type": "SingleColor",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
     },
     "Amber": {
-      "name": "Amber",
       "type": "SingleColor",
+      "color": "Amber",
       "highlightValue": 255,
       "crossfade": true
     }
@@ -237,7 +243,7 @@
       "shortName": "2ch",
       "channels": [
         "Dimmer",
-        "Color Macros"
+        "Color Macro Simple"
       ]
     },
     {
@@ -246,7 +252,7 @@
       "channels": [
         "Dimmer",
         "Strobe",
-        "Color Macros Advanced"
+        "Color Macro Advanced"
       ]
     },
     {
@@ -280,7 +286,7 @@
         "Blue",
         "White",
         "Amber",
-        "Color Macros Advanced"
+        "Color Macro Advanced"
       ]
     }
   ]
