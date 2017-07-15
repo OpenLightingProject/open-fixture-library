@@ -1,0 +1,53 @@
+{
+  "name": "a",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["a"],
+    "createDate": "2017-07-15",
+    "lastModifyDate": "2017-07-15"
+  },
+  "availableChannels": {
+    "abc": {
+      "name": "abc",
+      "type": "Intensity",
+      "defaultValue": 0
+    },
+    "def": {
+      "name": "def",
+      "type": "SingleColor",
+      "color": "Red"
+    },
+    "h": {
+      "name": "h",
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 3],
+          "name": "nulldrei"
+        },
+        {
+          "range": [4, 5],
+          "name": "vierfunf"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "abc",
+        "def",
+        "h"
+      ]
+    },
+    {
+      "name": "2",
+      "channels": [
+        "abc",
+        "h"
+      ]
+    }
+  ]
+}
