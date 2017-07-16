@@ -1,6 +1,6 @@
 {
-  "name": "Light Bar RGB V3",
-  "shortName": "LightBarV3",
+  "name": "LED Light Bar RGB V3",
+  "shortName": "LEDLightBarV3",
   "comment": "Ordercode 42202",
   "categories": ["Color Changer"],
   "meta": {
@@ -8,6 +8,7 @@
     "createDate": "2017-01-20",
     "lastModifyDate": "2017-07-16"
   },
+  "manualURL": "http://www.highlite.nl/silver.download/Documents@extern@Manuals/42202_MANUAL_GB_V3.pdf",
   "physical": {
     "dimensions": [1070, 65, 88],
     "weight": 1.68,
@@ -373,8 +374,8 @@
   },
   "modes": [
     {
-      "name": "3-channel",
-      "shortName": "3ch",
+      "name": "P1 (3 channels)",
+      "shortName": "P1",
       "channels": [
         "Red",
         "Green",
@@ -382,8 +383,8 @@
       ]
     },
     {
-      "name": "4-channel",
-      "shortName": "4ch",
+      "name": "P2 (4 channels)",
+      "shortName": "P2",
       "channels": [
         "Red",
         "Green",
@@ -392,8 +393,8 @@
       ]
     },
     {
-      "name": "8-channel",
-      "shortName": "8ch",
+      "name": "P3 (8 channels)",
+      "shortName": "P3",
       "channels": [
         "Red 1/2",
         "Green 1/2",
@@ -406,8 +407,8 @@
       ]
     },
     {
-      "name": "14-channel",
-      "shortName": "14ch",
+      "name": "P4 (14 channels)",
+      "shortName": "P4",
       "channels": [
         "Red 1/4",
         "Green 1/4",
@@ -426,16 +427,16 @@
       ]
     },
     {
-      "name": "2-channel",
-      "shortName": "2ch",
+      "name": "P5 (2 channels)",
+      "shortName": "P5",
       "channels": [
         "Color Programs",
         "Program Speed / Mic Sensitivity"
       ]
     },
     {
-      "name": "15-channel",
-      "shortName": "15ch",
+      "name": "P6 (15 channels)",
+      "shortName": "P6",
       "channels": [
         "Operation Mode",
         "Dimmer",
@@ -455,8 +456,8 @@
       ]
     },
     {
-      "name": "7-channel",
-      "shortName": "7ch",
+      "name": "P7 (7 channels)",
+      "shortName": "P7",
       "channels": [
         "Red",
         "Green",
