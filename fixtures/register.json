@@ -72,6 +72,9 @@
     "martin/roboscan-812": {
       "name": "RoboScan 812"
     },
+    "robe/dj-scan-250-xt": {
+      "name": "DJ Scan 250 XT"
+    },
     "showtec/horizon-8": {
       "name": "Horizon 8"
     },
@@ -127,6 +130,9 @@
       "atomic-3000",
       "roboscan-812"
     ],
+    "robe": [
+      "dj-scan-250-xt"
+    ],
     "showtec": [
       "horizon-8",
       "phantom-140-led-spot",
@@ -181,7 +187,8 @@
       "gruft/ventilator"
     ],
     "Scanner": [
-      "martin/roboscan-812"
+      "martin/roboscan-812",
+      "robe/dj-scan-250-xt"
     ]
   }
 }
