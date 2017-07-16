@@ -1,10 +1,16 @@
 {
   "filesystem": {
+    "5star-systems/spica-250m": {
+      "name": "Spica 250M"
+    },
     "american-dj/quad-phase-hp": {
       "name": "Quad Phase HP"
     },
     "american-dj/revo-4-ir": {
       "name": "Revo 4 IR"
+    },
+    "cameo/flat-pro-18": {
+      "name": "Flat Pro 18"
     },
     "cameo/outdoor-par-tri-12": {
       "name": "Outdoor PAR Tri 12"
@@ -57,20 +63,20 @@
     "martin/roboscan-812": {
       "name": "RoboScan 812"
     },
+    "showtec/horizon-8": {
+      "name": "Horizon 8"
+    },
     "showtec/phantom-140-led-spot": {
       "name": "Phantom 140 LED Beam"
     },
     "showtec/phantom-50-led-spot": {
       "name": "Phantom 50 LED Spot"
-    },
-    "showtec/horizon-8": {
-      "name": "Horizon 8"
-    },
-    "cameo/flat-pro-18": {
-      "name": "Flat Pro 18"
     }
   },
   "manufacturers": {
+    "5star-systems": [
+      "spica-250m"
+    ],
     "american-dj": [
       "quad-phase-hp",
       "revo-4-ir"
@@ -114,6 +120,16 @@
     ]
   },
   "categories": {
+    "Moving Head": [
+      "5star-systems/spica-250m",
+      "elation/platinum-hfx",
+      "elation/platinum-spot-15r-pro",
+      "eurolite/led-tmh-18",
+      "eurolite/led-tmh-x25",
+      "lightmaxx/vega-zoom-wash",
+      "showtec/phantom-140-led-spot",
+      "showtec/phantom-50-led-spot"
+    ],
     "Flower": [
       "american-dj/quad-phase-hp",
       "american-dj/revo-4-ir"
@@ -143,15 +159,6 @@
       "cameo/thunder-wash-600-rgb",
       "cameo/thunder-wash-600-w",
       "showtec/horizon-8"
-    ],
-    "Moving Head": [
-      "elation/platinum-hfx",
-      "elation/platinum-spot-15r-pro",
-      "eurolite/led-tmh-18",
-      "eurolite/led-tmh-x25",
-      "lightmaxx/vega-zoom-wash",
-      "showtec/phantom-140-led-spot",
-      "showtec/phantom-50-led-spot"
     ],
     "Fan": [
       "gruft/ventilator"

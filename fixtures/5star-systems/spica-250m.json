@@ -1,0 +1,437 @@
+{
+  "name": "Spica 250M",
+  "shortName": "Spica250M",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["FloEdelmann", "Felix Edelmann"],
+    "createDate": "2017-01-23",
+    "lastModifyDate": "2017-07-15"
+  },
+  "manualURL": "https://www.manualslib.com/manual/729972/5star-Systems-Spica-250m.html",
+  "physical": {
+    "dimensions": [427, 459, 373],
+    "weight": 18,
+    "power": 500,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Sylvania BA 250/2 GY-9.5",
+      "colorTemperature": 8900
+    },
+    "lens": {
+      "degreesMinMax": [18, 18]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 530,
+      "tiltMax": 280
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32639,
+      "crossfade": true
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32639,
+      "crossfade": true
+    },
+    "Pan/Tilt Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 249],
+          "name": "speed fast-slow"
+        },
+        {
+          "range": [250, 255],
+          "name": "fast, black while moving"
+        }
+      ]
+    },
+    "Reset": {
+      "type": "Maintenance",
+      "defaultValue": 170,
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "fan speed fast-slow"
+        },
+        {
+          "range": [128, 139],
+          "name": "lamp on"
+        },
+        {
+          "range": [140, 179],
+          "name": "no function"
+        },
+        {
+          "range": [180, 189],
+          "name": "reset"
+        },
+        {
+          "range": [190, 229],
+          "name": "no function"
+        },
+        {
+          "range": [230, 239],
+          "name": "lamp off after 5s"
+        },
+        {
+          "range": [240, 255],
+          "name": "no function"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "type": "MultiColor",
+      "capabilities": [
+        {
+          "range": [0, 6],
+          "name": "white",
+          "color": "#ffffff"
+        },
+        {
+          "range": [7, 13],
+          "name": "white-yellow",
+          "color": "#ffffff",
+          "color2": "#ffff00"
+        },
+        {
+          "range": [14, 20],
+          "name": "yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [21, 27],
+          "name": "yellow-orange",
+          "color": "#ffff00",
+          "color2": "#ff7f00"
+        },
+        {
+          "range": [28, 34],
+          "name": "orange",
+          "color": "#ff7f00"
+        },
+        {
+          "range": [35, 41],
+          "name": "orange-red",
+          "color": "#ff7f00",
+          "color2": "#ff0000"
+        },
+        {
+          "range": [42, 48],
+          "name": "red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [49, 55],
+          "name": "red-blue",
+          "color": "#ff0000",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [56, 62],
+          "name": "blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [63, 69],
+          "name": "blue-green",
+          "color": "#0000ff",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [70, 76],
+          "name": "green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [77, 83],
+          "name": "green-pink",
+          "color": "#00ff00",
+          "color2": "#ffc0cb"
+        },
+        {
+          "range": [84, 90],
+          "name": "pink",
+          "color": "#ffc0cb"
+        },
+        {
+          "range": [91, 97],
+          "name": "pink-turquoise",
+          "color": "#ffc0cb",
+          "color2": "#40e0d0"
+        },
+        {
+          "range": [98, 104],
+          "name": "turquoise",
+          "color": "#40e0d0"
+        },
+        {
+          "range": [105, 111],
+          "name": "turquoise-purple",
+          "color": "#40e0d0",
+          "color2": "#9800ff"
+        },
+        {
+          "range": [112, 118],
+          "name": "purple",
+          "color": "#9800ff"
+        },
+        {
+          "range": [119, 127],
+          "name": "purple-white",
+          "color": "#9800ff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [128, 189],
+          "name": "Rotation CW fast-slow"
+        },
+        {
+          "range": [190, 193],
+          "name": "No rotation"
+        },
+        {
+          "range": [194, 255],
+          "name": "Rotation CW slow-fast"
+        }
+      ]
+    },
+    "Prism": {
+      "type": "Prism",
+      "capabilities": [
+        {
+          "range": [0, 95],
+          "name": "open"
+        },
+        {
+          "range": [96, 159],
+          "name": "Prism"
+        },
+        {
+          "range": [160, 167],
+          "name": "Macro 1"
+        },
+        {
+          "range": [168, 175],
+          "name": "Macro 2"
+        },
+        {
+          "range": [176, 183],
+          "name": "Macro 3"
+        },
+        {
+          "range": [184, 191],
+          "name": "Macro 4"
+        },
+        {
+          "range": [192, 199],
+          "name": "Macro 5"
+        },
+        {
+          "range": [200, 207],
+          "name": "Macro 6"
+        },
+        {
+          "range": [208, 215],
+          "name": "Macro 7"
+        },
+        {
+          "range": [216, 223],
+          "name": "Macro 8"
+        },
+        {
+          "range": [224, 231],
+          "name": "Macro 9"
+        },
+        {
+          "range": [232, 239],
+          "name": "Macro 10"
+        },
+        {
+          "range": [240, 247],
+          "name": "Macro 11"
+        },
+        {
+          "range": [248, 255],
+          "name": "Macro 12"
+        }
+      ]
+    },
+    "Prism rotation": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "No rotation"
+        },
+        {
+          "range": [1, 126],
+          "name": "CW fast-slow"
+        },
+        {
+          "range": [127, 128],
+          "name": "No rotation"
+        },
+        {
+          "range": [129, 255],
+          "name": "CCW slow-fast"
+        }
+      ]
+    },
+    "Gobo": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "open"
+        },
+        {
+          "range": [32, 63],
+          "name": "Gobo 1"
+        },
+        {
+          "range": [64, 95],
+          "name": "Gobo 2"
+        },
+        {
+          "range": [96, 127],
+          "name": "Gobo 3"
+        },
+        {
+          "range": [128, 159],
+          "name": "Gobo 4"
+        },
+        {
+          "range": [160, 223],
+          "name": "Gobo 5"
+        },
+        {
+          "range": [224, 255],
+          "name": "CW"
+        }
+      ]
+    },
+    "Gobo rotation": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "index"
+        },
+        {
+          "range": [128, 190],
+          "name": "CW fast-slow"
+        },
+        {
+          "range": [191, 192],
+          "name": "No rotation"
+        },
+        {
+          "range": [193, 255],
+          "name": "CCW slow-fast"
+        }
+      ]
+    },
+    "Focus": {
+      "type": "Beam",
+      "crossfade": true,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "far-near"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "closed"
+        },
+        {
+          "range": [32, 63],
+          "name": "open"
+        },
+        {
+          "range": [64, 95],
+          "name": "strobe slow-fast"
+        },
+        {
+          "range": [96, 127],
+          "name": "open"
+        },
+        {
+          "range": [128, 159],
+          "name": "pulse"
+        },
+        {
+          "range": [160, 191],
+          "name": "open"
+        },
+        {
+          "range": [192, 223],
+          "name": "random slow-fast"
+        },
+        {
+          "range": [224, 255],
+          "name": "open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    }
+  },
+  "modes": [
+    {
+      "name": "16bit",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Reset",
+        "Color Wheel",
+        null,
+        "Prism",
+        "Prism rotation",
+        "Gobo",
+        "Gobo rotation",
+        null,
+        "Focus",
+        "Shutter / Strobe",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "8bit",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Reset",
+        "Color Wheel",
+        null,
+        "Prism",
+        "Prism rotation",
+        "Gobo",
+        "Gobo rotation",
+        null,
+        "Focus",
+        "Shutter / Strobe",
+        "Dimmer"
+      ]
+    }
+  ]
+}
