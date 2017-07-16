@@ -145,7 +145,7 @@ new Promise((resolve, reject) => {
               diffFixture(fixtureFilename, 0);
             },
             pluginFilename => {
-              const plugin = path.basename(pluginFilename, '.js');
+              const plugin = path.basename(path.dirname(pluginFilename));
               if (plugins.includes(plugin)) {
                 diffPluginOutputs({
                   plugin: plugin,
