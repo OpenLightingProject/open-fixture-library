@@ -174,19 +174,26 @@ section {
   line-height: 1.5;
 }
 
-data:empty {
-  border: 1px solid #cfd6e6;
-  padding: 0 2px;
-  cursor: default;
+.color-circle {
+  display: inline-block;
+  width: 2ex;
+  height: 2ex;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  overflow: hidden;
 
-  &::before {
-    content: '?';
-    display: inline;
-    color: #cfd6e6;
+  & > * {
+    display: block;
+    width: 4ex;
+    height: 4ex;
+    margin: -1ex 0 0 1ex;
+    transform: rotate(45deg);
+    transform-origin: left center;    
   }
 }
 
-data.checkbox {
+.checkbox {
   display: inline-block;
   border: 1px solid #cfd6e6;
   border-radius: 3px;
@@ -199,10 +206,10 @@ data.checkbox {
   color: #cfd6e6;
   cursor: default;
 
-  &[data-value='false'] {
+  &[title='false'] {
     border-color: #b00;
   }
-  &[data-value='true'] {
+  &[title='true'] {
     border-color: #0b5;
   }
 
@@ -215,12 +222,12 @@ data.checkbox {
   &:empty::before {
     content: '?';
   }
-  &[data-value='false']::before {
+  &[title='false']::before {
     color: #b00;
     content: '\d7';
     font-weight: bold;
   }
-  &[data-value='true']::before {
+  &[title='true']::before {
     color: #0b5;
     content: '\2714';
   }
