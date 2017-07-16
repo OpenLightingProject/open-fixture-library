@@ -1,0 +1,248 @@
+{
+  "name": "Kanjo Wash RGB",
+  "shortName": "KanjoWash",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["FloEdelmann", "Felix Edelmann"],
+    "createDate": "2017-01-20",
+    "lastModifyDate": "2017-07-16"
+  },
+  "manualURL": "https://www.highlite.nl/de/silver.download/Documents@extern@Manuals/45000_MANUAL_GB_V1.pdf",
+  "physical": {
+    "dimensions": [169, 270, 156],
+    "weight": 2.52,
+    "power": 43,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 180
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "defaultValue": 32639,
+      "fineChannelAliases": ["Pan fine"]
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "defaultValue": 32768,
+      "fineChannelAliases": ["Tilt fine"]
+    },
+    "Pan/Tilt Speed": {
+      "type": "Speed",
+      "defaultValue": 128,
+      "invert": true
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "crossfade": true
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0-20Hz"
+        }
+      ]
+    },
+    "Red": {
+      "type": "SingleColor",
+      "color": "Red",
+      "crossfade": true
+    },
+    "Green": {
+      "type": "SingleColor",
+      "color": "Green",
+      "crossfade": true
+    },
+    "Blue": {
+      "type": "SingleColor",
+      "color": "Blue",
+      "crossfade": true
+    },
+    "Color Presets": {
+      "type": "MultiColor",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "No function",
+          "color": "#000000"
+        },
+        {
+          "range": [1, 13],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [14, 26],
+          "name": "Purple",
+          "color": "#aa00ff"
+        },
+        {
+          "range": [27, 39],
+          "name": "Purple / Red",
+          "color": "#aa00ff",
+          "color2": "#ff0000"
+        },
+        {
+          "range": [40, 52],
+          "name": "Orange",
+          "color": "#ffaa00"
+        },
+        {
+          "range": [53, 65],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [66, 78],
+          "name": "Bright Pink",
+          "color": "#ffaaff"
+        },
+        {
+          "range": [79, 91],
+          "name": "Bright green",
+          "color": "#55ff7f"
+        },
+        {
+          "range": [92, 104],
+          "name": "Bright blue",
+          "color": "#00aaff"
+        },
+        {
+          "range": [105, 117],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [118, 130],
+          "name": "Warm white",
+          "color": "#fff9e0"
+        },
+        {
+          "range": [131, 143],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [144, 156],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [157, 169],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [170, 182],
+          "name": "Amber",
+          "color": "#ffbf00"
+        },
+        {
+          "range": [183, 195],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [196, 223],
+          "name": "Seven color gradient"
+        },
+        {
+          "range": [224, 237],
+          "name": "Seven color change"
+        },
+        {
+          "range": [238, 255],
+          "name": "Seven color jump"
+        }
+      ]
+    },
+    "Color Speed": {
+      "type": "Speed"
+    },
+    "Programs": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 2],
+          "name": "No function"
+        },
+        {
+          "range": [3, 101],
+          "name": "Program 1 (fast)"
+        },
+        {
+          "range": [102, 152],
+          "name": "Program 2 (gradient and jump)"
+        },
+        {
+          "range": [153, 203],
+          "name": "Program 3 (slow)"
+        },
+        {
+          "range": [204, 255],
+          "name": "Program 4 (sound-controlled)"
+        }
+      ]
+    },
+    "Factory reset": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 254],
+          "name": "No function"
+        },
+        {
+          "range": [255, 255],
+          "name": "Reset to factory settings"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Pan/Tilt Speed"
+      ]
+    },
+    {
+      "name": "14-channel",
+      "shortName": "14ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Color Presets",
+        "Color Speed",
+        "Programs",
+        "Factory reset"
+      ]
+    }
+  ]
+}
