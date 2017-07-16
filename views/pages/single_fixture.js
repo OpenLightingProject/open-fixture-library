@@ -65,7 +65,7 @@ module.exports = function(options) {
   str += '    <span class="value">';
   str += fixture.categories.map(cat => {
     const svg = require('../includes/svg')({categoryName: cat});
-    return `<a href="/categories/${encodeURIComponent(cat)}" class="category-badge">${svg} <data data-key="category">${cat}</data></a>`;
+    return `<a href="/categories/${encodeURIComponent(cat)}" class="category-badge">${svg} ${cat}</a>`;
   }).join(' ');
   str += '    </span>';
   str += '  </section>';
@@ -73,14 +73,14 @@ module.exports = function(options) {
   if (fixture.hasComment) {
     str += '<section class="comment">';
     str += '  <span class="label">Comment</span>';
-    str += `  <span class="value"><data data-key="comment">${fixture.comment}</data></span>`;
+    str += `  <span class="value">${fixture.comment}</span>`;
     str += '</section>';
   }
 
   if (fixture.manualURL !== null) {
     str += '<section class="manualURL">';
     str += '  <span class="label">Manual</span>';
-    str += `  <span class="value"><a href="${fixture.manualURL}"><data data-key="manualURL">${fixture.manualURL}</data></a></span>`;
+    str += `  <span class="value"><a href="${fixture.manualURL}">${fixture.manualURL}</a></span>`;
     str += '</section>';
   }
 
@@ -98,9 +98,7 @@ module.exports = function(options) {
     for (const headName of Object.keys(fixture.heads)) {
       str += '<li>';
       str += `<strong>${headName}:</strong> `;
-      str += fixture.heads[headName].map(ch => {
-        return `<data class="channel" data-channel="${ch}">${getChannelHeading(ch)}</data>`;
-      }).join(', ');
+      str += fixture.heads[headName].map(ch => getChannelHeading(ch)).join(', ');
       str += '</li>';
     }
     str += '</ul>';
@@ -201,9 +199,7 @@ function handlePhysicalData(physical) {
     str += `<section class="physical-dimensions">
       <span class="label">Dimensions</span>
       <span class="value">
-        <data data-key="physical-dimensions-0">${physical.width}</data> &times;
-        <data data-key="physical-dimensions-1">${physical.height}</data> &times;
-        <data data-key="physical-dimensions-2">${physical.depth}</data>mm
+        ${physical.width} &times; ${physical.height} &times; ${physical.depth}mm
         <span class="hint">width &times; height &times; depth</span>
       </span>
     </section>`;
@@ -212,21 +208,21 @@ function handlePhysicalData(physical) {
   if (physical.weight !== null) {
     str += `<section class="physical-weight">
       <span class="label">Weight</span>
-      <span class="value"><data data-key="physical-weight">${physical.weight}</data>kg</span>
+      <span class="value">${physical.weight}kg</span>
     </section>`;
   }
 
   if (physical.power !== null) {
     str += `<section class="physical-power">
       <span class="label">Power</span>
-      <span class="value"><data data-key="physical-power">${physical.power}</data>W</span>
+      <span class="value">${physical.power}W</span>
     </section>`;
   }
 
   if (physical.DMXconnector !== null) {
     str += `<section class="physical-DMXconnector">
       <span class="label">DMX connector</span>
-      <span class="value"><data data-key="physical-DMXconnector">${physical.DMXconnector}</data></span>
+      <span class="value">${physical.DMXconnector}</span>
     </section>`;
   }
 
@@ -237,21 +233,21 @@ function handlePhysicalData(physical) {
     if (physical.bulbType !== null) {
       str += `<section class="physical-bulb-type">
         <span class="label">Bulb type</span>
-        <span class="value"><data data-key="physical-bulb-type">${physical.bulbType}</data></span>
+        <span class="value">${physical.bulbType}</span>
       </section>`;
     }
 
     if (physical.bulbColorTemperature) {
       str += `<section class="physical-bulb-colorTemperature">
         <span class="label">Color temperature</span>
-        <span class="value"><data data-key="physical-bulb-colorTemperature">${physical.bulbColorTemperature}</data>K</span>
+        <span class="value">${physical.bulbColorTemperature}K</span>
       </section>`;
     }
 
     if (physical.bulbLumens !== null) {
       str += `<section class="physical-bulb-lumens">
         <span class="label">Lumens</span>
-        <span class="value"><data data-key="physical-bulb-lumens">${physical.bulbLumens}</data></span>
+        <span class="value">${physical.bulbLumens}</span>
       </section>`;
     }
 
@@ -265,14 +261,14 @@ function handlePhysicalData(physical) {
     if (physical.lensName !== null) {
       str += `<section class="physical-lens-name">
         <span class="label">Name</span>
-        <span class="value"><data data-key="physical-lens-name">${physical.lensName}</data></span>
+        <span class="value">${physical.lensName}</span>
       </section>`;
     }
 
     if (physical.lensDegreesMin !== null) {
       str += `<section class="physical-lens-degreesMinMax">
         <span class="label">Light cone</span>
-        <span class="value"><data data-key="physical-lens-degreesMin">${physical.lensDegreesMin}</data>..<data data-key="physical-lens-degreesMin">${physical.lensDegreesMax}</data>°</span>
+        <span class="value">${physical.lensDegreesMin} … ${physical.lensDegreesMax}°</span>
       </section>`;
     }
 
@@ -286,21 +282,21 @@ function handlePhysicalData(physical) {
     if (physical.focusType !== null) {
       str += `<section class="physical-focus-type">
         <span class="label">Type</span>
-        <span class="value"><data data-key="physical-focus-type">${physical.focusType}</data></span>
+        <span class="value">${physical.focusType}</span>
       </section>`;
     }
 
     if (physical.focusPanMax !== null) {
       str += `<section class="physical-focus-panMax">
         <span class="label">Max. pan</span>
-        <span class="value"><data data-key="physical-focus-panMax">${physical.focusPanMax}</data>°</span>
+        <span class="value">${physical.focusPanMax}°</span>
       </section>`;
     }
 
     if (physical.focusTiltMax) {
       str += `<section class="physical-focus-tiltMax">
         <span class="label">Max. tilt</span>
-        <span class="value"><data data-key="physical-focus-tiltMax">${physical.focusTiltMax}</data>°</span>
+        <span class="value">${physical.focusTiltMax}°</span>
       </section>`;
     }
 
@@ -313,13 +309,13 @@ function handlePhysicalData(physical) {
 function handleChannel(channel, mode) {
   let str = `<section class="channel-type">
     <span class="label">Type</span>
-    <span class="value"><data data-key="channel-type">${channel.type}</data></span>
+    <span class="value">${channel.type}</span>
   </section>`;
 
   if (channel.color !== null) {
     str += `<section class="channel-color">
       <span class="label">Color</span>
-      <span class="value"><data data-key="channel-color">${channel.color}</data></span>
+      <span class="value">${channel.color}</span>
     </section>`;
   }
 
@@ -327,7 +323,7 @@ function handleChannel(channel, mode) {
   if (finenessInMode > 0) {
     str += '<section class="channel-fineChannelAliases">';
     str += '  <span class="label">Fine channels</span>';
-    str += '  <span class="value"><data data-key="channel-fineChannelAliases">';
+    str += '  <span class="value">';
 
     for (let i=0; i<finenessInMode; i++) {
       const heading = getChannelHeading(channel.fineChannelAliases[i]);
@@ -335,49 +331,49 @@ function handleChannel(channel, mode) {
       str +=  `${heading} (channel ${position})`;
     }
 
-    str += '</data></span>';
+    str += '</span>';
     str += '</section>';
   }
 
   if (channel.hasDefaultValue) {
     str += `<section class="channel-defaultValue">
       <span class="label">Default value</span>
-      <span class="value"><data data-key="channel-defaultValue">${channel.defaultValue}</data></span>
+      <span class="value">${channel.defaultValue}</span>
     </section>`;
   }
 
   if (channel.hasHighlightValue) {
     str += `<section class="channel-highlightValue">
       <span class="label">Highlight value</span>
-      <span class="value"><data data-key="channel-highlightValue">${channel.highlightValue}</data></span>
+      <span class="value">${channel.highlightValue}</span>
     </section>`;
   }
 
   if (channel.invert) {
     str += `<section class="channel-invert">
       <span class="label">Invert</span>
-      <span class="value"><data class="checkbox" data-key="channel-invert" data-value="${channel.invert}">${channel.invert}</data></span>
+      <span class="value"><span class="checkbox" title="${channel.invert}">${channel.invert}</span></span>
     </section>`;
   }
 
   if (channel.constant) {
     str += `<section class="channel-constant">
       <span class="label">Constant</span>
-      <span class="value"><data class="checkbox" data-key="channel-constant" data-value="${channel.constant}">${channel.constant}</data></span>
+      <span class="value"><span class="checkbox" title="${channel.constant}">${channel.constant}</span></span>
     </section>`;
   }
 
   if (channel.crossfade) {
     str += `<section class="channel-crossfade">
       <span class="label">Crossfade</span>
-      <span class="value"><data class="checkbox" data-key="channel-crossfade" data-value="${channel.crossfade}">${channel.crossfade}</data></span>
+      <span class="value"><span class="checkbox" title="${channel.crossfade}">${channel.crossfade}</span></span>
     </section>`;
   }
 
   if (channel.precedence !== 'LTP') {
     str += `<section class="channel-precedence">
       <span class="label">Precedence</span>
-      <span class="value"><data data-key="channel-precedence">${channel.precedence}</data></span>
+      <span class="value">${channel.precedence}</span>
     </section>`;
   }
 
@@ -391,11 +387,11 @@ function handleChannel(channel, mode) {
       str += '<tr>';
 
       str += '<td class="capability-range0" title="DMX value start">';
-      str += `  <code><data data-key="capability-range-0">${cap.range.start}</data></code>`;
+      str += `  <code>${cap.range.start}</code>`;
       str += '</td>';
 
       str += '<td class="capability-range1" title="DMX value end">';
-      str += `  <code><data data-key="capability-range-1">${cap.range.end}</data></code>`;
+      str += `  <code>${cap.range.end}</code>`;
       str += '</td>';
 
       if (cap.color !== null && cap.color2 !== null) {
@@ -414,21 +410,15 @@ function handleChannel(channel, mode) {
         str += '</td>';
       }
       else if (cap.image !== null) {
-        str += '<td class="capability-image" title="image">';
-        str += `  <data data-key="capability-image">${cap.image || ''}</data>`;
-        str += '</td>';
+        str += `<td class="capability-image" title="image">${cap.image}</td>`;
       }
       else {
         str += '<td></td>';
       }
 
-      str += '<td class="capability-name" title="name">';
-      str += `  <data data-key="capability-name">${cap.name}</data>`;
-      str += '</td>';
+      str += `<td class="capability-name" title="name">${cap.name}</td>`;
 
-      str += '<td class="capability-menuClick" title="menu click action">';
-      str += `  <data data-key="capability-menuClick">${cap.menuClick}</data>`;
-      str += '</td>';
+      str += `<td class="capability-menuClick" title="menu click action">${cap.menuClick}</td>`;
 
       str += '</tr>';
 
