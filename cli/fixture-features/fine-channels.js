@@ -12,5 +12,12 @@ module.exports = [
     description: 'Whether a channel defines two or more fine channel aliases',
     order: 80,
     hasFeature: fixture => fixture.fineChannels.some(fineChannel => fineChannel.fineness > 1)
+  },
+  {
+    id: 'fine-channel-capabilities',
+    name: 'Fine channel capabilities',
+    description: 'Whether a channel with fine channel aliases has capabilities',
+    order: 79,
+    hasFeature: fixture => fixture.fineChannels.some(fineChannel => fineChannel.coarseChannel.hasCapabilities)
   }
 ];
