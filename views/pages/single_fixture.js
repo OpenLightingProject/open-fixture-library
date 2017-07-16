@@ -1,7 +1,4 @@
-const fs = require('fs');
-const path = require('path');
-
-const exportPlugins = require(path.join(__dirname, '..', '..', 'plugins', 'plugins.js')).export;
+const exportPlugins = require('../../plugins/plugins.js').export;
 
 const Fixture = require('../../lib/model/Fixture.js');
 const NullChannel = require('../../lib/model/NullChannel.js');
@@ -59,16 +56,43 @@ module.exports = function(options) {
 
 
   str += '<section class="fixture-info card">';
+  str += handleFixtureInfo();
+  str += '</section>';
 
-  str += '  <section class="categories">';
-  str += '    <span class="label">Categories</span>';
-  str += '    <span class="value">';
+  str += '<section class="fixture-modes">';
+  str += fixture.modes.map(handleMode).join('');
+  str += '<div class="clearfix"></div>';
+  str += '</section>'; // .fixture-modes
+
+  str += require('../includes/footer')(options);
+
+  return str;
+};
+
+function getChannelHeading(chKey) {
+  const channel = fixture.getChannelByKey(chKey);
+
+  if (channel instanceof NullChannel) {
+    return 'Unused';
+  }
+
+  if (channel instanceof FineChannel) {
+    return channel.name;
+  }
+
+  return channel.name + (chKey !== channel.name ? ` <code class="channel-key">${chKey}</code>` : '');
+}
+
+function handleFixtureInfo() {
+  let str = '<section class="categories">';
+  str += '  <span class="label">Categories</span>';
+  str += '  <span class="value">';
   str += fixture.categories.map(cat => {
     const svg = require('../includes/svg')({categoryName: cat});
     return `<a href="/categories/${encodeURIComponent(cat)}" class="category-badge">${svg} ${cat}</a>`;
   }).join(' ');
-  str += '    </span>';
-  str += '  </section>';
+  str += '  </span>';
+  str += '</section>';
 
   if (fixture.hasComment) {
     str += '<section class="comment">';
@@ -98,98 +122,14 @@ module.exports = function(options) {
     for (const headName of Object.keys(fixture.heads)) {
       str += '<li>';
       str += `<strong>${headName}:</strong> `;
-      str += fixture.heads[headName].map(ch => getChannelHeading(ch)).join(', ');
+      str += fixture.heads[headName].map(getChannelHeading).join(', ');
       str += '</li>';
     }
     str += '</ul>';
     str += '</section>';
   }
 
-  str += '</section>'; // .fixture-info
-
-  str += '<section class="fixture-modes">';
-  fixture.modes.forEach(mode => {
-    let heading = mode.name + ' mode';
-    if (mode.hasShortName) {
-      heading += ` <code>${mode.shortName}</code>`;
-    }
-
-    str += '<section class="fixture-mode card">';
-    str += `<h2>${heading}</h2>`;
-
-    if (mode.physicalOverride !== null) {
-      str += '<h3>Physical overrides</h3>';
-      str += '<section class="physical physical-override">';
-      str += handlePhysicalData(mode.physicalOverride);
-      str += '</section>';
-    }
-
-    str += '<h3>Channels</h3>';
-    str += '<ol>';
-    mode.channels.forEach(channel => {
-      str += '<li>';
-      str += '<details class="channel">';
-      str += `<summary>${getChannelHeading(channel.key)}</summary>`;
-
-      if (channel instanceof FineChannel) {
-        str += handleFineChannel(channel, mode);
-      }
-      else if (channel instanceof SwitchingChannel) {
-        str += `<div>Switch depending on ${channel.triggerChannel.name}'s value (channel ${mode.getChannelIndex(channel.triggerChannel.key) + 1}):</div>`;
-
-        str += '<ol>';
-        
-        for (const switchToChannelKey of Object.keys(channel.triggerRanges)) {
-          const switchToChannel = fixture.getChannelByKey(switchToChannelKey);
-
-          str += '<li>';
-          str += '<details class="channel">';
-
-          str += '<summary>';
-          str += getChannelHeading(switchToChannelKey);
-          if (channel.defaultChannel === switchToChannel) {
-            str += ' (default)';
-          }
-          str += '</summary>';
-
-          str += switchToChannel instanceof FineChannel
-            ? handleFineChannel(switchToChannel, mode)
-            : handleChannel(switchToChannel, mode);
-
-          str += '</li>';
-        }
-        str += '</ol>';
-      }
-      else if (!(channel instanceof NullChannel)) {
-        str += handleChannel(channel, mode);
-      }
-
-      str += '</details>';
-      str += '</li>';
-    });
-    str += '</ol>';
-    str += '</section>'; // .fixture-mode
-  });
-  str += '<div class="clearfix"></div>';
-  str += '</section>'; // .fixture-modes
-
-  str += require('../includes/footer')(options);
-
   return str;
-};
-
-function getChannelHeading(chKey) {
-  const channel = fixture.getChannelByKey(chKey);
-
-  if (channel instanceof NullChannel) {
-    return 'Unused';
-  }
-
-  if (channel instanceof FineChannel) {
-    return channel.name;
-  }
-
-  return channel.name + (chKey !== channel.name ? ` <code class="channel-key">${chKey}</code>` : '');
 }
 
 function handlePhysicalData(physical) {
@@ -306,6 +246,45 @@ function handlePhysicalData(physical) {
   return str;
 }
 
+function handleMode(mode) {
+  let str = '<section class="fixture-mode card">';
+
+  const heading = mode.name + ' mode' + (mode.hasShortName ? ` <code>${mode.shortName}</code>` : '');
+  str += `<h2>${heading}</h2>`;
+
+  if (mode.physicalOverride !== null) {
+    str += '<h3>Physical overrides</h3>';
+    str += '<section class="physical physical-override">';
+    str += handlePhysicalData(mode.physicalOverride);
+    str += '</section>';
+  }
+
+  str += '<h3>Channels</h3>';
+  str += '<ol>';
+  mode.channels.forEach(channel => {
+    str += '<li>';
+    str += '<details class="channel">';
+    str += `<summary>${getChannelHeading(channel.key)}</summary>`;
+
+    if (channel instanceof FineChannel) {
+      str += handleFineChannel(channel, mode);
+    }
+    else if (channel instanceof SwitchingChannel) {
+      str += handleSwitchingChannel(channel, mode);
+    }
+    else if (!(channel instanceof NullChannel)) {
+      str += handleChannel(channel, mode);
+    }
+
+    str += '</details>';
+    str += '</li>';
+  });
+  str += '</ol>';
+  str += '</section>'; // .fixture-mode
+
+  return str;
+}
+
 function handleChannel(channel, mode) {
   let str = `<section class="channel-type">
     <span class="label">Type</span>
@@ -377,67 +356,75 @@ function handleChannel(channel, mode) {
     </section>`;
   }
 
-  if (channel.hasCapabilities) {
-    str += '<details class="channel-capabilities">';
-    str += '  <summary>Capabilities</summary>';
-    str += '  <table>';
-    str += '    <tbody>';
+  str += handleCapabilities(channel, mode);
 
-    channel.capabilities.forEach(cap => {
-      str += '<tr>';
+  return str;
+}
 
-      str += '<td class="capability-range0" title="DMX value start">';
-      str += `  <code>${cap.range.start}</code>`;
-      str += '</td>';
-
-      str += '<td class="capability-range1" title="DMX value end">';
-      str += `  <code>${cap.range.end}</code>`;
-      str += '</td>';
-
-      if (cap.color !== null && cap.color2 !== null) {
-        const color1 = cap.color.rgb().string();
-        const color2 = cap.color2.rgb().string();
-
-        str += `<td class="capability-color" title="color: ${color1} / ${color2}">`;
-        str += `  <span class="color-circle" style="background-color: ${color1}"><span style="background-color: ${color2}"></span></span>`;
-        str += '</td>';
-      }
-      else if (cap.color !== null) {
-        const color1 = cap.color.rgb().string();
-
-        str += `<td class="capability-color" title="color: ${color1}">`;
-        str += `  <span class="color-circle" style="background-color: ${color1}"></span>`;
-        str += '</td>';
-      }
-      else if (cap.image !== null) {
-        str += `<td class="capability-image" title="image">${cap.image}</td>`;
-      }
-      else {
-        str += '<td></td>';
-      }
-
-      str += `<td class="capability-name" title="name">${cap.name}</td>`;
-
-      str += `<td class="capability-menuClick" title="menu click action">${cap.menuClick}</td>`;
-
-      str += '</tr>';
-
-      const switchChannels = Object.keys(cap.switchChannels);
-      for (const switchingChannelKey of switchChannels) {
-        const switchingChannelIndex = mode.getChannelIndex(switchingChannelKey);
-
-        if (switchingChannelIndex > -1) {
-          const switchToChannel = cap.switchChannels[switchingChannelKey];
-
-          str += `<tr><td colspan="5" class="switch-to-channel">${switchingChannelKey} (channel ${switchingChannelIndex + 1}) → ${switchToChannel}</td></tr>`;
-        }
-      }
-    });
-
-    str += '    </tbody>';
-    str += '  </table>';
-    str += '</details>';
+function handleCapabilities(channel, mode) {
+  if (!channel.hasCapabilities) {
+    return '';
   }
+
+  let str = '<details class="channel-capabilities">';
+  str += '  <summary>Capabilities</summary>';
+  str += '  <table>';
+  str += '    <tbody>';
+
+  channel.capabilities.forEach(cap => {
+    str += '<tr>';
+
+    str += '<td class="capability-range0" title="DMX value start">';
+    str += `  <code>${cap.range.start}</code>`;
+    str += '</td>';
+
+    str += '<td class="capability-range1" title="DMX value end">';
+    str += `  <code>${cap.range.end}</code>`;
+    str += '</td>';
+
+    if (cap.color !== null && cap.color2 !== null) {
+      const color1 = cap.color.rgb().string();
+      const color2 = cap.color2.rgb().string();
+
+      str += `<td class="capability-color" title="color: ${color1} / ${color2}">`;
+      str += `  <span class="color-circle" style="background-color: ${color1}"><span style="background-color: ${color2}"></span></span>`;
+      str += '</td>';
+    }
+    else if (cap.color !== null) {
+      const color1 = cap.color.rgb().string();
+
+      str += `<td class="capability-color" title="color: ${color1}">`;
+      str += `  <span class="color-circle" style="background-color: ${color1}"></span>`;
+      str += '</td>';
+    }
+    else if (cap.image !== null) {
+      str += `<td class="capability-image" title="image">${cap.image}</td>`;
+    }
+    else {
+      str += '<td></td>';
+    }
+
+    str += `<td class="capability-name" title="name">${cap.name}</td>`;
+    str += `<td class="capability-menuClick" title="menu click action">${cap.menuClick}</td>`;
+
+    str += '</tr>';
+
+    const switchChannels = Object.keys(cap.switchChannels);
+
+    for (const switchingChannelKey of switchChannels) {
+      const switchingChannelIndex = mode.getChannelIndex(switchingChannelKey);
+
+      if (switchingChannelIndex > -1) {
+        const switchToChannel = cap.switchChannels[switchingChannelKey];
+
+        str += `<tr><td colspan="5" class="switch-to-channel">${switchingChannelKey} (channel ${switchingChannelIndex + 1}) → ${switchToChannel}</td></tr>`;
+      }
+    }
+  });
+
+  str += '    </tbody>';
+  str += '  </table>';
+  str += '</details>';
 
   return str;
 }
@@ -445,4 +432,32 @@ function handleChannel(channel, mode) {
 function handleFineChannel(channel, mode) {
   const coarseChannelIndex = mode.getChannelIndex(channel.coarseChannel.key) + 1;
   return `<div>Fine channel of ${channel.coarseChannel.name} (channel ${coarseChannelIndex})</div>`;
+}
+
+function handleSwitchingChannel(channel, mode) {
+  const triggerChannelIndex = mode.getChannelIndex(channel.triggerChannel.key) + 1;
+
+  let str = `<div>Switch depending on ${channel.triggerChannel.name}'s value (channel ${triggerChannelIndex}):</div>`;
+  str += '<ol>';
+  
+  for (const switchToChannelKey of Object.keys(channel.triggerRanges)) {
+    const switchToChannel = fixture.getChannelByKey(switchToChannelKey);
+
+    str += '<li>';
+    str += '<details class="channel">';
+
+    str += '<summary>';
+    str += getChannelHeading(switchToChannelKey);
+    if (channel.defaultChannel === switchToChannel) {
+      str += ' (default)';
+    }
+    str += '</summary>';
+
+    str += switchToChannel instanceof FineChannel
+      ? handleFineChannel(switchToChannel, mode)
+      : handleChannel(switchToChannel, mode);
+
+    str += '</li>';
+  }
+  str += '</ol>';
 }
