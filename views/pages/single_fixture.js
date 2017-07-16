@@ -29,15 +29,15 @@ module.exports = function(options) {
   str += '<header class="fixture-header">';
 
   str += '<div class="title">';
-  str += `<h1><a href="/${man}"><data data-key="manufacturer">${fixture.manufacturer.name}</data></a> <data data-key="name">${fixture.manufacturer.name}</data>`;
+  str += `<h1><a href="/${man}">${fixture.manufacturer.name}</a> ${fixture.name}`;
   if (fixture.hasShortName) {
-    str += ` <code><data data-key="shortName">${fixture.shortName}</data></code>`;
+    str += ` <code>${fixture.shortName}</code>`;
   }
   str += '</h1>';
   str += '<section class="fixture-meta">';
   str += `<span class="last-modify-date">Last modified:&nbsp;${getDateString(fixture.meta.lastModifyDate)}</span>`;
   str += `<span class="create-date">Created:&nbsp;${getDateString(fixture.meta.createDate)}</span>`;
-  str += `<span class="authors">Author${fixture.meta.authors.length === 1 ? '' : 's'}:&nbsp;<data>${fixture.meta.authors.join(', ')}</data></span>`;
+  str += `<span class="authors">Author${fixture.meta.authors.length === 1 ? '' : 's'}:&nbsp;${fixture.meta.authors.join(', ')}</span>`;
   str += `<span class="source"><a href="${githubRepoPath}/blob/${branch}/fixtures/${man}/${fix}.json">Source</a></span>`;
   str += `<span class="revisions"><a href="${githubRepoPath}/commits/${branch}/fixtures/${man}/${fix}.json">Revisions</a></span>`;
   str += '</section>';
