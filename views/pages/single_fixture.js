@@ -35,8 +35,8 @@ module.exports = function(options) {
   }
   str += '</h1>';
   str += '<section class="fixture-meta">';
-  str += `<span class="last-modify-date">Last modified:&nbsp;<date>${fixture.meta.lastModifyDate.toISOString()}</date></span>`;
-  str += `<span class="create-date">Created:&nbsp;<date>${fixture.meta.createDate.toISOString()}</date></span>`;
+  str += `<span class="last-modify-date">Last modified:&nbsp;${getDateString(fixture.meta.lastModifyDate)}</span>`;
+  str += `<span class="create-date">Created:&nbsp;${getDateString(fixture.meta.createDate)}</span>`;
   str += `<span class="authors">Author${fixture.meta.authors.length === 1 ? '' : 's'}:&nbsp;<data>${fixture.meta.authors.join(', ')}</data></span>`;
   str += `<span class="source"><a href="${githubRepoPath}/blob/${branch}/fixtures/${man}/${fix}.json">Source</a></span>`;
   str += `<span class="revisions"><a href="${githubRepoPath}/commits/${branch}/fixtures/${man}/${fix}.json">Revisions</a></span>`;
@@ -68,6 +68,10 @@ module.exports = function(options) {
 
   return str;
 };
+
+function getDateString(date) {
+  return `<time datetime="${date.toISOString()}" title="${date.toISOString()}">${date.toISOString().replace(/T.*?$/, '')}</time>`;
+}
 
 function getChannelHeading(chKey) {
   const channel = fixture.getChannelByKey(chKey);
@@ -460,4 +464,6 @@ function handleSwitchingChannel(channel, mode) {
     str += '</li>';
   }
   str += '</ol>';
+
+  return str;
 }
