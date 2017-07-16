@@ -1,5 +1,5 @@
 #!/usr/bin/node
-const path = require('path');
+
 const minimist = require('minimist');
 const colors = require('colors');
 

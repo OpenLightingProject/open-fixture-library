@@ -1,4 +1,3 @@
-const path = require('path');
 const xmlbuilder = require('xmlbuilder');
 
 const FineChannel = require('../../lib/model/FineChannel.js');

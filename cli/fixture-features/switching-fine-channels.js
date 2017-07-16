@@ -1,5 +1,3 @@
-const path = require('path');
-
 const FineChannel = require('../../lib/model/FineChannel.js');
 
 module.exports = [{

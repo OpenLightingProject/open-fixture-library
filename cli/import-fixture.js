@@ -1,7 +1,6 @@
 #!/usr/bin/node
 
 const fs = require('fs');
-const path = require('path');
 const minimist = require('minimist');
 
 const checkFixture = require('../tests/fixture_valid.js').checkFixture;

@@ -1,6 +1,4 @@
-const path = require('path');
 const properties = require('../../fixtures/schema.js').properties;
-// console.log(properties);
 
 module.exports = function(options) {
   options.title = 'Fixture Editor - Open Fixture Library';
