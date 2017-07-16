@@ -3,7 +3,7 @@ module.exports = function(options) {
 
   options.title = 'Manufacturers - Open Fixture Library';
 
-  let str = require('../includes/header')(options);
+  let str = require('../includes/header.js')(options);
 
   str += '<h1>Manufacturers</h1>';
 
@@ -20,7 +20,7 @@ module.exports = function(options) {
   }
   str += '</div>';
 
-  str += require('../includes/footer')(options);
+  str += require('../includes/footer.js')(options);
 
   return str;
 

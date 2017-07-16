@@ -9,8 +9,8 @@ const browserify = require('browserify-middleware');
 const minifyHTML = require('html-minifier').minify;
 const bodyParser = require('body-parser');
 
-const plugins = require(path.join(__dirname, 'plugins', 'plugins.js'));
-const Fixture = require(path.join(__dirname, 'lib', 'model', 'Fixture.js'));
+const plugins = require('./plugins/plugins.js');
+const Fixture = require('./lib/model/Fixture.js');
 
 const app = express();
 
@@ -141,7 +141,7 @@ app.get('/search', (request, response) => {
 app.use(bodyParser.json());
 
 app.post('/ajax/add-fixtures', (request, response) => {
-  require(path.join(__dirname, 'lib', 'add-fixtures'))(request, response);
+  require('./lib/add-fixtures.js')(request, response);
 });
 
 // if no other route applies

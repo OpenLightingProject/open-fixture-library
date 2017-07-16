@@ -1,7 +1,6 @@
-const path = require('path');
 const util = require('util');
 
-const schemas = require(path.join(__dirname, '..', 'fixtures', 'schema'));
+const schemas = require('../fixtures/schema.js');
 
 module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) {
   let result = {

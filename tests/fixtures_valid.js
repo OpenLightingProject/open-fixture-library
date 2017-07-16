@@ -5,15 +5,15 @@ const path = require('path');
 const util = require('util');
 const colors = require('colors');
 
-const fixturePath = path.join(__dirname, '..', 'fixtures');
-const schemas = require(path.join(fixturePath, 'schema'));
-const checkFixture = require(path.join(__dirname, 'fixture_valid')).checkFixture;
+const schemas = require('../fixtures/schema.js');
+const checkFixture = require('./fixture_valid.js').checkFixture;
 
 let usedShortNames = [];
 
 let promises = [];
 
 // search fixture files
+const fixturePath = path.join(__dirname, '..', 'fixtures');
 for (const man of fs.readdirSync(fixturePath)) {
   const manDir = path.join(fixturePath, man);
 
