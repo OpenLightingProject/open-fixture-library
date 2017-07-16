@@ -263,28 +263,8 @@
   },
   "modes": [
     {
-      "name": "Control 3-channel",
-      "shortName": "control-3ch",
-      "channels": [
-        "Preset programs",
-        "Master Dimmer",
-        "Strobe"
-      ]
-    },
-    {
-      "name": "Program 5-channel",
-      "shortName": "program-5ch",
-      "channels": [
-        "Preset programs",
-        "Master Dimmer",
-        "Strobe",
-        "Running Speed",
-        "Fade Time"
-      ]
-    },
-    {
-      "name": "Combined 15-channel",
-      "shortName": "combined-15ch",
+      "name": "15-channel",
+      "shortName": "15ch",
       "channels": [
         "Preset programs",
         "Master Dimmer",
@@ -295,18 +275,5 @@
         "Red 4", "Green 4", "Blue 4"
       ]
     },
-    {
-      "name": "Color 15-channel",
-      "shortName": "color-15ch",
-      "channels": [
-        "Preset programs",
-        "Master Dimmer",
-        "Strobe",
-        "Red 1", "Green 1", "Blue 1",
-        "Red 2", "Green 2", "Blue 2",
-        "Red 3", "Green 3", "Blue 3",
-        "Red 4", "Green 4", "Blue 4"
-      ]
-    }
   ]
 }
