@@ -1,0 +1,148 @@
+{
+  "name": "Atomic 3000",
+  "shortName": "At3000",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["FloEdelmann", "Felix Edelmann"],
+    "createDate": "2017-01-20",
+    "lastModifyDate": "2017-07-16"
+  },
+  "manualURL": "https://www.martin.com/Martin.Download.aspx?file=/files/files/productdocuments/11_MANUALS/999/35000094G%20UM_Atomic3000DMX_EN_G.pdf",
+  "physical": {
+    "dimensions": [450, 239, 234],
+    "weight": 7.5,
+    "power": 3000,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "Xenon 3000W",
+      "colorTemperature": 5600
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Strobe": {
+      "type": "Strobe",
+      "highlightValue": 255,
+      "crossfade": true,
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Blackout"
+        },
+        {
+          "range": [6, 249],
+          "name": "Strobe slow-fast"
+        },
+        {
+          "range": [250, 255],
+          "name": "Blind"
+        }
+      ]
+    },
+    "Intensity": {
+      "type": "Intensity",
+      "highlightValue": 255,
+      "crossfade": true,
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Blackout"
+        },
+        {
+          "range": [6, 255],
+          "name": "0-100%"
+        }
+      ]
+    },
+    "Flash Duration": {
+      "type": "Speed",
+      "highlightValue": 255,
+      "crossfade": true,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0-650ms"
+        }
+      ]
+    },
+    "Flash Rate": {
+      "type": "Speed",
+      "highlightValue": 255,
+      "crossfade": true,
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Single Flash"
+        },
+        {
+          "range": [6, 255],
+          "name": "0.5-25Hz"
+        }
+      ]
+    },
+    "Effects": {
+      "type": "Effect",
+      "crossfade": true,
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "No function"
+        },
+        {
+          "range": [6, 42],
+          "name": "Ramp up"
+        },
+        {
+          "range": [43, 85],
+          "name": "Ramp down"
+        },
+        {
+          "range": [86, 128],
+          "name": "Ramp up/down"
+        },
+        {
+          "range": [129, 171],
+          "name": "Random"
+        },
+        {
+          "range": [172, 214],
+          "name": "Storm"
+        },
+        {
+          "range": [215, 255],
+          "name": "Single Flash"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Strobe"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Intensity",
+        "Flash Duration",
+        "Flash Rate"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Intensity",
+        "Flash Duration",
+        "Flash Rate",
+        "Effects"
+      ]
+    }
+  ]
+}

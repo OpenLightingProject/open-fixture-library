@@ -1,0 +1,208 @@
+{
+  "name": "Twister 4",
+  "shortName": "Twister4",
+  "categories": ["Flower"],
+  "meta": {
+    "authors": ["FloEdelmann", "Felix Edelmann"],
+    "createDate": "2017-01-24",
+    "lastModifyDate": "2017-07-16",
+    "importPlugin": {
+      "plugin": "qlcplus",
+      "date": "2017-01-24"
+    }
+  },
+  "manualURL": "http://www.sabretechnology.co.uk/pdfs/hptwis.pdf",
+  "physical": {
+    "dimensions": [200, 200, 400],
+    "weight": 5,
+    "power": 250,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "A1/259"
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Rotation": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 11],
+          "name": "Stop"
+        },
+        {
+          "range": [12, 111],
+          "name": "Fast CW"
+        },
+        {
+          "range": [112, 127],
+          "name": "Slow CW"
+        },
+        {
+          "range": [128, 140],
+          "name": "Stop"
+        },
+        {
+          "range": [141, 243],
+          "name": "Slow CCW"
+        },
+        {
+          "range": [244, 254],
+          "name": "Fast CCW"
+        },
+        {
+          "range": [255, 255],
+          "name": "Stop"
+        }
+      ]
+    },
+    "Color/Gobo": {
+      "type": "MultiColor",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Blackout",
+          "color": "#000000"
+        },
+        {
+          "range": [10, 10],
+          "name": "White [Open]",
+          "color": "#ffffff"
+        },
+        {
+          "range": [26, 26],
+          "name": "Red [Dot Tunnel]",
+          "color": "#ff0000"
+        },
+        {
+          "range": [43, 43],
+          "name": "Blue [Slash]",
+          "color": "#0000ff"
+        },
+        {
+          "range": [59, 59],
+          "name": "Green [Segment]",
+          "color": "#00ff00"
+        },
+        {
+          "range": [75, 75],
+          "name": "Yellow [Triangle]",
+          "color": "#ffff00"
+        },
+        {
+          "range": [91, 91],
+          "name": "Cyan [Tunnel]",
+          "color": "#00ffff"
+        },
+        {
+          "range": [108, 108],
+          "name": "Orange [Bubbles]",
+          "color": "#ffaa00"
+        },
+        {
+          "range": [124, 124],
+          "name": "Pink [Stars]",
+          "color": "#ff557f"
+        },
+        {
+          "range": [140, 140],
+          "name": "Multicolor [Quadrant]"
+        },
+        {
+          "range": [156, 156],
+          "name": "Orange [Bubbles]",
+          "color": "#ffaa00"
+        },
+        {
+          "range": [173, 173],
+          "name": "Cyan [Tunnel]",
+          "color": "#00ffff"
+        },
+        {
+          "range": [189, 189],
+          "name": "Yellow [Triangle]",
+          "color": "#ffff00"
+        },
+        {
+          "range": [221, 221],
+          "name": "Blue [Slash]",
+          "color": "#0000ff"
+        },
+        {
+          "range": [238, 238],
+          "name": "Slow Strobe"
+        },
+        {
+          "range": [254, 255],
+          "name": "Fast Strobe"
+        }
+      ]
+    },
+    "Shutter": {
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 23],
+          "name": "Blackout"
+        },
+        {
+          "range": [24, 225],
+          "name": "Open"
+        },
+        {
+          "range": [226, 229],
+          "name": "Slow Strobe"
+        },
+        {
+          "range": [230, 233],
+          "name": "Strobe 2"
+        },
+        {
+          "range": [234, 237],
+          "name": "Strobe 3"
+        },
+        {
+          "range": [238, 241],
+          "name": "Strobe 4"
+        },
+        {
+          "range": [242, 245],
+          "name": "Strobe 5"
+        },
+        {
+          "range": [246, 249],
+          "name": "Strobe 6"
+        },
+        {
+          "range": [250, 253],
+          "name": "Strobe 7"
+        },
+        {
+          "range": [254, 255],
+          "name": "Fast Strobe"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1 CE (2ch)",
+      "shortName": "1CE-2ch",
+      "channels": [
+        "Rotation",
+        "Color/Gobo"
+      ]
+    },
+    {
+      "name": "HP (3ch)",
+      "shortName": "HP-3ch",
+      "channels": [
+        "Rotation",
+        "Color/Gobo",
+        "Shutter"
+      ]
+    }
+  ]
+}
