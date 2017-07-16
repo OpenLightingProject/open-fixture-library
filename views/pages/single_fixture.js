@@ -321,14 +321,14 @@ function handleChannel(channel, mode) {
   if (channel.hasDefaultValue) {
     str += `<section class="channel-defaultValue">
       <span class="label">Default value</span>
-      <span class="value">${channel.defaultValue}</span>
+      <span class="value">${channel.getDefaultValueWithFineness(finenessInMode)}</span>
     </section>`;
   }
 
   if (channel.hasHighlightValue) {
     str += `<section class="channel-highlightValue">
       <span class="label">Highlight value</span>
-      <span class="value">${channel.highlightValue}</span>
+      <span class="value">${channel.getHighlightValueWithFineness(finenessInMode)}</span>
     </section>`;
   }
 
@@ -360,12 +360,12 @@ function handleChannel(channel, mode) {
     </section>`;
   }
 
-  str += handleCapabilities(channel, mode);
+  str += handleCapabilities(channel, mode, finenessInMode);
 
   return str;
 }
 
-function handleCapabilities(channel, mode) {
+function handleCapabilities(channel, mode, finenessInMode) {
   if (!channel.hasCapabilities) {
     return '';
   }
@@ -378,12 +378,12 @@ function handleCapabilities(channel, mode) {
   channel.capabilities.forEach(cap => {
     str += '<tr>';
 
+    const range = cap.getRangeWithFineness(finenessInMode);
     str += '<td class="capability-range0" title="DMX value start">';
-    str += `  <code>${cap.range.start}</code>`;
+    str += `  <code>${range.start}</code>`;
     str += '</td>';
-
     str += '<td class="capability-range1" title="DMX value end">';
-    str += `  <code>${cap.range.end}</code>`;
+    str += `  <code>${range.end}</code>`;
     str += '</td>';
 
     if (cap.color !== null && cap.color2 !== null) {
