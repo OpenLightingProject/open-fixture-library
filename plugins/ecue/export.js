@@ -5,7 +5,7 @@ const NullChannel = require('../../lib/model/NullChannel.js');
 const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
 
 module.exports.name = 'e:cue';
-module.exports.version = '0.4.0';
+module.exports.version = '0.3.0';
 
 module.exports.export = function exportEcue(fixtures, options) {
   const timestamp = dateToString(new Date());
