@@ -5,8 +5,8 @@ const path = require('path');
 const env = require('node-env-file');
 const GitHubApi = require('github');
 
-const diffPluginOutputs = require(path.join(__dirname, '..', 'lib', 'diff-plugin-outputs'));
-const plugins = Object.keys(require(path.join(__dirname, '..', 'plugins', 'plugins.js')).export);
+const diffPluginOutputs = require('../lib/diff-plugin-outputs.js');
+const plugins = Object.keys(require('../plugins/plugins.js').export);
 
 
 // These fixtures have the most possible different functions,

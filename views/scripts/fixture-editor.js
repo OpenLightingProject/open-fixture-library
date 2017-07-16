@@ -1,8 +1,8 @@
 'use strict';
 
-require('./polyfills');
+require('./polyfills.js');
 var A11yDialog = require('a11y-dialog');
-var properties = properties = require('../../fixtures/schema').properties;
+var properties = properties = require('../../fixtures/schema.js').properties;
 var uuidV4 = require('uuid/v4');
 var Vue = require('vue/dist/vue');
 

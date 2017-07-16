@@ -24,7 +24,7 @@ module.exports = function(options) {
   const githubRepoPath = 'https://github.com/FloEdelmann/open-fixture-library';
 
 
-  let str = require('../includes/header')(options);
+  let str = require('../includes/header.js')(options);
 
   str += '<header class="fixture-header">';
 
@@ -64,7 +64,7 @@ module.exports = function(options) {
   str += '<div class="clearfix"></div>';
   str += '</section>'; // .fixture-modes
 
-  str += require('../includes/footer')(options);
+  str += require('../includes/footer.js')(options);
 
   return str;
 };
@@ -92,7 +92,7 @@ function handleFixtureInfo() {
   str += '  <span class="label">Categories</span>';
   str += '  <span class="value">';
   str += fixture.categories.map(cat => {
-    const svg = require('../includes/svg')({categoryName: cat});
+    const svg = require('../includes/svg.js')({categoryName: cat});
     return `<a href="/categories/${encodeURIComponent(cat)}" class="category-badge">${svg} ${cat}</a>`;
   }).join(' ');
   str += '  </span>';

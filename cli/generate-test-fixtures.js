@@ -5,7 +5,7 @@ const path = require('path');
 const minimist = require('minimist');
 const colors = require('colors');
 
-const Fixture = require(path.join(__dirname, '..', 'lib', 'model', 'Fixture.js'));
+const Fixture = require('../lib/model/Fixture.js');
 
 const args = minimist(process.argv.slice(2), {
   boolean: ['all', 'help'],

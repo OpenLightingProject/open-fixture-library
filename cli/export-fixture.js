@@ -3,8 +3,8 @@ const path = require('path');
 const minimist = require('minimist');
 const colors = require('colors');
 
-const exportPlugins = require(path.join(__dirname, '..', 'plugins', 'plugins.js')).export;
-const Fixture = require(path.join(__dirname, '..', 'lib', 'model', 'Fixture.js'));
+const exportPlugins = require('../plugins/plugins.js').export;
+const Fixture = require('../lib/model/Fixture.js');
 
 const args = minimist(process.argv.slice(2), {
   string: ['p'],

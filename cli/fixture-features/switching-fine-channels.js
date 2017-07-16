@@ -1,6 +1,6 @@
 const path = require('path');
 
-const FineChannel = require(path.join(__dirname, '..', '..', 'lib', 'model', 'FineChannel.js'));
+const FineChannel = require('../../lib/model/FineChannel.js');
 
 module.exports = [{
   name: 'Switches fine channels',

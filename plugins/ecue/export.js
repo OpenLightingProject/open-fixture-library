@@ -1,9 +1,9 @@
 const path = require('path');
 const xmlbuilder = require('xmlbuilder');
 
-const FineChannel = require(path.join(__dirname, '..', '..', 'lib', 'model', 'FineChannel.js'));
-const NullChannel = require(path.join(__dirname, '..', '..', 'lib', 'model', 'NullChannel.js'));
-const SwitchingChannel = require(path.join(__dirname, '..', '..', 'lib', 'model', 'SwitchingChannel.js'));
+const FineChannel = require('../../lib/model/FineChannel.js');
+const NullChannel = require('../../lib/model/NullChannel.js');
+const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
 
 module.exports.name = 'e:cue';
 module.exports.version = '0.3.0';

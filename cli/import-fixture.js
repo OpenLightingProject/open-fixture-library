@@ -4,9 +4,9 @@ const fs = require('fs');
 const path = require('path');
 const minimist = require('minimist');
 
-const checkFixture = require(path.join(__dirname, '..', 'tests', 'fixture_valid')).checkFixture;
-const createPullRequest = require(path.join(__dirname, '..', 'lib', 'create-github-pr'));
-const importPlugins = require(path.join(__dirname, '..', 'plugins', 'plugins.js')).import;
+const checkFixture = require('../tests/fixture_valid.js').checkFixture;
+const createPullRequest = require('../lib/create-github-pr.js');
+const importPlugins = require('../plugins/plugins.js').import;
 
 const args = minimist(process.argv.slice(2), {
   boolean: 'p',
