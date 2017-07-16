@@ -1,5 +1,5 @@
 #!/usr/bin/node
-const path = require('path');
+
 const minimist = require('minimist');
 const colors = require('colors');
 
@@ -38,7 +38,7 @@ if (args._.length === 0) {
   console.error(colors.yellow('[Warning]') + ' No fixtures specified. See --help for usage.');
 }
 
-require(path.join(__dirname, '..', 'lib', 'diff-plugin-outputs'))({
+require('../lib/diff-plugin-outputs.js')({
   plugin: args.plugin,
   ref: args.ref,
   fixtures: args._

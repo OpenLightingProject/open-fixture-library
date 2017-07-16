@@ -1,11 +1,9 @@
-const path = require('path');
-const properties = require(path.join(__dirname, '..', '..', 'fixtures', 'schema')).properties;
-// console.log(properties);
+const properties = require('../../fixtures/schema.js').properties;
 
 module.exports = function(options) {
   options.title = 'Fixture Editor - Open Fixture Library';
 
-  let str = require('../includes/header')(options);
+  let str = require('../includes/header.js')(options);
 
   str += '<div id="fixture-editor">';
   str += '<h1>Fixture Editor</h1>';
@@ -182,7 +180,7 @@ module.exports = function(options) {
 
   options.footerHtml = '<script type="text/javascript" src="/js/fixture-editor.js" async></script>';
 
-  str += require('../includes/footer')(options);
+  str += require('../includes/footer.js')(options);
 
   return str;
 };
@@ -296,7 +294,7 @@ function getModeTemplate() {
 
   str += '<a class="close" href="#remove-mode" @click.prevent="$emit(\'remove\')">';
   str += 'Remove mode';
-  str += require('../includes/svg')({svgBasename: 'close'});
+  str += require('../includes/svg.js')({svgBasename: 'close'});
   str += '</a>';
 
   str += '<h2>Mode</h2>';
@@ -329,8 +327,8 @@ function getModeTemplate() {
   str += '<ol class="mode-channels">';
   str += '<li v-for="(chKey, index) in mode.channels">';
   str += '<span class="display-name">{{ getChannelName(chKey) }}</span>';
-  str += '<a href="#remove" title="Remove channel" @click.prevent="mode.channels.splice(index, 1)">' + require('../includes/svg')({svgBasename: 'close'}) + '</a>';
-  str += '<a href="#channel-editor" title="Edit channel" @click.prevent="editChannel(chKey)">' + require('../includes/svg')({svgBasename: 'pencil'}) + '</a>';
+  str += '<a href="#remove" title="Remove channel" @click.prevent="mode.channels.splice(index, 1)">' + require('../includes/svg.js')({svgBasename: 'close'}) + '</a>';
+  str += '<a href="#channel-editor" title="Edit channel" @click.prevent="editChannel(chKey)">' + require('../includes/svg.js')({svgBasename: 'pencil'}) + '</a>';
   str += '</li>';
   str += '</ol>';
 
@@ -352,7 +350,7 @@ function getCapabilityTemplate() {
   str += '<input type="text" placeholder="color" pattern="^#[0-9a-f]{6}$" title="#rrggbb" v-model="capability.color" class="color"> ';
   str += '<input type="text" placeholder="color 2" pattern="^#[0-9a-f]{6}$" title="#rrggbb" v-model="capability.color2" v-if="capability.color !== \'\'" class="color">';
   str += '</span>';
-  str += '<a href="#remove" class="remove" title="Remove capability" v-if="isChanged" @click.prevent="remove">' + require('../includes/svg')({svgBasename: 'close'}) + '</a>';
+  str += '<a href="#remove" class="remove" title="Remove capability" v-if="isChanged" @click.prevent="remove">' + require('../includes/svg.js')({svgBasename: 'close'}) + '</a>';
   str += '</li>';
   str += '</script>'; // #template-capability
 
@@ -369,7 +367,7 @@ function getDialogTemplate() {
 
   str += '      <a href="#close" @click.prevent="hide" class="close" v-if="cancellable">';
   str += 'Close';
-  str += require('../includes/svg')({svgBasename: 'close'});
+  str += require('../includes/svg.js')({svgBasename: 'close'});
   str += '</a>';
 
   str += '      <h2 :id="id + \'-dialog-title\'" tabindex="0"><slot name="title"></slot></h2>';

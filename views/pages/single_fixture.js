@@ -24,20 +24,20 @@ module.exports = function(options) {
   const githubRepoPath = 'https://github.com/FloEdelmann/open-fixture-library';
 
 
-  let str = require('../includes/header')(options);
+  let str = require('../includes/header.js')(options);
 
   str += '<header class="fixture-header">';
 
   str += '<div class="title">';
-  str += `<h1><a href="/${man}"><data data-key="manufacturer">${fixture.manufacturer.name}</data></a> <data data-key="name">${fixture.manufacturer.name}</data>`;
+  str += `<h1><a href="/${man}">${fixture.manufacturer.name}</a> ${fixture.name}`;
   if (fixture.hasShortName) {
-    str += ` <code><data data-key="shortName">${fixture.shortName}</data></code>`;
+    str += ` <code>${fixture.shortName}</code>`;
   }
   str += '</h1>';
   str += '<section class="fixture-meta">';
   str += `<span class="last-modify-date">Last modified:&nbsp;${getDateString(fixture.meta.lastModifyDate)}</span>`;
   str += `<span class="create-date">Created:&nbsp;${getDateString(fixture.meta.createDate)}</span>`;
-  str += `<span class="authors">Author${fixture.meta.authors.length === 1 ? '' : 's'}:&nbsp;<data>${fixture.meta.authors.join(', ')}</data></span>`;
+  str += `<span class="authors">Author${fixture.meta.authors.length === 1 ? '' : 's'}:&nbsp;${fixture.meta.authors.join(', ')}</span>`;
   str += `<span class="source"><a href="${githubRepoPath}/blob/${branch}/fixtures/${man}/${fix}.json">Source</a></span>`;
   str += `<span class="revisions"><a href="${githubRepoPath}/commits/${branch}/fixtures/${man}/${fix}.json">Revisions</a></span>`;
   str += '</section>';
@@ -64,7 +64,7 @@ module.exports = function(options) {
   str += '<div class="clearfix"></div>';
   str += '</section>'; // .fixture-modes
 
-  str += require('../includes/footer')(options);
+  str += require('../includes/footer.js')(options);
 
   return str;
 };
@@ -92,7 +92,7 @@ function handleFixtureInfo() {
   str += '  <span class="label">Categories</span>';
   str += '  <span class="value">';
   str += fixture.categories.map(cat => {
-    const svg = require('../includes/svg')({categoryName: cat});
+    const svg = require('../includes/svg.js')({categoryName: cat});
     return `<a href="/categories/${encodeURIComponent(cat)}" class="category-badge">${svg} ${cat}</a>`;
   }).join(' ');
   str += '  </span>';
@@ -321,14 +321,14 @@ function handleChannel(channel, mode) {
   if (channel.hasDefaultValue) {
     str += `<section class="channel-defaultValue">
       <span class="label">Default value</span>
-      <span class="value">${channel.defaultValue}</span>
+      <span class="value">${channel.getDefaultValueWithFineness(finenessInMode)}</span>
     </section>`;
   }
 
   if (channel.hasHighlightValue) {
     str += `<section class="channel-highlightValue">
       <span class="label">Highlight value</span>
-      <span class="value">${channel.highlightValue}</span>
+      <span class="value">${channel.getHighlightValueWithFineness(finenessInMode)}</span>
     </section>`;
   }
 
@@ -360,12 +360,12 @@ function handleChannel(channel, mode) {
     </section>`;
   }
 
-  str += handleCapabilities(channel, mode);
+  str += handleCapabilities(channel, mode, finenessInMode);
 
   return str;
 }
 
-function handleCapabilities(channel, mode) {
+function handleCapabilities(channel, mode, finenessInMode) {
   if (!channel.hasCapabilities) {
     return '';
   }
@@ -378,12 +378,12 @@ function handleCapabilities(channel, mode) {
   channel.capabilities.forEach(cap => {
     str += '<tr>';
 
+    const range = cap.getRangeWithFineness(finenessInMode);
     str += '<td class="capability-range0" title="DMX value start">';
-    str += `  <code>${cap.range.start}</code>`;
+    str += `  <code>${range.start}</code>`;
     str += '</td>';
-
     str += '<td class="capability-range1" title="DMX value end">';
-    str += `  <code>${cap.range.end}</code>`;
+    str += `  <code>${range.end}</code>`;
     str += '</td>';
 
     if (cap.color !== null && cap.color2 !== null) {

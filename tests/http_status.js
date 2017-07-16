@@ -7,7 +7,7 @@ const https = require('https');
 const url = require('url');
 const colors = require('colors');
 
-const exportPlugins = Object.keys(require(path.join(__dirname, '..', 'plugins', 'plugins.js')).export);
+const exportPlugins = Object.keys(require('../plugins/plugins.js').export);
 
 let failed = false;
 
