@@ -1,17 +1,21 @@
 const fs = require('fs');
 const path = require('path');
 
-const plugins = require(path.join(__dirname, '..', '..', 'plugins', 'plugins.js'));
+const exportPlugins = require(path.join(__dirname, '..', '..', 'plugins', 'plugins.js')).export;
+
+const Fixture = require('../../lib/model/Fixture.js');
+const NullChannel = require('../../lib/model/NullChannel.js');
+const FineChannel = require('../../lib/model/FineChannel.js');
+const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
 
 let fixture;
 
 module.exports = function(options) {
-  const {manufacturers, man, fix} = options;
-  const manufacturer = manufacturers[man];
+  const {man, fix} = options;
 
-  fixture = JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', man, fix + '.json'), 'utf-8'));
+  fixture = Fixture.fromRepository(man, fix);
   
-  options.title = `${manufacturer.name} ${fixture.name} - Open Fixture Library`;
+  options.title = `${fixture.manufacturer.name} ${fixture.name} - Open Fixture Library`;
 
   let branch = 'master';
   if ('TRAVIS_PULL_REQUEST_BRANCH' in process.env && process.env.TRAVIS_PULL_REQUEST_BRANCH !== '') {
@@ -22,58 +26,20 @@ module.exports = function(options) {
   }
   const githubRepoPath = 'https://github.com/FloEdelmann/open-fixture-library';
 
-  let fineChannels = {}; // fine -> coarse, fine^2 -> coarse
-  let switchingChannels = {}; // switching channel alias -> { triggerChannel: chKey, switchedChannels: [chKey], defaultChannel: chKey }
-
-  for (const ch of Object.keys(fixture.availableChannels)) {
-    const channel = fixture.availableChannels[ch];
-
-    if ('fineChannelAliases' in channel) {
-      for (const alias of channel.fineChannelAliases) {
-        fineChannels[alias] = ch;
-      }
-    }
-
-    if ('capabilities' in channel) {
-      for (const cap of channel.capabilities) {
-        if ('switchChannels' in cap) {
-          for (const switchesChannel of Object.keys(cap.switchChannels)) {
-            const switchToChannel = cap.switchChannels[switchesChannel];
-
-            if (!(switchesChannel in switchingChannels)) {
-              switchingChannels[switchesChannel] = {
-                triggerChannel: ch,
-                switchedChannels: [],
-                defaultChannel: null
-              };
-            }
-            const switchingChannel = switchingChannels[switchesChannel];
-
-            if (!switchingChannel.switchedChannels.includes(switchToChannel)) {
-              switchingChannel.switchedChannels.push(switchToChannel);
-            }
-            if (cap.range[0] <= channel.defaultValue && channel.defaultValue <= cap.range[1]) {
-              switchingChannel.defaultChannel = switchToChannel;
-            }
-          }
-        }
-      }
-    }
-  }
 
   let str = require('../includes/header')(options);
 
   str += '<header class="fixture-header">';
 
   str += '<div class="title">';
-  str += `<h1><a href="/${man}"><data data-key="manufacturer">${manufacturer.name}</data></a> <data data-key="name">${fixture.name}</data>`;
-  if ('shortName' in fixture) {
-    str += ` <code><data data-key="shortName">${fixture.shortName || ''}</data></code>`;
+  str += `<h1><a href="/${man}"><data data-key="manufacturer">${fixture.manufacturer.name}</data></a> <data data-key="name">${fixture.manufacturer.name}</data>`;
+  if (fixture.hasShortName) {
+    str += ` <code><data data-key="shortName">${fixture.shortName}</data></code>`;
   }
   str += '</h1>';
   str += '<section class="fixture-meta">';
-  str += `<span class="last-modify-date">Last modified:&nbsp;<date>${fixture.meta.lastModifyDate}</date></span>`;
-  str += `<span class="create-date">Created:&nbsp;<date>${fixture.meta.createDate}</date></span>`;
+  str += `<span class="last-modify-date">Last modified:&nbsp;<date>${fixture.meta.lastModifyDate.toISOString()}</date></span>`;
+  str += `<span class="create-date">Created:&nbsp;<date>${fixture.meta.createDate.toISOString()}</date></span>`;
   str += `<span class="authors">Author${fixture.meta.authors.length === 1 ? '' : 's'}:&nbsp;<data>${fixture.meta.authors.join(', ')}</data></span>`;
   str += `<span class="source"><a href="${githubRepoPath}/blob/${branch}/fixtures/${man}/${fix}.json">Source</a></span>`;
   str += `<span class="revisions"><a href="${githubRepoPath}/commits/${branch}/fixtures/${man}/${fix}.json">Revisions</a></span>`;
@@ -83,8 +49,8 @@ module.exports = function(options) {
   str += '<div class="download-button">';
   str += '<a href="#" class="title">Download as &hellip;</a>';
   str += '<ul>';
-  for (const plugin of Object.keys(plugins.export)) {
-    str += `<li><a href="/${man}/${fix}.${plugin}">${plugins.export[plugin].name}</a></li>`;
+  for (const plugin of Object.keys(exportPlugins)) {
+    str += `<li><a href="/${man}/${fix}.${plugin}">${exportPlugins[plugin].name}</a></li>`;
   }
   str += '</ul>';
   str += '</div>';
@@ -104,28 +70,28 @@ module.exports = function(options) {
   str += '    </span>';
   str += '  </section>';
 
-  if ('comment' in fixture) {
+  if (fixture.hasComment) {
     str += '<section class="comment">';
     str += '  <span class="label">Comment</span>';
     str += `  <span class="value"><data data-key="comment">${fixture.comment}</data></span>`;
     str += '</section>';
   }
 
-  if ('manualURL' in fixture) {
+  if (fixture.manualURL !== null) {
     str += '<section class="manualURL">';
     str += '  <span class="label">Manual</span>';
     str += `  <span class="value"><a href="${fixture.manualURL}"><data data-key="manualURL">${fixture.manualURL}</data></a></span>`;
     str += '</section>';
   }
 
-  if ('physical' in fixture) {
+  if (fixture.physical !== null) {
     str += '<h3 class="physical">Physical data</h3>';
     str += '<section class="physical">';
     str += handlePhysicalData(fixture.physical);
     str += '</section>';
   }
 
-  if ('heads' in fixture) {
+  if (Object.keys(fixture.heads).length > 0) {
     str += '<section class="heads">';
     str += '<h3>Heads</h3>';
     str += '<ul>';
@@ -146,61 +112,58 @@ module.exports = function(options) {
   str += '<section class="fixture-modes">';
   fixture.modes.forEach(mode => {
     let heading = mode.name + ' mode';
-    if ('shortName' in mode) {
+    if (mode.hasShortName) {
       heading += ` <code>${mode.shortName}</code>`;
     }
 
     str += '<section class="fixture-mode card">';
     str += `<h2>${heading}</h2>`;
 
-    if ('physical' in mode) {
+    if (mode.physicalOverride !== null) {
       str += '<h3>Physical overrides</h3>';
       str += '<section class="physical physical-override">';
-      str += handlePhysicalData(mode.physical);
+      str += handlePhysicalData(mode.physicalOverride);
       str += '</section>';
     }
 
     str += '<h3>Channels</h3>';
     str += '<ol>';
-    mode.channels.forEach((chKey, index) => {
-      str += `<li data-index="${index}">`;
-      str += `<details class="channel" data-channel="${chKey}">`;
-      str += `<summary>${getChannelHeading(chKey)}</summary>`;
+    mode.channels.forEach(channel => {
+      str += '<li>';
+      str += '<details class="channel">';
+      str += `<summary>${getChannelHeading(channel.key)}</summary>`;
 
-      if (chKey !== null) {
-        if (chKey in fixture.availableChannels) {
-          const channel = fixture.availableChannels[chKey];
-          str += handleChannel(channel, mode, switchingChannels);
+      if (channel instanceof FineChannel) {
+        str += handleFineChannel(channel, mode);
+      }
+      else if (channel instanceof SwitchingChannel) {
+        str += `<div>Switch depending on ${channel.triggerChannel.name}'s value (channel ${mode.getChannelIndex(channel.triggerChannel.key) + 1}):</div>`;
+
+        str += '<ol>';
+        
+        for (const switchToChannelKey of Object.keys(channel.triggerRanges)) {
+          const switchToChannel = fixture.getChannelByKey(switchToChannelKey);
+
+          str += '<li>';
+          str += '<details class="channel">';
+
+          str += '<summary>';
+          str += getChannelHeading(switchToChannelKey);
+          if (channel.defaultChannel === switchToChannel) {
+            str += ' (default)';
+          }
+          str += '</summary>';
+
+          str += switchToChannel instanceof FineChannel
+            ? handleFineChannel(switchToChannel, mode)
+            : handleChannel(switchToChannel, mode);
+
+          str += '</li>';
         }
-        else if (chKey in fineChannels) {
-          str += handleFineChannel(fineChannels[chKey], mode, switchingChannels);
-        }
-        else if (chKey in switchingChannels) {
-          const switchingChannel = switchingChannels[chKey];
-
-          str += `<div>Switches behavior between following channels depending on ${switchingChannel.triggerChannel}'s value (channel ${mode.channels.indexOf(switchingChannel.triggerChannel)+1}):</div>`;
-
-          str += '<ol>';
-          switchingChannel.switchedChannels.forEach(switchedChannel => {
-            str += '<li>';
-
-            str += `<details class="channel" data-channel="${switchedChannel}">`;
-
-            str += '<summary>';
-            str += getChannelHeading(switchedChannel);
-            if (switchingChannel.defaultChannel === switchedChannel) {
-              str += ' (default)';
-            }
-            str += '</summary>';
-
-            str += switchedChannel in fineChannels
-              ? handleFineChannel(fineChannels[switchedChannel], mode, switchingChannels)
-              : handleChannel(fixture.availableChannels[switchedChannel], mode, switchingChannels);
-
-            str += '</li>';
-          });
-          str += '</ol>';
-        }
+        str += '</ol>';
+      }
+      else if (!(channel instanceof NullChannel)) {
+        str += handleChannel(channel, mode);
       }
 
       str += '</details>';
@@ -218,141 +181,126 @@ module.exports = function(options) {
 };
 
 function getChannelHeading(chKey) {
-  if (chKey === null) {
+  const channel = fixture.getChannelByKey(chKey);
+
+  if (channel instanceof NullChannel) {
     return 'Unused';
   }
 
-  if (chKey in fixture.availableChannels) {
-    if ('name' in fixture.availableChannels[chKey]) {
-      return `${fixture.availableChannels[chKey].name} <code class="channel-key">${chKey}</code>`;
-    }
-    return chKey;
+  if (channel instanceof FineChannel) {
+    return channel.name;
   }
 
-  for (const chKey of Object.keys(fixture.availableChannels)) {
-    const coarseChannel = fixture.availableChannels[chKey];
-
-    if ('fineChannelAliases' in coarseChannel) {
-      const fineIndex = coarseChannel.fineChannelAliases.indexOf(chKey);
-      if (fineIndex !== -1) {
-        let name = 'name' in coarseChannel ? coarseChannel.name : chKey + ' fine';
-        name += fineIndex > 0 ? '^' + (fineIndex+1) : '';
-        name += name === chKey ? '' : ` <code class="channel-key">${chKey}</code>`;
-        return name;
-      }
-    }
-  }
-
-  return chKey;
+  return channel.name + (chKey !== channel.name ? ` <code class="channel-key">${chKey}</code>` : '');
 }
 
 function handlePhysicalData(physical) {
   let str = '';
 
-  if ('dimensions' in physical) {
+  if (physical.dimensions !== null) {
     str += `<section class="physical-dimensions">
       <span class="label">Dimensions</span>
       <span class="value">
-        <data data-key="physical-dimensions-0">${physical.dimensions[0]}</data> &times;
-        <data data-key="physical-dimensions-1">${physical.dimensions[1]}</data> &times;
-        <data data-key="physical-dimensions-2">${physical.dimensions[2]}</data>mm
+        <data data-key="physical-dimensions-0">${physical.width}</data> &times;
+        <data data-key="physical-dimensions-1">${physical.height}</data> &times;
+        <data data-key="physical-dimensions-2">${physical.depth}</data>mm
         <span class="hint">width &times; height &times; depth</span>
       </span>
     </section>`;
   }
 
-  if ('weight' in physical) {
+  if (physical.weight !== null) {
     str += `<section class="physical-weight">
       <span class="label">Weight</span>
       <span class="value"><data data-key="physical-weight">${physical.weight}</data>kg</span>
     </section>`;
   }
 
-  if ('power' in physical) {
+  if (physical.power !== null) {
     str += `<section class="physical-power">
       <span class="label">Power</span>
       <span class="value"><data data-key="physical-power">${physical.power}</data>W</span>
     </section>`;
   }
 
-  if ('DMXconnector' in physical) {
+  if (physical.DMXconnector !== null) {
     str += `<section class="physical-DMXconnector">
       <span class="label">DMX connector</span>
       <span class="value"><data data-key="physical-DMXconnector">${physical.DMXconnector}</data></span>
     </section>`;
   }
 
-  if ('bulb' in physical) {
+  if (physical.hasBulb) {
     str += '<section class="physical-bulb">';
     str += '<h4>Bulb</h4>';
 
-    if ('type' in physical.bulb) {
+    if (physical.bulbType !== null) {
       str += `<section class="physical-bulb-type">
         <span class="label">Bulb type</span>
-        <span class="value"><data data-key="physical-bulb-type">${physical.bulb.type}</data></span>
+        <span class="value"><data data-key="physical-bulb-type">${physical.bulbType}</data></span>
       </section>`;
     }
 
-    if ('colorTemperature' in physical.bulb) {
+    if (physical.bulbColorTemperature) {
       str += `<section class="physical-bulb-colorTemperature">
         <span class="label">Color temperature</span>
-        <span class="value"><data data-key="physical-bulb-colorTemperature">${physical.bulb.colorTemperature}</data>K</span>
+        <span class="value"><data data-key="physical-bulb-colorTemperature">${physical.bulbColorTemperature}</data>K</span>
       </section>`;
     }
 
-    if ('lumens' in physical.bulb) {
+    if (physical.bulbLumens !== null) {
       str += `<section class="physical-bulb-lumens">
         <span class="label">Lumens</span>
-        <span class="value"><data data-key="physical-bulb-lumens">${physical.bulb.lumens}</data></span>
+        <span class="value"><data data-key="physical-bulb-lumens">${physical.bulbLumens}</data></span>
       </section>`;
     }
 
     str += '</section>';
   }
 
-  if ('lens' in physical) {
+  if (physical.hasLens) {
     str += '<section class="physical-lens">';
     str += '<h4>Lens</h4>';
 
-    if ('name' in physical.lens) {
+    if (physical.lensName !== null) {
       str += `<section class="physical-lens-name">
         <span class="label">Name</span>
-        <span class="value"><data data-key="physical-lens-name">${physical.lens.name}</data></span>
+        <span class="value"><data data-key="physical-lens-name">${physical.lensName}</data></span>
       </section>`;
     }
 
-    if ('degreesMinMax' in physical.lens) {
+    if (physical.lensDegreesMin !== null) {
       str += `<section class="physical-lens-degreesMinMax">
         <span class="label">Light cone</span>
-        <span class="value"><data data-key="physical-lens-degreesMin">${physical.lens.degreesMinMax[0]}</data>..<data data-key="physical-lens-degreesMin">${physical.lens.degreesMinMax[1]}</data>°</span>
+        <span class="value"><data data-key="physical-lens-degreesMin">${physical.lensDegreesMin}</data>..<data data-key="physical-lens-degreesMin">${physical.lensDegreesMax}</data>°</span>
       </section>`;
     }
 
     str += '</section>';
   }
 
-  if ('focus' in physical) {
+  if (physical.hasFocus) {
     str += '<section class="physical-focus">';
     str += '<h4>Focus</h4>';
 
-    if ('type' in physical.focus) {
+    if (physical.focusType !== null) {
       str += `<section class="physical-focus-type">
         <span class="label">Type</span>
-        <span class="value"><data data-key="physical-focus-type">${physical.focus.type}</data></span>
+        <span class="value"><data data-key="physical-focus-type">${physical.focusType}</data></span>
       </section>`;
     }
 
-    if ('panMax' in physical.focus) {
+    if (physical.focusPanMax !== null) {
       str += `<section class="physical-focus-panMax">
         <span class="label">Max. pan</span>
-        <span class="value"><data data-key="physical-focus-panMax">${physical.focus.panMax}</data>°</span>
+        <span class="value"><data data-key="physical-focus-panMax">${physical.focusPanMax}</data>°</span>
       </section>`;
     }
 
-    if ('tiltMax' in physical.focus) {
+    if (physical.focusTiltMax) {
       str += `<section class="physical-focus-tiltMax">
         <span class="label">Max. tilt</span>
-        <span class="value"><data data-key="physical-focus-tiltMax">${physical.focus.tiltMax}</data>°</span>
+        <span class="value"><data data-key="physical-focus-tiltMax">${physical.focusTiltMax}</data>°</span>
       </section>`;
     }
 
@@ -362,82 +310,78 @@ function handlePhysicalData(physical) {
   return str;
 }
 
-function handleChannel(channel, mode, switchingChannels) {
+function handleChannel(channel, mode) {
   let str = `<section class="channel-type">
     <span class="label">Type</span>
     <span class="value"><data data-key="channel-type">${channel.type}</data></span>
   </section>`;
 
-  if ('color' in channel) {
+  if (channel.color !== null) {
     str += `<section class="channel-color">
       <span class="label">Color</span>
       <span class="value"><data data-key="channel-color">${channel.color}</data></span>
     </section>`;
   }
 
-  if ('fineChannelAliases' in channel) {
-    const fineChannelPositions = channel.fineChannelAliases.map(
-      fineAlias => getChannelIndexInMode(fineAlias, mode, switchingChannels) + 1
-    ).filter(position => position !== 0); // filter out not used finer channels in the end of the array
+  const finenessInMode = channel.getFinenessInMode(mode);
+  if (finenessInMode > 0) {
+    str += '<section class="channel-fineChannelAliases">';
+    str += '  <span class="label">Fine channels</span>';
+    str += '  <span class="value"><data data-key="channel-fineChannelAliases">';
 
-    if (fineChannelPositions.length > 0) {
-      str += '<section class="channel-fineChannelAliases">';
-      str += '  <span class="label">Fine channels</span>';
-      str += '  <span class="value"><data data-key="channel-fineChannelAliases">';
-      str += fineChannelPositions.map((position, index) => {
-        const fineAlias = channel.fineChannelAliases[index];
-        return getChannelHeading(fineAlias) + ` (channel ${position})`;
-      }).join(', ');
-      str += '</data></span>';
-      str += '</section>';
+    for (let i=0; i<finenessInMode; i++) {
+      const heading = getChannelHeading(channel.fineChannelAliases[i]);
+      const position = mode.getChannelIndex(channel.key) + 1;
+      str +=  `${heading} (channel ${position})`;
     }
 
-    divideChannelDmxValues(channel, channel.fineChannelAliases.length - fineChannelPositions.length);
+    str += '</data></span>';
+    str += '</section>';
   }
 
-  if ('defaultValue' in channel) {
+  if (channel.hasDefaultValue) {
     str += `<section class="channel-defaultValue">
       <span class="label">Default value</span>
       <span class="value"><data data-key="channel-defaultValue">${channel.defaultValue}</data></span>
     </section>`;
   }
 
-  if ('highlightValue' in channel) {
+  if (channel.hasHighlightValue) {
     str += `<section class="channel-highlightValue">
       <span class="label">Highlight value</span>
       <span class="value"><data data-key="channel-highlightValue">${channel.highlightValue}</data></span>
     </section>`;
   }
 
-  if ('invert' in channel) {
+  if (channel.invert) {
     str += `<section class="channel-invert">
       <span class="label">Invert</span>
       <span class="value"><data class="checkbox" data-key="channel-invert" data-value="${channel.invert}">${channel.invert}</data></span>
     </section>`;
   }
 
-  if ('constant' in channel) {
+  if (channel.constant) {
     str += `<section class="channel-constant">
       <span class="label">Constant</span>
       <span class="value"><data class="checkbox" data-key="channel-constant" data-value="${channel.constant}">${channel.constant}</data></span>
     </section>`;
   }
 
-  if ('crossfade' in channel) {
+  if (channel.crossfade) {
     str += `<section class="channel-crossfade">
       <span class="label">Crossfade</span>
       <span class="value"><data class="checkbox" data-key="channel-crossfade" data-value="${channel.crossfade}">${channel.crossfade}</data></span>
     </section>`;
   }
 
-  if ('precedence' in channel) {
+  if (channel.precedence !== 'LTP') {
     str += `<section class="channel-precedence">
       <span class="label">Precedence</span>
       <span class="value"><data data-key="channel-precedence">${channel.precedence}</data></span>
     </section>`;
   }
 
-  if ('capabilities' in channel) {
+  if (channel.hasCapabilities) {
     str += '<details class="channel-capabilities">';
     str += '  <summary>Capabilities</summary>';
     str += '  <table>';
@@ -447,41 +391,55 @@ function handleChannel(channel, mode, switchingChannels) {
       str += '<tr>';
 
       str += '<td class="capability-range0" title="DMX value start">';
-      str += `  <code><data data-key="capability-range-0">${cap.range[0]}</data></code>`;
+      str += `  <code><data data-key="capability-range-0">${cap.range.start}</data></code>`;
       str += '</td>';
 
       str += '<td class="capability-range1" title="DMX value end">';
-      str += `  <code><data data-key="capability-range-1">${cap.range[1]}</data></code>`;
+      str += `  <code><data data-key="capability-range-1">${cap.range.end}</data></code>`;
       str += '</td>';
+
+      if (cap.color !== null && cap.color2 !== null) {
+        const color1 = cap.color.rgb().string();
+        const color2 = cap.color2.rgb().string();
+
+        str += `<td class="capability-color" title="color: ${color1} / ${color2}">`;
+        str += `  <span class="color-circle" style="background-color: ${color1}"><span style="background-color: ${color2}"></span></span>`;
+        str += '</td>';
+      }
+      else if (cap.color !== null) {
+        const color1 = cap.color.rgb().string();
+
+        str += `<td class="capability-color" title="color: ${color1}">`;
+        str += `  <span class="color-circle" style="background-color: ${color1}"></span>`;
+        str += '</td>';
+      }
+      else if (cap.image !== null) {
+        str += '<td class="capability-image" title="image">';
+        str += `  <data data-key="capability-image">${cap.image || ''}</data>`;
+        str += '</td>';
+      }
+      else {
+        str += '<td></td>';
+      }
 
       str += '<td class="capability-name" title="name">';
       str += `  <data data-key="capability-name">${cap.name}</data>`;
       str += '</td>';
 
       str += '<td class="capability-menuClick" title="menu click action">';
-      str += `  <data data-key="capability-menuClick">${cap.menuClick || ''}</data>`;
-      str += '</td>';
-
-      str += `<td class="capability-color" title="color: ${cap.color}">`;
-      str += `  <data class="color" data-key="capability-color" data-value="${cap.color}">${cap.color || ''}</data>`;
-      str += '</td>';
-
-      str += `<td class="capability-color2" title="color 2: ${cap.color2}">`;
-      str += `  <data class="color" data-key="capability-color2" data-value="${cap.color2}">${cap.color2 || ''}</data>`;
-      str += '</td>';
-
-      str += '<td class="capability-image" title="image">';
-      str += `  <data data-key="capability-image">${cap.image || ''}</data>`;
+      str += `  <data data-key="capability-menuClick">${cap.menuClick}</data>`;
       str += '</td>';
 
       str += '</tr>';
 
-      if ('switchChannels' in cap) {
-        for (const switchingChannel of Object.keys(cap.switchChannels)) {
-          const switchingChannelIndex = mode.channels.indexOf(switchingChannel);
-          const switchToChannel = cap.switchChannels[switchingChannel];
+      const switchChannels = Object.keys(cap.switchChannels);
+      for (const switchingChannelKey of switchChannels) {
+        const switchingChannelIndex = mode.getChannelIndex(switchingChannelKey);
 
-          str += `<tr><td colspan="7" class="switch-to-channel">${switchingChannel} (channel ${switchingChannelIndex+1}) → ${switchToChannel}</td></tr>`;
+        if (switchingChannelIndex > -1) {
+          const switchToChannel = cap.switchChannels[switchingChannelKey];
+
+          str += `<tr><td colspan="5" class="switch-to-channel">${switchingChannelKey} (channel ${switchingChannelIndex + 1}) → ${switchToChannel}</td></tr>`;
         }
       }
     });
@@ -494,35 +452,7 @@ function handleChannel(channel, mode, switchingChannels) {
   return str;
 }
 
-function handleFineChannel(coarseChannel, mode, switchingChannels) {
-  const coarseChannelIndex = getChannelIndexInMode(coarseChannel, mode, switchingChannels);
-  return `<div>Fine channel of ${coarseChannel} (channel ${coarseChannelIndex+1})</div>`;
-}
-
-function getChannelIndexInMode(ch, mode, switchingChannels) {
-  return mode.channels.findIndex(chKey => {
-    // used directly
-    if (!(chKey in switchingChannels)) {
-      return chKey === ch;
-    }
-
-    // used in a switching channel
-    const switchedChannels = switchingChannels[chKey].switchedChannels;
-    return switchedChannels.includes(ch);
-  });
-}
-
-function divideChannelDmxValues(channel, times) {
-  if ('highlightValue' in channel) {
-    channel.highlightValue = Math.floor(channel.highlightValue / Math.pow(256, times));
-  }
-  if ('defaultValue' in channel) {
-    channel.defaultValue = Math.floor(channel.defaultValue / Math.pow(256, times));
-  }
-  if ('capabilities' in channel) {
-    for (const cap of channel.capabilities) {
-      cap.range[0] = Math.floor(cap.range[0] / Math.pow(256, times));
-      cap.range[1] = Math.floor(cap.range[1] / Math.pow(256, times));
-    }
-  }
+function handleFineChannel(channel, mode) {
+  const coarseChannelIndex = mode.getChannelIndex(channel.coarseChannel.key) + 1;
+  return `<div>Fine channel of ${channel.coarseChannel.name} (channel ${coarseChannelIndex})</div>`;
 }
