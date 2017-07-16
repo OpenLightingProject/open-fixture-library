@@ -1,4 +1,3 @@
-const path = require('path');
 const util = require('util');
 
 const schemas = require('../fixtures/schema.js');
