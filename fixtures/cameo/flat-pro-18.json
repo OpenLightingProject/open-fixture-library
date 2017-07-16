@@ -1,0 +1,293 @@
+{
+  "name": "Flat Pro 18",
+  "shortName": "CLPFLATPRO18",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2017-07-14",
+    "lastModifyDate": "2017-07-14"
+  },
+  "manualURL": "http://adamhall.invaliddomain.de/out/media/downloads/MARKEN/CAMEO/CLPFLATPRO7/CLPFLATPRO7-12-18_Cameo_Bedienungsanleitung_EN_DE_FR_ES.pdf",
+  "physical": {
+    "dimensions": [280, 280, 130],
+    "weight": 7.4,
+    "power": 200,
+    "DMXconnector": "3-pin and 5-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "type": "Intensity",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Color Macro Simple": {
+      "type": "MultiColor",
+      "capabilities": [
+        {
+          "range": [0, 16],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [17, 33],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [34, 50],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [51, 67],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [68, 84],
+          "name": "Amber",
+          "color": "#ffbf00"
+        },
+        {
+          "range": [85, 101],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [102, 118],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [119, 135],
+          "name": "Lavender",
+          "color": "#e6e6fa"
+        },
+        {
+          "range": [136, 152],
+          "name": "Pink",
+          "color": "#ffc0cb"
+        },
+        {
+          "range": [153, 169],
+          "name": "Light Green",
+          "color": "#aaffaa"
+        },
+        {
+          "range": [170, 186],
+          "name": "Magenta",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [187, 203],
+          "name": "Turquoise",
+          "color": "#40e0d0"
+        },
+        {
+          "range": [204, 220],
+          "name": "Orange",
+          "color": "#ffcc00"
+        },
+        {
+          "range": [221, 237],
+          "name": "Cool White",
+          "color": "#f2f6fe"
+        },
+        {
+          "range": [238, 255],
+          "name": "Warm White",
+          "color": "#fffbf2"
+        }
+      ]
+    },
+    "Color Macro Advanced": {
+      "type": "MultiColor",
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "Blackout",
+          "color": "#000000"
+        },
+        {
+          "range": [5, 10],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [11, 15],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [16, 20],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [21, 25],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [26, 30],
+          "name": "Amber",
+          "color": "#ffbf00"
+        },
+        {
+          "range": [31, 35],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [36, 40],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [41, 45],
+          "name": "Lavender",
+          "color": "#e6e6fa"
+        },
+        {
+          "range": [46, 50],
+          "name": "Pink",
+          "color": "#ffc0cb"
+        },
+        {
+          "range": [51, 55],
+          "name": "Light Green",
+          "color": "#aaffaa"
+        },
+        {
+          "range": [56, 60],
+          "name": "Magenta",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [61, 65],
+          "name": "Turquoise",
+          "color": "#40e0d0"
+        },
+        {
+          "range": [66, 70],
+          "name": "Orange",
+          "color": "#ffcc00"
+        },
+        {
+          "range": [71, 75],
+          "name": "Cool White",
+          "color": "#f2f6fe"
+        },
+        {
+          "range": [76, 80],
+          "name": "Warm White",
+          "color": "#fffbf2"
+        },
+        {
+          "range": [81, 150],
+          "name": "Color Change slow-fast"
+        },
+        {
+          "range": [151, 220],
+          "name": "Color Blending slow-fast"
+        },
+        {
+          "range": [221, 255],
+          "name": "Sound control (mic sensitivity low-high)"
+        }
+      ]
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Strobe rate 0-100%"
+        }
+      ]
+    },
+    "Red": {
+      "type": "SingleColor",
+      "color": "Red",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Green": {
+      "type": "SingleColor",
+      "color": "Green",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Blue": {
+      "type": "SingleColor",
+      "color": "Blue",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "White": {
+      "type": "SingleColor",
+      "color": "White",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Amber": {
+      "type": "SingleColor",
+      "color": "Amber",
+      "highlightValue": 255,
+      "crossfade": true
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer",
+        "Color Macro Simple"
+      ]
+    },
+    {
+      "name": "3-channel 1",
+      "shortName": "3ch1",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Color Macro Advanced"
+      ]
+    },
+    {
+      "name": "3-channel 2",
+      "shortName": "3ch2",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Color Macro Advanced"
+      ]
+    }
+  ]
+}
