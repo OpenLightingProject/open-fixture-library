@@ -1,0 +1,42 @@
+{
+  "name": "Desk Channel",
+  "shortName": "DeskCh",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["FloEdelmann"],
+    "createDate": "2017-07-17",
+    "lastModifyDate": "2017-07-17"
+  },
+  "availableChannels": {
+    "Intensity": {
+      "type": "Intensity",
+      "fineChannelAliases": ["Intensity fine", "Intensity fine^2"]
+    }
+  },
+  "modes": [
+    {
+      "name": "8 bit",
+      "shortName": "8bit",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "16 bit",
+      "shortName": "16bit",
+      "channels": [
+        "Intensity",
+        "Intensity fine"
+      ]
+    },
+    {
+      "name": "24 bit",
+      "shortName": "24bit",
+      "channels": [
+        "Intensity",
+        "Intensity fine",
+        "Intensity fine^2"
+      ]
+    }
+  ]
+}

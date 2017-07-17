@@ -1,11 +1,9 @@
-const path = require('path');
-const properties = require(path.join(__dirname, '..', '..', 'fixtures', 'schema')).properties;
-// console.log(properties);
+const properties = require('../../fixtures/schema.js').properties;
 
 module.exports = function(options) {
   options.title = 'Fixture Editor - Open Fixture Library';
 
-  let str = require('../includes/header')(options);
+  let str = require('../includes/header.js')(options);
 
   str += '<div id="fixture-editor">';
   str += '<h1>Fixture Editor</h1>';
@@ -182,7 +180,7 @@ module.exports = function(options) {
 
   options.footerHtml = '<script type="text/javascript" src="/js/fixture-editor.js" async></script>';
 
-  str += require('../includes/footer')(options);
+  str += require('../includes/footer.js')(options);
 
   return str;
 };
@@ -296,7 +294,7 @@ function getModeTemplate() {
 
   str += '<a class="close" href="#remove-mode" @click.prevent="$emit(\'remove\')">';
   str += 'Remove mode';
-  str += require('../includes/svg')({svgBasename: 'close'});
+  str += require('../includes/svg.js')({svgBasename: 'close'});
   str += '</a>';
 
   str += '<h2>Mode</h2>';
@@ -328,10 +326,16 @@ function getModeTemplate() {
   str += '<h3>Channels</h3>';
   str += '<ol class="mode-channels">';
   str += '<li v-for="(chKey, index) in mode.channels">';
+<<<<<<< editor
   str += '<span class="channel-name">{{ getChannel(chKey).name }}</span> ';
   str += '<code v-if="!isChannelNameUnique(chKey)" class="channel-uuid">{{ chKey }}</code>';
   str += '<a href="#remove" title="Remove channel" @click.prevent="mode.channels.splice(index, 1)">' + require('../includes/svg')({svgBasename: 'close'}) + '</a>';
   str += '<a href="#channel-editor" title="Edit channel" @click.prevent="editChannel(chKey)">' + require('../includes/svg')({svgBasename: 'pencil'}) + '</a>';
+=======
+  str += '<span class="display-name">{{ getChannelName(chKey) }}</span>';
+  str += '<a href="#remove" title="Remove channel" @click.prevent="mode.channels.splice(index, 1)">' + require('../includes/svg.js')({svgBasename: 'close'}) + '</a>';
+  str += '<a href="#channel-editor" title="Edit channel" @click.prevent="editChannel(chKey)">' + require('../includes/svg.js')({svgBasename: 'pencil'}) + '</a>';
+>>>>>>> master
   str += '</li>';
   str += '</ol>';
 
@@ -353,7 +357,7 @@ function getCapabilityTemplate() {
   str += '<input type="text" placeholder="color" pattern="^#[0-9a-f]{6}$" title="#rrggbb" v-model="capability.color" class="color"> ';
   str += '<input type="text" placeholder="color 2" pattern="^#[0-9a-f]{6}$" title="#rrggbb" v-model="capability.color2" v-if="capability.color !== \'\'" class="color">';
   str += '</span>';
-  str += '<a href="#remove" class="remove" title="Remove capability" v-if="isChanged" @click.prevent="remove">' + require('../includes/svg')({svgBasename: 'close'}) + '</a>';
+  str += '<a href="#remove" class="remove" title="Remove capability" v-if="isChanged" @click.prevent="remove">' + require('../includes/svg.js')({svgBasename: 'close'}) + '</a>';
   str += '</li>';
   str += '</script>'; // #template-capability
 
@@ -370,7 +374,7 @@ function getDialogTemplate() {
 
   str += '      <a href="#close" @click.prevent="hide" class="close" v-if="cancellable">';
   str += 'Close';
-  str += require('../includes/svg')({svgBasename: 'close'});
+  str += require('../includes/svg.js')({svgBasename: 'close'});
   str += '</a>';
 
   str += '      <h2 :id="id + \'-dialog-title\'" tabindex="0"><slot name="title"></slot></h2>';
@@ -531,7 +535,7 @@ function getSubmitDialogString() {
   str += 'Your fixture was successfully uploaded to GitHub (see the <a :href="submit.pullRequestUrl" target="_blank">pull request</a>). It will be now reviewed and then merged into the library. Thank you for your contribution!';
   str += '<div class="button-bar right">';
   str += '<a href="/" class="button secondary">Back to homepage</a> ';
-  str += '<a href="/fixture-editor" class="button secondary">Create another fixture</a>';
+  str += '<a href="/fixture-editor" class="button secondary">Create another fixture</a> ';
   str += '<a :href="submit.pullRequestUrl" class="button primary" target="_blank">See pull request</a>';
   str += '</div>';
   str += '</div>';
@@ -540,7 +544,7 @@ function getSubmitDialogString() {
   str += 'Unfortunately, there was an error while uploading. Please copy the following data and <a href="https://github.com/FloEdelmann/open-fixture-library/issues/new" target="_blank">manually submit them to GitHub</a>.';
   str += '<pre>{{ submit.rawData }}</pre>';
   str += '<div class="button-bar right">';
-  str += '<a href="/" class="button secondary">Back to homepage</a>';
+  str += '<a href="/" class="button secondary">Back to homepage</a> ';
   str += '<a href="https://github.com/FloEdelmann/open-fixture-library/issues/new" class="button primary" target="_blank">Submit manually</a>';
   str += '</div>';
   str += '</div>';

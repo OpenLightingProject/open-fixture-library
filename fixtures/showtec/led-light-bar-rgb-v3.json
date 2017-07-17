@@ -1,0 +1,472 @@
+{
+  "name": "LED Light Bar RGB V3",
+  "shortName": "LEDLightBar",
+  "comment": "Ordercode 42202",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["FloEdelmann", "Felix Edelmann"],
+    "createDate": "2017-01-20",
+    "lastModifyDate": "2017-07-16"
+  },
+  "manualURL": "http://www.highlite.nl/silver.download/Documents@extern@Manuals/42202_MANUAL_GB_V3.pdf",
+  "physical": {
+    "dimensions": [1070, 65, 88],
+    "weight": 1.68,
+    "power": 70,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Other",
+      "degreesMinMax": [40, 40]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Red"
+    },
+    "Green": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Green"
+    },
+    "Blue": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Blue"
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "crossfade": true
+    },
+    "Red 1/2": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Red"
+    },
+    "Green 1/2": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Green"
+    },
+    "Blue 1/2": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Blue"
+    },
+    "Red 2/2": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Red"
+    },
+    "Green 2/2": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Green"
+    },
+    "Blue 2/2": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Blue"
+    },
+    "Red 1/4": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Red"
+    },
+    "Green 1/4": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Green"
+    },
+    "Blue 1/4": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Blue"
+    },
+    "Red 2/4": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Red"
+    },
+    "Green 2/4": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Green"
+    },
+    "Blue 2/4": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Blue"
+    },
+    "Red 3/4": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Red"
+    },
+    "Green 3/4": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Green"
+    },
+    "Blue 3/4": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Blue"
+    },
+    "Red 4/4": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Red"
+    },
+    "Green 4/4": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Green"
+    },
+    "Blue 4/4": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Blue"
+    },
+    "Strobe1": {
+      "name": "Strobe",
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0-20Hz"
+        }
+      ]
+    },
+    "Strobe2": {
+      "name": "Strobe",
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "No function"
+        },
+        {
+          "range": [10, 255],
+          "name": "0-20Hz"
+        }
+      ]
+    },
+    "Color Programs": {
+      "type": "MultiColor",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "No function",
+          "color": "#000000",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [10, 19],
+          "name": "Red",
+          "color": "#ff0000",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [20, 29],
+          "name": "Yellow",
+          "color": "#ffff00",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [30, 39],
+          "name": "Green",
+          "color": "#00ff00",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [40, 49],
+          "name": "Cyan",
+          "color": "#00ffff",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [50, 59],
+          "name": "Blue",
+          "color": "#5500ff",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [60, 69],
+          "name": "Purple",
+          "color": "#aa00ff",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [70, 79],
+          "name": "White",
+          "color": "#ffffff",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [80, 89],
+          "name": "Program 1",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [90, 99],
+          "name": "Program 2",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [100, 109],
+          "name": "Program 3",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [110, 119],
+          "name": "Program 4",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [120, 129],
+          "name": "Program 5",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [130, 139],
+          "name": "Program 6",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [140, 149],
+          "name": "Program 7",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [150, 159],
+          "name": "Program 8",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [160, 169],
+          "name": "Program 9",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [170, 179],
+          "name": "Program 10",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [180, 189],
+          "name": "Program 11",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [190, 199],
+          "name": "Program 12",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [200, 209],
+          "name": "Program 13",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [210, 219],
+          "name": "Program 14",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [220, 229],
+          "name": "Program 15",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [230, 239],
+          "name": "Program 16",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [240, 255],
+          "name": "Sound control",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Mic Sensitivity"
+          }
+        }
+      ]
+    },
+    "Program Speed": {
+      "type": "Speed"
+    },
+    "Mic Sensitivity": {
+      "type": "Intensity"
+    },
+    "Operation Mode": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "RGB Mode"
+        },
+        {
+          "range": [10, 249],
+          "name": "Auto Program"
+        },
+        {
+          "range": [250, 255],
+          "name": "Sound control"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "P1 (3 channels)",
+      "shortName": "P1",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "P2 (4 channels)",
+      "shortName": "P2",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "P3 (8 channels)",
+      "shortName": "P3",
+      "channels": [
+        "Red 1/2",
+        "Green 1/2",
+        "Blue 1/2",
+        "Red 2/2",
+        "Green 2/2",
+        "Blue 2/2",
+        "Strobe1",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "P4 (14 channels)",
+      "shortName": "P4",
+      "channels": [
+        "Red 1/4",
+        "Green 1/4",
+        "Blue 1/4",
+        "Red 2/4",
+        "Green 2/4",
+        "Blue 2/4",
+        "Red 3/4",
+        "Green 3/4",
+        "Blue 3/4",
+        "Red 4/4",
+        "Green 4/4",
+        "Blue 4/4",
+        "Strobe1",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "P5 (2 channels)",
+      "shortName": "P5",
+      "channels": [
+        "Color Programs",
+        "Program Speed / Mic Sensitivity"
+      ]
+    },
+    {
+      "name": "P6 (15 channels)",
+      "shortName": "P6",
+      "channels": [
+        "Operation Mode",
+        "Dimmer",
+        "Strobe2",
+        "Red 1/4",
+        "Green 1/4",
+        "Blue 1/4",
+        "Red 2/4",
+        "Green 2/4",
+        "Blue 2/4",
+        "Red 3/4",
+        "Green 3/4",
+        "Blue 3/4",
+        "Red 4/4",
+        "Green 4/4",
+        "Blue 4/4"
+      ]
+    },
+    {
+      "name": "P7 (7 channels)",
+      "shortName": "P7",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Color Programs",
+        "Program Speed / Mic Sensitivity",
+        "Strobe1",
+        "Dimmer"
+      ]
+    }
+  ]
+}

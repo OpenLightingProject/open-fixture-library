@@ -2,9 +2,9 @@
 const path = require('path');
 const minimist = require('minimist');
 const colors = require('colors');
-const fs = require('fs');
 
-const Fixture = require(path.join(__dirname, '..', 'lib', 'model', 'Fixture.js'));
+const exportPlugins = require('../plugins/plugins.js').export;
+const Fixture = require('../lib/model/Fixture.js');
 
 const args = minimist(process.argv.slice(2), {
   string: ['p'],
@@ -33,15 +33,6 @@ if (!args.plugin) {
 if (args._.length === 0) {
   console.error(colors.red('[Error]') + ' No fixtures specified. See --help for usage.');
   process.exit(1);
-}
-
-let exportPlugins = {};
-const pluginDir = path.join(__dirname, '..', 'plugins');
-for (const filename of fs.readdirSync(pluginDir)) {
-  const plugin = require(path.join(pluginDir, filename));
-  if ('export' in plugin) {
-    exportPlugins[path.basename(filename, '.js')] = plugin;
-  }
 }
 
 if (!(args.plugin in exportPlugins)) {

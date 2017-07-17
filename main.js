@@ -9,7 +9,8 @@ const browserify = require('browserify-middleware');
 const minifyHTML = require('html-minifier').minify;
 const bodyParser = require('body-parser');
 
-const Fixture = require(path.join(__dirname, 'lib', 'model', 'Fixture.js'));
+const plugins = require('./plugins/plugins.js');
+const Fixture = require('./lib/model/Fixture.js');
 
 const app = express();
 
@@ -61,7 +62,6 @@ app.engine('js', (filePath, options, callback) => {
   let opts = {
     manufacturers: manufacturers,
     register: register,
-    plugins: plugins,
     baseDir: __dirname,
     messages: getMessages()
   };
@@ -110,12 +110,6 @@ fs.readFile(path.join(__dirname, 'fixtures', 'register.json'), 'utf8', (error, d
   register = JSON.parse(data);
 });
 
-// load available plugins
-let plugins = {};
-for (const filename of fs.readdirSync(path.join(__dirname, 'plugins'))) {
-  plugins[path.basename(filename, '.js')] = require(path.join(__dirname, 'plugins', filename));
-}
-
 
 app.get('/', (request, response) => {
   response.render('pages/index');
@@ -147,7 +141,7 @@ app.get('/search', (request, response) => {
 app.use(bodyParser.json());
 
 app.post('/ajax/add-fixtures', (request, response) => {
-  require(path.join(__dirname, 'lib', 'add-fixtures'))(request, response);
+  require('./lib/add-fixtures.js')(request, response);
 });
 
 // if no other route applies
@@ -179,10 +173,8 @@ app.use((request, response, next) => {
 
     // fixture export
     const [key, pluginName] = fix.split('.');
-    if (register.manufacturers[man].includes(key)
-      && pluginName in plugins
-      && 'export' in plugins[pluginName]) {
-      const outfiles = plugins[pluginName].export([Fixture.fromRepository(man, key)], {
+    if (register.manufacturers[man].includes(key) && pluginName in plugins.export) {
+      const outfiles = plugins.export[pluginName].export([Fixture.fromRepository(man, key)], {
         baseDir: __dirname
       });
 

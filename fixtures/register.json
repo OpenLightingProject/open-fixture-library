@@ -1,10 +1,19 @@
 {
   "filesystem": {
+    "5star-systems/spica-250m": {
+      "name": "Spica 250M"
+    },
+    "abstract/twister-4": {
+      "name": "Twister 4"
+    },
     "american-dj/quad-phase-hp": {
       "name": "Quad Phase HP"
     },
     "american-dj/revo-4-ir": {
       "name": "Revo 4 IR"
+    },
+    "cameo/flat-pro-18": {
+      "name": "Flat Pro 18"
     },
     "cameo/outdoor-par-tri-12": {
       "name": "Outdoor PAR Tri 12"
@@ -27,6 +36,9 @@
     "elation/platinum-spot-15r-pro": {
       "name": "Platinum Spot 15R Pro"
     },
+    "eurolite/led-kls-801": {
+      "name": "LED KLS-801"
+    },
     "eurolite/led-par-56-tcl": {
       "name": "LED PAR-56 TCL"
     },
@@ -45,6 +57,15 @@
     "futurelight/pro-slim-par-7-hcl": {
       "name": "PRO Slim PAR-7 HCL"
     },
+    "generic/desk-channel": {
+      "name": "Desk Channel"
+    },
+    "generic/pan-tilt": {
+      "name": "Pan/Tilt Fader"
+    },
+    "generic/rgb-fader": {
+      "name": "RGB Fader"
+    },
     "gruft/ventilator": {
       "name": "Ventilator"
     },
@@ -54,25 +75,44 @@
     "lightmaxx/vega-zoom-wash": {
       "name": "Vega Zoom Wash"
     },
+    "martin/atomic-3000": {
+      "name": "Atomic 3000"
+    },
     "martin/roboscan-812": {
       "name": "RoboScan 812"
+    },
+    "robe/dj-scan-250-xt": {
+      "name": "DJ Scan 250 XT"
+    },
+    "showtec/horizon-8": {
+      "name": "Horizon 8"
+    },
+    "showtec/kanjo-wash-rgb": {
+      "name": "Kanjo Wash RGB"
+    },
+    "showtec/led-light-bar-rgb-v3": {
+      "name": "LED Light Bar RGB V3"
     },
     "showtec/phantom-140-led-spot": {
       "name": "Phantom 140 LED Beam"
     },
     "showtec/phantom-50-led-spot": {
       "name": "Phantom 50 LED Spot"
-    },
-    "showtec/horizon-8": {
-      "name": "Horizon 8"
     }
   },
   "manufacturers": {
+    "5star-systems": [
+      "spica-250m"
+    ],
+    "abstract": [
+      "twister-4"
+    ],
     "american-dj": [
       "quad-phase-hp",
       "revo-4-ir"
     ],
     "cameo": [
+      "flat-pro-18",
       "outdoor-par-tri-12",
       "thunder-wash-100-rgb",
       "thunder-wash-100-w",
@@ -84,6 +124,7 @@
       "platinum-spot-15r-pro"
     ],
     "eurolite": [
+      "led-kls-801",
       "led-par-56-tcl",
       "led-ps-4-hcl",
       "led-sls-6-uv-floor",
@@ -93,6 +134,11 @@
     "futurelight": [
       "pro-slim-par-7-hcl"
     ],
+    "generic": [
+      "desk-channel",
+      "pan-tilt",
+      "rgb-fader"
+    ],
     "gruft": [
       "ventilator"
     ],
@@ -101,36 +147,60 @@
       "vega-zoom-wash"
     ],
     "martin": [
+      "atomic-3000",
       "roboscan-812"
+    ],
+    "robe": [
+      "dj-scan-250-xt"
     ],
     "showtec": [
       "horizon-8",
+      "kanjo-wash-rgb",
+      "led-light-bar-rgb-v3",
       "phantom-140-led-spot",
       "phantom-50-led-spot"
     ]
   },
   "categories": {
+    "Moving Head": [
+      "5star-systems/spica-250m",
+      "elation/platinum-hfx",
+      "elation/platinum-spot-15r-pro",
+      "eurolite/led-tmh-18",
+      "eurolite/led-tmh-x25",
+      "generic/pan-tilt",
+      "lightmaxx/vega-zoom-wash",
+      "showtec/kanjo-wash-rgb",
+      "showtec/phantom-140-led-spot",
+      "showtec/phantom-50-led-spot"
+    ],
     "Flower": [
+      "abstract/twister-4",
       "american-dj/quad-phase-hp",
       "american-dj/revo-4-ir"
     ],
     "Color Changer": [
+      "cameo/flat-pro-18",
       "cameo/outdoor-par-tri-12",
       "cameo/thunder-wash-100-rgb",
       "cameo/thunder-wash-600-rgb",
+      "eurolite/led-kls-801",
       "eurolite/led-par-56-tcl",
       "eurolite/led-ps-4-hcl",
       "eurolite/led-sls-6-uv-floor",
       "futurelight/pro-slim-par-7-hcl",
+      "generic/rgb-fader",
       "lightmaxx/platinum-mini-tri-par",
       "lightmaxx/vega-zoom-wash",
-      "showtec/horizon-8"
+      "showtec/horizon-8",
+      "showtec/led-light-bar-rgb-v3"
     ],
     "Strobe": [
       "cameo/thunder-wash-100-rgb",
       "cameo/thunder-wash-100-w",
       "cameo/thunder-wash-600-rgb",
-      "cameo/thunder-wash-600-w"
+      "cameo/thunder-wash-600-w",
+      "martin/atomic-3000"
     ],
     "Blinder": [
       "cameo/thunder-wash-100-rgb",
@@ -139,20 +209,15 @@
       "cameo/thunder-wash-600-w",
       "showtec/horizon-8"
     ],
-    "Moving Head": [
-      "elation/platinum-hfx",
-      "elation/platinum-spot-15r-pro",
-      "eurolite/led-tmh-18",
-      "eurolite/led-tmh-x25",
-      "lightmaxx/vega-zoom-wash",
-      "showtec/phantom-140-led-spot",
-      "showtec/phantom-50-led-spot"
+    "Dimmer": [
+      "generic/desk-channel"
     ],
     "Fan": [
       "gruft/ventilator"
     ],
     "Scanner": [
-      "martin/roboscan-812"
+      "martin/roboscan-812",
+      "robe/dj-scan-250-xt"
     ]
   }
 }

@@ -1,0 +1,267 @@
+{
+  "name": "DJ Scan 250 XT",
+  "shortName": "Scan250XT",
+  "categories": ["Scanner"],
+  "meta": {
+    "authors": ["FloEdelmann", "Felix Edelmann"],
+    "createDate": "2017-01-20",
+    "lastModifyDate": "2017-07-16"
+  },
+  "manualURL": "https://www.robe.cz/index.php?type=10898&tx_odproducts_f%5baction%5d=downloadFile&tx_odproducts_f%5bfile%5d=robe/downloads/user_manuals/User%20manual%20DJ%20Scan%20250%20XT.pdf",
+  "physical": {
+    "dimensions": [308, 163, 483],
+    "weight": 9.5,
+    "power": 500,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "MSD 250"
+    },
+    "lens": {
+      "degreesMinMax": [19.0, 19.0]
+    },
+    "focus": {
+      "type": "Mirror"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "defaultValue": 127
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "defaultValue": 127
+    },
+    "Color Wheel": {
+      "type": "MultiColor",
+      "precedence": "HTP",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Open / White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [8, 15],
+          "name": "Turquoise",
+          "color": "#40e0d0"
+        },
+        {
+          "range": [16, 23],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [24, 31],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [32, 39],
+          "name": "Light green",
+          "color": "#90ee90"
+        },
+        {
+          "range": [40, 47],
+          "name": "Magenta",
+          "color": "#ca1f7b"
+        },
+        {
+          "range": [48, 55],
+          "name": "Light blue",
+          "color": "#add8e6"
+        },
+        {
+          "range": [56, 63],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [64, 71],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [72, 79],
+          "name": "Pink",
+          "color": "#ffc0cb"
+        },
+        {
+          "range": [80, 87],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [88, 95],
+          "name": "Orange",
+          "color": "#ff7f00"
+        },
+        {
+          "range": [96, 103],
+          "name": "UV",
+          "color": "#bf00fe"
+        },
+        {
+          "range": [104, 111],
+          "name": "Red-Cyan",
+          "color": "#ff0000",
+          "color2": "#00ffff"
+        },
+        {
+          "range": [112, 119],
+          "name": "Yellow-Green",
+          "color": "#ffff00",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [120, 127],
+          "name": "Pink-Blue",
+          "color": "#ffc0cb",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [128, 190],
+          "name": "CW Rainbow fast-slow",
+          "menuClick": "center"
+        },
+        {
+          "range": [191, 192],
+          "name": "No rotation"
+        },
+        {
+          "range": [193, 255],
+          "name": "CCW Rainbow slow-fast",
+          "menuClick": "center"
+        }
+      ]
+    },
+    "Gobos": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 23],
+          "name": "Open"
+        },
+        {
+          "range": [24, 47],
+          "name": "Rotating Gobo 1"
+        },
+        {
+          "range": [48, 79],
+          "name": "Rotating Gobo 2"
+        },
+        {
+          "range": [80, 103],
+          "name": "Rotating Gobo 3"
+        },
+        {
+          "range": [104, 127],
+          "name": "Rotating Gobo 4"
+        },
+        {
+          "range": [128, 151],
+          "name": "Rotating Gobo 5"
+        },
+        {
+          "range": [152, 175],
+          "name": "Rotating Gobo 6"
+        },
+        {
+          "range": [176, 207],
+          "name": "Rotating Gobo 7"
+        },
+        {
+          "range": [208, 231],
+          "name": "Rotating Gobo 8"
+        },
+        {
+          "range": [232, 255],
+          "name": "Rotating Gobo 9"
+        }
+      ]
+    },
+    "Gobo rotation": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Gobo rotation",
+          "menuClick": "center"
+        },
+        {
+          "range": [128, 190],
+          "name": "CW fast-slow",
+          "menuClick": "center"
+        },
+        {
+          "range": [191, 192],
+          "name": "No rotation"
+        },
+        {
+          "range": [193, 255],
+          "name": "CCW slow-fast",
+          "menuClick": "center"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "type": "Shutter",
+      "highlightValue": 110,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Closed"
+        },
+        {
+          "range": [1, 63],
+          "name": "Dimmer 0-100%",
+          "menuClick": "center"
+        },
+        {
+          "range": [64, 95],
+          "name": "Open"
+        },
+        {
+          "range": [96, 127],
+          "name": "Strobe 0-8Hz",
+          "menuClick": "center"
+        },
+        {
+          "range": [128, 139],
+          "name": "Reset"
+        },
+        {
+          "range": [140, 159],
+          "name": "Closed"
+        },
+        {
+          "range": [160, 175],
+          "name": "Pulse slow-fast",
+          "menuClick": "center"
+        },
+        {
+          "range": [176, 191],
+          "name": "Pulse fast-slow",
+          "menuClick": "center"
+        },
+        {
+          "range": [192, 223],
+          "name": "Random strobe slow-fast",
+          "menuClick": "center"
+        },
+        {
+          "range": [224, 255],
+          "name": "Open",
+          "menuClick": "hidden"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": ["Pan", "Tilt", "Color Wheel", "Gobos", "Gobo rotation", "Shutter / Strobe"]
+    }
+  ]
+}
