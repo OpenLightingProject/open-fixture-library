@@ -1,0 +1,58 @@
+{
+  "name": "Pan/Tilt Fader",
+  "shortName": "GenericPanTilt",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["FloEdelmann"],
+    "createDate": "2017-07-17",
+    "lastModifyDate": "2017-07-17"
+  },
+  "physical": {
+    "focus": {
+      "panMax": 540,
+      "tiltMax": 180
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine", "Pan fine^2"]
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine", "Tilt fine^2"]
+    }
+  },
+  "modes": [
+    {
+      "name": "8 bit",
+      "shortName": "8bit",
+      "channels": [
+        "Pan",
+        "Tilt"
+      ]
+    },
+    {
+      "name": "16 bit",
+      "shortName": "16bit",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine"
+      ]
+    },
+    {
+      "name": "24 bit",
+      "shortName": "24bit",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Pan fine^2",
+        "Tilt",
+        "Tilt fine",
+        "Tilt fine^2"
+      ]
+    }
+  ]
+}

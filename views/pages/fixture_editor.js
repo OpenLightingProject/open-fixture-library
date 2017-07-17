@@ -526,7 +526,7 @@ function getSubmitDialogString() {
   str += 'Your fixture was successfully uploaded to GitHub (see the <a :href="submit.pullRequestUrl" target="_blank">pull request</a>). It will be now reviewed and then merged into the library. Thank you for your contribution!';
   str += '<div class="button-bar right">';
   str += '<a href="/" class="button secondary">Back to homepage</a> ';
-  str += '<a href="/fixture-editor" class="button secondary">Create another fixture</a>';
+  str += '<a href="/fixture-editor" class="button secondary">Create another fixture</a> ';
   str += '<a :href="submit.pullRequestUrl" class="button primary" target="_blank">See pull request</a>';
   str += '</div>';
   str += '</div>';
@@ -535,7 +535,7 @@ function getSubmitDialogString() {
   str += 'Unfortunately, there was an error while uploading. Please copy the following data and <a href="https://github.com/FloEdelmann/open-fixture-library/issues/new" target="_blank">manually submit them to GitHub</a>.';
   str += '<pre>{{ submit.rawData }}</pre>';
   str += '<div class="button-bar right">';
-  str += '<a href="/" class="button secondary">Back to homepage</a>';
+  str += '<a href="/" class="button secondary">Back to homepage</a> ';
   str += '<a href="https://github.com/FloEdelmann/open-fixture-library/issues/new" class="button primary" target="_blank">Submit manually</a>';
   str += '</div>';
   str += '</div>';
