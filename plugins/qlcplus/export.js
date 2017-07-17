@@ -3,6 +3,7 @@ const xmlbuilder = require('xmlbuilder');
 const FineChannel = require('../../lib/model/FineChannel.js');
 const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
 const Capability = require('../../lib/model/Capability.js');
+const Physical = require('../../lib/model/Physical.js');
 
 module.exports.name = 'QLC+';
 module.exports.version = '0.4.0';
@@ -121,7 +122,7 @@ function addMode(xml, mode) {
     }
   });
 
-  addPhysical(xmlMode, mode.physical);
+  addPhysical(xmlMode, mode.physical || new Physical({}));
 
   mode.channelKeys.forEach((chKey, index) => {
     const channel = mode.fixture.getChannelByKey(chKey);

@@ -29,6 +29,17 @@
       "floating-point-dimensions",
       "floating-point-weight",
       "fine-channel-alias",
+      "fine-channel-capabilities",
+      "channels-in-multiple-modes"
+    ]
+  },
+  {
+    "man": "generic",
+    "key": "rgb-fader",
+    "name": "RGB Fader",
+    "features": [
+      "no-physical-data",
+      "fine-channel-aliases",
       "channels-in-multiple-modes"
     ]
   },

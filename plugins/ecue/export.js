@@ -3,6 +3,7 @@ const xmlbuilder = require('xmlbuilder');
 const FineChannel = require('../../lib/model/FineChannel.js');
 const NullChannel = require('../../lib/model/NullChannel.js');
 const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
+const Physical = require('../../lib/model/Physical.js');
 
 module.exports.name = 'e:cue';
 module.exports.version = '0.3.0';
@@ -78,6 +79,8 @@ function addFixture(xmlMan, fixture) {
   const fixModifiedDate = dateToString(fixture.meta.lastModifyDate);
 
   for (const mode of fixture.modes) {
+    const physical = mode.physical || new Physical({});
+
     let xmlFixture = xmlMan.element('Fixture', {
       '_CreationDate': fixCreationDate,
       '_ModifiedDate': fixModifiedDate,
@@ -85,11 +88,11 @@ function addFixture(xmlMan, fixture) {
       'NameShort': fixture.shortName + (fixture.modes.length > 1 ? '-' + mode.shortName : ''),
       'Comment': fixture.comment,
       'AllocateDmxChannels': mode.channels.length,
-      'Weight': mode.physical.weight,
-      'Power': mode.physical.power,
-      'DimWidth': mode.physical.width,
-      'DimHeight': mode.physical.height,
-      'DimDepth': mode.physical.depth
+      'Weight': physical.weight || 0,
+      'Power': physical.power || 0,
+      'DimWidth': physical.width || 10,
+      'DimHeight': physical.height || 10,
+      'DimDepth': physical.depth || 10
     });
 
     handleMode(xmlFixture, mode);

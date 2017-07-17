@@ -1,0 +1,65 @@
+{
+  "name": "RGB Fader",
+  "shortName": "RGB",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["FloEdelmann"],
+    "createDate": "2017-07-17",
+    "lastModifyDate": "2017-07-17"
+  },
+  "availableChannels": {
+    "Red": {
+      "type": "SingleColor",
+      "color": "Red",
+      "fineChannelAliases": ["Red fine", "Red fine^2"]
+    },
+    "Green": {
+      "type": "SingleColor",
+      "color": "Green",
+      "fineChannelAliases": ["Green fine", "Green fine^2"]
+    },
+    "Blue": {
+      "type": "SingleColor",
+      "color": "Blue",
+      "fineChannelAliases": ["Blue fine", "Blue fine^2"]
+    }
+  },
+  "modes": [
+    {
+      "name": "8 bit",
+      "shortName": "8bit",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "16 bit",
+      "shortName": "16bit",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine"
+      ]
+    },
+    {
+      "name": "24 bit",
+      "shortName": "24bit",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Red fine^2",
+        "Green",
+        "Green fine",
+        "Green fine^2",
+        "Blue",
+        "Blue fine",
+        "Blue fine^2"
+      ]
+    }
+  ]
+}
