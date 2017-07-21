@@ -37,7 +37,7 @@ See [cli/fixture-features/README.md](cli/fixture-features/README.md).
 
 ### Model
 
-A fixture is internally modeled in the [Fixture](lib/model/Fixture.js) class. An object (parsed from the JSON file) provides additional functionalities to ease the handling and to avoid code duplication. See the files in the [lib/model/ directory](lib/model/) to see possible fuctions. All the properties from the JSON are available in the model with their respective names though.
+A fixture is internally modeled in the [Fixture](lib/model/Fixture.js) class. An object (parsed from the JSON file) provides additional functionalities to ease the handling and to avoid code duplication. See the files in the `lib/model` directory to see possible fuctions.
 
 
 ### Plugins
@@ -47,11 +47,11 @@ A plugin is a module that handles import from and/or export to a fixture format.
 * `README.md`: A markdown file with a short explanation about the fixture format. If applicable, please include:
     * a link to the software that uses this format
     * how to import fixtures into the software
-    * a place where fixtures of this format can be obained from
+    * a place where fixtures of this format can be obtained from
 * `export.js` if export is supported.
   ```js
   module.exports.name = 'Plugin Name';
-  module.exports.version = '0.0.1';  // semantic versioning of export plugin
+  module.exports.version = '0.0.3';  // semantic versioning of export plugin
 
   module.exports.export = function exportPluginName(fixtures, options) {
     /*
