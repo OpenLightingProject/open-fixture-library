@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["FloEdelmann"],
     "createDate": "2017-07-17",
-    "lastModifyDate": "2017-07-17"
+    "lastModifyDate": "2017-07-21"
   },
   "physical": {
     "focus": {
@@ -43,6 +43,16 @@
       ]
     },
     {
+      "name": "16 bit (alternate)",
+      "shortName": "16bit-alt",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine"
+      ]
+    },
+    {
       "name": "24 bit",
       "shortName": "24bit",
       "channels": [
@@ -51,6 +61,18 @@
         "Pan fine^2",
         "Tilt",
         "Tilt fine",
+        "Tilt fine^2"
+      ]
+    },
+    {
+      "name": "24 bit (alternate)",
+      "shortName": "24bit-alt",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
+        "Pan fine^2",
         "Tilt fine^2"
       ]
     }
