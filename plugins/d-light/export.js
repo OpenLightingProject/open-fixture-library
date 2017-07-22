@@ -7,12 +7,12 @@ const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
 module.exports.name = 'D::Light';
 module.exports.version = '0.1.0';
 
-module.exports.export = (fixtures, options) => {
+module.exports.export = function exportDLight(fixtures, options) {
   let deviceFiles = [];
 
   for (const fixture of fixtures) {
     // add device for each mode
-    deviceFiles = deviceFiles.concat(fixture.modes.map(mode => {
+    for (const mode of fixture.modes) {
       let xml = xmlbuilder.begin()
         .declaration('1.0')
         .element({
@@ -30,29 +30,68 @@ module.exports.export = (fixtures, options) => {
       // channels are grouped by their channel type which is called AttributesDefinition in D::Light
       const channelsByAttribute = getChannelsByAttribute(mode.channels);
       for (const attribute of Object.keys(channelsByAttribute)) {
-        const channels = channelsByAttribute[attribute];
-
-        xml.element({
-          AttributesDefinition: {
-            '@id': attribute,
-            '@length': channels.length
-          }
-        });
+        addAttribute(xml, mode, attribute, channelsByAttribute[attribute]);
       }
 
-      return {
+      deviceFiles.push({
         name: `${fixture.manufacturer.key}/${fixture.key}-${sanitize(mode.shortName)}.xml`,
         content: xml.end({
           pretty: true,
-          indent: ' '
+          indent: '  '
         }),
         mimetype: 'application/xml'
-      }
-    }));
+      });
+    }
   }
 
   return deviceFiles;
 };
+
+function addAttribute(xml, mode, attribute, channels) {
+  const xmlAttribute = xml.element({
+    AttributesDefinition: {
+      '@id': attribute,
+      '@length': channels.length
+    }
+  });
+
+  for (let i = 0; i < channels.length; i++) {
+    addChannel(xmlAttribute, mode, channels[i], i);
+  }
+}
+
+function addChannel(xmlAttribute, mode, channel, index) {
+  let xmlChannel = xmlAttribute.element({
+    ThisAttribute: {
+      '@id': index,
+      HOME: {
+        '@id': getDefaultValue(channel)
+      },
+      addressIndex: {
+        '@id': mode.getChannelIndex(channel)
+      },
+      parameterName: {
+        '@id': channel.uniqueName
+      },
+      minLevel: {
+        '@id': 0
+      },
+      maxLevel: {
+        '@id': 255
+      }
+    }
+  });
+}
+
+function getDefaultValue(channel) {
+  if (channel instanceof SwitchingChannel) {
+    return getDefaultValue(channel.defaultChannel);
+  }
+  if (channel instanceof FineChannel) {
+    return channel.defaultValue;
+  }
+  return channel.getDefaultValueWithFineness(0);
+}
 
 function getChannelsByAttribute(channels) {
   let channelsByAttribute = {
@@ -82,11 +121,14 @@ function getChannelsByAttribute(channels) {
 }
 
 function getChannelAttribute(channel) {
-  if (channel instanceof FineChannel) {
-    return 'FINE';
-  }
   if (channel instanceof SwitchingChannel) {
     channel = channel.defaultChannel;
+  }
+  if (channel instanceof FineChannel) {
+    if (channel.fineness === 1) {
+      return 'FINE';
+    }
+    return 'EXTRA';
   }
 
   switch (channel.type) {

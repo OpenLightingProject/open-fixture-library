@@ -31,12 +31,12 @@
     "Pan": {
       "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 32768
+      "defaultValue": 32767
     },
     "Tilt": {
       "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 32768
+      "defaultValue": 32767
     },
     "Pan/Tilt Speed": {
       "type": "Speed",
