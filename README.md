@@ -9,6 +9,12 @@ The *Open Fixture Library* ([open-fixture-library.herokuapp.com](https://open-fi
 
 ## Contribute
 
+If you are a **user** and want to help, head over to the [Fixture Editor](https://open-fixture-library.herokuapp.com/fixture-editor) and add your favorite fixture that is not yet included in our library!
+
+If you are a **developer**, read on :)
+
+-----
+
 The project is still in a very early stage, but we're happy to see new issues or pull requests anyway!
 
 Pushing to the `master` branch here on GitHub deploys a new version on [Heroku](http://heroku.com/) each time. So we have to make sure that the `master` branch is always clean and ready to deploy. Thus, we will make heavy use of pull requests (so, do always create feature branches `git checkout -b new-feature`) and let [Travis CI](https://travis-ci.org/FloEdelmann/open-fixture-library) check that everything new is passing all tests.
@@ -23,7 +29,7 @@ Pushing to the `master` branch here on GitHub deploys a new version on [Heroku](
 
 ### New fixtures
 
-Ideally, just use the [Fixture Editor](https://open-fixture-library.herokuapp.com/fixture-editor) and submit it from there (however, some features are still missing, see [#77](https://github.com/FloEdelmann/open-fixture-library/issues/77)). Please try to include as much information as possible!
+Ideally, just use the [Fixture Editor](https://open-fixture-library.herokuapp.com/fixture-editor) and submit it from there (however, some features are still missing, see [#77](https://github.com/FloEdelmann/open-fixture-library/issues/77); add such information in a comment in the resulting pull request). Please try to include as much information as possible!
 
 If you have to manually edit fixtures, see [schema.js](fixtures/schema.js) in the `fixtures` directory and use the existing fixtures as a reference.
 
@@ -37,7 +43,7 @@ See [cli/fixture-features/README.md](cli/fixture-features/README.md).
 
 ### Model
 
-A fixture is internally modeled in the [Fixture](lib/model/Fixture.js) class. An object (parsed from the JSON file) provides additional functionalities to ease the handling and to avoid code duplication. See the files in the `lib/model` directory to see possible fuctions.
+A fixture is internally modeled in the [Fixture](lib/model/Fixture.js) class. An object (parsed from the JSON file) provides additional functionalities to ease the handling and to avoid code duplication. See the files in the `lib/model` directory to see possible functions.
 
 
 ### Plugins
@@ -117,7 +123,7 @@ A plugin is a module that handles import from and/or export to a fixture format.
   };
   ```
 
-You can try plugins from the commandline:
+You can try plugins from the command line:
 
 ```
 node cli/import-fixture.js <plugin> <filename>
