@@ -139,7 +139,7 @@ function addCapability(xmlCapabilities, cap) {
     name: {
       '@min': cap.range.start,
       '@max': cap.range.end,
-      '@snap': cap.menuClick === 'center' ? cap.range.center : cap.range.start,
+      '@snap': cap.menuClickDmxValue,
       '@timeHolder': '0',
       '@dummy': '0',
       '#text': cap.name
