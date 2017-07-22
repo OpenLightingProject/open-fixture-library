@@ -9,6 +9,12 @@ The *Open Fixture Library* ([open-fixture-library.herokuapp.com](https://open-fi
 
 ## Contribute
 
+If you are a **user** and want to help, head over to the [Fixture Editor](https://open-fixture-library.herokuapp.com/fixture-editor) and add your favorite fixture that is not yet included in our library!
+
+If you are a **developer**, read on :)
+
+-----
+
 The project is still in a very early stage, but we're happy to see new issues or pull requests anyway!
 
 Pushing to the `master` branch here on GitHub deploys a new version on [Heroku](http://heroku.com/) each time. So we have to make sure that the `master` branch is always clean and ready to deploy. Thus, we will make heavy use of pull requests (so, do always create feature branches `git checkout -b new-feature`) and let [Travis CI](https://travis-ci.org/FloEdelmann/open-fixture-library) check that everything new is passing all tests.
@@ -23,83 +29,106 @@ Pushing to the `master` branch here on GitHub deploys a new version on [Heroku](
 
 ### New fixtures
 
-Ideally, just use the [Fixture Editor](https://open-fixture-library.herokuapp.com/fixture-editor) and submit it from there (however, some features are still missing, see [#77](https://github.com/FloEdelmann/open-fixture-library/issues/77)). Please try to include as much information as possible!
+Ideally, just use the [Fixture Editor](https://open-fixture-library.herokuapp.com/fixture-editor) and submit it from there (however, some features are still missing, see [#77](https://github.com/FloEdelmann/open-fixture-library/issues/77); add such information in a comment in the resulting pull request). Please try to include as much information as possible!
 
-If you have to manually edit fixtures, see [schema.js](fixtures/schema.js) and [defaults.js](fixtures/defaults.js) in the `fixtures` directory and use the existing fixtures as a reference.
+If you have to manually edit fixtures, see [schema.js](fixtures/schema.js) in the `fixtures` directory and use the existing fixtures as a reference.
 
 You can also import existing fixture definitions using import plugins. See [cli/import-fixture.js](cli/import-fixture.js) for that. In the future, this will be integrated into the Fixture Editor.
 
 
+### Fixture features
+
+See [cli/fixture-features/README.md](cli/fixture-features/README.md).
+
+
+### Model
+
+A fixture is internally modeled in the [Fixture](lib/model/Fixture.js) class. An object (parsed from the JSON file) provides additional functionalities to ease the handling and to avoid code duplication. See the files in the `lib/model` directory to see possible functions.
+
+
 ### Plugins
 
-A plugin is a module that handles import from and/or export to a fixture format. Just add a new file to the `plugins` directory, it will be automatically detected. If your plugin does not support both import and export, just define one of the functions.
+A plugin is a module that handles import from and/or export to a fixture format. To add a plugin, create a new subdirectory in the `plugins` directory containing the following files:
 
-```js
-module.exports.name = 'e:cue';     // display name, required
-module.exports.version = '0.1.0';  // plugin version, required
+* `README.md`: A markdown file with a short explanation about the fixture format. If applicable, please include:
+    * a link to the software that uses this format
+    * how to import fixtures into the software
+    * a place where fixtures of this format can be obtained from
+* `export.js` if export is supported.
+  ```js
+  module.exports.name = 'Plugin Name';
+  module.exports.version = '0.0.3';  // semantic versioning of export plugin
 
-// optional
-module.exports.export = function exportPluginName(fixtures, options) {
-  /*
-   * fixtures: array of Fixture objects
-   * 
-   * options: {
-   *   baseDir: '...',
-   *   // maybe more
-   * }
-   */
+  module.exports.export = function exportPluginName(fixtures, options) {
+    /*
+    * fixtures: array of Fixture objects
+    * 
+    * options: {
+    *   baseDir: '...',
+    *   // maybe more
+    * }
+    */
 
-  let outfiles = [];
+    let outfiles = [];
 
-  // ...
+    // ...
 
-  // multiple files will automatically be zipped together
-  outfiles.push({
-    name: 'filename.ext',
-    content: 'file content',
-    mimetype: 'text/plain'
-  });
+    // multiple files will automatically be zipped together
+    outfiles.push({
+      name: 'filename.ext',
+      content: 'file content',
+      mimetype: 'text/plain'
+    });
 
-  // ...
+    // ...
 
-  return outfiles;
-};
-
-// also optional
-module.exports.import = function importPluginName(str, filename, resolve, reject) {
-  /*
-   * str:      'import file contents'
-   * filename: 'importFilename.ext'
-   * resolve:  function to call if everything goes right, see below
-   * reject:   function to call if something goes wrong, see below
-   */
-
-  let out = {
-    manufacturers: {},  // like in manufacturers.json
-    fixtures: {},       // key: 'manufacturer-key/fixture-key', value: like in a fixture JSON
-    warnings: {}        // key: 'manufacturer-key/fixture-key' to which a warning belongs, value: string
+    return outfiles;
   };
+  ```
+* `import.js` if import is supported.
+  ```js
+  module.exports.name = 'Plugin Name';
+  module.exports.version = '0.1.0';  // semantic versioning of import plugin
 
-  // ...
+  module.exports.import = function importPluginName(str, filename, resolve, reject) {
+    /*
+    * str:      'import file contents'
+    * filename: 'importFilename.ext'
+    * resolve:  function to call if everything goes right, see below
+    * reject:   function to call if something goes wrong, see below
+    */
 
-  // example
-  const manKey = 'cameo';
-  const fixKey = 'thunder-wash-600-rgb'
+    let out = {
+      manufacturers: {},  // like in manufacturers.json
+      fixtures: {},       // key: 'manufacturer-key/fixture-key', value: like in a fixture JSON
+      warnings: {}        // key: 'manufacturer-key/fixture-key' to which a warning belongs, value: string
+    };
 
-  if (couldNotParse) {
-    return reject(`Could not parse '${filename}'.`);
-  }
+    // ...
 
-  // Add warning if a necessary property is not included in parsed file
-  out.warnings[manKey + '/' + fixKey].push('Please specify categories.');
+    // example
+    const manKey = 'cameo';
+    const fixKey = 'thunder-wash-600-rgb'
 
-  out.fixtures[manKey + '/' + fixKey] = fixtureObject;
+    if (couldNotParse) {
+      return reject(`Could not parse '${filename}'.`);
+    }
 
-  resolve(out);
-};
+    // Add warning if a necessary property is not included in parsed file
+    out.warnings[manKey + '/' + fixKey].push('Could not parse categories, please specify them manually.');
+
+    out.fixtures[manKey + '/' + fixKey] = fixtureObject;
+
+    resolve(out);
+  };
+  ```
+
+You can try plugins from the command line:
+
 ```
-
-You can try import plugins by running `node cli/import-fixture.js [pluginName] [importFileName]`.
+node cli/import-fixture.js <plugin> <filename>
+node cli/export-fixture.js -p <plugin name> <fixture> [<more fixtures>]
+```
 
 
 ### UI
