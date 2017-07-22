@@ -96,20 +96,18 @@ function getParameterName(mode, attribute, channel) {
     return mode.getChannelIndex(channel.coarseChannel.key) + 1;
   }
 
-  const chType = channel.type.toLowerCase();
-
   switch (attribute) {
     case 'INTENSITY':
       return 'DIMMER';
 
     case 'FOCUS':
-      return chType.toUpperCase(); // PAN or TILT
+      return channel.type.toUpperCase(); // PAN or TILT
 
     case 'CONTROL':
-      if (chType.includes('lamp')) {
+      if (channel.name.toLowerCase().includes('lamp')) {
         return 'LAMP';
       }
-      if (chType.includes('reset')) {
+      if (channel.name.toLowerCase().includes('reset')) {
         return 'RESET';
       }
       return 'FUNCTION';
