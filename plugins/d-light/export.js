@@ -1,6 +1,7 @@
 const xmlbuilder = require('xmlbuilder');
 const sanitize = require('sanitize-filename');
 
+const Channel = require('../../lib/model/Channel.js');
 const FineChannel = require('../../lib/model/FineChannel.js');
 const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
 
@@ -79,6 +80,37 @@ function addChannel(xmlAttribute, mode, channel, index) {
       maxLevel: {
         '@id': 255
       }
+    }
+  });
+  
+  addCapabilities(xmlChannel, channel);
+}
+
+function addCapabilities(xmlChannel, channel) {
+  if (channel instanceof Channel && channel.hasCapabilities) {
+    const caps = channel.capabilities;
+
+    let xmlCapabilities = xmlChannel.element({
+      Definitions: {
+        '@index': caps.length
+      }
+    });
+
+    for (const cap of caps) {
+      addCapability(xmlCapabilities, cap);
+    }
+  }
+}
+
+function addCapability(xmlCapabilities, cap) {
+  xmlCapabilities.element({
+    name: {
+      '@min': cap.range.start,
+      '@max': cap.range.end,
+      '@snap': cap.menuClick === 'center' ? cap.range.center : cap.range.start,
+      '@timeHolder': '0',
+      '@dummy': '0',
+      '#text': cap.name
     }
   });
 }
