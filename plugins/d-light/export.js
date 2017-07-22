@@ -87,11 +87,16 @@ function addChannel(xmlAttribute, mode, attribute, channel, index) {
 }
 
 function getParameterName(mode, attribute, channel) {
+  const uniqueName = channel.uniqueName;
+
+  if (channel instanceof SwitchingChannel) {
+    channel = channel.defaultChannel;
+  }
   if (channel instanceof FineChannel) {
     return mode.getChannelIndex(channel.coarseChannel.key) + 1;
   }
 
-  const chType = (channel instanceof SwitchingChannel ? channel.defaultChannel.type : channel.type).toLowerCase();
+  const chType = channel.type.toLowerCase();
 
   switch (attribute) {
     case 'INTENSITY':
@@ -109,12 +114,9 @@ function getParameterName(mode, attribute, channel) {
       }
       return 'FUNCTION';
 
-    case 'FINE':
-      
-
     // in all other attributes, custom text is allowed
     default:
-      return channel.uniqueName;
+      return uniqueName;
   }
 }
 
