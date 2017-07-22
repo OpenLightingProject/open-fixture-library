@@ -57,11 +57,11 @@ function addAttribute(xml, mode, attribute, channels) {
   });
 
   for (let i = 0; i < channels.length; i++) {
-    addChannel(xmlAttribute, mode, channels[i], i);
+    addChannel(xmlAttribute, mode, attribute, channels[i], i);
   }
 }
 
-function addChannel(xmlAttribute, mode, channel, index) {
+function addChannel(xmlAttribute, mode, attribute, channel, index) {
   let xmlChannel = xmlAttribute.element({
     ThisAttribute: {
       '@id': index,
@@ -72,7 +72,7 @@ function addChannel(xmlAttribute, mode, channel, index) {
         '@id': mode.getChannelIndex(channel)
       },
       parameterName: {
-        '@id': channel.uniqueName
+        '@id': getParameterName(mode, attribute, channel)
       },
       minLevel: {
         '@id': 0
@@ -84,6 +84,38 @@ function addChannel(xmlAttribute, mode, channel, index) {
   });
   
   addCapabilities(xmlChannel, channel);
+}
+
+function getParameterName(mode, attribute, channel) {
+  if (channel instanceof FineChannel) {
+    return mode.getChannelIndex(channel.coarseChannel.key) + 1;
+  }
+
+  const chType = (channel instanceof SwitchingChannel ? channel.defaultChannel.type : channel.type).toLowerCase();
+
+  switch (attribute) {
+    case 'INTENSITY':
+      return 'DIMMER';
+
+    case 'FOCUS':
+      return chType.toUpperCase(); // PAN or TILT
+
+    case 'CONTROL':
+      if (chType.includes('lamp')) {
+        return 'LAMP';
+      }
+      if (chType.includes('reset')) {
+        return 'RESET';
+      }
+      return 'FUNCTION';
+
+    case 'FINE':
+      
+
+    // in all other attributes, custom text is allowed
+    default:
+      return channel.uniqueName;
+  }
 }
 
 function addCapabilities(xmlChannel, channel) {
