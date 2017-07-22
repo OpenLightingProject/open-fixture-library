@@ -18,6 +18,9 @@ module.exports.export = function exportDLight(fixtures, options) {
         .declaration('1.0')
         .element({
           Device: {
+            OFL_Export: {
+              '@id': module.exports.version
+            },
             frames: {
               '@id': mode.channels.length
             },
