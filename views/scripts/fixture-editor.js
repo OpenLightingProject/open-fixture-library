@@ -416,6 +416,10 @@ var app = window.app = new Vue({
     isChannelNameUnique: function(channelUuid) {
       var chName = this.fixture.availableChannels[channelUuid].name;
       for (var channelKey in this.fixture.availableChannels) {
+        if (!this.fixture.availableChannels.hasOwnProperty(channelKey)) {
+          continue;
+        }
+
         var cmpName = this.fixture.availableChannels[channelKey].name;
         if (cmpName === chName && channelKey !== channelUuid) {
           return false;
