@@ -22,7 +22,7 @@ module.exports.export = function exportQLCplus(fixtures, options) {
           },
           Manufacturer: fixture.manufacturer.name,
           Model: fixture.name,
-          Type: fixture.mainCategory
+          Type: getFixtureType(fixture)
         }
       });
 
@@ -193,6 +193,12 @@ function addHead(xmlMode, mode, headChannels) {
   }
 }
 
+function getFixtureType(fixture) {
+  if (fixture.mainCategory === 'Blinder') {
+    return fixture.categories[1] || 'Other';
+  }
+  return fixture.mainCategory;
+}
 
 // converts a Channel's type into a valid QLC+ channel type
 function getChannelType(channel) {
