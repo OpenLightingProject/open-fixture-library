@@ -32,7 +32,7 @@ Promise.all(plugins.filter(
         const file = exportFiles[i];
         const testResults = fileResults[i];
 
-        console.log(file.name)
+        console.log(file.name);
 
         for (let j = 0; j < testResults.length; j++) {
           const test = plugin.exportTests[j];
@@ -42,7 +42,10 @@ Promise.all(plugins.filter(
             console.log('└', colors.green('[PASS]'), test.key);
           }
           else {
-            console.log('└', colors.red('[FAIL]'), `${test.key}: ${result.message}`);
+            console.log('└', colors.red('[FAIL]'), `${test.key}:`);
+            for (const error of result.errors) {
+              console.log('  -', error);
+            }
             fails++;
           }
         }
