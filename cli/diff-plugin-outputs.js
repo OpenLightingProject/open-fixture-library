@@ -3,10 +3,14 @@
 const minimist = require('minimist');
 const colors = require('colors');
 
+const testFixtures = require('../tests/test-fixtures.json').map(
+  fixture => `${fixture.man}/${fixture.key}`
+);
+
 const args = minimist(process.argv.slice(2), {
   string: ['p', 'r'],
-  boolean: 'h',
-  alias: { p: 'plugin', r: 'ref', h: 'help' },
+  boolean: ['h', 't'],
+  alias: { p: 'plugin', r: 'ref', h: 'help', t: 'test-fix' },
   default: { r: 'HEAD' }
 });
 
@@ -15,12 +19,13 @@ const helpMessage = [
   'Fixtures have to be declared with the path to its file in the fixtures/ directory.',
   `Usage: ${process.argv[1]} -p <plugin name> [-r <git reference>] <fixture> [<more fixtures>]`,
   'Options:',
-  '  --plugin, -p: Which plugin should be used to output fixtures.',
-  '                E. g. ecue or qlcplus',
-  '  --ref,    -r: The Git reference with which the current repo should be compared.',
-  '                E. g. 02ba13, HEAD~1 or master.',
-  '                Defaults to HEAD.',
-  '  --help,   -h: Show this help message.'
+  '  --plugin,   -p: Which plugin should be used to output fixtures.',
+  '                  E. g. ecue or qlcplus',
+  '  --ref,      -r: The Git reference with which the current repo should be compared.',
+  '                  E. g. 02ba13, HEAD~1 or master.',
+  '                  Defaults to HEAD.',
+  '  --test-fix, -t: Use the test fixtures instead of specifing custom fixtures.',
+  '  --help,     -h: Show this help message.'
 ].join('\n');
 
 if (args.help) {
@@ -34,12 +39,8 @@ if (!args.plugin) {
   process.exit(1);
 }
 
-if (args._.length === 0) {
-  console.error(colors.yellow('[Warning]') + ' No fixtures specified. See --help for usage.');
+if (args._.length === 0 && !args.t) {
+  console.log(colors.yellow('[Warning]') + ' No fixtures specified. See --help for usage.');
 }
 
-require('../lib/diff-plugin-outputs.js')({
-  plugin: args.plugin,
-  ref: args.ref,
-  fixtures: args._
-});
+require('../lib/diff-plugin-outputs.js')(args.plugin, args.ref, args.t ? testFixtures : args._);
