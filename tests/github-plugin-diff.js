@@ -73,7 +73,7 @@ github.pullRequests.get({
   // save PR for later use
   pullRequestData = pr.data;
 
-  // fetch comments in 100er packages
+  // fetch comments in 100er blocks
   let filePromises = [];
   for (let i = 0; i < pullRequestData.changed_files / 100; i++) {
     filePromises.push(
@@ -89,83 +89,77 @@ github.pullRequests.get({
   return Promise.all(filePromises);
 })
 // check which model components, plugins and fixtures have been changed in the PR
-.then(filePackages => {
-  return new Promise((resolve, reject) => {
-    let changedComponents = {
-      added: {
-        model: false,
-        plugins: [], // array of plugin keys
-        fixtures: [] // array of [man key, fix key]
-      },
-      modified: {
-        model: false,
-        plugins: [], // array of plugin keys
-        fixtures: [] // array of [man key, fix key]
-      },
-      removed: {
-        model: false,
-        plugins: [], // array of plugin keys
-        fixtures: [] // array of [man key, fix key]
+.then(fileBlocks => {
+  let changedComponents = {
+    added: {
+      model: false,
+      plugins: [], // array of plugin keys
+      fixtures: [] // array of [man key, fix key]
+    },
+    modified: {
+      model: false,
+      plugins: [], // array of plugin keys
+      fixtures: [] // array of [man key, fix key]
+    },
+    removed: {
+      model: false,
+      plugins: [], // array of plugin keys
+      fixtures: [] // array of [man key, fix key]
+    }
+  };
+
+  for (const block of fileBlocks) {
+    for (const file of block.data) {
+      const matchModel = file.filename.match(/lib\/model\/([^\/]+)\.js/);
+      if (matchModel) {
+        changedComponents[file.status].model = true;
+        continue;
       }
-    };
 
-    for (const package of filePackages) {
-      for (const file of package.data) {
-        const matchModel = file.filename.match(/lib\/model\/([^\/]+)\.js/);
-        if (matchModel) {
-          changedComponents[file.status].model = true;
-          continue;
-        }
-
-        const matchPlugin = file.filename.match(/plugins\/([^\/]+)\/export\.js/);
-        if (matchPlugin) {
-          changedComponents[file.status].plugins.push(matchPlugin[1]);
-          continue;
-        }
-        
-        const matchFixture = file.filename.match(/fixtures\/([^\/]+\/[^\/]+)\.json/);
-        if (matchFixture) {
-          changedComponents[file.status].fixtures.push(matchFixture[1]);
-        }
+      const matchPlugin = file.filename.match(/plugins\/([^\/]+)\/export\.js/);
+      if (matchPlugin) {
+        changedComponents[file.status].plugins.push(matchPlugin[1]);
+        continue;
+      }
+      
+      const matchFixture = file.filename.match(/fixtures\/([^\/]+\/[^\/]+)\.json/);
+      if (matchFixture) {
+        changedComponents[file.status].fixtures.push(matchFixture[1]);
       }
     }
+  }
 
-    resolve(changedComponents);
-  });
+  return changedComponents;
 })
 // generate diff tasks describing the diffed plugins, fixtures and the reason for diffing (which component has changed)
 .then(changedComponents => {
-  return new Promise((resolve, reject) => {
-    const allPlugins = exportPlugins.filter(plugin => !changedComponents.added.plugins.includes(plugin));
-    const allTestFixtures = testFixtures.filter(fixture => !changedComponents.added.fixtures.includes(fixture));
+  const allPlugins = exportPlugins.filter(plugin => !changedComponents.added.plugins.includes(plugin));
+  const allTestFixtures = testFixtures.filter(fixture => !changedComponents.added.fixtures.includes(fixture));
 
-    if (changedComponents.modified.model) {
+  if (changedComponents.modified.model) {
+    diffTasks.push({
+      type: 'model',
+      plugins: allPlugins,
+      fixtures: allTestFixtures
+    });
+  }
+  else {
+    for (const plugin of changedComponents.modified.plugins) {
       diffTasks.push({
-        type: 'model',
-        plugins: allPlugins,
+        type: 'plugin',
+        plugins: [plugin],
         fixtures: allTestFixtures
       });
     }
-    else {
-      for (const plugin of changedComponents.modified.plugins) {
-        diffTasks.push({
-          type: 'plugin',
-          plugins: [plugin],
-          fixtures: allTestFixtures
-        });
-      }
-    }
+  }
 
-    for (const fixture of changedComponents.modified.fixtures) {
-      diffTasks.push({
-        type: 'fixture',
-        plugins: allPlugins,
-        fixtures: [fixture]
-      });
-    }
-
-    resolve();
-  });
+  for (const fixture of changedComponents.modified.fixtures) {
+    diffTasks.push({
+      type: 'fixture',
+      plugins: allPlugins,
+      fixtures: [fixture]
+    });
+  }
 })
 // run the diff tasks (if there are some)
 .then(() => {
@@ -174,19 +168,13 @@ github.pullRequests.get({
     process.exit(0);
   }
 
-  return Promise.all(diffTasks.map(task => {
-    return new Promise((resolve, reject) => {
-      Promise.all(task.plugins.map(plugin => diffPluginOutputs(plugin, process.env.TRAVIS_BRANCH, task.fixtures)))
-      .then(outputs => {
-        task.outputs = outputs;
-        resolve(task);
-      });
-    });
-  }));
+  for (const task of diffTasks) {
+    task.outputs = task.plugins.map(plugin => diffPluginOutputs(plugin, process.env.TRAVIS_BRANCH, task.fixtures));
+  }
 })
 // check if there already is a comment by this test script
 .then(() => {
-  // fetch comments in 100er packages
+  // fetch comments in 100er blocks
   let commentPromises = [];
   for (let i = 0; i < pullRequestData.comments / 100; i++) {
     commentPromises.push(
@@ -201,22 +189,19 @@ github.pullRequests.get({
   }
   return Promise.all(commentPromises);
 })
-.then(commentPackages => {
-  return new Promise((resolve, reject) => {
-    for (const package of commentPackages) {
-      for (const comment of package.data) {
-        // get rid of \r linebreaks
-        comment.body = comment.body.replace(/[\r]/g, '');
+.then(commentBlocks => {
+  for (const block of commentBlocks) {
+    for (const comment of block.data) {
+      // get rid of \r linebreaks
+      comment.body = comment.body.replace(/\r/g, '');
 
-        // this comment was created by this test script
-        if (comment.body.startsWith(identification)) {
-          resolve(comment);
-          return;
-        }
+      // this comment was created by this test script
+      if (comment.body.startsWith(identification)) {
+        return comment;
       }
     }
-    resolve(null);
-  });
+  }
+  return null;
 })
 // generate comment message and update or send new comment
 .then(comment => {
@@ -268,6 +253,7 @@ github.pullRequests.get({
 })
 .catch(error => {
   console.error(error);
+  process.exit(1);
 });
 
 function getModelTaskMessage(task) {
