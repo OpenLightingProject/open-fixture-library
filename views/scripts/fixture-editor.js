@@ -2,13 +2,11 @@
 
 require('./polyfills.js');
 var A11yDialog = require('a11y-dialog');
-var properties = require('../../fixtures/schema.js').properties;
 var uuidV4 = require('uuid/v4');
 var Vue = require('vue/dist/vue');
 
-var out = {
-  manufacturers: {},
-  fixtures: {}
+var sendObject = {
+  fixtures: []
 };
 
 
@@ -87,20 +85,20 @@ Vue.component('fixture-mode', {
     this.$refs.firstInput.focus();
   },
   methods: {
-    getChannel: function(chKey) {
-      return this.fixture.availableChannels[chKey];
+    getChannel: function(channelUuid) {
+      return this.fixture.availableChannels[channelUuid];
     },
-    editChannel: function(chKey) {
+    editChannel: function(channelUuid) {
       this.channel.modeId = this.mode.uuid;
       this.channel.editMode = 'edit-?';
-      this.channel.key = chKey;
+      this.channel.uuid = channelUuid;
     },
     addChannel: function() {
       this.channel.modeId = this.mode.uuid;
       this.channel.editMode = 'add-existing';
     },
-    isChannelNameUnique: function(chKey) {
-      return app.isChannelNameUnique(chKey);
+    isChannelNameUnique: function(channelUuid) {
+      return app.isChannelNameUnique(channelUuid);
     }
   }
 });
@@ -249,6 +247,7 @@ Vue.component('channel-capability', {
 
 function getEmptyFixture() {
   return {
+    key: '[new]',
     useExistingManufacturer: true,
     manufacturerShortName: '',
     newManufacturerName: '',
@@ -311,7 +310,6 @@ function getEmptyChannel() {
   return {
     uuid: uuidV4(),
     editMode: '',
-    key: '',
     modeId: '',
     name: '',
     type: '',
@@ -361,8 +359,8 @@ var app = window.app = new Vue({
       return this.fixture.modes[modeIndex];
     },
     currentModeUnchosenChannels: function() {
-      return Object.keys(this.fixture.availableChannels).filter(function(chKey) {
-        return app.currentMode.channels.indexOf(chKey) === -1;
+      return Object.keys(this.fixture.availableChannels).filter(function(channelUuid) {
+        return app.currentMode.channels.indexOf(channelUuid) === -1;
       });
     },
     currentModeDisplayName: function() {
@@ -415,11 +413,11 @@ var app = window.app = new Vue({
     discardRestored: discardRestored,
     applyRestored: applyRestored,
     submitFixture: submitFixture,
-    isChannelNameUnique: function(chKey) {
-      var chName = this.fixture.availableChannels[chKey].name;
+    isChannelNameUnique: function(channelUuid) {
+      var chName = this.fixture.availableChannels[channelUuid].name;
       for (var channelKey in this.fixture.availableChannels) {
         var cmpName = this.fixture.availableChannels[channelKey].name;
-        if (cmpName === chName && channelKey !== chKey) {
+        if (cmpName === chName && channelKey !== channelUuid) {
           return false;
         }
       }
@@ -440,7 +438,7 @@ function onChannelDialogOpen() {
     this.channel.editMode = 'create';
   }
   else if (this.channel.editMode === 'edit-all' || this.channel.editMode === 'edit-duplicate') {
-    var channel = this.fixture.availableChannels[this.channel.key];
+    var channel = this.fixture.availableChannels[this.channel.uuid];
     for (var prop in channel) {
       if (channel.hasOwnProperty(prop)) {
         this.channel[prop] = clone(channel[prop]);
@@ -475,7 +473,7 @@ function onChannelDialogClose() {
 
 function onChooseChannelEditModeDialogOpen() {
   var channelUsedElsewhere = this.fixture.modes.some(function(mode) {
-    return mode.uuid !== app.channel.modeId && mode.channels.indexOf(app.channel.key) !== -1;
+    return mode.uuid !== app.channel.modeId && mode.channels.indexOf(app.channel.uuid) !== -1;
   });
 
   if (channelUsedElsewhere) {
@@ -504,19 +502,19 @@ function capabilitiesScroll(capabilityIndex) {
 
 function saveChannel() {
   if (this.channel.editMode === 'create') {
-    var channelKey = uuidV4();
-
-    Vue.set(this.fixture.availableChannels, channelKey, getSanitizedChannel(this.channel));
-    this.currentMode.channels.push(channelKey);
+    Vue.set(this.fixture.availableChannels, this.channel.uuid, getSanitizedChannel(this.channel));
+    this.currentMode.channels.push(this.channel.uuid);
   }
   else if (this.channel.editMode === 'edit-all') {
-    this.fixture.availableChannels[this.channel.key] = getSanitizedChannel(this.channel);
+    this.fixture.availableChannels[this.channel.uuid] = getSanitizedChannel(this.channel);
   }
   else if (this.channel.editMode === 'edit-duplicate') {
-    var oldChannelKey = this.channel.key;
+    var oldChannelKey = this.channel.uuid;
 
     var newChannelKey = uuidV4();
-    Vue.set(this.fixture.availableChannels, newChannelKey, getSanitizedChannel(this.channel));
+    var newChannel = getSanitizedChannel(this.channel);
+    newChannel.uuid = newChannelKey;
+    Vue.set(this.fixture.availableChannels, newChannelKey, newChannel);
 
     this.currentMode.channels = this.currentMode.channels.map(function(key) {
       if (key === oldChannelKey) {
@@ -526,7 +524,7 @@ function saveChannel() {
     });
   }
   else if (this.channel.editMode === 'add-existing') {
-    this.currentMode.channels.push(this.channel.key);
+    this.currentMode.channels.push(this.channel.uuid);
   }
 
   this.resetChannelForm();
@@ -634,79 +632,9 @@ function submitFixture() {
 
   this.submit.state = 'loading';
 
-  var manKey = this.fixture.manufacturerShortName;
-  if (!this.fixture.useExistingManufacturer) {
-    manKey = this.fixture.newManufacturerShortName;
+  sendObject.fixtures.push(this.fixture);
 
-    out.manufacturers[manKey] = {
-      name: this.fixture.newManufacturerName
-    };
-
-    if (propExistsIn('newManufacturerComment', this.fixture)) {
-      out.manufacturers[manKey].comment = this.fixture.newManufacturerComment;
-    }
-
-    if (propExistsIn('newManufacturerWebsite', this.fixture)) {
-      out.manufacturers[manKey].website = this.fixture.newManufacturerWebsite;
-    }
-  }
-
-  var otherFixtureKeys = [];
-  for (var fKey in out.fixtures) {
-    if (fKey.indexOf(manKey) === 0) {
-      otherFixtureKeys.push(fKey.slice(manKey.length + 1));
-    }
-  }
-
-  var fixKey = manKey + '/' + getKeyFromName(this.fixture.name, otherFixtureKeys, true);
-
-  out.fixtures[fixKey] = {};
-  for (var prop in properties.fixture) {
-    if (prop === 'physical') {
-      savePhysical(out.fixtures[fixKey], this.fixture.physical);
-    }
-    else if (prop === 'meta') {
-      var now = (new Date()).toISOString().replace(/T.*/, '');
-
-      out.fixtures[fixKey].meta = {
-        authors: [this.fixture.metaAuthor],
-        createDate: now,
-        lastModifyDate: now
-      };
-    }
-    else if (prop === 'availableChannels') {
-      out.fixtures[fixKey].availableChannels = {};
-
-      for (var channelKey in this.fixture.availableChannels) {
-        if (!this.fixture.availableChannels.hasOwnProperty(channelKey)) {
-          continue;
-        }
-
-        out.fixtures[fixKey].availableChannels[channelKey] = {};
-        saveChannel(out.fixtures[fixKey].availableChannels[channelKey], this.fixture.availableChannels[channelKey]);
-      }
-    }
-    else if (prop === 'modes') {
-      out.fixtures[fixKey].modes = [];
-      this.fixture.modes.forEach(function(mode) {
-        var modeNumber = out.fixtures[fixKey].modes.push({});
-        saveMode(out.fixtures[fixKey].modes[modeNumber - 1], mode);
-      });
-    }
-    else if (propExistsIn(prop, this.fixture)) {
-      out.fixtures[fixKey][prop] = this.fixture[prop];
-    }
-  }
-
-  if (propExistsIn('metaGithubUsername', this.fixture)) {
-    out.submitter = this.fixture.metaGithubUsername;
-  }
-
-  var sendObject = {
-    out: out
-  };
-
-  /*var xhr = new XMLHttpRequest();
+  var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     try {
       if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -735,137 +663,17 @@ function submitFixture() {
   };
   xhr.open('POST', '/ajax/add-fixtures');
   xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.send(JSON.stringify(sendObject));*/
+  xhr.send(JSON.stringify(sendObject));
 
-  this.submit.rawData = '```\n' + JSON.stringify(out, null, 2) + '\n```';
+  this.submit.rawData = '```\n' + JSON.stringify(sendObject, null, 2) + '\n```';
   console.log(this.submit.rawData);
-
-  function savePhysical(to, from) {
-    to.physical = {};
-
-    for (var prop in properties.physical) {
-      if (prop === 'dimensions' && propExistsIn('dimensionsWidth', from)) {
-        to.physical.dimensions = [
-          from.dimensionsWidth,
-          from.dimensionsHeight,
-          from.dimensionsDepth
-        ];
-      }
-      else if (properties.physical[prop].type === 'object') {
-        to.physical[prop] = {};
-
-        for (var subProp in properties.physical[prop].properties) {
-          if (subProp === 'degreesMinMax' && propExistsIn('lensDegreesMin', from)) {
-            to.physical.lens.degreesMinMax = [
-              from.lens.degreesMin,
-              from.lens.degreesMax
-            ];
-          }
-          else if (propExistsIn(subProp, from[prop])) {
-            to.physical[prop][subProp] = getComboboxInput(subProp, from[prop]);
-          }
-        }
-
-        if (JSON.stringify(to.physical[prop]) === '{}') {
-          delete to.physical[prop];
-        }
-      }
-      else if (propExistsIn(prop, from)) {
-        to.physical[prop] = getComboboxInput(prop, from);
-      }
-    }
-
-    if (JSON.stringify(to.physical) === '{}') {
-      delete to.physical;
-    }
-  }
-
-  function saveChannel(to, from) {
-    for (var prop in properties.channel) {
-      if (prop === 'capabilities') {
-        to.capabilities = [];
-
-        from.capabilities.forEach(function(cap) {
-          if (cap.start === '') {
-            return;
-          }
-
-          var capability = {
-            range: [cap.start, cap.end]
-          };
-
-          for (var additionalProp in properties.capability) {
-            if (propExistsIn(additionalProp, cap)) {
-              capability[additionalProp] = cap[additionalProp];
-            }
-          }
-
-          to.capabilities.push(capability);
-        });
-
-        if (to.capabilities.length === 0) {
-          delete to.capabilities;
-        }
-      }
-      else if (propExistsIn(prop, from)) {
-        to[prop] = from[prop];
-      }
-    }
-  }
-
-  function saveMode(to, from) {
-    for (var prop in properties.mode) {
-      if (prop === 'physical') {
-        savePhysical(to, from.physical);
-      }
-      else if (propExistsIn(prop, from)) {
-        to[prop] = from[prop];
-      }
-    }
-  }
-
-  function propExistsIn(prop, object) {
-    return object[prop] != null && object[prop] !== '';
-  }
-
-  function getComboboxInput(prop, from) {
-    return (from[prop] === '[add-value]' && from[prop + 'New'] !== '') ? from[prop + 'New'] : from[prop];
-  }
 }
-
 
 
 // HELPER FUNCTIONS
 
-function getKeyFromName(name, uniqueInList, forceSanitize) {
-  if (forceSanitize) {
-    name = sanitize(name);
-  }
-
-  if (!uniqueInList) {
-    return name;
-  }
-
-  var sanitizeRegex = forceSanitize ? '' : '|^' + sanitize(name) + '(?:\-\d+)?$';
-  var nameRegexp = new RegExp('^' + name + '(?:\s+\d+)?' + sanitizeRegex +'$', 'i');
-  var occurences = uniqueInList.filter(function(value) {
-    return nameRegexp.test(value);
-  }).length;
-
-  if (occurences === 0) {
-    return name;
-  }
-
-  return sanitize(name) + '-' + (occurences + 1);
-
-  function sanitize(val) {
-    return val.toLowerCase().replace(/[^a-z0-9\-]+/g, '-');
-  }
-}
-
 function getSanitizedChannel(channel) {
   var retChannel = clone(channel);
-  delete retChannel.key;
   delete retChannel.editMode;
   delete retChannel.modeId;
 
