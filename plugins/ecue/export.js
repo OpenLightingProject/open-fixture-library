@@ -86,7 +86,7 @@ function addFixture(xmlMan, fixture) {
       '_ModifiedDate': fixModifiedDate,
       'Name': fixture.name + (fixture.modes.length > 1 ? ` (${mode.shortName} mode)` : ''),
       'NameShort': fixture.shortName + (fixture.modes.length > 1 ? '-' + mode.shortName : ''),
-      'Comment': fixture.comment,
+      'Comment': getFixtureComment(fixture),
       'AllocateDmxChannels': mode.channels.length,
       'Weight': physical.weight || 0,
       'Power': physical.power || 0,
@@ -161,6 +161,14 @@ function handleMode(xmlFixture, mode) {
 
     viewPosCount++;
   }
+}
+
+function getFixtureComment(fixture) {
+  const exportedString = `exported with OFL – ${fixture.url}`;
+  if (fixture.hasComment) {
+    return `${fixture.comment} (${exportedString})`;
+  }
+  return exportedString;
 }
 
 function getChannelType(channel) {
