@@ -60,9 +60,6 @@ github.authenticate({
 const repoOwner = process.env.TRAVIS_REPO_SLUG.split('/')[0];
 const repoName = process.env.TRAVIS_REPO_SLUG.split('/')[1];
 
-let fixtureData = {};
-let pluginData = {};
-
 const identification = '<!-- github-plugin-diff -->';
 let pullRequestData;
 let diffTasks = [];
@@ -70,7 +67,7 @@ let diffTasks = [];
 github.pullRequests.get({
   owner: repoOwner,
   repo: repoName,
-  number: process.env.TRAVIS_PULL_REQUEST,
+  number: process.env.TRAVIS_PULL_REQUEST
 })
 .then(pr => {
   // save PR for later use
@@ -225,7 +222,7 @@ github.pullRequests.get({
 .then(comment => {
   let message = [];
   message.push(`${identification}`);
-  message.push(`Last updated at ${new Date(Date.now()).toLocaleString()} with commit ${process.env.TRAVIS_COMMIT}`, '');
+  message.push(`Last updated at ${new Date(Date.now()).toLocaleString()} with commit ${process.env.TRAVIS_COMMIT}.`, '');
   message.push('# Diff plugin outputs test', '');
 
   for (const task of diffTasks) {
@@ -333,33 +330,28 @@ function getOutputMessage(output) {
   const hasAdded = output.addedFiles.length > 0;
   const hasChanged = Object.keys(output.changedFiles).length > 0;
 
-  if (hasRemoved || hasAdded || hasChanged) {
-    if (hasRemoved) {
-      lines.push('*Removed files*');
-      for (let file of output.removedFiles) {
-        lines.push(`- ${file}`);
-      }
-    }
-
-    if (hasAdded) {
-      lines.push('*Added files*');
-      for (let file of output.addedFiles) {
-        lines.push(`- ${file}`);
-      }
-    }
-
-    // omit heading if there are no files removed or added
-    if (hasChanged && (hasRemoved || hasAdded)) {
-      lines.push('*Changed files*');
-    }
-    for (let file of Object.keys(output.changedFiles)) {
-      lines.push('```diff');
-      lines.push(output.changedFiles[file]);
-      lines.push('```');
-    }
-  }
-  else {
+  if (!hasRemoved && !hasAdded && !hasChanged) {
     lines.push('Output files not changed.');
+  }
+
+  if (hasRemoved) {
+    lines.push('*Removed files*');
+    lines = lines.concat(output.removedFiles.map(file => `- ${file}`));
+  }
+
+  if (hasAdded) {
+    lines.push('*Added files*');
+    lines = lines.concat(output.addedFiles.map(file => `- ${file}`));
+  }
+
+  // omit heading if there are no files removed or added
+  if (hasChanged && (hasRemoved || hasAdded)) {
+    lines.push('*Changed files*');
+  }
+  for (let file of Object.keys(output.changedFiles)) {
+    lines.push('```diff');
+    lines.push(output.changedFiles[file]);
+    lines.push('```');
   }
 
   return lines;
