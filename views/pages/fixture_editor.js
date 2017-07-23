@@ -325,10 +325,11 @@ function getModeTemplate() {
 
   str += '<h3>Channels</h3>';
   str += '<ol class="mode-channels">';
-  str += '<li v-for="(chKey, index) in mode.channels">';
-  str += '<span class="display-name">{{ getChannelName(chKey) }}</span>';
+  str += '<li v-for="(channelUuid, index) in mode.channels">';
+  str += '<span class="channel-name">{{ getChannel(channelUuid).name }}</span> ';
+  str += '<code v-if="!isChannelNameUnique(channelUuid)" class="channel-uuid">{{ channelUuid }}</code>';
   str += '<a href="#remove" title="Remove channel" @click.prevent="mode.channels.splice(index, 1)">' + require('../includes/svg.js')({svgBasename: 'close'}) + '</a>';
-  str += '<a href="#channel-editor" title="Edit channel" @click.prevent="editChannel(chKey)">' + require('../includes/svg.js')({svgBasename: 'pencil'}) + '</a>';
+  str += '<a href="#channel-editor" title="Edit channel" @click.prevent="editChannel(channelUuid)">' + require('../includes/svg.js')({svgBasename: 'pencil'}) + '</a>';
   str += '</li>';
   str += '</ol>';
 
@@ -405,7 +406,9 @@ function getChannelDialogString() {
 
   str += '<div v-if="channel.editMode == \'add-existing\'">';
   str += '<select size="10" required v-model="channel.key">';
-  str += '<option v-for="chKey in currentModeUnchosenChannels" :value="chKey">{{ chKey }}</option>';
+  str += '<option v-for="channelUuid in currentModeUnchosenChannels" :value="channelUuid">';
+  str += '{{ fixture.availableChannels[channelUuid].name }}';
+  str += '</option>';
   str += '</select>';
   str += ' or <a href="#create-channel" @click.prevent="channel.editMode = \'create\'">create a new channel</a>';
   str += '</div>';
