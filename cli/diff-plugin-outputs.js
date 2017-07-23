@@ -1,5 +1,6 @@
 #!/usr/bin/node
 
+const path = require('path');
 const minimist = require('minimist');
 const colors = require('colors');
 
@@ -17,7 +18,7 @@ const args = minimist(process.argv.slice(2), {
 const helpMessage = [
   'This script compares the output of the given fixtures with another version in the current repository.',
   'Fixtures have to be declared with the path to its file in the fixtures/ directory.',
-  `Usage: ${process.argv[1]} -p <plugin name> [-r <git reference>] <fixture> [<more fixtures>]`,
+  `Usage: node ${path.relative(process.cwd(), __filename)} -p <plugin name> [-r <git reference>] [ -t | <fixture> [<more fixtures>] ]`,
   'Options:',
   '  --plugin,   -p: Which plugin should be used to output fixtures.',
   '                  E. g. ecue or qlcplus',
