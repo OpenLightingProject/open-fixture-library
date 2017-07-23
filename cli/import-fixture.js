@@ -3,7 +3,7 @@
 const fs = require('fs');
 const minimist = require('minimist');
 
-const checkFixture = require('../tests/fixture_valid.js').checkFixture;
+const checkFixture = require('../tests/fixture-valid.js').checkFixture;
 const createPullRequest = require('../lib/create-github-pr.js');
 const importPlugins = require('../plugins/plugins.js').import;
 
