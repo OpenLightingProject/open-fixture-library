@@ -1,7 +1,7 @@
 {
   "name": "Hydrabeam 300 RGBW",
   "shortName": "CLHB300RGBW",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["FloEdelmann"],
     "createDate": "2017-07-24",
@@ -226,16 +226,12 @@
       "type": "Speed"
     },
     "Master Pan": {
-      "type": "Pan"
+      "type": "Pan",
+      "fineChannelAliases": ["Master Pan fine"]
     },
     "Master Tilt": {
-      "type": "Tilt"
-    },
-    "Master Pan fine": {
-      "type": "Pan"
-    },
-    "Master Tilt fine": {
-      "type": "Tilt"
+      "type": "Tilt",
+      "fineChannelAliases": ["Master Tilt fine"]
     },
     "Master Red": {
       "type": "SingleColor",
@@ -253,61 +249,12 @@
       "type": "SingleColor",
       "color": "White"
     },
-    "Pan 1": {
-      "type": "Pan"
-    },
-    "Tilt 1": {
-      "type": "Tilt"
-    },
-    "Dimmer 1": {
-      "type": "Intensity"
-    },
-    "Pan 2": {
-      "type": "Pan"
-    },
-    "Tilt 2": {
-      "type": "Tilt"
-    },
-    "Dimmer 2": {
-      "type": "Intensity"
-    },
-    "Pan 3": {
-      "type": "Pan"
-    },
-    "Tilt 3": {
-      "type": "Tilt"
-    },
-    "Dimmer 3": {
-      "type": "Intensity"
-    },
     "Head speed": {
       "type": "Speed",
       "capabilities": [
         {
           "range": [0, 255],
           "name": "slow to fast"
-        }
-      ]
-    },
-    "Speed 1": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 10],
-          "name": "slowest speed"
-        },
-        {
-          "range": [11, 255],
-          "name": "slow to fast"
-        }
-      ]
-    },
-    "Color 1": {
-      "type": "MultiColor",
-      "capabilities": [
-        {
-          "range": [0, 30],
-          "name": "use master color dimmers"
         }
       ]
     },
@@ -332,6 +279,40 @@
         }
       ]
     },
+    "Pan 1": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan 1 fine"]
+    },
+    "Tilt 1": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt 1 fine"]
+    },
+    "Dimmer 1": {
+      "type": "Intensity"
+    },
+    "Head Speed 1": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "slowest speed"
+        },
+        {
+          "range": [11, 255],
+          "name": "slow to fast"
+        }
+      ]
+    },
+    "Head Speed 1 simple": {
+      "name": "Head Speed 1",
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow to fast"
+        }
+      ]
+    },
     "Strobe 1": {
       "type": "Strobe",
       "defaultValue": 0,
@@ -346,6 +327,578 @@
           "name": "slow to fast"
         }
       ]
+    },
+    "Color 1": {
+      "type": "MultiColor",
+      "capabilities": [
+        {
+          "range": [0, 30],
+          "name": "use master color dimmers"
+        },
+        {
+          "range": [31, 45],
+          "name": "red",
+          "color": "#ff0000",
+          "color2": "#000000"
+        },
+        {
+          "range": [46, 60],
+          "name": "green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [61, 75],
+          "name": "blue",
+          "color": "#0000ff",
+          "color2": "#000000"
+        },
+        {
+          "range": [76, 90],
+          "name": "white",
+          "color": "#000000",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [91, 105],
+          "name": "RG",
+          "color": "#ffff00",
+          "color2": "#000000"
+        },
+        {
+          "range": [106, 120],
+          "name": "RB",
+          "color": "#ff00ff",
+          "color2": "#000000"
+        },
+        {
+          "range": [121, 135],
+          "name": "RW",
+          "color": "#ff0000",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [136, 150],
+          "name": "GB",
+          "color": "#00ffff",
+          "color2": "#000000"
+        },
+        {
+          "range": [151, 165],
+          "name": "GW",
+          "color": "#00ff00",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [166, 180],
+          "name": "BW",
+          "color": "#0000ff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [181, 195],
+          "name": "RGB",
+          "color": "#ffffff",
+          "color2": "#000000"
+        },
+        {
+          "range": [196, 210],
+          "name": "RGW",
+          "color": "#ffff00",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [211, 225],
+          "name": "RBW",
+          "color": "#ff00ff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [226, 240],
+          "name": "GBW",
+          "color": "#00ffff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [241, 255],
+          "name": "RGBW",
+          "color": "#ffffff",
+          "color2": "#ffffff"
+        }
+      ]
+    },
+    "Red 1": {
+      "type": "SingleColor",
+      "color": "Red"
+    },
+    "Green 1": {
+      "type": "SingleColor",
+      "color": "Green"
+    },
+    "Blue 1": {
+      "type": "SingleColor",
+      "color": "Blue"
+    },
+    "White 1": {
+      "type": "SingleColor",
+      "color": "White"
+    },
+    "Mode 1": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "no function"
+        },
+        {
+          "range": [8, 30],
+          "name": "show mode 1"
+        },
+        {
+          "range": [31, 53],
+          "name": "show mode 2"
+        },
+        {
+          "range": [54, 76],
+          "name": "show mode 3"
+        },
+        {
+          "range": [77, 99],
+          "name": "show mode 4"
+        },
+        {
+          "range": [100, 122],
+          "name": "sound control mode"
+        },
+        {
+          "range": [123, 199],
+          "name": "no function"
+        },
+        {
+          "range": [200, 224],
+          "name": "reset"
+        },
+        {
+          "range": [225, 255],
+          "name": "no function"
+        }
+      ]
+    },
+    "Sound sensitivity / Auto mode speed 1": {
+      "type": "Intensity"
+    },
+    "Pan 2": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"]
+    },
+    "Tilt 2": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"]
+    },
+    "Dimmer 2": {
+      "type": "Intensity"
+    },
+    "Head Speed 2": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "use Head Speed 1"
+        },
+        {
+          "range": [11, 255],
+          "name": "slow to fast"
+        }
+      ]
+    },
+    "Head Speed 2 simple": {
+      "name": "Head Speed 2",
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow to fast"
+        }
+      ]
+    },
+    "Strobe 2": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "highlightValue": 200,
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "No strobe"
+        },
+        {
+          "range": [11, 255],
+          "name": "slow to fast"
+        }
+      ]
+    },
+    "Color 2": {
+      "type": "MultiColor",
+      "capabilities": [
+        {
+          "range": [0, 30],
+          "name": "use master color dimmers"
+        },
+        {
+          "range": [31, 45],
+          "name": "red",
+          "color": "#ff0000",
+          "color2": "#000000"
+        },
+        {
+          "range": [46, 60],
+          "name": "green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [61, 75],
+          "name": "blue",
+          "color": "#0000ff",
+          "color2": "#000000"
+        },
+        {
+          "range": [76, 90],
+          "name": "white",
+          "color": "#000000",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [91, 105],
+          "name": "RG",
+          "color": "#ffff00",
+          "color2": "#000000"
+        },
+        {
+          "range": [106, 120],
+          "name": "RB",
+          "color": "#ff00ff",
+          "color2": "#000000"
+        },
+        {
+          "range": [121, 135],
+          "name": "RW",
+          "color": "#ff0000",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [136, 150],
+          "name": "GB",
+          "color": "#00ffff",
+          "color2": "#000000"
+        },
+        {
+          "range": [151, 165],
+          "name": "GW",
+          "color": "#00ff00",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [166, 180],
+          "name": "BW",
+          "color": "#0000ff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [181, 195],
+          "name": "RGB",
+          "color": "#ffffff",
+          "color2": "#000000"
+        },
+        {
+          "range": [196, 210],
+          "name": "RGW",
+          "color": "#ffff00",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [211, 225],
+          "name": "RBW",
+          "color": "#ff00ff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [226, 240],
+          "name": "GBW",
+          "color": "#00ffff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [241, 255],
+          "name": "RGBW",
+          "color": "#ffffff",
+          "color2": "#ffffff"
+        }
+      ]
+    },
+    "Red 2": {
+      "type": "SingleColor",
+      "color": "Red"
+    },
+    "Green 2": {
+      "type": "SingleColor",
+      "color": "Green"
+    },
+    "Blue 2": {
+      "type": "SingleColor",
+      "color": "Blue"
+    },
+    "White 2": {
+      "type": "SingleColor",
+      "color": "White"
+    },
+    "Mode 2": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "no function"
+        },
+        {
+          "range": [8, 30],
+          "name": "show mode 1"
+        },
+        {
+          "range": [31, 53],
+          "name": "show mode 2"
+        },
+        {
+          "range": [54, 76],
+          "name": "show mode 3"
+        },
+        {
+          "range": [77, 99],
+          "name": "show mode 4"
+        },
+        {
+          "range": [100, 122],
+          "name": "sound control mode"
+        },
+        {
+          "range": [123, 199],
+          "name": "no function"
+        },
+        {
+          "range": [200, 224],
+          "name": "reset"
+        },
+        {
+          "range": [225, 255],
+          "name": "no function"
+        }
+      ]
+    },
+    "Sound sensitivity / Auto mode speed 2": {
+      "type": "Intensity"
+    },
+    "Pan 3": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"]
+    },
+    "Tilt 3": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt 3 fine"]
+    },
+    "Dimmer 3": {
+      "type": "Intensity"
+    },
+    "Head Speed 3": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "use Head Speed 1"
+        },
+        {
+          "range": [11, 255],
+          "name": "slow to fast"
+        }
+      ]
+    },
+    "Head Speed 3 simple": {
+      "name": "Head Speed 3",
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow to fast"
+        }
+      ]
+    },
+    "Strobe 3": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "highlightValue": 200,
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "No strobe"
+        },
+        {
+          "range": [11, 255],
+          "name": "slow to fast"
+        }
+      ]
+    },
+    "Color 3": {
+      "type": "MultiColor",
+      "capabilities": [
+        {
+          "range": [0, 30],
+          "name": "use master color dimmers"
+        },
+        {
+          "range": [31, 45],
+          "name": "red",
+          "color": "#ff0000",
+          "color2": "#000000"
+        },
+        {
+          "range": [46, 60],
+          "name": "green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [61, 75],
+          "name": "blue",
+          "color": "#0000ff",
+          "color2": "#000000"
+        },
+        {
+          "range": [76, 90],
+          "name": "white",
+          "color": "#000000",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [91, 105],
+          "name": "RG",
+          "color": "#ffff00",
+          "color2": "#000000"
+        },
+        {
+          "range": [106, 120],
+          "name": "RB",
+          "color": "#ff00ff",
+          "color2": "#000000"
+        },
+        {
+          "range": [121, 135],
+          "name": "RW",
+          "color": "#ff0000",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [136, 150],
+          "name": "GB",
+          "color": "#00ffff",
+          "color2": "#000000"
+        },
+        {
+          "range": [151, 165],
+          "name": "GW",
+          "color": "#00ff00",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [166, 180],
+          "name": "BW",
+          "color": "#0000ff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [181, 195],
+          "name": "RGB",
+          "color": "#ffffff",
+          "color2": "#000000"
+        },
+        {
+          "range": [196, 210],
+          "name": "RGW",
+          "color": "#ffff00",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [211, 225],
+          "name": "RBW",
+          "color": "#ff00ff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [226, 240],
+          "name": "GBW",
+          "color": "#00ffff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [241, 255],
+          "name": "RGBW",
+          "color": "#ffffff",
+          "color2": "#ffffff"
+        }
+      ]
+    },
+    "Red 3": {
+      "type": "SingleColor",
+      "color": "Red"
+    },
+    "Green 3": {
+      "type": "SingleColor",
+      "color": "Green"
+    },
+    "Blue 3": {
+      "type": "SingleColor",
+      "color": "Blue"
+    },
+    "White 3": {
+      "type": "SingleColor",
+      "color": "White"
+    },
+    "Mode 3": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "no function"
+        },
+        {
+          "range": [8, 30],
+          "name": "show mode 1"
+        },
+        {
+          "range": [31, 53],
+          "name": "show mode 2"
+        },
+        {
+          "range": [54, 76],
+          "name": "show mode 3"
+        },
+        {
+          "range": [77, 99],
+          "name": "show mode 4"
+        },
+        {
+          "range": [100, 122],
+          "name": "sound control mode"
+        },
+        {
+          "range": [123, 199],
+          "name": "no function"
+        },
+        {
+          "range": [200, 224],
+          "name": "reset"
+        },
+        {
+          "range": [225, 255],
+          "name": "no function"
+        }
+      ]
+    },
+    "Sound sensitivity / Auto mode speed 3": {
+      "type": "Intensity"
     }
   },
   "modes": [
@@ -356,24 +909,9 @@
         "Master Dimmer",
         "Strobe",
         "Show mode",
-        "Show mode speed / Sound sensitivity",
+        "Show mode Head speed / Sound sensitivity",
         "Light control",
         "Auto color change speed"
-      ]
-    },
-    {
-      "name": "10-channel",
-      "shortName": "10ch",
-      "channels": [
-        "Master Pan",
-        "Master Tilt",
-        null,
-        null
-      ]
-    },
-    {
-      "channels": [
-        null
       ]
     },
     {
@@ -385,7 +923,7 @@
         "Master Dimmer",
         "Strobe",
         "Show mode",
-        "Show mode speed / Sound sensitivity",
+        "Show mode Head speed / Sound sensitivity",
         "Light control",
         "Auto color change speed",
         "Master Pan fine",
@@ -421,10 +959,25 @@
         "Master Dimmer",
         "Strobe",
         "Pan 1",
+        "Pan 1 fine",
         "Tilt 1",
-        "Speed 1",
+        "Tilt 1 fine",
+        "Head Speed 1",
         "Color 1",
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Head Speed 2",
+        "Color 2",
+        "Pan 3",
+        "Pan 3 fine",
+        "Tilt 3",
+        "Tilt 3 fine",
+        "Head Speed 3",
+        "Color 3",
         "Sound mode / Reset",
+        "Sound sensitivity",
         "Master Red",
         "Master Green",
         "Master Blue",
@@ -436,9 +989,47 @@
       "shortName": "42ch",
       "channels": [
         "Pan 1",
+        "Pan 1 fine",
         "Tilt 1",
-        "Speed 1",
-        "Strobe 1"
+        "Tilt 1 fine",
+        "Head Speed 1 simple",
+        "Dimmer 1",
+        "Strobe 1",
+        "Color 1",
+        "Mode 1",
+        "Sound sensitivity / Auto mode speed 1",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "White 1",
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Head Speed 2 simple",
+        "Dimmer 2",
+        "Strobe 2",
+        "Color 2",
+        "Mode 2",
+        "Sound sensitivity / Auto mode speed 2",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Pan 3",
+        "Pan 3 fine",
+        "Tilt 3",
+        "Tilt 3 fine",
+        "Head Speed 3 simple",
+        "Dimmer 3",
+        "Strobe 3",
+        "Color 3",
+        "Mode 3",
+        "Sound sensitivity / Auto mode speed 3",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "White 3"
       ]
     }
   ]
