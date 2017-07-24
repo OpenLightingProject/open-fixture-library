@@ -1,0 +1,445 @@
+{
+  "name": "Hydrabeam 300 RGBW",
+  "shortName": "CLHB300RGBW",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["FloEdelmann"],
+    "createDate": "2017-07-24",
+    "lastModifyDate": "2017-07-24"
+  },
+  "manualURL": "http://adamhall.invaliddomain.de/out/media/downloads/MARKEN/CAMEO/CLHB300W/CLHB300_CAMEO_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.PDF",
+  "physical": {
+    "dimensions": [380, 240, 380],
+    "weight": 5.5,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [4.5, 4.5]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 270
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "type": "Intensity"
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "highlightValue": 200,
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "No strobe"
+        },
+        {
+          "range": [11, 255],
+          "name": "slow to fast"
+        }
+      ]
+    },
+    "Show mode": {
+      "type": "Beam",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "no movement"
+        },
+        {
+          "range": [8, 22],
+          "name": "show mode 1"
+        },
+        {
+          "range": [23, 37],
+          "name": "show mode 2"
+        },
+        {
+          "range": [38, 52],
+          "name": "show mode 3"
+        },
+        {
+          "range": [53, 67],
+          "name": "show mode 4"
+        },
+        {
+          "range": [68, 82],
+          "name": "show mode 5"
+        },
+        {
+          "range": [83, 97],
+          "name": "show mode 6"
+        },
+        {
+          "range": [98, 112],
+          "name": "show mode 7"
+        },
+        {
+          "range": [113, 127],
+          "name": "show mode 8"
+        },
+        {
+          "range": [128, 142],
+          "name": "show mode 9"
+        },
+        {
+          "range": [143, 157],
+          "name": "show mode 10"
+        },
+        {
+          "range": [158, 172],
+          "name": "show mode 11"
+        },
+        {
+          "range": [173, 187],
+          "name": "show mode 12"
+        },
+        {
+          "range": [188, 202],
+          "name": "show mode 13"
+        },
+        {
+          "range": [203, 217],
+          "name": "show mode 14"
+        },
+        {
+          "range": [218, 232],
+          "name": "show mode 15"
+        },
+        {
+          "range": [233, 247],
+          "name": "show mode 16"
+        },
+        {
+          "range": [248, 255],
+          "name": "sound control mode"
+        }
+      ]
+    },
+    "Show mode speed / Sound sensitivity": {
+      "type": "Speed"
+    },
+    "Light control": {
+      "type": "MultiColor",
+      "capabilities": [
+        {
+          "range": [0, 30],
+          "name": "auto color change"
+        },
+        {
+          "range": [31, 45],
+          "name": "red",
+          "color": "#ff0000",
+          "color2": "#000000"
+        },
+        {
+          "range": [46, 60],
+          "name": "green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [61, 75],
+          "name": "blue",
+          "color": "#0000ff",
+          "color2": "#000000"
+        },
+        {
+          "range": [76, 90],
+          "name": "white",
+          "color": "#000000",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [91, 105],
+          "name": "RG",
+          "color": "#ffff00",
+          "color2": "#000000"
+        },
+        {
+          "range": [106, 120],
+          "name": "RB",
+          "color": "#ff00ff",
+          "color2": "#000000"
+        },
+        {
+          "range": [121, 135],
+          "name": "RW",
+          "color": "#ff0000",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [136, 150],
+          "name": "GB",
+          "color": "#00ffff",
+          "color2": "#000000"
+        },
+        {
+          "range": [151, 165],
+          "name": "GW",
+          "color": "#00ff00",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [166, 180],
+          "name": "BW",
+          "color": "#0000ff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [181, 195],
+          "name": "RGB",
+          "color": "#ffffff",
+          "color2": "#000000"
+        },
+        {
+          "range": [196, 210],
+          "name": "RGW",
+          "color": "#ffff00",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [211, 225],
+          "name": "RBW",
+          "color": "#ff00ff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [226, 240],
+          "name": "GBW",
+          "color": "#00ffff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [241, 255],
+          "name": "RGBW",
+          "color": "#ffffff",
+          "color2": "#ffffff"
+        }
+      ]
+    },
+    "Auto color change speed": {
+      "type": "Speed"
+    },
+    "Master Pan": {
+      "type": "Pan"
+    },
+    "Master Tilt": {
+      "type": "Tilt"
+    },
+    "Master Pan fine": {
+      "type": "Pan"
+    },
+    "Master Tilt fine": {
+      "type": "Tilt"
+    },
+    "Master Red": {
+      "type": "SingleColor",
+      "color": "Red"
+    },
+    "Master Green": {
+      "type": "SingleColor",
+      "color": "Green"
+    },
+    "Master Blue": {
+      "type": "SingleColor",
+      "color": "Blue"
+    },
+    "Master White": {
+      "type": "SingleColor",
+      "color": "White"
+    },
+    "Pan 1": {
+      "type": "Pan"
+    },
+    "Tilt 1": {
+      "type": "Tilt"
+    },
+    "Dimmer 1": {
+      "type": "Intensity"
+    },
+    "Pan 2": {
+      "type": "Pan"
+    },
+    "Tilt 2": {
+      "type": "Tilt"
+    },
+    "Dimmer 2": {
+      "type": "Intensity"
+    },
+    "Pan 3": {
+      "type": "Pan"
+    },
+    "Tilt 3": {
+      "type": "Tilt"
+    },
+    "Dimmer 3": {
+      "type": "Intensity"
+    },
+    "Head speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow to fast"
+        }
+      ]
+    },
+    "Speed 1": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "slowest speed"
+        },
+        {
+          "range": [11, 255],
+          "name": "slow to fast"
+        }
+      ]
+    },
+    "Color 1": {
+      "type": "MultiColor",
+      "capabilities": [
+        {
+          "range": [0, 30],
+          "name": "use master color dimmers"
+        }
+      ]
+    },
+    "Sound mode / Reset": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 199],
+          "name": "no function"
+        },
+        {
+          "range": [200, 209],
+          "name": "reset"
+        },
+        {
+          "range": [210, 240],
+          "name": "no function"
+        },
+        {
+          "range": [241, 255],
+          "name": "sound control mode"
+        }
+      ]
+    },
+    "Strobe 1": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "highlightValue": 200,
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "No strobe"
+        },
+        {
+          "range": [11, 255],
+          "name": "slow to fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe",
+        "Show mode",
+        "Show mode speed / Sound sensitivity",
+        "Light control",
+        "Auto color change speed"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Master Pan",
+        "Master Tilt",
+        null,
+        null
+      ]
+    },
+    {
+      "channels": [
+        null
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Master Pan",
+        "Master Tilt",
+        "Master Dimmer",
+        "Strobe",
+        "Show mode",
+        "Show mode speed / Sound sensitivity",
+        "Light control",
+        "Auto color change speed",
+        "Master Pan fine",
+        "Master Tilt fine"
+      ]
+    },
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe",
+        "Master Red",
+        "Master Green",
+        "Master Blue",
+        "Master White",
+        "Pan 1",
+        "Tilt 1",
+        "Dimmer 1",
+        "Pan 2",
+        "Tilt 2",
+        "Dimmer 2",
+        "Pan 3",
+        "Tilt 3",
+        "Dimmer 3",
+        "Head speed"
+      ]
+    },
+    {
+      "name": "26-channel",
+      "shortName": "26ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe",
+        "Pan 1",
+        "Tilt 1",
+        "Speed 1",
+        "Color 1",
+        "Sound mode / Reset",
+        "Master Red",
+        "Master Green",
+        "Master Blue",
+        "Master White"
+      ]
+    },
+    {
+      "name": "42-channel",
+      "shortName": "42ch",
+      "channels": [
+        "Pan 1",
+        "Tilt 1",
+        "Speed 1",
+        "Strobe 1"
+      ]
+    }
+  ]
+}
