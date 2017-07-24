@@ -11,14 +11,17 @@
   },
   {
     "man": "cameo",
-    "key": "thunder-wash-600-w",
-    "name": "Thunder Wash 600 W",
+    "key": "hydrabeam-300-rgbw",
+    "name": "Hydrabeam 300 RGBW",
     "features": [
       "has-multiple-categories",
       "floating-point-weight",
       "duplicate-channel-names",
+      "floating-point-lens-degrees",
+      "fine-channel-alias",
       "uses-heads",
-      "channels-in-multiple-modes"
+      "channels-in-multiple-modes",
+      "fine-positions-1"
     ]
   },
   {
@@ -44,16 +47,6 @@
     ]
   },
   {
-    "man": "martin",
-    "key": "roboscan-812",
-    "name": "RoboScan 812",
-    "features": [
-      "floating-point-weight",
-      "floating-point-lens-degrees",
-      "channels-in-multiple-modes"
-    ]
-  },
-  {
     "man": "showtec",
     "key": "horizon-8",
     "name": "Horizon 8",
@@ -64,17 +57,6 @@
       "uses-switching-channels",
       "uses-heads",
       "channels-in-multiple-modes"
-    ]
-  },
-  {
-    "man": "showtec",
-    "key": "phantom-50-led-spot",
-    "name": "Phantom 50 LED Spot",
-    "features": [
-      "floating-point-weight",
-      "fine-channel-alias",
-      "channels-in-multiple-modes",
-      "fine-positions-1"
     ]
   }
 ]
