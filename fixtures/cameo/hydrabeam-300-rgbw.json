@@ -124,6 +124,9 @@
     "Show mode speed / Sound sensitivity": {
       "type": "Speed"
     },
+    "Sound sensitivity": {
+      "type": "Intensity"
+    },
     "Light control": {
       "type": "MultiColor",
       "capabilities": [
@@ -956,7 +959,7 @@
         "Master Dimmer",
         "Strobe",
         "Show mode",
-        "Show mode Head speed / Sound sensitivity",
+        "Show mode speed / Sound sensitivity",
         "Light control",
         "Auto color change speed"
       ]
@@ -970,7 +973,7 @@
         "Master Dimmer",
         "Strobe",
         "Show mode",
-        "Show mode Head speed / Sound sensitivity",
+        "Show mode speed / Sound sensitivity",
         "Light control",
         "Auto color change speed",
         "Master Pan fine",
