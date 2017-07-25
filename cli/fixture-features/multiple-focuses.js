@@ -4,11 +4,11 @@ module.exports = [{
   order: 59,
   hasFeature: fixture => fixture.modes.some(mode => {
     const multiPan = mode.channels.filter(
-      channel => channel.type == "Pan"
+      channel => channel.type === 'Pan'
     ).length > 1;
 
     const multiTilt = mode.channels.filter(
-      channel => channel.type == "Tilt"
+      channel => channel.type === 'Tilt'
     ).length > 1;
 
     return multiPan || multiTilt;
