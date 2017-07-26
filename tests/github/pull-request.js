@@ -120,9 +120,35 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
   })
 }
 
-module.exports.getComment = function(getComment) {
+/**
+ * test is an object of this structere: {
+ *   key: 'unique test key',
+ *   name: 'shown test name',
+ *   lines: 'test message'
+ * }
+ */
+module.exports.updateComment = function updateComment(test) {
+  const commentBeginning = `<!-- GITHUB-TEST: ${test.key} -->`;
+
+  let lines = [
+    commentBeginning,
+    `Last updated at ${new Date(Date.now()).toLocaleString()} with commit ${process.env.TRAVIS_COMMIT}.`,
+    `# ${test.name}`,
+    ''
+  ];
+  lines = lines.concat(test.lines);
+  const message = lines.join('\n');
+
+  console.log(`Creating test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}`);
+  github.issues.createComment({
+    owner: repoOwner,
+    repo: repoName,
+    number: process.env.TRAVIS_PULL_REQUEST,
+    body: message
+  });
+
   let commentPromises = [];
-  for (let i = 0; i < this.data.comments / 100; i++) {
+  for (let i = 0; i < module.exports.data.comments / 100; i++) {
     commentPromises.push(
       github.issues.getComments({
         owner: repoOwner,
@@ -134,62 +160,20 @@ module.exports.getComment = function(getComment) {
     );
   }
   
-  return Promise.all(commentPromises)
+  Promise.all(commentPromises)
   .then(commentBlocks => {
     for (const block of commentBlocks) {
       for (const comment of block.data) {
-        // get rid of \r linebreaks
-        comment.body = comment.body.replace(/\r/g, '');
-  
         // this comment was created by this test script
-        if (comment.body.startsWith(identification)) {
-          return comment;
+        if (comment.body.startsWith(commentBeginning)) {
+          console.log(`Deleting old test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}`);
+          github.issues.deleteComment({
+            owner: repoOwner,
+            repo: repoName,
+            id: comment.id
+          });
         }
       }
-    }
-    return null;
-  });
-}
-
-/**
- * test is an object of this structere: {
- *   key: 'unique test key',
- *   name: 'shown test name',
- *   lines: 'test message'
- * }
- */
-module.exports.updateComment = function updateComment(test) {
-  const message = [
-    identification,
-    `Last updated at ${new Date(Date.now()).toLocaleString()} with commit ${process.env.TRAVIS_COMMIT}.`,
-    ''
-  ].concat(test.lines).join('\n');
-
-  this.getComment()
-  .then(comment => {
-    if (comment == null) {
-      console.log(`Creating comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}`);
-      github.issues.createComment({
-        owner: repoOwner,
-        repo: repoName,
-        number: process.env.TRAVIS_PULL_REQUEST,
-        body: message
-      });
-    }
-    else {
-      console.log(`Updating comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST} and creating notify comment`);
-      github.issues.editComment({
-        owner: repoOwner,
-        repo: repoName,
-        id: comment.id,
-        body: message
-      });
-      github.issues.createComment({
-        owner: repoOwner,
-        repo: repoName,
-        number: process.env.TRAVIS_PULL_REQUEST,
-        body: `*[Updated plugin output diff comment](${comment.html_url})*`
-      });
     }
   });
 }

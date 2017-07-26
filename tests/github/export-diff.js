@@ -56,7 +56,6 @@ pullRequest.init()
   }
   
   let lines = [];
-  lines.push('# Diff plugin outputs test', '');
 
   for (const task of diffTasks) {
     switch (task.type) {
