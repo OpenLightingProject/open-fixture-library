@@ -62,7 +62,7 @@ module.exports.init = function init() {
 module.exports.fetchChangedComponents = function getChangedComponents() {
   // fetch changed files in 100er blocks
   let filePromises = [];
-  for (let i = 0; i < module.exports.data.changed_files / 100; i++) {
+  for (let i = 0; i < this.data.changed_files / 100; i++) {
     filePromises.push(
       github.pullRequests.getFiles({
         owner: repoOwner,
@@ -120,15 +120,9 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
   })
 }
 
-module.exports.updateComment = function updateComment(lines) {
-  const message = [
-    identification,
-    `Last updated at ${new Date(Date.now()).toLocaleString()} with commit ${process.env.TRAVIS_COMMIT}.`,
-    ''
-  ].concat(lines).join('\n');
-
+module.exports.getComment = function(getComment) {
   let commentPromises = [];
-  for (let i = 0; i < module.exports.data.comments / 100; i++) {
+  for (let i = 0; i < this.data.comments / 100; i++) {
     commentPromises.push(
       github.issues.getComments({
         owner: repoOwner,
@@ -154,7 +148,24 @@ module.exports.updateComment = function updateComment(lines) {
       }
     }
     return null;
-  })
+  });
+}
+
+/**
+ * test is an object of this structere: {
+ *   key: 'unique test key',
+ *   name: 'shown test name',
+ *   lines: 'test message'
+ * }
+ */
+module.exports.updateComment = function updateComment(test) {
+  const message = [
+    identification,
+    `Last updated at ${new Date(Date.now()).toLocaleString()} with commit ${process.env.TRAVIS_COMMIT}.`,
+    ''
+  ].concat(test.lines).join('\n');
+
+  this.getComment()
   .then(comment => {
     if (comment == null) {
       console.log(`Creating comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}`);

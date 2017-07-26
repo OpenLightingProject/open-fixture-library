@@ -2,9 +2,9 @@
 
 const colors = require('colors');
 
-const plugins = require('../plugins/plugins.js').all;
-const Fixture = require('../lib/model/Fixture.js');
-const testFixtures = require('../tests/test-fixtures.json').map(
+const plugins = require('../../plugins/plugins.js').all;
+const Fixture = require('../../lib/model/Fixture.js');
+const testFixtures = require('../test-fixtures.json').map(
   fixture => Fixture.fromRepository(fixture.man, fixture.key)
 );
 

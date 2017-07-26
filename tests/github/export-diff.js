@@ -55,26 +55,30 @@ pullRequest.init()
     task.outputs = task.plugins.map(plugin => diffPluginOutputs(plugin, process.env.TRAVIS_BRANCH, task.fixtures));
   }
   
-  let message = [];
-  message.push('# Diff plugin outputs test', '');
+  let lines = [];
+  lines.push('# Diff plugin outputs test', '');
 
   for (const task of diffTasks) {
     switch (task.type) {
       case 'model':
-        message = message.concat(getModelTaskMessage(task));
+        lines = lines.concat(getModelTaskMessage(task));
         break;
 
       case 'plugin':
-        message = message.concat(getPluginTaskMessage(task));
+        lines = lines.concat(getPluginTaskMessage(task));
         break;
 
       case 'fixture':
-        message = message.concat(getFixtureTaskMessage(task));
+        lines = lines.concat(getFixtureTaskMessage(task));
         break;
     }
   }
 
-  return pullRequest.updateComment(message);
+  return pullRequest.updateComment({
+    key: 'export-diff',
+    name: 'Plugin export diff',
+    lines: lines
+  });
 })
 .catch(error => {
   console.error(error);
@@ -142,27 +146,26 @@ function getOutputMessage(output) {
   const hasChanged = Object.keys(output.changedFiles).length > 0;
 
   if (!hasRemoved && !hasAdded && !hasChanged) {
-    lines.push('Output files not changed.');
+    lines.push('Outputted files not changed.');
   }
 
   if (hasRemoved) {
     lines.push('*Removed files*');
-    lines = lines.concat(output.removedFiles.map(file => `- ${file}`));
+    lines = lines.concat(output.removedFiles.map(file => `- ${file}`), '');
   }
 
   if (hasAdded) {
     lines.push('*Added files*');
-    lines = lines.concat(output.addedFiles.map(file => `- ${file}`));
+    lines = lines.concat(output.addedFiles.map(file => `- ${file}`), '');
   }
-
-  // omit heading if there are no files removed or added
-  if (hasChanged && (hasRemoved || hasAdded)) {
-    lines.push('*Changed files*');
-  }
+  
   for (let file of Object.keys(output.changedFiles)) {
+    lines.push('<details>');
+    lines.push(`<summary><b>Changed outputted file <code>${file}</code></b></summary>`, '');
     lines.push('```diff');
     lines.push(output.changedFiles[file]);
     lines.push('```');
+    lines.push('</details>');
   }
 
   return lines;
