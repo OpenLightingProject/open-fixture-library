@@ -207,4 +207,5 @@ function getChannelAttribute(channel) {
       return attribute;
     }
   }
+  return 'EXTRA'; // default if new types are added to OFL
 }
