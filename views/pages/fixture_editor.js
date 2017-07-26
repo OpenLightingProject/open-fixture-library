@@ -405,7 +405,7 @@ function getChannelDialogString() {
   str += '<form action="#" @submit.prevent="saveChannel" ref="channelForm">';
 
   str += '<div v-if="channel.editMode == \'add-existing\'">';
-  str += '<select size="10" required v-model="channel.key">';
+  str += '<select size="10" required v-model="channel.uuid">';
   str += '<option v-for="channelUuid in currentModeUnchosenChannels" :value="channelUuid">';
   str += '{{ fixture.availableChannels[channelUuid].name }}';
   str += '</option>';
