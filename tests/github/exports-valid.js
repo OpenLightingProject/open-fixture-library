@@ -2,15 +2,56 @@
 
 const colors = require('colors');
 
-const plugins = require('../../plugins/plugins.js').all;
 const Fixture = require('../../lib/model/Fixture.js');
+const pullRequest = require('./pull-request');
+
+const plugins = require('../../plugins/plugins.js');
 const testFixtures = require('../test-fixtures.json').map(
-  fixture => Fixture.fromRepository(fixture.man, fixture.key)
+  fixture => `${fixture.man}/${fixture.key}`
 );
 
-let fails = 0;
+pullRequest.init()
+.then(prData => {
+  return pullRequest.fetchChangedComponents()
+})
+.then(changedComponents => {
+  let validateTasks = [];
 
-Promise.all(plugins.filter(
+  if (changedComponents.added.model ||
+      changedComponents.modified.model ||
+      changedComponents.removed.model) {
+    validateTasks.push({
+      type: 'model'
+    });
+  }
+  else {
+    const plugins = changedComponents.added.exports.concat(changedComponents.modified.exports);
+    validateTasks = validateTasks.concat(plugins.map(plugin => ({
+      type: 'plugin',
+      plugin: plugin
+    })));
+
+    // only tests that are not covered by plugin tasks (which run all tests)
+    const exportTests = changedComponents.added.exportTests.concat(changedComponents.modified.exportTests)
+      .filter(([plugin, test]) => !plugins.includes(plugin));
+    validateTasks = validateTasks.concat(exportTests.map(test => ({
+      type: 'export-test',
+      plugin: test[0],
+      test: test[1]
+    })));
+  }
+
+  const fixtures = changedComponents.added.fixtures.concat(changedComponents.modified.fixtures);
+  validateTasks = validateTasks.concat(fixtures.map(fixture => ({
+    type: 'fixture',
+    fixture: fixture
+  })));
+})
+.then(validateTasks => {
+  // ...
+});
+
+/*Promise.all(plugins.filter(
   plugin => plugin.export !== null && plugin.exportTests.length > 0
 ).map(plugin => {
   return new Promise((resolve, reject) => {
@@ -69,4 +110,4 @@ Promise.all(plugins.filter(
 
   console.log(colors.red('[FAIL]'), `${fails} test(s) failed.`);
   process.exit(1);
-});
+});*/

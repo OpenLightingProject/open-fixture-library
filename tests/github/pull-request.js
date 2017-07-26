@@ -80,38 +80,54 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
     let changedComponents = {
       added: {
         model: false,
-        plugins: [], // array of plugin keys
+        imports: [], // array of plugin keys
+        exports: [], // array of plugin keys
+        exportTests: [], // array of [plugin key, test key]
         fixtures: [] // array of [man key, fix key]
       },
       modified: {
         model: false,
-        plugins: [], // array of plugin keys
+        imports: [], // array of plugin keys
+        exports: [], // array of plugin keys
+        exportTests: [], // array of [plugin key, test key]
         fixtures: [] // array of [man key, fix key]
       },
       removed: {
         model: false,
-        plugins: [], // array of plugin keys
+        imports: [], // array of plugin keys
+        exports: [], // array of plugin keys
+        exportTests: [], // array of [plugin key, test key]
         fixtures: [] // array of [man key, fix key]
       }
     };
 
     for (const block of fileBlocks) {
       for (const file of block.data) {
-        const matchModel = file.filename.match(/lib\/model\/([^\/]+)\.js/);
-        if (matchModel) {
-          changedComponents[file.status].model = true;
+        const changedData = changedComponents[file.status];
+        const segments = file.filename.split('/');
+
+        if (segments[0] === 'lib' && segments[1] === 'model') {
+          changedData.model = true;
           continue;
         }
 
-        const matchPlugin = file.filename.match(/plugins\/([^\/]+)\/export\.js/);
-        if (matchPlugin) {
-          changedComponents[file.status].plugins.push(matchPlugin[1]);
+        if (segments[0] === 'plugin' && segments[2] === 'import.js') {
+          changedData.imports.push(segment[1]);
           continue;
         }
-        
-        const matchFixture = file.filename.match(/fixtures\/([^\/]+\/[^\/]+)\.json/);
-        if (matchFixture) {
-          changedComponents[file.status].fixtures.push(matchFixture[1]);
+
+        if (segments[0] === 'plugin' && segments[2] === 'export.js') {
+          changedData.exports.push(segment[1]);
+          continue;
+        }
+
+        if (segments[0] === 'plugin' && segments[2] === 'exportTests') {
+          changedData.exportTests.push([segment[1], segment[3]]);
+          continue;
+        }
+
+        if (segments[0] === 'fixtures' && segments.length === 3) {
+          changedData.fixtures.push(`${segments[1]}/${segments[2]}`);
         }
       }
     }
@@ -176,4 +192,11 @@ module.exports.updateComment = function updateComment(test) {
       }
     }
   });
+}
+
+module.exports.getTestFixturesMessage = function getTestFixturesMessage(fixtures) {
+  let lines = [];
+  lines.push('Tested with the following test fixtures that provide a possibly wide variety of different fixture features:');
+  lines = lines.concat(fixtures.map(fix => `- ${fix}`), '');
+  return lines;
 }

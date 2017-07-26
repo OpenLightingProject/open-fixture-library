@@ -8,16 +8,16 @@ const testFixtures = require('../test-fixtures.json').map(
   fixture => `${fixture.man}/${fixture.key}`
 );
 
-let diffTasks = [];
-
 // generate diff tasks describing the diffed plugins, fixtures and the reason for diffing (which component has changed)
 pullRequest.init()
 .then(prData => {
   return pullRequest.fetchChangedComponents()
 })
 .then(changedComponents => {
-  const allPlugins = exportPlugins.filter(plugin => !changedComponents.added.plugins.includes(plugin));
+  const allPlugins = exportPlugins.filter(plugin => !changedComponents.added.exports.includes(plugin));
   const allTestFixtures = testFixtures.filter(fixture => !changedComponents.added.fixtures.includes(fixture));
+
+  let diffTasks = [];
 
   if (changedComponents.modified.model) {
     diffTasks.push({
@@ -43,9 +43,11 @@ pullRequest.init()
       fixtures: [fixture]
     });
   }
+
+  return diffTasks;
 })
 // run the diff tasks (if there are some) and make comment
-.then(() => {
+.then(diffTasks => {
   if (diffTasks.length === 0) {
     console.log('Model, plugins and fixtures not modified.');
     process.exit(0);
@@ -89,7 +91,7 @@ function getModelTaskMessage(task) {
 
   lines.push('## Model modified in this PR');
   lines.push('As the model affects all plugins, the output of all plugins is checked.', '');
-  lines = lines.concat(getTestFixturesMessage(task.fixtures));
+  lines = lines.concat(pullRequest.getTestFixturesMessage(task.fixtures));
 
   for (let i = 0; i < task.plugins.length; i++) {
     lines = lines.concat(getPluginMessage(task.plugins[i], task.outputs[i]));
@@ -102,7 +104,7 @@ function getPluginTaskMessage(task) {
   let lines = [];
 
   lines.push(`## Plugin \`${task.plugins[0]}\` modified in this PR`);
-  lines = lines.concat(getTestFixturesMessage(task.fixtures));
+  lines = lines.concat(pullRequest.getTestFixturesMessage(task.fixtures));
   lines = lines.concat(getOutputMessage(task.outputs[0]), '');
   
   return lines;
@@ -118,13 +120,6 @@ function getFixtureTaskMessage(task) {
     lines = lines.concat(getPluginMessage(task.plugins[i], task.outputs[i]));
   }
   
-  return lines;
-}
-
-function getTestFixturesMessage(fixtures) {
-  let lines = [];
-  lines.push('Tested with the following test fixtures that provide a possibly wide variety of different fixture features:');
-  lines = lines.concat(fixtures.map(fix => `- ${fix}`), '');
   return lines;
 }
 
