@@ -18,7 +18,7 @@ module.exports.export = function exportDLight(fixtures, options) {
         .declaration('1.0')
         .element({
           Device: {
-            OFL_Export: {
+            'OFL_Export': {
               '@id': module.exports.version,
               '#text': fixture.url
             },
@@ -199,34 +199,19 @@ function getChannelAttribute(channel) {
     return 'EXTRA';
   }
 
-  switch (channel.type) {
-    case 'Intensity':
-      return 'INTENSITY';
+  const oflToDLightMap = {
+    INTENSITY: ['Intensity'],
+    COLOUR: ['SingleColor', 'MultiColor'],
+    FOCUS: ['Pan', 'Tilt'],
+    BEAM: ['Beam'],
+    EFFECT: ['Strobe', 'Shutter', 'Speed', 'Gobo', 'Prism', 'Effect'],
+    CONTROL: ['Maintenance'],
+    EXTRA: ['Nothing']
+  };
 
-    case 'SingleColor':
-    case 'MultiColor':
-      return 'COLOUR';
-
-    case 'Pan':
-    case 'Tilt':
-      return 'FOCUS';
-
-    case 'Beam':
-      return 'BEAM';
-
-    case 'Strobe':
-    case 'Shutter':
-    case 'Speed':
-    case 'Gobo':
-    case 'Prism':
-    case 'Effect':
-      return 'EFFECT';
-
-    case 'Maintenance':
-      return 'CONTROL';
-
-    case 'Nothing':
-    default:
-      return 'EXTRA';
+  for (const attribute of Object.keys(oflToDLightMap)) {
+    if (oflToDLightMap[attribute].includes(channel.type)) {
+      return attribute;
+    }
   }
 }

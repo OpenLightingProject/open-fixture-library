@@ -10,7 +10,7 @@ const Fixture = require('../lib/model/Fixture.js');
 const args = minimist(process.argv.slice(2), {
   string: ['p', 'o'],
   boolean: ['h', 'a'],
-  alias: { p: 'plugin', h: 'help', a: 'all-fixtures' , o: 'output-dir'}
+  alias: { p: 'plugin', h: 'help', a: 'all-fixtures', o: 'output-dir'}
 });
 
 const helpMessage = [
