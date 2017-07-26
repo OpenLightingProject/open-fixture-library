@@ -101,24 +101,17 @@ function getParameterName(mode, attribute, channel) {
   }
 
   switch (attribute) {
-    case 'INTENSITY':
-      return 'DIMMER';
-
     case 'FOCUS':
       return channel.type.toUpperCase(); // PAN or TILT
 
-    case 'CONTROL':
-      if (channel.name.toLowerCase().includes('lamp')) {
-        return 'LAMP';
-      }
-      if (channel.name.toLowerCase().includes('reset')) {
-        return 'RESET';
-      }
-      return 'FUNCTION';
-
     // in all other attributes, custom text is allowed
+    // but we need to use another name syntax
     default:
-      return uniqueName;
+      return uniqueName
+        .toUpperCase()
+        .replace(/ /g, '_')
+        .replace(/\//g, '|')
+        .replace(/COLOR/g, 'COLOUR');
   }
 }
 
