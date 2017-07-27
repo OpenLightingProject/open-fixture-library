@@ -2,7 +2,7 @@
 
 Note that this fixture format is not intended to be used directly, as it has no way of versioning and may change without notice.
 
-The [JS Schema](https://github.com/molnarg/js-schema) can be found in the [schema.js](schema.js) file. See there for the details of allowed properties or values. The purpose of this document is to give a high-level overview of the used concepts.
+The [JS Schema](https://github.com/molnarg/js-schema) can be found in the [schema.js](schema.js) file. See there for the details of allowed properties or values. The purpose of this document is to give a high-level overview of the concepts used.
 
 
 ## Goals
@@ -17,7 +17,7 @@ The JSON fixture format intends to be
 
 ## Directory structure
 
-The manufacturer of a fixture is determined by its toplevel directory (relative to the `fixture` directory), the fixture key is the filename without extension. Manufacturer data is stored in [manufacturers.json](manufacturers.json).
+The manufacturer of a fixture is determined by its toplevel directory (relative to the `fixtures` directory), the fixture key is the filename without extension. Manufacturer data is stored in [manufacturers.json](manufacturers.json).
 
 
 ## Modes
@@ -45,4 +45,4 @@ A *switching channel* is a channel whose functionality depends on the value of a
 
 E.g. in a given mode, the first channel could be used to select auto-programs and channel 2 could be either "Microphone Sensitivity" (if channel 1 is set to *Sound control*) or "Program Speed" (if channel 1 is set to anything else).
 
-To define switching channels, add a `switchChannels` object to the all capabilities of the dependency channel (the "Auto-Programs" channel in the example above). This object defines which *switching channel alias* is set to which *available channel* if this capability is active. The switching channel alias is the used in the mode just like a regular channel. Note that a channel defining switching channels needs to explicitly set its `defaultValue` to make sure that the switching channel default is also well-defined.
+To define switching channels, add a `switchChannels` object to all capabilities of the dependency channel (the "Auto-Programs" channel in the example above). This object defines which *switching channel alias* is set to which *available channel key* if this capability is active. The switching channel alias is then used in the mode just like a regular channel. Note that a channel which defines switching channels needs an explicit `defaultValue` to make sure that the switching channel default is also well-defined.
