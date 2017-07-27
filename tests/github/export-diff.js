@@ -2,7 +2,7 @@
 
 const diffPluginOutputs = require('../../lib/diff-plugin-outputs.js');
 const exportPlugins = Object.keys(require('../../plugins/plugins.js').export);
-const pullRequest = require('./pull-request');
+const pullRequest = require('./pull-request.js');
 
 const testFixtures = require('../test-fixtures.json').map(
   fixture => `${fixture.man}/${fixture.key}`
@@ -11,7 +11,7 @@ const testFixtures = require('../test-fixtures.json').map(
 // generate diff tasks describing the diffed plugins, fixtures and the reason for diffing (which component has changed)
 pullRequest.init()
 .then(prData => {
-  return pullRequest.fetchChangedComponents()
+  return pullRequest.fetchChangedComponents();
 })
 .then(changedComponents => {
   const allPlugins = exportPlugins.filter(plugin => !changedComponents.added.exports.includes(plugin));
@@ -153,7 +153,7 @@ function getOutputMessage(output) {
     lines = lines.concat(output.addedFiles.map(file => `- ${file}`), '');
   }
   
-  for (let file of Object.keys(output.changedFiles)) {
+  for (const file of Object.keys(output.changedFiles)) {
     lines.push('<details>');
     lines.push(`<summary><b>Changed outputted file <code>${file}</code></b></summary>`, '');
     lines.push('```diff');

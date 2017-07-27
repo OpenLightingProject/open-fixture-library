@@ -7,7 +7,9 @@ module.exports = function testSchemaConformity(exportFileData) {
   return new Promise((resolve, reject) => {
     https.get(SCHEMA_URL, res => {
       let data = '';
-      res.on('data', chunk => data += chunk);
+      res.on('data', chunk => {
+        data += chunk
+      });
       res.on('end', () => {
         resolve(data);
       });

@@ -3,7 +3,7 @@
 const colors = require('colors');
 
 const Fixture = require('../../lib/model/Fixture.js');
-const pullRequest = require('./pull-request');
+const pullRequest = require('./pull-request.js');
 
 const plugins = require('../../plugins/plugins.js');
 const testFixtures = require('../test-fixtures.json').map(
@@ -12,7 +12,7 @@ const testFixtures = require('../test-fixtures.json').map(
 
 pullRequest.init()
 .then(prData => {
-  return pullRequest.fetchChangedComponents()
+  return pullRequest.fetchChangedComponents();
 })
 .then(changedComponents => {
   let validateTasks = [];

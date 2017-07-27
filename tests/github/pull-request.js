@@ -3,8 +3,6 @@ const path = require('path');
 const env = require('node-env-file');
 const GitHubApi = require('github');
 
-const identification = '<!-- github-plugin-diff -->';
-
 // load any undefined environment variables and complain about missing ones
 const envFile = path.join(__dirname, '../../.env');
 if (fs.existsSync(envFile)) {
@@ -55,7 +53,8 @@ module.exports.init = function init() {
   })
   .then(pr => {
     // save PR for later use
-    return module.exports.data = pr.data;
+    module.exports.data = pr.data;
+    return this.data;
   });
 }
 
@@ -68,7 +67,7 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
         owner: repoOwner,
         repo: repoName,
         number: process.env.TRAVIS_PULL_REQUEST,
-        per_page: 100,
+        'per_page': 100,
         page: i
       })
     );
@@ -112,17 +111,17 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
         }
 
         if (segments[0] === 'plugin' && segments[2] === 'import.js') {
-          changedData.imports.push(segment[1]);
+          changedData.imports.push(segments[1]);
           continue;
         }
 
         if (segments[0] === 'plugin' && segments[2] === 'export.js') {
-          changedData.exports.push(segment[1]);
+          changedData.exports.push(segments[1]);
           continue;
         }
 
         if (segments[0] === 'plugin' && segments[2] === 'exportTests') {
-          changedData.exportTests.push([segment[1], segment[3]]);
+          changedData.exportTests.push([segmenst[1], segments[3]]);
           continue;
         }
 
@@ -133,7 +132,7 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
     }
 
     return changedComponents;
-  })
+  });
 }
 
 /**
