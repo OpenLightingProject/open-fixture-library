@@ -126,7 +126,10 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
         }
 
         if (segments[0] === 'fixtures' && segments.length === 3) {
-          changedData.fixtures.push(`${segments[1]}/${segments[2]}`);
+          changedData.fixtures.push([
+            segments[1],
+            path.basename(segments[2], path.extname(segments[2]))
+          ]);
         }
       }
     }
@@ -137,7 +140,7 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
 
 /**
  * test is an object of this structere: {
- *   key: 'unique test key',
+ *   key: 'unique-test-key',
  *   name: 'shown test name',
  *   lines: 'test message'
  * }
@@ -175,7 +178,7 @@ module.exports.updateComment = function updateComment(test) {
     );
   }
   
-  Promise.all(commentPromises)
+  return Promise.all(commentPromises)
   .then(commentBlocks => {
     for (const block of commentBlocks) {
       for (const comment of block.data) {
@@ -191,11 +194,4 @@ module.exports.updateComment = function updateComment(test) {
       }
     }
   });
-}
-
-module.exports.getTestFixturesMessage = function getTestFixturesMessage(fixtures) {
-  let lines = [];
-  lines.push('Tested with the following test fixtures that provide a possibly wide variety of different fixture features:');
-  lines = lines.concat(fixtures.map(fix => `- ${fix}`), '');
-  return lines;
 }

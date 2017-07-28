@@ -27,7 +27,7 @@ pullRequest.init()
     });
   }
   else {
-    for (const plugin of changedComponents.modified.plugins) {
+    for (const plugin of changedComponents.modified.exports) {
       diffTasks.push({
         type: 'plugin',
         plugins: [plugin],
@@ -40,7 +40,7 @@ pullRequest.init()
     diffTasks.push({
       type: 'fixture',
       plugins: allPlugins,
-      fixtures: [fixture]
+      fixtures: [`${fixture[0]}/${fixture[1]}`]
     });
   }
 
@@ -91,7 +91,7 @@ function getModelTaskMessage(task) {
 
   lines.push('## Model modified in this PR');
   lines.push('As the model affects all plugins, the output of all plugins is checked.', '');
-  lines = lines.concat(pullRequest.getTestFixturesMessage(task.fixtures));
+  lines = lines.concat(getTestFixturesMessage(task.fixtures));
 
   for (let i = 0; i < task.plugins.length; i++) {
     lines = lines.concat(getPluginMessage(task.plugins[i], task.outputs[i]));
@@ -104,7 +104,7 @@ function getPluginTaskMessage(task) {
   let lines = [];
 
   lines.push(`## Plugin \`${task.plugins[0]}\` modified in this PR`);
-  lines = lines.concat(pullRequest.getTestFixturesMessage(task.fixtures));
+  lines = lines.concat(getTestFixturesMessage(task.fixtures));
   lines = lines.concat(getOutputMessage(task.outputs[0]), '');
   
   return lines;
@@ -162,5 +162,12 @@ function getOutputMessage(output) {
     lines.push('</details>');
   }
 
+  return lines;
+}
+
+function getTestFixturesMessage(fixtures) {
+  let lines = [];
+  lines.push('Tested with the following test fixtures that provide a possibly wide variety of different fixture features:');
+  lines = lines.concat(fixtures.map(fix => `- ${fix}`), '');
   return lines;
 }
