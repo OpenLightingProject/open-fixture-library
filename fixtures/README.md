@@ -44,7 +44,7 @@ All channels that are used in one or more modes are listed in `availableChannels
 
 A channel's `defaultValue` is the DMX value that this channel is set to without the user interacting (most often, this will be `0`, but e.g. for Pan and Tilt channels, other values make more sense). Likewise, `highlightValue` specifies the DMX value if a user *highlights* this channel (defaults to the maximum DMX value). This is not available in every software.
 
-`invert` is used to mark a descending value (e.g. Speed from fast to slow). If `constant` is `true`, the channel cannot be changed. Set `crossfade` to `true` if you want to allow smooth transitions between two DMX values being output by the software. This is e.g. not recommended for Gobo wheels, as there is not *smooth* transition to another Gobo; the wheel will always rotate.
+`invert` is used to mark a descending value (e.g. Speed from fast to slow). If `constant` is `true`, the channel cannot be changed. Set `crossfade` to `true` if you want to allow smooth transitions between two DMX values being output by the software. This is e.g. not recommended for Gobo wheels, as there can be no *smooth* transition to another Gobo; the wheel will always rotate.
 
 `precedence` specifies to which value the channel should be set if there are two conflicting active cues containing this channel: *HTP* (Highest takes precedence) or *LTP* (Latest (change) takes precedence).
 
