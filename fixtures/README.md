@@ -70,3 +70,5 @@ A *switching channel* is a channel whose functionality depends on the value of a
 E.g. in a given mode, the first channel could be used to select auto-programs and channel 2 could be either "Microphone Sensitivity" (if channel 1 is set to *Sound control*) or "Program Speed" (if channel 1 is set to anything else).
 
 To define switching channels, add a `switchChannels` object to all capabilities of the dependency channel (the "Auto-Programs" channel in the example above). This object defines which *switching channel alias* is set to which *available channel key* if this capability is active. The switching channel alias is then used in the mode just like a regular channel. Note that a channel which defines switching channels needs an explicit `defaultValue` to make sure that the switching channel default is also well-defined.
+
+See the [eurolite LED KLS-801 fixture](eurolite/led-kls-801.json) for a (rather) simple application example.
