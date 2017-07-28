@@ -1,6 +1,4 @@
-// we use `var` instead of `let` and `const` here since this file will also be required from the client side
-
-var schema = require('js-schema');
+const schema = require('js-schema');
 
 /**
  * see https://github.com/molnarg/js-schema
@@ -11,20 +9,25 @@ var schema = require('js-schema');
  *   '*' has to match all properties that have no own rule
  *
  * we use `'*': Function` to disallow additional properties
- * since JSON has no function type
+ * since JSON has no function type.
+ * 
+ * The best is to read this from bottom to top, as the bottom
+ * is more general.
+ * 
+ * See README.md for a high-level overview.
  */
 
-var NonEmptyString = String.of(1, null, null);
+const NonEmptyString = String.of(1, null, null);
 
-var URL = schema(/^(ftp|http|https):\/\/[^ "]+$/);
+const URL = schema(/^(ftp|http|https):\/\/[^ "]+$/);
 
-var ISODate = schema(/^\d{4}-\d{2}-\d{2}$/);
+const ISODate = schema(/^\d{4}-\d{2}-\d{2}$/);
 
-var Color = schema(/^#[0-9a-f]{6}$/);
+const Color = schema(/^#[0-9a-f]{6}$/);
 
-var Category = schema(['Blinder', 'Color Changer', 'Dimmer', 'Effect', 'Fan', 'Flower', 'Hazer', 'Laser', 'Moving Head', 'Scanner', 'Smoke', 'Strobe', 'Other']);
+const Category = schema(['Blinder', 'Color Changer', 'Dimmer', 'Effect', 'Fan', 'Flower', 'Hazer', 'Laser', 'Moving Head', 'Scanner', 'Smoke', 'Strobe', 'Other']);
 
-var Physical = schema({
+const Physical = schema({
   '?dimensions': Array.of(3, Number.above(0)), // width, height, depth (in mm)
   '?weight': Number.above(0), // in kg
   '?power': Number.above(0), // in W
@@ -49,12 +52,12 @@ var Physical = schema({
   '*': Function
 });
 
-var DMXValue = Number.min(0).step(1);  // max value depends on how many fine channels there are (255 if none, 65535 if one, etc.)
+const DMXValue = Number.min(0).step(1);  // max value depends on how many fine channels there are (255 if none, 65535 if one, etc.)
 
-var ChannelKey = NonEmptyString;  // channels in availableChannels
-var ChannelAliasKey = NonEmptyString;  // channel keys that are only defined inside other channels
+const ChannelKey = NonEmptyString;  // channels in availableChannels
+const ChannelAliasKey = NonEmptyString;  // channel keys that are only defined inside other channels
 
-var Capability = schema({
+const Capability = schema({
   'range': Array.of(2, DMXValue),
   'name': NonEmptyString,
   '?menuClick': ['start', 'center', 'end', 'hidden'],
@@ -67,7 +70,7 @@ var Capability = schema({
   '*': Function
 });
 
-var Channel = schema({
+const Channel = schema({
   '?name': NonEmptyString, // if not set: use channel key
   'type': ['Intensity', 'Strobe', 'Shutter', 'Speed', 'SingleColor', 'MultiColor', 'Gobo', 'Prism', 'Pan', 'Tilt', 'Beam', 'Effect', 'Maintenance', 'Nothing'],
   '?color': ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime', 'Indigo'], // required and only allowed for SingleColor
@@ -82,7 +85,7 @@ var Channel = schema({
   '*': Function
 });
 
-var Mode = schema({
+const Mode = schema({
   'name': NonEmptyString,
   '?shortName': NonEmptyString, // if not set: use name
   '?physical': Physical, // overrides fixture's Physical
@@ -90,7 +93,7 @@ var Mode = schema({
   '*': Function
 });
 
-var Fixture = schema({
+const Fixture = schema({
   'name': NonEmptyString,
   '?shortName': NonEmptyString, // if not set: use name
   'categories': Array.of(1, Infinity, Category), // most important category first
@@ -119,7 +122,7 @@ var Fixture = schema({
   '*': Function
 });
 
-var Manufacturers = schema({
+const Manufacturers = schema({
   '*': schema({ // '*' is the manufacturer key
     'name': NonEmptyString,
     '?comment': NonEmptyString,
@@ -132,7 +135,7 @@ var Manufacturers = schema({
 module.exports.Fixture = Fixture;
 module.exports.Manufacturers = Manufacturers;
 
-var properties = {
+let properties = {
   manufacturer:     Manufacturers.toJSON().additionalProperties.properties,
   fixture:          Fixture.toJSON().properties,
   mode:             Mode.toJSON().properties,

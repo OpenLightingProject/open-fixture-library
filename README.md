@@ -4,7 +4,7 @@
 
 To use lighting control software like [QLC+](http://www.qlcplus.org/), [DMXControl](https://www.dmxcontrol.org/) or [e:cue](http://www.ecue.de/), you need fixture definition files that describe your lighting hardware. Since one software can usually only understand its own fixture definition format, switching between different programs can be difficult.
 
-The *Open Fixture Library* ([open-fixture-library.herokuapp.com](https://open-fixture-library.herokuapp.com/)) tries to solve this problem by collecting fixture definitions and making them downloadable in various formats. Internally, it uses a [JSON format](fixtures/schema.js) that tries to bundle as much information as possible for all the different output formats.
+The *Open Fixture Library* ([open-fixture-library.herokuapp.com](https://open-fixture-library.herokuapp.com/)) tries to solve this problem by collecting fixture definitions and making them downloadable in various formats. Internally, it uses a [JSON format](fixtures/README.md) that tries to bundle as much information as possible for all the different output formats.
 
 
 ## Contribute
@@ -31,7 +31,7 @@ Pushing to the `master` branch here on GitHub deploys a new version on [Heroku](
 
 Ideally, just use the [Fixture Editor](https://open-fixture-library.herokuapp.com/fixture-editor) and submit it from there (however, some features are still missing, see [#77](https://github.com/FloEdelmann/open-fixture-library/issues/77); add such information in a comment in the resulting pull request). Please try to include as much information as possible!
 
-If you have to manually edit fixtures, see [schema.js](fixtures/schema.js) in the `fixtures` directory and use the existing fixtures as a reference.
+If you have to manually edit fixtures, see [README.md](fixtures/README.md) in the `fixtures` directory and use the existing fixtures as a reference.
 
 You can also import existing fixture definitions using import plugins. See [cli/import-fixture.js](cli/import-fixture.js) for that. In the future, this will be integrated into the Fixture Editor.
 
