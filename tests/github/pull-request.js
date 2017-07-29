@@ -62,15 +62,13 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
   // fetch changed files in 100er blocks
   let filePromises = [];
   for (let i = 0; i < this.data.changed_files / 100; i++) {
-    filePromises.push(
-      github.pullRequests.getFiles({
-        owner: repoOwner,
-        repo: repoName,
-        number: process.env.TRAVIS_PULL_REQUEST,
-        'per_page': 100,
-        page: i
-      })
-    );
+    filePromises.push(github.pullRequests.getFiles({
+      owner: repoOwner,
+      repo: repoName,
+      number: process.env.TRAVIS_PULL_REQUEST,
+      'per_page': 100,
+      page: i
+    }));
   }
 
   // check which model components, plugins and fixtures have been changed in the PR
@@ -216,4 +214,4 @@ module.exports.getTestFixturesMessage = function getTestFixturesMessage(fixtures
   lines.push('Tested with the following [test fixtures](https://github.com/FloEdelmann/open-fixture-library/wiki/Test-fixtures) that provide a possibly wide variety of different fixture features:');
   lines = lines.concat(fixtures.map(fix => `- ${fix}`), '');
   return lines;
-}
+};

@@ -12,69 +12,28 @@ const testFixtures = require('../test-fixtures.json').map(
 
 // generate diff tasks describing the diffed plugins, fixtures and the reason for diffing (which component has changed)
 pullRequest.init()
-.then(prData => {
-  return pullRequest.fetchChangedComponents();
-})
+.then(prData => pullRequest.fetchChangedComponents())
 .then(changedComponents => {
   const allPlugins = exportPlugins.filter(plugin => !changedComponents.added.exports.includes(plugin));
   const allTestFixtures = testFixtures.filter(fixture => !changedComponents.added.fixtures.includes(fixture));
 
-  let diffTasks = [];
+  let lines = [];
 
   if (changedComponents.modified.model) {
-    diffTasks.push({
-      type: 'model',
-      plugins: allPlugins,
-      fixtures: allTestFixtures
-    });
+    lines = lines.concat(getModelMessage(allPlugins, allTestFixtures));
   }
   else {
     for (const plugin of changedComponents.modified.exports) {
-      diffTasks.push({
-        type: 'plugin',
-        plugins: [plugin],
-        fixtures: allTestFixtures
-      });
+      lines = lines.concat(getPluginMessage(plugin, allTestFixtures));
     }
   }
 
   for (const fixture of changedComponents.modified.fixtures) {
-    diffTasks.push({
-      type: 'fixture',
-      plugins: allPlugins,
-      fixtures: [`${fixture[0]}/${fixture[1]}`]
-    });
+    lines = lines.concat(getFixtureMessage(allPlugins, `${fixture[0]}/${fixture[1]}`));
   }
 
-  return diffTasks;
-})
-// run the diff tasks (if there are some) and make comment
-.then(diffTasks => {
-  if (diffTasks.length === 0) {
-    console.log('Model, plugins and fixtures not modified.');
-    process.exit(0);
-  }
-
-  for (const task of diffTasks) {
-    task.outputs = task.plugins.map(plugin => diffPluginOutputs(plugin, process.env.TRAVIS_BRANCH, task.fixtures));
-  }
-  
-  let lines = [];
-
-  for (const task of diffTasks) {
-    switch (task.type) {
-      case 'model':
-        lines = lines.concat(getModelTaskMessage(task));
-        break;
-
-      case 'plugin':
-        lines = lines.concat(getPluginTaskMessage(task));
-        break;
-
-      case 'fixture':
-        lines = lines.concat(getFixtureTaskMessage(task));
-        break;
-    }
+  if (lines.length === 0) {
+    lines.push('Model, plugins and fixtures not modified.');
   }
 
   return pullRequest.updateComment({
@@ -88,54 +47,56 @@ pullRequest.init()
   process.exit(1);
 });
 
-function getModelTaskMessage(task) {
+function getModelMessage(plugins, fixtures) {
   let lines = [];
 
   lines.push('## Model modified in this PR');
   lines.push('As the model affects all plugins, the output of all plugins is checked.', '');
-  lines = lines.concat(pullRequest.getTestFixturesMessage(task.fixtures));
+  lines = lines.concat(pullRequest.getTestFixturesMessage(fixtures));
 
-  for (let i = 0; i < task.plugins.length; i++) {
-    lines = lines.concat(getPluginMessage(task.plugins[i], task.outputs[i]));
+  for (const plugin of plugins) {
+    lines = lines.concat(getSubPluginMessage(plugin, fixtures));
   }
   
   return lines;
 }
 
-function getPluginTaskMessage(task) {
+function getPluginMessage(plugin, fixtures) {
   let lines = [];
 
-  lines.push(`## Plugin \`${task.plugins[0]}\` modified in this PR`);
-  lines = lines.concat(pullRequest.getTestFixturesMessage(task.fixtures));
-  lines = lines.concat(getOutputMessage(task.outputs[0]), '');
+  lines.push(`## Plugin \`${plugin}\` modified in this PR`);
+  lines = lines.concat(pullRequest.getTestFixturesMessage(fixtures));
+  lines = lines.concat(getDiffMessage(plugin, fixtures), '');
   
   return lines;
 }
 
-function getFixtureTaskMessage(task) {
+function getFixtureMessage(plugins, fixture) {
   let lines = [];
 
-  lines.push(`## Fixture \`${task.fixtures[0]}\` modified in this PR`);
+  lines.push(`## Fixture \`${fixture}\` modified in this PR`);
   lines.push('Fixture output to all plugins is checked.', '');
 
-  for (let i = 0; i < task.plugins.length; i++) {
-    lines = lines.concat(getPluginMessage(task.plugins[i], task.outputs[i]));
+  for (const plugin of plugins) {
+    lines = lines.concat(getSubPluginMessage(plugin, [fixture]));
   }
   
   return lines;
 }
 
-function getPluginMessage(plugin, output) {
+function getSubPluginMessage(plugin, fixtures) {
   let lines = [];
 
   lines.push(`### Plugin \`${plugin}\``);
-  lines = lines.concat(getOutputMessage(output), '');
+  lines = lines.concat(getDiffMessage(plugin, fixtures), '');
 
   return lines;
 }
 
-function getOutputMessage(output) {
+function getDiffMessage(plugin, fixtures) {
   let lines = [];
+
+  const output = diffPluginOutputs(plugin, process.env.TRAVIS_BRANCH, fixtures);
 
   const hasRemoved = output.removedFiles.length > 0;
   const hasAdded = output.addedFiles.length > 0;
