@@ -25,10 +25,12 @@ const ISODate = schema(/^\d{4}-\d{2}-\d{2}$/);
 
 const Color = schema(/^#[0-9a-f]{6}$/);
 
+const DimensionsXYZ = Array.of(3, Number.above(0));
+
 const Category = schema(['Blinder', 'Color Changer', 'Dimmer', 'Effect', 'Fan', 'Flower', 'Hazer', 'Laser', 'Moving Head', 'Scanner', 'Smoke', 'Strobe', 'Other']);
 
 const Physical = schema({
-  '?dimensions': Array.of(3, Number.above(0)), // width, height, depth (in mm)
+  '?dimensions': DimensionsXYZ, // width, height, depth (in mm)
   '?weight': Number.above(0), // in kg
   '?power': Number.above(0), // in W
   '?DMXconnector': ['3-pin', '5-pin', '3-pin (swapped +/-)', '3-pin and 5-pin', '3.5mm stereo jack'], // additions are welcome
@@ -48,6 +50,10 @@ const Physical = schema({
     '?panMax': Number.min(0), // in degrees
     '?tiltMax': Number.min(0), // in degrees
     '*': Function
+  }),
+  '?matrix': schema({
+    'pixelDimensions': DimensionsXYZ, // width, height, depth (in mm)
+    'spacing': DimensionsXYZ // in mm
   }),
   '*': Function
 });
@@ -85,11 +91,52 @@ const Channel = schema({
   '*': Function
 });
 
+const TemplateChannelKey = schema(/\$pixelKey/);
+const TemplateChannelAliasKey = schema(/\$pixelKey/);
+
+const TemplateChannel = Channel;
+
+const PixelKey = String;
+const PixelGroupKey = String;
+
+const PixelKeyArray1D = Array.of(1, Infinity, [PixelKey, null]); // null to allow spacing
+const PixelKeyArray2D = Array.of(1, Infinity, PixelKeyArray1D);
+const PixelKeyArray3D = Array.of(1, Infinity, PixelKeyArray2D);
+
+const Matrix = schema({
+  'layout': ['line', 'rect', 'cube', 'custom2D', 'custom3D'],
+
+  // one of the two must be defined
+  '?pixelCount': Array.of(3, Number.min(0).step(1)),
+  '?pixelKeys': [PixelKeyArray1D, PixelKeyArray2D, PixelKeyArray3D],
+
+  '?pixelGroups': schema({
+    '*': Array.of(1, Infinity, PixelKey) // '*' is the PixelGroupKey
+  })
+});
+
+const TemplateChannelReference = [
+  null, // for unused channels
+  TemplateChannelKey,
+  TemplateChannelAliasKey
+];
+
+const ChannelReference = [
+  null, // for unused channels
+  ChannelKey, // normal channel keys
+  ChannelAliasKey, // fine or switching channel keys
+  schema({
+    'repeatFor': ['eachPixel', 'eachPixelGroup', Array.of(1, Infinity, [PixelKey, PixelGroupKey])],
+    'channelOrder': ['perPixel', 'perChannel'],
+    'templateChannels': Array.of(1, Infinity, TemplateChannelReference)
+  })
+];
+
 const Mode = schema({
   'name': NonEmptyString,
   '?shortName': NonEmptyString, // if not set: use name
   '?physical': Physical, // overrides fixture's Physical
-  'channels': Array.of([null, ChannelKey, ChannelAliasKey]), // null for unused channels
+  'channels': Array.of(1, Infinity, ChannelReference),
   '*': Function
 });
 
@@ -98,7 +145,7 @@ const Fixture = schema({
   '?shortName': NonEmptyString, // if not set: use name
   'categories': Array.of(1, Infinity, Category), // most important category first
   'meta': schema({
-    'authors': Array.of(NonEmptyString),
+    'authors': Array.of(1, Infinity, NonEmptyString),
     'createDate': ISODate,
     'lastModifyDate': ISODate,
     '?importPlugin': schema({
@@ -113,11 +160,12 @@ const Fixture = schema({
   '?manualURL': URL,
   '?physical': Physical,
   'availableChannels': schema({
-    '*': Channel // '*' is the channel key
+    '*': Channel // '*' is the ChannelKey
   }),
-  '?heads': schema({
-    '*': Array.of([ChannelKey, ChannelAliasKey]) // '*' is the head name
+  '?templateChannels': schema({
+    '*': TemplateChannel // '*' is the TemplateChannelKey, must include $pixelKey
   }),
+  '?matrix': Matrix,
   'modes': Array.of(1, Infinity, Mode),
   '*': Function
 });
