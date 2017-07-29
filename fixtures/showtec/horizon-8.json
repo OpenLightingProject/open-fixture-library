@@ -532,46 +532,6 @@
     "Value": {
       "type": "Intensity"
     },
-    "P1 Red": {
-      "type": "SingleColor",
-      "color": "Red"
-    },
-    "P1 Green": {
-      "type": "SingleColor",
-      "color": "Green"
-    },
-    "P1 Blue": {
-      "type": "SingleColor",
-      "color": "Blue"
-    },
-    "P1 White": {
-      "type": "SingleColor",
-      "color": "White"
-    },
-    "P1 Amber": {
-      "type": "SingleColor",
-      "color": "Amber"
-    },
-    "P2 Red": {
-      "type": "SingleColor",
-      "color": "Red"
-    },
-    "P2 Green": {
-      "type": "SingleColor",
-      "color": "Green"
-    },
-    "P2 Blue": {
-      "type": "SingleColor",
-      "color": "Blue"
-    },
-    "P2 White": {
-      "type": "SingleColor",
-      "color": "White"
-    },
-    "P2 Amber": {
-      "type": "SingleColor",
-      "color": "Amber"
-    },
     "Step Time": {
       "type": "Speed"
     },
@@ -579,9 +539,38 @@
       "type": "Speed"
     }
   },
-  "heads": {
-    "P1": ["P1 Red", "P1 Green", "P1 Blue", "P1 White", "P1 Amber"],
-    "P2": ["P2 Red", "P2 Green", "P2 Blue", "P2 White", "P2 Amber"]
+  "templateChannels": {
+    "$pixelKey Red": {
+      "type": "SingleColor",
+      "color": "Red"
+    },
+    "$pixelKey Green": {
+      "type": "SingleColor",
+      "color": "Green"
+    },
+    "$pixelKey Blue": {
+      "type": "SingleColor",
+      "color": "Blue"
+    },
+    "$pixelKey White": {
+      "type": "SingleColor",
+      "color": "White"
+    },
+    "$pixelKey Amber": {
+      "type": "SingleColor",
+      "color": "Amber"
+    }
+  },
+  "matrix": {
+    "layout": "rect",
+    "pixelKeys": [
+      ["1", "2", "3", "4"],
+      ["5", "6", "7", "8"]
+    ],
+    "pixelGroups": {
+      "P1": ["1", "2", "3", "4"],
+      "P2": ["5", "6", "7", "8"]
+    }
   },
   "modes": [
     {
@@ -748,27 +737,31 @@
     {
       "name": "PIX1",
       "channels": [
-        "P1 Red",
-        "P1 Green",
-        "P1 Blue",
-        "P2 Red",
-        "P2 Green",
-        "P2 Blue"
+        {
+          "repeatFor": "eachPixelGroup",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue"
+          ]
+        }
       ]
     },
     {
       "name": "PIX3",
       "channels": [
-        "P1 Red",
-        "P1 Green",
-        "P1 Blue",
-        "P1 White",
-        "P1 Amber",
-        "P2 Red",
-        "P2 Green",
-        "P2 Blue",
-        "P2 White",
-        "P2 Amber"
+        {
+          "repeatFor": "eachPixelGroup",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White",
+            "$pixelKey Amber"
+          ]
+        }
       ]
     }
   ]

@@ -23,6 +23,10 @@
     },
     "focus": {
       "type": "Fixed"
+    },
+    "matrix": {
+      "pixelDimensions": [250, 60, 0],
+      "spacing": [0, 0, 0]
     }
   },
   "availableChannels": {
@@ -44,96 +48,6 @@
     "Dimmer": {
       "type": "Intensity",
       "crossfade": true
-    },
-    "Red 1/2": {
-      "type": "SingleColor",
-      "crossfade": true,
-      "color": "Red"
-    },
-    "Green 1/2": {
-      "type": "SingleColor",
-      "crossfade": true,
-      "color": "Green"
-    },
-    "Blue 1/2": {
-      "type": "SingleColor",
-      "crossfade": true,
-      "color": "Blue"
-    },
-    "Red 2/2": {
-      "type": "SingleColor",
-      "crossfade": true,
-      "color": "Red"
-    },
-    "Green 2/2": {
-      "type": "SingleColor",
-      "crossfade": true,
-      "color": "Green"
-    },
-    "Blue 2/2": {
-      "type": "SingleColor",
-      "crossfade": true,
-      "color": "Blue"
-    },
-    "Red 1/4": {
-      "type": "SingleColor",
-      "crossfade": true,
-      "color": "Red"
-    },
-    "Green 1/4": {
-      "type": "SingleColor",
-      "crossfade": true,
-      "color": "Green"
-    },
-    "Blue 1/4": {
-      "type": "SingleColor",
-      "crossfade": true,
-      "color": "Blue"
-    },
-    "Red 2/4": {
-      "type": "SingleColor",
-      "crossfade": true,
-      "color": "Red"
-    },
-    "Green 2/4": {
-      "type": "SingleColor",
-      "crossfade": true,
-      "color": "Green"
-    },
-    "Blue 2/4": {
-      "type": "SingleColor",
-      "crossfade": true,
-      "color": "Blue"
-    },
-    "Red 3/4": {
-      "type": "SingleColor",
-      "crossfade": true,
-      "color": "Red"
-    },
-    "Green 3/4": {
-      "type": "SingleColor",
-      "crossfade": true,
-      "color": "Green"
-    },
-    "Blue 3/4": {
-      "type": "SingleColor",
-      "crossfade": true,
-      "color": "Blue"
-    },
-    "Red 4/4": {
-      "type": "SingleColor",
-      "crossfade": true,
-      "color": "Red"
-    },
-    "Green 4/4": {
-      "type": "SingleColor",
-      "crossfade": true,
-      "color": "Green"
-    },
-    "Blue 4/4": {
-      "type": "SingleColor",
-      "crossfade": true,
-      "color": "Blue"
     },
     "Strobe1": {
       "name": "Strobe",
@@ -372,6 +286,31 @@
       ]
     }
   },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Red"
+    },
+    "Green $pixelKey": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Green"
+    },
+    "Blue $pixelKey": {
+      "type": "SingleColor",
+      "crossfade": true,
+      "color": "Blue"
+    }
+  },
+  "matrix": {
+    "layout": "line",
+    "pixelKeys": ["1/4", "2/4", "3/4", "4/4"],
+    "pixelGroups": {
+      "1/2": ["1/4", "2/4"],
+      "2/2": ["3/4", "4/4"]
+    }
+  },
   "modes": [
     {
       "name": "P1 (3 channels)",
@@ -396,12 +335,15 @@
       "name": "P3 (8 channels)",
       "shortName": "P3",
       "channels": [
-        "Red 1/2",
-        "Green 1/2",
-        "Blue 1/2",
-        "Red 2/2",
-        "Green 2/2",
-        "Blue 2/2",
+        {
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
         "Strobe1",
         "Dimmer"
       ]
@@ -410,20 +352,15 @@
       "name": "P4 (14 channels)",
       "shortName": "P4",
       "channels": [
-        "Red 1/4",
-        "Green 1/4",
-        "Blue 1/4",
-        "Red 2/4",
-        "Green 2/4",
-        "Blue 2/4",
-        "Red 3/4",
-        "Green 3/4",
-        "Blue 3/4",
-        "Red 4/4",
-        "Green 4/4",
-        "Blue 4/4",
-        "Strobe1",
-        "Dimmer"
+        {
+          "repeatFor": "eachPixel",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     },
     {
@@ -441,18 +378,15 @@
         "Operation Mode",
         "Dimmer",
         "Strobe2",
-        "Red 1/4",
-        "Green 1/4",
-        "Blue 1/4",
-        "Red 2/4",
-        "Green 2/4",
-        "Blue 2/4",
-        "Red 3/4",
-        "Green 3/4",
-        "Blue 3/4",
-        "Red 4/4",
-        "Green 4/4",
-        "Blue 4/4"
+        {
+          "repeatFor": "eachPixel",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     },
     {

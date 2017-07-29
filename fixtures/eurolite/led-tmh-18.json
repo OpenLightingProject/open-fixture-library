@@ -204,222 +204,6 @@
       "highlightValue": 255,
       "crossfade": true
     },
-    "Red 1": {
-      "type": "SingleColor",
-      "color": "Red",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Green 1": {
-      "type": "SingleColor",
-      "color": "Green",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Blue 1": {
-      "type": "SingleColor",
-      "color": "Blue",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "White 1": {
-      "type": "SingleColor",
-      "color": "White",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Red 2": {
-      "type": "SingleColor",
-      "color": "Red",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Green 2": {
-      "type": "SingleColor",
-      "color": "Green",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Blue 2": {
-      "type": "SingleColor",
-      "color": "Blue",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "White 2": {
-      "type": "SingleColor",
-      "color": "White",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Red 3": {
-      "type": "SingleColor",
-      "color": "Red",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Green 3": {
-      "type": "SingleColor",
-      "color": "Green",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Blue 3": {
-      "type": "SingleColor",
-      "color": "Blue",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "White 3": {
-      "type": "SingleColor",
-      "color": "White",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Red 4": {
-      "type": "SingleColor",
-      "color": "Red",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Green 4": {
-      "type": "SingleColor",
-      "color": "Green",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Blue 4": {
-      "type": "SingleColor",
-      "color": "Blue",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "White 4": {
-      "type": "SingleColor",
-      "color": "White",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Red 5": {
-      "type": "SingleColor",
-      "color": "Red",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Green 5": {
-      "type": "SingleColor",
-      "color": "Green",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Blue 5": {
-      "type": "SingleColor",
-      "color": "Blue",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "White 5": {
-      "type": "SingleColor",
-      "color": "White",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Red 6": {
-      "type": "SingleColor",
-      "color": "Red",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Green 6": {
-      "type": "SingleColor",
-      "color": "Green",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Blue 6": {
-      "type": "SingleColor",
-      "color": "Blue",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "White 6": {
-      "type": "SingleColor",
-      "color": "White",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Red 7": {
-      "type": "SingleColor",
-      "color": "Red",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Green 7": {
-      "type": "SingleColor",
-      "color": "Green",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Blue 7": {
-      "type": "SingleColor",
-      "color": "Blue",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "White 7": {
-      "type": "SingleColor",
-      "color": "White",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Red 8": {
-      "type": "SingleColor",
-      "color": "Red",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Green 8": {
-      "type": "SingleColor",
-      "color": "Green",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Blue 8": {
-      "type": "SingleColor",
-      "color": "Blue",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "White 8": {
-      "type": "SingleColor",
-      "color": "White",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Red 9": {
-      "type": "SingleColor",
-      "color": "Red",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Green 9": {
-      "type": "SingleColor",
-      "color": "Green",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Blue 9": {
-      "type": "SingleColor",
-      "color": "Blue",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "White 9": {
-      "type": "SingleColor",
-      "color": "White",
-      "highlightValue": 255,
-      "crossfade": true
-    },
     "Color Macros": {
       "type": "MultiColor",
       "capabilities": [
@@ -636,16 +420,39 @@
       "crossfade": true
     }
   },
-  "heads": {
-    "top left": ["Red 1", "Green 1", "Blue 1", "White 1"],
-    "top center": ["Red 2", "Green 2", "Blue 2", "White 2"],
-    "top right": ["Red 3", "Green 3", "Blue 3", "White 3"],
-    "center left": ["Red 4", "Green 4", "Blue 4", "White 4"],
-    "center center": ["Red 5", "Green 5", "Blue 5", "White 5"],
-    "center right": ["Red 6", "Green 6", "Blue 6", "White 6"],
-    "bottom left": ["Red 7", "Green 7", "Blue 7", "White 7"],
-    "bottom center": ["Red 8", "Green 8", "Blue 8", "White 8"],
-    "bottom right": ["Red 9", "Green 9", "Blue 9", "White 9"]
+  "templateChannels": {
+    "Red $pixelKey": {
+      "type": "SingleColor",
+      "color": "Red",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Green $pixelKey": {
+      "type": "SingleColor",
+      "color": "Green",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Blue $pixelKey": {
+      "type": "SingleColor",
+      "color": "Blue",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "White $pixelKey": {
+      "type": "SingleColor",
+      "color": "White",
+      "highlightValue": 255,
+      "crossfade": true
+    }
+  },
+  "matrix": {
+    "layout": "rect",
+    "pixelKeys": [
+      ["1", "2", "3"],
+      ["4", "5", "6"],
+      ["7", "8", "9"]
+    ]
   },
   "modes": [
     {
@@ -691,15 +498,16 @@
           "Function",
           "Dimmer",
           "Strobe",
-          "Red 1", "Green 1", "Blue 1", "White 1",
-          "Red 2", "Green 2", "Blue 2", "White 2",
-          "Red 3", "Green 3", "Blue 3", "White 3",
-          "Red 4", "Green 4", "Blue 4", "White 4",
-          "Red 5", "Green 5", "Blue 5", "White 5",
-          "Red 6", "Green 6", "Blue 6", "White 6",
-          "Red 7", "Green 7", "Blue 7", "White 7",
-          "Red 8", "Green 8", "Blue 8", "White 8",
-          "Red 9", "Green 9", "Blue 9", "White 9",
+          {
+            "repeatFor": "eachPixel",
+            "channelOrder": "perPixel",
+            "templateChannels": [
+              "Red $pixelKey",
+              "Green $pixelKey",
+              "Blue $pixelKey",
+              "White $pixelKey"
+            ]
+          },
           "Color Macros",
           "Color Speed"
       ]

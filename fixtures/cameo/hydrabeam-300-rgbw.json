@@ -337,19 +337,21 @@
           "name": "sound control mode"
         }
       ]
-    },
-    "Pan 1": {
+    }
+  },
+  "templateChannels": {
+    "Pan $pixelKey": {
       "type": "Pan",
-      "fineChannelAliases": ["Pan 1 fine"]
+      "fineChannelAliases": ["Pan $pixelKey fine"]
     },
-    "Tilt 1": {
+    "Tilt $pixelKey": {
       "type": "Tilt",
-      "fineChannelAliases": ["Tilt 1 fine"]
+      "fineChannelAliases": ["Tilt $pixelKey fine"]
     },
-    "Dimmer 1": {
+    "Dimmer $pixelKey": {
       "type": "Intensity"
     },
-    "Head Speed 1": {
+    "Head Speed $pixelKey": {
       "type": "Speed",
       "capabilities": [
         {
@@ -362,7 +364,7 @@
         }
       ]
     },
-    "Head Speed 1 simple": {
+    "Head Speed $pixelKey simple": {
       "name": "Head Speed 1",
       "type": "Speed",
       "capabilities": [
@@ -372,7 +374,7 @@
         }
       ]
     },
-    "Strobe 1": {
+    "Strobe $pixelKey": {
       "type": "Strobe",
       "defaultValue": 0,
       "highlightValue": 200,
@@ -387,7 +389,7 @@
         }
       ]
     },
-    "Color 1": {
+    "Color $pixelKey": {
       "type": "MultiColor",
       "capabilities": [
         {
@@ -486,23 +488,23 @@
         }
       ]
     },
-    "Red 1": {
+    "Red $pixelKey": {
       "type": "SingleColor",
       "color": "Red"
     },
-    "Green 1": {
+    "Green $pixelKey": {
       "type": "SingleColor",
       "color": "Green"
     },
-    "Blue 1": {
+    "Blue $pixelKey": {
       "type": "SingleColor",
       "color": "Blue"
     },
-    "White 1": {
+    "White $pixelKey": {
       "type": "SingleColor",
       "color": "White"
     },
-    "Mode 1": {
+    "Mode $pixelKey": {
       "type": "Maintenance",
       "defaultValue": 0,
       "capabilities": [
@@ -510,597 +512,79 @@
           "range": [0, 7],
           "name": "no function",
           "switchChannels": {
-            "Show mode speed / Sound sensitivity 1": "Show mode speed 1"
+            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
           "range": [8, 30],
           "name": "show mode 1",
           "switchChannels": {
-            "Show mode speed / Sound sensitivity 1": "Show mode speed 1"
+            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
           "range": [31, 53],
           "name": "show mode 2",
           "switchChannels": {
-            "Show mode speed / Sound sensitivity 1": "Show mode speed 1"
+            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
           "range": [54, 76],
           "name": "show mode 3",
           "switchChannels": {
-            "Show mode speed / Sound sensitivity 1": "Show mode speed 1"
+            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
           "range": [77, 99],
           "name": "show mode 4",
           "switchChannels": {
-            "Show mode speed / Sound sensitivity 1": "Show mode speed 1"
+            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
           "range": [100, 122],
           "name": "sound control mode",
           "switchChannels": {
-            "Show mode speed / Sound sensitivity 1": "Sound sensitivity 1"
+            "Show mode speed / Sound sensitivity $pixelKey": "Sound sensitivity $pixelKey"
           }
         },
         {
           "range": [123, 199],
           "name": "no function",
           "switchChannels": {
-            "Show mode speed / Sound sensitivity 1": "Show mode speed 1"
+            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed 1"
           }
         },
         {
           "range": [200, 224],
           "name": "reset",
           "switchChannels": {
-            "Show mode speed / Sound sensitivity 1": "Show mode speed 1"
+            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
           "range": [225, 255],
           "name": "no function",
           "switchChannels": {
-            "Show mode speed / Sound sensitivity 1": "Show mode speed 1"
+            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         }
       ]
     },
-    "Show mode speed 1": {
+    "Show mode speed $pixelKey": {
       "type": "Speed"
     },
-    "Sound sensitivity 1": {
-      "type": "Intensity"
-    },
-    "Pan 2": {
-      "type": "Pan",
-      "fineChannelAliases": ["Pan 2 fine"]
-    },
-    "Tilt 2": {
-      "type": "Tilt",
-      "fineChannelAliases": ["Tilt 2 fine"]
-    },
-    "Dimmer 2": {
-      "type": "Intensity"
-    },
-    "Head Speed 2": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 10],
-          "name": "use Head Speed 1"
-        },
-        {
-          "range": [11, 255],
-          "name": "slow to fast"
-        }
-      ]
-    },
-    "Head Speed 2 simple": {
-      "name": "Head Speed 2",
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "slow to fast"
-        }
-      ]
-    },
-    "Strobe 2": {
-      "type": "Strobe",
-      "defaultValue": 0,
-      "highlightValue": 200,
-      "capabilities": [
-        {
-          "range": [0, 10],
-          "name": "No strobe"
-        },
-        {
-          "range": [11, 255],
-          "name": "slow to fast"
-        }
-      ]
-    },
-    "Color 2": {
-      "type": "MultiColor",
-      "capabilities": [
-        {
-          "range": [0, 30],
-          "name": "use master color dimmers"
-        },
-        {
-          "range": [31, 45],
-          "name": "red",
-          "color": "#ff0000",
-          "color2": "#000000"
-        },
-        {
-          "range": [46, 60],
-          "name": "green",
-          "color": "#00ff00",
-          "color2": "#000000"
-        },
-        {
-          "range": [61, 75],
-          "name": "blue",
-          "color": "#0000ff",
-          "color2": "#000000"
-        },
-        {
-          "range": [76, 90],
-          "name": "white",
-          "color": "#000000",
-          "color2": "#ffffff"
-        },
-        {
-          "range": [91, 105],
-          "name": "RG",
-          "color": "#ffff00",
-          "color2": "#000000"
-        },
-        {
-          "range": [106, 120],
-          "name": "RB",
-          "color": "#ff00ff",
-          "color2": "#000000"
-        },
-        {
-          "range": [121, 135],
-          "name": "RW",
-          "color": "#ff0000",
-          "color2": "#ffffff"
-        },
-        {
-          "range": [136, 150],
-          "name": "GB",
-          "color": "#00ffff",
-          "color2": "#000000"
-        },
-        {
-          "range": [151, 165],
-          "name": "GW",
-          "color": "#00ff00",
-          "color2": "#ffffff"
-        },
-        {
-          "range": [166, 180],
-          "name": "BW",
-          "color": "#0000ff",
-          "color2": "#ffffff"
-        },
-        {
-          "range": [181, 195],
-          "name": "RGB",
-          "color": "#ffffff",
-          "color2": "#000000"
-        },
-        {
-          "range": [196, 210],
-          "name": "RGW",
-          "color": "#ffff00",
-          "color2": "#ffffff"
-        },
-        {
-          "range": [211, 225],
-          "name": "RBW",
-          "color": "#ff00ff",
-          "color2": "#ffffff"
-        },
-        {
-          "range": [226, 240],
-          "name": "GBW",
-          "color": "#00ffff",
-          "color2": "#ffffff"
-        },
-        {
-          "range": [241, 255],
-          "name": "RGBW",
-          "color": "#ffffff",
-          "color2": "#ffffff"
-        }
-      ]
-    },
-    "Red 2": {
-      "type": "SingleColor",
-      "color": "Red"
-    },
-    "Green 2": {
-      "type": "SingleColor",
-      "color": "Green"
-    },
-    "Blue 2": {
-      "type": "SingleColor",
-      "color": "Blue"
-    },
-    "White 2": {
-      "type": "SingleColor",
-      "color": "White"
-    },
-    "Mode 2": {
-      "type": "Maintenance",
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "range": [0, 7],
-          "name": "no function",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity 2": "Show mode speed 2"
-          }
-        },
-        {
-          "range": [8, 30],
-          "name": "show mode 1",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity 2": "Show mode speed 2"
-          }
-        },
-        {
-          "range": [31, 53],
-          "name": "show mode 2",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity 2": "Show mode speed 2"
-          }
-        },
-        {
-          "range": [54, 76],
-          "name": "show mode 3",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity 2": "Show mode speed 2"
-          }
-        },
-        {
-          "range": [77, 99],
-          "name": "show mode 4",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity 2": "Show mode speed 2"
-          }
-        },
-        {
-          "range": [100, 122],
-          "name": "sound control mode",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity 2": "Sound sensitivity 2"
-          }
-        },
-        {
-          "range": [123, 199],
-          "name": "no function",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity 2": "Show mode speed 2"
-          }
-        },
-        {
-          "range": [200, 224],
-          "name": "reset",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity 2": "Show mode speed 2"
-          }
-        },
-        {
-          "range": [225, 255],
-          "name": "no function",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity 2": "Show mode speed 2"
-          }
-        }
-      ]
-    },
-    "Show mode speed 2": {
-      "type": "Speed"
-    },
-    "Sound sensitivity 2": {
-      "type": "Intensity"
-    },
-    "Pan 3": {
-      "type": "Pan",
-      "fineChannelAliases": ["Pan 3 fine"]
-    },
-    "Tilt 3": {
-      "type": "Tilt",
-      "fineChannelAliases": ["Tilt 3 fine"]
-    },
-    "Dimmer 3": {
-      "type": "Intensity"
-    },
-    "Head Speed 3": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 10],
-          "name": "use Head Speed 1"
-        },
-        {
-          "range": [11, 255],
-          "name": "slow to fast"
-        }
-      ]
-    },
-    "Head Speed 3 simple": {
-      "name": "Head Speed 3",
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "slow to fast"
-        }
-      ]
-    },
-    "Strobe 3": {
-      "type": "Strobe",
-      "defaultValue": 0,
-      "highlightValue": 200,
-      "capabilities": [
-        {
-          "range": [0, 10],
-          "name": "No strobe"
-        },
-        {
-          "range": [11, 255],
-          "name": "slow to fast"
-        }
-      ]
-    },
-    "Color 3": {
-      "type": "MultiColor",
-      "capabilities": [
-        {
-          "range": [0, 30],
-          "name": "use master color dimmers"
-        },
-        {
-          "range": [31, 45],
-          "name": "red",
-          "color": "#ff0000",
-          "color2": "#000000"
-        },
-        {
-          "range": [46, 60],
-          "name": "green",
-          "color": "#00ff00",
-          "color2": "#000000"
-        },
-        {
-          "range": [61, 75],
-          "name": "blue",
-          "color": "#0000ff",
-          "color2": "#000000"
-        },
-        {
-          "range": [76, 90],
-          "name": "white",
-          "color": "#000000",
-          "color2": "#ffffff"
-        },
-        {
-          "range": [91, 105],
-          "name": "RG",
-          "color": "#ffff00",
-          "color2": "#000000"
-        },
-        {
-          "range": [106, 120],
-          "name": "RB",
-          "color": "#ff00ff",
-          "color2": "#000000"
-        },
-        {
-          "range": [121, 135],
-          "name": "RW",
-          "color": "#ff0000",
-          "color2": "#ffffff"
-        },
-        {
-          "range": [136, 150],
-          "name": "GB",
-          "color": "#00ffff",
-          "color2": "#000000"
-        },
-        {
-          "range": [151, 165],
-          "name": "GW",
-          "color": "#00ff00",
-          "color2": "#ffffff"
-        },
-        {
-          "range": [166, 180],
-          "name": "BW",
-          "color": "#0000ff",
-          "color2": "#ffffff"
-        },
-        {
-          "range": [181, 195],
-          "name": "RGB",
-          "color": "#ffffff",
-          "color2": "#000000"
-        },
-        {
-          "range": [196, 210],
-          "name": "RGW",
-          "color": "#ffff00",
-          "color2": "#ffffff"
-        },
-        {
-          "range": [211, 225],
-          "name": "RBW",
-          "color": "#ff00ff",
-          "color2": "#ffffff"
-        },
-        {
-          "range": [226, 240],
-          "name": "GBW",
-          "color": "#00ffff",
-          "color2": "#ffffff"
-        },
-        {
-          "range": [241, 255],
-          "name": "RGBW",
-          "color": "#ffffff",
-          "color2": "#ffffff"
-        }
-      ]
-    },
-    "Red 3": {
-      "type": "SingleColor",
-      "color": "Red"
-    },
-    "Green 3": {
-      "type": "SingleColor",
-      "color": "Green"
-    },
-    "Blue 3": {
-      "type": "SingleColor",
-      "color": "Blue"
-    },
-    "White 3": {
-      "type": "SingleColor",
-      "color": "White"
-    },
-    "Mode 3": {
-      "type": "Maintenance",
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "range": [0, 7],
-          "name": "no function",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity 3": "Show mode speed 3"
-          }
-        },
-        {
-          "range": [8, 30],
-          "name": "show mode 1",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity 3": "Show mode speed 3"
-          }
-        },
-        {
-          "range": [31, 53],
-          "name": "show mode 2",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity 3": "Show mode speed 3"
-          }
-        },
-        {
-          "range": [54, 76],
-          "name": "show mode 3",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity 3": "Show mode speed 3"
-          }
-        },
-        {
-          "range": [77, 99],
-          "name": "show mode 4",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity 3": "Show mode speed 3"
-          }
-        },
-        {
-          "range": [100, 122],
-          "name": "sound control mode",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity 3": "Sound sensitivity 3"
-          }
-        },
-        {
-          "range": [123, 199],
-          "name": "no function",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity 3": "Show mode speed 3"
-          }
-        },
-        {
-          "range": [200, 224],
-          "name": "reset",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity 3": "Show mode speed 3"
-          }
-        },
-        {
-          "range": [225, 255],
-          "name": "no function",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity 3": "Show mode speed 3"
-          }
-        }
-      ]
-    },
-    "Show mode speed 3": {
-      "type": "Speed"
-    },
-    "Sound sensitivity 3": {
+    "Sound sensitivity $pixelKey": {
       "type": "Intensity"
     }
   },
-  "heads": {
-    "Head 1": [
-      "Pan 1",
-      "Tilt 1",
-      "Dimmer 1",
-      "Head Speed 1",
-      "Head Speed 1 simple",
-      "Strobe 1",
-      "Color 1",
-      "Red 1",
-      "Green 1",
-      "Blue 1",
-      "White 1",
-      "Mode 1",
-      "Show mode speed / Sound sensitivity 1"
-    ],
-    "Head 2": [
-      "Pan 2",
-      "Tilt 2",
-      "Dimmer 2",
-      "Head Speed 2",
-      "Head Speed 2 simple",
-      "Strobe 2",
-      "Color 2",
-      "Red 2",
-      "Green 2",
-      "Blue 2",
-      "White 2",
-      "Mode 2",
-      "Show mode speed / Sound sensitivity 2"
-    ],
-    "Head 3": [
-      "Pan 3",
-      "Tilt 3",
-      "Dimmer 3",
-      "Head Speed 3",
-      "Head Speed 3 simple",
-      "Strobe 3",
-      "Color 3",
-      "Red 3",
-      "Green 3",
-      "Blue 3",
-      "White 3",
-      "Mode 3",
-      "Show mode speed / Sound sensitivity 3"
+  "matrix": {
+    "layout": "custom2D",
+    "pixelKeys": [
+      [null, "1", null],
+      ["2", null, "3"]
     ]
   },
   "modes": [
@@ -1142,15 +626,15 @@
         "Master Green",
         "Master Blue",
         "Master White",
-        "Pan 1",
-        "Tilt 1",
-        "Dimmer 1",
-        "Pan 2",
-        "Tilt 2",
-        "Dimmer 2",
-        "Pan 3",
-        "Tilt 3",
-        "Dimmer 3",
+        {
+          "repeatFor": "eachPixel",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Pan $pixelKey",
+            "Tilt $pixelKey",
+            "Dimmer $pixelKey"
+          ]
+        },
         "Head speed"
       ]
     },
@@ -1160,24 +644,19 @@
       "channels": [
         "Master Dimmer",
         "Strobe",
-        "Pan 1",
-        "Pan 1 fine",
-        "Tilt 1",
-        "Tilt 1 fine",
-        "Head Speed 1",
-        "Color 1",
-        "Pan 2",
-        "Pan 2 fine",
-        "Tilt 2",
-        "Tilt 2 fine",
-        "Head Speed 2",
-        "Color 2",
-        "Pan 3",
-        "Pan 3 fine",
-        "Tilt 3",
-        "Tilt 3 fine",
-        "Head Speed 3",
-        "Color 3",
+        {
+          "repeatFor": "eachPixel",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Pan $pixelKey",
+            "Pan $pixelKey fine",
+            "Tilt $pixelKey",
+            "Tilt $pixelKey",
+            "Tilt $pixelKey fine",
+            "Head Speed $pixelKey",
+            "Color $pixelKey"
+          ]
+        },
         "Sound mode / Reset",
         "Sound sensitivity",
         "Master Red",
@@ -1190,48 +669,26 @@
       "name": "42-channel",
       "shortName": "42ch",
       "channels": [
-        "Pan 1",
-        "Pan 1 fine",
-        "Tilt 1",
-        "Tilt 1 fine",
-        "Head Speed 1 simple",
-        "Dimmer 1",
-        "Strobe 1",
-        "Color 1",
-        "Mode 1",
-        "Show mode speed / Sound sensitivity 1",
-        "Red 1",
-        "Green 1",
-        "Blue 1",
-        "White 1",
-        "Pan 2",
-        "Pan 2 fine",
-        "Tilt 2",
-        "Tilt 2 fine",
-        "Head Speed 2 simple",
-        "Dimmer 2",
-        "Strobe 2",
-        "Color 2",
-        "Mode 2",
-        "Show mode speed / Sound sensitivity 2",
-        "Red 2",
-        "Green 2",
-        "Blue 2",
-        "White 2",
-        "Pan 3",
-        "Pan 3 fine",
-        "Tilt 3",
-        "Tilt 3 fine",
-        "Head Speed 3 simple",
-        "Dimmer 3",
-        "Strobe 3",
-        "Color 3",
-        "Mode 3",
-        "Show mode speed / Sound sensitivity 3",
-        "Red 3",
-        "Green 3",
-        "Blue 3",
-        "White 3"
+        {
+          "repeatFor": "eachPixel",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Pan $pixelKey",
+            "Pan $pixelKey fine",
+            "Tilt $pixelKey",
+            "Tilt $pixelKey fine",
+            "Head Speed $pixelKey simple",
+            "Dimmer $pixelKey",
+            "Strobe $pixelKey",
+            "Color $pixelKey",
+            "Mode $pixelKey",
+            "Show mode speed / Sound sensitivity $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
       ]
     }
   ]

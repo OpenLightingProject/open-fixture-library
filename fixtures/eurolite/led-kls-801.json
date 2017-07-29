@@ -162,12 +162,6 @@
         }
       ]
     },
-    "Red 1": {
-      "type": "SingleColor",
-      "color": "Red",
-      "highlightValue": 255,
-      "crossfade": true
-    },
     "Running Speed": {
       "type": "Speed",
       "crossfade": true,
@@ -178,12 +172,6 @@
         }
       ]
     },
-    "Green 1": {
-      "type": "SingleColor",
-      "color": "Green",
-      "highlightValue": 255,
-      "crossfade": true
-    },
     "Fade Time": {
       "type": "Speed",
       "crossfade": true,
@@ -193,73 +181,31 @@
           "name": "slow-fast"
         }
       ]
-    },
-    "Blue 1": {
-      "type": "SingleColor",
-      "color": "Blue",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Red 2": {
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
       "type": "SingleColor",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
-    "Green 2": {
+    "Green $pixelKey": {
       "type": "SingleColor",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
-    "Blue 2": {
-      "type": "SingleColor",
-      "color": "Blue",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Red 3": {
-      "type": "SingleColor",
-      "color": "Red",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Green 3": {
-      "type": "SingleColor",
-      "color": "Green",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Blue 3": {
-      "type": "SingleColor",
-      "color": "Blue",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Red 4": {
-      "type": "SingleColor",
-      "color": "Red",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Green 4": {
-      "type": "SingleColor",
-      "color": "Green",
-      "highlightValue": 255,
-      "crossfade": true
-    },
-    "Blue 4": {
+    "Blue $pixelKey": {
       "type": "SingleColor",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     }
   },
-  "heads": {
-    "LED1": ["Red 1", "Green 1", "Blue 1"],
-    "LED2": ["Red 2", "Green 2", "Blue 2"],
-    "LED3": ["Red 3", "Green 3", "Blue 3"],
-    "LED4": ["Red 4", "Green 4", "Blue 4"]
+  "matrix": {
+    "layout": "line",
+    "pixelCount": [4, 0, 0]
   },
   "modes": [
     {
@@ -269,10 +215,18 @@
         "Preset programs",
         "Master Dimmer",
         "Strobe",
-        "Red 1 / Running Speed", "Green 1 / Fade Time", "Blue 1",
-        "Red 2", "Green 2", "Blue 2",
-        "Red 3", "Green 3", "Blue 3",
-        "Red 4", "Green 4", "Blue 4"
+        "Red 1 / Running Speed",
+        "Green 1 / Fade Time",
+        "Blue 1",
+        {
+          "repeatFor": ["1", "2", "3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     }
   ]
