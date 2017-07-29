@@ -11,9 +11,7 @@ const testFixtures = require('../test-fixtures.json').map(
 );
 
 pullRequest.init()
-.then(prData => {
-  return pullRequest.fetchChangedComponents();
-})
+.then(prData => pullRequest.fetchChangedComponents())
 .then(changedComponents => {
   let messagePromises = [];
 
@@ -24,22 +22,22 @@ pullRequest.init()
   }
   else {
     const plugins = changedComponents.added.exports.concat(changedComponents.modified.exports);
-    messagePromises = messagePromises.concat(plugins.map(
-      plugin => getPluginMessagePromise(plugin)
-    ));
+    for (const plugin of plugins) {
+      messagePromises.push(getPluginMessagePromise(plugin));
+    }
 
     // only export tests that are not covered by plugin tasks (which run all tests)
     const exportTests = changedComponents.added.exportTests.concat(changedComponents.modified.exportTests) // stored as [plugin, test]
       .filter(([plugin, test]) => !plugins.includes(plugin));
-    messagePromises = messagePromises.concat(exportTests.map(
-      ([plugin, test]) => getExportTestMessagePromise(plugin, test)
-    ));
+    for (const [plugin, test] of exportTests) {
+      messagePromises.push(getExportTestMessagePromise(plugin, test));
+    }
   }
 
   const fixtures = changedComponents.added.fixtures.concat(changedComponents.modified.fixtures);
-  messagePromises = messagePromises.concat(fixtures.map(
-    fixture => getFixtureMessagePromise(fixture)
-  ));
+  for (const fixture of fixtures) {
+    messagePromises.push(getFixtureMessagePromise(fixture));
+  }
 
   return Promise.all(messagePromises);
 })
@@ -72,7 +70,7 @@ function getModelMessagePromise() {
   return Promise.all(pluginListPromises)
   .then(pluginLists => {
     let modelMessageLines = ['## Model changed in this PR'];
-    modelMessageLines = appendTestFixturesInfo(modelMessageLines);
+    modelMessageLines = modelMessageLines.concat(getTestFixturesInfo(modelMessageLines));
 
     for (const pluginListLines of pluginLists) {
       modelMessageLines = modelMessageLines.concat(pluginListLines);
@@ -91,7 +89,7 @@ function getPluginMessagePromise(pluginKey) {
   return Promise.all(exportTestListPromises)
   .then(exportTestLists => {
     let pluginMessageLines = [`## Plugin \`${pluginKey}\` changed in this PR`];
-    pluginMessageLines = appendTestFixturesInfo(pluginMessageLines);
+    pluginMessageLines = pluginMessageLines.concat(getTestFixturesInfo(pluginMessageLines));
     
     for (const exportTestListLines of exportTestLists) {
       pluginMessageLines = pluginMessageLines.concat(exportTestListLines);
@@ -115,8 +113,8 @@ function getExportTestMessagePromise(pluginKey, testKey) {
   return Promise.all(fileResultPromises)
   .then(fileResults => {
     let exportTestMessageLines = [`## Export test \`${pluginKey}\`/\`${testKey}\` changed in this PR`];
-    exportTestMessageLines = appendTestFixturesInfo(exportTestMessageLines);
-    
+    exportTestMessageLines = exportTestMessageLines.concat(getTestFixturesInfo(exportTestMessageLines));
+
     for (const fileResultLines of fileResults) {
       exportTestMessageLines = exportTestMessageLines.concat(fileResultLines);
     }
@@ -142,13 +140,10 @@ function getFixtureMessagePromise(fixture) {
   });
 }
 
-function appendTestFixturesInfo(lines) {
-  return lines.concat(
-    pullRequest.getTestFixturesMessage(
-      testFixtures.map(fix => `${fix[0]}/${fix[1]}`)
-    ),
-    '### Test results'
-  );
+function getTestFixturesInfo(lines) {
+  return pullRequest.getTestFixturesMessage(
+    testFixtures.map(fix => `${fix[0]}/${fix[1]}`)
+  ).concat('### Test results');
 }
 
 

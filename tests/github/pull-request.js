@@ -15,7 +15,7 @@ const requiredEnvVars = [
   'TRAVIS_BRANCH',
   'TRAVIS_COMMIT'
 ];
-for (let envVar of requiredEnvVars) {
+for (const envVar of requiredEnvVars) {
   if (!(envVar in process.env)) {
     console.error(`Environment variable ${envVar} is required for this script. Please define it in your system or in the .env file.`);
     process.exit(1);
@@ -155,7 +155,6 @@ module.exports.updateComment = function updateComment(test) {
   ];
   lines = lines.concat(test.lines);
   const message = lines.join('\n');
-  console.log(message);
 
   let commentPromises = [];
   for (let i = 0; i < module.exports.data.comments / 100; i++) {
