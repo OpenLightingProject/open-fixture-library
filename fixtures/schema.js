@@ -25,7 +25,7 @@ const ISODate = schema(/^\d{4}-\d{2}-\d{2}$/);
 
 const Color = schema(/^#[0-9a-f]{6}$/);
 
-const DimensionsXYZ = Array.of(3, Number.above(0));
+const DimensionsXYZ = Array.of(3, Number.min(0));
 
 const Category = schema(['Blinder', 'Color Changer', 'Dimmer', 'Effect', 'Fan', 'Flower', 'Hazer', 'Laser', 'Moving Head', 'Scanner', 'Smoke', 'Strobe', 'Other']);
 
@@ -96,8 +96,8 @@ const TemplateChannelAliasKey = schema(/\$pixelKey/);
 
 const TemplateChannel = Channel;
 
-const PixelKey = String;
-const PixelGroupKey = String;
+const PixelKey = NonEmptyString;
+const PixelGroupKey = NonEmptyString;
 
 const PixelKeyArray1D = Array.of(1, Infinity, [PixelKey, null]); // null to allow spacing
 const PixelKeyArray2D = Array.of(1, Infinity, PixelKeyArray1D);
