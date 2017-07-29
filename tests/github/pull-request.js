@@ -180,7 +180,7 @@ module.exports.updateComment = function updateComment(test) {
 
         // the comment was created by this test script
         if (lines[0] === comment.body.split('\n')[0]) {
-          if (!equalFound && message === comment.body) {
+          if (!equalFound && message === comment.body && test.lines.length > 0) {
             equalFound = true;
             console.log(`Test comment with same content already exists at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
           }
@@ -196,7 +196,7 @@ module.exports.updateComment = function updateComment(test) {
       }
     }
 
-    if (!equalFound) {
+    if (!equalFound && test.lines.length > 0) {
       console.log(`Creating test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
       github.issues.createComment({
         owner: repoOwner,

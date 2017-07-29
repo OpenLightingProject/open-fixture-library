@@ -32,10 +32,6 @@ pullRequest.init()
     lines = lines.concat(getFixtureMessage(allPlugins, `${fixture[0]}/${fixture[1]}`));
   }
 
-  if (lines.length === 0) {
-    lines.push('Model, plugins and fixtures not modified.');
-  }
-
   return pullRequest.updateComment({
     filename: path.relative(path.join(__dirname, '../../'), __filename),
     name: 'Plugin export diff',

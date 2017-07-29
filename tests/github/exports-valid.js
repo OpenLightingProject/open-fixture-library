@@ -42,13 +42,17 @@ pullRequest.init()
   return Promise.all(messagePromises);
 })
 .then(messages => {
-  let lines = [
-    'Test the exported files of selected fixtures against the plugins\' export tests.',
-    ''
-  ];
+  let lines = [];
 
-  for (const messageLines of messages) {
-    lines = lines.concat(messageLines, '');
+  if (messages.length > 0) {
+    lines.push(
+      'Test the exported files of selected fixtures against the plugins\' export tests.',
+      ''
+    );
+    
+    for (const messageLines of messages) {
+      lines = lines.concat(messageLines, '');
+    }
   }
 
   return pullRequest.updateComment({
