@@ -1,5 +1,7 @@
 #!/usr/bin/node
 
+const path = require('path');
+
 const diffPluginOutputs = require('../../lib/diff-plugin-outputs.js');
 const exportPlugins = Object.keys(require('../../plugins/plugins.js').export);
 const pullRequest = require('./pull-request.js');
@@ -76,7 +78,7 @@ pullRequest.init()
   }
 
   return pullRequest.updateComment({
-    key: 'export-diff',
+    filename: path.relative(path.join(__dirname, '../../'), __filename),
     name: 'Plugin export diff',
     lines: lines
   });

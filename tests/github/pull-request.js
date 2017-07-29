@@ -140,30 +140,20 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
 
 /**
  * test is an object of this structure: {
- *   key: 'unique-test-key',
+ *   filename: 'tests/github/test-file-name.js',
  *   name: 'shown test name',
  *   lines: 'test message'
  * }
  */
 module.exports.updateComment = function updateComment(test) {
-  const commentBeginning = `<!-- GITHUB-TEST: ${test.key} -->`;
-
   let lines = [
-    commentBeginning,
-    `Last updated at ${new Date(Date.now()).toLocaleString()} with commit ${process.env.TRAVIS_COMMIT}.`,
+    `<!-- GITHUB-TEST: ${test.filename} -->`,
     `# ${test.name}`,
+    `(Output of test script \`${test.filename}\`.)`,
     ''
   ];
   lines = lines.concat(test.lines);
   const message = lines.join('\n');
-
-  console.log(`Creating test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}`);
-  github.issues.createComment({
-    owner: repoOwner,
-    repo: repoName,
-    number: process.env.TRAVIS_PULL_REQUEST,
-    body: message
-  });
 
   let commentPromises = [];
   for (let i = 0; i < module.exports.data.comments / 100; i++) {
@@ -180,18 +170,39 @@ module.exports.updateComment = function updateComment(test) {
   
   return Promise.all(commentPromises)
   .then(commentBlocks => {
+    let equalFound = false;
+
     for (const block of commentBlocks) {
       for (const comment of block.data) {
-        // this comment was created by this test script
-        if (comment.body.startsWith(commentBeginning)) {
-          console.log(`Deleting old test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}`);
-          github.issues.deleteComment({
-            owner: repoOwner,
-            repo: repoName,
-            id: comment.id
-          });
+        // get rid of \r linebreaks
+        comment.body = comment.body.replace(/\r/g, '');
+
+        // the comment was created by this test script
+        if (lines[0] === comment.body.split('\n')[0]) {
+          if (!equalFound && message === comment.body) {
+            equalFound = true;
+            console.log(`Test comment with same content already exists at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
+          }
+          else {
+            console.log(`Deleting old test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
+            github.issues.deleteComment({
+              owner: repoOwner,
+              repo: repoName,
+              id: comment.id
+            });
+          }
         }
       }
+    }
+
+    if (!equalFound) {
+      console.log(`Creating test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
+      github.issues.createComment({
+        owner: repoOwner,
+        repo: repoName,
+        number: process.env.TRAVIS_PULL_REQUEST,
+        body: message
+      });
     }
   });
 };

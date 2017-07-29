@@ -1,5 +1,7 @@
 #!/usr/bin/node
 
+const path = require('path');
+
 const Fixture = require('../../lib/model/Fixture.js');
 const pullRequest = require('./pull-request.js');
 
@@ -72,7 +74,7 @@ pullRequest.init()
 
   console.log(lines.join('\n'));
   return pullRequest.updateComment({
-    key: 'exports-valid',
+    filename: path.relative('../../', __filename),
     name: 'Exports valid',
     lines: lines
   });
@@ -89,7 +91,7 @@ function getPromise(fixtures) {
 function getPluginPromise(pluginKey, fixtures) {
   const plugin = plugins[pluginKey];
   return Promise.all(Object.keys(plugin.exportTests).map(
-    testKey => getExportTestPromises(pluginKey, testKey, fixtures)
+    testKey => getExportTestPromise(pluginKey, testKey, fixtures)
   ))
   .then(results => ({
     name: pluginKey,
