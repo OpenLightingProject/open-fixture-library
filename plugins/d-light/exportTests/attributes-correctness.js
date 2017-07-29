@@ -6,7 +6,7 @@ module.exports = function testAttributesCorrectness(exportFileData) {
 
     parser.parseString(exportFileData, (parseError, xml) => {
       if (parseError) {
-        return reject(`Error parsing XML: ` + parseError.toString());
+        return reject('Error parsing XML: ' + parseError.toString());
       }
 
       let errors = [];
@@ -32,5 +32,5 @@ module.exports = function testAttributesCorrectness(exportFileData) {
       }
       return resolve();
     });
-  })
+  });
 };

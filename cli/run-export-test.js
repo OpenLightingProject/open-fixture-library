@@ -1,5 +1,4 @@
 #!/usr/bin/node
-const fs = require('fs');
 const path = require('path');
 const minimist = require('minimist');
 const colors = require('colors');
@@ -46,7 +45,7 @@ for (const testKey of Object.keys(plugin.exportTests)) {
 
   Promise.all(filePromises)
   .then(fileLines => {
-    console.log(colors.yellow(`Test ${testKey}`))
+    console.log(colors.yellow(`Test ${testKey}`));
     console.log(fileLines.concat('').join('\n'));
   });
 }

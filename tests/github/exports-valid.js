@@ -57,7 +57,7 @@ pullRequest.init()
 
   return pullRequest.updateComment({
     filename: path.relative(path.join(__dirname, '../../'), __filename),
-    name: 'Exports valid',
+    name: 'Export files validity',
     lines: lines
   });
 })
@@ -197,7 +197,7 @@ function getFileResultPromise(test, file, indent = '') {
     return [`${indent}- :white_check_mark: ${file.name}`];
   })
   .catch(err => {
-    const errors = Array.isArray(err) ? err : [err]
+    const errors = Array.isArray(err) ? err : [err];
     
     let fileResultLines = [
       `${indent}- :x: ${file.name}`,
