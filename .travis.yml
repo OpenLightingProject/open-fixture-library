@@ -3,10 +3,11 @@ node_js:
   #- "node" # latest
   - "6"
 env:
-  - TESTFILE=tests/fixtures_valid.js
-  - TESTFILE=tests/http_status.js
-  - TESTFILE=tests/register_correct.js
-  - TESTFILE=tests/github-plugin-diff.js
+  - TESTFILE=tests/fixtures-valid.js
+  - TESTFILE=tests/http-status.js
+  - TESTFILE=tests/register-correct.js
+  - TESTFILE=tests/github/export-diff.js
+  - TESTFILE=tests/github/exports-valid.js
 script:
   - NODE_ENV=production node "$TESTFILE"
 cache:
