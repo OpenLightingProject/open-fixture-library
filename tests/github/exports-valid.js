@@ -169,10 +169,25 @@ function getResultMessage(result, indent = '') {
     }
   }
   else {
-    lines.push(
-      `${indent}-` +
-      (result.result.passed ? ' :white_check_mark: ' : ' :x: ') +
-      result.name);
+    if (result.result.passed) {
+      lines.push(`${indent}- :white_check_mark: ${result.name}`);
+    }
+    else {
+      lines.push(
+        `${indent}- :x: ${result.name}`,
+        `${indent}  <details>`,
+        `${indent}  <summary>Show errors</summary>`,
+        `${indent}  <ul>`
+      );
+      for (const error of result.result.errors) {
+        const errorText = error.replace('\n', '');
+        lines.push(`${indent}  <li>${errorText}</li>`);
+      }
+      lines.push(
+        `${indent}  </ul>`,
+        `${indent}  </details>`
+      );
+    }
   }
 
   return lines;
