@@ -31,12 +31,11 @@ for (const testKey of Object.keys(plugin.exportTests)) {
   const test = plugin.exportTests[testKey];
   const filePromises = files.map(file =>
     test(file.content)
-    .then(() => {
-      return colors.green('[PASS] ') + file.name;
-    })
+    .then(() => colors.green('[PASS] ') + file.name)
     .catch(err => {
       let lines = [colors.red('[FAIL] ') + file.name];
-      for (const error of Array.isArray(err) ? err : [err]) {
+      const errors = Array.isArray(err) ? err : [err];
+      for (const error of errors) {
         lines.push(`- ${error}`);
       }
       return lines.join('\n');
