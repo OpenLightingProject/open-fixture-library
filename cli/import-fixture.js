@@ -9,15 +9,13 @@ const importPlugins = require('../plugins/plugins.js').import;
 
 const args = minimist(process.argv.slice(2), {
   boolean: 'p',
-  alias: { p: 'pr' }
+  alias: { p: 'plugin' }
 });
 
-const selectedPlugin = args._[0];
-const filename = args._[1];
-const makePR = args.pr;
+const filename = args._[0];
 
-if (args._.length !== 2 || !(selectedPlugin in importPlugins)) {
-  console.error(`Usage: ${process.argv[1]} <plugin> <filename> [--pr]\n\navailable plugins: ${Object.keys(importPlugins).join(', ')}`);
+if (args._.length !== 1 || !(args.plugin in importPlugins)) {
+  console.error(`Usage: ${process.argv[1]} -p <plugin> <filename> [--pr]\n\navailable plugins: ${Object.keys(importPlugins).join(', ')}`);
   process.exit(1);
 }
 
@@ -29,7 +27,7 @@ fs.readFile(filename, 'utf8', (error, data) => {
   }
 
   new Promise((resolve, reject) => {
-    importPlugins[selectedPlugin].import(data, filename, resolve, reject);
+    importPlugins[args.plugin].import(data, filename, resolve, reject);
   }).then(result => {
     result.errors = {};
 
@@ -41,7 +39,7 @@ fs.readFile(filename, 'utf8', (error, data) => {
     }
 
     console.log(JSON.stringify(result, null, 2));
-    if (makePR) {
+    if (args.pr) {
       createPullRequest(result, (error, pullRequestUrl) => {
         if (error) {
           console.error('cli Error: ' + error);
