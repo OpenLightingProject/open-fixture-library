@@ -57,7 +57,7 @@ pullRequest.init()
 
   return pullRequest.updateComment({
     filename: path.relative(path.join(__dirname, '../../'), __filename),
-    name: 'Exports valid',
+    name: 'Export files validity',
     lines: lines
   });
 })
@@ -193,10 +193,11 @@ function getExportTestListPromise(plugin, testKey, fixtures, indent = '') {
 
 function getFileResultPromise(test, file, indent = '') {
   return test(file.content)
-  .then(testResult => {
-    if (testResult.passed) {
-      return [`${indent}- :white_check_mark: ${file.name}`];
-    }
+  .then(() => {
+    return [`${indent}- :white_check_mark: ${file.name}`];
+  })
+  .catch(err => {
+    const errors = Array.isArray(err) ? err : [err];
     
     let fileResultLines = [
       `${indent}- :x: ${file.name}`,
@@ -205,7 +206,7 @@ function getFileResultPromise(test, file, indent = '') {
       `${indent}  <ul>`
     ];
 
-    for (const error of testResult.errors) {
+    for (const error of errors) {
       const errorText = error.replace('\n', '');
       fileResultLines.push(`${indent}  <li>${errorText}</li>`);
     }

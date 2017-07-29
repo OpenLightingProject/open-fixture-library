@@ -16,7 +16,7 @@ module.exports.export = function exportQLCplus(fixtures, options) {
         FixtureDefinition: {
           '@xmlns': 'http://www.qlcplus.org/FixtureDefinition',
           Creator: {
-            Name: `Open Fixture Library ${module.exports.name} plugin`,
+            Name: `OFL – ${fixture.url}`,
             Version: module.exports.version,
             Author: fixture.meta.authors.join(', ')
           },
