@@ -98,7 +98,7 @@ function getPluginMessagePromise(pluginKey) {
     }
 
     return pluginMessageLines;
-  })
+  });
 }
 
 function getExportTestMessagePromise(pluginKey, testKey) {
@@ -122,7 +122,7 @@ function getExportTestMessagePromise(pluginKey, testKey) {
     }
 
     return exportTestMessageLines;
-  })
+  });
 }
 
 function getFixtureMessagePromise(fixture) {
@@ -167,7 +167,7 @@ function getPluginListPromise(pluginKey, fixtures) {
     }
 
     return pluginListLines;
-  })
+  });
 }
 
 function getExportTestListPromise(plugin, testKey, fixtures, indent = '') {
@@ -189,7 +189,7 @@ function getExportTestListPromise(plugin, testKey, fixtures, indent = '') {
     }
 
     return exportTestLines;
-  })
+  });
 }
 
 function getFileResultPromise(test, file, indent = '') {
