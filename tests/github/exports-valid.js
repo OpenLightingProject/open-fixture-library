@@ -1,7 +1,5 @@
 #!/usr/bin/node
 
-const colors = require('colors');
-
 const Fixture = require('../../lib/model/Fixture.js');
 const pullRequest = require('./pull-request.js');
 
@@ -23,7 +21,7 @@ pullRequest.init()
     validateTasks.push({
       type: 'model',
       promise: getPromise(testFixtures)
-    })
+    });
   }
   else {
     const plugins = changedComponents.added.exports.concat(changedComponents.modified.exports);
@@ -99,7 +97,7 @@ function getPluginPromise(pluginKey, fixtures) {
   }));
 }
 
-function getExportTestPromises(pluginKey, testKey, fixtures) {
+function getExportTestPromise(pluginKey, testKey, fixtures) {
   return Promise.all(fixtures.map(
     fix => getFixturePromise(pluginKey, testKey, fix[0], fix[1])
   ))

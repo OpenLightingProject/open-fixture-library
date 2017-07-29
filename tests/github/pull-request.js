@@ -56,7 +56,7 @@ module.exports.init = function init() {
     module.exports.data = pr.data;
     return this.data;
   });
-}
+};
 
 module.exports.fetchChangedComponents = function getChangedComponents() {
   // fetch changed files in 100er blocks
@@ -110,18 +110,18 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
           continue;
         }
 
-        if (segments[0] === 'plugin' && segments[2] === 'import.js') {
+        if (segments[0] === 'plugins' && segments[2] === 'import.js') {
           changedData.imports.push(segments[1]);
           continue;
         }
 
-        if (segments[0] === 'plugin' && segments[2] === 'export.js') {
+        if (segments[0] === 'plugins' && segments[2] === 'export.js') {
           changedData.exports.push(segments[1]);
           continue;
         }
 
-        if (segments[0] === 'plugin' && segments[2] === 'exportTests') {
-          changedData.exportTests.push([segmenst[1], segments[3]]);
+        if (segments[0] === 'plugins' && segments[2] === 'exportTests') {
+          changedData.exportTests.push([segments[1], segments[3]]);
           continue;
         }
 
@@ -136,10 +136,10 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
 
     return changedComponents;
   });
-}
+};
 
 /**
- * test is an object of this structere: {
+ * test is an object of this structure: {
  *   key: 'unique-test-key',
  *   name: 'shown test name',
  *   lines: 'test message'
@@ -172,7 +172,7 @@ module.exports.updateComment = function updateComment(test) {
         owner: repoOwner,
         repo: repoName,
         number: process.env.TRAVIS_PULL_REQUEST,
-        per_page: 100,
+        'per_page': 100,
         page: i
       })
     );
@@ -194,4 +194,4 @@ module.exports.updateComment = function updateComment(test) {
       }
     }
   });
-}
+};

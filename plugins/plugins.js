@@ -24,7 +24,6 @@ for (const pluginKey of fs.readdirSync(__dirname)) {
   catch (error) {
     console.info(error.message);
   }
-  console.log(pluginPath, pluginKey);
   
   const exportPath = path.join(pluginPath, 'export.js');
   try {
