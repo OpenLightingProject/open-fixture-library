@@ -121,14 +121,17 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
         }
 
         if (segments[0] === 'plugins' && segments[2] === 'exportTests') {
-          changedData.exportTests.push([segments[1], segments[3]]);
+          changedData.exportTests.push([
+            segments[1], // plugin key
+            segments[3].split('.')[0] // test key
+          ]);
           continue;
         }
 
         if (segments[0] === 'fixtures' && segments.length === 3) {
           changedData.fixtures.push([
-            segments[1],
-            path.basename(segments[2], path.extname(segments[2]))
+            segments[1], // man key
+            segments[2].split('.')[0] // fix key
           ]);
         }
       }
@@ -154,6 +157,7 @@ module.exports.updateComment = function updateComment(test) {
   ];
   lines = lines.concat(test.lines);
   const message = lines.join('\n');
+  console.log(message);
 
   let commentPromises = [];
   for (let i = 0; i < module.exports.data.comments / 100; i++) {
@@ -206,3 +210,10 @@ module.exports.updateComment = function updateComment(test) {
     }
   });
 };
+
+module.exports.getTestFixturesMessage = function getTestFixturesMessage(fixtures) {
+  let lines = [];
+  lines.push('Tested with the following test fixtures that provide a possibly wide variety of different fixture features:');
+  lines = lines.concat(fixtures.map(fix => `- ${fix}`), '');
+  return lines;
+}

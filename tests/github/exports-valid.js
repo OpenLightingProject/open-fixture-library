@@ -57,7 +57,7 @@ pullRequest.init()
   const messagePromises = validateTasks.map(task => {
     return task.promise
     .then(results => {
-      return getTaskMessage(task, results);
+      return getTaskMessage(task, results.results);
     })
   });
   return Promise.all(messagePromises);
@@ -72,9 +72,8 @@ pullRequest.init()
     lines = lines.concat(message);
   }
 
-  console.log(lines.join('\n'));
   return pullRequest.updateComment({
-    filename: path.relative('../../', __filename),
+    filename: path.relative(path.join(__dirname, '../../'), __filename),
     name: 'Exports valid',
     lines: lines
   });
@@ -85,7 +84,13 @@ pullRequest.init()
 });
 
 function getPromise(fixtures) {
-  return Promise.all(Object.keys(plugins).map(plugin => getPluginPromise(plugin, fixtures)));
+  return Promise.all(Object.keys(plugins).map(plugin => getPluginPromise(plugin, fixtures)))
+  .then(results => {
+    return {
+      name: 'model',
+      results: results
+    }
+  });
 }
 
 function getPluginPromise(pluginKey, fixtures) {
@@ -93,36 +98,31 @@ function getPluginPromise(pluginKey, fixtures) {
   return Promise.all(Object.keys(plugin.exportTests).map(
     testKey => getExportTestPromise(pluginKey, testKey, fixtures)
   ))
-  .then(results => ({
-    name: pluginKey,
-    results: results
-  }));
+  .then(results => {
+    return {
+      name: pluginKey,
+      results: results
+    }
+  });
 }
 
 function getExportTestPromise(pluginKey, testKey, fixtures) {
-  return Promise.all(fixtures.map(
-    fix => getFixturePromise(pluginKey, testKey, fix[0], fix[1])
-  ))
-  .then(results => ({
-    name: testKey,
-    results: results
-  }));
-}
-
-function getFixturePromise(pluginKey, testKey, manKey, fixKey) {
   const plugin = plugins[pluginKey];
   const exportTest = plugin.exportTests[testKey];
-  const fixture = Fixture.fromRepository(manKey, fixKey);
-  const files = plugin.export.export([fixture]);
+  const files = plugin.export.export(fixtures.map(
+    ([manKey, fixKey]) => Fixture.fromRepository(manKey, fixKey)
+  ));
 
   return Promise.all(files.map(file => exportTest(file.content)))
-  .then(results => ({
-    name: `${manKey}/${fixKey}`,
-    results: files.map((file, index) => ({
-      name: file.name,
-      result: results[index]
-    }))
-  }));
+  .then(results => {
+    return {
+      name: testKey,
+      results: files.map((file, index) => ({
+        name: file.name,
+        result: results[index]
+      }))
+    };
+  });
 }
 
 function getTaskMessage(task, results) {
@@ -144,6 +144,13 @@ function getTaskMessage(task, results) {
       lines.push(`## Fixture \`${task.fixture[0]}/${task.fixture[1]}\` changed in this PR`);
   }
 
+  if (task.type !== 'fixture') {
+    lines = lines.concat(pullRequest.getTestFixturesMessage(
+      testFixtures.map(([man, fix]) => `${man}/${fix}`)
+    ));
+  }
+
+  lines.push('### Test results');
   for (const result of results) {
     lines = lines.concat(getResultMessage(result));
   }
