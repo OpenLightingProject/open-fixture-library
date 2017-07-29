@@ -6,7 +6,7 @@ const util = require('util');
 const colors = require('colors');
 
 const schemas = require('../fixtures/schema.js');
-const checkFixture = require('./fixture_valid.js').checkFixture;
+const checkFixture = require('./fixture-valid.js').checkFixture;
 
 let usedShortNames = [];
 
