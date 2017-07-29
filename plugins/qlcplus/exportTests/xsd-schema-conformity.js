@@ -36,16 +36,5 @@ module.exports = function testSchemaConformity(exportFileData) {
         }
       });
     });
-  })
-  .then(() => {
-    return {
-      passed: true
-    };
-  })
-  .catch(errors => {
-    return {
-      passed: false,
-      errors: Array.isArray(errors) ? errors : [errors]
-    };
   });
 };
