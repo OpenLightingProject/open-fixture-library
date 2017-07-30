@@ -16,13 +16,13 @@ module.exports.export = function exportQLCplus(fixtures, options) {
         FixtureDefinition: {
           '@xmlns': 'http://www.qlcplus.org/FixtureDefinition',
           Creator: {
-            Name: `Open Fixture Library ${module.exports.name} plugin`,
+            Name: `OFL – ${fixture.url}`,
             Version: module.exports.version,
             Author: fixture.meta.authors.join(', ')
           },
           Manufacturer: fixture.manufacturer.name,
           Model: fixture.name,
-          Type: fixture.mainCategory
+          Type: getFixtureType(fixture)
         }
       });
 
@@ -193,6 +193,12 @@ function addHead(xmlMode, mode, headChannels) {
   }
 }
 
+function getFixtureType(fixture) {
+  if (fixture.mainCategory === 'Blinder') {
+    return fixture.categories[1] || 'Other';
+  }
+  return fixture.mainCategory;
+}
 
 // converts a Channel's type into a valid QLC+ channel type
 function getChannelType(channel) {
