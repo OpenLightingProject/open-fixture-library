@@ -63,7 +63,7 @@ pullRequest.init()
 })
 .catch(error => {
   console.error(error);
-  process.exit(0);
+  process.exit(1);
 });
 
 function getModelMessagePromise() {
