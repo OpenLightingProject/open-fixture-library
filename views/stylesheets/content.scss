@@ -29,9 +29,13 @@
   &.light-green {
     background: $light-green-500;
   }
-
+  
   &.blue {
     background: $blue-500;
+  }
+    
+  &.orange {
+    background: $orange-500;
   }
 }
 
@@ -72,11 +76,12 @@
   }
 }
 
-a.card, .list a {
+a.card, .link, .list a {
   transition: background-color .2s, fill .2s;
   text-decoration: none;
   color: $primary-text-dark;
   display: block;
+  cursor: pointer;
 
   &:hover,
   &:focus {
@@ -95,6 +100,10 @@ a.card, .list a {
     &.blue {
       background-color: $blue-600;
     }
+
+    &.orange {
+      background-color: $orange-600;
+    }
   }
 
   &:active {
@@ -106,6 +115,10 @@ a.card, .list a {
 
     &.blue {
       background-color: $blue-700;
+    }
+
+    &.orange {
+      background-color: $orange-700;
     }
   }
 }
