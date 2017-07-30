@@ -37,7 +37,7 @@ module.exports.export = function exportQLCplus(fixtures, options) {
 
     xml.doctype('');
     return {
-      name: sanitize(fixture.manufacturer.name + '-' + fixture.name + '.qxf').replace(/ /g, '-'),
+      name: sanitize(fixture.manufacturer.name + '-' + fixture.name + '.qxf').replace(/\s+/g, '-'),
       content: xml.end({
         pretty: true,
         indent: ' '
