@@ -164,33 +164,11 @@ function checkCapabilities(channel, mustBe8Bit) {
 
   for (let i = 0; i < channel.capabilities.length; i++) {
     const cap = channel.capabilities[i];
-    const prevCap = i > 0 ? channel.capabilities[i-1] : null;
-
+    
     // if one of the previous capabilities had an invalid range,
     // it doesn't make sense to check later ranges
     if (!rangesInvalid) {
-      if (i === 0 && cap.range.start !== 0) {
-        result.errors.push(`The first range has to start at 0 in capability '${cap.name}' (#${i+1}) in channel '${channel.key}'.`);
-        rangesInvalid = true;
-      }
-      else if (cap.range.start > cap.range.end) {
-        result.errors.push(`range invalid in capability '${cap.name}' (#${i+1}) in channel '${channel.key}'.`);
-        rangesInvalid = true;
-      }
-      else if (i > 0 && cap.range.start !== prevCap.range.end + 1) {
-        result.errors.push(`ranges must be adjacent in capabilities '${prevCap.name}' (#${i}) and '${cap.name}' (#${i+1}) in channel '${channel.key}'.`);
-        rangesInvalid = true;
-      }
-      else if (i === channel.capabilities.length - 1) {
-        const rawRangeEnd = channel.jsonObject.capabilities[i].range[1];
-        
-        if (rawRangeEnd !== 255 && mustBe8Bit) {
-          result.errors.push(`The last range has to end at 255 in capability '${cap.name}' (#${i+1}), because channel '${channel.key}' is used in coarse only mode.`);
-        }
-        else if (rawRangeEnd !== 255 && rawRangeEnd !== channel.maxDmxBound) {
-          result.errors.push(`The last range has to end at either 255 or ${channel.maxDmxBound} in capability '${cap.name}' (#${i+1}) in channel '${channel.key}'.`);
-        }
-      }
+      rangesInvalid = !checkCapabilities(cap, i, channel);
     }
 
     if ((cap.color || cap.image) && !['MultiColor', 'Effect', 'Gobo'].includes(channel.type)) {
@@ -222,6 +200,41 @@ function checkCapabilities(channel, mustBe8Bit) {
   }
 }
 
+function checkRange(cap, capNumber, channel) {
+  const prevCap = capNumber > 0 ? channel.capabilities[capNumber-1] : null;
+
+  if (capNumber === 0 && cap.range.start !== 0) {
+    result.errors.push(`The first range has to start at 0 in capability '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'.`);
+    return false;
+  }
+
+  if (cap.range.start > cap.range.end) {
+    result.errors.push(`range invalid in capability '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'.`);
+    return false;
+  }
+
+  if (capNumber > 0 && cap.range.start !== prevCap.range.end + 1) {
+    result.errors.push(`ranges must be adjacent in capabilities '${prevCap.name}' (#${capNumber}) and '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'.`);
+    return false;
+  }
+
+  if (capNumber === channel.capabilities.length - 1) {
+    const rawRangeEnd = channel.jsonObject.capabilities[capNumber].range[1];
+    
+    if (rawRangeEnd !== 255 && mustBe8Bit) {
+      result.errors.push(`The last range has to end at 255 in capability '${cap.name}' (#${capNumber+1}), because channel '${channel.key}' is used in coarse only mode.`);
+      return false;
+    }
+
+    if (rawRangeEnd !== 255 && rawRangeEnd !== channel.maxDmxBound) {
+      result.errors.push(`The last range has to end at either 255 or ${channel.maxDmxBound} in capability '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'.`);
+      return false;
+    }
+  }
+
+  return true;
+}
+
 function checkMode(mode) {
   if (modeShortNames.includes(mode.shortName)) {
     result.errors.push(`Mode shortName '${mode.shortName}' not unique.`);
@@ -236,8 +249,8 @@ function checkMode(mode) {
 
   let modeChannelKeyCount = {};
 
-  for (const chKey of mode.channelKeys) {
-    checkModeChannelReference(chKey, mode, modeChannelKeyCount);
+  for (let i = 0; i < mode.jsonObject.channels.length; i++) {
+    checkModeChannelReference(i, mode, modeChannelKeyCount);
   }
 
   const duplicateChannelReferences = Object.keys(modeChannelKeyCount).filter(
@@ -248,9 +261,15 @@ function checkMode(mode) {
   }
 }
 
-function checkModeChannelReference(chKey, mode, modeChKeyCount) {
-  const channel = mode.fixture.getChannelByKey(chKey);
+function checkModeChannelReference(chNumber, mode, modeChKeyCount) {
+  const chKey = mode.jsonObject.channels[chNumber];
 
+  if (typeof chKey !== 'string') {
+    checkMatrixReference(chKey, modeChKeyCount);
+    return;
+  }
+
+  const channel = mode.fixture.getChannelByKey(chKey);
   if (channel === null) {
     result.errors.push(`Channel '${chKey}' is referenced from mode '${mode.shortName}' but is not defined.`);
     return;
@@ -264,25 +283,7 @@ function checkModeChannelReference(chKey, mode, modeChKeyCount) {
   modeChKeyCount[channel.key] = (modeChKeyCount[channel.key] || 0) + 1;
 
   if (channel instanceof SwitchingChannel) {
-    // the mode must also contain the trigger channel
-    if (mode.getChannelIndex(channel.triggerChannel) === -1) {
-      result.errors.push(`mode '${mode.shortName}' uses switching channel '${channel.key}' but is missing its trigger channel '${channel.triggerChannel.key}'`);
-    }
-
-    // if the channel can be switched to a fine channel, the mode must also contain coarser channels
-    for (const switchToChannel of channel.switchToChannels) {
-      if (switchToChannel === null) {
-        // already raised an issue when switching channel was defined
-        continue;
-      }
-
-      modeChKeyCount[switchToChannel.key] = (modeChKeyCount[switchToChannel.key] || 0) + 1;
-
-      if (switchToChannel instanceof FineChannel) {
-        checkCoarserChannelsInMode(switchToChannel, mode);
-      }
-    }
-
+    checkSwitchingChannelReference(channel, mode, modeChKeyCount);
     return;
   }
 
@@ -293,6 +294,31 @@ function checkModeChannelReference(chKey, mode, modeChKeyCount) {
 
   if (channel.type === 'Pan' || channel.type === 'Tilt') {
     checkPanTiltMaxInPhysical(channel, mode);
+  }
+}
+
+function checkMatrixReference(reference, modeChKeyCount) {
+  // TODO
+}
+
+function checkSwitchingChannelReference(channel, mode, modeChKeyCount) {
+  // the mode must also contain the trigger channel
+  if (mode.getChannelIndex(channel.triggerChannel) === -1) {
+    result.errors.push(`mode '${mode.shortName}' uses switching channel '${channel.key}' but is missing its trigger channel '${channel.triggerChannel.key}'`);
+  }
+
+  // if the channel can be switched to a fine channel, the mode must also contain coarser channels
+  for (const switchToChannel of channel.switchToChannels) {
+    if (switchToChannel === null) {
+      // already raised an issue when switching channel was defined
+      continue;
+    }
+
+    modeChKeyCount[switchToChannel.key] = (modeChKeyCount[switchToChannel.key] || 0) + 1;
+
+    if (switchToChannel instanceof FineChannel) {
+      checkCoarserChannelsInMode(switchToChannel, mode);
+    }
   }
 }
 
