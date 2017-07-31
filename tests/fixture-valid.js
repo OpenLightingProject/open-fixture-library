@@ -168,7 +168,7 @@ function checkCapabilities(channel, mustBe8Bit) {
     // if one of the previous capabilities had an invalid range,
     // it doesn't make sense to check later ranges
     if (!rangesInvalid) {
-      rangesInvalid = !checkCapabilities(cap, i, channel);
+      rangesInvalid = !checkRange(cap, i, channel);
     }
 
     if ((cap.color || cap.image) && !['MultiColor', 'Effect', 'Gobo'].includes(channel.type)) {
