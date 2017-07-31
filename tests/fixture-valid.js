@@ -11,6 +11,7 @@ let result;
 let fixture;
 let definedChannelKeys; // and aliases
 let usedChannelKeys; // and aliases
+let modeShortNames;
 
 module.exports = function checkFixture(manKey, fixKey, fixtureJson, usedShortNames=[]) {
   result = {
@@ -61,7 +62,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, usedShortNam
   checkUnusedChannels();
 
   return result;
-}
+};
 
 function checkMeta(meta) {
   if (meta.lastModifyDate < meta.createDate) {
@@ -112,7 +113,7 @@ function checkChannel(channel) {
   let testFineChannelOverlapping = false;
   if (channel.fineChannelAliases.length > 0) {
     for (const alias of channel.fineChannelAliases) {
-      if (alias in definedChannelKeys) {
+      if (definedChannelKeys.includes(alias)) {
         result.errors.push(`Fine channel alias '${alias}' in channel '${channel.key}' is already defined.`);
       }
       definedChannelKeys.push(alias);
@@ -168,7 +169,7 @@ function checkCapabilities(channel, testFineChannelOverlapping) {
     // if one of the previous capabilities had an invalid range,
     // it doesn't make sense to check later ranges
     if (!rangesInvalid) {
-      if (cap.range.start > channel.maxDmxBound) {
+      if (cap.range.end > channel.maxDmxBound) {
         result.errors.push(`range values must be less or equal to ${channel.maxDmxBound} in capability '${cap.name}' (#${i+1}) in channel '${channel.key}'.`);
         rangesInvalid = true;
       }
@@ -200,16 +201,21 @@ function checkCapabilities(channel, testFineChannelOverlapping) {
     }
 
     if (cap.color && cap.image) {
-      result.errors.push(`color and image cannot be present at the same time in capability '${cap.name}' (#${i+1}) in channel '${ch}'.`);
+      result.errors.push(`color and image cannot be present at the same time in capability '${cap.name}' (#${i+1}) in channel '${channel.key}'.`);
     }
 
     const switchingChannelAliases = Object.keys(cap.switchChannels);
     if (!arraysEqual(switchingChannelAliases, channel.switchingChannelAliases)) {
-      result.errors.push(`Capability '${cap.name}' (#${i+1}) must define the same switching channel aliases as all other capabilities.`);
+      result.errors.push(`Capability '${cap.name}' (#${i+1}) must define the same switching channel aliases as all other capabilities in channel '${channel.key}'.`);
     }
     else {
       for (const alias of switchingChannelAliases) {
-        usedChannelKeys.push(switchingChannelAliases[alias]);
+        const chKey = cap.switchChannels[alias];
+        usedChannelKeys.push(chKey);
+
+        if (channel.fixture.getChannelByKey(chKey) === null) {
+          result.errors.push(`Channel '${chKey}' is referenced from capability '${cap.name}' (#${i+1}) in channel '${channel.key}' but is not defined.`);
+        }
       }
     }
   }
@@ -225,7 +231,7 @@ function checkMode(mode) {
     result.errors.push(`Mode name and shortName must not contain the word 'mode' in mode '${mode.shortName}'.`);
   }
 
-  checkPhysical(mode.physical, ` in mode '${mode.shortName}'`);
+  checkPhysical(mode.physicalOverride, ` in mode '${mode.shortName}'`);
 
   for (const chKey of mode.channelKeys) {
     const channel = mode.fixture.getChannelByKey(chKey);
@@ -247,9 +253,6 @@ function checkMode(mode) {
     }
 
     if (channel instanceof SwitchingChannel) {
-      console.log("switching channel!");
-      console.log(channel.key);
-
       // the mode must also contain the trigger channel
       if (mode.getChannelIndex(channel.triggerChannel) === -1) {
         result.errors.push(`mode '${mode.shortName}' uses switching channel '${channel.key}' but is missing its trigger channel '${channel.triggerChannel.key}'`);
@@ -263,6 +266,10 @@ function checkMode(mode) {
       }
 
       continue;
+    }
+
+    if (channel.type === 'Pan' || channel.type === 'Tilt') {
+      checkPanTiltMaxInPhysical(channel, mode);
     }
   }
 }
@@ -279,6 +286,18 @@ function checkCoarserChannelsInMode(channel, mode) {
 
   if (notInMode.length > 0) {
     result.errors.push(`Mode '${mode.shortName}' contains the fine channel '${channel.key}' but is missing its coarser channels ${notInMode}.`);
+  }
+}
+
+function checkPanTiltMaxInPhysical(channel, mode) {
+  const maxProp = channel.type === 'Pan' ? 'focusPanMax' : 'focusTiltMax';
+  const maxPropDisplay = channel.type === 'Pan' ? 'panMax' : 'tiltMax';
+
+  if (mode.physical[maxProp] === null) {
+    result.warnings.push(`physical.${maxPropDisplay} is not defined although there's a ${channel.type} channel '${channel.key}' in mode '${mode.shortName}'.`);
+  }
+  else if (mode.physical[maxProp] === 0) {
+    result.warnings.push(`physical.${maxPropDisplay} is 0 although there's a ${channel.type} channel '${channel.key}' in mode '${mode.shortName}'.`);
   }
 }
 
