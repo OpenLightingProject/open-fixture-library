@@ -10,18 +10,13 @@
 }
 
 .download-button {
-  display: block;
-  position: relative;
-  margin: 0 1ex 1em auto;
-  width: 14em;
-
   & > .title {
     display: block;
     box-sizing: border-box;
     width: 100%;
     padding: 0.5ex 2ex;
     border-radius: 2px;
-    background: $light-green-500;
+    background: $orange-500;
     font-family: LatoLatinSemibold;
     color: $primary-text-light;
     cursor: pointer;
@@ -45,7 +40,7 @@
   & > ul {
     position: absolute;
     left: -9999px;
-    top: calc(2em + 1ex);
+    top: 100%;
     padding: 0.7em 0;
     margin: 0;
     width: 100%;
@@ -73,7 +68,7 @@
   & > .title:focus,
   & > .title:active {
     border-radius: 2px 2px 0 0;
-    background: $light-green-700;
+    background: $orange-700;
   }
 
   &:hover > ul,
@@ -85,11 +80,18 @@
   /* single rule since unsupporting browsers skip the whole rule */
   &:focus-within > .title {
     border-radius: 2px 2px 0 0;
-    background: $light-green-700;
+    background: $orange-700;
   }
   &:focus-within > ul {
     left: 0;
   }
+}
+
+.fixture-header > .download-button {
+  display: block;
+  position: relative;
+  margin: 0 1ex 1em auto;
+  width: 14em;
 }
 
 .category-badge {
@@ -344,6 +346,7 @@ a.fixture-mode {
     display: flex;
     -ms-flex-direction: row;
     flex-direction: row;
+    align-items: flex-start;
 
     & > .title {
       -ms-flex: 1 1 auto;

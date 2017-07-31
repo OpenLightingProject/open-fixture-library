@@ -150,12 +150,29 @@ app.use((request, response, next) => {
   const sanitizedUrl = request.originalUrl.slice(1, (request.originalUrl.slice(-1) === '/') ? -1 : request.originalUrl.length);
   const segments = sanitizedUrl.split('/');
 
-  // manufacturer page
-  if (segments.length === 1 && segments[0] in manufacturers) {
-    response.render('pages/single_manufacturer', {
-      man: segments[0]
-    });
-    return;
+  if (segments.length === 1) {
+    // manufacturer page
+    if (segments[0] in manufacturers) {
+      response.render('pages/single_manufacturer', {
+        man: segments[0]
+      });
+      return;
+    }
+
+    // download all
+    const [download, pluginName] = segments[0].split('.');
+    if (download === 'download' && pluginName in plugins.export) {
+      const fixtures = Object.keys(register.filesystem).map(fixture => {
+        const [man, key] = fixture.split('/');
+        return Fixture.fromRepository(man, key);
+      });
+      const outfiles = plugins.export[pluginName].export(fixtures, {
+        baseDir: __dirname
+      });
+
+      downloadFiles(response, outfiles, pluginName);
+      return;
+    }
   }
 
   if (segments.length === 2 && segments[0] in manufacturers) {

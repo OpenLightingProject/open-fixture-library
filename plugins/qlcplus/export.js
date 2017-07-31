@@ -1,4 +1,5 @@
 const xmlbuilder = require('xmlbuilder');
+const sanitize = require('sanitize-filename');
 
 const FineChannel = require('../../lib/model/FineChannel.js');
 const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
@@ -36,7 +37,7 @@ module.exports.export = function exportQLCplus(fixtures, options) {
 
     xml.doctype('');
     return {
-      name: fixture.manufacturer.key + '/' + fixture.key + '.qxf',
+      name: sanitize(fixture.manufacturer.name + '-' + fixture.name + '.qxf').replace(/\s+/g, '-'),
       content: xml.end({
         pretty: true,
         indent: ' '
