@@ -168,7 +168,7 @@ function checkCapabilities(channel, mustBe8Bit) {
     // if one of the previous capabilities had an invalid range,
     // it doesn't make sense to check later ranges
     if (!rangesInvalid) {
-      rangesInvalid = !checkRange(cap, i, channel);
+      rangesInvalid = !checkRange(channel, i, mustBe8Bit);
     }
 
     if ((cap.color || cap.image) && !['MultiColor', 'Effect', 'Gobo'].includes(channel.type)) {
@@ -200,7 +200,8 @@ function checkCapabilities(channel, mustBe8Bit) {
   }
 }
 
-function checkRange(cap, capNumber, channel) {
+function checkRange(channel, capNumber, mustBe8Bit) {
+  const cap = channel.capabilities[capNumber];
   const prevCap = capNumber > 0 ? channel.capabilities[capNumber-1] : null;
 
   if (capNumber === 0 && cap.range.start !== 0) {
