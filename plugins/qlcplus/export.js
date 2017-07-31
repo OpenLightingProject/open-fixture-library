@@ -71,7 +71,7 @@ function addChannel(xml, channel) {
       new Capability({
         range: [0, channel.maxDmxBound],
         name: `Fine adjustment for ${channel.uniqueName}`
-      }, channel)
+      }, false, channel)
     ];
   }
   else {

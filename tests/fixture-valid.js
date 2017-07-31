@@ -110,7 +110,7 @@ function checkChannel(channel) {
     }
   }
 
-  let testFineChannelOverlapping = false;
+  let usedAsCoarseOnlyChannel = true;
   if (channel.fineChannelAliases.length > 0) {
     for (const alias of channel.fineChannelAliases) {
       if (definedChannelKeys.includes(alias)) {
@@ -119,7 +119,7 @@ function checkChannel(channel) {
       definedChannelKeys.push(alias);
     }
 
-    testFineChannelOverlapping = fixture.modes.some(
+    usedAsCoarseOnlyChannel = fixture.modes.some(
       mode => channel.getFinenessInMode(mode) < channel.maxFineness
     );
   }
@@ -152,10 +152,10 @@ function checkChannel(channel) {
     result.errors.push(`highlightValue must be less or equal to ${channel.maxDmxBound} in channel '${channel.key}'.`);
   }
 
-  checkCapabilities(channel, testFineChannelOverlapping);
+  checkCapabilities(channel, usedAsCoarseOnlyChannel);
 }
 
-function checkCapabilities(channel, testFineChannelOverlapping) {
+function checkCapabilities(channel, mustBe8Bit) {
   if (!channel.hasCapabilities) {
     return;
   }
@@ -169,25 +169,26 @@ function checkCapabilities(channel, testFineChannelOverlapping) {
     // if one of the previous capabilities had an invalid range,
     // it doesn't make sense to check later ranges
     if (!rangesInvalid) {
-      if (cap.range.end > channel.maxDmxBound) {
-        result.errors.push(`range values must be less or equal to ${channel.maxDmxBound} in capability '${cap.name}' (#${i+1}) in channel '${channel.key}'.`);
+      if (i === 0 && cap.range.start !== 0) {
+        result.errors.push(`The first range has to start at 0 in capability '${cap.name}' (#${i+1}) in channel '${channel.key}'.`);
         rangesInvalid = true;
       }
       else if (cap.range.start > cap.range.end) {
         result.errors.push(`range invalid in capability '${cap.name}' (#${i+1}) in channel '${channel.key}'.`);
         rangesInvalid = true;
       }
-      else if (i > 0 && cap.range.start <= prevCap.range.end) {
-        result.errors.push(`ranges overlapping in capabilities '${prevCap.name}' (#${i}) and '${cap.name}' (#${i+1}) in channel '${channel.key}'.`);
+      else if (i > 0 && cap.range.start !== prevCap.range.end + 1) {
+        result.errors.push(`ranges must be adjacent in capabilities '${prevCap.name}' (#${i}) and '${cap.name}' (#${i+1}) in channel '${channel.key}'.`);
         rangesInvalid = true;
       }
-      else if (i > 0 && testFineChannelOverlapping) {
-        const lastRangeEnd = Math.floor(channel.capabilities[i-1].range.end / Math.pow(256, channel.maxFineness));
-        const rangeStart = Math.floor(cap.range.start / Math.pow(256, channel.maxFineness));
+      else if (i === channel.capabilities.length - 1) {
+        const rawRangeEnd = channel.jsonObject.capabilities[i].range[1];
         
-        if (rangeStart <= lastRangeEnd) {
-          result.errors.push(`ranges overlapping when used in coarse channel only mode in capabilities '${prevCap.name}' (#${i}) and '${cap.name}' (#${i+1}) in channel '${channel.key}'.`);
-          rangesInvalid = true;
+        if (rawRangeEnd !== 255 && mustBe8Bit) {
+          result.errors.push(`The last range has to end at 255 in capability '${cap.name}' (#${i+1}), because channel '${channel.key}' is used in coarse only mode.`);
+        }
+        else if (rawRangeEnd !== 255 && rawRangeEnd !== channel.maxDmxBound) {
+          result.errors.push(`The last range has to end at either 255 or ${channel.maxDmxBound} in capability '${cap.name}' (#${i+1}) in channel '${channel.key}'.`);
         }
       }
     }
