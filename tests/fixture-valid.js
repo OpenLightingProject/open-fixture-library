@@ -234,44 +234,65 @@ function checkMode(mode) {
 
   checkPhysical(mode.physicalOverride, ` in mode '${mode.shortName}'`);
 
+  let modeChannelKeyCount = {};
+
   for (const chKey of mode.channelKeys) {
-    const channel = mode.fixture.getChannelByKey(chKey);
+    checkModeChannelReference(chKey, mode, modeChannelKeyCount);
+  }
 
-    if (channel === null) {
-      result.errors.push(`Channel '${chKey}' is referenced from mode '${mode.shortName}' but is not defined.`);
-      continue;
+  const duplicateChannelReferences = Object.keys(modeChannelKeyCount).filter(
+    chKey => modeChannelKeyCount[chKey] > 1
+  );
+  if (duplicateChannelReferences.length > 0) {
+    result.errors.push(`Channels ${duplicateChannelReferences} are used more than once in mode '${mode.shortName}'.`);
+  }
+}
+
+function checkModeChannelReference(chKey, mode, modeChKeyCount) {
+  const channel = mode.fixture.getChannelByKey(chKey);
+
+  if (channel === null) {
+    result.errors.push(`Channel '${chKey}' is referenced from mode '${mode.shortName}' but is not defined.`);
+    return;
+  }
+
+  if (channel instanceof NullChannel) {
+    return;
+  }
+
+  usedChannelKeys.push(channel.key);
+  modeChKeyCount[channel.key] = (modeChKeyCount[channel.key] || 0) + 1;
+
+  if (channel instanceof SwitchingChannel) {
+    // the mode must also contain the trigger channel
+    if (mode.getChannelIndex(channel.triggerChannel) === -1) {
+      result.errors.push(`mode '${mode.shortName}' uses switching channel '${channel.key}' but is missing its trigger channel '${channel.triggerChannel.key}'`);
     }
 
-    if (channel instanceof NullChannel) {
-      continue;
-    }
-
-    usedChannelKeys.push(channel.key);
-
-    if (channel instanceof FineChannel) {
-      checkCoarserChannelsInMode(channel, mode);
-      continue;
-    }
-
-    if (channel instanceof SwitchingChannel) {
-      // the mode must also contain the trigger channel
-      if (mode.getChannelIndex(channel.triggerChannel) === -1) {
-        result.errors.push(`mode '${mode.shortName}' uses switching channel '${channel.key}' but is missing its trigger channel '${channel.triggerChannel.key}'`);
+    // if the channel can be switched to a fine channel, the mode must also contain coarser channels
+    for (const switchToChannel of channel.switchToChannels) {
+      if (switchToChannel === null) {
+        // already raised an issue when switching channel was defined
+        continue;
       }
 
-      // if the channel can be switched to a fine channel, the mode must also contain coarser channels
-      for (const switchToChannel of channel.switchToChannels) {
-        if (switchToChannel instanceof FineChannel) {
-          checkCoarserChannelsInMode(switchToChannel, mode);
-        }
+      modeChKeyCount[switchToChannel.key] = (modeChKeyCount[switchToChannel.key] || 0) + 1;
+
+      if (switchToChannel instanceof FineChannel) {
+        checkCoarserChannelsInMode(switchToChannel, mode);
       }
-
-      continue;
     }
 
-    if (channel.type === 'Pan' || channel.type === 'Tilt') {
-      checkPanTiltMaxInPhysical(channel, mode);
-    }
+    return;
+  }
+
+  if (channel instanceof FineChannel) {
+    checkCoarserChannelsInMode(channel, mode);
+    return;
+  }
+
+  if (channel.type === 'Pan' || channel.type === 'Tilt') {
+    checkPanTiltMaxInPhysical(channel, mode);
   }
 }
 
