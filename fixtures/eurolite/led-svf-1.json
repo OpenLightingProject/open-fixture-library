@@ -1,0 +1,128 @@
+{
+  "name": "LED SVF-1",
+  "shortName": "SVF1",
+  "categories": ["Flower"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2017-08-01",
+    "lastModifyDate": "2017-08-01"
+  },
+  "manualURL": "http://media.steinigke.de/documents_t/51918662-MANUAL-1.10-de-en_00073902.pdf",
+  "physical": {
+    "dimensions": [580, 325, 625],
+    "weight": 6,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED 5mm"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    },
+    "focus": {
+      "type": "Head"
+    }
+  },
+  "availableChannels": {
+    "Programs": {
+      "type": "Effect",
+      "crossfade": false,
+      "capabilities": [
+        {
+          "range": [0, 12],
+          "name": "Program 1"
+        },
+        {
+          "range": [13, 25],
+          "name": "Program 2"
+        },
+        {
+          "range": [26, 38],
+          "name": "Program 3"
+        },
+        {
+          "range": [39, 51],
+          "name": "Program 4"
+        },
+        {
+          "range": [52, 64],
+          "name": "Program 5"
+        },
+        {
+          "range": [65, 77],
+          "name": "Program 6"
+        },
+        {
+          "range": [78, 90],
+          "name": "Program 7"
+        },
+        {
+          "range": [91, 103],
+          "name": "Program 8"
+        },
+        {
+          "range": [104, 116],
+          "name": "Program 9"
+        },
+        {
+          "range": [117, 129],
+          "name": "Program 10"
+        },
+        {
+          "range": [130, 142],
+          "name": "Program 11"
+        },
+        {
+          "range": [143, 155],
+          "name": "Program 12"
+        },
+        {
+          "range": [156, 168],
+          "name": "Program 13"
+        },
+        {
+          "range": [169, 181],
+          "name": "Program 14"
+        },
+        {
+          "range": [182, 194],
+          "name": "Program 15"
+        },
+        {
+          "range": [195, 214],
+          "name": "All programs looping"
+        },
+        {
+          "range": [215, 255],
+          "name": "Sound Control"
+        }
+      ]
+    },
+    "Program Speed": {
+      "type": "Speed",
+      "defaultValue": 132,
+      "highlightValue": 255,
+      "crossfade": true,
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "All LEDs off"
+        },
+        {
+          "range": [11, 255],
+          "name": "Speed slow-fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2-Channel",
+      "shortName": "2ch",
+      "channels": [
+        "Programs",
+        "Program Speed"
+      ]
+    }
+  ]
+}
