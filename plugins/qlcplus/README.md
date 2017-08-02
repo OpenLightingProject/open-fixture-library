@@ -10,7 +10,7 @@ To import a fixture into *QLC+*, copy the `.qxf` file into the right directory (
 
 **File locations:**
 
-Fixtures are always located in the `fixture` subdirectory in one of the following paths.
+Fixtures are always located in the `fixture` subdirectory in one of the following paths. Fixtures in subdirectories of `fixture` (e.g. grouped by manufacturer) aren't recognized!
 
 |         | Main Library                                | User Library                          |
 |---------|---------------------------------------------|---------------------------------------|
