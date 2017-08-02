@@ -94,8 +94,6 @@ const Mode = schema({
 });
 
 const Fixture = schema({
-  'schema': 'https://github.com/FloEdelmann/open-fixture-library/blob/1.0.0/fixtures/schema.js',
-  'schemaVersion': '1.0.0',
   'name': NonEmptyString,
   '?shortName': NonEmptyString, // if not set: use name
   'categories': Array.of(1, Infinity, Category), // most important category first
