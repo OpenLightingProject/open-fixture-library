@@ -4,7 +4,7 @@ module.exports.version = require('../../fixtures/schema.js').VERSION;
 module.exports.export = function exportOFL(fixtures, options) {
   return fixtures.map(fixture => {
     const jsonData = {
-      schema: `https://github.com/FloEdelmann/open-fixture-library/blob/${module.exports.version}/fixtures/schema.js`,
+      schema: `https://github.com/FloEdelmann/open-fixture-library/blob/schema-${module.exports.version}/fixtures/schema.js`,
       schemaVersion: module.exports.version
     };
     Object.assign(jsonData, fixture.jsonObject);
