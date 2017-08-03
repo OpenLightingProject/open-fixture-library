@@ -88,7 +88,7 @@ const Capability = schema({
 });
 
 const Channel = schema({
-  '?name': NoVariablesString, // if not set: use channel key
+  '?name': NonEmptyString, // if not set: use channel key
   'type': ['Intensity', 'Strobe', 'Shutter', 'Speed', 'SingleColor', 'MultiColor', 'Gobo', 'Prism', 'Pan', 'Tilt', 'Beam', 'Effect', 'Maintenance', 'Nothing'],
   '?color': ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime', 'Indigo'], // required and only allowed for SingleColor
   '?fineChannelAliases': Array.of(1, Infinity, [

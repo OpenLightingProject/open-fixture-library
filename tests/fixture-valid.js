@@ -180,10 +180,10 @@ function checkChannel(channel) {
     result.errors.push(`highlightValue must be less or equal to ${channel.maxDmxBound} in channel '${channel.key}'.`);
   }
 
-  checkCapabilities(channel, minUsedFineness === 0);
+  checkCapabilities(channel, minUsedFineness);
 }
 
-function checkCapabilities(channel, mustBe8Bit) {
+function checkCapabilities(channel, minUsedFineness) {
   if (!channel.hasCapabilities) {
     return;
   }
@@ -196,7 +196,7 @@ function checkCapabilities(channel, mustBe8Bit) {
     // if one of the previous capabilities had an invalid range,
     // it doesn't make sense to check later ranges
     if (!rangesInvalid) {
-      rangesInvalid = !checkRange(channel, i, mustBe8Bit);
+      rangesInvalid = !checkRange(channel, i, minUsedFineness);
     }
 
     if ((cap.color || cap.image) && !['MultiColor', 'Effect', 'Gobo'].includes(channel.type)) {
@@ -228,10 +228,17 @@ function checkCapabilities(channel, mustBe8Bit) {
   }
 }
 
+/**
+ * Checks whether the specified string contains only allowed and all required variables
+ * and pushes an error on wrong variable usage.
+ * @param {!string} str The string to be checked.
+ * @param {!string[]} [requiredVariables=[]] Variables that must be included in the string. Specify them with leading dollar sign ($var).
+ * @param {!string[]} [allowedVariables=[]] Variables that may be included in the string; requiredVariables are automatically included. Specify them with leading dollar sign ($var).
+ */
 function checkTemplateVariables(str, requiredVariables=[], allowedVariables=[]) {
   allowedVariables = allowedVariables.concat(requiredVariables);
 
-  const variables = str.match(/\$\w+/) || [];
+  const variables = str.match(/\$\w+/g) || [];
   for (const variable of variables) {
     if (!allowedVariables.includes(variable)) {
       result.errors.push(`Variable ${variable} not allowed in '${str}'`);
@@ -244,7 +251,7 @@ function checkTemplateVariables(str, requiredVariables=[], allowedVariables=[]) 
   }
 }
 
-function checkRange(channel, capNumber, mustBe8Bit) {
+function checkRange(channel, capNumber, minUsedFineness) {
   const cap = channel.capabilities[capNumber];
   const prevCap = capNumber > 0 ? channel.capabilities[capNumber-1] : null;
 
@@ -265,19 +272,30 @@ function checkRange(channel, capNumber, mustBe8Bit) {
 
   if (capNumber === channel.capabilities.length - 1) {
     const rawRangeEnd = channel.jsonObject.capabilities[capNumber].range[1];
+    const possibleEndValues = getPossibleEndValues(minUsedFineness);
     
-    if (rawRangeEnd !== 255 && mustBe8Bit) {
-      result.errors.push(`The last range has to end at 255 in capability '${cap.name}' (#${capNumber+1}), because channel '${channel.key}' is used in coarse only mode.`);
-      return false;
-    }
-
-    if (rawRangeEnd !== 255 && rawRangeEnd !== channel.maxDmxBound) {
-      result.errors.push(`The last range has to end at either 255 or ${channel.maxDmxBound} in capability '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'.`);
+    if (!possibleEndValues.includes(rawRangeEnd)) {
+      console.log(minUsedFineness, possibleEndValues);
+      result.errors.push(`The last range has to end at ${possibleEndValues.join(' or ')} in capability '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'`);
       return false;
     }
   }
 
   return true;
+}
+
+/**
+ * Get the highest possible DMX value for each fineness up to the specified one
+ * E.g. fineness=2 -> [255, 65535, 16777215]
+ * @param {!number} fineness The least used fineness in a mode of a channel
+ * @return {!number[]} Possible end values, sorted ascending
+ */
+function getPossibleEndValues(fineness) {
+  let values = [];
+  for (let i = 0; i <= fineness; i++) {
+    values.push(Math.pow(256, i+1)-1);
+  }
+  return values;
 }
 
 function checkMode(mode) {
