@@ -257,25 +257,25 @@ function checkRange(channel, capNumber, minUsedFineness) {
   const cap = channel.capabilities[capNumber];
   const prevCap = capNumber > 0 ? channel.capabilities[capNumber-1] : null;
 
-  // first cap
+  // first capability
   if (capNumber === 0 && cap.range.start !== 0) {
     result.errors.push(`The first range has to start at 0 in capability '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'.`);
     return false;
   }
 
-  // all caps
+  // all capability
   if (cap.range.start > cap.range.end) {
     result.errors.push(`range invalid in capability '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'.`);
     return false;
   }
 
-  // not-first cap
+  // not-first capability
   if (capNumber > 0 && cap.range.start !== prevCap.range.end + 1) {
     result.errors.push(`ranges must be adjacent in capabilities '${prevCap.name}' (#${capNumber}) and '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'.`);
     return false;
   }
 
-  // last cap
+  // last capability
   if (capNumber === channel.capabilities.length - 1) {
     const rawRangeEnd = channel.jsonObject.capabilities[capNumber].range[1];
     const possibleEndValues = getPossibleEndValues(minUsedFineness);
@@ -338,10 +338,12 @@ function checkMode(mode) {
 function checkModeChannelReference(chNumber, mode, modeChKeyCount) {
   const chReference = mode.jsonObject.channels[chNumber];
 
+  // this is a null channel 
   if (chReference === null) {
     return;
   }
 
+  // this is a complex channel insert block (e.g. matrices)
   if (typeof chReference !== 'string') {
     checkChannelInsertBlock(chReference, modeChKeyCount);
     return;
