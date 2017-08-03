@@ -105,7 +105,7 @@ function addCapability(xmlChannel, cap) {
   });
 
   if (cap.image !== null) {
-    xmlCapability.attribute('res', cap.image);
+    xmlCapability.attribute('Res', cap.image);
   }
   else if (cap.color !== null) {
     xmlCapability.attribute('Color', cap.color.hex().toLowerCase());
