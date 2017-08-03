@@ -32,6 +32,7 @@
   "availableChannels": {
     "Shutter": {
       "type": "Shutter",
+      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 19],
@@ -51,7 +52,7 @@
         {
           "range": [65, 69],
           "name": "shutter open",
-          "menuClick": "start"
+          "menuClick": "hidden"
         },
         {
           "range": [70, 84],
@@ -61,7 +62,7 @@
         {
           "range": [85, 89],
           "name": "shutter open",
-          "menuClick": "start"
+          "menuClick": "hidden"
         },
         {
           "range": [90, 104],
@@ -71,7 +72,7 @@
         {
           "range": [105, 109],
           "name": "shutter open",
-          "menuClick": "start"
+          "menuClick": "hidden"
         },
         {
           "range": [110, 124],
@@ -81,7 +82,7 @@
         {
           "range": [125, 129],
           "name": "shutter open",
-          "menuClick": "start"
+          "menuClick": "hidden"
         },
         {
           "range": [130, 144],
@@ -91,7 +92,7 @@
         {
           "range": [145, 149],
           "name": "shutter open",
-          "menuClick": "start"
+          "menuClick": "hidden"
         },
         {
           "range": [150, 164],
@@ -101,7 +102,7 @@
         {
           "range": [165, 169],
           "name": "shutter open",
-          "menuClick": "start"
+          "menuClick": "hidden"
         },
         {
           "range": [170, 184],
@@ -111,7 +112,7 @@
         {
           "range": [185, 189],
           "name": "shutter open",
-          "menuClick": "start"
+          "menuClick": "hidden"
         },
         {
           "range": [190, 204],
@@ -121,7 +122,7 @@
         {
           "range": [205, 209],
           "name": "shutter open",
-          "menuClick": "start"
+          "menuClick": "hidden"
         },
         {
           "range": [210, 224],
@@ -131,7 +132,7 @@
         {
           "range": [225, 229],
           "name": "shutter open",
-          "menuClick": "start"
+          "menuClick": "hidden"
         },
         {
           "range": [230, 244],
@@ -141,50 +142,33 @@
         {
           "range": [245, 255],
           "name": "shutter open",
-          "menuClick": "start"
+          "menuClick": "hidden"
         }
       ]
     },
     "Beam dimmer": {
-      "type": "Intensity",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "beam dimmer (0>100)"
-        }
-      ]
+      "type": "Intensity"
     },
     "Zoom": {
       "type": "Zoom",
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "zoom (wide>narrow)"
+          "name": "wide>narrow"
         }
       ]
     },
     "Pan": {
       "type": "Pan",
-      "fineChannelAliases": ["Pan fine"],
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "pan (left>right)"
-        }
-      ]
+      "fineChannelAliases": ["Pan fine"]
     },
     "Tilt": {
       "type": "Tilt",
-      "fineChannelAliases": ["Tilt fine"],
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "tilt (0>232)"
-        }
-      ]
+      "fineChannelAliases": ["Tilt fine"]
     },
     "Fixture control settings": {
       "type": "Maintenance",
+      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 9],
@@ -270,6 +254,7 @@
     },
     "Beam color wheel effect": {
       "type": "Multi-Color",
+      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 9],
@@ -277,135 +262,168 @@
         },
         {
           "range": [10, 14],
-          "name": "LEE 790 - Moroccan pink"
+          "name": "LEE 790 - Moroccan Pink",
+          "color": "#ffeb34"
         },
         {
           "range": [15, 19],
-          "name": "LEE 157 - Pink"
+          "name": "LEE 157 - Pink",
+          "color": "#d68630"
         },
         {
           "range": [20, 24],
-          "name": "LEE 332 - Special rose pink"
+          "name": "LEE 332 - Special rose Pink",
+          "color": "#ff002c"
         },
         {
           "range": [25, 29],
-          "name": "LEE 328 - Follies pink"
+          "name": "LEE 328 - Follies Pink",
+          "color": "#ff3b71"
         },
         {
           "range": [30, 34],
-          "name": "LEE 345 - Fuchsia pink"
+          "name": "LEE 345 - Fuchsia Pink",
+          "color": "#ff8adb"
         },
         {
           "range": [35, 39],
-          "name": "LEE 194 - Surprise pink"
+          "name": "LEE 194 - Surprise Pink",
+          "color": "#e2afe2"
         },
         {
           "range": [40, 44],
-          "name": "LEE 181 - Congo Blue"
+          "name": "LEE 181 - Congo Blue",
+          "color": "#2801ff"
         },
         {
           "range": [45, 49],
-          "name": "LEE 071 - Tokyo Blue"
+          "name": "LEE 071 - Tokyo Blue",
+          "color": "#0000ff"
         },
         {
           "range": [50, 54],
-          "name": "LEE 120 - Deep Blue"
+          "name": "LEE 120 - Deep Blue",
+          "color": "#004eff"
         },
         {
           "range": [55, 59],
-          "name": "LEE 079 - Just Blue"
+          "name": "LEE 079 - Just Blue",
+          "color": "#00c7ff"
         },
         {
           "range": [60, 64],
-          "name": "LEE 132 - Medium Blue"
+          "name": "LEE 132 - Medium Blue",
+          "color": "#00ffea"
         },
         {
           "range": [65, 69],
-          "name": "LEE 200 - Double CT Blue"
+          "name": "LEE 200 - Double CT Blue",
+          "color": "#95f6ff"
         },
         {
           "range": [70, 74],
-          "name": "LEE 161 - Slate Blue"
+          "name": "LEE 161 - State Blue",
+          "color": "#89ffe3"
         },
         {
           "range": [75, 79],
-          "name": "LEE 201 - Full CT Blue"
+          "name": "LEE 201 - Full CT Blue",
+          "color": "#d5dcde"
         },
         {
           "range": [80, 84],
-          "name": "LEE 202 - Half CT Blue"
+          "name": "LEE 202 - Half CT Blue",
+          "color": "#dbe8af"
         },
         {
           "range": [85, 89],
-          "name": "LEE 117 - Steel Blue"
+          "name": "LEE 117 - Steel Blue",
+          "color": "#cdffc7"
         },
         {
           "range": [90, 94],
-          "name": "LEE 353 - Lighter Blue"
+          "name": "LEE 353 - Lighter Blue",
+          "color": "#73ffa5"
         },
         {
           "range": [95, 99],
-          "name": "LEE 118 - Light Blue"
+          "name": "LEE 118 - Light Blue",
+          "color": "#06ff8f"
         },
         {
           "range": [100, 104],
-          "name": "LEE 116 - Medium Blue Green"
+          "name": "LEE 116 - Medium Blue Green",
+          "color": "#00ff5e"
         },
         {
           "range": [105, 109],
-          "name": "LEE 124 - Dark Green"
+          "name": "LEE 124 - Dark Green",
+          "color": "#1dff00"
         },
         {
           "range": [110, 114],
-          "name": "LEE 139 - Primary Green"
+          "name": "LEE 139 - Primary Green",
+          "color": "#20df00"
         },
         {
           "range": [115, 119],
-          "name": "LEE 089 - Moss Green"
+          "name": "LEE 089 - Moss Green",
+          "color": "#4bff00"
         },
         {
           "range": [120, 124],
-          "name": "LEE 122 - Fern Green"
+          "name": "LEE 122 - Fern Green",
+          "color": "#50e800"
         },
         {
           "range": [125, 129],
-          "name": "LEE 738 - JAS Green"
+          "name": "LEE 738 - JAS Green",
+          "color": "#6ce200"
         },
         {
           "range": [130, 134],
-          "name": "LEE 088 - Lime Green"
+          "name": "LEE 088 - Lime Green",
+          "color": "#91c200"
         },
         {
           "range": [135, 139],
-          "name": "LEE 100 - Spring Yellow"
+          "name": "LEE 100 - Spring Yellow",
+          "color": "#d2ff00"
         },
         {
           "range": [140, 144],
-          "name": "LEE 104 - Deep Amber"
+          "name": "LEE 104 - Deep Amber",
+          "color": "#e1e800"
         },
         {
           "range": [145, 149],
-          "name": "LEE 179 - Chrome Orange"
+          "name": "LEE 179 - Chrome Orange",
+          "color": "#17d700"
         },
         {
           "range": [150, 154],
-          "name": "LEE 105 - Orange"
+          "name": "LEE 105 - Orange",
+          "color": "#f7d600"
         },
         {
           "range": [155, 159],
-          "name": "LEE 021 - Gold Amber"
+          "name": "LEE 021 - Gold Amber",
+          "color": "#ffa300"
         },
         {
           "range": [160, 164],
-          "name": "LEE 778 - Millennium Gold"
+          "name": "LEE 778 - Millennium Gold",
+          "color": "#ff9800"
         },
         {
           "range": [165, 169],
-          "name": "LEE 135 - Deep Golden Amber"
+          "name": "LEE 135 - Deep Golden Amber",
+          "color": "#ff6c00"
         },
         {
           "range": [170, 174],
-          "name": "LEE 164 - Flame Red"
+          "name": "LEE 164 - Flame Red",
+          "color": "#ff5000"
         },
         {
           "range": [175, 179],
@@ -413,7 +431,8 @@
         },
         {
           "range": [180, 201],
-          "name": "Clockwise, fast>slow"
+          "name": "Clockwise, fast>slow",
+          "menuClick": "center"
         },
         {
           "range": [202, 207],
@@ -421,7 +440,8 @@
         },
         {
           "range": [208, 229],
-          "name": "Counter-clockwise, (slow>fast)"
+          "name": "Counter-clockwise, (slow>fast)",
+          "menuClick": "center"
         },
         {
           "range": [230, 234],
@@ -447,33 +467,15 @@
     },
     "Beam red": {
       "type": "Single Color",
-      "color": "Red",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Beam red  Red (0>100)"
-        }
-      ]
+      "color": "Red"
     },
     "Beam green": {
       "type": "Single Color",
-      "color": "Green",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Beam green Green (0>100)"
-        }
-      ]
+      "color": "Green"
     },
     "Beam blue": {
       "type": "Single Color",
-      "color": "Blue",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Beam blue Blue (0>100)"
-        }
-      ]
+      "color": "Blue"
     },
     "Beam white": {
       "type": "Single Color",
@@ -499,71 +501,631 @@
       ]
     },
     "FX1 select": {
-      "type": "Effect"
+      "type": "Effect",
+      "defaultValue": 0,
+      "crossfade": false,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Idle",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust n/a"
+          }
+        },
+        {
+          "range": [10, 12],
+          "name": "Dimmer sync",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust n/a"
+          }
+        },
+        {
+          "range": [13, 15],
+          "name": "Strobe sync",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust n/a"
+          }
+        },
+        {
+          "range": [16, 18],
+          "name": "Dimmer + strobe sync",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust n/a"
+          }
+        },
+        {
+          "range": [19, 21],
+          "name": "Aura color sync",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust n/a"
+          }
+        },
+        {
+          "range": [22, 24],
+          "name": "Aura all sync",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust n/a"
+          }
+        },
+        {
+          "range": [25, 39],
+          "name": "Reserved",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust n/a"
+          }
+        },
+        {
+          "range": [40, 42],
+          "name": "Aura strobe delay",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Trigger Delay"
+          }
+        },
+        {
+          "range": [43, 45],
+          "name": "Strobe alternate single",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Speed"
+          }
+        },
+        {
+          "range": [46, 48],
+          "name": "Strobe alternate dual",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Speed"
+          }
+        },
+        {
+          "range": [49, 51],
+          "name": "Strobe alternate triple",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Speed"
+          }
+        },
+        {
+          "range": [52, 54],
+          "name": "3-step strobe",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Speed"
+          }
+        },
+        {
+          "range": [55, 60],
+          "name": "Reserved",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust n/a"
+          }
+        },
+        {
+          "range": [61, 63],
+          "name": "Intensity random alternate",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Speed"
+          }
+        },
+        {
+          "range": [64, 66],
+          "name": "Aura ramp, Beam flash",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Speed"
+          }
+        },
+        {
+          "range": [67, 69],
+          "name": "Beam ramp, Aura flash",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Speed"
+          }
+        },
+        {
+          "range": [70, 72],
+          "name": "Intensity Aura, Beam ramp",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Speed"
+          }
+        },
+        {
+          "range": [73, 75],
+          "name": "Intensity Beam, Aura ramp",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Speed"
+          }
+        },
+        {
+          "range": [76, 99],
+          "name": "Reserved",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust n/a"
+          }
+        },
+        {
+          "range": [100, 102],
+          "name": "Aura color offset",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Color offset"
+          }
+        },
+        {
+          "range": [103, 108],
+          "name": "Reserved",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust n/a"
+          }
+        },
+        {
+          "range": [109, 111],
+          "name": "Hue shimmer",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Amount"
+          }
+        },
+        {
+          "range": [112, 114],
+          "name": "Saturation shimmer",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Amount"
+          }
+        },
+        {
+          "range": [115, 126],
+          "name": "Reserved",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust n/a"
+          }
+        },
+        {
+          "range": [127, 129],
+          "name": "Color strobe",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust n/a"
+          }
+        },
+        {
+          "range": [130, 132],
+          "name": "Color offset strobe",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Color offset"
+          }
+        },
+        {
+          "range": [133, 135],
+          "name": "Aura color strobe",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust n/a"
+          }
+        },
+        {
+          "range": [136, 138],
+          "name": "Aura color offset strobe",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Color offset"
+          }
+        },
+        {
+          "range": [139, 141],
+          "name": "Color spikes",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Strength"
+          }
+        },
+        {
+          "range": [142, 159],
+          "name": "Reserved",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust n/a"
+          }
+        },
+        {
+          "range": [160, 162],
+          "name": "Color zoom ramp in",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Speed"
+          }
+        },
+        {
+          "range": [163, 165],
+          "name": "Color zoom ramp out",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Speed"
+          }
+        },
+        {
+          "range": [166, 168],
+          "name": "Color zoom fade in",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Speed"
+          }
+        },
+        {
+          "range": [169, 171],
+          "name": "Color zoom fade out",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Speed"
+          }
+        },
+        {
+          "range": [172, 174],
+          "name": "Reserved",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust n/a"
+          }
+        },
+        {
+          "range": [175, 177],
+          "name": "Zoom ramp up",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Speed"
+          }
+        },
+        {
+          "range": [178, 180],
+          "name": "Zoom ramp down",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust Speed"
+          }
+        },
+        {
+          "range": [181, 219],
+          "name": "Reserved",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust n/a"
+          }
+        },
+        {
+          "range": [220, 255],
+          "name": "Reserved ",
+          "switchChannels": {
+            "FX1 adjust": "FX1 adjust n/a"
+          }
+        }        
+      ]
     },
-    "FX1 speed": {
+    "FX1 adjust n/a": {
+      "type": "Nothing"
+    },
+    "FX1 adjust Trigger Delay": {
       "type": "Speed"
+    },
+    "FX1 adjust Speed": {
+      "type": "Speed"
+    },
+    "FX1 adjust Color offset": {
+      "type": "Intensity"
+    },
+    "FX1 adjust Amount": {
+      "type": "Intensity"
+    },
+    "FX1 adjust Strength": {
+      "type": "Intensity"
     },
     "FX2 select": {
-      "type": "Effect"
+      "type": "Effect",
+      "defaultValue": 0,
+      "crossfade": false,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Idle",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust n/a"
+          }
+        },
+        {
+          "range": [10, 12],
+          "name": "Dimmer sync",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust n/a"
+          }
+        },
+        {
+          "range": [13, 15],
+          "name": "Strobe sync",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust n/a"
+          }
+        },
+        {
+          "range": [16, 18],
+          "name": "Dimmer + strobe sync",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust n/a"
+          }
+        },
+        {
+          "range": [19, 21],
+          "name": "Aura color sync",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust n/a"
+          }
+        },
+        {
+          "range": [22, 24],
+          "name": "Aura all sync",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust n/a"
+          }
+        },
+        {
+          "range": [25, 39],
+          "name": "Reserved",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust n/a"
+          }
+        },
+        {
+          "range": [40, 42],
+          "name": "Aura strobe delay",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Trigger Delay"
+          }
+        },
+        {
+          "range": [43, 45],
+          "name": "Strobe alternate single",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Speed"
+          }
+        },
+        {
+          "range": [46, 48],
+          "name": "Strobe alternate dual",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Speed"
+          }
+        },
+        {
+          "range": [49, 51],
+          "name": "Strobe alternate triple",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Speed"
+          }
+        },
+        {
+          "range": [52, 54],
+          "name": "3-step strobe",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Speed"
+          }
+        },
+        {
+          "range": [55, 60],
+          "name": "Reserved",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust n/a"
+          }
+        },
+        {
+          "range": [61, 63],
+          "name": "Intensity random alternate",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Speed"
+          }
+        },
+        {
+          "range": [64, 66],
+          "name": "Aura ramp, Beam flash",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Speed"
+          }
+        },
+        {
+          "range": [67, 69],
+          "name": "Beam ramp, Aura flash",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Speed"
+          }
+        },
+        {
+          "range": [70, 72],
+          "name": "Intensity Aura, Beam ramp",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Speed"
+          }
+        },
+        {
+          "range": [73, 75],
+          "name": "Intensity Beam, Aura ramp",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Speed"
+          }
+        },
+        {
+          "range": [76, 99],
+          "name": "Reserved",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust n/a"
+          }
+        },
+        {
+          "range": [100, 102],
+          "name": "Aura color offset",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Color offset"
+          }
+        },
+        {
+          "range": [103, 108],
+          "name": "Reserved",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust n/a"
+          }
+        },
+        {
+          "range": [109, 111],
+          "name": "Hue shimmer",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Amount"
+          }
+        },
+        {
+          "range": [112, 114],
+          "name": "Saturation shimmer",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Amount"
+          }
+        },
+        {
+          "range": [115, 126],
+          "name": "Reserved",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust n/a"
+          }
+        },
+        {
+          "range": [127, 129],
+          "name": "Color strobe",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust n/a"
+          }
+        },
+        {
+          "range": [130, 132],
+          "name": "Color offset strobe",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Color offset"
+          }
+        },
+        {
+          "range": [133, 135],
+          "name": "Aura color strobe",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust n/a"
+          }
+        },
+        {
+          "range": [136, 138],
+          "name": "Aura color offset strobe",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Color offset"
+          }
+        },
+        {
+          "range": [139, 141],
+          "name": "Color spikes",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Strength"
+          }
+        },
+        {
+          "range": [142, 159],
+          "name": "Reserved",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust n/a"
+          }
+        },
+        {
+          "range": [160, 162],
+          "name": "Color zoom ramp in",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Speed"
+          }
+        },
+        {
+          "range": [163, 165],
+          "name": "Color zoom ramp out",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Speed"
+          }
+        },
+        {
+          "range": [166, 168],
+          "name": "Color zoom fade in",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Speed"
+          }
+        },
+        {
+          "range": [169, 171],
+          "name": "Color zoom fade out",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Speed"
+          }
+        },
+        {
+          "range": [172, 174],
+          "name": "Reserved",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust n/a"
+          }
+        },
+        {
+          "range": [175, 177],
+          "name": "Zoom ramp up",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Speed"
+          }
+        },
+        {
+          "range": [178, 180],
+          "name": "Zoom ramp down",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust Speed"
+          }
+        },
+        {
+          "range": [181, 219],
+          "name": "Reserved",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust n/a"
+          }
+        },
+        {
+          "range": [220, 255],
+          "name": "Reserved ",
+          "switchChannels": {
+            "FX2 adjust": "FX2 adjust n/a"
+          }
+        }        
+      ]
     },
-    "FX2 speed": {
-      "type": "Speed"
-    },
-    "FX1+2 speed": {
-      "type": "Speed"
-    },
-    "Unused": {
+    "FX2 adjust n/a": {
       "type": "Nothing"
+    },
+    "FX2 adjust Trigger Delay": {
+      "type": "Speed"
+    },
+    "FX2 adjust Speed": {
+      "type": "Speed"
+    },
+    "FX2 adjust Color offset": {
+      "type": "Intensity"
+    },
+    "FX2 adjust Amount": {
+      "type": "Intensity"
+    },
+    "FX2 adjust Strength": {
+      "type": "Intensity"
     },
     "FX sync": {
       "type": "Effect",
       "defaultValue": 0,
+      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 49],
-          "name": "no sync",
-          "switchChannels": {
-            "FX1 speed / FX1+2 speed": "FX1 speed",
-            "FX2 speed / Nothing": "FX2 speed"
-          }
+          "name": "no sync"
         },
         {
           "range": [50, 50],
-          "name": "sync",
-          "switchChannels": {
-            "FX1 speed / FX1+2 speed": "FX1+2 speed",
-            "FX2 speed / Nothing": "Unused"
-          }
+          "name": "sync"
         },
         {
           "range": [51, 169],
-          "name": "sync shift (offset 0 to max)",
-          "switchChannels": {
-            "FX1 speed / FX1+2 speed": "FX1+2 speed",
-            "FX2 speed / Nothing": "Unused"
-          }
+          "name": "sync shift (offset 0 to max)"
         },
         {
           "range": [170, 209],
-          "name": "sync random",
-          "switchChannels": {
-            "FX1 speed / FX1+2 speed": "FX1+2 speed",
-            "FX2 speed / Nothing": "Unused"
-          }
+          "name": "sync random"
         },
         {
           "range": [210, 255],
-          "name": "no sync random",
-          "switchChannels": {
-            "FX1 speed / FX1+2 speed": "FX1 speed",
-            "FX2 speed / Nothing": "FX2 speed"
-          }
+          "name": "no sync random"
         }
       ]
     },
     "Aura shutter": {
       "type": "Shutter",
+      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 19],
@@ -583,7 +1145,7 @@
         {
           "range": [65, 69],
           "name": "shutter open",
-          "menuClick": "start"
+          "menuClick": "hidden"
         },
         {
           "range": [70, 84],
@@ -593,7 +1155,7 @@
         {
           "range": [85, 89],
           "name": "shutter open",
-          "menuClick": "start"
+          "menuClick": "hidden"
         },
         {
           "range": [90, 104],
@@ -603,7 +1165,7 @@
         {
           "range": [105, 109],
           "name": "shutter open",
-          "menuClick": "start"
+          "menuClick": "hidden"
         },
         {
           "range": [110, 124],
@@ -613,7 +1175,7 @@
         {
           "range": [125, 129],
           "name": "shutter open",
-          "menuClick": "start"
+          "menuClick": "hidden"
         },
         {
           "range": [130, 144],
@@ -623,7 +1185,7 @@
         {
           "range": [145, 149],
           "name": "shutter open",
-          "menuClick": "start"
+          "menuClick": "hidden"
         },
         {
           "range": [150, 164],
@@ -633,7 +1195,7 @@
         {
           "range": [165, 169],
           "name": "shutter open",
-          "menuClick": "start"
+          "menuClick": "hidden"
         },
         {
           "range": [170, 184],
@@ -643,7 +1205,7 @@
         {
           "range": [185, 189],
           "name": "shutter open",
-          "menuClick": "start"
+          "menuClick": "hidden"
         },
         {
           "range": [190, 204],
@@ -653,7 +1215,7 @@
         {
           "range": [205, 209],
           "name": "shutter open",
-          "menuClick": "start"
+          "menuClick": "hidden"
         },
         {
           "range": [210, 224],
@@ -663,7 +1225,7 @@
         {
           "range": [225, 229],
           "name": "shutter open",
-          "menuClick": "start"
+          "menuClick": "hidden"
         },
         {
           "range": [230, 244],
@@ -673,12 +1235,237 @@
         {
           "range": [245, 255],
           "name": "shutter open",
-          "menuClick": "start"
+          "menuClick": "hidden"
         }
       ]
     },
     "Aura dimmer": {
       "type": "Intensity"
+    },
+    "Aura color wheel effect": {
+      "type": "Multi-Color",
+      "crossfade": false,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Open. RGBW color mixing enabled"
+        },
+        {
+          "range": [10, 14],
+          "name": "LEE 790 - Moroccan Pink",
+          "color": "#ffeb34"
+        },
+        {
+          "range": [15, 19],
+          "name": "LEE 157 - Pink",
+          "color": "#d68630"
+        },
+        {
+          "range": [20, 24],
+          "name": "LEE 332 - Special rose Pink",
+          "color": "#ff002c"
+        },
+        {
+          "range": [25, 29],
+          "name": "LEE 328 - Follies Pink",
+          "color": "#ff3b71"
+        },
+        {
+          "range": [30, 34],
+          "name": "LEE 345 - Fuchsia Pink",
+          "color": "#ff8adb"
+        },
+        {
+          "range": [35, 39],
+          "name": "LEE 194 - Surprise Pink",
+          "color": "#e2afe2"
+        },
+        {
+          "range": [40, 44],
+          "name": "LEE 181 - Congo Blue",
+          "color": "#2801ff"
+        },
+        {
+          "range": [45, 49],
+          "name": "LEE 071 - Tokyo Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [50, 54],
+          "name": "LEE 120 - Deep Blue",
+          "color": "#004eff"
+        },
+        {
+          "range": [55, 59],
+          "name": "LEE 079 - Just Blue",
+          "color": "#00c7ff"
+        },
+        {
+          "range": [60, 64],
+          "name": "LEE 132 - Medium Blue",
+          "color": "#00ffea"
+        },
+        {
+          "range": [65, 69],
+          "name": "LEE 200 - Double CT Blue",
+          "color": "#95f6ff"
+        },
+        {
+          "range": [70, 74],
+          "name": "LEE 161 - State Blue",
+          "color": "#89ffe3"
+        },
+        {
+          "range": [75, 79],
+          "name": "LEE 201 - Full CT Blue",
+          "color": "#d5dcde"
+        },
+        {
+          "range": [80, 84],
+          "name": "LEE 202 - Half CT Blue",
+          "color": "#dbe8af"
+        },
+        {
+          "range": [85, 89],
+          "name": "LEE 117 - Steel Blue",
+          "color": "#cdffc7"
+        },
+        {
+          "range": [90, 94],
+          "name": "LEE 353 - Lighter Blue",
+          "color": "#73ffa5"
+        },
+        {
+          "range": [95, 99],
+          "name": "LEE 118 - Light Blue",
+          "color": "#06ff8f"
+        },
+        {
+          "range": [100, 104],
+          "name": "LEE 116 - Medium Blue Green",
+          "color": "#00ff5e"
+        },
+        {
+          "range": [105, 109],
+          "name": "LEE 124 - Dark Green",
+          "color": "#1dff00"
+        },
+        {
+          "range": [110, 114],
+          "name": "LEE 139 - Primary Green",
+          "color": "#20df00"
+        },
+        {
+          "range": [115, 119],
+          "name": "LEE 089 - Moss Green",
+          "color": "#4bff00"
+        },
+        {
+          "range": [120, 124],
+          "name": "LEE 122 - Fern Green",
+          "color": "#50e800"
+        },
+        {
+          "range": [125, 129],
+          "name": "LEE 738 - JAS Green",
+          "color": "#6ce200"
+        },
+        {
+          "range": [130, 134],
+          "name": "LEE 088 - Lime Green",
+          "color": "#91c200"
+        },
+        {
+          "range": [135, 139],
+          "name": "LEE 100 - Spring Yellow",
+          "color": "#d2ff00"
+        },
+        {
+          "range": [140, 144],
+          "name": "LEE 104 - Deep Amber",
+          "color": "#e1e800"
+        },
+        {
+          "range": [145, 149],
+          "name": "LEE 179 - Chrome Orange",
+          "color": "#17d700"
+        },
+        {
+          "range": [150, 154],
+          "name": "LEE 105 - Orange",
+          "color": "#f7d600"
+        },
+        {
+          "range": [155, 159],
+          "name": "LEE 021 - Gold Amber",
+          "color": "#ffa300"
+        },
+        {
+          "range": [160, 164],
+          "name": "LEE 778 - Millennium Gold",
+          "color": "#ff9800"
+        },
+        {
+          "range": [165, 169],
+          "name": "LEE 135 - Deep Golden Amber",
+          "color": "#ff6c00"
+        },
+        {
+          "range": [170, 174],
+          "name": "LEE 164 - Flame Red",
+          "color": "#ff5000"
+        },
+        {
+          "range": [175, 179],
+          "name": "Open Color wheel rotation effect"
+        },
+        {
+          "range": [180, 201],
+          "name": "Clockwise, fast>slow",
+          "menuClick": "center"
+        },
+        {
+          "range": [202, 207],
+          "name": "Stop (this will stop wherever the color is at the time)"
+        },
+        {
+          "range": [208, 229],
+          "name": "Counter-clockwise, (slow>fast)",
+          "menuClick": "center"
+        },
+        {
+          "range": [230, 234],
+          "name": "Open Random color"
+        },
+        {
+          "range": [235, 239],
+          "name": "Fast random"
+        },
+        {
+          "range": [240, 244],
+          "name": "Medium random"
+        },
+        {
+          "range": [245, 249],
+          "name": "Slow random"
+        },
+        {
+          "range": [250, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Aura red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Aura green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Aura blue": {
+      "type": "Single Color",
+      "color": "Blue"
     }
   },
   "modes": [
@@ -721,12 +1508,16 @@
         "Beam white",
         "Beam CTC",
         "FX1 select",
-        "FX1 speed / FX1+2 speed",
+        "FX1 adjust",
         "FX2 select",
-        "FX2 speed / Nothing",
+        "FX2 adjust",
         "FX sync",
         "Aura shutter",
-        "Aura dimmer"
+        "Aura dimmer",
+        "Aura color wheel effect",
+        "Aura red",
+        "Aura green",
+        "Aura blue"
       ]
     }
   ]
