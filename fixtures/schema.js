@@ -146,8 +146,8 @@ const Mode = schema({
 });
 
 const Fixture = schema({
-  'name': NonEmptyString,
-  '?shortName': NonEmptyString, // if not set: use name
+  'name': NonEmptyString, // unique in manufacturer
+  '?shortName': NonEmptyString, // unique globally; if not set: use name
   'categories': Array.of(1, Infinity, Category), // most important category first
   'meta': {
     'authors': Array.of(1, Infinity, NonEmptyString),

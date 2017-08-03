@@ -8,7 +8,13 @@ const colors = require('colors');
 const schemas = require('../fixtures/schema.js');
 const checkFixture = require('./fixture-valid.js');
 
-const usedShortNames = new Set();
+let uniqueValues = {
+  manKeys: new Set(),
+  manNames: new Set(),
+  fixKeysInMan: {}, // new Set() for each manufacturer
+  fixNamesInMan: {}, // new Set() for each manufacturer
+  fixShortNames: new Set()
+};
 
 let promises = [];
 
@@ -55,7 +61,8 @@ function handleFixtureFile(manKey, fixKey) {
       }
 
       try {
-        Object.assign(result, checkFixture(manKey, fixKey, fixtureJson, usedShortNames));
+        // checkFixture(..) returns { errors: [..], warnings: [..] }
+        Object.assign(result, checkFixture(manKey, fixKey, fixtureJson, uniqueValues));
       }
       catch (validateError) {
         result.errors.push(getErrorString('Fixture could not be validated.', validateError));

@@ -13,7 +13,7 @@ let definedChannelKeys; // and aliases
 let usedChannelKeys; // and aliases
 let modeShortNames;
 
-module.exports = function checkFixture(manKey, fixKey, fixtureJson, usedShortNames = new Set()) {
+module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues=null) {
   result = {
     errors: [],
     warnings: []
@@ -36,22 +36,12 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, usedShortNam
     return result;
   }
 
-  if (usedShortNames.has(fixture.shortName)) {
-    result.errors.push(`shortName '${fixture.shortName}' is not unique.`);
-  }
-  usedShortNames.add(fixture.shortName);
-
+  checkFixIdentifierUniqueness(uniqueValues);
   checkMeta(fixture.meta);
   checkPhysical(fixture.physical);
 
-  const availableChannels = fixture.availableChannels;
-  if (availableChannels.length === 0) {
-    result.errors.push('availableChannels is empty. Please add a channel.');
-  }
-  else {
-    for (const channel of availableChannels) {
-      checkChannel(channel);
-    }
+  for (const channel of fixture.availableChannels) {
+    checkChannel(channel);
   }
 
   for (const mode of fixture.modes) {
@@ -62,6 +52,39 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, usedShortNam
 
   return result;
 };
+
+function checkFixIdentifierUniqueness(uniqueValues) {
+  // test is called for a single fixture, e.g. when importing
+  if (uniqueValues === null) {
+    return;
+  }
+
+  const manKey = fixture.manufacturer.key;
+
+  // fixture.key
+  if (!(manKey in uniqueValues.fixKeysInMan)) {
+    uniqueValues.fixKeysInMan[manKey] = new Set();
+  }
+  else if (uniqueValues.fixKeysInMan[manKey].has(fixture.key.toLowerCase())) {
+    result.errors.push(`key '${fixture.key}' is not unique in manufacturer ${manKey} (test is not case-sensitive).`);
+  }
+  uniqueValues.fixKeysInMan[manKey].add(fixture.key.toLowerCase());
+
+  // fixture.name
+  if (!(manKey in uniqueValues.fixNamesInMan)) {
+    uniqueValues.fixNamesInMan[manKey] = new Set();
+  }
+  else if (uniqueValues.fixNamesInMan[manKey].has(fixture.name.toLowerCase())) {
+    result.errors.push(`name '${fixture.name}' is not unique in manufacturer ${manKey} (test is not case-sensitive).`);
+  }
+  uniqueValues.fixNamesInMan[manKey].add(fixture.name.toLowerCase());
+  
+  // fixture.shortName
+  if (uniqueValues.fixShortNames.has(fixture.shortName.toLowerCase())) {
+    result.errors.push(`shortName '${fixture.shortName}' is not unique (test is not case-sensitive).`);
+  }
+  uniqueValues.fixShortNames.add(fixture.shortName.toLowerCase());
+}
 
 function checkMeta(meta) {
   if (meta.lastModifyDate < meta.createDate) {
