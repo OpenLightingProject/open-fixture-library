@@ -8,7 +8,7 @@ const colors = require('colors');
 const schemas = require('../fixtures/schema.js');
 const checkFixture = require('./fixture-valid.js');
 
-let usedShortNames = [];
+const usedShortNames = new Set();
 
 let promises = [];
 
@@ -56,7 +56,6 @@ function handleFixtureFile(manKey, fixKey) {
 
       try {
         Object.assign(result, checkFixture(manKey, fixKey, fixtureJson, usedShortNames));
-        usedShortNames = result.usedShortNames;
       }
       catch (validateError) {
         result.errors.push(getErrorString('Fixture could not be validated.', validateError));

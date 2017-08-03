@@ -13,11 +13,10 @@ let definedChannelKeys; // and aliases
 let usedChannelKeys; // and aliases
 let modeShortNames;
 
-module.exports = function checkFixture(manKey, fixKey, fixtureJson, usedShortNames=[]) {
+module.exports = function checkFixture(manKey, fixKey, fixtureJson, usedShortNames = new Set()) {
   result = {
     errors: [],
-    warnings: [],
-    usedShortNames: usedShortNames
+    warnings: []
   };
   definedChannelKeys = [];
   usedChannelKeys = [];
@@ -37,10 +36,10 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, usedShortNam
     return result;
   }
 
-  if (result.usedShortNames.includes(fixture.shortName)) {
+  if (usedShortNames.has(fixture.shortName)) {
     result.errors.push(`shortName '${fixture.shortName}' is not unique.`);
   }
-  result.usedShortNames.push(fixture.shortName);
+  usedShortNames.add(fixture.shortName);
 
   checkMeta(fixture.meta);
   checkPhysical(fixture.physical);
