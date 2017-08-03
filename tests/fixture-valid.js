@@ -40,15 +40,11 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
   checkMeta(fixture.meta);
   checkPhysical(fixture.physical);
 
-  checkIsEmpty(
-    fixtureJson.availableChannels,
-    'availableChannels is empty. Add a channel or remove it.',
-    () => {
-      for (const channel of fixture.availableChannels) {
-        checkChannel(channel);
-      }
+  if (checkIsEmpty(fixtureJson.availableChannels, 'availableChannels is empty. Add a channel or remove it.')) {
+    for (const channel of fixture.availableChannels) {
+      checkChannel(channel);
     }
-  );
+  }
 
   for (const mode of fixture.modes) {
     checkMode(mode);
@@ -104,19 +100,15 @@ function checkPhysical(physical, modeDescription = '') {
   }
 
   const physicalJson = physical.jsonObject;
-  checkIsEmpty(
-    physicalJson,
-    `physical${modeDescription} is empty. Please remove it or add data.`,
-    () => {
-      for (const property of ['bulb', 'lens', 'focus']) {
-        checkIsEmpty(physicalJson[property], `physical.${property}${modeDescription} is empty. Please remove it or add data.`);
-      }
-    
-      if (physical.lensDegreesMin > physical.lensDegreesMax) {
-        result.errors.push(`physical.lens.degreesMinMax${modeDescription} is an invalid range.`);
-      }
+  if (checkIsEmpty(physicalJson, `physical${modeDescription} is empty. Please remove it or add data.`)) {
+    for (const property of ['bulb', 'lens', 'focus']) {
+      checkIsEmpty(physicalJson[property], `physical.${property}${modeDescription} is empty. Please remove it or add data.`);
     }
-  )
+  
+    if (physical.lensDegreesMin > physical.lensDegreesMax) {
+      result.errors.push(`physical.lens.degreesMinMax${modeDescription} is an invalid range.`);
+    }
+  }
 }
 
 function checkChannel(channel) {
@@ -386,15 +378,17 @@ function checkUnusedChannels() {
   }
 }
 
-function checkIsEmpty(obj, messageIfEmpty, presentCallback=undefined) {
+// returns whether the object contains data
+function checkIsEmpty(obj, messageIfEmpty) {
   if (obj !== undefined) {
     if (Object.keys(obj).length === 0) {
       result.errors.push(messageIfEmpty);
     }
-    else if (presentCallback) {
-      presentCallback();
+    else {
+      return true;
     }
   }
+  return false;
 }
 
 
