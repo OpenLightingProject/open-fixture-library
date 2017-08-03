@@ -20,6 +20,7 @@ module.exports.VERSION = '1.0.0';
  */
 
 const NonEmptyString = String.of(1, null, null);
+const NonEmptyMultiLineString = schema(/.+/m);
 
 const URL = schema(/^(ftp|http|https):\/\/[^ "]+$/);
 
@@ -126,12 +127,12 @@ const Fixture = schema({
     '?importPlugin': schema({
       'plugin': NonEmptyString,
       'date': ISODate,
-      '?comment': NonEmptyString,
+      '?comment': NonEmptyMultiLineString,
       '*': Function
     }),
     '*': Function
   }),
-  '?comment': NonEmptyString,
+  '?comment': NonEmptyMultiLineString,
   '?manualURL': URL,
   '?physical': Physical,
   'availableChannels': schema({
@@ -147,7 +148,7 @@ const Fixture = schema({
 const Manufacturers = schema({
   '*': schema({ // '*' is the manufacturer key
     'name': NonEmptyString,
-    '?comment': NonEmptyString,
+    '?comment': NonEmptyMultiLineString,
     '?website': URL,
     '*': Function
   })
