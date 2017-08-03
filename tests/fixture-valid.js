@@ -281,7 +281,6 @@ function checkRange(channel, capNumber, minUsedFineness) {
     const possibleEndValues = getPossibleEndValues(minUsedFineness);
     
     if (!possibleEndValues.includes(rawRangeEnd)) {
-      console.log(minUsedFineness, possibleEndValues);
       result.errors.push(`The last range has to end at ${possibleEndValues.join(' or ')} in capability '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'`);
       return false;
     }
@@ -337,20 +336,20 @@ function checkMode(mode) {
 }
 
 function checkModeChannelReference(chNumber, mode, modeChKeyCount) {
-  const chKey = mode.jsonObject.channels[chNumber];
+  const chReference = mode.jsonObject.channels[chNumber];
 
-  if (typeof chKey !== 'string') {
-    checkMatrixReference(chKey, modeChKeyCount);
+  if (chReference === null) {
     return;
   }
 
-  const channel = mode.fixture.getChannelByKey(chKey);
+  if (typeof chReference !== 'string') {
+    checkChannelInsertBlock(chReference, modeChKeyCount);
+    return;
+  }
+
+  const channel = mode.fixture.getChannelByKey(chReference);
   if (channel === null) {
-    result.errors.push(`Channel '${chKey}' is referenced from mode '${mode.shortName}' but is not defined.`);
-    return;
-  }
-
-  if (channel instanceof NullChannel) {
+    result.errors.push(`Channel '${chReference}' is referenced from mode '${mode.shortName}' but is not defined.`);
     return;
   }
 
@@ -369,6 +368,16 @@ function checkModeChannelReference(chNumber, mode, modeChKeyCount) {
 
   if (channel.type === 'Pan' || channel.type === 'Tilt') {
     checkPanTiltMaxInPhysical(channel, mode);
+  }
+}
+
+function checkChannelInsertBlock(complexData, modeChKeyCount) {
+  switch (complexData.insert) {
+    case 'matrixChannels':
+      checkMatrixReference(complexData, modeChKeyCount);
+      return;
+
+    // we need no default as other values are prohibited by the schema
   }
 }
 
