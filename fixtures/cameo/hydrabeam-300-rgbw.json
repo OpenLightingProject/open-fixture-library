@@ -627,6 +627,7 @@
         "Master Blue",
         "Master White",
         {
+          "insert": "matrixChannels",
           "repeatFor": "eachPixel",
           "channelOrder": "perPixel",
           "templateChannels": [
@@ -645,6 +646,7 @@
         "Master Dimmer",
         "Strobe",
         {
+          "insert": "matrixChannels",
           "repeatFor": "eachPixel",
           "channelOrder": "perPixel",
           "templateChannels": [
@@ -670,6 +672,7 @@
       "shortName": "42ch",
       "channels": [
         {
+          "insert": "matrixChannels",
           "repeatFor": "eachPixel",
           "channelOrder": "perPixel",
           "templateChannels": [

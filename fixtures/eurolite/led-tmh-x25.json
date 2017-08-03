@@ -512,6 +512,7 @@
         "White",
         "Reset",
         {
+          "insert": "matrixChannels",
           "repeatFor": "eachPixel",
           "channelOrder": "perPixel",
           "templateChannels": [

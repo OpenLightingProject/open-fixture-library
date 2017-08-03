@@ -218,6 +218,7 @@
         "strobe2",
         "Flash Duration",
         {
+          "insert": "matrixChannels",
           "repeatFor": "eachPixel",
           "channelOrder": "perPixel",
           "templateChannels": [

@@ -219,6 +219,7 @@
         "Green 1 / Fade Time",
         "Blue 1",
         {
+          "insert": "matrixChannels",
           "repeatFor": ["2", "3", "4"],
           "channelOrder": "perPixel",
           "templateChannels": [

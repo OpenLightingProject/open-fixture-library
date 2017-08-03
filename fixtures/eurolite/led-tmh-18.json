@@ -499,6 +499,7 @@
           "Dimmer",
           "Strobe",
           {
+            "insert": "matrixChannels",
             "repeatFor": "eachPixel",
             "channelOrder": "perPixel",
             "templateChannels": [

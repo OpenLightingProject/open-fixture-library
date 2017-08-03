@@ -738,6 +738,7 @@
       "name": "PIX1",
       "channels": [
         {
+          "insert": "matrixChannels",
           "repeatFor": "eachPixelGroup",
           "channelOrder": "perPixel",
           "templateChannels": [
@@ -752,6 +753,7 @@
       "name": "PIX3",
       "channels": [
         {
+          "insert": "matrixChannels",
           "repeatFor": "eachPixelGroup",
           "channelOrder": "perPixel",
           "templateChannels": [

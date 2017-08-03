@@ -336,6 +336,7 @@
       "shortName": "P3",
       "channels": [
         {
+          "insert": "matrixChannels",
           "repeatFor": ["1/2", "2/2"],
           "channelOrder": "perPixel",
           "templateChannels": [
@@ -353,6 +354,7 @@
       "shortName": "P4",
       "channels": [
         {
+          "insert": "matrixChannels",
           "repeatFor": "eachPixel",
           "channelOrder": "perPixel",
           "templateChannels": [
@@ -379,6 +381,7 @@
         "Dimmer",
         "Strobe2",
         {
+          "insert": "matrixChannels",
           "repeatFor": "eachPixel",
           "channelOrder": "perPixel",
           "templateChannels": [

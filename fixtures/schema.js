@@ -139,6 +139,7 @@ const ChannelReference = [
   ChannelKey, // normal channel keys and resolved template channel keys
   ChannelAliasKey, // fine or switching channel keys
   {
+    'insert': 'matrixChannels',
     'repeatFor': ['eachPixel', 'eachPixelGroup', Array.of(1, Infinity, [PixelKey, PixelGroupKey])],
     'channelOrder': ['perPixel', 'perChannel'],
     'templateChannels': Array.of(1, Infinity, TemplateChannelReference),

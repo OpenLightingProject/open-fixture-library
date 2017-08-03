@@ -293,6 +293,7 @@
       "shortName": "256ch",
       "channels": [
         {
+          "insert": "matrixChannels",
           "repeatFor": "eachPixel",
           "channelOrder": "perPixel",
           "templateChannels": [
