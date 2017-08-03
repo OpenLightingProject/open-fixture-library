@@ -583,8 +583,10 @@
   "matrix": {
     "layout": "custom2D",
     "pixelKeys": [
-      [null, "1", null],
-      ["2", null, "3"]
+      [
+        [null, "1",  null],
+        ["2",  null, "3" ]
+      ]
     ]
   },
   "modes": [

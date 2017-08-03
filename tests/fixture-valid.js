@@ -3,7 +3,6 @@ const util = require('util');
 const schema = require('../fixtures/schema.js');
 
 const Fixture = require('../lib/model/Fixture.js');
-const NullChannel = require('../lib/model/NullChannel.js');
 const FineChannel = require('../lib/model/FineChannel.js');
 const SwitchingChannel = require('../lib/model/SwitchingChannel.js');
 

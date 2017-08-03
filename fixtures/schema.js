@@ -110,16 +110,16 @@ const TemplateChannel = Channel;
 const PixelKey = NoVariablesString;
 const PixelGroupKey = NoVariablesString;
 
-const PixelKeyArray1D = Array.of(1, Infinity, [PixelKey, null]); // null to allow spacing
-const PixelKeyArray2D = Array.of(1, Infinity, PixelKeyArray1D);
-const PixelKeyArray3D = Array.of(1, Infinity, PixelKeyArray2D);
-
 const Matrix = schema({
   'layout': ['line', 'rect', 'cube', 'custom2D', 'custom3D'],
 
   // one of the two must be defined
-  '?pixelCount': Array.of(3, Number.min(0).step(1)),
-  '?pixelKeys': [PixelKeyArray1D, PixelKeyArray2D, PixelKeyArray3D],
+  '?pixelCount': Array.of(3, Number.min(1).step(1)),
+  '?pixelKeys': Array.of(1, Infinity, // Z items
+    Array.of(1, Infinity, // Y items
+      Array.of(1, Infinity, [PixelKey, null]) // X items
+    )
+  ),
 
   '?pixelGroups': {
     '*': Array.of(1, Infinity, PixelKey) // '*' is the PixelGroupKey
