@@ -1,6 +1,6 @@
 const util = require('util');
 
-const schemas = require('../fixtures/schema.js');
+const schema = require('../fixtures/schema.js');
 
 const Fixture = require('../lib/model/Fixture.js');
 const NullChannel = require('../lib/model/NullChannel.js');
@@ -22,7 +22,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
   usedChannelKeys = new Set();
   modeShortNames = [];
 
-  const schemaErrors = schemas.Fixture.errors(fixtureJson);
+  const schemaErrors = schema.Fixture.errors(fixtureJson);
   if (schemaErrors !== false) {
     result.errors.push(getErrorString('File does not match schema.', schemaErrors));
     return result;
@@ -115,6 +115,7 @@ function checkPhysical(physical, modeDescription = '') {
 }
 
 function checkChannel(channel) {
+  checkChannelKey(channel.key);
   checkUniqueness(
     definedChannelKeys,
     channel.key,
@@ -139,6 +140,7 @@ function checkChannel(channel) {
 
   // Fine channels
   for (const alias of channel.fineChannelAliases) {
+    checkChannelKey(alias);
     checkUniqueness(
       definedChannelKeys,
       alias,
@@ -151,6 +153,7 @@ function checkChannel(channel) {
 
   // Switching channels
   for (const alias of channel.switchingChannelAliases) {
+    checkChannelKey(alias);
     checkUniqueness(
       definedChannelKeys,
       alias,
@@ -220,6 +223,21 @@ function checkCapabilities(channel, mustBe8Bit) {
           result.errors.push(`Channel '${chKey}' is referenced from capability '${cap.name}' (#${i+1}) in channel '${channel.key}' but is not defined.`);
         }
       }
+    }
+  }
+}
+
+function checkChannelKey(key, isTemplate=false) {
+  if (isTemplate) {
+    const pattern = new RegExp(schema.properties.templateChannelKey.pattern);
+    if (!pattern.test(key)) {
+      result.errors.push(`Template channel key ${key} doesn't match pattern ${pattern}`);
+    }
+  }
+  else {
+    const pattern = new RegExp(schema.properties.channelKey.pattern);
+    if (!pattern.test(key)) {
+      result.errors.push(`Channel key ${key} doesn't match pattern ${pattern}`);
     }
   }
 }

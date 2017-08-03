@@ -20,6 +20,7 @@ module.exports.VERSION = '2.0.0';
  */
 
 const NonEmptyString = String.of(1, null, null);
+const NoTemplateString = schema(/^[^$]+$/);
 
 const URL = schema(/^(ftp|http|https):\/\/[^ "]+$/);
 
@@ -62,8 +63,11 @@ const Physical = schema({
 
 const DMXValue = Number.min(0).step(1);  // max value depends on how many fine channels there are (255 if none, 65535 if one, etc.)
 
-const ChannelKey = NonEmptyString;  // channels in availableChannels
-const ChannelAliasKey = NonEmptyString;  // channel keys that are only defined inside other channels
+const ChannelKey = NoTemplateString;  // channels in availableChannels
+const ChannelAliasKey = NoTemplateString;  // channel keys that are only defined inside other channels
+
+const TemplateChannelKey = schema(/\$pixelKey/);
+const TemplateChannelAliasKey = schema(/\$pixelKey/);
 
 const Capability = schema({
   'range': Array.of(2, DMXValue),
@@ -73,16 +77,24 @@ const Capability = schema({
   '?color2': Color,
   '?image': NonEmptyString,
   '?switchChannels': {
-    '*': [ChannelKey, ChannelAliasKey] // switch switching channel '*' to an already defined channel or fine channel
+    '*': [ // switch switching channel '*' to an already defined channel or fine channel
+      ChannelKey,
+      ChannelAliasKey,
+      TemplateChannelKey, // only in template channels
+      TemplateChannelAliasKey // only in template channels
+    ]
   },
   '*': Function
 });
 
 const Channel = schema({
-  '?name': NonEmptyString, // if not set: use channel key
+  '?name': NoTemplateString, // if not set: use channel key
   'type': ['Intensity', 'Strobe', 'Shutter', 'Speed', 'SingleColor', 'MultiColor', 'Gobo', 'Prism', 'Pan', 'Tilt', 'Beam', 'Effect', 'Maintenance', 'Nothing'],
   '?color': ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime', 'Indigo'], // required and only allowed for SingleColor
-  '?fineChannelAliases': Array.of(1, Infinity, ChannelAliasKey),
+  '?fineChannelAliases': Array.of(1, Infinity, [
+    ChannelAliasKey,
+    TemplateChannelAliasKey // only in template channels
+  ]),
   '?defaultValue': DMXValue,
   '?highlightValue': DMXValue,
   '?invert': Boolean,
@@ -93,13 +105,10 @@ const Channel = schema({
   '*': Function
 });
 
-const TemplateChannelKey = schema(/\$pixelKey/);
-const TemplateChannelAliasKey = schema(/\$pixelKey/);
-
 const TemplateChannel = Channel;
 
-const PixelKey = NonEmptyString;
-const PixelGroupKey = NonEmptyString;
+const PixelKey = NoTemplateString;
+const PixelGroupKey = NoTemplateString;
 
 const PixelKeyArray1D = Array.of(1, Infinity, [PixelKey, null]); // null to allow spacing
 const PixelKeyArray2D = Array.of(1, Infinity, PixelKeyArray1D);
@@ -189,19 +198,21 @@ module.exports.Fixture = Fixture;
 module.exports.Manufacturers = Manufacturers;
 
 let properties = {
-  manufacturer:     Manufacturers.toJSON().additionalProperties.properties,
-  fixture:          Fixture.toJSON().properties,
-  mode:             Mode.toJSON().properties,
-  channelKey:       ChannelKey.schema.toJSON(),
-  channelAliasKey:  ChannelAliasKey.schema.toJSON(),
-  channel:          Channel.toJSON().properties,
-  capability:       Capability.toJSON().properties,
-  physical:         Physical.toJSON().properties,
-  category:         Category.toJSON(),
-  color:            Color.toJSON(),
-  ISODate:          ISODate.toJSON(),
-  URL:              URL.toJSON(),
-  DMXValue:         DMXValue.toJSON()
+  manufacturer:             Manufacturers.toJSON().additionalProperties.properties,
+  fixture:                  Fixture.toJSON().properties,
+  mode:                     Mode.toJSON().properties,
+  channelKey:               ChannelKey.toJSON(),
+  channelAliasKey:          ChannelAliasKey.toJSON(),
+  templateChannelKey:       TemplateChannelKey.toJSON(),
+  templateChannelAliasKey:  TemplateChannelAliasKey.toJSON(),
+  channel:                  Channel.toJSON().properties,
+  capability:               Capability.toJSON().properties,
+  physical:                 Physical.toJSON().properties,
+  category:                 Category.toJSON(),
+  color:                    Color.toJSON(),
+  ISODate:                  ISODate.toJSON(),
+  URL:                      URL.toJSON(),
+  DMXValue:                 DMXValue.toJSON()
 };
 properties.meta  = properties.fixture.meta.properties;
 properties.bulb  = properties.physical.bulb.properties;
