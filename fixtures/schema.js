@@ -34,27 +34,27 @@ const Physical = schema({
   '?weight': Number.above(0), // in kg
   '?power': Number.above(0), // in W
   '?DMXconnector': ['3-pin', '5-pin', '3-pin (swapped +/-)', '3-pin and 5-pin', '3.5mm stereo jack'], // additions are welcome
-  '?bulb': schema({
+  '?bulb': {
     '?type': NonEmptyString, // e.g. 'LED'
     '?colorTemperature': Number.above(0), // in K
     '?lumens': Number.above(0),
     '*': Function
-  }),
-  '?lens': schema({
+  },
+  '?lens': {
     '?name': NonEmptyString, // e.g. 'PC', 'Fresnel'
     '?degreesMinMax': Array.of(2, Number.min(0).max(360)),
     '*': Function
-  }),
-  '?focus': schema({
+  },
+  '?focus': {
     '?type': ['Fixed', 'Head', 'Mirror', 'Barrel'], // additions are welcome
     '?panMax': Number.min(0), // in degrees
     '?tiltMax': Number.min(0), // in degrees
     '*': Function
-  }),
-  '?matrix': schema({
+  },
+  '?matrix': {
     'pixelDimensions': DimensionsXYZ, // width, height, depth (in mm)
     'spacing': DimensionsXYZ // in mm
-  }),
+  },
   '*': Function
 });
 
@@ -70,9 +70,9 @@ const Capability = schema({
   '?color': Color,
   '?color2': Color,
   '?image': NonEmptyString,
-  '?switchChannels': schema({
+  '?switchChannels': {
     '*': [ChannelKey, ChannelAliasKey] // switch switching channel '*' to an already defined channel or fine channel
-  }),
+  },
   '*': Function
 });
 
@@ -110,9 +110,11 @@ const Matrix = schema({
   '?pixelCount': Array.of(3, Number.min(0).step(1)),
   '?pixelKeys': [PixelKeyArray1D, PixelKeyArray2D, PixelKeyArray3D],
 
-  '?pixelGroups': schema({
+  '?pixelGroups': {
     '*': Array.of(1, Infinity, PixelKey) // '*' is the PixelGroupKey
-  })
+  },
+
+  '*': Function
 });
 
 const TemplateChannelReference = [
@@ -123,13 +125,14 @@ const TemplateChannelReference = [
 
 const ChannelReference = [
   null, // for unused channels
-  ChannelKey, // normal channel keys
+  ChannelKey, // normal channel keys and resolved template channel keys
   ChannelAliasKey, // fine or switching channel keys
-  schema({
+  {
     'repeatFor': ['eachPixel', 'eachPixelGroup', Array.of(1, Infinity, [PixelKey, PixelGroupKey])],
     'channelOrder': ['perPixel', 'perChannel'],
-    'templateChannels': Array.of(1, Infinity, TemplateChannelReference)
-  })
+    'templateChannels': Array.of(1, Infinity, TemplateChannelReference),
+    '*': Function
+  }
 ];
 
 const Mode = schema({
@@ -144,39 +147,39 @@ const Fixture = schema({
   'name': NonEmptyString,
   '?shortName': NonEmptyString, // if not set: use name
   'categories': Array.of(1, Infinity, Category), // most important category first
-  'meta': schema({
+  'meta': {
     'authors': Array.of(1, Infinity, NonEmptyString),
     'createDate': ISODate,
     'lastModifyDate': ISODate,
-    '?importPlugin': schema({
+    '?importPlugin': {
       'plugin': NonEmptyString,
       'date': ISODate,
       '?comment': NonEmptyString,
       '*': Function
-    }),
+    },
     '*': Function
-  }),
+  },
   '?comment': NonEmptyString,
   '?manualURL': URL,
   '?physical': Physical,
-  'availableChannels': schema({
+  '?availableChannels': {
     '*': Channel // '*' is the ChannelKey
-  }),
-  '?templateChannels': schema({
+  },
+  '?templateChannels': {
     '*': TemplateChannel // '*' is the TemplateChannelKey, must include $pixelKey
-  }),
+  },
   '?matrix': Matrix,
   'modes': Array.of(1, Infinity, Mode),
   '*': Function
 });
 
 const Manufacturers = schema({
-  '*': schema({ // '*' is the manufacturer key
+  '*': { // '*' is the manufacturer key
     'name': NonEmptyString,
     '?comment': NonEmptyString,
     '?website': URL,
     '*': Function
-  })
+  }
 });
 
 
