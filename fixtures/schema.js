@@ -1,5 +1,7 @@
 const schema = require('js-schema');
 
+module.exports.VERSION = '1.0.0';
+
 /**
  * see https://github.com/molnarg/js-schema
  *
