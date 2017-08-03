@@ -428,7 +428,7 @@
       ]
     },
     "Focus": {
-      "type": "Beam",
+      "type": "Focus",
       "fineChannelAliases": ["Focus fine"],
       "crossfade": true,
       "capabilities": [
@@ -439,7 +439,7 @@
       ]
     },
     "Zoom": {
-      "type": "Beam",
+      "type": "Zoom",
       "fineChannelAliases": ["Zoom fine"],
       "crossfade": true,
       "capabilities": [
@@ -494,7 +494,7 @@
       "crossfade": true
     },
     "Iris": {
-      "type": "Beam",
+      "type": "Iris",
       "fineChannelAliases": ["Iris fine"],
       "crossfade": true,
       "capabilities": [

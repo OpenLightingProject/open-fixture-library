@@ -196,7 +196,7 @@ function getChannelAttribute(channel) {
     INTENSITY: ['Intensity'],
     COLOUR: ['SingleColor', 'MultiColor'],
     FOCUS: ['Pan', 'Tilt'],
-    BEAM: ['Beam'],
+    BEAM: ['Iris', 'Focus', 'Zoom'],
     EFFECT: ['Strobe', 'Shutter', 'Speed', 'Gobo', 'Prism', 'Effect'],
     CONTROL: ['Maintenance'],
     EXTRA: ['Nothing']

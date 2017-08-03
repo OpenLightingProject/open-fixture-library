@@ -66,6 +66,15 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
         else if (channel.$.Name.toLowerCase().includes('strob')) {
           ch.type = 'Strobe';
         }
+        else if (channel.$.Name.toLowerCase().includes('iris')) {
+          ch.type = 'Iris';
+        }
+        else if (channel.$.Name.toLowerCase().includes('focus')) {
+          ch.type = 'Focus';
+        }
+        else if (channel.$.Name.toLowerCase().includes('zoom')) {
+          ch.type = 'Zoom';
+        }
         else if (ch.type === 'Intensity') {
           ch.crossfade = true;
         }

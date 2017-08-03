@@ -213,6 +213,11 @@ function getChannelType(channel) {
     case 'Strobe':
       return 'Shutter';
 
+    case 'Zoom':
+    case 'Focus':
+    case 'Iris':
+      return 'Beam';
+
     default:
       return channel.type;
   }

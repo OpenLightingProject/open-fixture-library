@@ -72,9 +72,29 @@ const Capability = schema({
   '*': Function
 });
 
+const ChannelType = [
+  'Intensity',
+  'SingleColor',
+  'MultiColor',
+  'Pan',
+  'Tilt',
+  'Focus',
+  'Zoom',
+  'Iris',
+  'Gobo',
+  'Prism',
+  'Shutter',
+  'Strobe',
+  'Speed',
+  'Color Temperature',
+  'Effect',
+  'Maintenance',
+  'Nothing'
+];
+
 const Channel = schema({
   '?name': NonEmptyString, // if not set: use channel key
-  'type': ['Intensity', 'Strobe', 'Shutter', 'Speed', 'SingleColor', 'MultiColor', 'Gobo', 'Prism', 'Pan', 'Tilt', 'Beam', 'Effect', 'Maintenance', 'Nothing'],
+  'type': ChannelType,
   '?color': ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime', 'Indigo'], // required and only allowed for SingleColor
   '?fineChannelAliases': Array.of(1, Infinity, ChannelAliasKey),
   '?defaultValue': DMXValue,
