@@ -40,9 +40,15 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
   checkMeta(fixture.meta);
   checkPhysical(fixture.physical);
 
-  for (const channel of fixture.availableChannels) {
-    checkChannel(channel);
-  }
+  checkIsEmpty(
+    fixtureJson.availableChannels,
+    'availableChannels is empty. Add a channel or remove it.',
+    () => {
+      for (const channel of fixture.availableChannels) {
+        checkChannel(channel);
+      }
+    }
+  );
 
   for (const mode of fixture.modes) {
     checkMode(mode);
@@ -93,26 +99,24 @@ function checkMeta(meta) {
 }
 
 function checkPhysical(physical, modeDescription = '') {
-  if (physical == null) {
+  if (physical === null) {
     return;
   }
 
   const physicalJson = physical.jsonObject;
-
-  if (Object.keys(physicalJson).length === 0) {
-    result.errors.push(`physical${modeDescription} is empty. Please remove it or add data.`);
-    return;
-  }
-
-  for (const property of ['bulb', 'lens', 'focus']) {
-    if (property in physicalJson && Object.keys(physicalJson[property]).length === 0) {
-      result.errors.push(`physical.${property}${modeDescription} is empty. Please remove it or add data.`);
+  checkIsEmpty(
+    physicalJson,
+    `physical${modeDescription} is empty. Please remove it or add data.`,
+    () => {
+      for (const property of ['bulb', 'lens', 'focus']) {
+        checkIsEmpty(physicalJson[property], `physical.${property}${modeDescription} is empty. Please remove it or add data.`);
+      }
+    
+      if (physical.lensDegreesMin > physical.lensDegreesMax) {
+        result.errors.push(`physical.lens.degreesMinMax${modeDescription} is an invalid range.`);
+      }
     }
-  }
-
-  if (physical.lensDegreesMin > physical.lensDegreesMax) {
-    result.errors.push(`physical.lens.degreesMinMax${modeDescription} is an invalid range.`);
-  }
+  )
 }
 
 function checkChannel(channel) {
@@ -379,6 +383,17 @@ function checkUnusedChannels() {
 
   if (unused.length > 0) {
     result.warnings.push(`Channels ${unused} defined but never used.`);
+  }
+}
+
+function checkIsEmpty(obj, messageIfEmpty, presentCallback=undefined) {
+  if (obj !== undefined) {
+    if (Object.keys(obj).length === 0) {
+      result.errors.push(messageIfEmpty);
+    }
+    else if (presentCallback) {
+      presentCallback();
+    }
   }
 }
 
