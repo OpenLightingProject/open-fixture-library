@@ -1,5 +1,5 @@
 {
-  "name": "MAC Aura ",
+  "name": "MAC Aura",
   "shortName": "MacAura",
   "categories": ["Moving Head"],
   "meta": {
@@ -30,7 +30,7 @@
     }
   },
   "availableChannels": {
-    "shutter": {
+    "Shutter": {
       "type": "Shutter",
       "capabilities": [
         {
@@ -123,7 +123,7 @@
         }
       ]
     },
-    "beam dimmer": {
+    "Beam dimmer": {
       "type": "Intensity",
       "capabilities": [
         {
@@ -132,8 +132,8 @@
         }
       ]
     },
-    "zoom": {
-      "type": "[add-value]",
+    "Zoom": {
+      "type": "Beam",
       "capabilities": [
         {
           "range": [0, 255],
@@ -141,8 +141,9 @@
         }
       ]
     },
-    "pan": {
+    "Pan": {
       "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
       "capabilities": [
         {
           "range": [0, 255],
@@ -150,17 +151,9 @@
         }
       ]
     },
-    "pan fine": {
-      "type": "Pan",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "pan fine adjustment (least significant byte)"
-        }
-      ]
-    },
-    "tilt": {
+    "Tilt": {
       "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
       "capabilities": [
         {
           "range": [0, 255],
@@ -168,17 +161,8 @@
         }
       ]
     },
-    "tilt fine": {
-      "type": "Tilt",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "tilt fine adjustment (least significant byte)"
-        }
-      ]
-    },
-    "fixture control settings": {
-      "type": "[add-value]",
+    "Fixture control settings": {
+      "type": "Maintenance",
       "capabilities": [
         {
           "range": [0, 9],
@@ -262,7 +246,7 @@
         }
       ]
     },
-    "beam color wheel effect": {
+    "Beam color wheel effect": {
       "type": "MultiColor",
       "capabilities": [
         {
@@ -439,7 +423,7 @@
         }
       ]
     },
-    "beam red": {
+    "Beam red": {
       "type": "SingleColor",
       "color": "Red",
       "capabilities": [
@@ -449,7 +433,7 @@
         }
       ]
     },
-    "beam green": {
+    "Beam green": {
       "type": "SingleColor",
       "color": "Green",
       "capabilities": [
@@ -459,7 +443,7 @@
         }
       ]
     },
-    "beam blue": {
+    "Beam blue": {
       "type": "SingleColor",
       "color": "Blue",
       "capabilities": [
@@ -469,7 +453,7 @@
         }
       ]
     },
-    "beam white": {
+    "Beam white": {
       "type": "SingleColor",
       "color": "White",
       "capabilities": [
@@ -479,7 +463,7 @@
         }
       ]
     },
-    "beam ctc": {
+    "Beam CTC": {
       "type": "Beam",
       "capabilities": [
         {
@@ -498,20 +482,20 @@
       "name": "14 channels",
       "shortName": "14ch",
       "channels": [
-        "shutter",
-        "beam dimmer",
-        "zoom",
-        "pan",
-        "pan fine",
-        "tilt",
-        "tilt fine",
-        "fixture control settings",
-        "beam color wheel effect",
-        "beam red",
-        "beam green",
-        "beam blue",
-        "beam white",
-        "beam ctc"
+        "Shutter",
+        "Beam dimmer",
+        "Zoom",
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "Fixture control settings",
+        "Beam color wheel effect",
+        "Beam red",
+        "Beam green",
+        "Beam blue",
+        "Beam white",
+        "Beam CTC"
       ]
     }
   ]
