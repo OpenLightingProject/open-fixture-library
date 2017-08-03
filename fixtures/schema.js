@@ -20,7 +20,7 @@ module.exports.VERSION = '2.0.0';
  */
 
 const NonEmptyString = String.of(1, null, null);
-const NoTemplateString = schema(/^[^$]+$/);
+const NoVariablesString = schema(/^[^$]+$/);
 
 const URL = schema(/^(ftp|http|https):\/\/[^ "]+$/);
 
@@ -63,8 +63,8 @@ const Physical = schema({
 
 const DMXValue = Number.min(0).step(1);  // max value depends on how many fine channels there are (255 if none, 65535 if one, etc.)
 
-const ChannelKey = NoTemplateString;  // channels in availableChannels
-const ChannelAliasKey = NoTemplateString;  // channel keys that are only defined inside other channels
+const ChannelKey = NoVariablesString;  // channels in availableChannels
+const ChannelAliasKey = NoVariablesString;  // channel keys that are only defined inside other channels
 
 const TemplateChannelKey = schema(/\$pixelKey/);
 const TemplateChannelAliasKey = schema(/\$pixelKey/);
@@ -88,7 +88,7 @@ const Capability = schema({
 });
 
 const Channel = schema({
-  '?name': NoTemplateString, // if not set: use channel key
+  '?name': NoVariablesString, // if not set: use channel key
   'type': ['Intensity', 'Strobe', 'Shutter', 'Speed', 'SingleColor', 'MultiColor', 'Gobo', 'Prism', 'Pan', 'Tilt', 'Beam', 'Effect', 'Maintenance', 'Nothing'],
   '?color': ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime', 'Indigo'], // required and only allowed for SingleColor
   '?fineChannelAliases': Array.of(1, Infinity, [
@@ -107,8 +107,8 @@ const Channel = schema({
 
 const TemplateChannel = Channel;
 
-const PixelKey = NoTemplateString;
-const PixelGroupKey = NoTemplateString;
+const PixelKey = NoVariablesString;
+const PixelGroupKey = NoVariablesString;
 
 const PixelKeyArray1D = Array.of(1, Infinity, [PixelKey, null]); // null to allow spacing
 const PixelKeyArray2D = Array.of(1, Infinity, PixelKeyArray1D);

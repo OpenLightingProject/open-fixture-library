@@ -40,7 +40,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
   checkMeta(fixture.meta);
   checkPhysical(fixture.physical);
 
-  if (assumeNotEmpty(fixtureJson.availableChannels, 'availableChannels is empty. Add a channel or remove it.')) {
+  if (isNotEmpty(fixtureJson.availableChannels, 'availableChannels is empty. Add a channel or remove it.')) {
     for (const channel of fixture.availableChannels) {
       checkChannel(channel);
     }
@@ -103,9 +103,9 @@ function checkPhysical(physical, modeDescription = '') {
   }
 
   const physicalJson = physical.jsonObject;
-  if (assumeNotEmpty(physicalJson, `physical${modeDescription} is empty. Please remove it or add data.`)) {
+  if (isNotEmpty(physicalJson, `physical${modeDescription} is empty. Please remove it or add data.`)) {
     for (const property of ['bulb', 'lens', 'focus']) {
-      assumeNotEmpty(physicalJson[property], `physical.${property}${modeDescription} is empty. Please remove it or add data.`);
+      isNotEmpty(physicalJson[property], `physical.${property}${modeDescription} is empty. Please remove it or add data.`);
     }
   
     if (physical.lensDegreesMin > physical.lensDegreesMax) {
@@ -115,17 +115,18 @@ function checkPhysical(physical, modeDescription = '') {
 }
 
 function checkChannel(channel) {
-  checkChannelKey(channel.key);
+  checkTemplateVariables(channel.key);
   checkUniqueness(
     definedChannelKeys,
     channel.key,
     `Channel key '${channel.key}' is already defined in another letter case.`
   );
 
-  // channel name contains the word "fine" or "16bit" / "8 bit" / "32-bit" / "24_bit"
-  if (/\bfine\b|\d+(?:\s|-|_)+bit/i.test(channel.name)) {
+  if (/\bfine\b|\d+(?:\s|-|_)*bit/i.test(channel.name)) {
+    // channel name contains the word "fine" or "16bit" / "8 bit" / "32-bit" / "24_bit"
     result.errors.push(`Channel '${channel.key}' should rather be a fine channel alias of its corresponding coarse channel.`);
   }
+  checkTemplateVariables(channel.name);
 
   // Nothing channels
   if (channel.type === 'Nothing') {
@@ -140,20 +141,20 @@ function checkChannel(channel) {
 
   // Fine channels
   for (const alias of channel.fineChannelAliases) {
-    checkChannelKey(alias);
+    checkTemplateVariables(alias);
     checkUniqueness(
       definedChannelKeys,
       alias,
       `Fine channel alias '${alias}' in channel '${channel.key}' is already defined (maybe in another letter case).`
     );
   }
-  const minUsedFineness = Math.max.apply(null, fixture.modes.map(
+  const minUsedFineness = Math.min(...fixture.modes.map(
     mode => channel.getFinenessInMode(mode)
   ));
 
   // Switching channels
   for (const alias of channel.switchingChannelAliases) {
-    checkChannelKey(alias);
+    checkTemplateVariables(alias);
     checkUniqueness(
       definedChannelKeys,
       alias,
@@ -179,7 +180,7 @@ function checkChannel(channel) {
     result.errors.push(`highlightValue must be less or equal to ${channel.maxDmxBound} in channel '${channel.key}'.`);
   }
 
-  checkCapabilities(channel, minUsedFineness === 1);
+  checkCapabilities(channel, minUsedFineness === 0);
 }
 
 function checkCapabilities(channel, mustBe8Bit) {
@@ -227,17 +228,18 @@ function checkCapabilities(channel, mustBe8Bit) {
   }
 }
 
-function checkChannelKey(key, isTemplate=false) {
-  if (isTemplate) {
-    const pattern = new RegExp(schema.properties.templateChannelKey.pattern);
-    if (!pattern.test(key)) {
-      result.errors.push(`Template channel key ${key} doesn't match pattern ${pattern}`);
+function checkTemplateVariables(str, requiredVariables=[], allowedVariables=[]) {
+  allowedVariables = allowedVariables.concat(requiredVariables);
+
+  const variables = str.match(/\$\w+/) || [];
+  for (const variable of variables) {
+    if (!allowedVariables.includes(variable)) {
+      result.errors.push(`Variable ${variable} not allowed in '${str}'`);
     }
   }
-  else {
-    const pattern = new RegExp(schema.properties.channelKey.pattern);
-    if (!pattern.test(key)) {
-      result.errors.push(`Channel key ${key} doesn't match pattern ${pattern}`);
+  for (const variable of requiredVariables) {
+    if (!variables.includes(variable)) {
+      result.errors.push(`Variable ${variable} missing in '${str}'`);
     }
   }
 }
@@ -403,7 +405,7 @@ function checkUnusedChannels() {
 }
 
 // returns whether the object contains data
-function assumeNotEmpty(obj, messageIfEmpty) {
+function isNotEmpty(obj, messageIfEmpty) {
   if (obj !== undefined) {
     if (Object.keys(obj).length === 0) {
       result.errors.push(messageIfEmpty);
