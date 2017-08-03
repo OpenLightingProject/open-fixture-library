@@ -1,0 +1,574 @@
+{
+  "name": "MAC Viper Air FX",
+  "shortName": "ViperAirFX",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["novasfronteiras.co"],
+    "createDate": "2017-08-03",
+    "lastModifyDate": "2017-08-03"
+  },
+  "comment": "Viper Air FX:\n\n\n- 35000 Lumens \n- 1:5 zoom - Continuous and fast zoom with auto-linked focus\n- 160 mm precision PC front lens for fat beam looks\n\n",
+  "manualURL": "https://cdn01.usedlighting.com/products/files/f5395e9c8086c4.pdf",
+  "physical": {
+    "dimensions": [473, 749, 566],
+    "weight": 35.7,
+    "power": 1225,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "1000 W short-arc discharge",
+      "colorTemperature": 6000,
+      "lumens": 35000
+    },
+    "lens": {
+      "degreesMinMax": [11, 58]
+    },
+    "focus": {
+      "panMax": 540,
+      "tiltMax": 268
+    }
+  },
+  "availableChannels": {
+    "strobe / shutter": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 19],
+          "name": "Shutter closed (Lamp switches to 800 watt mode after shutter is closed for 10 seconds)"
+        },
+        {
+          "range": [20, 49],
+          "name": "Shutter open"
+        },
+        {
+          "range": [50, 200],
+          "name": "Strobe, slow>fast"
+        },
+        {
+          "range": [201, 210],
+          "name": "Shutter open"
+        },
+        {
+          "range": [211, 255],
+          "name": "Random strobe, slow > fast"
+        }
+      ]
+    },
+    "Dimmer fade (MSB & LSB)": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Dimmer fade (MSB), Close>Open"
+        }
+      ]
+    },
+    "Cyan": {
+      "type": "SingleColor",
+      "color": "Cyan",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Cyan, White > full cyan"
+        }
+      ]
+    },
+    "Magenta": {
+      "type": "SingleColor",
+      "color": "Magenta",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Magenta, White → full magenta"
+        }
+      ]
+    },
+    "Yellow": {
+      "type": "SingleColor",
+      "color": "Yellow",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Yellow, White → full yellow"
+        }
+      ]
+    },
+    "CTO": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "CTO, Open (6000 K) > warm (3200 K)"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "type": "MultiColor",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Open"
+        },
+        {
+          "range": [1, 14],
+          "name": "Open>Slot1"
+        },
+        {
+          "range": [15, 15],
+          "name": "Slot1"
+        },
+        {
+          "range": [16, 29],
+          "name": "Slot1>Slot2"
+        },
+        {
+          "range": [30, 30],
+          "name": "Slot2"
+        },
+        {
+          "range": [31, 44],
+          "name": "Slot2>Slot3"
+        },
+        {
+          "range": [45, 45],
+          "name": "Slot3"
+        },
+        {
+          "range": [46, 59],
+          "name": "Slot3>Slot4"
+        },
+        {
+          "range": [60, 60],
+          "name": "Slot4"
+        },
+        {
+          "range": [61, 74],
+          "name": "Slot4>Slot5"
+        },
+        {
+          "range": [75, 75],
+          "name": "Slot5"
+        },
+        {
+          "range": [76, 89],
+          "name": "Slot5>Slot6"
+        },
+        {
+          "range": [90, 90],
+          "name": "Slot6"
+        },
+        {
+          "range": [91, 104],
+          "name": "Slot6>Slot7"
+        },
+        {
+          "range": [105, 105],
+          "name": "Slot7"
+        },
+        {
+          "range": [106, 119],
+          "name": "Slot7>Open"
+        },
+        {
+          "range": [120, 120],
+          "name": "Open"
+        },
+        {
+          "range": [121, 125],
+          "name": "Slot1"
+        },
+        {
+          "range": [126, 130],
+          "name": "Slot2"
+        },
+        {
+          "range": [131, 135],
+          "name": "Slot3"
+        },
+        {
+          "range": [136, 140],
+          "name": "Slot4"
+        },
+        {
+          "range": [141, 145],
+          "name": "Slot5"
+        },
+        {
+          "range": [146, 150],
+          "name": "Slot6"
+        },
+        {
+          "range": [151, 155],
+          "name": "Slot7"
+        },
+        {
+          "range": [156, 160],
+          "name": "Open"
+        },
+        {
+          "range": [161, 200],
+          "name": "CW, Fast > Slow"
+        },
+        {
+          "range": [201, 203],
+          "name": "Stop, color wheel stops at current position"
+        },
+        {
+          "range": [204, 243],
+          "name": "CCW, Slow > Fast"
+        },
+        {
+          "range": [244, 247],
+          "name": "Fast Random Color"
+        },
+        {
+          "range": [248, 251],
+          "name": "Medium Random Color"
+        },
+        {
+          "range": [252, 255],
+          "name": "Slow Random Color"
+        }
+      ]
+    },
+    "Aerial effects wheel (wheel 1): gobo selection, indexing, shake, rotation": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Open Gobo Indexed"
+        },
+        {
+          "range": [10, 14],
+          "name": "Gobo 1 Indexed"
+        },
+        {
+          "range": [15, 19],
+          "name": "Gobo 2 Indexed"
+        },
+        {
+          "range": [20, 24],
+          "name": "Gobo 3 Indexed"
+        },
+        {
+          "range": [25, 29],
+          "name": "Gobo 4 Indexed"
+        },
+        {
+          "range": [30, 34],
+          "name": "Gobo 5 Indexed"
+        },
+        {
+          "range": [35, 39],
+          "name": "Gobo 1 Continuous Rotation"
+        },
+        {
+          "range": [40, 44],
+          "name": "Gobo 2 Continuous Rotation"
+        },
+        {
+          "range": [45, 49],
+          "name": "Gobo 3 Continuous Rotation"
+        },
+        {
+          "range": [50, 54],
+          "name": "Gobo 4 Continuous Rotation"
+        },
+        {
+          "range": [55, 59],
+          "name": "Gobo 5 Continuous Rotation"
+        },
+        {
+          "range": [60, 89],
+          "name": "Gobo 1, 360° slow > 10° fast"
+        },
+        {
+          "range": [90, 119],
+          "name": "Gobo 2, 360° slow > 10° fast"
+        },
+        {
+          "range": [120, 149],
+          "name": "Gobo 3, 360° slow > 10° fast"
+        },
+        {
+          "range": [150, 179],
+          "name": "Gobo 4, 360° slow > 10° fast"
+        },
+        {
+          "range": [180, 209],
+          "name": "Gobo 5, 360° slow > 10° fast"
+        },
+        {
+          "range": [210, 232],
+          "name": "CW gobo wheel scroll, fast > slow"
+        },
+        {
+          "range": [233, 255],
+          "name": "CCW gobo wheel scroll, slow > fast"
+        }
+      ]
+    },
+    "Aerial effects wheel (wheel 1): gobo indexing, rotation (16-bit fine, MSB and LSB)": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Gobo indexing, -197.5° → +197.5° (default DMX value 32768 sets gobo to 0°)"
+        }
+      ]
+    },
+    "Aerial effects wheel (wheel 1): gobo indexing, rotation (16-bit fine, MSB and LSB) 2": {
+      "name": "Aerial effects wheel (wheel 1): gobo indexing, rotation (16-bit fine, MSB and LSB)",
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 2],
+          "name": "Stop, gobo indexed at 0°"
+        },
+        {
+          "range": [3, 124],
+          "name": "CW, fast > slow"
+        },
+        {
+          "range": [125, 127],
+          "name": "Stop, gobo stops at current position"
+        },
+        {
+          "range": [128, 252],
+          "name": "CCW, slow > fast"
+        },
+        {
+          "range": [253, 255],
+          "name": "Stop, gobo indexed at 90°"
+        }
+      ]
+    },
+    "Static gobo wheel (wheel 2): wheel scrolling and rotation, random gobo": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Open"
+        },
+        {
+          "range": [1, 14],
+          "name": "Open > Gobo 1"
+        },
+        {
+          "range": [15, 15],
+          "name": "Gobo 1"
+        },
+        {
+          "range": [16, 29],
+          "name": "Gobo 1 > Gobo 2"
+        },
+        {
+          "range": [30, 30],
+          "name": "Gobo 2"
+        },
+        {
+          "range": [31, 44],
+          "name": "Gobo 2 > Gobo 3"
+        },
+        {
+          "range": [45, 45],
+          "name": "Gobo 3"
+        },
+        {
+          "range": [46, 59],
+          "name": "Gobo 3 > Gobo 4"
+        },
+        {
+          "range": [60, 60],
+          "name": "Gobo 4"
+        },
+        {
+          "range": [61, 74],
+          "name": "Gobo 4 > Gobo 5"
+        },
+        {
+          "range": [75, 75],
+          "name": "Gobo 5"
+        },
+        {
+          "range": [76, 89],
+          "name": "Gobo 5 > Gobo 6"
+        },
+        {
+          "range": [90, 90],
+          "name": "Gobo 6"
+        },
+        {
+          "range": [91, 104],
+          "name": "Gobo 6 > Gobo 7"
+        },
+        {
+          "range": [105, 105],
+          "name": "Gobo 7"
+        },
+        {
+          "range": [106, 119],
+          "name": "Gobo 7 > Open"
+        },
+        {
+          "range": [120, 120],
+          "name": "Open"
+        },
+        {
+          "range": [121, 125],
+          "name": "Gobo 1"
+        },
+        {
+          "range": [126, 130],
+          "name": "Gobo 2"
+        },
+        {
+          "range": [131, 135],
+          "name": "Gobo 3"
+        },
+        {
+          "range": [136, 140],
+          "name": "Gobo 4"
+        },
+        {
+          "range": [141, 145],
+          "name": "Gobo 5"
+        },
+        {
+          "range": [146, 150],
+          "name": "Gobo 6"
+        },
+        {
+          "range": [151, 155],
+          "name": "Gobo 7"
+        },
+        {
+          "range": [156, 160],
+          "name": "Open"
+        },
+        {
+          "range": [161, 200],
+          "name": "CW gobo wheel rotation, fast > slow"
+        },
+        {
+          "range": [201, 203],
+          "name": "Stop: gobo wheel stops at current position"
+        },
+        {
+          "range": [204, 243],
+          "name": "CCW gobo wheel rotation, slow > fast"
+        },
+        {
+          "range": [244, 247],
+          "name": "Fast Random Gobo"
+        },
+        {
+          "range": [248, 251],
+          "name": "Medium Random Gobo"
+        },
+        {
+          "range": [252, 255],
+          "name": "Slow Random Gobo"
+        }
+      ]
+    },
+    "Wash effect": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Wash effect, Open > full wash effect"
+        }
+      ]
+    },
+    "Iris ": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Iris, Open > closed"
+        }
+      ]
+    },
+    "Zoom, 16-bit ": {
+      "type": "Zoom",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Zoom, 16-bit (MSB and LSB) Flood > spot"
+        }
+      ]
+    },
+    "Focus, 16-bit ": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Focus, 16-bit (MSB and LSB) Infinity > near"
+        }
+      ]
+    },
+    "Pan, 16-bit (MSB)": {
+      "type": "Pan",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Pan, 16-bit (MSB), Left > right "
+        }
+      ]
+    },
+    "Pan, 16-bit (LSB)": {
+      "type": "Pan",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Pan, 16-bit (LSB) Left > right "
+        }
+      ]
+    },
+    "Tilt, 16-bit (MSB)": {
+      "type": "Tilt",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Tilt, 16-bit (MSB) Up > down"
+        }
+      ]
+    },
+    "Tilt, 16-bit (LSB)": {
+      "type": "Tilt",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Tilt, 16-bit (LSB) Up > down"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "standard",
+      "shortName": "std",
+      "channels": [
+        "strobe / shutter",
+        "Dimmer fade (MSB & LSB)",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CTO",
+        "Color Wheel",
+        "Aerial effects wheel (wheel 1): gobo selection, indexing, shake, rotation",
+        "Aerial effects wheel (wheel 1): gobo indexing, rotation (16-bit fine, MSB and LSB)",
+        "Aerial effects wheel (wheel 1): gobo indexing, rotation (16-bit fine, MSB and LSB) 2",
+        "Static gobo wheel (wheel 2): wheel scrolling and rotation, random gobo",
+        "Wash effect",
+        "Iris ",
+        "Zoom, 16-bit ",
+        "Focus, 16-bit ",
+        "Pan, 16-bit (MSB)",
+        "Pan, 16-bit (LSB)",
+        "Tilt, 16-bit (MSB)",
+        "Tilt, 16-bit (LSB)"
+      ]
+    }
+  ]
+}
