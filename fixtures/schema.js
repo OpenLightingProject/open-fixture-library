@@ -54,8 +54,8 @@ const Physical = schema({
     '?tiltMax': Number.min(0), // in degrees
     '*': Function
   },
-  '?matrix': {
-    'pixelDimensions': DimensionsXYZ, // width, height, depth (in mm)
+  '?matrixPixels': {
+    'dimensions': DimensionsXYZ, // width, height, depth (in mm)
     'spacing': DimensionsXYZ // in mm
   },
   '*': Function
