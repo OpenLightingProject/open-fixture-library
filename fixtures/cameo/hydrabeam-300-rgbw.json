@@ -45,7 +45,7 @@
       ]
     },
     "Show mode": {
-      "type": "Beam",
+      "type": "Maintenance",
       "defaultValue": 0,
       "capabilities": [
         {
@@ -183,7 +183,7 @@
       "type": "Intensity"
     },
     "Light control": {
-      "type": "MultiColor",
+      "type": "Multi-Color",
       "capabilities": [
         {
           "range": [0, 30],
@@ -293,19 +293,19 @@
       "fineChannelAliases": ["Master Tilt fine"]
     },
     "Master Red": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Red"
     },
     "Master Green": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Green"
     },
     "Master Blue": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Blue"
     },
     "Master White": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "White"
     },
     "Head speed": {
@@ -390,7 +390,7 @@
       ]
     },
     "Color $pixelKey": {
-      "type": "MultiColor",
+      "type": "Multi-Color",
       "capabilities": [
         {
           "range": [0, 30],
@@ -489,19 +489,19 @@
       ]
     },
     "Red $pixelKey": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Red"
     },
     "Green $pixelKey": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Green"
     },
     "Blue $pixelKey": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Blue"
     },
     "White $pixelKey": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "White"
     },
     "Mode $pixelKey": {

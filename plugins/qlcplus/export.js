@@ -105,7 +105,7 @@ function addCapability(xmlChannel, cap) {
   });
 
   if (cap.image !== null) {
-    xmlCapability.attribute('res', cap.image);
+    xmlCapability.attribute('Res', cap.image);
   }
   else if (cap.color !== null) {
     xmlCapability.attribute('Color', cap.color.hex().toLowerCase());
@@ -204,14 +204,19 @@ function getFixtureType(fixture) {
 // converts a Channel's type into a valid QLC+ channel type
 function getChannelType(channel) {
   switch(channel.type) {
-    case 'SingleColor':
+    case 'Single Color':
       return 'Intensity';
 
-    case 'MultiColor':
+    case 'Multi-Color':
       return 'Colour';
 
     case 'Strobe':
       return 'Shutter';
+
+    case 'Zoom':
+    case 'Focus':
+    case 'Iris':
+      return 'Beam';
 
     default:
       return channel.type;

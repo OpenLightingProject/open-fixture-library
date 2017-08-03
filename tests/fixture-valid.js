@@ -166,11 +166,11 @@ function checkChannel(channel) {
     result.errors.push(`defaultValue is missing in channel '${channel.key}' although it defines switching channels.`);
   }
   
-  if (channel.color !== null && channel.type !== 'SingleColor') {
-    result.warnings.push(`color in channel '${channel.key}' defined but channel type is not 'SingleColor'.`);
+  if (channel.color !== null && channel.type !== 'Single Color') {
+    result.warnings.push(`color in channel '${channel.key}' defined but channel type is not 'Single Color'.`);
   }
-  else if (channel.color === null && channel.type === 'SingleColor') {
-    result.errors.push(`color in channel '${channel.key}' undefined but channel type is 'SingleColor'.`);
+  else if (channel.color === null && channel.type === 'Single Color') {
+    result.errors.push(`color in channel '${channel.key}' undefined but channel type is 'Single Color'.`);
   }
 
   if (channel.hasDefaultValue && channel.defaultValue > channel.maxDmxBound) {
@@ -200,7 +200,7 @@ function checkCapabilities(channel, minUsedFineness) {
       rangesInvalid = !checkRange(channel, i, minUsedFineness);
     }
 
-    if ((cap.color || cap.image) && !['MultiColor', 'Effect', 'Gobo'].includes(channel.type)) {
+    if ((cap.color || cap.image) && !['Multi-Color', 'Effect', 'Gobo'].includes(channel.type)) {
       result.errors.push(`color or image present in capability '${cap.name}' (#${i+1}) but improper channel type '${channel.type}' in channel '${channel.key}'.`);
     }
 

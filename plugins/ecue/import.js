@@ -149,10 +149,10 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
             ch.type = 'Intensity';
             if ('ChannelColor' in fixture && fixture.ChannelColor.indexOf(channel) !== -1) {
               if (('Range' in channel && channel.Range.length > 1) || /colou?r\s*macro/.test(testName)) {
-                ch.type = 'MultiColor';
+                ch.type = 'Multi-Color';
               }
               else {
-                ch.type = 'SingleColor';
+                ch.type = 'Single Color';
                 const colorFound = ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime'].some(color => {
                   if (testName.includes(color.toLowerCase())) {
                     ch.color = color;
@@ -184,6 +184,15 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
             else if (testName.includes('strob')) {
               ch.type = 'Strobe';
             }
+            else if (testName.includes('iris')) {
+              ch.type = 'Iris';
+            }
+            else if (testName.includes('focus')) {
+              ch.type = 'Focus';
+            }
+            else if (testName.includes('zoom')) {
+              ch.type = 'Zoom';
+            }
             else if (testName.includes('pan')) {
               ch.type = 'Pan';
             }
@@ -192,9 +201,6 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
             }
             else if (testName.includes('reset')) {
               ch.type = 'Maintenance';
-            }
-            else if (fixture.ChannelBeam && fixture.ChannelBeam.indexOf(channel) !== -1) {
-              ch.type = 'Beam';
             }
             else if (!testName.includes('intensity') && !testName.includes('master') && !testName.includes('dimmer')) {
               // not even a default Intensity channel

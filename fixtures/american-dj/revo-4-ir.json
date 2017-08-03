@@ -105,7 +105,7 @@
       ]
     },
     "Color": {
-      "type": "MultiColor",
+      "type": "Multi-Color",
       "crossfade": false,
       "capabilities": [
         {
@@ -205,7 +205,7 @@
   },
   "templateChannels": {
     "Red $pixelKey": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Red",
       "defaultValue": 0,
       "highlightValue": 255,
@@ -222,7 +222,7 @@
       ]
     },
     "Green $pixelKey": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Green",
       "defaultValue": 0,
       "highlightValue": 255,
@@ -239,7 +239,7 @@
       ]
     },
     "Blue $pixelKey": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Blue",
       "defaultValue": 0,
       "highlightValue": 255,
@@ -256,7 +256,7 @@
       ]
     },
     "White $pixelKey": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "White",
       "defaultValue": 0,
       "highlightValue": 255,

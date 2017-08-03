@@ -28,32 +28,32 @@
       "fineChannelAliases": ["Dimmer fine"]
     },
     "Red": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "fineChannelAliases": ["Red fine"],
       "color": "Red"
     },
     "Green": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "fineChannelAliases": ["Green fine"],
       "color": "Green"
     },
     "Blue": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "fineChannelAliases": ["Blue fine"],
       "color": "Blue"
     },
     "White": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "fineChannelAliases": ["White fine"],
       "color": "White"
     },
     "Amber": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "fineChannelAliases": ["Amber fine"],
       "color": "Amber"
     },
     "Macro Colors": {
-      "type": "MultiColor",
+      "type": "Multi-Color",
       "capabilities": [
         {
           "range": [0, 10],
@@ -524,7 +524,7 @@
       ]
     },
     "Hue": {
-      "type": "MultiColor"
+      "type": "Multi-Color"
     },
     "Saturation": {
       "type": "Intensity"
@@ -541,23 +541,23 @@
   },
   "templateChannels": {
     "$pixelKey Red": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Red"
     },
     "$pixelKey Green": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Green"
     },
     "$pixelKey Blue": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Blue"
     },
     "$pixelKey White": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "White"
     },
     "$pixelKey Amber": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Amber"
     }
   },
