@@ -1,0 +1,733 @@
+{
+  "name": "MAC Aura",
+  "shortName": "MacAura",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["novasfronteiras.co"],
+    "createDate": "2017-08-03",
+    "lastModifyDate": "2017-08-03"
+  },
+  "comment": "moving wash:\n\n- single-lens wash with fully premixed color \n- broad color palette, RGBW color mixing \n- eye-candy Aura EffectsTM",
+  "manualURL": "http://www.martin.com/files/files/productdocuments/11_MANUALS/999/UM_MACAura_EN_B.pdf",
+  "physical": {
+    "dimensions": [302, 360, 302],
+    "weight": 5.6,
+    "power": 260,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 10000,
+      "lumens": 3850
+    },
+    "lens": {
+      "name": "beam&aura",
+      "degreesMinMax": [11, 58]
+    },
+    "focus": {
+      "type": "Fixed",
+      "panMax": 540,
+      "tiltMax": 232
+    }
+  },
+  "availableChannels": {
+    "Shutter": {
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 19],
+          "name": "shutter closed",
+          "menuClick": "start"
+        },
+        {
+          "range": [20, 24],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [25, 64],
+          "name": "strobe 1 (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [65, 69],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [70, 84],
+          "name": "strobe 2: opening pulse (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [85, 89],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [90, 104],
+          "name": "strobe 3: closing pulse (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [105, 109],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [110, 124],
+          "name": "strobe 4: random strobe (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [125, 129],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [130, 144],
+          "name": "strobe 5: random opening pulse (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [145, 149],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [150, 164],
+          "name": "strobe 6: random closing pulse (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [165, 169],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [170, 184],
+          "name": "strobe 7: burst pulse (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [185, 189],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [190, 204],
+          "name": "strobe 8: random burst pulse (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [205, 209],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [210, 224],
+          "name": "strobe 9: sine wave (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [225, 229],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [230, 244],
+          "name": "strobe 10: burst (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [245, 255],
+          "name": "shutter open",
+          "menuClick": "start"
+        }
+      ]
+    },
+    "Beam dimmer": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "beam dimmer (0>100)"
+        }
+      ]
+    },
+    "Zoom": {
+      "type": "Zoom",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "zoom (wide>narrow)"
+        }
+      ]
+    },
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "pan (left>right)"
+        }
+      ]
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "tilt (0>232)"
+        }
+      ]
+    },
+    "Fixture control settings": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "no function"
+        },
+        {
+          "range": [10, 14],
+          "name": "reset entire fixture"
+        },
+        {
+          "range": [15, 39],
+          "name": "no function"
+        },
+        {
+          "range": [40, 44],
+          "name": "PTSP = NORM"
+        },
+        {
+          "range": [45, 49],
+          "name": "PTSP = FAST"
+        },
+        {
+          "range": [50, 54],
+          "name": "PTSP = SLOW"
+        },
+        {
+          "range": [55, 59],
+          "name": "no function"
+        },
+        {
+          "range": [60, 64],
+          "name": "Fan mode FULL"
+        },
+        {
+          "range": [65, 69],
+          "name": "no function"
+        },
+        {
+          "range": [70, 74],
+          "name": "Fan mode REGULATED"
+        },
+        {
+          "range": [75, 89],
+          "name": "no function"
+        },
+        {
+          "range": [90, 94],
+          "name": "Calibrated color output mode COLOR CALIB = ON"
+        },
+        {
+          "range": [95, 99],
+          "name": "no function"
+        },
+        {
+          "range": [100, 104],
+          "name": "Raw color output mode COLOR CALIB = OFF"
+        },
+        {
+          "range": [105, 109],
+          "name": "no function"
+        },
+        {
+          "range": [110, 114],
+          "name": "Fast dimming, speed of changes unrestricted"
+        },
+        {
+          "range": [115, 119],
+          "name": "no function"
+        },
+        {
+          "range": [120, 124],
+          "name": "Smooth dimming, speed of changes restricted slightly"
+        },
+        {
+          "range": [125, 249],
+          "name": "no function"
+        },
+        {
+          "range": [250, 255],
+          "name": "Illuminate display"
+        }
+      ]
+    },
+    "Beam color wheel effect": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Open. RGBW color mixing enabled"
+        },
+        {
+          "range": [10, 14],
+          "name": "LEE 790 - Moroccan pink"
+        },
+        {
+          "range": [15, 19],
+          "name": "LEE 157 - Pink"
+        },
+        {
+          "range": [20, 24],
+          "name": "LEE 332 - Special rose pink"
+        },
+        {
+          "range": [25, 29],
+          "name": "LEE 328 - Follies pink"
+        },
+        {
+          "range": [30, 34],
+          "name": "LEE 345 - Fuchsia pink"
+        },
+        {
+          "range": [35, 39],
+          "name": "LEE 194 - Surprise pink"
+        },
+        {
+          "range": [40, 44],
+          "name": "LEE 181 - Congo Blue"
+        },
+        {
+          "range": [45, 49],
+          "name": "LEE 071 - Tokyo Blue"
+        },
+        {
+          "range": [50, 54],
+          "name": "LEE 120 - Deep Blue"
+        },
+        {
+          "range": [55, 59],
+          "name": "LEE 079 - Just Blue"
+        },
+        {
+          "range": [60, 64],
+          "name": "LEE 132 - Medium Blue"
+        },
+        {
+          "range": [65, 69],
+          "name": "LEE 200 - Double CT Blue"
+        },
+        {
+          "range": [70, 74],
+          "name": "LEE 161 - Slate Blue"
+        },
+        {
+          "range": [75, 79],
+          "name": "LEE 201 - Full CT Blue"
+        },
+        {
+          "range": [80, 84],
+          "name": "LEE 202 - Half CT Blue"
+        },
+        {
+          "range": [85, 89],
+          "name": "LEE 117 - Steel Blue"
+        },
+        {
+          "range": [90, 94],
+          "name": "LEE 353 - Lighter Blue"
+        },
+        {
+          "range": [95, 99],
+          "name": "LEE 118 - Light Blue"
+        },
+        {
+          "range": [100, 104],
+          "name": "LEE 116 - Medium Blue Green"
+        },
+        {
+          "range": [105, 109],
+          "name": "LEE 124 - Dark Green"
+        },
+        {
+          "range": [110, 114],
+          "name": "LEE 139 - Primary Green"
+        },
+        {
+          "range": [115, 119],
+          "name": "LEE 089 - Moss Green"
+        },
+        {
+          "range": [120, 124],
+          "name": "LEE 122 - Fern Green"
+        },
+        {
+          "range": [125, 129],
+          "name": "LEE 738 - JAS Green"
+        },
+        {
+          "range": [130, 134],
+          "name": "LEE 088 - Lime Green"
+        },
+        {
+          "range": [135, 139],
+          "name": "LEE 100 - Spring Yellow"
+        },
+        {
+          "range": [140, 144],
+          "name": "LEE 104 - Deep Amber"
+        },
+        {
+          "range": [145, 149],
+          "name": "LEE 179 - Chrome Orange"
+        },
+        {
+          "range": [150, 154],
+          "name": "LEE 105 - Orange"
+        },
+        {
+          "range": [155, 159],
+          "name": "LEE 021 - Gold Amber"
+        },
+        {
+          "range": [160, 164],
+          "name": "LEE 778 - Millennium Gold"
+        },
+        {
+          "range": [165, 169],
+          "name": "LEE 135 - Deep Golden Amber"
+        },
+        {
+          "range": [170, 174],
+          "name": "LEE 164 - Flame Red"
+        },
+        {
+          "range": [175, 179],
+          "name": "Open Color wheel rotation effect"
+        },
+        {
+          "range": [180, 201],
+          "name": "Clockwise, fast>slow"
+        },
+        {
+          "range": [202, 207],
+          "name": "Stop (this will stop wherever the color is at the time)"
+        },
+        {
+          "range": [208, 229],
+          "name": "Counter-clockwise, (slow>fast)"
+        },
+        {
+          "range": [230, 234],
+          "name": "Open Random color"
+        },
+        {
+          "range": [235, 239],
+          "name": "Fast random"
+        },
+        {
+          "range": [240, 244],
+          "name": "Medium random"
+        },
+        {
+          "range": [245, 249],
+          "name": "Slow random"
+        },
+        {
+          "range": [250, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Beam red": {
+      "type": "Single Color",
+      "color": "Red",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Beam red  Red (0>100)"
+        }
+      ]
+    },
+    "Beam green": {
+      "type": "Single Color",
+      "color": "Green",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Beam green Green (0>100)"
+        }
+      ]
+    },
+    "Beam blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Beam blue Blue (0>100)"
+        }
+      ]
+    },
+    "Beam white": {
+      "type": "Single Color",
+      "color": "White",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Beam white  White (0>100)  Note: if  Color Calib  is set to  On , this channel has no effect –  white LEDs are activated by RGB mixing"
+        }
+      ]
+    },
+    "Beam CTC": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 19],
+          "name": "no function"
+        },
+        {
+          "range": [20, 255],
+          "name": "Color temperature control (10000K>2500K)"
+        }
+      ]
+    },
+    "FX1 select": {
+      "type": "Effect"
+    },
+    "FX1 speed": {
+      "type": "Speed"
+    },
+    "FX2 select": {
+      "type": "Effect"
+    },
+    "FX2 speed": {
+      "type": "Speed"
+    },
+    "FX1+2 speed": {
+      "type": "Speed"
+    },
+    "Unused": {
+      "type": "Nothing"
+    },
+    "FX sync": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 49],
+          "name": "no sync",
+          "switchChannels": {
+            "FX1 speed / FX1+2 speed": "FX1 speed",
+            "FX2 speed / Nothing": "FX2 speed"
+          }
+        },
+        {
+          "range": [50, 50],
+          "name": "sync",
+          "switchChannels": {
+            "FX1 speed / FX1+2 speed": "FX1+2 speed",
+            "FX2 speed / Nothing": "Unused"
+          }
+        },
+        {
+          "range": [51, 169],
+          "name": "sync shift (offset 0 to max)",
+          "switchChannels": {
+            "FX1 speed / FX1+2 speed": "FX1+2 speed",
+            "FX2 speed / Nothing": "Unused"
+          }
+        },
+        {
+          "range": [170, 209],
+          "name": "sync random",
+          "switchChannels": {
+            "FX1 speed / FX1+2 speed": "FX1+2 speed",
+            "FX2 speed / Nothing": "Unused"
+          }
+        },
+        {
+          "range": [210, 255],
+          "name": "no sync random",
+          "switchChannels": {
+            "FX1 speed / FX1+2 speed": "FX1 speed",
+            "FX2 speed / Nothing": "FX2 speed"
+          }
+        }
+      ]
+    },
+    "Aura shutter": {
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 19],
+          "name": "shutter closed",
+          "menuClick": "start"
+        },
+        {
+          "range": [20, 24],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [25, 64],
+          "name": "strobe 1 (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [65, 69],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [70, 84],
+          "name": "strobe 2: opening pulse (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [85, 89],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [90, 104],
+          "name": "strobe 3: closing pulse (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [105, 109],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [110, 124],
+          "name": "strobe 4: random strobe (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [125, 129],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [130, 144],
+          "name": "strobe 5: random opening pulse (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [145, 149],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [150, 164],
+          "name": "strobe 6: random closing pulse (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [165, 169],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [170, 184],
+          "name": "strobe 7: burst pulse (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [185, 189],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [190, 204],
+          "name": "strobe 8: random burst pulse (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [205, 209],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [210, 224],
+          "name": "strobe 9: sine wave (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [225, 229],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [230, 244],
+          "name": "strobe 10: burst (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [245, 255],
+          "name": "shutter open",
+          "menuClick": "start"
+        }
+      ]
+    },
+    "Aura dimmer": {
+      "type": "Intensity"
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "shortName": "std",
+      "channels": [
+        "Shutter",
+        "Beam dimmer",
+        "Zoom",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Fixture control settings",
+        "Beam color wheel effect",
+        "Beam red",
+        "Beam green",
+        "Beam blue",
+        "Beam white",
+        "Beam CTC"
+      ]
+    },
+    {
+      "name": "Extended",
+      "shortName": "ext",
+      "channels": [
+        "Shutter",
+        "Beam dimmer",
+        "Zoom",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Fixture control settings",
+        "Beam color wheel effect",
+        "Beam red",
+        "Beam green",
+        "Beam blue",
+        "Beam white",
+        "Beam CTC",
+        "FX1 select",
+        "FX1 speed / FX1+2 speed",
+        "FX2 select",
+        "FX2 speed / Nothing",
+        "FX sync",
+        "Aura shutter",
+        "Aura dimmer"
+      ]
+    }
+  ]
+}

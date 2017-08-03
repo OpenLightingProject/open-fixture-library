@@ -31,17 +31,17 @@
   },
   "availableChannels": {
     "Red": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "crossfade": true,
       "color": "Red"
     },
     "Green": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "crossfade": true,
       "color": "Green"
     },
     "Blue": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "crossfade": true,
       "color": "Blue"
     },
@@ -74,7 +74,7 @@
       ]
     },
     "Color Programs": {
-      "type": "MultiColor",
+      "type": "Multi-Color",
       "defaultValue": 0,
       "capabilities": [
         {
@@ -288,17 +288,17 @@
   },
   "templateChannels": {
     "Red $pixelKey": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "crossfade": true,
       "color": "Red"
     },
     "Green $pixelKey": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "crossfade": true,
       "color": "Green"
     },
     "Blue $pixelKey": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "crossfade": true,
       "color": "Blue"
     }

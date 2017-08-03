@@ -30,7 +30,7 @@
       "crossfade": true
     },
     "Color Macro Simple": {
-      "type": "MultiColor",
+      "type": "Multi-Color",
       "capabilities": [
         {
           "range": [0, 31],
@@ -78,7 +78,7 @@
       "type": "Strobe"
     },
     "Color Macro Advanced": {
-      "type": "MultiColor",
+      "type": "Multi-Color",
       "capabilities": [
         {
           "range": [0, 4],
@@ -131,17 +131,17 @@
       ]
     },
     "Red": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "crossfade": true,
       "color": "Red"
     },
     "Green": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "crossfade": true,
       "color": "Green"
     },
     "Blue": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "crossfade": true,
       "color": "Blue"
     }

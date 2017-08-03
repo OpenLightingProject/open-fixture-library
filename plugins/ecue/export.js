@@ -173,11 +173,12 @@ function getFixtureComment(fixture) {
 
 function getChannelType(channel) {
   switch (channel.type) {
-    case 'MultiColor':
-    case 'SingleColor':
+    case 'Multi-Color':
+    case 'Single Color':
       return 'ChannelColor';
 
-    case 'Beam':
+    case 'Iris':
+    case 'Zoom':
     case 'Shutter':
     case 'Strobe':
     case 'Gobo':
@@ -186,10 +187,11 @@ function getChannelType(channel) {
     case 'Speed':
     case 'Maintenance':
     case 'Nothing':
-      return 'ChannelBeam';
-
+    return 'ChannelBeam';
+    
     case 'Pan':
     case 'Tilt':
+    case 'Focus':
       return 'ChannelFocus';
 
     case 'Intensity':

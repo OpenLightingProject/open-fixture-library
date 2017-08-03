@@ -16,7 +16,7 @@ module.exports = function(options) {
     str += `<div class="website"><a href="${manufacturer.website}">Website</a></div>`;
   }
   if ('comment' in manufacturer) {
-    str += `<p class="comment">${manufacturer.comment}</p>`;
+    str += `<p class="comment">${manufacturer.comment.replace(/\n/g, '<br />')}</p>`;
   }
 
   str += '<ul class="card list manufacturer-fixtures">';

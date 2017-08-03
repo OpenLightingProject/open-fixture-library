@@ -93,7 +93,7 @@
       ]
     },
     "Color Presets": {
-      "type": "MultiColor",
+      "type": "Multi-Color",
       "capabilities": [
         {
           "range": [0, 4],
@@ -393,25 +393,25 @@
       ]
     },
     "Red": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true
@@ -436,25 +436,25 @@
   },
   "templateChannels": {
     "Red $pixelKey": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Red",
       "highlightValue": 255,
       "crossfade": true
     },
     "Green $pixelKey": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Green",
       "highlightValue": 255,
       "crossfade": true
     },
     "Blue $pixelKey": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Blue",
       "highlightValue": 255,
       "crossfade": true
     },
     "White $pixelKey": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "White",
       "highlightValue": 255,
       "crossfade": true

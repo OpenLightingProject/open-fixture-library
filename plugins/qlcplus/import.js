@@ -57,14 +57,23 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
         }
 
         if (ch.type === 'Colour') {
-          ch.type = 'MultiColor';
+          ch.type = 'Multi-Color';
         }
         else if ('Colour' in channel && channel.Colour[0] !== 'Generic') {
-          ch.type = 'SingleColor';
+          ch.type = 'Single Color';
           ch.color = channel.Colour[0];
         }
         else if (channel.$.Name.toLowerCase().includes('strob')) {
           ch.type = 'Strobe';
+        }
+        else if (channel.$.Name.toLowerCase().includes('iris')) {
+          ch.type = 'Iris';
+        }
+        else if (channel.$.Name.toLowerCase().includes('focus')) {
+          ch.type = 'Focus';
+        }
+        else if (channel.$.Name.toLowerCase().includes('zoom')) {
+          ch.type = 'Zoom';
         }
         else if (ch.type === 'Intensity') {
           ch.crossfade = true;
