@@ -36,7 +36,7 @@
       "crossfade": true
     },
     "Color wheel": {
-      "type": "MultiColor",
+      "type": "Multi-Color",
       "fineChannelAliases": ["Color wheel fine"],
       "capabilities": [
         {
@@ -460,7 +460,7 @@
       ]
     },
     "Focus": {
-      "type": "Beam",
+      "type": "Focus",
       "fineChannelAliases": ["Focus fine"],
       "crossfade": true,
       "capabilities": [
@@ -471,7 +471,7 @@
       ]
     },
     "Zoom": {
-      "type": "Beam",
+      "type": "Zoom",
       "fineChannelAliases": ["Zoom fine"],
       "crossfade": true,
       "capabilities": [
@@ -482,7 +482,7 @@
       ]
     },
     "Auto focus": {
-      "type": "Beam",
+      "type": "Focus",
       "fineChannelAliases": ["Auto focus fine"],
       "capabilities": [
         {

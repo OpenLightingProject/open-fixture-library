@@ -78,12 +78,12 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
         result.errors.push(`highlightValue must be strictly less than ${dmxMaxBound} in channel '${ch}'.`);
       }
 
-      if ('color' in channel && channel.type !== 'SingleColor') {
-        result.warnings.push(`color in channel '${ch}' defined but channel type is not 'SingleColor'.`);
+      if ('color' in channel && channel.type !== 'Single Color') {
+        result.warnings.push(`color in channel '${ch}' defined but channel type is not 'Single Color'.`);
       }
 
-      if (!('color' in channel) && channel.type === 'SingleColor') {
-        result.errors.push(`color in channel '${ch}' undefined but channel type is 'SingleColor'.`);
+      if (!('color' in channel) && channel.type === 'Single Color') {
+        result.errors.push(`color in channel '${ch}' undefined but channel type is 'Single Color'.`);
       }
 
       if ('capabilities' in channel) {
@@ -116,7 +116,7 @@ module.exports.checkFixture = function checkFixture(fixture, usedShortNames=[]) 
             }
           }
 
-          if (('color' in cap || 'image' in cap) && !['MultiColor', 'Effect', 'Gobo'].includes(channel.type)) {
+          if (('color' in cap || 'image' in cap) && !['Multi-Color', 'Effect', 'Gobo'].includes(channel.type)) {
             result.errors.push(`color or image present in capability #${i+1} but improper channel type '${channel.type}' in channel '${ch}'.`);
           }
 
