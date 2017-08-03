@@ -35,7 +35,7 @@
       "crossfade": true
     },
     "Color Wheel": {
-      "type": "MultiColor",
+      "type": "Multi-Color",
       "fineChannelAliases": ["Color Wheel fine"],
       "capabilities": [
         {
@@ -82,21 +82,21 @@
       ]
     },
     "Cyan": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "fineChannelAliases": ["Cyan fine"],
       "color": "Cyan",
       "highlightValue": 65535,
       "crossfade": true
     },
     "Magenta": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "fineChannelAliases": ["Magenta fine"],
       "color": "Magenta",
       "highlightValue": 65535,
       "crossfade": true
     },
     "Yellow": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "fineChannelAliases": ["Yellow fine"],
       "color": "Yellow",
       "highlightValue": 65535,
@@ -428,7 +428,7 @@
       ]
     },
     "Focus": {
-      "type": "Beam",
+      "type": "Focus",
       "fineChannelAliases": ["Focus fine"],
       "crossfade": true,
       "capabilities": [
@@ -439,7 +439,7 @@
       ]
     },
     "Zoom": {
-      "type": "Beam",
+      "type": "Zoom",
       "fineChannelAliases": ["Zoom fine"],
       "crossfade": true,
       "capabilities": [
@@ -494,7 +494,7 @@
       "crossfade": true
     },
     "Iris": {
-      "type": "Beam",
+      "type": "Iris",
       "fineChannelAliases": ["Iris fine"],
       "crossfade": true,
       "capabilities": [

@@ -45,7 +45,7 @@
       ]
     },
     "Show mode": {
-      "type": "Beam",
+      "type": "Maintenance",
       "defaultValue": 0,
       "capabilities": [
         {
@@ -183,7 +183,7 @@
       "type": "Intensity"
     },
     "Light control": {
-      "type": "MultiColor",
+      "type": "Multi-Color",
       "capabilities": [
         {
           "range": [0, 30],
@@ -293,19 +293,19 @@
       "fineChannelAliases": ["Master Tilt fine"]
     },
     "Master Red": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Red"
     },
     "Master Green": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Green"
     },
     "Master Blue": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Blue"
     },
     "Master White": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "White"
     },
     "Head speed": {
@@ -388,7 +388,7 @@
       ]
     },
     "Color 1": {
-      "type": "MultiColor",
+      "type": "Multi-Color",
       "capabilities": [
         {
           "range": [0, 30],
@@ -487,19 +487,19 @@
       ]
     },
     "Red 1": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Red"
     },
     "Green 1": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Green"
     },
     "Blue 1": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Blue"
     },
     "White 1": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "White"
     },
     "Mode 1": {
@@ -627,7 +627,7 @@
       ]
     },
     "Color 2": {
-      "type": "MultiColor",
+      "type": "Multi-Color",
       "capabilities": [
         {
           "range": [0, 30],
@@ -726,19 +726,19 @@
       ]
     },
     "Red 2": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Red"
     },
     "Green 2": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Green"
     },
     "Blue 2": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Blue"
     },
     "White 2": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "White"
     },
     "Mode 2": {
@@ -866,7 +866,7 @@
       ]
     },
     "Color 3": {
-      "type": "MultiColor",
+      "type": "Multi-Color",
       "capabilities": [
         {
           "range": [0, 30],
@@ -965,19 +965,19 @@
       ]
     },
     "Red 3": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Red"
     },
     "Green 3": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Green"
     },
     "Blue 3": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "Blue"
     },
     "White 3": {
-      "type": "SingleColor",
+      "type": "Single Color",
       "color": "White"
     },
     "Mode 3": {

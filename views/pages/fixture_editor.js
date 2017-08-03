@@ -429,7 +429,7 @@ function getChannelDialogString() {
   str += '</label>';
   str += '</section>';
 
-  str += '<section class="channel-color" v-if="channel.type == \'SingleColor\'">';
+  str += '<section class="channel-color" v-if="channel.type == \'Single Color\'">';
   str += '<label>';
   str += '<span class="label">Color</span>';
   str += selectInput('channel.color', properties.channel.color, 'other channel color');

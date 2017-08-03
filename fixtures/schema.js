@@ -20,6 +20,7 @@ module.exports.VERSION = '1.0.0';
  */
 
 const NonEmptyString = String.of(1, null, null);
+const NonEmptyMultiLineString = schema(/.+/m);
 
 const URL = schema(/^(ftp|http|https):\/\/[^ "]+$/);
 
@@ -72,10 +73,30 @@ const Capability = schema({
   '*': Function
 });
 
+const ChannelType = [
+  'Intensity',
+  'Single Color',
+  'Multi-Color',
+  'Pan',
+  'Tilt',
+  'Focus',
+  'Zoom',
+  'Iris',
+  'Gobo',
+  'Prism',
+  'Shutter',
+  'Strobe',
+  'Speed',
+  'Color Temperature',
+  'Effect',
+  'Maintenance',
+  'Nothing'
+];
+
 const Channel = schema({
   '?name': NonEmptyString, // if not set: use channel key
-  'type': ['Intensity', 'Strobe', 'Shutter', 'Speed', 'SingleColor', 'MultiColor', 'Gobo', 'Prism', 'Pan', 'Tilt', 'Beam', 'Effect', 'Maintenance', 'Nothing'],
-  '?color': ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime', 'Indigo'], // required and only allowed for SingleColor
+  'type': ChannelType,
+  '?color': ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime', 'Indigo'], // required and only allowed for Single Color
   '?fineChannelAliases': Array.of(1, Infinity, ChannelAliasKey),
   '?defaultValue': DMXValue,
   '?highlightValue': DMXValue,
@@ -106,12 +127,12 @@ const Fixture = schema({
     '?importPlugin': schema({
       'plugin': NonEmptyString,
       'date': ISODate,
-      '?comment': NonEmptyString,
+      '?comment': NonEmptyMultiLineString,
       '*': Function
     }),
     '*': Function
   }),
-  '?comment': NonEmptyString,
+  '?comment': NonEmptyMultiLineString,
   '?manualURL': URL,
   '?physical': Physical,
   'availableChannels': schema({
@@ -127,7 +148,7 @@ const Fixture = schema({
 const Manufacturers = schema({
   '*': schema({ // '*' is the manufacturer key
     'name': NonEmptyString,
-    '?comment': NonEmptyString,
+    '?comment': NonEmptyMultiLineString,
     '?website': URL,
     '*': Function
   })
