@@ -149,10 +149,10 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
             ch.type = 'Intensity';
             if ('ChannelColor' in fixture && fixture.ChannelColor.indexOf(channel) !== -1) {
               if (('Range' in channel && channel.Range.length > 1) || /colou?r\s*macro/.test(testName)) {
-                ch.type = 'MultiColor';
+                ch.type = 'Multi-Color';
               }
               else {
-                ch.type = 'SingleColor';
+                ch.type = 'Single Color';
                 const colorFound = ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime'].some(color => {
                   if (testName.includes(color.toLowerCase())) {
                     ch.color = color;

@@ -204,10 +204,10 @@ function getFixtureType(fixture) {
 // converts a Channel's type into a valid QLC+ channel type
 function getChannelType(channel) {
   switch(channel.type) {
-    case 'SingleColor':
+    case 'Single Color':
       return 'Intensity';
 
-    case 'MultiColor':
+    case 'Multi-Color':
       return 'Colour';
 
     case 'Strobe':

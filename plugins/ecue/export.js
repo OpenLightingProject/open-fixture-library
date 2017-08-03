@@ -173,8 +173,8 @@ function getFixtureComment(fixture) {
 
 function getChannelType(channel) {
   switch (channel.type) {
-    case 'MultiColor':
-    case 'SingleColor':
+    case 'Multi-Color':
+    case 'Single Color':
       return 'ChannelColor';
 
     case 'Iris':

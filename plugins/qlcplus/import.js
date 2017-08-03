@@ -57,10 +57,10 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
         }
 
         if (ch.type === 'Colour') {
-          ch.type = 'MultiColor';
+          ch.type = 'Multi-Color';
         }
         else if ('Colour' in channel && channel.Colour[0] !== 'Generic') {
-          ch.type = 'SingleColor';
+          ch.type = 'Single Color';
           ch.color = channel.Colour[0];
         }
         else if (channel.$.Name.toLowerCase().includes('strob')) {

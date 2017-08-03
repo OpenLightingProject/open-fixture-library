@@ -74,8 +74,8 @@ const Capability = schema({
 
 const ChannelType = [
   'Intensity',
-  'SingleColor',
-  'MultiColor',
+  'Single Color',
+  'Multi-Color',
   'Pan',
   'Tilt',
   'Focus',
@@ -95,7 +95,7 @@ const ChannelType = [
 const Channel = schema({
   '?name': NonEmptyString, // if not set: use channel key
   'type': ChannelType,
-  '?color': ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime', 'Indigo'], // required and only allowed for SingleColor
+  '?color': ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime', 'Indigo'], // required and only allowed for Single Color
   '?fineChannelAliases': Array.of(1, Infinity, ChannelAliasKey),
   '?defaultValue': DMXValue,
   '?highlightValue': DMXValue,
