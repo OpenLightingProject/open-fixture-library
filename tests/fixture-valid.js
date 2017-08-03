@@ -18,8 +18,8 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     errors: [],
     warnings: []
   };
-  definedChannelKeys = [];
-  usedChannelKeys = [];
+  definedChannelKeys = new Set();
+  usedChannelKeys = new Set();
   modeShortNames = [];
 
   const schemaErrors = schemas.Fixture.errors(fixtureJson);
@@ -67,25 +67,28 @@ function checkFixIdentifierUniqueness(uniqueValues) {
   if (!(manKey in uniqueValues.fixKeysInMan)) {
     uniqueValues.fixKeysInMan[manKey] = new Set();
   }
-  else if (uniqueValues.fixKeysInMan[manKey].has(fixture.key.toLowerCase())) {
-    result.errors.push(`key '${fixture.key}' is not unique in manufacturer ${manKey} (test is not case-sensitive).`);
-  }
-  uniqueValues.fixKeysInMan[manKey].add(fixture.key.toLowerCase());
+  checkUniqueness(
+    uniqueValues.fixKeysInMan[manKey],
+    fixture.key,
+    `Fixture key '${fixture.key}' is not unique in manufacturer ${manKey} (test is not case-sensitive).`
+  );
 
   // fixture.name
   if (!(manKey in uniqueValues.fixNamesInMan)) {
     uniqueValues.fixNamesInMan[manKey] = new Set();
   }
-  else if (uniqueValues.fixNamesInMan[manKey].has(fixture.name.toLowerCase())) {
-    result.errors.push(`name '${fixture.name}' is not unique in manufacturer ${manKey} (test is not case-sensitive).`);
-  }
-  uniqueValues.fixNamesInMan[manKey].add(fixture.name.toLowerCase());
+  checkUniqueness(
+    uniqueValues.fixNamesInMan[manKey],
+    fixture.name,
+    `Fixture name '${fixture.name}' is not unique in manufacturer ${manKey} (test is not case-sensitive).`
+  );
   
   // fixture.shortName
-  if (uniqueValues.fixShortNames.has(fixture.shortName.toLowerCase())) {
-    result.errors.push(`shortName '${fixture.shortName}' is not unique (test is not case-sensitive).`);
-  }
-  uniqueValues.fixShortNames.add(fixture.shortName.toLowerCase());
+  checkUniqueness(
+    uniqueValues.fixShortNames,
+    fixture.shortName,
+    `Fixture shortName '${fixture.shortName}' is not unique (test is not case-sensitive).`
+  );
 }
 
 function checkMeta(meta) {
@@ -112,12 +115,18 @@ function checkPhysical(physical, modeDescription = '') {
 }
 
 function checkChannel(channel) {
-  definedChannelKeys.push(channel.key);
+  checkUniqueness(
+    definedChannelKeys,
+    channel.key,
+    `Channel key '${channel.key}' is already defined in another letter case.`
+  );
 
+  // channel name contains the word "fine" or "16bit" / "8 bit" / "32-bit" / "24_bit"
   if (/\bfine\b|\d+(?:\s|-|_)+bit/i.test(channel.name)) {
     result.errors.push(`Channel '${channel.key}' should rather be a fine channel alias of its corresponding coarse channel.`);
   }
 
+  // Nothing channels
   if (channel.type === 'Nothing') {
     const isNotEmpty = Object.keys(channel.jsonObject).some(
       prop => prop !== 'type' && prop !== 'name'
@@ -128,31 +137,28 @@ function checkChannel(channel) {
     }
   }
 
-  let usedAsCoarseOnlyChannel = true;
-  if (channel.fineChannelAliases.length > 0) {
-    for (const alias of channel.fineChannelAliases) {
-      if (definedChannelKeys.includes(alias)) {
-        result.errors.push(`Fine channel alias '${alias}' in channel '${channel.key}' is already defined.`);
-      }
-      definedChannelKeys.push(alias);
-    }
-
-    usedAsCoarseOnlyChannel = fixture.modes.some(
-      mode => channel.getFinenessInMode(mode) < channel.maxFineness
+  // Fine channels
+  for (const alias of channel.fineChannelAliases) {
+    checkUniqueness(
+      definedChannelKeys,
+      alias,
+      `Fine channel alias '${alias}' in channel '${channel.key}' is already defined (maybe in another letter case).`
     );
   }
+  const minUsedFineness = Math.max.apply(null, fixture.modes.map(
+    mode => channel.getFinenessInMode(mode)
+  ));
 
-  if (channel.switchingChannelAliases.length > 0) {
-    for (const alias of channel.switchingChannelAliases) {
-      if (alias in definedChannelKeys) {
-        result.errors.push(`Switching channel alias '${alias}' in channel '${channel.key}' is already defined.`);
-      }
-      definedChannelKeys.push(alias);
-    }
-
-    if (!channel.hasDefaultValue) {
-      result.errors.push(`defaultValue is missing in channel '${channel.key}' although it defines switching channels.`);
-    }
+  // Switching channels
+  for (const alias of channel.switchingChannelAliases) {
+    checkUniqueness(
+      definedChannelKeys,
+      alias,
+      `Switching channel alias '${alias}' in channel '${channel.key}' is already defined (maybe in another letter case).`
+    );
+  }
+  if (!channel.hasDefaultValue && channel.switchingChannelAliases.length > 0) {
+    result.errors.push(`defaultValue is missing in channel '${channel.key}' although it defines switching channels.`);
   }
   
   if (channel.color !== null && channel.type !== 'SingleColor') {
@@ -170,7 +176,7 @@ function checkChannel(channel) {
     result.errors.push(`highlightValue must be less or equal to ${channel.maxDmxBound} in channel '${channel.key}'.`);
   }
 
-  checkCapabilities(channel, usedAsCoarseOnlyChannel);
+  checkCapabilities(channel, minUsedFineness === 1);
 }
 
 function checkCapabilities(channel, mustBe8Bit) {
@@ -208,7 +214,7 @@ function checkCapabilities(channel, mustBe8Bit) {
     else {
       for (const alias of switchingChannelAliases) {
         const chKey = cap.switchChannels[alias];
-        usedChannelKeys.push(chKey);
+        usedChannelKeys.add(chKey.toLowerCase());
 
         if (channel.fixture.getChannelByKey(chKey) === null) {
           result.errors.push(`Channel '${chKey}' is referenced from capability '${cap.name}' (#${i+1}) in channel '${channel.key}' but is not defined.`);
@@ -298,7 +304,7 @@ function checkModeChannelReference(chNumber, mode, modeChKeyCount) {
     return;
   }
 
-  usedChannelKeys.push(channel.key);
+  usedChannelKeys.add(channel.key.toLowerCase());
   modeChKeyCount[channel.key] = (modeChKeyCount[channel.key] || 0) + 1;
 
   if (channel instanceof SwitchingChannel) {
@@ -369,12 +375,12 @@ function checkPanTiltMaxInPhysical(channel, mode) {
 }
 
 function checkUnusedChannels() {
-  const unused = definedChannelKeys.filter(
-    chKey => !usedChannelKeys.includes(chKey)
+  const unused = [...definedChannelKeys].filter(
+    chKey => !usedChannelKeys.has(chKey)
   );
 
   if (unused.length > 0) {
-    result.warnings.push(`Channels ${unused} defined but never used.`);
+    result.warnings.push('Unused channel(s): ' + unused.join(', '));
   }
 }
 
@@ -389,6 +395,13 @@ function assumeNotEmpty(obj, messageIfEmpty) {
     }
   }
   return false;
+}
+
+function checkUniqueness(set, value, messageIfNotUnique) {
+  if (set.has(value.toLowerCase())) {
+    result.errors.push(messageIfNotUnique);
+  }
+  set.add(value.toLowerCase());
 }
 
 
