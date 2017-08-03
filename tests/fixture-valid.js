@@ -11,6 +11,7 @@ let result;
 let fixture;
 let definedChannelKeys; // and aliases
 let usedChannelKeys; // and aliases
+let modeNames;
 let modeShortNames;
 
 module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues=null) {
@@ -20,7 +21,8 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
   };
   definedChannelKeys = new Set();
   usedChannelKeys = new Set();
-  modeShortNames = [];
+  modeNames = new Set();
+  modeShortNames = new Set();
 
   const schemaErrors = schema.Fixture.errors(fixtureJson);
   if (schemaErrors !== false) {
@@ -255,21 +257,25 @@ function checkRange(channel, capNumber, minUsedFineness) {
   const cap = channel.capabilities[capNumber];
   const prevCap = capNumber > 0 ? channel.capabilities[capNumber-1] : null;
 
+  // first cap
   if (capNumber === 0 && cap.range.start !== 0) {
     result.errors.push(`The first range has to start at 0 in capability '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'.`);
     return false;
   }
 
+  // all caps
   if (cap.range.start > cap.range.end) {
     result.errors.push(`range invalid in capability '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'.`);
     return false;
   }
 
+  // not-first cap
   if (capNumber > 0 && cap.range.start !== prevCap.range.end + 1) {
     result.errors.push(`ranges must be adjacent in capabilities '${prevCap.name}' (#${capNumber}) and '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'.`);
     return false;
   }
 
+  // last cap
   if (capNumber === channel.capabilities.length - 1) {
     const rawRangeEnd = channel.jsonObject.capabilities[capNumber].range[1];
     const possibleEndValues = getPossibleEndValues(minUsedFineness);
@@ -299,10 +305,16 @@ function getPossibleEndValues(fineness) {
 }
 
 function checkMode(mode) {
-  if (modeShortNames.includes(mode.shortName)) {
-    result.errors.push(`Mode shortName '${mode.shortName}' not unique.`);
-  }
-  modeShortNames.push(mode.shortName);
+  checkUniqueness(
+    modeNames,
+    mode.name,
+    `Mode name '${mode.shortName}' not unique (test is not case-sensitive).`
+  );
+  checkUniqueness(
+    modeShortNames,
+    mode.shortName,
+    `Mode shortName '${mode.shortName}' not unique (test is not case-sensitive).`
+  );
 
   if (/\bmode\b/i.test(mode.name) || /\bmode\b/i.test(mode.shortName)) {
     result.errors.push(`Mode name and shortName must not contain the word 'mode' in mode '${mode.shortName}'.`);
