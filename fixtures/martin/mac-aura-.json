@@ -8,7 +8,7 @@
     "lastModifyDate": "2017-08-03"
   },
   "comment": "moving wash:\n\n- single-lens wash with fully premixed color \n- broad color palette, RGBW color mixing \n- eye-candy Aura EffectsTM",
-  "manualURL": "http://martin.com/pdfgenerator/?printurl=http://martin.com/en-US/Products/PDF_ProductSheet/PDFProduct/MAC-Aura&footer_height=18&footer_url=http://martin.com/Default.aspx?ID=6031&Purge=True&filename=MAC-Aura.pdf",
+  "manualURL": "http://www.martin.com/Martin.Download.aspx?file=/files/files/productdocuments/11_MANUALS/999/UM_MACAura_EN_B.pdf",
   "physical": {
     "dimensions": [302, 360, 302],
     "weight": 5.6,
@@ -35,91 +35,113 @@
       "capabilities": [
         {
           "range": [0, 19],
-          "name": "shutter closed"
+          "name": "shutter closed",
+          "menuClick": "start"
         },
         {
           "range": [20, 24],
-          "name": "shutter open "
+          "name": "shutter open",
+          "menuClick": "start"
         },
         {
           "range": [25, 64],
-          "name": "strobe 1 (fast>slow)"
+          "name": "strobe 1 (fast>slow)",
+          "menuClick": "center"
         },
         {
           "range": [65, 69],
-          "name": "shutter open"
+          "name": "shutter open",
+          "menuClick": "start"
         },
         {
           "range": [70, 84],
-          "name": "strobe 2: opening pulse (fast>slow)"
+          "name": "strobe 2: opening pulse (fast>slow)",
+          "menuClick": "center"
         },
         {
           "range": [85, 89],
-          "name": "shutter open"
+          "name": "shutter open",
+          "menuClick": "start"
         },
         {
           "range": [90, 104],
-          "name": "strobe 3: closing pulse (fast>slow)"
+          "name": "strobe 3: closing pulse (fast>slow)",
+          "menuClick": "center"
         },
         {
           "range": [105, 109],
-          "name": "shutter open"
+          "name": "shutter open",
+          "menuClick": "start"
         },
         {
           "range": [110, 124],
-          "name": "strobe 4: random strobe (fast>slow)"
+          "name": "strobe 4: random strobe (fast>slow)",
+          "menuClick": "center"
         },
         {
           "range": [125, 129],
-          "name": "shutter open"
+          "name": "shutter open",
+          "menuClick": "start"
         },
         {
           "range": [130, 144],
-          "name": "strobe 5: random opening pulse (fast>slow)"
+          "name": "strobe 5: random opening pulse (fast>slow)",
+          "menuClick": "center"
         },
         {
           "range": [145, 149],
-          "name": "shutter open"
+          "name": "shutter open",
+          "menuClick": "start"
         },
         {
           "range": [150, 164],
-          "name": "strobe 6: random closing pulse (fast>slow)"
+          "name": "strobe 6: random closing pulse (fast>slow)",
+          "menuClick": "center"
         },
         {
           "range": [165, 169],
-          "name": "shutter open"
+          "name": "shutter open",
+          "menuClick": "start"
         },
         {
           "range": [170, 184],
-          "name": "strobe 7: burst pulse (fast>slow)"
+          "name": "strobe 7: burst pulse (fast>slow)",
+          "menuClick": "center"
         },
         {
           "range": [185, 189],
-          "name": "shutter open"
+          "name": "shutter open",
+          "menuClick": "start"
         },
         {
           "range": [190, 204],
-          "name": "strobe 8: random burst pulse (fast>slow)"
+          "name": "strobe 8: random burst pulse (fast>slow)",
+          "menuClick": "center"
         },
         {
           "range": [205, 209],
-          "name": "shutter open"
+          "name": "shutter open",
+          "menuClick": "start"
         },
         {
           "range": [210, 224],
-          "name": "strobe 9: sine wave (fast>slow)"
+          "name": "strobe 9: sine wave (fast>slow)",
+          "menuClick": "center"
         },
         {
           "range": [225, 229],
-          "name": "shutter open"
+          "name": "shutter open",
+          "menuClick": "start"
         },
         {
           "range": [230, 244],
-          "name": "strobe 10: burst (fast>slow)"
+          "name": "strobe 10: burst (fast>slow)",
+          "menuClick": "center"
         },
         {
           "range": [245, 255],
-          "name": "shutter open"
+          "name": "shutter open",
+          "menuClick": "start"
         }
       ]
     },
@@ -475,12 +497,194 @@
           "name": "Color temperature control (10000K>2500K)"
         }
       ]
+    },
+    "FX1 select": {
+      "type": "Effect"
+    },
+    "FX1 speed": {
+      "type": "Speed"
+    },
+    "FX2 select": {
+      "type": "Effect"
+    },
+    "FX2 speed": {
+      "type": "Speed"
+    },
+    "FX1+2 speed": {
+      "type": "Speed"
+    },
+    "Unused": {
+      "type": "Nothing"
+    },
+    "FX sync": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 49],
+          "name": "no sync",
+          "switchChannels": {
+            "FX1 speed / FX1+2 speed": "FX1 speed",
+            "FX2 speed / Nothing": "FX2 speed"
+          }
+        },
+        {
+          "range": [50, 50],
+          "name": "sync",
+          "switchChannels": {
+            "FX1 speed / FX1+2 speed": "FX1+2 speed",
+            "FX2 speed / Nothing": "Unused"
+          }
+        },
+        {
+          "range": [51, 169],
+          "name": "sync shift (offset 0 to max)",
+          "switchChannels": {
+            "FX1 speed / FX1+2 speed": "FX1+2 speed",
+            "FX2 speed / Nothing": "Unused"
+          }
+        },
+        {
+          "range": [170, 209],
+          "name": "sync random",
+          "switchChannels": {
+            "FX1 speed / FX1+2 speed": "FX1+2 speed",
+            "FX2 speed / Nothing": "Unused"
+          }
+        },
+        {
+          "range": [210, 255],
+          "name": "no sync random",
+          "switchChannels": {
+            "FX1 speed / FX1+2 speed": "FX1 speed",
+            "FX2 speed / Nothing": "FX2 speed"
+          }
+        }
+      ]
+    },
+    "Aura shutter": {
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 19],
+          "name": "shutter closed",
+          "menuClick": "start"
+        },
+        {
+          "range": [20, 24],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [25, 64],
+          "name": "strobe 1 (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [65, 69],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [70, 84],
+          "name": "strobe 2: opening pulse (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [85, 89],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [90, 104],
+          "name": "strobe 3: closing pulse (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [105, 109],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [110, 124],
+          "name": "strobe 4: random strobe (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [125, 129],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [130, 144],
+          "name": "strobe 5: random opening pulse (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [145, 149],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [150, 164],
+          "name": "strobe 6: random closing pulse (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [165, 169],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [170, 184],
+          "name": "strobe 7: burst pulse (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [185, 189],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [190, 204],
+          "name": "strobe 8: random burst pulse (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [205, 209],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [210, 224],
+          "name": "strobe 9: sine wave (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [225, 229],
+          "name": "shutter open",
+          "menuClick": "start"
+        },
+        {
+          "range": [230, 244],
+          "name": "strobe 10: burst (fast>slow)",
+          "menuClick": "center"
+        },
+        {
+          "range": [245, 255],
+          "name": "shutter open",
+          "menuClick": "start"
+        }
+      ]
+    },
+    "Aura dimmer": {
+      "type": "Intensity"
     }
   },
   "modes": [
     {
-      "name": "14 channels",
-      "shortName": "14ch",
+      "name": "Standard",
+      "shortName": "std",
       "channels": [
         "Shutter",
         "Beam dimmer",
@@ -496,6 +700,33 @@
         "Beam blue",
         "Beam white",
         "Beam CTC"
+      ]
+    },
+    {
+      "name": "Extended",
+      "shortName": "ext",
+      "channels": [
+        "Shutter",
+        "Beam dimmer",
+        "Zoom",
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "Fixture control settings",
+        "Beam color wheel effect",
+        "Beam red",
+        "Beam green",
+        "Beam blue",
+        "Beam white",
+        "Beam CTC",
+        "FX1 select",
+        "FX1 speed / FX1+2 speed",
+        "FX2 select",
+        "FX2 speed / Nothing",
+        "FX sync",
+        "Aura shutter",
+        "Aura dimmer"
       ]
     }
   ]
