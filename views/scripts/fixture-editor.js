@@ -85,8 +85,8 @@ Vue.component('fixture-mode', {
     this.$refs.firstInput.focus();
   },
   methods: {
-    getChannel: function(channelUuid) {
-      return this.fixture.availableChannels[channelUuid];
+    getChannelName: function(channelUuid) {
+      return app.getChannelName(channelUuid);
     },
     editChannel: function(channelUuid) {
       this.channel.modeId = this.mode.uuid;
@@ -99,22 +99,52 @@ Vue.component('fixture-mode', {
     },
     isChannelNameUnique: function(channelUuid) {
       return app.isChannelNameUnique(channelUuid);
+    },
+    isFineChannel: function(channelUuid) {
+      return 'coarseChannelId' in this.fixture.availableChannels[channelUuid];
+    },
+    removeChannel: function(channelUuid) {
+      var channel = this.fixture.availableChannels[channelUuid];
+
+      // first remove the finer channels
+      var coarseChannelId = channelUuid;
+      var fineness = 0;
+      if (this.isFineChannel(channelUuid)) {
+        coarseChannelId = channel.coarseChannelId;
+        fineness = channel.fineness;
+      }
+
+      for (var chId in this.fixture.availableChannels) {
+        if (!this.fixture.availableChannels.hasOwnProperty(chId)) {
+          continue;
+        }
+
+        var ch = this.fixture.availableChannels[chId];
+        if ('coarseChannelId' in ch && ch.coarseChannelId === coarseChannelId
+          && ch.fineness > fineness) {
+          app.removeChannel(ch.uuid, this.mode.uuid);
+        }
+      }
+
+      app.removeChannel(channelUuid, this.mode.uuid);
     }
   }
 });
 
 Vue.component('channel-capability', {
   template: '#template-capability',
-  props: ['capability', 'capabilities'],
+  props: ['capability', 'capabilities', 'fineness'],
   data: function() {
     return {
-      dmxMin: 0,
-      dmxMax: 255
+      dmxMin: 0
     };
   },
   computed: {
+    dmxMax: function() {
+      return Math.pow(256, this.fineness+1) - 1;
+    },
     isChanged: function() {
-      return isCapabilityChanged(this.capability);
+      return this.capabilities.some(isCapabilityChanged);
     },
     startMin: function() {
       var min = this.dmxMin;
@@ -314,13 +344,23 @@ function getEmptyChannel() {
     name: '',
     type: '',
     color: '',
+    fineness: 0,
     defaultValue: '',
     highlightValue: '',
     invert: '',
     constant: '',
     crossfade: '',
     precedence: '',
+    capFineness: 0,
     capabilities: [getEmptyCapability()]
+  };
+}
+
+function getEmptyFineChannel(coarseChannelId, fineness) {
+  return {
+    uuid: uuidV4(),
+    coarseChannelId: coarseChannelId,
+    fineness: fineness
   };
 }
 
@@ -360,7 +400,35 @@ var app = window.app = new Vue({
     },
     currentModeUnchosenChannels: function() {
       return Object.keys(this.fixture.availableChannels).filter(function(channelUuid) {
-        return app.currentMode.channels.indexOf(channelUuid) === -1;
+        if (app.currentMode.channels.indexOf(channelUuid) !== -1) {
+          // already used
+          return false;
+        }
+
+        var channel = app.fixture.availableChannels[channelUuid];
+        if ('coarseChannelId' in channel) {
+          // should we include this fine channel?
+
+          if (app.currentMode.channels.indexOf(channel.coarseChannelId) === -1) {
+            // its coarse channel is not yet in the mode
+            return false;
+          }
+
+          var maxFoundFineness = 0;
+          for (var i = 0; i < app.currentMode.channels.length; i++) {
+            var ch = app.fixture.availableChannels[app.currentMode.channels[i]];
+            
+            if ('coarseChannelId' in ch && ch.coarseChannelId === channel.coarseChannelId) {
+              maxFoundFineness = Math.max(maxFoundFineness, ch.fineness);
+            }
+          }
+          if (maxFoundFineness < channel.fineness - 1) {
+            // the finest channel currently used is not its next coarser channel
+            return false;
+          }
+        }
+
+        return true;
       });
     },
     currentModeDisplayName: function() {
@@ -408,19 +476,32 @@ var app = window.app = new Vue({
     capabilitiesScroll: capabilitiesScroll,
     resetChannelForm: resetChannelForm,
     saveChannel: saveChannel,
+    addFineChannels: addFineChannels,
+    removeChannel: removeChannel,
     autoSave: autoSave,
     clearAutoSave: clearAutoSave,
     discardRestored: discardRestored,
     applyRestored: applyRestored,
     submitFixture: submitFixture,
+    getChannelName: function(channelUuid) {
+      var channel = this.fixture.availableChannels[channelUuid];
+      if ('coarseChannelId' in channel) {
+        var name = this.getChannelName(channel.coarseChannelId) + ' fine';
+        if (channel.fineness > 1) {
+          name += '^' + channel.fineness;
+        }
+        return name;
+      }
+      return channel.name;
+    },
     isChannelNameUnique: function(channelUuid) {
-      var chName = this.fixture.availableChannels[channelUuid].name;
+      var chName = this.getChannelName(channelUuid);
       for (var channelKey in this.fixture.availableChannels) {
         if (!this.fixture.availableChannels.hasOwnProperty(channelKey)) {
           continue;
         }
 
-        var cmpName = this.fixture.availableChannels[channelKey].name;
+        var cmpName = this.getChannelName(channelKey);
         if (cmpName === chName && channelKey !== channelUuid) {
           return false;
         }
@@ -508,9 +589,28 @@ function saveChannel() {
   if (this.channel.editMode === 'create') {
     Vue.set(this.fixture.availableChannels, this.channel.uuid, getSanitizedChannel(this.channel));
     this.currentMode.channels.push(this.channel.uuid);
+
+    this.addFineChannels(this.channel, 1, true);
   }
   else if (this.channel.editMode === 'edit-all') {
     this.fixture.availableChannels[this.channel.uuid] = getSanitizedChannel(this.channel);
+
+    var maxFoundFineness = 0;
+    for (var chId in this.fixture.availableChannels) {
+      if (!this.fixture.availableChannels.hasOwnProperty(chId)) {
+        continue;
+      }
+
+      var fineChannel = this.fixture.availableChannels[chId];
+      if ('coarseChannelId' in fineChannel && fineChannel.coarseChannelId === this.channel.uuid) {
+        maxFoundFineness = Math.max(maxFoundFineness, fineChannel.fineness);
+        if (fineChannel.fineness > this.channel.fineness) {
+          this.removeChannel(chId);
+        }
+      }
+    }
+
+    this.addFineChannels(this.channel, maxFoundFineness + 1, false);
   }
   else if (this.channel.editMode === 'edit-duplicate') {
     var oldChannelKey = this.channel.uuid;
@@ -519,6 +619,8 @@ function saveChannel() {
     var newChannel = getSanitizedChannel(this.channel);
     newChannel.uuid = newChannelKey;
     Vue.set(this.fixture.availableChannels, newChannelKey, newChannel);
+
+    this.addFineChannels(this.channel, 1, false);
 
     this.currentMode.channels = this.currentMode.channels.map(function(key) {
       if (key === oldChannelKey) {
@@ -532,6 +634,59 @@ function saveChannel() {
   }
 
   this.resetChannelForm();
+}
+
+/**
+ * @param {!Object} coarseChannel The channel object of the coarse channel.
+ * @param {!number} offset At which fineness should be started.
+ * @param {boolean} [addToMode] If true, the fine channel is pushed to the current mode's channels.
+ */
+function addFineChannels(coarseChannel, offset, addToMode) {
+  for (var i = offset; i <= coarseChannel.fineness; i++) {
+    var fineChannel = getEmptyFineChannel(coarseChannel.uuid, i);
+    Vue.set(this.fixture.availableChannels, fineChannel.uuid, getSanitizedChannel(fineChannel));
+
+    if (addToMode) {
+      this.currentMode.channels.push(fineChannel.uuid);
+    }
+  }
+}
+
+/**
+ * @param {!string} channelUuid The channel's uuid.
+ * @param {?string} [modeUuid] The mode's uuid. If not supplied, remove channel everywhere.
+ */
+function removeChannel(channelUuid, modeUuid) {
+  if (modeUuid) {
+    for (var i = 0; i<this.fixture.modes.length; i++) {
+      var mode = this.fixture.modes[i];
+      if (mode.uuid === modeUuid) {
+        mode.channels.splice(mode.channels.indexOf(channelUuid), 1);
+        break;
+      }
+    }
+    return;
+  }
+
+  // remove fine channels first
+  for (var chId in this.fixture.availableChannels) {
+    if (!this.fixture.availableChannels.hasOwnProperty(chId)) {
+      continue;
+    }
+
+    var channel = this.fixture.availableChannels[chId];
+    if ('coarseChannelId' in channel && channel.coarseChannelId === channelUuid) {
+      this.removeChannel(channel.uuid);
+    }
+  }
+
+  // now remove all references from modes
+  for (var i = 0; i<this.fixture.modes.length; i++) {
+    this.removeChannel(channelUuid, this.fixture.modes[i].uuid);
+  }
+
+  // finally remove the channel itself
+  delete this.fixture.availableChannels[channelUuid];
 }
 
 function resetChannelForm() {
@@ -602,7 +757,7 @@ function restoreAutoSave() {
     return;
   }
 
-  console.log('restore', this.restoredData);
+  console.log('restore', JSON.parse(JSON.stringify(this.restoredData)));
 }
 function discardRestored() {
   // put all items except the last one back

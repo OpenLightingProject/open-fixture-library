@@ -326,10 +326,10 @@ function getModeTemplate() {
   str += '<h3>Channels</h3>';
   str += '<ol class="mode-channels">';
   str += '<li v-for="(channelUuid, index) in mode.channels">';
-  str += '<span class="channel-name">{{ getChannel(channelUuid).name }}</span> ';
+  str += '<span class="channel-name">{{ getChannelName(channelUuid) }}</span> ';
   str += '<code v-if="!isChannelNameUnique(channelUuid)" class="channel-uuid">{{ channelUuid }}</code>';
-  str += '<a href="#remove" title="Remove channel" @click.prevent="mode.channels.splice(index, 1)">' + require('../includes/svg.js')({svgBasename: 'close'}) + '</a>';
-  str += '<a href="#channel-editor" title="Edit channel" @click.prevent="editChannel(channelUuid)">' + require('../includes/svg.js')({svgBasename: 'pencil'}) + '</a>';
+  str += '<a href="#remove" title="Remove channel" @click.prevent="removeChannel(channelUuid)">' + require('../includes/svg.js')({svgBasename: 'close'}) + '</a>';
+  str += '<a href="#channel-editor" title="Edit channel" v-if="!isFineChannel(channelUuid)" @click.prevent="editChannel(channelUuid)">' + require('../includes/svg.js')({svgBasename: 'pencil'}) + '</a>';
   str += '</li>';
   str += '</ol>';
 
@@ -400,14 +400,14 @@ function getRestoreDialogString() {
 
 function getChannelDialogString() {
   let str = '<a11y-dialog id="channel" :cancellable="true" :shown="channel.editMode !== \'\' && channel.editMode !== \'edit-?\'" @show="onChannelDialogOpen" @hide="onChannelDialogClose" ref="channelDialog">';
-  str += '<span slot="title">{{ channel.editMode === "add-existing" ? "Add channel to mode " + currentModeDisplayName : channel.editMode === "create" ? "Create new channel for mode " + currentModeDisplayName : "Edit channel" }}</span>';
+  str += '<span slot="title">{{ channel.editMode === "add-existing" ? "Add channel to mode " + currentModeDisplayName : channel.editMode === "create" ? "Create new channel" : "Edit channel" }}</span>';
 
   str += '<form action="#" @submit.prevent="saveChannel" ref="channelForm">';
 
   str += '<div v-if="channel.editMode == \'add-existing\'">';
   str += '<select size="10" required v-model="channel.uuid">';
   str += '<option v-for="channelUuid in currentModeUnchosenChannels" :value="channelUuid">';
-  str += '{{ fixture.availableChannels[channelUuid].name }}';
+  str += '{{ getChannelName(channelUuid) }}';
   str += '</option>';
   str += '</select>';
   str += ' or <a href="#create-channel" @click.prevent="channel.editMode = \'create\'">create a new channel</a>';
@@ -438,11 +438,16 @@ function getChannelDialogString() {
 
   str += '<h3>DMX values</h3>';
 
-  // str += '<section class="channel-16bit">';
-  // str += '<label>';
-  // str += '<input type="checkbox" v-model="channel.16bit" disabled> <strike>Is 16-bit channel?</strike> (not yet implemented)';
-  // str += '</label>';
-  // str += '</section>';
+  str += '<section class="channel-fineness">';
+  str += '<label>';
+  str += '<span class="label">Channel resolution</span>';
+  str += '<select required v-model.number="channel.fineness">';
+  str += '<option value="0" selected>8 bit (No fine channels)</option>';
+  str += '<option value="1">16 bit (1 fine channel)</option>';
+  str += '<option value="2">24 bit (2 fine channels)</option>';
+  str += '</select>';
+  str += '</label>';
+  str += '</section>';
 
   str += '<section class="channel-defaultValue">';
   str += '<label>';
@@ -487,8 +492,20 @@ function getChannelDialogString() {
   str += '</section>';
 
   str += '<h3>Capabilities</h3>';
+
+  str += '<section class="channel-cap-fineness" v-if="channel.fineness > 0">';
+  str += '<label>';
+  str += '<span class="label">Capability resolution</span>';
+  str += '<select required v-model.number="channel.capFineness">';
+  str += '<option value="0" selected>8 bit (range 0 - 255)</option>';
+  str += '<option value="1" v-if="channel.fineness >= 1">16 bit (range 0 - 65535)</option>';
+  str += '<option value="2" v-if="channel.fineness >= 2">24 bit (range 0 - 16777215)</option>';
+  str += '</select>';
+  str += '</label>';
+  str += '</section>';
+
   str += '<ul class="capabilities">';
-  str += '<channel-capability v-for="cap in channel.capabilities" :key="cap.uuid" :capability="cap" :capabilities="channel.capabilities" @scroll-item-inserted="capabilitiesScroll"></channel-capability>';
+  str += '<channel-capability v-for="cap in channel.capabilities" :key="cap.uuid" :capability="cap" :capabilities="channel.capabilities" :fineness="Math.min(channel.fineness, channel.capFineness)" @scroll-item-inserted="capabilitiesScroll"></channel-capability>';
   str += '</ul>';
 
   str += '</div>';  // [v-else]
