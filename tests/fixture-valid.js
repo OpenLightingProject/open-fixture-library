@@ -166,6 +166,28 @@ function checkMatrix(matrix) {
   if (variesInAxisLength) {
     result.errors.push('Matrix must not vary in axis length.');
   }
+
+  checkPixelGroups(matrix);
+}
+
+/**
+ * Check if the referenced pixelKeys from the pixelGroups exist and don't duplicate
+ * @param {Matrix} matrix The Matrix instance
+ */
+function checkPixelGroups(matrix) {
+  for (const pixelGroupKey of matrix.pixelGroupKeys) {
+    const usedPixelKeys = new Set();
+
+    for (const pixelKey of matrix.pixelGroups[pixelGroupKey]) {
+      if (!(pixelKey in matrix.pixelKeyPositions)) {
+        result.errors.push(`pixelGroup '${pixelGroupKey}' references unknown pixelKey '${pixelKey}'.`);
+      }
+      if (usedPixelKeys.has(pixelKey)) {
+        result.errors.push(`pixelGroup '${pixelGroupKey}' can\'t reference pixelKey '${pixelKey}' multiple times.`);
+      }
+      usedPixelKeys.add(pixelKey);
+    }
+  }
 }
 
 function checkChannel(channel) {
