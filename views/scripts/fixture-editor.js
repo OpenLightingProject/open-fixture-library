@@ -106,7 +106,7 @@ Vue.component('fixture-mode', {
     removeChannel: function(channelUuid) {
       var channel = this.fixture.availableChannels[channelUuid];
 
-      // first remove the finer channels
+      // first remove the finer channels if any
       var coarseChannelId = channelUuid;
       var fineness = 0;
       if (this.isFineChannel(channelUuid)) {
@@ -126,6 +126,7 @@ Vue.component('fixture-mode', {
         }
       }
 
+      // then remove the channel itself
       app.removeChannel(channelUuid, this.mode.uuid);
     }
   }
@@ -658,13 +659,13 @@ function addFineChannels(coarseChannel, offset, addToMode) {
  */
 function removeChannel(channelUuid, modeUuid) {
   if (modeUuid) {
-    for (var i = 0; i<this.fixture.modes.length; i++) {
-      var mode = this.fixture.modes[i];
-      if (mode.uuid === modeUuid) {
-        mode.channels.splice(mode.channels.indexOf(channelUuid), 1);
-        break;
-      }
-    }
+    // find mode
+    var mode = this.fixture.modes.find(function(mode) {
+      return mode.uuid === modeUuid;
+    });
+
+    // remove channel reference from mode
+    mode.channels.splice(mode.channels.indexOf(channelUuid), 1);
     return;
   }
 
@@ -681,9 +682,9 @@ function removeChannel(channelUuid, modeUuid) {
   }
 
   // now remove all references from modes
-  for (var i = 0; i<this.fixture.modes.length; i++) {
-    this.removeChannel(channelUuid, this.fixture.modes[i].uuid);
-  }
+  this.fixture.modes.forEach(function(mode) {
+    app.removeChannel(channelUuid, mode.uuid);
+  });
 
   // finally remove the channel itself
   delete this.fixture.availableChannels[channelUuid];
