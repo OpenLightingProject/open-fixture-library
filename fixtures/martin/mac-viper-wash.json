@@ -7,8 +7,8 @@
     "createDate": "2017-08-03",
     "lastModifyDate": "2017-08-03"
   },
-  "comment": "Mac Viper Wash: \n\n- 33000 Lumens\n- 1:5 zoom - Continuous and fast\n- Internal barndoor system | 1 pair of indexing shutters\n\n",
-  "manualURL": "https://cdn01.4wall.com/cms/rentals/files/f55dfa006a1322.pdf",
+  "comment": "Mac Viper Wash: \n\n- 33000 Lumens\n- 1:5 zoom - Continuous and fast\n- Internal barndoor system | 1 pair of indexing shutters",
+  "manualURL": "http://www.martin.com/files/files/productdocuments/11_MANUALS/999/UM_MACViperWash_EN_B.pdf",
   "physical": {
     "dimensions": [473, 749, 566],
     "weight": 33,
@@ -27,8 +27,9 @@
       "tiltMax": 268
     }
   },
+  "// TODO comment": "Split DX variant, check if fine channels for focus and zoom are available",
   "availableChannels": {
-    "strobe/shutter": {
+    "Strobe / Shutter": {
       "type": "Strobe",
       "capabilities": [
         {
@@ -53,47 +54,24 @@
         }
       ]
     },
-    "dimmer + dimmer fine (16-bit)": {
+    "Dimmer": {
       "type": "Intensity",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Dimmer fade (MSB) + Dimmer fade, fine (LSB) = 0-65535"
-        }
-      ]
+      "fineChannelAliases": ["Dimmer fine"]
     },
-    "cyan": {
-      "type": "SingleColor",
-      "color": "Cyan",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Cyan, White>full cyan"
-        }
-      ]
+    "Cyan": {
+      "type": "Single Color",
+      "color": "Cyan"
     },
-    "magenta": {
-      "type": "SingleColor",
-      "color": "Magenta",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Magenta, White>full magenta"
-        }
-      ]
+    "Magenta": {
+      "type": "Single Color",
+      "color": "Magenta"
     },
     "Yellow": {
-      "type": "SingleColor",
-      "color": "Yellow",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Yellow, White>full yellow"
-        }
-      ]
+      "type": "Single Color",
+      "color": "Yellow"
     },
     "CTO": {
-      "type": "[add-value]",
+      "type": "Color Temperature",
       "capabilities": [
         {
           "range": [0, 255],
@@ -101,8 +79,8 @@
         }
       ]
     },
-    "color wheel": {
-      "type": "MultiColor",
+    "Color Wheel": {
+      "type": "Multi-Color",
       "capabilities": [
         {
           "range": [0, 0],
@@ -230,8 +208,8 @@
         }
       ]
     },
-    "iris": {
-      "type": "[add-value]",
+    "Iris": {
+      "type": "Iris",
       "capabilities": [
         {
           "range": [0, 255],
@@ -239,26 +217,27 @@
         }
       ]
     },
-    "internal barndoor 1": {
-      "type": "[add-value]",
+    "Internal barndoor 1": {
+      "type": "Iris",
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "barndoor1, out>in"
+          "name": "Barndoor 1, Out>In"
         }
       ]
     },
-    "internal barndoor 2": {
-      "type": "[add-value]",
+    "Internal barndoor 2": {
+      "type": "Iris",
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "barndoor2, Out>In"
+          "name": "Barndoor 2, Out>In"
         }
       ]
     },
-    "internal barndoors rotation": {
-      "type": "[add-value]",
+    "Internal barndoors rotation": {
+      "type": "Iris",
+      "defaultValue": 100,
       "capabilities": [
         {
           "range": [0, 9],
@@ -294,8 +273,8 @@
         }
       ]
     },
-    "zoom": {
-      "type": "[add-value]",
+    "Zoom": {
+      "type": "Zoom",
       "capabilities": [
         {
           "range": [0, 255],
@@ -303,53 +282,39 @@
         }
       ]
     },
-    "Focus (16-bit)": {
-      "type": "[add-value]",
+    "Focus": {
+      "type": "Focus",
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "Focus, Infinity > near (0-65535)"
+          "name": "Focus, Infinity > near"
         }
       ]
     },
-    "pan (MSB) (16 bit)": {
+    "Pan": {
       "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32768,
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "Pan, Left > right (32768 = neutral)"
+          "name": "Pan, Left > right"
         }
       ]
     },
-    "pan (LSB) (16-bit)": {
-      "type": "Pan",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Pan, Left > right (32768 = neutral)"
-        }
-      ]
-    },
-    "tilt (MSB) (16 bit)": {
+    "Tilt": {
       "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32768,
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "Tilt, Up > down (32768 = neutral)"
+          "name": "Tilt, Up > down"
         }
       ]
     },
-    "tilt (LSB) (16-bit)": {
-      "type": "Tilt",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Tilt, Up > down (32768 = neutral)"
-        }
-      ]
-    },
-    "fixture control/settings": {
-      "type": "[add-value]",
+    "Fixture control / settings": {
+      "type": "Maintenance",
       "capabilities": [
         {
           "range": [0, 9],
@@ -556,37 +521,77 @@
           "name": "No function"
         }
       ]
+    },
+    "Reserved for future use 1": {
+      "type": "Nothing"
+    },
+    "Reserved for future use 2": {
+      "type": "Nothing"
+    },
+    "Reserved for future use 3": {
+      "type": "Nothing"
+    },
+    "Reserved for future use 4": {
+      "type": "Nothing"
+    },
+    "Reserved for future use 5": {
+      "type": "Nothing"
     }
   },
   "modes": [
     {
-      "name": "18 channels Basic",
-      "shortName": "18ch",
+      "name": "Basic",
+      "shortName": "basic",
       "channels": [
-        "strobe/shutter",
-        "dimmer + dimmer fine (16-bit)",
-        "cyan",
-        "magenta",
+        "Strobe / Shutter",
+        "Dimmer",
+        "Cyan",
+        "Magenta",
         "Yellow",
         "CTO",
-        "color wheel",
-        "iris",
-        "internal barndoor 1",
-        "internal barndoor 2",
-        "internal barndoors rotation",
-        "zoom",
-        "Focus (16-bit)",
-        "pan (MSB) (16 bit)",
-        "pan (LSB) (16-bit)",
-        "tilt (MSB) (16 bit)",
-        "tilt (LSB) (16-bit)",
-        "fixture control/settings"
+        "Color Wheel",
+        "Iris",
+        "Internal barndoor 1",
+        "Internal barndoor 2",
+        "Internal barndoors rotation",
+        "Zoom",
+        "Focus",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Fixture control / settings"
       ]
     },
     {
-      "name": "24 channels Extended",
-      "shortName": "24ch_ext",
-      "channels": []
+      "name": "Extended",
+      "shortName": "ext",
+      "channels": [
+        "Strobe / Shutter",
+        "Dimmer",
+        "Dimmer fine",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CTO",
+        "Color Wheel",
+        "Iris",
+        "Internal barndoor 1",
+        "Internal barndoor 2",
+        "Internal barndoors rotation",
+        "Zoom",
+        "Focus",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Fixture control / settings",
+        "Reserved for future use 1",
+        "Reserved for future use 2",
+        "Reserved for future use 3",
+        "Reserved for future use 4",
+        "Reserved for future use 5"
+      ]
     }
   ]
 }
