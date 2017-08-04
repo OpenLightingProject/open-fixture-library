@@ -14,6 +14,10 @@
     "power": 34,
     "DMXconnector": "3-pin"
   },
+  "matrix": {
+    "layout": "rect",
+    "pixelCount": [8, 8, 1]
+  },
   "availableChannels": {
     "Function": {
       "type": "Effect",
@@ -272,10 +276,6 @@
         }
       ]
     }
-  },
-  "matrix": {
-    "layout": "rect",
-    "pixelCount": [8, 8, 1]
   },
   "modes": [
     {

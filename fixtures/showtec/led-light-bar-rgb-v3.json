@@ -29,6 +29,18 @@
       "spacing": [0, 0, 0]
     }
   },
+  "matrix": {
+    "layout": "line",
+    "pixelKeys": [
+      [
+        ["1/4", "2/4", "3/4", "4/4"]
+      ]
+    ],
+    "pixelGroups": {
+      "1/2": ["1/4", "2/4"],
+      "2/2": ["3/4", "4/4"]
+    }
+  },
   "availableChannels": {
     "Red": {
       "type": "Single Color",
@@ -301,18 +313,6 @@
       "type": "Single Color",
       "crossfade": true,
       "color": "Blue"
-    }
-  },
-  "matrix": {
-    "layout": "line",
-    "pixelKeys": [
-      [
-        ["1/4", "2/4", "3/4", "4/4"]
-      ]
-    ],
-    "pixelGroups": {
-      "1/2": ["1/4", "2/4"],
-      "2/2": ["3/4", "4/4"]
     }
   },
   "modes": [

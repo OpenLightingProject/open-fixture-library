@@ -195,13 +195,13 @@ const Fixture = schema({
   '?comment': NonEmptyMultiLineString,
   '?manualURL': URL,
   '?physical': Physical,
+  '?matrix': Matrix,
   '?availableChannels': {
     '*': Channel // '*' is the ChannelKey
   },
   '?templateChannels': {
     '*': TemplateChannel // '*' is the TemplateChannelKey, must include $pixelKey
   },
-  '?matrix': Matrix,
   'modes': Array.of(1, Infinity, Mode),
   '*': Function
 });

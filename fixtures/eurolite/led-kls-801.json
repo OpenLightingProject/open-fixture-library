@@ -23,6 +23,10 @@
       "type": "Fixed"
     }
   },
+  "matrix": {
+    "layout": "line",
+    "pixelCount": [4, 1, 1]
+  },
   "availableChannels": {
     "Preset programs": {
       "type": "Effect",
@@ -202,10 +206,6 @@
       "highlightValue": 255,
       "crossfade": true
     }
-  },
-  "matrix": {
-    "layout": "line",
-    "pixelCount": [4, 1, 1]
   },
   "modes": [
     {

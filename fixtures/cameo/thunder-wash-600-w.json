@@ -23,6 +23,15 @@
       "type": "Fixed"
     }
   },
+  "matrix": {
+    "layout": "rect",
+    "pixelKeys": [
+      [
+        ["1", "2"],
+        ["3", "4"]
+      ]
+    ]
+  },
   "availableChannels": {
     "strobe1": {
       "name": "Strobe",
@@ -166,15 +175,6 @@
       "type": "Intensity",
       "crossfade": true
     }
-  },
-  "matrix": {
-    "layout": "rect",
-    "pixelKeys": [
-      [
-        ["1", "2"],
-        ["3", "4"]
-      ]
-    ]
   },
   "modes": [
     {
