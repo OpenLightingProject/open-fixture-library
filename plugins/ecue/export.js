@@ -175,6 +175,7 @@ function getChannelType(channel) {
   switch (channel.type) {
     case 'Multi-Color':
     case 'Single Color':
+    case 'Color Temperature':
       return 'ChannelColor';
 
     case 'Iris':
