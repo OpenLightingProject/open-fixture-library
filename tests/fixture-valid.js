@@ -6,7 +6,12 @@ const Fixture = require('../lib/model/Fixture.js');
 const FineChannel = require('../lib/model/FineChannel.js');
 const SwitchingChannel = require('../lib/model/SwitchingChannel.js');
 
-/** @type {{errors: string[], warnings: string[]}} */
+/**
+ * @typedef ResultData
+ * @type {object}
+ * @property {string[]} errors
+ * @property {string[]} warnings
+ */
 let result;
 /** @type {Fixture} */
 let fixture;
@@ -25,7 +30,7 @@ let modeShortNames;
  * @param {!string} fixKey The fixture key.
  * @param {?object} fixtureJson The fixture JSON object.
  * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurences are appended.
- * @return {{errors: string[], warnings: string[]}} The result object containing errors and warnings, if any.
+ * @return {ResultData} The result object containing errors and warnings, if any.
  */
 module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues=null) {
   result = {
