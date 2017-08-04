@@ -50,28 +50,22 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
 
   try {
     fixture = new Fixture(manKey, fixKey, fixtureJson);
+    
+    checkFixIdentifierUniqueness(uniqueValues);
+    checkMeta(fixture.meta);
+    checkPhysical(fixture.physical);
+    checkMatrix(fixture.matrix);
+    checkChannels(fixtureJson);
+  
+    for (const mode of fixture.modes) {
+      checkMode(mode);
+    }
+  
+    checkUnusedChannels();
   }
   catch (error) {
-    result.errors.push(getErrorString('File could not be imported into model.', error));
-    return result;
+    result.errors.push(getErrorString('File could not be imported into model.', error))
   }
-
-  checkFixIdentifierUniqueness(uniqueValues);
-  checkMeta(fixture.meta);
-  checkPhysical(fixture.physical);
-  checkMatrix(fixture.matrix);
-
-  if (isNotEmpty(fixtureJson.availableChannels, 'availableChannels is empty. Add a channel or remove it.')) {
-    for (const channel of fixture.availableChannels) {
-      checkChannel(channel);
-    }
-  }
-
-  for (const mode of fixture.modes) {
-    checkMode(mode);
-  }
-
-  checkUnusedChannels();
 
   return result;
 };
@@ -199,6 +193,10 @@ function checkPixelGroups(matrix) {
   for (const pixelGroupKey of matrix.pixelGroupKeys) {
     const usedPixelKeys = new Set();
 
+    if (pixelGroupKey in matrix.pixelKeyPositions) {
+      result.errors.push(`pixelGroupKey '${pixelGroupKey}' is already used as pixelKey. Please choose a different name.`);
+    }
+
     for (const pixelKey of matrix.pixelGroups[pixelGroupKey]) {
       if (!(pixelKey in matrix.pixelKeyPositions)) {
         result.errors.push(`pixelGroup '${pixelGroupKey}' references unknown pixelKey '${pixelKey}'.`);
@@ -208,6 +206,32 @@ function checkPixelGroups(matrix) {
       }
       usedPixelKeys.add(pixelKey);
     }
+  }
+}
+
+/**
+ * Check if availableChannels and templateChannels are defined correctly.
+ * @param {!object} fixtureJson The fixture's JSON data
+ */
+function checkChannels(fixtureJson) {
+  if (isNotEmpty(fixtureJson.availableChannels, 'availableChannels are empty. Add a channel or remove it.')) {
+    for (const channel of fixture.availableChannels) {
+      checkChannel(channel);
+    }
+  }
+    
+  if (isNotEmpty(fixtureJson.templateChannels, 'templateChannels are empty. Add a channel or remove it.')) {
+    if (fixture.matrix === null) {
+      result.errors.push('templateChannels are defined but matrix data is missing.')
+    }
+    else {
+      // for (const channel of fixture.templateChannels) {
+      //   checkChannel(channel);
+      // }
+    }
+  }
+  else if (fixture.matrix !== null) {
+    result.errors.push('Matrix is defined but templateChannels are missing.');
   }
 }
 
