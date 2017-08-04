@@ -47,7 +47,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
   checkMeta(fixture.meta);
   checkPhysical(fixture.physical);
   checkMatrix(fixture.matrix);
-  
+
   if (isNotEmpty(fixtureJson.availableChannels, 'availableChannels is empty. Add a channel or remove it.')) {
     for (const channel of fixture.availableChannels) {
       checkChannel(channel);
@@ -153,67 +153,18 @@ function checkMatrix(matrix) {
     return;
   }
 
-  if (matrix.layout === 'custom' && !hasPixelKeys) {
-    result.errors.push('Custom matrix layouts must define \'pixelKeys\'.');
-    return;
-  }
-
-  checkPixelCount(matrix.pixelCount, matrix.layout);
-  checkPixelKeys(matrix);
-}
-
-/**
- * Check if the specified pixelCount is valid for this matrix layout.
- * @param {!number[][][]} pixelCount Amount of pixels in x, y and z direction. 
- * @param {!string} layout The basic steric order.
- */
-function checkPixelCount(pixelCount, layout) {
-  const definedAxes = pixelCount.filter(xyzCount => xyzCount > 1).length;
-
-  if (definedAxes === 0) {
+  if (matrix.definedAxes.length === 0) {
     result.errors.push('Matrix may not consist of only a single pixel.');
     return;
   }
 
-  const requiredAxesPerLayout = {
-    line: 1,
-    rect: 2,
-    cube: 3
-  };
-  
-  if (layout !== 'custom' && requiredAxesPerLayout[layout] !== definedAxes) {
-    result.errors.push(`Matrix with layout ${layout} must define ${requiredAxesPerLayout[layout]} axes (found ${definedAxes}).`);
-  }
-}
-
-/**
- * Check if the specified matrix's pixelKeys are valid for the matrix's layout.
- * @param {!Matrix} matrix The Matrix instance
- */
-function checkPixelKeys(matrix) {
-  let usesNull = false;
-  let variesInAxisLength = false;
-
-  for (const yItems of matrix.pixelKeys) {
-    variesInAxisLength = variesInAxisLength || yItems.length !== matrix.pixelCountY;
-
-    for (const xItems of yItems) {
-      variesInAxisLength = variesInAxisLength || xItems.length !== matrix.pixelCountX;
-
-      for (const pixelKey of xItems) {
-        usesNull = usesNull || pixelKey === null;
-      }
-    }
-  }
-
-  if (matrix.layout !== 'custom' && usesNull) {
-    result.errors.push('Only custom matrix layouts can use null pixelKeys.');
-  }
-  if (matrix.layout !== 'custom' && variesInAxisLength) {
-    result.errors.push('Only custom matrix layouts can vary in axis length.');
-  }
-  if (matrix.layout === 'custom' && !usesNull && !variesInAxisLength) {
-    result.errors.push('Matrix can be converted to line/rect/cube layout.');
+  const variesInAxisLength = matrix.pixelKeys.some(
+    rows => rows.length !== matrix.pixelCountY || rows.some(
+      columns => columns.length !== matrix.pixelCountX
+    )
+  );
+  if (variesInAxisLength) {
+    result.errors.push('Matrix must not vary in axis length.');
   }
 }
 

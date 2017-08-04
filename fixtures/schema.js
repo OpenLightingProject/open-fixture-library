@@ -66,8 +66,6 @@ const PixelKey = NoVariablesString;
 const PixelGroupKey = NoVariablesString;
 
 const Matrix = schema({
-  'layout': ['line', 'rect', 'cube', 'custom'],
-
   // one of the two must be defined
   '?pixelCount': Array.of(3, Number.min(1).step(1)),
   '?pixelKeys': Array.of(1, Infinity, // Z items
