@@ -62,6 +62,27 @@ const Physical = schema({
   '*': Function
 });
 
+const PixelKey = NoVariablesString;
+const PixelGroupKey = NoVariablesString;
+
+const Matrix = schema({
+  'layout': ['line', 'rect', 'cube', 'custom'],
+
+  // one of the two must be defined
+  '?pixelCount': Array.of(3, Number.min(1).step(1)),
+  '?pixelKeys': Array.of(1, Infinity, // Z items
+    Array.of(1, Infinity, // Y items
+      Array.of(1, Infinity, [PixelKey, null]) // X items
+    )
+  ),
+
+  '?pixelGroups': {
+    '*': Array.of(1, Infinity, PixelKey) // '*' is the PixelGroupKey
+  },
+
+  '*': Function
+});
+
 const DMXValue = Number.min(0).step(1);  // max value depends on how many fine channels there are (255 if none, 65535 if one, etc.)
 
 const ChannelKey = NoVariablesString;  // channels in availableChannels
@@ -127,27 +148,6 @@ const Channel = schema({
 });
 
 const TemplateChannel = Channel;
-
-const PixelKey = NoVariablesString;
-const PixelGroupKey = NoVariablesString;
-
-const Matrix = schema({
-  'layout': ['line', 'rect', 'cube', 'custom2D', 'custom3D'],
-
-  // one of the two must be defined
-  '?pixelCount': Array.of(3, Number.min(1).step(1)),
-  '?pixelKeys': Array.of(1, Infinity, // Z items
-    Array.of(1, Infinity, // Y items
-      Array.of(1, Infinity, [PixelKey, null]) // X items
-    )
-  ),
-
-  '?pixelGroups': {
-    '*': Array.of(1, Infinity, PixelKey) // '*' is the PixelGroupKey
-  },
-
-  '*': Function
-});
 
 const TemplateChannelReference = [
   null, // for unused channels

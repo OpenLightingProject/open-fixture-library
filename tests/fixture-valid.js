@@ -6,11 +6,17 @@ const Fixture = require('../lib/model/Fixture.js');
 const FineChannel = require('../lib/model/FineChannel.js');
 const SwitchingChannel = require('../lib/model/SwitchingChannel.js');
 
+/** @type {{errors: string[], warnings: string[]}} */
 let result;
+/** @type {Fixture} */
 let fixture;
+/** @type {Set<string>} */
 let definedChannelKeys; // and aliases
+/** @type {Set<string>} */
 let usedChannelKeys; // and aliases
+/** @type {Set<string>} */
 let modeNames;
+/** @type {Set<string>} */
 let modeShortNames;
 
 module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues=null) {
@@ -40,7 +46,8 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
   checkFixIdentifierUniqueness(uniqueValues);
   checkMeta(fixture.meta);
   checkPhysical(fixture.physical);
-
+  checkMatrix(fixture.matrix);
+  
   if (isNotEmpty(fixtureJson.availableChannels, 'availableChannels is empty. Add a channel or remove it.')) {
     for (const channel of fixture.availableChannels) {
       checkChannel(channel);
@@ -98,6 +105,11 @@ function checkMeta(meta) {
   }
 }
 
+/**
+ * Checks if the given Physical object is valid.
+ * @param {?Physical} physical A fixture's or a mode's physical data.
+ * @param {!string} [modeDescription=''] Optional information in error messages about current mode.
+ */
 function checkPhysical(physical, modeDescription = '') {
   if (physical === null) {
     return;
@@ -112,6 +124,96 @@ function checkPhysical(physical, modeDescription = '') {
     if (physical.lensDegreesMin > physical.lensDegreesMax) {
       result.errors.push(`physical.lens.degreesMinMax${modeDescription} is an invalid range.`);
     }
+
+    if (physical.hasMatrixPixels && fixture.matrix === null) {
+      result.errors.push('physical.matrixPixels is set but fixture.matrix is missing.');
+    }
+  }
+}
+
+/**
+ * Checks if the given Matrix object is valid.
+ * @param {?Matrix} matrix A fixture's matrix data.
+ */
+function checkMatrix(matrix) {
+  if (matrix === null) {
+    return;
+  }
+
+  const matrixJson = matrix.jsonObject;
+  const hasPixelCount = 'pixelCount' in matrixJson;
+  const hasPixelKeys = 'pixelKeys' in matrixJson;
+  
+  if (!hasPixelCount && !hasPixelKeys) {
+    result.errors.push('Matrix must either define \'pixelCount\' or \'pixelKeys\'.');
+    return;
+  }
+  if (hasPixelCount && hasPixelKeys) {
+    result.errors.push('Matrix can\'t define both \'pixelCount\' and \'pixelKeys\'.');
+    return;
+  }
+
+  if (matrix.layout === 'custom' && !hasPixelKeys) {
+    result.errors.push('Custom matrix layouts must define \'pixelKeys\'.');
+    return;
+  }
+
+  checkPixelCount(matrix.pixelCount, matrix.layout);
+  checkPixelKeys(matrix);
+}
+
+/**
+ * Check if the specified pixelCount is valid for this matrix layout.
+ * @param {!number[][][]} pixelCount Amount of pixels in x, y and z direction. 
+ * @param {!string} layout The basic steric order.
+ */
+function checkPixelCount(pixelCount, layout) {
+  const definedAxes = pixelCount.filter(xyzCount => xyzCount > 1).length;
+
+  if (definedAxes === 0) {
+    result.errors.push('Matrix may not consist of only a single pixel.');
+    return;
+  }
+
+  const requiredAxesPerLayout = {
+    line: 1,
+    rect: 2,
+    cube: 3
+  };
+  
+  if (layout !== 'custom' && requiredAxesPerLayout[layout] !== definedAxes) {
+    result.errors.push(`Matrix with layout ${layout} must define ${requiredAxesPerLayout[layout]} axes (found ${definedAxes}).`);
+  }
+}
+
+/**
+ * Check if the specified matrix's pixelKeys are valid for the matrix's layout.
+ * @param {!Matrix} matrix The Matrix instance
+ */
+function checkPixelKeys(matrix) {
+  let usesNull = false;
+  let variesInAxisLength = false;
+
+  for (const yItems of matrix.pixelKeys) {
+    variesInAxisLength = variesInAxisLength || yItems.length !== matrix.pixelCountY;
+
+    for (const xItems of yItems) {
+      variesInAxisLength = variesInAxisLength || xItems.length !== matrix.pixelCountX;
+
+      for (const pixelKey of xItems) {
+        usesNull = usesNull || pixelKey === null;
+      }
+    }
+  }
+
+  if (matrix.layout !== 'custom' && usesNull) {
+    result.errors.push('Only custom matrix layouts can use null pixelKeys.');
+  }
+  if (matrix.layout !== 'custom' && variesInAxisLength) {
+    result.errors.push('Only custom matrix layouts can vary in axis length.');
+  }
+  if (matrix.layout === 'custom' && !usesNull && !variesInAxisLength) {
+    result.errors.push('Matrix can be converted to line/rect/cube layout.');
   }
 }
 
