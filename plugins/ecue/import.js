@@ -147,7 +147,10 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
             }
 
             ch.type = 'Intensity';
-            if ('ChannelColor' in fixture && fixture.ChannelColor.indexOf(channel) !== -1) {
+            if (testName.includes('temperature') || testName.match(/\b(?:ctc|cto)\b/)) {
+              ch.type = 'Color Temperature';
+            }
+            else if ('ChannelColor' in fixture && fixture.ChannelColor.indexOf(channel) !== -1) {
               if (('Range' in channel && channel.Range.length > 1) || /colou?r\s*macro/.test(testName)) {
                 ch.type = 'Multi-Color';
               }

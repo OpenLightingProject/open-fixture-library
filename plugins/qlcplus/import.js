@@ -63,6 +63,9 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
           ch.type = 'Single Color';
           ch.color = channel.Colour[0];
         }
+        else if (channel.$.Name.match(/\b(?:temperature|ctc|cto)\b/i)) {
+          ch.type = 'Color Temperature';
+        }
         else if (channel.$.Name.toLowerCase().includes('strob')) {
           ch.type = 'Strobe';
         }

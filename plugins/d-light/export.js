@@ -194,7 +194,7 @@ function getChannelAttribute(channel) {
 
   const oflToDLightMap = {
     INTENSITY: ['Intensity'],
-    COLOUR: ['Single Color', 'Multi-Color'],
+    COLOUR: ['Single Color', 'Multi-Color', 'Color Temperature'],
     FOCUS: ['Pan', 'Tilt'],
     BEAM: ['Iris', 'Focus', 'Zoom'],
     EFFECT: ['Strobe', 'Shutter', 'Speed', 'Gobo', 'Prism', 'Effect'],
