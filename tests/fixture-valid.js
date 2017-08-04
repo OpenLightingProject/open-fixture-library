@@ -171,7 +171,7 @@ function checkMatrix(matrix) {
 }
 
 /**
- * Check if the referenced pixelKeys from the pixelGroups exist and don't duplicate
+ * Check if the referenced pixelKeys from the pixelGroups exist and are not referenced more than once.
  * @param {Matrix} matrix The Matrix instance
  */
 function checkPixelGroups(matrix) {
@@ -183,7 +183,7 @@ function checkPixelGroups(matrix) {
         result.errors.push(`pixelGroup '${pixelGroupKey}' references unknown pixelKey '${pixelKey}'.`);
       }
       if (usedPixelKeys.has(pixelKey)) {
-        result.errors.push(`pixelGroup '${pixelGroupKey}' can\'t reference pixelKey '${pixelKey}' multiple times.`);
+        result.errors.push(`pixelGroup '${pixelGroupKey}' can't reference pixelKey '${pixelKey}' more than once.`);
       }
       usedPixelKeys.add(pixelKey);
     }
