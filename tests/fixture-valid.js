@@ -19,6 +19,14 @@ let modeNames;
 /** @type {Set<string>} */
 let modeShortNames;
 
+/**
+ * Checks that a given fixture JSON object is valid.
+ * @param {!string} manKey The manufacturer key.
+ * @param {!string} fixKey The fixture key.
+ * @param {?object} fixtureJson The fixture JSON object.
+ * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurences are appended.
+ * @return {{errors: string[], warnings: string[]}} The result object containing errors and warnings, if any.
+ */
 module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues=null) {
   result = {
     errors: [],
@@ -63,6 +71,10 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
   return result;
 };
 
+/**
+ * Checks that fixture key, name and shortName are unique.
+ * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurences are appended.
+ */
 function checkFixIdentifierUniqueness(uniqueValues) {
   // test is called for a single fixture, e.g. when importing
   if (uniqueValues === null) {
@@ -99,6 +111,10 @@ function checkFixIdentifierUniqueness(uniqueValues) {
   );
 }
 
+/**
+ * Check that a fixture's meta block is valid.
+ * @param {!Meta} meta The fixture's Meta object.
+ */
 function checkMeta(meta) {
   if (meta.lastModifyDate < meta.createDate) {
     result.errors.push('meta.lastModifyDate is earlier than meta.createDate.');
@@ -190,6 +206,10 @@ function checkPixelGroups(matrix) {
   }
 }
 
+/**
+ * Check that an available or template channel is valid.
+ * @param {!Channel} channel The channel to test.
+ */
 function checkChannel(channel) {
   checkTemplateVariables(channel.key);
   checkUniqueness(
@@ -259,6 +279,34 @@ function checkChannel(channel) {
   checkCapabilities(channel, minUsedFineness);
 }
 
+/**
+ * Checks whether the specified string contains only allowed and all required variables
+ * and pushes an error on wrong variable usage.
+ * @param {!string} str The string to be checked.
+ * @param {!string[]} [requiredVariables=[]] Variables that must be included in the string. Specify them with leading dollar sign ($var).
+ * @param {!string[]} [allowedVariables=[]] Variables that may be included in the string; requiredVariables are automatically included. Specify them with leading dollar sign ($var).
+ */
+function checkTemplateVariables(str, requiredVariables=[], allowedVariables=[]) {
+  allowedVariables = allowedVariables.concat(requiredVariables);
+
+  const variables = str.match(/\$\w+/g) || [];
+  for (const variable of variables) {
+    if (!allowedVariables.includes(variable)) {
+      result.errors.push(`Variable ${variable} not allowed in '${str}'`);
+    }
+  }
+  for (const variable of requiredVariables) {
+    if (!variables.includes(variable)) {
+      result.errors.push(`Variable ${variable} missing in '${str}'`);
+    }
+  }
+}
+
+/**
+ * Check that a channel's capabilities are valid.
+ * @param {!Channel} channel The channel to test.
+ * @param {number} minUsedFineness The smallest fineness that the channel is used in a mode. This controls how the capability ranges have to look like.
+ */
 function checkCapabilities(channel, minUsedFineness) {
   if (!channel.hasCapabilities) {
     return;
@@ -305,45 +353,28 @@ function checkCapabilities(channel, minUsedFineness) {
 }
 
 /**
- * Checks whether the specified string contains only allowed and all required variables
- * and pushes an error on wrong variable usage.
- * @param {!string} str The string to be checked.
- * @param {!string[]} [requiredVariables=[]] Variables that must be included in the string. Specify them with leading dollar sign ($var).
- * @param {!string[]} [allowedVariables=[]] Variables that may be included in the string; requiredVariables are automatically included. Specify them with leading dollar sign ($var).
+ * Check that a capability's range is valid.
+ * @param {!Channel} channel The channel the capability belongs to.
+ * @param {!number} capNumber The number of the capability in the channel, starting with 0.
+ * @param {number} minUsedFineness The smallest fineness that the channel is used in a mode.This controls if this range can be from 0 up to channel.maxDmxBound or less.
  */
-function checkTemplateVariables(str, requiredVariables=[], allowedVariables=[]) {
-  allowedVariables = allowedVariables.concat(requiredVariables);
-
-  const variables = str.match(/\$\w+/g) || [];
-  for (const variable of variables) {
-    if (!allowedVariables.includes(variable)) {
-      result.errors.push(`Variable ${variable} not allowed in '${str}'`);
-    }
-  }
-  for (const variable of requiredVariables) {
-    if (!variables.includes(variable)) {
-      result.errors.push(`Variable ${variable} missing in '${str}'`);
-    }
-  }
-}
-
 function checkRange(channel, capNumber, minUsedFineness) {
   const cap = channel.capabilities[capNumber];
-  const prevCap = capNumber > 0 ? channel.capabilities[capNumber-1] : null;
-
+  
   // first capability
   if (capNumber === 0 && cap.range.start !== 0) {
     result.errors.push(`The first range has to start at 0 in capability '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'.`);
     return false;
   }
-
-  // all capability
+  
+  // all capabilities
   if (cap.range.start > cap.range.end) {
     result.errors.push(`range invalid in capability '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'.`);
     return false;
   }
-
-  // not-first capability
+  
+  // not first capability
+  const prevCap = capNumber > 0 ? channel.capabilities[capNumber-1] : null;
   if (capNumber > 0 && cap.range.start !== prevCap.range.end + 1) {
     result.errors.push(`ranges must be adjacent in capabilities '${prevCap.name}' (#${capNumber}) and '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'.`);
     return false;
@@ -364,10 +395,10 @@ function checkRange(channel, capNumber, minUsedFineness) {
 }
 
 /**
- * Get the highest possible DMX value for each fineness up to the specified one
+ * Get the highest possible DMX value for each fineness up to the specified one.
  * E.g. fineness=2 -> [255, 65535, 16777215]
- * @param {!number} fineness The least used fineness in a mode of a channel
- * @return {!number[]} Possible end values, sorted ascending
+ * @param {!number} fineness The least used fineness in a mode of a channel.
+ * @return {!number[]} Possible end values, sorted ascending.
  */
 function getPossibleEndValues(fineness) {
   let values = [];
@@ -377,6 +408,10 @@ function getPossibleEndValues(fineness) {
   return values;
 }
 
+/**
+ * Check that a mode is valid.
+ * @param {!Mode} mode The mode to check.
+ */
 function checkMode(mode) {
   checkUniqueness(
     modeNames,
@@ -409,6 +444,12 @@ function checkMode(mode) {
   }
 }
 
+/**
+ * Check that a channel reference in a mode is valid.
+ * @param {!number} chNumber The mode's channel index.
+ * @param {!Mode} mode The mode to check.
+ * @param {Object.<string, number>} modeChKeyCount An object to count the occurences of all used channel keys.
+ */
 function checkModeChannelReference(chNumber, mode, modeChKeyCount) {
   const chReference = mode.jsonObject.channels[chNumber];
 

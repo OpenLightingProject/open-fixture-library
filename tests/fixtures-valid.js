@@ -8,6 +8,15 @@ const colors = require('colors');
 const schemas = require('../fixtures/schema.js');
 const checkFixture = require('./fixture-valid.js');
 
+/**
+ * @typedef UniqueValues
+ * @type {object}
+ * @property {Set<string>} manKeys All manufacturer keys
+ * @property {Set<string>} manNames All manufacturer names
+ * @property {Object.<string, Set<string>>} fixKeysInMan All fixture keys by manufacturer key
+ * @property {Object.<string, Set<string>>} fixNamesInMan All fixture names by manufacturer key
+ * @property {Set<string>} fixShortNames All fixture short names
+ */
 let uniqueValues = {
   manKeys: new Set(),
   manNames: new Set(),
