@@ -452,14 +452,14 @@ function getChannelDialogString() {
   str += '<section class="channel-defaultValue">';
   str += '<label>';
   str += '<span class="label">Default</span>';
-  str += numberInput('channel.defaultValue', properties.channel.defaultValue);
+  str += '<input type="number" min="0" :max="Math.pow(256, channel.fineness+1)-1" step="1" v-model.number="channel.defaultValue" />';
   str += '</label>';
   str += '</section>';
 
   str += '<section class="channel-highlightValue">';
   str += '<label>';
   str += '<span class="label">Highlight</span>';
-  str += numberInput('channel.highlightValue', properties.channel.highlightValue);
+  str += '<input type="number" min="0" :max="Math.pow(256, channel.fineness+1)-1" step="1" v-model.number="channel.highlightValue" />';
   str += '</label>';
   str += '</section>';
 
