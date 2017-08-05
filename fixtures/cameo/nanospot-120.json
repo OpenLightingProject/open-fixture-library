@@ -9,8 +9,19 @@
   },
   "manualURL": "http://adamhall.invaliddomain.de/out/media/downloads/MARKEN/CAMEO/CLNS120/CLNS120_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.PDF",
   "physical": {
+    "dimensions": [159, 265, 147],
+    "weight": 2.6,
     "power": 40,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12 W CREE LED",
+      "lumens": 428
+    },
+    "lens": {
+      "degreesMinMax": [13, 13]
+    },
     "focus": {
+      "type": "Head",
       "panMax": 540,
       "tiltMax": 230
     }
