@@ -1,0 +1,297 @@
+{
+  "name": "NanoSpot 120",
+  "shortName": "CLNS120",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["FelixEdelmann"],
+    "createDate": "2017-08-05",
+    "lastModifyDate": "2017-08-05"
+  },
+  "manualURL": "http://adamhall.invaliddomain.de/out/media/downloads/MARKEN/CAMEO/CLNS120/CLNS120_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.PDF",
+  "physical": {
+    "dimensions": [159, 265, 147],
+    "weight": 2.6,
+    "power": 40,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12 W CREE LED",
+      "lumens": 428
+    },
+    "lens": {
+      "degreesMinMax": [13, 13]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 230
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32767
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32767
+    },
+    "Motor Running Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Fast-Slow"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "type": "Multi-Color",
+      "crossfade": false,
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [11, 21],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [22, 32],
+          "name": "Orange",
+          "color": "#ffaa00"
+        },
+        {
+          "range": [33, 43],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [44, 54],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [55, 65],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [66, 76],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [77, 87],
+          "name": "Purple",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [88, 175],
+          "name": "Color selection (smooth shift)"
+        },
+        {
+          "range": [176, 255],
+          "name": "Rotation slow-fast"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "highlightValue": 255,
+      "crossfade": true
+    },
+    "Gobo Wheel": {
+      "type": "Gobo",
+      "crossfade": false,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "Open"
+        },
+        {
+          "range": [16, 124],
+          "name": "Gobo Selection"
+        },
+        {
+          "range": [125, 234],
+          "name": "Shaky Gobo Selection"
+        },
+        {
+          "range": [235, 249],
+          "name": "Open"
+        },
+        {
+          "range": [250, 255],
+          "name": "Rotation"
+        }
+      ]
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "No Strobe"
+        },
+        {
+          "range": [10, 255],
+          "name": "Strobe Speed slow-fast"
+        }
+      ]
+    },
+    "Program": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 29],
+          "name": "No function",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "No function"
+          }
+        },
+        {
+          "range": [30, 55],
+          "name": "Auto Mode show 1",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [56, 81],
+          "name": "Auto Mode show 2",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [82, 107],
+          "name": "Auto Mode show 3",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [108, 133],
+          "name": "Auto Mode show 4",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [134, 159],
+          "name": "Auto Mode show 5",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [160, 185],
+          "name": "Auto Mode show 6",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [186, 211],
+          "name": "Auto Mode show 7",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [212, 237],
+          "name": "Sound Mode",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Mic Sensitivity"
+          }
+        },
+        {
+          "range": [238, 250],
+          "name": "Reset",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "No function"
+          }
+        },
+        {
+          "range": [251, 255],
+          "name": "Sync (Head goes to mid position and blackout)",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "No function"
+          }
+        }
+      ]
+    },
+    "No function": {
+      "type": "Nothing"
+    },
+    "Program Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow-fast"
+        }
+      ]
+    },
+    "Mic Sensitivity": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "low-high"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Motor Running Speed",
+        "Color Wheel",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
+        "Motor Running Speed",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
+        "Motor Running Speed",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Dimmer",
+        "Strobe",
+        "Program",
+        "Program Speed / Mic Sensitivity"
+      ]
+    }
+  ]
+}
