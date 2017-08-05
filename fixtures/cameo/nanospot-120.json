@@ -1,5 +1,5 @@
 {
-  "name": "NanoSpot  120",
+  "name": "NanoSpot 120",
   "shortName": "CLNS120",
   "categories": ["Moving Head"],
   "meta": {
@@ -18,17 +18,13 @@
   "availableChannels": {
     "Pan": {
       "type": "Pan",
-      "fineChannelAliases": [
-        "Pan fine"
-      ],
-      "defaultValue": 127
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32767
     },
     "Tilt": {
       "type": "Tilt",
-      "fineChannelAliases": [
-        "Tilt fine"
-      ],
-      "defaultValue": 127
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32767
     },
     "Motor Running Speed": {
       "type": "Speed",
@@ -139,52 +135,89 @@
     },
     "Program": {
       "type": "Effect",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 29],
-          "name": "No function"
+          "name": "No function",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "No function"
+          }
         },
         {
           "range": [30, 55],
-          "name": "Auto Mode show 1"
+          "name": "Auto Mode show 1",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [56, 81],
-          "name": "Auto Mode show 2"
+          "name": "Auto Mode show 2",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [82, 107],
-          "name": "Auto Mode show 3"
+          "name": "Auto Mode show 3",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [108, 133],
-          "name": "Auto Mode show 4"
+          "name": "Auto Mode show 4",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [134, 159],
-          "name": "Auto Mode show 5"
+          "name": "Auto Mode show 5",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [160, 185],
-          "name": "Auto Mode show 6"
+          "name": "Auto Mode show 6",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [186, 211],
-          "name": "Auto Mode show 7"
+          "name": "Auto Mode show 7",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [212, 237],
-          "name": "Sound Mode"
+          "name": "Sound Mode",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "Mic Sensitivity"
+          }
         },
         {
           "range": [238, 250],
-          "name": "Reset"
+          "name": "Reset",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "No function"
+          }
         },
         {
           "range": [251, 255],
-          "name": "Sync (Head goes to mid position and blackout)"
+          "name": "Sync (Head goes to mid position and blackout)",
+          "switchChannels": {
+            "Program Speed / Mic Sensitivity": "No function"
+          }
         }
       ]
+    },
+    "No function": {
+      "type": "Nothing"
     },
     "Program Speed": {
       "type": "Speed",
@@ -246,8 +279,7 @@
         "Dimmer",
         "Strobe",
         "Program",
-        "Program Speed",
-        "Mic Sensitivity"
+        "Program Speed / Mic Sensitivity"
       ]
     }
   ]
