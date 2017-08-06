@@ -28,7 +28,7 @@ const ISODate = schema(/^\d{4}-\d{2}-\d{2}$/);
 
 const Color = schema(/^#[0-9a-f]{6}$/);
 
-const Category = schema(['Blinder', 'Color Changer', 'Dimmer', 'Effect', 'Fan', 'Flower', 'Fog', 'Hazer', 'Laser', 'Moving Head', 'Scanner', 'Smoke', 'Strobe', 'Other']);
+const Category = schema(['Blinder', 'Color Changer', 'Dimmer', 'Effect', 'Fan', 'Flower', 'Hazer', 'Laser', 'Moving Head', 'Scanner', 'Smoke', 'Strobe', 'Other']);
 
 const Physical = schema({
   '?dimensions': Array.of(3, Number.above(0)), // width, height, depth (in mm)
@@ -89,6 +89,7 @@ const ChannelType = [
   'Speed',
   'Color Temperature',
   'Effect',
+  'Fog',
   'Maintenance',
   'Nothing'
 ];
