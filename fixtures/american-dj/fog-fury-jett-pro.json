@@ -1,0 +1,343 @@
+{
+  "name": "Fog Fury Jett Pro",
+  "shortName": "FuryJettPro",
+  "categories": ["Color Changer", "Smoke"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2017-08-06",
+    "lastModifyDate": "2017-08-06"
+  },
+  "manualURL": "http://cdb-cdn.adj.com/ItemRelatedFiles/10687/fog_fury_jett_pro.pdf",
+  "physical": {
+    "dimensions": [419, 206, 315],
+    "weight": 9.5,
+    "power": 1550,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "3W LEDs (6x Red, 7x Green, 6x Blue, 3x Amber, 6x UV)"
+    }
+  },
+  "availableChannels": {
+    "Fog & Color Change": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "Off"
+        },
+        {
+          "range": [32, 255],
+          "name": "Max fog & color change"
+        }
+      ]
+    },
+    "Fog": {
+      "type": "Fog",
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "Off"
+        },
+        {
+          "range": [32, 255],
+          "name": "Max fog"
+        }
+      ]
+    },
+    "Color Macros": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Off"
+        },
+        {
+          "range": [8, 15],
+          "name": "Red",
+          "color": "#ff0000",
+          "color2": "#000000"
+        },
+        {
+          "range": [16, 23],
+          "name": "Green",
+          "color": "#00ff00",
+          "color2": "#000000"
+        },
+        {
+          "range": [24, 31],
+          "name": "Blue+UV",
+          "color": "#0000ff",
+          "color2": "#8800ff"
+        },
+        {
+          "range": [32, 39],
+          "name": "Amber",
+          "color": "#ffaa00",
+          "color2": "#000000"
+        },
+        {
+          "range": [40, 47],
+          "name": "UV",
+          "color": "#000000",
+          "color2": "#8800ff"
+        },
+        {
+          "range": [48, 55],
+          "name": "Red+Blue+UV",
+          "color": "#ff00ff",
+          "color2": "#8800ff"
+        },
+        {
+          "range": [56, 63],
+          "name": "OuterGreen+Amber",
+          "color": "#80d500",
+          "color2": "#000000"
+        },
+        {
+          "range": [64, 71],
+          "name": "Red+UV",
+          "color": "#ff0000",
+          "color2": "#8800ff"
+        },
+        {
+          "range": [72, 79],
+          "name": "Blue+Amber",
+          "color": "#805580",
+          "color2": "#000000"
+        },
+        {
+          "range": [80, 87],
+          "name": "InnerGreen+Blue",
+          "color": "#00ffff",
+          "color2": "#000000"
+        },
+        {
+          "range": [88, 95],
+          "name": "Red+InnerGreen",
+          "color": "#ffff00",
+          "color2": "#000000"
+        },
+        {
+          "range": [96, 103],
+          "name": "Red+InnerGreen+Blue",
+          "color": "#ffffff",
+          "color2": "#000000"
+        },
+        {
+          "range": [104, 111],
+          "name": "Colormix 1",
+          "color": "#aaaaaa",
+          "color2": "#000000"
+        },
+        {
+          "range": [112, 119],
+          "name": "Colormix 2+UV",
+          "color": "#aaaaaa",
+          "color2": "#8800ff"
+        },
+        {
+          "range": [120, 127],
+          "name": "Colormix 3+UV",
+          "color": "#aaaaaa",
+          "color2": "#8800ff"
+        },
+        {
+          "range": [128, 135],
+          "name": "Colormix 4+UV",
+          "color": "#aaaaaa",
+          "color2": "#8800ff"
+        },
+        {
+          "range": [136, 143],
+          "name": "Colormix 5+UV",
+          "color": "#aaaaaa",
+          "color2": "#8800ff"
+        },
+        {
+          "range": [144, 151],
+          "name": "Colormix 6+UV",
+          "color": "#aaaaaa",
+          "color2": "#8800ff"
+        },
+        {
+          "range": [152, 159],
+          "name": "Colormix 7+UV",
+          "color": "#aaaaaa",
+          "color2": "#8800ff"
+        },
+        {
+          "range": [160, 167],
+          "name": "Colormix 8+UV",
+          "color": "#aaaaaa",
+          "color2": "#8800ff"
+        },
+        {
+          "range": [168, 175],
+          "name": "Colormix 9",
+          "color": "#aaaaaa",
+          "color2": "#000000"
+        },
+        {
+          "range": [176, 183],
+          "name": "Colormix 10+UV",
+          "color": "#aaaaaa",
+          "color2": "#8800ff"
+        },
+        {
+          "range": [184, 191],
+          "name": "Colormix 11+UV",
+          "color": "#aaaaaa",
+          "color2": "#8800ff"
+        },
+        {
+          "range": [192, 199],
+          "name": "Colormix 12+UV",
+          "color": "#aaaaaa",
+          "color2": "#8800ff"
+        },
+        {
+          "range": [200, 207],
+          "name": "Colormix 13",
+          "color": "#aaaaaa",
+          "color2": "#000000"
+        },
+        {
+          "range": [208, 215],
+          "name": "Colormix 14+UV",
+          "color": "#aaaaaa",
+          "color2": "#8800ff"
+        },
+        {
+          "range": [216, 223],
+          "name": "Colormix 15",
+          "color": "#aaaaaa",
+          "color2": "#000000"
+        },
+        {
+          "range": [224, 231],
+          "name": "Colormix 16+UV",
+          "color": "#aaaaaa",
+          "color2": "#8800ff"
+        },
+        {
+          "range": [232, 239],
+          "name": "All on",
+          "color": "#ffffff",
+          "color2": "#8800ff"
+        },
+        {
+          "range": [240, 247],
+          "name": "Random 1"
+        },
+        {
+          "range": [248, 255],
+          "name": "Random 2"
+        }
+      ]
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "Off"
+        },
+        {
+          "range": [32, 95],
+          "name": "Strobe slow-fast"
+        },
+        {
+          "range": [96, 159],
+          "name": "Pulse"
+        },
+        {
+          "range": [160, 255],
+          "name": "Random slow-fast"
+        }
+      ]
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green (Outer LEDs)": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Amber": {
+      "type": "Single Color",
+      "color": "Amber"
+    },
+    "Green (Inner LEDs)": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "UV": {
+      "type": "Single Color",
+      "color": "UV"
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "highlightValue": 255,
+      "crossfade": true
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Fog & Color Change"
+      ]
+    },
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Fog",
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Fog",
+        "Color Macros",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Fog",
+        "Red",
+        "Green (Outer LEDs)",
+        "Blue",
+        "Amber",
+        "Green (Inner LEDs)",
+        "UV"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Fog",
+        "Red",
+        "Green (Outer LEDs)",
+        "Blue",
+        "Amber",
+        "Green (Inner LEDs)",
+        "UV",
+        "Strobe",
+        "Dimmer"
+      ]
+    }
+  ]
+}
