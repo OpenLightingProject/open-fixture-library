@@ -196,6 +196,7 @@ function getChannelType(channel) {
       return 'ChannelFocus';
 
     case 'Intensity':
+    case 'Fog':
     default:
       return 'ChannelIntensity';
   }

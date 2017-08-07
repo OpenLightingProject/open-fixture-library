@@ -80,6 +80,7 @@ function addChannel(xml, channel) {
   }
 
   const chType = getChannelType(channel);
+  console.log(channel.type, chType);
   xmlGroup.text(chType);
 
   if (chType === 'Intensity') {
@@ -206,6 +207,7 @@ function getChannelType(channel) {
   switch(channel.type) {
     case 'Single Color':
     case 'Color Temperature':
+    case 'Fog':
       return 'Intensity';
 
     case 'Multi-Color':

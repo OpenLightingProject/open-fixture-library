@@ -89,6 +89,7 @@ const ChannelType = [
   'Speed',
   'Color Temperature',
   'Effect',
+  'Fog',
   'Maintenance',
   'Nothing'
 ];
