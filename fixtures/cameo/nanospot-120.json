@@ -152,7 +152,7 @@
           "range": [0, 29],
           "name": "No function",
           "switchChannels": {
-            "Program Speed / Mic Sensitivity": "No function"
+            "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
@@ -215,20 +215,17 @@
           "range": [238, 250],
           "name": "Reset",
           "switchChannels": {
-            "Program Speed / Mic Sensitivity": "No function"
+            "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
           "range": [251, 255],
           "name": "Sync (Head goes to mid position and blackout)",
           "switchChannels": {
-            "Program Speed / Mic Sensitivity": "No function"
+            "Program Speed / Mic Sensitivity": "Program Speed"
           }
         }
       ]
-    },
-    "No function": {
-      "type": "Nothing"
     },
     "Program Speed": {
       "type": "Speed",
