@@ -1,5 +1,5 @@
 {
-  "name": "Martin Rush MH 3 BEAM",
+  "name": "Rush MH 3 BEAM",
   "shortName": "MartinRushMH3",
   "categories": ["Moving Head"],
   "meta": {
@@ -7,8 +7,8 @@
     "createDate": "2017-08-07",
     "lastModifyDate": "2017-08-07"
   },
-  "comment": "Martin Rush MH 3 BEAM:\n\n- Fixed gobo wheel\n- Color wheel\n- Mechanical dimming and strobe\n- Frost effect\n- 8-facet prism\n- Motorized focus\n- 3 & 5 pin XLR",
-  "manualURL": "http://www.martin.com/en-us/support/product-details/rush-mh-3-beam",
+  "comment": "Martin Rush MH 3 BEAM:\n- Fixed gobo wheel\n- Color wheel\n- Mechanical dimming and strobe\n- Frost effect\n- 8-facet prism\n- Motorized focus\n- 3 & 5 pin XLR",
+  "manualURL": "http://www.martin.com/Martin.Download.aspx?file=/files/files/productdocuments/11_MANUALS/999/UM_RushMH3Beam_EN_K.pdf",
   "physical": {
     "dimensions": [321, 489, 418],
     "weight": 20.5,
@@ -23,52 +23,24 @@
     },
     "focus": {
       "panMax": 540,
-      "tiltMax": 220
+      "tiltMax": 270
     }
   },
   "availableChannels": {
     "Pan": {
       "type": "Pan",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Pan 0°~540°"
-        }
-      ]
-    },
-    "Pan Fine": {
-      "type": "Pan",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Pan (fine control)"
-        }
-      ]
+      "fineChannelAliases": ["Pan fine"]
     },
     "Tilt": {
       "type": "Tilt",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Tilt 0°~270°"
-        }
-      ]
+      "fineChannelAliases": ["Tilt fine"]
     },
-    "Tilt fine": {
-      "type": "Tilt",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Tilt (fine control)"
-        }
-      ]
-    },
-    "Pan/Tilt speed": {
+    "Pan/Tilt Speed": {
       "type": "Speed",
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "Pan/tilt speed – fast-slow"
+          "name": "fast-slow"
         }
       ]
     },
@@ -169,7 +141,7 @@
         }
       ]
     },
-    "Pan/tilt macros": {
+    "Pan/Tilt Macros": {
       "type": "Effect",
       "capabilities": [
         {
@@ -302,137 +274,182 @@
         }
       ]
     },
-    "Pan/tilt macro speed fast-slow": {
+    "Pan/Tilt Macro Speed": {
       "type": "Speed",
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "Pan/tilt macro speed fast-slow"
+          "name": "Speed fast-slow"
         }
       ]
     },
-    "Color": {
+    "Color Wheel": {
       "type": "Multi-Color",
       "capabilities": [
         {
           "range": [0, 2],
-          "name": "Open"
+          "name": "Open (White)",
+          "color": "#ffffff"
         },
         {
           "range": [3, 4],
-          "name": "Split color"
+          "name": "White-Red",
+          "color": "#ffffff",
+          "color2": "#ff0000"
         },
         {
           "range": [5, 6],
-          "name": "Red"
+          "name": "Red",
+          "color": "#ff0000"
         },
         {
           "range": [7, 8],
-          "name": "Split color"
+          "name": "Red-Yellow",
+          "color": "#ff0000",
+          "color2": "#ffff00"
         },
         {
           "range": [9, 10],
-          "name": "Yellow"
+          "name": "Yellow",
+          "color": "#ffff00"
         },
         {
           "range": [11, 12],
-          "name": "Split color"
+          "name": "Yellow-Blue",
+          "color": "#ffff00",
+          "color2": "#0000ff"
         },
         {
           "range": [13, 14],
-          "name": "Blue"
+          "name": "Blue",
+          "color": "#0000ff"
         },
         {
           "range": [15, 16],
-          "name": "Split color"
+          "name": "Blue-Turquoise",
+          "color": "#0000ff",
+          "color2": "#40e0d0"
         },
         {
           "range": [17, 18],
-          "name": "Blue Green"
+          "name": "Turquoise",
+          "color": "#40e0d0"
         },
         {
           "range": [19, 21],
-          "name": "Split color"
+          "name": "Turquoise-Green",
+          "color": "#40e0d0",
+          "color2": "#00ff00"
         },
         {
           "range": [22, 23],
-          "name": "Green"
+          "name": "Green",
+          "color": "#00ff00"
         },
         {
           "range": [24, 25],
-          "name": "Split color"
+          "name": "Green-Lightblue",
+          "color": "#00ff00",
+          "color2": "#00aaff"
         },
         {
           "range": [26, 27],
-          "name": "Light blue"
+          "name": "Lightblue",
+          "color": "#00aaff"
         },
         {
           "range": [28, 29],
-          "name": "Split color"
+          "name": "Lightblue-Lightpink",
+          "color": "#00aaff",
+          "color2": "#e0b0ff"
         },
         {
           "range": [30, 31],
-          "name": "Light pink"
+          "name": "Lightpink",
+          "color": "#e0b0ff"
         },
         {
           "range": [32, 33],
-          "name": "Split color"
+          "name": "Lightpink-Yellowgreen",
+          "color": "#e0b0ff",
+          "color2": "#ddff00"
         },
         {
           "range": [34, 35],
-          "name": "Yellow green"
+          "name": "Yellowgreen",
+          "color": "#ddff00"
         },
         {
           "range": [36, 37],
-          "name": "Split color"
+          "name": "Yellowgreen-Darkpink",
+          "color": "#ddff00",
+          "color2": "#ff00ff"
         },
         {
           "range": [38, 39],
-          "name": "Dark pink"
+          "name": "Darkpink",
+          "color": "#ff00ff"
         },
         {
           "range": [40, 42],
-          "name": "Split color"
+          "name": "Darkpink-Blue",
+          "color": "#ff00ff",
+          "color2": "#0000ff"
         },
         {
           "range": [43, 44],
-          "name": "Blue"
+          "name": "Blue",
+          "color": "#0000ff"
         },
         {
           "range": [45, 46],
-          "name": "Split color"
+          "name": "Blue-Lightyellow",
+          "color": "#0000ff",
+          "color2": "#ffff99"
         },
         {
           "range": [47, 48],
-          "name": "Light yellow"
+          "name": "Lightyellow",
+          "color": "#ffff99"
         },
         {
           "range": [49, 50],
-          "name": "Split color"
+          "name": "Lightyellow-White",
+          "color": "#ffff99",
+          "color2": "#ffffff"
         },
         {
           "range": [51, 52],
-          "name": "Off white"
+          "name": "White",
+          "color": "#ffffff"
         },
         {
           "range": [53, 54],
-          "name": "Split color"
+          "name": "White-Lightblue",
+          "color": "#ffffff",
+          "color2": "#00aaff"
         },
         {
           "range": [55, 56],
-          "name": "Light blue"
+          "name": "Lightblue",
+          "color": "#00aaff"
         },
         {
           "range": [57, 58],
-          "name": "Split color"
+          "name": "Lightblue-Darkblue",
+          "color": "#00aaff",
+          "color2": "#0000aa"
         },
         {
           "range": [59, 60],
-          "name": "Dark blue"
+          "name": "Darkblue",
+          "color": "#0000aa"
         },
         {
           "range": [61, 63],
-          "name": "Split color (with open)"
+          "name": "Darkblue-White",
+          "color": "#0000aa",
+          "color2": "#ffffff"
         },
         {
           "range": [64, 127],
@@ -613,7 +630,7 @@
         }
       ]
     },
-    "Prism effects": {
+    "Prism Effects": {
       "type": "Prism",
       "capabilities": [
         {
@@ -738,8 +755,9 @@
         }
       ]
     },
-    "Prism rotation (coarse control)": {
+    "Prism Rotation": {
       "type": "Prism",
+      "fineChannelAliases": ["Prism Rotation fine"],
       "capabilities": [
         {
           "range": [0, 127],
@@ -747,7 +765,7 @@
         },
         {
           "range": [128, 189],
-          "name": "Prism rotation, clockwise, fast-slow"
+          "name": "CW fast-slow"
         },
         {
           "range": [190, 193],
@@ -755,45 +773,24 @@
         },
         {
           "range": [194, 255],
-          "name": "Prism rotation, counter-clockwise, slow-fast"
-        }
-      ]
-    },
-    "Prism rotation (fine control)": {
-      "type": "Prism",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Prism rotation (fine control)"
+          "name": "CCW slow-fast"
         }
       ]
     },
     "Zoom": {
-      "type": "Zoom",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Zoom 0-100%"
-        }
-      ]
+      "type": "Zoom"
     },
     "Focus": {
       "type": "Focus",
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "Focus near-far"
+          "name": "Near-far"
         }
       ]
     },
     "Frost": {
-      "type": "Effect",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Frost 0-100%"
-        }
-      ]
+      "type": "Effect"
     },
     "Shutter": {
       "type": "Shutter",
@@ -808,7 +805,7 @@
         },
         {
           "range": [16, 131],
-          "name": "Shutter strobe effect, slow-fast"
+          "name": "Strobe slow-fast"
         },
         {
           "range": [132, 167],
@@ -832,23 +829,9 @@
         }
       ]
     },
-    "Dimmer (coarse control)": {
+    "Dimmer": {
       "type": "Intensity",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Dimmer (coarse control) 0-100%"
-        }
-      ]
-    },
-    "Dimmer (fine control)": {
-      "type": "Intensity",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Dimmer (fine control)"
-        }
-      ]
+      "fineChannelAliases": ["Dimmer fine"]
     }
   },
   "modes": [
@@ -857,24 +840,24 @@
       "shortName": "std",
       "channels": [
         "Pan",
-        "Pan Fine",
+        "Pan fine",
         "Tilt",
         "Tilt fine",
-        "Pan/Tilt speed",
+        "Pan/Tilt Speed",
         "Function",
-        "Pan/tilt macros",
-        "Pan/tilt macro speed fast-slow",
-        "Color",
+        "Pan/Tilt Macros",
+        "Pan/Tilt Macro Speed",
+        "Color Wheel",
         "Gobos",
-        "Prism effects",
-        "Prism rotation (coarse control)",
-        "Prism rotation (fine control)",
+        "Prism Effects",
+        "Prism Rotation",
+        "Prism Rotation fine",
         "Zoom",
         "Focus",
         "Frost",
         "Shutter",
-        "Dimmer (coarse control)",
-        "Dimmer (fine control)"
+        "Dimmer",
+        "Dimmer fine"
       ]
     }
   ]
