@@ -1,16 +1,16 @@
 {
-  "name": "Martin Rush MH2 WASH",
-  "shortName": "RushMH2Wash",
+  "name": "Rush MH 2 Wash",
+  "shortName": "MartinRushMH2Wash",
   "categories": ["Moving Head"],
   "meta": {
     "authors": ["novasfronteiras.co"],
     "createDate": "2017-08-07",
-    "lastModifyDate": "2017-08-07"
+    "lastModifyDate": "2017-08-08"
   },
-  "comment": "Martin Rush MH2 WASH:\n\n- DMX, music trig and auto trig operation\n- 17° one-tenth peak angle\n- Extremely fast and agile\n- Electronic dimming and strobe\n- 3 & 5 pin XLR",
-  "manualURL": "https://cdn01.usedlighting.com/products/files/f5813bebd69135.pdf",
+  "comment": "Rush MH 2 Wash:\n- DMX, music trig and auto trig operation\n- 17° one-tenth peak angle\n- Extremely fast and agile\n- Electronic dimming and strobe\n- 3 & 5 pin XLR",
+  "manualURL": "http://www.martin.com/files/files/productdocuments/11_MANUALS/999/UM_RUSHMH2Wash_EN_G.pdf",
   "physical": {
-    "dimensions": [156, 305, 258],
+    "dimensions": [258, 305, 156],
     "weight": 5.7,
     "power": 125,
     "DMXconnector": "3-pin and 5-pin",
@@ -23,7 +23,7 @@
     }
   },
   "availableChannels": {
-    "Electronic shutter effect": {
+    "Electronic Shutter Effect": {
       "type": "Shutter",
       "capabilities": [
         {
@@ -40,7 +40,8 @@
         },
         {
           "range": [65, 69],
-          "name": "Shutter open"
+          "name": "Shutter open",
+          "menuClick": "hidden"
         },
         {
           "range": [70, 84],
@@ -48,7 +49,8 @@
         },
         {
           "range": [85, 89],
-          "name": "Shutter open"
+          "name": "Shutter open",
+          "menuClick": "hidden"
         },
         {
           "range": [90, 104],
@@ -56,7 +58,8 @@
         },
         {
           "range": [105, 109],
-          "name": "Shutter open"
+          "name": "Shutter open",
+          "menuClick": "hidden"
         },
         {
           "range": [110, 124],
@@ -64,7 +67,8 @@
         },
         {
           "range": [125, 129],
-          "name": "Shutter open"
+          "name": "Shutter open",
+          "menuClick": "hidden"
         },
         {
           "range": [130, 144],
@@ -72,7 +76,8 @@
         },
         {
           "range": [145, 149],
-          "name": "Shutter open"
+          "name": "Shutter open",
+          "menuClick": "hidden"
         },
         {
           "range": [150, 164],
@@ -80,7 +85,8 @@
         },
         {
           "range": [165, 169],
-          "name": "Shutter open"
+          "name": "Shutter open",
+          "menuClick": "hidden"
         },
         {
           "range": [170, 184],
@@ -88,7 +94,8 @@
         },
         {
           "range": [185, 189],
-          "name": "Shutter open"
+          "name": "Shutter open",
+          "menuClick": "hidden"
         },
         {
           "range": [190, 204],
@@ -96,7 +103,8 @@
         },
         {
           "range": [205, 209],
-          "name": "Shutter open"
+          "name": "Shutter open",
+          "menuClick": "hidden"
         },
         {
           "range": [210, 224],
@@ -104,7 +112,8 @@
         },
         {
           "range": [225, 229],
-          "name": "Shutter open"
+          "name": "Shutter open",
+          "menuClick": "hidden"
         },
         {
           "range": [230, 244],
@@ -112,56 +121,23 @@
         },
         {
           "range": [245, 255],
-          "name": "Shutter open"
+          "name": "Shutter open",
+          "menuClick": "hidden"
         }
       ]
     },
     "Dimmer": {
-      "type": "Intensity",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Dimmer 0-100%"
-        }
-      ]
+      "type": "Intensity"
     },
     "Pan": {
       "type": "Pan",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Pan 0-540"
-        }
-      ]
-    },
-    "Pan fine": {
-      "type": "Pan",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Pan fine"
-        }
-      ]
+      "fineChannelAliases": ["Pan fine"]
     },
     "Tilt": {
       "type": "Tilt",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Tilt 0-180"
-        }
-      ]
+      "fineChannelAliases": ["Tilt fine"]
     },
-    "Tilt fine": {
-      "type": "Tilt",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Tilt fine"
-        }
-      ]
-    },
-    "Fixture control settings": {
+    "Fixture Control Settings": {
       "type": "Maintenance",
       "capabilities": [
         {
@@ -174,7 +150,8 @@
         },
         {
           "range": [15, 94],
-          "name": "No function"
+          "name": "No function",
+          "menuClick": "hidden"
         },
         {
           "range": [95, 99],
@@ -182,7 +159,8 @@
         },
         {
           "range": [100, 104],
-          "name": "No function"
+          "name": "No function",
+          "menuClick": "hidden"
         },
         {
           "range": [105, 109],
@@ -194,7 +172,8 @@
         },
         {
           "range": [115, 119],
-          "name": "No function"
+          "name": "No function",
+          "menuClick": "hidden"
         },
         {
           "range": [120, 124],
@@ -210,7 +189,7 @@
         }
       ]
     },
-    "Color wheel effect": {
+    "Color Wheel Effect": {
       "type": "Multi-Color",
       "capabilities": [
         {
@@ -351,11 +330,12 @@
         },
         {
           "range": [175, 179],
-          "name": "Open "
+          "name": "Open",
+          "menuClick": "hidden"
         },
         {
           "range": [180, 201],
-          "name": "Clockwise, fast>slow"
+          "name": "CW, fast>slow"
         },
         {
           "range": [202, 207],
@@ -363,11 +343,12 @@
         },
         {
           "range": [208, 229],
-          "name": "Counter-clockwise, slow>fast"
+          "name": "CCW, slow>fast"
         },
         {
           "range": [230, 234],
-          "name": "Open"
+          "name": "Open",
+          "menuClick": "hidden"
         },
         {
           "range": [235, 239],
@@ -383,64 +364,41 @@
         },
         {
           "range": [250, 255],
-          "name": "Open"
+          "name": "Open",
+          "menuClick": "hidden"
         }
       ]
     },
     "Red": {
       "type": "Single Color",
-      "color": "Red",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Red 0-100%"
-        }
-      ]
+      "color": "Red"
     },
     "Green": {
       "type": "Single Color",
-      "color": "Green",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Green 0-100%"
-        }
-      ]
+      "color": "Green"
     },
     "Blue": {
       "type": "Single Color",
-      "color": "Blue",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Blue 0-100%"
-        }
-      ]
+      "color": "Blue"
     },
     "White": {
       "type": "Single Color",
-      "color": "White",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "White 0-100%"
-        }
-      ]
+      "color": "White"
     }
   },
   "modes": [
     {
-      "name": "standard",
+      "name": "Standard",
       "shortName": "std",
       "channels": [
-        "Electronic shutter effect",
+        "Electronic Shutter Effect",
         "Dimmer",
         "Pan",
         "Pan fine",
         "Tilt",
         "Tilt fine",
-        "Fixture control settings",
-        "Color wheel effect",
+        "Fixture Control Settings",
+        "Color Wheel Effect",
         "Red",
         "Green",
         "Blue",
