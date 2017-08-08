@@ -263,10 +263,10 @@ a.fixture-mode {
   display: none;
 }
 
+/* add a number after each mode */
 #fixture-editor {
   counter-reset: modes;
 }
-
 #fixture-editor .fixture-mode:not(a) h2::after {
   counter-increment: modes;
   content: " #" counter(modes);

@@ -2,8 +2,74 @@
 
 require('./polyfills.js');
 var A11yDialog = require('a11y-dialog');
-var uuidV4 = require('uuid/v4');
-var Vue = require('vue/dist/vue');
+var uuidV4 = require('uuid/v4.js');
+var Vue = require('vue/dist/vue.js');
+var validate = require('validate/dist/js/validate.js');
+
+var vueIsReady = false;
+
+validate.init({
+  disableSubmit: true,
+  onSubmit: function(form, fields) {
+    if (form.id === 'fixture-form') {
+      app.submitFixture();
+    }
+    else if (form.id === 'channel-form') {
+      app.saveChannel();
+    }
+  },
+  beforeShowError: function(field, error) {
+    var label = field.closest('label');
+    var errorMsg = label.querySelector('.error-message');
+    var fields = label.querySelectorAll('input, select, textarea');
+
+    if (fields.length > 1) {
+      // maybe more errors
+      error = getFieldGroupErrors(fields, this);
+    }
+
+    errorMsg.textContent = error;
+    errorMsg.classList.add('has-errors');
+  },
+  beforeRemoveError: function(field) {
+    var label = field.closest('label');
+    var errorMsg = label.querySelector('.error-message');
+    var fields = label.querySelectorAll('input, select, textarea');
+
+
+    var error = '';
+    if (fields.length > 1) {
+      // maybe other errors that prevent removing the error message
+      error = getFieldGroupErrors(fields, this);
+    }
+
+    if (error) {
+      errorMsg.textContent = error;
+      errorMsg.classList.add('has-errors');
+    }
+    else {
+      errorMsg.classList.remove('has-errors');
+    }
+  }
+});
+
+function getFieldGroupErrors(fields, validateInstance) {
+  var errors = [];
+  for (var i = 0; i < fields.length; i++) {
+    var error = validate.hasError(fields[i]);
+    if (error) {
+      fields[i].classList.add(validateInstance.fieldClass);
+      if (errors.indexOf(error) === -1) {
+        errors.push(error);
+      }
+    }
+    else {
+      fields[i].classList.remove(validateInstance.fieldClass);
+    }
+  }
+
+  return errors.join(' ');
+}
 
 var sendObject = {
   fixtures: []
@@ -24,7 +90,9 @@ var storageAvailable = (function() {
 
 Vue.directive('focus', {
   inserted: function(el) {
-    el.focus();
+    if (vueIsReady) {
+      el.focus();
+    }
   }
 });
 
@@ -74,7 +142,9 @@ Vue.component('physical-data', {
     }
   },
   mounted: function() {
-    this.$refs.firstInput.focus();
+    if (vueIsReady) {
+      this.$refs.firstInput.focus();
+    }
   }
 });
 
@@ -82,7 +152,9 @@ Vue.component('fixture-mode', {
   template: '#template-mode',
   props: ['mode', 'fixture', 'channel'],
   mounted: function() {
-    this.$refs.firstInput.focus();
+    if (vueIsReady) {
+      this.$refs.firstInput.focus();
+    }
   },
   methods: {
     getChannelName: function(channelUuid) {
@@ -742,6 +814,7 @@ function clearAutoSave() {
 
 function restoreAutoSave() {
   if (!storageAvailable) {
+    vueIsReady = true;
     return;
   }
 
@@ -766,6 +839,7 @@ function discardRestored() {
 
   this.restoredData = '';
   this.readyToAutoSave = true;
+  vueIsReady = true;
 }
 function applyRestored() {
   var restoredData = this.restoredData;
@@ -780,6 +854,7 @@ function applyRestored() {
 
     Vue.nextTick(function() {
       app.readyToAutoSave = true;
+      vueIsReady = true;
     });
   });
 }
