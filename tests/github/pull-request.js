@@ -76,6 +76,7 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
   .then(fileBlocks => {
     let changedComponents = {
       added: {
+        schema: false,
         model: false,
         imports: [], // array of plugin keys
         exports: [], // array of plugin keys
@@ -83,6 +84,7 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
         fixtures: [] // array of [man key, fix key]
       },
       modified: {
+        schema: false,
         model: false,
         imports: [], // array of plugin keys
         exports: [], // array of plugin keys
@@ -90,6 +92,7 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
         fixtures: [] // array of [man key, fix key]
       },
       removed: {
+        schema: false,
         model: false,
         imports: [], // array of plugin keys
         exports: [], // array of plugin keys
@@ -100,44 +103,52 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
 
     for (const block of fileBlocks) {
       for (const file of block.data) {
-        const changedData = changedComponents[file.status];
-        const segments = file.filename.split('/');
-
-        if (segments[0] === 'lib' && segments[1] === 'model') {
-          changedData.model = true;
-          continue;
-        }
-
-        if (segments[0] === 'plugins' && segments[2] === 'import.js') {
-          changedData.imports.push(segments[1]);
-          continue;
-        }
-
-        if (segments[0] === 'plugins' && segments[2] === 'export.js') {
-          changedData.exports.push(segments[1]);
-          continue;
-        }
-
-        if (segments[0] === 'plugins' && segments[2] === 'exportTests') {
-          changedData.exportTests.push([
-            segments[1], // plugin key
-            segments[3].split('.')[0] // test key
-          ]);
-          continue;
-        }
-
-        if (segments[0] === 'fixtures' && segments.length === 3) {
-          changedData.fixtures.push([
-            segments[1], // man key
-            segments[2].split('.')[0] // fix key
-          ]);
-        }
+        addFileToChangedData(changedComponents[file.status], file.filename);
       }
     }
 
     return changedComponents;
   });
 };
+
+function addFileToChangedData(changedData, filename) {
+  const segments = filename.split('/');
+  
+  if (segments[0] === 'lib' && segments[1] === 'model') {
+    changedData.model = true;
+    return;
+  }
+
+  if (segments[0] === 'plugins' && segments[2] === 'import.js') {
+    changedData.imports.push(segments[1]); // plugin key
+    return;
+  }
+
+  if (segments[0] === 'plugins' && segments[2] === 'export.js') {
+    changedData.exports.push(segments[1]); // plugin key
+    return;
+  }
+
+  if (segments[0] === 'plugins' && segments[2] === 'exportTests') {
+    changedData.exportTests.push([
+      segments[1], // plugin key
+      segments[3].split('.')[0] // test key
+    ]);
+    return;
+  }
+  
+  if (segments[0] === 'fixtures' && segments[1] === 'schema.js') {
+    changedData.schema = true;
+    return;
+  }
+  
+  if (segments[0] === 'fixtures' && segments.length === 3) {
+    changedData.fixtures.push([
+      segments[1], // man key
+      segments[2].split('.')[0] // fix key
+    ]);
+  }
+}
 
 /**
  * test is an object of this structure: {
