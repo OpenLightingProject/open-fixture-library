@@ -125,6 +125,9 @@
     },
     "showtec/phantom-50-led-spot": {
       "name": "Phantom 50 LED Spot"
+    },
+    "mdg/mdg-hazer-atmosphere-aps": {
+      "name": "MDG Hazer ATMOSPHERE APS"
     }
   },
   "manufacturers": {
@@ -195,6 +198,9 @@
       "led-light-bar-rgb-v3",
       "phantom-140-led-spot",
       "phantom-50-led-spot"
+    ],
+    "mdg": [
+      "mdg-hazer-atmosphere-aps"
     ]
   },
   "categories": {
@@ -267,6 +273,9 @@
     "Scanner": [
       "martin/roboscan-812",
       "robe/dj-scan-250-xt"
+    ],
+    "Hazer": [
+      "mdg/mdg-hazer-atmosphere-aps"
     ]
   }
 }
