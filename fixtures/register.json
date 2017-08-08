@@ -99,6 +99,9 @@
     "martin/mac-viper-airfx": {
       "name": "MAC Viper AirFX"
     },
+    "martin/magnum-2500-hz": {
+      "name": "Magnum 2500 HZ"
+    },
     "martin/roboscan-812": {
       "name": "RoboScan 812"
     },
@@ -185,6 +188,7 @@
       "mac-aura",
       "mac-axiom-hybrid",
       "mac-viper-airfx",
+      "magnum-2500-hz",
       "roboscan-812",
       "rush-mh-2-wash",
       "rush-mh-3-beam"
@@ -270,12 +274,13 @@
     "Fan": [
       "gruft/ventilator"
     ],
+    "Hazer": [
+      "martin/magnum-2500-hz",
+      "mdg/hazer-atmosphere-aps"
+    ],
     "Scanner": [
       "martin/roboscan-812",
       "robe/dj-scan-250-xt"
-    ],
-    "Hazer": [
-      "mdg/hazer-atmosphere-aps"
     ]
   }
 }
