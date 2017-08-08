@@ -2,7 +2,18 @@
 
 Note that this fixture format is not intended to be used directly, as it has no way of versioning and may change without notice.
 
-The [JS Schema](https://github.com/molnarg/js-schema) can be found in the [schema.js](schema.js) file. See there for the details of allowed properties or values. The purpose of this document is to give a high-level overview of the concepts used.
+The purpose of this document is to give a high-level overview of the concepts used. The schema provides all the details about the JSON structure.
+
+## Schema
+
+The [JS Schema](https://github.com/molnarg/js-schema) can be found in the [schema.js](schema.js) file. It is a declarative way to describe allowed properties and values. The [Fixture Validator](../tests/fixtures-valid.js) automatically checks the fixtures against this schema and does some more tests programatically.
+
+The schema exports a property `VERSION`. Everytime the schema is updated, this version needs to be incremented using [semantic versioning](http://semver.org).
+
+Given a version number MAJOR.MINOR.PATCH, increment the:
+1. MAJOR version when you make incompatible schema changes,
+2. MINOR version when you add functionality in a backwards-compatible manner, and
+3. PATCH version when you make backwards-compatible bug fixes.
 
 
 ## Goals
