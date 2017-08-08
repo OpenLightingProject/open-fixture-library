@@ -7,9 +7,9 @@
     "createDate": "2017-08-08",
     "lastModifyDate": "2017-08-08"
   },
-  "manualURL": "http://www.martin.com/en-us/support/product-details/magnum-2500-hz",
+  "manualURL": "http://www.martin.com/files/files/productdocuments/11_MANUALS/999/UM_Magnum2500Hz_EN_F.pdf",
   "physical": {
-    "dimensions": [285, 280, 455],
+    "dimensions": [285, 286, 455],
     "weight": 15.7,
     "power": 920,
     "DMXconnector": "3-pin"
@@ -24,14 +24,14 @@
         },
         {
           "range": [30, 255],
-          "name": "Haze at variable density (30=minimum, 255=maximum)"
+          "name": "Haze density min-max"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "standard",
+      "name": "Standard",
       "shortName": "std",
       "channels": [
         "Fog"
