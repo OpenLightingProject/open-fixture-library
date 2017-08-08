@@ -1,0 +1,55 @@
+{
+  "name": "MDG Hazer ATMOSPHERE APS",
+  "shortName": "ATMOSPHEREAPS",
+  "categories": ["Hazer"],
+  "meta": {
+    "authors": ["novasfronteiras.co"],
+    "createDate": "2017-08-08",
+    "lastModifyDate": "2017-08-08"
+  },
+  "manualURL": "http://www.mdgfog.com/c/mdg/file_db/document.file_en/DMX-M35A-X-2012.pdf",
+  "physical": {
+    "dimensions": [180, 300, 68.5],
+    "weight": 23,
+    "power": 715,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "ON / OFF": {
+      "type": "Fog",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Fog OFF"
+        },
+        {
+          "range": [128, 255],
+          "name": "Fog ON"
+        }
+      ]
+    },
+    "Fog Emission": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 17],
+          "name": "No fog"
+        },
+        {
+          "range": [18, 255],
+          "name": "Proportional emission 0-100"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "standard",
+      "shortName": "std",
+      "channels": [
+        "ON / OFF",
+        "Fog Emission"
+      ]
+    }
+  ]
+}
