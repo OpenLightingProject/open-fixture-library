@@ -29,6 +29,7 @@
   "availableChannels": {
     "Strobe": {
       "type": "Strobe",
+      "defaultValue": 30,
       "capabilities": [
         {
           "range": [0, 19],
@@ -65,46 +66,28 @@
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "Dimmer, Closed>open"
+          "name": "Closed>open"
         }
       ]
     },
     "Cyan": {
       "type": "Single Color",
-      "color": "Cyan",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Cyan, 0>100"
-        }
-      ]
+      "color": "Cyan"
     },
     "Magenta": {
       "type": "Single Color",
-      "color": "Magenta",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Magenta, 0>100"
-        }
-      ]
+      "color": "Magenta"
     },
     "Yellow": {
       "type": "Single Color",
-      "color": "Yellow",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Yellow, 0>100"
-        }
-      ]
+      "color": "Yellow"
     },
     "CTO": {
       "type": "Maintenance",
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "CTO, Open>warm"
+          "name": "Open>warm"
         }
       ]
     },
@@ -113,211 +96,280 @@
       "capabilities": [
         {
           "range": [0, 0],
-          "name": "Open"
+          "name": "Open",
+          "color": "#ffffff"
         },
         {
           "range": [1, 8],
-          "name": "Open>Slot1"
+          "name": "Open>Slot1",
+          "color": "#ffffff",
+          "color2": "#71c9ed"
         },
         {
           "range": [9, 9],
-          "name": "Slot1"
+          "name": "Slot1",
+          "color": "#71c9ed"
         },
         {
           "range": [10, 17],
-          "name": "Slot1>Slot2"
+          "name": "Slot1>Slot2",
+          "color": "#71c9ed",
+          "color2": "#8ad088"
         },
         {
           "range": [18, 18],
-          "name": "Slot2"
+          "name": "Slot2",
+          "color": "#8ad088"
         },
         {
           "range": [19, 26],
-          "name": "Slot2>Slot3"
+          "name": "Slot2>Slot3",
+          "color": "#8ad088",
+          "color2": "#d4f1fb"
         },
         {
           "range": [27, 27],
-          "name": "Slot3"
+          "name": "Slot3",
+          "color": "#d4f1fb"
         },
         {
           "range": [28, 35],
-          "name": "Slot3>Slot4"
+          "name": "Slot3>Slot4",
+          "color": "#d4f1fb",
+          "color2": "#cb6122"
         },
         {
           "range": [36, 36],
-          "name": "Slot4"
+          "name": "Slot4",
+          "color": "#cb6122"
         },
         {
           "range": [37, 44],
-          "name": "Slot4>Slot5"
+          "name": "Slot4>Slot5",
+          "color": "#cb6122",
+          "color2": "#9c4aa5"
         },
         {
           "range": [45, 45],
-          "name": "Slot5"
+          "name": "Slot5",
+          "color": "#9c4aa5"
         },
         {
           "range": [46, 53],
-          "name": "Slot5>Slot6"
+          "name": "Slot5>Slot6",
+          "color": "#9c4aa5",
+          "color2": "#9bd2ef"
         },
         {
           "range": [54, 54],
-          "name": "Slot6"
+          "name": "Slot6",
+          "color": "#9bd2ef"
         },
         {
           "range": [55, 62],
-          "name": "Slot6>Slot7"
+          "name": "Slot6>Slot7",
+          "color": "#9bd2ef",
+          "color2": "#f2e663"
         },
         {
           "range": [63, 63],
-          "name": "Slot7"
+          "name": "Slot7",
+          "color": "#f2e663"
         },
         {
           "range": [64, 71],
-          "name": "Slot7>Slot8"
+          "name": "Slot7>Slot8",
+          "color": "#f2e663",
+          "color2": "#85d2f1"
         },
         {
           "range": [72, 72],
-          "name": "Slot8"
+          "name": "Slot8",
+          "color": "#85d2f1"
         },
         {
           "range": [73, 80],
-          "name": "Slot8>Slot9"
+          "name": "Slot8>Slot9",
+          "color": "#85d2f1",
+          "color2": "#be2b1f"
         },
         {
           "range": [81, 81],
-          "name": "Slot9"
+          "name": "Slot9",
+          "color": "#be2b1f"
         },
         {
           "range": [82, 89],
-          "name": "Slot9>Slot10"
+          "name": "Slot9>Slot10",
+          "color": "#be2b1f",
+          "color2": "#5765b4"
         },
         {
           "range": [90, 90],
-          "name": "Slot10"
+          "name": "Slot10",
+          "color": "#5765b4"
         },
         {
           "range": [91, 98],
-          "name": "Slot10>Slot11"
+          "name": "Slot10>Slot11",
+          "color": "#5765b4",
+          "color2": "#8cc783"
         },
         {
           "range": [99, 99],
-          "name": "Slot11"
+          "name": "Slot11",
+          "color": "#8cc783"
         },
         {
           "range": [100, 107],
-          "name": "Slot11>Slot12"
+          "name": "Slot11>Slot12",
+          "color": "#8cc783",
+          "color2": "#ac87c3"
         },
         {
           "range": [108, 108],
-          "name": "Slot12"
+          "name": "Slot12",
+          "color": "#ac87c3"
         },
         {
           "range": [109, 116],
-          "name": "Slot12>Slot13"
+          "name": "Slot12>Slot13",
+          "color": "#ac87c3",
+          "color2": "#aa47a3"
         },
         {
           "range": [117, 117],
-          "name": "Slot13"
+          "name": "Slot13",
+          "color": "#aa47a3"
         },
         {
           "range": [118, 125],
-          "name": "Slot13>Slot14"
+          "name": "Slot13>Slot14",
+          "color": "#aa47a3",
+          "color2": "#ffde3f"
         },
         {
           "range": [126, 126],
-          "name": "Slot14"
+          "name": "Slot14",
+          "color": "#ffde3f"
         },
         {
           "range": [127, 134],
-          "name": "Slot14>Slot15"
+          "name": "Slot14>Slot15",
+          "color": "#ffde3f",
+          "color2": "#3b51aa"
         },
         {
           "range": [135, 135],
-          "name": "Slot15"
+          "name": "Slot15",
+          "color": "#3b51aa"
         },
         {
           "range": [136, 143],
-          "name": "Slot15>Slot16"
+          "name": "Slot15>Slot16",
+          "color": "#3b51aa",
+          "color2": "#ac241b"
         },
         {
           "range": [144, 144],
-          "name": "Slot16"
+          "name": "Slot16",
+          "color": "#ac241b"
         },
         {
           "range": [145, 152],
-          "name": "Slot16>Open"
+          "name": "Slot16>Open",
+          "color": "#ac241b",
+          "color2": "#ffffff"
         },
         {
           "range": [153, 162],
-          "name": "Open"
+          "name": "Open",
+          "color": "#ffffff"
         },
         {
           "range": [163, 163],
-          "name": "Slot1"
+          "name": "Slot1",
+          "color": "#71c9ed"
         },
         {
           "range": [164, 164],
-          "name": "Slot2"
+          "name": "Slot2",
+          "color": "#8ad088"
         },
         {
           "range": [165, 165],
-          "name": "Slot3"
+          "name": "Slot3",
+          "color": "#d4f1fb"
         },
         {
           "range": [166, 166],
-          "name": "Slot4"
+          "name": "Slot4",
+          "color": "#cb6122"
         },
         {
           "range": [167, 167],
-          "name": "Slot5"
+          "name": "Slot5",
+          "color": "#9c4aa5"
         },
         {
           "range": [168, 168],
-          "name": "Slot6"
+          "name": "Slot6",
+          "color": "#9bd2ef"
         },
         {
           "range": [169, 169],
-          "name": "Slot7"
+          "name": "Slot7",
+          "color": "#f2e663"
         },
         {
           "range": [170, 170],
-          "name": "Slot8"
+          "name": "Slot8",
+          "color": "#85d2f1"
         },
         {
           "range": [171, 171],
-          "name": "Slot9"
+          "name": "Slot9",
+          "color": "#be2b1f"
         },
         {
           "range": [172, 172],
-          "name": "Slot10"
+          "name": "Slot10",
+          "color": "#5765b4"
         },
         {
           "range": [173, 173],
-          "name": "Slot11"
+          "name": "Slot11",
+          "color": "#8cc783"
         },
         {
           "range": [174, 174],
-          "name": "Slot12"
+          "name": "Slot12",
+          "color": "#ac87c3"
         },
         {
           "range": [175, 175],
-          "name": "Slot13"
+          "name": "Slot13",
+          "color": "#aa47a3"
         },
         {
           "range": [176, 176],
-          "name": "Slot14"
+          "name": "Slot14",
+          "color": "#ffde3f"
         },
         {
           "range": [177, 177],
-          "name": "Slot15"
+          "name": "Slot15",
+          "color": "#3b51aa"
         },
         {
           "range": [178, 178],
-          "name": "Slot16"
+          "name": "Slot16",
+          "color": "#ac241b"
         },
         {
           "range": [179, 192],
-          "name": "Open"
+          "name": "Open",
+          "color": "#ffffff"
         },
         {
           "range": [193, 214],
@@ -345,166 +397,289 @@
         }
       ]
     },
-    "Rotating gobo wheel": {
+    "Gobo indexing angle": {
       "type": "Gobo",
-      "capabilities": [
-        {
-          "range": [0, 2],
-          "name": "Open"
-        },
-        {
-          "range": [3, 6],
-          "name": "Gobo 1 indexing"
-        },
-        {
-          "range": [7, 10],
-          "name": "Gobo 2 indexing"
-        },
-        {
-          "range": [11, 14],
-          "name": "Gobo 3 indexing"
-        },
-        {
-          "range": [15, 19],
-          "name": "Gobo 4 indexing"
-        },
-        {
-          "range": [20, 23],
-          "name": "Gobo 5 indexing"
-        },
-        {
-          "range": [24, 27],
-          "name": "Gobo 6 indexing"
-        },
-        {
-          "range": [28, 31],
-          "name": "Gobo 7 indexing"
-        },
-        {
-          "range": [32, 35],
-          "name": "Gobo 8 indexing"
-        },
-        {
-          "range": [36, 40],
-          "name": "Gobo 9 indexing"
-        },
-        {
-          "range": [41, 44],
-          "name": "Gobo 1 rotation"
-        },
-        {
-          "range": [45, 48],
-          "name": "Gobo 2 rotation"
-        },
-        {
-          "range": [49, 52],
-          "name": "Gobo 3 rotation"
-        },
-        {
-          "range": [53, 56],
-          "name": "Gobo 4 rotation"
-        },
-        {
-          "range": [57, 60],
-          "name": "Gobo 5 rotation"
-        },
-        {
-          "range": [61, 64],
-          "name": "Gobo 6 rotation"
-        },
-        {
-          "range": [65, 68],
-          "name": "Gobo 7 rotation"
-        },
-        {
-          "range": [69, 71],
-          "name": "Gobo 8 rotation"
-        },
-        {
-          "range": [72, 80],
-          "name": "Gobo 9 rotation"
-        },
-        {
-          "range": [81, 90],
-          "name": "Gobo 1 shake, 25° slow > 10° fast"
-        },
-        {
-          "range": [91, 100],
-          "name": "Gobo 2 shake, 25° slow > 10° fast"
-        },
-        {
-          "range": [101, 110],
-          "name": "Gobo 3 shake, 25° slow > 10° fast"
-        },
-        {
-          "range": [111, 120],
-          "name": "Gobo 4 shake, 25° slow > 10° fast"
-        },
-        {
-          "range": [121, 130],
-          "name": "Gobo 5 shake, 25° slow > 10° fast"
-        },
-        {
-          "range": [131, 140],
-          "name": "Gobo 6 shake, 25° slow > 10° fast"
-        },
-        {
-          "range": [141, 150],
-          "name": "Gobo 7 shake, 25° slow > 10° fast"
-        },
-        {
-          "range": [151, 160],
-          "name": "Gobo 8 shake, 25° slow > 10° fast"
-        },
-        {
-          "range": [161, 170],
-          "name": "Gobo 9 shake, 25° slow > 10° fast"
-        },
-        {
-          "range": [171, 200],
-          "name": "Open"
-        },
-        {
-          "range": [201, 228],
-          "name": "CW Fast>Slow"
-        },
-        {
-          "range": [229, 255],
-          "name": "CCW Slow>Fast"
-        }
-      ]
+      "fineChannelAliases": ["Gobo indexing angle fine"],
+      "defaultValue": 32768
     },
-    "Gobo indexing angle, 16-bit (MSB&LSB)": {
+    "Gobo rotation": {
       "type": "Gobo",
+      "fineChannelAliases": ["Gobo rotation fine"],
+      "defaultValue": 32768,
       "capabilities": [
         {
-          "range": [0, 255],
-          "name": "Gobo indexing"
-        }
-      ]
-    },
-    "Gobo rotation direction / speed, 16-bit (MSB&LSB)": {
-      "type": "Gobo",
-      "capabilities": [
-        {
-          "range": [0, 2],
+          "range": [0, 600],
           "name": "No rotation"
         },
         {
-          "range": [3, 122],
+          "range": [601, 32130],
           "name": "Rotation CW fast > CW slow"
         },
         {
-          "range": [123, 125],
+          "range": [32131, 32895],
           "name": "No rotation (stops at current position)"
         },
         {
-          "range": [126, 246],
+          "range": [32896, 64515],
           "name": "Rotation CCW slow > CCW fast"
         },
         {
-          "range": [247, 255],
+          "range": [64516, 65535],
           "name": "No rotation (indexed at 90)"
+        }
+      ]
+    },
+    "Rotating gobo wheel": {
+      "type": "Gobo",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 2],
+          "name": "Open",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
+        },
+        {
+          "range": [3, 6],
+          "name": "Gobo 1 indexing",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
+        },
+        {
+          "range": [7, 10],
+          "name": "Gobo 2 indexing",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
+        },
+        {
+          "range": [11, 14],
+          "name": "Gobo 3 indexing",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
+        },
+        {
+          "range": [15, 19],
+          "name": "Gobo 4 indexing",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
+        },
+        {
+          "range": [20, 23],
+          "name": "Gobo 5 indexing",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
+        },
+        {
+          "range": [24, 27],
+          "name": "Gobo 6 indexing",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
+        },
+        {
+          "range": [28, 31],
+          "name": "Gobo 7 indexing",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
+        },
+        {
+          "range": [32, 35],
+          "name": "Gobo 8 indexing",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
+        },
+        {
+          "range": [36, 40],
+          "name": "Gobo 9 indexing",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
+        },
+        {
+          "range": [41, 44],
+          "name": "Gobo 1 rotation",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo rotation",
+            "Gobo indexing angle / rotation fine": "Gobo rotation fine"
+          }
+        },
+        {
+          "range": [45, 48],
+          "name": "Gobo 2 rotation",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo rotation",
+            "Gobo indexing angle / rotation fine": "Gobo rotation fine"
+          }
+        },
+        {
+          "range": [49, 52],
+          "name": "Gobo 3 rotation",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo rotation",
+            "Gobo indexing angle / rotation fine": "Gobo rotation fine"
+          }
+        },
+        {
+          "range": [53, 56],
+          "name": "Gobo 4 rotation",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo rotation",
+            "Gobo indexing angle / rotation fine": "Gobo rotation fine"
+          }
+        },
+        {
+          "range": [57, 60],
+          "name": "Gobo 5 rotation",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo rotation",
+            "Gobo indexing angle / rotation fine": "Gobo rotation fine"
+          }
+        },
+        {
+          "range": [61, 64],
+          "name": "Gobo 6 rotation",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo rotation",
+            "Gobo indexing angle / rotation fine": "Gobo rotation fine"
+          }
+        },
+        {
+          "range": [65, 68],
+          "name": "Gobo 7 rotation",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo rotation",
+            "Gobo indexing angle / rotation fine": "Gobo rotation fine"
+          }
+        },
+        {
+          "range": [69, 71],
+          "name": "Gobo 8 rotation",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo rotation",
+            "Gobo indexing angle / rotation fine": "Gobo rotation fine"
+          }
+        },
+        {
+          "range": [72, 80],
+          "name": "Gobo 9 rotation",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo rotation",
+            "Gobo indexing angle / rotation fine": "Gobo rotation fine"
+          }
+        },
+        {
+          "range": [81, 90],
+          "name": "Gobo 1 shake, 25° slow > 10° fast",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
+        },
+        {
+          "range": [91, 100],
+          "name": "Gobo 2 shake, 25° slow > 10° fast",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
+        },
+        {
+          "range": [101, 110],
+          "name": "Gobo 3 shake, 25° slow > 10° fast",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
+        },
+        {
+          "range": [111, 120],
+          "name": "Gobo 4 shake, 25° slow > 10° fast",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
+        },
+        {
+          "range": [121, 130],
+          "name": "Gobo 5 shake, 25° slow > 10° fast",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
+        },
+        {
+          "range": [131, 140],
+          "name": "Gobo 6 shake, 25° slow > 10° fast",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
+        },
+        {
+          "range": [141, 150],
+          "name": "Gobo 7 shake, 25° slow > 10° fast",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
+        },
+        {
+          "range": [151, 160],
+          "name": "Gobo 8 shake, 25° slow > 10° fast",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
+        },
+        {
+          "range": [161, 170],
+          "name": "Gobo 9 shake, 25° slow > 10° fast",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
+        },
+        {
+          "range": [171, 200],
+          "name": "Open",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
+        },
+        {
+          "range": [201, 228],
+          "name": "CW Fast>Slow",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
+        },
+        {
+          "range": [229, 255],
+          "name": "CCW Slow>Fast",
+          "switchChannels": {
+            "Gobo indexing angle / rotation": "Gobo indexing angle",
+            "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
+          }
         }
       ]
     },
@@ -690,6 +865,7 @@
     },
     "Prism lineator": {
       "type": "Prism",
+      "defaultValue": 128,
       "capabilities": [
         {
           "range": [0, 255],
@@ -699,64 +875,44 @@
     },
     "Zoom": {
       "type": "Zoom",
+      "defaultValue": 128,
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "Zoom Wide > Narrow"
+          "name": "Wide > narrow"
         }
       ]
     },
-    "Focus, 16-bit (MSB)": {
+    "Focus": {
       "type": "Focus",
+      "defaultValue": 32768,
+      "fineChannelAliases": ["Focus fine"],
       "capabilities": [
         {
-          "range": [0, 255],
-          "name": "Focus Infinity>Near"
+          "range": [0, 65535],
+          "name": "Infinity>Near"
         }
       ]
     },
-    "Focus, 16-bit (LSB)": {
-      "type": "Focus",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Focus Infinity > Near"
-        }
-      ]
-    },
-    "Pan, 16-bit (MSB)": {
+    "Pan": {
       "type": "Pan",
+      "defaultValue": 32768,
+      "fineChannelAliases": ["Pan fine"],
       "capabilities": [
         {
-          "range": [0, 255],
-          "name": "Pan Left > Right"
+          "range": [0, 65535],
+          "name": "Left>Right"
         }
       ]
     },
-    "Pan, 16-bit (LSB)": {
-      "type": "Pan",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Pan Left > Right"
-        }
-      ]
-    },
-    "Tilt, 16-bit (MSB)": {
+    "Tilt": {
       "type": "Tilt",
+      "defaultValue": 32768,
+      "fineChannelAliases": ["Tilt fine"],
       "capabilities": [
         {
-          "range": [0, 255],
-          "name": "Tilt, Forward>Backward"
-        }
-      ]
-    },
-    "Tilt, 16-bit (LSB)": {
-      "type": "Tilt",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Tilt, Forward>Backward"
+          "range": [0, 65535],
+          "name": "Forward>Backward"
         }
       ]
     },
@@ -859,20 +1015,20 @@
         "CTO",
         "Color wheel",
         "Rotating gobo wheel",
-        "Gobo indexing angle, 16-bit (MSB&LSB)",
-        "Gobo rotation direction / speed, 16-bit (MSB&LSB)",
+        "Gobo indexing angle / rotation",
+        "Gobo indexing angle / rotation fine",
         "Fixed gobo wheel",
         "Frost",
         "Prism deployment",
         "Prism rotation",
         "Prism lineator",
         "Zoom",
-        "Focus, 16-bit (MSB)",
-        "Focus, 16-bit (LSB)",
-        "Pan, 16-bit (MSB)",
-        "Pan, 16-bit (LSB)",
-        "Tilt, 16-bit (MSB)",
-        "Tilt, 16-bit (LSB)",
+        "Focus",
+        "Focus fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
         "Fixture control settings"
       ]
     }
