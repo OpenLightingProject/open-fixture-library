@@ -10,14 +10,14 @@ pullRequest.init()
   if (changedComponents.added.schema ||
       changedComponents.modified.schema ||
       changedComponents.removed.schema) {
-    return `With every change on the schema, its version should be incremented and tagged. See the [Fixture README](https://github.com/FloEdelmann/open-fixture-library/blob/${process.env.TRAVIS_COMMIT}/fixtures/README.md#schema) for further information.`
+    return [`With every change on the schema, its version should be incremented and tagged. See the [Fixture README](https://github.com/FloEdelmann/open-fixture-library/blob/${process.env.TRAVIS_COMMIT}/fixtures/README.md#schema) for further information.`];
   }
-  return '';
+  return [];
 })
 .then(message => pullRequest.updateComment({
   filename: path.relative(path.join(__dirname, '../../'), __filename),
   name: 'Schema has changed',
-  lines: [message]
+  lines: message
 }))
 .catch(error => {
   console.error(error);

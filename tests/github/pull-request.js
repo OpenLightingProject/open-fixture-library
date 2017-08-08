@@ -103,7 +103,7 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
 
     for (const block of fileBlocks) {
       for (const file of block.data) {
-        addFileToChangedData(changedComponents[file.status], file.filename)
+        addFileToChangedData(changedComponents[file.status], file.filename);
       }
     }
 
@@ -120,12 +120,12 @@ function addFileToChangedData(changedData, filename) {
   }
 
   if (segments[0] === 'plugins' && segments[2] === 'import.js') {
-    changedData.imports.push(segments[1]);
+    changedData.imports.push(segments[1]); // man key
     return;
   }
 
   if (segments[0] === 'plugins' && segments[2] === 'export.js') {
-    changedData.exports.push(segments[1]);
+    changedData.exports.push(segments[1]); // man key
     return;
   }
 
@@ -166,6 +166,8 @@ module.exports.updateComment = function updateComment(test) {
   ];
   lines = lines.concat(test.lines);
   const message = lines.join('\n');
+  console.log(message);
+  return;
 
   let commentPromises = [];
   for (let i = 0; i < module.exports.data.comments / 100; i++) {
