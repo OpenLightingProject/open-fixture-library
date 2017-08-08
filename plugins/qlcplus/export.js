@@ -80,7 +80,6 @@ function addChannel(xml, channel) {
   }
 
   const chType = getChannelType(channel);
-  console.log(channel.type, chType);
   xmlGroup.text(chType);
 
   if (chType === 'Intensity') {
