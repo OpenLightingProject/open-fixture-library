@@ -1,6 +1,6 @@
 {
-  "name": "DTS XR1200 WASH ",
-  "shortName": "XR1200Wash",
+  "name": "XR1200 WASH",
+  "shortName": "DTSXR1200",
   "categories": ["Moving Head"],
   "meta": {
     "authors": ["novasfronteiras.co"],
@@ -17,62 +17,19 @@
       "type": "Phililps MSR Gold 1200 Fastfit",
       "lumens": 50000
     },
-    "lens": {
-      "degreesMinMax": [9, 19]
-    },
     "focus": {
       "panMax": 540,
       "tiltMax": 270
     }
   },
   "availableChannels": {
-    "Pan (MSB)": {
-      "type": "Pan",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Pan msb 540"
-        }
-      ]
-    },
-    "Pan (LSB)": {
-      "type": "Pan",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Pan lsb"
-        }
-      ]
-    },
-    "Pan (LSB) 2": {
-      "name": "Pan (LSB)",
-      "type": "Pan",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Pan lsb"
-        }
-      ]
-    },
     "Pan": {
       "type": "Pan",
-      "fineChannelAliases": ["Pan fine"],
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Pan "
-        }
-      ]
+      "fineChannelAliases": ["Pan fine"]
     },
     "Tilt": {
       "type": "Tilt",
-      "fineChannelAliases": ["Tilt fine"],
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Tilt"
-        }
-      ]
+      "fineChannelAliases": ["Tilt fine"]
     },
     "Movement Speed": {
       "type": "Speed",
@@ -181,7 +138,7 @@
         },
         {
           "range": [220, 227],
-          "name": "Colours / Macros in black-out"
+          "name": "Colors / Macros in black-out"
         },
         {
           "range": [228, 233],
@@ -193,68 +150,89 @@
         }
       ]
     },
-    "Colour": {
+    "Color Wheel": {
       "type": "Multi-Color",
       "capabilities": [
         {
           "range": [0, 12],
-          "name": "White"
+          "name": "White",
+          "color": "#ffffff"
         },
         {
           "range": [13, 25],
-          "name": "Colour 1 (3200K)"
+          "name": "CTO (3200K)",
+          "color": "#ffd85e"
         },
         {
           "range": [26, 38],
-          "name": "Colour 2 (5600K)"
+          "name": "CTB (5600K)",
+          "color": "#d1ffff"
         },
         {
           "range": [39, 51],
-          "name": "Colour 3"
+          "name": "Purple",
+          "color": "#7038aa"
         },
         {
           "range": [52, 64],
-          "name": "BiColour 3/4"
+          "name": "Purple-Orange",
+          "color": "#7038aa",
+          "color2": "#ff7000"
         },
         {
           "range": [65, 77],
-          "name": "Colour 4"
+          "name": "Orange",
+          "color": "#ff7000"
         },
         {
           "range": [78, 90],
-          "name": "BiColour 4/5"
+          "name": "Orange-Green",
+          "color": "#ff7000",
+          "color2": "#00c628"
         },
         {
           "range": [91, 103],
-          "name": "Colour 5"
+          "name": "Green",
+          "color": "#00c628"
         },
         {
           "range": [104, 116],
-          "name": "BiColour 5/6"
+          "name": "Green-Red",
+          "color": "#00c628",
+          "color2": "#f4001c"
         },
         {
           "range": [117, 129],
-          "name": "Colour 6"
+          "name": "Red",
+          "color": "#f4001c"
         },
         {
           "range": [130, 142],
-          "name": "BiColour 6/7"
+          "name": "Red-Darkblue",
+          "color": "#f4001c",
+          "color2": "#660adb"
         },
         {
           "range": [143, 155],
-          "name": "Colour 7"
+          "name": "Darkblue",
+          "color": "#660adb"
         },
         {
           "range": [156, 168],
-          "name": "BiColour 7/8"
+          "name": "Darkblue-Amber",
+          "color": "#660adb",
+          "color2": "#f9a80f"
         },
         {
           "range": [169, 181],
-          "name": "Colour 8"
+          "name": "Amber",
+          "color": "#f9a80f"
         },
         {
           "range": [182, 197],
-          "name": "BiColour 8/White"
+          "name": "Amber/White",
+          "color": "#f9a80f",
+          "color2": "#ffffff"
         },
         {
           "range": [198, 200],
@@ -336,33 +314,15 @@
     },
     "Cyan": {
       "type": "Single Color",
-      "color": "Cyan",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Proportional colour"
-        }
-      ]
+      "color": "Cyan"
     },
     "Magenta": {
       "type": "Single Color",
-      "color": "Magenta",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Proportional colour"
-        }
-      ]
+      "color": "Magenta"
     },
     "Yellow": {
       "type": "Single Color",
-      "color": "Yellow",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Proportional colour"
-        }
-      ]
+      "color": "Yellow"
     },
     "Speed CMY / Dimmer": {
       "type": "Speed",
@@ -377,7 +337,7 @@
         }
       ]
     },
-    "Macro CMY / Colour": {
+    "Macro CMY / Color": {
       "type": "Effect",
       "capabilities": [
         {
@@ -510,43 +470,43 @@
         },
         {
           "range": [185, 191],
-          "name": "Full colours rainbow wait = 0"
+          "name": "Full Colors rainbow wait = 0"
         },
         {
           "range": [192, 198],
-          "name": "Full colours rainbow wait = 2"
+          "name": "Full Colors rainbow wait = 2"
         },
         {
           "range": [199, 205],
-          "name": "Full colours rainbow wait = 3"
+          "name": "Full Colors rainbow wait = 3"
         },
         {
           "range": [206, 212],
-          "name": "Full colours rainbow wait = 4"
+          "name": "Full Colors rainbow wait = 4"
         },
         {
           "range": [213, 219],
-          "name": "Full colours rainbow wait = 5"
+          "name": "Full Colors rainbow wait = 5"
         },
         {
           "range": [220, 226],
-          "name": "Full colours rainbow wait = 6"
+          "name": "Full Colors rainbow wait = 6"
         },
         {
           "range": [227, 233],
-          "name": "Full colours rainbow wait = 7"
+          "name": "Full Colors rainbow wait = 7"
         },
         {
           "range": [234, 240],
-          "name": "Full colours rainbow wait = 8"
+          "name": "Full Colors rainbow wait = 8"
         },
         {
           "range": [241, 247],
-          "name": "Full colours rainbow wait = 9"
+          "name": "Full Colors rainbow wait = 9"
         },
         {
           "range": [248, 255],
-          "name": "Full colours rainbow wait = 10"
+          "name": "Full Colors rainbow wait = 10"
         }
       ]
     },
@@ -568,13 +528,7 @@
       ]
     },
     "Zoom": {
-      "type": "Zoom",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Proportional"
-        }
-      ]
+      "type": "Zoom"
     },
     "Lamp / Reset": {
       "type": "Maintenance",
@@ -612,8 +566,13 @@
   },
   "modes": [
     {
-      "name": "standard",
-      "shortName": "std",
+      "name": "Fresnel",
+      "physical": {
+        "lens": {
+          "name": "Fresnel Ø 200 mm",
+          "degreesMinMax": [20, 45]
+        }
+      },
       "channels": [
         "Pan",
         "Pan fine",
@@ -622,12 +581,39 @@
         "Movement Speed",
         "Dimmer",
         "Shutter",
-        "Colour",
+        "Color Wheel",
         "Cyan",
         "Magenta",
         "Yellow",
         "Speed CMY / Dimmer",
-        "Macro CMY / Colour",
+        "Macro CMY / Color",
+        "Effects",
+        "Zoom",
+        "Lamp / Reset"
+      ]
+    },
+    {
+      "name": "PC",
+      "physical": {
+        "lens": {
+          "name": "PC (Pebble Convex) Ø 150 mm",
+          "degreesMinMax": [9, 19]
+        }
+      },
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Movement Speed",
+        "Dimmer",
+        "Shutter",
+        "Color Wheel",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Speed CMY / Dimmer",
+        "Macro CMY / Color",
         "Effects",
         "Zoom",
         "Lamp / Reset"
