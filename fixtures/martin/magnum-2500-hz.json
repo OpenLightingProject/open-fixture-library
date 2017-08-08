@@ -1,0 +1,41 @@
+{
+  "name": "Magnum 2500 HZ",
+  "shortName": "2500Hz",
+  "categories": ["Hazer"],
+  "meta": {
+    "authors": ["novasfronteiras.co"],
+    "createDate": "2017-08-08",
+    "lastModifyDate": "2017-08-08"
+  },
+  "manualURL": "http://www.martin.com/files/files/productdocuments/11_MANUALS/999/UM_Magnum2500Hz_EN_F.pdf",
+  "physical": {
+    "dimensions": [285, 286, 455],
+    "weight": 15.7,
+    "power": 920,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Fog": {
+      "type": "Fog",
+      "capabilities": [
+        {
+          "range": [0, 29],
+          "name": "No haze"
+        },
+        {
+          "range": [30, 255],
+          "name": "Haze density min-max"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "shortName": "std",
+      "channels": [
+        "Fog"
+      ]
+    }
+  ]
+}

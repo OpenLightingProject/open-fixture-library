@@ -39,6 +39,9 @@
     "cameo/thunder-wash-600-w": {
       "name": "Thunder Wash 600 W"
     },
+    "dts/xr1200-wash": {
+      "name": "XR1200 WASH"
+    },
     "elation/platinum-hfx": {
       "name": "Platinum HFX"
     },
@@ -99,6 +102,9 @@
     "martin/mac-viper-airfx": {
       "name": "MAC Viper AirFX"
     },
+    "martin/magnum-2500-hz": {
+      "name": "Magnum 2500 HZ"
+    },
     "martin/roboscan-812": {
       "name": "RoboScan 812"
     },
@@ -107,6 +113,9 @@
     },
     "martin/rush-mh-3-beam": {
       "name": "Rush MH 3 Beam"
+    },
+    "mdg/hazer-atmosphere-aps": {
+      "name": "Hazer ATMOSPHERE APS"
     },
     "robe/dj-scan-250-xt": {
       "name": "DJ Scan 250 XT"
@@ -149,6 +158,9 @@
       "thunder-wash-600-rgb",
       "thunder-wash-600-w"
     ],
+    "dts": [
+      "xr1200-wash"
+    ],
     "elation": [
       "platinum-hfx",
       "platinum-spot-15r-pro"
@@ -182,9 +194,13 @@
       "mac-aura",
       "mac-axiom-hybrid",
       "mac-viper-airfx",
+      "magnum-2500-hz",
       "roboscan-812",
       "rush-mh-2-wash",
       "rush-mh-3-beam"
+    ],
+    "mdg": [
+      "hazer-atmosphere-aps"
     ],
     "robe": [
       "dj-scan-250-xt"
@@ -202,6 +218,7 @@
       "5star-systems/spica-250m",
       "cameo/hydrabeam-300-rgbw",
       "cameo/nanospot-120",
+      "dts/xr1200-wash",
       "elation/platinum-hfx",
       "elation/platinum-spot-15r-pro",
       "eurolite/led-tmh-18",
@@ -263,6 +280,10 @@
     ],
     "Fan": [
       "gruft/ventilator"
+    ],
+    "Hazer": [
+      "martin/magnum-2500-hz",
+      "mdg/hazer-atmosphere-aps"
     ],
     "Scanner": [
       "martin/roboscan-812",
