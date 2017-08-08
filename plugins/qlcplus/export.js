@@ -205,6 +205,8 @@ function getFixtureType(fixture) {
 function getChannelType(channel) {
   switch(channel.type) {
     case 'Single Color':
+    case 'Color Temperature':
+    case 'Fog':
       return 'Intensity';
 
     case 'Multi-Color':

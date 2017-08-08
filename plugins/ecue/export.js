@@ -175,6 +175,7 @@ function getChannelType(channel) {
   switch (channel.type) {
     case 'Multi-Color':
     case 'Single Color':
+    case 'Color Temperature':
       return 'ChannelColor';
 
     case 'Iris':
@@ -195,6 +196,7 @@ function getChannelType(channel) {
       return 'ChannelFocus';
 
     case 'Intensity':
+    case 'Fog':
     default:
       return 'ChannelIntensity';
   }

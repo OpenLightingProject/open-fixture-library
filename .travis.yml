@@ -8,6 +8,7 @@ env:
   - TESTFILE=tests/register-correct.js
   - TESTFILE=tests/github/export-diff.js
   - TESTFILE=tests/github/exports-valid.js
+  - TESTFILE=tests/github/schema-version-reminder.js
 script:
   - NODE_ENV=production node "$TESTFILE"
 cache:
