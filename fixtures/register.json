@@ -6,6 +6,9 @@
     "abstract/twister-4": {
       "name": "Twister 4"
     },
+    "american-dj/fog-fury-jett-pro": {
+      "name": "Fog Fury Jett Pro"
+    },
     "american-dj/quad-phase-hp": {
       "name": "Quad Phase HP"
     },
@@ -90,11 +93,17 @@
     "martin/mac-aura": {
       "name": "MAC Aura"
     },
+    "martin/mac-axiom-hybrid": {
+      "name": "MAC Axiom Hybrid"
+    },
     "martin/mac-viper-airfx": {
       "name": "MAC Viper AirFX"
     },
     "martin/roboscan-812": {
       "name": "RoboScan 812"
+    },
+    "martin/rush-mh-2-wash": {
+      "name": "Rush MH 2 Wash"
     },
     "robe/dj-scan-250-xt": {
       "name": "DJ Scan 250 XT"
@@ -113,12 +122,6 @@
     },
     "showtec/phantom-50-led-spot": {
       "name": "Phantom 50 LED Spot"
-    },
-    "american-dj/fog-fury-jett-pro": {
-      "name": "Fog Fury Jett Pro"
-    },
-    "martin/mac-axiom-hybrid": {
-      "name": "MAC Axiom Hybrid"
     }
   },
   "manufacturers": {
@@ -176,7 +179,8 @@
       "mac-aura",
       "mac-axiom-hybrid",
       "mac-viper-airfx",
-      "roboscan-812"
+      "roboscan-812",
+      "rush-mh-2-wash"
     ],
     "robe": [
       "dj-scan-250-xt"
@@ -203,6 +207,7 @@
       "martin/mac-aura",
       "martin/mac-axiom-hybrid",
       "martin/mac-viper-airfx",
+      "martin/rush-mh-2-wash",
       "showtec/kanjo-wash-rgb",
       "showtec/phantom-140-led-spot",
       "showtec/phantom-50-led-spot"
@@ -212,6 +217,9 @@
       "american-dj/quad-phase-hp",
       "american-dj/revo-4-ir",
       "eurolite/led-svf-1"
+    ],
+    "Smoke": [
+      "american-dj/fog-fury-jett-pro"
     ],
     "Color Changer": [
       "american-dj/fog-fury-jett-pro",
@@ -254,9 +262,6 @@
     "Scanner": [
       "martin/roboscan-812",
       "robe/dj-scan-250-xt"
-    ],
-    "Smoke": [
-      "american-dj/fog-fury-jett-pro"
     ]
   }
 }
