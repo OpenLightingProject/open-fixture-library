@@ -108,6 +108,9 @@
     "martin/rush-mh-3-beam": {
       "name": "Rush MH 3 Beam"
     },
+    "mdg/hazer-atmosphere-aps": {
+      "name": "Hazer ATMOSPHERE APS"
+    },
     "robe/dj-scan-250-xt": {
       "name": "DJ Scan 250 XT"
     },
@@ -125,9 +128,6 @@
     },
     "showtec/phantom-50-led-spot": {
       "name": "Phantom 50 LED Spot"
-    },
-    "mdg/mdg-hazer-atmosphere-aps": {
-      "name": "MDG Hazer ATMOSPHERE APS"
     }
   },
   "manufacturers": {
@@ -189,6 +189,9 @@
       "rush-mh-2-wash",
       "rush-mh-3-beam"
     ],
+    "mdg": [
+      "hazer-atmosphere-aps"
+    ],
     "robe": [
       "dj-scan-250-xt"
     ],
@@ -198,9 +201,6 @@
       "led-light-bar-rgb-v3",
       "phantom-140-led-spot",
       "phantom-50-led-spot"
-    ],
-    "mdg": [
-      "mdg-hazer-atmosphere-aps"
     ]
   },
   "categories": {
@@ -275,7 +275,7 @@
       "robe/dj-scan-250-xt"
     ],
     "Hazer": [
-      "mdg/mdg-hazer-atmosphere-aps"
+      "mdg/hazer-atmosphere-aps"
     ]
   }
 }

@@ -1,6 +1,6 @@
 {
-  "name": "MDG Hazer ATMOSPHERE APS",
-  "shortName": "ATMOSPHEREAPS",
+  "name": "Hazer ATMOSPHERE APS",
+  "shortName": "MDG-M35A-X",
   "categories": ["Hazer"],
   "meta": {
     "authors": ["novasfronteiras.co"],
@@ -15,16 +15,16 @@
     "DMXconnector": "5-pin"
   },
   "availableChannels": {
-    "ON / OFF": {
+    "Fog": {
       "type": "Fog",
       "capabilities": [
         {
           "range": [0, 127],
-          "name": "Fog OFF"
+          "name": "Fog off"
         },
         {
           "range": [128, 255],
-          "name": "Fog ON"
+          "name": "Fog on"
         }
       ]
     },
@@ -44,10 +44,10 @@
   },
   "modes": [
     {
-      "name": "standard",
+      "name": "Standard",
       "shortName": "std",
       "channels": [
-        "ON / OFF",
+        "Fog",
         "Fog Emission"
       ]
     }
