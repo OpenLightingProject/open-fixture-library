@@ -33,11 +33,11 @@ pullRequest.init()
   }
 
   if (lines.length > 0) {
-    lines.push(
+    lines = [
       'You can run view your uncommited changes in plugin exports manually by executing:',
       '`$ node cli/diff-plugin-outputs.js -p <plugin name> <fixtures>`',
       ''
-    )
+    ].concat(lines);
   }
 
   return pullRequest.updateComment({
@@ -68,9 +68,16 @@ function getModelMessage(plugins, fixtures) {
 function getPluginMessage(plugin, fixtures) {
   let lines = [];
 
-  lines.push(`## Plugin \`${plugin}\` modified in this PR`);
+  const diffMessage = getDiffMessage(plugin, fixtures);
+  if (diffMessage.length === 1) {
+    // no changes
+    lines.push(`## :information_source: Plugin \`${plugin}\` modified in this PR`);
+  }
+  else {
+    lines.push(`## :warning Plugin \`${plugin}\` modified in this PR`);
+  }
   lines = lines.concat(pullRequest.getTestFixturesMessage(fixtures));
-  lines = lines.concat(getDiffMessage(plugin, fixtures), '');
+  lines = lines.concat(diffMessage, '');
   
   return lines;
 }
@@ -91,8 +98,15 @@ function getFixtureMessage(plugins, fixture) {
 function getSubPluginMessage(plugin, fixtures) {
   let lines = [];
 
-  lines.push(`### Plugin \`${plugin}\``);
-  lines = lines.concat(getDiffMessage(plugin, fixtures), '');
+  const diffMessage = getDiffMessage(plugin, fixtures);
+  if (diffMessage.length === 1) {
+    // no changes
+    lines.push(`### :information_source: Plugin \`${plugin}\``);
+  }
+  else {
+    lines.push(`### :warning Plugin \`${plugin}\``);
+  }
+  lines = lines.concat(diffMessage, '');
 
   return lines;
 }
