@@ -1,6 +1,18 @@
 const schema = require('js-schema');
 
-module.exports.VERSION = '1.0.0';
+/**
+ * Everytime we update the schema, this version needs to be incremented using semantic versionsing.
+ * 
+ * Given a version number MAJOR.MINOR.PATCH, increment the:
+ * 1. MAJOR version when you make incompatible API changes,
+ * 2. MINOR version when you add functionality in a backwards-compatible manner, and
+ * 3. PATCH version when you make backwards-compatible bug fixes.
+ * 
+ * See http://semver.org
+ * 
+ * @type {string}
+ */
+module.exports.VERSION = '2.0.0';
 
 /**
  * see https://github.com/molnarg/js-schema
