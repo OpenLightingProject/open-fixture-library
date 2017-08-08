@@ -1,6 +1,6 @@
 {
   "name": "Rush MH 2 Wash",
-  "shortName": "MartinRushMH2Wash",
+  "shortName": "MartinRushMH2",
   "categories": ["Moving Head"],
   "meta": {
     "authors": ["novasfronteiras.co"],
@@ -15,7 +15,7 @@
     "power": 125,
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
-      "type": " 7 x 10 W RGBW Cree MC-E LEDs"
+      "type": "7 x 10 W RGBW Cree MC-E LEDs"
     },
     "focus": {
       "panMax": 540,
@@ -198,135 +198,168 @@
         },
         {
           "range": [10, 14],
-          "name": "LEE 790 - Moroccan pink"
+          "name": "LEE 790 - Moroccan pink",
+          "color": "#ffb4a5"
         },
         {
           "range": [15, 19],
-          "name": "LEE 157 - Pink"
+          "name": "LEE 157 - Pink",
+          "color": "#ff92a3"
         },
         {
           "range": [20, 24],
-          "name": "LEE 332 - Special rose pink"
+          "name": "LEE 332 - Special rose pink",
+          "color": "#ff3787"
         },
         {
           "range": [25, 29],
-          "name": "LEE 328 - Follies pink"
+          "name": "LEE 328 - Follies pink",
+          "color": "#ff64c8"
         },
         {
           "range": [30, 34],
-          "name": "LEE 345 - Fuchsia pink"
+          "name": "LEE 345 - Fuchsia pink",
+          "color": "#cd6ed7"
         },
         {
           "range": [35, 39],
-          "name": "LEE 194 - Surprise pink"
+          "name": "LEE 194 - Surprise pink",
+          "color": "#be8cf0"
         },
         {
           "range": [40, 44],
-          "name": "LEE 181 - Congo blue"
+          "name": "LEE 181 - Congo blue",
+          "color": "#5000aa"
         },
         {
           "range": [45, 49],
-          "name": "LEE 071 - Tokyo blue"
+          "name": "LEE 071 - Tokyo blue",
+          "color": "#0000b4"
         },
         {
           "range": [50, 54],
-          "name": "LEE 120 - Deep blue"
+          "name": "LEE 120 - Deep blue",
+          "color": "#005fbe"
         },
         {
           "range": [55, 59],
-          "name": "LEE 079 - Just blue"
+          "name": "LEE 079 - Just blue",
+          "color": "#3c8cd2"
         },
         {
           "range": [60, 64],
-          "name": "LEE 132 - Medium blue"
+          "name": "LEE 132 - Medium blue",
+          "color": "#00a0dc"
         },
         {
           "range": [65, 69],
-          "name": "LEE 200 - Double CT blue"
+          "name": "LEE 200 - Double CT blue",
+          "color": "#91bef5"
         },
         {
           "range": [70, 74],
-          "name": "LEE 161 - Slate blue"
+          "name": "LEE 161 - Slate blue",
+          "color": "#7dd2f5"
         },
         {
           "range": [75, 79],
-          "name": "LEE 201 - Full CT blue"
+          "name": "LEE 201 - Full CT blue",
+          "color": "#c3e1fa"
         },
         {
           "range": [80, 84],
-          "name": "LEE 202 - Half CT blue"
+          "name": "LEE 202 - Half CT blue",
+          "color": "#d7f0ff"
         },
         {
           "range": [85, 89],
-          "name": "LEE 117 - Steel blue"
+          "name": "LEE 117 - Steel blue",
+          "color": "#b4faf5"
         },
         {
           "range": [90, 94],
-          "name": "LEE 353 - Lighter blue"
+          "name": "LEE 353 - Lighter blue",
+          "color": "#61e8e3"
         },
         {
           "range": [95, 99],
-          "name": "LEE 118 - Light blue"
+          "name": "LEE 118 - Light blue",
+          "color": "#00e1eb"
         },
         {
           "range": [100, 104],
-          "name": "LEE 116 - Medium blue green"
+          "name": "LEE 116 - Medium blue green",
+          "color": "#00c8b9"
         },
         {
           "range": [105, 109],
-          "name": "LEE 124 - Dark green"
+          "name": "LEE 124 - Dark green",
+          "color": "#00dc78"
         },
         {
           "range": [110, 114],
-          "name": "LEE 139 - Primary green"
+          "name": "LEE 139 - Primary green",
+          "color": "#4bc300"
         },
         {
           "range": [115, 119],
-          "name": "LEE 089 - Moss green"
+          "name": "LEE 089 - Moss green",
+          "color": "#5adc5a"
         },
         {
           "range": [120, 124],
-          "name": "LEE 122 - Fern green"
+          "name": "LEE 122 - Fern green",
+          "color": "#78fa6e"
         },
         {
           "range": [125, 129],
-          "name": "LEE 738 - JAS green"
+          "name": "LEE 738 - JAS green",
+          "color": "#aaff00"
         },
         {
           "range": [130, 134],
-          "name": "LEE 088 - Lime green"
+          "name": "LEE 088 - Lime green",
+          "color": "#dcff64"
         },
         {
           "range": [135, 139],
-          "name": "LEE 100 - Spring yellow"
+          "name": "LEE 100 - Spring yellow",
+          "color": "#f5ff00"
         },
         {
           "range": [140, 144],
-          "name": "LEE 104 - Deep amber"
+          "name": "LEE 104 - Deep amber",
+          "color": "#ffdc00"
         },
         {
           "range": [145, 149],
-          "name": "LEE 179 - Chrome orange"
+          "name": "LEE 179 - Chrome orange",
+          "color": "#ffbe00"
         },
         {
           "range": [150, 154],
-          "name": "LEE 105 - Orange"
+          "name": "LEE 105 - Orange",
+          "color": "#ffa000"
         },
         {
           "range": [155, 159],
-          "name": "LEE 021 - Gold amber"
+          "name": "LEE 021 - Gold amber",
+          "color": "#ff8c32"
         },
         {
           "range": [160, 164],
-          "name": "LEE 778 - Millennium gold"
+          "name": "LEE 778 - Millennium gold",
+          "color": "#ff7600"
         },
         {
           "range": [165, 169],
-          "name": "LEE 135 - Deep golden amber"
+          "name": "LEE 135 - Deep golden amber",
+          "color": "#ff5f00"
         },
         {
           "range": [170, 174],
-          "name": "LEE 164 - Flame red"
+          "name": "LEE 164 - Flame red",
+          "color": "#ff3200"
         },
         {
           "range": [175, 179],
