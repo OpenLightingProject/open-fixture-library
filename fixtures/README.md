@@ -6,12 +6,12 @@ The purpose of this document is to give a high-level overview of the concepts us
 
 ## Schema
 
-The [JS Schema](https://github.com/molnarg/js-schema) can be found in the [schema.js](schema.js) file. It is a declarative way to describe allowed properties and values. The [Fixture Validator](../tests/fixtures-valid.js) automatically checks the fixtures against this schema.
+The [JS Schema](https://github.com/molnarg/js-schema) can be found in the [schema.js](schema.js) file. It is a declarative way to describe allowed properties and values. The [Fixture Validator](../tests/fixtures-valid.js) automatically checks the fixtures against this schema and does some more tests programatically.
 
 The schema exports a property `VERSION`. Everytime the schema is updated, this version needs to be incremented using [semantic versioning](http://semver.org).
 
 Given a version number MAJOR.MINOR.PATCH, increment the:
-1. MAJOR version when you make incompatible API changes,
+1. MAJOR version when you make incompatible schema changes,
 2. MINOR version when you add functionality in a backwards-compatible manner, and
 3. PATCH version when you make backwards-compatible bug fixes.
 
