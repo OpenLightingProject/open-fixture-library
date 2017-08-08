@@ -120,12 +120,12 @@ function addFileToChangedData(changedData, filename) {
   }
 
   if (segments[0] === 'plugins' && segments[2] === 'import.js') {
-    changedData.imports.push(segments[1]); // man key
+    changedData.imports.push(segments[1]); // plugin key
     return;
   }
 
   if (segments[0] === 'plugins' && segments[2] === 'export.js') {
-    changedData.exports.push(segments[1]); // man key
+    changedData.exports.push(segments[1]); // plugin key
     return;
   }
 
