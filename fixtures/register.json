@@ -99,6 +99,9 @@
     "martin/mac-viper-airfx": {
       "name": "MAC Viper AirFX"
     },
+    "martin/magnum-2500-hz": {
+      "name": "Magnum 2500 HZ"
+    },
     "martin/roboscan-812": {
       "name": "RoboScan 812"
     },
@@ -107,6 +110,9 @@
     },
     "martin/rush-mh-3-beam": {
       "name": "Rush MH 3 Beam"
+    },
+    "mdg/hazer-atmosphere-aps": {
+      "name": "Hazer ATMOSPHERE APS"
     },
     "robe/dj-scan-250-xt": {
       "name": "DJ Scan 250 XT"
@@ -125,9 +131,6 @@
     },
     "showtec/phantom-50-led-spot": {
       "name": "Phantom 50 LED Spot"
-    },
-    "martin/magnum-2500-hz": {
-      "name": "Magnum 2500 HZ"
     }
   },
   "manufacturers": {
@@ -189,6 +192,9 @@
       "roboscan-812",
       "rush-mh-2-wash",
       "rush-mh-3-beam"
+    ],
+    "mdg": [
+      "hazer-atmosphere-aps"
     ],
     "robe": [
       "dj-scan-250-xt"
@@ -268,12 +274,13 @@
     "Fan": [
       "gruft/ventilator"
     ],
+    "Hazer": [
+      "martin/magnum-2500-hz",
+      "mdg/hazer-atmosphere-aps"
+    ],
     "Scanner": [
       "martin/roboscan-812",
       "robe/dj-scan-250-xt"
-    ],
-    "Hazer": [
-      "martin/magnum-2500-hz"
     ]
   }
 }
