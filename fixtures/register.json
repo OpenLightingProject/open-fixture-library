@@ -108,6 +108,9 @@
     "martin/rush-mh-3-beam": {
       "name": "Rush MH 3 Beam"
     },
+    "mdg/hazer-atmosphere-aps": {
+      "name": "Hazer ATMOSPHERE APS"
+    },
     "robe/dj-scan-250-xt": {
       "name": "DJ Scan 250 XT"
     },
@@ -185,6 +188,9 @@
       "roboscan-812",
       "rush-mh-2-wash",
       "rush-mh-3-beam"
+    ],
+    "mdg": [
+      "hazer-atmosphere-aps"
     ],
     "robe": [
       "dj-scan-250-xt"
@@ -267,6 +273,9 @@
     "Scanner": [
       "martin/roboscan-812",
       "robe/dj-scan-250-xt"
+    ],
+    "Hazer": [
+      "mdg/hazer-atmosphere-aps"
     ]
   }
 }
