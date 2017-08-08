@@ -20,6 +20,8 @@ let definedChannelKeys; // and aliases
 /** @type {Set<string>} */
 let usedChannelKeys; // and aliases
 /** @type {Set<string>} */
+let possibleMatrixChKeys; // and aliases
+/** @type {Set<string>} */
 let modeNames;
 /** @type {Set<string>} */
 let modeShortNames;
@@ -39,6 +41,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
   };
   definedChannelKeys = new Set();
   usedChannelKeys = new Set();
+  possibleMatrixChKeys = new Set();
   modeNames = new Set();
   modeShortNames = new Set();
 
@@ -218,23 +221,35 @@ function checkTemplateChannels(fixtureJson) {
   if (isNotEmpty(fixtureJson.templateChannels, 'templateChannels are empty. Add a channel or remove it.')) {
     if (fixture.matrix === null) {
       result.errors.push('templateChannels are defined but matrix data is missing.');
+      return;
     }
 
-    const requiredVariables = ['$pixelKey'];
     for (const templateChannel of fixture.templateChannels) {
-      checkTemplateVariables(templateChannel.key, requiredVariables);
-
-      for (const alias of templateChannel.fineChannelAliases) {
-        checkTemplateVariables(alias, requiredVariables);
-      }
-
-      for (const alias of templateChannel.switchingChannelAliases) {
-        checkTemplateVariables(alias, requiredVariables);
-      }
+      checkTemplateChannel(templateChannel);
     }
   }
   else if (fixture.matrix !== null) {
     result.errors.push('Matrix is defined but templateChannels are missing.');
+  }
+}
+
+/**
+ * Check if the templateChannel is defined correctly. Does not check the channel data itself.
+ * @param {!TemplateChannel} templateChannel The templateChannel to examine.
+ */
+function checkTemplateChannel(templateChannel) {
+  checkTemplateVariables(templateChannel.name, ['$pixelKey']);
+  
+  for (const key of templateChannel.allChannelKeys) {
+    checkTemplateVariables(key, ['$pixelKey']);
+  }
+
+  for (const key of templateChannel.matrixChannelKeys) {
+    checkUniqueness(
+      possibleMatrixChKeys,
+      key,
+      `Generated channel key ${key} can be produced by multiple template channels (test is not case-sensitive).`
+    );
   }
 }
 
@@ -621,6 +636,12 @@ function isNotEmpty(obj, messageIfEmpty) {
   return false;
 }
 
+/**
+ * If the Set already contains the given value, add an error. Test is not case-sensitive.
+ * @param {!Set<string>} set The Set in which all unique values are stored.
+ * @param {!string} value The string value to examine.
+ * @param {!string} messageIfNotUnique If the value is not unique, add this message to errors.
+ */
 function checkUniqueness(set, value, messageIfNotUnique) {
   if (set.has(value.toLowerCase())) {
     result.errors.push(messageIfNotUnique);
