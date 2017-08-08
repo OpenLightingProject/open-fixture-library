@@ -32,6 +32,14 @@ pullRequest.init()
     lines = lines.concat(getFixtureMessage(allPlugins, `${fixture[0]}/${fixture[1]}`));
   }
 
+  if (lines.length > 0) {
+    lines.push(
+      'You can run view your uncommited changes in plugin exports manually by executing:',
+      '`$ node cli/diff-plugin-outputs.js -p <plugin name> <fixtures>`',
+      ''
+    )
+  }
+
   return pullRequest.updateComment({
     filename: path.relative(path.join(__dirname, '../../'), __filename),
     name: 'Plugin export diff',
