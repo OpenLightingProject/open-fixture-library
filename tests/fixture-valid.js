@@ -55,6 +55,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     checkMeta(fixture.meta);
     checkPhysical(fixture.physical);
     checkMatrix(fixture.matrix);
+    checkTemplateChannels(fixtureJson);
     checkChannels(fixtureJson);
   
     for (const mode of fixture.modes) {
@@ -64,7 +65,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     checkUnusedChannels();
   }
   catch (error) {
-    result.errors.push(getErrorString('File could not be imported into model.', error))
+    result.errors.push(getErrorString('File could not be imported into model.', error));
   }
 
   return result;
@@ -210,7 +211,35 @@ function checkPixelGroups(matrix) {
 }
 
 /**
- * Check if availableChannels and templateChannels are defined correctly.
+ * Check if templateChannels are defined correctly. Does not check the channel data itself.
+ * @param {!object} fixtureJson The fixture's JSON data
+ */
+function checkTemplateChannels(fixtureJson) {
+  if (isNotEmpty(fixtureJson.templateChannels, 'templateChannels are empty. Add a channel or remove it.')) {
+    if (fixture.matrix === null) {
+      result.errors.push('templateChannels are defined but matrix data is missing.');
+    }
+
+    const requiredVariables = ['$pixelKey'];
+    for (const templateChannel of fixture.templateChannels) {
+      checkTemplateVariables(templateChannel.key, requiredVariables);
+
+      for (const alias of templateChannel.fineChannelAliases) {
+        checkTemplateVariables(alias, requiredVariables);
+      }
+
+      for (const alias of templateChannel.switchingChannelAliases) {
+        checkTemplateVariables(alias, requiredVariables);
+      }
+    }
+  }
+  else if (fixture.matrix !== null) {
+    result.errors.push('Matrix is defined but templateChannels are missing.');
+  }
+}
+
+/**
+ * Check if availableChannels and generated matrixChannels are defined correctly.
  * @param {!object} fixtureJson The fixture's JSON data
  */
 function checkChannels(fixtureJson) {
@@ -219,20 +248,10 @@ function checkChannels(fixtureJson) {
       checkChannel(channel);
     }
   }
-    
-  if (isNotEmpty(fixtureJson.templateChannels, 'templateChannels are empty. Add a channel or remove it.')) {
-    if (fixture.matrix === null) {
-      result.errors.push('templateChannels are defined but matrix data is missing.')
-    }
-    else {
-      // for (const channel of fixture.templateChannels) {
-      //   checkChannel(channel);
-      // }
-    }
-  }
-  else if (fixture.matrix !== null) {
-    result.errors.push('Matrix is defined but templateChannels are missing.');
-  }
+
+  // for (const channel of fixture.matrixChannels) {
+  //   checkChannel(channel);
+  // }
 }
 
 /**
