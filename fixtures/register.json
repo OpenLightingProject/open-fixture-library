@@ -125,6 +125,9 @@
     },
     "showtec/phantom-50-led-spot": {
       "name": "Phantom 50 LED Spot"
+    },
+    "martin/magnum-2500-hz": {
+      "name": "Magnum 2500 HZ"
     }
   },
   "manufacturers": {
@@ -182,6 +185,7 @@
       "mac-aura",
       "mac-axiom-hybrid",
       "mac-viper-airfx",
+      "magnum-2500-hz",
       "roboscan-812",
       "rush-mh-2-wash",
       "rush-mh-3-beam"
@@ -267,6 +271,9 @@
     "Scanner": [
       "martin/roboscan-812",
       "robe/dj-scan-250-xt"
+    ],
+    "Hazer": [
+      "martin/magnum-2500-hz"
     ]
   }
 }
