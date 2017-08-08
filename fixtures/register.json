@@ -6,6 +6,9 @@
     "abstract/twister-4": {
       "name": "Twister 4"
     },
+    "american-dj/fog-fury-jett-pro": {
+      "name": "Fog Fury Jett Pro"
+    },
     "american-dj/quad-phase-hp": {
       "name": "Quad Phase HP"
     },
@@ -35,6 +38,9 @@
     },
     "cameo/thunder-wash-600-w": {
       "name": "Thunder Wash 600 W"
+    },
+    "dts/xr1200-wash": {
+      "name": "XR1200 WASH"
     },
     "elation/platinum-hfx": {
       "name": "Platinum HFX"
@@ -90,11 +96,26 @@
     "martin/mac-aura": {
       "name": "MAC Aura"
     },
+    "martin/mac-axiom-hybrid": {
+      "name": "MAC Axiom Hybrid"
+    },
     "martin/mac-viper-airfx": {
       "name": "MAC Viper AirFX"
     },
+    "martin/magnum-2500-hz": {
+      "name": "Magnum 2500 HZ"
+    },
     "martin/roboscan-812": {
       "name": "RoboScan 812"
+    },
+    "martin/rush-mh-2-wash": {
+      "name": "Rush MH 2 Wash"
+    },
+    "martin/rush-mh-3-beam": {
+      "name": "Rush MH 3 Beam"
+    },
+    "mdg/hazer-atmosphere-aps": {
+      "name": "Hazer ATMOSPHERE APS"
     },
     "robe/dj-scan-250-xt": {
       "name": "DJ Scan 250 XT"
@@ -113,9 +134,6 @@
     },
     "showtec/phantom-50-led-spot": {
       "name": "Phantom 50 LED Spot"
-    },
-    "american-dj/fog-fury-jett-pro": {
-      "name": "Fog Fury Jett Pro"
     }
   },
   "manufacturers": {
@@ -139,6 +157,9 @@
       "thunder-wash-100-w",
       "thunder-wash-600-rgb",
       "thunder-wash-600-w"
+    ],
+    "dts": [
+      "xr1200-wash"
     ],
     "elation": [
       "platinum-hfx",
@@ -171,8 +192,15 @@
     "martin": [
       "atomic-3000",
       "mac-aura",
+      "mac-axiom-hybrid",
       "mac-viper-airfx",
-      "roboscan-812"
+      "magnum-2500-hz",
+      "roboscan-812",
+      "rush-mh-2-wash",
+      "rush-mh-3-beam"
+    ],
+    "mdg": [
+      "hazer-atmosphere-aps"
     ],
     "robe": [
       "dj-scan-250-xt"
@@ -190,6 +218,7 @@
       "5star-systems/spica-250m",
       "cameo/hydrabeam-300-rgbw",
       "cameo/nanospot-120",
+      "dts/xr1200-wash",
       "elation/platinum-hfx",
       "elation/platinum-spot-15r-pro",
       "eurolite/led-tmh-18",
@@ -197,7 +226,10 @@
       "generic/pan-tilt",
       "lightmaxx/vega-zoom-wash",
       "martin/mac-aura",
+      "martin/mac-axiom-hybrid",
       "martin/mac-viper-airfx",
+      "martin/rush-mh-2-wash",
+      "martin/rush-mh-3-beam",
       "showtec/kanjo-wash-rgb",
       "showtec/phantom-140-led-spot",
       "showtec/phantom-50-led-spot"
@@ -207,6 +239,9 @@
       "american-dj/quad-phase-hp",
       "american-dj/revo-4-ir",
       "eurolite/led-svf-1"
+    ],
+    "Smoke": [
+      "american-dj/fog-fury-jett-pro"
     ],
     "Color Changer": [
       "american-dj/fog-fury-jett-pro",
@@ -246,12 +281,13 @@
     "Fan": [
       "gruft/ventilator"
     ],
+    "Hazer": [
+      "martin/magnum-2500-hz",
+      "mdg/hazer-atmosphere-aps"
+    ],
     "Scanner": [
       "martin/roboscan-812",
       "robe/dj-scan-250-xt"
-    ],
-    "Smoke": [
-      "american-dj/fog-fury-jett-pro"
     ]
   }
 }

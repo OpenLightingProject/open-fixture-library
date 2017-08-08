@@ -1,4 +1,5 @@
 #!/usr/bin/node
+const fs = require('fs');
 const path = require('path');
 const minimist = require('minimist');
 const colors = require('colors');
@@ -6,23 +7,50 @@ const colors = require('colors');
 const plugins = require('../plugins/plugins.js').all;
 const Fixture = require('../lib/model/Fixture.js');
 
+const testFixtures = require('../tests/test-fixtures.json');
+
 const args = minimist(process.argv.slice(2), {
   string: ['p'],
-  alias: { p: 'plugin' }
+  boolean: ['h'],
+  alias: { p: 'plugin', h: 'help' }
 });
 
+const helpMessage = [
+  'Run the plugin\'s export tests against the specified fixtures',
+  '(or the test fixtures, if no fixtures are specified).',
+  `Usage: node ${path.relative(process.cwd(), __filename)} -p <plugin> [ <fixtures> ]`,
+  'Options:',
+  '  --plugin,   -e: Key of the plugin whose export tests should be called',
+  '  --help,     -h: Show this help message.'
+].join('\n');
+
+if (args.help) {
+  console.log(helpMessage);
+  process.exit(0);
+}
+
 if (!args.plugin) {
-  console.error([
-    `Usage: node ${path.relative(process.cwd(), __filename)} -p <plugin>`,
-    'Options:',
-    '  --plugin,   -e: Key of the plugin whose export tests should be called'
-  ].join('\n'));
+  console.error(colors.red('[Error]') + ' Plugin has to be specified using --plugin');
+  console.log(helpMessage);
   process.exit(1);
 }
 
-const fixtures = require('../tests/test-fixtures.json').map(
-  fixture => Fixture.fromRepository(fixture.man, fixture.key)
-);
+let fixtures;
+if (args._.length === 0) {
+  fixtures = testFixtures.map(
+    fixture => Fixture.fromRepository(fixture.man, fixture.key)
+  );
+}
+else {
+  fixtures = args._.map(relativePath => {
+    const absolutePath = path.join(process.env.PWD, relativePath);
+    return new Fixture(
+      path.basename(path.dirname(absolutePath)), // man key
+      path.basename(absolutePath, path.extname(absolutePath)), // fix key
+      JSON.parse(fs.readFileSync(absolutePath, 'utf-8'))
+    );
+  });
+}
 
 const plugin = plugins[args.plugin];
 const files = plugin.export.export(fixtures);
@@ -44,7 +72,7 @@ for (const testKey of Object.keys(plugin.exportTests)) {
 
   Promise.all(filePromises)
   .then(fileLines => {
-    console.log(colors.yellow(`Test ${testKey}`));
-    console.log(fileLines.concat('').join('\n'));
+    console.log('\n' + colors.yellow(`Test ${testKey}`));
+    console.log(fileLines.join('\n'));
   });
 }
