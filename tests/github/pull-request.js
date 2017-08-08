@@ -166,8 +166,6 @@ module.exports.updateComment = function updateComment(test) {
   ];
   lines = lines.concat(test.lines);
   const message = lines.join('\n');
-  console.log(message);
-  return;
 
   let commentPromises = [];
   for (let i = 0; i < module.exports.data.comments / 100; i++) {
