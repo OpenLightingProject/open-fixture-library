@@ -22,6 +22,9 @@
     }
   },
   "availableChannels": {
+    "Dimmer": {
+      "type": "Intensity"
+    },
     "Red": {
       "type": "Single Color",
       "color": "Red"
@@ -45,9 +48,6 @@
     "UV": {
       "type": "Single Color",
       "color": "UV"
-    },
-    "Dimmer": {
-      "type": "Intensity"
     },
     "Strobe": {
       "type": "Strobe",
@@ -80,39 +80,66 @@
       "capabilities": [
         {
           "range": [0, 31],
-          "name": "No function"
+          "name": "No function",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [32, 63],
-          "name": "Pulse effect 0-100%"
+          "name": "Pulse effect 0-100%",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [64, 95],
-          "name": "Pulse effect 100-0%"
+          "name": "Pulse effect 100-0%",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [96, 127],
-          "name": "Pulse effect 100-0-100%"
+          "name": "Pulse effect 100-0-100%",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [128, 159],
-          "name": "Auto fade transition"
+          "name": "Auto fade transition",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [160, 191],
-          "name": "Auto snap transition (6 colors)"
+          "name": "Auto snap transition (6 colors)",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [192, 223],
-          "name": "Auto snap transition (32 colors)"
+          "name": "Auto snap transition (32 colors)",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [224, 249],
-          "name": "Sound-active mode (6 colors)"
+          "name": "Sound-active mode (6 colors)",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         },
         {
           "range": [250, 255],
-          "name": "Sound-active mode (32 colors)"
+          "name": "Sound-active mode (32 colors)",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         }
       ]
     },
@@ -204,8 +231,7 @@
         "Strobe",
         "Color Macros",
         "Mode",
-        "Program Speed",
-        "Sound Sensitivity",
+        "Program Speed / Sound Sensitivity",
         "Dimmer Speed"
       ]
     }
