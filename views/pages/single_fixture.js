@@ -5,6 +5,7 @@ const Channel = require('../../lib/model/Channel.js');
 const NullChannel = require('../../lib/model/NullChannel.js');
 const FineChannel = require('../../lib/model/FineChannel.js');
 const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
+const MatrixChannel = require('../../lib/model/MatrixChannel.js');
 
 let fixture;
 
@@ -78,7 +79,7 @@ function getChannelHeading(channel) {
   if (channel === null) {
     return 'Error: Channel not found';
   }
-
+  
   if (channel instanceof NullChannel) {
     return `${channel.name} <code class="channel-key">null</code>`;
   }
@@ -253,6 +254,11 @@ function handleMode(mode) {
   mode.channels.forEach(channel => {
     str += '<li>';
     str += '<details class="channel">';
+
+    if (channel instanceof MatrixChannel) {
+      channel = channel.wrappedChannel;
+    }
+
     str += `<summary>${getChannelHeading(channel)}</summary>`;
 
     if (channel instanceof FineChannel) {
@@ -429,14 +435,12 @@ function handleSwitchingChannel(channel, mode) {
   let str = `<div>Switch depending on ${channel.triggerChannel.name}'s value (channel ${triggerChannelIndex}):</div>`;
   str += '<ol>';
   
-  for (const switchToChannelKey of Object.keys(channel.triggerRanges)) {
-    const switchToChannel = fixture.getChannelByKey(switchToChannelKey);
-
+  for (const switchToChannel of channel.switchToChannels) {
     str += '<li>';
     str += '<details class="channel">';
 
     str += '<summary>';
-    str += getChannelHeading(switchToChannelKey);
+    str += getChannelHeading(switchToChannel);
     if (channel.defaultChannel === switchToChannel) {
       str += ' (default)';
     }

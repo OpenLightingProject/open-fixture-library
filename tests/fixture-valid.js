@@ -3,6 +3,7 @@ const util = require('util');
 const schema = require('../fixtures/schema.js');
 
 const Fixture = require('../lib/model/Fixture.js');
+const Channel = require('../lib/model/Channel.js');
 const FineChannel = require('../lib/model/FineChannel.js');
 const SwitchingChannel = require('../lib/model/SwitchingChannel.js');
 
@@ -61,8 +62,6 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     checkTemplateChannels(fixtureJson);
     checkChannels(fixtureJson);
 
-    console.log(fixture.key, fixture.usedPixelKeys);
-  
     for (const mode of fixture.modes) {
       checkMode(mode);
     }
@@ -249,7 +248,7 @@ function checkTemplateChannel(templateChannel) {
     }
   }
 
-  for (const key of Object.keys(templateChannel.matrixChannelKeys)) {
+  for (const key of templateChannel.matrixChannelKeys.keys()) {
     checkUniqueness(
       possibleMatrixChKeys,
       key,
@@ -269,9 +268,11 @@ function checkChannels(fixtureJson) {
     }
   }
 
-  // for (const channel of fixture.matrixChannels) {
-  //   checkChannel(channel);
-  // }
+  for (const channel of fixture.matrixChannels) {
+    if (channel.wrappedChannel instanceof Channel) {
+      checkChannel(channel.wrappedChannel);
+    }
+  }
 }
 
 /**
