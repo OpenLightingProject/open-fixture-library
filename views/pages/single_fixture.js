@@ -1,6 +1,7 @@
 const exportPlugins = require('../../plugins/plugins.js').export;
 
 const Fixture = require('../../lib/model/Fixture.js');
+const Channel = require('../../lib/model/Channel.js');
 const NullChannel = require('../../lib/model/NullChannel.js');
 const FineChannel = require('../../lib/model/FineChannel.js');
 const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
@@ -73,18 +74,16 @@ function getDateString(date) {
   return `<time datetime="${date.toISOString()}" title="${date.toISOString()}">${date.toISOString().replace(/T.*?$/, '')}</time>`;
 }
 
-function getChannelHeading(chKey) {
-  const channel = fixture.getChannelByKey(chKey);
+function getChannelHeading(channel) {
+  if (channel === null) {
+    return 'Error: Channel not found';
+  }
 
   if (channel instanceof NullChannel) {
-    return 'Unused';
+    return `${channel.name} <code class="channel-key">null</code>`;
   }
 
-  if (channel instanceof FineChannel) {
-    return channel.name;
-  }
-
-  return channel.name + (chKey !== channel.name ? ` <code class="channel-key">${chKey}</code>` : '');
+  return channel.name + (channel.key !== channel.name ? ` <code class="channel-key">${channel.key}</code>` : '');
 }
 
 function handleFixtureInfo() {
@@ -116,20 +115,6 @@ function handleFixtureInfo() {
     str += '<h3 class="physical">Physical data</h3>';
     str += '<section class="physical">';
     str += handlePhysicalData(fixture.physical);
-    str += '</section>';
-  }
-
-  if (Object.keys(fixture.heads).length > 0) {
-    str += '<section class="heads">';
-    str += '<h3>Heads</h3>';
-    str += '<ul>';
-    for (const headName of Object.keys(fixture.heads)) {
-      str += '<li>';
-      str += `<strong>${headName}:</strong> `;
-      str += fixture.heads[headName].map(getChannelHeading).join(', ');
-      str += '</li>';
-    }
-    str += '</ul>';
     str += '</section>';
   }
 
@@ -268,7 +253,7 @@ function handleMode(mode) {
   mode.channels.forEach(channel => {
     str += '<li>';
     str += '<details class="channel">';
-    str += `<summary>${getChannelHeading(channel.key)}</summary>`;
+    str += `<summary>${getChannelHeading(channel)}</summary>`;
 
     if (channel instanceof FineChannel) {
       str += handleFineChannel(channel, mode);
@@ -276,7 +261,7 @@ function handleMode(mode) {
     else if (channel instanceof SwitchingChannel) {
       str += handleSwitchingChannel(channel, mode);
     }
-    else if (!(channel instanceof NullChannel)) {
+    else if (channel instanceof Channel) {
       str += handleChannel(channel, mode);
     }
 
@@ -457,9 +442,12 @@ function handleSwitchingChannel(channel, mode) {
     }
     str += '</summary>';
 
-    str += switchToChannel instanceof FineChannel
-      ? handleFineChannel(switchToChannel, mode)
-      : handleChannel(switchToChannel, mode);
+    if (switchToChannel instanceof FineChannel) {
+      str += handleFineChannel(switchToChannel, mode);
+    }
+    else if (switchToChannel instanceof Channel) {
+      str += handleChannel(switchToChannel, mode);
+    }
 
     str += '</li>';
   }
