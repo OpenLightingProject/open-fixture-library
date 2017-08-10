@@ -562,7 +562,7 @@
           "range": [123, 199],
           "name": "no function",
           "switchChannels": {
-            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed 1"
+            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
@@ -653,7 +653,6 @@
           "templateChannels": [
             "Pan $pixelKey",
             "Pan $pixelKey fine",
-            "Tilt $pixelKey",
             "Tilt $pixelKey",
             "Tilt $pixelKey fine",
             "Head Speed $pixelKey",

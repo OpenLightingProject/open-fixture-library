@@ -60,6 +60,8 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     checkMatrix(fixture.matrix);
     checkTemplateChannels(fixtureJson);
     checkChannels(fixtureJson);
+
+    console.log(fixture.key, fixture.usedPixelKeys);
   
     for (const mode of fixture.modes) {
       checkMode(mode);
@@ -240,11 +242,14 @@ function checkTemplateChannels(fixtureJson) {
 function checkTemplateChannel(templateChannel) {
   checkTemplateVariables(templateChannel.name, ['$pixelKey']);
   
-  for (const key of templateChannel.allChannelKeys) {
+  for (const key of templateChannel.allTemplateKeys) {
     checkTemplateVariables(key, ['$pixelKey']);
+    if (!(key in fixture.usedPixelKeys)) {
+      result.errors.push(`Template channel '${key}' is never used.`);
+    }
   }
 
-  for (const key of templateChannel.matrixChannelKeys) {
+  for (const key of Object.keys(templateChannel.matrixChannelKeys)) {
     checkUniqueness(
       possibleMatrixChKeys,
       key,
