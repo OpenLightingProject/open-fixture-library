@@ -74,7 +74,7 @@ function getPluginMessage(plugin, fixtures) {
     lines.push(`## :information_source: Plugin \`${plugin}\` modified in this PR`);
   }
   else {
-    lines.push(`## :warning Plugin \`${plugin}\` modified in this PR`);
+    lines.push(`## :warning: Plugin \`${plugin}\` modified in this PR`);
   }
   lines = lines.concat(pullRequest.getTestFixturesMessage(fixtures));
   lines = lines.concat(diffMessage, '');
@@ -104,7 +104,7 @@ function getSubPluginMessage(plugin, fixtures) {
     lines.push(`### :information_source: Plugin \`${plugin}\``);
   }
   else {
-    lines.push(`### :warning Plugin \`${plugin}\``);
+    lines.push(`### :warning: Plugin \`${plugin}\``);
   }
   lines = lines.concat(diffMessage, '');
 
