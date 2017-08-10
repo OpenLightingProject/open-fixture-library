@@ -40,81 +40,81 @@
       "fineChannelAliases": ["Color wheel fine"],
       "capabilities": [
         {
-          "range": [0, 2815],
+          "range": [0, 10],
           "name": "white",
           "color": "#ffffff"
         },
         {
-          "range": [2816, 5119],
+          "range": [11, 19],
           "name": "red",
           "color": "#ff0000"
         },
         {
-          "range": [5120, 7423],
+          "range": [20, 28],
           "name": "blue",
           "color": "#0000ff"
         },
         {
-          "range": [7424, 9727],
+          "range": [29, 37],
           "name": "green",
           "color": "#00ff00"
         },
         {
-          "range": [9728, 12031],
+          "range": [38, 46],
           "name": "yellow",
           "color": "#ffff00"
         },
         {
-          "range": [12032, 14335],
+          "range": [47, 55],
           "name": "pink",
           "color": "#ff00ff"
         },
         {
-          "range": [14336, 16639],
+          "range": [56, 64],
           "name": "orange",
           "color": "#ffaa00"
         },
         {
-          "range": [16640, 18943],
+          "range": [65, 73],
           "name": "aqua",
           "color": "#00aaff"
         },
         {
-          "range": [18944, 21247],
+          "range": [74, 82],
           "name": "magenta",
           "color": "#ff00aa"
         },
         {
-          "range": [21248, 23551],
+          "range": [83, 91],
           "name": "quad color"
         },
         {
-          "range": [23552, 25855],
+          "range": [92, 100],
           "name": "cyan",
           "color": "#00ffff"
         },
         {
-          "range": [25856, 28159],
+          "range": [101, 109],
           "name": "CTO"
         },
         {
-          "range": [28160, 30463],
+          "range": [110, 118],
           "name": "CTB"
         },
         {
-          "range": [30464, 32767],
+          "range": [119, 127],
           "name": "UV"
         },
         {
-          "range": [32768, 48639],
+          "range": [128, 189],
           "name": "CW rotation fast - slow"
         },
         {
-          "range": [48640, 49663],
+          "range": [190, 193],
           "name": "no rotation"
         },
         {
-          "range": [49664, 65535],
+          "range": [194, 255],
           "name": "CCW rotation slow fast"
         }
       ]
@@ -209,19 +209,19 @@
       "fineChannelAliases": ["Gobo Index fine"],
       "capabilities": [
         {
-          "range": [0, 32767],
+          "range": [0, 127],
           "name": "Gobo Indexing"
         },
         {
-          "range": [32768, 48639],
+          "range": [128, 189],
           "name": "CW Gobo rotation fast - slow"
         },
         {
-          "range": [48640, 49663],
+          "range": [190, 193],
           "name": "no rotation"
         },
         {
-          "range": [49664, 65535],
+          "range": [194, 255],
           "name": "CCW Gobo rotation fast - slow"
         }
       ]
@@ -231,115 +231,115 @@
       "fineChannelAliases": ["Static-stamped Gobos fine"],
       "capabilities": [
         {
-          "range": [0, 5631],
+          "range": [0, 21],
           "name": "open"
         },
         {
-          "range": [5632, 7423],
+          "range": [22, 28],
           "name": "Static-stamped Gobo 1"
         },
         {
-          "range": [7424, 9215],
+          "range": [29, 35],
           "name": "Static-stamped Gobo 2"
         },
         {
-          "range": [9216, 11007],
+          "range": [36, 42],
           "name": "Static-stamped Gobo 3"
         },
         {
-          "range": [11008, 12799],
+          "range": [43, 49],
           "name": "Static-stamped Gobo 4"
         },
         {
-          "range": [12800, 14591],
+          "range": [50, 56],
           "name": "Static-stamped Gobo 5"
         },
         {
-          "range": [14592, 16383],
+          "range": [57, 63],
           "name": "Static-stamped Gobo 6"
         },
         {
-          "range": [16384, 18175],
+          "range": [64, 70],
           "name": "Static-stamped Gobo 7"
         },
         {
-          "range": [18176, 19967],
+          "range": [71, 77],
           "name": "Static-stamped Gobo 8"
         },
         {
-          "range": [19968, 21759],
+          "range": [78, 84],
           "name": "Static-stamped Gobo 9"
         },
         {
-          "range": [21760, 23551],
+          "range": [85, 91],
           "name": "Static-stamped Gobo 10"
         },
         {
-          "range": [23552, 25343],
+          "range": [92, 98],
           "name": "Static-stamped Gobo 11"
         },
         {
-          "range": [25344, 27135],
+          "range": [99, 105],
           "name": "Static-stamped Gobo 12"
         },
         {
-          "range": [27136, 28927],
+          "range": [106, 112],
           "name": "Shake slow - fast static-stamped Gobo 1"
         },
         {
-          "range": [28928, 30719],
+          "range": [113, 119],
           "name": "Shake slow - fast static-stamped Gobo 2"
         },
         {
-          "range": [30720, 32511],
+          "range": [120, 126],
           "name": "Shake slow - fast static-stamped Gobo 3"
         },
         {
-          "range": [32512, 34303],
+          "range": [127, 133],
           "name": "Shake slow - fast static-stamped Gobo 4"
         },
         {
-          "range": [34304, 36095],
+          "range": [134, 140],
           "name": "Shake slow - fast static-stamped Gobo 5"
         },
         {
-          "range": [36096, 37887],
+          "range": [141, 147],
           "name": "Shake slow - fast static-stamped Gobo 6"
         },
         {
-          "range": [37888, 39679],
+          "range": [148, 154],
           "name": "Shake slow - fast static-stamped Gobo 7"
         },
         {
-          "range": [39680, 41471],
+          "range": [155, 161],
           "name": "Shake slow - fast static-stamped Gobo 8"
         },
         {
-          "range": [41472, 43263],
+          "range": [162, 168],
           "name": "Shake slow - fast static-stamped Gobo 9"
         },
         {
-          "range": [43264, 45055],
+          "range": [169, 175],
           "name": "Shake slow - fast static-stamped Gobo 10"
         },
         {
-          "range": [45056, 46847],
+          "range": [176, 182],
           "name": "Shake slow - fast static-stamped Gobo 11"
         },
         {
-          "range": [46848, 48639],
+          "range": [183, 189],
           "name": "Shake slow - fast static-stamped Gobo 12"
         },
         {
-          "range": [48640, 56831],
+          "range": [190, 221],
           "name": "CW Gobo Wheel rotation fast - slow"
         },
         {
-          "range": [56832, 57343],
+          "range": [222, 223],
           "name": "no rotation"
         },
         {
-          "range": [57344, 65535],
+          "range": [224, 255],
           "name": "CCW Gobo Wheel rotation slow - fast"
         }
       ]
@@ -442,19 +442,19 @@
       "fineChannelAliases": ["Prism Index fine"],
       "capabilities": [
         {
-          "range": [0, 32767],
+          "range": [0, 127],
           "name": "Prism indexing"
         },
         {
-          "range": [32768, 48639],
+          "range": [128, 189],
           "name": "CW linear prism rotation fast - slow"
         },
         {
-          "range": [48640, 49663],
+          "range": [190, 193],
           "name": "no rotation"
         },
         {
-          "range": [49664, 65535],
+          "range": [194, 255],
           "name": "CCW linear prism rotation slow - fast"
         }
       ]
@@ -465,7 +465,7 @@
       "crossfade": true,
       "capabilities": [
         {
-          "range": [0, 65535],
+          "range": [0, 255],
           "name": "near - fast"
         }
       ]
@@ -476,7 +476,7 @@
       "crossfade": true,
       "capabilities": [
         {
-          "range": [0, 65535],
+          "range": [0, 255],
           "name": "small - big"
         }
       ]
@@ -486,15 +486,15 @@
       "fineChannelAliases": ["Auto focus fine"],
       "capabilities": [
         {
-          "range": [0, 13055],
+          "range": [0, 50],
           "name": "off"
         },
         {
-          "range": [13056, 38655],
+          "range": [51, 150],
           "name": "15m"
         },
         {
-          "range": [38656, 65535],
+          "range": [151, 255],
           "name": "20m"
         }
       ]

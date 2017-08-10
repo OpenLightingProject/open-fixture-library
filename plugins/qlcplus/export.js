@@ -69,9 +69,9 @@ function addChannel(xml, channel) {
     channel = channel.coarseChannel; // use coarse channel's data
     capabilities = [
       new Capability({
-        range: [0, channel.maxDmxBound],
+        range: [0, 255],
         name: `Fine adjustment for ${channel.uniqueName}`
-      }, channel)
+      }, 0, channel)
     ];
   }
   else {
