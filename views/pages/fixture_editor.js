@@ -226,15 +226,13 @@ function getPhysicalTemplate() {
   let str = '<script type="text/x-template" id="template-physical">';
   str += '<div>';
 
-  str += '<section class="physical-dimensions">';
-  str += '<span class="validate-group">';
+  str += '<section class="physical-dimensions validate-group">';
   str += '<span class="label">Dimensions</span>';
   str += '<span class="value">';
   str += numberInput('value.dimensionsWidth', properties.physical.dimensions.items, 'width', ' :required="dimensionRequired" ref="firstInput"') + ' &times; ';
   str += numberInput('value.dimensionsHeight', properties.physical.dimensions.items, 'height', ' :required="dimensionRequired"') + ' &times; ';
   str += numberInput('value.dimensionsDepth', properties.physical.dimensions.items, 'depth', ' :required="dimensionRequired"') + ' mm';
   str += '<span class="error-message" hidden></span>';
-  str += '</span>';
   str += '</span>';
   str += '</section>';
 
@@ -312,14 +310,12 @@ function getPhysicalTemplate() {
   str += '</label>';
   str += '</section>';
 
-  str += '<section class="physical-lens-degrees">';
-  str += '<span class="validate-group">';
+  str += '<section class="physical-lens-degrees validate-group">';
   str += '<span class="label">Light cone</span>';
   str += '<span class="value">';
   str += numberInput('value.lens.degreesMin', properties.lens.degreesMinMax.items, 'min', ' :required="degreesRequired"') + ' .. ';
   str += numberInput('value.lens.degreesMax', properties.lens.degreesMinMax.items, 'max', ' :required="degreesRequired"') + ' °';
   str += '<span class="error-message" hidden></span>';
-  str += '</span>';
   str += '</span>';
   str += '</section>';
 
@@ -423,7 +419,7 @@ function getModeTemplate() {
 
 function getCapabilityTemplate() {
   let str = '<script type="text/x-template" id="template-capability">';
-  str += '<li class="validate-group">';
+  str += '<li class="capability validate-group">';
   str += '<input type="number" class="rangeStart" :min="startMin" :max="startMax" placeholder="start" v-model.number="capability.start" :required="isChanged"> .. ';
   str += '<input type="number" class="rangeEnd" :min="endMin" :max="endMax" placeholder="end" v-model.number="capability.end" :required="isChanged"> ';
   str += '<span class="value">';
@@ -501,7 +497,7 @@ function getChannelDialogString() {
   str += '<label class="validate-group">';
   str += '<span class="label">Name</span>';
   str += '<span class="value">';
-  str += '<input type="text" required v-model="channel.name" />';
+  str += '<input type="text" required v-model="channel.name" pattern="^[A-Z0-9]((?!\bFine\b)(?!\bfine\b)(?!\d+(?:\s|-|_)*[Bb]it)(?!MSB)(?!LSB).)*$" title="Please start with an uppercase letter or a number. Don\'t create fine channels here, set its resolution below instead." class="channelName" />';
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
   str += '</label>';

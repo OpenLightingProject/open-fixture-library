@@ -16,25 +16,6 @@ validate.init(function(form) {
     app.saveChannel();
   }
 });
-  /*customError: function(field, validity) {
-    if (field.matches('.capabilities>li:first-child .rangeStart') && validity.valueMissing) {
-      return 'The first range has to start at 0.';
-    }
-
-    if (field.matches('.capabilities>li:last-child .rangeEnd') && validity.rangeUnderflow) {
-      return 'The last range has to end at ' + field.getAttribute('max') + '.';
-    }
-
-    if ((field.matches('.capabilities .rangeStart') && validity.rangeUnderflow)
-      || (field.matches('.capabilities .rangeEnd') && validity.rangeOverflow)) {
-      return 'Ranges must not overlap.';
-    }
-
-    if ((field.matches('.rangeStart') && validity.rangeOverflow)
-      || (field.matches('.rangeEnd') && validity.rangeUnderflow)) {
-      return 'Range\'s end must not be greater than its start.';
-    }
-  },*/
 
 var sendObject = {
   fixtures: []

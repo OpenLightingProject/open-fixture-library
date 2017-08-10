@@ -29,8 +29,49 @@ module.exports = (function() {
 
     onSubmit: function(form) {}
   };
-  
 
+
+  /**
+   * Test additional constraints that a field has to fulfill. Those constraints
+   * are not specified in HTML, but imperatively in this function.
+   * @private
+   * @param {!Node} field The field or group to validate
+   * @param {?ValidityState} validity the Validity State of the field or null
+   * @return {?String} The error message or null
+   */
+  var checkCustomError = function(field, validity) {
+    if (field.matches('.physical-lens-degrees') || field.matches('.capability')) {
+      var range = field.querySelectorAll('input');
+      if (range[0].value !== '' && range[1].value !== '' && Number(range[0].value) > Number(range[1].value)) {
+        return 'The start value of a range must not be greater than its end.';
+      }
+    }
+
+    if (field.matches('.channelName')) {
+      if (/\bfine\b|\d+(?:\s|-|_)*bit|\bMSB\b|\bLSB\b/i.test(field.value)) {
+        return 'Please don\'t create fine channels here, set its resolution below instead.';
+      }
+      
+      if (/^[^A-Z0-9]/.test(field.value)) {
+        return 'Please start with an uppercase letter or a number.';
+      }
+    }
+
+    if (field.matches('.capability:first-child .rangeStart') && (validity.valueMissing || validity.rangeUnderflow)) {
+      return 'The first range has to start at 0.';
+    }
+
+    if (field.matches('.capability:last-child .rangeEnd') && (validity.valueMissing || validity.rangeOverflow)) {
+      return 'The last range has to end at ' + field.getAttribute('max') + '.';
+    }
+
+    if ((field.matches('.capability .rangeStart') && validity.rangeUnderflow)
+      || (field.matches('.capability .rangeEnd') && validity.rangeOverflow)) {
+      return 'Ranges must not overlap.';
+    }
+    
+    return null;
+  }
 
   /**
    * Validate a form field
@@ -44,6 +85,11 @@ module.exports = (function() {
     }
 
     var validity = field.validity;
+
+    var customError = checkCustomError(field, validity);
+    if (customError) {
+      return customError;
+    }
 
     if (validity.valid) {
       return null;
@@ -137,12 +183,15 @@ module.exports = (function() {
    * Show an error message on a field
    * @public
    * @param {!Node} group The group to check for errors
+   * @param {?Boolean} removeErrors true to remove all errors instead of checking
    * @return {?String} The error message to show or null
    */
-  validate.validateGroup = function(group) {
+  validate.validateGroup = function(group, removeErrors) {
     var errors = [];
+    var customError = checkCustomError(group);
+
     [].forEach.call(group.querySelectorAll(settings.fieldSelector), function(groupField) {
-      var error = validate.hasError(groupField);
+      var error = removeErrors ? null : customError || validate.hasError(groupField);
 
       validate.markError(groupField, error);
       if (error && errors.indexOf(error) === -1) {
@@ -232,7 +281,9 @@ module.exports = (function() {
     var form = event.target;
 
     // Only run on forms flagged for validation
-    if (!form.matches(settings.selector)) return;
+    if (!form.matches(settings.selector)) {
+      return;
+    }
 
     event.preventDefault();
 
@@ -270,6 +321,28 @@ module.exports = (function() {
   };
 
   /**
+   * Remove all errors.
+   * @private
+   * @param {Event} event The submit event
+   */
+  var resetHandler = function (event) {
+    var form = event.target;
+
+    // Only run on forms flagged for validation
+    if (!form.matches(settings.selector)) {
+      return;
+    }
+
+    console.log(form);
+
+    // Remove all errors
+    var groups = document.querySelectorAll(settings.groupSelector);
+    for (var i = 0; i < groups.length; i++) {
+      validate.validateGroup(groups[i], true);
+    }
+  };
+
+  /**
    * Destroy the current initialization.
    * @public
    */
@@ -277,11 +350,14 @@ module.exports = (function() {
     // Remove event listeners
     document.removeEventListener('blur', blurHandler, false);
     document.removeEventListener('submit', submitHandler, false);
+    document.removeEventListener('change', changeHandler, false);
+    document.removeEventListener('keypress', changeHandler, false);
+    document.removeEventListener('reset', resetHandler, false);
 
     // Remove all errors
-    var fields = document.querySelectorAll(settings.errorClass);
-    for (var i = 0; i < fields.length; i++) {
-      validate.showError(fields[i], null);
+    var groups = document.querySelectorAll(settings.groupSelector);
+    for (var i = 0; i < groups.length; i++) {
+      validate.validateGroup(groups[i], true);
     }
 
     // Remove `novalidate` from forms
@@ -307,6 +383,7 @@ module.exports = (function() {
     document.addEventListener('submit', submitHandler, false);
     document.addEventListener('change', changeHandler, false);
     document.addEventListener('keypress', changeHandler, false);
+    document.addEventListener('reset', resetHandler, false);
   };
 
 
