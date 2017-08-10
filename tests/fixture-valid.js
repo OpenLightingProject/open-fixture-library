@@ -45,7 +45,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
 
   const schemaErrors = schema.Fixture.errors(fixtureJson);
   if (schemaErrors !== false) {
-    result.errors.push(getErrorString('File does not match schema.', schemaErrors));
+    result.errors.push(module.exports.getErrorString('File does not match schema.', schemaErrors));
     return result;
   }
 
@@ -64,7 +64,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     checkUnusedChannels();
   }
   catch (error) {
-    result.errors.push(getErrorString('File could not be imported into model.', error));
+    result.errors.push(module.exports.getErrorString('File could not be imported into model.', error));
   }
 
   return result;
@@ -86,7 +86,7 @@ function checkFixIdentifierUniqueness(uniqueValues) {
   if (!(manKey in uniqueValues.fixKeysInMan)) {
     uniqueValues.fixKeysInMan[manKey] = new Set();
   }
-  checkUniqueness(
+  module.exports.checkUniqueness(
     uniqueValues.fixKeysInMan[manKey],
     fixture.key,
     `Fixture key '${fixture.key}' is not unique in manufacturer ${manKey} (test is not case-sensitive).`
@@ -96,14 +96,14 @@ function checkFixIdentifierUniqueness(uniqueValues) {
   if (!(manKey in uniqueValues.fixNamesInMan)) {
     uniqueValues.fixNamesInMan[manKey] = new Set();
   }
-  checkUniqueness(
+  module.exports.checkUniqueness(
     uniqueValues.fixNamesInMan[manKey],
     fixture.name,
     `Fixture name '${fixture.name}' is not unique in manufacturer ${manKey} (test is not case-sensitive).`
   );
   
   // fixture.shortName
-  checkUniqueness(
+  module.exports.checkUniqueness(
     uniqueValues.fixShortNames,
     fixture.shortName,
     `Fixture shortName '${fixture.shortName}' is not unique (test is not case-sensitive).`
@@ -163,7 +163,7 @@ function checkChannels(fixtureJson) {
  * @param {!Channel} channel The channel to test.
  */
 function checkChannel(channel) {
-  checkUniqueness(
+  module.exports.checkUniqueness(
     definedChannelKeys,
     channel.key,
     `Channel key '${channel.key}' is already defined in another letter case.`
@@ -187,7 +187,7 @@ function checkChannel(channel) {
 
   // Fine channels
   for (const alias of channel.fineChannelAliases) {
-    checkUniqueness(
+    module.exports.checkUniqueness(
       definedChannelKeys,
       alias,
       `Fine channel alias '${alias}' in channel '${channel.key}' is already defined (maybe in another letter case).`
@@ -199,7 +199,7 @@ function checkChannel(channel) {
 
   // Switching channels
   for (const alias of channel.switchingChannelAliases) {
-    checkUniqueness(
+    module.exports.checkUniqueness(
       definedChannelKeys,
       alias,
       `Switching channel alias '${alias}' in channel '${channel.key}' is already defined (maybe in another letter case).`
@@ -288,13 +288,13 @@ function checkRange(channel, capNumber, minUsedFineness) {
   
   // first capability
   if (capNumber === 0 && cap.range.start !== 0) {
-    result.errors.push(`The first range has to start at 0 in capability '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'.`);
+    result.errors.push(`The first range has to start at 0 in capability '${cap.name}' in channel '${channel.key}'.`);
     return false;
   }
   
   // all capabilities
   if (cap.range.start > cap.range.end) {
-    result.errors.push(`range invalid in capability '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'.`);
+    result.errors.push(`range ${cap.range.start}-${cap.range.end} invalid in capability '${cap.name}' in channel '${channel.key}'.`);
     return false;
   }
   
@@ -338,15 +338,15 @@ function getPossibleEndValues(fineness) {
  * @param {!Mode} mode The mode to check.
  */
 function checkMode(mode) {
-  checkUniqueness(
+  module.exports.checkUniqueness(
     modeNames,
     mode.name,
-    `Mode name '${mode.shortName}' not unique (test is not case-sensitive).`
+    `Mode name '${mode.name}' is not unique (test is not case-sensitive).`
   );
-  checkUniqueness(
+  module.exports.checkUniqueness(
     modeShortNames,
     mode.shortName,
-    `Mode shortName '${mode.shortName}' not unique (test is not case-sensitive).`
+    `Mode shortName '${mode.shortName}' is not unique (test is not case-sensitive).`
   );
 
   if (/\bmode\b/i.test(mode.name) || /\bmode\b/i.test(mode.shortName)) {
@@ -356,9 +356,15 @@ function checkMode(mode) {
   checkPhysical(mode.physicalOverride, ` in mode '${mode.shortName}'`);
 
   let modeChannelKeyCount = {};
+  let usedNonNullChannel = false;
 
   for (let i = 0; i < mode.jsonObject.channels.length; i++) {
+    usedNonNullChannel = usedNonNullChannel || mode.jsonObject.channels[i] !== null;
     checkModeChannelReference(i, mode, modeChannelKeyCount);
+  }
+
+  if (!usedNonNullChannel) {
+    result.errors.push(`Mode '${mode.shortName}' must not only use null channels.`);
   }
 
   const duplicateChannelReferences = Object.keys(modeChannelKeyCount).filter(
@@ -484,7 +490,7 @@ function isNotEmpty(obj, messageIfEmpty) {
  * @param {!string} value The string value to examine.
  * @param {!string} messageIfNotUnique If the value is not unique, add this message to errors.
  */
-function checkUniqueness(set, value, messageIfNotUnique) {
+module.exports.checkUniqueness = function checkUniqueness(set, value, messageIfNotUnique) {
   if (set.has(value.toLowerCase())) {
     result.errors.push(messageIfNotUnique);
   }
@@ -492,7 +498,7 @@ function checkUniqueness(set, value, messageIfNotUnique) {
 }
 
 
-function getErrorString(description, error) {
+module.exports.getErrorString = function getErrorString(description, error) {
   return description + ' ' + util.inspect(error, false, null);
 }
 
