@@ -3,7 +3,6 @@ const util = require('util');
 const schema = require('../fixtures/schema.js');
 
 const Fixture = require('../lib/model/Fixture.js');
-const Channel = require('../lib/model/Channel.js');
 const FineChannel = require('../lib/model/FineChannel.js');
 const SwitchingChannel = require('../lib/model/SwitchingChannel.js');
 
@@ -495,12 +494,12 @@ module.exports.checkUniqueness = function checkUniqueness(set, value, messageIfN
     result.errors.push(messageIfNotUnique);
   }
   set.add(value.toLowerCase());
-}
+};
 
 
 module.exports.getErrorString = function getErrorString(description, error) {
   return description + ' ' + util.inspect(error, false, null);
-}
+};
 
 function arraysEqual(a, b) {
   if (a === b) {

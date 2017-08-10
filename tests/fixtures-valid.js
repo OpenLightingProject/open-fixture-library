@@ -2,7 +2,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const util = require('util');
 const colors = require('colors');
 
 const schemas = require('../fixtures/schema.js');
