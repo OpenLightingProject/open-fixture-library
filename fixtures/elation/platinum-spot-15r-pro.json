@@ -39,44 +39,44 @@
       "fineChannelAliases": ["Color Wheel fine"],
       "capabilities": [
         {
-          "range": [0, 4863],
+          "range": [0, 18],
           "name": "White",
           "color": "#ffffff"
         },
         {
-          "range": [4864, 9727],
+          "range": [19, 37],
           "name": "Color 1"
         },
         {
-          "range": [9728, 14591],
+          "range": [38, 56],
           "name": "Color 2"
         },
         {
-          "range": [14592, 19455],
+          "range": [57, 75],
           "name": "Color 3"
         },
         {
-          "range": [19456, 24319],
+          "range": [76, 94],
           "name": "Color 4"
         },
         {
-          "range": [24320, 29183],
+          "range": [95, 113],
           "name": "Color 5"
         },
         {
-          "range": [29184, 32767],
+          "range": [114, 127],
           "name": "Color 6"
         },
         {
-          "range": [32768, 48639],
+          "range": [128, 189],
           "name": "Rainbow forwards fast–slow"
         },
         {
-          "range": [48640, 49663],
+          "range": [190, 193],
           "name": "No rotation"
         },
         {
-          "range": [49664, 65535],
+          "range": [194, 255],
           "name": "Rainbow backwards slow–fast"
         }
       ]
@@ -185,19 +185,19 @@
       "crossfade": true,
       "capabilities": [
         {
-          "range": [0, 32767],
+          "range": [0, 127],
           "name": "Fixed angle"
         },
         {
-          "range": [32768, 48639],
+          "range": [128, 189],
           "name": "Rotating fast–slow"
         },
         {
-          "range": [48640, 49663],
+          "range": [190, 193],
           "name": "No rotation"
         },
         {
-          "range": [49664, 65535],
+          "range": [194, 255],
           "name": "Rotating slow–fast"
         }
       ]
@@ -207,123 +207,123 @@
       "fineChannelAliases": ["Fixed Gobo fine"],
       "capabilities": [
         {
-          "range": [0, 2047],
+          "range": [0, 7],
           "name": "Open"
         },
         {
-          "range": [2048, 4095],
+          "range": [8, 15],
           "name": "Gobo 1"
         },
         {
-          "range": [4096, 6143],
+          "range": [16, 23],
           "name": "Gobo 2"
         },
         {
-          "range": [6144, 8191],
+          "range": [24, 31],
           "name": "Gobo 3"
         },
         {
-          "range": [8192, 10239],
+          "range": [32, 39],
           "name": "Gobo 4"
         },
         {
-          "range": [10240, 12287],
+          "range": [40, 47],
           "name": "Gobo 5"
         },
         {
-          "range": [12288, 14335],
+          "range": [48, 55],
           "name": "Gobo 6"
         },
         {
-          "range": [14336, 16383],
+          "range": [56, 63],
           "name": "Gobo 7"
         },
         {
-          "range": [16384, 18431],
+          "range": [64, 71],
           "name": "Gobo 8"
         },
         {
-          "range": [18432, 20479],
+          "range": [72, 79],
           "name": "Gobo 9"
         },
         {
-          "range": [20480, 22527],
+          "range": [80, 87],
           "name": "Gobo 10"
         },
         {
-          "range": [22528, 24575],
+          "range": [88, 95],
           "name": "Gobo 11"
         },
         {
-          "range": [24576, 26623],
+          "range": [96, 103],
           "name": "Gobo 12"
         },
         {
-          "range": [26624, 28671],
+          "range": [104, 111],
           "name": "Gobo 13"
         },
         {
-          "range": [28672, 30719],
+          "range": [112, 119],
           "name": "Gobo 14"
         },
         {
-          "range": [30720, 32511],
+          "range": [120, 126],
           "name": "Gobo shake 1 slow–fast"
         },
         {
-          "range": [32512, 34303],
+          "range": [127, 133],
           "name": "Gobo shake 2 slow–fast"
         },
         {
-          "range": [34304, 36095],
+          "range": [134, 140],
           "name": "Gobo shake 3 slow–fast"
         },
         {
-          "range": [36096, 37887],
+          "range": [141, 147],
           "name": "Gobo shake 4 slow–fast"
         },
         {
-          "range": [37888, 39679],
+          "range": [148, 154],
           "name": "Gobo shake 5 slow–fast"
         },
         {
-          "range": [39680, 41471],
+          "range": [155, 161],
           "name": "Gobo shake 6 slow–fast"
         },
         {
-          "range": [41472, 43263],
+          "range": [162, 168],
           "name": "Gobo shake 7 slow–fast"
         },
         {
-          "range": [43264, 45055],
+          "range": [169, 175],
           "name": "Gobo shake 8 slow–fast"
         },
         {
-          "range": [45056, 46847],
+          "range": [176, 182],
           "name": "Gobo shake 9 slow–fast"
         },
         {
-          "range": [46848, 48639],
+          "range": [183, 189],
           "name": "Gobo shake 10 slow–fast"
         },
         {
-          "range": [48640, 50431],
+          "range": [190, 196],
           "name": "Gobo shake 11 slow–fast"
         },
         {
-          "range": [50432, 52223],
+          "range": [197, 203],
           "name": "Gobo shake 12 slow–fast"
         },
         {
-          "range": [52224, 54015],
+          "range": [204, 210],
           "name": "Gobo shake 13 slow–fast"
         },
         {
-          "range": [54016, 55807],
+          "range": [211, 217],
           "name": "Gobo shake 14 slow–fast"
         },
         {
-          "range": [55808, 65535],
+          "range": [218, 255],
           "name": "Rotating slow–fast"
         }
       ]
@@ -410,19 +410,19 @@
       "fineChannelAliases": ["Rotating Prism fine"],
       "capabilities": [
         {
-          "range": [0, 32767],
+          "range": [0, 127],
           "name": "Fixed angle"
         },
         {
-          "range": [32768, 48639],
+          "range": [128, 189],
           "name": "Rotating fast–slow (CW)"
         },
         {
-          "range": [48640, 49663],
+          "range": [190, 193],
           "name": "No rotation"
         },
         {
-          "range": [49664, 65535],
+          "range": [194, 255],
           "name": "Rotating slow–fast (CCW)"
         }
       ]
@@ -433,7 +433,7 @@
       "crossfade": true,
       "capabilities": [
         {
-          "range": [0, 65535],
+          "range": [0, 255],
           "name": "near–far"
         }
       ]
@@ -444,7 +444,7 @@
       "crossfade": true,
       "capabilities": [
         {
-          "range": [0, 65535],
+          "range": [0, 255],
           "name": "small–big"
         }
       ]
@@ -499,15 +499,15 @@
       "crossfade": true,
       "capabilities": [
         {
-          "range": [0, 49151],
+          "range": [0, 191],
           "name": "Diameter max–min"
         },
         {
-          "range": [49152, 57343],
+          "range": [192, 223],
           "name": "Pulse closing fast–slow"
         },
         {
-          "range": [57344, 65535],
+          "range": [224, 255],
           "name": "Pulse opening slow–fast"
         }
       ]

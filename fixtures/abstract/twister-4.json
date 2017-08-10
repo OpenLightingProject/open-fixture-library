@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["FloEdelmann", "Felix Edelmann"],
     "createDate": "2017-01-24",
-    "lastModifyDate": "2017-07-16",
+    "lastModifyDate": "2017-08-10",
     "importPlugin": {
       "plugin": "qlcplus",
       "date": "2017-01-24"
@@ -62,81 +62,97 @@
       "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 0],
+          "range": [0, 9],
           "name": "Blackout",
+          "menuClick": "start",
           "color": "#000000"
         },
         {
-          "range": [10, 10],
+          "range": [10, 25],
           "name": "White [Open]",
+          "menuClick": "start",
           "color": "#ffffff"
         },
         {
-          "range": [26, 26],
+          "range": [26, 42],
           "name": "Red [Dot Tunnel]",
+          "menuClick": "start",
           "color": "#ff0000"
         },
         {
-          "range": [43, 43],
+          "range": [43, 58],
           "name": "Blue [Slash]",
+          "menuClick": "start",
           "color": "#0000ff"
         },
         {
-          "range": [59, 59],
+          "range": [59, 74],
           "name": "Green [Segment]",
+          "menuClick": "start",
           "color": "#00ff00"
         },
         {
-          "range": [75, 75],
+          "range": [75, 90],
           "name": "Yellow [Triangle]",
+          "menuClick": "start",
           "color": "#ffff00"
         },
         {
-          "range": [91, 91],
+          "range": [91, 107],
           "name": "Cyan [Tunnel]",
+          "menuClick": "start",
           "color": "#00ffff"
         },
         {
-          "range": [108, 108],
+          "range": [108, 123],
           "name": "Orange [Bubbles]",
+          "menuClick": "start",
           "color": "#ffaa00"
         },
         {
-          "range": [124, 124],
+          "range": [124, 139],
           "name": "Pink [Stars]",
+          "menuClick": "start",
           "color": "#ff557f"
         },
         {
-          "range": [140, 140],
-          "name": "Multicolor [Quadrant]"
+          "range": [140, 155],
+          "name": "Multicolor [Quadrant]",
+          "menuClick": "start"
         },
         {
-          "range": [156, 156],
+          "range": [156, 172],
           "name": "Orange [Bubbles]",
+          "menuClick": "start",
           "color": "#ffaa00"
         },
         {
-          "range": [173, 173],
+          "range": [173, 188],
           "name": "Cyan [Tunnel]",
+          "menuClick": "start",
           "color": "#00ffff"
         },
         {
-          "range": [189, 189],
+          "range": [189, 220],
           "name": "Yellow [Triangle]",
+          "menuClick": "start",
           "color": "#ffff00"
         },
         {
-          "range": [221, 221],
+          "range": [221, 237],
           "name": "Blue [Slash]",
+          "menuClick": "start",
           "color": "#0000ff"
         },
         {
-          "range": [238, 238],
-          "name": "Slow Strobe"
+          "range": [238, 253],
+          "name": "Slow Strobe",
+          "menuClick": "start"
         },
         {
           "range": [254, 255],
-          "name": "Fast Strobe"
+          "name": "Fast Strobe",
+          "menuClick": "start"
         }
       ]
     },
