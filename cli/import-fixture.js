@@ -30,11 +30,13 @@ fs.readFile(filename, 'utf8', (error, data) => {
   }).then(result => {
     result.errors = {};
 
-    for (const fixKey of Object.keys(result.fixtures)) {
-      const checkResult = checkFixture(result.fixtures[fixKey]);
+    for (const key of Object.keys(result.fixtures)) {
+      const [manKey, fixKey] = key.split('/');
 
-      result.warnings[fixKey] = result.warnings[fixKey].concat(checkResult.warnings);
-      result.errors[fixKey] = checkResult.errors;
+      const checkResult = checkFixture(manKey, fixKey, result.fixtures[key]);
+
+      result.warnings[key] = result.warnings[key].concat(checkResult.warnings);
+      result.errors[key] = checkResult.errors;
     }
 
     console.log(JSON.stringify(result, null, 2));

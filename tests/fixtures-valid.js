@@ -6,53 +6,76 @@ const util = require('util');
 const colors = require('colors');
 
 const schemas = require('../fixtures/schema.js');
-const checkFixture = require('./fixture-valid.js').checkFixture;
+const checkFixture = require('./fixture-valid.js');
 
-let usedShortNames = [];
+/**
+ * @typedef UniqueValues
+ * @type {object}
+ * @property {Set<string>} manKeys All manufacturer keys
+ * @property {Set<string>} manNames All manufacturer names
+ * @property {Object.<string, Set<string>>} fixKeysInMan All fixture keys by manufacturer key
+ * @property {Object.<string, Set<string>>} fixNamesInMan All fixture names by manufacturer key
+ * @property {Set<string>} fixShortNames All fixture short names
+ */
+let uniqueValues = {
+  manKeys: new Set(),
+  manNames: new Set(),
+  fixKeysInMan: {}, // new Set() for each manufacturer
+  fixNamesInMan: {}, // new Set() for each manufacturer
+  fixShortNames: new Set()
+};
 
 let promises = [];
 
 // search fixture files
 const fixturePath = path.join(__dirname, '..', 'fixtures');
-for (const man of fs.readdirSync(fixturePath)) {
-  const manDir = path.join(fixturePath, man);
+for (const manKey of fs.readdirSync(fixturePath)) {
+  const manDir = path.join(fixturePath, manKey);
 
   // files in manufacturer directory
   if (fs.statSync(manDir).isDirectory()) {
-    for (const fixture of fs.readdirSync(manDir)) {
-      if (path.extname(fixture) === '.json') {
-        handleFixtureFile(path.join(man, fixture));
+    for (const file of fs.readdirSync(manDir)) {
+      if (path.extname(file) === '.json') {
+        const fixKey = path.basename(file, '.json');
+        handleFixtureFile(manKey, fixKey);
       }
     }
   }
 }
 
-function handleFixtureFile(name) {
+function handleFixtureFile(manKey, fixKey) {
+  const filename = manKey + '/' + fixKey + '.json';
   let result = {
-    name: name,
+    name: filename,
     errors: [],
     warnings: []
   };
-  const filename = path.join(fixturePath, name);
+
+  const filepath = path.join(fixturePath, filename);
 
   promises.push(new Promise((resolve, reject) => {
-    fs.readFile(filename, 'utf8', (readError, data) => {
+    fs.readFile(filepath, 'utf8', (readError, data) => {
       if (readError) {
         result.errors.push(getErrorString('File could not be read.', readError));
         return resolve(result);
       }
 
-      let fixture;
+      let fixtureJson;
       try {
-        fixture = JSON.parse(data);
+        fixtureJson = JSON.parse(data);
       }
       catch (parseError) {
-        result.errors.push(getErrorString('File could not be parsed.', parseError));
+        result.errors.push(getErrorString('File could not be parsed as JSON.', parseError));
         return resolve(result);
       }
 
-      Object.assign(result, checkFixture(fixture, usedShortNames));
-      usedShortNames = result.usedShortNames;
+      try {
+        // checkFixture(..) returns { errors: [..], warnings: [..] }
+        Object.assign(result, checkFixture(manKey, fixKey, fixtureJson, uniqueValues));
+      }
+      catch (validateError) {
+        result.errors.push(getErrorString('Fixture could not be validated.', validateError));
+      }
       return resolve(result);
     });
   }));
