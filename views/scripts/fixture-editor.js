@@ -4,72 +4,37 @@ require('./polyfills.js');
 var A11yDialog = require('a11y-dialog');
 var uuidV4 = require('uuid/v4.js');
 var Vue = require('vue/dist/vue.js');
-var validate = require('validate/dist/js/validate.js');
+var validate = require('./validate.js');
 
 var vueIsReady = false;
 
-validate.init({
-  disableSubmit: true,
-  onSubmit: function(form, fields) {
-    if (form.id === 'fixture-form') {
-      app.submitFixture();
-    }
-    else if (form.id === 'channel-form') {
-      app.saveChannel();
-    }
-  },
-  beforeShowError: function(field, error) {
-    var label = field.closest('label');
-    var errorMsg = label.querySelector('.error-message');
-    var fields = label.querySelectorAll('input, select, textarea');
-
-    if (fields.length > 1) {
-      // maybe more errors
-      error = getFieldGroupErrors(fields, this);
-    }
-
-    errorMsg.textContent = error;
-    errorMsg.classList.add('has-errors');
-  },
-  beforeRemoveError: function(field) {
-    var label = field.closest('label');
-    var errorMsg = label.querySelector('.error-message');
-    var fields = label.querySelectorAll('input, select, textarea');
-
-
-    var error = '';
-    if (fields.length > 1) {
-      // maybe other errors that prevent removing the error message
-      error = getFieldGroupErrors(fields, this);
-    }
-
-    if (error) {
-      errorMsg.textContent = error;
-      errorMsg.classList.add('has-errors');
-    }
-    else {
-      errorMsg.classList.remove('has-errors');
-    }
+validate.init(function(form) {
+  if (form.id === 'fixture-form') {
+    app.submitFixture();
+  }
+  else if (form.id === 'channel-form') {
+    app.saveChannel();
   }
 });
-
-function getFieldGroupErrors(fields, validateInstance) {
-  var errors = [];
-  for (var i = 0; i < fields.length; i++) {
-    var error = validate.hasError(fields[i]);
-    if (error) {
-      fields[i].classList.add(validateInstance.fieldClass);
-      if (errors.indexOf(error) === -1) {
-        errors.push(error);
-      }
+  /*customError: function(field, validity) {
+    if (field.matches('.capabilities>li:first-child .rangeStart') && validity.valueMissing) {
+      return 'The first range has to start at 0.';
     }
-    else {
-      fields[i].classList.remove(validateInstance.fieldClass);
-    }
-  }
 
-  return errors.join(' ');
-}
+    if (field.matches('.capabilities>li:last-child .rangeEnd') && validity.rangeUnderflow) {
+      return 'The last range has to end at ' + field.getAttribute('max') + '.';
+    }
+
+    if ((field.matches('.capabilities .rangeStart') && validity.rangeUnderflow)
+      || (field.matches('.capabilities .rangeEnd') && validity.rangeOverflow)) {
+      return 'Ranges must not overlap.';
+    }
+
+    if ((field.matches('.rangeStart') && validity.rangeOverflow)
+      || (field.matches('.rangeEnd') && validity.rangeUnderflow)) {
+      return 'Range\'s end must not be greater than its start.';
+    }
+  },*/
 
 var sendObject = {
   fixtures: []
@@ -237,9 +202,19 @@ Vue.component('channel-capability', {
       return min;
     },
     startMax: function() {
+      var index = this.capabilities.indexOf(this.capability);
+      if (index === 0) {
+        return this.dmxMin;
+      }
+
       return this.capability.end !== '' ? this.capability.end : this.endMax;
     },
     endMin: function() {
+      var index = this.capabilities.indexOf(this.capability);
+      if (index === this.capabilities.length) {
+        return this.dmxMax;
+      }
+
       return this.capability.start !== '' ? this.capability.start : this.startMin;
     },
     endMax: function() {

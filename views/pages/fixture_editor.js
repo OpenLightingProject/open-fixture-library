@@ -19,7 +19,7 @@ module.exports = function(options) {
 
   // Existing manufacturer
   str += '<section v-if="fixture.useExistingManufacturer">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Choose from list</span>';
   str += '<span class="value">';
   str += '<select required v-model="fixture.manufacturerShortName" :class="{ empty: fixture.manufacturerShortName === \'\' }" ref="existingManufacturerSelect">';
@@ -37,7 +37,7 @@ module.exports = function(options) {
   // New manufacturer
   str += '<div v-else>';
   str += '<section class="new-manufacturer-name">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Name</span>';
   str += '<span class="value">';
   str += textInput('fixture.newManufacturerName', properties.manufacturer.name, null, null, ' ref="newManufacturerNameInput"');
@@ -47,7 +47,7 @@ module.exports = function(options) {
   str += '</section>';
 
   str += '<section class="new-manufacturer-shortName">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Unique short name</span>';
   str += '<span class="value">';
   str += '<input type="text" required pattern="[a-z0-9\-]+" title="Use only lowercase letters, numbers and dashes." v-model="fixture.newManufacturerShortName" />';
@@ -57,7 +57,7 @@ module.exports = function(options) {
   str += '</section>';
 
   str += '<section class="new-manufacturer-website">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Website</span>';
   str += '<span class="value">';
   str += urlInput('fixture.newManufacturerWebsite', properties.manufacturer.website);
@@ -67,7 +67,7 @@ module.exports = function(options) {
   str += '</section>';
 
   str += '<section class="new-manufacturer-comment">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Comment</span>';
   str += '<span class="value">';
   str += textInput('fixture.newManufacturerComment', properties.manufacturer.comment);
@@ -86,7 +86,7 @@ module.exports = function(options) {
   str += '<h2>Fixture info</h2>';
 
   str += '<section class="fixture-name">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Name</span>';
   str += '<span class="value">';
   str += textInput('fixture.name', properties.fixture.name);
@@ -96,7 +96,7 @@ module.exports = function(options) {
   str += '</section>';
 
   str += '<section class="fixture-shortName">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Unique short name</span>';
   str += '<span class="value">';
   str += textInput('fixture.shortName', properties.fixture.shortName, 'defaults to name');
@@ -106,7 +106,7 @@ module.exports = function(options) {
   str += '</section>';
 
   str += '<section class="categories">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Categories</span>';
   str += '<span class="value">';
   str += `<select multiple required size="${Object.keys(options.register.categories).length}" v-model="fixture.categories">`;
@@ -120,7 +120,7 @@ module.exports = function(options) {
   str += '</section>';
 
   str += '<section class="comment">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Comment</span>';
   str += '<span class="value">';
   str += textareaInput('fixture.comment', properties.fixture.comment);
@@ -130,7 +130,7 @@ module.exports = function(options) {
   str += '</section>';
 
   str += '<section class="manualURL">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Manual URL</span>';
   str += '<span class="value">';
   str += urlInput('fixture.manualURL', properties.fixture.manualURL);
@@ -164,7 +164,7 @@ module.exports = function(options) {
   str += '<h2>Author data</h2>';
 
   str += '<section class="author">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Your name</span>';
   str += '<span class="value">';
   str += '<input type="text" placeholder="e.g. Anonymous" required v-model="fixture.metaAuthor" />';
@@ -174,7 +174,7 @@ module.exports = function(options) {
   str += '</section>';
 
   str += '<section class="github-username">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">GitHub username</span>';
   str += '<span class="value">';
   str += '<input type="text" v-model="fixture.metaGithubUsername" />';
@@ -185,7 +185,7 @@ module.exports = function(options) {
   str += '</section>';
 
   str += '<section class="honeypot" hidden aria-hidden="true">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Ignore this!</span>';
   str += '<span class="value">';
   str += '<input type="text" v-model="honeypot" />';
@@ -227,7 +227,7 @@ function getPhysicalTemplate() {
   str += '<div>';
 
   str += '<section class="physical-dimensions">';
-  str += '<label>';
+  str += '<span class="validate-group">';
   str += '<span class="label">Dimensions</span>';
   str += '<span class="value">';
   str += numberInput('value.dimensionsWidth', properties.physical.dimensions.items, 'width', ' :required="dimensionRequired" ref="firstInput"') + ' &times; ';
@@ -235,11 +235,11 @@ function getPhysicalTemplate() {
   str += numberInput('value.dimensionsDepth', properties.physical.dimensions.items, 'depth', ' :required="dimensionRequired"') + ' mm';
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
-  str += '</label>';
+  str += '</span>';
   str += '</section>';
 
   str += '<section class="physical-weight">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Weight</span>';
   str += '<span class="value">';
   str += numberInput('value.weight', properties.physical.weight) + ' kg';
@@ -249,7 +249,7 @@ function getPhysicalTemplate() {
   str += '</section>';
 
   str += '<section class="physical-power">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Power</span>';
   str += '<span class="value">';
   str += numberInput('value.power', properties.physical.power) + ' W';
@@ -259,7 +259,7 @@ function getPhysicalTemplate() {
   str += '</section>';
 
   str += '<section class="physical-DMXconnector">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">DMX connector</span>';
   str += '<span class="value">';
   str += selectInput('value.DMXconnector', properties.physical.DMXconnector, 'other DMX connector');
@@ -271,7 +271,7 @@ function getPhysicalTemplate() {
   str += '<h4>Bulb</h4>';
 
   str += '<section class="physical-bulb-type">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Bulb type</span>';
   str += '<span class="value">';
   str += textInput('value.bulb.type', properties.bulb.type, 'e.g. LED');
@@ -281,7 +281,7 @@ function getPhysicalTemplate() {
   str += '</section>';
 
   str += '<section class="physical-bulb-colorTemperature">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Color temperature</span>';
   str += '<span class="value">';
   str += numberInput('value.bulb.colorTemperature', properties.bulb.colorTemperature) + ' K';
@@ -291,7 +291,7 @@ function getPhysicalTemplate() {
   str += '</section>';
 
   str += '<section class="physical-bulb-lumens">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Lumens</span>';
   str += '<span class="value">';
   str += numberInput('value.bulb.lumens', properties.bulb.lumens) + ' lm';
@@ -303,7 +303,7 @@ function getPhysicalTemplate() {
   str += '<h4>Lens</h4>';
 
   str += '<section class="physical-lens-name">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Lens name</span>';
   str += '<span class="value">';
   str += textInput('value.lens.name', properties.lens.name);
@@ -313,20 +313,20 @@ function getPhysicalTemplate() {
   str += '</section>';
 
   str += '<section class="physical-lens-degrees">';
-  str += '<label>';
+  str += '<span class="validate-group">';
   str += '<span class="label">Light cone</span>';
   str += '<span class="value">';
   str += numberInput('value.lens.degreesMin', properties.lens.degreesMinMax.items, 'min', ' :required="degreesRequired"') + ' .. ';
   str += numberInput('value.lens.degreesMax', properties.lens.degreesMinMax.items, 'max', ' :required="degreesRequired"') + ' °';
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
-  str += '</label>';
+  str += '</span>';
   str += '</section>';
 
   str += '<h4>Focus</h4>';
 
   str += '<section class="physical-focus-type">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Focus type</span>';
   str += '<span class="value">';
   str += selectInput('value.focus.type', properties.focus.type, 'other focus type');
@@ -336,7 +336,7 @@ function getPhysicalTemplate() {
   str += '</section>';
 
   str += '<section class="physical-focus-panMax">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Pan maximum</span>';
   str += '<span class="value">';
   str += numberInput('value.focus.panMax', properties.focus.panMax) + ' °';
@@ -346,7 +346,7 @@ function getPhysicalTemplate() {
   str += '</section>';
 
   str += '<section class="physical-focus-tiltMax">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Tilt maximum</span>';
   str += '<span class="value">';
   str += numberInput('value.focus.tiltMax', properties.focus.tiltMax) + ' °';
@@ -373,7 +373,7 @@ function getModeTemplate() {
   str += '<h2>Mode</h2>';
 
   str += '<section class="mode-name">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Name</span>';
   str += '<span class="value">';
   str += '<input type="text"' + getRequiredAttr(properties.mode.name) + ' pattern="^((?!mode)(?!Mode).)*$" title="The name must not contain the word \'mode\'." placeholder="e.g. Extended" v-model="mode.name" ref="firstInput" />';
@@ -383,7 +383,7 @@ function getModeTemplate() {
   str += '</section>';
 
   str += '<section class="mode-shortName">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Unique short name</span>';
   str += '<span class="value">';
   str += '<input type="text"' + getRequiredAttr(properties.mode.shortName) + ' pattern="^((?!mode)(?!Mode).)*$" title="The name must not contain the word \'mode\'." placeholder="e.g. ext; defaults to name" v-model="mode.shortName" />';
@@ -394,10 +394,10 @@ function getModeTemplate() {
 
   str += '<h3>Physical override</h3>';
 
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<input type="checkbox" class="enable-physical-override" v-model="mode.enablePhysicalOverride" />';
   str += 'Enable physical override';
-  str += '</span>';
+  str += '<span class="error-message" hidden></span>';
   str += '</label>';
   str += '<section class="physical-override">';
   str += '<physical-data v-model="mode.physical" v-if="mode.enablePhysicalOverride"></physical-data>';
@@ -423,10 +423,9 @@ function getModeTemplate() {
 
 function getCapabilityTemplate() {
   let str = '<script type="text/x-template" id="template-capability">';
-  str += '<li>';
-  str += '<label>';
-  str += '<input type="number" :min="startMin" :max="startMax" placeholder="start" v-model.lazy.number="capability.start" :required="isChanged"> .. ';
-  str += '<input type="number" :min="endMin" :max="endMax" placeholder="end" v-model.lazy.number="capability.end" :required="isChanged"> ';
+  str += '<li class="validate-group">';
+  str += '<input type="number" class="rangeStart" :min="startMin" :max="startMax" placeholder="start" v-model.number="capability.start" :required="isChanged"> .. ';
+  str += '<input type="number" class="rangeEnd" :min="endMin" :max="endMax" placeholder="end" v-model.number="capability.end" :required="isChanged"> ';
   str += '<span class="value">';
   str += '<input type="text" placeholder="name" v-model="capability.name" class="name" :required="isChanged"><br/>';
   str += '<input type="text" placeholder="color" pattern="^#[0-9a-f]{6}$" title="#rrggbb" v-model="capability.color" class="color"> ';
@@ -434,7 +433,6 @@ function getCapabilityTemplate() {
   str += '</span>';
   str += '<span class="error-message" hidden></span>';
   str += '<a href="#remove" class="remove" title="Remove capability" v-if="isChanged" @click.prevent="remove">' + require('../includes/svg.js')({svgBasename: 'close'}) + '</a>';
-  str += '</label>';
   str += '</li>';
   str += '</script>'; // #template-capability
 
@@ -487,22 +485,20 @@ function getChannelDialogString() {
 
   str += '<form action="#" id="channel-form" data-validate ref="channelForm">';
 
-  str += '<div v-if="channel.editMode == \'add-existing\'">';
-  str += '<label>';
+  str += '<div v-if="channel.editMode == \'add-existing\'" class="validate-group">';
   str += '<select size="10" required v-model="channel.uuid">';
   str += '<option v-for="channelUuid in currentModeUnchosenChannels" :value="channelUuid">';
   str += '{{ getChannelName(channelUuid) }}';
   str += '</option>';
   str += '</select>';
   str += '<span class="error-message" hidden></span>';
-  str += '</label>';
   str += ' or <a href="#create-channel" @click.prevent="channel.editMode = \'create\'">create a new channel</a>';
   str += '</div>';
 
   str += '<div v-else>';
 
   str += '<section class="channel-name">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Name</span>';
   str += '<span class="value">';
   str += '<input type="text" required v-model="channel.name" />';
@@ -512,7 +508,7 @@ function getChannelDialogString() {
   str += '</section>';
 
   str += '<section class="channel-type">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Type</span>';
   str += '<span class="value">';
   str += selectInput('channel.type', properties.channel.type, 'other channel type');
@@ -522,7 +518,7 @@ function getChannelDialogString() {
   str += '</section>';
 
   str += '<section class="channel-color" v-if="channel.type == \'Single Color\'">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Color</span>';
   str += '<span class="value">';
   str += selectInput('channel.color', properties.channel.color, 'other channel color');
@@ -534,7 +530,7 @@ function getChannelDialogString() {
   str += '<h3>DMX values</h3>';
 
   str += '<section class="channel-fineness">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Channel resolution</span>';
   str += '<span class="value">';
   str += '<select required v-model.number="channel.fineness">';
@@ -548,7 +544,7 @@ function getChannelDialogString() {
   str += '</section>';
 
   str += '<section class="channel-defaultValue">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Default</span>';
   str += '<span class="value">';
   str += '<input type="number" min="0" :max="Math.pow(256, channel.fineness+1)-1" step="1" v-model.number="channel.defaultValue" />';
@@ -558,7 +554,7 @@ function getChannelDialogString() {
   str += '</section>';
 
   str += '<section class="channel-highlightValue">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Highlight</span>';
   str += '<span class="value">';
   str += '<input type="number" min="0" :max="Math.pow(256, channel.fineness+1)-1" step="1" v-model.number="channel.highlightValue" />';
@@ -568,7 +564,7 @@ function getChannelDialogString() {
   str += '</section>';
 
   str += '<section class="channel-invert">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Invert?</span>';
   str += '<span class="value">';
   str += booleanInput('channel.invert', properties.channel.invert);
@@ -578,7 +574,7 @@ function getChannelDialogString() {
   str += '</section>';
 
   str += '<section class="channel-constant">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Constant?</span>';
   str += '<span class="value">';
   str += booleanInput('channel.constant', properties.channel.constant);
@@ -588,7 +584,7 @@ function getChannelDialogString() {
   str += '</section>';
 
   str += '<section class="channel-crossfade">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Crossfade?</span>';
   str += '<span class="value">';
   str += booleanInput('channel.crossfade', properties.channel.crossfade);
@@ -598,7 +594,7 @@ function getChannelDialogString() {
   str += '</section>';
 
   str += '<section class="channel-precedence">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Precedence</span>';
   str += '<span class="value">';
   str += selectInput('channel.precedence', properties.channel.precedence, null, false);
@@ -610,7 +606,7 @@ function getChannelDialogString() {
   str += '<h3>Capabilities</h3>';
 
   str += '<section class="channel-cap-fineness" v-if="channel.fineness > 0">';
-  str += '<label>';
+  str += '<label class="validate-group">';
   str += '<span class="label">Capability resolution</span>';
   str += '<span class="value">';
   str += '<select required v-model.number="channel.capFineness">';
