@@ -278,7 +278,12 @@ Vue.component('channel-capability', {
   },
   methods: {
     remove: function() {
-      this.capability = getEmptyCapability();
+      var emptyCap = getEmptyCapability();
+      for (var prop in emptyCap) {
+        if (emptyCap.hasOwnProperty(prop)) {
+          this.capability[prop] = emptyCap[prop];
+        }
+      }
       this.collapseWithNeighbors();
     },
     collapseWithNeighbors: function() {
