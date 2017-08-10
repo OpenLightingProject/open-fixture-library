@@ -197,7 +197,7 @@ function getChannelAttribute(channel) {
     COLOUR: ['Single Color', 'Multi-Color', 'Color Temperature'],
     FOCUS: ['Pan', 'Tilt'],
     BEAM: ['Iris', 'Focus', 'Zoom'],
-    EFFECT: ['Strobe', 'Shutter', 'Speed', 'Gobo', 'Prism', 'Effect'],
+    EFFECT: ['Strobe', 'Shutter', 'Speed', 'Gobo', 'Prism', 'Effect', 'Fog'],
     CONTROL: ['Maintenance'],
     EXTRA: ['Nothing']
   };

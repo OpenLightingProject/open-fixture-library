@@ -47,6 +47,8 @@ pullRequest.init()
   if (messages.length > 0) {
     lines.push(
       'Test the exported files of selected fixtures against the plugins\' export tests.',
+      'You can run a plugin\'s export tests by executing:',
+      '`$ node cli/run-export-test.js -p <plugin name> <fixtures>`',
       ''
     );
     
@@ -63,7 +65,7 @@ pullRequest.init()
 })
 .catch(error => {
   console.error(error);
-  process.exit(0);
+  process.exit(1);
 });
 
 function getModelMessagePromise() {

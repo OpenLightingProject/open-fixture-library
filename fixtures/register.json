@@ -6,6 +6,9 @@
     "abstract/twister-4": {
       "name": "Twister 4"
     },
+    "american-dj/fog-fury-jett-pro": {
+      "name": "Fog Fury Jett Pro"
+    },
     "american-dj/quad-phase-hp": {
       "name": "Quad Phase HP"
     },
@@ -17,6 +20,9 @@
     },
     "cameo/hydrabeam-300-rgbw": {
       "name": "Hydrabeam 300 RGBW"
+    },
+    "cameo/nanospot-120": {
+      "name": "NanoSpot 120"
     },
     "cameo/outdoor-par-tri-12": {
       "name": "Outdoor PAR Tri 12"
@@ -32,6 +38,9 @@
     },
     "cameo/thunder-wash-600-w": {
       "name": "Thunder Wash 600 W"
+    },
+    "dts/xr1200-wash": {
+      "name": "XR1200 WASH"
     },
     "elation/platinum-hfx": {
       "name": "Platinum HFX"
@@ -87,14 +96,29 @@
     "martin/mac-aura": {
       "name": "MAC Aura"
     },
+    "martin/mac-axiom-hybrid": {
+      "name": "MAC Axiom Hybrid"
+    },
     "martin/mac-viper-airfx": {
       "name": "MAC Viper AirFX"
+    },
+    "martin/magnum-2500-hz": {
+      "name": "Magnum 2500 HZ"
+    },
+    "martin/mac-viper-wash": {
+      "name": "MAC Viper Wash"
     },
     "martin/roboscan-812": {
       "name": "RoboScan 812"
     },
-    "martin/mac-viper-wash": {
-      "name": "MAC Viper Wash"
+    "martin/rush-mh-2-wash": {
+      "name": "Rush MH 2 Wash"
+    },
+    "martin/rush-mh-3-beam": {
+      "name": "Rush MH 3 Beam"
+    },
+    "mdg/hazer-atmosphere-aps": {
+      "name": "Hazer ATMOSPHERE APS"
     },
     "robe/dj-scan-250-xt": {
       "name": "DJ Scan 250 XT"
@@ -113,6 +137,9 @@
     },
     "showtec/phantom-50-led-spot": {
       "name": "Phantom 50 LED Spot"
+    },
+    "chauvet-dj/slimpar-pro-h-usb": {
+      "name": "SlimPAR Pro H USB"
     }
   },
   "manufacturers": {
@@ -123,17 +150,22 @@
       "twister-4"
     ],
     "american-dj": [
+      "fog-fury-jett-pro",
       "quad-phase-hp",
       "revo-4-ir"
     ],
     "cameo": [
       "flat-pro-18",
       "hydrabeam-300-rgbw",
+      "nanospot-120",
       "outdoor-par-tri-12",
       "thunder-wash-100-rgb",
       "thunder-wash-100-w",
       "thunder-wash-600-rgb",
       "thunder-wash-600-w"
+    ],
+    "dts": [
+      "xr1200-wash"
     ],
     "elation": [
       "platinum-hfx",
@@ -166,9 +198,16 @@
     "martin": [
       "atomic-3000",
       "mac-aura",
+      "mac-axiom-hybrid",
       "mac-viper-airfx",
       "mac-viper-wash",
-      "roboscan-812"
+      "magnum-2500-hz",
+      "roboscan-812",
+      "rush-mh-2-wash",
+      "rush-mh-3-beam"
+    ],
+    "mdg": [
+      "hazer-atmosphere-aps"
     ],
     "robe": [
       "dj-scan-250-xt"
@@ -179,12 +218,17 @@
       "led-light-bar-rgb-v3",
       "phantom-140-led-spot",
       "phantom-50-led-spot"
+    ],
+    "chauvet-dj": [
+      "slimpar-pro-h-usb"
     ]
   },
   "categories": {
     "Moving Head": [
       "5star-systems/spica-250m",
       "cameo/hydrabeam-300-rgbw",
+      "cameo/nanospot-120",
+      "dts/xr1200-wash",
       "elation/platinum-hfx",
       "elation/platinum-spot-15r-pro",
       "eurolite/led-tmh-18",
@@ -192,8 +236,11 @@
       "generic/pan-tilt",
       "lightmaxx/vega-zoom-wash",
       "martin/mac-aura",
+      "martin/mac-axiom-hybrid",
       "martin/mac-viper-airfx",
       "martin/mac-viper-wash",
+      "martin/rush-mh-2-wash",
+      "martin/rush-mh-3-beam",
       "showtec/kanjo-wash-rgb",
       "showtec/phantom-140-led-spot",
       "showtec/phantom-50-led-spot"
@@ -204,12 +251,17 @@
       "american-dj/revo-4-ir",
       "eurolite/led-svf-1"
     ],
+    "Smoke": [
+      "american-dj/fog-fury-jett-pro"
+    ],
     "Color Changer": [
+      "american-dj/fog-fury-jett-pro",
       "cameo/flat-pro-18",
       "cameo/hydrabeam-300-rgbw",
       "cameo/outdoor-par-tri-12",
       "cameo/thunder-wash-100-rgb",
       "cameo/thunder-wash-600-rgb",
+      "chauvet-dj/slimpar-pro-h-usb",
       "eurolite/led-kls-801",
       "eurolite/led-par-56-tcl",
       "eurolite/led-ps-4-hcl",
@@ -240,6 +292,10 @@
     ],
     "Fan": [
       "gruft/ventilator"
+    ],
+    "Hazer": [
+      "martin/magnum-2500-hz",
+      "mdg/hazer-atmosphere-aps"
     ],
     "Scanner": [
       "martin/roboscan-812",
