@@ -2,7 +2,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const util = require('util');
 const colors = require('colors');
 
 const schemas = require('../fixtures/schema.js');
@@ -56,7 +55,7 @@ function handleFixtureFile(manKey, fixKey) {
   promises.push(new Promise((resolve, reject) => {
     fs.readFile(filepath, 'utf8', (readError, data) => {
       if (readError) {
-        result.errors.push(getErrorString('File could not be read.', readError));
+        result.errors.push(checkFixture.getErrorString('File could not be read.', readError));
         return resolve(result);
       }
 
@@ -65,7 +64,7 @@ function handleFixtureFile(manKey, fixKey) {
         fixtureJson = JSON.parse(data);
       }
       catch (parseError) {
-        result.errors.push(getErrorString('File could not be parsed as JSON.', parseError));
+        result.errors.push(checkFixture.getErrorString('File could not be parsed as JSON.', parseError));
         return resolve(result);
       }
 
@@ -74,7 +73,7 @@ function handleFixtureFile(manKey, fixKey) {
         Object.assign(result, checkFixture(manKey, fixKey, fixtureJson, uniqueValues));
       }
       catch (validateError) {
-        result.errors.push(getErrorString('Fixture could not be validated.', validateError));
+        result.errors.push(checkFixture.getErrorString('Fixture could not be validated.', validateError));
       }
       return resolve(result);
     });
@@ -92,7 +91,7 @@ promises.push(new Promise((resolve, reject) => {
 
   fs.readFile(filename, 'utf8', (readError, data) => {
     if (readError) {
-      result.errors.push(getErrorString('File could not be read.', readError));
+      result.errors.push(checkFixture.getErrorString('File could not be read.', readError));
       return resolve(result);
     }
 
@@ -101,13 +100,26 @@ promises.push(new Promise((resolve, reject) => {
       manufacturers = JSON.parse(data);
     }
     catch (parseError) {
-      result.errors.push(getErrorString('File could not be parsed.', parseError));
+      result.errors.push(checkFixture.getErrorString('File could not be parsed.', parseError));
       return resolve(result);
     }
 
     const schemaErrors = schemas.Manufacturers.errors(manufacturers);
     if (schemaErrors !== false) {
-      result.errors = [getErrorString('File does not match schema.', schemaErrors)];
+      result.errors = [checkFixture.getErrorString('File does not match schema.', schemaErrors)];
+    }
+
+    for (const manKey of Object.keys(manufacturers)) {
+      checkFixture.checkUniqueness(
+        uniqueValues.manKeys,
+        manKey,
+        `Manufacturer key '${manKey}' is not unique (test is not case-sensitive).`
+      );
+      checkFixture.checkUniqueness(
+        uniqueValues.manNames,
+        manufacturers[manKey].name,
+        `Manufacturer name '${manufacturers[manKey].name}' is not unique (test is not case-sensitive).`
+      );
     }
 
     return resolve(result);
@@ -156,8 +168,3 @@ Promise.all(promises).then(results => {
   console.error(colors.red('[FAIL]'), `${totalFails} of ${results.length} tested files failed.`);
   process.exit(1);
 });
-
-
-function getErrorString(description, error) {
-  return description + ' ' + util.inspect(error, false, null);
-}
