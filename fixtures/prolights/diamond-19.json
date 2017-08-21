@@ -4,9 +4,9 @@
   "meta": {
     "authors": ["fueller"],
     "createDate": "2017-08-16",
-    "lastModifyDate": "2017-08-16"
+    "lastModifyDate": "2017-08-21"
   },
-  "manualURL": "http://prolights.it/product/DIAMOND19",
+  "manualURL": "http://prolights.it/download.php?id=2882",
   "physical": {
     "dimensions": [338, 449, 235],
     "weight": 11,
@@ -27,19 +27,18 @@
   "availableChannels": {
     "Pan": {
       "type": "Pan",
-      "defaultValue": 0
+      "defaultValue": 127
     },
     "Tilt": {
       "type": "Tilt",
-      "defaultValue": 0
+      "defaultValue": 127
     },
     "Movement Speed": {
       "type": "Speed",
-      "defaultValue": 0
+      "defaultValue": 127
     },
     "Shutter Function": {
       "type": "Shutter",
-      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 15],
@@ -59,13 +58,12 @@
         },
         {
           "range": [64, 255],
-          "name": "TBD"
+          "name": "No function (TBD)"
         }
       ]
     },
     "Shutter": {
       "type": "Shutter",
-      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 31],
@@ -82,8 +80,7 @@
       ]
     },
     "Dimmer": {
-      "type": "Intensity",
-      "defaultValue": 0
+      "type": "Intensity"
     },
     "Virtual Color Function": {
       "type": "Multi-Color",
@@ -91,36 +88,148 @@
       "capabilities": [
         {
           "range": [0, 15],
-          "name": "On Function"
+          "name": "On Function",
+          "switchChannels": {
+            "Virtual Color 1": "Color Function"
+          }
         },
         {
           "range": [16, 31],
-          "name": "CTC Function"
+          "name": "CTC Function",
+          "switchChannels": {
+            "Virtual Color 1": "CTC Function"
+          }
         },
         {
           "range": [32, 47],
-          "name": "Forward Spin"
+          "name": "Forward Spin",
+          "switchChannels": {
+            "Virtual Color 1": "Rainbow Effect"
+          }
         },
         {
           "range": [48, 63],
-          "name": "Reverse Spin"
+          "name": "Reverse Spin",
+          "switchChannels": {
+            "Virtual Color 1": "Rainbow Effect"
+          }
         },
         {
           "range": [64, 79],
-          "name": "Continuous"
+          "name": "Continuous",
+          "switchChannels": {
+            "Virtual Color 1": "Color Function"
+          }
         },
         {
           "range": [80, 111],
-          "name": "Color Bounce"
+          "name": "Color Bounce",
+          "switchChannels": {
+            "Virtual Color 1": "Color Function"
+          }
         },
         {
           "range": [112, 255],
-          "name": "TBD"
+          "name": "No function (TBD)",
+          "switchChannels": {
+            "Virtual Color 1": "Color Function"
+          }
         }
       ]
     },
-    "Virtual Color 1": {
-      "type": "Multi-Color"
+    "Rainbow Effect": {
+      "type": "Speed"
+    },
+    "CTC Function": {
+      "type": "Color Temperature",
+      "capabilities": [
+        {
+          "range": [0, 223],
+          "name": "CTC 2000K-2700K"
+        },
+        {
+          "range": [224, 231],
+          "name": "White 3200K"
+        },
+        {
+          "range": [232, 239],
+          "name": "White 4200K"
+        },
+        {
+          "range": [240, 247],
+          "name": "White 5600K"
+        },
+        {
+          "range": [248, 255],
+          "name": "White 8000K"
+        }
+      ]
+    },
+    "Color Function": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Black",
+          "color": "#000000"
+        },
+        {
+          "range": [1, 1],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [2, 2],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [3, 3],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [4, 4],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [5, 46],
+          "name": "Green ASC, Blue",
+          "color": "#0000ff",
+          "color2": "#00ffff"
+        },
+        {
+          "range": [47, 88],
+          "name": "Green, Blue DESC",
+          "color": "#00ffff",
+          "color": "#00ff00"
+        },
+        {
+          "range": [89, 130],
+          "name": "Red ASC, Green",
+          "color": "#00ff00",
+          "color2": "#ffff00"
+        },
+        {
+          "range": [131, 172],
+          "name": "Red, Green DESC",
+          "color": "#ffff00",
+          "color2": "#ff0000"
+        },
+        {
+          "range": [173, 214],
+          "name": "Red, Blue ASC",
+          "color": "#ff0000",
+          "color2": "#ff00ff"
+        },
+        {
+          "range": [215, 255],
+          "name": "Red DESC, Blue",
+          "color": "#ff00ff",
+          "color2": "#0000ff"
+        }
+      ]
     },
     "Virtual Color 2": {
       "type": "Multi-Color",
@@ -152,39 +261,49 @@
         },
         {
           "range": [5, 46],
-          "name": "Mix 1"
+          "name": "Green ASC, Blue",
+          "color": "#0000ff",
+          "color2": "#00ffff"
         },
         {
           "range": [47, 88],
-          "name": "Mix 2"
+          "name": "Green, Blue DESC",
+          "color": "#00ffff",
+          "color": "#00ff00"
         },
         {
           "range": [89, 130],
-          "name": "Mix 3"
+          "name": "Red ASC, Green",
+          "color": "#00ff00",
+          "color2": "#ffff00"
         },
         {
           "range": [131, 172],
-          "name": "Mix 4"
+          "name": "Red, Green DESC",
+          "color": "#ffff00",
+          "color2": "#ff0000"
         },
         {
           "range": [173, 214],
-          "name": "Mix 5"
+          "name": "Red, Blue ASC",
+          "color": "#ff0000",
+          "color2": "#ff00ff"
         },
         {
           "range": [215, 255],
-          "name": "Mix 6"
+          "name": "Red DESC, Blue",
+          "color": "#ff00ff",
+          "color2": "#0000ff"
         }
       ]
     },
     "Red-All": {
       "type": "Single Color",
-      "color": "Red",
-      "defaultValue": 0
+      "color": "Red"
     },
     "Green-All": {
       "type": "Single Color",
-      "color": "Green",
-      "defaultValue": 0
+      "color": "Green"
     },
     "Blue-All": {
       "type": "Single Color",
@@ -192,16 +311,19 @@
     },
     "White-All": {
       "type": "Single Color",
-      "color": "White",
-      "defaultValue": 0
+      "color": "White"
     },
     "Zoom": {
       "type": "Zoom",
-      "defaultValue": 0
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "small angle -> big angle"
+        }
+      ]
     },
     "Foreground": {
       "type": "Effect",
-      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 15],
@@ -249,77 +371,6 @@
       ]
     },
     "Background": {
-      "type": "Effect",
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "range": [0, 31],
-          "name": "Static Pattern"
-        },
-        {
-          "range": [32, 47],
-          "name": "Dynamic Pattern 1"
-        },
-        {
-          "range": [48, 63],
-          "name": "Dynamic Pattern 2"
-        },
-        {
-          "range": [64, 79],
-          "name": "Dynamic Pattern 3"
-        },
-        {
-          "range": [80, 95],
-          "name": "Dynamic Pattern 4"
-        },
-        {
-          "range": [96, 111],
-          "name": "Dynamic Pattern 5"
-        },
-        {
-          "range": [112, 127],
-          "name": "Dynamic Pattern 6"
-        },
-        {
-          "range": [128, 143],
-          "name": "Dynamic Pattern 7"
-        },
-        {
-          "range": [144, 159],
-          "name": "Dynamic Pattern 8"
-        },
-        {
-          "range": [160, 175],
-          "name": "Dynamic Pattern 9"
-        },
-        {
-          "range": [176, 191],
-          "name": "Dynamic Pattern 10"
-        },
-        {
-          "range": [192, 207],
-          "name": "Dynamic Pattern 11"
-        },
-        {
-          "range": [208, 223],
-          "name": "Dynamic Pattern 12"
-        },
-        {
-          "range": [224, 239],
-          "name": "Dynamic Pattern 13"
-        },
-        {
-          "range": [240, 255],
-          "name": "Dynamic Pattern 14"
-        }
-      ]
-    },
-    "Patern Speed": {
-      "type": "Speed",
-      "defaultValue": 0
-    },
-    "Background 2": {
-      "name": "Background",
       "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
@@ -374,63 +425,133 @@
       "capabilities": [
         {
           "range": [0, 31],
-          "name": "Static Pattern"
+          "name": "Static Pattern",
+          "switchChannels": {
+            "Pattern Speed": "Static Pattern Speed"
+          }
         },
         {
           "range": [32, 47],
-          "name": "Dynamic Pattern 1"
+          "name": "Dynamic Pattern 1",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
         },
         {
           "range": [48, 63],
-          "name": "Dynamic Pattern 2"
+          "name": "Dynamic Pattern 2",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
         },
         {
           "range": [64, 79],
-          "name": "Dynamic Pattern 3"
+          "name": "Dynamic Pattern 3",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
         },
         {
           "range": [80, 95],
-          "name": "Dynamic Pattern 4"
+          "name": "Dynamic Pattern 4",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
         },
         {
           "range": [96, 111],
-          "name": "Dynamic Pattern 5"
+          "name": "Dynamic Pattern 5",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
         },
         {
           "range": [112, 127],
-          "name": "Dynamic Pattern 6"
+          "name": "Dynamic Pattern 6",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
         },
         {
           "range": [128, 143],
-          "name": "Dynamic Pattern 7"
+          "name": "Dynamic Pattern 7",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
         },
         {
           "range": [144, 159],
-          "name": "Dynamic Pattern 8"
+          "name": "Dynamic Pattern 8",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
         },
         {
           "range": [160, 175],
-          "name": "Dynamic Pattern 9"
+          "name": "Dynamic Pattern 9",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
         },
         {
           "range": [176, 191],
-          "name": "Dynamic Pattern 10"
+          "name": "Dynamic Pattern 10",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
         },
         {
           "range": [192, 207],
-          "name": "Dynamic Pattern 11"
+          "name": "Dynamic Pattern 11",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
         },
         {
           "range": [208, 223],
-          "name": "Dynamic Pattern 12"
+          "name": "Dynamic Pattern 12",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
         },
         {
           "range": [224, 239],
-          "name": "Dynamic Pattern 13"
+          "name": "Dynamic Pattern 13",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
         },
         {
           "range": [240, 255],
-          "name": "Dynamic Pattern 14"
+          "name": "Dynamic Pattern 14",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
+        }
+      ]
+    },
+    "Static Pattern Speed": {
+      "type": "Speed",
+      "defaultValue": 127
+    },
+    "Dynamic Pattern Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 3],
+          "name": "Stop"
+        },
+        {
+          "range": [4, 127],
+          "name": "CW slow-fast"
+        },
+        {
+          "range": [128, 131],
+          "name": "Stop"
+        },
+        {
+          "range": [132, 255],
+          "name": "CWW slow-fast"
         }
       ]
     },
@@ -452,7 +573,7 @@
         },
         {
           "range": [24, 47],
-          "name": "TBD"
+          "name": "No function (TBD)"
         },
         {
           "range": [48, 55],
@@ -468,11 +589,11 @@
         },
         {
           "range": [72, 79],
-          "name": "TBD"
+          "name": "No function (TBD)"
         },
         {
           "range": [80, 87],
-          "name": "TBD"
+          "name": "No function (TBD)"
         },
         {
           "range": [88, 95],
@@ -480,7 +601,7 @@
         },
         {
           "range": [96, 255],
-          "name": "TBD"
+          "name": "No function (TBD)"
         }
       ]
     }
@@ -504,9 +625,9 @@
         "White-All",
         "Zoom",
         "Foreground",
-        "Background 2",
+        "Background",
         "Patterns",
-        "Patern Speed",
+        "Pattern Speed",
         "Control"
       ]
     }
