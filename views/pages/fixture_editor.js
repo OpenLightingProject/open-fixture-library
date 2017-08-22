@@ -517,7 +517,7 @@ function getChannelDialogString() {
   str += '<label class="validate-group">';
   str += '<span class="label">Color</span>';
   str += '<span class="value">';
-  str += selectInput('channel.color', properties.channel.color, 'other channel color');
+  str += selectInput('channel.color', properties.channel.color, 'other channel color', true, true);
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
   str += '</label>';
