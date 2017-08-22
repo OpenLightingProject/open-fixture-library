@@ -96,7 +96,7 @@ module.exports = (function() {
     }
     
     return null;
-  }
+  };
 
   /**
    * Validate a form field
