@@ -79,7 +79,7 @@ function getChannelHeading(channel) {
   if (channel === null) {
     return 'Error: Channel not found';
   }
-  
+
   if (channel instanceof NullChannel) {
     return `${channel.name} <code class="channel-key">null</code>`;
   }
