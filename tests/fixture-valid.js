@@ -6,6 +6,7 @@ const Fixture = require('../lib/model/Fixture.js');
 const Channel = require('../lib/model/Channel.js');
 const FineChannel = require('../lib/model/FineChannel.js');
 const SwitchingChannel = require('../lib/model/SwitchingChannel.js');
+const MatrixChannel = require('../lib/model/MatrixChannel.js');
 
 /**
  * @typedef ResultData
@@ -499,51 +500,103 @@ function checkMode(mode) {
 
   checkPhysical(mode.physicalOverride, ` in mode '${mode.shortName}'`);
 
-  let modeChannelKeyCount = {};
+  const usedChannelKeysInMode = new Set();
 
-  for (let i = 0; i < mode.jsonObject.channels.length; i++) {
-    checkModeChannelReference(i, mode, modeChannelKeyCount);
+  for (const rawReference of mode.jsonObject.channels) {
+    if (rawReference !== null && typeof rawReference !== 'string') {
+      checkChannelInsertBlock(rawReference, mode);
+    }
   }
 
-  const duplicateChannelReferences = Object.keys(modeChannelKeyCount).filter(
-    chKey => modeChannelKeyCount[chKey] > 1
-  );
-  if (duplicateChannelReferences.length > 0) {
-    result.errors.push(`Channels ${duplicateChannelReferences} are used more than once in mode '${mode.shortName}'.`);
+  for (let i = 0; i < mode.channelKeys.length; i++) {
+    checkModeChannelKeys(i, mode, usedChannelKeysInMode)
+  }
+}
+
+/**
+ * Checks if the given complex channel insert block is valid.
+ * @param {!Object} complexData The raw JSON data of the insert block.
+ * @param {!Mode} mode The mode in which this insert block is used.
+ */
+function checkChannelInsertBlock(complexData, mode) {
+  switch (complexData.insert) {
+    case 'matrixChannels':
+      checkMatrixInsert(complexData, mode);
+      return;
+
+    // we need no default as other values are prohibited by the schema
+  }
+}
+
+/**
+ * Checks the given matrix channel insert.
+ * @param {!object} matrixInsert The matrix channel reference specified in the mode's json channel list.
+ * @param {'matrixChannels'} matrixInsert.insert Indicates that this is a matrix insert.
+ * @param {'eachPixel'|'eachPixelGroup'|string[]} matrixInsert.repeatFor The pixelKeys or pixelGroupKeys for which the specified channels should be repeated.
+ * @param {'perPixel'|'perChannel'} matrixInsert.channelOrder Order the channels like RGB1/RGB2/RGB3 or R123/G123/B123.
+ * @param {!Array.<string, null>} matrixInsert.templateChannels The template channel keys (and aliases) or null channels to be repeated.
+ * @param {!Mode} mode The mode in which this insert block is used.
+ */
+function checkMatrixInsert(matrixInsert, mode) {
+  // custom repeat list
+  if (!['eachPixel', 'eachPixelGroup'].includes(matrixInsert.repeatFor)) {
+    const usedPixelKeys = new Set();
+
+    for (const pixelKey of matrixInsert.repeatFor) {
+      if (pixelKey in fixture.matrix.pixelKeyPositions) {
+        module.exports.checkUniqueness(
+          usedPixelKeys,
+          pixelKey,
+          `PixelKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
+        );
+      }
+      else if (pixelKey in fixture.matrix.pixelGroups) {
+        for (const singlePixelKey of fixture.matrix.pixelGroups[pixelKey]) {
+          module.exports.checkUniqueness(
+            usedPixelKeys,
+            singlePixelKey,
+            `PixelKey '${singlePixelKey}' in group '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
+          );
+        }
+      }
+      else {
+        result.errors.push(`Unknown pixelKey or pixelGroupKey '${pixelKey}'`);
+      }
+    }
+  }
+
+  for (const templateKey of matrixInsert.templateChannels) {
+    const templateChannelExists = fixture.templateChannels.some(ch => ch.allTemplateKeys.includes(templateKey));
+    if (!templateChannelExists) {
+      result.errors.push(`Template channel '${templateKey}' doesn\'t exist.`);
+    }
   }
 }
 
 /**
  * Check that a channel reference in a mode is valid.
- * @param {!number} chNumber The mode's channel index.
+ * @param {!number} chIndex The mode's channel index.
  * @param {!Mode} mode The mode to check.
- * @param {Object.<string, number>} modeChKeyCount An object to count the occurences of all used channel keys.
+ * @param {!Set<string>} usedChannelKeysInMode Which channels are already used in this mode. Also counts switched to channels.
  */
-function checkModeChannelReference(chNumber, mode, modeChKeyCount) {
-  const chReference = mode.jsonObject.channels[chNumber];
+function checkModeChannelKeys(chIndex, mode, usedChannelKeysInMode) {
+  const chKey = mode.channelKeys[chIndex];
 
-  // this is a null channel 
-  if (chReference === null) {
-    return;
-  }
-
-  // this is a complex channel insert block (e.g. matrices)
-  if (typeof chReference !== 'string') {
-    checkChannelInsertBlock(chReference, modeChKeyCount);
-    return;
-  }
-
-  const channel = mode.fixture.getChannelByKey(chReference);
+  let channel = mode.fixture.getChannelByKey(chKey);
   if (channel === null) {
-    result.errors.push(`Channel '${chReference}' is referenced from mode '${mode.shortName}' but is not defined.`);
+    result.errors.push(`Channel '${chKey}' is referenced from mode '${mode.shortName}' but is not defined.`);
     return;
+  }
+
+  if (channel instanceof MatrixChannel) {
+    channel = channel.wrappedChannel;
   }
 
   usedChannelKeys.add(channel.key.toLowerCase());
-  modeChKeyCount[channel.key] = (modeChKeyCount[channel.key] || 0) + 1;
+  checkChannelUniquenessInMode(chKey, mode, usedChannelKeysInMode)
 
   if (channel instanceof SwitchingChannel) {
-    checkSwitchingChannelReference(channel, mode, modeChKeyCount);
+    checkSwitchingChannelReference(channel, mode, usedChannelKeysInMode);
     return;
   }
 
@@ -557,35 +610,21 @@ function checkModeChannelReference(chNumber, mode, modeChKeyCount) {
   }
 }
 
-function checkChannelInsertBlock(complexData, modeChKeyCount) {
-  switch (complexData.insert) {
-    case 'matrixChannels':
-      checkMatrixReference(complexData, modeChKeyCount);
-      return;
-
-    // we need no default as other values are prohibited by the schema
-  }
-}
-
-function checkMatrixReference(reference, modeChKeyCount) {
-  // TODO
-}
-
-function checkSwitchingChannelReference(channel, mode, modeChKeyCount) {
+function checkSwitchingChannelReference(channel, mode, usedChannelKeysInMode) {
   // the mode must also contain the trigger channel
   if (mode.getChannelIndex(channel.triggerChannel) === -1) {
     result.errors.push(`mode '${mode.shortName}' uses switching channel '${channel.key}' but is missing its trigger channel '${channel.triggerChannel.key}'`);
   }
 
-  // if the channel can be switched to a fine channel, the mode must also contain coarser channels
   for (const switchToChannel of channel.switchToChannels) {
     if (switchToChannel === null) {
-      // already raised an issue when switching channel was defined
+      // channel doesn't exist, but we already added an error when the switching channel was defined
       continue;
     }
 
-    modeChKeyCount[switchToChannel.key] = (modeChKeyCount[switchToChannel.key] || 0) + 1;
+    checkChannelUniquenessInMode(switchToChannel.key, mode, usedChannelKeysInMode)
 
+    // if the channel can be switched to a fine channel, the mode must also contain coarser channels
     if (switchToChannel instanceof FineChannel) {
       checkCoarserChannelsInMode(switchToChannel, mode);
     }
@@ -605,6 +644,16 @@ function checkCoarserChannelsInMode(channel, mode) {
   if (notInMode.length > 0) {
     result.errors.push(`Mode '${mode.shortName}' contains the fine channel '${channel.key}' but is missing its coarser channels ${notInMode}.`);
   }
+}
+
+/**
+ * A mode must not use the same channel (key) more than once.
+ * @param {!string} channelKey The channel to test if it was already used in the mode.
+ * @param {!Mode} mode The respective Mode object.
+ * @param {!Set<string>} usedChannelKeysInMode Which channels are already used in this mode. Also counts switched to channels.
+ */
+function checkChannelUniquenessInMode(channelKey, mode, usedChannelKeysInMode) {
+  module.exports.checkUniqueness(usedChannelKeysInMode, channelKey, `Channel '${channelKey}' is used more than once in ${mode.shortName}`);
 }
 
 function checkPanTiltMaxInPhysical(channel, mode) {
