@@ -245,7 +245,7 @@ function checkTemplateChannel(templateChannel) {
   for (const key of templateChannel.allTemplateKeys) {
     checkTemplateVariables(key, ['$pixelKey']);
     if (!(key in fixture.usedPixelKeys)) {
-      result.errors.push(`Template channel '${key}' is never used.`);
+      result.warnings.push(`Template channel '${key}' is never used.`);
     }
   }
 
