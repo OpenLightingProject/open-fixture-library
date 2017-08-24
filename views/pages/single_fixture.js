@@ -60,6 +60,8 @@ module.exports = function(options) {
   str += '<section class="fixture-info card">';
   str += handleFixtureInfo();
   str += '</section>';
+  
+  // str += fixture.allChannelKeys.join('<br />');
 
   str += '<section class="fixture-modes">';
   str += fixture.modes.map(handleMode).join('');
@@ -248,6 +250,8 @@ function handleMode(mode) {
     str += handlePhysicalData(mode.physicalOverride);
     str += '</section>';
   }
+  
+  // str += mode.channelKeys.join('<br />');
 
   str += '<h3>Channels</h3>';
   str += '<ol>';
@@ -300,9 +304,9 @@ function handleChannel(channel, mode) {
     str += '  <span class="value">';
 
     for (let i=0; i<finenessInMode; i++) {
-      const heading = getChannelHeading(channel.fineChannelAliases[i]);
-      const position = mode.getChannelIndex(channel.key) + 1;
-      str +=  `${heading} (channel ${position})`;
+      const fineAlias = channel.fineChannelAliases[i];
+      const position = mode.getChannelIndex(fineAlias) + 1;
+      str += `${fineAlias} (channel ${position})`;
     }
 
     str += '</span>';
@@ -435,9 +439,13 @@ function handleSwitchingChannel(channel, mode) {
   let str = `<div>Switch depending on ${channel.triggerChannel.name}'s value (channel ${triggerChannelIndex}):</div>`;
   str += '<ol>';
   
-  for (const switchToChannel of channel.switchToChannels) {
+  for (let switchToChannel of channel.switchToChannels) {
     str += '<li>';
     str += '<details class="channel">';
+    
+    if (switchToChannel instanceof MatrixChannel) {
+      switchToChannel = switchToChannel.wrappedChannel;
+    }
 
     str += '<summary>';
     str += getChannelHeading(switchToChannel);
