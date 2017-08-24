@@ -118,6 +118,13 @@ function handleFixtureInfo() {
     str += handlePhysicalData(fixture.physical);
     str += '</section>';
   }
+  
+  if (fixture.matrix !== null) {
+    str += '<h3 class="physical">Matrix</h3>';
+    str += '<section class="matrix">';
+    str += handleFixtureMatrix(fixture.matrix);
+    str += '</section>';
+  }
 
   return str;
 }
@@ -204,7 +211,7 @@ function handlePhysicalData(physical) {
 
     str += '</section>';
   }
-
+  
   if (physical.hasFocus) {
     str += '<section class="physical-focus">';
     str += '<h4>Focus</h4>';
@@ -232,8 +239,39 @@ function handlePhysicalData(physical) {
 
     str += '</section>';
   }
+  
+  if (physical.hasMatrixPixels) {
+    str += '<section class="physical-matrixPixels">';
+    str += '<h4>Matrix pixels</h4>';
+
+    if (physical.matrixPixelsDimensions !== null) {
+      str += `<section class="physical-dimensions">
+        <span class="label">Pixel dimensions</span>
+        <span class="value">
+          ${physical.matrixPixelsDimensions[0]} &times; ${physical.matrixPixelsDimensions[1]} &times; ${physical.matrixPixelsDimensions[2]}mm
+          <span class="hint">width &times; height &times; depth</span>
+        </span>
+      </section>`;
+    }
+
+    if (physical.matrixPixelsSpacing !== null) {
+      str += `<section class="physical-dimensions">
+        <span class="label">Pixel spacing</span>
+        <span class="value">
+          ${physical.matrixPixelsSpacing[0]} &times; ${physical.matrixPixelsSpacing[1]} &times; ${physical.matrixPixelsSpacing[2]}mm
+          <span class="hint">left/right &times; top/bottom &times; ahead/aback</span>
+        </span>
+      </section>`;
+    }
+
+    str += '</section>';
+  }
 
   return str;
+}
+
+function handleFixtureMatrix(matrix) {
+  return '';
 }
 
 function handleMode(mode) {
