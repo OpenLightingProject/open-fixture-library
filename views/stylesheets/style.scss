@@ -24,20 +24,20 @@ $light-green-500: #8bc34a;
 $light-green-600: #7cb342;
 $light-green-700: #689f38;
 
-$primary-text-dark:     rgba(#000, 0.87);
-$secondary-text-dark:   rgba(#000, 0.54);
-$disabled-text-dark:    rgba(#000, 0.38);
-$divider-dark:          rgba(#000, 0.12);
-$icon-dark:             rgba(#000, 0.54);
-$icon-dark-hover:       rgba(#000, 0.38);
-$icon-inactive-dark:    rgba(#000, 0.27);
+$primary-text-dark:     rgba(0, 0, 0, 0.87);
+$secondary-text-dark:   rgba(0, 0, 0, 0.54);
+$disabled-text-dark:    rgba(0, 0, 0, 0.38);
+$divider-dark:          rgba(0, 0, 0, 0.12);
+$icon-dark:             rgba(0, 0, 0, 0.54);
+$icon-dark-hover:       rgba(0, 0, 0, 0.38);
+$icon-inactive-dark:    rgba(0, 0, 0, 0.27);
 
-$primary-text-light:    rgba(#fff, 1.00);
-$secondary-text-light:  rgba(#fff, 0.70);
-$disabled-text-light:   rgba(#fff, 0.50);
-$divider-light:         rgba(#fff, 0.12);
-$icon-light:            rgba(#fff, 0.80);
-$icon-inactive-light:   rgba(#fff, 0.50);
+$primary-text-light:    rgba(255, 255, 255, 1.00);
+$secondary-text-light:  rgba(255, 255, 255, 0.70);
+$disabled-text-light:   rgba(255, 255, 255, 0.50);
+$divider-light:         rgba(255, 255, 255, 0.12);
+$icon-light:            rgba(255, 255, 255, 0.80);
+$icon-inactive-light:   rgba(255, 255, 255, 0.50);
 
 
 /* Width value for media queries */

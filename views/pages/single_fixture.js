@@ -122,7 +122,7 @@ function handleFixtureInfo() {
   if (fixture.matrix !== null) {
     str += '<h3 class="physical">Matrix</h3>';
     str += '<section class="matrix">';
-    str += handleFixtureMatrix(fixture.matrix);
+    str += handleFixtureMatrix(fixture.matrix, fixture.physical);
     str += '</section>';
   }
 
@@ -270,8 +270,37 @@ function handlePhysicalData(physical) {
   return str;
 }
 
-function handleFixtureMatrix(matrix) {
-  return '';
+/**
+ * Creates a visual representation of the fixture's matrix.
+ * @param {!Matrix} matrix The fixture's matrix object.
+ * @param {?Physical} physical The physical information about the fixture.
+ */
+function handleFixtureMatrix(matrix, physical) {
+  let str = '';
+
+  let style = '';
+  if (physical !== null && physical.hasMatrixPixels) {
+    const scale = 1/10; // mm
+    style += `width: ${physical.matrixPixelsDimensions[0]*scale}mm; `;
+    style += `height: ${physical.matrixPixelsDimensions[1]*scale}mm; `;
+    style += `line-height: ${physical.matrixPixelsDimensions[1]*scale}mm; `;
+    style += `margin-right: ${physical.matrixPixelsSpacing[0]*scale}mm; `;
+    style += `margin-bottom: ${physical.matrixPixelsSpacing[1]*scale}mm; `;
+  }
+
+  for (const zLevel of matrix.pixelKeys) {
+    str += '<div class="z-level">';
+    for (const row of zLevel) {
+      str += '<div class="row">';
+      for (const pixelKey of row) {
+        str += `<div class="pixel" style="${style}">${pixelKey || ''}</div>`;
+      }
+      str += '</div>';
+    }
+    str += '</div>';
+  }
+
+  return str;
 }
 
 function handleMode(mode) {
