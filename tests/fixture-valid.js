@@ -509,7 +509,7 @@ function checkMode(mode) {
   }
 
   for (let i = 0; i < mode.channelKeys.length; i++) {
-    checkModeChannelKeys(i, mode, usedChannelKeysInMode)
+    checkModeChannelKeys(i, mode, usedChannelKeysInMode);
   }
 }
 
@@ -593,7 +593,7 @@ function checkModeChannelKeys(chIndex, mode, usedChannelKeysInMode) {
   }
 
   usedChannelKeys.add(channel.key.toLowerCase());
-  checkChannelUniquenessInMode(chKey, mode, usedChannelKeysInMode)
+  checkChannelUniquenessInMode(chKey, mode, usedChannelKeysInMode);
 
   if (channel instanceof SwitchingChannel) {
     checkSwitchingChannelReference(channel, mode, usedChannelKeysInMode);
@@ -622,7 +622,7 @@ function checkSwitchingChannelReference(channel, mode, usedChannelKeysInMode) {
       continue;
     }
 
-    checkChannelUniquenessInMode(switchToChannel.key, mode, usedChannelKeysInMode)
+    checkChannelUniquenessInMode(switchToChannel.key, mode, usedChannelKeysInMode);
 
     // if the channel can be switched to a fine channel, the mode must also contain coarser channels
     if (switchToChannel instanceof FineChannel) {
