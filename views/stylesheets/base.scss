@@ -124,6 +124,27 @@ input[type=number] {
   }
 }
 
+select.error,
+textarea.error,
+input[type="text"].error,
+input[type="email"].error,
+input[type="search"].error,
+input[type="url"].error,
+input[type="number"].error {
+  border-color: red;
+  box-shadow: 0 0 4px rgba(255, 0, 0, 0.4);
+}
+
+.error-message {
+  display: block;
+  color: red;
+}
+.validate-group:not(.error) .error-message {
+  /* display: none; apparently moves the focus */
+  visibility: hidden;
+  height: 0;
+}
+
 textarea {
   min-height: 4em;
   resize: vertical;

@@ -1,0 +1,300 @@
+{
+  "name": "Hydrabeam 100",
+  "shortName": "CLHB100RGBW",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2017-08-24",
+    "lastModifyDate": "2017-08-24"
+  },
+  "manualURL": "http://adamhall.invaliddomain.de/out/media/downloads/MARKEN/CAMEO/CLHB100RGBW/CLHB100RGBW_CAMEO_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf",
+  "physical": {
+    "dimensions": [160, 240, 100],
+    "weight": 1.9,
+    "power": 20,
+    "DMXconnector": "3-pin",
+    "lens": {
+      "degreesMinMax": [4.5, 4.5]
+    },
+    "focus": {
+      "panMax": 540,
+      "tiltMax": 270
+    }
+  },
+  "availableChannels": {
+    "Auto Modes": {
+      "type": "Effect",
+      "color": "Red",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "No function"
+        },
+        {
+          "range": [8, 30],
+          "name": "Show mode 1"
+        },
+        {
+          "range": [31, 53],
+          "name": "Show mode 2"
+        },
+        {
+          "range": [54, 76],
+          "name": "Show mode 3"
+        },
+        {
+          "range": [77, 99],
+          "name": "Show mode 4"
+        },
+        {
+          "range": [100, 122],
+          "name": "Sound control"
+        },
+        {
+          "range": [123, 199],
+          "name": "No function"
+        },
+        {
+          "range": [200, 224],
+          "name": "Reset"
+        },
+        {
+          "range": [225, 255],
+          "name": "No function"
+        }
+      ]
+    },
+    "Sound Sensitivity": {
+      "type": "Intensity"
+    },
+    "Auto Mode Speed": {
+      "type": "Speed",
+      "defaultValue": 127
+    },
+    "Dimmer": {
+      "type": "Intensity"
+    },
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32639
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32639
+    },
+    "Head Speed": {
+      "type": "Speed",
+      "defaultValue": 127
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "No function"
+        },
+        {
+          "range": [11, 255],
+          "name": "Strobe slow-fast"
+        }
+      ]
+    },
+    "Color Macros": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 30],
+          "name": "Blackout",
+          "color": "#000000"
+        },
+        {
+          "range": [31, 45],
+          "name": "R (Red)",
+          "color": "#ff0000",
+          "color2": "#000000"
+        },
+        {
+          "range": [46, 60],
+          "name": "G (Green)",
+          "color": "#00ff00",
+          "color2": "#000000"
+        },
+        {
+          "range": [61, 75],
+          "name": "B (Blue)",
+          "color": "#0000ff",
+          "color2": "#000000"
+        },
+        {
+          "range": [76, 90],
+          "name": "W (White)",
+          "color": "#000000",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [91, 105],
+          "name": "RG",
+          "color": "#ffff00",
+          "color2": "#000000"
+        },
+        {
+          "range": [106, 120],
+          "name": "RB",
+          "color": "#ff00ff",
+          "color2": "#000000"
+        },
+        {
+          "range": [121, 135],
+          "name": "RW",
+          "color": "#ff0000",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [136, 150],
+          "name": "GB",
+          "color": "#00ffff",
+          "color2": "#000000"
+        },
+        {
+          "range": [151, 165],
+          "name": "GW",
+          "color": "#00ff00",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [166, 180],
+          "name": "BW",
+          "color": "#0000ff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [181, 195],
+          "name": "RGB",
+          "color": "#ffffff",
+          "color2": "#000000"
+        },
+        {
+          "range": [196, 210],
+          "name": "RGW",
+          "color": "#ffff00",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [211, 225],
+          "name": "RBW",
+          "color": "#ff00ff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [226, 240],
+          "name": "GBW",
+          "color": "#00ffff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [241, 255],
+          "name": "RGBW",
+          "color": "#ffffff",
+          "color2": "#ffffff"
+        }
+      ]
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "White": {
+      "type": "Single Color",
+      "color": "White"
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Auto Modes",
+        "Sound Sensitivity",
+        "Auto Mode Speed",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Head Speed",
+        "Dimmer",
+        "Strobe",
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Head Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Head Speed",
+        "Dimmer",
+        "Strobe",
+        "Color Macros",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "14-channel",
+      "shortName": "14ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Head Speed",
+        "Dimmer",
+        "Strobe",
+        "Color Macros",
+        "Auto Modes",
+        "Sound Sensitivity",
+        "Auto Mode Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
