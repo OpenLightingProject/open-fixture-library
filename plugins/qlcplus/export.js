@@ -61,11 +61,11 @@ function addChannel(xml, channel) {
 
   // use default channel's data
   if (channel instanceof SwitchingChannel) {
-    channel = channel.fixture.getChannelByKey(channel.defaultChannelKey);
-  }
+    channel = channel.defaultChannel;
 
-  if (channel instanceof MatrixChannel) {
-    channel = channel.wrappedChannel;
+    if (channel instanceof MatrixChannel) {
+      channel = channel.wrappedChannel;
+    }
   }
 
   let xmlGroup = xmlChannel.element({
@@ -88,7 +88,6 @@ function addChannel(xml, channel) {
     capabilities = channel.capabilities;
   }
 
-  console.log(channel);
   const chType = getChannelType(channel);
   xmlGroup.text(chType);
 

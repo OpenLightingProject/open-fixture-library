@@ -4,6 +4,7 @@ const sanitize = require('sanitize-filename');
 const Channel = require('../../lib/model/Channel.js');
 const FineChannel = require('../../lib/model/FineChannel.js');
 const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
+const MatrixChannel = require('../../lib/model/MatrixChannel.js');
 
 module.exports.name = 'D::Light';
 module.exports.version = '0.1.0';
@@ -145,6 +146,10 @@ function addCapability(xmlCapabilities, cap) {
 }
 
 function getDefaultValue(channel) {
+  if (channel instanceof MatrixChannel) {
+    channel = channel.wrappedChannel;
+  }
+
   if (channel instanceof SwitchingChannel) {
     return getDefaultValue(channel.defaultChannel);
   }
@@ -168,6 +173,10 @@ function getChannelsByAttribute(channels) {
   };
 
   for (let channel of channels) {
+    if (channel instanceof MatrixChannel) {
+      channel = channel.wrappedChannel;
+    }
+
     channelsByAttribute[getChannelAttribute(channel)].push(channel);
   }
 
@@ -184,6 +193,10 @@ function getChannelsByAttribute(channels) {
 function getChannelAttribute(channel) {
   if (channel instanceof SwitchingChannel) {
     channel = channel.defaultChannel;
+
+    if (channel instanceof MatrixChannel) {
+      channel = channel.wrappedChannel;
+    }
   }
   if (channel instanceof FineChannel) {
     if (channel.fineness === 1) {
