@@ -61,8 +61,6 @@ module.exports = function(options) {
   str += handleFixtureInfo();
   str += '</section>';
   
-  // str += fixture.allChannelKeys.join('<br />');
-
   str += '<section class="fixture-modes">';
   str += fixture.modes.map(handleMode).join('');
   str += '<div class="clearfix"></div>';
@@ -251,8 +249,6 @@ function handleMode(mode) {
     str += '</section>';
   }
   
-  // str += mode.channelKeys.join('<br />');
-
   str += '<h3>Channels</h3>';
   str += '<ol>';
   mode.channels.forEach(channel => {
