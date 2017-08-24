@@ -3,6 +3,7 @@ const sanitize = require('sanitize-filename');
 
 const FineChannel = require('../../lib/model/FineChannel.js');
 const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
+const MatrixChannel = require('../../lib/model/MatrixChannel.js');
 const Capability = require('../../lib/model/Capability.js');
 const Physical = require('../../lib/model/Physical.js');
 
@@ -48,6 +49,10 @@ module.exports.export = function exportQLCplus(fixtures, options) {
 };
 
 function addChannel(xml, channel) {
+  if (channel instanceof MatrixChannel) {
+    channel = channel.wrappedChannel;
+  }
+
   let xmlChannel = xml.element({
     Channel: {
       '@Name': channel.uniqueName
@@ -57,6 +62,10 @@ function addChannel(xml, channel) {
   // use default channel's data
   if (channel instanceof SwitchingChannel) {
     channel = channel.fixture.getChannelByKey(channel.defaultChannelKey);
+  }
+
+  if (channel instanceof MatrixChannel) {
+    channel = channel.wrappedChannel;
   }
 
   let xmlGroup = xmlChannel.element({
@@ -79,6 +88,7 @@ function addChannel(xml, channel) {
     capabilities = channel.capabilities;
   }
 
+  console.log(channel);
   const chType = getChannelType(channel);
   xmlGroup.text(chType);
 
@@ -130,13 +140,13 @@ function addMode(xml, mode) {
     xmlMode.element({
       Channel: {
         '@Number': index,
-        '#text': channel.uniqueName
+        '#text': channel.uniqueName || channel.wrappedChannel.uniqueName
       }
     });
   });
 
-  for (const headName of Object.keys(mode.fixture.heads)) {
-    addHead(xmlMode, mode, mode.fixture.heads[headName]);
+  if (mode.fixture.matrix !== null) {
+    addHeads(xmlMode, mode);
   }
 }
 
@@ -177,19 +187,29 @@ function addPhysical(xmlMode, physical) {
   }
 }
 
-function addHead(xmlMode, mode, headChannels) {
-  const channelIndices = headChannels.map(chKey => mode.getChannelIndex(chKey))
-    .filter(index => index !== -1);
-
-  if (channelIndices.length > 0) {
-    let xmlHead = xmlMode.element({
-      Head: {}
+function addHeads(xmlMode, mode) {
+  const pixelKeys = Object.keys(mode.fixture.matrix.pixelKeyPositions).concat(mode.fixture.matrix.pixelGroupKeys);
+  for (const pixelKey of pixelKeys) {
+    const channels = mode.channels.filter(channel => {
+      if (channel instanceof MatrixChannel) {
+        return channel.pixelKey === pixelKey;
+      }
+      else if (channel instanceof SwitchingChannel && channel.defaultChannel instanceof MatrixChannel) {
+        return channel.defaultChannel.pixelKey === pixelKey;
+      }
+      return false;
     });
 
-    for (const index of channelIndices) {
-      xmlHead.element({
-        Channel: index
+    if (channels.length > 0) {
+      let xmlHead = xmlMode.element({
+        Head: {}
       });
+
+      for (const ch of channels) {
+        xmlHead.element({
+          Channel: mode.getChannelIndex(ch.key)
+        });
+      }
     }
   }
 }
