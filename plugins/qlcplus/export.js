@@ -213,11 +213,22 @@ function addHeads(xmlMode, mode) {
   }
 }
 
+/**
+ * Determines the QLC+ fixture type out of the fixture's categories.
+ * @param {!Fixture} fixture The Fixture instance whose QLC+ type has to be determined.
+ * @return {!string} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
+ */
 function getFixtureType(fixture) {
-  if (fixture.mainCategory === 'Blinder') {
-    return fixture.categories[1] || 'Other';
+  const ignoredCats = ['Blinder', 'Matrix'];
+
+  for (const category of fixture.categories) {
+    if (ignoredCats.includes(category)) {
+      continue;
+    }
+    return category;
   }
-  return fixture.mainCategory;
+  
+  return 'Other';
 }
 
 // converts a Channel's type into a valid QLC+ channel type
