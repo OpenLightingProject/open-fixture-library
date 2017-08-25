@@ -65,6 +65,8 @@ module.exports = function(options) {
   str += fixture.modes.map(handleMode).join('');
   str += '<div class="clearfix"></div>';
   str += '</section>'; // .fixture-modes
+  
+  options.footerHtml = '<script type="text/javascript" src="/js/single-fixture.js" async></script>';
 
   str += require('../includes/footer.js')(options);
 
@@ -122,7 +124,7 @@ function handleFixtureInfo() {
   if (fixture.matrix !== null) {
     str += '<h3 class="physical">Matrix</h3>';
     str += '<section class="matrix">';
-    str += handleFixtureMatrix(fixture.matrix, fixture.physical);
+    str += handleFixtureMatrix();
     str += '</section>';
   }
 
@@ -275,29 +277,46 @@ function handlePhysicalData(physical) {
  * @param {!Matrix} matrix The fixture's matrix object.
  * @param {?Physical} physical The physical information about the fixture.
  */
-function handleFixtureMatrix(matrix, physical) {
+function handleFixtureMatrix() {
   let str = '';
 
-  let style = '';
-  if (physical !== null && physical.hasMatrixPixels) {
+  let pixelSizing = '';
+  if (fixture.physical !== null && fixture.physical.hasMatrixPixels) {
     const scale = 1/10; // mm
-    style += `width: ${physical.matrixPixelsDimensions[0]*scale}mm; `;
-    style += `height: ${physical.matrixPixelsDimensions[1]*scale}mm; `;
-    style += `line-height: ${physical.matrixPixelsDimensions[1]*scale}mm; `;
-    style += `margin-right: ${physical.matrixPixelsSpacing[0]*scale}mm; `;
-    style += `margin-bottom: ${physical.matrixPixelsSpacing[1]*scale}mm; `;
+    pixelSizing += `width: ${fixture.physical.matrixPixelsDimensions[0]*scale}mm; `;
+    pixelSizing += `height: ${fixture.physical.matrixPixelsDimensions[1]*scale}mm; `;
+    pixelSizing += `line-height: ${fixture.physical.matrixPixelsDimensions[1]*scale}mm; `;
+    pixelSizing += `margin-right: ${fixture.physical.matrixPixelsSpacing[0]*scale}mm; `;
+    pixelSizing += `margin-bottom: ${fixture.physical.matrixPixelsSpacing[1]*scale}mm; `;
   }
 
-  for (const zLevel of matrix.pixelKeys) {
+  for (const zLevel of fixture.matrix.pixelKeys) {
     str += '<div class="z-level">';
     for (const row of zLevel) {
       str += '<div class="row">';
       for (const pixelKey of row) {
-        str += `<div class="pixel" style="${style}">${pixelKey || ''}</div>`;
+        const pixelGroupKeys = fixture.matrix.pixelGroupKeys.filter(
+          key => fixture.matrix.pixelGroups[key].includes(pixelKey)
+        );
+        str += `<div class="pixel" style="${pixelSizing}" data-pixelGroups="${pixelGroupKeys.join(' ')}">${pixelKey || ''}</div>`;
       }
       str += '</div>';
     }
     str += '</div>';
+  }
+  
+  if (fixture.matrix.pixelGroupKeys.length > 0) {
+    str += '<section class="matrix-pixelGroups">';
+    str += '<h4>Pixel groups</h4>';
+
+    str += fixture.matrix.pixelGroupKeys.map(key => 
+      `<section class="matrix-pixelGroup" data-pixelGroup="${key}">
+        <span class="label">${key}</span>
+        <span class="value">${fixture.matrix.pixelGroups[key].join(', ')}</span>
+      </section>`
+    ).join('');
+
+    str += '</section>';
   }
 
   return str;

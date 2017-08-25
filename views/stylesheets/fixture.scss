@@ -197,9 +197,14 @@ section {
       margin-left: -1px;
       vertical-align: top;
       border: 1px solid transparent;
+      transition: background .2s;
 
       &:not(:empty) {
         border-color: $icon-inactive-dark;
+      }
+
+      &.highlight {
+        background: $divider-dark;
       }
     }
   }
