@@ -43,7 +43,7 @@ const Color = schema(/^#[0-9a-f]{6}$/);
 
 const DimensionsXYZ = Array.of(3, Number.min(0));
 
-const Category = schema(['Blinder', 'Color Changer', 'Dimmer', 'Effect', 'Fan', 'Flower', 'Hazer', 'Laser', 'Moving Head', 'Scanner', 'Smoke', 'Strobe', 'Other']);
+const Category = schema(['Blinder', 'Color Changer', 'Dimmer', 'Effect', 'Fan', 'Flower', 'Hazer', 'Laser', 'Matrix', 'Moving Head', 'Scanner', 'Smoke', 'Strobe', 'Other']);
 
 const Physical = schema({
   '?dimensions': DimensionsXYZ, // width, height, depth (in mm)
