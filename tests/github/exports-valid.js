@@ -21,14 +21,16 @@ pullRequest.init()
     messagePromises.push(getModelMessagePromise());
   }
   else {
-    const plugins = changedComponents.added.exports.concat(changedComponents.modified.exports);
-    for (const plugin of plugins) {
+    // only plugins that have export tests
+    const changedPlugins = changedComponents.added.exports.concat(changedComponents.modified.exports)
+      .filter(key => Object.keys(plugins[key].exportTests).length > 0);
+    for (const plugin of changedPlugins) {
       messagePromises.push(getPluginMessagePromise(plugin));
     }
 
     // only export tests that are not covered by plugin tasks (which run all tests)
     const exportTests = changedComponents.added.exportTests.concat(changedComponents.modified.exportTests) // stored as [plugin, test]
-      .filter(([plugin, test]) => !plugins.includes(plugin));
+      .filter(([plugin, test]) => !changedPlugins.includes(plugin));
     for (const [plugin, test] of exportTests) {
       messagePromises.push(getExportTestMessagePromise(plugin, test));
     }
