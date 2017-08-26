@@ -7,6 +7,7 @@ const FineChannel = require('../../lib/model/FineChannel.js');
 const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
 const MatrixChannel = require('../../lib/model/MatrixChannel.js');
 
+/** @type {!Fixture} */
 let fixture;
 
 module.exports = function(options) {
@@ -80,6 +81,10 @@ function getDateString(date) {
 function getChannelHeading(channel) {
   if (channel === null) {
     return 'Error: Channel not found';
+  }
+  
+  if (channel instanceof MatrixChannel) {
+    channel = channel.wrappedChannel;
   }
 
   if (channel instanceof NullChannel) {
@@ -308,6 +313,7 @@ function handleFixtureMatrix() {
   if (fixture.matrix.pixelGroupKeys.length > 0) {
     str += '<section class="matrix-pixelGroups">';
     str += '<h4>Pixel groups</h4>';
+    str += '<span class="hint">Hover over the pixel groups to highlight the corresponding pixels.</span>';
 
     str += fixture.matrix.pixelGroupKeys.map(key => 
       `<section class="matrix-pixelGroup" data-pixelGroup="${key}">
@@ -341,19 +347,20 @@ function handleMode(mode) {
     str += '<li>';
     str += '<details class="channel">';
 
+    let chConstructor = channel.constructor;
     if (channel instanceof MatrixChannel) {
-      channel = channel.wrappedChannel;
+      chConstructor = channel.wrappedChannel.constructor;
     }
 
     str += `<summary>${getChannelHeading(channel)}</summary>`;
 
-    if (channel instanceof FineChannel) {
+    if (chConstructor === FineChannel) {
       str += handleFineChannel(channel, mode);
     }
-    else if (channel instanceof SwitchingChannel) {
+    else if (chConstructor === SwitchingChannel) {
       str += handleSwitchingChannel(channel, mode);
     }
-    else if (channel instanceof Channel) {
+    else if (chConstructor === Channel) {
       str += handleChannel(channel, mode);
     }
 
@@ -367,7 +374,14 @@ function handleMode(mode) {
 }
 
 function handleChannel(channel, mode) {
-  let str = `<section class="channel-type">
+  let str = '';
+
+  if (channel instanceof MatrixChannel) {
+    str += handleMatrixChannel(channel);
+    channel = channel.wrappedChannel;
+  }
+  
+  str += `<section class="channel-type">
     <span class="label">Type</span>
     <span class="value">${channel.type}</span>
   </section>`;
@@ -511,27 +525,36 @@ function handleCapabilities(channel, mode, finenessInMode) {
 }
 
 function handleFineChannel(channel, mode) {
+  let matrixStr = '';
+
+  if (channel instanceof MatrixChannel) {
+    matrixStr += handleMatrixChannel(channel);
+    channel = channel.wrappedChannel;
+  }
+
   const coarseChannelIndex = mode.getChannelIndex(channel.coarseChannel.key) + 1;
-  return `<div>Fine channel of ${channel.coarseChannel.name} (channel ${coarseChannelIndex})</div>`;
+  return `<div>Fine channel of ${channel.coarseChannel.name} (channel ${coarseChannelIndex})</div>` + matrixStr;
 }
 
 function handleSwitchingChannel(channel, mode) {
+  let str = '';
+
+  if (channel instanceof MatrixChannel) {
+    channel = channel.wrappedChannel;
+  }
+
   const triggerChannelIndex = mode.getChannelIndex(channel.triggerChannel.key) + 1;
 
-  let str = `<div>Switch depending on ${channel.triggerChannel.name}'s value (channel ${triggerChannelIndex}):</div>`;
+  str += `<div>Switch depending on ${channel.triggerChannel.name}'s value (channel ${triggerChannelIndex}):</div>`;
   str += '<ol>';
   
   for (let switchToChannel of channel.switchToChannels) {
     str += '<li>';
     str += '<details class="channel">';
-    
-    if (switchToChannel instanceof MatrixChannel) {
-      switchToChannel = switchToChannel.wrappedChannel;
-    }
 
     str += '<summary>';
     str += getChannelHeading(switchToChannel);
-    if (channel.defaultChannel === switchToChannel) {
+    if (channel.defaultChannel.key === switchToChannel.key) {
       str += ' (default)';
     }
     str += '</summary>';
@@ -539,13 +562,45 @@ function handleSwitchingChannel(channel, mode) {
     if (switchToChannel instanceof FineChannel) {
       str += handleFineChannel(switchToChannel, mode);
     }
-    else if (switchToChannel instanceof Channel) {
+    else {
       str += handleChannel(switchToChannel, mode);
     }
 
     str += '</li>';
   }
   str += '</ol>';
+
+  return str;
+}
+
+/**
+ * Creates some information about the channel's pixel and its position as label-value pairs to be included beneath other channel information.
+ * @param {!MatrixChannel} channel The MatrixChannel whose information should be used.
+ * @return {!string} The generated html code.
+ */
+function handleMatrixChannel(channel) {
+  let str = '';
+  
+  if (fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)) {
+    str += `<section class="channel-pixelGroup">
+      <span class="label">Pixel group</span>
+      <span class="value">${channel.pixelKey}</span>
+    </section>`;
+  }
+  else {
+    const [x, y, z] = fixture.matrix.pixelKeyPositions[channel.pixelKey];
+    str += `<section class="channel-pixel">
+      <span class="label">Pixel</span>
+      <span class="value">${channel.pixelKey}</span>
+    </section>
+    <section class="channel-pixel-position">
+      <span class="label">Pixel position</span>
+      <span class="value">
+        (${x}, ${y}, ${z})
+        <span class="hint">(X, Y, Z)</span>
+      </span>
+    </section>`;
+  }
 
   return str;
 }
