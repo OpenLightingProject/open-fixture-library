@@ -149,51 +149,17 @@ function handlePhysicalData(physical) {
     </section>`;
   }
 
-  if (physical.weight !== null) {
-    str += `<section class="physical-weight">
-      <span class="label">Weight</span>
-      <span class="value">${physical.weight}kg</span>
-    </section>`;
-  }
-
-  if (physical.power !== null) {
-    str += `<section class="physical-power">
-      <span class="label">Power</span>
-      <span class="value">${physical.power}W</span>
-    </section>`;
-  }
-
-  if (physical.DMXconnector !== null) {
-    str += `<section class="physical-DMXconnector">
-      <span class="label">DMX connector</span>
-      <span class="value">${physical.DMXconnector}</span>
-    </section>`;
-  }
+  str += getSimpleLabelValue('physical-weight', 'Weight', physical.weight, 'kg');
+  str += getSimpleLabelValue('physical-power', 'Power', physical.power, 'W');
+  str += getSimpleLabelValue('physical-DMXconnector', 'DMX connector', physical.DMXconnector);
 
   if (physical.hasBulb) {
     str += '<section class="physical-bulb">';
     str += '<h4>Bulb</h4>';
 
-    if (physical.bulbType !== null) {
-      str += `<section class="physical-bulb-type">
-        <span class="label">Bulb type</span>
-        <span class="value">${physical.bulbType}</span>
-      </section>`;
-    }
-
-    if (physical.bulbColorTemperature) {
-      str += `<section class="physical-bulb-colorTemperature">
-        <span class="label">Color temperature</span>
-        <span class="value">${physical.bulbColorTemperature}K</span>
-      </section>`;
-    }
-
-    if (physical.bulbLumens !== null) {
-      str += `<section class="physical-bulb-lumens">
-        <span class="label">Lumens</span>
-        <span class="value">${physical.bulbLumens}</span>
-      </section>`;
-    }
+    str += getSimpleLabelValue('physical-bulb-type', 'Bulb type', physical.bulbType);
+    str += getSimpleLabelValue('physical-bulb-colorTemperature', 'Color temperature', physical.bulbColorTemperature, 'K');
+    str += getSimpleLabelValue('physical-bulb-lumens', 'Lumens', physical.bulbLumens, 'lm');
 
     str += '</section>';
   }
@@ -202,12 +168,7 @@ function handlePhysicalData(physical) {
     str += '<section class="physical-lens">';
     str += '<h4>Lens</h4>';
 
-    if (physical.lensName !== null) {
-      str += `<section class="physical-lens-name">
-        <span class="label">Name</span>
-        <span class="value">${physical.lensName}</span>
-      </section>`;
-    }
+    str += getSimpleLabelValue('physical-lens-name', 'Name', physical.lensName);
 
     if (physical.lensDegreesMin !== null) {
       str += `<section class="physical-lens-degreesMinMax">
@@ -223,26 +184,9 @@ function handlePhysicalData(physical) {
     str += '<section class="physical-focus">';
     str += '<h4>Focus</h4>';
 
-    if (physical.focusType !== null) {
-      str += `<section class="physical-focus-type">
-        <span class="label">Type</span>
-        <span class="value">${physical.focusType}</span>
-      </section>`;
-    }
-
-    if (physical.focusPanMax !== null) {
-      str += `<section class="physical-focus-panMax">
-        <span class="label">Max. pan</span>
-        <span class="value">${physical.focusPanMax}°</span>
-      </section>`;
-    }
-
-    if (physical.focusTiltMax) {
-      str += `<section class="physical-focus-tiltMax">
-        <span class="label">Max. tilt</span>
-        <span class="value">${physical.focusTiltMax}°</span>
-      </section>`;
-    }
+    str += getSimpleLabelValue('physical-focus-type', 'Type', physical.focusType);
+    str += getSimpleLabelValue('physical-focus-panMax', 'Max. pan', physical.focusPanMax, '°');
+    str += getSimpleLabelValue('physical-focus-tiltMax', 'Max. tilt', physical.focusTiltMax, '°');
 
     str += '</section>';
   }
@@ -381,17 +325,8 @@ function handleChannel(channel, mode) {
     channel = channel.wrappedChannel;
   }
   
-  str += `<section class="channel-type">
-    <span class="label">Type</span>
-    <span class="value">${channel.type}</span>
-  </section>`;
-
-  if (channel.color !== null) {
-    str += `<section class="channel-color">
-      <span class="label">Color</span>
-      <span class="value">${channel.color}</span>
-    </section>`;
-  }
+  str += getSimpleLabelValue('channel-type', 'Type', channel.type);
+  str += getSimpleLabelValue('channel-color', 'Color', channel.color);
 
   const finenessInMode = channel.getFinenessInMode(mode);
   if (finenessInMode > 0) {
@@ -410,45 +345,19 @@ function handleChannel(channel, mode) {
   }
 
   if (channel.hasDefaultValue) {
-    str += `<section class="channel-defaultValue">
-      <span class="label">Default value</span>
-      <span class="value">${channel.getDefaultValueWithFineness(finenessInMode)}</span>
-    </section>`;
+    str += getSimpleLabelValue('channel-defaultValue', 'Default value', channel.getDefaultValueWithFineness(finenessInMode));
   }
 
   if (channel.hasHighlightValue) {
-    str += `<section class="channel-highlightValue">
-      <span class="label">Highlight value</span>
-      <span class="value">${channel.getHighlightValueWithFineness(finenessInMode)}</span>
-    </section>`;
+    str += getSimpleLabelValue('channel-highlightValue', 'Highlight value', channel.getHighlightValueWithFineness(finenessInMode));
   }
 
-  if (channel.invert) {
-    str += `<section class="channel-invert">
-      <span class="label">Invert</span>
-      <span class="value"><span class="checkbox" title="${channel.invert}">${channel.invert}</span></span>
-    </section>`;
-  }
-
-  if (channel.constant) {
-    str += `<section class="channel-constant">
-      <span class="label">Constant</span>
-      <span class="value"><span class="checkbox" title="${channel.constant}">${channel.constant}</span></span>
-    </section>`;
-  }
-
-  if (channel.crossfade) {
-    str += `<section class="channel-crossfade">
-      <span class="label">Crossfade</span>
-      <span class="value"><span class="checkbox" title="${channel.crossfade}">${channel.crossfade}</span></span>
-    </section>`;
-  }
+  str += getBooleanLabelValue('channel-invert', 'Invert', channel.invert);
+  str += getBooleanLabelValue('channel-constant', 'Constant', channel.constant);
+  str += getBooleanLabelValue('channel-crossfade', 'Crossfade', channel.crossfade);
 
   if (channel.precedence !== 'LTP') {
-    str += `<section class="channel-precedence">
-      <span class="label">Precedence</span>
-      <span class="value">${channel.precedence}</span>
-    </section>`;
+    str += getSimpleLabelValue('channel-precedence', 'Precedence', channel.precedence);
   }
 
   str += handleCapabilities(channel, mode, finenessInMode);
@@ -579,28 +488,54 @@ function handleSwitchingChannel(channel, mode) {
  * @return {!string} The generated html code.
  */
 function handleMatrixChannel(channel) {
-  let str = '';
-  
   if (fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)) {
-    str += `<section class="channel-pixelGroup">
-      <span class="label">Pixel group</span>
-      <span class="value">${channel.pixelKey}</span>
-    </section>`;
+    return getSimpleLabelValue('channel-pixelGroup', 'Pixel group', channel.pixelKey);
   }
-  else {
-    const [x, y, z] = fixture.matrix.pixelKeyPositions[channel.pixelKey];
-    str += `<section class="channel-pixel">
-      <span class="label">Pixel</span>
-      <span class="value">${channel.pixelKey}</span>
-    </section>
-    <section class="channel-pixel-position">
-      <span class="label">Pixel position</span>
-      <span class="value">
-        (${x}, ${y}, ${z})
-        <span class="hint">(X, Y, Z)</span>
-      </span>
-    </section>`;
-  }
+  
+  const [x, y, z] = fixture.matrix.pixelKeyPositions[channel.pixelKey];
+  let str = getSimpleLabelValue('channel-pixel', 'Pixel', channel.pixelKey);
+  str += `<section class="channel-pixel-position">
+    <span class="label">Pixel position</span>
+    <span class="value">
+      (${x}, ${y}, ${z})
+      <span class="hint">(X, Y, Z)</span>
+    </span>
+  </section>`;
 
   return str;
+}
+
+/**
+ * Generates a label-value pair if the given value is not null.
+ * @param {!string} className The html class to use.
+ * @param {!string} label The label text.
+ * @param {*} value The value of any type. If it is null, no html code will be returned.
+ * @param {!string} [unit=''] An optional string for the physical unit which will be ammended to the value.
+ * @return {!string} The generated html code.
+ */
+function getSimpleLabelValue(className, label, value, unit='') {
+  if (value !== null) {
+    return `<section class="${className}">
+      <span class="label">${label}</span>
+      <span class="value">${value}${unit}</span>
+    </section>`;
+  }
+  return '';
+}
+
+/**
+ * Generates a label-value pair if the given boolean is true.
+ * @param {!string} className The html class to use.
+ * @param {!string} label The label text.
+ * @param {!boolean} boolean True or false. If it is false, no html code will be returned.
+ * @return {!string} The generated html code.
+ */
+function getBooleanLabelValue(className, label, boolean, unit='') {
+  if (boolean) {
+    return `<section class="${className}">
+      <span class="label">${label}</span>
+      <span class="value"><span class="checkbox" title="${boolean}">${boolean}</span></span>
+    </section>`;
+  }
+  return '';
 }
