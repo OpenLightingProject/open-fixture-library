@@ -1,16 +1,31 @@
+const MatrixChannel = require('../../lib/model/MatrixChannel.js');
+
 module.exports = [{
   name: 'Multiple Focuses',
   description: 'True if multiple Pan / Tilt channels are used in some mode.',
   order: 59,
   hasFeature: fixture => fixture.modes.some(mode => {
     const multiPan = mode.channels.filter(
-      channel => channel.type === 'Pan'
+      channel => checkChannelType(channel, 'Pan')
     ).length > 1;
 
     const multiTilt = mode.channels.filter(
-      channel => channel.type === 'Tilt'
+      channel => checkChannelType(channel, 'Tilt')
     ).length > 1;
 
     return multiPan || multiTilt;
   })
 }];
+
+/**
+ * Checks if the channel has the specified type under consideration of matrix channels.
+ * @param {!AbstractChannel|MatrixChannel} channel
+ * @param {!string} type
+ * @return {!boolean} True if the channel has the specified type.
+ */
+function checkChannelType(channel, type) {
+  if (channel instanceof MatrixChannel) {
+    channel = channel.wrappedChannel;
+  }
+  return channel.type === type;
+}

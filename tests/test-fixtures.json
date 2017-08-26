@@ -20,10 +20,23 @@
       "floating-point-lens-degrees",
       "fine-channel-alias",
       "uses-switching-channels",
-      "uses-heads",
+      "matrix-pixelKeys",
+      "matrix-custom-layout",
+      "switching-matrix-channel",
       "multiple-focuses",
       "channels-in-multiple-modes",
       "fine-positions-1"
+    ]
+  },
+  {
+    "man": "chauvet-dj",
+    "key": "slimpar-pro-h-usb",
+    "name": "SlimPAR Pro H USB",
+    "features": [
+      "floating-point-weight",
+      "floating-point-power",
+      "uses-switching-channels",
+      "channels-in-multiple-modes"
     ]
   },
   {
@@ -49,6 +62,16 @@
     ]
   },
   {
+    "man": "eurolite",
+    "key": "led-kls-801",
+    "name": "LED KLS-801",
+    "features": [
+      "uses-switching-channels",
+      "matrix-pixelCount",
+      "matrix-channel-used-directly"
+    ]
+  },
+  {
     "man": "generic",
     "key": "rgb-fader",
     "name": "RGB Fader",
@@ -67,7 +90,8 @@
       "fine-channel-alias",
       "switching-fine-channels",
       "uses-switching-channels",
-      "uses-heads",
+      "matrix-pixelKeys",
+      "matrix-pixelGroups",
       "channels-in-multiple-modes"
     ]
   }
