@@ -29,7 +29,7 @@
       "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"]
     },
-    "Tilt continuous rotation": {
+    "Tilt Continuous Rotation": {
       "type": "Speed",
       "capabilities": [
         {
@@ -50,7 +50,7 @@
         }
       ]
     },
-    "Tilt continuous rotation speed": {
+    "Tilt Continuous Rotation Speed": {
       "type": "Speed",
       "capabilities": [
         {
@@ -75,7 +75,7 @@
       "type": "Single Color",
       "color": "White"
     },
-    "Color macros & Effects": {
+    "Color Macros & Effects": {
       "type": "Multi-Color",
       "crossfade": false,
       "capabilities": [
@@ -96,7 +96,7 @@
         },
         {
           "range": [31, 40],
-          "name": "Red & green",
+          "name": "Red & Green",
           "color": "#ffff00"
         },
         {
@@ -106,12 +106,12 @@
         },
         {
           "range": [51, 60],
-          "name": "Red & blue",
+          "name": "Red & Blue",
           "color": "#ff00ff"
         },
         {
           "range": [61, 70],
-          "name": "Green & blue",
+          "name": "Green & Blue",
           "color": "#00ffff"
         },
         {
@@ -167,7 +167,7 @@
         }
       ]
     },
-    "Master dimmer": {
+    "Master Dimmer": {
       "type": "Intensity"
     },
     "Programs": {
@@ -240,7 +240,7 @@
         }
       ]
     },
-    "Special functions": {
+    "Special Functions": {
       "type": "Maintenance",
       "capabilities": [
         {
@@ -273,7 +273,7 @@
         }
       ]
     },
-    "Dimmer curve": {
+    "Dimmer Curve": {
       "type": "Maintenance",
       "defaultValue": 255,
       "capabilities": [
@@ -311,20 +311,20 @@
       "channels": [
         "Pan",
         "Tilt",
-        "Tilt continuous rotation",
-        "Tilt continuous rotation speed",
+        "Tilt Continuous Rotation",
+        "Tilt Continuous Rotation Speed",
         "Red",
         "Green",
         "Blue",
         "White",
-        "Color macros & Effects",
+        "Color Macros & Effects",
         "Strobing",
-        "Master dimmer",
+        "Master Dimmer",
         "Programs",
         "Program Speed",
         "Pan / Tilt Speed",
-        "Special functions",
-        "Dimmer curve"
+        "Special Functions",
+        "Dimmer Curve"
       ]
     },
     {
@@ -335,20 +335,20 @@
         "Pan fine",
         "Tilt",
         "Tilt fine",
-        "Tilt continuous rotation",
-        "Tilt continuous rotation speed",
+        "Tilt Continuous Rotation",
+        "Tilt Continuous Rotation Speed",
         "Red",
         "Green",
         "Blue",
         "White",
-        "Color macros & Effects",
+        "Color Macros & Effects",
         "Strobing",
-        "Master dimmer",
+        "Master Dimmer",
         "Programs",
         "Program Speed",
         "Pan / Tilt Speed",
-        "Special functions",
-        "Dimmer curve"
+        "Special Functions",
+        "Dimmer Curve"
       ]
     }
   ]
