@@ -28,33 +28,18 @@
   "availableChannels": {
     "Pan": {
       "type": "Pan",
-      "fineChannelAliases": ["Pan fine"],
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "pan"
-        }
-      ]
+      "fineChannelAliases": ["Pan fine"]
     },
     "Tilt": {
       "type": "Tilt",
-      "fineChannelAliases": ["Tilt fine"],
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Tilt"
-        }
-      ]
+      "fineChannelAliases": ["Tilt fine"]
     },
     "Pan/Tilt Speed": {
       "type": "Speed",
+      "invert": true,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "Max. Speed"
-        },
-        {
-          "range": [1, 255],
+          "range": [0, 255],
           "name": "Speed from max to min"
         }
       ]
@@ -156,64 +141,78 @@
         }
       ]
     },
-    "Colour Wheel ": {
+    "Colour Wheel": {
       "type": "Multi-Color",
       "capabilities": [
         {
           "range": [0, 17],
-          "name": "open/white"
+          "name": "open/white",
+          "color": "#ffffff"
         },
         {
           "range": [18, 36],
-          "name": "deep red"
+          "name": "deep red",
+          "color": "#ff0000"
         },
         {
           "range": [37, 54],
-          "name": "deep blue"
+          "name": "deep blue",
+          "color": "#0000ff"
         },
         {
           "range": [55, 72],
-          "name": "green"
+          "name": "green",
+          "color": "#00ff00"
         },
         {
           "range": [73, 90],
-          "name": "orange"
+          "name": "orange",
+          "color": "#ff9900"
         },
         {
           "range": [91, 109],
-          "name": "6000K filter"
+          "name": "6000K filter",
+          "color": "#ffcc99"
         },
         {
           "range": [110, 127],
-          "name": "uv filter"
+          "name": "uv filter",
+          "color": "#cc99ff"
         },
         {
           "range": [128, 129],
-          "name": "white"
+          "name": "white",
+          "color": "#ffffff"
         },
         {
           "range": [130, 139],
-          "name": "deep red"
+          "name": "deep red",
+          "color": "#ff0000"
         },
         {
           "range": [140, 149],
-          "name": "deep blue"
+          "name": "deep blue",
+          "color": "#0000ff"
         },
         {
           "range": [150, 159],
-          "name": "green"
+          "name": "green",
+          "color": "#00ff00"
         },
         {
           "range": [160, 169],
-          "name": "orange"
+          "name": "orange",
+          "color": "#ff9900"
         },
         {
           "range": [170, 179],
-          "name": "6000K filter"
+          "name": "6000K filter",
+          "color": "#ffcc99"
         },
         {
           "range": [180, 189],
-          "name": "uv filter"
+          "name": "uv filter",
+          "color": "#cc99ff"
         },
         {
           "range": [190, 215],
@@ -239,45 +238,28 @@
     },
     "Cyan": {
       "type": "Single Color",
-      "color": "Cyan",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "cyan"
-        }
-      ]
+      "color": "Cyan"
     },
     "Magenta": {
       "type": "Single Color",
-      "color": "Magenta",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "magenta"
-        }
-      ]
+      "color": "Magenta"
     },
     "Yellow": {
       "type": "Single Color",
-      "color": "Yellow",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "yellow"
-        }
-      ]
+      "color": "Yellow"
     },
-    "3200K filter": {
+    "Color Temperature": {
       "type": "Color Temperature",
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "0-5600K, 255-3200K"
+          "name": "5600K-3200K"
         }
       ]
     },
     "Effect Speed": {
       "type": "Effect",
+      "invert": true,
       "capabilities": [
         {
           "range": [0, 255],
@@ -285,133 +267,259 @@
         }
       ]
     },
-    "Rotating/Shaking gobo wheel 1": {
+    "Gobo Wheel 1": {
       "type": "Gobo",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 9],
-          "name": "open/hole"
+          "name": "open/hole",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 indexing",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 indexing fine"
+          }
         },
         {
           "range": [10, 13],
-          "name": "gobo 1 - rainbow chips - Index  - set indexing on channel(s) 14 (18,19;9,10)"
+          "name": "Gobo 1: rainbow chips",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 indexing",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 indexing fine"
+          }
         },
         {
           "range": [14, 17],
-          "name": "gobo 2 - sun man - Index  - set indexing on channel(s) 14 (18,19;9,10)"
+          "name": "Gobo 2: sun man",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 indexing",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 indexing fine"
+          }
         },
         {
           "range": [18, 21],
-          "name": "gobo 3 - water drops - Index  - set indexing on channel(s) 14 (18,19;9,10)"
+          "name": "Gobo 3: water drops",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 indexing",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 indexing fine"
+          }
         },
         {
           "range": [22, 25],
-          "name": "gobo 4 - triangle floating - Index  - set indexing on channel(s) 14 (18,19;9,10)"
+          "name": "Gobo 4: triangle floating",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 indexing",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 indexing fine"
+          }
         },
         {
           "range": [26, 29],
-          "name": "gobo 5 - laser - Index  - set indexing on channel(s) 14 (18,19;9,10)"
+          "name": "Gobo 5: laser",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 indexing",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 indexing fine"
+          }
         },
         {
           "range": [30, 33],
-          "name": "gobo 6 - swirl electric - Index  - set indexing on channel(s) 14 (18,19;9,10)"
+          "name": "Gobo 6: swirl electric",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 indexing",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 indexing fine"
+          }
         },
         {
           "range": [34, 37],
-          "name": "gobo 1 - rainbow chips - Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+          "name": "Gobo 1 rotating: rainbow chips",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 rotation",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 rotation fine"
+          }
         },
         {
           "range": [38, 41],
-          "name": "gobo 2 - sun man - Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+          "name": "Gobo 2 rotating: sun man",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 rotation",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 rotation fine"
+          }
         },
         {
           "range": [42, 45],
-          "name": "gobo 3 - water drops - Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+          "name": "Gobo 3 rotating: water drops",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 rotation",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 rotation fine"
+          }
         },
         {
           "range": [46, 49],
-          "name": "gobo 4 - triangle floating - Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+          "name": "Gobo 4 rotating: triangle floating",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 rotation",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 rotation fine"
+          }
         },
         {
           "range": [50, 53],
-          "name": "gobo 5 - laser - Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+          "name": "Gobo 5 rotating: laser",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 rotation",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 rotation fine"
+          }
         },
         {
           "range": [54, 57],
-          "name": "gobo 6 - swirl electric - Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+          "name": "Gobo 6 rotating: swirl electric",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 rotation",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 rotation fine"
+          }
         },
         {
           "range": [58, 69],
-          "name": "gobo 1 - rainbow chips - shaking Index  - set indexing on channel(s) 14 (18, 19;9,10)"
+          "name": "Gobo shake 1 slow-fast: rainbow chips - shaki",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 indexing",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 indexing fine"
+          }
         },
         {
           "range": [70, 81],
-          "name": "gobo 2 - sun man - shaking Index  - set indexing on channel(s) 14 (18, 19;9,10)"
+          "name": "Gobo shake 2 slow-fast: sun man - shaki",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 indexing",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 indexing fine"
+          }
         },
         {
           "range": [82, 93],
-          "name": "gobo 3 - water drops - shaking Index  - set indexing on channel(s) 14 (18, 19;9,10)"
+          "name": "Gobo shake 3 slow-fast: water drops - shaki",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 indexing",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 indexing fine"
+          }
         },
         {
           "range": [94, 105],
-          "name": "gobo 4 - triangle floating - shaking Index  - set indexing on channel(s) 14 (18, 19;9,10)"
+          "name": "Gobo shake 4 slow-fast: triangle floating - shaki",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 indexing",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 indexing fine"
+          }
         },
         {
           "range": [106, 117],
-          "name": "gobo 5 - laser - shaking Index  - set indexing on channel(s) 14 (18, 19;9,10)"
+          "name": "Gobo shake 5 slow-fast: laser - shaki",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 indexing",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 indexing fine"
+          }
         },
         {
           "range": [118, 129],
-          "name": "gobo 6 - swirl electric - shaking Index  - set indexing on channel(s) 14 (18, 19;9,10)"
+          "name": "Gobo shake 6 slow-fast: swirl electric - shaki",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 indexing",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 indexing fine"
+          }
         },
         {
           "range": [130, 141],
-          "name": "gobo 1 - rainbow chips - shaking Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+          "name": "Gobo shake 1 rotating slow-fast: rainbow chips - shaki",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 rotation",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 rotation fine"
+          }
         },
         {
           "range": [142, 153],
-          "name": "gobo 2 - sun man - shaking Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+          "name": "Gobo shake 2 rotating slow-fast: sun man - shaki",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 rotation",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 rotation fine"
+          }
         },
         {
           "range": [154, 165],
-          "name": "gobo 3 - water drops - shaking Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+          "name": "Gobo shake 3 rotating slow-fast: water drops - shaki",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 rotation",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 rotation fine"
+          }
         },
         {
           "range": [166, 177],
-          "name": "gobo 4 - triangle floating - shaking Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+          "name": "Gobo shake 4 rotating slow-fast: triangle floating - shaki",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 rotation",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 rotation fine"
+          }
         },
         {
           "range": [178, 189],
-          "name": "gobo 5 - laser - shaking Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+          "name": "Gobo shake 5 rotating slow-fast: laser - shaki",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 rotation",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 rotation fine"
+          }
         },
         {
           "range": [190, 201],
-          "name": "gobo 6 - swirl electric - shaking Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+          "name": "Gobo shake 6 rotating slow-fast: swirl electric - shaki",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 rotation",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 rotation fine"
+          }
         },
         {
           "range": [202, 221],
-          "name": "forwards gobo wheel 1 slow to fast"
+          "name": "forwards gobo wheel 1 slow to fast",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 rotation",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 rotation fine"
+          }
         },
         {
           "range": [222, 223],
-          "name": "no rotation"
+          "name": "no rotation",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 rotation",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 rotation fine"
+          }
         },
         {
           "range": [224, 243],
-          "name": "backwards gobo wheel 1 fast to slow"
+          "name": "backwards gobo wheel 1 fast to slow",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 rotation",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 rotation fine"
+          }
         },
         {
           "range": [244, 249],
-          "name": "random gobo 1 by audio control"
+          "name": "random gobo 1 by audio control",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 rotation",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 rotation fine"
+          }
         },
         {
           "range": [250, 255],
-          "name": "auto random gobo 1 fast to slow"
+          "name": "auto random gobo 1 fast to slow",
+          "switchChannels": {
+            "Gobo 1 indexing/rotation": "Gobo 1 rotation",
+            "Gobo 1 indexing/rotation fine": "Gobo 1 rotation fine"
+          }
         }
       ]
     },
-    "Gobo 1 indexing and rotation": {
-      "type": "Gobo",
+    "Gobo 1 indexing": {
+      "type": "Intensity",
+      "fineChannelAliases": ["Gobo 1 indexing fine"]
+    },
+    "Gobo 1 rotation": {
+      "type": "Speed",
+      "fineChannelAliases": ["Gobo 1 rotation fine"],
       "capabilities": [
         {
           "range": [0, 0],
@@ -427,137 +535,263 @@
         },
         {
           "range": [130, 255],
-          "name": "backwards gobo rotation slow to fast (0-255 gobo indexing)"
+          "name": "backwards gobo rotation slow to fast"
         }
       ]
     },
-    "Rotating/Shaking gobo wheel 2": {
+    "Gobo Wheel 2": {
       "type": "Gobo",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 9],
-          "name": "open/hole"
+          "name": "open/hole",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 indexing",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 indexing fine"
+          }
         },
         {
           "range": [10, 13],
-          "name": "gobo 1 - diamante spot - Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+          "name": "Gobo 1: diamante spot",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 indexing",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 indexing fine"
+          }
         },
         {
           "range": [14, 17],
-          "name": "gobo 2 - wheel - Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+          "name": "Gobo 2: wheek",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 indexing",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 indexing fine"
+          }
         },
         {
           "range": [18, 21],
-          "name": "gobo 3 - space tunel - Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+          "name": "Gobo 3: space tunel",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 indexing",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 indexing fine"
+          }
         },
         {
           "range": [22, 25],
-          "name": "gobo 4 - bubbles - Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+          "name": "Gobo 4: bubbles",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 indexing",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 indexing fine"
+          }
         },
         {
           "range": [26, 29],
-          "name": "gobo 5 - 12 dots - Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+          "name": "Gobo 5: 12 dots",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 indexing",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 indexing fine"
+          }
         },
         {
           "range": [30, 33],
-          "name": "gobo 6 - radial dashes - Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+          "name": "Gobo 6: radial dashes",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 indexing",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 indexing fine"
+          }
         },
         {
           "range": [34, 37],
-          "name": "gobo 1 - diamante spot - Rotation  - set rotation on channel(s) 16 (21, 22;12,13)"
+          "name": "Gobo 1 rotating: diamante spot",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 rotation",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 rotation fine"
+          }
         },
         {
           "range": [38, 41],
-          "name": "gobo 2 - wheel - Rotation  - set rotation on channel(s) 16 (21, 22;12,13)"
+          "name": "Gobo 2 rotating: wheel",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 rotation",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 rotation fine"
+          }
         },
         {
           "range": [42, 45],
-          "name": "gobo 3 - space tunel - Rotation  - set rotation on channel(s) 16 (21, 22;12,13)"
+          "name": "Gobo 3 rotating: space tunel",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 rotation",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 rotation fine"
+          }
         },
         {
           "range": [46, 49],
-          "name": "gobo 4 - bubbles - Rotation  - set rotation on channel(s) 16 (21, 22;12,13)"
+          "name": "Gobo 4 rotating: bubbles",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 rotation",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 rotation fine"
+          }
         },
         {
           "range": [50, 53],
-          "name": "gobo 5 - 12 dots - Rotation  - set rotation on channel(s) 16 (21, 22;12,13)"
+          "name": "Gobo 5 rotating: 12 dots",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 rotation",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 rotation fine"
+          }
         },
         {
           "range": [54, 57],
-          "name": "gobo 6 - radial dashes - Rotation  - set rotation on channel(s) 16 (21, 22;12,13)"
+          "name": "Gobo 6 rotating: radial dashes",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 rotation",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 rotation fine"
+          }
         },
         {
           "range": [58, 69],
-          "name": "gobo 1 - diamante spot - shaking Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+          "name": "Gobo shake 1 slow-fast: diamante spot",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 indexing",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 indexing fine"
+          }
         },
         {
           "range": [70, 81],
-          "name": "gobo 2 - wheel - shaking Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+          "name": "Gobo shake 2 slow-fast: wheel",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 indexing",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 indexing fine"
+          }
         },
         {
           "range": [82, 93],
-          "name": "gobo 3 - space tunel - shaking Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+          "name": "Gobo shake 3 slow-fast: space tunel",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 indexing",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 indexing fine"
+          }
         },
         {
           "range": [94, 105],
-          "name": "gobo 4 - bubbles - shaking Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+          "name": "Gobo shake 4 slow-fast: bubbles",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 indexing",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 indexing fine"
+          }
         },
         {
           "range": [106, 117],
-          "name": "gobo 5 - 12 dots - shaking Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+          "name": "Gobo shake 5 slow-fast: 12 dots",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 indexing",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 indexing fine"
+          }
         },
         {
           "range": [118, 129],
-          "name": "gobo 6 - radial dashes - shaking Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+          "name": "Gobo shake 6 slow-fast: radial dashes",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 indexing",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 indexing fine"
+          }
         },
         {
           "range": [130, 141],
-          "name": "gobo 1 - diamante spot - shaking Rotation  - set rotation on channel(s) 16(21,22;12,13)"
+          "name": "Gobo shake 1 rotating slow-fast: diamante spot",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 rotation",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 rotation fine"
+          }
         },
         {
           "range": [142, 153],
-          "name": "gobo 2 - wheel - shaking Rotation  - set rotation on channel(s) 16(21,22;12,13)"
+          "name": "Gobo shake 2 rotating slow-fast: wheel",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 rotation",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 rotation fine"
+          }
         },
         {
           "range": [154, 165],
-          "name": "gobo 3 - space tunel - shaking Rotation  - set rotation on channel(s) 16(21,22;12,13)"
+          "name": "Gobo shake 3 rotating slow-fast: space tunel",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 rotation",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 rotation fine"
+          }
         },
         {
           "range": [166, 177],
-          "name": "gobo 4 - bubbles - shaking Rotation  - set rotation on channel(s) 16(21,22;12,13)"
+          "name": "Gobo shake 4 rotating slow-fast: bubbles",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 rotation",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 rotation fine"
+          }
         },
         {
           "range": [178, 189],
-          "name": "gobo 5 - 12 dots - shaking Rotation  - set rotation on channel(s) 16(21,22;12,13)"
+          "name": "Gobo shake 5 rotating slow-fast: 12 dots",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 rotation",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 rotation fine"
+          }
         },
         {
           "range": [190, 201],
-          "name": "gobo 6 - radial dashes - shaking Rotation  - set rotation on channel(s) 16(21,22;12,13)"
+          "name": "Gobo shake 6 rotating slow-fast: radial dashes",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 rotation",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 rotation fine"
+          }
         },
         {
           "range": [202, 221],
-          "name": "forwards gobo 2 rotation fast to slow"
+          "name": "Forwards wheel rotation fast to slow",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 rotation",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 rotation fine"
+          }
         },
         {
           "range": [222, 223],
-          "name": "no rotation"
+          "name": "No rotation",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 rotation",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 rotation fine"
+          }
         },
         {
           "range": [224, 243],
-          "name": "backwards gobo 2 rotation slow to fast"
+          "name": "Backwards wheel rotation slow to fast",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 rotation",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 rotation fine"
+          }
         },
         {
           "range": [244, 249],
-          "name": "random gobo 2 by audio control"
+          "name": "random gobo selection by audio control",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 rotation",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 rotation fine"
+          }
         },
         {
           "range": [250, 255],
-          "name": "auto random gobo 2 fast to slow"
+          "name": "auto random gobo selection fast to slow",
+          "switchChannels": {
+            "Gobo 2 indexing/rotation": "Gobo 2 rotation",
+            "Gobo 2 indexing/rotation fine": "Gobo 2 rotation fine"
+          }
         }
       ]
     },
-    "Gobo 2 indexing and rotation": {
-      "type": "Gobo",
+    "Gobo 2 indexing": {
+      "type": "Intensity",
+      "fineChannelAliases": ["Gobo 2 indexing fine"]
+    },
+    "Gobo 2 rotation": {
+      "type": "Speed",
+      "fineChannelAliases": ["Gobo 2 rotation fine"],
       "capabilities": [
         {
           "range": [0, 0],
@@ -573,125 +807,210 @@
         },
         {
           "range": [130, 255],
-          "name": "backwards gobo slow to fast (0-255 gobo indexing)"
+          "name": "backwards gobo slow to fast"
         }
       ]
     },
     "Effect wheel": {
       "type": "Effect",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 19],
-          "name": "index open/hole"
+          "name": "index open/hole",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect indexing"
+          }
         },
         {
           "range": [20, 39],
-          "name": "index 3-facet prism"
+          "name": "index 3-facet prism",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect indexing"
+          }
         },
         {
           "range": [40, 59],
-          "name": "index 5-facet prism"
+          "name": "index 5-facet prism",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect indexing"
+          }
         },
         {
           "range": [60, 79],
-          "name": "index estriado"
+          "name": "index estriado",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect indexing"
+          }
         },
         {
           "range": [80, 99],
-          "name": "index diamante"
+          "name": "index diamante",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect indexing"
+          }
         },
         {
           "range": [100, 119],
-          "name": "rotation 3-facet prism"
+          "name": "rotation 3-facet prism",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         },
         {
           "range": [120, 139],
-          "name": "rotation 5-facet prism"
+          "name": "rotation 5-facet prism",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         },
         {
           "range": [140, 159],
-          "name": "rotation estriado"
+          "name": "rotation estriado",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         },
         {
           "range": [160, 179],
-          "name": "rotation diamante"
+          "name": "rotation diamante",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         },
         {
           "range": [180, 183],
-          "name": "macro 1"
+          "name": "macro 1",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         },
         {
           "range": [184, 187],
-          "name": "macro 2"
+          "name": "macro 2",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         },
         {
           "range": [188, 191],
-          "name": "macro 3"
+          "name": "macro 3",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         },
         {
           "range": [192, 195],
-          "name": "macro 4"
+          "name": "macro 4",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         },
         {
           "range": [196, 199],
-          "name": "macro 5"
+          "name": "macro 5",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         },
         {
           "range": [200, 203],
-          "name": "macro 6"
+          "name": "macro 6",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         },
         {
           "range": [204, 207],
-          "name": "macro 7"
+          "name": "macro 7",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         },
         {
           "range": [208, 211],
-          "name": "macro 8"
+          "name": "macro 8",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         },
         {
           "range": [212, 215],
-          "name": "macro 9"
+          "name": "macro 9",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         },
         {
           "range": [216, 219],
-          "name": "macro 10"
+          "name": "macro 10",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         },
         {
           "range": [220, 223],
-          "name": "macro 11"
+          "name": "macro 11",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         },
         {
           "range": [224, 227],
-          "name": "macro 12"
+          "name": "macro 12",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         },
         {
           "range": [228, 231],
-          "name": "macro 13"
+          "name": "macro 13",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         },
         {
           "range": [232, 235],
-          "name": "macro 14"
+          "name": "macro 14",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         },
         {
           "range": [236, 239],
-          "name": "macro 15"
+          "name": "macro 15",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         },
         {
           "range": [240, 243],
-          "name": "macro 16"
+          "name": "macro 16",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         },
         {
           "range": [244, 249],
-          "name": "random effect by audio control"
+          "name": "random effect by audio control",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         },
         {
           "range": [250, 255],
-          "name": "auto random fast to slow"
+          "name": "auto random fast to slow",
+          "switchChannels": {
+            "Effect indexing/rotation": "Effect rotation"
+          }
         }
       ]
     },
-    "Effect indexing and rotation": {
-      "type": "Effect",
+    "Effect indexing": {
+      "type": "Intensity"
+    },
+    "Effect rotation": {
+      "type": "Speed",
       "capabilities": [
         {
           "range": [0, 0],
@@ -707,7 +1026,7 @@
         },
         {
           "range": [130, 255],
-          "name": "backwards effect rotation slow to fast (0-255 effect indexing)"
+          "name": "backwards effect rotation slow to fast"
         }
       ]
     },
@@ -860,8 +1179,8 @@
   },
   "modes": [
     {
-      "name": "standard",
-      "shortName": "std",
+      "name": "24-channel 1",
+      "shortName": "24ch1",
       "channels": [
         "Pan",
         "Pan fine",
@@ -869,24 +1188,54 @@
         "Tilt fine",
         "Pan/Tilt Speed",
         "Power/Special functions",
-        "Colour Wheel ",
+        "Colour Wheel",
         "Cyan",
         "Magenta",
         "Yellow",
-        "3200K filter",
+        "Color Temperature",
         "Effect Speed",
-        "Rotating/Shaking gobo wheel 1",
-        "Gobo 1 indexing and rotation",
-        "Rotating/Shaking gobo wheel 2",
-        "Gobo 2 indexing and rotation",
+        "Gobo Wheel 1",
+        "Gobo 1 indexing/rotation",
+        "Gobo Wheel 2",
+        "Gobo 2 indexing/rotation",
         "Effect wheel",
-        "Effect indexing and rotation",
+        "Effect indexing/rotation",
         "Frost",
         "Iris",
         "Zoom",
         "Focus",
         "Shutter, Strobe",
         "Dimmer"
+      ]
+    },
+    {
+      "name": "24-channel 2",
+      "shortName": "24ch2",
+      "channels": [
+        "Shutter, Strobe",
+        "Dimmer",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Color Temperature",
+        "Colour Wheel",
+        "Gobo Wheel 1",
+        "Gobo 1 indexing/rotation",
+        "Gobo 1 indexing/rotation fine",
+        "Gobo Wheel 2",
+        "Gobo 2 indexing/rotation",
+        "Gobo 2 indexing/rotation fine",
+        "Effect wheel",
+        "Effect indexing/rotation",
+        "Iris",
+        "Focus",
+        "Zoom",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Power/Special functions"
       ]
     }
   ]
