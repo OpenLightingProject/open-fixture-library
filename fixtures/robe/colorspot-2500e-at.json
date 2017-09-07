@@ -1,0 +1,893 @@
+{
+  "name": "ColorSpot 2500E AT",
+  "shortName": "robeSpot2500",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["novasfronteiras.co"],
+    "createDate": "2017-09-07",
+    "lastModifyDate": "2017-09-07"
+  },
+  "manualURL": "https://www.robe.cz/index.php?type=10898&tx_odproducts_f%5baction%5d=downloadFile&tx_odproducts_f%5bfile%5d=robe/downloads/user_manuals/User_manual_ColorSpot_2500E_AT.pdf",
+  "physical": {
+    "dimensions": [536, 638, 678],
+    "weight": 42.5,
+    "power": 1760,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "Philips MSR GOLD 1200 FastFit",
+      "colorTemperature": 6300
+    },
+    "lens": {
+      "degreesMinMax": [10, 30]
+    },
+    "focus": {
+      "panMax": 530,
+      "tiltMax": 260
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "pan"
+        }
+      ]
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Tilt"
+        }
+      ]
+    },
+    "Pan/Tilt Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Max. Speed"
+        },
+        {
+          "range": [1, 255],
+          "name": "Speed from max to min"
+        }
+      ]
+    },
+    "Power/Special functions": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "reserved"
+        },
+        {
+          "range": [10, 19],
+          "name": "autofocus on "
+        },
+        {
+          "range": [20, 29],
+          "name": "autofocus off"
+        },
+        {
+          "range": [30, 49],
+          "name": "reserved"
+        },
+        {
+          "range": [50, 59],
+          "name": "pan/tilt speed mode"
+        },
+        {
+          "range": [60, 69],
+          "name": "pan/tilt time mode"
+        },
+        {
+          "range": [70, 79],
+          "name": "blackout while pan/tilt moving"
+        },
+        {
+          "range": [80, 89],
+          "name": "disabled blackout while pan/tilt moving"
+        },
+        {
+          "range": [90, 99],
+          "name": "blackout while colour wheel moving"
+        },
+        {
+          "range": [100, 109],
+          "name": "disabled blackout while colour wheel moving"
+        },
+        {
+          "range": [110, 119],
+          "name": "blackout while gobo 1/gobo 2 moving"
+        },
+        {
+          "range": [120, 129],
+          "name": "disabled blackout while gobo 1/gobo 2 moving"
+        },
+        {
+          "range": [130, 139],
+          "name": "lamp on, reset"
+        },
+        {
+          "range": [140, 149],
+          "name": "pan/tilt reset"
+        },
+        {
+          "range": [150, 159],
+          "name": "colour system reset"
+        },
+        {
+          "range": [160, 169],
+          "name": "gobo system reset"
+        },
+        {
+          "range": [170, 179],
+          "name": "dimmer/strobe reset"
+        },
+        {
+          "range": [180, 189],
+          "name": "focus/zoom/frost reset"
+        },
+        {
+          "range": [190, 199],
+          "name": "iris/effect/reset"
+        },
+        {
+          "range": [200, 209],
+          "name": "total reset"
+        },
+        {
+          "range": [210, 229],
+          "name": "reserved"
+        },
+        {
+          "range": [230, 239],
+          "name": "lamp off"
+        },
+        {
+          "range": [240, 255],
+          "name": "reserved"
+        }
+      ]
+    },
+    "Colour Wheel ": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 17],
+          "name": "open/white"
+        },
+        {
+          "range": [18, 36],
+          "name": "deep red"
+        },
+        {
+          "range": [37, 54],
+          "name": "deep blue"
+        },
+        {
+          "range": [55, 72],
+          "name": "green"
+        },
+        {
+          "range": [73, 90],
+          "name": "orange"
+        },
+        {
+          "range": [91, 109],
+          "name": "6000K filter"
+        },
+        {
+          "range": [110, 127],
+          "name": "uv filter"
+        },
+        {
+          "range": [128, 129],
+          "name": "white"
+        },
+        {
+          "range": [130, 139],
+          "name": "deep red"
+        },
+        {
+          "range": [140, 149],
+          "name": "deep blue"
+        },
+        {
+          "range": [150, 159],
+          "name": "green"
+        },
+        {
+          "range": [160, 169],
+          "name": "orange"
+        },
+        {
+          "range": [170, 179],
+          "name": "6000K filter"
+        },
+        {
+          "range": [180, 189],
+          "name": "uv filter"
+        },
+        {
+          "range": [190, 215],
+          "name": "forwards rainbow effect"
+        },
+        {
+          "range": [216, 217],
+          "name": "no rotation"
+        },
+        {
+          "range": [218, 243],
+          "name": "backwards rainbow effect"
+        },
+        {
+          "range": [244, 249],
+          "name": "random color by audio control"
+        },
+        {
+          "range": [250, 255],
+          "name": "auto random colour"
+        }
+      ]
+    },
+    "Cyan": {
+      "type": "Single Color",
+      "color": "Cyan",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "cyan"
+        }
+      ]
+    },
+    "Magenta": {
+      "type": "Single Color",
+      "color": "Magenta",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "magenta"
+        }
+      ]
+    },
+    "Yellow": {
+      "type": "Single Color",
+      "color": "Yellow",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "yellow"
+        }
+      ]
+    },
+    "3200K filter": {
+      "type": "Color Temperature",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0-5600K, 255-3200K"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "max to min"
+        }
+      ]
+    },
+    "Rotating/Shaking gobo wheel 1": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "open/hole"
+        },
+        {
+          "range": [10, 13],
+          "name": "gobo 1 - rainbow chips - Index  - set indexing on channel(s) 14 (18,19;9,10)"
+        },
+        {
+          "range": [14, 17],
+          "name": "gobo 2 - sun man - Index  - set indexing on channel(s) 14 (18,19;9,10)"
+        },
+        {
+          "range": [18, 21],
+          "name": "gobo 3 - water drops - Index  - set indexing on channel(s) 14 (18,19;9,10)"
+        },
+        {
+          "range": [22, 25],
+          "name": "gobo 4 - triangle floating - Index  - set indexing on channel(s) 14 (18,19;9,10)"
+        },
+        {
+          "range": [26, 29],
+          "name": "gobo 5 - laser - Index  - set indexing on channel(s) 14 (18,19;9,10)"
+        },
+        {
+          "range": [30, 33],
+          "name": "gobo 6 - swirl electric - Index  - set indexing on channel(s) 14 (18,19;9,10)"
+        },
+        {
+          "range": [34, 37],
+          "name": "gobo 1 - rainbow chips - Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+        },
+        {
+          "range": [38, 41],
+          "name": "gobo 2 - sun man - Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+        },
+        {
+          "range": [42, 45],
+          "name": "gobo 3 - water drops - Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+        },
+        {
+          "range": [46, 49],
+          "name": "gobo 4 - triangle floating - Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+        },
+        {
+          "range": [50, 53],
+          "name": "gobo 5 - laser - Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+        },
+        {
+          "range": [54, 57],
+          "name": "gobo 6 - swirl electric - Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+        },
+        {
+          "range": [58, 69],
+          "name": "gobo 1 - rainbow chips - shaking Index  - set indexing on channel(s) 14 (18, 19;9,10)"
+        },
+        {
+          "range": [70, 81],
+          "name": "gobo 2 - sun man - shaking Index  - set indexing on channel(s) 14 (18, 19;9,10)"
+        },
+        {
+          "range": [82, 93],
+          "name": "gobo 3 - water drops - shaking Index  - set indexing on channel(s) 14 (18, 19;9,10)"
+        },
+        {
+          "range": [94, 105],
+          "name": "gobo 4 - triangle floating - shaking Index  - set indexing on channel(s) 14 (18, 19;9,10)"
+        },
+        {
+          "range": [106, 117],
+          "name": "gobo 5 - laser - shaking Index  - set indexing on channel(s) 14 (18, 19;9,10)"
+        },
+        {
+          "range": [118, 129],
+          "name": "gobo 6 - swirl electric - shaking Index  - set indexing on channel(s) 14 (18, 19;9,10)"
+        },
+        {
+          "range": [130, 141],
+          "name": "gobo 1 - rainbow chips - shaking Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+        },
+        {
+          "range": [142, 153],
+          "name": "gobo 2 - sun man - shaking Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+        },
+        {
+          "range": [154, 165],
+          "name": "gobo 3 - water drops - shaking Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+        },
+        {
+          "range": [166, 177],
+          "name": "gobo 4 - triangle floating - shaking Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+        },
+        {
+          "range": [178, 189],
+          "name": "gobo 5 - laser - shaking Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+        },
+        {
+          "range": [190, 201],
+          "name": "gobo 6 - swirl electric - shaking Rotation  - set rotation on channel(s) 14 (18,19;9,10)"
+        },
+        {
+          "range": [202, 221],
+          "name": "forwards gobo wheel 1 slow to fast"
+        },
+        {
+          "range": [222, 223],
+          "name": "no rotation"
+        },
+        {
+          "range": [224, 243],
+          "name": "backwards gobo wheel 1 fast to slow"
+        },
+        {
+          "range": [244, 249],
+          "name": "random gobo 1 by audio control"
+        },
+        {
+          "range": [250, 255],
+          "name": "auto random gobo 1 fast to slow"
+        }
+      ]
+    },
+    "Gobo 1 indexing and rotation": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "no rotation"
+        },
+        {
+          "range": [1, 127],
+          "name": "forwards gobo rotation fast to slow"
+        },
+        {
+          "range": [128, 129],
+          "name": "no rotation"
+        },
+        {
+          "range": [130, 255],
+          "name": "backwards gobo rotation slow to fast (0-255 gobo indexing)"
+        }
+      ]
+    },
+    "Rotating/Shaking gobo wheel 2": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "open/hole"
+        },
+        {
+          "range": [10, 13],
+          "name": "gobo 1 - diamante spot - Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+        },
+        {
+          "range": [14, 17],
+          "name": "gobo 2 - wheel - Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+        },
+        {
+          "range": [18, 21],
+          "name": "gobo 3 - space tunel - Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+        },
+        {
+          "range": [22, 25],
+          "name": "gobo 4 - bubbles - Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+        },
+        {
+          "range": [26, 29],
+          "name": "gobo 5 - 12 dots - Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+        },
+        {
+          "range": [30, 33],
+          "name": "gobo 6 - radial dashes - Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+        },
+        {
+          "range": [34, 37],
+          "name": "gobo 1 - diamante spot - Rotation  - set rotation on channel(s) 16 (21, 22;12,13)"
+        },
+        {
+          "range": [38, 41],
+          "name": "gobo 2 - wheel - Rotation  - set rotation on channel(s) 16 (21, 22;12,13)"
+        },
+        {
+          "range": [42, 45],
+          "name": "gobo 3 - space tunel - Rotation  - set rotation on channel(s) 16 (21, 22;12,13)"
+        },
+        {
+          "range": [46, 49],
+          "name": "gobo 4 - bubbles - Rotation  - set rotation on channel(s) 16 (21, 22;12,13)"
+        },
+        {
+          "range": [50, 53],
+          "name": "gobo 5 - 12 dots - Rotation  - set rotation on channel(s) 16 (21, 22;12,13)"
+        },
+        {
+          "range": [54, 57],
+          "name": "gobo 6 - radial dashes - Rotation  - set rotation on channel(s) 16 (21, 22;12,13)"
+        },
+        {
+          "range": [58, 69],
+          "name": "gobo 1 - diamante spot - shaking Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+        },
+        {
+          "range": [70, 81],
+          "name": "gobo 2 - wheel - shaking Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+        },
+        {
+          "range": [82, 93],
+          "name": "gobo 3 - space tunel - shaking Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+        },
+        {
+          "range": [94, 105],
+          "name": "gobo 4 - bubbles - shaking Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+        },
+        {
+          "range": [106, 117],
+          "name": "gobo 5 - 12 dots - shaking Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+        },
+        {
+          "range": [118, 129],
+          "name": "gobo 6 - radial dashes - shaking Index  - set indexing on channel(s) 16 (21, 22;12,13)"
+        },
+        {
+          "range": [130, 141],
+          "name": "gobo 1 - diamante spot - shaking Rotation  - set rotation on channel(s) 16(21,22;12,13)"
+        },
+        {
+          "range": [142, 153],
+          "name": "gobo 2 - wheel - shaking Rotation  - set rotation on channel(s) 16(21,22;12,13)"
+        },
+        {
+          "range": [154, 165],
+          "name": "gobo 3 - space tunel - shaking Rotation  - set rotation on channel(s) 16(21,22;12,13)"
+        },
+        {
+          "range": [166, 177],
+          "name": "gobo 4 - bubbles - shaking Rotation  - set rotation on channel(s) 16(21,22;12,13)"
+        },
+        {
+          "range": [178, 189],
+          "name": "gobo 5 - 12 dots - shaking Rotation  - set rotation on channel(s) 16(21,22;12,13)"
+        },
+        {
+          "range": [190, 201],
+          "name": "gobo 6 - radial dashes - shaking Rotation  - set rotation on channel(s) 16(21,22;12,13)"
+        },
+        {
+          "range": [202, 221],
+          "name": "forwards gobo 2 rotation fast to slow"
+        },
+        {
+          "range": [222, 223],
+          "name": "no rotation"
+        },
+        {
+          "range": [224, 243],
+          "name": "backwards gobo 2 rotation slow to fast"
+        },
+        {
+          "range": [244, 249],
+          "name": "random gobo 2 by audio control"
+        },
+        {
+          "range": [250, 255],
+          "name": "auto random gobo 2 fast to slow"
+        }
+      ]
+    },
+    "Gobo 2 indexing and rotation": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "no rotation"
+        },
+        {
+          "range": [1, 127],
+          "name": "forwards gobo rotation fast to slow"
+        },
+        {
+          "range": [128, 129],
+          "name": "no rotation"
+        },
+        {
+          "range": [130, 255],
+          "name": "backwards gobo slow to fast (0-255 gobo indexing)"
+        }
+      ]
+    },
+    "Effect wheel": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 19],
+          "name": "index open/hole"
+        },
+        {
+          "range": [20, 39],
+          "name": "index 3-facet prism"
+        },
+        {
+          "range": [40, 59],
+          "name": "index 5-facet prism"
+        },
+        {
+          "range": [60, 79],
+          "name": "index estriado"
+        },
+        {
+          "range": [80, 99],
+          "name": "index diamante"
+        },
+        {
+          "range": [100, 119],
+          "name": "rotation 3-facet prism"
+        },
+        {
+          "range": [120, 139],
+          "name": "rotation 5-facet prism"
+        },
+        {
+          "range": [140, 159],
+          "name": "rotation estriado"
+        },
+        {
+          "range": [160, 179],
+          "name": "rotation diamante"
+        },
+        {
+          "range": [180, 183],
+          "name": "macro 1"
+        },
+        {
+          "range": [184, 187],
+          "name": "macro 2"
+        },
+        {
+          "range": [188, 191],
+          "name": "macro 3"
+        },
+        {
+          "range": [192, 195],
+          "name": "macro 4"
+        },
+        {
+          "range": [196, 199],
+          "name": "macro 5"
+        },
+        {
+          "range": [200, 203],
+          "name": "macro 6"
+        },
+        {
+          "range": [204, 207],
+          "name": "macro 7"
+        },
+        {
+          "range": [208, 211],
+          "name": "macro 8"
+        },
+        {
+          "range": [212, 215],
+          "name": "macro 9"
+        },
+        {
+          "range": [216, 219],
+          "name": "macro 10"
+        },
+        {
+          "range": [220, 223],
+          "name": "macro 11"
+        },
+        {
+          "range": [224, 227],
+          "name": "macro 12"
+        },
+        {
+          "range": [228, 231],
+          "name": "macro 13"
+        },
+        {
+          "range": [232, 235],
+          "name": "macro 14"
+        },
+        {
+          "range": [236, 239],
+          "name": "macro 15"
+        },
+        {
+          "range": [240, 243],
+          "name": "macro 16"
+        },
+        {
+          "range": [244, 249],
+          "name": "random effect by audio control"
+        },
+        {
+          "range": [250, 255],
+          "name": "auto random fast to slow"
+        }
+      ]
+    },
+    "Effect indexing and rotation": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "no rotation"
+        },
+        {
+          "range": [1, 127],
+          "name": "forwards effect rotation fast to slow"
+        },
+        {
+          "range": [128, 129],
+          "name": "no rotation"
+        },
+        {
+          "range": [130, 255],
+          "name": "backwards effect rotation slow to fast (0-255 effect indexing)"
+        }
+      ]
+    },
+    "Frost": {
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "open"
+        },
+        {
+          "range": [1, 179],
+          "name": "frost 0 to 100"
+        },
+        {
+          "range": [180, 189],
+          "name": "100% frost"
+        },
+        {
+          "range": [190, 211],
+          "name": "pulse closing slow to fast"
+        },
+        {
+          "range": [212, 233],
+          "name": "pulse opening fast to slow"
+        },
+        {
+          "range": [234, 255],
+          "name": "ramping from fast to slow"
+        }
+      ]
+    },
+    "Iris": {
+      "type": "Iris",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "open"
+        },
+        {
+          "range": [1, 179],
+          "name": "from max to min"
+        },
+        {
+          "range": [180, 191],
+          "name": "closed"
+        },
+        {
+          "range": [192, 203],
+          "name": "pulse opening slow to fast"
+        },
+        {
+          "range": [204, 215],
+          "name": "pulse closing fast to slow"
+        },
+        {
+          "range": [216, 217],
+          "name": "random pulse opening fast"
+        },
+        {
+          "range": [218, 219],
+          "name": "random pulse opening slow"
+        },
+        {
+          "range": [220, 221],
+          "name": "random pulse closing fast"
+        },
+        {
+          "range": [222, 223],
+          "name": "random pulse closing slow"
+        },
+        {
+          "range": [224, 239],
+          "name": "pulse opening slow to fast"
+        },
+        {
+          "range": [240, 255],
+          "name": "pulse closing fast to slow"
+        }
+      ]
+    },
+    "Zoom": {
+      "type": "Zoom",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "max to min"
+        }
+      ]
+    },
+    "Focus": {
+      "type": "Focus",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "far to near"
+        }
+      ]
+    },
+    "Shutter, Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "shutter closed, lamp 800W"
+        },
+        {
+          "range": [32, 63],
+          "name": "shutter open, full lamp power"
+        },
+        {
+          "range": [64, 95],
+          "name": "strobe-effect slow to fast"
+        },
+        {
+          "range": [96, 127],
+          "name": "shutter open, lamp 800W"
+        },
+        {
+          "range": [128, 143],
+          "name": "opening pulse slow to fast"
+        },
+        {
+          "range": [144, 159],
+          "name": "closing pulse fast to slow"
+        },
+        {
+          "range": [160, 191],
+          "name": "shutter open slow to fast"
+        },
+        {
+          "range": [192, 223],
+          "name": "random strobe slow to fast"
+        },
+        {
+          "range": [224, 255],
+          "name": "shutter open, full lamp power"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "intensity"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "standard",
+      "shortName": "std",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Power/Special functions",
+        "Colour Wheel ",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "3200K filter",
+        "Effect Speed",
+        "Rotating/Shaking gobo wheel 1",
+        "Gobo 1 indexing and rotation",
+        "Rotating/Shaking gobo wheel 2",
+        "Gobo 2 indexing and rotation",
+        "Effect wheel",
+        "Effect indexing and rotation",
+        "Frost",
+        "Iris",
+        "Zoom",
+        "Focus",
+        "Shutter, Strobe",
+        "Dimmer"
+      ]
+    }
+  ]
+}
