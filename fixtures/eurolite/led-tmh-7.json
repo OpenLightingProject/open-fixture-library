@@ -1,0 +1,150 @@
+{
+  "name": "LED TMH-7",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["FloEdelmann"],
+    "createDate": "2017-09-07",
+    "lastModifyDate": "2017-09-07"
+  },
+  "manualURL": "http://media.steinigke.de/download_t/51785973-MANUAL-2.10-en-de_00093407.pdf",
+  "physical": {
+    "dimensions": [175, 245, 175],
+    "weight": 3,
+    "power": 75,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "18x 3W tricolor LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 180
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32768
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32768
+    },
+    "Pan / Tilt Speed": {
+      "type": "Speed",
+      "invert": true,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Decreasing speed"
+        }
+      ]
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Color Macros": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 40],
+          "name": "Neutral"
+        },
+        {
+          "range": [41, 80],
+          "name": "Macro 1"
+        },
+        {
+          "range": [81, 120],
+          "name": "Macro 2"
+        },
+        {
+          "range": [121, 140],
+          "name": "Macro 3"
+        },
+        {
+          "range": [141, 160],
+          "name": "Macro 4"
+        },
+        {
+          "range": [161, 200],
+          "name": "Macro 5"
+        },
+        {
+          "range": [201, 240],
+          "name": "Macro 6"
+        },
+        {
+          "range": [241, 255],
+          "name": "Neutral"
+        }
+      ]
+    },
+    "Maintenance": {
+      "type": "Maintenance",
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "LED off"
+        },
+        {
+          "range": [11, 20],
+          "name": "Neutral"
+        },
+        {
+          "range": [21, 30],
+          "name": "Reset"
+        },
+        {
+          "range": [31, 200],
+          "name": "Strobe slow - fast"
+        },
+        {
+          "range": [201, 250],
+          "name": "Random strobe slow - fast"
+        },
+        {
+          "range": [251, 255],
+          "name": "Neutral"
+        }
+      ]
+    },
+    "Dimmer Intensity": {
+      "type": "Intensity"
+    }
+  },
+  "modes": [
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan / Tilt Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macros",
+        "Maintenance",
+        "Dimmer Intensity",
+        "Pan fine",
+        "Tilt fine"
+      ]
+    }
+  ]
+}
