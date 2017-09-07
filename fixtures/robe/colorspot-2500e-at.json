@@ -141,7 +141,7 @@
         }
       ]
     },
-    "Colour Wheel": {
+    "Color Wheel": {
       "type": "Multi-Color",
       "capabilities": [
         {
@@ -257,6 +257,267 @@
         }
       ]
     },
+    "Color Macros": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 3],
+          "name": "No function"
+        },
+        {
+          "range": [4, 7],
+          "name": "Macro 1"
+        },
+        {
+          "range": [8, 11],
+          "name": "Macro 2"
+        },
+        {
+          "range": [12, 15],
+          "name": "Macro 3"
+        },
+        {
+          "range": [16, 19],
+          "name": "Macro 4"
+        },
+        {
+          "range": [20, 23],
+          "name": "Macro 5"
+        },
+        {
+          "range": [24, 27],
+          "name": "Macro 6"
+        },
+        {
+          "range": [28, 31],
+          "name": "Macro 7"
+        },
+        {
+          "range": [32, 35],
+          "name": "Macro 8"
+        },
+        {
+          "range": [36, 39],
+          "name": "Macro 9"
+        },
+        {
+          "range": [40, 43],
+          "name": "Macro 10"
+        },
+        {
+          "range": [44, 47],
+          "name": "Macro 11"
+        },
+        {
+          "range": [48, 51],
+          "name": "Macro 12"
+        },
+        {
+          "range": [52, 55],
+          "name": "Macro 13"
+        },
+        {
+          "range": [56, 59],
+          "name": "Macro 14"
+        },
+        {
+          "range": [60, 63],
+          "name": "Macro 15"
+        },
+        {
+          "range": [64, 67],
+          "name": "Macro 16"
+        },
+        {
+          "range": [68, 71],
+          "name": "Macro 17"
+        },
+        {
+          "range": [72, 75],
+          "name": "Macro 18"
+        },
+        {
+          "range": [76, 79],
+          "name": "Macro 19"
+        },
+        {
+          "range": [80, 83],
+          "name": "Macro 20"
+        },
+        {
+          "range": [84, 87],
+          "name": "Macro 21"
+        },
+        {
+          "range": [88, 91],
+          "name": "Macro 22"
+        },
+        {
+          "range": [92, 95],
+          "name": "Macro 23"
+        },
+        {
+          "range": [96, 99],
+          "name": "Macro 24"
+        },
+        {
+          "range": [100, 103],
+          "name": "Macro 25"
+        },
+        {
+          "range": [104, 107],
+          "name": "Macro 26"
+        },
+        {
+          "range": [108, 111],
+          "name": "Macro 27"
+        },
+        {
+          "range": [112, 115],
+          "name": "Macro 28"
+        },
+        {
+          "range": [116, 119],
+          "name": "Macro 29"
+        },
+        {
+          "range": [120, 123],
+          "name": "Macro 30"
+        },
+        {
+          "range": [124, 127],
+          "name": "Macro 31"
+        },
+        {
+          "range": [128, 131],
+          "name": "Macro 32"
+        },
+        {
+          "range": [132, 135],
+          "name": "Macro 33"
+        },
+        {
+          "range": [136, 139],
+          "name": "Macro 34"
+        },
+        {
+          "range": [140, 143],
+          "name": "Macro 35"
+        },
+        {
+          "range": [144, 147],
+          "name": "Macro 36"
+        },
+        {
+          "range": [148, 151],
+          "name": "Macro 37"
+        },
+        {
+          "range": [152, 155],
+          "name": "Macro 38"
+        },
+        {
+          "range": [156, 159],
+          "name": "Macro 39"
+        },
+        {
+          "range": [160, 163],
+          "name": "Macro 40"
+        },
+        {
+          "range": [164, 167],
+          "name": "Macro 41"
+        },
+        {
+          "range": [168, 171],
+          "name": "Macro 42"
+        },
+        {
+          "range": [172, 175],
+          "name": "Macro 43"
+        },
+        {
+          "range": [176, 179],
+          "name": "Macro 44"
+        },
+        {
+          "range": [180, 183],
+          "name": "Macro 45"
+        },
+        {
+          "range": [184, 187],
+          "name": "Macro 46"
+        },
+        {
+          "range": [188, 191],
+          "name": "Macro 47"
+        },
+        {
+          "range": [192, 195],
+          "name": "Macro 48"
+        },
+        {
+          "range": [196, 199],
+          "name": "Macro 49"
+        },
+        {
+          "range": [200, 203],
+          "name": "Macro 50"
+        },
+        {
+          "range": [204, 207],
+          "name": "Macro 51"
+        },
+        {
+          "range": [208, 211],
+          "name": "Macro 52"
+        },
+        {
+          "range": [212, 215],
+          "name": "Macro 53"
+        },
+        {
+          "range": [216, 219],
+          "name": "Macro 54"
+        },
+        {
+          "range": [220, 223],
+          "name": "Macro 55"
+        },
+        {
+          "range": [224, 227],
+          "name": "Macro 56"
+        },
+        {
+          "range": [228, 231],
+          "name": "Macro 57"
+        },
+        {
+          "range": [232, 235],
+          "name": "Macro 58"
+        },
+        {
+          "range": [236, 239],
+          "name": "Macro 59"
+        },
+        {
+          "range": [240, 243],
+          "name": "Macro 60"
+        },
+        {
+          "range": [244, 247],
+          "name": "Macro 61"
+        },
+        {
+          "range": [248, 251],
+          "name": "Macro 62"
+        },
+        {
+          "range": [252, 255],
+          "name": "Macro 63"
+        }
+      ]
+    },
     "Effect Speed": {
       "type": "Effect",
       "invert": true,
@@ -264,6 +525,27 @@
         {
           "range": [0, 255],
           "name": "max to min"
+        }
+      ]
+    },
+    "Effect Speed assigning": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "Dimmer + CMY filters + correction filter"
+        },
+        {
+          "range": [32, 63],
+          "name": "Dimmer"
+        },
+        {
+          "range": [64, 95],
+          "name": "CMY filters + correction filter"
+        },
+        {
+          "range": [96, 255],
+          "name": "No function"
         }
       ]
     },
@@ -819,198 +1101,227 @@
           "range": [0, 19],
           "name": "index open/hole",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect indexing"
+            "Effect indexing/rotation": "Effect indexing",
+            "Effect indexing/rotation fine": "Effect indexing fine"
           }
         },
         {
           "range": [20, 39],
           "name": "index 3-facet prism",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect indexing"
+            "Effect indexing/rotation": "Effect indexing",
+            "Effect indexing/rotation fine": "Effect indexing fine"
           }
         },
         {
           "range": [40, 59],
           "name": "index 5-facet prism",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect indexing"
+            "Effect indexing/rotation": "Effect indexing",
+            "Effect indexing/rotation fine": "Effect indexing fine"
           }
         },
         {
           "range": [60, 79],
           "name": "index estriado",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect indexing"
+            "Effect indexing/rotation": "Effect indexing",
+            "Effect indexing/rotation fine": "Effect indexing fine"
           }
         },
         {
           "range": [80, 99],
           "name": "index diamante",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect indexing"
+            "Effect indexing/rotation": "Effect indexing",
+            "Effect indexing/rotation fine": "Effect indexing fine"
           }
         },
         {
           "range": [100, 119],
           "name": "rotation 3-facet prism",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         },
         {
           "range": [120, 139],
           "name": "rotation 5-facet prism",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         },
         {
           "range": [140, 159],
           "name": "rotation estriado",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         },
         {
           "range": [160, 179],
           "name": "rotation diamante",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         },
         {
           "range": [180, 183],
           "name": "macro 1",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         },
         {
           "range": [184, 187],
           "name": "macro 2",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         },
         {
           "range": [188, 191],
           "name": "macro 3",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         },
         {
           "range": [192, 195],
           "name": "macro 4",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         },
         {
           "range": [196, 199],
           "name": "macro 5",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         },
         {
           "range": [200, 203],
           "name": "macro 6",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         },
         {
           "range": [204, 207],
           "name": "macro 7",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         },
         {
           "range": [208, 211],
           "name": "macro 8",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         },
         {
           "range": [212, 215],
           "name": "macro 9",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         },
         {
           "range": [216, 219],
           "name": "macro 10",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         },
         {
           "range": [220, 223],
           "name": "macro 11",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         },
         {
           "range": [224, 227],
           "name": "macro 12",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         },
         {
           "range": [228, 231],
           "name": "macro 13",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         },
         {
           "range": [232, 235],
           "name": "macro 14",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         },
         {
           "range": [236, 239],
           "name": "macro 15",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         },
         {
           "range": [240, 243],
           "name": "macro 16",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         },
         {
           "range": [244, 249],
           "name": "random effect by audio control",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         },
         {
           "range": [250, 255],
           "name": "auto random fast to slow",
           "switchChannels": {
-            "Effect indexing/rotation": "Effect rotation"
+            "Effect indexing/rotation": "Effect rotation",
+            "Effect indexing/rotation fine": "Effect rotation fine"
           }
         }
       ]
     },
     "Effect indexing": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "fineChannelAliases": ["Effect indexing fine"]
     },
     "Effect rotation": {
       "type": "Speed",
+      "fineChannelAliases": ["Effect rotation fine"],
       "capabilities": [
         {
           "range": [0, 0],
@@ -1169,10 +1480,67 @@
     },
     "Dimmer": {
       "type": "Intensity",
+      "fineChannelAliases": ["Dimmer fine"]
+    },
+    "Pan/Tilt Macro": {
+      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 255],
-          "name": "intensity"
+          "range": [0, 9],
+          "name": "Disabled"
+        },
+        {
+          "range": [10, 31],
+          "name": "Reserved"
+        },
+        {
+          "range": [32, 63],
+          "name": "Circle small-large"
+        },
+        {
+          "range": [64, 95],
+          "name": "Horizontal Eight small-large"
+        },
+        {
+          "range": [96, 127],
+          "name": "Vertical Eight small-large"
+        },
+        {
+          "range": [128, 159],
+          "name": "Rectangle small-large"
+        },
+        {
+          "range": [160, 191],
+          "name": "Triangle small-large"
+        },
+        {
+          "range": [192, 221],
+          "name": "Star small-large"
+        },
+        {
+          "range": [224, 255],
+          "name": "Cross small-large"
+        }
+      ]
+    },
+    "Pan/Tilt Macro Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "No macro"
+        },
+        {
+          "range": [1, 127],
+          "name": "forwards fast-slow"
+        },
+        {
+          "range": [128, 129],
+          "name": "No macro"
+        },
+        {
+          "range": [130, 255],
+          "name": "backwards slow-fast"
         }
       ]
     }
@@ -1188,7 +1556,7 @@
         "Tilt fine",
         "Pan/Tilt Speed",
         "Power/Special functions",
-        "Colour Wheel",
+        "Color Wheel",
         "Cyan",
         "Magenta",
         "Yellow",
@@ -1209,6 +1577,44 @@
       ]
     },
     {
+      "name": "32-channel",
+      "shortName": "32ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Power/Special functions",
+        "Pan/Tilt Macro",
+        "Pan/Tilt Macro Speed",
+        "Color Wheel",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Color Temperature",
+        "Color Macros",
+        "Effect Speed",
+        "Effect Speed assigning",
+        "Gobo Wheel 1",
+        "Gobo 1 indexing/rotation",
+        "Gobo 1 indexing/rotation fine",
+        "Gobo Wheel 2",
+        "Gobo 2 indexing/rotation",
+        "Gobo 2 indexing/rotation fine",
+        "Effect wheel",
+        "Effect indexing/rotation",
+        "Effect indexing/rotation fine",
+        "Frost",
+        "Iris",
+        "Zoom",
+        "Focus",
+        "Shutter, Strobe",
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    },
+    {
       "name": "24-channel 2",
       "shortName": "24ch2",
       "channels": [
@@ -1218,7 +1624,7 @@
         "Magenta",
         "Yellow",
         "Color Temperature",
-        "Colour Wheel",
+        "Color Wheel",
         "Gobo Wheel 1",
         "Gobo 1 indexing/rotation",
         "Gobo 1 indexing/rotation fine",
