@@ -1,0 +1,1064 @@
+{
+  "name": "MAC Viper Performance",
+  "shortName": "MacViperPerformance",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["novasfroteiras.co"],
+    "createDate": "2017-09-08",
+    "lastModifyDate": "2017-09-08"
+  },
+  "manualURL": "http://www.martin.com/Martin.Download.aspx?file=/files/files/productdocuments/11_MANUALS/999/35000275c%20UM_MACViperPerf_EN_C.pdf",
+  "physical": {
+    "dimensions": [472, 748, 566],
+    "weight": 37.9,
+    "power": 1225,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "1000 W short-arc discharge",
+      "colorTemperature": 6000,
+      "lumens": 26000
+    },
+    "lens": {
+      "degreesMinMax": [10, 44]
+    },
+    "focus": {
+      "panMax": 540,
+      "tiltMax": 268
+    }
+  },
+  "availableChannels": {
+    "Strobe / Shuter": {
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 19],
+          "name": "shutter closed (800W)"
+        },
+        {
+          "range": [20, 49],
+          "name": "shutter open"
+        },
+        {
+          "range": [50, 200],
+          "name": "strobe, slow to fast"
+        },
+        {
+          "range": [201, 210],
+          "name": "shutter open"
+        },
+        {
+          "range": [211, 255],
+          "name": "random strobe, slow to fast"
+        }
+      ]
+    },
+    "Dimmer fade": {
+      "type": "Intensity",
+      "fineChannelAliases": ["Dimmer fade fine"],
+      "capabilities": [
+        {
+          "range": [0, 65535],
+          "name": "dimmer fade"
+        }
+      ]
+    },
+    "Cyan": {
+      "type": "Single Color",
+      "color": "Cyan",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "white to cyan"
+        }
+      ]
+    },
+    "Magenta": {
+      "type": "Single Color",
+      "color": "Magenta",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "white to magenta"
+        }
+      ]
+    },
+    "Yellow": {
+      "type": "Single Color",
+      "color": "Yellow",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "white to yellow"
+        }
+      ]
+    },
+    "CTO": {
+      "type": "Single Color",
+      "color": "CTO",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "open 6000K to warm 3200K"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "open"
+        },
+        {
+          "range": [1, 14],
+          "name": "open > slot 1"
+        },
+        {
+          "range": [15, 15],
+          "name": "slot 1"
+        },
+        {
+          "range": [16, 29],
+          "name": "slot 1 > slot 2"
+        },
+        {
+          "range": [30, 30],
+          "name": "slot 2"
+        },
+        {
+          "range": [31, 44],
+          "name": "slot 2 > slot 3"
+        },
+        {
+          "range": [45, 45],
+          "name": "slot 3"
+        },
+        {
+          "range": [46, 59],
+          "name": "slot 3 > slot 4"
+        },
+        {
+          "range": [60, 60],
+          "name": "slot 4"
+        },
+        {
+          "range": [61, 74],
+          "name": "slot 4 > slot 5"
+        },
+        {
+          "range": [75, 75],
+          "name": "slot 5"
+        },
+        {
+          "range": [76, 89],
+          "name": "slot 5 > slot 6"
+        },
+        {
+          "range": [90, 90],
+          "name": "slot 6"
+        },
+        {
+          "range": [91, 104],
+          "name": "slot 6 > slot 7"
+        },
+        {
+          "range": [105, 105],
+          "name": "slot 7"
+        },
+        {
+          "range": [106, 119],
+          "name": "slot 7 > open"
+        },
+        {
+          "range": [120, 160],
+          "name": "open"
+        },
+        {
+          "range": [161, 163],
+          "name": "slot 1"
+        },
+        {
+          "range": [164, 166],
+          "name": "slot 2"
+        },
+        {
+          "range": [167, 169],
+          "name": "slot 3"
+        },
+        {
+          "range": [170, 172],
+          "name": "slot 4"
+        },
+        {
+          "range": [173, 175],
+          "name": "slot 5"
+        },
+        {
+          "range": [176, 178],
+          "name": "slot 6"
+        },
+        {
+          "range": [179, 181],
+          "name": "slot 7"
+        },
+        {
+          "range": [182, 192],
+          "name": "open"
+        },
+        {
+          "range": [193, 214],
+          "name": "CW, fast to slow"
+        },
+        {
+          "range": [215, 221],
+          "name": "stop"
+        },
+        {
+          "range": [222, 243],
+          "name": "CCW, slow to fast"
+        },
+        {
+          "range": [244, 247],
+          "name": "random color fast"
+        },
+        {
+          "range": [248, 251],
+          "name": "random color medium"
+        },
+        {
+          "range": [252, 255],
+          "name": "random color slow"
+        }
+      ]
+    },
+    "Gobo selection, indexing, shake, rotation": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "open"
+        },
+        {
+          "range": [10, 14],
+          "name": "gobo 1 - indexed"
+        },
+        {
+          "range": [15, 19],
+          "name": "gobo 2 - indexed"
+        },
+        {
+          "range": [20, 24],
+          "name": "gobo 3 - indexed"
+        },
+        {
+          "range": [25, 29],
+          "name": "gobo 4 - indexed"
+        },
+        {
+          "range": [30, 34],
+          "name": "gobo 5 - indexed"
+        },
+        {
+          "range": [35, 39],
+          "name": "gobo 1 - continuous rotation"
+        },
+        {
+          "range": [40, 44],
+          "name": "gobo 2 - continuous rotation"
+        },
+        {
+          "range": [45, 49],
+          "name": "gobo 3 - continuous rotation"
+        },
+        {
+          "range": [50, 54],
+          "name": "gobo 4 - continuous rotation"
+        },
+        {
+          "range": [55, 59],
+          "name": "gobo 5 - continuous rotation"
+        },
+        {
+          "range": [60, 89],
+          "name": "gobo 1 - 360, slow to fast"
+        },
+        {
+          "range": [90, 119],
+          "name": "gobo 2 - 360, slow to fast"
+        },
+        {
+          "range": [120, 149],
+          "name": "gobo 3 - 360, slow to fast"
+        },
+        {
+          "range": [150, 179],
+          "name": "gobo 4 - 360, slow to fast"
+        },
+        {
+          "range": [180, 209],
+          "name": "gobo 5 - 360, slow to fast"
+        },
+        {
+          "range": [210, 232],
+          "name": "CW gobo wheel scroll, fast to slow"
+        },
+        {
+          "range": [233, 255],
+          "name": "CCW gobo wheel scroll, slow to fast"
+        }
+      ]
+    },
+    "Gobo indexing angle": {
+      "type": "Gobo",
+      "fineChannelAliases": ["Gobo indexing angle fine"],
+      "capabilities": [
+        {
+          "range": [0, 65535],
+          "name": "gobo indexing, -197.5 to +197.5"
+        }
+      ]
+    },
+    "Gobo rotation speed": {
+      "type": "Gobo",
+      "fineChannelAliases": ["Gobo rotation speed fine"],
+      "capabilities": [
+        {
+          "range": [0, 600],
+          "name": "no gobo rotation, 0 degree"
+        },
+        {
+          "range": [601, 32130],
+          "name": "CW, fast to slow"
+        },
+        {
+          "range": [32131, 32895],
+          "name": "no gob rotation, gobo stops at current position"
+        },
+        {
+          "range": [32896, 64515],
+          "name": "CCW, slow to fast"
+        },
+        {
+          "range": [64516, 65535],
+          "name": "no gobo rotation, 90 degrees"
+        }
+      ]
+    },
+    "Animation wheel rotation": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "open"
+        },
+        {
+          "range": [11, 20],
+          "name": "indexed"
+        },
+        {
+          "range": [21, 30],
+          "name": "open"
+        },
+        {
+          "range": [31, 40],
+          "name": "continuous rotation"
+        },
+        {
+          "range": [41, 50],
+          "name": "position 1"
+        },
+        {
+          "range": [51, 60],
+          "name": "position 2"
+        },
+        {
+          "range": [61, 70],
+          "name": "position 3"
+        },
+        {
+          "range": [71, 80],
+          "name": "position 4"
+        },
+        {
+          "range": [81, 90],
+          "name": "position 5"
+        },
+        {
+          "range": [91, 100],
+          "name": "position 6"
+        },
+        {
+          "range": [101, 110],
+          "name": "position 7"
+        },
+        {
+          "range": [111, 255],
+          "name": "open"
+        }
+      ]
+    },
+    "Animation wheel indexed angle, rotation speed and direction": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 2],
+          "name": "stop, 0 degree"
+        },
+        {
+          "range": [3, 126],
+          "name": "CW rotation, fast to slow"
+        },
+        {
+          "range": [127, 129],
+          "name": "stop, wheel stops at its current position"
+        },
+        {
+          "range": [130, 253],
+          "name": "CCW rotation, fast to slow"
+        },
+        {
+          "range": [254, 255],
+          "name": "stop, 90 degrees"
+        }
+      ]
+    },
+    "Framing blade 1, position": {
+      "type": "Blade",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "out to in"
+        }
+      ]
+    },
+    "Framing blade 1, angle": {
+      "type": "Blade",
+      "capabilities": [
+        {
+          "range": [0, 126],
+          "name": "angle -"
+        },
+        {
+          "range": [127, 128],
+          "name": "parallel"
+        },
+        {
+          "range": [129, 255],
+          "name": "angle +"
+        }
+      ]
+    },
+    "Framing blade 2, position": {
+      "type": "Blade",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "out to in"
+        }
+      ]
+    },
+    "Framing blade 2, angle": {
+      "type": "Blade",
+      "capabilities": [
+        {
+          "range": [0, 126],
+          "name": "angle - "
+        },
+        {
+          "range": [127, 128],
+          "name": "parallel"
+        },
+        {
+          "range": [129, 255],
+          "name": "angle +"
+        }
+      ]
+    },
+    "Framing blade 3, position": {
+      "type": "Blade",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "out to in"
+        }
+      ]
+    },
+    "Framing blade 3, angle": {
+      "type": "Blade",
+      "capabilities": [
+        {
+          "range": [0, 126],
+          "name": "angle -"
+        },
+        {
+          "range": [127, 128],
+          "name": "parallel"
+        },
+        {
+          "range": [129, 255],
+          "name": "angle +"
+        }
+      ]
+    },
+    "Framing blade 4, position": {
+      "type": "Blade",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "out to in"
+        }
+      ]
+    },
+    "Framing blade 4, angle": {
+      "type": "Blade",
+      "capabilities": [
+        {
+          "range": [0, 126],
+          "name": "angle -"
+        },
+        {
+          "range": [127, 128],
+          "name": "parallel"
+        },
+        {
+          "range": [129, 255],
+          "name": "angle +"
+        }
+      ]
+    },
+    "Framing indexing angle": {
+      "type": "Blade",
+      "capabilities": [
+        {
+          "range": [0, 126],
+          "name": "minimum (-55)"
+        },
+        {
+          "range": [127, 128],
+          "name": "0 degree"
+        },
+        {
+          "range": [129, 255],
+          "name": "maximum (+55)"
+        }
+      ]
+    },
+    "Frost": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "no frost > frost"
+        }
+      ]
+    },
+    "Prism": {
+      "type": "Prism",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "prism off"
+        },
+        {
+          "range": [11, 138],
+          "name": "prism indexing: angle on ch. 24 or 25"
+        },
+        {
+          "range": [139, 255],
+          "name": "prism rotation: direction and speed on ch. 24 or 25"
+        }
+      ]
+    },
+    "Prism indexing angle, rotation speed and direction": {
+      "type": "Prism",
+      "capabilities": [
+        {
+          "range": [0, 2],
+          "name": "prism stop, indexed at 0"
+        },
+        {
+          "range": [3, 126],
+          "name": "CW rotation, fast to slow"
+        },
+        {
+          "range": [127, 129],
+          "name": "prism stop at its current position"
+        },
+        {
+          "range": [130, 253],
+          "name": "CCW rotation, slow to fast"
+        },
+        {
+          "range": [254, 255],
+          "name": "prism stop, indexed at 45 (prism indexing: 0-126 angle - | 128 0 angle | 129-255 angle +)"
+        }
+      ]
+    },
+    "Iris": {
+      "type": "Iris",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "open to closed"
+        }
+      ]
+    },
+    "Zoom": {
+      "type": "Zoom",
+      "fineChannelAliases": ["Zoom fine"],
+      "capabilities": [
+        {
+          "range": [0, 65535],
+          "name": "flood to spot"
+        }
+      ]
+    },
+    "Focus": {
+      "type": "Focus",
+      "fineChannelAliases": ["Focus fine"],
+      "capabilities": [
+        {
+          "range": [0, 65535],
+          "name": "infinity to near"
+        }
+      ]
+    },
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
+      "capabilities": [
+        {
+          "range": [0, 65535],
+          "name": "left to right (32768 neutral)"
+        }
+      ]
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
+      "capabilities": [
+        {
+          "range": [0, 65535],
+          "name": "up to down (32768 neutral)"
+        }
+      ]
+    },
+    "Fixture control/settings": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "no function"
+        },
+        {
+          "range": [10, 14],
+          "name": "reset entire fixture - 5 sec"
+        },
+        {
+          "range": [15, 19],
+          "name": "reset dimmer and shutter only - 5 sec"
+        },
+        {
+          "range": [20, 24],
+          "name": "reset CMY, CTO and color wheel only - 5 sec"
+        },
+        {
+          "range": [25, 29],
+          "name": "reset effects (gobo and animation wheels, iris, prism, frost, zoom, focus) - 5 sec"
+        },
+        {
+          "range": [30, 34],
+          "name": "reset pan and tilt only - 5 sec"
+        },
+        {
+          "range": [35, 39],
+          "name": "reset framing - 5 sec"
+        },
+        {
+          "range": [40, 44],
+          "name": "lamp on"
+        },
+        {
+          "range": [45, 49],
+          "name": "lamp off - 5 sec"
+        },
+        {
+          "range": [50, 54],
+          "name": "no function"
+        },
+        {
+          "range": [55, 59],
+          "name": "enable calibration - 5 sec"
+        },
+        {
+          "range": [60, 64],
+          "name": "linear dimming curve - 1 sec"
+        },
+        {
+          "range": [65, 69],
+          "name": "square law dimming curve - 1 sec"
+        },
+        {
+          "range": [70, 74],
+          "name": "inverse square lae dimming curve - 1 sec"
+        },
+        {
+          "range": [75, 79],
+          "name": "s-curve dimming curve - 1 sec"
+        },
+        {
+          "range": [80, 84],
+          "name": "normal pan and tilt speed - 1 sec "
+        },
+        {
+          "range": [85, 89],
+          "name": "fast pan and tilt speed - 1 sec"
+        },
+        {
+          "range": [90, 94],
+          "name": "slow pan and tilt speed - 1 sec"
+        },
+        {
+          "range": [95, 99],
+          "name": "effect shortcuts = on - 1 sec"
+        },
+        {
+          "range": [100, 104],
+          "name": "effect shortcuts = off - 1 sec"
+        },
+        {
+          "range": [105, 109],
+          "name": "disable zoom/focus linking - 1 sec"
+        },
+        {
+          "range": [110, 114],
+          "name": "enable zoom/focus linking, near distance - 1 sec"
+        },
+        {
+          "range": [115, 119],
+          "name": "enable zoom/focus linking, medium distance (default) - 1 sec"
+        },
+        {
+          "range": [120, 124],
+          "name": "enable zoom/focus linking, far distance - 1 sec"
+        },
+        {
+          "range": [125, 126],
+          "name": "ballast output full, set to 100% (default)"
+        },
+        {
+          "range": [127, 128],
+          "name": "ballast output reduced to 90%"
+        },
+        {
+          "range": [129, 130],
+          "name": "ballast output reduced to 80%"
+        },
+        {
+          "range": [131, 132],
+          "name": "ballast output reduced to 70%"
+        },
+        {
+          "range": [133, 134],
+          "name": "ballast output reduced to 60%"
+        },
+        {
+          "range": [135, 144],
+          "name": "no function"
+        },
+        {
+          "range": [145, 149],
+          "name": "auto blackout = on - 1 sec"
+        },
+        {
+          "range": [150, 154],
+          "name": "auto blackout = off - 1 sec (default)"
+        },
+        {
+          "range": [155, 159],
+          "name": "turn on display - 1 sec"
+        },
+        {
+          "range": [160, 164],
+          "name": "turn off display - 1 sec"
+        },
+        {
+          "range": [165, 169],
+          "name": "store pan and tilt calibration - 5 sec"
+        },
+        {
+          "range": [170, 174],
+          "name": "store dimmer calibration - 5 sec"
+        },
+        {
+          "range": [175, 179],
+          "name": "store cyan calibration - 5 sec"
+        },
+        {
+          "range": [180, 184],
+          "name": "store magenta calibration - 5 sec"
+        },
+        {
+          "range": [185, 189],
+          "name": "store yellow calibration - 5 sec"
+        },
+        {
+          "range": [190, 194],
+          "name": "store CTC calibration - 5 sec"
+        },
+        {
+          "range": [195, 199],
+          "name": "store all CMY and CTC calibration - 5 sec"
+        },
+        {
+          "range": [200, 204],
+          "name": "store gobo wheel current slot index calibration - 5 sec"
+        },
+        {
+          "range": [205, 214],
+          "name": "no function"
+        },
+        {
+          "range": [215, 219],
+          "name": "store prism calibration - 5 sec"
+        },
+        {
+          "range": [220, 224],
+          "name": "store iris calibration - 5 sec"
+        },
+        {
+          "range": [225, 229],
+          "name": "store focus calibration - 5 sec"
+        },
+        {
+          "range": [230, 234],
+          "name": "store zoom calibration - 5 sec"
+        },
+        {
+          "range": [235, 239],
+          "name": "store pan calibration - 5 sec"
+        },
+        {
+          "range": [240, 244],
+          "name": "store tilt calibration - 5 sec"
+        },
+        {
+          "range": [245, 249],
+          "name": "reset all calibration values to factory defaults - 5 sec"
+        },
+        {
+          "range": [250, 255],
+          "name": "no function"
+        }
+      ]
+    },
+    "Strobe / Shuter 2": {
+      "name": "Strobe / Shuter",
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "shutter closed (800W)"
+        },
+        {
+          "range": [8, 19],
+          "name": "shutter open"
+        },
+        {
+          "range": [20, 78],
+          "name": "strobe, slow to fast"
+        },
+        {
+          "range": [79, 82],
+          "name": "shutter open"
+        },
+        {
+          "range": [83, 100],
+          "name": "random strobe, slow to fast"
+        },
+        {
+          "range": [101, 255],
+          "name": "no function described on manual"
+        }
+      ]
+    },
+    "Zoom 2": {
+      "name": "Zoom",
+      "type": "Zoom",
+      "fineChannelAliases": [],
+      "capabilities": [
+        {
+          "range": [0, 65535],
+          "name": "flood to spot"
+        }
+      ]
+    },
+    "Zoom 3": {
+      "name": "Zoom",
+      "type": "Zoom",
+      "fineChannelAliases": ["Zoom 3 fine"],
+      "capabilities": [
+        {
+          "range": [0, 65535],
+          "name": "flood to spot"
+        }
+      ]
+    },
+    "Focus 2": {
+      "name": "Focus",
+      "type": "Focus",
+      "fineChannelAliases": ["Focus 2 fine"],
+      "capabilities": [
+        {
+          "range": [0, 65535],
+          "name": "infinity to near"
+        }
+      ]
+    },
+    "Zoom 4": {
+      "name": "Zoom",
+      "type": "Zoom",
+      "fineChannelAliases": ["Zoom 4 fine"],
+      "capabilities": [
+        {
+          "range": [0, 65535],
+          "name": "flood to spot"
+        }
+      ]
+    },
+    "Focus 3": {
+      "name": "Focus",
+      "type": "Focus",
+      "fineChannelAliases": ["Focus 3 fine"],
+      "capabilities": [
+        {
+          "range": [0, 65535],
+          "name": "infinity to near"
+        }
+      ]
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "type": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capabilities": [
+        {
+          "range": [0, 65535],
+          "name": "left to right"
+        }
+      ]
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capabilities": [
+        {
+          "range": [0, 65535],
+          "name": "up to down"
+        }
+      ]
+    },
+    "Reserved": {
+      "type": "Reserved",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "reserved for future use"
+        }
+      ]
+    },
+    "Reserved 2": {
+      "type": "Reserved",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "reserved for future use"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "standard 16-bit",
+      "shortName": "std",
+      "channels": [
+        "Strobe / Shuter",
+        "Dimmer fade",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CTO",
+        "Color Wheel",
+        "Gobo selection, indexing, shake, rotation",
+        "Gobo indexing angle",
+        "Gobo rotation speed",
+        "Animation wheel rotation",
+        "Animation wheel indexed angle, rotation speed and direction",
+        "Framing blade 1, position",
+        "Framing blade 1, angle",
+        "Framing blade 2, position",
+        "Framing blade 2, angle",
+        "Framing blade 3, position",
+        "Framing blade 3, angle",
+        "Framing blade 4, position",
+        "Framing blade 4, angle",
+        "Framing indexing angle",
+        "Frost",
+        "Prism",
+        "Prism indexing angle, rotation speed and direction",
+        "Iris",
+        "Zoom",
+        "Focus",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Fixture control/settings"
+      ]
+    },
+    {
+      "name": "extended 16-bit",
+      "shortName": "ext",
+      "channels": [
+        "Strobe / Shuter",
+        "Dimmer fade",
+        "Dimmer fade fine",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CTO",
+        "Color Wheel",
+        "Gobo selection, indexing, shake, rotation",
+        "Gobo indexing angle",
+        "Gobo rotation speed",
+        "Animation wheel rotation",
+        "Animation wheel indexed angle, rotation speed and direction",
+        "Framing blade 1, position",
+        "Framing blade 1, angle",
+        "Framing blade 2, position",
+        "Framing blade 2, angle",
+        "Framing blade 3, position",
+        "Framing blade 3, angle",
+        "Framing blade 4, position",
+        "Framing blade 4, angle",
+        "Framing indexing angle",
+        "Frost",
+        "Prism",
+        "Prism indexing angle, rotation speed and direction",
+        "Iris",
+        "Zoom 4",
+        "Zoom 4 fine",
+        "Focus 3",
+        "Focus 3 fine",
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Fixture control/settings",
+        "Reserved",
+        "Reserved 2"
+      ]
+    }
+  ]
+}
