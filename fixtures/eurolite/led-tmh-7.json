@@ -94,33 +94,39 @@
         }
       ]
     },
-    "Maintenance": {
-      "type": "Maintenance",
+    "Shutter": {
+      "type": "Shutter",
       "defaultValue": 255,
       "capabilities": [
         {
           "range": [0, 10],
-          "name": "LED off"
+          "name": "LED off",
+          "menuClick": "start"
         },
         {
           "range": [11, 20],
-          "name": "Neutral"
+          "name": "Neutral",
+          "menuClick": "hidden"
         },
         {
           "range": [21, 30],
-          "name": "Reset"
+          "name": "Reset",
+          "menuClick": "start"
         },
         {
           "range": [31, 200],
-          "name": "Strobe slow - fast"
+          "name": "Strobe slow - fast",
+          "menuClick": "center"
         },
         {
           "range": [201, 250],
-          "name": "Random strobe slow - fast"
+          "name": "Random strobe slow - fast",
+          "menuClick": "center"
         },
         {
           "range": [251, 255],
-          "name": "Neutral"
+          "name": "Neutral",
+          "menuClick": "start"
         }
       ]
     },
@@ -140,7 +146,7 @@
         "Green",
         "Blue",
         "Color Macros",
-        "Maintenance",
+        "Shutter",
         "Dimmer Intensity",
         "Pan fine",
         "Tilt fine"
