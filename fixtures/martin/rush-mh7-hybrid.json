@@ -1,0 +1,812 @@
+{
+  "name": "Rush MH7 Hybrid",
+  "shortName": "MartinRushMH7",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["novasfronteiras.co"],
+    "createDate": "2017-09-08",
+    "lastModifyDate": "2017-09-08"
+  },
+  "manualURL": "http://www.martin.com/Martin.Download.aspx?file=/files/files/productdocuments/11_MANUALS/999/UM_RUSHMH7_EN_D.pdf",
+  "physical": {
+    "dimensions": [408, 644, 301],
+    "weight": 24,
+    "power": 377,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": " Philips MSD Platinum 11R 250 W",
+      "colorTemperature": 7800
+    },
+    "lens": {
+      "degreesMinMax": [2.2, 45]
+    },
+    "focus": {
+      "panMax": 540,
+      "tiltMax": 250
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "type": "Intensity",
+      "fineChannelAliases": ["Dimmer fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "dimmer 0 to 100"
+        }
+      ]
+    },
+    "Shutter": {
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "shutter closed"
+        },
+        {
+          "range": [32, 63],
+          "name": "shutter open"
+        },
+        {
+          "range": [64, 95],
+          "name": "strobe effect slow to fast"
+        },
+        {
+          "range": [96, 127],
+          "name": "pulse, fast close & slow open"
+        },
+        {
+          "range": [128, 159],
+          "name": "pulse, fast open and slow close"
+        },
+        {
+          "range": [160, 191],
+          "name": "sequencial pulse effects"
+        },
+        {
+          "range": [192, 223],
+          "name": "random strobe effect slow to fast"
+        },
+        {
+          "range": [224, 255],
+          "name": "shutter open"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "open"
+        },
+        {
+          "range": [1, 11],
+          "name": "open > red"
+        },
+        {
+          "range": [12, 12],
+          "name": "red "
+        },
+        {
+          "range": [13, 22],
+          "name": "red > blue"
+        },
+        {
+          "range": [23, 23],
+          "name": "blue"
+        },
+        {
+          "range": [24, 32],
+          "name": "blue > green"
+        },
+        {
+          "range": [33, 33],
+          "name": "green"
+        },
+        {
+          "range": [34, 42],
+          "name": "green > magenta"
+        },
+        {
+          "range": [43, 43],
+          "name": "magenta"
+        },
+        {
+          "range": [44, 52],
+          "name": "magenta > yellow"
+        },
+        {
+          "range": [53, 53],
+          "name": "yellow"
+        },
+        {
+          "range": [54, 62],
+          "name": "yellow > light blue"
+        },
+        {
+          "range": [63, 63],
+          "name": "light blue"
+        },
+        {
+          "range": [64, 73],
+          "name": "light blue > pink"
+        },
+        {
+          "range": [74, 74],
+          "name": "pink"
+        },
+        {
+          "range": [75, 84],
+          "name": "pink > orange"
+        },
+        {
+          "range": [85, 85],
+          "name": "orange"
+        },
+        {
+          "range": [86, 95],
+          "name": "orange > aqua"
+        },
+        {
+          "range": [96, 96],
+          "name": "aqua"
+        },
+        {
+          "range": [97, 105],
+          "name": "aqua > purple"
+        },
+        {
+          "range": [106, 106],
+          "name": "purple"
+        },
+        {
+          "range": [107, 114],
+          "name": "purple > CTO"
+        },
+        {
+          "range": [115, 115],
+          "name": "CTO"
+        },
+        {
+          "range": [116, 124],
+          "name": "CTO > CTB"
+        },
+        {
+          "range": [125, 125],
+          "name": "CTB"
+        },
+        {
+          "range": [126, 136],
+          "name": "CTB > UV"
+        },
+        {
+          "range": [137, 137],
+          "name": "UV"
+        },
+        {
+          "range": [138, 146],
+          "name": "UV > open"
+        },
+        {
+          "range": [147, 147],
+          "name": "open"
+        },
+        {
+          "range": [148, 151],
+          "name": "red"
+        },
+        {
+          "range": [152, 155],
+          "name": "blue"
+        },
+        {
+          "range": [156, 159],
+          "name": "green"
+        },
+        {
+          "range": [160, 163],
+          "name": "magenta"
+        },
+        {
+          "range": [164, 167],
+          "name": "yellow"
+        },
+        {
+          "range": [168, 171],
+          "name": "light blue"
+        },
+        {
+          "range": [172, 175],
+          "name": "pink"
+        },
+        {
+          "range": [176, 179],
+          "name": "orange"
+        },
+        {
+          "range": [180, 183],
+          "name": "aqua"
+        },
+        {
+          "range": [184, 187],
+          "name": "purple"
+        },
+        {
+          "range": [188, 191],
+          "name": "CTO"
+        },
+        {
+          "range": [192, 195],
+          "name": "CTB"
+        },
+        {
+          "range": [196, 199],
+          "name": "UV"
+        },
+        {
+          "range": [200, 220],
+          "name": "clockwise color wheel rotation, fast to slow"
+        },
+        {
+          "range": [221, 222],
+          "name": "no rotation"
+        },
+        {
+          "range": [223, 243],
+          "name": "counterclockwise color wheel rotation, slow to fast"
+        },
+        {
+          "range": [244, 247],
+          "name": "random colors fast"
+        },
+        {
+          "range": [248, 251],
+          "name": "random colors medium"
+        },
+        {
+          "range": [252, 255],
+          "name": "random colors slow"
+        }
+      ]
+    },
+    "Rotating gobos, function and selection": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 11],
+          "name": "open"
+        },
+        {
+          "range": [12, 23],
+          "name": "beamsmoother"
+        },
+        {
+          "range": [24, 29],
+          "name": "gobo 1, indexed"
+        },
+        {
+          "range": [30, 35],
+          "name": "gobo 2, indexed"
+        },
+        {
+          "range": [36, 41],
+          "name": "gobo 3, indexed"
+        },
+        {
+          "range": [42, 47],
+          "name": "gobo 4, indexed"
+        },
+        {
+          "range": [48, 53],
+          "name": "gobo 5, indexed"
+        },
+        {
+          "range": [54, 59],
+          "name": "gobo 6, indexed"
+        },
+        {
+          "range": [60, 65],
+          "name": "gobo 7, indexed"
+        },
+        {
+          "range": [66, 71],
+          "name": "gobo 8, indexed"
+        },
+        {
+          "range": [72, 76],
+          "name": "gobo 1, rotating"
+        },
+        {
+          "range": [77, 81],
+          "name": "gobo 2, rotating"
+        },
+        {
+          "range": [82, 86],
+          "name": "gobo 3, rotating"
+        },
+        {
+          "range": [87, 91],
+          "name": "gobo 4, rotating"
+        },
+        {
+          "range": [92, 96],
+          "name": "gobo 5, rotating"
+        },
+        {
+          "range": [97, 101],
+          "name": "gobo 6, rotating"
+        },
+        {
+          "range": [102, 106],
+          "name": "gobo 7, rotating"
+        },
+        {
+          "range": [107, 111],
+          "name": "gobo 8, rotating"
+        },
+        {
+          "range": [112, 121],
+          "name": "gobo 1, shake"
+        },
+        {
+          "range": [122, 131],
+          "name": "gobo 2, shake"
+        },
+        {
+          "range": [132, 141],
+          "name": "gobo 3, shake"
+        },
+        {
+          "range": [142, 151],
+          "name": "gobo 4, shake"
+        },
+        {
+          "range": [152, 161],
+          "name": "gobo 5, shake"
+        },
+        {
+          "range": [162, 171],
+          "name": "gobo 6, shake"
+        },
+        {
+          "range": [172, 181],
+          "name": "gobo 7, shake"
+        },
+        {
+          "range": [182, 191],
+          "name": "gobo 8, shake"
+        },
+        {
+          "range": [192, 223],
+          "name": "clockwise rotation, fast to slow"
+        },
+        {
+          "range": [224, 255],
+          "name": "counterclockwise rotation, slow to fast"
+        }
+      ]
+    },
+    "Rotating gobos, indexing and speed": {
+      "type": "Gobo",
+      "fineChannelAliases": ["Rotating gobos, indexing and speed fine"],
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "no rotation"
+        },
+        {
+          "range": [32, 93],
+          "name": "clockwise gobo rotation, fast to slow"
+        },
+        {
+          "range": [94, 127],
+          "name": "no rotation"
+        },
+        {
+          "range": [128, 189],
+          "name": "counterclockwise gobo rotation, slow to fast"
+        },
+        {
+          "range": [190, 255],
+          "name": "no rotation (if indexed gobo selected on ch. 5, consider gobo angle from 0-255)"
+        }
+      ]
+    },
+    "Fixed gobos": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 2],
+          "name": "open"
+        },
+        {
+          "range": [3, 5],
+          "name": "iris 1 (widest)"
+        },
+        {
+          "range": [6, 8],
+          "name": "iris 2"
+        },
+        {
+          "range": [9, 11],
+          "name": "iris 3"
+        },
+        {
+          "range": [12, 14],
+          "name": "iris 4"
+        },
+        {
+          "range": [15, 17],
+          "name": "iris 5 (narrowest)"
+        },
+        {
+          "range": [18, 20],
+          "name": "gobo 1"
+        },
+        {
+          "range": [21, 23],
+          "name": "gobo 2"
+        },
+        {
+          "range": [24, 26],
+          "name": "gobo 3"
+        },
+        {
+          "range": [27, 29],
+          "name": "gobo 4"
+        },
+        {
+          "range": [30, 32],
+          "name": "gobo 5"
+        },
+        {
+          "range": [33, 35],
+          "name": "gobo 6"
+        },
+        {
+          "range": [36, 38],
+          "name": "gobo 7"
+        },
+        {
+          "range": [39, 41],
+          "name": "gobo 8"
+        },
+        {
+          "range": [42, 42],
+          "name": "open"
+        },
+        {
+          "range": [43, 53],
+          "name": "open > iris 1"
+        },
+        {
+          "range": [54, 54],
+          "name": "iris 1"
+        },
+        {
+          "range": [55, 64],
+          "name": "iris 1 > iris 2"
+        },
+        {
+          "range": [65, 65],
+          "name": "iris 2"
+        },
+        {
+          "range": [66, 76],
+          "name": "iris 2 > iris 3"
+        },
+        {
+          "range": [77, 77],
+          "name": "iris 3"
+        },
+        {
+          "range": [78, 88],
+          "name": "iris 3 > iris 4"
+        },
+        {
+          "range": [89, 89],
+          "name": "iris 4"
+        },
+        {
+          "range": [90, 100],
+          "name": "iris 4 > iris 5"
+        },
+        {
+          "range": [101, 101],
+          "name": "iris 5"
+        },
+        {
+          "range": [102, 112],
+          "name": "iris 5 > gobo 1"
+        },
+        {
+          "range": [113, 113],
+          "name": "gobo 1"
+        },
+        {
+          "range": [114, 123],
+          "name": "gobo 1 > gobo 2"
+        },
+        {
+          "range": [124, 124],
+          "name": "gobo 2"
+        },
+        {
+          "range": [125, 135],
+          "name": "gobo 2 > gobo 3"
+        },
+        {
+          "range": [136, 136],
+          "name": "gobo 3"
+        },
+        {
+          "range": [137, 147],
+          "name": "gobo 3 > gobo 4"
+        },
+        {
+          "range": [148, 148],
+          "name": "gobo 4"
+        },
+        {
+          "range": [149, 159],
+          "name": "gobo 4 > gobo 5"
+        },
+        {
+          "range": [160, 160],
+          "name": "gobo 5"
+        },
+        {
+          "range": [161, 170],
+          "name": "gobo 5 > gobo 6"
+        },
+        {
+          "range": [171, 171],
+          "name": "gobo 6"
+        },
+        {
+          "range": [172, 182],
+          "name": "gobo 6 > gobo 7"
+        },
+        {
+          "range": [183, 183],
+          "name": "gobo 7"
+        },
+        {
+          "range": [184, 194],
+          "name": "gobo 7 > gobo 8"
+        },
+        {
+          "range": [195, 195],
+          "name": "gobo 8"
+        },
+        {
+          "range": [196, 217],
+          "name": "clockwise rotation, fast to slow"
+        },
+        {
+          "range": [218, 221],
+          "name": "no rotation"
+        },
+        {
+          "range": [222, 243],
+          "name": "counterclockwise rotation, slow to fast"
+        },
+        {
+          "range": [244, 247],
+          "name": "random slots fast"
+        },
+        {
+          "range": [248, 251],
+          "name": "random slots medium"
+        },
+        {
+          "range": [252, 255],
+          "name": "random slots slow"
+        }
+      ]
+    },
+    "Rotating prisms, function and selection": {
+      "type": "Prism",
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "open (no prism)"
+        },
+        {
+          "range": [32, 95],
+          "name": "4-facet prism, indexed"
+        },
+        {
+          "range": [96, 127],
+          "name": "8-facet prism, indexed"
+        },
+        {
+          "range": [128, 191],
+          "name": "4-facet prism, rotating"
+        },
+        {
+          "range": [192, 255],
+          "name": "8-facet prism, rotating"
+        }
+      ]
+    },
+    "Rotating prisms, indexing and speed": {
+      "type": "Prism",
+      "fineChannelAliases": ["Rotating prisms, indexing and speed fine"],
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "no rotation"
+        },
+        {
+          "range": [32, 93],
+          "name": "forwards prism rotation, fast to slow"
+        },
+        {
+          "range": [94, 127],
+          "name": "no rotation"
+        },
+        {
+          "range": [128, 189],
+          "name": "backwards prism rotation, slow to fast"
+        },
+        {
+          "range": [190, 255],
+          "name": "no rotation (if indexed prism selected on ch. 9 indexed position, 0>360: 0-255)"
+        }
+      ]
+    },
+    "Frost": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "no frost"
+        },
+        {
+          "range": [128, 255],
+          "name": "enable frost (wash operation)"
+        }
+      ]
+    },
+    "Zoom": {
+      "type": "Zoom",
+      "fineChannelAliases": ["Zoom fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "zoom narrow to wide"
+        }
+      ]
+    },
+    "Focus": {
+      "type": "Focus",
+      "fineChannelAliases": ["Focus fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "focus near to far"
+        }
+      ]
+    },
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "pan 0>540"
+        }
+      ]
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "tilt 0>250"
+        }
+      ]
+    },
+    "Lamp on/off, Reset, Personality settings": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 19],
+          "name": "reserved"
+        },
+        {
+          "range": [20, 29],
+          "name": "auto-blackout on"
+        },
+        {
+          "range": [30, 39],
+          "name": "auto-blackout off (default)"
+        },
+        {
+          "range": [40, 59],
+          "name": "lamp on"
+        },
+        {
+          "range": [60, 79],
+          "name": "lamp off"
+        },
+        {
+          "range": [80, 84],
+          "name": "reset all"
+        },
+        {
+          "range": [85, 87],
+          "name": "pan/tilt reset"
+        },
+        {
+          "range": [88, 90],
+          "name": "reset color wheel"
+        },
+        {
+          "range": [91, 93],
+          "name": "reset gobos"
+        },
+        {
+          "range": [94, 96],
+          "name": "reset shutter"
+        },
+        {
+          "range": [97, 99],
+          "name": "reset other effects"
+        },
+        {
+          "range": [100, 104],
+          "name": "control panel display on"
+        },
+        {
+          "range": [105, 109],
+          "name": "control panel display off"
+        },
+        {
+          "range": [110, 115],
+          "name": "parameter shortcuts on (default)"
+        },
+        {
+          "range": [116, 121],
+          "name": "parameter shortcuts off"
+        },
+        {
+          "range": [122, 255],
+          "name": "reserved"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "standard",
+      "shortName": "std",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Shutter",
+        "Color Wheel",
+        "Rotating gobos, function and selection",
+        "Rotating gobos, indexing and speed",
+        "Rotating gobos, indexing and speed fine",
+        "Fixed gobos",
+        "Rotating prisms, function and selection",
+        "Rotating prisms, indexing and speed",
+        "Rotating prisms, indexing and speed fine",
+        "Frost",
+        "Zoom",
+        "Zoom fine",
+        "Focus",
+        "Focus fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Lamp on/off, Reset, Personality settings"
+      ]
+    }
+  ]
+}
