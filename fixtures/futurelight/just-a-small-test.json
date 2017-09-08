@@ -1,0 +1,27 @@
+{
+  "name": "Just a small test",
+  "categories": ["Flower"],
+  "meta": {
+    "authors": ["Felix"],
+    "createDate": "2017-09-08",
+    "lastModifyDate": "2017-09-08"
+  },
+  "manualURL": "http://www.example.com",
+  "availableChannels": {
+    "Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "I'll delete this right away": {
+      "type": "Intensity"
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Red"
+      ]
+    }
+  ]
+}
