@@ -14,15 +14,8 @@ module.exports = function(options) {
   
   options.title = `${fixture.manufacturer.name} ${fixture.name} - Open Fixture Library`;
 
-  let branch = 'master';
-  if ('TRAVIS_PULL_REQUEST_BRANCH' in process.env && process.env.TRAVIS_PULL_REQUEST_BRANCH !== '') {
-    branch = process.env.TRAVIS_PULL_REQUEST_BRANCH;
-  }
-  else if ('TRAVIS_BRANCH' in process.env) {
-    branch = process.env.TRAVIS_BRANCH;
-  }
-  const githubRepoPath = 'https://github.com/FloEdelmann/open-fixture-library';
-
+  const githubRepoPath = 'https://github.com/' + (process.env.TRAVIS_REPO_SLUG || 'FloEdelmann/open-fixture-library');
+  const branch = process.env.TRAVIS_PULL_REQUEST_BRANCH || process.env.TRAVIS_BRANCH || 'master';
 
   let str = require('../includes/header.js')(options);
 
