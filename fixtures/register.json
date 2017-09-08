@@ -15,8 +15,14 @@
     "american-dj/revo-4-ir": {
       "name": "Revo 4 IR"
     },
+    "american-dj/xs-400": {
+      "name": "XS 400"
+    },
     "cameo/flat-pro-18": {
       "name": "Flat Pro 18"
+    },
+    "cameo/hydrabeam-100": {
+      "name": "Hydrabeam 100"
     },
     "cameo/hydrabeam-300-rgbw": {
       "name": "Hydrabeam 300 RGBW"
@@ -38,6 +44,9 @@
     },
     "cameo/thunder-wash-600-w": {
       "name": "Thunder Wash 600 W"
+    },
+    "chauvet-dj/slimpar-pro-h-usb": {
+      "name": "SlimPAR Pro H USB"
     },
     "dts/xr1200-wash": {
       "name": "XR1200 WASH"
@@ -65,6 +74,12 @@
     },
     "eurolite/led-tmh-18": {
       "name": "LED TMH-18"
+    },
+    "eurolite/led-tmh-7": {
+      "name": "LED TMH-7"
+    },
+    "eurolite/led-tmh-9": {
+      "name": "LED TMH-9"
     },
     "eurolite/led-tmh-x25": {
       "name": "LED TMH-X25"
@@ -117,6 +132,9 @@
     "mdg/hazer-atmosphere-aps": {
       "name": "Hazer ATMOSPHERE APS"
     },
+    "prolights/diamond-19": {
+      "name": "Diamond 19"
+    },
     "robe/dj-scan-250-xt": {
       "name": "DJ Scan 250 XT"
     },
@@ -134,24 +152,6 @@
     },
     "showtec/phantom-50-led-spot": {
       "name": "Phantom 50 LED Spot"
-    },
-    "chauvet-dj/slimpar-pro-h-usb": {
-      "name": "SlimPAR Pro H USB"
-    },
-    "prolights/diamond-19": {
-      "name": "Diamond 19"
-    },
-    "cameo/hydrabeam-100": {
-      "name": "Hydrabeam 100"
-    },
-    "american-dj/xs-400": {
-      "name": "XS 400"
-    },
-    "eurolite/led-tmh-9": {
-      "name": "LED TMH-9"
-    },
-    "eurolite/led-tmh-7": {
-      "name": "LED TMH-7"
     }
   },
   "manufacturers": {
@@ -177,6 +177,9 @@
       "thunder-wash-100-w",
       "thunder-wash-600-rgb",
       "thunder-wash-600-w"
+    ],
+    "chauvet-dj": [
+      "slimpar-pro-h-usb"
     ],
     "dts": [
       "xr1200-wash"
@@ -224,6 +227,9 @@
     "mdg": [
       "hazer-atmosphere-aps"
     ],
+    "prolights": [
+      "diamond-19"
+    ],
     "robe": [
       "dj-scan-250-xt"
     ],
@@ -233,12 +239,6 @@
       "led-light-bar-rgb-v3",
       "phantom-140-led-spot",
       "phantom-50-led-spot"
-    ],
-    "chauvet-dj": [
-      "slimpar-pro-h-usb"
-    ],
-    "prolights": [
-      "diamond-19"
     ]
   },
   "categories": {
