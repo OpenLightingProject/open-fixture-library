@@ -34,7 +34,8 @@ try {
           const fixData = JSON.parse(fs.readFileSync(path.join(fixturePath, man, filename), 'utf8'));
 
           register.filesystem[man + '/' + fix] = {
-            name: fixData.name
+            name: fixData.name,
+            createDate: fixData.meta.createDate
           };
 
           for (const cat of fixData.categories) {
@@ -57,6 +58,13 @@ catch (readError) {
 for (const cat of Object.keys(categories).sort()) {
   register.categories[cat] = categories[cat];
 }
+
+// add fixture list sorted by createDate
+register.latest = Object.keys(register.filesystem).sort((a, b) => {
+  const aDate = new Date(register.filesystem[a].createDate);
+  const bDate = new Date(register.filesystem[b].createDate);
+  return aDate > bDate ? -1 : aDate < bDate ? 1 : 0;
+});
 
 const filename = path.join(fixturePath, (process.argv.length === 3 ? process.argv[2] : 'register.json'));
 
