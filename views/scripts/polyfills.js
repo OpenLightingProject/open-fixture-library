@@ -1,3 +1,5 @@
+require('validate/dist/js/validityState-polyfill.js');
+
 // https://tc39.github.io/ecma262/#sec-array.prototype.findIndex
 if (!Array.prototype.findIndex) {
   Object.defineProperty(Array.prototype, 'findIndex', {
@@ -49,4 +51,27 @@ if (!Array.prototype.find) {
       return this[this.findIndex(predicate)];
     }
   });
+}
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/closest#Polyfill
+if (!Element.prototype.matches) {
+  Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+}
+if (!Element.prototype.closest) {
+  Element.prototype.closest = function(s) {
+    if (!document.documentElement.contains(this)) {
+      return null;
+    }
+
+    var ancestor = this;
+    do {
+      if (ancestor.matches(s)) {
+        return ancestor;
+      }
+
+      ancestor = ancestor.parentElement;
+    } while (ancestor !== null);
+
+    return el;
+  };
 }

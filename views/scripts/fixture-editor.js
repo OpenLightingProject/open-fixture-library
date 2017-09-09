@@ -2,8 +2,20 @@
 
 require('./polyfills.js');
 var A11yDialog = require('a11y-dialog');
-var uuidV4 = require('uuid/v4');
-var Vue = require('vue/dist/vue');
+var uuidV4 = require('uuid/v4.js');
+var Vue = require('vue/dist/vue.js');
+var validate = require('./validate.js');
+
+var vueIsReady = false;
+
+validate.init(function(form) {
+  if (form.id === 'fixture-form') {
+    app.submitFixture();
+  }
+  else if (form.id === 'channel-form') {
+    app.saveChannel();
+  }
+});
 
 var sendObject = {
   fixtures: []
@@ -24,7 +36,9 @@ var storageAvailable = (function() {
 
 Vue.directive('focus', {
   inserted: function(el) {
-    el.focus();
+    if (vueIsReady) {
+      el.focus();
+    }
   }
 });
 
@@ -74,7 +88,9 @@ Vue.component('physical-data', {
     }
   },
   mounted: function() {
-    this.$refs.firstInput.focus();
+    if (vueIsReady) {
+      this.$refs.firstInput.focus();
+    }
   }
 });
 
@@ -82,7 +98,9 @@ Vue.component('fixture-mode', {
   template: '#template-mode',
   props: ['mode', 'fixture', 'channel'],
   mounted: function() {
-    this.$refs.firstInput.focus();
+    if (vueIsReady) {
+      this.$refs.firstInput.focus();
+    }
   },
   methods: {
     getChannelName: function(channelUuid) {
@@ -165,9 +183,19 @@ Vue.component('channel-capability', {
       return min;
     },
     startMax: function() {
+      var index = this.capabilities.indexOf(this.capability);
+      if (index === 0) {
+        return this.dmxMin;
+      }
+
       return this.capability.end !== '' ? this.capability.end : this.endMax;
     },
     endMin: function() {
+      var index = this.capabilities.indexOf(this.capability);
+      if (index === this.capabilities.length) {
+        return this.dmxMax;
+      }
+
       return this.capability.start !== '' ? this.capability.start : this.startMin;
     },
     endMax: function() {
@@ -250,7 +278,12 @@ Vue.component('channel-capability', {
   },
   methods: {
     remove: function() {
-      this.capability = getEmptyCapability();
+      var emptyCap = getEmptyCapability();
+      for (var prop in emptyCap) {
+        if (emptyCap.hasOwnProperty(prop)) {
+          this.capability[prop] = emptyCap[prop];
+        }
+      }
       this.collapseWithNeighbors();
     },
     collapseWithNeighbors: function() {
@@ -742,6 +775,7 @@ function clearAutoSave() {
 
 function restoreAutoSave() {
   if (!storageAvailable) {
+    vueIsReady = true;
     return;
   }
 
@@ -766,6 +800,7 @@ function discardRestored() {
 
   this.restoredData = '';
   this.readyToAutoSave = true;
+  vueIsReady = true;
 }
 function applyRestored() {
   var restoredData = this.restoredData;
@@ -780,6 +815,7 @@ function applyRestored() {
 
     Vue.nextTick(function() {
       app.readyToAutoSave = true;
+      vueIsReady = true;
     });
   });
 }

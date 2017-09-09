@@ -6,7 +6,7 @@ module.exports = [{
   order: 75,
   hasFeature: fixture => fixture.switchingChannels.some(
     switchingChannel => switchingChannel.switchToChannels.some(
-      chKey => fixture.getChannelByKey(chKey) instanceof FineChannel
+      channel => channel instanceof FineChannel
     )
   )
 }];

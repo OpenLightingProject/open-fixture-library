@@ -15,8 +15,14 @@
     "american-dj/revo-4-ir": {
       "name": "Revo 4 IR"
     },
+    "american-dj/xs-400": {
+      "name": "XS 400"
+    },
     "cameo/flat-pro-18": {
       "name": "Flat Pro 18"
+    },
+    "cameo/hydrabeam-100": {
+      "name": "Hydrabeam 100"
     },
     "cameo/hydrabeam-300-rgbw": {
       "name": "Hydrabeam 300 RGBW"
@@ -38,6 +44,9 @@
     },
     "cameo/thunder-wash-600-w": {
       "name": "Thunder Wash 600 W"
+    },
+    "chauvet-dj/slimpar-pro-h-usb": {
+      "name": "SlimPAR Pro H USB"
     },
     "dts/xr1200-wash": {
       "name": "XR1200 WASH"
@@ -65,6 +74,12 @@
     },
     "eurolite/led-tmh-18": {
       "name": "LED TMH-18"
+    },
+    "eurolite/led-tmh-7": {
+      "name": "LED TMH-7"
+    },
+    "eurolite/led-tmh-9": {
+      "name": "LED TMH-9"
     },
     "eurolite/led-tmh-x25": {
       "name": "LED TMH-X25"
@@ -102,11 +117,14 @@
     "martin/mac-viper-airfx": {
       "name": "MAC Viper AirFX"
     },
-    "martin/magnum-2500-hz": {
-      "name": "Magnum 2500 HZ"
+    "martin/mac-viper-performance": {
+      "name": "MAC Viper Performance"
     },
     "martin/mac-viper-wash": {
       "name": "MAC Viper Wash"
+    },
+    "martin/magnum-2500-hz": {
+      "name": "Magnum 2500 HZ"
     },
     "martin/roboscan-812": {
       "name": "RoboScan 812"
@@ -117,8 +135,17 @@
     "martin/rush-mh-3-beam": {
       "name": "Rush MH 3 Beam"
     },
+    "martin/rush-mh-7-hybrid": {
+      "name": "Rush MH 7 Hybrid"
+    },
     "mdg/hazer-atmosphere-aps": {
       "name": "Hazer ATMOSPHERE APS"
+    },
+    "prolights/diamond-19": {
+      "name": "Diamond 19"
+    },
+    "robe/colorspot-2500e-at": {
+      "name": "ColorSpot 2500E AT"
     },
     "robe/dj-scan-250-xt": {
       "name": "DJ Scan 250 XT"
@@ -137,9 +164,6 @@
     },
     "showtec/phantom-50-led-spot": {
       "name": "Phantom 50 LED Spot"
-    },
-    "chauvet-dj/slimpar-pro-h-usb": {
-      "name": "SlimPAR Pro H USB"
     }
   },
   "manufacturers": {
@@ -152,10 +176,12 @@
     "american-dj": [
       "fog-fury-jett-pro",
       "quad-phase-hp",
-      "revo-4-ir"
+      "revo-4-ir",
+      "xs-400"
     ],
     "cameo": [
       "flat-pro-18",
+      "hydrabeam-100",
       "hydrabeam-300-rgbw",
       "nanospot-120",
       "outdoor-par-tri-12",
@@ -163,6 +189,9 @@
       "thunder-wash-100-w",
       "thunder-wash-600-rgb",
       "thunder-wash-600-w"
+    ],
+    "chauvet-dj": [
+      "slimpar-pro-h-usb"
     ],
     "dts": [
       "xr1200-wash"
@@ -178,6 +207,8 @@
       "led-sls-6-uv-floor",
       "led-svf-1",
       "led-tmh-18",
+      "led-tmh-7",
+      "led-tmh-9",
       "led-tmh-x25"
     ],
     "futurelight": [
@@ -200,16 +231,22 @@
       "mac-aura",
       "mac-axiom-hybrid",
       "mac-viper-airfx",
+      "mac-viper-performance",
       "mac-viper-wash",
       "magnum-2500-hz",
       "roboscan-812",
       "rush-mh-2-wash",
-      "rush-mh-3-beam"
+      "rush-mh-3-beam",
+      "rush-mh-7-hybrid"
     ],
     "mdg": [
       "hazer-atmosphere-aps"
     ],
+    "prolights": [
+      "diamond-19"
+    ],
     "robe": [
+      "colorspot-2500e-at",
       "dj-scan-250-xt"
     ],
     "showtec": [
@@ -218,29 +255,34 @@
       "led-light-bar-rgb-v3",
       "phantom-140-led-spot",
       "phantom-50-led-spot"
-    ],
-    "chauvet-dj": [
-      "slimpar-pro-h-usb"
     ]
   },
   "categories": {
     "Moving Head": [
       "5star-systems/spica-250m",
+      "american-dj/xs-400",
+      "cameo/hydrabeam-100",
       "cameo/hydrabeam-300-rgbw",
       "cameo/nanospot-120",
       "dts/xr1200-wash",
       "elation/platinum-hfx",
       "elation/platinum-spot-15r-pro",
       "eurolite/led-tmh-18",
+      "eurolite/led-tmh-7",
+      "eurolite/led-tmh-9",
       "eurolite/led-tmh-x25",
       "generic/pan-tilt",
       "lightmaxx/vega-zoom-wash",
       "martin/mac-aura",
       "martin/mac-axiom-hybrid",
       "martin/mac-viper-airfx",
+      "martin/mac-viper-performance",
       "martin/mac-viper-wash",
       "martin/rush-mh-2-wash",
       "martin/rush-mh-3-beam",
+      "martin/rush-mh-7-hybrid",
+      "prolights/diamond-19",
+      "robe/colorspot-2500e-at",
       "showtec/kanjo-wash-rgb",
       "showtec/phantom-140-led-spot",
       "showtec/phantom-50-led-spot"
