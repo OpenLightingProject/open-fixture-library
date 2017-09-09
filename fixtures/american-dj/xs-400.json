@@ -1,0 +1,355 @@
+{
+  "name": "XS 400",
+  "shortName": "XS400",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["FloEdelmann"],
+    "createDate": "2017-09-04",
+    "lastModifyDate": "2017-09-04"
+  },
+  "manualURL": "http://adjmedia.s3-website-eu-west-1.amazonaws.com/manuals/XS%20400.pdf",
+  "physical": {
+    "dimensions": [169.9, 284.5, 123.6],
+    "weight": 2.5,
+    "power": 45,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "4x 10W RGBW LEDs"
+    },
+    "focus": {
+      "type": "Head"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"]
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"]
+    },
+    "Tilt Continuous Rotation": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 55],
+          "name": "No function"
+        },
+        {
+          "range": [56, 127],
+          "name": "Clockwise rotation"
+        },
+        {
+          "range": [128, 199],
+          "name": "Counter-clockwise rotation"
+        },
+        {
+          "range": [200, 255],
+          "name": "No function"
+        }
+      ]
+    },
+    "Tilt Continuous Rotation Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow - fast"
+        }
+      ]
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "White": {
+      "type": "Single Color",
+      "color": "White"
+    },
+    "Color Macros & Effects": {
+      "type": "Multi-Color",
+      "crossfade": false,
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "No function",
+          "color": "#000000"
+        },
+        {
+          "range": [11, 20],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [21, 30],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [31, 40],
+          "name": "Red & Green",
+          "color": "#ffff00"
+        },
+        {
+          "range": [41, 50],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [51, 60],
+          "name": "Red & Blue",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [61, 70],
+          "name": "Green & Blue",
+          "color": "#00ffff"
+        },
+        {
+          "range": [71, 80],
+          "name": "Red & Green & Blue",
+          "color": "#ffffff"
+        },
+        {
+          "range": [81, 123],
+          "name": "Single color change slow - fast"
+        },
+        {
+          "range": [124, 166],
+          "name": "Color mix slow - fast"
+        },
+        {
+          "range": [167, 209],
+          "name": "Color fade slow - fast"
+        },
+        {
+          "range": [210, 249],
+          "name": "Color change slow - fast"
+        },
+        {
+          "range": [250, 255],
+          "name": "Sound active color effect"
+        }
+      ]
+    },
+    "Strobing": {
+      "type": "Strobe",
+      "crossfade": false,
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Blackout"
+        },
+        {
+          "range": [8, 139],
+          "name": "Strobing slow - fast"
+        },
+        {
+          "range": [140, 189],
+          "name": "Slow open - fast close"
+        },
+        {
+          "range": [190, 239],
+          "name": "Fast open - slow close"
+        },
+        {
+          "range": [240, 255],
+          "name": "Random strobe"
+        }
+      ]
+    },
+    "Master Dimmer": {
+      "type": "Intensity"
+    },
+    "Programs": {
+      "type": "Effect",
+      "crossfade": false,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "Nothing"
+        },
+        {
+          "range": [16, 40],
+          "name": "Program 1"
+        },
+        {
+          "range": [41, 65],
+          "name": "Program 2"
+        },
+        {
+          "range": [66, 90],
+          "name": "Program 3"
+        },
+        {
+          "range": [91, 115],
+          "name": "Program 4"
+        },
+        {
+          "range": [116, 140],
+          "name": "Program 5"
+        },
+        {
+          "range": [141, 165],
+          "name": "Program 6"
+        },
+        {
+          "range": [166, 190],
+          "name": "Program 7"
+        },
+        {
+          "range": [191, 215],
+          "name": "Program 8"
+        },
+        {
+          "range": [216, 240],
+          "name": "Random program playing 5 times each"
+        },
+        {
+          "range": [241, 255],
+          "name": "Random program 2min each"
+        }
+      ]
+    },
+    "Program Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow - fast"
+        }
+      ]
+    },
+    "Pan / Tilt Speed": {
+      "type": "Speed",
+      "defaultValue": 0,
+      "invert": true,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "fast - slow"
+        }
+      ]
+    },
+    "Special Functions": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 69],
+          "name": "No function"
+        },
+        {
+          "range": [70, 79],
+          "name": "Blackout with Pan / Tilt movement"
+        },
+        {
+          "range": [80, 89],
+          "name": "No function"
+        },
+        {
+          "range": [90, 99],
+          "name": "Blackout with RGBW value change"
+        },
+        {
+          "range": [100, 199],
+          "name": "No function"
+        },
+        {
+          "range": [200, 209],
+          "name": "Reset all"
+        },
+        {
+          "range": [210, 255],
+          "name": "No function"
+        }
+      ]
+    },
+    "Dimmer Curve": {
+      "type": "Maintenance",
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "range": [0, 20],
+          "name": "Standard"
+        },
+        {
+          "range": [21, 40],
+          "name": "Stage"
+        },
+        {
+          "range": [41, 60],
+          "name": "TV"
+        },
+        {
+          "range": [61, 80],
+          "name": "Architectural"
+        },
+        {
+          "range": [81, 100],
+          "name": "Theatre"
+        },
+        {
+          "range": [101, 255],
+          "name": "Default setting"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Tilt Continuous Rotation",
+        "Tilt Continuous Rotation Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros & Effects",
+        "Strobing",
+        "Master Dimmer",
+        "Programs",
+        "Program Speed",
+        "Pan / Tilt Speed",
+        "Special Functions",
+        "Dimmer Curve"
+      ]
+    },
+    {
+      "name": "18-channel",
+      "shortName": "18ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Tilt Continuous Rotation",
+        "Tilt Continuous Rotation Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros & Effects",
+        "Strobing",
+        "Master Dimmer",
+        "Programs",
+        "Program Speed",
+        "Pan / Tilt Speed",
+        "Special Functions",
+        "Dimmer Curve"
+      ]
+    }
+  ]
+}
