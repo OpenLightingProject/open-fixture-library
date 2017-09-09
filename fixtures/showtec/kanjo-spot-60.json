@@ -1,0 +1,245 @@
+{
+  "name": "Kanjo Spot 60",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["FloEdelmann"],
+    "createDate": "2017-09-09",
+    "lastModifyDate": "2017-09-09"
+  },
+  "manualURL": "http://www.highlite.nl/de/silver.download/Documents@extern@Manuals/45011_MANUAL_GB_V2.pdf",
+  "physical": {
+    "dimensions": [167, 270, 145],
+    "weight": 2.9,
+    "power": 85,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "60W White LED"
+    },
+    "lens": {
+      "degreesMinMax": [18, 18]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 230
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32768
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32768
+    },
+    "Pan / Tilt Speed": {
+      "type": "Speed",
+      "invert": true,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Max to min speed"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "type": "Multi-Color",
+      "crossfade": false,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [16, 31],
+          "name": "Red",
+          "color": "#bd1007"
+        },
+        {
+          "range": [32, 47],
+          "name": "Green",
+          "color": "#00ff01"
+        },
+        {
+          "range": [48, 63],
+          "name": "Blue",
+          "color": "#0d3fd6"
+        },
+        {
+          "range": [64, 79],
+          "name": "Yellow",
+          "color": "#fefe01"
+        },
+        {
+          "range": [80, 95],
+          "name": "Magenta",
+          "color": "#dd127b"
+        },
+        {
+          "range": [96, 111],
+          "name": "Cyan",
+          "color": "#0099ff"
+        },
+        {
+          "range": [112, 127],
+          "name": "Orange",
+          "color": "#ff6600"
+        },
+        {
+          "range": [128, 255],
+          "name": "Color rotation slow - fast"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Off"
+        },
+        {
+          "range": [8, 15],
+          "name": "Gobo 1"
+        },
+        {
+          "range": [16, 23],
+          "name": "Gobo 2"
+        },
+        {
+          "range": [24, 31],
+          "name": "Gobo 3"
+        },
+        {
+          "range": [32, 39],
+          "name": "Gobo 4"
+        },
+        {
+          "range": [40, 47],
+          "name": "Gobo 5"
+        },
+        {
+          "range": [48, 55],
+          "name": "Gobo 6"
+        },
+        {
+          "range": [56, 63],
+          "name": "Gobo 7"
+        },
+        {
+          "range": [64, 127],
+          "name": "Gobo rotation slow - fast"
+        },
+        {
+          "range": [128, 143],
+          "name": "No function"
+        },
+        {
+          "range": [144, 159],
+          "name": "Gobo 1 shake slow - fast"
+        },
+        {
+          "range": [160, 175],
+          "name": "Gobo 2 shake slow - fast"
+        },
+        {
+          "range": [176, 191],
+          "name": "Gobo 3 shake slow - fast"
+        },
+        {
+          "range": [192, 207],
+          "name": "Gobo 4 shake slow - fast"
+        },
+        {
+          "range": [208, 223],
+          "name": "Gobo 5 shake slow - fast"
+        },
+        {
+          "range": [224, 239],
+          "name": "Gobo 6 shake slow - fast"
+        },
+        {
+          "range": [240, 255],
+          "name": "Gobo 7 shake slow - fast"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity"
+    },
+    "Strobe / Shutter": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Off"
+        },
+        {
+          "range": [8, 127],
+          "name": "Strobe 0 - 20Hz"
+        },
+        {
+          "range": [128, 255],
+          "name": "Random strobe 0 - 20Hz"
+        }
+      ]
+    },
+    "Functions": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 93],
+          "name": "No function"
+        },
+        {
+          "range": [94, 94],
+          "name": "Reset settings"
+        },
+        {
+          "range": [95, 95],
+          "name": "Restore factory settings"
+        },
+        {
+          "range": [96, 255],
+          "name": "Sound-controlled Mode"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan / Tilt Speed",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Dimmer",
+        "Strobe / Shutter",
+        "Functions"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan / Tilt Speed",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Dimmer",
+        "Strobe / Shutter",
+        "Functions"
+      ]
+    }
+  ]
+}
