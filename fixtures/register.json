@@ -150,6 +150,9 @@
     "showtec/horizon-8": {
       "name": "Horizon 8"
     },
+    "showtec/kanjo-spot-60": {
+      "name": "Kanjo Spot 60"
+    },
     "showtec/kanjo-wash-rgb": {
       "name": "Kanjo Wash RGB"
     },
@@ -161,9 +164,6 @@
     },
     "showtec/phantom-50-led-spot": {
       "name": "Phantom 50 LED Spot"
-    },
-    "showtec/kanjo-spot-60": {
-      "name": "Kanjo Spot 60"
     }
   },
   "manufacturers": {
@@ -258,6 +258,48 @@
     ]
   },
   "categories": {
+    "Blinder": [
+      "cameo/thunder-wash-100-rgb",
+      "cameo/thunder-wash-100-w",
+      "cameo/thunder-wash-600-rgb",
+      "cameo/thunder-wash-600-w",
+      "showtec/horizon-8"
+    ],
+    "Color Changer": [
+      "american-dj/fog-fury-jett-pro",
+      "cameo/flat-pro-18",
+      "cameo/hydrabeam-300-rgbw",
+      "cameo/outdoor-par-tri-12",
+      "cameo/thunder-wash-100-rgb",
+      "cameo/thunder-wash-600-rgb",
+      "chauvet-dj/slimpar-pro-h-usb",
+      "eurolite/led-kls-801",
+      "eurolite/led-par-56-tcl",
+      "eurolite/led-ps-4-hcl",
+      "eurolite/led-sls-6-uv-floor",
+      "futurelight/pro-slim-par-7-hcl",
+      "generic/rgb-fader",
+      "lightmaxx/platinum-mini-tri-par",
+      "lightmaxx/vega-zoom-wash",
+      "showtec/horizon-8",
+      "showtec/led-light-bar-rgb-v3"
+    ],
+    "Dimmer": [
+      "generic/desk-channel"
+    ],
+    "Fan": [
+      "gruft/ventilator"
+    ],
+    "Flower": [
+      "abstract/twister-4",
+      "american-dj/quad-phase-hp",
+      "american-dj/revo-4-ir",
+      "eurolite/led-svf-1"
+    ],
+    "Hazer": [
+      "martin/magnum-2500-hz",
+      "mdg/hazer-atmosphere-aps"
+    ],
     "Moving Head": [
       "5star-systems/spica-250m",
       "american-dj/xs-400",
@@ -287,33 +329,12 @@
       "showtec/phantom-140-led-spot",
       "showtec/phantom-50-led-spot"
     ],
-    "Flower": [
-      "abstract/twister-4",
-      "american-dj/quad-phase-hp",
-      "american-dj/revo-4-ir",
-      "eurolite/led-svf-1"
+    "Scanner": [
+      "martin/roboscan-812",
+      "robe/dj-scan-250-xt"
     ],
     "Smoke": [
       "american-dj/fog-fury-jett-pro"
-    ],
-    "Color Changer": [
-      "american-dj/fog-fury-jett-pro",
-      "cameo/flat-pro-18",
-      "cameo/hydrabeam-300-rgbw",
-      "cameo/outdoor-par-tri-12",
-      "cameo/thunder-wash-100-rgb",
-      "cameo/thunder-wash-600-rgb",
-      "chauvet-dj/slimpar-pro-h-usb",
-      "eurolite/led-kls-801",
-      "eurolite/led-par-56-tcl",
-      "eurolite/led-ps-4-hcl",
-      "eurolite/led-sls-6-uv-floor",
-      "futurelight/pro-slim-par-7-hcl",
-      "generic/rgb-fader",
-      "lightmaxx/platinum-mini-tri-par",
-      "lightmaxx/vega-zoom-wash",
-      "showtec/horizon-8",
-      "showtec/led-light-bar-rgb-v3"
     ],
     "Strobe": [
       "cameo/thunder-wash-100-rgb",
@@ -321,27 +342,6 @@
       "cameo/thunder-wash-600-rgb",
       "cameo/thunder-wash-600-w",
       "martin/atomic-3000"
-    ],
-    "Blinder": [
-      "cameo/thunder-wash-100-rgb",
-      "cameo/thunder-wash-100-w",
-      "cameo/thunder-wash-600-rgb",
-      "cameo/thunder-wash-600-w",
-      "showtec/horizon-8"
-    ],
-    "Dimmer": [
-      "generic/desk-channel"
-    ],
-    "Fan": [
-      "gruft/ventilator"
-    ],
-    "Hazer": [
-      "martin/magnum-2500-hz",
-      "mdg/hazer-atmosphere-aps"
-    ],
-    "Scanner": [
-      "martin/roboscan-812",
-      "robe/dj-scan-250-xt"
     ]
   }
 }

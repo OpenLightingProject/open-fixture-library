@@ -9,6 +9,7 @@ let register = {
   manufacturers: {},
   categories: {}
 };
+let categories = {};
 
 const fixturePath = path.join(__dirname, '..', 'fixtures');
 
@@ -37,10 +38,10 @@ try {
           };
 
           for (const cat of fixData.categories) {
-            if (!(cat in register.categories)) {
-              register.categories[cat] = [];
+            if (!(cat in categories)) {
+              categories[cat] = [];
             }
-            register.categories[cat].push(man + '/' + fix);
+            categories[cat].push(man + '/' + fix);
           }
         }
       }
@@ -50,6 +51,11 @@ try {
 catch (readError) {
   console.error('Read error. ', readError);
   process.exit(1);
+}
+
+// copy sorted categories into register
+for (const cat of Object.keys(categories).sort()) {
+  register.categories[cat] = categories[cat];
 }
 
 const filename = path.join(fixturePath, (process.argv.length === 3 ? process.argv[2] : 'register.json'));
