@@ -7,9 +7,11 @@ const colors = require('colors');
 let register = {
   filesystem: {},
   manufacturers: {},
-  categories: {}
+  categories: {},
+  contributors: {}
 };
 let categories = {};
+let contributors = {};
 
 const fixturePath = path.join(__dirname, '..', 'fixtures');
 
@@ -44,6 +46,13 @@ try {
             }
             categories[cat].push(man + '/' + fix);
           }
+
+          for (const contributor of fixData.meta.authors) {
+            if (!(contributor in contributors)) {
+              contributors[contributor] = [];
+            }
+            contributors[contributor].push(man + '/' + fix);
+          }
         }
       }
     }
@@ -57,6 +66,11 @@ catch (readError) {
 // copy sorted categories into register
 for (const cat of Object.keys(categories).sort()) {
   register.categories[cat] = categories[cat];
+}
+
+// copy sorted contributors into register
+for (const contributor of Object.keys(contributors).sort()) {
+  register.contributors[contributor] = contributors[contributor];
 }
 
 // add fixture list sorted by createDate
