@@ -11,7 +11,7 @@ module.exports = function(options) {
 
   str += '<p><abbr title="Open Fixture Library">OFL</abbr> collects fixture definitions in a JSON format and automatically exports them to the right format for every supported software. Everybody can <a href="https://github.com/FloEdelmann/open-fixture-library">contribute</a> and help to improve! Thanks!</p>';
 
-  str += '<div class="banner grid">';
+  str += '<div class="banner grid centered">';
 
   str += '<a href="/manufacturers" class="card dark blue">' + require('../includes/svg.js')({svgBasename: 'folder-multiple'}) + '<h2>Browse fixtures</h2></a>';
 
@@ -29,12 +29,12 @@ module.exports = function(options) {
 
   str += '</div>'; // .banner.grid
 
-  str += '<div class="grid">';
+  str += '<div class="grid centered">';
 
-  str += '<section class="card list">';
+  str += '<section class="card list with-title">';
   str += '<h2>Recently updated fixtures</h2>';
-  for (const fixtureKey of options.register.lastUpdated.slice(0, 8)) {
-    const name = options.register.filesystem[fixtureKey].name;
+  for (const fixtureKey of options.register.lastUpdated.slice(0, 5)) {
+    const name = getFixtureName(fixtureKey, options);
     const date = new Date(options.register.filesystem[fixtureKey].lastModifyDate);
     const dateHtml = `<time class="hint" datetime="${date.toISOString()}" title="${date.toISOString()}">${date.toISOString().replace(/T.*?$/, '')}</time>`;
 
@@ -42,9 +42,20 @@ module.exports = function(options) {
   }
   str += '</section>'; // .card
 
+  str += '<section class="card list with-title">';
+  str += '<h2>Top contributors</h2>';
+  for (const contributor of Object.keys(options.register.contributors).slice(0, 5)) {
+    const number = options.register.contributors[contributor].length;
+    const latestFixtureKey = getLatestFixtureKey(contributor, options);
+    const latestFixtureName = getFixtureName(latestFixtureKey, options);
+
+    str += `<a href="/${latestFixtureKey}">${contributor}<span class="hint">${number} fixture${number === 1 ? '' : 's'}, latest: ${latestFixtureName}</span></a>`;
+  }
+  str += '</section>'; // .card
+
   str += '</div>'; // .banner.grid
 
-  str += '<div class="list grid">';
+  str += '<div class="list grid centered smallbanner">';
   str += '<a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+-label%3Atype-bug" class="card">' + require('../includes/svg.js')({svgBasename: 'lightbulb-on-outline', className: 'left'}) + '<span>Request feature</span></a>';
   str += '<a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" class="card">' + require('../includes/svg.js')({svgBasename: 'bug', className: 'left'}) + '<span>Report problem</span></a>';
   str += '<a href="https://github.com/FloEdelmann/open-fixture-library" class="card">' + require('../includes/svg.js')({svgBasename: 'github-circle', className: 'left'}) + '<span>View source</span></a>';
@@ -54,3 +65,18 @@ module.exports = function(options) {
 
   return str;
 };
+
+
+function getFixtureName(fixtureKey, options) {
+  const [manKey, ] = fixtureKey.split('/');
+  const manufacturerName = options.manufacturers[manKey].name;
+  const fixtureName = options.register.filesystem[fixtureKey].name;
+
+  return manufacturerName + ' ' + fixtureName;
+}
+
+function getLatestFixtureKey(contributor, options) {
+  return options.register.lastUpdated.find(
+    key => options.register.contributors[contributor].includes(key)
+  );
+}
