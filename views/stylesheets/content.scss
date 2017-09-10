@@ -19,7 +19,6 @@
   background-color: #fff;
   border-radius: 3px;
   position: relative;
-  overflow: hidden;
   fill: $icon-dark;
 
   & .close {
@@ -70,7 +69,7 @@
   }
 
   h2 {
-    margin: 1rem 1rem 0;
+    padding: 1rem 1rem 0;
   }
 
   .name {
