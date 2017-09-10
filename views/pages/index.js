@@ -29,6 +29,21 @@ module.exports = function(options) {
 
   str += '</div>'; // .banner.grid
 
+  str += '<div class="grid">';
+
+  str += '<section class="card list">';
+  str += '<h2>Recently updated fixtures</h2>';
+  for (const fixtureKey of options.register.lastUpdated.slice(0, 8)) {
+    const name = options.register.filesystem[fixtureKey].name;
+    const date = new Date(options.register.filesystem[fixtureKey].lastModifyDate);
+    const dateHtml = `<time class="hint" datetime="${date.toISOString()}" title="${date.toISOString()}">${date.toISOString().replace(/T.*?$/, '')}</time>`;
+
+    str += `<a href="/${fixtureKey}">${name}${dateHtml}</a>`;
+  }
+  str += '</section>'; // .card
+
+  str += '</div>'; // .banner.grid
+
   str += '<div class="list grid">';
   str += '<a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+-label%3Atype-bug" class="card">' + require('../includes/svg.js')({svgBasename: 'lightbulb-on-outline', className: 'left'}) + '<span>Request feature</span></a>';
   str += '<a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" class="card">' + require('../includes/svg.js')({svgBasename: 'bug', className: 'left'}) + '<span>Report problem</span></a>';

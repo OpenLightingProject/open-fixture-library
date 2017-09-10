@@ -47,9 +47,13 @@
   }
 
   a {
-    padding: .5em;
+    padding: 0.5rem 1rem;
     display: -ms-flexbox;
     display: flex;
+  }
+
+  h2 {
+    margin: 1rem 1rem 0;
   }
 
   .name {
@@ -208,7 +212,7 @@ a.card, .link, .list a {
     height: 24px;
 
     &.left {
-      margin-rights: .6em;
+      margin-right: .6em;
     }
     &.right {
       margin-left: .6em;
