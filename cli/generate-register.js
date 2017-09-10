@@ -17,41 +17,42 @@ const fixturePath = path.join(__dirname, '..', 'fixtures');
 
 try {
   // add all fixture.json files to the register
-  for (const man of fs.readdirSync(fixturePath).sort()) {
-    const manDir = path.join(fixturePath, man);
+  for (const manKey of fs.readdirSync(fixturePath).sort()) {
+    const manDir = path.join(fixturePath, manKey);
 
     // only directories
     if (fs.statSync(manDir).isDirectory()) {
-      register.manufacturers[man] = [];
+      register.manufacturers[manKey] = [];
 
       for (const filename of fs.readdirSync(manDir).sort()) {
         const ext = path.extname(filename);
         if (ext === '.json') {
-          const fix = path.basename(filename, ext);
+          const fixKey = path.basename(filename, ext);
+          const fixData = JSON.parse(fs.readFileSync(path.join(fixturePath, manKey, filename), 'utf8'));
 
-          // add to manufacturer register
-          register.manufacturers[man].push(fix);
-
-          // add to filesystem and type register
-          const fixData = JSON.parse(fs.readFileSync(path.join(fixturePath, man, filename), 'utf8'));
-
-          register.filesystem[man + '/' + fix] = {
+          // add to filesystem register
+          register.filesystem[manKey + '/' + fixKey] = {
             name: fixData.name,
-            createDate: fixData.meta.createDate
+            lastModifyDate: fixData.meta.lastModifyDate
           };
+          
+          // add to manufacturer register
+          register.manufacturers[manKey].push(fixKey);
 
+          // add to category register
           for (const cat of fixData.categories) {
             if (!(cat in categories)) {
               categories[cat] = [];
             }
-            categories[cat].push(man + '/' + fix);
+            categories[cat].push(manKey + '/' + fixKey);
           }
 
+          // add to contributor register
           for (const contributor of fixData.meta.authors) {
             if (!(contributor in contributors)) {
               contributors[contributor] = [];
             }
-            contributors[contributor].push(man + '/' + fix);
+            contributors[contributor].push(manKey + '/' + fixKey);
           }
         }
       }
@@ -76,10 +77,10 @@ for (const contributor of sortedContributors) {
   register.contributors[contributor] = contributors[contributor];
 }
 
-// add fixture list sorted by createDate
+// add fixture list sorted by lastModifyDate
 register.latest = Object.keys(register.filesystem).sort((a, b) => {
-  const aDate = new Date(register.filesystem[a].createDate);
-  const bDate = new Date(register.filesystem[b].createDate);
+  const aDate = new Date(register.filesystem[a].lastModifyDate);
+  const bDate = new Date(register.filesystem[b].lastModifyDate);
   return aDate > bDate ? -1 : aDate < bDate ? 1 : 0;
 });
 
