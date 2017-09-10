@@ -33,11 +33,9 @@ module.exports = function(options) {
   str += '<section class="card list">';
   str += '<h2>Recently updated fixtures</h2>';
   for (const fixtureKey of options.register.lastUpdated.slice(0, 5)) {
-    const fixData = options.register.filesystem[fixtureKey];
-
     const name = getFixtureName(fixtureKey, options);
-    const date = new Date(options.register.filesystem[fixtureKey].lastModifyDate);
     const action = options.register.filesystem[fixtureKey].lastAction;
+    const date = new Date(options.register.filesystem[fixtureKey].lastModifyDate);
     const dateHtml = `<time datetime="${date.toISOString()}" title="${date.toISOString()}">${date.toISOString().replace(/T.*?$/, '')}</time>`;
 
     str += `<a href="/${fixtureKey}">${name}<span class="hint">${action} ${dateHtml}</span></a>`;
