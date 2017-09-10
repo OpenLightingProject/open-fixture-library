@@ -30,10 +30,19 @@ try {
           const fixKey = path.basename(filename, ext);
           const fixData = JSON.parse(fs.readFileSync(path.join(fixturePath, manKey, filename), 'utf8'));
 
+          let lastAction = 'modified';
+          if (fixData.meta.lastModifyDate === fixData.meta.createDate) {
+            lastAction = 'created';
+          }
+          else if ('importPlugin' in fixData.meta && fixData.meta.lastModifyDate === fixData.meta.importPlugin) {
+            lastAction = 'imported';
+          }
+
           // add to filesystem register
           register.filesystem[manKey + '/' + fixKey] = {
             name: fixData.name,
-            lastModifyDate: fixData.meta.lastModifyDate
+            lastModifyDate: fixData.meta.lastModifyDate,
+            lastAction: lastAction
           };
           
           // add to manufacturer register
