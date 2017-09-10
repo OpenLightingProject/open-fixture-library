@@ -5,33 +5,32 @@ module.exports = function(options) {
   
   let str = require('../includes/header.js')(options);
 
+  str += '<header class="fixture-header">';
+  
+  str += '<div class="title">';
   str += '<h1>Open Fixture Library</h1>';
+  str += '</div>';
 
-  str += '<h3>Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!</h3>';
-
-  str += '<p><abbr title="Open Fixture Library">OFL</abbr> collects fixture definitions in a JSON format and automatically exports them to the right format for every supported software. Everybody can <a href="https://github.com/FloEdelmann/open-fixture-library">contribute</a> and help to improve! Thanks!</p>';
-
-  str += '<div class="banner grid centered">';
-
-  str += '<a href="/manufacturers" class="card dark blue">' + require('../includes/svg.js')({svgBasename: 'folder-multiple'}) + '<h2>Browse fixtures</h2></a>';
-
-  str += '<span class="download-button card link dark orange">';
-  str += require('../includes/svg.js')({svgBasename: 'briefcase-download'});
-  str += '<h2>Download all</h2>';
+  str += '<div class="download-button big">';
+  str += `<a href="#" class="title">Download all ${options.register.lastUpdated.length} fixtures</a>`;
   str += '<ul>';
   for (const plugin of Object.keys(exportPlugins)) {
     str += `<li><a href="/download.${plugin}">${exportPlugins[plugin].name}</a></li>`;
   }
   str += '</ul>';
-  str += '</span>';
+  str += '</div>';
 
-  str += '<a href="/fixture-editor" class="card dark light-green">' + require('../includes/svg.js')({svgBasename: 'plus'}) + '<h2>Add fixture</h2></a>';
+  str += '</header>';
 
-  str += '</div>'; // .banner.grid
+
+  str += '<h3>Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!</h3>';
+
+  str += '<p><abbr title="Open Fixture Library">OFL</abbr> collects fixture definitions in a JSON format and automatically exports them to the right format for every supported software. Everybody can <a href="https://github.com/FloEdelmann/open-fixture-library">contribute</a> and help to improve! Thanks!</p>';
+
 
   str += '<div class="grid centered">';
 
-  str += '<section class="card list with-title">';
+  str += '<section class="card list">';
   str += '<h2>Recently updated fixtures</h2>';
   for (const fixtureKey of options.register.lastUpdated.slice(0, 5)) {
     const name = getFixtureName(fixtureKey, options);
@@ -40,9 +39,10 @@ module.exports = function(options) {
 
     str += `<a href="/${fixtureKey}">${name}${dateHtml}</a>`;
   }
+  str += '<a href="/manufacturers" class="card dark blue big-button">' + require('../includes/svg.js')({svgBasename: 'folder-multiple'}) + '<h2>Browse fixtures</h2></a>';
   str += '</section>'; // .card
 
-  str += '<section class="card list with-title">';
+  str += '<section class="card list">';
   str += '<h2>Top contributors</h2>';
   for (const contributor of Object.keys(options.register.contributors).slice(0, 5)) {
     const number = options.register.contributors[contributor].length;
@@ -51,11 +51,12 @@ module.exports = function(options) {
 
     str += `<a href="/${latestFixtureKey}">${contributor}<span class="hint">${number} fixture${number === 1 ? '' : 's'}, latest: ${latestFixtureName}</span></a>`;
   }
+  str += '<a href="/fixture-editor" class="card dark light-green big-button">' + require('../includes/svg.js')({svgBasename: 'plus'}) + '<h2>Add fixture</h2></a>';
   str += '</section>'; // .card
 
-  str += '</div>'; // .banner.grid
+  str += '</div>'; // .grid.centered
 
-  str += '<div class="list grid centered smallbanner">';
+  str += '<div class="list grid centered">';
   str += '<a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+-label%3Atype-bug" class="card">' + require('../includes/svg.js')({svgBasename: 'lightbulb-on-outline', className: 'left'}) + '<span>Request feature</span></a>';
   str += '<a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" class="card">' + require('../includes/svg.js')({svgBasename: 'bug', className: 'left'}) + '<span>Report problem</span></a>';
   str += '<a href="https://github.com/FloEdelmann/open-fixture-library" class="card">' + require('../includes/svg.js')({svgBasename: 'github-circle', className: 'left'}) + '<span>View source</span></a>';

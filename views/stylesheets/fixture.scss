@@ -90,8 +90,7 @@
 .fixture-header > .download-button {
   display: block;
   position: relative;
-  margin: 0 1ex 1em auto;
-  width: 14em;
+  margin: 0 0 1em;
 }
 
 .category-badge {
@@ -359,6 +358,15 @@ a.fixture-mode {
       flex-grow: 0;
       flex-shrink: 0;
       margin: 1.5rem 0 0;
+      width: 14em;
+
+      &.big {
+        width: 19em;
+
+        & .title {
+          font-size: 1.1em;
+        }
+      }
     }
   }
 
