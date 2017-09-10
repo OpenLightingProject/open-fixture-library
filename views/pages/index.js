@@ -69,7 +69,7 @@ module.exports = function(options) {
 
 
 function getFixtureName(fixtureKey, options) {
-  const [manKey, ] = fixtureKey.split('/');
+  const manKey = fixtureKey.split('/')[0];
   const manufacturerName = options.manufacturers[manKey].name;
   const fixtureName = options.register.filesystem[fixtureKey].name;
 
