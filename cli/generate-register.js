@@ -78,7 +78,7 @@ for (const contributor of sortedContributors) {
 }
 
 // add fixture list sorted by lastModifyDate
-register.latest = Object.keys(register.filesystem).sort((a, b) => {
+register.lastUpdated = Object.keys(register.filesystem).sort((a, b) => {
   const aDate = new Date(register.filesystem[a].lastModifyDate);
   const bDate = new Date(register.filesystem[b].lastModifyDate);
   return aDate > bDate ? -1 : aDate < bDate ? 1 : 0;
