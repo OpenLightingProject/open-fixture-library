@@ -69,7 +69,10 @@ for (const cat of Object.keys(categories).sort()) {
 }
 
 // copy sorted contributors into register
-for (const contributor of Object.keys(contributors).sort()) {
+const sortedContributors = Object.keys(contributors).sort(
+  (a, b) => contributors[b].length - contributors[a].length
+);
+for (const contributor of sortedContributors) {
   register.contributors[contributor] = contributors[contributor];
 }
 
