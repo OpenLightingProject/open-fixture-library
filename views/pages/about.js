@@ -13,11 +13,14 @@ module.exports = function(options) {
   str += '<p>The problem we noticed during our testing phase was that all the fixture definitions we created for e:cue could not be easily converted for use with other software.</p>';
   str += '<p>The idea for a converter was born. Since we wanted our work to be as useful for other people as possible, we decided to build a website that would store the fixtures in a wiki-like way (everybody can help improve it) and allow auto-generated fixture files in various formats to be downloaded. Creating new fixtures should be made as simple as possible with an online <a href="/fixture-editor">Fixture Editor</a> that could also import from existing fixture definitions.</p>';
 
+  str += '<h2>Used fonts</h2>';
+  str += '<p><a href="http://www.latofonts.com/">Lato</a> and <a href="http://levien.com/type/myfonts/inconsolata.html">Inconsolata</a></p>';
+
   str += '<h2>Contribute</h2>';
   str += '<p>See the <a href="https://github.com/FloEdelmann/open-fixture-library#contribute">project page on GitHub</a> to see how you can help.</p>';
 
-  str += '<h2>Used fonts</h2>';
-  str += '<p><a href="http://www.latofonts.com/">Lato</a> and <a href="http://levien.com/type/myfonts/inconsolata.html">Inconsolata</a></p>';
+  str += '<h2 id="contact">Contact</h2>';
+  str += '<p><a href="mailto:&#x66;&#x6c;&#x6f;&#x72;&#x69;&#x61;&#x6e;&#x2d;&#x65;&#x64;&#x65;&#x6c;&#x6d;&#x61;&#x6e;&#x6e;&#x40;&#x6f;&#x6e;&#x6c;&#x69;&#x6e;&#x65;&#x2e;&#x64;&#x65;">&#x66;&#x6c;&#x6f;&#x72;&#x69;&#x61;&#x6e;&#x2d;&#x65;&#x64;&#x65;&#x6c;&#x6d;&#x61;&#x6e;&#x6e;&#x40;&#x6f;&#x6e;&#x6c;&#x69;&#x6e;&#x65;&#x2e;&#x64;&#x65;</a> or via <a href="https://github.com/FloEdelmann">GitHub</a></p>';
 
   str += require('../includes/footer.js')(options);
 

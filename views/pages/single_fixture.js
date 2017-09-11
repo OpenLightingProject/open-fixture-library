@@ -12,7 +12,7 @@ module.exports = function(options) {
 
   fixture = Fixture.fromRepository(man, fix);
   
-  options.title = `${fixture.manufacturer.name} ${fixture.name} - Open Fixture Library`;
+  options.title = `${fixture.manufacturer.name} ${fixture.name} fixture definition - Open Fixture Library`;
 
   let branch = 'master';
   if ('TRAVIS_PULL_REQUEST_BRANCH' in process.env && process.env.TRAVIS_PULL_REQUEST_BRANCH !== '') {
@@ -47,7 +47,7 @@ module.exports = function(options) {
   str += '<a href="#" class="title">Download as &hellip;</a>';
   str += '<ul>';
   for (const plugin of Object.keys(exportPlugins)) {
-    str += `<li><a href="/${man}/${fix}.${plugin}">${exportPlugins[plugin].name}</a></li>`;
+    str += `<li><a href="/${man}/${fix}.${plugin}" title="Download ${exportPlugins[plugin].name} fixture definitions">${exportPlugins[plugin].name}</a></li>`;
   }
   str += '</ul>';
   str += '</div>';
@@ -63,6 +63,15 @@ module.exports = function(options) {
   str += fixture.modes.map(handleMode).join('');
   str += '<div class="clearfix"></div>';
   str += '</section>'; // .fixture-modes
+
+  str += '<section>';
+  str += '<h2>Something wrong with this fixture definition?</h2>';
+  str += '<p>It does not work in your lighting software or you see another problem? Then please help correct it!</p>';
+  str += '<div class="grid list">';
+  str += '<a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card">' + require('../includes/svg.js')({svgBasename: 'bug', className: 'left'}) + '<span>Report issue on GitHub</span></a>';
+  str += '<a href="/about#contact" class="card">' + require('../includes/svg.js')({svgBasename: 'email', className: 'left'}) + '<span>Contact</span></a>';
+  str += '</div>';
+  str += '</section>';
 
   str += require('../includes/footer.js')(options);
 
@@ -263,7 +272,7 @@ function handleMode(mode) {
     str += '</section>';
   }
 
-  str += '<h3>Channels</h3>';
+  str += '<h3>DMX Channels</h3>';
   str += '<ol>';
   mode.channels.forEach(channel => {
     str += '<li>';

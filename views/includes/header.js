@@ -32,10 +32,10 @@ module.exports = function(options) {
       </div>
 
       <div id="right-nav">
-        <a href="/fixture-editor">Add fixture</a>
-        <a href="/manufacturers">Manufacturers</a>
-        <a href="/categories">Categories</a>
-        <a href="/about">About</a>
+        <a href="/fixture-editor" title="Fixture editor">Add fixture</a>
+        <a href="/manufacturers" title="Browse fixtures by manufacturer">Manufacturers</a>
+        <a href="/categories" title="Browse fixtures by category">Categories</a>
+        <a href="/about" title="About the project">About</a>
       </div>
     </nav>
   </header>
