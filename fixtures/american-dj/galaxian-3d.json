@@ -1,0 +1,208 @@
+{
+  "name": "Galaxian 3D",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["eklynx"],
+    "createDate": "2017-09-11",
+    "lastModifyDate": "2017-09-11",
+    "importPlugin": {
+      "plugin": "qlcplus",
+      "date": "2017-09-11",
+      "comment": "created by Q Light Controller (version 3.0.7)"
+    }
+  },
+  "physical": {
+    "dimensions": [247, 71, 242],
+    "weight": 3,
+    "power": 23,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Diode Lasers"
+    },
+    "lens": {
+      "name": "Other"
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Red Laser": {
+      "type": "Beam",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Off"
+        },
+        {
+          "range": [8, 15],
+          "name": "On"
+        },
+        {
+          "range": [16, 239],
+          "name": "Strobe Slow->Fast"
+        },
+        {
+          "range": [240, 247],
+          "name": "Sound Active"
+        },
+        {
+          "range": [248, 255],
+          "name": "On"
+        }
+      ]
+    },
+    "Green Laser": {
+      "type": "Beam",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Off"
+        },
+        {
+          "range": [8, 15],
+          "name": "On"
+        },
+        {
+          "range": [16, 239],
+          "name": "Strobe Slow->Fast"
+        },
+        {
+          "range": [240, 247],
+          "name": "Sound Active"
+        },
+        {
+          "range": [248, 255],
+          "name": "On"
+        }
+      ]
+    },
+    "Laser Rotation 1": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Location"
+        },
+        {
+          "range": [128, 189],
+          "name": "Counter-Clockwise Fast -> Slow"
+        },
+        {
+          "range": [190, 193],
+          "name": "No Rotation"
+        },
+        {
+          "range": [194, 255],
+          "name": "Clockiwse Slow-> Fast"
+        }
+      ]
+    },
+    "Laser Rotation 2": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Location"
+        },
+        {
+          "range": [128, 189],
+          "name": "Counter-Clockwise Fast -> Slow"
+        },
+        {
+          "range": [190, 193],
+          "name": "No Rotation"
+        },
+        {
+          "range": [194, 255],
+          "name": "Clockiwse Slow-> Fast"
+        }
+      ]
+    },
+    "Macros": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Off"
+        },
+        {
+          "range": [8, 23],
+          "name": "Macro 1"
+        },
+        {
+          "range": [24, 39],
+          "name": "Macro 2"
+        },
+        {
+          "range": [40, 55],
+          "name": "Macro 3"
+        },
+        {
+          "range": [56, 71],
+          "name": "Macro 4"
+        },
+        {
+          "range": [72, 87],
+          "name": "Macro 5"
+        },
+        {
+          "range": [88, 103],
+          "name": "Macro 6"
+        },
+        {
+          "range": [104, 119],
+          "name": "Macro 7"
+        },
+        {
+          "range": [120, 135],
+          "name": "Macro 8"
+        },
+        {
+          "range": [136, 151],
+          "name": "Macro 9"
+        },
+        {
+          "range": [152, 167],
+          "name": "Macro 10"
+        },
+        {
+          "range": [168, 183],
+          "name": "Macro 11"
+        },
+        {
+          "range": [184, 199],
+          "name": "Macro 12"
+        },
+        {
+          "range": [200, 215],
+          "name": "Macro 13"
+        },
+        {
+          "range": [216, 231],
+          "name": "Macro 14"
+        },
+        {
+          "range": [232, 247],
+          "name": "Macro 15"
+        },
+        {
+          "range": [248, 255],
+          "name": "Sound Active"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX Mode",
+      "channels": [
+        "Red Laser",
+        "Green Laser",
+        "Laser Rotation 1",
+        "Laser Rotation 2",
+        "Macros"
+      ]
+    }
+  ]
+}
