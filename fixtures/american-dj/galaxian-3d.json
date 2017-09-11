@@ -2,7 +2,7 @@
   "name": "Galaxian 3D",
   "categories": ["Laser"],
   "meta": {
-    "authors": ["eklynx"],
+    "authors": ["eklynx", "Felix Edelmann"],
     "createDate": "2017-09-11",
     "lastModifyDate": "2017-09-11",
     "importPlugin": {
@@ -11,16 +11,17 @@
       "comment": "created by Q Light Controller (version 3.0.7)"
     }
   },
+  "manualURL": "http://cdb-cdn.adj.com/ItemRelatedFiles/7184/galaxian_3d.pdf",
   "physical": {
-    "dimensions": [247, 71, 242],
-    "weight": 3,
-    "power": 23,
+    "dimensions": [242, 71, 247],
+    "weight": 2.6,
+    "power": 22.5,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "Diode Lasers"
+      "type": "30mW Green Diode Laser, 80mW Red Diode Laser"
     },
     "lens": {
-      "name": "Other"
+      "degreesMinMax": [82, 82]
     },
     "focus": {
       "type": "Fixed"
@@ -28,7 +29,7 @@
   },
   "availableChannels": {
     "Red Laser": {
-      "type": "Beam",
+      "type": "Effect",
       "capabilities": [
         {
           "range": [0, 7],
@@ -53,7 +54,7 @@
       ]
     },
     "Green Laser": {
-      "type": "Beam",
+      "type": "Effect",
       "capabilities": [
         {
           "range": [0, 7],
@@ -78,7 +79,7 @@
       ]
     },
     "Laser Rotation 1": {
-      "type": "Effect",
+      "type": "Speed",
       "capabilities": [
         {
           "range": [0, 127],
@@ -99,7 +100,7 @@
       ]
     },
     "Laser Rotation 2": {
-      "type": "Effect",
+      "type": "Speed",
       "capabilities": [
         {
           "range": [0, 127],
@@ -195,7 +196,8 @@
   },
   "modes": [
     {
-      "name": "DMX Mode",
+      "name": "5-channel",
+      "shortName": "5ch",
       "channels": [
         "Red Laser",
         "Green Laser",
