@@ -79,9 +79,11 @@ for (const cat of Object.keys(categories).sort()) {
 }
 
 // copy sorted contributors into register
-const sortedContributors = Object.keys(contributors).sort(
-  (a, b) => contributors[b].length - contributors[a].length
-);
+const sortedContributors = Object.keys(contributors).sort((a, b) => {
+  const fixturesDelta = contributors[b].length - contributors[a].length;
+  const nameDelta = a > b ? 1 : a < b ? -1 : 0;
+  return fixturesDelta !== 0 ? fixturesDelta : nameDelta;
+});
 for (const contributor of sortedContributors) {
   register.contributors[contributor] = contributors[contributor];
 }
