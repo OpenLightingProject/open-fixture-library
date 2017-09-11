@@ -1,13 +1,13 @@
 {
-  "name": "MAC Viper Wash",
+  "name": "MAC Viper Wash (DX)",
   "shortName": "MacViperWash",
   "categories": ["Moving Head"],
   "meta": {
     "authors": ["novasfronteiras.co"],
-    "createDate": "2017-08-03",
-    "lastModifyDate": "2017-08-03"
+    "createDate": "2017-09-11",
+    "lastModifyDate": "2017-09-11"
   },
-  "comment": "Mac Viper Wash: \n\n- 33000 Lumens\n- 1:5 zoom - Continuous and fast\n- Internal barndoor system | 1 pair of indexing shutters",
+  "comment": "This fixture definition covers both the MAC Viper Wash and the MAC Viper Wash DX. The Color Wheel, Iris and all Internal Barndoor channels are only available in the DX variant.\n\nNote: Focus and Zoom are 8-bit channels, the manual is wrong there.",
   "manualURL": "http://www.martin.com/files/files/productdocuments/11_MANUALS/999/UM_MACViperWash_EN_B.pdf",
   "physical": {
     "dimensions": [473, 749, 566],
@@ -27,7 +27,6 @@
       "tiltMax": 268
     }
   },
-  "// TODO comment": "Split DX variant, check if fine channels for focus and zoom are available",
   "availableChannels": {
     "Strobe / Shutter": {
       "type": "Strobe",
