@@ -384,7 +384,7 @@
         }
       ]
     },
-    "Pan / Tilt Speed 2": {
+    "Pan / Tilt Speed (Emulation mode)": {
       "name": "Pan / Tilt Speed",
       "type": "Speed",
       "capabilities": [
@@ -426,9 +426,6 @@
           "name": "No function"
         }
       ]
-    },
-    "No function": {
-      "type": "Nothing"
     },
     "Effect wheel": {
       "type": "Effect",
@@ -512,7 +509,7 @@
         }
       ]
     },
-    "Gobo selection 2": {
+    "Gobo selection (Emulation mode)": {
       "name": "Gobo selection",
       "type": "Gobo",
       "capabilities": [
@@ -571,11 +568,7 @@
         }
       ]
     },
-    "No function 2": {
-      "name": "No function",
-      "type": "Nothing"
-    },
-    "Shutter / Strobe 2": {
+    "Shutter / Strobe (Emulation mode)": {
       "name": "Shutter / Strobe",
       "type": "Shutter",
       "defaultValue": 255,
@@ -614,7 +607,7 @@
         }
       ]
     },
-    "Dimmer 2": {
+    "Dimmer (Emulation mode)": {
       "name": "Dimmer",
       "type": "Intensity"
     }
@@ -650,18 +643,18 @@
         "Pan fine",
         "Tilt",
         "Tilt fine",
-        "Pan / Tilt Speed 2",
+        "Pan / Tilt Speed (Emulation mode)",
         "Lamp on / Fan speed",
         "Colors",
-        "No function",
+        null,
         "Effect wheel",
         "3 facet prism rotation",
-        "Gobo selection 2",
+        "Gobo selection (Emulation mode)",
         "Gobo rotation / positioning",
-        "No function 2",
+        null,
         "Focus",
-        "Shutter / Strobe 2",
-        "Dimmer 2"
+        "Shutter / Strobe (Emulation mode)",
+        "Dimmer (Emulation mode)"
       ]
     }
   ]
