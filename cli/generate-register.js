@@ -88,9 +88,11 @@ for (const contributor of sortedContributors) {
 
 // add fixture list sorted by lastModifyDate
 register.lastUpdated = Object.keys(register.filesystem).sort((a, b) => {
-  const aDate = new Date(register.filesystem[a].lastModifyDate);
-  const bDate = new Date(register.filesystem[b].lastModifyDate);
-  return aDate > bDate ? -1 : aDate < bDate ? 1 : 0;
+  const fixA = register.filesystem[a];
+  const fixB = register.filesystem[b];
+  const dateDelta = new Date(fixB.lastModifyDate) - new Date(fixA.lastModifyDate);
+  const keyDelta = a > b ? 1 : a < b ? -1 : 0;
+  return dateDelta !== 0 ? dateDelta : keyDelta;
 });
 
 const filename = path.join(fixturePath, (process.argv.length === 3 ? process.argv[2] : 'register.json'));
