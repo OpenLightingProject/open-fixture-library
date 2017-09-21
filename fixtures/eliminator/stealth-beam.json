@@ -1,0 +1,319 @@
+{
+  "name": "Stealth Beam",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["George Qualley IV"],
+    "createDate": "2017-09-19",
+    "lastModifyDate": "2017-09-19",
+    "importPlugin": {
+      "plugin": "qlcplus",
+      "date": "2017-09-19",
+      "comment": "created by Q Light Controller Plus (version 4.11.0)"
+    }
+  },
+  "manualURL": "http://cdb.s3.amazonaws.com/ItemRelatedFiles/11195/Stealth%20Beam%20(1st%20Ed.).pdf",
+  "physical": {
+    "dimensions": [239, 285, 146],
+    "weight": 3.8,
+    "power": 75,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "1x 60W RGBW 4-in-1 LED"
+    },
+    "lens": {
+      "degreesMinMax": [11, 11]
+    },
+    "focus": {
+      "type": "Head",
+      "tiltMax": 270
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"]
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"]
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "White": {
+      "type": "Single Color",
+      "color": "White"
+    },
+    "Master Dimmer": {
+      "type": "Intensity",
+      "crossfade": true
+    },
+    "Color Macro": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Nothing",
+          "color": "#000000"
+        },
+        {
+          "range": [8, 17],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [18, 27],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [28, 37],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [38, 47],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [48, 57],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [58, 67],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [68, 77],
+          "name": "Blue/White",
+          "color": "#0000ff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [78, 87],
+          "name": "Red/White",
+          "color": "#ff0000",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [88, 97],
+          "name": "Red/Green/Blue",
+          "color": "#ffffff"
+        },
+        {
+          "range": [98, 107],
+          "name": "Green/Blue/White",
+          "color": "#d5ffff"
+        },
+        {
+          "range": [108, 117],
+          "name": "Red/Blue/White",
+          "color": "#fff0ff"
+        },
+        {
+          "range": [118, 127],
+          "name": "Red/Green/White",
+          "color": "#ffffd4"
+        },
+        {
+          "range": [128, 137],
+          "name": "Red/Green/Blue/White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [138, 188],
+          "name": "Color Change"
+        },
+        {
+          "range": [189, 239],
+          "name": "Color Fade"
+        },
+        {
+          "range": [240, 255],
+          "name": "Sound Active Change"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "Closed"
+        },
+        {
+          "range": [5, 250],
+          "name": "Strobing slow - fast"
+        },
+        {
+          "range": [251, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Pan Movement Macro": {
+      "type": "Pan",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Off"
+        },
+        {
+          "range": [8, 127],
+          "name": "CW slow - fast"
+        },
+        {
+          "range": [128, 255],
+          "name": "CCW fast - slow"
+        }
+      ]
+    },
+    "Color Change / Fade Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow - fast"
+        }
+      ]
+    },
+    "Pan/Tilt Programs": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Nothing"
+        },
+        {
+          "range": [8, 32],
+          "name": "Program 1"
+        },
+        {
+          "range": [33, 58],
+          "name": "Program 1"
+        },
+        {
+          "range": [59, 84],
+          "name": "Program 2"
+        },
+        {
+          "range": [85, 110],
+          "name": "Program 3"
+        },
+        {
+          "range": [111, 136],
+          "name": "Program 4"
+        },
+        {
+          "range": [137, 162],
+          "name": "Program 5"
+        },
+        {
+          "range": [163, 188],
+          "name": "Program 6"
+        },
+        {
+          "range": [189, 214],
+          "name": "Program 7"
+        },
+        {
+          "range": [215, 240],
+          "name": "Program 8"
+        },
+        {
+          "range": [241, 255],
+          "name": "Sound Active"
+        }
+      ]
+    },
+    "Tilt Movement Macro": {
+      "type": "Tilt",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Nothing"
+        },
+        {
+          "range": [8, 255],
+          "name": "Tilt Move Forward/Back slow - fast"
+        }
+      ]
+    },
+    "Pan/Tilt Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 50],
+          "name": "Nothing"
+        },
+        {
+          "range": [51, 100],
+          "name": "Set High Speed Mode (hold 10s)"
+        },
+        {
+          "range": [101, 150],
+          "name": "Nothing"
+        },
+        {
+          "range": [151, 200],
+          "name": "Set Low Speed Mode (hold 10s)"
+        },
+        {
+          "range": [201, 250],
+          "name": "Nothing"
+        },
+        {
+          "range": [251, 255],
+          "name": "Reset (hold 10s)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color Macro",
+        "Color Change / Fade Speed",
+        "Pan/Tilt Programs"
+      ]
+    },
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macro",
+        "Master Dimmer",
+        "Shutter / Strobe",
+        "Pan Movement Macro",
+        "Color Change / Fade Speed",
+        "Pan/Tilt Programs",
+        "Tilt Movement Macro",
+        "Pan/Tilt Speed"
+      ]
+    }
+  ]
+}
