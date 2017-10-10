@@ -539,35 +539,35 @@ function checkCategories() {
   const hasMultipleSingleColorChannels = fixture.availableChannels.filter(channel => channel.type === 'Single Color').length > 1;
   const hasColorChangerCategory = fixture.categories.includes('Color Changer');
   if (!hasColorChangerCategory && hasMultiColorChannel) {
-    result.warnings.push(`Category 'Color Changer' suggested since there is a 'Multi-Color' channel.`);
+    result.warnings.push('Category \'Color Changer\' suggested since there is a \'Multi-Color\' channel.');
   }
   else if (!hasColorChangerCategory && hasMultipleSingleColorChannels) {
-    result.warnings.push(`Category 'Color Changer' suggested since there are multiple 'Single Color' channels.`);
+    result.warnings.push('Category \'Color Changer\' suggested since there are multiple \'Single Color\' channels.');
   }
   else if (hasColorChangerCategory && !hasMultiColorChannel && !hasMultipleSingleColorChannels) {
-    result.warnings.push(`Category 'Color Changer' invalid since there is no 'Multi-Color' and less than 2 'Single Color' channels.`);
+    result.warnings.push('Category \'Color Changer\' invalid since there is no \'Multi-Color\' and less than 2 \'Single Color\' channels.');
   }
 
   const hasFocusTypeHead = fixture.physical !== null && fixture.physical.focusType === 'Head';
   const hasMovingHeadCategory = fixture.categories.includes('Moving Head');
   if (!hasMovingHeadCategory && hasFocusTypeHead) {
-    result.warnings.push(`Category 'Moving Head' suggested since focus.type is 'Head'.`);
+    result.warnings.push('Category \'Moving Head\' suggested since focus.type is \'Head\'.');
   }
   else if (hasMovingHeadCategory && !hasFocusTypeHead) {
-    result.warnings.push(`Category 'Moving Head' invalid since focus.type is not 'Head'.`);
+    result.warnings.push('Category \'Moving Head\' invalid since focus.type is not \'Head\'.');
   }
 
   const hasFogChannel = fixture.availableChannels.some(channel => channel.type === 'Fog');
   const hasSmokeCategory = fixture.categories.includes('Smoke');
   const hasHazerCategory = fixture.categories.includes('Hazer');
   if (!(hasSmokeCategory || hasHazerCategory) && hasFogChannel) {
-    result.warnings.push(`Categories 'Smoke' and/or 'Hazer' suggested since there is a 'Fog' channel.`);
+    result.warnings.push('Categories \'Smoke\' and/or \'Hazer\' suggested since there is a \'Fog\' channel.');
   }
   else if (hasSmokeCategory && !hasFogChannel) {
-    result.warnings.push(`Category 'Smoke' invalid since there is no 'Fog' channel.`);
+    result.warnings.push('Category \'Smoke\' invalid since there is no \'Fog\' channel.');
   }
   else if (hasHazerCategory && !hasFogChannel) {
-    result.warnings.push(`Category 'Hazer' invalid since there is no 'Fog' channel.`);
+    result.warnings.push('Category \'Hazer\' invalid since there is no \'Fog\' channel.');
   }
 }
 
