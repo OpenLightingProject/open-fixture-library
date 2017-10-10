@@ -354,33 +354,24 @@ function checkMode(mode) {
 
   checkPhysical(mode.physicalOverride, ` in mode '${mode.shortName}'`);
 
-  let modeChannelKeyCount = {};
   let usedNonNullChannel = false;
 
   for (let i = 0; i < mode.jsonObject.channels.length; i++) {
     usedNonNullChannel = usedNonNullChannel || mode.jsonObject.channels[i] !== null;
-    checkModeChannelReference(i, mode, modeChannelKeyCount);
+    checkModeChannelReference(i, mode);
   }
 
   if (!usedNonNullChannel) {
-    result.errors.push(`Mode '${mode.shortName}' must not only use null channels.`);
-  }
-
-  const duplicateChannelReferences = Object.keys(modeChannelKeyCount).filter(
-    chKey => modeChannelKeyCount[chKey] > 1
-  );
-  if (duplicateChannelReferences.length > 0) {
-    result.errors.push(`Channels ${duplicateChannelReferences} are used more than once in mode '${mode.shortName}'.`);
+    result.errors.push(`Mode '${mode.shortName}' must not use only null channels.`);
   }
 }
 
 /**
  * Check that a channel reference in a mode is valid.
- * @param {!number} chNumber The mode's channel index.
- * @param {!Mode} mode The mode to check.
- * @param {Object.<string, number>} modeChKeyCount An object to count the occurences of all used channel keys.
+ * @param {!number} chNumber The channel index to be checked.
+ * @param {!Mode} mode The mode in which to check.
  */
-function checkModeChannelReference(chNumber, mode, modeChKeyCount) {
+function checkModeChannelReference(chNumber, mode) {
   const chReference = mode.jsonObject.channels[chNumber];
 
   // this is a null channel 
@@ -395,11 +386,15 @@ function checkModeChannelReference(chNumber, mode, modeChKeyCount) {
   }
 
   usedChannelKeys.add(channel.key.toLowerCase());
-  modeChKeyCount[channel.key] = (modeChKeyCount[channel.key] || 0) + 1;
 
   if (channel instanceof SwitchingChannel) {
-    checkSwitchingChannelReference(channel, mode, modeChKeyCount);
+    checkSwitchingChannelReference(channel, chNumber, mode);
     return;
+  }
+
+  // if earliest occurence (including switching channels) is not this one
+  if (mode.getChannelIndex(channel, 'all') < chNumber) {
+    result.errors.push(`Channel '${chReference}' is referenced more than once from mode '${mode.shortName}'.`);
   }
 
   if (channel instanceof FineChannel) {
@@ -412,7 +407,13 @@ function checkModeChannelReference(chNumber, mode, modeChKeyCount) {
   }
 }
 
-function checkSwitchingChannelReference(channel, mode, modeChKeyCount) {
+/**
+ * Check that a switching channel reference in a mode is valid.
+ * @param {!SwitchingChannel} channel The channel that should be checked.
+ * @param {!number} chNumber The mode's channel index.
+ * @param {!Mode} mode The mode in which to check.
+ */
+function checkSwitchingChannelReference(channel, chNumber, mode) {
   // the mode must also contain the trigger channel
   if (mode.getChannelIndex(channel.triggerChannel) === -1) {
     result.errors.push(`mode '${mode.shortName}' uses switching channel '${channel.key}' but is missing its trigger channel '${channel.triggerChannel.key}'`);
@@ -425,10 +426,56 @@ function checkSwitchingChannelReference(channel, mode, modeChKeyCount) {
       continue;
     }
 
-    modeChKeyCount[switchToChannel.key] = (modeChKeyCount[switchToChannel.key] || 0) + 1;
-
     if (switchToChannel instanceof FineChannel) {
       checkCoarserChannelsInMode(switchToChannel, mode);
+    }
+  }
+
+  checkSwitchingChannelReferenceDuplicates(channel, chNumber, mode);
+}
+
+/**
+ * Check that all switched channels in the switching channels are not appearing
+ * ealier in the same mode (either directly or in another switching channel).
+ * @param {!SwitchingChannel} channel The channel that should be checked.
+ * @param {!number} chNumber The mode's channel index.
+ * @param {!Mode} mode The mode in which to check.
+ */
+function checkSwitchingChannelReferenceDuplicates(channel, chNumber, mode) {
+  for (let j = 0; j < chNumber; j++) {
+    const otherChannel = mode.channels[j];
+
+    if (channel.switchToChannels.includes(otherChannel)) {
+      result.errors.push(`Channel '${otherChannel.key}' is referenced more than once from mode '${mode.shortName}' through switching channel '${channel.key}'.`);
+      continue;
+    }
+
+    if (otherChannel instanceof SwitchingChannel) {
+      if (otherChannel.triggerChannel === channel.triggerChannel) {
+        // compare ranges
+        for (const switchToChannelKey of channel.switchToChannelKeys) {
+          if (!otherChannel.switchToChannelKeys.includes(switchToChannelKey)) {
+            continue;
+          }
+
+          const ranges = channel.triggerRanges[switchToChannelKey];
+          const overlap = ranges.some(
+            range => range.overlapsWithOneOf(otherChannel.triggerRanges[switchToChannelKey])
+          );
+          if (overlap) {
+            result.errors.push(`Channel '${switchToChannelKey}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
+          }
+        }
+      }
+      else {
+        // fail if one of this channel's switchToChannels appears anywhere
+        const firstDuplicate = channel.switchToChannels.find(
+          ch => otherChannel.usesChannelKey(ch.key, 'all')
+        );
+        if (firstDuplicate !== undefined) {
+          result.errors.push(`Channel '${firstDuplicate.key}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
+        }
+      }
     }
   }
 }
