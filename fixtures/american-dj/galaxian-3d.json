@@ -1,0 +1,210 @@
+{
+  "name": "Galaxian 3D",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["eklynx", "Felix Edelmann"],
+    "createDate": "2017-09-11",
+    "lastModifyDate": "2017-09-11",
+    "importPlugin": {
+      "plugin": "qlcplus",
+      "date": "2017-09-11",
+      "comment": "created by Q Light Controller (version 3.0.7)"
+    }
+  },
+  "manualURL": "http://cdb-cdn.adj.com/ItemRelatedFiles/7184/galaxian_3d.pdf",
+  "physical": {
+    "dimensions": [242, 71, 247],
+    "weight": 2.6,
+    "power": 22.5,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "30mW Green Diode Laser, 80mW Red Diode Laser"
+    },
+    "lens": {
+      "degreesMinMax": [82, 82]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Red Laser": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Off"
+        },
+        {
+          "range": [8, 15],
+          "name": "On"
+        },
+        {
+          "range": [16, 239],
+          "name": "Strobe Slow->Fast"
+        },
+        {
+          "range": [240, 247],
+          "name": "Sound Active"
+        },
+        {
+          "range": [248, 255],
+          "name": "On"
+        }
+      ]
+    },
+    "Green Laser": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Off"
+        },
+        {
+          "range": [8, 15],
+          "name": "On"
+        },
+        {
+          "range": [16, 239],
+          "name": "Strobe Slow->Fast"
+        },
+        {
+          "range": [240, 247],
+          "name": "Sound Active"
+        },
+        {
+          "range": [248, 255],
+          "name": "On"
+        }
+      ]
+    },
+    "Laser Rotation 1": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Location"
+        },
+        {
+          "range": [128, 189],
+          "name": "Counter-Clockwise Fast -> Slow"
+        },
+        {
+          "range": [190, 193],
+          "name": "No Rotation"
+        },
+        {
+          "range": [194, 255],
+          "name": "Clockiwse Slow-> Fast"
+        }
+      ]
+    },
+    "Laser Rotation 2": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Location"
+        },
+        {
+          "range": [128, 189],
+          "name": "Counter-Clockwise Fast -> Slow"
+        },
+        {
+          "range": [190, 193],
+          "name": "No Rotation"
+        },
+        {
+          "range": [194, 255],
+          "name": "Clockiwse Slow-> Fast"
+        }
+      ]
+    },
+    "Macros": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Off"
+        },
+        {
+          "range": [8, 23],
+          "name": "Macro 1"
+        },
+        {
+          "range": [24, 39],
+          "name": "Macro 2"
+        },
+        {
+          "range": [40, 55],
+          "name": "Macro 3"
+        },
+        {
+          "range": [56, 71],
+          "name": "Macro 4"
+        },
+        {
+          "range": [72, 87],
+          "name": "Macro 5"
+        },
+        {
+          "range": [88, 103],
+          "name": "Macro 6"
+        },
+        {
+          "range": [104, 119],
+          "name": "Macro 7"
+        },
+        {
+          "range": [120, 135],
+          "name": "Macro 8"
+        },
+        {
+          "range": [136, 151],
+          "name": "Macro 9"
+        },
+        {
+          "range": [152, 167],
+          "name": "Macro 10"
+        },
+        {
+          "range": [168, 183],
+          "name": "Macro 11"
+        },
+        {
+          "range": [184, 199],
+          "name": "Macro 12"
+        },
+        {
+          "range": [200, 215],
+          "name": "Macro 13"
+        },
+        {
+          "range": [216, 231],
+          "name": "Macro 14"
+        },
+        {
+          "range": [232, 247],
+          "name": "Macro 15"
+        },
+        {
+          "range": [248, 255],
+          "name": "Sound Active"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red Laser",
+        "Green Laser",
+        "Laser Rotation 1",
+        "Laser Rotation 2",
+        "Macros"
+      ]
+    }
+  ]
+}
