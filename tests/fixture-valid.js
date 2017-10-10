@@ -402,9 +402,7 @@ function checkModeChannelReference(chNumber, mode) {
     return;
   }
 
-  if (channel.type === 'Pan' || channel.type === 'Tilt') {
-    checkPanTiltMaxInPhysical(channel, mode);
-  }
+  checkPanTiltMaxInPhysical(channel, mode);
 }
 
 /**
@@ -428,54 +426,57 @@ function checkSwitchingChannelReference(channel, chNumber, mode) {
 
     if (switchToChannel instanceof FineChannel) {
       checkCoarserChannelsInMode(switchToChannel, mode);
+      continue;
     }
+
+    checkPanTiltMaxInPhysical(switchToChannel, mode);
   }
 
-  checkSwitchingChannelReferenceDuplicates(channel, chNumber, mode);
+  for (let j = 0; j < chNumber; j++) {
+    const otherChannel = mode.channels[j];
+    checkSwitchingChannelReferenceDuplicates(channel, otherChannel, mode);
+  }
 }
 
 /**
  * Check that all switched channels in the switching channels are not appearing
  * ealier in the same mode (either directly or in another switching channel).
  * @param {!SwitchingChannel} channel The channel that should be checked.
- * @param {!number} chNumber The mode's channel index.
+ * @param {!AbstractChannel} otherChannel The channel that should be checked against.
  * @param {!Mode} mode The mode in which to check.
  */
-function checkSwitchingChannelReferenceDuplicates(channel, chNumber, mode) {
-  for (let j = 0; j < chNumber; j++) {
-    const otherChannel = mode.channels[j];
+function checkSwitchingChannelReferenceDuplicates(channel, otherChannel, mode) {
+  if (channel.switchToChannels.includes(otherChannel)) {
+    result.errors.push(`Channel '${otherChannel.key}' is referenced more than once from mode '${mode.shortName}' through switching channel '${channel.key}'.`);
+    return;
+  }
 
-    if (channel.switchToChannels.includes(otherChannel)) {
-      result.errors.push(`Channel '${otherChannel.key}' is referenced more than once from mode '${mode.shortName}' through switching channel '${channel.key}'.`);
-      continue;
+  if (!(otherChannel instanceof SwitchingChannel)) {
+    return;
+  }
+
+  if (otherChannel.triggerChannel === channel.triggerChannel) {
+    // compare ranges
+    for (const switchToChannelKey of channel.switchToChannelKeys) {
+      if (!otherChannel.switchToChannelKeys.includes(switchToChannelKey)) {
+        return;
+      }
+
+      const overlap = channel.triggerRanges[switchToChannelKey].some(
+        range => range.overlapsWithOneOf(otherChannel.triggerRanges[switchToChannelKey])
+      );
+      if (overlap) {
+        result.errors.push(`Channel '${switchToChannelKey}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
+      }
     }
-
-    if (otherChannel instanceof SwitchingChannel) {
-      if (otherChannel.triggerChannel === channel.triggerChannel) {
-        // compare ranges
-        for (const switchToChannelKey of channel.switchToChannelKeys) {
-          if (!otherChannel.switchToChannelKeys.includes(switchToChannelKey)) {
-            continue;
-          }
-
-          const ranges = channel.triggerRanges[switchToChannelKey];
-          const overlap = ranges.some(
-            range => range.overlapsWithOneOf(otherChannel.triggerRanges[switchToChannelKey])
-          );
-          if (overlap) {
-            result.errors.push(`Channel '${switchToChannelKey}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
-          }
-        }
-      }
-      else {
-        // fail if one of this channel's switchToChannels appears anywhere
-        const firstDuplicate = channel.switchToChannels.find(
-          ch => otherChannel.usesChannelKey(ch.key, 'all')
-        );
-        if (firstDuplicate !== undefined) {
-          result.errors.push(`Channel '${firstDuplicate.key}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
-        }
-      }
+  }
+  else {
+    // fail if one of this channel's switchToChannels appears anywhere
+    const firstDuplicate = channel.switchToChannels.find(
+      ch => otherChannel.usesChannelKey(ch.key, 'all')
+    );
+    if (firstDuplicate !== undefined) {
+      result.errors.push(`Channel '${firstDuplicate.key}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
     }
   }
 }
@@ -496,6 +497,10 @@ function checkCoarserChannelsInMode(channel, mode) {
 }
 
 function checkPanTiltMaxInPhysical(channel, mode) {
+  if (channel.type !== 'Pan' && channel.type !== 'Tilt') {
+    return;
+  }
+
   const maxProp = channel.type === 'Pan' ? 'focusPanMax' : 'focusTiltMax';
   const maxPropDisplay = channel.type === 'Pan' ? 'panMax' : 'tiltMax';
 
