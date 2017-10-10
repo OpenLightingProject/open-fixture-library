@@ -434,18 +434,18 @@ function checkSwitchingChannelReference(channel, chNumber, mode) {
 
   for (let j = 0; j < chNumber; j++) {
     const otherChannel = mode.channels[j];
-    checkSwitchingChannelReferenceDuplicates(channel, otherChannel, mode);
+    checkSwitchingChannelReferenceDuplicate(channel, otherChannel, mode);
   }
 }
 
 /**
- * Check that all switched channels in the switching channels are not appearing
- * ealier in the same mode (either directly or in another switching channel).
+ * Check all switched channels in the switching channels against another channel
+ * for duplicate channel usage (either directly or in another switching channel).
  * @param {!SwitchingChannel} channel The channel that should be checked.
  * @param {!AbstractChannel} otherChannel The channel that should be checked against.
  * @param {!Mode} mode The mode in which to check.
  */
-function checkSwitchingChannelReferenceDuplicates(channel, otherChannel, mode) {
+function checkSwitchingChannelReferenceDuplicate(channel, otherChannel, mode) {
   if (channel.switchToChannels.includes(otherChannel)) {
     result.errors.push(`Channel '${otherChannel.key}' is referenced more than once from mode '${mode.shortName}' through switching channel '${channel.key}'.`);
     return;
