@@ -7,7 +7,7 @@ const pullRequest = require('./pull-request.js');
 pullRequest.checkEnv()
 .catch(error => {
   console.error(error);
-  console.exit(0); // if the environment is not correct, just exit without failing
+  process.exit(0); // if the environment is not correct, just exit without failing
 })
 .then(() => pullRequest.init())
 .then(prData => pullRequest.fetchChangedComponents())
