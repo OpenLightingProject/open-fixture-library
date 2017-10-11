@@ -30,6 +30,10 @@ const github = new GitHubApi({
 let repoOwner;
 let repoName;
 
+/**
+ * Checks if the environment variables for GitHub operations are correct.
+ * @return {!Promise} Rejects an error message if the environment is not correct.
+ */
 module.exports.checkEnv = function checkEnv() {
   return new Promise((resolve, reject) => {
     for (const envVar of requiredEnvVars) {

@@ -534,6 +534,9 @@ function checkUnusedChannels() {
   }
 }
 
+/**
+ * Checks if the used channels fits to the fixture's categories and raise warnings suggesting to add/remove a category.
+ */
 function checkCategories() {
   const hasMultiColorChannel = fixture.availableChannels.some(channel => channel.type === 'Multi-Color');
   const hasMultipleSingleColorChannels = fixture.availableChannels.filter(channel => channel.type === 'Single Color').length > 1;
