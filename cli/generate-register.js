@@ -7,40 +7,61 @@ const colors = require('colors');
 let register = {
   filesystem: {},
   manufacturers: {},
-  categories: {}
+  categories: {},
+  contributors: {}
 };
+let categories = {};
+let contributors = {};
 
 const fixturePath = path.join(__dirname, '..', 'fixtures');
 
 try {
   // add all fixture.json files to the register
-  for (const man of fs.readdirSync(fixturePath).sort()) {
-    const manDir = path.join(fixturePath, man);
+  for (const manKey of fs.readdirSync(fixturePath).sort()) {
+    const manDir = path.join(fixturePath, manKey);
 
     // only directories
     if (fs.statSync(manDir).isDirectory()) {
-      register.manufacturers[man] = [];
+      register.manufacturers[manKey] = [];
 
       for (const filename of fs.readdirSync(manDir).sort()) {
         const ext = path.extname(filename);
         if (ext === '.json') {
-          const fix = path.basename(filename, ext);
+          const fixKey = path.basename(filename, ext);
+          const fixData = JSON.parse(fs.readFileSync(path.join(fixturePath, manKey, filename), 'utf8'));
 
-          // add to manufacturer register
-          register.manufacturers[man].push(fix);
+          let lastAction = 'modified';
+          if (fixData.meta.lastModifyDate === fixData.meta.createDate) {
+            lastAction = 'created';
+          }
+          else if ('importPlugin' in fixData.meta && fixData.meta.lastModifyDate === fixData.meta.importPlugin) {
+            lastAction = 'imported';
+          }
 
-          // add to filesystem and type register
-          const fixData = JSON.parse(fs.readFileSync(path.join(fixturePath, man, filename), 'utf8'));
-
-          register.filesystem[man + '/' + fix] = {
-            name: fixData.name
+          // add to filesystem register
+          register.filesystem[manKey + '/' + fixKey] = {
+            name: fixData.name,
+            lastModifyDate: fixData.meta.lastModifyDate,
+            lastAction: lastAction
           };
+          
+          // add to manufacturer register
+          register.manufacturers[manKey].push(fixKey);
 
+          // add to category register
           for (const cat of fixData.categories) {
-            if (!(cat in register.categories)) {
-              register.categories[cat] = [];
+            if (!(cat in categories)) {
+              categories[cat] = [];
             }
-            register.categories[cat].push(man + '/' + fix);
+            categories[cat].push(manKey + '/' + fixKey);
+          }
+
+          // add to contributor register
+          for (const contributor of fixData.meta.authors) {
+            if (!(contributor in contributors)) {
+              contributors[contributor] = [];
+            }
+            contributors[contributor].push(manKey + '/' + fixKey);
           }
         }
       }
@@ -51,6 +72,30 @@ catch (readError) {
   console.error('Read error. ', readError);
   process.exit(1);
 }
+
+// copy sorted categories into register
+for (const cat of Object.keys(categories).sort()) {
+  register.categories[cat] = categories[cat];
+}
+
+// copy sorted contributors into register
+const sortedContributors = Object.keys(contributors).sort((a, b) => {
+  const fixturesDelta = contributors[b].length - contributors[a].length;
+  const nameDelta = a > b ? 1 : a < b ? -1 : 0;
+  return fixturesDelta !== 0 ? fixturesDelta : nameDelta;
+});
+for (const contributor of sortedContributors) {
+  register.contributors[contributor] = contributors[contributor];
+}
+
+// add fixture list sorted by lastModifyDate
+register.lastUpdated = Object.keys(register.filesystem).sort((a, b) => {
+  const fixA = register.filesystem[a];
+  const fixB = register.filesystem[b];
+  const dateDelta = new Date(fixB.lastModifyDate) - new Date(fixA.lastModifyDate);
+  const keyDelta = a > b ? 1 : a < b ? -1 : 0;
+  return dateDelta !== 0 ? dateDelta : keyDelta;
+});
 
 const filename = path.join(fixturePath, (process.argv.length === 3 ? process.argv[2] : 'register.json'));
 

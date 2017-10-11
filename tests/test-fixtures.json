@@ -1,15 +1,5 @@
 [
   {
-    "man": "5star-systems",
-    "key": "spica-250m",
-    "name": "Spica 250M",
-    "features": [
-      "fine-channel-alias",
-      "channels-in-multiple-modes",
-      "null-channels"
-    ]
-  },
-  {
     "man": "cameo",
     "key": "hydrabeam-300-rgbw",
     "name": "Hydrabeam 300 RGBW",
@@ -37,6 +27,18 @@
       "floating-point-power",
       "uses-switching-channels",
       "channels-in-multiple-modes"
+    ]
+  },
+  {
+    "man": "coemar",
+    "key": "prospot-250-lx",
+    "name": "ProSpot 250 LX",
+    "features": [
+      "floating-point-weight",
+      "duplicate-channel-names",
+      "fine-channel-alias",
+      "channels-in-multiple-modes",
+      "null-channels"
     ]
   },
   {

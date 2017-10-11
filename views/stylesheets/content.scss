@@ -6,7 +6,12 @@
   padding: 5em 10px 10px;
 }
 
+.centered {
+  text-align: center;
+}
+
 .card {
+  text-align: left;
   padding: 1rem;
   margin-bottom: 1rem;
   box-shadow: 0 2px 4px $divider-dark;
@@ -42,14 +47,33 @@
 .list {
   padding: 0;
 
+  &.with-title {
+    padding-bottom: 0.5rem;
+  }
+
   li {
     list-style: none;
   }
 
-  a {
-    padding: .5em;
-    display: -ms-flexbox;
-    display: flex;
+  a:not(.big-button) {
+    padding: 0.5rem 1rem;
+  }
+
+  a.big-button {
+    margin: 1rem 0 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  a,
+  a .hint {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  & > h2 {
+    padding: 1rem 1rem 0;
   }
 
   .name {
@@ -124,7 +148,7 @@ a.card, .link, .list a {
 }
 
 .card-category,
-.banner > .card {
+.list > .big-button {
   padding-left: 5rem;
   min-height: 5rem;
 
@@ -141,17 +165,8 @@ a.card, .link, .list a {
   }
 }
 
-.banner {
-  margin: 2rem 0;
-  text-align: center;
-
-  & > .card {
-    text-align: left;
-
-    & > h2 {
-      font-size: 1.2rem;
-    }
-  }
+.list > .big-button > h2 {
+  font-size: 1.2rem;
 }
 
 
@@ -208,7 +223,7 @@ a.card, .link, .list a {
     height: 24px;
 
     &.left {
-      margin-rights: .6em;
+      margin-right: .6em;
     }
     &.right {
       margin-left: .6em;
@@ -226,9 +241,10 @@ a.card, .link, .list a {
 }
 
 @media (min-width: $phone-landscape) {
-  .grid .card {
+  .grid > .card {
     display: inline-block;
     width: calc(50% - 0.5rem);
+    vertical-align: top;
 
     & > h2 {
       white-space: nowrap;
@@ -246,7 +262,7 @@ a.card, .link, .list a {
 }
 
 @media (min-width: $tablet) {
-  .grid .card {
+  .grid > .card {
     width: calc(33.33% - 2rem / 3);
 
     &:nth-child(3n+1) {

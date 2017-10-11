@@ -1,181 +1,130 @@
 #!/usr/bin/node
 
-const fs = require('fs');
 const path = require('path');
-const http = require('http');
-const https = require('https');
-const url = require('url');
 const colors = require('colors');
+const childProcess = require('child_process');
+const blc = require('broken-link-checker');
+const pullRequest = require('./github/pull-request.js');
 
-const exportPlugins = Object.keys(require('../plugins/plugins.js').export);
 
-let failed = false;
-
-const linkRegex = /<a [^>]*href="([^"]+)"/g;
-
-// define which pages should have which status code
-const statusCodes = {
-  '200': [
-    '/',
-    '/manufacturers',
-    '/categories',
-    '/about',
-    '/search',
-    '/search?q=bla'
-  ],
-  '201': [],
-  '404': [
-    '/bla',
-    '/about/bla',
-    '/categories/bla',
-    '/categories/Blinder/bla',
-    '/manufacturers/gruft',
-    '/gruft/bla',
-    '/gruft/thunder-wash-600-rgb',
-    '/gruft/ventilator/bla'
-  ]
+// initialize link checker
+let startTime;
+let foundLinks = {};
+let fails = {
+  internal: new Set(),
+  external: new Set()
 };
-// add manufacturers and fixtures
-const register = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'fixtures', 'register.json'), 'utf8'));
-for (const man of Object.keys(register.manufacturers)) {
-  statusCodes['200'].push('/' + man);
 
-  for (const fixture of register.manufacturers[man]) {
-    statusCodes['200'].push(`/${man}/${fixture}`);
-
-    for (const plugin of exportPlugins) {
-      statusCodes['201'].push(`/${man}/${fixture}.${plugin}`);
+const siteChecker = new blc.SiteChecker({
+  honorRobotExclusions: false,
+  maxSocketsPerHost: 3,
+  rateLimit: 25,
+  filterLevel: 3
+}, {
+  html: function(tree, robots, response, pageUrl, customData) {
+    foundLinks[pageUrl] = [];
+  },
+  link: function(result, customData) {
+    let location = colors.cyan('(ex)');
+    let failStr = colors.yellow('[WARN]');
+    if (result.internal) {
+      location = colors.magenta('(in)');
+      failStr = colors.red('[FAIL]');
     }
-  }
-}
-for (const cat of Object.keys(register.categories)) {
-  statusCodes['200'].push('/categories/' + cat);
-  if (cat !== encodeURIComponent(cat)) {
-    statusCodes['200'].push('/categories/' + encodeURIComponent(cat));
-  }
-}
 
-let foundLinks = [];
-let foundLinkPromises = [];
+    if ((result.internal && result.brokenReason === 'HTTP_201') || (!result.internal && !result.broken)) {
+      foundLinks[result.base.resolved].push(` └ ${colors.green('[PASS]')} ${location} ${result.url.resolved}`);
+    }
+    else if (result.broken) {
+      foundLinks[result.base.resolved].push(` └ ${failStr} ${location} ${result.url.resolved}`);
+      foundLinks[result.base.resolved].push(`    └ ${colors.red(blc[result.brokenReason])}`);
+      fails[result.internal ? 'internal' : 'external'].add(result.url.resolved);
+    }
+  },
+  page: function(error, pageUrl, customData) {
+    if (error) {
+      console.log(`${colors.red('[FAIL]')} ${pageUrl}\n └ ${error}`);
+      fails.internal.add(pageUrl);
+    }
+    else {
+      foundLinks[pageUrl].unshift(`${colors.green('[PASS]')} ${pageUrl}`);
+      console.log(foundLinks[pageUrl].join('\n'));
+    }
+  },
+  end: function() {
+    const testTime = new Date() - startTime;
+    console.log(`\nThe test took ${testTime/1000}s.`);
+
+    serverProcess.kill();
+  }
+});
 
 
 // start server
-const serverProcess = require('child_process').execFile(
-  'node',
-  [path.join(__dirname, '..', 'main.js')],
-  {
-    env: process.env
+const serverProcess = childProcess.execFile('node', [path.join(__dirname, '..', 'main.js')], {
+  env: process.env
+}, (error, stdout, stderr) => {
+  // this is all executed when the process stops
+  console.log();
+
+  if (stdout) {
+    console.log(colors.yellow('Server output (stdout):'));
+    console.log(stdout);
   }
-);
-serverProcess.stdout.on('data', chunk => {
-  console.log('Server message (stdout): ' + chunk);
-});
-serverProcess.stderr.on('data', chunk => {
-  console.error(colors.red('Server error (stderr): ') + chunk);
-  failed = true;
-});
-console.log(`Starting server with process id ${serverProcess.pid}`);
-
-// wait 2s before starting tests
-require('timers').setTimeout(() => {
-  console.log('start tests');
-
-  let promises = [];
-  for (const code of Object.keys(statusCodes)) {
-    for (const page of statusCodes[code]) {
-      promises.push(testPage(page, [code], false));
-    }
+  if (stderr) {
+    console.log(colors.red('Server errors (stderr):'));
+    console.log(stderr);
   }
 
-  Promise.all(promises).then(results => {
-    console.log('\n\nFound links:');
-    Promise.all(foundLinkPromises).then(results2 => {
-      results = results.concat(results2);
+  let statusStr = colors.green('[PASS]');
+  let exitCode = 0;
 
-      let fails = 0;
-      for (const result of results) {
-        if (!result) {
-          fails++;
-        }
-      }
+  let lines = [
+    `There were ${fails.internal.size} internal and ${fails.external.size} external links failing.`,
+    ''
+  ];
+  fails.internal.forEach(link => lines.push(`- ${link}`));
+  fails.external.forEach(link => lines.push(`- ${link}`));
 
-      if (fails === 0) {
-        console.log('\n' + colors.green('[PASS]') + ` All ${results.length} tests passed.`);
-      }
-      else {
-        console.error('\n' + colors.red('[FAIL]') + ` ${fails} of ${results.length} tests failed.`);
-        failed = true;
-      }
+  let githubCommentLines = [];
 
-      serverProcess.on('exit', (code, signal) => {
-        process.exit(failed || signal > 0 ? 1 : 0);
-      }, 5000);
-      serverProcess.kill();
+  if (fails.internal.size > 0) {
+    statusStr = colors.red('[FAIL]');
+    exitCode = 1;
+  }
+  else if (fails.external.size > 0) {
+    statusStr = colors.yellow('[WARN]');
+    githubCommentLines = lines;
+  }
+
+  // try to create/delete a GitHub comment
+  pullRequest.checkEnv().then(() => {
+    return pullRequest.init()
+    .then(prData => pullRequest.updateComment({
+      filename: path.relative(path.join(__dirname, '../'), __filename),
+      name: 'Broken links',
+      lines: githubCommentLines
+    }))
+    .catch(error => {
+      console.error('Creating / updating the GitHub PR comment failed.', error);
     });
+  })
+  .catch() // PR env variables not set, no GitHub comment created/deleted
+  .then(() => {
+    console.log(statusStr, lines.join('\n'));
+    process.exit(exitCode);
   });
-}, 2000);
+});
+console.log(`Started server with process id ${serverProcess.pid}.`);
 
-function testPage(page, allowedCodes, isFoundLink) {
-  const path = url.resolve('http://localhost:5000', page);
-  const urlObject = url.parse(path);
 
-  if (urlObject.protocol !== 'http:' && urlObject.protocol !== 'https:') {
-    // we can only handle the HTTP and HTTPS protocols
-    console.error(colors.red('[FAIL]') + ` ${path} (protocol '${urlObject.protocol}' is not supported)`);
-    failed = true;
-    return Promise.resolve();
-  }
+// start checking links after first stdout data from server
+serverProcess.stdout.on('data', startLinkChecker);
+function startLinkChecker(data) {
+  serverProcess.stdout.removeListener('data', startLinkChecker);
 
-  return new Promise((resolve, reject) => {
-    (urlObject.protocol === 'http:' ? http : https).get(path, res => {
-      if (allowedCodes.indexOf('' + res.statusCode) === -1) {
-        console.error(colors.red('[FAIL]') + ` ${path} (was ${isFoundLink ? '' : 'not '}a found link, got ${res.statusCode}, expected one of ${allowedCodes})`);
-        resolve(false);
-        res.resume();
-        return;
-      }
+  console.log(`${data}\nStarting HTTP requests ...\n`);
 
-      console.log(colors.green('[PASS]') + ` ${path} (${res.statusCode})`);
-
-      if (res.statusCode === 302) {
-        console.warn(colors.yellow('[WARN]') + '   return code 302 (moved temporarily)');
-      }
-
-      if (isFoundLink) {
-        resolve(true);
-        res.resume();
-        return;
-      }
-
-      res.setEncoding('utf8');
-
-      let rawData = '';
-      res.on('data', chunk => {
-        rawData += chunk;
-      });
-      res.on('end', () => {
-        let match;
-
-        while ((match = linkRegex.exec(rawData)) != null) {
-          // found a link
-
-          if (match[1].startsWith('#')  // do not test same-page links
-            || foundLinks.indexOf(match[1]) !== -1  // already found earlier
-            || staticTestPagesContain(match[1])  // already defined above
-            ) {
-            continue;
-          }
-
-          foundLinkPromises.push(testPage(match[1], ['200', '201', '302'], true));
-          foundLinks.push(match[1]);
-        }
-
-        resolve(true);
-      });
-    });
-  });
-}
-
-function staticTestPagesContain(page) {
-  return Object.keys(statusCodes).some(code => statusCodes[code].indexOf(page) !== -1);
+  startTime = new Date();
+  siteChecker.enqueue('http://localhost:5000/');
 }

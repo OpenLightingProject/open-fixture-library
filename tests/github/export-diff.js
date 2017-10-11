@@ -11,7 +11,12 @@ const testFixtures = require('../test-fixtures.json').map(
 );
 
 // generate diff tasks describing the diffed plugins, fixtures and the reason for diffing (which component has changed)
-pullRequest.init()
+pullRequest.checkEnv()
+.catch(error => {
+  console.error(error);
+  process.exit(0); // if the environment is not correct, just exit without failing
+})
+.then(() => pullRequest.init())
 .then(prData => pullRequest.fetchChangedComponents())
 .then(changedComponents => {
   const allPlugins = exportPlugins.filter(plugin => !changedComponents.added.exports.includes(plugin));

@@ -1,0 +1,216 @@
+{
+  "name": "LUX-LD30W",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Nerijus Mongirdas", "Flo Edelmann"],
+    "createDate": "2017-09-19",
+    "lastModifyDate": "2017-09-19",
+    "importPlugin": {
+      "plugin": "qlcplus",
+      "date": "2017-09-19",
+      "comment": "created by Q Light Controller Plus (version 4.11.0)"
+    }
+  },
+  "manualURL": "http://www.discoworld.dk/manuals/avsl/150447.pdf",
+  "physical": {
+    "dimensions": [345, 435, 340],
+    "weight": 6.8,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "1x 30W White LED",
+      "lumens": 265
+    },
+    "lens": {
+      "degreesMinMax": [12, 12]
+    },
+    "focus": {
+      "type": "Head"
+    }
+  },
+  "availableChannels": {
+    "Color Wheel": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 17],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [18, 33],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [34, 50],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [51, 67],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [68, 84],
+          "name": "Green",
+          "color": "#00aa00"
+        },
+        {
+          "range": [85, 101],
+          "name": "Orange",
+          "color": "#ff5500"
+        },
+        {
+          "range": [102, 107],
+          "name": "Purple",
+          "color": "#ff007f"
+        },
+        {
+          "range": [108, 127],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [128, 192],
+          "name": "Color scroll CW fast - slow"
+        },
+        {
+          "range": [193, 255],
+          "name": "Color scroll CCW slow - fast"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 20],
+          "name": "Spot"
+        },
+        {
+          "range": [21, 41],
+          "name": "Gobo 1"
+        },
+        {
+          "range": [42, 62],
+          "name": "Gobo 2"
+        },
+        {
+          "range": [63, 83],
+          "name": "Gobo 3"
+        },
+        {
+          "range": [84, 104],
+          "name": "Gobo 4"
+        },
+        {
+          "range": [105, 119],
+          "name": "Gobo 5"
+        },
+        {
+          "range": [120, 127],
+          "name": "Gobo 6"
+        },
+        {
+          "range": [128, 192],
+          "name": "Gobo scroll CW fast - slow"
+        },
+        {
+          "range": [193, 255],
+          "name": "Gobo scroll CCW slow - fast"
+        }
+      ]
+    },
+    "Gobo rotation": {
+      "type": "Speed",
+      "crossfade": true,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "No rotation"
+        },
+        {
+          "range": [1, 127],
+          "name": "CW fast - slow"
+        },
+        {
+          "range": [128, 255],
+          "name": "CCW slow - fast"
+        }
+      ]
+    },
+    "Dimmer / Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Closed"
+        },
+        {
+          "range": [1, 115],
+          "name": "0-100% Dimmer"
+        },
+        {
+          "range": [116, 243],
+          "name": "Strobe slow - fast"
+        },
+        {
+          "range": [244, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"]
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"]
+    },
+    "Pan/Tilt Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "fast - slow"
+        }
+      ]
+    },
+    "Reset": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 149],
+          "name": "No action"
+        },
+        {
+          "range": [150, 200],
+          "name": "Electronic reset"
+        },
+        {
+          "range": [201, 255],
+          "name": "No action"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "10-channel",
+      "channels": [
+        "Color Wheel",
+        "Gobo Wheel",
+        "Gobo rotation",
+        "Dimmer / Strobe",
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Pan fine",
+        "Tilt fine",
+        "Reset"
+      ]
+    }
+  ]
+}
