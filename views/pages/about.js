@@ -6,7 +6,7 @@ module.exports = function(options) {
   str += '<h1>About</h1>';
 
   str += '<p>Created by Florian and Felix Edelmann.</p>';
-  str += '<p>The full code of the <em>Open Fixture Library</em> is <a href="https://github.com/FloEdelmann/open-fixture-library">open source</a> (licensed under the <a href="https://tldrclegal.com/license/mit-license" title="Massachusetts Institute of Technology License">MIT License</a>) and everybody is invited to contribute!</p>';
+  str += '<p>The full code of the <em>Open Fixture Library</em> is <a href="https://github.com/FloEdelmann/open-fixture-library">open source</a> (licensed under the <a href="https://tldrlegal.com/license/mit-license" title="Massachusetts Institute of Technology License">MIT License</a>) and everybody is invited to contribute!</p>';
 
   str += '<h2>History</h2>';
   str += '<p>We were used to programming lighting shows with the <a href="http://www.ecue.de/">e:cue</a> software and – because at some point we found it being limited in functionality – wanted to try out other programs. I built a DMX interface with <a href="https://www.openlighting.org/ola/">Open Lighting Architecture</a> and tried <a href="http://www.qlcplus.org/">QLC+</a> and we kept on using that combination since then.</p>';
