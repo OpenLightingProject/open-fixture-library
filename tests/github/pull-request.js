@@ -48,7 +48,7 @@ module.exports.checkEnv = function checkEnv() {
 }
 
 module.exports.init = function init() {
-  return checkEnv().then(() => {
+  return module.exports.checkEnv().then(() => {
     repoOwner = process.env.TRAVIS_REPO_SLUG.split('/')[0];
     repoName = process.env.TRAVIS_REPO_SLUG.split('/')[1];
 
