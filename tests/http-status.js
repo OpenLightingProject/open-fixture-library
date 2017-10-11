@@ -98,10 +98,10 @@ const serverProcess = childProcess.execFile('node', [path.join(__dirname, '..', 
     // try to create a GitHub comment
     blockingPromise = pullRequest.checkEnv().then(() => {
       console.log('Create a GitHub comment ...');
-      blockingPromise = pullRequest.init()
+      return pullRequest.init()
       .then(prData => pullRequest.updateComment({
         filename: path.relative(path.join(__dirname, '../'), __filename),
-        name: 'Schema has changed',
+        name: 'Broken links',
         lines: lines
       }))
       .catch(error => {

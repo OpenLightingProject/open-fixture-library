@@ -221,13 +221,15 @@ module.exports.updateComment = function updateComment(test) {
 
     if (!equalFound && test.lines.length > 0) {
       console.log(`Creating test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
-      github.issues.createComment({
+      return github.issues.createComment({
         owner: repoOwner,
         repo: repoName,
         number: process.env.TRAVIS_PULL_REQUEST,
         body: message
       });
     }
+
+    return Promise.resolve();
   });
 };
 
