@@ -45,7 +45,7 @@ module.exports.checkEnv = function checkEnv() {
     }
     resolve();
   });
-}
+};
 
 module.exports.init = function init() {
   return module.exports.checkEnv().then(() => {
