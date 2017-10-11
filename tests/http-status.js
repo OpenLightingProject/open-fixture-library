@@ -76,8 +76,6 @@ const serverProcess = childProcess.execFile('node', [path.join(__dirname, '..', 
     console.log(stderr);
   }
 
-  let blockingPromise = Promise.resolve();
-
   let statusStr = colors.green('[PASS]');
   let exitCode = 0;
 
@@ -88,32 +86,31 @@ const serverProcess = childProcess.execFile('node', [path.join(__dirname, '..', 
   fails.internal.forEach(link => lines.push(`- ${link}`));
   fails.external.forEach(link => lines.push(`- ${link}`));
 
+  let githubCommentLines = [];
+
   if (fails.internal.size > 0) {
     statusStr = colors.red('[FAIL]');
     exitCode = 1;
   }
   else if (fails.external.size > 0) {
     statusStr = colors.yellow('[WARN]');
-
-    // try to create a GitHub comment
-    blockingPromise = pullRequest.checkEnv().then(() => {
-      console.log('Create a GitHub comment ...');
-      return pullRequest.init()
-      .then(prData => pullRequest.updateComment({
-        filename: path.relative(path.join(__dirname, '../'), __filename),
-        name: 'Broken links',
-        lines: lines
-      }))
-      .catch(error => {
-        console.error('Creating / updating the GitHub PR comment failed.', error);
-      });
-    })
-    .catch(error => {
-      console.log('Do not create a GitHub comment.');
-    });
+    githubCommentLines = lines;
   }
 
-  blockingPromise.then(() => {
+  // try to create/delete a GitHub comment
+  pullRequest.checkEnv().then(() => {
+    return pullRequest.init()
+    .then(prData => pullRequest.updateComment({
+      filename: path.relative(path.join(__dirname, '../'), __filename),
+      name: 'Broken links',
+      lines: githubCommentLines
+    }))
+    .catch(error => {
+      console.error('Creating / updating the GitHub PR comment failed.', error);
+    });
+  })
+  .catch() // PR env variables not set, no GitHub comment created/deleted
+  .then(() => {
     console.log(statusStr, lines.join('\n'));
     process.exit(exitCode);
   });
