@@ -18,30 +18,36 @@ for (const pluginKey of fs.readdirSync(__dirname)) {
   }
 
   const importPath = path.join(pluginPath, 'import.js');
-  try {
-    plugin.import = require(importPath);
-  }
-  catch (error) {
-    console.info(error.message);
+  if (fs.existsSync(importPath)) {
+    try {
+      plugin.import = require(importPath);
+    }
+    catch (error) {
+      console.error(error.message);
+    }
   }
   
   const exportPath = path.join(pluginPath, 'export.js');
-  try {
-    plugin.export = require(exportPath);
-  }
-  catch (error) {
-    console.info(error.message);
+  if (fs.existsSync(exportPath)) {
+    try {
+      plugin.export = require(exportPath);
+    }
+    catch (error) {
+      console.error(error.message);
+    }
   }
 
   const exportTestsPath = path.join(pluginPath, 'exportTests');
-  try {
-    for (const test of fs.readdirSync(exportTestsPath)) {
-      const testKey = path.basename(test, path.extname(test));
-      plugin.exportTests[testKey] = require(path.join(exportTestsPath, test));
+  if (fs.existsSync(exportTestsPath)) {
+    try {
+      for (const test of fs.readdirSync(exportTestsPath)) {
+        const testKey = path.basename(test, path.extname(test));
+        plugin.exportTests[testKey] = require(path.join(exportTestsPath, test));
+      }
     }
-  }
-  catch (error) {
-    console.info(error.message);
+    catch (error) {
+      console.error(error.message);
+    }
   }
 
   plugins[pluginKey] = plugin;

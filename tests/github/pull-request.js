@@ -15,17 +15,7 @@ const requiredEnvVars = [
   'TRAVIS_BRANCH',
   'TRAVIS_COMMIT'
 ];
-for (const envVar of requiredEnvVars) {
-  if (!(envVar in process.env)) {
-    console.error(`Environment variable ${envVar} is required for this script. Please define it in your system or in the .env file.`);
-    process.exit(1);
-  }
-}
 
-if (process.env.TRAVIS_PULL_REQUEST === 'false') {
-  console.error('Github tests can only be run in pull request builds.');
-  process.exit(0);
-}
 const github = new GitHubApi({
   debug: false,
   protocol: 'https',
@@ -37,19 +27,45 @@ const github = new GitHubApi({
   timeout: 5000
 });
 
-github.authenticate({
-  type: 'token',
-  token: process.env.GITHUB_USER_TOKEN
-});
+let repoOwner;
+let repoName;
 
-const repoOwner = process.env.TRAVIS_REPO_SLUG.split('/')[0];
-const repoName = process.env.TRAVIS_REPO_SLUG.split('/')[1];
+/**
+ * Checks if the environment variables for GitHub operations are correct.
+ * @return {!Promise} Rejects an error message if the environment is not correct.
+ */
+module.exports.checkEnv = function checkEnv() {
+  return new Promise((resolve, reject) => {
+    for (const envVar of requiredEnvVars) {
+      if (!(envVar in process.env)) {
+        reject(`Environment variable ${envVar} is required for this script. Please define it in your system or in the .env file.`);
+        return;
+      }
+    }
+
+    if (process.env.TRAVIS_PULL_REQUEST === 'false') {
+      reject('Github tests can only be run in pull request builds.');
+      return;
+    }
+    resolve();
+  });
+};
 
 module.exports.init = function init() {
-  return github.pullRequests.get({
-    owner: repoOwner,
-    repo: repoName,
-    number: process.env.TRAVIS_PULL_REQUEST
+  return module.exports.checkEnv().then(() => {
+    repoOwner = process.env.TRAVIS_REPO_SLUG.split('/')[0];
+    repoName = process.env.TRAVIS_REPO_SLUG.split('/')[1];
+
+    github.authenticate({
+      type: 'token',
+      token: process.env.GITHUB_USER_TOKEN
+    });
+
+    return github.pullRequests.get({
+      owner: repoOwner,
+      repo: repoName,
+      number: process.env.TRAVIS_PULL_REQUEST
+    });
   })
   .then(pr => {
     // save PR for later use
@@ -151,11 +167,13 @@ function addFileToChangedData(changedData, filename) {
 }
 
 /**
- * test is an object of this structure: {
- *   filename: 'tests/github/test-file-name.js',
- *   name: 'shown test name',
- *   lines: 'test message'
- * }
+ * Creates a new comment in the PR if test.lines is not empty and if there is not already an exactly equal comment.
+ * Deletes old comments from the same test (determined by test.filename).
+ * @param {!object} test Information about the test script that wants to update the comment.
+ * @param {!string} test.filename Relative path from OFL root dir to test file: 'tests/github/test-file-name.js'
+ * @param {!string} test.name Heading to be used in the comment
+ * @param {!string[]} test.lines The comment's lines of text
+ * @return {!Promise} A Promise that is fulfilled as soon as all GitHub operations have finished
  */
 module.exports.updateComment = function updateComment(test) {
   let lines = [
@@ -183,6 +201,7 @@ module.exports.updateComment = function updateComment(test) {
   return Promise.all(commentPromises)
   .then(commentBlocks => {
     let equalFound = false;
+    let promises = [];
 
     for (const block of commentBlocks) {
       for (const comment of block.data) {
@@ -197,11 +216,11 @@ module.exports.updateComment = function updateComment(test) {
           }
           else {
             console.log(`Deleting old test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
-            github.issues.deleteComment({
+            promises.push(github.issues.deleteComment({
               owner: repoOwner,
               repo: repoName,
               id: comment.id
-            });
+            }));
           }
         }
       }
@@ -209,13 +228,15 @@ module.exports.updateComment = function updateComment(test) {
 
     if (!equalFound && test.lines.length > 0) {
       console.log(`Creating test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
-      github.issues.createComment({
+      promises.push(github.issues.createComment({
         owner: repoOwner,
         repo: repoName,
         number: process.env.TRAVIS_PULL_REQUEST,
         body: message
-      });
+      }));
     }
+
+    return Promise.all(promises);
   });
 };
 

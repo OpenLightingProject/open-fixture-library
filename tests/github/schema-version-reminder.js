@@ -4,7 +4,12 @@ const path = require('path');
 
 const pullRequest = require('./pull-request.js');
 
-pullRequest.init()
+pullRequest.checkEnv()
+.catch(error => {
+  console.error(error);
+  process.exit(0); // if the environment is not correct, just exit without failing
+})
+.then(() => pullRequest.init())
 .then(prData => pullRequest.fetchChangedComponents())
 .then(changedComponents => {
   let lines = [];
