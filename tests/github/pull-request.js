@@ -169,6 +169,7 @@ function addFileToChangedData(changedData, filename) {
  * @param {!string} test.filename Relative path from OFL root dir to test file: 'tests/github/test-file-name.js'
  * @param {!string} test.name Heading to be used in the comment
  * @param {!string[]} test.lines The comment's lines of text
+ * @return {!Promise} A Promise that is fulfilled as soon as all GitHub operations have finished
  */
 module.exports.updateComment = function updateComment(test) {
   let lines = [
@@ -196,6 +197,7 @@ module.exports.updateComment = function updateComment(test) {
   return Promise.all(commentPromises)
   .then(commentBlocks => {
     let equalFound = false;
+    let promises = [];
 
     for (const block of commentBlocks) {
       for (const comment of block.data) {
@@ -210,11 +212,11 @@ module.exports.updateComment = function updateComment(test) {
           }
           else {
             console.log(`Deleting old test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
-            github.issues.deleteComment({
+            promises.push(github.issues.deleteComment({
               owner: repoOwner,
               repo: repoName,
               id: comment.id
-            });
+            }));
           }
         }
       }
@@ -222,15 +224,15 @@ module.exports.updateComment = function updateComment(test) {
 
     if (!equalFound && test.lines.length > 0) {
       console.log(`Creating test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
-      return github.issues.createComment({
+      promises.push(github.issues.createComment({
         owner: repoOwner,
         repo: repoName,
         number: process.env.TRAVIS_PULL_REQUEST,
         body: message
-      });
+      }));
     }
 
-    return Promise.resolve();
+    return Promise.all(promises);
   });
 };
 
