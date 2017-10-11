@@ -325,6 +325,19 @@
         }
       ]
     },
+    "Head Speed 1": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "slowest speed"
+        },
+        {
+          "range": [11, 255],
+          "name": "slow to fast"
+        }
+      ]
+    },
     "Sound mode / Reset": {
       "type": "Maintenance",
       "capabilities": [
@@ -359,25 +372,25 @@
     "Dimmer $pixelKey": {
       "type": "Intensity"
     },
-    "Head Speed $pixelKey": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 10],
-          "name": "slowest speed"
-        },
-        {
-          "range": [11, 255],
-          "name": "slow to fast"
-        }
-      ]
-    },
     "Head Speed $pixelKey simple": {
       "name": "Head Speed $pixelKey",
       "type": "Speed",
       "capabilities": [
         {
           "range": [0, 255],
+          "name": "slow to fast"
+        }
+      ]
+    },
+    "Head Speed $pixelKey": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "Use Head Speed 1"
+        },
+        {
+          "range": [11, 255],
           "name": "slow to fast"
         }
       ]
