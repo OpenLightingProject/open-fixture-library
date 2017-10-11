@@ -61,6 +61,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     }
   
     checkUnusedChannels();
+    checkCategories();
   }
   catch (error) {
     result.errors.push(module.exports.getErrorString('File could not be imported into model.', error));
@@ -354,33 +355,35 @@ function checkMode(mode) {
 
   checkPhysical(mode.physicalOverride, ` in mode '${mode.shortName}'`);
 
-  let modeChannelKeyCount = {};
   let usedNonNullChannel = false;
 
   for (let i = 0; i < mode.jsonObject.channels.length; i++) {
     usedNonNullChannel = usedNonNullChannel || mode.jsonObject.channels[i] !== null;
-    checkModeChannelReference(i, mode, modeChannelKeyCount);
+    checkModeChannelReference(i, mode);
   }
 
   if (!usedNonNullChannel) {
-    result.errors.push(`Mode '${mode.shortName}' must not only use null channels.`);
+    result.errors.push(`Mode '${mode.shortName}' must not use only null channels.`);
   }
 
-  const duplicateChannelReferences = Object.keys(modeChannelKeyCount).filter(
-    chKey => modeChannelKeyCount[chKey] > 1
-  );
-  if (duplicateChannelReferences.length > 0) {
-    result.errors.push(`Channels ${duplicateChannelReferences} are used more than once in mode '${mode.shortName}'.`);
+  if (mode.name.match(/^(\d+)(?:\s+|\-)?(?:ch|channels?)$/)) {
+    const intendedLength = parseInt(RegExp.$1);
+
+    if (mode.channels.length !== intendedLength) {
+      result.warnings.push(`Mode '${mode.name}' should probably have ${RegExp.$1} channels but does only have ${mode.channels.length}.`);
+    }
+    if (mode.shortName !== `${intendedLength}ch`) {
+      result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch' instead of '${mode.shortName}'.`);
+    }
   }
 }
 
 /**
  * Check that a channel reference in a mode is valid.
- * @param {!number} chNumber The mode's channel index.
- * @param {!Mode} mode The mode to check.
- * @param {Object.<string, number>} modeChKeyCount An object to count the occurences of all used channel keys.
+ * @param {!number} chNumber The channel index to be checked.
+ * @param {!Mode} mode The mode in which to check.
  */
-function checkModeChannelReference(chNumber, mode, modeChKeyCount) {
+function checkModeChannelReference(chNumber, mode) {
   const chReference = mode.jsonObject.channels[chNumber];
 
   // this is a null channel 
@@ -395,11 +398,15 @@ function checkModeChannelReference(chNumber, mode, modeChKeyCount) {
   }
 
   usedChannelKeys.add(channel.key.toLowerCase());
-  modeChKeyCount[channel.key] = (modeChKeyCount[channel.key] || 0) + 1;
 
   if (channel instanceof SwitchingChannel) {
-    checkSwitchingChannelReference(channel, mode, modeChKeyCount);
+    checkSwitchingChannelReference(channel, chNumber, mode);
     return;
+  }
+
+  // if earliest occurence (including switching channels) is not this one
+  if (mode.getChannelIndex(channel, 'all') < chNumber) {
+    result.errors.push(`Channel '${chReference}' is referenced more than once from mode '${mode.shortName}'.`);
   }
 
   if (channel instanceof FineChannel) {
@@ -407,12 +414,16 @@ function checkModeChannelReference(chNumber, mode, modeChKeyCount) {
     return;
   }
 
-  if (channel.type === 'Pan' || channel.type === 'Tilt') {
-    checkPanTiltMaxInPhysical(channel, mode);
-  }
+  checkPanTiltMaxInPhysical(channel, mode);
 }
 
-function checkSwitchingChannelReference(channel, mode, modeChKeyCount) {
+/**
+ * Check that a switching channel reference in a mode is valid.
+ * @param {!SwitchingChannel} channel The channel that should be checked.
+ * @param {!number} chNumber The mode's channel index.
+ * @param {!Mode} mode The mode in which to check.
+ */
+function checkSwitchingChannelReference(channel, chNumber, mode) {
   // the mode must also contain the trigger channel
   if (mode.getChannelIndex(channel.triggerChannel) === -1) {
     result.errors.push(`mode '${mode.shortName}' uses switching channel '${channel.key}' but is missing its trigger channel '${channel.triggerChannel.key}'`);
@@ -425,10 +436,59 @@ function checkSwitchingChannelReference(channel, mode, modeChKeyCount) {
       continue;
     }
 
-    modeChKeyCount[switchToChannel.key] = (modeChKeyCount[switchToChannel.key] || 0) + 1;
-
     if (switchToChannel instanceof FineChannel) {
       checkCoarserChannelsInMode(switchToChannel, mode);
+      continue;
+    }
+
+    checkPanTiltMaxInPhysical(switchToChannel, mode);
+  }
+
+  for (let j = 0; j < chNumber; j++) {
+    const otherChannel = mode.channels[j];
+    checkSwitchingChannelReferenceDuplicate(channel, otherChannel, mode);
+  }
+}
+
+/**
+ * Check all switched channels in the switching channels against another channel
+ * for duplicate channel usage (either directly or in another switching channel).
+ * @param {!SwitchingChannel} channel The channel that should be checked.
+ * @param {!AbstractChannel} otherChannel The channel that should be checked against.
+ * @param {!Mode} mode The mode in which to check.
+ */
+function checkSwitchingChannelReferenceDuplicate(channel, otherChannel, mode) {
+  if (channel.switchToChannels.includes(otherChannel)) {
+    result.errors.push(`Channel '${otherChannel.key}' is referenced more than once from mode '${mode.shortName}' through switching channel '${channel.key}'.`);
+    return;
+  }
+
+  if (!(otherChannel instanceof SwitchingChannel)) {
+    return;
+  }
+
+  if (otherChannel.triggerChannel === channel.triggerChannel) {
+    // compare ranges
+    for (const switchToChannelKey of channel.switchToChannelKeys) {
+      if (!otherChannel.switchToChannelKeys.includes(switchToChannelKey)) {
+        return;
+      }
+
+      const overlap = channel.triggerRanges[switchToChannelKey].some(
+        range => range.overlapsWithOneOf(otherChannel.triggerRanges[switchToChannelKey])
+      );
+      if (overlap) {
+        result.errors.push(`Channel '${switchToChannelKey}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
+      }
+    }
+  }
+  else {
+    // fail if one of this channel's switchToChannels appears anywhere
+    const firstDuplicate = channel.switchToChannels.find(
+      ch => otherChannel.usesChannelKey(ch.key, 'all')
+    );
+    if (firstDuplicate !== undefined) {
+      result.errors.push(`Channel '${firstDuplicate.key}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
     }
   }
 }
@@ -449,6 +509,10 @@ function checkCoarserChannelsInMode(channel, mode) {
 }
 
 function checkPanTiltMaxInPhysical(channel, mode) {
+  if (channel.type !== 'Pan' && channel.type !== 'Tilt') {
+    return;
+  }
+
   const maxProp = channel.type === 'Pan' ? 'focusPanMax' : 'focusTiltMax';
   const maxPropDisplay = channel.type === 'Pan' ? 'panMax' : 'tiltMax';
 
@@ -467,6 +531,46 @@ function checkUnusedChannels() {
 
   if (unused.length > 0) {
     result.warnings.push('Unused channel(s): ' + unused.join(', '));
+  }
+}
+
+/**
+ * Checks if the used channels fits to the fixture's categories and raise warnings suggesting to add/remove a category.
+ */
+function checkCategories() {
+  const hasMultiColorChannel = fixture.availableChannels.some(channel => channel.type === 'Multi-Color');
+  const hasMultipleSingleColorChannels = fixture.availableChannels.filter(channel => channel.type === 'Single Color').length > 1;
+  const hasColorChangerCategory = fixture.categories.includes('Color Changer');
+  if (!hasColorChangerCategory && hasMultiColorChannel) {
+    result.warnings.push('Category \'Color Changer\' suggested since there is a \'Multi-Color\' channel.');
+  }
+  else if (!hasColorChangerCategory && hasMultipleSingleColorChannels) {
+    result.warnings.push('Category \'Color Changer\' suggested since there are multiple \'Single Color\' channels.');
+  }
+  else if (hasColorChangerCategory && !hasMultiColorChannel && !hasMultipleSingleColorChannels) {
+    result.warnings.push('Category \'Color Changer\' invalid since there is no \'Multi-Color\' and less than 2 \'Single Color\' channels.');
+  }
+
+  const hasFocusTypeHead = fixture.physical !== null && fixture.physical.focusType === 'Head';
+  const hasMovingHeadCategory = fixture.categories.includes('Moving Head');
+  if (!hasMovingHeadCategory && hasFocusTypeHead) {
+    result.warnings.push('Category \'Moving Head\' suggested since focus.type is \'Head\'.');
+  }
+  else if (hasMovingHeadCategory && !hasFocusTypeHead) {
+    result.warnings.push('Category \'Moving Head\' invalid since focus.type is not \'Head\'.');
+  }
+
+  const hasFogChannel = fixture.availableChannels.some(channel => channel.type === 'Fog');
+  const hasSmokeCategory = fixture.categories.includes('Smoke');
+  const hasHazerCategory = fixture.categories.includes('Hazer');
+  if (!(hasSmokeCategory || hasHazerCategory) && hasFogChannel) {
+    result.warnings.push('Categories \'Smoke\' and/or \'Hazer\' suggested since there is a \'Fog\' channel.');
+  }
+  else if (hasSmokeCategory && !hasFogChannel) {
+    result.warnings.push('Category \'Smoke\' invalid since there is no \'Fog\' channel.');
+  }
+  else if (hasHazerCategory && !hasFogChannel) {
+    result.warnings.push('Category \'Hazer\' invalid since there is no \'Fog\' channel.');
   }
 }
 

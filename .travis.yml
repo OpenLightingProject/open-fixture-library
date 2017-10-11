@@ -3,8 +3,8 @@ node_js:
   #- "node" # latest
   - "6"
 env:
-  - TESTFILE=tests/fixtures-valid.js
   - TESTFILE=tests/http-status.js
+  - TESTFILE=tests/fixtures-valid.js
   - TESTFILE=tests/register-correct.js
   - TESTFILE=tests/github/export-diff.js
   - TESTFILE=tests/github/exports-valid.js

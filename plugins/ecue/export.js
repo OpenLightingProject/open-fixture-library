@@ -9,7 +9,10 @@ module.exports.name = 'e:cue';
 module.exports.version = '0.3.0';
 
 module.exports.export = function exportEcue(fixtures, options) {
-  const timestamp = dateToString(new Date());
+  if (!('date' in options)) {
+    options.date = new Date();
+  }
+  const timestamp = dateToString(options.date);
 
   let manufacturers = {};
   for (const fix of fixtures) {
