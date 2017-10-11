@@ -4,14 +4,15 @@ const path = require('path');
 const colors = require('colors');
 const childProcess = require('child_process');
 const blc = require('broken-link-checker');
+const pullRequest = require('./github/pull-request.js');
 
 
 // initialize link checker
 let startTime;
 let foundLinks = {};
 let fails = {
-  internal: 0,
-  external: 0
+  internal: new Set(),
+  external: new Set()
 };
 
 const siteChecker = new blc.SiteChecker({
@@ -28,7 +29,7 @@ const siteChecker = new blc.SiteChecker({
     let failStr = colors.yellow('[WARN]');
     if (result.internal) {
       location = colors.magenta('(in)');
-      failStr = colors.red('[FAIL');
+      failStr = colors.red('[FAIL]');
     }
 
     if ((result.internal && result.brokenReason === 'HTTP_201') || (!result.internal && !result.broken)) {
@@ -37,13 +38,13 @@ const siteChecker = new blc.SiteChecker({
     else if (result.broken) {
       foundLinks[result.base.resolved].push(` └ ${failStr} ${location} ${result.url.resolved}`);
       foundLinks[result.base.resolved].push(`    └ ${colors.red(blc[result.brokenReason])}`);
-      fails[result.internal ? 'internal' : 'external']++;
+      fails[result.internal ? 'internal' : 'external'].add(result.url.resolved);
     }
   },
   page: function(error, pageUrl, customData) {
     if (error) {
       console.log(`${colors.red('[FAIL]')} ${pageUrl}\n └ ${error}`);
-      fails.internal++;
+      fails.internal.add(pageUrl);
     }
     else {
       foundLinks[pageUrl].unshift(`${colors.green('[PASS]')} ${pageUrl}`);
@@ -53,9 +54,6 @@ const siteChecker = new blc.SiteChecker({
   end: function() {
     const testTime = new Date() - startTime;
     console.log(`\nThe test took ${testTime/1000}s.`);
-
-    const status = fails.internal > 0 ? colors.red('[FAIL]') : (fails.external > 0 ? colors.yellow('[WARN]') : colors.green('[PASS]'));
-    console.log(status, `There were ${fails.internal} internal and ${fails.external} external fails.`);
 
     serverProcess.kill();
   }
@@ -76,17 +74,56 @@ const serverProcess = childProcess.execFile(path.join(__dirname, '../main.js'), 
     console.log(stderr);
   }
 
-  process.exit(fails.internal > 0 ? 1 : 0);
+  let blockingPromise = Promise.resolve();
+
+  let statusStr = colors.green('[PASS]');
+  let exitCode = 0;
+
+  let lines = [
+    `There were ${fails.internal.size} internal and ${fails.external.size} external links failing.`,
+    ''
+  ];
+  fails.internal.forEach(link => lines.push(`- ${link}`));
+  fails.external.forEach(link => lines.push(`- ${link}`));
+
+  if (fails.internal.size > 0) {
+    statusStr = colors.red('[FAIL]');
+    exitCode = 1;
+  }
+  else if (fails.external.size > 0) {
+    statusStr = colors.yellow('[WARN]');
+
+    // try to create a GitHub comment
+    blockingPromise = pullRequest.checkEnv().then(() => {
+      blockingPromise = pullRequest.init()
+      .then(prData => pullRequest.updateComment({
+        filename: path.relative(path.join(__dirname, '../'), __filename),
+        name: 'Schema has changed',
+        lines: lines
+      }))
+      .catch(error => {
+        console.error('Creating / updating the GitHub PR comment failed.', error);
+      });
+    })
+    .catch(error => {
+    });
+  }
+
+  blockingPromise.then(() => {
+    console.log(statusStr, lines.join('\n'));
+    process.exit(exitCode);
+  });
 });
 console.log(`Started server with process id ${serverProcess.pid}.`);
 
 
 // start checking links after first stdout data from server
-serverProcess.stdout.on('data', data => {
-  serverProcess.stdout.removeAllListeners();
+serverProcess.stdout.on('data', startLinkChecker);
+function startLinkChecker(data) {
+  serverProcess.stdout.removeListener('data', startLinkChecker);
 
   console.log(`${data}\nStarting HTTP requests ...\n`);
 
   startTime = new Date();
   siteChecker.enqueue('http://localhost:5000/');
-});
+}

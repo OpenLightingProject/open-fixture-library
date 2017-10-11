@@ -10,7 +10,12 @@ const testFixtures = require('../test-fixtures.json').map(
   fixture => [fixture.man, fixture.key]
 );
 
-pullRequest.init()
+pullRequest.checkEnv()
+.catch(error => {
+  console.error(error);
+  console.exit(0); // if the environment is not correct, just exit without failing
+})
+.then(() => pullRequest.init())
 .then(prData => pullRequest.fetchChangedComponents())
 .then(changedComponents => {
   let messagePromises = [];

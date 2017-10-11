@@ -15,17 +15,7 @@ const requiredEnvVars = [
   'TRAVIS_BRANCH',
   'TRAVIS_COMMIT'
 ];
-for (const envVar of requiredEnvVars) {
-  if (!(envVar in process.env)) {
-    console.error(`Environment variable ${envVar} is required for this script. Please define it in your system or in the .env file.`);
-    process.exit(1);
-  }
-}
 
-if (process.env.TRAVIS_PULL_REQUEST === 'false') {
-  console.error('Github tests can only be run in pull request builds.');
-  process.exit(0);
-}
 const github = new GitHubApi({
   debug: false,
   protocol: 'https',
@@ -37,19 +27,41 @@ const github = new GitHubApi({
   timeout: 5000
 });
 
-github.authenticate({
-  type: 'token',
-  token: process.env.GITHUB_USER_TOKEN
-});
+let repoOwner;
+let repoName;
 
-const repoOwner = process.env.TRAVIS_REPO_SLUG.split('/')[0];
-const repoName = process.env.TRAVIS_REPO_SLUG.split('/')[1];
+module.exports.checkEnv = function checkEnv() {
+  return new Promise((resolve, reject) => {
+    for (const envVar of requiredEnvVars) {
+      if (!(envVar in process.env)) {
+        reject(`Environment variable ${envVar} is required for this script. Please define it in your system or in the .env file.`);
+        return;
+      }
+    }
+
+    if (process.env.TRAVIS_PULL_REQUEST === 'false') {
+      reject('Github tests can only be run in pull request builds.');
+      return;
+    }
+    resolve();
+  });
+}
 
 module.exports.init = function init() {
-  return github.pullRequests.get({
-    owner: repoOwner,
-    repo: repoName,
-    number: process.env.TRAVIS_PULL_REQUEST
+  return checkEnv().then(() => {
+    repoOwner = process.env.TRAVIS_REPO_SLUG.split('/')[0];
+    repoName = process.env.TRAVIS_REPO_SLUG.split('/')[1];
+
+    github.authenticate({
+      type: 'token',
+      token: process.env.GITHUB_USER_TOKEN
+    });
+
+    return github.pullRequests.get({
+      owner: repoOwner,
+      repo: repoName,
+      number: process.env.TRAVIS_PULL_REQUEST
+    });
   })
   .then(pr => {
     // save PR for later use
