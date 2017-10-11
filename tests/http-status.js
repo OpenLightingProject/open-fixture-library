@@ -1,6 +1,5 @@
 #!/usr/bin/node
 
-const fs = require('fs');
 const path = require('path');
 const colors = require('colors');
 const childProcess = require('child_process');
@@ -25,8 +24,12 @@ const siteChecker = new blc.SiteChecker({
     foundLinks[pageUrl] = [];
   },
   link: function(result, customData) {
-    const location = result.internal ? colors.magenta('(in)') : colors.cyan('(ex)');
-    const failStr = result.internal ? colors.red('[FAIL') : colors.yellow('[WARN]');
+    let location = colors.cyan('(ex)');
+    let failStr = colors.yellow('[WARN]');
+    if (result.internal) {
+      location = colors.magenta('(in)');
+      failStr = colors.red('[FAIL');
+    }
 
     if ((result.internal && result.brokenReason === 'HTTP_201') || (!result.internal && !result.broken)) {
       foundLinks[result.base.resolved].push(` └ ${colors.green('[PASS]')} ${location} ${result.url.resolved}`);
@@ -79,7 +82,7 @@ console.log(`Started server with process id ${serverProcess.pid}.`);
 
 
 // start checking links after first stdout data from server
-serverProcess.stdout.on('data', (data) => {
+serverProcess.stdout.on('data', data => {
   serverProcess.stdout.removeAllListeners();
 
   console.log(`${data}\nStarting HTTP requests ...\n`);
