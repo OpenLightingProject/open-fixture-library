@@ -61,7 +61,9 @@ const siteChecker = new blc.SiteChecker({
 
 
 // start server
-const serverProcess = childProcess.execFile(path.join(__dirname, '../main.js'), (error, stdout, stderr) => {
+const serverProcess = childProcess.execFile('node', [path.join(__dirname, '..', 'main.js')], {
+  env: process.env
+}, (error, stdout, stderr) => {
   // this is all executed when the process stops
   console.log();
 
