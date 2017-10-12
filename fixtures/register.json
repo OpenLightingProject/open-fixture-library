@@ -175,6 +175,11 @@
       "lastModifyDate": "2017-07-17",
       "lastAction": "created"
     },
+    "glp/impression-spot-one": {
+      "name": "impression Spot One",
+      "lastModifyDate": "2017-10-12",
+      "lastAction": "created"
+    },
     "gruft/ventilator": {
       "name": "Ventilator",
       "lastModifyDate": "2017-03-09",
@@ -366,6 +371,9 @@
       "pan-tilt",
       "rgb-fader"
     ],
+    "glp": [
+      "impression-spot-one"
+    ],
     "gruft": [
       "ventilator"
     ],
@@ -433,6 +441,7 @@
       "eurolite/led-sls-6-uv-floor",
       "futurelight/pro-slim-par-7-hcl",
       "generic/rgb-fader",
+      "glp/impression-spot-one",
       "lightmaxx/platinum-mini-tri-par",
       "lightmaxx/vega-zoom-wash",
       "showtec/horizon-8",
@@ -474,6 +483,7 @@
       "eurolite/led-tmh-9",
       "eurolite/led-tmh-x25",
       "generic/pan-tilt",
+      "glp/impression-spot-one",
       "lightmaxx/vega-zoom-wash",
       "martin/mac-aura",
       "martin/mac-axiom-hybrid",
@@ -569,7 +579,8 @@
       "showtec/kanjo-wash-rgb",
       "showtec/led-light-bar-rgb-v3",
       "showtec/phantom-140-led-spot",
-      "showtec/phantom-50-led-spot"
+      "showtec/phantom-50-led-spot",
+      "glp/impression-spot-one"
     ],
     "novasfronteiras.co": [
       "dts/xr1200-wash",
@@ -634,9 +645,16 @@
       "models": {
         "7": "colorspot-2500e-at"
       }
+    },
+    "26476": {
+      "key": "glp",
+      "models": {
+        "0": "impression-spot-one"
+      }
     }
   },
   "lastUpdated": [
+    "glp/impression-spot-one",
     "eliminator/stealth-beam",
     "jb-systems/twin-effect-laser",
     "qtx/lux-ld30w",
