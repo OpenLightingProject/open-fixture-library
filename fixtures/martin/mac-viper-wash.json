@@ -9,6 +9,10 @@
   },
   "comment": "This fixture definition covers both the MAC Viper Wash and the MAC Viper Wash DX. The Color Wheel, Iris and all Internal Barndoor channels are only available in the DX variant.\n\nNote: Focus and Zoom are 8-bit channels, the manual is wrong there.",
   "manualURL": "http://www.martin.com/files/files/productdocuments/11_MANUALS/999/UM_MACViperWash_EN_B.pdf",
+  "rdm": {
+    "modelId": 43,
+    "softwareVersion": "1.3.0"
+  },
   "physical": {
     "dimensions": [473, 749, 566],
     "weight": 33,
@@ -26,10 +30,6 @@
       "panMax": 540,
       "tiltMax": 268
     }
-  },
-  "rdm": {
-    "modelId": 43,
-    "softwareVersion": "1.3.0"
   },
   "availableChannels": {
     "Strobe / Shutter": {

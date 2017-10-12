@@ -12,7 +12,7 @@ const schema = require('js-schema');
  * 
  * @type {string}
  */
-module.exports.VERSION = '2.0.0';
+module.exports.VERSION = '2.1.0';
 
 /**
  * see https://github.com/molnarg/js-schema
@@ -124,8 +124,8 @@ const Channel = schema({
 const Mode = schema({
   'name': NonEmptyString,
   '?shortName': NonEmptyString, // if not set: use name
-  '?physical': Physical, // overrides fixture's Physical
   '?rdmPersonalityIndex': Number.min(1).step(1),
+  '?physical': Physical, // overrides fixture's Physical
   'channels': Array.of([null, ChannelKey, ChannelAliasKey]), // null for unused channels
   '*': Function
 });
@@ -148,12 +148,12 @@ const Fixture = schema({
   }),
   '?comment': NonEmptyMultiLineString,
   '?manualURL': URL,
-  '?physical': Physical,
   '?rdm': schema({
     'modelId': Number.min(0).step(1),
     '?softwareVersion': String,
     '*': Function
   }),
+  '?physical': Physical,
   'availableChannels': schema({
     '*': Channel // '*' is the channel key
   }),
