@@ -5,6 +5,16 @@ module.exports = function(options) {
 
   let str = require('../includes/header.js')(options);
 
+  if (options.query.prefill) {
+    try {
+      const prefillObjectStr = JSON.stringify(JSON.parse(options.query.prefill));
+      str += `<script type="text/javascript">window.oflPrefill = ${prefillObjectStr};</script>`;
+    }
+    catch (error) {
+      console.log('prefill query could not be parsed: ', options.query.prefill);
+    }
+  }
+
   str += '<div id="fixture-editor">';
   str += '<h1>Fixture Editor</h1>';
 

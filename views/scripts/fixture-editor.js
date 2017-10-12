@@ -413,10 +413,19 @@ function getEmptyCapability() {
   };
 }
 
+var initFixture = getEmptyFixture();
+if ('oflPrefill' in window) {
+  Object.keys(window.oflPrefill).forEach(function(key) {
+    if (typeof initFixture[key] !== 'object') {
+      initFixture[key] = window.oflPrefill[key];
+    }
+  });
+}
+
 var app = window.app = new Vue({
   el: '#fixture-editor',
   data: {
-    fixture: getEmptyFixture(),
+    fixture: initFixture,
     channel: getEmptyChannel(),
     channelChanged: false,
     readyToAutoSave: false,
