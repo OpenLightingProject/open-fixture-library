@@ -26,6 +26,10 @@
       "tiltMax": 268
     }
   },
+  "rdm": {
+    "modelId": 65,
+    "softwareVersion": "1.0.0"
+  },
   "availableChannels": {
     "Strobe / Shutter": {
       "type": "Shutter",
@@ -1035,6 +1039,7 @@
     {
       "name": "Basic 16-bit",
       "shortName": "bas",
+      "rdmPersonalityIndex": 1,
       "channels": [
         "Strobe / Shutter",
         "Dimmer fade",
@@ -1073,6 +1078,7 @@
     {
       "name": "Extended 16-bit",
       "shortName": "ext",
+      "rdmPersonalityIndex": 2,
       "channels": [
         "Strobe / Shutter",
         "Dimmer fade",

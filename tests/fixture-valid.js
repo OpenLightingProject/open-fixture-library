@@ -616,12 +616,14 @@ function checkRdm(manKey, uniqueValues) {
 
   let rdmPersonalityIndices = new Set();
   for (const mode of fixture.modes) {
-    module.exports.checkUniqueness(
-      rdmPersonalityIndices,
-      '' + mode.rdmPersonalityIndex,
-      result,
-      `RDM personality index '${mode.rdmPersonalityIndex}' in mode '${mode.shortName}' is not unique in the fixture.`
-    );
+    if (mode.rdmPersonalityIndex !== null) {
+      module.exports.checkUniqueness(
+        rdmPersonalityIndices,
+        '' + mode.rdmPersonalityIndex,
+        result,
+        `RDM personality index '${mode.rdmPersonalityIndex}' in mode '${mode.shortName}' is not unique in the fixture.`
+      );
+    }
   }
 }
 

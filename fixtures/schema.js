@@ -125,7 +125,7 @@ const Mode = schema({
   'name': NonEmptyString,
   '?shortName': NonEmptyString, // if not set: use name
   '?physical': Physical, // overrides fixture's Physical
-  '?rdmPersonalityIndex': Number.min(0),
+  '?rdmPersonalityIndex': Number.min(1).step(1),
   'channels': Array.of([null, ChannelKey, ChannelAliasKey]), // null for unused channels
   '*': Function
 });
@@ -150,7 +150,7 @@ const Fixture = schema({
   '?manualURL': URL,
   '?physical': Physical,
   '?rdm': schema({
-    'modelId': Number.min(0),
+    'modelId': Number.min(0).step(1),
     '?softwareVersion': String,
     '*': Function
   }),
@@ -169,7 +169,7 @@ const Manufacturers = schema({
     'name': NonEmptyString,
     '?comment': NonEmptyMultiLineString,
     '?website': URL,
-    '?rdmId': Number.min(0),
+    '?rdmId': Number.min(0).step(1),
     '*': Function
   })
 });

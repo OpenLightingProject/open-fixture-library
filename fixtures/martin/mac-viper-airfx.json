@@ -27,6 +27,10 @@
       "tiltMax": 268
     }
   },
+  "rdm": {
+    "modelId": 44,
+    "softwareVersion": "1.2.0"
+  },
   "availableChannels": {
     "Strobe / Shutter": {
       "type": "Strobe",
@@ -1179,6 +1183,7 @@
     {
       "name": "Extended",
       "shortName": "ext",
+      "rdmPersonalityIndex": 1,
       "channels": [
         "Strobe / Shutter",
         "Dimmer fade",
