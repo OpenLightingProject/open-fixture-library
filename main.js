@@ -29,7 +29,7 @@ app.use(compression({
 app.use(sassMiddleware({
   src: path.join(__dirname, 'views', 'stylesheets'),
   dest: path.join(__dirname, 'static'),
-  outputStyle: 'compressed',
+  outputStyle: process.env.NODE_ENV === 'production' ? 'compressed' : 'extended',
   response: false // let express.static below handle Cache-Control before sending
 }));
 
@@ -153,7 +153,8 @@ app.get('/rdm', (request, response) => {
       response.redirect(301, `/${manufacturer.key}`);
       return;
     }
-    else if (modelId in register.rdm[manufacturerId].models) {
+
+    if (modelId in register.rdm[manufacturerId].models) {
       response.redirect(301, `/${manufacturer.key}/${manufacturer.models[modelId]}`);
       return;
     }

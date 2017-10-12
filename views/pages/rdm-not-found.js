@@ -32,4 +32,4 @@ module.exports = function(options) {
   str += require('../includes/footer.js')(options);
 
   return str;
-}
+};

@@ -22,9 +22,9 @@ module.exports = (function() {
     messageTooLong: 'Please shorten this text to no more than {maxLength} characters. You are currently using {length} characters.',
     messagePatternMismatch: 'Please match the requested format.',
     messageBadInput: 'Please enter a number.',
-    messageStepMismatch: 'Please select a valid value.',
-    messageRangeOverflow: 'Please select a value that is no more than {max}.',
-    messageRangeUnderflow: 'Please select a value that is no less than {min}.',
+    messageStepMismatch: 'Please enter a valid value.',
+    messageRangeOverflow: 'Please enter a value that is no more than {max}.',
+    messageRangeUnderflow: 'Please enter a value that is no less than {min}.',
     messageGeneric: 'The value you entered for this field is invalid.',
 
     onSubmit: function(form) {}

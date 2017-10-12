@@ -75,6 +75,17 @@ module.exports = function(options) {
   str += '</span>';
   str += '</label>';
   str += '</section>';
+
+  str += '<section class="new-manufacturer-rdmId">';
+  str += '<label class="validate-group">';
+  str += '<span class="label"><abbr title="Remote Device Management">RDM</abbr> ID</span>';
+  str += '<span class="value">';
+  str += numberInput('fixture.newManufacturerRdmId', properties.manufacturer.rdmId);
+  str += '<span class="error-message" hidden></span>';
+  str += '</span>';
+  str += '</label>';
+  str += '</section>';
+
   str += '<div class="button-bar">or <a href="#use-existing-manufacturer" @click.prevent="switchManufacturer(true)">choose an existing manufacturer</a></div>';
   str += '</div>'; // [v-else]
 
@@ -134,6 +145,27 @@ module.exports = function(options) {
   str += '<span class="label">Manual URL</span>';
   str += '<span class="value">';
   str += urlInput('fixture.manualURL', properties.fixture.manualURL);
+  str += '<span class="error-message" hidden></span>';
+  str += '</span>';
+  str += '</label>';
+  str += '</section>';
+
+  str += '<section class="rdmModelId">';
+  str += '<label class="validate-group">';
+  str += '<span class="label"><abbr title="Remote Device Management">RDM</abbr> model ID</span>';
+  str += '<span class="value">';
+  str += numberInput('fixture.rdmModelId', properties.manufacturer.rdmId); // use manufacturer.rdmId's properties to prevent required attribute
+  str += '<span class="error-message" hidden></span>';
+  str += '<span class="hint">The RDM manufacturer ID is saved per manufacturer.</span>';
+  str += '</span>';
+  str += '</label>';
+  str += '</section>';
+
+  str += '<section class="rdmSoftwareVersion" v-if="fixture.rdmModelId !== \'\'">';
+  str += '<label class="validate-group">';
+  str += '<span class="label">RDM software version</span>';
+  str += '<span class="value">';
+  str += textInput('fixture.rdmSoftwareVersion', properties.fixture.rdm.properties.softwareVersion);
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
   str += '</label>';
@@ -383,6 +415,16 @@ function getModeTemplate() {
   str += '<span class="label">Unique short name</span>';
   str += '<span class="value">';
   str += '<input type="text"' + getRequiredAttr(properties.mode.shortName) + ' pattern="^((?!mode)(?!Mode).)*$" title="The name must not contain the word \'mode\'." placeholder="e.g. ext; defaults to name" v-model="mode.shortName" />';
+  str += '<span class="error-message" hidden></span>';
+  str += '</span>';
+  str += '</label>';
+  str += '</section>';
+
+  str += '<section class="mode-rdmPersonalityIndex" v-if="fixture.rdmModelId !== \'\'">';
+  str += '<label class="validate-group">';
+  str += '<span class="label">RDM personality index</span>';
+  str += '<span class="value">';
+  str += numberInput('mode.rdmPersonalityIndex', properties.mode.rdmPersonalityIndex);
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
   str += '</label>';
