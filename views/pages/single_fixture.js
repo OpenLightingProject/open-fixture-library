@@ -101,7 +101,18 @@ function handleFixtureInfo() {
   if (fixture.manualURL !== null) {
     str += '<section class="manualURL">';
     str += '  <span class="label">Manual</span>';
-    str += `  <span class="value"><a href="${fixture.manualURL}">${fixture.manualURL}</a></span>`;
+    str += `  <span class="value"><a href="${fixture.manualURL}" rel="nofollow">${fixture.manualURL}</a></span>`;
+    str += '</section>';
+  }
+  
+  if (fixture.rdm !== null) {
+    const rdmLink = `http://rdm.openlighting.org/model/display?manufacturer=${fixture.manufacturer.rdmId}&model=${fixture.rdm.modelId}`;
+    const olaIcon = require('../includes/svg.js')({svgBasename: 'ola'});
+    const softwareVersion = 'softwareVersion' in fixture.rdm ? fixture.rdm.softwareVersion : '?';
+
+    str += '<section class="rdm">';
+    str += '  <span class="label"><abbr title="Remote Device Management">RDM</abbr> data</span>';
+    str += `  <span class="value">${fixture.manufacturer.rdmId} / ${fixture.rdm.modelId} / ${softwareVersion} – <a href="${rdmLink}" rel="nofollow">${olaIcon}View in Open Lighting RDM database</a><span class="hint">manufacturer ID / model ID / software version</span></span>`;
     str += '</section>';
   }
 
