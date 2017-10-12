@@ -8,7 +8,8 @@ let register = {
   filesystem: {},
   manufacturers: {},
   categories: {},
-  contributors: {}
+  contributors: {},
+  rdm: {}
 };
 let categories = {};
 let contributors = {};
@@ -16,6 +17,8 @@ let contributors = {};
 const fixturePath = path.join(__dirname, '..', 'fixtures');
 
 try {
+  const manufacturers = JSON.parse(fs.readFileSync(path.join(fixturePath, 'manufacturers.json'), 'utf8'));
+
   // add all fixture.json files to the register
   for (const manKey of fs.readdirSync(fixturePath).sort()) {
     const manDir = path.join(fixturePath, manKey);
@@ -23,6 +26,13 @@ try {
     // only directories
     if (fs.statSync(manDir).isDirectory()) {
       register.manufacturers[manKey] = [];
+
+      if ('rdmId' in manufacturers[manKey]) {
+        register.rdm[manufacturers[manKey].rdmId] = {
+          key: manKey,
+          models: {}
+        };
+      }
 
       for (const filename of fs.readdirSync(manDir).sort()) {
         const ext = path.extname(filename);
@@ -62,6 +72,11 @@ try {
               contributors[contributor] = [];
             }
             contributors[contributor].push(manKey + '/' + fixKey);
+          }
+
+          // add to rdm register
+          if ('rdm' in fixData) {
+            register.rdm[manufacturers[manKey].rdmId].models[fixData.rdm.modelId] = fixKey;
           }
         }
       }
