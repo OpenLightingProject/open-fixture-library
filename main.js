@@ -137,6 +137,34 @@ app.get('/search', (request, response) => {
   });
 });
 
+app.get('/rdm', (request, response) => {
+  const manufacturerId = request.query.manufacturerId;
+  const modelId = request.query.modelId;
+
+  if (manufacturerId === undefined || manufacturerId === '') {
+    response.render('pages/rdm-lookup');
+    return;
+  }
+
+  if (manufacturerId in register.rdm) {
+    const manufacturer = register.rdm[manufacturerId];
+
+    if (modelId === undefined || modelId === '') {
+      response.redirect(301, `/${manufacturer.key}`);
+      return;
+    }
+    else if (modelId in register.rdm[manufacturerId].models) {
+      response.redirect(301, `/${manufacturer.key}/${manufacturer.models[modelId]}`);
+      return;
+    }
+  }
+
+  response.status(404).render('pages/rdm-not-found', {
+    manufacturerId: manufacturerId,
+    modelId: modelId
+  });
+});
+
 // support json encoded bodies
 app.use(bodyParser.json());
 
