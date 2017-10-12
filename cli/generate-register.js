@@ -13,6 +13,7 @@ let register = {
 };
 let categories = {};
 let contributors = {};
+let rdm = {};
 
 const fixturePath = path.join(__dirname, '..', 'fixtures');
 
@@ -28,7 +29,7 @@ try {
       register.manufacturers[manKey] = [];
 
       if ('rdmId' in manufacturers[manKey]) {
-        register.rdm[manufacturers[manKey].rdmId] = {
+        rdm[manufacturers[manKey].rdmId] = {
           key: manKey,
           models: {}
         };
@@ -76,7 +77,7 @@ try {
 
           // add to rdm register
           if ('rdm' in fixData) {
-            register.rdm[manufacturers[manKey].rdmId].models[fixData.rdm.modelId] = fixKey;
+            rdm[manufacturers[manKey].rdmId].models[fixData.rdm.modelId] = fixKey;
           }
         }
       }
@@ -111,6 +112,18 @@ register.lastUpdated = Object.keys(register.filesystem).sort((a, b) => {
   const keyDelta = a > b ? 1 : a < b ? -1 : 0;
   return dateDelta !== 0 ? dateDelta : keyDelta;
 });
+
+// copy sorted RDM data into register
+for (const manId of Object.keys(rdm).sort()) {
+  register.rdm[manId] = {
+    key: rdm[manId].key,
+    models: {}
+  };
+
+  for (const fixId of Object.keys(rdm[manId].models).sort()) {
+    register.rdm[manId].models[fixId] = rdm[manId].models[fixId];
+  }
+}
 
 const filename = path.join(fixturePath, (process.argv.length === 3 ? process.argv[2] : 'register.json'));
 
