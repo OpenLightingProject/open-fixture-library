@@ -29,7 +29,7 @@ app.use(compression({
 app.use(sassMiddleware({
   src: path.join(__dirname, 'views', 'stylesheets'),
   dest: path.join(__dirname, 'static'),
-  outputStyle: 'compressed',
+  outputStyle: process.env.NODE_ENV === 'production' ? 'compressed' : 'extended',
   response: false // let express.static below handle Cache-Control before sending
 }));
 
@@ -128,12 +128,43 @@ app.get('/manufacturers', (request, response) => {
 });
 
 app.get('/fixture-editor', (request, response) => {
-  response.render('pages/fixture_editor');
+  response.render('pages/fixture_editor', {
+    query: request.query
+  });
 });
 
 app.get('/search', (request, response) => {
   response.render('pages/search', {
     query: request.query
+  });
+});
+
+app.get('/rdm', (request, response) => {
+  const manufacturerId = request.query.manufacturerId;
+  const modelId = request.query.modelId;
+
+  if (manufacturerId === undefined || manufacturerId === '') {
+    response.render('pages/rdm-lookup');
+    return;
+  }
+
+  if (manufacturerId in register.rdm) {
+    const manufacturer = register.rdm[manufacturerId];
+
+    if (modelId === undefined || modelId === '') {
+      response.redirect(301, `/${manufacturer.key}`);
+      return;
+    }
+
+    if (modelId in register.rdm[manufacturerId].models) {
+      response.redirect(301, `/${manufacturer.key}/${manufacturer.models[modelId]}`);
+      return;
+    }
+  }
+
+  response.status(404).render('pages/rdm-not-found', {
+    manufacturerId: manufacturerId,
+    modelId: modelId
   });
 });
 

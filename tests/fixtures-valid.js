@@ -19,8 +19,10 @@ const checkFixture = require('./fixture-valid.js');
 let uniqueValues = {
   manKeys: new Set(),
   manNames: new Set(),
+  manRdmIds: new Set(),
   fixKeysInMan: {}, // new Set() for each manufacturer
   fixNamesInMan: {}, // new Set() for each manufacturer
+  fixRdmIdsInMan: {}, // new Set() for each manufacturer
   fixShortNames: new Set()
 };
 
@@ -113,13 +115,24 @@ promises.push(new Promise((resolve, reject) => {
       checkFixture.checkUniqueness(
         uniqueValues.manKeys,
         manKey,
+        result,
         `Manufacturer key '${manKey}' is not unique (test is not case-sensitive).`
       );
       checkFixture.checkUniqueness(
         uniqueValues.manNames,
         manufacturers[manKey].name,
+        result,
         `Manufacturer name '${manufacturers[manKey].name}' is not unique (test is not case-sensitive).`
       );
+
+      if ('rdmId' in manufacturers[manKey]) {
+        checkFixture.checkUniqueness(
+          uniqueValues.manRdmIds,
+          '' + manufacturers[manKey].rdmId,
+          result,
+          `Manufacturer RDM ID '${manufacturers[manKey].rdmId}' is not unique.`
+        );
+      }
     }
 
     return resolve(result);

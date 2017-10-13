@@ -62,6 +62,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
   
     checkUnusedChannels();
     checkCategories();
+    checkRdm(manKey, uniqueValues);
   }
   catch (error) {
     result.errors.push(module.exports.getErrorString('File could not be imported into model.', error));
@@ -89,6 +90,7 @@ function checkFixIdentifierUniqueness(uniqueValues) {
   module.exports.checkUniqueness(
     uniqueValues.fixKeysInMan[manKey],
     fixture.key,
+    result,
     `Fixture key '${fixture.key}' is not unique in manufacturer ${manKey} (test is not case-sensitive).`
   );
 
@@ -99,6 +101,7 @@ function checkFixIdentifierUniqueness(uniqueValues) {
   module.exports.checkUniqueness(
     uniqueValues.fixNamesInMan[manKey],
     fixture.name,
+    result,
     `Fixture name '${fixture.name}' is not unique in manufacturer ${manKey} (test is not case-sensitive).`
   );
   
@@ -106,6 +109,7 @@ function checkFixIdentifierUniqueness(uniqueValues) {
   module.exports.checkUniqueness(
     uniqueValues.fixShortNames,
     fixture.shortName,
+    result,
     `Fixture shortName '${fixture.shortName}' is not unique (test is not case-sensitive).`
   );
 }
@@ -166,6 +170,7 @@ function checkChannel(channel) {
   module.exports.checkUniqueness(
     definedChannelKeys,
     channel.key,
+    result,
     `Channel key '${channel.key}' is already defined in another letter case.`
   );
 
@@ -190,6 +195,7 @@ function checkChannel(channel) {
     module.exports.checkUniqueness(
       definedChannelKeys,
       alias,
+      result,
       `Fine channel alias '${alias}' in channel '${channel.key}' is already defined (maybe in another letter case).`
     );
   }
@@ -202,6 +208,7 @@ function checkChannel(channel) {
     module.exports.checkUniqueness(
       definedChannelKeys,
       alias,
+      result,
       `Switching channel alias '${alias}' in channel '${channel.key}' is already defined (maybe in another letter case).`
     );
   }
@@ -341,11 +348,13 @@ function checkMode(mode) {
   module.exports.checkUniqueness(
     modeNames,
     mode.name,
+    result,
     `Mode name '${mode.name}' is not unique (test is not case-sensitive).`
   );
   module.exports.checkUniqueness(
     modeShortNames,
     mode.shortName,
+    result,
     `Mode shortName '${mode.shortName}' is not unique (test is not case-sensitive).`
   );
 
@@ -574,6 +583,50 @@ function checkCategories() {
   }
 }
 
+/**
+ * Checks if everything regarding this fixture's RDM data is correct.
+ * @param {!string} manKey The manufacturer key.
+ * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurences are appended.
+ */
+function checkRdm(manKey, uniqueValues) {
+  if (fixture.rdm === null) {
+    // modes may not have a rdmPersonalityIndex property
+    for (const mode of fixture.modes) {
+      if (mode.rdmPersonalityIndex !== null) {
+        result.errors.push(`Mode '${mode.shortName}' has RDM data, but fixture has not.`);
+      }
+    }
+    return;
+  }
+
+  // fixture.rdm.modelId must be unique per manufacturer
+  if (!(manKey in uniqueValues.fixRdmIdsInMan)) {
+    uniqueValues.fixRdmIdsInMan[manKey] = new Set();
+  }
+  module.exports.checkUniqueness(
+    uniqueValues.fixRdmIdsInMan[manKey],
+    '' + fixture.rdm.modelId,
+    result,
+    `Fixture RDM model ID '${fixture.rdm.modelId}' is not unique in manufacturer ${manKey}.`
+  );
+
+  if (fixture.manufacturer.rdmId === null) {
+    result.errors.push(`Fixture has RDM data, but manufacturer '${fixture.manufacturer.shortName}' has not.`);
+  }
+
+  let rdmPersonalityIndices = new Set();
+  for (const mode of fixture.modes) {
+    if (mode.rdmPersonalityIndex !== null) {
+      module.exports.checkUniqueness(
+        rdmPersonalityIndices,
+        '' + mode.rdmPersonalityIndex,
+        result,
+        `RDM personality index '${mode.rdmPersonalityIndex}' in mode '${mode.shortName}' is not unique in the fixture.`
+      );
+    }
+  }
+}
+
 // returns whether the object contains data
 function isNotEmpty(obj, messageIfEmpty) {
   if (obj !== undefined) {
@@ -591,9 +644,10 @@ function isNotEmpty(obj, messageIfEmpty) {
  * If the Set already contains the given value, add an error. Test is not case-sensitive.
  * @param {!Set<string>} set The Set in which all unique values are stored.
  * @param {!string} value The string value to examine.
+ * @param {!ResultData} result The object to add the error message to (if any).
  * @param {!string} messageIfNotUnique If the value is not unique, add this message to errors.
  */
-module.exports.checkUniqueness = function checkUniqueness(set, value, messageIfNotUnique) {
+module.exports.checkUniqueness = function checkUniqueness(set, value, result, messageIfNotUnique) {
   if (set.has(value.toLowerCase())) {
     result.errors.push(messageIfNotUnique);
   }

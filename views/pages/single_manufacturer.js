@@ -12,8 +12,17 @@ module.exports = function(options) {
 
   str += `<h1>${manufacturer.name} fixtures</h1>`;
 
-  if ('website' in manufacturer) {
-    str += `<div class="website"><a href="${manufacturer.website}">Website</a></div>`;
+  if ('website' in manufacturer || 'rdmId' in manufacturer) {
+    str += '<div class="grid list">';
+
+    if ('website' in manufacturer) {
+      str += `<a href="${manufacturer.website}" rel="nofollow" class="card blue dark">` + require('../includes/svg.js')({svgBasename: 'earth', className: 'left'}) + '<span>Manufacturer website</span></a>';
+    }
+    if ('rdmId' in manufacturer) {
+      str += `<a href="http://rdm.openlighting.org/manufacturer/display?manufacturer=${manufacturer.rdmId}" rel="nofollow" class="card">` + require('../includes/svg.js')({svgBasename: 'ola', className: 'left'}) + '<span>Open Lighting RDM database</span></a>';
+    }
+
+    str += '</div>';
   }
   if ('comment' in manufacturer) {
     str += `<p class="comment">${manufacturer.comment.replace(/\n/g, '<br />')}</p>`;

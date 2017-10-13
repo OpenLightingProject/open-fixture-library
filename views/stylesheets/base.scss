@@ -68,6 +68,11 @@ a {
     color: $blue-300;
     fill: $icon-dark-hover;
   }
+
+  svg {
+    height: 1.4em;
+    vertical-align: middle;
+  }
 }
 
 .accessibility {

@@ -109,7 +109,7 @@ const serverProcess = childProcess.execFile('node', [path.join(__dirname, '..', 
       console.error('Creating / updating the GitHub PR comment failed.', error);
     });
   })
-  .catch() // PR env variables not set, no GitHub comment created/deleted
+  .catch(() => {}) // PR env variables not set, no GitHub comment created/deleted
   .then(() => {
     console.log(statusStr, lines.join('\n'));
     process.exit(exitCode);

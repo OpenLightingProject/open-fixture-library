@@ -175,6 +175,11 @@
       "lastModifyDate": "2017-07-17",
       "lastAction": "created"
     },
+    "glp/impression-spot-one": {
+      "name": "impression Spot One",
+      "lastModifyDate": "2017-10-12",
+      "lastAction": "created"
+    },
     "gruft/ventilator": {
       "name": "Ventilator",
       "lastModifyDate": "2017-03-09",
@@ -366,6 +371,9 @@
       "pan-tilt",
       "rgb-fader"
     ],
+    "glp": [
+      "impression-spot-one"
+    ],
     "gruft": [
       "ventilator"
     ],
@@ -433,6 +441,7 @@
       "eurolite/led-sls-6-uv-floor",
       "futurelight/pro-slim-par-7-hcl",
       "generic/rgb-fader",
+      "glp/impression-spot-one",
       "lightmaxx/platinum-mini-tri-par",
       "lightmaxx/vega-zoom-wash",
       "showtec/horizon-8",
@@ -474,6 +483,7 @@
       "eurolite/led-tmh-9",
       "eurolite/led-tmh-x25",
       "generic/pan-tilt",
+      "glp/impression-spot-one",
       "lightmaxx/vega-zoom-wash",
       "martin/mac-aura",
       "martin/mac-axiom-hybrid",
@@ -563,6 +573,7 @@
       "eurolite/led-tmh-18",
       "eurolite/led-tmh-x25",
       "futurelight/pro-slim-par-7-hcl",
+      "glp/impression-spot-one",
       "lightmaxx/platinum-mini-tri-par",
       "martin/atomic-3000",
       "robe/dj-scan-250-xt",
@@ -599,7 +610,51 @@
       "prolights/diamond-19"
     ]
   },
+  "rdm": {
+    "8612": {
+      "key": "chauvet-dj",
+      "models": {}
+    },
+    "8870": {
+      "key": "elation",
+      "models": {}
+    },
+    "10676": {
+      "key": "showtec",
+      "models": {}
+    },
+    "17229": {
+      "key": "coemar",
+      "models": {}
+    },
+    "19780": {
+      "key": "mdg",
+      "models": {}
+    },
+    "19792": {
+      "key": "martin",
+      "models": {
+        "4": "mac-aura",
+        "43": "mac-viper-wash",
+        "44": "mac-viper-airfx",
+        "65": "mac-viper-performance"
+      }
+    },
+    "21075": {
+      "key": "robe",
+      "models": {
+        "7": "colorspot-2500e-at"
+      }
+    },
+    "26476": {
+      "key": "glp",
+      "models": {
+        "0": "impression-spot-one"
+      }
+    }
+  },
   "lastUpdated": [
+    "glp/impression-spot-one",
     "eliminator/stealth-beam",
     "jb-systems/twin-effect-laser",
     "qtx/lux-ld30w",

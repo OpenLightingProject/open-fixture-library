@@ -318,11 +318,14 @@ function getEmptyFixture() {
     newManufacturerShortName: '',
     newManufacturerWebsite: '',
     newManufacturerComment: '',
+    newManufacturerRdmId: '',
     name: '',
     shortName: '',
     categories: [],
     comment: '',
     manualURL: '',
+    rdmModelId: '',
+    rdmSoftwareVersion: '',
     physical: getEmptyPhysical(),
     modes: [getEmptyMode()],
     metaAuthor: '',
@@ -364,6 +367,7 @@ function getEmptyMode() {
     uuid: uuidV4(),
     name: '',
     shortName: '',
+    rdmPersonalityIndex: '',
     enablePhysicalOverride: false,
     physical: getEmptyPhysical(),
     channels: []
@@ -409,10 +413,19 @@ function getEmptyCapability() {
   };
 }
 
+var initFixture = getEmptyFixture();
+if ('oflPrefill' in window) {
+  Object.keys(window.oflPrefill).forEach(function(key) {
+    if (typeof initFixture[key] !== 'object') {
+      initFixture[key] = window.oflPrefill[key];
+    }
+  });
+}
+
 var app = window.app = new Vue({
   el: '#fixture-editor',
   data: {
-    fixture: getEmptyFixture(),
+    fixture: initFixture,
     channel: getEmptyChannel(),
     channelChanged: false,
     readyToAutoSave: false,
