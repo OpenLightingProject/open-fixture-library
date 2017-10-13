@@ -259,7 +259,10 @@ function handleMode(mode) {
 
   const heading = mode.name + ' mode' + (mode.hasShortName ? ` <code>${mode.shortName}</code>` : '');
   str += `<h2>${heading}</h2>`;
-  str += `<span class="hint">RDM personality index: ${mode.rdmPersonalityIndex}</span>`;
+
+  if (mode.rdmPersonalityIndex !== null) {
+    str += `<span class="hint">RDM personality index: ${mode.rdmPersonalityIndex}</span>`;
+  }
 
   if (mode.physicalOverride !== null) {
     str += '<h3>Physical overrides</h3>';
