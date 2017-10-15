@@ -10,11 +10,15 @@ module.exports = function(options) {
   str += '<form action="/rdm" method="get">';
   str += '<section><label>';
   str += '  <span class="label">Manufacturer ID</span>';
-  str += '  <span class="value"><input type="number" name="manufacturerId" min="0" step="1" required /></span>';
+  str += '  <span class="value"><input type="number" name="manufacturerId" min="0" max="65535" step="1" required /></span>';
   str += '</label></section>';
   str += '<section><label>';
   str += '  <span class="label">Model ID</span>';
-  str += '  <span class="value"><input type="number" name="modelId" min="0" step="1" /><span class="hint">Leave this field empty to find the manufacturer.</span></span>';
+  str += '  <span class="value"><input type="number" name="modelId" min="0" max="65535" step="1" /><span class="hint">Leave this field empty to find the manufacturer.</span></span>';
+  str += '</label></section>';
+  str += '<section><label>';
+  str += '  <span class="label">Personality index</span>';
+  str += '  <span class="value"><input type="number" name="personalityIndex" min="1" step="1" /><span class="hint">Optional</span></span>';
   str += '</label></section>';
   str += '<div class="button-bar">';
   str += '  <button type="submit" class="primary">Lookup fixture / manufacturer</button>';

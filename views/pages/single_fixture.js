@@ -11,7 +11,7 @@ module.exports = function(options) {
   const {man, fix} = options;
 
   fixture = Fixture.fromRepository(man, fix);
-  
+
   options.title = `${fixture.manufacturer.name} ${fixture.name} - Open Fixture Library`;
 
   const githubRepoPath = 'https://github.com/' + (process.env.TRAVIS_REPO_SLUG || 'FloEdelmann/open-fixture-library');
@@ -104,7 +104,7 @@ function handleFixtureInfo() {
     str += `  <span class="value"><a href="${fixture.manualURL}" rel="nofollow">${fixture.manualURL}</a></span>`;
     str += '</section>';
   }
-  
+
   if (fixture.rdm !== null) {
     const rdmLink = `http://rdm.openlighting.org/model/display?manufacturer=${fixture.manufacturer.rdmId}&model=${fixture.rdm.modelId}`;
     const olaIcon = require('../includes/svg.js')({svgBasename: 'ola'});
@@ -255,11 +255,18 @@ function handlePhysicalData(physical) {
 }
 
 function handleMode(mode) {
-  let str = '<section class="fixture-mode card">';
+  let sectionId = '';
+  let rdmPersonalityIndexHint = '';
+  if (mode.rdmPersonalityIndex !== null) {
+    sectionId = ` id="rdm-personality-${mode.rdmPersonalityIndex}"`;
+    rdmPersonalityIndexHint = `<span class="hint">RDM personality index: ${mode.rdmPersonalityIndex}</span>`;
+  }
+
+  let str = `<section class="fixture-mode card"${sectionId}>`;
 
   const heading = mode.name + ' mode' + (mode.hasShortName ? ` <code>${mode.shortName}</code>` : '');
   str += `<h2>${heading}</h2>`;
-  str += `<span class="hint">RDM personality index: ${mode.rdmPersonalityIndex}</span>`;
+  str += rdmPersonalityIndexHint;
 
   if (mode.physicalOverride !== null) {
     str += '<h3>Physical overrides</h3>';
@@ -448,7 +455,7 @@ function handleSwitchingChannel(channel, mode) {
 
   let str = `<div>Switch depending on ${channel.triggerChannel.name}'s value (channel ${triggerChannelIndex}):</div>`;
   str += '<ol>';
-  
+
   for (const switchToChannelKey of Object.keys(channel.triggerRanges)) {
     const switchToChannel = fixture.getChannelByKey(switchToChannelKey);
 
