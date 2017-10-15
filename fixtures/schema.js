@@ -12,7 +12,7 @@ const schema = require('js-schema');
  * 
  * @type {string}
  */
-module.exports.VERSION = '2.1.0';
+module.exports.VERSION = '2.1.1';
 
 /**
  * see https://github.com/molnarg/js-schema
@@ -149,7 +149,7 @@ const Fixture = schema({
   '?comment': NonEmptyMultiLineString,
   '?manualURL': URL,
   '?rdm': schema({
-    'modelId': Number.min(0).step(1),
+    'modelId': Number.min(0).max(65535).step(1),
     '?softwareVersion': String,
     '*': Function
   }),
@@ -169,7 +169,7 @@ const Manufacturers = schema({
     'name': NonEmptyString,
     '?comment': NonEmptyMultiLineString,
     '?website': URL,
-    '?rdmId': Number.min(0).step(1),
+    '?rdmId': Number.min(0).max(65536).step(1),
     '*': Function
   })
 });

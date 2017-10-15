@@ -260,6 +260,11 @@
       "lastModifyDate": "2017-08-08",
       "lastAction": "created"
     },
+    "mdg/theone-atmospheric-generator": {
+      "name": "theONE Atmospheric Generator",
+      "lastModifyDate": "2017-10-13",
+      "lastAction": "created"
+    },
     "prolights/diamond-19": {
       "name": "Diamond 19",
       "lastModifyDate": "2017-08-21",
@@ -398,7 +403,8 @@
       "rush-mh-7-hybrid"
     ],
     "mdg": [
-      "hazer-atmosphere-aps"
+      "hazer-atmosphere-aps",
+      "theone-atmospheric-generator"
     ],
     "prolights": [
       "diamond-19"
@@ -461,7 +467,8 @@
     ],
     "Hazer": [
       "martin/magnum-2500-hz",
-      "mdg/hazer-atmosphere-aps"
+      "mdg/hazer-atmosphere-aps",
+      "mdg/theone-atmospheric-generator"
     ],
     "Laser": [
       "american-dj/galaxian-3d",
@@ -506,7 +513,8 @@
       "robe/dj-scan-250-xt"
     ],
     "Smoke": [
-      "american-dj/fog-fury-jett-pro"
+      "american-dj/fog-fury-jett-pro",
+      "mdg/theone-atmospheric-generator"
     ],
     "Strobe": [
       "cameo/thunder-wash-100-rgb",
@@ -547,6 +555,7 @@
       "lightmaxx/vega-zoom-wash",
       "martin/atomic-3000",
       "martin/roboscan-812",
+      "mdg/theone-atmospheric-generator",
       "qtx/lux-ld30w",
       "robe/dj-scan-250-xt",
       "showtec/horizon-8",
@@ -629,7 +638,9 @@
     },
     "19780": {
       "key": "mdg",
-      "models": {}
+      "models": {
+        "1": "theone-atmospheric-generator"
+      }
     },
     "19792": {
       "key": "martin",
@@ -654,6 +665,7 @@
     }
   },
   "lastUpdated": [
+    "mdg/theone-atmospheric-generator",
     "glp/impression-spot-one",
     "eliminator/stealth-beam",
     "jb-systems/twin-effect-laser",
