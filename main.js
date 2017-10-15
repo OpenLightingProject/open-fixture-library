@@ -142,6 +142,7 @@ app.get('/search', (request, response) => {
 app.get('/rdm', (request, response) => {
   const manufacturerId = request.query.manufacturerId;
   const modelId = request.query.modelId;
+  const personalityIndex = request.query.personalityIndex;
 
   if (manufacturerId === undefined || manufacturerId === '') {
     response.render('pages/rdm-lookup');
@@ -157,7 +158,8 @@ app.get('/rdm', (request, response) => {
     }
 
     if (modelId in register.rdm[manufacturerId].models) {
-      response.redirect(301, `/${manufacturer.key}/${manufacturer.models[modelId]}`);
+      const hash = (personalityIndex === undefined || personalityIndex === '') ? '' : `#rdm-personality-${personalityIndex}`;
+      response.redirect(301, `/${manufacturer.key}/${manufacturer.models[modelId]}${hash}`);
       return;
     }
   }

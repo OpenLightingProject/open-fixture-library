@@ -874,7 +874,7 @@ function submitFixture() {
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify(sendObject));
 
-  this.submit.rawData = '```\n' + JSON.stringify(sendObject, null, 2) + '\n```';
+  this.submit.rawData = '```json\n' + JSON.stringify(sendObject, null, 2) + '\n```';
   console.log(this.submit.rawData);
 }
 
