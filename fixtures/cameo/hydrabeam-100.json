@@ -1,11 +1,11 @@
 {
   "name": "Hydrabeam 100",
   "shortName": "CLHB100RGBW",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Felix Edelmann"],
+    "authors": ["Felix Edelmann", "Flo Edelmann"],
     "createDate": "2017-08-24",
-    "lastModifyDate": "2017-08-24"
+    "lastModifyDate": "2017-10-17"
   },
   "manualURL": "http://adamhall.invaliddomain.de/out/media/downloads/MARKEN/CAMEO/CLHB100RGBW/CLHB100RGBW_CAMEO_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf",
   "physical": {
@@ -17,6 +17,7 @@
       "degreesMinMax": [4.5, 4.5]
     },
     "focus": {
+      "type": "Head",
       "panMax": 540,
       "tiltMax": 270
     }
@@ -28,39 +29,66 @@
       "capabilities": [
         {
           "range": [0, 7],
-          "name": "No function"
+          "name": "No function",
+          "switchChannels": {
+            "Sound Sensitivity / Auto Mode Speed": "Auto Mode Speed"
+          }
         },
         {
           "range": [8, 30],
-          "name": "Show mode 1"
+          "name": "Show mode 1",
+          "switchChannels": {
+            "Sound Sensitivity / Auto Mode Speed": "Auto Mode Speed"
+          }
         },
         {
           "range": [31, 53],
-          "name": "Show mode 2"
+          "name": "Show mode 2",
+          "switchChannels": {
+            "Sound Sensitivity / Auto Mode Speed": "Auto Mode Speed"
+          }
         },
         {
           "range": [54, 76],
-          "name": "Show mode 3"
+          "name": "Show mode 3",
+          "switchChannels": {
+            "Sound Sensitivity / Auto Mode Speed": "Auto Mode Speed"
+          }
         },
         {
           "range": [77, 99],
-          "name": "Show mode 4"
+          "name": "Show mode 4",
+          "switchChannels": {
+            "Sound Sensitivity / Auto Mode Speed": "Auto Mode Speed"
+          }
         },
         {
           "range": [100, 122],
-          "name": "Sound control"
+          "name": "Sound control",
+          "switchChannels": {
+            "Sound Sensitivity / Auto Mode Speed": "Sound Sensitivity"
+          }
         },
         {
           "range": [123, 199],
-          "name": "No function"
+          "name": "No function",
+          "switchChannels": {
+            "Sound Sensitivity / Auto Mode Speed": "Auto Mode Speed"
+          }
         },
         {
           "range": [200, 224],
-          "name": "Reset"
+          "name": "Reset",
+          "switchChannels": {
+            "Sound Sensitivity / Auto Mode Speed": "Auto Mode Speed"
+          }
         },
         {
           "range": [225, 255],
-          "name": "No function"
+          "name": "No function",
+          "switchChannels": {
+            "Sound Sensitivity / Auto Mode Speed": "Auto Mode Speed"
+          }
         }
       ]
     },
@@ -224,8 +252,7 @@
       "shortName": "3ch",
       "channels": [
         "Auto Modes",
-        "Sound Sensitivity",
-        "Auto Mode Speed",
+        "Sound Sensitivity / Auto Mode Speed",
         "Dimmer"
       ]
     },
@@ -287,8 +314,7 @@
         "Strobe",
         "Color Macros",
         "Auto Modes",
-        "Sound Sensitivity",
-        "Auto Mode Speed",
+        "Sound Sensitivity / Auto Mode Speed",
         "Red",
         "Green",
         "Blue",
