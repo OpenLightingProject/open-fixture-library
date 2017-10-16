@@ -1,0 +1,755 @@
+{
+  "name": "GigBAR 2",
+  "categories": ["Color Changer", "Laser"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2017-10-16",
+    "lastModifyDate": "2017-10-16"
+  },
+  "comment": "Par 1 and 2 can only mix 3 colors together at the same time.",
+  "manualURL": "https://www.chauvetdj.com/wp-content/uploads/2016/09/GigBAR_2_UM_Rev6_ML5_WO.pdf",
+  "physical": {
+    "dimensions": [1185, 387, 110],
+    "weight": 6.6,
+    "power": 64,
+    "DMXconnector": "3-pin",
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Par 1 Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Par 1 Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Par 1 Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Par 1 UV": {
+      "type": "Single Color",
+      "color": "UV"
+    },
+    "Par 1 Shutter": {
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Dimmer 0-100%"
+        },
+        {
+          "range": [128, 239],
+          "name": "Strobe slow-fast"
+        },
+        {
+          "range": [240, 249],
+          "name": "Strobe to sound"
+        },
+        {
+          "range": [250, 255],
+          "name": "RGB 100%"
+        }
+      ]
+    },
+    "Par 2 Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Par 2 Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Par 2 Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Par 2 UV": {
+      "type": "Single Color",
+      "color": "UV"
+    },
+    "Par 2 Shutter": {
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Dimmer 0-100%"
+        },
+        {
+          "range": [128, 239],
+          "name": "Strobe slow-fast"
+        },
+        {
+          "range": [240, 249],
+          "name": "Strobe to sound"
+        },
+        {
+          "range": [250, 255],
+          "name": "RGB 100%"
+        }
+      ]
+    },
+    "Derby 1 Color": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 24],
+          "name": "Blackout",
+          "color": "#000000"
+        },
+        {
+          "range": [25, 49],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [50, 74],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [75, 99],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [100, 124],
+          "name": "Red + Green",
+          "color": "#ffff00"
+        },
+        {
+          "range": [125, 149],
+          "name": "Red + Blue",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [150, 174],
+          "name": "Green + Blue",
+          "color": "#00ffff"
+        },
+        {
+          "range": [175, 199],
+          "name": "Red + Green + Blue",
+          "color": "#ffffff"
+        },
+        {
+          "range": [200, 224],
+          "name": "Automatic (single colors only)"
+        },
+        {
+          "range": [225, 255],
+          "name": "Automatic (two colors at a time)"
+        }
+      ]
+    },
+    "Derby 1 Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "No strobe"
+        },
+        {
+          "range": [10, 239],
+          "name": "Strobe 0-30Hz"
+        },
+        {
+          "range": [240, 255],
+          "name": "Strobe to sound"
+        }
+      ]
+    },
+    "Derby 1 Rotation": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "Stop"
+        },
+        {
+          "range": [5, 127],
+          "name": "Rotate CW slow-fast"
+        },
+        {
+          "range": [128, 133],
+          "name": "Stop"
+        },
+        {
+          "range": [134, 255],
+          "name": "Rotate CCW slow-fast"
+        }
+      ]
+    },
+    "Derby 2 Color": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 24],
+          "name": "Blackout",
+          "color": "#000000"
+        },
+        {
+          "range": [25, 49],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [50, 74],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [75, 99],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [100, 124],
+          "name": "Red + Green",
+          "color": "#ffff00"
+        },
+        {
+          "range": [125, 149],
+          "name": "Red + Blue",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [150, 174],
+          "name": "Green + Blue",
+          "color": "#00ffff"
+        },
+        {
+          "range": [175, 199],
+          "name": "Red + Green + Blue",
+          "color": "#ffffff"
+        },
+        {
+          "range": [200, 224],
+          "name": "Automatic (single colors only)"
+        },
+        {
+          "range": [225, 255],
+          "name": "Automatic (two colors at a time)"
+        }
+      ]
+    },
+    "Derby 2 Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "No strobe"
+        },
+        {
+          "range": [10, 239],
+          "name": "Strobe 0-30Hz"
+        },
+        {
+          "range": [240, 255],
+          "name": "Strobe to sound"
+        }
+      ]
+    },
+    "Derby 2 Rotation": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "Stop"
+        },
+        {
+          "range": [5, 127],
+          "name": "Rotate CW slow-fast"
+        },
+        {
+          "range": [128, 133],
+          "name": "Stop"
+        },
+        {
+          "range": [134, 255],
+          "name": "Rotate CCW slow-fast"
+        }
+      ]
+    },
+    "Laser Color": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 39],
+          "name": "Blackout",
+          "color": "#000000"
+        },
+        {
+          "range": [40, 79],
+          "name": "Red on",
+          "color": "#ff0000"
+        },
+        {
+          "range": [80, 119],
+          "name": "Green on",
+          "color": "#00ff00"
+        },
+        {
+          "range": [120, 159],
+          "name": "Red + Green on",
+          "color": "#ffff00"
+        },
+        {
+          "range": [160, 199],
+          "name": "Red on, Green strobe",
+          "color": "#ff0000",
+          "color2": "#ffff00"
+        },
+        {
+          "range": [200, 239],
+          "name": "Green on, Red strobe",
+          "color": "#00ff00",
+          "color2": "#ffff00"
+        },
+        {
+          "range": [240, 255],
+          "name": "Red + Green alternate strobe",
+          "color": "#ff0000",
+          "color2": "#00ff00"
+        }
+      ]
+    },
+    "Laser Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "No strobe"
+        },
+        {
+          "range": [10, 239],
+          "name": "Strobe slow-fast"
+        },
+        {
+          "range": [240, 255],
+          "name": "Strobe to sound"
+        }
+      ]
+    },
+    "Laser Movement Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "Stop"
+        },
+        {
+          "range": [5, 127],
+          "name": "Rotate CW slow-fast"
+        },
+        {
+          "range": [128, 133],
+          "name": "Stop"
+        },
+        {
+          "range": [134, 255],
+          "name": "Rotate CCW slow-fast"
+        }
+      ]
+    },
+    "Strobe Patterns": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Auto Strobe Program 1"
+        },
+        {
+          "range": [10, 29],
+          "name": "Auto Strobe Program 2"
+        },
+        {
+          "range": [30, 49],
+          "name": "Auto Strobe Program 3"
+        },
+        {
+          "range": [50, 69],
+          "name": "Auto Strobe Program 4"
+        },
+        {
+          "range": [70, 89],
+          "name": "Auto Strobe Program 5"
+        },
+        {
+          "range": [90, 109],
+          "name": "Auto Strobe Program 6"
+        },
+        {
+          "range": [110, 129],
+          "name": "Auto Strobe Program 7"
+        },
+        {
+          "range": [130, 149],
+          "name": "Auto Strobe Program 8"
+        },
+        {
+          "range": [150, 169],
+          "name": "Auto Strobe Program 9"
+        },
+        {
+          "range": [170, 189],
+          "name": "Auto Strobe Program 10"
+        },
+        {
+          "range": [190, 209],
+          "name": "Manual Strobe slow-fast"
+        },
+        {
+          "range": [210, 255],
+          "name": "Strobe to sound"
+        }
+      ]
+    },
+    "White Strobe Dimmer": {
+      "type": "Intensity"
+    },
+    "UV Strobe Dimmer": {
+      "type": "Intensity"
+    },
+    "White / UV Strobe Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow-fast"
+        }
+      ]
+    },
+    "Pars / Derby Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Pars / Derby Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Pars / Derby Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Pars / Derby UV": {
+      "type": "Single Color",
+      "color": "UV"
+    },
+    "Pars / Derby Shutter": {
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "All 0-100%"
+        },
+        {
+          "range": [128, 239],
+          "name": "Strobe slow-fast"
+        },
+        {
+          "range": [240, 249],
+          "name": "Strobe to sound"
+        },
+        {
+          "range": [250, 255],
+          "name": "Full on"
+        }
+      ]
+    },
+    "Derby Rotation": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "Stop"
+        },
+        {
+          "range": [5, 127],
+          "name": "Rotate CW slow-fast"
+        },
+        {
+          "range": [128, 133],
+          "name": "Stop"
+        },
+        {
+          "range": [134, 255],
+          "name": "Rotate CCW slow-fast"
+        }
+      ]
+    },
+    "Red Laser": {
+      "type": "Single Color",
+      "color": "Red",
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "Blackout"
+        },
+        {
+          "range": [5, 54],
+          "name": "On"
+        },
+        {
+          "range": [55, 255],
+          "name": "Strobe slow-fast"
+        }
+      ]
+    },
+    "Green Laser": {
+      "type": "Single Color",
+      "color": "Green",
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "Blackout"
+        },
+        {
+          "range": [5, 54],
+          "name": "On"
+        },
+        {
+          "range": [55, 255],
+          "name": "Strobe slow-fast"
+        }
+      ]
+    },
+    "White Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 54],
+          "name": "Dimmer 0-100%"
+        },
+        {
+          "range": [55, 255],
+          "name": "Strobe slow-fast"
+        }
+      ]
+    },
+    "UV Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 54],
+          "name": "Dimmer 0-100%"
+        },
+        {
+          "range": [55, 255],
+          "name": "Strobe slow-fast"
+        }
+      ]
+    },
+    "LED Operation": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "No function"
+        },
+        {
+          "range": [10, 119],
+          "name": "Auto mixed mode 1 fast-slow"
+        },
+        {
+          "range": [120, 229],
+          "name": "Auto mixed mode 2 fast-slow"
+        },
+        {
+          "range": [230, 234],
+          "name": "Sound mixed mode 1"
+        },
+        {
+          "range": [235, 239],
+          "name": "Sound mixed mode 2"
+        },
+        {
+          "range": [240, 255],
+          "name": "Show setting"
+        }
+      ]
+    },
+    "Show setting": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Blackout"
+        },
+        {
+          "range": [10, 19],
+          "name": "Pars on ONLY, doing all single Par show"
+        },
+        {
+          "range": [20, 29],
+          "name": "Derby Lights on ONLY"
+        },
+        {
+          "range": [30, 39],
+          "name": "Laser on ONLY"
+        },
+        {
+          "range": [40, 49],
+          "name": "Strobes on ONLY"
+        },
+        {
+          "range": [50, 59],
+          "name": "Auto Pars amd Derby Lights ONLY"
+        },
+        {
+          "range": [60, 69],
+          "name": "Auto Pars and Laser ONLY"
+        },
+        {
+          "range": [70, 79],
+          "name": "Auto Pars and Strobes ONLY"
+        },
+        {
+          "range": [80, 89],
+          "name": "Auto Derby Lights and Laser ONLY"
+        },
+        {
+          "range": [90, 99],
+          "name": "Auto Strobes and Derby Lights ONLY"
+        },
+        {
+          "range": [100, 109],
+          "name": "Pars, Derby Lights and Laser"
+        },
+        {
+          "range": [110, 119],
+          "name": "Pars, Derby Lights and Strobes"
+        },
+        {
+          "range": [120, 129],
+          "name": "Pars, Laser and Strobes"
+        },
+        {
+          "range": [130, 139],
+          "name": "Derby Lights, Laser and Strobes"
+        },
+        {
+          "range": [140, 149],
+          "name": "Sound Par effect"
+        },
+        {
+          "range": [150, 159],
+          "name": "Sound Derby effect"
+        },
+        {
+          "range": [160, 169],
+          "name": "Sound Laser effect"
+        },
+        {
+          "range": [170, 179],
+          "name": "Sound Strobe effect"
+        },
+        {
+          "range": [180, 189],
+          "name": "Sound Par + Derby"
+        },
+        {
+          "range": [190, 199],
+          "name": "Sound Par + Laser"
+        },
+        {
+          "range": [200, 209],
+          "name": "Sound Par + Strobe"
+        },
+        {
+          "range": [210, 219],
+          "name": "Sound Derby + Laser"
+        },
+        {
+          "range": [220, 229],
+          "name": "Sound Derby + Laser"
+        },
+        {
+          "range": [230, 239],
+          "name": "Sound Pars, Derby Lights and Laser"
+        },
+        {
+          "range": [240, 244],
+          "name": "Sound Pars, Derby and Strobes"
+        },
+        {
+          "range": [245, 249],
+          "name": "Sound Pars, Laser and Strobes"
+        },
+        {
+          "range": [250, 255],
+          "name": "Sound Derby Lights, Laser and Strobes"
+        }
+      ]
+    },
+    "Auto Program Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow-fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "23-channel",
+      "shortName": "23ch",
+      "channels": [
+        "Par 1 Red",
+        "Par 1 Green",
+        "Par 1 Blue",
+        "Par 1 UV",
+        "Par 1 Shutter",
+        "Par 2 Red",
+        "Par 2 Green",
+        "Par 2 Blue",
+        "Par 2 UV",
+        "Par 2 Shutter",
+        "Derby 1 Color",
+        "Derby 1 Strobe",
+        "Derby 1 Rotation",
+        "Derby 2 Color",
+        "Derby 2 Strobe",
+        "Derby 2 Rotation",
+        "Laser Color",
+        "Laser Strobe",
+        "Laser Movement Speed",
+        "Strobe Patterns",
+        "White Strobe Dimmer",
+        "UV Strobe Dimmer",
+        "White / UV Strobe Speed"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Pars / Derby Red",
+        "Pars / Derby Green",
+        "Pars / Derby Blue",
+        "Pars / Derby UV",
+        "Pars / Derby Shutter",
+        "Derby Rotation",
+        "Red Laser",
+        "Green Laser",
+        "Laser Movement Speed",
+        "White Strobe",
+        "UV Strobe"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "LED Operation",
+        "Show setting",
+        "Auto Program Speed"
+      ]
+    }
+  ]
+}
