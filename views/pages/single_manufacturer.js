@@ -1,12 +1,22 @@
 const fs = require('fs');
 const path = require('path');
+const url = require('url');
+
+const Fixture = require('../../lib/model/Fixture.js');
+
+let manufacturer;
+let fixtures;
 
 module.exports = function(options) {
   const {manufacturers, register, man} = options;
-  const manufacturer = manufacturers[man];
+  manufacturer = manufacturers[man];
+  fixtures = register.manufacturers[man].map(
+    fix => Fixture.fromRepository(man, fix)
+  );
 
   options.title = manufacturer.name + ' - Open Fixture Library';
-
+  options.structuredDataItems.push(getStructuredOrganization(options));
+  options.structuredDataItems.push(getStructuredItemList(options));
   
   let str = require('../includes/header.js')(options);
 
@@ -29,12 +39,10 @@ module.exports = function(options) {
   }
 
   str += '<ul class="card list manufacturer-fixtures">';
-  for (let fix of register.manufacturers[man]) {
-    const fixData = JSON.parse(fs.readFileSync(path.join(options.baseDir, 'fixtures', man, fix + '.json'), 'utf-8'));
-
-    str += `<li><a href="/${man}/${fix}">`;
-    str += `<span class="name">${fixData.name}</span>`;
-    for (const cat of fixData.categories) {
+  for (let fix of fixtures) {
+    str += `<li><a href="/${man}/${fix.key}">`;
+    str += `<span class="name">${fix.name}</span>`;
+    for (const cat of fix.categories) {
       str += require('../includes/svg.js')({categoryName: cat, className: 'right'});
     }
     str += '</a></li>';
@@ -45,3 +53,40 @@ module.exports = function(options) {
 
   return str;
 };
+
+/**
+ * Creates an Organization as structured data for SEO
+ * @param {!object} options Global options
+ * @return {!object} The JSON-LD data
+ */
+function getStructuredOrganization(options) {
+  let data = {
+    '@context': 'http://schema.org',
+    '@type': 'Organization',
+    'name': manufacturer.name,
+    'brand': manufacturer.name,
+  };
+
+  if ('website' in manufacturer) {
+    data.sameAs = manufacturer.website;
+  }
+  
+  return data;
+}
+
+/**
+ * Creates an ItemList as structured data for SEO
+ * @param {!object} options Global options
+ * @return {!object} The JSON-LD data
+ */
+function getStructuredItemList(options) {
+  return {
+    "@context": "http://schema.org",
+    "@type": "ItemList",
+    "itemListElement": fixtures.map((fix, index) => ({
+      "@type": "ListItem",
+      "position": index+1,
+      "url": url.resolve(options.url, fix.key)
+    }))
+  }
+}

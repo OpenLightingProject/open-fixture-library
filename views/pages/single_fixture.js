@@ -1,3 +1,5 @@
+const url = require('url');
+
 const exportPlugins = require('../../plugins/plugins.js').export;
 
 const Fixture = require('../../lib/model/Fixture.js');
@@ -13,6 +15,8 @@ module.exports = function(options) {
   fixture = Fixture.fromRepository(man, fix);
 
   options.title = `${fixture.manufacturer.name} ${fixture.name} fixture definition - Open Fixture Library`;
+  options.structuredDataItems.push(getStructuredProductModel(options));
+  options.structuredDataItems.push(getStructuredBreadCrumbList(options));
 
   const githubRepoPath = 'https://github.com/' + (process.env.TRAVIS_REPO_SLUG || 'FloEdelmann/open-fixture-library');
   const branch = process.env.TRAVIS_PULL_REQUEST_BRANCH || process.env.TRAVIS_BRANCH || 'master';
@@ -70,6 +74,65 @@ module.exports = function(options) {
 
   return str;
 };
+
+/**
+ * Creates a ProductModel as structured data for SEO
+ * @param {!object} options Global options
+ * @return {!object} The JSON-LD data
+ */
+function getStructuredProductModel(options) {
+  let data = {
+    '@context': 'http://schema.org',
+    '@type': 'ProductModel',
+    'name': fixture.name,
+    'category': fixture.mainCategory,
+    'manufacturer': {
+      'url': url.resolve(options.url, '..')
+    }
+  };
+
+  if (fixture.hasComment) {
+    data.description = fixture.comment;
+  }
+
+  if (fixture.physical !== null && fixture.physical.dimensions !== null) {
+    data.depth = fixture.physical.depth;
+    data.width = fixture.physical.width;
+    data.height = fixture.physical.height;
+  }
+  
+  return data;
+}
+
+/**
+ * Creates a BreadCrumbList as structured data for SEO
+ * @param {!object} options Global options
+ * @return {!object} The JSON-LD data
+ */
+function getStructuredBreadCrumbList(options) {
+  return {
+    '@context': 'http://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'item': {
+          '@id': url.resolve(options.url, '/manufacturers'),
+          'name': 'Manufacturers'
+        }
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'item': {
+          '@id': url.resolve(options.url, '..'),
+          'name': fixture.manufacturer.name
+        }
+      }
+    ]
+  };
+}
 
 function getDateString(date) {
   return `<time datetime="${date.toISOString()}" title="${date.toISOString()}">${date.toISOString().replace(/T.*?$/, '')}</time>`;

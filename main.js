@@ -2,6 +2,8 @@
 
 const fs = require('fs');
 const path = require('path');
+const url = require('url');
+const env = require('node-env-file');
 const express = require('express');
 const compression = require('compression');
 const sassMiddleware = require('node-sass-middleware');
@@ -13,6 +15,11 @@ const plugins = require('./plugins/plugins.js');
 const Fixture = require('./lib/model/Fixture.js');
 
 const app = express();
+
+const envFile = path.join(__dirname, '.env');
+if (fs.existsSync(envFile)) {
+  env(envFile);
+}
 
 // setup port
 app.set('port', (process.env.PORT || 5000));
@@ -112,31 +119,27 @@ fs.readFile(path.join(__dirname, 'fixtures', 'register.json'), 'utf8', (error, d
 
 
 app.get('/', (request, response) => {
-  response.render('pages/index');
+  response.render('pages/index', getOptions(request));
 });
 
 app.get('/about', (request, response) => {
-  response.render('pages/about');
+  response.render('pages/about', getOptions(request));
 });
 
 app.get('/categories', (request, response) => {
-  response.render('pages/categories');
+  response.render('pages/categories', getOptions(request));
 });
 
 app.get('/manufacturers', (request, response) => {
-  response.render('pages/manufacturers');
+  response.render('pages/manufacturers', getOptions(request));
 });
 
 app.get('/fixture-editor', (request, response) => {
-  response.render('pages/fixture_editor', {
-    query: request.query
-  });
+  response.render('pages/fixture_editor', getOptions(request));
 });
 
 app.get('/search', (request, response) => {
-  response.render('pages/search', {
-    query: request.query
-  });
+  response.render('pages/search', getOptions(request));
 });
 
 app.get('/rdm', (request, response) => {
@@ -145,7 +148,7 @@ app.get('/rdm', (request, response) => {
   const personalityIndex = request.query.personalityIndex;
 
   if (manufacturerId === undefined || manufacturerId === '') {
-    response.render('pages/rdm-lookup');
+    response.render('pages/rdm-lookup', getOptions(request));
     return;
   }
 
@@ -164,10 +167,10 @@ app.get('/rdm', (request, response) => {
     }
   }
 
-  response.status(404).render('pages/rdm-not-found', {
+  response.status(404).render('pages/rdm-not-found', Object.assign(getOptions(request), {
     manufacturerId: manufacturerId,
     modelId: modelId
-  });
+  }));
 });
 
 // support json encoded bodies
@@ -186,9 +189,9 @@ app.use((request, response, next) => {
   if (segments.length === 1) {
     // manufacturer page
     if (segments[0] in manufacturers) {
-      response.render('pages/single_manufacturer', {
+      response.render('pages/single_manufacturer', Object.assign(getOptions(request), {
         man: segments[0]
-      });
+      }));
       return;
     }
 
@@ -214,10 +217,10 @@ app.use((request, response, next) => {
 
     // fixture page
     if (register.manufacturers[man].includes(fix)) {
-      response.render('pages/single_fixture', {
+      response.render('pages/single_fixture', Object.assign(getOptions(request), {
         man: man,
-        fix: fix
-      });
+        fix: fix,
+      }));
       return;
     }
 
@@ -235,15 +238,15 @@ app.use((request, response, next) => {
 
   // category page
   if (segments.length === 2 && segments[0] === 'categories' && decodeURIComponent(segments[1]) in register.categories) {
-    response.render('pages/single_category', {
+    response.render('pages/single_category', Object.assign(getOptions(request), {
       category: decodeURIComponent(segments[1])
-    });
+    }));
     return;
   }
 
   console.log(`page ${request.originalUrl} [${segments}] not found`);
 
-  response.status(404).render('pages/404');
+  response.status(404).render('pages/404', getOptions(request));
 });
 
 
@@ -296,4 +299,16 @@ function addFileReadError(text, error) {
     type: 'error',
     text: `${text}<br /><code>${error.toString()}</code>`
   });
+}
+
+/**
+ * Generates the options to be given to render modules.
+ * @param {!Request} request The HTTP request object transmitted by express.
+ */
+function getOptions(request) {
+  return {
+    url: url.resolve(`${request.protocol}://${request.get('host')}`, request.originalUrl + '/.'),
+    query: request.query,
+    structuredDataItems: []
+  };
 }

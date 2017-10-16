@@ -1,7 +1,19 @@
+const url = require('url');
+
 const exportPlugins = require('../../plugins/plugins.js').export;
 
 module.exports = function(options) {
   options.title = 'Open Fixture Library';
+  options.structuredDataItems.push({
+    '@context': 'http://schema.org',
+    '@type': 'WebSite',
+    'url': options.url,
+    'potentialAction': {
+      '@type': 'SearchAction',
+      'target': url.resolve(options.url, '/search') + '?q={search_term_string}',
+      'query-input': 'required name=search_term_string'
+    }
+  });
   
   let str = require('../includes/header.js')(options);
 
