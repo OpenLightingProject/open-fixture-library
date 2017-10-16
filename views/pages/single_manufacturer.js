@@ -1,5 +1,3 @@
-const fs = require('fs');
-const path = require('path');
 const url = require('url');
 
 const Fixture = require('../../lib/model/Fixture.js');
@@ -64,7 +62,7 @@ function getStructuredOrganization(options) {
     '@context': 'http://schema.org',
     '@type': 'Organization',
     'name': manufacturer.name,
-    'brand': manufacturer.name,
+    'brand': manufacturer.name
   };
 
   if ('website' in manufacturer) {
@@ -81,12 +79,12 @@ function getStructuredOrganization(options) {
  */
 function getStructuredItemList(options) {
   return {
-    "@context": "http://schema.org",
-    "@type": "ItemList",
-    "itemListElement": fixtures.map((fix, index) => ({
-      "@type": "ListItem",
-      "position": index+1,
-      "url": url.resolve(options.url, fix.key)
+    '@context': 'http://schema.org',
+    '@type': 'ItemList',
+    'itemListElement': fixtures.map((fix, index) => ({
+      '@type': 'ListItem',
+      'position': index+1,
+      'url': url.resolve(options.url, fix.key)
     }))
-  }
+  };
 }

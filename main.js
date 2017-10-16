@@ -219,7 +219,7 @@ app.use((request, response, next) => {
     if (register.manufacturers[man].includes(fix)) {
       response.render('pages/single_fixture', Object.assign(getOptions(request), {
         man: man,
-        fix: fix,
+        fix: fix
       }));
       return;
     }
