@@ -1,11 +1,11 @@
 {
   "name": "MAC Axiom Hybrid",
   "shortName": "MACAxiomHybrid",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["novasfronteiras.co"],
     "createDate": "2017-08-07",
-    "lastModifyDate": "2017-08-08"
+    "lastModifyDate": "2017-10-17"
   },
   "manualURL": "http://www.martin.com/files/files/productdocuments/11_MANUALS/999/UM_MACAxiomHybrid_EN_D.pdf",
   "physical": {
@@ -22,6 +22,7 @@
       "degreesMinMax": [2, 44]
     },
     "focus": {
+      "type": "Head",
       "panMax": 540,
       "tiltMax": 260
     }

@@ -1,10 +1,10 @@
 {
   "name": "Diamond 19",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["fueller"],
     "createDate": "2017-08-16",
-    "lastModifyDate": "2017-08-21"
+    "lastModifyDate": "2017-10-17"
   },
   "manualURL": "http://prolights.it/download.php?id=2882",
   "physical": {
@@ -20,6 +20,7 @@
       "degreesMinMax": [6, 66]
     },
     "focus": {
+      "type": "Head",
       "panMax": 630,
       "tiltMax": 265
     }

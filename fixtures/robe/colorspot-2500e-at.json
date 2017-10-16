@@ -1,11 +1,11 @@
 {
   "name": "ColorSpot 2500E AT",
   "shortName": "robeSpot2500",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["novasfronteiras.co"],
     "createDate": "2017-09-07",
-    "lastModifyDate": "2017-09-07"
+    "lastModifyDate": "2017-10-17"
   },
   "manualURL": "https://www.robe.cz/index.php?type=10898&tx_odproducts_f%5baction%5d=downloadFile&tx_odproducts_f%5bfile%5d=robe/downloads/user_manuals/User_manual_ColorSpot_2500E_AT.pdf",
   "rdm": {
@@ -24,6 +24,7 @@
       "degreesMinMax": [10, 30]
     },
     "focus": {
+      "type": "Head",
       "panMax": 530,
       "tiltMax": 260
     }
