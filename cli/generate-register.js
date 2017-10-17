@@ -104,13 +104,21 @@ for (const contributor of sortedContributors) {
   register.contributors[contributor] = contributors[contributor];
 }
 
+// the higher the value, the higher the rank if the dates are the same
+const lastActionRankMapping = {
+  "modified": 10,
+  "imported": 20,
+  "created": 30
+};
+
 // add fixture list sorted by lastModifyDate
 register.lastUpdated = Object.keys(register.filesystem).sort((a, b) => {
   const fixA = register.filesystem[a];
   const fixB = register.filesystem[b];
   const dateDelta = new Date(fixB.lastModifyDate) - new Date(fixA.lastModifyDate);
+  const actionDelta = lastActionRankMapping[fixB.lastAction] - lastActionRankMapping[fixA.lastAction];
   const keyDelta = a > b ? 1 : a < b ? -1 : 0;
-  return dateDelta !== 0 ? dateDelta : keyDelta;
+  return dateDelta !== 0 ? dateDelta : (actionDelta !== 0 ? actionDelta : keyDelta);
 });
 
 // copy sorted RDM data into register
