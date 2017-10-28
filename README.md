@@ -1,6 +1,6 @@
 # Open Fixture Library [![Build Status](https://img.shields.io/travis/FloEdelmann/open-fixture-library/master.svg?label=tests)](https://travis-ci.org/FloEdelmann/open-fixture-library) [![Code quality](https://img.shields.io/codacy/grade/73096865e9f44a7bb246a318ffc8e68b.svg)](https://www.codacy.com/app/FloEdelmann/open-fixture-library) [![Dependencies](https://img.shields.io/david/FloEdelmann/open-fixture-library.svg)](https://david-dm.org/FloEdelmann/open-fixture-library)
 
-<img alt="OFL logo" src="https://cdn.rawgit.com/FloEdelmann/open-fixture-library/04aad444/static/ofl-logo.svg" width="250" />
+<img alt="OFL logo" src="https://cdn.rawgit.com/FloEdelmann/open-fixture-library/master/static/ofl-logo.svg" width="250" />
 
 To use lighting control software like [QLC+](http://www.qlcplus.org/), [DMXControl](https://www.dmxcontrol.org/) or [e:cue](http://www.ecue.de/), you need fixture definition files that describe your lighting hardware. Since one software can usually only understand its own fixture definition format, switching between different programs can be difficult.
 
