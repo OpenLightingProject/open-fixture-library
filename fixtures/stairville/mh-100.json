@@ -1,0 +1,94 @@
+{
+  "name": "MH-100",
+  "shortName": "svlmh100",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2017-10-28",
+    "lastModifyDate": "2017-10-28"
+  },
+  "manualURL": "https://images.thomann.de/pics/atg/atgdata/document/manual/c_325876_en_online.pdf",
+  "physical": {
+    "dimensions": [260, 300, 148],
+    "weight": 4.9,
+    "power": 150,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 0,
+      "lumens": 0
+    }
+  },
+  "availableChannels": {
+    "Rotation": {
+      "type": "Pan",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0 - 630 degrees"
+        }
+      ]
+    },
+    "Inclination": {
+      "type": "Tilt",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0 - 220 degrees"
+        }
+      ]
+    },
+    "Speed": {
+      "type": "Speed"
+    },
+    "Dimmer": {
+      "type": "Intensity"
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "White": {
+      "type": "Single Color",
+      "color": "White"
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 19],
+          "name": "Off"
+        },
+        {
+          "range": [20, 255],
+          "name": "Strobe speed"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "9-Channel",
+      "shortName": "9ch",
+      "channels": [
+        "Rotation",
+        "Inclination",
+        "Speed",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    }
+  ]
+}
