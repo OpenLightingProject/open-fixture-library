@@ -9,14 +9,15 @@
   },
   "manualURL": "https://images.thomann.de/pics/atg/atgdata/document/manual/c_325876_en_online.pdf",
   "physical": {
-    "dimensions": [260, 300, 148],
+    "dimensions": [260, 310, 148],
     "weight": 4.9,
     "power": 150,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED",
-      "colorTemperature": 0,
-      "lumens": 0
+      "type": "36 × 3 W LEDs (8 × red, 10 × green, 10 × blue, 8 × white)"
+    },
+    "lens": {
+      "degreesMinMax": [8, 8]
     },
     "focus": {
       "type": "Head",
