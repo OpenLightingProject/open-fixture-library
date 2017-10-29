@@ -10,6 +10,7 @@
 * [Fixture features](#fixture-features)
 * [Plugins](#plugins)
 * [UI / Website](#ui--website)
+* [Testing](#testing)
 
 ## Fixtures
 *[⬆️ Back to top](#technical-overview)*
@@ -144,9 +145,113 @@ module.exports = [{
 ## Plugins
 *[⬆️ Back to top](#technical-overview)*
 
-...
+The aim of OFL is to import and export our fixture definitions from/to fixture formats of third-party lighting controlment software, for example [QLC+](https://github.com/mcallegari/qlcplus)'s `.qfx` format. A plugin is a converter between our and an external format. It implements an import and/or export method that processes/generates the third-party format.
+
+Each plugin has its own directory `plugins/<plugin-key>/` which contains all information, methods and tests about the external format. Please provide a `README.md` as markdown file with a short explanation about the fixture format. If applicable, it should include
+
+* a link to the software that uses this format
+* how to import fixtures into the software
+* a place where fixtures of this format can be obtained from
+
+### Exporting
+
+If exporting is supported, create a `plugins/<plugin-key>/export.js` module that exports the plugin name, version and a method that generates the needed third-party files out of an given array of fixtures. This method should return return an array of objects for each file; the files are zipped together automatically. A file object looks like this:
+
+```js
+{
+  name: 'filename.ext',
+  content: 'file content',
+  mimetype: 'text/plain'
+}
+```
+
+A very simple plugin looks like this:
+
+```js
+module.exports.name = 'Plugin Name';
+module.exports.version = '0.1.0';  // semantic versioning of export plugin
+
+/**
+ * @param {!Fixture[]} fixtures An array of Fixture objects, see our fixture model
+ * @param {!object} options Some global options, for example:
+ * @param {!string} options.baseDir
+ * @param {?Date} options.date
+ * @return {!object[]} All generated files (see file schema above)
+*/
+module.exports.export = function exportPluginName(fixtures, options) {
+  let outfiles = [];
+
+  for (const fixture of fixtures) {
+    for (const mode of fixture.modes)
+      outfiles.push({
+        name: `${fixture.manufacturer.key}-${fixture.key}-${mode.shortName}.xml`,
+        content: `<title>${fixture.name}: ${mode.channels.length}ch</title>`, // this fixture definition is quite useless, normally it's way larger and computated using several helper functions
+        mimetype: 'application/xml'
+      });
+    }
+  }
+
+  return outfiles;
+};
+```
+
+### Importing
+
+If importing is supported, create a `plugins/<plugin-key>/import.js` module that exports the plugin name, version and a method that creates OFL fixture definitions out of a given third-party file.
+
+As file parsing (like xml processing) can be asynchronous, the import method returns it results asynchronous using the given `resolve` and `reject` functions (see [Promises](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise)). When processing is finished, the `resolve` function should be called with a result object that looks like this
+```js
+let out = {
+  manufacturers: {},  // like in manufacturers.json
+  fixtures: {},       // key: 'manufacturer-key/fixture-key', value: like in a fixture JSON
+  warnings: {}        // key: 'manufacturer-key/fixture-key' to which a warning belongs, value: string
+};
+```
+
+The `reject` function should be called with an error string if it's not possible to parse the given file.
+
+Example:
+
+```js
+module.exports.name = 'Plugin Name';
+module.exports.version = '0.1.0';  // semantic versioning of import plugin
+
+/**
+ * @param {!String} fileContent The imported file's content
+ * @param {!String} fileName The imported file's name
+ * @param {!Function} resolve For usage, see above
+ * @param {!Function} reject For usage, see above
+**/
+module.exports.import = function importPluginName(str, filename, resolve, reject) {
+  let out = {
+    manufacturers: {},  // like in manufacturers.json
+    fixtures: {},       // key: 'manufacturer-key/fixture-key', value: like in a fixture JSON
+    warnings: {}        // key: 'manufacturer-key/fixture-key' to which a warning belongs, value: string
+  };
+
+  // just an example
+  const manKey = 'cameo';
+  const fixKey = 'thunder-wash-600-rgb'
+
+  if (couldNotParse) {
+    return reject(`Could not parse '${filename}'.`);
+  }
+
+  // Add warning if a necessary property is not included in parsed file
+  out.warnings[manKey + '/' + fixKey].push('Could not parse categories, please specify them manually.');
+
+  out.fixtures[manKey + '/' + fixKey] = fixtureObject;
+
+  resolve(out);
+};
+```
 
 ## UI / Website
+*[⬆️ Back to top](#technical-overview)*
+
+...
+
+## Testing
 *[⬆️ Back to top](#technical-overview)*
 
 ...
