@@ -9,6 +9,9 @@
 * [Fixture model](#fixture-model)
 * [Fixture features](#fixture-features)
 * [Plugins](#plugins)
+  * [Exporting](#exporting)
+  * [Importing](#importing)
+  * [Export Tests](#export-tests)
 * [UI / Website](#ui--website)
 * [Testing](#testing)
 
@@ -245,6 +248,11 @@ module.exports.import = function importPluginName(str, filename, resolve, reject
   resolve(out);
 };
 ```
+
+### Export tests
+
+...
+
 
 ## UI / Website
 *[⬆️ Back to top](#technical-overview)*
