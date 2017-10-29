@@ -12,8 +12,8 @@
   * [Exporting](#exporting)
   * [Importing](#importing)
   * [Export Tests](#export-tests)
-* [UI / Website](#ui--website)
 * [Testing](#testing)
+* [UI / Website](#ui--website)
 
 ## Fixtures
 *[⬆️ Back to top](#technical-overview)*
@@ -157,8 +157,9 @@ Each plugin has its own directory `plugins/<plugin-key>/` which contains all inf
 * a place where fixtures of this format can be obtained from
 
 ### Exporting
+*[⬆️ Back to top](#technical-overview)*
 
-If exporting is supported, create a `plugins/<plugin-key>/export.js` module that exports the plugin name, version and a method that generates the needed third-party files out of an given array of fixtures. This method should return return an array of objects for each file; the files are zipped together automatically. A file object looks like this:
+If exporting is supported, create a `plugins/<plugin-key>/export.js` module that exports the plugin name, version and a method that generates the needed third-party files out of an given array of fixtures. This method should return an array of objects for each file; the files are zipped together automatically. A file object looks like this:
 
 ```js
 {
@@ -199,12 +200,13 @@ module.exports.export = function exportPluginName(fixtures, options) {
 ```
 
 ### Importing
+*[⬆️ Back to top](#technical-overview)*
 
 If importing is supported, create a `plugins/<plugin-key>/import.js` module that exports the plugin name, version and a method that creates OFL fixture definitions out of a given third-party file.
 
-As file parsing (like xml processing) can be asynchronous, the import method returns it results asynchronous using the given `resolve` and `reject` functions (see [Promises](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise)). When processing is finished, the `resolve` function should be called with a result object that looks like this
+As file parsing (like xml processing) can be asynchronous, the import method returns it results asynchronously using the given `resolve` and `reject` functions (see [Promises](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise)). When processing is finished, the `resolve` function should be called with a result object that looks like this:
 ```js
-let out = {
+{
   manufacturers: {},  // like in manufacturers.json
   fixtures: {},       // key: 'manufacturer-key/fixture-key', value: like in a fixture JSON
   warnings: {}        // key: 'manufacturer-key/fixture-key' to which a warning belongs, value: string
@@ -250,16 +252,16 @@ module.exports.import = function importPluginName(str, filename, resolve, reject
 ```
 
 ### Export tests
-
-...
-
-
-## UI / Website
 *[⬆️ Back to top](#technical-overview)*
 
 ...
 
 ## Testing
+*[⬆️ Back to top](#technical-overview)*
+
+...
+
+## UI / Website
 *[⬆️ Back to top](#technical-overview)*
 
 ...
