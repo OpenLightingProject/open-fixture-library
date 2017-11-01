@@ -11,16 +11,16 @@
 * [Plugins](#plugins)
   * [Exporting](#exporting)
   * [Importing](#importing)
-  * [Export Tests](#export-tests)
+  * [Export tests](#export-tests)
 * [Testing](#testing)
 * [UI / Website](#ui--website)
 
 ## Fixtures
 *[⬆️ Back to top](#technical-overview)*
 
-A fixture (sometimes also *personality*) is a lighting device that can be controlled with DMX. OFL gathers fixture definitions, that are specifications of a fixture's general information (like physical data) and the details of its [DMX](https://www.learnstagelighting.com/what-is-dmx-512/) controlment.
+A fixture is a lighting device that can be controlled with DMX. OFL gathers fixture definitions (sometimes also *personalities* or *profiles*), that are specifications of a fixture's general information (like physical data) and the details of its [DMX](https://www.learnstagelighting.com/what-is-dmx-512/) controlment.
 
-Each fixture belongs to a [manufacturer](#manufacturers) (many-to-one relationship). A manufacturer is the vendor or brand of the fixture.
+Each fixture belongs to exactly one [manufacturer](#manufacturers). A manufacturer is the vendor or brand of the fixture.
 
 The fixtures are saved as [JSON](http://www.json.org/) files at `fixtures/<manufacturer-key>/<fixture-key>.json`. The fixture key is only defined by the filename. See [details about the fixture JSON format](TODO).
 
@@ -29,20 +29,20 @@ The JSON fixture data is parsed and processed using our [model](#fixture-model).
 ## Manufacturers
 *[⬆️ Back to top](#technical-overview)*
 
-A manufacturer is a [fixture](#fixtures) vendor or brand. Each fixture belongs to a manufacturer (0-n fixtures to 1 manufacturer relationship).
+A manufacturer is a [fixture](#fixtures) vendor or brand. Each fixture belongs to a manufacturer.
 
 All used manufacturers must be defined in `fixtures/manufacturers.json` in order that their unique keys can be registered. All fixtures of a manufacturer are saved in the `fixtures/<manufacturer-key>/` directory.
 
-We also store (optional) additional manufacturer data like comment, website or [RDM](TODO) data.
+We also store (optional) additional manufacturer data in `manufacturers.json` like comment, website or [RDM](TODO) data.
 
 ## Fixture model
 *[⬆️ Back to top](#technical-overview)*
 
-Instead of parsing a [fixture](#fixtures)'s JSON data directly, it is recommended to use the model. We developed it to easier handle complicated fixture features like fine/switching channels.
+Instead of parsing a [fixture](#fixtures)'s JSON data directly, it is recommended to use the model. We developed it to make handling complicated fixture features like fine/switching channels easier.
 
-The model uses [ES2015 classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) to represent the fixtures. E. g., `Fixture.fromRepository('cameo', 'nanospot-120')` returns an instance of the `Fixture` class, instantiated with the specified fixture's data. These objects have several convenient properties that allow an easy usage of the fixture data in [plugins](#plugins), [UI](#ui--website) and more.
+The model uses [ES2015 classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) to represent the fixtures. E. g., `Fixture.fromRepository('cameo', 'nanospot-120')` returns a `Fixture` object, instantiated with the specified fixture's data. These objects have several convenient properties that allow easy usage of the fixture data in [plugins](#plugins), [UI](#ui--website) and more.
 
-All model classes (like `Fixture`, `Manufacturer`, `Physical`, `Channel` or `Range`) are located in the `lib/model/` directory. When using the model, it should be enough importing the `Fixture` module; instances of other classes are returned by the fixture's properties:
+All model classes (like `Fixture`, `Manufacturer`, `Physical`, `Channel` or `Range`) are located in the `lib/model/` directory. When using the model, it should suffice to import the `Fixture` module; instances of other classes are returned by the fixture's properties:
 
 ```js
 const Fixture = require('lib/model/Fixture.js');
@@ -53,13 +53,13 @@ const physicalData = myFix.physical; // instanceof Physical
 const panFine = myFix.getChannelByKey('Pan fine'); // instanceof FineChannel
 
 if (panFine.coarseChannel.hasHighlightValue) {
-  console.log(`Hightlight at ${panFine.coarseChannel.highlightValue}`)
+  console.log(`Highlight at ${panFine.coarseChannel.highlightValue}`)
 }
 ```
 
-Model properties are always implemented using getters and setters. To store data, we use backing fields (prefixed with underscore, like `_jsonObject`) that should never be invoked from outside. Properties that need further computation or create other objects should be cached in the internal `_cache` object. Avoid returning `undefined` under all circumstances! To achieve this, use defaults for optional properties – if the default is not `null`, it's good practice providing a `hasXY` boolean.
+Model properties are always implemented using getters and setters. To store data, we use backing fields: An internal property prefixed with underscore, like `_jsonObject`) that holds the data. The backing field should never be accessed directly but only with its getter and setter (without underscore).
 
-*It is planned* to document all available classes with their properties and methods using [JSDoc](http://usejsdoc.org/). That's why JSDoc annotations are required for new properties/methods and should be gradually added to existing ones.
+Avoid returning `undefined` under all circumstances! To achieve this, use defaults for optional properties – if the default is not `null`, it's good practice to provide a `hasXY` boolean. Properties that need further computation or create other objects should be cached in the internal `_cache` object.
 
 ```js
 module.exports = class Fixture {
@@ -87,7 +87,7 @@ module.exports = class Fixture {
     return 'shortName' in this._jsonObject;
   }
 
-  // it's not good creating a Meta object with each property access, so we cache it
+  // it's not good to create a Meta object with each property access, so we cache it
   get meta() {
     if (!('meta' in this._cache)) {
       this._cache.meta = new Meta(this._jsonObject.meta);
@@ -105,17 +105,19 @@ module.exports = class Fixture {
 }
 ```
 
+*It is planned* to document all available classes with their properties and methods using [JSDoc](http://usejsdoc.org/). That's why JSDoc annotations are required for new properties/methods and should be gradually added to existing ones.
+
 ## Fixture features
 *[⬆️ Back to top](#technical-overview)*
 
 Fixture features are specific [fixture](#fixtures) characteristics (like "uses RDM" or "uses fine channel before coarse channel"), especially ones that have produced or are likely to produce bugs and errors.
 
 We use fixture features for the following purposes:
-- Generate a possibly short variety of test fixtures that use possibly many different fixture features so we can check all special cases
+- Generate a minimal collection of test fixtures that cover all fixture features so we can check all special cases with minimum work
 - *(planned)* The fixture editor can only edit/import fixtures that only use editor-compatible fixture features
 - *(planned)* Search for fixtures with specific fixture features (mainly for testing)
 
-Fixture features are saved in the the `cli/fixture-features/` directory as JS modules that export an array of features. It is adviced to put similar features into one module. A sample module looks like this:
+Fixture features are saved in the the `cli/fixture-features/` directory as JS modules that export an array of features. It is advised to put similar features into one module. A sample module looks like this:
 
 ```js
 module.exports = [{
@@ -148,18 +150,29 @@ module.exports = [{
 ## Plugins
 *[⬆️ Back to top](#technical-overview)*
 
-The aim of OFL is to import and export our fixture definitions from/to fixture formats of third-party lighting controlment software, for example [QLC+](https://github.com/mcallegari/qlcplus)'s `.qfx` format. A plugin is a converter between our and an external format. It implements an import and/or export method that processes/generates the third-party format.
+The aim of OFL is to import and export our fixture definitions from/to fixture formats of third-party lighting control software, for example [QLC+](https://github.com/mcallegari/qlcplus)'s `.qfx` format. A plugin is a converter between our and an external format. It implements an import and/or export method that processes/generates the third-party format.
 
 Each plugin has its own directory `plugins/<plugin-key>/` which contains all information, methods and tests about the external format. Please provide a `README.md` as markdown file with a short explanation about the fixture format. If applicable, it should include
 
-* a link to the software that uses this format
-* how to import fixtures into the software
-* a place where fixtures of this format can be obtained from
+* a link to the software that uses this format,
+* how to use our exported fixtures in the software,
+* places where fixtures of this format can be obtained from.
+
+You can try plugins from the command line:
+
+```bash
+# Import
+node cli/import-fixture.js -p <plugin> <filename>
+node cli/import-fixture.js -h # Help message
+
+# Export
+node cli/export-fixture.js -p <plugin> <fixture> [<more fixtures>]
+```
 
 ### Exporting
 *[⬆️ Back to top](#technical-overview)*
 
-If exporting is supported, create a `plugins/<plugin-key>/export.js` module that exports the plugin name, version and a method that generates the needed third-party files out of an given array of fixtures. This method should return an array of objects for each file; the files are zipped together automatically. A file object looks like this:
+If exporting is supported, create a `plugins/<plugin-key>/export.js` module that provides the plugin name, version and a method that generates the needed third-party files out of an given array of fixtures. This method should return an array of objects for each file that should be exported/downloadable; the files are zipped together automatically if neccessary. A file object looks like this:
 
 ```js
 {
@@ -169,7 +182,7 @@ If exporting is supported, create a `plugins/<plugin-key>/export.js` module that
 }
 ```
 
-A very simple plugin looks like this:
+A very simple export plugin looks like this:
 
 ```js
 module.exports.name = 'Plugin Name';
@@ -178,8 +191,8 @@ module.exports.version = '0.1.0';  // semantic versioning of export plugin
 /**
  * @param {!Fixture[]} fixtures An array of Fixture objects, see our fixture model
  * @param {!object} options Some global options, for example:
- * @param {!string} options.baseDir
- * @param {?Date} options.date
+ * @param {!string} options.baseDir Absolute path to OFL's root directory
+ * @param {?Date} options.date The current time (prefer this over new Date())
  * @return {!object[]} All generated files (see file schema above)
 */
 module.exports.export = function exportPluginName(fixtures, options) {
@@ -204,12 +217,19 @@ module.exports.export = function exportPluginName(fixtures, options) {
 
 If importing is supported, create a `plugins/<plugin-key>/import.js` module that exports the plugin name, version and a method that creates OFL fixture definitions out of a given third-party file.
 
-As file parsing (like xml processing) can be asynchronous, the import method returns it results asynchronously using the given `resolve` and `reject` functions (see [Promises](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise)). When processing is finished, the `resolve` function should be called with a result object that looks like this:
+As file parsing (like xml processing) can be asynchronous, the import method returns its results asynchronously using the given `resolve` and `reject` functions (see [Promises](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise)). When processing is finished, the `resolve` function should be called with a result object that looks like this:
 ```js
 {
-  manufacturers: {},  // like in manufacturers.json
-  fixtures: {},       // key: 'manufacturer-key/fixture-key', value: like in a fixture JSON
-  warnings: {}        // key: 'manufacturer-key/fixture-key' to which a warning belongs, value: string
+  // Imported manufacturer data; like in manufacturers.json:
+  // key: 'manufacturer-key', value: manufacturer data
+  manufacturers: {},
+  // Imported fixtures
+  // key: 'manufacturer-key/fixture-key', value: like in a fixture JSON
+  fixtures: {},
+  // Warnings about each imported fixture
+  // (e.g. if the definition was incorrect or lacks required information)
+  // key: 'manufacturer-key/fixture-key', value: array of strings (warning messages)
+  warnings: {}
 };
 ```
 
@@ -227,20 +247,26 @@ module.exports.version = '0.1.0';  // semantic versioning of import plugin
  * @param {!Function} resolve For usage, see above
  * @param {!Function} reject For usage, see above
 **/
-module.exports.import = function importPluginName(str, filename, resolve, reject) {
+module.exports.import = function importPluginName(fileContent, fileName, resolve, reject) {
   let out = {
-    manufacturers: {},  // like in manufacturers.json
-    fixtures: {},       // key: 'manufacturer-key/fixture-key', value: like in a fixture JSON
-    warnings: {}        // key: 'manufacturer-key/fixture-key' to which a warning belongs, value: string
+    manufacturers: {},
+    fixtures: {},
+    warnings: {}
   };
 
   // just an example
   const manKey = 'cameo';
-  const fixKey = 'thunder-wash-600-rgb'
+  const fixKey = 'thunder-wash-600-rgb'; // use a sanitized key as it's used as filename!
+
+  let fixtureObject = {};
+  out.warnings[manKey + '/' + fixKey] = [];
 
   if (couldNotParse) {
-    return reject(`Could not parse '${filename}'.`);
+    reject(`Could not parse '${fileName}'.`);
+    return;
   }
+
+  fixtureObject.name = "Thunder Wash 600 RGB";
 
   // Add warning if a necessary property is not included in parsed file
   out.warnings[manKey + '/' + fixKey].push('Could not parse categories, please specify them manually.');
