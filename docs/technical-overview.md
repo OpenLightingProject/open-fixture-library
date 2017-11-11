@@ -57,7 +57,7 @@ if (panFine.coarseChannel.hasHighlightValue) {
 }
 ```
 
-Model properties are always implemented using getters and setters. To store data, we use backing fields: An internal property prefixed with underscore, like `_jsonObject`) that holds the data. The backing field should never be accessed directly but only with its getter and setter (without underscore).
+Model properties are always implemented using getters and setters. To store data, we use backing fields, an internal property prefixed with underscore (like `_jsonObject`) that holds the data. The backing field should never be accessed directly but only with its getter and setter (without underscore).
 
 Avoid returning `undefined` under all circumstances! To achieve this, use defaults for optional properties – if the default is not `null`, it's good practice to provide a `hasXY` boolean. Properties that need further computation or create other objects should be cached in the internal `_cache` object.
 
