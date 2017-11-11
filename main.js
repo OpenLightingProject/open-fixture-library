@@ -167,7 +167,6 @@ app.get('/rdm', (request, response) => {
 });
 
 app.get('/sitemap.xml', (request, response) => {
-  let sitemap;
   if (!app.get('sitemap')) {
     app.set('sitemap', generateSitemap(getOptions(request)));
   }
@@ -305,7 +304,7 @@ function addFileReadError(text, error) {
 
 /**
  * Generates the options to be given to render modules.
- * @param {!Request} request The HTTP request object transmitted by express.
+ * @param {!Request} request The HTTP request object provided by express.
  * @param {?object} [additionalOptions={}] Special properties for the options object (like information which fixture this is)
  */
 function getOptions(request, additionalOptions={}) {
@@ -315,7 +314,7 @@ function getOptions(request, additionalOptions={}) {
     baseDir: __dirname,
     messages: getMessages(),
     structuredDataItems: [],
-    url: url.resolve(`${request.protocol}://${request.get('host')}`, request.originalUrl + '/.'),
+    url: url.resolve(`${request.protocol}://${request.get('host')}`, request.originalUrl).replace(/\/$/, ''), // regex to remove trailing slash
     query: request.query
   }, additionalOptions);
 }

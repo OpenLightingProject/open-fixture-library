@@ -14,6 +14,14 @@ module.exports = function(options) {
       'query-input': 'required name=search_term_string'
     }
   });
+  options.structuredDataItems.push({
+    '@context': 'http://schema.org',
+    '@type': 'Organization',
+    'name': 'Open Fixture Library',
+    'description': 'Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!',
+    'url': options.url,
+    'logo': url.resolve(options.url, '/ofl-logo.svg')
+  });
   
   let str = require('../includes/header.js')(options);
 
