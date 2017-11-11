@@ -2,7 +2,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const os = require("os");
 const url = require('url');
 const env = require('node-env-file');
 const express = require('express');
@@ -11,7 +10,6 @@ const sassMiddleware = require('node-sass-middleware');
 const browserify = require('browserify-middleware');
 const minifyHTML = require('html-minifier').minify;
 const bodyParser = require('body-parser');
-const SitemapGenerator = require('sitemap-generator');
 
 const plugins = require('./plugins/plugins.js');
 const Fixture = require('./lib/model/Fixture.js');
@@ -175,6 +173,14 @@ app.get('/rdm', (request, response) => {
   }));
 });
 
+app.get('/sitemap.xml', (request, response) => {
+  response
+    .status(201)
+    .attachment('sitemap.xml')
+    .type('application/xml')
+    .render('pages/sitemap-xml', getOptions(request));
+});
+
 // support json encoded bodies
 app.use(bodyParser.json());
 
@@ -250,24 +256,6 @@ app.use((request, response, next) => {
 
   response.status(404).render('pages/404', getOptions(request));
 });
-
-generateSitemap();
-
-function generateSitemap() {
-  console.log('generate sitemap; hostname: ', os.hostname());
-  const generator = SitemapGenerator(os.hostname(), {
-    filepath: path.join(__dirname, 'static/sitemap.xml')
-  });
-  
-  generator.on('error', (error) => {
-    console.log('Sitemap generator error on:', error);
-  });
-  generator.on('done', () => {
-    console.log('Sitemap generator has finished.');
-  });
-  
-  generator.start();
-}
 
 function downloadFiles(response, files, zipname) {
   if (files.length === 1) {
