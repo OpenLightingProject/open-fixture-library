@@ -11,6 +11,8 @@ const browserify = require('browserify-middleware');
 const minifyHTML = require('html-minifier').minify;
 const bodyParser = require('body-parser');
 
+const generateSitemap = require('./lib/generate-sitemap.js');
+
 const plugins = require('./plugins/plugins.js');
 const Fixture = require('./lib/model/Fixture.js');
 
@@ -174,11 +176,12 @@ app.get('/rdm', (request, response) => {
 });
 
 app.get('/sitemap.xml', (request, response) => {
+  app.set('sitemap', app.get('sitemap') || generateSitemap(getOptions(request)));
   response
     .status(201)
     .attachment('sitemap.xml')
     .type('application/xml')
-    .render('pages/sitemap-xml', getOptions(request));
+    .send(app.get('sitemap'));
 });
 
 // support json encoded bodies
