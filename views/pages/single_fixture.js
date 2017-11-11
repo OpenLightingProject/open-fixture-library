@@ -44,7 +44,7 @@ module.exports = function(options) {
   str += '<a href="#" class="title">Download as &hellip;</a>';
   str += '<ul>';
   for (const plugin of Object.keys(exportPlugins)) {
-    str += `<li><a href="/${man}/${fix}.${plugin}" title="Download ${exportPlugins[plugin].name} fixture definitions">${exportPlugins[plugin].name}</a></li>`;
+    str += `<li><a href="/${man}/${fix}.${plugin}" title="Download ${exportPlugins[plugin].name} fixture definition">${exportPlugins[plugin].name}</a></li>`;
   }
   str += '</ul>';
   str += '</div>';

@@ -1,7 +1,7 @@
 module.exports = function(options) {
   const structuredData = options.structuredDataItems.map(
     data => '<script type="application/ld+json">' + JSON.stringify(data, null, process.env.NODE_ENV === 'production' ? 0 : 2) + '</script>'
-  ).join('\n  ');
+  );
 
   let str = `<!DOCTYPE html>
 <html lang="en">
@@ -16,7 +16,7 @@ module.exports = function(options) {
   <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#64b5f6">
   <script type="text/javascript" src="/js/main.js" async></script>
-  ${structuredData}
+  ${structuredData.join('\n  ')}
 </head>
 <body>
   <a href="#content" class="accessibility">Skip to content</a>
