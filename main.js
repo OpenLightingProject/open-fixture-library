@@ -163,8 +163,8 @@ app.get('/rdm', (request, response) => {
     }
 
     if (modelId in register.rdm[manufacturerId].models) {
-      const hash = (personalityIndex === undefined || personalityIndex === '') ? '' : `#rdm-personality-${personalityIndex}`;
-      response.redirect(301, `/${manufacturer.key}/${manufacturer.models[modelId]}${hash}`);
+      const locationHash = (personalityIndex === undefined || personalityIndex === '') ? '' : `#rdm-personality-${personalityIndex}`;
+      response.redirect(301, `/${manufacturer.key}/${manufacturer.models[modelId]}${locationHash}`);
       return;
     }
   }
