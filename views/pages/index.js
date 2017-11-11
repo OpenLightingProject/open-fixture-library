@@ -7,6 +7,7 @@ module.exports = function(options) {
   options.structuredDataItems.push({
     '@context': 'http://schema.org',
     '@type': 'WebSite',
+    'name': 'Open Fixture Library',
     'url': options.url,
     'potentialAction': {
       '@type': 'SearchAction',
