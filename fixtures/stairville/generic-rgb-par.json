@@ -1,0 +1,65 @@
+{
+  "name": "Generic RGB PAR",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Generic"],
+    "createDate": "2017-11-16",
+    "lastModifyDate": "2017-11-16"
+  },
+  "comment": "Generic 10mm RGB PAR",
+  "availableChannels": {
+    "Dim": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0-100"
+        }
+      ]
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0-100 Red"
+        }
+      ]
+    },
+    "Grenn": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0-100 Green"
+        }
+      ]
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "blue"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Dim",
+        "Red",
+        "Grenn",
+        "Blue"
+      ]
+    }
+  ]
+}
