@@ -1,0 +1,250 @@
+{
+  "name": "Gigabar",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Justin Hornsby"],
+    "createDate": "2017-11-16",
+    "lastModifyDate": "2017-11-16"
+  },
+  "manualURL": "http://www.prolight.co.uk/ftp-in/EQLED65_Manual.pdf",
+  "physical": {
+    "dimensions": [1000, 320, 82],
+    "weight": 13,
+    "power": 135,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Program": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "Nothing"
+        },
+        {
+          "range": [16, 23],
+          "name": "Red"
+        },
+        {
+          "range": [24, 31],
+          "name": "Green"
+        },
+        {
+          "range": [32, 39],
+          "name": "Blue"
+        },
+        {
+          "range": [40, 47],
+          "name": "RedGreen"
+        },
+        {
+          "range": [48, 55],
+          "name": "GreenBlue"
+        },
+        {
+          "range": [56, 63],
+          "name": "RedBlue"
+        },
+        {
+          "range": [64, 71],
+          "name": "RedGreenBlue"
+        },
+        {
+          "range": [72, 79],
+          "name": "Colour1"
+        },
+        {
+          "range": [80, 87],
+          "name": "Colour2"
+        },
+        {
+          "range": [88, 95],
+          "name": "Colour3"
+        },
+        {
+          "range": [96, 103],
+          "name": "Colour4"
+        },
+        {
+          "range": [104, 111],
+          "name": "Colour5"
+        },
+        {
+          "range": [112, 119],
+          "name": "Colour6"
+        },
+        {
+          "range": [120, 127],
+          "name": "Colour7"
+        },
+        {
+          "range": [128, 135],
+          "name": "Colour8"
+        },
+        {
+          "range": [136, 143],
+          "name": "Dream"
+        },
+        {
+          "range": [144, 151],
+          "name": "Meteor"
+        },
+        {
+          "range": [152, 159],
+          "name": "Fade"
+        },
+        {
+          "range": [160, 167],
+          "name": "Change"
+        },
+        {
+          "range": [168, 175],
+          "name": "Flow1"
+        },
+        {
+          "range": [176, 183],
+          "name": "Flow2"
+        },
+        {
+          "range": [184, 191],
+          "name": "Flow3"
+        },
+        {
+          "range": [192, 199],
+          "name": "Flow4"
+        },
+        {
+          "range": [200, 207],
+          "name": "Flow5"
+        },
+        {
+          "range": [208, 215],
+          "name": "Flow6"
+        },
+        {
+          "range": [216, 223],
+          "name": "Flow7"
+        },
+        {
+          "range": [224, 231],
+          "name": "Flow8"
+        },
+        {
+          "range": [232, 239],
+          "name": "Flow9"
+        },
+        {
+          "range": [240, 255],
+          "name": "Sound Active"
+        }
+      ]
+    },
+    "Master Dimmer": {
+      "type": "Intensity"
+    },
+    "Flash": {
+      "type": "Strobe"
+    },
+    "Red1": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green1": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue1": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Red2": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green2": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue2": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Red3": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green3": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue3": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Red4": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green4": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue4": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "PowerOutput1": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "OFF"
+        },
+        {
+          "range": [128, 255],
+          "name": "ON"
+        }
+      ]
+    },
+    "PowerOutput2": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "OFF"
+        },
+        {
+          "range": [128, 255],
+          "name": "ON"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "17ch",
+      "channels": [
+        "Program",
+        "Master Dimmer",
+        "Flash",
+        "Red1",
+        "Green1",
+        "Blue1",
+        "Red2",
+        "Green2",
+        "Blue2",
+        "Red3",
+        "Green3",
+        "Blue3",
+        "Red4",
+        "Green4",
+        "Blue4",
+        "PowerOutput1",
+        "PowerOutput2"
+      ]
+    }
+  ]
+}
