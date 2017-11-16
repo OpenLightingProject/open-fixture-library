@@ -1,0 +1,216 @@
+{
+  "name": "GoboTracer",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Justin Hornsby"],
+    "createDate": "2017-11-16",
+    "lastModifyDate": "2017-11-16"
+  },
+  "manualURL": "http://m.mcl-media.co.uk/download.aspx?download=e5650a64-260d-4693-a5b8-3b34459af494",
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "focus": {
+      "type": "Fixed",
+      "panMax": 540,
+      "tiltMax": 230
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan"
+    },
+    "Tilt": {
+      "type": "Tilt"
+    },
+    "Colour": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "White"
+        },
+        {
+          "range": [10, 19],
+          "name": "Red"
+        },
+        {
+          "range": [20, 29],
+          "name": "Green"
+        },
+        {
+          "range": [30, 39],
+          "name": "Blue"
+        },
+        {
+          "range": [40, 49],
+          "name": "Yellow"
+        },
+        {
+          "range": [50, 59],
+          "name": "Purple"
+        },
+        {
+          "range": [60, 69],
+          "name": "Orange"
+        },
+        {
+          "range": [70, 79],
+          "name": "Cyan"
+        },
+        {
+          "range": [80, 89],
+          "name": "White/Red"
+        },
+        {
+          "range": [90, 99],
+          "name": "Red/Green"
+        },
+        {
+          "range": [100, 109],
+          "name": "Blue/Green"
+        },
+        {
+          "range": [110, 119],
+          "name": "Blue/Yellow"
+        },
+        {
+          "range": [120, 129],
+          "name": "Yellow/Purple"
+        },
+        {
+          "range": [130, 139],
+          "name": "Orange/Purple"
+        },
+        {
+          "range": [140, 149],
+          "name": "Cyan/Orange"
+        },
+        {
+          "range": [150, 159],
+          "name": "White/Blue"
+        },
+        {
+          "range": [160, 255],
+          "name": "ColourScrollSlowToFast"
+        }
+      ]
+    },
+    "Gobo": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Open"
+        },
+        {
+          "range": [8, 15],
+          "name": "Gobo1"
+        },
+        {
+          "range": [16, 23],
+          "name": "Gobo2"
+        },
+        {
+          "range": [24, 31],
+          "name": "Gobo3"
+        },
+        {
+          "range": [32, 39],
+          "name": "Gobo4"
+        },
+        {
+          "range": [40, 47],
+          "name": "Gobo5"
+        },
+        {
+          "range": [48, 55],
+          "name": "Gobo6"
+        },
+        {
+          "range": [56, 63],
+          "name": "Gobo7"
+        },
+        {
+          "range": [64, 127],
+          "name": "Gobo Shake"
+        },
+        {
+          "range": [128, 255],
+          "name": "GoboScrollSlowToFast"
+        }
+      ]
+    },
+    "Strobe": {
+      "type": "Strobe"
+    },
+    "Dimmer": {
+      "type": "Intensity"
+    },
+    "Horizontal Vertical Run": {
+      "type": "Effect"
+    },
+    "Auto Mode": {
+      "type": "Effect"
+    },
+    "Reset": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 249],
+          "name": "No Action"
+        },
+        {
+          "range": [250, 255],
+          "name": "Reset After 5 secs"
+        }
+      ]
+    },
+    "Pan11": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan11 fine"]
+    },
+    "Tilt11ch": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt11ch fine"]
+    },
+    "Tilt11": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt11 fine"]
+    }
+  },
+  "modes": [
+    {
+      "name": "9ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Colour",
+        "Gobo",
+        "Strobe",
+        "Dimmer",
+        "Horizontal Vertical Run",
+        "Auto Mode",
+        "Reset"
+      ]
+    },
+    {
+      "name": "11ch",
+      "channels": [
+        "Pan11",
+        "Pan11 fine",
+        "Tilt11",
+        "Tilt11 fine",
+        "Colour",
+        "Gobo",
+        "Strobe",
+        "Dimmer",
+        "Horizontal Vertical Run",
+        "Auto Mode",
+        "Reset"
+      ]
+    }
+  ]
+}
