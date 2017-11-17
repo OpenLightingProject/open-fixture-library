@@ -37,67 +37,91 @@
       "capabilities": [
         {
           "range": [0, 9],
-          "name": "White"
+          "name": "White",
+          "color": "#ffffff"
         },
         {
           "range": [10, 19],
-          "name": "Red"
+          "name": "Red",
+          "color": "#ff0000"
         },
         {
           "range": [20, 29],
-          "name": "Green"
+          "name": "Green",
+          "color": "#00ff00"
         },
         {
           "range": [30, 39],
-          "name": "Blue"
+          "name": "Blue",
+          "color": "#0000ff"
         },
         {
           "range": [40, 49],
-          "name": "Yellow"
+          "name": "Yellow",
+          "color": "#ffff00"
         },
         {
           "range": [50, 59],
-          "name": "Purple"
+          "name": "Purple",
+          "color": "#ff00ff"
         },
         {
           "range": [60, 69],
-          "name": "Orange"
+          "name": "Orange",
+          "color": "#ffaa00"
         },
         {
           "range": [70, 79],
-          "name": "Cyan"
+          "name": "Cyan",
+          "color": "#00ffff"
         },
         {
           "range": [80, 89],
-          "name": "White/Red"
+          "name": "White/Red",
+          "color": "#ffffff",
+          "color2": "#ff0000"
         },
         {
           "range": [90, 99],
-          "name": "Red/Green"
+          "name": "Red/Green",
+          "color": "#ff0000",
+          "color2": "#00ff00"
         },
         {
           "range": [100, 109],
-          "name": "Blue/Green"
+          "name": "Blue/Green",
+          "color": "#0000ff",
+          "color2": "#00ff00"
         },
         {
           "range": [110, 119],
-          "name": "Blue/Yellow"
+          "name": "Blue/Yellow",
+          "color": "#0000ff",
+          "color2": "#ffff00"
         },
         {
           "range": [120, 129],
-          "name": "Yellow/Purple"
+          "name": "Yellow/Purple",
+          "color": "#ffff00",
+          "color2": "#ff00ff"
         },
         {
           "range": [130, 139],
-          "name": "Orange/Purple"
+          "name": "Orange/Purple",
+          "color": "#ffaa00",
+          "color2": "#ff00ff"
         },
         {
           "range": [140, 149],
-          "name": "Cyan/Orange"
+          "name": "Cyan/Orange",
+          "color": "#00ffff",
+          "color2": "#ffaa00"
         },
         {
           "range": [150, 159],
-          "name": "White/Blue"
+          "name": "White/Blue",
+          "color": "#ffffff",
+          "color2": "#0000ff"
         },
         {
           "range": [160, 255],
