@@ -1,4 +1,4 @@
-*[➡️ Documentation index](./index.md)*
+*[➡️ Documentation index](index.md)*
 
 # Technical Overview
 
@@ -22,7 +22,7 @@ A fixture is a lighting device that can be controlled with DMX. OFL gathers fixt
 
 Each fixture belongs to exactly one [manufacturer](#manufacturers). A manufacturer is the vendor or brand of the fixture.
 
-The fixtures are saved as [JSON](http://www.json.org/) files at `fixtures/<manufacturer-key>/<fixture-key>.json`. The fixture key is only defined by the filename. See [details about the fixture JSON format](TODO).
+The fixtures are saved as [JSON](http://www.json.org/) files at `fixtures/<manufacturer-key>/<fixture-key>.json`. The fixture key is only defined by the filename. See [details about the fixture JSON format](fixture-format.md).
 
 The JSON fixture data is parsed and processed using our [model](#fixture-model).
 
@@ -33,7 +33,7 @@ A manufacturer is a [fixture](#fixtures) vendor or brand. Each fixture belongs t
 
 All used manufacturers must be defined in [`fixtures/manufacturers.json`](../fixtures/manufacturers.json) in order that their unique keys can be registered. All fixtures of a manufacturer are saved in the `fixtures/<manufacturer-key>/` directory.
 
-We also store (optional) additional manufacturer data in `manufacturers.json` like comment, website or [RDM](TODO) data.
+We also store (optional) additional manufacturer data in `manufacturers.json` like comment, website or [RDM](https://en.wikipedia.org/wiki/RDM_(lighting)) data.
 
 ## Fixture model
 *[⬆️ Back to top](#technical-overview)*

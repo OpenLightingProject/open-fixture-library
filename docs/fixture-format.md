@@ -1,8 +1,6 @@
-# JSON fixture format
+# JSON Fixture Format
 
-Note that this fixture format is not intended to be used directly, as it has no way of versioning and may change without notice.
-
-The purpose of this document is to give a high-level overview of the concepts used. The schema provides all the details about the JSON structure.
+This document gives a high-level overview of the concepts used in the JSON format of the fixtures collected in the Open Fixture Library. The schema provides all the details about the JSON structure. Note that the format is not intended to be used directly, as it may introduce breaking, not-backwards-compatible changes at any time.
 
 ## Schema
 
