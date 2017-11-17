@@ -1,6 +1,6 @@
 {
   "name": "GoboTracer",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Justin Hornsby"],
     "createDate": "2017-11-16",
@@ -9,23 +9,30 @@
   "manualURL": "http://m.mcl-media.co.uk/download.aspx?download=e5650a64-260d-4693-a5b8-3b34459af494",
   "physical": {
     "DMXconnector": "3-pin",
+    "dimensions": [210, 285, 147],
+    "weight": 3.2,
     "bulb": {
       "type": "LED"
     },
+    "lens": {
+      "degreesMinMax": [12, 12]
+    },
     "focus": {
-      "type": "Fixed",
+      "type": "Head",
       "panMax": 540,
       "tiltMax": 230
     }
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan"
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"]
     },
     "Tilt": {
-      "type": "Tilt"
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"]
     },
-    "Colour": {
+    "Color": {
       "type": "Multi-Color",
       "capabilities": [
         {
@@ -94,7 +101,7 @@
         },
         {
           "range": [160, 255],
-          "name": "ColourScrollSlowToFast"
+          "name": "Color scroll slow-fast"
         }
       ]
     },
@@ -139,7 +146,7 @@
         },
         {
           "range": [128, 255],
-          "name": "GoboScrollSlowToFast"
+          "name": "Gobo scroll slow-fast"
         }
       ]
     },
@@ -153,7 +160,45 @@
       "type": "Effect"
     },
     "Auto Mode": {
-      "type": "Effect"
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 59],
+          "name": "Other channels on"
+        },
+        {
+          "range": [60, 84],
+          "name": "Auto mode 3"
+        },
+        {
+          "range": [85, 109],
+          "name": "Auto mode 2"
+        },
+        {
+          "range": [110, 134],
+          "name": "Auto mode 1"
+        },
+        {
+          "range": [135, 159],
+          "name": "Sound-to-light mode 0"
+        },
+        {
+          "range": [160, 184],
+          "name": "Sound-to-light mode 3"
+        },
+        {
+          "range": [185, 209],
+          "name": "Sound-to-light mode 2"
+        },
+        {
+          "range": [210, 234],
+          "name": "Sound-to-light mode 1"
+        },
+        {
+          "range": [235, 255],
+          "name": "Sound-to-light mode 0"
+        }
+      ]
     },
     "Reset": {
       "type": "Maintenance",
@@ -167,18 +212,6 @@
           "name": "Reset After 5 secs"
         }
       ]
-    },
-    "Pan11": {
-      "type": "Pan",
-      "fineChannelAliases": ["Pan11 fine"]
-    },
-    "Tilt11ch": {
-      "type": "Tilt",
-      "fineChannelAliases": ["Tilt11ch fine"]
-    },
-    "Tilt11": {
-      "type": "Tilt",
-      "fineChannelAliases": ["Tilt11 fine"]
     }
   },
   "modes": [
@@ -187,7 +220,7 @@
       "channels": [
         "Pan",
         "Tilt",
-        "Colour",
+        "Color",
         "Gobo",
         "Strobe",
         "Dimmer",
@@ -199,11 +232,11 @@
     {
       "name": "11ch",
       "channels": [
-        "Pan11",
-        "Pan11 fine",
-        "Tilt11",
-        "Tilt11 fine",
-        "Colour",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Color",
         "Gobo",
         "Strobe",
         "Dimmer",
