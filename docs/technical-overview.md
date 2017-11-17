@@ -280,7 +280,45 @@ module.exports.import = function importPluginName(fileContent, fileName, resolve
 ### Export tests
 *[⬆️ Back to top](#technical-overview)*
 
-...
+We want to run unit tests whereever possible (see section [Testing](#testing)), that's why it's possible to write plugin specific tests for exported fixtures, so called export tests. Of course they're only possible if the plugin provides an export module.
+
+A plugin's export test takes an exported fixture as argument and evaluates it against plugin-specific requirements. For example, there is a [QLC+ export test](../plugins/qlcplus/exportTests/xsd-schema-conformity.js) that compares the generated xml file with the given QLC+ xsd fixture schema (if an official xml schema is available, it should definitely be used in an export test). We run these export tests automatically using the Travis CI.
+
+Each test module should be located at `/plugins/<plugin-key>/exportTests/<export-test-key>.js`. Here's a dummy test illustrating the structure:
+
+```js
+/**
+ * @param exportFileData {string} The content of a file returned by the plugins' export module.
+ * @return {Promise} Resolve when the test passes or reject with an error if the test fails.
+**/
+module.exports = function testValueCorrectness(exportFileData) {
+  return new Promise((resolve, reject) => {
+    const parser = new xml2js.Parser();
+
+    parser.parseString(exportFileData, (parseError, xml) => {
+      if (parseError) {
+        return reject('Error parsing XML: ' + parseError.toString());
+      }
+      
+      // the plugin crashes if the name is empty, so we must ensure that this won't happen
+      // (just an example)
+      if (xml.Fixture.Name[0].length == 0) {
+        return reject('Name missing');
+      }
+
+      // everything's ok
+      return resolve();
+    });
+  });
+};
+```
+
+You can try an export test from the command line:
+
+```bash
+node cli/run-export-test.js -p <plugin> [ <fixtures> ]
+node cli/run-export-test.js -h # Help message
+```
 
 ## Testing
 *[⬆️ Back to top](#technical-overview)*
