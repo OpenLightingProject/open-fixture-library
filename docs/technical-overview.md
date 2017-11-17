@@ -31,7 +31,7 @@ The JSON fixture data is parsed and processed using our [model](#fixture-model).
 
 A manufacturer is a [fixture](#fixtures) vendor or brand. Each fixture belongs to a manufacturer.
 
-All used manufacturers must be defined in `fixtures/manufacturers.json` in order that their unique keys can be registered. All fixtures of a manufacturer are saved in the `fixtures/<manufacturer-key>/` directory.
+All used manufacturers must be defined in [`fixtures/manufacturers.json`](../fixtures/manufacturers.json) in order that their unique keys can be registered. All fixtures of a manufacturer are saved in the `fixtures/<manufacturer-key>/` directory.
 
 We also store (optional) additional manufacturer data in `manufacturers.json` like comment, website or [RDM](TODO) data.
 
@@ -42,7 +42,7 @@ Instead of parsing a [fixture](#fixtures)'s JSON data directly, it is recommende
 
 The model uses [ES2015 classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) to represent the fixtures. E. g., `Fixture.fromRepository('cameo', 'nanospot-120')` returns a `Fixture` object, instantiated with the specified fixture's data. These objects have several convenient properties that allow easy usage of the fixture data in [plugins](#plugins), [UI](#ui--website) and more.
 
-All model classes (like `Fixture`, `Manufacturer`, `Physical`, `Channel` or `Range`) are located in the `lib/model/` directory. When using the model, it should suffice to import the `Fixture` module; instances of other classes are returned by the fixture's properties:
+All model classes (like [`Fixture`](../lib/model/Fixture.js), [`Manufacturer`](../lib/model/Manufacturer.js), [`Physical`](../lib/model/Physical.js), [`Channel`](../lib/model/Channel.js) or [`Range`](../lib/model/Range.js)) are located in the [`lib/model/`](../lib/model) directory. When using the model, it should suffice to import the `Fixture` module; instances of other classes are returned by the fixture's properties:
 
 ```js
 const Fixture = require('lib/model/Fixture.js');
@@ -117,7 +117,7 @@ We use fixture features for the following purposes:
 - *(planned)* The fixture editor can only edit/import fixtures that only use editor-compatible fixture features
 - *(planned)* Search for fixtures with specific fixture features (mainly for testing)
 
-Fixture features are saved in the the `cli/fixture-features/` directory as JS modules that export an array of features. It is advised to put similar features into one module. A sample module looks like this:
+Fixture features are saved in the the [`cli/fixture-features/`](../cli/fixture-features/) directory as JS modules that export an array of features. It is advised to put similar features into one module. A sample module looks like this:
 
 ```js
 module.exports = [{
@@ -284,7 +284,7 @@ We want to run unit tests whereever possible (see section [Testing](#testing)), 
 
 A plugin's export test takes an exported fixture as argument and evaluates it against plugin-specific requirements. For example, there is a [QLC+ export test](../plugins/qlcplus/exportTests/xsd-schema-conformity.js) that compares the generated xml file with the given QLC+ xsd fixture schema (if an official xml schema is available, it should definitely be used in an export test). We run these export tests automatically using the Travis CI.
 
-Each test module should be located at `/plugins/<plugin-key>/exportTests/<export-test-key>.js`. Here's a dummy test illustrating the structure:
+Each test module should be located at `plugins/<plugin-key>/exportTests/<export-test-key>.js`. Here's a dummy test illustrating the structure:
 
 ```js
 /**
@@ -323,7 +323,23 @@ node cli/run-export-test.js -h # Help message
 ## Testing
 *[⬆️ Back to top](#technical-overview)*
 
-...
+We try to develop unit tests whereever possible. They test specific components of our project by respecting the [F.I.R.S.T Principles of Unit Testing](https://github.com/ghsukumar/SFDC_Best_Practices/wiki/F.I.R.S.T-Principles-of-Unit-Testing):
+
+- **Fast** – Tests that need too long time would annoy the workflow
+- **Isolated** – Tests should not affect each other. *Travis* helps a lot at fulfilling this principle.
+- **Repeatable** – Tests should be independent from the current environment and other side effects
+- **Self-Validating** – A test should either pass or fail, no manual inspection is needed to determine the state.
+- **Timely** – With new features, also new tests have to be implemented
+
+Tests are located in the [`tests/`](../tests/) directory (surprise!), one test per file. They can be called manually except of the GitHub tests in [`tests/github/`](../tests/github/) (see below).
+
+We use [Travis](https://travis-ci.org/) for continuous integration (CI): It runs our specified tests with every GitHub commit. The [`.travis.yml`](../.travis.yml) file lists each test as different environment, each of them is set up seperately when being executed. The exit code that a test script returns tells Travis whether it passed or failed: Tests with `0` exit code (in NodeJS: `process.exit(0);`) have passed, all others (non-zero exit codes) have failed.
+
+The GitHub repository is configured in a way that pull requests with failing tests can't be merged, that means the tests are required. To implement optional tests that don't prevent a PR from being merged, just make it always pass (with exit code `0`) and warn the developers via console output on manual calling or via a GitHub comment on automatic pull request tests.
+
+Some tests rely on the information on what files have been changed in a PR; they are called GitHub tests, are located in `tests/github/` and use the helper module [`pull-request.js`](../tests/github/pull-request.js). They need some environment variables provided by Travis to identify the current pull request and the current commit hash, one of the reasons why they can't be called manually. The `pull-request.js` module can also be used by other non-GitHub plugins to create warning comments.
+
+Running a test case against the whole fixture library would be too much effort in most cases. The test fixture collection ([`tests/test-fixtures.json`](../tests/test-fixtures.json)) provides a possibly small set of fixtures that use all available [Fixture features](#fixture-features). Running tests only against these fixtures ensures a broad coverage as well as minimal effort. The set can be generated by calling [`cli/generate-test-fixtures.js`](../cli/generate-test-fixtures.js).
 
 ## UI / Website
 *[⬆️ Back to top](#technical-overview)*
