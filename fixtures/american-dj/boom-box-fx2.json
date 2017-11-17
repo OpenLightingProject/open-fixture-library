@@ -106,8 +106,7 @@
       ]
     },
     "Red Laser": {
-      "type": "Single Color",
-      "color": "Red",
+      "type": "Effect",
       "capabilities": [
         {
           "range": [0, 127],
@@ -120,8 +119,7 @@
       ]
     },
     "Green Laser": {
-      "type": "Single Color",
-      "color": "Green",
+      "type": "Effect",
       "capabilities": [
         {
           "range": [0, 127],
@@ -219,6 +217,9 @@
         }
       ]
     },
+    "Beam Dimmer": {
+      "type": "Intensity"
+    },
     "Red Gobo": {
       "type": "Gobo",
       "capabilities": [
@@ -231,9 +232,6 @@
           "name": "Open"
         }
       ]
-    },
-    "Beam Dimmer": {
-      "type": "Intensity"
     },
     "Green Gobo": {
       "type": "Gobo",
