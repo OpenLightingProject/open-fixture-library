@@ -8,7 +8,7 @@
   },
   "manualURL": "https://www.chauvetdj.com/wp-content/uploads/2015/12/Wash_FX_UM_Rev1_WO-1.pdf",
   "physical": {
-    "dimensions": [180, 255, 215],
+    "dimensions": [215, 255, 180],
     "weight": 2.2,
     "power": 75,
     "DMXconnector": "3-pin",
@@ -36,10 +36,16 @@
       "color": "Blue"
     },
     "Strobe": {
-      "type": "Strobe"
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0-20Hz"
+        }
+      ]
     },
     "Auto Program": {
-      "type": "Program",
+      "type": "Effect",
       "capabilities": [
         {
           "range": [0, 5],
@@ -119,7 +125,7 @@
       "type": "Speed"
     },
     "Auto or Sound Program": {
-      "type": "Program Selector",
+      "type": "Effect",
       "capabilities": [
         {
           "range": [0, 10],
@@ -213,7 +219,7 @@
   },
   "modes": [
     {
-      "name": "7CH",
+      "name": "7ch",
       "channels": [
         "Red",
         "Green",
@@ -225,7 +231,7 @@
       ]
     },
     {
-      "name": "23CH",
+      "name": "23ch",
       "channels": [
         "Master Dimmer",
         "Auto Program",
