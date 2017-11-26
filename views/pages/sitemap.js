@@ -1,16 +1,21 @@
 const url = require('url');
 const sitemapGenerator = require('sitemap');
 
-const register = require('../fixtures/register.json');
-const Fixture = require('../lib/model/Fixture.js');
+const Fixture = require('../../lib/model/Fixture.js');
+
+let register;
 
 module.exports = function generateSitemap(options) {
-  const sitemap = sitemapGenerator.createSitemap({
-    hostname: url.resolve(options.url, '/'),
-    urls: getStaticUrls().concat(getRegisterUrls())
-  });
+  register = options.register;
 
-  return sitemap.toString();
+  if (!options.app.get('sitemap')) {
+    options.app.set('sitemap', sitemapGenerator.createSitemap({
+      hostname: url.resolve(options.url, '/'),
+      urls: getStaticUrls().concat(getRegisterUrls())
+    }).toString());
+  }
+
+  return options.app.get('sitemap');
 };
 
 function getStaticUrls() {
@@ -60,15 +65,15 @@ function getRegisterUrls() {
 
 function getManufacturerUrls(manKey, fixKeys) {
   let urls = [{
-    url: `/manufacturers/${manKey}`,
-    changefreq: 'monthly'
+    url: `/${manKey}`,
+    changefreq: 'weekly'
   }];
 
   for (const fixKey of fixKeys) {
     const fix = Fixture.fromRepository(manKey, fixKey);
     urls.push({
-      url: `/manufacturers/${manKey}/${fixKey}`,
-      changefreq: 'weekly',
+      url: `/${manKey}/${fixKey}`,
+      changefreq: 'monthly',
       lastmodISO: fix.meta.lastModifyDate.toISOString()
     });
   }
