@@ -11,8 +11,6 @@ const browserify = require('browserify-middleware');
 const minifyHTML = require('html-minifier').minify;
 const bodyParser = require('body-parser');
 
-const generateSitemap = require('./lib/generate-sitemap.js');
-
 const plugins = require('./plugins/plugins.js');
 const Fixture = require('./lib/model/Fixture.js');
 
@@ -167,12 +165,7 @@ app.get('/rdm', (request, response) => {
 });
 
 app.get('/sitemap.xml', (request, response) => {
-  if (!app.get('sitemap')) {
-    app.set('sitemap', generateSitemap(getOptions(request)));
-  }
-  response
-    .type('application/xml')
-    .send(app.get('sitemap'));
+  response.type('application/xml').render('pages/sitemap', getOptions(request));
 });
 
 // support json encoded bodies
@@ -309,12 +302,13 @@ function addFileReadError(text, error) {
  */
 function getOptions(request, additionalOptions={}) {
   return Object.assign({
+    baseDir: __dirname,
+    url: url.resolve(`${request.protocol}://${request.get('host')}`, request.originalUrl).replace(/\/$/, ''), // regex to remove trailing slash
+    query: request.query,
+    app: app,
     manufacturers: manufacturers,
     register: register,
-    baseDir: __dirname,
     messages: getMessages(),
     structuredDataItems: [],
-    url: url.resolve(`${request.protocol}://${request.get('host')}`, request.originalUrl).replace(/\/$/, ''), // regex to remove trailing slash
-    query: request.query
   }, additionalOptions);
 }
