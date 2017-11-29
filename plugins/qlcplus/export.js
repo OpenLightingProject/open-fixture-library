@@ -7,7 +7,7 @@ const Capability = require('../../lib/model/Capability.js');
 const Physical = require('../../lib/model/Physical.js');
 
 module.exports.name = 'QLC+';
-module.exports.version = '0.4.0';
+module.exports.version = '0.5.0';
 
 module.exports.export = function exportQLCplus(fixtures, options) {
   return fixtures.map(fixture => {
