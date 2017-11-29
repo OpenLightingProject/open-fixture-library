@@ -766,8 +766,10 @@ function checkUnusedChannels() {
  * Checks if the used channels fits to the fixture's categories and raise warnings suggesting to add/remove a category.
  */
 function checkCategories() {
-  const hasMultiColorChannel = fixture.availableChannels.some(channel => channel.type === 'Multi-Color');
-  const hasMultipleSingleColorChannels = fixture.availableChannels.filter(channel => channel.type === 'Single Color').length > 1;
+  const fixtureChannels = fixture.availableChannels.concat(fixture.matrixChannels.map(matrixCh => matrixCh.wrappedChannel));
+
+  const hasMultiColorChannel = fixtureChannels.some(channel => channel.type === 'Multi-Color');
+  const hasMultipleSingleColorChannels = fixtureChannels.filter(channel => channel.type === 'Single Color').length > 1;
   const hasColorChangerCategory = fixture.categories.includes('Color Changer');
   if (!hasColorChangerCategory && hasMultiColorChannel) {
     result.warnings.push('Category \'Color Changer\' suggested since there is a \'Multi-Color\' channel.');
@@ -788,7 +790,7 @@ function checkCategories() {
     result.warnings.push('Category \'Moving Head\' invalid since focus.type is not \'Head\'.');
   }
 
-  const hasFogChannel = fixture.availableChannels.some(channel => channel.type === 'Fog');
+  const hasFogChannel = fixtureChannels.some(channel => channel.type === 'Fog');
   const hasSmokeCategory = fixture.categories.includes('Smoke');
   const hasHazerCategory = fixture.categories.includes('Hazer');
   if (!(hasSmokeCategory || hasHazerCategory) && hasFogChannel) {
