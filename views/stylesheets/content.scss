@@ -42,6 +42,19 @@
   &.orange {
     background: $orange-500;
   }
+
+  &:target {
+    animation: card-highlight 2s ease;
+  }
+}
+
+@keyframes card-highlight {
+  0% {
+    background-color: #fd0;
+  }
+  100% {
+    background-color: #fff;
+  }
 }
 
 .list {

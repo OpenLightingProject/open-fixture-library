@@ -34,6 +34,7 @@
     "key": "prospot-250-lx",
     "name": "ProSpot 250 LX",
     "features": [
+      "has-multiple-categories",
       "floating-point-weight",
       "duplicate-channel-names",
       "fine-channel-alias",
@@ -46,6 +47,7 @@
     "key": "xr1200-wash",
     "name": "XR1200 WASH",
     "features": [
+      "has-multiple-categories",
       "fine-channel-alias",
       "uses-physical-override",
       "channels-in-multiple-modes"
@@ -56,6 +58,7 @@
     "key": "platinum-hfx",
     "name": "Platinum HFX",
     "features": [
+      "has-multiple-categories",
       "floating-point-dimensions",
       "floating-point-weight",
       "fine-channel-alias",
@@ -80,6 +83,22 @@
     "features": [
       "no-physical-data",
       "fine-channel-aliases",
+      "channels-in-multiple-modes"
+    ]
+  },
+  {
+    "man": "martin",
+    "key": "mac-viper-performance",
+    "name": "MAC Viper Performance",
+    "features": [
+      "has-multiple-categories",
+      "floating-point-weight",
+      "duplicate-channel-names",
+      "fine-channel-alias",
+      "fine-channel-capabilities",
+      "switching-fine-channels",
+      "uses-switching-channels",
+      "rdm",
       "channels-in-multiple-modes"
     ]
   },

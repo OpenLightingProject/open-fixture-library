@@ -1,11 +1,11 @@
 {
   "name": "Rush MH 7 Hybrid",
   "shortName": "MartinRushMH7",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["novasfronteiras.co"],
     "createDate": "2017-09-08",
-    "lastModifyDate": "2017-09-08"
+    "lastModifyDate": "2017-10-16"
   },
   "manualURL": "http://www.martin.com/files/files/productdocuments/11_MANUALS/999/UM_RUSHMH7_EN_D.pdf",
   "physical": {
@@ -21,6 +21,7 @@
       "degreesMinMax": [2.2, 45]
     },
     "focus": {
+      "type": "Head",
       "panMax": 540,
       "tiltMax": 250
     }

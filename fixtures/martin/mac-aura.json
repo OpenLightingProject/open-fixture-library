@@ -1,14 +1,17 @@
 {
   "name": "MAC Aura",
   "shortName": "MacAura",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["novasfronteiras.co"],
     "createDate": "2017-08-03",
-    "lastModifyDate": "2017-08-03"
+    "lastModifyDate": "2017-10-16"
   },
   "comment": "moving wash:\n- single-lens wash with fully premixed color \n- broad color palette, RGBW color mixing \n- eye-candy Aura EffectsTM",
   "manualURL": "http://www.martin.com/files/files/productdocuments/11_MANUALS/999/UM_MACAura_EN_B.pdf",
+  "rdm": {
+    "modelId": 4
+  },
   "physical": {
     "dimensions": [302, 360, 302],
     "weight": 5.6,
@@ -24,7 +27,7 @@
       "degreesMinMax": [11, 58]
     },
     "focus": {
-      "type": "Fixed",
+      "type": "Head",
       "panMax": 540,
       "tiltMax": 232
     }

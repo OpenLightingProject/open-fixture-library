@@ -55,7 +55,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
 
   try {
     fixture = new Fixture(manKey, fixKey, fixtureJson);
-    
+
     checkFixIdentifierUniqueness(uniqueValues);
     checkMeta(fixture.meta);
     checkPhysical(fixture.physical);
@@ -66,9 +66,10 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     for (const mode of fixture.modes) {
       checkMode(mode);
     }
-  
+
     checkUnusedChannels();
     checkCategories();
+    checkRdm(manKey, uniqueValues);
   }
   catch (error) {
     result.errors.push(module.exports.getErrorString('File could not be imported into model.', error));
@@ -96,6 +97,7 @@ function checkFixIdentifierUniqueness(uniqueValues) {
   module.exports.checkUniqueness(
     uniqueValues.fixKeysInMan[manKey],
     fixture.key,
+    result,
     `Fixture key '${fixture.key}' is not unique in manufacturer ${manKey} (test is not case-sensitive).`
   );
 
@@ -106,13 +108,15 @@ function checkFixIdentifierUniqueness(uniqueValues) {
   module.exports.checkUniqueness(
     uniqueValues.fixNamesInMan[manKey],
     fixture.name,
+    result,
     `Fixture name '${fixture.name}' is not unique in manufacturer ${manKey} (test is not case-sensitive).`
   );
-  
+
   // fixture.shortName
   module.exports.checkUniqueness(
     uniqueValues.fixShortNames,
     fixture.shortName,
+    result,
     `Fixture shortName '${fixture.shortName}' is not unique (test is not case-sensitive).`
   );
 }
@@ -142,7 +146,7 @@ function checkPhysical(physical, modeDescription = '') {
     for (const property of ['bulb', 'lens', 'focus']) {
       isNotEmpty(physicalJson[property], `physical.${property}${modeDescription} is empty. Please remove it or add data.`);
     }
-  
+
     if (physical.lensDegreesMin > physical.lensDegreesMax) {
       result.errors.push(`physical.lens.degreesMinMax${modeDescription} is an invalid range.`);
     }
@@ -165,7 +169,7 @@ function checkMatrix(matrix) {
   const matrixJson = matrix.jsonObject;
   const hasPixelCount = 'pixelCount' in matrixJson;
   const hasPixelKeys = 'pixelKeys' in matrixJson;
-  
+
   if (!hasPixelCount && !hasPixelKeys) {
     result.errors.push('Matrix must either define \'pixelCount\' or \'pixelKeys\'.');
     return;
@@ -242,7 +246,7 @@ function checkTemplateChannels(fixtureJson) {
  */
 function checkTemplateChannel(templateChannel) {
   checkTemplateVariables(templateChannel.name, ['$pixelKey']);
-  
+
   for (const key of templateChannel.allTemplateKeys) {
     checkTemplateVariables(key, ['$pixelKey']);
     if (!(key in fixture.usedPixelKeys)) {
@@ -254,6 +258,7 @@ function checkTemplateChannel(templateChannel) {
     module.exports.checkUniqueness(
       possibleMatrixChKeys,
       key,
+      result,
       `Generated channel key ${key} can be produced by multiple template channels (test is not case-sensitive).`
     );
   }
@@ -286,6 +291,7 @@ function checkChannel(channel) {
   module.exports.checkUniqueness(
     definedChannelKeys,
     channel.key,
+    result,
     `Channel key '${channel.key}' is already defined in another letter case.`
   );
 
@@ -312,6 +318,7 @@ function checkChannel(channel) {
     module.exports.checkUniqueness(
       definedChannelKeys,
       alias,
+      result,
       `Fine channel alias '${alias}' in channel '${channel.key}' is already defined (maybe in another letter case).`
     );
   }
@@ -325,13 +332,14 @@ function checkChannel(channel) {
     module.exports.checkUniqueness(
       definedChannelKeys,
       alias,
+      result,
       `Switching channel alias '${alias}' in channel '${channel.key}' is already defined (maybe in another letter case).`
     );
   }
   if (!channel.hasDefaultValue && channel.switchingChannelAliases.length > 0) {
     result.errors.push(`defaultValue is missing in channel '${channel.key}' although it defines switching channels.`);
   }
-  
+
   if (channel.color !== null && channel.type !== 'Single Color') {
     result.warnings.push(`color in channel '${channel.key}' defined but channel type is not 'Single Color'.`);
   }
@@ -387,7 +395,7 @@ function checkCapabilities(channel, minUsedFineness) {
 
   for (let i = 0; i < channel.capabilities.length; i++) {
     const cap = channel.capabilities[i];
-    
+
     // if one of the previous capabilities had an invalid range,
     // it doesn't make sense to check later ranges
     if (!rangesInvalid) {
@@ -431,19 +439,19 @@ function checkCapabilities(channel, minUsedFineness) {
  */
 function checkRange(channel, capNumber, minUsedFineness) {
   const cap = channel.capabilities[capNumber];
-  
+
   // first capability
   if (capNumber === 0 && cap.range.start !== 0) {
     result.errors.push(`The first range has to start at 0 in capability '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'.`);
     return false;
   }
-  
+
   // all capabilities
   if (cap.range.start > cap.range.end) {
     result.errors.push(`range invalid in capability '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'.`);
     return false;
   }
-  
+
   // not first capability
   const prevCap = capNumber > 0 ? channel.capabilities[capNumber-1] : null;
   if (capNumber > 0 && cap.range.start !== prevCap.range.end + 1) {
@@ -455,7 +463,7 @@ function checkRange(channel, capNumber, minUsedFineness) {
   if (capNumber === channel.capabilities.length - 1) {
     const rawRangeEnd = channel.jsonObject.capabilities[capNumber].range[1];
     const possibleEndValues = getPossibleEndValues(minUsedFineness);
-    
+
     if (!possibleEndValues.includes(rawRangeEnd)) {
       result.errors.push(`The last range has to end at ${possibleEndValues.join(' or ')} in capability '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'`);
       return false;
@@ -487,12 +495,14 @@ function checkMode(mode) {
   module.exports.checkUniqueness(
     modeNames,
     mode.name,
-    `Mode name '${mode.shortName}' not unique (test is not case-sensitive).`
+    result,
+    `Mode name '${mode.name}' is not unique (test is not case-sensitive).`
   );
   module.exports.checkUniqueness(
     modeShortNames,
     mode.shortName,
-    `Mode shortName '${mode.shortName}' not unique (test is not case-sensitive).`
+    result,
+    `Mode shortName '${mode.shortName}' is not unique (test is not case-sensitive).`
   );
 
   if (/\bmode\b/i.test(mode.name) || /\bmode\b/i.test(mode.shortName)) {
@@ -723,7 +733,7 @@ function checkCoarserChannelsInMode(channel, mode) {
  * @param {!Set<string>} usedChannelKeysInMode Which channels are already used in this mode. Also counts switched to channels.
  */
 function checkChannelUniquenessInMode(channelKey, mode, usedChannelKeysInMode) {
-  module.exports.checkUniqueness(usedChannelKeysInMode, channelKey, `Channel '${channelKey}' is used more than once in ${mode.shortName}`);
+  module.exports.checkUniqueness(usedChannelKeysInMode, channelKey, result, `Channel '${channelKey}' is used more than once in ${mode.shortName}`);
 }
 
 function checkPanTiltMaxInPhysical(channel, mode) {
@@ -792,6 +802,50 @@ function checkCategories() {
   }
 }
 
+/**
+ * Checks if everything regarding this fixture's RDM data is correct.
+ * @param {!string} manKey The manufacturer key.
+ * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurences are appended.
+ */
+function checkRdm(manKey, uniqueValues) {
+  if (fixture.rdm === null) {
+    // modes may not have a rdmPersonalityIndex property
+    for (const mode of fixture.modes) {
+      if (mode.rdmPersonalityIndex !== null) {
+        result.errors.push(`Mode '${mode.shortName}' has RDM data, but fixture has not.`);
+      }
+    }
+    return;
+  }
+
+  // fixture.rdm.modelId must be unique per manufacturer
+  if (!(manKey in uniqueValues.fixRdmIdsInMan)) {
+    uniqueValues.fixRdmIdsInMan[manKey] = new Set();
+  }
+  module.exports.checkUniqueness(
+    uniqueValues.fixRdmIdsInMan[manKey],
+    '' + fixture.rdm.modelId,
+    result,
+    `Fixture RDM model ID '${fixture.rdm.modelId}' is not unique in manufacturer ${manKey}.`
+  );
+
+  if (fixture.manufacturer.rdmId === null) {
+    result.errors.push(`Fixture has RDM data, but manufacturer '${fixture.manufacturer.shortName}' has not.`);
+  }
+
+  let rdmPersonalityIndices = new Set();
+  for (const mode of fixture.modes) {
+    if (mode.rdmPersonalityIndex !== null) {
+      module.exports.checkUniqueness(
+        rdmPersonalityIndices,
+        '' + mode.rdmPersonalityIndex,
+        result,
+        `RDM personality index '${mode.rdmPersonalityIndex}' in mode '${mode.shortName}' is not unique in the fixture.`
+      );
+    }
+  }
+}
+
 // returns whether the object contains data
 function isNotEmpty(obj, messageIfEmpty) {
   if (obj !== undefined) {
@@ -809,19 +863,20 @@ function isNotEmpty(obj, messageIfEmpty) {
  * If the Set already contains the given value, add an error. Test is not case-sensitive.
  * @param {!Set<string>} set The Set in which all unique values are stored.
  * @param {!string} value The string value to examine.
+ * @param {!ResultData} result The object to add the error message to (if any).
  * @param {!string} messageIfNotUnique If the value is not unique, add this message to errors.
  */
-module.exports.checkUniqueness = function checkUniqueness(set, value, messageIfNotUnique) {
+module.exports.checkUniqueness = function checkUniqueness(set, value, result, messageIfNotUnique) {
   if (set.has(value.toLowerCase())) {
     result.errors.push(messageIfNotUnique);
   }
   set.add(value.toLowerCase());
-}
+};
 
 
 module.exports.getErrorString = function getErrorString(description, error) {
   return description + ' ' + util.inspect(error, false, null);
-}
+};
 
 function arraysEqual(a, b) {
   if (a === b) {

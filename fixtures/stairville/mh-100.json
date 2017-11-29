@@ -1,0 +1,195 @@
+{
+  "name": "MH-100",
+  "shortName": "svlmh100",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2017-10-28",
+    "lastModifyDate": "2017-10-28"
+  },
+  "manualURL": "https://images.thomann.de/pics/atg/atgdata/document/manual/c_325876_en_online.pdf",
+  "physical": {
+    "dimensions": [260, 310, 148],
+    "weight": 4.9,
+    "power": 150,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "36 × 3 W LEDs (8 × red, 10 × green, 10 × blue, 8 × white)"
+    },
+    "lens": {
+      "degreesMinMax": [8, 8]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 630,
+      "tiltMax": 220
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"]
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"]
+    },
+    "Pan/Tilt Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Speed fast-slow"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity"
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "White": {
+      "type": "Single Color",
+      "color": "White"
+    },
+    "Color Temperature": {
+      "type": "Color Temperature",
+      "capabilities": [
+        {
+          "range": [0, 35],
+          "name": "Blackout, all LEDs off"
+        },
+        {
+          "range": [36, 55],
+          "name": "Color Temperature 3200K"
+        },
+        {
+          "range": [56, 75],
+          "name": "Color Temperature 3400K"
+        },
+        {
+          "range": [76, 95],
+          "name": "Color Temperature 4200K"
+        },
+        {
+          "range": [96, 115],
+          "name": "Color Temperature 4900K"
+        },
+        {
+          "range": [116, 135],
+          "name": "Color Temperature 5600K"
+        },
+        {
+          "range": [136, 175],
+          "name": "Color Temperature 6500K"
+        },
+        {
+          "range": [176, 195],
+          "name": "Color Temperature 7200K"
+        },
+        {
+          "range": [196, 215],
+          "name": "Color Temperature 8000K"
+        },
+        {
+          "range": [216, 235],
+          "name": "Color Temperature 8500K"
+        },
+        {
+          "range": [236, 255],
+          "name": "Color Temperature 10000K"
+        }
+      ]
+    },
+    "Constant Color": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 14],
+          "name": "Blackout, all LEDs off"
+        },
+        {
+          "range": [15, 255],
+          "name": "One of 28 preprogrammed colors"
+        }
+      ]
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 19],
+          "name": "Off"
+        },
+        {
+          "range": [20, 255],
+          "name": "Strobe speed"
+        }
+      ]
+    },
+    "Special Functions": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 99],
+          "name": "No functions"
+        },
+        {
+          "range": [100, 199],
+          "name": "Sound control"
+        },
+        {
+          "range": [200, 255],
+          "name": "Reset (hold 5s)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "9-Channel",
+      "shortName": "9ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "14-Channel",
+      "shortName": "14ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Temperature",
+        "Constant Color",
+        "Strobe",
+        "Special Functions"
+      ]
+    }
+  ]
+}

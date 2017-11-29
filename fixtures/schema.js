@@ -182,6 +182,7 @@ const ChannelReference = [
 const Mode = schema({
   'name': NonEmptyString,
   '?shortName': NonEmptyString, // if not set: use name
+  '?rdmPersonalityIndex': Number.min(1).step(1),
   '?physical': Physical, // overrides fixture's Physical
   'channels': Array.of(1, Infinity, ChannelReference),
   '*': Function
@@ -205,6 +206,11 @@ const Fixture = schema({
   },
   '?comment': NonEmptyMultiLineString,
   '?manualURL': URL,
+  '?rdm': schema({
+    'modelId': Number.min(0).max(65535).step(1),
+    '?softwareVersion': String,
+    '*': Function
+  }),
   '?physical': Physical,
   '?matrix': Matrix,
   '?availableChannels': {
@@ -222,6 +228,7 @@ const Manufacturers = schema({
     'name': NonEmptyString,
     '?comment': NonEmptyMultiLineString,
     '?website': URL,
+    '?rdmId': Number.min(0).max(65536).step(1),
     '*': Function
   }
 });

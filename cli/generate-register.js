@@ -8,14 +8,18 @@ let register = {
   filesystem: {},
   manufacturers: {},
   categories: {},
-  contributors: {}
+  contributors: {},
+  rdm: {}
 };
 let categories = {};
 let contributors = {};
+let rdm = {};
 
 const fixturePath = path.join(__dirname, '..', 'fixtures');
 
 try {
+  const manufacturers = JSON.parse(fs.readFileSync(path.join(fixturePath, 'manufacturers.json'), 'utf8'));
+
   // add all fixture.json files to the register
   for (const manKey of fs.readdirSync(fixturePath).sort()) {
     const manDir = path.join(fixturePath, manKey);
@@ -23,6 +27,13 @@ try {
     // only directories
     if (fs.statSync(manDir).isDirectory()) {
       register.manufacturers[manKey] = [];
+
+      if ('rdmId' in manufacturers[manKey]) {
+        rdm[manufacturers[manKey].rdmId] = {
+          key: manKey,
+          models: {}
+        };
+      }
 
       for (const filename of fs.readdirSync(manDir).sort()) {
         const ext = path.extname(filename);
@@ -63,6 +74,11 @@ try {
             }
             contributors[contributor].push(manKey + '/' + fixKey);
           }
+
+          // add to rdm register
+          if ('rdm' in fixData) {
+            rdm[manufacturers[manKey].rdmId].models[fixData.rdm.modelId] = fixKey;
+          }
         }
       }
     }
@@ -88,14 +104,34 @@ for (const contributor of sortedContributors) {
   register.contributors[contributor] = contributors[contributor];
 }
 
+// the higher the value, the higher the rank if the dates are the same
+const lastActionRankMapping = {
+  "modified": 10,
+  "imported": 20,
+  "created": 30
+};
+
 // add fixture list sorted by lastModifyDate
 register.lastUpdated = Object.keys(register.filesystem).sort((a, b) => {
   const fixA = register.filesystem[a];
   const fixB = register.filesystem[b];
   const dateDelta = new Date(fixB.lastModifyDate) - new Date(fixA.lastModifyDate);
+  const actionDelta = lastActionRankMapping[fixB.lastAction] - lastActionRankMapping[fixA.lastAction];
   const keyDelta = a > b ? 1 : a < b ? -1 : 0;
-  return dateDelta !== 0 ? dateDelta : keyDelta;
+  return dateDelta !== 0 ? dateDelta : (actionDelta !== 0 ? actionDelta : keyDelta);
 });
+
+// copy sorted RDM data into register
+for (const manId of Object.keys(rdm).sort()) {
+  register.rdm[manId] = {
+    key: rdm[manId].key,
+    models: {}
+  };
+
+  for (const fixId of Object.keys(rdm[manId].models).sort()) {
+    register.rdm[manId].models[fixId] = rdm[manId].models[fixId];
+  }
+}
 
 const filename = path.join(fixturePath, (process.argv.length === 3 ? process.argv[2] : 'register.json'));
 
