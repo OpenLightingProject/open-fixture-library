@@ -144,15 +144,15 @@ function addPhysical(xmlMode, physical) {
   let xmlPhysical = xmlMode.element({
     Physical: {
       Bulb: {
-        '@ColourTemperature': physical.bulbColorTemperature || 0,
         '@Type': physical.bulbType || 'Other',
-        '@Lumens': physical.bulbLumens || 0
+        '@Lumens': physical.bulbLumens || 0,
+        '@ColourTemperature': physical.bulbColorTemperature || 0
       },
       Dimensions: {
+        '@Weight': physical.weight || 0,
         '@Width': Math.round(physical.width) || 0,
         '@Height': Math.round(physical.height) || 0,
-        '@Depth': Math.round(physical.depth) || 0,
-        '@Weight': physical.weight || 0
+        '@Depth': Math.round(physical.depth) || 0
       },
       Lens: {
         '@Name': physical.lensName || 'Other',
@@ -161,8 +161,8 @@ function addPhysical(xmlMode, physical) {
       },
       Focus: {
         '@Type': physical.focusType || 'Fixed',
-        '@TiltMax': physical.focusTiltMax || 0,
-        '@PanMax': physical.focusPanMax || 0
+        '@PanMax': physical.focusPanMax || 0,
+        '@TiltMax': physical.focusTiltMax || 0
       }
     }
   });
@@ -171,7 +171,7 @@ function addPhysical(xmlMode, physical) {
     xmlPhysical.element({
       Technical: {
         '@DmxConnector': physical.DMXconnector || 'Other',
-        '@PowerConsumption': physical.power || 0
+        '@PowerConsumption': Math.round(physical.power) || 0
       }
     });
   }
