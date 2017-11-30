@@ -1,6 +1,6 @@
 module.exports = function(options) {
   options.title = 'Page not found - Open Fixture Library';
-  
+
   let str = require('../includes/header.js')(options);
 
   str += '<h1>404 - Not found</h1>';

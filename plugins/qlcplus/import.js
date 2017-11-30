@@ -9,23 +9,23 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
 
   parser.parseString(str, (parseError, xml) => {
     if (parseError) {
-      reject(`Error parsing '${filename}' as XML.\n` + parseError.toString());
+      reject(`Error parsing '${filename}' as XML.\n${parseError.toString()}`);
       return;
     }
 
-    let out = {
+    const out = {
       manufacturers: {},
       fixtures: {},
       warnings: {}
     };
-    let fix = {};
+    const fix = {};
 
     try {
       const fixture = xml.FixtureDefinition;
       fix.name = fixture.Model[0];
 
-      const manKey = fixture.Manufacturer[0].toLowerCase().replace(/[^a-z0-9\-]+/g, '-');
-      const fixKey = manKey + '/' + fix.name.toLowerCase().replace(/[^a-z0-9\-]+/g, '-');
+      const manKey = fixture.Manufacturer[0].toLowerCase().replace(/[^a-z0-9-]+/g, '-');
+      const fixKey = `${manKey}/${fix.name.toLowerCase().replace(/[^a-z0-9-]+/g, '-')}`;
       out.warnings[fixKey] = ['Please check if manufacturer is correct.'];
 
       fix.categories = [fixture.Type[0]];
@@ -44,10 +44,10 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
       fix.physical = {};
       fix.availableChannels = {};
 
-      let doubleByteChannels = [];
+      const doubleByteChannels = [];
 
       for (const channel of fixture.Channel || []) {
-        let ch = {
+        const ch = {
           type: channel.Group[0]._,
           fineChannelAliases: []
         };
@@ -84,7 +84,7 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
 
         ch.capabilities = [];
         for (const capability of channel.Capability || []) {
-          let cap = {
+          const cap = {
             range: [parseInt(capability.$.Min), parseInt(capability.$.Max)],
             name: capability._
           };
@@ -112,7 +112,7 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
 
       for (const chKey of doubleByteChannels) {
         try {
-          const fineChannelRegex = /\sfine$|16[\-\s]*bit$/i;
+          const fineChannelRegex = /\sfine$|16[-_\s]*bit$/i;
           if (!fineChannelRegex.test(chKey)) {
             throw new Error('The corresponding coarse channel could not be detected.');
           }
@@ -145,11 +145,11 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
       fix.modes = [];
 
       for (const mode of fixture.Mode || []) {
-        let mod = {
+        const mod = {
           name: mode.$.Name
         };
 
-        let physical = {};
+        const physical = {};
 
         if ('Dimensions' in mode.Physical[0]) {
           const dimWidth = parseInt(mode.Physical[0].Dimensions[0].$.Width);
@@ -183,7 +183,7 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
         }
 
         if ('Bulb' in mode.Physical[0]) {
-          let bulbData = {};
+          const bulbData = {};
 
           const bulbType = mode.Physical[0].Bulb[0].$.Type;
           if (bulbType !== '' && (!('bulb' in fix.physical) || fix.physical.bulb.type !== bulbType)) {
@@ -206,7 +206,7 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
         }
 
         if ('Lens' in mode.Physical[0]) {
-          let lensData = {};
+          const lensData = {};
 
           const lensName = mode.Physical[0].Lens[0].$.Name;
           if (lensName !== '' && (!('lens' in fix.physical) || fix.physical.lens.name !== lensName)) {
@@ -230,7 +230,7 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
         }
 
         if ('Focus' in mode.Physical[0]) {
-          let focusData = {};
+          const focusData = {};
 
           const focusType = mode.Physical[0].Focus[0].$.Type;
           if (focusType !== '' && (!('focus' in fix.physical) || fix.physical.focus.type !== focusType)) {
@@ -274,7 +274,7 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
             }
 
             const channelList = head.Channel.map(ch => mod.channels[parseInt(ch)]);
-            fix.heads[mod.name + ' Head ' + (index + 1)] = channelList;
+            fix.heads[`${mod.name} Head ${index + 1}`] = channelList;
           });
           out.warnings[fixKey].push('Please rename the heads in a meaningful way.');
         }
@@ -289,7 +289,7 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
       out.fixtures[fixKey] = fix;
     }
     catch (parseError) {
-      reject(`Error parsing '${filename}'.\n` + parseError.toString());
+      reject(`Error parsing '${filename}'.\n${parseError.toString()}`);
       return;
     }
 

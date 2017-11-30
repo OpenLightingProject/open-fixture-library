@@ -12,49 +12,49 @@ const testFixtures = require('../test-fixtures.json').map(
 
 // generate diff tasks describing the diffed plugins, fixtures and the reason for diffing (which component has changed)
 pullRequest.checkEnv()
-.catch(error => {
-  console.error(error);
-  process.exit(0); // if the environment is not correct, just exit without failing
-})
-.then(() => pullRequest.init())
-.then(prData => pullRequest.fetchChangedComponents())
-.then(changedComponents => {
-  const allPlugins = exportPlugins.filter(plugin => !changedComponents.added.exports.includes(plugin));
-  const allTestFixtures = testFixtures.filter(fixture => !changedComponents.added.fixtures.includes(fixture));
+  .catch(error => {
+    console.error(error);
+    process.exit(0); // if the environment is not correct, just exit without failing
+  })
+  .then(() => pullRequest.init())
+  .then(prData => pullRequest.fetchChangedComponents())
+  .then(changedComponents => {
+    const allPlugins = exportPlugins.filter(plugin => !changedComponents.added.exports.includes(plugin));
+    const allTestFixtures = testFixtures.filter(fixture => !changedComponents.added.fixtures.includes(fixture));
 
-  let lines = [];
+    let lines = [];
 
-  if (changedComponents.modified.model) {
-    lines = lines.concat(getModelMessage(allPlugins, allTestFixtures));
-  }
-  else {
-    for (const plugin of changedComponents.modified.exports) {
-      lines = lines.concat(getPluginMessage(plugin, allTestFixtures));
+    if (changedComponents.modified.model) {
+      lines = lines.concat(getModelMessage(allPlugins, allTestFixtures));
     }
-  }
+    else {
+      for (const plugin of changedComponents.modified.exports) {
+        lines = lines.concat(getPluginMessage(plugin, allTestFixtures));
+      }
+    }
 
-  for (const fixture of changedComponents.modified.fixtures) {
-    lines = lines.concat(getFixtureMessage(allPlugins, `${fixture[0]}/${fixture[1]}`));
-  }
+    for (const fixture of changedComponents.modified.fixtures) {
+      lines = lines.concat(getFixtureMessage(allPlugins, `${fixture[0]}/${fixture[1]}`));
+    }
 
-  if (lines.length > 0) {
-    lines = [
-      'You can run view your uncommited changes in plugin exports manually by executing:',
-      '`$ node cli/diff-plugin-outputs.js -p <plugin name> <fixtures>`',
-      ''
-    ].concat(lines);
-  }
+    if (lines.length > 0) {
+      lines = [
+        'You can run view your uncommited changes in plugin exports manually by executing:',
+        '`$ node cli/diff-plugin-outputs.js -p <plugin name> <fixtures>`',
+        ''
+      ].concat(lines);
+    }
 
-  return pullRequest.updateComment({
-    filename: path.relative(path.join(__dirname, '../../'), __filename),
-    name: 'Plugin export diff',
-    lines: lines
+    return pullRequest.updateComment({
+      filename: path.relative(path.join(__dirname, '../../'), __filename),
+      name: 'Plugin export diff',
+      lines: lines
+    });
+  })
+  .catch(error => {
+    console.error(error);
+    process.exit(1);
   });
-})
-.catch(error => {
-  console.error(error);
-  process.exit(1);
-});
 
 function getModelMessage(plugins, fixtures) {
   let lines = [];
@@ -66,7 +66,7 @@ function getModelMessage(plugins, fixtures) {
   for (const plugin of plugins) {
     lines = lines.concat(getSubPluginMessage(plugin, fixtures));
   }
-  
+
   return lines;
 }
 
@@ -83,7 +83,7 @@ function getPluginMessage(plugin, fixtures) {
   }
   lines = lines.concat(pullRequest.getTestFixturesMessage(fixtures));
   lines = lines.concat(diffMessage, '');
-  
+
   return lines;
 }
 
@@ -96,7 +96,7 @@ function getFixtureMessage(plugins, fixture) {
   for (const plugin of plugins) {
     lines = lines.concat(getSubPluginMessage(plugin, [fixture]));
   }
-  
+
   return lines;
 }
 
@@ -138,7 +138,7 @@ function getDiffMessage(plugin, fixtures) {
     lines.push('*Added files*');
     lines = lines.concat(output.addedFiles.map(file => `- ${file}`), '');
   }
-  
+
   for (const file of Object.keys(output.changedFiles)) {
     lines.push('<details>');
     lines.push(`<summary><b>Changed outputted file <code>${file}</code></b></summary>`, '');

@@ -2,14 +2,14 @@ const schema = require('js-schema');
 
 /**
  * Everytime we update the schema, this version needs to be incremented using semantic versionsing.
- * 
+ *
  * Given a version number MAJOR.MINOR.PATCH, increment the:
  * 1. MAJOR version when you make incompatible schema changes,
  * 2. MINOR version when you add functionality in a backwards-compatible manner, and
  * 3. PATCH version when you make backwards-compatible bug fixes.
- * 
+ *
  * See http://semver.org
- * 
+ *
  * @type {string}
  */
 module.exports.VERSION = '2.1.1';
@@ -24,10 +24,10 @@ module.exports.VERSION = '2.1.1';
  *
  * we use `'*': Function` to disallow additional properties
  * since JSON has no function type.
- * 
+ *
  * The best is to read this from bottom to top, as the bottom
  * is more general.
- * 
+ *
  * See README.md for a high-level overview.
  */
 
@@ -178,24 +178,26 @@ const Manufacturers = schema({
 module.exports.Fixture = Fixture;
 module.exports.Manufacturers = Manufacturers;
 
-let properties = {
-  manufacturer:     Manufacturers.toJSON().additionalProperties.properties,
-  fixture:          Fixture.toJSON().properties,
-  mode:             Mode.toJSON().properties,
-  channelKey:       ChannelKey.schema.toJSON(),
-  channelAliasKey:  ChannelAliasKey.schema.toJSON(),
-  channel:          Channel.toJSON().properties,
-  capability:       Capability.toJSON().properties,
-  physical:         Physical.toJSON().properties,
-  category:         Category.toJSON(),
-  color:            Color.toJSON(),
-  ISODate:          ISODate.toJSON(),
-  URL:              URL.toJSON(),
-  DMXValue:         DMXValue.toJSON()
+/* eslint-disable key-spacing */
+const properties = {
+  manufacturer:    Manufacturers.toJSON().additionalProperties.properties,
+  fixture:         Fixture.toJSON().properties,
+  mode:            Mode.toJSON().properties,
+  channelKey:      ChannelKey.schema.toJSON(),
+  channelAliasKey: ChannelAliasKey.schema.toJSON(),
+  channel:         Channel.toJSON().properties,
+  capability:      Capability.toJSON().properties,
+  physical:        Physical.toJSON().properties,
+  category:        Category.toJSON(),
+  color:           Color.toJSON(),
+  ISODate:         ISODate.toJSON(),
+  URL:             URL.toJSON(),
+  DMXValue:        DMXValue.toJSON()
 };
 properties.meta  = properties.fixture.meta.properties;
 properties.bulb  = properties.physical.bulb.properties;
 properties.lens  = properties.physical.lens.properties;
 properties.focus = properties.physical.focus.properties;
+/* eslint-enable key-spacing */
 
 module.exports.properties = properties;

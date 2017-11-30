@@ -37,7 +37,7 @@ module.exports = (function() {
    * @private
    * @param {!Node} field The field or group to validate
    * @param {?ValidityState} validity the Validity State of the field or null
-   * @return {?String} The error message or null
+   * @returns {?string} The error message or null
    */
   var checkCustomError = function(field, validity) {
     if (field.matches('.fixture-name input')) {
@@ -76,7 +76,7 @@ module.exports = (function() {
       if (/\bfine\b|\d+(?:\s|-|_)*bit|\bMSB\b|\bLSB\b/i.test(field.value)) {
         return 'Please don\'t create fine channels here, set its resolution below instead.';
       }
-      
+
       if (/^[^A-Z0-9]/.test(field.value)) {
         return 'Please start with an uppercase letter or a number.';
       }
@@ -94,7 +94,7 @@ module.exports = (function() {
       || (field.matches('.capability .rangeEnd') && validity.rangeOverflow)) {
       return 'Ranges must not overlap.';
     }
-    
+
     return null;
   };
 
@@ -102,7 +102,7 @@ module.exports = (function() {
    * Validate a form field
    * @public
    * @param {!Node} field The field or group to validate
-   * @return {?String} The error message or null
+   * @returns {?string} The error message or null
    */
   validate.hasError = function(field) {
     if (field.disabled || field.type === 'file' || field.type === 'reset' || field.type === 'submit' || field.type === 'button') {
@@ -185,7 +185,7 @@ module.exports = (function() {
    * Mark a field if it has an error
    * @public
    * @param {!Node} field The field to show an error message for
-   * @param {?Boolean} error True if the field should be marked
+   * @param {?boolean} error True if the field should be marked
    */
   validate.markError = function(field, error) {
     field.classList[error ? 'add' : 'remove'](settings.errorClass);
@@ -195,7 +195,7 @@ module.exports = (function() {
    * Show an error message on a field
    * @public
    * @param {!Node} field The field or group to show an error message for
-   * @param {?String} error The error message to show, null to remove the error
+   * @param {?string} error The error message to show, null to remove the error
    */
   validate.showError = function(field, error) {
     var errorMsg = field.closest(settings.groupSelector).querySelector(settings.messageSelector);
@@ -208,8 +208,8 @@ module.exports = (function() {
    * Show an error message on a field
    * @public
    * @param {!Node} group The group to check for errors
-   * @param {?Boolean} removeErrors true to remove all errors instead of checking
-   * @return {?String} The error message to show or null
+   * @param {?boolean} removeErrors true to remove all errors instead of checking
+   * @returns {?string} The error message to show or null
    */
   validate.validateGroup = function(group, removeErrors) {
     var errors = [];
@@ -232,7 +232,7 @@ module.exports = (function() {
   /**
    * Add the `novalidate` attribute to all forms
    * @private
-   * @param {?Boolean} remove If true, remove the `novalidate` attribute
+   * @param {?boolean} remove If true, remove the `novalidate` attribute
    */
   var addNoValidate = function(remove) {
     var forms = document.querySelectorAll(settings.selector);
@@ -260,7 +260,7 @@ module.exports = (function() {
       if (!(event.target instanceof Element)) {
         return;
       }
-      
+
       var group = event.target.closest(settings.groupSelector);
       if (!group) {
         return;
@@ -302,7 +302,7 @@ module.exports = (function() {
    * @private
    * @param {Event} event The submit event
    */
-  var submitHandler = function (event) {
+  var submitHandler = function(event) {
     var form = event.target;
 
     // Only run on forms flagged for validation
@@ -350,7 +350,7 @@ module.exports = (function() {
    * @private
    * @param {Event} event The submit event
    */
-  var resetHandler = function (event) {
+  var resetHandler = function(event) {
     var form = event.target;
 
     // Only run on forms flagged for validation
@@ -371,7 +371,7 @@ module.exports = (function() {
    * Destroy the current initialization.
    * @public
    */
-  validate.destroy = function () {
+  validate.destroy = function() {
     // Remove event listeners
     document.removeEventListener('blur', blurHandler, false);
     document.removeEventListener('submit', submitHandler, false);
@@ -390,11 +390,16 @@ module.exports = (function() {
   };
 
   /**
+   * @callback validateOnSubmitCallback
+   * @param {HTMLFormElement} form the form element.
+   */
+
+  /**
    * Initialize Validate
    * @public
-   * @param {Function(form)} onSubmit function to call after successful validation
+   * @param {validateOnSubmitCallback} onSubmit function to call after successful validation
    */
-  validate.init = function (onSubmit) {
+  validate.init = function(onSubmit) {
     // Destroy any existing initializations
     validate.destroy();
 

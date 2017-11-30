@@ -1,10 +1,10 @@
 const path = require('path');
 const fs = require('fs');
 
-let plugins = {};
+const plugins = {};
 
 for (const pluginKey of fs.readdirSync(__dirname)) {
-  let plugin = {
+  const plugin = {
     import: null,
     export: null,
     exportTests: {}
@@ -26,7 +26,7 @@ for (const pluginKey of fs.readdirSync(__dirname)) {
       console.error(error.message);
     }
   }
-  
+
   const exportPath = path.join(pluginPath, 'export.js');
   if (fs.existsSync(exportPath)) {
     try {
@@ -55,7 +55,7 @@ for (const pluginKey of fs.readdirSync(__dirname)) {
 
 module.exports.all = plugins;
 
-let exportFunctions = {};
+const exportFunctions = {};
 for (const pluginKey of Object.keys(plugins)) {
   const plugin = plugins[pluginKey];
   if (plugin.export !== null) {
@@ -64,7 +64,7 @@ for (const pluginKey of Object.keys(plugins)) {
 }
 module.exports.export = exportFunctions;
 
-let importFunctions = {};
+const importFunctions = {};
 for (const pluginKey of Object.keys(plugins)) {
   const plugin = plugins[pluginKey];
   if (plugin.import !== null) {

@@ -6,14 +6,14 @@ module.exports = function testAttributesCorrectness(exportFileData) {
 
     parser.parseString(exportFileData, (parseError, xml) => {
       if (parseError) {
-        return reject('Error parsing XML: ' + parseError.toString());
+        return reject(`Error parsing XML: ${parseError.toString()}`);
       }
 
-      let errors = [];
+      const errors = [];
 
       const attrDefs = xml.Device.Attributes[0].AttributesDefinition;
       for (const attrDef of attrDefs) {
-        let usedNames = [];
+        const usedNames = [];
         const attrName = attrDef.$.id;
 
         for (const attr of attrDef.ThisAttribute) {

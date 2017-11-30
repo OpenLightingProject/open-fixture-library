@@ -48,11 +48,11 @@ fs.readFile(filename, 'utf8', (error, data) => {
       createPullRequest(result, (error, pullRequestUrl) => {
         if (error) {
           console.log(JSON.stringify(result, null, 2));
-          console.error('Error: ' + error);
+          console.error(`Error: ${error}`);
           return;
         }
 
-        console.log('URL: ' + pullRequestUrl);
+        console.log(`URL: ${pullRequestUrl}`);
       });
     }
     else {

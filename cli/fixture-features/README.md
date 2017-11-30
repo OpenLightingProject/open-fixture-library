@@ -16,8 +16,8 @@ module.exports = [{
 
   /**
    * Required. Checks if the given fixture uses this module's feature.
-   * @param {Fixture} fixture - The fixture data
-   * @return {Boolean} true if fixture uses the feature
+   * @param {Fixture} fixture The fixture data
+   * @returns {boolean} true if fixture uses the feature
    */
   hasFeature: fixture => {
     return fixture.fineChannels.length > 0;

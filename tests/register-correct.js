@@ -22,9 +22,9 @@ try {
   const diffs = diff.diffJson(actualRegister, testRegister);
 
   if (diffs.length > 1) {
-    console.error(colors.red('[FAIL]') + ' Generated and saved registers are different (see diff below). Please add the regenerated version to the repository!\n');
+    console.error(`${colors.red('[FAIL]')} Generated and saved registers are different (see diff below). Please add the regenerated version to the repository!\n`);
 
-    diffs.forEach(function(part) {
+    diffs.forEach(part => {
       if (part.added) {
         process.stdout.write(colors.green(part.value));
       }
@@ -40,11 +40,11 @@ try {
   }
 }
 catch (readError) {
-  console.error(colors.red('[FAIL]') + ' Could not read and parse register files.\n', readError);
+  console.error(`${colors.red('[FAIL]')} Could not read and parse register files.\n`, readError);
   process.exit(1);
 }
 
 fs.unlinkSync(testRegisterPath);
 
-console.log(colors.green('[PASS]') + ' Generated and saved registers are the same.');
+console.log(`${colors.green('[PASS]')} Generated and saved registers are the same.`);
 process.exit(0);

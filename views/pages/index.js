@@ -1,5 +1,6 @@
 const url = require('url');
 
+const svg = require('../includes/svg.js');
 const exportPlugins = require('../../plugins/plugins.js').export;
 
 module.exports = function(options) {
@@ -11,7 +12,7 @@ module.exports = function(options) {
     'url': options.url,
     'potentialAction': {
       '@type': 'SearchAction',
-      'target': url.resolve(options.url, '/search') + '?q={search_term_string}',
+      'target': `${url.resolve(options.url, '/search')}?q={search_term_string}`,
       'query-input': 'required name=search_term_string'
     }
   });
@@ -23,11 +24,11 @@ module.exports = function(options) {
     'url': options.url,
     'logo': url.resolve(options.url, '/ofl-logo.svg')
   });
-  
+
   let str = require('../includes/header.js')(options);
 
   str += '<header class="fixture-header">';
-  
+
   str += '<div class="title">';
   str += '<h1>Open Fixture Library</h1>';
   str += '</div>';
@@ -61,7 +62,7 @@ module.exports = function(options) {
 
     str += `<a href="/${fixtureKey}">${name}<span class="hint">${action} ${dateHtml}</span></a>`;
   }
-  str += '<a href="/manufacturers" class="card dark blue big-button" title="Browse all fixtures by manufacturer">' + require('../includes/svg.js')({svgBasename: 'folder-multiple'}) + '<h2>Browse fixtures</h2></a>';
+  str += `<a href="/manufacturers" class="card dark blue big-button" title="Browse all fixtures by manufacturer">${svg.getSvg('folder-multiple')}<h2>Browse fixtures</h2></a>`;
   str += '</section>'; // .card
 
   str += '<section class="card list">';
@@ -73,15 +74,15 @@ module.exports = function(options) {
 
     str += `<a href="/${latestFixtureKey}">${contributor}<span class="hint">${number} fixture${number === 1 ? '' : 's'}, latest: ${latestFixtureName}</span></a>`;
   }
-  str += '<a href="/fixture-editor" class="card dark light-green big-button" title="Become a top contributer yourself!">' + require('../includes/svg.js')({svgBasename: 'plus'}) + '<h2>Add fixture</h2></a>';
+  str += `<a href="/fixture-editor" class="card dark light-green big-button" title="Become a top contributer yourself!">${svg.getSvg('plus')}<h2>Add fixture</h2></a>`;
   str += '</section>'; // .card
 
   str += '</div>'; // .grid.centered
 
   str += '<div class="list grid centered">';
-  str += '<a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+-label%3Atype-bug" rel="nofollow" class="card">' + require('../includes/svg.js')({svgBasename: 'lightbulb-on-outline', className: 'left'}) + '<span>Request feature</span></a>';
-  str += '<a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card">' + require('../includes/svg.js')({svgBasename: 'bug', className: 'left'}) + '<span>Report problem</span></a>';
-  str += '<a href="https://github.com/FloEdelmann/open-fixture-library" class="card">' + require('../includes/svg.js')({svgBasename: 'github-circle', className: 'left'}) + '<span>View source</span></a>';
+  str += `<a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+-label%3Atype-bug" rel="nofollow" class="card">${svg.getSvg('lightbulb-on-outline', ['left'])}<span>Request feature</span></a>`;
+  str += `<a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card">${svg.getSvg('bug', ['left'])}<span>Report problem</span></a>`;
+  str += `<a href="https://github.com/FloEdelmann/open-fixture-library" class="card">${svg.getSvg('github-circle', ['left'])}<span>View source</span></a>`;
   str += '</div>';
 
   str += require('../includes/footer.js')(options);
@@ -95,7 +96,7 @@ function getFixtureName(fixtureKey, options) {
   const manufacturerName = options.manufacturers[manKey].name;
   const fixtureName = options.register.filesystem[fixtureKey].name;
 
-  return manufacturerName + ' ' + fixtureName;
+  return `${manufacturerName} ${fixtureName}`;
 }
 
 function getLatestFixtureKey(contributor, options) {
