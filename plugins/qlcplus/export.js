@@ -7,7 +7,7 @@ const Capability = require('../../lib/model/Capability.js');
 const Physical = require('../../lib/model/Physical.js');
 
 module.exports.name = 'QLC+';
-module.exports.version = '0.4.0';
+module.exports.version = '0.5.0';
 
 module.exports.export = function exportQLCplus(fixtures, options) {
   return fixtures.map(fixture => {
@@ -65,12 +65,21 @@ function addChannel(xml, channel) {
 
   let capabilities;
   if (channel instanceof FineChannel) {
-    xmlGroup.attribute('Byte', channel.fineness);
-    channel = channel.coarseChannel; // use coarse channel's data
+    let capabilityName;
+    if (channel.fineness > 1) {
+      xmlGroup.attribute('Byte', 0);  // not a QLC+ fine channel
+      capabilityName = `Fine^${channel.fineness} adjustment for ${channel.coarseChannel.uniqueName}`;
+    }
+    else {
+      xmlGroup.attribute('Byte', 1);
+      capabilityName = `Fine adjustment for ${channel.coarseChannel.uniqueName}`;
+    }
+
+    channel = channel.coarseChannel;  // use coarse channel's data from here on
     capabilities = [
       new Capability({
         range: [0, 255],
-        name: `Fine adjustment for ${channel.uniqueName}`
+        name: capabilityName
       }, 0, channel)
     ];
   }
@@ -144,15 +153,15 @@ function addPhysical(xmlMode, physical) {
   let xmlPhysical = xmlMode.element({
     Physical: {
       Bulb: {
-        '@ColourTemperature': physical.bulbColorTemperature || 0,
         '@Type': physical.bulbType || 'Other',
-        '@Lumens': physical.bulbLumens || 0
+        '@Lumens': physical.bulbLumens || 0,
+        '@ColourTemperature': physical.bulbColorTemperature || 0
       },
       Dimensions: {
+        '@Weight': physical.weight || 0,
         '@Width': Math.round(physical.width) || 0,
         '@Height': Math.round(physical.height) || 0,
-        '@Depth': Math.round(physical.depth) || 0,
-        '@Weight': physical.weight || 0
+        '@Depth': Math.round(physical.depth) || 0
       },
       Lens: {
         '@Name': physical.lensName || 'Other',
@@ -161,8 +170,8 @@ function addPhysical(xmlMode, physical) {
       },
       Focus: {
         '@Type': physical.focusType || 'Fixed',
-        '@TiltMax': physical.focusTiltMax || 0,
-        '@PanMax': physical.focusPanMax || 0
+        '@PanMax': physical.focusPanMax || 0,
+        '@TiltMax': physical.focusTiltMax || 0
       }
     }
   });
@@ -171,7 +180,7 @@ function addPhysical(xmlMode, physical) {
     xmlPhysical.element({
       Technical: {
         '@DmxConnector': physical.DMXconnector || 'Other',
-        '@PowerConsumption': physical.power || 0
+        '@PowerConsumption': Math.round(physical.power) || 0
       }
     });
   }
