@@ -1,8 +1,8 @@
 #!/usr/bin/node
 
 /**
- * This script generates a possibly small set of test fixtures that use all defined fixture features
- * and updates tests/test-fixtures.json and tests/test-fixtures.md.
+ * @fileoverview This script generates a set of test fixtures that cover all defined fixture features (while
+ * keeping the set as small as possible) and updates tests/test-fixtures.json and tests/test-fixtures.md.
  */
 
 const fs = require('fs');
