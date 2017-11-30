@@ -33,7 +33,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
 
       for (const manufacturer of xml.Document.Library[0].Fixtures[0].Manufacturer) {
         const manName = manufacturer.$.Name;
-        const manKey = manName.toLowerCase().replace(/[^a-z0-9\-]+/g, '-');
+        const manKey = manName.toLowerCase().replace(/[^a-z0-9-]+/g, '-');
 
         out.manufacturers[manKey] = {
           name: manName
@@ -55,7 +55,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
             name: fixture.$.Name
           };
 
-          let fixKey = `${manKey}/${fix.name.toLowerCase().replace(/[^a-z0-9\-]+/g, '-')}`;
+          let fixKey = `${manKey}/${fix.name.toLowerCase().replace(/[^a-z0-9-]+/g, '-')}`;
           if (fixKey in out.fixtures) {
             fixKey += `-${Math.random().toString(36).substr(2, 5)}`;
             out.warnings[fixKey].push('Fixture key is not unique, appended random characters.');

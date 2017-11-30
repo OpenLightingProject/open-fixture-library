@@ -395,9 +395,14 @@ module.exports = (function() {
   };
 
   /**
+   * @callback validateOnSubmitCallback
+   * @param {HTMLFormElement} form the form element.
+   */
+
+  /**
    * Initialize Validate
    * @public
-   * @param {Function(form)} onSubmit function to call after successful validation
+   * @param {validateOnSubmitCallback} onSubmit function to call after successful validation
    */
   validate.init = function(onSubmit) {
     // Destroy any existing initializations

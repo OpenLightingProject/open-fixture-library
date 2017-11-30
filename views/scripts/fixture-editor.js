@@ -138,7 +138,7 @@ Vue.component('fixture-mode', {
       }
 
       for (var chId in this.fixture.availableChannels) {
-        if (!this.fixture.availableChannels.hasOwnProperty(chId)) {
+        if (!Object.hasOwnProperty.call(this.fixture.availableChannels, chId)) {
           continue;
         }
 
@@ -285,7 +285,7 @@ Vue.component('channel-capability', {
     remove: function() {
       var emptyCap = getEmptyCapability();
       for (var prop in emptyCap) {
-        if (emptyCap.hasOwnProperty(prop)) {
+        if (Object.hasOwnProperty.call(emptyCap, prop)) {
           this.capability[prop] = emptyCap[prop];
         }
       }
@@ -549,7 +549,7 @@ var app = window.app = new Vue({
     isChannelNameUnique: function(channelUuid) {
       var chName = this.getChannelName(channelUuid);
       for (var channelKey in this.fixture.availableChannels) {
-        if (!this.fixture.availableChannels.hasOwnProperty(channelKey)) {
+        if (!Object.hasOwnProperty.call(this.fixture.availableChannels, channelKey)) {
           continue;
         }
 
@@ -577,7 +577,7 @@ function onChannelDialogOpen() {
   else if (this.channel.editMode === 'edit-all' || this.channel.editMode === 'edit-duplicate') {
     var channel = this.fixture.availableChannels[this.channel.uuid];
     for (var prop in channel) {
-      if (channel.hasOwnProperty(prop)) {
+      if (Object.hasOwnProperty.call(channel, prop)) {
         this.channel[prop] = clone(channel[prop]);
       }
     }
@@ -649,7 +649,7 @@ function saveChannel() {
 
     var maxFoundFineness = 0;
     for (var chId in this.fixture.availableChannels) {
-      if (!this.fixture.availableChannels.hasOwnProperty(chId)) {
+      if (!Object.hasOwnProperty.call(this.fixture.availableChannels, chId)) {
         continue;
       }
 
@@ -722,7 +722,7 @@ function removeChannel(channelUuid, modeUuid) {
 
   // remove fine channels first
   for (var chId in this.fixture.availableChannels) {
-    if (!this.fixture.availableChannels.hasOwnProperty(chId)) {
+    if (!Object.hasOwnProperty.call(this.fixture.availableChannels, chId)) {
       continue;
     }
 

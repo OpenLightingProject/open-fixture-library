@@ -32,7 +32,7 @@ let modeShortNames;
  * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurences are appended.
  * @return {ResultData} The result object containing errors and warnings, if any.
  */
-module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues=null) {
+module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   result = {
     errors: [],
     warnings: []
@@ -50,7 +50,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
 
   try {
     fixture = new Fixture(manKey, fixKey, fixtureJson);
-    
+
     checkFixIdentifierUniqueness(uniqueValues);
     checkMeta(fixture.meta);
     checkPhysical(fixture.physical);
@@ -59,7 +59,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     for (const mode of fixture.modes) {
       checkMode(mode);
     }
-  
+
     checkUnusedChannels();
     checkCategories();
     checkRdm(manKey, uniqueValues);
@@ -104,7 +104,7 @@ function checkFixIdentifierUniqueness(uniqueValues) {
     result,
     `Fixture name '${fixture.name}' is not unique in manufacturer ${manKey} (test is not case-sensitive).`
   );
-  
+
   // fixture.shortName
   module.exports.checkUniqueness(
     uniqueValues.fixShortNames,
@@ -139,7 +139,7 @@ function checkPhysical(physical, modeDescription = '') {
     for (const property of ['bulb', 'lens', 'focus']) {
       isNotEmpty(physicalJson[property], `physical.${property}${modeDescription} is empty. Please remove it or add data.`);
     }
-  
+
     if (physical.lensDegreesMin > physical.lensDegreesMax) {
       result.errors.push(`physical.lens.degreesMinMax${modeDescription} is an invalid range.`);
     }
@@ -215,7 +215,7 @@ function checkChannel(channel) {
   if (!channel.hasDefaultValue && channel.switchingChannelAliases.length > 0) {
     result.errors.push(`defaultValue is missing in channel '${channel.key}' although it defines switching channels.`);
   }
-  
+
   if (channel.color !== null && channel.type !== 'Single Color') {
     result.warnings.push(`color in channel '${channel.key}' defined but channel type is not 'Single Color'.`);
   }
@@ -248,7 +248,7 @@ function checkCapabilities(channel, minUsedFineness) {
 
   for (let i = 0; i < channel.capabilities.length; i++) {
     const cap = channel.capabilities[i];
-    
+
     // if one of the previous capabilities had an invalid range,
     // it doesn't make sense to check later ranges
     if (!rangesInvalid) {
@@ -256,20 +256,20 @@ function checkCapabilities(channel, minUsedFineness) {
     }
 
     if ((cap.color || cap.image) && !['Multi-Color', 'Effect', 'Gobo'].includes(channel.type)) {
-      result.errors.push(`color or image present in capability '${cap.name}' (#${i+1}) but improper channel type '${channel.type}' in channel '${channel.key}'.`);
+      result.errors.push(`color or image present in capability '${cap.name}' (#${i + 1}) but improper channel type '${channel.type}' in channel '${channel.key}'.`);
     }
 
     if (cap.color2 && !cap.color) {
-      result.errors.push(`color2 present but color missing in capability '${cap.name}' (#${i+1}) in channel '${channel.key}'.`);
+      result.errors.push(`color2 present but color missing in capability '${cap.name}' (#${i + 1}) in channel '${channel.key}'.`);
     }
 
     if (cap.color && cap.image) {
-      result.errors.push(`color and image cannot be present at the same time in capability '${cap.name}' (#${i+1}) in channel '${channel.key}'.`);
+      result.errors.push(`color and image cannot be present at the same time in capability '${cap.name}' (#${i + 1}) in channel '${channel.key}'.`);
     }
 
     const switchingChannelAliases = Object.keys(cap.switchChannels);
     if (!arraysEqual(switchingChannelAliases, channel.switchingChannelAliases)) {
-      result.errors.push(`Capability '${cap.name}' (#${i+1}) must define the same switching channel aliases as all other capabilities in channel '${channel.key}'.`);
+      result.errors.push(`Capability '${cap.name}' (#${i + 1}) must define the same switching channel aliases as all other capabilities in channel '${channel.key}'.`);
     }
     else {
       for (const alias of switchingChannelAliases) {
@@ -277,7 +277,7 @@ function checkCapabilities(channel, minUsedFineness) {
         usedChannelKeys.add(chKey.toLowerCase());
 
         if (channel.fixture.getChannelByKey(chKey) === null) {
-          result.errors.push(`Channel '${chKey}' is referenced from capability '${cap.name}' (#${i+1}) in channel '${channel.key}' but is not defined.`);
+          result.errors.push(`Channel '${chKey}' is referenced from capability '${cap.name}' (#${i + 1}) in channel '${channel.key}' but is not defined.`);
         }
       }
     }
@@ -289,26 +289,27 @@ function checkCapabilities(channel, minUsedFineness) {
  * @param {!Channel} channel The channel the capability belongs to.
  * @param {!number} capNumber The number of the capability in the channel, starting with 0.
  * @param {number} minUsedFineness The smallest fineness that the channel is used in a mode.This controls if this range can be from 0 up to channel.maxDmxBound or less.
+ * @return {boolean} true if the range is valid, false otherwise. The global `result` object is updated then.
  */
 function checkRange(channel, capNumber, minUsedFineness) {
   const cap = channel.capabilities[capNumber];
-  
+
   // first capability
   if (capNumber === 0 && cap.range.start !== 0) {
     result.errors.push(`The first range has to start at 0 in capability '${cap.name}' in channel '${channel.key}'.`);
     return false;
   }
-  
+
   // all capabilities
   if (cap.range.start > cap.range.end) {
     result.errors.push(`range ${cap.range.start}-${cap.range.end} invalid in capability '${cap.name}' in channel '${channel.key}'.`);
     return false;
   }
-  
+
   // not first capability
-  const prevCap = capNumber > 0 ? channel.capabilities[capNumber-1] : null;
+  const prevCap = capNumber > 0 ? channel.capabilities[capNumber - 1] : null;
   if (capNumber > 0 && cap.range.start !== prevCap.range.end + 1) {
-    result.errors.push(`ranges must be adjacent in capabilities '${prevCap.name}' (#${capNumber}) and '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'.`);
+    result.errors.push(`ranges must be adjacent in capabilities '${prevCap.name}' (#${capNumber}) and '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
     return false;
   }
 
@@ -316,9 +317,9 @@ function checkRange(channel, capNumber, minUsedFineness) {
   if (capNumber === channel.capabilities.length - 1) {
     const rawRangeEnd = channel.jsonObject.capabilities[capNumber].range[1];
     const possibleEndValues = getPossibleEndValues(minUsedFineness);
-    
+
     if (!possibleEndValues.includes(rawRangeEnd)) {
-      result.errors.push(`The last range has to end at ${possibleEndValues.join(' or ')} in capability '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'`);
+      result.errors.push(`The last range has to end at ${possibleEndValues.join(' or ')} in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'`);
       return false;
     }
   }
@@ -330,12 +331,12 @@ function checkRange(channel, capNumber, minUsedFineness) {
  * Get the highest possible DMX value for each fineness up to the specified one.
  * E.g. fineness=2 -> [255, 65535, 16777215]
  * @param {!number} fineness The least used fineness in a mode of a channel.
- * @return {!number[]} Possible end values, sorted ascending.
+ * @return {!Array.<number>} Possible end values, sorted ascending.
  */
 function getPossibleEndValues(fineness) {
-  let values = [];
+  const values = [];
   for (let i = 0; i <= fineness; i++) {
-    values.push(Math.pow(256, i+1)-1);
+    values.push(Math.pow(256, i + 1) - 1);
   }
   return values;
 }
@@ -375,7 +376,7 @@ function checkMode(mode) {
     result.errors.push(`Mode '${mode.shortName}' must not use only null channels.`);
   }
 
-  if (mode.name.match(/^(\d+)(?:\s+|\-)?(?:ch|channels?)$/)) {
+  if (mode.name.match(/^(\d+)(?:\s+|-)?(?:ch|channels?)$/)) {
     const intendedLength = parseInt(RegExp.$1);
 
     if (mode.channels.length !== intendedLength) {
@@ -395,7 +396,7 @@ function checkMode(mode) {
 function checkModeChannelReference(chNumber, mode) {
   const chReference = mode.jsonObject.channels[chNumber];
 
-  // this is a null channel 
+  // this is a null channel
   if (chReference === null) {
     return;
   }
@@ -539,7 +540,7 @@ function checkUnusedChannels() {
   );
 
   if (unused.length > 0) {
-    result.warnings.push('Unused channel(s): ' + unused.join(', '));
+    result.warnings.push(`Unused channel(s): ${unused.join(', ')}`);
   }
 }
 
@@ -605,7 +606,7 @@ function checkRdm(manKey, uniqueValues) {
   }
   module.exports.checkUniqueness(
     uniqueValues.fixRdmIdsInMan[manKey],
-    '' + fixture.rdm.modelId,
+    `${fixture.rdm.modelId}`,
     result,
     `Fixture RDM model ID '${fixture.rdm.modelId}' is not unique in manufacturer ${manKey}.`
   );
@@ -614,12 +615,12 @@ function checkRdm(manKey, uniqueValues) {
     result.errors.push(`Fixture has RDM data, but manufacturer '${fixture.manufacturer.shortName}' has not.`);
   }
 
-  let rdmPersonalityIndices = new Set();
+  const rdmPersonalityIndices = new Set();
   for (const mode of fixture.modes) {
     if (mode.rdmPersonalityIndex !== null) {
       module.exports.checkUniqueness(
         rdmPersonalityIndices,
-        '' + mode.rdmPersonalityIndex,
+        `${mode.rdmPersonalityIndex}`,
         result,
         `RDM personality index '${mode.rdmPersonalityIndex}' in mode '${mode.shortName}' is not unique in the fixture.`
       );
@@ -656,7 +657,7 @@ module.exports.checkUniqueness = function checkUniqueness(set, value, result, me
 
 
 module.exports.getErrorString = function getErrorString(description, error) {
-  return description + ' ' + util.inspect(error, false, null);
+  return `${description} ${util.inspect(error, false, null)}`;
 };
 
 function arraysEqual(a, b) {

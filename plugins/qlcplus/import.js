@@ -24,8 +24,8 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
       const fixture = xml.FixtureDefinition;
       fix.name = fixture.Model[0];
 
-      const manKey = fixture.Manufacturer[0].toLowerCase().replace(/[^a-z0-9\-]+/g, '-');
-      const fixKey = `${manKey}/${fix.name.toLowerCase().replace(/[^a-z0-9\-]+/g, '-')}`;
+      const manKey = fixture.Manufacturer[0].toLowerCase().replace(/[^a-z0-9-]+/g, '-');
+      const fixKey = `${manKey}/${fix.name.toLowerCase().replace(/[^a-z0-9-]+/g, '-')}`;
       out.warnings[fixKey] = ['Please check if manufacturer is correct.'];
 
       fix.categories = [fixture.Type[0]];
@@ -112,7 +112,7 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
 
       for (const chKey of doubleByteChannels) {
         try {
-          const fineChannelRegex = /\sfine$|16[\-\s]*bit$/i;
+          const fineChannelRegex = /\sfine$|16[-_\s]*bit$/i;
           if (!fineChannelRegex.test(chKey)) {
             throw new Error('The corresponding coarse channel could not be detected.');
           }

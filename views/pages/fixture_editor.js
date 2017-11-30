@@ -61,7 +61,7 @@ module.exports = function(options) {
   str += '<label class="validate-group">';
   str += '<span class="label">Unique short name</span>';
   str += '<span class="value">';
-  str += '<input type="text" required pattern="[a-z0-9\-]+" title="Use only lowercase letters, numbers and dashes." v-model="fixture.newManufacturerShortName" />';
+  str += '<input type="text" required pattern="[a-z0-9-]+" title="Use only lowercase letters, numbers and dashes." v-model="fixture.newManufacturerShortName" />';
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
   str += '</label>';
@@ -561,7 +561,7 @@ function getChannelDialogString() {
   str += '<label class="validate-group">';
   str += '<span class="label">Name</span>';
   str += '<span class="value">';
-  str += '<input type="text" required v-model="channel.name" pattern="^[A-Z0-9]((?!\bFine\b)(?!\bfine\b)(?!\d+(?:\s|-|_)*[Bb]it)(?!MSB)(?!LSB).)*$" title="Please start with an uppercase letter or a number. Don\'t create fine channels here, set its resolution below instead." class="channelName" />';
+  str += '<input type="text" required v-model="channel.name" pattern="^[A-Z0-9]((?!\\bFine\\b)(?!\\bfine\\b)(?!\\d+(?:\\s|-|_)*[Bb]it)(?!MSB)(?!LSB).)*$" title="Please start with an uppercase letter or a number. Don\'t create fine channels here, set its resolution below instead." class="channelName" />';
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
   str += '</label>';

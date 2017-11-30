@@ -8,7 +8,8 @@ module.exports = {
 /**
  * Returns the contents of the provided SVG file as an inline SVG.
  * @param {!string} svgBasename Name of the file (withoug extension).
- * @param {!string[]} classNames List of class names the <svg> tag should have.
+ * @param {!Array.<string>} classNames List of class names the <svg> tag should have.
+ * @return {!string} The inline <svg> tag.
  */
 function getSvg(svgBasename, classNames = []) {
   let svg = fs.readFileSync(require('path').join(__dirname, '..', '..', 'static', 'icons', `${svgBasename}.svg`), 'utf8');
@@ -23,7 +24,8 @@ function getSvg(svgBasename, classNames = []) {
 /**
  * Get an icon for the provided category.
  * @param {!string} categoryName Name of the category.
- * @param {!string[]} classNames List of class names the <svg> tag should have.
+ * @param {!Array.<string>} classNames List of class names the <svg> tag should have.
+ * @return {!string} The inline <svg> tag.
  */
 function getCategoryIcon(categoryName, classNames = []) {
   const sanitzedCategoryName = categoryName.toLowerCase().replace(/[^\w]+/g, '-');
