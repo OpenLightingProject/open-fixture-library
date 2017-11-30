@@ -307,7 +307,7 @@ module.exports = (function() {
    * @private
    * @param {Event} event The submit event
    */
-  var submitHandler = function (event) {
+  var submitHandler = function(event) {
     var form = event.target;
 
     // Only run on forms flagged for validation
@@ -355,7 +355,7 @@ module.exports = (function() {
    * @private
    * @param {Event} event The submit event
    */
-  var resetHandler = function (event) {
+  var resetHandler = function(event) {
     var form = event.target;
 
     // Only run on forms flagged for validation
@@ -376,7 +376,7 @@ module.exports = (function() {
    * Destroy the current initialization.
    * @public
    */
-  validate.destroy = function () {
+  validate.destroy = function() {
     // Remove event listeners
     document.removeEventListener('blur', blurHandler, false);
     document.removeEventListener('submit', submitHandler, false);
@@ -399,7 +399,7 @@ module.exports = (function() {
    * @public
    * @param {Function(form)} onSubmit function to call after successful validation
    */
-  validate.init = function (onSubmit) {
+  validate.init = function(onSubmit) {
     // Destroy any existing initializations
     validate.destroy();
 

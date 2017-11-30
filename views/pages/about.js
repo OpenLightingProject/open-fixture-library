@@ -1,6 +1,6 @@
 module.exports = function(options) {
   options.title = 'About - Open Fixture Library';
-  
+
   let str = require('../includes/header.js')(options);
 
   str += '<h1>About</h1>';

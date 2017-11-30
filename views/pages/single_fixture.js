@@ -19,7 +19,7 @@ module.exports = function(options) {
   options.structuredDataItems.push(getStructuredProductModel(options));
   options.structuredDataItems.push(getStructuredBreadCrumbList(options));
 
-  const githubRepoPath = 'https://github.com/' + (process.env.TRAVIS_REPO_SLUG || 'FloEdelmann/open-fixture-library');
+  const githubRepoPath = `https://github.com/${process.env.TRAVIS_REPO_SLUG || 'FloEdelmann/open-fixture-library'}`;
   const branch = process.env.TRAVIS_PULL_REQUEST_BRANCH || process.env.TRAVIS_BRANCH || 'master';
 
   let str = require('../includes/header.js')(options);
@@ -82,7 +82,7 @@ module.exports = function(options) {
  * @return {!object} The JSON-LD data
  */
 function getStructuredProductModel(options) {
-  let data = {
+  const data = {
     '@context': 'http://schema.org',
     '@type': 'ProductModel',
     'name': fixture.name,
@@ -101,7 +101,7 @@ function getStructuredProductModel(options) {
     data.width = fixture.physical.width;
     data.height = fixture.physical.height;
   }
-  
+
   return data;
 }
 
@@ -336,7 +336,7 @@ function handleMode(mode) {
 
   let str = `<section class="fixture-mode card"${sectionId}>`;
 
-  const heading = mode.name + ' mode' + (mode.hasShortName ? ` <code>${mode.shortName}</code>` : '');
+  const heading = `${mode.name} mode${mode.hasShortName ? ` <code>${mode.shortName}</code>` : ''}`;
   str += `<h2>${heading}</h2>`;
   str += rdmPersonalityIndexHint;
 
@@ -392,7 +392,7 @@ function handleChannel(channel, mode) {
     str += '  <span class="label">Fine channels</span>';
     str += '  <span class="value">';
 
-    for (let i=0; i<finenessInMode; i++) {
+    for (let i = 0; i < finenessInMode; i++) {
       const heading = getChannelHeading(channel.fineChannelAliases[i]);
       const position = mode.getChannelIndex(channel.key) + 1;
       str +=  `${heading} (channel ${position})`;

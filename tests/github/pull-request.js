@@ -67,16 +67,16 @@ module.exports.init = function init() {
       number: process.env.TRAVIS_PULL_REQUEST
     });
   })
-  .then(pr => {
+    .then(pr => {
     // save PR for later use
-    module.exports.data = pr.data;
-    return this.data;
-  });
+      module.exports.data = pr.data;
+      return this.data;
+    });
 };
 
 module.exports.fetchChangedComponents = function getChangedComponents() {
   // fetch changed files in 100er blocks
-  let filePromises = [];
+  const filePromises = [];
   for (let i = 0; i < this.data.changed_files / 100; i++) {
     filePromises.push(github.pullRequests.getFiles({
       owner: repoOwner,
@@ -89,47 +89,47 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
 
   // check which model components, plugins and fixtures have been changed in the PR
   return Promise.all(filePromises)
-  .then(fileBlocks => {
-    let changedComponents = {
-      added: {
-        schema: false,
-        model: false,
-        imports: [], // array of plugin keys
-        exports: [], // array of plugin keys
-        exportTests: [], // array of [plugin key, test key]
-        fixtures: [] // array of [man key, fix key]
-      },
-      modified: {
-        schema: false,
-        model: false,
-        imports: [], // array of plugin keys
-        exports: [], // array of plugin keys
-        exportTests: [], // array of [plugin key, test key]
-        fixtures: [] // array of [man key, fix key]
-      },
-      removed: {
-        schema: false,
-        model: false,
-        imports: [], // array of plugin keys
-        exports: [], // array of plugin keys
-        exportTests: [], // array of [plugin key, test key]
-        fixtures: [] // array of [man key, fix key]
-      }
-    };
+    .then(fileBlocks => {
+      const changedComponents = {
+        added: {
+          schema: false,
+          model: false,
+          imports: [], // array of plugin keys
+          exports: [], // array of plugin keys
+          exportTests: [], // array of [plugin key, test key]
+          fixtures: [] // array of [man key, fix key]
+        },
+        modified: {
+          schema: false,
+          model: false,
+          imports: [], // array of plugin keys
+          exports: [], // array of plugin keys
+          exportTests: [], // array of [plugin key, test key]
+          fixtures: [] // array of [man key, fix key]
+        },
+        removed: {
+          schema: false,
+          model: false,
+          imports: [], // array of plugin keys
+          exports: [], // array of plugin keys
+          exportTests: [], // array of [plugin key, test key]
+          fixtures: [] // array of [man key, fix key]
+        }
+      };
 
-    for (const block of fileBlocks) {
-      for (const file of block.data) {
-        addFileToChangedData(changedComponents[file.status], file.filename);
+      for (const block of fileBlocks) {
+        for (const file of block.data) {
+          addFileToChangedData(changedComponents[file.status], file.filename);
+        }
       }
-    }
 
-    return changedComponents;
-  });
+      return changedComponents;
+    });
 };
 
 function addFileToChangedData(changedData, filename) {
   const segments = filename.split('/');
-  
+
   if (segments[0] === 'lib' && segments[1] === 'model') {
     changedData.model = true;
     return;
@@ -152,12 +152,12 @@ function addFileToChangedData(changedData, filename) {
     ]);
     return;
   }
-  
+
   if (segments[0] === 'fixtures' && segments[1] === 'schema.js') {
     changedData.schema = true;
     return;
   }
-  
+
   if (segments[0] === 'fixtures' && segments.length === 3) {
     changedData.fixtures.push([
       segments[1], // man key
@@ -185,7 +185,7 @@ module.exports.updateComment = function updateComment(test) {
   lines = lines.concat(test.lines);
   const message = lines.join('\n');
 
-  let commentPromises = [];
+  const commentPromises = [];
   for (let i = 0; i < module.exports.data.comments / 100; i++) {
     commentPromises.push(
       github.issues.getComments({
@@ -197,47 +197,47 @@ module.exports.updateComment = function updateComment(test) {
       })
     );
   }
-  
+
   return Promise.all(commentPromises)
-  .then(commentBlocks => {
-    let equalFound = false;
-    let promises = [];
+    .then(commentBlocks => {
+      let equalFound = false;
+      const promises = [];
 
-    for (const block of commentBlocks) {
-      for (const comment of block.data) {
+      for (const block of commentBlocks) {
+        for (const comment of block.data) {
         // get rid of \r linebreaks
-        comment.body = comment.body.replace(/\r/g, '');
+          comment.body = comment.body.replace(/\r/g, '');
 
-        // the comment was created by this test script
-        if (lines[0] === comment.body.split('\n')[0]) {
-          if (!equalFound && message === comment.body && test.lines.length > 0) {
-            equalFound = true;
-            console.log(`Test comment with same content already exists at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
-          }
-          else {
-            console.log(`Deleting old test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
-            promises.push(github.issues.deleteComment({
-              owner: repoOwner,
-              repo: repoName,
-              id: comment.id
-            }));
+          // the comment was created by this test script
+          if (lines[0] === comment.body.split('\n')[0]) {
+            if (!equalFound && message === comment.body && test.lines.length > 0) {
+              equalFound = true;
+              console.log(`Test comment with same content already exists at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
+            }
+            else {
+              console.log(`Deleting old test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
+              promises.push(github.issues.deleteComment({
+                owner: repoOwner,
+                repo: repoName,
+                id: comment.id
+              }));
+            }
           }
         }
       }
-    }
 
-    if (!equalFound && test.lines.length > 0) {
-      console.log(`Creating test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
-      promises.push(github.issues.createComment({
-        owner: repoOwner,
-        repo: repoName,
-        number: process.env.TRAVIS_PULL_REQUEST,
-        body: message
-      }));
-    }
+      if (!equalFound && test.lines.length > 0) {
+        console.log(`Creating test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
+        promises.push(github.issues.createComment({
+          owner: repoOwner,
+          repo: repoName,
+          number: process.env.TRAVIS_PULL_REQUEST,
+          body: message
+        }));
+      }
 
-    return Promise.all(promises);
-  });
+      return Promise.all(promises);
+    });
 };
 
 module.exports.getTestFixturesMessage = function getTestFixturesMessage(fixtures) {

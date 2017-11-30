@@ -16,7 +16,7 @@ const checkFixture = require('./fixture-valid.js');
  * @property {Object.<string, Set<string>>} fixNamesInMan All fixture names by manufacturer key
  * @property {Set<string>} fixShortNames All fixture short names
  */
-let uniqueValues = {
+const uniqueValues = {
   manKeys: new Set(),
   manNames: new Set(),
   manRdmIds: new Set(),
@@ -26,7 +26,7 @@ let uniqueValues = {
   fixShortNames: new Set()
 };
 
-let promises = [];
+const promises = [];
 
 // search fixture files
 const fixturePath = path.join(__dirname, '..', 'fixtures');
@@ -45,8 +45,8 @@ for (const manKey of fs.readdirSync(fixturePath)) {
 }
 
 function handleFixtureFile(manKey, fixKey) {
-  const filename = manKey + '/' + fixKey + '.json';
-  let result = {
+  const filename = `${manKey}/${fixKey}.json`;
+  const result = {
     name: filename,
     errors: [],
     warnings: []
@@ -84,7 +84,7 @@ function handleFixtureFile(manKey, fixKey) {
 
 // check manufacturers file
 promises.push(new Promise((resolve, reject) => {
-  let result = {
+  const result = {
     name: 'manufacturers.json',
     errors: [],
     warnings: []
@@ -128,7 +128,7 @@ promises.push(new Promise((resolve, reject) => {
       if ('rdmId' in manufacturers[manKey]) {
         checkFixture.checkUniqueness(
           uniqueValues.manRdmIds,
-          '' + manufacturers[manKey].rdmId,
+          `${manufacturers[manKey].rdmId}`,
           result,
           `Manufacturer RDM ID '${manufacturers[manKey].rdmId}' is not unique.`
         );

@@ -1,8 +1,9 @@
 const svg = require('./svg.js');
 
 module.exports = function(options) {
+  const indentation = process.env.NODE_ENV === 'production' ? 0 : 2;
   const structuredData = options.structuredDataItems.map(
-    data => '<script type="application/ld+json">' + JSON.stringify(data, null, process.env.NODE_ENV === 'production' ? 0 : 2) + '</script>'
+    data => `<script type="application/ld+json">${JSON.stringify(data, null, indentation)}</script>`
   );
 
   let str = `<!DOCTYPE html>
@@ -53,7 +54,7 @@ module.exports = function(options) {
   </header>
 <div id="content">`;
 
-  for (let message of options.messages) {
+  for (const message of options.messages) {
     str += `<div class="message message-${message.type}">${message.text}</div>`;
   }
 

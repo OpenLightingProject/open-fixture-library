@@ -165,7 +165,7 @@ Vue.component('channel-capability', {
   },
   computed: {
     dmxMax: function() {
-      return Math.pow(256, this.fineness+1) - 1;
+      return Math.pow(256, this.fineness + 1) - 1;
     },
     isChanged: function() {
       return this.capabilities.some(isCapabilityChanged);

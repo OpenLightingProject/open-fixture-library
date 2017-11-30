@@ -4,10 +4,10 @@ module.exports.name = 'Open Fixture Library JSON';
 module.exports.version = require('../../fixtures/schema.js').VERSION;
 
 module.exports.export = function exportOFL(fixtures, options) {
-  let usedManufacturers = new Set();
+  const usedManufacturers = new Set();
 
   // JSON file for each fixture
-  let files = fixtures.map(fixture => {
+  const files = fixtures.map(fixture => {
     usedManufacturers.add(fixture.manufacturer.key);
 
     const jsonData = {
@@ -17,14 +17,14 @@ module.exports.export = function exportOFL(fixtures, options) {
     Object.assign(jsonData, fixture.jsonObject);
 
     return {
-      name: fixture.manufacturer.key + '/' + fixture.key + '.json',
+      name: `${fixture.manufacturer.key}/${fixture.key}.json`,
       content: JSON.stringify(jsonData, null, 2),
       mimetype: 'application/ofl-fixture'
     };
   });
 
   // manufacturers.json file
-  let usedManufacturerData = {};
+  const usedManufacturerData = {};
   for (const man of Object.keys(manufacturers).sort()) {
     if (usedManufacturers.has(man)) {
       usedManufacturerData[man] = manufacturers[man];

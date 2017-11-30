@@ -29,17 +29,17 @@ if (args.help) {
 }
 
 if (!args.plugin) {
-  console.error(colors.red('[Error]') + ' No plugin specified. See --help for usage.');
+  console.error(`${colors.red('[Error]')} No plugin specified. See --help for usage.`);
   process.exit(1);
 }
 
 if (args._.length === 0 && !args.a) {
-  console.error(colors.red('[Error]') + ' No fixtures specified. See --help for usage.');
+  console.error(`${colors.red('[Error]')} No fixtures specified. See --help for usage.`);
   process.exit(1);
 }
 
 if (!(args.plugin in exportPlugins)) {
-  console.error(colors.red('[Error]') + ` Plugin '${args.plugin}' does not exist or does not support exporting.`);
+  console.error(`${colors.red('[Error]')} Plugin '${args.plugin}' does not exist or does not support exporting.`);
   process.exit(1);
 }
 
@@ -83,7 +83,7 @@ exportPlugins[args.plugin].export(
     console.log(`Created file ${filePath}`);
   }
   else {
-    console.log('\n' + colors.yellow(`File name: '${file.name}'`));
+    console.log(`\n${colors.yellow(`File name: '${file.name}'`)}`);
     console.log(file.content);
   }
 });

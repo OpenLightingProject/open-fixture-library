@@ -14,7 +14,7 @@ module.exports.export = function exportEcue(fixtures, options) {
   }
   const timestamp = dateToString(options.date);
 
-  let manufacturers = {};
+  const manufacturers = {};
   for (const fix of fixtures) {
     const man = fix.manufacturer.key;
     if (!(man in manufacturers)) {
@@ -26,7 +26,7 @@ module.exports.export = function exportEcue(fixtures, options) {
     manufacturers[man].fixtures.push(fix);
   }
 
-  let xml = xmlbuilder.create(
+  const xml = xmlbuilder.create(
     {
       Document: {
         '@Owner': 'user',
@@ -41,13 +41,13 @@ module.exports.export = function exportEcue(fixtures, options) {
     }
   );
 
-  let xmlLibrary = xml.element({
+  const xmlLibrary = xml.element({
     Library: {}
   });
-  let xmlFixtures = xmlLibrary.element({
+  const xmlFixtures = xmlLibrary.element({
     Fixtures: {}
   });
-  let xmlTiles = xmlLibrary.element({
+  const xmlTiles = xmlLibrary.element({
     Tiles: {}
   });
 
@@ -61,7 +61,7 @@ module.exports.export = function exportEcue(fixtures, options) {
     };
     xmlTiles.element('Manufacturer', manAttributes);
 
-    let xmlManFixtures = xmlFixtures.element('Manufacturer', manAttributes);
+    const xmlManFixtures = xmlFixtures.element('Manufacturer', manAttributes);
     for (const fixture of manufacturers[man].fixtures) {
       addFixture(xmlManFixtures, fixture);
     }
@@ -84,11 +84,11 @@ function addFixture(xmlMan, fixture) {
   for (const mode of fixture.modes) {
     const physical = mode.physical || new Physical({});
 
-    let xmlFixture = xmlMan.element('Fixture', {
+    const xmlFixture = xmlMan.element('Fixture', {
       '_CreationDate': fixCreationDate,
       '_ModifiedDate': fixModifiedDate,
       'Name': fixture.name + (fixture.modes.length > 1 ? ` (${mode.shortName} mode)` : ''),
-      'NameShort': fixture.shortName + (fixture.modes.length > 1 ? '-' + mode.shortName : ''),
+      'NameShort': fixture.shortName + (fixture.modes.length > 1 ? `-${mode.shortName}` : ''),
       'Comment': getFixtureComment(fixture),
       'AllocateDmxChannels': mode.channels.length,
       'Weight': physical.weight || 0,
@@ -104,7 +104,7 @@ function addFixture(xmlMan, fixture) {
 
 function handleMode(xmlFixture, mode) {
   let viewPosCount = 1;
-  for (let dmxCount = 0; dmxCount < mode.channels.length; dmxCount++) {      
+  for (let dmxCount = 0; dmxCount < mode.channels.length; dmxCount++) {
     let channel = mode.channels[dmxCount];
 
     // skip unused channels
@@ -146,7 +146,7 @@ function handleMode(xmlFixture, mode) {
     const defaultValue = channel.getDefaultValueWithFineness(fineness === 1 ? 1 : 0);
     const highlightValue = channel.getHighlightValueWithFineness(fineness === 1 ? 1 : 0);
 
-    let xmlChannel = xmlFixture.element(getChannelType(channel), {
+    const xmlChannel = xmlFixture.element(getChannelType(channel), {
       'Name': switchingChannelName || channel.name,
       'DefaultValue': defaultValue,
       'Highlight': highlightValue,
@@ -191,8 +191,8 @@ function getChannelType(channel) {
     case 'Speed':
     case 'Maintenance':
     case 'Nothing':
-    return 'ChannelBeam';
-    
+      return 'ChannelBeam';
+
     case 'Pan':
     case 'Tilt':
     case 'Focus':
