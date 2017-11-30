@@ -14,18 +14,13 @@ module.exports = [{
   // Optional. Is used as tooltip in generated table header. Markdown is not allowed.
   description: 'Whether fine channel aliases are defined',
 
-  // Optional. The feature with the highest order is in the first (most-left) column.
-  // Default value is 0, negative values are allowed (to appear right to the features with default order).
-  order: 80,
-
   /**
    * Required. Checks if the given fixture uses this module's feature.
-   * @param {Object} fixture - The parsed json data
-   * @param {Object} fineChannels - { fineChannelAlias -> coarseChannelKey }
-   * @returns {Boolean} true if fixture uses the feature
+   * @param {Fixture} fixture The fixture data
+   * @returns {boolean} true if fixture uses the feature
    */
-  hasFeature: function(fixture, fineChannels) {
-    return Object.keys(fineChannels).length > 0;
+  hasFeature: fixture => {
+    return fixture.fineChannels.length > 0;
   }
 }];
 ```

@@ -3,7 +3,6 @@ const MatrixChannel = require('../../lib/model/MatrixChannel.js');
 module.exports = [{
   name: 'Multiple Focuses',
   description: 'True if multiple Pan / Tilt channels are used in some mode.',
-  order: 59,
   hasFeature: fixture => fixture.modes.some(mode => {
     const multiPan = mode.channels.filter(
       channel => checkChannelType(channel, 'Pan')

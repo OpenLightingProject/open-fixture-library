@@ -4,18 +4,18 @@
     "key": "hydrabeam-300-rgbw",
     "name": "Hydrabeam 300 RGBW",
     "features": [
-      "has-multiple-categories",
-      "floating-point-weight",
       "duplicate-channel-names",
-      "floating-point-lens-degrees",
       "fine-channel-alias",
-      "uses-switching-channels",
+      "fine-positions-1",
+      "floating-point-weight",
+      "floating-point-lens-degrees",
       "matrix-pixelKeys",
       "matrix-custom-layout",
       "switching-matrix-channel",
+      "multiple-categories",
       "multiple-focuses",
-      "channels-in-multiple-modes",
-      "fine-positions-1"
+      "reused-channels",
+      "switching-channels"
     ]
   },
   {
@@ -25,8 +25,8 @@
     "features": [
       "floating-point-weight",
       "floating-point-power",
-      "uses-switching-channels",
-      "channels-in-multiple-modes"
+      "reused-channels",
+      "switching-channels"
     ]
   },
   {
@@ -34,12 +34,12 @@
     "key": "prospot-250-lx",
     "name": "ProSpot 250 LX",
     "features": [
-      "has-multiple-categories",
-      "floating-point-weight",
       "duplicate-channel-names",
       "fine-channel-alias",
-      "channels-in-multiple-modes",
-      "null-channels"
+      "floating-point-weight",
+      "multiple-categories",
+      "null-channels",
+      "reused-channels"
     ]
   },
   {
@@ -47,10 +47,10 @@
     "key": "xr1200-wash",
     "name": "XR1200 WASH",
     "features": [
-      "has-multiple-categories",
       "fine-channel-alias",
-      "uses-physical-override",
-      "channels-in-multiple-modes"
+      "multiple-categories",
+      "physical-override",
+      "reused-channels"
     ]
   },
   {
@@ -58,12 +58,12 @@
     "key": "platinum-hfx",
     "name": "Platinum HFX",
     "features": [
-      "has-multiple-categories",
-      "floating-point-dimensions",
-      "floating-point-weight",
       "fine-channel-alias",
       "fine-channel-capabilities",
-      "channels-in-multiple-modes"
+      "floating-point-dimensions",
+      "floating-point-weight",
+      "multiple-categories",
+      "reused-channels"
     ]
   },
   {
@@ -71,9 +71,9 @@
     "key": "led-kls-801",
     "name": "LED KLS-801",
     "features": [
-      "uses-switching-channels",
       "matrix-pixelCount",
-      "matrix-channel-used-directly"
+      "matrix-channel-used-directly",
+      "switching-channels"
     ]
   },
   {
@@ -81,9 +81,9 @@
     "key": "rgb-fader",
     "name": "RGB Fader",
     "features": [
-      "no-physical-data",
       "fine-channel-aliases",
-      "channels-in-multiple-modes"
+      "no-physical-data",
+      "reused-channels"
     ]
   },
   {
@@ -91,15 +91,15 @@
     "key": "mac-viper-performance",
     "name": "MAC Viper Performance",
     "features": [
-      "has-multiple-categories",
-      "floating-point-weight",
       "duplicate-channel-names",
       "fine-channel-alias",
       "fine-channel-capabilities",
-      "switching-fine-channels",
-      "uses-switching-channels",
+      "floating-point-weight",
+      "multiple-categories",
       "rdm",
-      "channels-in-multiple-modes"
+      "reused-channels",
+      "switching-channels",
+      "switching-fine-channels"
     ]
   },
   {
@@ -107,13 +107,13 @@
     "key": "horizon-8",
     "name": "Horizon 8",
     "features": [
-      "has-multiple-categories",
       "fine-channel-alias",
-      "switching-fine-channels",
-      "uses-switching-channels",
       "matrix-pixelKeys",
       "matrix-pixelGroups",
-      "channels-in-multiple-modes"
+      "multiple-categories",
+      "reused-channels",
+      "switching-channels",
+      "switching-fine-channels"
     ]
   }
 ]
