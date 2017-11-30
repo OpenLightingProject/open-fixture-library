@@ -1,3 +1,4 @@
+const svg = require('../includes/svg.js');
 const properties = require('../../fixtures/schema.js').properties;
 
 module.exports = function(options) {
@@ -60,7 +61,7 @@ module.exports = function(options) {
   str += '<label class="validate-group">';
   str += '<span class="label">Unique short name</span>';
   str += '<span class="value">';
-  str += '<input type="text" required pattern="[a-z0-9\-]+" title="Use only lowercase letters, numbers and dashes." v-model="fixture.newManufacturerShortName" />';
+  str += '<input type="text" required pattern="[a-z0-9-]+" title="Use only lowercase letters, numbers and dashes." v-model="fixture.newManufacturerShortName" />';
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
   str += '</label>';
@@ -271,9 +272,12 @@ function getPhysicalTemplate() {
   str += '<section class="physical-dimensions validate-group">';
   str += '<span class="label">Dimensions</span>';
   str += '<span class="value">';
-  str += numberInput('value.dimensionsWidth', properties.physical.dimensions.items, 'width', ' :required="dimensionRequired" ref="firstInput"') + ' &times; ';
-  str += numberInput('value.dimensionsHeight', properties.physical.dimensions.items, 'height', ' :required="dimensionRequired"') + ' &times; ';
-  str += numberInput('value.dimensionsDepth', properties.physical.dimensions.items, 'depth', ' :required="dimensionRequired"') + ' mm';
+  str += numberInput('value.dimensionsWidth', properties.physical.dimensions.items, 'width', ' :required="dimensionRequired" ref="firstInput"');
+  str += ' &times; ';
+  str += numberInput('value.dimensionsHeight', properties.physical.dimensions.items, 'height', ' :required="dimensionRequired"');
+  str += ' &times; ';
+  str += numberInput('value.dimensionsDepth', properties.physical.dimensions.items, 'depth', ' :required="dimensionRequired"');
+  str += ' mm';
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
   str += '</section>';
@@ -282,7 +286,8 @@ function getPhysicalTemplate() {
   str += '<label class="validate-group">';
   str += '<span class="label">Weight</span>';
   str += '<span class="value">';
-  str += numberInput('value.weight', properties.physical.weight) + ' kg';
+  str += numberInput('value.weight', properties.physical.weight);
+  str += ' kg';
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
   str += '</label>';
@@ -292,7 +297,8 @@ function getPhysicalTemplate() {
   str += '<label class="validate-group">';
   str += '<span class="label">Power</span>';
   str += '<span class="value">';
-  str += numberInput('value.power', properties.physical.power) + ' W';
+  str += numberInput('value.power', properties.physical.power);
+  str += ' W';
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
   str += '</label>';
@@ -324,7 +330,8 @@ function getPhysicalTemplate() {
   str += '<label class="validate-group">';
   str += '<span class="label">Color temperature</span>';
   str += '<span class="value">';
-  str += numberInput('value.bulb.colorTemperature', properties.bulb.colorTemperature) + ' K';
+  str += numberInput('value.bulb.colorTemperature', properties.bulb.colorTemperature);
+  str += ' K';
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
   str += '</label>';
@@ -334,7 +341,8 @@ function getPhysicalTemplate() {
   str += '<label class="validate-group">';
   str += '<span class="label">Lumens</span>';
   str += '<span class="value">';
-  str += numberInput('value.bulb.lumens', properties.bulb.lumens) + ' lm';
+  str += numberInput('value.bulb.lumens', properties.bulb.lumens);
+  str += ' lm';
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
   str += '</label>';
@@ -355,8 +363,10 @@ function getPhysicalTemplate() {
   str += '<section class="physical-lens-degrees validate-group">';
   str += '<span class="label">Light cone</span>';
   str += '<span class="value">';
-  str += numberInput('value.lens.degreesMin', properties.lens.degreesMinMax.items, 'min', ' :required="degreesRequired"') + ' .. ';
-  str += numberInput('value.lens.degreesMax', properties.lens.degreesMinMax.items, 'max', ' :required="degreesRequired"') + ' °';
+  str += numberInput('value.lens.degreesMin', properties.lens.degreesMinMax.items, 'min', ' :required="degreesRequired"');
+  str += ' .. ';
+  str += numberInput('value.lens.degreesMax', properties.lens.degreesMinMax.items, 'max', ' :required="degreesRequired"');
+  str += ' °';
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
   str += '</section>';
@@ -377,7 +387,8 @@ function getPhysicalTemplate() {
   str += '<label class="validate-group">';
   str += '<span class="label">Pan maximum</span>';
   str += '<span class="value">';
-  str += numberInput('value.focus.panMax', properties.focus.panMax) + ' °';
+  str += numberInput('value.focus.panMax', properties.focus.panMax);
+  str += ' °';
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
   str += '</label>';
@@ -387,7 +398,8 @@ function getPhysicalTemplate() {
   str += '<label class="validate-group">';
   str += '<span class="label">Tilt maximum</span>';
   str += '<span class="value">';
-  str += numberInput('value.focus.tiltMax', properties.focus.tiltMax) + ' °';
+  str += numberInput('value.focus.tiltMax', properties.focus.tiltMax);
+  str += ' °';
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
   str += '</label>';
@@ -405,7 +417,7 @@ function getModeTemplate() {
 
   str += '<a class="close" href="#remove-mode" @click.prevent="$emit(\'remove\')">';
   str += 'Remove mode';
-  str += require('../includes/svg.js')({svgBasename: 'close'});
+  str += svg.getSvg('close');
   str += '</a>';
 
   str += '<h2>Mode</h2>';
@@ -414,7 +426,7 @@ function getModeTemplate() {
   str += '<label class="validate-group">';
   str += '<span class="label">Name</span>';
   str += '<span class="value">';
-  str += '<input type="text"' + getRequiredAttr(properties.mode.name) + ' pattern="^((?!mode)(?!Mode).)*$" title="The name must not contain the word \'mode\'." placeholder="e.g. Extended" v-model="mode.name" ref="firstInput" />';
+  str += `<input type="text"${getRequiredAttr(properties.mode.name)} pattern="^((?!mode)(?!Mode).)*$" title="The name must not contain the word 'mode'." placeholder="e.g. Extended" v-model="mode.name" ref="firstInput" />`;
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
   str += '</label>';
@@ -424,7 +436,7 @@ function getModeTemplate() {
   str += '<label class="validate-group">';
   str += '<span class="label">Unique short name</span>';
   str += '<span class="value">';
-  str += '<input type="text"' + getRequiredAttr(properties.mode.shortName) + ' pattern="^((?!mode)(?!Mode).)*$" title="The name must not contain the word \'mode\'." placeholder="e.g. ext; defaults to name" v-model="mode.shortName" />';
+  str += `<input type="text"${getRequiredAttr(properties.mode.shortName)} pattern="^((?!mode)(?!Mode).)*$" title="The name must not contain the word 'mode'." placeholder="e.g. ext; defaults to name" v-model="mode.shortName" />`;
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
   str += '</label>';
@@ -456,8 +468,8 @@ function getModeTemplate() {
   str += '<li v-for="(channelUuid, index) in mode.channels">';
   str += '<span class="channel-name">{{ getChannelName(channelUuid) }}</span> ';
   str += '<code v-if="!isChannelNameUnique(channelUuid)" class="channel-uuid">{{ channelUuid }}</code>';
-  str += '<a href="#remove" title="Remove channel" @click.prevent="removeChannel(channelUuid)">' + require('../includes/svg.js')({svgBasename: 'close'}) + '</a>';
-  str += '<a href="#channel-editor" title="Edit channel" v-if="!isFineChannel(channelUuid)" @click.prevent="editChannel(channelUuid)">' + require('../includes/svg.js')({svgBasename: 'pencil'}) + '</a>';
+  str += `<a href="#remove" title="Remove channel" @click.prevent="removeChannel(channelUuid)">${svg.getSvg('close')}</a>`;
+  str += `<a href="#channel-editor" title="Edit channel" v-if="!isFineChannel(channelUuid)" @click.prevent="editChannel(channelUuid)">${svg.getSvg('pencil')}</a>`;
   str += '</li>';
   str += '</ol>';
 
@@ -480,7 +492,7 @@ function getCapabilityTemplate() {
   str += '<input type="text" placeholder="color 2" pattern="^#[0-9a-f]{6}$" title="#rrggbb" v-model="capability.color2" v-if="capability.color !== \'\'" class="color">';
   str += '</span>';
   str += '<span class="error-message" hidden></span>';
-  str += '<a href="#remove" class="remove" title="Remove capability" v-if="isChanged" @click.prevent="remove">' + require('../includes/svg.js')({svgBasename: 'close'}) + '</a>';
+  str += `<a href="#remove" class="remove" title="Remove capability" v-if="isChanged" @click.prevent="remove">${svg.getSvg('close')}</a>`;
   str += '</li>';
   str += '</script>'; // #template-capability
 
@@ -497,7 +509,7 @@ function getDialogTemplate() {
 
   str += '      <a href="#close" @click.prevent="hide" class="close" v-if="cancellable">';
   str += 'Close';
-  str += require('../includes/svg.js')({svgBasename: 'close'});
+  str += svg.getSvg('close');
   str += '</a>';
 
   str += '      <h2 :id="id + \'-dialog-title\'" tabindex="0"><slot name="title"></slot></h2>';
@@ -549,7 +561,7 @@ function getChannelDialogString() {
   str += '<label class="validate-group">';
   str += '<span class="label">Name</span>';
   str += '<span class="value">';
-  str += '<input type="text" required v-model="channel.name" pattern="^[A-Z0-9]((?!\bFine\b)(?!\bfine\b)(?!\d+(?:\s|-|_)*[Bb]it)(?!MSB)(?!LSB).)*$" title="Please start with an uppercase letter or a number. Don\'t create fine channels here, set its resolution below instead." class="channelName" />';
+  str += '<input type="text" required v-model="channel.name" pattern="^[A-Z0-9]((?!\\bFine\\b)(?!\\bfine\\b)(?!\\d+(?:\\s|-|_)*[Bb]it)(?!MSB)(?!LSB).)*$" title="Please start with an uppercase letter or a number. Don\'t create fine channels here, set its resolution below instead." class="channelName" />';
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
   str += '</label>';
@@ -737,7 +749,7 @@ function getSubmitDialogString() {
 }
 
 
-function textInput(key, property, hint, id, additionalAttributes='') {
+function textInput(key, property, hint, id, additionalAttributes = '') {
   let html = '<input type="text"';
   html += getRequiredAttr(property);
 
@@ -776,7 +788,7 @@ function textareaInput(key, property, hint) {
   return html;
 }
 
-function numberInput(key, property, hint, additionalAttributes='') {
+function numberInput(key, property, hint, additionalAttributes = '') {
   let html = '<input type="number"';
   html += getRequiredAttr(property);
 
@@ -809,7 +821,7 @@ function numberInput(key, property, hint, additionalAttributes='') {
   return html;
 }
 
-function selectInput(key, property, hint, allowAdditions=true, forceRequired=false) {
+function selectInput(key, property, hint, allowAdditions = true, forceRequired = false) {
   let html = '<select';
   html += getRequiredAttr(property, forceRequired);
   html += allowAdditions ? ' data-allow-additions="true"' : '';
@@ -843,7 +855,7 @@ function booleanInput(key, property, hint) {
   return html;
 }
 
-function getRequiredAttr(property, forceRequired=false) {
+function getRequiredAttr(property, forceRequired = false) {
   return forceRequired || property.required ? ' required' : '';
 }
 function getPlaceholderAttr(hint) {

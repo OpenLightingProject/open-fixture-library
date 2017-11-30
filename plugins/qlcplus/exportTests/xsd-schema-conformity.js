@@ -15,8 +15,7 @@ module.exports = function testSchemaConformity(exportFileData) {
       });
     });
   })
-  .then(schemaData => {
-    return new Promise((resolve, reject) => {
+    .then(schemaData =>  new Promise((resolve, reject) => {
       xsd.parse(schemaData, (err, schema) => {
         if (err) {
           reject(err);
@@ -35,6 +34,5 @@ module.exports = function testSchemaConformity(exportFileData) {
           });
         }
       });
-    });
-  });
+    }));
 };

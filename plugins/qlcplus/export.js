@@ -11,7 +11,7 @@ module.exports.version = '0.5.0';
 
 module.exports.export = function exportQLCplus(fixtures, options) {
   return fixtures.map(fixture => {
-    let xml = xmlbuilder.begin()
+    const xml = xmlbuilder.begin()
       .declaration('1.0', 'UTF-8')
       .element({
         FixtureDefinition: {
@@ -37,7 +37,7 @@ module.exports.export = function exportQLCplus(fixtures, options) {
 
     xml.doctype('');
     return {
-      name: sanitize(fixture.manufacturer.name + '-' + fixture.name + '.qxf').replace(/\s+/g, '-'),
+      name: sanitize(`${fixture.manufacturer.name}-${fixture.name}.qxf`).replace(/\s+/g, '-'),
       content: xml.end({
         pretty: true,
         indent: ' '
@@ -48,7 +48,7 @@ module.exports.export = function exportQLCplus(fixtures, options) {
 };
 
 function addChannel(xml, channel) {
-  let xmlChannel = xml.element({
+  const xmlChannel = xml.element({
     Channel: {
       '@Name': channel.uniqueName
     }
@@ -59,7 +59,7 @@ function addChannel(xml, channel) {
     channel = channel.fixture.getChannelByKey(channel.defaultChannelKey);
   }
 
-  let xmlGroup = xmlChannel.element({
+  const xmlGroup = xmlChannel.element({
     Group: {}
   });
 
@@ -105,7 +105,7 @@ function addChannel(xml, channel) {
 function addCapability(xmlChannel, cap) {
   const range = cap.getRangeWithFineness(0);
 
-  let xmlCapability = xmlChannel.element({
+  const xmlCapability = xmlChannel.element({
     Capability: {
       '@Min': range.start,
       '@Max': range.end,
@@ -126,7 +126,7 @@ function addCapability(xmlChannel, cap) {
 }
 
 function addMode(xml, mode) {
-  let xmlMode = xml.element({
+  const xmlMode = xml.element({
     Mode: {
       '@Name': mode.name
     }
@@ -150,7 +150,7 @@ function addMode(xml, mode) {
 }
 
 function addPhysical(xmlMode, physical) {
-  let xmlPhysical = xmlMode.element({
+  const xmlPhysical = xmlMode.element({
     Physical: {
       Bulb: {
         '@Type': physical.bulbType || 'Other',
@@ -191,7 +191,7 @@ function addHead(xmlMode, mode, headChannels) {
     .filter(index => index !== -1);
 
   if (channelIndices.length > 0) {
-    let xmlHead = xmlMode.element({
+    const xmlHead = xmlMode.element({
       Head: {}
     });
 
@@ -212,7 +212,7 @@ function getFixtureType(fixture) {
 
 // converts a Channel's type into a valid QLC+ channel type
 function getChannelType(channel) {
-  switch(channel.type) {
+  switch (channel.type) {
     case 'Single Color':
     case 'Color Temperature':
     case 'Fog':

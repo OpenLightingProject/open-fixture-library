@@ -20,7 +20,7 @@ window.addEventListener('load', function() {
   if (downloadButton) {
     var links = downloadButton.querySelectorAll('a');
 
-    for (var i=0; i<links.length; i++) {
+    for (var i = 0; i < links.length; i++) {
       links[i].addEventListener('click', function() {
         this.blur();
       }, false);

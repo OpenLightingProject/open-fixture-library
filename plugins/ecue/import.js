@@ -5,7 +5,7 @@ module.exports.name = 'e:cue';
 module.exports.version = '0.3.0';
 
 module.exports.import = function importEcue(str, filename, resolve, reject) {
-  let colors = {};
+  const colors = {};
   for (const hex of Object.keys(colorNames)) {
     colors[colorNames[hex].toLowerCase().replace(/\s/g, '')] = hex;
   }
@@ -15,11 +15,11 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
 
   parser.parseString(str, (parseError, xml) => {
     if (parseError) {
-      reject(`Error parsing '${filename}' as XML.\n` + parseError.toString());
+      reject(`Error parsing '${filename}' as XML.\n${parseError.toString()}`);
       return;
     }
 
-    let out = {
+    const out = {
       manufacturers: {},
       fixtures: {},
       warnings: {}
@@ -33,7 +33,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
 
       for (const manufacturer of xml.Document.Library[0].Fixtures[0].Manufacturer) {
         const manName = manufacturer.$.Name;
-        const manKey = manName.toLowerCase().replace(/[^a-z0-9\-]+/g, '-');
+        const manKey = manName.toLowerCase().replace(/[^a-z0-9-]+/g, '-');
 
         out.manufacturers[manKey] = {
           name: manName
@@ -51,13 +51,13 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
         }
 
         for (const fixture of manufacturer.Fixture) {
-          let fix = {
+          const fix = {
             name: fixture.$.Name
           };
 
-          let fixKey = manKey + '/' + fix.name.toLowerCase().replace(/[^a-z0-9\-]+/g, '-');
+          let fixKey = `${manKey}/${fix.name.toLowerCase().replace(/[^a-z0-9-]+/g, '-')}`;
           if (fixKey in out.fixtures) {
-            fixKey += '-' + Math.random().toString(36).substr(2, 5);
+            fixKey += `-${Math.random().toString(36).substr(2, 5)}`;
             out.warnings[fixKey].push('Fixture key is not unique, appended random characters.');
           }
           out.warnings[fixKey] = [];
@@ -84,7 +84,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
             fix.comment = fixture.$.Comment;
           }
 
-          let physical = {};
+          const physical = {};
 
           if (fixture.$.DimWidth !== '10' && fixture.$.DimHeight !== '10' && fixture.$.DimDepth !== '10') {
             physical.dimensions = [parseInt(fixture.$.DimWidth), parseInt(fixture.$.DimHeight), parseInt(fixture.$.DimDepth)];
@@ -132,14 +132,14 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
           });
 
           for (const channel of channels) {
-            let ch = {};
+            const ch = {};
 
             const name = channel.$.Name;
             const testName = name.toLowerCase();
 
             let shortName = name;
             if (shortName in fix.availableChannels) {
-              shortName += '-' + Math.random().toString(36).substr(2, 5);
+              shortName += `-${Math.random().toString(36).substr(2, 5)}`;
             }
 
             if (name !== shortName) {
@@ -211,7 +211,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
             }
 
             if (channel.$.DmxByte1 !== '0') {
-              const shortNameFine = shortName + ' fine';
+              const shortNameFine = `${shortName} fine`;
               ch.fineChannelAliases = [shortNameFine];
               fix.modes[0].channels[parseInt(channel.$.DmxByte1) - 1] = shortNameFine;
             }
@@ -239,17 +239,17 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
               ch.capabilities = [];
 
               channel.Range.forEach((range, i) => {
-                let cap = {
+                const cap = {
                   range: [parseInt(range.$.Start), parseInt(range.$.End)],
                   name: range.$.Name
                 };
 
                 if (cap.range[1] === -1) {
-                  cap.range[1] = (i+1 < channel.Range.length) ? parseInt(channel.Range[i+1].$.Start) - 1 : 255;
+                  cap.range[1] = (i + 1 < channel.Range.length) ? parseInt(channel.Range[i + 1].$.Start) - 1 : 255;
                 }
 
                 // try to read a color
-                let color = cap.name.toLowerCase().replace(/\s/g, '');
+                const color = cap.name.toLowerCase().replace(/\s/g, '');
                 if (color in colors) {
                   cap.color = colors[color];
                 }
@@ -274,7 +274,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
       }
     }
     catch (parseError) {
-      reject(`Error parsing '${filename}'.\n` + parseError.toString());
+      reject(`Error parsing '${filename}'.\n${parseError.toString()}`);
       return;
     }
 

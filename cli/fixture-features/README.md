@@ -22,7 +22,7 @@ module.exports = [{
    * Required. Checks if the given fixture uses this module's feature.
    * @param {Object} fixture - The parsed json data
    * @param {Object} fineChannels - { fineChannelAlias -> coarseChannelKey }
-   * @return {Boolean} true if fixture uses the feature
+   * @returns {Boolean} true if fixture uses the feature
    */
   hasFeature: function(fixture, fineChannels) {
     return Object.keys(fineChannels).length > 0;

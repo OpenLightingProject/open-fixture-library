@@ -64,7 +64,7 @@ function getRegisterUrls() {
 }
 
 function getManufacturerUrls(manKey, fixKeys) {
-  let urls = [{
+  const urls = [{
     url: `/${manKey}`,
     changefreq: 'weekly'
   }];

@@ -9,12 +9,12 @@ module.exports.name = 'D::Light';
 module.exports.version = '0.1.0';
 
 module.exports.export = function exportDLight(fixtures, options) {
-  let deviceFiles = [];
+  const deviceFiles = [];
 
   for (const fixture of fixtures) {
     // add device for each mode
     for (const mode of fixture.modes) {
-      let xml = xmlbuilder.begin()
+      const xml = xmlbuilder.begin()
         .declaration('1.0')
         .element({
           Device: {
@@ -66,7 +66,7 @@ function addAttribute(xml, mode, attribute, channels) {
 }
 
 function addChannel(xmlAttribute, mode, attribute, channel, index) {
-  let xmlChannel = xmlAttribute.element({
+  const xmlChannel = xmlAttribute.element({
     ThisAttribute: {
       '@id': index,
       HOME: {
@@ -86,7 +86,7 @@ function addChannel(xmlAttribute, mode, attribute, channel, index) {
       }
     }
   });
-  
+
   addCapabilities(xmlChannel, channel);
 }
 
@@ -119,7 +119,7 @@ function addCapabilities(xmlChannel, channel) {
   if (channel instanceof Channel && channel.hasCapabilities) {
     const caps = channel.capabilities;
 
-    let xmlCapabilities = xmlChannel.element({
+    const xmlCapabilities = xmlChannel.element({
       Definitions: {
         '@index': caps.length
       }
@@ -155,7 +155,7 @@ function getDefaultValue(channel) {
 }
 
 function getChannelsByAttribute(channels) {
-  let channelsByAttribute = {
+  const channelsByAttribute = {
     'INTENSITY': [],
     'COLOUR': [],
     'FOCUS': [],
@@ -167,7 +167,7 @@ function getChannelsByAttribute(channels) {
     'FINE': []
   };
 
-  for (let channel of channels) {
+  for (const channel of channels) {
     channelsByAttribute[getChannelAttribute(channel)].push(channel);
   }
 
@@ -177,7 +177,7 @@ function getChannelsByAttribute(channels) {
   for (const emptyAttribute of emptyAttributes) {
     delete channelsByAttribute[emptyAttribute];
   }
-  
+
   return channelsByAttribute;
 }
 
