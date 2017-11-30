@@ -7,15 +7,9 @@
 
 const fs = require('fs');
 const path = require('path');
-const minimist = require('minimist');
 const colors = require('colors');
 
 const Fixture = require('../lib/model/Fixture.js');
-
-const args = minimist(process.argv.slice(2), {
-  boolean: ['help'],
-  alias: { all: 'a', help: 'h' }
-});
 
 const fixFeaturesDir = path.join(__dirname, 'fixture-features');
 const fixturesDir = path.join(__dirname, '..', 'fixtures');
@@ -113,22 +107,25 @@ const markdownFile = path.join(__dirname, '../tests/test-fixtures.md');
 fs.writeFileSync(markdownFile, getMarkdownCode());
 console.log(`Updated ${markdownFile}`);
 
-
+/**
+ * Generates a markdown table presenting the test fixtures and all fix features.
+ * @returns {!string} The markdown code to be used in a markdown file.
+ */
 function getMarkdownCode() {
-  let mdLines = [];
+  const mdLines = [];
 
   // Header
   mdLines[0] = '|';
   for (const fixture of fixtures) {
-    mdLines[0] +=` | [*${fixture.man}* ${fixture.name}](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/${fixture.man}/${fixture.key}.json)`;
+    mdLines[0] += ` | [*${fixture.man}* ${fixture.name}](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/${fixture.man}/${fixture.key}.json)`;
   }
   mdLines[1] = '|-'.repeat(fixtures.length + 1);
 
   // Content
-  let footnotes = [];
+  const footnotes = [];
   for (const fixFeature of fixFeatures) {
     let line = `**${fixFeature.name}**`;
-    
+
     if (fixFeature.description) {
       footnotes.push(fixFeature.description);
       const n = footnotes.length;
@@ -145,7 +142,7 @@ function getMarkdownCode() {
 
   // Footnotes
   for (let i = 0; i < footnotes.length; i++) {
-    mdLines.push(`**<a id="user-content-footnote-${i+1}">[${i+1}]</a>**: ${footnotes[i]}`);
+    mdLines.push(`**<a id="user-content-footnote-${i + 1}">[${i + 1}]</a>**: ${footnotes[i]}`);
     mdLines.push('');
   }
 
