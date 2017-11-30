@@ -306,12 +306,12 @@ function handleFixtureMatrix() {
 
   let pixelSizing = '';
   if (fixture.physical !== null && fixture.physical.hasMatrixPixels) {
-    const scale = 1/10; // mm
-    pixelSizing += `width: ${fixture.physical.matrixPixelsDimensions[0]*scale}mm; `;
-    pixelSizing += `height: ${fixture.physical.matrixPixelsDimensions[1]*scale}mm; `;
-    pixelSizing += `line-height: ${fixture.physical.matrixPixelsDimensions[1]*scale}mm; `;
-    pixelSizing += `margin-right: ${fixture.physical.matrixPixelsSpacing[0]*scale}mm; `;
-    pixelSizing += `margin-bottom: ${fixture.physical.matrixPixelsSpacing[1]*scale}mm; `;
+    const scale = 1 / 10; // mm
+    pixelSizing += `width: ${fixture.physical.matrixPixelsDimensions[0] * scale}mm; `;
+    pixelSizing += `height: ${fixture.physical.matrixPixelsDimensions[1] * scale}mm; `;
+    pixelSizing += `line-height: ${fixture.physical.matrixPixelsDimensions[1] * scale}mm; `;
+    pixelSizing += `margin-right: ${fixture.physical.matrixPixelsSpacing[0] * scale}mm; `;
+    pixelSizing += `margin-bottom: ${fixture.physical.matrixPixelsSpacing[1] * scale}mm; `;
   }
 
   for (const zLevel of fixture.matrix.pixelKeys) {
@@ -525,7 +525,7 @@ function handleFineChannel(channel, mode) {
   }
 
   const coarseChannelIndex = mode.getChannelIndex(channel.coarseChannel.key) + 1;
-  return `<div>Fine channel of ${channel.coarseChannel.name} (channel ${coarseChannelIndex})</div>` + matrixStr;
+  return `<div>Fine channel of ${channel.coarseChannel.name} (channel ${coarseChannelIndex})</div>${matrixStr}`;
 }
 
 function handleSwitchingChannel(channel, mode) {
@@ -540,7 +540,7 @@ function handleSwitchingChannel(channel, mode) {
   str += `<div>Switch depending on ${channel.triggerChannel.name}'s value (channel ${triggerChannelIndex}):</div>`;
   str += '<ol>';
 
-  for (let switchToChannel of channel.switchToChannels) {
+  for (const switchToChannel of channel.switchToChannels) {
     str += '<li>';
     str += '<details class="channel">';
 
@@ -596,7 +596,7 @@ function handleMatrixChannel(channel) {
  * @param {!string} [unit=''] An optional string for the physical unit which will be ammended to the value.
  * @return {!string} The generated html code.
  */
-function getSimpleLabelValue(className, label, value, unit='') {
+function getSimpleLabelValue(className, label, value, unit = '') {
   if (value !== null) {
     return `<section class="${className}">
       <span class="label">${label}</span>
@@ -613,7 +613,7 @@ function getSimpleLabelValue(className, label, value, unit='') {
  * @param {!boolean} boolean True or false. If it is false, no html code will be returned.
  * @return {!string} The generated html code.
  */
-function getBooleanLabelValue(className, label, boolean, unit='') {
+function getBooleanLabelValue(className, label, boolean, unit = '') {
   if (boolean) {
     return `<section class="${className}">
       <span class="label">${label}</span>

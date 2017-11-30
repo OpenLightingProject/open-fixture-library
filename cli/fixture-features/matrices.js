@@ -55,9 +55,9 @@ module.exports = [
         chRef => chRef.isMatrixChannel && mode.jsonObject.channels.includes(chRef.chKey)
       )
     ) || fixture.switchingChannels.some(
-      swCh => swCh.switchToChannels.some(
-        ch => ch instanceof MatrixChannel
+        swCh => swCh.switchToChannels.some(
+          ch => ch instanceof MatrixChannel
+        )
       )
-    )
   }
 ];

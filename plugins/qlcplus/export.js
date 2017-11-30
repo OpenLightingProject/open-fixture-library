@@ -210,7 +210,7 @@ function addHeads(xmlMode, mode) {
     });
 
     if (channels.length > 0) {
-      let xmlHead = xmlMode.element({
+      const xmlHead = xmlMode.element({
         Head: {}
       });
 

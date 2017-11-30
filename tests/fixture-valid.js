@@ -365,7 +365,7 @@ function checkChannel(channel) {
  * @param {!string[]} [requiredVariables=[]] Variables that must be included in the string. Specify them with leading dollar sign ($var).
  * @param {!string[]} [allowedVariables=[]] Variables that may be included in the string; requiredVariables are automatically included. Specify them with leading dollar sign ($var).
  */
-function checkTemplateVariables(str, requiredVariables=[], allowedVariables=[]) {
+function checkTemplateVariables(str, requiredVariables = [], allowedVariables = []) {
   allowedVariables = allowedVariables.concat(requiredVariables);
 
   const variables = str.match(/\$\w+/g) || [];
@@ -443,13 +443,13 @@ function checkRange(channel, capNumber, minUsedFineness) {
 
   // first capability
   if (capNumber === 0 && cap.range.start !== 0) {
-    result.errors.push(`The first range has to start at 0 in capability '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'.`);
+    result.errors.push(`The first range has to start at 0 in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
     return false;
   }
 
   // all capabilities
   if (cap.range.start > cap.range.end) {
-    result.errors.push(`range invalid in capability '${cap.name}' (#${capNumber+1}) in channel '${channel.key}'.`);
+    result.errors.push(`range invalid in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
     return false;
   }
 

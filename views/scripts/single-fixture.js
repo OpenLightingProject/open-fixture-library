@@ -7,7 +7,7 @@ window.addEventListener('load', function() {
       pixelGroups[i].addEventListener('mouseover', function(e) {
         togglePixels(this, true);
       }, true);
-      
+
       pixelGroups[i].addEventListener('mouseout', function(e) {
         togglePixels(this, false);
       }, true);
