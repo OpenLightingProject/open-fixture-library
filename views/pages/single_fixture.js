@@ -1,5 +1,6 @@
 const url = require('url');
 
+const svg = require('../includes/svg.js');
 const exportPlugins = require('../../plugins/plugins.js').export;
 
 const Fixture = require('../../lib/model/Fixture.js');
@@ -65,8 +66,8 @@ module.exports = function(options) {
   str += '<h2>Something wrong with this fixture definition?</h2>';
   str += '<p>It does not work in your lighting software or you see another problem? Then please help correct it!</p>';
   str += '<div class="grid list">';
-  str += '<a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card">' + require('../includes/svg.js')({svgBasename: 'bug', className: 'left'}) + '<span>Report issue on GitHub</span></a>';
-  str += '<a href="/about#contact" class="card">' + require('../includes/svg.js')({svgBasename: 'email', className: 'left'}) + '<span>Contact</span></a>';
+  str += `<a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card">${svg.getSvg('bug', ['left'])}<span>Report issue on GitHub</span></a>`;
+  str += `<a href="/about#contact" class="card">${svg.getSvg('email', ['left'])}<span>Contact</span></a>`;
   str += '</div>';
   str += '</section>';
 
@@ -156,10 +157,9 @@ function handleFixtureInfo() {
   let str = '<section class="categories">';
   str += '  <span class="label">Categories</span>';
   str += '  <span class="value">';
-  str += fixture.categories.map(cat => {
-    const svg = require('../includes/svg.js')({categoryName: cat});
-    return `<a href="/categories/${encodeURIComponent(cat)}" class="category-badge">${svg} ${cat}</a>`;
-  }).join(' ');
+  str += fixture.categories.map(
+    cat => `<a href="/categories/${encodeURIComponent(cat)}" class="category-badge">${svg.getCategoryIcon(cat)} ${cat}</a>`
+  ).join(' ');
   str += '  </span>';
   str += '</section>';
 
@@ -179,7 +179,7 @@ function handleFixtureInfo() {
 
   if (fixture.rdm !== null) {
     const rdmLink = `http://rdm.openlighting.org/model/display?manufacturer=${fixture.manufacturer.rdmId}&model=${fixture.rdm.modelId}`;
-    const olaIcon = require('../includes/svg.js')({svgBasename: 'ola'});
+    const olaIcon = svg.getSvg('ola');
     const softwareVersion = 'softwareVersion' in fixture.rdm ? fixture.rdm.softwareVersion : '?';
 
     str += '<section class="rdm">';

@@ -1,3 +1,4 @@
+const svg = require('../includes/svg.js');
 const properties = require('../../fixtures/schema.js').properties;
 
 module.exports = function(options) {
@@ -405,7 +406,7 @@ function getModeTemplate() {
 
   str += '<a class="close" href="#remove-mode" @click.prevent="$emit(\'remove\')">';
   str += 'Remove mode';
-  str += require('../includes/svg.js')({svgBasename: 'close'});
+  str += svg.getSvg('close');
   str += '</a>';
 
   str += '<h2>Mode</h2>';
@@ -456,8 +457,8 @@ function getModeTemplate() {
   str += '<li v-for="(channelUuid, index) in mode.channels">';
   str += '<span class="channel-name">{{ getChannelName(channelUuid) }}</span> ';
   str += '<code v-if="!isChannelNameUnique(channelUuid)" class="channel-uuid">{{ channelUuid }}</code>';
-  str += '<a href="#remove" title="Remove channel" @click.prevent="removeChannel(channelUuid)">' + require('../includes/svg.js')({svgBasename: 'close'}) + '</a>';
-  str += '<a href="#channel-editor" title="Edit channel" v-if="!isFineChannel(channelUuid)" @click.prevent="editChannel(channelUuid)">' + require('../includes/svg.js')({svgBasename: 'pencil'}) + '</a>';
+  str += `<a href="#remove" title="Remove channel" @click.prevent="removeChannel(channelUuid)">${svg.getSvg('close')}</a>`;
+  str += `<a href="#channel-editor" title="Edit channel" v-if="!isFineChannel(channelUuid)" @click.prevent="editChannel(channelUuid)">${svg.getSvg('pencil')}</a>`;
   str += '</li>';
   str += '</ol>';
 
@@ -480,7 +481,7 @@ function getCapabilityTemplate() {
   str += '<input type="text" placeholder="color 2" pattern="^#[0-9a-f]{6}$" title="#rrggbb" v-model="capability.color2" v-if="capability.color !== \'\'" class="color">';
   str += '</span>';
   str += '<span class="error-message" hidden></span>';
-  str += '<a href="#remove" class="remove" title="Remove capability" v-if="isChanged" @click.prevent="remove">' + require('../includes/svg.js')({svgBasename: 'close'}) + '</a>';
+  str += `<a href="#remove" class="remove" title="Remove capability" v-if="isChanged" @click.prevent="remove">${svg.getSvg('close')}</a>`;
   str += '</li>';
   str += '</script>'; // #template-capability
 
@@ -497,7 +498,7 @@ function getDialogTemplate() {
 
   str += '      <a href="#close" @click.prevent="hide" class="close" v-if="cancellable">';
   str += 'Close';
-  str += require('../includes/svg.js')({svgBasename: 'close'});
+  str += svg.getSvg('close');
   str += '</a>';
 
   str += '      <h2 :id="id + \'-dialog-title\'" tabindex="0"><slot name="title"></slot></h2>';

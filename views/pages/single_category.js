@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
+const svg = require('../includes/svg.js');
+
 module.exports = function(options) {
   const {manufacturers, register, category} = options;
   const categoryClass = category.toLowerCase().replace(/[^\w]+/g, '-');
@@ -21,7 +23,7 @@ module.exports = function(options) {
     str += `<li><a href="/${man}/${fix}">`;
     str += `<span class="name">${manData.name} ${fixData.name}</span>`;
     for (const cat of fixData.categories) {
-      str += require('../includes/svg.js')({categoryName: cat, className: 'right'});
+      str += svg.getCategoryIcon(cat, ['right']);
     }
     str += '</a></li>';
   }

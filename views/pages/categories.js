@@ -1,3 +1,5 @@
+const svg = require('../includes/svg.js');
+
 module.exports = function(options) {
   const {register} = options;
   
@@ -14,7 +16,7 @@ module.exports = function(options) {
     const link = '/categories/' + encodeURIComponent(cat);
 
     str += `<a href="${link}" class="card card-category">`;
-    str += require('../includes/svg.js')({categoryName: cat});
+    str += svg.getCategoryIcon(cat);
     str += `<h2>${cat}</h2>`;
     str += `<div class="fixtures">${numFixtures}</div>`;
     str += '</a>';

@@ -1,5 +1,6 @@
 const url = require('url');
 
+const svg = require('../includes/svg.js');
 const exportPlugins = require('../../plugins/plugins.js').export;
 
 module.exports = function(options) {
@@ -61,7 +62,7 @@ module.exports = function(options) {
 
     str += `<a href="/${fixtureKey}">${name}<span class="hint">${action} ${dateHtml}</span></a>`;
   }
-  str += '<a href="/manufacturers" class="card dark blue big-button" title="Browse all fixtures by manufacturer">' + require('../includes/svg.js')({svgBasename: 'folder-multiple'}) + '<h2>Browse fixtures</h2></a>';
+  str += `<a href="/manufacturers" class="card dark blue big-button" title="Browse all fixtures by manufacturer">${svg.getSvg('folder-multiple')}<h2>Browse fixtures</h2></a>`;
   str += '</section>'; // .card
 
   str += '<section class="card list">';
@@ -73,7 +74,7 @@ module.exports = function(options) {
 
     str += `<a href="/${latestFixtureKey}">${contributor}<span class="hint">${number} fixture${number === 1 ? '' : 's'}, latest: ${latestFixtureName}</span></a>`;
   }
-  str += '<a href="/fixture-editor" class="card dark light-green big-button" title="Become a top contributer yourself!">' + require('../includes/svg.js')({svgBasename: 'plus'}) + '<h2>Add fixture</h2></a>';
+  str += `<a href="/fixture-editor" class="card dark light-green big-button" title="Become a top contributer yourself!">${svg.getSvg('plus')}<h2>Add fixture</h2></a>`;
   str += '</section>'; // .card
 
   str += '</div>'; // .grid.centered

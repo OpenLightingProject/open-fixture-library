@@ -1,23 +1,35 @@
-module.exports = function(options) {
-  if ('categoryName' in options) {
-    options.svgBasename = 'category-' + options.categoryName.toLowerCase().replace(/[^\w]+/g, '-');
+const fs = require('fs');
 
-    if ('className' in options) {
-      options.className += ` ${options.svgBasename}`;
-    }
-    else {
-      options.className = options.svgBasename;
-    }
-  }
+module.exports = {
+  getSvg,
+  getCategoryIcon
+};
 
-  let svg = require('fs').readFileSync(require('path').join(__dirname, '..', '..', 'static', 'icons', options.svgBasename + '.svg'), 'utf8');
+/**
+ * Returns the contents of the provided SVG file as an inline SVG.
+ * @param {!string} svgBasename Name of the file (withoug extension).
+ * @param {!string[]} classNames List of class names the <svg> tag should have.
+ */
+function getSvg(svgBasename, classNames = []) {
+  let svg = fs.readFileSync(require('path').join(__dirname, '..', '..', 'static', 'icons', `${svgBasename}.svg`), 'utf8');
 
-  if ('className' in options) {
-    svg = svg.replace(/<svg([^>]*)>/, `<svg$1 class="${options.className}">`);
-  }
-  if ('categoryName' in options) {
-    svg = svg.replace(/(<svg[^>]*>)/, `$1<title>Category: ${options.categoryName}</title>`);
+  if (classNames.length > 0) {
+    svg = svg.replace(/<svg([^>]*)>/, `<svg$1 class="${classNames.join(' ')}">`);
   }
 
   return svg;
-};
+}
+
+/**
+ * Get an icon for the provided category.
+ * @param {!string} categoryName Name of the category.
+ * @param {!string[]} classNames List of class names the <svg> tag should have.
+ */
+function getCategoryIcon(categoryName, classNames = []) {
+  const sanitzedCategoryName = categoryName.toLowerCase().replace(/[^\w]+/g, '-');
+  const svgBasename = `category-${sanitzedCategoryName}`;
+  classNames.push(svgBasename);
+
+  const svg = getSvg(svgBasename, classNames);
+  return svg.replace(/(<svg[^>]*>)/, `$1<title>Category: ${categoryName}</title>`);
+}

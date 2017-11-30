@@ -1,3 +1,5 @@
+const svg = require('./svg.js');
+
 module.exports = function(options) {
   const structuredData = options.structuredDataItems.map(
     data => '<script type="application/ld+json">' + JSON.stringify(data, null, process.env.NODE_ENV === 'production' ? 0 : 2) + '</script>'
@@ -36,7 +38,7 @@ module.exports = function(options) {
           </div>
           <button type="submit">
             Search
-            ${require('./svg.js')({svgBasename: 'magnify'})}
+            ${svg.getSvg('magnify')}
           </button>
         </form>
       </div>

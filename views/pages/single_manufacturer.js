@@ -1,5 +1,7 @@
 const url = require('url');
 
+const svg = require('../includes/svg.js');
+
 const Fixture = require('../../lib/model/Fixture.js');
 
 let manufacturer;
@@ -24,10 +26,10 @@ module.exports = function(options) {
     str += '<div class="grid list">';
 
     if ('website' in manufacturer) {
-      str += `<a href="${manufacturer.website}" rel="nofollow" class="card blue dark">` + require('../includes/svg.js')({svgBasename: 'earth', className: 'left'}) + '<span>Manufacturer website</span></a>';
+      str += `<a href="${manufacturer.website}" rel="nofollow" class="card blue dark">${svg.getSvg('earth', ['left'])}<span>Manufacturer website</span></a>`;
     }
     if ('rdmId' in manufacturer) {
-      str += `<a href="http://rdm.openlighting.org/manufacturer/display?manufacturer=${manufacturer.rdmId}" rel="nofollow" class="card">` + require('../includes/svg.js')({svgBasename: 'ola', className: 'left'}) + '<span>Open Lighting RDM database</span></a>';
+      str += `<a href="http://rdm.openlighting.org/manufacturer/display?manufacturer=${manufacturer.rdmId}" rel="nofollow" class="card">${svg.getSvg('ola', ['left'])}<span>Open Lighting RDM database</span></a>`;
     }
 
     str += '</div>';
@@ -41,7 +43,7 @@ module.exports = function(options) {
     str += `<li><a href="/${man}/${fix.key}">`;
     str += `<span class="name">${fix.name}</span>`;
     for (const cat of fix.categories) {
-      str += require('../includes/svg.js')({categoryName: cat, className: 'right'});
+      str += svg.getCategoryIcon(cat, ['right']);
     }
     str += '</a></li>';
   }
