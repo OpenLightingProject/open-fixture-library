@@ -1,7 +1,6 @@
 module.exports = [{
   name: 'Reused channels',
   description: 'Whether there is at least one channel that is used in different modes',
-  order: 40,
   hasFeature: fixture => {
     const usedChannels = [];
     for (const mode of fixture.modes) {

@@ -1,7 +1,8 @@
 module.exports = [
   {
     id: 'floating-point-dimensions',
-    name: 'Floating point dimensions ([#133](https://github.com/FloEdelmann/open-fixture-library/issues/133))',
+    name: 'Floating point dimensions',
+    description: 'In fixture physical or in a mode\'s physical override. See [#133](https://github.com/FloEdelmann/open-fixture-library/issues/133).',
     properties: ['width', 'height', 'depth']
   },
   {
@@ -36,10 +37,7 @@ module.exports = [
   }
 ];
 
-let startOrder = 90 + module.exports.length;
 for (const fixFeature of module.exports) {
-  fixFeature.description = 'In fixture physical or in a mode\'s physical override.';
-  fixFeature.order = startOrder--;
   fixFeature.hasFeature = fixture => isFloatInPhysical(fixture.physical, fixFeature.properties) || fixture.modes.some(mode => isFloatInPhysical(mode.physical, fixFeature.properties));
 }
 

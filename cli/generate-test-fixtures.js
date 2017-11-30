@@ -1,29 +1,15 @@
 #!/usr/bin/node
 
+/**
+ * @fileoverview This script generates a set of test fixtures that cover all defined fixture features (while
+ * keeping the set as small as possible) and updates tests/test-fixtures.json and tests/test-fixtures.md.
+ */
+
 const fs = require('fs');
 const path = require('path');
-const minimist = require('minimist');
 const colors = require('colors');
 
 const Fixture = require('../lib/model/Fixture.js');
-
-const args = minimist(process.argv.slice(2), {
-  boolean: ['all', 'help'],
-  alias: { all: 'a', help: 'h' }
-});
-
-const helpMessage = [
-  'Generates a possibly small set of test fixtures that use all defined fixture features, outputs a markdown code to use in GitHub wiki and updates the tests/test-fixtures.json file.',
-  `Usage: ${process.argv[1]} [-a | --all]`,
-  'Options:',
-  '  --all,  -a: Output markdown with all fixtures and don\'t update test-fixtures.json.',
-  '  --help, -h: Show this help message.'
-].join('\n');
-
-if (args.help) {
-  console.log(helpMessage);
-  process.exit(0);
-}
 
 const fixFeaturesDir = path.join(__dirname, 'fixture-features');
 const fixturesDir = path.join(__dirname, '..', 'fixtures');
@@ -52,29 +38,11 @@ for (const featureFile of fs.readdirSync(fixFeaturesDir)) {
         process.exit(1);
       }
 
-      // default order
-      if (!('order' in fixFeature)) {
-        fixFeature.order = 0;
-      }
-
       fixFeatures.push(fixFeature);
       featuresUsed[fixFeature.id] = 0;
     }
   }
 }
-fixFeatures.sort((a, b) => {
-  if (a.order === b.order) {
-    if (a.name.toLowerCase() > b.name.toLowerCase()) {
-      return 1;
-    }
-
-    if (a.name.toLowerCase() < b.name.toLowerCase()) {
-      return -1;
-    }
-  }
-  return b.order - a.order;
-});
-
 
 // check which features each fixture supports
 let fixtures = [];
@@ -101,59 +69,82 @@ for (const man of Object.keys(manufacturers)) {
   }
 }
 
-// compress list
-if (!args.all) {
-  // sort out fixtures with least features first
-  fixtures.sort((a, b) => {
-    return a.features.length - b.features.length;
-  });
-  // sort out
-  fixtures = fixtures.filter(fixture => {
-    for (const feature of fixture.features) {
-      // there's only one fixture that has this feature
-      // this must be the current fixture, so we keep it
-      if (featuresUsed[feature] === 1) {
-        return true;
-      }
+// first fixtures are more likely to be filtered out, so we start with the ones with the fewest features
+fixtures.sort((a, b) => {
+  return a.features.length - b.features.length;
+});
+// filter out
+fixtures = fixtures.filter(fixture => {
+  for (const feature of fixture.features) {
+    // this is the only remaining fixture with that feature -> keep it
+    if (featuresUsed[feature] === 1) {
+      return true;
     }
-    // has no new features, so remove it
-    for (const feature of fixture.features) {
-      featuresUsed[feature]--;
-    }
-    return false;
-  });
-  // original ordering
-  fixtures.sort((a, b) => {
-    const manFixA = `${a.man}/${a.key}`;
-    const manFixB = `${b.man}/${b.key}`;
-    return manFixA > manFixB ? 1 : manFixA < manFixB ? -1 : 0;
-  });
-
-  console.log(colors.yellow('Generated list of test fixtures:'));
-  for (const fixture of fixtures) {
-    console.log(` - ${fixture.man}/${fixture.key}`);
   }
-  const testFixturesFile = path.join(__dirname, '..', 'tests', 'test-fixtures.json');
-  fs.writeFileSync(testFixturesFile, JSON.stringify(fixtures, null, 2));
-  console.log(`\nSuccessfully updated ${testFixturesFile}.\n`);
-}
+  // has no new features -> filter out
+  for (const feature of fixture.features) {
+    featuresUsed[feature]--;
+  }
+  return false;
+});
+// original alphabetic ordering
+fixtures.sort((a, b) => {
+  const manFixA = `${a.man}/${a.key}`;
+  const manFixB = `${b.man}/${b.key}`;
+  return manFixA > manFixB ? 1 : manFixA < manFixB ? -1 : 0;
+});
 
-// generate markdown code
-const mdLines = [];
-mdLines[0] = '|';
-for (const fixFeature of fixFeatures) {
-  mdLines[0] += ' | ';
-  mdLines[0] += 'description' in fixFeature ? `<abbr title="${fixFeature.description}">${fixFeature.name}</abbr>` : fixFeature.name;
-}
-mdLines[1] = '|-'.repeat(fixFeatures.length + 1);
+console.log(colors.yellow('Generated list of test fixtures:'));
 for (const fixture of fixtures) {
-  let line = `[*${fixture.man}* **${fixture.name}**](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/${fixture.man}/${fixture.key}.json)`;
+  console.log(` - ${fixture.man}/${fixture.key}`);
+}
 
+const jsonFile = path.join(__dirname, '../tests/test-fixtures.json');
+fs.writeFileSync(jsonFile, JSON.stringify(fixtures, null, 2));
+console.log(`\nUpdated ${jsonFile}`);
+
+const markdownFile = path.join(__dirname, '../tests/test-fixtures.md');
+fs.writeFileSync(markdownFile, getMarkdownCode());
+console.log(`Updated ${markdownFile}`);
+
+/**
+ * Generates a markdown table presenting the test fixtures and all fix features.
+ * @returns {!string} The markdown code to be used in a markdown file.
+ */
+function getMarkdownCode() {
+  const mdLines = [];
+
+  // Header
+  mdLines[0] = '|';
+  for (const fixture of fixtures) {
+    mdLines[0] += ` | [*${fixture.man}* ${fixture.name}](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/${fixture.man}/${fixture.key}.json)`;
+  }
+  mdLines[1] = '|-'.repeat(fixtures.length + 1);
+
+  // Content
+  const footnotes = [];
   for (const fixFeature of fixFeatures) {
-    line += fixture.features.includes(fixFeature.id) ? ' | :white_check_mark:' : ' | :x:';
+    let line = `**${fixFeature.name}**`;
+
+    if (fixFeature.description) {
+      footnotes.push(fixFeature.description);
+      const n = footnotes.length;
+      line += ` [[${n}]](#user-content-footnote-${n})`;
+    }
+
+    for (const fixture of fixtures) {
+      line += fixture.features.includes(fixFeature.id) ? ' | ✅' : ' | ❌';
+    }
+
+    mdLines.push(line);
+  }
+  mdLines.push('');
+
+  // Footnotes
+  for (let i = 0; i < footnotes.length; i++) {
+    mdLines.push(`**<a id="user-content-footnote-${i + 1}">[${i + 1}]</a>**: ${footnotes[i]}`);
+    mdLines.push('');
   }
 
-  mdLines.push(line);
+  return mdLines.join('\n');
 }
-console.log(colors.yellow('Markdown code (e.g. for usage in GitHub wiki):'));
-console.log(mdLines.join('\n'));
