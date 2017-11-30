@@ -84,7 +84,7 @@ app.set('view engine', 'js');
 
 
 // message objects to show to the user
-let messages = [];
+const messages = [];
 
 // the interesting data
 let manufacturers = null;
@@ -267,7 +267,7 @@ function downloadFiles(response, files, zipname) {
 
   response
     .status(201)
-    .attachment('ofl_export_' + zipname + '.zip')
+    .attachment(`ofl_export_${zipname}.zip`)
     .type('application/zip')
     .send(Buffer.from(data, 'binary'));
 }
@@ -298,9 +298,10 @@ function addFileReadError(text, error) {
 /**
  * Generates the options to be given to render modules.
  * @param {!Request} request The HTTP request object provided by express.
- * @param {?object} [additionalOptions={}] Special properties for the options object (like information which fixture this is)
+ * @param {?object} [additionalOptions={}] Special properties for the options object (like information which fixture this is).
+ * @returns {!object} Object with options to pass to render modules.
  */
-function getOptions(request, additionalOptions={}) {
+function getOptions(request, additionalOptions = {}) {
   return Object.assign({
     baseDir: __dirname,
     url: url.resolve(`${request.protocol}://${request.get('host')}`, request.originalUrl).replace(/\/$/, ''), // regex to remove trailing slash
@@ -309,6 +310,6 @@ function getOptions(request, additionalOptions={}) {
     manufacturers: manufacturers,
     register: register,
     messages: getMessages(),
-    structuredDataItems: [],
+    structuredDataItems: []
   }, additionalOptions);
 }

@@ -4,16 +4,16 @@ const fs = require('fs');
 const path = require('path');
 const colors = require('colors');
 
-let register = {
+const register = {
   filesystem: {},
   manufacturers: {},
   categories: {},
   contributors: {},
   rdm: {}
 };
-let categories = {};
-let contributors = {};
-let rdm = {};
+const categories = {};
+const contributors = {};
+const rdm = {};
 
 const fixturePath = path.join(__dirname, '..', 'fixtures');
 
@@ -50,12 +50,12 @@ try {
           }
 
           // add to filesystem register
-          register.filesystem[manKey + '/' + fixKey] = {
+          register.filesystem[`${manKey}/${fixKey}`] = {
             name: fixData.name,
             lastModifyDate: fixData.meta.lastModifyDate,
             lastAction: lastAction
           };
-          
+
           // add to manufacturer register
           register.manufacturers[manKey].push(fixKey);
 
@@ -64,7 +64,7 @@ try {
             if (!(cat in categories)) {
               categories[cat] = [];
             }
-            categories[cat].push(manKey + '/' + fixKey);
+            categories[cat].push(`${manKey}/${fixKey}`);
           }
 
           // add to contributor register
@@ -72,7 +72,7 @@ try {
             if (!(contributor in contributors)) {
               contributors[contributor] = [];
             }
-            contributors[contributor].push(manKey + '/' + fixKey);
+            contributors[contributor].push(`${manKey}/${fixKey}`);
           }
 
           // add to rdm register
@@ -106,9 +106,9 @@ for (const contributor of sortedContributors) {
 
 // the higher the value, the higher the rank if the dates are the same
 const lastActionRankMapping = {
-  "modified": 10,
-  "imported": 20,
-  "created": 30
+  'modified': 10,
+  'imported': 20,
+  'created': 30
 };
 
 // add fixture list sorted by lastModifyDate
@@ -140,7 +140,7 @@ fs.writeFile(filename, JSON.stringify(register, null, 2), 'utf8', error => {
     console.error('Could not write register file.', error);
     process.exit(1);
   }
-  console.log(colors.green('[Success]') + ` Register file ${filename} successfully written.`);
-  console.log(colors.yellow('[Info]') + ' If new fixtures were added, it may be worth generating a new set of test fixtures by running ' + colors.yellow('node cli/generate-test-fixtures.js') + '.');
+  console.log(`${colors.green('[Success]')} Register file ${filename} successfully written.`);
+  console.log(`${colors.yellow('[Info]')} If new fixtures were added, it may be worth generating a new set of test fixtures by running ${colors.yellow('node cli/generate-test-fixtures.js')}.`);
   process.exit(0);
 });

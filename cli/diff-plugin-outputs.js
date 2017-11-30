@@ -35,13 +35,13 @@ if (args.help) {
 }
 
 if (!args.plugin) {
-  console.error(colors.red('[Error]') + ' Plugin has to be specified using --plugin');
+  console.error(`${colors.red('[Error]')} Plugin has to be specified using --plugin`);
   console.log(helpMessage);
   process.exit(1);
 }
 
 if (args._.length === 0 && !args.t) {
-  console.log(colors.yellow('[Warning]') + ' No fixtures specified. See --help for usage.');
+  console.log(`${colors.yellow('[Warning]')} No fixtures specified. See --help for usage.`);
 }
 
 require('../lib/diff-plugin-outputs.js')(args.plugin, args.ref, args.t ? testFixtures : args._);

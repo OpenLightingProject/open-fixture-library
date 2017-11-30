@@ -28,8 +28,8 @@ if (args.help) {
 const fixFeaturesDir = path.join(__dirname, 'fixture-features');
 const fixturesDir = path.join(__dirname, '..', 'fixtures');
 
-let fixFeatures = [];
-let featuresUsed = {}; // feature id -> times used
+const fixFeatures = [];
+const featuresUsed = {}; // feature id -> times used
 for (const featureFile of fs.readdirSync(fixFeaturesDir)) {
   if (path.extname(featureFile) === '.js') {
     // module exports array of fix features
@@ -48,7 +48,7 @@ for (const featureFile of fs.readdirSync(fixFeaturesDir)) {
 
       // check uniquness of id
       if (fixFeature.id in featuresUsed) {
-        console.error(colors.red('[Error]') + ` Fix feature id ${fixFeature.id} used multiple times.`);
+        console.error(`${colors.red('[Error]')} Fix feature id ${fixFeature.id} used multiple times.`);
         process.exit(1);
       }
 
@@ -67,7 +67,8 @@ fixFeatures.sort((a, b) => {
     if (a.name.toLowerCase() > b.name.toLowerCase()) {
       return 1;
     }
-    else if (a.name.toLowerCase() < b.name.toLowerCase()) {
+
+    if (a.name.toLowerCase() < b.name.toLowerCase()) {
       return -1;
     }
   }
@@ -81,8 +82,8 @@ const manufacturers = JSON.parse(fs.readFileSync(path.join(fixturesDir, 'registe
 for (const man of Object.keys(manufacturers)) {
   for (const fixKey of manufacturers[man]) {
     // pre-process data
-    let fix = Fixture.fromRepository(man, fixKey);
-    let fixResult = {
+    const fix = Fixture.fromRepository(man, fixKey);
+    const fixResult = {
       man: man,
       key: fixKey,
       name: fix.name,
@@ -132,13 +133,13 @@ if (!args.all) {
   for (const fixture of fixtures) {
     console.log(` - ${fixture.man}/${fixture.key}`);
   }
-  let testFixturesFile = path.join(__dirname, '..', 'tests', 'test-fixtures.json');
+  const testFixturesFile = path.join(__dirname, '..', 'tests', 'test-fixtures.json');
   fs.writeFileSync(testFixturesFile, JSON.stringify(fixtures, null, 2));
   console.log(`\nSuccessfully updated ${testFixturesFile}.\n`);
 }
 
 // generate markdown code
-let mdLines = [];
+const mdLines = [];
 mdLines[0] = '|';
 for (const fixFeature of fixFeatures) {
   mdLines[0] += ' | ';

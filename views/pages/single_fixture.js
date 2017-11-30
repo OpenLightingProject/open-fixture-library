@@ -1,5 +1,6 @@
 const url = require('url');
 
+const svg = require('../includes/svg.js');
 const exportPlugins = require('../../plugins/plugins.js').export;
 
 const Fixture = require('../../lib/model/Fixture.js');
@@ -21,7 +22,7 @@ module.exports = function(options) {
   options.structuredDataItems.push(getStructuredProductModel(options));
   options.structuredDataItems.push(getStructuredBreadCrumbList(options));
 
-  const githubRepoPath = 'https://github.com/' + (process.env.TRAVIS_REPO_SLUG || 'FloEdelmann/open-fixture-library');
+  const githubRepoPath = `https://github.com/${process.env.TRAVIS_REPO_SLUG || 'FloEdelmann/open-fixture-library'}`;
   const branch = process.env.TRAVIS_PULL_REQUEST_BRANCH || process.env.TRAVIS_BRANCH || 'master';
 
   let str = require('../includes/header.js')(options);
@@ -58,7 +59,7 @@ module.exports = function(options) {
   str += '<section class="fixture-info card">';
   str += handleFixtureInfo();
   str += '</section>';
-  
+
   str += '<section class="fixture-modes">';
   str += fixture.modes.map(handleMode).join('');
   str += '<div class="clearfix"></div>';
@@ -68,8 +69,8 @@ module.exports = function(options) {
   str += '<h2>Something wrong with this fixture definition?</h2>';
   str += '<p>It does not work in your lighting software or you see another problem? Then please help correct it!</p>';
   str += '<div class="grid list">';
-  str += '<a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card">' + require('../includes/svg.js')({svgBasename: 'bug', className: 'left'}) + '<span>Report issue on GitHub</span></a>';
-  str += '<a href="/about#contact" class="card">' + require('../includes/svg.js')({svgBasename: 'email', className: 'left'}) + '<span>Contact</span></a>';
+  str += `<a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card">${svg.getSvg('bug', ['left'])}<span>Report issue on GitHub</span></a>`;
+  str += `<a href="/about#contact" class="card">${svg.getSvg('email', ['left'])}<span>Contact</span></a>`;
   str += '</div>';
   str += '</section>';
 
@@ -82,10 +83,10 @@ module.exports = function(options) {
 /**
  * Creates a ProductModel as structured data for SEO
  * @param {!object} options Global options
- * @return {!object} The JSON-LD data
+ * @returns {!object} The JSON-LD data
  */
 function getStructuredProductModel(options) {
-  let data = {
+  const data = {
     '@context': 'http://schema.org',
     '@type': 'ProductModel',
     'name': fixture.name,
@@ -104,14 +105,14 @@ function getStructuredProductModel(options) {
     data.width = fixture.physical.width;
     data.height = fixture.physical.height;
   }
-  
+
   return data;
 }
 
 /**
  * Creates a BreadCrumbList as structured data for SEO
  * @param {!object} options Global options
- * @return {!object} The JSON-LD data
+ * @returns {!object} The JSON-LD data
  */
 function getStructuredBreadCrumbList(options) {
   return {
@@ -146,7 +147,7 @@ function getChannelHeading(channel) {
   if (channel === null) {
     return 'Error: Channel not found';
   }
-  
+
   if (channel instanceof MatrixChannel) {
     channel = channel.wrappedChannel;
   }
@@ -162,10 +163,9 @@ function handleFixtureInfo() {
   let str = '<section class="categories">';
   str += '  <span class="label">Categories</span>';
   str += '  <span class="value">';
-  str += fixture.categories.map(cat => {
-    const svg = require('../includes/svg.js')({categoryName: cat});
-    return `<a href="/categories/${encodeURIComponent(cat)}" class="category-badge">${svg} ${cat}</a>`;
-  }).join(' ');
+  str += fixture.categories.map(
+    cat => `<a href="/categories/${encodeURIComponent(cat)}" class="category-badge">${svg.getCategoryIcon(cat)} ${cat}</a>`
+  ).join(' ');
   str += '  </span>';
   str += '</section>';
 
@@ -185,7 +185,7 @@ function handleFixtureInfo() {
 
   if (fixture.rdm !== null) {
     const rdmLink = `http://rdm.openlighting.org/model/display?manufacturer=${fixture.manufacturer.rdmId}&model=${fixture.rdm.modelId}`;
-    const olaIcon = require('../includes/svg.js')({svgBasename: 'ola'});
+    const olaIcon = svg.getSvg('ola');
     const softwareVersion = 'softwareVersion' in fixture.rdm ? fixture.rdm.softwareVersion : '?';
 
     str += '<section class="rdm">';
@@ -334,7 +334,7 @@ function handleFixtureMatrix() {
     str += '<h4>Pixel groups</h4>';
     str += '<span class="hint">Hover over the pixel groups to highlight the corresponding pixels.</span>';
 
-    str += fixture.matrix.pixelGroupKeys.map(key => 
+    str += fixture.matrix.pixelGroupKeys.map(key =>
       `<section class="matrix-pixelGroup" data-pixelGroup="${key}">
         <span class="label">${key}</span>
         <span class="value">${fixture.matrix.pixelGroups[key].join(', ')}</span>
@@ -357,7 +357,7 @@ function handleMode(mode) {
 
   let str = `<section class="fixture-mode card"${sectionId}>`;
 
-  const heading = mode.name + ' mode' + (mode.hasShortName ? ` <code>${mode.shortName}</code>` : '');
+  const heading = `${mode.name} mode${mode.hasShortName ? ` <code>${mode.shortName}</code>` : ''}`;
   str += `<h2>${heading}</h2>`;
   str += rdmPersonalityIndexHint;
 
@@ -407,7 +407,7 @@ function handleChannel(channel, mode) {
     str += handleMatrixChannel(channel);
     channel = channel.wrappedChannel;
   }
-  
+
   str += getSimpleLabelValue('channel-type', 'Type', channel.type);
   str += getSimpleLabelValue('channel-color', 'Color', channel.color);
 
@@ -417,7 +417,7 @@ function handleChannel(channel, mode) {
     str += '  <span class="label">Fine channels</span>';
     str += '  <span class="value">';
 
-    for (let i=0; i<finenessInMode; i++) {
+    for (let i = 0; i < finenessInMode; i++) {
       const fineAlias = channel.fineChannelAliases[i];
       const position = mode.getChannelIndex(fineAlias) + 1;
       str += `${fineAlias} (channel ${position})`;
@@ -574,7 +574,7 @@ function handleMatrixChannel(channel) {
   if (fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)) {
     return getSimpleLabelValue('channel-pixelGroup', 'Pixel group', channel.pixelKey);
   }
-  
+
   const [x, y, z] = fixture.matrix.pixelKeyPositions[channel.pixelKey];
   let str = getSimpleLabelValue('channel-pixel', 'Pixel', channel.pixelKey);
   str += `<section class="channel-pixel-position">

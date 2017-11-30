@@ -8,11 +8,11 @@ const Capability = require('../../lib/model/Capability.js');
 const Physical = require('../../lib/model/Physical.js');
 
 module.exports.name = 'QLC+';
-module.exports.version = '0.4.0';
+module.exports.version = '0.5.0';
 
 module.exports.export = function exportQLCplus(fixtures, options) {
   return fixtures.map(fixture => {
-    let xml = xmlbuilder.begin()
+    const xml = xmlbuilder.begin()
       .declaration('1.0', 'UTF-8')
       .element({
         FixtureDefinition: {
@@ -38,7 +38,7 @@ module.exports.export = function exportQLCplus(fixtures, options) {
 
     xml.doctype('');
     return {
-      name: sanitize(fixture.manufacturer.name + '-' + fixture.name + '.qxf').replace(/\s+/g, '-'),
+      name: sanitize(`${fixture.manufacturer.name}-${fixture.name}.qxf`).replace(/\s+/g, '-'),
       content: xml.end({
         pretty: true,
         indent: ' '
@@ -53,7 +53,7 @@ function addChannel(xml, channel) {
     channel = channel.wrappedChannel;
   }
 
-  let xmlChannel = xml.element({
+  const xmlChannel = xml.element({
     Channel: {
       '@Name': channel.uniqueName
     }
@@ -68,18 +68,27 @@ function addChannel(xml, channel) {
     }
   }
 
-  let xmlGroup = xmlChannel.element({
+  const xmlGroup = xmlChannel.element({
     Group: {}
   });
 
   let capabilities;
   if (channel instanceof FineChannel) {
-    xmlGroup.attribute('Byte', channel.fineness);
-    channel = channel.coarseChannel; // use coarse channel's data
+    let capabilityName;
+    if (channel.fineness > 1) {
+      xmlGroup.attribute('Byte', 0);  // not a QLC+ fine channel
+      capabilityName = `Fine^${channel.fineness} adjustment for ${channel.coarseChannel.uniqueName}`;
+    }
+    else {
+      xmlGroup.attribute('Byte', 1);
+      capabilityName = `Fine adjustment for ${channel.coarseChannel.uniqueName}`;
+    }
+
+    channel = channel.coarseChannel;  // use coarse channel's data from here on
     capabilities = [
       new Capability({
         range: [0, 255],
-        name: `Fine adjustment for ${channel.uniqueName}`
+        name: capabilityName
       }, 0, channel)
     ];
   }
@@ -105,7 +114,7 @@ function addChannel(xml, channel) {
 function addCapability(xmlChannel, cap) {
   const range = cap.getRangeWithFineness(0);
 
-  let xmlCapability = xmlChannel.element({
+  const xmlCapability = xmlChannel.element({
     Capability: {
       '@Min': range.start,
       '@Max': range.end,
@@ -126,7 +135,7 @@ function addCapability(xmlChannel, cap) {
 }
 
 function addMode(xml, mode) {
-  let xmlMode = xml.element({
+  const xmlMode = xml.element({
     Mode: {
       '@Name': mode.name
     }
@@ -150,18 +159,18 @@ function addMode(xml, mode) {
 }
 
 function addPhysical(xmlMode, physical) {
-  let xmlPhysical = xmlMode.element({
+  const xmlPhysical = xmlMode.element({
     Physical: {
       Bulb: {
-        '@ColourTemperature': physical.bulbColorTemperature || 0,
         '@Type': physical.bulbType || 'Other',
-        '@Lumens': physical.bulbLumens || 0
+        '@Lumens': physical.bulbLumens || 0,
+        '@ColourTemperature': physical.bulbColorTemperature || 0
       },
       Dimensions: {
+        '@Weight': physical.weight || 0,
         '@Width': Math.round(physical.width) || 0,
         '@Height': Math.round(physical.height) || 0,
-        '@Depth': Math.round(physical.depth) || 0,
-        '@Weight': physical.weight || 0
+        '@Depth': Math.round(physical.depth) || 0
       },
       Lens: {
         '@Name': physical.lensName || 'Other',
@@ -170,8 +179,8 @@ function addPhysical(xmlMode, physical) {
       },
       Focus: {
         '@Type': physical.focusType || 'Fixed',
-        '@TiltMax': physical.focusTiltMax || 0,
-        '@PanMax': physical.focusPanMax || 0
+        '@PanMax': physical.focusPanMax || 0,
+        '@TiltMax': physical.focusTiltMax || 0
       }
     }
   });
@@ -180,7 +189,7 @@ function addPhysical(xmlMode, physical) {
     xmlPhysical.element({
       Technical: {
         '@DmxConnector': physical.DMXconnector || 'Other',
-        '@PowerConsumption': physical.power || 0
+        '@PowerConsumption': Math.round(physical.power) || 0
       }
     });
   }
@@ -193,7 +202,8 @@ function addHeads(xmlMode, mode) {
       if (channel instanceof MatrixChannel) {
         return channel.pixelKey === pixelKey;
       }
-      else if (channel instanceof SwitchingChannel && channel.defaultChannel instanceof MatrixChannel) {
+
+      if (channel instanceof SwitchingChannel && channel.defaultChannel instanceof MatrixChannel) {
         return channel.defaultChannel.pixelKey === pixelKey;
       }
       return false;
@@ -227,13 +237,13 @@ function getFixtureType(fixture) {
     }
     return category;
   }
-  
+
   return 'Other';
 }
 
 // converts a Channel's type into a valid QLC+ channel type
 function getChannelType(channel) {
-  switch(channel.type) {
+  switch (channel.type) {
     case 'Single Color':
     case 'Color Temperature':
     case 'Fog':

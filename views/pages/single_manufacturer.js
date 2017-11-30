@@ -1,5 +1,7 @@
 const url = require('url');
 
+const svg = require('../includes/svg.js');
+
 const Fixture = require('../../lib/model/Fixture.js');
 
 let manufacturer;
@@ -12,10 +14,10 @@ module.exports = function(options) {
     fix => Fixture.fromRepository(man, fix)
   );
 
-  options.title = manufacturer.name + ' - Open Fixture Library';
+  options.title = `${manufacturer.name} - Open Fixture Library`;
   options.structuredDataItems.push(getStructuredOrganization(options));
   options.structuredDataItems.push(getStructuredItemList(options));
-  
+
   let str = require('../includes/header.js')(options);
 
   str += `<h1>${manufacturer.name} fixtures</h1>`;
@@ -24,10 +26,10 @@ module.exports = function(options) {
     str += '<div class="grid list">';
 
     if ('website' in manufacturer) {
-      str += `<a href="${manufacturer.website}" rel="nofollow" class="card blue dark">` + require('../includes/svg.js')({svgBasename: 'earth', className: 'left'}) + '<span>Manufacturer website</span></a>';
+      str += `<a href="${manufacturer.website}" rel="nofollow" class="card blue dark">${svg.getSvg('earth', ['left'])}<span>Manufacturer website</span></a>`;
     }
     if ('rdmId' in manufacturer) {
-      str += `<a href="http://rdm.openlighting.org/manufacturer/display?manufacturer=${manufacturer.rdmId}" rel="nofollow" class="card">` + require('../includes/svg.js')({svgBasename: 'ola', className: 'left'}) + '<span>Open Lighting RDM database</span></a>';
+      str += `<a href="http://rdm.openlighting.org/manufacturer/display?manufacturer=${manufacturer.rdmId}" rel="nofollow" class="card">${svg.getSvg('ola', ['left'])}<span>Open Lighting RDM database</span></a>`;
     }
 
     str += '</div>';
@@ -37,11 +39,11 @@ module.exports = function(options) {
   }
 
   str += '<ul class="card list manufacturer-fixtures">';
-  for (let fix of fixtures) {
+  for (const fix of fixtures) {
     str += `<li><a href="/${man}/${fix.key}">`;
     str += `<span class="name">${fix.name}</span>`;
     for (const cat of fix.categories) {
-      str += require('../includes/svg.js')({categoryName: cat, className: 'right'});
+      str += svg.getCategoryIcon(cat, ['right']);
     }
     str += '</a></li>';
   }
@@ -55,10 +57,10 @@ module.exports = function(options) {
 /**
  * Creates an Organization as structured data for SEO
  * @param {!object} options Global options
- * @return {!object} The JSON-LD data
+ * @returns {!object} The JSON-LD data
  */
 function getStructuredOrganization(options) {
-  let data = {
+  const data = {
     '@context': 'http://schema.org',
     '@type': 'Organization',
     'name': manufacturer.name,
@@ -68,14 +70,14 @@ function getStructuredOrganization(options) {
   if ('website' in manufacturer) {
     data.sameAs = manufacturer.website;
   }
-  
+
   return data;
 }
 
 /**
  * Creates an ItemList as structured data for SEO
  * @param {!object} options Global options
- * @return {!object} The JSON-LD data
+ * @returns {!object} The JSON-LD data
  */
 function getStructuredItemList(options) {
   return {
@@ -83,7 +85,7 @@ function getStructuredItemList(options) {
     '@type': 'ItemList',
     'itemListElement': fixtures.map((fix, index) => ({
       '@type': 'ListItem',
-      'position': index+1,
+      'position': index + 1,
       'url': url.resolve(options.url, fix.key)
     }))
   };
