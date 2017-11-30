@@ -23,6 +23,8 @@ if (args.help) {
   process.exit(0);
 }
 
+let exitcode = 0;
+
 try {
   const cli = new eslint.CLIEngine({
     reportUnusedDisableDirectives: true,
@@ -40,8 +42,14 @@ try {
   else {
     const formatter = cli.getFormatter(args.compact ? 'stylish' : 'codeframe');
     console.log(formatter(eslintReport.results));
+
+    if (eslintReport.errorCount > 0) {
+      exitcode = 1;
+    }
   }
 }
 catch (err) {
   console.error('Error: ', err);
 }
+
+process.exit(exitcode);
