@@ -20,7 +20,7 @@ const helpMessage = [
   '(or the test fixtures, if no fixtures are specified).',
   `Usage: node ${path.relative(process.cwd(), __filename)} -p <plugin> [ <fixtures> ]`,
   'Options:',
-  '  --plugin,   -e: Key of the plugin whose export tests should be called',
+  '  --plugin,   -p: Key of the plugin whose export tests should be called',
   '  --help,     -h: Show this help message.'
 ].join('\n');
 
