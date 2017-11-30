@@ -1,10 +1,5 @@
 'use strict';
 
-/* eslint no-var: off */
-/* eslint prefer-arrow-callback: off */
-/* eslint prefer-template: off */
-/* eslint-env browser */
-
 require('./polyfills.js');
 var A11yDialog = require('a11y-dialog');
 var uuidV4 = require('uuid/v4.js');

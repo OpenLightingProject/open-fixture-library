@@ -1,8 +1,3 @@
-/* eslint no-var: off */
-/* eslint prefer-arrow-callback: off */
-/* eslint prefer-template: off */
-/* eslint-env browser */
-
 var scrollIntoView = require('scroll-into-view');
 
 module.exports = (function() {
