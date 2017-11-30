@@ -298,8 +298,7 @@ function handlePhysicalData(physical) {
 
 /**
  * Creates a visual representation of the fixture's matrix.
- * @param {!Matrix} matrix The fixture's matrix object.
- * @param {?Physical} physical The physical information about the fixture.
+ * @returns {!string} HTML code for the displayed matrix.
  */
 function handleFixtureMatrix() {
   let str = '';
@@ -568,7 +567,7 @@ function handleSwitchingChannel(channel, mode) {
 /**
  * Creates some information about the channel's pixel and its position as label-value pairs to be included beneath other channel information.
  * @param {!MatrixChannel} channel The MatrixChannel whose information should be used.
- * @return {!string} The generated html code.
+ * @returns {!string} The generated html code.
  */
 function handleMatrixChannel(channel) {
   if (fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)) {
@@ -594,7 +593,7 @@ function handleMatrixChannel(channel) {
  * @param {!string} label The label text.
  * @param {*} value The value of any type. If it is null, no html code will be returned.
  * @param {!string} [unit=''] An optional string for the physical unit which will be ammended to the value.
- * @return {!string} The generated html code.
+ * @returns {!string} The generated html code.
  */
 function getSimpleLabelValue(className, label, value, unit = '') {
   if (value !== null) {
@@ -611,9 +610,9 @@ function getSimpleLabelValue(className, label, value, unit = '') {
  * @param {!string} className The html class to use.
  * @param {!string} label The label text.
  * @param {!boolean} boolean True or false. If it is false, no html code will be returned.
- * @return {!string} The generated html code.
+ * @returns {!string} The generated html code.
  */
-function getBooleanLabelValue(className, label, boolean, unit = '') {
+function getBooleanLabelValue(className, label, boolean) {
   if (boolean) {
     return `<section class="${className}">
       <span class="label">${label}</span>

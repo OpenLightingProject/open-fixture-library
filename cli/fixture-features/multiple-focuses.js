@@ -19,9 +19,9 @@ module.exports = [{
 
 /**
  * Checks if the channel has the specified type under consideration of matrix channels.
- * @param {!AbstractChannel|MatrixChannel} channel
- * @param {!string} type
- * @return {!boolean} True if the channel has the specified type.
+ * @param {!AbstractChannel|MatrixChannel} channel The channel to check.
+ * @param {!string} type The type that shall be checked.
+ * @returns {!boolean} True if the channel has the specified type.
  */
 function checkChannelType(channel, type) {
   if (channel instanceof MatrixChannel) {

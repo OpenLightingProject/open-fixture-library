@@ -362,8 +362,8 @@ function checkChannel(channel) {
  * Checks whether the specified string contains only allowed and all required variables
  * and pushes an error on wrong variable usage.
  * @param {!string} str The string to be checked.
- * @param {!string[]} [requiredVariables=[]] Variables that must be included in the string. Specify them with leading dollar sign ($var).
- * @param {!string[]} [allowedVariables=[]] Variables that may be included in the string; requiredVariables are automatically included. Specify them with leading dollar sign ($var).
+ * @param {!Array.<string>} [requiredVariables=[]] Variables that must be included in the string. Specify them with leading dollar sign ($var).
+ * @param {!Array.<string>} [allowedVariables=[]] Variables that may be included in the string; requiredVariables are automatically included. Specify them with leading dollar sign ($var).
  */
 function checkTemplateVariables(str, requiredVariables = [], allowedVariables = []) {
   allowedVariables = allowedVariables.concat(requiredVariables);
@@ -510,7 +510,7 @@ function checkMode(mode) {
     result.errors.push(`Mode name and shortName must not contain the word 'mode' in mode '${mode.shortName}'.`);
   }
 
-  if (mode.name.match(/^(\d+)(?:\s+|\-)?(?:ch|channels?)$/)) {
+  if (mode.name.match(/^(\d+)(?:\s+|-)?(?:ch|channels?)$/)) {
     const intendedLength = parseInt(RegExp.$1);
 
     if (mode.channels.length !== intendedLength) {
@@ -538,7 +538,7 @@ function checkMode(mode) {
 
 /**
  * Checks if the given complex channel insert block is valid.
- * @param {!Object} complexData The raw JSON data of the insert block.
+ * @param {!object} complexData The raw JSON data of the insert block.
  * @param {!Mode} mode The mode in which this insert block is used.
  */
 function checkChannelInsertBlock(complexData, mode) {
@@ -591,7 +591,7 @@ function checkMatrixInsert(matrixInsert, mode) {
   for (const templateKey of matrixInsert.templateChannels) {
     const templateChannelExists = fixture.templateChannels.some(ch => ch.allTemplateKeys.includes(templateKey));
     if (!templateChannelExists) {
-      result.errors.push(`Template channel '${templateKey}' doesn\'t exist.`);
+      result.errors.push(`Template channel '${templateKey}' doesn't exist.`);
     }
   }
 }
@@ -625,7 +625,7 @@ function checkModeChannelKeys(chIndex, mode, usedChannelKeysInMode) {
 
   // if earliest occurence (including switching channels) is not this one
   if (mode.getChannelIndex(channel, 'all') < chIndex) {
-    result.errors.push(`Channel '${chReference}' is referenced more than once from mode '${mode.shortName}'.`);
+    result.errors.push(`Channel '${channel.key}' is referenced more than once from mode '${mode.shortName}'.`);
   }
 
   if (channel instanceof FineChannel) {

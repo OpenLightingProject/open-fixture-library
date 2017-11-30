@@ -226,7 +226,7 @@ function addHeads(xmlMode, mode) {
 /**
  * Determines the QLC+ fixture type out of the fixture's categories.
  * @param {!Fixture} fixture The Fixture instance whose QLC+ type has to be determined.
- * @return {!string} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
+ * @returns {!string} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
  */
 function getFixtureType(fixture) {
   const ignoredCats = ['Blinder', 'Matrix'];
