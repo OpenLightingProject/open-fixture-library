@@ -689,7 +689,7 @@ function saveChannel() {
 }
 
 /**
- * @param {!Object} coarseChannel The channel object of the coarse channel.
+ * @param {!object} coarseChannel The channel object of the coarse channel.
  * @param {!number} offset At which fineness should be started.
  * @param {boolean} [addToMode] If true, the fine channel is pushed to the current mode's channels.
  */

@@ -30,7 +30,7 @@ let modeShortNames;
  * @param {!string} fixKey The fixture key.
  * @param {?object} fixtureJson The fixture JSON object.
  * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurences are appended.
- * @return {ResultData} The result object containing errors and warnings, if any.
+ * @returns {ResultData} The result object containing errors and warnings, if any.
  */
 module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   result = {
@@ -289,7 +289,7 @@ function checkCapabilities(channel, minUsedFineness) {
  * @param {!Channel} channel The channel the capability belongs to.
  * @param {!number} capNumber The number of the capability in the channel, starting with 0.
  * @param {number} minUsedFineness The smallest fineness that the channel is used in a mode.This controls if this range can be from 0 up to channel.maxDmxBound or less.
- * @return {boolean} true if the range is valid, false otherwise. The global `result` object is updated then.
+ * @returns {boolean} true if the range is valid, false otherwise. The global `result` object is updated then.
  */
 function checkRange(channel, capNumber, minUsedFineness) {
   const cap = channel.capabilities[capNumber];
@@ -331,7 +331,7 @@ function checkRange(channel, capNumber, minUsedFineness) {
  * Get the highest possible DMX value for each fineness up to the specified one.
  * E.g. fineness=2 -> [255, 65535, 16777215]
  * @param {!number} fineness The least used fineness in a mode of a channel.
- * @return {!Array.<number>} Possible end values, sorted ascending.
+ * @returns {!Array.<number>} Possible end values, sorted ascending.
  */
 function getPossibleEndValues(fineness) {
   const values = [];

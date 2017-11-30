@@ -32,7 +32,7 @@ let repoName;
 
 /**
  * Checks if the environment variables for GitHub operations are correct.
- * @return {!Promise} Rejects an error message if the environment is not correct.
+ * @returns {!Promise} Rejects an error message if the environment is not correct.
  */
 module.exports.checkEnv = function checkEnv() {
   return new Promise((resolve, reject) => {
@@ -173,7 +173,7 @@ function addFileToChangedData(changedData, filename) {
  * @param {!string} test.filename Relative path from OFL root dir to test file: 'tests/github/test-file-name.js'
  * @param {!string} test.name Heading to be used in the comment
  * @param {!Array.<string>} test.lines The comment's lines of text
- * @return {!Promise} A Promise that is fulfilled as soon as all GitHub operations have finished
+ * @returns {!Promise} A Promise that is fulfilled as soon as all GitHub operations have finished
  */
 module.exports.updateComment = function updateComment(test) {
   let lines = [

@@ -79,7 +79,7 @@ module.exports = function(options) {
 /**
  * Creates a ProductModel as structured data for SEO
  * @param {!object} options Global options
- * @return {!object} The JSON-LD data
+ * @returns {!object} The JSON-LD data
  */
 function getStructuredProductModel(options) {
   const data = {
@@ -108,7 +108,7 @@ function getStructuredProductModel(options) {
 /**
  * Creates a BreadCrumbList as structured data for SEO
  * @param {!object} options Global options
- * @return {!object} The JSON-LD data
+ * @returns {!object} The JSON-LD data
  */
 function getStructuredBreadCrumbList(options) {
   return {

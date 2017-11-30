@@ -57,7 +57,7 @@ module.exports = function(options) {
 /**
  * Creates an Organization as structured data for SEO
  * @param {!object} options Global options
- * @return {!object} The JSON-LD data
+ * @returns {!object} The JSON-LD data
  */
 function getStructuredOrganization(options) {
   const data = {
@@ -77,7 +77,7 @@ function getStructuredOrganization(options) {
 /**
  * Creates an ItemList as structured data for SEO
  * @param {!object} options Global options
- * @return {!object} The JSON-LD data
+ * @returns {!object} The JSON-LD data
  */
 function getStructuredItemList(options) {
   return {

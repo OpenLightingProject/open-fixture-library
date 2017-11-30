@@ -49,11 +49,46 @@
     "require-jsdoc": "warn",
     "semi": "error",
     "space-before-blocks": "error",
-    "space-before-function-paren": ["error", { "anonymous": "never", "named": "never", "asyncArrow": "always" }],
+    "space-before-function-paren": ["error", {
+      "anonymous": "never",
+      "named": "never",
+      "asyncArrow": "always"
+    }],
     "space-in-parens": "error",
     "space-infix-ops": "error",
     "spaced-comment": ["error", "always"],
     "template-curly-spacing": "error",
-    "valid-jsdoc": ["error", { "requireReturn": false }]
+    "valid-jsdoc": ["error", {
+      "requireReturn": false,
+      "prefer": {
+        "arg": "param",
+        "argument": "param",
+        "augments": "extends",
+        "class": "constructor",
+        "const": "constant",
+        "defaultvalue": "default",
+        "desc": "description",
+        "exception": "throws",
+        "fileoverview": "file",
+        "fires": "emits",
+        "func": "function",
+        "host": "external",
+        "linkcode": "link",
+        "linkplain": "link",
+        "method": "function",
+        "overview": "file",
+        "prop": "property",
+        "return": "returns",
+        "var": "member",
+        "virtual": "abstract",
+        "yield": "yields"
+      },
+      "preferType": {
+        "Boolean": "boolean",
+        "Number": "number",
+        "Object": "object",
+        "String": "string"
+      }
+    }]
   }
 }
