@@ -1,0 +1,328 @@
+{
+  "name": "Gobo Scanner 80",
+  "shortName": "CLSCAN80W",
+  "categories": ["Scanner", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2017-11-30",
+    "lastModifyDate": "2017-11-30"
+  },
+  "comment": "Also known as \"G-Scan 80\"",
+  "manualURL": "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLSCAN80W/CLSCAN80W_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf",
+  "physical": {
+    "dimensions": [190, 150, 450],
+    "weight": 4.9,
+    "power": 130,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "80 W cool white LED"
+    },
+    "lens": {
+      "degreesMinMax": [12, 12]
+    },
+    "focus": {
+      "type": "Mirror",
+      "panMax": 180,
+      "tiltMax": 90
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"]
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"]
+    },
+    "Dimmer": {
+      "type": "Intensity"
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Open"
+        },
+        {
+          "range": [6, 255],
+          "name": "Strobe 1-20Hz"
+        }
+      ]
+    },
+    "Flash Duration": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0-510ms"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Open",
+          "color": "#ffffff"
+        },
+        {
+          "range": [6, 18],
+          "name": "Warm Yellow",
+          "color": "#f9ba16"
+        },
+        {
+          "range": [19, 31],
+          "name": "Lavender",
+          "color": "#e6e6fa"
+        },
+        {
+          "range": [32, 44],
+          "name": "Lime",
+          "color": "#32cd32"
+        },
+        {
+          "range": [45, 57],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [58, 70],
+          "name": "Amber",
+          "color": "#ffbf00"
+        },
+        {
+          "range": [71, 83],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [84, 96],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [97, 109],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [110, 122],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [123, 128],
+          "name": "Rotating stop"
+        },
+        {
+          "range": [129, 255],
+          "name": "Rotating slow-fast"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Open"
+        },
+        {
+          "range": [6, 17],
+          "name": "Gobo 1"
+        },
+        {
+          "range": [18, 29],
+          "name": "Gobo 2"
+        },
+        {
+          "range": [30, 41],
+          "name": "Gobo 3"
+        },
+        {
+          "range": [42, 53],
+          "name": "Gobo 4"
+        },
+        {
+          "range": [54, 65],
+          "name": "Gobo 5"
+        },
+        {
+          "range": [66, 77],
+          "name": "Gobo 6"
+        },
+        {
+          "range": [78, 89],
+          "name": "Gobo 7"
+        },
+        {
+          "range": [90, 101],
+          "name": "Gobo 8"
+        },
+        {
+          "range": [102, 113],
+          "name": "Gobo 9"
+        },
+        {
+          "range": [114, 125],
+          "name": "Gobo shake 1 slow-fast"
+        },
+        {
+          "range": [126, 137],
+          "name": "Gobo shake 2 slow-fast"
+        },
+        {
+          "range": [138, 149],
+          "name": "Gobo shake 3 slow-fast"
+        },
+        {
+          "range": [150, 161],
+          "name": "Gobo shake 4 slow-fast"
+        },
+        {
+          "range": [162, 173],
+          "name": "Gobo shake 5 slow-fast"
+        },
+        {
+          "range": [174, 185],
+          "name": "Gobo shake 6 slow-fast"
+        },
+        {
+          "range": [186, 197],
+          "name": "Gobo shake 7 slow-fast"
+        },
+        {
+          "range": [198, 209],
+          "name": "Gobo shake 8 slow-fast"
+        },
+        {
+          "range": [210, 221],
+          "name": "Gobo shake 9 slow-fast"
+        },
+        {
+          "range": [222, 231],
+          "name": "Rotating Stop"
+        },
+        {
+          "range": [232, 243],
+          "name": "Rotating CW slow-fast"
+        },
+        {
+          "range": [244, 255],
+          "name": "Rotating CCW fast-slow"
+        }
+      ]
+    },
+    "Pan/Tilt Macros": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "off"
+        },
+        {
+          "range": [6, 40],
+          "name": "Pan small-big"
+        },
+        {
+          "range": [41, 75],
+          "name": "Tilt small-big"
+        },
+        {
+          "range": [76, 110],
+          "name": "Pan/Tilt small-big"
+        },
+        {
+          "range": [111, 145],
+          "name": "Pan/Tilt invers small-big"
+        },
+        {
+          "range": [146, 180],
+          "name": "Circle small-big"
+        },
+        {
+          "range": [181, 215],
+          "name": "Circle invers small-big"
+        },
+        {
+          "range": [216, 255],
+          "name": "Random small-big"
+        }
+      ]
+    },
+    "Pan/Tilt Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Speed fast-slow"
+        }
+      ]
+    },
+    "Settings": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "No function"
+        },
+        {
+          "range": [6, 55],
+          "name": "Invert Pan on (Hold 3s)"
+        },
+        {
+          "range": [56, 105],
+          "name": "Invert Pan off (Hold 5s)"
+        },
+        {
+          "range": [106, 155],
+          "name": "Invert Tilt on (Hold 3s)"
+        },
+        {
+          "range": [156, 205],
+          "name": "Invert Tilt off (Hold 5s)"
+        },
+        {
+          "range": [206, 255],
+          "name": "Reset All Functions (Hold 3s)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "12ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Dimmer",
+        "Strobe",
+        "Flash Duration",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Pan/Tilt Macros",
+        "Pan/Tilt Speed",
+        "Settings"
+      ]
+    },
+    {
+      "name": "9ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Strobe",
+        "Flash Duration",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Pan/Tilt Macros",
+        "Settings"
+      ]
+    }
+  ]
+}
