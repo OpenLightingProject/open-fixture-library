@@ -1,5 +1,10 @@
 'use strict';
 
+/* eslint no-var: off */
+/* eslint prefer-arrow-callback: off */
+/* eslint prefer-template: off */
+/* eslint-env browser */
+
 require('details-polyfill');
 
 var logo;

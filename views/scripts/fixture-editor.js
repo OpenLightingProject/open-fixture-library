@@ -1,5 +1,10 @@
 'use strict';
 
+/* eslint no-var: off */
+/* eslint prefer-arrow-callback: off */
+/* eslint prefer-template: off */
+/* eslint-env browser */
+
 require('./polyfills.js');
 var A11yDialog = require('a11y-dialog');
 var uuidV4 = require('uuid/v4.js');
@@ -464,7 +469,7 @@ var app = window.app = new Vue({
           var maxFoundFineness = 0;
           for (var i = 0; i < app.currentMode.channels.length; i++) {
             var ch = app.fixture.availableChannels[app.currentMode.channels[i]];
-            
+
             if ('coarseChannelId' in ch && ch.coarseChannelId === channel.coarseChannelId) {
               maxFoundFineness = Math.max(maxFoundFineness, ch.fineness);
             }

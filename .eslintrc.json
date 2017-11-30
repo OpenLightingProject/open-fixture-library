@@ -23,7 +23,7 @@
     "func-call-spacing": "error",
     "getter-return": "error",
     "guard-for-in": "error",
-    "indent": ["error", 2],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
     "key-spacing": "error",
     "keyword-spacing": "error",
     "linebreak-style": "error",

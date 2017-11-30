@@ -1,3 +1,8 @@
+/* eslint no-var: off */
+/* eslint prefer-arrow-callback: off */
+/* eslint prefer-template: off */
+/* eslint-env browser */
+
 var scrollIntoView = require('scroll-into-view');
 
 module.exports = (function() {
@@ -76,7 +81,7 @@ module.exports = (function() {
       if (/\bfine\b|\d+(?:\s|-|_)*bit|\bMSB\b|\bLSB\b/i.test(field.value)) {
         return 'Please don\'t create fine channels here, set its resolution below instead.';
       }
-      
+
       if (/^[^A-Z0-9]/.test(field.value)) {
         return 'Please start with an uppercase letter or a number.';
       }
@@ -94,7 +99,7 @@ module.exports = (function() {
       || (field.matches('.capability .rangeEnd') && validity.rangeOverflow)) {
       return 'Ranges must not overlap.';
     }
-    
+
     return null;
   };
 
@@ -260,7 +265,7 @@ module.exports = (function() {
       if (!(event.target instanceof Element)) {
         return;
       }
-      
+
       var group = event.target.closest(settings.groupSelector);
       if (!group) {
         return;
