@@ -10,7 +10,12 @@ const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
 
 let fixture;
 
-module.exports = function(options) {
+/**
+ * Generates the HTML of a single fixture page.
+ * @param {!object} options Object containing page options like manufacturer key and fixture key.
+ * @returns {!string} The HTML string.
+ */
+module.exports = function handleFixture(options) {
   const {man, fix} = options;
 
   fixture = Fixture.fromRepository(man, fix);
@@ -135,10 +140,19 @@ function getStructuredBreadCrumbList(options) {
   };
 }
 
+/**
+ * Format a date to display as a <time> HTML tag.
+ * @param {!Date} date The Date object to format.
+ * @returns {!string} The <time> HTML tag.
+ */
 function getDateString(date) {
   return `<time datetime="${date.toISOString()}" title="${date.toISOString()}">${date.toISOString().replace(/T.*?$/, '')}</time>`;
 }
 
+/**
+ * @param {!string} chKey Key of the channel to get the heading for.
+ * @returns {!string} The channel name including a <code> tag with the channel key if necessary.
+ */
 function getChannelHeading(chKey) {
   const channel = fixture.getChannelByKey(chKey);
 
@@ -153,6 +167,9 @@ function getChannelHeading(chKey) {
   return channel.name + (chKey !== channel.name ? ` <code class="channel-key">${chKey}</code>` : '');
 }
 
+/**
+ * @returns {!string} The general fixture info HTML.
+ */
 function handleFixtureInfo() {
   let str = '<section class="categories">';
   str += '  <span class="label">Categories</span>';
@@ -212,6 +229,10 @@ function handleFixtureInfo() {
   return str;
 }
 
+/**
+ * @param {!Physical} physical The fixture's or mode's physical object.
+ * @returns {!string} The physical HTML.
+ */
 function handlePhysicalData(physical) {
   let str = '';
 
@@ -326,6 +347,10 @@ function handlePhysicalData(physical) {
   return str;
 }
 
+/**
+ * @param {!Mode} mode The mode to display.
+ * @returns {!string} The mode HTML.
+ */
 function handleMode(mode) {
   let sectionId = '';
   let rdmPersonalityIndexHint = '';
@@ -373,6 +398,11 @@ function handleMode(mode) {
   return str;
 }
 
+/**
+ * @param {!Channel} channel The channel to display details for.
+ * @param {!Mode} mode The mode in which the channel is used.
+ * @returns {!string} The channel HTML.
+ */
 function handleChannel(channel, mode) {
   let str = `<section class="channel-type">
     <span class="label">Type</span>
@@ -449,6 +479,12 @@ function handleChannel(channel, mode) {
   return str;
 }
 
+/**
+ * @param {!Channel} channel The channel to display capabilities for.
+ * @param {!Mode} mode The mode in which the channel is used.
+ * @param {!number} finenessInMode The fineness of the channel in this mode.
+ * @returns {!string} The capabilities HTML.
+ */
 function handleCapabilities(channel, mode, finenessInMode) {
   if (!channel.hasCapabilities) {
     return '';
@@ -517,11 +553,21 @@ function handleCapabilities(channel, mode, finenessInMode) {
   return str;
 }
 
+/**
+ * @param {!FineChannel} channel The fine channel to display details for.
+ * @param {!Mode} mode The mode in which the channel is used.
+ * @returns {!string} The fine channel HTML.
+ */
 function handleFineChannel(channel, mode) {
   const coarseChannelIndex = mode.getChannelIndex(channel.coarseChannel.key) + 1;
   return `<div>Fine channel of ${channel.coarseChannel.name} (channel ${coarseChannelIndex})</div>`;
 }
 
+/**
+ * @param {!SwitchingChannel} channel The switching channel to display details for.
+ * @param {!Mode} mode The mode in which the channel is used.
+ * @returns {!string} The switching channel HTML.
+ */
 function handleSwitchingChannel(channel, mode) {
   const triggerChannelIndex = mode.getChannelIndex(channel.triggerChannel.key) + 1;
 
