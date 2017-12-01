@@ -1,4 +1,4 @@
-const FineChannel = require('../../lib/model/FineChannel.js');
+const FineChannel = require('../lib/model/FineChannel.js');
 
 module.exports = [{
   name: 'Switches fine channels',

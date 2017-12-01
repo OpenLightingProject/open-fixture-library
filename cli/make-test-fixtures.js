@@ -10,9 +10,12 @@ const path = require('path');
 const colors = require('colors');
 
 const Fixture = require('../lib/model/Fixture.js');
+const register = require('../fixtures/register.json');
 
-const fixFeaturesDir = path.join(__dirname, 'fixture-features');
-const fixturesDir = path.join(__dirname, '..', 'fixtures');
+const fixFeaturesDir = path.join(__dirname, '../fixture-features');
+const jsonFile = path.join(__dirname, '../tests/test-fixtures.json');
+const markdownFile = path.join(__dirname, '../tests/test-fixtures.md');
+
 
 const fixFeatures = [];
 const featuresUsed = {}; // feature id -> times used
@@ -46,9 +49,8 @@ for (const featureFile of fs.readdirSync(fixFeaturesDir)) {
 
 // check which features each fixture supports
 let fixtures = [];
-const manufacturers = JSON.parse(fs.readFileSync(path.join(fixturesDir, 'register.json'), 'utf8')).manufacturers;
-for (const man of Object.keys(manufacturers)) {
-  for (const fixKey of manufacturers[man]) {
+for (const man of Object.keys(register.manufacturers)) {
+  for (const fixKey of register.manufacturers[man]) {
     // pre-process data
     const fix = Fixture.fromRepository(man, fixKey);
     const fixResult = {
@@ -99,13 +101,23 @@ for (const fixture of fixtures) {
   console.log(` - ${fixture.man}/${fixture.key}`);
 }
 
-const jsonFile = path.join(__dirname, '../tests/test-fixtures.json');
-fs.writeFileSync(jsonFile, JSON.stringify(fixtures, null, 2));
-console.log(`\nUpdated ${jsonFile}`);
+fs.writeFile(jsonFile, JSON.stringify(fixtures, null, 2), 'utf8', error => {
+  if (error) {
+    console.error(`${colors.red('[Fail]')} Could not write test-fixtures.json`, error);
+  }
+  else {
+    console.log(`${colors.green('[Success]')} Updated ${jsonFile}`);
+  }
+});
 
-const markdownFile = path.join(__dirname, '../tests/test-fixtures.md');
-fs.writeFileSync(markdownFile, getMarkdownCode());
-console.log(`Updated ${markdownFile}`);
+fs.writeFile(markdownFile, getMarkdownCode(), 'utf8', error => {
+  if (error) {
+    console.error(`${colors.red('[Fail]')} Could not write test-fixtures.md`, error);
+  }
+  else {
+    console.log(`${colors.green('[Success]')} Updated ${markdownFile}`);
+  }
+});
 
 /**
  * Generates a markdown table presenting the test fixtures and all fix features.
