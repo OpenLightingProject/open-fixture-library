@@ -246,12 +246,6 @@ a.fixture-mode {
   text-align: center;
 }
 
-.switch-to-channel {
-  line-height: 1rem;
-  padding-bottom: .8rem;
-  font-size: 82%;
-}
-
 /* switched channels */
 .fixture-mode ol ol {
   list-style-type: lower-alpha;
@@ -340,6 +334,20 @@ a.fixture-mode {
 
   .capability-menuClick {
     text-align: right;
+
+    & > svg {
+      height: 1.4em;
+    }
+  }
+
+  .switch-to-channel {
+    line-height: 1rem;
+    padding-bottom: 4px;
+    font-size: 82%;
+
+    & > .switching-channel-key {
+      color: $secondary-text-dark;
+    }
   }
 }
 

@@ -504,13 +504,9 @@ function handleCapabilities(channel, mode, finenessInMode) {
     str += '<tr>';
 
     const range = cap.getRangeWithFineness(finenessInMode);
-    str += '<td class="capability-range0" title="DMX value start">';
-    str += `  <code>${range.start}</code>`;
-    str += '</td>';
+    str += `<td class="capability-range0"><code>${range.start}</code></td>`;
     str += '<td class="capability-range-separator"><code>…</code></td>';
-    str += '<td class="capability-range1" title="DMX value end">';
-    str += `  <code>${range.end}</code>`;
-    str += '</td>';
+    str += `<td class="capability-range1"><code>${range.end}</code></td>`;
 
     if (cap.color !== null && cap.color2 !== null) {
       const color1 = cap.color.rgb().string();
@@ -534,7 +530,7 @@ function handleCapabilities(channel, mode, finenessInMode) {
       str += '<td></td>';
     }
 
-    str += `<td class="capability-name" title="name">${cap.name}</td>`;
+    str += `<td class="capability-name">${cap.name}</td>`;
 
     const menuClickTitle = cap.menuClick === 'hidden' ? 'this capability is hidden in menus' : `a menu click changes the channel value to ${cap.menuClick} of capability`;
     const menuClickIcon = svg.getSvg(`capability-${cap.menuClick}`);
@@ -550,7 +546,7 @@ function handleCapabilities(channel, mode, finenessInMode) {
       if (switchingChannelIndex > -1) {
         const switchToChannel = cap.switchChannels[switchingChannelKey];
 
-        str += `<tr><td colspan="5" class="switch-to-channel">${switchingChannelKey} (channel ${switchingChannelIndex + 1}) → ${switchToChannel}</td></tr>`;
+        str += `<tr><td colspan="4"></td><td colspan="2" class="switch-to-channel"><span class="switching-channel-key">${switchingChannelKey} (channel ${switchingChannelIndex + 1}) →</span> ${switchToChannel}</td></tr>`;
       }
     }
   });
