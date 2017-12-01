@@ -490,10 +490,15 @@ function handleCapabilities(channel, mode, finenessInMode) {
     return '';
   }
 
-  let str = '<details class="channel-capabilities">';
-  str += '  <summary>Capabilities</summary>';
-  str += '  <table>';
-  str += '    <tbody>';
+  let str = '<h4>Capabilities</h4>';
+  str += '<table class="capabilities-table">';
+  str += '<thead><tr>';
+  str += '  <th colspan="3">DMX values</th>';
+  str += '  <th></th>';  // color or image
+  str += '  <th>name</th>';
+  str += '  <th></th>';  // menuClick
+  str += '</tr></thead>';
+  str += '<tbody>';
 
   channel.capabilities.forEach(cap => {
     str += '<tr>';
@@ -502,6 +507,7 @@ function handleCapabilities(channel, mode, finenessInMode) {
     str += '<td class="capability-range0" title="DMX value start">';
     str += `  <code>${range.start}</code>`;
     str += '</td>';
+    str += '<td class="capability-range-separator"><code>…</code></td>';
     str += '<td class="capability-range1" title="DMX value end">';
     str += `  <code>${range.end}</code>`;
     str += '</td>';
@@ -529,7 +535,10 @@ function handleCapabilities(channel, mode, finenessInMode) {
     }
 
     str += `<td class="capability-name" title="name">${cap.name}</td>`;
-    str += `<td class="capability-menuClick" title="menu click action">${cap.menuClick}</td>`;
+
+    const menuClickTitle = cap.menuClick === 'hidden' ? 'this capability is hidden in menus' : `a menu click changes the channel value to ${cap.menuClick} of capability`;
+    const menuClickIcon = svg.getSvg(`capability-${cap.menuClick}`);
+    str += `<td class="capability-menuClick" title="${menuClickTitle}">${menuClickIcon}</td>`;
 
     str += '</tr>';
 
@@ -546,9 +555,7 @@ function handleCapabilities(channel, mode, finenessInMode) {
     }
   });
 
-  str += '    </tbody>';
-  str += '  </table>';
-  str += '</details>';
+  str += '</tbody></table>';
 
   return str;
 }

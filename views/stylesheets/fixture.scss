@@ -190,7 +190,7 @@ section {
     height: 4ex;
     margin: -1ex 0 0 1ex;
     transform: rotate(45deg);
-    transform-origin: left center;    
+    transform-origin: left center;
   }
 }
 
@@ -306,6 +306,40 @@ a.fixture-mode {
     & .color {
       width: 10ex;
     }
+  }
+}
+
+.capabilities-table {
+  border-collapse: collapse;
+  width: 100%;
+
+  th {
+    font-weight: normal;
+    color: $secondary-text-dark;
+  }
+
+  td, th {
+    padding: 0 4px;
+  }
+
+  .capability-range0 {
+    text-align: right;
+    padding-right: 2px;
+  }
+
+  .capability-range-separator {
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .capability-range1 {
+    text-align: left;
+    padding-left: 2px;
+  }
+
+  .capability-menuClick {
+    text-align: right;
   }
 }
 
