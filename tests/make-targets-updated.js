@@ -3,16 +3,29 @@
 const path = require('path');
 const colors = require('colors');
 
+
 try {
-  require('child_process').execSync('make --question', {
-    cwd: path.join(__dirname, '..')
+  require('child_process').execSync('make -B', {
+    cwd: path.join(__dirname, '..'),
+    encoding: 'utf-8'
   });
 }
-catch (e) {
-  console.error(`${colors.red('[FAIL]')} Make targets are not up-to-date. Please run \`make\` in the project's root directory.`);
+catch (error) {
+  console.error(`${colors.red('[FAIL]')} Unable to run Makefile:`, error);
   process.exit(1);
 }
 finally {
-  console.log(`${colors.green('[PASS]')} Make targets are up-to-date.`);
-  process.exit(0);
+  try {
+    require('child_process').execSync('git diff --exit-code', {
+      cwd: path.join(__dirname, '..')
+    });
+  }
+  catch (error) {
+    console.error(`${colors.red('[FAIL]')} Make targets are not up-to-date or there are other unstaged changes. Please run \`make -B\` and stage (git add) all changes.`);
+    process.exit(1);
+  }
+  finally {
+    console.log(`${colors.green('[PASS]')} Make targets are up-to-date.`);
+    process.exit(0);
+  }
 }
