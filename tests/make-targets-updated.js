@@ -1,7 +1,7 @@
 #!/usr/bin/node
 
-const path = require('path')
-const colors = require('colors');;
+const path = require('path');
+const colors = require('colors');
 
 try {
   require('child_process').execSync('make --question', {
