@@ -168,6 +168,60 @@ function getChannelHeading(chKey) {
 }
 
 /**
+ * Get HTML for a color circle with one or two colors.
+ * @param {!string} color1 First color string.
+ * @param {?string} [color2] Second color string.
+ * @returns {!string} The HTML for displaying the color circle.
+ */
+function getColorCircle(color1, color2) {
+  if (color2) {
+    return `<span class="color-circle" style="background-color: ${color1}"><span style="background-color: ${color2}"></span></span>`;
+  }
+
+  return `<span class="color-circle" style="background-color: ${color1}"></span>`;
+}
+
+/**
+ * Get the channel icon (or color circle for Single Color channels).
+ * @param {!string} chKey Key of the channel to get the heading for.
+ * @returns {!string} The inline SVG or HTML displaying the channel icon.
+ */
+function getChannelTypeIcon(chKey) {
+  const channel = fixture.getChannelByKey(chKey);
+
+  if (channel instanceof NullChannel) {
+    return svg.getChannelTypeIcon('Nothing');
+  }
+
+  if (channel instanceof FineChannel) {
+    return getChannelTypeIcon(channel.coarseChannel.key);
+  }
+
+  if (channel instanceof SwitchingChannel) {
+    return svg.getChannelTypeIcon('Switching Channel');
+  }
+
+  if (channel.type === 'Single Color') {
+    const colorLookup = {
+      Red: '#ff0000',
+      Green: '#00ff00',
+      Blue: '#0000ff',
+      Cyan: '#00ffff',
+      Magenta: '#ff00ff',
+      Yellow: '#ffff00',
+      Amber: '#ffbf00',
+      White: '#ffffff',
+      UV: '#8800ff',
+      Lime: '#bfff00',
+      Indigo: '#4b0082'
+    };
+    return getColorCircle(colorLookup[channel.color]);
+  }
+
+  return svg.getChannelTypeIcon(channel.type);
+}
+
+/**
  * @returns {!string} The general fixture info HTML.
  */
 function handleFixtureInfo() {
@@ -377,7 +431,7 @@ function handleMode(mode) {
   mode.channels.forEach(channel => {
     str += '<li>';
     str += '<details class="channel">';
-    str += `<summary>${getChannelHeading(channel.key)}</summary>`;
+    str += `<summary>${getChannelTypeIcon(channel.key)} ${getChannelHeading(channel.key)}</summary>`;
 
     if (channel instanceof FineChannel) {
       str += handleFineChannel(channel, mode);
@@ -513,14 +567,14 @@ function handleCapabilities(channel, mode, finenessInMode) {
       const color2 = cap.color2.rgb().string();
 
       str += `<td class="capability-color" title="color: ${color1} / ${color2}">`;
-      str += `  <span class="color-circle" style="background-color: ${color1}"><span style="background-color: ${color2}"></span></span>`;
+      str += getColorCircle(color1, color2);
       str += '</td>';
     }
     else if (cap.color !== null) {
       const color1 = cap.color.rgb().string();
 
       str += `<td class="capability-color" title="color: ${color1}">`;
-      str += `  <span class="color-circle" style="background-color: ${color1}"></span>`;
+      str += getColorCircle(color1);
       str += '</td>';
     }
     else if (cap.image !== null) {

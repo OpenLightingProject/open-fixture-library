@@ -177,8 +177,14 @@ section {
 
 .color-circle {
   display: inline-block;
-  width: 2ex;
-  height: 2ex;
+  box-sizing: border-box;
+
+  /* follow Material guidelines for whitespace around icons */
+  /* 1.4em in total like .icon */
+  width: 1.28em;
+  height: 1.28em;
+  margin: 0.06em;
+
   vertical-align: middle;
   border: 1px solid #ddd;
   border-radius: 50%;
@@ -334,10 +340,6 @@ a.fixture-mode {
 
   .capability-menuClick {
     text-align: right;
-
-    & > svg {
-      height: 1.4em;
-    }
   }
 
   .switch-to-channel {

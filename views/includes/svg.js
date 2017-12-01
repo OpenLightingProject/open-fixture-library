@@ -3,7 +3,8 @@ const path = require('path');
 
 module.exports = {
   getSvg,
-  getCategoryIcon
+  getCategoryIcon,
+  getChannelTypeIcon
 };
 
 /**
@@ -41,4 +42,18 @@ function getCategoryIcon(categoryName, classNames = []) {
 
   const svg = getSvg(`categories/${sanitzedCategoryName}`, classNames);
   return svg.replace(/(<svg[^>]*>)/, `$1<title>Category: ${categoryName}</title>`);
+}
+
+/**
+ * Get an icon for the provided channel type.
+ * @param {!string} channelType Channel type to find the icon for.
+ * @param {!Array.<string>} classNames List of class names the <svg> tag should have.
+ * @returns {!string} The inline <svg> tag or an empty string if the file was not found.
+ */
+function getChannelTypeIcon(channelType, classNames = []) {
+  const sanitzedChannelType = channelType.toLowerCase().replace(/[^\w]+/g, '-');
+  classNames.push(`channel${sanitzedChannelType}`, 'channel-icon', 'icon');
+
+  const svg = getSvg(`channel-types/${sanitzedChannelType}`, classNames);
+  return svg.replace(/(<svg[^>]*>)/, `$1<title>Channel type: ${channelType}</title>`);
 }
