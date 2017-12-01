@@ -5,7 +5,7 @@ const colors = require('colors');
 
 
 try {
-  require('child_process').execSync('make -B -C ..');
+  require('child_process').execSync(`make -B -C ${path.join(__dirname, '..')}`);
 }
 catch (error) {
   console.error(`${colors.red('[FAIL]')} Unable to run Makefile:`, error);
