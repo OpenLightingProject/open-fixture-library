@@ -15,7 +15,7 @@ const categories = {};
 const contributors = {};
 const rdm = {};
 
-const fixturePath = path.join(__dirname, '..', 'fixtures');
+const fixturePath = path.join(__dirname, '../fixtures');
 
 try {
   const manufacturers = JSON.parse(fs.readFileSync(path.join(fixturePath, 'manufacturers.json'), 'utf8'));
@@ -137,10 +137,9 @@ const filename = path.join(fixturePath, (process.argv.length === 3 ? process.arg
 
 fs.writeFile(filename, JSON.stringify(register, null, 2), 'utf8', error => {
   if (error) {
-    console.error('Could not write register file.', error);
+    console.error(`${colors.red('[Fail]')} Could not write register file.`, error);
     process.exit(1);
   }
-  console.log(`${colors.green('[Success]')} Register file ${filename} successfully written.`);
-  console.log(`${colors.yellow('[Info]')} If new fixtures were added, it may be worth generating a new set of test fixtures by running ${colors.yellow('node cli/generate-test-fixtures.js')}.`);
+  console.log(`${colors.green('[Success]')} Updated register file ${filename}`);
   process.exit(0);
 });
