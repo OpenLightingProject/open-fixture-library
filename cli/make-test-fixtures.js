@@ -12,7 +12,7 @@ const colors = require('colors');
 const Fixture = require('../lib/model/Fixture.js');
 const register = require('../fixtures/register.json');
 
-const fixFeaturesDir = path.join(__dirname, '../fixture-features');
+const fixFeaturesDir = path.join(__dirname, '../lib/fixture-features');
 const jsonFile = path.join(__dirname, '../tests/test-fixtures.json');
 const markdownFile = path.join(__dirname, '../tests/test-fixtures.md');
 
