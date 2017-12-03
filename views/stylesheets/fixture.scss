@@ -157,6 +157,46 @@ section {
   padding-top: 1.2ex;
 }
 
+.channel > summary {
+  display: block;
+  cursor: pointer;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &::after {
+    /* chevron down */
+    border-color: $icon-dark;
+    border-style: solid;
+    border-width: 0.17em 0.17em 0 0;
+    content: '';
+    display: inline-block;
+    height: 0.4em;
+    left: 1.2ex;
+    position: relative;
+    top: -0.2em;
+    transform: rotate(135deg);
+    transition-duration: 0.2s;
+    transition-property: transform, top, border-color;
+    vertical-align: middle;
+    width: 0.4em;
+  }
+
+  &:hover::after {
+    border-color: $icon-dark-hover;
+  }
+}
+.channel[open] > summary::after {
+  /* chevron up */
+  top: 0;
+  transform: rotate(315deg);
+}
+
+.channel > * > .icon {
+  margin-right: 1.2ex;
+}
+
 .label {
   display: block;
   color: $secondary-text-dark;
@@ -175,7 +215,7 @@ section {
   line-height: 1.5;
 }
 
-.color-circle {
+.color-circle > span {
   display: inline-block;
   box-sizing: border-box;
 
@@ -185,7 +225,6 @@ section {
   height: 1.28em;
   margin: 0.06em;
 
-  vertical-align: middle;
   border: 1px solid #ddd;
   border-radius: 50%;
   overflow: hidden;

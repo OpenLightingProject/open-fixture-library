@@ -21,7 +21,7 @@ function getSvg(svgBasename, classNames = []) {
     return '';
   }
 
-  let svg = fs.readFileSync(filename, 'utf8');
+  let svg = fs.readFileSync(filename, 'utf8').replace(/\s+$/, '');
 
   if (classNames.length > 0) {
     svg = svg.replace(/<svg([^>]*)>/, `<svg$1 class="${classNames.join(' ')}">`);

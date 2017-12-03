@@ -171,14 +171,17 @@ function getChannelHeading(chKey) {
  * Get HTML for a color circle with one or two colors.
  * @param {!string} color1 First color string.
  * @param {?string} [color2] Second color string.
+ * @param {?string} [title] Text for the title attribute. If this parameter is not given, no title tag will be added.
  * @returns {!string} The HTML for displaying the color circle.
  */
-function getColorCircle(color1, color2) {
+function getColorCircle(color1, color2, title) {
+  const titleAttribute = title ? ` title="${title}"` : '';
+
   if (color2) {
-    return `<span class="color-circle" style="background-color: ${color1}"><span style="background-color: ${color2}"></span></span>`;
+    return `<span class="icon color-circle"${titleAttribute}><span style="background-color: ${color1}"><span style="background-color: ${color2}"></span></span></span>`;
   }
 
-  return `<span class="color-circle" style="background-color: ${color1}"></span>`;
+  return `<span class="icon color-circle"${titleAttribute}><span style="background-color: ${color1}"></span></span>`;
 }
 
 /**
@@ -215,7 +218,7 @@ function getChannelTypeIcon(chKey) {
       Lime: '#bfff00',
       Indigo: '#4b0082'
     };
-    return getColorCircle(colorLookup[channel.color]);
+    return getColorCircle(colorLookup[channel.color], null, `Channel type: Single Color ${channel.color}`);
   }
 
   return svg.getChannelTypeIcon(channel.type);
@@ -429,21 +432,31 @@ function handleMode(mode) {
   str += '<h3>DMX Channels</h3>';
   str += '<ol>';
   mode.channels.forEach(channel => {
-    str += '<li>';
-    str += '<details class="channel">';
-    str += `<summary>${getChannelTypeIcon(channel.key)} ${getChannelHeading(channel.key)}</summary>`;
-
+    let channelInfo = '';
     if (channel instanceof FineChannel) {
-      str += handleFineChannel(channel, mode);
+      channelInfo = handleFineChannel(channel, mode);
     }
     else if (channel instanceof SwitchingChannel) {
-      str += handleSwitchingChannel(channel, mode);
+      channelInfo = handleSwitchingChannel(channel, mode);
     }
     else if (!(channel instanceof NullChannel)) {
-      str += handleChannel(channel, mode);
+      channelInfo = handleChannel(channel, mode);
     }
 
-    str += '</details>';
+    str += '<li>';
+
+    if (channelInfo === '') {
+      str += '<div class="channel">';
+      str += `<div>${getChannelTypeIcon(channel.key)}${getChannelHeading(channel.key)}</div>`;
+      str += '</div>';
+    }
+    else {
+      str += '<details class="channel">';
+      str += `<summary>${getChannelTypeIcon(channel.key)}${getChannelHeading(channel.key)}</summary>`;
+      str += channelInfo;
+      str += '</details>';
+    }
+
     str += '</li>';
   });
   str += '</ol>';
@@ -458,17 +471,7 @@ function handleMode(mode) {
  * @returns {!string} The channel HTML.
  */
 function handleChannel(channel, mode) {
-  let str = `<section class="channel-type">
-    <span class="label">Type</span>
-    <span class="value">${channel.type}</span>
-  </section>`;
-
-  if (channel.color !== null) {
-    str += `<section class="channel-color">
-      <span class="label">Color</span>
-      <span class="value">${channel.color}</span>
-    </section>`;
-  }
+  let str = '';
 
   const finenessInMode = channel.getFinenessInMode(mode);
   if (finenessInMode > 0) {
