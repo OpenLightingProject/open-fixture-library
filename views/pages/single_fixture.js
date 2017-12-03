@@ -586,7 +586,7 @@ function handleCapabilities(channel, mode, finenessInMode) {
 
     str += `<td class="capability-name">${cap.name}</td>`;
 
-    const menuClickTitle = cap.menuClick === 'hidden' ? 'this capability is hidden in menus' : `a menu click changes the channel value to ${cap.menuClick} of capability`;
+    const menuClickTitle = cap.menuClick === 'hidden' ? 'this capability is hidden in quick menus' : `choosing this capability in a quick menu snaps to ${cap.menuClick} of capability`;
     const menuClickIcon = svg.getSvg(`capability-${cap.menuClick}`);
     str += `<td class="capability-menuClick" title="${menuClickTitle}">${menuClickIcon}</td>`;
 
