@@ -447,7 +447,7 @@ function handleMode(mode) {
 
     if (channelInfo === '') {
       str += '<div class="channel">';
-      str += `<div>${getChannelTypeIcon(channel.key)}${getChannelHeading(channel.key)}</div>`;
+      str += getChannelTypeIcon(channel.key) + getChannelHeading(channel.key);
       str += '</div>';
     }
     else {
@@ -547,12 +547,19 @@ function handleCapabilities(channel, mode, finenessInMode) {
     return '';
   }
 
-  let str = '<h4>Capabilities</h4>';
-  str += '<table class="capabilities-table">';
+  let str = '<table class="capabilities-table">';
+  str += '<colgroup>';
+  str += '  <col style="width: 5ex">';
+  str += '  <col style="width: 2ex">';
+  str += '  <col style="width: 5ex">';
+  str += '  <col style="width: 2em">';
+  str += '  <col>';
+  str += '  <col style="width: 2em">';
+  str += '</colgroup>';
   str += '<thead><tr>';
-  str += '  <th colspan="3">DMX values</th>';
+  str += '  <th colspan="3" style="text-align: center">DMX values</th>';
   str += '  <th></th>';  // color or image
-  str += '  <th>name</th>';
+  str += '  <th>Capability</th>';
   str += '  <th></th>';  // menuClick
   str += '</tr></thead>';
   str += '<tbody>';

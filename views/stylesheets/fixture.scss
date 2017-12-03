@@ -187,13 +187,18 @@ section {
     border-color: $icon-dark-hover;
   }
 }
-.channel[open] > summary::after {
-  /* chevron up */
-  top: 0;
-  transform: rotate(315deg);
+.channel[open] {
+  padding-bottom: 2ex;
+
+  & > summary::after {
+    /* chevron up */
+    top: 0;
+    transform: rotate(315deg);
+  }
 }
 
-.channel > * > .icon {
+details.channel > summary > .icon,
+div.channel > .icon {
   margin-right: 1.2ex;
 }
 
@@ -350,6 +355,7 @@ a.fixture-mode {
 
 .capabilities-table {
   border-collapse: collapse;
+  table-layout: fixed;
   width: 100%;
 
   th {
@@ -359,6 +365,7 @@ a.fixture-mode {
 
   td, th {
     padding: 0 4px;
+    vertical-align: top;
   }
 
   .capability-range0 {
