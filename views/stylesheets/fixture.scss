@@ -157,6 +157,11 @@ section {
   padding-top: 1.2ex;
 }
 
+.expand-all,
+.collapse-all {
+  margin-left: 1ex;
+}
+
 .channel > summary {
   display: block;
   cursor: pointer;

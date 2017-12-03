@@ -1,6 +1,6 @@
 'use strict';
 
-require('details-polyfill');
+require('./polyfills.js');
 
 var logo;
 var searchInput;
@@ -18,14 +18,21 @@ window.addEventListener('load', function() {
 
   var downloadButton = document.querySelector('.download-button');
   if (downloadButton) {
-    var links = downloadButton.querySelectorAll('a');
-
-    for (var i = 0; i < links.length; i++) {
-      links[i].addEventListener('click', function() {
+    downloadButton.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
         this.blur();
       }, false);
-    }
+    });
   }
+
+  document.querySelectorAll('.expand-all, .collapse-all').forEach(function(button) {
+    button.addEventListener('click', function() {
+      var open = this.classList.contains('expand-all');
+      this.closest('.fixture-mode').querySelectorAll('details').forEach(function(details) {
+        details.open = open;
+      });
+    }, false);
+  });
 }, false);
 
 function hideLogo() {

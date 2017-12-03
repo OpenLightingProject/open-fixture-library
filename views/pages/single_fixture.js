@@ -429,7 +429,12 @@ function handleMode(mode) {
     str += '</section>';
   }
 
-  str += '<h3>DMX Channels</h3>';
+  str += '<h3>';
+  str += 'DMX Channels';
+  str += `<button class="icon-button expand-all" title="Expand all channels">${svg.getSvg('chevron-double-down')}</button>`;
+  str += `<button class="icon-button collapse-all" title="Collapse all channels">${svg.getSvg('chevron-double-up')}</button>`;
+  str += '</h3>';
+
   str += '<ol>';
   mode.channels.forEach(channel => {
     let channelInfo = '';
