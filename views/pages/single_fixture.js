@@ -258,7 +258,7 @@ function handleFixtureInfo() {
 
     str += '<section class="rdm">';
     str += '  <span class="label"><abbr title="Remote Device Management">RDM</abbr> data</span>';
-    str += `  <span class="value">${fixture.manufacturer.rdmId} / ${fixture.rdm.modelId} / ${softwareVersion} – <a href="${rdmLink}" rel="nofollow">${olaIcon}View in Open Lighting RDM database</a><span class="hint">manufacturer ID / model ID / software version</span></span>`;
+    str += `  <span class="value">${fixture.manufacturer.rdmId} / ${fixture.rdm.modelId} / ${softwareVersion} – <a href="${rdmLink}" rel="nofollow">${olaIcon} View in Open Lighting RDM database</a><span class="hint">manufacturer ID / model ID / software version</span></span>`;
     str += '</section>';
   }
 
@@ -436,34 +436,7 @@ function handleMode(mode) {
   str += '</h3>';
 
   str += '<ol>';
-  mode.channels.forEach(channel => {
-    let channelInfo = '';
-    if (channel instanceof FineChannel) {
-      channelInfo = handleFineChannel(channel, mode);
-    }
-    else if (channel instanceof SwitchingChannel) {
-      channelInfo = handleSwitchingChannel(channel, mode);
-    }
-    else if (!(channel instanceof NullChannel)) {
-      channelInfo = handleChannel(channel, mode);
-    }
-
-    str += '<li>';
-
-    if (channelInfo === '') {
-      str += '<div class="channel">';
-      str += getChannelTypeIcon(channel.key) + getChannelHeading(channel.key);
-      str += '</div>';
-    }
-    else {
-      str += '<details class="channel">';
-      str += `<summary>${getChannelTypeIcon(channel.key)}${getChannelHeading(channel.key)}</summary>`;
-      str += channelInfo;
-      str += '</details>';
-    }
-
-    str += '</li>';
-  });
+  str += mode.channels.map(channel => getChannelListItem(channel, mode)).join('\n');
   str += '</ol>';
   str += '</section>'; // .fixture-mode
 
@@ -473,9 +446,36 @@ function handleMode(mode) {
 /**
  * @param {!Channel} channel The channel to display details for.
  * @param {!Mode} mode The mode in which the channel is used.
+ * @param {?string} [appendToHeading=''] String to append to channel heading.
+ * @returns {!string} The channel <li> HTML.
+ */
+function getChannelListItem(channel, mode, appendToHeading = '') {
+  let channelInfo = '';
+  if (channel instanceof FineChannel) {
+    channelInfo = getFineChannelInfo(channel, mode);
+  }
+  else if (channel instanceof SwitchingChannel) {
+    channelInfo = getSwitchingChannelInfo(channel, mode);
+  }
+  else if (!(channel instanceof NullChannel)) {
+    channelInfo = getChannelInfo(channel, mode);
+  }
+
+  const heading = getChannelTypeIcon(channel.key) + getChannelHeading(channel.key) + appendToHeading;
+
+  if (channelInfo === '') {
+    return `<li><div class="channel">${heading}</div></li>`;
+  }
+
+  return `<li><details class="channel"><summary>${heading}</summary>${channelInfo}</details></li>`;
+}
+
+/**
+ * @param {!Channel} channel The channel to display details for.
+ * @param {!Mode} mode The mode in which the channel is used.
  * @returns {!string} The channel HTML.
  */
-function handleChannel(channel, mode) {
+function getChannelInfo(channel, mode) {
   let str = '';
 
   const finenessInMode = channel.getFinenessInMode(mode);
@@ -554,12 +554,12 @@ function handleCapabilities(channel, mode, finenessInMode) {
 
   let str = '<table class="capabilities-table">';
   str += '<colgroup>';
-  str += '  <col style="width: 5ex">';
-  str += '  <col style="width: 2ex">';
-  str += '  <col style="width: 5ex">';
-  str += '  <col style="width: 2em">';
+  str += '  <col style="width: 5.8ex">';
+  str += '  <col style="width: 1ex">';
+  str += '  <col style="width: 5.8ex">';
+  str += '  <col style="width: 1.8em">';
   str += '  <col>';
-  str += '  <col style="width: 2em">';
+  str += '  <col style="width: 1.8em">';
   str += '</colgroup>';
   str += '<thead><tr>';
   str += '  <th colspan="3" style="text-align: center">DMX values</th>';
@@ -630,7 +630,7 @@ function handleCapabilities(channel, mode, finenessInMode) {
  * @param {!Mode} mode The mode in which the channel is used.
  * @returns {!string} The fine channel HTML.
  */
-function handleFineChannel(channel, mode) {
+function getFineChannelInfo(channel, mode) {
   const coarseChannelIndex = mode.getChannelIndex(channel.coarseChannel.key) + 1;
   return `<div>Fine channel of ${channel.coarseChannel.name} (channel ${coarseChannelIndex})</div>`;
 }
@@ -640,7 +640,7 @@ function handleFineChannel(channel, mode) {
  * @param {!Mode} mode The mode in which the channel is used.
  * @returns {!string} The switching channel HTML.
  */
-function handleSwitchingChannel(channel, mode) {
+function getSwitchingChannelInfo(channel, mode) {
   const triggerChannelIndex = mode.getChannelIndex(channel.triggerChannel.key) + 1;
 
   let str = `<div>Switch depending on ${channel.triggerChannel.name}'s value (channel ${triggerChannelIndex}):</div>`;
@@ -648,22 +648,9 @@ function handleSwitchingChannel(channel, mode) {
 
   for (const switchToChannelKey of Object.keys(channel.triggerRanges)) {
     const switchToChannel = fixture.getChannelByKey(switchToChannelKey);
+    const appendToHeading = channel.defaultChannel === switchToChannel ? ' (default)' : '';
 
-    str += '<li>';
-    str += '<details class="channel">';
-
-    str += '<summary>';
-    str += getChannelHeading(switchToChannelKey);
-    if (channel.defaultChannel === switchToChannel) {
-      str += ' (default)';
-    }
-    str += '</summary>';
-
-    str += switchToChannel instanceof FineChannel
-      ? handleFineChannel(switchToChannel, mode)
-      : handleChannel(switchToChannel, mode);
-
-    str += '</li>';
+    str += getChannelListItem(switchToChannel, mode, appendToHeading);
   }
   str += '</ol>';
 
