@@ -160,6 +160,10 @@ section {
 .expand-all,
 .collapse-all {
   margin-left: 1ex;
+
+  .no-js & {
+    display: none;
+  }
 }
 
 .channel > summary {

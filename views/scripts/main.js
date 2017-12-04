@@ -6,7 +6,9 @@ var logo;
 var searchInput;
 
 window.addEventListener('load', function() {
-  document.querySelector('html').classList.add('js');
+  var html = document.querySelector('html');
+  html.classList.add('js');
+  html.classList.remove('no-js');
 
   logo = document.querySelector('#home-logo');
   searchInput = document.querySelector('#header input');
