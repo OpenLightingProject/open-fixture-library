@@ -150,21 +150,19 @@ function getDateString(date) {
 }
 
 /**
- * @param {!string} chKey Key of the channel to get the heading for.
+ * @param {!Channel} channel Channel to get the heading for.
  * @returns {!string} The channel name including a <code> tag with the channel key if necessary.
  */
-function getChannelHeading(chKey) {
-  const channel = fixture.getChannelByKey(chKey);
+function getChannelHeading(channel) {
+  if (channel === null) {
+    return 'Error: Channel not found';
+  }
 
   if (channel instanceof NullChannel) {
-    return 'Unused';
+    return `${channel.name} <code class="channel-key">null</code>`;
   }
 
-  if (channel instanceof FineChannel) {
-    return channel.name;
-  }
-
-  return channel.name + (chKey !== channel.name ? ` <code class="channel-key">${chKey}</code>` : '');
+  return channel.name + (channel.key !== channel.name ? ` <code class="channel-key">${channel.key}</code>` : '');
 }
 
 /**
@@ -186,18 +184,16 @@ function getColorCircle(color1, color2, title) {
 
 /**
  * Get the channel icon (or color circle for Single Color channels).
- * @param {!string} chKey Key of the channel to get the heading for.
+ * @param {!Channel} channel Channel to get the heading for.
  * @returns {!string} The inline SVG or HTML displaying the channel icon.
  */
-function getChannelTypeIcon(chKey) {
-  const channel = fixture.getChannelByKey(chKey);
-
+function getChannelTypeIcon(channel) {
   if (channel instanceof NullChannel) {
     return svg.getChannelTypeIcon('Nothing');
   }
 
   if (channel instanceof FineChannel) {
-    return getChannelTypeIcon(channel.coarseChannel.key);
+    return getChannelTypeIcon(channel.coarseChannel);
   }
 
   if (channel instanceof SwitchingChannel) {
@@ -276,7 +272,9 @@ function handleFixtureInfo() {
     for (const headName of Object.keys(fixture.heads)) {
       str += '<li>';
       str += `<strong>${headName}:</strong> `;
-      str += fixture.heads[headName].map(getChannelHeading).join(', ');
+      str += fixture.heads[headName].map(
+        chKey => getChannelHeading(fixture.getChannelByKey(chKey))
+      ).join(', ');
       str += '</li>';
     }
     str += '</ul>';
@@ -461,7 +459,7 @@ function getChannelListItem(channel, mode, appendToHeading = '') {
     channelInfo = getChannelInfo(channel, mode);
   }
 
-  const heading = getChannelTypeIcon(channel.key) + getChannelHeading(channel.key) + appendToHeading;
+  const heading = getChannelTypeIcon(channel) + getChannelHeading(channel) + appendToHeading;
 
   if (channelInfo === '') {
     return `<li><div class="channel">${heading}</div></li>`;
@@ -485,9 +483,9 @@ function getChannelInfo(channel, mode) {
     str += '  <span class="value">';
 
     for (let i = 0; i < finenessInMode; i++) {
-      const heading = getChannelHeading(channel.fineChannelAliases[i]);
-      const position = mode.getChannelIndex(channel.key) + 1;
-      str +=  `${heading} (channel ${position})`;
+      const heading = getChannelHeading(channel.fineChannels[i]);
+      const position = mode.getChannelIndex(channel.fineChannels[i]) + 1;
+      str += `${heading} (channel ${position})`;
     }
 
     str += '</span>';
