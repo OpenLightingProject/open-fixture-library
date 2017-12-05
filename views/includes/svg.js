@@ -60,7 +60,7 @@ function getChannelTypeIcon(channelType, classNames = []) {
 }
 
 /**
- * Get inline SVG for a color circle with one or two colors.
+ * Get inline SVG for a color circle (like a pie chart with equally-sized pies).
  * @param {!Array.<string>} colors Array of color strings to display.
  * @param {?string} [title] Text for the title tag. If this parameter is not given, no title tag will be added.
  * @returns {!string} The HTML for displaying the color circle.
@@ -106,7 +106,7 @@ function getColorCircle(colors, title) {
 }
 
 /**
- * Get x and y coordinates of the point that is `percent` percent of the way around a circle. Note that 12.5% are subtracted to let keep a 45deg angle.
+ * Get x and y coordinates of the point that is `percent` percent of the way around a circle. Note that 12.5% are subtracted to start at a 45deg angle.
  * @param {!number} percent Percent of the whole circle.
  * @param {!number} radius Radius of the circle.
  * @returns {Array.<number>} Array with x and y coordinate.
