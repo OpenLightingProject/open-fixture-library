@@ -6,18 +6,19 @@ var logo;
 var searchInput;
 
 window.addEventListener('load', function() {
-  var html = document.querySelector('html');
-  html.classList.add('js');
-  html.classList.remove('no-js');
+  // this allows us to add CSS styles only if JS is enabled (.js) or disabled (:not(.js))
+  document.querySelector('html').classList.add('js');
 
+  // the logo beside the searchbar gets hidden when the input has focus or if it isn't empty
+  // (only has effect on mobile due to CSS styles)
   logo = document.querySelector('#home-logo');
   searchInput = document.querySelector('#header input');
 
-  checkSearchInput();
-
   searchInput.addEventListener('focus', hideLogo, true);
   searchInput.addEventListener('blur', checkSearchInput, true);
+  checkSearchInput();
 
+  // only a small focus improvement on download buttons
   var downloadButton = document.querySelector('.download-button');
   if (downloadButton) {
     downloadButton.querySelectorAll('a').forEach(function(link) {
@@ -27,6 +28,7 @@ window.addEventListener('load', function() {
     });
   }
 
+  // expand all and collapse all buttons in fixture modes open / clsoe all channels
   document.querySelectorAll('.expand-all, .collapse-all').forEach(function(button) {
     button.addEventListener('click', function() {
       var open = this.classList.contains('expand-all');

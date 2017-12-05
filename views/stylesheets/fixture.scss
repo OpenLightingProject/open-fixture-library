@@ -161,7 +161,7 @@ section {
 .collapse-all {
   margin-left: 1ex;
 
-  .no-js & {
+  html:not(.js) & {
     display: none;
   }
 }
