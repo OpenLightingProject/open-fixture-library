@@ -167,23 +167,6 @@ function getChannelHeading(channel) {
 }
 
 /**
- * Get HTML for a color circle with one or two colors.
- * @param {!string} color1 First color string.
- * @param {?string} [color2] Second color string.
- * @param {?string} [title] Text for the title attribute. If this parameter is not given, no title tag will be added.
- * @returns {!string} The HTML for displaying the color circle.
- */
-function getColorCircle(color1, color2, title) {
-  const titleAttribute = title ? ` title="${title}"` : '';
-
-  if (color2) {
-    return `<span class="icon color-circle"${titleAttribute}><span style="background-color: ${color1}"><span style="background-color: ${color2}"></span></span></span>`;
-  }
-
-  return `<span class="icon color-circle"${titleAttribute}><span style="background-color: ${color1}"></span></span>`;
-}
-
-/**
  * Get the channel icon (or color circle for Single Color channels).
  * @param {!Channel} channel Channel to get the heading for.
  * @returns {!string} The inline SVG or HTML displaying the channel icon.
@@ -215,7 +198,8 @@ function getChannelTypeIcon(channel) {
       Lime: '#bfff00',
       Indigo: '#4b0082'
     };
-    return getColorCircle(colorLookup[channel.color], null, `Channel type: Single Color ${channel.color}`);
+    const color = colorLookup[channel.color];
+    return svg.getColorCircle([color], `Channel type: Single Color ${channel.color}`);
   }
 
   return svg.getChannelTypeIcon(channel.type);
@@ -499,14 +483,14 @@ function handleCapabilities(channel, mode, finenessInMode) {
       const color2 = cap.color2.rgb().string();
 
       str += `<td class="capability-color" title="color: ${color1} / ${color2}">`;
-      str += getColorCircle(color1, color2);
+      str += svg.getColorCircle([color1, color2]);
       str += '</td>';
     }
     else if (cap.color !== null) {
       const color1 = cap.color.rgb().string();
 
       str += `<td class="capability-color" title="color: ${color1}">`;
-      str += getColorCircle(color1);
+      str += svg.getColorCircle([color1]);
       str += '</td>';
     }
     // TODO images are not supported yet

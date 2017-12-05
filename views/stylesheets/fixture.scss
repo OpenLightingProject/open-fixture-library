@@ -229,30 +229,6 @@ div.channel > .icon {
   line-height: 1.5;
 }
 
-.color-circle > span {
-  display: inline-block;
-  box-sizing: border-box;
-
-  /* follow Material guidelines for whitespace around icons */
-  /* 1.4em in total like .icon */
-  width: 1.28em;
-  height: 1.28em;
-  margin: 0.06em;
-
-  border: 1px solid #ddd;
-  border-radius: 50%;
-  overflow: hidden;
-
-  & > * {
-    display: block;
-    width: 4ex;
-    height: 4ex;
-    margin: -1ex 0 0 1ex;
-    transform: rotate(45deg);
-    transform-origin: left center;
-  }
-}
-
 .checkbox {
   display: inline-block;
   border: 1px solid #cfd6e6;
