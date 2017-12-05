@@ -509,9 +509,10 @@ function handleCapabilities(channel, mode, finenessInMode) {
       str += getColorCircle(color1);
       str += '</td>';
     }
-    else if (cap.image !== null) {
-      str += `<td class="capability-image" title="image">${cap.image}</td>`;
-    }
+    // TODO images are not supported yet
+    // else if (cap.image !== null) {
+    //   str += `<td class="capability-image" title="image">${cap.image}</td>`;
+    // }
     else {
       str += '<td></td>';
     }
