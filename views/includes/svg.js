@@ -94,7 +94,7 @@ function getColorCircle(colors, title) {
 
       const pathMove = `M ${startX} ${startY}`;
       const pathArc = `A ${radius} ${radius} ${xAxisRotation} ${largeArcFlag} ${sweepFlag} ${endX} ${endY}`;
-      const pathLine = `L 0 0`;
+      const pathLine = 'L 0 0';
 
       str += `<path d="${pathMove} ${pathArc} ${pathLine}" fill="${colors[i]}" />`;
     }
