@@ -412,7 +412,7 @@ function getChannelInfo(channel, mode) {
     str += '  <span class="value">';
 
     str += channel.fineChannels.slice(0, finenessInMode).map(
-      fineChannel => `${getChannelHeading(fineChannel)} (channel ${mode.getChannelIndex(fineChannel) + 1})`
+      fineChannel => `${getChannelHeading(fineChannel)} (channel&nbsp;${mode.getChannelIndex(fineChannel) + 1})`
     ).join(', ');
 
     str += '</span>';
@@ -515,7 +515,7 @@ function handleCapabilities(channel, mode, finenessInMode) {
       if (switchingChannelIndex > -1) {
         const switchToChannel = cap.switchChannels[switchingChannelKey];
 
-        str += `<tr><td colspan="4"></td><td colspan="2" class="switch-to-channel"><span class="switching-channel-key">${switchingChannelKey} (channel ${switchingChannelIndex + 1}) →</span> ${switchToChannel}</td></tr>`;
+        str += `<tr><td colspan="4"></td><td colspan="2" class="switch-to-channel"><span class="switching-channel-key">${switchingChannelKey} (channel&nbsp;${switchingChannelIndex + 1}) →</span> ${switchToChannel}</td></tr>`;
       }
     }
   });
@@ -532,7 +532,7 @@ function handleCapabilities(channel, mode, finenessInMode) {
  */
 function getFineChannelInfo(channel, mode) {
   const coarseChannelIndex = mode.getChannelIndex(channel.coarseChannel.key) + 1;
-  return `<div>Fine channel of ${channel.coarseChannel.name} (channel ${coarseChannelIndex})</div>`;
+  return `<div>Fine channel of ${channel.coarseChannel.name} (channel&nbsp;${coarseChannelIndex})</div>`;
 }
 
 /**
@@ -543,7 +543,7 @@ function getFineChannelInfo(channel, mode) {
 function getSwitchingChannelInfo(channel, mode) {
   const triggerChannelIndex = mode.getChannelIndex(channel.triggerChannel.key) + 1;
 
-  let str = `<div>Switch depending on ${channel.triggerChannel.name}'s value (channel ${triggerChannelIndex}):</div>`;
+  let str = `<div>Switch depending on ${channel.triggerChannel.name}'s value (channel&nbsp;${triggerChannelIndex}):</div>`;
   str += '<ol>';
 
   for (const switchToChannelKey of Object.keys(channel.triggerRanges)) {
