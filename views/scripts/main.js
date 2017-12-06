@@ -28,14 +28,20 @@ window.addEventListener('load', function() {
     });
   }
 
-  // expand all and collapse all buttons in fixture modes open / clsoe all channels
+  // expand all and collapse all buttons in fixture modes open / close all channels
   document.querySelectorAll('.expand-all, .collapse-all').forEach(function(button) {
-    button.addEventListener('click', function() {
-      var open = this.classList.contains('expand-all');
-      this.closest('.fixture-mode').querySelectorAll('details').forEach(function(details) {
-        details.open = open;
-      });
-    }, false);
+    var detailsElems = button.closest('.fixture-mode').querySelectorAll('details');
+    if (detailsElems.length > 0) {
+      button.addEventListener('click', function() {
+        var open = this.classList.contains('expand-all');
+        detailsElems.forEach(function(details) {
+          details.open = open;
+        });
+      }, false);
+    }
+    else {
+      button.parentElement.removeChild(button);
+    }
   });
 }, false);
 

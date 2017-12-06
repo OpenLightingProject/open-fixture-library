@@ -281,9 +281,14 @@ a.fixture-mode {
   text-align: center;
 }
 
-/* switched channels */
-.fixture-mode ol ol {
-  list-style-type: lower-alpha;
+.fixture-mode ol {
+  padding-left: 1.9em;
+
+  /* switched channels */
+  & ol {
+    list-style-type: lower-alpha;
+    padding-left: 1.1em;
+  }
 }
 
 /* if a mode is the only mode, hide its remove button */

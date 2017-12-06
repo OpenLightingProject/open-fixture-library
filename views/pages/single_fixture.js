@@ -411,11 +411,9 @@ function getChannelInfo(channel, mode) {
     str += '  <span class="label">Fine channels</span>';
     str += '  <span class="value">';
 
-    for (let i = 0; i < finenessInMode; i++) {
-      const heading = getChannelHeading(channel.fineChannels[i]);
-      const position = mode.getChannelIndex(channel.fineChannels[i]) + 1;
-      str += `${heading} (channel ${position})`;
-    }
+    str += channel.fineChannels.slice(0, finenessInMode).map(
+      fineChannel => `${getChannelHeading(fineChannel)} (channel ${mode.getChannelIndex(fineChannel) + 1})`
+    ).join(', ');
 
     str += '</span>';
     str += '</section>';

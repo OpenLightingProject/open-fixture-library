@@ -73,10 +73,10 @@ function getColorCircle(colors, title) {
     str += `<title>${title}</title>`;
   }
 
-  // uses current fill color
-  str += '<circle cx="0" cy="0" r="10" />';
-
   const radius = 9;
+
+  // use current fill color as background / border
+  str += `<circle cx="0" cy="0" r="${radius + 1}" />`;
 
   if (colors.length === 1) {
     str += `<circle cx="0" cy="0" r="${radius}" fill="${colors[0]}" />`;
@@ -106,13 +106,15 @@ function getColorCircle(colors, title) {
 }
 
 /**
- * Get x and y coordinates of the point that is `percent` percent of the way around a circle. Note that 12.5% are subtracted to start at a 45deg angle.
+ * Get x and y coordinates of the point that is `percent` percent of the way around a circle. Note that 37.5% are added to start at a 135deg angle.
  * @param {!number} percent Percent of the whole circle.
  * @param {!number} radius Radius of the circle.
  * @returns {Array.<number>} Array with x and y coordinate.
  */
 function getCoordinatesForPercent(percent, radius) {
-  const x = radius * Math.cos(2 * Math.PI * (percent - 0.125));
-  const y = radius * Math.sin(2 * Math.PI * (percent - 0.125));
+  percent += 0.375;
+
+  const x = radius * Math.cos(2 * Math.PI * percent);
+  const y = radius * Math.sin(2 * Math.PI * percent);
   return [x, y];
 }
