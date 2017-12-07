@@ -190,6 +190,11 @@
       "lastModifyDate": "2017-07-17",
       "lastAction": "created"
     },
+    "generic/drgb-fader": {
+      "name": "DRGB Fader",
+      "lastModifyDate": "2017-12-07",
+      "lastAction": "created"
+    },
     "generic/pan-tilt": {
       "name": "Pan/Tilt Fader",
       "lastModifyDate": "2017-10-16",
@@ -420,6 +425,7 @@
     ],
     "generic": [
       "desk-channel",
+      "drgb-fader",
       "pan-tilt",
       "rgb-fader"
     ],
@@ -520,6 +526,7 @@
       "eurolite/led-tmh-9",
       "eurolite/led-tmh-x25",
       "futurelight/pro-slim-par-7-hcl",
+      "generic/drgb-fader",
       "generic/rgb-fader",
       "glp/impression-spot-one",
       "gruft/ventilator",
@@ -652,6 +659,7 @@
       "eurolite/led-tmh-9",
       "futurelight/pro-slim-par-7-hcl",
       "generic/desk-channel",
+      "generic/drgb-fader",
       "generic/pan-tilt",
       "generic/rgb-fader",
       "gruft/ventilator",
@@ -790,6 +798,7 @@
     }
   },
   "lastUpdated": [
+    "generic/drgb-fader",
     "cameo/gobo-scanner-80",
     "eurolite/led-tmh-18",
     "chauvet-dj/washfx",
