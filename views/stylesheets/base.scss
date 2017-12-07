@@ -68,11 +68,14 @@ a {
     color: $blue-300;
     fill: $icon-dark-hover;
   }
+}
 
-  svg {
-    height: 1.4em;
-    vertical-align: middle;
-  }
+.icon,
+a > svg {
+  display: inline-block;
+  height: 1.4em;
+  width: 1.4em;
+  vertical-align: middle;
 }
 
 .accessibility {
@@ -312,4 +315,11 @@ a.button:active {
     border-color: transparent;
     color: $primary-text-light;
   }
+}
+
+.icon-button {
+  @include icon-button($blue-300, $blue-700);
+
+  display: inline-block;
+  vertical-align: middle;
 }

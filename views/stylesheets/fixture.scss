@@ -157,6 +157,60 @@ section {
   padding-top: 1.2ex;
 }
 
+.expand-all,
+.collapse-all {
+  margin-left: 1ex;
+
+  html:not(.js) & {
+    display: none;
+  }
+}
+
+.channel > summary {
+  display: block;
+  cursor: pointer;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &::after {
+    /* chevron down */
+    border-color: $icon-dark;
+    border-style: solid;
+    border-width: 0.17em 0.17em 0 0;
+    content: '';
+    display: inline-block;
+    height: 0.4em;
+    left: 1.2ex;
+    position: relative;
+    top: -0.2em;
+    transform: rotate(135deg);
+    transition-duration: 0.2s;
+    transition-property: transform, top, border-color;
+    vertical-align: middle;
+    width: 0.4em;
+  }
+
+  &:hover::after {
+    border-color: $icon-dark-hover;
+  }
+}
+.channel[open] {
+  padding-bottom: 2ex;
+
+  & > summary::after {
+    /* chevron up */
+    top: 0;
+    transform: rotate(315deg);
+  }
+}
+
+details.channel > summary > .icon,
+div.channel > .icon {
+  margin-right: 1.2ex;
+}
+
 .label {
   display: block;
   color: $secondary-text-dark;
@@ -186,7 +240,7 @@ section {
     display: block;
     margin-top: -1px;
     white-space: nowrap;
-    
+
     & > .pixel {
       display: inline-block;
       width: 3em;
@@ -206,25 +260,6 @@ section {
         background: $divider-dark;
       }
     }
-  }
-}
-
-.color-circle {
-  display: inline-block;
-  width: 2ex;
-  height: 2ex;
-  vertical-align: middle;
-  border: 1px solid #ddd;
-  border-radius: 50%;
-  overflow: hidden;
-
-  & > * {
-    display: block;
-    width: 4ex;
-    height: 4ex;
-    margin: -1ex 0 0 1ex;
-    transform: rotate(45deg);
-    transform-origin: left center;    
   }
 }
 
@@ -280,15 +315,14 @@ a.fixture-mode {
   text-align: center;
 }
 
-.switch-to-channel {
-  line-height: 1rem;
-  padding-bottom: .8rem;
-  font-size: 82%;
-}
+.fixture-mode ol {
+  padding-left: 1.9em;
 
-/* switched channels */
-.fixture-mode ol ol {
-  list-style-type: lower-alpha;
+  /* switched channels */
+  & ol {
+    list-style-type: lower-alpha;
+    padding-left: 1.1em;
+  }
 }
 
 /* if a mode is the only mode, hide its remove button */
@@ -339,6 +373,52 @@ a.fixture-mode {
     }
     & .color {
       width: 10ex;
+    }
+  }
+}
+
+.capabilities-table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+
+  th {
+    font-weight: normal;
+    color: $secondary-text-dark;
+  }
+
+  td, th {
+    padding: 0 4px;
+    vertical-align: top;
+  }
+
+  .capability-range0 {
+    text-align: right;
+    padding-right: 2px;
+  }
+
+  .capability-range-separator {
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .capability-range1 {
+    text-align: left;
+    padding-left: 2px;
+  }
+
+  .capability-menuClick {
+    text-align: right;
+  }
+
+  .switch-to-channel {
+    line-height: 1rem;
+    padding-bottom: 4px;
+    font-size: 82%;
+
+    & > .switching-channel-key {
+      color: $secondary-text-dark;
     }
   }
 }

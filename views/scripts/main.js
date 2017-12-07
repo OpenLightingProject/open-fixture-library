@@ -1,6 +1,6 @@
 'use strict';
 
-require('details-polyfill');
+require('./polyfills.js');
 
 var logo;
 var searchInput;
@@ -20,14 +20,28 @@ window.addEventListener('load', function() {
   // only a small focus improvement on download buttons
   var downloadButton = document.querySelector('.download-button');
   if (downloadButton) {
-    var links = downloadButton.querySelectorAll('a');
-
-    for (var i = 0; i < links.length; i++) {
-      links[i].addEventListener('click', function() {
+    downloadButton.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
         this.blur();
       }, false);
-    }
+    });
   }
+
+  // expand all and collapse all buttons in fixture modes open / close all channels
+  document.querySelectorAll('.expand-all, .collapse-all').forEach(function(button) {
+    var detailsElems = button.closest('.fixture-mode').querySelectorAll('details');
+    if (detailsElems.length > 0) {
+      button.addEventListener('click', function() {
+        var open = this.classList.contains('expand-all');
+        detailsElems.forEach(function(details) {
+          details.open = open;
+        });
+      }, false);
+    }
+    else {
+      button.parentElement.removeChild(button);
+    }
+  });
 }, false);
 
 function hideLogo() {
