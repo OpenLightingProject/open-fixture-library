@@ -9,8 +9,8 @@ const pullRequest = require('./github/pull-request.js');
 
 // initialize link checker
 let startTime;
-let foundLinks = {};
-let fails = {
+const foundLinks = {};
+const fails = {
   internal: new Set(),
   external: new Set()
 };
@@ -53,7 +53,7 @@ const siteChecker = new blc.SiteChecker({
   },
   end: function() {
     const testTime = new Date() - startTime;
-    console.log(`\nThe test took ${testTime/1000}s.`);
+    console.log(`\nThe test took ${testTime / 1000}s.`);
 
     serverProcess.kill();
   }
@@ -79,7 +79,7 @@ const serverProcess = childProcess.execFile('node', [path.join(__dirname, '..', 
   let statusStr = colors.green('[PASS]');
   let exitCode = 0;
 
-  let lines = [
+  const lines = [
     `There were ${fails.internal.size} internal and ${fails.external.size} external links failing.`,
     ''
   ];
@@ -100,20 +100,20 @@ const serverProcess = childProcess.execFile('node', [path.join(__dirname, '..', 
   // try to create/delete a GitHub comment
   pullRequest.checkEnv().then(() => {
     return pullRequest.init()
-    .then(prData => pullRequest.updateComment({
-      filename: path.relative(path.join(__dirname, '../'), __filename),
-      name: 'Broken links',
-      lines: githubCommentLines
-    }))
-    .catch(error => {
-      console.error('Creating / updating the GitHub PR comment failed.', error);
-    });
+      .then(prData => pullRequest.updateComment({
+        filename: path.relative(path.join(__dirname, '../'), __filename),
+        name: 'Broken links',
+        lines: githubCommentLines
+      }))
+      .catch(error => {
+        console.error('Creating / updating the GitHub PR comment failed.', error);
+      });
   })
-  .catch(() => {}) // PR env variables not set, no GitHub comment created/deleted
-  .then(() => {
-    console.log(statusStr, lines.join('\n'));
-    process.exit(exitCode);
-  });
+    .catch(() => {}) // PR env variables not set, no GitHub comment created/deleted
+    .then(() => {
+      console.log(statusStr, lines.join('\n'));
+      process.exit(exitCode);
+    });
 });
 console.log(`Started server with process id ${serverProcess.pid}.`);
 

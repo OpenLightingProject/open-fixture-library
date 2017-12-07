@@ -133,7 +133,7 @@ Vue.component('fixture-mode', {
       }
 
       for (var chId in this.fixture.availableChannels) {
-        if (!this.fixture.availableChannels.hasOwnProperty(chId)) {
+        if (!Object.hasOwnProperty.call(this.fixture.availableChannels, chId)) {
           continue;
         }
 
@@ -160,7 +160,7 @@ Vue.component('channel-capability', {
   },
   computed: {
     dmxMax: function() {
-      return Math.pow(256, this.fineness+1) - 1;
+      return Math.pow(256, this.fineness + 1) - 1;
     },
     isChanged: function() {
       return this.capabilities.some(isCapabilityChanged);
@@ -280,7 +280,7 @@ Vue.component('channel-capability', {
     remove: function() {
       var emptyCap = getEmptyCapability();
       for (var prop in emptyCap) {
-        if (emptyCap.hasOwnProperty(prop)) {
+        if (Object.hasOwnProperty.call(emptyCap, prop)) {
           this.capability[prop] = emptyCap[prop];
         }
       }
@@ -464,7 +464,7 @@ var app = window.app = new Vue({
           var maxFoundFineness = 0;
           for (var i = 0; i < app.currentMode.channels.length; i++) {
             var ch = app.fixture.availableChannels[app.currentMode.channels[i]];
-            
+
             if ('coarseChannelId' in ch && ch.coarseChannelId === channel.coarseChannelId) {
               maxFoundFineness = Math.max(maxFoundFineness, ch.fineness);
             }
@@ -544,7 +544,7 @@ var app = window.app = new Vue({
     isChannelNameUnique: function(channelUuid) {
       var chName = this.getChannelName(channelUuid);
       for (var channelKey in this.fixture.availableChannels) {
-        if (!this.fixture.availableChannels.hasOwnProperty(channelKey)) {
+        if (!Object.hasOwnProperty.call(this.fixture.availableChannels, channelKey)) {
           continue;
         }
 
@@ -572,7 +572,7 @@ function onChannelDialogOpen() {
   else if (this.channel.editMode === 'edit-all' || this.channel.editMode === 'edit-duplicate') {
     var channel = this.fixture.availableChannels[this.channel.uuid];
     for (var prop in channel) {
-      if (channel.hasOwnProperty(prop)) {
+      if (Object.hasOwnProperty.call(channel, prop)) {
         this.channel[prop] = clone(channel[prop]);
       }
     }
@@ -644,7 +644,7 @@ function saveChannel() {
 
     var maxFoundFineness = 0;
     for (var chId in this.fixture.availableChannels) {
-      if (!this.fixture.availableChannels.hasOwnProperty(chId)) {
+      if (!Object.hasOwnProperty.call(this.fixture.availableChannels, chId)) {
         continue;
       }
 
@@ -684,7 +684,7 @@ function saveChannel() {
 }
 
 /**
- * @param {!Object} coarseChannel The channel object of the coarse channel.
+ * @param {!object} coarseChannel The channel object of the coarse channel.
  * @param {!number} offset At which fineness should be started.
  * @param {boolean} [addToMode] If true, the fine channel is pushed to the current mode's channels.
  */
@@ -717,7 +717,7 @@ function removeChannel(channelUuid, modeUuid) {
 
   // remove fine channels first
   for (var chId in this.fixture.availableChannels) {
-    if (!this.fixture.availableChannels.hasOwnProperty(chId)) {
+    if (!Object.hasOwnProperty.call(this.fixture.availableChannels, chId)) {
       continue;
     }
 

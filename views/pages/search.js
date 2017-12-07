@@ -37,18 +37,18 @@ module.exports = function(options) {
   }
   query.c = query.c.map(decodeURIComponent);
 
-  let results = [];
+  const results = [];
   for (const key of Object.keys(register.filesystem)) {
     const man = key.split('/')[0];
     const fixData = register.filesystem[key];
-    const name = (manufacturers[man].name + ' ' + fixData.name).toLowerCase();
+    const name = (`${manufacturers[man].name} ${fixData.name}`).toLowerCase();
 
     // very primitive match algorithm, maybe put more effort into it sometime
     if (
       (key.indexOf(searchQueryCompare) > -1 || name.indexOf(searchQueryCompare) > -1) // name matches
       && (query.m.length === 0 || query.m.indexOf(man) > -1) // manufacturer is not relevant or matches
       && (query.c.length === 0 || categoryMatch(query.c, key, register)) // categories are not relevant or match
-      ) {
+    ) {
       results.push(Object.assign({}, fixData, {
         key: key,
         manufacturerName: manufacturers[man].name

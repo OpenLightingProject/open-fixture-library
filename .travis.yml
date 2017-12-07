@@ -5,7 +5,8 @@ node_js:
 env:
   - TESTFILE=tests/http-status.js
   - TESTFILE=tests/fixtures-valid.js
-  - TESTFILE=tests/register-correct.js
+  - TESTFILE=tests/lint.js
+  - TESTFILE=tests/make-targets-updated.js
   - TESTFILE=tests/github/export-diff.js
   - TESTFILE=tests/github/exports-valid.js
   - TESTFILE=tests/github/schema-version-reminder.js

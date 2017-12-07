@@ -11,69 +11,69 @@ const testFixtures = require('../test-fixtures.json').map(
 );
 
 pullRequest.checkEnv()
-.catch(error => {
-  console.error(error);
-  process.exit(0); // if the environment is not correct, just exit without failing
-})
-.then(() => pullRequest.init())
-.then(prData => pullRequest.fetchChangedComponents())
-.then(changedComponents => {
-  let messagePromises = [];
+  .catch(error => {
+    console.error(error);
+    process.exit(0); // if the environment is not correct, just exit without failing
+  })
+  .then(() => pullRequest.init())
+  .then(prData => pullRequest.fetchChangedComponents())
+  .then(changedComponents => {
+    const messagePromises = [];
 
-  if (changedComponents.added.model ||
+    if (changedComponents.added.model ||
       changedComponents.modified.model ||
       changedComponents.removed.model) {
-    messagePromises.push(getModelMessagePromise());
-  }
-  else {
+      messagePromises.push(getModelMessagePromise());
+    }
+    else {
     // only plugins that have export tests
-    const changedPlugins = changedComponents.added.exports.concat(changedComponents.modified.exports)
-      .filter(key => Object.keys(plugins[key].exportTests).length > 0);
-    for (const plugin of changedPlugins) {
-      messagePromises.push(getPluginMessagePromise(plugin));
+      const changedPlugins = changedComponents.added.exports.concat(changedComponents.modified.exports)
+        .filter(key => Object.keys(plugins[key].exportTests).length > 0);
+      for (const plugin of changedPlugins) {
+        messagePromises.push(getPluginMessagePromise(plugin));
+      }
+
+      // only export tests that are not covered by plugin tasks (which run all tests)
+      const exportTests = changedComponents.added.exportTests.concat(changedComponents.modified.exportTests) // stored as [plugin, test]
+        .filter(([plugin, test]) => !changedPlugins.includes(plugin));
+      for (const [plugin, test] of exportTests) {
+        messagePromises.push(getExportTestMessagePromise(plugin, test));
+      }
     }
 
-    // only export tests that are not covered by plugin tasks (which run all tests)
-    const exportTests = changedComponents.added.exportTests.concat(changedComponents.modified.exportTests) // stored as [plugin, test]
-      .filter(([plugin, test]) => !changedPlugins.includes(plugin));
-    for (const [plugin, test] of exportTests) {
-      messagePromises.push(getExportTestMessagePromise(plugin, test));
+    const fixtures = changedComponents.added.fixtures.concat(changedComponents.modified.fixtures);
+    for (const fixture of fixtures) {
+      messagePromises.push(getFixtureMessagePromise(fixture));
     }
-  }
 
-  const fixtures = changedComponents.added.fixtures.concat(changedComponents.modified.fixtures);
-  for (const fixture of fixtures) {
-    messagePromises.push(getFixtureMessagePromise(fixture));
-  }
+    return Promise.all(messagePromises);
+  })
+  .then(messages => {
+    let lines = [];
 
-  return Promise.all(messagePromises);
-})
-.then(messages => {
-  let lines = [];
+    if (messages.length > 0) {
+      lines.push(
+        'Test the exported files of selected fixtures against the plugins\' export tests.',
+        'You can run a plugin\'s export tests by executing:',
+        '`$ node cli/run-export-test.js -p <plugin name> <fixtures>`',
+        ''
+      );
 
-  if (messages.length > 0) {
-    lines.push(
-      'Test the exported files of selected fixtures against the plugins\' export tests.',
-      'You can run a plugin\'s export tests by executing:',
-      '`$ node cli/run-export-test.js -p <plugin name> <fixtures>`',
-      ''
-    );
-    
-    for (const messageLines of messages) {
-      lines = lines.concat(messageLines, '');
+      for (const messageLines of messages) {
+        lines = lines.concat(messageLines, '');
+      }
     }
-  }
 
-  return pullRequest.updateComment({
-    filename: path.relative(path.join(__dirname, '../../'), __filename),
-    name: 'Export files validity',
-    lines: lines
+    return pullRequest.updateComment({
+      filename: path.relative(path.join(__dirname, '../../'), __filename),
+      name: 'Export files validity',
+      lines: lines
+    });
+  })
+  .catch(error => {
+    console.error(error);
+    process.exit(1);
   });
-})
-.catch(error => {
-  console.error(error);
-  process.exit(1);
-});
 
 function getModelMessagePromise() {
   const pluginListPromises = Object.keys(plugins).map(
@@ -81,16 +81,16 @@ function getModelMessagePromise() {
   );
 
   return Promise.all(pluginListPromises)
-  .then(pluginLists => {
-    let modelMessageLines = ['## Model changed in this PR'];
-    modelMessageLines = modelMessageLines.concat(getTestFixturesInfo(modelMessageLines));
+    .then(pluginLists => {
+      let modelMessageLines = ['## Model changed in this PR'];
+      modelMessageLines = modelMessageLines.concat(getTestFixturesInfo(modelMessageLines));
 
-    for (const pluginListLines of pluginLists) {
-      modelMessageLines = modelMessageLines.concat(pluginListLines);
-    }
+      for (const pluginListLines of pluginLists) {
+        modelMessageLines = modelMessageLines.concat(pluginListLines);
+      }
 
-    return modelMessageLines;
-  });
+      return modelMessageLines;
+    });
 }
 
 function getPluginMessagePromise(pluginKey) {
@@ -100,16 +100,16 @@ function getPluginMessagePromise(pluginKey) {
   );
 
   return Promise.all(exportTestListPromises)
-  .then(exportTestLists => {
-    let pluginMessageLines = [`## Plugin \`${pluginKey}\` changed in this PR`];
-    pluginMessageLines = pluginMessageLines.concat(getTestFixturesInfo(pluginMessageLines));
-    
-    for (const exportTestListLines of exportTestLists) {
-      pluginMessageLines = pluginMessageLines.concat(exportTestListLines);
-    }
+    .then(exportTestLists => {
+      let pluginMessageLines = [`## Plugin \`${pluginKey}\` changed in this PR`];
+      pluginMessageLines = pluginMessageLines.concat(getTestFixturesInfo(pluginMessageLines));
 
-    return pluginMessageLines;
-  });
+      for (const exportTestListLines of exportTestLists) {
+        pluginMessageLines = pluginMessageLines.concat(exportTestListLines);
+      }
+
+      return pluginMessageLines;
+    });
 }
 
 function getExportTestMessagePromise(pluginKey, testKey) {
@@ -124,16 +124,16 @@ function getExportTestMessagePromise(pluginKey, testKey) {
   );
 
   return Promise.all(fileResultPromises)
-  .then(fileResults => {
-    let exportTestMessageLines = [`## Export test \`${pluginKey}\`/\`${testKey}\` changed in this PR`];
-    exportTestMessageLines = exportTestMessageLines.concat(getTestFixturesInfo(exportTestMessageLines));
+    .then(fileResults => {
+      let exportTestMessageLines = [`## Export test \`${pluginKey}\`/\`${testKey}\` changed in this PR`];
+      exportTestMessageLines = exportTestMessageLines.concat(getTestFixturesInfo(exportTestMessageLines));
 
-    for (const fileResultLines of fileResults) {
-      exportTestMessageLines = exportTestMessageLines.concat(fileResultLines);
-    }
+      for (const fileResultLines of fileResults) {
+        exportTestMessageLines = exportTestMessageLines.concat(fileResultLines);
+      }
 
-    return exportTestMessageLines;
-  });
+      return exportTestMessageLines;
+    });
 }
 
 function getFixtureMessagePromise(fixture) {
@@ -142,15 +142,15 @@ function getFixtureMessagePromise(fixture) {
   );
 
   return Promise.all(pluginListPromises)
-  .then(pluginLists => {
-    let fixtureMessageLines = [`## Fixture \`${fixture[0]}/${fixture[1]}\` changed in this PR`];
+    .then(pluginLists => {
+      let fixtureMessageLines = [`## Fixture \`${fixture[0]}/${fixture[1]}\` changed in this PR`];
 
-    for (const pluginListLines of pluginLists) {
-      fixtureMessageLines = fixtureMessageLines.concat(pluginListLines);
-    }
+      for (const pluginListLines of pluginLists) {
+        fixtureMessageLines = fixtureMessageLines.concat(pluginListLines);
+      }
 
-    return fixtureMessageLines;
-  });
+      return fixtureMessageLines;
+    });
 }
 
 function getTestFixturesInfo(lines) {
@@ -167,15 +167,15 @@ function getPluginListPromise(pluginKey, fixtures) {
   );
 
   return Promise.all(exportTestListPromises)
-  .then(exportTestLists => {
-    let pluginListLines = [`- ${pluginKey}`];
-    
-    for (const exportTestListLines of exportTestLists) {
-      pluginListLines = pluginListLines.concat(exportTestListLines);
-    }
+    .then(exportTestLists => {
+      let pluginListLines = [`- ${pluginKey}`];
 
-    return pluginListLines;
-  });
+      for (const exportTestListLines of exportTestLists) {
+        pluginListLines = pluginListLines.concat(exportTestListLines);
+      }
+
+      return pluginListLines;
+    });
 }
 
 function getExportTestListPromise(plugin, testKey, fixtures, indent = '') {
@@ -185,46 +185,46 @@ function getExportTestListPromise(plugin, testKey, fixtures, indent = '') {
 
   const test = plugin.exportTests[testKey];
   const fileResultPromises = files.map(
-    file => getFileResultPromise(test, file, indent + '  ')
+    file => getFileResultPromise(test, file, `${indent}  `)
   );
 
   return Promise.all(fileResultPromises)
-  .then(fileResults => {
-    let exportTestLines = [`${indent}- ${testKey}`];
-    
-    for (const fileResultLines of fileResults) {
-      exportTestLines = exportTestLines.concat(fileResultLines);
-    }
+    .then(fileResults => {
+      let exportTestLines = [`${indent}- ${testKey}`];
 
-    return exportTestLines;
-  });
+      for (const fileResultLines of fileResults) {
+        exportTestLines = exportTestLines.concat(fileResultLines);
+      }
+
+      return exportTestLines;
+    });
 }
 
 function getFileResultPromise(test, file, indent = '') {
   return test(file.content)
-  .then(() => {
-    return [`${indent}- :white_check_mark: ${file.name}`];
-  })
-  .catch(err => {
-    const errors = Array.isArray(err) ? err : [err];
-    
-    let fileResultLines = [
-      `${indent}- :x: ${file.name}`,
-      `${indent}  <details>`,
-      `${indent}  <summary>Show errors</summary>`,
-      `${indent}  <ul>`
-    ];
+    .then(() => {
+      return [`${indent}- :white_check_mark: ${file.name}`];
+    })
+    .catch(err => {
+      const errors = Array.isArray(err) ? err : [err];
 
-    for (const error of errors) {
-      const errorText = error.replace('\n', '');
-      fileResultLines.push(`${indent}  <li>${errorText}</li>`);
-    }
+      const fileResultLines = [
+        `${indent}- :x: ${file.name}`,
+        `${indent}  <details>`,
+        `${indent}  <summary>Show errors</summary>`,
+        `${indent}  <ul>`
+      ];
 
-    fileResultLines.push(
-      `${indent}  </ul>`,
-      `${indent}  </details>`
-    );
+      for (const error of errors) {
+        const errorText = error.replace('\n', '');
+        fileResultLines.push(`${indent}  <li>${errorText}</li>`);
+      }
 
-    return fileResultLines;
-  });
+      fileResultLines.push(
+        `${indent}  </ul>`,
+        `${indent}  </details>`
+      );
+
+      return fileResultLines;
+    });
 }

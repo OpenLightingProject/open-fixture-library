@@ -38,7 +38,7 @@ You can also import existing fixture definitions using import plugins. See [cli/
 
 ### Fixture features
 
-See [cli/fixture-features/README.md](cli/fixture-features/README.md).
+See [lib/fixture-features/README.md](lib/fixture-features/README.md).
 
 
 ### Model

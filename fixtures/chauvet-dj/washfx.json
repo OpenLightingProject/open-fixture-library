@@ -1,0 +1,262 @@
+{
+  "name": "WashFX",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Justin Hornsby"],
+    "createDate": "2017-11-21",
+    "lastModifyDate": "2017-11-21"
+  },
+  "manualURL": "https://www.chauvetdj.com/wp-content/uploads/2015/12/Wash_FX_UM_Rev1_WO-1.pdf",
+  "physical": {
+    "dimensions": [215, 255, 180],
+    "weight": 2.2,
+    "power": 75,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [90, 90]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0-20Hz"
+        }
+      ]
+    },
+    "Auto Program": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "No Function"
+        },
+        {
+          "range": [6, 20],
+          "name": "Pattern 1"
+        },
+        {
+          "range": [21, 35],
+          "name": "Pattern 2"
+        },
+        {
+          "range": [36, 50],
+          "name": "Pattern 3"
+        },
+        {
+          "range": [51, 65],
+          "name": "Pattern 4"
+        },
+        {
+          "range": [66, 80],
+          "name": "Pattern 5"
+        },
+        {
+          "range": [81, 95],
+          "name": "Pattern 6"
+        },
+        {
+          "range": [96, 110],
+          "name": "Pattern 7"
+        },
+        {
+          "range": [111, 125],
+          "name": "Pattern 8"
+        },
+        {
+          "range": [126, 140],
+          "name": "Pattern 9"
+        },
+        {
+          "range": [141, 155],
+          "name": "Pattern 10"
+        },
+        {
+          "range": [156, 170],
+          "name": "Pattern 11"
+        },
+        {
+          "range": [171, 185],
+          "name": "Pattern 12"
+        },
+        {
+          "range": [186, 200],
+          "name": "Pattern 13"
+        },
+        {
+          "range": [201, 215],
+          "name": "Pattern 14"
+        },
+        {
+          "range": [216, 230],
+          "name": "Pattern 15"
+        },
+        {
+          "range": [231, 245],
+          "name": "Pattern 16"
+        },
+        {
+          "range": [246, 255],
+          "name": "Sound Active"
+        }
+      ]
+    },
+    "Auto Program Speed": {
+      "type": "Speed"
+    },
+    "Auto or Sound Program": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "No Function"
+        },
+        {
+          "range": [11, 127],
+          "name": "Auto"
+        },
+        {
+          "range": [128, 255],
+          "name": "Sound Active"
+        }
+      ]
+    },
+    "Master Dimmer": {
+      "type": "Intensity"
+    },
+    "Red 1": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green 1": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue 1": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Red 2": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green 2": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue 2": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Red 3": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green 3": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue 3": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Red 4": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green 4": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue 4": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Red 5": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green 5": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue 5": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Red 6": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green 6": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue 6": {
+      "type": "Single Color",
+      "color": "Blue"
+    }
+  },
+  "modes": [
+    {
+      "name": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Auto Program",
+        "Auto Program Speed",
+        "Auto or Sound Program"
+      ]
+    },
+    {
+      "name": "23ch",
+      "channels": [
+        "Master Dimmer",
+        "Auto Program",
+        "Auto Program Speed",
+        "Strobe",
+        "Auto or Sound Program",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "Red 5",
+        "Green 5",
+        "Blue 5",
+        "Red 6",
+        "Green 6",
+        "Blue 6"
+      ]
+    }
+  ]
+}
