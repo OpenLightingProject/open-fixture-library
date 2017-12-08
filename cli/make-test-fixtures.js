@@ -59,7 +59,6 @@ for (const man of Object.keys(register.manufacturers)) {
       name: fix.name,
       features: []
     };
-    fixtures.push(fixResult);
 
     // check all features
     for (const fixFeature of fixFeatures) {
@@ -68,13 +67,20 @@ for (const man of Object.keys(register.manufacturers)) {
         featuresUsed[fixFeature.id]++;
       }
     }
+
+    fixtures.push(fixResult);
   }
 }
 
 // first fixtures are more likely to be filtered out, so we start with the ones with the fewest features
 fixtures.sort((a, b) => {
+  if (a.features.length === b.features.length) {
+    return `${a.man}/${a.key}`.localeCompare(`${b.man}/${b.key}`, 'en');
+  }
+
   return a.features.length - b.features.length;
 });
+
 // filter out
 fixtures = fixtures.filter(fixture => {
   for (const feature of fixture.features) {
@@ -89,11 +95,10 @@ fixtures = fixtures.filter(fixture => {
   }
   return false;
 });
+
 // original alphabetic ordering
 fixtures.sort((a, b) => {
-  const manFixA = `${a.man}/${a.key}`;
-  const manFixB = `${b.man}/${b.key}`;
-  return manFixA > manFixB ? 1 : manFixA < manFixB ? -1 : 0;
+  return `${a.man}/${a.key}`.localeCompare(`${b.man}/${b.key}`, 'en');
 });
 
 console.log(colors.yellow('Generated list of test fixtures:'));

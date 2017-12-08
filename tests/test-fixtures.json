@@ -28,19 +28,6 @@
     ]
   },
   {
-    "man": "coemar",
-    "key": "prospot-250-lx",
-    "name": "ProSpot 250 LX",
-    "features": [
-      "duplicate-channel-names",
-      "fine-channel-alias",
-      "floating-point-weight",
-      "multiple-categories",
-      "null-channels",
-      "reused-channels"
-    ]
-  },
-  {
     "man": "dts",
     "key": "xr1200-wash",
     "name": "XR1200 WASH",
@@ -53,8 +40,8 @@
   },
   {
     "man": "elation",
-    "key": "platinum-hfx",
-    "name": "Platinum HFX",
+    "key": "platinum-spot-15r-pro",
+    "name": "Platinum Spot 15R Pro",
     "features": [
       "fine-channel-alias",
       "fine-channel-capabilities",
@@ -66,12 +53,25 @@
   },
   {
     "man": "generic",
-    "key": "desk-channel",
-    "name": "Desk Channel",
+    "key": "rgbd-fader",
+    "name": "RGBD Fader",
     "features": [
       "fine-channel-aliases",
       "no-physical-data",
       "reused-channels"
+    ]
+  },
+  {
+    "man": "jb-systems",
+    "key": "twin-effect-laser",
+    "name": "Twin Effect Laser",
+    "features": [
+      "duplicate-channel-names",
+      "floating-point-weight",
+      "multiple-categories",
+      "null-channels",
+      "reused-channels",
+      "switching-channels"
     ]
   },
   {
