@@ -27,7 +27,7 @@
     },
     "american-dj/quad-phase-hp": {
       "name": "Quad Phase HP",
-      "lastModifyDate": "2017-10-16",
+      "lastModifyDate": "2017-12-08",
       "lastAction": "modified"
     },
     "american-dj/revo-4-ir": {
@@ -205,6 +205,11 @@
       "lastModifyDate": "2017-07-17",
       "lastAction": "created"
     },
+    "generic/rgbd-fader": {
+      "name": "RGBD Fader",
+      "lastModifyDate": "2017-12-07",
+      "lastAction": "created"
+    },
     "glp/impression-spot-one": {
       "name": "impression Spot One",
       "lastModifyDate": "2017-10-16",
@@ -232,7 +237,7 @@
     },
     "lightmaxx/vega-zoom-wash": {
       "name": "Vega Zoom Wash",
-      "lastModifyDate": "2017-03-09",
+      "lastModifyDate": "2017-12-07",
       "lastAction": "modified"
     },
     "martin/atomic-3000": {
@@ -242,7 +247,7 @@
     },
     "martin/mac-aura": {
       "name": "MAC Aura",
-      "lastModifyDate": "2017-10-16",
+      "lastModifyDate": "2017-12-08",
       "lastAction": "modified"
     },
     "martin/mac-axiom-hybrid": {
@@ -427,7 +432,8 @@
       "desk-channel",
       "drgb-fader",
       "pan-tilt",
-      "rgb-fader"
+      "rgb-fader",
+      "rgbd-fader"
     ],
     "glp": [
       "impression-spot-one"
@@ -528,6 +534,7 @@
       "futurelight/pro-slim-par-7-hcl",
       "generic/drgb-fader",
       "generic/rgb-fader",
+      "generic/rgbd-fader",
       "glp/impression-spot-one",
       "gruft/ventilator",
       "jb-systems/twin-effect-laser",
@@ -662,6 +669,7 @@
       "generic/drgb-fader",
       "generic/pan-tilt",
       "generic/rgb-fader",
+      "generic/rgbd-fader",
       "gruft/ventilator",
       "jb-systems/twin-effect-laser",
       "lightmaxx/platinum-mini-tri-par",
@@ -798,7 +806,11 @@
     }
   },
   "lastUpdated": [
+    "american-dj/quad-phase-hp",
+    "martin/mac-aura",
     "generic/drgb-fader",
+    "generic/rgbd-fader",
+    "lightmaxx/vega-zoom-wash",
     "cameo/gobo-scanner-80",
     "eurolite/led-tmh-18",
     "chauvet-dj/washfx",
@@ -810,7 +822,6 @@
     "chauvet-dj/gigbar-2",
     "5star-systems/spica-250m",
     "abstract/twister-4",
-    "american-dj/quad-phase-hp",
     "american-dj/revo-4-ir",
     "american-dj/xs-400",
     "cameo/hydrabeam-100",
@@ -829,7 +840,6 @@
     "glp/impression-spot-one",
     "gruft/ventilator",
     "jb-systems/twin-effect-laser",
-    "martin/mac-aura",
     "martin/mac-axiom-hybrid",
     "martin/mac-viper-airfx",
     "martin/mac-viper-performance",
@@ -868,7 +878,6 @@
     "cameo/thunder-wash-100-w",
     "cameo/thunder-wash-600-rgb",
     "cameo/thunder-wash-600-w",
-    "lightmaxx/platinum-mini-tri-par",
-    "lightmaxx/vega-zoom-wash"
+    "lightmaxx/platinum-mini-tri-par"
   ]
 }
