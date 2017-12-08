@@ -210,6 +210,11 @@
       "lastModifyDate": "2017-12-07",
       "lastAction": "created"
     },
+    "generic/rgbw-fader": {
+      "name": "RGBW Fader",
+      "lastModifyDate": "2017-12-07",
+      "lastAction": "created"
+    },
     "glp/impression-spot-one": {
       "name": "impression Spot One",
       "lastModifyDate": "2017-10-16",
@@ -433,7 +438,8 @@
       "drgb-fader",
       "pan-tilt",
       "rgb-fader",
-      "rgbd-fader"
+      "rgbd-fader",
+      "rgbw-fader"
     ],
     "glp": [
       "impression-spot-one"
@@ -535,6 +541,7 @@
       "generic/drgb-fader",
       "generic/rgb-fader",
       "generic/rgbd-fader",
+      "generic/rgbw-fader",
       "glp/impression-spot-one",
       "gruft/ventilator",
       "jb-systems/twin-effect-laser",
@@ -670,6 +677,7 @@
       "generic/pan-tilt",
       "generic/rgb-fader",
       "generic/rgbd-fader",
+      "generic/rgbw-fader",
       "gruft/ventilator",
       "jb-systems/twin-effect-laser",
       "lightmaxx/platinum-mini-tri-par",
@@ -810,6 +818,7 @@
     "martin/mac-aura",
     "generic/drgb-fader",
     "generic/rgbd-fader",
+    "generic/rgbw-fader",
     "lightmaxx/vega-zoom-wash",
     "cameo/gobo-scanner-80",
     "eurolite/led-tmh-18",
