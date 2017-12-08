@@ -7,13 +7,10 @@
 * `cli/` – Useful scripts to be called from the command line
 * `docs/` – [Documentation](index.md)
 * `fixtures/` – Repository of our [fixture definitions](#fixtures)
-  * `<manufacturer-key>/` – Folder containing all fixtures of this [manufacturer](#manufacturers)
-    * `<fixture-key>.json` – A single fixture's definition
 * `lib/` – Reusable modules used in the project
   * `fixture-features/` – [Fixture features](#fixture-features), special fixture characteristics used to determine a set of test fixtures
   * `model/` – Classes of the [Fixture model](#fixture-model) that make processing fixture data easier
 * `plugins/` – [Plugins](#plugins) allowing us to [export to](#exporting) / [import from](#importing) other software's fixture formats
-  * `<plugin-key>/` – Directory of a single plugin containing all its information and code
 * `static/` – Resources like icons or fonts; mainly used in [UI](#ui--website)
 * `tests/` – [Unit tests](#testing), much of them run automatically in GitHub with Travis
   * `github/` – Special kind of tests which shouldn't be called manually and create comments in GitHub pull requests
