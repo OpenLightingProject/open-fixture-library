@@ -1,6 +1,6 @@
 # Fixture model
 
-Instead of parsing [fixtures](fixture-format.md)' JSON data directly, it is recommended to use the model. We developed it to ease handling complicated fixture features like fine channels or switching channels.
+Instead of parsing [fixtures' JSON data](fixture-format.md) directly, it is recommended to use the model. We developed it to ease handling complicated fixture features like fine channels or switching channels.
 
 The model uses [ES2015 classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) to represent the fixtures. E.g., `Fixture.fromRepository('cameo', 'nanospot-120')` returns a [`Fixture`](../lib/model/Fixture.js) object, instantiated with the specified fixture's data. These objects have several convenient properties that allow easy usage of the fixture data in [plugins](plugins.md), [UI](ui.md) and more.
 

@@ -168,4 +168,4 @@ node cli/run-export-test.js -p <plugin> [ <fixtures> ]
 node cli/run-export-test.js -h # Help message
 ```
 
-**TODO:** Automatically called from pull requests.
+Export tests are automatically run in pull requests, where they add a comment with the changes introduced by the pull request.

@@ -2,7 +2,6 @@
 
 We run our [website](https://open-fixture-library.herokuapp.com/) with an [Express](http://expressjs.com/de/) server. Initialization and routing is done in [`main.js`](../main.js). Running `npm run watch` starts the server by calling the main script and reloads it when dependent files (e.g. fixtures, UI scripts) change.
 
-**TODO:** Env variables  
 Visit `http://localhost:5000/` to see the local server running. The port 5000 can be changed with the environment variable `PORT`.
 
 The main script binds different kinds of content into the website:
