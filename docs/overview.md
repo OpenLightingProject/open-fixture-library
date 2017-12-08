@@ -9,34 +9,20 @@
 * `fixtures/` – Repository of our [fixture definitions](#fixtures)
   * `<manufacturer-key>/` – Folder containing all fixtures of this [manufacturer](#manufacturers)
     * `<fixture-key>.json` – A single fixture's definition
-  * `manufacturers.json` – Metadata about all manufacturers
-  * `register.json` – Auto-generated metadata about fixtures
 * `lib/` – Reusable modules used in the project
   * `fixture-features/` – [Fixture features](#fixture-features), special fixture characteristics used to determine a set of test fixtures
   * `model/` – Classes of the [Fixture model](#fixture-model) that make processing fixture data easier
-* `plugins/` – [Plugins](#plugins) allowing us to convert from/to other software's fixture formats
+* `plugins/` – [Plugins](#plugins) allowing us to [export to](#exporting) / [import from](#importing) other software's fixture formats
   * `<plugin-key>/` – Directory of a single plugin containing all its information and code
-    * `README.md` – General information
-    * `export.js` – [Export](#exporting) given fixture(s) to foreign format
-    * `import.js` – [Import](#importing) fixture(s) from foreign format
-    * `export-tests/` – [Test exported fixtures](#export-tests) against plugin-specific requirements
 * `static/` – Resources like icons or fonts; mainly used in [UI](#ui--website)
 * `tests/` – [Unit tests](#testing), much of them run automatically in GitHub with Travis
   * `github/` – Special kind of tests which shouldn't be called manually and create comments in GitHub pull requests
-  * `test-fixtures.json` – Auto-generated set of fixtures that use a broad range of different fixture features
 * `tmp/` – Auto-generated temporary files. Save to delete and not indexed by Git.
 * `views/` – Everything related to the [UI / Website](#ui--website)
   * `includes/` – Reusable components, helper modules
   * `pages/` – All the different subpages of the website
   * `scripts/` – Client-side JavaScript
   * `stylesheets/` – SASS styles, compiled to `static/style.css` when starting the server
-* `.env` – Adjustable [environment variables](TODO) for development
-* `.eslintrc.json` – Which ESLint rules should be enforced
-* `app.json` – Heroku configuration
-* `main.json` – Starts server
-* `Makefile` – run `make` to build auto-generated components
-* `package.json` – NPM manifest, mainly used for dependencies
-* `Procfile` – Heroku configuration
 
 ## Fixtures
 *[⬆️ Back to top](#overview)*
@@ -382,7 +368,7 @@ The main script binds different kinds of content into the website:
 - **Client-side JavaScripts** – they are located in [`views/scripts/`](../views/scripts/) and are processed with [Browserify](http://browserify.org/) which lets us use `require('npm-module')` in the browser.
 - **SCSS stylesheets** – we like the [SCSS](http://sass-lang.com/) preprocessor as it orients on CSS' original syntax and extends it with convenient utilities (such as rule nesting and variables). The SCSS files in [`views/stylesheets/`](../views/stylesheets/) are automatically bundled into a single `style.css` file that is moved into the `static/` directory afterwards.
 
-We use [Heroku](https://www.heroku.com/) (configurable with [app.json])(../app.json) for automatic deployment:
+We use [Heroku](https://www.heroku.com/) (configurable with [app.json](../app.json) and [Procfile](../Procfile)) for automatic deployment:
 
 - The **master branch** is deployed to https://open-fixture-library.herokuapp.com/. It is refreshed with each commit to master, but only after the [Travis tests](#testing) for the commits have passed.
 - Each **pull request** #xyz is deployed to https://open-fixture-library-pr-xyz.herokuapp.com/. It is refreshed with each commit to the feature branch without taking account of the tests.
