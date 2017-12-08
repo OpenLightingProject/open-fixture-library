@@ -1,3 +1,3 @@
 # Documentation
-- [Technical Overview](technical-overview.md)
+- [Overview](overview.md)
 - [Fixture Format](fixture-format.md)
