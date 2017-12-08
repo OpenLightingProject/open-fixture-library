@@ -1,27 +1,27 @@
-| | [*cameo* Hydrabeam 300 RGBW](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/cameo/hydrabeam-300-rgbw.json) | [*chauvet-dj* SlimPAR Pro H USB](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/chauvet-dj/slimpar-pro-h-usb.json) | [*coemar* ProSpot 250 LX](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/coemar/prospot-250-lx.json) | [*dts* XR1200 WASH](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/dts/xr1200-wash.json) | [*elation* Platinum HFX](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/elation/platinum-hfx.json) | [*generic* Desk Channel](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/generic/desk-channel.json) | [*martin* MAC Viper Performance](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/martin/mac-viper-performance.json)
+| | [*cameo* Hydrabeam 300 RGBW](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/cameo/hydrabeam-300-rgbw.json) | [*chauvet-dj* SlimPAR Pro H USB](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/chauvet-dj/slimpar-pro-h-usb.json) | [*dts* XR1200 WASH](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/dts/xr1200-wash.json) | [*elation* Platinum Spot 15R Pro](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/elation/platinum-spot-15r-pro.json) | [*generic* RGBD Fader](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/generic/rgbd-fader.json) | [*jb-systems* Twin Effect Laser](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/jb-systems/twin-effect-laser.json) | [*martin* MAC Viper Performance](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/martin/mac-viper-performance.json)
 |-|-|-|-|-|-|-|-
-**Duplicate channel names** | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ✅
-**Fine channels (16bit)** [[1]](#user-content-footnote-1) | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅
-**Fine channels (>16bit)** [[2]](#user-content-footnote-2) | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌
-**Fine channel capabilities** [[3]](#user-content-footnote-3) | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅
+**Duplicate channel names** | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅
+**Fine channels (16bit)** [[1]](#user-content-footnote-1) | ✅ | ❌ | ✅ | ✅ | ❌ | ❌ | ✅
+**Fine channels (>16bit)** [[2]](#user-content-footnote-2) | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
+**Fine channel capabilities** [[3]](#user-content-footnote-3) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅
 **Fine before coarse** [[4]](#user-content-footnote-4) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Fine not-adjacent after coarse** [[5]](#user-content-footnote-5) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Floating point dimensions** [[6]](#user-content-footnote-6) | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
-**Floating point weight** | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅
+**Floating point dimensions** [[6]](#user-content-footnote-6) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
+**Floating point weight** | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ✅
 **Floating point power** | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌
 **Floating point color temperature** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Floating point lumens** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Floating point lens degrees** | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Floating point pan/tilt maximum** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Heads** | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Multiple categories** | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅
+**Multiple categories** | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅
 **Multiple Focuses** [[7]](#user-content-footnote-7) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**No physical** | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌
-**`null` channels** [[8]](#user-content-footnote-8) | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌
-**Physical override** [[9]](#user-content-footnote-9) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
+**No physical** | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
+**`null` channels** [[8]](#user-content-footnote-8) | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌
+**Physical override** [[9]](#user-content-footnote-9) | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌
 **RDM** [[10]](#user-content-footnote-10) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅
 **Reused channels** [[11]](#user-content-footnote-11) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅
-**Switching channels** [[12]](#user-content-footnote-12) | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅
+**Switching channels** [[12]](#user-content-footnote-12) | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ✅
 **Switches fine channels** [[13]](#user-content-footnote-13) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅
 
 **<a id="user-content-footnote-1">[1]</a>**: Whether a channel defines exactly one fine channel alias
