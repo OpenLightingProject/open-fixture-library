@@ -7,7 +7,7 @@ The model uses [ES2015 classes](https://developer.mozilla.org/en-US/docs/Web/Jav
 All model classes are located in the [`lib/model/`](../lib/model) directory. When using the model, it should suffice to import the `Fixture` module; instances of other classes are returned by the fixture's properties:
 
 ```js
-const Fixture = require('lib/model/Fixture.js');
+const Fixture = require('./lib/model/Fixture.js');
 
 const myFix = Fixture.fromRepository('cameo', 'nanospot-120'); // instanceof Fixture
 
@@ -19,7 +19,7 @@ if (panFine.coarseChannel.hasHighlightValue) {
 }
 ```
 
-Model properties are always implemented using getters and setters. To store data, we use backing fields (an internal property prefixed with underscore, like `_jsonObject`) to hold the data. The backing field should never be accessed directly, but only through its getter and setter functions (without underscore).
+Model properties are always implemented using getters and setters. To store data, we use backing fields (an internal property prefixed with underscore, e.g. `_jsonObject`) to hold the data. The backing field should never be accessed directly, but only through its getter and setter functions (without underscore).
 
 Avoid returning `undefined` by returning smart default values if necessary. If the default value is not `null`, also provide a `hasXY` boolean getter function. Properties that need further computation or create other objects should be cached in an internal `_cache` object.
 

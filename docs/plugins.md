@@ -38,20 +38,21 @@ module.exports.name = 'Plugin Name';
 module.exports.version = '0.1.0';  // semantic versioning of export plugin
 
 /**
- * @param {!Fixture[]} fixtures An array of Fixture objects, see our fixture model
+ * @param {!Array.<Fixture>} fixtures An array of Fixture objects, see our fixture model
  * @param {!object} options Some global options, for example:
  * @param {!string} options.baseDir Absolute path to OFL's root directory
  * @param {?Date} options.date The current time (prefer this over new Date())
- * @return {!object[]} All generated files (see file schema above)
+ * @returns {!Array.<object>} All generated files (see file schema above)
 */
 module.exports.export = function exportPluginName(fixtures, options) {
-  let outfiles = [];
+  const outfiles = [];
 
   for (const fixture of fixtures) {
-    for (const mode of fixture.modes)
+    for (const mode of fixture.modes) {
       outfiles.push({
         name: `${fixture.manufacturer.key}-${fixture.key}-${mode.shortName}.xml`,
-        content: `<title>${fixture.name}: ${mode.channels.length}ch</title>`, // this fixture definition is quite useless, normally it's way larger and computated using several helper functions
+        // that's just an example, normally, the (way larger) file contents are computated using several helper functions
+        content: `<title>${fixture.name}: ${mode.channels.length}ch</title>`,
         mimetype: 'application/xml'
       });
     }
@@ -91,13 +92,13 @@ module.exports.name = 'Plugin Name';
 module.exports.version = '0.1.0';  // semantic versioning of import plugin
 
 /**
- * @param {!String} fileContent The imported file's content
- * @param {!String} fileName The imported file's name
+ * @param {!string} fileContent The imported file's content
+ * @param {!string} fileName The imported file's name
  * @param {!Function} resolve For usage, see above
  * @param {!Function} reject For usage, see above
 **/
 module.exports.import = function importPluginName(fileContent, fileName, resolve, reject) {
-  let out = {
+  const out = {
     manufacturers: {},
     fixtures: {},
     warnings: {}
@@ -107,20 +108,22 @@ module.exports.import = function importPluginName(fileContent, fileName, resolve
   const manKey = 'cameo';
   const fixKey = 'thunder-wash-600-rgb'; // use a sanitized key as it's used as filename!
 
-  let fixtureObject = {};
-  out.warnings[manKey + '/' + fixKey] = [];
+  const fixtureObject = {};
+  out.warnings[`${manKey}/${fixKey}`] = [];
 
+  const couldNotParse = fileContent.includes('Error');
   if (couldNotParse) {
     reject(`Could not parse '${fileName}'.`);
     return;
   }
 
-  fixtureObject.name = "Thunder Wash 600 RGB";
+  fixtureObject.name = 'Thunder Wash 600 RGB';
 
   // Add warning if a necessary property is not included in parsed file
-  out.warnings[manKey + '/' + fixKey].push('Could not parse categories, please specify them manually.');
+  out.warnings[`${manKey}/${fixKey}`].push('Could not parse categories, please specify them manually.');
 
-  out.fixtures[manKey + '/' + fixKey] = fixtureObject;
+  // That's the imported fixture
+  out.fixtures[`${manKey}/${fixKey}`] = fixtureObject;
 
   resolve(out);
 };
@@ -135,9 +138,11 @@ A plugin's export test takes an exported fixture as argument and evaluates it ag
 Each test module should be located at `plugins/<plugin-key>/exportTests/<export-test-key>.js`. Here's a dummy test illustrating the structure:
 
 ```js
+const xml2js = require('xml2js');
+
 /**
- * @param exportFileData {string} The content of a file returned by the plugins' export module.
- * @return {Promise} Resolve when the test passes or reject with an error if the test fails.
+ * @param {string} exportFileData The content of a file returned by the plugins' export module.
+ * @returns {Promise} Resolve when the test passes or reject with an error if the test fails.
 **/
 module.exports = function testValueCorrectness(exportFileData) {
   return new Promise((resolve, reject) => {
@@ -145,12 +150,12 @@ module.exports = function testValueCorrectness(exportFileData) {
 
     parser.parseString(exportFileData, (parseError, xml) => {
       if (parseError) {
-        return reject('Error parsing XML: ' + parseError.toString());
+        return reject(`Error parsing XML: ${parseError}`);
       }
-      
+
       // the plugin crashes if the name is empty, so we must ensure that this won't happen
       // (just an example)
-      if (xml.Fixture.Name[0].length == 0) {
+      if (xml.Fixture.Name[0].length === 0) {
         return reject('Name missing');
       }
 
