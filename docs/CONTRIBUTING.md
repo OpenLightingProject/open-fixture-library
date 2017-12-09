@@ -2,6 +2,8 @@
 
 We believe in the power of open source development and want to encourage everyone to contribute to this project. This document should help new developers and documents our coding workflow. If there are any questions left, don't hesitate to [contact us](https://github.com/FloEdelmann/open-fixture-library/issues/new).
 
+Please keep being friendly and don't troll. See our [Code of Conduct](CODE_OF_CONDUCT.md) for more information on this.
+
 ## Issues
 
 You have an idea about a new feature or you spotted a mistake? Feel free to create an [issue](https://github.com/FloEdelmann/open-fixture-library/issues) in which you describe the problem / the feature requirements.
