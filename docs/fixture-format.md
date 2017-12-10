@@ -83,7 +83,7 @@ E.g. in a given mode, the first channel could be used to select auto-programs an
 
 To define switching channels, add a `switchChannels` object to all capabilities of the dependency channel (the "Auto-Programs" channel in the example above). This object defines which *switching channel alias* is set to which *available channel key* if this capability is active. The switching channel alias is then used in the mode just like a regular channel. Note that a channel which defines switching channels needs an explicit `defaultValue` to make sure that the switching channel default is also well-defined.
 
-See the [Futurelight PRO Slim PAR-7 HCL fixture](futurelight/pro-slim-par-7-hcl.json) for a simple application example.
+See the [Futurelight PRO Slim PAR-7 HCL fixture](../fixtures/futurelight/pro-slim-par-7-hcl.json) for a simple application example.
 
 
 ### RDM (Remote Device Management) data
