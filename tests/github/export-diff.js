@@ -6,7 +6,7 @@ const diffPluginOutputs = require('../../lib/diff-plugin-outputs.js');
 const exportPlugins = Object.keys(require('../../plugins/plugins.js').export);
 const pullRequest = require('./pull-request.js');
 
-require('./lib/load-env-file.js');
+require('../../lib/load-env-file.js');
 
 const testFixtures = require('../test-fixtures.json').map(
   fixture => `${fixture.man}/${fixture.key}`
