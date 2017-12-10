@@ -24,3 +24,7 @@ This is the developer documentation for the *Open Fixture Library*. Please follo
 ## Contributing
 
 Please see [`CONTRIBUTING.md`](CONTRIBUTING.md).
+
+## Environment variables
+
+[`Environment variables`](environment_variables.md) list all variables that are used in this project and gives a short introduction on how to set them.
