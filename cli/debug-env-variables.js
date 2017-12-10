@@ -29,11 +29,11 @@ printVariables();
  * Prints all used environment variables and their values / unset
  */
 function printVariables() {
-  for (const key of Object.keys(process.env).sort()) {
+  for (const key of usedVariables) {
     let str = colors.yellow(key);
 
     if (key in process.env) {
-      str += `=${colors.blue(process.env[key])}`
+      str += `=${colors.blue(process.env[key])}`;
     }
     else {
       str += colors.red(' is unset');
