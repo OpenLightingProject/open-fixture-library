@@ -11,7 +11,7 @@ Fixture features are saved in the the [`lib/fixture-features/`](../lib/fixture-f
 
 ```js
 module.exports = [{
-  // Optional, default is the filename (without '.js', succeded by `-${i}` if
+  // Optional, default is the filename (without '.js', succeeded by `-${i}` if
   // multiple features per module are provided). Must be unique!
   id: 'fine-channel-alias',
 
