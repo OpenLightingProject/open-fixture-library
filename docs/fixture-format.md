@@ -1,25 +1,28 @@
 # JSON Fixture Format
 
-This document gives a high-level overview of the concepts used in the JSON format of the fixture definitions collected in the *Open Fixture Library*. Those fixture definitions (also called *personalities* or *profiles*) specify information about a fixtures' DMX controlment and general attributes.
+This document gives a high-level overview of the concepts used in the JSON format of the fixture definitions collected in the *Open Fixture Library*. Those fixture definitions (also called *personalities* or *profiles*) specify information about a fixture's DMX controlment and general attributes.
 
 *Note:* The fixture format is not intended to be used directly by other software, as it may introduce breaking, not-backwards-compatible changes at any time. Instead, write a plugin to transform the data into a more stable format for your application. Internally in *OFL*, working with the [fixture model](fixture-model.md) is preferred, as it eases access to the fixture data.
 
 
 ## Schema
 
-The [JS Schema](https://github.com/molnarg/js-schema) can be found in the [`schema.js`](../fixtures/schema.js) file. It is a declarative way to describe allowed properties and values. The [fixture validator test](../tests/fixtures-valid.js) automatically checks the fixtures against this schema and additionally tests things like the correct use of channel keys etc. programmatically.
+The [JS Schema](https://github.com/molnarg/js-schema) can be found in the [`schema.js`](../fixtures/schema.js) file. It is a declarative way to describe allowed properties and values. The [`fixtures-valid.js` test](../tests/fixtures-valid.js) automatically checks the fixtures against this schema and additionally tests things like the correct use of channel keys etc. programmatically.
 
 The schema exports a property `VERSION`. Every time the schema is updated, this version needs to be incremented using [semantic versioning](http://semver.org).
 
 Given a version number MAJOR.MINOR.PATCH, increment the:
-1. MAJOR version when you make incompatible schema changes,
-2. MINOR version when you add functionality in a backwards-compatible manner, and
+1. MAJOR version when you make incompatible schema changes.  
+  i.e. old fixtures are not valid with the new schema anymore.
+2. MINOR version when you add functionality in a backwards-compatible manner.
+  i.e. old fixtures are still valid with the new schema, new fixtures aren't valid with the old schema.
 3. PATCH version when you make backwards-compatible bug fixes.
+  e.g. an upper bound to an integer value is added, which was likely done right in the past anyway.
 
 
 ## Goals
 
-The JSON fixture format intends to be
+The JSON fixture format is intended to be
 
 * readable by both humans and machines
 * easily extendable

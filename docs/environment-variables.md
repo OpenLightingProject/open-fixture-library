@@ -1,15 +1,15 @@
 # Environment Variables
 
-We use environment variables for configuration and storing secret credentials. The easiest way to set them is editing the (gitignored) [`.env`](../.env) file:
+We use environment variables for configuration and storing secret credentials. They are set by [Heroku](ui.md) and [Travis](tests.md) and can also be set locally; the easiest way is to edit the (gitignored) `.env` file in the project's root directory:
 
-```
+```bash
 MY_ENV_VARIABLE=hello
 
-# This is a comment
+# Lines beginning with # are comments
 NODE_ENV=production
 ```
 
-Every script that uses environment variables must require [`lib/load-env-file.js`](../lib/load-env-file.js) first (usually placed right after all the other requires). Note that `require(...)` takes a relative path to the module beginning with `./` or `../`.
+Every script that uses environment variables must require [`lib/load-env-file.js`](../lib/load-env-file.js) first (usually placed right after all the other `require` calls). Note that `require(...)` takes a relative path beginning with `./` or `../`.
 
 Please update these docs and [`cli/debug-env-variables.js`](../cli/debug-env-variables.js) after introducing new variables.
 

@@ -150,17 +150,19 @@ module.exports = function testValueCorrectness(exportFileData) {
 
     parser.parseString(exportFileData, (parseError, xml) => {
       if (parseError) {
-        return reject(`Error parsing XML: ${parseError}`);
+        reject(`Error parsing XML: ${parseError}`);
+        return;
       }
 
       // the plugin crashes if the name is empty, so we must ensure that this won't happen
       // (just an example)
       if (xml.Fixture.Name[0].length === 0) {
-        return reject('Name missing');
+        reject('Name missing');
+        return;
       }
 
       // everything's ok
-      return resolve();
+      resolve();
     });
   });
 };

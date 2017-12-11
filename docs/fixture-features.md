@@ -11,29 +11,24 @@ Fixture features are saved in the the [`lib/fixture-features/`](../lib/fixture-f
 
 ```js
 module.exports = [{
-  // Optional. Used internally and in test-fixtures.json.
-  // Default is the filename (without '.js'), succeded by `-${i}` if multiple features per module are provided.
+  // Optional, default is the filename (without '.js', succeded by `-${i}` if
+  // multiple features per module are provided). Must be unique!
   id: 'fine-channel-alias',
 
-  // Required. Try to be as short as possible as it's used in generated table header. Markdown is allowed.
+  // Required. Used in generated table header. Try to be as short as possible! Markdown is allowed.
   name: 'Fine channels (16bit)',
 
-  // Optional. Is used as tooltip in generated table header. Markdown is not allowed.
+  // Optional. Is used as a footnote in generated table header. Markdown is allowed.
   description: 'Whether a channel defines exactly one fine channel alias',
 
-  // Optional. The feature with the highest order is in the first (most-left) column.
-  // Default value is 0, negative values are allowed (to appear right to the features with default order).
-  order: 81,
-
   /**
-   * Required. Checks if the given fixture uses this module's feature.
-   * @param {!Fixture} fixture The Fixture instance, see our model.
-   * @return {!Boolean} true if fixture uses the feature
+   * Required. Checks if the given fixture uses this feature.
+   * @param {!Fixture} fixture The Fixture instance, see fixture-model.md
+   * @returns {!boolean} true if the fixture uses the feature
    */
-  hasFeature: fixture =>
-    fixture.availableChannels.some(
-      channel => channel.fineChannelAliases.length === 1
-    )
+  hasFeature: fixture => fixture.availableChannels.some(
+    channel => channel.fineChannelAliases.length === 1
+  )
 }];
 ```
 
