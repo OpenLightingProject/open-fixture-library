@@ -3,7 +3,6 @@
 const fs = require('fs');
 const path = require('path');
 const url = require('url');
-const env = require('node-env-file');
 const express = require('express');
 const compression = require('compression');
 const sassMiddleware = require('node-sass-middleware');
@@ -14,12 +13,9 @@ const bodyParser = require('body-parser');
 const plugins = require('./plugins/plugins.js');
 const Fixture = require('./lib/model/Fixture.js');
 
-const app = express();
+require('./lib/load-env-file.js');
 
-const envFile = path.join(__dirname, '.env');
-if (fs.existsSync(envFile)) {
-  env(envFile);
-}
+const app = express();
 
 // setup port
 app.set('port', (process.env.PORT || 5000));

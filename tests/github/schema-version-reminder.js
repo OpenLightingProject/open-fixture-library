@@ -4,6 +4,8 @@ const path = require('path');
 
 const pullRequest = require('./pull-request.js');
 
+require('../../lib/load-env-file.js');
+
 pullRequest.checkEnv()
   .catch(error => {
     console.error(error);

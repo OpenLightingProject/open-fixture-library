@@ -43,7 +43,7 @@ if (args._.length === 0) {
 }
 else {
   fixtures = args._.map(relativePath => {
-    const absolutePath = path.join(process.env.PWD, relativePath);
+    const absolutePath = path.join(process.cwd(), relativePath);
     return new Fixture(
       path.basename(path.dirname(absolutePath)), // man key
       path.basename(absolutePath, path.extname(absolutePath)), // fix key
@@ -53,7 +53,7 @@ else {
 }
 
 const plugin = plugins[args.plugin];
-const files = plugin.export.export(fixtures);
+const files = plugin.export.export(fixtures, {});
 
 for (const testKey of Object.keys(plugin.exportTests)) {
   const test = plugin.exportTests[testKey];
