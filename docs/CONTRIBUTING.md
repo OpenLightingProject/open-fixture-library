@@ -23,11 +23,11 @@ Now, everything's installed and should be working. To start the website server a
 
 ## Where you can help
 
-- Add new fixtures (either via the Fixture Editor or by manually writing a [fixture format JSON](fixture-format.md))
-- Browse the [`good-first-issues` tag](https://github.com/FloEdelmann/open-fixture-library/issues?q=is:open+is:issue+label:%22good+first+issue%22) to find some easy tasks
-- Improve the [documentation](README.md)
-- Add new [plugins](https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Anew-plugin) (use existing ones as reference and look at the [plugin documentation](plugins.md))
-- Implement your own idea (please create a new issue first if it's no bugfix or very minor change)
+* Add new fixtures (either via the Fixture Editor or by manually writing a [fixture format JSON](fixture-format.md))
+* Browse the [`good-first-issues` tag](https://github.com/FloEdelmann/open-fixture-library/issues?q=is:open+is:issue+label:%22good+first+issue%22) to find some easy tasks
+* Improve the [documentation](README.md)
+* Add new [plugins](https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Anew-plugin) (use existing ones as reference and look at the [plugin documentation](plugins.md))
+* Implement your own idea (please create a new issue first if it's no bugfix or very minor change)
 
 ## Workflow: How to implement a feature
 
@@ -43,21 +43,21 @@ You can also create the pull request if you're not done yet to involve the revie
 
 We always aim to have clear, readable code. So please try to respect these principles:
 
-- Document every new function with [JSDoc](http://usejsdoc.org/about-getting-started.html)
+* Document every new function with [JSDoc](http://usejsdoc.org/about-getting-started.html)
   - Prefix each type with either `!` (non-null) or `?` (may be null) so the null-case is always annotated
   - Be careful with arrays: Prefer the `!Array.<string>` syntax over `!string[]`
-- Use [self-describing variable names](http://wiki.c2.com/?GoodVariableNames) and prefer constant variables over literal values without explanation
-- Use new [ES2015 (ES6)](https://babeljs.io/learn-es2015/) features that improve code readability, for example:
+* Use [self-describing variable names](http://wiki.c2.com/?GoodVariableNames) and prefer constant variables over literal values without explanation
+* Use new [ES2015 (ES6)](https://babeljs.io/learn-es2015/) features that improve code readability, for example:
   - Use [const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) where possible, [let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) in all other cases
   - Prefer [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) (like in [`array.map(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)) over loops where it makes 
   - Use [template strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) (``const str = `My name is ${name}`;``) instead of string concatenation (`const str = 'My name is ' + name;`)
   - ⚠️ Only use these features in backend code; client-side browser scripts must respect browser compatibility
-- Try to make a piece of code not too complex. That is, if a function contains lots of ifs and for-loops, extract some parts into helper functions. (For example, the `checkFixture()` function calls `checkPhysical()` and `checkChannels()`, `checkChannel()` calls `checkCapabilities()`, etc.)
+* Try to make a piece of code not too complex. That is, if a function contains lots of ifs and for-loops, extract some parts into helper functions. (For example, the `checkFixture()` function calls `checkPhysical()` and `checkChannels()`, `checkChannel()` calls `checkCapabilities()`, etc.)
 
 We automatically check code style using [ESLint](https://eslint.org/). Maybe your IDE supports ESLint highlighting (there's a good [extension for VSCode](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)) – this helps spotting bad code style as quickly as possible.
 
 ## Developer tips
 
-- To understand how OFL works, read the [Documentation Overview](README.md) and its related pages. We try to document every part of our software.
-- Run [tests](testing.md) in the `tests/` directory manually – that's way faster than waiting for the automated Travis tests in pull requests.
-- Run `make` to be sure that auto-generated contents are up-to-date.
+* To understand how OFL works, read the [Documentation Overview](README.md) and its related pages. We try to document every part of our software.
+* Run [tests](testing.md) in the `tests/` directory manually – that's way faster than waiting for the automated Travis tests in pull requests.
+* Run `make` to be sure that auto-generated contents are up-to-date.

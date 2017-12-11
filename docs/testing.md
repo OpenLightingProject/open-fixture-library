@@ -2,11 +2,11 @@
 
 We try to develop unit tests whereever possible. They test specific components of our project by respecting the [F.I.R.S.T Principles of Unit Testing](https://github.com/ghsukumar/SFDC_Best_Practices/wiki/F.I.R.S.T-Principles-of-Unit-Testing):
 
-- **Fast** – Tests that need too long time would annoy the workflow
-- **Isolated** – Tests should not affect each other. *Travis* helps a lot at fulfilling this principle.
-- **Repeatable** – Tests should be independent from the current environment and other side effects.
-- **Self-Validating** – A test should either pass or fail, no manual inspection is needed to determine the state.
-- **Timely** – With new features, also new tests have to be implemented
+* **Fast** – Tests that need too long time would annoy the workflow
+* **Isolated** – Tests should not affect each other. *Travis* helps a lot at fulfilling this principle.
+* **Repeatable** – Tests should be independent from the current environment and other side effects.
+* **Self-Validating** – A test should either pass or fail, no manual inspection is needed to determine the state.
+* **Timely** – With new features, also new tests have to be implemented
 
 Tests are located in the [`tests/`](../tests/) directory (surprise!), one test per file. They can be called manually except of the GitHub tests in [`tests/github/`](../tests/github/) (see below).
 

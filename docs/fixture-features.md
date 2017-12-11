@@ -3,9 +3,9 @@
 Fixture features are specific [fixture](fixture-format.md) characteristics (like "uses RDM" or "uses fine channel before coarse channel"), especially ones that have produced or are likely to produce bugs and errors.
 
 We use fixture features for the following purposes:
-- Generate a minimal collection of test fixtures that cover all fixture features so we can check all special cases with minimum work
-- *(planned)* The fixture editor can only edit / import fixtures that only use editor-compatible fixture features
-- *(planned)* Search for fixtures with specific fixture features (mainly for testing)
+* Generate a minimal collection of test fixtures that cover all fixture features so we can check all special cases with minimum work
+* *(planned)* The fixture editor can only edit / import fixtures that only use editor-compatible fixture features
+* *(planned)* Search for fixtures with specific fixture features (mainly for testing)
 
 Fixture features are saved in the the [`lib/fixture-features/`](../lib/fixture-features/) directory as JS modules that export an array of features. It is advised to put similar features into one module. A sample module looks like this:
 
