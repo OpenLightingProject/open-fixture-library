@@ -135,6 +135,7 @@
       ]
     },
     "Shutter / Strobe basic": {
+      "name": "Shutter / Strobe",
       "type": "Strobe",
       "capabilities": [
         {
@@ -176,34 +177,56 @@
     },
     "Color wheel function": {
       "type": "Effect",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 15],
-          "name": "Normal color change"
+          "name": "Normal color change",
+          "switchChannels": {
+            "Color wheel": "Color wheel: Color selection"
+          }
         },
         {
           "range": [16, 31],
-          "name": "Blackout at color change"
+          "name": "Blackout at color change",
+          "switchChannels": {
+            "Color wheel": "Color wheel: Color selection"
+          }
         },
         {
           "range": [32, 47],
-          "name": "Forwards rainbow effect"
+          "name": "Forwards rainbow effect",
+          "switchChannels": {
+            "Color wheel": "Color wheel speed"
+          }
         },
         {
           "range": [48, 63],
-          "name": "Backwards rainbow effect"
+          "name": "Backwards rainbow effect",
+          "switchChannels": {
+            "Color wheel": "Color wheel speed"
+          }
         },
         {
           "range": [64, 79],
-          "name": "Color change at every position"
+          "name": "Color change at every position",
+          "switchChannels": {
+            "Color wheel": "Color wheel position"
+          }
         },
         {
           "range": [80, 111],
-          "name": "Color Bounce"
+          "name": "Color Bounce",
+          "switchChannels": {
+            "Color wheel": "Color wheel: Color selection"
+          }
         },
         {
           "range": [112, 255],
-          "name": "No function"
+          "name": "No function",
+          "switchChannels": {
+            "Color wheel": "Color wheel: Color selection"
+          }
         }
       ]
     },
@@ -267,6 +290,7 @@
       ]
     },
     "Color wheel basic": {
+      "name": "Color wheel",
       "type": "Multi-Color",
       "capabilities": [
         {
@@ -389,34 +413,56 @@
     },
     "Gobo wheel function": {
       "type": "Gobo",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 15],
-          "name": "Normal gobo change"
+          "name": "Normal gobo change",
+          "switchChannels": {
+            "Gobo wheel": "Gobo wheel: Gobo selection"
+          }
         },
         {
           "range": [16, 31],
-          "name": "Blackout at gobo change"
+          "name": "Blackout at gobo change",
+          "switchChannels": {
+            "Gobo wheel": "Gobo wheel: Gobo selection"
+          }
         },
         {
           "range": [32, 47],
-          "name": "Rotating gobo wheel forwards"
+          "name": "Rotating gobo wheel forwards",
+          "switchChannels": {
+            "Gobo wheel": "Gobo wheel speed"
+          }
         },
         {
           "range": [48, 63],
-          "name": "Rotating gobo wheel backwards"
+          "name": "Rotating gobo wheel backwards",
+          "switchChannels": {
+            "Gobo wheel": "Gobo wheel speed"
+          }
         },
         {
           "range": [64, 79],
-          "name": "Gobo change at every position"
+          "name": "Gobo change at every position",
+          "switchChannels": {
+            "Gobo wheel": "Gobo wheel position"
+          }
         },
         {
           "range": [80, 95],
-          "name": "Gobo shake"
+          "name": "Gobo shake",
+          "switchChannels": {
+            "Gobo wheel": "Gobo wheel: Gobo selection"
+          }
         },
         {
           "range": [96, 255],
-          "name": "No function"
+          "name": "No function",
+          "switchChannels": {
+            "Gobo wheel": "Gobo wheel: Gobo selection"
+          }
         }
       ]
     },
@@ -480,6 +526,7 @@
       ]
     },
     "Gobo wheel basic": {
+      "name": "Gobo wheel",
       "type": "Gobo",
       "capabilities": [
         {
@@ -598,38 +645,63 @@
     },
     "Gobo rotation function": {
       "type": "Gobo",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 15],
-          "name": "Gobo indexing"
+          "name": "Gobo indexing",
+          "switchChannels": {
+            "Gobo rotation": "Gobo indexing"
+          }
         },
         {
           "range": [16, 31],
-          "name": "Rotating gobo wheel forwards"
+          "name": "Rotating gobo wheel forwards",
+          "switchChannels": {
+            "Gobo rotation": "Gobo rotation speed"
+          }
         },
         {
           "range": [32, 47],
-          "name": "Rotating gobo wheel backwards"
+          "name": "Rotating gobo wheel backwards",
+          "switchChannels": {
+            "Gobo rotation": "Gobo rotation speed"
+          }
         },
         {
           "range": [48, 63],
-          "name": "Motion macro forwards"
+          "name": "Motion macro forwards",
+          "switchChannels": {
+            "Gobo rotation": "Motion macro speed"
+          }
         },
         {
           "range": [64, 79],
-          "name": "Motion macro forwards with blackout"
+          "name": "Motion macro forwards with blackout",
+          "switchChannels": {
+            "Gobo rotation": "Motion macro speed"
+          }
         },
         {
           "range": [80, 95],
-          "name": "Motion macro backwards"
+          "name": "Motion macro backwards",
+          "switchChannels": {
+            "Gobo rotation": "Motion macro speed"
+          }
         },
         {
           "range": [96, 111],
-          "name": "Motion macro backwards with blackout"
+          "name": "Motion macro backwards with blackout",
+          "switchChannels": {
+            "Gobo rotation": "Motion macro speed"
+          }
         },
         {
           "range": [112, 255],
-          "name": "No function"
+          "name": "No function",
+          "switchChannels": {
+            "Gobo rotation": "Gobo indexing"
+          }
         }
       ]
     },
@@ -665,6 +737,7 @@
       ]
     },
     "Gobo rotation basic": {
+      "name": "Gobo rotation",
       "type": "Gobo",
       "capabilities": [
         {
@@ -790,11 +863,11 @@
         "Shutter / Strobe",
         "Dimmer intensity",
         "Color wheel function",
-        "Color wheel: Color selection",
+        "Color wheel",
         "Gobo wheel function",
-        "Gobo wheel: Gobo selection",
+        "Gobo wheel",
         "Gobo rotation function",
-        "Gobo indexing",
+        "Gobo rotation",
         "Prism",
         "Focus",
         "Reset, display control"
@@ -814,11 +887,11 @@
         "Shutter / Strobe",
         "Dimmer intensity",
         "Color wheel function",
-        "Color wheel: Color selection",
+        "Color wheel",
         "Gobo wheel function",
-        "Gobo wheel: Gobo selection",
+        "Gobo wheel",
         "Gobo rotation function",
-        "Gobo indexing",
+        "Gobo rotation",
         "Prism",
         "Focus",
         "Reset, display control"
