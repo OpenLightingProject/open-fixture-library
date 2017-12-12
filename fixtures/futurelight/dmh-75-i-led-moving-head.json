@@ -36,10 +36,11 @@
     },
     "Pan / Tilt Speed": {
       "type": "Speed",
+      "invert": true,
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "Decreasing speed"
+          "name": "fast-slow"
         }
       ]
     },
