@@ -206,6 +206,10 @@ section {
   }
 }
 
+.channel-pixel {
+  display: flex;
+}
+
 details.channel > summary > .icon,
 div.channel > .icon {
   margin-right: 1.2ex;

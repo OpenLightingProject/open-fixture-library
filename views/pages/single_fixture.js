@@ -669,13 +669,15 @@ function handleMatrixChannel(channel) {
   }
 
   const [x, y, z] = fixture.matrix.pixelKeyPositions[channel.pixelKey];
-  let str = getSimpleLabelValue('channel-pixel', 'Pixel', channel.pixelKey);
-  str += `<section class="channel-pixel-position">
-    <span class="label">Pixel position</span>
-    <span class="value">
-      (${x}, ${y}, ${z})
-      <span class="hint">(X, Y, Z)</span>
-    </span>
+  return `<section class="channel-pixel">
+    ${getSimpleLabelValue('channel-pixel-key', 'Pixel', channel.pixelKey)}
+    <section class="channel-pixel-position">
+      <span class="label">Pixel position</span>
+      <span class="value">
+        (${x}, ${y}, ${z})
+        <span class="hint">(X, Y, Z)</span>
+      </span>
+    </section>
   </section>`;
 
   return str;
