@@ -1,5 +1,7 @@
 const svg = require('./svg.js');
 
+require('../../lib/load-env-file.js');
+
 module.exports = function(options) {
   const indentation = process.env.NODE_ENV === 'production' ? 0 : 2;
   const structuredData = options.structuredDataItems.map(

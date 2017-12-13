@@ -10,6 +10,8 @@ const FineChannel = require('../../lib/model/FineChannel.js');
 const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
 const MatrixChannel = require('../../lib/model/MatrixChannel.js');
 
+require('../../lib/load-env-file.js');
+
 /** @type {!Fixture} */
 let fixture;
 

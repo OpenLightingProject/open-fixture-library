@@ -1,13 +1,7 @@
-const fs = require('fs');
-const path = require('path');
-const env = require('node-env-file');
 const GitHubApi = require('github');
 
-// load any undefined environment variables and complain about missing ones
-const envFile = path.join(__dirname, '../../.env');
-if (fs.existsSync(envFile)) {
-  env(envFile);
-}
+require('../../lib/load-env-file.js');
+
 const requiredEnvVars = [
   'GITHUB_USER_TOKEN',
   'TRAVIS_REPO_SLUG',

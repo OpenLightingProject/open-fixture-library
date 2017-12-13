@@ -50,7 +50,7 @@ if (args.a) {
 }
 else {
   fixtures = args._.map(relativePath => {
-    const absolutePath = path.join(process.env.PWD, relativePath);
+    const absolutePath = path.join(process.cwd(), relativePath);
     return [
       path.basename(path.dirname(absolutePath)), // man key
       path.basename(absolutePath, path.extname(absolutePath)) // fix key

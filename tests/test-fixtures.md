@@ -1,32 +1,32 @@
-| | [*cameo* Hydrabeam 300 RGBW](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/cameo/hydrabeam-300-rgbw.json) | [*chauvet-dj* SlimPAR Pro H USB](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/chauvet-dj/slimpar-pro-h-usb.json) | [*coemar* ProSpot 250 LX](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/coemar/prospot-250-lx.json) | [*dts* XR1200 WASH](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/dts/xr1200-wash.json) | [*elation* Platinum HFX](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/elation/platinum-hfx.json) | [*eurolite* LED KLS-801](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/eurolite/led-kls-801.json) | [*generic* RGB Fader](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/generic/rgb-fader.json) | [*martin* MAC Viper Performance](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/martin/mac-viper-performance.json) | [*showtec* Horizon 8](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/showtec/horizon-8.json)
+| | [*cameo* Hydrabeam 300 RGBW](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/cameo/hydrabeam-300-rgbw.json) | [*chauvet-dj* SlimPAR Pro H USB](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/chauvet-dj/slimpar-pro-h-usb.json) | [*dts* XR1200 WASH](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/dts/xr1200-wash.json) | [*elation* Platinum Spot 15R Pro](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/elation/platinum-spot-15r-pro.json) | [*eurolite* LED KLS-801](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/eurolite/led-kls-801.json) | [*generic* RGBW Fader](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/generic/rgbw-fader.json) | [*jb-systems* Twin Effect Laser](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/jb-systems/twin-effect-laser.json) | [*martin* MAC Viper Performance](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/martin/mac-viper-performance.json) | [*showtec* Horizon 8](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/showtec/horizon-8.json)
 |-|-|-|-|-|-|-|-|-|-
-**Duplicate channel names** | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌
-**Fine channels (16bit)** [[1]](#user-content-footnote-1) | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅
-**Fine channels (>16bit)** [[2]](#user-content-footnote-2) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
-**Fine channel capabilities** [[3]](#user-content-footnote-3) | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌
+**Duplicate channel names** | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌
+**Fine channels (16bit)** [[1]](#user-content-footnote-1) | ✅ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ✅
+**Fine channels (>16bit)** [[2]](#user-content-footnote-2) | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
+**Fine channel capabilities** [[3]](#user-content-footnote-3) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌
 **Fine before coarse** [[4]](#user-content-footnote-4) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Fine not-adjacent after coarse** [[5]](#user-content-footnote-5) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Floating point dimensions** [[6]](#user-content-footnote-6) | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌
-**Floating point weight** | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌
+**Floating point dimensions** [[6]](#user-content-footnote-6) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌
+**Floating point weight** | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌
 **Floating point power** | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Floating point color temperature** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Floating point lumens** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Floating point lens degrees** | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Floating point pan/tilt maximum** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Uses pixelKeys** [[7]](#user-content-footnote-7) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅
-**Uses pixelCount** [[8]](#user-content-footnote-8) | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
+**Uses pixelCount** [[8]](#user-content-footnote-8) | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌
 **Uses pixelGroups** [[9]](#user-content-footnote-9) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅
 **Custom matrix layout** [[10]](#user-content-footnote-10) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Switching matrix channel** [[11]](#user-content-footnote-11) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Matrix channel used directly** [[12]](#user-content-footnote-12) | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
-**Multiple categories** | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅
+**Matrix channel used directly** [[12]](#user-content-footnote-12) | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌
+**Multiple categories** | ✅ | ❌ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅
 **Multiple Focuses** [[13]](#user-content-footnote-13) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**No physical** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
-**`null` channels** [[14]](#user-content-footnote-14) | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Physical override** [[15]](#user-content-footnote-15) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌
+**No physical** | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
+**`null` channels** [[14]](#user-content-footnote-14) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
+**Physical override** [[15]](#user-content-footnote-15) | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **RDM** [[16]](#user-content-footnote-16) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌
-**Reused channels** [[17]](#user-content-footnote-17) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅
-**Switching channels** [[18]](#user-content-footnote-18) | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ✅
+**Reused channels** [[17]](#user-content-footnote-17) | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅
+**Switching channels** [[18]](#user-content-footnote-18) | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅
 **Switches fine channels** [[19]](#user-content-footnote-19) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅
 
 **<a id="user-content-footnote-1">[1]</a>**: Whether a channel defines exactly one fine channel alias
