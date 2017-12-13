@@ -202,7 +202,7 @@ function checkMatrix(matrix) {
  */
 function checkPixelGroups(matrix) {
   for (const pixelGroupKey of matrix.pixelGroupKeys) {
-    const usedPixelKeys = new Set();
+    const usedMatrixChannels = new Set();
 
     if (pixelGroupKey in matrix.pixelKeyPositions) {
       result.errors.push(`pixelGroupKey '${pixelGroupKey}' is already used as pixelKey. Please choose a different name.`);
@@ -212,10 +212,10 @@ function checkPixelGroups(matrix) {
       if (!(pixelKey in matrix.pixelKeyPositions)) {
         result.errors.push(`pixelGroup '${pixelGroupKey}' references unknown pixelKey '${pixelKey}'.`);
       }
-      if (usedPixelKeys.has(pixelKey)) {
+      if (usedMatrixChannels.has(pixelKey)) {
         result.errors.push(`pixelGroup '${pixelGroupKey}' can't reference pixelKey '${pixelKey}' more than once.`);
       }
-      usedPixelKeys.add(pixelKey);
+      usedMatrixChannels.add(pixelKey);
     }
   }
 }
@@ -249,7 +249,7 @@ function checkTemplateChannel(templateChannel) {
 
   for (const key of templateChannel.allTemplateKeys) {
     checkTemplateVariables(key, ['$pixelKey']);
-    if (!(key in fixture.usedPixelKeys)) {
+    if (!(key in fixture.usedMatrixChannels)) {
       result.warnings.push(`Template channel '${key}' is never used.`);
     }
   }
@@ -271,6 +271,12 @@ function checkTemplateChannel(templateChannel) {
 function checkChannels(fixtureJson) {
   if (isNotEmpty(fixtureJson.availableChannels, 'availableChannels are empty. Add a channel or remove it.')) {
     for (const channel of fixture.availableChannels) {
+      module.exports.checkUniqueness(
+        definedChannelKeys,
+        channel.key,
+        result,
+        `Channel key '${channel.key}' is already defined (maybe in another letter case).`
+      );
       checkChannel(channel);
     }
   }
@@ -288,12 +294,6 @@ function checkChannels(fixtureJson) {
  */
 function checkChannel(channel) {
   checkTemplateVariables(channel.key);
-  module.exports.checkUniqueness(
-    definedChannelKeys,
-    channel.key,
-    result,
-    `Channel key '${channel.key}' is already defined in another letter case.`
-  );
 
   if (/\bfine\b|\d+(?:\s|-|_)*bit/i.test(channel.name)) {
     // channel name contains the word "fine" or "16bit" / "8 bit" / "32-bit" / "24_bit"
@@ -563,12 +563,12 @@ function checkChannelInsertBlock(complexData, mode) {
 function checkMatrixInsert(matrixInsert, mode) {
   // custom repeat list
   if (!['eachPixel', 'eachPixelGroup'].includes(matrixInsert.repeatFor)) {
-    const usedPixelKeys = new Set();
+    const usedMatrixChannels = new Set();
 
     for (const pixelKey of matrixInsert.repeatFor) {
       if (pixelKey in fixture.matrix.pixelKeyPositions) {
         module.exports.checkUniqueness(
-          usedPixelKeys,
+          usedMatrixChannels,
           pixelKey,
           `PixelKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
         );
@@ -576,7 +576,7 @@ function checkMatrixInsert(matrixInsert, mode) {
       else if (pixelKey in fixture.matrix.pixelGroups) {
         for (const singlePixelKey of fixture.matrix.pixelGroups[pixelKey]) {
           module.exports.checkUniqueness(
-            usedPixelKeys,
+            usedMatrixChannels,
             singlePixelKey,
             `PixelKey '${singlePixelKey}' in group '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
           );
@@ -604,6 +604,10 @@ function checkMatrixInsert(matrixInsert, mode) {
  */
 function checkModeChannelKeys(chIndex, mode, usedChannelKeysInMode) {
   const chKey = mode.channelKeys[chIndex];
+
+  if (chKey === null) {
+    return;
+  }
 
   let channel = mode.fixture.getChannelByKey(chKey);
   if (channel === null) {
