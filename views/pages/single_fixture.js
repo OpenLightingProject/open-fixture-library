@@ -679,8 +679,6 @@ function handleMatrixChannel(channel) {
       </span>
     </section>
   </section>`;
-
-  return str;
 }
 
 /**
