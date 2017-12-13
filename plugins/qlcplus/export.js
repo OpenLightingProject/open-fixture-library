@@ -143,8 +143,7 @@ function addMode(xml, mode) {
 
   addPhysical(xmlMode, mode.physical || new Physical({}));
 
-  mode.channelKeys.forEach((chKey, index) => {
-    const channel = mode.fixture.getChannelByKey(chKey);
+  mode.channels.forEach((channel, index) => {
     xmlMode.element({
       Channel: {
         '@Number': index,
