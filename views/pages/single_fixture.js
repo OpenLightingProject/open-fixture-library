@@ -450,6 +450,7 @@ function handleMode(mode) {
 
   return str;
 }
+
 /**
  * @param {!Channel} channel The channel to display details for.
  * @param {!Mode} mode The mode in which the channel is used.

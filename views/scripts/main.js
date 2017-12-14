@@ -13,6 +13,7 @@ window.addEventListener('load', function() {
   // (only has effect on mobile due to CSS styles)
   logo = document.querySelector('#home-logo');
   searchInput = document.querySelector('#header input');
+
   searchInput.addEventListener('focus', hideLogo, true);
   searchInput.addEventListener('blur', checkSearchInput, true);
   checkSearchInput();
