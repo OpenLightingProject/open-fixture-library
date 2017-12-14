@@ -17,17 +17,18 @@
 **Uses pixelCount** [[8]](#user-content-footnote-8) | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌
 **Uses pixelGroups** [[9]](#user-content-footnote-9) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅
 **Custom matrix layout** [[10]](#user-content-footnote-10) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Switching matrix channel** [[11]](#user-content-footnote-11) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Matrix channel used directly** [[12]](#user-content-footnote-12) | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌
+**Fine matrix channel** [[11]](#user-content-footnote-11) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Switching matrix channel** [[12]](#user-content-footnote-12) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Matrix channel used directly** [[13]](#user-content-footnote-13) | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌
 **Multiple categories** | ✅ | ❌ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅
-**Multiple Focuses** [[13]](#user-content-footnote-13) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Multiple Focuses** [[14]](#user-content-footnote-14) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **No physical** | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
-**`null` channels** [[14]](#user-content-footnote-14) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
-**Physical override** [[15]](#user-content-footnote-15) | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**RDM** [[16]](#user-content-footnote-16) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌
-**Reused channels** [[17]](#user-content-footnote-17) | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅
-**Switching channels** [[18]](#user-content-footnote-18) | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅
-**Switches fine channels** [[19]](#user-content-footnote-19) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅
+**`null` channels** [[15]](#user-content-footnote-15) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
+**Physical override** [[16]](#user-content-footnote-16) | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**RDM** [[17]](#user-content-footnote-17) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌
+**Reused channels** [[18]](#user-content-footnote-18) | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅
+**Switching channels** [[19]](#user-content-footnote-19) | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅
+**Switches fine channels** [[20]](#user-content-footnote-20) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅
 
 **<a id="user-content-footnote-1">[1]</a>**: Whether a channel defines exactly one fine channel alias
 
@@ -49,20 +50,22 @@
 
 **<a id="user-content-footnote-10">[10]</a>**: The fixture has a matrix and it uses null pixelKeys – it is no line, rectangle or cube.
 
-**<a id="user-content-footnote-11">[11]</a>**: The fixture repeats switching channels for matrix pixels.
+**<a id="user-content-footnote-11">[11]</a>**: The fixture repeats fine channels for matrix pixels.
 
-**<a id="user-content-footnote-12">[12]</a>**: If a mode contains a resolved matrix channel key in its raw channel list or if a non-matrix switching channel switches to a matrix channel.
+**<a id="user-content-footnote-12">[12]</a>**: The fixture repeats switching channels for matrix pixels.
 
-**<a id="user-content-footnote-13">[13]</a>**: True if multiple Pan / Tilt channels are used in some mode.
+**<a id="user-content-footnote-13">[13]</a>**: If a mode contains a resolved matrix channel key in its raw channel list or if a non-matrix switching channel switches to a matrix channel.
 
-**<a id="user-content-footnote-14">[14]</a>**: Channel list of a mode contains null, so it has an unused channel
+**<a id="user-content-footnote-14">[14]</a>**: True if multiple Pan / Tilt channels are used in some mode.
 
-**<a id="user-content-footnote-15">[15]</a>**: Whether at least one mode uses the 'physical' property
+**<a id="user-content-footnote-15">[15]</a>**: Channel list of a mode contains null, so it has an unused channel
 
-**<a id="user-content-footnote-16">[16]</a>**: Whether an RDM model ID is set
+**<a id="user-content-footnote-16">[16]</a>**: Whether at least one mode uses the 'physical' property
 
-**<a id="user-content-footnote-17">[17]</a>**: Whether there is at least one channel that is used in different modes
+**<a id="user-content-footnote-17">[17]</a>**: Whether an RDM model ID is set
 
-**<a id="user-content-footnote-18">[18]</a>**: Whether at least one channel defines switching channel aliases
+**<a id="user-content-footnote-18">[18]</a>**: Whether there is at least one channel that is used in different modes
 
-**<a id="user-content-footnote-19">[19]</a>**: Whether at least one switching channel switches fine channels
+**<a id="user-content-footnote-19">[19]</a>**: Whether at least one channel defines switching channel aliases
+
+**<a id="user-content-footnote-20">[20]</a>**: Whether at least one switching channel switches fine channels
