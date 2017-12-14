@@ -249,12 +249,16 @@ function checkTemplateChannel(templateChannel) {
 
   for (const key of templateChannel.allTemplateKeys) {
     checkTemplateVariables(key, ['$pixelKey']);
-    if (!(key in fixture.matrixChannelReferences)) {
+
+    const templateChannelUsed = fixture.matrixChannelReferences.some(
+      ref => ref.templateKey === key
+    );
+    if (!templateChannelUsed) {
       result.warnings.push(`Template channel '${key}' is never used.`);
     }
   }
 
-  for (const key of templateChannel.matrixChannelKeys.keys()) {
+  for (const key of templateChannel.possibleResolvedChannelKeys.keys()) {
     module.exports.checkUniqueness(
       possibleMatrixChKeys,
       key,
@@ -360,7 +364,7 @@ function checkChannel(channel) {
 
 /**
  * Checks whether the specified string contains only allowed and all required variables
- * and pushes an error on wrong variable usage.
+ * and pushes an error on wrong variable usage. Note that the default of both parameters is an empty array.
  * @param {!string} str The string to be checked.
  * @param {!Array.<string>} [requiredVariables=[]] Variables that must be included in the string. Specify them with leading dollar sign ($var).
  * @param {!Array.<string>} [allowedVariables=[]] Variables that may be included in the string; requiredVariables are automatically included. Specify them with leading dollar sign ($var).
