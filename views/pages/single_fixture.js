@@ -379,7 +379,7 @@ function handleFixtureMatrix() {
     pixelSizing += `margin-bottom: ${fixture.physical.matrixPixelsSpacing[1] * scale}mm; `;
   }
 
-  for (const zLevel of fixture.matrix.pixelKeys) {
+  for (const zLevel of fixture.matrix.pixelKeyStructure) {
     str += '<div class="z-level">';
     for (const row of zLevel) {
       str += '<div class="row">';

@@ -195,7 +195,7 @@ function addPhysical(xmlMode, physical) {
 }
 
 function addHeads(xmlMode, mode) {
-  const pixelKeys = Object.keys(mode.fixture.matrix.pixelKeyPositions).concat(mode.fixture.matrix.pixelGroupKeys);
+  const pixelKeys = mode.fixture.matrix.pixelKeys.concat(mode.fixture.matrix.pixelGroupKeys);
   for (const pixelKey of pixelKeys) {
     const channels = mode.channels.filter(channel => {
       if (channel instanceof MatrixChannel) {

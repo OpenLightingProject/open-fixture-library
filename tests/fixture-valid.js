@@ -184,7 +184,7 @@ function checkMatrix(matrix) {
     return;
   }
 
-  const variesInAxisLength = matrix.pixelKeys.some(
+  const variesInAxisLength = matrix.pixelKeyStructure.some(
     rows => rows.length !== matrix.pixelCountY || rows.some(
       columns => columns.length !== matrix.pixelCountX
     )
@@ -204,12 +204,12 @@ function checkPixelGroups(matrix) {
   for (const pixelGroupKey of matrix.pixelGroupKeys) {
     const usedMatrixChannels = new Set();
 
-    if (pixelGroupKey in matrix.pixelKeyPositions) {
+    if (matrix.pixelKeys.includes(pixelGroupKey)) {
       result.errors.push(`pixelGroupKey '${pixelGroupKey}' is already used as pixelKey. Please choose a different name.`);
     }
 
     for (const pixelKey of matrix.pixelGroups[pixelGroupKey]) {
-      if (!(pixelKey in matrix.pixelKeyPositions)) {
+      if (!matrix.pixelKeys.includes(pixelKey)) {
         result.errors.push(`pixelGroup '${pixelGroupKey}' references unknown pixelKey '${pixelKey}'.`);
       }
       if (usedMatrixChannels.has(pixelKey)) {
@@ -249,7 +249,7 @@ function checkTemplateChannel(templateChannel) {
 
   for (const key of templateChannel.allTemplateKeys) {
     checkTemplateVariables(key, ['$pixelKey']);
-    if (!(key in fixture.usedMatrixChannels)) {
+    if (!(key in fixture.matrixChannelReferences)) {
       result.warnings.push(`Template channel '${key}' is never used.`);
     }
   }
@@ -566,7 +566,7 @@ function checkMatrixInsert(matrixInsert, mode) {
     const usedMatrixChannels = new Set();
 
     for (const pixelKey of matrixInsert.repeatFor) {
-      if (pixelKey in fixture.matrix.pixelKeyPositions) {
+      if (fixture.matrix.pixelKeys.includes(pixelKey)) {
         module.exports.checkUniqueness(
           usedMatrixChannels,
           pixelKey,
