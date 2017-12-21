@@ -518,7 +518,7 @@ function checkMode(mode) {
     const intendedLength = parseInt(RegExp.$1);
 
     if (mode.channels.length !== intendedLength) {
-      result.warnings.push(`Mode '${mode.name}' should probably have ${RegExp.$1} channels but does only have ${mode.channels.length}.`);
+      result.warnings.push(`Mode '${mode.name}' should probably have ${RegExp.$1} channels but actually has ${mode.channels.length}.`);
     }
     if (mode.shortName !== `${intendedLength}ch`) {
       result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch' instead of '${mode.shortName}'.`);
@@ -565,37 +565,54 @@ function checkChannelInsertBlock(complexData, mode) {
  * @param {!Mode} mode The mode in which this insert block is used.
  */
 function checkMatrixInsert(matrixInsert, mode) {
-  // custom repeat list
-  if (!['eachPixel', 'eachPixelGroup'].includes(matrixInsert.repeatFor)) {
-    const usedMatrixChannels = new Set();
-
-    for (const pixelKey of matrixInsert.repeatFor) {
-      if (fixture.matrix.pixelKeys.includes(pixelKey)) {
-        module.exports.checkUniqueness(
-          usedMatrixChannels,
-          pixelKey,
-          `PixelKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
-        );
-      }
-      else if (pixelKey in fixture.matrix.pixelGroups) {
-        for (const singlePixelKey of fixture.matrix.pixelGroups[pixelKey]) {
-          module.exports.checkUniqueness(
-            usedMatrixChannels,
-            singlePixelKey,
-            `PixelKey '${singlePixelKey}' in group '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
-          );
-        }
-      }
-      else {
-        result.errors.push(`Unknown pixelKey or pixelGroupKey '${pixelKey}'`);
-      }
-    }
-  }
+  checkMatrixInsertRepeatFor(matrixInsert.repeatFor, mode);
 
   for (const templateKey of matrixInsert.templateChannels) {
     const templateChannelExists = fixture.templateChannels.some(ch => ch.allTemplateKeys.includes(templateKey));
     if (!templateChannelExists) {
       result.errors.push(`Template channel '${templateKey}' doesn't exist.`);
+    }
+  }
+}
+
+/**
+ * Checks the used pixel (group) keys for existance and duplicates. Also respects pixel keys included in a pixel group.
+ * @param {!string|!Array.<string>} repeatFor A matrix insert's repeatFor property.
+ * @param {!Mode} mode The mode in which the insert block is used.
+ */
+function checkMatrixInsertRepeatFor(repeatFor, mode) {
+  // no custom list
+  if (repeatFor === 'eachPixel' || repeatFor === 'eachPixelGroup') {
+    return;
+  }
+
+  const usedPixelKeys = new Set();
+
+  for (const pixelKey of repeatFor) {
+    if (fixture.matrix.pixelKeys.includes(pixelKey)) {
+      module.exports.checkUniqueness(
+        usedPixelKeys,
+        pixelKey,
+        `PixelKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
+      );
+    }
+    else if (pixelKey in fixture.matrix.pixelGroups) {
+      module.exports.checkUniqueness(
+        usedPixelKeys,
+        pixelKey,
+        `PixelGroupKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
+      );
+
+      for (const singlePixelKey of fixture.matrix.pixelGroups[pixelKey]) {
+        module.exports.checkUniqueness(
+          usedPixelKeys,
+          singlePixelKey,
+          `PixelKey '${singlePixelKey}' in group '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
+        );
+      }
+    }
+    else {
+      result.errors.push(`Unknown pixelKey or pixelGroupKey '${pixelKey}'`);
     }
   }
 }
@@ -613,6 +630,8 @@ function checkModeChannelKeys(chIndex, mode, usedChannelKeysInMode) {
     return;
   }
 
+  usedChannelKeys.add(chKey.toLowerCase());
+
   let channel = mode.fixture.getChannelByKey(chKey);
   if (channel === null) {
     result.errors.push(`Channel '${chKey}' is referenced from mode '${mode.shortName}' but is not defined.`);
@@ -622,9 +641,6 @@ function checkModeChannelKeys(chIndex, mode, usedChannelKeysInMode) {
   if (channel instanceof MatrixChannel) {
     channel = channel.wrappedChannel;
   }
-
-  usedChannelKeys.add(channel.key.toLowerCase());
-  checkChannelUniquenessInMode(chKey, mode, usedChannelKeysInMode);
 
   if (channel instanceof SwitchingChannel) {
     checkSwitchingChannelReference(channel, mode, usedChannelKeysInMode);
@@ -733,16 +749,6 @@ function checkCoarserChannelsInMode(channel, mode) {
   if (notInMode.length > 0) {
     result.errors.push(`Mode '${mode.shortName}' contains the fine channel '${channel.key}' but is missing its coarser channels ${notInMode}.`);
   }
-}
-
-/**
- * A mode must not use the same channel (key) more than once.
- * @param {!string} channelKey The channel to test if it was already used in the mode.
- * @param {!Mode} mode The respective Mode object.
- * @param {!Set<string>} usedChannelKeysInMode Which channels are already used in this mode. Also counts switched to channels.
- */
-function checkChannelUniquenessInMode(channelKey, mode, usedChannelKeysInMode) {
-  module.exports.checkUniqueness(usedChannelKeysInMode, channelKey, result, `Channel '${channelKey}' is used more than once in ${mode.shortName}`);
 }
 
 function checkPanTiltMaxInPhysical(channel, mode) {
