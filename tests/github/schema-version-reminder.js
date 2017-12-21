@@ -19,7 +19,7 @@ pullRequest.checkEnv()
     if (changedComponents.added.schema ||
       changedComponents.modified.schema ||
       changedComponents.removed.schema) {
-      lines.push(`With every change on the schema, its version should be incremented and tagged. See the [Fixture README](https://github.com/FloEdelmann/open-fixture-library/blob/${process.env.TRAVIS_PULL_REQUEST_BRANCH}/fixtures/README.md#schema) for further information.`);
+      lines.push(`With every change on the schema, its version should be incremented and tagged. See the [Fixture README](https://github.com/FloEdelmann/open-fixture-library/blob/${process.env.TRAVIS_PULL_REQUEST_BRANCH}/docs/fixture-format.md#schema) for further information.`);
     }
 
     return pullRequest.updateComment({
