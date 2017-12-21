@@ -363,10 +363,34 @@ function handlePhysicalData(physical) {
 }
 
 /**
- * Creates a visual representation of the fixture's matrix.
- * @returns {!string} HTML code for the displayed matrix.
+ * @returns {!string} HTML code for the fixture's matrix.
  */
 function handleFixtureMatrix() {
+  let str = handleMatrixStructure();
+
+  if (fixture.matrix.pixelGroupKeys.length > 0) {
+    str += '<section class="matrix-pixelGroups">';
+    str += '<h4>Pixel groups</h4>';
+    str += '<span class="hint">Hover over the pixel groups to highlight the corresponding pixels.</span>';
+
+    str += fixture.matrix.pixelGroupKeys.map(key =>
+      `<section class="matrix-pixelGroup" data-pixelGroup="${key}">
+        <span class="label">${key}</span>
+        <span class="value">${fixture.matrix.pixelGroups[key].join(', ')}</span>
+      </section>`
+    ).join('');
+
+    str += '</section>';
+  }
+
+  return str;
+}
+
+/**
+ * Creates a visual representation of the fixture's matrix structure.
+ * @returns {!string} HTML code for the displayed matrix grid.
+ */
+function handleMatrixStructure() {
   let str = '';
 
   let pixelSizing = '';
@@ -392,21 +416,6 @@ function handleFixtureMatrix() {
       str += '</div>';
     }
     str += '</div>';
-  }
-
-  if (fixture.matrix.pixelGroupKeys.length > 0) {
-    str += '<section class="matrix-pixelGroups">';
-    str += '<h4>Pixel groups</h4>';
-    str += '<span class="hint">Hover over the pixel groups to highlight the corresponding pixels.</span>';
-
-    str += fixture.matrix.pixelGroupKeys.map(key =>
-      `<section class="matrix-pixelGroup" data-pixelGroup="${key}">
-        <span class="label">${key}</span>
-        <span class="value">${fixture.matrix.pixelGroups[key].join(', ')}</span>
-      </section>`
-    ).join('');
-
-    str += '</section>';
   }
 
   return str;
