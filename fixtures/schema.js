@@ -49,7 +49,7 @@ const Physical = schema({
   '?dimensions': DimensionsXYZ, // width, height, depth (in mm)
   '?weight': Number.above(0), // in kg
   '?power': Number.above(0), // in W
-  '?DMXconnector': ['3-pin', '5-pin', '3-pin (swapped +/-)', '3-pin and 5-pin', '3.5mm stereo jack'], // additions are welcome
+  '?DMXconnector': ['3-pin', '5-pin', '3-pin (swapped +/-)', '3-pin and 5-pin', '3-pin XLR IP65', '3.5mm stereo jack'], // additions are welcome
   '?bulb': {
     '?type': NonEmptyString, // e.g. 'LED'
     '?colorTemperature': Number.above(0), // in K
