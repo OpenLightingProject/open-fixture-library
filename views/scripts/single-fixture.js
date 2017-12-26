@@ -1,18 +1,17 @@
 'use strict';
 
-window.addEventListener('load', function() {
-  var pixelGroups = document.querySelectorAll('.matrix-pixelGroup');
-  if (pixelGroups.length > 0) {
-    for (var i = 0; i < pixelGroups.length; i++) {
-      pixelGroups[i].addEventListener('mouseover', function(e) {
-        togglePixels(this, true);
-      }, true);
+require('./polyfills.js');
 
-      pixelGroups[i].addEventListener('mouseout', function(e) {
-        togglePixels(this, false);
-      }, true);
-    }
-  }
+window.addEventListener('load', function() {
+  document.querySelectorAll('.matrix-pixelGroup').forEach(function(pixelGroup) {
+    pixelGroup.addEventListener('mouseover', function(e) {
+      togglePixels(this, true);
+    }, true);
+
+    pixelGroup.addEventListener('mouseout', function(e) {
+      togglePixels(this, false);
+    }, true);
+  });
 });
 
 /**
@@ -24,12 +23,12 @@ function togglePixels(pixelGroup, highlight) {
   var pixelGroupKey = pixelGroup.attributes['data-pixelGroup'].value;
   var pixels = document.querySelectorAll('.pixel[data-pixelGroups~="' + pixelGroupKey + '"]');
 
-  for (var j = 0; j < pixels.length; j++) {
+  pixels.forEach(function(pixel) {
     if (highlight) {
-      pixels[j].classList.add('highlight');
+      pixel.classList.add('highlight');
     }
     else {
-      pixels[j].classList.remove('highlight');
+      pixel.classList.remove('highlight');
     }
-  }
+  });
 }

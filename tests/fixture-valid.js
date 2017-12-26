@@ -299,13 +299,13 @@ function checkChannels(fixtureJson) {
  * @param {!Channel} channel The channel to test.
  */
 function checkChannel(channel) {
-  checkTemplateVariables(channel.key);
+  checkTemplateVariables(channel.key, []);
 
   if (/\bfine\b|\d+(?:\s|-|_)*bit/i.test(channel.name)) {
     // channel name contains the word "fine" or "16bit" / "8 bit" / "32-bit" / "24_bit"
     result.errors.push(`Channel '${channel.key}' should rather be a fine channel alias of its corresponding coarse channel.`);
   }
-  checkTemplateVariables(channel.name);
+  checkTemplateVariables(channel.name, []);
 
   // Nothing channels
   if (channel.type === 'Nothing') {
@@ -320,7 +320,7 @@ function checkChannel(channel) {
 
   // Fine channels
   for (const alias of channel.fineChannelAliases) {
-    checkTemplateVariables(alias);
+    checkTemplateVariables(alias, []);
     module.exports.checkUniqueness(
       definedChannelKeys,
       alias,
@@ -334,7 +334,7 @@ function checkChannel(channel) {
 
   // Switching channels
   for (const alias of channel.switchingChannelAliases) {
-    checkTemplateVariables(alias);
+    checkTemplateVariables(alias, []);
     module.exports.checkUniqueness(
       definedChannelKeys,
       alias,
@@ -365,24 +365,20 @@ function checkChannel(channel) {
 }
 
 /**
- * Checks whether the specified string contains only allowed and all required variables
- * and pushes an error on wrong variable usage. Note that the default of both parameters is an empty array.
+ * Checks whether the specified string contains all allowed and no disallowed variables and pushes an error on wrong variable usage.
  * @param {!string} str The string to be checked.
- * @param {!Array.<string>} [requiredVariables=[]] Variables that must be included in the string. Specify them with leading dollar sign ($var).
- * @param {!Array.<string>} [allowedVariables=[]] Variables that may be included in the string; requiredVariables are automatically included. Specify them with leading dollar sign ($var).
+ * @param {!Array.<string>} allowedVariables Variables that must be included in the string; all other variables are forbidden. Specify them with leading dollar sign ($var).
  */
-function checkTemplateVariables(str, requiredVariables = [], allowedVariables = []) {
-  allowedVariables = allowedVariables.concat(requiredVariables);
-
-  const variables = str.match(/\$\w+/g) || [];
-  for (const variable of variables) {
-    if (!allowedVariables.includes(variable)) {
-      result.errors.push(`Variable ${variable} not allowed in '${str}'`);
+function checkTemplateVariables(str, allowedVariables) {
+  const usedVariables = str.match(/\$\w+/g) || [];
+  for (const usedVariable of usedVariables) {
+    if (!allowedVariables.includes(usedVariable)) {
+      result.errors.push(`Variable ${usedVariable} not allowed in '${str}'`);
     }
   }
-  for (const variable of requiredVariables) {
-    if (!variables.includes(variable)) {
-      result.errors.push(`Variable ${variable} missing in '${str}'`);
+  for (const allowedVariable of allowedVariables) {
+    if (!usedVariables.includes(allowedVariable)) {
+      result.errors.push(`Variable ${allowedVariable} missing in '${str}'`);
     }
   }
 }
@@ -544,32 +540,29 @@ function checkMode(mode) {
 
 /**
  * Checks if the given complex channel insert block is valid.
- * @param {!object} complexData The raw JSON data of the insert block.
+ * @param {!object} insertBlock The raw JSON data of the insert block.
  * @param {!Mode} mode The mode in which this insert block is used.
  */
-function checkChannelInsertBlock(complexData, mode) {
-  switch (complexData.insert) {
-    case 'matrixChannels':
-      checkMatrixInsert(complexData, mode);
-      return;
-
-    // we need no default as other values are prohibited by the schema
+function checkChannelInsertBlock(insertBlock, mode) {
+  if (insertBlock.insert === 'matrixChannels') {
+    checkMatrixInsertBlock(insertBlock, mode);
   }
+  // open for future extensions (invalid values are prohibited by the schema)
 }
 
 /**
  * Checks the given matrix channel insert.
- * @param {!object} matrixInsert The matrix channel reference specified in the mode's json channel list.
- * @param {'matrixChannels'} matrixInsert.insert Indicates that this is a matrix insert.
- * @param {'eachPixel'|'eachPixelGroup'|string[]} matrixInsert.repeatFor The pixelKeys or pixelGroupKeys for which the specified channels should be repeated.
- * @param {'perPixel'|'perChannel'} matrixInsert.channelOrder Order the channels like RGB1/RGB2/RGB3 or R123/G123/B123.
- * @param {!Array.<string, null>} matrixInsert.templateChannels The template channel keys (and aliases) or null channels to be repeated.
+ * @param {!object} matrixInsertBlock The matrix channel reference specified in the mode's json channel list.
+ * @param {'matrixChannels'} matrixInsertBlock.insert Indicates that this is a matrix insert.
+ * @param {'eachPixel'|'eachPixelGroup'|string[]} matrixInsertBlock.repeatFor The pixelKeys or pixelGroupKeys for which the specified channels should be repeated.
+ * @param {'perPixel'|'perChannel'} matrixInsertBlock.channelOrder Order the channels like RGB1/RGB2/RGB3 or R123/G123/B123.
+ * @param {!Array.<string, null>} matrixInsertBlock.templateChannels The template channel keys (and aliases) or null channels to be repeated.
  * @param {!Mode} mode The mode in which this insert block is used.
  */
-function checkMatrixInsert(matrixInsert, mode) {
-  checkMatrixInsertRepeatFor(matrixInsert.repeatFor, mode);
+function checkMatrixInsertBlock(matrixInsertBlock, mode) {
+  checkMatrixInsertBlockRepeatFor(matrixInsertBlock.repeatFor, mode);
 
-  for (const templateKey of matrixInsert.templateChannels) {
+  for (const templateKey of matrixInsertBlock.templateChannels) {
     const templateChannelExists = fixture.templateChannels.some(ch => ch.allTemplateKeys.includes(templateKey));
     if (!templateChannelExists) {
       result.errors.push(`Template channel '${templateKey}' doesn't exist.`);
@@ -582,9 +575,9 @@ function checkMatrixInsert(matrixInsert, mode) {
  * @param {!string|!Array.<string>} repeatFor A matrix insert's repeatFor property.
  * @param {!Mode} mode The mode in which the insert block is used.
  */
-function checkMatrixInsertRepeatFor(repeatFor, mode) {
-  // no custom list
+function checkMatrixInsertBlockRepeatFor(repeatFor, mode) {
   if (repeatFor === 'eachPixel' || repeatFor === 'eachPixelGroup') {
+    // no custom pixel key list
     return;
   }
 
