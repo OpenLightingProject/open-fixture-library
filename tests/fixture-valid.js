@@ -275,6 +275,8 @@ function checkTemplateChannel(templateChannel) {
 function checkChannels(fixtureJson) {
   if (isNotEmpty(fixtureJson.availableChannels, 'availableChannels are empty. Add a channel or remove it.')) {
     for (const channel of fixture.availableChannels) {
+      // forbid coexistance of channels 'Red' and 'red'
+      // for template channels, this is checked by possibleMatrixChKeys
       module.exports.checkUniqueness(
         definedChannelKeys,
         channel.key,
