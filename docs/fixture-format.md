@@ -5,6 +5,20 @@ This document gives a high-level overview of the concepts used in the JSON forma
 *Note:* The fixture format is not intended to be used directly by other software, as it may introduce breaking, not-backwards-compatible changes at any time. Instead, write a plugin to transform the data into a more stable format for your application. Internally in *OFL*, working with the [fixture model](fixture-model.md) is preferred, as it eases access to the fixture data.
 
 
+#### Table of contents
+- [Schema](#schema)
+- [Goals](#goals)
+- [Directory structure](#directory-structure)
+- [Fixture](#fixture)
+  - [Modes](#modes)
+  - [Channels](#channels)
+    - [Capabilities](#capabilities)
+    - [Fine channels](#fine-channels)
+    - [Switching channels](#switching-channels)
+  - [Matrices](#matrices)
+  - [RDM (Remote Device Management) data](#rdm-remote-device-management-data)
+
+
 ## Schema
 
 The [JS Schema](https://github.com/molnarg/js-schema) can be found in the [`schema.js`](../fixtures/schema.js) file. It is a declarative way to describe allowed properties and values. The [`fixtures-valid.js` test](../tests/fixtures-valid.js) automatically checks the fixtures against this schema and additionally tests things like the correct use of channel keys etc. programmatically.
@@ -87,6 +101,17 @@ E.g. in a given mode, the first channel could be used to select auto-programs an
 To define switching channels, add a `switchChannels` object to all capabilities of the dependency channel (the "Auto-Programs" channel in the example above). This object defines which *switching channel alias* is set to which *available channel key* if this capability is active. The switching channel alias is then used in the mode just like a regular channel. Note that a channel which defines switching channels needs an explicit `defaultValue` to make sure that the switching channel default is also well-defined.
 
 See the [Futurelight PRO Slim PAR-7 HCL fixture](../fixtures/futurelight/pro-slim-par-7-hcl.json) for a simple application example.
+
+
+### Matrices
+
+Some fixtures have multiple heads: A horizontal bar of LEDs, a pixel head with a grid of lamps, a fixture consisting of inner and outer rings of LEDs that can be controlled separately, etc. See the [Eurolite LED KLS 801](../fixtures/eurolite/led-kls-801.json) and the "Matrix" category for example fixtures.
+
+The information how these heads (later also named *pixels*) are arranged is stored in the fixture's `matrix` object: either by using the x × y × z syntax from `pixelCount` or by naming each individual pixel in `pixelKeys`, which also allows non-cubic frames by leaving pixels out (setting the pixel key to `null`). Pixels can also be grouped (e.g. a pixel group "1/2" could consist of the pixels "1/4" and "2/4").
+
+To reuse similar channels for each pixel or pixel group (like "Red&nbsp;1", Red&nbsp;2", ...), add template channels: They are specified very similar to normal available channels, except that each template channel key / alias / name must contain the `$pixelKey` variable. Then, either use the resolved channel keys directly in a mode's channel list, or use a matrix channel insert block that repeats a list of template channels for a list of pixels. Specific matrix channels can be overriden by available channels (e. g. if "Speed&nbsp;1" has different capabilities than "Speed&nbsp;2" until "Speed&nbsp;25").
+
+Also fine and switching channels can be repeated using template channels. See the [cameo Hydrabeam 300 RGBW](../fixtures/cameo/hydrambeam-300-rgbw.json) for an example.
 
 
 ### RDM (Remote Device Management) data
