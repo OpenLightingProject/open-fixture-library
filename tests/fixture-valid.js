@@ -638,26 +638,25 @@ function checkModeChannelKeys(chIndex, mode, usedChannelKeysInMode) {
     return;
   }
 
+  // if earliest occurence (including switching channels) is not this one
+  if (mode.getChannelIndex(channel, 'all') < chIndex) {
+    result.errors.push(`Channel '${channel.key}' is referenced more than once from mode '${mode.shortName}' (maybe through switching channels).`);
+  }
+
   if (channel instanceof MatrixChannel) {
     channel = channel.wrappedChannel;
   }
 
   if (channel instanceof SwitchingChannel) {
     checkSwitchingChannelReference(channel, mode, usedChannelKeysInMode);
-    return;
   }
-
-  // if earliest occurence (including switching channels) is not this one
-  if (mode.getChannelIndex(channel, 'all') < chIndex) {
-    result.errors.push(`Channel '${channel.key}' is referenced more than once from mode '${mode.shortName}'.`);
-  }
-
-  if (channel instanceof FineChannel) {
+  else if (channel instanceof FineChannel) {
     checkCoarserChannelsInMode(channel, mode);
-    return;
   }
-
-  checkPanTiltMaxInPhysical(channel, mode);
+  else {
+    // that's already checked for switched channels and we don't need to check it for fine channels
+    checkPanTiltMaxInPhysical(channel, mode);
+  }
 }
 
 /**
