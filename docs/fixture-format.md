@@ -105,7 +105,7 @@ See the [Futurelight PRO Slim PAR-7 HCL fixture](../fixtures/futurelight/pro-sli
 
 ### Matrices
 
-Some fixtures have multiple heads: A horizontal bar of LEDs, a pixel head with a grid of lamps, a fixture consisting of inner and outer rings of LEDs that can be controlled separately, etc. See the [Eurolite LED KLS 801](../fixtures/eurolite/led-kls-801.json) and the "Matrix" category for example fixtures.
+Some fixtures have multiple heads: A horizontal bar of LEDs, a pixel lamp with a grid of lights, a fixture consisting of inner and outer rings of LEDs that can be controlled separately, etc. See the [Eurolite LED KLS 801](../fixtures/eurolite/led-kls-801.json) and the "Matrix" category for example fixtures.
 
 The information how these heads (later also named *pixels*) are arranged is stored in the fixture's `matrix` object: either by using the x × y × z syntax from `pixelCount` or by naming each individual pixel in `pixelKeys`, which also allows non-cubic frames by leaving pixels out (setting the pixel key to `null`). Pixels can also be grouped (e.g. a pixel group "1/2" could consist of the pixels "1/4" and "2/4").
 
