@@ -16,6 +16,8 @@ This document gives a high-level overview of the concepts used in the JSON forma
     - [Fine channels](#fine-channels)
     - [Switching channels](#switching-channels)
   - [Matrices](#matrices)
+    - [Matrix structure](#matrix-structure)
+    - [Template channels](#template-channels)
   - [RDM (Remote Device Management) data](#rdm-remote-device-management-data)
 
 
@@ -107,11 +109,75 @@ See the [Futurelight PRO Slim PAR-7 HCL fixture](../fixtures/futurelight/pro-sli
 
 Some fixtures have multiple light beams: A horizontal bar of LEDs, a pixel head with a grid of lamps, a fixture consisting of inner and outer rings of LEDs that can be controlled separately, etc. See the [Eurolite LED KLS 801](../fixtures/eurolite/led-kls-801.json) and the "Matrix" category for example fixtures.
 
-The information how these heads (later also named *pixels*) are arranged is stored in the fixture's `matrix` object: either by using the x × y × z syntax from `pixelCount` or by naming each individual pixel in `pixelKeys`, which also allows non-cubic frames by leaving pixels out (setting the pixel key to `null`). Pixels can also be grouped (e.g. a pixel group "1/2" could consist of the pixels "1/4" and "2/4").
+#### Matrix structure
 
-To reuse similar channels for each pixel or pixel group (like "Red&nbsp;1", Red&nbsp;2", ...), add template channels: They are specified very similar to normal available channels, except that each template channel key / alias / name must contain the `$pixelKey` variable. Then, either use the resolved channel keys directly in a mode's channel list, or use a matrix channel insert block that repeats a list of template channels for a list of pixels. Specific matrix channels can be overriden by available channels (e. g. if "Speed&nbsp;1" has different capabilities than "Speed&nbsp;2" until "Speed&nbsp;25").
+The information how these pixels are arranged is stored in the fixture's `matrix` object: Either by using the x × y × z syntax from `pixelCount` (e.g. [5, 5, 1] for a 5×5 matrix) or by naming each individual pixel in `pixelKeys`, e.g.:
 
-Also fine and switching channels can be repeated using template channels. See the [cameo Hydrabeam 300 RGBW](../fixtures/cameo/hydrambeam-300-rgbw.json) for an example.
+```js
+"pixelKeys": [
+  [
+    [ null,  "Top",     null  ],
+    ["Left", "Center", "Right"],
+    [ null,  "Bottom",  null  ]
+  ]
+]
+```
+
+`null` refers to a "hole", i. e. there's no light beam, which allows for non-cubic frames. The above example represents 5 heads arranged like a "+".
+
+Pixels can also be grouped if a fixture allows control in different fine grades, like fourths or halfs of a light bar:
+
+```js
+"pixelKeys": [
+  [
+    ["1/4", "2/4", "3/4", "4/4"]
+  ]
+],
+"pixelGroups": {
+  "1/2": ["1/4", "2/4"],
+  "2/2": ["3/4", "4/4"]
+}
+```
+
+#### Template channels
+
+To reuse similar channels for each pixel or pixel group (like "Red&nbsp;1", Red&nbsp;2", ...), add template channels: They are specified very similar to normal available channels, except that each template channel key / alias / name must contain the `$pixelKey` variable:
+
+```js
+"templateChannels": {
+  "Red $pixelKey": {
+    "type": "Single Color",
+    "color": "Red",
+    "fineChannelAliases": ["Red $pixelkey fine"]
+  }
+}
+```
+
+Template channels can also introduce fine and switching channels. Specific resolved matrix channels can be overriden by available channels (e. g. if "Speed&nbsp;1" has different capabilities than "Speed&nbsp;2" until "Speed&nbsp;25"). See the [cameo Hydrabeam 300 RGBW](../fixtures/cameo/hydrambeam-300-rgbw.json) that uses these features.
+
+Then, either use the resolved channel keys directly in a mode's channel list, or use a matrix channel insert block that repeats a list of template channels for a list of pixels:
+
+```js
+{
+  "name": "14-channel",
+  "shortName": "14ch",
+  "channels": [
+    "Master Dimmer",
+    "Strobe",
+    {
+      "insert": "matrixChannels", // static value for matrix channels
+      "repeatFor": "eachPixel", // or: "eachPixelGroup", or a list of pixel (group) keys
+      "channelOrder": "perPixel", // or "perChannel"
+      "templateChannels": [
+        "Red $pixelKey",
+        "Green $pixelKey",
+        "Blue $pixelKey"
+      ]
+    }
+  ]
+}
+```
+
 
 
 ### RDM (Remote Device Management) data
