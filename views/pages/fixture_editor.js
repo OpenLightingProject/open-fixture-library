@@ -470,14 +470,18 @@ function getModeTemplate() {
   str += '</section>';
 
   str += '<h3>Channels</h3>';
-  str += '<ol class="mode-channels">';
-  str += '<li v-for="(channelUuid, index) in mode.channels">';
-  str += '<span class="channel-name">{{ getChannelName(channelUuid) }}</span> ';
-  str += '<code v-if="!isChannelNameUnique(channelUuid)" class="channel-uuid">{{ channelUuid }}</code>';
-  str += `<a href="#remove" title="Remove channel" @click.prevent="removeChannel(channelUuid)">${svg.getSvg('close')}</a>`;
-  str += `<a href="#channel-editor" title="Edit channel" v-if="!isFineChannel(channelUuid)" @click.prevent="editChannel(channelUuid)">${svg.getSvg('pencil')}</a>`;
-  str += '</li>';
-  str += '</ol>';
+
+  str += `<draggable v-model="mode.channels" :options="dragOptions">`;
+  str += '  <transition-group class="mode-channels" name="mode-channels" tag="ol">';
+  str += '    <li v-for="(channelUuid, index) in mode.channels" :key="channelUuid" :data-channel-uuid="channelUuid">';
+  str += '      <span class="channel-name">{{ getChannelName(channelUuid) }}</span> ';
+  str += '      <code v-if="!isChannelNameUnique(channelUuid)" class="channel-uuid">{{ channelUuid }}</code>';
+  str += `      <a href="#remove" title="Remove channel" @click.prevent="removeChannel(channelUuid)">${svg.getSvg('close')}</a>`;
+  str += `      <a href="#channel-editor" title="Edit channel" v-if="!isFineChannel(channelUuid)" @click.prevent="editChannel(channelUuid)">${svg.getSvg('pencil')}</a>`;
+  str += `      <a href="#move" title="Drag to change channel order" class="drag-handle" @click.prevent="">${svg.getSvg('move')}</a>`;
+  str += '    </li>';
+  str += '  </transition-group>';
+  str += '</draggable>';
 
   str += '<a href="#add-channel" class="button primary" @click.prevent="addChannel">add channel</a>';
 
