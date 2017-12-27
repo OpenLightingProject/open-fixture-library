@@ -471,7 +471,7 @@ function getModeTemplate() {
 
   str += '<h3>Channels</h3>';
 
-  str += `<draggable v-model="mode.channels" :options="dragOptions">`;
+  str += '<draggable v-model="mode.channels" :options="dragOptions">';
   str += '  <transition-group class="mode-channels" name="mode-channels" tag="ol">';
   str += '    <li v-for="(channelUuid, index) in mode.channels" :key="channelUuid" :data-channel-uuid="channelUuid">';
   str += '      <span class="channel-name">{{ getChannelName(channelUuid) }}</span> ';
