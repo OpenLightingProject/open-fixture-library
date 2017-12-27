@@ -114,28 +114,54 @@ Some fixtures have multiple light beams: A horizontal bar of LEDs, a pixel head 
 The information how these pixels are arranged is stored in the fixture's `matrix` object: Either by using the x × y × z syntax from `pixelCount` (e.g. [5, 5, 1] for a 5×5 matrix) or by naming each individual pixel in `pixelKeys`, e.g.:
 
 ```js
-"pixelKeys": [
-  [
-    [ null,  "Top",     null  ],
-    ["Left", "Center", "Right"],
-    [ null,  "Bottom",  null  ]
+"matrix": {
+  "pixelKeys": [
+    [
+      [ null,  "Top",     null  ],
+      ["Left", "Center", "Right"],
+      [ null,  "Bottom",  null  ]
+    ]
   ]
-]
+}
 ```
 
-`null` refers to a "hole", i. e. there's no light beam, which allows for non-cubic frames. The above example represents 5 heads arranged like a "+".
+`null` refers to a "hole", i.e. there's no light beam, which allows for non-cubic frames. The above example represents 5 heads arranged like a "+".
 
 Pixels can also be grouped if a fixture allows control in different fine grades, like fourths or halfs of a light bar:
 
 ```js
-"pixelKeys": [
-  [
-    ["1/4", "2/4", "3/4", "4/4"]
-  ]
-],
-"pixelGroups": {
-  "1/2": ["1/4", "2/4"],
-  "2/2": ["3/4", "4/4"]
+"matrix": {
+  "pixelKeys": [
+    [
+      ["1/4", "2/4", "3/4", "4/4"]
+    ]
+  ],
+  "pixelGroups": {
+    "1/2": ["1/4", "2/4"],
+    "2/2": ["3/4", "4/4"]
+  }
+}
+```
+
+Pixel groups can also be used to better describe the pixel structure, for example to define circular rings consisting of virtual pixels, even if these pixels don't physically exist and only the whole rings can be controlled.
+
+```js
+"matrix": {
+  "pixelKeys": [
+    [
+      [null,  null,  "O1",  "O2",  null,  null],
+      [null,  "O3",  "M1",  "M2",  "O4",  null],
+      ["O5",  "M3",  "I1",  "I2",  "M4",  "O6"],
+      ["O7",  "M5",  "I3",  "I4",  "M6",  "O8"],
+      [null,  "O9",  "M7",  "M8",  "O10", null],
+      [null,  null,  "O11", "O12", null,  null]
+    ]
+  ],
+  "pixelGroups": {
+    "Inner ring":  ["I1", "I2", "I3", "I4"],
+    "Middle ring": ["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8"],
+    "Outer ring":  ["O1", "O2", "O3", "O4", "O5", "O6", "O7", "O8", "O9", "O10", "O11", "O12"]
+  }
 }
 ```
 
@@ -153,7 +179,7 @@ To reuse similar channels for each pixel or pixel group (like "Red&nbsp;1", Red&
 }
 ```
 
-Template channels can also introduce fine and switching channels. Specific resolved matrix channels can be overriden by available channels (e. g. if "Speed&nbsp;1" has different capabilities than "Speed&nbsp;2" until "Speed&nbsp;25"). See the [cameo Hydrabeam 300 RGBW](../fixtures/cameo/hydrambeam-300-rgbw.json) that uses these features.
+Template channels can also introduce fine and switching channels. Specific resolved matrix channels can be overriden by available channels (e.g. if "Speed&nbsp;1" has different capabilities than "Speed&nbsp;2" until "Speed&nbsp;25"). See the [cameo Hydrabeam 300 RGBW](../fixtures/cameo/hydrambeam-300-rgbw.json) that uses these features.
 
 Then, either use the resolved channel keys directly in a mode's channel list, or use a matrix channel insert block that repeats a list of template channels for a list of pixels:
 
