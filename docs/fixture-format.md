@@ -166,7 +166,7 @@ Then, either use the resolved channel keys directly in a mode's channel list, or
     "Strobe",
     {
       "insert": "matrixChannels", // static value for matrix channels
-      "repeatFor": "eachPixel", // or: "eachPixelGroup", or a list of pixel (group) keys
+      "repeatFor": "eachPixel", // or "eachPixelGroup", or an array of pixel (group) keys
       "channelOrder": "perPixel", // or "perChannel"
       "templateChannels": [
         "Red $pixelKey",
