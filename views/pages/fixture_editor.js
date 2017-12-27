@@ -265,6 +265,9 @@ module.exports = function(options) {
   return str;
 };
 
+/**
+ * @returns {!string} The Vue template for a <div> containing a fixture's or mode's physical information.
+ */
 function getPhysicalTemplate() {
   let str = '<script type="text/x-template" id="template-physical">';
   str += '<div>';
@@ -411,6 +414,9 @@ function getPhysicalTemplate() {
   return str;
 }
 
+/**
+ * @returns {!string} The Vue template for a mode card.
+ */
 function getModeTemplate() {
   let str = '<script type="text/x-template" id="template-mode">';
   str += '<section class="fixture-mode card">';
@@ -481,6 +487,9 @@ function getModeTemplate() {
   return str;
 }
 
+/**
+ * @returns {!string} The Vue template for a single capability.
+ */
 function getCapabilityTemplate() {
   let str = '<script type="text/x-template" id="template-capability">';
   str += '<li class="capability validate-group">';
@@ -499,6 +508,9 @@ function getCapabilityTemplate() {
   return str;
 }
 
+/**
+ * @returns {!string} The Vue template for a dialog.
+ */
 function getDialogTemplate() {
   let str = '<script type="text/x-template" id="template-dialog">';
 
@@ -523,7 +535,9 @@ function getDialogTemplate() {
   return str;
 }
 
-
+/**
+ * @returns {!string} The HTML for the restore dialog, using @see getDialogTemplate.
+ */
 function getRestoreDialogString() {
   let str = '<a11y-dialog id="restore" :cancellable="false" :shown="restoredData !== \'\'">';
   str += '<span slot="title">Auto-saved fixture data found</span>';
@@ -539,6 +553,9 @@ function getRestoreDialogString() {
   return str;
 }
 
+/**
+ * @returns {!string} The HTML for the channel editor dialog, using @see getDialogTemplate.
+ */
 function getChannelDialogString() {
   let str = '<a11y-dialog id="channel" :cancellable="true" :shown="channel.editMode !== \'\' && channel.editMode !== \'edit-?\'" @show="onChannelDialogOpen" @hide="onChannelDialogClose" ref="channelDialog">';
   str += '<span slot="title">{{ channel.editMode === "add-existing" ? "Add channel to mode " + currentModeDisplayName : channel.editMode === "create" ? "Create new channel" : "Edit channel" }}</span>';
@@ -581,7 +598,7 @@ function getChannelDialogString() {
   str += '<label class="validate-group">';
   str += '<span class="label">Color</span>';
   str += '<span class="value">';
-  str += selectInput('channel.color', properties.channel.color, 'other channel color', true, true);
+  str += selectInput('channel.color', properties.channel.color, 'other channel color', true);
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
   str += '</label>';
@@ -657,7 +674,7 @@ function getChannelDialogString() {
   str += '<label class="validate-group">';
   str += '<span class="label">Precedence</span>';
   str += '<span class="value">';
-  str += selectInput('channel.precedence', properties.channel.precedence, null, false);
+  str += selectInput('channel.precedence', properties.channel.precedence, null);
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
   str += '</label>';
@@ -695,6 +712,9 @@ function getChannelDialogString() {
   return str;
 }
 
+/**
+ * @returns {!string} The HTML for the "choose channel edit mode" dialog (allowing the user to choose if a channel should be edited in all modes or only the current mode), using @see getDialogTemplate.
+ */
 function getChooseChannelEditModeDialogString() {
   let str = '<a11y-dialog id="chooseChannelEditMode" :cancellable="false" :shown="this.channel.editMode === \'edit-?\'" @show="onChooseChannelEditModeDialogOpen">';
   str += '<span slot="title">Edit channel in all modes or just in this one?</span>';
@@ -709,6 +729,9 @@ function getChooseChannelEditModeDialogString() {
   return str;
 }
 
+/**
+ * @returns {!string} The HTML for the submit dialog, using @see getDialogTemplate.
+ */
 function getSubmitDialogString() {
   let str = '<a11y-dialog id="submit" :cancellable="false" :shown="submit.state !== \'closed\'">';
   str += '<span slot="title">{{ submit.state === \'loading\' ? \'Submitting your new fixture...\' : submit.state === \'success\' ? \'Upload complete\' : \'Upload failed\' }}</span>';
@@ -749,6 +772,14 @@ function getSubmitDialogString() {
 }
 
 
+/**
+ * @param {!string} key The key in Vue's data model that this text input element is bound to.
+ * @param {*} property The JS Schema property that this input element has to obey.
+ * @param {?string} hint A hint to the user that helps filling the right value into this input element.
+ * @param {?string} id A unique HTML ID for this input element and related elements (like data lists). Only required if property.enum is true.
+ * @param {!string} [additionalAttributes=''] Additional HTML attributes that shall be added to the input element.
+ * @returns {!string} The input element HTML, possibly together with related elements.
+ */
 function textInput(key, property, hint, id, additionalAttributes = '') {
   let html = '<input type="text"';
   html += getRequiredAttr(property);
@@ -772,6 +803,12 @@ function textInput(key, property, hint, id, additionalAttributes = '') {
   return html;
 }
 
+/**
+ * @param {!string} key The key in Vue's data model that this URL input element is bound to.
+ * @param {*} property The JS Schema property that this input element has to obey.
+ * @param {?string} hint A hint to the user that helps filling the right value into this input element.
+ * @returns {!string} The input element HTML.
+ */
 function urlInput(key, property, hint) {
   let html = '<input type="url"';
   html += getRequiredAttr(property);
@@ -780,6 +817,12 @@ function urlInput(key, property, hint) {
   return html;
 }
 
+/**
+ * @param {!string} key The key in Vue's data model that this textarea element is bound to.
+ * @param {*} property The JS Schema property that this textarea element has to obey.
+ * @param {?string} hint A hint to the user that helps filling the right value into this textarea element.
+ * @returns {!string} The textarea element HTML.
+ */
 function textareaInput(key, property, hint) {
   let html = '<textarea';
   html += getRequiredAttr(property);
@@ -788,6 +831,13 @@ function textareaInput(key, property, hint) {
   return html;
 }
 
+/**
+ * @param {!string} key The key in Vue's data model that this number input element is bound to.
+ * @param {*} property The JS Schema property that this input element has to obey.
+ * @param {?string} hint A hint to the user that helps filling the right value into this input element.
+ * @param {!string} [additionalAttributes=''] Additional HTML attributes that shall be added to the input element.
+ * @returns {!string} The input element HTML.
+ */
 function numberInput(key, property, hint, additionalAttributes = '') {
   let html = '<input type="number"';
   html += getRequiredAttr(property);
@@ -821,7 +871,16 @@ function numberInput(key, property, hint, additionalAttributes = '') {
   return html;
 }
 
-function selectInput(key, property, hint, allowAdditions = true, forceRequired = false) {
+/**
+ * @param {!string} key The key in Vue's data model that this select element is bound to.
+ * @param {*} property The JS Schema property that this select element has to obey.
+ * @param {?string} [additionName=null] If not null, the user is able to select an entry with this name, which allows them to enter a custom value in an input next to the select element. The input HTML is also generated here.
+ * @param {!boolean} [forceRequired=false] Force this select element to be required, even if the property does not say so.
+ * @returns {!string} The select element HTML.
+ */
+function selectInput(key, property, additionName = null, forceRequired = false) {
+  const allowAdditions = additionName !== null;
+
   let html = '<select';
   html += getRequiredAttr(property, forceRequired);
   html += allowAdditions ? ' data-allow-additions="true"' : '';
@@ -833,16 +892,22 @@ function selectInput(key, property, hint, allowAdditions = true, forceRequired =
     html += `<option value="${item}">${item}</option>`;
   }
 
-  html += allowAdditions ? `<option value="[add-value]">${hint}</option>` : '';
+  html += allowAdditions ? `<option value="[add-value]">${additionName}</option>` : '';
 
   html += '</select>';
 
-  html += allowAdditions ? ` <input type="text" class="addition"${getPlaceholderAttr(hint)} v-if="${key} === '[add-value]'" v-focus required v-model="${key}New" />` : '';
+  html += allowAdditions ? ` <input type="text" class="addition"${getPlaceholderAttr(additionName)} v-if="${key} === '[add-value]'" v-focus required v-model="${key}New" />` : '';
 
   return html;
 }
 
-function booleanInput(key, property, hint) {
+/**
+ * There are various ways to represent a boolean input element. Here, a select element with the options "unknown", "yes" and "no" is returned.
+ * @param {!string} key The key in Vue's data model that this boolean input element is bound to.
+ * @param {*} property The JS Schema property that this boolean input element has to obey.
+ * @returns {!string} The boolean input element HTML.
+ */
+function booleanInput(key, property) {
   let html = '<select';
   html += getRequiredAttr(property);
   html += ` v-model="${key}"`;
@@ -855,9 +920,21 @@ function booleanInput(key, property, hint) {
   return html;
 }
 
+/**
+ * Helper function to return the HTML "required" attribute if neccessary.
+ * @param {*} property The JS Schema property that the input element has to obey.
+ * @param {!boolean} [forceRequired=false] Force the input element to be required, even if the property does not say so.
+ * @returns {!string} The HTML "required" attribute or an empty string.
+ */
 function getRequiredAttr(property, forceRequired = false) {
   return forceRequired || property.required ? ' required' : '';
 }
+
+/**
+ * Helper function to return the HTML "placeholder" attribute if neccessary.
+ * @param {?string} hint A hint to the user that helps filling the right value into the input element or a falsey value.
+ * @returns {!string} The HTML "placeholder" attribute with the hint or an empty string.
+ */
 function getPlaceholderAttr(hint) {
   return hint ? ` placeholder="${hint}"` : '';
 }
