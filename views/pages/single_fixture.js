@@ -364,7 +364,7 @@ function handleMode(mode) {
   str += `<button class="icon-button collapse-all" title="Collapse all channels">${svg.getSvg('chevron-double-up')}</button>`;
   str += '</h3>';
 
-  str += '<ol>';
+  str += '<ol class="mode-channels">';
   str += mode.channels.map(channel => getChannelListItem(channel, mode)).join('\n');
   str += '</ol>';
   str += '</section>'; // .fixture-mode

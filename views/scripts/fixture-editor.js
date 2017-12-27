@@ -5,8 +5,29 @@ var A11yDialog = require('a11y-dialog');
 var uuidV4 = require('uuid/v4.js');
 var Vue = require('vue/dist/vue.js');
 var validate = require('./validate.js');
+var draggable = require('vuedraggable');
 
 var vueIsReady = false;
+
+// constant
+var dragOptions = {
+  handle: '.drag-handle',
+  group: {
+    name: 'mode',
+    pull: 'clone',
+    put: function(to, from, dragElem, event) {
+      if (from === to) {
+        return false;
+      }
+
+      var channelUuid = dragElem.getAttribute('data-channel-uuid');
+      var channelAlreadyExists = to.el.querySelectorAll('[data-channel-uuid="' + channelUuid + '"]').length > 0;
+
+      return !channelAlreadyExists;
+    },
+    revertClone: true
+  }
+};
 
 validate.init(function(form) {
   if (form.id === 'fixture-form') {
@@ -76,6 +97,8 @@ Vue.component('a11y-dialog', {
   }
 });
 
+Vue.component('draggable', draggable);
+
 Vue.component('physical-data', {
   template: '#template-physical',
   props: ['value'],
@@ -101,6 +124,11 @@ Vue.component('fixture-mode', {
     if (vueIsReady) {
       this.$refs.firstInput.focus();
     }
+  },
+  data: function() {
+    return {
+      dragOptions: dragOptions
+    };
   },
   methods: {
     getChannelName: function(channelUuid) {

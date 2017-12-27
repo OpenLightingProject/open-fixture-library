@@ -281,16 +281,6 @@ a.fixture-mode {
   text-align: center;
 }
 
-.fixture-mode ol {
-  padding-left: 1.9em;
-
-  /* switched channels */
-  & ol {
-    list-style-type: lower-alpha;
-    padding-left: 1.1em;
-  }
-}
-
 /* if a mode is the only mode, hide its remove button */
 .fixture-modes > .fixture-mode:first-child:nth-last-child(3) > .close {
   display: none;
@@ -305,6 +295,17 @@ a.fixture-mode {
   content: " #" counter(modes);
 }
 
+.mode-channels {
+  padding-left: 1.9em;
+  min-height: 1em;
+
+  /* switched channels */
+  & ol {
+    list-style-type: lower-alpha;
+    padding-left: 1.1em;
+  }
+}
+
 .mode-channels a,
 .capabilities a {
   opacity: 0;
@@ -313,13 +314,16 @@ a.fixture-mode {
   height: 1.4em;
   padding: 0.3em;
   transition: opacity 0.1s;
-  display: inline-block;
 }
 .mode-channels > li:hover > a,
 .mode-channels a:focus,
 .capabilities > li:hover > a,
 .capabilities a:focus {
   opacity: 1;
+}
+
+.mode-channels .drag-handle {
+  cursor: move;
 }
 
 .capabilities {
