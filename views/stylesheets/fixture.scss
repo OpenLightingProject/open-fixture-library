@@ -206,6 +206,10 @@ section {
   }
 }
 
+.channel-pixel {
+  display: flex;
+}
+
 details.channel > summary > .icon,
 div.channel > .icon {
   margin-right: 1.2ex;
@@ -227,6 +231,40 @@ div.channel > .icon {
   color: $secondary-text-dark;
   font-size: 0.8rem;
   line-height: 1.5;
+}
+
+.matrix > .z-level {
+  border-collapse: collapse;
+  border-spacing: 0;
+  overflow: auto;
+  padding-top: 1px;
+  padding-left: 1px;
+
+  & > .row {
+    display: block;
+    margin-top: -1px;
+    white-space: nowrap;
+
+    & > .pixel {
+      display: inline-block;
+      width: 3em;
+      height: 3em;
+      line-height: 3em;
+      text-align: center;
+      margin-left: -1px;
+      vertical-align: top;
+      border: 1px solid transparent;
+      transition: background .2s;
+
+      &:not(:empty) {
+        border-color: $icon-inactive-dark;
+      }
+
+      &.highlight {
+        background: $divider-dark;
+      }
+    }
+  }
 }
 
 .checkbox {

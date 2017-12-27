@@ -4,9 +4,11 @@ const svg = require('../includes/svg.js');
 const exportPlugins = require('../../plugins/plugins.js').export;
 
 const Fixture = require('../../lib/model/Fixture.js');
+const Channel = require('../../lib/model/Channel.js');
 const NullChannel = require('../../lib/model/NullChannel.js');
 const FineChannel = require('../../lib/model/FineChannel.js');
 const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
+const MatrixChannel = require('../../lib/model/MatrixChannel.js');
 
 require('../../lib/load-env-file.js');
 
@@ -79,6 +81,7 @@ module.exports = function handleFixture(options) {
   str += '</div>';
   str += '</section>';
 
+  options.footerHtml = '<script type="text/javascript" src="/js/single-fixture.js" async></script>';
   str += require('../includes/footer.js')(options);
 
   return str;
@@ -161,6 +164,10 @@ function getChannelHeading(channel) {
     return 'Error: Channel not found';
   }
 
+  if (channel instanceof MatrixChannel) {
+    channel = channel.wrappedChannel;
+  }
+
   if (channel instanceof NullChannel) {
     return `${channel.name} <code class="channel-key">null</code>`;
   }
@@ -176,6 +183,10 @@ function getChannelHeading(channel) {
 function getChannelTypeIcon(channel) {
   if (channel instanceof NullChannel) {
     return svg.getChannelTypeIcon('Nothing');
+  }
+
+  if (channel instanceof MatrixChannel) {
+    return getChannelTypeIcon(channel.wrappedChannel);
   }
 
   if (channel instanceof FineChannel) {
@@ -252,19 +263,10 @@ function handleFixtureInfo() {
     str += '</section>';
   }
 
-  if (Object.keys(fixture.heads).length > 0) {
-    str += '<section class="heads">';
-    str += '<h3>Heads</h3>';
-    str += '<ul>';
-    for (const headName of Object.keys(fixture.heads)) {
-      str += '<li>';
-      str += `<strong>${headName}:</strong> `;
-      str += fixture.heads[headName].map(
-        chKey => getChannelHeading(fixture.getChannelByKey(chKey))
-      ).join(', ');
-      str += '</li>';
-    }
-    str += '</ul>';
+  if (fixture.matrix !== null) {
+    str += '<h3 class="physical">Matrix</h3>';
+    str += '<section class="matrix">';
+    str += handleFixtureMatrix();
     str += '</section>';
   }
 
@@ -330,6 +332,92 @@ function handlePhysicalData(physical) {
     str += '</section>';
   }
 
+  if (physical.hasMatrixPixels) {
+    str += '<section class="physical-matrixPixels">';
+    str += '<h4>Matrix pixels</h4>';
+
+    if (physical.matrixPixelsDimensions !== null) {
+      str += `<section class="physical-dimensions">
+        <span class="label">Pixel dimensions</span>
+        <span class="value">
+          ${physical.matrixPixelsDimensions[0]} &times; ${physical.matrixPixelsDimensions[1]} &times; ${physical.matrixPixelsDimensions[2]}mm
+          <span class="hint">width &times; height &times; depth</span>
+        </span>
+      </section>`;
+    }
+
+    if (physical.matrixPixelsSpacing !== null) {
+      str += `<section class="physical-dimensions">
+        <span class="label">Pixel spacing</span>
+        <span class="value">
+          ${physical.matrixPixelsSpacing[0]} &times; ${physical.matrixPixelsSpacing[1]} &times; ${physical.matrixPixelsSpacing[2]}mm
+          <span class="hint">left/right &times; top/bottom &times; ahead/aback</span>
+        </span>
+      </section>`;
+    }
+
+    str += '</section>';
+  }
+
+  return str;
+}
+
+/**
+ * @returns {!string} HTML code for the fixture's matrix.
+ */
+function handleFixtureMatrix() {
+  let str = handleMatrixStructure();
+
+  if (fixture.matrix.pixelGroupKeys.length > 0) {
+    str += '<section class="matrix-pixelGroups">';
+    str += '<h4>Pixel groups</h4>';
+    str += '<span class="hint">Hover over the pixel groups to highlight the corresponding pixels.</span>';
+
+    str += fixture.matrix.pixelGroupKeys.map(key =>
+      `<section class="matrix-pixelGroup" data-pixelGroup="${key}">
+        <span class="label">${key}</span>
+        <span class="value">${fixture.matrix.pixelGroups[key].join(', ')}</span>
+      </section>`
+    ).join('');
+
+    str += '</section>';
+  }
+
+  return str;
+}
+
+/**
+ * Creates a visual representation of the fixture's matrix structure.
+ * @returns {!string} HTML code for the displayed matrix grid.
+ */
+function handleMatrixStructure() {
+  let str = '';
+
+  let pixelSizing = '';
+  if (fixture.physical !== null && fixture.physical.hasMatrixPixels) {
+    const scale = 1 / 10; // mm
+    pixelSizing += `width: ${fixture.physical.matrixPixelsDimensions[0] * scale}mm; `;
+    pixelSizing += `height: ${fixture.physical.matrixPixelsDimensions[1] * scale}mm; `;
+    pixelSizing += `line-height: ${fixture.physical.matrixPixelsDimensions[1] * scale}mm; `;
+    pixelSizing += `margin-right: ${fixture.physical.matrixPixelsSpacing[0] * scale}mm; `;
+    pixelSizing += `margin-bottom: ${fixture.physical.matrixPixelsSpacing[1] * scale}mm; `;
+  }
+
+  for (const zLevel of fixture.matrix.pixelKeyStructure) {
+    str += '<div class="z-level">';
+    for (const row of zLevel) {
+      str += '<div class="row">';
+      for (const pixelKey of row) {
+        const pixelGroupKeys = fixture.matrix.pixelGroupKeys.filter(
+          key => fixture.matrix.pixelGroups[key].includes(pixelKey)
+        );
+        str += `<div class="pixel" style="${pixelSizing}" data-pixelGroups="${pixelGroupKeys.join(' ')}">${pixelKey || ''}</div>`;
+      }
+      str += '</div>';
+    }
+    str += '</div>';
+  }
+
   return str;
 }
 
@@ -379,14 +467,19 @@ function handleMode(mode) {
  * @returns {!string} The channel <li> HTML.
  */
 function getChannelListItem(channel, mode, appendToHeading = '') {
+  let chConstructor = channel.constructor;
+  if (channel instanceof MatrixChannel) {
+    chConstructor = channel.wrappedChannel.constructor;
+  }
+
   let channelInfo = '';
-  if (channel instanceof FineChannel) {
+  if (chConstructor === FineChannel) {
     channelInfo = getFineChannelInfo(channel, mode);
   }
-  else if (channel instanceof SwitchingChannel) {
+  else if (chConstructor === SwitchingChannel) {
     channelInfo = getSwitchingChannelInfo(channel, mode);
   }
-  else if (!(channel instanceof NullChannel)) {
+  else if (chConstructor === Channel) {
     channelInfo = getChannelInfo(channel, mode);
   }
 
@@ -406,6 +499,11 @@ function getChannelListItem(channel, mode, appendToHeading = '') {
  */
 function getChannelInfo(channel, mode) {
   let str = '';
+
+  if (channel instanceof MatrixChannel) {
+    str += handleMatrixChannel(channel);
+    channel = channel.wrappedChannel;
+  }
 
   const finenessInMode = channel.getFinenessInMode(mode);
   if (finenessInMode > 0) {
@@ -533,8 +631,15 @@ function handleCapabilities(channel, mode, finenessInMode) {
  * @returns {!string} The fine channel HTML.
  */
 function getFineChannelInfo(channel, mode) {
+  let matrixStr = '';
+
+  if (channel instanceof MatrixChannel) {
+    matrixStr = handleMatrixChannel(channel);
+    channel = channel.wrappedChannel;
+  }
+
   const coarseChannelIndex = mode.getChannelIndex(channel.coarseChannel.key) + 1;
-  return `<div>Fine channel of ${channel.coarseChannel.name} (channel&nbsp;${coarseChannelIndex})</div>`;
+  return `<div>Fine channel of ${channel.coarseChannel.name} (channel&nbsp;${coarseChannelIndex})</div>${matrixStr}`;
 }
 
 /**
@@ -543,6 +648,10 @@ function getFineChannelInfo(channel, mode) {
  * @returns {!string} The switching channel HTML.
  */
 function getSwitchingChannelInfo(channel, mode) {
+  if (channel instanceof MatrixChannel) {
+    channel = channel.wrappedChannel;
+  }
+
   const triggerChannelIndex = mode.getChannelIndex(channel.triggerChannel.key) + 1;
 
   let str = `<div>Switch depending on ${channel.triggerChannel.name}'s value (channel&nbsp;${triggerChannelIndex}):</div>`;
@@ -557,6 +666,29 @@ function getSwitchingChannelInfo(channel, mode) {
   str += '</ol>';
 
   return str;
+}
+
+/**
+ * Creates some information about the channel's pixel and its position as label-value pairs to be included beneath other channel information.
+ * @param {!MatrixChannel} channel The MatrixChannel whose information should be used.
+ * @returns {!string} The generated html code.
+ */
+function handleMatrixChannel(channel) {
+  if (fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)) {
+    return getSimpleLabelValue('channel-pixelGroup', 'Pixel group', channel.pixelKey);
+  }
+
+  const [x, y, z] = fixture.matrix.pixelKeyPositions[channel.pixelKey];
+  return `<section class="channel-pixel">
+    ${getSimpleLabelValue('channel-pixel-key', 'Pixel', channel.pixelKey)}
+    <section class="channel-pixel-position">
+      <span class="label">Pixel position</span>
+      <span class="value">
+        (${x}, ${y}, ${z})
+        <span class="hint">(X, Y, Z)</span>
+      </span>
+    </section>
+  </section>`;
 }
 
 /**

@@ -9,7 +9,10 @@
       "fine-positions-1",
       "floating-point-weight",
       "floating-point-lens-degrees",
-      "heads",
+      "matrix-pixelKeys",
+      "matrix-custom-layout",
+      "fine-matrix-channel",
+      "switching-matrix-channel",
       "multiple-categories",
       "multiple-focuses",
       "reused-channels",
@@ -52,6 +55,16 @@
     ]
   },
   {
+    "man": "eurolite",
+    "key": "led-kls-801",
+    "name": "LED KLS-801",
+    "features": [
+      "matrix-pixelCount",
+      "matrix-channel-used-directly",
+      "switching-channels"
+    ]
+  },
+  {
     "man": "generic",
     "key": "rgbw-fader",
     "name": "RGBW Fader",
@@ -85,6 +98,20 @@
       "floating-point-weight",
       "multiple-categories",
       "rdm",
+      "reused-channels",
+      "switching-channels",
+      "switching-fine-channels"
+    ]
+  },
+  {
+    "man": "showtec",
+    "key": "horizon-8",
+    "name": "Horizon 8",
+    "features": [
+      "fine-channel-alias",
+      "matrix-pixelKeys",
+      "matrix-pixelGroups",
+      "multiple-categories",
       "reused-channels",
       "switching-channels",
       "switching-fine-channels"
