@@ -12,7 +12,7 @@ const schema = require('js-schema');
  *
  * @type {string}
  */
-module.exports.VERSION = '3.0.0';
+module.exports.VERSION = '3.0.1';
 
 /**
  * see https://github.com/molnarg/js-schema
@@ -255,10 +255,11 @@ const properties = {
   URL:                     URL.toJSON(),
   DMXValue:                DMXValue.toJSON()
 };
-properties.meta  = properties.fixture.meta.properties;
-properties.bulb  = properties.physical.bulb.properties;
-properties.lens  = properties.physical.lens.properties;
-properties.focus = properties.physical.focus.properties;
+properties.meta         = properties.fixture.meta.properties;
+properties.bulb         = properties.physical.bulb.properties;
+properties.lens         = properties.physical.lens.properties;
+properties.focus        = properties.physical.focus.properties;
+properties.matrixPixels = properties.physical.matrixPixels.properties;
 /* eslint-enable key-spacing */
 
 module.exports.properties = properties;
