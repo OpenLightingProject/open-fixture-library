@@ -21,6 +21,9 @@
       "degreesMinMax": [50, 50]
     }
   },
+  "matrix": {
+    "pixelCount": [5, 5, 1]
+  },
   "availableChannels": {
     "Master Dimmer": {
       "type": "Intensity"
@@ -500,7 +503,9 @@
           "name": "Invert and Swap"
         }
       ]
-    },
+    }
+  },
+  "templateChannels": {
     "Dimmer LED $pixelKey": {
       "type": "Intensity"
     }
@@ -560,7 +565,14 @@
       "name": "25-channel",
       "shortName": "25ch",
       "channels": [
-        "Dimmer LED $pixelKey"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixel",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer LED $pixelKey"
+          ]
+        }
       ]
     },
     {
@@ -572,7 +584,14 @@
         "Flash Duration",
         "Auto Programs / Sound Mode",
         "Program Speed / Sound Sensitivity",
-        "Dimmer LED $pixelKey"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixel",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer LED $pixelKey"
+          ]
+        }
       ]
     }
   ]
