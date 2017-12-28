@@ -26,10 +26,12 @@
   },
   "availableChannels": {
     "Master Dimmer": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "defaultValue": 0
     },
     "Master Dimmer Invert": {
       "type": "Intensity",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 255],
@@ -40,6 +42,7 @@
     "Strobe Simple": {
       "name": "Strobe",
       "type": "Strobe",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 5],
@@ -54,6 +57,7 @@
     "Strobe Extended": {
       "type": "Strobe",
       "name": "Strobe",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 5],
@@ -104,6 +108,7 @@
     },
     "Auto Programs": {
       "type": "Effect",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 5],
@@ -156,8 +161,8 @@
       ]
     },
     "Auto Programs / Sound Mode": {
-      "name": "Auto Programs",
       "type": "Effect",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 5],
@@ -260,6 +265,7 @@
     },
     "Pattern Type": {
       "type": "Effect",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 5],
@@ -277,6 +283,7 @@
     },
     "Pattern Select": {
       "type": "Effect",
+      "defaultValue": 160,
       "capabilities": [
         {
           "range": [0, 4],
@@ -468,6 +475,7 @@
     },
     "Pattern Effect": {
       "type": "Effect",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 5],
@@ -485,6 +493,7 @@
     },
     "Pattern Invert / Swap": {
       "type": "Effect",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 5],
@@ -507,7 +516,8 @@
   },
   "templateChannels": {
     "Dimmer LED $pixelKey": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "defaultValue": 0
     }
   },
   "modes": [
