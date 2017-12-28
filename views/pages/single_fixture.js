@@ -1,4 +1,5 @@
 const url = require('url');
+const htmlEscape = require('html-escape');
 
 const svg = require('../includes/svg.js');
 const exportPlugins = require('../../plugins/plugins.js').export;
@@ -45,7 +46,7 @@ module.exports = function handleFixture(options) {
   str += '<section class="fixture-meta">';
   str += `<span class="last-modify-date">Last modified:&nbsp;${getDateString(fixture.meta.lastModifyDate)}</span>`;
   str += `<span class="create-date">Created:&nbsp;${getDateString(fixture.meta.createDate)}</span>`;
-  str += `<span class="authors">Author${fixture.meta.authors.length === 1 ? '' : 's'}:&nbsp;${fixture.meta.authors.join(', ')}</span>`;
+  str += `<span class="authors">Author${fixture.meta.authors.length === 1 ? '' : 's'}:&nbsp;${htmlEscape(fixture.meta.authors.join(', '))}</span>`;
   str += `<span class="source"><a href="${githubRepoPath}/blob/${branch}/fixtures/${man}/${fix}.json">Source</a></span>`;
   str += `<span class="revisions"><a href="${githubRepoPath}/commits/${branch}/fixtures/${man}/${fix}.json">Revisions</a></span>`;
   str += '</section>';
@@ -169,10 +170,10 @@ function getChannelHeading(channel) {
   }
 
   if (channel instanceof NullChannel) {
-    return `${channel.name} <code class="channel-key">null</code>`;
+    return `${htmlEscape(channel.name)} <code class="channel-key">null</code>`;
   }
 
-  return channel.name + (channel.key !== channel.name ? ` <code class="channel-key">${channel.key}</code>` : '');
+  return htmlEscape(channel.name) + (channel.key !== channel.name ? ` <code class="channel-key">${htmlEscape(channel.key)}</code>` : '');
 }
 
 /**
@@ -234,7 +235,7 @@ function handleFixtureInfo() {
   if (fixture.hasComment) {
     str += '<section class="comment">';
     str += '  <span class="label">Comment</span>';
-    str += `  <span class="value">${fixture.comment.replace(/\n/g, '<br />')}</span>`;
+    str += `  <span class="value">${fixture.comment.split(/\n/).map(line => htmlEscape(line).join('<br />'))}</span>`;
     str += '</section>';
   }
 
@@ -292,13 +293,13 @@ function handlePhysicalData(physical) {
 
   str += getSimpleLabelValue('physical-weight', 'Weight', physical.weight, 'kg');
   str += getSimpleLabelValue('physical-power', 'Power', physical.power, 'W');
-  str += getSimpleLabelValue('physical-DMXconnector', 'DMX connector', physical.DMXconnector);
+  str += getSimpleLabelValue('physical-DMXconnector', 'DMX connector', htmlEscape(physical.DMXconnector));
 
   if (physical.hasBulb) {
     str += '<section class="physical-bulb">';
     str += '<h4>Bulb</h4>';
 
-    str += getSimpleLabelValue('physical-bulb-type', 'Bulb type', physical.bulbType);
+    str += getSimpleLabelValue('physical-bulb-type', 'Bulb type', htmlEscape(physical.bulbType));
     str += getSimpleLabelValue('physical-bulb-colorTemperature', 'Color temperature', physical.bulbColorTemperature, 'K');
     str += getSimpleLabelValue('physical-bulb-lumens', 'Lumens', physical.bulbLumens, 'lm');
 
@@ -309,7 +310,7 @@ function handlePhysicalData(physical) {
     str += '<section class="physical-lens">';
     str += '<h4>Lens</h4>';
 
-    str += getSimpleLabelValue('physical-lens-name', 'Name', physical.lensName);
+    str += getSimpleLabelValue('physical-lens-name', 'Name', htmlEscape(physical.lensName));
 
     if (physical.lensDegreesMin !== null) {
       str += `<section class="physical-lens-degreesMinMax">
@@ -325,7 +326,7 @@ function handlePhysicalData(physical) {
     str += '<section class="physical-focus">';
     str += '<h4>Focus</h4>';
 
-    str += getSimpleLabelValue('physical-focus-type', 'Type', physical.focusType);
+    str += getSimpleLabelValue('physical-focus-type', 'Type', htmlEscape(physical.focusType));
     str += getSimpleLabelValue('physical-focus-panMax', 'Max. pan', physical.focusPanMax, '°');
     str += getSimpleLabelValue('physical-focus-tiltMax', 'Max. tilt', physical.focusTiltMax, '°');
 
@@ -375,8 +376,8 @@ function handleFixtureMatrix() {
 
     str += fixture.matrix.pixelGroupKeys.map(key =>
       `<section class="matrix-pixelGroup" data-pixelGroup="${key}">
-        <span class="label">${key}</span>
-        <span class="value">${fixture.matrix.pixelGroups[key].join(', ')}</span>
+        <span class="label">${htmlEscape(key)}</span>
+        <span class="value">${htmlEscape(fixture.matrix.pixelGroups[key].join(', '))}</span>
       </section>`
     ).join('');
 
@@ -411,7 +412,7 @@ function handleMatrixStructure() {
         const pixelGroupKeys = fixture.matrix.pixelGroupKeys.filter(
           key => fixture.matrix.pixelGroups[key].includes(pixelKey)
         );
-        str += `<div class="pixel" style="${pixelSizing}" data-pixelGroups="${pixelGroupKeys.join(' ')}">${pixelKey || ''}</div>`;
+        str += `<div class="pixel" style="${pixelSizing}" data-pixelGroups="${pixelGroupKeys.join(' ')}">${htmlEscape(pixelKey || '')}</div>`;
       }
       str += '</div>';
     }
@@ -435,7 +436,7 @@ function handleMode(mode) {
 
   let str = `<section class="fixture-mode card"${sectionId}>`;
 
-  const heading = `${mode.name} mode${mode.hasShortName ? ` <code>${mode.shortName}</code>` : ''}`;
+  const heading = `${htmlEscape(mode.name)} mode${mode.hasShortName ? ` <code>${htmlEscape(mode.shortName)}</code>` : ''}`;
   str += `<h2>${heading}</h2>`;
   str += rdmPersonalityIndexHint;
 
@@ -599,7 +600,7 @@ function handleCapabilities(channel, mode, finenessInMode) {
       str += '<td></td>';
     }
 
-    str += `<td class="capability-name">${cap.name}</td>`;
+    str += `<td class="capability-name">${htmlEscape(cap.name)}</td>`;
 
     const menuClickTitle = cap.menuClick === 'hidden' ? 'this capability is hidden in quick menus' : `choosing this capability in a quick menu snaps to ${cap.menuClick} of capability`;
     const menuClickIcon = svg.getSvg(`capability-${cap.menuClick}`);
@@ -615,7 +616,7 @@ function handleCapabilities(channel, mode, finenessInMode) {
       if (switchingChannelIndex > -1) {
         const switchToChannel = cap.switchChannels[switchingChannelKey];
 
-        str += `<tr><td colspan="4"></td><td colspan="2" class="switch-to-channel"><span class="switching-channel-key">${switchingChannelKey} (channel&nbsp;${switchingChannelIndex + 1}) →</span> ${switchToChannel}</td></tr>`;
+        str += `<tr><td colspan="4"></td><td colspan="2" class="switch-to-channel"><span class="switching-channel-key">${htmlEscape(switchingChannelKey)} (channel&nbsp;${switchingChannelIndex + 1}) →</span> ${htmlEscape(switchToChannel)}</td></tr>`;
       }
     }
   });
@@ -639,7 +640,7 @@ function getFineChannelInfo(channel, mode) {
   }
 
   const coarseChannelIndex = mode.getChannelIndex(channel.coarseChannel.key) + 1;
-  return `<div>Fine channel of ${channel.coarseChannel.name} (channel&nbsp;${coarseChannelIndex})</div>${matrixStr}`;
+  return `<div>Fine channel of ${htmlEscape(channel.coarseChannel.name)} (channel&nbsp;${coarseChannelIndex})</div>${matrixStr}`;
 }
 
 /**
@@ -654,7 +655,7 @@ function getSwitchingChannelInfo(channel, mode) {
 
   const triggerChannelIndex = mode.getChannelIndex(channel.triggerChannel.key) + 1;
 
-  let str = `<div>Switch depending on ${channel.triggerChannel.name}'s value (channel&nbsp;${triggerChannelIndex}):</div>`;
+  let str = `<div>Switch depending on ${htmlEscape(channel.triggerChannel.name)}'s value (channel&nbsp;${triggerChannelIndex}):</div>`;
   str += '<ol>';
 
   for (const switchToChannelKey of Object.keys(channel.triggerRanges)) {
@@ -675,12 +676,12 @@ function getSwitchingChannelInfo(channel, mode) {
  */
 function handleMatrixChannel(channel) {
   if (fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)) {
-    return getSimpleLabelValue('channel-pixelGroup', 'Pixel group', channel.pixelKey);
+    return getSimpleLabelValue('channel-pixelGroup', 'Pixel group', htmlEscape(channel.pixelKey));
   }
 
   const [x, y, z] = fixture.matrix.pixelKeyPositions[channel.pixelKey];
   return `<section class="channel-pixel">
-    ${getSimpleLabelValue('channel-pixel-key', 'Pixel', channel.pixelKey)}
+    ${getSimpleLabelValue('channel-pixel-key', 'Pixel', htmlEscape(channel.pixelKey))}
     <section class="channel-pixel-position">
       <span class="label">Pixel position</span>
       <span class="value">
