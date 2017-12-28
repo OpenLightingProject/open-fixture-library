@@ -22,6 +22,83 @@
     }
   },
   "availableChannels": {
+    "Master Dimmer": {
+      "type": "Intensity"
+    },
+    "Master Dimmer Invert": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Invert Dimmer 0-100% (Switch active and inactive LEDs)"
+        }
+      ]
+    },
+    "Strobe Simple": {
+      "name": "Strobe",
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Off"
+        },
+        {
+          "range": [6, 255],
+          "name": "Strobe 1-30Hz"
+        }
+      ]
+    },
+    "Strobe Extended": {
+      "type": "Strobe",
+      "name": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Open"
+        },
+        {
+          "range": [6, 10],
+          "name": "Closed"
+        },
+        {
+          "range": [11, 33],
+          "name": "Pulse random slow-fast"
+        },
+        {
+          "range": [34, 56],
+          "name": "Ramp up random slow-fast"
+        },
+        {
+          "range": [57, 79],
+          "name": "Ramp down random slow-fast"
+        },
+        {
+          "range": [80, 102],
+          "name": "Random strobe slow-fast"
+        },
+        {
+          "range": [103, 127],
+          "name": "Strobe break 5-1s"
+        },
+        {
+          "range": [128, 250],
+          "name": "Strobe 1-30Hz"
+        },
+        {
+          "range": [251, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Flash Duration": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0-510ms"
+        }
+      ]
+    },
     "Auto Programs": {
       "type": "Effect",
       "capabilities": [
@@ -72,60 +149,6 @@
         {
           "range": [236, 255],
           "name": "Auto Program 11"
-        }
-      ]
-    },
-    "Master Dimmer": {
-      "type": "Intensity"
-    },
-    "Strobe Extended": {
-      "type": "Strobe",
-      "name": "Strobe",
-      "capabilities": [
-        {
-          "range": [0, 5],
-          "name": "Open"
-        },
-        {
-          "range": [6, 10],
-          "name": "Closed"
-        },
-        {
-          "range": [11, 33],
-          "name": "Pulse random slow-fast"
-        },
-        {
-          "range": [34, 56],
-          "name": "Ramp up random slow-fast"
-        },
-        {
-          "range": [57, 79],
-          "name": "Ramp down random slow-fast"
-        },
-        {
-          "range": [80, 102],
-          "name": "Random strobe slow-fast"
-        },
-        {
-          "range": [103, 127],
-          "name": "Strobe break 5-1s"
-        },
-        {
-          "range": [128, 250],
-          "name": "Strobe 1-30Hz"
-        },
-        {
-          "range": [251, 255],
-          "name": "Open"
-        }
-      ]
-    },
-    "Flash Duration": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "0-510ms"
         }
       ]
     },
@@ -442,31 +465,8 @@
         }
       ]
     },
-    "Master Dimmer Invert": {
-      "type": "Intensity",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Invert Dimmer 0-100% (Switch active and inactive LEDs)"
-        }
-      ]
-    },
     "Dimmer LED $pixelKey": {
       "type": "Intensity"
-    },
-    "Strobe Simple": {
-      "name": "Strobe",
-      "type": "Strobe",
-      "capabilities": [
-        {
-          "range": [0, 5],
-          "name": "Off"
-        },
-        {
-          "range": [6, 255],
-          "name": "Strobe 1-30Hz"
-        }
-      ]
     }
   },
   "modes": [
