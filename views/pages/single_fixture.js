@@ -235,7 +235,7 @@ function handleFixtureInfo() {
   if (fixture.hasComment) {
     str += '<section class="comment">';
     str += '  <span class="label">Comment</span>';
-    str += `  <span class="value">${fixture.comment.split(/\n/).map(line => htmlEscape(line).join('<br />'))}</span>`;
+    str += `  <span class="value">${fixture.comment.split(/\n/).map(line => htmlEscape(line)).join('<br />')}</span>`;
     str += '</section>';
   }
 
