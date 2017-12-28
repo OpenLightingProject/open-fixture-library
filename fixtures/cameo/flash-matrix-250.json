@@ -78,8 +78,9 @@
     "Master Dimmer": {
       "type": "Intensity"
     },
-    "Strobe": {
+    "Strobe Extended": {
       "type": "Strobe",
+      "name": "Strobe",
       "capabilities": [
         {
           "range": [0, 5],
@@ -128,7 +129,7 @@
         }
       ]
     },
-    "Auto Programs 2": {
+    "Auto Programs / Sound Mode": {
       "name": "Auto Programs",
       "type": "Effect",
       "capabilities": [
@@ -453,7 +454,7 @@
     "Dimmer LED $pixelKey": {
       "type": "Intensity"
     },
-    "Strobe 2": {
+    "Strobe Simple": {
       "name": "Strobe",
       "type": "Strobe",
       "capabilities": [
@@ -481,7 +482,7 @@
       "shortName": "2ch",
       "channels": [
         "Master Dimmer",
-        "Strobe"
+        "Strobe Extended"
       ]
     },
     {
@@ -489,7 +490,7 @@
       "shortName": "3ch",
       "channels": [
         "Master Dimmer",
-        "Strobe",
+        "Strobe Extended",
         "Flash Duration"
       ]
     },
@@ -498,9 +499,9 @@
       "shortName": "5ch",
       "channels": [
         "Master Dimmer",
-        "Strobe",
+        "Strobe Extended",
         "Flash Duration",
-        "Auto Programs 2",
+        "Auto Programs / Sound Mode",
         "Program Speed / Sound Sensitivity"
       ]
     },
@@ -509,7 +510,7 @@
       "shortName": "9ch",
       "channels": [
         "Master Dimmer",
-        "Strobe",
+        "Strobe Extended",
         "Pattern Type",
         "Pattern Select",
         "Pattern Speed",
@@ -531,9 +532,9 @@
       "shortName": "30ch",
       "channels": [
         "Master Dimmer",
-        "Strobe 2",
+        "Strobe Simple",
         "Flash Duration",
-        "Auto Programs 2",
+        "Auto Programs / Sound Mode",
         "Program Speed / Sound Sensitivity",
         "Dimmer LED $pixelKey"
       ]
