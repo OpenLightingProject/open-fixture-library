@@ -158,55 +158,94 @@
       "capabilities": [
         {
           "range": [0, 5],
-          "name": "Off"
+          "name": "Off",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [6, 23],
-          "name": "Auto Program 1"
+          "name": "Auto Program 1",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [24, 41],
-          "name": "Auto Program 2"
+          "name": "Auto Program 2",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [42, 89],
-          "name": "Auto Program 3"
+          "name": "Auto Program 3",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [90, 107],
-          "name": "Auto Program 4"
+          "name": "Auto Program 4",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [108, 125],
-          "name": "Auto Program 5"
+          "name": "Auto Program 5",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [126, 143],
-          "name": "Auto Program 6"
+          "name": "Auto Program 6",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [144, 161],
-          "name": "Auto Program 7"
+          "name": "Auto Program 7",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [162, 179],
-          "name": "Auto Program 8"
+          "name": "Auto Program 8",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [180, 197],
-          "name": "Auto Program 9"
+          "name": "Auto Program 9",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [198, 215],
-          "name": "Auto Program 10"
+          "name": "Auto Program 10",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [216, 233],
-          "name": "Auto Program 11"
+          "name": "Auto Program 11",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [234, 255],
-          "name": "Sound Mode"
+          "name": "Sound Mode",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         }
       ]
     },
@@ -215,9 +254,6 @@
     },
     "Sound Sensitivity": {
       "type": "Intensity"
-    },
-    "Program Speed / Sound Sensitivity": {
-      "type": "Switching Channel"
     },
     "Pattern Type": {
       "type": "Effect",
