@@ -12,7 +12,7 @@ const schema = require('js-schema');
  *
  * @type {string}
  */
-module.exports.VERSION = '3.0.1';
+module.exports.VERSION = '3.0.0';
 
 /**
  * see https://github.com/molnarg/js-schema
