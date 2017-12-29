@@ -255,10 +255,11 @@ const properties = {
   URL:                     URL.toJSON(),
   DMXValue:                DMXValue.toJSON()
 };
-properties.meta  = properties.fixture.meta.properties;
-properties.bulb  = properties.physical.bulb.properties;
-properties.lens  = properties.physical.lens.properties;
-properties.focus = properties.physical.focus.properties;
+properties.meta         = properties.fixture.meta.properties;
+properties.bulb         = properties.physical.bulb.properties;
+properties.lens         = properties.physical.lens.properties;
+properties.focus        = properties.physical.focus.properties;
+properties.matrixPixels = properties.physical.matrixPixels.properties;
 /* eslint-enable key-spacing */
 
 module.exports.properties = properties;
