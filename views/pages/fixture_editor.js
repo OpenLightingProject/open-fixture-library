@@ -127,18 +127,12 @@ module.exports = function(options) {
   str += '</label>';
   str += '</section>';
 
-  str += '<section class="categories">';
-  str += '<label class="validate-group">';
+  str += '<section class="categories validate-group">';
   str += '<span class="label">Categories</span>';
   str += '<span class="value">';
-  str += `<select multiple required size="${Object.keys(options.register.categories).length}" v-model="fixture.categories">`;
-  for (const cat of properties.category.enum) {
-    str += `<option value="${cat}">${cat}</option>`;
-  }
-  str += '</select>';
+  str += '<category-chooser v-model="fixture.categories"></category-chooser>';
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
-  str += '</label>';
   str += '</section>';
 
   str += '<section class="comment">';
@@ -253,6 +247,7 @@ module.exports = function(options) {
 
   str += '</div>';
 
+  str += getCategoryChooserTemplate();
   str += getPhysicalTemplate();
   str += getModeTemplate();
   str += getCapabilityTemplate();
@@ -264,6 +259,36 @@ module.exports = function(options) {
 
   return str;
 };
+
+/**
+ * @returns {!string} The Vue template for a <div> containing the fixture's category chooser.
+ */
+function getCategoryChooserTemplate() {
+  const categories = JSON.stringify(properties.category.enum.map(
+    cat => ({
+      name: cat,
+      icon: svg.getCategoryIcon(cat),
+      selected: false
+    })
+  ));
+
+  let str = `<script type="text/javascript">window.oflFixtureCategories = ${categories};</script>`;
+
+  str += '<script type="text/x-template" id="template-category-chooser">';
+  str += '<div>';
+
+  str += '<draggable v-model="selectedCategories" element="span">';
+  str += '  <a href="#" v-for="cat in selectedCategories" @click.prevent="deselect(cat)" class="category-badge selected"><span v-html="cat.icon"></span> {{cat.name}}</a>';
+  str += '</draggable>';
+
+  str += '<a href="#" v-for="cat in unselectedCategories" @click.prevent="select(cat)" class="category-badge"><span v-html="cat.icon"></span> {{cat.name}}</a>';
+
+  str += '<span class="hint">Select and reorder all applicable categories, the most suitable first.</span>';
+  str += '</div>';
+  str += '</script>'; // #template-category-chooser
+
+  return str;
+}
 
 /**
  * @returns {!string} The Vue template for a <div> containing a fixture's or mode's physical information.
@@ -471,6 +496,7 @@ function getModeTemplate() {
 
   str += '<h3>Channels</h3>';
 
+  str += '<div class="validate-group mode-channels">';
   str += '<draggable v-model="mode.channels" :options="dragOptions">';
   str += '  <transition-group class="mode-channels" name="mode-channels" tag="ol">';
   str += '    <li v-for="(channelUuid, index) in mode.channels" :key="channelUuid" :data-channel-uuid="channelUuid">';
@@ -482,6 +508,8 @@ function getModeTemplate() {
   str += '    </li>';
   str += '  </transition-group>';
   str += '</draggable>';
+  str += '<span class="error-message" hidden></span>';
+  str += '</div>';
 
   str += '<a href="#add-channel" class="button primary" @click.prevent="addChannel">add channel</a>';
 

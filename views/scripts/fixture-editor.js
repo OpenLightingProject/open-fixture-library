@@ -99,6 +99,48 @@ Vue.component('a11y-dialog', {
 
 Vue.component('draggable', draggable);
 
+Vue.component('category-chooser', {
+  template: '#template-category-chooser',
+  props: ['value'],
+  data: function() {
+    return {
+      allCategories: JSON.parse(JSON.stringify(window.oflFixtureCategories))
+    };
+  },
+  computed: {
+    selectedCategories: {
+      get: function() {
+        var self = this;
+        return this.value.map(function(catName) {
+          return self.allCategories.find(function(cat) {
+            return cat.name === catName;
+          });
+        });
+      },
+      set: function(newSelectedCategories) {
+        this.$emit('input', newSelectedCategories.map(function(cat) {
+          return cat.name;
+        }));
+      }
+    },
+    unselectedCategories: function() {
+      var self = this;
+      return this.allCategories.filter(function(cat) {
+        return self.value.indexOf(cat.name) === -1;
+      });
+    }
+  },
+  methods: {
+    select: function(cat) {
+      this.value.push(cat.name);
+    },
+    deselect: function(cat) {
+      var index = this.value.indexOf(cat.name);
+      this.value.splice(index, 1);
+    }
+  }
+});
+
 Vue.component('physical-data', {
   template: '#template-physical',
   props: ['value'],
