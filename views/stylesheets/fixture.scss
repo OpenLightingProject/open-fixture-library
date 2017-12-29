@@ -96,7 +96,7 @@
 .category-badge {
   display: inline-block;
   padding: 4px 1.5ex 4px 1ex;
-  margin: 0 0 4px;
+  margin: 0 4px 4px 0;
   border-radius: 5000px; /* see http://stackoverflow.com/a/18795153/451391 */
   background: $grey-100;
 
@@ -112,6 +112,7 @@
 
   &.selected {
     background-color: $blue-700;
+    cursor: move;
 
     &:link,
     &:visited {
@@ -333,7 +334,7 @@ a.fixture-mode {
   content: " #" counter(modes);
 }
 
-.mode-channels {
+ol.mode-channels {
   padding-left: 1.9em;
   min-height: 1em;
 

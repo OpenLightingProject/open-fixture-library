@@ -226,9 +226,9 @@ function handleFixtureInfo() {
   let str = '<section class="categories">';
   str += '  <span class="label">Categories</span>';
   str += '  <span class="value">';
-  str += fixture.categories.map(
-    cat => `<a href="/categories/${encodeURIComponent(cat)}" class="category-badge">${svg.getCategoryIcon(cat)} ${cat}</a>`
-  ).join(' ');
+  for (const cat of fixture.categories) {
+    str += `<a href="/categories/${encodeURIComponent(cat)}" class="category-badge">${svg.getCategoryIcon(cat)} ${cat}</a>`;
+  }
   str += '  </span>';
   str += '</section>';
 
