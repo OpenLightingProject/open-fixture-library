@@ -127,10 +127,17 @@ module.exports = function(options) {
   str += '</label>';
   str += '</section>';
 
+  const fixtureCategories = JSON.stringify(properties.category.enum.map(
+    cat => ({
+      name: cat,
+      icon: svg.getCategoryIcon(cat)
+    })
+  )).replace(/"/g, '\'');
+
   str += '<section class="categories validate-group">';
   str += '<span class="label">Categories</span>';
   str += '<span class="value">';
-  str += '<category-chooser v-model="fixture.categories"></category-chooser>';
+  str += `<category-chooser :all-categories="${fixtureCategories}" v-model="fixture.categories"></category-chooser>`;
   str += '<span class="error-message" hidden></span>';
   str += '</span>';
   str += '</section>';
@@ -264,17 +271,7 @@ module.exports = function(options) {
  * @returns {!string} The Vue template for a <div> containing the fixture's category chooser.
  */
 function getCategoryChooserTemplate() {
-  const categories = JSON.stringify(properties.category.enum.map(
-    cat => ({
-      name: cat,
-      icon: svg.getCategoryIcon(cat),
-      selected: false
-    })
-  ));
-
-  let str = `<script type="text/javascript">window.oflFixtureCategories = ${categories};</script>`;
-
-  str += '<script type="text/x-template" id="template-category-chooser">';
+  let str = '<script type="text/x-template" id="template-category-chooser">';
   str += '<div>';
 
   str += '<draggable v-model="selectedCategories" element="span">';

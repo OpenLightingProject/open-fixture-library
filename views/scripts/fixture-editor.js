@@ -101,12 +101,7 @@ Vue.component('draggable', draggable);
 
 Vue.component('category-chooser', {
   template: '#template-category-chooser',
-  props: ['value'],
-  data: function() {
-    return {
-      allCategories: JSON.parse(JSON.stringify(window.oflFixtureCategories))
-    };
-  },
+  props: ['value', 'allCategories'],
   computed: {
     selectedCategories: {
       get: function() {
