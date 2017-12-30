@@ -245,16 +245,20 @@ div.channel > .icon {
   & > .row {
     display: block;
     margin-top: -1px;
-    white-space: nowrap;
 
     & > .pixel {
       display: inline-block;
-      width: 3em;
-      height: 3em;
-      line-height: 3em;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -ms-flex-align: center;
+      align-items: center;
+      line-height: 1.4em;
       text-align: center;
       margin-left: -1px;
       vertical-align: top;
+      font-size: 90%;
       border: 1px solid transparent;
       transition: background .2s;
 

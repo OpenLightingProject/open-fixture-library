@@ -395,14 +395,17 @@ function handleFixtureMatrix() {
 function handleMatrixStructure() {
   let str = '';
 
-  let pixelSizing = '';
+  const baseHeight = 3.2; // in em
+
+  let pixelSizing = `height: ${baseHeight}em; `;
   if (fixture.physical !== null && fixture.physical.hasMatrixPixels) {
-    const scale = 1 / 10; // mm
-    pixelSizing += `width: ${fixture.physical.matrixPixelsDimensions[0] * scale}mm; `;
-    pixelSizing += `height: ${fixture.physical.matrixPixelsDimensions[1] * scale}mm; `;
-    pixelSizing += `line-height: ${fixture.physical.matrixPixelsDimensions[1] * scale}mm; `;
-    pixelSizing += `margin-right: ${fixture.physical.matrixPixelsSpacing[0] * scale}mm; `;
-    pixelSizing += `margin-bottom: ${fixture.physical.matrixPixelsSpacing[1] * scale}mm; `;
+    const scale = baseHeight / fixture.physical.matrixPixelsDimensions[1];
+    pixelSizing += `width: ${fixture.physical.matrixPixelsDimensions[0] * scale}em; `;
+    pixelSizing += `margin-right: ${fixture.physical.matrixPixelsSpacing[0] * scale}em; `;
+    pixelSizing += `margin-bottom: ${fixture.physical.matrixPixelsSpacing[1] * scale}em; `;
+  }
+  else {
+    pixelSizing += `width: ${baseHeight}em; `;
   }
 
   for (const zLevel of fixture.matrix.pixelKeyStructure) {
