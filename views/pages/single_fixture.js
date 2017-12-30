@@ -265,7 +265,7 @@ function handleFixtureInfo() {
   }
 
   if (fixture.matrix !== null) {
-    str += '<h3 class="physical">Matrix</h3>';
+    str += '<h3 class="matrix">Matrix</h3>';
     str += '<section class="matrix">';
     str += handleFixtureMatrix();
     str += '</section>';
@@ -368,6 +368,7 @@ function handlePhysicalData(physical) {
  */
 function handleFixtureMatrix() {
   let str = handleMatrixStructure();
+  str += '<span class="hint">Front view</span>';
 
   if (fixture.matrix.pixelGroupKeys.length > 0) {
     str += '<section class="matrix-pixelGroups">';
@@ -375,7 +376,7 @@ function handleFixtureMatrix() {
     str += '<span class="hint">Hover over the pixel groups to highlight the corresponding pixels.</span>';
 
     str += fixture.matrix.pixelGroupKeys.map(key =>
-      `<section class="matrix-pixelGroup" data-pixelGroup="${key}">
+      `<section class="matrix-pixelGroup" data-pixel-group="${key}">
         <span class="label">${htmlEscape(key)}</span>
         <span class="value">${htmlEscape(fixture.matrix.pixelGroups[key].join(', '))}</span>
       </section>`
@@ -412,7 +413,7 @@ function handleMatrixStructure() {
         const pixelGroupKeys = fixture.matrix.pixelGroupKeys.filter(
           key => fixture.matrix.pixelGroups[key].includes(pixelKey)
         );
-        str += `<div class="pixel" style="${pixelSizing}" data-pixelGroups="${pixelGroupKeys.join(' ')}">${htmlEscape(pixelKey || '')}</div>`;
+        str += `<div class="pixel" style="${pixelSizing}" data-pixel-groups='${JSON.stringify(pixelGroupKeys)}'>${htmlEscape(pixelKey || '')}</div>`;
       }
       str += '</div>';
     }
