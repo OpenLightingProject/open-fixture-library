@@ -21,6 +21,21 @@
   },
   {
     "man": "chauvet-dj",
+    "key": "gigbar-2",
+    "name": "GigBAR 2",
+    "features": [
+      "duplicate-channel-names",
+      "floating-point-weight",
+      "matrix-pixelKeys",
+      "matrix-pixelGroups",
+      "matrix-custom-layout",
+      "matrix-channel-used-directly",
+      "multiple-categories",
+      "reused-channels"
+    ]
+  },
+  {
+    "man": "chauvet-dj",
     "key": "slimpar-pro-h-usb",
     "name": "SlimPAR Pro H USB",
     "features": [
@@ -56,12 +71,14 @@
   },
   {
     "man": "eurolite",
-    "key": "led-kls-801",
-    "name": "LED KLS-801",
+    "key": "led-tmh-x25",
+    "name": "LED TMH-X25",
     "features": [
+      "fine-channel-alias",
+      "floating-point-weight",
       "matrix-pixelCount",
-      "matrix-channel-used-directly",
-      "switching-channels"
+      "multiple-categories",
+      "reused-channels"
     ]
   },
   {
@@ -98,20 +115,6 @@
       "floating-point-weight",
       "multiple-categories",
       "rdm",
-      "reused-channels",
-      "switching-channels",
-      "switching-fine-channels"
-    ]
-  },
-  {
-    "man": "showtec",
-    "key": "horizon-8",
-    "name": "Horizon 8",
-    "features": [
-      "fine-channel-alias",
-      "matrix-pixelKeys",
-      "matrix-pixelGroups",
-      "multiple-categories",
       "reused-channels",
       "switching-channels",
       "switching-fine-channels"
