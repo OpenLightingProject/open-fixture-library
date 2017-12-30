@@ -258,6 +258,7 @@ module.exports = function(options) {
   str += getPhysicalTemplate();
   str += getModeTemplate();
   str += getCapabilityTemplate();
+  str += getCapabilityWizardTemplate();
   str += getDialogTemplate();
 
   options.footerHtml = '<script type="text/javascript" src="/js/fixture-editor.js" async></script>';
@@ -539,6 +540,86 @@ function getCapabilityTemplate() {
 }
 
 /**
+ * @returns {!string} The Vue template for the Capability Wizard.
+ */
+function getCapabilityWizardTemplate() {
+  let str = '<script type="text/x-template" id="template-capability-wizard">';
+  str += '<div class="capability-wizard">';
+
+  str += 'Generate multiple capabilities with same range width.';
+
+  str += '<section>';
+  str += '  <label>';
+  str += '    <span class="label">DMX start value</span>';
+  str += '    <span class="value">';
+  str += '      <input type="number" min="0" :max="dmxMax" step="1" v-model.number="wizard.start" ref="firstInput" />';
+  str += '    </span>';
+  str += '  </label>';
+  str += '</section>';
+
+  str += '<section>';
+  str += '  <label>';
+  str += '    <span class="label">Range width</span>';
+  str += '    <span class="value">';
+  str += '      <input type="number" min="1" :max="dmxMax" step="1" v-model.number="wizard.width" />';
+  str += '    </span>';
+  str += '  </label>';
+  str += '</section>';
+
+  str += '<section>';
+  str += '  <label>';
+  str += '    <span class="label">Count</span>';
+  str += '    <span class="value">';
+  str += '      <input type="number" min="1" :max="dmxMax" step="1" v-model.number="wizard.count" />';
+  str += '    </span>';
+  str += '  </label>';
+  str += '</section>';
+
+  str += '<section>';
+  str += '  <label>';
+  str += '    <span class="label">Name</span>';
+  str += '    <span class="value">';
+  str += '      <input type="text" required v-model.number="wizard.templateName" />';
+  str += '      <span class="hint"># will be replaced with an increasing number</span>';
+  str += '    </span>';
+  str += '  </label>';
+  str += '</section>';
+
+  str += '<table class="capabilities-table computed">';
+  str += '<colgroup>';
+  str += '  <col style="width: 5.8ex">';
+  str += '  <col style="width: 1ex">';
+  str += '  <col style="width: 5.8ex">';
+  str += '  <col style="width: 10em">';
+  str += '</colgroup>';
+  str += '<thead><tr>';
+  str += '  <th colspan="3" style="text-align: center">DMX values</th>';
+  str += '  <th>Capability</th>';
+  str += '</tr></thead>';
+  str += '<tbody>';
+  str += '  <tr v-for="capability in allCapabilities" :class="capability.type">';
+  str += '    <td class="capability-range0"><code>{{capability.start}}</code></td>';
+  str += '    <td class="capability-range-separator"><code>…</code></td>';
+  str += '    <td class="capability-range1"><code>{{capability.end}}</code></td>';
+  str += '    <td class="capability-name">{{capability.name}}</td>';
+  str += '  </tr>';
+  str += '</tbody>';
+  str += '</table>';
+
+  str += '<span class="error-message" v-if="error">{{error}}</span>';
+
+  str += '<div class="button-bar right">';
+  str += '<button class="restore primary" :disabled="error" @click.prevent="apply">Generate capabilities</button>';
+  str += '</div>';
+
+
+  str += '</div>';
+  str += '</script>'; // #template-capability-wizard
+
+  return str;
+}
+
+/**
  * @returns {!string} The Vue template for a dialog.
  */
 function getDialogTemplate() {
@@ -726,14 +807,18 @@ function getChannelDialogString() {
   str += '</label>';
   str += '</section>';
 
-  str += '<ul class="capability-editor">';
+  str += `<section><button class="secondary" @click.prevent="channel.wizard.show = !channel.wizard.show">${svg.getSvg('capability-wizard')} {{ channel.wizard.show ? 'Close' : 'Open' }} Capability Wizard</button>`;
+
+  str += '<capability-wizard v-if="channel.wizard.show" :wizard="channel.wizard" :capabilities="channel.capabilities" :fineness="Math.min(channel.fineness, channel.capFineness)" @close="channel.wizard.show = false"></capability-wizard>';
+
+  str += '<ul class="capability-editor" v-else>';
   str += '  <channel-capability v-for="cap in channel.capabilities" :key="cap.uuid" :capability="cap" :capabilities="channel.capabilities" :fineness="Math.min(channel.fineness, channel.capFineness)" @scroll-item-inserted="capabilitiesScroll"></channel-capability>';
   str += '</ul>';
 
   str += '</div>';  // [v-else]
 
   str += '<div class="button-bar right">';
-  str += '<button type="submit" class="primary">{{ channel.editMode === "add-existing" ? "Add channel" : channel.editMode === "create" ? "Create channel" : "Save changes" }}</button>';
+  str += '<button type="submit" class="primary" :disabled="channel.wizard.show">{{ channel.editMode === "add-existing" ? "Add channel" : channel.editMode === "create" ? "Create channel" : "Save changes" }}</button>';
   str += '</div>';
 
   str += '</form>';

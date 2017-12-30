@@ -400,7 +400,10 @@ ol.mode-channels {
 .capabilities-table {
   border-collapse: collapse;
   table-layout: fixed;
-  width: 100%;
+
+  &:not(.computed) {
+    width: 100%;
+  }
 
   th {
     font-weight: normal;
@@ -440,6 +443,15 @@ ol.mode-channels {
     & > .switching-channel-key {
       color: $secondary-text-dark;
     }
+  }
+
+  .inherited,
+  .inherited code {
+    color: $disabled-text-dark;
+  }
+  .computed,
+  .computed code {
+    color: $primary-text-dark;
   }
 }
 
