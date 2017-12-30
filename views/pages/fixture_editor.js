@@ -522,15 +522,16 @@ function getModeTemplate() {
 function getCapabilityTemplate() {
   let str = '<script type="text/x-template" id="template-capability">';
   str += '<li class="capability validate-group">';
-  str += '<input type="number" class="rangeStart" :min="startMin" :max="startMax" placeholder="start" v-model.number="capability.start" :required="isChanged"> .. ';
-  str += '<input type="number" class="rangeEnd" :min="endMin" :max="endMax" placeholder="end" v-model.number="capability.end" :required="isChanged"> ';
-  str += '<span class="value">';
-  str += '<input type="text" placeholder="name" v-model="capability.name" class="name" :required="isChanged"><br/>';
-  str += '<input type="text" placeholder="color" pattern="^#[0-9a-f]{6}$" title="#rrggbb" v-model="capability.color" class="color"> ';
-  str += '<input type="text" placeholder="color 2" pattern="^#[0-9a-f]{6}$" title="#rrggbb" v-model="capability.color2" v-if="capability.color !== \'\'" class="color">';
-  str += '</span>';
-  str += '<span class="error-message" hidden></span>';
-  str += `<a href="#remove" class="remove" title="Remove capability" v-if="isChanged" @click.prevent="remove">${svg.getSvg('close')}</a>`;
+  str += '  <input type="number" class="rangeStart" :min="startMin" :max="startMax" placeholder="start" v-model.number="capability.start" :required="isChanged">';
+  str += '  <span class="range-separator">…</span>';
+  str += '  <input type="number" class="rangeEnd" :min="endMin" :max="endMax" placeholder="end" v-model.number="capability.end" :required="isChanged">';
+  str += '  <span class="capability-data">';
+  str += '    <input type="text" placeholder="name" v-model="capability.name" class="name" :required="isChanged"><br/>';
+  str += '    <input type="text" placeholder="color" pattern="^#[0-9a-f]{6}$" title="#rrggbb" v-model="capability.color" class="color"> ';
+  str += '    <input type="text" placeholder="color 2" pattern="^#[0-9a-f]{6}$" title="#rrggbb" v-model="capability.color2" v-if="capability.color !== \'\'" class="color">';
+  str += '  </span>';
+  str += `  <span class="buttons"><a href="#remove" class="remove" title="Remove capability" v-if="isChanged" @click.prevent="remove">${svg.getSvg('close')}</a></span>`;
+  str += '  <span class="error-message" hidden></span>';
   str += '</li>';
   str += '</script>'; // #template-capability
 
@@ -725,8 +726,8 @@ function getChannelDialogString() {
   str += '</label>';
   str += '</section>';
 
-  str += '<ul class="capabilities">';
-  str += '<channel-capability v-for="cap in channel.capabilities" :key="cap.uuid" :capability="cap" :capabilities="channel.capabilities" :fineness="Math.min(channel.fineness, channel.capFineness)" @scroll-item-inserted="capabilitiesScroll"></channel-capability>';
+  str += '<ul class="capability-editor">';
+  str += '  <channel-capability v-for="cap in channel.capabilities" :key="cap.uuid" :capability="cap" :capabilities="channel.capabilities" :fineness="Math.min(channel.fineness, channel.capFineness)" @scroll-item-inserted="capabilitiesScroll"></channel-capability>';
   str += '</ul>';
 
   str += '</div>';  // [v-else]
