@@ -51,7 +51,8 @@ if (!Array.prototype.findIndex) {
 if (!Array.prototype.find) {
   Object.defineProperty(Array.prototype, 'find', {
     value: function(predicate) {
-      return this[this.findIndex(predicate)];
+      var index = this.findIndex(predicate);
+      return index === -1 ? undefined : this[index];
     }
   });
 }
