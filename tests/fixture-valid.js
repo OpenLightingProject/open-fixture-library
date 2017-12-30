@@ -576,8 +576,8 @@ function checkMatrixInsertBlock(matrixInsertBlock, mode) {
  * @param {!Mode} mode The mode in which the insert block is used.
  */
 function checkMatrixInsertBlockRepeatFor(repeatFor, mode) {
-  if (repeatFor === 'eachPixel' || repeatFor === 'eachPixelGroup') {
-    // no custom pixel key list
+  if (typeof repeatFor === 'string') {
+    // no custom pixel key list, keywords are already tested by schema
     return;
   }
 

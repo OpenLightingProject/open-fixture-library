@@ -12,7 +12,7 @@ const schema = require('js-schema');
  *
  * @type {string}
  */
-module.exports.VERSION = '3.0.0';
+module.exports.VERSION = '4.0.0';
 
 /**
  * see https://github.com/molnarg/js-schema
@@ -172,7 +172,17 @@ const ChannelReference = [
   ChannelAliasKey, // fine or switching channel keys
   {
     'insert': 'matrixChannels',
-    'repeatFor': ['eachPixel', 'eachPixelGroup', Array.of(1, Infinity, [PixelKey, PixelGroupKey])],
+    'repeatFor': [
+      'eachPixelABC',
+      'eachPixelXYZ',
+      'eachPixelXZY',
+      'eachPixelYXZ',
+      'eachPixelYZX',
+      'eachPixelZXY',
+      'eachPixelZYX',
+      'eachPixelGroup',
+      Array.of(1, Infinity, [PixelKey, PixelGroupKey])
+    ],
     'channelOrder': ['perPixel', 'perChannel'],
     'templateChannels': Array.of(1, Infinity, TemplateChannelReference),
     '*': Function
