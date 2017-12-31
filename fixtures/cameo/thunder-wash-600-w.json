@@ -220,7 +220,7 @@
         "Flash Duration",
         {
           "insert": "matrixChannels",
-          "repeatFor": "eachPixel",
+          "repeatFor": "eachPixelABC",
           "channelOrder": "perPixel",
           "templateChannels": [
             "LED$pixelKey Dimmer"

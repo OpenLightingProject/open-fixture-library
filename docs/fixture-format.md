@@ -192,7 +192,7 @@ Then, either use the resolved channel keys directly in a mode's channel list, or
     "Strobe",
     {
       "insert": "matrixChannels", // static value for matrix channels
-      "repeatFor": "eachPixel", // or "eachPixelGroup", or an array of pixel (group) keys
+      "repeatFor": "eachPixelXYZ", // see below
       "channelOrder": "perPixel", // or "perChannel"
       "templateChannels": [
         "Red $pixelKey",
@@ -203,6 +203,15 @@ Then, either use the resolved channel keys directly in a mode's channel list, or
   ]
 }
 ```
+
+`repeatFor` defines in which order and for which pixels / pixel groups the template channels shall be repeated. Possible values are:
+
+* An array of pixel (group) keys in the proper order
+* `"eachPixelABC"`: Gets computed into an alphanumerically sorted list of all pixelKeys
+* `"eachPixelXYZ"` / `"eachPixelZYX"` / ...: Gets computed into a list of all pixelKeys, sorted by position, depending on the used `X`/`Y`/`Z` combination.
+  - For example, `XYZ` orders the pixels like reading a book (latin script): First left-to-right (`X`, letter by letter), then top-to-bottom (`Y`, line by line), then front-to-back (`Z`, page by page). For a 3-dimensional 2×2×2 matrix, this results in `["(1, 1, 1)", "(2, 1, 1)", "(1, 2, 1)", "(2, 2, 1)", "(1, 1, 2)", "(2, 1, 2)", "(1, 2, 2)", "(2, 2, 2)]"`.
+* `"eachPixelGroup"`: Gets computed into an array of all pixel group keys, ordered by appearance in the JSON file.
+  - For the above [matrix structure](#matrix-structure) example, this results in `["Inner ring", "Middle ring", "Outer ring"]`.
 
 
 

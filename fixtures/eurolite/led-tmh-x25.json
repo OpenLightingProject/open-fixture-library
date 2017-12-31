@@ -515,7 +515,7 @@
         "Reset",
         {
           "insert": "matrixChannels",
-          "repeatFor": "eachPixel",
+          "repeatFor": "eachPixelXYZ",
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",

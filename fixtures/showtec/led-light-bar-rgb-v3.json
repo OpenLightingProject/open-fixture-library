@@ -358,7 +358,7 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": "eachPixel",
+          "repeatFor": "eachPixelXYZ",
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -387,7 +387,7 @@
         "Strobe2",
         {
           "insert": "matrixChannels",
-          "repeatFor": "eachPixel",
+          "repeatFor": "eachPixelXYZ",
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",

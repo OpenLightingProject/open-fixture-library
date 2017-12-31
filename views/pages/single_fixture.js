@@ -265,7 +265,7 @@ function handleFixtureInfo() {
   }
 
   if (fixture.matrix !== null) {
-    str += '<h3 class="physical">Matrix</h3>';
+    str += '<h3 class="matrix">Matrix</h3>';
     str += '<section class="matrix">';
     str += handleFixtureMatrix();
     str += '</section>';
@@ -368,6 +368,7 @@ function handlePhysicalData(physical) {
  */
 function handleFixtureMatrix() {
   let str = handleMatrixStructure();
+  str += '<span class="hint">Front view</span>';
 
   if (fixture.matrix.pixelGroupKeys.length > 0) {
     str += '<section class="matrix-pixelGroups">';
@@ -375,7 +376,7 @@ function handleFixtureMatrix() {
     str += '<span class="hint">Hover over the pixel groups to highlight the corresponding pixels.</span>';
 
     str += fixture.matrix.pixelGroupKeys.map(key =>
-      `<section class="matrix-pixelGroup" data-pixelGroup="${key}">
+      `<section class="matrix-pixelGroup" data-pixel-group="${key}">
         <span class="label">${htmlEscape(key)}</span>
         <span class="value">${htmlEscape(fixture.matrix.pixelGroups[key].join(', '))}</span>
       </section>`
@@ -394,14 +395,17 @@ function handleFixtureMatrix() {
 function handleMatrixStructure() {
   let str = '';
 
-  let pixelSizing = '';
+  const baseHeight = 3.2; // in em
+
+  let pixelSizing = `height: ${baseHeight}em; `;
   if (fixture.physical !== null && fixture.physical.hasMatrixPixels) {
-    const scale = 1 / 10; // mm
-    pixelSizing += `width: ${fixture.physical.matrixPixelsDimensions[0] * scale}mm; `;
-    pixelSizing += `height: ${fixture.physical.matrixPixelsDimensions[1] * scale}mm; `;
-    pixelSizing += `line-height: ${fixture.physical.matrixPixelsDimensions[1] * scale}mm; `;
-    pixelSizing += `margin-right: ${fixture.physical.matrixPixelsSpacing[0] * scale}mm; `;
-    pixelSizing += `margin-bottom: ${fixture.physical.matrixPixelsSpacing[1] * scale}mm; `;
+    const scale = baseHeight / fixture.physical.matrixPixelsDimensions[1];
+    pixelSizing += `width: ${fixture.physical.matrixPixelsDimensions[0] * scale}em; `;
+    pixelSizing += `margin-right: ${fixture.physical.matrixPixelsSpacing[0] * scale}em; `;
+    pixelSizing += `margin-bottom: ${fixture.physical.matrixPixelsSpacing[1] * scale}em; `;
+  }
+  else {
+    pixelSizing += `width: ${baseHeight}em; `;
   }
 
   for (const zLevel of fixture.matrix.pixelKeyStructure) {
@@ -412,7 +416,7 @@ function handleMatrixStructure() {
         const pixelGroupKeys = fixture.matrix.pixelGroupKeys.filter(
           key => fixture.matrix.pixelGroups[key].includes(pixelKey)
         );
-        str += `<div class="pixel" style="${pixelSizing}" data-pixelGroups="${pixelGroupKeys.join(' ')}">${htmlEscape(pixelKey || '')}</div>`;
+        str += `<div class="pixel" style="${pixelSizing}" data-pixel-groups='${JSON.stringify(pixelGroupKeys)}'>${htmlEscape(pixelKey || '')}</div>`;
       }
       str += '</div>';
     }
@@ -680,15 +684,13 @@ function handleMatrixChannel(channel) {
   }
 
   const [x, y, z] = fixture.matrix.pixelKeyPositions[channel.pixelKey];
-  return `<section class="channel-pixel">
-    ${getSimpleLabelValue('channel-pixel-key', 'Pixel', htmlEscape(channel.pixelKey))}
-    <section class="channel-pixel-position">
-      <span class="label">Pixel position</span>
-      <span class="value">
-        (${x}, ${y}, ${z})
-        <span class="hint">(X, Y, Z)</span>
-      </span>
-    </section>
+  return `${getSimpleLabelValue('channel-pixel-key', 'Pixel', htmlEscape(channel.pixelKey))}
+  <section class="channel-pixel-position">
+    <span class="label">Pixel position</span>
+    <span class="value">
+      (${x}, ${y}, ${z})
+      <span class="hint">(X, Y, Z)</span>
+    </span>
   </section>`;
 }
 

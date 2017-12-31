@@ -16,19 +16,22 @@ window.addEventListener('load', function() {
 
 /**
  * Searches the pixels of the given pixelGroup and (un)highlights them.
- * @param {!Node} pixelGroup The HTML <section> containing the information about the pixelGroup.
+ * @param {!HTMLElement} pixelGroup The HTML <section> containing the information about the pixelGroup.
  * @param {!boolean} highlight Whether or not to highlight the pixels.
  */
 function togglePixels(pixelGroup, highlight) {
-  var pixelGroupKey = pixelGroup.attributes['data-pixelGroup'].value;
-  var pixels = document.querySelectorAll('.pixel[data-pixelGroups~="' + pixelGroupKey + '"]');
+  var pixelGroupKey = pixelGroup.getAttribute('data-pixel-group');
+  var pixels = document.querySelectorAll('.pixel[data-pixel-groups]');
 
   pixels.forEach(function(pixel) {
-    if (highlight) {
-      pixel.classList.add('highlight');
-    }
-    else {
-      pixel.classList.remove('highlight');
+    var pixelGroups = JSON.parse(pixel.getAttribute('data-pixel-groups'));
+    if (pixelGroups.indexOf(pixelGroupKey) !== -1) {
+      if (highlight) {
+        pixel.classList.add('highlight');
+      }
+      else {
+        pixel.classList.remove('highlight');
+      }
     }
   });
 }
