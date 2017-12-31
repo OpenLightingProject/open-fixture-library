@@ -219,7 +219,6 @@ div.channel > .icon {
 .label {
   display: block;
   color: $secondary-text-dark;
-  vertical-align: top;
 }
 
 .value {
@@ -240,6 +239,7 @@ div.channel > .icon {
   overflow: auto;
   padding-top: 1px;
   padding-left: 1px;
+  margin-bottom: 8px;
 
   & > .row {
     display: block;
@@ -248,13 +248,19 @@ div.channel > .icon {
 
     & > .pixel {
       display: inline-block;
-      width: 3em;
-      height: 3em;
-      line-height: 3em;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -ms-flex-align: center;
+      align-items: center;
+      line-height: 1.4em;
       text-align: center;
       margin-left: -1px;
       vertical-align: top;
+      font-size: 90%;
       border: 1px solid transparent;
+      white-space: normal;
       transition: background .2s;
 
       &:not(:empty) {
@@ -526,15 +532,5 @@ ol.mode-channels {
   }
   .value {
     max-width: calc(100% - 12rem - 1ex);
-  }
-
-  /* for 2-column cards, do still display labels above values */
-  .fixture-modes {
-    .label {
-      display: block;
-    }
-    .value {
-      max-width: none;
-    }
   }
 }

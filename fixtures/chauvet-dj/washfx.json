@@ -22,6 +22,14 @@
       "type": "Fixed"
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["4", "5", "6"],
+        ["3", "2", "1"]
+      ]
+    ]
+  },
   "availableChannels": {
     "Red": {
       "type": "Single Color",
@@ -143,76 +151,18 @@
     },
     "Master Dimmer": {
       "type": "Intensity"
-    },
-    "Red 1": {
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
       "type": "Single Color",
       "color": "Red"
     },
-    "Green 1": {
+    "Green $pixelKey": {
       "type": "Single Color",
       "color": "Green"
     },
-    "Blue 1": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "Red 2": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green 2": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue 2": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "Red 3": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green 3": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue 3": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "Red 4": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green 4": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue 4": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "Red 5": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green 5": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue 5": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "Red 6": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green 6": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue 6": {
+    "Blue $pixelKey": {
       "type": "Single Color",
       "color": "Blue"
     }
@@ -238,24 +188,16 @@
         "Auto Program Speed",
         "Strobe",
         "Auto or Sound Program",
-        "Red 1",
-        "Green 1",
-        "Blue 1",
-        "Red 2",
-        "Green 2",
-        "Blue 2",
-        "Red 3",
-        "Green 3",
-        "Blue 3",
-        "Red 4",
-        "Green 4",
-        "Blue 4",
-        "Red 5",
-        "Green 5",
-        "Blue 5",
-        "Red 6",
-        "Green 6",
-        "Blue 6"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     }
   ]

@@ -55,12 +55,14 @@
     ]
   },
   {
-    "man": "eurolite",
-    "key": "led-kls-801",
-    "name": "LED KLS-801",
+    "man": "equinox",
+    "key": "gigabar",
+    "name": "Gigabar",
     "features": [
       "matrix-pixelCount",
+      "matrix-pixelGroups",
       "matrix-channel-used-directly",
+      "reused-channels",
       "switching-channels"
     ]
   },
@@ -98,20 +100,6 @@
       "floating-point-weight",
       "multiple-categories",
       "rdm",
-      "reused-channels",
-      "switching-channels",
-      "switching-fine-channels"
-    ]
-  },
-  {
-    "man": "showtec",
-    "key": "horizon-8",
-    "name": "Horizon 8",
-    "features": [
-      "fine-channel-alias",
-      "matrix-pixelKeys",
-      "matrix-pixelGroups",
-      "multiple-categories",
       "reused-channels",
       "switching-channels",
       "switching-fine-channels"
