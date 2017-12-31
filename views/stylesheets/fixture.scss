@@ -245,6 +245,7 @@ div.channel > .icon {
   & > .row {
     display: block;
     margin-top: -1px;
+    white-space: nowrap;
 
     & > .pixel {
       display: inline-block;
@@ -260,6 +261,7 @@ div.channel > .icon {
       vertical-align: top;
       font-size: 90%;
       border: 1px solid transparent;
+      white-space: normal;
       transition: background .2s;
 
       &:not(:empty) {
