@@ -351,8 +351,7 @@ ol.mode-channels {
   }
 }
 
-.mode-channels a,
-.capabilities a {
+.mode-channels a {
   opacity: 0;
   float: right;
   width: 1.4em;
@@ -361,9 +360,7 @@ ol.mode-channels {
   transition: opacity 0.1s;
 }
 .mode-channels > li:hover > a,
-.mode-channels a:focus,
-.capabilities > li:hover > a,
-.capabilities a:focus {
+.mode-channels a:focus {
   opacity: 1;
 }
 
@@ -371,7 +368,7 @@ ol.mode-channels {
   cursor: move;
 }
 
-.capabilities {
+.capability-editor {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -379,8 +376,10 @@ ol.mode-channels {
   & > li {
     padding: 1rem 0 0;
 
-    & > .value {
+    & > .capability-data {
       margin-left: 2ex;
+      display: inline-block;
+      vertical-align: top;
     }
 
     & .name {
@@ -389,13 +388,28 @@ ol.mode-channels {
     & .color {
       width: 10ex;
     }
+
+    & a {
+      opacity: 0;
+      width: 1.4em;
+      height: 1.4em;
+      padding: 0.3em;
+      transition: opacity 0.1s;
+    }
+    &:hover a,
+    & a:focus {
+      opacity: 1;
+    }
   }
 }
 
 .capabilities-table {
   border-collapse: collapse;
   table-layout: fixed;
-  width: 100%;
+
+  &:not(.computed) {
+    width: 100%;
+  }
 
   th {
     font-weight: normal;
@@ -423,6 +437,10 @@ ol.mode-channels {
     padding-left: 2px;
   }
 
+  &.computed .capability-name {
+    max-width: 20em;
+  }
+
   .capability-menuClick {
     text-align: right;
   }
@@ -435,6 +453,15 @@ ol.mode-channels {
     & > .switching-channel-key {
       color: $secondary-text-dark;
     }
+  }
+
+  .inherited,
+  .inherited code {
+    color: $disabled-text-dark;
+  }
+  .computed,
+  .computed code {
+    color: $primary-text-dark;
   }
 }
 

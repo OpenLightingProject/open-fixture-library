@@ -254,7 +254,6 @@ module.exports = function(options) {
 
   str += '</div>';
 
-  str += getCategoryChooserTemplate();
   str += getPhysicalTemplate();
   str += getModeTemplate();
   str += getCapabilityTemplate();
@@ -266,26 +265,6 @@ module.exports = function(options) {
 
   return str;
 };
-
-/**
- * @returns {!string} The Vue template for a <div> containing the fixture's category chooser.
- */
-function getCategoryChooserTemplate() {
-  let str = '<script type="text/x-template" id="template-category-chooser">';
-  str += '<div>';
-
-  str += '<draggable v-model="selectedCategories" element="span">';
-  str += '  <a href="#" v-for="cat in selectedCategories" @click.prevent="deselect(cat)" class="category-badge selected"><span v-html="cat.icon"></span> {{cat.name}}</a>';
-  str += '</draggable>';
-
-  str += '<a href="#" v-for="cat in unselectedCategories" @click.prevent="select(cat)" class="category-badge"><span v-html="cat.icon"></span> {{cat.name}}</a>';
-
-  str += '<span class="hint">Select and reorder all applicable categories, the most suitable first.</span>';
-  str += '</div>';
-  str += '</script>'; // #template-category-chooser
-
-  return str;
-}
 
 /**
  * @returns {!string} The Vue template for a <div> containing a fixture's or mode's physical information.
@@ -522,15 +501,16 @@ function getModeTemplate() {
 function getCapabilityTemplate() {
   let str = '<script type="text/x-template" id="template-capability">';
   str += '<li class="capability validate-group">';
-  str += '<input type="number" class="rangeStart" :min="startMin" :max="startMax" placeholder="start" v-model.number="capability.start" :required="isChanged"> .. ';
-  str += '<input type="number" class="rangeEnd" :min="endMin" :max="endMax" placeholder="end" v-model.number="capability.end" :required="isChanged"> ';
-  str += '<span class="value">';
-  str += '<input type="text" placeholder="name" v-model="capability.name" class="name" :required="isChanged"><br/>';
-  str += '<input type="text" placeholder="color" pattern="^#[0-9a-f]{6}$" title="#rrggbb" v-model="capability.color" class="color"> ';
-  str += '<input type="text" placeholder="color 2" pattern="^#[0-9a-f]{6}$" title="#rrggbb" v-model="capability.color2" v-if="capability.color !== \'\'" class="color">';
-  str += '</span>';
-  str += '<span class="error-message" hidden></span>';
-  str += `<a href="#remove" class="remove" title="Remove capability" v-if="isChanged" @click.prevent="remove">${svg.getSvg('close')}</a>`;
+  str += '  <input type="number" class="rangeStart" :min="startMin" :max="startMax" placeholder="start" v-model.number="capability.start" :required="isChanged">';
+  str += '  <span class="range-separator">…</span>';
+  str += '  <input type="number" class="rangeEnd" :min="endMin" :max="endMax" placeholder="end" v-model.number="capability.end" :required="isChanged">';
+  str += '  <span class="capability-data">';
+  str += '    <input type="text" placeholder="name" v-model="capability.name" class="name" :required="isChanged"><br/>';
+  str += '    <input type="text" placeholder="color" pattern="^#[0-9a-f]{6}$" title="#rrggbb" v-model="capability.color" class="color"> ';
+  str += '    <input type="text" placeholder="color 2" pattern="^#[0-9a-f]{6}$" title="#rrggbb" v-model="capability.color2" v-if="capability.color !== \'\'" class="color">';
+  str += '  </span>';
+  str += `  <span class="buttons"><a href="#remove" class="remove" title="Remove capability" v-if="isChanged" @click.prevent="remove">${svg.getSvg('close')}</a></span>`;
+  str += '  <span class="error-message" hidden></span>';
   str += '</li>';
   str += '</script>'; // #template-capability
 
@@ -725,14 +705,18 @@ function getChannelDialogString() {
   str += '</label>';
   str += '</section>';
 
-  str += '<ul class="capabilities">';
-  str += '<channel-capability v-for="cap in channel.capabilities" :key="cap.uuid" :capability="cap" :capabilities="channel.capabilities" :fineness="Math.min(channel.fineness, channel.capFineness)" @scroll-item-inserted="capabilitiesScroll"></channel-capability>';
+  str += `<section><button class="secondary" @click.prevent="channel.wizard.show = !channel.wizard.show">${svg.getSvg('capability-wizard')} {{ channel.wizard.show ? 'Close' : 'Open' }} Capability Wizard</button>`;
+
+  str += '<capability-wizard v-if="channel.wizard.show" :wizard="channel.wizard" :capabilities="channel.capabilities" :fineness="Math.min(channel.fineness, channel.capFineness)" @close="channel.wizard.show = false"></capability-wizard>';
+
+  str += '<ul class="capability-editor" v-else>';
+  str += '  <channel-capability v-for="(cap, index) in channel.capabilities" :key="cap.uuid" v-model="channel.capabilities" :cap-index="index" :fineness="Math.min(channel.fineness, channel.capFineness)" @scroll-item-inserted="capabilitiesScroll"></channel-capability>';
   str += '</ul>';
 
   str += '</div>';  // [v-else]
 
   str += '<div class="button-bar right">';
-  str += '<button type="submit" class="primary">{{ channel.editMode === "add-existing" ? "Add channel" : channel.editMode === "create" ? "Create channel" : "Save changes" }}</button>';
+  str += '<button type="submit" class="primary" :disabled="channel.wizard.show">{{ channel.editMode === "add-existing" ? "Add channel" : channel.editMode === "create" ? "Create channel" : "Save changes" }}</button>';
   str += '</div>';
 
   str += '</form>';
