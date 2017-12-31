@@ -642,7 +642,7 @@
         "Master White",
         {
           "insert": "matrixChannels",
-          "repeatFor": "eachPixel",
+          "repeatFor": "eachPixelABC",
           "channelOrder": "perPixel",
           "templateChannels": [
             "Pan $pixelKey",
@@ -661,7 +661,7 @@
         "Strobe",
         {
           "insert": "matrixChannels",
-          "repeatFor": "eachPixel",
+          "repeatFor": "eachPixelABC",
           "channelOrder": "perPixel",
           "templateChannels": [
             "Pan $pixelKey",
@@ -686,7 +686,7 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": "eachPixel",
+          "repeatFor": "eachPixelABC",
           "channelOrder": "perPixel",
           "templateChannels": [
             "Pan $pixelKey",

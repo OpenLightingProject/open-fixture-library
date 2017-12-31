@@ -577,7 +577,7 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": "eachPixel",
+          "repeatFor": "eachPixelXYZ",
           "channelOrder": "perPixel",
           "templateChannels": [
             "Dimmer LED $pixelKey"
@@ -596,7 +596,7 @@
         "Program Speed / Sound Sensitivity",
         {
           "insert": "matrixChannels",
-          "repeatFor": "eachPixel",
+          "repeatFor": "eachPixelXYZ",
           "channelOrder": "perPixel",
           "templateChannels": [
             "Dimmer LED $pixelKey"
