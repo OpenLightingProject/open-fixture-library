@@ -219,7 +219,6 @@ div.channel > .icon {
 .label {
   display: block;
   color: $secondary-text-dark;
-  vertical-align: top;
 }
 
 .value {
@@ -506,15 +505,5 @@ ol.mode-channels {
   }
   .value {
     max-width: calc(100% - 12rem - 1ex);
-  }
-
-  /* for 2-column cards, do still display labels above values */
-  .fixture-modes {
-    .label {
-      display: block;
-    }
-    .value {
-      max-width: none;
-    }
   }
 }
