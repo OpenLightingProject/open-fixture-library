@@ -49,7 +49,7 @@ module.exports = function(Vue) {
       '  <col style="width: 5.8ex">',
       '  <col style="width: 1ex">',
       '  <col style="width: 5.8ex">',
-      '  <col style="width: 10em">',
+      '  <col>',
       '</colgroup>',
       '<thead><tr>',
       '  <th colspan="3" style="text-align: center">DMX values</th>',

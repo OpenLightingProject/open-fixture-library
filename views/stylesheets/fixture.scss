@@ -431,6 +431,10 @@ ol.mode-channels {
     padding-left: 2px;
   }
 
+  &.computed .capability-name {
+    max-width: 20em;
+  }
+
   .capability-menuClick {
     text-align: right;
   }
