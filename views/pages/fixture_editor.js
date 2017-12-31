@@ -254,11 +254,9 @@ module.exports = function(options) {
 
   str += '</div>';
 
-  str += getCategoryChooserTemplate();
   str += getPhysicalTemplate();
   str += getModeTemplate();
   str += getCapabilityTemplate();
-  str += getCapabilityWizardTemplate();
   str += getDialogTemplate();
 
   options.footerHtml = '<script type="text/javascript" src="/js/fixture-editor.js" async></script>';
@@ -267,26 +265,6 @@ module.exports = function(options) {
 
   return str;
 };
-
-/**
- * @returns {!string} The Vue template for a <div> containing the fixture's category chooser.
- */
-function getCategoryChooserTemplate() {
-  let str = '<script type="text/x-template" id="template-category-chooser">';
-  str += '<div>';
-
-  str += '<draggable v-model="selectedCategories" element="span">';
-  str += '  <a href="#" v-for="cat in selectedCategories" @click.prevent="deselect(cat)" class="category-badge selected"><span v-html="cat.icon"></span> {{cat.name}}</a>';
-  str += '</draggable>';
-
-  str += '<a href="#" v-for="cat in unselectedCategories" @click.prevent="select(cat)" class="category-badge"><span v-html="cat.icon"></span> {{cat.name}}</a>';
-
-  str += '<span class="hint">Select and reorder all applicable categories, the most suitable first.</span>';
-  str += '</div>';
-  str += '</script>'; // #template-category-chooser
-
-  return str;
-}
 
 /**
  * @returns {!string} The Vue template for a <div> containing a fixture's or mode's physical information.
@@ -535,86 +513,6 @@ function getCapabilityTemplate() {
   str += '  <span class="error-message" hidden></span>';
   str += '</li>';
   str += '</script>'; // #template-capability
-
-  return str;
-}
-
-/**
- * @returns {!string} The Vue template for the Capability Wizard.
- */
-function getCapabilityWizardTemplate() {
-  let str = '<script type="text/x-template" id="template-capability-wizard">';
-  str += '<div class="capability-wizard">';
-
-  str += 'Generate multiple capabilities with same range width.';
-
-  str += '<section>';
-  str += '  <label>';
-  str += '    <span class="label">DMX start value</span>';
-  str += '    <span class="value">';
-  str += '      <input type="number" min="0" :max="dmxMax" step="1" v-model.number="wizard.start" ref="firstInput" />';
-  str += '    </span>';
-  str += '  </label>';
-  str += '</section>';
-
-  str += '<section>';
-  str += '  <label>';
-  str += '    <span class="label">Range width</span>';
-  str += '    <span class="value">';
-  str += '      <input type="number" min="1" :max="dmxMax" step="1" v-model.number="wizard.width" />';
-  str += '    </span>';
-  str += '  </label>';
-  str += '</section>';
-
-  str += '<section>';
-  str += '  <label>';
-  str += '    <span class="label">Count</span>';
-  str += '    <span class="value">';
-  str += '      <input type="number" min="1" :max="dmxMax" step="1" v-model.number="wizard.count" />';
-  str += '    </span>';
-  str += '  </label>';
-  str += '</section>';
-
-  str += '<section>';
-  str += '  <label>';
-  str += '    <span class="label">Name</span>';
-  str += '    <span class="value">';
-  str += '      <input type="text" required v-model.number="wizard.templateName" />';
-  str += '      <span class="hint"># will be replaced with an increasing number</span>';
-  str += '    </span>';
-  str += '  </label>';
-  str += '</section>';
-
-  str += '<table class="capabilities-table computed">';
-  str += '<colgroup>';
-  str += '  <col style="width: 5.8ex">';
-  str += '  <col style="width: 1ex">';
-  str += '  <col style="width: 5.8ex">';
-  str += '  <col style="width: 10em">';
-  str += '</colgroup>';
-  str += '<thead><tr>';
-  str += '  <th colspan="3" style="text-align: center">DMX values</th>';
-  str += '  <th>Capability</th>';
-  str += '</tr></thead>';
-  str += '<tbody>';
-  str += '  <tr v-for="capability in allCapabilities" :class="capability.type">';
-  str += '    <td class="capability-range0"><code>{{capability.start}}</code></td>';
-  str += '    <td class="capability-range-separator"><code>…</code></td>';
-  str += '    <td class="capability-range1"><code>{{capability.end}}</code></td>';
-  str += '    <td class="capability-name">{{capability.name}}</td>';
-  str += '  </tr>';
-  str += '</tbody>';
-  str += '</table>';
-
-  str += '<span class="error-message" v-if="error">{{error}}</span>';
-
-  str += '<div class="button-bar right">';
-  str += '<button class="restore primary" :disabled="error" @click.prevent="apply">Generate capabilities</button>';
-  str += '</div>';
-
-
-  str += '</div>';
-  str += '</script>'; // #template-capability-wizard
 
   return str;
 }
