@@ -217,11 +217,14 @@ Vue.component('fixture-mode', {
 
 Vue.component('channel-capability', {
   template: '#template-capability',
-  props: ['capability', 'capabilities', 'fineness'],
+  props: ['value', 'capIndex', 'fineness'],
   data: function() {
-    return {
-      dmxMin: 0
+    var data = {
+      dmxMin: 0,
+      capabilities: clone(this.value)
     };
+    data.capability = data.capabilities[this.capIndex];
+    return data;
   },
   computed: {
     dmxMax: function() {
@@ -232,7 +235,7 @@ Vue.component('channel-capability', {
     },
     startMin: function() {
       var min = this.dmxMin;
-      var index = this.capabilities.indexOf(this.capability) - 1;
+      var index = this.capIndex - 1;
       while (index >= 0) {
         var cap = this.capabilities[index];
         if (cap.end !== '') {
@@ -248,16 +251,14 @@ Vue.component('channel-capability', {
       return min;
     },
     startMax: function() {
-      var index = this.capabilities.indexOf(this.capability);
-      if (index === 0) {
+      if (this.capIndex === 0) {
         return this.dmxMin;
       }
 
       return this.capability.end !== '' ? this.capability.end : this.endMax;
     },
     endMin: function() {
-      var index = this.capabilities.indexOf(this.capability);
-      if (index === this.capabilities.length) {
+      if (this.capIndex === this.capabilities.length) {
         return this.dmxMax;
       }
 
@@ -265,7 +266,7 @@ Vue.component('channel-capability', {
     },
     endMax: function() {
       var max = this.dmxMax;
-      var index = this.capabilities.indexOf(this.capability) + 1;
+      var index = this.capIndex + 1;
       while (index < this.capabilities.length) {
         var cap = this.capabilities[index];
         if (cap.start !== '') {
@@ -283,8 +284,7 @@ Vue.component('channel-capability', {
   },
   watch: {
     'capability.start': function() {
-      var index = this.capabilities.indexOf(this.capability);
-      var prevCap = this.capabilities[index - 1];
+      var prevCap = this.capabilities[this.capIndex - 1];
 
       if (typeof this.capability.start !== 'number') {
         if (!this.isChanged) {
@@ -297,24 +297,25 @@ Vue.component('channel-capability', {
         if (isCapabilityChanged(prevCap)) {
           if (this.capability.start > this.startMin) {
             // add item before
-            this.capabilities.splice(index, 0, getEmptyCapability());
-            this.$emit('scroll-item-inserted', index);
+            this.capabilities.splice(this.capIndex, 0, getEmptyCapability());
+            this.$emit('scroll-item-inserted', this.capIndex);
           }
         }
         else if (this.capability.start <= this.startMin) {
           // remove previous item
-          this.capabilities.splice(index - 1, 1);
+          this.capabilities.splice(this.capIndex - 1, 1);
         }
       }
       else if (this.capability.start > this.dmxMin) {
         // add item before
-        this.capabilities.splice(index, 0, getEmptyCapability());
-        this.$emit('scroll-item-inserted', index);
+        this.capabilities.splice(this.capIndex, 0, getEmptyCapability());
+        this.$emit('scroll-item-inserted', this.capIndex);
       }
+
+      this.emitChanges();
     },
     'capability.end': function() {
-      var index = this.capabilities.indexOf(this.capability);
-      var nextCap = this.capabilities[index + 1];
+      var nextCap = this.capabilities[this.capIndex + 1];
 
       if (typeof this.capability.end !== 'number') {
         if (!this.isChanged) {
@@ -327,18 +328,36 @@ Vue.component('channel-capability', {
         if (isCapabilityChanged(nextCap)) {
           if (this.capability.end < this.endMax) {
             // add item after
-            this.capabilities.splice(index + 1, 0, getEmptyCapability());
+            this.capabilities.splice(this.capIndex + 1, 0, getEmptyCapability());
           }
         }
         else if (this.capability.end >= this.endMax) {
           // remove next item
-          this.capabilities.splice(index + 1, 1);
+          this.capabilities.splice(this.capIndex + 1, 1);
         }
       }
       else if (this.capability.end < this.dmxMax) {
         // add item after
-        this.capabilities.splice(index + 1, 0, getEmptyCapability());
+        this.capabilities.splice(this.capIndex + 1, 0, getEmptyCapability());
       }
+
+      this.emitChanges();
+    },
+    'capability.name': function() {
+      this.emitChanges();
+    },
+    'capability.color': function() {
+      this.emitChanges();
+    },
+    'capability.color2': function() {
+      this.emitChanges();
+    },
+    'value': function() {
+      this.capabilities = clone(this.value);
+      this.capability = this.capabilities[this.capIndex];
+    },
+    'capIndex': function() {
+      this.capability = this.capabilities[this.capIndex];
     }
   },
   methods: {
@@ -352,24 +371,29 @@ Vue.component('channel-capability', {
       this.collapseWithNeighbors();
     },
     collapseWithNeighbors: function() {
-      var index = this.capabilities.indexOf(this.capability);
-      var prevCap = this.capabilities[index - 1];
-      var nextCap = this.capabilities[index + 1];
+      var prevCap = this.capabilities[this.capIndex - 1];
+      var nextCap = this.capabilities[this.capIndex + 1];
 
       if (prevCap && !isCapabilityChanged(prevCap)) {
         if (nextCap && !isCapabilityChanged(nextCap)) {
           // remove previous and current item
-          this.capabilities.splice(index - 1, 2);
+          this.capabilities.splice(this.capIndex - 1, 2);
+          this.emitChanges();
         }
         else {
           // remove previous item
-          this.capabilities.splice(index - 1, 1);
+          this.capabilities.splice(this.capIndex - 1, 1);
+          this.emitChanges();
         }
       }
       else if (nextCap && !isCapabilityChanged(nextCap)) {
         // remove next item
-        this.capabilities.splice(index + 1, 1);
+        this.capabilities.splice(this.capIndex + 1, 1);
+        this.emitChanges();
       }
+    },
+    emitChanges: function() {
+      this.$emit('input', this.capabilities);
     }
   }
 });
@@ -444,11 +468,11 @@ Vue.component('capability-wizard', {
     },
 
     /**
-     * @returns {!number} Number of capabilities to remove after the generated ones.
+     * @returns {!number} Number of (empty) capabilities to remove after the generated ones.
      */
     removeCount: function() {
       var nextCapability = this.capabilities[this.insertIndex];
-      if (nextCapability.start !== '' || nextCapability.end !== '') {
+      if (nextCapability && isCapabilityChanged(nextCapability)) {
         // non-empty capability (should not occur here, but should not be removed anyway)
         return 0;
       }
@@ -487,6 +511,7 @@ Vue.component('capability-wizard', {
       });
 
       // insert all computed capabilities at insertIndex
+      // ES2015: inheritedCapabilities.splice(this.insertIndex, this.removeCount, ...computedCapabilities);
       Array.prototype.splice.apply(inheritedCapabilities, [this.insertIndex, this.removeCount].concat(computedCapabilites));
 
       return inheritedCapabilities.filter(function(cap) {
@@ -495,7 +520,7 @@ Vue.component('capability-wizard', {
     },
 
     /**
-     * @returns {?string} A string with an error that prevents the generated capabilities from being saved, or null.
+     * @returns {?string} A string with an error that prevents the generated capabilities from being saved, or null if there is no error.
      */
     error: function() {
       var self = this;
@@ -520,7 +545,7 @@ Vue.component('capability-wizard', {
         return capEnd >= self.wizard.start && capStart <= self.end;
       });
       if (collisionDetected) {
-        return 'Generated capabilities must not overlap with manually created ones.';
+        return 'Generated capabilities must not overlap with existing ones.';
       }
 
       return null;
@@ -550,6 +575,7 @@ Vue.component('capability-wizard', {
       }
 
       // insert all computed capabilities at insertIndex
+      // ES2015: this.capabilities.splice(this.insertIndex, this.removeCount, ...this.computedCapabilities);
       Array.prototype.splice.apply(this.capabilities, [this.insertIndex, this.removeCount].concat(this.computedCapabilites));
 
       this.$emit('close');
