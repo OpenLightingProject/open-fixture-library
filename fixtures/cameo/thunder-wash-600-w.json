@@ -23,6 +23,14 @@
       "type": "Fixed"
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["1", "2"],
+        ["3", "4"]
+      ]
+    ]
+  },
   "availableChannels": {
     "strobe1": {
       "name": "Strobe",
@@ -159,55 +167,66 @@
     "Program Speed": {
       "type": "Speed",
       "crossfade": true
-    },
-    "LED1 Dimmer": {
-      "type": "Intensity",
-      "crossfade": true
-    },
-    "LED2 Dimmer": {
-      "type": "Intensity",
-      "crossfade": true
-    },
-    "LED3 Dimmer": {
-      "type": "Intensity",
-      "crossfade": true
-    },
-    "LED4 Dimmer": {
+    }
+  },
+  "templateChannels": {
+    "LED$pixelKey Dimmer": {
       "type": "Intensity",
       "crossfade": true
     }
-  },
-  "heads": {
-    "LED1": ["LED1 Dimmer"],
-    "LED2": ["LED2 Dimmer"],
-    "LED3": ["LED3 Dimmer"],
-    "LED4": ["LED4 Dimmer"]
   },
   "modes": [
     {
       "name": "1-channel",
       "shortName": "1ch",
-      "channels": ["strobe1"]
+      "channels": [
+        "strobe1"
+      ]
     },
     {
       "name": "2-channel",
       "shortName": "2ch",
-      "channels": ["Dimmer", "strobe2"]
+      "channels": [
+        "Dimmer",
+        "strobe2"
+      ]
     },
     {
       "name": "3-channel",
       "shortName": "3ch",
-      "channels": ["Dimmer", "strobe2", "Flash Duration"]
+      "channels": [
+        "Dimmer",
+        "strobe2",
+        "Flash Duration"
+      ]
     },
     {
       "name": "5-channel",
       "shortName": "5ch",
-      "channels": ["Dimmer", "strobe3", "Programs", "Program Speed", "Sound Control"]
+      "channels": [
+        "Dimmer",
+        "strobe3",
+        "Programs",
+        "Program Speed",
+        "Sound Control"
+      ]
     },
     {
       "name": "7-channel",
       "shortName": "7ch",
-      "channels": ["Dimmer", "strobe2", "Flash Duration", "LED1 Dimmer", "LED2 Dimmer", "LED3 Dimmer", "LED4 Dimmer"]
+      "channels": [
+        "Dimmer",
+        "strobe2",
+        "Flash Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "LED$pixelKey Dimmer"
+          ]
+        }
+      ]
     }
   ]
 }

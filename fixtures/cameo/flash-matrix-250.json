@@ -1,0 +1,608 @@
+{
+  "name": "Flash Matrix 250",
+  "shortName": "CLFM250",
+  "categories": ["Matrix", "Strobe", "Blinder"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2017-12-28",
+    "lastModifyDate": "2017-12-28"
+  },
+  "manualURL": "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLFM250/CLFM250_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf",
+  "physical": {
+    "dimensions": [305, 310, 105],
+    "weight": 4,
+    "power": 125,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "25x 6W LEDs (cool white)",
+      "lumens": 9216
+    },
+    "lens": {
+      "degreesMinMax": [50, 50]
+    }
+  },
+  "matrix": {
+    "pixelCount": [5, 5, 1]
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "type": "Intensity",
+      "defaultValue": 0
+    },
+    "Master Dimmer Invert": {
+      "type": "Intensity",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Invert Dimmer 0-100% (Switch active and inactive LEDs)"
+        }
+      ]
+    },
+    "Strobe Simple": {
+      "name": "Strobe",
+      "type": "Strobe",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Off"
+        },
+        {
+          "range": [6, 255],
+          "name": "Strobe 1-30Hz"
+        }
+      ]
+    },
+    "Strobe Extended": {
+      "type": "Strobe",
+      "name": "Strobe",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Open"
+        },
+        {
+          "range": [6, 10],
+          "name": "Closed"
+        },
+        {
+          "range": [11, 33],
+          "name": "Pulse random slow-fast"
+        },
+        {
+          "range": [34, 56],
+          "name": "Ramp up random slow-fast"
+        },
+        {
+          "range": [57, 79],
+          "name": "Ramp down random slow-fast"
+        },
+        {
+          "range": [80, 102],
+          "name": "Random strobe slow-fast"
+        },
+        {
+          "range": [103, 127],
+          "name": "Strobe break 5-1s"
+        },
+        {
+          "range": [128, 250],
+          "name": "Strobe 1-30Hz"
+        },
+        {
+          "range": [251, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Flash Duration": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0-510ms"
+        }
+      ]
+    },
+    "Auto Programs": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Off"
+        },
+        {
+          "range": [6, 28],
+          "name": "Auto Program 1"
+        },
+        {
+          "range": [29, 51],
+          "name": "Auto Program 2"
+        },
+        {
+          "range": [52, 74],
+          "name": "Auto Program 3"
+        },
+        {
+          "range": [75, 97],
+          "name": "Auto Program 4"
+        },
+        {
+          "range": [98, 120],
+          "name": "Auto Program 5"
+        },
+        {
+          "range": [121, 143],
+          "name": "Auto Program 6"
+        },
+        {
+          "range": [144, 166],
+          "name": "Auto Program 7"
+        },
+        {
+          "range": [167, 189],
+          "name": "Auto Program 8"
+        },
+        {
+          "range": [190, 212],
+          "name": "Auto Program 9"
+        },
+        {
+          "range": [213, 235],
+          "name": "Auto Program 10"
+        },
+        {
+          "range": [236, 255],
+          "name": "Auto Program 11"
+        }
+      ]
+    },
+    "Auto Programs / Sound Mode": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Off",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [6, 23],
+          "name": "Auto Program 1",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [24, 41],
+          "name": "Auto Program 2",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [42, 89],
+          "name": "Auto Program 3",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [90, 107],
+          "name": "Auto Program 4",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [108, 125],
+          "name": "Auto Program 5",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [126, 143],
+          "name": "Auto Program 6",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [144, 161],
+          "name": "Auto Program 7",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [162, 179],
+          "name": "Auto Program 8",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [180, 197],
+          "name": "Auto Program 9",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [198, 215],
+          "name": "Auto Program 10",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [216, 233],
+          "name": "Auto Program 11",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [234, 255],
+          "name": "Sound Mode",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Program Speed": {
+      "type": "Speed"
+    },
+    "Sound Sensitivity": {
+      "type": "Intensity"
+    },
+    "Pattern Type": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Off"
+        },
+        {
+          "range": [6, 131],
+          "name": "Letters"
+        },
+        {
+          "range": [132, 255],
+          "name": "Numbers & Symbols"
+        }
+      ]
+    },
+    "Pattern Select": {
+      "type": "Effect",
+      "defaultValue": 160,
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "A / 0"
+        },
+        {
+          "range": [5, 9],
+          "name": "B / 1"
+        },
+        {
+          "range": [10, 14],
+          "name": "C / 2"
+        },
+        {
+          "range": [15, 19],
+          "name": "D / 3"
+        },
+        {
+          "range": [20, 24],
+          "name": "E / 4 "
+        },
+        {
+          "range": [25, 29],
+          "name": "F / 5"
+        },
+        {
+          "range": [30, 34],
+          "name": "G / 6"
+        },
+        {
+          "range": [35, 39],
+          "name": "H / 7"
+        },
+        {
+          "range": [40, 44],
+          "name": "I / 8"
+        },
+        {
+          "range": [45, 49],
+          "name": "J / 9"
+        },
+        {
+          "range": [50, 54],
+          "name": "K / +"
+        },
+        {
+          "range": [55, 59],
+          "name": "L / -"
+        },
+        {
+          "range": [60, 64],
+          "name": "M / :"
+        },
+        {
+          "range": [65, 69],
+          "name": "N / %"
+        },
+        {
+          "range": [70, 74],
+          "name": "O / !"
+        },
+        {
+          "range": [75, 79],
+          "name": "P / ?"
+        },
+        {
+          "range": [80, 84],
+          "name": "Q / ="
+        },
+        {
+          "range": [85, 89],
+          "name": "R / <"
+        },
+        {
+          "range": [90, 94],
+          "name": "S / >"
+        },
+        {
+          "range": [95, 99],
+          "name": "T / ^"
+        },
+        {
+          "range": [100, 104],
+          "name": "U / ˅"
+        },
+        {
+          "range": [105, 109],
+          "name": "V / ["
+        },
+        {
+          "range": [110, 114],
+          "name": "W / ]"
+        },
+        {
+          "range": [115, 119],
+          "name": "X / ↑"
+        },
+        {
+          "range": [120, 124],
+          "name": "Y / →"
+        },
+        {
+          "range": [125, 129],
+          "name": "Z / ←"
+        },
+        {
+          "range": [130, 134],
+          "name": "Empty / ↓"
+        },
+        {
+          "range": [135, 139],
+          "name": "Empty / ↖"
+        },
+        {
+          "range": [140, 144],
+          "name": "Empty / ↗"
+        },
+        {
+          "range": [145, 149],
+          "name": "Empty / ↙"
+        },
+        {
+          "range": [150, 154],
+          "name": "Empty / ↘"
+        },
+        {
+          "range": [155, 159],
+          "name": "Empty / All on"
+        },
+        {
+          "range": [160, 255],
+          "name": "Empty / Empty"
+        }
+      ]
+    },
+    "Pattern Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Speed stop"
+        },
+        {
+          "range": [6, 47],
+          "name": "Position: 0° / 45° / 90° / 135° / 180° / 225° / 270° / 315°"
+        },
+        {
+          "range": [48, 69],
+          "name": "Speed stop"
+        },
+        {
+          "range": [70, 101],
+          "name": "Speed downwards slow-fast"
+        },
+        {
+          "range": [102, 133],
+          "name": "Speed upwards slow-fast"
+        },
+        {
+          "range": [134, 165],
+          "name": "Speed rightwards slow-fast"
+        },
+        {
+          "range": [166, 197],
+          "name": "Speed leftwards slow-fast"
+        },
+        {
+          "range": [198, 229],
+          "name": "Speed stop"
+        },
+        {
+          "range": [230, 255],
+          "name": "Sound trigger speed low-high"
+        }
+      ]
+    },
+    "Pattern Transition": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "off"
+        },
+        {
+          "range": [6, 255],
+          "name": "0-5s"
+        }
+      ]
+    },
+    "Pattern Effect": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Off"
+        },
+        {
+          "range": [6, 127],
+          "name": "Fade less-more"
+        },
+        {
+          "range": [128, 255],
+          "name": "Wake less-more"
+        }
+      ]
+    },
+    "Pattern Invert / Swap": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Off"
+        },
+        {
+          "range": [6, 84],
+          "name": "Invert"
+        },
+        {
+          "range": [85, 163],
+          "name": "Swap"
+        },
+        {
+          "range": [164, 255],
+          "name": "Invert and Swap"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "Dimmer LED $pixelKey": {
+      "type": "Intensity",
+      "defaultValue": 0
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Auto Programs"
+      ]
+    },
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe Extended"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe Extended",
+        "Flash Duration"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe Extended",
+        "Flash Duration",
+        "Auto Programs / Sound Mode",
+        "Program Speed / Sound Sensitivity"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe Extended",
+        "Pattern Type",
+        "Pattern Select",
+        "Pattern Speed",
+        "Pattern Transition",
+        "Pattern Effect",
+        "Pattern Invert / Swap",
+        "Master Dimmer Invert"
+      ]
+    },
+    {
+      "name": "25-channel",
+      "shortName": "25ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer LED $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "30-channel",
+      "shortName": "30ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe Simple",
+        "Flash Duration",
+        "Auto Programs / Sound Mode",
+        "Program Speed / Sound Sensitivity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer LED $pixelKey"
+          ]
+        }
+      ]
+    }
+  ]
+}

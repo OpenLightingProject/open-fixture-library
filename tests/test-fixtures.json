@@ -9,7 +9,10 @@
       "fine-positions-1",
       "floating-point-weight",
       "floating-point-lens-degrees",
-      "heads",
+      "matrix-pixelKeys",
+      "matrix-custom-layout",
+      "fine-matrix-channel",
+      "switching-matrix-channel",
       "multiple-categories",
       "multiple-focuses",
       "reused-channels",
@@ -49,6 +52,18 @@
       "floating-point-weight",
       "multiple-categories",
       "reused-channels"
+    ]
+  },
+  {
+    "man": "equinox",
+    "key": "gigabar",
+    "name": "Gigabar",
+    "features": [
+      "matrix-pixelCount",
+      "matrix-pixelGroups",
+      "matrix-channel-used-directly",
+      "reused-channels",
+      "switching-channels"
     ]
   },
   {

@@ -45,9 +45,19 @@
       "lastModifyDate": "2017-12-14",
       "lastAction": "created"
     },
+    "cameo/flash-matrix-250": {
+      "name": "Flash Matrix 250",
+      "lastModifyDate": "2017-12-28",
+      "lastAction": "created"
+    },
     "cameo/flat-pro-18": {
       "name": "Flat Pro 18",
       "lastModifyDate": "2017-07-14",
+      "lastAction": "created"
+    },
+    "cameo/flat-pro-flood-ip65-tri": {
+      "name": "Flat Pro Flood IP65 Tri",
+      "lastModifyDate": "2017-12-25",
       "lastAction": "created"
     },
     "cameo/gobo-scanner-80": {
@@ -72,7 +82,7 @@
     },
     "cameo/outdoor-par-tri-12": {
       "name": "Outdoor PAR Tri 12",
-      "lastModifyDate": "2017-03-09",
+      "lastModifyDate": "2017-12-26",
       "lastAction": "modified"
     },
     "cameo/thunder-wash-100-rgb": {
@@ -138,6 +148,11 @@
     "equinox/gigabar": {
       "name": "Gigabar",
       "lastModifyDate": "2017-11-16",
+      "lastAction": "created"
+    },
+    "eurolite/led-fe-1500": {
+      "name": "LED FE-1500",
+      "lastModifyDate": "2017-12-31",
       "lastAction": "created"
     },
     "eurolite/led-kls-801": {
@@ -415,7 +430,9 @@
       "tdc-triple-burst"
     ],
     "cameo": [
+      "flash-matrix-250",
       "flat-pro-18",
+      "flat-pro-flood-ip65-tri",
       "gobo-scanner-80",
       "hydrabeam-100",
       "hydrabeam-300-rgbw",
@@ -448,6 +465,7 @@
       "gigabar"
     ],
     "eurolite": [
+      "led-fe-1500",
       "led-kls-801",
       "led-par-56-tcl",
       "led-ps-4-hcl",
@@ -531,6 +549,8 @@
   },
   "categories": {
     "Blinder": [
+      "cameo/flash-matrix-250",
+      "cameo/flat-pro-flood-ip65-tri",
       "cameo/thunder-wash-100-rgb",
       "cameo/thunder-wash-100-w",
       "cameo/thunder-wash-600-rgb",
@@ -547,6 +567,7 @@
       "american-dj/xs-400",
       "ayra/tdc-triple-burst",
       "cameo/flat-pro-18",
+      "cameo/flat-pro-flood-ip65-tri",
       "cameo/gobo-scanner-80",
       "cameo/hydrabeam-100",
       "cameo/hydrabeam-300-rgbw",
@@ -563,6 +584,7 @@
       "elation/platinum-spot-15r-pro",
       "eliminator/stealth-beam",
       "equinox/gigabar",
+      "eurolite/led-fe-1500",
       "eurolite/led-kls-801",
       "eurolite/led-par-56-tcl",
       "eurolite/led-ps-4-hcl",
@@ -620,6 +642,7 @@
       "abstract/twister-4",
       "american-dj/quad-phase-hp",
       "american-dj/revo-4-ir",
+      "eurolite/led-fe-1500",
       "eurolite/led-svf-1"
     ],
     "Hazer": [
@@ -631,8 +654,15 @@
       "american-dj/boom-box-fx2",
       "american-dj/galaxian-3d",
       "chauvet-dj/gigbar-2",
+      "eurolite/led-fe-1500",
       "jb-systems/twin-effect-laser",
       "showtec/dominator"
+    ],
+    "Matrix": [
+      "american-dj/revo-4-ir",
+      "cameo/flash-matrix-250",
+      "eurolite/led-tmh-18",
+      "eurolite/led-tmh-x25"
     ],
     "Moving Head": [
       "5star-systems/spica-250m",
@@ -683,10 +713,12 @@
       "mdg/theone-atmospheric-generator"
     ],
     "Strobe": [
+      "cameo/flash-matrix-250",
       "cameo/thunder-wash-100-rgb",
       "cameo/thunder-wash-100-w",
       "cameo/thunder-wash-600-rgb",
       "cameo/thunder-wash-600-w",
+      "eurolite/led-fe-1500",
       "martin/atomic-3000"
     ]
   },
@@ -746,7 +778,9 @@
       "american-dj/boom-box-fx2",
       "american-dj/fog-fury-jett-pro",
       "american-dj/galaxian-3d",
+      "cameo/flash-matrix-250",
       "cameo/flat-pro-18",
+      "cameo/flat-pro-flood-ip65-tri",
       "cameo/gobo-scanner-80",
       "cameo/hydrabeam-100",
       "cameo/nanospot-120",
@@ -754,6 +788,7 @@
       "chauvet-dj/slimpar-pro-h-usb",
       "elation/platinum-spot-15r-pro",
       "equinox/gigabar",
+      "eurolite/led-fe-1500",
       "eurolite/led-kls-801",
       "eurolite/led-par-56-tcl",
       "eurolite/led-svf-1",
@@ -796,6 +831,9 @@
     ],
     "Anonymous": [
       "stairville/mh-100"
+    ],
+    "FloEdelmann": [
+      "eurolite/led-tmh-18"
     ],
     "George Qualley IV": [
       "eliminator/stealth-beam"
@@ -861,6 +899,10 @@
     }
   },
   "lastUpdated": [
+    "eurolite/led-fe-1500",
+    "cameo/flash-matrix-250",
+    "cameo/outdoor-par-tri-12",
+    "cameo/flat-pro-flood-ip65-tri",
     "futurelight/sc-250-scanner",
     "ayra/tdc-triple-burst",
     "futurelight/dmh-75-i-led-moving-head",
@@ -934,7 +976,6 @@
     "eurolite/led-par-56-tcl",
     "eurolite/led-ps-4-hcl",
     "futurelight/pro-slim-par-7-hcl",
-    "cameo/outdoor-par-tri-12",
     "cameo/thunder-wash-100-rgb",
     "cameo/thunder-wash-100-w",
     "cameo/thunder-wash-600-rgb",

@@ -3,6 +3,7 @@ const xmlbuilder = require('xmlbuilder');
 const FineChannel = require('../../lib/model/FineChannel.js');
 const NullChannel = require('../../lib/model/NullChannel.js');
 const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
+const MatrixChannel = require('../../lib/model/MatrixChannel.js');
 const Physical = require('../../lib/model/Physical.js');
 
 module.exports.name = 'e:cue';
@@ -106,6 +107,9 @@ function handleMode(xmlFixture, mode) {
   let viewPosCount = 1;
   for (let dmxCount = 0; dmxCount < mode.channels.length; dmxCount++) {
     let channel = mode.channels[dmxCount];
+    if (channel instanceof MatrixChannel) {
+      channel = channel.wrappedChannel;
+    }
 
     // skip unused channels
     if (mode.channels[dmxCount] instanceof NullChannel) {
@@ -117,6 +121,10 @@ function handleMode(xmlFixture, mode) {
     if (channel instanceof SwitchingChannel) {
       switchingChannelName = channel.name;
       channel = channel.defaultChannel;
+
+      if (channel instanceof MatrixChannel) {
+        channel = channel.wrappedChannel;
+      }
     }
 
     let fineChannelKey = null;

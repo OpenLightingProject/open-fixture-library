@@ -19,6 +19,14 @@
       "degreesMinMax": [20, 20]
     }
   },
+  "matrix": {
+    "pixelCount": [4, 1, 1],
+    "pixelGroups": {
+      "1&2": ["1", "2"],
+      "3&4": ["3", "4"],
+      "Master": ["1", "2", "3", "4"]
+    }
+  },
   "availableChannels": {
     "Programs": {
       "type": "Effect",
@@ -276,250 +284,6 @@
         }
       ]
     },
-    "Red Master": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green Master": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue Master": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "Red 1&2": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green 1&2": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue 1&2": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "Red 3&4": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green 3&4": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue 3&4": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "Red 1": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green 1": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue 1": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "Red 2": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green 2": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue 2": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "Red 3": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green 3": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue 3": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "Red 4": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green 4": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue 4": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "Colors 1": {
-      "type": "Multi-Color",
-      "capabilities": [
-        {
-          "range": [0, 36],
-          "name": "R",
-          "color": "#ff0000"
-        },
-        {
-          "range": [37, 73],
-          "name": "G",
-          "color": "#00ff00"
-        },
-        {
-          "range": [74, 110],
-          "name": "B",
-          "color": "#0000ff"
-        },
-        {
-          "range": [111, 147],
-          "name": "RG",
-          "color": "#ffff00"
-        },
-        {
-          "range": [148, 184],
-          "name": "RB",
-          "color": "#ff00ff"
-        },
-        {
-          "range": [185, 221],
-          "name": "GB",
-          "color": "#00ffff"
-        },
-        {
-          "range": [222, 255],
-          "name": "RGB",
-          "color": "#ffffff"
-        }
-      ]
-    },
-    "Colors 2": {
-      "type": "Multi-Color",
-      "capabilities": [
-        {
-          "range": [0, 36],
-          "name": "R",
-          "color": "#ff0000"
-        },
-        {
-          "range": [37, 73],
-          "name": "G",
-          "color": "#00ff00"
-        },
-        {
-          "range": [74, 110],
-          "name": "B",
-          "color": "#0000ff"
-        },
-        {
-          "range": [111, 147],
-          "name": "RG",
-          "color": "#ffff00"
-        },
-        {
-          "range": [148, 184],
-          "name": "RB",
-          "color": "#ff00ff"
-        },
-        {
-          "range": [185, 221],
-          "name": "GB",
-          "color": "#00ffff"
-        },
-        {
-          "range": [222, 255],
-          "name": "RGB",
-          "color": "#ffffff"
-        }
-      ]
-    },
-    "Colors 3": {
-      "type": "Multi-Color",
-      "capabilities": [
-        {
-          "range": [0, 36],
-          "name": "R",
-          "color": "#ff0000"
-        },
-        {
-          "range": [37, 73],
-          "name": "G",
-          "color": "#00ff00"
-        },
-        {
-          "range": [74, 110],
-          "name": "B",
-          "color": "#0000ff"
-        },
-        {
-          "range": [111, 147],
-          "name": "RG",
-          "color": "#ffff00"
-        },
-        {
-          "range": [148, 184],
-          "name": "RB",
-          "color": "#ff00ff"
-        },
-        {
-          "range": [185, 221],
-          "name": "GB",
-          "color": "#00ffff"
-        },
-        {
-          "range": [222, 255],
-          "name": "RGB",
-          "color": "#ffffff"
-        }
-      ]
-    },
-    "Colors 4": {
-      "type": "Multi-Color",
-      "capabilities": [
-        {
-          "range": [0, 36],
-          "name": "R",
-          "color": "#ff0000"
-        },
-        {
-          "range": [37, 73],
-          "name": "G",
-          "color": "#00ff00"
-        },
-        {
-          "range": [74, 110],
-          "name": "B",
-          "color": "#0000ff"
-        },
-        {
-          "range": [111, 147],
-          "name": "RG",
-          "color": "#ffff00"
-        },
-        {
-          "range": [148, 184],
-          "name": "RB",
-          "color": "#ff00ff"
-        },
-        {
-          "range": [185, 221],
-          "name": "GB",
-          "color": "#00ffff"
-        },
-        {
-          "range": [222, 255],
-          "name": "RGB",
-          "color": "#ffffff"
-        }
-      ]
-    },
     "PowerOutput 1": {
       "type": "Effect",
       "capabilities": [
@@ -547,6 +311,60 @@
       ]
     }
   },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green $pixelKey": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue $pixelKey": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Colors $pixelKey": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 36],
+          "name": "R",
+          "color": "#ff0000"
+        },
+        {
+          "range": [37, 73],
+          "name": "G",
+          "color": "#00ff00"
+        },
+        {
+          "range": [74, 110],
+          "name": "B",
+          "color": "#0000ff"
+        },
+        {
+          "range": [111, 147],
+          "name": "RG",
+          "color": "#ffff00"
+        },
+        {
+          "range": [148, 184],
+          "name": "RB",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [185, 221],
+          "name": "GB",
+          "color": "#00ffff"
+        },
+        {
+          "range": [222, 255],
+          "name": "RGB",
+          "color": "#ffffff"
+        }
+      ]
+    }
+  },
   "modes": [
     {
       "name": "3ch",
@@ -559,10 +377,14 @@
     {
       "name": "4ch",
       "channels": [
-        "Colors 1",
-        "Colors 2",
-        "Colors 3",
-        "Colors 4"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Colors $pixelKey"
+          ]
+        }
       ]
     },
     {
@@ -578,12 +400,16 @@
     {
       "name": "6ch",
       "channels": [
-        "Red 1&2",
-        "Green 1&2",
-        "Blue 1&2",
-        "Red 3&4",
-        "Green 3&4",
-        "Blue 3&4"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1&2", "3&4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     },
     {
@@ -614,18 +440,16 @@
     {
       "name": "12ch",
       "channels": [
-        "Red 1",
-        "Green 1",
-        "Blue 1",
-        "Red 2",
-        "Green 2",
-        "Blue 2",
-        "Red 3",
-        "Green 3",
-        "Blue 3",
-        "Red 4",
-        "Green 4",
-        "Blue 4"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     },
     {
@@ -634,18 +458,16 @@
         "Programs",
         "Master Dimmer / Program Speed / Sound Sensitivity",
         "Flash",
-        "Red 1",
-        "Green 1",
-        "Blue 1",
-        "Red 2",
-        "Green 2",
-        "Blue 2",
-        "Red 3",
-        "Green 3",
-        "Blue 3",
-        "Red 4",
-        "Green 4",
-        "Blue 4",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
         "PowerOutput 1",
         "PowerOutput 2"
       ]

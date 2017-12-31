@@ -96,7 +96,7 @@
 .category-badge {
   display: inline-block;
   padding: 4px 1.5ex 4px 1ex;
-  margin: 0 0 4px;
+  margin: 0 4px 4px 0;
   border-radius: 5000px; /* see http://stackoverflow.com/a/18795153/451391 */
   background: $grey-100;
 
@@ -112,6 +112,7 @@
 
   &.selected {
     background-color: $blue-700;
+    cursor: move;
 
     &:link,
     &:visited {
@@ -206,6 +207,10 @@ section {
   }
 }
 
+.channel-pixel {
+  display: flex;
+}
+
 details.channel > summary > .icon,
 div.channel > .icon {
   margin-right: 1.2ex;
@@ -214,7 +219,6 @@ div.channel > .icon {
 .label {
   display: block;
   color: $secondary-text-dark;
-  vertical-align: top;
 }
 
 .value {
@@ -227,6 +231,47 @@ div.channel > .icon {
   color: $secondary-text-dark;
   font-size: 0.8rem;
   line-height: 1.5;
+}
+
+.matrix > .z-level {
+  border-collapse: collapse;
+  border-spacing: 0;
+  overflow: auto;
+  padding-top: 1px;
+  padding-left: 1px;
+  margin-bottom: 8px;
+
+  & > .row {
+    display: block;
+    margin-top: -1px;
+    white-space: nowrap;
+
+    & > .pixel {
+      display: inline-block;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -ms-flex-align: center;
+      align-items: center;
+      line-height: 1.4em;
+      text-align: center;
+      margin-left: -1px;
+      vertical-align: top;
+      font-size: 90%;
+      border: 1px solid transparent;
+      white-space: normal;
+      transition: background .2s;
+
+      &:not(:empty) {
+        border-color: $icon-inactive-dark;
+      }
+
+      &.highlight {
+        background: $divider-dark;
+      }
+    }
+  }
 }
 
 .checkbox {
@@ -281,16 +326,6 @@ a.fixture-mode {
   text-align: center;
 }
 
-.fixture-mode ol {
-  padding-left: 1.9em;
-
-  /* switched channels */
-  & ol {
-    list-style-type: lower-alpha;
-    padding-left: 1.1em;
-  }
-}
-
 /* if a mode is the only mode, hide its remove button */
 .fixture-modes > .fixture-mode:first-child:nth-last-child(3) > .close {
   display: none;
@@ -305,24 +340,35 @@ a.fixture-mode {
   content: " #" counter(modes);
 }
 
-.mode-channels a,
-.capabilities a {
+ol.mode-channels {
+  padding-left: 1.9em;
+  min-height: 1em;
+
+  /* switched channels */
+  & ol {
+    list-style-type: lower-alpha;
+    padding-left: 1.1em;
+  }
+}
+
+.mode-channels a {
   opacity: 0;
   float: right;
   width: 1.4em;
   height: 1.4em;
   padding: 0.3em;
   transition: opacity 0.1s;
-  display: inline-block;
 }
 .mode-channels > li:hover > a,
-.mode-channels a:focus,
-.capabilities > li:hover > a,
-.capabilities a:focus {
+.mode-channels a:focus {
   opacity: 1;
 }
 
-.capabilities {
+.mode-channels .drag-handle {
+  cursor: move;
+}
+
+.capability-editor {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -330,8 +376,10 @@ a.fixture-mode {
   & > li {
     padding: 1rem 0 0;
 
-    & > .value {
+    & > .capability-data {
       margin-left: 2ex;
+      display: inline-block;
+      vertical-align: top;
     }
 
     & .name {
@@ -340,13 +388,28 @@ a.fixture-mode {
     & .color {
       width: 10ex;
     }
+
+    & a {
+      opacity: 0;
+      width: 1.4em;
+      height: 1.4em;
+      padding: 0.3em;
+      transition: opacity 0.1s;
+    }
+    &:hover a,
+    & a:focus {
+      opacity: 1;
+    }
   }
 }
 
 .capabilities-table {
   border-collapse: collapse;
   table-layout: fixed;
-  width: 100%;
+
+  &:not(.computed) {
+    width: 100%;
+  }
 
   th {
     font-weight: normal;
@@ -374,6 +437,10 @@ a.fixture-mode {
     padding-left: 2px;
   }
 
+  &.computed .capability-name {
+    max-width: 20em;
+  }
+
   .capability-menuClick {
     text-align: right;
   }
@@ -386,6 +453,15 @@ a.fixture-mode {
     & > .switching-channel-key {
       color: $secondary-text-dark;
     }
+  }
+
+  .inherited,
+  .inherited code {
+    color: $disabled-text-dark;
+  }
+  .computed,
+  .computed code {
+    color: $primary-text-dark;
   }
 }
 
@@ -456,15 +532,5 @@ a.fixture-mode {
   }
   .value {
     max-width: calc(100% - 12rem - 1ex);
-  }
-
-  /* for 2-column cards, do still display labels above values */
-  .fixture-modes {
-    .label {
-      display: block;
-    }
-    .value {
-      max-width: none;
-    }
   }
 }

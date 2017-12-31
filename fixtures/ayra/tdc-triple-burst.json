@@ -20,6 +20,9 @@
       "type": "Fixed"
     }
   },
+  "matrix": {
+    "pixelCount": [3, 1, 1]
+  },
   "availableChannels": {
     "Show": {
       "type": "Effect",
@@ -195,64 +198,26 @@
           "name": "Speed slow - fast"
         }
       ]
-    },
-    "Red 1": {
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
       "type": "Single Color",
       "color": "Red"
     },
-    "Green 1": {
+    "Green $pixelKey": {
       "type": "Single Color",
       "color": "Green"
     },
-    "Blue 1": {
+    "Blue $pixelKey": {
       "type": "Single Color",
       "color": "Blue"
     },
-    "White 1": {
+    "White $pixelKey": {
       "type": "Single Color",
       "color": "White"
     },
-    "Amber 1": {
-      "type": "Single Color",
-      "color": "Amber"
-    },
-    "Red 2": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green 2": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue 2": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "White 2": {
-      "type": "Single Color",
-      "color": "White"
-    },
-    "Amber 2": {
-      "type": "Single Color",
-      "color": "Amber"
-    },
-    "Red 3": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green 3": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue 3": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "White 3": {
-      "type": "Single Color",
-      "color": "White"
-    },
-    "Amber 3": {
+    "Amber $pixelKey": {
       "type": "Single Color",
       "color": "Amber"
     }
@@ -293,42 +258,36 @@
       "name": "15 channel",
       "shortName": "15ch",
       "channels": [
-        "Red 1",
-        "Green 1",
-        "Blue 1",
-        "White 1",
-        "Amber 1",
-        "Red 2",
-        "Green 2",
-        "Blue 2",
-        "White 2",
-        "Amber 2",
-        "Red 3",
-        "Green 3",
-        "Blue 3",
-        "White 3",
-        "Amber 3"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
       ]
     },
     {
       "name": "19 channel",
       "shortName": "19ch",
       "channels": [
-        "Red 1",
-        "Green 1",
-        "Blue 1",
-        "White 1",
-        "Amber 1",
-        "Red 2",
-        "Green 2",
-        "Blue 2",
-        "White 2",
-        "Amber 2",
-        "Red 3",
-        "Green 3",
-        "Blue 3",
-        "White 3",
-        "Amber 3",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey",
+            "Amber $pixelKey"
+          ]
+        },
         "Dimmer",
         "Strobe",
         "Color chase",

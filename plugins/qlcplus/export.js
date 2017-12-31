@@ -3,6 +3,7 @@ const sanitize = require('sanitize-filename');
 
 const FineChannel = require('../../lib/model/FineChannel.js');
 const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
+const MatrixChannel = require('../../lib/model/MatrixChannel.js');
 const Capability = require('../../lib/model/Capability.js');
 const Physical = require('../../lib/model/Physical.js');
 
@@ -48,6 +49,10 @@ module.exports.export = function exportQLCplus(fixtures, options) {
 };
 
 function addChannel(xml, channel) {
+  if (channel instanceof MatrixChannel) {
+    channel = channel.wrappedChannel;
+  }
+
   const xmlChannel = xml.element({
     Channel: {
       '@Name': channel.uniqueName
@@ -56,7 +61,11 @@ function addChannel(xml, channel) {
 
   // use default channel's data
   if (channel instanceof SwitchingChannel) {
-    channel = channel.fixture.getChannelByKey(channel.defaultChannelKey);
+    channel = channel.defaultChannel;
+
+    if (channel instanceof MatrixChannel) {
+      channel = channel.wrappedChannel;
+    }
   }
 
   const xmlGroup = xmlChannel.element({
@@ -134,18 +143,17 @@ function addMode(xml, mode) {
 
   addPhysical(xmlMode, mode.physical || new Physical({}));
 
-  mode.channelKeys.forEach((chKey, index) => {
-    const channel = mode.fixture.getChannelByKey(chKey);
+  mode.channels.forEach((channel, index) => {
     xmlMode.element({
       Channel: {
         '@Number': index,
-        '#text': channel.uniqueName
+        '#text': channel.uniqueName || channel.wrappedChannel.uniqueName
       }
     });
   });
 
-  for (const headName of Object.keys(mode.fixture.heads)) {
-    addHead(xmlMode, mode, mode.fixture.heads[headName]);
+  if (mode.fixture.matrix !== null) {
+    addHeads(xmlMode, mode);
   }
 }
 
@@ -186,28 +194,50 @@ function addPhysical(xmlMode, physical) {
   }
 }
 
-function addHead(xmlMode, mode, headChannels) {
-  const channelIndices = headChannels.map(chKey => mode.getChannelIndex(chKey))
-    .filter(index => index !== -1);
+function addHeads(xmlMode, mode) {
+  const pixelKeys = mode.fixture.matrix.pixelKeys.concat(mode.fixture.matrix.pixelGroupKeys);
+  for (const pixelKey of pixelKeys) {
+    const channels = mode.channels.filter(channel => {
+      if (channel instanceof MatrixChannel) {
+        return channel.pixelKey === pixelKey;
+      }
 
-  if (channelIndices.length > 0) {
-    const xmlHead = xmlMode.element({
-      Head: {}
+      if (channel instanceof SwitchingChannel && channel.defaultChannel instanceof MatrixChannel) {
+        return channel.defaultChannel.pixelKey === pixelKey;
+      }
+      return false;
     });
 
-    for (const index of channelIndices) {
-      xmlHead.element({
-        Channel: index
+    if (channels.length > 0) {
+      const xmlHead = xmlMode.element({
+        Head: {}
       });
+
+      for (const ch of channels) {
+        xmlHead.element({
+          Channel: mode.getChannelIndex(ch.key)
+        });
+      }
     }
   }
 }
 
+/**
+ * Determines the QLC+ fixture type out of the fixture's categories.
+ * @param {!Fixture} fixture The Fixture instance whose QLC+ type has to be determined.
+ * @returns {!string} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
+ */
 function getFixtureType(fixture) {
-  if (fixture.mainCategory === 'Blinder') {
-    return fixture.categories[1] || 'Other';
+  const ignoredCats = ['Blinder', 'Matrix'];
+
+  for (const category of fixture.categories) {
+    if (ignoredCats.includes(category)) {
+      continue;
+    }
+    return category;
   }
-  return fixture.mainCategory;
+
+  return 'Other';
 }
 
 // converts a Channel's type into a valid QLC+ channel type

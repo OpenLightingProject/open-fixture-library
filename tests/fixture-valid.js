@@ -3,8 +3,10 @@ const util = require('util');
 const schema = require('../fixtures/schema.js');
 
 const Fixture = require('../lib/model/Fixture.js');
+const Channel = require('../lib/model/Channel.js');
 const FineChannel = require('../lib/model/FineChannel.js');
 const SwitchingChannel = require('../lib/model/SwitchingChannel.js');
+const MatrixChannel = require('../lib/model/MatrixChannel.js');
 
 /**
  * @typedef ResultData
@@ -19,6 +21,8 @@ let fixture;
 let definedChannelKeys; // and aliases
 /** @type {Set<string>} */
 let usedChannelKeys; // and aliases
+/** @type {Set<string>} */
+let possibleMatrixChKeys; // and aliases
 /** @type {Set<string>} */
 let modeNames;
 /** @type {Set<string>} */
@@ -39,6 +43,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
   };
   definedChannelKeys = new Set();
   usedChannelKeys = new Set();
+  possibleMatrixChKeys = new Set();
   modeNames = new Set();
   modeShortNames = new Set();
 
@@ -54,6 +59,8 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     checkFixIdentifierUniqueness(uniqueValues);
     checkMeta(fixture.meta);
     checkPhysical(fixture.physical);
+    checkMatrix(fixture.matrix);
+    checkTemplateChannels(fixtureJson);
     checkChannels(fixtureJson);
 
     for (const mode of fixture.modes) {
@@ -151,13 +158,138 @@ function checkPhysical(physical, modeDescription = '') {
 }
 
 /**
+ * Checks if the given Matrix object is valid.
+ * @param {?Matrix} matrix A fixture's matrix data.
+ */
+function checkMatrix(matrix) {
+  if (matrix === null) {
+    return;
+  }
+
+  const matrixJson = matrix.jsonObject;
+  const hasPixelCount = 'pixelCount' in matrixJson;
+  const hasPixelKeys = 'pixelKeys' in matrixJson;
+
+  if (!hasPixelCount && !hasPixelKeys) {
+    result.errors.push('Matrix must either define \'pixelCount\' or \'pixelKeys\'.');
+    return;
+  }
+  if (hasPixelCount && hasPixelKeys) {
+    result.errors.push('Matrix can\'t define both \'pixelCount\' and \'pixelKeys\'.');
+    return;
+  }
+
+  if (matrix.definedAxes.length === 0) {
+    result.errors.push('Matrix may not consist of only a single pixel.');
+    return;
+  }
+
+  const variesInAxisLength = matrix.pixelKeyStructure.some(
+    rows => rows.length !== matrix.pixelCountY || rows.some(
+      columns => columns.length !== matrix.pixelCountX
+    )
+  );
+  if (variesInAxisLength) {
+    result.errors.push('Matrix must not vary in axis length.');
+  }
+
+  checkPixelGroups(matrix);
+}
+
+/**
+ * Check if the referenced pixelKeys from the pixelGroups exist and are not referenced more than once.
+ * @param {Matrix} matrix The Matrix instance
+ */
+function checkPixelGroups(matrix) {
+  for (const pixelGroupKey of matrix.pixelGroupKeys) {
+    const usedMatrixChannels = new Set();
+
+    if (matrix.pixelKeys.includes(pixelGroupKey)) {
+      result.errors.push(`pixelGroupKey '${pixelGroupKey}' is already used as pixelKey. Please choose a different name.`);
+    }
+
+    for (const pixelKey of matrix.pixelGroups[pixelGroupKey]) {
+      if (!matrix.pixelKeys.includes(pixelKey)) {
+        result.errors.push(`pixelGroup '${pixelGroupKey}' references unknown pixelKey '${pixelKey}'.`);
+      }
+      if (usedMatrixChannels.has(pixelKey)) {
+        result.errors.push(`pixelGroup '${pixelGroupKey}' can't reference pixelKey '${pixelKey}' more than once.`);
+      }
+      usedMatrixChannels.add(pixelKey);
+    }
+  }
+}
+
+/**
+ * Check if templateChannels are defined correctly. Does not check the channel data itself.
+ * @param {!object} fixtureJson The fixture's JSON data
+ */
+function checkTemplateChannels(fixtureJson) {
+  if (isNotEmpty(fixtureJson.templateChannels, 'templateChannels are empty. Add a channel or remove it.')) {
+    if (fixture.matrix === null) {
+      result.errors.push('templateChannels are defined but matrix data is missing.');
+      return;
+    }
+
+    for (const templateChannel of fixture.templateChannels) {
+      checkTemplateChannel(templateChannel);
+    }
+  }
+  else if (fixture.matrix !== null) {
+    result.errors.push('Matrix is defined but templateChannels are missing.');
+  }
+}
+
+/**
+ * Check if the templateChannel is defined correctly. Does not check the channel data itself.
+ * @param {!TemplateChannel} templateChannel The templateChannel to examine.
+ */
+function checkTemplateChannel(templateChannel) {
+  checkTemplateVariables(templateChannel.name, ['$pixelKey']);
+
+  for (const key of templateChannel.allTemplateKeys) {
+    checkTemplateVariables(key, ['$pixelKey']);
+
+    const templateChannelUsed = fixture.matrixChannelReferences.some(
+      ref => ref.templateKey === key
+    );
+    if (!templateChannelUsed) {
+      result.warnings.push(`Template channel '${key}' is never used.`);
+    }
+  }
+
+  for (const key of templateChannel.possibleResolvedChannelKeys.keys()) {
+    module.exports.checkUniqueness(
+      possibleMatrixChKeys,
+      key,
+      result,
+      `Generated channel key ${key} can be produced by multiple template channels (test is not case-sensitive).`
+    );
+  }
+}
+
+/**
  * Check if availableChannels and generated matrixChannels are defined correctly.
  * @param {!object} fixtureJson The fixture's JSON data
  */
 function checkChannels(fixtureJson) {
   if (isNotEmpty(fixtureJson.availableChannels, 'availableChannels are empty. Add a channel or remove it.')) {
     for (const channel of fixture.availableChannels) {
+      // forbid coexistance of channels 'Red' and 'red'
+      // for template channels, this is checked by possibleMatrixChKeys
+      module.exports.checkUniqueness(
+        definedChannelKeys,
+        channel.key,
+        result,
+        `Channel key '${channel.key}' is already defined (maybe in another letter case).`
+      );
       checkChannel(channel);
+    }
+  }
+
+  for (const channel of fixture.matrixChannels) {
+    if (channel.wrappedChannel instanceof Channel) {
+      checkChannel(channel.wrappedChannel);
     }
   }
 }
@@ -167,17 +299,13 @@ function checkChannels(fixtureJson) {
  * @param {!Channel} channel The channel to test.
  */
 function checkChannel(channel) {
-  module.exports.checkUniqueness(
-    definedChannelKeys,
-    channel.key,
-    result,
-    `Channel key '${channel.key}' is already defined in another letter case.`
-  );
+  checkTemplateVariables(channel.key, []);
 
   if (/\bfine\b|\d+(?:\s|-|_)*bit/i.test(channel.name)) {
     // channel name contains the word "fine" or "16bit" / "8 bit" / "32-bit" / "24_bit"
     result.errors.push(`Channel '${channel.key}' should rather be a fine channel alias of its corresponding coarse channel.`);
   }
+  checkTemplateVariables(channel.name, []);
 
   // Nothing channels
   if (channel.type === 'Nothing') {
@@ -192,6 +320,7 @@ function checkChannel(channel) {
 
   // Fine channels
   for (const alias of channel.fineChannelAliases) {
+    checkTemplateVariables(alias, []);
     module.exports.checkUniqueness(
       definedChannelKeys,
       alias,
@@ -205,6 +334,7 @@ function checkChannel(channel) {
 
   // Switching channels
   for (const alias of channel.switchingChannelAliases) {
+    checkTemplateVariables(alias, []);
     module.exports.checkUniqueness(
       definedChannelKeys,
       alias,
@@ -232,6 +362,25 @@ function checkChannel(channel) {
   }
 
   checkCapabilities(channel, minUsedFineness);
+}
+
+/**
+ * Checks whether the specified string contains all allowed and no disallowed variables and pushes an error on wrong variable usage.
+ * @param {!string} str The string to be checked.
+ * @param {!Array.<string>} allowedVariables Variables that must be included in the string; all other variables are forbidden. Specify them with leading dollar sign ($var).
+ */
+function checkTemplateVariables(str, allowedVariables) {
+  const usedVariables = str.match(/\$\w+/g) || [];
+  for (const usedVariable of usedVariables) {
+    if (!allowedVariables.includes(usedVariable)) {
+      result.errors.push(`Variable ${usedVariable} not allowed in '${str}'`);
+    }
+  }
+  for (const allowedVariable of allowedVariables) {
+    if (!usedVariables.includes(allowedVariable)) {
+      result.errors.push(`Variable ${allowedVariable} missing in '${str}'`);
+    }
+  }
 }
 
 /**
@@ -296,13 +445,13 @@ function checkRange(channel, capNumber, minUsedFineness) {
 
   // first capability
   if (capNumber === 0 && cap.range.start !== 0) {
-    result.errors.push(`The first range has to start at 0 in capability '${cap.name}' in channel '${channel.key}'.`);
+    result.errors.push(`The first range has to start at 0 in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
     return false;
   }
 
   // all capabilities
   if (cap.range.start > cap.range.end) {
-    result.errors.push(`range ${cap.range.start}-${cap.range.end} invalid in capability '${cap.name}' in channel '${channel.key}'.`);
+    result.errors.push(`range invalid in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
     return false;
   }
 
@@ -363,89 +512,167 @@ function checkMode(mode) {
     result.errors.push(`Mode name and shortName must not contain the word 'mode' in mode '${mode.shortName}'.`);
   }
 
-  checkPhysical(mode.physicalOverride, ` in mode '${mode.shortName}'`);
-
-  let usedNonNullChannel = false;
-
-  for (let i = 0; i < mode.jsonObject.channels.length; i++) {
-    usedNonNullChannel = usedNonNullChannel || mode.jsonObject.channels[i] !== null;
-    checkModeChannelReference(i, mode);
-  }
-
-  if (!usedNonNullChannel) {
-    result.errors.push(`Mode '${mode.shortName}' must not use only null channels.`);
-  }
-
   if (mode.name.match(/^(\d+)(?:\s+|-)?(?:ch|channels?)$/)) {
     const intendedLength = parseInt(RegExp.$1);
 
     if (mode.channels.length !== intendedLength) {
-      result.warnings.push(`Mode '${mode.name}' should probably have ${RegExp.$1} channels but does only have ${mode.channels.length}.`);
+      result.warnings.push(`Mode '${mode.name}' should probably have ${RegExp.$1} channels but actually has ${mode.channels.length}.`);
     }
     if (mode.shortName !== `${intendedLength}ch`) {
       result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch' instead of '${mode.shortName}'.`);
+    }
+  }
+
+  checkPhysical(mode.physicalOverride, ` in mode '${mode.shortName}'`);
+
+  const usedChannelKeysInMode = new Set();
+
+  for (const rawReference of mode.jsonObject.channels) {
+    if (rawReference !== null && typeof rawReference !== 'string') {
+      checkChannelInsertBlock(rawReference, mode);
+    }
+  }
+
+  for (let i = 0; i < mode.channelKeys.length; i++) {
+    checkModeChannelKeys(i, mode, usedChannelKeysInMode);
+  }
+}
+
+/**
+ * Checks if the given complex channel insert block is valid.
+ * @param {!object} insertBlock The raw JSON data of the insert block.
+ * @param {!Mode} mode The mode in which this insert block is used.
+ */
+function checkChannelInsertBlock(insertBlock, mode) {
+  if (insertBlock.insert === 'matrixChannels') {
+    checkMatrixInsertBlock(insertBlock, mode);
+  }
+  // open for future extensions (invalid values are prohibited by the schema)
+}
+
+/**
+ * Checks the given matrix channel insert.
+ * @param {!object} matrixInsertBlock The matrix channel reference specified in the mode's json channel list.
+ * @param {'matrixChannels'} matrixInsertBlock.insert Indicates that this is a matrix insert.
+ * @param {'eachPixel'|'eachPixelGroup'|string[]} matrixInsertBlock.repeatFor The pixelKeys or pixelGroupKeys for which the specified channels should be repeated.
+ * @param {'perPixel'|'perChannel'} matrixInsertBlock.channelOrder Order the channels like RGB1/RGB2/RGB3 or R123/G123/B123.
+ * @param {!Array.<string, null>} matrixInsertBlock.templateChannels The template channel keys (and aliases) or null channels to be repeated.
+ * @param {!Mode} mode The mode in which this insert block is used.
+ */
+function checkMatrixInsertBlock(matrixInsertBlock, mode) {
+  checkMatrixInsertBlockRepeatFor(matrixInsertBlock.repeatFor, mode);
+
+  for (const templateKey of matrixInsertBlock.templateChannels) {
+    const templateChannelExists = fixture.templateChannels.some(ch => ch.allTemplateKeys.includes(templateKey));
+    if (!templateChannelExists) {
+      result.errors.push(`Template channel '${templateKey}' doesn't exist.`);
+    }
+  }
+}
+
+/**
+ * Checks the used pixel (group) keys for existance and duplicates. Also respects pixel keys included in a pixel group.
+ * @param {!string|!Array.<string>} repeatFor A matrix insert's repeatFor property.
+ * @param {!Mode} mode The mode in which the insert block is used.
+ */
+function checkMatrixInsertBlockRepeatFor(repeatFor, mode) {
+  if (typeof repeatFor === 'string') {
+    // no custom pixel key list, keywords are already tested by schema
+    return;
+  }
+
+  const usedPixelKeys = new Set();
+
+  for (const pixelKey of repeatFor) {
+    if (fixture.matrix.pixelKeys.includes(pixelKey)) {
+      module.exports.checkUniqueness(
+        usedPixelKeys,
+        pixelKey,
+        `PixelKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
+      );
+    }
+    else if (pixelKey in fixture.matrix.pixelGroups) {
+      module.exports.checkUniqueness(
+        usedPixelKeys,
+        pixelKey,
+        `PixelGroupKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
+      );
+
+      for (const singlePixelKey of fixture.matrix.pixelGroups[pixelKey]) {
+        module.exports.checkUniqueness(
+          usedPixelKeys,
+          singlePixelKey,
+          `PixelKey '${singlePixelKey}' in group '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
+        );
+      }
+    }
+    else {
+      result.errors.push(`Unknown pixelKey or pixelGroupKey '${pixelKey}'`);
     }
   }
 }
 
 /**
  * Check that a channel reference in a mode is valid.
- * @param {!number} chNumber The channel index to be checked.
- * @param {!Mode} mode The mode in which to check.
+ * @param {!number} chIndex The mode's channel index.
+ * @param {!Mode} mode The mode to check.
+ * @param {!Set<string>} usedChannelKeysInMode Which channels are already used in this mode.
  */
-function checkModeChannelReference(chNumber, mode) {
-  const chReference = mode.jsonObject.channels[chNumber];
+function checkModeChannelKeys(chIndex, mode, usedChannelKeysInMode) {
+  const chKey = mode.channelKeys[chIndex];
 
-  // this is a null channel
-  if (chReference === null) {
+  if (chKey === null) {
     return;
   }
 
-  const channel = mode.fixture.getChannelByKey(chReference);
+  usedChannelKeys.add(chKey.toLowerCase());
+
+  let channel = mode.fixture.getChannelByKey(chKey);
   if (channel === null) {
-    result.errors.push(`Channel '${chReference}' is referenced from mode '${mode.shortName}' but is not defined.`);
-    return;
-  }
-
-  usedChannelKeys.add(channel.key.toLowerCase());
-
-  if (channel instanceof SwitchingChannel) {
-    checkSwitchingChannelReference(channel, chNumber, mode);
+    result.errors.push(`Channel '${chKey}' is referenced from mode '${mode.shortName}' but is not defined.`);
     return;
   }
 
   // if earliest occurence (including switching channels) is not this one
-  if (mode.getChannelIndex(channel, 'all') < chNumber) {
-    result.errors.push(`Channel '${chReference}' is referenced more than once from mode '${mode.shortName}'.`);
+  if (mode.getChannelIndex(channel, 'all') < chIndex) {
+    result.errors.push(`Channel '${channel.key}' is referenced more than once from mode '${mode.shortName}' (maybe through switching channels).`);
   }
 
-  if (channel instanceof FineChannel) {
+  if (channel instanceof MatrixChannel) {
+    channel = channel.wrappedChannel;
+  }
+
+  if (channel instanceof SwitchingChannel) {
+    checkSwitchingChannelReference(channel, mode, usedChannelKeysInMode);
+  }
+  else if (channel instanceof FineChannel) {
     checkCoarserChannelsInMode(channel, mode);
-    return;
   }
-
-  checkPanTiltMaxInPhysical(channel, mode);
+  else {
+    // that's already checked for switched channels and we don't need to check it for fine channels
+    checkPanTiltMaxInPhysical(channel, mode);
+  }
 }
 
 /**
  * Check that a switching channel reference in a mode is valid.
  * @param {!SwitchingChannel} channel The channel that should be checked.
- * @param {!number} chNumber The mode's channel index.
- * @param {!Mode} mode The mode in which to check.
+ * @param {!Mode} mode The mode in which the channel is used.
+ * @param {!Set<string>} usedChannelKeysInMode Which channels are already used in this mode.
  */
-function checkSwitchingChannelReference(channel, chNumber, mode) {
+function checkSwitchingChannelReference(channel, mode, usedChannelKeysInMode) {
   // the mode must also contain the trigger channel
   if (mode.getChannelIndex(channel.triggerChannel) === -1) {
     result.errors.push(`mode '${mode.shortName}' uses switching channel '${channel.key}' but is missing its trigger channel '${channel.triggerChannel.key}'`);
   }
 
-  // if the channel can be switched to a fine channel, the mode must also contain coarser channels
   for (const switchToChannel of channel.switchToChannels) {
     if (switchToChannel === null) {
-      // already raised an issue when switching channel was defined
+      // channel doesn't exist, but we already added an error when the switching channel was defined
       continue;
     }
 
+    // if the channel can be switched to a fine channel, the mode must also contain coarser channels
     if (switchToChannel instanceof FineChannel) {
       checkCoarserChannelsInMode(switchToChannel, mode);
       continue;
@@ -454,7 +681,7 @@ function checkSwitchingChannelReference(channel, chNumber, mode) {
     checkPanTiltMaxInPhysical(switchToChannel, mode);
   }
 
-  for (let j = 0; j < chNumber; j++) {
+  for (let j = 0; j < mode.getChannelIndex(channel); j++) {
     const otherChannel = mode.channels[j];
     checkSwitchingChannelReferenceDuplicate(channel, otherChannel, mode);
   }
@@ -548,8 +775,10 @@ function checkUnusedChannels() {
  * Checks if the used channels fits to the fixture's categories and raise warnings suggesting to add/remove a category.
  */
 function checkCategories() {
-  const hasMultiColorChannel = fixture.availableChannels.some(channel => channel.type === 'Multi-Color');
-  const hasMultipleSingleColorChannels = fixture.availableChannels.filter(channel => channel.type === 'Single Color').length > 1;
+  const fixtureChannels = fixture.availableChannels.concat(fixture.matrixChannels.map(matrixCh => matrixCh.wrappedChannel));
+
+  const hasMultiColorChannel = fixtureChannels.some(channel => channel.type === 'Multi-Color');
+  const hasMultipleSingleColorChannels = fixtureChannels.filter(channel => channel.type === 'Single Color').length > 1;
   const hasColorChangerCategory = fixture.categories.includes('Color Changer');
   if (!hasColorChangerCategory && hasMultiColorChannel) {
     result.warnings.push('Category \'Color Changer\' suggested since there is a \'Multi-Color\' channel.');
@@ -570,7 +799,7 @@ function checkCategories() {
     result.warnings.push('Category \'Moving Head\' invalid since focus.type is not \'Head\'.');
   }
 
-  const hasFogChannel = fixture.availableChannels.some(channel => channel.type === 'Fog');
+  const hasFogChannel = fixtureChannels.some(channel => channel.type === 'Fog');
   const hasSmokeCategory = fixture.categories.includes('Smoke');
   const hasHazerCategory = fixture.categories.includes('Hazer');
   if (!(hasSmokeCategory || hasHazerCategory) && hasFogChannel) {

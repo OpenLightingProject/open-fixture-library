@@ -65,10 +65,22 @@ module.exports = (function() {
       }
     }
 
+    if (field.matches('.categories')) {
+      if (field.querySelectorAll('.selected').length === 0) {
+        return 'Please select at least one category.';
+      }
+    }
+
     if (field.matches('.physical-lens-degrees') || field.matches('.capability')) {
       var range = field.querySelectorAll('input');
       if (range[0].value !== '' && range[1].value !== '' && Number(range[0].value) > Number(range[1].value)) {
         return 'The start value of a range must not be greater than its end.';
+      }
+    }
+
+    if (field.matches('.mode-channels')) {
+      if (field.querySelectorAll('li').length === 0) {
+        return 'A mode must contain at least one channel.';
       }
     }
 
@@ -224,6 +236,10 @@ module.exports = (function() {
       }
     });
 
+    if (errors.length === 0 && customError) {
+      errors = [customError];
+    }
+
     validate.showError(group, errors.join(' '));
 
     return errors.length > 0 ? errors : null;
@@ -312,19 +328,22 @@ module.exports = (function() {
 
     event.preventDefault();
 
+    var firstErrorGroup;
     var firstErrorField;
 
     [].forEach.call(form.querySelectorAll(settings.groupSelector), function(group) {
       var error = validate.validateGroup(group);
-      if (error && !firstErrorField) {
+      if (error && !firstErrorGroup) {
+        firstErrorGroup = group;
         firstErrorField = group.querySelector(settings.fieldSelector);
       }
     });
 
     // If there are errors, focus on first element with error
-    if (firstErrorField) {
-      var scrollContainer = firstErrorField.closest('.dialog') || window;
-      scrollIntoView(firstErrorField, {
+    if (firstErrorGroup) {
+      var scrollToElem = firstErrorField ? firstErrorField : firstErrorGroup;
+      var scrollContainer = scrollToElem.closest('.dialog') || window;
+      scrollIntoView(scrollToElem, {
         time: 300,
         align: {
           top: 0,
@@ -335,7 +354,7 @@ module.exports = (function() {
           return target === scrollContainer;
         }
       }, function() {
-        firstErrorField.focus();
+        scrollToElem.focus();
       });
 
       return;
@@ -400,9 +419,6 @@ module.exports = (function() {
    * @param {validateOnSubmitCallback} onSubmit function to call after successful validation
    */
   validate.init = function(onSubmit) {
-    // Destroy any existing initializations
-    validate.destroy();
-
     settings.onSubmit = onSubmit;
 
     // Add the `novalidate` attribute to all forms
