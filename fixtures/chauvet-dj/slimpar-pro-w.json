@@ -74,39 +74,66 @@
       "capabilities": [
         {
           "range": [0, 31],
-          "name": "No function"
+          "name": "No function",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+           }
         },
         {
           "range": [32, 63],
-          "name": "Pulse 0-100%"
+          "name": "Pulse 0-100%",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+           }
         },
         {
           "range": [64, 95],
-          "name": "Pulse 100-0%"
+          "name": "Pulse 100-0%",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+           }
         },
         {
           "range": [96, 127],
-          "name": "Pulse 100-0-100%"
+          "name": "Pulse 100-0-100%",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+           }
         },
         {
           "range": [128, 159],
-          "name": "Auto fade transition"
+          "name": "Auto fade transition",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+           }
         },
         {
           "range": [160, 191],
-          "name": "Auto snap transition (3-color)"
+          "name": "Auto snap transition (3-color)",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+           }
         },
         {
           "range": [192, 223],
-          "name": "Auto snap transition (7-color)"
+          "name": "Auto snap transition (7-color)",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+           }
         },
         {
           "range": [224, 249],
-          "name": "Sound mode (3-color)"
+          "name": "Sound mode (3-color)",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
+           }
         },
         {
           "range": [250, 255],
-          "name": "Sound mode (7-color)"
+          "name": "Sound mode (7-color)",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
+           }
         }
       ]
     },
@@ -131,9 +158,6 @@
           "name": "Sensitivity low-high"
         }
       ]
-    },
-    "Program Speed / Sound Sensitivity": {
-      "type": "Switching Channel"
     },
     "Dimmer Speed": {
       "type": "Maintenance",
