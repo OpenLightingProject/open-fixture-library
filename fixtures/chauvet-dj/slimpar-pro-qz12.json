@@ -1,0 +1,219 @@
+{
+  "name": "SlimPAR Pro QZ12",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-01-01",
+    "lastModifyDate": "2018-01-01"
+  },
+  "comment": "User manual is not available, Quick Reference Guide is used instead",
+  "manualURL": "https://www.chauvetdj.com/wp-content/uploads/2017/10/SlimPAR_Pro_QZ12_USB_QRG_Rev1_WO.pdf",
+  "physical": {
+    "dimensions": [234, 269, 318],
+    "weight": 4.6,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "12x 10W RGBA LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [10, 50]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "type": "Intensity",
+      "defaultValue": 0
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0
+    },
+    "Amber": {
+      "type": "Single Color",
+      "color": "Amber",
+      "defaultValue": 0
+    },
+    "Color Macros": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "No function"
+        },
+        {
+          "range": [16, 255],
+          "name": "Color Macros"
+        }
+      ]
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "No function"
+        },
+        {
+          "range": [16, 255],
+          "name": "Strobe 0-29Hz"
+        }
+      ]
+    },
+    "Auto Programs": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "No function"
+        },
+        {
+          "range": [32, 63],
+          "name": "Auto program 1"
+        },
+        {
+          "range": [64, 95],
+          "name": "Auto program 2"
+        },
+        {
+          "range": [96, 127],
+          "name": "Auto program 3"
+        },
+        {
+          "range": [128, 159],
+          "name": "Auto program 4"
+        },
+        {
+          "range": [160, 191],
+          "name": "Auto program 5"
+        },
+        {
+          "range": [192, 223],
+          "name": "Auto program 6"
+        },
+        {
+          "range": [224, 255],
+          "name": "Sound program"
+        }
+      ]
+    },
+    "Program Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Speed slow-fast"
+        }
+      ]
+    },
+    "Sound Sensitivity": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "No function"
+        },
+        {
+          "range": [11, 255],
+          "name": "Sensitivity low-high"
+        }
+      ]
+    },
+    "Program Speed / Sound Sensitivity": {
+      "type": "Switching Channel"
+    },
+    "Dimmer Speed": {
+      "type": "Maintenance",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 51],
+          "name": "Dimmer speed set from display"
+        },
+        {
+          "range": [52, 101],
+          "name": "Dimmer speed mode off"
+        },
+        {
+          "range": [102, 152],
+          "name": "Dimmer speed mode 1 fast"
+        },
+        {
+          "range": [153, 203],
+          "name": "Dimmer speed mode 2 medium"
+        },
+        {
+          "range": [204, 255],
+          "name": "Dimmer speed mode 3 slow"
+        }
+      ]
+    },
+    "Zoom": {
+      "type": "Zoom",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Zoom 0-100%"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Color Macros",
+        "Strobe",
+        "Auto Programs",
+        "Program Speed / Sound Sensitivity",
+        "Dimmer Speed",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Zoom"
+      ]
+    }
+  ]
+}
