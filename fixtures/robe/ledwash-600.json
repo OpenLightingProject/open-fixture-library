@@ -9,7 +9,21 @@
   },
   "manualURL": "https://www.robe.cz/index.php?type=10898&tx_odproducts_f%5baction%5d=downloadFile&tx_odproducts_f%5bfile%5d=robe/downloads/user_manuals/User_manual_Robin_600_LEDWash.pdf",
   "physical": {
-    "DMXconnector": "3-pin and 5-pin"
+    "dimensions": [343, 444, 203],
+    "weight": 10.6,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "37x Cree RGBW LEDs",
+      "lumens": 4820
+    },
+    "lens": {
+      "degreesMinMax": [15, 63]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 450,
+      "tiltMax": 300
+    }
   },
   "availableChannels": {
     "Pan": {
@@ -230,7 +244,7 @@
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "Zoom min-max"
+          "name": "Zoom 15-63°"
         }
       ]
     },
@@ -244,11 +258,11 @@
         },
         {
           "range": [32, 63],
-          "name": "Strobe outer slow-fast"
+          "name": "Strobe outer 0.3-20Hz"
         },
         {
           "range": [64, 95],
-          "name": "Strobe slow-fast"
+          "name": "Strobe 0.3-20Hz"
         },
         {
           "range": [96, 111],
