@@ -81,35 +81,59 @@
       "capabilities": [
         {
           "range": [0, 31],
-          "name": "No function"
+          "name": "No function",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [32, 63],
-          "name": "Auto program 1"
+          "name": "Auto program 1",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [64, 95],
-          "name": "Auto program 2"
+          "name": "Auto program 2",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [96, 127],
-          "name": "Auto program 3"
+          "name": "Auto program 3",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [128, 159],
-          "name": "Auto program 4"
+          "name": "Auto program 4",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [160, 191],
-          "name": "Auto program 5"
+          "name": "Auto program 5",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [192, 223],
-          "name": "Auto program 6"
+          "name": "Auto program 6",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [224, 255],
-          "name": "Sound program"
+          "name": "Sound program",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         }
       ]
     },
@@ -134,9 +158,6 @@
           "name": "Sensitivity low-high"
         }
       ]
-    },
-    "Program Speed / Sound Sensitivity": {
-      "type": "Switching Channel"
     },
     "Dimmer Speed": {
       "type": "Maintenance",
