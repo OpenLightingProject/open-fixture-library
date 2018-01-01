@@ -3,9 +3,9 @@
   "shortName": "TMH18",
   "categories": ["Matrix", "Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Felix Edelmann", "FloEdelmann"],
+    "authors": ["Felix Edelmann", "Flo Edelmann"],
     "createDate": "2017-05-16",
-    "lastModifyDate": "2017-11-29"
+    "lastModifyDate": "2017-12-31"
   },
   "manualURL": "http://media.steinigke.de/documents_t/51786060-MANUAL-1.00-de-en_00095278.pdf",
   "physical": {
@@ -26,13 +26,7 @@
     }
   },
   "matrix": {
-    "pixelKeys": [
-      [
-        ["1", "4", "7"],
-        ["2", "5", "8"],
-        ["3", "6", "9"]
-      ]
-    ]
+    "pixelCount": [3, 3, 1]
   },
   "availableChannels": {
     "Internal Programs": {

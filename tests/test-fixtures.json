@@ -21,6 +21,21 @@
   },
   {
     "man": "chauvet-dj",
+    "key": "gigbar-2",
+    "name": "GigBAR 2",
+    "features": [
+      "duplicate-channel-names",
+      "floating-point-weight",
+      "matrix-pixelKeys",
+      "matrix-pixelGroups",
+      "matrix-custom-layout",
+      "matrix-channel-used-directly",
+      "multiple-categories",
+      "reused-channels"
+    ]
+  },
+  {
+    "man": "chauvet-dj",
     "key": "slimpar-pro-h-usb",
     "name": "SlimPAR Pro H USB",
     "features": [
@@ -55,15 +70,15 @@
     ]
   },
   {
-    "man": "equinox",
-    "key": "gigabar",
-    "name": "Gigabar",
+    "man": "eurolite",
+    "key": "led-tmh-x25",
+    "name": "LED TMH-X25",
     "features": [
+      "fine-channel-alias",
+      "floating-point-weight",
       "matrix-pixelCount",
-      "matrix-pixelGroups",
-      "matrix-channel-used-directly",
-      "reused-channels",
-      "switching-channels"
+      "multiple-categories",
+      "reused-channels"
     ]
   },
   {
