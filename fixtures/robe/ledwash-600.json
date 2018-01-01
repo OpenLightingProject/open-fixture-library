@@ -1,0 +1,429 @@
+{
+  "name": "LEDWash 600",
+  "shortName": "RobeLEDWash600",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-01-01",
+    "lastModifyDate": "2018-01-01"
+  },
+  "manualURL": "https://www.robe.cz/index.php?type=10898&tx_odproducts_f%5baction%5d=downloadFile&tx_odproducts_f%5bfile%5d=robe/downloads/user_manuals/User_manual_Robin_600_LEDWash.pdf",
+  "physical": {
+    "DMXconnector": "3-pin and 5-pin"
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32767
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32767
+    },
+    "Pan/Tilt Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Speed fast-slow / Time 0.1-25.5s"
+        }
+      ]
+    },
+    "Special Functions": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Reserve"
+        },
+        {
+          "range": [10, 14],
+          "name": "DMX input: Wired DMX"
+        },
+        {
+          "range": [15, 19],
+          "name": "DMX input: Wireless DMX"
+        },
+        {
+          "range": [20, 49],
+          "name": "Reserved"
+        },
+        {
+          "range": [50, 59],
+          "name": "Pan/Tilt speed mode"
+        },
+        {
+          "range": [60, 69],
+          "name": "Pan/Tilt time mode"
+        },
+        {
+          "range": [70, 79],
+          "name": "Blackout while pan/tilt moving"
+        },
+        {
+          "range": [80, 89],
+          "name": "Disabled blackout while pan/tilt moving"
+        },
+        {
+          "range": [90, 99],
+          "name": "Theatre mode On"
+        },
+        {
+          "range": [100, 109],
+          "name": "Theatre mode Off"
+        },
+        {
+          "range": [110, 139],
+          "name": "Reserved"
+        },
+        {
+          "range": [140, 149],
+          "name": "Pan/Tilt reset"
+        },
+        {
+          "range": [150, 179],
+          "name": "Reserved"
+        },
+        {
+          "range": [180, 189],
+          "name": "Zoom reset"
+        },
+        {
+          "range": [190, 199],
+          "name": "Reserved"
+        },
+        {
+          "range": [200, 209],
+          "name": "Total reset"
+        },
+        {
+          "range": [210, 239],
+          "name": "Reserved"
+        },
+        {
+          "range": [240, 240],
+          "name": "Disable \"Silent mode\" of fans"
+        },
+        {
+          "range": [241, 255],
+          "name": "\"Silent mode of fans\":fans noise from min. to max."
+        }
+      ]
+    },
+    "Red $pixelKey": {
+      "type": "Single Color",
+      "color": "Red",
+      "fineChannelAliases": ["Red $pixelKey fine"],
+      "defaultValue": 0
+    },
+    "Green $pixelKey": {
+      "type": "Single Color",
+      "color": "Green",
+      "fineChannelAliases": ["Green $pixelKey fine"],
+      "defaultValue": 0
+    },
+    "Blue $pixelKey": {
+      "type": "Single Color",
+      "color": "Blue",
+      "fineChannelAliases": ["Blue $pixelKey fine"],
+      "defaultValue": 0
+    },
+    "White $pixelKey": {
+      "type": "Single Color",
+      "color": "White",
+      "fineChannelAliases": ["White $pixelKey fine"],
+      "defaultValue": 0
+    },
+    "CTC": {
+      "type": "Color Temperature",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "No function"
+        },
+        {
+          "range": [1, 255],
+          "name": "20000-2700K (off) /15500-2700K (on)"
+        }
+      ]
+    },
+    "Virtual Color Wheel": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "No function"
+        },
+        {
+          "range": [1, 2],
+          "name": "White 2700K"
+        },
+        {
+          "range": [3, 3],
+          "name": "White 2700K (halogen)"
+        },
+        {
+          "range": [4, 5],
+          "name": "White 3200K"
+        },
+        {
+          "range": [6, 6],
+          "name": "White 3200K (halogen)"
+        },
+        {
+          "range": [7, 9],
+          "name": "White 4200K"
+        },
+        {
+          "range": [10, 12],
+          "name": "White 5600K"
+        },
+        {
+          "range": [13, 15],
+          "name": "White 8000K"
+        },
+        {
+          "range": [16, 247],
+          "name": "Rainbow select Blue-Cyan-Green-Yellow-Red-Magenta-Blue"
+        },
+        {
+          "range": [248, 248],
+          "name": "Rainbow fade"
+        },
+        {
+          "range": [249, 249],
+          "name": "Rainbow jump"
+        },
+        {
+          "range": [250, 250],
+          "name": "Zone effect 1"
+        },
+        {
+          "range": [251, 251],
+          "name": "Zone effect 2"
+        },
+        {
+          "range": [252, 252],
+          "name": "Zone effect 3"
+        },
+        {
+          "range": [253, 253],
+          "name": "Zone effect 4"
+        },
+        {
+          "range": [254, 254],
+          "name": "Zone effect 5"
+        },
+        {
+          "range": [255, 255],
+          "name": "Zone effect 6"
+        }
+      ]
+    },
+    "Zoom": {
+      "type": "Zoom",
+      "fineChannelAliases": ["Zoom fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Zoom min-max"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "type": "Strobe",
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "Closed"
+        },
+        {
+          "range": [32, 63],
+          "name": "Strobe outer slow-fast"
+        },
+        {
+          "range": [64, 95],
+          "name": "Strobe slow-fast"
+        },
+        {
+          "range": [96, 111],
+          "name": "Color wheel speed CW slow-fast"
+        },
+        {
+          "range": [112, 127],
+          "name": "Color wheel speed CCW fast-slow"
+        },
+        {
+          "range": [128, 143],
+          "name": "Pulse slow-fast"
+        },
+        {
+          "range": [144, 159],
+          "name": "Pulse fast-slow"
+        },
+        {
+          "range": [160, 175],
+          "name": "Strobe random zone slow-fast"
+        },
+        {
+          "range": [176, 191],
+          "name": "Random strobe/zone slow-fast"
+        },
+        {
+          "range": [192, 223],
+          "name": "Random strobe slow-fast"
+        },
+        {
+          "range": [224, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 0
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Special Functions",
+        "Red $pixelKey",
+        "Red $pixelKey fine",
+        "Green $pixelKey",
+        "Green $pixelKey fine",
+        "Blue $pixelKey",
+        "Blue $pixelKey fine",
+        "White $pixelKey",
+        "White $pixelKey fine",
+        "CTC",
+        "Virtual Color Wheel",
+        "Zoom",
+        "Zoom fine",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    },
+    {
+      "name": "2",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Special Functions",
+        "Red $pixelKey",
+        "Red $pixelKey fine",
+        "Green $pixelKey",
+        "Green $pixelKey fine",
+        "Blue $pixelKey",
+        "Blue $pixelKey fine",
+        "White $pixelKey",
+        "White $pixelKey fine",
+        "CTC",
+        "Virtual Color Wheel",
+        "Zoom",
+        "Zoom fine",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    },
+    {
+      "name": "3",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Special Functions",
+        "Red $pixelKey",
+        "Green $pixelKey",
+        "Blue $pixelKey",
+        "White $pixelKey",
+        "CTC",
+        "Virtual Color Wheel",
+        "Zoom",
+        "Shutter / Strobe",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "4",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Special Functions",
+        "Virtual Color Wheel",
+        "Zoom",
+        "Shutter / Strobe",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "5",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Special Functions",
+        "Zoom",
+        "Zoom fine",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "CTC",
+        "Virtual Color Wheel",
+        "Red $pixelKey",
+        "Red $pixelKey fine",
+        "Green $pixelKey",
+        "Green $pixelKey fine",
+        "Blue $pixelKey",
+        "Blue $pixelKey fine",
+        "White $pixelKey",
+        "White $pixelKey fine"
+      ]
+    },
+    {
+      "name": "6",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Special Functions",
+        "Red $pixelKey",
+        "Green $pixelKey",
+        "Blue $pixelKey",
+        "White $pixelKey",
+        "CTC",
+        "Virtual Color Wheel",
+        "Zoom",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    }
+  ]
+}
