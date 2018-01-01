@@ -25,6 +25,31 @@
       "tiltMax": 300
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [null,  null,  null,  "O1",  null,  "O2",  null,  "O3",  null,  "O4",  null,  null,  null],
+        [null,  null,  null,  null,  null,  null,  null,  null,  null,  null,  null,  null,  null],
+        [null,  "O5",  null,  null,  null,  "M1",  null,  "M2",  null,  null,  null,  "O5",  null],
+        [null,  null,  null,  "M12", null,  null,  null,  null,  null,  "M3",  null,  null,  null],
+        ["O17", null,  null,  null,  null,  "I1",  null,  "I2",  null,  null,  null,  null,  "O6"],
+        [null,  null,  "M11", null,  null,  null,  null,  null,  null,  null,  "M4",  null,  null],
+        ["O16", null,  null,  null,  "I6",  null,  "I7",  null,  "I3",  null,  null,  null,  "O7"],
+        [null,  null,  "M10", null,  null,  null,  null,  null,  null,  null,  "M5",  null,  null],
+        ["O15", null,  null,  null,  null,  "I5",  null,  "I4",  null,  null,  null,  null,  "O8"],
+        [null,  null,  null,  "M9",  null,  null,  null,  null,  null,  "M6",  null,  null,  null],
+        [null,  "O14", null,  null,  null,  "M8",  null,  "M7",  null,  null,  null,  "O9",  null],
+        [null,  null,  null,  null,  null,  null,  null,  null,  null,  null,  null,  null,  null],
+        [null,  null,  null,  "O13", null,  "O12", null,  "O11", null,  "O10", null,  null,  null]
+      ]
+    ],
+    "pixelGroups": {
+      "Inner": ["I1", "I2", "I3", "I4", "I5", "I6", "I7"],
+      "Middle": ["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12"],
+      "Outer": ["O1", "O2", "O3", "O4", "O5", "O6", "O7", "O8", "O9", "O10", "O11", "O12", "O13", "O14", "O15", "O16", "O17"],
+      "All Zones": ["I1", "I2", "I3", "I4", "I5", "I6", "I7", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12", "O1", "O2", "O3", "O4", "O5", "O6", "O7", "O8", "O9", "O10", "O11", "O12", "O13", "O14", "O15", "O16", "O17"]
+    }
+  },
   "availableChannels": {
     "Pan": {
       "type": "Pan",
@@ -125,30 +150,6 @@
           "name": "\"Silent mode of fans\":fans noise from min. to max."
         }
       ]
-    },
-    "Red $pixelKey": {
-      "type": "Single Color",
-      "color": "Red",
-      "fineChannelAliases": ["Red $pixelKey fine"],
-      "defaultValue": 0
-    },
-    "Green $pixelKey": {
-      "type": "Single Color",
-      "color": "Green",
-      "fineChannelAliases": ["Green $pixelKey fine"],
-      "defaultValue": 0
-    },
-    "Blue $pixelKey": {
-      "type": "Single Color",
-      "color": "Blue",
-      "fineChannelAliases": ["Blue $pixelKey fine"],
-      "defaultValue": 0
-    },
-    "White $pixelKey": {
-      "type": "Single Color",
-      "color": "White",
-      "fineChannelAliases": ["White $pixelKey fine"],
-      "defaultValue": 0
     },
     "CTC": {
       "type": "Color Temperature",
@@ -304,6 +305,32 @@
       "defaultValue": 0
     }
   },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "type": "Single Color",
+      "color": "Red",
+      "fineChannelAliases": ["Red $pixelKey fine"],
+      "defaultValue": 0
+    },
+    "Green $pixelKey": {
+      "type": "Single Color",
+      "color": "Green",
+      "fineChannelAliases": ["Green $pixelKey fine"],
+      "defaultValue": 0
+    },
+    "Blue $pixelKey": {
+      "type": "Single Color",
+      "color": "Blue",
+      "fineChannelAliases": ["Blue $pixelKey fine"],
+      "defaultValue": 0
+    },
+    "White $pixelKey": {
+      "type": "Single Color",
+      "color": "White",
+      "fineChannelAliases": ["White $pixelKey fine"],
+      "defaultValue": 0
+    }
+  },
   "modes": [
     {
       "name": "1",
@@ -314,14 +341,21 @@
         "Tilt fine",
         "Pan/Tilt Speed",
         "Special Functions",
-        "Red $pixelKey",
-        "Red $pixelKey fine",
-        "Green $pixelKey",
-        "Green $pixelKey fine",
-        "Blue $pixelKey",
-        "Blue $pixelKey fine",
-        "White $pixelKey",
-        "White $pixelKey fine",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Inner", "Middle", "Outer"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine",
+            "White $pixelKey",
+            "White $pixelKey fine"
+          ]
+        },
         "CTC",
         "Virtual Color Wheel",
         "Zoom",
@@ -340,14 +374,14 @@
         "Tilt fine",
         "Pan/Tilt Speed",
         "Special Functions",
-        "Red $pixelKey",
-        "Red $pixelKey fine",
-        "Green $pixelKey",
-        "Green $pixelKey fine",
-        "Blue $pixelKey",
-        "Blue $pixelKey fine",
-        "White $pixelKey",
-        "White $pixelKey fine",
+        "Red All Zones",
+        "Red All Zones fine",
+        "Green All Zones",
+        "Green All Zones fine",
+        "Blue All Zones",
+        "Blue All Zones fine",
+        "White All Zones",
+        "White All Zones fine",
         "CTC",
         "Virtual Color Wheel",
         "Zoom",
@@ -366,10 +400,10 @@
         "Tilt fine",
         "Pan/Tilt Speed",
         "Special Functions",
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
-        "White $pixelKey",
+        "Red All Zones",
+        "Green All Zones",
+        "Blue All Zones",
+        "White All Zones",
         "CTC",
         "Virtual Color Wheel",
         "Zoom",
@@ -408,14 +442,21 @@
         "Dimmer fine",
         "CTC",
         "Virtual Color Wheel",
-        "Red $pixelKey",
-        "Red $pixelKey fine",
-        "Green $pixelKey",
-        "Green $pixelKey fine",
-        "Blue $pixelKey",
-        "Blue $pixelKey fine",
-        "White $pixelKey",
-        "White $pixelKey fine"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Inner", "Middle", "Outer"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine",
+            "White $pixelKey",
+            "White $pixelKey fine"
+          ]
+        }
       ]
     },
     {
@@ -427,10 +468,17 @@
         "Tilt fine",
         "Pan/Tilt Speed",
         "Special Functions",
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
-        "White $pixelKey",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Inner", "Middle", "Outer"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        },
         "CTC",
         "Virtual Color Wheel",
         "Zoom",
