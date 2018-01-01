@@ -8,6 +8,10 @@
     "lastModifyDate": "2018-01-01"
   },
   "manualURL": "https://www.robe.cz/index.php?type=10898&tx_odproducts_f%5baction%5d=downloadFile&tx_odproducts_f%5bfile%5d=robe/downloads/user_manuals/User_manual_Robin_600_LEDWash.pdf",
+  "rdm": {
+    "modelId": 118,
+    "softwareVersion": "47"
+  },
   "physical": {
     "dimensions": [343, 444, 203],
     "weight": 10.6,
@@ -334,6 +338,7 @@
   "modes": [
     {
       "name": "1st",
+      "rdmPersonalityIndex": 1,
       "channels": [
         "Pan",
         "Pan fine",
@@ -367,6 +372,7 @@
     },
     {
       "name": "2nd",
+      "rdmPersonalityIndex": 2,
       "channels": [
         "Pan",
         "Pan fine",
@@ -393,6 +399,7 @@
     },
     {
       "name": "3rd",
+      "rdmPersonalityIndex": 3,
       "channels": [
         "Pan",
         "Pan fine",
@@ -413,6 +420,7 @@
     },
     {
       "name": "4th",
+      "rdmPersonalityIndex": 4,
       "channels": [
         "Pan",
         "Pan fine",
@@ -428,6 +436,7 @@
     },
     {
       "name": "5th",
+      "rdmPersonalityIndex": 5,
       "channels": [
         "Pan",
         "Pan fine",
@@ -461,6 +470,7 @@
     },
     {
       "name": "6th",
+      "rdmPersonalityIndex": 6,
       "channels": [
         "Pan",
         "Pan fine",
