@@ -14,7 +14,7 @@ const Channel = require('../../lib/model/Channel.js');
 const FineChannel = require('../../lib/model/FineChannel.js');
 const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
 const NullChannel = require('../../lib/model/NullChannel.js');
-const Capabilitiy = require('../../lib/model/Capabilitiy.js');
+const Capability = require('../../lib/model/Capability.js');
 const Range = require('../../lib/model/Range.js');
 /* eslint-enable no-unused-vars */
 
@@ -87,6 +87,8 @@ function addFunctions(xml, mode) {
 
   const channelsToAdd = mode.channels.map(
     ch => (ch instanceof SwitchingChannel ? ch.defaultChannel : ch)
+  ).filter(
+    ch => !(ch instanceof FineChannel) // they are handled by addDmxchannelAttributes(...)
   );
 
   addColorFunctions(xmlFunctions, mode, channelsToAdd);
@@ -100,45 +102,79 @@ function addFunctions(xml, mode) {
  * @param {!Array.<AbstractChannel>} remainingChannels List of all channels that haven't been processed already, only unwrapped MatrixChannels allowed.
  */
 function addColorFunctions(xmlParent, mode, remainingChannels) {
-  const colorChannels = remainingChannels.filter(ch => ch.type === 'Single Color');
+  // search color channels and remove them from color list as we'll handle all of them
+  console.log(remainingChannels.map(ch => ch.key));
+  const remainingColorChannels = remainingChannels.filter(ch => ch.type === 'Single Color');
+  remainingColorChannels.forEach(ch => remainingChannels.splice(remainingChannels.indexOf(ch), 1));
+
+  const rgbGroups = getColorChannelGroups(remainingColorChannels, ['Red', 'Green', 'Blue']);
+  const cmyGroups = getColorChannelGroups(remainingColorChannels, ['Cyan', 'Magenta', 'Yellow']);
+  const colorGroups = rgbGroups.concat(cmyGroups);
+
+  for (const colorChannel of remainingChannels) {
+    const channelGroupWithSpace = colorGroups.find(
+      group => !group.every(ch => ch.type !== colorChannel.type)
+    );
+    if (channelGroupWithSpace) {
+      channelGroupWithSpace.push(colorChannel);
+      remainingChannels.splice(remainingChannels.indexOf(colorChannel), 1);
+    }
+  }
+
+  rgbGroups.forEach(rgbGroup => addColorMixingFunction(xmlParent, mode, rgbGroup, 'rgb'));
+  cmyGroups.forEach(cmyGroup => addColorMixingFunction(xmlParent, mode, cmyGroup, 'cmy'));
+  remainingColorChannels.forEach(channel => addColorFunction(xmlParent, mode, channel));
+}
+
+/**
+ * Groups the given channels into RGB/CMY groups. Removes used channels from the given list.
+ * @param {!Array.<Channel>} colorChannels All channels to process.
+ * @param {!Array.<string>} colors Which colors to group; either RGB or CMY colors.
+ * @returns {!Array.<Array.<Channel>>} The RGB/CMY channel groups. Each subarray consists of the three color channels.
+ */
+function getColorChannelGroups(colorChannels, colors) {
+  colorChannels = colorChannels.filter(
+    channel => colors.includes(channel.type)
+  );
+  const channelGroups = [];
 
   for (const colorChannel of colorChannels) {
-    remainingChannels.splice(remainingChannels.indexOf(colorChannel), 1);
-  }
-
-  const redChannels = colorChannels.filter(ch => ch.color === 'Red');
-  const greenChannels = colorChannels.filter(ch => ch.color === 'Green');
-  const blueChannels = colorChannels.filter(ch => ch.color === 'Blue');
-  const isRGB = redChannels.length > 0 && greenChannels.length > 0 && blueChannels.length > 0;
-
-  const cyanChannels = colorChannels.filter(ch => ch.color === 'Cyan');
-  const magentaChannels = colorChannels.filter(ch => ch.color === 'Magenta');
-  const yellowChannels = colorChannels.filter(ch => ch.color === 'Yellow');
-  const isCMY = cyanChannels.length > 0 && magentaChannels.length > 0 && yellowChannels.length > 0;
-
-  if (isRGB && isCMY) {
-    // if both color mixings are present, add a CMY function
-    const xmlCMY = xmlParent.element('cmy');
-
-    for (const colorChannel of cyanChannels.concat(magentaChannels, yellowChannels)) {
-      colorChannels.splice(colorChannels.indexOf(colorChannel), 1);
-      addColorFunction(xmlCMY, mode, colorChannel);
+    const channelGroupWithSpace = channelGroups.find(
+      group => !group.every(ch => ch.type !== colorChannel.type)
+    );
+    if (channelGroupWithSpace) {
+      channelGroupWithSpace.push(colorChannel);
+    }
+    else {
+      channelGroups.push([colorChannel]);
     }
   }
 
-  if (isRGB || isCMY) {
-    // if both color mixings are present, add an RGB function (with all other colors)
-    const xmlColorMixing = xmlParent.element(isRGB ? 'rgb' : 'cmy');
-
-    for (const colorChannel of colorChannels) {
-      addColorFunction(xmlColorMixing, mode, colorChannel);
+  const completeChannelGroups = [];
+  for (const channelGroup of channelGroups) {
+    if (channelGroup.length === colors.length) {
+      completeChannelGroups.push(channelGroup);
+      channelGroup.forEach(
+        colorChannel => colorChannels.splice(colorChannels.indexOf(colorChannel), 1)
+      );
     }
   }
-  else {
-    // no color mixing, so add the channels directly to the parent
-    for (const colorChannel of colorChannels) {
-      addColorFunction(xmlParent, mode, colorChannel);
-    }
+
+  return completeChannelGroups;
+}
+
+/**
+ * Adds a color mixing function for the given channels
+ * @param {!XMLElement} xmlParent The xml element in which the color mixing (<rgb> or <cmy>) should be inserted.
+ * @param {!Mode} mode The definition's mode.
+ * @param {!Channel} colorChannels The Single Color channels to be added.
+ * @param {('rgb'|'cmy')} colorMixing Which kind of color mixing this is.
+ */
+function addColorMixingFunction(xmlParent, mode, colorChannels, colorMixing) {
+  const xmlColorMixing = xmlParent.element(colorMixing);
+
+  for (const colorChannel of colorChannels) {
+    addColorFunction(xmlColorMixing, mode, colorChannel);
   }
 }
 
