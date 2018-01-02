@@ -21,21 +21,6 @@
   },
   {
     "man": "chauvet-dj",
-    "key": "gigbar-2",
-    "name": "GigBAR 2",
-    "features": [
-      "duplicate-channel-names",
-      "floating-point-weight",
-      "matrix-pixelKeys",
-      "matrix-pixelGroups",
-      "matrix-custom-layout",
-      "matrix-channel-used-directly",
-      "multiple-categories",
-      "reused-channels"
-    ]
-  },
-  {
-    "man": "chauvet-dj",
     "key": "slimpar-pro-h-usb",
     "name": "SlimPAR Pro H USB",
     "features": [
@@ -118,6 +103,24 @@
       "reused-channels",
       "switching-channels",
       "switching-fine-channels"
+    ]
+  },
+  {
+    "man": "robe",
+    "key": "ledwash-600",
+    "name": "LEDWash 600",
+    "features": [
+      "fine-channel-alias",
+      "fine-channel-capabilities",
+      "floating-point-weight",
+      "matrix-pixelKeys",
+      "matrix-pixelGroups",
+      "matrix-custom-layout",
+      "fine-matrix-channel",
+      "matrix-channel-used-directly",
+      "multiple-categories",
+      "rdm",
+      "reused-channels"
     ]
   }
 ]
