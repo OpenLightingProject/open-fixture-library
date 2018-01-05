@@ -42,19 +42,6 @@
     ]
   },
   {
-    "man": "elation",
-    "key": "platinum-spot-15r-pro",
-    "name": "Platinum Spot 15R Pro",
-    "features": [
-      "fine-channel-alias",
-      "fine-channel-capabilities",
-      "floating-point-dimensions",
-      "floating-point-weight",
-      "multiple-categories",
-      "reused-channels"
-    ]
-  },
-  {
     "man": "eurolite",
     "key": "led-tmh-x25",
     "name": "LED TMH-X25",
@@ -74,19 +61,6 @@
       "fine-channel-aliases",
       "no-physical-data",
       "reused-channels"
-    ]
-  },
-  {
-    "man": "jb-systems",
-    "key": "twin-effect-laser",
-    "name": "Twin Effect Laser",
-    "features": [
-      "duplicate-channel-names",
-      "floating-point-weight",
-      "multiple-categories",
-      "null-channels",
-      "reused-channels",
-      "switching-channels"
     ]
   },
   {
@@ -120,6 +94,20 @@
       "matrix-channel-used-directly",
       "multiple-categories",
       "rdm",
+      "reused-channels"
+    ]
+  },
+  {
+    "man": "robe",
+    "key": "robin-ledbeam-150",
+    "name": "Robin LEDBeam 150",
+    "features": [
+      "fine-channel-alias",
+      "floating-point-dimensions",
+      "floating-point-weight",
+      "floating-point-lens-degrees",
+      "multiple-categories",
+      "null-channels",
       "reused-channels"
     ]
   }
