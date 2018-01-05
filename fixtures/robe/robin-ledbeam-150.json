@@ -1,0 +1,722 @@
+{
+  "name": "Robin LEDBeam 150",
+  "shortName": "RobinLEDBeam150",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-01-05",
+    "lastModifyDate": "2018-01-05"
+  },
+  "comment": "Whether to use RGB or CMY depends on the chosen mode in \"Special functions\"",
+  "manualURL": "https://www.robe.cz/index.php?type=10898&tx_odproducts_f%5baction%5d=downloadFile&tx_odproducts_f%5bfile%5d=robe/downloads/user_manuals/User_manual_Robin_LEDBeam_150.pdf",
+  "physical": {
+    "dimensions": [244, 329, 190.3],
+    "weight": 5.7,
+    "power": 220,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "7x RGBW LEDs",
+      "lumens": 1380
+    },
+    "lens": {
+      "degreesMinMax": [3.8, 60]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 228
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32768
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32768
+    },
+    "Pan/Tilt Speed": {
+      "type": "Speed",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Max. speed / tracking mode"
+        },
+        {
+          "range": [1, 255],
+          "name": "Speed fast-slow / Time 0.1-25.5s"
+        }
+      ]
+    },
+    "Special Functions": {
+      "type": "Maintenance",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 19],
+          "name": "Reserved"
+        },
+        {
+          "range": [20, 24],
+          "name": "Display on"
+        },
+        {
+          "range": [25, 29],
+          "name": "Display off"
+        },
+        {
+          "range": [30, 34],
+          "name": "RGBW color mixing mode"
+        },
+        {
+          "range": [35, 39],
+          "name": "CMY color mixing mode"
+        },
+        {
+          "range": [40, 44],
+          "name": "Pan/Tilt speed mode"
+        },
+        {
+          "range": [45, 49],
+          "name": "Pan/Tilt time mode"
+        },
+        {
+          "range": [50, 54],
+          "name": "lackout while pan/tilt moving"
+        },
+        {
+          "range": [55, 59],
+          "name": "Disabled blackout while pan/tilt moving"
+        },
+        {
+          "range": [60, 64],
+          "name": "Dimmer curve - square law"
+        },
+        {
+          "range": [65, 69],
+          "name": "Dimmer curve - linear"
+        },
+        {
+          "range": [70, 74],
+          "name": "Fans mode: Auto"
+        },
+        {
+          "range": [75, 79],
+          "name": "Fans mode: High"
+        },
+        {
+          "range": [80, 84],
+          "name": "White point 8000K ON"
+        },
+        {
+          "range": [85, 89],
+          "name": "White point 8000K OFF"
+        },
+        {
+          "range": [90, 94],
+          "name": "Fans mode: Quiet"
+        },
+        {
+          "range": [95, 139],
+          "name": "Reserved"
+        },
+        {
+          "range": [140, 149],
+          "name": "Pan/Tilt reset"
+        },
+        {
+          "range": [150, 159],
+          "name": "Zoom reset"
+        },
+        {
+          "range": [160, 169],
+          "name": "Reserved"
+        },
+        {
+          "range": [170, 171],
+          "name": "Tungsten effect simulation (750W) On"
+        },
+        {
+          "range": [172, 173],
+          "name": "Tungsten effect simulation (1000W) On"
+        },
+        {
+          "range": [174, 175],
+          "name": "Tungsten effect simulation (1200W) On"
+        },
+        {
+          "range": [176, 177],
+          "name": "Tungsten effect simulation (2000W) On"
+        },
+        {
+          "range": [178, 179],
+          "name": "Tungsten effect simulation (2500W) On"
+        },
+        {
+          "range": [180, 181],
+          "name": "Tungsten effect simulation Off"
+        },
+        {
+          "range": [182, 199],
+          "name": "Reserved"
+        },
+        {
+          "range": [200, 209],
+          "name": "Total fixture reset"
+        },
+        {
+          "range": [210, 255],
+          "name": "Reserved"
+        }
+      ]
+    },
+    "Virtual Color Wheel": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "No function"
+        },
+        {
+          "range": [1, 2],
+          "name": "Filter 4 (Medium Bastard Amber)"
+        },
+        {
+          "range": [3, 4],
+          "name": "Filter 25 (Sunset Red)"
+        },
+        {
+          "range": [5, 6],
+          "name": "Filter 19 (Fire)"
+        },
+        {
+          "range": [7, 8],
+          "name": "Filter 26 (Bright Red)"
+        },
+        {
+          "range": [9, 10],
+          "name": "Filter 58 (Lavender)"
+        },
+        {
+          "range": [11, 12],
+          "name": "Filter 68 (Sky Blue)"
+        },
+        {
+          "range": [13, 14],
+          "name": "Filter 36 (Medium Pink)"
+        },
+        {
+          "range": [15, 16],
+          "name": "Filter 89 (Moss Green)"
+        },
+        {
+          "range": [17, 18],
+          "name": "Filter 88 (Lime Green)"
+        },
+        {
+          "range": [19, 20],
+          "name": "Filter 90 (Dark Yellow Green)"
+        },
+        {
+          "range": [21, 22],
+          "name": "Filter 49 (Medium Purple)"
+        },
+        {
+          "range": [23, 24],
+          "name": "Filter 52 (Light Lavender)"
+        },
+        {
+          "range": [25, 26],
+          "name": "Filter 102 (Light Amber)"
+        },
+        {
+          "range": [27, 28],
+          "name": "Filter 103 (Straw)"
+        },
+        {
+          "range": [29, 30],
+          "name": "Filter 140 (Summer Blue)"
+        },
+        {
+          "range": [31, 32],
+          "name": "Filter 124 (Dark Green)"
+        },
+        {
+          "range": [33, 34],
+          "name": "Filter 106 (Primary Red)"
+        },
+        {
+          "range": [35, 36],
+          "name": "Filter 111 (Dark Pink)"
+        },
+        {
+          "range": [37, 38],
+          "name": "Filter 115 (Peacock Blue)"
+        },
+        {
+          "range": [39, 40],
+          "name": "Filter 126 (Mauve)"
+        },
+        {
+          "range": [41, 42],
+          "name": "Filter 117 (Steel Blue)"
+        },
+        {
+          "range": [43, 44],
+          "name": "Filter 118 (Light Blue)"
+        },
+        {
+          "range": [45, 46],
+          "name": "Filter 122 (Fern Green)"
+        },
+        {
+          "range": [47, 48],
+          "name": "Filter 182 (Light Red)"
+        },
+        {
+          "range": [49, 50],
+          "name": "Filter  121 (Filter Green)"
+        },
+        {
+          "range": [51, 52],
+          "name": "Filter 128 (Bright Pink)"
+        },
+        {
+          "range": [53, 54],
+          "name": "Filter 131 (Marine Blue)"
+        },
+        {
+          "range": [55, 56],
+          "name": "Filter 132 (Medium Blue)"
+        },
+        {
+          "range": [57, 58],
+          "name": "Filter 134 (Golden Amber)"
+        },
+        {
+          "range": [59, 60],
+          "name": "Filter 135 (Deep Golden Amber)"
+        },
+        {
+          "range": [61, 62],
+          "name": "Filter 136 (Pale Lavender)"
+        },
+        {
+          "range": [63, 64],
+          "name": "Filter  137 (Special Lavender)"
+        },
+        {
+          "range": [65, 66],
+          "name": "Filter 138 (Pale Green)"
+        },
+        {
+          "range": [67, 68],
+          "name": "Filter 798 (Chrysalis Pink)"
+        },
+        {
+          "range": [69, 70],
+          "name": "Filter 141 (Bright Blue)"
+        },
+        {
+          "range": [71, 72],
+          "name": "Filter 147 (Apricot)"
+        },
+        {
+          "range": [73, 74],
+          "name": "Filter 148 (Bright Rose)"
+        },
+        {
+          "range": [75, 76],
+          "name": "Filter 152 (Pale Gold)"
+        },
+        {
+          "range": [77, 78],
+          "name": "Filter 154 (Pale Rose)"
+        },
+        {
+          "range": [79, 80],
+          "name": "Filter 157 (Pink)"
+        },
+        {
+          "range": [81, 82],
+          "name": "Filter 143 (Pale Navy Blue)"
+        },
+        {
+          "range": [83, 84],
+          "name": "Filter 162 (Bastard Amber)"
+        },
+        {
+          "range": [85, 86],
+          "name": "Filter 164 (Flame Red)"
+        },
+        {
+          "range": [87, 88],
+          "name": "Filter 165 (Daylight Blue)"
+        },
+        {
+          "range": [89, 90],
+          "name": "Filter 169 (Lilac Tint)"
+        },
+        {
+          "range": [91, 92],
+          "name": "Filter 170 (Deep Lavender)"
+        },
+        {
+          "range": [93, 94],
+          "name": "Filter 172 (Lagoon Blue)"
+        },
+        {
+          "range": [95, 96],
+          "name": "Filter 194 (Surprise Pink)"
+        },
+        {
+          "range": [97, 98],
+          "name": "Filter 180 (Dark Lavender)"
+        },
+        {
+          "range": [99, 100],
+          "name": "Filter 181 (Congo Blue)"
+        },
+        {
+          "range": [101, 102],
+          "name": "Filter 197 (Alice Blue)"
+        },
+        {
+          "range": [103, 104],
+          "name": "Filter 201 (Full C.T. Blue)"
+        },
+        {
+          "range": [105, 106],
+          "name": "Filter 202 (Half C.T. Blue)"
+        },
+        {
+          "range": [107, 108],
+          "name": "Filter 203 (Quarter C.T. Blue)"
+        },
+        {
+          "range": [109, 110],
+          "name": "Filter 204 (Full C.T. Orange)"
+        },
+        {
+          "range": [111, 112],
+          "name": "Filter 219 (Fluorescent Green)"
+        },
+        {
+          "range": [113, 114],
+          "name": "Filter 206 (Quarter C.T. Orange)"
+        },
+        {
+          "range": [115, 116],
+          "name": "Filter 247 (Filter Minus Green)"
+        },
+        {
+          "range": [117, 118],
+          "name": "Filter 248 (Half Minus Green)"
+        },
+        {
+          "range": [119, 120],
+          "name": "Filter 281 (Three Quarter C.T. Blue)"
+        },
+        {
+          "range": [121, 122],
+          "name": "Filter 285 (Three Quarter C.T. Orange)"
+        },
+        {
+          "range": [123, 124],
+          "name": "Filter 352 (Glacier Blue)"
+        },
+        {
+          "range": [125, 126],
+          "name": "Filter 353 (Lighter Blue)"
+        },
+        {
+          "range": [127, 128],
+          "name": "Filter 507 (Madge)"
+        },
+        {
+          "range": [129, 130],
+          "name": "Filter 778 (Millennium Gold)"
+        },
+        {
+          "range": [131, 132],
+          "name": "Filter 793 (Vanity Fair)"
+        },
+        {
+          "range": [133, 235],
+          "name": "Raw DMX"
+        },
+        {
+          "range": [236, 245],
+          "name": "Color fade slow-fast"
+        },
+        {
+          "range": [246, 255],
+          "name": "Color jump slow-fast"
+        }
+      ]
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": 0
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": 0
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": 0
+    },
+    "White": {
+      "type": "Single Color",
+      "color": "White",
+      "fineChannelAliases": ["White fine"],
+      "defaultValue": 0
+    },
+    "CTC": {
+      "type": "Color Temperature",
+      "defaultValue": 0,
+      "invert": true,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Color temperature 8000-2700K"
+        }
+      ]
+    },
+    "Color Mix Control": {
+      "type": "Maintenance",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Virtual Color Wheel has priority"
+        },
+        {
+          "range": [10, 19],
+          "name": "Highest values have priority"
+        },
+        {
+          "range": [20, 29],
+          "name": "Lowest values have priority"
+        },
+        {
+          "range": [30, 39],
+          "name": "Multiply wheel and color mix"
+        },
+        {
+          "range": [40, 49],
+          "name": "Add wheel and color mix"
+        },
+        {
+          "range": [50, 59],
+          "name": "Subtract color mix from wheel"
+        },
+        {
+          "range": [60, 69],
+          "name": "Substract wheel from color mix"
+        },
+        {
+          "range": [70, 128],
+          "name": "Reserved"
+        },
+        {
+          "range": [129, 129],
+          "name": "Virtual Color Wheel has priority"
+        },
+        {
+          "range": [130, 254],
+          "name": "Crossfade between wheel and color mix"
+        },
+        {
+          "range": [255, 255],
+          "name": "Color mix has priority"
+        }
+      ]
+    },
+    "Zoom": {
+      "type": "Zoom",
+      "fineChannelAliases": ["Zoom fine"],
+      "defaultValue": 32768
+    },
+    "Shutter / Strobe": {
+      "type": "Strobe",
+      "defaultValue": 32,
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "Closed"
+        },
+        {
+          "range": [32, 63],
+          "name": "Open"
+        },
+        {
+          "range": [64, 95],
+          "name": "Strobe 0.3-20Hz"
+        },
+        {
+          "range": [96, 127],
+          "name": "Open"
+        },
+        {
+          "range": [128, 143],
+          "name": "Opening pulse slow-fast"
+        },
+        {
+          "range": [144, 159],
+          "name": "Closing pulse fast-slow"
+        },
+        {
+          "range": [160, 191],
+          "name": "Open"
+        },
+        {
+          "range": [192, 223],
+          "name": "Random strobe slow-fast"
+        },
+        {
+          "range": [224, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 0
+    },
+    "Cyan": {
+      "type": "Single Color",
+      "color": "Cyan",
+      "fineChannelAliases": ["Cyan fine"],
+      "defaultValue": 0
+    },
+    "Magenta": {
+      "type": "Single Color",
+      "color": "Magenta",
+      "fineChannelAliases": ["Magenta fine"],
+      "defaultValue": 0
+    },
+    "Yellow": {
+      "type": "Single Color",
+      "color": "Yellow",
+      "fineChannelAliases": ["Yellow fine"],
+      "defaultValue": 0
+    },
+    "Null": {
+      "type": "Nothing",
+      "fineChannelAliases": ["Null fine"]
+    }
+  },
+  "modes": [
+    {
+      "name": "1 – Standard 16bit RGB",
+      "shortName": "1-16bitRGB",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Special Functions",
+        "Virtual Color Wheel",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "CTC",
+        "Color Mix Control",
+        "Zoom",
+        "Zoom fine",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    },
+    {
+      "name": "2 – Reduced 8bit RGB",
+      "shortName": "2-8bitRGB",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Special Functions",
+        "Virtual Color Wheel",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "CTC",
+        "Color Mix Control",
+        "Zoom",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "1 – Standard 16bit CMY",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Special Functions",
+        "Virtual Color Wheel",
+        "Cyan",
+        "Cyan fine",
+        "Magenta",
+        "Magenta fine",
+        "Yellow",
+        "Yellow fine",
+        "Null",
+        "Null fine",
+        "CTC",
+        "Color Mix Control",
+        "Zoom",
+        "Zoom fine",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    },
+    {
+      "name": "2 – Reduced 8bit CMY",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Special Functions",
+        "Virtual Color Wheel",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Null",
+        "CTC",
+        "Color Mix Control",
+        "Zoom",
+        "Shutter / Strobe",
+        "Dimmer"
+      ]
+    }
+  ]
+}
