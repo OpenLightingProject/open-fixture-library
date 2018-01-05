@@ -484,6 +484,24 @@
       "fineChannelAliases": ["White fine"],
       "defaultValue": 0
     },
+    "Cyan": {
+      "type": "Single Color",
+      "color": "Cyan",
+      "fineChannelAliases": ["Cyan fine"],
+      "defaultValue": 0
+    },
+    "Magenta": {
+      "type": "Single Color",
+      "color": "Magenta",
+      "fineChannelAliases": ["Magenta fine"],
+      "defaultValue": 0
+    },
+    "Yellow": {
+      "type": "Single Color",
+      "color": "Yellow",
+      "fineChannelAliases": ["Yellow fine"],
+      "defaultValue": 0
+    },
     "CTC": {
       "type": "Color Temperature",
       "defaultValue": 0,
@@ -596,34 +614,12 @@
       "type": "Intensity",
       "fineChannelAliases": ["Dimmer fine"],
       "defaultValue": 0
-    },
-    "Cyan": {
-      "type": "Single Color",
-      "color": "Cyan",
-      "fineChannelAliases": ["Cyan fine"],
-      "defaultValue": 0
-    },
-    "Magenta": {
-      "type": "Single Color",
-      "color": "Magenta",
-      "fineChannelAliases": ["Magenta fine"],
-      "defaultValue": 0
-    },
-    "Yellow": {
-      "type": "Single Color",
-      "color": "Yellow",
-      "fineChannelAliases": ["Yellow fine"],
-      "defaultValue": 0
-    },
-    "Null": {
-      "type": "Nothing",
-      "fineChannelAliases": ["Null fine"]
     }
   },
   "modes": [
     {
-      "name": "1 – Standard 16bit RGB",
-      "shortName": "1-16bitRGB",
+      "name": "1 – Standard 16bit RGBW",
+      "shortName": "1-16bitRGBW",
       "channels": [
         "Pan",
         "Pan fine",
@@ -650,8 +646,8 @@
       ]
     },
     {
-      "name": "2 – Reduced 8bit RGB",
-      "shortName": "2-8bitRGB",
+      "name": "2 – Reduced 8bit RGBW",
+      "shortName": "2-8bitRGBW",
       "channels": [
         "Pan",
         "Pan fine",
@@ -672,6 +668,7 @@
     },
     {
       "name": "1 – Standard 16bit CMY",
+      "shortName": "1-16bitCMY",
       "channels": [
         "Pan",
         "Pan fine",
@@ -686,8 +683,8 @@
         "Magenta fine",
         "Yellow",
         "Yellow fine",
-        "Null",
-        "Null fine",
+        null,
+        null
         "CTC",
         "Color Mix Control",
         "Zoom",
@@ -699,6 +696,7 @@
     },
     {
       "name": "2 – Reduced 8bit CMY",
+      "shortName": "2-8bitCMY",
       "channels": [
         "Pan",
         "Pan fine",
@@ -710,7 +708,7 @@
         "Cyan",
         "Magenta",
         "Yellow",
-        "Null",
+        null,
         "CTC",
         "Color Mix Control",
         "Zoom",
