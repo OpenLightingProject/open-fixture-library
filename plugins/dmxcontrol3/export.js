@@ -85,7 +85,7 @@ function addInformation(xml, mode) {
 function addFunctions(xml, mode) {
   const xmlFunctions = xml.element('functions');
 
-  let channelsToAdd = getSanitizedChannels(mode.channels);
+  let channelsToAdd = getSanitizedChannels();
 
   addMatrixFunction(xmlFunctions, mode, channelsToAdd);
 
@@ -94,33 +94,33 @@ function addFunctions(xml, mode) {
   );
 
   addColorFunctions(xmlFunctions, mode, channelsToAdd);
-}
+  addPositionFunctions(xmlFunctions, mode, channelsToAdd);
 
-/**
- * Sanitizes the channel list to be easily used later.
- * @param {!Array.<AbstractChannel, MatrixChannel>} channels A mode's channel list
- * @returns {!Array.<Channel, MatrixChannel>} The given channels; switching channels are mapped to the the default channel, fine and null channels are excluded.
- */
-function getSanitizedChannels(channels) {
-  return channels.map(ch => getSanitizedChannel(ch)).filter(ch => ch !== null);
-}
+  /**
+   * Sanitizes the channel list to be easily used later.
+   * @returns {!Array.<Channel, MatrixChannel>} The given channels; switching channels are mapped to the the default channel, fine and null channels are excluded.
+   */
+  function getSanitizedChannels() {
+    return mode.channels.map(ch => getSanitizedChannel(ch)).filter(ch => ch !== null);
+  }
 
-/**
- * @param {AbstractChannel|MatrixChannel} channel Some channel of any type.
- * @returns {?Channel} A channel to be used instead of the given one; may be the same or null (to not include in definition).
- */
-function getSanitizedChannel(channel) {
-  if (channel instanceof MatrixChannel && channel.wrappedChannel instanceof SwitchingChannel) {
-    return getSanitizedChannel(channel.wrappedChannel.defaultChannel);
+  /**
+   * @param {AbstractChannel|MatrixChannel} channel Some channel of any type.
+   * @returns {?Channel} A channel to be used instead of the given one; may be the same or null (to not include in definition).
+   */
+  function getSanitizedChannel(channel) {
+    if (channel instanceof MatrixChannel && channel.wrappedChannel instanceof SwitchingChannel) {
+      return getSanitizedChannel(channel.wrappedChannel.defaultChannel);
+    }
+    if (channel instanceof SwitchingChannel) {
+      return getSanitizedChannel(channel.defaultChannel);
+    }
+    if (channel instanceof FineChannel || channel instanceof NullChannel) {
+      // fine channels are handled by addDmxchannelAttributes(...), null channels are simply ignored
+      return null;
+    }
+    return channel;
   }
-  if (channel instanceof SwitchingChannel) {
-    return getSanitizedChannel(channel.defaultChannel);
-  }
-  if (channel instanceof FineChannel || channel instanceof NullChannel) {
-    // fine channels are handled by addDmxchannelAttributes(...), null channels are simply ignored
-    return null;
-  }
-  return channel;
 }
 
 /**
@@ -203,7 +203,7 @@ function addColorMixingsToMatrix(xmlMatrix, mode, colorGroups, remainingChannels
 /**
  * Finds color channels in the given channel list, adds them to xml (as RGB/CMY function, if possible)
  * and removes them from the given channel list.
- * @param {!XMLElement} xmlParent The xml element in which the <rgb>/<cmy> tag should be inserted.
+ * @param {!XMLElement} xmlParent The xml element in which the <rgb>/<blue>/<amber>/... tags should be inserted.
  * @param {!Mode} mode The definition's mode.
  * @param {!Array.<Channel>} remainingChannels All channels that haven't been processed already.
  */
@@ -292,6 +292,68 @@ function addColorFunction(xmlParent, mode, colorChannel) {
 }
 
 /**
+ * Finds Pan/Tilt channels in the given channel list, adds them to xml (as Position function, if possible)
+ * and removes them from the given channel list.
+ * @param {!XMLElement} xmlParent The xml element in which the <position> tags should be inserted.
+ * @param {!Mode} mode The definition's mode.
+ * @param {!Array.<Channel>} remainingChannels All channels that haven't been processed already.
+ */
+function addPositionFunctions(xmlParent, mode, remainingChannels) {
+  const remainingPanChannels = remainingChannels.filter(ch => ch.type === 'Pan');
+  const remainingTiltChannels = remainingChannels.filter(ch => ch.type === 'Tilt');
+
+  // we'll handle all of them
+  remainingPanChannels.concat(remainingTiltChannels).forEach(
+    ch => removeFromArray(remainingChannels, ch)
+  );
+
+  const positionGroups = [];
+  while (remainingPanChannels.length > 0 && remainingTiltChannels.length > 0) {
+    // save first elements of arrays and remove them from the arrays
+    positionGroups.push([remainingPanChannels.shift(), remainingTiltChannels.shift()]);
+  }
+
+  positionGroups.forEach(
+    ([pan, tilt]) => addPositionFunction(xmlParent, mode, pan, tilt)
+  );
+  remainingPanChannels.concat(remainingTiltChannels).forEach(
+    panTiltChannel => addPanTiltFunction(xmlParent, mode, panTiltChannel)
+  );
+}
+
+/**
+ * Adds a position function for the given Pan and Tilt channel.
+ * @param {!XMLElement} xmlParent The xml element in which the <position> tag should be inserted.
+ * @param {!Mode} mode The definition's mode.
+ * @param {!Channel} panChannel The channel of type Pan to use.
+ * @param {!Channel} tiltChannel The channel of type Tilt to use.
+ */
+function addPositionFunction(xmlParent, mode, panChannel, tiltChannel) {
+  const xmlPosition = xmlParent.element('position');
+
+  addPanTiltFunction(xmlPosition, mode, panChannel);
+  addPanTiltFunction(xmlPosition, mode, tiltChannel);
+}
+
+/**
+ * Adds a pan or tilt function for the given Pan or Tilt channel.
+ * @param {!XMLElement} xmlParent The xml element in which the <pan>/<titl> tag should be inserted, probably <position>.
+ * @param {!Mode} mode The definition's mode.
+ * @param {!Channel} channel The channel of type Pan or Tilt to use.
+ */
+function addPanTiltFunction(xmlParent, mode, channel) {
+  const isPan = channel.type === 'Pan';
+
+  const xmlFunc = xmlParent.element(isPan ? 'pan' : 'tilt');
+  addDmxchannelAttributes(xmlFunc, mode, channel);
+
+  const focusMax = isPan ? 'focusPanMax' : 'focusTiltMax';
+  if (mode.physical !== null && mode.physical[focusMax] !== null) {
+    xmlFunc.element('range').attribute('range', mode.physical[focusMax]);
+  }
+}
+
+/**
  * Adds dmxchannel attribute and attributes for fine channels (if used in mode) to the given channel function.
  * @param {!XMLElement} xmlElement The xml element to which the attributes should be added.
  * @param {!Mode} mode The definition's mode.
@@ -301,6 +363,7 @@ function addDmxchannelAttributes(xmlElement, mode, channel) {
   const index = mode.getChannelIndex(channel);
   xmlElement.attribute('dmxchannel', index);
 
+  console.log(channel, channel.fineChannels);
   const fineIndices = channel.fineChannels.map(
     fineCh => mode.getChannelIndex(fineCh)
   );
