@@ -365,7 +365,6 @@ function addDmxchannelAttributes(xmlElement, mode, channel) {
   const index = mode.getChannelIndex(channel);
   xmlElement.attribute('dmxchannel', index);
 
-  console.log(channel, channel.fineChannels);
   const fineIndices = channel.fineChannels.map(
     fineCh => mode.getChannelIndex(fineCh)
   );
