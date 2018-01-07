@@ -4,7 +4,7 @@ const xsd = require('libxml-xsd');
 const SCHEMA_URL = 'https://raw.githubusercontent.com/mcallegari/qlcplus/master/resources/schemas/fixture.xsd';
 
 /**
- * @param {!object} exportFile The file returned by the plugins' export module.
+ * @param {object} exportFile The file returned by the plugins' export module.
  * @param {!string} exportFile.name File name, may include slashes to provide a folder structure.
  * @param {!string} exportFile.content File content.
  * @param {!string} exportFile.mimetype File mime type.
