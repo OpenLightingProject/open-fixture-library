@@ -205,9 +205,7 @@ function getFileResultPromise(test, file, indent = '') {
     .then(() => {
       return [`${indent}- :white_check_mark: ${file.name}`];
     })
-    .catch(err => {
-      const errors = Array.isArray(err) ? err : [err];
-
+    .catch(errors => {
       const fileResultLines = [
         `${indent}- :x: ${file.name}`,
         `${indent}  <details>`,

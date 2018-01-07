@@ -7,7 +7,7 @@ const xml2js = require('xml2js');
  * @param {!string} exportFile.mimetype File mime type.
  * @param {?Array.<Fixture>} exportFile.fixtures Fixture objects that are described in given file; may be ommited if the file doesn't belong to any fixture (e.g. manufacturer information).
  * @param {?string} exportFile.mode Mode's shortName if given file only describes a single mode.
- * @returns {!Promise} Resolve when the test passes or reject with an error if the test fails.
+ * @returns {!Promise} Resolve when the test passes or reject with an array of errors if the test fails.
 **/
 module.exports = function testAttributesCorrectness(exportFile) {
   return new Promise((resolve, reject) => {
@@ -15,7 +15,7 @@ module.exports = function testAttributesCorrectness(exportFile) {
 
     parser.parseString(exportFile.content, (parseError, xml) => {
       if (parseError) {
-        return reject(`Error parsing XML: ${parseError.toString()}`);
+        return reject([`Error parsing XML: ${parseError.toString()}`]);
       }
 
       const errors = [];

@@ -60,9 +60,8 @@ for (const testKey of Object.keys(plugin.exportTests)) {
   const filePromises = files.map(file =>
     test(file)
       .then(() => colors.green('[PASS] ') + file.name)
-      .catch(err => {
+      .catch(errors => {
         const lines = [colors.red('[FAIL] ') + file.name];
-        const errors = Array.isArray(err) ? err : [err];
         for (const error of errors) {
           lines.push(`- ${error}`);
         }
