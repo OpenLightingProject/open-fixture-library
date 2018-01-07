@@ -201,7 +201,7 @@ function getExportTestListPromise(plugin, testKey, fixtures, indent = '') {
 }
 
 function getFileResultPromise(test, file, indent = '') {
-  return test(file.content)
+  return test(file)
     .then(() => {
       return [`${indent}- :white_check_mark: ${file.name}`];
     })

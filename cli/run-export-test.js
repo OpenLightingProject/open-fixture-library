@@ -58,7 +58,7 @@ const files = plugin.export.export(fixtures, {});
 for (const testKey of Object.keys(plugin.exportTests)) {
   const test = plugin.exportTests[testKey];
   const filePromises = files.map(file =>
-    test(file.content)
+    test(file)
       .then(() => colors.green('[PASS] ') + file.name)
       .catch(err => {
         const lines = [colors.red('[FAIL] ') + file.name];

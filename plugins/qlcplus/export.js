@@ -43,7 +43,8 @@ module.exports.export = function exportQLCplus(fixtures, options) {
         pretty: true,
         indent: ' '
       }),
-      mimetype: 'application/x-qlc-fixture'
+      mimetype: 'application/x-qlc-fixture',
+      fixtures: [fixture]
     };
   });
 };

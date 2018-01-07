@@ -45,7 +45,9 @@ module.exports.export = function exportDLight(fixtures, options) {
           pretty: true,
           indent: '  '
         }),
-        mimetype: 'application/xml'
+        mimetype: 'application/xml',
+        fixtures: [fixture],
+        mode: mode.shortName
       });
     }
   }

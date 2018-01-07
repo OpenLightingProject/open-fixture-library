@@ -52,7 +52,9 @@ module.exports.export = function exportDMXControl3(fixtures, options) {
           pretty: true,
           indent: '  '
         }),
-        mimetype: 'application/xml'
+        mimetype: 'application/xml',
+        fixtures: [fixture],
+        mode: mode.shortName
       });
     }
   }
