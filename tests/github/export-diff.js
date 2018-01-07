@@ -26,7 +26,7 @@ pullRequest.checkEnv()
 
     let lines = [];
 
-    if (changedComponents.modified.model) {
+    if (changedComponents.modified.model || changedComponents.renamed.model) {
       lines = lines.concat(getModelMessage(allPlugins, allTestFixtures));
     }
     else {

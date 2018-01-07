@@ -101,6 +101,14 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
           exportTests: [], // array of [plugin key, test key]
           fixtures: [] // array of [man key, fix key]
         },
+        renamed: {
+          schema: false,
+          model: false,
+          imports: [], // array of plugin keys
+          exports: [], // array of plugin keys
+          exportTests: [], // array of [plugin key, test key]
+          fixtures: [] // array of [man key, fix key]
+        },
         removed: {
           schema: false,
           model: false,
