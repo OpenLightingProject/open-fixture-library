@@ -22,13 +22,13 @@ pullRequest.checkEnv()
 
     if (changedComponents.added.model ||
       changedComponents.modified.model ||
+      changedComponents.renamed.model ||
       changedComponents.removed.model) {
       messagePromises.push(getModelMessagePromise());
     }
     else {
-    // only plugins that have export tests
       const changedPlugins = changedComponents.added.exports.concat(changedComponents.modified.exports)
-        .filter(key => Object.keys(plugins[key].exportTests).length > 0);
+        .filter(key => Object.keys(plugins[key].exportTests).length > 0); // only plugins that have export tests
       for (const plugin of changedPlugins) {
         messagePromises.push(getPluginMessagePromise(plugin));
       }
@@ -41,7 +41,7 @@ pullRequest.checkEnv()
       }
     }
 
-    const fixtures = changedComponents.added.fixtures.concat(changedComponents.modified.fixtures);
+    const fixtures = changedComponents.added.fixtures.concat(changedComponents.modified.fixtures, changedComponents.renamed.fixtures);
     for (const fixture of fixtures) {
       messagePromises.push(getFixtureMessagePromise(fixture));
     }
