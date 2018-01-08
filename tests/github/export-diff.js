@@ -22,7 +22,8 @@ pullRequest.checkEnv()
   .then(prData => pullRequest.fetchChangedComponents())
   .then(changedComponents => {
     const allPlugins = exportPlugins.filter(plugin => !changedComponents.added.exports.includes(plugin));
-    const allTestFixtures = testFixtures.filter(fixture => !changedComponents.added.fixtures.includes(fixture));
+    const addedFixtures = changedComponents.added.fixtures.map(([man, key]) => `${man}/${key}`);
+    const allTestFixtures = testFixtures.filter(testFixture => !addedFixtures.includes(testFixture));
 
     let lines = [];
 

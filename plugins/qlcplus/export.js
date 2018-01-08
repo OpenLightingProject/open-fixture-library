@@ -178,8 +178,8 @@ function addPhysical(xmlMode, physical) {
       },
       Focus: {
         '@Type': physical.focusType || 'Fixed',
-        '@PanMax': physical.focusPanMax || 0,
-        '@TiltMax': physical.focusTiltMax || 0
+        '@PanMax': Math.round(physical.focusPanMax) || 0,
+        '@TiltMax': Math.round(physical.focusTiltMax) || 0
       }
     }
   });
