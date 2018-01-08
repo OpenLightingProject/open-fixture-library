@@ -115,6 +115,31 @@
     ]
   },
   {
+    "man": "jb-lighting",
+    "key": "varyscan-p7",
+    "name": "Varyscan P7",
+    "features": [
+      "channel-type-intensity",
+      "channel-type-single-color",
+      "channel-type-multi-color",
+      "channel-type-pan",
+      "channel-type-tilt",
+      "channel-type-focus",
+      "channel-type-zoom",
+      "channel-type-iris",
+      "channel-type-gobo",
+      "channel-type-prism",
+      "channel-type-shutter",
+      "channel-type-speed",
+      "channel-type-effect",
+      "channel-type-maintenance",
+      "fine-channel-alias",
+      "fine-channel-capabilities",
+      "floating-point-pan-tilt-max",
+      "reused-channels"
+    ]
+  },
+  {
     "man": "martin",
     "key": "mac-viper-performance",
     "name": "MAC Viper Performance",
