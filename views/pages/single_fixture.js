@@ -413,8 +413,9 @@ function handleMatrixStructure() {
     for (const row of zLevel) {
       str += '<div class="row">';
       for (const pixelKey of row) {
+        const pixelGroups = fixture.matrix.pixelGroups;
         const pixelGroupKeys = fixture.matrix.pixelGroupKeys.filter(
-          key => fixture.matrix.pixelGroups[key].includes(pixelKey)
+          key => pixelGroups[key] === false
         );
         str += `<div class="pixel" style="${pixelSizing}" data-pixel-groups='${JSON.stringify(pixelGroupKeys)}'>${htmlEscape(pixelKey || '')}</div>`;
       }
