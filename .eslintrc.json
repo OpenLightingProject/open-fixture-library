@@ -57,6 +57,10 @@
     "prefer-template": "error",
     "quotes": ["error", "single", { "allowTemplateLiterals": true }],
     "require-jsdoc": "warn",
+    "security/detect-child-process": "off",
+    "security/detect-non-literal-fs-filename": "off",
+    "security/detect-non-literal-require": "off",
+    "security/detect-object-injection": "off",
     "semi": "error",
     "space-before-blocks": "error",
     "space-before-function-paren": ["error", {
