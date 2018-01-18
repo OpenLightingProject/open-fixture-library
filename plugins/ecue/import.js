@@ -1,17 +1,17 @@
-const colorNames = require('color-names');
-const xml2js = require('xml2js');
+const colorNames = require(`color-names`);
+const xml2js = require(`xml2js`);
 
-module.exports.name = 'e:cue';
-module.exports.version = '0.3.0';
+module.exports.name = `e:cue`;
+module.exports.version = `0.3.0`;
 
 module.exports.import = function importEcue(str, filename, resolve, reject) {
   const colors = {};
   for (const hex of Object.keys(colorNames)) {
-    colors[colorNames[hex].toLowerCase().replace(/\s/g, '')] = hex;
+    colors[colorNames[hex].toLowerCase().replace(/\s/g, ``)] = hex;
   }
 
   const parser = new xml2js.Parser();
-  const timestamp = new Date().toISOString().replace(/T.*/, '');
+  const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
   parser.parseString(str, (parseError, xml) => {
     if (parseError) {
@@ -26,27 +26,27 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
     };
 
     try {
-      if (!('Library' in xml.Document) || !('Fixtures' in xml.Document.Library[0]) || !('Manufacturer' in xml.Document.Library[0].Fixtures[0])) {
-        reject('Nothing to import.');
+      if (!(`Library` in xml.Document) || !(`Fixtures` in xml.Document.Library[0]) || !(`Manufacturer` in xml.Document.Library[0].Fixtures[0])) {
+        reject(`Nothing to import.`);
         return;
       }
 
       for (const manufacturer of xml.Document.Library[0].Fixtures[0].Manufacturer) {
         const manName = manufacturer.$.Name;
-        const manKey = manName.toLowerCase().replace(/[^a-z0-9-]+/g, '-');
+        const manKey = manName.toLowerCase().replace(/[^a-z0-9-]+/g, `-`);
 
         out.manufacturers[manKey] = {
           name: manName
         };
 
-        if (manufacturer.$.Comment !== '') {
+        if (manufacturer.$.Comment !== ``) {
           out.manufacturers[manKey].comment = manufacturer.$.Comment;
         }
-        if (manufacturer.$.Web !== '') {
+        if (manufacturer.$.Web !== ``) {
           out.manufacturers[manKey].website = manufacturer.$.Web;
         }
 
-        if (!('Fixture' in manufacturer)) {
+        if (!(`Fixture` in manufacturer)) {
           continue;
         }
 
@@ -55,48 +55,48 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
             name: fixture.$.Name
           };
 
-          let fixKey = `${manKey}/${fix.name.toLowerCase().replace(/[^a-z0-9-]+/g, '-')}`;
+          let fixKey = `${manKey}/${fix.name.toLowerCase().replace(/[^a-z0-9-]+/g, `-`)}`;
           if (fixKey in out.fixtures) {
             fixKey += `-${Math.random().toString(36).substr(2, 5)}`;
-            out.warnings[fixKey].push('Fixture key is not unique, appended random characters.');
+            out.warnings[fixKey].push(`Fixture key is not unique, appended random characters.`);
           }
           out.warnings[fixKey] = [];
 
-          if (fixture.$.NameShort !== '') {
+          if (fixture.$.NameShort !== ``) {
             fix.shortName = fixture.$.NameShort;
           }
 
-          fix.categories = ['Other'];
-          out.warnings[fixKey].push('Please specify categories.');
+          fix.categories = [`Other`];
+          out.warnings[fixKey].push(`Please specify categories.`);
 
           fix.meta = {
             authors: [],
-            createDate: fixture.$._CreationDate.replace(/#.*/, ''),
-            lastModifyDate: fixture.$._ModifiedDate.replace(/#.*/, ''),
+            createDate: fixture.$._CreationDate.replace(/#.*/, ``),
+            lastModifyDate: fixture.$._ModifiedDate.replace(/#.*/, ``),
             importPlugin: {
-              plugin: 'ecue',
+              plugin: `ecue`,
               date: timestamp
             }
           };
-          out.warnings[fixKey].push('Please specify your name in meta.authors.');
+          out.warnings[fixKey].push(`Please specify your name in meta.authors.`);
 
-          if (fixture.$.Comment !== '') {
+          if (fixture.$.Comment !== ``) {
             fix.comment = fixture.$.Comment;
           }
 
           const physical = {};
 
-          if (fixture.$.DimWidth !== '10' && fixture.$.DimHeight !== '10' && fixture.$.DimDepth !== '10') {
+          if (fixture.$.DimWidth !== `10` && fixture.$.DimHeight !== `10` && fixture.$.DimDepth !== `10`) {
             physical.dimensions = [parseInt(fixture.$.DimWidth), parseInt(fixture.$.DimHeight), parseInt(fixture.$.DimDepth)];
           }
-          if (fixture.$.Weight !== '0') {
+          if (fixture.$.Weight !== `0`) {
             physical.weight = parseFloat(fixture.$.Weight);
           }
-          if (fixture.$.Power !== '0') {
+          if (fixture.$.Power !== `0`) {
             physical.power = parseInt(fixture.$.Power);
           }
 
-          if (JSON.stringify(physical) !== '{}') {
+          if (JSON.stringify(physical) !== `{}`) {
             fix.physical = physical;
           }
 
@@ -146,17 +146,17 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
               ch.name = name;
             }
 
-            ch.type = 'Intensity';
-            if (testName.includes('temperature') || testName.match(/\b(?:ctc|cto)\b/)) {
-              ch.type = 'Color Temperature';
+            ch.type = `Intensity`;
+            if (testName.includes(`temperature`) || testName.match(/\b(?:ctc|cto)\b/)) {
+              ch.type = `Color Temperature`;
             }
-            else if ('ChannelColor' in fixture && fixture.ChannelColor.indexOf(channel) !== -1) {
-              if (('Range' in channel && channel.Range.length > 1) || /colou?r\s*macro/.test(testName)) {
-                ch.type = 'Multi-Color';
+            else if (`ChannelColor` in fixture && fixture.ChannelColor.indexOf(channel) !== -1) {
+              if ((`Range` in channel && channel.Range.length > 1) || /colou?r\s*macro/.test(testName)) {
+                ch.type = `Multi-Color`;
               }
               else {
-                ch.type = 'Single Color';
-                const colorFound = ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime'].some(color => {
+                ch.type = `Single Color`;
+                const colorFound = [`Red`, `Green`, `Blue`, `Cyan`, `Magenta`, `Yellow`, `Amber`, `White`, `UV`, `Lime`].some(color => {
                   if (testName.includes(color.toLowerCase())) {
                     ch.color = color;
                     return true;
@@ -169,73 +169,73 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
                 }
               }
             }
-            else if (testName.includes('speed')) {
-              ch.type = 'Speed';
+            else if (testName.includes(`speed`)) {
+              ch.type = `Speed`;
             }
-            else if (testName.includes('gobo')) {
-              ch.type = 'Gobo';
+            else if (testName.includes(`gobo`)) {
+              ch.type = `Gobo`;
             }
-            else if (testName.includes('program') || testName.includes('effect') || testName.includes('macro')) {
-              ch.type = 'Effect';
+            else if (testName.includes(`program`) || testName.includes(`effect`) || testName.includes(`macro`)) {
+              ch.type = `Effect`;
             }
-            else if (testName.includes('prism')) {
-              ch.type = 'Prism';
+            else if (testName.includes(`prism`)) {
+              ch.type = `Prism`;
             }
-            else if (testName.includes('shutter')) {
-              ch.type = 'Shutter';
+            else if (testName.includes(`shutter`)) {
+              ch.type = `Shutter`;
             }
-            else if (testName.includes('strob')) {
-              ch.type = 'Strobe';
+            else if (testName.includes(`strob`)) {
+              ch.type = `Strobe`;
             }
-            else if (testName.includes('iris')) {
-              ch.type = 'Iris';
+            else if (testName.includes(`iris`)) {
+              ch.type = `Iris`;
             }
-            else if (testName.includes('focus')) {
-              ch.type = 'Focus';
+            else if (testName.includes(`focus`)) {
+              ch.type = `Focus`;
             }
-            else if (testName.includes('zoom')) {
-              ch.type = 'Zoom';
+            else if (testName.includes(`zoom`)) {
+              ch.type = `Zoom`;
             }
-            else if (testName.includes('pan')) {
-              ch.type = 'Pan';
+            else if (testName.includes(`pan`)) {
+              ch.type = `Pan`;
             }
-            else if (testName.includes('tilt')) {
-              ch.type = 'Tilt';
+            else if (testName.includes(`tilt`)) {
+              ch.type = `Tilt`;
             }
-            else if (testName.includes('reset')) {
-              ch.type = 'Maintenance';
+            else if (testName.includes(`reset`)) {
+              ch.type = `Maintenance`;
             }
-            else if (!testName.includes('intensity') && !testName.includes('master') && !testName.includes('dimmer')) {
+            else if (!testName.includes(`intensity`) && !testName.includes(`master`) && !testName.includes(`dimmer`)) {
               // not even a default Intensity channel
               out.warnings[fixKey].push(`Please check the type of channel '${shortName}'.`);
             }
 
-            if (channel.$.DmxByte1 !== '0') {
+            if (channel.$.DmxByte1 !== `0`) {
               const shortNameFine = `${shortName} fine`;
               ch.fineChannelAliases = [shortNameFine];
               fix.modes[0].channels[parseInt(channel.$.DmxByte1) - 1] = shortNameFine;
             }
 
-            if (channel.$.DefaultValue !== '0') {
+            if (channel.$.DefaultValue !== `0`) {
               ch.defaultValue = parseInt(channel.$.DefaultValue);
             }
-            if (channel.$.Highlight !== '0') {
+            if (channel.$.Highlight !== `0`) {
               ch.highlightValue = parseInt(channel.$.Highlight);
             }
-            if (channel.$.Invert === '1') {
+            if (channel.$.Invert === `1`) {
               ch.invert = true;
             }
-            if (channel.$.Constant === '1') {
+            if (channel.$.Constant === `1`) {
               ch.constant = true;
             }
-            if (channel.$.Crossfade === '1') {
+            if (channel.$.Crossfade === `1`) {
               ch.crossfade = true;
             }
-            if (channel.$.Precedence === 'HTP') {
-              ch.precedence = 'HTP';
+            if (channel.$.Precedence === `HTP`) {
+              ch.precedence = `HTP`;
             }
 
-            if ('Range' in channel) {
+            if (`Range` in channel) {
               ch.capabilities = [];
 
               channel.Range.forEach((range, i) => {
@@ -249,16 +249,16 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
                 }
 
                 // try to read a color
-                const color = cap.name.toLowerCase().replace(/\s/g, '');
+                const color = cap.name.toLowerCase().replace(/\s/g, ``);
                 if (color in colors) {
                   cap.color = colors[color];
                 }
 
-                if (range.$.AutoMenu !== '1') {
-                  cap.menuClick = 'hidden';
+                if (range.$.AutoMenu !== `1`) {
+                  cap.menuClick = `hidden`;
                 }
-                else if (range.$.Centre !== '0') {
-                  cap.menuClick = 'center';
+                else if (range.$.Centre !== `0`) {
+                  cap.menuClick = `center`;
                 }
 
                 ch.capabilities.push(cap);

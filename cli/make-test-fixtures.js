@@ -5,22 +5,22 @@
  * keeping the set as small as possible) and updates tests/test-fixtures.json and tests/test-fixtures.md.
  */
 
-const fs = require('fs');
-const path = require('path');
-const colors = require('colors');
+const fs = require(`fs`);
+const path = require(`path`);
+const colors = require(`colors`);
 
-const Fixture = require('../lib/model/Fixture.js');
-const register = require('../fixtures/register.json');
+const Fixture = require(`../lib/model/Fixture.js`);
+const register = require(`../fixtures/register.json`);
 
-const fixFeaturesDir = path.join(__dirname, '../lib/fixture-features');
-const jsonFile = path.join(__dirname, '../tests/test-fixtures.json');
-const markdownFile = path.join(__dirname, '../tests/test-fixtures.md');
+const fixFeaturesDir = path.join(__dirname, `../lib/fixture-features`);
+const jsonFile = path.join(__dirname, `../tests/test-fixtures.json`);
+const markdownFile = path.join(__dirname, `../tests/test-fixtures.md`);
 
 
 const fixFeatures = [];
 const featuresUsed = {}; // feature id -> times used
 for (const featureFile of fs.readdirSync(fixFeaturesDir)) {
-  if (path.extname(featureFile) === '.js') {
+  if (path.extname(featureFile) === `.js`) {
     // module exports array of fix features
     const fixFeatureFile = require(path.join(fixFeaturesDir, featureFile));
 
@@ -28,8 +28,8 @@ for (const featureFile of fs.readdirSync(fixFeaturesDir)) {
       const fixFeature = fixFeatureFile[i];
 
       // default id
-      if (!('id' in fixFeature)) {
-        fixFeature.id = path.basename(featureFile, '.js');
+      if (!(`id` in fixFeature)) {
+        fixFeature.id = path.basename(featureFile, `.js`);
         if (fixFeatureFile.length > 1) {
           fixFeature.id += `-${i}`;
         }
@@ -37,7 +37,7 @@ for (const featureFile of fs.readdirSync(fixFeaturesDir)) {
 
       // check uniquness of id
       if (fixFeature.id in featuresUsed) {
-        console.error(`${colors.red('[Error]')} Fix feature id ${fixFeature.id} used multiple times.`);
+        console.error(`${colors.red(`[Error]`)} Fix feature id ${fixFeature.id} used multiple times.`);
         process.exit(1);
       }
 
@@ -75,7 +75,7 @@ for (const man of Object.keys(register.manufacturers)) {
 // first fixtures are more likely to be filtered out, so we start with the ones with the fewest features
 fixtures.sort((a, b) => {
   if (a.features.length === b.features.length) {
-    return `${a.man}/${a.key}`.localeCompare(`${b.man}/${b.key}`, 'en');
+    return `${a.man}/${a.key}`.localeCompare(`${b.man}/${b.key}`, `en`);
   }
 
   return a.features.length - b.features.length;
@@ -98,29 +98,29 @@ fixtures = fixtures.filter(fixture => {
 
 // original alphabetic ordering
 fixtures.sort((a, b) => {
-  return `${a.man}/${a.key}`.localeCompare(`${b.man}/${b.key}`, 'en');
+  return `${a.man}/${a.key}`.localeCompare(`${b.man}/${b.key}`, `en`);
 });
 
-console.log(colors.yellow('Generated list of test fixtures:'));
+console.log(colors.yellow(`Generated list of test fixtures:`));
 for (const fixture of fixtures) {
   console.log(` - ${fixture.man}/${fixture.key}`);
 }
 
-fs.writeFile(jsonFile, JSON.stringify(fixtures, null, 2), 'utf8', error => {
+fs.writeFile(jsonFile, JSON.stringify(fixtures, null, 2), `utf8`, error => {
   if (error) {
-    console.error(`${colors.red('[Fail]')} Could not write test-fixtures.json`, error);
+    console.error(`${colors.red(`[Fail]`)} Could not write test-fixtures.json`, error);
   }
   else {
-    console.log(`${colors.green('[Success]')} Updated ${jsonFile}`);
+    console.log(`${colors.green(`[Success]`)} Updated ${jsonFile}`);
   }
 });
 
-fs.writeFile(markdownFile, getMarkdownCode(), 'utf8', error => {
+fs.writeFile(markdownFile, getMarkdownCode(), `utf8`, error => {
   if (error) {
-    console.error(`${colors.red('[Fail]')} Could not write test-fixtures.md`, error);
+    console.error(`${colors.red(`[Fail]`)} Could not write test-fixtures.md`, error);
   }
   else {
-    console.log(`${colors.green('[Success]')} Updated ${markdownFile}`);
+    console.log(`${colors.green(`[Success]`)} Updated ${markdownFile}`);
   }
 });
 
@@ -132,11 +132,11 @@ function getMarkdownCode() {
   const mdLines = [];
 
   // Header
-  mdLines[0] = '|';
+  mdLines[0] = `|`;
   for (const fixture of fixtures) {
     mdLines[0] += ` | [*${fixture.man}* ${fixture.name}](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/${fixture.man}/${fixture.key}.json)`;
   }
-  mdLines[1] = '|-'.repeat(fixtures.length + 1);
+  mdLines[1] = `|-`.repeat(fixtures.length + 1);
 
   // Content
   const footnotes = [];
@@ -150,18 +150,18 @@ function getMarkdownCode() {
     }
 
     for (const fixture of fixtures) {
-      line += fixture.features.includes(fixFeature.id) ? ' | ✅' : ' | ❌';
+      line += fixture.features.includes(fixFeature.id) ? ` | ✅` : ` | ❌`;
     }
 
     mdLines.push(line);
   }
-  mdLines.push('');
+  mdLines.push(``);
 
   // Footnotes
   for (let i = 0; i < footnotes.length; i++) {
     mdLines.push(`**<a id="user-content-footnote-${i + 1}">[${i + 1}]</a>**: ${footnotes[i]}`);
-    mdLines.push('');
+    mdLines.push(``);
   }
 
-  return mdLines.join('\n');
+  return mdLines.join(`\n`);
 }

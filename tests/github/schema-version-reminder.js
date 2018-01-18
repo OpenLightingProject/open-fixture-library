@@ -1,10 +1,10 @@
 #!/usr/bin/node
 
-const path = require('path');
+const path = require(`path`);
 
-const pullRequest = require('./pull-request.js');
+const pullRequest = require(`./pull-request.js`);
 
-require('../../lib/load-env-file.js');
+require(`../../lib/load-env-file.js`);
 
 pullRequest.checkEnv()
   .catch(error => {
@@ -24,8 +24,8 @@ pullRequest.checkEnv()
     }
 
     return pullRequest.updateComment({
-      filename: path.relative(path.join(__dirname, '../../'), __filename),
-      name: 'Schema has changed',
+      filename: path.relative(path.join(__dirname, `../../`), __filename),
+      name: `Schema has changed`,
       lines: lines
     });
   })

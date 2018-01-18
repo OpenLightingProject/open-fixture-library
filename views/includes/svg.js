@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require(`fs`);
+const path = require(`path`);
 
 module.exports = {
   getSvg,
@@ -15,17 +15,17 @@ module.exports = {
  * @returns {!string} The inline <svg> tag or an empty string if the file was not found.
  */
 function getSvg(svgBasename, classNames = []) {
-  const filename = path.join(__dirname, '..', '..', 'static', 'icons', `${svgBasename}.svg`);
+  const filename = path.join(__dirname, `..`, `..`, `static`, `icons`, `${svgBasename}.svg`);
 
   if (!fs.existsSync(filename)) {
     console.error(`svg file '${svgBasename}.svg' not found`);
-    return '';
+    return ``;
   }
 
-  let svg = fs.readFileSync(filename, 'utf8').replace(/\s+$/, '');
+  let svg = fs.readFileSync(filename, `utf8`).replace(/\s+$/, ``);
 
   if (classNames.length > 0) {
-    svg = svg.replace(/<svg([^>]*)>/, `<svg$1 class="${classNames.join(' ')}">`);
+    svg = svg.replace(/<svg([^>]*)>/, `<svg$1 class="${classNames.join(` `)}">`);
   }
 
   return svg;
@@ -38,8 +38,8 @@ function getSvg(svgBasename, classNames = []) {
  * @returns {!string} The inline <svg> tag or an empty string if the file was not found.
  */
 function getCategoryIcon(categoryName, classNames = []) {
-  const sanitzedCategoryName = categoryName.toLowerCase().replace(/[^\w]+/g, '-');
-  classNames.push(`category-${sanitzedCategoryName}`, 'category-icon', 'icon');
+  const sanitzedCategoryName = categoryName.toLowerCase().replace(/[^\w]+/g, `-`);
+  classNames.push(`category-${sanitzedCategoryName}`, `category-icon`, `icon`);
 
   const svg = getSvg(`categories/${sanitzedCategoryName}`, classNames);
   return svg.replace(/(<svg[^>]*>)/, `$1<title>Category: ${categoryName}</title>`);
@@ -52,8 +52,8 @@ function getCategoryIcon(categoryName, classNames = []) {
  * @returns {!string} The inline <svg> tag or an empty string if the file was not found.
  */
 function getChannelTypeIcon(channelType, classNames = []) {
-  const sanitzedChannelType = channelType.toLowerCase().replace(/[^\w]+/g, '-');
-  classNames.push(`channel${sanitzedChannelType}`, 'channel-icon', 'icon');
+  const sanitzedChannelType = channelType.toLowerCase().replace(/[^\w]+/g, `-`);
+  classNames.push(`channel${sanitzedChannelType}`, `channel-icon`, `icon`);
 
   const svg = getSvg(`channel-types/${sanitzedChannelType}`, classNames);
   return svg.replace(/(<svg[^>]*>)/, `$1<title>Channel type: ${channelType}</title>`);
@@ -67,7 +67,7 @@ function getChannelTypeIcon(channelType, classNames = []) {
  */
 function getColorCircle(colors, title) {
   // viewBox customized to have the (0,0) coordinate in the center
-  let str = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" viewBox="-12 -12 24 24" class="icon color-circle">';
+  let str = `<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" viewBox="-12 -12 24 24" class="icon color-circle">`;
 
   if (title) {
     str += `<title>${title}</title>`;
@@ -94,13 +94,13 @@ function getColorCircle(colors, title) {
 
       const pathMove = `M ${startX} ${startY}`;
       const pathArc = `A ${radius} ${radius} ${xAxisRotation} ${largeArcFlag} ${sweepFlag} ${endX} ${endY}`;
-      const pathLine = 'L 0 0';
+      const pathLine = `L 0 0`;
 
       str += `<path d="${pathMove} ${pathArc} ${pathLine}" fill="${colors[i]}" />`;
     }
   }
 
-  str += '</svg>';
+  str += `</svg>`;
 
   return str;
 }

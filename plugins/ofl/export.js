@@ -1,7 +1,7 @@
-const manufacturers = require('../../fixtures/manufacturers.json');
+const manufacturers = require(`../../fixtures/manufacturers.json`);
 
-module.exports.name = 'Open Fixture Library JSON';
-module.exports.version = require('../../fixtures/schema.js').VERSION;
+module.exports.name = `Open Fixture Library JSON`;
+module.exports.version = require(`../../fixtures/schema.js`).VERSION;
 
 module.exports.export = function exportOFL(fixtures, options) {
   const usedManufacturers = new Set();
@@ -19,7 +19,7 @@ module.exports.export = function exportOFL(fixtures, options) {
     return {
       name: `${fixture.manufacturer.key}/${fixture.key}.json`,
       content: JSON.stringify(jsonData, null, 2),
-      mimetype: 'application/ofl-fixture'
+      mimetype: `application/ofl-fixture`
     };
   });
 
@@ -31,9 +31,9 @@ module.exports.export = function exportOFL(fixtures, options) {
     }
   }
   files.push({
-    name: 'manufacturers.json',
+    name: `manufacturers.json`,
     content: JSON.stringify(usedManufacturerData, null, 2),
-    mimetype: 'application/ofl-manufacturers'
+    mimetype: `application/ofl-manufacturers`
   });
 
   return files;

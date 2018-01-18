@@ -1,5 +1,5 @@
-const path = require('path');
-const fs = require('fs');
+const path = require(`path`);
+const fs = require(`fs`);
 
 const plugins = {};
 
@@ -17,7 +17,7 @@ for (const pluginKey of fs.readdirSync(__dirname)) {
     continue;
   }
 
-  const importPath = path.join(pluginPath, 'import.js');
+  const importPath = path.join(pluginPath, `import.js`);
   if (fs.existsSync(importPath)) {
     try {
       plugin.import = require(importPath);
@@ -27,7 +27,7 @@ for (const pluginKey of fs.readdirSync(__dirname)) {
     }
   }
 
-  const exportPath = path.join(pluginPath, 'export.js');
+  const exportPath = path.join(pluginPath, `export.js`);
   if (fs.existsSync(exportPath)) {
     try {
       plugin.export = require(exportPath);
@@ -37,7 +37,7 @@ for (const pluginKey of fs.readdirSync(__dirname)) {
     }
   }
 
-  const exportTestsPath = path.join(pluginPath, 'exportTests');
+  const exportTestsPath = path.join(pluginPath, `exportTests`);
   if (fs.existsSync(exportTestsPath)) {
     try {
       for (const test of fs.readdirSync(exportTestsPath)) {

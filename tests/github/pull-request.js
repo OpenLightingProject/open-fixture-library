@@ -1,21 +1,21 @@
-const GitHubApi = require('github');
+const GitHubApi = require(`github`);
 
-require('../../lib/load-env-file.js');
+require(`../../lib/load-env-file.js`);
 
 const requiredEnvVars = [
-  'GITHUB_USER_TOKEN',
-  'TRAVIS_REPO_SLUG',
-  'TRAVIS_PULL_REQUEST',
-  'TRAVIS_BRANCH',
-  'TRAVIS_COMMIT'
+  `GITHUB_USER_TOKEN`,
+  `TRAVIS_REPO_SLUG`,
+  `TRAVIS_PULL_REQUEST`,
+  `TRAVIS_BRANCH`,
+  `TRAVIS_COMMIT`
 ];
 
 const github = new GitHubApi({
   debug: false,
-  protocol: 'https',
-  host: 'api.github.com',
+  protocol: `https`,
+  host: `api.github.com`,
   headers: {
-    'user-agent': 'Open Fixture Library'
+    'user-agent': `Open Fixture Library`
   },
   followRedirects: false,
   timeout: 5000
@@ -37,8 +37,8 @@ module.exports.checkEnv = function checkEnv() {
       }
     }
 
-    if (process.env.TRAVIS_PULL_REQUEST === 'false') {
-      reject('Github tests can only be run in pull request builds.');
+    if (process.env.TRAVIS_PULL_REQUEST === `false`) {
+      reject(`Github tests can only be run in pull request builds.`);
       return;
     }
     resolve();
@@ -47,11 +47,11 @@ module.exports.checkEnv = function checkEnv() {
 
 module.exports.init = function init() {
   return module.exports.checkEnv().then(() => {
-    repoOwner = process.env.TRAVIS_REPO_SLUG.split('/')[0];
-    repoName = process.env.TRAVIS_REPO_SLUG.split('/')[1];
+    repoOwner = process.env.TRAVIS_REPO_SLUG.split(`/`)[0];
+    repoName = process.env.TRAVIS_REPO_SLUG.split(`/`)[1];
 
     github.authenticate({
-      type: 'token',
+      type: `token`,
       token: process.env.GITHUB_USER_TOKEN
     });
 
@@ -130,40 +130,40 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
 };
 
 function addFileToChangedData(changedData, filename) {
-  const segments = filename.split('/');
+  const segments = filename.split(`/`);
 
-  if (segments[0] === 'lib' && segments[1] === 'model') {
+  if (segments[0] === `lib` && segments[1] === `model`) {
     changedData.model = true;
     return;
   }
 
-  if (segments[0] === 'plugins' && segments[2] === 'import.js') {
+  if (segments[0] === `plugins` && segments[2] === `import.js`) {
     changedData.imports.push(segments[1]); // plugin key
     return;
   }
 
-  if (segments[0] === 'plugins' && segments[2] === 'export.js') {
+  if (segments[0] === `plugins` && segments[2] === `export.js`) {
     changedData.exports.push(segments[1]); // plugin key
     return;
   }
 
-  if (segments[0] === 'plugins' && segments[2] === 'exportTests') {
+  if (segments[0] === `plugins` && segments[2] === `exportTests`) {
     changedData.exportTests.push([
       segments[1], // plugin key
-      segments[3].split('.')[0] // test key
+      segments[3].split(`.`)[0] // test key
     ]);
     return;
   }
 
-  if (segments[0] === 'fixtures' && segments[1] === 'schema.js') {
+  if (segments[0] === `fixtures` && segments[1] === `schema.js`) {
     changedData.schema = true;
     return;
   }
 
-  if (segments[0] === 'fixtures' && segments.length === 3) {
+  if (segments[0] === `fixtures` && segments.length === 3) {
     changedData.fixtures.push([
       segments[1], // man key
-      segments[2].split('.')[0] // fix key
+      segments[2].split(`.`)[0] // fix key
     ]);
   }
 }
@@ -182,10 +182,10 @@ module.exports.updateComment = function updateComment(test) {
     `<!-- GITHUB-TEST: ${test.filename} -->`,
     `# ${test.name}`,
     `(Output of test script \`${test.filename}\`.)`,
-    ''
+    ``
   ];
   lines = lines.concat(test.lines);
-  const message = lines.join('\n');
+  const message = lines.join(`\n`);
 
   const commentPromises = [];
   for (let i = 0; i < module.exports.data.comments / 100; i++) {
@@ -208,10 +208,10 @@ module.exports.updateComment = function updateComment(test) {
       for (const block of commentBlocks) {
         for (const comment of block.data) {
         // get rid of \r linebreaks
-          comment.body = comment.body.replace(/\r/g, '');
+          comment.body = comment.body.replace(/\r/g, ``);
 
           // the comment was created by this test script
-          if (lines[0] === comment.body.split('\n')[0]) {
+          if (lines[0] === comment.body.split(`\n`)[0]) {
             if (!equalFound && message === comment.body && test.lines.length > 0) {
               equalFound = true;
               console.log(`Test comment with same content already exists at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
@@ -244,7 +244,7 @@ module.exports.updateComment = function updateComment(test) {
 
 module.exports.getTestFixturesMessage = function getTestFixturesMessage(fixtures) {
   let lines = [];
-  lines.push('Tested with the following [test fixtures](https://github.com/FloEdelmann/open-fixture-library/wiki/Test-fixtures) that provide a possibly wide variety of different fixture features:');
-  lines = lines.concat(fixtures.map(fix => `- ${fix}`), '');
+  lines.push(`Tested with the following [test fixtures](https://github.com/FloEdelmann/open-fixture-library/wiki/Test-fixtures) that provide a possibly wide variety of different fixture features:`);
+  lines = lines.concat(fixtures.map(fix => `- ${fix}`), ``);
   return lines;
 };

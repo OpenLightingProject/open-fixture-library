@@ -1,12 +1,12 @@
 #!/usr/bin/node
 
-const path = require('path');
+const path = require(`path`);
 
-const Fixture = require('../../lib/model/Fixture.js');
-const pullRequest = require('./pull-request.js');
+const Fixture = require(`../../lib/model/Fixture.js`);
+const pullRequest = require(`./pull-request.js`);
 
-const plugins = require('../../plugins/plugins.js').all;
-const testFixtures = require('../test-fixtures.json').map(
+const plugins = require(`../../plugins/plugins.js`).all;
+const testFixtures = require(`../test-fixtures.json`).map(
   fixture => [fixture.man, fixture.key]
 );
 
@@ -53,20 +53,20 @@ pullRequest.checkEnv()
 
     if (messages.length > 0) {
       lines.push(
-        'Test the exported files of selected fixtures against the plugins\' export tests.',
-        'You can run a plugin\'s export tests by executing:',
-        '`$ node cli/run-export-test.js -p <plugin name> <fixtures>`',
-        ''
+        `Test the exported files of selected fixtures against the plugins' export tests.`,
+        `You can run a plugin's export tests by executing:`,
+        `\`$ node cli/run-export-test.js -p <plugin name> <fixtures>\``,
+        ``
       );
 
       for (const messageLines of messages) {
-        lines = lines.concat(messageLines, '');
+        lines = lines.concat(messageLines, ``);
       }
     }
 
     return pullRequest.updateComment({
-      filename: path.relative(path.join(__dirname, '../../'), __filename),
-      name: 'Export files validity',
+      filename: path.relative(path.join(__dirname, `../../`), __filename),
+      name: `Export files validity`,
       lines: lines
     });
   })
@@ -82,7 +82,7 @@ function getModelMessagePromise() {
 
   return Promise.all(pluginListPromises)
     .then(pluginLists => {
-      let modelMessageLines = ['## Model changed in this PR'];
+      let modelMessageLines = [`## Model changed in this PR`];
       modelMessageLines = modelMessageLines.concat(getTestFixturesInfo(modelMessageLines));
 
       for (const pluginListLines of pluginLists) {
@@ -156,14 +156,14 @@ function getFixtureMessagePromise(fixture) {
 function getTestFixturesInfo(lines) {
   return pullRequest.getTestFixturesMessage(
     testFixtures.map(fix => `${fix[0]}/${fix[1]}`)
-  ).concat('### Test results');
+  ).concat(`### Test results`);
 }
 
 
 function getPluginListPromise(pluginKey, fixtures) {
   const plugin = plugins[pluginKey];
   const exportTestListPromises = Object.keys(plugin.exportTests).map(
-    testKey => getExportTestListPromise(plugin, testKey, fixtures, '  ')
+    testKey => getExportTestListPromise(plugin, testKey, fixtures, `  `)
   );
 
   return Promise.all(exportTestListPromises)
@@ -178,7 +178,7 @@ function getPluginListPromise(pluginKey, fixtures) {
     });
 }
 
-function getExportTestListPromise(plugin, testKey, fixtures, indent = '') {
+function getExportTestListPromise(plugin, testKey, fixtures, indent = ``) {
   const files = plugin.export.export(fixtures.map(
     fix => Fixture.fromRepository(fix[0], fix[1])
   ));
@@ -200,7 +200,7 @@ function getExportTestListPromise(plugin, testKey, fixtures, indent = '') {
     });
 }
 
-function getFileResultPromise(test, file, indent = '') {
+function getFileResultPromise(test, file, indent = ``) {
   return test(file.content)
     .then(() => {
       return [`${indent}- :white_check_mark: ${file.name}`];
@@ -216,7 +216,7 @@ function getFileResultPromise(test, file, indent = '') {
       ];
 
       for (const error of errors) {
-        const errorText = error.replace('\n', '');
+        const errorText = error.replace(`\n`, ``);
         fileResultLines.push(`${indent}  <li>${errorText}</li>`);
       }
 
