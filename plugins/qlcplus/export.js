@@ -76,7 +76,7 @@ function addChannel(xml, channel) {
   if (channel instanceof FineChannel) {
     let capabilityName;
     if (channel.fineness > 1) {
-      xmlGroup.attribute('Byte', 0);  // not a QLC+ fine channel
+      xmlGroup.attribute('Byte', 0); // not a QLC+ fine channel
       capabilityName = `Fine^${channel.fineness} adjustment for ${channel.coarseChannel.uniqueName}`;
     }
     else {
@@ -84,7 +84,7 @@ function addChannel(xml, channel) {
       capabilityName = `Fine adjustment for ${channel.coarseChannel.uniqueName}`;
     }
 
-    channel = channel.coarseChannel;  // use coarse channel's data from here on
+    channel = channel.coarseChannel; // use coarse channel's data from here on
     capabilities = [
       new Capability({
         range: [0, 255],

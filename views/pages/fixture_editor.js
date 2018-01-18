@@ -535,9 +535,9 @@ function getDialogTemplate() {
 
   str += '      <h2 :id="id + \'-dialog-title\'" tabindex="0"><slot name="title"></slot></h2>';
   str += '      <slot></slot>';
-  str += '    </div>';  // div[role=document]
-  str += '  </div>';  // .dialog
-  str += '</div>';  // .dialog-container
+  str += '    </div>'; // div[role=document]
+  str += '  </div>'; // .dialog
+  str += '</div>'; // .dialog-container
 
   str += '</script>';
 
@@ -713,7 +713,7 @@ function getChannelDialogString() {
   str += '  <channel-capability v-for="(cap, index) in channel.capabilities" :key="cap.uuid" v-model="channel.capabilities" :cap-index="index" :fineness="Math.min(channel.fineness, channel.capFineness)" @scroll-item-inserted="capabilitiesScroll"></channel-capability>';
   str += '</ul>';
 
-  str += '</div>';  // [v-else]
+  str += '</div>'; // [v-else]
 
   str += '<div class="button-bar right">';
   str += '<button type="submit" class="primary" :disabled="channel.wizard.show">{{ channel.editMode === "add-existing" ? "Add channel" : channel.editMode === "create" ? "Create channel" : "Save changes" }}</button>';

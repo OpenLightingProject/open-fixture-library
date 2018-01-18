@@ -567,9 +567,9 @@ function handleCapabilities(channel, mode, finenessInMode) {
   str += '</colgroup>';
   str += '<thead><tr>';
   str += '  <th colspan="3" style="text-align: center">DMX values</th>';
-  str += '  <th></th>';  // color or image
+  str += '  <th></th>'; // color or image
   str += '  <th>Capability</th>';
-  str += '  <th></th>';  // menuClick
+  str += '  <th></th>'; // menuClick
   str += '</tr></thead>';
   str += '<tbody>';
 

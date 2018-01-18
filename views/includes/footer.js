@@ -1,5 +1,5 @@
 module.exports = function(options) {
-  let str = '</div>';  // #content
+  let str = '</div>'; // #content
 
   if ('footerHtml' in options) {
     str += options.footerHtml;

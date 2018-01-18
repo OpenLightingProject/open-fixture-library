@@ -15,7 +15,7 @@ module.exports = function testSchemaConformity(exportFileData) {
       });
     });
   })
-    .then(schemaData =>  new Promise((resolve, reject) => {
+    .then(schemaData => new Promise((resolve, reject) => {
       xsd.parse(schemaData, (err, schema) => {
         if (err) {
           reject(err);

@@ -93,10 +93,10 @@ const Matrix = schema({
   '*': Function
 });
 
-const DMXValue = Number.min(0).step(1);  // max value depends on how many fine channels there are (255 if none, 65535 if one, etc.)
+const DMXValue = Number.min(0).step(1); // max value depends on how many fine channels there are (255 if none, 65535 if one, etc.)
 
-const ChannelKey = NoVariablesString;  // channels in availableChannels
-const ChannelAliasKey = NoVariablesString;  // channel keys that are only defined inside other channels
+const ChannelKey = NoVariablesString; // channels in availableChannels
+const ChannelAliasKey = NoVariablesString; // channel keys that are only defined inside other channels
 
 const TemplateChannelKey = schema(/\$pixelKey/);
 const TemplateChannelAliasKey = schema(/\$pixelKey/);
@@ -248,6 +248,7 @@ module.exports.Fixture = Fixture;
 module.exports.Manufacturers = Manufacturers;
 
 /* eslint-disable key-spacing */
+/* eslint-disable no-multi-spaces */
 const properties = {
   manufacturer:            Manufacturers.toJSON().additionalProperties.properties,
   fixture:                 Fixture.toJSON().properties,
@@ -272,5 +273,6 @@ properties.lens         = properties.physical.lens.properties;
 properties.focus        = properties.physical.focus.properties;
 properties.matrixPixels = properties.physical.matrixPixels.properties;
 /* eslint-enable key-spacing */
+/* eslint-enable no-multi-spaces */
 
 module.exports.properties = properties;
