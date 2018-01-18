@@ -80,6 +80,10 @@ function addInformation(xml, mode) {
 }
 
 /**
+ * @typedef {Map.<(string|null), Array.<Channel>>} ChannelsPerPixel
+ */
+
+/**
  * Adds the dmx channels as functions to the specified xml file.
  * @param {!XMLDocument} xml The device definition to add the functions to.
  * @param {!Mode} mode The definition's mode.
@@ -87,35 +91,56 @@ function addInformation(xml, mode) {
 function addFunctions(xml, mode) {
   const xmlFunctions = xml.element('functions');
 
-  let channelsToAdd = getSanitizedChannels();
+  const channelsPerPixel = getChannelsPerPixel();
 
-  addMatrixFunction(xmlFunctions, mode, channelsToAdd);
+  addMatrixFunction(xmlFunctions, mode, channelsPerPixel);
 
-  channelsToAdd = channelsToAdd.map(
-    ch => (ch instanceof MatrixChannel ? ch.wrappedChannel : ch)
-  );
-
-  addColorFunctions(xmlFunctions, mode, channelsToAdd);
-  addPositionFunctions(xmlFunctions, mode, channelsToAdd);
+  for (const pixelChannels of channelsPerPixel.values()) {
+    addColorFunctions(xmlFunctions, mode, pixelChannels);
+    addPositionFunctions(xmlFunctions, mode, pixelChannels);
+  }
 
   /**
-   * Sanitizes the channel list to be easily used later.
-   * @returns {!Array.<Channel, MatrixChannel>} The given channels; switching channels are mapped to the the default channel, fine and null channels are excluded.
+   * @returns {!ChannelsPerPixel} Each pixel key pointing to its unwrapped matrix channels. null points to all non-matrix channels.
    */
-  function getSanitizedChannels() {
-    return mode.channels.map(ch => getSanitizedChannel(ch)).filter(ch => ch !== null);
+  function getChannelsPerPixel() {
+    const channelsPerPixel = new Map();
+
+    for (const channel of getUsableChannels()) {
+      if (channel instanceof MatrixChannel) {
+        if (!channelsPerPixel.has(channel.pixelKey)) {
+          channelsPerPixel.set(channel.pixelKey, []);
+        }
+        channelsPerPixel.get(channel.pixelKey).push(channel.wrappedChannel);
+      }
+      else {
+        if (!channelsPerPixel.has(null)) {
+          channelsPerPixel.set(null, []);
+        }
+        channelsPerPixel.get(null).push(channel);
+      }
+    }
+
+    return channelsPerPixel;
+  }
+
+  /**
+   * @returns {!Array.<Channel, MatrixChannel>} A list of processable channels; switching channels are mapped to the the default channel, fine and null channels are excluded.
+   */
+  function getUsableChannels() {
+    return mode.channels.map(ch => getUsableChannel(ch)).filter(ch => ch !== null);
   }
 
   /**
    * @param {AbstractChannel|MatrixChannel} channel Some channel of any type.
    * @returns {?Channel} A channel to be used instead of the given one; may be the same or null (to not include in definition).
    */
-  function getSanitizedChannel(channel) {
+  function getUsableChannel(channel) {
     if (channel instanceof MatrixChannel && channel.wrappedChannel instanceof SwitchingChannel) {
-      return getSanitizedChannel(channel.wrappedChannel.defaultChannel);
+      return getUsableChannel(channel.wrappedChannel.defaultChannel);
     }
     if (channel instanceof SwitchingChannel) {
-      return getSanitizedChannel(channel.defaultChannel);
+      return getUsableChannel(channel.defaultChannel);
     }
     if (channel instanceof FineChannel || channel instanceof NullChannel) {
       // fine channels are handled by addDmxchannelAttributes(...), null channels are simply ignored
@@ -129,17 +154,19 @@ function addFunctions(xml, mode) {
  * Adds the matrix function to the xml and inserts suitable color mixings from matrix channels.
  * @param {!XMLElement} xmlParent The xml element in which the <matrix> tag should be inserted.
  * @param {!Mode} mode The definition's mode.
- * @param {!Array.<MatrixChannel, Channel>} remainingChannels List of all channels that haven't been processed already.
+ * @param {!ChannelsPerPixel} channelsPerPixel Pixel keys pointing to its channels.
  */
-function addMatrixFunction(xmlParent, mode, remainingChannels) {
+function addMatrixFunction(xmlParent, mode, channelsPerPixel) {
   const matrix = mode.fixture.matrix;
   if (matrix === null) {
     // no matrix data in this fixture
     return;
   }
 
-  const matrixChannels = remainingChannels.filter(ch => ch instanceof MatrixChannel);
-  if (matrixChannels.length === 0) {
+  const pixelKeys = matrix.getPixelKeysByOrder('X', 'Y', 'Z');
+
+  const usesPixelKeys = pixelKeys.some(pixelKey => channelsPerPixel.has(pixelKey));
+  if (!usesPixelKeys) {
     // no matrix channels used in mode
     return;
   }
@@ -148,57 +175,47 @@ function addMatrixFunction(xmlParent, mode, remainingChannels) {
   xmlMatrix.attribute('rows', matrix.pixelCountX);
   xmlMatrix.attribute('column', matrix.pixelCountY);
 
-  const pixelKeys = matrix.getPixelKeysByOrder('X', 'Y', 'Z');
-  const channelsPerPixel = pixelKeys.map(
-    pixelKey => matrixChannels.filter(ch => ch.pixelKey === pixelKey)
-  );
+  let allChannels = [];
+  let referenceColors = null;
+  let sameColors = true;
+  let isMonochrome = true;
 
-  const areAllRgb = channelsPerPixel.every(pixelChannels =>
-    pixelChannels.some(ch => ch.wrappedChannel.color === 'Red') &&
-    pixelChannels.some(ch => ch.wrappedChannel.color === 'Green') &&
-    pixelChannels.some(ch => ch.wrappedChannel.color === 'Blue')
-  );
-  if (areAllRgb) {
-    addColorMixingsToMatrix(xmlMatrix, mode, channelsPerPixel, remainingChannels, 'rgb');
-    return;
+  for (const pixelKey of pixelKeys) {
+    const channels = channelsPerPixel.get(pixelKey);
+    allChannels = allChannels.concat(channels[0]);
+
+    if (referenceColors === null) {
+      referenceColors = getColors(channels);
+    }
+
+    sameColors = sameColors && setsEqual(referenceColors, getColors(channels));
+    isMonochrome = isMonochrome && channels.length === 1 && channels[0].type === 'Intensity';
   }
 
-  const areAllCmy = channelsPerPixel.every(pixelChannels =>
-    pixelChannels.some(ch => ch.wrappedChannel.color === 'Cyan') &&
-    pixelChannels.some(ch => ch.wrappedChannel.color === 'Magenta') &&
-    pixelChannels.some(ch => ch.wrappedChannel.color === 'Yellow')
-  );
-  if (areAllCmy) {
-    addColorMixingsToMatrix(xmlMatrix, mode, channelsPerPixel, remainingChannels, 'cmy');
-    return;
+
+  const colorMixing = isRGB(referenceColors) ? 'rgb' : (isCMY(referenceColors) ? 'cmy' : null);
+  if (sameColors && colorMixing !== null) {
+    for (const pixelKey of pixelKeys) {
+      const pixelChannels = channelsPerPixel.get(pixelKey);
+      const colorChannels = pixelChannels.filter(ch => ch.type === 'Single Color');
+      colorChannels.forEach(ch => removeFromArray(pixelChannels, ch));
+      addColorMixingFunction(xmlMatrix, mode, colorChannels, colorMixing);
+    }
   }
-
-  const areAllIntensity = matrixChannels.length === pixelKeys.length &&
-    matrixChannels.every(ch => ch.wrappedChannel.type === 'Intensity');
-  if (areAllIntensity) {
-    xmlMatrix.attribute('monochrome', 'true');
-    addDmxchannelAttributes(xmlMatrix, mode, matrixChannels[0].wrappedChannel);
-    matrixChannels.forEach(ch => removeFromArray(remainingChannels, ch));
-    return;
-
+  else if (isMonochrome) {
     // cameo Flash Matrix 250 is a good reference fixture for this case
-  }
-}
 
-/**
- * Adds color mixing functions for all given color groups to the matrix
- * and removes color channels from channel list.
- * @param {!XMLElement} xmlMatrix The xml element in which the color mixing tags (all <rgb> or <cmy>) should be inserted.
- * @param {!Mode} mode The definition's mode.
- * @param {!Array.<Array.<Channel>>} colorGroups The groups of Single Color channels to be added.
- * @param {!Array.<Channel>} remainingChannels List of all channels that haven't been processed already.
- * @param {('rgb'|'cmy')} colorMixing Which kind of color mixing this is.
- */
-function addColorMixingsToMatrix(xmlMatrix, mode, colorGroups, remainingChannels, colorMixing) {
-  for (let channels of colorGroups) {
-    channels = channels.filter(ch => ch.wrappedChannel.type === 'Single Color');
-    addColorMixingFunction(xmlMatrix, mode, channels.map(ch => ch.wrappedChannel), colorMixing);
-    channels.forEach(ch => removeFromArray(remainingChannels, ch));
+    allChannels.sort((a, b) => {
+      const indexA = mode.getChannelIndex(a);
+      const indexB = mode.getChannelIndex(b);
+      return indexA - indexB;
+    });
+
+    xmlMatrix.attribute('monochrome', 'true');
+    addDmxchannelAttributes(xmlMatrix, mode, allChannels[0]);
+
+    // clear pixelKeys' channel lists
+    pixelKeys.forEach(pixelKey => channelsPerPixel.get(pixelKey).length = 0);
   }
 }
 
@@ -211,60 +228,24 @@ function addColorMixingsToMatrix(xmlMatrix, mode, colorGroups, remainingChannels
  */
 function addColorFunctions(xmlParent, mode, remainingChannels) {
   // search color channels and remove them from color list as we'll handle all of them
-  const remainingColorChannels = remainingChannels.filter(ch => ch.type === 'Single Color');
-  remainingColorChannels.forEach(ch => removeFromArray(remainingChannels, ch));
+  const colorChannels = remainingChannels.filter(ch => ch.type === 'Single Color');
+  colorChannels.forEach(ch => removeFromArray(remainingChannels, ch));
+  const colors = getColors(colorChannels);
 
-  const rgbGroups = getColorChannelGroups(remainingColorChannels, ['Red', 'Green', 'Blue']);
-  const cmyGroups = getColorChannelGroups(remainingColorChannels, ['Cyan', 'Magenta', 'Yellow']);
-  const colorGroups = rgbGroups.concat(cmyGroups);
+  if (isCMY(colors) && isRGB(colors)) {
+    const cmyColors = ['Cyan', 'Magenta', 'Yellow'];
+    const cmyColorChannels = colorChannels.filter(ch => cmyColors.includes(ch.color)); // cmy
+    const rgbColorChannels = colorChannels.filter(ch => !cmyColors.includes(ch.color)); // rgb + w + a + uv + ...
 
-  for (const colorChannel of remainingColorChannels) {
-    const channelGroupWithSpace = colorGroups.find(
-      group => group.every(ch => ch.color !== colorChannel.color)
-    );
-    if (channelGroupWithSpace) {
-      channelGroupWithSpace.push(colorChannel);
-    }
+    addColorMixingFunction(xmlParent, mode, cmyColorChannels, 'rgb');
+    addColorMixingFunction(xmlParent, mode, rgbColorChannels, 'cmy');
   }
-
-  colorGroups.forEach(colorChannels =>
-    colorChannels.forEach(ch => removeFromArray(remainingColorChannels, ch))
-  );
-
-  rgbGroups.forEach(rgbGroup => addColorMixingFunction(xmlParent, mode, rgbGroup, 'rgb'));
-  cmyGroups.forEach(cmyGroup => addColorMixingFunction(xmlParent, mode, cmyGroup, 'cmy'));
-  remainingColorChannels.forEach(channel => addColorFunction(xmlParent, mode, channel));
-}
-
-/**
- * Groups the given channels into RGB/CMY groups.
- * @param {!Array.<Channel>} colorChannels All Single Color channels to process.
- * @param {!Array.<string>} colors Which colors to group; either RGB or CMY colors.
- * @returns {!Array.<Array.<Channel>>} The RGB/CMY channel groups. Each subarray consists of colors.length channels.
- */
-function getColorChannelGroups(colorChannels, colors) {
-  colorChannels = colorChannels.filter(
-    channel => colors.includes(channel.color)
-  );
-  const channelGroups = [];
-
-  for (const colorChannel of colorChannels) {
-    const channelGroupWithSpace = channelGroups.find(
-      group => group.every(ch => ch.color !== colorChannel.color)
-    );
-    if (channelGroupWithSpace) {
-      channelGroupWithSpace.push(colorChannel);
-    }
-    else {
-      channelGroups.push([colorChannel]);
-    }
+  else if (isCMY(colors) || isRGB(colors)) {
+    addColorMixingFunction(xmlParent, mode, colorChannels, isRGB(colors) ? 'rgb' : 'cmy');
   }
-
-  const completeChannelGroups = channelGroups.filter(
-    channelGroup => channelGroup.length === colors.length
-  );
-
-  return completeChannelGroups;
+  else {
+    colorChannels.forEach(channel => addColorFunction(xmlParent, mode, channel));
+  }
 }
 
 /**
@@ -294,47 +275,63 @@ function addColorFunction(xmlParent, mode, colorChannel) {
 }
 
 /**
+ * @param {!Array.<Channel>} channels List of channels to search for color channels.
+ * @returns {Set.<string>} Each used color.
+ */
+function getColors(channels) {
+  const colors = new Set();
+  for (const channel of channels.filter(ch => ch.type === 'Single Color')) {
+    colors.add(channel.color);
+  }
+  return colors;
+}
+
+/**
+ * @param {!Set.<string>} colors Used colors in channels.
+ * @returns {!boolean} Whether the given colors contain all needed RGB colors.
+ */
+function isRGB(colors) {
+  const hasRed = colors.has('Red');
+  const hasGreen = colors.has('Green');
+  const hasBlue = colors.has('Blue');
+  return hasRed && hasGreen && hasBlue;
+}
+
+/**
+ * @param {!Set.<string>} colors Used colors in channels.
+ * @returns {!boolean} Whether the given colors contain all needed CMY colors.
+ */
+function isCMY(colors) {
+  const hasCyan = colors.has('Cyan');
+  const hasMagenta = colors.has('Magenta');
+  const hasYellow = colors.has('Yellow');
+  return hasCyan && hasMagenta && hasYellow;
+}
+
+/**
  * Finds Pan/Tilt channels in the given channel list, adds them to xml (as Position function, if possible)
  * and removes them from the given channel list.
- * @param {!XMLElement} xmlParent The xml element in which the <position> tags should be inserted.
+ * @param {!XMLElement} xmlParent The xml element in which the <position> tag should be inserted.
  * @param {!Mode} mode The definition's mode.
  * @param {!Array.<Channel>} remainingChannels All channels that haven't been processed already.
  */
 function addPositionFunctions(xmlParent, mode, remainingChannels) {
-  const remainingPanChannels = remainingChannels.filter(ch => ch.type === 'Pan');
-  const remainingTiltChannels = remainingChannels.filter(ch => ch.type === 'Tilt');
+  const panChannel = remainingChannels.find(ch => ch.type === 'Pan');
+  const tiltChannel = remainingChannels.find(ch => ch.type === 'Tilt');
 
-  // we'll handle all of them
-  remainingPanChannels.concat(remainingTiltChannels).forEach(
-    ch => removeFromArray(remainingChannels, ch)
-  );
+  if (panChannel !== undefined && tiltChannel !== undefined) {
+    const xmlPosition = xmlParent.element('position');
 
-  const positionGroups = [];
-  while (remainingPanChannels.length > 0 && remainingTiltChannels.length > 0) {
-    // save first elements of arrays and remove them from the arrays
-    positionGroups.push([remainingPanChannels.shift(), remainingTiltChannels.shift()]);
+    addPanTiltFunction(xmlPosition, mode, panChannel);
+    addPanTiltFunction(xmlPosition, mode, tiltChannel);
+  }
+  else if ((panChannel || tiltChannel) !== undefined) {
+    // at least only Pan or only Tilt is specified
+    addPanTiltFunction(xmlParent, mode, (panChannel || tiltChannel));
   }
 
-  positionGroups.forEach(
-    ([pan, tilt]) => addPositionFunction(xmlParent, mode, pan, tilt)
-  );
-  remainingPanChannels.concat(remainingTiltChannels).forEach(
-    panTiltChannel => addPanTiltFunction(xmlParent, mode, panTiltChannel)
-  );
-}
-
-/**
- * Adds a position function for the given Pan and Tilt channel.
- * @param {!XMLElement} xmlParent The xml element in which the <position> tag should be inserted.
- * @param {!Mode} mode The definition's mode.
- * @param {!Channel} panChannel The channel of type Pan to use.
- * @param {!Channel} tiltChannel The channel of type Tilt to use.
- */
-function addPositionFunction(xmlParent, mode, panChannel, tiltChannel) {
-  const xmlPosition = xmlParent.element('position');
-
-  addPanTiltFunction(xmlPosition, mode, panChannel);
-  addPanTiltFunction(xmlPosition, mode, tiltChannel);
+  removeFromArray(remainingChannels, panChannel);
+  removeFromArray(remainingChannels, tiltChannel);
 }
 
 /**
@@ -389,4 +386,18 @@ function addDmxchannelAttributes(xmlElement, mode, channel) {
  */
 function removeFromArray(arr, item) {
   arr.splice(arr.indexOf(item), 1);
+}
+
+/**
+ * @param {!Set} set1 First Set to compare.
+ * @param {!Set} set2 Second Set to compare.
+ * @returns {!boolean} Whether both Sets have equal size and their items do strictly equal.
+ */
+function setsEqual(set1, set2) {
+  let equalItems = true;
+  for (const value of set1) {
+    equalItems = equalItems && set2.has(value);
+  }
+
+  return set1.size === set2.size && equalItems;
 }
