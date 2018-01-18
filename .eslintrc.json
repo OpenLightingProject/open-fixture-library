@@ -55,7 +55,7 @@
     "prefer-const": ["error", { "destructuring": "all" }],
     "prefer-rest-params": "error",
     "prefer-template": "error",
-    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "quotes": ["error", "backtick", { "allowTemplateLiterals": true }],
     "require-jsdoc": "warn",
     "security/detect-child-process": "off",
     "security/detect-non-literal-fs-filename": "off",
