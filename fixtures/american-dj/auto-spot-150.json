@@ -8,6 +8,7 @@
     "lastModifyDate": "2018-01-18"
   },
   "manualURL": "http://cdb-cdn.adj.com/ItemRelatedFiles/7650/Auto%20Spot%20150.pdf",
+  "comment": "The different modes refer to the 'Color Mode' setting: no (Full Color) or SC (Split Color)",
   "physical": {
     "dimensions": [295, 451, 373],
     "weight": 13,
@@ -300,6 +301,17 @@
   },
   "modes": [
     {
+      "name": "Full Color",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Gobo",
+        "Gobo Rotation",
+        "Full Colors",
+        "Shutter / Dimmer"
+      ]
+    }.
+    {
       "name": "Split Color",
       "channels": [
         "Pan",
@@ -307,17 +319,6 @@
         "Gobo",
         "Gobo Rotation",
         "Split Colors",
-        "Shutter / Dimmer"
-      ]
-    },
-    {
-      "name": "Full color",
-      "channels": [
-        "Pan",
-        "Tilt",
-        "Gobo",
-        "Gobo Rotation",
-        "Full Colors",
         "Shutter / Dimmer"
       ]
     }
