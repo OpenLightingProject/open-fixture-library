@@ -163,10 +163,10 @@ function addMatrixFunction(xmlParent, mode, channelsPerPixel) {
     return;
   }
 
-  const pixelKeys = matrix.getPixelKeysByOrder('X', 'Y', 'Z');
-
-  const usesPixelKeys = pixelKeys.some(pixelKey => channelsPerPixel.has(pixelKey));
-  if (!usesPixelKeys) {
+  const usedPixelKeys = matrix.getPixelKeysByOrder('X', 'Y', 'Z').filter(
+    pixelKey => channelsPerPixel.has(pixelKey)
+  );
+  if (usedPixelKeys.length === 0) {
     // no matrix channels used in mode
     return;
   }
@@ -180,7 +180,7 @@ function addMatrixFunction(xmlParent, mode, channelsPerPixel) {
   let sameColors = true;
   let isMonochrome = true;
 
-  for (const pixelKey of pixelKeys) {
+  for (const pixelKey of usedPixelKeys) {
     const channels = channelsPerPixel.get(pixelKey);
     allChannels = allChannels.concat(channels[0]);
 
@@ -195,7 +195,7 @@ function addMatrixFunction(xmlParent, mode, channelsPerPixel) {
 
   const colorMixing = isRGB(referenceColors) ? 'rgb' : (isCMY(referenceColors) ? 'cmy' : null);
   if (sameColors && colorMixing !== null) {
-    for (const pixelKey of pixelKeys) {
+    for (const pixelKey of usedPixelKeys) {
       const pixelChannels = channelsPerPixel.get(pixelKey);
       const colorChannels = pixelChannels.filter(ch => ch.type === 'Single Color');
       colorChannels.forEach(ch => removeFromArray(pixelChannels, ch));
@@ -215,7 +215,7 @@ function addMatrixFunction(xmlParent, mode, channelsPerPixel) {
     addDmxchannelAttributes(xmlMatrix, mode, allChannels[0]);
 
     // clear pixelKeys' channel lists
-    pixelKeys.forEach(pixelKey => channelsPerPixel.get(pixelKey).length = 0);
+    usedPixelKeys.forEach(pixelKey => channelsPerPixel.get(pixelKey).length = 0);
   }
 }
 
