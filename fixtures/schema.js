@@ -119,7 +119,7 @@ const Capability = schema({
   '*': Function
 });
 
-const ChannelType = [
+const ChannelType = schema([
   'Intensity',
   'Single Color',
   'Multi-Color',
@@ -138,7 +138,7 @@ const ChannelType = [
   'Fog',
   'Maintenance',
   'Nothing'
-];
+]);
 
 const Channel = schema({
   '?name': NonEmptyString, // if not set: use channel key
@@ -256,6 +256,7 @@ const properties = {
   channelAliasKey:         ChannelAliasKey.toJSON(),
   templateChannelKey:      TemplateChannelKey.toJSON(),
   templateChannelAliasKey: TemplateChannelAliasKey.toJSON(),
+  channelType:             ChannelType.toJSON(),
   channel:                 Channel.toJSON().properties,
   capability:              Capability.toJSON().properties,
   physical:                Physical.toJSON().properties,
