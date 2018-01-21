@@ -97,6 +97,7 @@ function addFunctions(xml, mode) {
 
   for (const pixelChannels of channelsPerPixel.values()) {
     addColorFunctions(xmlFunctions, mode, pixelChannels);
+    addDimmerFunctions(xmlFunctions, mode, pixelChannels);
     addPositionFunctions(xmlFunctions, mode, pixelChannels);
   }
 
@@ -212,7 +213,7 @@ function addMatrixFunction(xmlParent, mode, channelsPerPixel) {
     });
 
     xmlMatrix.attribute('monochrome', 'true');
-    addDmxchannelAttributes(xmlMatrix, mode, allChannels[0]);
+    addChannelAttributes(xmlMatrix, mode, allChannels[0]);
 
     // clear pixelKeys' channel lists
     usedPixelKeys.forEach(pixelKey => channelsPerPixel.get(pixelKey).length = 0);
@@ -271,7 +272,7 @@ function addColorMixingFunction(xmlParent, mode, colorChannels, colorMixing) {
  */
 function addColorFunction(xmlParent, mode, colorChannel) {
   const xmlColor = xmlParent.element(colorChannel.color.toLowerCase());
-  addDmxchannelAttributes(xmlColor, mode, colorChannel);
+  addChannelAttributes(xmlColor, mode, colorChannel);
 }
 
 /**
@@ -306,6 +307,30 @@ function isCMY(colors) {
   const hasMagenta = colors.has('Magenta');
   const hasYellow = colors.has('Yellow');
   return hasCyan && hasMagenta && hasYellow;
+}
+
+/**
+ * Finds dimmer channels in the given channel list, adds them to xml
+ * and removes them from the given channel list.
+ * @param {!XMLElement} xmlParent The xml element in which the <dimmer> tags should be inserted.
+ * @param {!Mode} mode The definition's mode.
+ * @param {!Array.<Channel>} remainingChannels All channels that haven't been processed already.
+ */
+function addDimmerFunctions(xmlParent, mode, remainingChannels) {
+  const dimmerChannels = remainingChannels.filter(ch => {
+    if (ch.type === 'Intensity') {
+      const name = ch.name.toLowerCase();
+      const keyWords = ['dimmer', 'intensity', 'brightness'];
+      return keyWords.some(keyword => name.includes(keyword));
+    }
+    return false;
+  });
+
+  for (const dimmerChannel of dimmerChannels) {
+    const xmlDimmer = xmlParent.element('dimmer');
+    addChannelAttributes(xmlDimmer, mode, dimmerChannel);
+    removeFromArray(remainingChannels, dimmerChannel);
+  }
 }
 
 /**
@@ -344,7 +369,7 @@ function addPanTiltFunction(xmlParent, mode, channel) {
   const isPan = channel.type === 'Pan';
 
   const xmlFunc = xmlParent.element(isPan ? 'pan' : 'tilt');
-  addDmxchannelAttributes(xmlFunc, mode, channel);
+  addChannelAttributes(xmlFunc, mode, channel);
 
   const focusMax = isPan ? 'focusPanMax' : 'focusTiltMax';
   if (mode.physical !== null && mode.physical[focusMax] !== null) {
@@ -353,12 +378,14 @@ function addPanTiltFunction(xmlParent, mode, channel) {
 }
 
 /**
- * Adds dmxchannel attribute and attributes for fine channels (if used in mode) to the given channel function.
+ * Adds name attribute, dmxchannel attribute and attributes for fine channels (if used in mode) to the given channel function.
  * @param {!XMLElement} xmlElement The xml element to which the attributes should be added.
  * @param {!Mode} mode The definition's mode.
  * @param {!Channel} channel The channel whose data is used.
  */
-function addDmxchannelAttributes(xmlElement, mode, channel) {
+function addChannelAttributes(xmlElement, mode, channel) {
+  xmlElement.attribute('name', channel.name);
+
   const index = mode.getChannelIndex(channel);
   xmlElement.attribute('dmxchannel', index);
 
