@@ -89,13 +89,23 @@ function addInformation(xml, mode) {
  * @param {!Mode} mode The definition's mode.
  */
 function addFunctions(xml, mode) {
-  const xmlFunctions = xml.element('functions');
-
   const channelsPerPixel = getChannelsPerPixel();
 
-  addMatrixFunction(xmlFunctions, mode, channelsPerPixel);
+  for (const [pixelKey, pixelChannels] of channelsPerPixel) {
+    if (pixelKey !== null && pixelChannels.length === 0) {
+      continue;
+    }
 
-  for (const pixelChannels of channelsPerPixel.values()) {
+    const xmlFunctions = xml.element('functions');
+
+    if (pixelKey === null && mode.fixture.categories.includes('Matrix')) {
+      addMatrixFunction(xmlFunctions, mode, channelsPerPixel);
+    }
+
+    if (pixelKey !== null) {
+      xmlFunctions.comment(pixelKey);
+    }
+
     addColorFunctions(xmlFunctions, mode, pixelChannels);
     addDimmerFunctions(xmlFunctions, mode, pixelChannels);
     addPositionFunctions(xmlFunctions, mode, pixelChannels);
@@ -107,17 +117,19 @@ function addFunctions(xml, mode) {
   function getChannelsPerPixel() {
     const channelsPerPixel = new Map();
 
+    channelsPerPixel.set(null, []);
+
+    const matrix = mode.fixture.matrix;
+    if (matrix !== null) {
+      const pixelKeys = matrix.pixelGroupKeys.concat(matrix.getPixelKeysByOrder('X', 'Y', 'Z'));
+      pixelKeys.forEach(key => channelsPerPixel.set(key, []));
+    }
+
     for (const channel of getUsableChannels()) {
       if (channel instanceof MatrixChannel) {
-        if (!channelsPerPixel.has(channel.pixelKey)) {
-          channelsPerPixel.set(channel.pixelKey, []);
-        }
         channelsPerPixel.get(channel.pixelKey).push(channel.wrappedChannel);
       }
       else {
-        if (!channelsPerPixel.has(null)) {
-          channelsPerPixel.set(null, []);
-        }
         channelsPerPixel.get(null).push(channel);
       }
     }
@@ -165,7 +177,7 @@ function addMatrixFunction(xmlParent, mode, channelsPerPixel) {
   }
 
   const usedPixelKeys = matrix.getPixelKeysByOrder('X', 'Y', 'Z').filter(
-    pixelKey => channelsPerPixel.has(pixelKey)
+    pixelKey => channelsPerPixel.get(pixelKey).length > 0
   );
   if (usedPixelKeys.length === 0) {
     // no matrix channels used in mode
