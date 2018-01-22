@@ -1,26 +1,26 @@
-const xmlbuilder = require('xmlbuilder');
-const sanitize = require('sanitize-filename');
+const xmlbuilder = require(`xmlbuilder`);
+const sanitize = require(`sanitize-filename`);
 
-const FineChannel = require('../../lib/model/FineChannel.js');
-const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
-const MatrixChannel = require('../../lib/model/MatrixChannel.js');
-const Capability = require('../../lib/model/Capability.js');
-const Physical = require('../../lib/model/Physical.js');
+const FineChannel = require(`../../lib/model/FineChannel.js`);
+const SwitchingChannel = require(`../../lib/model/SwitchingChannel.js`);
+const MatrixChannel = require(`../../lib/model/MatrixChannel.js`);
+const Capability = require(`../../lib/model/Capability.js`);
+const Physical = require(`../../lib/model/Physical.js`);
 
-module.exports.name = 'QLC+';
-module.exports.version = '0.5.0';
+module.exports.name = `QLC+`;
+module.exports.version = `0.5.0`;
 
 module.exports.export = function exportQLCplus(fixtures, options) {
   return fixtures.map(fixture => {
     const xml = xmlbuilder.begin()
-      .declaration('1.0', 'UTF-8')
+      .declaration(`1.0`, `UTF-8`)
       .element({
         FixtureDefinition: {
-          '@xmlns': 'http://www.qlcplus.org/FixtureDefinition',
+          '@xmlns': `http://www.qlcplus.org/FixtureDefinition`,
           Creator: {
             Name: `OFL – ${fixture.url}`,
             Version: module.exports.version,
-            Author: fixture.meta.authors.join(', ')
+            Author: fixture.meta.authors.join(`, `)
           },
           Manufacturer: fixture.manufacturer.name,
           Model: fixture.name,
@@ -36,14 +36,14 @@ module.exports.export = function exportQLCplus(fixtures, options) {
       addMode(xml, mode);
     }
 
-    xml.doctype('');
+    xml.doctype(``);
     return {
-      name: sanitize(`${fixture.manufacturer.name}-${fixture.name}.qxf`).replace(/\s+/g, '-'),
+      name: sanitize(`${fixture.manufacturer.name}-${fixture.name}.qxf`).replace(/\s+/g, `-`),
       content: xml.end({
         pretty: true,
-        indent: ' '
+        indent: ` `
       }),
-      mimetype: 'application/x-qlc-fixture'
+      mimetype: `application/x-qlc-fixture`
     };
   });
 };
@@ -76,15 +76,15 @@ function addChannel(xml, channel) {
   if (channel instanceof FineChannel) {
     let capabilityName;
     if (channel.fineness > 1) {
-      xmlGroup.attribute('Byte', 0);  // not a QLC+ fine channel
+      xmlGroup.attribute(`Byte`, 0); // not a QLC+ fine channel
       capabilityName = `Fine^${channel.fineness} adjustment for ${channel.coarseChannel.uniqueName}`;
     }
     else {
-      xmlGroup.attribute('Byte', 1);
+      xmlGroup.attribute(`Byte`, 1);
       capabilityName = `Fine adjustment for ${channel.coarseChannel.uniqueName}`;
     }
 
-    channel = channel.coarseChannel;  // use coarse channel's data from here on
+    channel = channel.coarseChannel; // use coarse channel's data from here on
     capabilities = [
       new Capability({
         range: [0, 255],
@@ -93,16 +93,16 @@ function addChannel(xml, channel) {
     ];
   }
   else {
-    xmlGroup.attribute('Byte', 0);
+    xmlGroup.attribute(`Byte`, 0);
     capabilities = channel.capabilities;
   }
 
   const chType = getChannelType(channel);
   xmlGroup.text(chType);
 
-  if (chType === 'Intensity') {
+  if (chType === `Intensity`) {
     xmlChannel.element({
-      Colour: channel.color !== null ? channel.color : 'Generic'
+      Colour: channel.color !== null ? channel.color : `Generic`
     });
   }
 
@@ -123,13 +123,13 @@ function addCapability(xmlChannel, cap) {
   });
 
   if (cap.image !== null) {
-    xmlCapability.attribute('Res', cap.image);
+    xmlCapability.attribute(`Res`, cap.image);
   }
   else if (cap.color !== null) {
-    xmlCapability.attribute('Color', cap.color.hex().toLowerCase());
+    xmlCapability.attribute(`Color`, cap.color.hex().toLowerCase());
 
     if (cap.color2 !== null) {
-      xmlCapability.attribute('Color2', cap.color2.hex().toLowerCase());
+      xmlCapability.attribute(`Color2`, cap.color2.hex().toLowerCase());
     }
   }
 }
@@ -161,7 +161,7 @@ function addPhysical(xmlMode, physical) {
   const xmlPhysical = xmlMode.element({
     Physical: {
       Bulb: {
-        '@Type': physical.bulbType || 'Other',
+        '@Type': physical.bulbType || `Other`,
         '@Lumens': physical.bulbLumens || 0,
         '@ColourTemperature': physical.bulbColorTemperature || 0
       },
@@ -172,12 +172,12 @@ function addPhysical(xmlMode, physical) {
         '@Depth': Math.round(physical.depth) || 0
       },
       Lens: {
-        '@Name': physical.lensName || 'Other',
+        '@Name': physical.lensName || `Other`,
         '@DegreesMin': physical.lensDegreesMin || 0,
         '@DegreesMax': physical.lensDegreesMax || 0
       },
       Focus: {
-        '@Type': physical.focusType || 'Fixed',
+        '@Type': physical.focusType || `Fixed`,
         '@PanMax': Math.round(physical.focusPanMax) || 0,
         '@TiltMax': Math.round(physical.focusTiltMax) || 0
       }
@@ -187,7 +187,7 @@ function addPhysical(xmlMode, physical) {
   if (physical.DMXconnector !== null || physical.power !== null) {
     xmlPhysical.element({
       Technical: {
-        '@DmxConnector': physical.DMXconnector || 'Other',
+        '@DmxConnector': physical.DMXconnector || `Other`,
         '@PowerConsumption': Math.round(physical.power) || 0
       }
     });
@@ -228,7 +228,7 @@ function addHeads(xmlMode, mode) {
  * @returns {!string} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
  */
 function getFixtureType(fixture) {
-  const ignoredCats = ['Blinder', 'Matrix'];
+  const ignoredCats = [`Blinder`, `Matrix`];
 
   for (const category of fixture.categories) {
     if (ignoredCats.includes(category)) {
@@ -237,27 +237,27 @@ function getFixtureType(fixture) {
     return category;
   }
 
-  return 'Other';
+  return `Other`;
 }
 
 // converts a Channel's type into a valid QLC+ channel type
 function getChannelType(channel) {
   switch (channel.type) {
-    case 'Single Color':
-    case 'Color Temperature':
-    case 'Fog':
-      return 'Intensity';
+    case `Single Color`:
+    case `Color Temperature`:
+    case `Fog`:
+      return `Intensity`;
 
-    case 'Multi-Color':
-      return 'Colour';
+    case `Multi-Color`:
+      return `Colour`;
 
-    case 'Strobe':
-      return 'Shutter';
+    case `Strobe`:
+      return `Shutter`;
 
-    case 'Zoom':
-    case 'Focus':
-    case 'Iris':
-      return 'Beam';
+    case `Zoom`:
+    case `Focus`:
+    case `Iris`:
+      return `Beam`;
 
     default:
       return channel.type;

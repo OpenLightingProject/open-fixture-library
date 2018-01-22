@@ -1,4 +1,4 @@
-const xml2js = require('xml2js');
+const xml2js = require(`xml2js`);
 
 module.exports = function testAttributesCorrectness(exportFileData) {
   return new Promise((resolve, reject) => {

@@ -1,13 +1,13 @@
-const xmlbuilder = require('xmlbuilder');
-const sanitize = require('sanitize-filename');
+const xmlbuilder = require(`xmlbuilder`);
+const sanitize = require(`sanitize-filename`);
 
-const Channel = require('../../lib/model/Channel.js');
-const FineChannel = require('../../lib/model/FineChannel.js');
-const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
-const MatrixChannel = require('../../lib/model/MatrixChannel.js');
+const Channel = require(`../../lib/model/Channel.js`);
+const FineChannel = require(`../../lib/model/FineChannel.js`);
+const SwitchingChannel = require(`../../lib/model/SwitchingChannel.js`);
+const MatrixChannel = require(`../../lib/model/MatrixChannel.js`);
 
-module.exports.name = 'D::Light';
-module.exports.version = '0.1.0';
+module.exports.name = `D::Light`;
+module.exports.version = `0.1.0`;
 
 module.exports.export = function exportDLight(fixtures, options) {
   const deviceFiles = [];
@@ -16,7 +16,7 @@ module.exports.export = function exportDLight(fixtures, options) {
     // add device for each mode
     for (const mode of fixture.modes) {
       const xml = xmlbuilder.begin()
-        .declaration('1.0')
+        .declaration(`1.0`)
         .element({
           Device: {
             'OFL_Export': {
@@ -28,10 +28,10 @@ module.exports.export = function exportDLight(fixtures, options) {
             },
             ManufacturerName: fixture.manufacturer.name,
             ModelName: `${fixture.name} (${mode.name})`,
-            creationDate: fixture.meta.createDate.toISOString().split('T')[0]
+            creationDate: fixture.meta.createDate.toISOString().split(`T`)[0]
           }
         })
-        .element('Attributes');
+        .element(`Attributes`);
 
       // channels are grouped by their channel type which is called AttributesDefinition in D::Light
       const channelsByAttribute = getChannelsByAttribute(mode.channels);
@@ -43,9 +43,9 @@ module.exports.export = function exportDLight(fixtures, options) {
         name: `${fixture.manufacturer.key}/${fixture.key}-${sanitize(mode.shortName)}.xml`,
         content: xml.end({
           pretty: true,
-          indent: '  '
+          indent: `  `
         }),
-        mimetype: 'application/xml'
+        mimetype: `application/xml`
       });
     }
   }
@@ -102,7 +102,7 @@ function getParameterName(mode, attribute, channel) {
   }
 
   switch (attribute) {
-    case 'FOCUS':
+    case `FOCUS`:
       return channel.type.toUpperCase(); // PAN or TILT
 
     // in all other attributes, custom text is allowed
@@ -110,9 +110,9 @@ function getParameterName(mode, attribute, channel) {
     default:
       return uniqueName
         .toUpperCase()
-        .replace(/ /g, '_')
-        .replace(/\//g, '|')
-        .replace(/COLOR/g, 'COLOUR');
+        .replace(/ /g, `_`)
+        .replace(/\//g, `|`)
+        .replace(/COLOR/g, `COLOUR`);
   }
 }
 
@@ -138,8 +138,8 @@ function addCapability(xmlCapabilities, cap) {
       '@min': cap.range.start,
       '@max': cap.range.end,
       '@snap': cap.menuClickDmxValue,
-      '@timeHolder': '0',
-      '@dummy': '0',
+      '@timeHolder': `0`,
+      '@dummy': `0`,
       '#text': cap.name
     }
   });
@@ -200,19 +200,19 @@ function getChannelAttribute(channel) {
   }
   if (channel instanceof FineChannel) {
     if (channel.fineness === 1) {
-      return 'FINE';
+      return `FINE`;
     }
-    return 'EXTRA';
+    return `EXTRA`;
   }
 
   const oflToDLightMap = {
-    INTENSITY: ['Intensity'],
-    COLOUR: ['Single Color', 'Multi-Color', 'Color Temperature'],
-    FOCUS: ['Pan', 'Tilt'],
-    BEAM: ['Iris', 'Focus', 'Zoom'],
-    EFFECT: ['Strobe', 'Shutter', 'Speed', 'Gobo', 'Prism', 'Effect', 'Fog'],
-    CONTROL: ['Maintenance'],
-    EXTRA: ['Nothing']
+    INTENSITY: [`Intensity`],
+    COLOUR: [`Single Color`, `Multi-Color`, `Color Temperature`],
+    FOCUS: [`Pan`, `Tilt`],
+    BEAM: [`Iris`, `Focus`, `Zoom`],
+    EFFECT: [`Strobe`, `Shutter`, `Speed`, `Gobo`, `Prism`, `Effect`, `Fog`],
+    CONTROL: [`Maintenance`],
+    EXTRA: [`Nothing`]
   };
 
   for (const attribute of Object.keys(oflToDLightMap)) {
@@ -220,5 +220,5 @@ function getChannelAttribute(channel) {
       return attribute;
     }
   }
-  return 'EXTRA'; // default if new types are added to OFL
+  return `EXTRA`; // default if new types are added to OFL
 }

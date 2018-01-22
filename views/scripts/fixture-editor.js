@@ -379,7 +379,7 @@ function removeChannel(channelUuid, modeUuid) {
 function resetChannelForm() {
   this.channel = utils.getEmptyChannel();
   Vue.nextTick(function() {
-    app.$refs.channelForm.reset();  // resets browser validation status
+    app.$refs.channelForm.reset(); // resets browser validation status
   });
 }
 

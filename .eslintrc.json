@@ -3,7 +3,13 @@
     "es6": true,
     "node": true
   },
-  "extends": "eslint:recommended",
+  "plugins": [
+    "security"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:security/recommended"
+  ],
   "rules": {
     "accessor-pairs": "error",
     "array-bracket-spacing": "error",
@@ -15,6 +21,7 @@
     "comma-dangle": ["error", "never"],
     "comma-spacing": "error",
     "comma-style": "error",
+    "complexity": ["warn", 7],
     "consistent-return": "error",
     "curly": ["error", "all"],
     "dot-location": ["error", "property"],
@@ -34,9 +41,12 @@
     "no-console": "off",
     "no-else-return": ["error", { "allowElseIf": false }],
     "no-lonely-if": "error",
+    "no-loop-func": "warn",
     "no-mixed-operators": "error",
+    "no-multi-spaces": "error",
     "no-new-object": "error",
     "no-prototype-builtins": "error",
+    "no-return-assign": "error",
     "no-template-curly-in-string": "error",
     "no-trailing-spaces": "error",
     "no-unused-vars": ["error", { "args": "none" }],
@@ -45,8 +55,12 @@
     "prefer-const": ["error", { "destructuring": "all" }],
     "prefer-rest-params": "error",
     "prefer-template": "error",
-    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "quotes": ["error", "backtick", { "allowTemplateLiterals": true }],
     "require-jsdoc": "warn",
+    "security/detect-child-process": "off",
+    "security/detect-non-literal-fs-filename": "off",
+    "security/detect-non-literal-require": "off",
+    "security/detect-object-injection": "off",
     "semi": "error",
     "space-before-blocks": "error",
     "space-before-function-paren": ["error", {

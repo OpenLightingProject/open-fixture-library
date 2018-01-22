@@ -1,17 +1,17 @@
 module.exports = function(options) {
   const {query, register, manufacturers} = options;
 
-  const searchQuery = (query.q || '').trim();
+  const searchQuery = (query.q || ``).trim();
 
-  if (!('q' in query) || (searchQuery.length === 0)) {
-    options.title = 'Search - Open Fixture Library';
+  if (!(`q` in query) || (searchQuery.length === 0)) {
+    options.title = `Search - Open Fixture Library`;
 
-    let str = require('../includes/header.js')(options);
+    let str = require(`../includes/header.js`)(options);
 
-    str += '<h1>Search</h1>';
-    str += '<p>Please enter a search query in the form above.</p>';
+    str += `<h1>Search</h1>`;
+    str += `<p>Please enter a search query in the form above.</p>`;
 
-    str += require('../includes/footer.js')(options);
+    str += require(`../includes/footer.js`)(options);
 
     return str;
   }
@@ -22,24 +22,24 @@ module.exports = function(options) {
   options.title = `Search "${searchQueryEscaped}" - Open Fixture Library`;
   options.searchQueryEscaped = searchQueryEscaped;
 
-  if (!('m' in query) || query.m === '') {
+  if (!(`m` in query) || query.m === ``) {
     query.m = [];
   }
-  else if (typeof query.m === 'string') {
+  else if (typeof query.m === `string`) {
     query.m = [query.m];
   }
 
-  if (!('c' in query) || query.c === '') {
+  if (!(`c` in query) || query.c === ``) {
     query.c = [];
   }
-  else if (typeof query.c === 'string') {
+  else if (typeof query.c === `string`) {
     query.c = [query.c];
   }
   query.c = query.c.map(decodeURIComponent);
 
   const results = [];
   for (const key of Object.keys(register.filesystem)) {
-    const man = key.split('/')[0];
+    const man = key.split(`/`)[0];
     const fixData = register.filesystem[key];
     const name = (`${manufacturers[man].name} ${fixData.name}`).toLowerCase();
 
@@ -56,24 +56,24 @@ module.exports = function(options) {
     }
   }
 
-  let str = require('../includes/header.js')(options);
+  let str = require(`../includes/header.js`)(options);
 
   str += `<h1>Search <em>${searchQueryEscaped}</em></h1>`;
 
-  str += '<form class="filter" action="/search">';
+  str += `<form class="filter" action="/search">`;
   str += `  <input type="search" name="q" value="${searchQueryEscaped}" />`;
-  str += '  <select name="m" multiple>';
-  str += '    <option value="">Filter by manufacturer</option>';
-  str += Object.keys(manufacturers).map(man => `<option value="${man}"${query.m.indexOf(man) > -1 ? ' selected' : ''}>${manufacturers[man].name}</option>`).join('');
-  str += '  </select>';
-  str += '  <select name="c" multiple>';
-  str += '    <option value="">Filter by category</option>';
-  str += Object.keys(register.categories).map(cat => `<option value="${cat}"${query.c.indexOf(cat) > -1 ? ' selected' : ''}>${cat}</option>`).join('');
-  str += '  </select>';
-  str += '  <button type="submit">Search</button>';
-  str += '</form>';
+  str += `  <select name="m" multiple>`;
+  str += `    <option value="">Filter by manufacturer</option>`;
+  str += Object.keys(manufacturers).map(man => `<option value="${man}"${query.m.indexOf(man) > -1 ? ` selected` : ``}>${manufacturers[man].name}</option>`).join(``);
+  str += `  </select>`;
+  str += `  <select name="c" multiple>`;
+  str += `    <option value="">Filter by category</option>`;
+  str += Object.keys(register.categories).map(cat => `<option value="${cat}"${query.c.indexOf(cat) > -1 ? ` selected` : ``}>${cat}</option>`).join(``);
+  str += `  </select>`;
+  str += `  <button type="submit">Search</button>`;
+  str += `</form>`;
 
-  str += '<div class="search-results">';
+  str += `<div class="search-results">`;
   if (results.length > 0) {
     for (const fixData of results) {
       str += `<p><a href="/${fixData.key}">${fixData.manufacturerName} ${fixData.name}</p>`;
@@ -82,9 +82,9 @@ module.exports = function(options) {
   else {
     str += `<p>Your search for <em>${searchQueryEscaped}</em> did not match any fixtures. Try using another query or browse by <a href="/manufacturers">manufacturer</a> or <a href="/categories">category</a>.</p>`;
   }
-  str += '</div>';
+  str += `</div>`;
 
-  str += require('../includes/footer.js')(options);
+  str += require(`../includes/footer.js`)(options);
 
   return str;
 };

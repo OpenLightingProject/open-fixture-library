@@ -1,52 +1,52 @@
-const url = require('url');
-const sitemapGenerator = require('sitemap');
+const url = require(`url`);
+const sitemapGenerator = require(`sitemap`);
 
-const Fixture = require('../../lib/model/Fixture.js');
+const Fixture = require(`../../lib/model/Fixture.js`);
 
 let register;
 
 module.exports = function generateSitemap(options) {
   register = options.register;
 
-  if (!options.app.get('sitemap')) {
-    options.app.set('sitemap', sitemapGenerator.createSitemap({
-      hostname: url.resolve(options.url, '/'),
+  if (!options.app.get(`sitemap`)) {
+    options.app.set(`sitemap`, sitemapGenerator.createSitemap({
+      hostname: url.resolve(options.url, `/`),
       urls: getStaticUrls().concat(getRegisterUrls())
     }).toString());
   }
 
-  return options.app.get('sitemap');
+  return options.app.get(`sitemap`);
 };
 
 function getStaticUrls() {
   return [
     {
-      url: '/',
-      changefreq: 'daily'
+      url: `/`,
+      changefreq: `daily`
     },
     {
-      url: '/fixture-editor',
-      changefreq: 'monthly'
+      url: `/fixture-editor`,
+      changefreq: `monthly`
     },
     {
-      url: '/manufacturers',
-      changefreq: 'monthly'
+      url: `/manufacturers`,
+      changefreq: `monthly`
     },
     {
-      url: '/categories',
-      changefreq: 'monthly'
+      url: `/categories`,
+      changefreq: `monthly`
     },
     {
-      url: '/about',
-      changefreq: 'yearly'
+      url: `/about`,
+      changefreq: `yearly`
     },
     {
-      url: '/rdm',
-      changefreq: 'yearly'
+      url: `/rdm`,
+      changefreq: `yearly`
     },
     {
-      url: '/search',
-      changefreq: 'yearly'
+      url: `/search`,
+      changefreq: `yearly`
     }
   ];
 }
@@ -66,14 +66,14 @@ function getRegisterUrls() {
 function getManufacturerUrls(manKey, fixKeys) {
   const urls = [{
     url: `/${manKey}`,
-    changefreq: 'weekly'
+    changefreq: `weekly`
   }];
 
   for (const fixKey of fixKeys) {
     const fix = Fixture.fromRepository(manKey, fixKey);
     urls.push({
       url: `/${manKey}/${fixKey}`,
-      changefreq: 'monthly',
+      changefreq: `monthly`,
       lastmodISO: fix.meta.lastModifyDate.toISOString()
     });
   }
@@ -84,6 +84,6 @@ function getManufacturerUrls(manKey, fixKeys) {
 function getCategoryUrls(cats) {
   return cats.map(cat => ({
     url: `/categories/${cat}`,
-    changefreq: 'weekly'
+    changefreq: `weekly`
   }));
 }
