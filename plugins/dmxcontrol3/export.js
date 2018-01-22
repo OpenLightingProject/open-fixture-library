@@ -1,25 +1,25 @@
-const xmlbuilder = require('xmlbuilder');
-const sanitize = require('sanitize-filename');
+const xmlbuilder = require(`xmlbuilder`);
+const sanitize = require(`sanitize-filename`);
 
 /* eslint-disable no-unused-vars */
-const Manufacturer = require('../../lib/model/Manufacturer.js');
-const Fixture = require('../../lib/model/Fixture.js');
-const Meta = require('../../lib/model/Meta.js');
-const Physical = require('../../lib/model/Physical.js');
-const Matrix = require('../../lib/model/Matrix.js');
-const Mode = require('../../lib/model/Mode.js');
-const MatrixChannel = require('../../lib/model/MatrixChannel.js');
-const AbstractChannel = require('../../lib/model/AbstractChannel.js');
-const Channel = require('../../lib/model/Channel.js');
-const FineChannel = require('../../lib/model/FineChannel.js');
-const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
-const NullChannel = require('../../lib/model/NullChannel.js');
-const Capability = require('../../lib/model/Capability.js');
-const Range = require('../../lib/model/Range.js');
+const Manufacturer = require(`../../lib/model/Manufacturer.js`);
+const Fixture = require(`../../lib/model/Fixture.js`);
+const Meta = require(`../../lib/model/Meta.js`);
+const Physical = require(`../../lib/model/Physical.js`);
+const Matrix = require(`../../lib/model/Matrix.js`);
+const Mode = require(`../../lib/model/Mode.js`);
+const MatrixChannel = require(`../../lib/model/MatrixChannel.js`);
+const AbstractChannel = require(`../../lib/model/AbstractChannel.js`);
+const Channel = require(`../../lib/model/Channel.js`);
+const FineChannel = require(`../../lib/model/FineChannel.js`);
+const SwitchingChannel = require(`../../lib/model/SwitchingChannel.js`);
+const NullChannel = require(`../../lib/model/NullChannel.js`);
+const Capability = require(`../../lib/model/Capability.js`);
+const Range = require(`../../lib/model/Range.js`);
 /* eslint-enable no-unused-vars */
 
-module.exports.name = 'DMXControl 3 (DDF3)';
-module.exports.version = '0.1.0';
+module.exports.name = `DMXControl 3 (DDF3)`;
+module.exports.version = `0.1.0`;
 
 /**
  * @param {!Array.<Fixture>} fixtures The fixtures to convert into DMXControl device definitions
@@ -33,13 +33,13 @@ module.exports.export = function exportDMXControl3(fixtures, options) {
     // add device for each mode
     for (const mode of fixture.modes) {
       const xml = xmlbuilder.begin()
-        .declaration('1.0', 'utf-8')
+        .declaration(`1.0`, `utf-8`)
         .element({
           device: {
-            '@type': 'DMXDevice',
+            '@type': `DMXDevice`,
             '@dmxaddresscount': mode.channelKeys.length,
             '@dmxcversion': 3,
-            '@ddfversion': fixture.meta.lastModifyDate.toISOString().split('T')[0]
+            '@ddfversion': fixture.meta.lastModifyDate.toISOString().split(`T`)[0]
           }
         });
 
@@ -47,12 +47,12 @@ module.exports.export = function exportDMXControl3(fixtures, options) {
       addFunctions(xml, mode);
 
       deviceDefinitions.push({
-        name: sanitize(`${fixture.manufacturer.key}-${fixture.key}-${(mode.shortName)}.xml`).replace(/\s+/g, '-'),
+        name: sanitize(`${fixture.manufacturer.key}-${fixture.key}-${(mode.shortName)}.xml`).replace(/\s+/g, `-`),
         content: xml.end({
           pretty: true,
-          indent: '  '
+          indent: `  `
         }),
-        mimetype: 'application/xml',
+        mimetype: `application/xml`,
         fixtures: [fixture],
         mode: mode.shortName
       });
@@ -68,14 +68,14 @@ module.exports.export = function exportDMXControl3(fixtures, options) {
  * @param {!Mode} mode The definition's mode
  */
 function addInformation(xml, mode) {
-  const xmlInfo = xml.element('information');
-  xmlInfo.element('model').text(mode.fixture.name);
-  xmlInfo.element('vendor').text(mode.fixture.manufacturer.name);
-  xmlInfo.element('author').text(mode.fixture.meta.authors.join(', '));
-  xmlInfo.element('mode').text(mode.name);
+  const xmlInfo = xml.element(`information`);
+  xmlInfo.element(`model`).text(mode.fixture.name);
+  xmlInfo.element(`vendor`).text(mode.fixture.manufacturer.name);
+  xmlInfo.element(`author`).text(mode.fixture.meta.authors.join(`, `));
+  xmlInfo.element(`mode`).text(mode.name);
 
   if (mode.fixture.hasComment) {
-    xmlInfo.element('comment').text(mode.fixture.comment);
+    xmlInfo.element(`comment`).text(mode.fixture.comment);
   }
 }
 
@@ -96,9 +96,9 @@ function addFunctions(xml, mode) {
       continue;
     }
 
-    const xmlFunctions = xml.element('functions');
+    const xmlFunctions = xml.element(`functions`);
 
-    if (pixelKey === null && mode.fixture.categories.includes('Matrix')) {
+    if (pixelKey === null && mode.fixture.categories.includes(`Matrix`)) {
       addMatrix(xmlFunctions, mode, channelsPerPixel);
     }
 
@@ -121,7 +121,7 @@ function addFunctions(xml, mode) {
 
     const matrix = mode.fixture.matrix;
     if (matrix !== null) {
-      const pixelKeys = matrix.pixelGroupKeys.concat(matrix.getPixelKeysByOrder('X', 'Y', 'Z'));
+      const pixelKeys = matrix.pixelGroupKeys.concat(matrix.getPixelKeysByOrder(`X`, `Y`, `Z`));
       pixelKeys.forEach(key => channelsPerPixel.set(key, []));
     }
 
@@ -176,7 +176,7 @@ function addMatrix(xmlParent, mode, channelsPerPixel) {
     return;
   }
 
-  const usedPixelKeys = matrix.getPixelKeysByOrder('X', 'Y', 'Z').filter(
+  const usedPixelKeys = matrix.getPixelKeysByOrder(`X`, `Y`, `Z`).filter(
     pixelKey => channelsPerPixel.get(pixelKey).length > 0
   );
   if (usedPixelKeys.length === 0) {
@@ -184,9 +184,9 @@ function addMatrix(xmlParent, mode, channelsPerPixel) {
     return;
   }
 
-  const xmlMatrix = xmlParent.element('matrix');
-  xmlMatrix.attribute('rows', matrix.pixelCountX);
-  xmlMatrix.attribute('column', matrix.pixelCountY);
+  const xmlMatrix = xmlParent.element(`matrix`);
+  xmlMatrix.attribute(`rows`, matrix.pixelCountX);
+  xmlMatrix.attribute(`column`, matrix.pixelCountY);
 
   let allChannels = [];
   let referenceColors = null;
@@ -202,15 +202,15 @@ function addMatrix(xmlParent, mode, channelsPerPixel) {
     }
 
     sameColors = sameColors && setsEqual(referenceColors, getColors(channels));
-    isMonochrome = isMonochrome && channels.length === 1 && channels[0].type === 'Intensity';
+    isMonochrome = isMonochrome && channels.length === 1 && channels[0].type === `Intensity`;
   }
 
 
-  const colorMixing = isRGB(referenceColors) ? 'rgb' : (isCMY(referenceColors) ? 'cmy' : null);
+  const colorMixing = isRGB(referenceColors) ? `rgb` : (isCMY(referenceColors) ? `cmy` : null);
   if (sameColors && colorMixing !== null) {
     for (const pixelKey of usedPixelKeys) {
       const pixelChannels = channelsPerPixel.get(pixelKey);
-      const colorChannels = pixelChannels.filter(ch => ch.type === 'Single Color');
+      const colorChannels = pixelChannels.filter(ch => ch.type === `Single Color`);
       colorChannels.forEach(ch => removeFromArray(pixelChannels, ch));
       addColorMixing(xmlMatrix, mode, colorChannels, colorMixing);
     }
@@ -224,11 +224,11 @@ function addMatrix(xmlParent, mode, channelsPerPixel) {
       return indexA - indexB;
     });
 
-    xmlMatrix.attribute('monochrome', 'true');
+    xmlMatrix.attribute(`monochrome`, `true`);
     addChannelAttributes(xmlMatrix, mode, allChannels[0]);
 
     // clear pixelKeys' channel lists
-    usedPixelKeys.forEach(pixelKey => channelsPerPixel.get(pixelKey).length = 0);
+    usedPixelKeys.forEach(pixelKey => (channelsPerPixel.get(pixelKey).length = 0));
   }
 }
 
@@ -241,20 +241,20 @@ function addMatrix(xmlParent, mode, channelsPerPixel) {
  */
 function addColors(xmlParent, mode, remainingChannels) {
   // search color channels and remove them from color list as we'll handle all of them
-  const colorChannels = remainingChannels.filter(ch => ch.type === 'Single Color');
+  const colorChannels = remainingChannels.filter(ch => ch.type === `Single Color`);
   colorChannels.forEach(ch => removeFromArray(remainingChannels, ch));
   const colors = getColors(colorChannels);
 
   if (isCMY(colors) && isRGB(colors)) {
-    const cmyColors = ['Cyan', 'Magenta', 'Yellow'];
+    const cmyColors = [`Cyan`, `Magenta`, `Yellow`];
     const cmyColorChannels = colorChannels.filter(ch => cmyColors.includes(ch.color)); // cmy
     const rgbColorChannels = colorChannels.filter(ch => !cmyColors.includes(ch.color)); // rgb + w + a + uv + ...
 
-    addColorMixing(xmlParent, mode, cmyColorChannels, 'rgb');
-    addColorMixing(xmlParent, mode, rgbColorChannels, 'cmy');
+    addColorMixing(xmlParent, mode, cmyColorChannels, `rgb`);
+    addColorMixing(xmlParent, mode, rgbColorChannels, `cmy`);
   }
   else if (isCMY(colors) || isRGB(colors)) {
-    addColorMixing(xmlParent, mode, colorChannels, isRGB(colors) ? 'rgb' : 'cmy');
+    addColorMixing(xmlParent, mode, colorChannels, isRGB(colors) ? `rgb` : `cmy`);
   }
   else {
     colorChannels.forEach(channel => addColor(xmlParent, mode, channel));
@@ -293,7 +293,7 @@ function addColor(xmlParent, mode, colorChannel) {
  */
 function getColors(channels) {
   const colors = new Set();
-  for (const channel of channels.filter(ch => ch.type === 'Single Color')) {
+  for (const channel of channels.filter(ch => ch.type === `Single Color`)) {
     colors.add(channel.color);
   }
   return colors;
@@ -304,9 +304,9 @@ function getColors(channels) {
  * @returns {!boolean} Whether the given colors contain all needed RGB colors.
  */
 function isRGB(colors) {
-  const hasRed = colors.has('Red');
-  const hasGreen = colors.has('Green');
-  const hasBlue = colors.has('Blue');
+  const hasRed = colors.has(`Red`);
+  const hasGreen = colors.has(`Green`);
+  const hasBlue = colors.has(`Blue`);
   return hasRed && hasGreen && hasBlue;
 }
 
@@ -315,9 +315,9 @@ function isRGB(colors) {
  * @returns {!boolean} Whether the given colors contain all needed CMY colors.
  */
 function isCMY(colors) {
-  const hasCyan = colors.has('Cyan');
-  const hasMagenta = colors.has('Magenta');
-  const hasYellow = colors.has('Yellow');
+  const hasCyan = colors.has(`Cyan`);
+  const hasMagenta = colors.has(`Magenta`);
+  const hasYellow = colors.has(`Yellow`);
   return hasCyan && hasMagenta && hasYellow;
 }
 
@@ -330,16 +330,16 @@ function isCMY(colors) {
  */
 function addDimmer(xmlParent, mode, remainingChannels) {
   const dimmerChannels = remainingChannels.filter(ch => {
-    if (ch.type === 'Intensity') {
+    if (ch.type === `Intensity`) {
       const name = ch.name.toLowerCase();
-      const keyWords = ['dimmer', 'intensity', 'brightness'];
+      const keyWords = [`dimmer`, `intensity`, `brightness`];
       return keyWords.some(keyword => name.includes(keyword));
     }
     return false;
   });
 
   for (const dimmerChannel of dimmerChannels) {
-    const xmlDimmer = xmlParent.element('dimmer');
+    const xmlDimmer = xmlParent.element(`dimmer`);
     addChannelAttributes(xmlDimmer, mode, dimmerChannel);
     removeFromArray(remainingChannels, dimmerChannel);
   }
@@ -353,11 +353,11 @@ function addDimmer(xmlParent, mode, remainingChannels) {
  * @param {!Array.<Channel>} remainingChannels All channels that haven't been processed already.
  */
 function addPosition(xmlParent, mode, remainingChannels) {
-  const panChannel = remainingChannels.find(ch => ch.type === 'Pan');
-  const tiltChannel = remainingChannels.find(ch => ch.type === 'Tilt');
+  const panChannel = remainingChannels.find(ch => ch.type === `Pan`);
+  const tiltChannel = remainingChannels.find(ch => ch.type === `Tilt`);
 
   if (panChannel !== undefined && tiltChannel !== undefined) {
-    const xmlPosition = xmlParent.element('position');
+    const xmlPosition = xmlParent.element(`position`);
 
     addPanTilt(xmlPosition, mode, panChannel);
     addPanTilt(xmlPosition, mode, tiltChannel);
@@ -378,14 +378,14 @@ function addPosition(xmlParent, mode, remainingChannels) {
  * @param {!Channel} channel The channel of type Pan or Tilt to use.
  */
 function addPanTilt(xmlParent, mode, channel) {
-  const isPan = channel.type === 'Pan';
+  const isPan = channel.type === `Pan`;
 
-  const xmlFunc = xmlParent.element(isPan ? 'pan' : 'tilt');
+  const xmlFunc = xmlParent.element(isPan ? `pan` : `tilt`);
   addChannelAttributes(xmlFunc, mode, channel);
 
-  const focusMax = isPan ? 'focusPanMax' : 'focusTiltMax';
+  const focusMax = isPan ? `focusPanMax` : `focusTiltMax`;
   if (mode.physical !== null && mode.physical[focusMax] !== null) {
-    xmlFunc.element('range').attribute('range', mode.physical[focusMax]);
+    xmlFunc.element(`range`).attribute(`range`, mode.physical[focusMax]);
   }
 }
 
@@ -396,23 +396,23 @@ function addPanTilt(xmlParent, mode, channel) {
  * @param {!Channel} channel The channel whose data is used.
  */
 function addChannelAttributes(xmlElement, mode, channel) {
-  xmlElement.attribute('name', channel.name);
+  xmlElement.attribute(`name`, channel.name);
 
   const index = mode.getChannelIndex(channel);
-  xmlElement.attribute('dmxchannel', index);
+  xmlElement.attribute(`dmxchannel`, index);
 
   const fineIndices = channel.fineChannels.map(
     fineCh => mode.getChannelIndex(fineCh)
   );
 
   if (fineIndices.length > 0 && fineIndices[0] !== -1) {
-    xmlElement.attribute('finedmxchannel', fineIndices[0]);
+    xmlElement.attribute(`finedmxchannel`, fineIndices[0]);
 
     if (fineIndices.length > 1 && fineIndices[1] !== -1) {
-      xmlElement.attribute('ultradmxchannel', fineIndices[1]);
+      xmlElement.attribute(`ultradmxchannel`, fineIndices[1]);
 
       if (fineIndices.length > 2 && fineIndices[2] !== -1) {
-        xmlElement.attribute('ultrafinedmxchannel', fineIndices[2]);
+        xmlElement.attribute(`ultrafinedmxchannel`, fineIndices[2]);
       }
     }
   }

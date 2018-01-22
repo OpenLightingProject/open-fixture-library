@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const Fixture = require('../../../lib/model/Fixture.js');
+const Fixture = require(`../../../lib/model/Fixture.js`);
 /* eslint-enable no-unused-vars */
 
 /**
@@ -22,7 +22,7 @@ module.exports = function testChannelNumbers(exportFile) {
   const dmxChannelAttributes = exportFile.content.match(dmxChannelRegex) || [];
 
   for (const attr of dmxChannelAttributes) {
-    const channelIndex = parseInt(attr.replace(dmxChannelRegex, '$1'));
+    const channelIndex = parseInt(attr.replace(dmxChannelRegex, `$1`));
 
     if (usedChannelIndices.has(channelIndex)) {
       errors.push(`Channel index ${channelIndex} is used more than once.`);
