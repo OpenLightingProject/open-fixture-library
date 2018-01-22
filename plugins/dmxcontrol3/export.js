@@ -99,16 +99,16 @@ function addFunctions(xml, mode) {
     const xmlFunctions = xml.element('functions');
 
     if (pixelKey === null && mode.fixture.categories.includes('Matrix')) {
-      addMatrixFunction(xmlFunctions, mode, channelsPerPixel);
+      addMatrix(xmlFunctions, mode, channelsPerPixel);
     }
 
     if (pixelKey !== null) {
       xmlFunctions.comment(pixelKey);
     }
 
-    addColorFunctions(xmlFunctions, mode, pixelChannels);
-    addDimmerFunctions(xmlFunctions, mode, pixelChannels);
-    addPositionFunctions(xmlFunctions, mode, pixelChannels);
+    addColors(xmlFunctions, mode, pixelChannels);
+    addDimmer(xmlFunctions, mode, pixelChannels);
+    addPosition(xmlFunctions, mode, pixelChannels);
   }
 
   /**
@@ -169,7 +169,7 @@ function addFunctions(xml, mode) {
  * @param {!Mode} mode The definition's mode.
  * @param {!ChannelsPerPixel} channelsPerPixel Pixel keys pointing to its channels.
  */
-function addMatrixFunction(xmlParent, mode, channelsPerPixel) {
+function addMatrix(xmlParent, mode, channelsPerPixel) {
   const matrix = mode.fixture.matrix;
   if (matrix === null) {
     // no matrix data in this fixture
@@ -212,7 +212,7 @@ function addMatrixFunction(xmlParent, mode, channelsPerPixel) {
       const pixelChannels = channelsPerPixel.get(pixelKey);
       const colorChannels = pixelChannels.filter(ch => ch.type === 'Single Color');
       colorChannels.forEach(ch => removeFromArray(pixelChannels, ch));
-      addColorMixingFunction(xmlMatrix, mode, colorChannels, colorMixing);
+      addColorMixing(xmlMatrix, mode, colorChannels, colorMixing);
     }
   }
   else if (isMonochrome) {
@@ -239,7 +239,7 @@ function addMatrixFunction(xmlParent, mode, channelsPerPixel) {
  * @param {!Mode} mode The definition's mode.
  * @param {!Array.<Channel>} remainingChannels All channels that haven't been processed already.
  */
-function addColorFunctions(xmlParent, mode, remainingChannels) {
+function addColors(xmlParent, mode, remainingChannels) {
   // search color channels and remove them from color list as we'll handle all of them
   const colorChannels = remainingChannels.filter(ch => ch.type === 'Single Color');
   colorChannels.forEach(ch => removeFromArray(remainingChannels, ch));
@@ -250,14 +250,14 @@ function addColorFunctions(xmlParent, mode, remainingChannels) {
     const cmyColorChannels = colorChannels.filter(ch => cmyColors.includes(ch.color)); // cmy
     const rgbColorChannels = colorChannels.filter(ch => !cmyColors.includes(ch.color)); // rgb + w + a + uv + ...
 
-    addColorMixingFunction(xmlParent, mode, cmyColorChannels, 'rgb');
-    addColorMixingFunction(xmlParent, mode, rgbColorChannels, 'cmy');
+    addColorMixing(xmlParent, mode, cmyColorChannels, 'rgb');
+    addColorMixing(xmlParent, mode, rgbColorChannels, 'cmy');
   }
   else if (isCMY(colors) || isRGB(colors)) {
-    addColorMixingFunction(xmlParent, mode, colorChannels, isRGB(colors) ? 'rgb' : 'cmy');
+    addColorMixing(xmlParent, mode, colorChannels, isRGB(colors) ? 'rgb' : 'cmy');
   }
   else {
-    colorChannels.forEach(channel => addColorFunction(xmlParent, mode, channel));
+    colorChannels.forEach(channel => addColor(xmlParent, mode, channel));
   }
 }
 
@@ -268,11 +268,11 @@ function addColorFunctions(xmlParent, mode, remainingChannels) {
  * @param {!Array.<Channel>} colorChannels The Single Color channels to be added.
  * @param {('rgb'|'cmy')} colorMixing Which kind of color mixing this is.
  */
-function addColorMixingFunction(xmlParent, mode, colorChannels, colorMixing) {
+function addColorMixing(xmlParent, mode, colorChannels, colorMixing) {
   const xmlColorMixing = xmlParent.element(colorMixing);
 
   for (const colorChannel of colorChannels) {
-    addColorFunction(xmlColorMixing, mode, colorChannel);
+    addColor(xmlColorMixing, mode, colorChannel);
   }
 }
 
@@ -282,7 +282,7 @@ function addColorMixingFunction(xmlParent, mode, colorChannels, colorMixing) {
  * @param {!Mode} mode The definition's mode.
  * @param {!Channel} colorChannel The Single Color channel which should be added.
  */
-function addColorFunction(xmlParent, mode, colorChannel) {
+function addColor(xmlParent, mode, colorChannel) {
   const xmlColor = xmlParent.element(colorChannel.color.toLowerCase());
   addChannelAttributes(xmlColor, mode, colorChannel);
 }
@@ -328,7 +328,7 @@ function isCMY(colors) {
  * @param {!Mode} mode The definition's mode.
  * @param {!Array.<Channel>} remainingChannels All channels that haven't been processed already.
  */
-function addDimmerFunctions(xmlParent, mode, remainingChannels) {
+function addDimmer(xmlParent, mode, remainingChannels) {
   const dimmerChannels = remainingChannels.filter(ch => {
     if (ch.type === 'Intensity') {
       const name = ch.name.toLowerCase();
@@ -352,19 +352,19 @@ function addDimmerFunctions(xmlParent, mode, remainingChannels) {
  * @param {!Mode} mode The definition's mode.
  * @param {!Array.<Channel>} remainingChannels All channels that haven't been processed already.
  */
-function addPositionFunctions(xmlParent, mode, remainingChannels) {
+function addPosition(xmlParent, mode, remainingChannels) {
   const panChannel = remainingChannels.find(ch => ch.type === 'Pan');
   const tiltChannel = remainingChannels.find(ch => ch.type === 'Tilt');
 
   if (panChannel !== undefined && tiltChannel !== undefined) {
     const xmlPosition = xmlParent.element('position');
 
-    addPanTiltFunction(xmlPosition, mode, panChannel);
-    addPanTiltFunction(xmlPosition, mode, tiltChannel);
+    addPanTilt(xmlPosition, mode, panChannel);
+    addPanTilt(xmlPosition, mode, tiltChannel);
   }
   else if ((panChannel || tiltChannel) !== undefined) {
     // at least only Pan or only Tilt is specified
-    addPanTiltFunction(xmlParent, mode, (panChannel || tiltChannel));
+    addPanTilt(xmlParent, mode, (panChannel || tiltChannel));
   }
 
   removeFromArray(remainingChannels, panChannel);
@@ -377,7 +377,7 @@ function addPositionFunctions(xmlParent, mode, remainingChannels) {
  * @param {!Mode} mode The definition's mode.
  * @param {!Channel} channel The channel of type Pan or Tilt to use.
  */
-function addPanTiltFunction(xmlParent, mode, channel) {
+function addPanTilt(xmlParent, mode, channel) {
   const isPan = channel.type === 'Pan';
 
   const xmlFunc = xmlParent.element(isPan ? 'pan' : 'tilt');
