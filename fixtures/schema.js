@@ -247,8 +247,7 @@ const Manufacturers = schema({
 module.exports.Fixture = Fixture;
 module.exports.Manufacturers = Manufacturers;
 
-/* eslint-disable key-spacing */
-/* eslint-disable no-multi-spaces */
+/* eslint-disable key-spacing, no-multi-spaces */
 const properties = {
   manufacturer:            Manufacturers.toJSON().additionalProperties.properties,
   fixture:                 Fixture.toJSON().properties,
@@ -272,7 +271,6 @@ properties.bulb         = properties.physical.bulb.properties;
 properties.lens         = properties.physical.lens.properties;
 properties.focus        = properties.physical.focus.properties;
 properties.matrixPixels = properties.physical.matrixPixels.properties;
-/* eslint-enable key-spacing */
-/* eslint-enable no-multi-spaces */
+/* eslint-enable key-spacing, no-multi-spaces */
 
 module.exports.properties = properties;

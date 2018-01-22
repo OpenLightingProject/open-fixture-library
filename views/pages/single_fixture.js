@@ -415,7 +415,7 @@ function handleMatrixStructure() {
       for (const pixelKey of row) {
         const pixelGroups = fixture.matrix.pixelGroups;
         const pixelGroupKeys = fixture.matrix.pixelGroupKeys.filter(
-          key => pixelGroups[key] === false
+          key => pixelGroups[key].includes(pixelKey)
         );
         str += `<div class="pixel" style="${pixelSizing}" data-pixel-groups='${JSON.stringify(pixelGroupKeys)}'>${htmlEscape(pixelKey || ``)}</div>`;
       }
