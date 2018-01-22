@@ -1,4 +1,4 @@
-const schema = require('js-schema');
+const schema = require(`js-schema`);
 
 /**
  * Everytime we update the schema, this version needs to be incremented using semantic versionsing.
@@ -12,7 +12,7 @@ const schema = require('js-schema');
  *
  * @type {string}
  */
-module.exports.VERSION = '4.0.0';
+module.exports.VERSION = `4.0.0`;
 
 /**
  * see https://github.com/molnarg/js-schema
@@ -43,13 +43,13 @@ const Color = schema(/^#[0-9a-f]{6}$/);
 
 const DimensionsXYZ = Array.of(3, Number.min(0));
 
-const Category = schema(['Blinder', 'Color Changer', 'Dimmer', 'Effect', 'Fan', 'Flower', 'Hazer', 'Laser', 'Matrix', 'Moving Head', 'Scanner', 'Smoke', 'Strobe', 'Other']);
+const Category = schema([`Blinder`, `Color Changer`, `Dimmer`, `Effect`, `Fan`, `Flower`, `Hazer`, `Laser`, `Matrix`, `Moving Head`, `Scanner`, `Smoke`, `Strobe`, `Other`]);
 
 const Physical = schema({
   '?dimensions': DimensionsXYZ, // width, height, depth (in mm)
   '?weight': Number.above(0), // in kg
   '?power': Number.above(0), // in W
-  '?DMXconnector': ['3-pin', '5-pin', '3-pin (swapped +/-)', '3-pin and 5-pin', '3-pin XLR IP65', '3.5mm stereo jack'], // additions are welcome
+  '?DMXconnector': [`3-pin`, `5-pin`, `3-pin (swapped +/-)`, `3-pin and 5-pin`, `3-pin XLR IP65`, `3.5mm stereo jack`], // additions are welcome
   '?bulb': {
     '?type': NonEmptyString, // e.g. 'LED'
     '?colorTemperature': Number.above(0), // in K
@@ -62,7 +62,7 @@ const Physical = schema({
     '*': Function
   },
   '?focus': {
-    '?type': ['Fixed', 'Head', 'Mirror', 'Barrel'], // additions are welcome
+    '?type': [`Fixed`, `Head`, `Mirror`, `Barrel`], // additions are welcome
     '?panMax': Number.min(0), // in degrees
     '?tiltMax': Number.min(0), // in degrees
     '*': Function
@@ -93,10 +93,10 @@ const Matrix = schema({
   '*': Function
 });
 
-const DMXValue = Number.min(0).step(1);  // max value depends on how many fine channels there are (255 if none, 65535 if one, etc.)
+const DMXValue = Number.min(0).step(1); // max value depends on how many fine channels there are (255 if none, 65535 if one, etc.)
 
-const ChannelKey = NoVariablesString;  // channels in availableChannels
-const ChannelAliasKey = NoVariablesString;  // channel keys that are only defined inside other channels
+const ChannelKey = NoVariablesString; // channels in availableChannels
+const ChannelAliasKey = NoVariablesString; // channel keys that are only defined inside other channels
 
 const TemplateChannelKey = schema(/\$pixelKey/);
 const TemplateChannelAliasKey = schema(/\$pixelKey/);
@@ -104,7 +104,7 @@ const TemplateChannelAliasKey = schema(/\$pixelKey/);
 const Capability = schema({
   'range': Array.of(2, DMXValue),
   'name': NonEmptyString,
-  '?menuClick': ['start', 'center', 'end', 'hidden'],
+  '?menuClick': [`start`, `center`, `end`, `hidden`],
   '?color': Color,
   '?color2': Color,
   '?image': NonEmptyString,
@@ -120,30 +120,30 @@ const Capability = schema({
 });
 
 const ChannelType = schema([
-  'Intensity',
-  'Single Color',
-  'Multi-Color',
-  'Pan',
-  'Tilt',
-  'Focus',
-  'Zoom',
-  'Iris',
-  'Gobo',
-  'Prism',
-  'Shutter',
-  'Strobe',
-  'Speed',
-  'Color Temperature',
-  'Effect',
-  'Fog',
-  'Maintenance',
-  'Nothing'
+  `Intensity`,
+  `Single Color`,
+  `Multi-Color`,
+  `Pan`,
+  `Tilt`,
+  `Focus`,
+  `Zoom`,
+  `Iris`,
+  `Gobo`,
+  `Prism`,
+  `Shutter`,
+  `Strobe`,
+  `Speed`,
+  `Color Temperature`,
+  `Effect`,
+  `Fog`,
+  `Maintenance`,
+  `Nothing`
 ]);
 
 const Channel = schema({
   '?name': NonEmptyString, // if not set: use channel key
   'type': ChannelType,
-  '?color': ['Red', 'Green', 'Blue', 'Cyan', 'Magenta', 'Yellow', 'Amber', 'White', 'UV', 'Lime', 'Indigo'], // required and only allowed for Single Color
+  '?color': [`Red`, `Green`, `Blue`, `Cyan`, `Magenta`, `Yellow`, `Amber`, `White`, `UV`, `Lime`, `Indigo`], // required and only allowed for Single Color
   '?fineChannelAliases': Array.of(1, Infinity, [
     ChannelAliasKey,
     TemplateChannelAliasKey // only in template channels
@@ -153,7 +153,7 @@ const Channel = schema({
   '?invert': Boolean,
   '?constant': Boolean,
   '?crossfade': Boolean,
-  '?precedence': ['LTP', 'HTP'],
+  '?precedence': [`LTP`, `HTP`],
   '?capabilities': Array.of(1, Infinity, Capability),
   '*': Function
 });
@@ -171,19 +171,19 @@ const ChannelReference = [
   ChannelKey, // normal channel keys and resolved template channel keys
   ChannelAliasKey, // fine or switching channel keys
   {
-    'insert': 'matrixChannels',
+    'insert': `matrixChannels`,
     'repeatFor': [
-      'eachPixelABC',
-      'eachPixelXYZ',
-      'eachPixelXZY',
-      'eachPixelYXZ',
-      'eachPixelYZX',
-      'eachPixelZXY',
-      'eachPixelZYX',
-      'eachPixelGroup',
+      `eachPixelABC`,
+      `eachPixelXYZ`,
+      `eachPixelXZY`,
+      `eachPixelYXZ`,
+      `eachPixelYZX`,
+      `eachPixelZXY`,
+      `eachPixelZYX`,
+      `eachPixelGroup`,
       Array.of(1, Infinity, [PixelKey, PixelGroupKey])
     ],
-    'channelOrder': ['perPixel', 'perChannel'],
+    'channelOrder': [`perPixel`, `perChannel`],
     'templateChannels': Array.of(1, Infinity, TemplateChannelReference),
     '*': Function
   }
@@ -247,7 +247,7 @@ const Manufacturers = schema({
 module.exports.Fixture = Fixture;
 module.exports.Manufacturers = Manufacturers;
 
-/* eslint-disable key-spacing */
+/* eslint-disable key-spacing, no-multi-spaces */
 const properties = {
   manufacturer:            Manufacturers.toJSON().additionalProperties.properties,
   fixture:                 Fixture.toJSON().properties,
@@ -271,6 +271,6 @@ properties.bulb         = properties.physical.bulb.properties;
 properties.lens         = properties.physical.lens.properties;
 properties.focus        = properties.physical.focus.properties;
 properties.matrixPixels = properties.physical.matrixPixels.properties;
-/* eslint-enable key-spacing */
+/* eslint-enable key-spacing, no-multi-spaces */
 
 module.exports.properties = properties;

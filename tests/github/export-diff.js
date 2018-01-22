@@ -1,14 +1,14 @@
 #!/usr/bin/node
 
-const path = require('path');
+const path = require(`path`);
 
-const diffPluginOutputs = require('../../lib/diff-plugin-outputs.js');
-const exportPlugins = Object.keys(require('../../plugins/plugins.js').export).filter(pluginKey => pluginKey !== 'ofl'); // there's no use diffing the source
-const pullRequest = require('./pull-request.js');
+const diffPluginOutputs = require(`../../lib/diff-plugin-outputs.js`);
+const exportPlugins = Object.keys(require(`../../plugins/plugins.js`).export).filter(pluginKey => pluginKey !== `ofl`); // there's no use diffing the source
+const pullRequest = require(`./pull-request.js`);
 
-require('../../lib/load-env-file.js');
+require(`../../lib/load-env-file.js`);
 
-const testFixtures = require('../test-fixtures.json').map(
+const testFixtures = require(`../test-fixtures.json`).map(
   fixture => `${fixture.man}/${fixture.key}`
 );
 
@@ -42,15 +42,15 @@ pullRequest.checkEnv()
 
     if (lines.length > 0) {
       lines = [
-        'You can run view your uncommited changes in plugin exports manually by executing:',
-        '`$ node cli/diff-plugin-outputs.js -p <plugin name> <fixtures>`',
-        ''
+        `You can run view your uncommited changes in plugin exports manually by executing:`,
+        `\`$ node cli/diff-plugin-outputs.js -p <plugin name> <fixtures>\``,
+        ``
       ].concat(lines);
     }
 
     return pullRequest.updateComment({
-      filename: path.relative(path.join(__dirname, '../../'), __filename),
-      name: 'Plugin export diff',
+      filename: path.relative(path.join(__dirname, `../../`), __filename),
+      name: `Plugin export diff`,
       lines: lines
     });
   })
@@ -62,8 +62,8 @@ pullRequest.checkEnv()
 function getModelMessage(plugins, fixtures) {
   let lines = [];
 
-  lines.push('## Model modified in this PR');
-  lines.push('As the model affects all plugins, the output of all plugins is checked.', '');
+  lines.push(`## Model modified in this PR`);
+  lines.push(`As the model affects all plugins, the output of all plugins is checked.`, ``);
   lines = lines.concat(pullRequest.getTestFixturesMessage(fixtures));
 
   for (const plugin of plugins) {
@@ -85,7 +85,7 @@ function getPluginMessage(plugin, fixtures) {
     lines.push(`## :warning: Plugin \`${plugin}\` modified in this PR`);
   }
   lines = lines.concat(pullRequest.getTestFixturesMessage(fixtures));
-  lines = lines.concat(diffMessage, '');
+  lines = lines.concat(diffMessage, ``);
 
   return lines;
 }
@@ -94,7 +94,7 @@ function getFixtureMessage(plugins, fixture) {
   let lines = [];
 
   lines.push(`## Fixture \`${fixture}\` modified in this PR`);
-  lines.push('Fixture output to all plugins is checked.', '');
+  lines.push(`Fixture output to all plugins is checked.`, ``);
 
   for (const plugin of plugins) {
     lines = lines.concat(getSubPluginMessage(plugin, [fixture]));
@@ -114,7 +114,7 @@ function getSubPluginMessage(plugin, fixtures) {
   else {
     lines.push(`### :warning: Plugin \`${plugin}\``);
   }
-  lines = lines.concat(diffMessage, '');
+  lines = lines.concat(diffMessage, ``);
 
   return lines;
 }
@@ -129,26 +129,26 @@ function getDiffMessage(plugin, fixtures) {
   const hasChanged = Object.keys(output.changedFiles).length > 0;
 
   if (!hasRemoved && !hasAdded && !hasChanged) {
-    lines.push('Outputted files not changed.');
+    lines.push(`Outputted files not changed.`);
   }
 
   if (hasRemoved) {
-    lines.push('*Removed files*');
-    lines = lines.concat(output.removedFiles.map(file => `- ${file}`), '');
+    lines.push(`*Removed files*`);
+    lines = lines.concat(output.removedFiles.map(file => `- ${file}`), ``);
   }
 
   if (hasAdded) {
-    lines.push('*Added files*');
-    lines = lines.concat(output.addedFiles.map(file => `- ${file}`), '');
+    lines.push(`*Added files*`);
+    lines = lines.concat(output.addedFiles.map(file => `- ${file}`), ``);
   }
 
   for (const file of Object.keys(output.changedFiles)) {
-    lines.push('<details>');
-    lines.push(`<summary><b>Changed outputted file <code>${file}</code></b></summary>`, '');
-    lines.push('```diff');
+    lines.push(`<details>`);
+    lines.push(`<summary><b>Changed outputted file <code>${file}</code></b></summary>`, ``);
+    lines.push(`\`\`\`diff`);
     lines.push(output.changedFiles[file]);
-    lines.push('```');
-    lines.push('</details>');
+    lines.push(`\`\`\``);
+    lines.push(`</details>`);
   }
 
   return lines;

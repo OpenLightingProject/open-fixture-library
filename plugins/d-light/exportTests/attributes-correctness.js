@@ -1,4 +1,4 @@
-const xml2js = require('xml2js');
+const xml2js = require(`xml2js`);
 
 /**
  * @param {object} exportFile The file returned by the plugins' export module.

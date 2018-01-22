@@ -1,9 +1,9 @@
-const svg = require('./svg.js');
+const svg = require(`./svg.js`);
 
-require('../../lib/load-env-file.js');
+require(`../../lib/load-env-file.js`);
 
 module.exports = function(options) {
-  const indentation = process.env.NODE_ENV === 'production' ? 0 : 2;
+  const indentation = process.env.NODE_ENV === `production` ? 0 : 2;
   const structuredData = options.structuredDataItems.map(
     data => `<script type="application/ld+json">${JSON.stringify(data, null, indentation)}</script>`
   );
@@ -14,8 +14,8 @@ module.exports = function(options) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">`;
 
-  if (process.env.ALLOW_SEARCH_INDEXING !== 'allowed') {
-    str += '<meta name="robots" content="noindex, nofollow, none, noodp, noarchive, nosnippet, noimageindex, noydir, nocache">';
+  if (process.env.ALLOW_SEARCH_INDEXING !== `allowed`) {
+    str += `<meta name="robots" content="noindex, nofollow, none, noodp, noarchive, nosnippet, noimageindex, noydir, nocache">`;
   }
 
   str += `<title>${options.title}</title>
@@ -26,7 +26,7 @@ module.exports = function(options) {
   <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#64b5f6">
   <script type="text/javascript" src="/js/main.js" async></script>
-  ${structuredData.join('\n  ')}
+  ${structuredData.join(`\n  `)}
 </head>
 <body>
   <a href="#content" class="accessibility">Skip to content</a>
@@ -37,11 +37,11 @@ module.exports = function(options) {
 
         <form action="/search">
           <div>
-            <input type="search" name="q" placeholder="Search fixtures" aria-label="Search fixtures" value="${options.searchQueryEscaped || ''}" />
+            <input type="search" name="q" placeholder="Search fixtures" aria-label="Search fixtures" value="${options.searchQueryEscaped || ``}" />
           </div>
           <button type="submit">
             Search
-            ${svg.getSvg('magnify')}
+            ${svg.getSvg(`magnify`)}
           </button>
         </form>
       </div>
