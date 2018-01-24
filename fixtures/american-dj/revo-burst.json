@@ -41,29 +41,48 @@
       "capabilities": [
         {
           "range": [0, 119],
-          "name": "Pattern"
+          "name": "Pattern",
+          "switchChannels": {
+            "Strobe / Chase Speed": "Pattern Strobe Speed"
+          }
         },
         {
           "range": [120, 239],
-          "name": "Chaser"
+          "name": "Chase",
+          "switchChannels": {
+            "Strobe / Chase Speed": "Chase Speed"
+          }
         },
         {
           "range": [240, 255],
-          "name": "Sound active"
+          "name": "Sound active",
+          "switchChannels": {
+            "Strobe / Chase Speed": "Pattern Strobe Speed"
+          }
         }
       ]
     },
-    "Strobe / Chase Speed": {
+    "Pattern Strobe Speed": {
       "type": "Speed",
       "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 9],
-          "name": "Strobe off, slow chase speed"
+          "name": "Strobe off"
         },
         {
           "range": [10, 255],
-          "name": "Strobe / Chase slow - fast"
+          "name": "Strobe slow - fast"
+        }
+      ]
+    },
+    "Chase Speed": {
+      "type": "Speed",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Chase slow - fast"
         }
       ]
     },
