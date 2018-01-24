@@ -20,6 +20,20 @@
       "type": "Fixed"
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [    null, null, "Beam 1", null,     null],
+        ["Beam 2", null,     null, null, "Beam 3"],
+        [    null, null, "Beam 4", null,     null],
+        ["Beam 5", null,     null, null, "Beam 6"],
+        [    null, null, "Beam 7", null,     null]
+      ]
+    ],
+    "pixelGroups": {
+      "All Beams": ["Beam 1", "Beam 2", "Beam 3", "Beam 4", "Beam 5", "Beam 6", "Beam 7"]
+    }
+  },
   "availableChannels": {
     "Mode": {
       "type": "Effect",
@@ -39,7 +53,28 @@
         }
       ]
     },
-    "Pattern / Chase": {
+    "Strobe / Chase Speed": {
+      "type": "Speed",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Strobe off, slow chase speed"
+        },
+        {
+          "range": [10, 255],
+          "name": "Strobe / Chase slow - fast"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "defaultValue": 0,
+      "highlightValue": 255
+    }
+  },
+  "templateChannels": {
+    "Pattern / Chase $pixelKey": {
       "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
@@ -108,25 +143,6 @@
           "name": "Pattern / Chase 15"
         }
       ]
-    },
-    "Strobe / Chase Speed": {
-      "type": "Speed",
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "range": [0, 9],
-          "name": "Strobe off, slow chase speed"
-        },
-        {
-          "range": [10, 255],
-          "name": "Strobe / Chase slow - fast"
-        }
-      ]
-    },
-    "Dimmer": {
-      "type": "Intensity",
-      "defaultValue": 0,
-      "highlightValue": 255
     }
   },
   "modes": [
@@ -135,7 +151,24 @@
       "shortName": "4ch",
       "channels": [
         "Mode",
-        "Pattern / Chase",
+        "Pattern / Chase All Beams",
+        "Strobe / Chase Speed",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Mode",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Pattern / Chase $pixelKey"
+          ]
+        },
         "Strobe / Chase Speed",
         "Dimmer"
       ]
