@@ -49,8 +49,8 @@ We always aim to have clear, readable code. So please try to respect these princ
 * Use [self-describing variable names](http://wiki.c2.com/?GoodVariableNames) and prefer constant variables over literal values without explanation
 * Use new [ES2015 (ES6)](https://babeljs.io/learn-es2015/) features that improve code readability, for example:
   - Use [const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) where possible, [let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) in all other cases
-  - Prefer [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) (like in [`array.map(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)) over loops where it makes 
-  - Use [template strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) (``const str = `My name is ${name}`;``) instead of string concatenation (`const str = 'My name is ' + name;`)
+  - Prefer [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) (like in [`array.map(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)) over loops where it makes sense
+  - Always use [template strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) (backticks instead of single or double quotes: ``const str = `My name is ${name}.`;``) as [they are strictly better strings](https://ponyfoo.com/articles/template-literals-strictly-better-strings) and make string concatenation (`const str = 'My name is ' + name + '.';`) more readable
   - ⚠️ Only use these features in backend code; client-side browser scripts must respect browser compatibility
 * Try to make a piece of code not too complex. That is, if a function contains lots of ifs and for-loops, extract some parts into helper functions. (For example, the `checkFixture()` function calls `checkPhysical()` and `checkChannels()`, `checkChannel()` calls `checkCapabilities()`, etc.)
 
