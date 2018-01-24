@@ -1,0 +1,144 @@
+{
+  "name": "Revo Burst",
+  "shortName": "ADJRevoBurst",
+  "categories": ["Flower", "Effect"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2018-01-24",
+    "lastModifyDate": "2018-01-24"
+  },
+  "manualURL": "http://adjmedia.s3-website-eu-west-1.amazonaws.com/manuals/Revo%20Burst%20LO.pdf",
+  "physical": {
+    "dimensions": [216, 239, 312],
+    "weight": 3.2,
+    "power": 20,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "RGBW LEDs"
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Mode": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 119],
+          "name": "Pattern"
+        },
+        {
+          "range": [120, 239],
+          "name": "Chaser"
+        },
+        {
+          "range": [240, 255],
+          "name": "Sound active"
+        }
+      ]
+    },
+    "Pattern / Chase": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "Blackout"
+        },
+        {
+          "range": [16, 31],
+          "name": "Pattern / Chase 1"
+        },
+        {
+          "range": [32, 47],
+          "name": "Pattern / Chase 2"
+        },
+        {
+          "range": [48, 63],
+          "name": "Pattern / Chase 3"
+        },
+        {
+          "range": [64, 79],
+          "name": "Pattern / Chase 4"
+        },
+        {
+          "range": [80, 95],
+          "name": "Pattern / Chase 5"
+        },
+        {
+          "range": [96, 111],
+          "name": "Pattern / Chase 6"
+        },
+        {
+          "range": [112, 127],
+          "name": "Pattern / Chase 7"
+        },
+        {
+          "range": [128, 143],
+          "name": "Pattern / Chase 8"
+        },
+        {
+          "range": [144, 159],
+          "name": "Pattern / Chase 9"
+        },
+        {
+          "range": [160, 175],
+          "name": "Pattern / Chase 10"
+        },
+        {
+          "range": [176, 191],
+          "name": "Pattern / Chase 11"
+        },
+        {
+          "range": [192, 207],
+          "name": "Pattern / Chase 12"
+        },
+        {
+          "range": [208, 223],
+          "name": "Pattern / Chase 13"
+        },
+        {
+          "range": [224, 239],
+          "name": "Pattern / Chase 14"
+        },
+        {
+          "range": [240, 255],
+          "name": "Pattern / Chase 15"
+        }
+      ]
+    },
+    "Strobe / Chase Speed": {
+      "type": "Speed",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Strobe off, slow chase speed"
+        },
+        {
+          "range": [10, 255],
+          "name": "Strobe / Chase slow - fast"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "defaultValue": 0,
+      "highlightValue": 255
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Mode",
+        "Pattern / Chase",
+        "Strobe / Chase Speed",
+        "Dimmer"
+      ]
+    }
+  ]
+}
