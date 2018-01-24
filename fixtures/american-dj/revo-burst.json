@@ -43,7 +43,7 @@
           "range": [0, 119],
           "name": "Pattern",
           "switchChannels": {
-            "Strobe / Chase Speed": "Pattern Strobe Speed"
+            "Strobe / Chase Speed": "Pattern Strobe"
           }
         },
         {
@@ -57,13 +57,13 @@
           "range": [240, 255],
           "name": "Sound active",
           "switchChannels": {
-            "Strobe / Chase Speed": "Pattern Strobe Speed"
+            "Strobe / Chase Speed": "Pattern Strobe"
           }
         }
       ]
     },
-    "Pattern Strobe Speed": {
-      "type": "Speed",
+    "Pattern Strobe": {
+      "type": "Strobe",
       "defaultValue": 0,
       "capabilities": [
         {
