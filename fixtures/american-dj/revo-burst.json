@@ -1,0 +1,196 @@
+{
+  "name": "Revo Burst",
+  "shortName": "ADJRevoBurst",
+  "categories": ["Flower", "Effect"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2018-01-24",
+    "lastModifyDate": "2018-01-24"
+  },
+  "manualURL": "http://adjmedia.s3-website-eu-west-1.amazonaws.com/manuals/Revo%20Burst%20LO.pdf",
+  "physical": {
+    "dimensions": [216, 239, 312],
+    "weight": 3.2,
+    "power": 20,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "RGBW LEDs"
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [    null, null, "Beam 1", null,     null],
+        ["Beam 2", null,     null, null, "Beam 3"],
+        [    null, null, "Beam 4", null,     null],
+        ["Beam 5", null,     null, null, "Beam 6"],
+        [    null, null, "Beam 7", null,     null]
+      ]
+    ],
+    "pixelGroups": {
+      "All Beams": ["Beam 1", "Beam 2", "Beam 3", "Beam 4", "Beam 5", "Beam 6", "Beam 7"]
+    }
+  },
+  "availableChannels": {
+    "Mode": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 119],
+          "name": "Pattern",
+          "switchChannels": {
+            "Strobe / Chase Speed": "Pattern Strobe"
+          }
+        },
+        {
+          "range": [120, 239],
+          "name": "Chase",
+          "switchChannels": {
+            "Strobe / Chase Speed": "Chase Speed"
+          }
+        },
+        {
+          "range": [240, 255],
+          "name": "Sound active",
+          "switchChannels": {
+            "Strobe / Chase Speed": "Pattern Strobe"
+          }
+        }
+      ]
+    },
+    "Pattern Strobe": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Strobe off"
+        },
+        {
+          "range": [10, 255],
+          "name": "Strobe slow - fast"
+        }
+      ]
+    },
+    "Chase Speed": {
+      "type": "Speed",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Chase slow - fast"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "defaultValue": 0,
+      "highlightValue": 255
+    }
+  },
+  "templateChannels": {
+    "Pattern / Chase $pixelKey": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "Blackout"
+        },
+        {
+          "range": [16, 31],
+          "name": "Pattern / Chase 1"
+        },
+        {
+          "range": [32, 47],
+          "name": "Pattern / Chase 2"
+        },
+        {
+          "range": [48, 63],
+          "name": "Pattern / Chase 3"
+        },
+        {
+          "range": [64, 79],
+          "name": "Pattern / Chase 4"
+        },
+        {
+          "range": [80, 95],
+          "name": "Pattern / Chase 5"
+        },
+        {
+          "range": [96, 111],
+          "name": "Pattern / Chase 6"
+        },
+        {
+          "range": [112, 127],
+          "name": "Pattern / Chase 7"
+        },
+        {
+          "range": [128, 143],
+          "name": "Pattern / Chase 8"
+        },
+        {
+          "range": [144, 159],
+          "name": "Pattern / Chase 9"
+        },
+        {
+          "range": [160, 175],
+          "name": "Pattern / Chase 10"
+        },
+        {
+          "range": [176, 191],
+          "name": "Pattern / Chase 11"
+        },
+        {
+          "range": [192, 207],
+          "name": "Pattern / Chase 12"
+        },
+        {
+          "range": [208, 223],
+          "name": "Pattern / Chase 13"
+        },
+        {
+          "range": [224, 239],
+          "name": "Pattern / Chase 14"
+        },
+        {
+          "range": [240, 255],
+          "name": "Pattern / Chase 15"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Mode",
+        "Pattern / Chase All Beams",
+        "Strobe / Chase Speed",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Mode",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Pattern / Chase $pixelKey"
+          ]
+        },
+        "Strobe / Chase Speed",
+        "Dimmer"
+      ]
+    }
+  ]
+}
