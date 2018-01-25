@@ -444,6 +444,11 @@
       "name": "MH-100",
       "lastModifyDate": "2017-10-28",
       "lastAction": "created"
+    },
+    "venue/tristrip3z": {
+      "name": "TriStrip3Z",
+      "lastModifyDate": "2018-01-25",
+      "lastAction": "created"
     }
   },
   "manufacturers": {
@@ -589,6 +594,9 @@
     ],
     "stairville": [
       "mh-100"
+    ],
+    "venue": [
+      "tristrip3z"
     ]
   },
   "categories": {
@@ -675,7 +683,8 @@
       "showtec/led-light-bar-rgb-v3",
       "showtec/phantom-140-led-spot",
       "showtec/phantom-50-led-spot",
-      "stairville/mh-100"
+      "stairville/mh-100",
+      "venue/tristrip3z"
     ],
     "Dimmer": [
       "eurolite/led-sls-6-uv-floor",
@@ -683,7 +692,8 @@
     ],
     "Effect": [
       "american-dj/revo-burst",
-      "ayra/tdc-triple-burst"
+      "ayra/tdc-triple-burst",
+      "venue/tristrip3z"
     ],
     "Fan": [
       "gruft/ventilator"
@@ -827,7 +837,8 @@
       "showtec/kanjo-wash-rgb",
       "showtec/led-light-bar-rgb-v3",
       "showtec/phantom-140-led-spot",
-      "showtec/phantom-50-led-spot"
+      "showtec/phantom-50-led-spot",
+      "venue/tristrip3z"
     ],
     "Felix Edelmann": [
       "5star-systems/spica-250m",
@@ -963,6 +974,7 @@
     }
   },
   "lastUpdated": [
+    "venue/tristrip3z",
     "american-dj/revo-burst",
     "american-dj/auto-spot-150",
     "jb-lighting/varyscan-p7",
