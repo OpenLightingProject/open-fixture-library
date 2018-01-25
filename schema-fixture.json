@@ -21,6 +21,12 @@
       "type": "string",
       "minLength": 1
     },
+    "modeNameString": {
+      "allOf": [
+        { "$ref": "#/definitions/nonEmptyString" },
+        { "pattern": "^((?!mode)(?!Mode).)*$" }
+      ]
+    },
     "urlString": {
       "type": "string",
       "pattern": "^(ftp|http|https):\\/\\/[^ \"]+$"
@@ -90,6 +96,7 @@
         "authors": {
           "type": "array",
           "minItems": 1,
+          "uniqueItems": true,
           "items": { "$ref": "#/definitions/nonEmptyString" }
         },
         "createDate": { "$ref": "#/definitions/isoDateString" },
@@ -125,6 +132,7 @@
     },
     "physical": {
       "type": "object",
+      "minProperties": 1,
       "properties": {
         "dimensions": {
           "$ref": "#/definitions/dimensionsXYZ"
@@ -152,6 +160,7 @@
         },
         "bulb": {
           "type": "object",
+          "minProperties": 1,
           "properties": {
             "type": {
               "$comment": "e.g. 'LED'",
@@ -171,6 +180,7 @@
         },
         "lens": {
           "type": "object",
+          "minProperties": 1,
           "properties": {
             "name": {
               "$comment": "e.g. 'PC', 'Fresnel'",
@@ -191,6 +201,7 @@
         },
         "focus": {
           "type": "object",
+          "minProperties": 1,
           "properties": {
             "type": {
               "$comment": "additions are welcome",
@@ -267,6 +278,7 @@
           "additionalProperties": {
             "type": "array",
             "minItems": 1,
+            "uniqueItems": true,
             "items": {
               "$ref": "#/definitions/noVariablesString"
             }
@@ -333,6 +345,7 @@
           "fineChannelAliases": {
             "type": "array",
             "minItems": 1,
+            "uniqueItems": true,
             "items": {
               "oneOf": [
                 { "$ref": "#/definitions/noVariablesString" },
@@ -352,6 +365,7 @@
           "capabilities": {
             "type": "array",
             "minItems": 1,
+            "uniqueItems": true,
             "items": {
               "type": "object",
               "properties": {
@@ -390,24 +404,98 @@
                   }
                 }
               },
+              "dependencies": {
+                "color2": ["color"]
+              },
+              "not": {
+                "allOf": [
+                  { "required": ["color"] },
+                  { "required": ["image"] }
+                ]
+              },
               "required": ["range", "name"],
               "additionalProperties": false
             }
           }
         },
-        "if": {
-          "properties": { "type": { "enum": ["Single Color"] } }
-        },
-        "then": {
-          "required": ["type", "color"]
-        },
-        "else": {
-          "$comment": "color property is forbidden",
-          "oneOf": [
-            { "required": ["type"] },
-            { "required": ["type", "color"] }
-          ]
-        },
+        "required": ["type"],
+        "allOf": [
+          {
+            "if": {
+              "properties": { "type": { "enum": ["Single Color"] } }
+            },
+            "then": {
+              "required": ["type", "color"]
+            },
+            "else": {
+              "$comment": "color property is forbidden",
+              "oneOf": [
+                { "required": ["type"] },
+                { "required": ["type", "color"] }
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": { "type": { "enum": [ "Nothing" ] } }
+            },
+            "then": {
+              "oneOf": [
+                {
+                  "maxProperties": 1,
+                  "required": [ "type" ]
+                },
+                {
+                  "maxProperties": 2,
+                  "required": [ "name", "type" ]
+                }
+              ]
+            }
+          },
+          {
+            "if": {
+              "$comment": "one capability sets switchChannels",
+              "properties": {
+                "capabilities": {
+                  "contains": {
+                    "required": ["switchChannels"]
+                  }
+                }
+              },
+              "required": ["capabilities"]
+            },
+            "then": {
+              "$comment": "defaultValue must be set and all capabilities have to set switchChannels",
+              "required": ["defaultValue"],
+              "properties": {
+                "capabilities": {
+                  "items": {
+                    "required": ["switchChannels"]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "not": { "properties": { "type": { "enum": [ "Multi-Color", "Effect", "Gobo" ] } } }
+            },
+            "then": {
+              "$comment": "capabilities may not set color or image properties",
+              "properties": {
+                "capabilities": {
+                  "items": {
+                    "oneOf": [
+                      { "required": ["name"] },
+                      { "required": ["color"] },
+                      { "required": ["image"] }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ],
         "additionalProperties": false
       }
     },
@@ -426,8 +514,8 @@
       "items": {
         "type": "object",
         "properties": {
-          "name": { "$ref": "#/definitions/nonEmptyString" },
-          "shortName": { "$ref": "#/definitions/nonEmptyString" },
+          "name": { "$ref": "#/definitions/modeNameString" },
+          "shortName": { "$ref": "#/definitions/modeNameString" },
           "rdmPersonalityIndex": {
             "type": "integer",
             "minimum": 1
@@ -467,6 +555,7 @@
                         {
                           "type": "array",
                           "minItems": 1,
+                          "uniqueItems": true,
                           "items": {
                             "$comment": "pixel key or pixel group key",
                             "$ref": "#/definitions/noVariablesString"
@@ -504,7 +593,17 @@
       }
     }
   },
+  "dependencies": {
+    "matrix": ["templateChannels"],
+    "templateChannels": ["matrix"]
+  },
   "required": ["name", "categories", "meta", "modes"],
+  "if": {
+    "properties": { "modes": { "contains": { "required": ["rdmPersonalityIndex"] } } }
+  },
+  "then": {
+    "required": ["rdm"]
+  },
   "patternProperties": {
     "^\\$": {
       "$comment": "JSON schema properties are allowed",
