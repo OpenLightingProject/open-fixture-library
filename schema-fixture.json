@@ -421,6 +421,7 @@
         "required": ["type"],
         "allOf": [
           {
+            "$comment": "color property is required in Single Color channels, forbidden otherwise",
             "if": {
               "properties": { "type": { "enum": ["Single Color"] } }
             },
@@ -428,11 +429,7 @@
               "required": ["type", "color"]
             },
             "else": {
-              "$comment": "color property is forbidden",
-              "oneOf": [
-                { "required": ["type"] },
-                { "required": ["type", "color"] }
-              ]
+              "not": { "required": ["color"] }
             }
           },
           {
@@ -440,6 +437,7 @@
               "properties": { "type": { "enum": [ "Nothing" ] } }
             },
             "then": {
+              "$comment": "only type and name properties are allowed",
               "oneOf": [
                 {
                   "maxProperties": 1,
@@ -485,8 +483,8 @@
               "properties": {
                 "capabilities": {
                   "items": {
-                    "oneOf": [
-                      { "required": ["name"] },
+                    "not": {
+                      "anyOf": [
                       { "required": ["color"] },
                       { "required": ["image"] }
                     ]
@@ -494,6 +492,7 @@
                 }
               }
             }
+          }
           }
         ],
         "additionalProperties": false
@@ -535,6 +534,7 @@
                   "$ref": "#/definitions/noVariablesString"
                 },
                 {
+                  "$comment": "matrix channel insert block",
                   "type": "object",
                   "properties": {
                     "insert": { "enum": ["matrixChannels"] },
@@ -598,12 +598,22 @@
     "templateChannels": ["matrix"]
   },
   "required": ["name", "categories", "meta", "modes"],
+  "allOf": [
+    {
   "if": {
     "properties": { "modes": { "contains": { "required": ["rdmPersonalityIndex"] } } }
   },
   "then": {
     "required": ["rdm"]
+      }
   },
+    {
+      "anyOf": [
+        { "required": ["availableChannels"] },
+        { "required": ["templateChannels"] }
+      ]
+    }
+  ],
   "patternProperties": {
     "^\\$": {
       "$comment": "JSON schema properties are allowed",
