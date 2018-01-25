@@ -23,9 +23,9 @@ This document gives a high-level overview of the concepts used in the JSON forma
 
 ## Schema
 
-The [JS Schema](https://github.com/molnarg/js-schema) can be found in the [`schema.js`](../fixtures/schema.js) file. It is a declarative way to describe allowed properties and values. The [`fixtures-valid.js` test](../tests/fixtures-valid.js) automatically checks the fixtures against this schema and additionally tests things like the correct use of channel keys etc. programmatically.
+The [JSON Schema](http://json-schema.org/) can be found in the [`schema-fixture.json`](../schema-fixture.json) and [`schema-manufacturers.json`](../schema-manufacturers.json) files. It is a declarative way to describe allowed JSON properties and values. The [`fixtures-valid.js` test](../tests/fixtures-valid.js) automatically checks the fixtures against these schemas and additionally tests things like the correct use of channel keys etc. programmatically.
 
-The schema exports a property `VERSION`. Every time the schema is updated, this version needs to be incremented using [semantic versioning](http://semver.org).
+The schema files have a `version` property. Every time the schema is updated, this version needs to be incremented using [semantic versioning](http://semver.org) in both files.
 
 Given a version number MAJOR.MINOR.PATCH, increment the:
 1. MAJOR version when you make incompatible schema changes.  

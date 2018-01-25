@@ -1,5 +1,5 @@
 const svg = require(`../includes/svg.js`);
-const properties = require(`../../fixtures/schema.js`).properties;
+const properties = require(`../../lib/schema-properties.js`);
 
 module.exports = function(options) {
   options.title = `Fixture Editor - Open Fixture Library`;
@@ -127,7 +127,7 @@ module.exports = function(options) {
   str += `</label>`;
   str += `</section>`;
 
-  const fixtureCategories = JSON.stringify(properties.category.enum.map(
+  const fixtureCategories = JSON.stringify(properties.fixture.categories.enum.map(
     cat => ({
       name: cat,
       icon: svg.getCategoryIcon(cat)

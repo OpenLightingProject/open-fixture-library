@@ -155,7 +155,7 @@ function addFileToChangedData(changedData, filename) {
     return;
   }
 
-  if (segments[0] === `fixtures` && segments[1] === `schema.js`) {
+  if (segments[0] === `schema-fixture.json` || segments[0] === `schema-manufacturers.json`) {
     changedData.schema = true;
     return;
   }
@@ -244,7 +244,7 @@ module.exports.updateComment = function updateComment(test) {
 
 module.exports.getTestFixturesMessage = function getTestFixturesMessage(fixtures) {
   let lines = [];
-  lines.push(`Tested with the following [test fixtures](https://github.com/FloEdelmann/open-fixture-library/wiki/Test-fixtures) that provide a possibly wide variety of different fixture features:`);
+  lines.push(`Tested with the following [test fixtures](https://github.com/FloEdelmann/open-fixture-library/blob/master/docs/fixture-features.md) that constitute a minimal collection of test fixtures that cover all fixture features:`);
   lines = lines.concat(fixtures.map(fix => `- ${fix}`), ``);
   return lines;
 };
