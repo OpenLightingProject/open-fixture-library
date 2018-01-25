@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-manufacturers.json",
+
+  "version": "4.0.1",
+
+  "type": "object",
+  "propertyNames": {
+    "$comment": "manufacturer key",
+    "type": "string",
+    "pattern": "^[a-z0-9\\-]+$|^\\$"
+  },
+  "additionalProperties": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "pattern": "^[^\n]+$"
+      },
+      "comment": {
+        "type": "string",
+        "minLength": 1
+      },
+      "website": {
+        "type": "string",
+        "pattern": "^(ftp|http|https):\\/\\/[^ \"]+$"
+      },
+      "rdmId": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 65536
+      }
+    },
+    "required": ["name"],
+    "additionalProperties": false
+  },
+  "patternProperties": {
+    "^\\$": {
+      "$comment": "JSON schema properties are allowed",
+      "type": "string"
+    }
+  }
+}
