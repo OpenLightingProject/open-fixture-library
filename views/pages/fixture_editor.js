@@ -1,5 +1,5 @@
 const svg = require(`../includes/svg.js`);
-const properties = require(`../../fixtures/schema.js`).properties;
+const properties = require(`../../lib/schema-properties.js`);
 
 module.exports = function(options) {
   options.title = `Fixture Editor - Open Fixture Library`;
@@ -127,7 +127,7 @@ module.exports = function(options) {
   str += `</label>`;
   str += `</section>`;
 
-  const fixtureCategories = JSON.stringify(properties.category.enum.map(
+  const fixtureCategories = JSON.stringify(properties.fixture.categories.items.enum.map(
     cat => ({
       name: cat,
       icon: svg.getCategoryIcon(cat)
@@ -276,11 +276,11 @@ function getPhysicalTemplate() {
   str += `<section class="physical-dimensions validate-group">`;
   str += `<span class="label">Dimensions</span>`;
   str += `<span class="value">`;
-  str += numberInput(`value.dimensionsWidth`, properties.physical.dimensions.items, `width`, ` :required="dimensionRequired" ref="firstInput"`);
+  str += numberInput(`value.dimensionsWidth`, properties.dimensionsXYZ.items, `width`, ` :required="dimensionRequired" ref="firstInput"`);
   str += ` &times; `;
-  str += numberInput(`value.dimensionsHeight`, properties.physical.dimensions.items, `height`, ` :required="dimensionRequired"`);
+  str += numberInput(`value.dimensionsHeight`, properties.dimensionsXYZ.items, `height`, ` :required="dimensionRequired"`);
   str += ` &times; `;
-  str += numberInput(`value.dimensionsDepth`, properties.physical.dimensions.items, `depth`, ` :required="dimensionRequired"`);
+  str += numberInput(`value.dimensionsDepth`, properties.dimensionsXYZ.items, `depth`, ` :required="dimensionRequired"`);
   str += ` mm`;
   str += `<span class="error-message" hidden></span>`;
   str += `</span>`;
@@ -324,7 +324,7 @@ function getPhysicalTemplate() {
   str += `<label class="validate-group">`;
   str += `<span class="label">Bulb type</span>`;
   str += `<span class="value">`;
-  str += textInput(`value.bulb.type`, properties.bulb.type, `e.g. LED`);
+  str += textInput(`value.bulb.type`, properties.physicalBulb.type, `e.g. LED`);
   str += `<span class="error-message" hidden></span>`;
   str += `</span>`;
   str += `</label>`;
@@ -334,7 +334,7 @@ function getPhysicalTemplate() {
   str += `<label class="validate-group">`;
   str += `<span class="label">Color temperature</span>`;
   str += `<span class="value">`;
-  str += numberInput(`value.bulb.colorTemperature`, properties.bulb.colorTemperature);
+  str += numberInput(`value.bulb.colorTemperature`, properties.physicalBulb.colorTemperature);
   str += ` K`;
   str += `<span class="error-message" hidden></span>`;
   str += `</span>`;
@@ -345,7 +345,7 @@ function getPhysicalTemplate() {
   str += `<label class="validate-group">`;
   str += `<span class="label">Lumens</span>`;
   str += `<span class="value">`;
-  str += numberInput(`value.bulb.lumens`, properties.bulb.lumens);
+  str += numberInput(`value.bulb.lumens`, properties.physicalBulb.lumens);
   str += ` lm`;
   str += `<span class="error-message" hidden></span>`;
   str += `</span>`;
@@ -358,7 +358,7 @@ function getPhysicalTemplate() {
   str += `<label class="validate-group">`;
   str += `<span class="label">Lens name</span>`;
   str += `<span class="value">`;
-  str += textInput(`value.lens.name`, properties.lens.name);
+  str += textInput(`value.lens.name`, properties.physicalLens.name);
   str += `<span class="error-message" hidden></span>`;
   str += `</span>`;
   str += `</label>`;
@@ -367,9 +367,9 @@ function getPhysicalTemplate() {
   str += `<section class="physical-lens-degrees validate-group">`;
   str += `<span class="label">Light cone</span>`;
   str += `<span class="value">`;
-  str += numberInput(`value.lens.degreesMin`, properties.lens.degreesMinMax.items, `min`, ` :required="degreesRequired"`);
+  str += numberInput(`value.lens.degreesMin`, properties.physicalLens.degreesMinMax.items, `min`, ` :required="degreesRequired"`);
   str += ` .. `;
-  str += numberInput(`value.lens.degreesMax`, properties.lens.degreesMinMax.items, `max`, ` :required="degreesRequired"`);
+  str += numberInput(`value.lens.degreesMax`, properties.physicalLens.degreesMinMax.items, `max`, ` :required="degreesRequired"`);
   str += ` °`;
   str += `<span class="error-message" hidden></span>`;
   str += `</span>`;
@@ -381,7 +381,7 @@ function getPhysicalTemplate() {
   str += `<label class="validate-group">`;
   str += `<span class="label">Focus type</span>`;
   str += `<span class="value">`;
-  str += selectInput(`value.focus.type`, properties.focus.type, `other focus type`);
+  str += selectInput(`value.focus.type`, properties.physicalFocus.type, `other focus type`);
   str += `<span class="error-message" hidden></span>`;
   str += `</span>`;
   str += `</label>`;
@@ -391,7 +391,7 @@ function getPhysicalTemplate() {
   str += `<label class="validate-group">`;
   str += `<span class="label">Pan maximum</span>`;
   str += `<span class="value">`;
-  str += numberInput(`value.focus.panMax`, properties.focus.panMax);
+  str += numberInput(`value.focus.panMax`, properties.physicalFocus.panMax);
   str += ` °`;
   str += `<span class="error-message" hidden></span>`;
   str += `</span>`;
@@ -402,7 +402,7 @@ function getPhysicalTemplate() {
   str += `<label class="validate-group">`;
   str += `<span class="label">Tilt maximum</span>`;
   str += `<span class="value">`;
-  str += numberInput(`value.focus.tiltMax`, properties.focus.tiltMax);
+  str += numberInput(`value.focus.tiltMax`, properties.physicalFocus.tiltMax);
   str += ` °`;
   str += `<span class="error-message" hidden></span>`;
   str += `</span>`;
