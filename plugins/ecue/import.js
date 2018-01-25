@@ -2,7 +2,7 @@ const colorNames = require(`color-names`);
 const xml2js = require(`xml2js`);
 
 module.exports.name = `e:cue`;
-module.exports.version = `0.3.0`;
+module.exports.version = `0.3.1`;
 
 module.exports.import = function importEcue(str, filename, resolve, reject) {
   const colors = {};
@@ -36,6 +36,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
         const manKey = manName.toLowerCase().replace(/[^a-z0-9-]+/g, `-`);
 
         out.manufacturers[manKey] = {
+          $schema: `https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json`,
           name: manName
         };
 
