@@ -244,7 +244,7 @@ module.exports.updateComment = function updateComment(test) {
 
 module.exports.getTestFixturesMessage = function getTestFixturesMessage(fixtures) {
   let lines = [];
-  lines.push(`Tested with the following [test fixtures](https://github.com/FloEdelmann/open-fixture-library/blob/master/docs/fixture-features.md) that constitute a minimal collection of test fixtures that cover all fixture features:`);
+  lines.push(`Tested with the following minimal collection of [test fixtures](https://github.com/FloEdelmann/open-fixture-library/blob/master/docs/fixture-features.md) that cover all fixture features:`);
   lines = lines.concat(fixtures.map(fix => `- ${fix}`), ``);
   return lines;
 };
