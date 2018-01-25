@@ -19,3 +19,12 @@ We use [Heroku](https://www.heroku.com/) (configurable with [`app.json`](../app.
 
 * The **master branch** is deployed to <https://open-fixture-library.herokuapp.com/>. It is refreshed with each commit to master, but only after the [Travis tests](testing.md) for the commits have passed.
 * Each **pull request** #xyz (e.g. [#223](https://github.com/FloEdelmann/open-fixture-library/pull/223)) is deployed to `https://open-fixture-library-pr-xyz.herokuapp.com/`. It is refreshed with each commit to the feature branch without waiting for any tests to pass.
+
+## Browser compatibility
+
+OFL supports recent versions of all major browsers, i.e.:
+
+- Firefox, Chrome, Edge, Safari, Opera: the 3 newest major releases each
+- Internet Explorer 11
+
+Have a look at [caniuse.com](https://caniuse.com) to see with which browser versions a JS, CSS or HTML feature works.
