@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
 
-  "version": "4.0.1",
+  "version": "5.0.0",
 
   "definitions": {
     "nonEmptyString": {
@@ -597,16 +597,16 @@
     "matrix": ["templateChannels"],
     "templateChannels": ["matrix"]
   },
-  "required": ["name", "categories", "meta", "modes"],
+  "required": ["$schema", "name", "categories", "meta", "modes"],
   "allOf": [
     {
-  "if": {
-    "properties": { "modes": { "contains": { "required": ["rdmPersonalityIndex"] } } }
-  },
-  "then": {
-    "required": ["rdm"]
+      "if": {
+        "properties": { "modes": { "contains": { "required": ["rdmPersonalityIndex"] } } }
+      },
+      "then": {
+        "required": ["rdm"]
       }
-  },
+    },
     {
       "anyOf": [
         { "required": ["availableChannels"] },
@@ -615,9 +615,8 @@
     }
   ],
   "patternProperties": {
-    "^\\$": {
-      "$comment": "JSON schema properties are allowed",
-      "type": "string"
+    "^\\$schema$": {
+      "enum": ["https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json"]
     }
   },
   "additionalProperties": false
