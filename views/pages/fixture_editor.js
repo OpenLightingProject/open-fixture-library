@@ -127,7 +127,7 @@ module.exports = function(options) {
   str += `</label>`;
   str += `</section>`;
 
-  const fixtureCategories = JSON.stringify(properties.fixture.categories.enum.map(
+  const fixtureCategories = JSON.stringify(properties.fixture.categories.items.enum.map(
     cat => ({
       name: cat,
       icon: svg.getCategoryIcon(cat)
