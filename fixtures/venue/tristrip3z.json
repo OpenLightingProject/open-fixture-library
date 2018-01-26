@@ -119,79 +119,136 @@
       "capabilities": [
         {
           "range": [0, 31],
-          "name": "No function"
+          "name": "No function",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Strobe"
+          }
         },
         {
           "range": [32, 63],
-          "name": "Pulse effect 0-100%"
+          "name": "Pulse effect 0-100%",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
         },
         {
           "range": [64, 95],
-          "name": "Pulse effect 100-0%"
+          "name": "Pulse effect 100-0%",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
         },
         {
           "range": [96, 114],
-          "name": "Pulse effect 100-0-100%"
+          "name": "Pulse effect 100-0-100%",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
         },
         {
           "range": [115, 122],
-          "name": "Auto program 1"
+          "name": "Auto program 1",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
         },
         {
           "range": [123, 130],
-          "name": "Auto program 2"
+          "name": "Auto program 2",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
         },
         {
           "range": [131, 138],
-          "name": "Auto program 3"
+          "name": "Auto program 3",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
         },
         {
           "range": [139, 146],
-          "name": "Auto program 4"
+          "name": "Auto program 4",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
         },
         {
           "range": [147, 154],
-          "name": "Auto program 5"
+          "name": "Auto program 5",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
         },
         {
           "range": [155, 162],
-          "name": "Auto program 6"
+          "name": "Auto program 6",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
         },
         {
           "range": [163, 170],
-          "name": "Auto program 7"
+          "name": "Auto program 7",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
         },
         {
           "range": [171, 178],
-          "name": "Auto program 8"
+          "name": "Auto program 8",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
         },
         {
           "range": [179, 186],
-          "name": "Auto program 9"
+          "name": "Auto program 9",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
         },
         {
           "range": [187, 194],
-          "name": "Auto program 10"
+          "name": "Auto program 10",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
         },
         {
           "range": [195, 202],
-          "name": "Auto program 11"
+          "name": "Auto program 11",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
         },
         {
           "range": [203, 210],
-          "name": "Auto program 12"
+          "name": "Auto program 12",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
         },
         {
           "range": [211, 218],
-          "name": "Auto program 13"
+          "name": "Auto program 13",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
         },
         {
           "range": [219, 226],
-          "name": "Auto program 14"
+          "name": "Auto program 14",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
         },
         {
           "range": [227, 255],
-          "name": "Sound program"
+          "name": "Sound program",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         }
       ]
     }
@@ -240,6 +297,7 @@
         "Green All Zones",
         "Blue All Zones",
         "Color Macros",
+        "Strobe / Speed / Sound Sensitivity",
         "RGB / Auto Mode",
         "Dimmer",
         "Dimmer Speed"
@@ -276,6 +334,7 @@
           ]
         },
         "Color Macros",
+        "Strobe / Speed / Sound Sensitivity",
         "RGB / Auto Mode",
         "Dimmer",
         "Dimmer Speed"
