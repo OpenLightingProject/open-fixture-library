@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2018-01-24",
-    "lastModifyDate": "2018-01-24"
+    "lastModifyDate": "2018-01-27"
   },
   "manualURL": "http://adjmedia.s3-website-eu-west-1.amazonaws.com/manuals/Revo%20Burst%20LO.pdf",
   "physical": {
@@ -24,11 +24,11 @@
   "matrix": {
     "pixelKeys": [
       [
+        [    null, null, "Beam 6", null,     null],
+        ["Beam 5", null,     null, null, "Beam 7"],
         [    null, null, "Beam 1", null,     null],
-        ["Beam 2", null,     null, null, "Beam 3"],
-        [    null, null, "Beam 4", null,     null],
-        ["Beam 5", null,     null, null, "Beam 6"],
-        [    null, null, "Beam 7", null,     null]
+        ["Beam 4", null,     null, null, "Beam 2"],
+        [    null, null, "Beam 3", null,     null]
       ]
     ],
     "pixelGroups": {
