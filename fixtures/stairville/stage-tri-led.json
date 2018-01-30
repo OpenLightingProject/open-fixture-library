@@ -7,12 +7,20 @@
     "createDate": "2018-01-30",
     "lastModifyDate": "2018-01-30"
   },
-  "manualURL": "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_238663_v2_r3_de_online.pdf#%5B%7B%22num%22%3A79%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2Cnull%2C350.07874%2Cnull%5D",
+  "manualURL": "https://images.thomann.de/pics/prod/238663_manual.pdf",
   "physical": {
+    "dimensions": [1200, 2400, 10],
+    "weight": 16,
     "power": 90,
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "4x 7x 3W RGB LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    },
+    "focus": {
+      "type": "Fixed"
     }
   },
   "availableChannels": {
@@ -40,31 +48,31 @@
         },
         {
           "range": [10, 19],
-          "name": "Pattern red"
+          "name": "Red"
         },
         {
           "range": [20, 29],
-          "name": "Pattern yellow"
+          "name": "Yellow"
         },
         {
           "range": [30, 39],
-          "name": "Pattern green"
+          "name": "Green"
         },
         {
           "range": [40, 49],
-          "name": "Pattern cyan"
+          "name": "Cyan"
         },
         {
           "range": [50, 59],
-          "name": "Pattern blue"
+          "name": "Blue"
         },
         {
           "range": [60, 69],
-          "name": "Pattern violet"
+          "name": "Violet"
         },
         {
           "range": [70, 79],
-          "name": "Pattern white"
+          "name": "White"
         },
         {
           "range": [80, 89],
@@ -112,23 +120,23 @@
         },
         {
           "range": [190, 199],
-          "name": "Off"
-        },
-        {
-          "range": [200, 209],
-          "name": "Pattern red"
-        },
-        {
-          "range": [210, 219],
           "name": "Program 12"
         },
         {
-          "range": [220, 229],
+          "range": [200, 209],
           "name": "Program 13"
         },
         {
-          "range": [230, 239],
+          "range": [210, 219],
           "name": "Program 14"
+        },
+        {
+          "range": [220, 229],
+          "name": "Program 15"
+        },
+        {
+          "range": [230, 239],
+          "name": "Program 16"
         },
         {
           "range": [240, 255],
@@ -136,7 +144,7 @@
         }
       ]
     },
-    "Speed / Sensitivity (music)": {
+    "Speed / Sound Sensitivity": {
       "type": "Speed"
     },
     "Strobe": {
@@ -186,7 +194,10 @@
       "type": "Single Color",
       "color": "Green"
     },
-    "Blue second segment": {},
+    "Blue second segment": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
     "Red third segment": {
       "type": "Single Color",
       "color": "Red"
@@ -212,6 +223,7 @@
       "color": "Blue"
     },
     "Mode": {
+      "type": "Effect",
       "capabilities": [
         {
           "range": [0, 9],
@@ -230,7 +242,8 @@
   },
   "modes": [
     {
-      "name": "3-Channel (R,G,B)",
+      "name": "RGB",
+      "shortName": "d-P1",
       "channels": [
         "Red",
         "Green",
@@ -238,7 +251,8 @@
       ]
     },
     {
-      "name": "4-Channel (R,G,B,Dimmer)",
+      "name": "RGBD",
+      "shortName": "d-P2",
       "channels": [
         "Red",
         "Green",
@@ -247,19 +261,21 @@
       ]
     },
     {
-      "name": "7-Channel",
+      "name": "Color Program",
+      "shortName": "d-P7",
       "channels": [
         "Red",
         "Green",
         "Blue",
         "Program",
-        "Speed / Sensitivity (music)",
+        "Speed / Sound Sensitivity",
         "Strobe",
         "Dimmer"
       ]
     },
     {
-      "name": "8-Channel",
+      "name": "Split",
+      "shortName": "d-P3",
       "channels": [
         "Red first 2 Segments",
         "Green first 2 Segments",
@@ -272,7 +288,8 @@
       ]
     },
     {
-      "name": "14-Channel",
+      "name": "Individual",
+      "shortName": "d-P4",
       "channels": [
         "Red first segment",
         "Green first segment",
@@ -291,7 +308,8 @@
       ]
     },
     {
-      "name": "15-Channel",
+      "name": "Complete",
+      "shortName": "d-P6",
       "channels": [
         "Mode",
         "Dimmer",
