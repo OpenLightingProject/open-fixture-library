@@ -1,0 +1,644 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "name": "Sharpy",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Massimo Callegari", "Flo Edelmann"],
+    "createDate": "2018-01-30",
+    "lastModifyDate": "2018-01-30",
+    "importPlugin": {
+      "plugin": "qlcplus",
+      "date": "2018-01-30",
+      "comment": "created by Q Light Controller Plus (version 4.7.5 GIT)"
+    }
+  },
+  "manualURL": "https://www.claypaky.it/media/documents/HR_Sharpy_Manual_05.2016_EN.pdf",
+  "physical": {
+    "dimensions": [405, 450, 330],
+    "weight": 19,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "MSD 200W",
+      "colorTemperature": 8000,
+      "lumens": 7950
+    },
+    "lens": {
+      "name": "Other",
+      "degreesMinMax": [0, 3.8]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 250
+    }
+  },
+  "availableChannels": {
+    "Color Wheel": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [5, 8],
+          "name": "White + Red",
+          "color": "#ffffff",
+          "color2": "#c41c1a"
+        },
+        {
+          "range": [9, 12],
+          "name": "Red",
+          "color": "#c41c1a"
+        },
+        {
+          "range": [13, 17],
+          "name": "Red + Orange",
+          "color": "#c41c1a",
+          "color2": "#ed8229"
+        },
+        {
+          "range": [18, 21],
+          "name": "Orange",
+          "color": "#ed8229"
+        },
+        {
+          "range": [22, 25],
+          "name": "Orange + Aquamarine",
+          "color": "#ed8229",
+          "color2": "#7abd82"
+        },
+        {
+          "range": [26, 29],
+          "name": "Aquamarine",
+          "color": "#7abd82"
+        },
+        {
+          "range": [30, 34],
+          "name": "Aquamarine + Green",
+          "color": "#7abd82",
+          "color2": "#05822b"
+        },
+        {
+          "range": [35, 38],
+          "name": "Green",
+          "color": "#05822b"
+        },
+        {
+          "range": [39, 42],
+          "name": "Green + Light Green",
+          "color": "#05822b",
+          "color2": "#9ec233"
+        },
+        {
+          "range": [43, 46],
+          "name": "Light Green",
+          "color": "#9ec233"
+        },
+        {
+          "range": [47, 51],
+          "name": "Light Green + Lavender",
+          "color": "#9ec233",
+          "color2": "#8f73ad"
+        },
+        {
+          "range": [52, 55],
+          "name": "Lavender",
+          "color": "#8f73ad"
+        },
+        {
+          "range": [56, 59],
+          "name": "Lavender + Pink",
+          "color": "#8f73ad",
+          "color2": "#ed8080"
+        },
+        {
+          "range": [60, 63],
+          "name": "Pink",
+          "color": "#ed8080"
+        },
+        {
+          "range": [64, 68],
+          "name": "Pink + Yellow",
+          "color": "#ed8080",
+          "color2": "#ffed00"
+        },
+        {
+          "range": [69, 72],
+          "name": "Yellow",
+          "color": "#ffed00"
+        },
+        {
+          "range": [73, 76],
+          "name": "Yellow + Magenta",
+          "color": "#ffed00",
+          "color2": "#e30082"
+        },
+        {
+          "range": [77, 81],
+          "name": "Magenta",
+          "color": "#e30082"
+        },
+        {
+          "range": [82, 85],
+          "name": "Magenta + Cyan",
+          "color": "#e30082",
+          "color2": "#00a6eb"
+        },
+        {
+          "range": [86, 89],
+          "name": "Cyan",
+          "color": "#00a6eb"
+        },
+        {
+          "range": [90, 93],
+          "name": "Cyan + CTO 260",
+          "color": "#00a6eb",
+          "color2": "#f5c745"
+        },
+        {
+          "range": [94, 98],
+          "name": "CTO 260",
+          "color": "#f5c745"
+        },
+        {
+          "range": [99, 102],
+          "name": "CTO 260 + CTO 190",
+          "color": "#f5c745",
+          "color2": "#f5d985"
+        },
+        {
+          "range": [103, 106],
+          "name": "CTO 190",
+          "color": "#f5d985"
+        },
+        {
+          "range": [107, 110],
+          "name": "CTO 190 + CTB 8000",
+          "color": "#f5d985",
+          "color2": "#96c7b8"
+        },
+        {
+          "range": [111, 115],
+          "name": "CTB 8000",
+          "color": "#96c7b8"
+        },
+        {
+          "range": [116, 119],
+          "name": "CTB 8000 + Blue",
+          "color": "#96c7b8",
+          "color2": "#004f99"
+        },
+        {
+          "range": [120, 123],
+          "name": "Blue",
+          "color": "#004f99"
+        },
+        {
+          "range": [124, 127],
+          "name": "Blue + White",
+          "color": "#004f99",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [128, 255],
+          "name": "Rotation 0.2rpm - 160rpm"
+        }
+      ]
+    },
+    "Stop / Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 3],
+          "name": "Closed"
+        },
+        {
+          "range": [4, 103],
+          "name": "Strobe 1Hz - 12Hz"
+        },
+        {
+          "range": [104, 107],
+          "name": "Open"
+        },
+        {
+          "range": [108, 207],
+          "name": "Pulsation 30rpm - 360rpm"
+        },
+        {
+          "range": [208, 212],
+          "name": "Open"
+        },
+        {
+          "range": [213, 225],
+          "name": "Random slow strobe"
+        },
+        {
+          "range": [226, 238],
+          "name": "Random medium strobe"
+        },
+        {
+          "range": [239, 251],
+          "name": "Random fast strobe"
+        },
+        {
+          "range": [252, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "crossfade": true
+    },
+    "Static Gobo Change": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 3],
+          "name": "White"
+        },
+        {
+          "range": [4, 7],
+          "name": "Gobo 1"
+        },
+        {
+          "range": [8, 11],
+          "name": "Gobo 2"
+        },
+        {
+          "range": [12, 15],
+          "name": "Gobo 3"
+        },
+        {
+          "range": [16, 19],
+          "name": "Gobo 4"
+        },
+        {
+          "range": [20, 23],
+          "name": "Gobo 5"
+        },
+        {
+          "range": [24, 27],
+          "name": "Gobo 6"
+        },
+        {
+          "range": [28, 31],
+          "name": "Gobo 7"
+        },
+        {
+          "range": [32, 35],
+          "name": "Gobo 8"
+        },
+        {
+          "range": [36, 39],
+          "name": "Gobo 9"
+        },
+        {
+          "range": [40, 43],
+          "name": "Gobo 10"
+        },
+        {
+          "range": [44, 47],
+          "name": "Gobo 11"
+        },
+        {
+          "range": [48, 51],
+          "name": "Gobo 12"
+        },
+        {
+          "range": [52, 55],
+          "name": "Gobo 13"
+        },
+        {
+          "range": [56, 59],
+          "name": "Gobo 14"
+        },
+        {
+          "range": [60, 63],
+          "name": "Gobo 15"
+        },
+        {
+          "range": [64, 67],
+          "name": "Gobo 16"
+        },
+        {
+          "range": [68, 71],
+          "name": "Gobo 17"
+        },
+        {
+          "range": [72, 113],
+          "name": "Rotation 60rpm - 5rpm"
+        },
+        {
+          "range": [114, 117],
+          "name": "Stop"
+        },
+        {
+          "range": [118, 159],
+          "name": "Rotation 5rpm - 60rpm"
+        },
+        {
+          "range": [160, 166],
+          "name": "Gobo 2 Shake slow - fast"
+        },
+        {
+          "range": [167, 172],
+          "name": "Gobo 3 Shake slow - fast"
+        },
+        {
+          "range": [173, 179],
+          "name": "Gobo 4 Shake slow - fast"
+        },
+        {
+          "range": [180, 185],
+          "name": "Gobo 5 Shake slow - fast"
+        },
+        {
+          "range": [186, 191],
+          "name": "Gobo 6 Shake slow - fast"
+        },
+        {
+          "range": [192, 198],
+          "name": "Gobo 7 Shake slow - fast"
+        },
+        {
+          "range": [199, 204],
+          "name": "Gobo 8 Shake slow - fast"
+        },
+        {
+          "range": [205, 211],
+          "name": "Gobo 9 Shake slow - fast"
+        },
+        {
+          "range": [212, 217],
+          "name": "Gobo 10 Shake slow - fast"
+        },
+        {
+          "range": [218, 223],
+          "name": "Gobo 11 Shake slow - fast"
+        },
+        {
+          "range": [224, 230],
+          "name": "Gobo 12 Shake slow - fast"
+        },
+        {
+          "range": [231, 236],
+          "name": "Gobo 13 Shake slow - fast"
+        },
+        {
+          "range": [237, 243],
+          "name": "Gobo 14 Shake slow - fast"
+        },
+        {
+          "range": [244, 249],
+          "name": "Gobo 15 Shake slow - fast"
+        },
+        {
+          "range": [250, 255],
+          "name": "Gobo 16 Shake 24bpm - 600bpm"
+        }
+      ]
+    },
+    "Prism Insertion": {
+      "type": "Prism",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Prism excluded"
+        },
+        {
+          "range": [128, 255],
+          "name": "Prism inserted"
+        }
+      ]
+    },
+    "Prism Rotation": {
+      "type": "Prism",
+      "capabilities": [
+        {
+          "range": [0, 20],
+          "name": "Position 0°"
+        },
+        {
+          "range": [21, 41],
+          "name": "Position 90°"
+        },
+        {
+          "range": [42, 62],
+          "name": "Position 180°"
+        },
+        {
+          "range": [63, 83],
+          "name": "Position 270°"
+        },
+        {
+          "range": [84, 104],
+          "name": "Position 360°"
+        },
+        {
+          "range": [105, 126],
+          "name": "Position 450°"
+        },
+        {
+          "range": [127, 127],
+          "name": "Position 540°"
+        },
+        {
+          "range": [128, 190],
+          "name": "Rotation 43rpm - 1.1rph"
+        },
+        {
+          "range": [191, 192],
+          "name": "Stop"
+        },
+        {
+          "range": [193, 255],
+          "name": "Rotation 1.1rph - 43rpm"
+        }
+      ]
+    },
+    "Effects Movement": {
+      "type": "Speed"
+    },
+    "Frost": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Frost excluded - inserted"
+        }
+      ]
+    },
+    "Focus": {
+      "type": "Focus",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Focus distant - near"
+        }
+      ]
+    },
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan Fine"]
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt Fine"]
+    },
+    "Function": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 11],
+          "name": "Unused"
+        },
+        {
+          "range": [12, 24],
+          "name": "Pan-Tilt Function (Fast - Default)"
+        },
+        {
+          "range": [25, 37],
+          "name": "Pan-Tilt Function (Normal)"
+        },
+        {
+          "range": [38, 50],
+          "name": "Dimmer Curve Function (Conventional)"
+        },
+        {
+          "range": [51, 62],
+          "name": "Dimmer Curve Function (Linear - Default)"
+        },
+        {
+          "range": [63, 255],
+          "name": "Unused"
+        }
+      ]
+    },
+    "Reset": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 25],
+          "name": "Unused"
+        },
+        {
+          "range": [26, 76],
+          "name": "Effects Reset"
+        },
+        {
+          "range": [77, 127],
+          "name": "Pan/Tilt Reset"
+        },
+        {
+          "range": [128, 255],
+          "name": "Complete Reset"
+        }
+      ]
+    },
+    "Lamp Control": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 25],
+          "name": "Unused"
+        },
+        {
+          "range": [26, 100],
+          "name": "Lamp OFF"
+        },
+        {
+          "range": [101, 255],
+          "name": "Lamp ON"
+        }
+      ]
+    },
+    "Pan/Tilt Time": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0s to 310s"
+        }
+      ]
+    },
+    "Color Wheel Time": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0s to 310s"
+        }
+      ]
+    },
+    "Beam Time": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0s to 310s (Dimmer, Frost, Prism)"
+        }
+      ]
+    },
+    "Gobo Time": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0s to 310s"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Color Wheel",
+        "Stop / Strobe",
+        "Dimmer",
+        "Static Gobo Change",
+        "Prism Insertion",
+        "Prism Rotation",
+        "Effects Movement",
+        "Frost",
+        "Focus",
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "Function",
+        "Reset",
+        "Lamp Control"
+      ]
+    },
+    {
+      "name": "Vector",
+      "channels": [
+        "Color Wheel",
+        "Stop / Strobe",
+        "Dimmer",
+        "Static Gobo Change",
+        "Prism Insertion",
+        "Prism Rotation",
+        "Effects Movement",
+        "Frost",
+        "Focus",
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "Function",
+        "Reset",
+        "Lamp Control",
+        "Pan/Tilt Time",
+        "Color Wheel Time",
+        "Beam Time",
+        "Gobo Time"
+      ]
+    }
+  ]
+}
