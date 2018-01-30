@@ -445,6 +445,11 @@
       "lastModifyDate": "2017-10-28",
       "lastAction": "created"
     },
+    "stairville/mh-x25": {
+      "name": "MH-X25",
+      "lastModifyDate": "2018-01-30",
+      "lastAction": "created"
+    },
     "venue/tristrip3z": {
       "name": "TriStrip3Z",
       "lastModifyDate": "2018-01-27",
@@ -593,7 +598,8 @@
       "phantom-50-led-spot"
     ],
     "stairville": [
-      "mh-100"
+      "mh-100",
+      "mh-x25"
     ],
     "venue": [
       "tristrip3z"
@@ -765,7 +771,8 @@
       "showtec/kanjo-wash-rgb",
       "showtec/phantom-140-led-spot",
       "showtec/phantom-50-led-spot",
-      "stairville/mh-100"
+      "stairville/mh-100",
+      "stairville/mh-x25"
     ],
     "Scanner": [
       "cameo/gobo-scanner-80",
@@ -917,6 +924,9 @@
     ],
     "fueller": [
       "prolights/diamond-19"
+    ],
+    "p_0g_8mm3_": [
+      "stairville/mh-x25"
     ]
   },
   "rdm": {
@@ -974,6 +984,7 @@
     }
   },
   "lastUpdated": [
+    "stairville/mh-x25",
     "american-dj/revo-burst",
     "venue/tristrip3z",
     "american-dj/auto-spot-150",
