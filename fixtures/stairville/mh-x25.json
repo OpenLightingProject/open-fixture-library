@@ -1,0 +1,463 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "name": "MH-X25",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["p_0g_8mm3_"],
+    "createDate": "2018-01-30",
+    "lastModifyDate": "2018-01-30"
+  },
+  "manualURL": "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_238185_v2_r2_de_online.pdf",
+  "physical": {
+    "weight": 8,
+    "power": 102,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "4x LED (all white)"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
+      "capabilities": [
+        {
+          "range": [0, 255]
+        }
+      ]
+    },
+    "Tilt": {
+      "type": "Tilt"
+    },
+    "Color": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [5, 9],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [10, 14],
+          "name": "Pink",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [15, 19],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [20, 24],
+          "name": "Peachblow"
+        },
+        {
+          "range": [25, 29],
+          "name": "Light Blue"
+        },
+        {
+          "range": [30, 34],
+          "name": "Yellow-Green"
+        },
+        {
+          "range": [35, 39],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [40, 44],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [45, 54],
+          "name": "White & Yellow",
+          "color": "#ffffff",
+          "color2": "#ffff00"
+        },
+        {
+          "range": [55, 64],
+          "name": "Yellow & Pink",
+          "color": "#ffff00",
+          "color2": "#ff00ff"
+        },
+        {
+          "range": [65, 73],
+          "name": "Pink & Green",
+          "color": "#ff00ff",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [74, 83],
+          "name": "Green & Peachblow",
+          "color": "#00ff00"
+        },
+        {
+          "range": [84, 92],
+          "name": "Peachblow & Light Blue"
+        },
+        {
+          "range": [93, 101],
+          "name": "Light Blue & Yellow-Green"
+        },
+        {
+          "range": [102, 110],
+          "name": "Yellow-Green & Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [111, 119],
+          "name": "Red & Blue",
+          "color": "#ff0000",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [120, 127],
+          "name": "Blue & White",
+          "color": "#0000ff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [128, 191],
+          "name": "Rainbow clockwise"
+        },
+        {
+          "range": [192, 255],
+          "name": "Rainbow counterclockwise"
+        }
+      ]
+    },
+    "Shutter": {
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 3],
+          "name": "Closed"
+        },
+        {
+          "range": [4, 7],
+          "name": "Open"
+        },
+        {
+          "range": [8, 215],
+          "name": "Strobe"
+        },
+        {
+          "range": [216, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Gobo": {
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Open"
+        },
+        {
+          "range": [8, 15],
+          "name": "Gobo 2"
+        },
+        {
+          "range": [16, 23],
+          "name": "Gobo 3"
+        },
+        {
+          "range": [24, 31],
+          "name": "Gobo 4"
+        },
+        {
+          "range": [32, 39],
+          "name": "Gobo 5"
+        },
+        {
+          "range": [40, 47],
+          "name": "Gobo 6"
+        },
+        {
+          "range": [48, 55],
+          "name": "Gobo 7"
+        },
+        {
+          "range": [56, 63],
+          "name": "Gobo 8"
+        },
+        {
+          "range": [64, 71],
+          "name": "Gobo 8 shake"
+        },
+        {
+          "range": [72, 79],
+          "name": "Gobo 7 shake"
+        },
+        {
+          "range": [80, 87],
+          "name": "Gobo 6 shake"
+        },
+        {
+          "range": [88, 95],
+          "name": "Gobo 5 shake"
+        },
+        {
+          "range": [96, 103],
+          "name": "Gobo 4 shake"
+        },
+        {
+          "range": [104, 111],
+          "name": "Gobo 3 shake"
+        },
+        {
+          "range": [112, 119],
+          "name": "Gobo 2 shake"
+        },
+        {
+          "range": [120, 127],
+          "name": "Open"
+        },
+        {
+          "range": [128, 191],
+          "name": "Rotate clockwise"
+        },
+        {
+          "range": [192, 255],
+          "name": "Rotate counterclockwise"
+        }
+      ]
+    },
+    "Gobo rotation": {
+      "type": "Gobo rotation",
+      "capabilities": [
+        {
+          "range": [0, 63],
+          "name": "Position (0 -360)"
+        },
+        {
+          "range": [64, 147],
+          "name": "Rotate clockwise"
+        },
+        {
+          "range": [148, 231],
+          "name": "Rotate clockwise"
+        },
+        {
+          "range": [232, 255],
+          "name": "Yo-yo effect"
+        }
+      ]
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"]
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"]
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "type": "Tilt"
+    },
+    "Pan 4": {
+      "name": "Pan"
+    },
+    "Tilt 3": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 3 fine"]
+    },
+    "Speed": {
+      "type": "Speed"
+    },
+    "Pan 5": {
+      "name": "Pan"
+    },
+    "Tilt 4": {
+      "name": "Tilt"
+    },
+    "Pan 6": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 6 fine"]
+    },
+    "Tilt 5": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 5 fine"]
+    },
+    "Dimmer": {},
+    "Special": {
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Empty"
+        },
+        {
+          "range": [8, 15],
+          "name": "Blackout while pan / tilt change"
+        },
+        {
+          "range": [16, 23],
+          "name": "No Blackout while move"
+        },
+        {
+          "range": [24, 31],
+          "name": "Blackout while color change"
+        },
+        {
+          "range": [32, 39],
+          "name": "No Blackout while color change"
+        },
+        {
+          "range": [40, 47],
+          "name": "Blackout while gobo change"
+        },
+        {
+          "range": [48, 55],
+          "name": "No Blackout while gobo change"
+        },
+        {
+          "range": [56, 87],
+          "name": "Empty"
+        },
+        {
+          "range": [88, 95],
+          "name": "Blackout while movement"
+        },
+        {
+          "range": [96, 103],
+          "name": "Reset pan and tilt"
+        },
+        {
+          "range": [104, 111],
+          "name": "Empty"
+        },
+        {
+          "range": [112, 119],
+          "name": "Reset color wheel"
+        },
+        {
+          "range": [120, 127],
+          "name": "Reset gobo wheel"
+        },
+        {
+          "range": [128, 135],
+          "name": "Reset gobo rotation"
+        },
+        {
+          "range": [136, 151],
+          "name": "Empty"
+        },
+        {
+          "range": [152, 159],
+          "name": "Reset all channels"
+        },
+        {
+          "range": [160, 255],
+          "name": "Empty"
+        }
+      ]
+    },
+    "Programs": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Off"
+        },
+        {
+          "range": [8, 23],
+          "name": "Program 1"
+        },
+        {
+          "range": [24, 39],
+          "name": "Program 2"
+        },
+        {
+          "range": [40, 55],
+          "name": "Program 3"
+        },
+        {
+          "range": [56, 71],
+          "name": "Program 4"
+        },
+        {
+          "range": [72, 87],
+          "name": "Program 5"
+        },
+        {
+          "range": [88, 103],
+          "name": "Program 6"
+        },
+        {
+          "range": [104, 119],
+          "name": "Program 7"
+        },
+        {
+          "range": [120, 135],
+          "name": "Program 8"
+        },
+        {
+          "range": [136, 150],
+          "name": "Sound control 1"
+        },
+        {
+          "range": [151, 165],
+          "name": "Sound control 2"
+        },
+        {
+          "range": [166, 180],
+          "name": "Sound control 3"
+        },
+        {
+          "range": [181, 195],
+          "name": "Sound control 4"
+        },
+        {
+          "range": [196, 210],
+          "name": "Sound control 5"
+        },
+        {
+          "range": [211, 225],
+          "name": "Sound control 6"
+        },
+        {
+          "range": [226, 240],
+          "name": "Sound control 7"
+        },
+        {
+          "range": [241, 255],
+          "name": "Sound control 8"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6-Channel",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color"
+      ]
+    },
+    {
+      "name": "12-Channel",
+      "channels": [
+        "Pan 6",
+        "Tilt 5",
+        "Pan 6 fine",
+        "Tilt 5 fine",
+        "Speed",
+        "Color",
+        "Shutter",
+        "Dimmer",
+        "Gobo",
+        "Gobo rotation",
+        "Special",
+        "Programs"
+      ]
+    }
+  ]
+}
