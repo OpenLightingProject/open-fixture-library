@@ -1,0 +1,314 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "name": "Stage TRI LED",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["p_0g_8mm3_"],
+    "createDate": "2018-01-30",
+    "lastModifyDate": "2018-01-30"
+  },
+  "manualURL": "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_238663_v2_r3_de_online.pdf#%5B%7B%22num%22%3A79%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2Cnull%2C350.07874%2Cnull%5D",
+  "physical": {
+    "power": 90,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "4x 7x 3W RGB LEDs"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Dimmer": {
+      "type": "Intensity"
+    },
+    "Program": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Off"
+        },
+        {
+          "range": [10, 19],
+          "name": "Pattern red"
+        },
+        {
+          "range": [20, 29],
+          "name": "Pattern yellow"
+        },
+        {
+          "range": [30, 39],
+          "name": "Pattern green"
+        },
+        {
+          "range": [40, 49],
+          "name": "Pattern cyan"
+        },
+        {
+          "range": [50, 59],
+          "name": "Pattern blue"
+        },
+        {
+          "range": [60, 69],
+          "name": "Pattern violet"
+        },
+        {
+          "range": [70, 79],
+          "name": "Pattern white"
+        },
+        {
+          "range": [80, 89],
+          "name": "Program 1"
+        },
+        {
+          "range": [90, 99],
+          "name": "Program 2"
+        },
+        {
+          "range": [100, 109],
+          "name": "Program 3"
+        },
+        {
+          "range": [110, 119],
+          "name": "Program 4"
+        },
+        {
+          "range": [120, 129],
+          "name": "Program 5"
+        },
+        {
+          "range": [130, 139],
+          "name": "Program 6"
+        },
+        {
+          "range": [140, 149],
+          "name": "Program 7"
+        },
+        {
+          "range": [150, 159],
+          "name": "Program 8"
+        },
+        {
+          "range": [160, 169],
+          "name": "Program 9"
+        },
+        {
+          "range": [170, 179],
+          "name": "Program 10"
+        },
+        {
+          "range": [180, 189],
+          "name": "Program 11"
+        },
+        {
+          "range": [190, 199],
+          "name": "Off"
+        },
+        {
+          "range": [200, 209],
+          "name": "Pattern red"
+        },
+        {
+          "range": [210, 219],
+          "name": "Program 12"
+        },
+        {
+          "range": [220, 229],
+          "name": "Program 13"
+        },
+        {
+          "range": [230, 239],
+          "name": "Program 14"
+        },
+        {
+          "range": [240, 255],
+          "name": "Sound control"
+        }
+      ]
+    },
+    "Speed / Sensitivity (music)": {
+      "type": "Speed"
+    },
+    "Strobe": {
+      "type": "Strobe"
+    },
+    "Red first 2 Segments": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green first 2 Segments": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue first 2 Segments": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Red last 2 Segments": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green last 2 Segments": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue last 2 Segments": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Red first segment": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green first segment": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue first segment": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Red second segment": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green second segment": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue second segment": {},
+    "Red third segment": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green third segment": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue third segment": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Red fourth segment": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green fourth segment": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue fourth segment": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Mode": {
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "RGB"
+        },
+        {
+          "range": [10, 249],
+          "name": "Programs"
+        },
+        {
+          "range": [250, 255],
+          "name": "Sound control"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-Channel (R,G,B)",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4-Channel (R,G,B,Dimmer)",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "7-Channel",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Program",
+        "Speed / Sensitivity (music)",
+        "Strobe",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "8-Channel",
+      "channels": [
+        "Red first 2 Segments",
+        "Green first 2 Segments",
+        "Blue first 2 Segments",
+        "Red last 2 Segments",
+        "Green last 2 Segments",
+        "Blue last 2 Segments",
+        "Strobe",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "14-Channel",
+      "channels": [
+        "Red first segment",
+        "Green first segment",
+        "Blue first segment",
+        "Red second segment",
+        "Green second segment",
+        "Blue second segment",
+        "Red third segment",
+        "Green third segment",
+        "Blue third segment",
+        "Red fourth segment",
+        "Green fourth segment",
+        "Blue fourth segment",
+        "Strobe",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "15-Channel",
+      "channels": [
+        "Mode",
+        "Dimmer",
+        "Strobe",
+        "Red first segment",
+        "Green first segment",
+        "Blue first segment",
+        "Red second segment",
+        "Green second segment",
+        "Blue second segment",
+        "Red third segment",
+        "Green third segment",
+        "Blue third segment",
+        "Red fourth segment",
+        "Green fourth segment",
+        "Blue fourth segment"
+      ]
+    }
+  ]
+}
