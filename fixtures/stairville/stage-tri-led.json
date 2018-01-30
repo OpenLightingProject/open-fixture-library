@@ -23,19 +23,19 @@
       "type": "Fixed"
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["1", "2", "3", "4"]
+      ]
+    ],
+    "pixelGroups": {
+      "1+2": ["1", "2"],
+      "3+4": ["3", "4"],
+      "Master": ["1", "2", "3", "4"]
+    }
+  },
   "availableChannels": {
-    "Red": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
     "Dimmer": {
       "type": "Intensity"
     },
@@ -150,78 +150,6 @@
     "Strobe": {
       "type": "Strobe"
     },
-    "Red first 2 Segments": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green first 2 Segments": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue first 2 Segments": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "Red last 2 Segments": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green last 2 Segments": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue last 2 Segments": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "Red first segment": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green first segment": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue first segment": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "Red second segment": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green second segment": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue second segment": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "Red third segment": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green third segment": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue third segment": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "Red fourth segment": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green fourth segment": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue fourth segment": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
     "Mode": {
       "type": "Effect",
       "capabilities": [
@@ -240,23 +168,37 @@
       ]
     }
   },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green $pixelKey": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue $pixelKey": {
+      "type": "Single Color",
+      "color": "Blue"
+    }
+  },
   "modes": [
     {
       "name": "RGB",
       "shortName": "d-P1",
       "channels": [
-        "Red",
-        "Green",
-        "Blue"
+        "Red Master",
+        "Green Master",
+        "Blue Master"
       ]
     },
     {
       "name": "RGBD",
       "shortName": "d-P2",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
         "Dimmer"
       ]
     },
@@ -264,9 +206,9 @@
       "name": "Color Program",
       "shortName": "d-P7",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
         "Program",
         "Speed / Sound Sensitivity",
         "Strobe",
@@ -277,12 +219,12 @@
       "name": "Split",
       "shortName": "d-P3",
       "channels": [
-        "Red first 2 Segments",
-        "Green first 2 Segments",
-        "Blue first 2 Segments",
-        "Red last 2 Segments",
-        "Green last 2 Segments",
-        "Blue last 2 Segments",
+        "Red 1+2",
+        "Green 1+2",
+        "Blue 1+2",
+        "Red 3+4",
+        "Green 3+4",
+        "Blue 3+4",
         "Strobe",
         "Dimmer"
       ]
@@ -291,18 +233,16 @@
       "name": "Individual",
       "shortName": "d-P4",
       "channels": [
-        "Red first segment",
-        "Green first segment",
-        "Blue first segment",
-        "Red second segment",
-        "Green second segment",
-        "Blue second segment",
-        "Red third segment",
-        "Green third segment",
-        "Blue third segment",
-        "Red fourth segment",
-        "Green fourth segment",
-        "Blue fourth segment",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
         "Strobe",
         "Dimmer"
       ]
@@ -314,18 +254,16 @@
         "Mode",
         "Dimmer",
         "Strobe",
-        "Red first segment",
-        "Green first segment",
-        "Blue first segment",
-        "Red second segment",
-        "Green second segment",
-        "Blue second segment",
-        "Red third segment",
-        "Green third segment",
-        "Blue third segment",
-        "Red fourth segment",
-        "Green fourth segment",
-        "Blue fourth segment"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     }
   ]
