@@ -41,111 +41,190 @@
     },
     "Program": {
       "type": "Effect",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 9],
-          "name": "Off"
+          "name": "Off",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [10, 19],
-          "name": "Red"
+          "name": "Red",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [20, 29],
-          "name": "Yellow"
+          "name": "Yellow",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [30, 39],
-          "name": "Green"
+          "name": "Green",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [40, 49],
-          "name": "Cyan"
+          "name": "Cyan",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [50, 59],
-          "name": "Blue"
+          "name": "Blue",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [60, 69],
-          "name": "Violet"
+          "name": "Violet",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [70, 79],
-          "name": "White"
+          "name": "White",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [80, 89],
-          "name": "Program 1"
+          "name": "Program 1",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [90, 99],
-          "name": "Program 2"
+          "name": "Program 2",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [100, 109],
-          "name": "Program 3"
+          "name": "Program 3",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [110, 119],
-          "name": "Program 4"
+          "name": "Program 4",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [120, 129],
-          "name": "Program 5"
+          "name": "Program 5",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [130, 139],
-          "name": "Program 6"
+          "name": "Program 6",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [140, 149],
-          "name": "Program 7"
+          "name": "Program 7",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [150, 159],
-          "name": "Program 8"
+          "name": "Program 8",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [160, 169],
-          "name": "Program 9"
+          "name": "Program 9",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [170, 179],
-          "name": "Program 10"
+          "name": "Program 10",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [180, 189],
-          "name": "Program 11"
+          "name": "Program 11",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [190, 199],
-          "name": "Program 12"
+          "name": "Program 12",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [200, 209],
-          "name": "Program 13"
+          "name": "Program 13",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [210, 219],
-          "name": "Program 14"
+          "name": "Program 14",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [220, 229],
-          "name": "Program 15"
+          "name": "Program 15",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [230, 239],
-          "name": "Program 16"
+          "name": "Program 16",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
         },
         {
           "range": [240, 255],
-          "name": "Sound control"
+          "name": "Sound control",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         }
       ]
     },
-    "Speed / Sound Sensitivity": {
+    "Speed": {
       "type": "Speed"
+    },
+    "Sound Sensitivity": {
+      "type": "Intensity"
     },
     "Strobe": {
       "type": "Strobe"
@@ -203,7 +282,15 @@
       ]
     },
     {
-      "name": "Color Program",
+      "name": "Program",
+      "shortName": "d-P5",
+      "channels": [
+        "Program",
+        "Speed / Sound Sensitivity"
+      ]
+    },
+    {
+      "name": "Color + Program",
       "shortName": "d-P7",
       "channels": [
         "Red Master",
