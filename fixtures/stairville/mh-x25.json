@@ -1,33 +1,35 @@
 {
   "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
   "name": "MH-X25",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["p_0g_8mm3_"],
+    "authors": ["p_0g_8mm3_", "Flo Edelmann"],
     "createDate": "2018-01-30",
     "lastModifyDate": "2018-01-30"
   },
-  "manualURL": "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_238185_v2_r2_de_online.pdf",
+  "manualURL": "https://images.thomann.de/pics/prod/c_238185_en_online.pdf",
   "physical": {
-    "weight": 8,
+    "dimensions": [240, 370, 280],
+    "weight": 10.3,
     "power": 102,
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "4x LED (all white)"
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 270
     }
   },
   "availableChannels": {
     "Pan": {
       "type": "Pan",
-      "fineChannelAliases": ["Pan fine"],
-      "capabilities": [
-        {
-          "range": [0, 255]
-        }
-      ]
+      "fineChannelAliases": ["Pan fine"]
     },
     "Tilt": {
-      "type": "Tilt"
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"]
     },
     "Color": {
       "type": "Multi-Color",
@@ -154,6 +156,7 @@
       ]
     },
     "Gobo": {
+      "type": "Gobo",
       "capabilities": [
         {
           "range": [0, 7],
@@ -230,7 +233,7 @@
       ]
     },
     "Gobo rotation": {
-      "type": "Gobo rotation",
+      "type": "Gobo",
       "capabilities": [
         {
           "range": [0, 63],
@@ -242,7 +245,7 @@
         },
         {
           "range": [148, 231],
-          "name": "Rotate clockwise"
+          "name": "Rotate counterclockwise"
         },
         {
           "range": [232, 255],
@@ -250,44 +253,14 @@
         }
       ]
     },
-    "Pan 2": {
-      "name": "Pan",
-      "fineChannelAliases": ["Pan 2 fine"]
-    },
-    "Pan 3": {
-      "name": "Pan",
-      "fineChannelAliases": ["Pan 3 fine"]
-    },
-    "Tilt 2": {
-      "name": "Tilt",
-      "type": "Tilt"
-    },
-    "Pan 4": {
-      "name": "Pan"
-    },
-    "Tilt 3": {
-      "name": "Tilt",
-      "fineChannelAliases": ["Tilt 3 fine"]
-    },
-    "Speed": {
+    "Pan/Tilt Speed": {
       "type": "Speed"
     },
-    "Pan 5": {
-      "name": "Pan"
+    "Dimmer": {
+      "type": "Intensity"
     },
-    "Tilt 4": {
-      "name": "Tilt"
-    },
-    "Pan 6": {
-      "name": "Pan",
-      "fineChannelAliases": ["Pan 6 fine"]
-    },
-    "Tilt 5": {
-      "name": "Tilt",
-      "fineChannelAliases": ["Tilt 5 fine"]
-    },
-    "Dimmer": {},
-    "Special": {
+    "Special functions": {
+      "type": "Maintenance",
       "capabilities": [
         {
           "range": [0, 7],
@@ -445,17 +418,17 @@
     {
       "name": "12-Channel",
       "channels": [
-        "Pan 6",
-        "Tilt 5",
-        "Pan 6 fine",
-        "Tilt 5 fine",
-        "Speed",
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
+        "Pan/Tilt Speed",
         "Color",
         "Shutter",
         "Dimmer",
         "Gobo",
         "Gobo rotation",
-        "Special",
+        "Special functions",
         "Programs"
       ]
     }
