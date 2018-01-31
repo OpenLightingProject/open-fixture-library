@@ -445,6 +445,11 @@
       "lastModifyDate": "2017-10-28",
       "lastAction": "created"
     },
+    "stairville/stage-tri-led": {
+      "name": "Stage TRI LED",
+      "lastModifyDate": "2018-01-30",
+      "lastAction": "created"
+    },
     "venue/tristrip3z": {
       "name": "TriStrip3Z",
       "lastModifyDate": "2018-01-27",
@@ -593,7 +598,8 @@
       "phantom-50-led-spot"
     ],
     "stairville": [
-      "mh-100"
+      "mh-100",
+      "stage-tri-led"
     ],
     "venue": [
       "tristrip3z"
@@ -684,6 +690,7 @@
       "showtec/phantom-140-led-spot",
       "showtec/phantom-50-led-spot",
       "stairville/mh-100",
+      "stairville/stage-tri-led",
       "venue/tristrip3z"
     ],
     "Dimmer": [
@@ -838,6 +845,7 @@
       "showtec/led-light-bar-rgb-v3",
       "showtec/phantom-140-led-spot",
       "showtec/phantom-50-led-spot",
+      "stairville/stage-tri-led",
       "venue/tristrip3z"
     ],
     "Felix Edelmann": [
@@ -917,6 +925,9 @@
     ],
     "fueller": [
       "prolights/diamond-19"
+    ],
+    "p_0g_8mm3_": [
+      "stairville/stage-tri-led"
     ]
   },
   "rdm": {
@@ -974,6 +985,7 @@
     }
   },
   "lastUpdated": [
+    "stairville/stage-tri-led",
     "american-dj/revo-burst",
     "venue/tristrip3z",
     "american-dj/auto-spot-150",
