@@ -446,14 +446,15 @@ function checkMode(mode) {
     `Mode shortName '${mode.shortName}' is not unique (test is not case-sensitive).`
   );
 
-  if (mode.name.match(/^(\d+)(?:\s+|-)?(?:ch|channels?)$/)) {
+  // "6ch" / "8-Channel" / "9 channels" mode names
+  if (mode.name.toLowerCase().match(/^(\d+)(?:\s+|-)?(?:ch|channels?)$/)) {
     const intendedLength = parseInt(RegExp.$1);
 
     if (mode.channels.length !== intendedLength) {
       result.warnings.push(`Mode '${mode.name}' should probably have ${RegExp.$1} channels but actually has ${mode.channels.length}.`);
     }
     if (mode.shortName !== `${intendedLength}ch`) {
-      result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch' instead of '${mode.shortName}'.`);
+      result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch'.`);
     }
   }
 
