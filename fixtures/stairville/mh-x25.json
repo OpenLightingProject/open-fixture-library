@@ -56,15 +56,18 @@
         },
         {
           "range": [20, 24],
-          "name": "Peachblow"
+          "name": "Peachblow",
+          "color": "#d7735b"
         },
         {
           "range": [25, 29],
-          "name": "Light Blue"
+          "name": "Light Blue",
+          "color": "#add8e6"
         },
         {
           "range": [30, 34],
-          "name": "Yellow-Green"
+          "name": "Yellow-Green",
+          "color": "#ccfe50"
         },
         {
           "range": [35, 39],
@@ -97,20 +100,26 @@
         {
           "range": [74, 83],
           "name": "Green & Peachblow",
-          "color": "#00ff00"
+          "color": "#00ff00",
+          "color2": "#d7735b"
         },
         {
           "range": [84, 92],
-          "name": "Peachblow & Light Blue"
+          "name": "Peachblow & Light Blue",
+          "color": "#d7735b",
+          "color2": "#add8e6"
         },
         {
           "range": [93, 101],
-          "name": "Light Blue & Yellow-Green"
+          "name": "Light Blue & Yellow-Green",
+          "color": "#add8e6",
+          "color2": "#ccfe50"
         },
         {
           "range": [102, 110],
           "name": "Yellow-Green & Red",
-          "color": "#ff0000"
+          "color": "#ccfe50",
+          "color2": "#ff0000"
         },
         {
           "range": [111, 119],
@@ -126,11 +135,11 @@
         },
         {
           "range": [128, 191],
-          "name": "Rainbow clockwise"
+          "name": "Rainbow clockwise slow-fast"
         },
         {
           "range": [192, 255],
-          "name": "Rainbow counterclockwise"
+          "name": "Rainbow counterclockwise slow-fast"
         }
       ]
     },
@@ -147,7 +156,7 @@
         },
         {
           "range": [8, 215],
-          "name": "Strobe"
+          "name": "Strobe slow-fast"
         },
         {
           "range": [216, 255],
@@ -224,11 +233,11 @@
         },
         {
           "range": [128, 191],
-          "name": "Rotate clockwise"
+          "name": "Rotate clockwise slow-fast"
         },
         {
           "range": [192, 255],
-          "name": "Rotate counterclockwise"
+          "name": "Rotate counterclockwise slow-fast"
         }
       ]
     },
@@ -237,15 +246,15 @@
       "capabilities": [
         {
           "range": [0, 63],
-          "name": "Position (0 -360)"
+          "name": "Position 0-360°"
         },
         {
           "range": [64, 147],
-          "name": "Rotate clockwise"
+          "name": "Rotate clockwise slow-fast"
         },
         {
           "range": [148, 231],
-          "name": "Rotate counterclockwise"
+          "name": "Rotate counterclockwise slow-fast"
         },
         {
           "range": [232, 255],
@@ -408,15 +417,20 @@
   },
   "modes": [
     {
-      "name": "6-Channel",
+      "name": "6-channel",
+      "shortName": "6ch",
       "channels": [
         "Pan",
         "Tilt",
-        "Color"
+        "Color",
+        "Shutter",
+        "Gobo",
+        "Gobo rotation"
       ]
     },
     {
-      "name": "12-Channel",
+      "name": "12-channel",
+      "shortName": "12ch",
       "channels": [
         "Pan",
         "Tilt",
