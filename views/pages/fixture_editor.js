@@ -35,7 +35,7 @@ module.exports = function(options) {
   str += `<span class="value">`;
   str += `<select required v-model="fixture.manufacturerShortName" :class="{ empty: fixture.manufacturerShortName === '' }" ref="existingManufacturerSelect">`;
   str += `<option value="">Please select a manufacturer</option>`;
-  for (const man of Object.keys(options.manufacturers)) {
+  for (const man of Object.keys(options.register.manufacturers)) {
     str += `<option value="${man}">${options.manufacturers[man].name}</option>`;
   }
   str += `</select>`;
