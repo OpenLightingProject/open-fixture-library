@@ -20,18 +20,21 @@
       "degreesMinMax": [60, 60]
     }
   },
+  "matrix": {
+    "pixelCount": [4, 4, 1]
+  },
   "availableChannels": {
-    "Red $pixelKey": {
+    "Red": {
       "type": "Single Color",
       "color": "Red",
       "defaultValue": 0
     },
-    "Green $pixelKey": {
+    "Green": {
       "type": "Single Color",
       "color": "Green",
       "defaultValue": 0
     },
-    "Blue $pixelKey": {
+    "Blue": {
       "type": "Single Color",
       "color": "Blue",
       "defaultValue": 0
@@ -40,7 +43,7 @@
       "type": "Intensity",
       "defaultValue": 0
     },
-    "Shutter": {
+    "Shutter Extended": {
       "type": "Shutter",
       "defaultValue": 0,
       "capabilities": [
@@ -124,7 +127,7 @@
         }
       ]
     },
-    "Shutter 2": {
+    "Shutter Simple": {
       "name": "Shutter",
       "type": "Shutter",
       "defaultValue": 0,
@@ -149,35 +152,52 @@
       ]
     }
   },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0
+    },
+    "Green $pixelKey": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0
+    },
+    "Blue $pixelKey": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0
+    }
+  },
   "modes": [
     {
       "name": "3-channel",
       "shortName": "3ch",
       "channels": [
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey"
+        "Red",
+        "Green",
+        "Blue"
       ]
     },
     {
       "name": "5-channel",
       "shortName": "5ch",
       "channels": [
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
+        "Red",
+        "Green",
+        "Blue",
         "Dimmer",
-        "Shutter"
+        "Shutter Extended"
       ]
     },
     {
       "name": "7-channel",
       "shortName": "7ch",
       "channels": [
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
-        "Shutter 2",
+        "Red",
+        "Green",
+        "Blue",
+        "Shutter Simple",
         "Chase",
         "Speed",
         "Dimmer"
@@ -187,9 +207,16 @@
       "name": "48-channel",
       "shortName": "48ch",
       "channels": [
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     }
   ]
