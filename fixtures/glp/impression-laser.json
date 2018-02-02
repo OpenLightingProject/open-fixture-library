@@ -1,0 +1,537 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "name": "impression Laser",
+  "shortName": "GLPLaser",
+  "categories": ["Laser", "Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-02-02",
+    "lastModifyDate": "2018-02-02"
+  },
+  "comment": "The manual leaves gaps between capabilities, which are corrected here.",
+  "manualURL": "https://www.glp.de/de/produkte?format=raw&task=download&fid=65",
+  "physical": {
+    "dimensions": [340, 145, 370],
+    "weight": 7.5,
+    "power": 170,
+    "DMXconnector": "3-pin",
+    "lens": {
+      "degreesMinMax": [40, 40]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 660,
+      "tiltMax": 290
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32768
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32768
+    },
+    "Access": {
+      "type": "Maintenance",
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "Blackout"
+        },
+        {
+          "range": [32, 95],
+          "name": "Basic range (8ch)"
+        },
+        {
+          "range": [96, 159],
+          "name": "Standard range (12ch)"
+        },
+        {
+          "range": [160, 223],
+          "name": "Extended range (16ch)"
+        },
+        {
+          "range": [224, 255],
+          "name": "Full range (20ch)"
+        }
+      ]
+    },
+    "Folder": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "Page 1"
+        },
+        {
+          "range": [16, 31],
+          "name": "Page 2"
+        },
+        {
+          "range": [32, 47],
+          "name": "Page 3"
+        },
+        {
+          "range": [48, 63],
+          "name": "Page 4"
+        },
+        {
+          "range": [64, 79],
+          "name": "Page 5"
+        },
+        {
+          "range": [80, 95],
+          "name": "Page 6"
+        },
+        {
+          "range": [96, 111],
+          "name": "Page 7"
+        },
+        {
+          "range": [112, 127],
+          "name": "Page 8"
+        },
+        {
+          "range": [128, 255],
+          "name": "Page 9"
+        }
+      ]
+    },
+    "File": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 32],
+          "name": "Blackout"
+        },
+        {
+          "range": [33, 36],
+          "name": "Cue 1"
+        },
+        {
+          "range": [37, 40],
+          "name": "Cue 2"
+        },
+        {
+          "range": [41, 44],
+          "name": "Cue 3"
+        },
+        {
+          "range": [45, 48],
+          "name": "Cue 4"
+        },
+        {
+          "range": [49, 52],
+          "name": "Cue 5"
+        },
+        {
+          "range": [53, 56],
+          "name": "Cue 6"
+        },
+        {
+          "range": [57, 60],
+          "name": "Cue 7"
+        },
+        {
+          "range": [61, 64],
+          "name": "Cue 8"
+        },
+        {
+          "range": [65, 68],
+          "name": "Cue 9"
+        },
+        {
+          "range": [69, 72],
+          "name": "Cue 10"
+        },
+        {
+          "range": [73, 76],
+          "name": "Cue 11"
+        },
+        {
+          "range": [77, 80],
+          "name": "Cue 12"
+        },
+        {
+          "range": [81, 84],
+          "name": "Cue 13"
+        },
+        {
+          "range": [85, 88],
+          "name": "Cue 14"
+        },
+        {
+          "range": [89, 92],
+          "name": "Cue 15"
+        },
+        {
+          "range": [93, 96],
+          "name": "Cue 16"
+        },
+        {
+          "range": [97, 100],
+          "name": "Cue 17"
+        },
+        {
+          "range": [101, 104],
+          "name": "Cue 18"
+        },
+        {
+          "range": [105, 108],
+          "name": "Cue 19"
+        },
+        {
+          "range": [109, 112],
+          "name": "Cue 20"
+        },
+        {
+          "range": [113, 116],
+          "name": "Cue 21"
+        },
+        {
+          "range": [117, 120],
+          "name": "Cue 22"
+        },
+        {
+          "range": [121, 124],
+          "name": "Cue 23"
+        },
+        {
+          "range": [125, 128],
+          "name": "Cue 24"
+        },
+        {
+          "range": [129, 132],
+          "name": "Cue 25"
+        },
+        {
+          "range": [133, 136],
+          "name": "Cue 26"
+        },
+        {
+          "range": [137, 140],
+          "name": "Cue 27"
+        },
+        {
+          "range": [141, 144],
+          "name": "Cue 28"
+        },
+        {
+          "range": [145, 148],
+          "name": "Cue 29"
+        },
+        {
+          "range": [149, 152],
+          "name": "Cue 30"
+        },
+        {
+          "range": [153, 156],
+          "name": "Cue 31"
+        },
+        {
+          "range": [157, 160],
+          "name": "Cue 32"
+        },
+        {
+          "range": [161, 164],
+          "name": "Cue 33"
+        },
+        {
+          "range": [165, 168],
+          "name": "Cue 34"
+        },
+        {
+          "range": [169, 172],
+          "name": "Cue 35"
+        },
+        {
+          "range": [173, 176],
+          "name": "Cue 36"
+        },
+        {
+          "range": [177, 180],
+          "name": "Cue 37"
+        },
+        {
+          "range": [181, 184],
+          "name": "Cue 38"
+        },
+        {
+          "range": [185, 188],
+          "name": "Cue 39"
+        },
+        {
+          "range": [189, 192],
+          "name": "Cue 40"
+        },
+        {
+          "range": [193, 196],
+          "name": "Cue 41"
+        },
+        {
+          "range": [197, 200],
+          "name": "Cue 42"
+        },
+        {
+          "range": [201, 204],
+          "name": "Cue 43"
+        },
+        {
+          "range": [205, 208],
+          "name": "Cue 44"
+        },
+        {
+          "range": [209, 212],
+          "name": "Cue 45"
+        },
+        {
+          "range": [213, 216],
+          "name": "Cue 46"
+        },
+        {
+          "range": [217, 220],
+          "name": "Cue 47"
+        },
+        {
+          "range": [221, 255],
+          "name": "Cue 48"
+        }
+      ]
+    },
+    "Playback Speed": {
+      "type": "Speed",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 16],
+          "name": "Normal speed"
+        },
+        {
+          "range": [17, 32],
+          "name": "Pause"
+        },
+        {
+          "range": [33, 127],
+          "name": "Speed 25-99%"
+        },
+        {
+          "range": [128, 128],
+          "name": "Speed 100%"
+        },
+        {
+          "range": [129, 255],
+          "name": "Speed 101-200%"
+        }
+      ]
+    },
+    "Intensity": {
+      "type": "Intensity",
+      "defaultValue": 0
+    },
+    "Zoom": {
+      "type": "Zoom",
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Zoom 0-100%"
+        }
+      ]
+    },
+    "X Size": {
+      "type": "Intensity",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Size 0-100%"
+        }
+      ]
+    },
+    "Y Size": {
+      "type": "Intensity",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Size 0-100%"
+        }
+      ]
+    },
+    "Rotation": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0-360°"
+        }
+      ]
+    },
+    "X Position": {
+      "type": "Intensity",
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Position left-right"
+        }
+      ]
+    },
+    "Y Position": {
+      "type": "Intensity",
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Position down-up"
+        }
+      ]
+    },
+    "Visible Points": {
+      "type": "Intensity",
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0-all visible points"
+        }
+      ]
+    },
+    "Scan Rate": {
+      "type": "Speed",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "Default (30k)"
+        },
+        {
+          "range": [32, 255],
+          "name": "6-30k"
+        }
+      ]
+    },
+    "Color": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "No color"
+        },
+        {
+          "range": [32, 42],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [43, 53],
+          "name": "Orange",
+          "color": "#ffaa00"
+        },
+        {
+          "range": [54, 75],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [76, 86],
+          "name": "Lime",
+          "color": "#66ff00"
+        },
+        {
+          "range": [87, 109],
+          "name": "Green",
+          "color": "#00dd00"
+        },
+        {
+          "range": [110, 163],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [164, 189],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [190, 220],
+          "name": "Pink",
+          "color": "#ffbbaa"
+        },
+        {
+          "range": [221, 228],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [229, 255],
+          "name": "White",
+          "color": "#ffffff"
+        }
+      ]
+    },
+    "Release": {
+      "type": "Maintenance",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "Default"
+        },
+        {
+          "range": [32, 95],
+          "name": "Hold"
+        },
+        {
+          "range": [96, 159],
+          "name": "Loop"
+        },
+        {
+          "range": [160, 223],
+          "name": "Next"
+        },
+        {
+          "range": [224, 255],
+          "name": "Stop"
+        }
+      ]
+    },
+    "Reserved": {
+      "type": "Nothing"
+    }
+  },
+  "modes": [
+    {
+      "name": "Normal",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Access",
+        "Folder",
+        "File",
+        "Playback Speed",
+        "Intensity",
+        "Zoom",
+        "X Size",
+        "Y Size",
+        "Rotation",
+        "X Position",
+        "Y Position",
+        "Visible Points",
+        "Scan Rate",
+        "Release",
+        "Color",
+        "Reserved"
+      ]
+    }
+  ]
+}
