@@ -1097,6 +1097,6 @@ function getPlaceholderAttr(hint) {
  */
 function getAdditionalAttributes(attributes = {}) {
   return Object.keys(attributes).map(
-    attr => ` attr="${attributes[attr]}"`
+    attr => ` ${attr}="${attributes[attr]}"`
   ).join(``);
 }
