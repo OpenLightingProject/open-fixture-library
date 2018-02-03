@@ -3,21 +3,20 @@
 const fs = require(`fs`);
 const path = require(`path`);
 const colors = require(`colors`);
+const Ajv = require(`ajv`);
 
-const schemas = require(`../fixtures/schema.js`);
+const manufacturerSchema = require(`../schema-manufacturers.json`);
 const checkFixture = require(`./fixture-valid.js`);
 
 /**
  * @typedef UniqueValues
  * @type {object}
- * @property {Set<string>} manKeys All manufacturer keys
  * @property {Set<string>} manNames All manufacturer names
  * @property {Object.<string, Set<string>>} fixKeysInMan All fixture keys by manufacturer key
  * @property {Object.<string, Set<string>>} fixNamesInMan All fixture names by manufacturer key
  * @property {Set<string>} fixShortNames All fixture short names
  */
 const uniqueValues = {
-  manKeys: new Set(),
   manNames: new Set(),
   manRdmIds: new Set(),
   fixKeysInMan: {}, // new Set() for each manufacturer
@@ -106,18 +105,20 @@ promises.push(new Promise((resolve, reject) => {
       return resolve(result);
     }
 
-    const schemaErrors = schemas.Manufacturers.errors(manufacturers);
-    if (schemaErrors !== false) {
-      result.errors = [checkFixture.getErrorString(`File does not match schema.`, schemaErrors)];
+
+    const validate = (new Ajv()).compile(manufacturerSchema);
+    const valid = validate(manufacturers);
+    if (!valid) {
+      result.errors.push(module.exports.getErrorString(`File does not match schema.`, validate.errors));
+      return resolve(result);
     }
 
     for (const manKey of Object.keys(manufacturers)) {
-      checkFixture.checkUniqueness(
-        uniqueValues.manKeys,
-        manKey,
-        result,
-        `Manufacturer key '${manKey}' is not unique (test is not case-sensitive).`
-      );
+      if (manKey.startsWith(`$`)) {
+        // JSON schema property
+        continue;
+      }
+
       checkFixture.checkUniqueness(
         uniqueValues.manNames,
         manufacturers[manKey].name,

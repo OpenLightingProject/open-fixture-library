@@ -40,6 +40,11 @@
       "lastModifyDate": "2017-12-31",
       "lastAction": "modified"
     },
+    "american-dj/revo-burst": {
+      "name": "Revo Burst",
+      "lastModifyDate": "2018-01-27",
+      "lastAction": "modified"
+    },
     "american-dj/xs-400": {
       "name": "XS 400",
       "lastModifyDate": "2017-10-16",
@@ -134,6 +139,11 @@
       "name": "WashFX",
       "lastModifyDate": "2017-12-31",
       "lastAction": "modified"
+    },
+    "clay-paky/sharpy": {
+      "name": "Sharpy",
+      "lastModifyDate": "2018-01-30",
+      "lastAction": "created"
     },
     "coemar/prospot-250-lx": {
       "name": "ProSpot 250 LX",
@@ -270,6 +280,11 @@
       "lastModifyDate": "2017-12-07",
       "lastAction": "created"
     },
+    "glp/impression-laser": {
+      "name": "impression Laser",
+      "lastModifyDate": "2018-02-02",
+      "lastAction": "created"
+    },
     "glp/impression-spot-one": {
       "name": "impression Spot One",
       "lastModifyDate": "2017-10-16",
@@ -370,10 +385,15 @@
       "lastModifyDate": "2017-10-13",
       "lastAction": "created"
     },
-    "prolights/diamond-19": {
-      "name": "Diamond 19",
-      "lastModifyDate": "2017-10-16",
+    "prolights/diamond19": {
+      "name": "DIAMOND19",
+      "lastModifyDate": "2018-02-02",
       "lastAction": "modified"
+    },
+    "prolights/pixpan16": {
+      "name": "PIXPAN16",
+      "lastModifyDate": "2018-02-02",
+      "lastAction": "created"
     },
     "qtx/lux-ld30w": {
       "name": "LUX-LD30W",
@@ -389,6 +409,11 @@
       "name": "DJ Scan 250 XT",
       "lastModifyDate": "2017-10-16",
       "lastAction": "modified"
+    },
+    "robe/robin-600e-spot": {
+      "name": "Robin 600E Spot",
+      "lastModifyDate": "2018-02-02",
+      "lastAction": "created"
     },
     "robe/robin-ledbeam-150": {
       "name": "Robin LEDBeam 150",
@@ -439,6 +464,21 @@
       "name": "MH-100",
       "lastModifyDate": "2017-10-28",
       "lastAction": "created"
+    },
+    "stairville/mh-x25": {
+      "name": "MH-X25",
+      "lastModifyDate": "2018-01-30",
+      "lastAction": "created"
+    },
+    "stairville/stage-tri-led": {
+      "name": "Stage TRI LED",
+      "lastModifyDate": "2018-01-30",
+      "lastAction": "created"
+    },
+    "venue/tristrip3z": {
+      "name": "TriStrip3Z",
+      "lastModifyDate": "2018-01-27",
+      "lastAction": "modified"
     }
   },
   "manufacturers": {
@@ -455,6 +495,7 @@
       "galaxian-3d",
       "quad-phase-hp",
       "revo-4-ir",
+      "revo-burst",
       "xs-400"
     ],
     "ayra": [
@@ -480,6 +521,9 @@
       "slimpar-pro-qz12",
       "slimpar-pro-w",
       "washfx"
+    ],
+    "clay-paky": [
+      "sharpy"
     ],
     "coemar": [
       "prospot-250-lx"
@@ -525,6 +569,7 @@
       "rgbw-fader"
     ],
     "glp": [
+      "impression-laser",
       "impression-spot-one"
     ],
     "gruft": [
@@ -561,7 +606,8 @@
       "theone-atmospheric-generator"
     ],
     "prolights": [
-      "diamond-19"
+      "diamond19",
+      "pixpan16"
     ],
     "qtx": [
       "lux-ld30w"
@@ -569,6 +615,7 @@
     "robe": [
       "colorspot-2500e-at",
       "dj-scan-250-xt",
+      "robin-600e-spot",
       "robin-ledbeam-150",
       "robin-ledwash-600"
     ],
@@ -582,7 +629,12 @@
       "phantom-50-led-spot"
     ],
     "stairville": [
-      "mh-100"
+      "mh-100",
+      "mh-x25",
+      "stage-tri-led"
+    ],
+    "venue": [
+      "tristrip3z"
     ]
   },
   "categories": {
@@ -619,6 +671,7 @@
       "chauvet-dj/slimpar-pro-qz12",
       "chauvet-dj/slimpar-pro-w",
       "chauvet-dj/washfx",
+      "clay-paky/sharpy",
       "coemar/prospot-250-lx",
       "dts/xr1200-wash",
       "elation/platinum-hfx",
@@ -642,6 +695,7 @@
       "generic/rgba-fader",
       "generic/rgbd-fader",
       "generic/rgbw-fader",
+      "glp/impression-laser",
       "glp/impression-spot-one",
       "gruft/ventilator",
       "jb-systems/twin-effect-laser",
@@ -657,10 +711,12 @@
       "martin/rush-mh-2-wash",
       "martin/rush-mh-3-beam",
       "martin/rush-mh-7-hybrid",
-      "prolights/diamond-19",
+      "prolights/diamond19",
+      "prolights/pixpan16",
       "qtx/lux-ld30w",
       "robe/colorspot-2500e-at",
       "robe/dj-scan-250-xt",
+      "robe/robin-600e-spot",
       "robe/robin-ledbeam-150",
       "robe/robin-ledwash-600",
       "showtec/horizon-8",
@@ -669,14 +725,19 @@
       "showtec/led-light-bar-rgb-v3",
       "showtec/phantom-140-led-spot",
       "showtec/phantom-50-led-spot",
-      "stairville/mh-100"
+      "stairville/mh-100",
+      "stairville/mh-x25",
+      "stairville/stage-tri-led",
+      "venue/tristrip3z"
     ],
     "Dimmer": [
       "eurolite/led-sls-6-uv-floor",
       "generic/desk-channel"
     ],
     "Effect": [
-      "ayra/tdc-triple-burst"
+      "american-dj/revo-burst",
+      "ayra/tdc-triple-burst",
+      "venue/tristrip3z"
     ],
     "Fan": [
       "gruft/ventilator"
@@ -685,6 +746,7 @@
       "abstract/twister-4",
       "american-dj/quad-phase-hp",
       "american-dj/revo-4-ir",
+      "american-dj/revo-burst",
       "eurolite/led-fe-1500",
       "eurolite/led-svf-1"
     ],
@@ -698,6 +760,7 @@
       "american-dj/galaxian-3d",
       "chauvet-dj/gigbar-2",
       "eurolite/led-fe-1500",
+      "glp/impression-laser",
       "jb-systems/twin-effect-laser",
       "showtec/dominator"
     ],
@@ -705,7 +768,8 @@
       "american-dj/revo-4-ir",
       "cameo/flash-matrix-250",
       "eurolite/led-tmh-18",
-      "eurolite/led-tmh-x25"
+      "eurolite/led-tmh-x25",
+      "prolights/pixpan16"
     ],
     "Moving Head": [
       "5star-systems/spica-250m",
@@ -714,6 +778,7 @@
       "cameo/hydrabeam-100",
       "cameo/hydrabeam-300-rgbw",
       "cameo/nanospot-120",
+      "clay-paky/sharpy",
       "coemar/prospot-250-lx",
       "dts/xr1200-wash",
       "elation/platinum-hfx",
@@ -726,6 +791,7 @@
       "eurolite/led-tmh-x25",
       "futurelight/dmh-75-i-led-moving-head",
       "generic/pan-tilt",
+      "glp/impression-laser",
       "glp/impression-spot-one",
       "jb-lighting/varyscan-p7",
       "kam/gobotracer",
@@ -738,16 +804,18 @@
       "martin/rush-mh-2-wash",
       "martin/rush-mh-3-beam",
       "martin/rush-mh-7-hybrid",
-      "prolights/diamond-19",
+      "prolights/diamond19",
       "qtx/lux-ld30w",
       "robe/colorspot-2500e-at",
+      "robe/robin-600e-spot",
       "robe/robin-ledbeam-150",
       "robe/robin-ledwash-600",
       "showtec/kanjo-spot-60",
       "showtec/kanjo-wash-rgb",
       "showtec/phantom-140-led-spot",
       "showtec/phantom-50-led-spot",
-      "stairville/mh-100"
+      "stairville/mh-100",
+      "stairville/mh-x25"
     ],
     "Scanner": [
       "cameo/gobo-scanner-80",
@@ -775,6 +843,7 @@
       "abstract/twister-4",
       "american-dj/quad-phase-hp",
       "american-dj/revo-4-ir",
+      "american-dj/revo-burst",
       "american-dj/xs-400",
       "ayra/tdc-triple-burst",
       "cameo/hydrabeam-100",
@@ -785,6 +854,7 @@
       "cameo/thunder-wash-600-rgb",
       "cameo/thunder-wash-600-w",
       "chauvet-dj/gigbar-2",
+      "clay-paky/sharpy",
       "coemar/prospot-250-lx",
       "elation/platinum-hfx",
       "eurolite/led-kls-801",
@@ -813,12 +883,16 @@
       "mdg/theone-atmospheric-generator",
       "qtx/lux-ld30w",
       "robe/dj-scan-250-xt",
+      "robe/robin-600e-spot",
       "showtec/horizon-8",
       "showtec/kanjo-spot-60",
       "showtec/kanjo-wash-rgb",
       "showtec/led-light-bar-rgb-v3",
       "showtec/phantom-140-led-spot",
-      "showtec/phantom-50-led-spot"
+      "showtec/phantom-50-led-spot",
+      "stairville/mh-x25",
+      "stairville/stage-tri-led",
+      "venue/tristrip3z"
     ],
     "Felix Edelmann": [
       "5star-systems/spica-250m",
@@ -850,10 +924,12 @@
       "eurolite/led-tmh-x25",
       "futurelight/pro-slim-par-7-hcl",
       "futurelight/sc-250-scanner",
+      "glp/impression-laser",
       "glp/impression-spot-one",
       "jb-lighting/varyscan-p7",
       "lightmaxx/platinum-mini-tri-par",
       "martin/atomic-3000",
+      "prolights/pixpan16",
       "robe/dj-scan-250-xt",
       "robe/robin-ledbeam-150",
       "robe/robin-ledwash-600",
@@ -886,17 +962,27 @@
       "jb-systems/twin-effect-laser",
       "qtx/lux-ld30w"
     ],
+    "p_0g_8mm3_": [
+      "stairville/mh-x25",
+      "stairville/stage-tri-led"
+    ],
     "Anonymous": [
       "stairville/mh-100"
     ],
     "George Qualley IV": [
       "eliminator/stealth-beam"
     ],
+    "Massimo Callegari": [
+      "clay-paky/sharpy"
+    ],
+    "NiKoyes": [
+      "robe/robin-600e-spot"
+    ],
     "eklynx": [
       "american-dj/galaxian-3d"
     ],
     "fueller": [
-      "prolights/diamond-19"
+      "prolights/diamond19"
     ]
   },
   "rdm": {
@@ -943,6 +1029,7 @@
       "key": "robe",
       "models": {
         "7": "colorspot-2500e-at",
+        "57": "robin-600e-spot",
         "118": "robin-ledwash-600"
       }
     },
@@ -954,6 +1041,15 @@
     }
   },
   "lastUpdated": [
+    "glp/impression-laser",
+    "prolights/pixpan16",
+    "robe/robin-600e-spot",
+    "prolights/diamond19",
+    "clay-paky/sharpy",
+    "stairville/mh-x25",
+    "stairville/stage-tri-led",
+    "american-dj/revo-burst",
+    "venue/tristrip3z",
     "american-dj/auto-spot-150",
     "jb-lighting/varyscan-p7",
     "robe/robin-ledbeam-150",
@@ -1014,7 +1110,6 @@
     "martin/rush-mh-2-wash",
     "martin/rush-mh-3-beam",
     "martin/rush-mh-7-hybrid",
-    "prolights/diamond-19",
     "qtx/lux-ld30w",
     "robe/colorspot-2500e-at",
     "robe/dj-scan-250-xt",

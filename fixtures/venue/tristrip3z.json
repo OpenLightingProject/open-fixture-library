@@ -1,0 +1,344 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "name": "TriStrip3Z",
+  "shortName": "VenueTriStrip3Z",
+  "categories": ["Effect", "Color Changer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2018-01-25",
+    "lastModifyDate": "2018-01-27"
+  },
+  "manualURL": "http://venuelightingeffects.com/wp-content/uploads/2016/03/Venue_by_Proline_TriStrip3Z_Manual.pdf",
+  "physical": {
+    "dimensions": [1042, 60, 138],
+    "weight": 2.8,
+    "power": 27,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12x 3W RGB LED",
+      "lumens": 2062
+    },
+    "lens": {
+      "degreesMinMax": [27, 27]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["Zone 3", "Zone 2", "Zone 1"]
+      ]
+    ],
+    "pixelGroups": {
+      "All Zones": ["Zone 1", "Zone 2", "Zone 3"]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "type": "Intensity",
+      "defaultValue": 0
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "No strobe"
+        },
+        {
+          "range": [16, 255],
+          "name": "Strobe 0-20Hz"
+        }
+      ]
+    },
+    "Dimmer Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 51],
+          "name": "Preset dimmer speed from display menu"
+        },
+        {
+          "range": [52, 101],
+          "name": "Dimmer speed mode off"
+        },
+        {
+          "range": [102, 152],
+          "name": "Dimmer speed mode 1 (fast speed)"
+        },
+        {
+          "range": [153, 203],
+          "name": "Dimmer speed mode 2 (medium speed)"
+        },
+        {
+          "range": [204, 255],
+          "name": "Dimmer speed mode 3 (slow speed)"
+        }
+      ]
+    },
+    "Color Macros": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "No function"
+        },
+        {
+          "range": [16, 255],
+          "name": "Color macros"
+        }
+      ]
+    },
+    "RGB / Auto Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow - fast"
+        }
+      ]
+    },
+    "Sound Sensitivity": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "Sound sensitivity off"
+        },
+        {
+          "range": [11, 255],
+          "name": "Sound sensitivity control"
+        }
+      ]
+    },
+    "RGB / Auto Mode": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "No function",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Strobe"
+          }
+        },
+        {
+          "range": [32, 63],
+          "name": "Pulse effect 0-100%",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
+        },
+        {
+          "range": [64, 95],
+          "name": "Pulse effect 100-0%",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
+        },
+        {
+          "range": [96, 114],
+          "name": "Pulse effect 100-0-100%",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
+        },
+        {
+          "range": [115, 122],
+          "name": "Auto program 1",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
+        },
+        {
+          "range": [123, 130],
+          "name": "Auto program 2",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
+        },
+        {
+          "range": [131, 138],
+          "name": "Auto program 3",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
+        },
+        {
+          "range": [139, 146],
+          "name": "Auto program 4",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
+        },
+        {
+          "range": [147, 154],
+          "name": "Auto program 5",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
+        },
+        {
+          "range": [155, 162],
+          "name": "Auto program 6",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
+        },
+        {
+          "range": [163, 170],
+          "name": "Auto program 7",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
+        },
+        {
+          "range": [171, 178],
+          "name": "Auto program 8",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
+        },
+        {
+          "range": [179, 186],
+          "name": "Auto program 9",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
+        },
+        {
+          "range": [187, 194],
+          "name": "Auto program 10",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
+        },
+        {
+          "range": [195, 202],
+          "name": "Auto program 11",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
+        },
+        {
+          "range": [203, 210],
+          "name": "Auto program 12",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
+        },
+        {
+          "range": [211, 218],
+          "name": "Auto program 13",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
+        },
+        {
+          "range": [219, 226],
+          "name": "Auto program 14",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
+          }
+        },
+        {
+          "range": [227, 255],
+          "name": "Sound program",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green $pixelKey": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue $pixelKey": {
+      "type": "Single Color",
+      "color": "Blue"
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red All Zones",
+        "Green All Zones",
+        "Blue All Zones"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red All Zones",
+        "Green All Zones",
+        "Blue All Zones",
+        "Dimmer",
+        "Strobe",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Red All Zones",
+        "Green All Zones",
+        "Blue All Zones",
+        "Color Macros",
+        "Strobe / Speed / Sound Sensitivity",
+        "RGB / Auto Mode",
+        "Dimmer",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "14-channel",
+      "shortName": "14ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "Color Macros",
+        "Strobe / Speed / Sound Sensitivity",
+        "RGB / Auto Mode",
+        "Dimmer",
+        "Dimmer Speed"
+      ]
+    }
+  ]
+}

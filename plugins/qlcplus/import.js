@@ -1,7 +1,7 @@
 const xml2js = require(`xml2js`);
 
 module.exports.name = `QLC+`;
-module.exports.version = `0.4.0`;
+module.exports.version = `0.4.1`;
 
 module.exports.import = function importQLCplus(str, filename, resolve, reject) {
   const parser = new xml2js.Parser();
@@ -18,7 +18,9 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
       fixtures: {},
       warnings: {}
     };
-    const fix = {};
+    const fix = {
+      $schema: `https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json`
+    };
 
     try {
       const fixture = xml.FixtureDefinition;

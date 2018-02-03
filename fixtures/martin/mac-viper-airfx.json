@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
   "name": "MAC Viper AirFX",
   "shortName": "ViperAirFX",
   "categories": ["Moving Head", "Color Changer"],
@@ -857,7 +858,6 @@
             "Quadray 4": "Ray 4 Rotation"
           }
         },
-        
         {
           "range": [81, 100],
           "name": "No function",

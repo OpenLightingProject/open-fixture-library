@@ -19,6 +19,7 @@ Please update these docs and [`cli/debug-env-variables.js`](../cli/debug-env-var
 |-----------------------|--------------------------------------------|------------------------------------|
 |`ALLOW_SEARCH_INDEXING`| `allowed` or anything else                 | If the value is not `allowed`, a `<meta>` tag is added to tell search engines not to index the page. (On [Heroku](ui.md), this is `allowed` in master but not in pull request deployments) |
 |`GITHUB_USER_TOKEN`    | A 40-digit [GitHub access token][gh-token] | Used to create pull request when adding fixtures and create/delete comments after running [GitHub tests](testing.md) |
+|`FORCE_HTTPS`          | `force` or anything else                   | If the value is `force`, always redirect to HTTPS. | 
 |`NODE_ENV`             | `production` or `development` (default)    | Introduced by Express.js, `production` enables caching, minimizing and more optimizations [improving the performance a lot][node-env-perf]. |
 |`PORT`                 | A free port number, defaults to `5000`     | On which port to start the server. |
 |`TRAVIS_BRANCH`        |                                            | [Set by Travis][travis-docs]       |

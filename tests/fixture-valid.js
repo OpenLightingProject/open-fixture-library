@@ -1,6 +1,7 @@
 const util = require(`util`);
+const Ajv = require(`ajv`);
 
-const schema = require(`../fixtures/schema.js`);
+const fixtureSchema = require(`../schema-fixture.json`);
 
 const Fixture = require(`../lib/model/Fixture.js`);
 const Channel = require(`../lib/model/Channel.js`);
@@ -47,9 +48,11 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
   modeNames = new Set();
   modeShortNames = new Set();
 
-  const schemaErrors = schema.Fixture.errors(fixtureJson);
-  if (schemaErrors !== false) {
-    result.errors.push(module.exports.getErrorString(`File does not match schema.`, schemaErrors));
+
+  const validate = (new Ajv()).compile(fixtureSchema);
+  const valid = validate(fixtureJson);
+  if (!valid) {
+    result.errors.push(module.exports.getErrorString(`File does not match schema.`, validate.errors));
     return result;
   }
 
@@ -141,19 +144,12 @@ function checkPhysical(physical, modeDescription = ``) {
     return;
   }
 
-  const physicalJson = physical.jsonObject;
-  if (isNotEmpty(physicalJson, `physical${modeDescription} is empty. Please remove it or add data.`)) {
-    for (const property of [`bulb`, `lens`, `focus`]) {
-      isNotEmpty(physicalJson[property], `physical.${property}${modeDescription} is empty. Please remove it or add data.`);
-    }
+  if (physical.lensDegreesMin > physical.lensDegreesMax) {
+    result.errors.push(`physical.lens.degreesMinMax${modeDescription} is an invalid range.`);
+  }
 
-    if (physical.lensDegreesMin > physical.lensDegreesMax) {
-      result.errors.push(`physical.lens.degreesMinMax${modeDescription} is an invalid range.`);
-    }
-
-    if (physical.hasMatrixPixels && fixture.matrix === null) {
-      result.errors.push(`physical.matrixPixels is set but fixture.matrix is missing.`);
-    }
+  if (physical.hasMatrixPixels && fixture.matrix === null) {
+    result.errors.push(`physical.matrixPixels is set but fixture.matrix is missing.`);
   }
 }
 
@@ -163,19 +159,6 @@ function checkPhysical(physical, modeDescription = ``) {
  */
 function checkMatrix(matrix) {
   if (matrix === null) {
-    return;
-  }
-
-  const matrixJson = matrix.jsonObject;
-  const hasPixelCount = `pixelCount` in matrixJson;
-  const hasPixelKeys = `pixelKeys` in matrixJson;
-
-  if (!hasPixelCount && !hasPixelKeys) {
-    result.errors.push(`Matrix must either define 'pixelCount' or 'pixelKeys'.`);
-    return;
-  }
-  if (hasPixelCount && hasPixelKeys) {
-    result.errors.push(`Matrix can't define both 'pixelCount' and 'pixelKeys'.`);
     return;
   }
 
@@ -225,18 +208,10 @@ function checkPixelGroups(matrix) {
  * @param {!object} fixtureJson The fixture's JSON data
  */
 function checkTemplateChannels(fixtureJson) {
-  if (isNotEmpty(fixtureJson.templateChannels, `templateChannels are empty. Add a channel or remove it.`)) {
-    if (fixture.matrix === null) {
-      result.errors.push(`templateChannels are defined but matrix data is missing.`);
-      return;
-    }
-
+  if (fixtureJson.templateChannels) {
     for (const templateChannel of fixture.templateChannels) {
       checkTemplateChannel(templateChannel);
     }
-  }
-  else if (fixture.matrix !== null) {
-    result.errors.push(`Matrix is defined but templateChannels are missing.`);
   }
 }
 
@@ -273,18 +248,16 @@ function checkTemplateChannel(templateChannel) {
  * @param {!object} fixtureJson The fixture's JSON data
  */
 function checkChannels(fixtureJson) {
-  if (isNotEmpty(fixtureJson.availableChannels, `availableChannels are empty. Add a channel or remove it.`)) {
-    for (const channel of fixture.availableChannels) {
-      // forbid coexistance of channels 'Red' and 'red'
-      // for template channels, this is checked by possibleMatrixChKeys
-      module.exports.checkUniqueness(
-        definedChannelKeys,
-        channel.key,
-        result,
-        `Channel key '${channel.key}' is already defined (maybe in another letter case).`
-      );
-      checkChannel(channel);
-    }
+  for (const channel of fixture.availableChannels) {
+    // forbid coexistance of channels 'Red' and 'red'
+    // for template channels, this is checked by possibleMatrixChKeys
+    module.exports.checkUniqueness(
+      definedChannelKeys,
+      channel.key,
+      result,
+      `Channel key '${channel.key}' is already defined (maybe in another letter case).`
+    );
+    checkChannel(channel);
   }
 
   for (const channel of fixture.matrixChannels) {
@@ -306,17 +279,6 @@ function checkChannel(channel) {
     result.errors.push(`Channel '${channel.key}' should rather be a fine channel alias of its corresponding coarse channel.`);
   }
   checkTemplateVariables(channel.name, []);
-
-  // Nothing channels
-  if (channel.type === `Nothing`) {
-    const isNotEmpty = Object.keys(channel.jsonObject).some(
-      prop => prop !== `type` && prop !== `name`
-    );
-    if (isNotEmpty) {
-      result.errors.push(`Channel '${channel.name}' with type 'Nothing' can only set 'name' as additional property.`);
-      return;
-    }
-  }
 
   // Fine channels
   for (const alias of channel.fineChannelAliases) {
@@ -342,16 +304,6 @@ function checkChannel(channel) {
       `Switching channel alias '${alias}' in channel '${channel.key}' is already defined (maybe in another letter case).`
     );
   }
-  if (!channel.hasDefaultValue && channel.switchingChannelAliases.length > 0) {
-    result.errors.push(`defaultValue is missing in channel '${channel.key}' although it defines switching channels.`);
-  }
-
-  if (channel.color !== null && channel.type !== `Single Color`) {
-    result.warnings.push(`color in channel '${channel.key}' defined but channel type is not 'Single Color'.`);
-  }
-  else if (channel.color === null && channel.type === `Single Color`) {
-    result.errors.push(`color in channel '${channel.key}' undefined but channel type is 'Single Color'.`);
-  }
 
   if (channel.hasDefaultValue && channel.defaultValue > channel.maxDmxBound) {
     result.errors.push(`defaultValue must be less or equal to ${channel.maxDmxBound} in channel '${channel.key}'.`);
@@ -361,7 +313,9 @@ function checkChannel(channel) {
     result.errors.push(`highlightValue must be less or equal to ${channel.maxDmxBound} in channel '${channel.key}'.`);
   }
 
-  checkCapabilities(channel, minUsedFineness);
+  if (channel.hasCapabilities) {
+    checkCapabilities(channel, minUsedFineness);
+  }
 }
 
 /**
@@ -389,10 +343,6 @@ function checkTemplateVariables(str, allowedVariables) {
  * @param {number} minUsedFineness The smallest fineness that the channel is used in a mode. This controls how the capability ranges have to look like.
  */
 function checkCapabilities(channel, minUsedFineness) {
-  if (!channel.hasCapabilities) {
-    return;
-  }
-
   let rangesInvalid = false;
 
   for (let i = 0; i < channel.capabilities.length; i++) {
@@ -402,18 +352,6 @@ function checkCapabilities(channel, minUsedFineness) {
     // it doesn't make sense to check later ranges
     if (!rangesInvalid) {
       rangesInvalid = !checkRange(channel, i, minUsedFineness);
-    }
-
-    if ((cap.color || cap.image) && ![`Multi-Color`, `Effect`, `Gobo`].includes(channel.type)) {
-      result.errors.push(`color or image present in capability '${cap.name}' (#${i + 1}) but improper channel type '${channel.type}' in channel '${channel.key}'.`);
-    }
-
-    if (cap.color2 && !cap.color) {
-      result.errors.push(`color2 present but color missing in capability '${cap.name}' (#${i + 1}) in channel '${channel.key}'.`);
-    }
-
-    if (cap.color && cap.image) {
-      result.errors.push(`color and image cannot be present at the same time in capability '${cap.name}' (#${i + 1}) in channel '${channel.key}'.`);
     }
 
     const switchingChannelAliases = Object.keys(cap.switchChannels);
@@ -508,18 +446,15 @@ function checkMode(mode) {
     `Mode shortName '${mode.shortName}' is not unique (test is not case-sensitive).`
   );
 
-  if (/\bmode\b/i.test(mode.name) || /\bmode\b/i.test(mode.shortName)) {
-    result.errors.push(`Mode name and shortName must not contain the word 'mode' in mode '${mode.shortName}'.`);
-  }
-
-  if (mode.name.match(/^(\d+)(?:\s+|-)?(?:ch|channels?)$/)) {
+  // "6ch" / "8-Channel" / "9 channels" mode names
+  if (mode.name.toLowerCase().match(/^(\d+)(?:\s+|-)?(?:ch|channels?)$/)) {
     const intendedLength = parseInt(RegExp.$1);
 
     if (mode.channels.length !== intendedLength) {
       result.warnings.push(`Mode '${mode.name}' should probably have ${RegExp.$1} channels but actually has ${mode.channels.length}.`);
     }
     if (mode.shortName !== `${intendedLength}ch`) {
-      result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch' instead of '${mode.shortName}'.`);
+      result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch'.`);
     }
   }
 
@@ -583,6 +518,7 @@ function checkMatrixInsertBlockRepeatFor(repeatFor, mode) {
 
   const usedPixelKeys = new Set();
 
+  // simple uniqueness is already checked by schema, but this test also checks for pixelKeys in pixelGroups
   for (const pixelKey of repeatFor) {
     if (fixture.matrix.pixelKeys.includes(pixelKey)) {
       module.exports.checkUniqueness(
@@ -820,12 +756,6 @@ function checkCategories() {
  */
 function checkRdm(manKey, uniqueValues) {
   if (fixture.rdm === null) {
-    // modes may not have a rdmPersonalityIndex property
-    for (const mode of fixture.modes) {
-      if (mode.rdmPersonalityIndex !== null) {
-        result.errors.push(`Mode '${mode.shortName}' has RDM data, but fixture has not.`);
-      }
-    }
     return;
   }
 
@@ -855,19 +785,6 @@ function checkRdm(manKey, uniqueValues) {
       );
     }
   }
-}
-
-// returns whether the object contains data
-function isNotEmpty(obj, messageIfEmpty) {
-  if (obj !== undefined) {
-    if (Object.keys(obj).length === 0) {
-      result.errors.push(messageIfEmpty);
-    }
-    else {
-      return true;
-    }
-  }
-  return false;
 }
 
 /**

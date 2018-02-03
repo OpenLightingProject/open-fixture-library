@@ -10,6 +10,8 @@ const browserify = require(`browserify-middleware`);
 const minifyHTML = require(`html-minifier`).minify;
 const bodyParser = require(`body-parser`);
 
+const redirectToHttps = require(`./views/middleware/redirect-to-https.js`);
+
 const plugins = require(`./plugins/plugins.js`);
 const Fixture = require(`./lib/model/Fixture.js`);
 
@@ -22,6 +24,9 @@ app.set(`port`, (process.env.PORT || 5000));
 app.listen(app.get(`port`), () => {
   console.log(`Node app is running on port`, app.get(`port`));
 });
+
+// redirect to HTTPS site version if environment forces HTTPS
+app.use(redirectToHttps);
 
 // enable compression
 app.use(compression({

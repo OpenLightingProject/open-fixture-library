@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-manufacturers.json",
   "5star-systems": {
     "name": "5Star Systems"
   },
@@ -10,9 +11,17 @@
     "name": "American DJ",
     "website": "http://www.adj.com/"
   },
+  "ayra": {
+    "name": "Ayra",
+    "website": "https://www.bax-shop.co.uk/ayra"
+  },
   "cameo": {
     "name": "cameo",
     "website": "http://www.cameolight.com/"
+  },
+  "clay-paky": {
+    "name": "Clay Paky",
+    "website": "https://www.claypaky.it/en/home/"
   },
   "coemar": {
     "name": "Coemar",
@@ -112,8 +121,9 @@
     "name": "Stairville",
     "website": "http://www.thomann.de"
   },
-  "ayra": {
-    "name": "Ayra",
-    "website": "https://www.bax-shop.co.uk/ayra"
+  "venue": {
+    "name": "Venue",
+    "comment": "Venue by Proline",
+    "website": "http://venuelightingeffects.com/"
   }
 }
