@@ -908,10 +908,7 @@ function textInput(modelKey, options = {}) {
   let html = `<input type="text"`;
   html += getRequiredAttr(options.required);
   html += getPlaceholderAttr(options.hint);
-
-  if (options.property && options.property.pattern) {
-    html += ` pattern="${options.property.pattern}"`;
-  }
+  html += getPatternAttr(options.property);
 
   html += getAdditionalAttributes(options.attributes);
   html += ` v-model="${modelKey}" />`;
@@ -941,6 +938,9 @@ function textareaInput(modelKey, options = {}) {
   let html = `<textarea`;
   html += getRequiredAttr(options.required);
   html += getPlaceholderAttr(options.hint);
+  html += getPatternAttr(options.property);
+  html += (options.property && options.property.minLength) ? ` minlength="${options.property.minLength}"` : ``;
+
   html += getAdditionalAttributes(options.attributes);
   html += ` v-model="${modelKey}"></textarea>`;
   return html;
@@ -952,7 +952,6 @@ function textareaInput(modelKey, options = {}) {
  * @returns {!string} The input element HTML.
  */
 function numberInput(modelKey, options = {}) {
-  console.log(modelKey, options.property);
   let html = `<input type="number"`;
   html += getRequiredAttr(options.required);
 
@@ -1088,6 +1087,15 @@ function getRequiredAttr(required) {
  */
 function getPlaceholderAttr(hint) {
   return hint ? ` placeholder="${hint}"` : ``;
+}
+
+/**
+ * Helper function to return the HTML "pattern" attribute if present in JSON schema.
+ * @param {?string} property The JSON schema property info.
+ * @returns {!string} The HTML "pattern" attribute or an empty string.
+ */
+function getPatternAttr(property) {
+  return (property && property.pattern) ? ` pattern="${property.pattern}"` : ``;
 }
 
 /**
