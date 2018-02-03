@@ -410,6 +410,11 @@
       "lastModifyDate": "2017-10-16",
       "lastAction": "modified"
     },
+    "robe/robin-600e-spot": {
+      "name": "Robin 600E Spot",
+      "lastModifyDate": "2018-02-02",
+      "lastAction": "created"
+    },
     "robe/robin-ledbeam-150": {
       "name": "Robin LEDBeam 150",
       "lastModifyDate": "2018-01-05",
@@ -610,6 +615,7 @@
     "robe": [
       "colorspot-2500e-at",
       "dj-scan-250-xt",
+      "robin-600e-spot",
       "robin-ledbeam-150",
       "robin-ledwash-600"
     ],
@@ -710,6 +716,7 @@
       "qtx/lux-ld30w",
       "robe/colorspot-2500e-at",
       "robe/dj-scan-250-xt",
+      "robe/robin-600e-spot",
       "robe/robin-ledbeam-150",
       "robe/robin-ledwash-600",
       "showtec/horizon-8",
@@ -800,6 +807,7 @@
       "prolights/diamond19",
       "qtx/lux-ld30w",
       "robe/colorspot-2500e-at",
+      "robe/robin-600e-spot",
       "robe/robin-ledbeam-150",
       "robe/robin-ledwash-600",
       "showtec/kanjo-spot-60",
@@ -875,6 +883,7 @@
       "mdg/theone-atmospheric-generator",
       "qtx/lux-ld30w",
       "robe/dj-scan-250-xt",
+      "robe/robin-600e-spot",
       "showtec/horizon-8",
       "showtec/kanjo-spot-60",
       "showtec/kanjo-wash-rgb",
@@ -966,6 +975,9 @@
     "Massimo Callegari": [
       "clay-paky/sharpy"
     ],
+    "NiKoyes": [
+      "robe/robin-600e-spot"
+    ],
     "eklynx": [
       "american-dj/galaxian-3d"
     ],
@@ -1017,6 +1029,7 @@
       "key": "robe",
       "models": {
         "7": "colorspot-2500e-at",
+        "57": "robin-600e-spot",
         "118": "robin-ledwash-600"
       }
     },
@@ -1030,6 +1043,7 @@
   "lastUpdated": [
     "glp/impression-laser",
     "prolights/pixpan16",
+    "robe/robin-600e-spot",
     "prolights/diamond19",
     "clay-paky/sharpy",
     "stairville/mh-x25",
