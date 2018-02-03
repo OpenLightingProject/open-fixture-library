@@ -21,30 +21,25 @@
       "degreesMinMax": [74, 74]
     }
   },
-  "availableChannels": {
-    "Derby Dimmer": {
-      "type": "Intensity",
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "range": [0, ]
-        }
+  "matrix": {
+    "pixelKeys": [
+      [
+        [null, null, "S1",  "D1",   "S2", null, null],
+        [null, "D8", null,  null,   null, "D2", null],
+        ["S8", null, null,  null,   null, null, "S3"],
+        ["D7", null, null, "Laser", null, null, "D3"],
+        ["S7", null, null,  null,   null, null, "S4"],
+        [null, "D6", null,  null,   null, "D4", null],
+        [null, null, "S6",  "D5",   "S5", null, null]
       ]
-    },
-    "Derby Colors": {
-      "type": "Multi-Color",
-      "defaultValue": 0
-    },
-    "Color Change Speed": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Speed slow-fast"
-        }
-      ]
-    },
-    "Derby Strobe": {
+    ],
+    "pixelGroups": {
+      "White Strobe": ["S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8"],
+      "Derby": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8"]
+    }
+  },
+  "templateChannels": {
+    "$pixelKey Strobe": {
       "type": "Strobe",
       "defaultValue": 0,
       "capabilities": [
@@ -62,7 +57,7 @@
         }
       ]
     },
-    "Derby Rotation": {
+    "$pixelKey Rotation": {
       "type": "Speed",
       "defaultValue": 130,
       "capabilities": [
@@ -81,6 +76,219 @@
         {
           "range": [134, 255],
           "name": "Rotation CCW slow-fast"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Derby Dimmer": {
+      "type": "Intensity",
+      "defaultValue": 0
+    },
+    "Derby Colors": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Blackout"
+        },
+        {
+          "range": [10, 14],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [15, 19],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [20, 24],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [25, 29],
+          "name": "Amber",
+          "color": "#ffbf00"
+        },
+        {
+          "range": [30, 34],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [35, 39],
+          "name": "White + red",
+          "color": "#ffffff",
+          "color2": "#ff0000"
+        },
+        {
+          "range": [40, 44],
+          "name": "Red + green",
+          "color": "#ff0000",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [45, 49],
+          "name": "Green + blue",
+          "color": "#00ff00",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [50, 54],
+          "name": "Blue + amber",
+          "color": "#0000ff",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [55, 59],
+          "name": "Amber + white",
+          "color": "#ffbf00",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [60, 64],
+          "name": "White + green",
+          "color": "#ffffff",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [65, 69],
+          "name": "Green + amber",
+          "color": "#00ff00",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [70, 74],
+          "name": "Amber + red",
+          "color": "#ffbf00",
+          "color2": "#ff0000"
+        },
+        {
+          "range": [75, 79],
+          "name": "Red + blue",
+          "color": "#ff0000",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [80, 84],
+          "name": "Blue + white",
+          "color": "#0000ff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [85, 89],
+          "name": "Red + green + blue",
+          "color": "#ffffff"
+        },
+        {
+          "range": [90, 94],
+          "name": "Red + green + amber ",
+          "color": "#ffff00",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [95, 99],
+          "name": "Red + green + white",
+          "color": "#ffff00",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [100, 104],
+          "name": "Red + amber + blue",
+          "color": "#ff00ff",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [105, 109],
+          "name": "Red + white + blue",
+          "color": "#ff00ff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [110, 114],
+          "name": "Red + amber + white",
+          "color": "#ffaaaa",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [115, 119],
+          "name": "Amber + green + blue ",
+          "color": "#ffbf00",
+          "color2": "#00ffff"
+        },
+        {
+          "range": [120, 124],
+          "name": "Blue + green + white",
+          "color": "#00ffff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [125, 129],
+          "name": "Amber + green + white",
+          "color": "#aaffaa",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [130, 134],
+          "name": "Amber + white + blue",
+          "color": "#ffbf00",
+          "color2": "#aaaaff"
+        },
+        {
+          "range": [135, 139],
+          "name": "Red + green + blue + amber",
+          "color": "#ffffff",
+          "color2": "#aaaaff"
+        },
+        {
+          "range": [140, 144],
+          "name": "Red + green + blue + white",
+          "color": "#ffffff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [145, 149],
+          "name": "Blue + green + white + amber",
+          "color": "#aaffff",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [150, 154],
+          "name": "Red + green + amber + white",
+          "color": "#ffffaa",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [155, 159],
+          "name": "White + red + blue + amber",
+          "color": "#ffaaff",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [160, 164],
+          "name": "Red + green + blue + amber + white",
+          "color": "#ffffff",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [165, 209],
+          "name": "Automatic color change (one color) "
+        },
+        {
+          "range": [210, 255],
+          "name": "Automatic color change (two colors)"
+        }
+      ]
+    },
+    "Color Change Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Speed slow-fast"
         }
       ]
     },
@@ -181,27 +389,6 @@
           "color2": "#00aa00"
         }
       ]
-    },
-    "Laser Strobe": {
-      "type": "Strobe",
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "range": [0, 4],
-          "name": "No strobe"
-        },
-        {
-          "range": [5, 249],
-          "name": "Strobe slow-fast"
-        },
-        {
-          "range": [250, 255],
-          "name": "Sound controlled strobe"
-        }
-      ]
-    },
-    "Laser Rotation": {
-      "type": "Speed"
     },
     "Auto Mode": {
       "type": "Effect",
