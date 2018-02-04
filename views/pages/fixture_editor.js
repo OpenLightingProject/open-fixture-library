@@ -954,33 +954,7 @@ function textareaInput(modelKey, options = {}) {
 function numberInput(modelKey, options = {}) {
   let html = `<input type="number"`;
   html += getRequiredAttr(options.required);
-
-  const minimum = getMininium(options.property);
-  if (minimum !== null) {
-    if (/max/i.test(modelKey)) {
-      // this is the max input of a minMax pair (like degreesMinMax)
-      // set the minimum to either the property's minimum or min input's value
-      const minModelKey = modelKey.replace(/([mM])ax/, `$1in`);
-      html += ` :min="typeof ${minModelKey} === 'number' ? ${minModelKey} : ${minimum}"`;
-    }
-    else {
-      html += ` min="${minimum}"`;
-    }
-  }
-
-  const maximum = getMaximum(options.property);
-  if (maximum) {
-    if (/min/i.test(modelKey)) {
-      // this is the min input of a minMax pair (like degreesMinMax)
-      // set the maximum to either the property's maximum or max input's value
-      const maxModelKey = modelKey.replace(/([mM])in/, `$1ax`);
-      html += ` :max="typeof ${maxModelKey} === 'number' ? ${maxModelKey} : ${maximum}"`;
-    }
-    else {
-      html += ` max="${maximum}"`;
-    }
-  }
-
+  html += getMinMaxAttributes(modelKey, options);
   html += ` step="${options.property.type === `integer` ? `1` : `any`}"`;
 
   html += getPlaceholderAttr(options.hint);
@@ -991,37 +965,68 @@ function numberInput(modelKey, options = {}) {
 }
 
 /**
- * @param {!object} property The JSON schema property info.
- * @returns {?number} The lowest possible value the property can be set to, or null if there's no minimum.
+ * @param {!string} modelKey The Vue reference used in v-model.
+ * @param {!InputOptions} options Additional optional parameters.
+ * @returns {!string} The HTML attribute(s) declaring a minimum and/or maximum value, or an empty string.
  */
-function getMininium(property) {
-  if (property) {
-    if (`minimum` in property) {
-      return property.minimum;
+function getMinMaxAttributes(modelKey, options) {
+  let html = ``;
+
+  for (const minMax of [`in`, `ax`]) {
+    let minMaxValue = null;
+
+    if (options.property) {
+      if (`m${minMax}imum` in options.property) {
+        minMaxValue = options.property[`m${minMax}imum`];
+      }
+      if (`exclusiveM${minMax}imum` in options.property) {
+        minMaxValue = options.property[`exclusiveM${minMax}imum`];
+
+        // integer values have a discrete minimum, floats not
+        if (options.property.type === `integer`) {
+          minMaxValue++;
+        }
+        else {
+          // this could be validated in future
+          html += ` data-exclusive-m${minMax}imum="${minMaxValue}"`;
+        }
+      }
     }
-    if (`exclusiveMinimum` in property) {
-      return property.exclusiveMinimum;
-    }
+
+    html += getMinMaxAttribute(modelKey, `m${minMax}`, minMaxValue);
   }
 
-  return null;
+  return html;
 }
 
 /**
- * @param {!object} property The JSON schema property info.
- * @returns {?number} The highest possible value the property can be set to, or null if there's no maximum.
+ * @param {!string} modelKey The Vue reference used in v-model.
+ * @param {'min'|'max'} minMax Whether a minimum or maximum is desired.
+ * @param {!number} minMaxValue The numeric value of the minimum or maximum.
+ * @returns {!string} The HTML attribute declaring a minimum or maximum value, or an empty string.
  */
-function getMaximum(property) {
-  if (property) {
-    if (`maximum` in property) {
-      return property.maximum;
+function getMinMaxAttribute(modelKey, minMax, minMaxValue) {
+  let html = ``;
+
+  // when we have a minimum value, we have to identify a maximum counterpart of a range
+  const pattern = minMax === `min` ? /([mM])ax/i : /([mM])in/i;
+  const replaceString = minMax === `min` ? `$1in` : `$1ax`;
+
+  if (minMaxValue !== null) {
+    // check if this is part of a minMax pair (like degreesMinMax)
+    if (pattern.test(modelKey)) {
+      // the modelKey for the other input of the range
+      const otherModelKey = modelKey.replace(pattern, replaceString);
+
+      // set the minimum to either the property's minimum or the other input's value (analogous with maximum)
+      html += ` :${minMax}="typeof ${otherModelKey} === 'number' ? ${otherModelKey} : ${minMaxValue}"`;
     }
-    if (`exclusiveMinimum` in property) {
-      return property.exclusiveMaximum;
+    else {
+      html += ` ${minMax}="${minMaxValue}"`;
     }
   }
 
-  return null;
+  return html;
 }
 
 /**
