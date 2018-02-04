@@ -891,8 +891,8 @@ function getSubmitDialogString() {
 /**
  * @typedef InputOptions
  * @type {object}
- * @property {?boolean} required Whether this should be a required field.
  * @property {?object} property The JSON Schema property that specifies the input value.
+ * @property {?boolean} required Whether this should be a required field.
  * @property {?string} hint A hint to the user that helps filling the right value into this input element.
  * @property {?string} additionHint Only for select inputs: Hint about a new, user-chosen value, like "other DMX connector"
  * @property {?object} attributes Additional HTML attributes that shall be added to the input element. Attribute names pointing to its value.
@@ -909,6 +909,8 @@ function textInput(modelKey, options = {}) {
   html += getRequiredAttr(options.required);
   html += getPlaceholderAttr(options.hint);
   html += getPatternAttr(options.property);
+  html += getMinlengthAttr(options.property);
+  html += getMaxlengthAttr(options.property);
 
   html += getAdditionalAttributes(options.attributes);
   html += ` v-model="${modelKey}" />`;
@@ -924,6 +926,10 @@ function urlInput(modelKey, options = {}) {
   let html = `<input type="url"`;
   html += getRequiredAttr(options.required);
   html += getPlaceholderAttr(options.hint);
+  html += getPatternAttr(options.property);
+  html += getMinlengthAttr(options.property);
+  html += getMaxlengthAttr(options.property);
+
   html += getAdditionalAttributes(options.attributes);
   html += ` v-model="${modelKey}" />`;
   return html;
@@ -939,7 +945,8 @@ function textareaInput(modelKey, options = {}) {
   html += getRequiredAttr(options.required);
   html += getPlaceholderAttr(options.hint);
   html += getPatternAttr(options.property);
-  html += (options.property && options.property.minLength) ? ` minlength="${options.property.minLength}"` : ``;
+  html += getMinlengthAttr(options.property);
+  html += getMaxlengthAttr(options.property);
 
   html += getAdditionalAttributes(options.attributes);
   html += ` v-model="${modelKey}"></textarea>`;
@@ -1101,6 +1108,24 @@ function getPlaceholderAttr(hint) {
  */
 function getPatternAttr(property) {
   return (property && property.pattern) ? ` pattern="${property.pattern}"` : ``;
+}
+
+/**
+ * Helper function to return the HTML "minlength" attribute if present in JSON schema.
+ * @param {?string} property The JSON schema property info.
+ * @returns {!string} The HTML "minlength" attribute or an empty string.
+ */
+function getMinlengthAttr(property) {
+  return (property && property.minLength) ? ` minlength="${property.minLength}"` : ``;
+}
+
+/**
+ * Helper function to return the HTML "maxlength" attribute if present in JSON schema.
+ * @param {?string} property The JSON schema property info.
+ * @returns {!string} The HTML "maxlength" attribute or an empty string.
+ */
+function getMaxlengthAttr(property) {
+  return (property && property.maxLength) ? ` maxlength="${property.maxLength}"` : ``;
 }
 
 /**
