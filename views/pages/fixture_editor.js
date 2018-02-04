@@ -30,71 +30,50 @@ module.exports = function(options) {
 
   // Existing manufacturer
   str += `<section v-if="fixture.useExistingManufacturer">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Choose from list</span>`;
-  str += `<span class="value">`;
-  str += `<select required v-model="fixture.manufacturerShortName" :class="{ empty: fixture.manufacturerShortName === '' }" ref="existingManufacturerSelect">`;
-  str += `<option value="">Please select a manufacturer</option>`;
-  for (const man of Object.keys(options.manufacturers)) {
-    str += `<option value="${man}">${options.manufacturers[man].name}</option>`;
-  }
-  str += `</select>`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  let manufacturerShortNameInput = `<select required v-model="fixture.manufacturerShortName" :class="{ empty: fixture.manufacturerShortName === '' }" ref="existingManufacturerSelect">`;
+  manufacturerShortNameInput += `<option value="">Please select a manufacturer</option>`;
+  manufacturerShortNameInput += Object.keys(options.register.manufacturers).map(
+    man => `<option value="${man}">${options.manufacturers[man].name}</option>`
+  ).join(``);
+  manufacturerShortNameInput += `</select>`;
+  str += simpleLabel(`Choose from list`, manufacturerShortNameInput);
   str += `<div class="button-bar">or <a href="#add-new-manufacturer" @click.prevent="switchManufacturer(false)">add a new manufacturer</a></div>`;
   str += `</section>`; // [v-if="fixture.useExistingManufacturer"]
 
   // New manufacturer
   str += `<div v-else>`;
   str += `<section class="new-manufacturer-name">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Name</span>`;
-  str += `<span class="value">`;
-  str += textInput(`fixture.newManufacturerName`, properties.manufacturer.name, null, null, ` ref="newManufacturerNameInput"`);
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Name`, textInput(`fixture.newManufacturerName`, {
+    property: properties.manufacturer.name,
+    required: true,
+    attributes: { ref: `newManufacturerNameInput` }
+  }));
   str += `</section>`;
 
   str += `<section class="new-manufacturer-shortName">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Unique short name</span>`;
-  str += `<span class="value">`;
-  str += `<input type="text" required pattern="[a-z0-9-]+" title="Use only lowercase letters, numbers and dashes." v-model="fixture.newManufacturerShortName" />`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Unique short name`, textInput(`fixture.newManufacturerShortName`, {
+    property: properties.manufacturerKey,
+    required: true,
+    attributes: { title: `Use only lowercase letters, numbers and dashes.` }
+  }));
   str += `</section>`;
 
   str += `<section class="new-manufacturer-website">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Website</span>`;
-  str += `<span class="value">`;
-  str += urlInput(`fixture.newManufacturerWebsite`, properties.manufacturer.website);
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Website`, urlInput(`fixture.newManufacturerWebsite`, {
+    property: properties.manufacturer.website
+  }));
   str += `</section>`;
 
   str += `<section class="new-manufacturer-comment">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Comment</span>`;
-  str += `<span class="value">`;
-  str += textInput(`fixture.newManufacturerComment`, properties.manufacturer.comment);
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Comment`, textInput(`fixture.newManufacturerComment`, {
+    property: properties.manufacturer.comment
+  }));
   str += `</section>`;
 
   str += `<section class="new-manufacturer-rdmId">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label"><abbr title="Remote Device Management">RDM</abbr> ID</span>`;
-  str += `<span class="value">`;
-  str += numberInput(`fixture.newManufacturerRdmId`, properties.manufacturer.rdmId);
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`<abbr title="Remote Device Management">RDM</abbr> ID`, numberInput(`fixture.newManufacturerRdmId`, {
+    property: properties.manufacturer.rdmId
+  }));
   str += `</section>`;
 
   str += `<div class="button-bar">or <a href="#use-existing-manufacturer" @click.prevent="switchManufacturer(true)">choose an existing manufacturer</a></div>`;
@@ -108,23 +87,17 @@ module.exports = function(options) {
   str += `<h2>Fixture info</h2>`;
 
   str += `<section class="fixture-name">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Name</span>`;
-  str += `<span class="value">`;
-  str += textInput(`fixture.name`, properties.fixture.name);
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Name`, textInput(`fixture.name`, {
+    property: properties.fixture.name,
+    required: true
+  }));
   str += `</section>`;
 
   str += `<section class="fixture-shortName">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Unique short name</span>`;
-  str += `<span class="value">`;
-  str += textInput(`fixture.shortName`, properties.fixture.shortName, `defaults to name`);
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Unique short name`, textInput(`fixture.shortName`, {
+    property: properties.fixture.shortName,
+    hint: `defaults to name`
+  }));
   str += `</section>`;
 
   const fixtureCategories = JSON.stringify(properties.fixture.categories.items.enum.map(
@@ -143,44 +116,29 @@ module.exports = function(options) {
   str += `</section>`;
 
   str += `<section class="comment">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Comment</span>`;
-  str += `<span class="value">`;
-  str += textareaInput(`fixture.comment`, properties.fixture.comment);
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Comment`, textareaInput(`fixture.comment`, {
+    property: properties.fixture.comment
+  }));
   str += `</section>`;
 
   str += `<section class="manualURL">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Manual URL</span>`;
-  str += `<span class="value">`;
-  str += urlInput(`fixture.manualURL`, properties.fixture.manualURL);
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Manual URL`, urlInput(`fixture.manualURL`, {
+    property: properties.fixture.manualURL
+  }));
   str += `</section>`;
 
   str += `<section class="rdmModelId">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label"><abbr title="Remote Device Management">RDM</abbr> model ID</span>`;
-  str += `<span class="value">`;
-  str += numberInput(`fixture.rdmModelId`, properties.manufacturer.rdmId); // use manufacturer.rdmId's properties to prevent required attribute
-  str += `<span class="error-message" hidden></span>`;
-  str += `<span class="hint">The RDM manufacturer ID is saved per manufacturer.</span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`<abbr title="Remote Device Management">RDM</abbr> model ID`, numberInput(`fixture.rdmModelId`, {
+    property: properties.fixture.rdm.properties.modelId
+  }),
+  `The RDM manufacturer ID is saved per manufacturer.`
+  );
   str += `</section>`;
 
   str += `<section class="rdmSoftwareVersion" v-if="fixture.rdmModelId !== ''">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">RDM software version</span>`;
-  str += `<span class="value">`;
-  str += textInput(`fixture.rdmSoftwareVersion`, properties.fixture.rdm.properties.softwareVersion);
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`RDM software version`, textInput(`fixture.rdmSoftwareVersion`, {
+    property: properties.fixture.rdm.properties.softwareVersion
+  }));
   str += `</section>`;
 
   str += `</section>`; // .fixture-info
@@ -208,35 +166,20 @@ module.exports = function(options) {
   str += `<h2>Author data</h2>`;
 
   str += `<section class="author">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Your name</span>`;
-  str += `<span class="value">`;
-  str += `<input type="text" placeholder="e.g. Anonymous" required v-model="fixture.metaAuthor" />`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Your name`, textInput(`fixture.metaAuthor`, { required: true, hint: `e.g. Anonymous`})
+  );
   str += `</section>`;
 
   str += `<section class="github-username">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">GitHub username</span>`;
-  str += `<span class="value">`;
-  str += `<input type="text" v-model="fixture.metaGithubUsername" />`;
-  str += `<span class="hint">If you want to be mentioned in the pull request.</span>`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`GitHub username`, textInput(`fixture.metaGithubUsername`),
+    `If you want to be mentioned in the pull request.`
+  );
   str += `</section>`;
 
   str += `<section class="honeypot" hidden aria-hidden="true">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Ignore this!</span>`;
-  str += `<span class="value">`;
-  str += `<input type="text" v-model="honeypot" />`;
-  str += `<span class="hint">Spammers are likely to fill this field. Leave it empty to show that you're a human.</span>`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Ignore this!`, textInput(`honeypot`),
+    `Spammers are likely to fill this field. Leave it empty to show that you're a human.`
+  );
   str += `</section>`;
 
   str += `</section>`; // .user
@@ -276,100 +219,97 @@ function getPhysicalTemplate() {
   str += `<section class="physical-dimensions validate-group">`;
   str += `<span class="label">Dimensions</span>`;
   str += `<span class="value">`;
-  str += numberInput(`value.dimensionsWidth`, properties.dimensionsXYZ.items, `width`, ` :required="dimensionRequired" ref="firstInput"`);
+  str += numberInput(`value.dimensionsWidth`, {
+    property: properties.dimensionsXYZ.items,
+    hint: `width`,
+    attributes: {
+      ':required': `dimensionRequired`,
+      ref: `firstInput`
+    }
+  });
   str += ` &times; `;
-  str += numberInput(`value.dimensionsHeight`, properties.dimensionsXYZ.items, `height`, ` :required="dimensionRequired"`);
+  str += numberInput(`value.dimensionsHeight`, {
+    property: properties.dimensionsXYZ.items,
+    hint: `height`,
+    attributes: { ':required': `dimensionRequired` }
+  });
   str += ` &times; `;
-  str += numberInput(`value.dimensionsDepth`, properties.dimensionsXYZ.items, `depth`, ` :required="dimensionRequired"`);
+  str += numberInput(`value.dimensionsDepth`, {
+    property: properties.dimensionsXYZ.items,
+    hint: `depth`,
+    attributes: { ':required': `dimensionRequired` }
+  });
   str += ` mm`;
   str += `<span class="error-message" hidden></span>`;
   str += `</span>`;
   str += `</section>`;
 
   str += `<section class="physical-weight">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Weight</span>`;
-  str += `<span class="value">`;
-  str += numberInput(`value.weight`, properties.physical.weight);
-  str += ` kg`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Weight`, `${numberInput(`value.weight`, {
+    property: properties.physical.weight
+  })} kg`
+  );
   str += `</section>`;
 
   str += `<section class="physical-power">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Power</span>`;
-  str += `<span class="value">`;
-  str += numberInput(`value.power`, properties.physical.power);
-  str += ` W`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Power`, `${numberInput(`value.power`, {
+    property: properties.physical.power
+  })} W`
+  );
   str += `</section>`;
 
   str += `<section class="physical-DMXconnector">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">DMX connector</span>`;
-  str += `<span class="value">`;
-  str += selectInput(`value.DMXconnector`, properties.physical.DMXconnector, `other DMX connector`);
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`DMX connector`, selectInput(`value.DMXconnector`, {
+    property: properties.physical.DMXconnector,
+    additionHint: `other DMX connector`
+  }));
   str += `</section>`;
 
   str += `<h4>Bulb</h4>`;
 
   str += `<section class="physical-bulb-type">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Bulb type</span>`;
-  str += `<span class="value">`;
-  str += textInput(`value.bulb.type`, properties.physicalBulb.type, `e.g. LED`);
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Bulb type`, textInput(`value.bulb.type`, {
+    property: properties.physicalBulb.type,
+    hint: `e.g. LED`
+  }));
   str += `</section>`;
 
   str += `<section class="physical-bulb-colorTemperature">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Color temperature</span>`;
-  str += `<span class="value">`;
-  str += numberInput(`value.bulb.colorTemperature`, properties.physicalBulb.colorTemperature);
-  str += ` K`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Color temperature`, `${numberInput(`value.bulb.colorTemperature`, {
+    property: properties.physicalBulb.colorTemperature
+  })} K`
+  );
   str += `</section>`;
 
   str += `<section class="physical-bulb-lumens">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Lumens</span>`;
-  str += `<span class="value">`;
-  str += numberInput(`value.bulb.lumens`, properties.physicalBulb.lumens);
-  str += ` lm`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Lumens`, `${numberInput(`value.bulb.lumens`, {
+    property: properties.physicalBulb.lumens
+  })} lm`
+  );
   str += `</section>`;
 
   str += `<h4>Lens</h4>`;
 
   str += `<section class="physical-lens-name">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Lens name</span>`;
-  str += `<span class="value">`;
-  str += textInput(`value.lens.name`, properties.physicalLens.name);
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Lens name`, textInput(`value.lens.name`, {
+    property: properties.physicalLens.name
+  }));
   str += `</section>`;
 
   str += `<section class="physical-lens-degrees validate-group">`;
   str += `<span class="label">Light cone</span>`;
   str += `<span class="value">`;
-  str += numberInput(`value.lens.degreesMin`, properties.physicalLens.degreesMinMax.items, `min`, ` :required="degreesRequired"`);
+  str += numberInput(`value.lens.degreesMin`, {
+    property: properties.physicalLens.degreesMinMax.items,
+    hint: `min`,
+    attributes: { ':required': `degreesRequired` }
+  });
   str += ` .. `;
-  str += numberInput(`value.lens.degreesMax`, properties.physicalLens.degreesMinMax.items, `max`, ` :required="degreesRequired"`);
+  str += numberInput(`value.lens.degreesMax`, {
+    property: properties.physicalLens.degreesMinMax.items,
+    hint: `max`,
+    attributes: { ':required': `degreesRequired` }
+  });
   str += ` °`;
   str += `<span class="error-message" hidden></span>`;
   str += `</span>`;
@@ -378,35 +318,22 @@ function getPhysicalTemplate() {
   str += `<h4>Focus</h4>`;
 
   str += `<section class="physical-focus-type">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Focus type</span>`;
-  str += `<span class="value">`;
-  str += selectInput(`value.focus.type`, properties.physicalFocus.type, `other focus type`);
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Focus type`, selectInput(`value.focus.type`, {
+    property: properties.physicalFocus.type,
+    additionHint: `other focus type`
+  }));
   str += `</section>`;
 
   str += `<section class="physical-focus-panMax">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Pan maximum</span>`;
-  str += `<span class="value">`;
-  str += numberInput(`value.focus.panMax`, properties.physicalFocus.panMax);
-  str += ` °`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Pan maximum`, numberInput(`value.focus.panMax`, {
+    property: properties.physicalFocus.panMax
+  }));
   str += `</section>`;
 
   str += `<section class="physical-focus-tiltMax">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Tilt maximum</span>`;
-  str += `<span class="value">`;
-  str += numberInput(`value.focus.tiltMax`, properties.physicalFocus.tiltMax);
-  str += ` °`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Tilt maximum`, numberInput(`value.focus.tiltMax`, {
+    property: properties.physicalFocus.tiltMax
+  }));
   str += `</section>`;
 
   str += `</div>`;
@@ -430,33 +357,31 @@ function getModeTemplate() {
   str += `<h2>Mode</h2>`;
 
   str += `<section class="mode-name">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Name</span>`;
-  str += `<span class="value">`;
-  str += `<input type="text"${getRequiredAttr(properties.mode.name)} pattern="^((?!mode)(?!Mode).)*$" title="The name must not contain the word 'mode'." placeholder="e.g. Extended" v-model="mode.name" ref="firstInput" />`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Name`, textInput(`mode.name`, {
+    property: properties.mode.name.allOf[1],
+    required: true,
+    hint: `e.g. Extended`,
+    attributes: {
+      title: `The name must not contain the word 'mode'`,
+      ref: `firstInput`
+    }
+  }));
   str += `</section>`;
 
   str += `<section class="mode-shortName">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Unique short name</span>`;
-  str += `<span class="value">`;
-  str += `<input type="text"${getRequiredAttr(properties.mode.shortName)} pattern="^((?!mode)(?!Mode).)*$" title="The name must not contain the word 'mode'." placeholder="e.g. ext; defaults to name" v-model="mode.shortName" />`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Unique short name`, textInput(`mode.shortName`, {
+    property: properties.mode.shortName.allOf[1],
+    hint: `e.g. ext; defaults to name`,
+    attributes: {
+      title: `The name must not contain the word 'mode'`
+    }
+  }));
   str += `</section>`;
 
   str += `<section class="mode-rdmPersonalityIndex" v-if="fixture.rdmModelId !== ''">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">RDM personality index</span>`;
-  str += `<span class="value">`;
-  str += numberInput(`mode.rdmPersonalityIndex`, properties.mode.rdmPersonalityIndex);
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`RDM personality index`, numberInput(`mode.rdmPersonalityIndex`, {
+    property: properties.mode.rdmPersonalityIndex
+  }));
   str += `</section>`;
 
   str += `<h3>Physical override</h3>`;
@@ -584,125 +509,80 @@ function getChannelDialogString() {
   str += `<div v-else>`;
 
   str += `<section class="channel-name">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Name</span>`;
-  str += `<span class="value">`;
-  str += `<input type="text" required v-model="channel.name" pattern="^[A-Z0-9]((?!\\bFine\\b)(?!\\bfine\\b)(?!\\d+(?:\\s|-|_)*[Bb]it)(?!MSB)(?!LSB).)*$" title="Please start with an uppercase letter or a number. Don't create fine channels here, set its resolution below instead." class="channelName" />`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Name`, `<input type="text" required v-model="channel.name" pattern="^[A-Z0-9]((?!\\bFine\\b)(?!\\bfine\\b)(?!\\d+(?:\\s|-|_)*[Bb]it)(?!MSB)(?!LSB).)*$" title="Please start with an uppercase letter or a number. Don't create fine channels here, set its resolution below instead." class="channelName" />`
+  );
   str += `</section>`;
 
   str += `<section class="channel-type">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Type</span>`;
-  str += `<span class="value">`;
-  str += selectInput(`channel.type`, properties.channel.type, `other channel type`);
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Type`, selectInput(`channel.type`, {
+    property: properties.channel.type,
+    required: true,
+    additionHint: `other channel type`
+  }));
   str += `</section>`;
 
   str += `<section class="channel-color" v-if="channel.type == 'Single Color'">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Color</span>`;
-  str += `<span class="value">`;
-  str += selectInput(`channel.color`, properties.channel.color, `other channel color`, true);
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Color`, selectInput(`channel.color`, {
+    property: properties.channel.color,
+    required: true,
+    additionHint: `other channel color`
+  }));
   str += `</section>`;
 
   str += `<h3>DMX values</h3>`;
 
   str += `<section class="channel-fineness">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Channel resolution</span>`;
-  str += `<span class="value">`;
-  str += `<select required v-model.number="channel.fineness">`;
-  str += `<option value="0" selected>8 bit (No fine channels)</option>`;
-  str += `<option value="1">16 bit (1 fine channel)</option>`;
-  str += `<option value="2">24 bit (2 fine channels)</option>`;
-  str += `</select>`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Channel resolution`, `<select required v-model.number="channel.fineness">`
+    + `<option value="0" selected>8 bit (No fine channels)</option>`
+    + `<option value="1">16 bit (1 fine channel)</option>`
+    + `<option value="2">24 bit (2 fine channels)</option>`
+    + `</select>`
+  );
   str += `</section>`;
 
   str += `<section class="channel-defaultValue">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Default</span>`;
-  str += `<span class="value">`;
-  str += `<input type="number" min="0" :max="Math.pow(256, channel.fineness+1)-1" step="1" v-model.number="channel.defaultValue" />`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Default`, `<input type="number" min="0" :max="Math.pow(256, channel.fineness+1)-1" step="1" v-model.number="channel.defaultValue" />`
+  );
   str += `</section>`;
 
   str += `<section class="channel-highlightValue">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Highlight</span>`;
-  str += `<span class="value">`;
-  str += `<input type="number" min="0" :max="Math.pow(256, channel.fineness+1)-1" step="1" v-model.number="channel.highlightValue" />`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Highlight`, `<input type="number" min="0" :max="Math.pow(256, channel.fineness+1)-1" step="1" v-model.number="channel.highlightValue" />`
+  );
   str += `</section>`;
 
   str += `<section class="channel-invert">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Invert?</span>`;
-  str += `<span class="value">`;
-  str += booleanInput(`channel.invert`, properties.channel.invert);
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Invert?`, booleanInput(`channel.invert`, {
+    property: properties.channel.invert
+  }));
   str += `</section>`;
 
   str += `<section class="channel-constant">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Constant?</span>`;
-  str += `<span class="value">`;
-  str += booleanInput(`channel.constant`, properties.channel.constant);
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Constant?`, booleanInput(`channel.constant`, {
+    property: properties.channel.constant
+  }));
   str += `</section>`;
 
   str += `<section class="channel-crossfade">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Crossfade?</span>`;
-  str += `<span class="value">`;
-  str += booleanInput(`channel.crossfade`, properties.channel.crossfade);
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Crossfade?`, booleanInput(`channel.crossfade`, {
+    property: properties.channel.crossfade
+  }));
   str += `</section>`;
 
   str += `<section class="channel-precedence">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Precedence</span>`;
-  str += `<span class="value">`;
-  str += selectInput(`channel.precedence`, properties.channel.precedence, null);
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Precedence`, selectInput(`channel.precedence`, {
+    property: properties.channel.precedence
+  }));
   str += `</section>`;
 
   str += `<h3>Capabilities</h3>`;
 
   str += `<section class="channel-cap-fineness" v-if="channel.fineness > 0">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Capability resolution</span>`;
-  str += `<span class="value">`;
-  str += `<select required v-model.number="channel.capFineness">`;
-  str += `<option value="0" selected>8 bit (range 0 - 255)</option>`;
-  str += `<option value="1" v-if="channel.fineness >= 1">16 bit (range 0 - 65535)</option>`;
-  str += `<option value="2" v-if="channel.fineness >= 2">24 bit (range 0 - 16777215)</option>`;
-  str += `</select>`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(`Capability resolution`, `<select required v-model.number="channel.capFineness">`
+    + `<option value="0" selected>8 bit (range 0 - 255)</option>`
+    + `<option value="1" v-if="channel.fineness >= 1">16 bit (range 0 - 65535)</option>`
+    + `<option value="2" v-if="channel.fineness >= 2">24 bit (range 0 - 16777215)</option>`
+    + `</select>`
+  );
   str += `</section>`;
 
   str += `<section><button class="secondary" @click.prevent="channel.wizard.show = !channel.wizard.show">${svg.getSvg(`capability-wizard`)} {{ channel.wizard.show ? 'Close' : 'Open' }} Capability Wizard</button>`;
@@ -784,147 +664,218 @@ function getSubmitDialogString() {
   return str;
 }
 
+/**
+ * @param {!string} labelText A text to display next to the input field.
+ * @param {!string} input The html for a form element. Best suited in conjunction with one of the input functions.
+ * @param {?string} hint Optional. Display a small hint text below the input field.
+ * @returns {!string} The html of a validatable label containing the given text and input field.
+ */
+function simpleLabel(labelText, input, hint) {
+  let html = `<label class="validate-group">`;
+
+  html += `<span class="label">${labelText}</span>`;
+
+  html += `<span class="value">`;
+  html += input;
+  html += `<span class="error-message" hidden></span>`;
+  if (hint) {
+    html += `<span class="hint">${hint}</span>`;
+  }
+  html += `</span>`;
+
+  html += `</label>`;
+  return html;
+}
 
 /**
- * @param {!string} key The key in Vue's data model that this text input element is bound to.
- * @param {*} property The JS Schema property that this input element has to obey.
- * @param {?string} hint A hint to the user that helps filling the right value into this input element.
- * @param {?string} id A unique HTML ID for this input element and related elements (like data lists). Only required if property.enum is true.
- * @param {!string} [additionalAttributes=''] Additional HTML attributes that shall be added to the input element.
+ * @typedef InputOptions
+ * @type {object}
+ * @property {?object} property The JSON Schema property that specifies the input value.
+ * @property {?boolean} required Whether this should be a required field.
+ * @property {?string} hint A hint to the user that helps filling the right value into this input element.
+ * @property {?string} additionHint Only for select inputs: Hint about a new, user-chosen value, like "other DMX connector"
+ * @property {?object} attributes Additional HTML attributes that shall be added to the input element. Attribute names pointing to its value.
+ */
+
+
+/**
+ * @param {!string} modelKey The Vue reference used in v-model.
+ * @param {!InputOptions} options Additional optional parameters.
  * @returns {!string} The input element HTML, possibly together with related elements.
  */
-function textInput(key, property, hint, id, additionalAttributes = ``) {
+function textInput(modelKey, options = {}) {
   let html = `<input type="text"`;
-  html += getRequiredAttr(property);
+  html += getRequiredAttr(options.required);
+  html += getPlaceholderAttr(options.hint);
+  html += getPatternAttr(options.property);
+  html += getMinlengthAttr(options.property);
+  html += getMaxlengthAttr(options.property);
 
-  if (property.enum) {
-    html += ` list="${id}-list"`;
-  }
-
-  html += getPlaceholderAttr(hint);
-  html += additionalAttributes;
-  html += ` v-model="${key}" />`;
-
-  if (property.enum) {
-    html += `<datalist id="${id}-list">`;
-    for (const item of property.enum) {
-      html += `<option>${item}</option>`;
-    }
-    html += `</datalist>`;
-  }
-
+  html += getAdditionalAttributes(options.attributes);
+  html += ` v-model="${modelKey}" />`;
   return html;
 }
 
 /**
- * @param {!string} key The key in Vue's data model that this URL input element is bound to.
- * @param {*} property The JS Schema property that this input element has to obey.
- * @param {?string} hint A hint to the user that helps filling the right value into this input element.
+ * @param {!string} modelKey The Vue reference used in v-model.
+ * @param {!InputOptions} options Additional optional parameters.
  * @returns {!string} The input element HTML.
  */
-function urlInput(key, property, hint) {
+function urlInput(modelKey, options = {}) {
   let html = `<input type="url"`;
-  html += getRequiredAttr(property);
-  html += getPlaceholderAttr(hint);
-  html += ` v-model="${key}" />`;
+  html += getRequiredAttr(options.required);
+  html += getPlaceholderAttr(options.hint);
+  html += getPatternAttr(options.property);
+  html += getMinlengthAttr(options.property);
+  html += getMaxlengthAttr(options.property);
+
+  html += getAdditionalAttributes(options.attributes);
+  html += ` v-model="${modelKey}" />`;
   return html;
 }
 
 /**
- * @param {!string} key The key in Vue's data model that this textarea element is bound to.
- * @param {*} property The JS Schema property that this textarea element has to obey.
- * @param {?string} hint A hint to the user that helps filling the right value into this textarea element.
+ * @param {!string} modelKey The Vue reference used in v-model.
+ * @param {!InputOptions} options Additional optional parameters.
  * @returns {!string} The textarea element HTML.
  */
-function textareaInput(key, property, hint) {
+function textareaInput(modelKey, options = {}) {
   let html = `<textarea`;
-  html += getRequiredAttr(property);
-  html += getPlaceholderAttr(hint);
-  html += ` v-model="${key}"></textarea>`;
+  html += getRequiredAttr(options.required);
+  html += getPlaceholderAttr(options.hint);
+  html += getPatternAttr(options.property);
+  html += getMinlengthAttr(options.property);
+  html += getMaxlengthAttr(options.property);
+
+  html += getAdditionalAttributes(options.attributes);
+  html += ` v-model="${modelKey}"></textarea>`;
   return html;
 }
 
 /**
- * @param {!string} key The key in Vue's data model that this number input element is bound to.
- * @param {*} property The JS Schema property that this input element has to obey.
- * @param {?string} hint A hint to the user that helps filling the right value into this input element.
- * @param {!string} [additionalAttributes=''] Additional HTML attributes that shall be added to the input element.
+ * @param {!string} modelKey The Vue reference used in v-model.
+ * @param {!InputOptions} options Additional optional parameters.
  * @returns {!string} The input element HTML.
  */
-function numberInput(key, property, hint, additionalAttributes = ``) {
+function numberInput(modelKey, options = {}) {
   let html = `<input type="number"`;
-  html += getRequiredAttr(property);
+  html += getRequiredAttr(options.required);
+  html += getMinMaxAttributes(modelKey, options);
+  html += ` step="${options.property.type === `integer` ? `1` : `any`}"`;
 
-  if (property.minimum !== undefined) {
-    if (/max/i.test(key)) {
-      const minKey = key.replace(/([mM])ax/, `$1in`);
-      html += ` :min="typeof ${minKey} === 'number' ? ${minKey} : ${property.minimum}"`;
-    }
-    else {
-      html += ` min="${property.minimum}"`;
-    }
-  }
-
-  if (property.maximum !== undefined) {
-    if (/min/i.test(key)) {
-      const maxKey = key.replace(/([mM])in/, `$1ax`);
-      html += ` :max="typeof ${maxKey} === 'number' ? ${maxKey} : ${property.maximum}"`;
-    }
-    else {
-      html += ` max="${property.maximum}"`;
-    }
-  }
-
-  html += ` step="${property.type === `integer` ? `1` : `any`}"`;
-
-  html += getPlaceholderAttr(hint);
-  html += additionalAttributes;
-  html += ` v-model.number="${key}" />`;
+  html += getPlaceholderAttr(options.hint);
+  html += getAdditionalAttributes(options.attributes);
+  html += ` v-model.number="${modelKey}" />`;
 
   return html;
 }
 
 /**
- * @param {!string} key The key in Vue's data model that this select element is bound to.
- * @param {*} property The JS Schema property that this select element has to obey.
- * @param {?string} [additionName=null] If not null, the user is able to select an entry with this name, which allows them to enter a custom value in an input next to the select element. The input HTML is also generated here.
- * @param {!boolean} [forceRequired=false] Force this select element to be required, even if the property does not say so.
+ * @param {!string} modelKey The Vue reference used in v-model.
+ * @param {!InputOptions} options Additional optional parameters.
+ * @returns {!string} The HTML attribute(s) declaring a minimum and/or maximum value, or an empty string.
+ */
+function getMinMaxAttributes(modelKey, options) {
+  if (!options.property) {
+    return ``;
+  }
+
+  let html = ``;
+
+  for (const minMax of [`in`, `ax`]) {
+    let minMaxValue = null;
+
+    if (`m${minMax}imum` in options.property) {
+      minMaxValue = options.property[`m${minMax}imum`];
+    }
+    else if (`exclusiveM${minMax}imum` in options.property) {
+      minMaxValue = options.property[`exclusiveM${minMax}imum`];
+
+      // integer values have a discrete minimum, floats not
+      if (options.property.type === `integer`) {
+        minMaxValue += minMax === `in` ? 1 : -1;
+      }
+      else {
+        // this could be validated in future
+        html += ` data-exclusive-m${minMax}imum="${minMaxValue}"`;
+      }
+    }
+
+    if (minMaxValue !== null) {
+      html += getMinMaxAttribute(modelKey, `m${minMax}`, minMaxValue);
+    }
+  }
+
+  return html;
+}
+
+/**
+ * @param {!string} modelKey The Vue reference used in v-model.
+ * @param {'min'|'max'} minMax Whether a minimum or maximum is desired.
+ * @param {!number} minMaxValue The numeric value of the minimum or maximum.
+ * @returns {!string} The HTML attribute declaring a minimum or maximum value, or an empty string.
+ */
+function getMinMaxAttribute(modelKey, minMax, minMaxValue) {
+  let html = ``;
+
+  // when we have a minimum value, we have to identify a maximum counterpart of a range
+  const pattern = minMax === `min` ? /([mM])ax/ : /([mM])in/;
+  const replaceString = minMax === `min` ? `$1in` : `$1ax`;
+
+  // check if this is part of a minMax pair (like degreesMinMax)
+  if (pattern.test(modelKey)) {
+    // the modelKey for the other input of the range
+    const otherModelKey = modelKey.replace(pattern, replaceString);
+
+    // set the minimum to either the property's minimum or the other input's value (analogous with maximum)
+    html += ` :${minMax}="typeof ${otherModelKey} === 'number' ? ${otherModelKey} : ${minMaxValue}"`;
+  }
+  else {
+    html += ` ${minMax}="${minMaxValue}"`;
+  }
+
+  return html;
+}
+
+/**
+ * @param {!string} modelKey The Vue reference used in v-model.
+ * @param {!InputOptions} options Additional optional parameters.
  * @returns {!string} The select element HTML.
  */
-function selectInput(key, property, additionName = null, forceRequired = false) {
-  const allowAdditions = additionName !== null;
-
+function selectInput(modelKey, options = {}) {
   let html = `<select`;
-  html += getRequiredAttr(property, forceRequired);
-  html += allowAdditions ? ` data-allow-additions="true"` : ``;
-  html += ` v-model="${key}"`;
-  html += ` :class="{ empty: ${key} === '' }">`;
+  html += getRequiredAttr(options.required);
+  html += getAdditionalAttributes(options.attributes);
+  html += options.additionHint ? ` data-allow-additions="true"` : ``;
+  html += ` v-model="${modelKey}"`;
+  html += ` :class="{ empty: ${modelKey} === '' }">`;
 
   html += `<option value="">unknown</option>`;
-  for (const item of property.enum) {
+  for (const item of options.property.enum) {
     html += `<option value="${item}">${item}</option>`;
   }
 
-  html += allowAdditions ? `<option value="[add-value]">${additionName}</option>` : ``;
+  html += options.additionHint ? `<option value="[add-value]">${options.additionHint}</option>` : ``;
 
   html += `</select>`;
 
-  html += allowAdditions ? ` <input type="text" class="addition"${getPlaceholderAttr(additionName)} v-if="${key} === '[add-value]'" v-focus required v-model="${key}New" />` : ``;
+  html += options.additionHint ? ` <input type="text" class="addition"${getPlaceholderAttr(options.additionHint)} v-if="${modelKey} === '[add-value]'" v-focus required v-model="${modelKey}New" />` : ``;
 
   return html;
 }
 
 /**
  * There are various ways to represent a boolean input element. Here, a select element with the options "unknown", "yes" and "no" is returned.
- * @param {!string} key The key in Vue's data model that this boolean input element is bound to.
- * @param {*} property The JS Schema property that this boolean input element has to obey.
+ * @param {!string} modelKey The Vue reference used in v-model.
+ * @param {!InputOptions} options Additional optional parameters.
  * @returns {!string} The boolean input element HTML.
  */
-function booleanInput(key, property) {
+function booleanInput(modelKey, options = {}) {
   let html = `<select`;
-  html += getRequiredAttr(property);
-  html += ` v-model="${key}"`;
-  html += ` class="boolean" :class="{ empty: ${key} === '' }">`;
+  html += getRequiredAttr(options.required);
+  html += getAdditionalAttributes(options.attributes);
+  html += ` v-model="${modelKey}"`;
+  html += ` class="boolean" :class="{ empty: ${modelKey} === '' }">`;
   html += `<option value="">unknown</option>`;
   html += `<option :value="true">yes</option>`;
   html += `<option :value="false">no</option>`;
@@ -935,12 +886,11 @@ function booleanInput(key, property) {
 
 /**
  * Helper function to return the HTML "required" attribute if neccessary.
- * @param {*} property The JS Schema property that the input element has to obey.
- * @param {!boolean} [forceRequired=false] Force the input element to be required, even if the property does not say so.
+ * @param {!boolean} required Whether the element is required or not.
  * @returns {!string} The HTML "required" attribute or an empty string.
  */
-function getRequiredAttr(property, forceRequired = false) {
-  return forceRequired || property.required ? ` required` : ``;
+function getRequiredAttr(required) {
+  return required ? ` required` : ``;
 }
 
 /**
@@ -949,5 +899,43 @@ function getRequiredAttr(property, forceRequired = false) {
  * @returns {!string} The HTML "placeholder" attribute with the hint or an empty string.
  */
 function getPlaceholderAttr(hint) {
-  return hint ? ` placeholder="${hint}"` : ``;
+  return hint ? ` placeholder="${hint.replace(`"`, `\\u0022`)}"` : ``;
+}
+
+/**
+ * Helper function to return the HTML "pattern" attribute if present in JSON schema.
+ * @param {?string} property The JSON schema property info.
+ * @returns {!string} The HTML "pattern" attribute or an empty string.
+ */
+function getPatternAttr(property) {
+  return (property && property.pattern) ? ` pattern="${property.pattern.replace(`"`, `\\u0022`)}"` : ``;
+}
+
+/**
+ * Helper function to return the HTML "minlength" attribute if present in JSON schema.
+ * @param {?string} property The JSON schema property info.
+ * @returns {!string} The HTML "minlength" attribute or an empty string.
+ */
+function getMinlengthAttr(property) {
+  return (property && property.minLength) ? ` minlength="${property.minLength}"` : ``;
+}
+
+/**
+ * Helper function to return the HTML "maxlength" attribute if present in JSON schema.
+ * @param {?string} property The JSON schema property info.
+ * @returns {!string} The HTML "maxlength" attribute or an empty string.
+ */
+function getMaxlengthAttr(property) {
+  return (property && property.maxLength) ? ` maxlength="${property.maxLength}"` : ``;
+}
+
+/**
+ * Helper function to return additional HTML attributes if neccessary.
+ * @param {?object} attributes Additional HTML attributes that shall be added to the input element. Attribute names pointing to its value.
+ * @returns {!string} The HTML attributes or an empty string.
+ */
+function getAdditionalAttributes(attributes = {}) {
+  return Object.keys(attributes).map(
+    attrName => ` ${attrName}="${attributes[attrName]}"`
+  ).join(``);
 }
