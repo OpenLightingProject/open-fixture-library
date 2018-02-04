@@ -979,14 +979,14 @@ function numberInput(modelKey, options = {}) {
 function getMinMaxAttributes(modelKey, options) {
   let html = ``;
 
+  if (options.property) {
   for (const minMax of [`in`, `ax`]) {
     let minMaxValue = null;
 
-    if (options.property) {
       if (`m${minMax}imum` in options.property) {
         minMaxValue = options.property[`m${minMax}imum`];
       }
-      if (`exclusiveM${minMax}imum` in options.property) {
+      else if (`exclusiveM${minMax}imum` in options.property) {
         minMaxValue = options.property[`exclusiveM${minMax}imum`];
 
         // integer values have a discrete minimum, floats not
@@ -998,9 +998,11 @@ function getMinMaxAttributes(modelKey, options) {
           html += ` data-exclusive-m${minMax}imum="${minMaxValue}"`;
         }
       }
-    }
 
+      if (minMaxValue !== null) {
     html += getMinMaxAttribute(modelKey, `m${minMax}`, minMaxValue);
+  }
+    }
   }
 
   return html;
@@ -1016,10 +1018,9 @@ function getMinMaxAttribute(modelKey, minMax, minMaxValue) {
   let html = ``;
 
   // when we have a minimum value, we have to identify a maximum counterpart of a range
-  const pattern = minMax === `min` ? /([mM])ax/i : /([mM])in/i;
+  const pattern = minMax === `min` ? /([mM])ax/ : /([mM])in/;
   const replaceString = minMax === `min` ? `$1in` : `$1ax`;
 
-  if (minMaxValue !== null) {
     // check if this is part of a minMax pair (like degreesMinMax)
     if (pattern.test(modelKey)) {
       // the modelKey for the other input of the range
@@ -1031,7 +1032,6 @@ function getMinMaxAttribute(modelKey, minMax, minMaxValue) {
     else {
       html += ` ${minMax}="${minMaxValue}"`;
     }
-  }
 
   return html;
 }
