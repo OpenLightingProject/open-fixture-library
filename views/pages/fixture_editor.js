@@ -30,81 +30,69 @@ module.exports = function(options) {
 
   // Existing manufacturer
   str += `<section v-if="fixture.useExistingManufacturer">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Choose from list</span>`;
-  str += `<span class="value">`;
-  str += `<select required v-model="fixture.manufacturerShortName" :class="{ empty: fixture.manufacturerShortName === '' }" ref="existingManufacturerSelect">`;
-  str += `<option value="">Please select a manufacturer</option>`;
-  for (const man of Object.keys(options.register.manufacturers)) {
-    str += `<option value="${man}">${options.manufacturers[man].name}</option>`;
-  }
-  str += `</select>`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Choose from list`,
+    [
+      `<select required v-model="fixture.manufacturerShortName" :class="{ empty: fixture.manufacturerShortName === '' }" ref="existingManufacturerSelect">`,
+      `<option value="">Please select a manufacturer</option>`,
+      Object.keys(options.register.manufacturers).map(
+        man => `<option value="${man}">${options.manufacturers[man].name}</option>`
+      ).join(``),
+      `</select>`
+    ].join(``)
+  );
   str += `<div class="button-bar">or <a href="#add-new-manufacturer" @click.prevent="switchManufacturer(false)">add a new manufacturer</a></div>`;
   str += `</section>`; // [v-if="fixture.useExistingManufacturer"]
 
   // New manufacturer
   str += `<div v-else>`;
   str += `<section class="new-manufacturer-name">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Name</span>`;
-  str += `<span class="value">`;
-  str += textInput(`fixture.newManufacturerName`, {
-    property: properties.manufacturer.name,
-    required: true,
-    attributes: { ref: `newManufacturerNameInput` }
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Name`,
+    textInput(`fixture.newManufacturerName`, {
+      property: properties.manufacturer.name,
+      required: true,
+      attributes: { ref: `newManufacturerNameInput` }
+    })
+  );
   str += `</section>`;
 
   str += `<section class="new-manufacturer-shortName">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Unique short name</span>`;
-  str += `<span class="value">`;
-  str += `<input type="text" required pattern="[a-z0-9-]+" title="Use only lowercase letters, numbers and dashes." v-model="fixture.newManufacturerShortName" />`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Unique short name`,
+    textInput(`fixture.newManufacturerShortName`, {
+      property: properties.manufacturerKey,
+      required: true,
+      attributes: { title: `Use only lowercase letters, numbers and dashes.` }
+    })
+  );
   str += `</section>`;
 
   str += `<section class="new-manufacturer-website">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Website</span>`;
-  str += `<span class="value">`;
-  str += urlInput(`fixture.newManufacturerWebsite`, {
-    property: properties.manufacturer.website
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Website`,
+    urlInput(`fixture.newManufacturerWebsite`, {
+      property: properties.manufacturer.website
+    })
+  );
   str += `</section>`;
 
   str += `<section class="new-manufacturer-comment">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Comment</span>`;
-  str += `<span class="value">`;
-  str += textInput(`fixture.newManufacturerComment`, {
-    property: properties.manufacturer.comment
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Comment`,
+    textInput(`fixture.newManufacturerComment`, {
+      property: properties.manufacturer.comment
+    })
+  );
   str += `</section>`;
 
   str += `<section class="new-manufacturer-rdmId">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label"><abbr title="Remote Device Management">RDM</abbr> ID</span>`;
-  str += `<span class="value">`;
-  str += numberInput(`fixture.newManufacturerRdmId`, {
-    property: properties.manufacturer.rdmId
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `<abbr title="Remote Device Management">RDM</abbr> ID`,
+    numberInput(`fixture.newManufacturerRdmId`, {
+      property: properties.manufacturer.rdmId
+    })
+  );
   str += `</section>`;
 
   str += `<div class="button-bar">or <a href="#use-existing-manufacturer" @click.prevent="switchManufacturer(true)">choose an existing manufacturer</a></div>`;
@@ -118,29 +106,23 @@ module.exports = function(options) {
   str += `<h2>Fixture info</h2>`;
 
   str += `<section class="fixture-name">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Name</span>`;
-  str += `<span class="value">`;
-  str += textInput(`fixture.name`, {
-    property: properties.fixture.name,
-    required: true
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Name`,
+    textInput(`fixture.name`, {
+      property: properties.fixture.name,
+      required: true
+    })
+  );
   str += `</section>`;
 
   str += `<section class="fixture-shortName">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Unique short name</span>`;
-  str += `<span class="value">`;
-  str += textInput(`fixture.shortName`, {
-    property: properties.fixture.shortName,
-    hint: `defaults to name`
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Unique short name`,
+    textInput(`fixture.shortName`, {
+      property: properties.fixture.shortName,
+      hint: `defaults to name`
+    })
+  );
   str += `</section>`;
 
   const fixtureCategories = JSON.stringify(properties.fixture.categories.items.enum.map(
@@ -159,52 +141,40 @@ module.exports = function(options) {
   str += `</section>`;
 
   str += `<section class="comment">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Comment</span>`;
-  str += `<span class="value">`;
-  str += textareaInput(`fixture.comment`, {
-    property: properties.fixture.comment
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Comment`,
+    textareaInput(`fixture.comment`, {
+      property: properties.fixture.comment
+    })
+  );
   str += `</section>`;
 
   str += `<section class="manualURL">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Manual URL</span>`;
-  str += `<span class="value">`;
-  str += urlInput(`fixture.manualURL`, {
-    property: properties.fixture.manualURL
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Manual URL`,
+    urlInput(`fixture.manualURL`, {
+      property: properties.fixture.manualURL
+    })
+  );
   str += `</section>`;
 
   str += `<section class="rdmModelId">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label"><abbr title="Remote Device Management">RDM</abbr> model ID</span>`;
-  str += `<span class="value">`;
-  str += numberInput(`fixture.rdmModelId`, {
-    property: properties.fixture.rdm.properties.modelId
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `<span class="hint">The RDM manufacturer ID is saved per manufacturer.</span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `<abbr title="Remote Device Management">RDM</abbr> model ID`,
+    numberInput(`fixture.rdmModelId`, {
+      property: properties.fixture.rdm.properties.modelId
+    }),
+    `The RDM manufacturer ID is saved per manufacturer.`
+  );
   str += `</section>`;
 
   str += `<section class="rdmSoftwareVersion" v-if="fixture.rdmModelId !== ''">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">RDM software version</span>`;
-  str += `<span class="value">`;
-  str += textInput(`fixture.rdmSoftwareVersion`, {
-    property: properties.fixture.rdm.properties.softwareVersion
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `RDM software version`,
+    textInput(`fixture.rdmSoftwareVersion`, {
+      property: properties.fixture.rdm.properties.softwareVersion
+    })
+  );
   str += `</section>`;
 
   str += `</section>`; // .fixture-info
@@ -232,35 +202,26 @@ module.exports = function(options) {
   str += `<h2>Author data</h2>`;
 
   str += `<section class="author">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Your name</span>`;
-  str += `<span class="value">`;
-  str += `<input type="text" placeholder="e.g. Anonymous" required v-model="fixture.metaAuthor" />`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Your name`,
+    textInput(`fixture.metaAuthor`, { required: true, hint: `e.g. Anonymous`})
+  );
   str += `</section>`;
 
   str += `<section class="github-username">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">GitHub username</span>`;
-  str += `<span class="value">`;
-  str += `<input type="text" v-model="fixture.metaGithubUsername" />`;
-  str += `<span class="hint">If you want to be mentioned in the pull request.</span>`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `GitHub username`,
+    textInput(`fixture.metaGithubUsername`),
+    `If you want to be mentioned in the pull request.`
+  );
   str += `</section>`;
 
   str += `<section class="honeypot" hidden aria-hidden="true">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Ignore this!</span>`;
-  str += `<span class="value">`;
-  str += `<input type="text" v-model="honeypot" />`;
-  str += `<span class="hint">Spammers are likely to fill this field. Leave it empty to show that you're a human.</span>`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Ignore this!`,
+    textInput(`honeypot`),
+    `Spammers are likely to fill this field. Leave it empty to show that you're a human.`
+  );
   str += `</section>`;
 
   str += `</section>`; // .user
@@ -326,97 +287,72 @@ function getPhysicalTemplate() {
   str += `</section>`;
 
   str += `<section class="physical-weight">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Weight</span>`;
-  str += `<span class="value">`;
-  str += numberInput(`value.weight`, {
-    property: properties.physical.weight
-  });
-  str += ` kg`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Weight`,
+    `${numberInput(`value.weight`, {
+      property: properties.physical.weight
+    })} kg`
+  );
   str += `</section>`;
 
   str += `<section class="physical-power">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Power</span>`;
-  str += `<span class="value">`;
-  str += numberInput(`value.power`, {
-    property: properties.physical.power
-  });
-  str += ` W`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Power`,
+    `${numberInput(`value.power`, {
+      property: properties.physical.power
+    })} W`
+  );
   str += `</section>`;
 
   str += `<section class="physical-DMXconnector">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">DMX connector</span>`;
-  str += `<span class="value">`;
-  str += selectInput(`value.DMXconnector`, {
-    property: properties.physical.DMXconnector,
-    additionHint: `other DMX connector`
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `DMX connector`,
+    selectInput(`value.DMXconnector`, {
+      property: properties.physical.DMXconnector,
+      additionHint: `other DMX connector`
+    })
+  );
   str += `</section>`;
 
   str += `<h4>Bulb</h4>`;
 
   str += `<section class="physical-bulb-type">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Bulb type</span>`;
-  str += `<span class="value">`;
-  str += textInput(`value.bulb.type`, {
-    property: properties.physicalBulb.type,
-    hint: `e.g. LED`
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Bulb type`,
+    textInput(`value.bulb.type`, {
+      property: properties.physicalBulb.type,
+      hint: `e.g. LED`
+    })
+  );
   str += `</section>`;
 
   str += `<section class="physical-bulb-colorTemperature">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Color temperature</span>`;
-  str += `<span class="value">`;
-  str += numberInput(`value.bulb.colorTemperature`, {
-    property: properties.physicalBulb.colorTemperature
-  });
-  str += ` K`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Color temperature`,
+    `${numberInput(`value.bulb.colorTemperature`, {
+      property: properties.physicalBulb.colorTemperature
+    })} K`
+  );
   str += `</section>`;
 
   str += `<section class="physical-bulb-lumens">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Lumens</span>`;
-  str += `<span class="value">`;
-  str += numberInput(`value.bulb.lumens`, {
-    property: properties.physicalBulb.lumens
-  });
-  str += ` lm`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Lumens`,
+    `${numberInput(`value.bulb.lumens`, {
+      property: properties.physicalBulb.lumens
+    })} lm`
+  );
   str += `</section>`;
 
   str += `<h4>Lens</h4>`;
 
   str += `<section class="physical-lens-name">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Lens name</span>`;
-  str += `<span class="value">`;
-  str += textInput(`value.lens.name`, {
-    property: properties.physicalLens.name
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Lens name`,
+    textInput(`value.lens.name`, {
+      property: properties.physicalLens.name
+    })
+  );
   str += `</section>`;
 
   str += `<section class="physical-lens-degrees validate-group">`;
@@ -441,42 +377,31 @@ function getPhysicalTemplate() {
   str += `<h4>Focus</h4>`;
 
   str += `<section class="physical-focus-type">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Focus type</span>`;
-  str += `<span class="value">`;
-  str += selectInput(`value.focus.type`, {
-    property: properties.physicalFocus.type,
-    additionHint: `other focus type`
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Focus type`,
+    selectInput(`value.focus.type`, {
+      property: properties.physicalFocus.type,
+      additionHint: `other focus type`
+    })
+  );
   str += `</section>`;
 
   str += `<section class="physical-focus-panMax">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Pan maximum</span>`;
-  str += `<span class="value">`;
-  str += numberInput(`value.focus.panMax`, {
-    property: properties.physicalFocus.panMax
-  });
-  str += ` °`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Pan maximum`,
+    numberInput(`value.focus.panMax`, {
+      property: properties.physicalFocus.panMax
+    })
+  );
   str += `</section>`;
 
   str += `<section class="physical-focus-tiltMax">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Tilt maximum</span>`;
-  str += `<span class="value">`;
-  str += numberInput(`value.focus.tiltMax`, {
-    property: properties.physicalFocus.tiltMax
-  });
-  str += ` °`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Tilt maximum`,
+    numberInput(`value.focus.tiltMax`, {
+      property: properties.physicalFocus.tiltMax
+    })
+  );
   str += `</section>`;
 
   str += `</div>`;
@@ -500,51 +425,40 @@ function getModeTemplate() {
   str += `<h2>Mode</h2>`;
 
   str += `<section class="mode-name">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Name</span>`;
-  str += `<span class="value">`;
-  str += textInput(`mode.name`, {
-    property: properties.mode.name,
-    required: true,
-    hint: `e.g. Extended`,
-    attributes: {
-      pattern: `^((?!mode)(?!Mode).)*$`,
-      title: `The name must not contain the word 'mode'`,
-      ref: `firstInput`
-    }
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Name`,
+    textInput(`mode.name`, {
+      property: properties.mode.name.allOf[1],
+      required: true,
+      hint: `e.g. Extended`,
+      attributes: {
+        title: `The name must not contain the word 'mode'`,
+        ref: `firstInput`
+      }
+    })
+  );
   str += `</section>`;
 
   str += `<section class="mode-shortName">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Unique short name</span>`;
-  str += `<span class="value">`;
-  str += textInput(`mode.shortName`, {
-    property: properties.mode.shortName,
-    hint: `e.g. ext; defaults to name`,
-    attributes: {
-      pattern: `^((?!mode)(?!Mode).)*$`,
-      title: `The name must not contain the word 'mode'`
-    }
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Unique short name`,
+    textInput(`mode.shortName`, {
+      property: properties.mode.shortName.allOf[1],
+      hint: `e.g. ext; defaults to name`,
+      attributes: {
+        title: `The name must not contain the word 'mode'`
+      }
+    })
+  );
   str += `</section>`;
 
   str += `<section class="mode-rdmPersonalityIndex" v-if="fixture.rdmModelId !== ''">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">RDM personality index</span>`;
-  str += `<span class="value">`;
-  str += numberInput(`mode.rdmPersonalityIndex`, {
-    property: properties.mode.rdmPersonalityIndex
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `RDM personality index`,
+    numberInput(`mode.rdmPersonalityIndex`, {
+      property: properties.mode.rdmPersonalityIndex
+    })
+  );
   str += `</section>`;
 
   str += `<h3>Physical override</h3>`;
@@ -672,141 +586,108 @@ function getChannelDialogString() {
   str += `<div v-else>`;
 
   str += `<section class="channel-name">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Name</span>`;
-  str += `<span class="value">`;
-  str += `<input type="text" required v-model="channel.name" pattern="^[A-Z0-9]((?!\\bFine\\b)(?!\\bfine\\b)(?!\\d+(?:\\s|-|_)*[Bb]it)(?!MSB)(?!LSB).)*$" title="Please start with an uppercase letter or a number. Don't create fine channels here, set its resolution below instead." class="channelName" />`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Name`,
+    `<input type="text" required v-model="channel.name" pattern="^[A-Z0-9]((?!\\bFine\\b)(?!\\bfine\\b)(?!\\d+(?:\\s|-|_)*[Bb]it)(?!MSB)(?!LSB).)*$" title="Please start with an uppercase letter or a number. Don't create fine channels here, set its resolution below instead." class="channelName" />`
+  );
   str += `</section>`;
 
   str += `<section class="channel-type">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Type</span>`;
-  str += `<span class="value">`;
-  str += selectInput(`channel.type`, {
-    property: properties.channel.type,
-    required: true,
-    additionHint: `other channel type`
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Type`,
+    selectInput(`channel.type`, {
+      property: properties.channel.type,
+      required: true,
+      additionHint: `other channel type`
+    })
+  );
   str += `</section>`;
 
   str += `<section class="channel-color" v-if="channel.type == 'Single Color'">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Color</span>`;
-  str += `<span class="value">`;
-  str += selectInput(`channel.color`, {
-    property: properties.channel.color,
-    required: true,
-    additionHint: `other channel color`
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Color`,
+    selectInput(`channel.color`, {
+      property: properties.channel.color,
+      required: true,
+      additionHint: `other channel color`
+    })
+  );
   str += `</section>`;
 
   str += `<h3>DMX values</h3>`;
 
   str += `<section class="channel-fineness">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Channel resolution</span>`;
-  str += `<span class="value">`;
-  str += `<select required v-model.number="channel.fineness">`;
-  str += `<option value="0" selected>8 bit (No fine channels)</option>`;
-  str += `<option value="1">16 bit (1 fine channel)</option>`;
-  str += `<option value="2">24 bit (2 fine channels)</option>`;
-  str += `</select>`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Channel resolution`,
+    `<select required v-model.number="channel.fineness">`
+    + `<option value="0" selected>8 bit (No fine channels)</option>`
+    + `<option value="1">16 bit (1 fine channel)</option>`
+    + `<option value="2">24 bit (2 fine channels)</option>`
+    + `</select>`
+  );
   str += `</section>`;
 
   str += `<section class="channel-defaultValue">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Default</span>`;
-  str += `<span class="value">`;
-  str += `<input type="number" min="0" :max="Math.pow(256, channel.fineness+1)-1" step="1" v-model.number="channel.defaultValue" />`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Default`,
+    `<input type="number" min="0" :max="Math.pow(256, channel.fineness+1)-1" step="1" v-model.number="channel.defaultValue" />`
+  );
   str += `</section>`;
 
   str += `<section class="channel-highlightValue">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Highlight</span>`;
-  str += `<span class="value">`;
-  str += `<input type="number" min="0" :max="Math.pow(256, channel.fineness+1)-1" step="1" v-model.number="channel.highlightValue" />`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Highlight`,
+    `<input type="number" min="0" :max="Math.pow(256, channel.fineness+1)-1" step="1" v-model.number="channel.highlightValue" />`
+  );
   str += `</section>`;
 
   str += `<section class="channel-invert">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Invert?</span>`;
-  str += `<span class="value">`;
-  str += booleanInput(`channel.invert`, {
-    property: properties.channel.invert
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Invert?`,
+    booleanInput(`channel.invert`, {
+      property: properties.channel.invert
+    })
+  );
   str += `</section>`;
 
   str += `<section class="channel-constant">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Constant?</span>`;
-  str += `<span class="value">`;
-  str += booleanInput(`channel.constant`, {
-    property: properties.channel.constant
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Constant?`,
+    booleanInput(`channel.constant`, {
+      property: properties.channel.constant
+    })
+  );
   str += `</section>`;
 
   str += `<section class="channel-crossfade">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Crossfade?</span>`;
-  str += `<span class="value">`;
-  str += booleanInput(`channel.crossfade`, {
-    property: properties.channel.crossfade
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Crossfade?`,
+    booleanInput(`channel.crossfade`, {
+      property: properties.channel.crossfade
+    })
+  );
   str += `</section>`;
 
   str += `<section class="channel-precedence">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Precedence</span>`;
-  str += `<span class="value">`;
-  str += selectInput(`channel.precedence`, {
-    property: properties.channel.precedence
-  });
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Precedence`,
+    selectInput(`channel.precedence`, {
+      property: properties.channel.precedence
+    })
+  );
   str += `</section>`;
 
   str += `<h3>Capabilities</h3>`;
 
   str += `<section class="channel-cap-fineness" v-if="channel.fineness > 0">`;
-  str += `<label class="validate-group">`;
-  str += `<span class="label">Capability resolution</span>`;
-  str += `<span class="value">`;
-  str += `<select required v-model.number="channel.capFineness">`;
-  str += `<option value="0" selected>8 bit (range 0 - 255)</option>`;
-  str += `<option value="1" v-if="channel.fineness >= 1">16 bit (range 0 - 65535)</option>`;
-  str += `<option value="2" v-if="channel.fineness >= 2">24 bit (range 0 - 16777215)</option>`;
-  str += `</select>`;
-  str += `<span class="error-message" hidden></span>`;
-  str += `</span>`;
-  str += `</label>`;
+  str += simpleLabel(
+    `Capability resolution`,
+    `<select required v-model.number="channel.capFineness">`
+    + `<option value="0" selected>8 bit (range 0 - 255)</option>`
+    + `<option value="1" v-if="channel.fineness >= 1">16 bit (range 0 - 65535)</option>`
+    + `<option value="2" v-if="channel.fineness >= 2">24 bit (range 0 - 16777215)</option>`
+    + `</select>`
+  );
   str += `</section>`;
 
   str += `<section><button class="secondary" @click.prevent="channel.wizard.show = !channel.wizard.show">${svg.getSvg(`capability-wizard`)} {{ channel.wizard.show ? 'Close' : 'Open' }} Capability Wizard</button>`;
@@ -889,6 +770,29 @@ function getSubmitDialogString() {
 }
 
 /**
+ * @param {!string} labelDisplay A text to display next to the input field.
+ * @param {!string} input The html for an form element. Best suited in conjunction with one of the input functions.
+ * @param {?string} hint Optional. Display a small hint text below the input field.
+ * @returns {!string} The html of a validatable label containing the given text and input field.
+ */
+function simpleLabel(labelDisplay, input, hint) {
+  let html = `<label class="validate-group">`;
+
+  html += `<span class="label">${labelDisplay}</span>`;
+
+  html += `<span class="value">`;
+  html += input;
+  html += `<span class="error-message" hidden></span>`;
+  if (hint) {
+    html += `<span class="hint">${hint}</span>`;
+  }
+  html += `</span>`;
+
+  html += `</label>`;
+  return html;
+}
+
+/**
  * @typedef InputOptions
  * @type {object}
  * @property {?object} property The JSON Schema property that specifies the input value.
@@ -911,6 +815,8 @@ function textInput(modelKey, options = {}) {
   html += getPatternAttr(options.property);
   html += getMinlengthAttr(options.property);
   html += getMaxlengthAttr(options.property);
+
+  console.log(modelKey, options.property);
 
   html += getAdditionalAttributes(options.attributes);
   html += ` v-model="${modelKey}" />`;
