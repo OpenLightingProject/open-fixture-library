@@ -1100,7 +1100,7 @@ function getRequiredAttr(required) {
  * @returns {!string} The HTML "placeholder" attribute with the hint or an empty string.
  */
 function getPlaceholderAttr(hint) {
-  return hint ? ` placeholder="${hint.replace(`"`, `\\u0022`)}"}"` : ``;
+  return hint ? ` placeholder="${hint.replace(`"`, `\\u0022`)}"` : ``;
 }
 
 /**
