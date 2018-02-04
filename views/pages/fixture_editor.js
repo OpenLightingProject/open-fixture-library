@@ -187,7 +187,7 @@ module.exports = function(options) {
   str += `<span class="label"><abbr title="Remote Device Management">RDM</abbr> model ID</span>`;
   str += `<span class="value">`;
   str += numberInput(`fixture.rdmModelId`, {
-    property: properties.fixture.rdm
+    property: properties.fixture.rdm.properties.modelId
   });
   str += `<span class="error-message" hidden></span>`;
   str += `<span class="hint">The RDM manufacturer ID is saved per manufacturer.</span>`;
