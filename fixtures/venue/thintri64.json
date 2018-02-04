@@ -1,0 +1,150 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "name": "ThinTri64",
+  "shortName": "VenueThinTri64",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-02-04",
+    "lastModifyDate": "2018-02-04"
+  },
+  "manualURL": "http://venuelightingeffects.com/wp-content/uploads/2016/03/Venue_by_Proline_ThinTri_38_64_Manual.pdf",
+  "physical": {
+    "dimensions": [252, 227, 84],
+    "weight": 1.8,
+    "power": 39,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12x 3W RGB LED"
+    },
+    "lens": {
+      "degreesMinMax": [15, 15]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0
+    },
+    "Color Macros": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "No function"
+        },
+        {
+          "range": [16, 255],
+          "name": "Color macros"
+        }
+      ]
+    },
+    "Strobe / Speed / Sound Sensitivity": {
+      "type": "Switching Channel"
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "No function"
+        },
+        {
+          "range": [16, 255],
+          "name": "Strobe 0-20Hz"
+        }
+      ]
+    },
+    "Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Speed slow-fast"
+        }
+      ]
+    },
+    "Sound Sensitivity": {
+      "type": "Intensity",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "Off"
+        },
+        {
+          "range": [11, 255],
+          "name": "Sound sensitivity low-high"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity"
+    },
+    "Dimmer Speed": {
+      "type": "Maintenance",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 51],
+          "name": "Dimmer speed mode OFF"
+        },
+        {
+          "range": [52, 101],
+          "name": "Dimmer speed mode OFF"
+        },
+        {
+          "range": [102, 152],
+          "name": "Dimmer speed mode fast"
+        },
+        {
+          "range": [153, 203],
+          "name": "Dimmer speed mode medium"
+        },
+        {
+          "range": [204, 255],
+          "name": "Dimmer speed mode slow"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macros",
+        "Strobe / Speed / Sound Sensitivity",
+        "Strobe",
+        "Speed",
+        "Sound Sensitivity",
+        "Dimmer",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
