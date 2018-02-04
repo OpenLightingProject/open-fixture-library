@@ -980,8 +980,8 @@ function getMinMaxAttributes(modelKey, options) {
   let html = ``;
 
   if (options.property) {
-  for (const minMax of [`in`, `ax`]) {
-    let minMaxValue = null;
+    for (const minMax of [`in`, `ax`]) {
+      let minMaxValue = null;
 
       if (`m${minMax}imum` in options.property) {
         minMaxValue = options.property[`m${minMax}imum`];
@@ -1000,8 +1000,8 @@ function getMinMaxAttributes(modelKey, options) {
       }
 
       if (minMaxValue !== null) {
-    html += getMinMaxAttribute(modelKey, `m${minMax}`, minMaxValue);
-  }
+        html += getMinMaxAttribute(modelKey, `m${minMax}`, minMaxValue);
+      }
     }
   }
 
@@ -1021,17 +1021,17 @@ function getMinMaxAttribute(modelKey, minMax, minMaxValue) {
   const pattern = minMax === `min` ? /([mM])ax/ : /([mM])in/;
   const replaceString = minMax === `min` ? `$1in` : `$1ax`;
 
-    // check if this is part of a minMax pair (like degreesMinMax)
-    if (pattern.test(modelKey)) {
-      // the modelKey for the other input of the range
-      const otherModelKey = modelKey.replace(pattern, replaceString);
+  // check if this is part of a minMax pair (like degreesMinMax)
+  if (pattern.test(modelKey)) {
+    // the modelKey for the other input of the range
+    const otherModelKey = modelKey.replace(pattern, replaceString);
 
-      // set the minimum to either the property's minimum or the other input's value (analogous with maximum)
-      html += ` :${minMax}="typeof ${otherModelKey} === 'number' ? ${otherModelKey} : ${minMaxValue}"`;
-    }
-    else {
-      html += ` ${minMax}="${minMaxValue}"`;
-    }
+    // set the minimum to either the property's minimum or the other input's value (analogous with maximum)
+    html += ` :${minMax}="typeof ${otherModelKey} === 'number' ? ${otherModelKey} : ${minMaxValue}"`;
+  }
+  else {
+    html += ` ${minMax}="${minMaxValue}"`;
+  }
 
   return html;
 }
