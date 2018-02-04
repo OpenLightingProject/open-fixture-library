@@ -50,9 +50,6 @@
         }
       ]
     },
-    "Strobe / Speed / Sound Sensitivity": {
-      "type": "Switching Channel"
-    },
     "Strobe": {
       "type": "Strobe",
       "defaultValue": 0,
@@ -87,6 +84,68 @@
         {
           "range": [11, 255],
           "name": "Sound sensitivity low-high"
+        }
+      ]
+    },
+    "Mode": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "No function",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Strobe"
+          }
+        },
+        {
+          "range": [32, 63],
+          "name": "Pulse 0-100%",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [64, 95],
+          "name": "Pulse 100-0%",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [96, 127],
+          "name": "Pulse 100-0-100%",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [128, 159],
+          "name": "Auto fade transition",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [160, 191],
+          "name": "Auto snap transition (3 colors)",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [192, 224],
+          "name": "Auto snap transition (7 colors)",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [225, 255],
+          "name": "Sound-active mode",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         }
       ]
     },
@@ -130,9 +189,7 @@
         "Blue",
         "Color Macros",
         "Strobe / Speed / Sound Sensitivity",
-        "Strobe",
-        "Speed",
-        "Sound Sensitivity",
+        "Mode",
         "Dimmer",
         "Dimmer Speed"
       ]
