@@ -977,31 +977,33 @@ function numberInput(modelKey, options = {}) {
  * @returns {!string} The HTML attribute(s) declaring a minimum and/or maximum value, or an empty string.
  */
 function getMinMaxAttributes(modelKey, options) {
+  if (!options.property) {
+    return ``;
+  }
+
   let html = ``;
 
-  if (options.property) {
-    for (const minMax of [`in`, `ax`]) {
-      let minMaxValue = null;
+  for (const minMax of [`in`, `ax`]) {
+    let minMaxValue = null;
 
-      if (`m${minMax}imum` in options.property) {
-        minMaxValue = options.property[`m${minMax}imum`];
-      }
-      else if (`exclusiveM${minMax}imum` in options.property) {
-        minMaxValue = options.property[`exclusiveM${minMax}imum`];
+    if (`m${minMax}imum` in options.property) {
+      minMaxValue = options.property[`m${minMax}imum`];
+    }
+    else if (`exclusiveM${minMax}imum` in options.property) {
+      minMaxValue = options.property[`exclusiveM${minMax}imum`];
 
-        // integer values have a discrete minimum, floats not
-        if (options.property.type === `integer`) {
-          minMaxValue++;
-        }
-        else {
-          // this could be validated in future
-          html += ` data-exclusive-m${minMax}imum="${minMaxValue}"`;
-        }
+      // integer values have a discrete minimum, floats not
+      if (options.property.type === `integer`) {
+        minMaxValue += minMax === `in` ? 1 : -1;
       }
+      else {
+        // this could be validated in future
+        html += ` data-exclusive-m${minMax}imum="${minMaxValue}"`;
+      }
+    }
 
-      if (minMaxValue !== null) {
-        html += getMinMaxAttribute(modelKey, `m${minMax}`, minMaxValue);
-      }
+    if (minMaxValue !== null) {
+      html += getMinMaxAttribute(modelKey, `m${minMax}`, minMaxValue);
     }
   }
 
@@ -1098,7 +1100,7 @@ function getRequiredAttr(required) {
  * @returns {!string} The HTML "placeholder" attribute with the hint or an empty string.
  */
 function getPlaceholderAttr(hint) {
-  return hint ? ` placeholder="${hint}"` : ``;
+  return hint ? ` placeholder="${hint.replace(`"`, `\\u0022`)}"}"` : ``;
 }
 
 /**
@@ -1107,7 +1109,7 @@ function getPlaceholderAttr(hint) {
  * @returns {!string} The HTML "pattern" attribute or an empty string.
  */
 function getPatternAttr(property) {
-  return (property && property.pattern) ? ` pattern="${property.pattern}"` : ``;
+  return (property && property.pattern) ? ` pattern="${property.pattern.replace(`"`, `\\u0022`)}"` : ``;
 }
 
 /**
