@@ -895,7 +895,7 @@ function getSubmitDialogString() {
  * @property {?object} property The JSON Schema property that specifies the input value.
  * @property {?string} hint A hint to the user that helps filling the right value into this input element.
  * @property {?string} additionHint Only for select inputs: Hint about a new, user-chosen value, like "other DMX connector"
- * @property {?object} attributes Additional HTML attributes that shall be added to the input element. Attribute keys pointing to its value.
+ * @property {?object} attributes Additional HTML attributes that shall be added to the input element. Attribute names pointing to its value.
  */
 
 
@@ -960,8 +960,8 @@ function numberInput(modelKey, options = {}) {
     if (/max/i.test(modelKey)) {
       // this is the max input of a minMax pair (like degreesMinMax)
       // set the minimum to either the property's minimum or min input's value
-      const minKey = modelKey.replace(/([mM])ax/, `$1in`);
-      html += ` :min="typeof ${minKey} === 'number' ? ${minKey} : ${minimum}"`;
+      const minModelKey = modelKey.replace(/([mM])ax/, `$1in`);
+      html += ` :min="typeof ${minModelKey} === 'number' ? ${minModelKey} : ${minimum}"`;
     }
     else {
       html += ` min="${minimum}"`;
@@ -973,8 +973,8 @@ function numberInput(modelKey, options = {}) {
     if (/min/i.test(modelKey)) {
       // this is the min input of a minMax pair (like degreesMinMax)
       // set the maximum to either the property's maximum or max input's value
-      const maxKey = modelKey.replace(/([mM])in/, `$1ax`);
-      html += ` :max="typeof ${maxKey} === 'number' ? ${maxKey} : ${maximum}"`;
+      const maxModelKey = modelKey.replace(/([mM])in/, `$1ax`);
+      html += ` :max="typeof ${maxModelKey} === 'number' ? ${maxModelKey} : ${maximum}"`;
     }
     else {
       html += ` max="${maximum}"`;
@@ -1100,11 +1100,11 @@ function getPatternAttr(property) {
 
 /**
  * Helper function to return additional HTML attributes if neccessary.
- * @param {?object} attributes Additional HTML attributes that shall be added to the input element. Attribute keys pointing to its value.
+ * @param {?object} attributes Additional HTML attributes that shall be added to the input element. Attribute names pointing to its value.
  * @returns {!string} The HTML attributes or an empty string.
  */
 function getAdditionalAttributes(attributes = {}) {
   return Object.keys(attributes).map(
-    attr => ` ${attr}="${attributes[attr]}"`
+    attrName => ` ${attrName}="${attributes[attrName]}"`
   ).join(``);
 }
