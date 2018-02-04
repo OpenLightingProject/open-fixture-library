@@ -30,69 +30,50 @@ module.exports = function(options) {
 
   // Existing manufacturer
   str += `<section v-if="fixture.useExistingManufacturer">`;
-  str += simpleLabel(
-    `Choose from list`,
-    [
-      `<select required v-model="fixture.manufacturerShortName" :class="{ empty: fixture.manufacturerShortName === '' }" ref="existingManufacturerSelect">`,
-      `<option value="">Please select a manufacturer</option>`,
-      Object.keys(options.register.manufacturers).map(
-        man => `<option value="${man}">${options.manufacturers[man].name}</option>`
-      ).join(``),
-      `</select>`
-    ].join(``)
-  );
+  let manufacturerShortNameInput = `<select required v-model="fixture.manufacturerShortName" :class="{ empty: fixture.manufacturerShortName === '' }" ref="existingManufacturerSelect">`;
+  manufacturerShortNameInput += `<option value="">Please select a manufacturer</option>`;
+  manufacturerShortNameInput += Object.keys(options.register.manufacturers).map(
+    man => `<option value="${man}">${options.manufacturers[man].name}</option>`
+  ).join(``);
+  manufacturerShortNameInput += `</select>`;
+  str += simpleLabel(`Choose from list`, manufacturerShortNameInput);
   str += `<div class="button-bar">or <a href="#add-new-manufacturer" @click.prevent="switchManufacturer(false)">add a new manufacturer</a></div>`;
   str += `</section>`; // [v-if="fixture.useExistingManufacturer"]
 
   // New manufacturer
   str += `<div v-else>`;
   str += `<section class="new-manufacturer-name">`;
-  str += simpleLabel(
-    `Name`,
-    textInput(`fixture.newManufacturerName`, {
-      property: properties.manufacturer.name,
-      required: true,
-      attributes: { ref: `newManufacturerNameInput` }
-    })
-  );
+  str += simpleLabel(`Name`, textInput(`fixture.newManufacturerName`, {
+    property: properties.manufacturer.name,
+    required: true,
+    attributes: { ref: `newManufacturerNameInput` }
+  }));
   str += `</section>`;
 
   str += `<section class="new-manufacturer-shortName">`;
-  str += simpleLabel(
-    `Unique short name`,
-    textInput(`fixture.newManufacturerShortName`, {
-      property: properties.manufacturerKey,
-      required: true,
-      attributes: { title: `Use only lowercase letters, numbers and dashes.` }
-    })
-  );
+  str += simpleLabel(`Unique short name`, textInput(`fixture.newManufacturerShortName`, {
+    property: properties.manufacturerKey,
+    required: true,
+    attributes: { title: `Use only lowercase letters, numbers and dashes.` }
+  }));
   str += `</section>`;
 
   str += `<section class="new-manufacturer-website">`;
-  str += simpleLabel(
-    `Website`,
-    urlInput(`fixture.newManufacturerWebsite`, {
-      property: properties.manufacturer.website
-    })
-  );
+  str += simpleLabel(`Website`, urlInput(`fixture.newManufacturerWebsite`, {
+    property: properties.manufacturer.website
+  }));
   str += `</section>`;
 
   str += `<section class="new-manufacturer-comment">`;
-  str += simpleLabel(
-    `Comment`,
-    textInput(`fixture.newManufacturerComment`, {
-      property: properties.manufacturer.comment
-    })
-  );
+  str += simpleLabel(`Comment`, textInput(`fixture.newManufacturerComment`, {
+    property: properties.manufacturer.comment
+  }));
   str += `</section>`;
 
   str += `<section class="new-manufacturer-rdmId">`;
-  str += simpleLabel(
-    `<abbr title="Remote Device Management">RDM</abbr> ID`,
-    numberInput(`fixture.newManufacturerRdmId`, {
-      property: properties.manufacturer.rdmId
-    })
-  );
+  str += simpleLabel(`<abbr title="Remote Device Management">RDM</abbr> ID`, numberInput(`fixture.newManufacturerRdmId`, {
+    property: properties.manufacturer.rdmId
+  }));
   str += `</section>`;
 
   str += `<div class="button-bar">or <a href="#use-existing-manufacturer" @click.prevent="switchManufacturer(true)">choose an existing manufacturer</a></div>`;
@@ -106,23 +87,17 @@ module.exports = function(options) {
   str += `<h2>Fixture info</h2>`;
 
   str += `<section class="fixture-name">`;
-  str += simpleLabel(
-    `Name`,
-    textInput(`fixture.name`, {
-      property: properties.fixture.name,
-      required: true
-    })
-  );
+  str += simpleLabel(`Name`, textInput(`fixture.name`, {
+    property: properties.fixture.name,
+    required: true
+  }));
   str += `</section>`;
 
   str += `<section class="fixture-shortName">`;
-  str += simpleLabel(
-    `Unique short name`,
-    textInput(`fixture.shortName`, {
-      property: properties.fixture.shortName,
-      hint: `defaults to name`
-    })
-  );
+  str += simpleLabel(`Unique short name`, textInput(`fixture.shortName`, {
+    property: properties.fixture.shortName,
+    hint: `defaults to name`
+  }));
   str += `</section>`;
 
   const fixtureCategories = JSON.stringify(properties.fixture.categories.items.enum.map(
@@ -141,40 +116,29 @@ module.exports = function(options) {
   str += `</section>`;
 
   str += `<section class="comment">`;
-  str += simpleLabel(
-    `Comment`,
-    textareaInput(`fixture.comment`, {
-      property: properties.fixture.comment
-    })
-  );
+  str += simpleLabel(`Comment`, textareaInput(`fixture.comment`, {
+    property: properties.fixture.comment
+  }));
   str += `</section>`;
 
   str += `<section class="manualURL">`;
-  str += simpleLabel(
-    `Manual URL`,
-    urlInput(`fixture.manualURL`, {
-      property: properties.fixture.manualURL
-    })
-  );
+  str += simpleLabel(`Manual URL`, urlInput(`fixture.manualURL`, {
+    property: properties.fixture.manualURL
+  }));
   str += `</section>`;
 
   str += `<section class="rdmModelId">`;
-  str += simpleLabel(
-    `<abbr title="Remote Device Management">RDM</abbr> model ID`,
-    numberInput(`fixture.rdmModelId`, {
-      property: properties.fixture.rdm.properties.modelId
-    }),
-    `The RDM manufacturer ID is saved per manufacturer.`
+  str += simpleLabel(`<abbr title="Remote Device Management">RDM</abbr> model ID`, numberInput(`fixture.rdmModelId`, {
+    property: properties.fixture.rdm.properties.modelId
+  }),
+  `The RDM manufacturer ID is saved per manufacturer.`
   );
   str += `</section>`;
 
   str += `<section class="rdmSoftwareVersion" v-if="fixture.rdmModelId !== ''">`;
-  str += simpleLabel(
-    `RDM software version`,
-    textInput(`fixture.rdmSoftwareVersion`, {
-      property: properties.fixture.rdm.properties.softwareVersion
-    })
-  );
+  str += simpleLabel(`RDM software version`, textInput(`fixture.rdmSoftwareVersion`, {
+    property: properties.fixture.rdm.properties.softwareVersion
+  }));
   str += `</section>`;
 
   str += `</section>`; // .fixture-info
@@ -202,24 +166,18 @@ module.exports = function(options) {
   str += `<h2>Author data</h2>`;
 
   str += `<section class="author">`;
-  str += simpleLabel(
-    `Your name`,
-    textInput(`fixture.metaAuthor`, { required: true, hint: `e.g. Anonymous`})
+  str += simpleLabel(`Your name`, textInput(`fixture.metaAuthor`, { required: true, hint: `e.g. Anonymous`})
   );
   str += `</section>`;
 
   str += `<section class="github-username">`;
-  str += simpleLabel(
-    `GitHub username`,
-    textInput(`fixture.metaGithubUsername`),
+  str += simpleLabel(`GitHub username`, textInput(`fixture.metaGithubUsername`),
     `If you want to be mentioned in the pull request.`
   );
   str += `</section>`;
 
   str += `<section class="honeypot" hidden aria-hidden="true">`;
-  str += simpleLabel(
-    `Ignore this!`,
-    textInput(`honeypot`),
+  str += simpleLabel(`Ignore this!`, textInput(`honeypot`),
     `Spammers are likely to fill this field. Leave it empty to show that you're a human.`
   );
   str += `</section>`;
@@ -287,72 +245,55 @@ function getPhysicalTemplate() {
   str += `</section>`;
 
   str += `<section class="physical-weight">`;
-  str += simpleLabel(
-    `Weight`,
-    `${numberInput(`value.weight`, {
-      property: properties.physical.weight
-    })} kg`
+  str += simpleLabel(`Weight`, `${numberInput(`value.weight`, {
+    property: properties.physical.weight
+  })} kg`
   );
   str += `</section>`;
 
   str += `<section class="physical-power">`;
-  str += simpleLabel(
-    `Power`,
-    `${numberInput(`value.power`, {
-      property: properties.physical.power
-    })} W`
+  str += simpleLabel(`Power`, `${numberInput(`value.power`, {
+    property: properties.physical.power
+  })} W`
   );
   str += `</section>`;
 
   str += `<section class="physical-DMXconnector">`;
-  str += simpleLabel(
-    `DMX connector`,
-    selectInput(`value.DMXconnector`, {
-      property: properties.physical.DMXconnector,
-      additionHint: `other DMX connector`
-    })
-  );
+  str += simpleLabel(`DMX connector`, selectInput(`value.DMXconnector`, {
+    property: properties.physical.DMXconnector,
+    additionHint: `other DMX connector`
+  }));
   str += `</section>`;
 
   str += `<h4>Bulb</h4>`;
 
   str += `<section class="physical-bulb-type">`;
-  str += simpleLabel(
-    `Bulb type`,
-    textInput(`value.bulb.type`, {
-      property: properties.physicalBulb.type,
-      hint: `e.g. LED`
-    })
-  );
+  str += simpleLabel(`Bulb type`, textInput(`value.bulb.type`, {
+    property: properties.physicalBulb.type,
+    hint: `e.g. LED`
+  }));
   str += `</section>`;
 
   str += `<section class="physical-bulb-colorTemperature">`;
-  str += simpleLabel(
-    `Color temperature`,
-    `${numberInput(`value.bulb.colorTemperature`, {
-      property: properties.physicalBulb.colorTemperature
-    })} K`
+  str += simpleLabel(`Color temperature`, `${numberInput(`value.bulb.colorTemperature`, {
+    property: properties.physicalBulb.colorTemperature
+  })} K`
   );
   str += `</section>`;
 
   str += `<section class="physical-bulb-lumens">`;
-  str += simpleLabel(
-    `Lumens`,
-    `${numberInput(`value.bulb.lumens`, {
-      property: properties.physicalBulb.lumens
-    })} lm`
+  str += simpleLabel(`Lumens`, `${numberInput(`value.bulb.lumens`, {
+    property: properties.physicalBulb.lumens
+  })} lm`
   );
   str += `</section>`;
 
   str += `<h4>Lens</h4>`;
 
   str += `<section class="physical-lens-name">`;
-  str += simpleLabel(
-    `Lens name`,
-    textInput(`value.lens.name`, {
-      property: properties.physicalLens.name
-    })
-  );
+  str += simpleLabel(`Lens name`, textInput(`value.lens.name`, {
+    property: properties.physicalLens.name
+  }));
   str += `</section>`;
 
   str += `<section class="physical-lens-degrees validate-group">`;
@@ -377,31 +318,22 @@ function getPhysicalTemplate() {
   str += `<h4>Focus</h4>`;
 
   str += `<section class="physical-focus-type">`;
-  str += simpleLabel(
-    `Focus type`,
-    selectInput(`value.focus.type`, {
-      property: properties.physicalFocus.type,
-      additionHint: `other focus type`
-    })
-  );
+  str += simpleLabel(`Focus type`, selectInput(`value.focus.type`, {
+    property: properties.physicalFocus.type,
+    additionHint: `other focus type`
+  }));
   str += `</section>`;
 
   str += `<section class="physical-focus-panMax">`;
-  str += simpleLabel(
-    `Pan maximum`,
-    numberInput(`value.focus.panMax`, {
-      property: properties.physicalFocus.panMax
-    })
-  );
+  str += simpleLabel(`Pan maximum`, numberInput(`value.focus.panMax`, {
+    property: properties.physicalFocus.panMax
+  }));
   str += `</section>`;
 
   str += `<section class="physical-focus-tiltMax">`;
-  str += simpleLabel(
-    `Tilt maximum`,
-    numberInput(`value.focus.tiltMax`, {
-      property: properties.physicalFocus.tiltMax
-    })
-  );
+  str += simpleLabel(`Tilt maximum`, numberInput(`value.focus.tiltMax`, {
+    property: properties.physicalFocus.tiltMax
+  }));
   str += `</section>`;
 
   str += `</div>`;
@@ -425,40 +357,31 @@ function getModeTemplate() {
   str += `<h2>Mode</h2>`;
 
   str += `<section class="mode-name">`;
-  str += simpleLabel(
-    `Name`,
-    textInput(`mode.name`, {
-      property: properties.mode.name.allOf[1],
-      required: true,
-      hint: `e.g. Extended`,
-      attributes: {
-        title: `The name must not contain the word 'mode'`,
-        ref: `firstInput`
-      }
-    })
-  );
+  str += simpleLabel(`Name`, textInput(`mode.name`, {
+    property: properties.mode.name.allOf[1],
+    required: true,
+    hint: `e.g. Extended`,
+    attributes: {
+      title: `The name must not contain the word 'mode'`,
+      ref: `firstInput`
+    }
+  }));
   str += `</section>`;
 
   str += `<section class="mode-shortName">`;
-  str += simpleLabel(
-    `Unique short name`,
-    textInput(`mode.shortName`, {
-      property: properties.mode.shortName.allOf[1],
-      hint: `e.g. ext; defaults to name`,
-      attributes: {
-        title: `The name must not contain the word 'mode'`
-      }
-    })
-  );
+  str += simpleLabel(`Unique short name`, textInput(`mode.shortName`, {
+    property: properties.mode.shortName.allOf[1],
+    hint: `e.g. ext; defaults to name`,
+    attributes: {
+      title: `The name must not contain the word 'mode'`
+    }
+  }));
   str += `</section>`;
 
   str += `<section class="mode-rdmPersonalityIndex" v-if="fixture.rdmModelId !== ''">`;
-  str += simpleLabel(
-    `RDM personality index`,
-    numberInput(`mode.rdmPersonalityIndex`, {
-      property: properties.mode.rdmPersonalityIndex
-    })
-  );
+  str += simpleLabel(`RDM personality index`, numberInput(`mode.rdmPersonalityIndex`, {
+    property: properties.mode.rdmPersonalityIndex
+  }));
   str += `</section>`;
 
   str += `<h3>Physical override</h3>`;
@@ -586,40 +509,30 @@ function getChannelDialogString() {
   str += `<div v-else>`;
 
   str += `<section class="channel-name">`;
-  str += simpleLabel(
-    `Name`,
-    `<input type="text" required v-model="channel.name" pattern="^[A-Z0-9]((?!\\bFine\\b)(?!\\bfine\\b)(?!\\d+(?:\\s|-|_)*[Bb]it)(?!MSB)(?!LSB).)*$" title="Please start with an uppercase letter or a number. Don't create fine channels here, set its resolution below instead." class="channelName" />`
+  str += simpleLabel(`Name`, `<input type="text" required v-model="channel.name" pattern="^[A-Z0-9]((?!\\bFine\\b)(?!\\bfine\\b)(?!\\d+(?:\\s|-|_)*[Bb]it)(?!MSB)(?!LSB).)*$" title="Please start with an uppercase letter or a number. Don't create fine channels here, set its resolution below instead." class="channelName" />`
   );
   str += `</section>`;
 
   str += `<section class="channel-type">`;
-  str += simpleLabel(
-    `Type`,
-    selectInput(`channel.type`, {
-      property: properties.channel.type,
-      required: true,
-      additionHint: `other channel type`
-    })
-  );
+  str += simpleLabel(`Type`, selectInput(`channel.type`, {
+    property: properties.channel.type,
+    required: true,
+    additionHint: `other channel type`
+  }));
   str += `</section>`;
 
   str += `<section class="channel-color" v-if="channel.type == 'Single Color'">`;
-  str += simpleLabel(
-    `Color`,
-    selectInput(`channel.color`, {
-      property: properties.channel.color,
-      required: true,
-      additionHint: `other channel color`
-    })
-  );
+  str += simpleLabel(`Color`, selectInput(`channel.color`, {
+    property: properties.channel.color,
+    required: true,
+    additionHint: `other channel color`
+  }));
   str += `</section>`;
 
   str += `<h3>DMX values</h3>`;
 
   str += `<section class="channel-fineness">`;
-  str += simpleLabel(
-    `Channel resolution`,
-    `<select required v-model.number="channel.fineness">`
+  str += simpleLabel(`Channel resolution`, `<select required v-model.number="channel.fineness">`
     + `<option value="0" selected>8 bit (No fine channels)</option>`
     + `<option value="1">16 bit (1 fine channel)</option>`
     + `<option value="2">24 bit (2 fine channels)</option>`
@@ -628,61 +541,43 @@ function getChannelDialogString() {
   str += `</section>`;
 
   str += `<section class="channel-defaultValue">`;
-  str += simpleLabel(
-    `Default`,
-    `<input type="number" min="0" :max="Math.pow(256, channel.fineness+1)-1" step="1" v-model.number="channel.defaultValue" />`
+  str += simpleLabel(`Default`, `<input type="number" min="0" :max="Math.pow(256, channel.fineness+1)-1" step="1" v-model.number="channel.defaultValue" />`
   );
   str += `</section>`;
 
   str += `<section class="channel-highlightValue">`;
-  str += simpleLabel(
-    `Highlight`,
-    `<input type="number" min="0" :max="Math.pow(256, channel.fineness+1)-1" step="1" v-model.number="channel.highlightValue" />`
+  str += simpleLabel(`Highlight`, `<input type="number" min="0" :max="Math.pow(256, channel.fineness+1)-1" step="1" v-model.number="channel.highlightValue" />`
   );
   str += `</section>`;
 
   str += `<section class="channel-invert">`;
-  str += simpleLabel(
-    `Invert?`,
-    booleanInput(`channel.invert`, {
-      property: properties.channel.invert
-    })
-  );
+  str += simpleLabel(`Invert?`, booleanInput(`channel.invert`, {
+    property: properties.channel.invert
+  }));
   str += `</section>`;
 
   str += `<section class="channel-constant">`;
-  str += simpleLabel(
-    `Constant?`,
-    booleanInput(`channel.constant`, {
-      property: properties.channel.constant
-    })
-  );
+  str += simpleLabel(`Constant?`, booleanInput(`channel.constant`, {
+    property: properties.channel.constant
+  }));
   str += `</section>`;
 
   str += `<section class="channel-crossfade">`;
-  str += simpleLabel(
-    `Crossfade?`,
-    booleanInput(`channel.crossfade`, {
-      property: properties.channel.crossfade
-    })
-  );
+  str += simpleLabel(`Crossfade?`, booleanInput(`channel.crossfade`, {
+    property: properties.channel.crossfade
+  }));
   str += `</section>`;
 
   str += `<section class="channel-precedence">`;
-  str += simpleLabel(
-    `Precedence`,
-    selectInput(`channel.precedence`, {
-      property: properties.channel.precedence
-    })
-  );
+  str += simpleLabel(`Precedence`, selectInput(`channel.precedence`, {
+    property: properties.channel.precedence
+  }));
   str += `</section>`;
 
   str += `<h3>Capabilities</h3>`;
 
   str += `<section class="channel-cap-fineness" v-if="channel.fineness > 0">`;
-  str += simpleLabel(
-    `Capability resolution`,
-    `<select required v-model.number="channel.capFineness">`
+  str += simpleLabel(`Capability resolution`, `<select required v-model.number="channel.capFineness">`
     + `<option value="0" selected>8 bit (range 0 - 255)</option>`
     + `<option value="1" v-if="channel.fineness >= 1">16 bit (range 0 - 65535)</option>`
     + `<option value="2" v-if="channel.fineness >= 2">24 bit (range 0 - 16777215)</option>`
