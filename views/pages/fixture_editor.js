@@ -665,15 +665,15 @@ function getSubmitDialogString() {
 }
 
 /**
- * @param {!string} labelDisplay A text to display next to the input field.
- * @param {!string} input The html for an form element. Best suited in conjunction with one of the input functions.
+ * @param {!string} labelText A text to display next to the input field.
+ * @param {!string} input The html for a form element. Best suited in conjunction with one of the input functions.
  * @param {?string} hint Optional. Display a small hint text below the input field.
  * @returns {!string} The html of a validatable label containing the given text and input field.
  */
-function simpleLabel(labelDisplay, input, hint) {
+function simpleLabel(labelText, input, hint) {
   let html = `<label class="validate-group">`;
 
-  html += `<span class="label">${labelDisplay}</span>`;
+  html += `<span class="label">${labelText}</span>`;
 
   html += `<span class="value">`;
   html += input;
@@ -710,8 +710,6 @@ function textInput(modelKey, options = {}) {
   html += getPatternAttr(options.property);
   html += getMinlengthAttr(options.property);
   html += getMaxlengthAttr(options.property);
-
-  console.log(modelKey, options.property);
 
   html += getAdditionalAttributes(options.attributes);
   html += ` v-model="${modelKey}" />`;
