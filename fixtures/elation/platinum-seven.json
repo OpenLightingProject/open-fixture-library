@@ -1,0 +1,755 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "name": "Platinum Seven",
+  "shortName": "Plat7",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-02-05",
+    "lastModifyDate": "2018-02-05"
+  },
+  "manualURL": "http://cdb.s3.amazonaws.com/ItemRelatedFiles/9777/elation_platinum_seven_user_manual.pdf",
+  "physical": {
+    "dimensions": [418.1, 558.9, 284.4],
+    "weight": 21.3,
+    "power": 600,
+    "DMXconnector": "5-pin",
+    "lens": {
+      "degreesMinMax": [5, 50]
+    },
+    "focus": {
+      "type": "Head"
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [null,  null,  "O1", null, "O2",     null, "O3", null, null],
+        [null,  null,  null, null, null,     null, null, null, null],
+        [null,  "O12", null, "M1", null,     "M2", null, "O4", null],
+        [null,  null,  null, null, null,     null, null, null, null],
+        ["O11", null,  "M6", null, "Center", null, "M3", null, "O5"],
+        [null,  null,  null, null, null,     null, null, null, null],
+        [null,  "O10", null, "M5", null,     "M4", null, "O6", null],
+        [null,  null,  null, null, null,     null, null, null, null],
+        [null,  null,  "O9", null, "O8",     null, "O7", null, null]
+      ]
+    ],
+    "pixelGroups": {
+      "Middle": ["M1", "M2", "M3", "M4", "M5", "M6"],
+      "Outer": ["O1", "O2", "O3", "O4", "O5", "O6", "O7", "O8", "O9", "O10", "O11", "O12"]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32767
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32767
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": 0
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": 0
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": 0
+    },
+    "White": {
+      "type": "Single Color",
+      "color": "White",
+      "fineChannelAliases": ["White fine"],
+      "defaultValue": 0
+    },
+    "Cyan": {
+      "type": "Single Color",
+      "color": "Cyan",
+      "fineChannelAliases": ["Cyan fine"],
+      "defaultValue": 0
+    },
+    "Amber": {
+      "type": "Single Color",
+      "color": "Amber",
+      "fineChannelAliases": ["Amber fine"],
+      "defaultValue": 0
+    },
+    "UV": {
+      "type": "Single Color",
+      "color": "UV",
+      "fineChannelAliases": ["UV fine"],
+      "defaultValue": 0
+    },
+    "Color Macros": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "No function"
+        },
+        {
+          "range": [8, 39],
+          "name": "Red to yellow",
+          "color": "#ff0000",
+          "color2": "#ffff00"
+        },
+        {
+          "range": [40, 71],
+          "name": "Yellow to green",
+          "color": "#ffff00",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [72, 103],
+          "name": "Green to cyan",
+          "color": "#00ff00",
+          "color2": "#00ffff"
+        },
+        {
+          "range": [104, 135],
+          "name": "Cyan to blue",
+          "color": "#00ffff",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [136, 167],
+          "name": "Blue to magenta",
+          "color": "#0000ff",
+          "color2": "#ff00ff"
+        },
+        {
+          "range": [168, 199],
+          "name": "Magenta to red",
+          "color": "#ff00ff",
+          "color2": "#ff0000"
+        },
+        {
+          "range": [200, 231],
+          "name": "Red to white",
+          "color": "#ff0000",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [232, 255],
+          "name": "Color fade slow-fast"
+        }
+      ]
+    },
+    "Color Presets": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "No function"
+        },
+        {
+          "range": [5, 9],
+          "name": "White 2700K",
+          "color": "#ffffff"
+        },
+        {
+          "range": [10, 14],
+          "name": "White 3200K",
+          "color": "#ffffff"
+        },
+        {
+          "range": [15, 19],
+          "name": "White 4300K",
+          "color": "#ffffff"
+        },
+        {
+          "range": [20, 24],
+          "name": "White 5600K",
+          "color": "#ffffff"
+        },
+        {
+          "range": [25, 29],
+          "name": "White 6500K",
+          "color": "#ffffff"
+        },
+        {
+          "range": [30, 34],
+          "name": "White 8000K",
+          "color": "#ffffff"
+        },
+        {
+          "range": [35, 39],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [40, 44],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [45, 49],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [50, 54],
+          "name": "Natural white",
+          "color": "#ffffff"
+        },
+        {
+          "range": [55, 59],
+          "name": "Full white",
+          "color": "#ffffff"
+        },
+        {
+          "range": [60, 64],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [65, 69],
+          "name": "Magenta",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [70, 74],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [75, 79],
+          "name": "Salmon",
+          "color": "#ffaaaa"
+        },
+        {
+          "range": [80, 84],
+          "name": "Turquoise",
+          "color": "#40e0d0"
+        },
+        {
+          "range": [85, 89],
+          "name": "Light green",
+          "color": "#aaffaa"
+        },
+        {
+          "range": [90, 94],
+          "name": "Steel blue",
+          "color": "#4682b4"
+        },
+        {
+          "range": [95, 99],
+          "name": "Orange",
+          "color": "#ffaa00"
+        },
+        {
+          "range": [100, 104],
+          "name": "Straw",
+          "color": "#e4d96f"
+        },
+        {
+          "range": [105, 109],
+          "name": "Pale lavander",
+          "color": "#dcd0ff"
+        },
+        {
+          "range": [110, 114],
+          "name": "Pink",
+          "color": "#ffc0cb"
+        },
+        {
+          "range": [115, 119],
+          "name": "Red / White",
+          "color": "#ff0000",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [120, 124],
+          "name": "Green / Red",
+          "color": "#00ff00",
+          "color2": "#ff0000"
+        },
+        {
+          "range": [125, 129],
+          "name": "Blue / Red",
+          "color": "#0000ff",
+          "color2": "#ff0000"
+        },
+        {
+          "range": [130, 134],
+          "name": "White / Red",
+          "color": "#ffffff",
+          "color2": "#ff0000"
+        },
+        {
+          "range": [135, 139],
+          "name": "White / Pink",
+          "color": "#ffffff",
+          "color2": "#ffaaaa"
+        },
+        {
+          "range": [140, 144],
+          "name": "White / Turqouise",
+          "color": "#ffffff",
+          "color2": "#40e0d0"
+        },
+        {
+          "range": [145, 149],
+          "name": "Small Red / White",
+          "color": "#ff0000",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [150, 154],
+          "name": "CRI=85"
+        },
+        {
+          "range": [155, 159],
+          "name": "CRI=90"
+        },
+        {
+          "range": [160, 164],
+          "name": "CRI=95"
+        },
+        {
+          "range": [165, 255],
+          "name": "Reserved"
+        }
+      ]
+    },
+    "Color Presets Dimmer": {
+      "type": "Intensity",
+      "defaultValue": 0
+    },
+    "Shutter": {
+      "type": "Shutter",
+      "defaultValue": 32,
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "Closed"
+        },
+        {
+          "range": [32, 63],
+          "name": "Open"
+        },
+        {
+          "range": [64, 95],
+          "name": "Strobe 1-25Hz"
+        },
+        {
+          "range": [96, 127],
+          "name": "Open"
+        },
+        {
+          "range": [128, 159],
+          "name": "Pulse"
+        },
+        {
+          "range": [160, 191],
+          "name": "Open"
+        },
+        {
+          "range": [192, 223],
+          "name": "Random slow-fast"
+        },
+        {
+          "range": [224, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 0
+    },
+    "Dimmer Mode": {
+      "type": "Maintenance",
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "range": [0, 20],
+          "name": "Standard"
+        },
+        {
+          "range": [21, 40],
+          "name": "Stage"
+        },
+        {
+          "range": [41, 60],
+          "name": "TV"
+        },
+        {
+          "range": [61, 80],
+          "name": "Architectural"
+        },
+        {
+          "range": [81, 100],
+          "name": "Theatre"
+        },
+        {
+          "range": [101, 255],
+          "name": "Default to setting on fixture"
+        }
+      ]
+    },
+    "Zoom": {
+      "type": "Zoom",
+      "fineChannelAliases": ["Zoom fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Zoom 5-50°"
+        }
+      ]
+    },
+    "Chase Patterns": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 14],
+          "name": "No function (LEDs off)"
+        },
+        {
+          "range": [15, 30],
+          "name": "Chase"
+        },
+        {
+          "range": [31, 46],
+          "name": "Chase"
+        },
+        {
+          "range": [47, 62],
+          "name": "Chase"
+        },
+        {
+          "range": [63, 78],
+          "name": "Chase"
+        },
+        {
+          "range": [79, 94],
+          "name": "Chase"
+        },
+        {
+          "range": [95, 110],
+          "name": "Chase"
+        },
+        {
+          "range": [111, 126],
+          "name": "Chase"
+        },
+        {
+          "range": [127, 142],
+          "name": "Chase"
+        },
+        {
+          "range": [143, 158],
+          "name": "Chase"
+        },
+        {
+          "range": [159, 174],
+          "name": "Chase"
+        },
+        {
+          "range": [175, 190],
+          "name": "Chase"
+        },
+        {
+          "range": [191, 206],
+          "name": "Chase"
+        },
+        {
+          "range": [207, 222],
+          "name": "Chase"
+        },
+        {
+          "range": [223, 238],
+          "name": "Chase"
+        },
+        {
+          "range": [239, 255],
+          "name": "Chase"
+        }
+      ]
+    },
+    "Chase Pattern Speed": {
+      "type": "Speed",
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "range": [0, 125],
+          "name": "CW fast-slow"
+        },
+        {
+          "range": [126, 130],
+          "name": "Stop"
+        },
+        {
+          "range": [131, 255],
+          "name": "CCW slow-fast"
+        }
+      ]
+    },
+    "Chase Fade": {
+      "type": "Speed",
+      "defaultValue": 0
+    },
+    "White Balance": {
+      "type": "Maintenance",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 189],
+          "name": "No function"
+        },
+        {
+          "range": [190, 254],
+          "name": "Edit new White Balance setting"
+        },
+        {
+          "range": [255, 255],
+          "name": "Save new White Balance setting"
+        }
+      ]
+    },
+    "Pan/Tilt Speed": {
+      "type": "Speed",
+      "defaultValue": 255,
+      "invert": true,
+      "capabilities": [
+        {
+          "range": [0, 225],
+          "name": "Speed fast-slow"
+        },
+        {
+          "range": [226, 235],
+          "name": "Blackout while movement"
+        },
+        {
+          "range": [236, 255],
+          "name": "No function"
+        }
+      ]
+    },
+    "Special Functions": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 79],
+          "name": "Color Change Normal"
+        },
+        {
+          "range": [80, 84],
+          "name": "Reset all motors"
+        },
+        {
+          "range": [85, 87],
+          "name": "Reset scan motor"
+        },
+        {
+          "range": [88, 90],
+          "name": "Silent mode on"
+        },
+        {
+          "range": [91, 93],
+          "name": "Edit and save White Balance"
+        },
+        {
+          "range": [94, 96],
+          "name": "Silent mode off"
+        },
+        {
+          "range": [97, 99],
+          "name": "Reset other motors"
+        },
+        {
+          "range": [100, 119],
+          "name": "Internal Program 1 (Scene 1-8)"
+        },
+        {
+          "range": [120, 139],
+          "name": "Internal Program 2 (Scene 9-16)"
+        },
+        {
+          "range": [140, 159],
+          "name": "Internal Program 3 (Scene 17-24)"
+        },
+        {
+          "range": [160, 179],
+          "name": "Internal Program 4 (Scene 25-32)"
+        },
+        {
+          "range": [180, 199],
+          "name": "Internal Program 5 (Scene 33-40)"
+        },
+        {
+          "range": [200, 219],
+          "name": "Internal Program 6 (Scene 41-48)"
+        },
+        {
+          "range": [220, 239],
+          "name": "Internal Program 7 (Scene 49-56)"
+        },
+        {
+          "range": [240, 255],
+          "name": "Unknown"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0
+    },
+    "Blue $pixelKey": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0
+    },
+    "Green $pixelKey": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0
+    },
+    "White $pixelKey": {
+      "type": "Single Color",
+      "color": "White",
+      "defaultValue": 0
+    },
+    "Cyan $pixelKey": {
+      "type": "Single Color",
+      "color": "Cyan",
+      "defaultValue": 0
+    },
+    "Amber $pixelKey": {
+      "type": "Single Color",
+      "color": "Amber",
+      "defaultValue": 0
+    },
+    "UV $pixelKey": {
+      "type": "Single Color",
+      "color": "UV",
+      "defaultValue": 0
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Cyan",
+        "UV",
+        "Color Macros",
+        "Color Presets",
+        "Color Presets Dimmer",
+        "Shutter",
+        "Dimmer",
+        "Dimmer Mode",
+        "Zoom",
+        "Chase Patterns",
+        "Chase Pattern Speed",
+        "Chase Fade",
+        "White Balance",
+        "Pan/Tilt Speed",
+        "Special Functions"
+      ]
+    },
+    {
+      "name": "Standard",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Amber",
+        "Amber fine",
+        "Cyan",
+        "Cyan fine",
+        "UV",
+        "UV fine",
+        "Color Macros",
+        "Color Presets",
+        "Color Presets Dimmer",
+        "Shutter",
+        "Dimmer",
+        "Dimmer Mode",
+        "Zoom",
+        "Chase Patterns",
+        "Chase Pattern Speed",
+        "Chase Fade",
+        "White Balance",
+        "Pan/Tilt Speed",
+        "Special Functions"
+      ]
+    },
+    {
+      "name": "Extended",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Center", "Middle", "Outer"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey",
+            "Amber $pixelKey",
+            "Cyan $pixelKey",
+            "UV $pixelKey"
+          ]
+        },
+        "Color Macros",
+        "Color Presets",
+        "Color Presets Dimmer",
+        "Shutter",
+        "Dimmer",
+        "Dimmer fine",
+        "Dimmer Mode",
+        "Zoom",
+        "Zoom fine",
+        "Chase Patterns",
+        "Chase Pattern Speed",
+        "Chase Fade",
+        "White Balance",
+        "Pan/Tilt Speed",
+        "Special Functions"
+      ]
+    }
+  ]
+}
