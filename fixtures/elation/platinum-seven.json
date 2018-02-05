@@ -21,6 +21,25 @@
       "type": "Head"
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [null,  null,  "O1", null, "O2",     null, "O3", null, null],
+        [null,  null,  null, null, null,     null, null, null, null],
+        [null,  "O12", null, "M1", null,     "M2", null, "O4", null],
+        [null,  null,  null, null, null,     null, null, null, null],
+        ["O11", null,  "M6", null, "Center", null, "M3", null, "O5"],
+        [null,  null,  null, null, null,     null, null, null, null],
+        [null,  "O10", null, "M5", null,     "M4", null, "O6", null],
+        [null,  null,  null, null, null,     null, null, null, null],
+        [null,  null,  "O9", null, "O8",     null, "O7", null, null]
+      ]
+    ],
+    "pixelGroups": {
+      "Middle": ["M1", "M2", "M3", "M4", "M5", "M6"],
+      "Outer": ["O1", "O2", "O3", "O4", "O5", "O6", "O7", "O8", "O9", "O10", "O11", "O12"]
+    }
+  },
   "availableChannels": {
     "Pan": {
       "type": "Pan",
@@ -32,46 +51,46 @@
       "fineChannelAliases": ["Tilt fine"],
       "defaultValue": 32767
     },
-    "Red $pixelKey": {
+    "Red": {
       "type": "Single Color",
       "color": "Red",
-      "fineChannelAliases": ["Red $pixelKey fine"],
+      "fineChannelAliases": ["Red fine"],
       "defaultValue": 0
     },
-    "Blue $pixelKey": {
+    "Blue": {
       "type": "Single Color",
       "color": "Blue",
-      "fineChannelAliases": ["Blue $pixelKey fine"],
+      "fineChannelAliases": ["Blue fine"],
       "defaultValue": 0
     },
-    "Green $pixelKey": {
+    "Green": {
       "type": "Single Color",
       "color": "Green",
-      "fineChannelAliases": ["Green $pixelKey fine"],
+      "fineChannelAliases": ["Green fine"],
       "defaultValue": 0
     },
-    "White $pixelKey": {
+    "White": {
       "type": "Single Color",
       "color": "White",
-      "fineChannelAliases": ["White $pixelKey fine"],
+      "fineChannelAliases": ["White fine"],
       "defaultValue": 0
     },
-    "Cyan $pixelKey": {
+    "Cyan": {
       "type": "Single Color",
       "color": "Cyan",
-      "fineChannelAliases": ["Cyan $pixelKey fine"],
+      "fineChannelAliases": ["Cyan fine"],
       "defaultValue": 0
     },
-    "Amber $pixelKey": {
+    "Amber": {
       "type": "Single Color",
       "color": "Amber",
-      "fineChannelAliases": ["Amber $pixelKey fine"],
+      "fineChannelAliases": ["Amber fine"],
       "defaultValue": 0
     },
-    "UV $pixelKey": {
+    "UV": {
       "type": "Single Color",
       "color": "UV",
-      "fineChannelAliases": ["UV $pixelKey fine"],
+      "fineChannelAliases": ["UV fine"],
       "defaultValue": 0
     },
     "Color Macros": {
@@ -591,17 +610,107 @@
       ]
     }
   },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0
+    },
+    "Blue $pixelKey": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0
+    },
+    "Green $pixelKey": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0
+    },
+    "White $pixelKey": {
+      "type": "Single Color",
+      "color": "White",
+      "defaultValue": 0
+    },
+    "Cyan $pixelKey": {
+      "type": "Single Color",
+      "color": "Cyan",
+      "defaultValue": 0
+    },
+    "Amber $pixelKey": {
+      "type": "Single Color",
+      "color": "Amber",
+      "defaultValue": 0
+    },
+    "UV $pixelKey": {
+      "type": "Single Color",
+      "color": "UV",
+      "defaultValue": 0
+    }
+  },
   "modes": [
     {
       "name": "Basic",
       "channels": [
-        "Pan"
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Cyan",
+        "UV",
+        "Color Macros",
+        "Color Presets",
+        "Color Presets Dimmer",
+        "Shutter",
+        "Dimmer",
+        "Dimmer Mode",
+        "Zoom",
+        "Chase Patterns",
+        "Chase Pattern Speed",
+        "Chase Fade",
+        "White Balance",
+        "Pan/Tilt Speed",
+        "Special Functions"
       ]
     },
     {
       "name": "Standard",
       "channels": [
-        "Pan"
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Amber",
+        "Amber fine",
+        "Cyan",
+        "Cyan fine",
+        "UV",
+        "UV fine",
+        "Color Macros",
+        "Color Presets",
+        "Color Presets Dimmer",
+        "Shutter",
+        "Dimmer",
+        "Dimmer Mode",
+        "Zoom",
+        "Chase Patterns",
+        "Chase Pattern Speed",
+        "Chase Fade",
+        "White Balance",
+        "Pan/Tilt Speed",
+        "Special Functions"
       ]
     },
     {
@@ -611,13 +720,20 @@
         "Pan fine",
         "Tilt",
         "Tilt fine",
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
-        "White $pixelKey",
-        "Amber $pixelKey",
-        "Cyan $pixelKey",
-        "UV $pixelKey",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Center", "Middle", "Outer"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey",
+            "Amber $pixelKey",
+            "Cyan $pixelKey",
+            "UV $pixelKey"
+          ]
+        },
         "Color Macros",
         "Color Presets",
         "Color Presets Dimmer",
