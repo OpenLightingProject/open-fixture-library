@@ -28,15 +28,27 @@
       "capabilities": [
         {
           "range": [0, 119],
-          "name": "Color"
+          "name": "Color",
+          "switchChannels": {
+            "Color / Chase": "Color",
+            "Strobe / Chase Speed": "Strobe"
+          }
         },
         {
           "range": [120, 239],
-          "name": "Chase"
+          "name": "Chase",
+          "switchChannels": {
+            "Color / Chase": "Chase",
+            "Strobe / Chase Speed": "Chase Speed"
+          }
         },
         {
           "range": [240, 255],
-          "name": "Sound Active"
+          "name": "Sound Active",
+          "switchChannels": {
+            "Color / Chase": "Color",
+            "Strobe / Chase Speed": "Strobe"
+          }
         }
       ]
     },
@@ -220,9 +232,6 @@
         }
       ]
     },
-    "Color / Chase": {
-      "type": "Switching Channel"
-    },
     "Strobe": {
       "type": "Strobe",
       "defaultValue": 0,
@@ -250,9 +259,6 @@
           "name": "Chase speed slow-fast"
         }
       ]
-    },
-    "Strobe / Chase Speed": {
-      "type": "Switching Channel"
     },
     "Red $pixelKey": {
       "type": "Single Color",
