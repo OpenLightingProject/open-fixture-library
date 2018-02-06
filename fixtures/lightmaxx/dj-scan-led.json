@@ -1,0 +1,290 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "name": "DJ Scan LED",
+  "categories": ["Scanner", "Color Changer"],
+  "meta": {
+    "authors": ["Thilo Billerbeck"],
+    "createDate": "2018-02-06",
+    "lastModifyDate": "2018-02-06"
+  },
+  "manualURL": "https://www.musicstore.de/INTERSHOP/web/WFS/MusicStore-MusicStoreShop-Site/de_DE/-/EUR/ViewProductAttachment-ResolveManualURL?File=DE_LIG0007774-000.pdf",
+  "physical": {
+    "dimensions": [465, 150, 150],
+    "weight": 3,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "25W LED"
+    },
+    "focus": {
+      "type": "Mirror"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "defaultValue": 127,
+      "invert": false
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "defaultValue": 127,
+      "invert": false
+    },
+    "Color Wheel": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 13],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [14, 27],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [28, 41],
+          "name": "Pink",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [42, 55],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [56, 69],
+          "name": "Purple",
+          "color": "#8000ff"
+        },
+        {
+          "range": [70, 83],
+          "name": "Blue",
+          "color": "#0040ff"
+        },
+        {
+          "range": [84, 97],
+          "name": "Light Green",
+          "color": "#00ff80"
+        },
+        {
+          "range": [98, 111],
+          "name": "Orange",
+          "color": "#ff8000"
+        },
+        {
+          "range": [112, 127],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [128, 190],
+          "name": "Forwards rainbow effect (incr.)"
+        },
+        {
+          "range": [191, 255],
+          "name": "Backwards rainbow effect (incr.)"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "type": "Gobo",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 8],
+          "name": "Open"
+        },
+        {
+          "range": [9, 17],
+          "name": "Gobo 1"
+        },
+        {
+          "range": [18, 26],
+          "name": "Gobo 2"
+        },
+        {
+          "range": [27, 35],
+          "name": "Gobo 3"
+        },
+        {
+          "range": [36, 44],
+          "name": "Gobo 4"
+        },
+        {
+          "range": [45, 53],
+          "name": "Gobo 5"
+        },
+        {
+          "range": [54, 62],
+          "name": "Gobo 6"
+        },
+        {
+          "range": [63, 71],
+          "name": "Gobo 7"
+        },
+        {
+          "range": [72, 80],
+          "name": "Gobo 8"
+        },
+        {
+          "range": [81, 89],
+          "name": "Gobo 9"
+        },
+        {
+          "range": [90, 98],
+          "name": "Gobo 10"
+        },
+        {
+          "range": [99, 107],
+          "name": "Gobo 11"
+        },
+        {
+          "range": [108, 116],
+          "name": "Gobo 1 shake"
+        },
+        {
+          "range": [117, 125],
+          "name": "Gobo 2 shake"
+        },
+        {
+          "range": [126, 134],
+          "name": "Gobo 3 shake"
+        },
+        {
+          "range": [135, 143],
+          "name": "Gobo 4 shake"
+        },
+        {
+          "range": [144, 152],
+          "name": "Gobo 5 shake"
+        },
+        {
+          "range": [153, 161],
+          "name": "Gobo 6 shake"
+        },
+        {
+          "range": [162, 170],
+          "name": "Gobo 7 shake"
+        },
+        {
+          "range": [171, 179],
+          "name": "Gobo 8 shake"
+        },
+        {
+          "range": [180, 188],
+          "name": "Gobo 9 shake"
+        },
+        {
+          "range": [189, 197],
+          "name": "Gobo 10 shake"
+        },
+        {
+          "range": [198, 206],
+          "name": "Gobo 11 shake"
+        },
+        {
+          "range": [207, 255],
+          "name": "Rotate Gobo Wheel (incr.)"
+        }
+      ]
+    },
+    "Shutter": {
+      "type": "Shutter",
+      "defaultValue": 10,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "closed"
+        },
+        {
+          "range": [10, 19],
+          "name": "open"
+        },
+        {
+          "range": [20, 127],
+          "name": "Strobe effect 1 (incr.)"
+        },
+        {
+          "range": [128, 137],
+          "name": "open"
+        },
+        {
+          "range": [138, 201],
+          "name": "Strobe effect 2 (incr.)"
+        },
+        {
+          "range": [202, 255],
+          "name": "open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity"
+    },
+    "Function/Program": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 59],
+          "name": "Reserved"
+        },
+        {
+          "range": [60, 79],
+          "name": "C/G Motor reset"
+        },
+        {
+          "range": [80, 99],
+          "name": "All Motor reset"
+        },
+        {
+          "range": [100, 119],
+          "name": "Internal Program 1"
+        },
+        {
+          "range": [120, 139],
+          "name": "Internal Program 2"
+        },
+        {
+          "range": [140, 159],
+          "name": "Internal Program 3"
+        },
+        {
+          "range": [160, 179],
+          "name": "Internal Program 4"
+        },
+        {
+          "range": [180, 199],
+          "name": "Internal Program 5"
+        },
+        {
+          "range": [200, 219],
+          "name": "Internal Program 6"
+        },
+        {
+          "range": [220, 239],
+          "name": "Internal Program 7"
+        },
+        {
+          "range": [240, 255],
+          "name": "Internal Program 8"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Normal",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Shutter",
+        "Dimmer",
+        "Function/Program"
+      ]
+    }
+  ]
+}
