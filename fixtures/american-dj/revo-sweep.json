@@ -1,0 +1,317 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "name": "Revo Sweep",
+  "shortName": "ADJRevoSweep",
+  "categories": ["Flower"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-02-06",
+    "lastModifyDate": "2018-02-06"
+  },
+  "manualURL": "http://adjmedia.s3-website-eu-west-1.amazonaws.com/manuals/revo_sweep.pdf",
+  "physical": {
+    "dimensions": [317, 182, 250],
+    "weight": 2,
+    "power": 13,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [116, 116]
+    }
+  },
+  "matrix": {
+    "pixelCount": [7, 1, 1]
+  },
+  "availableChannels": {
+    "Mode": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 119],
+          "name": "Color",
+          "switchChannels": {
+            "Color / Chase": "Color",
+            "Strobe / Chase Speed": "Strobe"
+          }
+        },
+        {
+          "range": [120, 239],
+          "name": "Chase",
+          "switchChannels": {
+            "Color / Chase": "Chase",
+            "Strobe / Chase Speed": "Chase Speed"
+          }
+        },
+        {
+          "range": [240, 255],
+          "name": "Sound Active",
+          "switchChannels": {
+            "Color / Chase": "Color",
+            "Strobe / Chase Speed": "Strobe"
+          }
+        }
+      ]
+    },
+    "Color": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "Off"
+        },
+        {
+          "range": [16, 31],
+          "name": "Color 1"
+        },
+        {
+          "range": [32, 47],
+          "name": "Color 2"
+        },
+        {
+          "range": [48, 63],
+          "name": "Color 3"
+        },
+        {
+          "range": [64, 79],
+          "name": "Color 4"
+        },
+        {
+          "range": [80, 95],
+          "name": "Color 5"
+        },
+        {
+          "range": [96, 111],
+          "name": "Color 6"
+        },
+        {
+          "range": [112, 127],
+          "name": "Color 7"
+        },
+        {
+          "range": [128, 143],
+          "name": "Color 8"
+        },
+        {
+          "range": [144, 159],
+          "name": "Color 9"
+        },
+        {
+          "range": [160, 175],
+          "name": "Color 10"
+        },
+        {
+          "range": [176, 191],
+          "name": "Color 11"
+        },
+        {
+          "range": [192, 207],
+          "name": "Color 12"
+        },
+        {
+          "range": [208, 223],
+          "name": "Color 13"
+        },
+        {
+          "range": [224, 239],
+          "name": "Color 14"
+        },
+        {
+          "range": [240, 255],
+          "name": "Color 15"
+        }
+      ]
+    },
+    "Chase": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Off"
+        },
+        {
+          "range": [10, 19],
+          "name": "Chase 1"
+        },
+        {
+          "range": [20, 29],
+          "name": "Chase 2"
+        },
+        {
+          "range": [30, 39],
+          "name": "Chase 3"
+        },
+        {
+          "range": [40, 49],
+          "name": "Chase 4"
+        },
+        {
+          "range": [50, 59],
+          "name": "Chase 5"
+        },
+        {
+          "range": [60, 69],
+          "name": "Chase 6"
+        },
+        {
+          "range": [70, 79],
+          "name": "Chase 7"
+        },
+        {
+          "range": [80, 89],
+          "name": "Chase 8"
+        },
+        {
+          "range": [90, 99],
+          "name": "Chase 9"
+        },
+        {
+          "range": [100, 109],
+          "name": "Chase 10"
+        },
+        {
+          "range": [110, 119],
+          "name": "Chase 11"
+        },
+        {
+          "range": [120, 129],
+          "name": "Chase 12"
+        },
+        {
+          "range": [130, 139],
+          "name": "Chase 13"
+        },
+        {
+          "range": [140, 149],
+          "name": "Chase 14"
+        },
+        {
+          "range": [150, 159],
+          "name": "Chase 15"
+        },
+        {
+          "range": [160, 169],
+          "name": "Chase 16"
+        },
+        {
+          "range": [170, 179],
+          "name": "Chase 17"
+        },
+        {
+          "range": [180, 189],
+          "name": "Chase 18"
+        },
+        {
+          "range": [190, 199],
+          "name": "Chase 19"
+        },
+        {
+          "range": [200, 209],
+          "name": "Chase 20"
+        },
+        {
+          "range": [210, 219],
+          "name": "Chase 21"
+        },
+        {
+          "range": [220, 229],
+          "name": "Chase 22"
+        },
+        {
+          "range": [230, 239],
+          "name": "Chase 23"
+        },
+        {
+          "range": [240, 249],
+          "name": "Chase 24"
+        },
+        {
+          "range": [250, 255],
+          "name": "Chase 25"
+        }
+      ]
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "No function"
+        },
+        {
+          "range": [10, 255],
+          "name": "Strobe slow-fast"
+        }
+      ]
+    },
+    "Chase Speed": {
+      "type": "Speed",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "No function"
+        },
+        {
+          "range": [10, 255],
+          "name": "Chase speed slow-fast"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0
+    },
+    "Green $pixelKey": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0
+    },
+    "Blue $pixelKey": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0
+    },
+    "White $pixelKey": {
+      "type": "Single Color",
+      "color": "White",
+      "defaultValue": 0
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Mode",
+        "Color / Chase",
+        "Strobe / Chase Speed"
+      ]
+    },
+    {
+      "name": "28-channel",
+      "shortName": "28ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
+      ]
+    }
+  ]
+}
