@@ -1,0 +1,209 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "name": "Sunraise LED",
+  "categories": ["Flower"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-02-06",
+    "lastModifyDate": "2018-02-06"
+  },
+  "manualURL": "https://www.highlite.nl/silver.download/Documents@extern@Manuals/43078_MANUAL_GB_V2.pdf",
+  "physical": {
+    "dimensions": [266, 260, 266],
+    "weight": 2.8,
+    "power": 35,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "55 x 3W RGBWA LEDs",
+      "lumens": 1000
+    }
+  },
+  "availableChannels": {
+    "Color Macros": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Blackout"
+        },
+        {
+          "range": [10, 19],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [20, 29],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [30, 39],
+          "name": "Blue",
+          "color": "#0000bb"
+        },
+        {
+          "range": [40, 49],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [50, 59],
+          "name": "Amber",
+          "color": "#ffbf00"
+        },
+        {
+          "range": [60, 69],
+          "name": "Red + Green",
+          "color": "#ff0000",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [70, 79],
+          "name": "Red + Blue",
+          "color": "#ff0000",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [80, 89],
+          "name": "Red + White",
+          "color": "#ff0000",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [90, 99],
+          "name": "Red + Amber",
+          "color": "#ff0000",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [100, 109],
+          "name": "Green + Blue",
+          "color": "#00ff00",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [110, 119],
+          "name": "Green + White",
+          "color": "#00ff00",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [120, 129],
+          "name": "Green + Amber",
+          "color": "#00ff00",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [130, 139],
+          "name": "Blue + White",
+          "color": "#0000ff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [140, 149],
+          "name": "Blue + Amber",
+          "color": "#0000ff",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [150, 159],
+          "name": "White + Amber",
+          "color": "#ffffff",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [160, 169],
+          "name": "Red + Green + Blue",
+          "color": "#eeeeee"
+        },
+        {
+          "range": [170, 179],
+          "name": "Red + Green + Blue + White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [180, 189],
+          "name": "Red + Green + Blue + Amber",
+          "color": "#eeeeee",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [190, 199],
+          "name": "Red + Green + Blue + White + Amber",
+          "color": "#ffffff",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [200, 229],
+          "name": "Auto"
+        },
+        {
+          "range": [230, 255],
+          "name": "Sound-controlled mode"
+        }
+      ]
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "No function"
+        },
+        {
+          "range": [10, 255],
+          "name": "Strobe 0-12Hz"
+        }
+      ]
+    },
+    "Auto Speed": {
+      "type": "Speed",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "No function"
+        },
+        {
+          "range": [10, 255],
+          "name": "Speed slow-fast"
+        }
+      ]
+    },
+    "Motor Rotation": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "No function"
+        },
+        {
+          "range": [10, 119],
+          "name": "Rotation CW slow-fast"
+        },
+        {
+          "range": [120, 129],
+          "name": "Stop"
+        },
+        {
+          "range": [130, 255],
+          "name": "Rotation CCW slow-fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Color Macros",
+        "Strobe",
+        "Auto Speed",
+        "Motor Rotation"
+      ]
+    }
+  ]
+}
