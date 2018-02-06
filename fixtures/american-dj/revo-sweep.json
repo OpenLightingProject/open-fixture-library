@@ -21,6 +21,9 @@
       "degreesMinMax": [116, 116]
     }
   },
+  "matrix": {
+    "pixelCount": [7, 1, 1]
+  },
   "availableChannels": {
     "Mode": {
       "type": "Effect",
@@ -259,7 +262,9 @@
           "name": "Chase speed slow-fast"
         }
       ]
-    },
+    }
+  },
+  "templateChannels": {
     "Red $pixelKey": {
       "type": "Single Color",
       "color": "Red",
@@ -273,6 +278,11 @@
     "Blue $pixelKey": {
       "type": "Single Color",
       "color": "Blue",
+      "defaultValue": 0
+    },
+    "White $pixelKey": {
+      "type": "Single Color",
+      "color": "White",
       "defaultValue": 0
     }
   },
@@ -290,9 +300,17 @@
       "name": "28-channel",
       "shortName": "28ch",
       "channels": [
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
       ]
     }
   ]
