@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
   "name": "DJ Scan LED",
-  "categories": ["Moving Head", "Dimmer", "Color Changer", "Strobe"],
+  "categories": ["Scanner", "Color Changer"],
   "meta": {
     "authors": ["Thilo Billerbeck"],
     "createDate": "2018-02-06",
@@ -13,24 +13,25 @@
     "weight": 3,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "25W LED"
     },
     "focus": {
       "type": "Mirror"
     }
   },
   "availableChannels": {
-    "PAN": {
+    "Pan": {
       "type": "Pan",
+      "defaultValue": 127,
       "invert": false
     },
-    "TILT": {
+    "Tilt": {
       "type": "Tilt",
+      "defaultValue": 127,
       "invert": false
     },
     "Color Wheel": {
       "type": "Multi-Color",
-      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 13],
@@ -89,6 +90,7 @@
     },
     "Gobo Wheel": {
       "type": "Gobo",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 8],
@@ -190,6 +192,7 @@
     },
     "Shutter": {
       "type": "Shutter",
+      "defaultValue": 10,
       "capabilities": [
         {
           "range": [0, 9],
@@ -274,8 +277,8 @@
     {
       "name": "Normal",
       "channels": [
-        "PAN",
-        "TILT",
+        "Pan",
+        "Tilt",
         "Color Wheel",
         "Gobo Wheel",
         "Shutter",
