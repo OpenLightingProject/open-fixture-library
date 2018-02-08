@@ -21,20 +21,28 @@
       "degreesMinMax": [40, 40]
     }
   },
+  "matrix": {
+    "pixelCount": [12, 1, 1],
+    "pixelGroups": {
+      "Master": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+      "1/2": ["1", "2", "3", "4", "5", "6"],
+      "2/2": ["7", "8", "9", "10", "11", "12"],
+      "1/3": ["1", "2", "3", "4"],
+      "2/3": ["5", "6", "7", "8"],
+      "3/3": ["9", "10", "11", "12"],
+      "1/4": ["1", "2", "3"],
+      "2/4": ["4", "5", "6"],
+      "3/4": ["7", "8", "9"],
+      "4/4": ["10", "11", "12"],
+      "1/6": ["1", "2"],
+      "2/6": ["3", "4"],
+      "3/6": ["5", "6"],
+      "4/6": ["7", "8"],
+      "5/6": ["9", "10"],
+      "6/6": ["11", "12"]
+    }
+  },
   "availableChannels": {
-    "Red $pixelKey": {
-      "type": "Single Color",
-      "color": "Red",
-      "defaultValue": 0
-    },
-    "Green $pixelKey": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue $pixelKey": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
     "Master Dimmer": {
       "type": "Intensity",
       "defaultValue": 0
@@ -226,23 +234,38 @@
       ]
     }
   },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0
+    },
+    "Green $pixelKey": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue $pixelKey": {
+      "type": "Single Color",
+      "color": "Blue"
+    }
+  },
   "modes": [
     {
       "name": "3-channel",
       "shortName": "3ch",
       "channels": [
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey"
+        "Red Master",
+        "Green Master",
+        "Blue Master"
       ]
     },
     {
       "name": "4-channel",
       "shortName": "4ch",
       "channels": [
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
         "Master Dimmer"
       ]
     },
@@ -250,17 +273,25 @@
       "name": "6-channel",
       "shortName": "6ch",
       "channels": [
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     },
     {
-      "name": "7-channnel",
+      "name": "7-channel",
+      "shortName": "7ch",
       "channels": [
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
         "Master Dimmer",
         "Programs",
         "Program Speed",
@@ -272,36 +303,64 @@
       "name": "9-channel",
       "shortName": "9ch",
       "channels": [
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/3", "2/3", "3/3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     },
     {
       "name": "12-channel",
       "shortName": "12ch",
       "channels": [
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     },
     {
       "name": "18-channel",
       "shortName": "18ch",
       "channels": [
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/6", "2/6", "3/6", "4/6", "5/6", "6/6"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     },
     {
       "name": "36-channel",
       "shortName": "36ch",
       "channels": [
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     }
   ]
