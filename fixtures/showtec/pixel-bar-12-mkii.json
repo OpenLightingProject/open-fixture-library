@@ -353,16 +353,18 @@
     },
     "Green $pixelKey": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "defaultValue": 0
     },
     "Blue $pixelKey": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "defaultValue": 0
     }
   },
   "modes": [
     {
-      "name": "3-channel",
+      "name": "RGB",
       "shortName": "3ch",
       "channels": [
         "Red Master",
@@ -371,7 +373,7 @@
       ]
     },
     {
-      "name": "4-channel",
+      "name": "RGBD",
       "shortName": "4ch",
       "channels": [
         "Red Master",
@@ -381,7 +383,7 @@
       ]
     },
     {
-      "name": "6-channel",
+      "name": "RGB Halfs",
       "shortName": "6ch",
       "channels": [
         {
@@ -397,7 +399,7 @@
       ]
     },
     {
-      "name": "7-channel",
+      "name": "RGBD + Effects",
       "shortName": "7ch",
       "channels": [
         "Red Master",
@@ -410,7 +412,7 @@
       ]
     },
     {
-      "name": "9-channel",
+      "name": "RGB Thirds",
       "shortName": "9ch",
       "channels": [
         {
@@ -426,7 +428,7 @@
       ]
     },
     {
-      "name": "12-channel",
+      "name": "RGB Quarters",
       "shortName": "12ch",
       "channels": [
         {
@@ -442,7 +444,7 @@
       ]
     },
     {
-      "name": "18-channel",
+      "name": "RGB Sixths",
       "shortName": "18ch",
       "channels": [
         {
@@ -458,7 +460,7 @@
       ]
     },
     {
-      "name": "36-channel",
+      "name": "RGB Individual",
       "shortName": "36ch",
       "channels": [
         {
