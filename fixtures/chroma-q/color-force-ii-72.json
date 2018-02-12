@@ -1,0 +1,105 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "name": "Color Force II 72",
+  "shortName": "CHCF272RGBA",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-02-12",
+    "lastModifyDate": "2018-02-12"
+  },
+  "manualURL": "http://www.chroma-q.com/support/manuals/CQ_ColorForceII_UserManual_1_1a.pdf",
+  "physical": {
+    "dimensions": [1759, 191, 165],
+    "weight": 18,
+    "power": 800,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [22, 22]
+    }
+  },
+  "availableChannels": {
+    "Strobe Frequency": {
+      "type": "Strobe"
+    },
+    "Strobe Duration": {
+      "type": "Strobe"
+    },
+    "Strobe Randomization": {
+      "type": "Effect"
+    },
+    "Strobe Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0
+    },
+    "Strobe Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0
+    },
+    "Strobe Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0
+    },
+    "Strobe Amber": {
+      "type": "Single Color",
+      "color": "Amber",
+      "defaultValue": 0
+    },
+    "Red $pixelKey": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green $pixelKey": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0
+    },
+    "Blue $pixelKey": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0
+    },
+    "Amber $pixelKey": {
+      "type": "Single Color",
+      "color": "Amber",
+      "defaultValue": 0
+    },
+    "Hue $pixelKey": {
+      "type": "Multi-Color"
+    },
+    "Saturation $pixelKey": {
+      "type": "Intensity"
+    },
+    "Intensity $pixelKey": {
+      "type": "Intensity",
+      "defaultValue": 0
+    }
+  },
+  "modes": [
+    {
+      "name": "test",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Randomization",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        "Strobe Amber",
+        "Red $pixelKey",
+        "Green $pixelKey",
+        "Blue $pixelKey",
+        "Amber $pixelKey",
+        "Hue $pixelKey",
+        "Saturation $pixelKey",
+        "Intensity $pixelKey"
+      ]
+    }
+  ]
+}
