@@ -1,11 +1,24 @@
 const xmlbuilder = require(`xmlbuilder`);
 const sanitize = require(`sanitize-filename`);
 
-const FineChannel = require(`../../lib/model/FineChannel.js`);
-const SwitchingChannel = require(`../../lib/model/SwitchingChannel.js`);
-const MatrixChannel = require(`../../lib/model/MatrixChannel.js`);
+/* eslint-disable no-unused-vars */
+const AbstractChannel = require(`../../lib/model/AbstractChannel.js`);
 const Capability = require(`../../lib/model/Capability.js`);
+const Channel = require(`../../lib/model/Channel.js`);
+const FineChannel = require(`../../lib/model/FineChannel.js`);
+const Fixture = require(`../../lib/model/Fixture.js`);
+const Manufacturer = require(`../../lib/model/Manufacturer.js`);
+const Matrix = require(`../../lib/model/Matrix.js`);
+const MatrixChannel = require(`../../lib/model/MatrixChannel.js`);
+const MatrixChannelReference = require(`../../lib/model/MatrixChannelReference.js`);
+const Meta = require(`../../lib/model/Meta.js`);
+const Mode = require(`../../lib/model/Mode.js`);
+const NullChannel = require(`../../lib/model/NullChannel.js`);
 const Physical = require(`../../lib/model/Physical.js`);
+const Range = require(`../../lib/model/Range.js`);
+const SwitchingChannel = require(`../../lib/model/SwitchingChannel.js`);
+const TemplateChannel = require(`../../lib/model/TemplateChannel.js`);
+/* eslint-enable no-unused-vars */
 
 module.exports.name = `QLC+`;
 module.exports.version = `0.5.0`;
@@ -194,24 +207,21 @@ function addPhysical(xmlMode, physical) {
   }
 }
 
+/**
+ * Adds Head tags for all used pixels in the given mode, ordered by XYZ direction (pixel groups by appearence in JSON).
+ * @param {!XMLElement} xmlMode The Mode tag to which the Head tags should be added
+ * @param {!Mode} mode The fixture's mode whose pixels should be determined.
+ */
 function addHeads(xmlMode, mode) {
-  const pixelKeys = mode.fixture.matrix.pixelKeys.concat(mode.fixture.matrix.pixelGroupKeys);
-  for (const pixelKey of pixelKeys) {
-    const channels = mode.channels.filter(channel => {
-      if (channel instanceof MatrixChannel) {
-        return channel.pixelKey === pixelKey;
-      }
+  const hasMatrixChannels = mode.channels.some(
+    ch => ch instanceof MatrixChannel || (ch instanceof SwitchingChannel && ch.defaultChannel instanceof MatrixChannel)
+  );
 
-      if (channel instanceof SwitchingChannel && channel.defaultChannel instanceof MatrixChannel) {
-        return channel.defaultChannel.pixelKey === pixelKey;
-      }
-      return false;
-    });
-
-    if (channels.length > 0) {
-      const xmlHead = xmlMode.element({
-        Head: {}
-      });
+  if (hasMatrixChannels) {
+    const pixelKeys = mode.fixture.matrix.getPixelKeysByOrder(`X`, `Y`, `Z`);
+    for (const pixelKey of pixelKeys) {
+      const channels = mode.channels.filter(channel => controlsPixelKey(channel, pixelKey));
+      const xmlHead = xmlMode.element(`Head`);
 
       for (const ch of channels) {
         xmlHead.element({
@@ -219,6 +229,27 @@ function addHeads(xmlMode, mode) {
         });
       }
     }
+  }
+
+  /**
+   * @param {AbstractChannel|MatrixChannel} channel A channel from a mode's channel list.
+   * @param {!string} pixelKey The pixel to check for.
+   * @returns {boolean} Whether the given channel controls the given pixel key, either directly or as part of a pixel group.
+   */
+  function controlsPixelKey(channel, pixelKey) {
+    if (channel instanceof SwitchingChannel) {
+      return controlsPixelKey(channel.defaultChannel, pixelKey);
+    }
+
+    if (channel instanceof MatrixChannel) {
+      if (mode.fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)) {
+        return mode.fixture.matrix.pixelGroups[channel.pixelKey].includes(pixelKey);
+      }
+
+      return channel.pixelKey === pixelKey;
+    }
+
+    return false;
   }
 }
 
