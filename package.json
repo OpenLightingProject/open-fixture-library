@@ -12,7 +12,8 @@
   "main": "main.js",
   "scripts": {
     "watch": "nodemon main.js",
-    "start": "node main.js"
+    "start": "node main.js",
+    "dev": "nuxt"
   },
   "dependencies": {
     "a11y-dialog": "^4.0.0",
@@ -31,12 +32,14 @@
     "node-env-file": "^0.1.8",
     "node-sass-middleware": "^0.11.0",
     "node-zip": "^1.1.1",
+    "nuxt": "^1.3.0",
     "sanitize-filename": "^1.6.1",
+    "sass-loader": "^6.0.6",
     "scroll-into-view": "^1.9.1",
     "sitemap": "^1.13.0",
     "uuid": "^3.1.0",
     "validate": "github:cferdinandi/validate",
-    "vue": "^2.5.2",
+    "vue": "^2.5.13",
     "vuedraggable": "^2.15.0",
     "xml2js": "^0.4.19",
     "xmlbuilder": "^9.0.4"
@@ -46,8 +49,9 @@
     "broken-link-checker": "^0.7.6",
     "colors": "^1.1.2",
     "diff": "^3.4.0",
-    "eslint": "^4.1.1",
+    "eslint": "^4.17.0",
     "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-vue": "^4.2.2",
     "json-schema-ref-parser": "^4.1.0",
     "libxml-xsd": "^0.5.2",
     "minimist": "^1.2.0",

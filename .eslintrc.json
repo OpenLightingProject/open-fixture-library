@@ -8,7 +8,8 @@
   ],
   "extends": [
     "eslint:recommended",
-    "plugin:security/recommended"
+    "plugin:security/recommended",
+    "plugin:vue/recommended"
   ],
   "rules": {
     "accessor-pairs": "error",
@@ -103,6 +104,7 @@
         "Object": "object",
         "String": "string"
       }
-    }]
+    }],
+    "vue/max-attributes-per-line": ["error", { "singleline": 3 }]
   }
 }
