@@ -1,0 +1,1432 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "name": "Color Force II 12",
+  "shortName": "CHCF212RGBA",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-02-13",
+    "lastModifyDate": "2018-02-13"
+  },
+  "comment": "Look Select capabilities may be inaccurate",
+  "manualURL": "http://www.chroma-q.com/support/manuals/CQ_ColorForceII_UserManual_1_1a.pdf",
+  "physical": {
+    "dimensions": [335, 191, 165],
+    "weight": 5,
+    "power": 160,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [22, 22]
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["4", "3", "2", "1"]
+      ]
+    ],
+    "pixelGroups": {
+      "1/2": ["1", "2"],
+      "2/2": ["3", "4"],
+      "Master": ["1", "2", "3", "4"],
+      "Odd": ["1", "3"],
+      "Even": ["2", "4"]
+    }
+  },
+  "availableChannels": {
+    "Look Select": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Off"
+        },
+        {
+          "range": [1, 8],
+          "name": "Look 1"
+        },
+        {
+          "range": [9, 16],
+          "name": "Look 2"
+        },
+        {
+          "range": [17, 25],
+          "name": "Look 3"
+        },
+        {
+          "range": [26, 33],
+          "name": "Look 4"
+        },
+        {
+          "range": [34, 42],
+          "name": "Look 5"
+        },
+        {
+          "range": [43, 51],
+          "name": "Look 6"
+        },
+        {
+          "range": [52, 59],
+          "name": "Look 7"
+        },
+        {
+          "range": [60, 67],
+          "name": "Look 8"
+        },
+        {
+          "range": [68, 75],
+          "name": "Look 9"
+        },
+        {
+          "range": [76, 84],
+          "name": "Look 10"
+        },
+        {
+          "range": [85, 92],
+          "name": "Look 11"
+        },
+        {
+          "range": [93, 100],
+          "name": "Look 12"
+        },
+        {
+          "range": [101, 109],
+          "name": "Look 13"
+        },
+        {
+          "range": [110, 117],
+          "name": "Look 14"
+        },
+        {
+          "range": [118, 125],
+          "name": "Look 15"
+        },
+        {
+          "range": [126, 133],
+          "name": "Look 16"
+        },
+        {
+          "range": [134, 141],
+          "name": "Look 17"
+        },
+        {
+          "range": [142, 149],
+          "name": "Look 18"
+        },
+        {
+          "range": [150, 157],
+          "name": "Look 19"
+        },
+        {
+          "range": [158, 165],
+          "name": "Look 20"
+        },
+        {
+          "range": [166, 174],
+          "name": "Look 21"
+        },
+        {
+          "range": [175, 182],
+          "name": "Look 22"
+        },
+        {
+          "range": [183, 190],
+          "name": "Look 23"
+        },
+        {
+          "range": [191, 199],
+          "name": "Look 24"
+        },
+        {
+          "range": [200, 207],
+          "name": "Look 25"
+        },
+        {
+          "range": [208, 215],
+          "name": "Look 26"
+        },
+        {
+          "range": [216, 223],
+          "name": "Look 27"
+        },
+        {
+          "range": [224, 231],
+          "name": "Look 28"
+        },
+        {
+          "range": [232, 239],
+          "name": "Look 29"
+        },
+        {
+          "range": [240, 247],
+          "name": "Look 30"
+        },
+        {
+          "range": [248, 255],
+          "name": "Look 31"
+        }
+      ]
+    },
+    "Strobe Frequency": {
+      "type": "Strobe"
+    },
+    "Strobe Duration": {
+      "type": "Strobe"
+    },
+    "Strobe Density": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "1-24 pixels"
+        }
+      ]
+    },
+    "Strobe Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0
+    },
+    "Strobe Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0
+    },
+    "Strobe Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0
+    },
+    "Strobe Amber": {
+      "type": "Single Color",
+      "color": "Amber",
+      "defaultValue": 0
+    },
+    "Strobe Hue": {
+      "type": "Multi-Color"
+    },
+    "Strobe Saturation": {
+      "type": "Intensity"
+    },
+    "Strobe Intensity": {
+      "type": "Intensity",
+      "defaultValue": 0
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0
+    },
+    "Green $pixelKey": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0
+    },
+    "Blue $pixelKey": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0
+    },
+    "Amber $pixelKey": {
+      "type": "Single Color",
+      "color": "Amber",
+      "defaultValue": 0
+    },
+    "Hue $pixelKey": {
+      "type": "Multi-Color"
+    },
+    "Saturation $pixelKey": {
+      "type": "Intensity"
+    },
+    "Intensity $pixelKey": {
+      "type": "Intensity",
+      "defaultValue": 0
+    }
+  },
+  "modes": [
+    {
+      "name": "Look",
+      "channels": [
+        "Look Select"
+      ]
+    },
+    {
+      "name": "Master RGB",
+      "shortName": "x4RGB",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves RGB",
+      "shortName": "x2RGB",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual RGB",
+      "shortName": "x1RGB",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even RGB",
+      "shortName": "Od/EvRGB",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master RGBA",
+      "shortName": "x4RGBA",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves RGBA",
+      "shortName": "x2RGBA",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual RGBA",
+      "shortName": "x1RGBA",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even RGBA",
+      "shortName": "Od/EvRGBA",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master HSI",
+      "shortName": "x4HSI",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves HSI",
+      "shortName": "x2HSI",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual HSI",
+      "shortName": "x1HSI",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even HSI",
+      "shortName": "Od/EvHSI",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master RGB Strobe",
+      "shortName": "x4RGBStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves RGB Strobe",
+      "shortName": "x2RGBStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual RGB Strobe",
+      "shortName": "x1RGBStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even RGB Strobe",
+      "shortName": "Od/EvRGBStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master RGBA Strobe",
+      "shortName": "x4RGBAStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves RGBA Strobe",
+      "shortName": "x2RGBAStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual RGBA Strobe",
+      "shortName": "x1RGBAStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even RGBA Strobe",
+      "shortName": "Od/EvRGBAStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master HSI Strobe",
+      "shortName": "x4HSIStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves HSI Strobe",
+      "shortName": "x2HSIStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual HSI Strobe",
+      "shortName": "x1HSIStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even HSI Strobe",
+      "shortName": "Od/EvHSIStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master RGB Random",
+      "shortName": "x4RGBRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves RGB Random",
+      "shortName": "x2RGBRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual RGB Random",
+      "shortName": "x1RGBRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even RGB Random",
+      "shortName": "Od/EvRGBRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master RGBA Random",
+      "shortName": "x4RGBARandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves RGBA Random",
+      "shortName": "x2RGBARandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual RGBA Random",
+      "shortName": "x1RGBARandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even RGBA Random",
+      "shortName": "Od/EvRGBARandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master HSI Random",
+      "shortName": "x4HSIRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves HSI Random",
+      "shortName": "x2HSIRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual HSI Random",
+      "shortName": "x1HSIRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even HSI Random",
+      "shortName": "Od/EvHSIRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master RGB Random+OnTop",
+      "shortName": "x4RGBRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves RGB Random+OnTop",
+      "shortName": "x2RGBRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual RGB Random+OnTop",
+      "shortName": "x1RGBRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even RGB Random+OnTop",
+      "shortName": "Od/EvRGBRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master RGBA Random+OnTop",
+      "shortName": "x4RGBARandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves RGBA Random+OnTop",
+      "shortName": "x2RGBARandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        "Strobe Amber",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual RGBA Random+OnTop",
+      "shortName": "x1RGBARandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        "Strobe Amber",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even RGBA Random+OnTop",
+      "shortName": "Od/EvRGBARandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        "Strobe Amber",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master HSI Random+OnTop",
+      "shortName": "x4HSIRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves HSI Random+OnTop",
+      "shortName": "x2HSIRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual HSI Random+OnTop",
+      "shortName": "x1HSIRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even HSI Random+OnTop",
+      "shortName": "Od/EvHSIRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master RGB OnTop",
+      "shortName": "x4RGBOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves RGB OnTop",
+      "shortName": "x2RGBOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual RGB OnTop",
+      "shortName": "x1RGBOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even RGB OnTop",
+      "shortName": "Od/EvRGBOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master RGBA OnTop",
+      "shortName": "x4RGBAOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves RGBA OnTop",
+      "shortName": "x2RGBAOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        "Strobe Amber",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual RGBA OnTop",
+      "shortName": "x1RGBAOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        "Strobe Amber",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even RGBA OnTop",
+      "shortName": "Od/EvRGBAOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        "Strobe Amber",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master HSI OnTop",
+      "shortName": "x4HSIOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves HSI OnTop",
+      "shortName": "x2HSIOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual HSI OnTop",
+      "shortName": "x1HSIOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even HSI OnTop",
+      "shortName": "Od/EvHSIOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    }
+  ]
+}
