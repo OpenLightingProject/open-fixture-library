@@ -1,5 +1,28 @@
+const path = require(`path`);
+
 const nuxtOptions = {
   srcDir: `ui/`,
+  build: {
+    extend(config, ctx) {
+      // exclude /assets/icons from url-loader
+      const urlLoader = config.module.rules.find(rule => rule.loader === `url-loader`);
+      urlLoader.exclude = /assets\/icons/;
+
+      // include /assets/icons for svg-inline-loader
+      config.module.rules.push({
+        test: /\.svg$/,
+        include: [
+          path.resolve(__dirname, `ui/assets/icons`)
+        ],
+        use: {
+          loader: `svg-inline-loader`,
+          options: {
+            removeSVGTagAttrs: false
+          }
+        }
+      });
+    }
+  },
   head: {
     titleTemplate: titleChunk => {
       // If undefined or blank then we don't need the hyphen
@@ -52,7 +75,7 @@ const nuxtOptions = {
       }
     ]
   },
-  css: [`~/assets/style.scss`]
+  css: [`~/assets/styles/style.scss`]
 };
 
 if (process.env.ALLOW_SEARCH_INDEXING !== `allowed`) {
