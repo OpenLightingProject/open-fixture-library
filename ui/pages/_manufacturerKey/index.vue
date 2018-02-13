@@ -25,7 +25,7 @@
       {{ manufacturer.comment.replace(/\n/g, `<br>` ) }}
     </p>
 
-    <ul :class="[`card`, `list`, `fixtures`, `category-${categoryClass}`]">
+    <ul :class="[`card`, `list`, `fixtures`]">
       <li v-for="fixture in fixtures" :key="fixture.key">
         <nuxt-link :to="fixture.link">
           <span class="name">{{ fixture.name }}</span>
