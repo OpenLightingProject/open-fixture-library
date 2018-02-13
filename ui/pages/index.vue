@@ -7,7 +7,7 @@
       </div>
 
       <div class="download-button big">
-        <a href="#" class="title">Download all ${options.register.lastUpdated.length} fixtures</a>
+        <a href="#" class="title">Download all {{ register.lastUpdated.length }} fixtures</a>
         <ul>
           <li v-for="(plugin, pluginKey) in exportPlugins" :key="pluginKey">
             <a :href="`/download.${pluginKey}`" :title="`Download ${plugin.name} fixture definitions`">{{ plugin.name }}</a>
@@ -23,54 +23,136 @@
     <p><abbr title="Open Fixture Library">OFL</abbr> collects DMX fixture definitions in a JSON format and automatically exports them to the right format for every supported lighting software. Everybody can <a href="https://github.com/FloEdelmann/open-fixture-library">contribute</a> and help to improve! Thanks!</p>
 
 
-    <!-- <div class="grid centered">
+    <div class="grid centered">
 
-    <section class="card list">
-    <h2>Recently updated fixtures</h2>
-    for (const fixtureKey of options.register.lastUpdated.slice(0, 5)) {
-      const name = getFixtureName(fixtureKey, options);
-      const action = options.register.filesystem[fixtureKey].lastAction;
-      const date = new Date(options.register.filesystem[fixtureKey].lastModifyDate);
-      const dateHtml = `<time datetime="${date.toISOString()}" title="${date.toISOString()}">${date.toISOString().replace(/T.*?$/, ``)}</time>`;
+      <section class="card list">
+        <h2>Recently updated fixtures</h2>
 
-      <a href="/${fixtureKey}">${name}<span class="hint">${action} ${dateHtml}</span></a>
-    }-->
-    <nuxt-link to="/manufacturers" class="card dark blue big-button" title="Browse all fixtures by manufacturer">${svg.getSvg(`folder-multiple`)}<h2>Browse fixtures</h2></nuxt-link>
-    <!--</section>
+        <nuxt-link
+          v-for="fixture in lastUpdated"
+          :key="fixture.key"
+          :to="`/${fixture.key}`">
 
-    <section class="card list">
-    <h2>Top contributors</h2>
-    for (const contributor of Object.keys(options.register.contributors).slice(0, 5)) {
-      const number = options.register.contributors[contributor].length;
-      const latestFixtureKey = getLatestFixtureKey(contributor, options);
-      const latestFixtureName = getFixtureName(latestFixtureKey, options);
+          {{ fixture.name }}
+          <span class="hint">
+            {{ fixture.action }}
+            <time
+              :datetime="fixture.date.toISOString()"
+              :title="fixture.date.toISOString()">
+              {{ fixture.date.toISOString().replace(/T.*?$/, ``) }}
+            </time>
+          </span>
 
-      <a href="/${latestFixtureKey}">${contributor}<span class="hint">${number} fixture${number === 1 ? `` : `s`}, latest: ${latestFixtureName}</span></a>
-    }
-    <a href="/fixture-editor" class="card dark light-green big-button" title="Become a top contributer yourself!">${svg.getSvg(`plus`)}<h2>Add fixture</h2></a>
-    </section>
+        </nuxt-link>
 
-    </div> -->
+        <nuxt-link to="/manufacturers" class="card dark blue big-button" title="Browse all fixtures by manufacturer">
+          <app-svg name="folder-multiple" />
+          <h2>Browse fixtures</h2>
+        </nuxt-link>
+      </section>
+
+      <section class="card list">
+        <h2>Top contributors</h2>
+
+        <nuxt-link
+          v-for="contributor in topContributors"
+          :key="contributor.name"
+          :to="`/${contributor.latestFixtureKey}`">
+          {{ contributor.name }}
+          <span class="hint">
+            {{ contributor.number }} fixture{{ contributor.number === 1 ? `` : `s` }}, latest: {{ contributor.latestFixtureName }}
+          </span>
+        </nuxt-link>
+
+        <nuxt-link to="/fixture-editor" class="card dark light-green big-button" title="Become a top contributer yourself!">
+          <app-svg name="plus" />
+          <h2>Add fixture</h2>
+        </nuxt-link>
+      </section>
+
+    </div>
 
     <div class="list grid centered">
-      <a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+-label%3Atype-bug" rel="nofollow" class="card">${svg.getSvg(`lightbulb-on-outline`, [`left`])}<span>Request feature</span></a>
-      <a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card">${svg.getSvg(`bug`, [`left`])}<span>Report problem</span></a>
-      <a href="https://github.com/FloEdelmann/open-fixture-library" class="card">${svg.getSvg(`github-circle`, [`left`])}<span>View source</span></a>
+      <a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+-label%3Atype-bug" rel="nofollow" class="card">
+        <app-svg name="lightbulb-on-outline" class="left" />
+        <span>Request feature</span>
+      </a>
+      <a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card">
+        <app-svg name="bug" class="left" />
+        <span>Report problem</span>
+      </a>
+      <a href="https://github.com/FloEdelmann/open-fixture-library" class="card">
+        <app-svg name="github-circle" class="left" />
+        <span>View source</span>
+      </a>
     </div>
   </div>
 </template>
 
 <script>
+import svg from '~/components/svg.vue';
+
+import register from '~~/fixtures/register.json';
+import manufacturers from '~~/fixtures/manufacturers.json';
+
 export default {
-  data: () => ({
-    exportPlugins: {
-      ecue: {
-        name: `e:cue`
+  components: {
+    'app-svg': svg
+  },
+  data() {
+    return {
+      register: register,
+      exportPlugins: {
+        ecue: {
+          name: `e:cue`
+        },
+        qlcplus: {
+          name: `QLC+`
+        }
       },
-      qlcplus: {
-        name: `QLC+`
-      }
-    }
-  })
+      lastUpdated: register.lastUpdated.slice(0, 5).map(
+        fixtureKey => ({
+          key: fixtureKey,
+          name: getFixtureName(fixtureKey),
+          action: register.filesystem[fixtureKey].lastAction,
+          date: new Date(register.filesystem[fixtureKey].lastModifyDate)
+        })
+      ),
+      topContributors: Object.keys(register.contributors).slice(0, 5).map(
+        contributor => {
+          const latestFixtureKey = getLatestFixtureKey(contributor);
+
+          return {
+            name: contributor,
+            number: register.contributors[contributor].length,
+            latestFixtureKey: latestFixtureKey,
+            latestFixtureName: getFixtureName(latestFixtureKey)
+          };
+        }
+      )
+    };
+  }
 };
+
+/**
+ * @param {!string} fixtureKey The combined manufacturer / fixture key.
+ * @returns {!string} The manufacturer and fixture names, separated by a space.
+ */
+function getFixtureName(fixtureKey) {
+  const manKey = fixtureKey.split(`/`)[0];
+  const manufacturerName = manufacturers[manKey].name;
+  const fixtureName = register.filesystem[fixtureKey].name;
+
+  return `${manufacturerName} ${fixtureName}`;
+}
+
+/**
+ * @param {!string} contributor The contributor name.
+ * @returns {!string} The combined key of the latest fixture contributed to by this contributor.
+ */
+function getLatestFixtureKey(contributor) {
+  return register.lastUpdated.find(
+    key => register.contributors[contributor].includes(key)
+  );
+}
 </script>

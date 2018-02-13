@@ -23,6 +23,9 @@ const nuxtOptions = {
       });
     }
   },
+  loading: {
+    color: `#1e88e5`
+  },
   head: {
     titleTemplate: titleChunk => {
       // If undefined or blank then we don't need the hyphen
