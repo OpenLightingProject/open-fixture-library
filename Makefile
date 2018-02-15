@@ -13,7 +13,7 @@ fixtures/manufacturers.json
 tests/test-fixtures.json tests/test-fixtures.md: \
 lib/fixture-features/*.js \
 fixtures/register.json \
-lib/model/*.js
+lib/model/*.mjs
 	node cli/make-test-fixtures.js && echo ""
 
 schema-fixture-dereferenced.json schema-manufacturers-dereferenced.json: \

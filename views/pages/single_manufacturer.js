@@ -2,7 +2,7 @@ const url = require(`url`);
 
 const svg = require(`../includes/svg.js`);
 
-const Fixture = require(`../../lib/model/Fixture.js`);
+const { fixtureFromRepository } = require(`../../lib/model.js`);
 
 let manufacturer;
 let fixtures;
@@ -11,7 +11,7 @@ module.exports = function(options) {
   const {manufacturers, register, man} = options;
   manufacturer = manufacturers[man];
   fixtures = register.manufacturers[man].map(
-    fix => Fixture.fromRepository(man, fix)
+    fix => fixtureFromRepository(man, fix)
   );
 
   options.title = `${manufacturer.name} - Open Fixture Library`;
