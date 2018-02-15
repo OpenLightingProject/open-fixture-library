@@ -10,6 +10,11 @@
       "lastModifyDate": "2017-10-16",
       "lastAction": "modified"
     },
+    "adb/europe-1000-1200w": {
+      "name": "Europe 1000/1200W",
+      "lastModifyDate": "2018-02-15",
+      "lastAction": "created"
+    },
     "american-dj/auto-spot-150": {
       "name": "Auto Spot 150",
       "lastModifyDate": "2018-01-18",
@@ -543,6 +548,9 @@
     "abstract": [
       "twister-4"
     ],
+    "adb": [
+      "europe-1000-1200w"
+    ],
     "american-dj": [
       "auto-spot-150",
       "boom-box-fx2",
@@ -807,6 +815,7 @@
       "venue/tristrip3z"
     ],
     "Dimmer": [
+      "adb/europe-1000-1200w",
       "eurolite/led-sls-6-uv-floor",
       "generic/desk-channel"
     ],
@@ -1075,6 +1084,9 @@
     "Thilo Billerbeck": [
       "lightmaxx/dj-scan-led"
     ],
+    "ameisso": [
+      "adb/europe-1000-1200w"
+    ],
     "eklynx": [
       "american-dj/galaxian-3d"
     ],
@@ -1085,6 +1097,10 @@
   "rdm": {
     "1808": {
       "key": "dts",
+      "models": {}
+    },
+    "4144": {
+      "key": "adb",
       "models": {}
     },
     "5584": {
@@ -1142,6 +1158,7 @@
     }
   },
   "lastUpdated": [
+    "adb/europe-1000-1200w",
     "chroma-q/color-force-ii-12",
     "chroma-q/color-force-ii-48",
     "chroma-q/color-force-ii-72",
