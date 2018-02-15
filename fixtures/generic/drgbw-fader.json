@@ -1,0 +1,122 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "name": "DRGBW Fader",
+  "shortName": "DRGBW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["ameisso"],
+    "createDate": "2018-02-15",
+    "lastModifyDate": "2018-02-15"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "type": "Intensity",
+      "fineChannelAliases": ["Dimmer fine", "Dimmer fine^2"],
+      "defaultValue": 0,
+      "invert": false
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "fineChannelAliases": ["Red fine", "Red fine^2"],
+      "defaultValue": 0,
+      "invert": false
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "fineChannelAliases": ["Green fine", "Green fine^2"],
+      "defaultValue": 0,
+      "invert": false
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "fineChannelAliases": ["Blue fine", "Blue fine^2"],
+      "defaultValue": 0,
+      "invert": false
+    },
+    "White": {
+      "type": "Single Color",
+      "color": "White",
+      "fineChannelAliases": ["White fine", "White fine^2"],
+      "defaultValue": 0,
+      "invert": false
+    }
+  },
+  "modes": [
+    {
+      "name": "8 bit",
+      "shortName": "8bit",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "16 bit Dimmer",
+      "shortName": "16bit-dimmer",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "16 bit",
+      "shortName": "16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine"
+      ]
+    },
+    {
+      "name": "24 bit Dimmer",
+      "shortName": "24bit-dimmer",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Dimmer fine^2",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "24 bit",
+      "shortName": "24bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Dimmer fine^2",
+        "Red",
+        "Red fine",
+        "Red fine^2",
+        "Green",
+        "Green fine",
+        "Green fine^2",
+        "Blue",
+        "Blue fine",
+        "Blue fine^2",
+        "White",
+        "White fine",
+        "White fine^2"
+      ]
+    }
+  ]
+}
