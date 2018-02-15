@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "name": "DRGBW-fader",
+  "shortName": "DRGBW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["ameisso"],
+    "createDate": "2018-02-15",
+    "lastModifyDate": "2018-02-15"
+  },
+  "comment": "generic color changer",
+  "availableChannels": {
+    "Dimmer": {
+      "type": "Intensity",
+      "defaultValue": 0,
+      "invert": false
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0,
+      "invert": false
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0,
+      "invert": false
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0,
+      "invert": false
+    },
+    "White": {
+      "type": "Single Color",
+      "color": "White",
+      "defaultValue": 0,
+      "invert": false
+    }
+  },
+  "modes": [
+    {
+      "name": "8 bit",
+      "shortName": "8bit",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
