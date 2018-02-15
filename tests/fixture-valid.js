@@ -3,11 +3,13 @@ const Ajv = require(`ajv`);
 
 const fixtureSchema = require(`../schema-fixture.json`);
 
-const Fixture = require(`../lib/model/Fixture.js`);
-const Channel = require(`../lib/model/Channel.js`);
-const FineChannel = require(`../lib/model/FineChannel.js`);
-const SwitchingChannel = require(`../lib/model/SwitchingChannel.js`);
-const MatrixChannel = require(`../lib/model/MatrixChannel.js`);
+const {
+  Channel,
+  FineChannel,
+  Fixture,
+  MatrixChannel,
+  SwitchingChannel
+} = require(`../lib/model.js`);
 
 /**
  * @typedef ResultData

@@ -4,12 +4,14 @@ const htmlEscape = require(`html-escape`);
 const svg = require(`../includes/svg.js`);
 const exportPlugins = require(`../../plugins/plugins.js`).export;
 
-const Fixture = require(`../../lib/model/Fixture.js`);
-const Channel = require(`../../lib/model/Channel.js`);
-const NullChannel = require(`../../lib/model/NullChannel.js`);
-const FineChannel = require(`../../lib/model/FineChannel.js`);
-const SwitchingChannel = require(`../../lib/model/SwitchingChannel.js`);
-const MatrixChannel = require(`../../lib/model/MatrixChannel.js`);
+const {
+  Channel,
+  FineChannel,
+  MatrixChannel,
+  NullChannel,
+  SwitchingChannel,
+  fixtureFromRepository
+} = require(`../../lib/model.js`);
 
 require(`../../lib/load-env-file.js`);
 
@@ -24,7 +26,7 @@ let fixture;
 module.exports = function handleFixture(options) {
   const {man, fix} = options;
 
-  fixture = Fixture.fromRepository(man, fix);
+  fixture = fixtureFromRepository(man, fix);
 
   options.title = `${fixture.manufacturer.name} ${fixture.name} fixture definition - Open Fixture Library`;
   options.structuredDataItems.push(getStructuredProductModel(options));

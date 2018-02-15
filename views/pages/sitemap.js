@@ -1,7 +1,7 @@
 const url = require(`url`);
 const sitemapGenerator = require(`sitemap`);
 
-const Fixture = require(`../../lib/model/Fixture.js`);
+const { fixtureFromRepository } = require(`../../lib/model.js`);
 
 let register;
 
@@ -70,7 +70,7 @@ function getManufacturerUrls(manKey, fixKeys) {
   }];
 
   for (const fixKey of fixKeys) {
-    const fix = Fixture.fromRepository(manKey, fixKey);
+    const fix = fixtureFromRepository(manKey, fixKey);
     urls.push({
       url: `/${manKey}/${fixKey}`,
       changefreq: `monthly`,

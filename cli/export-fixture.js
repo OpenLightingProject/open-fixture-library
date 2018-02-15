@@ -5,7 +5,7 @@ const minimist = require(`minimist`);
 const colors = require(`colors`);
 
 const exportPlugins = require(`../plugins/plugins.js`).export;
-const Fixture = require(`../lib/model/Fixture.js`);
+const { fixtureFromRepository } = require(`../lib/model.js`);
 
 const args = minimist(process.argv.slice(2), {
   string: [`p`, `o`],
@@ -67,7 +67,7 @@ if (args.o) {
 }
 
 exportPlugins[args.plugin].export(
-  fixtures.map(([man, fix]) => Fixture.fromRepository(man, fix)),
+  fixtures.map(([man, fix]) => fixtureFromRepository(man, fix)),
   {
     baseDir: path.join(__dirname, `..`)
   }
