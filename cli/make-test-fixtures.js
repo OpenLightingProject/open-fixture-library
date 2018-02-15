@@ -9,7 +9,7 @@ const fs = require(`fs`);
 const path = require(`path`);
 const colors = require(`colors`);
 
-const Fixture = require(`../lib/model/Fixture.js`);
+const { fixtureFromRepository } = require(`../lib/model.js`);
 const register = require(`../fixtures/register.json`);
 
 const fixFeaturesDir = path.join(__dirname, `../lib/fixture-features`);
@@ -52,7 +52,7 @@ let fixtures = [];
 for (const man of Object.keys(register.manufacturers)) {
   for (const fixKey of register.manufacturers[man]) {
     // pre-process data
-    const fix = Fixture.fromRepository(man, fixKey);
+    const fix = fixtureFromRepository(man, fixKey);
     const fixResult = {
       man: man,
       key: fixKey,
