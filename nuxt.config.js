@@ -3,7 +3,9 @@ const path = require(`path`);
 const nuxtOptions = {
   srcDir: `ui/`,
   modules: [
-    `@nuxtjs/axios`
+    [`@nuxtjs/axios`, {
+      browserBaseURL: `/`
+    }]
   ],
   build: {
     extend(config, ctx) {
