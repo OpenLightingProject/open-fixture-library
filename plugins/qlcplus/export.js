@@ -218,15 +218,18 @@ function addHeads(xmlMode, mode) {
   );
 
   if (hasMatrixChannels) {
-    const pixelKeys = mode.fixture.matrix.getPixelKeysByOrder(`X`, `Y`, `Z`);
-    for (const pixelKey of pixelKeys) {
-      const channels = mode.channels.filter(channel => controlsPixelKey(channel, pixelKey));
-      const xmlHead = xmlMode.element(`Head`);
+    for (const zLevel of mode.fixture.matrix.pixelKeyStructure) {
+      for (const row of zLevel) {
+        for (const pixelKey of row) {
+          const channels = mode.channels.filter(channel => controlsPixelKey(channel, pixelKey));
+          const xmlHead = xmlMode.element(`Head`);
 
-      for (const ch of channels) {
-        xmlHead.element({
-          Channel: mode.getChannelIndex(ch.key)
-        });
+          for (const ch of channels) {
+            xmlHead.element({
+              Channel: mode.getChannelIndex(ch.key)
+            });
+          }
+        }
       }
     }
   }
