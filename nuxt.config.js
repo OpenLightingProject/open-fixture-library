@@ -2,6 +2,9 @@ const path = require(`path`);
 
 const nuxtOptions = {
   srcDir: `ui/`,
+  modules: [
+    `@nuxtjs/axios`
+  ],
   build: {
     extend(config, ctx) {
       // exclude /assets/icons from url-loader
@@ -14,11 +17,9 @@ const nuxtOptions = {
         include: [
           path.resolve(__dirname, `ui/assets/icons`)
         ],
-        use: {
-          loader: `svg-inline-loader`,
-          options: {
-            removeSVGTagAttrs: false
-          }
+        loader: `svg-inline-loader`,
+        options: {
+          removeSVGTagAttrs: false
         }
       });
     }

@@ -3,11 +3,9 @@ const sitemapGenerator = require(`sitemap`);
 
 const { fixtureFromRepository } = require(`../../lib/model.js`);
 
-let register;
+const register = require(`../../fixtures/register.json`);
 
 module.exports = function generateSitemap(options) {
-  register = options.register;
-
   if (!options.app.get(`sitemap`)) {
     options.app.set(`sitemap`, sitemapGenerator.createSitemap({
       hostname: url.resolve(options.url, `/`),
