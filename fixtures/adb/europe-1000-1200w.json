@@ -1,0 +1,41 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "name": "Europe 1000/1200W",
+  "shortName": "Europe 1k",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["ameisso"],
+    "createDate": "2018-02-15",
+    "lastModifyDate": "2018-02-15"
+  },
+  "manualURL": "http://www.adblighting.com/files/DS5153-E%20Europe105%20data%20sheet.pdf",
+  "physical": {
+    "dimensions": [710, 340, 420],
+    "weight": 15.5,
+    "power": 1000,
+    "bulb": {
+      "type": "tungsten halogen",
+      "lumens": 26000
+    },
+    "lens": {
+      "name": "DW 105",
+      "degreesMinMax": [15, 38]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "type": "Intensity",
+      "defaultValue": 1,
+      "invert": false
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "shortName": "default",
+      "channels": [
+        "Intensity"
+      ]
+    }
+  ]
+}
