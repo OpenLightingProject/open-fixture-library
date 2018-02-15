@@ -18,11 +18,15 @@
 export default {
   props: {
     error: {
-      type: Object,
+      type: [Object, Error],
       required: true
     }
   },
   head() {
+    if (this.error.statusCode !== 404) {
+      console.error(`Nuxt rendering error:`, this.error);
+    }
+
     return {
       title: this.error.statusCode === 404 ? `Not Found` : `Error`
     };

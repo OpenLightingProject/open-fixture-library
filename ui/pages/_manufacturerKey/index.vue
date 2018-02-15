@@ -22,7 +22,7 @@
     </div>
 
     <p v-if="`comment` in manufacturer" class="comment">
-      {{ manufacturer.comment.replace(/\n/g, `<br>` ) }}
+      {{ manufacturerComment }}
     </p>
 
     <ul :class="[`card`, `list`, `fixtures`]">
@@ -68,6 +68,11 @@ export default {
         })
       )
     };
+  },
+  computed: {
+    manufacturerComment() {
+      return `comment` in this.manufacturer ? this.manufacturer.comment.replace(/\n/g, `<br>`) : ``;
+    }
   },
   head() {
     return {
