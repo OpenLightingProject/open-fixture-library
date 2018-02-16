@@ -1,6 +1,101 @@
 <template>
   <div>
-    <h1><nuxt-link :to="`/${fixture.manufacturer.key}`">{{ fixture.manufacturer.name }}</nuxt-link> {{ fixture.name }}</h1>
+    <header class="fixture-header">
+      <div class="title">
+        <h1>
+          <nuxt-link :to="`/${fixture.manufacturer.key}`">{{ fixture.manufacturer.name }}</nuxt-link>
+          {{ fixture.name }}
+          <code v-if="fixture.hasShortName">{{ fixture.shortName }}</code>
+        </h1>
+
+        <section class="fixture-meta">
+          <span class="last-modify-date">Last modified:&nbsp;<span v-html="lastModifyDate" /></span>
+          <span class="create-date">Created:&nbsp;<span v-html="createDate" /></span>
+          <span class="authors">Author{{ fixture.meta.authors.length === 1 ? `` : `s` }}:&nbsp;{{ fixture.meta.authors.join(`, `) }}</span>
+          <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manKey}/${fixKey}.json`">Source</a></span>
+          <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${man}/${fix}.json`">Revisions</a></span>
+        </section>
+      </div>
+
+      <div class="download-button">
+        <a href="#" class="title" @click.prevent>Download as &hellip;</a>
+        <ul>
+          <li v-for="(plugin, pluginKey) in exportPlugins" :key="pluginKey">
+            <a :href="`/${manKey}/${fixKey}.${pluginKey}`" :title="`Download ${plugin.name} fixture definition`">{{ plugin.name }}</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <section class="fixture-info card">
+
+      <section class="categories">
+        <span class="label">Categories</span>
+        <span class="value">
+          <nuxt-link
+            v-for="cat in fixture.categories"
+            :key="cat"
+            :to="`/categories/${encodeURIComponent(cat)}`"
+            class="category-badge">
+            <app-svg type="category" :name="cat" />
+            {{ cat }}
+          </nuxt-link>
+        </span>
+      </section>
+
+      <section v-if="fixture.hasComment" class="comment">
+        <span class="label">Comment</span>
+        <span class="value" style="white-space: pre;">{{ fixture.comment }}</span>
+      </section>
+
+      <section v-if="fixture.manualURL !== null" class="manualURL">
+        <span class="label">Manual</span>
+        <span class="value"><a :href="fixture.manualURL" rel="nofollow">{{ fixture.manualURL }}</a></span>
+      </section>
+
+      <section v-if="fixture.rdm !== null" class="rdm">
+        <span class="label"><abbr title="Remote Device Management">RDM</abbr> data</span>
+        <span class="value">
+          {{ fixture.manufacturer.rdmId }} /
+          {{ fixture.rdm.modelId }} /
+          {{ `softwareVersion` in fixture.rdm ? fixture.rdm.softwareVersion : `?` }} –
+          <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${fixture.manufacturer.rdmId}&model=${fixture.rdm.modelId}`" rel="nofollow">
+            <app-svg name="ola" /> View in Open Lighting RDM database
+          </a>
+          <span class="hint">manufacturer ID / model ID / software version</span>
+        </span>
+      </section>
+
+      <!-- TODO: Implement those components -->
+      <!-- <template v-if="fixture.physical !== null">
+        <h3 class="physical">Physical data</h3>
+        <section class="physical">
+          <app-fixture-physical :physical="fixture.physical" />
+        </section>
+      </template>
+
+      <template v-if="fixture.matrix !== null">
+        <h3 class="matrix">Matrix</h3>
+        <section class="matrix">
+          <app-fixture-matrix :matrix="fixture.matrix" />
+        </section>
+      </template> -->
+
+    </section>
+
+    <section class="fixture-modes">
+      <!-- <app-fixture-mode v-for="mode in fixture.modes" :key="mode.name" /> -->
+      <div class="clearfix" />
+    </section>
+
+    <section>
+      <h2>Something wrong with this fixture definition?</h2>
+      <p>It does not work in your lighting software or you see another problem? Then please help correct it!</p>
+      <div class="grid list">
+        <a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card"><app-svg name="bug" class="left" /><span>Report issue on GitHub</span></a>
+        <a href="/about#contact" class="card"><app-svg name="email" class="left" /><span>Contact</span></a>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -27,18 +122,49 @@ export default {
     return {
       manKey,
       fixKey,
-      fixtureJson
+      fixtureJson,
+
+      // TODO: Use real instead of mocked data
+      exportPlugins: {
+        ecue: {
+          name: `e:cue`
+        },
+        qlcplus: {
+          name: `QLC+`
+        }
+      }
     };
   },
   computed: {
     fixture() {
       return new Fixture(this.manKey, this.fixKey, this.fixtureJson);
+    },
+    lastModifyDate() {
+      return getDateHtml(this.fixture.meta.lastModifyDate);
+    },
+    createDate() {
+      return getDateHtml(this.fixture.meta.lastModifyDate);
+    },
+    githubRepoPath() {
+      return `https://github.com/${process.env.TRAVIS_REPO_SLUG || `FloEdelmann/open-fixture-library`}`;
+    },
+    branch() {
+      return process.env.TRAVIS_PULL_REQUEST_BRANCH || process.env.TRAVIS_BRANCH || `master`;
     }
   },
   head() {
     return {
-      title: `${this.fixture.manufacturer.name} ${this.fixture.name}`
+      title: `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`
     };
   }
 };
+
+/**
+ * Format a date to display as a <time> HTML tag.
+ * @param {!Date} date The Date object to format.
+ * @returns {!string} The <time> HTML tag.
+ */
+function getDateHtml(date) {
+  return `<time datetime="${date.toISOString()}" title="${date.toISOString()}">${date.toISOString().replace(/T.*?$/, ``)}</time>`;
+}
 </script>

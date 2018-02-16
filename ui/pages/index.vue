@@ -7,7 +7,7 @@
       </div>
 
       <div class="download-button big">
-        <a href="#" class="title">Download all {{ register.lastUpdated.length }} fixtures</a>
+        <a href="#" class="title" @click.prevent>Download all {{ register.lastUpdated.length }} fixtures</a>
         <ul>
           <li v-for="(plugin, pluginKey) in exportPlugins" :key="pluginKey">
             <a :href="`/download.${pluginKey}`" :title="`Download ${plugin.name} fixture definitions`">{{ plugin.name }}</a>
@@ -102,6 +102,8 @@ export default {
   data() {
     return {
       register: register,
+
+      // TODO: Use real instead of mocked data
       exportPlugins: {
         ecue: {
           name: `e:cue`
@@ -110,6 +112,7 @@ export default {
           name: `QLC+`
         }
       },
+
       lastUpdated: register.lastUpdated.slice(0, 5).map(
         fixtureKey => ({
           key: fixtureKey,

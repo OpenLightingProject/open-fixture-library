@@ -21,9 +21,7 @@
       </a>
     </div>
 
-    <p v-if="`comment` in manufacturer" class="comment">
-      {{ manufacturerComment }}
-    </p>
+    <p v-if="`comment` in manufacturer" class="comment" style="white-space: pre;">{{ manufacturer.comment }}</p>
 
     <ul :class="[`card`, `list`, `fixtures`]">
       <li v-for="fixture in fixtures" :key="fixture.key">
@@ -68,11 +66,6 @@ export default {
         })
       )
     };
-  },
-  computed: {
-    manufacturerComment() {
-      return `comment` in this.manufacturer ? this.manufacturer.comment.replace(/\n/g, `<br>`) : ``;
-    }
   },
   head() {
     return {
