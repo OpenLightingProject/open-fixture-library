@@ -10,6 +10,11 @@
       "lastModifyDate": "2017-10-16",
       "lastAction": "modified"
     },
+    "adb/europe-105": {
+      "name": "Europe 105",
+      "lastModifyDate": "2018-02-15",
+      "lastAction": "created"
+    },
     "american-dj/auto-spot-150": {
       "name": "Auto Spot 150",
       "lastModifyDate": "2018-01-18",
@@ -548,6 +553,9 @@
     "abstract": [
       "twister-4"
     ],
+    "adb": [
+      "europe-105"
+    ],
     "american-dj": [
       "auto-spot-150",
       "boom-box-fx2",
@@ -814,6 +822,7 @@
       "venue/tristrip3z"
     ],
     "Dimmer": [
+      "adb/europe-105",
       "eurolite/led-sls-6-uv-floor",
       "generic/desk-channel"
     ],
@@ -1063,6 +1072,10 @@
       "jb-systems/twin-effect-laser",
       "qtx/lux-ld30w"
     ],
+    "ameisso": [
+      "adb/europe-105",
+      "generic/drgbw-fader"
+    ],
     "p_0g_8mm3_": [
       "stairville/mh-x25",
       "stairville/stage-tri-led"
@@ -1081,9 +1094,6 @@
     ],
     "Thilo Billerbeck": [
       "lightmaxx/dj-scan-led"
-    ],
-    "ameisso": [
-      "generic/drgbw-fader"
     ],
     "eklynx": [
       "american-dj/galaxian-3d"
@@ -1111,6 +1121,10 @@
     },
     "10676": {
       "key": "showtec",
+      "models": {}
+    },
+    "16708": {
+      "key": "adb",
       "models": {}
     },
     "17229": {
@@ -1152,6 +1166,7 @@
     }
   },
   "lastUpdated": [
+    "adb/europe-105",
     "generic/drgbw-fader",
     "chroma-q/color-force-ii-12",
     "chroma-q/color-force-ii-48",
