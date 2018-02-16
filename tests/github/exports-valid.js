@@ -2,7 +2,7 @@
 
 const path = require(`path`);
 
-const Fixture = require(`../../lib/model/Fixture.js`);
+const { fixtureFromRepository } = require(`../../lib/model.js`);
 const pullRequest = require(`./pull-request.js`);
 
 const plugins = require(`../../plugins/plugins.js`).all;
@@ -115,7 +115,7 @@ function getPluginMessagePromise(pluginKey) {
 function getExportTestMessagePromise(pluginKey, testKey) {
   const plugin = plugins[pluginKey];
   const files = plugin.export.export(testFixtures.map(
-    fix => Fixture.fromRepository(fix[0], fix[1])
+    fix => fixtureFromRepository(fix[0], fix[1])
   ));
 
   const test = plugin.exportTests[testKey];
@@ -180,7 +180,7 @@ function getPluginListPromise(pluginKey, fixtures) {
 
 function getExportTestListPromise(plugin, testKey, fixtures, indent = ``) {
   const files = plugin.export.export(fixtures.map(
-    fix => Fixture.fromRepository(fix[0], fix[1])
+    fix => fixtureFromRepository(fix[0], fix[1])
   ));
 
   const test = plugin.exportTests[testKey];

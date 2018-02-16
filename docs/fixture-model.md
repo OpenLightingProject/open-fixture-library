@@ -2,14 +2,14 @@
 
 Instead of parsing [fixtures' JSON data](fixture-format.md) directly, it is recommended to use the model. We developed it to ease handling complicated fixture features like fine channels or switching channels.
 
-The model uses [ES2015 classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) to represent the fixtures. E.g., `Fixture.fromRepository('cameo', 'nanospot-120')` returns a [`Fixture`](../lib/model/Fixture.js) object, instantiated with the specified fixture's data. These objects have several convenient properties that allow easy usage of the fixture data in [plugins](plugins.md), [UI](ui.md) and more.
+The model uses [ES2015 classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) in [ES2015 modules](https://nodejs.org/api/esm.html) to represent the fixtures. E.g., `fixtureFromRepository('cameo', 'nanospot-120')` returns a [`Fixture`](../lib/model/Fixture.mjs) object, instantiated with the specified fixture's data. These objects have several convenient properties that allow easy usage of the fixture data in [plugins](plugins.md), [UI](ui.md) and more.
 
-All model classes are located in the [`lib/model/`](../lib/model) directory. When using the model, it should suffice to import the `Fixture` module; instances of other classes are returned by the fixture's properties:
+All model classes are located in the [`lib/model/`](../lib/model) directory. When using the model, it usally suffices to import the `fixtureFromRepository` function from `model.js` which returns a `Fixture` instance:
 
 ```js
-const Fixture = require('./lib/model/Fixture.js');
+const { fixtureFromRepository } = require('./lib/model.js');
 
-const myFix = Fixture.fromRepository('cameo', 'nanospot-120'); // instanceof Fixture
+const myFix = fixtureFromRepository('cameo', 'nanospot-120'); // instanceof Fixture
 
 const physicalData = myFix.physical; // instanceof Physical
 const panFine = myFix.getChannelByKey('Pan fine'); // instanceof FineChannel
@@ -19,12 +19,14 @@ if (panFine.coarseChannel.hasHighlightValue) {
 }
 ```
 
+If you want to use a model class directly, also import it via `model.js` (like this: ``const { Meta } = require(`./lib/model.js`);``) because ES modules (`*.mjs`) and CommonJS modules (`*.js`) don't work together nicely; `model.js` fixes this through a polyfill.
+
 Model properties are always implemented using getters and setters. To store data, we use backing fields (an internal property prefixed with underscore, e.g. `_jsonObject`) to hold the data. The backing field should never be accessed directly, but only through its getter and setter functions (without underscore).
 
 Avoid returning `undefined` by returning smart default values if necessary. If the default value is not `null`, also provide a `hasXY` boolean getter function. Properties that need further computation or create other objects should be cached in an internal `_cache` object.
 
 ```js
-module.exports = class Fixture {
+export default class Fixture {
   set jsonObject(jsonObject) {
     this._jsonObject = jsonObject;
     this._cache = {};

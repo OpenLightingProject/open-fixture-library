@@ -13,7 +13,7 @@ const bodyParser = require(`body-parser`);
 const redirectToHttps = require(`./views/middleware/redirect-to-https.js`);
 
 const plugins = require(`./plugins/plugins.js`);
-const Fixture = require(`./lib/model/Fixture.js`);
+const { fixtureFromRepository } = require(`./lib/model.js`);
 
 require(`./lib/load-env-file.js`);
 
@@ -196,7 +196,7 @@ app.use((request, response, next) => {
     if (download === `download` && pluginName in plugins.export) {
       const fixtures = Object.keys(register.filesystem).map(fixture => {
         const [man, key] = fixture.split(`/`);
-        return Fixture.fromRepository(man, key);
+        return fixtureFromRepository(man, key);
       });
       const outfiles = plugins.export[pluginName].export(fixtures, {
         baseDir: __dirname
@@ -223,7 +223,7 @@ app.use((request, response, next) => {
     // fixture export
     const [key, pluginName] = fix.split(`.`);
     if (register.manufacturers[man].includes(key) && pluginName in plugins.export) {
-      const outfiles = plugins.export[pluginName].export([Fixture.fromRepository(man, key)], {
+      const outfiles = plugins.export[pluginName].export([fixtureFromRepository(man, key)], {
         baseDir: __dirname
       });
 

@@ -1,10 +1,12 @@
 const xmlbuilder = require(`xmlbuilder`);
 const sanitize = require(`sanitize-filename`);
 
-const Channel = require(`../../lib/model/Channel.js`);
-const FineChannel = require(`../../lib/model/FineChannel.js`);
-const SwitchingChannel = require(`../../lib/model/SwitchingChannel.js`);
-const MatrixChannel = require(`../../lib/model/MatrixChannel.js`);
+const {
+  Channel,
+  FineChannel,
+  MatrixChannel,
+  SwitchingChannel
+} = require(`../../lib/model.js`);
 
 module.exports.name = `D::Light`;
 module.exports.version = `0.1.0`;
