@@ -69,17 +69,17 @@
         </section>
       </template>
 
-      <!-- TODO: Implement those components -->
-      <!-- <template v-if="fixture.matrix !== null">
+      <template v-if="fixture.matrix !== null">
         <h3 class="matrix">Matrix</h3>
         <section class="matrix">
-          <app-fixture-matrix :matrix="fixture.matrix" />
+          <app-fixture-matrix :matrix="fixture.matrix" :physical="fixture.physical" />
         </section>
-      </template> -->
+      </template>
 
     </section>
 
     <section class="fixture-modes">
+      <!-- TODO: Implement this component -->
       <!-- <app-fixture-mode v-for="mode in fixture.modes" :key="mode.name" /> -->
       <div class="clearfix" />
     </section>
@@ -150,6 +150,7 @@
 import svg from '~/components/svg.vue';
 import categoryBadge from '~/components/category-badge.vue';
 import fixturePhysical from '~/components/fixture-physical.vue';
+import fixtureMatrix from '~/components/fixture-matrix.vue';
 
 import register from '~~/fixtures/register.json';
 
@@ -159,7 +160,8 @@ export default {
   components: {
     'app-svg': svg,
     'app-category-badge': categoryBadge,
-    'app-fixture-physical': fixturePhysical
+    'app-fixture-physical': fixturePhysical,
+    'app-fixture-matrix': fixtureMatrix
   },
   validate({ params }) {
     return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;
