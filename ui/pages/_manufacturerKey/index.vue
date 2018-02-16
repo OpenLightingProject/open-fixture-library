@@ -21,7 +21,7 @@
       </a>
     </div>
 
-    <p v-if="`comment` in manufacturer" class="comment" style="white-space: pre;">{{ manufacturer.comment }}</p>
+    <p v-if="`comment` in manufacturer" class="comment" style="white-space: pre-wrap;">{{ manufacturer.comment }}</p>
 
     <ul :class="[`card`, `list`, `fixtures`]">
       <li v-for="fixture in fixtures" :key="fixture.key">

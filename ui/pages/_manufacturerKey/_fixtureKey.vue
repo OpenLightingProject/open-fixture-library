@@ -41,7 +41,7 @@
 
       <section v-if="fixture.hasComment" class="comment">
         <span class="label">Comment</span>
-        <span class="value" style="white-space: pre;">{{ fixture.comment }}</span>
+        <span class="value" style="white-space: pre-wrap;">{{ fixture.comment }}</span>
       </section>
 
       <section v-if="fixture.manualURL !== null" class="manualURL">
@@ -62,15 +62,15 @@
         </span>
       </section>
 
-      <!-- TODO: Implement those components -->
-      <!-- <template v-if="fixture.physical !== null">
+      <template v-if="fixture.physical !== null">
         <h3 class="physical">Physical data</h3>
         <section class="physical">
           <app-fixture-physical :physical="fixture.physical" />
         </section>
       </template>
 
-      <template v-if="fixture.matrix !== null">
+      <!-- TODO: Implement those components -->
+      <!-- <template v-if="fixture.matrix !== null">
         <h3 class="matrix">Matrix</h3>
         <section class="matrix">
           <app-fixture-matrix :matrix="fixture.matrix" />
@@ -109,6 +109,21 @@
   }
 }
 
+.manualURL {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  & > .value {
+    display: inline;
+  }
+}
+</style>
+
+<style lang="scss">
+/* not scoped because child components rely on it, too */
+@import '~assets/styles/vars.scss';
+
 .label {
   display: block;
   color: $secondary-text-dark;
@@ -129,22 +144,12 @@
     max-width: calc(100% - 12rem - 1ex);
   }
 }
-
-.manualURL {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  & > .value {
-    display: inline;
-  }
-}
 </style>
-
 
 <script>
 import svg from '~/components/svg.vue';
 import categoryBadge from '~/components/category-badge.vue';
+import fixturePhysical from '~/components/fixture-physical.vue';
 
 import register from '~~/fixtures/register.json';
 
@@ -153,7 +158,8 @@ import Fixture from '~~/lib/model/Fixture.mjs';
 export default {
   components: {
     'app-svg': svg,
-    'app-category-badge': categoryBadge
+    'app-category-badge': categoryBadge,
+    'app-fixture-physical': fixturePhysical
   },
   validate({ params }) {
     return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;
