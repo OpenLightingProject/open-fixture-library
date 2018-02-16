@@ -11,16 +11,8 @@
   "comment": "Only controllable via dimmer pack",
   "manualURL": "http://www.adblighting.com/files/DS5153-E%20Europe105%20data%20sheet.pdf",
   "physical": {
-    "dimensions": [340, 420, 710],
-    "weight": 14,
-    "power": 1000,
     "bulb": {
-      "type": "Tungsten halogen",
-      "lumens": 26000
-    },
-    "lens": {
-      "name": "DW 105",
-      "degreesMinMax": [15, 38]
+      "type": "Tungsten halogen"
     }
   },
   "availableChannels": {
@@ -32,31 +24,15 @@
   },
   "modes": [
     {
-      "name": "DW 105",
-      "shortName": "DW105",
-      "channels": [
-        "Intensity"
-      ]
-    },
-    {
-      "name": "DVW 105",
-      "shortName": "DVW105",
+      "name": "DW 105 1000W",
+      "shortName": "DW105-1k",
       "physical": {
-        "dimensions": [340, 420, 600],
-        "weight": 13.5,
-        "lens": {
-          "name": "DVW 105",
-          "degreesMinMax": [38, 57]
-        }
-      },
-      "channels": [
-        "Intensity"
-      ]
-    },
-    {
-      "name": "DS 105",
-      "shortName": "DS105",
-      "physical": {
+        "dimensions": [340, 420, 710],
+        "weight": 14,
+        "power": 1000,
+        "bulb": {
+          "lumens": 26000
+        },
         "lens": {
           "name": "DS 105",
           "degreesMinMax": [15, 38]
@@ -67,11 +43,53 @@
       ]
     },
     {
-      "name": "DSN 105",
-      "shortName": "DSN105",
+      "name": "DVW 105 1000W",
+      "shortName": "DVW105-1k",
+      "physical": {
+        "dimensions": [340, 420, 600],
+        "weight": 13.5,
+        "power": 1000,
+        "bulb": {
+          "lumens": 26000
+        },
+        "lens": {
+          "name": "DVW 105",
+          "degreesMinMax": [38, 57]
+        }
+      },
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "DS 105 1000W",
+      "shortName": "DS105-1k",
+      "physical": {
+        "dimensions": [340, 420, 710],
+        "weight": 14,
+        "power": 1000,
+        "bulb": {
+          "lumens": 26000
+        },
+        "lens": {
+          "name": "DS 105",
+          "degreesMinMax": [15, 38]
+        }
+      },
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "DSN 105 1000W",
+      "shortName": "DSN105-1k",
       "physical": {
         "dimensions": [340, 420, 790],
         "weight": 15.1,
+        "power": 1000,
+        "bulb": {
+          "lumens": 26000
+        },
         "lens": {
           "name": "DSN 105",
           "degreesMinMax": [11, 23]
@@ -82,11 +100,110 @@
       ]
     },
     {
-      "name": "DN 105",
-      "shortName": "DN105",
+      "name": "DN 105 1000W",
+      "shortName": "DN105-1k",
       "physical": {
         "dimensions": [360, 445, 920],
         "weight": 18.4,
+        "power": 1000,
+        "bulb": {
+          "lumens": 26000
+        },
+        "lens": {
+          "name": "DN 105",
+          "degreesMinMax": [9, 20]
+        }
+      },
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "DW 105 1200W",
+      "shortName": "DW105-1.2k",
+      "physical": {
+        "dimensions": [340, 420, 710],
+        "weight": 14,
+        "power": 1000,
+        "bulb": {
+          "lumens": 30000
+        },
+        "lens": {
+          "name": "DS 105",
+          "degreesMinMax": [15, 38]
+        }
+      },
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "DVW 105 1200W",
+      "shortName": "DVW105-1.2k",
+      "physical": {
+        "dimensions": [340, 420, 600],
+        "weight": 13.5,
+        "power": 1000,
+        "bulb": {
+          "lumens": 30000
+        },
+        "lens": {
+          "name": "DVW 105",
+          "degreesMinMax": [38, 57]
+        }
+      },
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "DS 105 1200W",
+      "shortName": "DS105-1.2k",
+      "physical": {
+        "dimensions": [340, 420, 710],
+        "weight": 14,
+        "power": 1000,
+        "bulb": {
+          "lumens": 30000
+        },
+        "lens": {
+          "name": "DS 105",
+          "degreesMinMax": [15, 38]
+        }
+      },
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "DSN 105 1200W",
+      "shortName": "DSN105-1.2k",
+      "physical": {
+        "dimensions": [340, 420, 790],
+        "weight": 15.1,
+        "power": 1000,
+        "bulb": {
+          "lumens": 30000
+        },
+        "lens": {
+          "name": "DSN 105",
+          "degreesMinMax": [11, 23]
+        }
+      },
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "DN 105 1200W",
+      "shortName": "DN105-1.2k",
+      "physical": {
+        "dimensions": [360, 445, 920],
+        "weight": 18.4,
+        "power": 1000,
+        "bulb": {
+          "lumens": 30000
+        },
         "lens": {
           "name": "DN 105",
           "degreesMinMax": [9, 20]
