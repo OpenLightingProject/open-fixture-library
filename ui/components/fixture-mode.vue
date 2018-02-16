@@ -27,7 +27,8 @@
       <app-fixture-channel
         v-for="channel in mode.channels"
         :key="channel.key"
-        :channel="channel" />
+        :channel="channel"
+        :mode="mode" />
     </ol>
 
   </section>
@@ -52,15 +53,22 @@
       clear: right;
     }
   }
-
-  .card.fixture-mode .value {
-    max-width: none;
-  }
 }
 
 .expand-all,
 .collapse-all {
   margin-left: 1ex;
+}
+</style>
+
+<style lang="scss">
+@import '~assets/styles/vars.scss';
+
+/* allow values to wrap below labels */
+@media (min-width: $tablet) {
+  .card.fixture-mode .value {
+    max-width: none;
+  }
 }
 </style>
 
