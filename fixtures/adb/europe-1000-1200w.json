@@ -1,20 +1,21 @@
 {
   "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
   "name": "Europe 1000/1200W",
-  "shortName": "Europe 1k",
+  "shortName": "Europe1k",
   "categories": ["Dimmer"],
   "meta": {
     "authors": ["ameisso"],
     "createDate": "2018-02-15",
     "lastModifyDate": "2018-02-15"
   },
+  "comment": "Only controllable via dimmer pack",
   "manualURL": "http://www.adblighting.com/files/DS5153-E%20Europe105%20data%20sheet.pdf",
   "physical": {
-    "dimensions": [710, 340, 420],
-    "weight": 15.5,
+    "dimensions": [340, 420, 710],
+    "weight": 14,
     "power": 1000,
     "bulb": {
-      "type": "tungsten halogen",
+      "type": "Tungsten halogen",
       "lumens": 26000
     },
     "lens": {
@@ -31,8 +32,66 @@
   },
   "modes": [
     {
-      "name": "Default",
-      "shortName": "default",
+      "name": "DW 105",
+      "shortName": "DW105",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "DVW 105",
+      "shortName": "DVW105",
+      "physical": {
+        "dimensions": [340, 420, 600],
+        "weight": 13.5,
+        "lens": {
+          "name": "DVW 105",
+          "degreesMinMax": [38, 57]
+        }
+      },
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "DS 105",
+      "shortName": "DS105",
+      "physical": {
+        "lens": {
+          "name": "DS 105",
+          "degreesMinMax": [15, 38]
+        }
+      },
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "DSN 105",
+      "shortName": "DSN105",
+      "physical": {
+        "dimensions": [340, 420, 790],
+        "weight": 15.1,
+        "lens": {
+          "name": "DSN 105",
+          "degreesMinMax": [11, 23]
+        }
+      },
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "DN 105",
+      "shortName": "DN105",
+      "physical": {
+        "dimensions": [360, 445, 920],
+        "weight": 18.4,
+        "lens": {
+          "name": "DN 105",
+          "degreesMinMax": [9, 20]
+        }
+      },
       "channels": [
         "Intensity"
       ]
