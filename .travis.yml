@@ -1,7 +1,7 @@
 language: node_js
 node_js:
   #- "node" # latest
-  - "6"
+  - "8"
 env:
   - TESTFILE=tests/http-status.js
   - TESTFILE=tests/fixtures-valid.js
