@@ -32,14 +32,10 @@
       <section class="categories">
         <span class="label">Categories</span>
         <span class="value">
-          <nuxt-link
+          <app-category-badge
             v-for="cat in fixture.categories"
             :key="cat"
-            :to="`/categories/${encodeURIComponent(cat)}`"
-            class="category-badge">
-            <app-svg type="category" :name="cat" />
-            {{ cat }}
-          </nuxt-link>
+            :category="cat" />
         </span>
       </section>
 
@@ -148,6 +144,7 @@
 
 <script>
 import svg from '~/components/svg.vue';
+import categoryBadge from '~/components/category-badge.vue';
 
 import register from '~~/fixtures/register.json';
 
@@ -155,7 +152,8 @@ import Fixture from '~~/lib/model/Fixture.mjs';
 
 export default {
   components: {
-    'app-svg': svg
+    'app-svg': svg,
+    'app-category-badge': categoryBadge
   },
   validate({ params }) {
     return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;
