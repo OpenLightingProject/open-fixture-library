@@ -31,7 +31,8 @@
             v-for="cat in fixture.categories"
             :key="cat"
             type="category"
-            :name="cat" />
+            :name="cat"
+            class="right inactive" />
         </nuxt-link>
       </li>
     </ul>
@@ -61,7 +62,7 @@ export default {
           link: `/${manKey}/${fixKey}`,
           name: register.filesystem[`${manKey}/${fixKey}`].name,
           categories: Object.keys(register.categories).filter(
-            cat => register.categories[cat].includes(fixKey)
+            cat => register.categories[cat].includes(`${manKey}/${fixKey}`)
           )
         })
       )

@@ -7,7 +7,7 @@
         v-for="category in categories"
         :key="category.name"
         :to="`/categories/${encodeURIComponent(category.name)}`"
-        class="card">
+        class="card card-category">
         <app-svg type="category" :name="category.name" />
         <h2>{{ category.name }}</h2>
         <div class="fixtures">{{ category.fixtureCount }} fixture{{ category.fixtureCount === 1 ? `` : `s` }}</div>

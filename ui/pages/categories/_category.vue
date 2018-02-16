@@ -10,7 +10,8 @@
             v-for="cat in fixture.categories"
             :key="cat"
             type="category"
-            :name="cat" />
+            :name="cat"
+            :class="{ inactive: cat !== categoryName, right: true }" />
         </nuxt-link>
       </li>
     </ul>

@@ -13,7 +13,7 @@
           <span class="create-date">Created:&nbsp;<span v-html="createDate" /></span>
           <span class="authors">Author{{ fixture.meta.authors.length === 1 ? `` : `s` }}:&nbsp;{{ fixture.meta.authors.join(`, `) }}</span>
           <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manKey}/${fixKey}.json`">Source</a></span>
-          <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${man}/${fix}.json`">Revisions</a></span>
+          <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manKey}/${fixKey}.json`">Revisions</a></span>
         </section>
       </div>
 
@@ -98,6 +98,53 @@
     </section>
   </div>
 </template>
+
+<style lang="scss" scoped>
+@import '~assets/styles/vars.scss';
+
+.fixture-meta {
+  margin: -1.5rem 0 1rem;
+  font-size: 0.8rem;
+  color: $secondary-text-dark;
+
+  & > span:not(:last-child)::after {
+    content: ' | ';
+    padding: 0 0.7ex;
+  }
+}
+
+.label {
+  display: block;
+  color: $secondary-text-dark;
+}
+
+.value {
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* move labels left of values */
+@media (min-width: 650px) {
+  .label {
+    display: inline-block;
+    min-width: 10rem;
+  }
+  .value {
+    max-width: calc(100% - 12rem - 1ex);
+  }
+}
+
+.manualURL {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  & > .value {
+    display: inline;
+  }
+}
+</style>
+
 
 <script>
 import svg from '~/components/svg.vue';

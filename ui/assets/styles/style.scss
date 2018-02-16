@@ -45,8 +45,23 @@ p {
   margin: 1rem 0;
 }
 
+section {
+  padding-top: 1.2ex;
+}
+
+.centered {
+  text-align: center;
+}
+
 .clearfix {
   clear: both;
+}
+
+.hint {
+  display: block;
+  color: $secondary-text-dark;
+  font-size: 0.8rem;
+  line-height: 1.5;
 }
 
 template {
@@ -78,12 +93,20 @@ a {
   }
 }
 
-.icon,
-a > svg {
+.icon {
   display: inline-block;
   height: 1.4em;
   width: 1.4em;
   vertical-align: middle;
+
+  &.inactive {
+    fill: $icon-inactive-dark;
+  }
+
+  & svg {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 pre {
@@ -215,7 +238,7 @@ a.button {
   padding: 0.5em 3ex;
   transition: 0.1s background-color;
 
-  & svg {
+  & .icon {
     height: 1.4em;
     width: 1.4em;
     vertical-align: middle;
@@ -276,4 +299,221 @@ a.button.secondary:disabled {
 
   display: inline-block;
   vertical-align: middle;
+}
+
+.card {
+  text-align: left;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px $divider-dark;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 3px;
+  position: relative;
+  fill: $icon-dark;
+
+  & .close {
+    @include icon-button($red-700, $red-300);
+    float: right;
+  }
+
+  &.dark {
+    color: $primary-text-light;
+    fill: $icon-light;
+  }
+
+  &.light-green {
+    background: $light-green-500;
+  }
+
+  &.blue {
+    background: $blue-500;
+  }
+
+  &.orange {
+    background: $orange-500;
+  }
+
+  &:target {
+    animation: card-highlight 2s ease;
+  }
+}
+
+@keyframes card-highlight {
+  0% {
+    background-color: #fd0;
+  }
+  100% {
+    background-color: #fff;
+  }
+}
+
+.list {
+  padding: 0;
+
+  &.with-title {
+    padding-bottom: 0.5rem;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  a:not(.big-button) {
+    padding: 0.5rem 1rem;
+  }
+
+  a.big-button {
+    margin: 1rem 0 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  a,
+  a .hint {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  & > h2 {
+    padding: 1rem 1rem 0;
+  }
+
+  .name {
+    margin-right: auto;
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+
+    &.left {
+      margin-right: 1em;
+    }
+    &.right {
+      margin-left: 1em;
+    }
+  }
+}
+
+a.card, .link, .list a {
+  transition: background-color .2s, fill .2s;
+  text-decoration: none;
+  color: $primary-text-dark;
+  display: block;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: $grey-100;
+    fill: $primary-text-dark;
+    outline: none;
+
+    &.dark {
+      fill: $primary-text-light;
+    }
+
+    &.light-green {
+      background-color: $light-green-600;
+    }
+
+    &.blue {
+      background-color: $blue-600;
+    }
+
+    &.orange {
+      background-color: $orange-600;
+    }
+  }
+
+  &:active {
+    background-color: $grey-200;
+
+    &.light-green {
+      background-color: $light-green-700;
+    }
+
+    &.blue {
+      background-color: $blue-700;
+    }
+
+    &.orange {
+      background-color: $orange-700;
+    }
+  }
+}
+
+.card-category,
+.list > .big-button {
+  padding-left: 5rem;
+  min-height: 5rem;
+
+  & > .icon {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  & > h2 {
+    line-height: 3rem;
+  }
+}
+
+.list > .big-button > h2 {
+  font-size: 1.2rem;
+}
+
+@media (max-width: $phone) {
+  .list > li > a > .icon {
+    width: 24px;
+    height: 24px;
+
+    &.left {
+      margin-right: .6em;
+    }
+    &.right {
+      margin-left: .6em;
+    }
+  }
+}
+
+@media (min-width: $phone-landscape) {
+  .grid > .card {
+    display: inline-block;
+    width: calc(50% - 0.5rem);
+    vertical-align: top;
+
+    & > h2 {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    &:nth-child(2n+1) {
+      margin-right: 0.5rem;
+    }
+    &:nth-child(2n) {
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+@media (min-width: $tablet) {
+  .grid > .card {
+    width: calc(33.33% - 2rem / 3);
+
+    &:nth-child(3n+1) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    &:nth-child(3n+2),
+    &:nth-child(3n) {
+      margin-left: 1rem;
+      margin-right: 0;
+    }
+  }
 }
