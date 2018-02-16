@@ -68,6 +68,10 @@ template {
   display: none !important;
 }
 
+#content.no-js .only-js {
+  display: none;
+}
+
 code {
   font-family: Inconsolata, 'Roboto Mono', 'Source Code Pro', monospace;
   color: $secondary-text-dark;

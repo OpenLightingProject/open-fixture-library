@@ -4,7 +4,7 @@
 
     <app-header />
 
-    <div id="content">
+    <div id="content" :class="{ js: isBrowser, 'no-js': !isBrowser }">
       <nuxt />
     </div>
   </div>
@@ -50,6 +50,16 @@ import header from '~/components/header';
 export default {
   components: {
     'app-header': header
+  },
+  data() {
+    return {
+      isBrowser: false
+    };
+  },
+  mounted() {
+    if (process.browser) {
+      this.isBrowser = true;
+    }
   }
 };
 </script>

@@ -119,14 +119,9 @@
 
 
 <script>
-import svg from '~/components/svg.vue';
-
 import Physical from '~~/lib/model/Physical.mjs';
 
 export default {
-  components: {
-    'app-svg': svg
-  },
   props: {
     physical: {
       type: Physical,

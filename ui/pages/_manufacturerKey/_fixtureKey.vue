@@ -80,7 +80,11 @@
 
     <section class="fixture-modes">
       <!-- TODO: Implement this component -->
-      <!-- <app-fixture-mode v-for="mode in fixture.modes" :key="mode.name" /> -->
+      <app-fixture-mode
+        v-for="(mode, index) in fixture.modes"
+        :key="mode.name"
+        :mode="mode"
+        :index="index" />
       <div class="clearfix" />
     </section>
 
@@ -151,6 +155,7 @@ import svg from '~/components/svg.vue';
 import categoryBadge from '~/components/category-badge.vue';
 import fixturePhysical from '~/components/fixture-physical.vue';
 import fixtureMatrix from '~/components/fixture-matrix.vue';
+import fixtureMode from '~/components/fixture-mode.vue';
 
 import register from '~~/fixtures/register.json';
 
@@ -161,7 +166,8 @@ export default {
     'app-svg': svg,
     'app-category-badge': categoryBadge,
     'app-fixture-physical': fixturePhysical,
-    'app-fixture-matrix': fixtureMatrix
+    'app-fixture-matrix': fixtureMatrix,
+    'app-fixture-mode': fixtureMode
   },
   validate({ params }) {
     return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;

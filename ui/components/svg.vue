@@ -38,8 +38,27 @@ export default {
     }
 
     if (this.type === `color-circle`) {
+      let colors = this.colors;
+
+      if (this.colors.length === 0 && this.name !== ``) {
+        const colorLookup = {
+          Red: `#ff0000`,
+          Green: `#00ff00`,
+          Blue: `#0000ff`,
+          Cyan: `#00ffff`,
+          Magenta: `#ff00ff`,
+          Yellow: `#ffff00`,
+          Amber: `#ffbf00`,
+          White: `#ffffff`,
+          UV: `#8800ff`,
+          Lime: `#bfff00`,
+          Indigo: `#4b0082`
+        };
+        colors = [colorLookup[this.name]];
+      }
+
       return {
-        svgMarkup: getColorCircle(this.colors, this.name)
+        svgMarkup: getColorCircle(colors, this.name)
       };
     }
 

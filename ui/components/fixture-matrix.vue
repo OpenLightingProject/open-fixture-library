@@ -15,7 +15,7 @@
 
     <section v-if="matrix.pixelGroupKeys.length > 0" class="pixel-groups">
       <h4>Pixel groups</h4>
-      <span class="hint">Hover over the pixel groups to highlight the corresponding pixels.</span>
+      <span class="hint only-js">Hover over the pixel groups to highlight the corresponding pixels.</span>
 
       <section
         v-for="key in matrix.pixelGroupKeys"
@@ -78,15 +78,10 @@
 
 
 <script>
-import svg from '~/components/svg.vue';
-
 import Matrix from '~~/lib/model/Matrix.mjs';
 import Physical from '~~/lib/model/Physical.mjs';
 
 export default {
-  components: {
-    'app-svg': svg
-  },
   props: {
     matrix: {
       type: Matrix,
