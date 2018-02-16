@@ -6,7 +6,7 @@
       </summary>
 
       <div v-if="unwrappedChannel instanceof FineChannel">
-        Fine channel of {{ unwrappedChannel.coarseChannel.name }} (channel&nbsp;{{ mode.getChannelIndex(unwrappedChannel.coarseChannel.key) }})
+        Fine channel of {{ unwrappedChannel.coarseChannel.name }} (channel&nbsp;{{ mode.getChannelIndex(unwrappedChannel.coarseChannel.key) + 1 }})
       </div>
 
       <template v-else-if="unwrappedChannel instanceof SwitchingChannel">
@@ -85,7 +85,11 @@
           <span class="value">{{ unwrappedChannel.precedence }}</span>
         </section>
 
-        <!-- TODO: capabilities -->
+        <app-fixture-capability-table
+          v-if="unwrappedChannel.hasCapabilities"
+          :channel="unwrappedChannel"
+          :mode="mode"
+          :fineness-in-mode="finenessInMode" />
       </template>
 
     </details>
@@ -156,6 +160,7 @@ ol.mode-channels {
 <script>
 import svg from '~/components/svg.vue';
 import fixtureChannelTypeIcon from '~/components/fixture-channel-type-icon.vue';
+import fixtureCapabilityTable from '~/components/fixture-capability-table.vue';
 
 import AbstractChannel from '~~/lib/model/AbstractChannel.mjs';
 import Channel from '~~/lib/model/Channel.mjs';
@@ -169,7 +174,8 @@ export default {
   name: `AppFixtureChannel`,
   components: {
     'app-svg': svg,
-    'app-fixture-channel-type-icon': fixtureChannelTypeIcon
+    'app-fixture-channel-type-icon': fixtureChannelTypeIcon,
+    'app-fixture-capability-table': fixtureCapabilityTable
   },
   props: {
     channel: {
