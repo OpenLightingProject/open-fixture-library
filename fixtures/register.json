@@ -295,6 +295,11 @@
       "lastModifyDate": "2017-12-07",
       "lastAction": "created"
     },
+    "generic/drgbw-fader": {
+      "name": "DRGBW Fader",
+      "lastModifyDate": "2018-02-15",
+      "lastAction": "created"
+    },
     "generic/pan-tilt": {
       "name": "Pan/Tilt Fader",
       "lastModifyDate": "2017-10-16",
@@ -634,6 +639,7 @@
       "cmy-fader",
       "desk-channel",
       "drgb-fader",
+      "drgbw-fader",
       "pan-tilt",
       "rgb-fader",
       "rgba-fader",
@@ -772,6 +778,7 @@
       "futurelight/sc-250-scanner",
       "generic/cmy-fader",
       "generic/drgb-fader",
+      "generic/drgbw-fader",
       "generic/rgb-fader",
       "generic/rgba-fader",
       "generic/rgbd-fader",
@@ -1065,6 +1072,10 @@
       "jb-systems/twin-effect-laser",
       "qtx/lux-ld30w"
     ],
+    "ameisso": [
+      "adb/europe-1000-1200w",
+      "generic/drgbw-fader"
+    ],
     "p_0g_8mm3_": [
       "stairville/mh-x25",
       "stairville/stage-tri-led"
@@ -1083,9 +1094,6 @@
     ],
     "Thilo Billerbeck": [
       "lightmaxx/dj-scan-led"
-    ],
-    "ameisso": [
-      "adb/europe-1000-1200w"
     ],
     "eklynx": [
       "american-dj/galaxian-3d"
@@ -1159,6 +1167,7 @@
   },
   "lastUpdated": [
     "adb/europe-1000-1200w",
+    "generic/drgbw-fader",
     "chroma-q/color-force-ii-12",
     "chroma-q/color-force-ii-48",
     "chroma-q/color-force-ii-72",

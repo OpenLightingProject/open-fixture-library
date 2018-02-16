@@ -1,10 +1,12 @@
 const xmlbuilder = require(`xmlbuilder`);
 
-const FineChannel = require(`../../lib/model/FineChannel.js`);
-const NullChannel = require(`../../lib/model/NullChannel.js`);
-const SwitchingChannel = require(`../../lib/model/SwitchingChannel.js`);
-const MatrixChannel = require(`../../lib/model/MatrixChannel.js`);
-const Physical = require(`../../lib/model/Physical.js`);
+const {
+  FineChannel,
+  MatrixChannel,
+  NullChannel,
+  Physical,
+  SwitchingChannel
+} = require(`../../lib/model.js`);
 
 module.exports.name = `e:cue`;
 module.exports.version = `0.3.0`;

@@ -5,7 +5,7 @@ const minimist = require(`minimist`);
 const colors = require(`colors`);
 
 const plugins = require(`../plugins/plugins.js`).all;
-const Fixture = require(`../lib/model/Fixture.js`);
+const { Fixture, fixtureFromRepository } = require(`../lib/model.js`);
 
 const testFixtures = require(`../tests/test-fixtures.json`);
 
@@ -38,7 +38,7 @@ if (!args.plugin) {
 let fixtures;
 if (args._.length === 0) {
   fixtures = testFixtures.map(
-    fixture => Fixture.fromRepository(fixture.man, fixture.key)
+    fixture => fixtureFromRepository(fixture.man, fixture.key)
   );
 }
 else {

@@ -2,22 +2,24 @@ const xmlbuilder = require(`xmlbuilder`);
 const sanitize = require(`sanitize-filename`);
 
 /* eslint-disable no-unused-vars */
-const AbstractChannel = require(`../../lib/model/AbstractChannel.js`);
-const Capability = require(`../../lib/model/Capability.js`);
-const Channel = require(`../../lib/model/Channel.js`);
-const FineChannel = require(`../../lib/model/FineChannel.js`);
-const Fixture = require(`../../lib/model/Fixture.js`);
-const Manufacturer = require(`../../lib/model/Manufacturer.js`);
-const Matrix = require(`../../lib/model/Matrix.js`);
-const MatrixChannel = require(`../../lib/model/MatrixChannel.js`);
-const MatrixChannelReference = require(`../../lib/model/MatrixChannelReference.js`);
-const Meta = require(`../../lib/model/Meta.js`);
-const Mode = require(`../../lib/model/Mode.js`);
-const NullChannel = require(`../../lib/model/NullChannel.js`);
-const Physical = require(`../../lib/model/Physical.js`);
-const Range = require(`../../lib/model/Range.js`);
-const SwitchingChannel = require(`../../lib/model/SwitchingChannel.js`);
-const TemplateChannel = require(`../../lib/model/TemplateChannel.js`);
+const {
+  AbstractChannel,
+  Capability,
+  Channel,
+  FineChannel,
+  Fixture,
+  Manufacturer,
+  Matrix,
+  MatrixChannel,
+  MatrixChannelReference,
+  Meta,
+  Mode,
+  NullChannel,
+  Physical,
+  Range,
+  SwitchingChannel,
+  TemplateChannel
+} = require(`../../lib/model.js`);
 /* eslint-enable no-unused-vars */
 
 module.exports.name = `QLC+`;
