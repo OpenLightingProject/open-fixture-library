@@ -1,9 +1,9 @@
 <template>
   <li>
-    <details class="channel">
-      <summary>
+    <app-conditional-details class="channel">
+      <template slot="summary">
         <app-fixture-channel-type-icon :channel="channel" />{{ unwrappedChannel.name }}<code v-if="channelKey" class="channel-key">{{ channelKey }}</code>{{ appendToHeading ? ` ${appendToHeading}` : `` }}
-      </summary>
+      </template>
 
       <div v-if="unwrappedChannel instanceof FineChannel">
         Fine channel of {{ unwrappedChannel.coarseChannel.name }} (channel&nbsp;{{ mode.getChannelIndex(unwrappedChannel.coarseChannel.key) + 1 }})
@@ -92,7 +92,7 @@
           :fineness-in-mode="finenessInMode" />
       </template>
 
-    </details>
+    </app-conditional-details>
   </li>
 </template>
 
@@ -114,51 +114,12 @@ ol.mode-channels {
     padding-left: 1.1em;
   }
 }
-
-.channel > summary {
-  display: block;
-  cursor: pointer;
-
-  &::-webkit-details-marker {
-    display: none;
-  }
-
-  &::after {
-    /* chevron down */
-    border-color: $icon-dark;
-    border-style: solid;
-    border-width: 0.17em 0.17em 0 0;
-    content: '';
-    display: inline-block;
-    height: 0.4em;
-    left: 1.2ex;
-    position: relative;
-    top: -0.2em;
-    transform: rotate(135deg);
-    transition-duration: 0.2s;
-    transition-property: transform, top, border-color;
-    vertical-align: middle;
-    width: 0.4em;
-  }
-
-  &:hover::after {
-    border-color: $icon-dark-hover;
-  }
-}
-.channel[open] {
-  padding-bottom: 2ex;
-
-  & > summary::after {
-    /* chevron up */
-    top: 0;
-    transform: rotate(315deg);
-  }
-}
 </style>
 
 
 <script>
 import svg from '~/components/svg.vue';
+import conditionalDetails from '~/components/conditional-details.vue';
 import fixtureChannelTypeIcon from '~/components/fixture-channel-type-icon.vue';
 import fixtureCapabilityTable from '~/components/fixture-capability-table.vue';
 
@@ -174,6 +135,7 @@ export default {
   name: `AppFixtureChannel`,
   components: {
     'app-svg': svg,
+    'app-conditional-details': conditionalDetails,
     'app-fixture-channel-type-icon': fixtureChannelTypeIcon,
     'app-fixture-capability-table': fixtureCapabilityTable
   },
