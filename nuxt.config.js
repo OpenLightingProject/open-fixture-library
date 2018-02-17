@@ -8,6 +8,7 @@ const nuxtOptions = {
     }]
   ],
   plugins: [
+    `~/plugins/draggable.js`,
     {
       src: `~/plugins/focus-directive.js`,
       ssr: false

@@ -1,12 +1,3 @@
-<template>
-  <nuxt-link
-    :to="`/categories/${encodeURIComponent(category)}`"
-    :class="{ 'category-badge': true, 'selected': selected }">
-    <app-svg type="category" :name="category" />
-    {{ category }}
-  </nuxt-link>
-</template>
-
 <style lang="scss" scoped>
 @import '~assets/styles/vars.scss';
 
@@ -66,7 +57,50 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    selectable: {
+      type: Boolean,
+      required: false,
+      default: false
     }
+  },
+  render(createElement) {
+    const classes = {
+      'category-badge': true,
+      selected: this.selected
+    };
+    const children = [
+      createElement(`app-svg`, {
+        props: {
+          type: `category`,
+          name: this.category
+        }
+      }),
+      this.category
+    ];
+
+    if (this.selectable) {
+      // <nuxt-link> is not cancellable, so we render a default <a> instead
+      return createElement(`a`, {
+        class: classes,
+        attrs: {
+          href: `#${encodeURIComponent(this.category)}`
+        },
+        on: {
+          click: $event => {
+            this.$emit(`click`);
+            $event.preventDefault();
+          }
+        }
+      }, children);
+    }
+
+    return createElement(`nuxt-link`, {
+      class: classes,
+      props: {
+        to: `/categories/${encodeURIComponent(this.category)}`
+      }
+    }, children);
   }
 };
 </script>

@@ -36,7 +36,6 @@
         </section>
 
         <div v-else>
-
           <section class="new-manufacturer-name">
             <app-simple-label label="Name">
               <app-property-input
@@ -87,9 +86,40 @@
           </section>
 
           <div class="button-bar">or <a href="#use-existing-manufacturer" @click.prevent="switchManufacturer(true)">choose an existing manufacturer</a></div>
-
         </div>
+      </section>
 
+      <section class="fixture-info card">
+        <h2>Fixture info</h2>
+
+        <section class="fixture-name">
+          <app-simple-label label="Name">
+            <app-property-input
+              type="text"
+              v-model="fixture.name"
+              :schema-property="properties.fixture.name"
+              :required="true" />
+          </app-simple-label>
+        </section>
+
+        <section class="fixture-shortName">
+          <app-simple-label label="Unique short name">
+            <app-property-input
+              type="text"
+              v-model="fixture.shortName"
+              :schema-property="properties.fixture.shortName"
+              hint="defaults to name" />
+          </app-simple-label>
+        </section>
+
+        <section class="categories validate-group">
+          <span class="label">Categories</span>
+          <span class="value">
+            <app-category-chooser
+              :all-categories="properties.fixture.categories.items.enum"
+              v-model="fixture.categories" />
+          </span>
+        </section>
       </section>
 
     </form>
@@ -102,13 +132,15 @@ import uuidV4 from 'uuid/v4.js';
 import manufacturers from '~~/fixtures/manufacturers.json';
 import schemaProperties from '~~/lib/schema-properties.js';
 
-import simpleLabel from '~/components/simple-label.vue';
-import propertyInput from '~/components/property-input.vue';
+import simpleLabelVue from '~/components/simple-label.vue';
+import propertyInputVue from '~/components/property-input.vue';
+import categoryChooserVue from '~/components/category-chooser.vue';
 
 export default {
   components: {
-    'app-simple-label': simpleLabel,
-    'app-property-input': propertyInput
+    'app-simple-label': simpleLabelVue,
+    'app-property-input': propertyInputVue,
+    'app-category-chooser': categoryChooserVue
   },
   head() {
     return {
