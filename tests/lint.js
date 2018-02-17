@@ -32,7 +32,7 @@ try {
     cwd: path.join(__dirname, `..`)
   });
 
-  const files = [`**/*.js`, `**/*.vue`];
+  const files = [`**/*.js`, `**/*.mjs`, `**/*.vue`];
   const eslintReport = cli.executeOnFiles(files);
 
   if (args.fix) {
