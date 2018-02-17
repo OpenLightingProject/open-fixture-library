@@ -57,6 +57,27 @@ section {
   clear: both;
 }
 
+.label {
+  display: block;
+  color: $secondary-text-dark;
+}
+
+.value {
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* move labels left of values */
+@media (min-width: 650px) {
+  .label {
+    display: inline-block;
+    min-width: 10rem;
+  }
+  .value {
+    max-width: calc(100% - 12rem - 1ex);
+  }
+}
+
 .hint {
   display: block;
   color: $secondary-text-dark;

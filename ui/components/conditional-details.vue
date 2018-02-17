@@ -67,8 +67,6 @@ details[open] {
 <script>
 export default {
   render(createElement) {
-    console.log(this.$slots.default);
-
     if (this.$slots.default) {
       return createElement(`details`, [
         createElement(`summary`, this.$slots.summary),

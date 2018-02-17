@@ -124,32 +124,6 @@
 }
 </style>
 
-<style lang="scss">
-/* not scoped because child components rely on it, too */
-@import '~assets/styles/vars.scss';
-
-.label {
-  display: block;
-  color: $secondary-text-dark;
-}
-
-.value {
-  display: inline-block;
-  vertical-align: top;
-}
-
-/* move labels left of values */
-@media (min-width: 650px) {
-  .label {
-    display: inline-block;
-    min-width: 10rem;
-  }
-  .value {
-    max-width: calc(100% - 12rem - 1ex);
-  }
-}
-</style>
-
 <script>
 import svg from '~/components/svg.vue';
 import categoryBadge from '~/components/category-badge.vue';
