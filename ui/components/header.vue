@@ -2,7 +2,14 @@
   <header id="header">
     <nav>
       <div class="left-nav">
-        <nuxt-link to="/" class="home-logo" title="Home">Open Fixture Library</nuxt-link>
+        <nuxt-link
+          to="/"
+          exact
+          class="home-logo"
+          title="Home"
+          @click.native="focusContent">
+          Open Fixture Library
+        </nuxt-link>
 
         <form action="/search">
           <div>
@@ -21,10 +28,33 @@
       </div>
 
       <div class="right-nav">
-        <nuxt-link to="/fixture-editor" title="Fixture editor">Add fixture</nuxt-link>
-        <nuxt-link to="/manufacturers" title="Browse fixtures by manufacturer">Manufacturers</nuxt-link>
-        <nuxt-link to="/categories" title="Browse fixtures by category">Categories</nuxt-link>
-        <nuxt-link to="/about" title="About the project">About</nuxt-link>
+        <nuxt-link
+          to="/fixture-editor"
+          title="Fixture editor"
+          @click.native="focusContent">
+          Add fixture
+        </nuxt-link>
+
+        <nuxt-link
+          to="/manufacturers"
+          title="Browse fixtures by manufacturer"
+          @click.native="focusContent">
+          Manufacturers
+        </nuxt-link>
+
+        <nuxt-link
+          to="/categories"
+          title="Browse fixtures by category"
+          @click.native="focusContent">
+          Categories
+        </nuxt-link>
+
+        <nuxt-link
+          to="/about"
+          title="About the project"
+          @click.native="focusContent">
+          About
+        </nuxt-link>
       </div>
     </nav>
   </header>
@@ -193,9 +223,11 @@ export default {
   components: {
     'app-svg': svg
   },
-  data: () => ({
-    searchQuery: ``
-  }),
+  data() {
+    return {
+      searchQuery: ``
+    };
+  },
   mounted() {
     this.$router.afterEach(() => this.updateSearchQuery());
     this.updateSearchQuery();
@@ -203,6 +235,9 @@ export default {
   methods: {
     updateSearchQuery() {
       this.searchQuery = this.$router.history.current.query.q || ``;
+    },
+    focusContent() {
+      this.$emit(`focus-content`);
     }
   }
 };

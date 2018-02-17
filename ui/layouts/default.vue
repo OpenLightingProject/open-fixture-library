@@ -2,9 +2,13 @@
   <div>
     <a href="#content" class="accessibility">Skip to content</a>
 
-    <app-header />
+    <app-header @focus-content="focusContent" />
 
-    <div id="content" :class="{ js: isBrowser, 'no-js': !isBrowser }">
+    <div
+      id="content"
+      :class="{ js: isBrowser, 'no-js': !isBrowser }"
+      tabindex="-1"
+      ref="content">
       <nuxt />
     </div>
   </div>
@@ -41,6 +45,9 @@
   overflow: hidden;
   padding: 5em 10px 10px;
 }
+#content:focus {
+  outline: 0;
+}
 </style>
 
 
@@ -59,6 +66,11 @@ export default {
   mounted() {
     if (process.browser) {
       this.isBrowser = true;
+    }
+  },
+  methods: {
+    focusContent() {
+      this.$refs.content.focus();
     }
   }
 };

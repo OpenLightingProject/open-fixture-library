@@ -7,6 +7,12 @@ const nuxtOptions = {
       browserBaseURL: `/`
     }]
   ],
+  plugins: [
+    {
+      src: `~/plugins/focus-directive.js`,
+      ssr: false
+    }
+  ],
   build: {
     extend(config, ctx) {
       // exclude /assets/icons from url-loader
