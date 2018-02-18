@@ -56,11 +56,11 @@ export default {
     }
   },
   methods: {
-    select: function(selectedCat) {
+    select(selectedCat) {
       const updatedCategoryList = [...this.value, selectedCat];
       this.$emit(`input`, updatedCategoryList);
     },
-    deselect: function(deselectedCat) {
+    deselect(deselectedCat) {
       const updatedCategoryList = this.value.filter(cat => cat !== deselectedCat);
       this.$emit(`input`, updatedCategoryList);
     }

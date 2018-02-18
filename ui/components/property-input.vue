@@ -5,7 +5,7 @@ export default {
       type: String,
       required: true,
       validator(string) {
-        return [`text`, `textarea`, `url`, `number`, `select`, `select`].includes(string);
+        return [`text`, `textarea`, `url`, `number`, `select`, `boolean`].includes(string);
       }
     },
     schemaProperty: {
@@ -22,6 +22,16 @@ export default {
       required: false,
       default: null
     },
+    additionHint: {
+      type: String,
+      required: false,
+      default: null
+    },
+    autoFocus: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
 
     // set through v-model
     value: {
@@ -32,6 +42,11 @@ export default {
   computed: {
     pattern() {
       return this.schemaProperty.pattern || null;
+    }
+  },
+  mounted() {
+    if (this.autoFocus) {
+      this.$refs.input.focus();
     }
   },
   methods: {
@@ -64,6 +79,42 @@ export default {
         },
         ref: `input`
       });
+    }
+
+    if (this.type === `select`) {
+      const options = this.schemaProperty.enum.map(
+        item => createElement(`option`, {
+          attrs: {
+            value: item,
+            selected: this.value === item
+          }
+        }, item)
+      );
+      options.unshift(createElement(`option`, {
+        attrs: {
+          value: ``,
+          selected: this.value === ``
+        }
+      }, `unknown`));
+
+      if (this.additionHint !== null) {
+        options.push(createElement(`option`, {
+          attrs: {
+            value: `[add-value]`,
+            selected: this.value === `[add-value]`
+          }
+        }, this.additionHint));
+      }
+
+      return createElement(`select`, {
+        attrs: {
+          required: this.required
+        },
+        on: {
+          input: this.update
+        },
+        ref: `input`
+      }, options);
     }
 
     const attrs = {

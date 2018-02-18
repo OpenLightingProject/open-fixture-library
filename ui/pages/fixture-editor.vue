@@ -120,6 +120,47 @@
               v-model="fixture.categories" />
           </span>
         </section>
+
+        <section class="comment">
+          <app-simple-label label="Comment">
+            <app-property-input
+              type="textarea"
+              v-model="fixture.comment"
+              :schema-property="properties.fixture.comment" />
+          </app-simple-label>
+        </section>
+
+        <section class="manualURL">
+          <app-simple-label label="Manual URL">
+            <app-property-input
+              type="url"
+              v-model="fixture.manualURL"
+              :schema-property="properties.fixture.manualURL" />
+          </app-simple-label>
+        </section>
+
+        <section class="rdmModelId">
+          <app-simple-label label="<abbr title='Remote Device Management'>RDM</abbr> model ID" hint="The RDM manufacturer ID is saved per manufacturer.">
+            <app-property-input
+              type="number"
+              v-model="fixture.rdmModelId"
+              :schema-property="properties.fixture.rdm.properties.modelId" />
+          </app-simple-label>
+        </section>
+
+        <section class="rdmSoftwareVersion" v-if="fixture.rdmModelId !== ''">
+          <app-simple-label label="RDM software version">
+            <app-property-input
+              type="text"
+              v-model="fixture.rdmSoftwareVersion"
+              :schema-property="properties.fixture.rdm.properties.softwareVersion" />
+          </app-simple-label>
+        </section>
+      </section>
+
+      <section class="physical card">
+        <h2>Physical data</h2>
+        <app-editor-physical v-model="fixture.physical" />
       </section>
 
     </form>
@@ -135,12 +176,14 @@ import schemaProperties from '~~/lib/schema-properties.js';
 import simpleLabelVue from '~/components/simple-label.vue';
 import propertyInputVue from '~/components/property-input.vue';
 import categoryChooserVue from '~/components/category-chooser.vue';
+import editorPhysicalVue from '~/components/editor-physical.vue';
 
 export default {
   components: {
     'app-simple-label': simpleLabelVue,
     'app-property-input': propertyInputVue,
-    'app-category-chooser': categoryChooserVue
+    'app-category-chooser': categoryChooserVue,
+    'app-editor-physical': editorPhysicalVue
   },
   head() {
     return {
