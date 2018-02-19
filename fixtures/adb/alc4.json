@@ -1,0 +1,190 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "name": "ALC4",
+  "shortName": "alc4",
+  "categories": ["Blinder", "Color Changer"],
+  "meta": {
+    "authors": ["ameisso"],
+    "createDate": "2018-02-19",
+    "lastModifyDate": "2018-02-19"
+  },
+  "manualURL": "http://www.adblighting.com/?page=getsupportfile&file=165",
+  "physical": {
+    "dimensions": [496, 268, 182],
+    "weight": 10,
+    "power": 200,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 4000
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "type": "Intensity",
+      "defaultValue": 0
+    },
+    "Color Temperature": {
+      "type": "Color Temperature",
+      "defaultValue": 0
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Color Temperature 1": {
+      "type": "Color Temperature",
+      "defaultValue": 0
+    },
+    "Red 1": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green 1": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue 1": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Dimmer 2": {
+      "type": "Intensity"
+    },
+    "Color Temperature 2": {
+      "type": "Color Temperature"
+    },
+    "Red 2": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green 2": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue 2": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Dimmer 3": {
+      "type": "Intensity"
+    },
+    "Color Temperature 3": {
+      "type": "Color Temperature"
+    },
+    "Red 3": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green 3": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue 3": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Dimmer 4": {
+      "type": "Intensity"
+    },
+    "Color Temperature 4": {
+      "type": "Color Temperature"
+    },
+    "Red 4": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green 4": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue 4": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Master": {
+      "type": "Intensity"
+    },
+    "Dimmer 1": {
+      "type": "Intensity",
+      "defaultValue": 0
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "shortName": "standard",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "Matrix ",
+      "shortName": "matrix",
+      "channels": [
+        "Dimmer 1",
+        "Color Temperature 1",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Dimmer 2",
+        "Color Temperature 2",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Dimmer 3",
+        "Color Temperature 3",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Dimmer 4",
+        "Color Temperature 4",
+        "Red 4",
+        "Green 4",
+        "Blue 4"
+      ]
+    },
+    {
+      "name": "Extended",
+      "shortName": "extended",
+      "channels": [
+        "Master",
+        "Dimmer 1",
+        "Color Temperature 1",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Dimmer 2",
+        "Color Temperature 2",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Dimmer 3",
+        "Color Temperature 3",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Dimmer 4",
+        "Color Temperature 4",
+        "Red 4",
+        "Green 4",
+        "Blue 4"
+      ]
+    }
+  ]
+}
