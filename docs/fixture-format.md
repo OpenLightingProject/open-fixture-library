@@ -28,7 +28,7 @@ The [JSON Schema](http://json-schema.org/) can be found in the [`schema-fixture.
 The schema files have a `version` property. Every time the schema is updated, this version needs to be incremented in both files using [semantic versioning](http://semver.org).
 
 Given a version number MAJOR.MINOR.PATCH, increment the:
-1. MAJOR version when you make incompatible schema changes.  
+1. MAJOR version when you make incompatible schema changes.
   i.e. old fixtures are not valid with the new schema anymore.
 2. MINOR version when you add functionality in a backwards-compatible manner.
   i.e. old fixtures are still valid with the new schema, new fixtures aren't valid with the old schema.
@@ -75,14 +75,34 @@ All channels that are used in one or more modes are listed in `availableChannels
 
 A channel's `defaultValue` is the DMX value that this channel is set to without the user interacting (most often, this will be `0`, but e.g. for Pan and Tilt channels, other values make more sense). Likewise, `highlightValue` specifies the DMX value if a user *highlights* this channel (defaults to the maximum DMX value). This is not available in every software.
 
-`invert` is used to mark a descending value (e.g. Speed from fast to slow). If `constant` is `true`, the channel cannot be changed. Set `crossfade` to `true` if you want to allow smooth transitions between two DMX values being output by the software. This is e.g. not recommended for Gobo wheels, as there can be no *smooth* transition to another Gobo; the wheel will always rotate.
-
-`precedence` specifies to which value the channel should be set if there are two conflicting active cues containing this channel: *HTP* (Highest takes precedence) or *LTP* (Latest (change) takes precedence).
+If `constant` is `true`, the channel cannot be changed. `precedence` specifies to which value the channel should be set if there are two conflicting active cues containing this channel: *HTP* (Highest takes precedence) or *LTP* (Latest (change) takes precedence).
 
 
 #### Capabilities
 
-A channel can do different things depending on which range its DMX value currently is in. Those capabilities can be triggered manually in many programs, and the `menuClick` property defines how: `start` / `center` / `end` sets the channel's DMX value to the start / center / end of the range, respectively. `hidden` hides this capability from the trigger menu.
+A channel can do different things depending on which range its DMX value currently is in. Those ranges, that can be triggered manually in many programs, are called capabilities. Choose a `type` to declare which property of the fixture is changed by this capability, e.g. `ShutterOpen`, `Intensity` or `Pan`. Depending on the type, there exist more properties that further describe the capability, like the pan angle, the strobe rate or the gobo wheel index. Most of these are physical entities that require to be entered using specific units (like `"10.5Hz"` or `"100%"`). Some entitys offer keywords to replace specific percentage values, e.g. Distance: `"near"` = `"1%"`, `"far"` = `"100%"`. See the [full list of units, entities and capability types with their properties](capability-types.md).
+
+Capabilities may be _steps_, which means that the whole DMX range has the same effect (e.g. "Gobo 1"), or _proportional_, which means that the effect is increasing / decreasing from the start to the end of the DMX range (e.g. "Intensity 0-100%"). A proportional capability can define a start and an end value of its type-specific properties – note that this array syntax only works for physical entity properties, other properties may have their own syntax or don't allow different start/end values. Example:
+
+```js
+"availableChannels": {
+  "Pan": {
+    "capabilities": [
+      {
+        "dmxRange": [0, 255],
+        "type": "Pan",
+        "angle": ["0°", "530°"]
+
+        // DMX value 0 -> 0°
+        // DMX value 127 -> 264°
+        // DMX value 255 -> 530°
+      }
+    ]
+  }
+}
+```
+
+The `menuClick` property defines which DMX value to use if the whole capability is selected: `start` / `center` / `end` sets the channel's DMX value to the start / center / end of the range, respectively. `hidden` hides this capability from the trigger menu. This is a special feature supported only by some lighting programs.
 
 
 #### Fine channels
