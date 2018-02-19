@@ -84,11 +84,11 @@
               {
                 "$comment": "template channel key or template channel alias key",
                 "$ref": "#/definitions/variablePixelKeyString"
-    }
+              }
             ]
           }
         }
-  },
+    },
       "required": ["dmxRange", "type"]
     },
     "unitNonNegativeNumber": {
@@ -1160,18 +1160,18 @@
                 },
                 {
                   "allOf": [{ "$ref": "#/definitions/capability" }],
-              "properties": {
+                  "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["PrismRotationSpeed"] },
                     "comment": {},
                     "menuClick": {},
                     "switchChannels": {},
                     "speed": { "$ref": "#/definitions/entityDirectionalSpeed" }
-                },
+                  },
                   "required": ["speed"],
                   "additionalProperties": false
-                  },
-                      {
+                },
+                {
                   "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
@@ -1181,8 +1181,8 @@
                     "switchChannels": {}
                   },
                   "additionalProperties": false
-                      },
-                      {
+                },
+                {
                   "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
@@ -1192,9 +1192,9 @@
                     "switchChannels": {},
                     "fogOutput": { "$ref": "#/definitions/entityFogOutput" },
                     "fogType": { "enum": ["Fog", "Haze"] }
-              },
+                  },
                   "additionalProperties": false
-              },
+                },
                 {
                   "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
@@ -1204,11 +1204,11 @@
                     "menuClick": {},
                     "switchChannels": {},
                     "fogOutput": { "$ref": "#/definitions/entityFogOutput" }
-              },
+                  },
                   "required": ["fogOutput"],
-              "additionalProperties": false
-        },
-          {
+                  "additionalProperties": false
+                },
+                {
                   "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
@@ -1220,7 +1220,7 @@
                   },
                   "required": ["fogType"],
                   "additionalProperties": false
-            },
+                },
                 {
                   "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
@@ -1230,11 +1230,11 @@
                     "menuClick": {},
                     "switchChannels": {},
                     "angle": { "$ref": "#/definitions/entityRotationAngle" }
-            },
+                  },
                   "required": ["angle"],
                   "additionalProperties": false
-          },
-          {
+                },
+                {
                   "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
@@ -1246,7 +1246,7 @@
                   },
                   "required": ["speed"],
                   "additionalProperties": false
-            },
+                },
                 {
                   "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
