@@ -179,6 +179,44 @@
         <div class="clearfix" />
       </section>
 
+      <section class="user card">
+        <h2>Author data</h2>
+
+        <section class="author">
+          <app-simple-label label="Your name">
+            <app-property-input
+              type="text"
+              v-model="fixture.metaAuthor"
+              :schema-property="properties.definitions.nonEmptyString"
+              :required="true"
+              hint="e.g. Anonymous" />
+          </app-simple-label>
+        </section>
+
+        <section class="github-username">
+          <app-simple-label label="GitHub username" hint="If you want to be mentioned in the pull request.">
+            <app-property-input
+              type="text"
+              v-model="fixture.metaGithubUsername"
+              :schema-property="properties.definitions.nonEmptyString" />
+          </app-simple-label>
+        </section>
+
+        <section class="honeypot" hidden>
+          <app-simple-label label="Ignore this!">
+            <app-property-input
+              type="text"
+              v-model="honeypot"
+              :schema-property="properties.definitions.nonEmptyString"
+              hint="Spammers are likely to fill this field. Leave it empty to show that you're a human." />
+          </app-simple-label>
+        </section>
+      </section>
+
+      <div class="button-bar right">
+        <button type="submit" class="save-fixture primary">Create fixture</button>
+      </div>
+
     </form>
   </div>
 </template>
@@ -229,6 +267,7 @@ export default {
 
     return {
       fixture: initFixture,
+      honeypot: ``,
       manufacturers,
       properties: schemaProperties
     };
