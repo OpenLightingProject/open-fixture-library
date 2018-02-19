@@ -124,7 +124,7 @@
           v-model="value.lens.degreesMax"
           :schema-property="properties.physicalLens.degreesMinMax.items"
           :required="degreesRequired"
-          hint="max" />
+          hint="max" /> °
         <span class="error-message" hidden />
       </span>
     </section>

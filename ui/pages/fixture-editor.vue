@@ -163,9 +163,32 @@
         <app-editor-physical v-model="fixture.physical" />
       </section>
 
+      <section class="fixture-modes">
+        <app-mode
+          v-for="(mode, index) in fixture.modes"
+          :key="mode.uuid"
+          v-model="fixture.modes[index]"
+          :index="index"
+          :fixture="fixture"
+          @remove="fixture.modes.splice(index, 1)" />
+
+        <a class="fixture-mode card add-mode-link" href="#add-mode" @click.prevent="addNewMode">
+          <h2>+ Add mode</h2>
+        </a>
+
+        <div class="clearfix" />
+      </section>
+
     </form>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.add-mode-link {
+  text-align: center;
+}
+</style>
+
 
 <script>
 import uuidV4 from 'uuid/v4.js';
@@ -177,13 +200,15 @@ import simpleLabelVue from '~/components/simple-label.vue';
 import propertyInputVue from '~/components/property-input.vue';
 import categoryChooserVue from '~/components/category-chooser.vue';
 import editorPhysicalVue from '~/components/editor-physical.vue';
+import editorModeVue from '~/components/editor-mode.vue';
 
 export default {
   components: {
     'app-simple-label': simpleLabelVue,
     'app-property-input': propertyInputVue,
     'app-category-chooser': categoryChooserVue,
-    'app-editor-physical': editorPhysicalVue
+    'app-editor-physical': editorPhysicalVue,
+    'app-mode': editorModeVue
   },
   head() {
     return {
@@ -215,6 +240,71 @@ export default {
       this.$nextTick(() => {
         this.$refs[useExisting ? `existingManufacturerSelect` : `newManufacturerNameInput`].focus();
       });
+    },
+
+    addNewMode() {
+      this.fixture.modes.push(getEmptyMode());
+    },
+
+    /**
+     * @param {!string} channelUuid The channel's UUID.
+     * @returns {!string} The channel's name.
+     */
+    getChannelName(channelUuid) {
+      const channel = this.fixture.availableChannels[channelUuid];
+
+      if (`coarseChannelId` in channel) {
+        let name = `${this.getChannelName(channel.coarseChannelId)} fine`;
+        if (channel.fineness > 1) {
+          name += `^${channel.fineness}`;
+        }
+
+        return name;
+      }
+
+      return channel.name;
+    },
+
+    /**
+     * @param {!string} channelUuid The channel's UUID.
+     * @returns {!boolean} True if the channel's name is not used in another channel, too.
+     */
+    isChannelNameUnique(channelUuid) {
+      const chName = this.getChannelName(channelUuid);
+
+      return Object.keys(this.fixture.availableChannels).every(
+        uuid => chName !== this.getChannelName(uuid) || uuid === channelUuid
+      );
+    },
+
+    /**
+     * @param {!string} channelUuid The channel's UUID.
+     * @param {?string} [modeUuid] The mode's UUID. If not supplied, remove channel everywhere.
+     */
+    removeChannel(channelUuid, modeUuid) {
+      if (modeUuid) {
+        const mode = this.fixture.modes.find(mode => mode.uuid === modeUuid);
+
+        // remove channel reference from mode
+        mode.channels.splice(mode.channels.indexOf(channelUuid), 1);
+        return;
+      }
+
+      // remove fine channels first
+      for (const chId of Object.keys(this.fixture.availableChannels)) {
+        const channel = this.fixture.availableChannels[chId];
+        if (`coarseChannelId` in channel && channel.coarseChannelId === channelUuid) {
+          this.removeChannel(channel.uuid);
+        }
+      }
+
+      // now remove all references from modes
+      for (const mode of this.fixture.modes) {
+        this.removeChannel(channelUuid, mode.uuid);
+      }
+
+      // finally remove the channel itself
+      delete this.fixture.availableChannels[channelUuid];
     }
   }
 };

@@ -35,43 +35,11 @@
 </template>
 
 <style lang="scss" scoped>
-@import '~assets/styles/vars.scss';
-
-/* display mode cards in a 2-col layout */
-@media (min-width: $tablet) {
-  .fixture-mode {
-    width: calc(50% - .5rem);
-
-    &:nth-child(odd) {
-      margin-right: .5rem;
-      float: left;
-      clear: left;
-    }
-    &:nth-child(even) {
-      margin-left: .5rem;
-      float: right;
-      clear: right;
-    }
-  }
-}
-
 .expand-all,
 .collapse-all {
   margin-left: 1ex;
 }
 </style>
-
-<style lang="scss">
-@import '~assets/styles/vars.scss';
-
-/* allow values to wrap below labels */
-@media (min-width: $tablet) {
-  .card.fixture-mode .value {
-    max-width: none;
-  }
-}
-</style>
-
 
 <script>
 import svg from '~/components/svg.vue';

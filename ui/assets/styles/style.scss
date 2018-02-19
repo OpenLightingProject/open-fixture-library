@@ -493,6 +493,28 @@ a.card, .link, .list a {
   font-size: 1.2rem;
 }
 
+/* display mode cards in a 2-col layout and allow values to wrap below labels */
+@media (min-width: $tablet) {
+  .fixture-mode {
+    width: calc(50% - .5rem);
+
+    &:nth-child(odd) {
+      margin-right: .5rem;
+      float: left;
+      clear: left;
+    }
+    &:nth-child(even) {
+      margin-left: .5rem;
+      float: right;
+      clear: right;
+    }
+
+    & .value {
+      max-width: none;
+    }
+  }
+}
+
 @media (max-width: $phone) {
   .list > li > a > .icon {
     width: 24px;
