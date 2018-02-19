@@ -2,8 +2,8 @@ all: \
 fixtures/register.json \
 tests/test-fixtures.json \
 tests/test-fixtures.md \
-schema-fixture-dereferenced.json \
-schema-manufacturers-dereferenced.json
+schemas/dereferenced/fixture.json \
+schemas/dereferenced/manufacturers.json
 
 fixtures/register.json: \
 fixtures/*/*.json \
@@ -16,7 +16,7 @@ fixtures/register.json \
 lib/model/*.mjs
 	node cli/make-test-fixtures.js && echo ""
 
-schema-fixture-dereferenced.json schema-manufacturers-dereferenced.json: \
-schema-fixture.json \
-schema-manufacturers.json
+schemas/dereferenced/fixture.json schemas/dereferenced/manufacturers.json: \
+schemas/fixture.json \
+schemas/manufacturers.json
 	node cli/make-dereferenced-schemas.js

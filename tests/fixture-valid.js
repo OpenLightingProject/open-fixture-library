@@ -1,7 +1,7 @@
 const util = require(`util`);
 const Ajv = require(`ajv`);
 
-const fixtureSchema = require(`../schema-fixture.json`);
+const fixtureSchema = require(`../schemas/dereferenced/fixture.json`);
 
 const {
   Channel,

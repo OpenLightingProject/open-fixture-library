@@ -5,7 +5,7 @@ const path = require(`path`);
 const colors = require(`colors`);
 const Ajv = require(`ajv`);
 
-const manufacturerSchema = require(`../schema-manufacturers.json`);
+const manufacturerSchema = require(`../schemas/dereferenced/manufacturers.json`);
 const checkFixture = require(`./fixture-valid.js`);
 
 /**
