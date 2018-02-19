@@ -28,7 +28,7 @@ The [JSON Schema](http://json-schema.org/) can be found in the [`schemas/fixture
 The schema files have a `version` property. Every time the schema is updated, this version needs to be incremented in both files using [semantic versioning](http://semver.org).
 
 Given a version number MAJOR.MINOR.PATCH, increment the:
-1. MAJOR version when you make incompatible schema changes.
+1. MAJOR version when you make incompatible schema changes.  
   i.e. old fixtures are not valid with the new schema anymore.
 2. MINOR version when you add functionality in a backwards-compatible manner.  
   i.e. old fixtures are still valid with the new schema, new fixtures aren't valid with the old schema.

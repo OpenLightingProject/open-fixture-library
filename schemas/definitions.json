@@ -287,14 +287,20 @@
         }
       ]
     },
-    "percent": {
+    "percentSingle": {
       "oneOf": [
         { "$ref": "#/units/percent" },
+        { "enum": ["off", "low", "high"] }
+      ]
+    },
+    "percent": {
+      "oneOf": [
+        { "$ref": "#/entities/percentSingle" },
         {
           "type": "array",
           "minLength": 2,
           "maxLength": 2,
-          "items": { "$ref": "#/units/percent" }
+          "items": { "$ref": "#/entities/percentSingle" }
         }
       ]
     },

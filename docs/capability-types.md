@@ -15,7 +15,7 @@ This is a full list of capability types with their properties, entities and unit
 | BeamAngle | `°`, `%` | – | – | closed | narrow | wide
 | Factor | (no unit), `%` | – | – | off | low | high
 | Index | (no unit) | – | – | – | – | –
-| Percent | `%` | – | – | – | – | –
+| Percent | `%` | – | – | off | low | high
 | IrisPercent | `%` | – | – | closed | – | open
 
 ### Possible capability types
@@ -41,10 +41,12 @@ Required properties are _italic_, the entity is written in (parentheses).
 * Color
   * colors: array of visible colors as hex codes (e.g. `['#ffff00']` if red and green LEDs are on that mix to yellow; `['#ff0000', '#00ff00']` if red and green laser beams are on that don't mix)
   * use colorsStart and colorsEnd instead of colors to declare a color change from the start to the end of the range
-* ColorJump
-  * speed (DirectionalSpeed)
-* ColorFade
-  * speed (DirectionalSpeed)
+* ColorWheelIndex
+  * _index_ (Index): `0` for open, `1` for Color 1, `1.5` for Color 1/2 split, etc.
+* ColorWheelRotationAngle
+  * _angle_ (RotationAngle)
+* ColorWheelRotationSpeed
+  * _speed_ (DirectionalSpeed)
 * ColorTemperature
   * _colorTemperature_ (ColorTemperature)
 * Pan
@@ -64,6 +66,8 @@ Required properties are _italic_, the entity is written in (parentheses).
   * _effectIntensity_ (Factor)
 * EffectSpeed (global, don't set an effect)
   * _speed_ (DirectionalSpeed)
+* SoundSensitivity
+  * _sensitivity_ (Percent)
 * GoboIndex
   * _index_ (Index): `0` for open, `1` for Gobo 1, `1.5` for Gobo 1/2 split, etc.
 * GoboShake
@@ -76,12 +80,6 @@ Required properties are _italic_, the entity is written in (parentheses).
 * GoboWheelRotationAngle
   * _angle_ (RotationAngle)
 * GoboWheelRotationSpeed
-  * _speed_ (DirectionalSpeed)
-* ColorWheelIndex
-  * _index_ (Index): `0` for open, `1` for Color 1, `1.5` for Color 1/2 split, etc.
-* ColorWheelRotationAngle
-  * _angle_ (RotationAngle)
-* ColorWheelRotationSpeed
   * _speed_ (DirectionalSpeed)
 * Focus
   * _distance_ (Distance)

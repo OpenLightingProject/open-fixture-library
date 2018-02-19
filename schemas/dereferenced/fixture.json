@@ -926,64 +926,33 @@
                     "dmxRange": {},
                     "type": {
                       "enum": [
-                        "ColorJump"
+                        "ColorWheelIndex"
                       ]
                     },
                     "comment": {},
                     "menuClick": {},
                     "switchChannels": {},
-                    "speed": {
+                    "index": {
                       "oneOf": [
                         {
-                          "oneOf": [
-                            {
-                              "type": "string",
-                              "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
-                            },
-                            {
-                              "type": "string",
-                              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-                            },
-                            {
-                              "enum": [
-                                "fast CCW",
-                                "slow CCW",
-                                "stop",
-                                "slow CW",
-                                "fast CW"
-                              ]
-                            }
-                          ]
+                          "type": "number",
+                          "minimum": 0
                         },
                         {
                           "type": "array",
                           "minLength": 2,
                           "maxLength": 2,
                           "items": {
-                            "oneOf": [
-                              {
-                                "type": "string",
-                                "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
-                              },
-                              {
-                                "type": "string",
-                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-                              },
-                              {
-                                "enum": [
-                                  "fast CCW",
-                                  "slow CCW",
-                                  "stop",
-                                  "slow CW",
-                                  "fast CW"
-                                ]
-                              }
-                            ]
+                            "type": "number",
+                            "minimum": 0
                           }
                         }
                       ]
                     }
                   },
+                  "required": [
+                    "index"
+                  ],
                   "additionalProperties": false
                 },
                 {
@@ -991,7 +960,57 @@
                     "dmxRange": {},
                     "type": {
                       "enum": [
-                        "ColorFade"
+                        "ColorWheelRotationAngle"
+                      ]
+                    },
+                    "comment": {},
+                    "menuClick": {},
+                    "switchChannels": {},
+                    "angle": {
+                      "oneOf": [
+                        {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+                            },
+                            {
+                              "type": "string",
+                              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "array",
+                          "minLength": 2,
+                          "maxLength": 2,
+                          "items": {
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+                              },
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "angle"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "properties": {
+                    "dmxRange": {},
+                    "type": {
+                      "enum": [
+                        "ColorWheelRotationSpeed"
                       ]
                     },
                     "comment": {},
@@ -1049,6 +1068,9 @@
                       ]
                     }
                   },
+                  "required": [
+                    "speed"
+                  ],
                   "additionalProperties": false
                 },
                 {
@@ -1660,6 +1682,62 @@
                     "dmxRange": {},
                     "type": {
                       "enum": [
+                        "SoundSensitivity"
+                      ]
+                    },
+                    "comment": {},
+                    "menuClick": {},
+                    "switchChannels": {},
+                    "sensitivity": {
+                      "oneOf": [
+                        {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                            },
+                            {
+                              "enum": [
+                                "off",
+                                "low",
+                                "high"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "array",
+                          "minLength": 2,
+                          "maxLength": 2,
+                          "items": {
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                              },
+                              {
+                                "enum": [
+                                  "off",
+                                  "low",
+                                  "high"
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "sensitivity"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "properties": {
+                    "dmxRange": {},
+                    "type": {
+                      "enum": [
                         "GoboIndex"
                       ]
                     },
@@ -2009,158 +2087,6 @@
                     "dmxRange": {},
                     "type": {
                       "enum": [
-                        "ColorWheelIndex"
-                      ]
-                    },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "index": {
-                      "oneOf": [
-                        {
-                          "type": "number",
-                          "minimum": 0
-                        },
-                        {
-                          "type": "array",
-                          "minLength": 2,
-                          "maxLength": 2,
-                          "items": {
-                            "type": "number",
-                            "minimum": 0
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  "required": [
-                    "index"
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": {
-                      "enum": [
-                        "ColorWheelRotationAngle"
-                      ]
-                    },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "angle": {
-                      "oneOf": [
-                        {
-                          "oneOf": [
-                            {
-                              "type": "string",
-                              "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
-                            },
-                            {
-                              "type": "string",
-                              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-                            }
-                          ]
-                        },
-                        {
-                          "type": "array",
-                          "minLength": 2,
-                          "maxLength": 2,
-                          "items": {
-                            "oneOf": [
-                              {
-                                "type": "string",
-                                "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
-                              },
-                              {
-                                "type": "string",
-                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  "required": [
-                    "angle"
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": {
-                      "enum": [
-                        "ColorWheelRotationSpeed"
-                      ]
-                    },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "speed": {
-                      "oneOf": [
-                        {
-                          "oneOf": [
-                            {
-                              "type": "string",
-                              "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
-                            },
-                            {
-                              "type": "string",
-                              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-                            },
-                            {
-                              "enum": [
-                                "fast CCW",
-                                "slow CCW",
-                                "stop",
-                                "slow CW",
-                                "fast CW"
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "type": "array",
-                          "minLength": 2,
-                          "maxLength": 2,
-                          "items": {
-                            "oneOf": [
-                              {
-                                "type": "string",
-                                "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
-                              },
-                              {
-                                "type": "string",
-                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-                              },
-                              {
-                                "enum": [
-                                  "fast CCW",
-                                  "slow CCW",
-                                  "stop",
-                                  "slow CW",
-                                  "fast CW"
-                                ]
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  "required": [
-                    "speed"
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": {
-                      "enum": [
                         "Focus"
                       ]
                     },
@@ -2412,16 +2338,38 @@
                     "frostIntensity": {
                       "oneOf": [
                         {
-                          "type": "string",
-                          "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                            },
+                            {
+                              "enum": [
+                                "off",
+                                "low",
+                                "high"
+                              ]
+                            }
+                          ]
                         },
                         {
                           "type": "array",
                           "minLength": 2,
                           "maxLength": 2,
                           "items": {
-                            "type": "string",
-                            "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                              },
+                              {
+                                "enum": [
+                                  "off",
+                                  "low",
+                                  "high"
+                                ]
+                              }
+                            ]
                           }
                         }
                       ]
@@ -3790,64 +3738,33 @@
                     "dmxRange": {},
                     "type": {
                       "enum": [
-                        "ColorJump"
+                        "ColorWheelIndex"
                       ]
                     },
                     "comment": {},
                     "menuClick": {},
                     "switchChannels": {},
-                    "speed": {
+                    "index": {
                       "oneOf": [
                         {
-                          "oneOf": [
-                            {
-                              "type": "string",
-                              "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
-                            },
-                            {
-                              "type": "string",
-                              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-                            },
-                            {
-                              "enum": [
-                                "fast CCW",
-                                "slow CCW",
-                                "stop",
-                                "slow CW",
-                                "fast CW"
-                              ]
-                            }
-                          ]
+                          "type": "number",
+                          "minimum": 0
                         },
                         {
                           "type": "array",
                           "minLength": 2,
                           "maxLength": 2,
                           "items": {
-                            "oneOf": [
-                              {
-                                "type": "string",
-                                "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
-                              },
-                              {
-                                "type": "string",
-                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-                              },
-                              {
-                                "enum": [
-                                  "fast CCW",
-                                  "slow CCW",
-                                  "stop",
-                                  "slow CW",
-                                  "fast CW"
-                                ]
-                              }
-                            ]
+                            "type": "number",
+                            "minimum": 0
                           }
                         }
                       ]
                     }
                   },
+                  "required": [
+                    "index"
+                  ],
                   "additionalProperties": false
                 },
                 {
@@ -3855,7 +3772,57 @@
                     "dmxRange": {},
                     "type": {
                       "enum": [
-                        "ColorFade"
+                        "ColorWheelRotationAngle"
+                      ]
+                    },
+                    "comment": {},
+                    "menuClick": {},
+                    "switchChannels": {},
+                    "angle": {
+                      "oneOf": [
+                        {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+                            },
+                            {
+                              "type": "string",
+                              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "array",
+                          "minLength": 2,
+                          "maxLength": 2,
+                          "items": {
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+                              },
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "angle"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "properties": {
+                    "dmxRange": {},
+                    "type": {
+                      "enum": [
+                        "ColorWheelRotationSpeed"
                       ]
                     },
                     "comment": {},
@@ -3913,6 +3880,9 @@
                       ]
                     }
                   },
+                  "required": [
+                    "speed"
+                  ],
                   "additionalProperties": false
                 },
                 {
@@ -4524,6 +4494,62 @@
                     "dmxRange": {},
                     "type": {
                       "enum": [
+                        "SoundSensitivity"
+                      ]
+                    },
+                    "comment": {},
+                    "menuClick": {},
+                    "switchChannels": {},
+                    "sensitivity": {
+                      "oneOf": [
+                        {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                            },
+                            {
+                              "enum": [
+                                "off",
+                                "low",
+                                "high"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "array",
+                          "minLength": 2,
+                          "maxLength": 2,
+                          "items": {
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                              },
+                              {
+                                "enum": [
+                                  "off",
+                                  "low",
+                                  "high"
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "sensitivity"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "properties": {
+                    "dmxRange": {},
+                    "type": {
+                      "enum": [
                         "GoboIndex"
                       ]
                     },
@@ -4873,158 +4899,6 @@
                     "dmxRange": {},
                     "type": {
                       "enum": [
-                        "ColorWheelIndex"
-                      ]
-                    },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "index": {
-                      "oneOf": [
-                        {
-                          "type": "number",
-                          "minimum": 0
-                        },
-                        {
-                          "type": "array",
-                          "minLength": 2,
-                          "maxLength": 2,
-                          "items": {
-                            "type": "number",
-                            "minimum": 0
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  "required": [
-                    "index"
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": {
-                      "enum": [
-                        "ColorWheelRotationAngle"
-                      ]
-                    },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "angle": {
-                      "oneOf": [
-                        {
-                          "oneOf": [
-                            {
-                              "type": "string",
-                              "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
-                            },
-                            {
-                              "type": "string",
-                              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-                            }
-                          ]
-                        },
-                        {
-                          "type": "array",
-                          "minLength": 2,
-                          "maxLength": 2,
-                          "items": {
-                            "oneOf": [
-                              {
-                                "type": "string",
-                                "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
-                              },
-                              {
-                                "type": "string",
-                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  "required": [
-                    "angle"
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": {
-                      "enum": [
-                        "ColorWheelRotationSpeed"
-                      ]
-                    },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "speed": {
-                      "oneOf": [
-                        {
-                          "oneOf": [
-                            {
-                              "type": "string",
-                              "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
-                            },
-                            {
-                              "type": "string",
-                              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-                            },
-                            {
-                              "enum": [
-                                "fast CCW",
-                                "slow CCW",
-                                "stop",
-                                "slow CW",
-                                "fast CW"
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "type": "array",
-                          "minLength": 2,
-                          "maxLength": 2,
-                          "items": {
-                            "oneOf": [
-                              {
-                                "type": "string",
-                                "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
-                              },
-                              {
-                                "type": "string",
-                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-                              },
-                              {
-                                "enum": [
-                                  "fast CCW",
-                                  "slow CCW",
-                                  "stop",
-                                  "slow CW",
-                                  "fast CW"
-                                ]
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  "required": [
-                    "speed"
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": {
-                      "enum": [
                         "Focus"
                       ]
                     },
@@ -5276,16 +5150,38 @@
                     "frostIntensity": {
                       "oneOf": [
                         {
-                          "type": "string",
-                          "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                            },
+                            {
+                              "enum": [
+                                "off",
+                                "low",
+                                "high"
+                              ]
+                            }
+                          ]
                         },
                         {
                           "type": "array",
                           "minLength": 2,
                           "maxLength": 2,
                           "items": {
-                            "type": "string",
-                            "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                              },
+                              {
+                                "enum": [
+                                  "off",
+                                  "low",
+                                  "high"
+                                ]
+                              }
+                            ]
                           }
                         }
                       ]

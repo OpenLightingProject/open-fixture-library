@@ -763,19 +763,56 @@
         }
       ]
     },
-    "percent": {
+    "percentSingle": {
       "oneOf": [
         {
           "type": "string",
           "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
         },
         {
+          "enum": [
+            "off",
+            "low",
+            "high"
+          ]
+        }
+      ]
+    },
+    "percent": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+            },
+            {
+              "enum": [
+                "off",
+                "low",
+                "high"
+              ]
+            }
+          ]
+        },
+        {
           "type": "array",
           "minLength": 2,
           "maxLength": 2,
           "items": {
-            "type": "string",
-            "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+              },
+              {
+                "enum": [
+                  "off",
+                  "low",
+                  "high"
+                ]
+              }
+            ]
           }
         }
       ]

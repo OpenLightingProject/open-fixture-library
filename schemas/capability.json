@@ -195,23 +195,37 @@
     {
       "properties": {
         "dmxRange": {},
-        "type": { "enum": ["ColorJump"] },
+        "type": { "enum": ["ColorWheelIndex"] },
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
-        "speed": { "$ref": "definitions.json#/entities/directionalSpeed" }
+        "index": { "$ref": "definitions.json#/entities/index" }
       },
+      "required": ["index"],
       "additionalProperties": false
     },
     {
       "properties": {
         "dmxRange": {},
-        "type": { "enum": ["ColorFade"] },
+        "type": { "enum": ["ColorWheelRotationAngle"] },
+        "comment": {},
+        "menuClick": {},
+        "switchChannels": {},
+        "angle": { "$ref": "definitions.json#/entities/rotationAngle" }
+      },
+      "required": ["angle"],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "dmxRange": {},
+        "type": { "enum": ["ColorWheelRotationSpeed"] },
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
         "speed": { "$ref": "definitions.json#/entities/directionalSpeed" }
       },
+      "required": ["speed"],
       "additionalProperties": false
     },
     {
@@ -325,6 +339,18 @@
     {
       "properties": {
         "dmxRange": {},
+        "type": { "enum": ["SoundSensitivity"] },
+        "comment": {},
+        "menuClick": {},
+        "switchChannels": {},
+        "sensitivity": { "$ref": "definitions.json#/entities/percent" }
+      },
+      "required": ["sensitivity"],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "dmxRange": {},
         "type": { "enum": ["GoboIndex"] },
         "comment": {},
         "menuClick": {},
@@ -387,42 +413,6 @@
       "properties": {
         "dmxRange": {},
         "type": { "enum": ["GoboWheelRotationSpeed"] },
-        "comment": {},
-        "menuClick": {},
-        "switchChannels": {},
-        "speed": { "$ref": "definitions.json#/entities/directionalSpeed" }
-      },
-      "required": ["speed"],
-      "additionalProperties": false
-    },
-    {
-      "properties": {
-        "dmxRange": {},
-        "type": { "enum": ["ColorWheelIndex"] },
-        "comment": {},
-        "menuClick": {},
-        "switchChannels": {},
-        "index": { "$ref": "definitions.json#/entities/index" }
-      },
-      "required": ["index"],
-      "additionalProperties": false
-    },
-    {
-      "properties": {
-        "dmxRange": {},
-        "type": { "enum": ["ColorWheelRotationAngle"] },
-        "comment": {},
-        "menuClick": {},
-        "switchChannels": {},
-        "angle": { "$ref": "definitions.json#/entities/rotationAngle" }
-      },
-      "required": ["angle"],
-      "additionalProperties": false
-    },
-    {
-      "properties": {
-        "dmxRange": {},
-        "type": { "enum": ["ColorWheelRotationSpeed"] },
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
