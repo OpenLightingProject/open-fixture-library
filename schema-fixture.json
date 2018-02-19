@@ -1,9 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
-
   "version": "6.0.0",
-
   "definitions": {
     "nonEmptyString": {
       "type": "string",
@@ -53,43 +51,6 @@
         "type": "number",
         "minimum": 0
       }
-    },
-    "capability": {
-      "type": "object",
-      "properties": {
-        "dmxRange": {
-          "type": "array",
-          "minItems": 2,
-          "maxItems": 2,
-          "items": { "$ref": "#/definitions/dmxValue" }
-        },
-        "comment": { "$ref": "#/definitions/nonEmptyString" },
-        "menuClick": { "enum": ["start", "center", "end", "hidden"] },
-        "switchChannels": {
-          "type": "object",
-          "minProperties": 1,
-          "propertyNames": {
-            "$comment": "switching channel alias keys",
-            "oneOf": [
-              { "$ref": "#/definitions/noVariablesString" },
-              { "$ref": "#/definitions/variablePixelKeyString" }
-            ]
-          },
-          "additionalProperties": {
-            "oneOf": [
-              {
-                "$comment": "channel key or channel alias key",
-                "$ref": "#/definitions/noVariablesString"
-              },
-              {
-                "$comment": "template channel key or template channel alias key",
-                "$ref": "#/definitions/variablePixelKeyString"
-              }
-            ]
-          }
-        }
-    },
-      "required": ["dmxRange", "type"]
     },
     "unitNonNegativeNumber": {
       "type": "number",
@@ -623,9 +584,43 @@
             "minItems": 1,
             "uniqueItems": true,
             "items": {
+              "type": "object",
+              "properties": {
+                "dmxRange": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 2,
+                  "items": { "$ref": "#/definitions/dmxValue" }
+                },
+                "comment": { "$ref": "#/definitions/nonEmptyString" },
+                "menuClick": { "enum": ["start", "center", "end", "hidden"] },
+                "switchChannels": {
+                  "type": "object",
+                  "minProperties": 1,
+                  "propertyNames": {
+                    "$comment": "switching channel alias keys",
+                    "oneOf": [
+                      { "$ref": "#/definitions/noVariablesString" },
+                      { "$ref": "#/definitions/variablePixelKeyString" }
+                    ]
+                  },
+                  "additionalProperties": {
+                    "oneOf": [
+                      {
+                        "$comment": "channel key or channel alias key",
+                        "$ref": "#/definitions/noVariablesString"
+                      },
+                      {
+                        "$comment": "template channel key or template channel alias key",
+                        "$ref": "#/definitions/variablePixelKeyString"
+                      }
+                    ]
+                  }
+                }
+              },
+              "required": ["dmxRange", "type"],
               "oneOf": [
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["Nothing"] },
@@ -636,7 +631,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["ShutterOpen"] },
@@ -647,7 +641,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["ShutterClosed"] },
@@ -658,7 +651,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["StrobeEffect"] },
@@ -670,7 +662,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["StrobeSpeed"] },
@@ -684,7 +675,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["StrobeDuration"] },
@@ -698,7 +688,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["Intensity"] },
@@ -711,7 +700,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["ColorIntensity"] },
@@ -737,7 +725,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["Color"] },
@@ -785,7 +772,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["ColorJump"] },
@@ -797,7 +783,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["ColorFade"] },
@@ -809,7 +794,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["ColorTemperature"] },
@@ -822,7 +806,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["Pan"] },
@@ -835,7 +818,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["PanContinuous"] },
@@ -848,7 +830,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["Tilt"] },
@@ -861,7 +842,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["TiltContinuous"] },
@@ -874,7 +854,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["PanTiltSpeed"] },
@@ -887,7 +866,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["Effect"] },
@@ -900,7 +878,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["EffectIntensity"] },
@@ -913,7 +890,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["EffectSpeed"] },
@@ -926,7 +902,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["GoboIndex"] },
@@ -939,7 +914,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["GoboShake"] },
@@ -953,7 +927,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["GoboStencilRotationAngle"] },
@@ -966,7 +939,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["GoboStencilRotationSpeed"] },
@@ -979,7 +951,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["GoboWheelRotationAngle"] },
@@ -992,7 +963,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["GoboWheelRotationSpeed"] },
@@ -1005,7 +975,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["ColorWheelIndex"] },
@@ -1018,7 +987,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["ColorWheelRotationAngle"] },
@@ -1031,7 +999,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["ColorWheelRotationSpeed"] },
@@ -1044,7 +1011,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["Focus"] },
@@ -1057,7 +1023,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["Zoom"] },
@@ -1070,7 +1035,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["Iris"] },
@@ -1083,7 +1047,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["IrisEffect"] },
@@ -1096,7 +1059,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["Frost"] },
@@ -1109,7 +1071,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["FrostEffect"] },
@@ -1122,7 +1083,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["PrismOff"] },
@@ -1133,7 +1093,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["PrismOn"] },
@@ -1146,7 +1105,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["PrismRotationAngle"] },
@@ -1159,7 +1117,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["PrismRotationSpeed"] },
@@ -1172,7 +1129,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["FogOff"] },
@@ -1183,7 +1139,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["FogOn"] },
@@ -1196,7 +1151,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["FogOutput"] },
@@ -1209,7 +1163,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["FogType"] },
@@ -1222,7 +1175,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["RotationAngle"] },
@@ -1235,7 +1187,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["RotationSpeed"] },
@@ -1248,7 +1199,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["Maintenance"] },
@@ -1261,7 +1211,6 @@
                   "additionalProperties": false
                 },
                 {
-                  "allOf": [{ "$ref": "#/definitions/capability" }],
                   "properties": {
                     "dmxRange": {},
                     "type": { "enum": ["Generic"] },
