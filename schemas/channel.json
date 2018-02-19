@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/channel.json",
+
+  "type": "object",
+  "properties": {
+    "name": {
+      "$comment": "if not set: use channel key",
+      "$ref": "definitions.json#/nonEmptyString"
+    },
+    "fineChannelAliases": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "oneOf": [
+          { "$ref": "definitions.json#/noVariablesString" },
+          {
+            "$ref": "definitions.json#/variablePixelKeyString",
+            "$comment": "only in template channels"
+          }
+        ]
+      }
+    },
+    "defaultValue": { "$ref": "definitions.json#/dmxValue" },
+    "highlightValue": { "$ref": "definitions.json#/dmxValue" },
+    "constant": { "type": "boolean" },
+    "precedence": { "enum": ["LTP", "HTP"] },
+    "capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "capability.json#" }
+    }
+  },
+  "required": ["capabilities"],
+  "allOf": [
+    {
+      "if": {
+        "$comment": "one capability sets switchChannels",
+        "properties": {
+          "capabilities": {
+            "contains": {
+              "required": ["switchChannels"]
+            }
+          }
+        },
+        "required": ["capabilities"]
+      },
+      "then": {
+        "$comment": "defaultValue must be set and all capabilities have to set switchChannels",
+        "required": ["defaultValue"],
+        "properties": {
+          "capabilities": {
+            "items": {
+              "required": ["switchChannels"]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

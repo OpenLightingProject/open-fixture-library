@@ -4,325 +4,15 @@
 
   "version": "7.0.0",
 
-  "definitions": {
-    "nonEmptyString": {
-      "type": "string",
-      "pattern": "^[^\n]+$"
-    },
-    "noVariablesString": {
-      "type": "string",
-      "pattern": "^[^$\n]+$"
-    },
-    "variablePixelKeyString": {
-      "type": "string",
-      "pattern": "\\$pixelKey"
-    },
-    "nonEmptyMultilineString": {
-      "type": "string",
-      "minLength": 1
-    },
-    "modeNameString": {
-      "allOf": [
-        { "$ref": "#/definitions/nonEmptyString" },
-        { "pattern": "^((?!mode)(?!Mode).)*$" }
-      ]
-    },
-    "urlString": {
-      "type": "string",
-      "pattern": "^(ftp|http|https):\\/\\/[^ \"]+$"
-    },
-    "isoDateString": {
-      "type": "string",
-      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
-    },
-    "colorString": {
-      "type": "string",
-      "pattern": "^#[0-9a-f]{6}$"
-    },
-    "dmxValue": {
-      "type": "integer",
-      "minimum": 0,
-      "$comment": "maximum depends on how many fine channels there are (255 if none, 65535 if one, etc.)"
-    },
-    "dimensionsXYZ": {
-      "$comment": "width, height, depth (in mm)",
-      "type": "array",
-      "minItems": 3,
-      "maxItems": 3,
-      "items": {
-        "type": "number",
-        "minimum": 0
-      }
-    },
-    "unitNonNegativeNumber": {
-      "type": "number",
-      "minimum": 0
-    },
-    "unitPercent": {
-      "type": "string",
-      "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-    },
-    "unitHertz": {
-      "type": "string",
-      "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
-    },
-    "unitSeconds": {
-      "type": "string",
-      "pattern": "^-?[0-9]+(\\.[0-9]+)?s$"
-    },
-    "unitMilliSeconds": {
-      "type": "string",
-      "pattern": "^-?[0-9]+(\\.[0-9]+)?ms$"
-    },
-    "unitMeters": {
-      "type": "string",
-      "pattern": "^-?[0-9]+(\\.[0-9]+)?m$"
-    },
-    "unitLumens": {
-      "type": "string",
-      "pattern": "^-?[0-9]+(\\.[0-9]+)?lm$"
-    },
-    "unitKelvin": {
-      "type": "string",
-      "pattern": "^-?[0-9]+(\\.[0-9]+)?K$"
-    },
-    "unitVolumePerMinute": {
-      "type": "string",
-      "pattern": "^-?[0-9]+(\\.[0-9]+)?m³/min$"
-    },
-    "unitDegrees": {
-      "type": "string",
-      "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
-    },
-    "entitySpeedSingle": {
-      "oneOf": [
-        { "$ref": "#/definitions/unitHertz" },
-        { "$ref": "#/definitions/unitPercent" },
-        { "enum": ["slow", "fast"] }
-      ]
-    },
-    "entitySpeed": {
-      "oneOf": [
-        { "$ref": "#/definitions/entitySpeedSingle" },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": { "$ref": "#/definitions/entitySpeedSingle" }
-        }
-      ]
-    },
-    "entityDirectionalSpeedSingle": {
-      "oneOf": [
-        { "$ref": "#/definitions/unitHertz" },
-        { "$ref": "#/definitions/unitPercent" },
-        { "enum": ["fast CCW", "slow CCW", "stop", "slow CW", "fast CW"] }
-      ]
-    },
-    "entityDirectionalSpeed": {
-      "oneOf": [
-        { "$ref": "#/definitions/entityDirectionalSpeedSingle" },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": { "$ref": "#/definitions/entityDirectionalSpeedSingle" }
-        }
-      ]
-    },
-    "entityTimeSingle": {
-      "oneOf": [
-        { "$ref": "#/definitions/unitSeconds" },
-        { "$ref": "#/definitions/unitMilliSeconds" },
-        { "$ref": "#/definitions/unitPercent" },
-        { "enum": ["instant", "slow", "fast"] }
-      ]
-    },
-    "entityTime": {
-      "oneOf": [
-        { "$ref": "#/definitions/entityTimeSingle" },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": { "$ref": "#/definitions/entityTimeSingle" }
-        }
-      ]
-    },
-    "entityDistanceSingle": {
-      "oneOf": [
-        { "$ref": "#/definitions/unitMeters" },
-        { "$ref": "#/definitions/unitPercent" },
-        { "enum": ["near", "far"] }
-      ]
-    },
-    "entityDistance": {
-      "oneOf": [
-        { "$ref": "#/definitions/entityDistanceSingle" },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": { "$ref": "#/definitions/entityDistanceSingle" }
-        }
-      ]
-    },
-    "entityBrightnessSingle": {
-      "oneOf": [
-        { "$ref": "#/definitions/unitLumens" },
-        { "$ref": "#/definitions/unitPercent" },
-        { "enum": ["off", "dark", "bright"] }
-      ]
-    },
-    "entityBrightness": {
-      "oneOf": [
-        { "$ref": "#/definitions/entityBrightnessSingle" },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": { "$ref": "#/definitions/entityBrightnessSingle" }
-        }
-      ]
-    },
-    "entityColorTemperatureSingle": {
-      "oneOf": [
-        { "$ref": "#/definitions/unitKelvin" },
-        { "$ref": "#/definitions/unitPercent" },
-        { "enum": ["warm", "cold"] }
-      ]
-    },
-    "entityColorTemperature": {
-      "oneOf": [
-        { "$ref": "#/definitions/entityColorTemperatureSingle" },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": { "$ref": "#/definitions/entityColorTemperatureSingle" }
-        }
-      ]
-    },
-    "entityFogOutputSingle": {
-      "oneOf": [
-        { "$ref": "#/definitions/unitVolumePerMinute" },
-        { "$ref": "#/definitions/unitPercent" },
-        { "enum": ["off", "weak", "strong"] }
-      ]
-    },
-    "entityFogOutput": {
-      "oneOf": [
-        { "$ref": "#/definitions/entityFogOutputSingle" },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": { "$ref": "#/definitions/entityFogOutputSingle" }
-        }
-      ]
-    },
-    "entityRotationAngleSingle": {
-      "oneOf": [
-        { "$ref": "#/definitions/unitDegrees" },
-        { "$ref": "#/definitions/unitPercent" }
-      ]
-    },
-    "entityRotationAngle": {
-      "oneOf": [
-        { "$ref": "#/definitions/entityRotationAngleSingle" },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": { "$ref": "#/definitions/entityRotationAngleSingle" }
-        }
-      ]
-    },
-    "entityBeamAngleSingle": {
-      "oneOf": [
-        { "$ref": "#/definitions/unitDegrees" },
-        { "$ref": "#/definitions/unitPercent" },
-        { "enum": ["closed", "narrow", "wide"] }
-      ]
-    },
-    "entityBeamAngle": {
-      "oneOf": [
-        { "$ref": "#/definitions/entityBeamAngleSingle" },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": { "$ref": "#/definitions/entityBeamAngleSingle" }
-        }
-      ]
-    },
-    "entityFactorSingle": {
-      "oneOf": [
-        { "$ref": "#/definitions/unitNonNegativeNumber" },
-        { "$ref": "#/definitions/unitPercent" },
-        { "enum": ["off", "low", "high"] }
-      ]
-    },
-    "entityFactor": {
-      "oneOf": [
-        { "$ref": "#/definitions/entityFactorSingle" },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": { "$ref": "#/definitions/entityFactorSingle" }
-        }
-      ]
-    },
-    "entityIndex": {
-      "oneOf": [
-        { "$ref": "#/definitions/unitNonNegativeNumber" },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": { "$ref": "#/definitions/unitNonNegativeNumber" }
-        }
-      ]
-    },
-    "entityPercent": {
-      "oneOf": [
-        { "$ref": "#/definitions/unitPercent" },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": { "$ref": "#/definitions/unitPercent" }
-        }
-      ]
-    },
-    "entityIrisPercentSingle": {
-      "oneOf": [
-        { "$ref": "#/definitions/unitPercent" },
-        { "enum": ["closed", "open"] }
-      ]
-    },
-    "entityIrisPercent": {
-      "oneOf": [
-        { "$ref": "#/definitions/entityIrisPercentSingle" },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": { "$ref": "#/definitions/entityIrisPercentSingle" }
-        }
-      ]
-    }
-  },
   "type": "object",
   "properties": {
     "name": {
       "$comment": "unique in manufacturer",
-      "$ref": "#/definitions/nonEmptyString"
+      "$ref": "definitions.json#/nonEmptyString"
     },
     "shortName": {
       "$comment": "unique globally; if not set: use name",
-      "$ref": "#/definitions/nonEmptyString"
+      "$ref": "definitions.json#/nonEmptyString"
     },
     "categories": {
       "type": "array",
@@ -355,16 +45,16 @@
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
-          "items": { "$ref": "#/definitions/nonEmptyString" }
+          "items": { "$ref": "definitions.json#/nonEmptyString" }
         },
-        "createDate": { "$ref": "#/definitions/isoDateString" },
-        "lastModifyDate": { "$ref": "#/definitions/isoDateString" },
+        "createDate": { "$ref": "definitions.json#/isoDateString" },
+        "lastModifyDate": { "$ref": "definitions.json#/isoDateString" },
         "importPlugin": {
           "type": "object",
           "properties": {
-            "plugin": { "$ref": "#/definitions/nonEmptyString" },
-            "date": { "$ref": "#/definitions/isoDateString" },
-            "comment": { "$ref": "#/definitions/nonEmptyMultilineString" }
+            "plugin": { "$ref": "definitions.json#/nonEmptyString" },
+            "date": { "$ref": "definitions.json#/isoDateString" },
+            "comment": { "$ref": "definitions.json#/nonEmptyMultilineString" }
           },
           "required": ["plugin", "date"],
           "additionalProperties": false
@@ -373,8 +63,8 @@
       "required": ["authors", "createDate", "lastModifyDate"],
       "additionalProperties": false
     },
-    "comment": { "$ref": "#/definitions/nonEmptyMultilineString" },
-    "manualURL": { "$ref": "#/definitions/urlString" },
+    "comment": { "$ref": "definitions.json#/nonEmptyMultilineString" },
+    "manualURL": { "$ref": "definitions.json#/urlString" },
     "rdm": {
       "type": "object",
       "properties": {
@@ -383,7 +73,7 @@
           "minimum": 0,
           "maximum": 65535
         },
-        "softwareVersion": { "$ref": "#/definitions/nonEmptyString" }
+        "softwareVersion": { "$ref": "definitions.json#/nonEmptyString" }
       },
       "required": ["modelId"],
       "additionalProperties": false
@@ -393,7 +83,7 @@
       "minProperties": 1,
       "properties": {
         "dimensions": {
-          "$ref": "#/definitions/dimensionsXYZ"
+          "$ref": "definitions.json#/dimensionsXYZ"
         },
         "weight": {
           "$comment": "in kg",
@@ -422,7 +112,7 @@
           "properties": {
             "type": {
               "$comment": "e.g. 'LED'",
-              "$ref": "#/definitions/nonEmptyString"
+              "$ref": "definitions.json#/nonEmptyString"
             },
             "colorTemperature": {
               "$comment": "in K",
@@ -442,7 +132,7 @@
           "properties": {
             "name": {
               "$comment": "e.g. 'PC', 'Fresnel'",
-              "$ref": "#/definitions/nonEmptyString"
+              "$ref": "definitions.json#/nonEmptyString"
             },
             "degreesMinMax": {
               "type": "array",
@@ -486,8 +176,8 @@
         "matrixPixels": {
           "type": "object",
           "properties": {
-            "dimensions": { "$ref": "#/definitions/dimensionsXYZ" },
-            "spacing": { "$ref": "#/definitions/dimensionsXYZ" }
+            "dimensions": { "$ref": "definitions.json#/dimensionsXYZ" },
+            "spacing": { "$ref": "definitions.json#/dimensionsXYZ" }
           },
           "required": ["dimensions", "spacing"]
         }
@@ -519,7 +209,7 @@
               "minItems": 1,
               "items": {
                 "oneOf": [
-                  { "$ref": "#/definitions/noVariablesString" },
+                  { "$ref": "definitions.json#/noVariablesString" },
                   { "type": "null" }
                 ]
               }
@@ -531,14 +221,14 @@
           "minProperties": 1,
           "propertyNames": {
             "$comment": "pixel group keys",
-            "$ref": "#/definitions/noVariablesString"
+            "$ref": "definitions.json#/noVariablesString"
           },
           "additionalProperties": {
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
             "items": {
-              "$ref": "#/definitions/noVariablesString"
+              "$ref": "definitions.json#/noVariablesString"
             }
           }
         }
@@ -554,716 +244,18 @@
       "minProperties": 1,
       "propertyNames": {
         "$comment": "channel keys",
-        "$ref": "#/definitions/noVariablesString"
+        "$ref": "definitions.json#/noVariablesString"
       },
-      "additionalProperties": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "$comment": "if not set: use channel key",
-            "$ref": "#/definitions/nonEmptyString"
-          },
-          "fineChannelAliases": {
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": true,
-            "items": {
-              "oneOf": [
-                { "$ref": "#/definitions/noVariablesString" },
-                {
-                  "$ref": "#/definitions/variablePixelKeyString",
-                  "$comment": "only in template channels"
-                }
-              ]
-            }
-          },
-          "defaultValue": { "$ref": "#/definitions/dmxValue" },
-          "highlightValue": { "$ref": "#/definitions/dmxValue" },
-          "constant": { "type": "boolean" },
-          "precedence": { "enum": ["LTP", "HTP"] },
-          "capabilities": {
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": true,
-            "items": {
-              "type": "object",
-              "properties": {
-                "dmxRange": {
-                  "type": "array",
-                  "minItems": 2,
-                  "maxItems": 2,
-                  "items": { "$ref": "#/definitions/dmxValue" }
-                },
-                "comment": { "$ref": "#/definitions/nonEmptyString" },
-                "menuClick": { "enum": ["start", "center", "end", "hidden"] },
-                "switchChannels": {
-                  "type": "object",
-                  "minProperties": 1,
-                  "propertyNames": {
-                    "$comment": "switching channel alias keys",
-                    "oneOf": [
-                      { "$ref": "#/definitions/noVariablesString" },
-                      { "$ref": "#/definitions/variablePixelKeyString" }
-                    ]
-                  },
-                  "additionalProperties": {
-                    "oneOf": [
-                      {
-                        "$comment": "channel key or channel alias key",
-                        "$ref": "#/definitions/noVariablesString"
-                      },
-                      {
-                        "$comment": "template channel key or template channel alias key",
-                        "$ref": "#/definitions/variablePixelKeyString"
-                      }
-                    ]
-                  }
-                }
-              },
-              "required": ["dmxRange", "type"],
-              "oneOf": [
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["Nothing"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {}
-                  },
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["ShutterOpen"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {}
-                  },
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["ShutterClosed"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {}
-                  },
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["StrobeEffect"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "strobeType": { "enum": ["Normal", "Random", "Pulse", "PulseRandom", "RampUp", "RampUpRandom", "RampDown", "RampDownRandom"] }
-                  },
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["StrobeSpeed"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "speed": { "$ref": "#/definitions/entitySpeed" },
-                    "strobeType": { "enum": ["Normal", "Random", "Pulse", "PulseRandom", "RampUp", "RampUpRandom", "RampDown", "RampDownRandom"] }
-                  },
-                  "required": ["speed"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["StrobeDuration"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "duration": { "$ref": "#/definitions/entityTime" },
-                    "strobeType": { "enum": ["Normal", "Random", "Pulse", "PulseRandom", "RampUp", "RampUpRandom", "RampDown", "RampDownRandom"] }
-                  },
-                  "required": ["time"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["Intensity"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "brightness": { "$ref": "#/definitions/entityBrightness" }
-                  },
-                  "required": ["brightness"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["ColorIntensity"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "color": { "enum": [
-                      "Red",
-                      "Green",
-                      "Blue",
-                      "Cyan",
-                      "Magenta",
-                      "Yellow",
-                      "Amber",
-                      "White",
-                      "UV",
-                      "Lime",
-                      "Indigo"
-                    ] },
-                    "brightness": { "$ref": "#/definitions/entityBrightness" }
-                  },
-                  "required": ["color", "brightness"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["Color"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "colors": {
-                      "type": "array",
-                      "minItems": 1,
-                      "items": { "$ref": "#/definitions/colorString" }
-                    },
-                    "colorsStart": {
-                      "type": "array",
-                      "minItems": 1,
-                      "items": { "$ref": "#/definitions/colorString" }
-                    },
-                    "colorsEnd": {
-                      "type": "array",
-                      "minItems": 1,
-                      "items": { "$ref": "#/definitions/colorString" }
-                    }
-                  },
-                  "oneOf": [
-                    {
-                      "allOf": [
-                        { "not": { "required": ["colors"] } },
-                        { "not": { "required": ["colorsStart"] } },
-                        { "not": { "required": ["colorsEnd"] } }
-                      ]
-                    },
-                    {
-                      "allOf": [
-                        { "required": ["colors"] },
-                        { "not": { "required": ["colorsStart"] } },
-                        { "not": { "required": ["colorsEnd"] } }
-                      ]
-                    },
-                    {
-                      "allOf": [
-                        { "not": { "required": ["colors"] } },
-                        { "required": ["colorsStart", "colorsEnd"] }
-                      ]
-                    }
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["ColorJump"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "speed": { "$ref": "#/definitions/entityDirectionalSpeed" }
-                  },
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["ColorFade"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "speed": { "$ref": "#/definitions/entityDirectionalSpeed" }
-                  },
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["ColorTemperature"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "colorTemperature": { "$ref": "#/definitions/entityColorTemperature" }
-                  },
-                  "required": ["colorTemperature"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["Pan"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "angle": { "$ref": "#/definitions/entityRotationAngle" }
-                  },
-                  "required": ["angle"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["PanContinuous"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "speed": { "$ref": "#/definitions/entityDirectionalSpeed" }
-                  },
-                  "required": ["speed"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["Tilt"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "angle": { "$ref": "#/definitions/entityRotationAngle" }
-                  },
-                  "required": ["angle"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["TiltContinuous"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "speed": { "$ref": "#/definitions/entityDirectionalSpeed" }
-                  },
-                  "required": ["speed"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["PanTiltSpeed"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "speed": { "$ref": "#/definitions/entitySpeed" }
-                  },
-                  "required": ["speed"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["Effect"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "effectIntensity": { "$ref": "#/definitions/entityFactor" },
-                    "speed": { "$ref": "#/definitions/entityDirectionalSpeed" }
-                  },
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["EffectIntensity"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "effectIntensity": { "$ref": "#/definitions/entityFactor" }
-                  },
-                  "required": ["effectIntensity"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["EffectSpeed"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "speed": { "$ref": "#/definitions/entityDirectionalSpeed" }
-                  },
-                  "required": ["speed"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["GoboIndex"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "index": { "$ref": "#/definitions/entityIndex" }
-                  },
-                  "required": ["index"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["GoboShake"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "index": { "$ref": "#/definitions/entityIndex" },
-                    "speed": { "$ref": "#/definitions/entitySpeed" }
-                  },
-                  "required": ["index"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["GoboStencilRotationAngle"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "angle": { "$ref": "#/definitions/entityRotationAngle" }
-                  },
-                  "required": ["angle"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["GoboStencilRotationSpeed"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "speed": { "$ref": "#/definitions/entityDirectionalSpeed" }
-                  },
-                  "required": ["speed"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["GoboWheelRotationAngle"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "angle": { "$ref": "#/definitions/entityRotationAngle" }
-                  },
-                  "required": ["angle"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["GoboWheelRotationSpeed"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "speed": { "$ref": "#/definitions/entityDirectionalSpeed" }
-                  },
-                  "required": ["speed"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["ColorWheelIndex"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "index": { "$ref": "#/definitions/entityIndex" }
-                  },
-                  "required": ["index"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["ColorWheelRotationAngle"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "angle": { "$ref": "#/definitions/entityRotationAngle" }
-                  },
-                  "required": ["angle"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["ColorWheelRotationSpeed"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "speed": { "$ref": "#/definitions/entityDirectionalSpeed" }
-                  },
-                  "required": ["speed"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["Focus"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "distance": { "$ref": "#/definitions/entityDistance" }
-                  },
-                  "required": ["distance"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["Zoom"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "angle": { "$ref": "#/definitions/entityBeamAngle" }
-                  },
-                  "required": ["angle"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["Iris"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "openPercent": { "$ref": "#/definitions/entityIrisPercent" }
-                  },
-                  "required": ["openPercent"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["IrisEffect"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "speed": { "$ref": "#/definitions/entitySpeed" }
-                  },
-                  "required": ["speed"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["Frost"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "frostIntensity": { "$ref": "#/definitions/entityPercent" }
-                  },
-                  "required": ["frostIntensity"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["FrostEffect"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "speed": { "$ref": "#/definitions/entitySpeed" }
-                  },
-                  "required": ["speed"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["PrismOff"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {}
-                  },
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["PrismOn"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "angle": { "$ref": "#/definitions/entityRotationAngle" },
-                    "speed": { "$ref": "#/definitions/entityDirectionalSpeed" }
-                  },
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["PrismRotationAngle"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "angle": { "$ref": "#/definitions/entityRotationAngle" }
-                  },
-                  "required": ["angle"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["PrismRotationSpeed"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "speed": { "$ref": "#/definitions/entityDirectionalSpeed" }
-                  },
-                  "required": ["speed"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["FogOff"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {}
-                  },
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["FogOn"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "fogOutput": { "$ref": "#/definitions/entityFogOutput" },
-                    "fogType": { "enum": ["Fog", "Haze"] }
-                  },
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["FogOutput"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "fogOutput": { "$ref": "#/definitions/entityFogOutput" }
-                  },
-                  "required": ["fogOutput"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["FogType"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "fogType": { "enum": ["Fog", "Haze"] }
-                  },
-                  "required": ["fogType"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["RotationAngle"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "angle": { "$ref": "#/definitions/entityRotationAngle" }
-                  },
-                  "required": ["angle"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["RotationSpeed"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "speed": { "$ref": "#/definitions/entityDirectionalSpeed" }
-                  },
-                  "required": ["speed"],
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["Maintenance"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {},
-                    "parameter": { "$ref": "#/definitions/entityFactor" },
-                    "hold": { "$ref": "#/definitions/entityTime" }
-                  },
-                  "additionalProperties": false
-                },
-                {
-                  "properties": {
-                    "dmxRange": {},
-                    "type": { "enum": ["Generic"] },
-                    "comment": {},
-                    "menuClick": {},
-                    "switchChannels": {}
-                  },
-                  "additionalProperties": false
-                }
-              ]
-            }
-          }
-          },
-        "required": ["capabilities"],
-        "allOf": [
-          {
-            "if": {
-              "$comment": "one capability sets switchChannels",
-              "properties": {
-                "capabilities": {
-                  "contains": {
-                    "required": ["switchChannels"]
-                  }
-                }
-              },
-              "required": ["capabilities"]
-            },
-            "then": {
-              "$comment": "defaultValue must be set and all capabilities have to set switchChannels",
-              "required": ["defaultValue"],
-              "properties": {
-                "capabilities": {
-                  "items": {
-                    "required": ["switchChannels"]
-                  }
-                }
-              }
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
+      "additionalProperties": { "$ref": "channel.json#" }
     },
     "templateChannels": {
       "type": "object",
       "minProperties": 1,
       "propertyNames": {
         "$comment": "template channel keys",
-        "$ref": "#/definitions/variablePixelKeyString"
+        "$ref": "definitions.json#/variablePixelKeyString"
       },
-      "additionalProperties": { "$ref": "#/properties/availableChannels/additionalProperties" }
+      "additionalProperties": { "$ref": "channel.json#" }
     },
     "modes": {
       "type": "array",
@@ -1271,8 +263,8 @@
       "items": {
         "type": "object",
         "properties": {
-          "name": { "$ref": "#/definitions/modeNameString" },
-          "shortName": { "$ref": "#/definitions/modeNameString" },
+          "name": { "$ref": "definitions.json#/modeNameString" },
+          "shortName": { "$ref": "definitions.json#/modeNameString" },
           "rdmPersonalityIndex": {
             "type": "integer",
             "minimum": 1
@@ -1289,7 +281,7 @@
                 },
                 {
                   "$comment": "normal channel keys, resolved template channel keys or channel alias keys",
-                  "$ref": "#/definitions/noVariablesString"
+                  "$ref": "definitions.json#/noVariablesString"
                 },
                 {
                   "$comment": "matrix channel insert block",
@@ -1316,7 +308,7 @@
                           "uniqueItems": true,
                           "items": {
                             "$comment": "pixel key or pixel group key",
-                            "$ref": "#/definitions/noVariablesString"
+                            "$ref": "definitions.json#/noVariablesString"
                           }
                         }
                       ]
@@ -1333,7 +325,7 @@
                           },
                           {
                             "$comment": "template channel key or template channel alias key",
-                            "$ref": "#/definitions/variablePixelKeyString"
+                            "$ref": "definitions.json#/variablePixelKeyString"
                           }
                         ]
                       }

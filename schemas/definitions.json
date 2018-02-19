@@ -1,0 +1,319 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/definitions.json",
+
+  "nonEmptyString": {
+    "type": "string",
+    "pattern": "^[^\n]+$"
+  },
+  "noVariablesString": {
+    "type": "string",
+    "pattern": "^[^$\n]+$"
+  },
+  "variablePixelKeyString": {
+    "type": "string",
+    "pattern": "\\$pixelKey"
+  },
+  "nonEmptyMultilineString": {
+    "type": "string",
+    "minLength": 1
+  },
+  "modeNameString": {
+    "allOf": [
+      { "$ref": "#/nonEmptyString" },
+      { "pattern": "^((?!mode)(?!Mode).)*$" }
+    ]
+  },
+  "urlString": {
+    "type": "string",
+    "pattern": "^(ftp|http|https):\\/\\/[^ \"]+$"
+  },
+  "isoDateString": {
+    "type": "string",
+    "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+  },
+  "colorString": {
+    "type": "string",
+    "pattern": "^#[0-9a-f]{6}$"
+  },
+  "dmxValue": {
+    "type": "integer",
+    "minimum": 0,
+    "$comment": "maximum depends on how many fine channels there are (255 if none, 65535 if one, etc.)"
+  },
+  "dimensionsXYZ": {
+    "$comment": "width, height, depth (in mm)",
+    "type": "array",
+    "minItems": 3,
+    "maxItems": 3,
+    "items": {
+      "type": "number",
+      "minimum": 0
+    }
+  },
+
+  "units": {
+    "nonNegativeNumber": {
+      "type": "number",
+      "minimum": 0
+    },
+    "percent": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+    },
+    "hertz": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+    },
+    "seconds": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?s$"
+    },
+    "milliSeconds": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?ms$"
+    },
+    "meters": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?m$"
+    },
+    "lumens": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?lm$"
+    },
+    "kelvin": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?K$"
+    },
+    "volumePerMinute": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?m³/min$"
+    },
+    "degrees": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+    }
+  },
+
+  "entities": {
+    "speedSingle": {
+      "oneOf": [
+        { "$ref": "#/units/hertz" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["slow", "fast"] }
+      ]
+    },
+    "speed": {
+      "oneOf": [
+        { "$ref": "#/entities/speedSingle" },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": { "$ref": "#/entities/speedSingle" }
+        }
+      ]
+    },
+    "directionalSpeedSingle": {
+      "oneOf": [
+        { "$ref": "#/units/hertz" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["fast CCW", "slow CCW", "stop", "slow CW", "fast CW"] }
+      ]
+    },
+    "directionalSpeed": {
+      "oneOf": [
+        { "$ref": "#/entities/directionalSpeedSingle" },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": { "$ref": "#/entities/directionalSpeedSingle" }
+        }
+      ]
+    },
+    "timeSingle": {
+      "oneOf": [
+        { "$ref": "#/units/seconds" },
+        { "$ref": "#/units/milliSeconds" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["instant", "slow", "fast"] }
+      ]
+    },
+    "time": {
+      "oneOf": [
+        { "$ref": "#/entities/timeSingle" },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": { "$ref": "#/entities/timeSingle" }
+        }
+      ]
+    },
+    "distanceSingle": {
+      "oneOf": [
+        { "$ref": "#/units/meters" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["near", "far"] }
+      ]
+    },
+    "distance": {
+      "oneOf": [
+        { "$ref": "#/entities/distanceSingle" },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": { "$ref": "#/entities/distanceSingle" }
+        }
+      ]
+    },
+    "brightnessSingle": {
+      "oneOf": [
+        { "$ref": "#/units/lumens" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["off", "dark", "bright"] }
+      ]
+    },
+    "brightness": {
+      "oneOf": [
+        { "$ref": "#/entities/brightnessSingle" },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": { "$ref": "#/entities/brightnessSingle" }
+        }
+      ]
+    },
+    "colorTemperatureSingle": {
+      "oneOf": [
+        { "$ref": "#/units/kelvin" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["warm", "cold"] }
+      ]
+    },
+    "colorTemperature": {
+      "oneOf": [
+        { "$ref": "#/entities/colorTemperatureSingle" },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": { "$ref": "#/entities/colorTemperatureSingle" }
+        }
+      ]
+    },
+    "fogOutputSingle": {
+      "oneOf": [
+        { "$ref": "#/units/volumePerMinute" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["off", "weak", "strong"] }
+      ]
+    },
+    "fogOutput": {
+      "oneOf": [
+        { "$ref": "#/entities/fogOutputSingle" },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": { "$ref": "#/entities/fogOutputSingle" }
+        }
+      ]
+    },
+    "rotationAngleSingle": {
+      "oneOf": [
+        { "$ref": "#/units/degrees" },
+        { "$ref": "#/units/percent" }
+      ]
+    },
+    "rotationAngle": {
+      "oneOf": [
+        { "$ref": "#/entities/rotationAngleSingle" },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": { "$ref": "#/entities/rotationAngleSingle" }
+        }
+      ]
+    },
+    "beamAngleSingle": {
+      "oneOf": [
+        { "$ref": "#/units/degrees" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["closed", "narrow", "wide"] }
+      ]
+    },
+    "beamAngle": {
+      "oneOf": [
+        { "$ref": "#/entities/beamAngleSingle" },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": { "$ref": "#/entities/beamAngleSingle" }
+        }
+      ]
+    },
+    "factorSingle": {
+      "oneOf": [
+        { "$ref": "#/units/nonNegativeNumber" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["off", "low", "high"] }
+      ]
+    },
+    "factor": {
+      "oneOf": [
+        { "$ref": "#/entities/factorSingle" },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": { "$ref": "#/entities/factorSingle" }
+        }
+      ]
+    },
+    "index": {
+      "oneOf": [
+        { "$ref": "#/units/nonNegativeNumber" },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": { "$ref": "#/units/nonNegativeNumber" }
+        }
+      ]
+    },
+    "percent": {
+      "oneOf": [
+        { "$ref": "#/units/percent" },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": { "$ref": "#/units/percent" }
+        }
+      ]
+    },
+    "irisPercentSingle": {
+      "oneOf": [
+        { "$ref": "#/units/percent" },
+        { "enum": ["closed", "open"] }
+      ]
+    },
+    "irisPercent": {
+      "oneOf": [
+        { "$ref": "#/entities/irisPercentSingle" },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": { "$ref": "#/entities/irisPercentSingle" }
+        }
+      ]
+    }
+  }
+}

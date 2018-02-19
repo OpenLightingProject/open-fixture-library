@@ -1,0 +1,835 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/definitions.json",
+  "nonEmptyString": {
+    "type": "string",
+    "pattern": "^[^\n]+$"
+  },
+  "noVariablesString": {
+    "type": "string",
+    "pattern": "^[^$\n]+$"
+  },
+  "variablePixelKeyString": {
+    "type": "string",
+    "pattern": "\\$pixelKey"
+  },
+  "nonEmptyMultilineString": {
+    "type": "string",
+    "minLength": 1
+  },
+  "modeNameString": {
+    "allOf": [
+      {
+        "type": "string",
+        "pattern": "^[^\n]+$"
+      },
+      {
+        "pattern": "^((?!mode)(?!Mode).)*$"
+      }
+    ]
+  },
+  "urlString": {
+    "type": "string",
+    "pattern": "^(ftp|http|https):\\/\\/[^ \"]+$"
+  },
+  "isoDateString": {
+    "type": "string",
+    "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+  },
+  "colorString": {
+    "type": "string",
+    "pattern": "^#[0-9a-f]{6}$"
+  },
+  "dmxValue": {
+    "type": "integer",
+    "minimum": 0,
+    "$comment": "maximum depends on how many fine channels there are (255 if none, 65535 if one, etc.)"
+  },
+  "dimensionsXYZ": {
+    "$comment": "width, height, depth (in mm)",
+    "type": "array",
+    "minItems": 3,
+    "maxItems": 3,
+    "items": {
+      "type": "number",
+      "minimum": 0
+    }
+  },
+  "units": {
+    "nonNegativeNumber": {
+      "type": "number",
+      "minimum": 0
+    },
+    "percent": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+    },
+    "hertz": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+    },
+    "seconds": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?s$"
+    },
+    "milliSeconds": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?ms$"
+    },
+    "meters": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?m$"
+    },
+    "lumens": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?lm$"
+    },
+    "kelvin": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?K$"
+    },
+    "volumePerMinute": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?m³/min$"
+    },
+    "degrees": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+    }
+  },
+  "entities": {
+    "speedSingle": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+        },
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+        },
+        {
+          "enum": [
+            "slow",
+            "fast"
+          ]
+        }
+      ]
+    },
+    "speed": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+            },
+            {
+              "enum": [
+                "slow",
+                "fast"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+              },
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+              },
+              {
+                "enum": [
+                  "slow",
+                  "fast"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "directionalSpeedSingle": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+        },
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+        },
+        {
+          "enum": [
+            "fast CCW",
+            "slow CCW",
+            "stop",
+            "slow CW",
+            "fast CW"
+          ]
+        }
+      ]
+    },
+    "directionalSpeed": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+            },
+            {
+              "enum": [
+                "fast CCW",
+                "slow CCW",
+                "stop",
+                "slow CW",
+                "fast CW"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+              },
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+              },
+              {
+                "enum": [
+                  "fast CCW",
+                  "slow CCW",
+                  "stop",
+                  "slow CW",
+                  "fast CW"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "timeSingle": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?s$"
+        },
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?ms$"
+        },
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+        },
+        {
+          "enum": [
+            "instant",
+            "slow",
+            "fast"
+          ]
+        }
+      ]
+    },
+    "time": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?s$"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?ms$"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+            },
+            {
+              "enum": [
+                "instant",
+                "slow",
+                "fast"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?s$"
+              },
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?ms$"
+              },
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+              },
+              {
+                "enum": [
+                  "instant",
+                  "slow",
+                  "fast"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "distanceSingle": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?m$"
+        },
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+        },
+        {
+          "enum": [
+            "near",
+            "far"
+          ]
+        }
+      ]
+    },
+    "distance": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?m$"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+            },
+            {
+              "enum": [
+                "near",
+                "far"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?m$"
+              },
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+              },
+              {
+                "enum": [
+                  "near",
+                  "far"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "brightnessSingle": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?lm$"
+        },
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+        },
+        {
+          "enum": [
+            "off",
+            "dark",
+            "bright"
+          ]
+        }
+      ]
+    },
+    "brightness": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?lm$"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+            },
+            {
+              "enum": [
+                "off",
+                "dark",
+                "bright"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?lm$"
+              },
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+              },
+              {
+                "enum": [
+                  "off",
+                  "dark",
+                  "bright"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "colorTemperatureSingle": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?K$"
+        },
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+        },
+        {
+          "enum": [
+            "warm",
+            "cold"
+          ]
+        }
+      ]
+    },
+    "colorTemperature": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?K$"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+            },
+            {
+              "enum": [
+                "warm",
+                "cold"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?K$"
+              },
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+              },
+              {
+                "enum": [
+                  "warm",
+                  "cold"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "fogOutputSingle": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?m³/min$"
+        },
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+        },
+        {
+          "enum": [
+            "off",
+            "weak",
+            "strong"
+          ]
+        }
+      ]
+    },
+    "fogOutput": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?m³/min$"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+            },
+            {
+              "enum": [
+                "off",
+                "weak",
+                "strong"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?m³/min$"
+              },
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+              },
+              {
+                "enum": [
+                  "off",
+                  "weak",
+                  "strong"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "rotationAngleSingle": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+        },
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+        }
+      ]
+    },
+    "rotationAngle": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+            }
+          ]
+        },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+              },
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "beamAngleSingle": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+        },
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+        },
+        {
+          "enum": [
+            "closed",
+            "narrow",
+            "wide"
+          ]
+        }
+      ]
+    },
+    "beamAngle": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+            },
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+            },
+            {
+              "enum": [
+                "closed",
+                "narrow",
+                "wide"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+              },
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+              },
+              {
+                "enum": [
+                  "closed",
+                  "narrow",
+                  "wide"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "factorSingle": {
+      "oneOf": [
+        {
+          "type": "number",
+          "minimum": 0
+        },
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+        },
+        {
+          "enum": [
+            "off",
+            "low",
+            "high"
+          ]
+        }
+      ]
+    },
+    "factor": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+            },
+            {
+              "enum": [
+                "off",
+                "low",
+                "high"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": {
+            "oneOf": [
+              {
+                "type": "number",
+                "minimum": 0
+              },
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+              },
+              {
+                "enum": [
+                  "off",
+                  "low",
+                  "high"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "index": {
+      "oneOf": [
+        {
+          "type": "number",
+          "minimum": 0
+        },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      ]
+    },
+    "percent": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+        },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": {
+            "type": "string",
+            "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+          }
+        }
+      ]
+    },
+    "irisPercentSingle": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+        },
+        {
+          "enum": [
+            "closed",
+            "open"
+          ]
+        }
+      ]
+    },
+    "irisPercent": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+            },
+            {
+              "enum": [
+                "closed",
+                "open"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+              },
+              {
+                "enum": [
+                  "closed",
+                  "open"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
