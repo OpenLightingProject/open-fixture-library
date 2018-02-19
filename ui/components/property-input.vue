@@ -32,16 +32,54 @@ export default {
       required: false,
       default: false
     },
-
-    // set through v-model
+    min: {
+      type: Number,
+      required: false,
+      default: null
+    },
+    max: {
+      type: Number,
+      required: false,
+      default: null
+    },
     value: {
-      type: undefined,
+      type: null,
       required: true
     }
   },
   computed: {
     pattern() {
       return this.schemaProperty.pattern || null;
+    },
+    minimum() {
+      if (this.min !== null) {
+        return this.min;
+      }
+
+      if (`minimum` in this.schemaProperty) {
+        return this.schemaProperty.minimum;
+      }
+
+      if (`exclusiveMinimum` in this.schemaProperty) {
+        return this.schemaProperty.exclusiveMinimum;
+      }
+
+      return null;
+    },
+    maximum() {
+      if (this.max !== null) {
+        return this.max;
+      }
+
+      if (`maximum` in this.schemaProperty) {
+        return this.schemaProperty.maximum;
+      }
+
+      if (`exclusiveMaximum` in this.schemaProperty) {
+        return this.schemaProperty.exclusiveMaximum;
+      }
+
+      return null;
     }
   },
   mounted() {
@@ -63,9 +101,8 @@ export default {
         attrs: {
           type: `number`,
           required: this.required,
-          // TODO: handle dynamic min / max ranges
-          min: getMinimum(this.schemaProperty),
-          max: getMaximum(this.schemaProperty),
+          min: this.minimum,
+          max: this.maximum,
 
           // TODO: validate this with a custom validator in the future
           dataExclusiveMinimum: this.schemaProperty.exclusiveMinimum,
@@ -147,37 +184,5 @@ export default {
     });
   }
 };
-
-/**
- * @param {!object} schemaProperty The JSON Schema property object.
- * @returns {?number} The minimum number that one should be allowed to enter.
- */
-function getMinimum(schemaProperty) {
-  if (`minimum` in schemaProperty) {
-    return schemaProperty.minimum;
-  }
-
-  if (`exclusiveMinimum` in schemaProperty) {
-    return schemaProperty.exclusiveMinimum;
-  }
-
-  return null;
-}
-
-/**
- * @param {!object} schemaProperty The JSON Schema property object.
- * @returns {?number} The maximum number that one should be allowed to enter.
- */
-function getMaximum(schemaProperty) {
-  if (`maximum` in schemaProperty) {
-    return schemaProperty.maximum;
-  }
-
-  if (`exclusiveMaximum` in schemaProperty) {
-    return schemaProperty.exclusiveMaximum;
-  }
-
-  return null;
-}
 </script>
 

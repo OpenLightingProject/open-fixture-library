@@ -110,23 +110,17 @@
     </section>
 
     <section class="physical-lens-degrees validate-group">
-      <span class="label">Light cone</span>
-      <span class="value">
-        <app-property-input
-          type="number"
-          v-model="value.lens.degreesMin"
+      <app-simple-label label="Light cone">
+        <app-range-input
+          :start-value="value.lens.degreesMin"
+          start-hint="min"
+          @start-input="newStart => value.lens.degreesMin = newStart"
+          :end-value="value.lens.degreesMax"
+          end-hint="max"
+          @end-input="newEnd => value.lens.degreesMax = newEnd"
           :schema-property="properties.physicalLens.degreesMinMax.items"
-          :required="degreesRequired"
-          hint="min" />
-        …
-        <app-property-input
-          type="number"
-          v-model="value.lens.degreesMax"
-          :schema-property="properties.physicalLens.degreesMinMax.items"
-          :required="degreesRequired"
-          hint="max" /> °
-        <span class="error-message" hidden />
-      </span>
+          unit="°" />
+      </app-simple-label>
     </section>
 
 
@@ -178,11 +172,13 @@ import schemaProperties from '~~/lib/schema-properties.js';
 
 import simpleLabelVue from '~/components/simple-label.vue';
 import propertyInputVue from '~/components/property-input.vue';
+import rangeInputVue from '~/components/range-input.vue';
 
 export default {
   components: {
     'app-simple-label': simpleLabelVue,
-    'app-property-input': propertyInputVue
+    'app-property-input': propertyInputVue,
+    'app-range-input': rangeInputVue
   },
   props: {
     value: {
@@ -198,9 +194,6 @@ export default {
   computed: {
     dimensionRequired() {
       return this.value.dimensionsWidth !== `` || this.value.dimensionsHeight !== `` || this.value.dimensionsDepth !== ``;
-    },
-    degreesRequired() {
-      return this.value.lens.degreesMin !== `` || this.value.lens.degreesMax !== ``;
     }
   },
   methods: {
