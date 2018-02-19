@@ -23,16 +23,16 @@ This document gives a high-level overview of the concepts used in the JSON forma
 
 ## Schema
 
-The [JSON Schema](http://json-schema.org/) can be found in the [`schema-fixture.json`](../schema-fixture.json) and [`schema-manufacturers.json`](../schema-manufacturers.json) files. It is a declarative way to describe allowed JSON properties and values. The [`fixtures-valid.js` test](../tests/fixtures-valid.js) automatically checks the fixtures against these schemas and additionally tests things like the correct use of channel keys etc. programmatically.
+The [JSON Schema](http://json-schema.org/) can be found in the [`schemas/fixture.json`](../schemas/fixture.json) and [`schemas/manufacturers.json`](../schemas/manufacturers.json) files. It is a declarative way to describe allowed JSON properties and values. The [`fixtures-valid.js` test](../tests/fixtures-valid.js) automatically checks the fixtures against these schemas and additionally tests things like the correct use of channel keys etc. programmatically.
 
 The schema files have a `version` property. Every time the schema is updated, this version needs to be incremented in both files using [semantic versioning](http://semver.org).
 
 Given a version number MAJOR.MINOR.PATCH, increment the:
 1. MAJOR version when you make incompatible schema changes.
   i.e. old fixtures are not valid with the new schema anymore.
-2. MINOR version when you add functionality in a backwards-compatible manner.
+2. MINOR version when you add functionality in a backwards-compatible manner.  
   i.e. old fixtures are still valid with the new schema, new fixtures aren't valid with the old schema.
-3. PATCH version when you make backwards-compatible bug fixes.
+3. PATCH version when you make backwards-compatible bug fixes.  
   e.g. an upper bound to an integer value is added, which was likely done right in the past anyway.
 
 

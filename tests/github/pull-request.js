@@ -155,7 +155,7 @@ function addFileToChangedData(changedData, filename) {
     return;
   }
 
-  if (segments[0] === `schema-fixture.json` || segments[0] === `schema-manufacturers.json`) {
+  if (segments[0] === `schemas`) {
     changedData.schema = true;
     return;
   }

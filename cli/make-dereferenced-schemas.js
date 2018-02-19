@@ -5,11 +5,11 @@ const path = require(`path`);
 const colors = require(`colors`);
 const schemaRefParser = require(`json-schema-ref-parser`);
 
-const fixtureSchema = require(`../schema-fixture.json`);
-const manufacturersSchema = require(`../schema-manufacturers.json`);
+const fixtureSchema = require(`../schemas/fixture.json`);
+const manufacturersSchema = require(`../schemas/manufacturers.json`);
 
-dereference(fixtureSchema, path.join(__dirname, `../schema-fixture-dereferenced.json`));
-dereference(manufacturersSchema, path.join(__dirname, `../schema-manufacturers-dereferenced.json`));
+dereference(fixtureSchema, path.join(__dirname, `../schemas/dereferenced/fixture.json`));
+dereference(manufacturersSchema, path.join(__dirname, `../schemas/dereferenced/manufacturers.json`));
 
 /**
  * Resolve all "$ref" properties in the given schema and save the resolved version.

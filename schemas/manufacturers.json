@@ -1,7 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-manufacturers.json",
-  "version": "5.0.0",
+  "$id": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/manufacturers.json",
+
+  "version": "7.0.0",
+
   "type": "object",
   "propertyNames": {
     "$comment": "manufacturer key",
@@ -29,19 +31,13 @@
         "maximum": 65536
       }
     },
-    "required": [
-      "name"
-    ],
+    "required": ["name"],
     "additionalProperties": false
   },
-  "required": [
-    "$schema"
-  ],
+  "required": ["$schema"],
   "patternProperties": {
     "^\\$schema$": {
-      "enum": [
-        "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-manufacturers.json"
-      ]
+      "enum": ["https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/manufacturers.json"]
     }
   }
 }
