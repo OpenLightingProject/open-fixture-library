@@ -1,7 +1,7 @@
 const manufacturers = require(`../../fixtures/manufacturers.json`);
 
 module.exports.name = `Open Fixture Library JSON`;
-module.exports.version = require(`../../schema-fixture.json`).version;
+module.exports.version = require(`../../schemas/fixture.json`).version;
 
 module.exports.export = function exportOFL(fixtures, options) {
   const usedManufacturers = new Set();
@@ -12,7 +12,7 @@ module.exports.export = function exportOFL(fixtures, options) {
 
 
     const jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
-    jsonData.$schema = `https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/schema-${module.exports.version}/schema-fixture.json`;
+    jsonData.$schema = `https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/schema-${module.exports.version}/schemas/fixture.json`;
 
     return {
       name: `${fixture.manufacturer.key}/${fixture.key}.json`,
@@ -23,7 +23,7 @@ module.exports.export = function exportOFL(fixtures, options) {
 
   // manufacturers.json file
   const usedManufacturerData = {
-    $schema: `https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/schema-${module.exports.version}/schema-manufacturers.json`
+    $schema: `https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/schema-${module.exports.version}/schemas/manufacturers.json`
   };
   for (const man of Object.keys(manufacturers).sort()) {
     if (usedManufacturers.has(man)) {

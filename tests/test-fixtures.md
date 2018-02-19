@@ -47,6 +47,7 @@
 **Reused channels** [[36]](#user-content-footnote-36) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅
 **Switching channels** [[37]](#user-content-footnote-37) | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
 **Switches fine channels** [[38]](#user-content-footnote-38) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
+**Switching channel at different positions** [[39]](#user-content-footnote-39) | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
 
 **<a id="user-content-footnote-1">[1]</a>**: Whether the fixture has at least one channel of type 'Intensity'
 
@@ -123,3 +124,5 @@
 **<a id="user-content-footnote-37">[37]</a>**: Whether at least one channel defines switching channel aliases
 
 **<a id="user-content-footnote-38">[38]</a>**: Whether at least one switching channel switches fine channels
+
+**<a id="user-content-footnote-39">[39]</a>**: Whether there is a switching channel that is used at different positions in different modes
