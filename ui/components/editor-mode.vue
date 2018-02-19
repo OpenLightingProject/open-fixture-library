@@ -37,7 +37,7 @@
       </app-simple-label>
     </section>
 
-    <section v-if="fixture.rdmModelId !== ``" class="rdmPersonalityIndex">
+    <section v-if="fixture.rdmModelId !== null" class="rdmPersonalityIndex">
       <app-simple-label label="RDM personality index">
         <app-property-input
           type="number"

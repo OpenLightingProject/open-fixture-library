@@ -91,8 +91,8 @@ export default {
     focus() {
       this.$refs.input.focus();
     },
-    update() {
-      this.$emit(`input`, this.$refs.input.value);
+    update(newVal) {
+      this.$emit(`input`, newVal);
     }
   },
   render(createElement) {
@@ -111,9 +111,7 @@ export default {
           step: this.schemaProperty.type === `integer` ? `1` : `any`,
           placeholder: this.hint
         },
-        on: {
-          input: this.update
-        },
+        on: { input: () => this.update(parseNumber(this.$refs.input.value)) },
         ref: `input`
       });
     }
@@ -144,12 +142,37 @@ export default {
       }
 
       return createElement(`select`, {
-        attrs: {
-          required: this.required
-        },
-        on: {
-          input: this.update
-        },
+        attrs: { required: this.required },
+        on: { input: () => this.update(this.$refs.input.value) },
+        ref: `input`
+      }, options);
+    }
+
+    if (this.type === `boolean`) {
+      const options = [
+        createElement(`option`, {
+          attrs: {
+            value: ``,
+            selected: this.value === null
+          }
+        }, `unknown`),
+        createElement(`option`, {
+          attrs: {
+            value: `true`,
+            selected: this.value === true
+          }
+        }, `yes`),
+        createElement(`option`, {
+          attrs: {
+            value: `false`,
+            selected: this.value === false
+          }
+        }, `no`)
+      ];
+
+      return createElement(`select`, {
+        attrs: { required: this.required },
+        on: { input: () => this.update(parseBoolean(this.$refs.input.value)) },
         ref: `input`
       }, options);
     }
@@ -167,7 +190,7 @@ export default {
       return createElement(`textarea`, {
         attrs,
         on: {
-          input: this.update
+          input: () => this.update(this.$refs.input.value)
         },
         ref: `input`
       });
@@ -178,11 +201,41 @@ export default {
         type: this.type
       }),
       on: {
-        input: this.update
+        input: () => this.update(this.$refs.input.value)
       },
       ref: `input`
     });
   }
 };
+
+/**
+ * @param {!string} inputValue The value entered in an <input> element.
+ * @returns {?number} The number value actually represented.
+ */
+function parseNumber(inputValue) {
+  console.log(inputValue);
+
+  if (inputValue === ``) {
+    return null;
+  }
+
+  return parseFloat(inputValue);
+}
+
+/**
+ * @param {!string} selectValue The value selected in a boolean <select> element.
+ * @returns {?boolean} The boolean value actually represented.
+ */
+function parseBoolean(selectValue) {
+  if (selectValue === `true`) {
+    return true;
+  }
+
+  if (selectValue === `false`) {
+    return false;
+  }
+
+  return null;
+}
 </script>
 

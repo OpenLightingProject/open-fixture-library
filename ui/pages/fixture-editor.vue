@@ -148,7 +148,7 @@
           </app-simple-label>
         </section>
 
-        <section class="rdmSoftwareVersion" v-if="fixture.rdmModelId !== ''">
+        <section class="rdmSoftwareVersion" v-if="fixture.rdmModelId !== null">
           <app-simple-label label="RDM software version">
             <app-property-input
               type="text"
@@ -361,13 +361,13 @@ function getEmptyFixture() {
     newManufacturerShortName: ``,
     newManufacturerWebsite: ``,
     newManufacturerComment: ``,
-    newManufacturerRdmId: ``,
+    newManufacturerRdmId: null,
     name: ``,
     shortName: ``,
     categories: [],
     comment: ``,
     manualURL: ``,
-    rdmModelId: ``,
+    rdmModelId: null,
     rdmSoftwareVersion: ``,
     physical: getEmptyPhysical(),
     modes: [getEmptyMode()],
@@ -382,28 +382,28 @@ function getEmptyFixture() {
  */
 function getEmptyPhysical() {
   return {
-    dimensionsWidth: ``,
-    dimensionsHeight: ``,
-    dimensionsDepth: ``,
-    weight: ``,
-    power: ``,
+    dimensionsWidth: null,
+    dimensionsHeight: null,
+    dimensionsDepth: null,
+    weight: null,
+    power: null,
     DMXconnector: ``,
     DMXconnectorNew: ``,
     bulb: {
       type: ``,
-      colorTemperature: ``,
-      lumens: ``
+      colorTemperature: null,
+      lumens: null
     },
     lens: {
       name: ``,
-      degreesMin: ``,
-      degreesMax: ``
+      degreesMin: null,
+      degreesMax: null
     },
     focus: {
       type: ``,
       typeNew: ``,
-      panMax: ``,
-      tiltMax: ``
+      panMax: null,
+      tiltMax: null
     }
   };
 }
@@ -416,7 +416,7 @@ function getEmptyMode() {
     uuid: uuidV4(),
     name: ``,
     shortName: ``,
-    rdmPersonalityIndex: ``,
+    rdmPersonalityIndex: null,
     enablePhysicalOverride: false,
     physical: getEmptyPhysical(),
     channels: []
@@ -435,11 +435,11 @@ function getEmptyChannel() {
     type: ``,
     color: ``,
     fineness: 0,
-    defaultValue: ``,
-    highlightValue: ``,
-    invert: ``,
-    constant: ``,
-    crossfade: ``,
+    defaultValue: null,
+    highlightValue: null,
+    invert: null,
+    constant: null,
+    crossfade: null,
     precedence: ``,
     capFineness: 0,
     wizard: {

@@ -4,7 +4,7 @@
       type="number"
       v-model="start"
       :schema-property="schemaProperty"
-      :max="end !== `` ? parseInt(end) : null"
+      :max="end"
       :required="required || rangeIncomplete"
       hint="min" />
     …
@@ -12,7 +12,7 @@
       type="number"
       v-model="end"
       :schema-property="schemaProperty"
-      :min="start !== `` ? parseInt(start) : null"
+      :min="start"
       :required="required || rangeIncomplete"
       hint="max" />
     {{ unit }}
@@ -28,8 +28,9 @@ export default {
   },
   props: {
     startValue: {
-      type: [Number, String],
-      required: true
+      type: Number,
+      required: false,
+      default: null
     },
     startHint: {
       type: String,
@@ -37,8 +38,9 @@ export default {
       default: null
     },
     endValue: {
-      type: [Number, String],
-      required: true
+      type: Number,
+      required: false,
+      default: null
     },
     endHint: {
       type: String,
