@@ -28,274 +28,319 @@
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan",
-      "defaultValue": 127
+      "defaultValue": 127,
+      "capabilities": [
+        {
+          "dmxRange": [0, 255],
+          "type": "Pan",
+          "angle": ["0°", "540°"]
+        }
+      ]
     },
     "Tilt": {
-      "type": "Tilt",
-      "defaultValue": 127
+      "defaultValue": 127,
+      "capabilities": [
+        {
+          "dmxRange": [0, 255],
+          "type": "Tilt",
+          "angle": ["0°", "270°"]
+        }
+      ]
     },
     "Gobo": {
-      "type": "Gobo",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "Gobo"
+          "dmxRange": [0, 15],
+          "type": "GoboIndex",
+          "index": 0
         },
         {
-          "range": [16, 31],
-          "name": "Gobo 1"
+          "dmxRange": [16, 31],
+          "type": "GoboIndex",
+          "index": 1
         },
         {
-          "range": [32, 47],
-          "name": "Gobo 2"
+          "dmxRange": [32, 47],
+          "type": "GoboIndex",
+          "index": 2
         },
         {
-          "range": [48, 63],
-          "name": "Gobo 3"
+          "dmxRange": [48, 63],
+          "type": "GoboIndex",
+          "index": 3
         },
         {
-          "range": [64, 79],
-          "name": "Gobo 4"
+          "dmxRange": [64, 79],
+          "type": "GoboIndex",
+          "index": 4
         },
         {
-          "range": [80, 95],
-          "name": "Gobo 5"
+          "dmxRange": [80, 95],
+          "type": "GoboIndex",
+          "index": 5
         },
         {
-          "range": [96, 111],
-          "name": "Gobo 6"
+          "dmxRange": [96, 111],
+          "type": "GoboIndex",
+          "index": 6
         },
         {
-          "range": [112, 127],
-          "name": "Gobo 7"
+          "dmxRange": [112, 127],
+          "type": "GoboIndex",
+          "index": 7
         },
         {
-          "range": [128, 255],
-          "name": "Rotating slow-fast"
+          "dmxRange": [128, 255],
+          "type": "GoboWheelRotationSpeed",
+          "speed": ["slow CW", "fast CW"]
         }
       ]
     },
     "Gobo Rotation": {
-      "type": "Speed",
       "defaultValue": 127,
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Stop"
+          "dmxRange": [0, 9],
+          "type": "GoboStencilRotationSpeed",
+          "speed": "stop"
         },
         {
-          "range": [10, 120],
-          "name": "Rotation CW fast-slow"
+          "dmxRange": [10, 120],
+          "type": "GoboStencilRotationSpeed",
+          "speed": ["fast CW", "slow CW"]
         },
         {
-          "range": [121, 134],
-          "name": "Stop"
+          "dmxRange": [121, 134],
+          "type": "GoboStencilRotationSpeed",
+          "speed": "stop"
         },
         {
-          "range": [135, 245],
-          "name": "Rotation CCW slow-fast"
+          "dmxRange": [135, 245],
+          "type": "GoboStencilRotationSpeed",
+          "speed": ["slow CCW", "fast CCW"]
         },
         {
-          "range": [246, 255],
-          "name": "Stop"
+          "dmxRange": [246, 255],
+          "type": "GoboStencilRotationSpeed",
+          "speed": "stop"
         }
       ]
     },
     "Split Colors": {
-      "type": "Multi-Color",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 6],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [0, 6],
+          "type": "ColorWheelIndex",
+          "comment": "White (#ffffff)",
+          "index": 0
         },
         {
-          "range": [7, 13],
-          "name": "White-Blue",
-          "color": "#ffffff",
-          "color2": "#0000ff"
+          "dmxRange": [7, 13],
+          "type": "ColorWheelIndex",
+          "comment": "White-Blue",
+          "index": 0.5
         },
         {
-          "range": [14, 20],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [14, 20],
+          "type": "ColorWheelIndex",
+          "comment": "Blue (#0000ff)",
+          "index": 1
         },
         {
-          "range": [21, 26],
-          "name": "Blue-Yellow",
-          "color": "#0000ff",
-          "color2": "#ffff00"
+          "dmxRange": [21, 26],
+          "type": "ColorWheelIndex",
+          "comment": "Blue-Yellow",
+          "index": 1.5
         },
         {
-          "range": [27, 33],
-          "name": "Yellow",
-          "color": "#ffff00"
+          "dmxRange": [27, 33],
+          "type": "ColorWheelIndex",
+          "comment": "Yellow (#ffff00)",
+          "index": 2
         },
         {
-          "range": [34, 40],
-          "name": "Yellow-Green",
-          "color": "#ffff00",
-          "color2": "#00ff00"
+          "dmxRange": [34, 40],
+          "type": "ColorWheelIndex",
+          "comment": "Yellow-Green",
+          "index": 2.5
         },
         {
-          "range": [41, 46],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [41, 46],
+          "type": "ColorWheelIndex",
+          "comment": "Green (#00ff00)",
+          "index": 3
         },
         {
-          "range": [47, 53],
-          "name": "Green-Lightblue",
-          "color": "#00ff00",
-          "color2": "#aaddff"
+          "dmxRange": [47, 53],
+          "type": "ColorWheelIndex",
+          "comment": "Green-Lightblue",
+          "index": 3.5
         },
         {
-          "range": [54, 60],
-          "name": "Lightblue",
-          "color": "#aaddff"
+          "dmxRange": [54, 60],
+          "type": "ColorWheelIndex",
+          "comment": "Lightblue (#aaddff)",
+          "index": 4
         },
         {
-          "range": [61, 66],
-          "name": "Lightblue-Orange",
-          "color": "#aaddff",
-          "color2": "#ff7f00"
+          "dmxRange": [61, 66],
+          "type": "ColorWheelIndex",
+          "comment": "Lightblue-Orange",
+          "index": 4.5
         },
         {
-          "range": [67, 73],
-          "name": "Orange",
-          "color": "#ff7f00"
+          "dmxRange": [67, 73],
+          "type": "ColorWheelIndex",
+          "comment": "Orange (#ff7f00)",
+          "index": 5
         },
         {
-          "range": [74, 80],
-          "name": "Orange-Pink",
-          "color": "#ff7f00",
-          "color2": "#ffaaaa"
+          "dmxRange": [74, 80],
+          "type": "ColorWheelIndex",
+          "comment": "Orange-Pink",
+          "index": 5.5
         },
         {
-          "range": [81, 87],
-          "name": "Pink",
-          "color": "#ffaaaa"
+          "dmxRange": [81, 87],
+          "type": "ColorWheelIndex",
+          "comment": "Pink (#ffaaaa)",
+          "index": 6
         },
         {
-          "range": [88, 93],
-          "name": "Pink-Magenta",
-          "color": "#ffaaaa",
-          "color2": "#ff00ff"
+          "dmxRange": [88, 93],
+          "type": "ColorWheelIndex",
+          "comment": "Pink-Magenta",
+          "index": 6.5
         },
         {
-          "range": [94, 100],
-          "name": "Magenta",
-          "color": "#ff00ff"
+          "dmxRange": [94, 100],
+          "type": "ColorWheelIndex",
+          "comment": "Magenta (#ff00ff)",
+          "index": 7
         },
         {
-          "range": [101, 107],
-          "name": "Magenta-Amber",
-          "color": "#ff00ff",
-          "color2": "#ffbf00"
+          "dmxRange": [101, 107],
+          "type": "ColorWheelIndex",
+          "comment": "Magenta-Amber",
+          "index": 7.5
         },
         {
-          "range": [108, 113],
-          "name": "Amber",
-          "color": "#ffbf00"
+          "dmxRange": [108, 113],
+          "type": "ColorWheelIndex",
+          "comment": "Amber (#ffbf00)",
+          "index": 8
         },
         {
-          "range": [114, 120],
-          "name": "Amber-Lightgreen",
-          "color": "#ffbf00",
-          "color2": "#aaffaa"
+          "dmxRange": [114, 120],
+          "type": "ColorWheelIndex",
+          "comment": "Amber-Lightgreen",
+          "index": 8.5
         },
         {
-          "range": [121, 127],
-          "name": "Lightgreen",
-          "color": "#aaffaa"
+          "dmxRange": [121, 127],
+          "type": "ColorWheelIndex",
+          "comment": "Lightgreen (#aaffaa)",
+          "index": 9
         },
         {
-          "range": [128, 255],
-          "name": "Rotating slow-fast"
+          "dmxRange": [128, 255],
+          "type": "ColorWheelRotationSpeed",
+          "speed": ["slow CW", "fast CW"]
         }
       ]
     },
     "Shutter / Dimmer": {
-      "type": "Shutter",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 4],
-          "name": "Blackout"
+          "dmxRange": [0, 4],
+          "type": "ShutterClosed"
         },
         {
-          "range": [5, 131],
-          "name": "Dimmer 0-100%"
+          "dmxRange": [5, 131],
+          "type": "Intensity",
+          "brightness": ["off", "bright"]
         },
         {
-          "range": [132, 252],
-          "name": "Strobe slow-fast"
+          "dmxRange": [132, 252],
+          "type": "StrobeSpeed",
+          "speed": ["slow", "fast"]
         },
         {
-          "range": [253, 255],
-          "name": "Open"
+          "dmxRange": [253, 255],
+          "type": "ShutterOpen"
         }
       ]
     },
     "Full Colors": {
-      "type": "Multi-Color",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 12],
-          "name": "Open",
-          "color": "#ffffff"
+          "dmxRange": [0, 12],
+          "type": "ColorWheelIndex",
+          "comment": "Open (#ffffff)",
+          "index": 0
         },
         {
-          "range": [13, 25],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [13, 25],
+          "type": "ColorWheelIndex",
+          "comment": "Blue (#0000ff)",
+          "index": 1
         },
         {
-          "range": [26, 38],
-          "name": "Yellow",
-          "color": "#ffff00"
+          "dmxRange": [26, 38],
+          "type": "ColorWheelIndex",
+          "comment": "Yellow (#ffff00)",
+          "index": 2
         },
         {
-          "range": [39, 51],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [39, 51],
+          "type": "ColorWheelIndex",
+          "comment": "Green (#00ff00)",
+          "index": 3
         },
         {
-          "range": [52, 63],
-          "name": "Lightblue",
-          "color": "#aaddff"
+          "dmxRange": [52, 63],
+          "type": "ColorWheelIndex",
+          "comment": "Lightblue (#aaddff)",
+          "index": 4
         },
         {
-          "range": [64, 76],
-          "name": "Orange",
-          "color": "#ff7f00"
+          "dmxRange": [64, 76],
+          "type": "ColorWheelIndex",
+          "comment": "Orange (#ff7f00)",
+          "index": 5
         },
         {
-          "range": [77, 89],
-          "name": "Pink",
-          "color": "#ffaaaa"
+          "dmxRange": [77, 89],
+          "type": "ColorWheelIndex",
+          "comment": "Pink (#ffaaaa)",
+          "index": 6
         },
         {
-          "range": [90, 102],
-          "name": "Magenta",
-          "color": "#ff00ff"
+          "dmxRange": [90, 102],
+          "type": "ColorWheelIndex",
+          "comment": "Magenta (#ff00ff)",
+          "index": 7
         },
         {
-          "range": [103, 115],
-          "name": "Amber",
-          "color": "#ffbf00"
+          "dmxRange": [103, 115],
+          "type": "ColorWheelIndex",
+          "comment": "Amber (#ffbf00)",
+          "index": 8
         },
         {
-          "range": [116, 127],
-          "name": "Lightgreen",
-          "color": "#aaffaa"
+          "dmxRange": [116, 127],
+          "type": "ColorWheelIndex",
+          "comment": "Lightgreen (#aaffaa)",
+          "index": 9
         },
         {
-          "range": [128, 255],
-          "name": "Rotating slow-fast"
+          "dmxRange": [128, 255],
+          "type": "ColorWheelRotationSpeed",
+          "speed": ["slow CW", "fast CW"]
         }
       ]
     }
