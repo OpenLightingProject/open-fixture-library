@@ -26,14 +26,30 @@
     "highlightValue": { "$ref": "definitions.json#/dmxValue" },
     "constant": { "type": "boolean" },
     "precedence": { "enum": ["LTP", "HTP"] },
+    "capability": {
+      "allOf": [{ "$ref": "capability.json#" }],
+      "not": { "required": ["dmxRange"] }
+    },
     "capabilities": {
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,
-      "items": { "$ref": "capability.json#" }
+      "items": {
+        "allOf": [{ "$ref": "capability.json#" }],
+        "required": ["dmxRange"]
+      }
     }
   },
-  "required": ["capabilities"],
+  "oneOf": [
+    {
+      "required": ["capability"],
+      "not": { "required": ["capabilities"] }
+    },
+    {
+      "not": { "required": ["capability"] },
+      "required": ["capabilities"]
+    }
+  ],
   "allOf": [
     {
       "if": {

@@ -33,24 +33,18 @@
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
       "defaultValue": 32639,
-      "capabilities": [
-        {
-          "dmxRange": [0, 255],
-          "type": "Pan",
-          "angle": ["0°", "530°"]
-        }
-      ]
+      "capability": {
+        "type": "Pan",
+        "angle": ["0°", "530°"]
+      }
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
       "defaultValue": 32639,
-      "capabilities": [
-        {
-          "dmxRange": [0, 255],
-          "type": "Tilt",
-          "angle": ["0°", "280°"]
-        }
-      ]
+      "capability": {
+        "type": "Tilt",
+        "angle": ["0°", "280°"]
+      }
     },
     "Pan/Tilt Speed": {
       "capabilities": [
@@ -392,13 +386,10 @@
       ]
     },
     "Focus": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 255],
-          "type": "Focus",
-          "distance": ["far", "near"]
-        }
-      ]
+      "capability": {
+        "type": "Focus",
+        "distance": ["far", "near"]
+      }
     },
     "Shutter / Strobe": {
       "capabilities": [
@@ -443,13 +434,10 @@
     "Dimmer": {
       "highlightValue": 255,
       "precedence": "HTP",
-      "capabilities": [
-        {
-          "dmxRange": [0, 255],
-          "type": "Intensity",
-          "brightness": ["off", "bright"]
-        }
-      ]
+      "capability": {
+        "type": "Intensity",
+        "brightness": ["off", "bright"]
+      }
     }
   },
   "modes": [
