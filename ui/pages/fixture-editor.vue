@@ -170,6 +170,7 @@
           v-model="fixture.modes[index]"
           :index="index"
           :fixture="fixture"
+          @open-channel-editor="openChannelEditor"
           @remove="fixture.modes.splice(index, 1)" />
 
         <a class="fixture-mode card add-mode-link" href="#add-mode" @click.prevent="addNewMode">
@@ -218,6 +219,11 @@
       </div>
 
     </form>
+
+    <app-editor-channel-dialog
+      v-model="channel"
+      :fixture="fixture"
+      @reset-channel="resetChannel" />
   </div>
 </template>
 
@@ -239,6 +245,7 @@ import propertyInputVue from '~/components/property-input.vue';
 import categoryChooserVue from '~/components/category-chooser.vue';
 import editorPhysicalVue from '~/components/editor-physical.vue';
 import editorModeVue from '~/components/editor-mode.vue';
+import editorChannelDialogVue from '~/components/editor-channel-dialog.vue';
 
 export default {
   components: {
@@ -246,7 +253,8 @@ export default {
     'app-property-input': propertyInputVue,
     'app-category-chooser': categoryChooserVue,
     'app-editor-physical': editorPhysicalVue,
-    'app-mode': editorModeVue
+    'app-mode': editorModeVue,
+    'app-editor-channel-dialog': editorChannelDialogVue
   },
   head() {
     return {
@@ -267,6 +275,7 @@ export default {
 
     return {
       fixture: initFixture,
+      channel: getEmptyChannel(),
       honeypot: ``,
       manufacturers,
       properties: schemaProperties
@@ -283,6 +292,14 @@ export default {
 
     addNewMode() {
       this.fixture.modes.push(getEmptyMode());
+    },
+
+    openChannelEditor(channelData) {
+      this.channel = Object.assign({}, this.channel, channelData);
+    },
+
+    resetChannel() {
+      this.channel = getEmptyChannel();
     },
 
     /**
