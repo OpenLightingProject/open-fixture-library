@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "$id": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
 
   "version": "5.0.0",
 
@@ -616,7 +616,7 @@
   ],
   "patternProperties": {
     "^\\$schema$": {
-      "enum": ["https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json"]
+      "enum": ["https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json"]
     }
   },
   "additionalProperties": false

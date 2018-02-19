@@ -19,7 +19,7 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
       warnings: {}
     };
     const fix = {
-      $schema: `https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json`
+      $schema: `https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json`
     };
 
     try {
