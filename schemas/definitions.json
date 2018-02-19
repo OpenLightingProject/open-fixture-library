@@ -100,7 +100,7 @@
       "oneOf": [
         { "$ref": "#/units/hertz" },
         { "$ref": "#/units/percent" },
-        { "enum": ["slow", "fast"] }
+        { "enum": ["fast reverse", "slow reverse", "stop", "slow", "fast"] }
       ]
     },
     "speed": {
@@ -114,21 +114,21 @@
         }
       ]
     },
-    "directionalSpeedSingle": {
+    "rotationSpeedSingle": {
       "oneOf": [
         { "$ref": "#/units/hertz" },
         { "$ref": "#/units/percent" },
         { "enum": ["fast CCW", "slow CCW", "stop", "slow CW", "fast CW"] }
       ]
     },
-    "directionalSpeed": {
+    "rotationSpeed": {
       "oneOf": [
-        { "$ref": "#/entities/directionalSpeedSingle" },
+        { "$ref": "#/entities/rotationSpeedSingle" },
         {
           "type": "array",
           "minLength": 2,
           "maxLength": 2,
-          "items": { "$ref": "#/entities/directionalSpeedSingle" }
+          "items": { "$ref": "#/entities/rotationSpeedSingle" }
         }
       ]
     },

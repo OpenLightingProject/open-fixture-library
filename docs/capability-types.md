@@ -4,8 +4,8 @@ This is a full list of capability types with their properties, entities and unit
 
 | Entity | Allowed Units | `-100%` | `-1%` | `0%` | `1%` | `100%`
 | - | - | - | - | - | - | -
-| Speed | `Hz`, `%` | – | – | – | slow | fast
-| DirectionalSpeed | `Hz`, `%` | fast CCW | slow CW | stop | slow CW | fast CWW
+| Speed | `Hz`, `%` | fast reverse | slow reverse | stop | slow | fast
+| RotationSpeed | `Hz`, `%` | fast CCW | slow CW | stop | slow CW | fast CWW
 | Time | `s`, `ms`, `%` | – | – | instant | short | long
 | Distance | `m`, `%` | – | – | – | near | far
 | Brightness | `lm`, `%` | – | – | off | dark | bright
@@ -46,26 +46,26 @@ Required properties are _italic_, the entity is written in (parentheses).
 * ColorWheelRotationAngle
   * _angle_ (RotationAngle)
 * ColorWheelRotationSpeed
-  * _speed_ (DirectionalSpeed)
+  * _speed_ (RotationSpeed)
 * ColorTemperature
   * _colorTemperature_ (ColorTemperature)
 * Pan
   * _angle_ (RotationAngle)
 * PanContinuous
-  * _speed_ (DirectionalSpeed)
+  * _speed_ (RotationSpeed)
 * Tilt
   * _angle_ (RotationAngle)
 * TiltContinuous
-  * _speed_ (DirectionalSpeed)
+  * _speed_ (RotationSpeed)
 * PanTiltSpeed
   * _speed_ (Speed)
 * Effect
   * effectIntensity (Factor)
-  * speed (DirectionalSpeed)
+  * speed (Speed)
 * EffectIntensity (global, don't set an effect)
   * _effectIntensity_ (Factor)
 * EffectSpeed (global, don't set an effect)
-  * _speed_ (DirectionalSpeed)
+  * _speed_ (Speed)
 * SoundSensitivity
   * _sensitivity_ (Percent)
 * GoboIndex
@@ -76,11 +76,11 @@ Required properties are _italic_, the entity is written in (parentheses).
 * GoboStencilRotationAngle
   * _angle_ (RotationAngle)
 * GoboStencilRotationSpeed
-  * _speed_ (DirectionalSpeed)
+  * _speed_ (RotationSpeed)
 * GoboWheelRotationAngle
   * _angle_ (RotationAngle)
 * GoboWheelRotationSpeed
-  * _speed_ (DirectionalSpeed)
+  * _speed_ (RotationSpeed)
 * Focus
   * _distance_ (Distance)
 * Zoom
@@ -96,11 +96,11 @@ Required properties are _italic_, the entity is written in (parentheses).
 * PrismOff
 * PrismOn
   * angle (RotationAngle)
-  * speed (DirectionalSpeed)
+  * speed (RotationSpeed)
 * PrismRotationAngle
   * _angle_ (RotationAngle)
 * PrismRotationSpeed
-  * _speed_ (DirectionalSpeed)
+  * _speed_ (RotationSpeed)
 * FogOff
 * FogOn
   * fogOutput (FogOutput)

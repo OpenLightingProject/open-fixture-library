@@ -110,6 +110,9 @@
         },
         {
           "enum": [
+            "fast reverse",
+            "slow reverse",
+            "stop",
             "slow",
             "fast"
           ]
@@ -130,6 +133,9 @@
             },
             {
               "enum": [
+                "fast reverse",
+                "slow reverse",
+                "stop",
                 "slow",
                 "fast"
               ]
@@ -152,6 +158,9 @@
               },
               {
                 "enum": [
+                  "fast reverse",
+                  "slow reverse",
+                  "stop",
                   "slow",
                   "fast"
                 ]
@@ -161,7 +170,7 @@
         }
       ]
     },
-    "directionalSpeedSingle": {
+    "rotationSpeedSingle": {
       "oneOf": [
         {
           "type": "string",
@@ -182,7 +191,7 @@
         }
       ]
     },
-    "directionalSpeed": {
+    "rotationSpeed": {
       "oneOf": [
         {
           "oneOf": [

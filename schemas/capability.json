@@ -223,7 +223,7 @@
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
-        "speed": { "$ref": "definitions.json#/entities/directionalSpeed" }
+        "speed": { "$ref": "definitions.json#/entities/rotationSpeed" }
       },
       "required": ["speed"],
       "additionalProperties": false
@@ -259,7 +259,7 @@
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
-        "speed": { "$ref": "definitions.json#/entities/directionalSpeed" }
+        "speed": { "$ref": "definitions.json#/entities/rotationSpeed" }
       },
       "required": ["speed"],
       "additionalProperties": false
@@ -283,7 +283,7 @@
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
-        "speed": { "$ref": "definitions.json#/entities/directionalSpeed" }
+        "speed": { "$ref": "definitions.json#/entities/rotationSpeed" }
       },
       "required": ["speed"],
       "additionalProperties": false
@@ -308,7 +308,7 @@
         "menuClick": {},
         "switchChannels": {},
         "effectIntensity": { "$ref": "definitions.json#/entities/factor" },
-        "speed": { "$ref": "definitions.json#/entities/directionalSpeed" }
+        "speed": { "$ref": "definitions.json#/entities/speed" }
       },
       "additionalProperties": false
     },
@@ -331,7 +331,7 @@
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
-        "speed": { "$ref": "definitions.json#/entities/directionalSpeed" }
+        "speed": { "$ref": "definitions.json#/entities/speed" }
       },
       "required": ["speed"],
       "additionalProperties": false
@@ -392,7 +392,7 @@
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
-        "speed": { "$ref": "definitions.json#/entities/directionalSpeed" }
+        "speed": { "$ref": "definitions.json#/entities/rotationSpeed" }
       },
       "required": ["speed"],
       "additionalProperties": false
@@ -416,7 +416,7 @@
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
-        "speed": { "$ref": "definitions.json#/entities/directionalSpeed" }
+        "speed": { "$ref": "definitions.json#/entities/rotationSpeed" }
       },
       "required": ["speed"],
       "additionalProperties": false
@@ -511,7 +511,7 @@
         "menuClick": {},
         "switchChannels": {},
         "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
-        "speed": { "$ref": "definitions.json#/entities/directionalSpeed" }
+        "speed": { "$ref": "definitions.json#/entities/rotationSpeed" }
       },
       "additionalProperties": false
     },
@@ -534,7 +534,7 @@
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
-        "speed": { "$ref": "definitions.json#/entities/directionalSpeed" }
+        "speed": { "$ref": "definitions.json#/entities/rotationSpeed" }
       },
       "required": ["speed"],
       "additionalProperties": false
@@ -604,7 +604,7 @@
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
-        "speed": { "$ref": "definitions.json#/entities/directionalSpeed" }
+        "speed": { "$ref": "definitions.json#/entities/rotationSpeed" }
       },
       "required": ["speed"],
       "additionalProperties": false
