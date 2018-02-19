@@ -31,7 +31,6 @@
           type="text"
           v-model="mode.shortName"
           :schema-property="properties.mode.shortName.allOf[1]"
-          :required="true"
           hint="e.g. ext; defaults to name"
           title="The short name must not contain the word 'mode'." />
       </app-simple-label>

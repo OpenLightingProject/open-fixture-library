@@ -6,7 +6,7 @@
       <span class="value">
         <app-property-input
           type="number"
-          v-model="value.dimensionsWidth"
+          v-model="physical.dimensionsWidth"
           :schema-property="properties.dimensionsXYZ.items"
           hint="width"
           :required="dimensionRequired"
@@ -14,14 +14,14 @@
         &times;
         <app-property-input
           type="number"
-          v-model="value.dimensionsHeight"
+          v-model="physical.dimensionsHeight"
           :schema-property="properties.dimensionsXYZ.items"
           hint="height"
           :required="dimensionRequired" />
         &times;
         <app-property-input
           type="number"
-          v-model="value.dimensionsDepth"
+          v-model="physical.dimensionsDepth"
           :schema-property="properties.dimensionsXYZ.items"
           hint="depth"
           :required="dimensionRequired" /> mm
@@ -33,7 +33,7 @@
       <app-simple-label label="Weight">
         <app-property-input
           type="number"
-          v-model="value.weight"
+          v-model="physical.weight"
           :schema-property="properties.physical.weight" /> kg
       </app-simple-label>
     </section>
@@ -42,7 +42,7 @@
       <app-simple-label label="Power">
         <app-property-input
           type="number"
-          v-model="value.power"
+          v-model="physical.power"
           :schema-property="properties.physical.power" /> W
       </app-simple-label>
     </section>
@@ -51,14 +51,14 @@
       <app-simple-label label="DMX connector">
         <app-property-input
           type="select"
-          v-model="value.DMXconnector"
+          v-model="physical.DMXconnector"
           :schema-property="properties.physical.DMXconnector"
           addition-hint="other DMX connector" />
         <app-property-input
           type="text"
-          v-if="value.DMXconnector === `[add-value]`"
+          v-if="physical.DMXconnector === `[add-value]`"
           class="addition"
-          v-model="value.DMXconnectorNew"
+          v-model="physical.DMXconnectorNew"
           :schema-property="properties.definitions.nonEmptyString"
           :required="true"
           :auto-focus="true"
@@ -73,7 +73,7 @@
       <app-simple-label label="Bulb type">
         <app-property-input
           type="text"
-          v-model="value.bulb.type"
+          v-model="physical.bulb.type"
           :schema-property="properties.physicalBulb.type"
           hint="e.g. LED" />
       </app-simple-label>
@@ -83,7 +83,7 @@
       <app-simple-label label="Color temperature">
         <app-property-input
           type="number"
-          v-model="value.bulb.colorTemperature"
+          v-model="physical.bulb.colorTemperature"
           :schema-property="properties.physicalBulb.colorTemperature" /> K
       </app-simple-label>
     </section>
@@ -92,7 +92,7 @@
       <app-simple-label label="Lumens">
         <app-property-input
           type="number"
-          v-model="value.bulb.lumens"
+          v-model="physical.bulb.lumens"
           :schema-property="properties.physicalBulb.lumens" /> lm
       </app-simple-label>
     </section>
@@ -104,7 +104,7 @@
       <app-simple-label label="Lens name">
         <app-property-input
           type="text"
-          v-model="value.lens.name"
+          v-model="physical.lens.name"
           :schema-property="properties.physicalLens.name" />
       </app-simple-label>
     </section>
@@ -112,12 +112,12 @@
     <section class="physical-lens-degrees validate-group">
       <app-simple-label label="Light cone">
         <app-range-input
-          :start-value="value.lens.degreesMin"
+          :start-value="physical.lens.degreesMin"
           start-hint="min"
-          @start-input="newStart => value.lens.degreesMin = newStart"
-          :end-value="value.lens.degreesMax"
+          @start-input="newStart => physical.lens.degreesMin = newStart"
+          :end-value="physical.lens.degreesMax"
           end-hint="max"
-          @end-input="newEnd => value.lens.degreesMax = newEnd"
+          @end-input="newEnd => physical.lens.degreesMax = newEnd"
           :schema-property="properties.physicalLens.degreesMinMax.items"
           unit="°" />
       </app-simple-label>
@@ -130,14 +130,14 @@
       <app-simple-label label="Focus type">
         <app-property-input
           type="select"
-          v-model="value.focus.type"
+          v-model="physical.focus.type"
           :schema-property="properties.physicalFocus.type"
           addition-hint="other focus type" />
         <app-property-input
           type="text"
-          v-if="value.focus.type === `[add-value]`"
+          v-if="physical.focus.type === `[add-value]`"
           class="addition"
-          v-model="value.focus.typeNew"
+          v-model="physical.focus.typeNew"
           :schema-property="properties.definitions.nonEmptyString"
           :required="true"
           :auto-focus="true"
@@ -149,7 +149,7 @@
       <app-simple-label label="Pan maximum">
         <app-property-input
           type="number"
-          v-model="value.focus.panMax"
+          v-model="physical.focus.panMax"
           :schema-property="properties.physicalFocus.panMax" /> °
       </app-simple-label>
     </section>
@@ -158,7 +158,7 @@
       <app-simple-label label="Tilt maximum">
         <app-property-input
           type="number"
-          v-model="value.focus.tiltMax"
+          v-model="physical.focus.tiltMax"
           :schema-property="properties.physicalFocus.tiltMax" /> °
       </app-simple-label>
     </section>
@@ -180,8 +180,11 @@ export default {
     'app-property-input': propertyInputVue,
     'app-range-input': rangeInputVue
   },
+  model: {
+    prop: `physical`
+  },
   props: {
-    value: {
+    physical: {
       type: Object,
       required: true
     }
@@ -193,7 +196,7 @@ export default {
   },
   computed: {
     dimensionRequired() {
-      return this.value.dimensionsWidth !== `` || this.value.dimensionsHeight !== `` || this.value.dimensionsDepth !== ``;
+      return this.physical.dimensionsWidth !== `` || this.physical.dimensionsHeight !== `` || this.physical.dimensionsDepth !== ``;
     }
   },
   methods: {

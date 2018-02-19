@@ -26,7 +26,12 @@
 <script>
 import A11yDialog from 'a11y-dialog';
 
+import svgVue from '~/components/svg.vue';
+
 export default {
+  components: {
+    'app-svg': svgVue
+  },
   props: {
     'id': {
       type: String,
