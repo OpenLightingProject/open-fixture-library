@@ -22,9 +22,9 @@ module.exports = (function() {
     messageTooLong: 'Please shorten this text to no more than {maxLength} characters. You are currently using {length} characters.',
     messagePatternMismatch: 'Please match the requested format.',
     messageBadInput: 'Please enter a number.',
-    messageStepMismatch: 'Please select a valid value.',
-    messageRangeOverflow: 'Please select a value that is no more than {max}.',
-    messageRangeUnderflow: 'Please select a value that is no less than {min}.',
+    messageStepMismatch: 'Please enter a valid value.',
+    messageRangeOverflow: 'Please enter a value that is no more than {max}.',
+    messageRangeUnderflow: 'Please enter a value that is no less than {min}.',
     messageGeneric: 'The value you entered for this field is invalid.',
 
     onSubmit: function(form) {}
@@ -37,7 +37,7 @@ module.exports = (function() {
    * @private
    * @param {!Node} field The field or group to validate
    * @param {?ValidityState} validity the Validity State of the field or null
-   * @return {?String} The error message or null
+   * @returns {?string} The error message or null
    */
   var checkCustomError = function(field, validity) {
     if (field.matches('.fixture-name input')) {
@@ -65,6 +65,12 @@ module.exports = (function() {
       }
     }
 
+    if (field.matches('.categories')) {
+      if (field.querySelectorAll('.selected').length === 0) {
+        return 'Please select at least one category.';
+      }
+    }
+
     if (field.matches('.physical-lens-degrees') || field.matches('.capability')) {
       var range = field.querySelectorAll('input');
       if (range[0].value !== '' && range[1].value !== '' && Number(range[0].value) > Number(range[1].value)) {
@@ -72,11 +78,17 @@ module.exports = (function() {
       }
     }
 
+    if (field.matches('.mode-channels')) {
+      if (field.querySelectorAll('li').length === 0) {
+        return 'A mode must contain at least one channel.';
+      }
+    }
+
     if (field.matches('.channelName')) {
       if (/\bfine\b|\d+(?:\s|-|_)*bit|\bMSB\b|\bLSB\b/i.test(field.value)) {
         return 'Please don\'t create fine channels here, set its resolution below instead.';
       }
-      
+
       if (/^[^A-Z0-9]/.test(field.value)) {
         return 'Please start with an uppercase letter or a number.';
       }
@@ -94,7 +106,7 @@ module.exports = (function() {
       || (field.matches('.capability .rangeEnd') && validity.rangeOverflow)) {
       return 'Ranges must not overlap.';
     }
-    
+
     return null;
   };
 
@@ -102,7 +114,7 @@ module.exports = (function() {
    * Validate a form field
    * @public
    * @param {!Node} field The field or group to validate
-   * @return {?String} The error message or null
+   * @returns {?string} The error message or null
    */
   validate.hasError = function(field) {
     if (field.disabled || field.type === 'file' || field.type === 'reset' || field.type === 'submit' || field.type === 'button') {
@@ -185,7 +197,7 @@ module.exports = (function() {
    * Mark a field if it has an error
    * @public
    * @param {!Node} field The field to show an error message for
-   * @param {?Boolean} error True if the field should be marked
+   * @param {?boolean} error True if the field should be marked
    */
   validate.markError = function(field, error) {
     field.classList[error ? 'add' : 'remove'](settings.errorClass);
@@ -195,7 +207,7 @@ module.exports = (function() {
    * Show an error message on a field
    * @public
    * @param {!Node} field The field or group to show an error message for
-   * @param {?String} error The error message to show, null to remove the error
+   * @param {?string} error The error message to show, null to remove the error
    */
   validate.showError = function(field, error) {
     var errorMsg = field.closest(settings.groupSelector).querySelector(settings.messageSelector);
@@ -208,8 +220,8 @@ module.exports = (function() {
    * Show an error message on a field
    * @public
    * @param {!Node} group The group to check for errors
-   * @param {?Boolean} removeErrors true to remove all errors instead of checking
-   * @return {?String} The error message to show or null
+   * @param {?boolean} removeErrors true to remove all errors instead of checking
+   * @returns {?string} The error message to show or null
    */
   validate.validateGroup = function(group, removeErrors) {
     var errors = [];
@@ -224,6 +236,10 @@ module.exports = (function() {
       }
     });
 
+    if (errors.length === 0 && customError) {
+      errors = [customError];
+    }
+
     validate.showError(group, errors.join(' '));
 
     return errors.length > 0 ? errors : null;
@@ -232,7 +248,7 @@ module.exports = (function() {
   /**
    * Add the `novalidate` attribute to all forms
    * @private
-   * @param {?Boolean} remove If true, remove the `novalidate` attribute
+   * @param {?boolean} remove If true, remove the `novalidate` attribute
    */
   var addNoValidate = function(remove) {
     var forms = document.querySelectorAll(settings.selector);
@@ -260,7 +276,7 @@ module.exports = (function() {
       if (!(event.target instanceof Element)) {
         return;
       }
-      
+
       var group = event.target.closest(settings.groupSelector);
       if (!group) {
         return;
@@ -302,7 +318,7 @@ module.exports = (function() {
    * @private
    * @param {Event} event The submit event
    */
-  var submitHandler = function (event) {
+  var submitHandler = function(event) {
     var form = event.target;
 
     // Only run on forms flagged for validation
@@ -312,19 +328,22 @@ module.exports = (function() {
 
     event.preventDefault();
 
+    var firstErrorGroup;
     var firstErrorField;
 
     [].forEach.call(form.querySelectorAll(settings.groupSelector), function(group) {
       var error = validate.validateGroup(group);
-      if (error && !firstErrorField) {
+      if (error && !firstErrorGroup) {
+        firstErrorGroup = group;
         firstErrorField = group.querySelector(settings.fieldSelector);
       }
     });
 
     // If there are errors, focus on first element with error
-    if (firstErrorField) {
-      var scrollContainer = firstErrorField.closest('.dialog') || window;
-      scrollIntoView(firstErrorField, {
+    if (firstErrorGroup) {
+      var scrollToElem = firstErrorField ? firstErrorField : firstErrorGroup;
+      var scrollContainer = scrollToElem.closest('.dialog') || window;
+      scrollIntoView(scrollToElem, {
         time: 300,
         align: {
           top: 0,
@@ -335,7 +354,7 @@ module.exports = (function() {
           return target === scrollContainer;
         }
       }, function() {
-        firstErrorField.focus();
+        scrollToElem.focus();
       });
 
       return;
@@ -350,7 +369,7 @@ module.exports = (function() {
    * @private
    * @param {Event} event The submit event
    */
-  var resetHandler = function (event) {
+  var resetHandler = function(event) {
     var form = event.target;
 
     // Only run on forms flagged for validation
@@ -371,7 +390,7 @@ module.exports = (function() {
    * Destroy the current initialization.
    * @public
    */
-  validate.destroy = function () {
+  validate.destroy = function() {
     // Remove event listeners
     document.removeEventListener('blur', blurHandler, false);
     document.removeEventListener('submit', submitHandler, false);
@@ -390,14 +409,16 @@ module.exports = (function() {
   };
 
   /**
+   * @callback validateOnSubmitCallback
+   * @param {HTMLFormElement} form the form element.
+   */
+
+  /**
    * Initialize Validate
    * @public
-   * @param {Function(form)} onSubmit function to call after successful validation
+   * @param {validateOnSubmitCallback} onSubmit function to call after successful validation
    */
-  validate.init = function (onSubmit) {
-    // Destroy any existing initializations
-    validate.destroy();
-
+  validate.init = function(onSubmit) {
     settings.onSubmit = onSubmit;
 
     // Add the `novalidate` attribute to all forms

@@ -1,13 +1,18 @@
 {
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
   "name": "MAC Viper Performance",
   "shortName": "MartinViperPerf",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["novasfroteiras.co"],
+    "authors": ["novasfronteiras.co"],
     "createDate": "2017-09-08",
-    "lastModifyDate": "2017-09-08"
+    "lastModifyDate": "2017-10-16"
   },
   "manualURL": "http://www.martin.com/files/files/productdocuments/11_MANUALS/999/35000275c%20UM_MACViperPerf_EN_C.pdf",
+  "rdm": {
+    "modelId": 65,
+    "softwareVersion": "1.0.0"
+  },
   "physical": {
     "dimensions": [472, 748, 566],
     "weight": 37.9,
@@ -22,6 +27,7 @@
       "degreesMinMax": [10, 44]
     },
     "focus": {
+      "type": "Head",
       "panMax": 540,
       "tiltMax": 268
     }
@@ -1035,6 +1041,7 @@
     {
       "name": "Basic 16-bit",
       "shortName": "bas",
+      "rdmPersonalityIndex": 1,
       "channels": [
         "Strobe / Shutter",
         "Dimmer fade",
@@ -1073,6 +1080,7 @@
     {
       "name": "Extended 16-bit",
       "shortName": "ext",
+      "rdmPersonalityIndex": 2,
       "channels": [
         "Strobe / Shutter",
         "Dimmer fade",

@@ -1,11 +1,12 @@
 {
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
   "name": "Platinum Spot 15R Pro",
   "shortName": "PlatSpot15rPro",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2017-05-23",
-    "lastModifyDate": "2017-05-23"
+    "lastModifyDate": "2017-10-16"
   },
   "manualURL": "http://cdb.s3.amazonaws.com/ItemRelatedFiles/10038/platinum-spot-15r-pro-v1-user-manual.pdf",
   "physical": {
@@ -17,6 +18,7 @@
       "type": "Philips Platinum 15R"
     },
     "focus": {
+      "type": "Head",
       "panMax": 630,
       "tiltMax": 270
     }

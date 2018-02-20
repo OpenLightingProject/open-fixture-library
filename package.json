@@ -7,7 +7,7 @@
     "Felix Edelmann <fxedel@gmail.com>"
   ],
   "engines": {
-    "node": "6.11.1"
+    "node": "8.9.4"
   },
   "main": "main.js",
   "scripts": {
@@ -15,35 +15,45 @@
     "start": "node main.js"
   },
   "dependencies": {
-    "a11y-dialog": "^3.0.0",
-    "body-parser": "^1.17.2",
-    "browserify-middleware": "^7.1.0",
-    "color": "^2.0.0",
+    "@std/esm": "^0.22.0",
+    "a11y-dialog": "^4.0.0",
+    "body-parser": "^1.18.2",
+    "browserify-middleware": "^8.0.0",
+    "color": "^3.0.0",
     "color-names": "^2.0.0",
-    "compression": "^1.6.2",
+    "compression": "^1.7.1",
     "details-polyfill": "^1.1.0",
-    "express": "^4.15.3",
-    "github": "^9.2.0",
-    "html-minifier": "^3.5.2",
-    "js-schema": "^1.0.1",
+    "dir-compare": "^1.4.0",
+    "disparity": "^2.0.0",
+    "express": "^4.16.2",
+    "github": "^13.0.1",
+    "html-escape": "^2.0.0",
+    "html-minifier": "^3.5.5",
     "node-env-file": "^0.1.8",
     "node-sass-middleware": "^0.11.0",
     "node-zip": "^1.1.1",
     "sanitize-filename": "^1.6.1",
-    "scroll-into-view": "^1.9.0",
+    "scroll-into-view": "^1.9.1",
+    "sitemap": "^1.13.0",
     "uuid": "^3.1.0",
-    "validate": "github:FloEdelmann/validate",
-    "vue": "^2.3.4",
-    "xml2js": "^0.4.17",
-    "xmlbuilder": "^9.0.1"
+    "validate": "github:cferdinandi/validate",
+    "vue": "^2.5.2",
+    "vuedraggable": "^2.15.0",
+    "xml2js": "^0.4.19",
+    "xmlbuilder": "^9.0.4"
   },
   "devDependencies": {
+    "ajv": "^6.0.1",
+    "broken-link-checker": "^0.7.6",
     "colors": "^1.1.2",
-    "diff": "^3.2.0",
+    "diff": "^3.4.0",
+    "eslint": "^4.1.1",
+    "eslint-plugin-security": "^1.4.0",
+    "json-schema-ref-parser": "^4.1.0",
     "libxml-xsd": "^0.5.2",
     "minimist": "^1.2.0",
     "node-delete": "^0.1.2",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.12.1"
   },
   "homepage": "http://open-fixture-library.herokuapp.com/",
   "repository": {

@@ -1,3 +1,6 @@
+/* eslint-disable */
+
+require('details-polyfill');
 require('validate/dist/js/validityState-polyfill.js');
 
 // https://tc39.github.io/ecma262/#sec-array.prototype.findIndex
@@ -48,7 +51,8 @@ if (!Array.prototype.findIndex) {
 if (!Array.prototype.find) {
   Object.defineProperty(Array.prototype, 'find', {
     value: function(predicate) {
-      return this[this.findIndex(predicate)];
+      var index = this.findIndex(predicate);
+      return index === -1 ? undefined : this[index];
     }
   });
 }
@@ -73,5 +77,15 @@ if (!Element.prototype.closest) {
     } while (ancestor !== null);
 
     return el;
+  };
+}
+
+// https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach#Polyfill
+if (window.NodeList && !NodeList.prototype.forEach) {
+  NodeList.prototype.forEach = function(callback, thisArg) {
+    thisArg = thisArg || window;
+    for (var i = 0; i < this.length; i++) {
+      callback.call(thisArg, this[i], i, this);
+    }
   };
 }

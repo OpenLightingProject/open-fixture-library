@@ -1,12 +1,18 @@
 [
   {
-    "man": "5star-systems",
-    "key": "spica-250m",
-    "name": "Spica 250M",
+    "man": "american-dj",
+    "key": "fog-fury-jett-pro",
+    "name": "Fog Fury Jett Pro",
     "features": [
-      "fine-channel-alias",
-      "channels-in-multiple-modes",
-      "null-channels"
+      "channel-type-intensity",
+      "channel-type-single-color",
+      "channel-type-multi-color",
+      "channel-type-strobe",
+      "channel-type-effect",
+      "channel-type-fog",
+      "floating-point-weight",
+      "multiple-categories",
+      "reused-channels"
     ]
   },
   {
@@ -14,16 +20,45 @@
     "key": "hydrabeam-300-rgbw",
     "name": "Hydrabeam 300 RGBW",
     "features": [
-      "has-multiple-categories",
-      "floating-point-weight",
+      "channel-type-intensity",
+      "channel-type-single-color",
+      "channel-type-multi-color",
+      "channel-type-pan",
+      "channel-type-tilt",
+      "channel-type-strobe",
+      "channel-type-speed",
+      "channel-type-maintenance",
       "duplicate-channel-names",
-      "floating-point-lens-degrees",
       "fine-channel-alias",
-      "uses-switching-channels",
-      "uses-heads",
+      "fine-positions-1",
+      "floating-point-weight",
+      "floating-point-lens-degrees",
+      "matrix-pixelKeys",
+      "matrix-custom-layout",
+      "fine-matrix-channel",
+      "switching-matrix-channel",
+      "multiple-categories",
       "multiple-focuses",
-      "channels-in-multiple-modes",
-      "fine-positions-1"
+      "reused-channels",
+      "switching-channels",
+      "switching-channel-positions"
+    ]
+  },
+  {
+    "man": "chauvet-dj",
+    "key": "slimpar-pro-h-usb",
+    "name": "SlimPAR Pro H USB",
+    "features": [
+      "channel-type-intensity",
+      "channel-type-single-color",
+      "channel-type-multi-color",
+      "channel-type-strobe",
+      "channel-type-speed",
+      "channel-type-effect",
+      "floating-point-weight",
+      "floating-point-power",
+      "reused-channels",
+      "switching-channels"
     ]
   },
   {
@@ -31,44 +66,163 @@
     "key": "xr1200-wash",
     "name": "XR1200 WASH",
     "features": [
+      "channel-type-intensity",
+      "channel-type-single-color",
+      "channel-type-multi-color",
+      "channel-type-pan",
+      "channel-type-tilt",
+      "channel-type-zoom",
+      "channel-type-shutter",
+      "channel-type-speed",
+      "channel-type-effect",
+      "channel-type-maintenance",
       "fine-channel-alias",
-      "uses-physical-override",
-      "channels-in-multiple-modes"
+      "multiple-categories",
+      "physical-override",
+      "reused-channels"
     ]
   },
   {
-    "man": "elation",
-    "key": "platinum-hfx",
-    "name": "Platinum HFX",
+    "man": "eurolite",
+    "key": "led-tmh-x25",
+    "name": "LED TMH-X25",
     "features": [
-      "floating-point-dimensions",
-      "floating-point-weight",
+      "channel-type-intensity",
+      "channel-type-single-color",
+      "channel-type-multi-color",
+      "channel-type-pan",
+      "channel-type-tilt",
+      "channel-type-strobe",
+      "channel-type-speed",
+      "channel-type-effect",
+      "channel-type-maintenance",
       "fine-channel-alias",
-      "fine-channel-capabilities",
-      "channels-in-multiple-modes"
+      "floating-point-weight",
+      "matrix-pixelCount",
+      "multiple-categories",
+      "reused-channels"
     ]
   },
   {
     "man": "generic",
-    "key": "rgb-fader",
-    "name": "RGB Fader",
+    "key": "rgbd-fader",
+    "name": "RGBD Fader",
     "features": [
-      "no-physical-data",
+      "channel-type-intensity",
+      "channel-type-single-color",
       "fine-channel-aliases",
-      "channels-in-multiple-modes"
+      "no-physical-data",
+      "reused-channels"
     ]
   },
   {
-    "man": "showtec",
-    "key": "horizon-8",
-    "name": "Horizon 8",
+    "man": "jb-lighting",
+    "key": "varyscan-p7",
+    "name": "Varyscan P7",
     "features": [
-      "has-multiple-categories",
+      "channel-type-intensity",
+      "channel-type-single-color",
+      "channel-type-multi-color",
+      "channel-type-pan",
+      "channel-type-tilt",
+      "channel-type-focus",
+      "channel-type-zoom",
+      "channel-type-iris",
+      "channel-type-gobo",
+      "channel-type-prism",
+      "channel-type-shutter",
+      "channel-type-speed",
+      "channel-type-effect",
+      "channel-type-maintenance",
       "fine-channel-alias",
-      "switching-fine-channels",
-      "uses-switching-channels",
-      "uses-heads",
-      "channels-in-multiple-modes"
+      "fine-channel-capabilities",
+      "floating-point-pan-tilt-max",
+      "reused-channels"
+    ]
+  },
+  {
+    "man": "martin",
+    "key": "mac-viper-performance",
+    "name": "MAC Viper Performance",
+    "features": [
+      "channel-type-intensity",
+      "channel-type-single-color",
+      "channel-type-multi-color",
+      "channel-type-pan",
+      "channel-type-tilt",
+      "channel-type-focus",
+      "channel-type-zoom",
+      "channel-type-iris",
+      "channel-type-gobo",
+      "channel-type-prism",
+      "channel-type-shutter",
+      "channel-type-speed",
+      "channel-type-color-temperature",
+      "channel-type-effect",
+      "channel-type-maintenance",
+      "channel-type-nothing",
+      "duplicate-channel-names",
+      "fine-channel-alias",
+      "fine-channel-capabilities",
+      "floating-point-weight",
+      "multiple-categories",
+      "rdm",
+      "reused-channels",
+      "switching-channels",
+      "switches-fine-channels",
+      "switching-channel-positions"
+    ]
+  },
+  {
+    "man": "robe",
+    "key": "robin-ledbeam-150",
+    "name": "Robin LEDBeam 150",
+    "features": [
+      "channel-type-intensity",
+      "channel-type-single-color",
+      "channel-type-multi-color",
+      "channel-type-pan",
+      "channel-type-tilt",
+      "channel-type-zoom",
+      "channel-type-strobe",
+      "channel-type-speed",
+      "channel-type-color-temperature",
+      "channel-type-maintenance",
+      "fine-channel-alias",
+      "floating-point-dimensions",
+      "floating-point-weight",
+      "floating-point-lens-degrees",
+      "multiple-categories",
+      "null-channels",
+      "reused-channels"
+    ]
+  },
+  {
+    "man": "robe",
+    "key": "robin-ledwash-600",
+    "name": "Robin LEDWash 600",
+    "features": [
+      "channel-type-intensity",
+      "channel-type-single-color",
+      "channel-type-multi-color",
+      "channel-type-pan",
+      "channel-type-tilt",
+      "channel-type-zoom",
+      "channel-type-strobe",
+      "channel-type-speed",
+      "channel-type-color-temperature",
+      "channel-type-maintenance",
+      "fine-channel-alias",
+      "fine-channel-capabilities",
+      "floating-point-weight",
+      "matrix-pixelKeys",
+      "matrix-pixelGroups",
+      "matrix-custom-layout",
+      "fine-matrix-channel",
+      "matrix-channel-used-directly",
+      "multiple-categories",
+      "rdm",
+      "reused-channels"
     ]
   }
 ]

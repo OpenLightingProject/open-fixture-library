@@ -1,0 +1,662 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
+  "name": "ProSpot 250 LX",
+  "shortName": "CoemarPSpotLX",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2017-09-11",
+    "lastModifyDate": "2017-10-16"
+  },
+  "manualURL": "http://www.coemar.com/media/file/Prospot_250_LX_E1.pdf",
+  "physical": {
+    "dimensions": [350, 510, 377],
+    "weight": 23.5,
+    "power": 460,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Philips MSD 250W/2",
+      "colorTemperature": 8500,
+      "lumens": 18000
+    },
+    "lens": {
+      "degreesMinMax": [15, 15]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 530,
+      "tiltMax": 284
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"]
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"]
+    },
+    "Pan / Tilt Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "Fast (standard)"
+        },
+        {
+          "range": [11, 25],
+          "name": "Ultra fast (for programming)"
+        },
+        {
+          "range": [26, 127],
+          "name": "Vector mode fast - slow"
+        },
+        {
+          "range": [128, 247],
+          "name": "Tracking mode fast - slow"
+        },
+        {
+          "range": [248, 255],
+          "name": "Tracking mode slow"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "closed"
+        },
+        {
+          "range": [8, 255],
+          "name": "0 - 100%"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "closed"
+        },
+        {
+          "range": [10, 66],
+          "name": "Synchro strobe 0 - 10Hz"
+        },
+        {
+          "range": [67, 68],
+          "name": "open"
+        },
+        {
+          "range": [69, 125],
+          "name": "Pulse sequences (close slow, open fast) slow - fast"
+        },
+        {
+          "range": [126, 127],
+          "name": "open"
+        },
+        {
+          "range": [128, 184],
+          "name": "Pulse sequences (close fast, open slow) slow - fast"
+        },
+        {
+          "range": [185, 187],
+          "name": "open"
+        },
+        {
+          "range": [188, 244],
+          "name": "Random strobe slow - fast"
+        },
+        {
+          "range": [245, 255],
+          "name": "open"
+        }
+      ]
+    },
+    "Focus": {
+      "type": "Focus"
+    },
+    "Gobo selection": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "Open"
+        },
+        {
+          "range": [11, 30],
+          "name": "Rotating gobo 1"
+        },
+        {
+          "range": [31, 50],
+          "name": "Rotating gobo 2"
+        },
+        {
+          "range": [51, 70],
+          "name": "Rotating gobo 3"
+        },
+        {
+          "range": [71, 90],
+          "name": "Rotating gobo 4"
+        },
+        {
+          "range": [91, 110],
+          "name": "Rotating gobo 5"
+        },
+        {
+          "range": [111, 127],
+          "name": "Rotating gobo 6"
+        },
+        {
+          "range": [128, 192],
+          "name": "360° positioning"
+        },
+        {
+          "range": [193, 255],
+          "name": "Gobo wheel rotation slow - fast"
+        }
+      ]
+    },
+    "Gobo 360° positioning": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "No effect"
+        },
+        {
+          "range": [11, 255],
+          "name": "Gobo positioning 0 - 360°"
+        }
+      ]
+    },
+    "Gobo rotation": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "No effect"
+        },
+        {
+          "range": [11, 131],
+          "name": "Continuous CW rotation fast - slow"
+        },
+        {
+          "range": [132, 134],
+          "name": "Stop rotation"
+        },
+        {
+          "range": [135, 255],
+          "name": "Continuous CCW rotation slow - fast"
+        }
+      ]
+    },
+    "Prism": {
+      "type": "Prism",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "No prism"
+        },
+        {
+          "range": [11, 20],
+          "name": "3 facet prism"
+        },
+        {
+          "range": [21, 136],
+          "name": "Continuous CW rotation fast - slow"
+        },
+        {
+          "range": [137, 139],
+          "name": "Stop prism rotation"
+        },
+        {
+          "range": [140, 255],
+          "name": "Continuous CCW rotation slow - fast"
+        }
+      ]
+    },
+    "Colors": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "Open / white"
+        },
+        {
+          "range": [5, 9],
+          "name": "Color 1"
+        },
+        {
+          "range": [10, 14],
+          "name": "Color 2"
+        },
+        {
+          "range": [15, 19],
+          "name": "Color 3"
+        },
+        {
+          "range": [20, 24],
+          "name": "Color 4"
+        },
+        {
+          "range": [25, 29],
+          "name": "Color 5"
+        },
+        {
+          "range": [30, 34],
+          "name": "Color 6"
+        },
+        {
+          "range": [35, 39],
+          "name": "Color 7"
+        },
+        {
+          "range": [40, 44],
+          "name": "Color 8"
+        },
+        {
+          "range": [45, 49],
+          "name": "Color 9"
+        },
+        {
+          "range": [50, 54],
+          "name": "Color 10"
+        },
+        {
+          "range": [55, 59],
+          "name": "Color 11"
+        },
+        {
+          "range": [60, 127],
+          "name": "360° positioning"
+        },
+        {
+          "range": [128, 190],
+          "name": "Forwards rainbow effect fast - slow"
+        },
+        {
+          "range": [191, 192],
+          "name": "No rotation"
+        },
+        {
+          "range": [193, 255],
+          "name": "Backwards rainbow effect slow - fast"
+        }
+      ]
+    },
+    "Gobo shake / Blackout effect": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "No effect"
+        },
+        {
+          "range": [10, 249],
+          "name": "Gobo shake slow - fast"
+        },
+        {
+          "range": [250, 255],
+          "name": "Blackout during movements"
+        }
+      ]
+    },
+    "Gobo shake amplitute": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 23],
+          "name": "Gobo shake size 1 (maximum)"
+        },
+        {
+          "range": [24, 47],
+          "name": "Gobo shake size 2"
+        },
+        {
+          "range": [48, 71],
+          "name": "Gobo shake size 3"
+        },
+        {
+          "range": [72, 95],
+          "name": "Gobo shake size 4"
+        },
+        {
+          "range": [96, 119],
+          "name": "Gobo shake size 5"
+        },
+        {
+          "range": [120, 143],
+          "name": "Gobo shake size 6"
+        },
+        {
+          "range": [144, 167],
+          "name": "Gobo shake size 7"
+        },
+        {
+          "range": [168, 191],
+          "name": "Gobo shake size 8"
+        },
+        {
+          "range": [192, 215],
+          "name": "Gobo shake size 9"
+        },
+        {
+          "range": [216, 239],
+          "name": "Gobo shake size 10"
+        },
+        {
+          "range": [240, 255],
+          "name": "Gobo shake size 11 (minimum)"
+        }
+      ]
+    },
+    "Lamp on / Motor reset (hold 6s)": {
+      "type": "Maintenance",
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "range": [0, 19],
+          "name": "Lamp off"
+        },
+        {
+          "range": [20, 100],
+          "name": "No effects (idle)"
+        },
+        {
+          "range": [101, 170],
+          "name": "Effects reset (once), no Pan / Tilt movement"
+        },
+        {
+          "range": [171, 200],
+          "name": "All motor reset (once)"
+        },
+        {
+          "range": [201, 240],
+          "name": "Silent fans (if external temperature allows it)"
+        },
+        {
+          "range": [241, 255],
+          "name": "Lamp on"
+        }
+      ]
+    },
+    "Pan / Tilt Speed (Emulation mode)": {
+      "name": "Pan / Tilt Speed",
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Vector mode max speed"
+        },
+        {
+          "range": [1, 249],
+          "name": "Vector mode fast - slow"
+        },
+        {
+          "range": [250, 255],
+          "name": "Tracking mode max speed: Blackout during movements"
+        }
+      ]
+    },
+    "Lamp on / Fan speed": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Fan speed fast - slow"
+        },
+        {
+          "range": [128, 139],
+          "name": "Lamp on, reset"
+        },
+        {
+          "range": [140, 229],
+          "name": "No function"
+        },
+        {
+          "range": [230, 239],
+          "name": "Lamp off after 3s"
+        },
+        {
+          "range": [240, 255],
+          "name": "No function"
+        }
+      ]
+    },
+    "Effect wheel": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 95],
+          "name": "Open / hole"
+        },
+        {
+          "range": [96, 159],
+          "name": "3 facet rotating prism"
+        },
+        {
+          "range": [160, 167],
+          "name": "Prism / Gobo macro 1"
+        },
+        {
+          "range": [168, 175],
+          "name": "Prism / Gobo macro 2"
+        },
+        {
+          "range": [176, 183],
+          "name": "Prism / Gobo macro 3"
+        },
+        {
+          "range": [184, 191],
+          "name": "Prism / Gobo macro 4"
+        },
+        {
+          "range": [192, 199],
+          "name": "Prism / Gobo macro 5"
+        },
+        {
+          "range": [200, 207],
+          "name": "Prism / Gobo macro 6"
+        },
+        {
+          "range": [208, 215],
+          "name": "Prism / Gobo macro 7"
+        },
+        {
+          "range": [216, 223],
+          "name": "Prism / Gobo macro 8"
+        },
+        {
+          "range": [224, 231],
+          "name": "Prism / Gobo macro 9"
+        },
+        {
+          "range": [232, 239],
+          "name": "Prism / Gobo macro 10"
+        },
+        {
+          "range": [240, 247],
+          "name": "Prism / Gobo macro 11"
+        },
+        {
+          "range": [248, 255],
+          "name": "Prism / Gobo macro 12"
+        }
+      ]
+    },
+    "3 facet prism rotation": {
+      "type": "Prism",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "No rotation"
+        },
+        {
+          "range": [1, 126],
+          "name": "Forwards rotation fast - slow"
+        },
+        {
+          "range": [127, 128],
+          "name": "No rotation"
+        },
+        {
+          "range": [129, 255],
+          "name": "Backwards rotation slow - fast"
+        }
+      ]
+    },
+    "Gobo selection (Emulation mode)": {
+      "name": "Gobo selection",
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "Open"
+        },
+        {
+          "range": [32, 63],
+          "name": "Rotating gobo 1"
+        },
+        {
+          "range": [64, 95],
+          "name": "Rotating gobo 2"
+        },
+        {
+          "range": [96, 127],
+          "name": "Rotating gobo 3"
+        },
+        {
+          "range": [128, 159],
+          "name": "Rotating gobo 4"
+        },
+        {
+          "range": [160, 191],
+          "name": "Rotating gobo 5"
+        },
+        {
+          "range": [192, 223],
+          "name": "Rotating gobo 6"
+        },
+        {
+          "range": [224, 255],
+          "name": "Gobo wheel rotation slow - fast"
+        }
+      ]
+    },
+    "Gobo rotation / positioning": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Fine gobo indexing"
+        },
+        {
+          "range": [128, 190],
+          "name": "Forwards gobo rotation fast - slow"
+        },
+        {
+          "range": [191, 192],
+          "name": "No rotation"
+        },
+        {
+          "range": [193, 255],
+          "name": "Backwards gobo rotation slow - fast"
+        }
+      ]
+    },
+    "Shutter / Strobe (Emulation mode)": {
+      "name": "Shutter / Strobe",
+      "type": "Shutter",
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "closed"
+        },
+        {
+          "range": [32, 63],
+          "name": "open"
+        },
+        {
+          "range": [64, 95],
+          "name": "Strobe 0 - 10Hz"
+        },
+        {
+          "range": [96, 127],
+          "name": "open"
+        },
+        {
+          "range": [128, 159],
+          "name": "Pulse sequences slow - fast"
+        },
+        {
+          "range": [160, 191],
+          "name": "open"
+        },
+        {
+          "range": [192, 223],
+          "name": "Random strobe slow - fast"
+        },
+        {
+          "range": [224, 255],
+          "name": "open"
+        }
+      ]
+    },
+    "Dimmer (Emulation mode)": {
+      "name": "Dimmer",
+      "type": "Intensity"
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "shortName": "strd",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan / Tilt Speed",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Focus",
+        "Gobo selection",
+        "Gobo 360° positioning",
+        "Gobo rotation",
+        "Prism",
+        "Colors",
+        "Gobo shake / Blackout effect",
+        "Gobo shake amplitute",
+        "Lamp on / Motor reset (hold 6s)"
+      ]
+    },
+    {
+      "name": "ProSpot emulation",
+      "shortName": "emul",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan / Tilt Speed (Emulation mode)",
+        "Lamp on / Fan speed",
+        "Colors",
+        null,
+        "Effect wheel",
+        "3 facet prism rotation",
+        "Gobo selection (Emulation mode)",
+        "Gobo rotation / positioning",
+        null,
+        "Focus",
+        "Shutter / Strobe (Emulation mode)",
+        "Dimmer (Emulation mode)"
+      ]
+    }
+  ]
+}

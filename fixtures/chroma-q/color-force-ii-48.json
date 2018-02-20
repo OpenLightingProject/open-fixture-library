@@ -1,0 +1,2636 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
+  "name": "Color Force II 48",
+  "shortName": "CHCF248RGBA",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-02-13",
+    "lastModifyDate": "2018-02-13"
+  },
+  "comment": "Look Select capabilities may be inaccurate",
+  "manualURL": "http://www.chroma-q.com/support/manuals/CQ_ColorForceII_UserManual_1_1a.pdf",
+  "physical": {
+    "dimensions": [1181, 191, 165],
+    "weight": 18,
+    "power": 400,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [22, 22]
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["16", "15", "14", "13", "12", "11", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1"]
+      ]
+    ],
+    "pixelGroups": {
+      "1/8": ["1", "2"],
+      "2/8": ["3", "4"],
+      "3/8": ["5", "6"],
+      "4/8": ["7", "8"],
+      "5/8": ["9", "10"],
+      "6/8": ["11", "12"],
+      "7/8": ["13", "14"],
+      "8/8": ["15", "16"],
+      "1/4": ["1", "2", "3", "4"],
+      "2/4": ["5", "6", "7", "8"],
+      "3/4": ["9", "10", "11", "12"],
+      "4/4": ["13", "14", "15", "16"],
+      "1/2": ["1", "2", "3", "4", "5", "6", "7", "8"],
+      "2/2": ["9", "10", "11", "12", "13", "14", "15", "16"],
+      "Master": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"],
+      "Odd": ["1", "3", "5", "7", "9", "11", "13", "15"],
+      "Even": ["2", "4", "6", "8", "10", "12", "14", "16"],
+      "Every fourth": ["1", "5", "9", "13"],
+      "Every fourth +1": ["2", "6", "10", "14"],
+      "Every fourth +2": ["3", "7", "11", "15"],
+      "Every fourth +3": ["4", "8", "12", "16"],
+      "Every eighth": ["1", "9"],
+      "Every eighth +1": ["2", "10"],
+      "Every eighth +2": ["3", "11"],
+      "Every eighth +3": ["4", "12"],
+      "Every eighth +4": ["5", "13"],
+      "Every eighth +5": ["6", "14"],
+      "Every eighth +6": ["7", "15"],
+      "Every eighth +7": ["8", "16"]
+    }
+  },
+  "availableChannels": {
+    "Look Select": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Off"
+        },
+        {
+          "range": [1, 8],
+          "name": "Look 1"
+        },
+        {
+          "range": [9, 16],
+          "name": "Look 2"
+        },
+        {
+          "range": [17, 25],
+          "name": "Look 3"
+        },
+        {
+          "range": [26, 33],
+          "name": "Look 4"
+        },
+        {
+          "range": [34, 42],
+          "name": "Look 5"
+        },
+        {
+          "range": [43, 51],
+          "name": "Look 6"
+        },
+        {
+          "range": [52, 59],
+          "name": "Look 7"
+        },
+        {
+          "range": [60, 67],
+          "name": "Look 8"
+        },
+        {
+          "range": [68, 75],
+          "name": "Look 9"
+        },
+        {
+          "range": [76, 84],
+          "name": "Look 10"
+        },
+        {
+          "range": [85, 92],
+          "name": "Look 11"
+        },
+        {
+          "range": [93, 100],
+          "name": "Look 12"
+        },
+        {
+          "range": [101, 109],
+          "name": "Look 13"
+        },
+        {
+          "range": [110, 117],
+          "name": "Look 14"
+        },
+        {
+          "range": [118, 125],
+          "name": "Look 15"
+        },
+        {
+          "range": [126, 133],
+          "name": "Look 16"
+        },
+        {
+          "range": [134, 141],
+          "name": "Look 17"
+        },
+        {
+          "range": [142, 149],
+          "name": "Look 18"
+        },
+        {
+          "range": [150, 157],
+          "name": "Look 19"
+        },
+        {
+          "range": [158, 165],
+          "name": "Look 20"
+        },
+        {
+          "range": [166, 174],
+          "name": "Look 21"
+        },
+        {
+          "range": [175, 182],
+          "name": "Look 22"
+        },
+        {
+          "range": [183, 190],
+          "name": "Look 23"
+        },
+        {
+          "range": [191, 199],
+          "name": "Look 24"
+        },
+        {
+          "range": [200, 207],
+          "name": "Look 25"
+        },
+        {
+          "range": [208, 215],
+          "name": "Look 26"
+        },
+        {
+          "range": [216, 223],
+          "name": "Look 27"
+        },
+        {
+          "range": [224, 231],
+          "name": "Look 28"
+        },
+        {
+          "range": [232, 239],
+          "name": "Look 29"
+        },
+        {
+          "range": [240, 247],
+          "name": "Look 30"
+        },
+        {
+          "range": [248, 255],
+          "name": "Look 31"
+        }
+      ]
+    },
+    "Strobe Frequency": {
+      "type": "Strobe"
+    },
+    "Strobe Duration": {
+      "type": "Strobe"
+    },
+    "Strobe Density": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "1-24 pixels"
+        }
+      ]
+    },
+    "Strobe Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0
+    },
+    "Strobe Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0
+    },
+    "Strobe Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0
+    },
+    "Strobe Amber": {
+      "type": "Single Color",
+      "color": "Amber",
+      "defaultValue": 0
+    },
+    "Strobe Hue": {
+      "type": "Multi-Color"
+    },
+    "Strobe Saturation": {
+      "type": "Intensity"
+    },
+    "Strobe Intensity": {
+      "type": "Intensity",
+      "defaultValue": 0
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0
+    },
+    "Green $pixelKey": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0
+    },
+    "Blue $pixelKey": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0
+    },
+    "Amber $pixelKey": {
+      "type": "Single Color",
+      "color": "Amber",
+      "defaultValue": 0
+    },
+    "Hue $pixelKey": {
+      "type": "Multi-Color"
+    },
+    "Saturation $pixelKey": {
+      "type": "Intensity"
+    },
+    "Intensity $pixelKey": {
+      "type": "Intensity",
+      "defaultValue": 0
+    }
+  },
+  "modes": [
+    {
+      "name": "Look",
+      "channels": [
+        "Look Select"
+      ]
+    },
+    {
+      "name": "Master RGB",
+      "shortName": "x16RGB",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves RGB",
+      "shortName": "x8RGB",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fourths RGB",
+      "shortName": "x4RGB",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eighths RGB",
+      "shortName": "x2RGB",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual RGB",
+      "shortName": "x1RGB",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even RGB",
+      "shortName": "Od/EvRGB",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every fourth RGB",
+      "shortName": "Skp3RGB",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every eighth RGB",
+      "shortName": "Skp6RGB",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every eighth", "Every eighth +1", "Every eighth +2", "Every eighth +3", "Every eighth +4", "Every eighth +5", "Every eighth +6", "Every eighth +7"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master RGBA",
+      "shortName": "x16RGBA",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves RGBA",
+      "shortName": "x8RGBA",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fourths RGBA",
+      "shortName": "x4RGBA",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eighths RGBA",
+      "shortName": "x2RGBA",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual RGBA",
+      "shortName": "x1RGBA",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even RGBA",
+      "shortName": "Od/EvRGBA",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every fourth RGBA",
+      "shortName": "Skp3RGBA",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every eighth RGBA",
+      "shortName": "Skp6RGBA",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every eighth", "Every eighth +1", "Every eighth +2", "Every eighth +3", "Every eighth +4", "Every eighth +5", "Every eighth +6", "Every eighth +7"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master HSI",
+      "shortName": "x16HSI",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves HSI",
+      "shortName": "x8HSI",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fourths HSI",
+      "shortName": "x4HSI",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eighths HSI",
+      "shortName": "x2HSI",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual HSI",
+      "shortName": "x1HSI",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even HSI",
+      "shortName": "Od/EvHSI",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every fourth HSI",
+      "shortName": "Skp3HSI",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every eighth HSI",
+      "shortName": "Skp6HSI",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every eighth", "Every eighth +1", "Every eighth +2", "Every eighth +3", "Every eighth +4", "Every eighth +5", "Every eighth +6", "Every eighth +7"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master RGB Strobe",
+      "shortName": "x16RGBStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves RGB Strobe",
+      "shortName": "x8RGBStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fourths RGB Strobe",
+      "shortName": "x4RGBStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eighths RGB Strobe",
+      "shortName": "x2RGBStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual RGB Strobe",
+      "shortName": "x1RGBStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even RGB Strobe",
+      "shortName": "Od/EvRGBStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every fourth RGB Strobe",
+      "shortName": "Skp3RGBStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every eighth RGB Strobe",
+      "shortName": "Skp6RGBStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every eighth", "Every eighth +1", "Every eighth +2", "Every eighth +3", "Every eighth +4", "Every eighth +5", "Every eighth +6", "Every eighth +7"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master RGBA Strobe",
+      "shortName": "x16RGBAStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves RGBA Strobe",
+      "shortName": "x8RGBAStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fourths RGBA Strobe",
+      "shortName": "x4RGBAStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eighths RGBA Strobe",
+      "shortName": "x2RGBAStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual RGBA Strobe",
+      "shortName": "x1RGBAStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even RGBA Strobe",
+      "shortName": "Od/EvRGBAStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every fourth RGBA Strobe",
+      "shortName": "Skp3RGBAStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every eighth RGBA Strobe",
+      "shortName": "Skp6RGBAStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every eighth", "Every eighth +1", "Every eighth +2", "Every eighth +3", "Every eighth +4", "Every eighth +5", "Every eighth +6", "Every eighth +7"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master HSI Strobe",
+      "shortName": "x16HSIStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves HSI Strobe",
+      "shortName": "x8HSIStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fourths HSI Strobe",
+      "shortName": "x4HSIStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eighths HSI Strobe",
+      "shortName": "x2HSIStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual HSI Strobe",
+      "shortName": "x1HSIStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even HSI Strobe",
+      "shortName": "Od/EvHSIStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every fourth HSI Strobe",
+      "shortName": "Skp3HSIStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every eighth HSI Strobe",
+      "shortName": "Skp6HSIStrb",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every eighth", "Every eighth +1", "Every eighth +2", "Every eighth +3", "Every eighth +4", "Every eighth +5", "Every eighth +6", "Every eighth +7"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master RGB Random",
+      "shortName": "x16RGBRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves RGB Random",
+      "shortName": "x8RGBRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fourths RGB Random",
+      "shortName": "x4RGBRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eighths RGB Random",
+      "shortName": "x2RGBRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual RGB Random",
+      "shortName": "x1RGBRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even RGB Random",
+      "shortName": "Od/EvRGBRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every fourth RGB Random",
+      "shortName": "Skp3RGBRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every eighth RGB Random",
+      "shortName": "Skp6RGBRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every eighth", "Every eighth +1", "Every eighth +2", "Every eighth +3", "Every eighth +4", "Every eighth +5", "Every eighth +6", "Every eighth +7"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master RGBA Random",
+      "shortName": "x16RGBARandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves RGBA Random",
+      "shortName": "x8RGBARandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fourths RGBA Random",
+      "shortName": "x4RGBARandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eighths RGBA Random",
+      "shortName": "x2RGBARandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual RGBA Random",
+      "shortName": "x1RGBARandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even RGBA Random",
+      "shortName": "Od/EvRGBARandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every fourth RGBA Random",
+      "shortName": "Skp3RGBARandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every eighth RGBA Random",
+      "shortName": "Skp6RGBARandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every eighth", "Every eighth +1", "Every eighth +2", "Every eighth +3", "Every eighth +4", "Every eighth +5", "Every eighth +6", "Every eighth +7"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master HSI Random",
+      "shortName": "x16HSIRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves HSI Random",
+      "shortName": "x8HSIRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fourths HSI Random",
+      "shortName": "x4HSIRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eighths HSI Random",
+      "shortName": "x2HSIRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual HSI Random",
+      "shortName": "x1HSIRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even HSI Random",
+      "shortName": "Od/EvHSIRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every fourth HSI Random",
+      "shortName": "Skp3HSIRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every eighth HSI Random",
+      "shortName": "Skp6HSIRandom",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every eighth", "Every eighth +1", "Every eighth +2", "Every eighth +3", "Every eighth +4", "Every eighth +5", "Every eighth +6", "Every eighth +7"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master RGB Random+OnTop",
+      "shortName": "x16RGBRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves RGB Random+OnTop",
+      "shortName": "x8RGBRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fourths RGB Random+OnTop",
+      "shortName": "x4RGBRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eighths RGB Random+OnTop",
+      "shortName": "x2RGBRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual RGB Random+OnTop",
+      "shortName": "x1RGBRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even RGB Random+OnTop",
+      "shortName": "Od/EvRGBRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every fourth RGB Random+OnTop",
+      "shortName": "Skp3RGBRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every eighth RGB Random+OnTop",
+      "shortName": "Skp6RGBRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every eighth", "Every eighth +1", "Every eighth +2", "Every eighth +3", "Every eighth +4", "Every eighth +5", "Every eighth +6", "Every eighth +7"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master RGBA Random+OnTop",
+      "shortName": "x16RGBARandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves RGBA Random+OnTop",
+      "shortName": "x8RGBARandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        "Strobe Amber",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fourths RGBA Random+OnTop",
+      "shortName": "x4RGBARandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        "Strobe Amber",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eighths RGBA Random+OnTop",
+      "shortName": "x2RGBARandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        "Strobe Amber",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual RGBA Random+OnTop",
+      "shortName": "x1RGBARandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        "Strobe Amber",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even RGBA Random+OnTop",
+      "shortName": "Od/EvRGBARandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        "Strobe Amber",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every fourth RGBA Random+OnTop",
+      "shortName": "Skp3RGBARandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        "Strobe Amber",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every eighth RGBA Random+OnTop",
+      "shortName": "Skp6RGBARandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        "Strobe Amber",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every eighth", "Every eighth +1", "Every eighth +2", "Every eighth +3", "Every eighth +4", "Every eighth +5", "Every eighth +6", "Every eighth +7"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master HSI Random+OnTop",
+      "shortName": "x16HSIRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves HSI Random+OnTop",
+      "shortName": "x8HSIRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fourths HSI Random+OnTop",
+      "shortName": "x4HSIRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eighths HSI Random+OnTop",
+      "shortName": "x2HSIRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual HSI Random+OnTop",
+      "shortName": "x1HSIRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even HSI Random+OnTop",
+      "shortName": "Od/EvHSIRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every fourth HSI Random+OnTop",
+      "shortName": "Skp3HSIRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every eighth HSI Random+OnTop",
+      "shortName": "Skp6HSIRandomOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Density",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every eighth", "Every eighth +1", "Every eighth +2", "Every eighth +3", "Every eighth +4", "Every eighth +5", "Every eighth +6", "Every eighth +7"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master RGB OnTop",
+      "shortName": "x16RGBOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves RGB OnTop",
+      "shortName": "x8RGBOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fourths RGB OnTop",
+      "shortName": "x4RGBOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eighths RGB OnTop",
+      "shortName": "x2RGBOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual RGB OnTop",
+      "shortName": "x1RGBOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even RGB OnTop",
+      "shortName": "Od/EvRGBOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every fourth RGB OnTop",
+      "shortName": "Skp3RGBOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every eighth RGB OnTop",
+      "shortName": "Skp6RGBOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every eighth", "Every eighth +1", "Every eighth +2", "Every eighth +3", "Every eighth +4", "Every eighth +5", "Every eighth +6", "Every eighth +7"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master RGBA OnTop",
+      "shortName": "x16RGBAOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves RGBA OnTop",
+      "shortName": "x8RGBAOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        "Strobe Amber",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fourths RGBA OnTop",
+      "shortName": "x4RGBAOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        "Strobe Amber",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eighths RGBA OnTop",
+      "shortName": "x2RGBAOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        "Strobe Amber",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual RGBA OnTop",
+      "shortName": "x1RGBAOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        "Strobe Amber",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even RGBA OnTop",
+      "shortName": "Od/EvRGBAOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        "Strobe Amber",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every fourth RGBA OnTop",
+      "shortName": "Skp3RGBAOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        "Strobe Amber",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every eighth RGBA OnTop",
+      "shortName": "Skp6RGBAOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Red",
+        "Strobe Green",
+        "Strobe Blue",
+        "Strobe Amber",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every eighth", "Every eighth +1", "Every eighth +2", "Every eighth +3", "Every eighth +4", "Every eighth +5", "Every eighth +6", "Every eighth +7"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master HSI OnTop",
+      "shortName": "x16HSIOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halves HSI OnTop",
+      "shortName": "x8HSIOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fourths HSI OnTop",
+      "shortName": "x4HSIOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eighths HSI OnTop",
+      "shortName": "x2HSIOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Individual HSI OnTop",
+      "shortName": "x1HSIOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odd/Even HSI OnTop",
+      "shortName": "Od/EvHSIOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Odd", "Even"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every fourth HSI OnTop",
+      "shortName": "Skp3HSIOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every fourth", "Every fourth +1", "Every fourth +2", "Every fourth +3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Every eighth HSI OnTop",
+      "shortName": "Skp6HSIOnTop",
+      "channels": [
+        "Strobe Frequency",
+        "Strobe Duration",
+        "Strobe Hue",
+        "Strobe Saturation",
+        "Strobe Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Every eighth", "Every eighth +1", "Every eighth +2", "Every eighth +3", "Every eighth +4", "Every eighth +5", "Every eighth +6", "Every eighth +7"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    }
+  ]
+}

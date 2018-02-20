@@ -1,0 +1,195 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
+  "name": "Flat Pro Flood IP65 Tri",
+  "shortName": "CLFLOODIP65TRI",
+  "categories": ["Blinder", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2017-12-25",
+    "lastModifyDate": "2017-12-25"
+  },
+  "manualURL": "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLFLOODIP65TRI/CLFLOODIP65TRI_CAMEO_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf",
+  "physical": {
+    "dimensions": [180, 180, 120],
+    "weight": 3.6,
+    "power": 75,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "60 W COB LED"
+    },
+    "lens": {
+      "degreesMinMax": [120, 120]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "type": "Intensity",
+      "defaultValue": 0
+    },
+    "Color Macros Simple": {
+      "name": "Color Macros",
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 36],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [37, 73],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [74, 110],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [111, 147],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [148, 184],
+          "name": "Magenta",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [185, 221],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [222, 255],
+          "name": "White",
+          "color": "#ffffff"
+        }
+      ]
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "No function"
+        },
+        {
+          "range": [1, 255],
+          "name": "Strobe 1-20Hz"
+        }
+      ]
+    },
+    "Color Macros Extended": {
+      "name": "Color Macros",
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "Blackout",
+          "color": "#000000"
+        },
+        {
+          "range": [5, 15],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [16, 26],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [27, 37],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [38, 48],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [49, 59],
+          "name": "Magenta",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [60, 70],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [71, 80],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [81, 150],
+          "name": "Color jump slow-fast"
+        },
+        {
+          "range": [151, 255],
+          "name": "Color fade slow-fast"
+        }
+      ]
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer",
+        "Color Macros Simple"
+      ]
+    },
+    {
+      "name": "3-channel 1",
+      "shortName": "3ch1",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Color Macros Extended"
+      ]
+    },
+    {
+      "name": "3-channel 2",
+      "shortName": "3ch2",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macros Extended"
+      ]
+    }
+  ]
+}

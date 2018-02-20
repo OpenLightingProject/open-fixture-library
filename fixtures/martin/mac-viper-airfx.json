@@ -1,14 +1,19 @@
 {
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
   "name": "MAC Viper AirFX",
   "shortName": "MartinViperAirFX",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["novasfronteiras.co"],
     "createDate": "2017-08-03",
-    "lastModifyDate": "2017-08-03"
+    "lastModifyDate": "2017-10-16"
   },
   "comment": "Viper Air FX:\n- 35000 Lumens \n- 1:5 zoom - Continuous and fast zoom with auto-linked focus\n- 160 mm precision PC front lens for fat beam looks\n- The Martin Quadray Module is available as an accessory for the MAC Viper AirFX. It splits the MAC Viper AirFX beam into four individually controllable rays.",
   "manualURL": "http://www.martin.com/files/files/productdocuments/11_MANUALS/999/UM_MACViperAirFX_EN_B.pdf",
+  "rdm": {
+    "modelId": 44,
+    "softwareVersion": "1.2.0"
+  },
   "physical": {
     "dimensions": [473, 749, 566],
     "weight": 35.7,
@@ -23,6 +28,7 @@
       "degreesMinMax": [11, 58]
     },
     "focus": {
+      "type": "Head",
       "panMax": 540,
       "tiltMax": 268
     }
@@ -852,7 +858,6 @@
             "Quadray 4": "Ray 4 Rotation"
           }
         },
-        
         {
           "range": [81, 100],
           "name": "No function",
@@ -1179,6 +1184,7 @@
     {
       "name": "Extended",
       "shortName": "ext",
+      "rdmPersonalityIndex": 1,
       "channels": [
         "Strobe / Shutter",
         "Dimmer fade",

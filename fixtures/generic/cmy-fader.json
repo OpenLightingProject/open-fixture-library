@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
+  "name": "CMY Fader",
+  "shortName": "CMY",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2017-12-12",
+    "lastModifyDate": "2017-12-12"
+  },
+  "availableChannels": {
+    "Cyan": {
+      "type": "Single Color",
+      "color": "Cyan",
+      "fineChannelAliases": ["Cyan fine", "Cyan fine^2"]
+    },
+    "Magenta": {
+      "type": "Single Color",
+      "color": "Magenta",
+      "fineChannelAliases": ["Magenta fine", "Magenta fine^2"]
+    },
+    "Yellow": {
+      "type": "Single Color",
+      "color": "Yellow",
+      "fineChannelAliases": ["Yellow fine", "Yellow fine^2"]
+    }
+  },
+  "modes": [
+    {
+      "name": "8 bit",
+      "shortName": "8bit",
+      "channels": [
+        "Cyan",
+        "Magenta",
+        "Yellow"
+      ]
+    },
+    {
+      "name": "16 bit",
+      "shortName": "16bit",
+      "channels": [
+        "Cyan",
+        "Cyan fine",
+        "Magenta",
+        "Magenta fine",
+        "Yellow",
+        "Yellow fine"
+      ]
+    },
+    {
+      "name": "24 bit",
+      "shortName": "24bit",
+      "channels": [
+        "Cyan",
+        "Cyan fine",
+        "Cyan fine^2",
+        "Magenta",
+        "Magenta fine",
+        "Magenta fine^2",
+        "Yellow",
+        "Yellow fine",
+        "Yellow fine^2"
+      ]
+    }
+  ]
+}

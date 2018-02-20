@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGBA Fader",
+  "shortName": "RGBA",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2017-12-12",
+    "lastModifyDate": "2017-12-12"
+  },
+  "availableChannels": {
+    "Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "fineChannelAliases": ["Red fine", "Red fine^2"]
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "fineChannelAliases": ["Green fine", "Green fine^2"]
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "fineChannelAliases": ["Blue fine", "Blue fine^2"]
+    },
+    "Amber": {
+      "type": "Single Color",
+      "color": "Amber",
+      "fineChannelAliases": ["Amber fine", "Amber fine^2"]
+    }
+  },
+  "modes": [
+    {
+      "name": "8 bit",
+      "shortName": "8bit",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber"
+      ]
+    },
+    {
+      "name": "16 bit",
+      "shortName": "16bit",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Amber",
+        "Amber fine"
+      ]
+    },
+    {
+      "name": "24 bit",
+      "shortName": "24bit",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Red fine^2",
+        "Green",
+        "Green fine",
+        "Green fine^2",
+        "Blue",
+        "Blue fine",
+        "Blue fine^2",
+        "Amber",
+        "Amber fine",
+        "Amber fine^2"
+      ]
+    }
+  ]
+}

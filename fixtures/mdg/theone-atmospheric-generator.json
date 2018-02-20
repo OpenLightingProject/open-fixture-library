@@ -1,0 +1,95 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
+  "name": "theONE Atmospheric Generator",
+  "shortName": "MDGtheONE",
+  "categories": ["Hazer", "Smoke"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2017-10-13",
+    "lastModifyDate": "2017-10-13"
+  },
+  "comment": "Fog output: 85m³ per minute in Fog mode, at full pressure",
+  "manualURL": "http://www.mdgfog.com/c/mdg/file_db/document.file_en/theONE-User-Guide-Rev-Ae.pdf",
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "dimensions": [250, 610, 300],
+    "weight": 23,
+    "power": 1480,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Power": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Unit off"
+        },
+        {
+          "range": [128, 255],
+          "name": "Unit On"
+        }
+      ]
+    },
+    "Haze / Fog": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Haze"
+        },
+        {
+          "range": [128, 255],
+          "name": "Fog"
+        }
+      ]
+    },
+    "Fog output": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0-100%"
+        }
+      ]
+    },
+    "Fog on/off": {
+      "type": "Fog",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Fog off"
+        },
+        {
+          "range": [128, 255],
+          "name": "Fog on"
+        }
+      ]
+    },
+    "External Fan": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0-100%"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Power",
+        "Haze / Fog",
+        "Fog output",
+        "Fog on/off",
+        "External Fan"
+      ]
+    }
+  ]
+}

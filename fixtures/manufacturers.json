@@ -1,6 +1,12 @@
 {
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/manufacturers.json",
   "5star-systems": {
     "name": "5Star Systems"
+  },
+  "adb": {
+    "name": "ADB",
+    "website": "https://www.adbstagelight.com",
+    "rdmId": 16708
   },
   "abstract": {
     "name": "Abstract",
@@ -10,9 +16,50 @@
     "name": "American DJ",
     "website": "http://www.adj.com/"
   },
+  "ayra": {
+    "name": "Ayra",
+    "website": "https://www.bax-shop.co.uk/ayra"
+  },
   "cameo": {
     "name": "cameo",
     "website": "http://www.cameolight.com/"
+  },
+  "chauvet-dj": {
+    "name": "Chauvet DJ",
+    "website": "https://www.chauvetdj.com/",
+    "rdmId": 8612
+  },
+  "chroma-q": {
+    "name": "Chroma-Q",
+    "website": "http://www.chroma-q.com",
+    "rdmId": 21360
+  },
+  "clay-paky": {
+    "name": "Clay Paky",
+    "website": "https://www.claypaky.it/en/home/"
+  },
+  "coemar": {
+    "name": "Coemar",
+    "website": "http://www.coemar.com/",
+    "rdmId": 17229
+  },
+  "dts": {
+    "name": "DTS",
+    "website": "https://dts-lighting.it/",
+    "rdmId": 1808
+  },
+  "elation": {
+    "name": "Elation",
+    "website": "http://www.elationlighting.com/",
+    "rdmId": 8870
+  },
+  "eliminator": {
+    "name": "Eliminator Lighting",
+    "website": "http://www.eliminatorlighting.com/"
+  },
+  "equinox": {
+    "name": "Equinox",
+    "website": "http://www.prolight.co.uk"
   },
   "eurolite": {
     "name": "Eurolite",
@@ -26,44 +73,71 @@
     "name": "Generic",
     "comment": "Use this pseudo manufacturer if you need to quick patch some channels without having to create a new fixture."
   },
+  "glp": {
+    "name": "German Light Products",
+    "website": "https://www.glp.de",
+    "rdmId": 26476
+  },
   "gruft": {
     "name": "Gruft",
     "comment": "Görli + Edelnörd"
+  },
+  "jb-lighting": {
+    "name": "JB-Lighting",
+    "website": "http://jb-lighting.de/"
+  },
+  "jb-systems": {
+    "name": "JB Systems",
+    "website": "https://jb-systems.eu/"
+  },
+  "kam": {
+    "name": "KAM",
+    "comment": "No website - no longer trading"
   },
   "lightmaxx": {
     "name": "lightmaXX",
     "website": "https://www.musicstore.de/de_DE/EUR/Licht/Lightmaxx/cat-LICHT-LIGLIGHT"
   },
+  "look": {
+    "name": "Look Solutions",
+    "website": "http://www.looksolutions.com"
+  },
   "martin": {
     "name": "Martin",
-    "website": "http://www.martin.com/"
-  },
-  "robe": {
-    "name": "Robe",
-    "website": "https://www.robe.cz/"
-  },
-  "showtec": {
-    "name": "Showtec",
-    "website": "http://www.highlite.nl/"
-  },
-  "elation": {
-    "name": "Elation",
-    "website": "http://www.elationlighting.com/"
-  },
-  "dts": {
-    "name": "DTS",
-    "website": "https://dts-lighting.it/"
+    "website": "http://www.martin.com/",
+    "rdmId": 19792
   },
   "mdg": {
     "name": "MDG",
-    "website": "http://www.mdgfog.com/en"
-  },
-  "chauvet-dj": {
-    "name": "Chauvet DJ",
-    "website": "https://www.chauvetdj.com/"
+    "website": "http://www.mdgfog.com/en",
+    "rdmId": 19780
   },
   "prolights": {
     "name": "Prolights",
-    "website": "http://prolights.it/"
+    "website": "http://prolights.it/",
+    "rdmId": 5584
+  },
+  "qtx": {
+    "name": "QTX",
+    "website": "http://www.avsl.com/brands/qtx"
+  },
+  "robe": {
+    "name": "Robe",
+    "website": "https://www.robe.cz/",
+    "rdmId": 21075
+  },
+  "showtec": {
+    "name": "Showtec",
+    "website": "http://www.highlite.nl/",
+    "rdmId": 10676
+  },
+  "stairville": {
+    "name": "Stairville",
+    "website": "http://www.thomann.de"
+  },
+  "venue": {
+    "name": "Venue",
+    "comment": "Venue by Proline",
+    "website": "http://venuelightingeffects.com/"
   }
 }

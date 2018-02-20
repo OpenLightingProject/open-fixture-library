@@ -1,14 +1,18 @@
 {
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
   "name": "MAC Aura",
-  "shortName": "MartinMacAura",
-  "categories": ["Moving Head"],
+  "shortName": "MartinAura",
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["novasfronteiras.co"],
     "createDate": "2017-08-03",
-    "lastModifyDate": "2017-08-03"
+    "lastModifyDate": "2017-12-09"
   },
-  "comment": "moving wash:\n- single-lens wash with fully premixed color \n- broad color palette, RGBW color mixing \n- eye-candy Aura EffectsTM",
+  "comment": "moving wash:\n- single-lens wash with fully premixed color \n- broad color palette, RGBW color mixing \n- eye-candy Aura EffectsTM\nNote: If \"Color Calib\" (see settings) is enabled, \"Beam White\" has no effect – white LEDs are activated by RGB mixing",
   "manualURL": "http://www.martin.com/files/files/productdocuments/11_MANUALS/999/UM_MACAura_EN_B.pdf",
+  "rdm": {
+    "modelId": 4
+  },
   "physical": {
     "dimensions": [302, 360, 302],
     "weight": 5.6,
@@ -24,7 +28,7 @@
       "degreesMinMax": [11, 58]
     },
     "focus": {
-      "type": "Fixed",
+      "type": "Head",
       "panMax": 540,
       "tiltMax": 232
     }
@@ -479,16 +483,10 @@
     },
     "Beam white": {
       "type": "Single Color",
-      "color": "White",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Beam white  White (0>100)  Note: if  Color Calib  is set to  On , this channel has no effect –  white LEDs are activated by RGB mixing"
-        }
-      ]
+      "color": "White"
     },
     "Beam CTC": {
-      "type": "Maintenance",
+      "type": "Color Temperature",
       "capabilities": [
         {
           "range": [0, 19],
@@ -777,7 +775,7 @@
           "switchChannels": {
             "FX1 adjust": "FX1 adjust n/a"
           }
-        }        
+        }
       ]
     },
     "FX1 adjust n/a": {
@@ -1075,7 +1073,7 @@
           "switchChannels": {
             "FX2 adjust": "FX2 adjust n/a"
           }
-        }        
+        }
       ]
     },
     "FX2 adjust n/a": {

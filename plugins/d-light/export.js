@@ -1,21 +1,24 @@
-const xmlbuilder = require('xmlbuilder');
-const sanitize = require('sanitize-filename');
+const xmlbuilder = require(`xmlbuilder`);
+const sanitize = require(`sanitize-filename`);
 
-const Channel = require('../../lib/model/Channel.js');
-const FineChannel = require('../../lib/model/FineChannel.js');
-const SwitchingChannel = require('../../lib/model/SwitchingChannel.js');
+const {
+  Channel,
+  FineChannel,
+  MatrixChannel,
+  SwitchingChannel
+} = require(`../../lib/model.js`);
 
-module.exports.name = 'D::Light';
-module.exports.version = '0.1.0';
+module.exports.name = `D::Light`;
+module.exports.version = `0.1.0`;
 
 module.exports.export = function exportDLight(fixtures, options) {
-  let deviceFiles = [];
+  const deviceFiles = [];
 
   for (const fixture of fixtures) {
     // add device for each mode
     for (const mode of fixture.modes) {
-      let xml = xmlbuilder.begin()
-        .declaration('1.0')
+      const xml = xmlbuilder.begin()
+        .declaration(`1.0`)
         .element({
           Device: {
             'OFL_Export': {
@@ -27,10 +30,10 @@ module.exports.export = function exportDLight(fixtures, options) {
             },
             ManufacturerName: fixture.manufacturer.name,
             ModelName: `${fixture.name} (${mode.name})`,
-            creationDate: fixture.meta.createDate.toISOString().split('T')[0]
+            creationDate: fixture.meta.createDate.toISOString().split(`T`)[0]
           }
         })
-        .element('Attributes');
+        .element(`Attributes`);
 
       // channels are grouped by their channel type which is called AttributesDefinition in D::Light
       const channelsByAttribute = getChannelsByAttribute(mode.channels);
@@ -42,9 +45,9 @@ module.exports.export = function exportDLight(fixtures, options) {
         name: `${fixture.manufacturer.key}/${fixture.key}-${sanitize(mode.shortName)}.xml`,
         content: xml.end({
           pretty: true,
-          indent: '  '
+          indent: `  `
         }),
-        mimetype: 'application/xml'
+        mimetype: `application/xml`
       });
     }
   }
@@ -66,7 +69,7 @@ function addAttribute(xml, mode, attribute, channels) {
 }
 
 function addChannel(xmlAttribute, mode, attribute, channel, index) {
-  let xmlChannel = xmlAttribute.element({
+  const xmlChannel = xmlAttribute.element({
     ThisAttribute: {
       '@id': index,
       HOME: {
@@ -86,7 +89,7 @@ function addChannel(xmlAttribute, mode, attribute, channel, index) {
       }
     }
   });
-  
+
   addCapabilities(xmlChannel, channel);
 }
 
@@ -101,7 +104,7 @@ function getParameterName(mode, attribute, channel) {
   }
 
   switch (attribute) {
-    case 'FOCUS':
+    case `FOCUS`:
       return channel.type.toUpperCase(); // PAN or TILT
 
     // in all other attributes, custom text is allowed
@@ -109,9 +112,9 @@ function getParameterName(mode, attribute, channel) {
     default:
       return uniqueName
         .toUpperCase()
-        .replace(/ /g, '_')
-        .replace(/\//g, '|')
-        .replace(/COLOR/g, 'COLOUR');
+        .replace(/ /g, `_`)
+        .replace(/\//g, `|`)
+        .replace(/COLOR/g, `COLOUR`);
   }
 }
 
@@ -119,7 +122,7 @@ function addCapabilities(xmlChannel, channel) {
   if (channel instanceof Channel && channel.hasCapabilities) {
     const caps = channel.capabilities;
 
-    let xmlCapabilities = xmlChannel.element({
+    const xmlCapabilities = xmlChannel.element({
       Definitions: {
         '@index': caps.length
       }
@@ -137,14 +140,18 @@ function addCapability(xmlCapabilities, cap) {
       '@min': cap.range.start,
       '@max': cap.range.end,
       '@snap': cap.menuClickDmxValue,
-      '@timeHolder': '0',
-      '@dummy': '0',
+      '@timeHolder': `0`,
+      '@dummy': `0`,
       '#text': cap.name
     }
   });
 }
 
 function getDefaultValue(channel) {
+  if (channel instanceof MatrixChannel) {
+    channel = channel.wrappedChannel;
+  }
+
   if (channel instanceof SwitchingChannel) {
     return getDefaultValue(channel.defaultChannel);
   }
@@ -155,7 +162,7 @@ function getDefaultValue(channel) {
 }
 
 function getChannelsByAttribute(channels) {
-  let channelsByAttribute = {
+  const channelsByAttribute = {
     'INTENSITY': [],
     'COLOUR': [],
     'FOCUS': [],
@@ -168,6 +175,10 @@ function getChannelsByAttribute(channels) {
   };
 
   for (let channel of channels) {
+    if (channel instanceof MatrixChannel) {
+      channel = channel.wrappedChannel;
+    }
+
     channelsByAttribute[getChannelAttribute(channel)].push(channel);
   }
 
@@ -177,29 +188,33 @@ function getChannelsByAttribute(channels) {
   for (const emptyAttribute of emptyAttributes) {
     delete channelsByAttribute[emptyAttribute];
   }
-  
+
   return channelsByAttribute;
 }
 
 function getChannelAttribute(channel) {
   if (channel instanceof SwitchingChannel) {
     channel = channel.defaultChannel;
+
+    if (channel instanceof MatrixChannel) {
+      channel = channel.wrappedChannel;
+    }
   }
   if (channel instanceof FineChannel) {
     if (channel.fineness === 1) {
-      return 'FINE';
+      return `FINE`;
     }
-    return 'EXTRA';
+    return `EXTRA`;
   }
 
   const oflToDLightMap = {
-    INTENSITY: ['Intensity'],
-    COLOUR: ['Single Color', 'Multi-Color', 'Color Temperature'],
-    FOCUS: ['Pan', 'Tilt'],
-    BEAM: ['Iris', 'Focus', 'Zoom'],
-    EFFECT: ['Strobe', 'Shutter', 'Speed', 'Gobo', 'Prism', 'Effect', 'Fog'],
-    CONTROL: ['Maintenance'],
-    EXTRA: ['Nothing']
+    INTENSITY: [`Intensity`],
+    COLOUR: [`Single Color`, `Multi-Color`, `Color Temperature`],
+    FOCUS: [`Pan`, `Tilt`],
+    BEAM: [`Iris`, `Focus`, `Zoom`],
+    EFFECT: [`Strobe`, `Shutter`, `Speed`, `Gobo`, `Prism`, `Effect`, `Fog`],
+    CONTROL: [`Maintenance`],
+    EXTRA: [`Nothing`]
   };
 
   for (const attribute of Object.keys(oflToDLightMap)) {
@@ -207,5 +222,5 @@ function getChannelAttribute(channel) {
       return attribute;
     }
   }
-  return 'EXTRA'; // default if new types are added to OFL
+  return `EXTRA`; // default if new types are added to OFL
 }

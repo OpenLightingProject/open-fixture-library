@@ -90,14 +90,13 @@
 .fixture-header > .download-button {
   display: block;
   position: relative;
-  margin: 0 1ex 1em auto;
-  width: 14em;
+  margin: 0 0 1em;
 }
 
 .category-badge {
   display: inline-block;
   padding: 4px 1.5ex 4px 1ex;
-  margin: 0 0 4px;
+  margin: 0 4px 4px 0;
   border-radius: 5000px; /* see http://stackoverflow.com/a/18795153/451391 */
   background: $grey-100;
 
@@ -113,6 +112,7 @@
 
   &.selected {
     background-color: $blue-700;
+    cursor: move;
 
     &:link,
     &:visited {
@@ -158,10 +158,67 @@ section {
   padding-top: 1.2ex;
 }
 
+.expand-all,
+.collapse-all {
+  margin-left: 1ex;
+
+  html:not(.js) & {
+    display: none;
+  }
+}
+
+.channel > summary {
+  display: block;
+  cursor: pointer;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &::after {
+    /* chevron down */
+    border-color: $icon-dark;
+    border-style: solid;
+    border-width: 0.17em 0.17em 0 0;
+    content: '';
+    display: inline-block;
+    height: 0.4em;
+    left: 1.2ex;
+    position: relative;
+    top: -0.2em;
+    transform: rotate(135deg);
+    transition-duration: 0.2s;
+    transition-property: transform, top, border-color;
+    vertical-align: middle;
+    width: 0.4em;
+  }
+
+  &:hover::after {
+    border-color: $icon-dark-hover;
+  }
+}
+.channel[open] {
+  padding-bottom: 2ex;
+
+  & > summary::after {
+    /* chevron up */
+    top: 0;
+    transform: rotate(315deg);
+  }
+}
+
+.channel-pixel {
+  display: flex;
+}
+
+details.channel > summary > .icon,
+div.channel > .icon {
+  margin-right: 1.2ex;
+}
+
 .label {
   display: block;
   color: $secondary-text-dark;
-  vertical-align: top;
 }
 
 .value {
@@ -176,22 +233,44 @@ section {
   line-height: 1.5;
 }
 
-.color-circle {
-  display: inline-block;
-  width: 2ex;
-  height: 2ex;
-  vertical-align: middle;
-  border: 1px solid #ddd;
-  border-radius: 50%;
-  overflow: hidden;
+.matrix > .z-level {
+  border-collapse: collapse;
+  border-spacing: 0;
+  overflow: auto;
+  padding-top: 1px;
+  padding-left: 1px;
+  margin-bottom: 8px;
 
-  & > * {
+  & > .row {
     display: block;
-    width: 4ex;
-    height: 4ex;
-    margin: -1ex 0 0 1ex;
-    transform: rotate(45deg);
-    transform-origin: left center;    
+    margin-top: -1px;
+    white-space: nowrap;
+
+    & > .pixel {
+      display: inline-block;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -ms-flex-align: center;
+      align-items: center;
+      line-height: 1.4em;
+      text-align: center;
+      margin-left: -1px;
+      vertical-align: top;
+      font-size: 90%;
+      border: 1px solid transparent;
+      white-space: normal;
+      transition: background .2s;
+
+      &:not(:empty) {
+        border-color: $icon-inactive-dark;
+      }
+
+      &.highlight {
+        background: $divider-dark;
+      }
+    }
   }
 }
 
@@ -247,17 +326,6 @@ a.fixture-mode {
   text-align: center;
 }
 
-.switch-to-channel {
-  line-height: 1rem;
-  padding-bottom: .8rem;
-  font-size: 82%;
-}
-
-/* switched channels */
-.fixture-mode ol ol {
-  list-style-type: lower-alpha;
-}
-
 /* if a mode is the only mode, hide its remove button */
 .fixture-modes > .fixture-mode:first-child:nth-last-child(3) > .close {
   display: none;
@@ -272,24 +340,35 @@ a.fixture-mode {
   content: " #" counter(modes);
 }
 
-.mode-channels a,
-.capabilities a {
+ol.mode-channels {
+  padding-left: 1.9em;
+  min-height: 1em;
+
+  /* switched channels */
+  & ol {
+    list-style-type: lower-alpha;
+    padding-left: 1.1em;
+  }
+}
+
+.mode-channels a {
   opacity: 0;
   float: right;
   width: 1.4em;
   height: 1.4em;
   padding: 0.3em;
   transition: opacity 0.1s;
-  display: inline-block;
 }
 .mode-channels > li:hover > a,
-.mode-channels a:focus,
-.capabilities > li:hover > a,
-.capabilities a:focus {
+.mode-channels a:focus {
   opacity: 1;
 }
 
-.capabilities {
+.mode-channels .drag-handle {
+  cursor: move;
+}
+
+.capability-editor {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -297,8 +376,10 @@ a.fixture-mode {
   & > li {
     padding: 1rem 0 0;
 
-    & > .value {
+    & > .capability-data {
       margin-left: 2ex;
+      display: inline-block;
+      vertical-align: top;
     }
 
     & .name {
@@ -307,6 +388,80 @@ a.fixture-mode {
     & .color {
       width: 10ex;
     }
+
+    & a {
+      opacity: 0;
+      width: 1.4em;
+      height: 1.4em;
+      padding: 0.3em;
+      transition: opacity 0.1s;
+    }
+    &:hover a,
+    & a:focus {
+      opacity: 1;
+    }
+  }
+}
+
+.capabilities-table {
+  border-collapse: collapse;
+  table-layout: fixed;
+
+  &:not(.computed) {
+    width: 100%;
+  }
+
+  th {
+    font-weight: normal;
+    color: $secondary-text-dark;
+  }
+
+  td, th {
+    padding: 0 4px;
+    vertical-align: top;
+  }
+
+  .capability-range0 {
+    text-align: right;
+    padding-right: 2px;
+  }
+
+  .capability-range-separator {
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .capability-range1 {
+    text-align: left;
+    padding-left: 2px;
+  }
+
+  &.computed .capability-name {
+    max-width: 20em;
+  }
+
+  .capability-menuClick {
+    text-align: right;
+  }
+
+  .switch-to-channel {
+    line-height: 1rem;
+    padding-bottom: 4px;
+    font-size: 82%;
+
+    & > .switching-channel-key {
+      color: $secondary-text-dark;
+    }
+  }
+
+  .inherited,
+  .inherited code {
+    color: $disabled-text-dark;
+  }
+  .computed,
+  .computed code {
+    color: $primary-text-dark;
   }
 }
 
@@ -359,6 +514,15 @@ a.fixture-mode {
       flex-grow: 0;
       flex-shrink: 0;
       margin: 1.5rem 0 0;
+      width: 14em;
+
+      &.big {
+        width: 19em;
+
+        & .title {
+          font-size: 1.1em;
+        }
+      }
     }
   }
 

@@ -1,10 +1,11 @@
 {
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
   "name": "LED TMH-7",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["FloEdelmann"],
+    "authors": ["Flo Edelmann"],
     "createDate": "2017-09-07",
-    "lastModifyDate": "2017-09-07"
+    "lastModifyDate": "2017-10-16"
   },
   "manualURL": "http://media.steinigke.de/download_t/51785973-MANUAL-2.10-en-de_00093407.pdf",
   "physical": {
