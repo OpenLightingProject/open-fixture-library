@@ -832,7 +832,8 @@
                         "minItems": 1,
                         "items": {
                           "type": "string",
-                          "pattern": "^#[0-9a-f]{6}$"
+                          "pattern": "^#[0-9a-f]{6}$",
+                          "format": "color-hex"
                         }
                       },
                       "colorsStart": {
@@ -840,7 +841,8 @@
                         "minItems": 1,
                         "items": {
                           "type": "string",
-                          "pattern": "^#[0-9a-f]{6}$"
+                          "pattern": "^#[0-9a-f]{6}$",
+                          "format": "color-hex"
                         }
                       },
                       "colorsEnd": {
@@ -848,7 +850,8 @@
                         "minItems": 1,
                         "items": {
                           "type": "string",
-                          "pattern": "^#[0-9a-f]{6}$"
+                          "pattern": "^#[0-9a-f]{6}$",
+                          "format": "color-hex"
                         }
                       }
                     },
@@ -3585,7 +3588,8 @@
                           "minItems": 1,
                           "items": {
                             "type": "string",
-                            "pattern": "^#[0-9a-f]{6}$"
+                            "pattern": "^#[0-9a-f]{6}$",
+                            "format": "color-hex"
                           }
                         },
                         "colorsStart": {
@@ -3593,7 +3597,8 @@
                           "minItems": 1,
                           "items": {
                             "type": "string",
-                            "pattern": "^#[0-9a-f]{6}$"
+                            "pattern": "^#[0-9a-f]{6}$",
+                            "format": "color-hex"
                           }
                         },
                         "colorsEnd": {
@@ -3601,7 +3606,8 @@
                           "minItems": 1,
                           "items": {
                             "type": "string",
-                            "pattern": "^#[0-9a-f]{6}$"
+                            "pattern": "^#[0-9a-f]{6}$",
+                            "format": "color-hex"
                           }
                         }
                       },
@@ -6448,7 +6454,8 @@
                         "minItems": 1,
                         "items": {
                           "type": "string",
-                          "pattern": "^#[0-9a-f]{6}$"
+                          "pattern": "^#[0-9a-f]{6}$",
+                          "format": "color-hex"
                         }
                       },
                       "colorsStart": {
@@ -6456,7 +6463,8 @@
                         "minItems": 1,
                         "items": {
                           "type": "string",
-                          "pattern": "^#[0-9a-f]{6}$"
+                          "pattern": "^#[0-9a-f]{6}$",
+                          "format": "color-hex"
                         }
                       },
                       "colorsEnd": {
@@ -6464,7 +6472,8 @@
                         "minItems": 1,
                         "items": {
                           "type": "string",
-                          "pattern": "^#[0-9a-f]{6}$"
+                          "pattern": "^#[0-9a-f]{6}$",
+                          "format": "color-hex"
                         }
                       }
                     },
@@ -9201,7 +9210,8 @@
                           "minItems": 1,
                           "items": {
                             "type": "string",
-                            "pattern": "^#[0-9a-f]{6}$"
+                            "pattern": "^#[0-9a-f]{6}$",
+                            "format": "color-hex"
                           }
                         },
                         "colorsStart": {
@@ -9209,7 +9219,8 @@
                           "minItems": 1,
                           "items": {
                             "type": "string",
-                            "pattern": "^#[0-9a-f]{6}$"
+                            "pattern": "^#[0-9a-f]{6}$",
+                            "format": "color-hex"
                           }
                         },
                         "colorsEnd": {
@@ -9217,7 +9228,8 @@
                           "minItems": 1,
                           "items": {
                             "type": "string",
-                            "pattern": "^#[0-9a-f]{6}$"
+                            "pattern": "^#[0-9a-f]{6}$",
+                            "format": "color-hex"
                           }
                         }
                       },
