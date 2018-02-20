@@ -14,8 +14,7 @@
 
     <section class="name">
       <app-simple-label label="Name">
-        <app-property-input
-          type="text"
+        <app-property-input-text
           v-model="mode.name"
           :schema-property="properties.mode.name.allOf[1]"
           :required="true"
@@ -27,8 +26,7 @@
 
     <section class="shortName">
       <app-simple-label label="Unique short name">
-        <app-property-input
-          type="text"
+        <app-property-input-text
           v-model="mode.shortName"
           :schema-property="properties.mode.shortName.allOf[1]"
           hint="e.g. ext; defaults to name"
@@ -38,8 +36,7 @@
 
     <section v-if="fixture.rdmModelId !== null" class="rdmPersonalityIndex">
       <app-simple-label label="RDM personality index">
-        <app-property-input
-          type="number"
+        <app-property-input-number
           v-model="mode.rdmPersonalityIndex"
           :schema-property="properties.mode.rdmPersonalityIndex" />
       </app-simple-label>
@@ -131,14 +128,16 @@ import schemaProperties from '~~/lib/schema-properties.js';
 
 import svgVue from '~/components/svg.vue';
 import simpleLabelVue from '~/components/simple-label.vue';
-import propertyInputVue from '~/components/property-input.vue';
+import propertyInputNumberVue from '~/components/property-input-number.vue';
+import propertyInputTextVue from '~/components/property-input-text.vue';
 import editorPhysicalVue from '~/components/editor-physical.vue';
 
 export default {
   components: {
     'app-svg': svgVue,
     'app-simple-label': simpleLabelVue,
-    'app-property-input': propertyInputVue,
+    'app-property-input-number': propertyInputNumberVue,
+    'app-property-input-text': propertyInputTextVue,
     'app-editor-physical': editorPhysicalVue
   },
   props: {

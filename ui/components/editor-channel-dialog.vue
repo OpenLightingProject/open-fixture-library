@@ -30,8 +30,7 @@
       <div v-else>
         <section class="channel-name">
           <app-simple-label label="Name">
-            <app-property-input
-              type="text"
+            <app-property-input-text
               v-model="channel.name"
               :schema-property="properties.channel.name"
               :required="true"
@@ -43,14 +42,12 @@
 
         <section class="channel-type">
           <app-simple-label label="Type">
-            <app-property-input
-              type="select"
+            <app-property-input-select
               v-model="channel.type"
               :schema-property="properties.channel.type"
               :required="true"
               addition-hint="other channel type" />
-            <app-property-input
-              type="text"
+            <app-property-input-text
               v-if="channel.type === `[add-value]`"
               v-model="channel.typeNew"
               :schema-property="properties.definitions.nonEmptyString"
@@ -61,14 +58,12 @@
 
         <section class="channel-color" v-if="channel.type === `Single Color`">
           <app-simple-label label="Color">
-            <app-property-input
-              type="select"
+            <app-property-input-select
               v-model="channel.color"
               :schema-property="properties.channel.color"
               :required="true"
               addition-hint="other channel color" />
-            <app-property-input
-              type="text"
+            <app-property-input-text
               v-if="channel.color === `[add-value]`"
               v-model="channel.colorNew"
               :schema-property="properties.definitions.nonEmptyString"
@@ -113,8 +108,7 @@
 
         <section class="channel-invert">
           <app-simple-label label="Invert?">
-            <app-property-input
-              type="boolean"
+            <app-property-input-boolean
               v-model="channel.invert"
               :schema-property="properties.channel.invert" />
           </app-simple-label>
@@ -122,8 +116,7 @@
 
         <section class="channel-constant">
           <app-simple-label label="Constant?">
-            <app-property-input
-              type="boolean"
+            <app-property-input-boolean
               v-model="channel.constant"
               :schema-property="properties.channel.constant" />
           </app-simple-label>
@@ -131,8 +124,7 @@
 
         <section class="channel-crossfade">
           <app-simple-label label="Crossfade?">
-            <app-property-input
-              type="boolean"
+            <app-property-input-boolean
               v-model="channel.crossfade"
               :schema-property="properties.channel.crossfade" />
           </app-simple-label>
@@ -140,8 +132,7 @@
 
         <section class="channel-precedence">
           <app-simple-label label="Precedence">
-            <app-property-input
-              type="select"
+            <app-property-input-select
               v-model="channel.precedence"
               :schema-property="properties.channel.precedence" />
           </app-simple-label>
@@ -182,13 +173,17 @@ import schemaProperties from '~~/lib/schema-properties.js';
 
 import a11yDialogVue from '~/components/a11y-dialog.vue';
 import simpleLabelVue from '~/components/simple-label.vue';
-import propertyInputVue from '~/components/property-input.vue';
+import propertyInputBooleanVue from '~/components/property-input-boolean.vue';
+import propertyInputSelectVue from '~/components/property-input-select.vue';
+import propertyInputTextVue from '~/components/property-input-text.vue';
 
 export default {
   components: {
     'app-a11y-dialog': a11yDialogVue,
     'app-simple-label': simpleLabelVue,
-    'app-property-input': propertyInputVue
+    'app-property-input-boolean': propertyInputBooleanVue,
+    'app-property-input-select': propertyInputSelectVue,
+    'app-property-input-text': propertyInputTextVue
   },
   model: {
     prop: `channel`

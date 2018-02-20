@@ -38,8 +38,7 @@
         <div v-else>
           <section class="new-manufacturer-name">
             <app-simple-label label="Name">
-              <app-property-input
-                type="text"
+              <app-property-input-text
                 v-model="fixture.newManufacturerName"
                 :schema-property="properties.manufacturer.name"
                 :required="true"
@@ -49,8 +48,7 @@
 
           <section class="new-manufacturer-shortName">
             <app-simple-label label="Unique short name">
-              <app-property-input
-                type="text"
+              <app-property-input-text
                 v-model="fixture.newManufacturerShortName"
                 :schema-property="properties.manufacturerKey"
                 :required="true"
@@ -60,8 +58,8 @@
 
           <section class="new-manufacturer-website">
             <app-simple-label label="Website">
-              <app-property-input
-                type="url"
+              <app-property-input-text
+                type="text"
                 v-model="fixture.newManufacturerWebsite"
                 :schema-property="properties.manufacturer.website" />
             </app-simple-label>
@@ -69,8 +67,7 @@
 
           <section class="new-manufacturer-comment">
             <app-simple-label label="Comment">
-              <app-property-input
-                type="textarea"
+              <app-property-input-textarea
                 v-model="fixture.newManufacturerComment"
                 :schema-property="properties.manufacturer.comment" />
             </app-simple-label>
@@ -78,8 +75,7 @@
 
           <section class="new-manufacturer-rdmId">
             <app-simple-label label="<abbr title='Remote Device Management'>RDM</abbr> ID">
-              <app-property-input
-                type="number"
+              <app-property-input-number
                 v-model="fixture.newManufacturerRdmId"
                 :schema-property="properties.manufacturer.rdmId" />
             </app-simple-label>
@@ -94,8 +90,7 @@
 
         <section class="fixture-name">
           <app-simple-label label="Name">
-            <app-property-input
-              type="text"
+            <app-property-input-text
               v-model="fixture.name"
               :schema-property="properties.fixture.name"
               :required="true" />
@@ -104,8 +99,7 @@
 
         <section class="fixture-shortName">
           <app-simple-label label="Unique short name">
-            <app-property-input
-              type="text"
+            <app-property-input-text
               v-model="fixture.shortName"
               :schema-property="properties.fixture.shortName"
               hint="defaults to name" />
@@ -123,8 +117,7 @@
 
         <section class="comment">
           <app-simple-label label="Comment">
-            <app-property-input
-              type="textarea"
+            <app-property-input-textarea
               v-model="fixture.comment"
               :schema-property="properties.fixture.comment" />
           </app-simple-label>
@@ -132,7 +125,7 @@
 
         <section class="manualURL">
           <app-simple-label label="Manual URL">
-            <app-property-input
+            <app-property-input-text
               type="url"
               v-model="fixture.manualURL"
               :schema-property="properties.fixture.manualURL" />
@@ -141,8 +134,7 @@
 
         <section class="rdmModelId">
           <app-simple-label label="<abbr title='Remote Device Management'>RDM</abbr> model ID" hint="The RDM manufacturer ID is saved per manufacturer.">
-            <app-property-input
-              type="number"
+            <app-property-input-number
               v-model="fixture.rdmModelId"
               :schema-property="properties.fixture.rdm.properties.modelId" />
           </app-simple-label>
@@ -150,8 +142,7 @@
 
         <section class="rdmSoftwareVersion" v-if="fixture.rdmModelId !== null">
           <app-simple-label label="RDM software version">
-            <app-property-input
-              type="text"
+            <app-property-input-text
               v-model="fixture.rdmSoftwareVersion"
               :schema-property="properties.fixture.rdm.properties.softwareVersion" />
           </app-simple-label>
@@ -185,8 +176,7 @@
 
         <section class="author">
           <app-simple-label label="Your name">
-            <app-property-input
-              type="text"
+            <app-property-input-text
               v-model="fixture.metaAuthor"
               :schema-property="properties.definitions.nonEmptyString"
               :required="true"
@@ -196,8 +186,7 @@
 
         <section class="github-username">
           <app-simple-label label="GitHub username" hint="If you want to be mentioned in the pull request.">
-            <app-property-input
-              type="text"
+            <app-property-input-text
               v-model="fixture.metaGithubUsername"
               :schema-property="properties.definitions.nonEmptyString" />
           </app-simple-label>
@@ -205,8 +194,7 @@
 
         <section class="honeypot" hidden>
           <app-simple-label label="Ignore this!">
-            <app-property-input
-              type="text"
+            <app-property-input-text
               v-model="honeypot"
               :schema-property="properties.definitions.nonEmptyString"
               hint="Spammers are likely to fill this field. Leave it empty to show that you're a human." />
@@ -241,7 +229,11 @@ import manufacturers from '~~/fixtures/manufacturers.json';
 import schemaProperties from '~~/lib/schema-properties.js';
 
 import simpleLabelVue from '~/components/simple-label.vue';
-import propertyInputVue from '~/components/property-input.vue';
+import propertyInputBooleanVue from '~/components/property-input-boolean.vue';
+import propertyInputNumberVue from '~/components/property-input-number.vue';
+import propertyInputSelectVue from '~/components/property-input-select.vue';
+import propertyInputTextVue from '~/components/property-input-text.vue';
+import propertyInputTextareaVue from '~/components/property-input-textarea.vue';
 import categoryChooserVue from '~/components/category-chooser.vue';
 import editorPhysicalVue from '~/components/editor-physical.vue';
 import editorModeVue from '~/components/editor-mode.vue';
@@ -250,7 +242,11 @@ import editorChannelDialogVue from '~/components/editor-channel-dialog.vue';
 export default {
   components: {
     'app-simple-label': simpleLabelVue,
-    'app-property-input': propertyInputVue,
+    'app-property-input-boolean': propertyInputBooleanVue,
+    'app-property-input-number': propertyInputNumberVue,
+    'app-property-input-select': propertyInputSelectVue,
+    'app-property-input-text': propertyInputTextVue,
+    'app-property-input-textarea': propertyInputTextareaVue,
     'app-category-chooser': categoryChooserVue,
     'app-editor-physical': editorPhysicalVue,
     'app-mode': editorModeVue,

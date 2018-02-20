@@ -1,15 +1,13 @@
 <template>
   <span>
-    <app-property-input
-      type="number"
+    <app-property-input-number
       v-model="start"
       :schema-property="schemaProperty"
       :max="end"
       :required="required || rangeIncomplete"
       hint="min" />
     …
-    <app-property-input
-      type="number"
+    <app-property-input-number
       v-model="end"
       :schema-property="schemaProperty"
       :min="start"
@@ -20,11 +18,11 @@
 </template>
 
 <script>
-import propertyInputVue from '~/components/property-input.vue';
+import propertyInputNumberVue from '~/components/property-input-number.vue';
 
 export default {
   components: {
-    'app-property-input': propertyInputVue
+    'app-property-input-number': propertyInputNumberVue
   },
   props: {
     startValue: {
