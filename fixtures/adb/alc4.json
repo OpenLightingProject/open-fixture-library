@@ -27,29 +27,12 @@
       [
         ["4", "3", "2", "1"]
       ]
-    ]
+    ],
+    "pixelGroups": {
+      "Master": ["1", "2", "3", "4"]
+    }
   },
   "availableChannels": {
-    "Dimmer": {
-      "type": "Intensity",
-      "defaultValue": 0
-    },
-    "Color Temperature": {
-      "type": "Color Temperature",
-      "defaultValue": 0
-    },
-    "Red": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
     "Master": {
       "type": "Intensity"
     }
@@ -79,11 +62,11 @@
       "name": "Standard",
       "shortName": "standard",
       "channels": [
-        "Dimmer",
-        "Color Temperature",
-        "Red",
-        "Green",
-        "Blue"
+        "Dimmer Master",
+        "Color Temperature Master",
+        "Red Master",
+        "Green Master",
+        "Blue Master"
       ]
     },
     {
