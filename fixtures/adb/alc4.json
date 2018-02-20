@@ -22,6 +22,13 @@
       "type": "Fixed"
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["4", "3", "2", "1"]
+      ]
+    ]
+  },
   "availableChannels": {
     "Dimmer": {
       "type": "Intensity",
@@ -43,82 +50,28 @@
       "type": "Single Color",
       "color": "Blue"
     },
-    "Color Temperature 1": {
-      "type": "Color Temperature",
-      "defaultValue": 0
-    },
-    "Red 1": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green 1": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue 1": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "Dimmer 2": {
-      "type": "Intensity"
-    },
-    "Color Temperature 2": {
-      "type": "Color Temperature"
-    },
-    "Red 2": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green 2": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue 2": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "Dimmer 3": {
-      "type": "Intensity"
-    },
-    "Color Temperature 3": {
-      "type": "Color Temperature"
-    },
-    "Red 3": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green 3": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue 3": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "Dimmer 4": {
-      "type": "Intensity"
-    },
-    "Color Temperature 4": {
-      "type": "Color Temperature"
-    },
-    "Red 4": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "Green 4": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "Blue 4": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
     "Master": {
       "type": "Intensity"
+    }
+  },
+  "templateChannels": {
+    "Dimmer $pixelKey": {
+      "type": "Intensity"
     },
-    "Dimmer 1": {
-      "type": "Intensity",
-      "defaultValue": 0
+    "Color Temperature $pixelKey": {
+      "type": "Color Temperature"
+    },
+    "Red $pixelKey": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green $pixelKey": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue $pixelKey": {
+      "type": "Single Color",
+      "color": "Blue"
     }
   },
   "modes": [
@@ -137,26 +90,18 @@
       "name": "Matrix ",
       "shortName": "matrix",
       "channels": [
-        "Dimmer 1",
-        "Color Temperature 1",
-        "Red 1",
-        "Green 1",
-        "Blue 1",
-        "Dimmer 2",
-        "Color Temperature 2",
-        "Red 2",
-        "Green 2",
-        "Blue 2",
-        "Dimmer 3",
-        "Color Temperature 3",
-        "Red 3",
-        "Green 3",
-        "Blue 3",
-        "Dimmer 4",
-        "Color Temperature 4",
-        "Red 4",
-        "Green 4",
-        "Blue 4"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Color Temperature $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     },
     {
@@ -164,26 +109,18 @@
       "shortName": "extended",
       "channels": [
         "Master",
-        "Dimmer 1",
-        "Color Temperature 1",
-        "Red 1",
-        "Green 1",
-        "Blue 1",
-        "Dimmer 2",
-        "Color Temperature 2",
-        "Red 2",
-        "Green 2",
-        "Blue 2",
-        "Dimmer 3",
-        "Color Temperature 3",
-        "Red 3",
-        "Green 3",
-        "Blue 3",
-        "Dimmer 4",
-        "Color Temperature 4",
-        "Red 4",
-        "Green 4",
-        "Blue 4"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Color Temperature $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     }
   ]
