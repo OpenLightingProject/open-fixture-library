@@ -1,6 +1,7 @@
 <template>
   <span>
     <app-property-input-number
+      type="number"
       v-model="start"
       :schema-property="schemaProperty"
       :max="end"
@@ -8,6 +9,7 @@
       hint="min" />
     …
     <app-property-input-number
+      type="number"
       v-model="end"
       :schema-property="schemaProperty"
       :min="start"
@@ -26,7 +28,7 @@ export default {
   },
   props: {
     startValue: {
-      type: Number,
+      type: [Number, String], // can be the string `invalid`
       required: false,
       default: null
     },
@@ -36,7 +38,7 @@ export default {
       default: null
     },
     endValue: {
-      type: Number,
+      type: [Number, String], // can be the string `invalid`
       required: false,
       default: null
     },
@@ -78,7 +80,7 @@ export default {
       }
     },
     rangeIncomplete() {
-      return this.startValue !== `` || this.endValue !== ``;
+      return this.startValue !== null || this.endValue !== null;
     }
   }
 };

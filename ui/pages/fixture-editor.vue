@@ -4,21 +4,22 @@
 
     <noscript>Please enable JavaScript to use the Fixture Editor!</noscript>
 
-    <form
+    <vue-form
       action="#"
-      id="fixture-form"
-      data-validate
-      class="only-js">
+      :state="formstate"
+      class="only-js"
+      @submit.prevent="onSubmit">
 
       <section class="manufacturer card">
         <h2>Manufacturer</h2>
 
         <section v-if="fixture.useExistingManufacturer">
-          <app-simple-label label="Choose from list">
+          <app-simple-label name="manufacturerShortName" label="Choose from list" :formstate="formstate">
             <select
               required
               v-model="fixture.manufacturerShortName"
-              :class="{ empty: fixture.manufacturerShortName === '' }"
+              :class="{ empty: fixture.manufacturerShortName === `` }"
+              name="manufacturerShortName"
               ref="existingManufacturerSelect">
 
               <option value="">Please select a manufacturer</option>
@@ -36,50 +37,46 @@
         </section>
 
         <div v-else>
-          <section class="new-manufacturer-name">
-            <app-simple-label label="Name">
-              <app-property-input-text
-                v-model="fixture.newManufacturerName"
-                :schema-property="properties.manufacturer.name"
-                :required="true"
-                ref="newManufacturerNameInput" />
-            </app-simple-label>
-          </section>
+          <app-simple-label name="new-manufacturer-name" label="Name" :formstate="formstate">
+            <app-property-input-text
+              name="new-manufacturer-name"
+              v-model="fixture.newManufacturerName"
+              :schema-property="properties.manufacturer.name"
+              :required="true"
+              ref="newManufacturerNameInput" />
+          </app-simple-label>
 
-          <section class="new-manufacturer-shortName">
-            <app-simple-label label="Unique short name">
-              <app-property-input-text
-                v-model="fixture.newManufacturerShortName"
-                :schema-property="properties.manufacturerKey"
-                :required="true"
-                title="Use only lowercase letters, numbers and dashes." />
-            </app-simple-label>
-          </section>
+          <app-simple-label name="new-manufacturer-shortName" label="Unique short name" :formstate="formstate">
+            <app-property-input-text
+              name="new-manufacturer-shortName"
+              v-model="fixture.newManufacturerShortName"
+              :schema-property="properties.manufacturerKey"
+              :required="true"
+              title="Use only lowercase letters, numbers and dashes." />
+          </app-simple-label>
 
-          <section class="new-manufacturer-website">
-            <app-simple-label label="Website">
-              <app-property-input-text
-                type="text"
-                v-model="fixture.newManufacturerWebsite"
-                :schema-property="properties.manufacturer.website" />
-            </app-simple-label>
-          </section>
+          <app-simple-label name="new-manufacturer-website" label="Website" :formstate="formstate">
+            <app-property-input-text
+              type="url"
+              name="new-manufacturer-website"
+              v-model="fixture.newManufacturerWebsite"
+              :schema-property="properties.manufacturer.website" />
+          </app-simple-label>
 
-          <section class="new-manufacturer-comment">
-            <app-simple-label label="Comment">
-              <app-property-input-textarea
-                v-model="fixture.newManufacturerComment"
-                :schema-property="properties.manufacturer.comment" />
-            </app-simple-label>
-          </section>
+          <app-simple-label name="new-manufacturer-comment" label="Comment" :formstate="formstate">
+            <app-property-input-textarea
+              name="new-manufacturer-comment"
+              v-model="fixture.newManufacturerComment"
+              :schema-property="properties.manufacturer.comment" />
+          </app-simple-label>
 
-          <section class="new-manufacturer-rdmId">
-            <app-simple-label label="<abbr title='Remote Device Management'>RDM</abbr> ID">
-              <app-property-input-number
-                v-model="fixture.newManufacturerRdmId"
-                :schema-property="properties.manufacturer.rdmId" />
-            </app-simple-label>
-          </section>
+          <app-simple-label name="new-manufacturer-rdmId" label="<abbr title='Remote Device Management'>RDM</abbr> ID" :formstate="formstate">
+            <app-property-input-number
+              type="number"
+              name="new-manufacturer-rdmId"
+              v-model="fixture.newManufacturerRdmId"
+              :schema-property="properties.manufacturer.rdmId" />
+          </app-simple-label>
 
           <div class="button-bar">or <a href="#use-existing-manufacturer" @click.prevent="switchManufacturer(true)">choose an existing manufacturer</a></div>
         </div>
@@ -88,25 +85,25 @@
       <section class="fixture-info card">
         <h2>Fixture info</h2>
 
-        <section class="fixture-name">
-          <app-simple-label label="Name">
-            <app-property-input-text
-              v-model="fixture.name"
-              :schema-property="properties.fixture.name"
-              :required="true" />
-          </app-simple-label>
-        </section>
+        <!-- TODO: validate name not containing manufacturer name -->
+        <app-simple-label name="fixture-name" label="Name" :formstate="formstate">
+          <app-property-input-text
+            name="fixture-name"
+            v-model="fixture.name"
+            :schema-property="properties.fixture.name"
+            :required="true" />
+        </app-simple-label>
 
-        <section class="fixture-shortName">
-          <app-simple-label label="Unique short name">
-            <app-property-input-text
-              v-model="fixture.shortName"
-              :schema-property="properties.fixture.shortName"
-              hint="defaults to name" />
-          </app-simple-label>
-        </section>
+        <app-simple-label name="fixture-shortName" label="Unique short name" :formstate="formstate">
+          <app-property-input-text
+            name="fixture-shortName"
+            v-model="fixture.shortName"
+            :schema-property="properties.fixture.shortName"
+            hint="defaults to name" />
+        </app-simple-label>
 
-        <section class="categories validate-group">
+        <!-- TODO: validate this! -->
+        <section class="categories">
           <span class="label">Categories</span>
           <span class="value">
             <app-category-chooser
@@ -115,43 +112,51 @@
           </span>
         </section>
 
-        <section class="comment">
-          <app-simple-label label="Comment">
-            <app-property-input-textarea
-              v-model="fixture.comment"
-              :schema-property="properties.fixture.comment" />
-          </app-simple-label>
-        </section>
+        <app-simple-label name="comment" label="Comment" :formstate="formstate">
+          <app-property-input-textarea
+            name="comment"
+            v-model="fixture.comment"
+            :schema-property="properties.fixture.comment" />
+        </app-simple-label>
 
-        <section class="manualURL">
-          <app-simple-label label="Manual URL">
-            <app-property-input-text
-              type="url"
-              v-model="fixture.manualURL"
-              :schema-property="properties.fixture.manualURL" />
-          </app-simple-label>
-        </section>
+        <app-simple-label name="manualURL" label="Manual URL" :formstate="formstate">
+          <app-property-input-text
+            type="url"
+            name="manualURL"
+            v-model="fixture.manualURL"
+            :schema-property="properties.fixture.manualURL" />
+        </app-simple-label>
 
-        <section class="rdmModelId">
-          <app-simple-label label="<abbr title='Remote Device Management'>RDM</abbr> model ID" hint="The RDM manufacturer ID is saved per manufacturer.">
-            <app-property-input-number
-              v-model="fixture.rdmModelId"
-              :schema-property="properties.fixture.rdm.properties.modelId" />
-          </app-simple-label>
-        </section>
+        <app-simple-label
+          name="rdmModelId"
+          label="<abbr title='Remote Device Management'>RDM</abbr> model ID"
+          hint="The RDM manufacturer ID is saved per manufacturer."
+          :formstate="formstate">
+          <app-property-input-number
+            type="number"
+            name="rdmModelId"
+            v-model="fixture.rdmModelId"
+            :schema-property="properties.fixture.rdm.properties.modelId" />
+        </app-simple-label>
 
-        <section class="rdmSoftwareVersion" v-if="fixture.rdmModelId !== null">
-          <app-simple-label label="RDM software version">
-            <app-property-input-text
-              v-model="fixture.rdmSoftwareVersion"
-              :schema-property="properties.fixture.rdm.properties.softwareVersion" />
-          </app-simple-label>
-        </section>
+        <app-simple-label
+          v-if="fixture.rdmModelId !== null"
+          name="rdmSoftwareVersion"
+          label="RDM software version"
+          :formstate="formstate">
+          <app-property-input-text
+            name="rdmSoftwareVersion"
+            v-model="fixture.rdmSoftwareVersion"
+            :schema-property="properties.fixture.rdm.properties.softwareVersion" />
+        </app-simple-label>
       </section>
 
       <section class="physical card">
         <h2>Physical data</h2>
-        <app-editor-physical v-model="fixture.physical" />
+        <app-editor-physical
+          v-model="fixture.physical"
+          :formstate="formstate"
+          name-prefix="fixture" />
       </section>
 
       <section class="fixture-modes">
@@ -161,6 +166,7 @@
           v-model="fixture.modes[index]"
           :index="index"
           :fixture="fixture"
+          :formstate="formstate"
           @open-channel-editor="openChannelEditor"
           @remove="fixture.modes.splice(index, 1)" />
 
@@ -174,39 +180,44 @@
       <section class="user card">
         <h2>Author data</h2>
 
-        <section class="author">
-          <app-simple-label label="Your name">
-            <app-property-input-text
-              v-model="fixture.metaAuthor"
-              :schema-property="properties.definitions.nonEmptyString"
-              :required="true"
-              hint="e.g. Anonymous" />
-          </app-simple-label>
-        </section>
+        <app-simple-label name="author" label="Your name" :formstate="formstate">
+          <app-property-input-text
+            name="author"
+            v-model="fixture.metaAuthor"
+            :schema-property="properties.definitions.nonEmptyString"
+            :required="true"
+            hint="e.g. Anonymous" />
+        </app-simple-label>
 
-        <section class="github-username">
-          <app-simple-label label="GitHub username" hint="If you want to be mentioned in the pull request.">
-            <app-property-input-text
-              v-model="fixture.metaGithubUsername"
-              :schema-property="properties.definitions.nonEmptyString" />
-          </app-simple-label>
-        </section>
+        <app-simple-label
+          name="github-username"
+          label="GitHub username"
+          hint="If you want to be mentioned in the pull request."
+          :formstate="formstate">
+          <app-property-input-text
+            name="github-username"
+            v-model="fixture.metaGithubUsername"
+            :schema-property="properties.definitions.nonEmptyString" />
+        </app-simple-label>
 
-        <section class="honeypot" hidden>
-          <app-simple-label label="Ignore this!">
-            <app-property-input-text
-              v-model="honeypot"
-              :schema-property="properties.definitions.nonEmptyString"
-              hint="Spammers are likely to fill this field. Leave it empty to show that you're a human." />
-          </app-simple-label>
-        </section>
+        <app-simple-label
+          hidden
+          name="honeypot"
+          label="Ignore this!"
+          :formstate="formstate">
+          <app-property-input-text
+            name="honeypot"
+            v-model="honeypot"
+            :schema-property="properties.definitions.nonEmptyString"
+            hint="Spammers are likely to fill this field. Leave it empty to show that you're a human." />
+        </app-simple-label>
       </section>
 
       <div class="button-bar right">
         <button type="submit" class="save-fixture primary">Create fixture</button>
       </div>
 
-    </form>
+    </vue-form>
 
     <app-editor-channel-dialog
       v-model="channel"
@@ -224,6 +235,7 @@
 
 <script>
 import uuidV4 from 'uuid/v4.js';
+import VueForm from 'vue-form';
 
 import manufacturers from '~~/fixtures/manufacturers.json';
 import schemaProperties from '~~/lib/schema-properties.js';
@@ -252,6 +264,9 @@ export default {
     'app-mode': editorModeVue,
     'app-editor-channel-dialog': editorChannelDialogVue
   },
+  mixins: [
+    VueForm
+  ],
   head() {
     return {
       title: `Fixture Editor`
@@ -270,6 +285,7 @@ export default {
     // }
 
     return {
+      formstate: {},
       fixture: initFixture,
       channel: getEmptyChannel(),
       honeypot: ``,
@@ -357,6 +373,10 @@ export default {
 
       // finally remove the channel itself
       delete this.fixture.availableChannels[channelUuid];
+    },
+
+    onSubmit() {
+      console.log(`submit`, this.fixture);
     }
   }
 };

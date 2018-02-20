@@ -1,3 +1,10 @@
+<!--
+
+usage: <app-property-input-number add type="number" ... />
+to enable validation
+
+-->
+
 <template>
   <input
     type="number"
@@ -8,7 +15,7 @@
     :data-exclusive-maximum="schemaProperty.exclusiveMaximum"
     :step="schemaProperty.type === `integer` ? 1 : `any`"
     :placeholder="hint"
-    :value="value"
+    :value="value === `invalid` ? `` : value"
     @input="update"
     ref="input">
 </template>
@@ -36,12 +43,12 @@ export default {
       default: false
     },
     min: {
-      type: Number,
+      type: [Number, String], // can be the string `invalid`
       required: false,
       default: null
     },
     max: {
-      type: Number,
+      type: [Number, String], // can be the string `invalid`
       required: false,
       default: null
     },
@@ -52,7 +59,7 @@ export default {
   },
   computed: {
     minimum() {
-      if (this.min !== null) {
+      if (this.min !== null && this.min !== `invalid`) {
         return this.min;
       }
 
@@ -67,7 +74,7 @@ export default {
       return null;
     },
     maximum() {
-      if (this.max !== null) {
+      if (this.max !== null && this.max !== `invalid`) {
         return this.max;
       }
 
@@ -92,11 +99,16 @@ export default {
       this.$refs.input.focus();
     },
     update() {
-      if (this.$refs.input.value === ``) {
+      const input = this.$refs.input;
+      if (input.validity && input.validity.badInput) {
+        return this.$emit(`input`, `invalid`);
+      }
+
+      if (input.value === ``) {
         return this.$emit(`input`, null);
       }
 
-      return this.$emit(`input`, parseFloat(this.$refs.input.value));
+      return this.$emit(`input`, parseFloat(input.value));
     }
   }
 };

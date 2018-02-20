@@ -166,13 +166,23 @@ input[type=number] {
   }
 }
 
-select.error,
-textarea.error,
-input[type="text"].error,
-input[type="email"].error,
-input[type="search"].error,
-input[type="url"].error,
-input[type="number"].error {
+/* TODO: the :invalid rules should not be necessary */
+select:not([vue-form-validator]):invalid,
+textarea:not([vue-form-validator]):invalid,
+input[type="text"]:not([vue-form-validator]):invalid,
+input[type="email"]:not([vue-form-validator]):invalid,
+input[type="search"]:not([vue-form-validator]):invalid,
+input[type="url"]:not([vue-form-validator]):invalid,
+input[type="number"]:not([vue-form-validator]):invalid,
+
+/* these ones are preferred */
+select.vf-touched.vf-invalid,
+textarea.vf-touched.vf-invalid,
+input[type="text"].vf-touched.vf-invalid,
+input[type="email"].vf-touched.vf-invalid,
+input[type="search"].vf-touched.vf-invalid,
+input[type="url"].vf-touched.vf-invalid,
+input[type="number"].vf-touched.vf-invalid {
   border-color: red;
   box-shadow: 0 0 4px rgba(255, 0, 0, 0.4);
 }
@@ -180,11 +190,6 @@ input[type="number"].error {
 .error-message {
   display: block;
   color: red;
-}
-.validate-group:not(.error) .error-message {
-  /* display: none; apparently moves the focus */
-  visibility: hidden;
-  height: 0;
 }
 
 textarea {

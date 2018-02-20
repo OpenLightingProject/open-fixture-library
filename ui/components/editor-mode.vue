@@ -12,57 +12,61 @@
 
     <h2>Mode #{{ index + 1 }}</h2>
 
-    <section class="name">
-      <app-simple-label label="Name">
-        <app-property-input-text
-          v-model="mode.name"
-          :schema-property="properties.mode.name.allOf[1]"
-          :required="true"
-          hint="e.g. Extended"
-          title="The name must not contain the word 'mode'."
-          ref="firstInput" />
-      </app-simple-label>
-    </section>
+    <app-simple-label :name="`mode-${index}-name`" label="Name" :formstate="formstate">
+      <app-property-input-text
+        :name="`mode-${index}-name`"
+        v-model="mode.name"
+        :schema-property="properties.mode.name.allOf[1]"
+        :required="true"
+        hint="e.g. Extended"
+        title="The name must not contain the word 'mode'."
+        ref="firstInput" />
+    </app-simple-label>
 
-    <section class="shortName">
-      <app-simple-label label="Unique short name">
-        <app-property-input-text
-          v-model="mode.shortName"
-          :schema-property="properties.mode.shortName.allOf[1]"
-          hint="e.g. ext; defaults to name"
-          title="The short name must not contain the word 'mode'." />
-      </app-simple-label>
-    </section>
+    <app-simple-label :name="`mode-${index}-shortName`" label="Unique short name" :formstate="formstate">
+      <app-property-input-text
+        :name="`mode-${index}-shortName`"
+        v-model="mode.shortName"
+        :schema-property="properties.mode.shortName.allOf[1]"
+        hint="e.g. ext; defaults to name"
+        title="The short name must not contain the word 'mode'." />
+    </app-simple-label>
 
-    <section v-if="fixture.rdmModelId !== null" class="rdmPersonalityIndex">
-      <app-simple-label label="RDM personality index">
-        <app-property-input-number
-          v-model="mode.rdmPersonalityIndex"
-          :schema-property="properties.mode.rdmPersonalityIndex" />
-      </app-simple-label>
-    </section>
+    <app-simple-label
+      v-if="fixture.rdmModelId !== null"
+      :name="`mode-${index}-rdmPersonalityIndex`"
+      label="RDM personality index"
+      :formstate="formstate">
+      <app-property-input-number
+        type="number"
+        :name="`mode-${index}-rdmPersonalityIndex`"
+        v-model="mode.rdmPersonalityIndex"
+        :schema-property="properties.mode.rdmPersonalityIndex" />
+    </app-simple-label>
 
 
     <h3>Physical override</h3>
 
-    <label class="validate-group">
+    <label>
       <input
         type="checkbox"
         class="enable-physical-override"
         v-model="mode.enablePhysicalOverride">
       Override fixture's physical data in this mode
-      <span class="error-message" hidden />
     </label>
 
     <section class="physical-override">
       <app-editor-physical
         v-if="mode.enablePhysicalOverride"
-        v-model="mode.physical" />
+        v-model="mode.physical"
+        :formstate="formstate"
+        :name-prefix="`mode-${index}`" />
     </section>
 
 
     <h3>DMX channels</h3>
 
+    <!-- TODO: validate empty channel list -->
     <div class="validate-group mode-channels">
       <draggable v-model="mode.channels" :options="dragOptions">
         <transition-group class="mode-channels" name="mode-channels" tag="ol">
@@ -124,6 +128,8 @@
 
 
 <script>
+import VueForm from 'vue-form';
+
 import schemaProperties from '~~/lib/schema-properties.js';
 
 import svgVue from '~/components/svg.vue';
@@ -140,6 +146,9 @@ export default {
     'app-property-input-text': propertyInputTextVue,
     'app-editor-physical': editorPhysicalVue
   },
+  mixins: [
+    VueForm
+  ],
   props: {
     'value': {
       type: Object,
@@ -150,6 +159,10 @@ export default {
       required: true
     },
     'fixture': {
+      type: Object,
+      required: true
+    },
+    'formstate': {
       type: Object,
       required: true
     }

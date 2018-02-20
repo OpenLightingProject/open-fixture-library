@@ -1,10 +1,12 @@
 <template>
   <div>
 
-    <section class="physical-dimensions validate-group">
+    <!-- TODO: validate this -->
+    <section class="physical-dimensions">
       <span class="label">Dimensions</span>
       <span class="value">
         <app-property-input-number
+          type="number"
           v-model="physical.dimensionsWidth"
           :schema-property="properties.dimensionsXYZ.items"
           hint="width"
@@ -12,12 +14,14 @@
           ref="firstInput" />
         &times;
         <app-property-input-number
+          type="number"
           v-model="physical.dimensionsHeight"
           :schema-property="properties.dimensionsXYZ.items"
           hint="height"
           :required="dimensionRequired" />
         &times;
         <app-property-input-number
+          type="number"
           v-model="physical.dimensionsDepth"
           :schema-property="properties.dimensionsXYZ.items"
           hint="depth"
@@ -26,22 +30,23 @@
       </span>
     </section>
 
-    <section class="physical-weight">
-      <app-simple-label label="Weight">
-        <app-property-input-number
-          v-model="physical.weight"
-          :schema-property="properties.physical.weight" /> kg
-      </app-simple-label>
-    </section>
+    <app-simple-label :name="`${namePrefix}-physical-weight`" label="Weight" :formstate="formstate">
+      <app-property-input-number
+        type="number"
+        :name="`${namePrefix}-physical-weight`"
+        v-model="physical.weight"
+        :schema-property="properties.physical.weight" /> kg
+    </app-simple-label>
 
-    <section class="physical-power">
-      <app-simple-label label="Power">
-        <app-property-input-number
-          v-model="physical.power"
-          :schema-property="properties.physical.power" /> W
-      </app-simple-label>
-    </section>
+    <app-simple-label :name="`${namePrefix}-physical-power`" label="Power" :formstate="formstate">
+      <app-property-input-number
+        type="number"
+        :name="`${namePrefix}-physical-power`"
+        v-model="physical.power"
+        :schema-property="properties.physical.power" /> W
+    </app-simple-label>
 
+    <!-- TODO: validate this -->
     <section class="physical-DMXconnector">
       <app-simple-label label="DMX connector">
         <app-property-input-select
@@ -62,43 +67,42 @@
 
     <h4>Bulb</h4>
 
-    <section class="physical-bulb-type">
-      <app-simple-label label="Bulb type">
-        <app-property-input-text
-          v-model="physical.bulb.type"
-          :schema-property="properties.physicalBulb.type"
-          hint="e.g. LED" />
-      </app-simple-label>
-    </section>
+    <app-simple-label :name="`${namePrefix}-physical-bulb-type`" label="Bulb type" :formstate="formstate">
+      <app-property-input-text
+        :name="`${namePrefix}-physical-bulb-type`"
+        v-model="physical.bulb.type"
+        :schema-property="properties.physicalBulb.type"
+        hint="e.g. LED" />
+    </app-simple-label>
 
-    <section class="physical-bulb-colorTemperature">
-      <app-simple-label label="Color temperature">
-        <app-property-input-number
-          v-model="physical.bulb.colorTemperature"
-          :schema-property="properties.physicalBulb.colorTemperature" /> K
-      </app-simple-label>
-    </section>
+    <app-simple-label :name="`${namePrefix}-physical-bulb-colorTemperature`" label="Color temperature" :formstate="formstate">
+      <app-property-input-number
+        type="number"
+        :name="`${namePrefix}-physical-bulb-colorTemperature`"
+        v-model="physical.bulb.colorTemperature"
+        :schema-property="properties.physicalBulb.colorTemperature" /> K
+    </app-simple-label>
 
-    <section class="physical-bulb-lumens">
-      <app-simple-label label="Lumens">
-        <app-property-input-number
-          v-model="physical.bulb.lumens"
-          :schema-property="properties.physicalBulb.lumens" /> lm
-      </app-simple-label>
-    </section>
+    <app-simple-label :name="`${namePrefix}-physical-bulb-lumens`" label="Lumens" :formstate="formstate">
+      <app-property-input-number
+        type="number"
+        :name="`${namePrefix}-physical-bulb-lumens`"
+        v-model="physical.bulb.lumens"
+        :schema-property="properties.physicalBulb.lumens" /> lm
+    </app-simple-label>
 
 
     <h4>Lens</h4>
 
-    <section class="physical-lens-name">
-      <app-simple-label label="Lens name">
-        <app-property-input-text
-          v-model="physical.lens.name"
-          :schema-property="properties.physicalLens.name" />
-      </app-simple-label>
-    </section>
+    <app-simple-label :name="`${namePrefix}-physical-lens-name`" label="Lens name" :formstate="formstate">
+      <app-property-input-text
+        :name="`${namePrefix}-physical-lens-name`"
+        v-model="physical.lens.name"
+        :schema-property="properties.physicalLens.name" />
+    </app-simple-label>
 
-    <section class="physical-lens-degrees validate-group">
+    <!-- TODO: validate this -->
+    <section class="physical-lens-degrees">
       <app-simple-label label="Light cone">
         <app-property-input-range
           :start-value="physical.lens.degreesMin"
@@ -115,6 +119,7 @@
 
     <h4>Focus</h4>
 
+    <!-- TODO: validate this -->
     <section class="physical-focus-type">
       <app-simple-label label="Focus type">
         <app-property-input-select
@@ -132,27 +137,29 @@
       </app-simple-label>
     </section>
 
-    <section class="physical-focus-panMax">
-      <app-simple-label label="Pan maximum">
-        <app-property-input-number
-          v-model="physical.focus.panMax"
-          :schema-property="properties.physicalFocus.panMax" /> °
-      </app-simple-label>
-    </section>
+    <app-simple-label :name="`${namePrefix}-physical-focus-panMax`" label="Pan maximum" :formstate="formstate">
+      <app-property-input-number
+        type="number"
+        :name="`${namePrefix}-physical-focus-panMax`"
+        v-model="physical.focus.panMax"
+        :schema-property="properties.physicalFocus.panMax" /> °
+    </app-simple-label>
 
-    <section class="physical-focus-tiltMax">
-      <app-simple-label label="Tilt maximum">
-        <app-property-input-number
-          v-model="physical.focus.tiltMax"
-          :schema-property="properties.physicalFocus.tiltMax" /> °
-      </app-simple-label>
-    </section>
+    <app-simple-label :name="`${namePrefix}-physical-focus-tiltMax`" label="Tilt maximum" :formstate="formstate">
+      <app-property-input-number
+        type="number"
+        :name="`${namePrefix}-physical-focus-tiltMax`"
+        v-model="physical.focus.tiltMax"
+        :schema-property="properties.physicalFocus.tiltMax" /> °
+    </app-simple-label>
 
   </div>
 </template>
 
 
 <script>
+import VueForm from 'vue-form';
+
 import schemaProperties from '~~/lib/schema-properties.js';
 
 import simpleLabelVue from '~/components/simple-label.vue';
@@ -169,12 +176,23 @@ export default {
     'app-property-input-select': propertyInputSelectVue,
     'app-property-input-text': propertyInputTextVue
   },
+  mixins: [
+    VueForm
+  ],
   model: {
     prop: `physical`
   },
   props: {
     physical: {
       type: Object,
+      required: true
+    },
+    formstate: {
+      type: Object,
+      required: true
+    },
+    namePrefix: {
+      type: String,
       required: true
     }
   },
@@ -185,7 +203,7 @@ export default {
   },
   computed: {
     dimensionRequired() {
-      return this.physical.dimensionsWidth !== `` || this.physical.dimensionsHeight !== `` || this.physical.dimensionsDepth !== ``;
+      return this.physical.dimensionsWidth !== null || this.physical.dimensionsHeight !== null || this.physical.dimensionsDepth !== null;
     }
   },
   methods: {

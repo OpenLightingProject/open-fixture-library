@@ -8,6 +8,7 @@
     :title="title"
     ref="channelDialog">
 
+    <!-- TODO: validate everything in this form -->
     <form
       action="#"
       id="channel-form"
