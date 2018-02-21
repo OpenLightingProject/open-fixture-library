@@ -51,7 +51,9 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
   modeShortNames = new Set();
 
 
-  const validate = (new Ajv()).compile(fixtureSchema);
+  const ajv = new Ajv();
+  ajv.addFormat(`color-hex`, ``); // do not crash when `format: color-hex` is used; actual validation is done with an additional pattern, the format is only added for VSCode's color preview
+  const validate = ajv.compile(fixtureSchema);
   const valid = validate(fixtureJson);
   if (!valid) {
     result.errors.push(module.exports.getErrorString(`File does not match schema.`, validate.errors));
