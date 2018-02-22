@@ -12,7 +12,8 @@ const nuxtOptions = {
     {
       src: `~/plugins/focus-directive.js`,
       ssr: false
-    }
+    },
+    `~/plugins/vue-form.js`
   ],
   build: {
     extend(config, ctx) {

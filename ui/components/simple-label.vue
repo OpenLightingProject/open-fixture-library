@@ -36,12 +36,7 @@
 </template>
 
 <script>
-import VueForm from 'vue-form';
-
 export default {
-  mixins: [
-    VueForm
-  ],
   props: {
     name: {
       type: String,

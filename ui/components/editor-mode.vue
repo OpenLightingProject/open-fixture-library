@@ -128,8 +128,6 @@
 
 
 <script>
-import VueForm from 'vue-form';
-
 import schemaProperties from '~~/lib/schema-properties.js';
 
 import svgVue from '~/components/svg.vue';
@@ -146,9 +144,6 @@ export default {
     'app-property-input-text': propertyInputTextVue,
     'app-editor-physical': editorPhysicalVue
   },
-  mixins: [
-    VueForm
-  ],
   props: {
     'value': {
       type: Object,
@@ -204,7 +199,6 @@ export default {
       return this.$parent.getChannelName(channelUuid);
     },
     editChannel(channelUuid) {
-      // TODO: handle this request on the other side
       this.$emit(`open-channel-editor`, {
         modeId: this.mode.uuid,
         editMode: `edit-?`,

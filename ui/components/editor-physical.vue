@@ -158,8 +158,6 @@
 
 
 <script>
-import VueForm from 'vue-form';
-
 import schemaProperties from '~~/lib/schema-properties.js';
 
 import simpleLabelVue from '~/components/simple-label.vue';
@@ -176,9 +174,6 @@ export default {
     'app-property-input-select': propertyInputSelectVue,
     'app-property-input-text': propertyInputTextVue
   },
-  mixins: [
-    VueForm
-  ],
   model: {
     prop: `physical`
   },

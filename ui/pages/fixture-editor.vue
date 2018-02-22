@@ -244,7 +244,6 @@
 
 <script>
 import uuidV4 from 'uuid/v4.js';
-import VueForm from 'vue-form';
 
 import manufacturers from '~~/fixtures/manufacturers.json';
 import schemaProperties from '~~/lib/schema-properties.js';
@@ -273,9 +272,6 @@ export default {
     'app-mode': editorModeVue,
     'app-editor-channel-dialog': editorChannelDialogVue
   },
-  mixins: [
-    VueForm
-  ],
   head() {
     return {
       title: `Fixture Editor`
