@@ -16,6 +16,10 @@
             <div slot="number">Please enter a number.</div>
             <div slot="email">Please enter an email address.</div>
             <div slot="url">Please enter a URL.</div>
+
+            <!-- custom validators -->
+            <div slot="complete-range">Please fill out both start and end of the range.</div>
+            <div slot="valid-range">The start value of a range must not be greater than its end.</div>
           </field-messages>
 
           <div v-if="hint" class="hint">{{ hint }}</div>

@@ -438,8 +438,7 @@ function getEmptyPhysical() {
     },
     lens: {
       name: ``,
-      degreesMin: null,
-      degreesMax: null
+      degreesMinMax: null
     },
     focus: {
       type: ``,
@@ -514,8 +513,7 @@ function getEmptyFineChannel(coarseChannelId, fineness) {
 function getEmptyCapability() {
   return {
     uuid: uuidV4(),
-    start: ``,
-    end: ``,
+    range: null,
     name: ``,
     color: ``,
     color2: ``

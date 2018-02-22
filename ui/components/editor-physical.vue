@@ -101,20 +101,17 @@
         :schema-property="properties.physicalLens.name" />
     </app-simple-label>
 
-    <!-- TODO: validate this -->
-    <section class="physical-lens-degrees">
-      <app-simple-label label="Light cone">
-        <app-property-input-range
-          :start-value="physical.lens.degreesMin"
-          start-hint="min"
-          @start-input="newStart => physical.lens.degreesMin = newStart"
-          :end-value="physical.lens.degreesMax"
-          end-hint="max"
-          @end-input="newEnd => physical.lens.degreesMax = newEnd"
-          :schema-property="properties.physicalLens.degreesMinMax.items"
-          unit="°" />
-      </app-simple-label>
-    </section>
+    <app-simple-label :name="`${namePrefix}-physical-lens-degreesMinMax`" label="Light cone" :formstate="formstate">
+      <app-property-input-range
+        :name="`${namePrefix}-physical-lens-degreesMinMax`"
+        complete-range
+        valid-range
+        v-model="physical.lens.degreesMinMax"
+        start-hint="min"
+        end-hint="max"
+        :schema-property="properties.physicalLens.degreesMinMax.items"
+        unit="°" />
+    </app-simple-label>
 
 
     <h4>Focus</h4>
@@ -201,11 +198,9 @@ export default {
       return this.physical.dimensionsWidth !== null || this.physical.dimensionsHeight !== null || this.physical.dimensionsDepth !== null;
     }
   },
-  methods: {
-    mounted: function() {
-      // TODO: if (Vue._oflRestoreComplete) {
-      this.$refs.firstInput.focus();
-    }
+  mounted: function() {
+    // TODO: if (Vue._oflRestoreComplete) {
+    this.$refs.firstInput.focus();
   }
 };
 </script>
