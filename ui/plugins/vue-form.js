@@ -8,6 +8,9 @@ Vue.use(VueForm, {
     },
     'valid-range': function(range) {
       return range === null || range[0] === null || range[1] === null || range[0] <= range[1];
+    },
+    'categories-not-empty': function(categories) {
+      return categories.length > 0;
     }
   }
 });

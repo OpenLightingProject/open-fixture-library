@@ -20,6 +20,7 @@
             <!-- custom validators -->
             <div slot="complete-range">Please fill out both start and end of the range.</div>
             <div slot="valid-range">The start value of a range must not be greater than its end.</div>
+            <div slot="categories-not-empty">Please select at least one category.</div>
           </field-messages>
 
           <div v-if="hint" class="hint">{{ hint }}</div>

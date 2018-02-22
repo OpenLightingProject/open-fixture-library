@@ -8,8 +8,10 @@
         :selected="true"
         :selectable="true"
         @click="deselect(cat)"
-        @focus="onFocus"
-        @blur="onBlur" />
+        @focus.native="onFocus"
+        @blur.native="onBlur($event)"
+        @focusin.native.stop
+        @focusout.native.stop />
     </draggable>
 
     <app-category-badge
@@ -19,8 +21,10 @@
       :selected="false"
       :selectable="true"
       @click="select(cat)"
-      @focus="onFocus"
-      @blur="onBlur" />
+      @focus.native="onFocus"
+      @blur.native="onBlur($event)"
+      @focusin.native.stop
+      @focusout.native.stop />
   </div>
 </template>
 
@@ -71,8 +75,10 @@ export default {
     onFocus() {
       this.$emit(`focus`);
     },
-    onBlur() {
-      this.$emit(`blur`);
+    onBlur(event) {
+      if (!(event && event.target && event.relatedTarget) || event.target.parentNode !== event.relatedTarget.parentNode) {
+        this.$emit(`blur`);
+      }
     }
   }
 };

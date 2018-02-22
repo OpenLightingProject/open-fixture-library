@@ -7,8 +7,8 @@
       :max="end"
       :required="required || rangeIncomplete"
       hint="min"
-      @focus.native.stop="onFocus($event)"
-      @blur.native.stop="onBlur($event)"
+      @focus.native="onFocus"
+      @blur.native="onBlur($event)"
       @focusin.native.stop
       @focusout.native.stop />
     …
@@ -19,8 +19,8 @@
       :min="start"
       :required="required || rangeIncomplete"
       hint="max"
-      @focus.native.stop="onFocus($event)"
-      @blur.native.stop="onBlur($event)"
+      @focus.native="onFocus"
+      @blur.native="onBlur($event)"
       @focusin.native.stop
       @focusout.native.stop />
     {{ unit }}
