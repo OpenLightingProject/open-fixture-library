@@ -102,15 +102,24 @@
             hint="defaults to name" />
         </app-simple-label>
 
-        <!-- TODO: validate this! -->
-        <section class="categories">
-          <span class="label">Categories</span>
-          <span class="value">
+        <validate tag="section" class="categories" :custom="{categoriesNotEmpty}">
+          <div class="label">Categories</div>
+          <div class="value">
             <app-category-chooser
+              name="fixture-categories"
               :all-categories="properties.fixture.categories.items.enum"
               v-model="fixture.categories" />
-          </span>
-        </section>
+
+            <field-messages
+              name="fixture-categories"
+              show="$touched || $submitted"
+              class="error-message">
+              <div slot="categoriesNotEmpty">Please select at least one category.</div>
+            </field-messages>
+
+            <div class="hint">Select and reorder all applicable categories, the most suitable first.</div>
+          </div>
+        </validate>
 
         <app-simple-label name="comment" label="Comment" :formstate="formstate">
           <app-property-input-textarea
@@ -293,7 +302,11 @@ export default {
       properties: schemaProperties
     };
   },
-  computed: {},
+  computed: {
+    categoriesNotEmpty() {
+      return this.fixture.categories.length > 0;
+    }
+  },
   methods: {
     switchManufacturer(useExisting) {
       this.fixture.useExistingManufacturer = useExisting;

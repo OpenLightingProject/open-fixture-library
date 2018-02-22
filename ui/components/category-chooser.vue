@@ -7,7 +7,9 @@
         :category="cat"
         :selected="true"
         :selectable="true"
-        @click="deselect(cat)" />
+        @click="deselect(cat)"
+        @focus="onFocus"
+        @blur="onBlur" />
     </draggable>
 
     <app-category-badge
@@ -16,9 +18,9 @@
       :category="cat"
       :selected="false"
       :selectable="true"
-      @click="select(cat)" />
-
-    <span class="hint">Select and reorder all applicable categories, the most suitable first.</span>
+      @click="select(cat)"
+      @focus="onFocus"
+      @blur="onBlur" />
   </div>
 </template>
 
@@ -59,10 +61,18 @@ export default {
     select(selectedCat) {
       const updatedCategoryList = [...this.value, selectedCat];
       this.$emit(`input`, updatedCategoryList);
+      this.onBlur();
     },
     deselect(deselectedCat) {
       const updatedCategoryList = this.value.filter(cat => cat !== deselectedCat);
       this.$emit(`input`, updatedCategoryList);
+      this.onBlur();
+    },
+    onFocus() {
+      this.$emit(`focus`);
+    },
+    onBlur() {
+      this.$emit(`blur`);
     }
   }
 };
