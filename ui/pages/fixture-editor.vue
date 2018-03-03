@@ -412,9 +412,7 @@ function getEmptyFixture() {
  */
 function getEmptyPhysical() {
   return {
-    dimensionsWidth: null,
-    dimensionsHeight: null,
-    dimensionsDepth: null,
+    dimensions: null,
     weight: null,
     power: null,
     DMXconnector: ``,

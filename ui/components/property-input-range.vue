@@ -1,10 +1,12 @@
 <template>
-  <span>
+  <span class="range">
+    <!-- TODO: validate the individual sub fields -->
     <app-property-input-number
       type="number"
+      :name="`${name}-start`"
       v-model="start"
-      :schema-property="schemaProperty"
-      :max="end"
+      :schema-property="schemaProperty.items"
+      :max="end !== `invalid` ? end : null"
       :required="required || rangeIncomplete"
       hint="min"
       @focus.native="onFocus"
@@ -14,9 +16,10 @@
     …
     <app-property-input-number
       type="number"
+      :name="`${name}-end`"
       v-model="end"
-      :schema-property="schemaProperty"
-      :min="start"
+      :schema-property="schemaProperty.items"
+      :min="start !== `invalid` ? start : null"
       :required="required || rangeIncomplete"
       hint="max"
       @focus.native="onFocus"
@@ -42,6 +45,10 @@ export default {
       type: Array,
       required: false,
       default: null
+    },
+    name: {
+      type: String,
+      required: true
     },
     startHint: {
       type: String,
@@ -94,7 +101,7 @@ export default {
       this.$emit(`focus`);
     },
     onBlur(event) {
-      if (!(event.target && event.relatedTarget) || event.target.parentNode !== event.relatedTarget.parentNode) {
+      if (!(event.target && event.relatedTarget) || event.target.closest(`.range`) !== event.relatedTarget.closest(`.range`)) {
         this.$emit(`blur`);
       }
     }

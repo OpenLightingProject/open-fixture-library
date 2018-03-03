@@ -1,34 +1,16 @@
 <template>
   <div>
 
-    <!-- TODO: validate this -->
-    <section class="physical-dimensions">
-      <span class="label">Dimensions</span>
-      <span class="value">
-        <app-property-input-number
-          type="number"
-          v-model="physical.dimensionsWidth"
-          :schema-property="properties.dimensionsXYZ.items"
-          hint="width"
-          :required="dimensionRequired"
-          ref="firstInput" />
-        &times;
-        <app-property-input-number
-          type="number"
-          v-model="physical.dimensionsHeight"
-          :schema-property="properties.dimensionsXYZ.items"
-          hint="height"
-          :required="dimensionRequired" />
-        &times;
-        <app-property-input-number
-          type="number"
-          v-model="physical.dimensionsDepth"
-          :schema-property="properties.dimensionsXYZ.items"
-          hint="depth"
-          :required="dimensionRequired" /> mm
-        <span class="error-message" hidden />
-      </span>
-    </section>
+    <app-simple-label :name="`${namePrefix}-physical-dimensions`" label="Dimensions" :formstate="formstate">
+      <app-property-input-dimensions
+        :name="`${namePrefix}-physical-dimensions`"
+        complete-dimensions
+        v-model="physical.dimensions"
+        :schema-property="properties.dimensionsXYZ"
+        :hints="[`width`, `height`, `depth`]"
+        unit="mm"
+        ref="firstInput" />
+    </app-simple-label>
 
     <app-simple-label :name="`${namePrefix}-physical-weight`" label="Weight" :formstate="formstate">
       <app-property-input-number
@@ -109,7 +91,7 @@
         v-model="physical.lens.degreesMinMax"
         start-hint="min"
         end-hint="max"
-        :schema-property="properties.physicalLens.degreesMinMax.items"
+        :schema-property="properties.physicalLens.degreesMinMax"
         unit="°" />
     </app-simple-label>
 
@@ -158,6 +140,7 @@
 import schemaProperties from '~~/lib/schema-properties.js';
 
 import simpleLabelVue from '~/components/simple-label.vue';
+import propertyInputDimensionsVue from '~/components/property-input-dimensions.vue';
 import propertyInputNumberVue from '~/components/property-input-number.vue';
 import propertyInputRangeVue from '~/components/property-input-range.vue';
 import propertyInputSelectVue from '~/components/property-input-select.vue';
@@ -166,6 +149,7 @@ import propertyInputTextVue from '~/components/property-input-text.vue';
 export default {
   components: {
     'app-simple-label': simpleLabelVue,
+    'app-property-input-dimensions': propertyInputDimensionsVue,
     'app-property-input-number': propertyInputNumberVue,
     'app-property-input-range': propertyInputRangeVue,
     'app-property-input-select': propertyInputSelectVue,

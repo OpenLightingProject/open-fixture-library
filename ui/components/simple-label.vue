@@ -7,21 +7,22 @@
 
           <slot />
 
-          <field-messages
-            :name="name"
-            :state="formstate"
-            show="$touched || $submitted"
+          <div
+            v-show="fieldState.$touched || fieldState.$submitted"
             class="error-message">
-            <div slot="required">Please fill out this field.</div>
-            <div slot="number">Please enter a number.</div>
-            <div slot="email">Please enter an email address.</div>
-            <div slot="url">Please enter a URL.</div>
+            <div v-if="fieldErrors.required">Please fill out this field.</div>
+            <div v-else-if="fieldErrors.number">Please enter a number.</div>
+            <div v-else-if="fieldErrors.max">Too big.</div>
+            <div v-else-if="fieldErrors.min">Too small.</div>
+            <div v-else-if="fieldErrors.email">Please enter an email address.</div>
+            <div v-else-if="fieldErrors.url">Please enter a URL.</div>
 
             <!-- custom validators -->
-            <div slot="complete-range">Please fill out both start and end of the range.</div>
-            <div slot="valid-range">The start value of a range must not be greater than its end.</div>
-            <div slot="categories-not-empty">Please select at least one category.</div>
-          </field-messages>
+            <div v-else-if="fieldErrors[`complete-range`]">Please fill out both start and end of the range.</div>
+            <div v-else-if="fieldErrors[`valid-range`]">The start value of a range must not be greater than its end.</div>
+            <div v-else-if="fieldErrors[`categories-not-empty`]">Please select at least one category.</div>
+            <div v-else-if="fieldErrors[`complete-dimensions`]">Please fill out all dimensions.</div>
+          </div>
 
           <div v-if="hint" class="hint">{{ hint }}</div>
 
@@ -61,6 +62,44 @@ export default {
       type: Object,
       required: false, // TODO: make this required
       default: null
+    }
+  },
+  computed: {
+    errorFieldName() {
+      if (!this.formstate) {
+        return null;
+      }
+
+      if (this.formstate.$error[this.name]) {
+        return this.name;
+      }
+
+      // TODO: make use of these sub-fields (in range / dimensions / etc. input components)
+      const subFieldNames = Object.keys(this.formstate).filter(
+        name => name.startsWith(this.name)
+      );
+
+      for (const name of subFieldNames) {
+        if (this.formstate.$error[name]) {
+          return name;
+        }
+      }
+
+      return this.name;
+    },
+    fieldState() {
+      if (!this.formstate || !this.formstate[this.errorFieldName]) {
+        return {};
+      }
+
+      return this.formstate[this.errorFieldName];
+    },
+    fieldErrors() {
+      if (!(`$valid` in this.fieldState) || this.fieldState.$valid) {
+        return {};
+      }
+
+      return this.fieldState.$error;
     }
   }
 };
