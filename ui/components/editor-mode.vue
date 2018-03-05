@@ -163,8 +163,11 @@ export default {
     'app-property-input-text': propertyInputTextVue,
     'app-editor-physical': editorPhysicalVue
   },
+  model: {
+    prop: `mode`
+  },
   props: {
-    'value': {
+    'mode': {
       type: Object,
       required: true
     },
@@ -205,9 +208,6 @@ export default {
     };
   },
   computed: {
-    mode() {
-      return this.value;
-    },
     fixtureEditor() {
       const vueForm = this.$parent;
       return vueForm.$parent;

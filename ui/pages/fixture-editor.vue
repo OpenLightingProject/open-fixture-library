@@ -225,7 +225,8 @@
       v-model="channel"
       :fixture="fixture"
       @reset-channel="resetChannel"
-      @channel-changed="autoSave(`channel`)" />
+      @channel-changed="autoSave(`channel`)"
+      @remove-channel="removeChannel" />
 
     <app-editor-choose-channel-edit-mode-dialog
       :channel="channel"

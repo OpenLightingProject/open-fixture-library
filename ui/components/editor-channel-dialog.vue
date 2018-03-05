@@ -55,9 +55,14 @@
             hint="other channel type" />
         </app-simple-label>
 
-        <!-- TODO: validate this -->
-        <app-simple-label v-if="channel.type === `Single Color`" name="color" label="Color">
+        <!-- TODO: validate this right -->
+        <app-simple-label
+          v-if="channel.type === `Single Color`"
+          name="color"
+          label="Color"
+          :formstate="formstate">
           <app-property-input-select
+            name="color"
             v-model="channel.color"
             :schema-property="properties.channel.color"
             :required="true"
@@ -240,7 +245,7 @@ export default {
             ch => `coarseChannelId` in ch && ch.coarseChannelId === channel.coarseChannelId
           );
 
-          const maxFoundFineness = Math.max(...otherFineChannels.map(
+          const maxFoundFineness = Math.max(0, ...otherFineChannels.map(
             ch => ch.fineness
           ));
 
@@ -386,7 +391,6 @@ export default {
         if (`coarseChannelId` in fineChannel && fineChannel.coarseChannelId === this.channel.uuid) {
           maxFoundFineness = Math.max(maxFoundFineness, fineChannel.fineness);
           if (fineChannel.fineness > this.channel.fineness) {
-            // TODO: handle this
             this.$emit(`remove-channel`, chId);
           }
         }

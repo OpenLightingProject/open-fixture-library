@@ -79,7 +79,6 @@
     </section>
 
     <section class="fixture-modes">
-      <!-- TODO: Implement this component -->
       <app-fixture-mode
         v-for="(mode, index) in fixture.modes"
         :key="mode.name"
