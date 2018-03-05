@@ -15,7 +15,7 @@
     "start": "node main.js"
   },
   "dependencies": {
-    "@std/esm": "^0.23.0",
+    "@std/esm": ">=0.23.0 <1.0.0",
     "a11y-dialog": "^4.0.0",
     "body-parser": "^1.18.2",
     "browserify-middleware": "^8.0.0",
