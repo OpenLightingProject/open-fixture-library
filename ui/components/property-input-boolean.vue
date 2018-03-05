@@ -1,5 +1,9 @@
 <template>
-  <select :required="required" @input="update" ref="input">
+  <select
+    class="boolean"
+    :required="required"
+    @input="update"
+    ref="input">
     <option value="" :selected="value === ``">unknown</option>
     <option value="true" :selected="value === true">yes</option>
     <option value="false" :selected="value === false">no</option>

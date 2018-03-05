@@ -166,25 +166,20 @@ input[type=number] {
   }
 }
 
-/* TODO: the :invalid rules should not be necessary */
-select:not([vue-form-validator]):invalid,
-textarea:not([vue-form-validator]):invalid,
-input[type="text"]:not([vue-form-validator]):invalid,
-input[type="email"]:not([vue-form-validator]):invalid,
-input[type="search"]:not([vue-form-validator]):invalid,
-input[type="url"]:not([vue-form-validator]):invalid,
-input[type="number"]:not([vue-form-validator]):invalid,
-
-/* these ones are preferred */
-select.vf-touched.vf-invalid,
-textarea.vf-touched.vf-invalid,
-input[type="text"].vf-touched.vf-invalid,
-input[type="email"].vf-touched.vf-invalid,
-input[type="search"].vf-touched.vf-invalid,
-input[type="url"].vf-touched.vf-invalid,
-input[type="number"].vf-touched.vf-invalid {
-  border-color: red;
-  box-shadow: 0 0 4px rgba(255, 0, 0, 0.4);
+select,
+textarea,
+input[type=text],
+input[type=email],
+input[type=search],
+input[type=url],
+input[type=number] {
+  /* TODO: the :invalid rules should not be necessary */
+  &:not([vue-form-validator]):invalid,
+  &.vf-touched.vf-invalid,
+  &.vf-submitted.vf-invalid {
+    border-color: red;
+    box-shadow: 0 0 4px rgba(255, 0, 0, 0.4);
+  }
 }
 
 .error-message {

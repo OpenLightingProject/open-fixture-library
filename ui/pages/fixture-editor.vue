@@ -224,7 +224,12 @@
     <app-editor-channel-dialog
       v-model="channel"
       :fixture="fixture"
-      @reset-channel="resetChannel" />
+      @reset-channel="resetChannel"
+      @channel-changed="autoSave(`channel`)" />
+
+    <app-editor-choose-channel-edit-mode-dialog
+      :channel="channel"
+      :fixture="fixture" />
   </div>
 </template>
 
@@ -236,6 +241,7 @@
 
 
 <script>
+import scrollIntoView from 'scroll-into-view';
 import uuidV4 from 'uuid/v4.js';
 
 import manufacturers from '~~/fixtures/manufacturers.json';
@@ -251,6 +257,7 @@ import categoryChooserVue from '~/components/category-chooser.vue';
 import editorPhysicalVue from '~/components/editor-physical.vue';
 import editorModeVue from '~/components/editor-mode.vue';
 import editorChannelDialogVue from '~/components/editor-channel-dialog.vue';
+import editorChooseChannelEditModeDialogVue from '~/components/editor-choose-channel-edit-mode-dialog.vue';
 
 export default {
   components: {
@@ -263,7 +270,8 @@ export default {
     'app-category-chooser': categoryChooserVue,
     'app-editor-physical': editorPhysicalVue,
     'app-mode': editorModeVue,
-    'app-editor-channel-dialog': editorChannelDialogVue
+    'app-editor-channel-dialog': editorChannelDialogVue,
+    'app-editor-choose-channel-edit-mode-dialog': editorChooseChannelEditModeDialogVue
   },
   head() {
     return {
@@ -290,6 +298,14 @@ export default {
       manufacturers,
       properties: schemaProperties
     };
+  },
+  watch: {
+    fixture: {
+      handler: function() {
+        this.autoSave(`fixture`);
+      },
+      deep: true
+    }
   },
   methods: {
     switchManufacturer(useExisting) {
@@ -372,7 +388,51 @@ export default {
       delete this.fixture.availableChannels[channelUuid];
     },
 
+    /**
+     * Saves the entered user data to the browser's local storage if available.
+     * @param {'fixture'|'channel'} objectName The object to save.
+     */
+    autoSave(objectName) {
+      // TODO: actually save to localStorage
+      // if (!storageAvailable || !this.readyToAutoSave) {
+      //   return;
+      // }
+
+      if (objectName === `fixture`) {
+        console.log(`autoSave fixture:`, JSON.parse(JSON.stringify(this.fixture, null, 2)));
+      }
+      else if (objectName === `channel`) {
+        console.log(`autoSave channel:`, JSON.parse(JSON.stringify(this.channel, null, 2)));
+      }
+
+      // use an array to be future-proof (maybe we want to support multiple browser tabs sometime)
+      // localStorage.setItem('autoSave', JSON.stringify([
+      //   {
+      //     fixture: this.fixture,
+      //     channel: this.channel,
+      //     timestamp: Date.now()
+      //   }
+      // ]));
+    },
+
     onSubmit() {
+      if (this.formstate.$invalid) {
+        const firstErrorName = Object.keys(this.formstate.$error)[0];
+        const field = document.querySelector(`[name=${firstErrorName}]`);
+
+        scrollIntoView(field, {
+          time: 300,
+          align: {
+            top: 0,
+            left: 0,
+            topOffset: 100
+          },
+          isScrollable: target => target === window
+        }, () => field.focus());
+
+        return;
+      }
+
       console.log(`submit`, this.fixture);
     }
   }
@@ -481,19 +541,6 @@ function getEmptyChannel() {
 }
 
 /**
- * @param {!string} coarseChannelId The UUID of the coarse channel.
- * @param {!number} fineness The fineness of the newly created fine channel.
- * @returns {!object} An empty fine channel object for the given coarse channel.
- */
-function getEmptyFineChannel(coarseChannelId, fineness) {
-  return {
-    uuid: uuidV4(),
-    coarseChannelId: coarseChannelId,
-    fineness: fineness
-  };
-}
-
-/**
  * @returns {!object} An empty capability object.
  */
 function getEmptyCapability() {
@@ -504,40 +551,6 @@ function getEmptyCapability() {
     color: ``,
     color2: ``
   };
-}
-
-/**
- * @param {!object} channel The channel object that shall be sanitized.
- * @returns {!object} A clone of the channel object without properties that are just relevant for displaying it in the channel dialog.
- */
-function getSanitizedChannel(channel) {
-  const retChannel = this.clone(channel);
-  delete retChannel.editMode;
-  delete retChannel.modeId;
-  delete retChannel.wizard;
-
-  return retChannel;
-}
-
-/**
- * @param {!object} cap The capability object.
- * @returns {!boolean} False if the capability object is still empty / unchanged, true otherwise.
- */
-function isCapabilityChanged(cap) {
-  return Object.keys(cap).some(prop => {
-    if (prop === `uuid`) {
-      return false;
-    }
-    return cap[prop] !== ``;
-  });
-}
-
-/**
- * @param {*} obj The object / array / ... to clone. Note: only JSON-stringifiable objects / properties are cloneable, i.e. no functions.
- * @returns {*} A deep clone.
- */
-function clone(obj) {
-  return JSON.parse(JSON.stringify(obj));
 }
 
 </script>

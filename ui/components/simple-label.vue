@@ -22,6 +22,8 @@
             <div v-else-if="fieldErrors[`valid-range`]">The start value of a range must not be greater than its end.</div>
             <div v-else-if="fieldErrors[`categories-not-empty`]">Please select at least one category.</div>
             <div v-else-if="fieldErrors[`complete-dimensions`]">Please fill out all dimensions.</div>
+            <div v-else-if="fieldErrors[`start-with-uppercase-or-number`]">Please start with an uppercase letter or a number.</div>
+            <div v-else-if="fieldErrors[`no-fine-channel-name`]">Don't create fine channels manually, set the channel resolution below instead.</div>
           </div>
 
           <div v-if="hint" class="hint">{{ hint }}</div>

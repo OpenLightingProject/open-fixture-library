@@ -126,6 +126,25 @@
 }
 </style>
 
+<style lang="scss" scoped>
+.mode-channels a {
+  opacity: 0;
+  float: right;
+  width: 1.4em;
+  height: 1.4em;
+  padding: 0.3em;
+  transition: opacity 0.1s;
+}
+.mode-channels > li:hover > a,
+.mode-channels a:focus {
+  opacity: 1;
+}
+
+.mode-channels .drag-handle {
+  cursor: move;
+}
+</style>
+
 
 <script>
 import schemaProperties from '~~/lib/schema-properties.js';
@@ -188,6 +207,10 @@ export default {
   computed: {
     mode() {
       return this.value;
+    },
+    fixtureEditor() {
+      const vueForm = this.$parent;
+      return vueForm.$parent;
     }
   },
   mounted() {
@@ -196,7 +219,7 @@ export default {
   },
   methods: {
     getChannelName(channelUuid) {
-      return this.$parent.getChannelName(channelUuid);
+      return this.fixtureEditor.getChannelName(channelUuid);
     },
     editChannel(channelUuid) {
       this.$emit(`open-channel-editor`, {
@@ -212,7 +235,7 @@ export default {
       });
     },
     isChannelNameUnique(channelUuid) {
-      return this.$parent.isChannelNameUnique(channelUuid);
+      return this.fixtureEditor.isChannelNameUnique(channelUuid);
     },
     isFineChannel(channelUuid) {
       return `coarseChannelId` in this.fixture.availableChannels[channelUuid];
@@ -232,12 +255,12 @@ export default {
         const ch = this.fixture.availableChannels[chId];
         if (`coarseChannelId` in ch && ch.coarseChannelId === coarseChannelId
           && ch.fineness > fineness) {
-          this.$parent.removeChannel(ch.uuid, this.mode.uuid);
+          this.fixtureEditor.removeChannel(ch.uuid, this.mode.uuid);
         }
       }
 
       // then remove the channel itself
-      this.$parent.removeChannel(channelUuid, this.mode.uuid);
+      this.fixtureEditor.removeChannel(channelUuid, this.mode.uuid);
     }
   }
 };

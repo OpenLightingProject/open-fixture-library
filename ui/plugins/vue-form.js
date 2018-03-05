@@ -29,6 +29,16 @@ Vue.use(VueForm, {
     },
     'complete-dimensions': function(dimensions) {
       return dimensions === null || (dimensions[0] !== null && dimensions[1] !== null && dimensions[2] !== null);
+    },
+    'start-with-uppercase-or-number': function(value) {
+      return /^[A-Z0-9]/.test(value);
+    },
+    'no-fine-channel-name': function(value) {
+      if (/\bfine\b|\d+(?:\s|-|_)*bit/i.test(value)) {
+        return false;
+      }
+
+      return !/\bLSB\b|\bMSB\b/.test(value);
     }
   }
 });
