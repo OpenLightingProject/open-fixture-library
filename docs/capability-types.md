@@ -39,7 +39,7 @@ Required properties are _italic_, the entity is written in (parentheses).
 * ColorIntensity
   * _color_: one of our predefined Single Colors (Red, Green, Blue, White, Amber, etc.)
   * _brightness_ (Brightness)
-* Color
+* ColorPreset
   * colors: array of visible colors as hex codes; e.g. `['#ffff00']` if red and green LEDs are on that mix to yellow, `['#ff0000', '#00ff00']` if red and green laser beams are on that don't mix. UV is always counted as seperate color.
   * use colorsStart and colorsEnd instead of colors to declare a color change from the start to the end of the range
 * ColorWheelIndex
