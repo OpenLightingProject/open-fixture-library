@@ -704,46 +704,52 @@
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "ShutterClosed"
+          "type": "ShutterStrobe",
+          "effect": "Closed"
         },
         {
           "dmxRange": [32, 63],
-          "type": "ShutterOpen"
+          "type": "ShutterStrobe",
+          "effect": "Open"
         },
         {
           "dmxRange": [64, 95],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "effect": "Strobe",
           "speed": ["0.3Hz", "20Hz"]
         },
         {
           "dmxRange": [96, 127],
-          "type": "ShutterOpen"
+          "type": "ShutterStrobe",
+          "effect": "Open"
         },
         {
           "dmxRange": [128, 143],
-          "type": "StrobeSpeed",
-          "speed": ["slow", "fast"],
-          "strobeType": "RampUp"
+          "type": "ShutterStrobe",
+          "effect": "RampUp",
+          "speed": ["slow", "fast"]
         },
         {
           "dmxRange": [144, 159],
-          "type": "StrobeSpeed",
-          "speed": ["slow", "fast"],
-          "strobeType": "RampDown"
+          "type": "ShutterStrobe",
+          "effect": "RampDown",
+          "speed": ["slow", "fast"]
         },
         {
           "dmxRange": [160, 191],
-          "type": "ShutterOpen"
+          "type": "ShutterStrobe",
+          "effect": "Open"
         },
         {
           "dmxRange": [192, 223],
-          "type": "StrobeSpeed",
-          "speed": ["slow", "fast"],
-          "strobeType": "Random"
+          "type": "ShutterStrobe",
+          "effect": "StrobeRandom",
+          "speed": ["slow", "fast"]
         },
         {
           "dmxRange": [224, 255],
-          "type": "ShutterOpen"
+          "type": "ShutterStrobe",
+          "effect": "Open"
         }
       ]
     },

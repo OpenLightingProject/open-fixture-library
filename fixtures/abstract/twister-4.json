@@ -153,12 +153,14 @@
         },
         {
           "dmxRange": [238, 253],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "effect": "Strobe",
           "speed": "slow"
         },
         {
           "dmxRange": [254, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "effect": "Strobe",
           "speed": "fast"
         }
       ]
@@ -167,50 +169,60 @@
       "capabilities": [
         {
           "dmxRange": [0, 23],
-          "type": "ShutterClosed"
+          "type": "ShutterStrobe",
+          "effect": "Closed"
         },
         {
           "dmxRange": [24, 225],
-          "type": "ShutterOpen"
+          "type": "ShutterStrobe",
+          "effect": "Open"
         },
         {
           "dmxRange": [226, 229],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "effect": "Strobe",
           "speed": "slow"
         },
         {
           "dmxRange": [230, 233],
-          "type": "StrobeEffect",
-          "comment": "Strobe 2"
+          "type": "ShutterStrobe",
+          "comment": "Strobe 2",
+          "effect": "Strobe"
         },
         {
           "dmxRange": [234, 237],
-          "type": "StrobeEffect",
-          "comment": "Strobe 3"
+          "type": "ShutterStrobe",
+          "comment": "Strobe 3",
+          "effect": "Strobe"
         },
         {
           "dmxRange": [238, 241],
-          "type": "StrobeEffect",
-          "comment": "Strobe 4"
+          "type": "ShutterStrobe",
+          "comment": "Strobe 4",
+          "effect": "Strobe"
         },
         {
           "dmxRange": [242, 245],
-          "type": "StrobeEffect",
-          "comment": "Strobe 5"
+          "type": "ShutterStrobe",
+          "comment": "Strobe 5",
+          "effect": "Strobe"
         },
         {
           "dmxRange": [246, 249],
-          "type": "StrobeEffect",
-          "comment": "Strobe 6"
+          "type": "ShutterStrobe",
+          "comment": "Strobe 6",
+          "effect": "Strobe"
         },
         {
           "dmxRange": [250, 253],
-          "type": "StrobeEffect",
-          "comment": "Strobe 7"
+          "type": "ShutterStrobe",
+          "comment": "Strobe 7",
+          "effect": "Strobe"
         },
         {
           "dmxRange": [254, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "effect": "Strobe",
           "speed": "fast"
         }
       ]

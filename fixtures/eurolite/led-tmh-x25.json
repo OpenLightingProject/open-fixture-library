@@ -61,18 +61,20 @@
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "ShutterOpen"
+          "type": "ShutterStrobe",
+          "effect": "Open"
         },
         {
           "dmxRange": [128, 191],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "effect": "Strobe",
           "speed": ["0Hz", "18Hz"]
         },
         {
           "dmxRange": [192, 255],
-          "type": "StrobeSpeed",
-          "speed": ["0Hz", "18Hz"],
-          "strobeType": "Random"
+          "type": "ShutterStrobe",
+          "effect": "StrobeRandom",
+          "speed": ["0Hz", "18Hz"]
         }
       ]
     },

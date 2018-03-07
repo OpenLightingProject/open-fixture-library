@@ -89,95 +89,110 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "ShutterClosed"
+          "type": "ShutterStrobe",
+          "effect": "Closed"
         },
         {
           "dmxRange": [10, 23],
-          "type": "StrobeEffect",
-          "strobeType": "Random"
+          "type": "ShutterStrobe",
+          "effect": "StrobeRandom"
         },
         {
           "dmxRange": [24, 37],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
           "comment": "Strobe speed 1 min.",
+          "effect": "Strobe",
           "speed": "17%"
         },
         {
           "dmxRange": [38, 51],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
           "comment": "Strobe speed 2",
+          "effect": "Strobe",
           "speed": "33%"
         },
         {
           "dmxRange": [52, 65],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
           "comment": "Strobe speed 3",
+          "effect": "Strobe",
           "speed": "50%"
         },
         {
           "dmxRange": [66, 79],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
           "comment": "Strobe speed 4",
+          "effect": "Strobe",
           "speed": "67%"
         },
         {
           "dmxRange": [80, 93],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
           "comment": "Strobe speed 5",
+          "effect": "Strobe",
           "speed": "83%"
         },
         {
           "dmxRange": [94, 107],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
           "comment": "Strobe speed 6 max.",
+          "effect": "Strobe",
           "speed": "100%"
         },
         {
           "dmxRange": [108, 121],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
           "comment": "Flash open speed 1 min.",
+          "effect": "Strobe",
           "speed": "25%"
         },
         {
           "dmxRange": [122, 135],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
           "comment": "Flash open speed 2",
+          "effect": "Strobe",
           "speed": "50%"
         },
         {
           "dmxRange": [136, 149],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
           "comment": "Flash open speed 3",
+          "effect": "Strobe",
           "speed": "75%"
         },
         {
           "dmxRange": [150, 163],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
           "comment": "Flash open speed 4 max.",
+          "effect": "Strobe",
           "speed": "100%"
         },
         {
           "dmxRange": [164, 177],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
           "comment": "Flash closed speed 1 min.",
+          "effect": "Strobe",
           "speed": "25%"
         },
         {
           "dmxRange": [178, 191],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
           "comment": "Flash closed speed 2",
+          "effect": "Strobe",
           "speed": "50%"
         },
         {
           "dmxRange": [192, 205],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
           "comment": "Flash closed speed 3",
+          "effect": "Strobe",
           "speed": "75%"
         },
         {
           "dmxRange": [206, 219],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
           "comment": "Flash closed speed 4 max.",
+          "effect": "Strobe",
           "speed": "100%"
         },
         {
@@ -192,7 +207,8 @@
         },
         {
           "dmxRange": [234, 255],
-          "type": "ShutterOpen"
+          "type": "ShutterStrobe",
+          "effect": "Open"
         }
       ]
     },

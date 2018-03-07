@@ -79,7 +79,8 @@
         },
         {
           "dmxRange": [16, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "effect": "Strobe",
           "speed": ["slow", "fast"]
         }
       ]

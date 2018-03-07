@@ -396,39 +396,45 @@
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "ShutterClosed"
+          "type": "ShutterStrobe",
+          "effect": "Closed"
         },
         {
           "dmxRange": [32, 63],
-          "type": "ShutterOpen"
+          "type": "ShutterStrobe",
+          "effect": "Open"
         },
         {
           "dmxRange": [64, 95],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "effect": "Strobe",
           "speed": ["slow", "fast"]
         },
         {
           "dmxRange": [96, 127],
-          "type": "ShutterOpen"
+          "type": "ShutterStrobe",
+          "effect": "Open"
         },
         {
           "dmxRange": [128, 159],
-          "type": "StrobeEffect",
-          "strobeType": "Pulse"
+          "type": "ShutterStrobe",
+          "effect": "Pulse"
         },
         {
           "dmxRange": [160, 191],
-          "type": "ShutterOpen"
+          "type": "ShutterStrobe",
+          "effect": "Open"
         },
         {
           "dmxRange": [192, 223],
-          "type": "StrobeSpeed",
-          "speed": ["slow", "fast"],
-          "strobeType": "Random"
+          "type": "ShutterStrobe",
+          "effect": "StrobeRandom",
+          "speed": ["slow", "fast"]
         },
         {
           "dmxRange": [224, 255],
-          "type": "ShutterOpen"
+          "type": "ShutterStrobe",
+          "effect": "Open"
         }
       ]
     },

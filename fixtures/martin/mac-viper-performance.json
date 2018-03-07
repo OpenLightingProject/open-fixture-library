@@ -38,27 +38,31 @@
       "capabilities": [
         {
           "dmxRange": [0, 19],
-          "type": "ShutterClosed",
+          "type": "ShutterStrobe",
+          "effect": "Closed",
           "comment": "800W mode after 10s"
         },
         {
           "dmxRange": [20, 49],
-          "type": "ShutterOpen"
+          "type": "ShutterStrobe",
+          "effect": "Open"
         },
         {
           "dmxRange": [50, 200],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "effect": "Strobe",
           "speed": ["slow", "fast"]
         },
         {
           "dmxRange": [201, 210],
-          "type": "ShutterOpen"
+          "type": "ShutterStrobe",
+          "effect": "Open"
         },
         {
           "dmxRange": [211, 255],
-          "type": "StrobeSpeed",
-          "speed": ["slow", "fast"],
-          "strobeType": "Random"
+          "type": "ShutterStrobe",
+          "effect": "StrobeRandom",
+          "speed": ["slow", "fast"]
         }
       ]
     },

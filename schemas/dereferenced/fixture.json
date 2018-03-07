@@ -459,44 +459,18 @@
                       "dmxRange": {},
                       "type": {
                         "enum": [
-                          "ShutterOpen"
-                        ]
-                      },
-                      "comment": {},
-                      "menuClick": {},
-                      "switchChannels": {}
-                    },
-                    "additionalProperties": false
-                  },
-                  {
-                    "properties": {
-                      "dmxRange": {},
-                      "type": {
-                        "enum": [
-                          "ShutterClosed"
-                        ]
-                      },
-                      "comment": {},
-                      "menuClick": {},
-                      "switchChannels": {}
-                    },
-                    "additionalProperties": false
-                  },
-                  {
-                    "properties": {
-                      "dmxRange": {},
-                      "type": {
-                        "enum": [
-                          "StrobeEffect"
+                          "ShutterStrobe"
                         ]
                       },
                       "comment": {},
                       "menuClick": {},
                       "switchChannels": {},
-                      "strobeType": {
+                      "effect": {
                         "enum": [
-                          "Normal",
-                          "Random",
+                          "Open",
+                          "Closed",
+                          "Strobe",
+                          "StrobeRandom",
                           "Pulse",
                           "PulseRandom",
                           "RampUp",
@@ -504,7 +478,122 @@
                           "RampDown",
                           "RampDownRandom"
                         ]
+                      },
+                      "speed": {
+                        "oneOf": [
+                          {
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+                              },
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                              },
+                              {
+                                "enum": [
+                                  "fast reverse",
+                                  "slow reverse",
+                                  "stop",
+                                  "slow",
+                                  "fast"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "array",
+                            "minLength": 2,
+                            "maxLength": 2,
+                            "items": {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                },
+                                {
+                                  "enum": [
+                                    "fast reverse",
+                                    "slow reverse",
+                                    "stop",
+                                    "slow",
+                                    "fast"
+                                  ]
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      "duration": {
+                        "oneOf": [
+                          {
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?s$"
+                              },
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?ms$"
+                              },
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                              },
+                              {
+                                "enum": [
+                                  "instant",
+                                  "slow",
+                                  "fast"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "array",
+                            "minLength": 2,
+                            "maxLength": 2,
+                            "items": {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?s$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?ms$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                },
+                                {
+                                  "enum": [
+                                    "instant",
+                                    "slow",
+                                    "fast"
+                                  ]
+                                }
+                              ]
+                            }
+                          }
+                        ]
                       }
+                    },
+                    "required": [
+                      "effect"
+                    ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "duration"
+                      ]
                     },
                     "additionalProperties": false
                   },
@@ -568,18 +657,6 @@
                               ]
                             }
                           }
-                        ]
-                      },
-                      "strobeType": {
-                        "enum": [
-                          "Normal",
-                          "Random",
-                          "Pulse",
-                          "PulseRandom",
-                          "RampUp",
-                          "RampUpRandom",
-                          "RampDown",
-                          "RampDownRandom"
                         ]
                       }
                     },
@@ -652,18 +729,6 @@
                               ]
                             }
                           }
-                        ]
-                      },
-                      "strobeType": {
-                        "enum": [
-                          "Normal",
-                          "Random",
-                          "Pulse",
-                          "PulseRandom",
-                          "RampUp",
-                          "RampUpRandom",
-                          "RampDown",
-                          "RampDownRandom"
                         ]
                       }
                     },
@@ -3475,44 +3540,18 @@
                         "dmxRange": {},
                         "type": {
                           "enum": [
-                            "ShutterOpen"
-                          ]
-                        },
-                        "comment": {},
-                        "menuClick": {},
-                        "switchChannels": {}
-                      },
-                      "additionalProperties": false
-                    },
-                    {
-                      "properties": {
-                        "dmxRange": {},
-                        "type": {
-                          "enum": [
-                            "ShutterClosed"
-                          ]
-                        },
-                        "comment": {},
-                        "menuClick": {},
-                        "switchChannels": {}
-                      },
-                      "additionalProperties": false
-                    },
-                    {
-                      "properties": {
-                        "dmxRange": {},
-                        "type": {
-                          "enum": [
-                            "StrobeEffect"
+                            "ShutterStrobe"
                           ]
                         },
                         "comment": {},
                         "menuClick": {},
                         "switchChannels": {},
-                        "strobeType": {
+                        "effect": {
                           "enum": [
-                            "Normal",
-                            "Random",
+                            "Open",
+                            "Closed",
+                            "Strobe",
+                            "StrobeRandom",
                             "Pulse",
                             "PulseRandom",
                             "RampUp",
@@ -3520,7 +3559,122 @@
                             "RampDown",
                             "RampDownRandom"
                           ]
+                        },
+                        "speed": {
+                          "oneOf": [
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                },
+                                {
+                                  "enum": [
+                                    "fast reverse",
+                                    "slow reverse",
+                                    "stop",
+                                    "slow",
+                                    "fast"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "array",
+                              "minLength": 2,
+                              "maxLength": 2,
+                              "items": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                  },
+                                  {
+                                    "enum": [
+                                      "fast reverse",
+                                      "slow reverse",
+                                      "stop",
+                                      "slow",
+                                      "fast"
+                                    ]
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "duration": {
+                          "oneOf": [
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?s$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?ms$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                },
+                                {
+                                  "enum": [
+                                    "instant",
+                                    "slow",
+                                    "fast"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "array",
+                              "minLength": 2,
+                              "maxLength": 2,
+                              "items": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?s$"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?ms$"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                  },
+                                  {
+                                    "enum": [
+                                      "instant",
+                                      "slow",
+                                      "fast"
+                                    ]
+                                  }
+                                ]
+                              }
+                            }
+                          ]
                         }
+                      },
+                      "required": [
+                        "effect"
+                      ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "duration"
+                        ]
                       },
                       "additionalProperties": false
                     },
@@ -3584,18 +3738,6 @@
                                 ]
                               }
                             }
-                          ]
-                        },
-                        "strobeType": {
-                          "enum": [
-                            "Normal",
-                            "Random",
-                            "Pulse",
-                            "PulseRandom",
-                            "RampUp",
-                            "RampUpRandom",
-                            "RampDown",
-                            "RampDownRandom"
                           ]
                         }
                       },
@@ -3668,18 +3810,6 @@
                                 ]
                               }
                             }
-                          ]
-                        },
-                        "strobeType": {
-                          "enum": [
-                            "Normal",
-                            "Random",
-                            "Pulse",
-                            "PulseRandom",
-                            "RampUp",
-                            "RampUpRandom",
-                            "RampDown",
-                            "RampDownRandom"
                           ]
                         }
                       },
@@ -6601,44 +6731,18 @@
                       "dmxRange": {},
                       "type": {
                         "enum": [
-                          "ShutterOpen"
-                        ]
-                      },
-                      "comment": {},
-                      "menuClick": {},
-                      "switchChannels": {}
-                    },
-                    "additionalProperties": false
-                  },
-                  {
-                    "properties": {
-                      "dmxRange": {},
-                      "type": {
-                        "enum": [
-                          "ShutterClosed"
-                        ]
-                      },
-                      "comment": {},
-                      "menuClick": {},
-                      "switchChannels": {}
-                    },
-                    "additionalProperties": false
-                  },
-                  {
-                    "properties": {
-                      "dmxRange": {},
-                      "type": {
-                        "enum": [
-                          "StrobeEffect"
+                          "ShutterStrobe"
                         ]
                       },
                       "comment": {},
                       "menuClick": {},
                       "switchChannels": {},
-                      "strobeType": {
+                      "effect": {
                         "enum": [
-                          "Normal",
-                          "Random",
+                          "Open",
+                          "Closed",
+                          "Strobe",
+                          "StrobeRandom",
                           "Pulse",
                           "PulseRandom",
                           "RampUp",
@@ -6646,7 +6750,122 @@
                           "RampDown",
                           "RampDownRandom"
                         ]
+                      },
+                      "speed": {
+                        "oneOf": [
+                          {
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+                              },
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                              },
+                              {
+                                "enum": [
+                                  "fast reverse",
+                                  "slow reverse",
+                                  "stop",
+                                  "slow",
+                                  "fast"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "array",
+                            "minLength": 2,
+                            "maxLength": 2,
+                            "items": {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                },
+                                {
+                                  "enum": [
+                                    "fast reverse",
+                                    "slow reverse",
+                                    "stop",
+                                    "slow",
+                                    "fast"
+                                  ]
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      "duration": {
+                        "oneOf": [
+                          {
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?s$"
+                              },
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?ms$"
+                              },
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                              },
+                              {
+                                "enum": [
+                                  "instant",
+                                  "slow",
+                                  "fast"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "array",
+                            "minLength": 2,
+                            "maxLength": 2,
+                            "items": {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?s$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?ms$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                },
+                                {
+                                  "enum": [
+                                    "instant",
+                                    "slow",
+                                    "fast"
+                                  ]
+                                }
+                              ]
+                            }
+                          }
+                        ]
                       }
+                    },
+                    "required": [
+                      "effect"
+                    ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "duration"
+                      ]
                     },
                     "additionalProperties": false
                   },
@@ -6710,18 +6929,6 @@
                               ]
                             }
                           }
-                        ]
-                      },
-                      "strobeType": {
-                        "enum": [
-                          "Normal",
-                          "Random",
-                          "Pulse",
-                          "PulseRandom",
-                          "RampUp",
-                          "RampUpRandom",
-                          "RampDown",
-                          "RampDownRandom"
                         ]
                       }
                     },
@@ -6794,18 +7001,6 @@
                               ]
                             }
                           }
-                        ]
-                      },
-                      "strobeType": {
-                        "enum": [
-                          "Normal",
-                          "Random",
-                          "Pulse",
-                          "PulseRandom",
-                          "RampUp",
-                          "RampUpRandom",
-                          "RampDown",
-                          "RampDownRandom"
                         ]
                       }
                     },
@@ -9617,44 +9812,18 @@
                         "dmxRange": {},
                         "type": {
                           "enum": [
-                            "ShutterOpen"
-                          ]
-                        },
-                        "comment": {},
-                        "menuClick": {},
-                        "switchChannels": {}
-                      },
-                      "additionalProperties": false
-                    },
-                    {
-                      "properties": {
-                        "dmxRange": {},
-                        "type": {
-                          "enum": [
-                            "ShutterClosed"
-                          ]
-                        },
-                        "comment": {},
-                        "menuClick": {},
-                        "switchChannels": {}
-                      },
-                      "additionalProperties": false
-                    },
-                    {
-                      "properties": {
-                        "dmxRange": {},
-                        "type": {
-                          "enum": [
-                            "StrobeEffect"
+                            "ShutterStrobe"
                           ]
                         },
                         "comment": {},
                         "menuClick": {},
                         "switchChannels": {},
-                        "strobeType": {
+                        "effect": {
                           "enum": [
-                            "Normal",
-                            "Random",
+                            "Open",
+                            "Closed",
+                            "Strobe",
+                            "StrobeRandom",
                             "Pulse",
                             "PulseRandom",
                             "RampUp",
@@ -9662,7 +9831,122 @@
                             "RampDown",
                             "RampDownRandom"
                           ]
+                        },
+                        "speed": {
+                          "oneOf": [
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                },
+                                {
+                                  "enum": [
+                                    "fast reverse",
+                                    "slow reverse",
+                                    "stop",
+                                    "slow",
+                                    "fast"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "array",
+                              "minLength": 2,
+                              "maxLength": 2,
+                              "items": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                  },
+                                  {
+                                    "enum": [
+                                      "fast reverse",
+                                      "slow reverse",
+                                      "stop",
+                                      "slow",
+                                      "fast"
+                                    ]
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "duration": {
+                          "oneOf": [
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?s$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?ms$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                },
+                                {
+                                  "enum": [
+                                    "instant",
+                                    "slow",
+                                    "fast"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "array",
+                              "minLength": 2,
+                              "maxLength": 2,
+                              "items": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?s$"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?ms$"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                  },
+                                  {
+                                    "enum": [
+                                      "instant",
+                                      "slow",
+                                      "fast"
+                                    ]
+                                  }
+                                ]
+                              }
+                            }
+                          ]
                         }
+                      },
+                      "required": [
+                        "effect"
+                      ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "duration"
+                        ]
                       },
                       "additionalProperties": false
                     },
@@ -9726,18 +10010,6 @@
                                 ]
                               }
                             }
-                          ]
-                        },
-                        "strobeType": {
-                          "enum": [
-                            "Normal",
-                            "Random",
-                            "Pulse",
-                            "PulseRandom",
-                            "RampUp",
-                            "RampUpRandom",
-                            "RampDown",
-                            "RampDownRandom"
                           ]
                         }
                       },
@@ -9810,18 +10082,6 @@
                                 ]
                               }
                             }
-                          ]
-                        },
-                        "strobeType": {
-                          "enum": [
-                            "Normal",
-                            "Random",
-                            "Pulse",
-                            "PulseRandom",
-                            "RampUp",
-                            "RampUpRandom",
-                            "RampDown",
-                            "RampDownRandom"
                           ]
                         }
                       },

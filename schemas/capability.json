@@ -51,32 +51,16 @@
     {
       "properties": {
         "dmxRange": {},
-        "type": { "enum": ["ShutterOpen"] },
-        "comment": {},
-        "menuClick": {},
-        "switchChannels": {}
-      },
-      "additionalProperties": false
-    },
-    {
-      "properties": {
-        "dmxRange": {},
-        "type": { "enum": ["ShutterClosed"] },
-        "comment": {},
-        "menuClick": {},
-        "switchChannels": {}
-      },
-      "additionalProperties": false
-    },
-    {
-      "properties": {
-        "dmxRange": {},
-        "type": { "enum": ["StrobeEffect"] },
+        "type": { "enum": ["ShutterStrobe"] },
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
-        "strobeType": { "enum": ["Normal", "Random", "Pulse", "PulseRandom", "RampUp", "RampUpRandom", "RampDown", "RampDownRandom"] }
+        "effect": { "enum": ["Open", "Closed", "Strobe", "StrobeRandom", "Pulse", "PulseRandom", "RampUp", "RampUpRandom", "RampDown", "RampDownRandom"] },
+        "speed": { "$ref": "definitions.json#/entities/speed" },
+        "duration": { "$ref": "definitions.json#/entities/time" }
       },
+      "required": ["effect"],
+      "not": { "required": ["speed", "duration"] },
       "additionalProperties": false
     },
     {
@@ -86,8 +70,7 @@
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
-        "speed": { "$ref": "definitions.json#/entities/speed" },
-        "strobeType": { "enum": ["Normal", "Random", "Pulse", "PulseRandom", "RampUp", "RampUpRandom", "RampDown", "RampDownRandom"] }
+        "speed": { "$ref": "definitions.json#/entities/speed" }
       },
       "required": ["speed"],
       "additionalProperties": false
@@ -99,8 +82,7 @@
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
-        "duration": { "$ref": "definitions.json#/entities/time" },
-        "strobeType": { "enum": ["Normal", "Random", "Pulse", "PulseRandom", "RampUp", "RampUpRandom", "RampDown", "RampDownRandom"] }
+        "duration": { "$ref": "definitions.json#/entities/time" }
       },
       "required": ["time"],
       "additionalProperties": false
