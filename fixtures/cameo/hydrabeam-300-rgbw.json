@@ -429,13 +429,10 @@
     },
     "Head Speed $pixelKey simple": {
       "name": "Head Speed $pixelKey",
-      "capabilities": [
-        {
-          "dmxRange": [0, 255],
-          "type": "PanTiltSpeed",
-          "speed": ["fast", "slow"]
-        }
-      ]
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speed": ["fast", "slow"]
+      }
     },
     "Head Speed $pixelKey": {
       "capabilities": [
