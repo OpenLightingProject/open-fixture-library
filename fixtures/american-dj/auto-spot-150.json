@@ -29,23 +29,17 @@
   "availableChannels": {
     "Pan": {
       "defaultValue": 127,
-      "capabilities": [
-        {
-          "dmxRange": [0, 255],
-          "type": "Pan",
-          "angle": ["0°", "540°"]
-        }
-      ]
+      "capability": {
+        "type": "Pan",
+        "angle": ["0°", "540°"]
+      }
     },
     "Tilt": {
       "defaultValue": 127,
-      "capabilities": [
-        {
-          "dmxRange": [0, 255],
-          "type": "Tilt",
-          "angle": ["0°", "270°"]
-        }
-      ]
+      "capability": {
+        "type": "Tilt",
+        "angle": ["0°", "270°"]
+      }
     },
     "Gobo": {
       "defaultValue": 0,
