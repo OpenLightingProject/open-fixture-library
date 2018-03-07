@@ -266,8 +266,8 @@ export default {
 
       const dialog = this.$el.closest(`.dialog`);
       this.$nextTick(() => {
-        console.log(`scroll`, dialog, this.capIndex);
-        // dialog.scrollTop += dialog.querySelector(`.capabilities li:nth-child(${this.capIndex - 1})`).clientHeight;
+        const newCapability = dialog.querySelector(`.capability-editor`).children[this.capIndex - 1];
+        dialog.scrollTop += newCapability.clientHeight;
       });
     },
     insertCapabilityAfter() {
