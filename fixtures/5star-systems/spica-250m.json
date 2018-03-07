@@ -104,8 +104,9 @@
       "capabilities": [
         {
           "dmxRange": [0, 6],
-          "type": "Color",
-          "comment": "white (#ffffff)"
+          "type": "ColorWheelIndex",
+          "comment": "white (#ffffff)",
+          "index": 0
         },
         {
           "dmxRange": [7, 13],

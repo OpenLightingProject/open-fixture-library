@@ -24,597 +24,736 @@
     },
     "focus": {
       "type": "Head",
-      "panMax": 540,
+      "panMax": 450,
       "tiltMax": 228
     }
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 32768
+      "defaultValue": 32768,
+      "capability": {
+        "type": "Pan",
+        "angle": ["-225°", "225°"]
+      }
     },
     "Tilt": {
-      "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 32768
+      "defaultValue": 32768,
+      "capability": {
+        "type": "Tilt",
+        "angle": ["-114°", "114°"]
+      }
     },
     "Pan/Tilt Speed": {
-      "type": "Speed",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "Max. speed / tracking mode"
+          "dmxRange": [0, 0],
+          "type": "PanTiltSpeed",
+          "speed": "fast"
         },
         {
-          "range": [1, 255],
-          "name": "Speed fast-slow / Time 0.1-25.5s"
+          "dmxRange": [1, 255],
+          "type": "PanTiltSpeed",
+          "comment": "Speed fast-slow / Time 0.1-25.5s",
+          "speed": ["fast", "slow"]
         }
       ]
     },
     "Special Functions": {
-      "type": "Maintenance",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 19],
-          "name": "Reserved"
+          "dmxRange": [0, 19],
+          "type": "Nothing"
         },
         {
-          "range": [20, 24],
-          "name": "Display on"
+          "dmxRange": [20, 24],
+          "type": "Maintenance",
+          "comment": "Display on"
         },
         {
-          "range": [25, 29],
-          "name": "Display off"
+          "dmxRange": [25, 29],
+          "type": "Maintenance",
+          "comment": "Display off"
         },
         {
-          "range": [30, 34],
-          "name": "RGBW color mixing mode"
+          "dmxRange": [30, 34],
+          "type": "Maintenance",
+          "comment": "RGBW color mixing mode"
         },
         {
-          "range": [35, 39],
-          "name": "CMY color mixing mode"
+          "dmxRange": [35, 39],
+          "type": "Maintenance",
+          "comment": "CMY color mixing mode"
         },
         {
-          "range": [40, 44],
-          "name": "Pan/Tilt speed mode"
+          "dmxRange": [40, 44],
+          "type": "Maintenance",
+          "comment": "Pan/Tilt speed mode"
         },
         {
-          "range": [45, 49],
-          "name": "Pan/Tilt time mode"
+          "dmxRange": [45, 49],
+          "type": "Maintenance",
+          "comment": "Pan/Tilt time mode"
         },
         {
-          "range": [50, 54],
-          "name": "lackout while pan/tilt moving"
+          "dmxRange": [50, 54],
+          "type": "Maintenance",
+          "comment": "lackout while pan/tilt moving"
         },
         {
-          "range": [55, 59],
-          "name": "Disabled blackout while pan/tilt moving"
+          "dmxRange": [55, 59],
+          "type": "Maintenance",
+          "comment": "Disabled blackout while pan/tilt moving"
         },
         {
-          "range": [60, 64],
-          "name": "Dimmer curve - square law"
+          "dmxRange": [60, 64],
+          "type": "Maintenance",
+          "comment": "Dimmer curve - square law"
         },
         {
-          "range": [65, 69],
-          "name": "Dimmer curve - linear"
+          "dmxRange": [65, 69],
+          "type": "Maintenance",
+          "comment": "Dimmer curve - linear"
         },
         {
-          "range": [70, 74],
-          "name": "Fans mode: Auto"
+          "dmxRange": [70, 74],
+          "type": "Maintenance",
+          "comment": "Fans mode: Auto"
         },
         {
-          "range": [75, 79],
-          "name": "Fans mode: High"
+          "dmxRange": [75, 79],
+          "type": "Maintenance",
+          "comment": "Fans mode: High"
         },
         {
-          "range": [80, 84],
-          "name": "White point 8000K ON"
+          "dmxRange": [80, 84],
+          "type": "Maintenance",
+          "comment": "White point 8000K ON"
         },
         {
-          "range": [85, 89],
-          "name": "White point 8000K OFF"
+          "dmxRange": [85, 89],
+          "type": "Maintenance",
+          "comment": "White point 8000K OFF"
         },
         {
-          "range": [90, 94],
-          "name": "Fans mode: Quiet"
+          "dmxRange": [90, 94],
+          "type": "Maintenance",
+          "comment": "Fans mode: Quiet"
         },
         {
-          "range": [95, 139],
-          "name": "Reserved"
+          "dmxRange": [95, 139],
+          "type": "Nothing"
         },
         {
-          "range": [140, 149],
-          "name": "Pan/Tilt reset"
+          "dmxRange": [140, 149],
+          "type": "Maintenance",
+          "comment": "Pan/Tilt reset"
         },
         {
-          "range": [150, 159],
-          "name": "Zoom reset"
+          "dmxRange": [150, 159],
+          "type": "Maintenance",
+          "comment": "Zoom reset"
         },
         {
-          "range": [160, 169],
-          "name": "Reserved"
+          "dmxRange": [160, 169],
+          "type": "Nothing"
         },
         {
-          "range": [170, 171],
-          "name": "Tungsten effect simulation (750W) On"
+          "dmxRange": [170, 171],
+          "type": "Maintenance",
+          "comment": "Tungsten effect simulation (750W) On"
         },
         {
-          "range": [172, 173],
-          "name": "Tungsten effect simulation (1000W) On"
+          "dmxRange": [172, 173],
+          "type": "Maintenance",
+          "comment": "Tungsten effect simulation (1000W) On"
         },
         {
-          "range": [174, 175],
-          "name": "Tungsten effect simulation (1200W) On"
+          "dmxRange": [174, 175],
+          "type": "Maintenance",
+          "comment": "Tungsten effect simulation (1200W) On"
         },
         {
-          "range": [176, 177],
-          "name": "Tungsten effect simulation (2000W) On"
+          "dmxRange": [176, 177],
+          "type": "Maintenance",
+          "comment": "Tungsten effect simulation (2000W) On"
         },
         {
-          "range": [178, 179],
-          "name": "Tungsten effect simulation (2500W) On"
+          "dmxRange": [178, 179],
+          "type": "Maintenance",
+          "comment": "Tungsten effect simulation (2500W) On"
         },
         {
-          "range": [180, 181],
-          "name": "Tungsten effect simulation Off"
+          "dmxRange": [180, 181],
+          "type": "Maintenance",
+          "comment": "Tungsten effect simulation Off"
         },
         {
-          "range": [182, 199],
-          "name": "Reserved"
+          "dmxRange": [182, 199],
+          "type": "Nothing"
         },
         {
-          "range": [200, 209],
-          "name": "Total fixture reset"
+          "dmxRange": [200, 209],
+          "type": "Maintenance",
+          "comment": "Total fixture reset"
         },
         {
-          "range": [210, 255],
-          "name": "Reserved"
+          "dmxRange": [210, 255],
+          "type": "Nothing"
         }
       ]
     },
     "Virtual Color Wheel": {
-      "type": "Multi-Color",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "No function"
+          "dmxRange": [0, 0],
+          "type": "Nothing"
         },
         {
-          "range": [1, 2],
-          "name": "Filter 4 (Medium Bastard Amber)"
+          "dmxRange": [1, 2],
+          "type": "Color",
+          "comment": "Filter 4 (Medium Bastard Amber)"
         },
         {
-          "range": [3, 4],
-          "name": "Filter 25 (Sunset Red)"
+          "dmxRange": [3, 4],
+          "type": "Color",
+          "comment": "Filter 25 (Sunset Red)"
         },
         {
-          "range": [5, 6],
-          "name": "Filter 19 (Fire)"
+          "dmxRange": [5, 6],
+          "type": "Color",
+          "comment": "Filter 19 (Fire)"
         },
         {
-          "range": [7, 8],
-          "name": "Filter 26 (Bright Red)"
+          "dmxRange": [7, 8],
+          "type": "Color",
+          "comment": "Filter 26 (Bright Red)"
         },
         {
-          "range": [9, 10],
-          "name": "Filter 58 (Lavender)"
+          "dmxRange": [9, 10],
+          "type": "Color",
+          "comment": "Filter 58 (Lavender)"
         },
         {
-          "range": [11, 12],
-          "name": "Filter 68 (Sky Blue)"
+          "dmxRange": [11, 12],
+          "type": "Color",
+          "comment": "Filter 68 (Sky Blue)"
         },
         {
-          "range": [13, 14],
-          "name": "Filter 36 (Medium Pink)"
+          "dmxRange": [13, 14],
+          "type": "Color",
+          "comment": "Filter 36 (Medium Pink)"
         },
         {
-          "range": [15, 16],
-          "name": "Filter 89 (Moss Green)"
+          "dmxRange": [15, 16],
+          "type": "Color",
+          "comment": "Filter 89 (Moss Green)"
         },
         {
-          "range": [17, 18],
-          "name": "Filter 88 (Lime Green)"
+          "dmxRange": [17, 18],
+          "type": "Color",
+          "comment": "Filter 88 (Lime Green)"
         },
         {
-          "range": [19, 20],
-          "name": "Filter 90 (Dark Yellow Green)"
+          "dmxRange": [19, 20],
+          "type": "Color",
+          "comment": "Filter 90 (Dark Yellow Green)"
         },
         {
-          "range": [21, 22],
-          "name": "Filter 49 (Medium Purple)"
+          "dmxRange": [21, 22],
+          "type": "Color",
+          "comment": "Filter 49 (Medium Purple)"
         },
         {
-          "range": [23, 24],
-          "name": "Filter 52 (Light Lavender)"
+          "dmxRange": [23, 24],
+          "type": "Color",
+          "comment": "Filter 52 (Light Lavender)"
         },
         {
-          "range": [25, 26],
-          "name": "Filter 102 (Light Amber)"
+          "dmxRange": [25, 26],
+          "type": "Color",
+          "comment": "Filter 102 (Light Amber)"
         },
         {
-          "range": [27, 28],
-          "name": "Filter 103 (Straw)"
+          "dmxRange": [27, 28],
+          "type": "Color",
+          "comment": "Filter 103 (Straw)"
         },
         {
-          "range": [29, 30],
-          "name": "Filter 140 (Summer Blue)"
+          "dmxRange": [29, 30],
+          "type": "Color",
+          "comment": "Filter 140 (Summer Blue)"
         },
         {
-          "range": [31, 32],
-          "name": "Filter 124 (Dark Green)"
+          "dmxRange": [31, 32],
+          "type": "Color",
+          "comment": "Filter 124 (Dark Green)"
         },
         {
-          "range": [33, 34],
-          "name": "Filter 106 (Primary Red)"
+          "dmxRange": [33, 34],
+          "type": "Color",
+          "comment": "Filter 106 (Primary Red)"
         },
         {
-          "range": [35, 36],
-          "name": "Filter 111 (Dark Pink)"
+          "dmxRange": [35, 36],
+          "type": "Color",
+          "comment": "Filter 111 (Dark Pink)"
         },
         {
-          "range": [37, 38],
-          "name": "Filter 115 (Peacock Blue)"
+          "dmxRange": [37, 38],
+          "type": "Color",
+          "comment": "Filter 115 (Peacock Blue)"
         },
         {
-          "range": [39, 40],
-          "name": "Filter 126 (Mauve)"
+          "dmxRange": [39, 40],
+          "type": "Color",
+          "comment": "Filter 126 (Mauve)"
         },
         {
-          "range": [41, 42],
-          "name": "Filter 117 (Steel Blue)"
+          "dmxRange": [41, 42],
+          "type": "Color",
+          "comment": "Filter 117 (Steel Blue)"
         },
         {
-          "range": [43, 44],
-          "name": "Filter 118 (Light Blue)"
+          "dmxRange": [43, 44],
+          "type": "Color",
+          "comment": "Filter 118 (Light Blue)"
         },
         {
-          "range": [45, 46],
-          "name": "Filter 122 (Fern Green)"
+          "dmxRange": [45, 46],
+          "type": "Color",
+          "comment": "Filter 122 (Fern Green)"
         },
         {
-          "range": [47, 48],
-          "name": "Filter 182 (Light Red)"
+          "dmxRange": [47, 48],
+          "type": "Color",
+          "comment": "Filter 182 (Light Red)"
         },
         {
-          "range": [49, 50],
-          "name": "Filter  121 (Filter Green)"
+          "dmxRange": [49, 50],
+          "type": "Color",
+          "comment": "Filter 121 (Filter Green)"
         },
         {
-          "range": [51, 52],
-          "name": "Filter 128 (Bright Pink)"
+          "dmxRange": [51, 52],
+          "type": "Color",
+          "comment": "Filter 128 (Bright Pink)"
         },
         {
-          "range": [53, 54],
-          "name": "Filter 131 (Marine Blue)"
+          "dmxRange": [53, 54],
+          "type": "Color",
+          "comment": "Filter 131 (Marine Blue)"
         },
         {
-          "range": [55, 56],
-          "name": "Filter 132 (Medium Blue)"
+          "dmxRange": [55, 56],
+          "type": "Color",
+          "comment": "Filter 132 (Medium Blue)"
         },
         {
-          "range": [57, 58],
-          "name": "Filter 134 (Golden Amber)"
+          "dmxRange": [57, 58],
+          "type": "Color",
+          "comment": "Filter 134 (Golden Amber)"
         },
         {
-          "range": [59, 60],
-          "name": "Filter 135 (Deep Golden Amber)"
+          "dmxRange": [59, 60],
+          "type": "Color",
+          "comment": "Filter 135 (Deep Golden Amber)"
         },
         {
-          "range": [61, 62],
-          "name": "Filter 136 (Pale Lavender)"
+          "dmxRange": [61, 62],
+          "type": "Color",
+          "comment": "Filter 136 (Pale Lavender)"
         },
         {
-          "range": [63, 64],
-          "name": "Filter  137 (Special Lavender)"
+          "dmxRange": [63, 64],
+          "type": "Color",
+          "comment": "Filter 137 (Special Lavender)"
         },
         {
-          "range": [65, 66],
-          "name": "Filter 138 (Pale Green)"
+          "dmxRange": [65, 66],
+          "type": "Color",
+          "comment": "Filter 138 (Pale Green)"
         },
         {
-          "range": [67, 68],
-          "name": "Filter 798 (Chrysalis Pink)"
+          "dmxRange": [67, 68],
+          "type": "Color",
+          "comment": "Filter 798 (Chrysalis Pink)"
         },
         {
-          "range": [69, 70],
-          "name": "Filter 141 (Bright Blue)"
+          "dmxRange": [69, 70],
+          "type": "Color",
+          "comment": "Filter 141 (Bright Blue)"
         },
         {
-          "range": [71, 72],
-          "name": "Filter 147 (Apricot)"
+          "dmxRange": [71, 72],
+          "type": "Color",
+          "comment": "Filter 147 (Apricot)"
         },
         {
-          "range": [73, 74],
-          "name": "Filter 148 (Bright Rose)"
+          "dmxRange": [73, 74],
+          "type": "Color",
+          "comment": "Filter 148 (Bright Rose)"
         },
         {
-          "range": [75, 76],
-          "name": "Filter 152 (Pale Gold)"
+          "dmxRange": [75, 76],
+          "type": "Color",
+          "comment": "Filter 152 (Pale Gold)"
         },
         {
-          "range": [77, 78],
-          "name": "Filter 154 (Pale Rose)"
+          "dmxRange": [77, 78],
+          "type": "Color",
+          "comment": "Filter 154 (Pale Rose)"
         },
         {
-          "range": [79, 80],
-          "name": "Filter 157 (Pink)"
+          "dmxRange": [79, 80],
+          "type": "Color",
+          "comment": "Filter 157 (Pink)"
         },
         {
-          "range": [81, 82],
-          "name": "Filter 143 (Pale Navy Blue)"
+          "dmxRange": [81, 82],
+          "type": "Color",
+          "comment": "Filter 143 (Pale Navy Blue)"
         },
         {
-          "range": [83, 84],
-          "name": "Filter 162 (Bastard Amber)"
+          "dmxRange": [83, 84],
+          "type": "Color",
+          "comment": "Filter 162 (Bastard Amber)"
         },
         {
-          "range": [85, 86],
-          "name": "Filter 164 (Flame Red)"
+          "dmxRange": [85, 86],
+          "type": "Color",
+          "comment": "Filter 164 (Flame Red)"
         },
         {
-          "range": [87, 88],
-          "name": "Filter 165 (Daylight Blue)"
+          "dmxRange": [87, 88],
+          "type": "Color",
+          "comment": "Filter 165 (Daylight Blue)"
         },
         {
-          "range": [89, 90],
-          "name": "Filter 169 (Lilac Tint)"
+          "dmxRange": [89, 90],
+          "type": "Color",
+          "comment": "Filter 169 (Lilac Tint)"
         },
         {
-          "range": [91, 92],
-          "name": "Filter 170 (Deep Lavender)"
+          "dmxRange": [91, 92],
+          "type": "Color",
+          "comment": "Filter 170 (Deep Lavender)"
         },
         {
-          "range": [93, 94],
-          "name": "Filter 172 (Lagoon Blue)"
+          "dmxRange": [93, 94],
+          "type": "Color",
+          "comment": "Filter 172 (Lagoon Blue)"
         },
         {
-          "range": [95, 96],
-          "name": "Filter 194 (Surprise Pink)"
+          "dmxRange": [95, 96],
+          "type": "Color",
+          "comment": "Filter 194 (Surprise Pink)"
         },
         {
-          "range": [97, 98],
-          "name": "Filter 180 (Dark Lavender)"
+          "dmxRange": [97, 98],
+          "type": "Color",
+          "comment": "Filter 180 (Dark Lavender)"
         },
         {
-          "range": [99, 100],
-          "name": "Filter 181 (Congo Blue)"
+          "dmxRange": [99, 100],
+          "type": "Color",
+          "comment": "Filter 181 (Congo Blue)"
         },
         {
-          "range": [101, 102],
-          "name": "Filter 197 (Alice Blue)"
+          "dmxRange": [101, 102],
+          "type": "Color",
+          "comment": "Filter 197 (Alice Blue)"
         },
         {
-          "range": [103, 104],
-          "name": "Filter 201 (Full C.T. Blue)"
+          "dmxRange": [103, 104],
+          "type": "Color",
+          "comment": "Filter 201 (Full C.T. Blue)"
         },
         {
-          "range": [105, 106],
-          "name": "Filter 202 (Half C.T. Blue)"
+          "dmxRange": [105, 106],
+          "type": "Color",
+          "comment": "Filter 202 (Half C.T. Blue)"
         },
         {
-          "range": [107, 108],
-          "name": "Filter 203 (Quarter C.T. Blue)"
+          "dmxRange": [107, 108],
+          "type": "Color",
+          "comment": "Filter 203 (Quarter C.T. Blue)"
         },
         {
-          "range": [109, 110],
-          "name": "Filter 204 (Full C.T. Orange)"
+          "dmxRange": [109, 110],
+          "type": "Color",
+          "comment": "Filter 204 (Full C.T. Orange)"
         },
         {
-          "range": [111, 112],
-          "name": "Filter 219 (Fluorescent Green)"
+          "dmxRange": [111, 112],
+          "type": "Color",
+          "comment": "Filter 219 (Fluorescent Green)"
         },
         {
-          "range": [113, 114],
-          "name": "Filter 206 (Quarter C.T. Orange)"
+          "dmxRange": [113, 114],
+          "type": "Color",
+          "comment": "Filter 206 (Quarter C.T. Orange)"
         },
         {
-          "range": [115, 116],
-          "name": "Filter 247 (Filter Minus Green)"
+          "dmxRange": [115, 116],
+          "type": "Color",
+          "comment": "Filter 247 (Filter Minus Green)"
         },
         {
-          "range": [117, 118],
-          "name": "Filter 248 (Half Minus Green)"
+          "dmxRange": [117, 118],
+          "type": "Color",
+          "comment": "Filter 248 (Half Minus Green)"
         },
         {
-          "range": [119, 120],
-          "name": "Filter 281 (Three Quarter C.T. Blue)"
+          "dmxRange": [119, 120],
+          "type": "Color",
+          "comment": "Filter 281 (Three Quarter C.T. Blue)"
         },
         {
-          "range": [121, 122],
-          "name": "Filter 285 (Three Quarter C.T. Orange)"
+          "dmxRange": [121, 122],
+          "type": "Color",
+          "comment": "Filter 285 (Three Quarter C.T. Orange)"
         },
         {
-          "range": [123, 124],
-          "name": "Filter 352 (Glacier Blue)"
+          "dmxRange": [123, 124],
+          "type": "Color",
+          "comment": "Filter 352 (Glacier Blue)"
         },
         {
-          "range": [125, 126],
-          "name": "Filter 353 (Lighter Blue)"
+          "dmxRange": [125, 126],
+          "type": "Color",
+          "comment": "Filter 353 (Lighter Blue)"
         },
         {
-          "range": [127, 128],
-          "name": "Filter 507 (Madge)"
+          "dmxRange": [127, 128],
+          "type": "Color",
+          "comment": "Filter 507 (Madge)"
         },
         {
-          "range": [129, 130],
-          "name": "Filter 778 (Millennium Gold)"
+          "dmxRange": [129, 130],
+          "type": "Color",
+          "comment": "Filter 778 (Millennium Gold)"
         },
         {
-          "range": [131, 132],
-          "name": "Filter 793 (Vanity Fair)"
+          "dmxRange": [131, 132],
+          "type": "Color",
+          "comment": "Filter 793 (Vanity Fair)"
         },
         {
-          "range": [133, 235],
-          "name": "Raw DMX"
+          "dmxRange": [133, 235],
+          "type": "Nothing",
+          "comment": "Raw DMX"
         },
         {
-          "range": [236, 245],
-          "name": "Color fade slow-fast"
+          "dmxRange": [236, 245],
+          "type": "Effect",
+          "comment": "Color fade",
+          "speed": ["slow", "fast"]
         },
         {
-          "range": [246, 255],
-          "name": "Color jump slow-fast"
+          "dmxRange": [246, 255],
+          "type": "Effect",
+          "comment": "Color jump",
+          "speed": ["slow", "fast"]
         }
       ]
     },
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
       "fineChannelAliases": ["Red fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": ["off", "bright"]
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green",
       "fineChannelAliases": ["Green fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": ["off", "bright"]
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
       "fineChannelAliases": ["Blue fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": ["off", "bright"]
+      }
     },
     "White": {
-      "type": "Single Color",
-      "color": "White",
       "fineChannelAliases": ["White fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightness": ["off", "bright"]
+      }
     },
     "Cyan": {
-      "type": "Single Color",
-      "color": "Cyan",
       "fineChannelAliases": ["Cyan fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan",
+        "brightness": ["off", "bright"]
+      }
     },
     "Magenta": {
-      "type": "Single Color",
-      "color": "Magenta",
       "fineChannelAliases": ["Magenta fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta",
+        "brightness": ["off", "bright"]
+      }
     },
     "Yellow": {
-      "type": "Single Color",
-      "color": "Yellow",
       "fineChannelAliases": ["Yellow fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow",
+        "brightness": ["off", "bright"]
+      }
     },
     "CTC": {
-      "type": "Color Temperature",
       "defaultValue": 0,
-      "invert": true,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Color temperature 8000-2700K"
-        }
-      ]
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperature": ["8000K", "2700K"]
+      }
     },
     "Color Mix Control": {
-      "type": "Maintenance",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Virtual Color Wheel has priority"
+          "dmxRange": [0, 9],
+          "type": "Maintenance",
+          "comment": "Virtual Color Wheel has priority"
         },
         {
-          "range": [10, 19],
-          "name": "Highest values have priority"
+          "dmxRange": [10, 19],
+          "type": "Maintenance",
+          "comment": "Highest values have priority"
         },
         {
-          "range": [20, 29],
-          "name": "Lowest values have priority"
+          "dmxRange": [20, 29],
+          "type": "Maintenance",
+          "comment": "Lowest values have priority"
         },
         {
-          "range": [30, 39],
-          "name": "Multiply wheel and color mix"
+          "dmxRange": [30, 39],
+          "type": "Maintenance",
+          "comment": "Multiply wheel and color mix"
         },
         {
-          "range": [40, 49],
-          "name": "Add wheel and color mix"
+          "dmxRange": [40, 49],
+          "type": "Maintenance",
+          "comment": "Add wheel and color mix"
         },
         {
-          "range": [50, 59],
-          "name": "Subtract color mix from wheel"
+          "dmxRange": [50, 59],
+          "type": "Maintenance",
+          "comment": "Subtract color mix from wheel"
         },
         {
-          "range": [60, 69],
-          "name": "Substract wheel from color mix"
+          "dmxRange": [60, 69],
+          "type": "Maintenance",
+          "comment": "Substract wheel from color mix"
         },
         {
-          "range": [70, 128],
-          "name": "Reserved"
+          "dmxRange": [70, 128],
+          "type": "Nothing"
         },
         {
-          "range": [129, 129],
-          "name": "Virtual Color Wheel has priority"
+          "dmxRange": [129, 129],
+          "type": "Maintenance",
+          "comment": "Virtual Color Wheel has priority"
         },
         {
-          "range": [130, 254],
-          "name": "Crossfade between wheel and color mix"
+          "dmxRange": [130, 254],
+          "type": "Maintenance",
+          "comment": "Crossfade between wheel and color mix"
         },
         {
-          "range": [255, 255],
-          "name": "Color mix has priority"
+          "dmxRange": [255, 255],
+          "type": "Maintenance",
+          "comment": "Color mix has priority"
         }
       ]
     },
     "Zoom": {
-      "type": "Zoom",
       "fineChannelAliases": ["Zoom fine"],
-      "defaultValue": 32768
+      "defaultValue": 32768,
+      "capability": {
+        "type": "Zoom",
+        "angle": ["60°", "3.8°"]
+      }
     },
     "Shutter / Strobe": {
-      "type": "Strobe",
       "defaultValue": 32,
       "capabilities": [
         {
-          "range": [0, 31],
-          "name": "Closed"
+          "dmxRange": [0, 31],
+          "type": "ShutterClosed"
         },
         {
-          "range": [32, 63],
-          "name": "Open"
+          "dmxRange": [32, 63],
+          "type": "ShutterOpen"
         },
         {
-          "range": [64, 95],
-          "name": "Strobe 0.3-20Hz"
+          "dmxRange": [64, 95],
+          "type": "StrobeSpeed",
+          "speed": ["0.3Hz", "20Hz"]
         },
         {
-          "range": [96, 127],
-          "name": "Open"
+          "dmxRange": [96, 127],
+          "type": "ShutterOpen"
         },
         {
-          "range": [128, 143],
-          "name": "Opening pulse slow-fast"
+          "dmxRange": [128, 143],
+          "type": "StrobeSpeed",
+          "speed": ["slow", "fast"],
+          "strobeType": "RampUp"
         },
         {
-          "range": [144, 159],
-          "name": "Closing pulse fast-slow"
+          "dmxRange": [144, 159],
+          "type": "StrobeSpeed",
+          "speed": ["slow", "fast"],
+          "strobeType": "RampDown"
         },
         {
-          "range": [160, 191],
-          "name": "Open"
+          "dmxRange": [160, 191],
+          "type": "ShutterOpen"
         },
         {
-          "range": [192, 223],
-          "name": "Random strobe slow-fast"
+          "dmxRange": [192, 223],
+          "type": "StrobeSpeed",
+          "speed": ["slow", "fast"],
+          "strobeType": "Random"
         },
         {
-          "range": [224, 255],
-          "name": "Open"
+          "dmxRange": [224, 255],
+          "type": "ShutterOpen"
         }
       ]
     },
     "Dimmer": {
-      "type": "Intensity",
       "fineChannelAliases": ["Dimmer fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightness": ["off", "bright"]
+      }
     }
   },
   "modes": [

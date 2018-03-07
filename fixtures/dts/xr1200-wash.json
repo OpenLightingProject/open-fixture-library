@@ -21,547 +21,617 @@
     "focus": {
       "type": "Head",
       "panMax": 540,
-      "tiltMax": 270
+      "tiltMax": 320
     }
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan",
-      "fineChannelAliases": ["Pan fine"]
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": ["0°", "540°"]
+      }
     },
     "Tilt": {
-      "type": "Tilt",
-      "fineChannelAliases": ["Tilt fine"]
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": ["0°", "320°"]
+      }
     },
     "Movement Speed": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "Standard"
+          "dmxRange": [0, 10],
+          "type": "Nothing",
+          "comment": "Standard"
         },
         {
-          "range": [11, 25],
-          "name": "Fast movement"
+          "dmxRange": [11, 25],
+          "type": "PanTiltSpeed",
+          "speed": "fast"
         },
         {
-          "range": [26, 127],
-          "name": "Vector mode, fast>slow"
+          "dmxRange": [26, 127],
+          "type": "PanTiltSpeed",
+          "comment": "Vector mode",
+          "speed": ["fast", "slow"]
         },
         {
-          "range": [128, 247],
-          "name": "Variable time reaction to dmx signal, fast>slow"
+          "dmxRange": [128, 247],
+          "type": "PanTiltSpeed",
+          "comment": "Reaction time to DMX signal",
+          "speed": ["fast", "slow"]
         },
         {
-          "range": [248, 255],
-          "name": "Slow reaction time to dmx signal"
+          "dmxRange": [248, 255],
+          "type": "PanTiltSpeed",
+          "comment": "Reaction time to DMX signal",
+          "speed": "slow"
         }
       ]
     },
     "Dimmer": {
-      "type": "Intensity",
       "capabilities": [
         {
-          "range": [0, 8],
-          "name": "Black-out"
+          "dmxRange": [0, 8],
+          "type": "Intensity",
+          "brightness": "off"
         },
         {
-          "range": [9, 255],
-          "name": "Proportional dimmer"
+          "dmxRange": [9, 255],
+          "type": "Intensity",
+          "brightness": ["off", "bright"]
         }
       ]
     },
     "Shutter": {
-      "type": "Shutter",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Black-out"
+          "dmxRange": [0, 9],
+          "type": "ShutterClosed"
         },
         {
-          "range": [10, 23],
-          "name": "Strobe random speed"
+          "dmxRange": [10, 23],
+          "type": "StrobeEffect",
+          "strobeType": "Random"
         },
         {
-          "range": [24, 37],
-          "name": "Strobe speed 1 min."
+          "dmxRange": [24, 37],
+          "type": "StrobeSpeed",
+          "comment": "Strobe speed 1 min.",
+          "speed": "17%"
         },
         {
-          "range": [38, 51],
-          "name": "Strobe speed 2"
+          "dmxRange": [38, 51],
+          "type": "StrobeSpeed",
+          "comment": "Strobe speed 2",
+          "speed": "33%"
         },
         {
-          "range": [52, 65],
-          "name": "Strobe speed 3"
+          "dmxRange": [52, 65],
+          "type": "StrobeSpeed",
+          "comment": "Strobe speed 3",
+          "speed": "50%"
         },
         {
-          "range": [66, 79],
-          "name": "Strobe speed 4"
+          "dmxRange": [66, 79],
+          "type": "StrobeSpeed",
+          "comment": "Strobe speed 4",
+          "speed": "67%"
         },
         {
-          "range": [80, 93],
-          "name": "Strobe speed 5"
+          "dmxRange": [80, 93],
+          "type": "StrobeSpeed",
+          "comment": "Strobe speed 5",
+          "speed": "83%"
         },
         {
-          "range": [94, 107],
-          "name": "Strobe speed 6 max."
+          "dmxRange": [94, 107],
+          "type": "StrobeSpeed",
+          "comment": "Strobe speed 6 max.",
+          "speed": "100%"
         },
         {
-          "range": [108, 121],
-          "name": "Flash open speed 1 min."
+          "dmxRange": [108, 121],
+          "type": "StrobeSpeed",
+          "comment": "Flash open speed 1 min.",
+          "speed": "25%"
         },
         {
-          "range": [122, 135],
-          "name": "Flash open speed 2"
+          "dmxRange": [122, 135],
+          "type": "StrobeSpeed",
+          "comment": "Flash open speed 2",
+          "speed": "50%"
         },
         {
-          "range": [136, 149],
-          "name": "Flash open speed 3"
+          "dmxRange": [136, 149],
+          "type": "StrobeSpeed",
+          "comment": "Flash open speed 3",
+          "speed": "75%"
         },
         {
-          "range": [150, 163],
-          "name": "Flash open speed 4 max."
+          "dmxRange": [150, 163],
+          "type": "StrobeSpeed",
+          "comment": "Flash open speed 4 max.",
+          "speed": "100%"
         },
         {
-          "range": [164, 177],
-          "name": "Flash closed speed 1 min."
+          "dmxRange": [164, 177],
+          "type": "StrobeSpeed",
+          "comment": "Flash closed speed 1 min.",
+          "speed": "25%"
         },
         {
-          "range": [178, 191],
-          "name": "Flash closed speed 2"
+          "dmxRange": [178, 191],
+          "type": "StrobeSpeed",
+          "comment": "Flash closed speed 2",
+          "speed": "50%"
         },
         {
-          "range": [192, 205],
-          "name": "Flash closed speed 3"
+          "dmxRange": [192, 205],
+          "type": "StrobeSpeed",
+          "comment": "Flash closed speed 3",
+          "speed": "75%"
         },
         {
-          "range": [206, 219],
-          "name": "Flash closed speed 4 max."
+          "dmxRange": [206, 219],
+          "type": "StrobeSpeed",
+          "comment": "Flash closed speed 4 max.",
+          "speed": "100%"
         },
         {
-          "range": [220, 227],
-          "name": "Colors / Macros in black-out"
+          "dmxRange": [220, 227],
+          "type": "Maintenance",
+          "comment": "Colors / Macros in black-out"
         },
         {
-          "range": [228, 233],
-          "name": "Pan / Tilt in black-out"
+          "dmxRange": [228, 233],
+          "type": "Maintenance",
+          "comment": "Pan / Tilt in black-out"
         },
         {
-          "range": [234, 255],
-          "name": "Open"
+          "dmxRange": [234, 255],
+          "type": "ShutterOpen"
         }
       ]
     },
     "Color Wheel": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 12],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [0, 12],
+          "type": "ColorWheelIndex",
+          "comment": "White (#ffffff)",
+          "index": 0
         },
         {
-          "range": [13, 25],
-          "name": "CTO (3200K)",
-          "color": "#ffd85e"
+          "dmxRange": [13, 25],
+          "type": "ColorWheelIndex",
+          "comment": "CTO (3200K) (#ffd85e)",
+          "index": 1
         },
         {
-          "range": [26, 38],
-          "name": "CTB (5600K)",
-          "color": "#d1ffff"
+          "dmxRange": [26, 38],
+          "type": "ColorWheelIndex",
+          "comment": "CTB (5600K) (#d1ffff)",
+          "index": 2
         },
         {
-          "range": [39, 51],
-          "name": "Purple",
-          "color": "#7038aa"
+          "dmxRange": [39, 51],
+          "type": "ColorWheelIndex",
+          "comment": "Purple (#7038aa)",
+          "index": 3
         },
         {
-          "range": [52, 64],
-          "name": "Purple-Orange",
-          "color": "#7038aa",
-          "color2": "#ff7000"
+          "dmxRange": [52, 64],
+          "type": "ColorWheelIndex",
+          "comment": "Purple-Orange",
+          "index": 3.5
         },
         {
-          "range": [65, 77],
-          "name": "Orange",
-          "color": "#ff7000"
+          "dmxRange": [65, 77],
+          "type": "ColorWheelIndex",
+          "comment": "Orange (#ff7000)",
+          "index": 4
         },
         {
-          "range": [78, 90],
-          "name": "Orange-Green",
-          "color": "#ff7000",
-          "color2": "#00c628"
+          "dmxRange": [78, 90],
+          "type": "ColorWheelIndex",
+          "comment": "Orange-Green",
+          "index": 4.5
         },
         {
-          "range": [91, 103],
-          "name": "Green",
-          "color": "#00c628"
+          "dmxRange": [91, 103],
+          "type": "ColorWheelIndex",
+          "comment": "Green (#00c628)",
+          "index": 5
         },
         {
-          "range": [104, 116],
-          "name": "Green-Red",
-          "color": "#00c628",
-          "color2": "#f4001c"
+          "dmxRange": [104, 116],
+          "type": "ColorWheelIndex",
+          "comment": "Green-Red",
+          "index": 5.5
         },
         {
-          "range": [117, 129],
-          "name": "Red",
-          "color": "#f4001c"
+          "dmxRange": [117, 129],
+          "type": "ColorWheelIndex",
+          "comment": "Red (#f4001c)",
+          "index": 6
         },
         {
-          "range": [130, 142],
-          "name": "Red-Darkblue",
-          "color": "#f4001c",
-          "color2": "#660adb"
+          "dmxRange": [130, 142],
+          "type": "ColorWheelIndex",
+          "comment": "Red-Darkblue",
+          "index": 6.5
         },
         {
-          "range": [143, 155],
-          "name": "Darkblue",
-          "color": "#660adb"
+          "dmxRange": [143, 155],
+          "type": "ColorWheelIndex",
+          "comment": "Darkblue (#660adb)",
+          "index": 7
         },
         {
-          "range": [156, 168],
-          "name": "Darkblue-Amber",
-          "color": "#660adb",
-          "color2": "#f9a80f"
+          "dmxRange": [156, 168],
+          "type": "ColorWheelIndex",
+          "comment": "Darkblue-Amber",
+          "index": 7.5
         },
         {
-          "range": [169, 181],
-          "name": "Amber",
-          "color": "#f9a80f"
+          "dmxRange": [169, 181],
+          "type": "ColorWheelIndex",
+          "comment": "Amber (#f9a80f)",
+          "index": 8
         },
         {
-          "range": [182, 197],
-          "name": "Amber/White",
-          "color": "#f9a80f",
-          "color2": "#ffffff"
+          "dmxRange": [182, 197],
+          "type": "ColorWheelIndex",
+          "comment": "Amber/White",
+          "index": 8.5
         },
         {
-          "range": [198, 200],
-          "name": "Right rotation speed 1 max."
+          "dmxRange": [198, 224],
+          "type": "ColorWheelRotationSpeed",
+          "speed": ["fast CW", "slow CW"]
         },
         {
-          "range": [201, 203],
-          "name": "Right rotation speed 2"
+          "dmxRange": [225, 228],
+          "type": "ColorWheelRotationSpeed",
+          "speed": "stop"
         },
         {
-          "range": [204, 206],
-          "name": "Right rotation speed 3"
-        },
-        {
-          "range": [207, 209],
-          "name": "Right rotation speed 4"
-        },
-        {
-          "range": [210, 212],
-          "name": "Right rotation speed 5"
-        },
-        {
-          "range": [213, 215],
-          "name": "Right rotation speed 6"
-        },
-        {
-          "range": [216, 218],
-          "name": "Right rotation speed 7"
-        },
-        {
-          "range": [219, 221],
-          "name": "Right rotation speed 8"
-        },
-        {
-          "range": [222, 224],
-          "name": "Right rotation speed 9 min"
-        },
-        {
-          "range": [225, 228],
-          "name": "Stop"
-        },
-        {
-          "range": [229, 231],
-          "name": "Left rotation speed 1 min."
-        },
-        {
-          "range": [232, 234],
-          "name": "Left rotation speed 2"
-        },
-        {
-          "range": [235, 237],
-          "name": "Left rotation speed 3"
-        },
-        {
-          "range": [238, 240],
-          "name": "Left rotation speed 4"
-        },
-        {
-          "range": [241, 243],
-          "name": "Left rotation speed 5"
-        },
-        {
-          "range": [244, 246],
-          "name": "Left rotation speed 6"
-        },
-        {
-          "range": [247, 249],
-          "name": "Left rotation speed 7"
-        },
-        {
-          "range": [250, 252],
-          "name": "Left rotation speed 8"
-        },
-        {
-          "range": [253, 255],
-          "name": "Left rotation speed 9 max."
+          "dmxRange": [229, 255],
+          "type": "ColorWheelRotationSpeed",
+          "speed": ["slow CCW", "fast CCW"]
         }
       ]
     },
     "Cyan": {
-      "type": "Single Color",
-      "color": "Cyan"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan",
+        "brightness": ["off", "bright"]
+      }
     },
     "Magenta": {
-      "type": "Single Color",
-      "color": "Magenta"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta",
+        "brightness": ["off", "bright"]
+      }
     },
     "Yellow": {
-      "type": "Single Color",
-      "color": "Yellow"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow",
+        "brightness": ["off", "bright"]
+      }
     },
     "Speed CMY / Dimmer": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "No function"
+          "dmxRange": [0, 7],
+          "type": "Nothing"
         },
         {
-          "range": [8, 255],
-          "name": "Variable speed from max to min"
+          "dmxRange": [8, 255],
+          "type": "Speed",
+          "speed": ["fast", "slow"]
         }
       ]
     },
     "Macro CMY / Color": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "No function"
+          "dmxRange": [0, 9],
+          "type": "Nothing"
         },
         {
-          "range": [10, 14],
-          "name": "Macro 1"
+          "dmxRange": [10, 14],
+          "type": "Effect",
+          "comment": "Macro 1"
         },
         {
-          "range": [15, 19],
-          "name": "Macro 2"
+          "dmxRange": [15, 19],
+          "type": "Effect",
+          "comment": "Macro 2"
         },
         {
-          "range": [20, 24],
-          "name": "Macro 3"
+          "dmxRange": [20, 24],
+          "type": "Effect",
+          "comment": "Macro 3"
         },
         {
-          "range": [25, 29],
-          "name": "Macro 4"
+          "dmxRange": [25, 29],
+          "type": "Effect",
+          "comment": "Macro 4"
         },
         {
-          "range": [30, 34],
-          "name": "Macro 5"
+          "dmxRange": [30, 34],
+          "type": "Effect",
+          "comment": "Macro 5"
         },
         {
-          "range": [35, 39],
-          "name": "Macro 6"
+          "dmxRange": [35, 39],
+          "type": "Effect",
+          "comment": "Macro 6"
         },
         {
-          "range": [40, 44],
-          "name": "Macro 7"
+          "dmxRange": [40, 44],
+          "type": "Effect",
+          "comment": "Macro 7"
         },
         {
-          "range": [45, 49],
-          "name": "Macro 8"
+          "dmxRange": [45, 49],
+          "type": "Effect",
+          "comment": "Macro 8"
         },
         {
-          "range": [50, 54],
-          "name": "Macro 9"
+          "dmxRange": [50, 54],
+          "type": "Effect",
+          "comment": "Macro 9"
         },
         {
-          "range": [55, 59],
-          "name": "Macro 10"
+          "dmxRange": [55, 59],
+          "type": "Effect",
+          "comment": "Macro 10"
         },
         {
-          "range": [60, 64],
-          "name": "Macro 11"
+          "dmxRange": [60, 64],
+          "type": "Effect",
+          "comment": "Macro 11"
         },
         {
-          "range": [65, 69],
-          "name": "Macro 12"
+          "dmxRange": [65, 69],
+          "type": "Effect",
+          "comment": "Macro 12"
         },
         {
-          "range": [70, 74],
-          "name": "Macro 13"
+          "dmxRange": [70, 74],
+          "type": "Effect",
+          "comment": "Macro 13"
         },
         {
-          "range": [75, 79],
-          "name": "Macro 14"
+          "dmxRange": [75, 79],
+          "type": "Effect",
+          "comment": "Macro 14"
         },
         {
-          "range": [80, 84],
-          "name": "Macro 15"
+          "dmxRange": [80, 84],
+          "type": "Effect",
+          "comment": "Macro 15"
         },
         {
-          "range": [85, 89],
-          "name": "Macro 16"
+          "dmxRange": [85, 89],
+          "type": "Effect",
+          "comment": "Macro 16"
         },
         {
-          "range": [90, 94],
-          "name": "Macro 17"
+          "dmxRange": [90, 94],
+          "type": "Effect",
+          "comment": "Macro 17"
         },
         {
-          "range": [95, 99],
-          "name": "Macro 18"
+          "dmxRange": [95, 99],
+          "type": "Effect",
+          "comment": "Macro 18"
         },
         {
-          "range": [100, 104],
-          "name": "Macro 19"
+          "dmxRange": [100, 104],
+          "type": "Effect",
+          "comment": "Macro 19"
         },
         {
-          "range": [105, 109],
-          "name": "Macro 20"
+          "dmxRange": [105, 109],
+          "type": "Effect",
+          "comment": "Macro 20"
         },
         {
-          "range": [110, 114],
-          "name": "Macro 21"
+          "dmxRange": [110, 114],
+          "type": "Effect",
+          "comment": "Macro 21"
         },
         {
-          "range": [115, 121],
-          "name": "Macros rainbow wait = 0"
+          "dmxRange": [115, 121],
+          "type": "Effect",
+          "comment": "Macros rainbow wait = 0",
+          "speed": "100%"
         },
         {
-          "range": [122, 128],
-          "name": "Macros rainbow wait = 2"
+          "dmxRange": [122, 128],
+          "type": "Effect",
+          "comment": "Macros rainbow wait = 2",
+          "speed": "90%"
         },
         {
-          "range": [129, 135],
-          "name": "Macros rainbow wait = 3"
+          "dmxRange": [129, 135],
+          "type": "Effect",
+          "comment": "Macros rainbow wait = 3",
+          "speed": "80%"
         },
         {
-          "range": [136, 142],
-          "name": "Macros rainbow wait = 4"
+          "dmxRange": [136, 142],
+          "type": "Effect",
+          "comment": "Macros rainbow wait = 4",
+          "speed": "70%"
         },
         {
-          "range": [143, 149],
-          "name": "Macros rainbow wait = 5"
+          "dmxRange": [143, 149],
+          "type": "Effect",
+          "comment": "Macros rainbow wait = 5",
+          "speed": "60%"
         },
         {
-          "range": [150, 156],
-          "name": "Macros rainbow wait = 6"
+          "dmxRange": [150, 156],
+          "type": "Effect",
+          "comment": "Macros rainbow wait = 6",
+          "speed": "50%"
         },
         {
-          "range": [157, 163],
-          "name": "Macros rainbow wait = 7"
+          "dmxRange": [157, 163],
+          "type": "Effect",
+          "comment": "Macros rainbow wait = 7",
+          "speed": "40%"
         },
         {
-          "range": [164, 170],
-          "name": "Macros rainbow wait = 8"
+          "dmxRange": [164, 170],
+          "type": "Effect",
+          "comment": "Macros rainbow wait = 8",
+          "speed": "30%"
         },
         {
-          "range": [171, 177],
-          "name": "Macros rainbow wait = 9"
+          "dmxRange": [171, 177],
+          "type": "Effect",
+          "comment": "Macros rainbow wait = 9",
+          "speed": "20%"
         },
         {
-          "range": [178, 184],
-          "name": "Macros rainbow wait = 10"
+          "dmxRange": [178, 184],
+          "type": "Effect",
+          "comment": "Macros rainbow wait = 10",
+          "speed": "10%"
         },
         {
-          "range": [185, 191],
-          "name": "Full Colors rainbow wait = 0"
+          "dmxRange": [185, 191],
+          "type": "Effect",
+          "comment": "Full Colors rainbow wait = 0",
+          "speed": "100%"
         },
         {
-          "range": [192, 198],
-          "name": "Full Colors rainbow wait = 2"
+          "dmxRange": [192, 198],
+          "type": "Effect",
+          "comment": "Full Colors rainbow wait = 2",
+          "speed": "90%"
         },
         {
-          "range": [199, 205],
-          "name": "Full Colors rainbow wait = 3"
+          "dmxRange": [199, 205],
+          "type": "Effect",
+          "comment": "Full Colors rainbow wait = 3",
+          "speed": "80%"
         },
         {
-          "range": [206, 212],
-          "name": "Full Colors rainbow wait = 4"
+          "dmxRange": [206, 212],
+          "type": "Effect",
+          "comment": "Full Colors rainbow wait = 4",
+          "speed": "70%"
         },
         {
-          "range": [213, 219],
-          "name": "Full Colors rainbow wait = 5"
+          "dmxRange": [213, 219],
+          "type": "Effect",
+          "comment": "Full Colors rainbow wait = 5",
+          "speed": "60%"
         },
         {
-          "range": [220, 226],
-          "name": "Full Colors rainbow wait = 6"
+          "dmxRange": [220, 226],
+          "type": "Effect",
+          "comment": "Full Colors rainbow wait = 6",
+          "speed": "50%"
         },
         {
-          "range": [227, 233],
-          "name": "Full Colors rainbow wait = 7"
+          "dmxRange": [227, 233],
+          "type": "Effect",
+          "comment": "Full Colors rainbow wait = 7",
+          "speed": "40%"
         },
         {
-          "range": [234, 240],
-          "name": "Full Colors rainbow wait = 8"
+          "dmxRange": [234, 240],
+          "type": "Effect",
+          "comment": "Full Colors rainbow wait = 8",
+          "speed": "30%"
         },
         {
-          "range": [241, 247],
-          "name": "Full Colors rainbow wait = 9"
+          "dmxRange": [241, 247],
+          "type": "Effect",
+          "comment": "Full Colors rainbow wait = 9",
+          "speed": "20%"
         },
         {
-          "range": [248, 255],
-          "name": "Full Colors rainbow wait = 10"
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "comment": "Full Colors rainbow wait = 10",
+          "speed": "10%"
         }
       ]
     },
     "Effects": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 19],
-          "name": "Standard Frost inserted"
+          "dmxRange": [0, 19],
+          "type": "Frost",
+          "frostIntensity": "100%"
         },
         {
-          "range": [20, 39],
-          "name": "No Frost inserted"
+          "dmxRange": [20, 39],
+          "type": "Frost",
+          "frostIntensity": "0%"
         },
         {
-          "range": [40, 255],
-          "name": "Beam shape"
+          "dmxRange": [40, 255],
+          "type": "Effect",
+          "comment": "Beam shape"
         }
       ]
     },
     "Zoom": {
-      "type": "Zoom"
+      "capability": {
+        "type": "Zoom",
+        "angle": ["0%", "100%"]
+      }
     },
     "Lamp / Reset": {
-      "type": "Maintenance",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "No effect"
+          "dmxRange": [0, 9],
+          "type": "Nothing"
         },
         {
-          "range": [10, 60],
-          "name": "Lamp OFF (Active after 3 sec)"
+          "dmxRange": [10, 60],
+          "type": "Maintenance",
+          "comment": "Lamp OFF",
+          "hold": "3s"
         },
         {
-          "range": [61, 129],
-          "name": "No Effect"
+          "dmxRange": [61, 129],
+          "type": "Nothing"
         },
         {
-          "range": [130, 179],
-          "name": "Lamp ON (Active after 3 sec)"
+          "dmxRange": [130, 179],
+          "type": "Maintenance",
+          "comment": "Lamp ON",
+          "hold": "3s"
         },
         {
-          "range": [180, 200],
-          "name": "No effect"
+          "dmxRange": [180, 200],
+          "type": "Nothing"
         },
         {
-          "range": [201, 239],
-          "name": "Internal Motors Reset"
+          "dmxRange": [201, 239],
+          "type": "Maintenance",
+          "comment": "Internal Motors Reset"
         },
         {
-          "range": [240, 255],
-          "name": "Total Reset"
+          "dmxRange": [240, 255],
+          "type": "Maintenance",
+          "comment": "Total Reset"
         }
       ]
     }
