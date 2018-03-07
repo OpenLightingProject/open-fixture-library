@@ -15,6 +15,7 @@
     "start": "node main.js"
   },
   "dependencies": {
+    "@octokit/rest": "^15.1.7",
     "@std/esm": ">=0.23.0 <1.0.0",
     "a11y-dialog": "^4.0.0",
     "body-parser": "^1.18.2",
@@ -26,7 +27,6 @@
     "dir-compare": "^1.4.0",
     "disparity": "^2.0.0",
     "express": "^4.16.2",
-    "github": "^14.0.0",
     "html-escape": "^2.0.0",
     "html-minifier": "^3.5.5",
     "node-env-file": "^0.1.8",
