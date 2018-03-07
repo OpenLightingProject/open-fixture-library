@@ -10,7 +10,7 @@ This is a full list of capability types with their properties, entities and unit
 | Distance | `m`, `%` | – | – | – | near | far
 | Brightness | `lm`, `%` | – | – | off | dark | bright
 | ColorTemperature | `K`, `%` | – | – | – | warm | cold
-| FogOutput | `m³/min`, `%` | – | – | off | weak | strong
+| FogOutput | `m^3/min`, `%` | – | – | off | weak | strong
 | RotationAngle | `°`, `%` | – | – | – | – | –
 | BeamAngle | `°`, `%` | – | – | closed | narrow | wide
 | Factor | (no unit), `%` | – | – | off | low | high

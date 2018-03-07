@@ -93,7 +93,7 @@
     },
     "volumePerMinute": {
       "type": "string",
-      "pattern": "^-?[0-9]+(\\.[0-9]+)?m³/min$"
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?m\\^3/min$"
     },
     "degrees": {
       "type": "string",
