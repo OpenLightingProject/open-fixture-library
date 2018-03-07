@@ -22,7 +22,7 @@ function dereference(schema, newFilename) {
   process.chdir(path.join(__dirname, `../schemas/`));
 
   schemaRefParser.dereference(schema).then(dereferencedSchema => {
-    return fs.writeFile(
+    return fs.writeFileSync(
       newFilename,
       JSON.stringify(dereferencedSchema, null, 2)
     );
