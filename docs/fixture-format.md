@@ -80,24 +80,41 @@ If `constant` is `true`, the channel cannot be changed. `precedence` specifies t
 
 #### Capabilities
 
-A channel can do different things depending on which range its DMX value currently is in. Those ranges, that can be triggered manually in many programs, are called capabilities. Choose a `type` to declare which property of the fixture is changed by this capability, e.g. `ShutterOpen`, `Intensity` or `Pan`. Depending on the type, there exist more properties that further describe the capability, like the pan angle, the strobe rate or the gobo wheel index. Most of these are physical entities that require to be entered using specific units (like `"10.5Hz"` or `"100%"`). Some entitys offer keywords to replace specific percentage values, e.g. Distance: `"near"` = `"1%"`, `"far"` = `"100%"`. See the [full list of units, entities and capability types with their properties](capability-types.md).
+A channel can do different things depending on which range its DMX value currently is in. Those ranges, that can be triggered manually in many programs, are called capabilities. Choose a `type` to declare which property of the fixture is changed by this capability, e.g. `ShutterOpen`, `Intensity` or `Pan`. Depending on the type, there exist more properties that further describe the capability, like the pan angle, the strobe rate or the gobo wheel index. Most of these are physical entities that require to be entered using specific units (like `"10.5Hz"` or `"100%"`). Some entitys offer keywords to replace specific percentage values, e.g. Distance: `"near"` = `"1%"`, `"far"` = `"100%"`. See the [full list of units, entities and capability types with their properties](capability-types.md). Example:
+
+```js
+"availableChannels": {
+  "Shutter": {
+    "capabilities": [
+      {
+        "dmxRange": [0, 20],
+        "type": "ShutterClosed",
+        "comment": "Blackout"
+      },
+      {
+        "dmxRange": [21, 255],
+        "type": "ShutterOpen"
+      }
+    ]
+  }
+}
+```
+
+If a channel consists of a single 0-255 capability, one should use the `capability` property instead of `capabilities`, that only needs a single object instead of an array of objects. The `dmxRange` should be ommited then.
 
 Capabilities may be _steps_, which means that the whole DMX range has the same effect (e.g. "Gobo 1"), or _proportional_, which means that the effect is increasing / decreasing from the start to the end of the DMX range (e.g. "Intensity 0-100%"). A proportional capability can define a start and an end value of its type-specific properties – note that this array syntax only works for physical entity properties, other properties may have their own syntax or don't allow different start/end values. Example:
 
 ```js
 "availableChannels": {
   "Pan": {
-    "capabilities": [
-      {
-        "dmxRange": [0, 255],
-        "type": "Pan",
-        "angle": ["0°", "530°"]
+    "capability": {
+      "type": "Pan",
+      "angle": ["0°", "530°"]
 
-        // DMX value 0 -> 0°
-        // DMX value 127 -> 264°
-        // DMX value 255 -> 530°
-      }
-    ]
+      // DMX value 0 -> 0°
+      // DMX value 127 -> 264°
+      // DMX value 255 -> 530°
+    }
   }
 }
 ```

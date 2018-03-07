@@ -3389,7 +3389,7 @@
           },
           "capabilities": {
             "type": "array",
-            "minItems": 1,
+            "minItems": 2,
             "uniqueItems": true,
             "items": {
               "allOf": [
@@ -9531,7 +9531,7 @@
           },
           "capabilities": {
             "type": "array",
-            "minItems": 1,
+            "minItems": 2,
             "uniqueItems": true,
             "items": {
               "allOf": [
