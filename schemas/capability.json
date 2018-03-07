@@ -124,19 +124,21 @@
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
-        "color": { "enum": [
-          "Red",
-          "Green",
-          "Blue",
-          "Cyan",
-          "Magenta",
-          "Yellow",
-          "Amber",
-          "White",
-          "UV",
-          "Lime",
-          "Indigo"
-        ] },
+        "color": {
+          "enum": [
+            "Red",
+            "Green",
+            "Blue",
+            "Cyan",
+            "Magenta",
+            "Yellow",
+            "Amber",
+            "White",
+            "UV",
+            "Lime",
+            "Indigo"
+          ]
+        },
         "brightness": { "$ref": "definitions.json#/entities/brightness" }
       },
       "required": ["color", "brightness"],
