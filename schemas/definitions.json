@@ -197,7 +197,7 @@
       "oneOf": [
         { "$ref": "#/units/kelvin" },
         { "$ref": "#/units/percent" },
-        { "enum": ["warm", "cold"] }
+        { "enum": ["warm", "default", "cold"] }
       ]
     },
     "colorTemperature": {
