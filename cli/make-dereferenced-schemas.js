@@ -21,12 +21,11 @@ dereference(definitionsSchema, path.join(__dirname, `../schemas/dereferenced/def
 function dereference(schema, newFilename) {
   process.chdir(path.join(__dirname, `../schemas/`));
 
-  schemaRefParser.dereference(schema).then(dereferencedSchema => {
-    return fs.writeFileSync(
+  schemaRefParser.dereference(schema)
+    .then(dereferencedSchema => fs.writeFileSync(
       newFilename,
       JSON.stringify(dereferencedSchema, null, 2)
-    );
-  })
+    ))
     .then(() => {
       console.log(`${colors.green(`[Success]`)} Updated dereferenced schema ${newFilename}.`);
     })
