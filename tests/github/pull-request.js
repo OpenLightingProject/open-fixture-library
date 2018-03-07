@@ -1,4 +1,4 @@
-const GitHubApi = require(`github`);
+const GitHubApi = require(`@octokit/rest`);
 
 require(`../../lib/load-env-file.js`);
 
