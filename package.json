@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.0.1",
+    "@octokit/rest": "^15.1.7",
     "@std/esm": ">=0.23.0 <1.0.0",
     "a11y-dialog": "^4.0.0",
     "color": "^3.0.0",
@@ -24,7 +25,6 @@
     "compression": "^1.7.1",
     "details-polyfill": "^1.1.0",
     "express": "^4.16.2",
-    "github": "^13.0.1",
     "node-env-file": "^0.1.8",
     "node-sass": "^4.7.2",
     "node-zip": "^1.1.1",
