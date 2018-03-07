@@ -157,11 +157,16 @@
 
         <!-- <section><button class="secondary" @click.prevent="channel.wizard.show = !channel.wizard.show">${svg.getSvg(`capability-wizard`)} {{ channel.wizard.show ? 'Close' : 'Open' }} Capability Wizard</button>
 
-        <capability-wizard v-if="channel.wizard.show" :wizard="channel.wizard" :capabilities="channel.capabilities" :fineness="Math.min(channel.fineness, channel.capFineness)" @close="channel.wizard.show = false"></capability-wizard>
+        <capability-wizard v-if="channel.wizard.show" :wizard="channel.wizard" :capabilities="channel.capabilities" :fineness="Math.min(channel.fineness, channel.capFineness)" @close="channel.wizard.show = false"></capability-wizard> -->
 
-        <ul class="capability-editor" v-else>
-          <channel-capability v-for="(cap, index) in channel.capabilities" :key="cap.uuid" v-model="channel.capabilities" :cap-index="index" :fineness="Math.min(channel.fineness, channel.capFineness)" @scroll-item-inserted="capabilitiesScroll"></channel-capability>
-        </ul> -->
+        <ul class="capability-editor"><!-- v-else -->
+          <app-editor-capability
+            v-for="(cap, index) in channel.capabilities"
+            :key="cap.uuid"
+            v-model="channel.capabilities"
+            :cap-index="index"
+            :fineness="Math.min(channel.fineness, channel.capFineness)" />
+        </ul>
 
       </div>
 
@@ -174,6 +179,15 @@
   </app-a11y-dialog>
 </template>
 
+<style lang="scss" scoped>
+.capability-editor {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+
 <script>
 import scrollIntoView from 'scroll-into-view';
 import uuidV4 from 'uuid/v4.js';
@@ -181,6 +195,7 @@ import uuidV4 from 'uuid/v4.js';
 import schemaProperties from '~~/lib/schema-properties.js';
 
 import a11yDialogVue from '~/components/a11y-dialog.vue';
+import editorCapabilityVue from '~/components/editor-capability.vue';
 import simpleLabelVue from '~/components/simple-label.vue';
 import propertyInputBooleanVue from '~/components/property-input-boolean.vue';
 import propertyInputSelectVue from '~/components/property-input-select.vue';
@@ -189,6 +204,7 @@ import propertyInputTextVue from '~/components/property-input-text.vue';
 export default {
   components: {
     'app-a11y-dialog': a11yDialogVue,
+    'app-editor-capability': editorCapabilityVue,
     'app-simple-label': simpleLabelVue,
     'app-property-input-boolean': propertyInputBooleanVue,
     'app-property-input-select': propertyInputSelectVue,

@@ -6,9 +6,10 @@
       :name="`${name}-start`"
       v-model="start"
       :schema-property="schemaProperty.items"
-      :max="end !== `invalid` ? end : null"
+      :min="min"
+      :max="end !== `invalid` ? end : max"
       :required="required || rangeIncomplete"
-      hint="min"
+      :hint="startHint"
       @focus.native="onFocus"
       @blur.native="onBlur($event)"
       @focusin.native.stop
@@ -19,9 +20,10 @@
       :name="`${name}-end`"
       v-model="end"
       :schema-property="schemaProperty.items"
-      :min="start !== `invalid` ? start : null"
+      :min="start !== `invalid` ? start : min"
+      :max="max"
       :required="required || rangeIncomplete"
-      hint="max"
+      :hint="endHint"
       @focus.native="onFocus"
       @blur.native="onBlur($event)"
       @focusin.native.stop
@@ -53,10 +55,20 @@ export default {
     startHint: {
       type: String,
       required: false,
-      default: null
+      default: `start`
     },
     endHint: {
       type: String,
+      required: false,
+      default: `end`
+    },
+    min: {
+      type: Number,
+      required: false,
+      default: null
+    },
+    max: {
+      type: Number,
       required: false,
       default: null
     },
@@ -82,6 +94,7 @@ export default {
       },
       set(startInput) {
         this.$emit(`input`, getRange(startInput, this.end));
+        this.$emit(`start-updated`);
       }
     },
     end: {
@@ -90,6 +103,7 @@ export default {
       },
       set(endInput) {
         this.$emit(`input`, getRange(this.start, endInput));
+        this.$emit(`end-updated`);
       }
     },
     rangeIncomplete() {
