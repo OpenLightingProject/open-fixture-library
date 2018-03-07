@@ -61,6 +61,11 @@
       "type": "number",
       "minimum": 0
     },
+    "positiveInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "exclusiveMinimum": 0
+    },
     "percent": {
       "type": "string",
       "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
@@ -820,6 +825,57 @@
                   "off",
                   "low",
                   "high"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "insertionSingle": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+        },
+        {
+          "enum": [
+            "out",
+            "in"
+          ]
+        }
+      ]
+    },
+    "insertion": {
+      "oneOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+            },
+            {
+              "enum": [
+                "out",
+                "in"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+              },
+              {
+                "enum": [
+                  "out",
+                  "in"
                 ]
               }
             ]

@@ -2707,6 +2707,196 @@
                       "dmxRange": {},
                       "type": {
                         "enum": [
+                          "BladeInsertion"
+                        ]
+                      },
+                      "comment": {},
+                      "menuClick": {},
+                      "switchChannels": {},
+                      "insertion": {
+                        "oneOf": [
+                          {
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                              },
+                              {
+                                "enum": [
+                                  "out",
+                                  "in"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "array",
+                            "minLength": 2,
+                            "maxLength": 2,
+                            "items": {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                },
+                                {
+                                  "enum": [
+                                    "out",
+                                    "in"
+                                  ]
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      "blade": {
+                        "oneOf": [
+                          {
+                            "enum": [
+                              "Top",
+                              "Right",
+                              "Bottom",
+                              "Left"
+                            ]
+                          },
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "exclusiveMinimum": 0
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "insertion",
+                      "blade"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "dmxRange": {},
+                      "type": {
+                        "enum": [
+                          "BladeRotation"
+                        ]
+                      },
+                      "comment": {},
+                      "menuClick": {},
+                      "switchChannels": {},
+                      "angle": {
+                        "oneOf": [
+                          {
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+                              },
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "array",
+                            "minLength": 2,
+                            "maxLength": 2,
+                            "items": {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      "blade": {
+                        "oneOf": [
+                          {
+                            "enum": [
+                              "Top",
+                              "Right",
+                              "Bottom",
+                              "Left"
+                            ]
+                          },
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "exclusiveMinimum": 0
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "angle",
+                      "blade"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "dmxRange": {},
+                      "type": {
+                        "enum": [
+                          "BladeSystemRotation"
+                        ]
+                      },
+                      "comment": {},
+                      "menuClick": {},
+                      "switchChannels": {},
+                      "angle": {
+                        "oneOf": [
+                          {
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+                              },
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "array",
+                            "minLength": 2,
+                            "maxLength": 2,
+                            "items": {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "angle"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "dmxRange": {},
+                      "type": {
+                        "enum": [
                           "FogOff"
                         ]
                       },
@@ -2975,6 +3165,74 @@
                                     "stop",
                                     "slow CW",
                                     "fast CW"
+                                  ]
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "speed"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "dmxRange": {},
+                      "type": {
+                        "enum": [
+                          "Speed"
+                        ]
+                      },
+                      "comment": {},
+                      "menuClick": {},
+                      "switchChannels": {},
+                      "speed": {
+                        "oneOf": [
+                          {
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+                              },
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                              },
+                              {
+                                "enum": [
+                                  "fast reverse",
+                                  "slow reverse",
+                                  "stop",
+                                  "slow",
+                                  "fast"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "array",
+                            "minLength": 2,
+                            "maxLength": 2,
+                            "items": {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                },
+                                {
+                                  "enum": [
+                                    "fast reverse",
+                                    "slow reverse",
+                                    "stop",
+                                    "slow",
+                                    "fast"
                                   ]
                                 }
                               ]
@@ -5463,6 +5721,196 @@
                         "dmxRange": {},
                         "type": {
                           "enum": [
+                            "BladeInsertion"
+                          ]
+                        },
+                        "comment": {},
+                        "menuClick": {},
+                        "switchChannels": {},
+                        "insertion": {
+                          "oneOf": [
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                },
+                                {
+                                  "enum": [
+                                    "out",
+                                    "in"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "array",
+                              "minLength": 2,
+                              "maxLength": 2,
+                              "items": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                  },
+                                  {
+                                    "enum": [
+                                      "out",
+                                      "in"
+                                    ]
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "blade": {
+                          "oneOf": [
+                            {
+                              "enum": [
+                                "Top",
+                                "Right",
+                                "Bottom",
+                                "Left"
+                              ]
+                            },
+                            {
+                              "type": "integer",
+                              "minimum": 0,
+                              "exclusiveMinimum": 0
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "insertion",
+                        "blade"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "properties": {
+                        "dmxRange": {},
+                        "type": {
+                          "enum": [
+                            "BladeRotation"
+                          ]
+                        },
+                        "comment": {},
+                        "menuClick": {},
+                        "switchChannels": {},
+                        "angle": {
+                          "oneOf": [
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "array",
+                              "minLength": 2,
+                              "maxLength": 2,
+                              "items": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "blade": {
+                          "oneOf": [
+                            {
+                              "enum": [
+                                "Top",
+                                "Right",
+                                "Bottom",
+                                "Left"
+                              ]
+                            },
+                            {
+                              "type": "integer",
+                              "minimum": 0,
+                              "exclusiveMinimum": 0
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "angle",
+                        "blade"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "properties": {
+                        "dmxRange": {},
+                        "type": {
+                          "enum": [
+                            "BladeSystemRotation"
+                          ]
+                        },
+                        "comment": {},
+                        "menuClick": {},
+                        "switchChannels": {},
+                        "angle": {
+                          "oneOf": [
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "array",
+                              "minLength": 2,
+                              "maxLength": 2,
+                              "items": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "angle"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "properties": {
+                        "dmxRange": {},
+                        "type": {
+                          "enum": [
                             "FogOff"
                           ]
                         },
@@ -5731,6 +6179,74 @@
                                       "stop",
                                       "slow CW",
                                       "fast CW"
+                                    ]
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "speed"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "properties": {
+                        "dmxRange": {},
+                        "type": {
+                          "enum": [
+                            "Speed"
+                          ]
+                        },
+                        "comment": {},
+                        "menuClick": {},
+                        "switchChannels": {},
+                        "speed": {
+                          "oneOf": [
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                },
+                                {
+                                  "enum": [
+                                    "fast reverse",
+                                    "slow reverse",
+                                    "stop",
+                                    "slow",
+                                    "fast"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "array",
+                              "minLength": 2,
+                              "maxLength": 2,
+                              "items": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                  },
+                                  {
+                                    "enum": [
+                                      "fast reverse",
+                                      "slow reverse",
+                                      "stop",
+                                      "slow",
+                                      "fast"
                                     ]
                                   }
                                 ]
@@ -8329,6 +8845,196 @@
                       "dmxRange": {},
                       "type": {
                         "enum": [
+                          "BladeInsertion"
+                        ]
+                      },
+                      "comment": {},
+                      "menuClick": {},
+                      "switchChannels": {},
+                      "insertion": {
+                        "oneOf": [
+                          {
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                              },
+                              {
+                                "enum": [
+                                  "out",
+                                  "in"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "array",
+                            "minLength": 2,
+                            "maxLength": 2,
+                            "items": {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                },
+                                {
+                                  "enum": [
+                                    "out",
+                                    "in"
+                                  ]
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      "blade": {
+                        "oneOf": [
+                          {
+                            "enum": [
+                              "Top",
+                              "Right",
+                              "Bottom",
+                              "Left"
+                            ]
+                          },
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "exclusiveMinimum": 0
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "insertion",
+                      "blade"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "dmxRange": {},
+                      "type": {
+                        "enum": [
+                          "BladeRotation"
+                        ]
+                      },
+                      "comment": {},
+                      "menuClick": {},
+                      "switchChannels": {},
+                      "angle": {
+                        "oneOf": [
+                          {
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+                              },
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "array",
+                            "minLength": 2,
+                            "maxLength": 2,
+                            "items": {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      "blade": {
+                        "oneOf": [
+                          {
+                            "enum": [
+                              "Top",
+                              "Right",
+                              "Bottom",
+                              "Left"
+                            ]
+                          },
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "exclusiveMinimum": 0
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "angle",
+                      "blade"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "dmxRange": {},
+                      "type": {
+                        "enum": [
+                          "BladeSystemRotation"
+                        ]
+                      },
+                      "comment": {},
+                      "menuClick": {},
+                      "switchChannels": {},
+                      "angle": {
+                        "oneOf": [
+                          {
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+                              },
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "array",
+                            "minLength": 2,
+                            "maxLength": 2,
+                            "items": {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "angle"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "dmxRange": {},
+                      "type": {
+                        "enum": [
                           "FogOff"
                         ]
                       },
@@ -8597,6 +9303,74 @@
                                     "stop",
                                     "slow CW",
                                     "fast CW"
+                                  ]
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "speed"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "dmxRange": {},
+                      "type": {
+                        "enum": [
+                          "Speed"
+                        ]
+                      },
+                      "comment": {},
+                      "menuClick": {},
+                      "switchChannels": {},
+                      "speed": {
+                        "oneOf": [
+                          {
+                            "oneOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+                              },
+                              {
+                                "type": "string",
+                                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                              },
+                              {
+                                "enum": [
+                                  "fast reverse",
+                                  "slow reverse",
+                                  "stop",
+                                  "slow",
+                                  "fast"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "array",
+                            "minLength": 2,
+                            "maxLength": 2,
+                            "items": {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                },
+                                {
+                                  "enum": [
+                                    "fast reverse",
+                                    "slow reverse",
+                                    "stop",
+                                    "slow",
+                                    "fast"
                                   ]
                                 }
                               ]
@@ -11085,6 +11859,196 @@
                         "dmxRange": {},
                         "type": {
                           "enum": [
+                            "BladeInsertion"
+                          ]
+                        },
+                        "comment": {},
+                        "menuClick": {},
+                        "switchChannels": {},
+                        "insertion": {
+                          "oneOf": [
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                },
+                                {
+                                  "enum": [
+                                    "out",
+                                    "in"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "array",
+                              "minLength": 2,
+                              "maxLength": 2,
+                              "items": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                  },
+                                  {
+                                    "enum": [
+                                      "out",
+                                      "in"
+                                    ]
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "blade": {
+                          "oneOf": [
+                            {
+                              "enum": [
+                                "Top",
+                                "Right",
+                                "Bottom",
+                                "Left"
+                              ]
+                            },
+                            {
+                              "type": "integer",
+                              "minimum": 0,
+                              "exclusiveMinimum": 0
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "insertion",
+                        "blade"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "properties": {
+                        "dmxRange": {},
+                        "type": {
+                          "enum": [
+                            "BladeRotation"
+                          ]
+                        },
+                        "comment": {},
+                        "menuClick": {},
+                        "switchChannels": {},
+                        "angle": {
+                          "oneOf": [
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "array",
+                              "minLength": 2,
+                              "maxLength": 2,
+                              "items": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "blade": {
+                          "oneOf": [
+                            {
+                              "enum": [
+                                "Top",
+                                "Right",
+                                "Bottom",
+                                "Left"
+                              ]
+                            },
+                            {
+                              "type": "integer",
+                              "minimum": 0,
+                              "exclusiveMinimum": 0
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "angle",
+                        "blade"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "properties": {
+                        "dmxRange": {},
+                        "type": {
+                          "enum": [
+                            "BladeSystemRotation"
+                          ]
+                        },
+                        "comment": {},
+                        "menuClick": {},
+                        "switchChannels": {},
+                        "angle": {
+                          "oneOf": [
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "array",
+                              "minLength": 2,
+                              "maxLength": 2,
+                              "items": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "angle"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "properties": {
+                        "dmxRange": {},
+                        "type": {
+                          "enum": [
                             "FogOff"
                           ]
                         },
@@ -11353,6 +12317,74 @@
                                       "stop",
                                       "slow CW",
                                       "fast CW"
+                                    ]
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "speed"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "properties": {
+                        "dmxRange": {},
+                        "type": {
+                          "enum": [
+                            "Speed"
+                          ]
+                        },
+                        "comment": {},
+                        "menuClick": {},
+                        "switchChannels": {},
+                        "speed": {
+                          "oneOf": [
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+                                },
+                                {
+                                  "type": "string",
+                                  "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                },
+                                {
+                                  "enum": [
+                                    "fast reverse",
+                                    "slow reverse",
+                                    "stop",
+                                    "slow",
+                                    "fast"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "array",
+                              "minLength": 2,
+                              "maxLength": 2,
+                              "items": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                                  },
+                                  {
+                                    "enum": [
+                                      "fast reverse",
+                                      "slow reverse",
+                                      "stop",
+                                      "slow",
+                                      "fast"
                                     ]
                                   }
                                 ]

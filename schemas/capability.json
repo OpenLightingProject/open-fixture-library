@@ -542,6 +542,50 @@
     {
       "properties": {
         "dmxRange": {},
+        "type": { "enum": ["BladeInsertion"] },
+        "comment": {},
+        "menuClick": {},
+        "switchChannels": {},
+        "insertion": { "$ref": "definitions.json#/entities/insertion" },
+        "blade": { "oneOf": [
+          { "enum": ["Top", "Right", "Bottom", "Left"] },
+          { "$ref": "definitions.json#/units/positiveInteger" }
+        ]}
+      },
+      "required": ["insertion", "blade"],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "dmxRange": {},
+        "type": { "enum": ["BladeRotation"] },
+        "comment": {},
+        "menuClick": {},
+        "switchChannels": {},
+        "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
+        "blade": { "oneOf": [
+          { "enum": ["Top", "Right", "Bottom", "Left"] },
+          { "$ref": "definitions.json#/units/positiveInteger" }
+        ]}
+      },
+      "required": ["angle", "blade"],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "dmxRange": {},
+        "type": { "enum": ["BladeSystemRotation"] },
+        "comment": {},
+        "menuClick": {},
+        "switchChannels": {},
+        "angle": { "$ref": "definitions.json#/entities/rotationAngle" }
+      },
+      "required": ["angle"],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "dmxRange": {},
         "type": { "enum": ["FogOff"] },
         "comment": {},
         "menuClick": {},
@@ -605,6 +649,18 @@
         "menuClick": {},
         "switchChannels": {},
         "speed": { "$ref": "definitions.json#/entities/rotationSpeed" }
+      },
+      "required": ["speed"],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "dmxRange": {},
+        "type": { "enum": ["Speed"] },
+        "comment": {},
+        "menuClick": {},
+        "switchChannels": {},
+        "speed": { "$ref": "definitions.json#/entities/speed" }
       },
       "required": ["speed"],
       "additionalProperties": false

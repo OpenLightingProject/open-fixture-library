@@ -16,6 +16,7 @@ This is a full list of capability types with their properties, entities and unit
 | Factor | (no unit), `%` | – | – | off | low | high
 | Index | (no unit) | – | – | – | – | –
 | Percent | `%` | – | – | off | low | high
+| Insertion | `%` | – | – | out | – | in
 | IrisPercent | `%` | – | – | closed | – | open
 
 ### Possible capability types
@@ -39,7 +40,7 @@ Required properties are _italic_, the entity is written in (parentheses).
   * _color_: one of our predefined Single Colors (Red, Green, Blue, White, Amber, etc.)
   * _brightness_ (Brightness)
 * Color
-  * colors: array of visible colors as hex codes (e.g. `['#ffff00']` if red and green LEDs are on that mix to yellow; `['#ff0000', '#00ff00']` if red and green laser beams are on that don't mix)
+  * colors: array of visible colors as hex codes; e.g. `['#ffff00']` if red and green LEDs are on that mix to yellow, `['#ff0000', '#00ff00']` if red and green laser beams are on that don't mix. UV is always counted as seperate color.
   * use colorsStart and colorsEnd instead of colors to declare a color change from the start to the end of the range
 * ColorWheelIndex
   * _index_ (Index): `0` for open, `1` for Color 1, `1.5` for Color 1/2 split, etc.
@@ -101,6 +102,14 @@ Required properties are _italic_, the entity is written in (parentheses).
   * _angle_ (RotationAngle)
 * PrismRotationSpeed
   * _speed_ (RotationSpeed)
+* BladeInsertion
+  * _insertion_ (Insertion)
+  * _blade_: one of `Top`, `Right`, `Bottom`, `Left` or a number if the position is unknown
+* BladeRotation
+  * _angle_ (RotationAngle)
+  * _blade_: one of `Top`, `Right`, `Bottom`, `Left` or a number if the position is unknown
+* BladeSystemRotation
+  * _angle_ (RotationAngle)
 * FogOff
 * FogOn
   * fogOutput (FogOutput)
@@ -112,6 +121,8 @@ Required properties are _italic_, the entity is written in (parentheses).
 * RotationAngle
   * _angle_ (RotationAngle)
 * RotationSpeed
+  * _speed_ (RotationSpeed)
+* Speed
   * _speed_ (Speed)
 * Maintenance
   * parameter (Factor)
