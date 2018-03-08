@@ -1,14 +1,14 @@
 <template>
   <input
-    type="text"
+    ref="input"
     :required="required"
     :placeholder="hint"
     :pattern="schemaProperty.pattern"
     :minlength="schemaProperty.minLength"
     :maxlength="schemaProperty.maxLength"
     :value="value"
-    @input="update"
-    ref="input">
+    type="text"
+    @input="update">
 </template>
 
 <script>

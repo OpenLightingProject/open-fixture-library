@@ -2,7 +2,6 @@
   <span class="range">
     <!-- TODO: validate the individual sub fields -->
     <app-property-input-number
-      type="number"
       :name="`${name}-start`"
       v-model="start"
       :schema-property="schemaProperty.items"
@@ -10,13 +9,13 @@
       :max="end !== `invalid` ? end : max"
       :required="required || rangeIncomplete"
       :hint="startHint"
+      type="number"
       @focus.native="onFocus"
       @blur.native="onBlur($event)"
       @focusin.native.stop
       @focusout.native.stop />
     …
     <app-property-input-number
-      type="number"
       :name="`${name}-end`"
       v-model="end"
       :schema-property="schemaProperty.items"
@@ -24,6 +23,7 @@
       :max="max"
       :required="required || rangeIncomplete"
       :hint="endHint"
+      type="number"
       @focus.native="onFocus"
       @blur.native="onBlur($event)"
       @focusin.native.stop

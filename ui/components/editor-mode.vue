@@ -12,18 +12,18 @@
 
     <h2>Mode #{{ index + 1 }}</h2>
 
-    <app-simple-label :name="`mode-${index}-name`" label="Name" :formstate="formstate">
+    <app-simple-label :formstate="formstate" :name="`mode-${index}-name`" label="Name">
       <app-property-input-text
+        ref="firstInput"
         :name="`mode-${index}-name`"
         v-model="mode.name"
         :schema-property="properties.mode.name.allOf[1]"
         :required="true"
         hint="e.g. Extended"
-        title="The name must not contain the word 'mode'."
-        ref="firstInput" />
+        title="The name must not contain the word 'mode'." />
     </app-simple-label>
 
-    <app-simple-label :name="`mode-${index}-shortName`" label="Unique short name" :formstate="formstate">
+    <app-simple-label :formstate="formstate" :name="`mode-${index}-shortName`" label="Unique short name">
       <app-property-input-text
         :name="`mode-${index}-shortName`"
         v-model="mode.shortName"
@@ -34,14 +34,14 @@
 
     <app-simple-label
       v-if="fixture.rdmModelId !== null"
+      :formstate="formstate"
       :name="`mode-${index}-rdmPersonalityIndex`"
-      label="RDM personality index"
-      :formstate="formstate">
+      label="RDM personality index">
       <app-property-input-number
-        type="number"
-        :name="`mode-${index}-rdmPersonalityIndex`"
         v-model="mode.rdmPersonalityIndex"
-        :schema-property="properties.mode.rdmPersonalityIndex" />
+        :name="`mode-${index}-rdmPersonalityIndex`"
+        :schema-property="properties.mode.rdmPersonalityIndex"
+        type="number" />
     </app-simple-label>
 
 
@@ -49,9 +49,9 @@
 
     <label>
       <input
+        v-model="mode.enablePhysicalOverride"
         type="checkbox"
-        class="enable-physical-override"
-        v-model="mode.enablePhysicalOverride">
+        class="enable-physical-override">
       Override fixture's physical data in this mode
     </label>
 

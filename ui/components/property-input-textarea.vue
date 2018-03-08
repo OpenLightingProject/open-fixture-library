@@ -1,12 +1,12 @@
 <template>
   <textarea
+    ref="input"
     :required="required"
     :placeholder="hint"
     :minlength="schemaProperty.minLength"
     :maxlength="schemaProperty.maxLength"
     :value="value"
-    @input="update"
-    ref="input" />
+    @input="update" />
 </template>
 
 <script>

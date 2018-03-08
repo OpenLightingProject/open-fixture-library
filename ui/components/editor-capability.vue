@@ -2,38 +2,38 @@
   <!-- TODO: validate everything in here -->
   <li class="capability validate-group">
     <app-property-input-range
-      :name="`capability${capIndex}-range`"
-      complete-range
-      valid-range
       v-model="capability.range"
+      :name="`capability${capIndex}-range`"
       :schema-property="properties.capability.range"
       :min="min"
       :max="max"
       :required="isChanged"
+      complete-range
+      valid-range
       @start-updated="onStartUpdated"
       @end-updated="onEndUpdated" />
     <span class="capability-data">
       <input
+        v-model="capability.name"
+        :required="isChanged"
         type="text"
         placeholder="name"
-        v-model="capability.name"
-        class="name"
-        :required="isChanged">
+        class="name">
       <br>
       <input
+        v-model="capability.color"
         type="text"
         placeholder="color"
         pattern="^#[0-9a-f]{6}$"
         title="#rrggbb"
-        v-model="capability.color"
         class="color">
       <input
         v-if="capability.color !== ``"
+        v-model="capability.color2"
         type="text"
         placeholder="color 2"
         pattern="^#[0-9a-f]{6}$"
         title="#rrggbb"
-        v-model="capability.color2"
         class="color">
     </span>
     <span class="buttons">

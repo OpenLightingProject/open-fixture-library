@@ -9,9 +9,9 @@
           <app-svg
             v-for="cat in fixture.categories"
             :key="cat"
-            type="category"
             :name="cat"
-            :class="{ inactive: cat !== categoryName, right: true }" />
+            :class="{ inactive: cat !== categoryName, right: true }"
+            type="category" />
         </nuxt-link>
       </li>
     </ul>

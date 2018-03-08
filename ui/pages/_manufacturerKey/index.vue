@@ -30,8 +30,8 @@
           <app-svg
             v-for="cat in fixture.categories"
             :key="cat"
-            type="category"
             :name="cat"
+            type="category"
             class="right inactive" />
         </nuxt-link>
       </li>

@@ -1,9 +1,9 @@
 <template>
   <app-a11y-dialog
     id="chooseChannelEditMode"
-    title="Edit channel in all modes or just in this one?"
     :cancellable="false"
     :shown="channel.editMode === `edit-?`"
+    title="Edit channel in all modes or just in this one?"
     @show="onChooseChannelEditModeDialogOpen">
 
     <div class="button-bar right">

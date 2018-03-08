@@ -1,7 +1,7 @@
 <template>
   <section :class="name">
     <template v-if="formstate">
-      <validate tag="label" :state="formstate">
+      <validate :state="formstate" tag="label">
         <div class="label" v-html="label" />
         <div class="value">
 

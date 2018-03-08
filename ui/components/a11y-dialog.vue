@@ -2,14 +2,14 @@
   <div class="dialog-container" aria-hidden="true">
     <div class="dialog-overlay" tabindex="-1" @click="overlayClick" />
 
-    <div class="dialog card" :aria-labelledby="id + '-dialog-title'" role="dialog">
+    <div :aria-labelledby="id + '-dialog-title'" class="dialog card" role="dialog">
       <div role="document">
 
         <a
           v-if="cancellable"
           href="#close"
-          @click.prevent="hide"
-          class="close">
+          class="close"
+          @click.prevent="hide">
           Close
           <app-svg name="close" />
         </a>

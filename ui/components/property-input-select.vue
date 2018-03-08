@@ -1,6 +1,6 @@
 <template>
-  <select :required="required" @input="update" ref="input">
-    <option value="" :selected="value === ``">unknown</option>
+  <select ref="input" :required="required" @input="update">
+    <option :selected="value === ``" value="">unknown</option>
     <option
       v-for="item in schemaProperty.enum"
       :key="item"
@@ -8,8 +8,8 @@
       :selected="value === item">{{ item }}</option>
     <option
       v-if="additionHint !== null"
-      value="[add-value]"
-      :selected="value === `[add-value]`">{{ additionHint }}</option>
+      :selected="value === `[add-value]`"
+      value="[add-value]">{{ additionHint }}</option>
   </select>
 </template>
 

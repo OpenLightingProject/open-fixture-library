@@ -1,20 +1,20 @@
 <template>
   <app-a11y-dialog
     id="channel"
+    ref="channelDialog"
     :cancellable="true"
     :shown="channel.editMode !== `` && channel.editMode !== `edit-?`"
-    @show="onChannelDialogOpen"
-    @hide="onChannelDialogClose"
     :title="title"
-    ref="channelDialog">
+    @show="onChannelDialogOpen"
+    @hide="onChannelDialogClose">
 
     <vue-form
-      action="#"
       :state="formstate"
+      action="#"
       @submit.prevent="onSubmit">
 
       <div v-if="channel.editMode == `add-existing`" class="validate-group">
-        <select size="10" required v-model="channel.uuid">
+        <select v-model="channel.uuid" size="10" required>
           <option
             v-for="channelUuid in currentModeUnchosenChannels"
             :key="channelUuid"
@@ -27,25 +27,25 @@
       </div>
 
       <div v-else>
-        <app-simple-label name="name" label="Name" :formstate="formstate">
+        <app-simple-label :formstate="formstate" name="name" label="Name">
           <app-property-input-text
-            name="name"
-            start-with-uppercase-or-number
-            no-fine-channel-name
             v-model="channel.name"
             :schema-property="properties.channel.name"
             :required="true"
+            name="name"
+            start-with-uppercase-or-number
+            no-fine-channel-name
             title="Please start with an uppercase letter or a number. Don't create fine channels here, set its resolution below instead."
             class="channelName" />
         </app-simple-label>
 
         <!-- TODO: validate this right -->
-        <app-simple-label name="type" label="Type" :formstate="formstate">
+        <app-simple-label :formstate="formstate" name="type" label="Type">
           <app-property-input-select
-            name="type"
             v-model="channel.type"
             :schema-property="properties.channel.type"
             :required="true"
+            name="type"
             addition-hint="other channel type" />
           <app-property-input-text
             v-if="channel.type === `[add-value]`"
@@ -58,14 +58,14 @@
         <!-- TODO: validate this right -->
         <app-simple-label
           v-if="channel.type === `Single Color`"
+          :formstate="formstate"
           name="color"
-          label="Color"
-          :formstate="formstate">
+          label="Color">
           <app-property-input-select
-            name="color"
             v-model="channel.color"
             :schema-property="properties.channel.color"
             :required="true"
+            name="color"
             addition-hint="other channel color" />
           <app-property-input-text
             v-if="channel.color === `[add-value]`"
@@ -77,81 +77,81 @@
 
         <h3>DMX values</h3>
 
-        <app-simple-label name="fineness" label="Channel resolution" :formstate="formstate">
-          <select name="fineness" v-model.number="channel.fineness">
-            <option value="0" :selected="channel.fineness === 0">8 bit (No fine channels)</option>
-            <option value="1" :selected="channel.fineness === 1">16 bit (1 fine channel)</option>
-            <option value="2" :selected="channel.fineness === 2">24 bit (2 fine channels)</option>
+        <app-simple-label :formstate="formstate" name="fineness" label="Channel resolution">
+          <select v-model.number="channel.fineness" name="fineness">
+            <option :selected="channel.fineness === 0" value="0">8 bit (No fine channels)</option>
+            <option :selected="channel.fineness === 1" value="1">16 bit (1 fine channel)</option>
+            <option :selected="channel.fineness === 2" value="2">24 bit (2 fine channels)</option>
           </select>
         </app-simple-label>
 
-        <app-simple-label name="defaultValue" label="Default" :formstate="formstate">
+        <app-simple-label :formstate="formstate" name="defaultValue" label="Default">
           <input
+            v-model.number="channel.defaultValue"
+            :max="Math.pow(256, channel.fineness + 1) - 1"
             name="defaultValue"
             type="number"
             min="0"
-            :max="Math.pow(256, channel.fineness + 1) - 1"
-            step="1"
-            v-model.number="channel.defaultValue">
+            step="1">
         </app-simple-label>
 
-        <app-simple-label name="highlightValue" label="Highlight" :formstate="formstate">
+        <app-simple-label :formstate="formstate" name="highlightValue" label="Highlight">
           <input
+            v-model.number="channel.highlightValue"
+            :max="Math.pow(256, channel.fineness + 1) - 1"
             name="highlightValue"
             type="number"
             min="0"
-            :max="Math.pow(256, channel.fineness + 1) - 1"
-            step="1"
-            v-model.number="channel.highlightValue">
+            step="1">
         </app-simple-label>
 
-        <app-simple-label name="invert" label="Invert?" :formstate="formstate">
+        <app-simple-label :formstate="formstate" name="invert" label="Invert?">
           <app-property-input-boolean
-            name="invert"
             v-model="channel.invert"
-            :schema-property="properties.channel.invert" />
+            :schema-property="properties.channel.invert"
+            name="invert" />
         </app-simple-label>
 
-        <app-simple-label name="constant" label="Constant?" :formstate="formstate">
+        <app-simple-label :formstate="formstate" name="constant" label="Constant?">
           <app-property-input-boolean
-            name="constant"
             v-model="channel.constant"
-            :schema-property="properties.channel.constant" />
+            :schema-property="properties.channel.constant"
+            name="constant" />
         </app-simple-label>
 
-        <app-simple-label name="crossfade" label="Crossfade?" :formstate="formstate">
+        <app-simple-label :formstate="formstate" name="crossfade" label="Crossfade?">
           <app-property-input-boolean
-            name="crossfade"
             v-model="channel.crossfade"
-            :schema-property="properties.channel.crossfade" />
+            :schema-property="properties.channel.crossfade"
+            name="crossfade" />
         </app-simple-label>
 
-        <app-simple-label name="precedence" label="Precedence" :formstate="formstate">
+        <app-simple-label :formstate="formstate" name="precedence" label="Precedence">
           <app-property-input-select
-            name="precedence"
             v-model="channel.precedence"
-            :schema-property="properties.channel.precedence" />
+            :schema-property="properties.channel.precedence"
+            name="precedence" />
         </app-simple-label>
 
         <h3>Capabilities</h3>
 
         <app-simple-label
           v-if="channel.fineness > 0"
+          :formstate="formstate"
           name="capFineness"
-          label="Capability resolution"
-          :formstate="formstate">
-          <select name="capFineness" required v-model.number="channel.capFineness">
+          label="Capability resolution">
+          <select v-model.number="channel.capFineness" name="capFineness" required>
             <option
-              value="0"
-              :selected="channel.capFineness === 0">8 bit (range 0 - 255)</option>
+              :selected="channel.capFineness === 0"
+              value="0">8 bit (range 0 - 255)</option>
             <option
               v-if="channel.fineness >= 1"
-              value="1"
-              :selected="channel.capFineness === 1">16 bit (range 0 - 65535)</option>
+              :selected="channel.capFineness === 1"
+              value="1">16 bit (range 0 - 65535)</option>
             <option
               v-if="channel.fineness >= 2"
-              value="2"
-              :selected="channel.capFineness === 2">24 bit (range 0 - 16777215)</option>
+              :selected="channel.capFineness === 2"
+              value="2">24 bit (range 0 - 16777215)</option>
           </select>
         </app-simple-label>
 
@@ -181,7 +181,7 @@
       </div>
 
       <div class="button-bar right">
-        <button type="submit" class="primary" :disabled="channel.wizard.show">{{ channel.editMode === "add-existing" ? "Add channel" : channel.editMode === "create" ? "Create channel" : "Save changes" }}</button>
+        <button :disabled="channel.wizard.show" type="submit" class="primary">{{ channel.editMode === "add-existing" ? "Add channel" : channel.editMode === "create" ? "Create channel" : "Save changes" }}</button>
       </div>
 
     </vue-form>

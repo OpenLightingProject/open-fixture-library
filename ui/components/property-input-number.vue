@@ -7,7 +7,7 @@ to enable validation
 
 <template>
   <input
-    type="number"
+    ref="input"
     :required="required"
     :min="minimum"
     :max="maximum"
@@ -16,8 +16,8 @@ to enable validation
     :step="schemaProperty.type === `integer` ? 1 : `any`"
     :placeholder="hint"
     :value="value === `invalid` ? `` : value"
-    @input="update"
-    ref="input">
+    type="number"
+    @input="update">
 </template>
 
 <script>

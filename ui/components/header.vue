@@ -14,11 +14,11 @@
         <form action="/search">
           <div>
             <input
+              :value="searchQuery"
               type="search"
               name="q"
               placeholder="Search fixtures"
-              aria-label="Search fixtures"
-              :value="searchQuery">
+              aria-label="Search fixtures">
           </div>
           <button type="submit">
             Search

@@ -6,9 +6,9 @@
 
     <div
       id="content"
+      ref="content"
       :class="{ js: isBrowser, 'no-js': !isBrowser }"
-      tabindex="-1"
-      ref="content">
+      tabindex="-1">
       <nuxt />
     </div>
   </div>

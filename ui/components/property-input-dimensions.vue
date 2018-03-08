@@ -2,34 +2,34 @@
   <span class="dimensions">
     <!-- TODO: validate the individual sub fields -->
     <app-property-input-number
-      type="number"
+      ref="xInput"
       v-model="x"
       :schema-property="schemaProperty.items"
       :required="required || dimensionsIncomplete"
       :hint="hints[0]"
-      @focus.native="onFocus"
-      @blur.native="onBlur($event)"
-      @focusin.native.stop
-      @focusout.native.stop
-      ref="xInput" />
-    &times;
-    <app-property-input-number
       type="number"
-      v-model="y"
-      :schema-property="schemaProperty.items"
-      :required="required || dimensionsIncomplete"
-      :hint="hints[1]"
       @focus.native="onFocus"
       @blur.native="onBlur($event)"
       @focusin.native.stop
       @focusout.native.stop />
     &times;
     <app-property-input-number
+      v-model="y"
+      :schema-property="schemaProperty.items"
+      :required="required || dimensionsIncomplete"
+      :hint="hints[1]"
       type="number"
+      @focus.native="onFocus"
+      @blur.native="onBlur($event)"
+      @focusin.native.stop
+      @focusout.native.stop />
+    &times;
+    <app-property-input-number
       v-model="z"
       :schema-property="schemaProperty.items"
       :required="required || dimensionsIncomplete"
       :hint="hints[2]"
+      type="number"
       @focus.native="onFocus"
       @blur.native="onBlur($event)"
       @focusin.native.stop

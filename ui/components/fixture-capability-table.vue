@@ -25,15 +25,15 @@
 
           <td
             v-if="cap.color !== null && cap.color2 !== null"
-            class="capability-color"
-            :title="`color: ${cap.color} / ${cap.color2}`">
-            <app-svg type="color-circle" :colors="[cap.color, cap.color2]" />
+            :title="`color: ${cap.color} / ${cap.color2}`"
+            class="capability-color">
+            <app-svg :colors="[cap.color, cap.color2]" type="color-circle" />
           </td>
           <td
             v-else-if="cap.color !== null"
-            class="capability-color"
-            :title="`color: ${cap.color}`">
-            <app-svg type="color-circle" :colors="[cap.color]" />
+            :title="`color: ${cap.color}`"
+            class="capability-color">
+            <app-svg :colors="[cap.color]" type="color-circle" />
           </td>
           <td
             v-else-if="cap.image !== null"
@@ -46,8 +46,8 @@
           <td class="capability-name">{{ cap.name }}</td>
 
           <td
-            class="capability-menuClick"
-            :title="cap.menuClick === `hidden` ? `this capability is hidden in quick menus` : `choosing this capability in a quick menu snaps to ${cap.menuClick} of capability`">
+            :title="cap.menuClick === `hidden` ? `this capability is hidden in quick menus` : `choosing this capability in a quick menu snaps to ${cap.menuClick} of capability`"
+            class="capability-menuClick">
             <app-svg :name="`capability-${cap.menuClick}`" />
           </td>
         </tr>
