@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { icons } from '~/assets/icons/icons.js';
+import icons from '~/assets/icons/icons.mjs';
 
 
 export default {
