@@ -91,7 +91,7 @@ app.get(`/sitemap.xml`, (request, response) => {
 });
 
 app.post(`/ajax/add-fixtures`, (request, response) => {
-  require(`./lib/add-fixtures.js`)(request, response);
+  require(`./ui/ajax/add-fixtures.js`)(request, response);
 });
 
 

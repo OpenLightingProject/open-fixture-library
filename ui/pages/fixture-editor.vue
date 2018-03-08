@@ -484,7 +484,11 @@ export default {
         pullRequestUrl: ``,
         rawData: ``
       };
-      this.$nextTick(() => this.formstate._reset());
+      this.$nextTick(() => {
+        this.formstate._reset();
+        this.$refs.existingManufacturerSelect.focus();
+        window.scrollTo(0, 0);
+      });
     }
   }
 };

@@ -1,5 +1,5 @@
-const createPullRequest = require(`./create-github-pr.js`);
-const properties = require(`../lib/schema-properties.js`);
+const createPullRequest = require(`../../lib/create-github-pr.js`);
+const properties = require(`../../lib/schema-properties.js`);
 
 /**
  * Takes the input from the fixture editor client side script and creates a pull request with the new fixture.
