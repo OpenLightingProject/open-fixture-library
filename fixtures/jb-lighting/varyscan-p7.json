@@ -32,7 +32,8 @@
       "defaultValue": 32767,
       "capability": {
         "type": "Pan",
-        "angle": ["0°", "433.6°"]
+        "angleStart": "0°",
+        "angleEnd": "433.6°"
       }
     },
     "Tilt": {
@@ -40,7 +41,8 @@
       "defaultValue": 32767,
       "capability": {
         "type": "Tilt",
-        "angle": ["0°", "280°"]
+        "angleStart": "0°",
+        "angleEnd": "280°"
       }
     },
     "Control": {
@@ -50,7 +52,8 @@
           "dmxRange": [0, 7],
           "type": "Speed",
           "comment": "Dimmer fade out with Fader, reaction fast",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [8, 31],
@@ -60,7 +63,8 @@
           "dmxRange": [32, 39],
           "type": "Speed",
           "comment": "Dimmer fade out with Fader, reaction semi-fast",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [40, 63],
@@ -70,7 +74,8 @@
           "dmxRange": [64, 71],
           "type": "Speed",
           "comment": "Dimmer fade out with Fader, reaction medium",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [72, 95],
@@ -80,7 +85,8 @@
           "dmxRange": [96, 103],
           "type": "Speed",
           "comment": "Dimmer fade out with Fader, reaction semi-slow",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [104, 127],
@@ -90,7 +96,8 @@
           "dmxRange": [128, 135],
           "type": "Speed",
           "comment": "Dimmer fade out with Fader, reaction slow",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [136, 207],
@@ -150,7 +157,8 @@
           "type": "ShutterStrobe",
           "comment": "Pulse opening >20Hz",
           "effect": "RampUp",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [111, 111],
@@ -161,7 +169,8 @@
           "dmxRange": [112, 125],
           "type": "Effect",
           "comment": "Dimmer fade effect",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [126, 126],
@@ -178,7 +187,8 @@
           "type": "ShutterStrobe",
           "comment": "Pulse opening <20Hz",
           "effect": "RampUp",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [143, 143],
@@ -190,7 +200,8 @@
           "type": "ShutterStrobe",
           "comment": "Pulse closing",
           "effect": "RampDown",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [159, 159],
@@ -202,7 +213,8 @@
           "type": "ShutterStrobe",
           "comment": "Fade 0%",
           "effect": "Strobe",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [175, 175],
@@ -214,7 +226,8 @@
           "type": "ShutterStrobe",
           "comment": "Fade 100%",
           "effect": "Strobe",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [191, 191],
@@ -226,7 +239,8 @@
           "type": "ShutterStrobe",
           "comment": "0%",
           "effect": "StrobeRandom",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [207, 207],
@@ -238,7 +252,8 @@
           "type": "ShutterStrobe",
           "comment": "100%",
           "effect": "StrobeRandom",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [223, 223],
@@ -250,7 +265,8 @@
           "type": "ShutterStrobe",
           "comment": "Fade 0%",
           "effect": "StrobeRandom",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [239, 239],
@@ -262,7 +278,8 @@
           "type": "ShutterStrobe",
           "comment": "Fade 100%",
           "effect": "StrobeRandom",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [255, 255],
@@ -275,19 +292,22 @@
       "defaultValue": 0,
       "capability": {
         "type": "Intensity",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Focus": {
       "capability": {
         "type": "Focus",
-        "distance": ["near", "far"]
+        "distanceStart": "near",
+        "distanceEnd": "far"
       }
     },
     "Zoom": {
       "capability": {
         "type": "Zoom",
-        "angle": ["48°", "8°"]
+        "angleStart": "48°",
+        "angleEnd": "8°"
       }
     },
     "Iris": {
@@ -307,7 +327,8 @@
           "dmxRange": [128, 142],
           "type": "IrisEffect",
           "comment": "Periodic opening pulse",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [143, 143],
@@ -318,7 +339,8 @@
           "dmxRange": [144, 158],
           "type": "IrisEffect",
           "comment": "Periodic closing pulse",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [159, 159],
@@ -329,7 +351,8 @@
           "dmxRange": [160, 174],
           "type": "IrisEffect",
           "comment": "Periodic snap open / ramp shut",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [175, 175],
@@ -340,7 +363,8 @@
           "dmxRange": [176, 190],
           "type": "IrisEffect",
           "comment": "Periodic ramp open / snap shut",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [191, 191],
@@ -351,7 +375,8 @@
           "dmxRange": [192, 206],
           "type": "IrisEffect",
           "comment": "Random opening pulse",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [207, 207],
@@ -362,7 +387,8 @@
           "dmxRange": [208, 222],
           "type": "IrisEffect",
           "comment": "Random closing pulse",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [223, 223],
@@ -373,7 +399,8 @@
           "dmxRange": [224, 238],
           "type": "IrisEffect",
           "comment": "Random snap open / ramp shut",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [239, 239],
@@ -384,7 +411,8 @@
           "dmxRange": [240, 254],
           "type": "IrisEffect",
           "comment": "Random ramp open / snap shut",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [255, 255],
@@ -449,12 +477,14 @@
         {
           "dmxRange": [192, 223],
           "type": "GoboWheelRotationSpeed",
-          "speed": ["fast CW", "slow CW"]
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [224, 255],
           "type": "GoboWheelRotationSpeed",
-          "speed": ["slow CCW", "fast CCW"]
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -504,7 +534,8 @@
         {
           "dmxRange": [0, 191],
           "type": "GoboStencilRotationAngle",
-          "angle": ["0°", "540°"]
+          "angleStart": "0°",
+          "angleEnd": "540°"
         },
         {
           "dmxRange": [192, 222],
@@ -654,17 +685,20 @@
           "dmxRange": [64, 191],
           "type": "ColorWheelRotationAngle",
           "comment": "Colors linear, beginning from white",
-          "angle": ["0°", "360°"]
+          "angleStart": "0°",
+          "angleEnd": "360°"
         },
         {
           "dmxRange": [192, 223],
           "type": "ColorWheelRotationSpeed",
-          "speed": ["fast CW", "slow CW"]
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [224, 255],
           "type": "ColorWheelRotationSpeed",
-          "speed": ["slow CCW", "fast CCW"]
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -674,7 +708,8 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Cyan",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Magenta": {
@@ -683,7 +718,8 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Magenta",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Yellow": {
@@ -692,7 +728,8 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Yellow",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Sparkle": {
@@ -706,7 +743,8 @@
           "dmxRange": [1, 255],
           "type": "Effect",
           "comment": "Sparkle",
-          "effectIntensity": ["off", "high"]
+          "effectIntensityStart": "off",
+          "effectIntensityEnd": "high"
         }
       ]
     },
@@ -716,13 +754,15 @@
           "dmxRange": [0, 31],
           "type": "EffectSpeed",
           "comment": "Faded",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [32, 63],
           "type": "EffectSpeed",
           "comment": "Switched",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [64, 255],
@@ -750,7 +790,8 @@
         {
           "dmxRange": [0, 191],
           "type": "PrismRotationAngle",
-          "angle": ["0°", "540°"]
+          "angleStart": "0°",
+          "angleEnd": "540°"
         },
         {
           "dmxRange": [192, 222],
@@ -775,7 +816,8 @@
         {
           "dmxRange": [0, 126],
           "type": "Frost",
-          "frostIntensity": ["off", "high"]
+          "frostIntensityStart": "off",
+          "frostIntensityEnd": "high"
         },
         {
           "dmxRange": [127, 127],
@@ -786,7 +828,8 @@
           "dmxRange": [128, 142],
           "type": "FrostEffect",
           "comment": "Periodic opening pulse",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [143, 143],
@@ -797,7 +840,8 @@
           "dmxRange": [144, 158],
           "type": "FrostEffect",
           "comment": "Periodic closing pulse",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [159, 159],
@@ -808,7 +852,8 @@
           "dmxRange": [160, 174],
           "type": "FrostEffect",
           "comment": "Periodic ramp in / snap out",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [175, 175],
@@ -819,7 +864,8 @@
           "dmxRange": [176, 190],
           "type": "FrostEffect",
           "comment": "Periodic snap in / ramp out",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [191, 191],
@@ -830,7 +876,8 @@
           "dmxRange": [192, 206],
           "type": "FrostEffect",
           "comment": "Random opening pulse",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [207, 207],
@@ -841,7 +888,8 @@
           "dmxRange": [208, 222],
           "type": "FrostEffect",
           "comment": "Random closing pulse",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [223, 223],
@@ -852,7 +900,8 @@
           "dmxRange": [224, 238],
           "type": "FrostEffect",
           "comment": "Random ramp in / snap out",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [239, 239],
@@ -863,7 +912,8 @@
           "dmxRange": [240, 254],
           "type": "FrostEffect",
           "comment": "Random snap in / ramp out",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [255, 255],
@@ -897,7 +947,8 @@
         {
           "dmxRange": [4, 255],
           "type": "PanTiltSpeed",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         }
       ]
     },
@@ -912,7 +963,8 @@
         {
           "dmxRange": [4, 255],
           "type": "EffectSpeed",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         }
       ]
     },

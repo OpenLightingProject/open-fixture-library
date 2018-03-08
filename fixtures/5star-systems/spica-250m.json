@@ -35,7 +35,8 @@
       "defaultValue": 32639,
       "capability": {
         "type": "Pan",
-        "angle": ["0°", "530°"]
+        "angleStart": "0°",
+        "angleEnd": "530°"
       }
     },
     "Tilt": {
@@ -43,7 +44,8 @@
       "defaultValue": 32639,
       "capability": {
         "type": "Tilt",
-        "angle": ["0°", "280°"]
+        "angleStart": "0°",
+        "angleEnd": "280°"
       }
     },
     "Pan/Tilt Speed": {
@@ -51,7 +53,8 @@
         {
           "dmxRange": [0, 249],
           "type": "PanTiltSpeed",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [250, 255],
@@ -68,7 +71,8 @@
           "dmxRange": [0, 127],
           "type": "Maintenance",
           "comment": "fan speed",
-          "parameter": ["100%", "0%"]
+          "parameterStart": "100%",
+          "parameterEnd": "0%"
         },
         {
           "dmxRange": [128, 139],
@@ -213,7 +217,8 @@
         {
           "dmxRange": [128, 189],
           "type": "ColorWheelRotationSpeed",
-          "speed": ["fast CW", "slow CW"]
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [190, 193],
@@ -223,7 +228,8 @@
         {
           "dmxRange": [194, 255],
           "type": "ColorWheelRotationSpeed",
-          "speed": ["slow CCW", "fast CCW"]
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -309,7 +315,8 @@
         {
           "dmxRange": [1, 126],
           "type": "PrismRotationSpeed",
-          "speed": ["fast CW", "slow CW"]
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [127, 128],
@@ -319,7 +326,8 @@
         {
           "dmxRange": [129, 255],
           "type": "PrismRotationSpeed",
-          "speed": ["slow CCW", "fast CCW"]
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -358,7 +366,8 @@
         {
           "dmxRange": [224, 255],
           "type": "GoboWheelRotationSpeed",
-          "speed": ["slow CW", "fast CW"]
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         }
       ]
     },
@@ -367,12 +376,14 @@
         {
           "dmxRange": [0, 127],
           "type": "GoboStencilRotationAngle",
-          "angle": ["0%", "100%"]
+          "angleStart": "0%",
+          "angleEnd": "100%"
         },
         {
           "dmxRange": [128, 190],
           "type": "GoboStencilRotationSpeed",
-          "speed": ["fast CW", "slow CW"]
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [191, 192],
@@ -382,14 +393,16 @@
         {
           "dmxRange": [193, 255],
           "type": "GoboStencilRotationSpeed",
-          "speed": ["slow CCW", "fast CCW"]
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
     "Focus": {
       "capability": {
         "type": "Focus",
-        "distance": ["far", "near"]
+        "distanceStart": "far",
+        "distanceEnd": "near"
       }
     },
     "Shutter / Strobe": {
@@ -408,7 +421,8 @@
           "dmxRange": [64, 95],
           "type": "ShutterStrobe",
           "effect": "Strobe",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [96, 127],
@@ -429,7 +443,8 @@
           "dmxRange": [192, 223],
           "type": "ShutterStrobe",
           "effect": "StrobeRandom",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [224, 255],
@@ -443,7 +458,8 @@
       "precedence": "HTP",
       "capability": {
         "type": "Intensity",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     }
   },

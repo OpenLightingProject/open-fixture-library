@@ -34,7 +34,8 @@
       "defaultValue": 32768,
       "capability": {
         "type": "Pan",
-        "angle": ["0°", "450°"]
+        "angleStart": "0°",
+        "angleEnd": "450°"
       }
     },
     "Tilt": {
@@ -42,7 +43,8 @@
       "defaultValue": 32768,
       "capability": {
         "type": "Tilt",
-        "angle": ["0°", "228°"]
+        "angleStart": "0°",
+        "angleEnd": "228°"
       }
     },
     "Pan/Tilt Speed": {
@@ -57,7 +59,8 @@
           "dmxRange": [1, 255],
           "type": "PanTiltSpeed",
           "comment": "Speed fast-slow / Time 0.1-25.5s",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         }
       ]
     },
@@ -552,13 +555,15 @@
           "dmxRange": [236, 245],
           "type": "Effect",
           "comment": "Color fade",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [246, 255],
           "type": "Effect",
           "comment": "Color jump",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
@@ -568,7 +573,8 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Red",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Green": {
@@ -577,7 +583,8 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Green",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Blue": {
@@ -586,7 +593,8 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "White": {
@@ -595,7 +603,8 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "White",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Cyan": {
@@ -604,7 +613,8 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Cyan",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Magenta": {
@@ -613,7 +623,8 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Magenta",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Yellow": {
@@ -622,14 +633,16 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Yellow",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "CTC": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorTemperature",
-        "colorTemperature": ["8000K", "2700K"]
+        "colorTemperatureStart": "8000K",
+        "colorTemperatureEnd": "2700K"
       }
     },
     "Color Mix Control": {
@@ -696,7 +709,8 @@
       "defaultValue": 32768,
       "capability": {
         "type": "Zoom",
-        "angle": ["60°", "3.8°"]
+        "angleStart": "60°",
+        "angleEnd": "3.8°"
       }
     },
     "Shutter / Strobe": {
@@ -716,7 +730,8 @@
           "dmxRange": [64, 95],
           "type": "ShutterStrobe",
           "effect": "Strobe",
-          "speed": ["0.3Hz", "20Hz"]
+          "speedStart": "0.3Hz",
+          "speedEnd": "20Hz"
         },
         {
           "dmxRange": [96, 127],
@@ -727,13 +742,15 @@
           "dmxRange": [128, 143],
           "type": "ShutterStrobe",
           "effect": "RampUp",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [144, 159],
           "type": "ShutterStrobe",
           "effect": "RampDown",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [160, 191],
@@ -744,7 +761,8 @@
           "dmxRange": [192, 223],
           "type": "ShutterStrobe",
           "effect": "StrobeRandom",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [224, 255],
@@ -758,7 +776,8 @@
       "defaultValue": 0,
       "capability": {
         "type": "Intensity",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     }
   },

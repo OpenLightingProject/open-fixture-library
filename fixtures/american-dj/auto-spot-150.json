@@ -31,14 +31,16 @@
       "defaultValue": 127,
       "capability": {
         "type": "Pan",
-        "angle": ["0°", "540°"]
+        "angleStart": "0°",
+        "angleEnd": "540°"
       }
     },
     "Tilt": {
       "defaultValue": 127,
       "capability": {
         "type": "Tilt",
-        "angle": ["0°", "270°"]
+        "angleStart": "0°",
+        "angleEnd": "270°"
       }
     },
     "Gobo": {
@@ -87,7 +89,8 @@
         {
           "dmxRange": [128, 255],
           "type": "GoboWheelRotationSpeed",
-          "speed": ["slow CW", "fast CW"]
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         }
       ]
     },
@@ -102,7 +105,8 @@
         {
           "dmxRange": [10, 120],
           "type": "GoboStencilRotationSpeed",
-          "speed": ["fast CW", "slow CW"]
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [121, 134],
@@ -112,7 +116,8 @@
         {
           "dmxRange": [135, 245],
           "type": "GoboStencilRotationSpeed",
-          "speed": ["slow CCW", "fast CCW"]
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         },
         {
           "dmxRange": [246, 255],
@@ -241,7 +246,8 @@
         {
           "dmxRange": [128, 255],
           "type": "ColorWheelRotationSpeed",
-          "speed": ["slow CW", "fast CW"]
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         }
       ]
     },
@@ -256,13 +262,15 @@
         {
           "dmxRange": [5, 131],
           "type": "Intensity",
-          "brightness": ["off", "bright"]
+          "brightnessStart": "off",
+          "brightnessEnd": "bright"
         },
         {
           "dmxRange": [132, 252],
           "type": "ShutterStrobe",
           "effect": "Strobe",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [253, 255],
@@ -337,7 +345,8 @@
         {
           "dmxRange": [128, 255],
           "type": "ColorWheelRotationSpeed",
-          "speed": ["slow CW", "fast CW"]
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         }
       ]
     }

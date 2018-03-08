@@ -38,7 +38,8 @@
     "Master Dimmer": {
       "capability": {
         "type": "Intensity",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Strobe": {
@@ -53,7 +54,8 @@
           "dmxRange": [11, 255],
           "type": "ShutterStrobe",
           "effect": "Strobe",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
@@ -214,7 +216,8 @@
     "Sound sensitivity": {
       "capability": {
         "type": "SoundSensitivity",
-        "sensitivity": ["low", "high"]
+        "sensitivityStart": "low",
+        "sensitivityEnd": "high"
       }
     },
     "Light control": {
@@ -326,42 +329,48 @@
       "fineChannelAliases": ["Master Pan fine"],
       "capability": {
         "type": "Pan",
-        "angle": ["0°", "540°"]
+        "angleStart": "0°",
+        "angleEnd": "540°"
       }
     },
     "Master Tilt": {
       "fineChannelAliases": ["Master Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angle": ["0°", "270°"]
+        "angleStart": "0°",
+        "angleEnd": "270°"
       }
     },
     "Master Red": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Master Green": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Master Blue": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Master White": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Head speed": {
@@ -380,7 +389,8 @@
         {
           "dmxRange": [11, 255],
           "type": "PanTiltSpeed",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
@@ -412,20 +422,23 @@
       "fineChannelAliases": ["Pan $pixelKey fine"],
       "capability": {
         "type": "Pan",
-        "angle": ["0°", "540°"]
+        "angleStart": "0°",
+        "angleEnd": "540°"
       }
     },
     "Tilt $pixelKey": {
       "fineChannelAliases": ["Tilt $pixelKey fine"],
       "capability": {
         "type": "Tilt",
-        "angle": ["0°", "270°"]
+        "angleStart": "0°",
+        "angleEnd": "270°"
       }
     },
     "Dimmer $pixelKey": {
       "capability": {
         "type": "Intensity",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Head Speed $pixelKey simple": {
@@ -445,7 +458,8 @@
         {
           "dmxRange": [11, 255],
           "type": "PanTiltSpeed",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         }
       ]
     },
@@ -461,7 +475,8 @@
           "dmxRange": [11, 255],
           "type": "ShutterStrobe",
           "effect": "Strobe",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
@@ -568,28 +583,32 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Red",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Green $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Blue $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "White $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Mode $pixelKey": {
@@ -675,7 +694,8 @@
     "Sound sensitivity $pixelKey": {
       "capability": {
         "type": "Intensity",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     }
   },

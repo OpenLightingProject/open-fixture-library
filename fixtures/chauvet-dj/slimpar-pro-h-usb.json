@@ -26,49 +26,56 @@
     "Dimmer": {
       "capability": {
         "type": "Intensity",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Red": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Green": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Blue": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Amber": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Amber",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "White": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "UV": {
       "capability": {
         "type": "ColorIntensity",
         "color": "UV",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Strobe": {
@@ -81,7 +88,8 @@
           "dmxRange": [16, 255],
           "type": "ShutterStrobe",
           "effect": "Strobe",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
@@ -189,7 +197,8 @@
         {
           "dmxRange": [11, 255],
           "type": "SoundSensitivity",
-          "sensitivity": ["low", "high"]
+          "sensitivityStart": "low",
+          "sensitivityEnd": "high"
         }
       ]
     },

@@ -29,14 +29,16 @@
       "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
-        "angle": ["0°", "540°"]
+        "angleStart": "0°",
+        "angleEnd": "540°"
       }
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angle": ["0°", "320°"]
+        "angleStart": "0°",
+        "angleEnd": "320°"
       }
     },
     "Movement Speed": {
@@ -55,13 +57,15 @@
           "dmxRange": [26, 127],
           "type": "PanTiltSpeed",
           "comment": "Vector mode",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [128, 247],
           "type": "PanTiltSpeed",
           "comment": "Reaction time to DMX signal",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [248, 255],
@@ -81,7 +85,8 @@
         {
           "dmxRange": [9, 255],
           "type": "Intensity",
-          "brightness": ["off", "bright"]
+          "brightnessStart": "off",
+          "brightnessEnd": "bright"
         }
       ]
     },
@@ -307,7 +312,8 @@
         {
           "dmxRange": [198, 224],
           "type": "ColorWheelRotationSpeed",
-          "speed": ["fast CW", "slow CW"]
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [225, 228],
@@ -317,7 +323,8 @@
         {
           "dmxRange": [229, 255],
           "type": "ColorWheelRotationSpeed",
-          "speed": ["slow CCW", "fast CCW"]
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -325,21 +332,24 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Cyan",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Magenta": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Magenta",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Yellow": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Yellow",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Speed CMY / Dimmer": {
@@ -351,7 +361,8 @@
         {
           "dmxRange": [8, 255],
           "type": "Speed",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         }
       ]
     },
@@ -610,7 +621,8 @@
     "Zoom": {
       "capability": {
         "type": "Zoom",
-        "angle": ["0%", "100%"]
+        "angleStart": "0%",
+        "angleEnd": "100%"
       }
     },
     "Lamp / Reset": {

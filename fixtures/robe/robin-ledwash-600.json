@@ -61,7 +61,8 @@
       "defaultValue": 32767,
       "capability": {
         "type": "Pan",
-        "angle": ["0°", "450°"]
+        "angleStart": "0°",
+        "angleEnd": "450°"
       }
     },
     "Tilt": {
@@ -69,7 +70,8 @@
       "defaultValue": 32767,
       "capability": {
         "type": "Tilt",
-        "angle": ["0°", "300°"]
+        "angleStart": "0°",
+        "angleEnd": "300°"
       }
     },
     "Pan/Tilt Speed": {
@@ -181,7 +183,8 @@
           "dmxRange": [241, 255],
           "type": "Maintenance",
           "comment": "\"Silent mode of fans\":fans noise from min. to max.",
-          "parameter": ["low", "high"],
+          "parameterStart": "low",
+          "parameterEnd": "high",
           "hold": "3s"
         }
       ]
@@ -197,7 +200,8 @@
           "dmxRange": [1, 255],
           "type": "ColorTemperature",
           "comment": "15500-2700K or 20000-2700K (with color calibration off)",
-          "colorTemperature": ["15500K", "2700K"]
+          "colorTemperatureStart": "15500K",
+          "colorTemperatureEnd": "2700K"
         }
       ]
     },
@@ -380,7 +384,8 @@
       "fineChannelAliases": ["Zoom fine"],
       "capability": {
         "type": "Zoom",
-        "angle": ["15°", "63°"]
+        "angleStart": "15°",
+        "angleEnd": "63°"
       }
     },
     "Shutter / Strobe": {
@@ -396,57 +401,66 @@
           "type": "ShutterStrobe",
           "comment": "Outer zone",
           "effect": "Strobe",
-          "speed": ["0.3Hz", "20Hz"]
+          "speedStart": "0.3Hz",
+          "speedEnd": "20Hz"
         },
         {
           "dmxRange": [64, 95],
           "type": "ShutterStrobe",
           "effect": "Strobe",
-          "speed": ["0.3Hz", "20Hz"]
+          "speedStart": "0.3Hz",
+          "speedEnd": "20Hz"
         },
         {
           "dmxRange": [96, 111],
           "type": "EffectSpeed",
           "comment": "Color effect speed",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [112, 127],
           "type": "EffectSpeed",
           "comment": "Color effect speed",
-          "speed": ["fast reverse", "slow reverse"]
+          "speedStart": "fast reverse",
+          "speedEnd": "slow reverse"
         },
         {
           "dmxRange": [128, 143],
           "type": "ShutterStrobe",
           "effect": "RampUp",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [144, 159],
           "type": "ShutterStrobe",
           "effect": "RampDown",
-          "speed": ["fast", "slow"]
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [160, 175],
           "type": "ShutterStrobe",
           "comment": "Random zone",
           "effect": "Strobe",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [176, 191],
           "type": "ShutterStrobe",
           "comment": "Random zone",
           "effect": "StrobeRandom",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [192, 223],
           "type": "ShutterStrobe",
           "effect": "StrobeRandom",
-          "speed": ["slow", "fast"]
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [224, 255],
@@ -460,7 +474,8 @@
       "defaultValue": 0,
       "capability": {
         "type": "Intensity",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     }
   },
@@ -471,7 +486,8 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Red",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Green $pixelKey": {
@@ -480,7 +496,8 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Green",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "Blue $pixelKey": {
@@ -489,7 +506,8 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
     "White $pixelKey": {
@@ -498,7 +516,8 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "White",
-        "brightness": ["off", "bright"]
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     }
   },
