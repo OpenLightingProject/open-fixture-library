@@ -71,6 +71,7 @@
 .capabilities-table {
   border-collapse: collapse;
   table-layout: fixed;
+  width: 100%;
 }
 
 th {
@@ -112,27 +113,6 @@ td, th {
   & > .switching-channel-key {
     color: $secondary-text-dark;
   }
-}
-
-
-/* .computed is for capability wizard */
-/* TODO: refactor that */
-
-.capabilities-table:not(.computed) {
-  width: 100%;
-}
-
-.capabilities-table.computed .capability-name {
-  max-width: 20em;
-}
-
-.inherited,
-.inherited code {
-  color: $disabled-text-dark;
-}
-.computed,
-.computed code {
-  color: $primary-text-dark;
 }
 </style>
 

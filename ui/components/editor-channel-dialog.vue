@@ -155,11 +155,21 @@
           </select>
         </app-simple-label>
 
-        <!-- <section><button class="secondary" @click.prevent="channel.wizard.show = !channel.wizard.show">${svg.getSvg(`capability-wizard`)} {{ channel.wizard.show ? 'Close' : 'Open' }} Capability Wizard</button>
+        <section>
+          <a href="#wizard" class="button secondary" @click.prevent="channel.wizard.show = !channel.wizard.show">
+            <app-svg name="capability-wizard" />
+            {{ channel.wizard.show ? 'Close' : 'Open' }} Capability Wizard
+          </a>
+        </section>
 
-        <capability-wizard v-if="channel.wizard.show" :wizard="channel.wizard" :capabilities="channel.capabilities" :fineness="Math.min(channel.fineness, channel.capFineness)" @close="channel.wizard.show = false"></capability-wizard> -->
+        <app-capability-wizard
+          v-if="channel.wizard.show"
+          :wizard="channel.wizard"
+          :capabilities="channel.capabilities"
+          :fineness="Math.min(channel.fineness, channel.capFineness)"
+          @close="channel.wizard.show = false" />
 
-        <ul class="capability-editor"><!-- v-else -->
+        <ul v-else class="capability-editor">
           <app-editor-capability
             v-for="(cap, index) in channel.capabilities"
             :key="cap.uuid"
@@ -202,19 +212,23 @@ import {
 
 import a11yDialogVue from '~/components/a11y-dialog.vue';
 import editorCapabilityVue from '~/components/editor-capability.vue';
+import editorCapabilityWizardVue from '~/components/editor-capability-wizard.vue';
 import simpleLabelVue from '~/components/simple-label.vue';
 import propertyInputBooleanVue from '~/components/property-input-boolean.vue';
 import propertyInputSelectVue from '~/components/property-input-select.vue';
 import propertyInputTextVue from '~/components/property-input-text.vue';
+import svgVue from '~/components/svg.vue';
 
 export default {
   components: {
     'app-a11y-dialog': a11yDialogVue,
+    'app-capability-wizard': editorCapabilityWizardVue,
     'app-editor-capability': editorCapabilityVue,
     'app-simple-label': simpleLabelVue,
     'app-property-input-boolean': propertyInputBooleanVue,
     'app-property-input-select': propertyInputSelectVue,
-    'app-property-input-text': propertyInputTextVue
+    'app-property-input-text': propertyInputTextVue,
+    'app-svg': svgVue
   },
   model: {
     prop: `channel`
