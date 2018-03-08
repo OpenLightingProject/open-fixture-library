@@ -11,10 +11,10 @@
           Open Fixture Library
         </nuxt-link>
 
-        <form action="/search">
+        <form action="/search" @submit.prevent="search">
           <div>
             <input
-              :value="searchQuery"
+              v-model="searchQuery"
               type="search"
               name="q"
               placeholder="Search fixtures"
@@ -225,12 +225,11 @@ export default {
   },
   data() {
     return {
-      searchQuery: ``
+      searchQuery: this.$router.history.current.query.q || ``
     };
   },
   mounted() {
     this.$router.afterEach(() => this.updateSearchQuery());
-    this.updateSearchQuery();
   },
   methods: {
     updateSearchQuery() {
@@ -238,6 +237,14 @@ export default {
     },
     focusContent() {
       this.$emit(`focus-content`);
+    },
+    search() {
+      this.$router.push({
+        path: `/search`,
+        query: {
+          q: this.searchQuery
+        }
+      });
     }
   }
 };

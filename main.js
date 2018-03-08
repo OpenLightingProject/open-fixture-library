@@ -94,6 +94,10 @@ app.post(`/ajax/add-fixtures`, (request, response) => {
   require(`./ui/ajax/add-fixtures.js`)(request, response);
 });
 
+app.post(`/ajax/get-search-results`, (request, response) => {
+  require(`./ui/ajax/get-search-results.js`)(request, response);
+});
+
 
 
 // instantiate nuxt.js with the options
