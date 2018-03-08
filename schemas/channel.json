@@ -2,6 +2,8 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/channel.json",
 
+  "$comment": "This file is used by another schema file and should not be used directly as a JSON schema.",
+
   "type": "object",
   "properties": {
     "name": {
