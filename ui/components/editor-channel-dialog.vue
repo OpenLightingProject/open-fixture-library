@@ -162,7 +162,7 @@
           </a>
         </section>
 
-        <app-capability-wizard
+        <app-editor-capability-wizard
           v-if="channel.wizard.show"
           :wizard="channel.wizard"
           :capabilities="channel.capabilities"
@@ -222,8 +222,8 @@ import svgVue from '~/components/svg.vue';
 export default {
   components: {
     'app-a11y-dialog': a11yDialogVue,
-    'app-capability-wizard': editorCapabilityWizardVue,
     'app-editor-capability': editorCapabilityVue,
+    'app-editor-capability-wizard': editorCapabilityWizardVue,
     'app-simple-label': simpleLabelVue,
     'app-property-input-boolean': propertyInputBooleanVue,
     'app-property-input-select': propertyInputSelectVue,

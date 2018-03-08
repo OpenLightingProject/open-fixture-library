@@ -202,16 +202,9 @@
             name="github-username" />
         </app-simple-label>
 
-        <app-simple-label
-          :formstate="formstate"
-          hidden
-          name="honeypot"
-          label="Ignore this!">
-          <app-property-input-text
-            v-model="honeypot"
-            :schema-property="properties.definitions.nonEmptyString"
-            name="honeypot"
-            hint="Spammers are likely to fill this field. Leave it empty to show that you're a human." />
+        <app-simple-label hidden name="honeypot" label="Ignore this!">
+          <input v-model="honeypot" type="text">
+          <div class="hint">Spammers are likely to fill this field. Leave it empty to show that you're a human.</div>
         </app-simple-label>
       </section>
 
@@ -231,6 +224,8 @@
     <app-editor-choose-channel-edit-mode-dialog
       :channel="channel"
       :fixture="fixture" />
+
+    <app-editor-submit-dialog :submit="submit" @reset="reset" />
   </div>
 </template>
 
@@ -246,7 +241,8 @@ import scrollIntoView from 'scroll-into-view';
 import {
   getEmptyFixture,
   getEmptyChannel,
-  getEmptyMode
+  getEmptyMode,
+  clone
 } from '~/assets/scripts/editor-utils.mjs';
 
 import manufacturers from '~~/fixtures/manufacturers.json';
@@ -263,6 +259,7 @@ import editorPhysicalVue from '~/components/editor-physical.vue';
 import editorModeVue from '~/components/editor-mode.vue';
 import editorChannelDialogVue from '~/components/editor-channel-dialog.vue';
 import editorChooseChannelEditModeDialogVue from '~/components/editor-choose-channel-edit-mode-dialog.vue';
+import editorSubmitDialogVue from '~/components/editor-submit-dialog.vue';
 
 export default {
   components: {
@@ -276,7 +273,8 @@ export default {
     'app-editor-physical': editorPhysicalVue,
     'app-mode': editorModeVue,
     'app-editor-channel-dialog': editorChannelDialogVue,
-    'app-editor-choose-channel-edit-mode-dialog': editorChooseChannelEditModeDialogVue
+    'app-editor-choose-channel-edit-mode-dialog': editorChooseChannelEditModeDialogVue,
+    'app-editor-submit-dialog': editorSubmitDialogVue
   },
   head() {
     return {
@@ -300,6 +298,11 @@ export default {
       fixture: initFixture,
       channel: getEmptyChannel(),
       honeypot: ``,
+      submit: {
+        state: `closed`,
+        pullRequestUrl: ``,
+        rawData: ``
+      },
       manufacturers,
       properties: schemaProperties
     };
@@ -420,7 +423,7 @@ export default {
       // ]));
     },
 
-    onSubmit() {
+    async onSubmit() {
       if (this.formstate.$invalid) {
         const firstErrorName = Object.keys(this.formstate.$error)[0];
         const field = document.querySelector(`[name=${firstErrorName}]`);
@@ -438,7 +441,50 @@ export default {
         return;
       }
 
-      console.log(`submit`, this.fixture);
+      if (this.honeypot !== ``) {
+        alert(`Do not fill the "Ignore" fields!`);
+        return;
+      }
+
+      const sendObject = {
+        fixtures: [this.fixture]
+      };
+
+      console.log(`submit`, clone(sendObject));
+
+      // eslint-disable-next-line quotes, prefer-template
+      this.submit.rawData = '```json\n' + JSON.stringify(sendObject, null, 2) + '\n```';
+      this.submit.state = `loading`;
+
+      try {
+        const response = await this.$axios.post(`/ajax/add-fixtures`, sendObject);
+
+        if (response.data.error) {
+          throw new Error(response.data.error);
+        }
+
+        this.submit.pullRequestUrl = response.data.pullRequestUrl;
+        this.submit.state = `success`;
+        // TODO: this.clearAutoSave();
+      }
+      catch (error) {
+        console.error(`There was a problem with the request.`, error);
+
+        this.submit.rawData += `\n\n${error.message}`;
+        this.submit.state = `error`;
+      }
+    },
+
+    reset() {
+      this.fixture = getEmptyFixture();
+      this.channel = getEmptyChannel();
+      this.honeypot = ``;
+      this.submit = {
+        state: `closed`,
+        pullRequestUrl: ``,
+        rawData: ``
+      };
+      this.$nextTick(() => this.formstate._reset());
     }
   }
 };
