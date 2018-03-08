@@ -28,8 +28,6 @@ To make common percentage values more readable, one can use specific keywords to
 Required properties are _italic_, the entity is written in (parentheses).
 
 * Nothing
-* ShutterOpen
-* ShutterClosed
 * ShutterStrobe
   * _effect_: one of `Open`, `Closed`, `Strobe`, `StrobeRandom`, `Pulse`, `PulseRandom`, `RampUp`, `RampUpRandom`, `RampDown`, `RampDownRandom`
   * speed (Speed) (can't be used together with time)
