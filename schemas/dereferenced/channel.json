@@ -370,8 +370,18 @@
                   ]
                 }
               },
-              "required": [
-                "speed"
+              "oneOf": [
+                {
+                  "required": [
+                    "speed"
+                  ]
+                },
+                {
+                  "required": [
+                    "speedStart",
+                    "speedEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -456,8 +466,18 @@
                   ]
                 }
               },
-              "required": [
-                "time"
+              "oneOf": [
+                {
+                  "required": [
+                    "duration"
+                  ]
+                },
+                {
+                  "required": [
+                    "durationStart",
+                    "durationEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -530,8 +550,18 @@
                   ]
                 }
               },
-              "required": [
-                "brightness"
+              "oneOf": [
+                {
+                  "required": [
+                    "brightness"
+                  ]
+                },
+                {
+                  "required": [
+                    "brightnessStart",
+                    "brightnessEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -620,8 +650,20 @@
                 }
               },
               "required": [
-                "color",
-                "brightness"
+                "color"
+              ],
+              "oneOf": [
+                {
+                  "required": [
+                    "brightness"
+                  ]
+                },
+                {
+                  "required": [
+                    "brightnessStart",
+                    "brightnessEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -750,10 +792,28 @@
                 "index": {
                   "type": "number",
                   "minimum": 0
+                },
+                "indexStart": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "indexEnd": {
+                  "type": "number",
+                  "minimum": 0
                 }
               },
-              "required": [
-                "index"
+              "oneOf": [
+                {
+                  "required": [
+                    "index"
+                  ]
+                },
+                {
+                  "required": [
+                    "indexStart",
+                    "indexEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -805,8 +865,18 @@
                   ]
                 }
               },
-              "required": [
-                "angle"
+              "oneOf": [
+                {
+                  "required": [
+                    "angle"
+                  ]
+                },
+                {
+                  "required": [
+                    "angleStart",
+                    "angleEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -885,8 +955,18 @@
                   ]
                 }
               },
-              "required": [
-                "speed"
+              "oneOf": [
+                {
+                  "required": [
+                    "speed"
+                  ]
+                },
+                {
+                  "required": [
+                    "speedStart",
+                    "speedEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -959,8 +1039,18 @@
                   ]
                 }
               },
-              "required": [
-                "colorTemperature"
+              "oneOf": [
+                {
+                  "required": [
+                    "colorTemperature"
+                  ]
+                },
+                {
+                  "required": [
+                    "colorTemperatureStart",
+                    "colorTemperatureEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -1012,8 +1102,18 @@
                   ]
                 }
               },
-              "required": [
-                "angle"
+              "oneOf": [
+                {
+                  "required": [
+                    "angle"
+                  ]
+                },
+                {
+                  "required": [
+                    "angleStart",
+                    "angleEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -1092,8 +1192,18 @@
                   ]
                 }
               },
-              "required": [
-                "speed"
+              "oneOf": [
+                {
+                  "required": [
+                    "speed"
+                  ]
+                },
+                {
+                  "required": [
+                    "speedStart",
+                    "speedEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -1145,8 +1255,18 @@
                   ]
                 }
               },
-              "required": [
-                "angle"
+              "oneOf": [
+                {
+                  "required": [
+                    "angle"
+                  ]
+                },
+                {
+                  "required": [
+                    "angleStart",
+                    "angleEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -1225,8 +1345,18 @@
                   ]
                 }
               },
-              "required": [
-                "speed"
+              "oneOf": [
+                {
+                  "required": [
+                    "speed"
+                  ]
+                },
+                {
+                  "required": [
+                    "speedStart",
+                    "speedEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -1305,8 +1435,18 @@
                   ]
                 }
               },
-              "required": [
-                "speed"
+              "oneOf": [
+                {
+                  "required": [
+                    "speed"
+                  ]
+                },
+                {
+                  "required": [
+                    "speedStart",
+                    "speedEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -1513,8 +1653,18 @@
                   ]
                 }
               },
-              "required": [
-                "effectIntensity"
+              "oneOf": [
+                {
+                  "required": [
+                    "effectIntensity"
+                  ]
+                },
+                {
+                  "required": [
+                    "effectIntensityStart",
+                    "effectIntensityEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -1593,8 +1743,18 @@
                   ]
                 }
               },
-              "required": [
-                "speed"
+              "oneOf": [
+                {
+                  "required": [
+                    "speed"
+                  ]
+                },
+                {
+                  "required": [
+                    "speedStart",
+                    "speedEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -1655,8 +1815,18 @@
                   ]
                 }
               },
-              "required": [
-                "sensitivity"
+              "oneOf": [
+                {
+                  "required": [
+                    "sensitivity"
+                  ]
+                },
+                {
+                  "required": [
+                    "sensitivityStart",
+                    "sensitivityEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -1674,10 +1844,28 @@
                 "index": {
                   "type": "number",
                   "minimum": 0
+                },
+                "indexStart": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "indexEnd": {
+                  "type": "number",
+                  "minimum": 0
                 }
               },
-              "required": [
-                "index"
+              "oneOf": [
+                {
+                  "required": [
+                    "index"
+                  ]
+                },
+                {
+                  "required": [
+                    "indexStart",
+                    "indexEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -1693,6 +1881,14 @@
                 "menuClick": {},
                 "switchChannels": {},
                 "index": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "indexStart": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "indexEnd": {
                   "type": "number",
                   "minimum": 0
                 },
@@ -1760,8 +1956,18 @@
                   ]
                 }
               },
-              "required": [
-                "index"
+              "oneOf": [
+                {
+                  "required": [
+                    "index"
+                  ]
+                },
+                {
+                  "required": [
+                    "indexStart",
+                    "indexEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -1813,8 +2019,18 @@
                   ]
                 }
               },
-              "required": [
-                "angle"
+              "oneOf": [
+                {
+                  "required": [
+                    "angle"
+                  ]
+                },
+                {
+                  "required": [
+                    "angleStart",
+                    "angleEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -1893,8 +2109,18 @@
                   ]
                 }
               },
-              "required": [
-                "speed"
+              "oneOf": [
+                {
+                  "required": [
+                    "speed"
+                  ]
+                },
+                {
+                  "required": [
+                    "speedStart",
+                    "speedEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -1946,8 +2172,18 @@
                   ]
                 }
               },
-              "required": [
-                "angle"
+              "oneOf": [
+                {
+                  "required": [
+                    "angle"
+                  ]
+                },
+                {
+                  "required": [
+                    "angleStart",
+                    "angleEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -2026,8 +2262,18 @@
                   ]
                 }
               },
-              "required": [
-                "speed"
+              "oneOf": [
+                {
+                  "required": [
+                    "speed"
+                  ]
+                },
+                {
+                  "required": [
+                    "speedStart",
+                    "speedEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -2097,8 +2343,18 @@
                   ]
                 }
               },
-              "required": [
-                "distance"
+              "oneOf": [
+                {
+                  "required": [
+                    "distance"
+                  ]
+                },
+                {
+                  "required": [
+                    "distanceStart",
+                    "distanceEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -2171,8 +2427,18 @@
                   ]
                 }
               },
-              "required": [
-                "angle"
+              "oneOf": [
+                {
+                  "required": [
+                    "angle"
+                  ]
+                },
+                {
+                  "required": [
+                    "angleStart",
+                    "angleEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -2230,8 +2496,18 @@
                   ]
                 }
               },
-              "required": [
-                "openPercent"
+              "oneOf": [
+                {
+                  "required": [
+                    "openPercent"
+                  ]
+                },
+                {
+                  "required": [
+                    "openPercentStart",
+                    "openPercentEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -2310,8 +2586,18 @@
                   ]
                 }
               },
-              "required": [
-                "speed"
+              "oneOf": [
+                {
+                  "required": [
+                    "speed"
+                  ]
+                },
+                {
+                  "required": [
+                    "speedStart",
+                    "speedEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -2372,8 +2658,18 @@
                   ]
                 }
               },
-              "required": [
-                "frostIntensity"
+              "oneOf": [
+                {
+                  "required": [
+                    "frostIntensity"
+                  ]
+                },
+                {
+                  "required": [
+                    "frostIntensityStart",
+                    "frostIntensityEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -2452,8 +2748,18 @@
                   ]
                 }
               },
-              "required": [
-                "speed"
+              "oneOf": [
+                {
+                  "required": [
+                    "speed"
+                  ]
+                },
+                {
+                  "required": [
+                    "speedStart",
+                    "speedEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -2632,8 +2938,18 @@
                   ]
                 }
               },
-              "required": [
-                "angle"
+              "oneOf": [
+                {
+                  "required": [
+                    "angle"
+                  ]
+                },
+                {
+                  "required": [
+                    "angleStart",
+                    "angleEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -2712,8 +3028,18 @@
                   ]
                 }
               },
-              "required": [
-                "speed"
+              "oneOf": [
+                {
+                  "required": [
+                    "speed"
+                  ]
+                },
+                {
+                  "required": [
+                    "speedStart",
+                    "speedEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -2788,8 +3114,20 @@
                   ]
                 }
               },
+              "oneOf": [
+                {
+                  "required": [
+                    "insertion"
+                  ]
+                },
+                {
+                  "required": [
+                    "insertionStart",
+                    "insertionEnd"
+                  ]
+                }
+              ],
               "required": [
-                "insertion",
                 "blade"
               ],
               "additionalProperties": false
@@ -2859,8 +3197,20 @@
                   ]
                 }
               },
+              "oneOf": [
+                {
+                  "required": [
+                    "angle"
+                  ]
+                },
+                {
+                  "required": [
+                    "angleStart",
+                    "angleEnd"
+                  ]
+                }
+              ],
               "required": [
-                "angle",
                 "blade"
               ],
               "additionalProperties": false
@@ -2913,8 +3263,18 @@
                   ]
                 }
               },
-              "required": [
-                "angle"
+              "oneOf": [
+                {
+                  "required": [
+                    "angle"
+                  ]
+                },
+                {
+                  "required": [
+                    "angleStart",
+                    "angleEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -3078,8 +3438,18 @@
                   ]
                 }
               },
-              "required": [
-                "fogOutput"
+              "oneOf": [
+                {
+                  "required": [
+                    "fogOutput"
+                  ]
+                },
+                {
+                  "required": [
+                    "fogOutputStart",
+                    "fogOutputEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -3154,8 +3524,18 @@
                   ]
                 }
               },
-              "required": [
-                "angle"
+              "oneOf": [
+                {
+                  "required": [
+                    "angle"
+                  ]
+                },
+                {
+                  "required": [
+                    "angleStart",
+                    "angleEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -3234,8 +3614,18 @@
                   ]
                 }
               },
-              "required": [
-                "speed"
+              "oneOf": [
+                {
+                  "required": [
+                    "speed"
+                  ]
+                },
+                {
+                  "required": [
+                    "speedStart",
+                    "speedEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -3314,8 +3704,18 @@
                   ]
                 }
               },
-              "required": [
-                "speed"
+              "oneOf": [
+                {
+                  "required": [
+                    "speed"
+                  ]
+                },
+                {
+                  "required": [
+                    "speedStart",
+                    "speedEnd"
+                  ]
+                }
               ],
               "additionalProperties": false
             },
@@ -3764,8 +4164,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "speed"
+                "oneOf": [
+                  {
+                    "required": [
+                      "speed"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "speedStart",
+                      "speedEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -3850,8 +4260,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "time"
+                "oneOf": [
+                  {
+                    "required": [
+                      "duration"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "durationStart",
+                      "durationEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -3924,8 +4344,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "brightness"
+                "oneOf": [
+                  {
+                    "required": [
+                      "brightness"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "brightnessStart",
+                      "brightnessEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -4014,8 +4444,20 @@
                   }
                 },
                 "required": [
-                  "color",
-                  "brightness"
+                  "color"
+                ],
+                "oneOf": [
+                  {
+                    "required": [
+                      "brightness"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "brightnessStart",
+                      "brightnessEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -4144,10 +4586,28 @@
                   "index": {
                     "type": "number",
                     "minimum": 0
+                  },
+                  "indexStart": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "indexEnd": {
+                    "type": "number",
+                    "minimum": 0
                   }
                 },
-                "required": [
-                  "index"
+                "oneOf": [
+                  {
+                    "required": [
+                      "index"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "indexStart",
+                      "indexEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -4199,8 +4659,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "angle"
+                "oneOf": [
+                  {
+                    "required": [
+                      "angle"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "angleStart",
+                      "angleEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -4279,8 +4749,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "speed"
+                "oneOf": [
+                  {
+                    "required": [
+                      "speed"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "speedStart",
+                      "speedEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -4353,8 +4833,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "colorTemperature"
+                "oneOf": [
+                  {
+                    "required": [
+                      "colorTemperature"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "colorTemperatureStart",
+                      "colorTemperatureEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -4406,8 +4896,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "angle"
+                "oneOf": [
+                  {
+                    "required": [
+                      "angle"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "angleStart",
+                      "angleEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -4486,8 +4986,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "speed"
+                "oneOf": [
+                  {
+                    "required": [
+                      "speed"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "speedStart",
+                      "speedEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -4539,8 +5049,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "angle"
+                "oneOf": [
+                  {
+                    "required": [
+                      "angle"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "angleStart",
+                      "angleEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -4619,8 +5139,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "speed"
+                "oneOf": [
+                  {
+                    "required": [
+                      "speed"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "speedStart",
+                      "speedEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -4699,8 +5229,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "speed"
+                "oneOf": [
+                  {
+                    "required": [
+                      "speed"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "speedStart",
+                      "speedEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -4907,8 +5447,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "effectIntensity"
+                "oneOf": [
+                  {
+                    "required": [
+                      "effectIntensity"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "effectIntensityStart",
+                      "effectIntensityEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -4987,8 +5537,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "speed"
+                "oneOf": [
+                  {
+                    "required": [
+                      "speed"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "speedStart",
+                      "speedEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -5049,8 +5609,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "sensitivity"
+                "oneOf": [
+                  {
+                    "required": [
+                      "sensitivity"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "sensitivityStart",
+                      "sensitivityEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -5068,10 +5638,28 @@
                   "index": {
                     "type": "number",
                     "minimum": 0
+                  },
+                  "indexStart": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "indexEnd": {
+                    "type": "number",
+                    "minimum": 0
                   }
                 },
-                "required": [
-                  "index"
+                "oneOf": [
+                  {
+                    "required": [
+                      "index"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "indexStart",
+                      "indexEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -5087,6 +5675,14 @@
                   "menuClick": {},
                   "switchChannels": {},
                   "index": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "indexStart": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "indexEnd": {
                     "type": "number",
                     "minimum": 0
                   },
@@ -5154,8 +5750,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "index"
+                "oneOf": [
+                  {
+                    "required": [
+                      "index"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "indexStart",
+                      "indexEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -5207,8 +5813,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "angle"
+                "oneOf": [
+                  {
+                    "required": [
+                      "angle"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "angleStart",
+                      "angleEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -5287,8 +5903,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "speed"
+                "oneOf": [
+                  {
+                    "required": [
+                      "speed"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "speedStart",
+                      "speedEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -5340,8 +5966,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "angle"
+                "oneOf": [
+                  {
+                    "required": [
+                      "angle"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "angleStart",
+                      "angleEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -5420,8 +6056,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "speed"
+                "oneOf": [
+                  {
+                    "required": [
+                      "speed"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "speedStart",
+                      "speedEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -5491,8 +6137,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "distance"
+                "oneOf": [
+                  {
+                    "required": [
+                      "distance"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "distanceStart",
+                      "distanceEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -5565,8 +6221,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "angle"
+                "oneOf": [
+                  {
+                    "required": [
+                      "angle"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "angleStart",
+                      "angleEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -5624,8 +6290,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "openPercent"
+                "oneOf": [
+                  {
+                    "required": [
+                      "openPercent"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "openPercentStart",
+                      "openPercentEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -5704,8 +6380,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "speed"
+                "oneOf": [
+                  {
+                    "required": [
+                      "speed"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "speedStart",
+                      "speedEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -5766,8 +6452,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "frostIntensity"
+                "oneOf": [
+                  {
+                    "required": [
+                      "frostIntensity"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "frostIntensityStart",
+                      "frostIntensityEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -5846,8 +6542,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "speed"
+                "oneOf": [
+                  {
+                    "required": [
+                      "speed"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "speedStart",
+                      "speedEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -6026,8 +6732,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "angle"
+                "oneOf": [
+                  {
+                    "required": [
+                      "angle"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "angleStart",
+                      "angleEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -6106,8 +6822,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "speed"
+                "oneOf": [
+                  {
+                    "required": [
+                      "speed"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "speedStart",
+                      "speedEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -6182,8 +6908,20 @@
                     ]
                   }
                 },
+                "oneOf": [
+                  {
+                    "required": [
+                      "insertion"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "insertionStart",
+                      "insertionEnd"
+                    ]
+                  }
+                ],
                 "required": [
-                  "insertion",
                   "blade"
                 ],
                 "additionalProperties": false
@@ -6253,8 +6991,20 @@
                     ]
                   }
                 },
+                "oneOf": [
+                  {
+                    "required": [
+                      "angle"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "angleStart",
+                      "angleEnd"
+                    ]
+                  }
+                ],
                 "required": [
-                  "angle",
                   "blade"
                 ],
                 "additionalProperties": false
@@ -6307,8 +7057,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "angle"
+                "oneOf": [
+                  {
+                    "required": [
+                      "angle"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "angleStart",
+                      "angleEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -6472,8 +7232,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "fogOutput"
+                "oneOf": [
+                  {
+                    "required": [
+                      "fogOutput"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "fogOutputStart",
+                      "fogOutputEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -6548,8 +7318,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "angle"
+                "oneOf": [
+                  {
+                    "required": [
+                      "angle"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "angleStart",
+                      "angleEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -6628,8 +7408,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "speed"
+                "oneOf": [
+                  {
+                    "required": [
+                      "speed"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "speedStart",
+                      "speedEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
@@ -6708,8 +7498,18 @@
                     ]
                   }
                 },
-                "required": [
-                  "speed"
+                "oneOf": [
+                  {
+                    "required": [
+                      "speed"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "speedStart",
+                      "speedEnd"
+                    ]
+                  }
                 ],
                 "additionalProperties": false
               },
