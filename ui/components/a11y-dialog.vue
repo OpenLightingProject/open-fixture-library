@@ -120,16 +120,9 @@ export default {
     };
   },
   watch: {
-    shown: function() {
-      if (this.shown) {
-        this.show();
-      }
-      else {
-        this.hide();
-      }
-    }
+    shown: `update`
   },
-  mounted: function() {
+  mounted() {
     this.dialog = new A11yDialog(this.$el, `#header, #fixture-editor > form`);
 
     this.dialog.on(`show`, node => {
@@ -138,15 +131,25 @@ export default {
     });
 
     this.dialog.on(`hide`, node => this.$emit(`hide`));
+
+    this.update();
   },
   methods: {
-    show: function() {
+    update() {
+      if (this.shown) {
+        this.show();
+      }
+      else {
+        this.hide();
+      }
+    },
+    show() {
       this.dialog.show();
     },
-    hide: function() {
+    hide() {
       this.dialog.hide();
     },
-    overlayClick: function() {
+    overlayClick() {
       if (this.cancellable) {
         this.hide();
       }
