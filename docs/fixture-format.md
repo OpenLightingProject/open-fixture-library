@@ -102,14 +102,15 @@ A channel can do different things depending on which range its DMX value current
 
 If a channel consists of a single 0-255 capability, one should use the `capability` property instead of `capabilities`, that only needs a single object instead of an array of objects. The `dmxRange` should be ommited then.
 
-Capabilities may be _steps_, which means that the whole DMX range has the same effect (e.g. "Gobo 1"), or _proportional_, which means that the effect is increasing / decreasing from the start to the end of the DMX range (e.g. "Intensity 0-100%"). A proportional capability can define a start and an end value of its type-specific properties – note that this array syntax only works for physical entity properties, other properties may have their own syntax or don't allow different start/end values. Example:
+Capabilities may be _steps_, which means that the whole DMX range has the same effect (e.g. "Gobo 1"), or _proportional_, which means that the effect is increasing / decreasing from the start to the end of the DMX range (e.g. "Intensity 0-100%"). A proportional capability can define a start and an end value of its type-specific properties – note that some properties don't allow start/end values. Example:
 
 ```js
 "availableChannels": {
   "Pan": {
     "capability": {
       "type": "Pan",
-      "angle": ["0°", "530°"]
+      "angleStart": "0°",
+      "angleEnd": "530°"
 
       // DMX value 0 -> 0°
       // DMX value 127 -> 264°

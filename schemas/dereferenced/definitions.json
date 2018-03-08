@@ -104,7 +104,7 @@
     }
   },
   "entities": {
-    "speedSingle": {
+    "speed": {
       "oneOf": [
         {
           "type": "string",
@@ -125,58 +125,7 @@
         }
       ]
     },
-    "speed": {
-      "oneOf": [
-        {
-          "oneOf": [
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
-            },
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-            },
-            {
-              "enum": [
-                "fast reverse",
-                "slow reverse",
-                "stop",
-                "slow",
-                "fast"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": {
-            "oneOf": [
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
-              },
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-              },
-              {
-                "enum": [
-                  "fast reverse",
-                  "slow reverse",
-                  "stop",
-                  "slow",
-                  "fast"
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "rotationSpeedSingle": {
+    "rotationSpeed": {
       "oneOf": [
         {
           "type": "string",
@@ -197,58 +146,7 @@
         }
       ]
     },
-    "rotationSpeed": {
-      "oneOf": [
-        {
-          "oneOf": [
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
-            },
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-            },
-            {
-              "enum": [
-                "fast CCW",
-                "slow CCW",
-                "stop",
-                "slow CW",
-                "fast CW"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": {
-            "oneOf": [
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
-              },
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-              },
-              {
-                "enum": [
-                  "fast CCW",
-                  "slow CCW",
-                  "stop",
-                  "slow CW",
-                  "fast CW"
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "timeSingle": {
+    "time": {
       "oneOf": [
         {
           "type": "string",
@@ -271,62 +169,7 @@
         }
       ]
     },
-    "time": {
-      "oneOf": [
-        {
-          "oneOf": [
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?s$"
-            },
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?ms$"
-            },
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-            },
-            {
-              "enum": [
-                "instant",
-                "slow",
-                "fast"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": {
-            "oneOf": [
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?s$"
-              },
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?ms$"
-              },
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-              },
-              {
-                "enum": [
-                  "instant",
-                  "slow",
-                  "fast"
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "distanceSingle": {
+    "distance": {
       "oneOf": [
         {
           "type": "string",
@@ -344,52 +187,7 @@
         }
       ]
     },
-    "distance": {
-      "oneOf": [
-        {
-          "oneOf": [
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?m$"
-            },
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-            },
-            {
-              "enum": [
-                "near",
-                "far"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": {
-            "oneOf": [
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?m$"
-              },
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-              },
-              {
-                "enum": [
-                  "near",
-                  "far"
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "brightnessSingle": {
+    "brightness": {
       "oneOf": [
         {
           "type": "string",
@@ -408,54 +206,7 @@
         }
       ]
     },
-    "brightness": {
-      "oneOf": [
-        {
-          "oneOf": [
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?lm$"
-            },
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-            },
-            {
-              "enum": [
-                "off",
-                "dark",
-                "bright"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": {
-            "oneOf": [
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?lm$"
-              },
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-              },
-              {
-                "enum": [
-                  "off",
-                  "dark",
-                  "bright"
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "colorTemperatureSingle": {
+    "colorTemperature": {
       "oneOf": [
         {
           "type": "string",
@@ -474,54 +225,7 @@
         }
       ]
     },
-    "colorTemperature": {
-      "oneOf": [
-        {
-          "oneOf": [
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?K$"
-            },
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-            },
-            {
-              "enum": [
-                "warm",
-                "default",
-                "cold"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": {
-            "oneOf": [
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?K$"
-              },
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-              },
-              {
-                "enum": [
-                  "warm",
-                  "default",
-                  "cold"
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "fogOutputSingle": {
+    "fogOutput": {
       "oneOf": [
         {
           "type": "string",
@@ -540,54 +244,7 @@
         }
       ]
     },
-    "fogOutput": {
-      "oneOf": [
-        {
-          "oneOf": [
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?m\\^3/min$"
-            },
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-            },
-            {
-              "enum": [
-                "off",
-                "weak",
-                "strong"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": {
-            "oneOf": [
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?m\\^3/min$"
-              },
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-              },
-              {
-                "enum": [
-                  "off",
-                  "weak",
-                  "strong"
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "rotationAngleSingle": {
+    "rotationAngle": {
       "oneOf": [
         {
           "type": "string",
@@ -599,40 +256,7 @@
         }
       ]
     },
-    "rotationAngle": {
-      "oneOf": [
-        {
-          "oneOf": [
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
-            },
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-            }
-          ]
-        },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": {
-            "oneOf": [
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
-              },
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "beamAngleSingle": {
+    "beamAngle": {
       "oneOf": [
         {
           "type": "string",
@@ -651,54 +275,7 @@
         }
       ]
     },
-    "beamAngle": {
-      "oneOf": [
-        {
-          "oneOf": [
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
-            },
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-            },
-            {
-              "enum": [
-                "closed",
-                "narrow",
-                "wide"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": {
-            "oneOf": [
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?°$"
-              },
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-              },
-              {
-                "enum": [
-                  "closed",
-                  "narrow",
-                  "wide"
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "factorSingle": {
+    "factor": {
       "oneOf": [
         {
           "type": "number",
@@ -714,74 +291,14 @@
             "low",
             "high"
           ]
-        }
-      ]
-    },
-    "factor": {
-      "oneOf": [
-        {
-          "oneOf": [
-            {
-              "type": "number",
-              "minimum": 0
-            },
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-            },
-            {
-              "enum": [
-                "off",
-                "low",
-                "high"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": {
-            "oneOf": [
-              {
-                "type": "number",
-                "minimum": 0
-              },
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-              },
-              {
-                "enum": [
-                  "off",
-                  "low",
-                  "high"
-                ]
-              }
-            ]
-          }
         }
       ]
     },
     "index": {
-      "oneOf": [
-        {
-          "type": "number",
-          "minimum": 0
-        },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": {
-            "type": "number",
-            "minimum": 0
-          }
-        }
-      ]
+      "type": "number",
+      "minimum": 0
     },
-    "percentSingle": {
+    "percent": {
       "oneOf": [
         {
           "type": "string",
@@ -796,46 +313,7 @@
         }
       ]
     },
-    "percent": {
-      "oneOf": [
-        {
-          "oneOf": [
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-            },
-            {
-              "enum": [
-                "off",
-                "low",
-                "high"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": {
-            "oneOf": [
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-              },
-              {
-                "enum": [
-                  "off",
-                  "low",
-                  "high"
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "insertionSingle": {
+    "insertion": {
       "oneOf": [
         {
           "type": "string",
@@ -849,44 +327,7 @@
         }
       ]
     },
-    "insertion": {
-      "oneOf": [
-        {
-          "oneOf": [
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-            },
-            {
-              "enum": [
-                "out",
-                "in"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": {
-            "oneOf": [
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-              },
-              {
-                "enum": [
-                  "out",
-                  "in"
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "irisPercentSingle": {
+    "irisPercent": {
       "oneOf": [
         {
           "type": "string",
@@ -897,43 +338,6 @@
             "closed",
             "open"
           ]
-        }
-      ]
-    },
-    "irisPercent": {
-      "oneOf": [
-        {
-          "oneOf": [
-            {
-              "type": "string",
-              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-            },
-            {
-              "enum": [
-                "closed",
-                "open"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "array",
-          "minLength": 2,
-          "maxLength": 2,
-          "items": {
-            "oneOf": [
-              {
-                "type": "string",
-                "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
-              },
-              {
-                "enum": [
-                  "closed",
-                  "open"
-                ]
-              }
-            ]
-          }
         }
       ]
     }
