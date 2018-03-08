@@ -193,6 +193,12 @@ import scrollIntoView from 'scroll-into-view';
 import uuidV4 from 'uuid/v4.js';
 
 import schemaProperties from '~~/lib/schema-properties.js';
+import {
+  getEmptyFineChannel,
+  getSanitizedChannel,
+  isChannelChanged,
+  clone
+} from '~/assets/scripts/editor-utils.mjs';
 
 import a11yDialogVue from '~/components/a11y-dialog.vue';
 import editorCapabilityVue from '~/components/editor-capability.vue';
@@ -462,82 +468,4 @@ export default {
     }
   }
 };
-
-/**
- * @param {!object} channel The channel object.
- * @returns {!boolean} False if the channel object is still empty / unchanged, true otherwise.
- */
-function isChannelChanged(channel) {
-  return Object.keys(channel).some(prop => {
-    if ([`uuid`, `editMode`, `modeId`, `wizard`].includes(prop)) {
-      return false;
-    }
-
-    if ([`defaultValue`, `highlightValue`, `invert`, `constant`, `crossfade`].includes(prop)) {
-      return channel[prop] !== null;
-    }
-
-    if (prop === `fineness` || prop === `capFineness`) {
-      return channel[prop] !== 0;
-    }
-
-    if (prop === `capabilities`) {
-      return channel.capabilities.some(isCapabilityChanged);
-    }
-
-    return channel[prop] !== ``;
-  });
-}
-
-/**
- * @param {!object} cap The capability object.
- * @returns {!boolean} False if the capability object is still empty / unchanged, true otherwise.
- */
-function isCapabilityChanged(cap) {
-  return Object.keys(cap).some(prop => {
-    if (prop === `uuid`) {
-      return false;
-    }
-
-    if (prop === `range`) {
-      return cap.range !== null;
-    }
-
-    return cap[prop] !== ``;
-  });
-}
-
-/**
- * @param {!object} channel The channel object that shall be sanitized.
- * @returns {!object} A clone of the channel object without properties that are just relevant for displaying it in the channel dialog.
- */
-function getSanitizedChannel(channel) {
-  const retChannel = clone(channel);
-  delete retChannel.editMode;
-  delete retChannel.modeId;
-  delete retChannel.wizard;
-
-  return retChannel;
-}
-
-/**
- * @param {!string} coarseChannelId The UUID of the coarse channel.
- * @param {!number} fineness The fineness of the newly created fine channel.
- * @returns {!object} An empty fine channel object for the given coarse channel.
- */
-function getEmptyFineChannel(coarseChannelId, fineness) {
-  return {
-    uuid: uuidV4(),
-    coarseChannelId: coarseChannelId,
-    fineness: fineness
-  };
-}
-
-/**
- * @param {*} obj The object / array / ... to clone. Note: only JSON-stringifiable objects / properties are cloneable, i.e. no functions.
- * @returns {*} A deep clone.
- */
-function clone(obj) {
-  return JSON.parse(JSON.stringify(obj));
-}
 </script>

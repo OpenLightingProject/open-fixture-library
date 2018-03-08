@@ -87,9 +87,12 @@ a:focus {
 
 
 <script>
-import uuidV4 from 'uuid/v4.js';
-
 import schemaProperties from '~~/lib/schema-properties.js';
+import {
+  getEmptyCapability,
+  isCapabilityChanged,
+  clone
+} from '~/assets/scripts/editor-utils.mjs';
 
 import propertyInputRangeVue from '~/components/property-input-range.vue';
 import svgVue from "~/components/svg.vue";
@@ -290,48 +293,4 @@ export default {
     }
   }
 };
-
-
-
-
-// TODO: avoid duplication of those:
-
-/**
- * @returns {!object} An empty capability object.
- */
-function getEmptyCapability() {
-  return {
-    uuid: uuidV4(),
-    range: null,
-    name: ``,
-    color: ``,
-    color2: ``
-  };
-}
-
-/**
- * @param {!object} cap The capability object.
- * @returns {!boolean} False if the capability object is still empty / unchanged, true otherwise.
- */
-function isCapabilityChanged(cap) {
-  return Object.keys(cap).some(prop => {
-    if (prop === `uuid`) {
-      return false;
-    }
-
-    if (prop === `range`) {
-      return cap.range !== null;
-    }
-
-    return cap[prop] !== ``;
-  });
-}
-
-/**
- * @param {*} obj The object / array / ... to clone. Note: only JSON-stringifiable objects / properties are cloneable, i.e. no functions.
- * @returns {*} A deep clone.
- */
-function clone(obj) {
-  return JSON.parse(JSON.stringify(obj));
-}
 </script>

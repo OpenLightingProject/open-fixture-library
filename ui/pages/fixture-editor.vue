@@ -243,7 +243,11 @@
 
 <script>
 import scrollIntoView from 'scroll-into-view';
-import uuidV4 from 'uuid/v4.js';
+import {
+  getEmptyFixture,
+  getEmptyChannel,
+  getEmptyMode
+} from '~/assets/scripts/editor-utils.mjs';
 
 import manufacturers from '~~/fixtures/manufacturers.json';
 import schemaProperties from '~~/lib/schema-properties.js';
@@ -438,120 +442,4 @@ export default {
     }
   }
 };
-
-
-/**
- * @returns {!object} An empty fixture object.
- */
-function getEmptyFixture() {
-  return {
-    key: `[new]`,
-    useExistingManufacturer: true,
-    manufacturerShortName: ``,
-    newManufacturerName: ``,
-    newManufacturerShortName: ``,
-    newManufacturerWebsite: ``,
-    newManufacturerComment: ``,
-    newManufacturerRdmId: null,
-    name: ``,
-    shortName: ``,
-    categories: [],
-    comment: ``,
-    manualURL: ``,
-    rdmModelId: null,
-    rdmSoftwareVersion: ``,
-    physical: getEmptyPhysical(),
-    modes: [getEmptyMode()],
-    metaAuthor: ``,
-    metaGithubUsername: ``,
-    availableChannels: {}
-  };
-}
-
-/**
- * @returns {!object} An empty fixture's or mode's physical object.
- */
-function getEmptyPhysical() {
-  return {
-    dimensions: null,
-    weight: null,
-    power: null,
-    DMXconnector: ``,
-    DMXconnectorNew: ``,
-    bulb: {
-      type: ``,
-      colorTemperature: null,
-      lumens: null
-    },
-    lens: {
-      name: ``,
-      degreesMinMax: null
-    },
-    focus: {
-      type: ``,
-      typeNew: ``,
-      panMax: null,
-      tiltMax: null
-    }
-  };
-}
-
-/**
- * @returns {!object} An empty mode object.
- */
-function getEmptyMode() {
-  return {
-    uuid: uuidV4(),
-    name: ``,
-    shortName: ``,
-    rdmPersonalityIndex: null,
-    enablePhysicalOverride: false,
-    physical: getEmptyPhysical(),
-    channels: []
-  };
-}
-
-/**
- * @returns {!object} An empty channel object.
- */
-function getEmptyChannel() {
-  return {
-    uuid: uuidV4(),
-    editMode: ``,
-    modeId: ``,
-    name: ``,
-    type: ``,
-    color: ``,
-    fineness: 0,
-    defaultValue: null,
-    highlightValue: null,
-    invert: null,
-    constant: null,
-    crossfade: null,
-    precedence: ``,
-    capFineness: 0,
-    wizard: {
-      show: false,
-      start: 0,
-      width: 10,
-      count: 3,
-      templateName: `Function #`
-    },
-    capabilities: [getEmptyCapability()]
-  };
-}
-
-/**
- * @returns {!object} An empty capability object.
- */
-function getEmptyCapability() {
-  return {
-    uuid: uuidV4(),
-    range: null,
-    name: ``,
-    color: ``,
-    color2: ``
-  };
-}
-
 </script>
