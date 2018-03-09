@@ -26,7 +26,9 @@
       "degreesMinMax": [18, 18]
     },
     "focus": {
-      "type": "Head"
+      "type": "Head",
+      "panMax": 530,
+      "tiltMax": 280
     }
   },
   "availableChannels": {
