@@ -60,6 +60,8 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     return result;
   }
 
+  return result;
+
   try {
     fixture = new Fixture(manKey, fixKey, fixtureJson);
 
