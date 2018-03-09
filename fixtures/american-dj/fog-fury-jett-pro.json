@@ -56,37 +56,37 @@
           "dmxRange": [8, 15],
           "type": "ColorPreset",
           "comment": "Red",
-          "colors": ["#ff0000"]
+          "colors": ["Red"]
         },
         {
           "dmxRange": [16, 23],
           "type": "ColorPreset",
           "comment": "Green",
-          "colors": ["#00ff00"]
+          "colors": ["Green"]
         },
         {
           "dmxRange": [24, 31],
           "type": "ColorPreset",
           "comment": "Blue+UV",
-          "colors": ["#0000ff", "#8800ff"]
+          "colors": ["Blue", "UV"]
         },
         {
           "dmxRange": [32, 39],
           "type": "ColorPreset",
           "comment": "Amber",
-          "colors": ["#ffbf00"]
+          "colors": ["Amber"]
         },
         {
           "dmxRange": [40, 47],
           "type": "ColorPreset",
           "comment": "UV",
-          "colors": ["#8800ff"]
+          "colors": ["UV"]
         },
         {
           "dmxRange": [48, 55],
           "type": "ColorPreset",
           "comment": "Red+Blue+UV",
-          "colors": ["#ff00ff", "#8800ff"]
+          "colors": ["#ff00ff", "UV"]
         },
         {
           "dmxRange": [56, 63],
@@ -98,7 +98,7 @@
           "dmxRange": [64, 71],
           "type": "ColorPreset",
           "comment": "Red+UV",
-          "colors": ["#ff0000", "#8800ff"]
+          "colors": ["Red", "UV"]
         },
         {
           "dmxRange": [72, 79],
@@ -224,7 +224,7 @@
           "dmxRange": [232, 239],
           "type": "ColorPreset",
           "comment": "All on",
-          "colors": ["#ffffff", "#8800ff"]
+          "colors": ["#ffffff", "UV"]
         },
         {
           "dmxRange": [240, 247],
