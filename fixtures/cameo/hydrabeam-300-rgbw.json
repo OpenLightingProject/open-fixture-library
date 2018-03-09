@@ -210,7 +210,8 @@
     "Show mode speed": {
       "capability": {
         "type": "EffectSpeed",
-        "speed": ["slow", "fast"]
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     },
     "Sound sensitivity": {
@@ -322,7 +323,8 @@
     "Auto color change speed": {
       "capability": {
         "type": "EffectSpeed",
-        "speed": ["slow", "fast"]
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     },
     "Master Pan": {
@@ -376,7 +378,8 @@
     "Head speed": {
       "capability": {
         "type": "PanTiltSpeed",
-        "speed": ["fast", "slow"]
+        "speedStart": "fast",
+        "speedEnd": "slow"
       }
     },
     "Head Speed 1": {
@@ -445,7 +448,8 @@
       "name": "Head Speed $pixelKey",
       "capability": {
         "type": "PanTiltSpeed",
-        "speed": ["fast", "slow"]
+        "speedStart": "fast",
+        "speedEnd": "slow"
       }
     },
     "Head Speed $pixelKey": {
@@ -688,7 +692,8 @@
     "Show mode speed $pixelKey": {
       "capability": {
         "type": "EffectSpeed",
-        "speed": ["slow", "fast"]
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     },
     "Sound sensitivity $pixelKey": {

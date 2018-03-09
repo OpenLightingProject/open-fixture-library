@@ -78,7 +78,8 @@
       "capability": {
         "type": "PanTiltSpeed",
         "comment": "Speed fast-slow / Time 0.1-25.5s",
-        "speed": ["slow", "fast"]
+        "speedStart": "fast",
+        "speedEnd": "slow"
       }
     },
     "Special Functions": {

@@ -185,7 +185,8 @@
     "Program Speed": {
       "capability": {
         "type": "EffectSpeed",
-        "speed": ["slow", "fast"]
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     },
     "Sound Sensitivity": {
