@@ -4,7 +4,7 @@ const path = require(`path`);
 const minimist = require(`minimist`);
 const colors = require(`colors`);
 
-const plugins = require(`../plugins/plugins.js`).all;
+const plugins = require(`../plugins/plugins.json`);
 const { Fixture, fixtureFromRepository } = require(`../lib/model.js`);
 
 const testFixtures = require(`../tests/test-fixtures.json`);
@@ -52,11 +52,11 @@ else {
   });
 }
 
-const plugin = plugins[args.plugin];
-const files = plugin.export.export(fixtures, {});
+const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `export.js`));
+const files = plugin.export(fixtures, {});
 
-for (const testKey of Object.keys(plugin.exportTests)) {
-  const test = plugin.exportTests[testKey];
+for (const testKey of plugins.data[args.plugin].exportTests) {
+  const test = require(path.join(__dirname, `../plugins`, args.plugin, `exportTests/${testKey}.js`));
   const filePromises = files.map(file =>
     test(file.content)
       .then(() => colors.green(`[PASS] `) + file.name)

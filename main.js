@@ -1,5 +1,6 @@
 #!/usr/bin/node
 
+const path = require(`path`);
 const express = require(`express`);
 const compression = require(`compression`);
 const { Nuxt, Builder } = require(`nuxt`);
@@ -7,7 +8,7 @@ const url = require(`url`);
 
 const redirectToHttps = require(`./views/middleware/redirect-to-https.js`);
 
-const plugins = require(`./plugins/plugins.js`);
+const plugins = require(`./plugins/plugins.json`);
 const { fixtureFromRepository } = require(`./lib/model.js`);
 const register = require(`./fixtures/register.json`);
 
@@ -38,7 +39,7 @@ app.use(compression({
 app.get(`/download.:format`, (request, response, next) => {
   const { format } = request.params;
 
-  if (!(format in plugins.export)) {
+  if (!plugins.exportPlugins.includes(format)) {
     next();
     return;
   }
@@ -47,7 +48,9 @@ app.get(`/download.:format`, (request, response, next) => {
     const [man, key] = fixture.split(`/`);
     return fixtureFromRepository(man, key);
   });
-  const outfiles = plugins.export[format].export(fixtures, {
+
+  const plugin = require(path.join(__dirname, `plugins`, format, `export.js`));
+  const outfiles = plugin.export(fixtures, {
     baseDir: __dirname
   });
 
@@ -67,13 +70,13 @@ app.get(`/:manKey/:fixKey.:format`, (request, response, next) => {
     return;
   }
 
-  if (!(format in plugins.export)) {
+  if (!plugins.exportPlugins.includes(format)) {
     next();
     return;
   }
 
-
-  const outfiles = plugins.export[format].export([fixtureFromRepository(manKey, fixKey)], {
+  const plugin = require(path.join(__dirname, `plugins`, format, `export.js`));
+  const outfiles = plugin.export([fixtureFromRepository(manKey, fixKey)], {
     baseDir: __dirname
   });
 
