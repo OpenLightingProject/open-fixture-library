@@ -81,11 +81,6 @@ const nuxtOptions = {
         rel: `mask-icon`,
         href: `/safari-pinned-tab.svg`,
         color: `#64b5f6`
-      },
-      {
-        rel: `icon`,
-        type: `image/x-icon`,
-        href: `https://cdn.css-tricks.com/favicon.ico`
       }
     ]
   },
