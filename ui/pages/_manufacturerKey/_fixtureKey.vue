@@ -20,14 +20,7 @@
         </section>
       </div>
 
-      <div class="download-button">
-        <a href="#" class="title" @click.prevent>Download as &hellip;</a>
-        <ul>
-          <li v-for="plugin in exportPlugins" :key="plugin.key">
-            <a :href="`/${manKey}/${fixKey}.${plugin.key}`" :title="`Download ${plugin.name} fixture definition`">{{ plugin.name }}</a>
-          </li>
-        </ul>
-      </div>
+      <app-download-button :download="`${manKey}/${fixKey}`" />
     </header>
 
     <section class="fixture-info card">
@@ -129,13 +122,13 @@
 <script>
 import svg from '~/components/svg.vue';
 import categoryBadge from '~/components/category-badge.vue';
+import downloadButtonVue from '~/components/download-button.vue';
 import fixturePhysical from '~/components/fixture-physical.vue';
 import fixtureMatrix from '~/components/fixture-matrix.vue';
 import fixtureMode from '~/components/fixture-mode.vue';
 
 import packageJson from '~~/package.json';
 import register from '~~/fixtures/register.json';
-import plugins from '~~/plugins/plugins.json';
 
 import Fixture from '~~/lib/model/Fixture.mjs';
 
@@ -143,6 +136,7 @@ export default {
   components: {
     'app-svg': svg,
     'app-category-badge': categoryBadge,
+    'app-download-button': downloadButtonVue,
     'app-fixture-physical': fixturePhysical,
     'app-fixture-matrix': fixtureMatrix,
     'app-fixture-mode': fixtureMode
@@ -159,13 +153,7 @@ export default {
     return {
       manKey,
       fixKey,
-      fixtureJson,
-      exportPlugins: plugins.exportPlugins.map(
-        pluginKey => ({
-          key: pluginKey,
-          name: plugins.data[pluginKey].name
-        })
-      )
+      fixtureJson
     };
   },
   computed: {

@@ -8,14 +8,7 @@
         <h1>Open Fixture Library</h1>
       </div>
 
-      <div class="download-button big">
-        <a href="#" class="title" @click.prevent>Download all {{ register.lastUpdated.length }} fixtures</a>
-        <ul>
-          <li v-for="plugin in exportPlugins" :key="plugin.key">
-            <a :href="`/download.${plugin.key}`" :title="`Download ${plugin.name} fixture definitions`">{{ plugin.name }}</a>
-          </li>
-        </ul>
-      </div>
+      <app-download-button :download="register.lastUpdated.length" :big="true" />
     </header>
 
 
@@ -92,26 +85,20 @@
 
 <script>
 import svg from '~/components/svg.vue';
+import downloadButtonVue from '~/components/download-button.vue';
 
 import packageJson from '~~/package.json';
 import register from '~~/fixtures/register.json';
 import manufacturers from '~~/fixtures/manufacturers.json';
-import plugins from '~~/plugins/plugins.json';
 
 export default {
   components: {
-    'app-svg': svg
+    'app-svg': svg,
+    'app-download-button': downloadButtonVue
   },
   data() {
     return {
-      register: register,
-
-      exportPlugins: plugins.exportPlugins.map(
-        pluginKey => ({
-          key: pluginKey,
-          name: plugins.data[pluginKey].name
-        })
-      ),
+      register,
 
       lastUpdated: register.lastUpdated.slice(0, 5).map(
         fixtureKey => ({

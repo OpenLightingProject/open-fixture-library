@@ -1,3 +1,22 @@
+<template>
+  <div :class="{'download-button': true, 'big': big}">
+    <a href="#" class="title" @click.prevent>{{ title }}</a>
+    <ul>
+      <li v-for="plugin in exportPlugins" :key="plugin.key">
+        <a
+          :href="`${baseLink}.${plugin.key}`"
+          :title="`Download ${plugin.name} fixture ${isSingleFixture ? `definition` : `definitions`}`"
+          @click.prevent="blur($event)">
+          {{ plugin.name }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<style lang="scss">
+@import '~assets/styles/vars.scss';
+
 .download-button {
   & > .title {
     display: block;
@@ -82,10 +101,6 @@
   margin: 0 0 1em;
 }
 
-.channel-pixel {
-  display: flex;
-}
-
 /* move download button to the right */
 @media (min-width: 650px) {
   .fixture-header {
@@ -118,3 +133,57 @@
     }
   }
 }
+</style>
+
+<script>
+import plugins from '~~/plugins/plugins.json';
+
+export default {
+  props: {
+    download: {
+      // either the fixture key or the number of fixtures
+      type: [String, Number],
+      required: true
+    },
+    big: {
+      type: Boolean,
+      required: false,
+      default: false
+    }
+  },
+  data() {
+    return {
+      exportPlugins: plugins.exportPlugins.map(
+        pluginKey => ({
+          key: pluginKey,
+          name: plugins.data[pluginKey].name
+        })
+      )
+    };
+  },
+  computed: {
+    isSingleFixture() {
+      return typeof this.download === `string`;
+    },
+    title() {
+      if (this.isSingleFixture) {
+        return `Download as …`;
+      }
+
+      return `Download all ${this.download} fixtures`;
+    },
+    baseLink() {
+      if (this.isSingleFixture) {
+        return `/${this.download}`;
+      }
+
+      return `/download`;
+    }
+  },
+  methods: {
+    blur(event) {
+      event.target.blur();
+    }
+  }
+};
+</script>
