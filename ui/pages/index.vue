@@ -1,7 +1,9 @@
 <template>
   <div>
-    <header class="fixture-header">
+    <script type="application/ld+json" v-html="websiteStructuredData" />
+    <script type="application/ld+json" v-html="organizationStructuredData" />
 
+    <header class="fixture-header">
       <div class="title">
         <h1>Open Fixture Library</h1>
       </div>
@@ -14,7 +16,6 @@
           </li>
         </ul>
       </div>
-
     </header>
 
 
@@ -92,6 +93,7 @@
 <script>
 import svg from '~/components/svg.vue';
 
+import packageJson from '~~/package.json';
 import register from '~~/fixtures/register.json';
 import manufacturers from '~~/fixtures/manufacturers.json';
 
@@ -132,7 +134,27 @@ export default {
             latestFixtureName: getFixtureName(latestFixtureKey)
           };
         }
-      )
+      ),
+
+      websiteStructuredData: {
+        '@context': `http://schema.org`,
+        '@type': `WebSite`,
+        'name': `Open Fixture Library`,
+        'url': packageJson.homepage,
+        'potentialAction': {
+          '@type': `SearchAction`,
+          'target': `${packageJson.homepage}search?q={search_term_string}`,
+          'query-input': `required name=search_term_string`
+        }
+      },
+      organizationStructuredData: {
+        '@context': `http://schema.org`,
+        '@type': `Organization`,
+        'name': `Open Fixture Library`,
+        'description': `Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!`,
+        'url': packageJson.homepage,
+        'logo': `${packageJson.homepage}ofl-logo.svg`
+      }
     };
   }
 };

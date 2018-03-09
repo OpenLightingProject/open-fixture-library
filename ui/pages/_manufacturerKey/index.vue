@@ -1,5 +1,8 @@
 <template>
   <div>
+    <script type="application/ld+json" v-html="organizationStructuredData" />
+    <script type="application/ld+json" v-html="itemListStructuredData" />
+
     <h1>{{ manufacturer.name }} fixtures</h1>
 
     <div v-if="`website` in manufacturer || `rdmId` in manufacturer" class="grid list">
@@ -42,6 +45,7 @@
 <script>
 import svg from '~/components/svg.vue';
 
+import packageJson from '~~/package.json';
 import register from '~~/fixtures/register.json';
 import manufacturers from '~~/fixtures/manufacturers.json';
 
@@ -54,18 +58,45 @@ export default {
   },
   async asyncData({ params }) {
     const manKey = params.manufacturerKey;
+    const manufacturer = manufacturers[manKey];
+
+    const fixtures = (register.manufacturers[manKey] || []).map(
+      fixKey => ({
+        key: fixKey,
+        link: `/${manKey}/${fixKey}`,
+        name: register.filesystem[`${manKey}/${fixKey}`].name,
+        categories: Object.keys(register.categories).filter(
+          cat => register.categories[cat].includes(`${manKey}/${fixKey}`)
+        )
+      })
+    );
+
+    const organizationStructuredData = {
+      '@context': `http://schema.org`,
+      '@type': `Organization`,
+      'name': manufacturer.name,
+      'brand': manufacturer.name
+    };
+
+    if (`website` in manufacturer) {
+      organizationStructuredData.sameAs = manufacturer.website;
+    }
+
+    const itemListStructuredData = {
+      '@context': `http://schema.org`,
+      '@type': `ItemList`,
+      'itemListElement': fixtures.map((fix, index) => ({
+        '@type': `ListItem`,
+        'position': index + 1,
+        'url': `${packageJson.homepage}${fix.link}`
+      }))
+    };
+
     return {
-      manufacturer: manufacturers[manKey],
-      fixtures: (register.manufacturers[manKey] || []).map(
-        fixKey => ({
-          key: fixKey,
-          link: `/${manKey}/${fixKey}`,
-          name: register.filesystem[`${manKey}/${fixKey}`].name,
-          categories: Object.keys(register.categories).filter(
-            cat => register.categories[cat].includes(`${manKey}/${fixKey}`)
-          )
-        })
-      )
+      manufacturer,
+      fixtures,
+      organizationStructuredData,
+      itemListStructuredData
     };
   },
   head() {

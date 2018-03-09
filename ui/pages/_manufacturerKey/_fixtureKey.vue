@@ -1,5 +1,8 @@
 <template>
   <div>
+    <script type="application/ld+json" v-html="productModelStructuredData" />
+    <script type="application/ld+json" v-html="breadcrumbListStructuredData" />
+
     <header class="fixture-header">
       <div class="title">
         <h1>
@@ -130,6 +133,7 @@ import fixturePhysical from '~/components/fixture-physical.vue';
 import fixtureMatrix from '~/components/fixture-matrix.vue';
 import fixtureMode from '~/components/fixture-mode.vue';
 
+import packageJson from '~~/package.json';
 import register from '~~/fixtures/register.json';
 
 import Fixture from '~~/lib/model/Fixture.mjs';
@@ -182,6 +186,61 @@ export default {
     },
     branch() {
       return process.env.TRAVIS_PULL_REQUEST_BRANCH || process.env.TRAVIS_BRANCH || `master`;
+    },
+    productModelStructuredData() {
+      const data = {
+        '@context': `http://schema.org`,
+        '@type': `ProductModel`,
+        'name': this.fixture.name,
+        'category': this.fixture.mainCategory,
+        'manufacturer': {
+          'url': `${packageJson.homepage}${this.fixture.manufacturer.key}`
+        }
+      };
+
+      if (this.fixture.hasComment) {
+        data.description = this.fixture.comment;
+      }
+
+      if (this.fixture.physical !== null && this.fixture.physical.dimensions !== null) {
+        data.depth = this.fixture.physical.depth;
+        data.width = this.fixture.physical.width;
+        data.height = this.fixture.physical.height;
+      }
+
+      return data;
+    },
+    breadcrumbListStructuredData() {
+      return {
+        '@context': `http://schema.org`,
+        '@type': `BreadcrumbList`,
+        'itemListElement': [
+          {
+            '@type': `ListItem`,
+            'position': 1,
+            'item': {
+              '@id': `${packageJson.homepage}manufacturers`,
+              'name': `Manufacturers`
+            }
+          },
+          {
+            '@type': `ListItem`,
+            'position': 2,
+            'item': {
+              '@id': `${packageJson.homepage}${this.fixture.manufacturer.key}`,
+              'name': this.fixture.manufacturer.name
+            }
+          },
+          {
+            '@type': `ListItem`,
+            'position': 3,
+            'item': {
+              '@id': this.fixture.url,
+              'name': this.fixture.name
+            }
+          }
+        ]
+      };
     }
   },
   head() {
