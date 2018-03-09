@@ -245,6 +245,7 @@ export default {
           q: this.searchQuery
         }
       });
+      this.focusContent();
     }
   }
 };

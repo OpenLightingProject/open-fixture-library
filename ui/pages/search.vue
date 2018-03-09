@@ -151,7 +151,14 @@ export default {
     }
   },
   mounted() {
-    this.$router.afterEach(() => this.updateResults());
+    this._removeSearchQueryChecker = this.$router.afterEach((to, from) => {
+      if (to.path === `/search`) {
+        this.updateResults();
+      }
+      else {
+        this._removeSearchQueryChecker();
+      }
+    });
   },
   methods: {
     onSubmit() {
