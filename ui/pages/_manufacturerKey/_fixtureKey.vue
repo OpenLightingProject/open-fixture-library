@@ -23,8 +23,8 @@
       <div class="download-button">
         <a href="#" class="title" @click.prevent>Download as &hellip;</a>
         <ul>
-          <li v-for="(plugin, pluginKey) in exportPlugins" :key="pluginKey">
-            <a :href="`/${manKey}/${fixKey}.${pluginKey}`" :title="`Download ${plugin.name} fixture definition`">{{ plugin.name }}</a>
+          <li v-for="plugin in exportPlugins" :key="plugin.key">
+            <a :href="`/${manKey}/${fixKey}.${plugin.key}`" :title="`Download ${plugin.name} fixture definition`">{{ plugin.name }}</a>
           </li>
         </ul>
       </div>
@@ -135,6 +135,7 @@ import fixtureMode from '~/components/fixture-mode.vue';
 
 import packageJson from '~~/package.json';
 import register from '~~/fixtures/register.json';
+import plugins from '~~/plugins/plugins.json';
 
 import Fixture from '~~/lib/model/Fixture.mjs';
 
@@ -159,16 +160,12 @@ export default {
       manKey,
       fixKey,
       fixtureJson,
-
-      // TODO: Use real instead of mocked data
-      exportPlugins: {
-        ecue: {
-          name: `e:cue`
-        },
-        qlcplus: {
-          name: `QLC+`
-        }
-      }
+      exportPlugins: plugins.exportPlugins.map(
+        pluginKey => ({
+          key: pluginKey,
+          name: plugins.data[pluginKey].name
+        })
+      )
     };
   },
   computed: {

@@ -11,8 +11,8 @@
       <div class="download-button big">
         <a href="#" class="title" @click.prevent>Download all {{ register.lastUpdated.length }} fixtures</a>
         <ul>
-          <li v-for="(plugin, pluginKey) in exportPlugins" :key="pluginKey">
-            <a :href="`/download.${pluginKey}`" :title="`Download ${plugin.name} fixture definitions`">{{ plugin.name }}</a>
+          <li v-for="plugin in exportPlugins" :key="plugin.key">
+            <a :href="`/download.${plugin.key}`" :title="`Download ${plugin.name} fixture definitions`">{{ plugin.name }}</a>
           </li>
         </ul>
       </div>
@@ -96,6 +96,7 @@ import svg from '~/components/svg.vue';
 import packageJson from '~~/package.json';
 import register from '~~/fixtures/register.json';
 import manufacturers from '~~/fixtures/manufacturers.json';
+import plugins from '~~/plugins/plugins.json';
 
 export default {
   components: {
@@ -105,15 +106,12 @@ export default {
     return {
       register: register,
 
-      // TODO: Use real instead of mocked data
-      exportPlugins: {
-        ecue: {
-          name: `e:cue`
-        },
-        qlcplus: {
-          name: `QLC+`
-        }
-      },
+      exportPlugins: plugins.exportPlugins.map(
+        pluginKey => ({
+          key: pluginKey,
+          name: plugins.data[pluginKey].name
+        })
+      ),
 
       lastUpdated: register.lastUpdated.slice(0, 5).map(
         fixtureKey => ({
