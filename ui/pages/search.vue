@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="search">
     <h1 v-if="searchFor">Search <em>{{ searchFor }}</em></h1>
     <h1 v-else>Search</h1>
 
@@ -68,18 +68,18 @@
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .search-results {
   margin-top: 2rem;
 }
 </style>
 
 <style lang="scss">
-select[multiple] {
+.search select[multiple] {
   margin-right: 1ex;
 }
 
-details {
+.search details {
   margin: 1rem 0;
 }
 </style>

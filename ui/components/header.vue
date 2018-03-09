@@ -3,9 +3,9 @@
     <nav>
       <div class="left-nav">
         <nuxt-link
+          :class="{'home-logo': true, 'hidden-by-search-field': searchFieldFocused || searchQuery !== ``}"
           to="/"
           exact
-          class="home-logo"
           title="Home"
           @click.native="focusContent">
           Open Fixture Library
@@ -18,7 +18,9 @@
               type="search"
               name="q"
               placeholder="Search fixtures"
-              aria-label="Search fixtures">
+              aria-label="Search fixtures"
+              @focus="searchFieldFocused = true"
+              @blur="searchFieldFocused = false">
           </div>
           <button type="submit">
             Search
@@ -195,7 +197,7 @@
       line-height: 2.8em;
       height: 2.8em;
 
-      &.searchUsed {
+      &.hidden-by-search-field {
         padding: 0;
       }
     }
@@ -225,7 +227,8 @@ export default {
   },
   data() {
     return {
-      searchQuery: this.$router.history.current.query.q || ``
+      searchQuery: this.$router.history.current.query.q || ``,
+      searchFieldFocused: false
     };
   },
   mounted() {

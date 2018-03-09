@@ -15,10 +15,10 @@
     </template>
 
     <h3>DMX channels<template v-if="mode.channels.length > 1">
-      <button class="icon-button expand-all only-js" title="Expand all channels">
+      <button class="icon-button expand-all only-js" title="Expand all channels" @click.prevent="openDetails">
         <app-svg name="chevron-double-down" />
       </button>
-      <button class="icon-button collapse-all only-js" title="Collapse all channels">
+      <button class="icon-button collapse-all only-js" title="Collapse all channels" @click.prevent="closeDetails">
         <app-svg name="chevron-double-up" />
       </button>
     </template></h3>
@@ -62,6 +62,18 @@ export default {
     index: {
       type: Number,
       required: true
+    }
+  },
+  methods: {
+    openDetails() {
+      this.$el.querySelectorAll(`details`).forEach(details => {
+        details.open = true;
+      });
+    },
+    closeDetails() {
+      this.$el.querySelectorAll(`details`).forEach(details => {
+        details.open = false;
+      });
     }
   }
 };
