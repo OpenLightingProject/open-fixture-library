@@ -28,39 +28,21 @@
     "Red": {
       "type": "Single Color",
       "color": "Red",
-      "defaultValue": 0,
-      "capabilities": [
-        {}
-      ]
+      "defaultValue": 0
     },
     "Green": {
       "type": "Single Color",
       "color": "Green",
-      "defaultValue": 0,
-      "capabilities": [
-        {}
-      ]
+      "defaultValue": 0
     },
     "Blue": {
       "type": "Single Color",
       "color": "Blue",
-      "defaultValue": 0,
-      "capabilities": [
-        {}
-      ]
+      "defaultValue": 0
     },
     "Dimmer": {
       "type": "Intensity",
-      "defaultValue": 0,
-      "capabilities": [
-        {}
-      ]
-    },
-    "Red / Color Presets / Program Speed / Sound Sensitivity": {
-      "type": "Switching Channel",
-      "capabilities": [
-        {}
-      ]
+      "defaultValue": 0
     },
     "Color Presets": {
       "type": "Multi-Color",
@@ -246,54 +228,91 @@
     },
     "Internal Programs": {
       "type": "Effect",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 0],
-          "name": "No function"
+          "name": "No function",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Red"
+          }
         },
         {
           "range": [1, 24],
-          "name": "Color presets"
+          "name": "Color presets",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Color Presets"
+          }
         },
         {
           "range": [25, 49],
-          "name": "Program 2: 7-color fading"
+          "name": "Program 2: 7-color fading",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [50, 74],
-          "name": "Program 3: 3-color fading"
+          "name": "Program 3: 3-color fading",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [75, 99],
-          "name": "Program 4: 7-color jumping change"
+          "name": "Program 4: 7-color jumping change",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [100, 124],
-          "name": "Program 5: 3-color jumping change"
+          "name": "Program 5: 3-color jumping change",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [125, 149],
-          "name": "Program 6: fantasy change 1"
+          "name": "Program 6: fantasy change 1",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [150, 174],
-          "name": "Program 7: fantasy change 2"
+          "name": "Program 7: fantasy change 2",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [175, 199],
-          "name": "Program 8: red fading"
+          "name": "Program 8: red fading",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [200, 224],
-          "name": "Program 9: green fading"
+          "name": "Program 9: green fading",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [225, 249],
-          "name": "Program 10: blue fading"
+          "name": "Program 10: blue fading",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [250, 255],
-          "name": "Sound control"
+          "name": "Sound control",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         }
       ]
     },
@@ -611,10 +630,6 @@
       "channels": [
         "Dimmer",
         "Red / Color Presets / Program Speed / Sound Sensitivity",
-        "Red",
-        "Color Presets",
-        "Program Speed",
-        "Sound Sensitivity",
         "Green",
         "Blue",
         "Strobe",
