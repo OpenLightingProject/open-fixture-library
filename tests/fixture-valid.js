@@ -11,6 +11,10 @@ const {
   SwitchingChannel
 } = require(`../lib/model.js`);
 
+const ajv = new Ajv();
+ajv.addFormat(`color-hex`, ``); // do not crash when `format: color-hex` is used; actual validation is done with an additional pattern, the format is only added for VSCode's color preview
+const schemaValidate = ajv.compile(fixtureSchema);
+
 /**
  * @typedef ResultData
  * @type {object}
@@ -51,16 +55,11 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
   modeShortNames = new Set();
 
 
-  const ajv = new Ajv();
-  ajv.addFormat(`color-hex`, ``); // do not crash when `format: color-hex` is used; actual validation is done with an additional pattern, the format is only added for VSCode's color preview
-  const validate = ajv.compile(fixtureSchema);
-  const valid = validate(fixtureJson);
-  if (!valid) {
-    result.errors.push(module.exports.getErrorString(`File does not match schema.`, validate.errors));
+  const schemaValid = schemaValidate(fixtureJson);
+  if (!schemaValid) {
+    result.errors.push(module.exports.getErrorString(`File does not match schema.`, schemaValidate.errors));
     return result;
   }
-
-  return result;
 
   try {
     fixture = new Fixture(manKey, fixKey, fixtureJson);
