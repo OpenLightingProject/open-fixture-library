@@ -27,238 +27,287 @@
   "availableChannels": {
     "strobe1": {
       "name": "Strobe",
-      "type": "Strobe",
       "highlightValue": 220,
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "Strobe closed"
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "effect": "Closed"
         },
         {
-          "range": [11, 255],
-          "name": "Strobe 0Hz-30Hz",
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "effect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz",
           "menuClick": "center"
         }
       ]
     },
     "strobe2": {
       "name": "Strobe",
-      "type": "Strobe",
       "highlightValue": 220,
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "Strobe open"
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "effect": "Open"
         },
         {
-          "range": [6, 10],
-          "name": "Strobe closed"
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "effect": "Closed"
         },
         {
-          "range": [11, 250],
-          "name": "Strobe 0Hz-30Hz",
+          "dmxRange": [11, 250],
+          "type": "ShutterStrobe",
+          "effect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz",
           "menuClick": "center"
         },
         {
-          "range": [251, 255],
-          "name": "Strobe open",
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "effect": "Open",
           "menuClick": "hidden"
         }
       ]
     },
     "strobe3": {
       "name": "Strobe",
-      "type": "Strobe",
       "highlightValue": 220,
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "Strobe open"
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "effect": "Open"
         },
         {
-          "range": [6, 10],
-          "name": "Strobe closed"
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "effect": "Closed"
         },
         {
-          "range": [11, 33],
-          "name": "Puls random slow-fast",
+          "dmxRange": [11, 33],
+          "type": "ShutterStrobe",
+          "effect": "PulseRandom",
+          "speedStart": "slow",
+          "speedEnd": "fast",
           "menuClick": "center"
         },
         {
-          "range": [34, 56],
-          "name": "Ramp up random slow-fast",
+          "dmxRange": [34, 56],
+          "type": "ShutterStrobe",
+          "effect": "RampUpRandom",
+          "speedStart": "slow",
+          "speedEnd": "fast",
           "menuClick": "center"
         },
         {
-          "range": [57, 79],
-          "name": "Ramp down random slow-fast",
+          "dmxRange": [57, 79],
+          "type": "ShutterStrobe",
+          "effect": "RampDownRandom",
+          "speedStart": "slow",
+          "speedEnd": "fast",
           "menuClick": "center"
         },
         {
-          "range": [80, 102],
-          "name": "Random Strobe Effect slow-fast",
+          "dmxRange": [80, 102],
+          "type": "ShutterStrobe",
+          "effect": "StrobeRandom",
+          "speedStart": "slow",
+          "speedEnd": "fast",
           "menuClick": "center"
         },
         {
-          "range": [103, 127],
-          "name": "Strobe Break Effect 5s-1s",
+          "dmxRange": [103, 127],
+          "type": "ShutterStrobe",
+          "comment": "Break Effect",
+          "effect": "Strobe",
+          "durationStart": "5s",
+          "durationEnd": "1s",
           "menuClick": "center"
         },
         {
-          "range": [128, 250],
-          "name": "Strobe 0Hz-30Hz",
+          "dmxRange": [128, 250],
+          "type": "ShutterStrobe",
+          "effect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz",
           "menuClick": "center"
         },
         {
-          "range": [251, 255],
-          "name": "Strobe open",
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "effect": "Open",
           "menuClick": "hidden"
         }
       ]
     },
     "Dimmer": {
-      "type": "Intensity",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
     },
     "Color Macros": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "Color off",
-          "color": "#000000"
+          "dmxRange": [0, 5],
+          "type": "Nothing"
         },
         {
-          "range": [6, 13],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [6, 13],
+          "type": "ColorPreset",
+          "colors": ["Red"]
         },
         {
-          "range": [14, 21],
-          "name": "Amber",
-          "color": "#ffbf00"
+          "dmxRange": [14, 21],
+          "type": "ColorPreset",
+          "colors": ["Amber"]
         },
         {
-          "range": [22, 29],
-          "name": "Yellow warm",
-          "color": "#f9ba16"
+          "dmxRange": [22, 29],
+          "type": "ColorPreset",
+          "comment": "Yellow Warm",
+          "colors": ["#f9ba16"]
         },
         {
-          "range": [30, 37],
-          "name": "Yellow",
-          "color": "#ffff00"
+          "dmxRange": [30, 37],
+          "type": "ColorPreset",
+          "colors": ["Yellow"]
         },
         {
-          "range": [38, 45],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [38, 45],
+          "type": "ColorPreset",
+          "colors": ["Green"]
         },
         {
-          "range": [46, 53],
-          "name": "Turquoise",
-          "color": "#40e0d0"
+          "dmxRange": [46, 53],
+          "type": "ColorPreset",
+          "colors": ["Turquoise"]
         },
         {
-          "range": [54, 61],
-          "name": "Cyan",
-          "color": "#00ffff"
+          "dmxRange": [54, 61],
+          "type": "ColorPreset",
+          "colors": ["Cyan"]
         },
         {
-          "range": [62, 69],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [62, 69],
+          "type": "ColorPreset",
+          "colors": ["Blue"]
         },
         {
-          "range": [70, 77],
-          "name": "Lavender",
-          "color": "#e6e6fa"
+          "dmxRange": [70, 77],
+          "type": "ColorPreset",
+          "colors": ["Lavender"]
         },
         {
-          "range": [78, 85],
-          "name": "Mauve",
-          "color": "#e0b0ff"
+          "dmxRange": [78, 85],
+          "type": "ColorPreset",
+          "colors": ["Mauve"]
         },
         {
-          "range": [86, 93],
-          "name": "Magenta",
-          "color": "#ff00ff"
+          "dmxRange": [86, 93],
+          "type": "ColorPreset",
+          "colors": ["Magenta"]
         },
         {
-          "range": [94, 101],
-          "name": "Pink",
-          "color": "#ffc0cb"
+          "dmxRange": [94, 101],
+          "type": "ColorPreset",
+          "colors": ["Pink"]
         },
         {
-          "range": [102, 109],
-          "name": "Warm White",
-          "color": "#fffbf2"
+          "dmxRange": [102, 109],
+          "type": "ColorPreset",
+          "comment": "Warm White",
+          "colors": ["#fffbf2"]
         },
         {
-          "range": [110, 117],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [110, 117],
+          "type": "ColorPreset",
+          "colors": ["White"]
         },
         {
-          "range": [118, 125],
-          "name": "Cold White",
-          "color": "#f2f6fe"
+          "dmxRange": [118, 125],
+          "type": "ColorPreset",
+          "comment": "Cold White",
+          "colors": ["#f2f6fe"]
         },
         {
-          "range": [126, 128],
-          "name": "Jump Stop"
+          "dmxRange": [126, 128],
+          "type": "Effect",
+          "comment": "Color Jump",
+          "speed": "stop"
         },
         {
-          "range": [129, 192],
-          "name": "Jump slow-fast"
+          "dmxRange": [129, 192],
+          "type": "Effect",
+          "comment": "Color Jump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [193, 255],
-          "name": "Fade slow-fast",
-          "image": "Others/rainbow.png"
+          "dmxRange": [193, 255],
+          "type": "Effect",
+          "comment": "Color Fade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Flash Duration": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "0-512ms"
-        }
-      ]
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "0ms",
+        "durationEnd": "512ms"
+      }
     },
     "Sound Control": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "Sound Control Off"
+          "dmxRange": [0, 5],
+          "type": "SoundSensitivity",
+          "sensitivity": "off"
         },
         {
-          "range": [6, 255],
-          "name": "Mic Sensitivity Low-High",
+          "dmxRange": [6, 255],
+          "type": "SoundSensitivity",
+          "sensitivityStart": "low",
+          "sensitivityEnd": "high",
           "menuClick": "center"
         }
       ]
     },
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
     }
   },
   "modes": [
