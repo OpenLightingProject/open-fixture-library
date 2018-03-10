@@ -100,29 +100,15 @@ export default {
     };
   },
   async asyncData({ query, app }) {
-    const searchQuery = (query.q || ``).trim();
-
-    let manufacturersQuery = query.manufacturers || [];
-    if (typeof manufacturersQuery === `string`) {
-      manufacturersQuery = [manufacturersQuery];
-    }
-
-    let categoriesQuery = query.categories || [];
-    if (typeof categoriesQuery === `string`) {
-      categoriesQuery = [categoriesQuery];
-    }
+    const sanitizedQuery = getSanitizedQuery(query);
 
     return {
-      searchFor: searchQuery,
-      searchQuery,
-      manufacturersQuery,
-      categoriesQuery,
-      detailsInitiallyOpen: manufacturersQuery.length > 0 || categoriesQuery.length > 0,
-      results: await app.$axios.$post(`/ajax/get-search-results`, {
-        searchQuery,
-        manufacturersQuery,
-        categoriesQuery
-      })
+      searchFor: sanitizedQuery.search,
+      searchQuery: sanitizedQuery.search,
+      manufacturersQuery: sanitizedQuery.manufacturers,
+      categoriesQuery: sanitizedQuery.categories,
+      detailsInitiallyOpen: sanitizedQuery.manufacturers.length > 0 || sanitizedQuery.categories.length > 0,
+      results: await getSearchResults(app.$axios, sanitizedQuery)
     };
   },
   data() {
@@ -177,14 +163,54 @@ export default {
     },
     async updateResults() {
       this.loading = true;
-      this.results = await this.$axios.$post(`/ajax/get-search-results`, {
-        searchQuery: this.searchQuery,
-        manufacturersQuery: this.manufacturersQuery,
-        categoriesQuery: this.categoriesQuery
-      });
-      this.searchFor = this.searchQuery;
+
+      const sanitizedQuery = getSanitizedQuery(this.$router.history.current.query);
+      this.searchQuery = sanitizedQuery.search;
+      this.manufacturersQuery = sanitizedQuery.manufacturers;
+      this.categoriesQuery = sanitizedQuery.categories;
+      this.results = await getSearchResults(this.$axios, sanitizedQuery);
+      this.searchFor = sanitizedQuery.search;
+
       this.loading = false;
     }
   }
 };
+
+/**
+ * @param {!object} query The raw query returned by Vue Router
+ * @returns {!object} Object with properties "search" (string), "manufacturers" and "categories" (arrays of strings).
+ */
+function getSanitizedQuery(query) {
+  const searchQuery = (query.q || ``).trim();
+
+  let manufacturersQuery = query.manufacturers || [];
+  if (typeof manufacturersQuery === `string`) {
+    manufacturersQuery = [manufacturersQuery];
+  }
+
+  let categoriesQuery = query.categories || [];
+  if (typeof categoriesQuery === `string`) {
+    categoriesQuery = [categoriesQuery];
+  }
+
+  return {
+    search: searchQuery,
+    manufacturers: manufacturersQuery,
+    categories: categoriesQuery
+  };
+}
+
+/**
+ * Request search results from the backend.
+ * @param {!object} axios The axios instance to use.
+ * @param {!object} sanitizedQuery A query object like returned from @see getSanitizedQuery.
+ * @returns {!Promise} The request promise.
+ */
+function getSearchResults(axios, sanitizedQuery) {
+  return axios.$post(`/ajax/get-search-results`, {
+    searchQuery: sanitizedQuery.search,
+    manufacturersQuery: sanitizedQuery.manufacturers,
+    categoriesQuery: sanitizedQuery.categories
+  });
+}
 </script>
