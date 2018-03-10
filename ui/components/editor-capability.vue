@@ -264,7 +264,6 @@ export default {
       }
     },
     insertCapabilityBefore() {
-      console.log(`insert before`, this.capIndex, this.capabilities);
       this.spliceCapabilities(this.capIndex, 0, getEmptyCapability());
 
       const dialog = this.$el.closest(`.dialog`);

@@ -23,7 +23,7 @@
           </option>
         </select>
         <span class="error-message" hidden />
-        or <a href="#create-channel" @click.prevent="channel.editMode = `create`">create a new channel</a>
+        or <a href="#create-channel" @click.prevent="setEditModeCreate">create a new channel</a>
       </div>
 
       <div v-else>
@@ -332,6 +332,11 @@ export default {
     }
   },
   methods: {
+    setEditModeCreate() {
+      this.channel.editMode = `create`;
+      this.channel.uuid = uuidV4();
+    },
+
     getChannelName(channelUuid) {
       const fixtureEditor = this.$parent;
       return fixtureEditor.getChannelName(channelUuid);

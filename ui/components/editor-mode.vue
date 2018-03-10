@@ -127,6 +127,11 @@
 </style>
 
 <style lang="scss" scoped>
+ol.mode-channels {
+  margin: 0 0 1ex;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
 .mode-channels a {
   opacity: 0;
   float: right;

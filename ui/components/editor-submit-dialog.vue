@@ -53,7 +53,7 @@ textarea[readonly] {
   padding: 1em;
   border: none;
   width: 100%;
-  max-height: 15em;
+  height: 15em;
   overflow: auto;
   resize: none;
 }

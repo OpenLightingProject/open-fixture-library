@@ -232,7 +232,7 @@ function getFineChannelAlias(channelKey, fineness) {
 
 function getCapabilities(channel) {
   return channel.capabilities.filter(
-    cap => cap.start !== ``
+    cap => cap.range !== null
   ).map(cap => {
     const capability = {};
 
