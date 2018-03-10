@@ -6,7 +6,7 @@ const manufacturers = require(`../../fixtures/manufacturers.json`);
  * @param {!object} request Passed from Express.
  * @param {!object} response Passed from Express.
  */
-module.exports = function addFixtures(request, response) {
+module.exports = function getSearchResults(request, response) {
   const { searchQuery, manufacturersQuery, categoriesQuery } = request.body;
 
   const results = Object.keys(register.filesystem).filter(

@@ -10,8 +10,9 @@ const plugins = {
   data: {}
 };
 
-for (const pluginKey of fs.readdirSync(path.join(__dirname, `../plugins`))) {
-  const pluginPath = path.join(__dirname, `../plugins`, pluginKey);
+const pluginDir = path.join(__dirname, `../plugins`);
+for (const pluginKey of fs.readdirSync(pluginDir)) {
+  const pluginPath = path.join(pluginDir, pluginKey);
 
   // files are not plugins
   if (!fs.statSync(pluginPath).isDirectory()) {
@@ -69,8 +70,8 @@ for (const pluginKey of fs.readdirSync(path.join(__dirname, `../plugins`))) {
   plugins.data[pluginKey] = data;
 }
 
-const filename = path.join(__dirname, `../plugins/plugins.json`);
-fs.writeFileSync(filename, JSON.stringify(plugins, null, 2), `utf8`, error => {
+const filename = path.join(pluginDir, `plugins.json`);
+fs.writeFile(filename, JSON.stringify(plugins, null, 2), `utf8`, error => {
   if (error) {
     console.error(`${colors.red(`[Fail]`)} Could not write plugin data file.`, error);
     process.exit(1);
