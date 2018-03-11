@@ -39,7 +39,7 @@ Required properties are _italic_, the entity is written in (parentheses).
 * Intensity
   * _brightness_ (Brightness)
 * ColorIntensity
-  * _color_: one of our predefined Single Colors (Red, Green, Blue, White, Amber, etc.)
+  * _color_: one of our predefined Single Colors: `Red`, `Green`, `Blue`, `Cyan`, `Magenta`, `Yellow`, `Amber`, `White`, `UV`, `Lime`, `Indigo`
   * _brightness_ (Brightness)
 * ColorPreset
   * colors: array of individual color beams, either as hex code or color name (like `Red` or `Lavender`) that will be automatically resolved to a hex code if possible. "Individual color beams" means that is visually distinguishable from the other colors, i.e.:
