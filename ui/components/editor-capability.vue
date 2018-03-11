@@ -8,8 +8,6 @@
       :min="min"
       :max="max"
       :required="isChanged"
-      complete-range
-      valid-range
       @start-updated="onStartUpdated"
       @end-updated="onEndUpdated" />
     <span class="capability-data">

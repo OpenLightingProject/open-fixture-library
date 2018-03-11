@@ -1,36 +1,44 @@
 <template>
-  <span class="dimensions">
-    <!-- TODO: validate the individual sub fields -->
-    <app-property-input-number
-      ref="xInput"
-      v-model="x"
-      :schema-property="schemaProperty.items"
-      :required="required || dimensionsIncomplete"
-      :hint="hints[0]"
-      @focus.native="onFocus"
-      @blur.native="onBlur($event)"
-      @focusin.native.stop
-      @focusout.native.stop />
+  <span class="dimensions" complete-dimensions>
+    <validate :state="formstate" tag="span">
+      <app-property-input-number
+        ref="xInput"
+        v-model="x"
+        :name="`${name}-x`"
+        :schema-property="schemaProperty.items"
+        :required="required || dimensionsSpecified"
+        :hint="hints[0]"
+        @focus.native="onFocus"
+        @blur.native="onBlur($event)"
+        @focusin.native.stop
+        @focusout.native.stop />
+    </validate>
     &times;
-    <app-property-input-number
-      v-model="y"
-      :schema-property="schemaProperty.items"
-      :required="required || dimensionsIncomplete"
-      :hint="hints[1]"
-      @focus.native="onFocus"
-      @blur.native="onBlur($event)"
-      @focusin.native.stop
-      @focusout.native.stop />
+    <validate :state="formstate" tag="span">
+      <app-property-input-number
+        v-model="y"
+        :name="`${name}-y`"
+        :schema-property="schemaProperty.items"
+        :required="required || dimensionsSpecified"
+        :hint="hints[1]"
+        @focus.native="onFocus"
+        @blur.native="onBlur($event)"
+        @focusin.native.stop
+        @focusout.native.stop />
+    </validate>
     &times;
-    <app-property-input-number
-      v-model="z"
-      :schema-property="schemaProperty.items"
-      :required="required || dimensionsIncomplete"
-      :hint="hints[2]"
-      @focus.native="onFocus"
-      @blur.native="onBlur($event)"
-      @focusin.native.stop
-      @focusout.native.stop />
+    <validate :state="formstate" tag="span">
+      <app-property-input-number
+        v-model="z"
+        :name="`${name}-z`"
+        :schema-property="schemaProperty.items"
+        :required="required || dimensionsSpecified"
+        :hint="hints[2]"
+        @focus.native="onFocus"
+        @blur.native="onBlur($event)"
+        @focusin.native.stop
+        @focusout.native.stop />
+    </validate>
     {{ unit }}
   </span>
 </template>
@@ -69,6 +77,14 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    name: {
+      type: String,
+      required: true
+    },
+    formstate: {
+      type: Object,
+      required: true
     }
   },
   computed: {
@@ -96,8 +112,8 @@ export default {
         this.$emit(`input`, getDimensionsArray(this.x, this.y, zInput));
       }
     },
-    dimensionsIncomplete() {
-      return this.dimensions && (this.x === null || this.y === null || this.z === null);
+    dimensionsSpecified() {
+      return this.dimensions !== null;
     }
   },
   methods: {

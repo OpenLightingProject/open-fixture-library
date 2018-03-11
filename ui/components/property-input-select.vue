@@ -1,5 +1,9 @@
 <template>
-  <select ref="input" :required="required" @input="update">
+  <select
+    ref="input"
+    :required="required"
+    :class="{empty: value === ``}"
+    @input="update">
     <option :selected="value === ``" value="">unknown</option>
     <option
       v-for="item in schemaProperty.enum"

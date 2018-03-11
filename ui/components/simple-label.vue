@@ -76,7 +76,6 @@ export default {
         return this.name;
       }
 
-      // TODO: make use of these sub-fields (in range / dimensions / etc. input components)
       const subFieldNames = Object.keys(this.formstate).filter(
         name => name.startsWith(this.name)
       );

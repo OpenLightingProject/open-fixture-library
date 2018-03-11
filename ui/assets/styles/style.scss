@@ -164,10 +164,9 @@ input[type=email],
 input[type=search],
 input[type=url],
 input[type=number] {
-  /* TODO: the :invalid rules should not be necessary */
-  &:not([vue-form-validator]):invalid,
   &.vf-touched.vf-invalid,
-  &.vf-submitted.vf-invalid {
+  &.vf-submitted.vf-invalid,
+  &.vf-touched[class^=vf-invalid-] {
     border-color: red;
     box-shadow: 0 0 4px rgba(255, 0, 0, 0.4);
   }
@@ -176,6 +175,21 @@ input[type=number] {
 .error-message {
   display: block;
   color: red;
+
+  & div::before {
+    content: '!';
+    display: inline-block;
+    height: 1em;
+    line-height: 1em;
+    width: 1em;
+    margin: -2px 1ex 0 0;
+    text-align: center;
+    background: red;
+    border-radius: 9999px;
+    color: white;
+    font-weight: bold;
+    vertical-align: middle;
+  }
 }
 
 textarea {
@@ -200,9 +214,18 @@ input[type=url] {
   width: 40ex;
 }
 
+input.addition {
+  margin-left: 1ex;
+}
+
 select.empty {
   color: $secondary-text-dark;
   font-style: italic;
+
+  & option {
+    color: $primary-text-dark;
+    font-style: normal;
+  }
 }
 
 input::-webkit-input-placeholder {
@@ -224,17 +247,24 @@ input::placeholder {
   opacity: 1;
 }
 
-.no-details {
-  details, summary {
-    display: block;
-  }
-}
-
 .button-bar {
   margin: 2ex 0 0;
-}
-.button-bar.right {
-  text-align: right;
+
+  &.right {
+    text-align: right;
+
+    & button,
+    & input {
+      margin-left: 1ex;
+    }
+  }
+
+  &:not(.right) {
+    & button,
+    & input {
+      margin-right: 1ex;
+    }
+  }
 }
 
 button.primary,

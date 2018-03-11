@@ -1,33 +1,36 @@
 <template>
-  <span class="range">
-    <!-- TODO: validate the individual sub fields -->
-    <app-property-input-number
-      :name="`${name}-start`"
-      v-model="start"
-      :schema-property="schemaProperty.items"
-      :min="min"
-      :max="end !== `invalid` ? end : max"
-      :required="required || rangeIncomplete"
-      :hint="startHint"
-      type="number"
-      @focus.native="onFocus"
-      @blur.native="onBlur($event)"
-      @focusin.native.stop
-      @focusout.native.stop />
+  <span class="range" complete-range valid-range>
+    <validate :state="formstate" tag="span">
+      <app-property-input-number
+        v-model="start"
+        :name="`${name}-start`"
+        :schema-property="schemaProperty.items"
+        :min="min"
+        :max="end !== `invalid` ? end : max"
+        :required="required || rangeIncomplete"
+        :hint="startHint"
+        type="number"
+        @focus.native="onFocus"
+        @blur.native="onBlur($event)"
+        @focusin.native.stop
+        @focusout.native.stop />
+    </validate>
     …
-    <app-property-input-number
-      :name="`${name}-end`"
-      v-model="end"
-      :schema-property="schemaProperty.items"
-      :min="start !== `invalid` ? start : min"
-      :max="max"
-      :required="required || rangeIncomplete"
-      :hint="endHint"
-      type="number"
-      @focus.native="onFocus"
-      @blur.native="onBlur($event)"
-      @focusin.native.stop
-      @focusout.native.stop />
+    <validate :state="formstate" tag="span">
+      <app-property-input-number
+        v-model="end"
+        :name="`${name}-end`"
+        :schema-property="schemaProperty.items"
+        :min="start !== `invalid` ? start : min"
+        :max="max"
+        :required="required || rangeIncomplete"
+        :hint="endHint"
+        type="number"
+        @focus.native="onFocus"
+        @blur.native="onBlur($event)"
+        @focusin.native.stop
+        @focusout.native.stop />
+    </validate>
     {{ unit }}
   </span>
 </template>

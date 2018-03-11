@@ -39,7 +39,6 @@
             class="channelName" />
         </app-simple-label>
 
-        <!-- TODO: validate this right -->
         <app-simple-label :formstate="formstate" name="type" label="Type">
           <app-property-input-select
             v-model="channel.type"
@@ -47,15 +46,21 @@
             :required="true"
             name="type"
             addition-hint="other channel type" />
-          <app-property-input-text
+          <validate
             v-if="channel.type === `[add-value]`"
-            v-model="channel.typeNew"
-            :schema-property="properties.definitions.nonEmptyString"
-            :required="true"
-            hint="other channel type" />
+            :state="formstate"
+            tag="span">
+            <app-property-input-text
+              v-model="channel.typeNew"
+              :name="`typeNew`"
+              :schema-property="properties.definitions.nonEmptyString"
+              :required="true"
+              :auto-focus="true"
+              hint="other channel type"
+              class="addition" />
+          </validate>
         </app-simple-label>
 
-        <!-- TODO: validate this right -->
         <app-simple-label
           v-if="channel.type === `Single Color`"
           :formstate="formstate"
@@ -67,12 +72,19 @@
             :required="true"
             name="color"
             addition-hint="other channel color" />
-          <app-property-input-text
+          <validate
             v-if="channel.color === `[add-value]`"
-            v-model="channel.colorNew"
-            :schema-property="properties.definitions.nonEmptyString"
-            :required="true"
-            hint="other channel color" />
+            :state="formstate"
+            tag="span">
+            <app-property-input-text
+              v-model="channel.colorNew"
+              :name="`colorNew`"
+              :schema-property="properties.definitions.nonEmptyString"
+              :required="true"
+              :auto-focus="true"
+              hint="other channel color"
+              class="addition" />
+          </validate>
         </app-simple-label>
 
         <h3>DMX values</h3>

@@ -8,7 +8,7 @@
         :name="`${namePrefix}-physical-dimensions`"
         :schema-property="properties.dimensionsXYZ"
         :hints="[`width`, `height`, `depth`]"
-        complete-dimensions
+        :formstate="formstate"
         unit="mm" />
     </app-simple-label>
 
@@ -26,23 +26,26 @@
         :schema-property="properties.physical.power" /> W
     </app-simple-label>
 
-    <!-- TODO: validate this -->
-    <section class="physical-DMXconnector">
-      <app-simple-label label="DMX connector">
-        <app-property-input-select
-          v-model="physical.DMXconnector"
-          :schema-property="properties.physical.DMXconnector"
-          addition-hint="other DMX connector" />
+    <app-simple-label :formstate="formstate" :name="`${namePrefix}-physical-DMXconnector`" label="DMX connector">
+      <app-property-input-select
+        v-model="physical.DMXconnector"
+        :name="`${namePrefix}-physical-DMXconnector`"
+        :schema-property="properties.physical.DMXconnector"
+        addition-hint="other DMX connector" />
+      <validate
+        v-if="physical.DMXconnector === `[add-value]`"
+        :state="formstate"
+        tag="span">
         <app-property-input-text
-          v-if="physical.DMXconnector === `[add-value]`"
           v-model="physical.DMXconnectorNew"
+          :name="`${namePrefix}-physical-DMXconnectorNew`"
           :schema-property="properties.definitions.nonEmptyString"
           :required="true"
           :auto-focus="true"
           hint="other DMX connector"
           class="addition" />
-      </app-simple-label>
-    </section>
+      </validate>
+    </app-simple-label>
 
 
     <h4>Bulb</h4>
@@ -84,8 +87,6 @@
         v-model="physical.lens.degreesMinMax"
         :name="`${namePrefix}-physical-lens-degreesMinMax`"
         :schema-property="properties.physicalLens.degreesMinMax"
-        complete-range
-        valid-range
         start-hint="min"
         end-hint="max"
         unit="°" />
@@ -94,23 +95,26 @@
 
     <h4>Focus</h4>
 
-    <!-- TODO: validate this -->
-    <section class="physical-focus-type">
-      <app-simple-label label="Focus type">
-        <app-property-input-select
-          v-model="physical.focus.type"
-          :schema-property="properties.physicalFocus.type"
-          addition-hint="other focus type" />
+    <app-simple-label :formstate="formstate" :name="`${namePrefix}-physical-focus-type`" label="Focus type">
+      <app-property-input-select
+        v-model="physical.focus.type"
+        :name="`${namePrefix}-physical-focus-type`"
+        :schema-property="properties.physicalFocus.type"
+        addition-hint="other focus type" />
+      <validate
+        v-if="physical.focus.type === `[add-value]`"
+        :state="formstate"
+        tag="span">
         <app-property-input-text
-          v-if="physical.focus.type === `[add-value]`"
           v-model="physical.focus.typeNew"
+          :name="`${namePrefix}-physical-focus-typeNew`"
           :schema-property="properties.definitions.nonEmptyString"
           :required="true"
           :auto-focus="true"
           hint="other focus type"
           class="addition" />
-      </app-simple-label>
-    </section>
+      </validate>
+    </app-simple-label>
 
     <app-simple-label :formstate="formstate" :name="`${namePrefix}-physical-focus-panMax`" label="Pan maximum">
       <app-property-input-number
