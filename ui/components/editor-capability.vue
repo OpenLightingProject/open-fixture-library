@@ -104,15 +104,15 @@ export default {
     prop: `capabilities`
   },
   props: {
-    'capabilities': {
+    capabilities: {
       type: Array,
       required: true
     },
-    'capIndex': {
+    capIndex: {
       type: Number,
       required: true
     },
-    'fineness': {
+    fineness: {
       type: Number,
       required: true
     }

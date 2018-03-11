@@ -246,11 +246,11 @@ export default {
     prop: `channel`
   },
   props: {
-    'channel': {
+    channel: {
       type: Object,
       required: true
     },
-    'fixture': {
+    fixture: {
       type: Object,
       required: true
     }

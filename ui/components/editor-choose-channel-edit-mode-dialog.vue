@@ -22,11 +22,11 @@ export default {
     'app-a11y-dialog': a11yDialogVue
   },
   props: {
-    'channel': {
+    channel: {
       type: Object,
       required: true
     },
-    'fixture': {
+    fixture: {
       type: Object,
       required: true
     }

@@ -96,20 +96,20 @@ export default {
     'app-svg': svgVue
   },
   props: {
-    'id': {
+    id: {
       type: String,
       required: true
     },
-    'cancellable': {
+    cancellable: {
       type: Boolean,
       required: false,
       default: true
     },
-    'shown': {
+    shown: {
       type: Boolean,
       required: true
     },
-    'title': {
+    title: {
       type: String,
       required: true
     }

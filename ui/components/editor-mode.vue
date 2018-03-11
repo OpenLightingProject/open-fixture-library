@@ -171,19 +171,19 @@ export default {
     prop: `mode`
   },
   props: {
-    'mode': {
+    mode: {
       type: Object,
       required: true
     },
-    'index': {
+    index: {
       type: Number,
       required: true
     },
-    'fixture': {
+    fixture: {
       type: Object,
       required: true
     },
-    'formstate': {
+    formstate: {
       type: Object,
       required: true
     }
