@@ -257,7 +257,7 @@
         {
           "dmxRange": [0, 4],
           "type": "ShutterStrobe",
-          "effect": "Closed"
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [5, 131],
@@ -268,14 +268,14 @@
         {
           "dmxRange": [132, 252],
           "type": "ShutterStrobe",
-          "effect": "Strobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [253, 255],
           "type": "ShutterStrobe",
-          "effect": "Open"
+          "shutterEffect": "Open"
         }
       ]
     },

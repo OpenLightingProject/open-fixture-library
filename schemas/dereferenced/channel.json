@@ -137,7 +137,7 @@
                 "comment": {},
                 "menuClick": {},
                 "switchChannels": {},
-                "effect": {
+                "shutterEffect": {
                   "enum": [
                     "Open",
                     "Closed",
@@ -285,7 +285,7 @@
                 }
               },
               "required": [
-                "effect"
+                "shutterEffect"
               ],
               "not": {
                 "required": [
@@ -691,7 +691,7 @@
                       {
                         "$comment": "Color name",
                         "type": "string",
-                        "pattern": "^[0-9a-zA-Z -]+$"
+                        "pattern": "^[a-zA-Z -]+$"
                       }
                     ]
                   }
@@ -709,7 +709,7 @@
                       {
                         "$comment": "Color name",
                         "type": "string",
-                        "pattern": "^[0-9a-zA-Z -]+$"
+                        "pattern": "^[a-zA-Z -]+$"
                       }
                     ]
                   }
@@ -727,7 +727,7 @@
                       {
                         "$comment": "Color name",
                         "type": "string",
-                        "pattern": "^[0-9a-zA-Z -]+$"
+                        "pattern": "^[a-zA-Z -]+$"
                       }
                     ]
                   }
@@ -3958,7 +3958,7 @@
                   "comment": {},
                   "menuClick": {},
                   "switchChannels": {},
-                  "effect": {
+                  "shutterEffect": {
                     "enum": [
                       "Open",
                       "Closed",
@@ -4106,7 +4106,7 @@
                   }
                 },
                 "required": [
-                  "effect"
+                  "shutterEffect"
                 ],
                 "not": {
                   "required": [
@@ -4512,7 +4512,7 @@
                         {
                           "$comment": "Color name",
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z -]+$"
+                          "pattern": "^[a-zA-Z -]+$"
                         }
                       ]
                     }
@@ -4530,7 +4530,7 @@
                         {
                           "$comment": "Color name",
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z -]+$"
+                          "pattern": "^[a-zA-Z -]+$"
                         }
                       ]
                     }
@@ -4548,7 +4548,7 @@
                         {
                           "$comment": "Color name",
                           "type": "string",
-                          "pattern": "^[0-9a-zA-Z -]+$"
+                          "pattern": "^[a-zA-Z -]+$"
                         }
                       ]
                     }

@@ -29,7 +29,7 @@ Required properties are _italic_, the entity is written in (parentheses).
 
 * Nothing
 * ShutterStrobe
-  * _effect_: one of `Open`, `Closed`, `Strobe`, `StrobeRandom`, `Pulse`, `PulseRandom`, `RampUp`, `RampUpRandom`, `RampDown`, `RampDownRandom`
+  * _shutterEffect_: one of `Open`, `Closed`, `Strobe`, `StrobeRandom`, `Pulse`, `PulseRandom`, `RampUp`, `RampUpRandom`, `RampDown`, `RampDownRandom`
   * speed (Speed) (can't be used together with time)
   * duration (Time) (can't be used together with speed)
 * StrobeSpeed (global, doesn't activate strobe directly)

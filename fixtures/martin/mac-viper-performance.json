@@ -39,30 +39,30 @@
         {
           "dmxRange": [0, 19],
           "type": "ShutterStrobe",
-          "effect": "Closed",
+          "shutterEffect": "Closed",
           "comment": "800W mode after 10s"
         },
         {
           "dmxRange": [20, 49],
           "type": "ShutterStrobe",
-          "effect": "Open"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [50, 200],
           "type": "ShutterStrobe",
-          "effect": "Strobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [201, 210],
           "type": "ShutterStrobe",
-          "effect": "Open"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [211, 255],
           "type": "ShutterStrobe",
-          "effect": "StrobeRandom",
+          "shutterEffect": "StrobeRandom",
           "speedStart": "slow",
           "speedEnd": "fast"
         }

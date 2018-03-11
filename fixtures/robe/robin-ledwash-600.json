@@ -382,20 +382,20 @@
         {
           "dmxRange": [0, 31],
           "type": "ShutterStrobe",
-          "effect": "Closed"
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [32, 63],
           "type": "ShutterStrobe",
           "comment": "Outer zone",
-          "effect": "Strobe",
+          "shutterEffect": "Strobe",
           "speedStart": "0.3Hz",
           "speedEnd": "20Hz"
         },
         {
           "dmxRange": [64, 95],
           "type": "ShutterStrobe",
-          "effect": "Strobe",
+          "shutterEffect": "Strobe",
           "speedStart": "0.3Hz",
           "speedEnd": "20Hz"
         },
@@ -416,14 +416,14 @@
         {
           "dmxRange": [128, 143],
           "type": "ShutterStrobe",
-          "effect": "RampUp",
+          "shutterEffect": "RampUp",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [144, 159],
           "type": "ShutterStrobe",
-          "effect": "RampDown",
+          "shutterEffect": "RampDown",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -431,7 +431,7 @@
           "dmxRange": [160, 175],
           "type": "ShutterStrobe",
           "comment": "Random zone",
-          "effect": "Strobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
@@ -439,21 +439,21 @@
           "dmxRange": [176, 191],
           "type": "ShutterStrobe",
           "comment": "Random zone",
-          "effect": "StrobeRandom",
+          "shutterEffect": "StrobeRandom",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [192, 223],
           "type": "ShutterStrobe",
-          "effect": "StrobeRandom",
+          "shutterEffect": "StrobeRandom",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [224, 255],
           "type": "ShutterStrobe",
-          "effect": "Open"
+          "shutterEffect": "Open"
         }
       ]
     },

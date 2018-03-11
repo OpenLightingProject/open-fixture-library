@@ -154,13 +154,13 @@
         {
           "dmxRange": [238, 253],
           "type": "ShutterStrobe",
-          "effect": "Strobe",
+          "shutterEffect": "Strobe",
           "speed": "slow"
         },
         {
           "dmxRange": [254, 255],
           "type": "ShutterStrobe",
-          "effect": "Strobe",
+          "shutterEffect": "Strobe",
           "speed": "fast"
         }
       ]
@@ -170,59 +170,59 @@
         {
           "dmxRange": [0, 23],
           "type": "ShutterStrobe",
-          "effect": "Closed"
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [24, 225],
           "type": "ShutterStrobe",
-          "effect": "Open"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [226, 229],
           "type": "ShutterStrobe",
-          "effect": "Strobe",
+          "shutterEffect": "Strobe",
           "speed": "slow"
         },
         {
           "dmxRange": [230, 233],
           "type": "ShutterStrobe",
           "comment": "Strobe 2",
-          "effect": "Strobe"
+          "shutterEffect": "Strobe"
         },
         {
           "dmxRange": [234, 237],
           "type": "ShutterStrobe",
           "comment": "Strobe 3",
-          "effect": "Strobe"
+          "shutterEffect": "Strobe"
         },
         {
           "dmxRange": [238, 241],
           "type": "ShutterStrobe",
           "comment": "Strobe 4",
-          "effect": "Strobe"
+          "shutterEffect": "Strobe"
         },
         {
           "dmxRange": [242, 245],
           "type": "ShutterStrobe",
           "comment": "Strobe 5",
-          "effect": "Strobe"
+          "shutterEffect": "Strobe"
         },
         {
           "dmxRange": [246, 249],
           "type": "ShutterStrobe",
           "comment": "Strobe 6",
-          "effect": "Strobe"
+          "shutterEffect": "Strobe"
         },
         {
           "dmxRange": [250, 253],
           "type": "ShutterStrobe",
           "comment": "Strobe 7",
-          "effect": "Strobe"
+          "shutterEffect": "Strobe"
         },
         {
           "dmxRange": [254, 255],
           "type": "ShutterStrobe",
-          "effect": "Strobe",
+          "shutterEffect": "Strobe",
           "speed": "fast"
         }
       ]

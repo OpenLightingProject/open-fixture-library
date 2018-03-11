@@ -57,7 +57,7 @@
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
-        "effect": { "enum": ["Open", "Closed", "Strobe", "StrobeRandom", "Pulse", "PulseRandom", "RampUp", "RampUpRandom", "RampDown", "RampDownRandom"] },
+        "shutterEffect": { "enum": ["Open", "Closed", "Strobe", "StrobeRandom", "Pulse", "PulseRandom", "RampUp", "RampUpRandom", "RampDown", "RampDownRandom"] },
         "speed": { "$ref": "definitions.json#/entities/speed" },
         "speedStart": { "$ref": "definitions.json#/entities/speed" },
         "speedEnd": { "$ref": "definitions.json#/entities/speed" },
@@ -65,7 +65,7 @@
         "durationStart": { "$ref": "definitions.json#/entities/time" },
         "durationEnd": { "$ref": "definitions.json#/entities/time" }
       },
-      "required": ["effect"],
+      "required": ["shutterEffect"],
       "not": { "required": ["speed", "duration"] },
       "additionalProperties": false
     },

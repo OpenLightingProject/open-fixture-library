@@ -247,19 +247,19 @@
         {
           "dmxRange": [32, 95],
           "type": "ShutterStrobe",
-          "effect": "Strobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [96, 159],
           "type": "ShutterStrobe",
-          "effect": "Pulse"
+          "shutterEffect": "Pulse"
         },
         {
           "dmxRange": [160, 255],
           "type": "ShutterStrobe",
-          "effect": "StrobeRandom",
+          "shutterEffect": "StrobeRandom",
           "speedStart": "slow",
           "speedEnd": "fast"
         }

@@ -65,19 +65,19 @@
         {
           "dmxRange": [0, 127],
           "type": "ShutterStrobe",
-          "effect": "Open"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [128, 191],
           "type": "ShutterStrobe",
-          "effect": "Strobe",
+          "shutterEffect": "Strobe",
           "speedStart": "0Hz",
           "speedEnd": "18Hz"
         },
         {
           "dmxRange": [192, 255],
           "type": "ShutterStrobe",
-          "effect": "StrobeRandom",
+          "shutterEffect": "StrobeRandom",
           "speedStart": "0Hz",
           "speedEnd": "18Hz"
         }
