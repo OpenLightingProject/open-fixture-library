@@ -718,27 +718,22 @@ function checkUnusedChannels() {
 function checkCategories() {
   const categories = {
     'Color Changer': {
-      isSuggested: () => hasCapabilityType(`ColorPreset`) || hasCapabilityType(`ColorWheelIndex`) || hasCapabilityType(`ColorIntensity`, 2),
+      isSuggested: isColorChanger(),
       suggestedPhrase: `there are at least one ColorPreset, ColorWheelIndex or two ColorIntensity capabilities`,
       invalidPhrase: `there are no ColorPreset, ColorWheelIndex and less than two ColorIntensity capabilities`
     },
     'Moving Head': {
-      isSuggested: () => {
-        const hasFocusTypeHead = fixture.physical !== null && fixture.physical.focusType === `Head`;
-        const hasPanTilt = (hasCapabilityType(`Pan`) || hasCapabilityType(`PanContinuous`))
-                        && (hasCapabilityType(`Tilt`) || hasCapabilityType(`TiltContinuous`));
-        return hasFocusTypeHead || hasPanTilt;
-      },
+      isSuggested: isMovingHead(),
       suggestedPhrase: `focus.type is 'Head' or there's a Pan(Continuous) and a Tilt(Continuous) capability`,
       invalidPhrase: `focus.type is not 'Head' or there's not a Pan(Continuous) and a Tilt(Continuous) capability`
     },
     'Smoke': {
-      isSuggested: () => hasCapabilityPropertyValue(`fogType`, `Fog`),
+      isSuggested: hasCapabilityPropertyValue(`fogType`, `Fog`),
       suggestedPhrase: `a FogOn or FogType capability has fogType='Fog'`,
       invalidPhrase: `no FogOn or FogType capability has fogType='Fog'`
     },
     'Hazer': {
-      isSuggested: () => hasCapabilityPropertyValue(`fogType`, `Haze`),
+      isSuggested: hasCapabilityPropertyValue(`fogType`, `Haze`),
       suggestedPhrase: `a FogOn or FogType capability has fogType='Haze'`,
       invalidPhrase: `no FogOn or FogType capability has fogType='Haze'`
     }
@@ -748,13 +743,29 @@ function checkCategories() {
     const categoryUsed = fixture.categories.includes(categoryName);
     const category = categories[categoryName];
 
-    const suggested = category.isSuggested();
-    if (!categoryUsed && suggested) {
+    if (!categoryUsed && category.isSuggested) {
       result.warnings.push(`Category '${categoryName}' suggested since ${category.suggestedPhrase}.`);
     }
-    else if (categoryUsed && !suggested) {
+    else if (categoryUsed && !category.isSuggested) {
       result.warnings.push(`Category '${categoryName}' invalid since ${category.invalidPhrase}.`);
     }
+  }
+
+  /**
+   * @returns {!boolean} Whether the 'Color Changer' category is suggested.
+  */
+  function isColorChanger() {
+    return hasCapabilityType(`ColorPreset`) || hasCapabilityType(`ColorWheelIndex`) || hasCapabilityType(`ColorIntensity`, 2);
+  }
+
+  /**
+   * @returns {!boolean} Whether the 'Moving Head' category is suggested.
+  */
+  function isMovingHead() {
+    const hasFocusTypeHead = fixture.physical !== null && fixture.physical.focusType === `Head`;
+    const hasPanTilt = (hasCapabilityType(`Pan`) || hasCapabilityType(`PanContinuous`))
+                    && (hasCapabilityType(`Tilt`) || hasCapabilityType(`TiltContinuous`));
+    return hasFocusTypeHead || hasPanTilt;
   }
 
   /**
