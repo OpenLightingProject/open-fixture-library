@@ -1,40 +1,52 @@
 <template>
-  <!-- TODO: validate everything in here -->
   <li class="capability validate-group">
-    <app-property-input-range
-      v-model="capability.range"
-      :formstate="formstate"
-      :name="`capability${capIndex}-range`"
-      :schema-property="properties.capability.range"
-      :range-min="min"
-      :range-max="max"
-      :required="isChanged"
-      @start-updated="onStartUpdated"
-      @end-updated="onEndUpdated" />
-    <span class="capability-data">
-      <input
-        v-model="capability.name"
+    <validate :state="formstate" tag="span">
+      <app-property-input-range
+        v-model="capability.range"
+        :formstate="formstate"
+        :name="`capability${capability.uuid}-range`"
+        :schema-property="properties.capability.range"
+        :range-min="min"
+        :range-max="max"
         :required="isChanged"
-        type="text"
-        placeholder="name"
-        class="name">
+        @start-updated="onStartUpdated"
+        @end-updated="onEndUpdated" />
+    </validate>
+
+    <span class="capability-data">
+      <validate :state="formstate" tag="span">
+        <input
+          v-model="capability.name"
+          :name="`capability${capability.uuid}-name`"
+          :required="isChanged"
+          type="text"
+          placeholder="name"
+          class="name">
+      </validate>
       <br>
-      <input
-        v-model="capability.color"
-        type="text"
-        placeholder="color"
-        pattern="^#[0-9a-f]{6}$"
-        title="#rrggbb"
-        class="color">
-      <input
-        v-if="capability.color !== ``"
-        v-model="capability.color2"
-        type="text"
-        placeholder="color 2"
-        pattern="^#[0-9a-f]{6}$"
-        title="#rrggbb"
-        class="color">
+      <validate :state="formstate" tag="span">
+        <input
+          v-model="capability.color"
+          :name="`capability${capability.uuid}-color`"
+          type="text"
+          placeholder="color"
+          pattern="^#[0-9a-f]{6}$"
+          title="#rrggbb"
+          class="color">
+      </validate>
+      <validate :state="formstate" tag="span">
+        <input
+          v-if="capability.color !== ``"
+          v-model="capability.color2"
+          :name="`capability${capability.uuid}-color2`"
+          type="text"
+          placeholder="color 2"
+          pattern="^#[0-9a-f]{6}$"
+          title="#rrggbb"
+          class="color">
+      </validate>
     </span>
+
     <span class="buttons">
       <a
         v-if="isChanged"
@@ -45,7 +57,20 @@
         <app-svg name="close" />
       </a>
     </span>
-    <span class="error-message" hidden />
+
+    <div
+      v-show="fieldState.$touched || fieldState.$submitted"
+      class="error-message">
+      <div v-if="fieldErrors.required">Please fill out this field.</div>
+      <div v-else-if="fieldErrors.number">Please enter a number.</div>
+      <div v-else-if="fieldErrors.min && capIndex === 0">The first range has to start at 0.</div>
+      <div v-else-if="fieldErrors.max && capIndex === capabilities.length - 1">The last range has to end at {{ dmxMax }}.</div>
+      <div v-else-if="fieldErrors.min || fieldErrors.max">Ranges must not overlap.</div>
+
+      <!-- custom validators -->
+      <div v-else-if="fieldErrors[`complete-range`]">Please fill out both start and end of the range.</div>
+      <div v-else-if="fieldErrors[`valid-range`]">The start value of a range must not be greater than its end.</div>
+    </div>
   </li>
 </template>
 
@@ -116,6 +141,10 @@ export default {
     fineness: {
       type: Number,
       required: true
+    },
+    formstate: {
+      type: Object,
+      required: true
     }
   },
   data() {
@@ -177,6 +206,26 @@ export default {
         index++;
       }
       return max;
+    },
+    fieldState() {
+      const fieldNames = Object.keys(this.formstate).filter(
+        fieldName => fieldName.startsWith(`capability${this.capability.uuid}-`)
+      );
+
+      for (const fieldName of fieldNames) {
+        if (this.formstate.$error[fieldName]) {
+          return this.formstate[fieldName];
+        }
+      }
+
+      return {};
+    },
+    fieldErrors() {
+      if (!(`$valid` in this.fieldState) || this.fieldState.$valid) {
+        return {};
+      }
+
+      return this.fieldState.$error;
     }
   },
   methods: {

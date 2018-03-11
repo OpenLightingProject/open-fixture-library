@@ -186,6 +186,7 @@
             v-for="(cap, index) in channel.capabilities"
             :key="cap.uuid"
             v-model="channel.capabilities"
+            :formstate="formstate"
             :cap-index="index"
             :fineness="Math.min(channel.fineness, channel.capFineness)" />
         </ul>
