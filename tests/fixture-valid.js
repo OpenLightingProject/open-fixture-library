@@ -318,9 +318,7 @@ function checkChannel(channel) {
     result.errors.push(`highlightValue must be less or equal to ${channel.maxDmxBound} in channel '${channel.key}'.`);
   }
 
-  if (channel.hasCapabilities) {
-    checkCapabilities(channel, minUsedFineness);
-  }
+  checkCapabilities(channel, minUsedFineness);
 }
 
 /**
@@ -345,18 +343,18 @@ function checkTemplateVariables(str, allowedVariables) {
 /**
  * Check that a channel's capabilities are valid.
  * @param {!Channel} channel The channel to test.
- * @param {number} minUsedFineness The smallest fineness that the channel is used in a mode. This controls how the capability ranges have to look like.
+ * @param {number} minUsedFineness The smallest fineness that the channel is used in a mode. This controls how the capability dmx ranges have to look like.
  */
 function checkCapabilities(channel, minUsedFineness) {
-  let rangesInvalid = false;
+  let dmxRangesInvalid = false;
 
   for (let i = 0; i < channel.capabilities.length; i++) {
     const cap = channel.capabilities[i];
 
     // if one of the previous capabilities had an invalid range,
     // it doesn't make sense to check later ranges
-    if (!rangesInvalid) {
-      rangesInvalid = !checkRange(channel, i, minUsedFineness);
+    if (!dmxRangesInvalid) {
+      dmxRangesInvalid = !checkDmxRange(channel, i, minUsedFineness);
     }
 
     const switchingChannelAliases = Object.keys(cap.switchChannels);
@@ -383,35 +381,35 @@ function checkCapabilities(channel, minUsedFineness) {
  * @param {number} minUsedFineness The smallest fineness that the channel is used in a mode.This controls if this range can be from 0 up to channel.maxDmxBound or less.
  * @returns {boolean} true if the range is valid, false otherwise. The global `result` object is updated then.
  */
-function checkRange(channel, capNumber, minUsedFineness) {
+function checkDmxRange(channel, capNumber, minUsedFineness) {
   const cap = channel.capabilities[capNumber];
 
   // first capability
-  if (capNumber === 0 && cap.range.start !== 0) {
-    result.errors.push(`The first range has to start at 0 in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
+  if (capNumber === 0 && cap.dmxRange.start !== 0) {
+    result.errors.push(`The first dmxRange has to start at 0 in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
     return false;
   }
 
   // all capabilities
-  if (cap.range.start > cap.range.end) {
-    result.errors.push(`range invalid in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
+  if (cap.dmxRange.start > cap.dmxRange.end) {
+    result.errors.push(`dmxRange invalid in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
     return false;
   }
 
   // not first capability
   const prevCap = capNumber > 0 ? channel.capabilities[capNumber - 1] : null;
-  if (capNumber > 0 && cap.range.start !== prevCap.range.end + 1) {
-    result.errors.push(`ranges must be adjacent in capabilities '${prevCap.name}' (#${capNumber}) and '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
+  if (capNumber > 0 && cap.dmxRange.start !== prevCap.dmxRange.end + 1) {
+    result.errors.push(`dmxRanges must be adjacent in capabilities '${prevCap.name}' (#${capNumber}) and '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
     return false;
   }
 
   // last capability
   if (capNumber === channel.capabilities.length - 1) {
-    const rawRangeEnd = channel.jsonObject.capabilities[capNumber].range[1];
+    const rawDmxRangeEnd = channel.capabilities[capNumber].jsonObject.dmxRange[1];
     const possibleEndValues = getPossibleEndValues(minUsedFineness);
 
-    if (!possibleEndValues.includes(rawRangeEnd)) {
-      result.errors.push(`The last range has to end at ${possibleEndValues.join(` or `)} in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'`);
+    if (!possibleEndValues.includes(rawDmxRangeEnd)) {
+      result.errors.push(`The last dmxRange has to end at ${possibleEndValues.join(` or `)} in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'`);
       return false;
     }
   }
