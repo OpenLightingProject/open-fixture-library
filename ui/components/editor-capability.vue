@@ -3,10 +3,11 @@
   <li class="capability validate-group">
     <app-property-input-range
       v-model="capability.range"
+      :formstate="formstate"
       :name="`capability${capIndex}-range`"
       :schema-property="properties.capability.range"
-      :min="min"
-      :max="max"
+      :range-min="min"
+      :range-max="max"
       :required="isChanged"
       @start-updated="onStartUpdated"
       @end-updated="onEndUpdated" />

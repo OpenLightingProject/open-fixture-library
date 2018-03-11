@@ -87,6 +87,7 @@
         v-model="physical.lens.degreesMinMax"
         :name="`${namePrefix}-physical-lens-degreesMinMax`"
         :schema-property="properties.physicalLens.degreesMinMax"
+        :formstate="formstate"
         start-hint="min"
         end-hint="max"
         unit="°" />

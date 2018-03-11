@@ -5,11 +5,10 @@
         v-model="start"
         :name="`${name}-start`"
         :schema-property="schemaProperty.items"
-        :min="min"
-        :max="end !== `invalid` ? end : max"
+        :minimum="rangeMin"
+        :maximum="end !== `invalid` ? end : rangeMax"
         :required="required || rangeIncomplete"
         :hint="startHint"
-        type="number"
         @focus.native="onFocus"
         @blur.native="onBlur($event)"
         @focusin.native.stop
@@ -21,11 +20,10 @@
         v-model="end"
         :name="`${name}-end`"
         :schema-property="schemaProperty.items"
-        :min="start !== `invalid` ? start : min"
-        :max="max"
+        :minimum="start !== `invalid` ? start : rangeMin"
+        :maximum="rangeMax"
         :required="required || rangeIncomplete"
         :hint="endHint"
-        type="number"
         @focus.native="onFocus"
         @blur.native="onBlur($event)"
         @focusin.native.stop
@@ -65,12 +63,12 @@ export default {
       required: false,
       default: `end`
     },
-    min: {
+    rangeMin: {
       type: Number,
       required: false,
       default: null
     },
-    max: {
+    rangeMax: {
       type: Number,
       required: false,
       default: null
@@ -88,6 +86,10 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    formstate: {
+      type: Object,
+      required: true
     }
   },
   computed: {

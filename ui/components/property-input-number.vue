@@ -2,8 +2,8 @@
   <input
     ref="input"
     :required="required"
-    :min="minimum"
-    :max="maximum"
+    :min="min"
+    :max="max"
     :data-exclusive-minimum="schemaProperty.exclusiveMinimum"
     :data-exclusive-maximum="schemaProperty.exclusiveMaximum"
     :step="schemaProperty.type === `integer` ? 1 : `any`"
@@ -35,12 +35,12 @@ export default {
       required: false,
       default: false
     },
-    min: {
+    minimum: {
       type: [Number, String], // can be the string `invalid`
       required: false,
       default: null
     },
-    max: {
+    maximum: {
       type: [Number, String], // can be the string `invalid`
       required: false,
       default: null
@@ -51,9 +51,9 @@ export default {
     }
   },
   computed: {
-    minimum() {
-      if (this.min !== null && this.min !== `invalid`) {
-        return this.min;
+    min() {
+      if (this.minimum !== null && this.minimum !== `invalid`) {
+        return this.minimum;
       }
 
       if (`minimum` in this.schemaProperty) {
@@ -66,9 +66,9 @@ export default {
 
       return null;
     },
-    maximum() {
-      if (this.max !== null && this.max !== `invalid`) {
-        return this.max;
+    max() {
+      if (this.maximum !== null && this.maximum !== `invalid`) {
+        return this.maximum;
       }
 
       if (`maximum` in this.schemaProperty) {
