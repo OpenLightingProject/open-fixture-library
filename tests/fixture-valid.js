@@ -716,41 +716,67 @@ function checkUnusedChannels() {
  * Checks if the used channels fits to the fixture's categories and raise warnings suggesting to add/remove a category.
  */
 function checkCategories() {
-  const fixtureChannels = fixture.availableChannels.concat(fixture.matrixChannels.map(matrixCh => matrixCh.wrappedChannel));
-
-  const hasMultiColorChannel = fixtureChannels.some(channel => channel.type === `Multi-Color`);
-  const hasMultipleSingleColorChannels = fixtureChannels.filter(channel => channel.type === `Single Color`).length > 1;
-  const hasColorChangerCategory = fixture.categories.includes(`Color Changer`);
-  if (!hasColorChangerCategory && hasMultiColorChannel) {
-    result.warnings.push(`Category 'Color Changer' suggested since there is a 'Multi-Color' channel.`);
+  /**
+   * @param {!string} type What capability type to search for.
+   * @param {!number} [minimum=1] How many occurences are needed to succeed.
+   * @returns {!boolean} Whether the given capability type occurs at least at the given minimum times in the fixture.
+   */
+  function hasCapabilityType(type, minimum = 1) {
+    return fixture.capabilities.filter(
+      cap => cap.type === type
+    ).length >= minimum;
   }
-  else if (!hasColorChangerCategory && hasMultipleSingleColorChannels) {
-    result.warnings.push(`Category 'Color Changer' suggested since there are multiple 'Single Color' channels.`);
-  }
-  else if (hasColorChangerCategory && !hasMultiColorChannel && !hasMultipleSingleColorChannels) {
-    result.warnings.push(`Category 'Color Changer' invalid since there is no 'Multi-Color' and less than 2 'Single Color' channels.`);
-  }
-
-  const hasFocusTypeHead = fixture.physical !== null && fixture.physical.focusType === `Head`;
-  const hasMovingHeadCategory = fixture.categories.includes(`Moving Head`);
-  if (!hasMovingHeadCategory && hasFocusTypeHead) {
-    result.warnings.push(`Category 'Moving Head' suggested since focus.type is 'Head'.`);
-  }
-  else if (hasMovingHeadCategory && !hasFocusTypeHead) {
-    result.warnings.push(`Category 'Moving Head' invalid since focus.type is not 'Head'.`);
+  /**
+   * @param {!string} property The property name of the capability's json data.
+   * @param {!string} value The property value to search for.
+   * @returns {!boolean} Whether the given capability property/value pair occurs in the fixture.
+   */
+  function hasCapabilityPropertyValue(property, value) {
+    // TODO: Don't access jsonObject directly as soon as this data is accessable with the model.
+    return fixture.capabilities.some(
+      cap => cap._jsonObject[property] === `value`
+    );
   }
 
-  const hasFogChannel = fixtureChannels.some(channel => channel.type === `Fog`);
-  const hasSmokeCategory = fixture.categories.includes(`Smoke`);
-  const hasHazerCategory = fixture.categories.includes(`Hazer`);
-  if (!(hasSmokeCategory || hasHazerCategory) && hasFogChannel) {
-    result.warnings.push(`Categories 'Smoke' and/or 'Hazer' suggested since there is a 'Fog' channel.`);
-  }
-  else if (hasSmokeCategory && !hasFogChannel) {
-    result.warnings.push(`Category 'Smoke' invalid since there is no 'Fog' channel.`);
-  }
-  else if (hasHazerCategory && !hasFogChannel) {
-    result.warnings.push(`Category 'Hazer' invalid since there is no 'Fog' channel.`);
+  const categories = {
+    'Color Changer': {
+      isSuggested: () => hasCapabilityType(`ColorPreset`) || hasCapabilityType(`ColorWheelIndex`) || hasCapabilityType(`ColorIntensity`, 2),
+      suggestedPhrase: `there are at least one ColorPreset, ColorWheelIndex or two ColorIntensity capabilities`,
+      invalidPhrase: `there are no ColorPreset, ColorWheelIndex and less than two ColorIntensity capabilities`
+    },
+    'Moving Head': {
+      isSuggested: () => {
+        const hasFocusTypeHead = fixture.physical !== null && fixture.physical.focusType === `Head`;
+        const hasPanTilt = (hasCapabilityType(`Pan`) || hasCapabilityType(`PanContinuous`))
+                        && (hasCapabilityType(`Tilt`) || hasCapabilityType(`TiltContinuous`));
+        return hasFocusTypeHead || hasPanTilt;
+      },
+      suggestedPhrase: `focus.type is 'Head' or there's a Pan(Continuous) and a Tilt(Continuous) capability`,
+      invalidPhrase: `focus.type is not 'Head' or there's not a Pan(Continuous) and a Tilt(Continuous) capability`
+    },
+    'Smoke': {
+      isSuggested: () => hasCapabilityPropertyValue(`fogType`, `Fog`),
+      suggestedPhrase: `a FogOn or FogType capability has fogType='Fog'`,
+      invalidPhrase: `no FogOn or FogType capability has fogType='Fog'`
+    },
+    'Hazer': {
+      isSuggested: () => hasCapabilityPropertyValue(`fogType`, `Haze`),
+      suggestedPhrase: `a FogOn or FogType capability has fogType='Haze'`,
+      invalidPhrase: `no FogOn or FogType capability has fogType='Haze'`
+    }
+  };
+
+  for (const categoryName of Object.keys(categories)) {
+    const categoryUsed = fixture.categories.includes(categoryName);
+    const category = categories[categoryName];
+
+    const suggested = category.isSuggested();
+    if (!categoryUsed && suggested) {
+      result.warnings.push(`Category '${categoryName}' suggested since ${category.suggestedPhrase}.`);
+    }
+    else if (categoryUsed && !suggested) {
+      result.warnings.push(`Category '${categoryName}' invalid since ${category.invalidPhrase}.`);
+    }
   }
 }
 
