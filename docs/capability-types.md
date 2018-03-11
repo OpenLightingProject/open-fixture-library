@@ -9,7 +9,7 @@ To make common percentage values more readable, one can use specific keywords to
 | Entity           | Allowed Units  | `-100%`      | `-1%`        | `0%`    | `1%`    | `100%`
 | -                | -              | -            | -            | -       | -       | -
 | Speed            | `Hz`, `%`      | fast reverse | slow reverse | stop    | slow    | fast
-| RotationSpeed    | `Hz`, `%`      | fast CCW     | slow CW      | stop    | slow CW | fast CWW
+| RotationSpeed    | `Hz`, `%`      | fast CCW     | slow CCW     | stop    | slow CW | fast CW
 | Time             | `s`, `ms`, `%` | –            | –            | instant | short   | long
 | Distance         | `m`, `%`       | –            | –            | –       | near    | far
 | Brightness       | `lm`, `%`      | –            | –            | off     | dark    | bright
