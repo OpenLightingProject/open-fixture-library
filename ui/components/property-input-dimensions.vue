@@ -7,7 +7,6 @@
       :schema-property="schemaProperty.items"
       :required="required || dimensionsIncomplete"
       :hint="hints[0]"
-      type="number"
       @focus.native="onFocus"
       @blur.native="onBlur($event)"
       @focusin.native.stop
@@ -18,7 +17,6 @@
       :schema-property="schemaProperty.items"
       :required="required || dimensionsIncomplete"
       :hint="hints[1]"
-      type="number"
       @focus.native="onFocus"
       @blur.native="onBlur($event)"
       @focusin.native.stop
@@ -29,7 +27,6 @@
       :schema-property="schemaProperty.items"
       :required="required || dimensionsIncomplete"
       :hint="hints[2]"
-      type="number"
       @focus.native="onFocus"
       @blur.native="onBlur($event)"
       @focusin.native.stop

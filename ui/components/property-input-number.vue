@@ -1,10 +1,3 @@
-<!--
-
-usage: <app-property-input-number add type="number" ... />
-to enable validation
-
--->
-
 <template>
   <input
     ref="input"

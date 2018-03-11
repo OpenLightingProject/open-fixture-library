@@ -40,8 +40,7 @@
       <app-property-input-number
         v-model="mode.rdmPersonalityIndex"
         :name="`mode-${index}-rdmPersonalityIndex`"
-        :schema-property="properties.mode.rdmPersonalityIndex"
-        type="number" />
+        :schema-property="properties.mode.rdmPersonalityIndex" />
     </app-simple-label>
 
 

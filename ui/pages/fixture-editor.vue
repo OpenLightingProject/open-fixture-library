@@ -74,7 +74,6 @@
             <app-property-input-number
               v-model="fixture.newManufacturerRdmId"
               :schema-property="properties.manufacturer.rdmId"
-              type="number"
               name="new-manufacturer-rdmId" />
           </app-simple-label>
 
@@ -137,7 +136,6 @@
           <app-property-input-number
             v-model="fixture.rdmModelId"
             :schema-property="properties.fixture.rdm.properties.modelId"
-            type="number"
             name="rdmModelId" />
         </app-simple-label>
 

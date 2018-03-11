@@ -16,16 +16,14 @@
       <app-property-input-number
         v-model="physical.weight"
         :name="`${namePrefix}-physical-weight`"
-        :schema-property="properties.physical.weight"
-        type="number" /> kg
+        :schema-property="properties.physical.weight" /> kg
     </app-simple-label>
 
     <app-simple-label :formstate="formstate" :name="`${namePrefix}-physical-power`" label="Power">
       <app-property-input-number
         v-model="physical.power"
         :name="`${namePrefix}-physical-power`"
-        :schema-property="properties.physical.power"
-        type="number" /> W
+        :schema-property="properties.physical.power" /> W
     </app-simple-label>
 
     <!-- TODO: validate this -->
@@ -61,16 +59,14 @@
       <app-property-input-number
         v-model="physical.bulb.colorTemperature"
         :name="`${namePrefix}-physical-bulb-colorTemperature`"
-        :schema-property="properties.physicalBulb.colorTemperature"
-        type="number" /> K
+        :schema-property="properties.physicalBulb.colorTemperature" /> K
     </app-simple-label>
 
     <app-simple-label :formstate="formstate" :name="`${namePrefix}-physical-bulb-lumens`" label="Lumens">
       <app-property-input-number
         v-model="physical.bulb.lumens"
         :name="`${namePrefix}-physical-bulb-lumens`"
-        :schema-property="properties.physicalBulb.lumens"
-        type="number" /> lm
+        :schema-property="properties.physicalBulb.lumens" /> lm
     </app-simple-label>
 
 
@@ -120,16 +116,14 @@
       <app-property-input-number
         v-model="physical.focus.panMax"
         :name="`${namePrefix}-physical-focus-panMax`"
-        :schema-property="properties.physicalFocus.panMax"
-        type="number" /> °
+        :schema-property="properties.physicalFocus.panMax" /> °
     </app-simple-label>
 
     <app-simple-label :formstate="formstate" :name="`${namePrefix}-physical-focus-tiltMax`" label="Tilt maximum">
       <app-property-input-number
         v-model="physical.focus.tiltMax"
         :name="`${namePrefix}-physical-focus-tiltMax`"
-        :schema-property="properties.physicalFocus.tiltMax"
-        type="number" /> °
+        :schema-property="properties.physicalFocus.tiltMax" /> °
     </app-simple-label>
 
   </div>
