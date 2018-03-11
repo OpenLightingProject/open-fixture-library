@@ -755,7 +755,7 @@ function checkCategories() {
    * @returns {!boolean} Whether the 'Color Changer' category is suggested.
   */
   function isColorChanger() {
-    return hasCapabilityType(`ColorPreset`) || hasCapabilityType(`ColorWheelIndex`) || hasCapabilityType(`ColorIntensity`, 2);
+    return hasCapabilityOfType(`ColorPreset`) || hasCapabilityOfType(`ColorWheelIndex`) || hasCapabilityOfType(`ColorIntensity`, 2);
   }
 
   /**
@@ -763,8 +763,8 @@ function checkCategories() {
   */
   function isMovingHead() {
     const hasFocusTypeHead = fixture.physical !== null && fixture.physical.focusType === `Head`;
-    const hasPanTilt = (hasCapabilityType(`Pan`) || hasCapabilityType(`PanContinuous`))
-                    && (hasCapabilityType(`Tilt`) || hasCapabilityType(`TiltContinuous`));
+    const hasPanTilt = (hasCapabilityOfType(`Pan`) || hasCapabilityOfType(`PanContinuous`))
+                    && (hasCapabilityOfType(`Tilt`) || hasCapabilityOfType(`TiltContinuous`));
     return hasFocusTypeHead || hasPanTilt;
   }
 
@@ -773,7 +773,7 @@ function checkCategories() {
    * @param {!number} [minimum=1] How many occurences are needed to succeed.
    * @returns {!boolean} Whether the given capability type occurs at least at the given minimum times in the fixture.
    */
-  function hasCapabilityType(type, minimum = 1) {
+  function hasCapabilityOfType(type, minimum = 1) {
     return fixture.capabilities.filter(
       cap => cap.type === type
     ).length >= minimum;
