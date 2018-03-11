@@ -1,7 +1,7 @@
 <template>
   <section :class="name">
     <template v-if="formstate">
-      <validate :state="formstate" tag="label">
+      <validate :state="formstate" :custom="customValidators" tag="label">
         <div class="label" v-html="label" />
         <div class="value">
 
@@ -23,6 +23,7 @@
             <div v-else-if="fieldErrors[`categories-not-empty`]">Please select at least one category.</div>
             <div v-else-if="fieldErrors[`complete-dimensions`]">Please fill out all dimensions.</div>
             <div v-else-if="fieldErrors[`start-with-uppercase-or-number`]">Please start with an uppercase letter or a number.</div>
+            <div v-else-if="fieldErrors[`no-manufacturer-name`]">Don't include the manufacturer name.</div>
             <div v-else-if="fieldErrors[`no-fine-channel-name`]">Don't create fine channels manually, set the channel resolution below instead.</div>
           </div>
 
@@ -64,6 +65,11 @@ export default {
       type: Object,
       required: false, // TODO: make this required
       default: null
+    },
+    customValidators: {
+      type: Object,
+      required: false,
+      default: null
     }
   },
   computed: {
@@ -77,7 +83,7 @@ export default {
       }
 
       const subFieldNames = Object.keys(this.formstate).filter(
-        subFieldName => subFieldName.startsWith(this.subFieldName)
+        subFieldName => subFieldName.startsWith(this.name)
       );
 
       for (const subFieldName of subFieldNames) {
@@ -86,7 +92,7 @@ export default {
         }
       }
 
-      return this.formstate[this.name];
+      return {};
     },
     fieldErrors() {
       if (!(`$valid` in this.fieldState) || this.fieldState.$valid) {

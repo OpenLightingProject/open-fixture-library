@@ -84,8 +84,11 @@
       <section class="fixture-info card">
         <h2>Fixture info</h2>
 
-        <!-- TODO: validate name not containing manufacturer name -->
-        <app-simple-label :formstate="formstate" name="fixture-name" label="Name">
+        <app-simple-label
+          :formstate="formstate"
+          :custom-validators="{'no-manufacturer-name': fixtureNameIsWithoutManufacturer}"
+          name="fixture-name"
+          label="Name">
           <app-property-input-text
             v-model="fixture.name"
             :schema-property="properties.fixture.name"
@@ -304,6 +307,28 @@ export default {
       manufacturers,
       properties: schemaProperties
     };
+  },
+  computed: {
+    fixtureNameIsWithoutManufacturer() {
+      let manufacturerName;
+
+      if (this.fixture.useExistingManufacturer) {
+        const manKey = this.fixture.manufacturerShortName;
+
+        if (manKey === ``) {
+          return true;
+        }
+
+        manufacturerName = manufacturers[manKey].name;
+      }
+      else {
+        manufacturerName = this.fixture.newManufacturerName;
+      }
+
+      manufacturerName = manufacturerName.trim().toLowerCase();
+
+      return manufacturerName === `` || !this.fixture.name.trim().toLowerCase().startsWith(manufacturerName);
+    }
   },
   watch: {
     fixture: {
