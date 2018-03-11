@@ -67,33 +67,26 @@ export default {
     }
   },
   computed: {
-    errorFieldName() {
+    fieldState() {
       if (!this.formstate) {
         return null;
       }
 
       if (this.formstate.$error[this.name]) {
-        return this.name;
+        return this.formstate[this.name];
       }
 
       const subFieldNames = Object.keys(this.formstate).filter(
-        name => name.startsWith(this.name)
+        subFieldName => subFieldName.startsWith(this.subFieldName)
       );
 
-      for (const name of subFieldNames) {
-        if (this.formstate.$error[name]) {
-          return name;
+      for (const subFieldName of subFieldNames) {
+        if (this.formstate.$error[subFieldName]) {
+          return this.formstate[subFieldName];
         }
       }
 
-      return this.name;
-    },
-    fieldState() {
-      if (!this.formstate || !this.formstate[this.errorFieldName]) {
-        return {};
-      }
-
-      return this.formstate[this.errorFieldName];
+      return this.formstate[this.name];
     },
     fieldErrors() {
       if (!(`$valid` in this.fieldState) || this.fieldState.$valid) {
