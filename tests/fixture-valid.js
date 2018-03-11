@@ -716,28 +716,6 @@ function checkUnusedChannels() {
  * Checks if the used channels fits to the fixture's categories and raise warnings suggesting to add/remove a category.
  */
 function checkCategories() {
-  /**
-   * @param {!string} type What capability type to search for.
-   * @param {!number} [minimum=1] How many occurences are needed to succeed.
-   * @returns {!boolean} Whether the given capability type occurs at least at the given minimum times in the fixture.
-   */
-  function hasCapabilityType(type, minimum = 1) {
-    return fixture.capabilities.filter(
-      cap => cap.type === type
-    ).length >= minimum;
-  }
-  /**
-   * @param {!string} property The property name of the capability's json data.
-   * @param {!string} value The property value to search for.
-   * @returns {!boolean} Whether the given capability property/value pair occurs in the fixture.
-   */
-  function hasCapabilityPropertyValue(property, value) {
-    // TODO: Don't access jsonObject directly as soon as this data is accessable with the model.
-    return fixture.capabilities.some(
-      cap => cap._jsonObject[property] === `value`
-    );
-  }
-
   const categories = {
     'Color Changer': {
       isSuggested: () => hasCapabilityType(`ColorPreset`) || hasCapabilityType(`ColorWheelIndex`) || hasCapabilityType(`ColorIntensity`, 2),
@@ -777,6 +755,29 @@ function checkCategories() {
     else if (categoryUsed && !suggested) {
       result.warnings.push(`Category '${categoryName}' invalid since ${category.invalidPhrase}.`);
     }
+  }
+
+  /**
+   * @param {!string} type What capability type to search for.
+   * @param {!number} [minimum=1] How many occurences are needed to succeed.
+   * @returns {!boolean} Whether the given capability type occurs at least at the given minimum times in the fixture.
+   */
+  function hasCapabilityType(type, minimum = 1) {
+    return fixture.capabilities.filter(
+      cap => cap.type === type
+    ).length >= minimum;
+  }
+
+  /**
+   * @param {!string} property The property name of the capability's json data.
+   * @param {!string} value The property value to search for.
+   * @returns {!boolean} Whether the given capability property/value pair occurs in the fixture.
+   */
+  function hasCapabilityPropertyValue(property, value) {
+    // TODO: Don't access jsonObject directly as soon as this data is accessable with the model.
+    return fixture.capabilities.some(
+      cap => cap._jsonObject[property] === `value`
+    );
   }
 }
 
