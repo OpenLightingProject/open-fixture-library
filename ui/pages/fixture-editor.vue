@@ -361,9 +361,10 @@ export default {
       deep: true
     }
   },
-  mounted() {
+  beforeMount() {
     this.$root._oflRestoreComplete = false;
-
+  },
+  mounted() {
     // let all components initialize without auto-focus
     this.$nextTick(() => this.restoreAutoSave());
   },
