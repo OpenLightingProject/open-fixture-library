@@ -94,14 +94,24 @@ export default {
     update() {
       const input = this.$refs.input;
       if (input.validity && input.validity.badInput) {
-        return this.$emit(`input`, `invalid`);
+        this.$emit(`input`, `invalid`);
+        return;
       }
 
       if (input.value === ``) {
-        return this.$emit(`input`, null);
+        this.$emit(`input`, null);
+        return;
       }
 
-      return this.$emit(`input`, parseFloat(input.value));
+      let value;
+      try {
+        value = parseFloat(input.value);
+      }
+      catch (error) {
+        value = `invalid`;
+      }
+
+      this.$emit(`input`, value);
     }
   }
 };
