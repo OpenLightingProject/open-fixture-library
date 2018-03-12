@@ -20,6 +20,11 @@ const nuxtOptions = {
     `~/plugins/vue-form.js`
   ],
   build: {
+    vendor: [
+      `~~/fixtures/register.json`,
+      `~~/fixtures/manufacturers.json`,
+      `~/components/svg.vue`
+    ],
     extend(config, ctx) {
       // exclude /assets/icons from url-loader
       const urlLoader = config.module.rules.find(rule => rule.loader === `url-loader`);
