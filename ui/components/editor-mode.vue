@@ -231,8 +231,9 @@ export default {
     }
   },
   mounted() {
-    // TODO: if (Vue._oflRestoreComplete) {
-    this.$refs.firstInput.focus();
+    if (this.$root._oflRestoreComplete) {
+      this.$refs.firstInput.focus();
+    }
   },
   methods: {
     getChannelName(channelUuid) {

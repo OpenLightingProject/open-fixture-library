@@ -226,6 +226,8 @@
       :channel="channel"
       :fixture="fixture" />
 
+    <app-editor-restore-dialog v-model="restoredData" @restore-complete="restoreComplete" />
+
     <app-editor-submit-dialog :submit="submit" @reset="reset" />
   </div>
 </template>
@@ -260,7 +262,20 @@ import editorPhysicalVue from '~/components/editor-physical.vue';
 import editorModeVue from '~/components/editor-mode.vue';
 import editorChannelDialogVue from '~/components/editor-channel-dialog.vue';
 import editorChooseChannelEditModeDialogVue from '~/components/editor-choose-channel-edit-mode-dialog.vue';
+import editorRestoreDialogVue from '~/components/editor-restore-dialog.vue';
 import editorSubmitDialogVue from '~/components/editor-submit-dialog.vue';
+
+const storageAvailable = (function() {
+  try {
+    const x = `__storage_test__`;
+    localStorage.setItem(x, x);
+    localStorage.removeItem(x);
+    return true;
+  }
+  catch (e) {
+    return false;
+  }
+})();
 
 export default {
   components: {
@@ -275,6 +290,7 @@ export default {
     'app-mode': editorModeVue,
     'app-editor-channel-dialog': editorChannelDialogVue,
     'app-editor-choose-channel-edit-mode-dialog': editorChooseChannelEditModeDialogVue,
+    'app-editor-restore-dialog': editorRestoreDialogVue,
     'app-editor-submit-dialog': editorSubmitDialogVue
   },
   head() {
@@ -296,6 +312,8 @@ export default {
 
     return {
       formstate: {},
+      readyToAutoSave: false,
+      restoredData: null,
       fixture: initFixture,
       channel: getEmptyChannel(),
       honeypot: ``,
@@ -337,6 +355,12 @@ export default {
       },
       deep: true
     }
+  },
+  mounted() {
+    this.$root._oflRestoreComplete = false;
+
+    // let all components initialize without auto-focus
+    this.$nextTick(() => this.restoreAutoSave());
   },
   methods: {
     switchManufacturer(useExisting) {
@@ -424,10 +448,9 @@ export default {
      * @param {'fixture'|'channel'} objectName The object to save.
      */
     autoSave(objectName) {
-      // TODO: actually save to localStorage
-      // if (!storageAvailable || !this.readyToAutoSave) {
-      //   return;
-      // }
+      if (!storageAvailable || !this.readyToAutoSave) {
+        return;
+      }
 
       if (objectName === `fixture`) {
         console.log(`autoSave fixture:`, JSON.parse(JSON.stringify(this.fixture, null, 2)));
@@ -437,13 +460,59 @@ export default {
       }
 
       // use an array to be future-proof (maybe we want to support multiple browser tabs sometime)
-      // localStorage.setItem('autoSave', JSON.stringify([
-      //   {
-      //     fixture: this.fixture,
-      //     channel: this.channel,
-      //     timestamp: Date.now()
-      //   }
-      // ]));
+      localStorage.setItem(`autoSave`, JSON.stringify([
+        {
+          fixture: this.fixture,
+          channel: this.channel,
+          timestamp: Date.now()
+        }
+      ]));
+    },
+
+    clearAutoSave() {
+      if (!storageAvailable) {
+        return;
+      }
+
+      localStorage.removeItem(`autoSave`);
+    },
+
+    /**
+     * Loads auto-saved data from browser's local storage into this component's `restoredData` property, such that a dialog is opened that lets the user choose if they want to apply or discard it.
+     */
+    restoreAutoSave() {
+      if (!storageAvailable) {
+        this.$root._oflRestoreComplete = true;
+        return;
+      }
+
+      try {
+        this.restoredData = JSON.parse(localStorage.getItem(`autoSave`)).pop();
+
+        if (this.restoredData === undefined) {
+          throw new Error(`this.restoredData is undefined.`);
+        }
+      }
+      catch (error) {
+        this.restoredData = null;
+        this.restoreComplete();
+        return;
+      }
+
+      console.log(`restore`, JSON.parse(JSON.stringify(this.restoredData)));
+    },
+
+    /**
+     * Called from restore dialog (via an event) after the restored data are either applied or discarded.
+     */
+    restoreComplete() {
+      this.readyToAutoSave = true;
+      this.$root._oflRestoreComplete = true;
+
+      // focus first input if no dialog is open
+      if (this.channel.editMode === ``) {
+        this.switchManufacturer(this.fixture.useExistingManufacturer);
+      }
     },
 
     async onSubmit() {
@@ -488,7 +557,7 @@ export default {
 
         this.submit.pullRequestUrl = response.data.pullRequestUrl;
         this.submit.state = `success`;
-        // TODO: this.clearAutoSave();
+        this.clearAutoSave();
       }
       catch (error) {
         console.error(`There was a problem with the request.`, error);

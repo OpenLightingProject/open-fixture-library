@@ -286,10 +286,9 @@ export default {
     }
   },
   mounted: function() {
-    // TODO: make this work
-    // if (Vue._oflRestoreComplete) {
-    //   this.$refs.firstInput.focus();
-    // }
+    if (this.$root._oflRestoreComplete) {
+      this.$refs.firstInput.focus();
+    }
 
     let lastOccupied = -1;
     for (let i = this.capabilities.length - 1; i >= 0; i--) {
