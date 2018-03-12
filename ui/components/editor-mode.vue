@@ -65,10 +65,13 @@
 
     <h3>DMX channels</h3>
 
-    <!-- TODO: validate empty channel list -->
-    <div class="validate-group mode-channels">
-      <draggable v-model="mode.channels" :options="dragOptions">
-        <transition-group class="mode-channels" name="mode-channels" tag="ol">
+    <validate
+      :state="formstate"
+      :custom="{'no-empty-channel-list': channelListNotEmpty}"
+      tag="div"
+      class="validate-group mode-channels">
+      <draggable v-model="mode.channels" :options="dragOptions" :name="`mode-${index}-channels`">
+        <transition-group class="mode-channels" tag="ol">
           <li
             v-for="channelUuid in mode.channels"
             :key="channelUuid"
@@ -104,8 +107,15 @@
           </li>
         </transition-group>
       </draggable>
-      <span class="error-message" hidden />
-    </div>
+      <field-messages
+        :state="formstate"
+        :name="`mode-${index}-channels`"
+        show="$submitted"
+        tag="div"
+        class="error-message">
+        <div slot="no-empty-channel-list">A mode must contain at least one channel.</div>
+      </field-messages>
+    </validate>
 
     <a href="#add-channel" class="button primary" @click.prevent="addChannel">add channel</a>
 
@@ -215,6 +225,9 @@ export default {
     fixtureEditor() {
       const vueForm = this.$parent;
       return vueForm.$parent;
+    },
+    channelListNotEmpty() {
+      return this.mode.channels.length > 0;
     }
   },
   mounted() {
