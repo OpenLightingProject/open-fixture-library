@@ -4,10 +4,10 @@ const path = require(`path`);
 const express = require(`express`);
 const compression = require(`compression`);
 const { Nuxt, Builder } = require(`nuxt`);
-const url = require(`url`);
 
-const redirectToHttps = require(`./views/middleware/redirect-to-https.js`);
+const redirectToHttps = require(`./ui/middleware/redirect-to-https.js`);
 
+const packageJson = require(`./package.json`);
 const plugins = require(`./plugins/plugins.json`);
 const { fixtureFromRepository } = require(`./lib/model.js`);
 const register = require(`./fixtures/register.json`);
@@ -84,12 +84,11 @@ app.get(`/:manKey/:fixKey.:format`, (request, response, next) => {
 });
 
 app.get(`/sitemap.xml`, (request, response) => {
-  const sitemapCreator = require(`./views/pages/sitemap.js`);
-  const requestUrl = url.resolve(`${request.protocol}://${request.get(`host`)}`, request.originalUrl);
+  const sitemapCreator = require(`./lib/generate-sitemap.js`);
 
   response.type(`application/xml`).send(sitemapCreator({
     app,
-    url: requestUrl
+    url: `${packageJson.homepage}sitemap.xml`
   }));
 });
 

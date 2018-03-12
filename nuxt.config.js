@@ -13,6 +13,10 @@ const nuxtOptions = {
       src: `~/plugins/focus-directive.js`,
       ssr: false
     },
+    {
+      src: `~/plugins/polyfills.js`,
+      ssr: false
+    },
     `~/plugins/vue-form.js`
   ],
   build: {
