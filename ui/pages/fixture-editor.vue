@@ -605,6 +605,7 @@ export default {
 function isPrefillable(prefillObject, key) {
   const allowedPrefillValues = {
     useExistingManufacturer: `boolean`,
+    manufacturerShortName: `string`,
     newManufacturerRdmId: `number`,
     rdmModelId: `number`
   };
