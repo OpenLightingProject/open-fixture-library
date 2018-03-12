@@ -2,9 +2,9 @@
   <select
     ref="input"
     :required="required"
-    class="boolean"
+    :class="{boolean: true, empty: value === null}"
     @input="update">
-    <option :selected="value === ``" value="">unknown</option>
+    <option :selected="value === null" value="">unknown</option>
     <option :selected="value === true" value="true">yes</option>
     <option :selected="value === false" value="false">no</option>
   </select>
@@ -38,8 +38,9 @@ export default {
       default: false
     },
     value: {
-      type: null,
-      required: true
+      type: Boolean,
+      required: false,
+      default: null
     }
   },
   mounted() {
@@ -54,10 +55,12 @@ export default {
     update() {
       if (this.$refs.input.value === `true`) {
         this.$emit(`input`, true);
+        return;
       }
 
       if (this.$refs.input.value === `false`) {
         this.$emit(`input`, false);
+        return;
       }
 
       this.$emit(`input`, null);
