@@ -38,6 +38,9 @@ const nuxtOptions = {
     color: `#1e88e5`
   },
   head: {
+    htmlAttrs: {
+      lang: `en`
+    },
     titleTemplate: titleChunk => {
       // If undefined or blank then we don't need the hyphen
       return titleChunk ? `${titleChunk} – Open Fixture Library` : `Open Fixture Library`;
