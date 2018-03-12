@@ -298,17 +298,22 @@ export default {
       title: `Fixture Editor`
     };
   },
-  data() {
+  asyncData({ query }) {
     const initFixture = getEmptyFixture();
 
-    // TODO: make this work
-    // if ('oflPrefill' in window) {
-    //   Object.keys(window.oflPrefill).forEach(function(key) {
-    //     if (typeof initFixture[key] !== 'object') {
-    //       initFixture[key] = window.oflPrefill[key];
-    //     }
-    //   });
-    // }
+    if (query.prefill) {
+      try {
+        const prefillObject = JSON.parse(query.prefill);
+        for (const key of Object.keys(prefillObject)) {
+          if (isPrefillable(prefillObject, key)) {
+            initFixture[key] = prefillObject[key];
+          }
+        }
+      }
+      catch (error) {
+        console.log(`prefill query could not be parsed:`, query.prefill, error);
+      }
+    }
 
     return {
       formstate: {},
@@ -576,6 +581,12 @@ export default {
         pullRequestUrl: ``,
         rawData: ``
       };
+
+      this.$router.push({
+        path: this.$route.path,
+        query: {} // clear prefill query
+      });
+
       this.$nextTick(() => {
         this.formstate._reset();
         this.$refs.existingManufacturerSelect.focus();
@@ -584,4 +595,19 @@ export default {
     }
   }
 };
+
+/**
+ * @param {!object} prefillObject The object supplied in the page query.
+ * @param {!string} key The key to check.
+ * @returns {!boolean} True if the value prefillObject[key] is prefillable, false otherwise.
+ */
+function isPrefillable(prefillObject, key) {
+  const allowedPrefillValues = {
+    useExistingManufacturer: `boolean`,
+    newManufacturerRdmId: `number`,
+    rdmModelId: `number`
+  };
+
+  return key in allowedPrefillValues && typeof prefillObject[key] === allowedPrefillValues[key];
+}
 </script>

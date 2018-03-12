@@ -63,12 +63,12 @@
 
       <template v-if="notFound === `fixture`">
         <p>The requested <a :href="manufacturerLink">{{ manufacturerName }}</a> fixture was not found in the Open Fixture Library. Maybe a fixture in the library is missing the RDM ID?</p>
-        <p>Please consider <a href="https://github.com/FloEdelmann/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <a :href="`/fixture-editor?prefill=${prefillQuery}`">add it yourself</a>!</p>
+        <p>Please consider <a href="https://github.com/FloEdelmann/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <nuxt-link :to="`/fixture-editor?prefill=${prefillQuery}`">add it yourself</nuxt-link>!</p>
         <p>Thank you either way!</p>
       </template>
 
       <template v-else-if="searchFor === `fixture`">
-        <p>The manufacturer of the requested fixture was not found in the Open Fixture Library. Please consider <a href="https://github.com/FloEdelmann/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name and manufacturer of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <a :href="`/fixture-editor?prefill=${prefillQuery}`">add it yourself</a>!</p>
+        <p>The manufacturer of the requested fixture was not found in the Open Fixture Library. Please consider <a href="https://github.com/FloEdelmann/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name and manufacturer of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <nuxt-link :to="`/fixture-editor?prefill=${prefillQuery}`">add it yourself</nuxt-link>!</p>
         <p>Thank you either way!</p>
       </template>
 
