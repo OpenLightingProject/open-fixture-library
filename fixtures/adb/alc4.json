@@ -34,76 +34,112 @@
   },
   "availableChannels": {
     "Master": {
-      "type": "Intensity"
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
     }
   },
   "templateChannels": {
     "Dimmer $pixelKey": {
-      "type": "Intensity"
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
     },
     "Color Temperature $pixelKey (Linear)": {
       "name": "Color Temperature $pixelKey",
-      "type": "Color Temperature",
       "capabilities": [
         {
-          "range": [0, 50],
-          "name": "RGB Mode"
+          "dmxRange": [0, 50],
+          "type": "Effect",
+          "comment": "RGB Mode"
         },
         {
-          "range": [51, 255],
-          "name": "Linear color temperature 2700K - 6500K"
+          "dmxRange": [51, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2700K",
+          "colorTemperatureEnd": "6500K"
         }
       ]
     },
     "Color Temperature $pixelKey (7 Presets)": {
       "name": "Color Temperature $pixelKey",
-      "type": "Color Temperature",
       "capabilities": [
         {
-          "range": [0, 76],
-          "name": "RGB Mode"
+          "dmxRange": [0, 76],
+          "type": "Effect",
+          "comment": "RGB Mode"
         },
         {
-          "range": [77, 101],
-          "name": "White 2700K"
+          "dmxRange": [77, 101],
+          "type": "ColorTemperature",
+          "colorTemperature": "2700K",
+          "comment": "White 2700K"
         },
         {
-          "range": [102, 127],
-          "name": "White 3000K"
+          "dmxRange": [102, 127],
+          "type": "ColorTemperature",
+          "colorTemperature": "3000K",
+          "comment": "White 3000K"
         },
         {
-          "range": [128, 152],
-          "name": "White 3200K"
+          "dmxRange": [128, 152],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K",
+          "comment": "White 3200K"
         },
         {
-          "range": [153, 178],
-          "name": "White 4200K"
+          "dmxRange": [153, 178],
+          "type": "ColorTemperature",
+          "colorTemperature": "4200K",
+          "comment": "White 4200K"
         },
         {
-          "range": [179, 203],
-          "name": "White 5600K"
+          "dmxRange": [179, 203],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K",
+          "comment": "White 5600K"
         },
         {
-          "range": [204, 229],
-          "name": "White 6000K"
+          "dmxRange": [204, 229],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K",
+          "comment": "White 6000K"
         },
         {
-          "range": [230, 255],
-          "name": "White 6500K"
+          "dmxRange": [230, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K",
+          "comment": "White 6500K"
         }
       ]
     },
     "Red $pixelKey": {
-      "type": "Single Color",
-      "color": "Red"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
     },
     "Green $pixelKey": {
-      "type": "Single Color",
-      "color": "Green"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
     },
     "Blue $pixelKey": {
-      "type": "Single Color",
-      "color": "Blue"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
     }
   },
   "modes": [
