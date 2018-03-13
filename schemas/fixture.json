@@ -4,67 +4,15 @@
 
   "version": "6.0.0",
 
-  "definitions": {
-    "nonEmptyString": {
-      "type": "string",
-      "pattern": "^[^\n]+$"
-    },
-    "noVariablesString": {
-      "type": "string",
-      "pattern": "^[^$\n]+$"
-    },
-    "variablePixelKeyString": {
-      "type": "string",
-      "pattern": "\\$pixelKey"
-    },
-    "nonEmptyMultilineString": {
-      "type": "string",
-      "minLength": 1
-    },
-    "modeNameString": {
-      "allOf": [
-        { "$ref": "#/definitions/nonEmptyString" },
-        { "pattern": "^((?!mode)(?!Mode).)*$" }
-      ]
-    },
-    "urlString": {
-      "type": "string",
-      "pattern": "^(ftp|http|https):\\/\\/[^ \"]+$"
-    },
-    "isoDateString": {
-      "type": "string",
-      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
-    },
-    "colorString": {
-      "type": "string",
-      "pattern": "^#[0-9a-f]{6}$"
-    },
-    "dmxValue": {
-      "type": "integer",
-      "minimum": 0,
-      "$comment": "maximum depends on how many fine channels there are (255 if none, 65535 if one, etc.)"
-    },
-    "dimensionsXYZ": {
-      "$comment": "width, height, depth (in mm)",
-      "type": "array",
-      "minItems": 3,
-      "maxItems": 3,
-      "items": {
-        "type": "number",
-        "minimum": 0
-      }
-    }
-  },
-
   "type": "object",
   "properties": {
     "name": {
       "$comment": "unique in manufacturer",
-      "$ref": "#/definitions/nonEmptyString"
+      "$ref": "definitions.json#/nonEmptyString"
     },
     "shortName": {
       "$comment": "unique globally; if not set: use name",
-      "$ref": "#/definitions/nonEmptyString"
+      "$ref": "definitions.json#/nonEmptyString"
     },
     "categories": {
       "type": "array",
@@ -97,16 +45,16 @@
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
-          "items": { "$ref": "#/definitions/nonEmptyString" }
+          "items": { "$ref": "definitions.json#/nonEmptyString" }
         },
-        "createDate": { "$ref": "#/definitions/isoDateString" },
-        "lastModifyDate": { "$ref": "#/definitions/isoDateString" },
+        "createDate": { "$ref": "definitions.json#/isoDateString" },
+        "lastModifyDate": { "$ref": "definitions.json#/isoDateString" },
         "importPlugin": {
           "type": "object",
           "properties": {
-            "plugin": { "$ref": "#/definitions/nonEmptyString" },
-            "date": { "$ref": "#/definitions/isoDateString" },
-            "comment": { "$ref": "#/definitions/nonEmptyMultilineString" }
+            "plugin": { "$ref": "definitions.json#/nonEmptyString" },
+            "date": { "$ref": "definitions.json#/isoDateString" },
+            "comment": { "$ref": "definitions.json#/nonEmptyMultilineString" }
           },
           "required": ["plugin", "date"],
           "additionalProperties": false
@@ -115,8 +63,8 @@
       "required": ["authors", "createDate", "lastModifyDate"],
       "additionalProperties": false
     },
-    "comment": { "$ref": "#/definitions/nonEmptyMultilineString" },
-    "manualURL": { "$ref": "#/definitions/urlString" },
+    "comment": { "$ref": "definitions.json#/nonEmptyMultilineString" },
+    "manualURL": { "$ref": "definitions.json#/urlString" },
     "rdm": {
       "type": "object",
       "properties": {
@@ -125,7 +73,7 @@
           "minimum": 0,
           "maximum": 65535
         },
-        "softwareVersion": { "$ref": "#/definitions/nonEmptyString" }
+        "softwareVersion": { "$ref": "definitions.json#/nonEmptyString" }
       },
       "required": ["modelId"],
       "additionalProperties": false
@@ -135,7 +83,7 @@
       "minProperties": 1,
       "properties": {
         "dimensions": {
-          "$ref": "#/definitions/dimensionsXYZ"
+          "$ref": "definitions.json#/dimensionsXYZ"
         },
         "weight": {
           "$comment": "in kg",
@@ -164,7 +112,7 @@
           "properties": {
             "type": {
               "$comment": "e.g. 'LED'",
-              "$ref": "#/definitions/nonEmptyString"
+              "$ref": "definitions.json#/nonEmptyString"
             },
             "colorTemperature": {
               "$comment": "in K",
@@ -184,7 +132,7 @@
           "properties": {
             "name": {
               "$comment": "e.g. 'PC', 'Fresnel'",
-              "$ref": "#/definitions/nonEmptyString"
+              "$ref": "definitions.json#/nonEmptyString"
             },
             "degreesMinMax": {
               "type": "array",
@@ -228,8 +176,8 @@
         "matrixPixels": {
           "type": "object",
           "properties": {
-            "dimensions": { "$ref": "#/definitions/dimensionsXYZ" },
-            "spacing": { "$ref": "#/definitions/dimensionsXYZ" }
+            "dimensions": { "$ref": "definitions.json#/dimensionsXYZ" },
+            "spacing": { "$ref": "definitions.json#/dimensionsXYZ" }
           },
           "required": ["dimensions", "spacing"]
         }
@@ -261,7 +209,7 @@
               "minItems": 1,
               "items": {
                 "oneOf": [
-                  { "$ref": "#/definitions/noVariablesString" },
+                  { "$ref": "definitions.json#/noVariablesString" },
                   { "type": "null" }
                 ]
               }
@@ -273,14 +221,14 @@
           "minProperties": 1,
           "propertyNames": {
             "$comment": "pixel group keys",
-            "$ref": "#/definitions/noVariablesString"
+            "$ref": "definitions.json#/noVariablesString"
           },
           "additionalProperties": {
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
             "items": {
-              "$ref": "#/definitions/noVariablesString"
+              "$ref": "definitions.json#/noVariablesString"
             }
           }
         }
@@ -296,216 +244,18 @@
       "minProperties": 1,
       "propertyNames": {
         "$comment": "channel keys",
-        "$ref": "#/definitions/noVariablesString"
+        "$ref": "definitions.json#/noVariablesString"
       },
-      "additionalProperties": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "$comment": "if not set: use channel key",
-            "$ref": "#/definitions/nonEmptyString"
-          },
-          "type": {
-            "enum": [
-              "Intensity",
-              "Single Color",
-              "Multi-Color",
-              "Pan",
-              "Tilt",
-              "Focus",
-              "Zoom",
-              "Iris",
-              "Gobo",
-              "Prism",
-              "Shutter",
-              "Strobe",
-              "Speed",
-              "Color Temperature",
-              "Effect",
-              "Fog",
-              "Maintenance",
-              "Nothing"
-            ]
-          },
-          "color": {
-            "enum": [
-              "Red",
-              "Green",
-              "Blue",
-              "Cyan",
-              "Magenta",
-              "Yellow",
-              "Amber",
-              "White",
-              "UV",
-              "Lime",
-              "Indigo"
-            ]
-          },
-          "fineChannelAliases": {
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": true,
-            "items": {
-              "oneOf": [
-                { "$ref": "#/definitions/noVariablesString" },
-                {
-                  "$ref": "#/definitions/variablePixelKeyString",
-                  "$comment": "only in template channels"
-                }
-              ]
-            }
-          },
-          "defaultValue": { "$ref": "#/definitions/dmxValue" },
-          "highlightValue": { "$ref": "#/definitions/dmxValue" },
-          "invert": { "type": "boolean" },
-          "constant": { "type": "boolean" },
-          "crossfade": { "type": "boolean" },
-          "precedence": { "enum": ["LTP", "HTP"] },
-          "capabilities": {
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": true,
-            "items": {
-              "type": "object",
-              "properties": {
-                "range": {
-                  "type": "array",
-                  "minItems": 2,
-                  "maxItems": 2,
-                  "items": { "$ref": "#/definitions/dmxValue" }
-                },
-                "name": { "$ref": "#/definitions/nonEmptyString" },
-                "menuClick": { "enum": ["start", "center", "end", "hidden"] },
-                "color": { "$ref": "#/definitions/colorString" },
-                "color2": { "$ref": "#/definitions/colorString" },
-                "image": { "$ref": "#/definitions/nonEmptyString" },
-                "switchChannels": {
-                  "type": "object",
-                  "minProperties": 1,
-                  "propertyNames": {
-                    "$comment": "switching channel alias keys",
-                    "oneOf": [
-                      { "$ref": "#/definitions/noVariablesString" },
-                      { "$ref": "#/definitions/variablePixelKeyString" }
-                    ]
-                  },
-                  "additionalProperties": {
-                    "oneOf": [
-                      {
-                        "$comment": "channel key or channel alias key",
-                        "$ref": "#/definitions/noVariablesString"
-                      },
-                      {
-                        "$comment": "template channel key or template channel alias key",
-                        "$ref": "#/definitions/variablePixelKeyString"
-                      }
-                    ]
-                  }
-                }
-              },
-              "dependencies": {
-                "color2": ["color"]
-              },
-              "not": {
-                "allOf": [
-                  { "required": ["color"] },
-                  { "required": ["image"] }
-                ]
-              },
-              "required": ["range", "name"],
-              "additionalProperties": false
-            }
-          }
-        },
-        "required": ["type"],
-        "allOf": [
-          {
-            "$comment": "color property is required in Single Color channels, forbidden otherwise",
-            "if": {
-              "properties": { "type": { "enum": ["Single Color"] } }
-            },
-            "then": {
-              "required": ["type", "color"]
-            },
-            "else": {
-              "not": { "required": ["color"] }
-            }
-          },
-          {
-            "if": {
-              "properties": { "type": { "enum": [ "Nothing" ] } }
-            },
-            "then": {
-              "$comment": "only type and name properties are allowed",
-              "oneOf": [
-                {
-                  "maxProperties": 1,
-                  "required": [ "type" ]
-                },
-                {
-                  "maxProperties": 2,
-                  "required": [ "name", "type" ]
-                }
-              ]
-            }
-          },
-          {
-            "if": {
-              "$comment": "one capability sets switchChannels",
-              "properties": {
-                "capabilities": {
-                  "contains": {
-                    "required": ["switchChannels"]
-                  }
-                }
-              },
-              "required": ["capabilities"]
-            },
-            "then": {
-              "$comment": "defaultValue must be set and all capabilities have to set switchChannels",
-              "required": ["defaultValue"],
-              "properties": {
-                "capabilities": {
-                  "items": {
-                    "required": ["switchChannels"]
-                  }
-                }
-              }
-            }
-          },
-          {
-            "if": {
-              "not": { "properties": { "type": { "enum": [ "Multi-Color", "Effect", "Gobo" ] } } }
-            },
-            "then": {
-              "$comment": "capabilities may not set color or image properties",
-              "properties": {
-                "capabilities": {
-                  "items": {
-                    "not": {
-                      "anyOf": [
-                      { "required": ["color"] },
-                      { "required": ["image"] }
-                    ]
-                  }
-                }
-              }
-            }
-          }
-          }
-        ],
-        "additionalProperties": false
-      }
+      "additionalProperties": { "$ref": "channel.json#" }
     },
     "templateChannels": {
       "type": "object",
       "minProperties": 1,
       "propertyNames": {
         "$comment": "template channel keys",
-        "$ref": "#/definitions/variablePixelKeyString"
+        "$ref": "definitions.json#/variablePixelKeyString"
       },
-      "additionalProperties": { "$ref": "#/properties/availableChannels/additionalProperties" }
+      "additionalProperties": { "$ref": "channel.json#" }
     },
     "modes": {
       "type": "array",
@@ -513,8 +263,8 @@
       "items": {
         "type": "object",
         "properties": {
-          "name": { "$ref": "#/definitions/modeNameString" },
-          "shortName": { "$ref": "#/definitions/modeNameString" },
+          "name": { "$ref": "definitions.json#/modeNameString" },
+          "shortName": { "$ref": "definitions.json#/modeNameString" },
           "rdmPersonalityIndex": {
             "type": "integer",
             "minimum": 1
@@ -531,7 +281,7 @@
                 },
                 {
                   "$comment": "normal channel keys, resolved template channel keys or channel alias keys",
-                  "$ref": "#/definitions/noVariablesString"
+                  "$ref": "definitions.json#/noVariablesString"
                 },
                 {
                   "$comment": "matrix channel insert block",
@@ -558,7 +308,7 @@
                           "uniqueItems": true,
                           "items": {
                             "$comment": "pixel key or pixel group key",
-                            "$ref": "#/definitions/noVariablesString"
+                            "$ref": "definitions.json#/noVariablesString"
                           }
                         }
                       ]
@@ -575,7 +325,7 @@
                           },
                           {
                             "$comment": "template channel key or template channel alias key",
-                            "$ref": "#/definitions/variablePixelKeyString"
+                            "$ref": "definitions.json#/variablePixelKeyString"
                           }
                         ]
                       }

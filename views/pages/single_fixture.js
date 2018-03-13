@@ -2,7 +2,7 @@ const url = require(`url`);
 const htmlEscape = require(`html-escape`);
 
 const svg = require(`../includes/svg.js`);
-const exportPlugins = require(`../../plugins/plugins.js`).export;
+const plugins = require(`../../plugins/plugins.json`);
 
 const {
   Channel,
@@ -57,8 +57,8 @@ module.exports = function handleFixture(options) {
   str += `<div class="download-button">`;
   str += `<a href="#" class="title">Download as &hellip;</a>`;
   str += `<ul>`;
-  for (const plugin of Object.keys(exportPlugins)) {
-    str += `<li><a href="/${man}/${fix}.${plugin}" title="Download ${exportPlugins[plugin].name} fixture definition">${exportPlugins[plugin].name}</a></li>`;
+  for (const plugin of plugins.exportPlugins) {
+    str += `<li><a href="/${man}/${fix}.${plugin}" title="Download ${plugins.data[plugin].name} fixture definition">${plugins.data[plugin].name}</a></li>`;
   }
   str += `</ul>`;
   str += `</div>`;

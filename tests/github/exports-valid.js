@@ -5,7 +5,7 @@ const path = require(`path`);
 const { fixtureFromRepository } = require(`../../lib/model.js`);
 const pullRequest = require(`./pull-request.js`);
 
-const plugins = require(`../../plugins/plugins.js`).all;
+const plugins = require(`../../plugins/plugins.json`);
 const testFixtures = require(`../test-fixtures.json`).map(
   fixture => [fixture.man, fixture.key]
 );
@@ -28,7 +28,7 @@ pullRequest.checkEnv()
     }
     else {
       const changedPlugins = changedComponents.added.exports.concat(changedComponents.modified.exports)
-        .filter(key => Object.keys(plugins[key].exportTests).length > 0); // only plugins that have export tests
+        .filter(key => plugins.data[key].exportTests.length > 0); // only plugins that have export tests
       for (const plugin of changedPlugins) {
         messagePromises.push(getPluginMessagePromise(plugin));
       }
@@ -76,7 +76,7 @@ pullRequest.checkEnv()
   });
 
 function getModelMessagePromise() {
-  const pluginListPromises = Object.keys(plugins).map(
+  const pluginListPromises = Object.keys(plugins.data).map(
     pluginKey => getPluginListPromise(pluginKey, testFixtures)
   );
 
@@ -94,9 +94,8 @@ function getModelMessagePromise() {
 }
 
 function getPluginMessagePromise(pluginKey) {
-  const plugin = plugins[pluginKey];
-  const exportTestListPromises = Object.keys(plugin.exportTests).map(
-    testKey => getExportTestListPromise(plugin, testKey, testFixtures)
+  const exportTestListPromises = plugins.data[pluginKey].exportTests.map(
+    testKey => getExportTestListPromise(pluginKey, testKey, testFixtures)
   );
 
   return Promise.all(exportTestListPromises)
@@ -113,14 +112,13 @@ function getPluginMessagePromise(pluginKey) {
 }
 
 function getExportTestMessagePromise(pluginKey, testKey) {
-  const plugin = plugins[pluginKey];
-  const files = plugin.export.export(testFixtures.map(
+  const plugin = require(path.join(__dirname, `../../plugins`, pluginKey, `export.js`));
+  const files = plugin.export(testFixtures.map(
     fix => fixtureFromRepository(fix[0], fix[1])
   ));
 
-  const test = plugin.exportTests[testKey];
   const fileResultPromises = files.map(
-    file => getFileResultPromise(test, file)
+    file => getFileResultPromise(pluginKey, testKey, file)
   );
 
   return Promise.all(fileResultPromises)
@@ -137,7 +135,7 @@ function getExportTestMessagePromise(pluginKey, testKey) {
 }
 
 function getFixtureMessagePromise(fixture) {
-  const pluginListPromises = Object.keys(plugins).map(
+  const pluginListPromises = Object.keys(plugins.data).map(
     pluginKey => getPluginListPromise(pluginKey, [fixture])
   );
 
@@ -161,9 +159,8 @@ function getTestFixturesInfo(lines) {
 
 
 function getPluginListPromise(pluginKey, fixtures) {
-  const plugin = plugins[pluginKey];
-  const exportTestListPromises = Object.keys(plugin.exportTests).map(
-    testKey => getExportTestListPromise(plugin, testKey, fixtures, `  `)
+  const exportTestListPromises = plugins.data[pluginKey].exportTests.map(
+    testKey => getExportTestListPromise(pluginKey, testKey, fixtures, `  `)
   );
 
   return Promise.all(exportTestListPromises)
@@ -178,14 +175,14 @@ function getPluginListPromise(pluginKey, fixtures) {
     });
 }
 
-function getExportTestListPromise(plugin, testKey, fixtures, indent = ``) {
-  const files = plugin.export.export(fixtures.map(
+function getExportTestListPromise(pluginKey, testKey, fixtures, indent = ``) {
+  const plugin = require(path.join(__dirname, `../../plugins`, pluginKey, `export.js`));
+  const files = plugin.export(fixtures.map(
     fix => fixtureFromRepository(fix[0], fix[1])
   ));
 
-  const test = plugin.exportTests[testKey];
   const fileResultPromises = files.map(
-    file => getFileResultPromise(test, file, `${indent}  `)
+    file => getFileResultPromise(pluginKey, testKey, file, `${indent}  `)
   );
 
   return Promise.all(fileResultPromises)
@@ -200,7 +197,8 @@ function getExportTestListPromise(plugin, testKey, fixtures, indent = ``) {
     });
 }
 
-function getFileResultPromise(test, file, indent = ``) {
+function getFileResultPromise(pluginKey, testKey, file, indent = ``) {
+  const test = require(path.join(__dirname, `../../plugins`, pluginKey, `exportTests/${testKey}.js`));
   return test(file.content)
     .then(() => {
       return [`${indent}- :white_check_mark: ${file.name}`];
