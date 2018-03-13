@@ -20,277 +20,343 @@
   },
   "availableChannels": {
     "Show mode": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 69],
-          "name": "No function"
+          "dmxRange": [0, 69],
+          "type": "Nothing"
         },
         {
-          "range": [70, 79],
-          "name": "Show 1"
+          "dmxRange": [70, 79],
+          "type": "Effect",
+          "comment": "Show 1"
         },
         {
-          "range": [80, 89],
-          "name": "Show 2"
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "comment": "Show 2"
         },
         {
-          "range": [90, 99],
-          "name": "Show 3"
+          "dmxRange": [90, 99],
+          "type": "Effect",
+          "comment": "Show 3"
         },
         {
-          "range": [100, 109],
-          "name": "Show 4"
+          "dmxRange": [100, 109],
+          "type": "Effect",
+          "comment": "Show 4"
         },
         {
-          "range": [110, 119],
-          "name": "Show 5"
+          "dmxRange": [110, 119],
+          "type": "Effect",
+          "comment": "Show 5"
         },
         {
-          "range": [120, 129],
-          "name": "Show 6"
+          "dmxRange": [120, 129],
+          "type": "Effect",
+          "comment": "Show 6"
         },
         {
-          "range": [130, 139],
-          "name": "Show 7"
+          "dmxRange": [130, 139],
+          "type": "Effect",
+          "comment": "Show 7"
         },
         {
-          "range": [140, 209],
-          "name": "Show 8"
+          "dmxRange": [140, 209],
+          "type": "Effect",
+          "comment": "Show 8"
         },
         {
-          "range": [210, 249],
-          "name": "Show 9"
+          "dmxRange": [210, 249],
+          "type": "Effect",
+          "comment": "Show 9"
         },
         {
-          "range": [250, 255],
-          "name": "Show 0"
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "comment": "Show 0"
         }
       ]
     },
     "Show speed": {
-      "type": "Speed"
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Special Functions": {
-      "type": "Maintenance",
       "capabilities": [
         {
-          "range": [0, 139],
-          "name": "No function"
+          "dmxRange": [0, 139],
+          "type": "Nothing"
         },
         {
-          "range": [140, 209],
-          "name": "Reset all"
+          "dmxRange": [140, 209],
+          "type": "Maintenance",
+          "comment": "Reset all"
         },
         {
-          "range": [210, 249],
-          "name": "No function"
+          "dmxRange": [210, 249],
+          "type": "Nothing"
         },
         {
-          "range": [250, 255],
-          "name": "Sound active"
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "comment": "Sound active"
         }
       ]
     },
     "Center LED": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Blackout",
-          "color": "#000000"
+          "dmxRange": [0, 9],
+          "type": "Nothing"
         },
         {
-          "range": [10, 255],
-          "name": "Color Macros"
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "comment": "Color Macros"
         }
       ]
     },
     "Red Laser": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "Closed"
+          "dmxRange": [0, 127],
+          "type": "Nothing",
+          "comment": "Closed"
         },
         {
-          "range": [128, 255],
-          "name": "Open"
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "comment": "Open"
         }
       ]
     },
     "Green Laser": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "Closed"
+          "dmxRange": [0, 127],
+          "type": "Nothing",
+          "comment": "Closed"
         },
         {
-          "range": [128, 255],
-          "name": "Open"
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "comment": "Open"
         }
       ]
     },
     "Laser Patterns": {
-      "type": "Effect"
+      "capability": {
+        "type": "Effect"
+      }
     },
     "Red Beam": {
-      "type": "Single Color",
-      "color": "Red"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
     },
     "Green Beam": {
-      "type": "Single Color",
-      "color": "Green"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
     },
     "Blue Beam": {
-      "type": "Single Color",
-      "color": "Blue"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
     },
     "White Beam": {
-      "type": "Single Color",
-      "color": "White"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
     },
     "Beam Strobe": {
-      "type": "Strobe",
       "defaultValue": 255,
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "Closed"
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [8, 15],
-          "name": "Open"
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [16, 131],
-          "name": "Strobe slow-fast"
+          "dmxRange": [16, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [132, 139],
-          "name": "Open"
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [140, 181],
-          "name": "Fast close / Slow open"
+          "dmxRange": [140, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp"
         },
         {
-          "range": [182, 189],
-          "name": "Open"
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [190, 231],
-          "name": "Fast open / Slow close"
+          "dmxRange": [190, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown"
         },
         {
-          "range": [232, 239],
-          "name": "Open"
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [240, 247],
-          "name": "Random"
+          "dmxRange": [240, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "StrobeRandom"
         },
         {
-          "range": [248, 255],
-          "name": "Open"
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
     "Beam Rotation": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "Rotation indexing"
+          "dmxRange": [0, 127],
+          "type": "RotationAngle",
+          "comment": "Rotation indexing",
+          "angleStart": "0%",
+          "angleEnd": "100%"
         },
         {
-          "range": [128, 189],
-          "name": "Rotating CW slow-fast"
+          "dmxRange": [128, 189],
+          "type": "RotationSpeed",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         },
         {
-          "range": [190, 193],
-          "name": "Stop"
+          "dmxRange": [190, 193],
+          "type": "RotationSpeed",
+          "speed": "stop"
         },
         {
-          "range": [194, 255],
-          "name": "Rotating CCW fast-slow"
+          "dmxRange": [194, 255],
+          "type": "RotationSpeed",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
         }
       ]
     },
     "Beam Dimmer": {
-      "type": "Intensity"
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
     },
     "Red Gobo": {
-      "type": "Gobo",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Closed"
+          "dmxRange": [0, 9],
+          "type": "Nothing",
+          "comment": "Closed"
         },
         {
-          "range": [10, 255],
-          "name": "Open"
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "comment": "Open"
         }
       ]
     },
     "Green Gobo": {
-      "type": "Gobo",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Closed"
+          "dmxRange": [0, 9],
+          "type": "Nothing",
+          "comment": "Closed"
         },
         {
-          "range": [10, 255],
-          "name": "Open"
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "comment": "Open"
         }
       ]
     },
     "Blue Gobo": {
-      "type": "Gobo",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Closed"
+          "dmxRange": [0, 9],
+          "type": "Nothing",
+          "comment": "Closed"
         },
         {
-          "range": [10, 255],
-          "name": "Open"
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "comment": "Open"
         }
       ]
     },
     "White Gobo": {
-      "type": "Gobo",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Closed"
+          "dmxRange": [0, 9],
+          "type": "Nothing",
+          "comment": "Closed"
         },
         {
-          "range": [10, 255],
-          "name": "Open"
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "comment": "Open"
         }
       ]
     },
     "Gobo Rotation": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "Rotation indexing"
+          "dmxRange": [0, 127],
+          "type": "GoboStencilRotationAngle",
+          "comment": "Rotation indexing",
+          "angleStart": "0%",
+          "angleEnd": "100%"
         },
         {
-          "range": [128, 189],
-          "name": "Rotating CW slow-fast"
+          "dmxRange": [128, 189],
+          "type": "GoboStencilRotationSpeed",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         },
         {
-          "range": [190, 193],
-          "name": "Stop"
+          "dmxRange": [190, 193],
+          "type": "GoboStencilRotationSpeed",
+          "speed": "stop"
         },
         {
-          "range": [194, 255],
-          "name": "Rotating CCW fast-slow"
+          "dmxRange": [194, 255],
+          "type": "GoboStencilRotationSpeed",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
         }
       ]
     }
