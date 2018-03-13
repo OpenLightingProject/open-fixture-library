@@ -12,7 +12,7 @@ const bodyParser = require(`body-parser`);
 
 const redirectToHttps = require(`./views/middleware/redirect-to-https.js`);
 
-const plugins = require(`./plugins/plugins.js`);
+const plugins = require(`./plugins/plugins.json`);
 const { fixtureFromRepository } = require(`./lib/model.js`);
 
 require(`./lib/load-env-file.js`);
@@ -193,12 +193,13 @@ app.use((request, response, next) => {
 
     // download all
     const [download, pluginName] = segments[0].split(`.`);
-    if (download === `download` && pluginName in plugins.export) {
+    if (download === `download` && plugins.exportPlugins.includes(pluginName)) {
       const fixtures = Object.keys(register.filesystem).map(fixture => {
         const [man, key] = fixture.split(`/`);
         return fixtureFromRepository(man, key);
       });
-      const outfiles = plugins.export[pluginName].export(fixtures, {
+      const plugin = require(path.join(__dirname, `plugins/${pluginName}/export.js`));
+      const outfiles = plugin.export(fixtures, {
         baseDir: __dirname
       });
 
@@ -222,8 +223,9 @@ app.use((request, response, next) => {
 
     // fixture export
     const [key, pluginName] = fix.split(`.`);
-    if (register.manufacturers[man].includes(key) && pluginName in plugins.export) {
-      const outfiles = plugins.export[pluginName].export([fixtureFromRepository(man, key)], {
+    if (register.manufacturers[man].includes(key) && plugins.exportPlugins.includes(pluginName)) {
+      const plugin = require(path.join(__dirname, `plugins/${pluginName}/export.js`));
+      const outfiles = plugin.export([fixtureFromRepository(man, key)], {
         baseDir: __dirname
       });
 

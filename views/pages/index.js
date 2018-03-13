@@ -1,7 +1,7 @@
 const url = require(`url`);
 
 const svg = require(`../includes/svg.js`);
-const exportPlugins = require(`../../plugins/plugins.js`).export;
+const plugins = require(`../../plugins/plugins.json`);
 
 module.exports = function(options) {
   options.title = `Open Fixture Library`;
@@ -36,8 +36,8 @@ module.exports = function(options) {
   str += `<div class="download-button big">`;
   str += `<a href="#" class="title">Download all ${options.register.lastUpdated.length} fixtures</a>`;
   str += `<ul>`;
-  for (const plugin of Object.keys(exportPlugins)) {
-    str += `<li><a href="/download.${plugin}" title="Download ${exportPlugins[plugin].name} fixture definitions">${exportPlugins[plugin].name}</a></li>`;
+  for (const plugin of plugins.exportPlugins) {
+    str += `<li><a href="/download.${plugin}" title="Download ${plugins.data[plugin].name} fixture definitions">${plugins.data[plugin].name}</a></li>`;
   }
   str += `</ul>`;
   str += `</div>`;

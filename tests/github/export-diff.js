@@ -3,7 +3,7 @@
 const path = require(`path`);
 
 const diffPluginOutputs = require(`../../lib/diff-plugin-outputs.js`);
-const exportPlugins = Object.keys(require(`../../plugins/plugins.js`).export).filter(pluginKey => pluginKey !== `ofl`); // there's no use diffing the source
+const exportPlugins = require(`../../plugins/plugins.json`).exportPlugins.filter(pluginKey => pluginKey !== `ofl`); // don't diff (essentially) the source files
 const pullRequest = require(`./pull-request.js`);
 
 require(`../../lib/load-env-file.js`);
