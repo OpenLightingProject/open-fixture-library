@@ -61,7 +61,15 @@
     "prefer-rest-params": "error",
     "prefer-template": "error",
     "quotes": ["error", "backtick", { "allowTemplateLiterals": true }],
-    "require-jsdoc": "warn",
+    "require-jsdoc": ["warn", {
+      "require": {
+        "FunctionDeclaration": true,
+        "MethodDefinition": true,
+        "ClassDeclaration": true,
+        "ArrowFunctionExpression": false,
+        "FunctionExpression": false
+      }
+    }],
     "security/detect-child-process": "off",
     "security/detect-non-literal-fs-filename": "off",
     "security/detect-non-literal-require": "off",
