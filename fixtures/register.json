@@ -295,6 +295,11 @@
       "lastModifyDate": "2017-07-17",
       "lastAction": "created"
     },
+    "generic/dim": {
+      "name": "dim",
+      "lastModifyDate": "2018-03-13",
+      "lastAction": "created"
+    },
     "generic/drgb-fader": {
       "name": "DRGB Fader",
       "lastModifyDate": "2017-12-07",
@@ -654,6 +659,7 @@
     "generic": [
       "cmy-fader",
       "desk-channel",
+      "dim",
       "drgb-fader",
       "drgbw-fader",
       "pan-tilt",
@@ -848,7 +854,8 @@
     "Dimmer": [
       "adb/europe-105",
       "eurolite/led-sls-6-uv-floor",
-      "generic/desk-channel"
+      "generic/desk-channel",
+      "generic/dim"
     ],
     "Effect": [
       "american-dj/revo-burst",
@@ -1108,6 +1115,9 @@
       "stairville/mh-x25",
       "stairville/stage-tri-led"
     ],
+    "Anon": [
+      "generic/dim"
+    ],
     "Anonymous": [
       "stairville/mh-100"
     ],
@@ -1194,6 +1204,7 @@
     }
   },
   "lastUpdated": [
+    "generic/dim",
     "stairville/led-flood-panel-150",
     "adb/alc4",
     "look/viper-nt",
