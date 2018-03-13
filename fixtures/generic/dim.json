@@ -1,0 +1,33 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
+  "name": "dim",
+  "shortName": "dimblue",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Anon"],
+    "createDate": "2018-03-13",
+    "lastModifyDate": "2018-03-13"
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "BLUE": {
+      "type": "Single Color",
+      "color": "Blue",
+      "fineChannelAliases": ["BLUE fine"]
+    }
+  },
+  "modes": [
+    {
+      "name": "blue",
+      "channels": [
+        "BLUE",
+        "BLUE fine"
+      ]
+    }
+  ]
+}
