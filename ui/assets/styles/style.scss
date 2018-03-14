@@ -382,13 +382,15 @@ a.button.secondary:disabled {
   }
 
   &:target {
-    animation: card-highlight 2s ease;
+    animation: card-highlight 0.7s ease;
+    animation-delay: 0.5s;
+    animation-fill-mode: backwards;
   }
 }
 
 @keyframes card-highlight {
   0% {
-    background-color: #fd0;
+    background-color: $blue-100;
   }
   100% {
     background-color: #fff;

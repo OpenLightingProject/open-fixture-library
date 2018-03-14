@@ -31,7 +31,7 @@ export default {
   validate({ params }) {
     return decodeURIComponent(params.category) in register.categories;
   },
-  async asyncData({ params }) {
+  asyncData({ params }) {
     const categoryName = decodeURIComponent(params.category);
     return {
       categoryName: categoryName,

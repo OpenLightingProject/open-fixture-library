@@ -39,7 +39,7 @@
         </select>
       </app-conditional-details>
 
-      <button :disabled="searchQuery === ``" type="submit" class="primary">Search</button>
+      <button :disabled="searchQuery === `` && isBrowser" type="submit" class="primary">Search</button>
     </form>
 
     <div class="search-results">
@@ -121,7 +121,8 @@ export default {
         })
       ),
       categories: Object.keys(register.categories).sort((a, b) => a.localeCompare(b, `en`)),
-      loading: false
+      loading: false,
+      isBrowser: false
     };
   },
   computed: {
@@ -137,6 +138,8 @@ export default {
     }
   },
   mounted() {
+    this.isBrowser = true;
+
     this._removeSearchQueryChecker = this.$router.afterEach((to, from) => {
       if (to.path === `/search`) {
         this.updateResults();

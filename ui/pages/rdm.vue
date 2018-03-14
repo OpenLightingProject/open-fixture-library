@@ -91,9 +91,7 @@ export default {
     };
   },
   async asyncData({ query, redirect }) {
-    const manufacturerId = query.manufacturerId;
-    const modelId = query.modelId;
-    const personalityIndex = query.personalityIndex;
+    const { manufacturerId, modelId, personalityIndex } = query;
 
     if (isEmpty(manufacturerId)) {
       return {

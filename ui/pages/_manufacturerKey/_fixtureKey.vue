@@ -37,7 +37,7 @@
 
       <section v-if="fixture.hasComment" class="comment">
         <span class="label">Comment</span>
-        <span class="value" style="white-space: pre-wrap;">{{ fixture.comment }}</span>
+        <span class="value">{{ fixture.comment }}</span>
       </section>
 
       <section v-if="fixture.manualURL !== null" class="manualURL">
@@ -106,6 +106,10 @@
     content: ' | ';
     padding: 0 0.7ex;
   }
+}
+
+.comment > .value {
+  white-space: pre-line;
 }
 
 .manualURL {

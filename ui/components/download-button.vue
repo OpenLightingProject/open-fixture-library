@@ -5,7 +5,7 @@
       <li v-for="plugin in exportPlugins" :key="plugin.key">
         <a
           :href="`${baseLink}.${plugin.key}`"
-          :title="`Download ${plugin.name} fixture ${isSingleFixture ? `definition` : `definitions`}`"
+          :title="`Download ${plugin.name} fixture definition${isSingleFixture ? `` : `s`}`"
           @click="blur($event)">
           {{ plugin.name }}
         </a>
