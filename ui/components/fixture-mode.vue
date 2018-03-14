@@ -14,7 +14,7 @@
       </section>
     </template>
 
-    <h3>DMX channels<template v-if="mode.channels.length > 1">
+    <h3>DMX channels<template v-if="showCollapseExpandButtons">
       <button class="icon-button expand-all only-js" title="Expand all channels" @click.prevent="openDetails">
         <app-svg name="chevron-double-down" />
       </button>
@@ -63,6 +63,24 @@ export default {
       type: Number,
       required: true
     }
+  },
+  data() {
+    return {
+      hasDetails: true
+    };
+  },
+  computed: {
+    showCollapseExpandButtons() {
+      return this.mode.channels.length > 1 && this.hasDetails;
+    }
+  },
+  mounted() {
+    // wait for all child components to render
+    this.$nextTick(() => {
+      if (!this.$el.querySelector(`details`)) {
+        this.hasDetails = false;
+      }
+    });
   },
   methods: {
     openDetails() {
