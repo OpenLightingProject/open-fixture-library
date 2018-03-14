@@ -182,8 +182,9 @@ export default {
     }
   },
   mounted: function() {
-    // TODO: if (Vue._oflRestoreComplete) {
-    this.$refs.firstInput.focus();
+    if (this.$root._oflRestoreComplete) {
+      this.$refs.firstInput.focus();
+    }
   }
 };
 </script>
