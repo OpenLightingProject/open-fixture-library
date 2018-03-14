@@ -2,13 +2,33 @@
   "filesystem": {
     "5star-systems/spica-250m": {
       "name": "Spica 250M",
-      "lastModifyDate": "2017-07-15",
+      "lastModifyDate": "2017-10-16",
       "lastAction": "modified"
     },
     "abstract/twister-4": {
       "name": "Twister 4",
-      "lastModifyDate": "2017-08-10",
+      "lastModifyDate": "2017-10-16",
       "lastAction": "modified"
+    },
+    "adb/alc4": {
+      "name": "ALC4",
+      "lastModifyDate": "2018-02-19",
+      "lastAction": "created"
+    },
+    "adb/europe-105": {
+      "name": "Europe 105",
+      "lastModifyDate": "2018-02-15",
+      "lastAction": "created"
+    },
+    "american-dj/auto-spot-150": {
+      "name": "Auto Spot 150",
+      "lastModifyDate": "2018-01-18",
+      "lastAction": "created"
+    },
+    "american-dj/boom-box-fx2": {
+      "name": "Boom Box Fx2",
+      "lastModifyDate": "2017-11-17",
+      "lastAction": "created"
     },
     "american-dj/fog-fury-jett-pro": {
       "name": "Fog Fury Jett Pro",
@@ -17,22 +37,42 @@
     },
     "american-dj/galaxian-3d": {
       "name": "Galaxian 3D",
-      "lastModifyDate": "2017-09-11",
-      "lastAction": "created"
+      "lastModifyDate": "2017-12-31",
+      "lastAction": "modified"
     },
     "american-dj/quad-phase-hp": {
       "name": "Quad Phase HP",
-      "lastModifyDate": "2017-04-10",
+      "lastModifyDate": "2017-12-08",
       "lastAction": "modified"
     },
     "american-dj/revo-4-ir": {
       "name": "Revo 4 IR",
-      "lastModifyDate": "2017-05-24",
+      "lastModifyDate": "2017-12-31",
+      "lastAction": "modified"
+    },
+    "american-dj/revo-burst": {
+      "name": "Revo Burst",
+      "lastModifyDate": "2018-01-27",
+      "lastAction": "modified"
+    },
+    "american-dj/revo-sweep": {
+      "name": "Revo Sweep",
+      "lastModifyDate": "2018-02-06",
       "lastAction": "created"
     },
     "american-dj/xs-400": {
       "name": "XS 400",
-      "lastModifyDate": "2017-09-04",
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
+    },
+    "ayra/tdc-triple-burst": {
+      "name": "TDC Triple Burst",
+      "lastModifyDate": "2017-12-14",
+      "lastAction": "created"
+    },
+    "cameo/flash-matrix-250": {
+      "name": "Flash Matrix 250",
+      "lastModifyDate": "2017-12-28",
       "lastAction": "created"
     },
     "cameo/flat-pro-18": {
@@ -40,10 +80,20 @@
       "lastModifyDate": "2017-07-14",
       "lastAction": "created"
     },
+    "cameo/flat-pro-flood-ip65-tri": {
+      "name": "Flat Pro Flood IP65 Tri",
+      "lastModifyDate": "2017-12-25",
+      "lastAction": "created"
+    },
+    "cameo/gobo-scanner-80": {
+      "name": "Gobo Scanner 80",
+      "lastModifyDate": "2017-11-30",
+      "lastAction": "created"
+    },
     "cameo/hydrabeam-100": {
       "name": "Hydrabeam 100",
-      "lastModifyDate": "2017-08-24",
-      "lastAction": "created"
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
     },
     "cameo/hydrabeam-300-rgbw": {
       "name": "Hydrabeam 300 RGBW",
@@ -52,13 +102,18 @@
     },
     "cameo/nanospot-120": {
       "name": "NanoSpot 120",
-      "lastModifyDate": "2017-08-05",
-      "lastAction": "created"
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
     },
     "cameo/outdoor-par-tri-12": {
       "name": "Outdoor PAR Tri 12",
-      "lastModifyDate": "2017-03-09",
+      "lastModifyDate": "2017-12-26",
       "lastAction": "modified"
+    },
+    "cameo/storm": {
+      "name": "STORM",
+      "lastModifyDate": "2018-02-03",
+      "lastAction": "created"
     },
     "cameo/thunder-wash-100-rgb": {
       "name": "Thunder Wash 100 RGB",
@@ -80,39 +135,94 @@
       "lastModifyDate": "2017-03-09",
       "lastAction": "modified"
     },
+    "chauvet-dj/gigbar-2": {
+      "name": "GigBAR 2",
+      "lastModifyDate": "2017-12-31",
+      "lastAction": "modified"
+    },
     "chauvet-dj/slimpar-pro-h-usb": {
       "name": "SlimPAR Pro H USB",
       "lastModifyDate": "2017-08-09",
       "lastAction": "created"
     },
+    "chauvet-dj/slimpar-pro-qz12": {
+      "name": "SlimPAR Pro QZ12",
+      "lastModifyDate": "2018-01-01",
+      "lastAction": "created"
+    },
+    "chauvet-dj/slimpar-pro-w": {
+      "name": "SlimPAR Pro W",
+      "lastModifyDate": "2018-01-01",
+      "lastAction": "created"
+    },
+    "chauvet-dj/washfx": {
+      "name": "WashFX",
+      "lastModifyDate": "2017-12-31",
+      "lastAction": "modified"
+    },
+    "chroma-q/color-force-ii-12": {
+      "name": "Color Force II 12",
+      "lastModifyDate": "2018-02-13",
+      "lastAction": "created"
+    },
+    "chroma-q/color-force-ii-48": {
+      "name": "Color Force II 48",
+      "lastModifyDate": "2018-02-13",
+      "lastAction": "created"
+    },
+    "chroma-q/color-force-ii-72": {
+      "name": "Color Force II 72",
+      "lastModifyDate": "2018-02-13",
+      "lastAction": "created"
+    },
+    "clay-paky/sharpy": {
+      "name": "Sharpy",
+      "lastModifyDate": "2018-01-30",
+      "lastAction": "created"
+    },
     "coemar/prospot-250-lx": {
       "name": "ProSpot 250 LX",
-      "lastModifyDate": "2017-09-11",
-      "lastAction": "created"
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
     },
     "dts/xr1200-wash": {
       "name": "XR1200 WASH",
-      "lastModifyDate": "2017-08-08",
-      "lastAction": "created"
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
     },
     "elation/platinum-hfx": {
       "name": "Platinum HFX",
-      "lastModifyDate": "2017-05-26",
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
+    },
+    "elation/platinum-seven": {
+      "name": "Platinum Seven",
+      "lastModifyDate": "2018-02-05",
       "lastAction": "created"
     },
     "elation/platinum-spot-15r-pro": {
       "name": "Platinum Spot 15R Pro",
-      "lastModifyDate": "2017-05-23",
-      "lastAction": "created"
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
     },
     "eliminator/stealth-beam": {
       "name": "Stealth Beam",
-      "lastModifyDate": "2017-09-19",
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
+    },
+    "equinox/gigabar": {
+      "name": "Gigabar",
+      "lastModifyDate": "2017-12-31",
+      "lastAction": "modified"
+    },
+    "eurolite/led-fe-1500": {
+      "name": "LED FE-1500",
+      "lastModifyDate": "2017-12-31",
       "lastAction": "created"
     },
     "eurolite/led-kls-801": {
       "name": "LED KLS-801",
-      "lastModifyDate": "2017-07-16",
+      "lastModifyDate": "2017-12-31",
       "lastAction": "modified"
     },
     "eurolite/led-par-56-tcl": {
@@ -127,32 +237,37 @@
     },
     "eurolite/led-sls-6-uv-floor": {
       "name": "LED SLS-6 UV Floor",
-      "lastModifyDate": "2017-05-24",
-      "lastAction": "created"
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
     },
     "eurolite/led-svf-1": {
       "name": "LED SVF-1",
-      "lastModifyDate": "2017-08-01",
-      "lastAction": "created"
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
     },
     "eurolite/led-tmh-18": {
       "name": "LED TMH-18",
-      "lastModifyDate": "2017-08-10",
+      "lastModifyDate": "2017-12-31",
       "lastAction": "modified"
     },
     "eurolite/led-tmh-7": {
       "name": "LED TMH-7",
-      "lastModifyDate": "2017-09-07",
-      "lastAction": "created"
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
     },
     "eurolite/led-tmh-9": {
       "name": "LED TMH-9",
-      "lastModifyDate": "2017-09-04",
-      "lastAction": "created"
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
     },
     "eurolite/led-tmh-x25": {
       "name": "LED TMH-X25",
-      "lastModifyDate": "2017-05-23",
+      "lastModifyDate": "2017-12-31",
+      "lastAction": "modified"
+    },
+    "futurelight/dmh-75-i-led-moving-head": {
+      "name": "DMH-75.i LED Moving Head",
+      "lastModifyDate": "2017-12-12",
       "lastAction": "created"
     },
     "futurelight/pro-slim-par-7-hcl": {
@@ -160,14 +275,39 @@
       "lastModifyDate": "2017-05-11",
       "lastAction": "created"
     },
+    "futurelight/sc-250-scanner": {
+      "name": "SC-250 Scanner",
+      "lastModifyDate": "2017-12-21",
+      "lastAction": "created"
+    },
+    "futurelight/stb-648-led-strobe-smd-5050": {
+      "name": "STB-648 LED Strobe SMD 5050",
+      "lastModifyDate": "2018-02-03",
+      "lastAction": "created"
+    },
+    "generic/cmy-fader": {
+      "name": "CMY Fader",
+      "lastModifyDate": "2017-12-12",
+      "lastAction": "created"
+    },
     "generic/desk-channel": {
       "name": "Desk Channel",
       "lastModifyDate": "2017-07-17",
       "lastAction": "created"
     },
+    "generic/drgb-fader": {
+      "name": "DRGB Fader",
+      "lastModifyDate": "2017-12-07",
+      "lastAction": "created"
+    },
+    "generic/drgbw-fader": {
+      "name": "DRGBW Fader",
+      "lastModifyDate": "2018-02-15",
+      "lastAction": "created"
+    },
     "generic/pan-tilt": {
       "name": "Pan/Tilt Fader",
-      "lastModifyDate": "2017-07-21",
+      "lastModifyDate": "2017-10-16",
       "lastAction": "modified"
     },
     "generic/rgb-fader": {
@@ -175,19 +315,54 @@
       "lastModifyDate": "2017-07-17",
       "lastAction": "created"
     },
+    "generic/rgba-fader": {
+      "name": "RGBA Fader",
+      "lastModifyDate": "2017-12-12",
+      "lastAction": "created"
+    },
+    "generic/rgbd-fader": {
+      "name": "RGBD Fader",
+      "lastModifyDate": "2017-12-07",
+      "lastAction": "created"
+    },
+    "generic/rgbw-fader": {
+      "name": "RGBW Fader",
+      "lastModifyDate": "2017-12-07",
+      "lastAction": "created"
+    },
+    "glp/impression-laser": {
+      "name": "impression Laser",
+      "lastModifyDate": "2018-02-02",
+      "lastAction": "created"
+    },
     "glp/impression-spot-one": {
       "name": "impression Spot One",
-      "lastModifyDate": "2017-10-12",
-      "lastAction": "created"
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
     },
     "gruft/ventilator": {
       "name": "Ventilator",
-      "lastModifyDate": "2017-03-09",
+      "lastModifyDate": "2017-10-16",
       "lastAction": "modified"
+    },
+    "jb-lighting/varyscan-p7": {
+      "name": "Varyscan P7",
+      "lastModifyDate": "2018-01-08",
+      "lastAction": "created"
     },
     "jb-systems/twin-effect-laser": {
       "name": "Twin Effect Laser",
-      "lastModifyDate": "2017-09-19",
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
+    },
+    "kam/gobotracer": {
+      "name": "GoboTracer",
+      "lastModifyDate": "2017-11-16",
+      "lastAction": "created"
+    },
+    "lightmaxx/dj-scan-led": {
+      "name": "DJ Scan LED",
+      "lastModifyDate": "2018-02-06",
       "lastAction": "created"
     },
     "lightmaxx/platinum-mini-tri-par": {
@@ -197,8 +372,13 @@
     },
     "lightmaxx/vega-zoom-wash": {
       "name": "Vega Zoom Wash",
-      "lastModifyDate": "2017-03-09",
+      "lastModifyDate": "2017-12-07",
       "lastAction": "modified"
+    },
+    "look/viper-nt": {
+      "name": "Viper NT",
+      "lastModifyDate": "2018-02-18",
+      "lastAction": "created"
     },
     "martin/atomic-3000": {
       "name": "Atomic 3000",
@@ -207,28 +387,28 @@
     },
     "martin/mac-aura": {
       "name": "MAC Aura",
-      "lastModifyDate": "2017-08-03",
-      "lastAction": "created"
+      "lastModifyDate": "2017-12-09",
+      "lastAction": "modified"
     },
     "martin/mac-axiom-hybrid": {
       "name": "MAC Axiom Hybrid",
-      "lastModifyDate": "2017-08-08",
+      "lastModifyDate": "2017-10-16",
       "lastAction": "modified"
     },
     "martin/mac-viper-airfx": {
       "name": "MAC Viper AirFX",
-      "lastModifyDate": "2017-08-03",
-      "lastAction": "created"
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
     },
     "martin/mac-viper-performance": {
       "name": "MAC Viper Performance",
-      "lastModifyDate": "2017-09-08",
-      "lastAction": "created"
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
     },
     "martin/mac-viper-wash": {
       "name": "MAC Viper Wash (DX)",
-      "lastModifyDate": "2017-09-11",
-      "lastAction": "created"
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
     },
     "martin/magnum-2500-hz": {
       "name": "Magnum 2500 HZ",
@@ -237,23 +417,23 @@
     },
     "martin/roboscan-812": {
       "name": "RoboScan 812",
-      "lastModifyDate": "2017-04-18",
-      "lastAction": "created"
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
     },
     "martin/rush-mh-2-wash": {
       "name": "Rush MH 2 Wash",
-      "lastModifyDate": "2017-08-08",
+      "lastModifyDate": "2017-10-16",
       "lastAction": "modified"
     },
     "martin/rush-mh-3-beam": {
       "name": "Rush MH 3 Beam",
-      "lastModifyDate": "2017-08-08",
+      "lastModifyDate": "2017-10-16",
       "lastAction": "modified"
     },
     "martin/rush-mh-7-hybrid": {
       "name": "Rush MH 7 Hybrid",
-      "lastModifyDate": "2017-09-08",
-      "lastAction": "created"
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
     },
     "mdg/hazer-atmosphere-aps": {
       "name": "Hazer ATMOSPHERE APS",
@@ -265,25 +445,50 @@
       "lastModifyDate": "2017-10-13",
       "lastAction": "created"
     },
-    "prolights/diamond-19": {
-      "name": "Diamond 19",
-      "lastModifyDate": "2017-08-21",
+    "prolights/diamond19": {
+      "name": "DIAMOND19",
+      "lastModifyDate": "2018-02-02",
       "lastAction": "modified"
+    },
+    "prolights/pixpan16": {
+      "name": "PIXPAN16",
+      "lastModifyDate": "2018-02-02",
+      "lastAction": "created"
     },
     "qtx/lux-ld30w": {
       "name": "LUX-LD30W",
-      "lastModifyDate": "2017-09-19",
-      "lastAction": "created"
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
     },
     "robe/colorspot-2500e-at": {
       "name": "ColorSpot 2500E AT",
-      "lastModifyDate": "2017-09-07",
-      "lastAction": "created"
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
     },
     "robe/dj-scan-250-xt": {
       "name": "DJ Scan 250 XT",
-      "lastModifyDate": "2017-07-16",
+      "lastModifyDate": "2017-10-16",
       "lastAction": "modified"
+    },
+    "robe/robin-600e-spot": {
+      "name": "Robin 600E Spot",
+      "lastModifyDate": "2018-02-02",
+      "lastAction": "created"
+    },
+    "robe/robin-ledbeam-150": {
+      "name": "Robin LEDBeam 150",
+      "lastModifyDate": "2018-01-05",
+      "lastAction": "created"
+    },
+    "robe/robin-ledwash-600": {
+      "name": "Robin LEDWash 600",
+      "lastModifyDate": "2018-01-05",
+      "lastAction": "modified"
+    },
+    "showtec/dominator": {
+      "name": "Dominator",
+      "lastModifyDate": "2017-11-17",
+      "lastAction": "created"
     },
     "showtec/horizon-8": {
       "name": "Horizon 8",
@@ -292,12 +497,12 @@
     },
     "showtec/kanjo-spot-60": {
       "name": "Kanjo Spot 60",
-      "lastModifyDate": "2017-09-09",
-      "lastAction": "created"
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
     },
     "showtec/kanjo-wash-rgb": {
       "name": "Kanjo Wash RGB",
-      "lastModifyDate": "2017-07-16",
+      "lastModifyDate": "2017-10-16",
       "lastAction": "modified"
     },
     "showtec/led-light-bar-rgb-v3": {
@@ -307,12 +512,52 @@
     },
     "showtec/phantom-140-led-spot": {
       "name": "Phantom 140 LED Beam",
-      "lastModifyDate": "2017-05-24",
-      "lastAction": "created"
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
     },
     "showtec/phantom-50-led-spot": {
       "name": "Phantom 50 LED Spot",
-      "lastModifyDate": "2017-07-31",
+      "lastModifyDate": "2017-10-16",
+      "lastAction": "modified"
+    },
+    "showtec/pixel-bar-12-mkii": {
+      "name": "Pixel Bar 12 MKII",
+      "lastModifyDate": "2018-02-08",
+      "lastAction": "created"
+    },
+    "showtec/sunraise-led": {
+      "name": "Sunraise LED",
+      "lastModifyDate": "2018-02-06",
+      "lastAction": "created"
+    },
+    "stairville/led-flood-panel-150": {
+      "name": "LED Flood Panel 150",
+      "lastModifyDate": "2018-03-10",
+      "lastAction": "created"
+    },
+    "stairville/mh-100": {
+      "name": "MH-100",
+      "lastModifyDate": "2017-10-28",
+      "lastAction": "created"
+    },
+    "stairville/mh-x25": {
+      "name": "MH-X25",
+      "lastModifyDate": "2018-01-30",
+      "lastAction": "created"
+    },
+    "stairville/stage-tri-led": {
+      "name": "Stage TRI LED",
+      "lastModifyDate": "2018-01-30",
+      "lastAction": "created"
+    },
+    "venue/thintri64": {
+      "name": "ThinTri64",
+      "lastModifyDate": "2018-02-04",
+      "lastAction": "created"
+    },
+    "venue/tristrip3z": {
+      "name": "TriStrip3Z",
+      "lastModifyDate": "2018-01-27",
       "lastAction": "modified"
     }
   },
@@ -323,26 +568,53 @@
     "abstract": [
       "twister-4"
     ],
+    "adb": [
+      "alc4",
+      "europe-105"
+    ],
     "american-dj": [
+      "auto-spot-150",
+      "boom-box-fx2",
       "fog-fury-jett-pro",
       "galaxian-3d",
       "quad-phase-hp",
       "revo-4-ir",
+      "revo-burst",
+      "revo-sweep",
       "xs-400"
     ],
+    "ayra": [
+      "tdc-triple-burst"
+    ],
     "cameo": [
+      "flash-matrix-250",
       "flat-pro-18",
+      "flat-pro-flood-ip65-tri",
+      "gobo-scanner-80",
       "hydrabeam-100",
       "hydrabeam-300-rgbw",
       "nanospot-120",
       "outdoor-par-tri-12",
+      "storm",
       "thunder-wash-100-rgb",
       "thunder-wash-100-w",
       "thunder-wash-600-rgb",
       "thunder-wash-600-w"
     ],
     "chauvet-dj": [
-      "slimpar-pro-h-usb"
+      "gigbar-2",
+      "slimpar-pro-h-usb",
+      "slimpar-pro-qz12",
+      "slimpar-pro-w",
+      "washfx"
+    ],
+    "chroma-q": [
+      "color-force-ii-12",
+      "color-force-ii-48",
+      "color-force-ii-72"
+    ],
+    "clay-paky": [
+      "sharpy"
     ],
     "coemar": [
       "prospot-250-lx"
@@ -352,12 +624,17 @@
     ],
     "elation": [
       "platinum-hfx",
+      "platinum-seven",
       "platinum-spot-15r-pro"
     ],
     "eliminator": [
       "stealth-beam"
     ],
+    "equinox": [
+      "gigabar"
+    ],
     "eurolite": [
+      "led-fe-1500",
       "led-kls-801",
       "led-par-56-tcl",
       "led-ps-4-hcl",
@@ -369,25 +646,45 @@
       "led-tmh-x25"
     ],
     "futurelight": [
-      "pro-slim-par-7-hcl"
+      "dmh-75-i-led-moving-head",
+      "pro-slim-par-7-hcl",
+      "sc-250-scanner",
+      "stb-648-led-strobe-smd-5050"
     ],
     "generic": [
+      "cmy-fader",
       "desk-channel",
+      "drgb-fader",
+      "drgbw-fader",
       "pan-tilt",
-      "rgb-fader"
+      "rgb-fader",
+      "rgba-fader",
+      "rgbd-fader",
+      "rgbw-fader"
     ],
     "glp": [
+      "impression-laser",
       "impression-spot-one"
     ],
     "gruft": [
       "ventilator"
     ],
+    "jb-lighting": [
+      "varyscan-p7"
+    ],
     "jb-systems": [
       "twin-effect-laser"
     ],
+    "kam": [
+      "gobotracer"
+    ],
     "lightmaxx": [
+      "dj-scan-led",
       "platinum-mini-tri-par",
       "vega-zoom-wash"
+    ],
+    "look": [
+      "viper-nt"
     ],
     "martin": [
       "atomic-3000",
@@ -407,54 +704,156 @@
       "theone-atmospheric-generator"
     ],
     "prolights": [
-      "diamond-19"
+      "diamond19",
+      "pixpan16"
     ],
     "qtx": [
       "lux-ld30w"
     ],
     "robe": [
       "colorspot-2500e-at",
-      "dj-scan-250-xt"
+      "dj-scan-250-xt",
+      "robin-600e-spot",
+      "robin-ledbeam-150",
+      "robin-ledwash-600"
     ],
     "showtec": [
+      "dominator",
       "horizon-8",
       "kanjo-spot-60",
       "kanjo-wash-rgb",
       "led-light-bar-rgb-v3",
       "phantom-140-led-spot",
-      "phantom-50-led-spot"
+      "phantom-50-led-spot",
+      "pixel-bar-12-mkii",
+      "sunraise-led"
+    ],
+    "stairville": [
+      "led-flood-panel-150",
+      "mh-100",
+      "mh-x25",
+      "stage-tri-led"
+    ],
+    "venue": [
+      "thintri64",
+      "tristrip3z"
     ]
   },
   "categories": {
     "Blinder": [
+      "adb/alc4",
+      "cameo/flash-matrix-250",
+      "cameo/flat-pro-flood-ip65-tri",
       "cameo/thunder-wash-100-rgb",
       "cameo/thunder-wash-100-w",
       "cameo/thunder-wash-600-rgb",
       "cameo/thunder-wash-600-w",
-      "showtec/horizon-8"
+      "showtec/horizon-8",
+      "stairville/led-flood-panel-150"
     ],
     "Color Changer": [
+      "5star-systems/spica-250m",
+      "abstract/twister-4",
+      "adb/alc4",
+      "american-dj/auto-spot-150",
+      "american-dj/boom-box-fx2",
       "american-dj/fog-fury-jett-pro",
+      "american-dj/quad-phase-hp",
+      "american-dj/revo-4-ir",
+      "american-dj/xs-400",
+      "ayra/tdc-triple-burst",
       "cameo/flat-pro-18",
+      "cameo/flat-pro-flood-ip65-tri",
+      "cameo/gobo-scanner-80",
+      "cameo/hydrabeam-100",
       "cameo/hydrabeam-300-rgbw",
+      "cameo/nanospot-120",
       "cameo/outdoor-par-tri-12",
+      "cameo/storm",
       "cameo/thunder-wash-100-rgb",
       "cameo/thunder-wash-600-rgb",
+      "chauvet-dj/gigbar-2",
       "chauvet-dj/slimpar-pro-h-usb",
+      "chauvet-dj/slimpar-pro-qz12",
+      "chauvet-dj/slimpar-pro-w",
+      "chauvet-dj/washfx",
+      "chroma-q/color-force-ii-12",
+      "chroma-q/color-force-ii-48",
+      "chroma-q/color-force-ii-72",
+      "clay-paky/sharpy",
+      "coemar/prospot-250-lx",
+      "dts/xr1200-wash",
+      "elation/platinum-hfx",
+      "elation/platinum-seven",
+      "elation/platinum-spot-15r-pro",
+      "eliminator/stealth-beam",
+      "equinox/gigabar",
+      "eurolite/led-fe-1500",
       "eurolite/led-kls-801",
       "eurolite/led-par-56-tcl",
       "eurolite/led-ps-4-hcl",
-      "eurolite/led-sls-6-uv-floor",
+      "eurolite/led-tmh-18",
+      "eurolite/led-tmh-7",
+      "eurolite/led-tmh-9",
+      "eurolite/led-tmh-x25",
+      "futurelight/dmh-75-i-led-moving-head",
       "futurelight/pro-slim-par-7-hcl",
+      "futurelight/sc-250-scanner",
+      "generic/cmy-fader",
+      "generic/drgb-fader",
+      "generic/drgbw-fader",
       "generic/rgb-fader",
+      "generic/rgba-fader",
+      "generic/rgbd-fader",
+      "generic/rgbw-fader",
+      "glp/impression-laser",
       "glp/impression-spot-one",
+      "gruft/ventilator",
+      "jb-systems/twin-effect-laser",
+      "kam/gobotracer",
+      "lightmaxx/dj-scan-led",
       "lightmaxx/platinum-mini-tri-par",
       "lightmaxx/vega-zoom-wash",
+      "martin/mac-aura",
+      "martin/mac-axiom-hybrid",
+      "martin/mac-viper-airfx",
+      "martin/mac-viper-performance",
+      "martin/mac-viper-wash",
+      "martin/roboscan-812",
+      "martin/rush-mh-2-wash",
+      "martin/rush-mh-3-beam",
+      "martin/rush-mh-7-hybrid",
+      "prolights/diamond19",
+      "prolights/pixpan16",
+      "qtx/lux-ld30w",
+      "robe/colorspot-2500e-at",
+      "robe/dj-scan-250-xt",
+      "robe/robin-600e-spot",
+      "robe/robin-ledbeam-150",
+      "robe/robin-ledwash-600",
       "showtec/horizon-8",
-      "showtec/led-light-bar-rgb-v3"
+      "showtec/kanjo-spot-60",
+      "showtec/kanjo-wash-rgb",
+      "showtec/led-light-bar-rgb-v3",
+      "showtec/phantom-140-led-spot",
+      "showtec/phantom-50-led-spot",
+      "showtec/pixel-bar-12-mkii",
+      "stairville/led-flood-panel-150",
+      "stairville/mh-100",
+      "stairville/mh-x25",
+      "stairville/stage-tri-led",
+      "venue/thintri64",
+      "venue/tristrip3z"
     ],
     "Dimmer": [
+      "adb/europe-105",
+      "eurolite/led-sls-6-uv-floor",
       "generic/desk-channel"
+    ],
+    "Effect": [
+      "american-dj/revo-burst",
+      "ayra/tdc-triple-burst",
+      "venue/tristrip3z"
     ],
     "Fan": [
       "gruft/ventilator"
@@ -463,7 +862,12 @@
       "abstract/twister-4",
       "american-dj/quad-phase-hp",
       "american-dj/revo-4-ir",
-      "eurolite/led-svf-1"
+      "american-dj/revo-burst",
+      "american-dj/revo-sweep",
+      "cameo/storm",
+      "eurolite/led-fe-1500",
+      "eurolite/led-svf-1",
+      "showtec/sunraise-led"
     ],
     "Hazer": [
       "martin/magnum-2500-hz",
@@ -471,26 +875,47 @@
       "mdg/theone-atmospheric-generator"
     ],
     "Laser": [
+      "american-dj/boom-box-fx2",
       "american-dj/galaxian-3d",
-      "jb-systems/twin-effect-laser"
+      "cameo/storm",
+      "chauvet-dj/gigbar-2",
+      "eurolite/led-fe-1500",
+      "glp/impression-laser",
+      "jb-systems/twin-effect-laser",
+      "showtec/dominator"
+    ],
+    "Matrix": [
+      "american-dj/revo-4-ir",
+      "cameo/flash-matrix-250",
+      "eurolite/led-tmh-18",
+      "eurolite/led-tmh-x25",
+      "prolights/pixpan16"
     ],
     "Moving Head": [
       "5star-systems/spica-250m",
+      "american-dj/auto-spot-150",
       "american-dj/xs-400",
       "cameo/hydrabeam-100",
       "cameo/hydrabeam-300-rgbw",
       "cameo/nanospot-120",
+      "clay-paky/sharpy",
       "coemar/prospot-250-lx",
       "dts/xr1200-wash",
       "elation/platinum-hfx",
+      "elation/platinum-seven",
       "elation/platinum-spot-15r-pro",
       "eliminator/stealth-beam",
+      "eurolite/led-svf-1",
       "eurolite/led-tmh-18",
       "eurolite/led-tmh-7",
       "eurolite/led-tmh-9",
       "eurolite/led-tmh-x25",
+      "futurelight/dmh-75-i-led-moving-head",
       "generic/pan-tilt",
+      "glp/impression-laser",
       "glp/impression-spot-one",
+      "jb-lighting/varyscan-p7",
+      "kam/gobotracer",
       "lightmaxx/vega-zoom-wash",
       "martin/mac-aura",
       "martin/mac-axiom-hybrid",
@@ -500,27 +925,40 @@
       "martin/rush-mh-2-wash",
       "martin/rush-mh-3-beam",
       "martin/rush-mh-7-hybrid",
-      "prolights/diamond-19",
+      "prolights/diamond19",
       "qtx/lux-ld30w",
       "robe/colorspot-2500e-at",
+      "robe/robin-600e-spot",
+      "robe/robin-ledbeam-150",
+      "robe/robin-ledwash-600",
       "showtec/kanjo-spot-60",
       "showtec/kanjo-wash-rgb",
       "showtec/phantom-140-led-spot",
-      "showtec/phantom-50-led-spot"
+      "showtec/phantom-50-led-spot",
+      "stairville/mh-100",
+      "stairville/mh-x25"
     ],
     "Scanner": [
+      "cameo/gobo-scanner-80",
+      "futurelight/sc-250-scanner",
+      "lightmaxx/dj-scan-led",
       "martin/roboscan-812",
       "robe/dj-scan-250-xt"
     ],
     "Smoke": [
       "american-dj/fog-fury-jett-pro",
+      "look/viper-nt",
       "mdg/theone-atmospheric-generator"
     ],
     "Strobe": [
+      "cameo/flash-matrix-250",
+      "cameo/storm",
       "cameo/thunder-wash-100-rgb",
       "cameo/thunder-wash-100-w",
       "cameo/thunder-wash-600-rgb",
       "cameo/thunder-wash-600-w",
+      "eurolite/led-fe-1500",
+      "futurelight/stb-648-led-strobe-smd-5050",
       "martin/atomic-3000"
     ]
   },
@@ -530,66 +968,113 @@
       "abstract/twister-4",
       "american-dj/quad-phase-hp",
       "american-dj/revo-4-ir",
+      "american-dj/revo-burst",
       "american-dj/xs-400",
+      "ayra/tdc-triple-burst",
+      "cameo/hydrabeam-100",
       "cameo/hydrabeam-300-rgbw",
       "cameo/outdoor-par-tri-12",
       "cameo/thunder-wash-100-rgb",
       "cameo/thunder-wash-100-w",
       "cameo/thunder-wash-600-rgb",
       "cameo/thunder-wash-600-w",
+      "chauvet-dj/gigbar-2",
+      "clay-paky/sharpy",
       "coemar/prospot-250-lx",
       "elation/platinum-hfx",
       "eurolite/led-kls-801",
       "eurolite/led-par-56-tcl",
       "eurolite/led-ps-4-hcl",
       "eurolite/led-sls-6-uv-floor",
+      "eurolite/led-tmh-18",
       "eurolite/led-tmh-7",
       "eurolite/led-tmh-9",
+      "futurelight/dmh-75-i-led-moving-head",
       "futurelight/pro-slim-par-7-hcl",
+      "generic/cmy-fader",
       "generic/desk-channel",
+      "generic/drgb-fader",
       "generic/pan-tilt",
       "generic/rgb-fader",
+      "generic/rgba-fader",
+      "generic/rgbd-fader",
+      "generic/rgbw-fader",
       "gruft/ventilator",
       "jb-systems/twin-effect-laser",
       "lightmaxx/platinum-mini-tri-par",
       "lightmaxx/vega-zoom-wash",
+      "look/viper-nt",
       "martin/atomic-3000",
       "martin/roboscan-812",
       "mdg/theone-atmospheric-generator",
       "qtx/lux-ld30w",
       "robe/dj-scan-250-xt",
+      "robe/robin-600e-spot",
       "showtec/horizon-8",
       "showtec/kanjo-spot-60",
       "showtec/kanjo-wash-rgb",
       "showtec/led-light-bar-rgb-v3",
       "showtec/phantom-140-led-spot",
-      "showtec/phantom-50-led-spot"
+      "showtec/phantom-50-led-spot",
+      "stairville/mh-x25",
+      "stairville/stage-tri-led",
+      "venue/tristrip3z"
     ],
     "Felix Edelmann": [
       "5star-systems/spica-250m",
       "abstract/twister-4",
+      "american-dj/auto-spot-150",
+      "american-dj/boom-box-fx2",
       "american-dj/fog-fury-jett-pro",
       "american-dj/galaxian-3d",
+      "american-dj/revo-4-ir",
+      "american-dj/revo-sweep",
+      "cameo/flash-matrix-250",
       "cameo/flat-pro-18",
+      "cameo/flat-pro-flood-ip65-tri",
+      "cameo/gobo-scanner-80",
       "cameo/hydrabeam-100",
       "cameo/nanospot-120",
       "cameo/outdoor-par-tri-12",
+      "cameo/storm",
+      "chauvet-dj/gigbar-2",
       "chauvet-dj/slimpar-pro-h-usb",
+      "chauvet-dj/slimpar-pro-qz12",
+      "chauvet-dj/slimpar-pro-w",
+      "chauvet-dj/washfx",
+      "chroma-q/color-force-ii-12",
+      "chroma-q/color-force-ii-48",
+      "chroma-q/color-force-ii-72",
+      "elation/platinum-seven",
       "elation/platinum-spot-15r-pro",
+      "equinox/gigabar",
+      "eurolite/led-fe-1500",
       "eurolite/led-kls-801",
       "eurolite/led-par-56-tcl",
       "eurolite/led-svf-1",
       "eurolite/led-tmh-18",
       "eurolite/led-tmh-x25",
       "futurelight/pro-slim-par-7-hcl",
+      "futurelight/sc-250-scanner",
+      "futurelight/stb-648-led-strobe-smd-5050",
+      "glp/impression-laser",
       "glp/impression-spot-one",
+      "jb-lighting/varyscan-p7",
       "lightmaxx/platinum-mini-tri-par",
       "martin/atomic-3000",
+      "prolights/pixpan16",
       "robe/dj-scan-250-xt",
+      "robe/robin-ledbeam-150",
+      "robe/robin-ledwash-600",
+      "showtec/dominator",
       "showtec/kanjo-wash-rgb",
       "showtec/led-light-bar-rgb-v3",
       "showtec/phantom-140-led-spot",
-      "showtec/phantom-50-led-spot"
+      "showtec/phantom-50-led-spot",
+      "showtec/pixel-bar-12-mkii",
+      "showtec/sunraise-led",
+      "stairville/led-flood-panel-150",
+      "venue/thintri64"
     ],
     "novasfronteiras.co": [
       "dts/xr1200-wash",
@@ -605,18 +1090,44 @@
       "mdg/hazer-atmosphere-aps",
       "robe/colorspot-2500e-at"
     ],
+    "Justin Hornsby": [
+      "chauvet-dj/washfx",
+      "equinox/gigabar",
+      "kam/gobotracer"
+    ],
+    "ameisso": [
+      "adb/alc4",
+      "adb/europe-105",
+      "generic/drgbw-fader"
+    ],
     "Nerijus Mongirdas": [
       "jb-systems/twin-effect-laser",
       "qtx/lux-ld30w"
     ],
+    "p_0g_8mm3_": [
+      "stairville/mh-x25",
+      "stairville/stage-tri-led"
+    ],
+    "Anonymous": [
+      "stairville/mh-100"
+    ],
     "George Qualley IV": [
       "eliminator/stealth-beam"
+    ],
+    "Massimo Callegari": [
+      "clay-paky/sharpy"
+    ],
+    "NiKoyes": [
+      "robe/robin-600e-spot"
+    ],
+    "Thilo Billerbeck": [
+      "lightmaxx/dj-scan-led"
     ],
     "eklynx": [
       "american-dj/galaxian-3d"
     ],
     "fueller": [
-      "prolights/diamond-19"
+      "prolights/diamond19"
     ]
   },
   "rdm": {
@@ -638,6 +1149,10 @@
     },
     "10676": {
       "key": "showtec",
+      "models": {}
+    },
+    "16708": {
+      "key": "adb",
       "models": {}
     },
     "17229": {
@@ -662,8 +1177,14 @@
     "21075": {
       "key": "robe",
       "models": {
-        "7": "colorspot-2500e-at"
+        "7": "colorspot-2500e-at",
+        "57": "robin-600e-spot",
+        "118": "robin-ledwash-600"
       }
+    },
+    "21360": {
+      "key": "chroma-q",
+      "models": {}
     },
     "26476": {
       "key": "glp",
@@ -673,68 +1194,117 @@
     }
   },
   "lastUpdated": [
-    "mdg/theone-atmospheric-generator",
-    "glp/impression-spot-one",
-    "eliminator/stealth-beam",
-    "jb-systems/twin-effect-laser",
-    "qtx/lux-ld30w",
+    "stairville/led-flood-panel-150",
+    "adb/alc4",
+    "look/viper-nt",
+    "adb/europe-105",
+    "generic/drgbw-fader",
+    "chroma-q/color-force-ii-12",
+    "chroma-q/color-force-ii-48",
+    "chroma-q/color-force-ii-72",
+    "showtec/pixel-bar-12-mkii",
+    "american-dj/revo-sweep",
+    "lightmaxx/dj-scan-led",
+    "showtec/sunraise-led",
+    "elation/platinum-seven",
+    "venue/thintri64",
+    "cameo/storm",
+    "futurelight/stb-648-led-strobe-smd-5050",
+    "glp/impression-laser",
+    "prolights/pixpan16",
+    "robe/robin-600e-spot",
+    "prolights/diamond19",
+    "clay-paky/sharpy",
+    "stairville/mh-x25",
+    "stairville/stage-tri-led",
+    "american-dj/revo-burst",
+    "venue/tristrip3z",
+    "american-dj/auto-spot-150",
+    "jb-lighting/varyscan-p7",
+    "robe/robin-ledbeam-150",
+    "robe/robin-ledwash-600",
+    "chauvet-dj/slimpar-pro-qz12",
+    "chauvet-dj/slimpar-pro-w",
+    "eurolite/led-fe-1500",
     "american-dj/galaxian-3d",
-    "coemar/prospot-250-lx",
-    "martin/mac-viper-wash",
-    "showtec/kanjo-spot-60",
-    "martin/mac-viper-performance",
-    "martin/rush-mh-7-hybrid",
-    "eurolite/led-tmh-7",
-    "robe/colorspot-2500e-at",
-    "american-dj/xs-400",
-    "eurolite/led-tmh-9",
-    "cameo/hydrabeam-100",
-    "prolights/diamond-19",
-    "abstract/twister-4",
+    "american-dj/revo-4-ir",
+    "chauvet-dj/gigbar-2",
+    "chauvet-dj/washfx",
+    "equinox/gigabar",
+    "eurolite/led-kls-801",
     "eurolite/led-tmh-18",
-    "chauvet-dj/slimpar-pro-h-usb",
+    "eurolite/led-tmh-x25",
+    "cameo/flash-matrix-250",
+    "cameo/outdoor-par-tri-12",
+    "cameo/flat-pro-flood-ip65-tri",
+    "futurelight/sc-250-scanner",
+    "ayra/tdc-triple-burst",
+    "futurelight/dmh-75-i-led-moving-head",
+    "generic/cmy-fader",
+    "generic/rgba-fader",
+    "martin/mac-aura",
+    "american-dj/quad-phase-hp",
+    "generic/drgb-fader",
+    "generic/rgbd-fader",
+    "generic/rgbw-fader",
+    "lightmaxx/vega-zoom-wash",
+    "cameo/gobo-scanner-80",
+    "american-dj/boom-box-fx2",
+    "showtec/dominator",
+    "kam/gobotracer",
+    "stairville/mh-100",
+    "5star-systems/spica-250m",
+    "abstract/twister-4",
+    "american-dj/xs-400",
+    "cameo/hydrabeam-100",
+    "cameo/nanospot-120",
+    "coemar/prospot-250-lx",
     "dts/xr1200-wash",
+    "elation/platinum-hfx",
+    "elation/platinum-spot-15r-pro",
+    "eliminator/stealth-beam",
+    "eurolite/led-sls-6-uv-floor",
+    "eurolite/led-svf-1",
+    "eurolite/led-tmh-7",
+    "eurolite/led-tmh-9",
+    "generic/pan-tilt",
+    "glp/impression-spot-one",
+    "gruft/ventilator",
+    "jb-systems/twin-effect-laser",
     "martin/mac-axiom-hybrid",
-    "martin/magnum-2500-hz",
+    "martin/mac-viper-airfx",
+    "martin/mac-viper-performance",
+    "martin/mac-viper-wash",
+    "martin/roboscan-812",
     "martin/rush-mh-2-wash",
     "martin/rush-mh-3-beam",
+    "martin/rush-mh-7-hybrid",
+    "qtx/lux-ld30w",
+    "robe/colorspot-2500e-at",
+    "robe/dj-scan-250-xt",
+    "showtec/kanjo-spot-60",
+    "showtec/kanjo-wash-rgb",
+    "showtec/phantom-140-led-spot",
+    "showtec/phantom-50-led-spot",
+    "mdg/theone-atmospheric-generator",
+    "chauvet-dj/slimpar-pro-h-usb",
+    "martin/magnum-2500-hz",
     "mdg/hazer-atmosphere-aps",
     "american-dj/fog-fury-jett-pro",
-    "cameo/nanospot-120",
-    "martin/mac-aura",
-    "martin/mac-viper-airfx",
-    "eurolite/led-svf-1",
-    "showtec/phantom-50-led-spot",
     "cameo/hydrabeam-300-rgbw",
-    "generic/pan-tilt",
     "generic/desk-channel",
     "generic/rgb-fader",
-    "eurolite/led-kls-801",
     "martin/atomic-3000",
-    "robe/dj-scan-250-xt",
-    "showtec/kanjo-wash-rgb",
     "showtec/led-light-bar-rgb-v3",
-    "5star-systems/spica-250m",
     "cameo/flat-pro-18",
     "showtec/horizon-8",
-    "elation/platinum-hfx",
-    "american-dj/revo-4-ir",
     "eurolite/led-par-56-tcl",
     "eurolite/led-ps-4-hcl",
-    "eurolite/led-sls-6-uv-floor",
-    "showtec/phantom-140-led-spot",
-    "elation/platinum-spot-15r-pro",
-    "eurolite/led-tmh-x25",
     "futurelight/pro-slim-par-7-hcl",
-    "martin/roboscan-812",
-    "american-dj/quad-phase-hp",
-    "cameo/outdoor-par-tri-12",
     "cameo/thunder-wash-100-rgb",
     "cameo/thunder-wash-100-w",
     "cameo/thunder-wash-600-rgb",
     "cameo/thunder-wash-600-w",
-    "gruft/ventilator",
-    "lightmaxx/platinum-mini-tri-par",
-    "lightmaxx/vega-zoom-wash"
+    "lightmaxx/platinum-mini-tri-par"
   ]
 }

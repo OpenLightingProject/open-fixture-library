@@ -1,10 +1,11 @@
 {
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
   "name": "Galaxian 3D",
   "categories": ["Laser"],
   "meta": {
     "authors": ["eklynx", "Felix Edelmann"],
     "createDate": "2017-09-11",
-    "lastModifyDate": "2017-09-11",
+    "lastModifyDate": "2017-12-31",
     "importPlugin": {
       "plugin": "qlcplus",
       "date": "2017-09-11",
@@ -27,99 +28,14 @@
       "type": "Fixed"
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["Red", "Green"]
+      ]
+    ]
+  },
   "availableChannels": {
-    "Red Laser": {
-      "type": "Effect",
-      "capabilities": [
-        {
-          "range": [0, 7],
-          "name": "Off"
-        },
-        {
-          "range": [8, 15],
-          "name": "On"
-        },
-        {
-          "range": [16, 239],
-          "name": "Strobe Slow->Fast"
-        },
-        {
-          "range": [240, 247],
-          "name": "Sound Active"
-        },
-        {
-          "range": [248, 255],
-          "name": "On"
-        }
-      ]
-    },
-    "Green Laser": {
-      "type": "Effect",
-      "capabilities": [
-        {
-          "range": [0, 7],
-          "name": "Off"
-        },
-        {
-          "range": [8, 15],
-          "name": "On"
-        },
-        {
-          "range": [16, 239],
-          "name": "Strobe Slow->Fast"
-        },
-        {
-          "range": [240, 247],
-          "name": "Sound Active"
-        },
-        {
-          "range": [248, 255],
-          "name": "On"
-        }
-      ]
-    },
-    "Laser Rotation 1": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 127],
-          "name": "Location"
-        },
-        {
-          "range": [128, 189],
-          "name": "Counter-Clockwise Fast -> Slow"
-        },
-        {
-          "range": [190, 193],
-          "name": "No Rotation"
-        },
-        {
-          "range": [194, 255],
-          "name": "Clockiwse Slow-> Fast"
-        }
-      ]
-    },
-    "Laser Rotation 2": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 127],
-          "name": "Location"
-        },
-        {
-          "range": [128, 189],
-          "name": "Counter-Clockwise Fast -> Slow"
-        },
-        {
-          "range": [190, 193],
-          "name": "No Rotation"
-        },
-        {
-          "range": [194, 255],
-          "name": "Clockiwse Slow-> Fast"
-        }
-      ]
-    },
     "Macros": {
       "type": "Effect",
       "capabilities": [
@@ -194,6 +110,54 @@
       ]
     }
   },
+  "templateChannels": {
+    "$pixelKey Laser": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Off"
+        },
+        {
+          "range": [8, 15],
+          "name": "On"
+        },
+        {
+          "range": [16, 239],
+          "name": "Strobe Slow->Fast"
+        },
+        {
+          "range": [240, 247],
+          "name": "Sound Active"
+        },
+        {
+          "range": [248, 255],
+          "name": "On"
+        }
+      ]
+    },
+    "$pixelKey Laser Rotation": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Location"
+        },
+        {
+          "range": [128, 189],
+          "name": "Counter-Clockwise Fast -> Slow"
+        },
+        {
+          "range": [190, 193],
+          "name": "No Rotation"
+        },
+        {
+          "range": [194, 255],
+          "name": "Clockiwse Slow-> Fast"
+        }
+      ]
+    }
+  },
   "modes": [
     {
       "name": "5-channel",
@@ -201,8 +165,8 @@
       "channels": [
         "Red Laser",
         "Green Laser",
-        "Laser Rotation 1",
-        "Laser Rotation 2",
+        "Red Laser Rotation",
+        "Green Laser Rotation",
         "Macros"
       ]
     }

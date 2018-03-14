@@ -1,0 +1,642 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Flood Panel 150",
+  "shortName": "StairvilleFloodPanel150",
+  "categories": ["Blinder", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-03-10",
+    "lastModifyDate": "2018-03-10"
+  },
+  "manualURL": "https://images.thomann.de/pics/prod/253358_manual_en.pdf",
+  "physical": {
+    "dimensions": [200, 210, 68],
+    "weight": 1.8,
+    "power": 20,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "48 red, 51 green and 51 blue 10mm LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [20, 20]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "defaultValue": 0
+    },
+    "Color Presets": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 8],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [9, 17],
+          "name": "Red: 255, Green: 50",
+          "color": "#ff3200"
+        },
+        {
+          "range": [18, 26],
+          "name": "Red: 255, Green: 150",
+          "color": "#ff9600"
+        },
+        {
+          "range": [27, 35],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [36, 44],
+          "name": "Red: 200, Green: 255",
+          "color": "#c8ff00"
+        },
+        {
+          "range": [45, 53],
+          "name": "Red: 100, Green: 255",
+          "color": "#64ff00"
+        },
+        {
+          "range": [54, 62],
+          "name": "Red: 40, Green: 255",
+          "color": "#28ff00"
+        },
+        {
+          "range": [63, 71],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [72, 80],
+          "name": "Green: 255, Blue: 50",
+          "color": "#00ff32"
+        },
+        {
+          "range": [81, 89],
+          "name": "Green: 255, Blue: 150",
+          "color": "#00ff96"
+        },
+        {
+          "range": [90, 98],
+          "name": "Cyan",
+          "color": "#00ff00"
+        },
+        {
+          "range": [99, 107],
+          "name": "Green: 150, Blue: 255",
+          "color": "#0096ff"
+        },
+        {
+          "range": [108, 116],
+          "name": "Green: 50, Blue: 255",
+          "color": "#0032ff"
+        },
+        {
+          "range": [117, 125],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [126, 134],
+          "name": "Red: 50, Blue: 255",
+          "color": "#3200ff"
+        },
+        {
+          "range": [135, 143],
+          "name": "Red: 150, Blue: 255",
+          "color": "#9600ff"
+        },
+        {
+          "range": [144, 152],
+          "name": "Magenta",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [153, 161],
+          "name": "Red: 220, Blue: 255",
+          "color": "#dc00ff"
+        },
+        {
+          "range": [162, 170],
+          "name": "Red: 150, Green: 50, Blue: 100",
+          "color": "#963264"
+        },
+        {
+          "range": [171, 179],
+          "name": "Red: 50, Green: 180, Blue: 220",
+          "color": "#32b4dc"
+        },
+        {
+          "range": [180, 188],
+          "name": "Red: 50, Green: 220, Blue: 100",
+          "color": "#32dc64"
+        },
+        {
+          "range": [189, 197],
+          "name": "Red: 150, Green: 220",
+          "color": "#96dc00"
+        },
+        {
+          "range": [198, 206],
+          "name": "Red: 150, Blue: 220",
+          "color": "#9600dc"
+        },
+        {
+          "range": [207, 215],
+          "name": "Green: 180, Blue: 220",
+          "color": "#00b4dc"
+        },
+        {
+          "range": [216, 224],
+          "name": "Green: 220, Blue: 50",
+          "color": "#00dc32"
+        },
+        {
+          "range": [225, 233],
+          "name": "Red: 220, Green: 100, Blue: 50",
+          "color": "#dc6432"
+        },
+        {
+          "range": [234, 242],
+          "name": "Red: 220, Green: 200, Blue: 100",
+          "color": "#dcc864"
+        },
+        {
+          "range": [243, 251],
+          "name": "Red: 255, Green: 200, Blue: 150",
+          "color": "#ffc896"
+        },
+        {
+          "range": [252, 255],
+          "name": "White",
+          "color": "#ffffff"
+        }
+      ]
+    },
+    "Program Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Speed slow-fast"
+        }
+      ]
+    },
+    "Sound Sensitivity": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Sensitivity low-high"
+        }
+      ]
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "No function"
+        },
+        {
+          "range": [10, 255],
+          "name": "Strobe slow-fast"
+        }
+      ]
+    },
+    "Internal Programs": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "No function",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Red"
+          }
+        },
+        {
+          "range": [1, 24],
+          "name": "Color presets",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Color Presets"
+          }
+        },
+        {
+          "range": [25, 49],
+          "name": "Program 2: 7-color fading",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [50, 74],
+          "name": "Program 3: 3-color fading",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [75, 99],
+          "name": "Program 4: 7-color jumping change",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [100, 124],
+          "name": "Program 5: 3-color jumping change",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [125, 149],
+          "name": "Program 6: fantasy change 1",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [150, 174],
+          "name": "Program 7: fantasy change 2",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [175, 199],
+          "name": "Program 8: red fading",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [200, 224],
+          "name": "Program 9: green fading",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [225, 249],
+          "name": "Program 10: blue fading",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [250, 255],
+          "name": "Sound control",
+          "switchChannels": {
+            "Red / Color Presets / Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "ID Select": {
+      "type": "Maintenance",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "All IDs (1-66)"
+        },
+        {
+          "range": [10, 19],
+          "name": "ID 1"
+        },
+        {
+          "range": [20, 29],
+          "name": "ID 2"
+        },
+        {
+          "range": [30, 39],
+          "name": "ID 3"
+        },
+        {
+          "range": [40, 49],
+          "name": "ID 4"
+        },
+        {
+          "range": [50, 59],
+          "name": "ID 5"
+        },
+        {
+          "range": [60, 69],
+          "name": "ID 6"
+        },
+        {
+          "range": [70, 79],
+          "name": "ID 7"
+        },
+        {
+          "range": [80, 89],
+          "name": "ID 8"
+        },
+        {
+          "range": [90, 99],
+          "name": "ID 9"
+        },
+        {
+          "range": [100, 109],
+          "name": "ID 10"
+        },
+        {
+          "range": [110, 119],
+          "name": "ID 11"
+        },
+        {
+          "range": [120, 129],
+          "name": "ID 12"
+        },
+        {
+          "range": [130, 139],
+          "name": "ID 13"
+        },
+        {
+          "range": [140, 149],
+          "name": "ID 14"
+        },
+        {
+          "range": [150, 159],
+          "name": "ID 15"
+        },
+        {
+          "range": [160, 169],
+          "name": "ID 16"
+        },
+        {
+          "range": [170, 179],
+          "name": "ID 17"
+        },
+        {
+          "range": [180, 189],
+          "name": "ID 18"
+        },
+        {
+          "range": [190, 199],
+          "name": "ID 19"
+        },
+        {
+          "range": [200, 209],
+          "name": "ID 20"
+        },
+        {
+          "range": [210, 210],
+          "name": "ID 21"
+        },
+        {
+          "range": [211, 211],
+          "name": "ID 22"
+        },
+        {
+          "range": [212, 212],
+          "name": "ID 23"
+        },
+        {
+          "range": [213, 213],
+          "name": "ID 24"
+        },
+        {
+          "range": [214, 214],
+          "name": "ID 25"
+        },
+        {
+          "range": [215, 215],
+          "name": "ID 26"
+        },
+        {
+          "range": [216, 216],
+          "name": "ID 27"
+        },
+        {
+          "range": [217, 217],
+          "name": "ID 28"
+        },
+        {
+          "range": [218, 218],
+          "name": "ID 29"
+        },
+        {
+          "range": [219, 219],
+          "name": "ID 30"
+        },
+        {
+          "range": [220, 220],
+          "name": "ID 31"
+        },
+        {
+          "range": [221, 221],
+          "name": "ID 32"
+        },
+        {
+          "range": [222, 222],
+          "name": "ID 33"
+        },
+        {
+          "range": [223, 223],
+          "name": "ID 34"
+        },
+        {
+          "range": [224, 224],
+          "name": "ID 35"
+        },
+        {
+          "range": [225, 225],
+          "name": "ID 36"
+        },
+        {
+          "range": [226, 226],
+          "name": "ID 37"
+        },
+        {
+          "range": [227, 227],
+          "name": "ID 38"
+        },
+        {
+          "range": [228, 228],
+          "name": "ID 39"
+        },
+        {
+          "range": [229, 229],
+          "name": "ID 40"
+        },
+        {
+          "range": [230, 230],
+          "name": "ID 41"
+        },
+        {
+          "range": [231, 231],
+          "name": "ID 42"
+        },
+        {
+          "range": [232, 232],
+          "name": "ID 43"
+        },
+        {
+          "range": [233, 233],
+          "name": "ID 44"
+        },
+        {
+          "range": [234, 234],
+          "name": "ID 45"
+        },
+        {
+          "range": [235, 235],
+          "name": "ID 46"
+        },
+        {
+          "range": [236, 236],
+          "name": "ID 47"
+        },
+        {
+          "range": [237, 237],
+          "name": "ID 48"
+        },
+        {
+          "range": [238, 238],
+          "name": "ID 49"
+        },
+        {
+          "range": [239, 239],
+          "name": "ID 50"
+        },
+        {
+          "range": [240, 240],
+          "name": "ID 51"
+        },
+        {
+          "range": [241, 241],
+          "name": "ID 52"
+        },
+        {
+          "range": [242, 242],
+          "name": "ID 53"
+        },
+        {
+          "range": [243, 243],
+          "name": "ID 54"
+        },
+        {
+          "range": [244, 244],
+          "name": "ID 55"
+        },
+        {
+          "range": [245, 245],
+          "name": "ID 56"
+        },
+        {
+          "range": [246, 246],
+          "name": "ID 57"
+        },
+        {
+          "range": [247, 247],
+          "name": "ID 58"
+        },
+        {
+          "range": [248, 248],
+          "name": "ID 59"
+        },
+        {
+          "range": [249, 249],
+          "name": "ID 60"
+        },
+        {
+          "range": [250, 250],
+          "name": "ID 61"
+        },
+        {
+          "range": [251, 251],
+          "name": "ID 62"
+        },
+        {
+          "range": [252, 252],
+          "name": "ID 63"
+        },
+        {
+          "range": [253, 253],
+          "name": "ID 64"
+        },
+        {
+          "range": [254, 254],
+          "name": "ID 65"
+        },
+        {
+          "range": [255, 255],
+          "name": "ID 66"
+        }
+      ]
+    },
+    "Dimmer Delay": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 250],
+          "name": "Instant"
+        },
+        {
+          "range": [251, 255],
+          "name": "Delayed"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red / Color Presets / Program Speed / Sound Sensitivity",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Internal Programs",
+        "ID Select",
+        "Dimmer Delay"
+      ]
+    }
+  ]
+}

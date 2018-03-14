@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGBD Fader",
+  "shortName": "RGBD",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2017-12-07",
+    "lastModifyDate": "2017-12-07"
+  },
+  "availableChannels": {
+    "Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "fineChannelAliases": ["Red fine", "Red fine^2"]
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "fineChannelAliases": ["Green fine", "Green fine^2"]
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "fineChannelAliases": ["Blue fine", "Blue fine^2"]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "fineChannelAliases": ["Dimmer fine", "Dimmer fine^2"]
+    }
+  },
+  "modes": [
+    {
+      "name": "8 bit",
+      "shortName": "8bit",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "16 bit Dimmer",
+      "shortName": "16bit-dimmer",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    },
+    {
+      "name": "16 bit",
+      "shortName": "16bit",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    },
+    {
+      "name": "24 bit Dimmer",
+      "shortName": "24bit-dimmer",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Dimmer fine",
+        "Dimmer fine^2"
+      ]
+    },
+    {
+      "name": "24 bit",
+      "shortName": "24bit",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Red fine^2",
+        "Green",
+        "Green fine",
+        "Green fine^2",
+        "Blue",
+        "Blue fine",
+        "Blue fine^2",
+        "Dimmer",
+        "Dimmer fine",
+        "Dimmer fine^2"
+      ]
+    }
+  ]
+}

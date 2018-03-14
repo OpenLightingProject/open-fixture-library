@@ -1,0 +1,476 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
+  "name": "Dominator",
+  "shortName": "ShowtecDominator",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2017-11-17",
+    "lastModifyDate": "2017-11-17"
+  },
+  "comment": "Version 1 and 2's DMX protocols are identical, only their physical data differs",
+  "manualURL": "https://www.highlite.nl/silver.download/Documents@extern@Manuals/43153_MANUAL_GB_V2.pdf",
+  "physical": {
+    "dimensions": [298, 310, 225],
+    "weight": 4.06,
+    "power": 66,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "5x3W LEDs"
+    }
+  },
+  "availableChannels": {
+    "Programs": {
+      "type": "Effect",
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Blackout"
+        },
+        {
+          "range": [10, 24],
+          "name": "Auto 1 (Strobe, Derby, Laser)"
+        },
+        {
+          "range": [25, 39],
+          "name": "Auto 2 (Derby, Laser)"
+        },
+        {
+          "range": [40, 54],
+          "name": "Auto 3 (Strobe, Laser)"
+        },
+        {
+          "range": [55, 69],
+          "name": "Auto 4 (Derby, Laser)"
+        },
+        {
+          "range": [70, 84],
+          "name": "Auto 5 (Derby)"
+        },
+        {
+          "range": [85, 99],
+          "name": "Auto 6 (Laser)"
+        },
+        {
+          "range": [100, 114],
+          "name": "Auto 7 (Strobe)"
+        },
+        {
+          "range": [115, 129],
+          "name": "Sound 1 (Strobe, Derby, Laser)"
+        },
+        {
+          "range": [130, 144],
+          "name": "Sound 2 (Derby, Laser)"
+        },
+        {
+          "range": [145, 159],
+          "name": "Sound 3 (Strobe, Laser)"
+        },
+        {
+          "range": [160, 174],
+          "name": "Sound 4 (Derby, Laser)"
+        },
+        {
+          "range": [175, 189],
+          "name": "Sound 5 (Derby)"
+        },
+        {
+          "range": [190, 204],
+          "name": "Sound 6 (Laser)"
+        },
+        {
+          "range": [205, 219],
+          "name": "Sound 7 (Strobe)"
+        },
+        {
+          "range": [220, 255],
+          "name": "DMX mode"
+        }
+      ]
+    },
+    "Derby Colors": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Blackout",
+          "color": "#000000"
+        },
+        {
+          "range": [10, 14],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [15, 19],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [20, 24],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [25, 29],
+          "name": "Amber",
+          "color": "#ffaa00"
+        },
+        {
+          "range": [30, 34],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [35, 39],
+          "name": "White + Red",
+          "color": "#ffffff",
+          "color2": "#ff0000"
+        },
+        {
+          "range": [40, 44],
+          "name": "Red + Green",
+          "color": "#ff0000",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [45, 49],
+          "name": "Green + Blue",
+          "color": "#00ff00",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [50, 54],
+          "name": "Blue + Amber",
+          "color": "#0000ff",
+          "color2": "#ffaa00"
+        },
+        {
+          "range": [55, 59],
+          "name": "Amber + White",
+          "color": "#ffaa00",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [60, 64],
+          "name": "White + Green",
+          "color": "#ffffff",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [65, 69],
+          "name": "Green + Amber",
+          "color": "#00ff00",
+          "color2": "#ffaa00"
+        },
+        {
+          "range": [70, 74],
+          "name": "Amber + Red",
+          "color": "#ffaa00",
+          "color2": "#ff0000"
+        },
+        {
+          "range": [75, 79],
+          "name": "Red + Blue",
+          "color": "#ff0000",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [80, 84],
+          "name": "Blue + White",
+          "color": "#0000ff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [85, 89],
+          "name": "Red + Green + Blue"
+        },
+        {
+          "range": [90, 94],
+          "name": "Red + Green + Amber"
+        },
+        {
+          "range": [95, 99],
+          "name": "Red + Green + White"
+        },
+        {
+          "range": [100, 104],
+          "name": "Red + Amber + Blue"
+        },
+        {
+          "range": [105, 109],
+          "name": "Red + Blue + White"
+        },
+        {
+          "range": [110, 114],
+          "name": "Red + Amber + White"
+        },
+        {
+          "range": [115, 119],
+          "name": "Amber + Green + Blue"
+        },
+        {
+          "range": [120, 124],
+          "name": "Green + Blue + White"
+        },
+        {
+          "range": [125, 129],
+          "name": "Amber + Green + White"
+        },
+        {
+          "range": [130, 134],
+          "name": "Amber + White + Blue"
+        },
+        {
+          "range": [135, 139],
+          "name": "Red + Green + Blue + Amber"
+        },
+        {
+          "range": [140, 144],
+          "name": "Red + Green + Blue + White"
+        },
+        {
+          "range": [145, 149],
+          "name": "Green + Blue + White + Amber"
+        },
+        {
+          "range": [150, 154],
+          "name": "Red + Green + White + Amber"
+        },
+        {
+          "range": [155, 159],
+          "name": "Red + Blue + White + Amber"
+        },
+        {
+          "range": [160, 164],
+          "name": "Red + Green + Blue + White + Amber"
+        },
+        {
+          "range": [165, 209],
+          "name": "Automatic (single color)"
+        },
+        {
+          "range": [210, 255],
+          "name": "Automatic (two colors)"
+        }
+      ]
+    },
+    "Derby Speed": {
+      "type": "Speed"
+    },
+    "LED Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 6],
+          "name": "Close"
+        },
+        {
+          "range": [7, 254],
+          "name": "Strobe 30-0Hz"
+        },
+        {
+          "range": [255, 255],
+          "name": "Sound activated strobe"
+        }
+      ]
+    },
+    "LED Programs": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Blackout"
+        },
+        {
+          "range": [10, 19],
+          "name": "Program 1 fast-slow"
+        },
+        {
+          "range": [20, 29],
+          "name": "Program 2 fast-slow"
+        },
+        {
+          "range": [30, 39],
+          "name": "Program 3 fast-slow"
+        },
+        {
+          "range": [40, 49],
+          "name": "Program 4 fast-slow"
+        },
+        {
+          "range": [50, 59],
+          "name": "Program 5 fast-slow"
+        },
+        {
+          "range": [60, 69],
+          "name": "Program 6 fast-slow"
+        },
+        {
+          "range": [70, 79],
+          "name": "Program 7 fast-slow"
+        },
+        {
+          "range": [80, 89],
+          "name": "Program 8 fast-slow"
+        },
+        {
+          "range": [90, 99],
+          "name": "Program 9 fast-slow"
+        },
+        {
+          "range": [100, 109],
+          "name": "Program 10 fast-slow"
+        },
+        {
+          "range": [110, 255],
+          "name": "Full on"
+        }
+      ]
+    },
+    "Laser": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Blackout",
+          "color": "#000000"
+        },
+        {
+          "range": [10, 49],
+          "name": "Red laser",
+          "color": "#ff0000"
+        },
+        {
+          "range": [50, 89],
+          "name": "Green laser",
+          "color": "#00ff00"
+        },
+        {
+          "range": [90, 129],
+          "name": "Red + Green alternating",
+          "color": "#ff0000",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [130, 169],
+          "name": "Red + Green Strobe",
+          "color": "#ff0000",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [170, 209],
+          "name": "Red Strobe + Green",
+          "color": "#ff0000",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [210, 255],
+          "name": "Red Strobe + Green Strobe",
+          "color": "#ff0000",
+          "color2": "#00ff00"
+        }
+      ]
+    },
+    "Laser Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "Blackout"
+        },
+        {
+          "range": [5, 254],
+          "name": "Strobe 0-30Hz"
+        },
+        {
+          "range": [255, 255],
+          "name": "Sound activated strobe"
+        }
+      ]
+    },
+    "Rotating Derby": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "Stop"
+        },
+        {
+          "range": [5, 127],
+          "name": "Rotate CW slow-fast"
+        },
+        {
+          "range": [128, 133],
+          "name": "Stop"
+        },
+        {
+          "range": [134, 255],
+          "name": "Rotate CCW slow-fast"
+        }
+      ]
+    },
+    "Rotating Laser": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "Stop"
+        },
+        {
+          "range": [5, 127],
+          "name": "Rotate CW slow-fast"
+        },
+        {
+          "range": [128, 133],
+          "name": "Stop"
+        },
+        {
+          "range": [134, 255],
+          "name": "Rotate CCW slow-fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "9-channel Version 1",
+      "shortName": "9ch-V1",
+      "channels": [
+        "Programs",
+        "Derby Colors",
+        "Derby Speed",
+        "LED Strobe",
+        "LED Programs",
+        "Laser",
+        "Laser Strobe",
+        "Rotating Derby",
+        "Rotating Laser"
+      ]
+    },
+    {
+      "name": "9-channel Version 2",
+      "shortName": "9ch-V2",
+      "physical": {
+        "dimensions": [307, 312, 200],
+        "weight": 3.92,
+        "bulb": {
+          "type": "8x3W LEDs"
+        }
+      },
+      "channels": [
+        "Programs",
+        "Derby Colors",
+        "Derby Speed",
+        "LED Strobe",
+        "LED Programs",
+        "Laser",
+        "Laser Strobe",
+        "Rotating Derby",
+        "Rotating Laser"
+      ]
+    }
+  ]
+}

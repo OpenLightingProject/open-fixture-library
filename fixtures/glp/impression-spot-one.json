@@ -1,11 +1,12 @@
 {
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
   "name": "impression Spot One",
   "shortName": "GLPSpotOne",
   "categories": ["Color Changer", "Moving Head"],
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2017-10-12",
-    "lastModifyDate": "2017-10-12"
+    "lastModifyDate": "2017-10-16"
   },
   "manualURL": "https://www.glp.de/de/produkte?task=download&fid=4",
   "rdm": {
@@ -21,6 +22,7 @@
       "type": "400W RGB LED Chipset"
     },
     "focus": {
+      "type": "Head",
       "panMax": 660,
       "tiltMax": 280
     }

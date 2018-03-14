@@ -1,0 +1,34 @@
+{
+  "importPlugins": [
+    "ecue",
+    "qlcplus"
+  ],
+  "exportPlugins": [
+    "d-light",
+    "ecue",
+    "ofl",
+    "qlcplus"
+  ],
+  "data": {
+    "d-light": {
+      "name": "D::Light",
+      "exportTests": [
+        "attributes-correctness"
+      ]
+    },
+    "ecue": {
+      "name": "e:cue",
+      "exportTests": []
+    },
+    "ofl": {
+      "name": "Open Fixture Library JSON",
+      "exportTests": []
+    },
+    "qlcplus": {
+      "name": "QLC+",
+      "exportTests": [
+        "xsd-schema-conformity"
+      ]
+    }
+  }
+}

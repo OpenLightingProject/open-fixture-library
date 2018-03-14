@@ -1,0 +1,224 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
+  "name": "PIXPAN16",
+  "categories": ["Matrix", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-02-02",
+    "lastModifyDate": "2018-02-02"
+  },
+  "manualURL": "http://prolights.it/download.php?id=2249",
+  "physical": {
+    "dimensions": [460, 460, 120],
+    "weight": 8,
+    "power": 390,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "4x4 30W RGBW/FC COB-LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [60, 60]
+    }
+  },
+  "matrix": {
+    "pixelCount": [4, 4, 1]
+  },
+  "availableChannels": {
+    "Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "defaultValue": 0
+    },
+    "Shutter Extended": {
+      "name": "Shutter",
+      "type": "Shutter",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "No function"
+        },
+        {
+          "range": [1, 5],
+          "name": "Random auto show"
+        },
+        {
+          "range": [6, 10],
+          "name": "Open"
+        },
+        {
+          "range": [11, 255],
+          "name": "Strobe slow-fast"
+        }
+      ]
+    },
+    "Chase": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "No function"
+        },
+        {
+          "range": [11, 30],
+          "name": "Chase 1"
+        },
+        {
+          "range": [31, 50],
+          "name": "Chase 2"
+        },
+        {
+          "range": [51, 70],
+          "name": "Chase 3"
+        },
+        {
+          "range": [71, 90],
+          "name": "Chase 4"
+        },
+        {
+          "range": [91, 110],
+          "name": "Chase 5"
+        },
+        {
+          "range": [111, 130],
+          "name": "Chase 6"
+        },
+        {
+          "range": [131, 150],
+          "name": "Chase 7"
+        },
+        {
+          "range": [151, 170],
+          "name": "Chase 8"
+        },
+        {
+          "range": [171, 190],
+          "name": "Chase 9"
+        },
+        {
+          "range": [191, 210],
+          "name": "Chase 10"
+        },
+        {
+          "range": [211, 230],
+          "name": "Chase 11"
+        },
+        {
+          "range": [231, 250],
+          "name": "Chase 12"
+        },
+        {
+          "range": [251, 255],
+          "name": "Random auto show (1-12)"
+        }
+      ]
+    },
+    "Shutter Simple": {
+      "name": "Shutter",
+      "type": "Shutter",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "No function"
+        },
+        {
+          "range": [11, 255],
+          "name": "Strobe slow-fast"
+        }
+      ]
+    },
+    "Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow-fast"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0
+    },
+    "Green $pixelKey": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0
+    },
+    "Blue $pixelKey": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Shutter Extended"
+      ]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Shutter Simple",
+        "Chase",
+        "Speed",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "48-channel",
+      "shortName": "48ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    }
+  ]
+}

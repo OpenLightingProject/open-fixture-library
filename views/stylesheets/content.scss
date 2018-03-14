@@ -34,11 +34,11 @@
   &.light-green {
     background: $light-green-500;
   }
-  
+
   &.blue {
     background: $blue-500;
   }
-    
+
   &.orange {
     background: $orange-500;
   }
@@ -206,8 +206,8 @@ a.card, .link, .list a {
   -webkit-transform: translate(-50%, -50%) scale(0.9);
   transform: translate(-50%, -50%) scale(0.9);
   min-width: 20rem;
-  max-width: 80%;
-  max-height: 80%;
+  max-width: 90%;
+  max-height: 90%;
   overflow: auto;
   transition: transform 0.1s, -webkit-transform 0.1s;
 }

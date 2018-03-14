@@ -1,11 +1,12 @@
 {
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
   "name": "LED SVF-1",
   "shortName": "SVF1",
-  "categories": ["Flower"],
+  "categories": ["Flower", "Moving Head"],
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2017-08-01",
-    "lastModifyDate": "2017-08-01"
+    "lastModifyDate": "2017-10-16"
   },
   "manualURL": "http://media.steinigke.de/documents_t/51918662-MANUAL-1.10-de-en_00073902.pdf",
   "physical": {

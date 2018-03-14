@@ -1,0 +1,501 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED FE-1500",
+  "shortName": "ELFE1500",
+  "categories": ["Flower", "Laser", "Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2017-12-31",
+    "lastModifyDate": "2017-12-31"
+  },
+  "manualURL": "http://media.steinigke.de/documents_t/51741080-MANUAL-1.00-de-en_00089092.pdf",
+  "physical": {
+    "dimensions": [313, 315, 246],
+    "weight": 4.2,
+    "power": 40,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "5x 3W RGBWA, 8x 1W white, red & green laser"
+    },
+    "lens": {
+      "degreesMinMax": [17, 17]
+    },
+    "focus": {
+      "tiltMax": 1
+    }
+  },
+  "availableChannels": {
+    "Operating Mode": {
+      "type": "Effect",
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Blackout"
+        },
+        {
+          "range": [10, 24],
+          "name": "Aut0: Laser + RGBWA LEDs + white LEDs"
+        },
+        {
+          "range": [25, 39],
+          "name": "Aut1: Laser + RGBWA LEDs"
+        },
+        {
+          "range": [40, 54],
+          "name": "Aut2: Laser + white LEDs"
+        },
+        {
+          "range": [55, 69],
+          "name": "Aut3: RGBWA LEDs + white LEDs"
+        },
+        {
+          "range": [70, 84],
+          "name": "Aut4: RGBWA LEDs"
+        },
+        {
+          "range": [85, 99],
+          "name": "Aut5: Laser"
+        },
+        {
+          "range": [100, 114],
+          "name": "Aut6: white LEDs"
+        },
+        {
+          "range": [115, 129],
+          "name": "Sou0: Laser + RGBWA LEDs + white LEDs"
+        },
+        {
+          "range": [130, 144],
+          "name": "Sou1: Laser + RGBWA LEDs"
+        },
+        {
+          "range": [145, 159],
+          "name": "Sou2: Laser + white LEDs"
+        },
+        {
+          "range": [160, 174],
+          "name": "Sou3: RGBWA LEDs + white LEDs"
+        },
+        {
+          "range": [175, 189],
+          "name": "Sou4: RGBWA LEDs"
+        },
+        {
+          "range": [190, 204],
+          "name": "Sou5: Laser"
+        },
+        {
+          "range": [205, 219],
+          "name": "Sou6: white LEDs"
+        },
+        {
+          "range": [220, 255],
+          "name": "DMX mode"
+        }
+      ]
+    },
+    "RGBWA LEDs": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Blackout"
+        },
+        {
+          "range": [10, 14],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [15, 19],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [20, 24],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [25, 29],
+          "name": "Amber",
+          "color": "#ffbf00"
+        },
+        {
+          "range": [30, 34],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [35, 39],
+          "name": "White + red",
+          "color": "#ffffff",
+          "color2": "#ff0000"
+        },
+        {
+          "range": [40, 44],
+          "name": "Red + green",
+          "color": "#ff0000",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [45, 49],
+          "name": "Green + blue",
+          "color": "#00ff00",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [50, 54],
+          "name": "Blue + amber",
+          "color": "#0000ff",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [55, 59],
+          "name": "Amber + white",
+          "color": "#ffbf00",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [60, 64],
+          "name": "White + green",
+          "color": "#ffffff",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [65, 69],
+          "name": "Green + amber",
+          "color": "#00ff00",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [70, 74],
+          "name": "Amber + red",
+          "color": "#ffbf00",
+          "color2": "#ff0000"
+        },
+        {
+          "range": [75, 79],
+          "name": "Red + blue",
+          "color": "#ff0000",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [80, 84],
+          "name": "Blue + white",
+          "color": "#0000ff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [85, 89],
+          "name": "Red + green + blue",
+          "color": "#ffffff"
+        },
+        {
+          "range": [90, 94],
+          "name": "Red + green + amber ",
+          "color": "#ffff00",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [95, 99],
+          "name": "Red + green + white",
+          "color": "#ffff00",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [100, 104],
+          "name": "Red + amber + blue",
+          "color": "#ff00ff",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [105, 109],
+          "name": "Red + white + blue",
+          "color": "#ff00ff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [110, 114],
+          "name": "Red + amber + white",
+          "color": "#ffaaaa",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [115, 119],
+          "name": "Amber + green + blue ",
+          "color": "#ffbf00",
+          "color2": "#00ffff"
+        },
+        {
+          "range": [120, 124],
+          "name": "Blue + green + white",
+          "color": "#00ffff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [125, 129],
+          "name": "Amber + green + white",
+          "color": "#aaffaa",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [130, 134],
+          "name": "Amber + white + blue",
+          "color": "#ffbf00",
+          "color2": "#aaaaff"
+        },
+        {
+          "range": [135, 139],
+          "name": "Red + green + blue + amber",
+          "color": "#ffffff",
+          "color2": "#aaaaff"
+        },
+        {
+          "range": [140, 144],
+          "name": "Red + green + blue + white",
+          "color": "#ffffff",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [145, 149],
+          "name": "Blue + green + white + amber",
+          "color": "#aaffff",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [150, 154],
+          "name": "Red + green + amber + white",
+          "color": "#ffffaa",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [155, 159],
+          "name": "White + red + blue + amber",
+          "color": "#ffaaff",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [160, 164],
+          "name": "Red + green + blue + amber + white",
+          "color": "#ffffff",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [165, 209],
+          "name": "Automatic color change (one color) "
+        },
+        {
+          "range": [210, 255],
+          "name": "Automatic color change (two colors)"
+        }
+      ]
+    },
+    "Color Change Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow-fast"
+        }
+      ]
+    },
+    "RGBWA LED Strobe": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "No strobe"
+        },
+        {
+          "range": [5, 254],
+          "name": "Strobe fast-slow"
+        },
+        {
+          "range": [255, 255],
+          "name": "Sound-controlled strobe"
+        }
+      ]
+    },
+    "White LED Strobe": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Blackout"
+        },
+        {
+          "range": [10, 19],
+          "name": "Light pattern 1 fast-slow"
+        },
+        {
+          "range": [20, 29],
+          "name": "Light pattern 2 fast-slow"
+        },
+        {
+          "range": [30, 39],
+          "name": "Light pattern 3 fast-slow"
+        },
+        {
+          "range": [40, 49],
+          "name": "Light pattern 4 fast-slow"
+        },
+        {
+          "range": [50, 59],
+          "name": "Light pattern 5 fast-slow"
+        },
+        {
+          "range": [60, 69],
+          "name": "Light pattern 6 fast-slow"
+        },
+        {
+          "range": [70, 79],
+          "name": "Light pattern 7 fast-slow"
+        },
+        {
+          "range": [80, 89],
+          "name": "Light pattern 8 fast-slow"
+        },
+        {
+          "range": [90, 99],
+          "name": "Light pattern 9 fast-slow"
+        },
+        {
+          "range": [100, 109],
+          "name": "Light pattern 10 fast-slow"
+        },
+        {
+          "range": [110, 255],
+          "name": "Full on"
+        }
+      ]
+    },
+    "Laser": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Blackout"
+        },
+        {
+          "range": [10, 49],
+          "name": "Red on",
+          "color": "#ff0000"
+        },
+        {
+          "range": [50, 89],
+          "name": "Green on",
+          "color": "#00ff00"
+        },
+        {
+          "range": [90, 129],
+          "name": "Change green and red",
+          "color": "#00ff00",
+          "color2": "#ff0000"
+        },
+        {
+          "range": [130, 169],
+          "name": "Red on + Green strobe",
+          "color": "#ff0000",
+          "color2": "#00aa00"
+        },
+        {
+          "range": [170, 209],
+          "name": "Green on + Red strobe",
+          "color": "#00ff00",
+          "color2": "#aa0000"
+        },
+        {
+          "range": [210, 255],
+          "name": "Red strobe + Green strobe",
+          "color": "#aa0000",
+          "color2": "#00aa00"
+        }
+      ]
+    },
+    "Laser Strobe": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "No strobe"
+        },
+        {
+          "range": [5, 254],
+          "name": "Strobe fast-slow"
+        },
+        {
+          "range": [255, 255],
+          "name": "Sound-controlled strobe"
+        }
+      ]
+    },
+    "RGBWA LED rotation": {
+      "type": "Speed",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "No rotation"
+        },
+        {
+          "range": [5, 127],
+          "name": "Rotation CW slow-fast"
+        },
+        {
+          "range": [128, 133],
+          "name": "No rotation"
+        },
+        {
+          "range": [134, 255],
+          "name": "Rotation CCW slow-fast"
+        }
+      ]
+    },
+    "Laser rotation": {
+      "type": "Speed",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "No rotation"
+        },
+        {
+          "range": [5, 127],
+          "name": "Rotation CW slow-fast"
+        },
+        {
+          "range": [128, 133],
+          "name": "No rotation"
+        },
+        {
+          "range": [134, 255],
+          "name": "Rotation CCW slow-fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Operating Mode",
+        "RGBWA LEDs",
+        "Color Change Speed",
+        "RGBWA LED Strobe",
+        "White LED Strobe",
+        "Laser",
+        "Laser Strobe",
+        "RGBWA LED rotation",
+        "Laser rotation"
+      ]
+    }
+  ]
+}

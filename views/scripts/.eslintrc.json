@@ -1,0 +1,14 @@
+{
+  "env": {
+    "es6": false,
+    "node": false,
+    "browser": true,
+    "commonjs": true
+  },
+  "rules": {
+    "no-var": "off",
+    "prefer-arrow-callback": "off",
+    "prefer-template": "off",
+    "quotes": ["error", "single", { "allowTemplateLiterals": false }]
+  }
+}

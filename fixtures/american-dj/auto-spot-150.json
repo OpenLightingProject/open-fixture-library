@@ -1,0 +1,327 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
+  "name": "Auto Spot 150",
+  "shortName": "ADJAutoSpot150",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-01-18",
+    "lastModifyDate": "2018-01-18"
+  },
+  "manualURL": "http://cdb-cdn.adj.com/ItemRelatedFiles/7650/Auto%20Spot%20150.pdf",
+  "comment": "The different modes refer to the 'Color Mode' setting: no (Full Color) or SC (Split Color)",
+  "physical": {
+    "dimensions": [295, 451, 373],
+    "weight": 13,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LL-HTI150 discharge lamp"
+    },
+    "lens": {
+      "degreesMinMax": [13, 13]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 270
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "defaultValue": 127
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "defaultValue": 127
+    },
+    "Gobo": {
+      "type": "Gobo",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "Gobo"
+        },
+        {
+          "range": [16, 31],
+          "name": "Gobo 1"
+        },
+        {
+          "range": [32, 47],
+          "name": "Gobo 2"
+        },
+        {
+          "range": [48, 63],
+          "name": "Gobo 3"
+        },
+        {
+          "range": [64, 79],
+          "name": "Gobo 4"
+        },
+        {
+          "range": [80, 95],
+          "name": "Gobo 5"
+        },
+        {
+          "range": [96, 111],
+          "name": "Gobo 6"
+        },
+        {
+          "range": [112, 127],
+          "name": "Gobo 7"
+        },
+        {
+          "range": [128, 255],
+          "name": "Rotating slow-fast"
+        }
+      ]
+    },
+    "Gobo Rotation": {
+      "type": "Speed",
+      "defaultValue": 127,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Stop"
+        },
+        {
+          "range": [10, 120],
+          "name": "Rotation CW fast-slow"
+        },
+        {
+          "range": [121, 134],
+          "name": "Stop"
+        },
+        {
+          "range": [135, 245],
+          "name": "Rotation CCW slow-fast"
+        },
+        {
+          "range": [246, 255],
+          "name": "Stop"
+        }
+      ]
+    },
+    "Split Colors": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 6],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [7, 13],
+          "name": "White-Blue",
+          "color": "#ffffff",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [14, 20],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [21, 26],
+          "name": "Blue-Yellow",
+          "color": "#0000ff",
+          "color2": "#ffff00"
+        },
+        {
+          "range": [27, 33],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [34, 40],
+          "name": "Yellow-Green",
+          "color": "#ffff00",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [41, 46],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [47, 53],
+          "name": "Green-Lightblue",
+          "color": "#00ff00",
+          "color2": "#aaddff"
+        },
+        {
+          "range": [54, 60],
+          "name": "Lightblue",
+          "color": "#aaddff"
+        },
+        {
+          "range": [61, 66],
+          "name": "Lightblue-Orange",
+          "color": "#aaddff",
+          "color2": "#ff7f00"
+        },
+        {
+          "range": [67, 73],
+          "name": "Orange",
+          "color": "#ff7f00"
+        },
+        {
+          "range": [74, 80],
+          "name": "Orange-Pink",
+          "color": "#ff7f00",
+          "color2": "#ffaaaa"
+        },
+        {
+          "range": [81, 87],
+          "name": "Pink",
+          "color": "#ffaaaa"
+        },
+        {
+          "range": [88, 93],
+          "name": "Pink-Magenta",
+          "color": "#ffaaaa",
+          "color2": "#ff00ff"
+        },
+        {
+          "range": [94, 100],
+          "name": "Magenta",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [101, 107],
+          "name": "Magenta-Amber",
+          "color": "#ff00ff",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [108, 113],
+          "name": "Amber",
+          "color": "#ffbf00"
+        },
+        {
+          "range": [114, 120],
+          "name": "Amber-Lightgreen",
+          "color": "#ffbf00",
+          "color2": "#aaffaa"
+        },
+        {
+          "range": [121, 127],
+          "name": "Lightgreen",
+          "color": "#aaffaa"
+        },
+        {
+          "range": [128, 255],
+          "name": "Rotating slow-fast"
+        }
+      ]
+    },
+    "Shutter / Dimmer": {
+      "type": "Shutter",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "Blackout"
+        },
+        {
+          "range": [5, 131],
+          "name": "Dimmer 0-100%"
+        },
+        {
+          "range": [132, 252],
+          "name": "Strobe slow-fast"
+        },
+        {
+          "range": [253, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Full Colors": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 12],
+          "name": "Open",
+          "color": "#ffffff"
+        },
+        {
+          "range": [13, 25],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [26, 38],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [39, 51],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [52, 63],
+          "name": "Lightblue",
+          "color": "#aaddff"
+        },
+        {
+          "range": [64, 76],
+          "name": "Orange",
+          "color": "#ff7f00"
+        },
+        {
+          "range": [77, 89],
+          "name": "Pink",
+          "color": "#ffaaaa"
+        },
+        {
+          "range": [90, 102],
+          "name": "Magenta",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [103, 115],
+          "name": "Amber",
+          "color": "#ffbf00"
+        },
+        {
+          "range": [116, 127],
+          "name": "Lightgreen",
+          "color": "#aaffaa"
+        },
+        {
+          "range": [128, 255],
+          "name": "Rotating slow-fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Full Color",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Gobo",
+        "Gobo Rotation",
+        "Full Colors",
+        "Shutter / Dimmer"
+      ]
+    },
+    {
+      "name": "Split Color",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Gobo",
+        "Gobo Rotation",
+        "Split Colors",
+        "Shutter / Dimmer"
+      ]
+    }
+  ]
+}

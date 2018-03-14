@@ -1,10 +1,11 @@
 {
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
   "name": "LUX-LD30W",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Nerijus Mongirdas", "Flo Edelmann"],
     "createDate": "2017-09-19",
-    "lastModifyDate": "2017-09-19",
+    "lastModifyDate": "2017-10-16",
     "importPlugin": {
       "plugin": "qlcplus",
       "date": "2017-09-19",
@@ -199,6 +200,7 @@
   "modes": [
     {
       "name": "10-channel",
+      "shortName": "10ch",
       "channels": [
         "Color Wheel",
         "Gobo Wheel",
