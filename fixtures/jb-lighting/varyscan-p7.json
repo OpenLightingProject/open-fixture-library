@@ -1,0 +1,887 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
+  "name": "Varyscan P7",
+  "shortName": "JBVaryscanP7",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-01-08",
+    "lastModifyDate": "2018-01-08"
+  },
+  "manualURL": "http://www.jb-lighting.de/download/manual/53.pdf",
+  "physical": {
+    "dimensions": [380, 580, 264],
+    "weight": 17,
+    "power": 380,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "White light LED module 270W",
+      "lumens": 11020
+    },
+    "lens": {
+      "degreesMinMax": [8, 48]
+    },
+    "focus": {
+      "panMax": 433.6,
+      "tiltMax": 280
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32767
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32767
+    },
+    "Control": {
+      "type": "Maintenance",
+      "defaultValue": 8,
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Dimmer fade out with Fader slow-fast, reaction fast"
+        },
+        {
+          "range": [8, 31],
+          "name": "No function"
+        },
+        {
+          "range": [32, 39],
+          "name": "Dimmer fade out with Fader slow-fast, reaction semi-fast"
+        },
+        {
+          "range": [40, 63],
+          "name": "No function"
+        },
+        {
+          "range": [64, 71],
+          "name": "Dimmer fade out with Fader slow-fast, reaction medium"
+        },
+        {
+          "range": [72, 95],
+          "name": "No function"
+        },
+        {
+          "range": [96, 103],
+          "name": "Dimmer fade out with Fader slow-fast, reaction semi-slow"
+        },
+        {
+          "range": [104, 127],
+          "name": "No function"
+        },
+        {
+          "range": [128, 135],
+          "name": "Dimmer fade out with Fader slow-fast, reaction slow"
+        },
+        {
+          "range": [136, 207],
+          "name": "No function"
+        },
+        {
+          "range": [208, 215],
+          "name": "Camera mode, 50Hz (hold 2s)"
+        },
+        {
+          "range": [216, 223],
+          "name": "Camera mode, 60Hz (hold 2s)"
+        },
+        {
+          "range": [224, 231],
+          "name": "Camera mode, FLEX (hold 2s)"
+        },
+        {
+          "range": [232, 239],
+          "name": "Save"
+        },
+        {
+          "range": [240, 247],
+          "name": "Reset (hold 2s)"
+        },
+        {
+          "range": [248, 255],
+          "name": "Save"
+        }
+      ]
+    },
+    "Shutter": {
+      "type": "Shutter",
+      "defaultValue": 16,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "Closed"
+        },
+        {
+          "range": [16, 95],
+          "name": "Open"
+        },
+        {
+          "range": [96, 110],
+          "name": "Pulse opening >20Hz fast-slow"
+        },
+        {
+          "range": [111, 111],
+          "name": "Open"
+        },
+        {
+          "range": [112, 125],
+          "name": "Dimmer fade effect slow-fast"
+        },
+        {
+          "range": [126, 126],
+          "name": "Open"
+        },
+        {
+          "range": [127, 127],
+          "name": "Closed"
+        },
+        {
+          "range": [128, 142],
+          "name": "Pulse opening <20Hz fast-slow"
+        },
+        {
+          "range": [143, 143],
+          "name": "Open"
+        },
+        {
+          "range": [144, 158],
+          "name": "Pulse closing fast-slow"
+        },
+        {
+          "range": [159, 159],
+          "name": "Closed"
+        },
+        {
+          "range": [160, 174],
+          "name": "Fade 0% fast-slow"
+        },
+        {
+          "range": [175, 175],
+          "name": "Open"
+        },
+        {
+          "range": [176, 190],
+          "name": "Fade 100% fast-slow"
+        },
+        {
+          "range": [191, 191],
+          "name": "Closed"
+        },
+        {
+          "range": [192, 206],
+          "name": "Random 100% fast-slow"
+        },
+        {
+          "range": [207, 207],
+          "name": "Open"
+        },
+        {
+          "range": [208, 222],
+          "name": "Random 0% fast-slow"
+        },
+        {
+          "range": [223, 223],
+          "name": "Closed"
+        },
+        {
+          "range": [224, 238],
+          "name": "Random fade 0% fast-slow"
+        },
+        {
+          "range": [239, 239],
+          "name": "Open"
+        },
+        {
+          "range": [240, 254],
+          "name": "Random fade 100% fast-slow"
+        },
+        {
+          "range": [255, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "defaultValue": 0
+    },
+    "Focus": {
+      "type": "Focus",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Focus 0-100%"
+        }
+      ]
+    },
+    "Zoom": {
+      "type": "Zoom",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "wide 48° - narrow 8°"
+        }
+      ]
+    },
+    "Iris": {
+      "type": "Iris",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 126],
+          "name": "Open - closed"
+        },
+        {
+          "range": [127, 127],
+          "name": "Closed"
+        },
+        {
+          "range": [128, 142],
+          "name": "Periodic opening pulse fast-slow"
+        },
+        {
+          "range": [143, 143],
+          "name": "Open"
+        },
+        {
+          "range": [144, 158],
+          "name": "Periodic closing pulse fast-slow"
+        },
+        {
+          "range": [159, 159],
+          "name": "Closed"
+        },
+        {
+          "range": [160, 174],
+          "name": "Periodic snap open / ramp shut fast-slow"
+        },
+        {
+          "range": [175, 175],
+          "name": "Open"
+        },
+        {
+          "range": [176, 190],
+          "name": "Periodic ramp open / snap shut fast-slow"
+        },
+        {
+          "range": [191, 191],
+          "name": "Closed"
+        },
+        {
+          "range": [192, 206],
+          "name": "Random opening pulse fast-slow"
+        },
+        {
+          "range": [207, 207],
+          "name": "Open"
+        },
+        {
+          "range": [208, 222],
+          "name": "Random closing pulse fast-slow"
+        },
+        {
+          "range": [223, 223],
+          "name": "Closed"
+        },
+        {
+          "range": [224, 238],
+          "name": "Random snap open / ramp shut fast-slow"
+        },
+        {
+          "range": [239, 239],
+          "name": "Open"
+        },
+        {
+          "range": [240, 254],
+          "name": "Random ramo open / snap shut fast-slow"
+        },
+        {
+          "range": [255, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Gobo Wheel 1": {
+      "type": "Gobo",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Open"
+        },
+        {
+          "range": [8, 15],
+          "name": "Gobo 1"
+        },
+        {
+          "range": [16, 23],
+          "name": "Gobo 2"
+        },
+        {
+          "range": [24, 31],
+          "name": "Gobo 3"
+        },
+        {
+          "range": [32, 39],
+          "name": "Gobo 4"
+        },
+        {
+          "range": [40, 47],
+          "name": "Gobo 5"
+        },
+        {
+          "range": [48, 55],
+          "name": "Gobo 6"
+        },
+        {
+          "range": [56, 63],
+          "name": "Gobo 7"
+        },
+        {
+          "range": [64, 71],
+          "name": "Gobo 8"
+        },
+        {
+          "range": [72, 191],
+          "name": "Gobo 9"
+        },
+        {
+          "range": [192, 223],
+          "name": "Rotating CW fast-slow"
+        },
+        {
+          "range": [224, 255],
+          "name": "Rotating CCW slow-fast"
+        }
+      ]
+    },
+    "Gobo Wheel 2": {
+      "type": "Gobo",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Open"
+        },
+        {
+          "range": [8, 15],
+          "name": "Gobo 1"
+        },
+        {
+          "range": [16, 23],
+          "name": "Gobo 2"
+        },
+        {
+          "range": [24, 31],
+          "name": "Gobo 3"
+        },
+        {
+          "range": [32, 39],
+          "name": "Gobo 4"
+        },
+        {
+          "range": [40, 47],
+          "name": "Gobo 5"
+        },
+        {
+          "range": [48, 255],
+          "name": "Gobo 6"
+        }
+      ]
+    },
+    "Gobo Wheel 2 Position / Rotation": {
+      "type": "Gobo",
+      "fineChannelAliases": ["Gobo Wheel 2 Position / Rotation fine"],
+      "capabilities": [
+        {
+          "range": [0, 191],
+          "name": "Position 0-540°"
+        },
+        {
+          "range": [192, 222],
+          "name": "Rotating CW"
+        },
+        {
+          "range": [223, 223],
+          "name": "Rotation stop"
+        },
+        {
+          "range": [224, 255],
+          "name": "Rotating CCW"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 1],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [2, 3],
+          "name": "White-Red",
+          "color": "#ffffff",
+          "color2": "#ff0000"
+        },
+        {
+          "range": [4, 5],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [6, 7],
+          "name": "Red-Yellow",
+          "color": "#ff0000",
+          "color2": "#ffff00"
+        },
+        {
+          "range": [8, 9],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [10, 11],
+          "name": "Yellow-Magenta",
+          "color": "#ffff00",
+          "color2": "#ff00ff"
+        },
+        {
+          "range": [12, 13],
+          "name": "Magenta",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [14, 15],
+          "name": "Magenta-Green",
+          "color": "#ff00ff",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [16, 17],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [18, 19],
+          "name": "Green-Amber",
+          "color": "#00ff00",
+          "color2": "#ffbf00"
+        },
+        {
+          "range": [20, 21],
+          "name": "Amber",
+          "color": "#ffbf00"
+        },
+        {
+          "range": [22, 23],
+          "name": "Amber-Darkblue",
+          "color": "#ffbf00",
+          "color2": "#0000aa"
+        },
+        {
+          "range": [24, 25],
+          "name": "Darkblue",
+          "color": "#0000aa"
+        },
+        {
+          "range": [26, 27],
+          "name": "Darkblue-Turquoise",
+          "color": "#0000aa",
+          "color2": "#40e0d0"
+        },
+        {
+          "range": [28, 29],
+          "name": "Turquoise",
+          "color": "#40e0d0"
+        },
+        {
+          "range": [30, 31],
+          "name": "Turquoise-Pink",
+          "color": "#40e0d0",
+          "color2": "#ffaaaa"
+        },
+        {
+          "range": [32, 33],
+          "name": "Pink",
+          "color": "#ffaaaa"
+        },
+        {
+          "range": [34, 35],
+          "name": "Pink-CTO",
+          "color": "#ffaaaa",
+          "color2": "#ffd2b0"
+        },
+        {
+          "range": [36, 37],
+          "name": "CTO",
+          "color": "#ffd2b0"
+        },
+        {
+          "range": [38, 39],
+          "name": "CTO-White",
+          "color": "#ffd2b0",
+          "color2": "#ffffff"
+        },
+        {
+          "range": [40, 63],
+          "name": "No function"
+        },
+        {
+          "range": [64, 191],
+          "name": "Colors linear, beginning from white"
+        },
+        {
+          "range": [192, 223],
+          "name": "Rotating CW fast-slow"
+        },
+        {
+          "range": [224, 255],
+          "name": "Rotating CWW slow-fast"
+        }
+      ]
+    },
+    "Cyan": {
+      "type": "Single Color",
+      "color": "Cyan",
+      "fineChannelAliases": ["Cyan fine"],
+      "defaultValue": 0
+    },
+    "Magenta": {
+      "type": "Single Color",
+      "color": "Magenta",
+      "fineChannelAliases": ["Magenta fine"],
+      "defaultValue": 0
+    },
+    "Yellow": {
+      "type": "Single Color",
+      "color": "Yellow",
+      "fineChannelAliases": ["Yellow fine"],
+      "defaultValue": 0
+    },
+    "Sparkle": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Sparke off"
+        },
+        {
+          "range": [1, 255],
+          "name": "Sparkle intensity 0-100%"
+        }
+      ]
+    },
+    "Sparkle Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "Faded slow-fast"
+        },
+        {
+          "range": [32, 63],
+          "name": "Switched slow-fast"
+        },
+        {
+          "range": [64, 255],
+          "name": "Repeat of fade and switch block"
+        }
+      ]
+    },
+    "Prism": {
+      "type": "Prism",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Open"
+        },
+        {
+          "range": [8, 255],
+          "name": "Prism"
+        }
+      ]
+    },
+    "Prism Position / Rotation": {
+      "type": "Prism",
+      "fineChannelAliases": ["Prism Position / Rotation fine"],
+      "capabilities": [
+        {
+          "range": [0, 191],
+          "name": "Position 0-540°"
+        },
+        {
+          "range": [192, 222],
+          "name": "Rotating CW"
+        },
+        {
+          "range": [223, 223],
+          "name": "Rotation stop"
+        },
+        {
+          "range": [224, 255],
+          "name": "Rotating CCW"
+        }
+      ]
+    },
+    "Frost": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 126],
+          "name": "Frost 0-100%"
+        },
+        {
+          "range": [127, 127],
+          "name": "Frost 100%"
+        },
+        {
+          "range": [128, 142],
+          "name": "Periodic opening pulse fast-slow"
+        },
+        {
+          "range": [143, 143],
+          "name": "Frost 0%"
+        },
+        {
+          "range": [144, 158],
+          "name": "Periodic closing pulse fast-slow"
+        },
+        {
+          "range": [159, 159],
+          "name": "Frost 100%"
+        },
+        {
+          "range": [160, 174],
+          "name": "Periodic ramp in / snap out fast-slow"
+        },
+        {
+          "range": [175, 175],
+          "name": "Frost 0%"
+        },
+        {
+          "range": [176, 190],
+          "name": "Periodic snap in / ramp out fast-slow"
+        },
+        {
+          "range": [191, 191],
+          "name": "Frost 100%"
+        },
+        {
+          "range": [192, 206],
+          "name": "Random opening pulse fast-slow"
+        },
+        {
+          "range": [207, 207],
+          "name": "Frost 0%"
+        },
+        {
+          "range": [208, 222],
+          "name": "Random closing pulse fast-slow"
+        },
+        {
+          "range": [223, 223],
+          "name": "Frost 100%"
+        },
+        {
+          "range": [224, 238],
+          "name": "Random ramp in / snap out fast-slow"
+        },
+        {
+          "range": [239, 239],
+          "name": "Frost 0%"
+        },
+        {
+          "range": [240, 254],
+          "name": "Random snap in / ramp out fast-slow"
+        },
+        {
+          "range": [255, 255],
+          "name": "Aperture for logo projection"
+        }
+      ]
+    },
+    "Macro": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Off"
+        },
+        {
+          "range": [1, 255],
+          "name": "Macro 001-255"
+        }
+      ]
+    },
+    "Pan/Tilt Speed": {
+      "type": "Speed",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 3],
+          "name": "Real time"
+        },
+        {
+          "range": [4, 255],
+          "name": "Delay fast-slow"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "type": "Speed",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 3],
+          "name": "Real time"
+        },
+        {
+          "range": [4, 255],
+          "name": "Delay fast-slow"
+        }
+      ]
+    },
+    "Blackout on Move": {
+      "type": "Maintenance",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 95],
+          "name": "No function"
+        },
+        {
+          "range": [96, 127],
+          "name": "Blackout at pan/tilt"
+        },
+        {
+          "range": [128, 159],
+          "name": "Blackout at gobo, color, prism, CMY, iris, frost"
+        },
+        {
+          "range": [160, 191],
+          "name": "Blackout at gobo, color, prism, CMY, iris, frost, zoom, focus"
+        },
+        {
+          "range": [192, 223],
+          "name": "Blackout at gobo, color, prism, CMY, iris, frost, pan/tilt"
+        },
+        {
+          "range": [224, 255],
+          "name": "Blackout at gobo, color, prism, CMY, iris, frost, zoom, focus, pan/tilt"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1st",
+      "shortName": "M1",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Control",
+        "Shutter",
+        "Dimmer",
+        "Focus",
+        "Zoom",
+        "Iris",
+        "Gobo Wheel 1",
+        "Gobo Wheel 2",
+        "Gobo Wheel 2 Position / Rotation",
+        "Color Wheel",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Sparkle",
+        "Sparkle Speed",
+        "Prism",
+        "Prism Position / Rotation",
+        "Frost",
+        "Macro",
+        "Pan/Tilt Speed",
+        "Effect Speed",
+        "Blackout on Move"
+      ]
+    },
+    {
+      "name": "2nd",
+      "shortName": "M2",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Control",
+        "Shutter",
+        "Dimmer",
+        "Focus",
+        "Zoom",
+        "Iris",
+        "Gobo Wheel 1",
+        "Gobo Wheel 2",
+        "Gobo Wheel 2 Position / Rotation",
+        "Gobo Wheel 2 Position / Rotation fine",
+        "Color Wheel",
+        "Cyan",
+        "Cyan fine",
+        "Magenta",
+        "Magenta fine",
+        "Yellow",
+        "Yellow fine",
+        "Sparkle",
+        "Sparkle Speed",
+        "Prism",
+        "Prism Position / Rotation",
+        "Prism Position / Rotation fine",
+        "Frost",
+        "Macro",
+        "Pan/Tilt Speed",
+        "Effect Speed",
+        "Blackout on Move"
+      ]
+    },
+    {
+      "name": "3rd",
+      "shortName": "M3",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Control",
+        "Shutter",
+        "Dimmer",
+        "Focus",
+        "Zoom",
+        "Iris",
+        "Gobo Wheel 1",
+        "Gobo Wheel 2",
+        "Gobo Wheel 2 Position / Rotation",
+        "Color Wheel",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Sparkle",
+        "Sparkle Speed",
+        "Prism",
+        "Prism Position / Rotation",
+        "Frost",
+        "Macro",
+        "Blackout on Move"
+      ]
+    }
+  ]
+}

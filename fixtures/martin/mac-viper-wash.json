@@ -1,11 +1,12 @@
 {
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
   "name": "MAC Viper Wash (DX)",
-  "shortName": "MacViperWash",
-  "categories": ["Moving Head"],
+  "shortName": "MartinViperWash",
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["novasfronteiras.co"],
     "createDate": "2017-09-11",
-    "lastModifyDate": "2017-09-11"
+    "lastModifyDate": "2017-10-16"
   },
   "comment": "This fixture definition covers both the MAC Viper Wash and the MAC Viper Wash DX. The Color Wheel, Iris and all Internal Barndoor channels are only available in the DX variant.\n\nNote: Focus and Zoom are 8-bit channels, the manual is wrong there.",
   "manualURL": "http://www.martin.com/files/files/productdocuments/11_MANUALS/999/UM_MACViperWash_EN_B.pdf",
@@ -27,6 +28,7 @@
       "degreesMinMax": [13.5, 59]
     },
     "focus": {
+      "type": "Head",
       "panMax": 540,
       "tiltMax": 268
     }

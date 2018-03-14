@@ -1,0 +1,334 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
+  "name": "Boom Box Fx2",
+  "shortName": "ADJBoomBoxFx2",
+  "categories": ["Laser", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2017-11-17",
+    "lastModifyDate": "2017-11-17"
+  },
+  "manualURL": "http://adjmedia.s3-website-eu-west-1.amazonaws.com/manuals/boom_box_fx2.pdf",
+  "physical": {
+    "dimensions": [634, 319, 232],
+    "weight": 8,
+    "power": 62,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "8x3W LEDs, 8x1W LEDs, 8x10W RGBW LEDs"
+    }
+  },
+  "availableChannels": {
+    "Show mode": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 69],
+          "name": "No function"
+        },
+        {
+          "range": [70, 79],
+          "name": "Show 1"
+        },
+        {
+          "range": [80, 89],
+          "name": "Show 2"
+        },
+        {
+          "range": [90, 99],
+          "name": "Show 3"
+        },
+        {
+          "range": [100, 109],
+          "name": "Show 4"
+        },
+        {
+          "range": [110, 119],
+          "name": "Show 5"
+        },
+        {
+          "range": [120, 129],
+          "name": "Show 6"
+        },
+        {
+          "range": [130, 139],
+          "name": "Show 7"
+        },
+        {
+          "range": [140, 209],
+          "name": "Show 8"
+        },
+        {
+          "range": [210, 249],
+          "name": "Show 9"
+        },
+        {
+          "range": [250, 255],
+          "name": "Show 0"
+        }
+      ]
+    },
+    "Show speed": {
+      "type": "Speed"
+    },
+    "Special Functions": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 139],
+          "name": "No function"
+        },
+        {
+          "range": [140, 209],
+          "name": "Reset all"
+        },
+        {
+          "range": [210, 249],
+          "name": "No function"
+        },
+        {
+          "range": [250, 255],
+          "name": "Sound active"
+        }
+      ]
+    },
+    "Center LED": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Blackout",
+          "color": "#000000"
+        },
+        {
+          "range": [10, 255],
+          "name": "Color Macros"
+        }
+      ]
+    },
+    "Red Laser": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Closed"
+        },
+        {
+          "range": [128, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Green Laser": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Closed"
+        },
+        {
+          "range": [128, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Laser Patterns": {
+      "type": "Effect"
+    },
+    "Red Beam": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green Beam": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue Beam": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "White Beam": {
+      "type": "Single Color",
+      "color": "White"
+    },
+    "Beam Strobe": {
+      "type": "Strobe",
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Closed"
+        },
+        {
+          "range": [8, 15],
+          "name": "Open"
+        },
+        {
+          "range": [16, 131],
+          "name": "Strobe slow-fast"
+        },
+        {
+          "range": [132, 139],
+          "name": "Open"
+        },
+        {
+          "range": [140, 181],
+          "name": "Fast close / Slow open"
+        },
+        {
+          "range": [182, 189],
+          "name": "Open"
+        },
+        {
+          "range": [190, 231],
+          "name": "Fast open / Slow close"
+        },
+        {
+          "range": [232, 239],
+          "name": "Open"
+        },
+        {
+          "range": [240, 247],
+          "name": "Random"
+        },
+        {
+          "range": [248, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Beam Rotation": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Rotation indexing"
+        },
+        {
+          "range": [128, 189],
+          "name": "Rotating CW slow-fast"
+        },
+        {
+          "range": [190, 193],
+          "name": "Stop"
+        },
+        {
+          "range": [194, 255],
+          "name": "Rotating CCW fast-slow"
+        }
+      ]
+    },
+    "Beam Dimmer": {
+      "type": "Intensity"
+    },
+    "Red Gobo": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Closed"
+        },
+        {
+          "range": [10, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Green Gobo": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Closed"
+        },
+        {
+          "range": [10, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Blue Gobo": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Closed"
+        },
+        {
+          "range": [10, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "White Gobo": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Closed"
+        },
+        {
+          "range": [10, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Gobo Rotation": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Rotation indexing"
+        },
+        {
+          "range": [128, 189],
+          "name": "Rotating CW slow-fast"
+        },
+        {
+          "range": [190, 193],
+          "name": "Stop"
+        },
+        {
+          "range": [194, 255],
+          "name": "Rotating CCW fast-slow"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Show mode",
+        "Show speed",
+        "Special Functions"
+      ]
+    },
+    {
+      "name": "19-channel",
+      "shortName": "19ch",
+      "channels": [
+        "Center LED",
+        "Red Laser",
+        "Green Laser",
+        "Laser Patterns",
+        "Red Beam",
+        "Green Beam",
+        "Blue Beam",
+        "White Beam",
+        "Beam Strobe",
+        "Beam Dimmer",
+        "Beam Rotation",
+        "Red Gobo",
+        "Green Gobo",
+        "Blue Gobo",
+        "White Gobo",
+        "Gobo Rotation",
+        "Show mode",
+        "Show speed",
+        "Special Functions"
+      ]
+    }
+  ]
+}

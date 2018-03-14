@@ -1,0 +1,637 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
+  "name": "DIAMOND19",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["fueller"],
+    "createDate": "2017-08-16",
+    "lastModifyDate": "2018-02-02"
+  },
+  "manualURL": "http://prolights.it/download.php?id=2882",
+  "physical": {
+    "dimensions": [338, 449, 235],
+    "weight": 11,
+    "power": 316,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Honey-Comb gapless plano convex optics",
+      "degreesMinMax": [6, 66]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 630,
+      "tiltMax": 265
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "defaultValue": 127
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "defaultValue": 127
+    },
+    "Movement Speed": {
+      "type": "Speed",
+      "defaultValue": 127
+    },
+    "Shutter Function": {
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "Normal Shutter Functions"
+        },
+        {
+          "range": [16, 31],
+          "name": "Pulse-effect Forward"
+        },
+        {
+          "range": [32, 47],
+          "name": "Pulse-effect Reverse"
+        },
+        {
+          "range": [48, 63],
+          "name": "Random Strobe"
+        },
+        {
+          "range": [64, 255],
+          "name": "No function (TBD)"
+        }
+      ]
+    },
+    "Shutter": {
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "Close"
+        },
+        {
+          "range": [32, 223],
+          "name": "Strobe Rate (slow to fast)"
+        },
+        {
+          "range": [224, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity"
+    },
+    "Virtual Color Function": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "On Function",
+          "switchChannels": {
+            "Virtual Color 1": "Color Function"
+          }
+        },
+        {
+          "range": [16, 31],
+          "name": "CTC Function",
+          "switchChannels": {
+            "Virtual Color 1": "CTC Function"
+          }
+        },
+        {
+          "range": [32, 47],
+          "name": "Forward Spin",
+          "switchChannels": {
+            "Virtual Color 1": "Rainbow Effect"
+          }
+        },
+        {
+          "range": [48, 63],
+          "name": "Reverse Spin",
+          "switchChannels": {
+            "Virtual Color 1": "Rainbow Effect"
+          }
+        },
+        {
+          "range": [64, 79],
+          "name": "Continuous",
+          "switchChannels": {
+            "Virtual Color 1": "Color Function"
+          }
+        },
+        {
+          "range": [80, 111],
+          "name": "Color Bounce",
+          "switchChannels": {
+            "Virtual Color 1": "Color Function"
+          }
+        },
+        {
+          "range": [112, 255],
+          "name": "No function (TBD)",
+          "switchChannels": {
+            "Virtual Color 1": "Color Function"
+          }
+        }
+      ]
+    },
+    "Rainbow Effect": {
+      "type": "Speed"
+    },
+    "CTC Function": {
+      "type": "Color Temperature",
+      "capabilities": [
+        {
+          "range": [0, 223],
+          "name": "CTC 2000K-2700K"
+        },
+        {
+          "range": [224, 231],
+          "name": "White 3200K"
+        },
+        {
+          "range": [232, 239],
+          "name": "White 4200K"
+        },
+        {
+          "range": [240, 247],
+          "name": "White 5600K"
+        },
+        {
+          "range": [248, 255],
+          "name": "White 8000K"
+        }
+      ]
+    },
+    "Color Function": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Black",
+          "color": "#000000"
+        },
+        {
+          "range": [1, 1],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [2, 2],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [3, 3],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [4, 4],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [5, 46],
+          "name": "Green ASC, Blue",
+          "color": "#0000ff",
+          "color2": "#00ffff"
+        },
+        {
+          "range": [47, 88],
+          "name": "Green, Blue DESC",
+          "color": "#00ffff",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [89, 130],
+          "name": "Red ASC, Green",
+          "color": "#00ff00",
+          "color2": "#ffff00"
+        },
+        {
+          "range": [131, 172],
+          "name": "Red, Green DESC",
+          "color": "#ffff00",
+          "color2": "#ff0000"
+        },
+        {
+          "range": [173, 214],
+          "name": "Red, Blue ASC",
+          "color": "#ff0000",
+          "color2": "#ff00ff"
+        },
+        {
+          "range": [215, 255],
+          "name": "Red DESC, Blue",
+          "color": "#ff00ff",
+          "color2": "#0000ff"
+        }
+      ]
+    },
+    "Virtual Color 2": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Black",
+          "color": "#000000"
+        },
+        {
+          "range": [1, 1],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [2, 2],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [3, 3],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [4, 4],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [5, 46],
+          "name": "Green ASC, Blue",
+          "color": "#0000ff",
+          "color2": "#00ffff"
+        },
+        {
+          "range": [47, 88],
+          "name": "Green, Blue DESC",
+          "color": "#00ffff",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [89, 130],
+          "name": "Red ASC, Green",
+          "color": "#00ff00",
+          "color2": "#ffff00"
+        },
+        {
+          "range": [131, 172],
+          "name": "Red, Green DESC",
+          "color": "#ffff00",
+          "color2": "#ff0000"
+        },
+        {
+          "range": [173, 214],
+          "name": "Red, Blue ASC",
+          "color": "#ff0000",
+          "color2": "#ff00ff"
+        },
+        {
+          "range": [215, 255],
+          "name": "Red DESC, Blue",
+          "color": "#ff00ff",
+          "color2": "#0000ff"
+        }
+      ]
+    },
+    "Red-All": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green-All": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue-All": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "White-All": {
+      "type": "Single Color",
+      "color": "White"
+    },
+    "Zoom": {
+      "type": "Zoom",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "small angle -> big angle"
+        }
+      ]
+    },
+    "Foreground": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "No Color"
+        },
+        {
+          "range": [16, 31],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [32, 47],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [48, 63],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [64, 79],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [80, 95],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [96, 111],
+          "name": "Magenta",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [112, 127],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [128, 255],
+          "name": "Full Color"
+        }
+      ]
+    },
+    "Background": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "No Color"
+        },
+        {
+          "range": [16, 31],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [32, 47],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [48, 63],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [64, 79],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [80, 95],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [96, 111],
+          "name": "Magenta",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [112, 127],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [128, 255],
+          "name": "Full Color"
+        }
+      ]
+    },
+    "Patterns": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "Static Pattern",
+          "switchChannels": {
+            "Pattern Speed": "Static Pattern Speed"
+          }
+        },
+        {
+          "range": [32, 47],
+          "name": "Dynamic Pattern 1",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
+        },
+        {
+          "range": [48, 63],
+          "name": "Dynamic Pattern 2",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
+        },
+        {
+          "range": [64, 79],
+          "name": "Dynamic Pattern 3",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
+        },
+        {
+          "range": [80, 95],
+          "name": "Dynamic Pattern 4",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
+        },
+        {
+          "range": [96, 111],
+          "name": "Dynamic Pattern 5",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
+        },
+        {
+          "range": [112, 127],
+          "name": "Dynamic Pattern 6",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
+        },
+        {
+          "range": [128, 143],
+          "name": "Dynamic Pattern 7",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
+        },
+        {
+          "range": [144, 159],
+          "name": "Dynamic Pattern 8",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
+        },
+        {
+          "range": [160, 175],
+          "name": "Dynamic Pattern 9",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
+        },
+        {
+          "range": [176, 191],
+          "name": "Dynamic Pattern 10",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
+        },
+        {
+          "range": [192, 207],
+          "name": "Dynamic Pattern 11",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
+        },
+        {
+          "range": [208, 223],
+          "name": "Dynamic Pattern 12",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
+        },
+        {
+          "range": [224, 239],
+          "name": "Dynamic Pattern 13",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
+        },
+        {
+          "range": [240, 255],
+          "name": "Dynamic Pattern 14",
+          "switchChannels": {
+            "Pattern Speed": "Dynamic Pattern Speed"
+          }
+        }
+      ]
+    },
+    "Static Pattern Speed": {
+      "type": "Speed",
+      "defaultValue": 127
+    },
+    "Dynamic Pattern Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 3],
+          "name": "Stop"
+        },
+        {
+          "range": [4, 127],
+          "name": "CW slow-fast"
+        },
+        {
+          "range": [128, 131],
+          "name": "Stop"
+        },
+        {
+          "range": [132, 255],
+          "name": "CCW slow-fast"
+        }
+      ]
+    },
+    "Control": {
+      "type": "Maintenance",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Normal"
+        },
+        {
+          "range": [8, 15],
+          "name": "Reset All"
+        },
+        {
+          "range": [16, 23],
+          "name": "Pan&Tilt Reset"
+        },
+        {
+          "range": [24, 47],
+          "name": "No function (TBD)"
+        },
+        {
+          "range": [48, 55],
+          "name": "Other Reset"
+        },
+        {
+          "range": [56, 63],
+          "name": "Display Off"
+        },
+        {
+          "range": [64, 71],
+          "name": "Display On"
+        },
+        {
+          "range": [72, 79],
+          "name": "No function (TBD)"
+        },
+        {
+          "range": [80, 87],
+          "name": "No function (TBD)"
+        },
+        {
+          "range": [88, 95],
+          "name": "Hibernation"
+        },
+        {
+          "range": [96, 255],
+          "name": "No function (TBD)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Movement Speed",
+        "Shutter Function",
+        "Shutter",
+        "Dimmer",
+        "Virtual Color Function",
+        "Virtual Color 1",
+        "Virtual Color 2",
+        "Red-All",
+        "Green-All",
+        "Blue-All",
+        "White-All",
+        "Zoom",
+        "Foreground",
+        "Background",
+        "Patterns",
+        "Pattern Speed",
+        "Control"
+      ]
+    }
+  ]
+}

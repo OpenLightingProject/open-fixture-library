@@ -1,0 +1,274 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
+  "name": "GoboTracer",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Justin Hornsby"],
+    "createDate": "2017-11-16",
+    "lastModifyDate": "2017-11-16"
+  },
+  "manualURL": "http://m.mcl-media.co.uk/download.aspx?download=e5650a64-260d-4693-a5b8-3b34459af494",
+  "physical": {
+    "DMXconnector": "3-pin",
+    "dimensions": [210, 285, 147],
+    "weight": 3.2,
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [12, 12]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 230
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"]
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"]
+    },
+    "Color": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "range": [10, 19],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [20, 29],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [30, 39],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [40, 49],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [50, 59],
+          "name": "Purple",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [60, 69],
+          "name": "Orange",
+          "color": "#ffaa00"
+        },
+        {
+          "range": [70, 79],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [80, 89],
+          "name": "White/Red",
+          "color": "#ffffff",
+          "color2": "#ff0000"
+        },
+        {
+          "range": [90, 99],
+          "name": "Red/Green",
+          "color": "#ff0000",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [100, 109],
+          "name": "Blue/Green",
+          "color": "#0000ff",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [110, 119],
+          "name": "Blue/Yellow",
+          "color": "#0000ff",
+          "color2": "#ffff00"
+        },
+        {
+          "range": [120, 129],
+          "name": "Yellow/Purple",
+          "color": "#ffff00",
+          "color2": "#ff00ff"
+        },
+        {
+          "range": [130, 139],
+          "name": "Orange/Purple",
+          "color": "#ffaa00",
+          "color2": "#ff00ff"
+        },
+        {
+          "range": [140, 149],
+          "name": "Cyan/Orange",
+          "color": "#00ffff",
+          "color2": "#ffaa00"
+        },
+        {
+          "range": [150, 159],
+          "name": "White/Blue",
+          "color": "#ffffff",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [160, 255],
+          "name": "Color scroll slow-fast"
+        }
+      ]
+    },
+    "Gobo": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Open"
+        },
+        {
+          "range": [8, 15],
+          "name": "Gobo1"
+        },
+        {
+          "range": [16, 23],
+          "name": "Gobo2"
+        },
+        {
+          "range": [24, 31],
+          "name": "Gobo3"
+        },
+        {
+          "range": [32, 39],
+          "name": "Gobo4"
+        },
+        {
+          "range": [40, 47],
+          "name": "Gobo5"
+        },
+        {
+          "range": [48, 55],
+          "name": "Gobo6"
+        },
+        {
+          "range": [56, 63],
+          "name": "Gobo7"
+        },
+        {
+          "range": [64, 127],
+          "name": "Gobo Shake"
+        },
+        {
+          "range": [128, 255],
+          "name": "Gobo scroll slow-fast"
+        }
+      ]
+    },
+    "Strobe": {
+      "type": "Strobe"
+    },
+    "Dimmer": {
+      "type": "Intensity"
+    },
+    "Horizontal Vertical Run": {
+      "type": "Effect"
+    },
+    "Auto Mode": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 59],
+          "name": "Other channels on"
+        },
+        {
+          "range": [60, 84],
+          "name": "Auto mode 3"
+        },
+        {
+          "range": [85, 109],
+          "name": "Auto mode 2"
+        },
+        {
+          "range": [110, 134],
+          "name": "Auto mode 1"
+        },
+        {
+          "range": [135, 159],
+          "name": "Sound-to-light mode 0"
+        },
+        {
+          "range": [160, 184],
+          "name": "Sound-to-light mode 3"
+        },
+        {
+          "range": [185, 209],
+          "name": "Sound-to-light mode 2"
+        },
+        {
+          "range": [210, 234],
+          "name": "Sound-to-light mode 1"
+        },
+        {
+          "range": [235, 255],
+          "name": "Sound-to-light mode 0"
+        }
+      ]
+    },
+    "Reset": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 249],
+          "name": "No Action"
+        },
+        {
+          "range": [250, 255],
+          "name": "Reset After 5 secs"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "9ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color",
+        "Gobo",
+        "Strobe",
+        "Dimmer",
+        "Horizontal Vertical Run",
+        "Auto Mode",
+        "Reset"
+      ]
+    },
+    {
+      "name": "11ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Color",
+        "Gobo",
+        "Strobe",
+        "Dimmer",
+        "Horizontal Vertical Run",
+        "Auto Mode",
+        "Reset"
+      ]
+    }
+  ]
+}

@@ -1,11 +1,12 @@
 {
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
   "name": "MAC Viper Performance",
   "shortName": "MartinViperPerf",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["novasfronteiras.co"],
     "createDate": "2017-09-08",
-    "lastModifyDate": "2017-09-08"
+    "lastModifyDate": "2017-10-16"
   },
   "manualURL": "http://www.martin.com/files/files/productdocuments/11_MANUALS/999/35000275c%20UM_MACViperPerf_EN_C.pdf",
   "rdm": {
@@ -26,6 +27,7 @@
       "degreesMinMax": [10, 44]
     },
     "focus": {
+      "type": "Head",
       "panMax": 540,
       "tiltMax": 268
     }

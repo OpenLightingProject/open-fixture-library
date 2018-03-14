@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
   "name": "Horizon 8",
   "shortName": "Hrzn8",
   "categories": ["Blinder", "Color Changer"],
@@ -20,6 +21,18 @@
     },
     "focus": {
       "type": "Fixed"
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["1", "2", "3", "4"],
+        ["5", "6", "7", "8"]
+      ]
+    ],
+    "pixelGroups": {
+      "P1": ["1", "2", "3", "4"],
+      "P2": ["5", "6", "7", "8"]
     }
   },
   "availableChannels": {
@@ -532,46 +545,6 @@
     "Value": {
       "type": "Intensity"
     },
-    "P1 Red": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "P1 Green": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "P1 Blue": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "P1 White": {
-      "type": "Single Color",
-      "color": "White"
-    },
-    "P1 Amber": {
-      "type": "Single Color",
-      "color": "Amber"
-    },
-    "P2 Red": {
-      "type": "Single Color",
-      "color": "Red"
-    },
-    "P2 Green": {
-      "type": "Single Color",
-      "color": "Green"
-    },
-    "P2 Blue": {
-      "type": "Single Color",
-      "color": "Blue"
-    },
-    "P2 White": {
-      "type": "Single Color",
-      "color": "White"
-    },
-    "P2 Amber": {
-      "type": "Single Color",
-      "color": "Amber"
-    },
     "Step Time": {
       "type": "Speed"
     },
@@ -579,9 +552,27 @@
       "type": "Speed"
     }
   },
-  "heads": {
-    "P1": ["P1 Red", "P1 Green", "P1 Blue", "P1 White", "P1 Amber"],
-    "P2": ["P2 Red", "P2 Green", "P2 Blue", "P2 White", "P2 Amber"]
+  "templateChannels": {
+    "$pixelKey Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "$pixelKey Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "$pixelKey Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "$pixelKey White": {
+      "type": "Single Color",
+      "color": "White"
+    },
+    "$pixelKey Amber": {
+      "type": "Single Color",
+      "color": "Amber"
+    }
   },
   "modes": [
     {
@@ -748,27 +739,33 @@
     {
       "name": "PIX1",
       "channels": [
-        "P1 Red",
-        "P1 Green",
-        "P1 Blue",
-        "P2 Red",
-        "P2 Green",
-        "P2 Blue"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelGroup",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue"
+          ]
+        }
       ]
     },
     {
       "name": "PIX3",
       "channels": [
-        "P1 Red",
-        "P1 Green",
-        "P1 Blue",
-        "P1 White",
-        "P1 Amber",
-        "P2 Red",
-        "P2 Green",
-        "P2 Blue",
-        "P2 White",
-        "P2 Amber"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelGroup",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White",
+            "$pixelKey Amber"
+          ]
+        }
       ]
     }
   ]

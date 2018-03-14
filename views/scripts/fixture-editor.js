@@ -1,12 +1,14 @@
 'use strict';
 
 require('./polyfills.js');
-var A11yDialog = require('a11y-dialog');
 var uuidV4 = require('uuid/v4.js');
 var Vue = require('vue/dist/vue.js');
 var validate = require('./validate.js');
+var draggable = require('vuedraggable');
 
-var vueIsReady = false;
+var utils = require('./fixture-editor-utils.js');
+
+Vue._oflRestoreComplete = false;
 
 validate.init(function(form) {
   if (form.id === 'fixture-form') {
@@ -36,384 +38,22 @@ var storageAvailable = (function() {
 
 Vue.directive('focus', {
   inserted: function(el) {
-    if (vueIsReady) {
+    if (Vue._oflRestoreComplete) {
       el.focus();
     }
   }
 });
 
-Vue.component('a11y-dialog', {
-  template: '#template-dialog',
-  props: ['id', 'cancellable', 'shown'],
-  watch: {
-    shown: function() {
-      this[this.shown ? 'show' : 'hide']();
-    }
-  },
-  mounted: function() {
-    var self = this;
-    this.dialog = new A11yDialog(this.$el, '#header, #fixture-editor > form');
-    this.dialog.on('show', function(node) {
-      node.querySelector('h2').focus();
-      self.$emit('show');
-    });
-    this.dialog.on('hide', function(node) {
-      self.$emit('hide');
-    });
-  },
-  methods: {
-    show: function() {
-      this.dialog.show();
-    },
-    hide: function() {
-      this.dialog.hide();
-    },
-    overlayClick: function() {
-      if (this.cancellable) {
-        this.hide();
-      }
-    }
-  }
-});
+Vue.component('draggable', draggable);
 
-Vue.component('physical-data', {
-  template: '#template-physical',
-  props: ['value'],
-  computed: {
-    dimensionRequired: function() {
-      return this.value.dimensionsWidth !== '' || this.value.dimensionsHeight !== '' || this.value.dimensionsDepth !== '';
-    },
-    degreesRequired: function() {
-      return this.value.lens.degreesMin !== '' || this.value.lens.degreesMax !== '';
-    }
-  },
-  mounted: function() {
-    if (vueIsReady) {
-      this.$refs.firstInput.focus();
-    }
-  }
-});
+require('./components/a11y-dialog.js')(Vue);
+require('./components/category-chooser.js')(Vue);
+require('./components/physical-data.js')(Vue);
+require('./components/fixture-mode.js')(Vue);
+require('./components/channel-capability.js')(Vue);
+require('./components/capability-wizard.js')(Vue);
 
-Vue.component('fixture-mode', {
-  template: '#template-mode',
-  props: ['mode', 'fixture', 'channel'],
-  mounted: function() {
-    if (vueIsReady) {
-      this.$refs.firstInput.focus();
-    }
-  },
-  methods: {
-    getChannelName: function(channelUuid) {
-      return app.getChannelName(channelUuid);
-    },
-    editChannel: function(channelUuid) {
-      this.channel.modeId = this.mode.uuid;
-      this.channel.editMode = 'edit-?';
-      this.channel.uuid = channelUuid;
-    },
-    addChannel: function() {
-      this.channel.modeId = this.mode.uuid;
-      this.channel.editMode = 'add-existing';
-    },
-    isChannelNameUnique: function(channelUuid) {
-      return app.isChannelNameUnique(channelUuid);
-    },
-    isFineChannel: function(channelUuid) {
-      return 'coarseChannelId' in this.fixture.availableChannels[channelUuid];
-    },
-    removeChannel: function(channelUuid) {
-      var channel = this.fixture.availableChannels[channelUuid];
-
-      // first remove the finer channels if any
-      var coarseChannelId = channelUuid;
-      var fineness = 0;
-      if (this.isFineChannel(channelUuid)) {
-        coarseChannelId = channel.coarseChannelId;
-        fineness = channel.fineness;
-      }
-
-      for (var chId in this.fixture.availableChannels) {
-        if (!this.fixture.availableChannels.hasOwnProperty(chId)) {
-          continue;
-        }
-
-        var ch = this.fixture.availableChannels[chId];
-        if ('coarseChannelId' in ch && ch.coarseChannelId === coarseChannelId
-          && ch.fineness > fineness) {
-          app.removeChannel(ch.uuid, this.mode.uuid);
-        }
-      }
-
-      // then remove the channel itself
-      app.removeChannel(channelUuid, this.mode.uuid);
-    }
-  }
-});
-
-Vue.component('channel-capability', {
-  template: '#template-capability',
-  props: ['capability', 'capabilities', 'fineness'],
-  data: function() {
-    return {
-      dmxMin: 0
-    };
-  },
-  computed: {
-    dmxMax: function() {
-      return Math.pow(256, this.fineness+1) - 1;
-    },
-    isChanged: function() {
-      return this.capabilities.some(isCapabilityChanged);
-    },
-    startMin: function() {
-      var min = this.dmxMin;
-      var index = this.capabilities.indexOf(this.capability) - 1;
-      while (index >= 0) {
-        var cap = this.capabilities[index];
-        if (cap.end !== '') {
-          min = cap.end + 1;
-          break;
-        }
-        if (cap.start !== '') {
-          min = cap.start + 1;
-          break;
-        }
-        index--;
-      }
-      return min;
-    },
-    startMax: function() {
-      var index = this.capabilities.indexOf(this.capability);
-      if (index === 0) {
-        return this.dmxMin;
-      }
-
-      return this.capability.end !== '' ? this.capability.end : this.endMax;
-    },
-    endMin: function() {
-      var index = this.capabilities.indexOf(this.capability);
-      if (index === this.capabilities.length) {
-        return this.dmxMax;
-      }
-
-      return this.capability.start !== '' ? this.capability.start : this.startMin;
-    },
-    endMax: function() {
-      var max = this.dmxMax;
-      var index = this.capabilities.indexOf(this.capability) + 1;
-      while (index < this.capabilities.length) {
-        var cap = this.capabilities[index];
-        if (cap.start !== '') {
-          max = cap.start - 1;
-          break;
-        }
-        if (cap.end !== '') {
-          max = cap.end - 1;
-          break;
-        }
-        index++;
-      }
-      return max;
-    }
-  },
-  watch: {
-    'capability.start': function() {
-      var index = this.capabilities.indexOf(this.capability);
-      var prevCap = this.capabilities[index - 1];
-
-      if (typeof this.capability.start !== 'number') {
-        if (!this.isChanged) {
-          this.collapseWithNeighbors();
-        }
-        return;
-      }
-
-      if (prevCap) {
-        if (isCapabilityChanged(prevCap)) {
-          if (this.capability.start > this.startMin) {
-            // add item before
-            this.capabilities.splice(index, 0, getEmptyCapability());
-            this.$emit('scroll-item-inserted', index);
-          }
-        }
-        else if (this.capability.start <= this.startMin) {
-          // remove previous item
-          this.capabilities.splice(index - 1, 1);
-        }
-      }
-      else if (this.capability.start > this.dmxMin) {
-        // add item before
-        this.capabilities.splice(index, 0, getEmptyCapability());
-        this.$emit('scroll-item-inserted', index);
-      }
-    },
-    'capability.end': function() {
-      var index = this.capabilities.indexOf(this.capability);
-      var nextCap = this.capabilities[index + 1];
-
-      if (typeof this.capability.end !== 'number') {
-        if (!this.isChanged) {
-          this.collapseWithNeighbors();
-        }
-        return;
-      }
-
-      if (nextCap) {
-        if (isCapabilityChanged(nextCap)) {
-          if (this.capability.end < this.endMax) {
-            // add item after
-            this.capabilities.splice(index + 1, 0, getEmptyCapability());
-          }
-        }
-        else if (this.capability.end >= this.endMax) {
-          // remove next item
-          this.capabilities.splice(index + 1, 1);
-        }
-      }
-      else if (this.capability.end < this.dmxMax) {
-        // add item after
-        this.capabilities.splice(index + 1, 0, getEmptyCapability());
-      }
-    }
-  },
-  methods: {
-    remove: function() {
-      var emptyCap = getEmptyCapability();
-      for (var prop in emptyCap) {
-        if (emptyCap.hasOwnProperty(prop)) {
-          this.capability[prop] = emptyCap[prop];
-        }
-      }
-      this.collapseWithNeighbors();
-    },
-    collapseWithNeighbors: function() {
-      var index = this.capabilities.indexOf(this.capability);
-      var prevCap = this.capabilities[index - 1];
-      var nextCap = this.capabilities[index + 1];
-
-      if (prevCap && !isCapabilityChanged(prevCap)) {
-        if (nextCap && !isCapabilityChanged(nextCap)) {
-          // remove previous and current item
-          this.capabilities.splice(index - 1, 2);
-        }
-        else {
-          // remove previous item
-          this.capabilities.splice(index - 1, 1);
-        }
-      }
-      else if (nextCap && !isCapabilityChanged(nextCap)) {
-        // remove next item
-        this.capabilities.splice(index + 1, 1);
-      }
-    }
-  }
-});
-
-function getEmptyFixture() {
-  return {
-    key: '[new]',
-    useExistingManufacturer: true,
-    manufacturerShortName: '',
-    newManufacturerName: '',
-    newManufacturerShortName: '',
-    newManufacturerWebsite: '',
-    newManufacturerComment: '',
-    newManufacturerRdmId: '',
-    name: '',
-    shortName: '',
-    categories: [],
-    comment: '',
-    manualURL: '',
-    rdmModelId: '',
-    rdmSoftwareVersion: '',
-    physical: getEmptyPhysical(),
-    modes: [getEmptyMode()],
-    metaAuthor: '',
-    metaGithubUsername: '',
-    availableChannels: {}
-  };
-}
-
-function getEmptyPhysical() {
-  return {
-    dimensionsWidth: '',
-    dimensionsHeight: '',
-    dimensionsDepth: '',
-    weight: '',
-    power: '',
-    DMXconnector: '',
-    DMXconnectorNew: '',
-    bulb: {
-      type: '',
-      colorTemperature: '',
-      lumens: ''
-    },
-    lens: {
-      name: '',
-      degreesMin: '',
-      degreesMax: ''
-    },
-    focus: {
-      type: '',
-      typeNew: '',
-      panMax: '',
-      tiltMax: ''
-    }
-  };
-}
-
-function getEmptyMode() {
-  return {
-    uuid: uuidV4(),
-    name: '',
-    shortName: '',
-    rdmPersonalityIndex: '',
-    enablePhysicalOverride: false,
-    physical: getEmptyPhysical(),
-    channels: []
-  };
-}
-
-function getEmptyChannel() {
-  return {
-    uuid: uuidV4(),
-    editMode: '',
-    modeId: '',
-    name: '',
-    type: '',
-    color: '',
-    fineness: 0,
-    defaultValue: '',
-    highlightValue: '',
-    invert: '',
-    constant: '',
-    crossfade: '',
-    precedence: '',
-    capFineness: 0,
-    capabilities: [getEmptyCapability()]
-  };
-}
-
-function getEmptyFineChannel(coarseChannelId, fineness) {
-  return {
-    uuid: uuidV4(),
-    coarseChannelId: coarseChannelId,
-    fineness: fineness
-  };
-}
-
-function getEmptyCapability() {
-  return {
-    uuid: uuidV4(),
-    start: '',
-    end: '',
-    name: '',
-    color: '',
-    color2: ''
-  };
-}
-
-var initFixture = getEmptyFixture();
+var initFixture = utils.getEmptyFixture();
 if ('oflPrefill' in window) {
   Object.keys(window.oflPrefill).forEach(function(key) {
     if (typeof initFixture[key] !== 'object') {
@@ -426,7 +66,7 @@ var app = window.app = new Vue({
   el: '#fixture-editor',
   data: {
     fixture: initFixture,
-    channel: getEmptyChannel(),
+    channel: utils.getEmptyChannel(),
     channelChanged: false,
     readyToAutoSave: false,
     honeypot: '',
@@ -464,7 +104,7 @@ var app = window.app = new Vue({
           var maxFoundFineness = 0;
           for (var i = 0; i < app.currentMode.channels.length; i++) {
             var ch = app.fixture.availableChannels[app.currentMode.channels[i]];
-            
+
             if ('coarseChannelId' in ch && ch.coarseChannelId === channel.coarseChannelId) {
               maxFoundFineness = Math.max(maxFoundFineness, ch.fineness);
             }
@@ -513,7 +153,7 @@ var app = window.app = new Vue({
   mounted: restoreAutoSave,
   methods: {
     addNewMode: function() {
-      this.fixture.modes.push(getEmptyMode());
+      this.fixture.modes.push(utils.getEmptyMode());
     },
     switchManufacturer: switchManufacturer,
     onChannelDialogOpen: onChannelDialogOpen,
@@ -544,7 +184,7 @@ var app = window.app = new Vue({
     isChannelNameUnique: function(channelUuid) {
       var chName = this.getChannelName(channelUuid);
       for (var channelKey in this.fixture.availableChannels) {
-        if (!this.fixture.availableChannels.hasOwnProperty(channelKey)) {
+        if (!Object.hasOwnProperty.call(this.fixture.availableChannels, channelKey)) {
           continue;
         }
 
@@ -572,8 +212,8 @@ function onChannelDialogOpen() {
   else if (this.channel.editMode === 'edit-all' || this.channel.editMode === 'edit-duplicate') {
     var channel = this.fixture.availableChannels[this.channel.uuid];
     for (var prop in channel) {
-      if (channel.hasOwnProperty(prop)) {
-        this.channel[prop] = clone(channel[prop]);
+      if (Object.hasOwnProperty.call(channel, prop)) {
+        this.channel[prop] = utils.clone(channel[prop]);
       }
     }
   }
@@ -634,17 +274,17 @@ function capabilitiesScroll(capabilityIndex) {
 
 function saveChannel() {
   if (this.channel.editMode === 'create') {
-    Vue.set(this.fixture.availableChannels, this.channel.uuid, getSanitizedChannel(this.channel));
+    Vue.set(this.fixture.availableChannels, this.channel.uuid, utils.getSanitizedChannel(this.channel));
     this.currentMode.channels.push(this.channel.uuid);
 
     this.addFineChannels(this.channel, 1, true);
   }
   else if (this.channel.editMode === 'edit-all') {
-    this.fixture.availableChannels[this.channel.uuid] = getSanitizedChannel(this.channel);
+    this.fixture.availableChannels[this.channel.uuid] = utils.getSanitizedChannel(this.channel);
 
     var maxFoundFineness = 0;
     for (var chId in this.fixture.availableChannels) {
-      if (!this.fixture.availableChannels.hasOwnProperty(chId)) {
+      if (!Object.hasOwnProperty.call(this.fixture.availableChannels, chId)) {
         continue;
       }
 
@@ -663,7 +303,7 @@ function saveChannel() {
     var oldChannelKey = this.channel.uuid;
 
     var newChannelKey = uuidV4();
-    var newChannel = getSanitizedChannel(this.channel);
+    var newChannel = utils.getSanitizedChannel(this.channel);
     newChannel.uuid = newChannelKey;
     Vue.set(this.fixture.availableChannels, newChannelKey, newChannel);
 
@@ -684,14 +324,14 @@ function saveChannel() {
 }
 
 /**
- * @param {!Object} coarseChannel The channel object of the coarse channel.
+ * @param {!object} coarseChannel The channel object of the coarse channel.
  * @param {!number} offset At which fineness should be started.
  * @param {boolean} [addToMode] If true, the fine channel is pushed to the current mode's channels.
  */
 function addFineChannels(coarseChannel, offset, addToMode) {
   for (var i = offset; i <= coarseChannel.fineness; i++) {
-    var fineChannel = getEmptyFineChannel(coarseChannel.uuid, i);
-    Vue.set(this.fixture.availableChannels, fineChannel.uuid, getSanitizedChannel(fineChannel));
+    var fineChannel = utils.getEmptyFineChannel(coarseChannel.uuid, i);
+    Vue.set(this.fixture.availableChannels, fineChannel.uuid, utils.getSanitizedChannel(fineChannel));
 
     if (addToMode) {
       this.currentMode.channels.push(fineChannel.uuid);
@@ -717,7 +357,7 @@ function removeChannel(channelUuid, modeUuid) {
 
   // remove fine channels first
   for (var chId in this.fixture.availableChannels) {
-    if (!this.fixture.availableChannels.hasOwnProperty(chId)) {
+    if (!Object.hasOwnProperty.call(this.fixture.availableChannels, chId)) {
       continue;
     }
 
@@ -737,9 +377,9 @@ function removeChannel(channelUuid, modeUuid) {
 }
 
 function resetChannelForm() {
-  this.channel = getEmptyChannel();
+  this.channel = utils.getEmptyChannel();
   Vue.nextTick(function() {
-    app.$refs.channelForm.reset();  // resets browser validation status
+    app.$refs.channelForm.reset(); // resets browser validation status
   });
 }
 
@@ -757,7 +397,7 @@ function autoSave(objectName) {
         return false;
       }
       if (prop === 'capabilities') {
-        return app.channel.capabilities.some(isCapabilityChanged);
+        return app.channel.capabilities.some(utils.isCapabilityChanged);
       }
       return app.channel[prop] !== '';
     });
@@ -788,7 +428,7 @@ function clearAutoSave() {
 
 function restoreAutoSave() {
   if (!storageAvailable) {
-    vueIsReady = true;
+    Vue._oflRestoreComplete = true;
     return;
   }
 
@@ -813,7 +453,7 @@ function discardRestored() {
 
   this.restoredData = '';
   this.readyToAutoSave = true;
-  vueIsReady = true;
+  Vue._oflRestoreComplete = true;
 }
 function applyRestored() {
   var restoredData = this.restoredData;
@@ -828,7 +468,7 @@ function applyRestored() {
 
     Vue.nextTick(function() {
       app.readyToAutoSave = true;
-      vueIsReady = true;
+      Vue._oflRestoreComplete = true;
     });
   });
 }
@@ -876,28 +516,4 @@ function submitFixture() {
 
   this.submit.rawData = '```json\n' + JSON.stringify(sendObject, null, 2) + '\n```';
   console.log(this.submit.rawData);
-}
-
-
-// HELPER FUNCTIONS
-
-function getSanitizedChannel(channel) {
-  var retChannel = clone(channel);
-  delete retChannel.editMode;
-  delete retChannel.modeId;
-
-  return retChannel;
-}
-
-function isCapabilityChanged(cap) {
-  return Object.keys(cap).some(function(prop) {
-    if (prop === 'uuid') {
-      return false;
-    }
-    return cap[prop] !== '';
-  });
-}
-
-function clone(obj) {
-  return JSON.parse(JSON.stringify(obj));
 }

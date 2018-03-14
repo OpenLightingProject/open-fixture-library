@@ -1,0 +1,263 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
+  "name": "SC-250 Scanner",
+  "shortName": "FuturelightSC250",
+  "categories": ["Scanner", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2017-12-21",
+    "lastModifyDate": "2017-12-21"
+  },
+  "comment": "Note that the manual contains some mistakes that are corrected in this definition.",
+  "manualURL": "http://www.partirentournee.com/sites/default/files/matos/Future%20Light/asservis/Scan%20SC%20series%20240%20to%20980/SC-250.pdf",
+  "physical": {
+    "dimensions": [280, 160, 470],
+    "weight": 11.1,
+    "power": 250,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "HIT 150 W"
+    },
+    "lens": {
+      "degreesMinMax": [19, 19]
+    },
+    "focus": {
+      "type": "Mirror"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "defaultValue": 128
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "defaultValue": 128
+    },
+    "Color Wheel": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Open (White)",
+          "color": "#ffffff"
+        },
+        {
+          "range": [8, 15],
+          "name": "Turquoise",
+          "color": "#40e0d0"
+        },
+        {
+          "range": [16, 23],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [24, 31],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [32, 39],
+          "name": "Lightgreen",
+          "color": "#90ee90"
+        },
+        {
+          "range": [40, 47],
+          "name": "Magenta",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [48, 55],
+          "name": "Lightblue",
+          "color": "#66ccff"
+        },
+        {
+          "range": [56, 63],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [64, 71],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [72, 79],
+          "name": "Pink",
+          "color": "#ffaaaa"
+        },
+        {
+          "range": [80, 87],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [88, 95],
+          "name": "Orange",
+          "color": "#ffaa00"
+        },
+        {
+          "range": [96, 103],
+          "name": "UV",
+          "color": "#7f1ae5"
+        },
+        {
+          "range": [104, 111],
+          "name": "Red-Blue",
+          "color": "#ff0000",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [112, 119],
+          "name": "Yellow-Green",
+          "color": "#ffff00",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [120, 127],
+          "name": "Lightblue-Magenta",
+          "color": "#66ccff",
+          "color2": "#ff00ff"
+        },
+        {
+          "range": [128, 190],
+          "name": "Rainbow CW fast-slow"
+        },
+        {
+          "range": [191, 192],
+          "name": "Rotation stop"
+        },
+        {
+          "range": [193, 255],
+          "name": "Rainbow CCW slow-fast"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 23],
+          "name": "Open"
+        },
+        {
+          "range": [24, 47],
+          "name": "Gobo 1"
+        },
+        {
+          "range": [48, 79],
+          "name": "Gobo 2"
+        },
+        {
+          "range": [80, 103],
+          "name": "Gobo 3"
+        },
+        {
+          "range": [104, 127],
+          "name": "Gobo 4"
+        },
+        {
+          "range": [128, 151],
+          "name": "Gobo 5"
+        },
+        {
+          "range": [152, 175],
+          "name": "Gobo 6"
+        },
+        {
+          "range": [176, 207],
+          "name": "Gobo 7"
+        },
+        {
+          "range": [208, 231],
+          "name": "Gobo 8"
+        },
+        {
+          "range": [232, 255],
+          "name": "Gobo 9"
+        }
+      ]
+    },
+    "Gobo Indexing / Rotation": {
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Indexing"
+        },
+        {
+          "range": [128, 191],
+          "name": "Rotation CW fast-slow"
+        },
+        {
+          "range": [192, 193],
+          "name": "Rotation stop"
+        },
+        {
+          "range": [194, 255],
+          "name": "Rotation CCW slow-fast"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "Closed"
+        },
+        {
+          "range": [32, 63],
+          "name": "Dimmer 0-100%"
+        },
+        {
+          "range": [64, 95],
+          "name": "Open"
+        },
+        {
+          "range": [96, 127],
+          "name": "Strobe 0-8Hz"
+        },
+        {
+          "range": [128, 139],
+          "name": "Reset"
+        },
+        {
+          "range": [140, 159],
+          "name": "Closed"
+        },
+        {
+          "range": [160, 175],
+          "name": "Pulse slow-fast"
+        },
+        {
+          "range": [176, 191],
+          "name": "Pulse fast-slow"
+        },
+        {
+          "range": [192, 223],
+          "name": "Random Strobe slow-fast"
+        },
+        {
+          "range": [224, 255],
+          "name": "Open"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Gobo Indexing / Rotation",
+        "Shutter / Strobe"
+      ]
+    }
+  ]
+}

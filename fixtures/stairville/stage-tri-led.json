@@ -1,0 +1,357 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
+  "name": "Stage TRI LED",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["p_0g_8mm3_", "Flo Edelmann"],
+    "createDate": "2018-01-30",
+    "lastModifyDate": "2018-01-30"
+  },
+  "manualURL": "https://images.thomann.de/pics/prod/238663_manual.pdf",
+  "physical": {
+    "dimensions": [1200, 2400, 10],
+    "weight": 16,
+    "power": 90,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "4x 7x 3W RGB LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["1", "2", "3", "4"]
+      ]
+    ],
+    "pixelGroups": {
+      "1+2": ["1", "2"],
+      "3+4": ["3", "4"],
+      "Master": ["1", "2", "3", "4"]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "type": "Intensity"
+    },
+    "Program": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Off",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [10, 19],
+          "name": "Red",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [20, 29],
+          "name": "Yellow",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [30, 39],
+          "name": "Green",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [40, 49],
+          "name": "Cyan",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [50, 59],
+          "name": "Blue",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [60, 69],
+          "name": "Violet",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [70, 79],
+          "name": "White",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [80, 89],
+          "name": "Program 1",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [90, 99],
+          "name": "Program 2",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [100, 109],
+          "name": "Program 3",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [110, 119],
+          "name": "Program 4",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [120, 129],
+          "name": "Program 5",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [130, 139],
+          "name": "Program 6",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [140, 149],
+          "name": "Program 7",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [150, 159],
+          "name": "Program 8",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [160, 169],
+          "name": "Program 9",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [170, 179],
+          "name": "Program 10",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [180, 189],
+          "name": "Program 11",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [190, 199],
+          "name": "Program 12",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [200, 209],
+          "name": "Program 13",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [210, 219],
+          "name": "Program 14",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [220, 229],
+          "name": "Program 15",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [230, 239],
+          "name": "Program 16",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Speed"
+          }
+        },
+        {
+          "range": [240, 255],
+          "name": "Sound control",
+          "switchChannels": {
+            "Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Speed": {
+      "type": "Speed"
+    },
+    "Sound Sensitivity": {
+      "type": "Intensity"
+    },
+    "Strobe": {
+      "type": "Strobe"
+    },
+    "Mode": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "RGB"
+        },
+        {
+          "range": [10, 249],
+          "name": "Programs"
+        },
+        {
+          "range": [250, 255],
+          "name": "Sound control"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green $pixelKey": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue $pixelKey": {
+      "type": "Single Color",
+      "color": "Blue"
+    }
+  },
+  "modes": [
+    {
+      "name": "RGB",
+      "shortName": "d-P1",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "RGBD",
+      "shortName": "d-P2",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "Program",
+      "shortName": "d-P5",
+      "channels": [
+        "Program",
+        "Speed / Sound Sensitivity"
+      ]
+    },
+    {
+      "name": "Color + Program",
+      "shortName": "d-P7",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Program",
+        "Speed / Sound Sensitivity",
+        "Strobe",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "Split",
+      "shortName": "d-P3",
+      "channels": [
+        "Red 1+2",
+        "Green 1+2",
+        "Blue 1+2",
+        "Red 3+4",
+        "Green 3+4",
+        "Blue 3+4",
+        "Strobe",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "Individual",
+      "shortName": "d-P4",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "Strobe",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "Complete",
+      "shortName": "d-P6",
+      "channels": [
+        "Mode",
+        "Dimmer",
+        "Strobe",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    }
+  ]
+}
