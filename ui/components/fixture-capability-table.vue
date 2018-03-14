@@ -11,7 +11,7 @@
     <thead>
       <tr>
         <th colspan="3" style="text-align: center">DMX values</th>
-        <th /> <!-- color or image -->
+        <th /> <!-- color -->
         <th>Capability</th>
         <th /> <!-- menuClick -->
       </tr>
@@ -34,12 +34,6 @@
             :title="`color: ${cap.color}`"
             class="capability-color">
             <app-svg :colors="[cap.color]" type="color-circle" />
-          </td>
-          <td
-            v-else-if="cap.image !== null"
-            class="capability-image"
-            title="image">
-            {{ cap.image }} <!-- TODO images are not supported yet -->
           </td>
           <td v-else />
 
