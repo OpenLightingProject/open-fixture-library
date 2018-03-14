@@ -104,12 +104,13 @@ app.post(`/ajax/get-search-results`, (request, response) => {
 
 // instantiate nuxt.js with the options
 const nuxtConfig = require(`./nuxt.config.js`);
+nuxtConfig.dev = process.argv[2] === `--dev`;
 const nuxt = new Nuxt(nuxtConfig);
 
 // render every remaining route with Nuxt.js
 app.use(nuxt.render);
 
-if (process.argv[2] === `--dev`) {
+if (nuxtConfig.dev) {
   console.log(`Starting dev server with hot reloading...`);
   new Builder(nuxt).build()
     .then(listen)
