@@ -12,7 +12,9 @@
   "main": "main.js",
   "scripts": {
     "watch": "nodemon main.js",
-    "start": "node main.js"
+    "start": "node main.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "@octokit/rest": "^15.1.7",
@@ -40,7 +42,8 @@
     "vue": "^2.5.2",
     "vuedraggable": "^2.15.0",
     "xml2js": "^0.4.19",
-    "xmlbuilder": "^9.0.4"
+    "xmlbuilder": "^9.0.4",
+    "snyk": "^1.70.0"
   },
   "devDependencies": {
     "ajv": "^6.0.1",
@@ -69,5 +72,6 @@
     "lighting",
     "qlc"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "snyk": true
 }
