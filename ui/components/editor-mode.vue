@@ -1,5 +1,5 @@
 <template>
-  <section class="fixture-mode card">
+  <section :data-mode-uuid="mode.uuid" class="fixture-mode card">
 
     <a
       v-if="fixture.modes.length > 1"
@@ -81,7 +81,7 @@
 
             <span class="channel-name">{{ getChannelName(channelUuid) }}</span>
 
-            <code v-if="!isChannelNameUnique(channelUuid)" class="channel-uuid">{{ channelUuid }}</code>
+            <code v-if="!isChannelNameUnique(channelUuid)" class="channel-uuid"> {{ channelUuid }}</code>
 
             <a
               href="#remove"
@@ -208,16 +208,42 @@ export default {
         group: {
           name: `mode`,
           pull: `clone`,
-          put(to, from, dragElem, event) {
+          put: (to, from, dragElem, event) => {
             if (from === to) {
               return false;
             }
 
             const channelUuid = dragElem.getAttribute(`data-channel-uuid`);
-            const channelAlreadyExists = to.el.querySelectorAll(`[data-channel-uuid="${channelUuid}"]`).length > 0;
-            // TODO: test if all coarser channels are there
+            const modeUuid = to.el.closest(`.fixture-mode`).getAttribute(`data-mode-uuid`);
+            const targetMode = this.fixture.modes.find(mode => mode.uuid === modeUuid);
 
-            return !channelAlreadyExists;
+            if (targetMode.channels.includes(channelUuid)) {
+              // channel already in target mode
+              return false;
+            }
+
+            const channel = this.fixture.availableChannels[channelUuid];
+            if (!(`coarseChannelId` in channel)) {
+              // normal channels don't need any more validation
+              return true;
+            }
+
+            if (!targetMode.channels.includes(channel.coarseChannelId)) {
+              // fine channels need their coarse channel
+              return false;
+            }
+
+            if (channel.fineness === 1) {
+              // next coarser channel is coarse channel, which is in target mode
+              return true;
+            }
+
+            const nextCoarserChannelFound = !!targetMode.channels.find(uuid => {
+              const otherChannel = this.fixture.availableChannels[uuid];
+              return otherChannel.coarseChannelId === channel.coarseChannelId && otherChannel.fineness === channel.fineness - 1;
+            });
+
+            return nextCoarserChannelFound;
           },
           revertClone: true
         }
