@@ -720,19 +720,6 @@
           ]
         }
       },
-      "oneOf": [
-        {
-          "required": [
-            "colors"
-          ]
-        },
-        {
-          "required": [
-            "colorsStart",
-            "colorsEnd"
-          ]
-        }
-      ],
       "additionalProperties": false
     },
     {

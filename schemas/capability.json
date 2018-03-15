@@ -171,10 +171,6 @@
         "colorTemperatureStart": { "$ref": "definitions.json#/entities/colorTemperature" },
         "colorTemperatureEnd": { "$ref": "definitions.json#/entities/colorTemperature" }
       },
-      "oneOf": [
-        { "required": ["colors"] },
-        { "required": ["colorsStart", "colorsEnd"] }
-      ],
       "additionalProperties": false
     },
     {
