@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
-  "name": "Flare",
+  "name": "Solaris Flare",
   "shortName": "TMBFlare",
   "categories": ["Strobe", "Blinder", "Color Changer"],
   "meta": {
@@ -8,7 +8,7 @@
     "createDate": "2018-03-15",
     "lastModifyDate": "2018-03-15"
   },
-  "comment": "Flares with serial numbers that contain “14R” have RDM functionality\n. Example:  xxxxxx-14R-xxxx",
+  "comment": "Flares with serial numbers that contain “14R” have RDM functionality.\nExample: xxxxxx-14R-xxxx",
   "manualURL": "http://pub.tmb.com/solaris/pdf/Solaris-Flare-Manual.pdf",
   "rdm": {
     "modelId": 1703,
