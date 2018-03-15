@@ -238,7 +238,7 @@ export default {
               return true;
             }
 
-            const nextCoarserChannelFound = !!targetMode.channels.find(uuid => {
+            const nextCoarserChannelFound = targetMode.channels.some(uuid => {
               const otherChannel = this.fixture.availableChannels[uuid];
               return otherChannel.coarseChannelId === channel.coarseChannelId && otherChannel.fineness === channel.fineness - 1;
             });
