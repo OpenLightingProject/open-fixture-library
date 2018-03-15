@@ -53,14 +53,24 @@ summary {
     border-color: $icon-dark-hover;
   }
 }
-details[open] {
-  padding-bottom: 2ex;
 
-  & > summary::after {
-    /* chevron up */
-    top: 0;
-    transform: rotate(315deg);
+details {
+  display: block; /* needed for Edge */
+
+  &[open] {
+    padding-bottom: 2ex;
+
+    & > summary::after {
+      /* chevron up */
+      top: 0;
+      transform: rotate(315deg);
+    }
   }
+}
+
+/* hide polyfilled arrow, as we use our own */
+html.no-details details > summary::before {
+  display: none;
 }
 </style>
 
