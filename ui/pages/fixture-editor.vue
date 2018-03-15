@@ -22,7 +22,7 @@
               required
               name="manufacturerShortName">
 
-              <option value="">Please select a manufacturer</option>
+              <option value="" disabled>Please select a manufacturer</option>
 
               <template v-for="(manufacturer, manKey) in manufacturers">
                 <option v-if="manKey !== `$schema`" :key="manKey" :value="manKey">

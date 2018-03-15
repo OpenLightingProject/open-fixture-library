@@ -90,10 +90,10 @@
         <h3>DMX values</h3>
 
         <app-simple-label :formstate="formstate" name="fineness" label="Channel resolution">
-          <select v-model.number="channel.fineness" name="fineness">
-            <option :selected="channel.fineness === 0" value="0">8 bit (No fine channels)</option>
-            <option :selected="channel.fineness === 1" value="1">16 bit (1 fine channel)</option>
-            <option :selected="channel.fineness === 2" value="2">24 bit (2 fine channels)</option>
+          <select v-model="channel.fineness" name="fineness">
+            <option :value="0">8 bit (No fine channels)</option>
+            <option :value="1">16 bit (1 fine channel)</option>
+            <option :value="2">24 bit (2 fine channels)</option>
           </select>
         </app-simple-label>
 
@@ -152,18 +152,10 @@
           :formstate="formstate"
           name="capFineness"
           label="Capability resolution">
-          <select v-model.number="channel.capFineness" name="capFineness" required>
-            <option
-              :selected="channel.capFineness === 0"
-              value="0">8 bit (range 0 - 255)</option>
-            <option
-              v-if="channel.fineness >= 1"
-              :selected="channel.capFineness === 1"
-              value="1">16 bit (range 0 - 65535)</option>
-            <option
-              v-if="channel.fineness >= 2"
-              :selected="channel.capFineness === 2"
-              value="2">24 bit (range 0 - 16777215)</option>
+          <select v-model="channel.capFineness" name="capFineness" required>
+            <option :value="0">8 bit (range 0 - 255)</option>
+            <option v-if="channel.fineness >= 1" :value="1">16 bit (range 0 - 65535)</option>
+            <option v-if="channel.fineness >= 2" :value="2">24 bit (range 0 - 16777215)</option>
           </select>
         </app-simple-label>
 

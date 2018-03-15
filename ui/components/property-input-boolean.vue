@@ -1,12 +1,12 @@
 <template>
   <select
     ref="input"
+    v-model="localValue"
     :required="required"
-    :class="{boolean: true, empty: value === null}"
-    @input="update">
-    <option :selected="value === null" value="">unknown</option>
-    <option :selected="value === true" value="true">yes</option>
-    <option :selected="value === false" value="false">no</option>
+    :class="{boolean: true, empty: value === null}">
+    <option :value="null" :disabled="required">unknown</option>
+    <option :value="true">yes</option>
+    <option :value="false">no</option>
   </select>
 </template>
 
@@ -43,6 +43,16 @@ export default {
       default: null
     }
   },
+  computed: {
+    localValue: {
+      get() {
+        return this.value;
+      },
+      set(newValue) {
+        this.$emit(`input`, newValue);
+      }
+    }
+  },
   mounted() {
     if (this.autoFocus) {
       this.focus();
@@ -51,19 +61,6 @@ export default {
   methods: {
     focus() {
       this.$refs.input.focus();
-    },
-    update() {
-      if (this.$refs.input.value === `true`) {
-        this.$emit(`input`, true);
-        return;
-      }
-
-      if (this.$refs.input.value === `false`) {
-        this.$emit(`input`, false);
-        return;
-      }
-
-      this.$emit(`input`, null);
     }
   }
 };
