@@ -29,6 +29,7 @@
           "dmxRange": [32, 255],
           "type": "FogOn",
           "comment": "Fog & Color Change",
+          "fogType": "Fog",
           "fogOutput": "40000m^3/min"
         }
       ]
@@ -42,6 +43,7 @@
         {
           "dmxRange": [32, 255],
           "type": "FogOn",
+          "fogType": "Fog",
           "fogOutput": "40000m^3/min"
         }
       ]
