@@ -1411,6 +1411,17 @@
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
+        "effectName": {
+          "type": "string",
+          "pattern": "^[^\n]+$"
+        },
+        "effectPreset": {
+          "enum": [
+            "SoundControl",
+            "ColorJump",
+            "ColorFade"
+          ]
+        },
         "effectIntensity": {
           "oneOf": [
             {
@@ -1532,6 +1543,18 @@
           ]
         }
       },
+      "oneOf": [
+        {
+          "required": [
+            "effectName"
+          ]
+        },
+        {
+          "required": [
+            "effectPreset"
+          ]
+        }
+      ],
       "additionalProperties": false
     },
     {

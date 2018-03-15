@@ -333,6 +333,14 @@
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
+        "effectName": { "$ref": "definitions.json#/nonEmptyString" },
+        "effectPreset": {
+          "enum": [
+            "SoundControl",
+            "ColorJump",
+            "ColorFade"
+          ]
+        },
         "effectIntensity": { "$ref": "definitions.json#/entities/factor" },
         "effectIntensityStart": { "$ref": "definitions.json#/entities/factor" },
         "effectIntensityEnd": { "$ref": "definitions.json#/entities/factor" },
@@ -340,6 +348,10 @@
         "speedStart": { "$ref": "definitions.json#/entities/speed" },
         "speedEnd": { "$ref": "definitions.json#/entities/speed" }
       },
+      "oneOf": [
+        { "required": ["effectName"] },
+        { "required": ["effectPreset"] }
+      ],
       "additionalProperties": false
     },
     {

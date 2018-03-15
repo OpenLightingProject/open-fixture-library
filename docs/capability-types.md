@@ -66,6 +66,8 @@ Required properties are _italic_, the entity is written in (parentheses).
 * PanTiltSpeed
   * _speed_ (Speed)
 * Effect
+  * _effectName_: Free text describing the effect
+  * _effectPreset_: one of `SoundControl`, `ColorJump`, `ColorFade`
   * effectIntensity (Factor)
   * speed (Speed)
 * EffectIntensity (global, doesn't activate an effect directly)
