@@ -19,6 +19,7 @@
         v-model="mode.name"
         :schema-property="properties.mode.name.allOf[1]"
         :required="true"
+        no-mode-name
         hint="e.g. Extended"
         title="The name must not contain the word 'mode'." />
     </app-simple-label>
@@ -28,6 +29,7 @@
         :name="`mode-${index}-shortName`"
         v-model="mode.shortName"
         :schema-property="properties.mode.shortName.allOf[1]"
+        no-mode-name
         hint="e.g. ext; defaults to name"
         title="The short name must not contain the word 'mode'." />
     </app-simple-label>

@@ -11,11 +11,6 @@
             v-show="fieldState.$touched || fieldState.$submitted"
             class="error-message">
             <div v-if="fieldErrors.required">Please fill out this field.</div>
-            <div v-else-if="fieldErrors.number">Please enter a number.</div>
-            <div v-else-if="fieldErrors.max">Too big.</div>
-            <div v-else-if="fieldErrors.min">Too small.</div>
-            <div v-else-if="fieldErrors.email">Please enter an email address.</div>
-            <div v-else-if="fieldErrors.url">Please enter a URL.</div>
 
             <!-- custom validators -->
             <div v-else-if="fieldErrors[`complete-range`]">Please fill out both start and end of the range.</div>
@@ -24,7 +19,17 @@
             <div v-else-if="fieldErrors[`complete-dimensions`]">Please fill out all dimensions.</div>
             <div v-else-if="fieldErrors[`start-with-uppercase-or-number`]">Please start with an uppercase letter or a number.</div>
             <div v-else-if="fieldErrors[`no-manufacturer-name`]">Don't include the manufacturer name.</div>
+            <div v-else-if="fieldErrors[`no-mode-name`]">Don't include the word "mode", it is appended automatically.</div>
             <div v-else-if="fieldErrors[`no-fine-channel-name`]">Don't create fine channels manually, set the channel resolution below instead.</div>
+
+            <!-- general validators -->
+            <div v-else-if="fieldErrors.number">Please enter a number.</div>
+            <div v-else-if="fieldErrors.min || fieldErrors[`data-exclusive-minimum`]">Too small.</div> <!-- TODO: include min value -->
+            <div v-else-if="fieldErrors.max || fieldErrors[`data-exclusive-maximum`]">Too big.</div> <!-- TODO: include max value -->
+            <div v-else-if="fieldErrors.step">Please only enter integers.</div> <!-- assume step="1" everywhere. TODO: make flexible -->
+            <div v-else-if="fieldErrors.email">Please enter an email address.</div>
+            <div v-else-if="fieldErrors.url">Please enter a URL.</div>
+            <div v-else-if="fieldErrors.pattern">Has to match pattern.</div> <!-- TODO: include title -->
           </div>
 
           <div v-if="hint" class="hint">{{ hint }}</div>

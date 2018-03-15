@@ -34,9 +34,8 @@
           title="#rrggbb"
           class="color">
       </validate>
-      <validate :state="formstate" tag="span">
+      <validate v-if="capability.color !== ``" :state="formstate" tag="span">
         <input
-          v-if="capability.color !== ``"
           v-model="capability.color2"
           :name="`capability${capability.uuid}-color2`"
           type="text"
@@ -62,10 +61,11 @@
       v-show="fieldState.$touched || fieldState.$submitted"
       class="error-message">
       <div v-if="fieldErrors.required">Please fill out this field.</div>
-      <div v-else-if="fieldErrors.number">Please enter a number.</div>
+      <div v-else-if="fieldErrors.number || fieldErrors.step">Please enter a whole number.</div> <!-- assume step="1" everywhere -->
       <div v-else-if="fieldErrors.min && capIndex === 0">The first range has to start at 0.</div>
       <div v-else-if="fieldErrors.max && capIndex === capabilities.length - 1">The last range has to end at {{ dmxMax }}.</div>
       <div v-else-if="fieldErrors.min || fieldErrors.max">Ranges must not overlap.</div>
+      <div v-else-if="fieldErrors.pattern">Colors must be entered in #rrggbb format.</div> <!-- assume pattern attribute only for color fields -->
 
       <!-- custom validators -->
       <div v-else-if="fieldErrors[`complete-range`]">Please fill out both start and end of the range.</div>
