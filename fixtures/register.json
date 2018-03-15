@@ -555,6 +555,11 @@
       "lastModifyDate": "2018-01-30",
       "lastAction": "created"
     },
+    "tmb/flare": {
+      "name": "Flare",
+      "lastModifyDate": "2018-03-15",
+      "lastAction": "created"
+    },
     "venue/thintri64": {
       "name": "ThinTri64",
       "lastModifyDate": "2018-02-04",
@@ -740,6 +745,9 @@
       "mh-x25",
       "stage-tri-led"
     ],
+    "tmb": [
+      "flare"
+    ],
     "venue": [
       "thintri64",
       "tristrip3z"
@@ -755,7 +763,8 @@
       "cameo/thunder-wash-600-rgb",
       "cameo/thunder-wash-600-w",
       "showtec/horizon-8",
-      "stairville/led-flood-panel-150"
+      "stairville/led-flood-panel-150",
+      "tmb/flare"
     ],
     "Color Changer": [
       "5star-systems/spica-250m",
@@ -848,6 +857,7 @@
       "stairville/mh-100",
       "stairville/mh-x25",
       "stairville/stage-tri-led",
+      "tmb/flare",
       "venue/thintri64",
       "venue/tristrip3z"
     ],
@@ -968,10 +978,69 @@
       "cameo/thunder-wash-600-w",
       "eurolite/led-fe-1500",
       "futurelight/stb-648-led-strobe-smd-5050",
-      "martin/atomic-3000"
+      "martin/atomic-3000",
+      "tmb/flare"
     ]
   },
   "contributors": {
+    "Flo Edelmann": [
+      "5star-systems/spica-250m",
+      "abstract/twister-4",
+      "american-dj/quad-phase-hp",
+      "american-dj/revo-4-ir",
+      "american-dj/revo-burst",
+      "american-dj/xs-400",
+      "ayra/tdc-triple-burst",
+      "cameo/hydrabeam-100",
+      "cameo/hydrabeam-300-rgbw",
+      "cameo/outdoor-par-tri-12",
+      "cameo/thunder-wash-100-rgb",
+      "cameo/thunder-wash-100-w",
+      "cameo/thunder-wash-600-rgb",
+      "cameo/thunder-wash-600-w",
+      "chauvet-dj/gigbar-2",
+      "clay-paky/sharpy",
+      "coemar/prospot-250-lx",
+      "elation/platinum-hfx",
+      "eurolite/led-kls-801",
+      "eurolite/led-par-56-tcl",
+      "eurolite/led-ps-4-hcl",
+      "eurolite/led-sls-6-uv-floor",
+      "eurolite/led-tmh-18",
+      "eurolite/led-tmh-7",
+      "eurolite/led-tmh-9",
+      "futurelight/dmh-75-i-led-moving-head",
+      "futurelight/pro-slim-par-7-hcl",
+      "generic/cmy-fader",
+      "generic/desk-channel",
+      "generic/drgb-fader",
+      "generic/pan-tilt",
+      "generic/rgb-fader",
+      "generic/rgba-fader",
+      "generic/rgbd-fader",
+      "generic/rgbw-fader",
+      "gruft/ventilator",
+      "jb-systems/twin-effect-laser",
+      "lightmaxx/platinum-mini-tri-par",
+      "lightmaxx/vega-zoom-wash",
+      "look/viper-nt",
+      "martin/atomic-3000",
+      "martin/roboscan-812",
+      "mdg/theone-atmospheric-generator",
+      "qtx/lux-ld30w",
+      "robe/dj-scan-250-xt",
+      "robe/robin-600e-spot",
+      "showtec/horizon-8",
+      "showtec/kanjo-spot-60",
+      "showtec/kanjo-wash-rgb",
+      "showtec/led-light-bar-rgb-v3",
+      "showtec/phantom-140-led-spot",
+      "showtec/phantom-50-led-spot",
+      "stairville/mh-x25",
+      "stairville/stage-tri-led",
+      "tmb/flare",
+      "venue/tristrip3z"
+    ],
     "Felix Edelmann": [
       "5star-systems/spica-250m",
       "abstract/twister-4",
@@ -1028,63 +1097,6 @@
       "showtec/sunraise-led",
       "stairville/led-flood-panel-150",
       "venue/thintri64"
-    ],
-    "Flo Edelmann": [
-      "5star-systems/spica-250m",
-      "abstract/twister-4",
-      "american-dj/quad-phase-hp",
-      "american-dj/revo-4-ir",
-      "american-dj/revo-burst",
-      "american-dj/xs-400",
-      "ayra/tdc-triple-burst",
-      "cameo/hydrabeam-100",
-      "cameo/hydrabeam-300-rgbw",
-      "cameo/outdoor-par-tri-12",
-      "cameo/thunder-wash-100-rgb",
-      "cameo/thunder-wash-100-w",
-      "cameo/thunder-wash-600-rgb",
-      "cameo/thunder-wash-600-w",
-      "chauvet-dj/gigbar-2",
-      "clay-paky/sharpy",
-      "coemar/prospot-250-lx",
-      "elation/platinum-hfx",
-      "eurolite/led-kls-801",
-      "eurolite/led-par-56-tcl",
-      "eurolite/led-ps-4-hcl",
-      "eurolite/led-sls-6-uv-floor",
-      "eurolite/led-tmh-18",
-      "eurolite/led-tmh-7",
-      "eurolite/led-tmh-9",
-      "futurelight/dmh-75-i-led-moving-head",
-      "futurelight/pro-slim-par-7-hcl",
-      "generic/cmy-fader",
-      "generic/desk-channel",
-      "generic/drgb-fader",
-      "generic/pan-tilt",
-      "generic/rgb-fader",
-      "generic/rgba-fader",
-      "generic/rgbd-fader",
-      "generic/rgbw-fader",
-      "gruft/ventilator",
-      "jb-systems/twin-effect-laser",
-      "lightmaxx/platinum-mini-tri-par",
-      "lightmaxx/vega-zoom-wash",
-      "look/viper-nt",
-      "martin/atomic-3000",
-      "martin/roboscan-812",
-      "mdg/theone-atmospheric-generator",
-      "qtx/lux-ld30w",
-      "robe/dj-scan-250-xt",
-      "robe/robin-600e-spot",
-      "showtec/horizon-8",
-      "showtec/kanjo-spot-60",
-      "showtec/kanjo-wash-rgb",
-      "showtec/led-light-bar-rgb-v3",
-      "showtec/phantom-140-led-spot",
-      "showtec/phantom-50-led-spot",
-      "stairville/mh-x25",
-      "stairville/stage-tri-led",
-      "venue/tristrip3z"
     ],
     "novasfronteiras.co": [
       "dts/xr1200-wash",
@@ -1149,6 +1161,12 @@
       "key": "prolights",
       "models": {}
     },
+    "6906": {
+      "key": "tmb",
+      "models": {
+        "1703": "flare"
+      }
+    },
     "8612": {
       "key": "chauvet-dj",
       "models": {}
@@ -1205,6 +1223,7 @@
   },
   "lastUpdated": [
     "chauvet-dj/corepar-uv-usb",
+    "tmb/flare",
     "stairville/led-flood-panel-150",
     "adb/alc4",
     "look/viper-nt",
