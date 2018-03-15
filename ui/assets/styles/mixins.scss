@@ -1,0 +1,53 @@
+@mixin icon-button($hover-color, $active-color) {
+  $icon-size: 1.4em;
+  $padding: 0.3em;
+
+  display: block;
+  position: relative;
+  padding: 0 0 0 calc(#{$icon-size} + #{2*$padding});
+  width: 0;
+  height: calc(#{$icon-size} + #{2*$padding});
+  overflow: hidden;
+  border: 1px solid rgba($hover-color, 0);
+  border-radius: 3px;
+  background-color: rgba($hover-color, 0);
+  cursor: pointer;
+  color: $secondary-text-dark;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  & > .icon {
+    display: block;
+    position: absolute;
+    width: $icon-size;
+    height: $icon-size;
+    top: $padding;
+    left: $padding;
+    fill: currentcolor;
+  }
+
+  &:focus {
+    border-color: $hover-color;
+    outline: none;
+  }
+
+  &:hover {
+    background-color: $hover-color;
+    color: $primary-text-light;
+  }
+
+  &:active {
+    background-color: $active-color;
+    border-color: transparent;
+    color: $primary-text-light;
+  }
+}
+
+@mixin home-logo-sizing($width, $padding) {
+  padding-left: calc(#{$width} + #{2*$padding});
+  background-position: $padding center;
+  background-size: calc(100% - #{2*$padding}) auto;
+}
