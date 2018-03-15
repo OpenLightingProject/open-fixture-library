@@ -45,7 +45,7 @@
         }
       ]
     },
-    "Speed": {
+    "Program Speed": {
       "type": "Speed",
       "capabilities": [
         {
@@ -74,27 +74,45 @@
       "capabilities": [
         {
           "range": [0, 31],
-          "name": "No function"
+          "name": "No function",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Strobe"
+          }
         },
         {
           "range": [32, 95],
-          "name": "Pulse effect"
+          "name": "Pulse effect",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [96, 159],
-          "name": "Pulse effect"
+          "name": "Pulse effect",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [160, 223],
-          "name": "Pulse effect"
+          "name": "Pulse effect",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [224, 240],
-          "name": "Sound mode 1"
+          "name": "Sound mode 1",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         },
         {
           "range": [241, 255],
-          "name": "Sound mode 2"
+          "name": "Sound mode 2",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         }
       ]
     },
@@ -127,9 +145,6 @@
           "name": "Dimmer speed slow"
         }
       ]
-    },
-    "Strobe / Speed / Sound Sensitivity": {
-      "type": "Switching Channel"
     }
   },
   "modes": [
@@ -138,10 +153,7 @@
       "shortName": "5ch",
       "channels": [
         "UV",
-        "Strobe / Speed / Sound Sensitivity",
-        "Strobe",
-        "Speed",
-        "Sound Sensitivity",
+        "Strobe / Program Speed / Sound Sensitivity",
         "Programs",
         "Dimmer",
         "Dimmer Speed"
