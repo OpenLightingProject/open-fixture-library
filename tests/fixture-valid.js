@@ -783,9 +783,8 @@ function checkCategories() {
    * @returns {!boolean} Whether the given capability property/value pair occurs in the fixture.
    */
   function hasCapabilityPropertyValue(property, value) {
-    // TODO: Don't access jsonObject directly as soon as this data is accessable with the model.
     return fixture.capabilities.some(
-      cap => cap._jsonObject[property] === `value`
+      cap => cap[property] === value
     );
   }
 }
