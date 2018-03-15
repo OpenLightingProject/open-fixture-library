@@ -37,10 +37,10 @@ Required properties are _italic_, the entity is written in (parentheses).
 * StrobeDuration (global, doesn't activate strobe directly)
   * _duration_ (Time)
 * Intensity
-  * _brightness_ (Brightness)
+  * brightness (Brightness): Defaults to `brightnessStart: "off", brightnessEnd: "bright`
 * ColorIntensity
   * _color_: one of our predefined Single Colors: `Red`, `Green`, `Blue`, `Cyan`, `Magenta`, `Yellow`, `Amber`, `White`, `UV`, `Lime`, `Indigo`
-  * _brightness_ (Brightness)
+  * brightness (Brightness): Defaults to `brightnessStart: "off", brightnessEnd: "bright`
 * ColorPreset
   * colors: array of individual color beams, either as hex code or color name (like `Red` or `Lavender`) that will be automatically resolved to a hex code if possible. "Individual color beams" means that is visually distinguishable from the other colors, i.e.:
     * A Red/Green/Blue/White/Amber LED produces a single color beam, as all these color components are mixed together. For a color preset "Red+White", `colors` should be set to `["#ffaaaa"]` or `["Lightred"]`.

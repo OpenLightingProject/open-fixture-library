@@ -114,10 +114,6 @@
         "brightnessStart": { "$ref": "definitions.json#/entities/brightness" },
         "brightnessEnd": { "$ref": "definitions.json#/entities/brightness" }
       },
-      "oneOf": [
-        { "required": ["brightness"] },
-        { "required": ["brightnessStart", "brightnessEnd"] }
-      ],
       "additionalProperties": false
     },
     {
@@ -147,10 +143,6 @@
         "brightnessEnd": { "$ref": "definitions.json#/entities/brightness" }
       },
       "required": ["color"],
-      "oneOf": [
-        { "required": ["brightness"] },
-        { "required": ["brightnessStart", "brightnessEnd"] }
-      ],
       "additionalProperties": false
     },
     {

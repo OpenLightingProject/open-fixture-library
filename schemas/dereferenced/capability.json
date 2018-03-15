@@ -500,19 +500,6 @@
           ]
         }
       },
-      "oneOf": [
-        {
-          "required": [
-            "brightness"
-          ]
-        },
-        {
-          "required": [
-            "brightnessStart",
-            "brightnessEnd"
-          ]
-        }
-      ],
       "additionalProperties": false
     },
     {
@@ -601,19 +588,6 @@
       },
       "required": [
         "color"
-      ],
-      "oneOf": [
-        {
-          "required": [
-            "brightness"
-          ]
-        },
-        {
-          "required": [
-            "brightnessStart",
-            "brightnessEnd"
-          ]
-        }
       ],
       "additionalProperties": false
     },
