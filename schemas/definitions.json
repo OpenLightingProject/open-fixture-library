@@ -153,7 +153,7 @@
       "oneOf": [
         { "$ref": "#/units/kelvin" },
         { "$ref": "#/units/percent" },
-        { "enum": ["warm", "default", "cold"] }
+        { "enum": ["warm", "CTO", "default", "cold", "CTB"] }
       ]
     },
     "fogOutput": {

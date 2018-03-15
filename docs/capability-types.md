@@ -13,7 +13,7 @@ To make common percentage values more readable, one can use specific keywords to
 | Time             | `s`, `ms`, `%` | –            | –            | instant | short   | long
 | Distance         | `m`, `%`       | –            | –            | –       | near    | far
 | Brightness       | `lm`, `%`      | –            | –            | off     | dark    | bright
-| ColorTemperature | `K`, `%`       | warm         | –            | default | –       | cold
+| ColorTemperature | `K`, `%`       | warm / CTO   | –            | default | –       | cold / CTB
 | FogOutput        | `m^3/min`, `%` | –            | –            | off     | weak    | strong
 | RotationAngle    | `°`, `%`       | –            | –            | –       | –       | –
 | BeamAngle        | `°`, `%`       | –            | –            | closed  | narrow  | wide
