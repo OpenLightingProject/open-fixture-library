@@ -170,8 +170,8 @@
         {
           "dmxRange": [22, 29],
           "type": "ColorPreset",
-          "comment": "Yellow Warm",
-          "colors": ["#f9ba16"]
+          "colors": ["Yellow"],
+          "colorTemperature": "warm"
         },
         {
           "dmxRange": [30, 37],
@@ -221,8 +221,8 @@
         {
           "dmxRange": [102, 109],
           "type": "ColorPreset",
-          "comment": "Warm White",
-          "colors": ["#fffbf2"]
+          "colors": ["White"],
+          "colorTemperature": "warm"
         },
         {
           "dmxRange": [110, 117],
@@ -232,8 +232,8 @@
         {
           "dmxRange": [118, 125],
           "type": "ColorPreset",
-          "comment": "Cold White",
-          "colors": ["#f2f6fe"]
+          "colors": ["White"],
+          "colorTemperature": "cold"
         },
         {
           "dmxRange": [126, 128],

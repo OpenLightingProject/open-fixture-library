@@ -216,44 +216,46 @@
         {
           "dmxRange": [1, 2],
           "type": "ColorPreset",
-          "comment": "White 2700K",
-          "colors": ["#ffbd3f"]
+          "colors": ["White"],
+          "colorTemperature": "2700K"
         },
         {
           "dmxRange": [3, 3],
           "type": "ColorPreset",
-          "comment": "White 2700K (halogen)",
-          "colors": ["#ffbd3f"]
+          "comment": "halogen",
+          "colors": ["White"],
+          "colorTemperature": "2700K"
         },
         {
           "dmxRange": [4, 5],
           "type": "ColorPreset",
-          "comment": "White 3200K",
-          "colors": ["#ffd060"]
+          "colors": ["White"],
+          "colorTemperature": "3200K"
         },
         {
           "dmxRange": [6, 6],
           "type": "ColorPreset",
-          "comment": "White 3200K (halogen)",
-          "colors": ["#ffd060"]
+          "comment": "halogen",
+          "colors": ["White"],
+          "colorTemperature": "3200K"
         },
         {
           "dmxRange": [7, 9],
           "type": "ColorPreset",
-          "comment": "White 4200K",
-          "colors": ["#ffee8b"]
+          "colors": ["White"],
+          "colorTemperature": "4200K"
         },
         {
           "dmxRange": [10, 12],
           "type": "ColorPreset",
-          "comment": "White 5600K",
-          "colors": ["#eeff9a"]
+          "colors": ["White"],
+          "colorTemperature": "5600K"
         },
         {
           "dmxRange": [13, 15],
           "type": "ColorPreset",
-          "comment": "White 8000K",
-          "colors": ["#d4ffaa"]
+          "colors": ["White"],
+          "colorTemperature": "8000K"
         },
         {
           "dmxRange": [16, 16],
