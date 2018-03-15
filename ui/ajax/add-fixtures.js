@@ -183,6 +183,11 @@ function addAvailableChannel(fixKey, availableChannels, chId) {
     else if (prop === `fineChannelAliases` && from.fineness > 0) {
       channel.fineChannelAliases = [];
     }
+    else if (prop === `color`) {
+      if (from.type === `Single Color`) {
+        channel.color = getComboboxInput(`color`, from);
+      }
+    }
     else if (propExistsIn(prop, from)) {
       channel[prop] = getComboboxInput(prop, from);
     }
