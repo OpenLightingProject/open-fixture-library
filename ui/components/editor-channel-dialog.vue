@@ -461,15 +461,20 @@ export default {
       newChannel.uuid = newChannelKey;
       this.$set(this.fixture.availableChannels, newChannelKey, newChannel);
 
-      this.addFineChannels(this.channel, 1, false);
+      const fineChannelUuids = this.addFineChannels(newChannel, 1, false);
 
       this.currentMode.channels = this.currentMode.channels.map(key => {
         if (key === oldChannelKey) {
           return newChannelKey;
         }
 
-        // TODO: handle copied fine channels
+        // map each old fine channel to the new fine channel
+        const oldFineChannel = this.fixture.availableChannels[key];
+        if (oldFineChannel.coarseChannelId === oldChannelKey) {
+          return fineChannelUuids[oldFineChannel.fineness];
+        }
 
+        // this channel is not affected by the duplicate at all
         return key;
       });
     },
@@ -482,16 +487,22 @@ export default {
      * @param {!object} coarseChannel The channel object of the coarse channel.
      * @param {!number} offset At which fineness should be started.
      * @param {boolean} [addToMode] If true, the fine channel is pushed to the current mode's channels.
+     * @returns {!Array.<string>} Array of added fine channel UUIDs (at the index of their fineness).
      */
     addFineChannels(coarseChannel, offset, addToMode) {
+      const addedFineChannelUuids = [];
+
       for (let i = offset; i <= coarseChannel.fineness; i++) {
         const fineChannel = getEmptyFineChannel(coarseChannel.uuid, i);
         this.$set(this.fixture.availableChannels, fineChannel.uuid, getSanitizedChannel(fineChannel));
+        addedFineChannelUuids[i] = fineChannel.uuid;
 
         if (addToMode) {
           this.currentMode.channels.push(fineChannel.uuid);
         }
       }
+
+      return addedFineChannelUuids;
     },
 
     resetChannelForm() {
