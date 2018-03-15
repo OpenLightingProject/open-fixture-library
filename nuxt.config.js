@@ -41,6 +41,10 @@ const nuxtOptions = {
           removeSVGTagAttrs: false
         }
       });
+
+      // include .mjs files for babel-loader
+      const babelLoader = config.module.rules.find(rule => rule.loader === `babel-loader`);
+      babelLoader.test = /\.jsx?$|\.mjs$/;
     }
   },
   loading: {
