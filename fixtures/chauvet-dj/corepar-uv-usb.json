@@ -1,0 +1,160 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
+  "name": "COREpar UV USB",
+  "shortName": "ChauvetCOREparUV",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-03-15",
+    "lastModifyDate": "2018-03-15"
+  },
+  "manualURL": "https://www.chauvetdj.com/wp-content/uploads/2015/12/COREpar_UV_USB_UM_Rev1_WO-1.pdf",
+  "physical": {
+    "dimensions": [200, 253, 139],
+    "weight": 2.1,
+    "power": 65,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "70W COB LED"
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [50, 100]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "UV": {
+      "type": "Single Color",
+      "color": "UV",
+      "defaultValue": 0
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "color": "Red",
+      "defaultValue": 0.1,
+      "highlightValue": 25,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "No function"
+        },
+        {
+          "range": [16, 255],
+          "name": "Slow-fast"
+        }
+      ]
+    },
+    "Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Slow-fast"
+        }
+      ]
+    },
+    "Sound Sensitivity": {
+      "type": "Intensity",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "Off"
+        },
+        {
+          "range": [11, 255],
+          "name": "Sound sensitivity low-high"
+        }
+      ]
+    },
+    "Programs": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "No function"
+        },
+        {
+          "range": [32, 95],
+          "name": "Pulse effect"
+        },
+        {
+          "range": [96, 159],
+          "name": "Pulse effect"
+        },
+        {
+          "range": [160, 223],
+          "name": "Pulse effect"
+        },
+        {
+          "range": [224, 240],
+          "name": "Sound mode 1"
+        },
+        {
+          "range": [241, 255],
+          "name": "Sound mode 2"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "defaultValue": 0
+    },
+    "Dimmer Speed": {
+      "type": "Maintenance",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 51],
+          "name": "Default dimmer speed"
+        },
+        {
+          "range": [52, 101],
+          "name": "Dimmer speed off"
+        },
+        {
+          "range": [102, 152],
+          "name": "Dimmer speed fast"
+        },
+        {
+          "range": [153, 204],
+          "name": "Dimmer speed medium"
+        },
+        {
+          "range": [205, 255],
+          "name": "Dimmer speed slow"
+        }
+      ]
+    },
+    "Strobe / Speed / Sound Sensitivity": {
+      "type": "Switching Channel"
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "UV",
+        "Strobe / Speed / Sound Sensitivity",
+        "Strobe",
+        "Speed",
+        "Sound Sensitivity",
+        "Programs",
+        "Dimmer",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "UV"
+      ]
+    }
+  ]
+}
