@@ -572,9 +572,7 @@
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Red"
       }
     },
     "Green": {
@@ -582,9 +580,7 @@
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Green"
       }
     },
     "Blue": {
@@ -592,9 +588,7 @@
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Blue"
       }
     },
     "White": {
@@ -602,9 +596,7 @@
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "White"
       }
     },
     "Cyan": {
@@ -612,9 +604,7 @@
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Cyan",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Cyan"
       }
     },
     "Magenta": {
@@ -622,9 +612,7 @@
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Magenta",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Magenta"
       }
     },
     "Yellow": {
@@ -632,9 +620,7 @@
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Yellow",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Yellow"
       }
     },
     "CTC": {
@@ -775,9 +761,7 @@
       "fineChannelAliases": ["Dimmer fine"],
       "defaultValue": 0,
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "type": "Intensity"
       }
     }
   },

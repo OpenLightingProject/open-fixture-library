@@ -291,9 +291,7 @@
     "Dimmer": {
       "defaultValue": 0,
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "type": "Intensity"
       }
     },
     "Focus": {
@@ -707,9 +705,7 @@
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Cyan",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Cyan"
       }
     },
     "Magenta": {
@@ -717,9 +713,7 @@
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Magenta",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Magenta"
       }
     },
     "Yellow": {
@@ -727,9 +721,7 @@
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Yellow",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Yellow"
       }
     },
     "Sparkle": {

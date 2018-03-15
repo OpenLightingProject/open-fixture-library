@@ -35,18 +35,14 @@
   "availableChannels": {
     "Master": {
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "type": "Intensity"
       }
     }
   },
   "templateChannels": {
     "Dimmer $pixelKey": {
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "type": "Intensity"
       }
     },
     "Color Temperature $pixelKey (Linear)": {
@@ -120,25 +116,19 @@
     "Red $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Red"
       }
     },
     "Green $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Green"
       }
     },
     "Blue $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Blue"
       }
     }
   },

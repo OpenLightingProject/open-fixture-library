@@ -156,9 +156,7 @@
     "Dimmer": {
       "highlightValue": 255,
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "type": "Intensity"
       }
     },
     "Flash Duration": {
@@ -208,9 +206,7 @@
   "templateChannels": {
     "LED$pixelKey Dimmer": {
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "type": "Intensity"
       }
     }
   },

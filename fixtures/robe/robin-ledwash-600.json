@@ -461,9 +461,7 @@
       "fineChannelAliases": ["Dimmer fine"],
       "defaultValue": 0,
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "type": "Intensity"
       }
     }
   },
@@ -473,9 +471,7 @@
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Red"
       }
     },
     "Green $pixelKey": {
@@ -483,9 +479,7 @@
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Green"
       }
     },
     "Blue $pixelKey": {
@@ -493,9 +487,7 @@
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Blue"
       }
     },
     "White $pixelKey": {
@@ -503,9 +495,7 @@
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "White"
       }
     }
   },

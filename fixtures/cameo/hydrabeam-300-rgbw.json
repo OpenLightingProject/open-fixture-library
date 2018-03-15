@@ -37,9 +37,7 @@
   "availableChannels": {
     "Master Dimmer": {
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "type": "Intensity"
       }
     },
     "Strobe": {
@@ -346,33 +344,25 @@
     "Master Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Red"
       }
     },
     "Master Green": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Green"
       }
     },
     "Master Blue": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Blue"
       }
     },
     "Master White": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "White"
       }
     },
     "Head speed": {
@@ -439,9 +429,7 @@
     },
     "Dimmer $pixelKey": {
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "type": "Intensity"
       }
     },
     "Head Speed $pixelKey simple": {
@@ -586,33 +574,25 @@
     "Red $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Red"
       }
     },
     "Green $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Green"
       }
     },
     "Blue $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Blue"
       }
     },
     "White $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "White"
       }
     },
     "Mode $pixelKey": {
@@ -698,9 +678,7 @@
     },
     "Sound sensitivity $pixelKey": {
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "type": "Intensity"
       }
     }
   },

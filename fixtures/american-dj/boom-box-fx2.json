@@ -155,33 +155,25 @@
     "Red Beam": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Red"
       }
     },
     "Green Beam": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Green"
       }
     },
     "Blue Beam": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Blue"
       }
     },
     "White Beam": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "White"
       }
     },
     "Beam Strobe": {
@@ -271,9 +263,7 @@
     },
     "Beam Dimmer": {
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "type": "Intensity"
       }
     },
     "Red Gobo": {
