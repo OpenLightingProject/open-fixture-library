@@ -238,20 +238,20 @@
         {
           "dmxRange": [126, 128],
           "type": "Effect",
-          "comment": "Color Jump",
+          "effectPreset": "ColorJump",
           "speed": "stop"
         },
         {
           "dmxRange": [129, 192],
           "type": "Effect",
-          "comment": "Color Jump",
+          "effectPreset": "ColorJump",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [193, 255],
           "type": "Effect",
-          "comment": "Color Fade",
+          "effectPreset": "ColorFade",
           "speedStart": "slow",
           "speedEnd": "fast"
         }

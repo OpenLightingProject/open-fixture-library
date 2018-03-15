@@ -168,7 +168,7 @@
         {
           "dmxRange": [112, 125],
           "type": "Effect",
-          "comment": "Dimmer fade effect",
+          "effectName": "Dimmer fade effect",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
@@ -734,7 +734,7 @@
         {
           "dmxRange": [1, 255],
           "type": "Effect",
-          "comment": "Sparkle",
+          "effectName": "Sparkle",
           "effectIntensityStart": "off",
           "effectIntensityEnd": "high"
         }
@@ -759,7 +759,7 @@
         {
           "dmxRange": [64, 255],
           "type": "Effect",
-          "comment": "Repeat of fade and switch block"
+          "effectName": "Repeat of fade and switch block"
         }
       ]
     },
@@ -910,7 +910,7 @@
         {
           "dmxRange": [255, 255],
           "type": "Effect",
-          "comment": "Aperture for logo projection"
+          "effectName": "Aperture for logo projection"
         }
       ]
     },
@@ -924,7 +924,7 @@
         {
           "dmxRange": [1, 255],
           "type": "Effect",
-          "comment": "Macro 001-255"
+          "effectName": "Macro 001-255"
         }
       ]
     },

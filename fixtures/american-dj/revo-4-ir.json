@@ -33,7 +33,7 @@
         {
           "dmxRange": [10, 99],
           "type": "Effect",
-          "comment": "Pattern",
+          "effectName": "Pattern",
           "switchChannels": {
             "Color / Chase Speed": "Color"
           }
@@ -41,7 +41,7 @@
         {
           "dmxRange": [100, 239],
           "type": "Effect",
-          "comment": "Chase",
+          "effectName": "Chase",
           "switchChannels": {
             "Color / Chase Speed": "Chase Speed"
           }
@@ -49,7 +49,7 @@
         {
           "dmxRange": [240, 255],
           "type": "Effect",
-          "comment": "Sound Active",
+          "effectPreset": "SoundControl",
           "switchChannels": {
             "Color / Chase Speed": "Chase Speed"
           }
@@ -61,62 +61,62 @@
         {
           "dmxRange": [0, 20],
           "type": "Effect",
-          "comment": "Pattern / Chase 1"
+          "effectName": "Pattern / Chase 1"
         },
         {
           "dmxRange": [21, 41],
           "type": "Effect",
-          "comment": "Pattern / Chase 2"
+          "effectName": "Pattern / Chase 2"
         },
         {
           "dmxRange": [42, 65],
           "type": "Effect",
-          "comment": "Pattern / Chase 3"
+          "effectName": "Pattern / Chase 3"
         },
         {
           "dmxRange": [66, 87],
           "type": "Effect",
-          "comment": "Pattern / Chase 4"
+          "effectName": "Pattern / Chase 4"
         },
         {
           "dmxRange": [88, 108],
           "type": "Effect",
-          "comment": "Pattern / Chase 5"
+          "effectName": "Pattern / Chase 5"
         },
         {
           "dmxRange": [109, 129],
           "type": "Effect",
-          "comment": "Pattern / Chase 6"
+          "effectName": "Pattern / Chase 6"
         },
         {
           "dmxRange": [130, 150],
           "type": "Effect",
-          "comment": "Pattern / Chase 7"
+          "effectName": "Pattern / Chase 7"
         },
         {
           "dmxRange": [151, 172],
           "type": "Effect",
-          "comment": "Pattern / Chase 8"
+          "effectName": "Pattern / Chase 8"
         },
         {
           "dmxRange": [173, 193],
           "type": "Effect",
-          "comment": "Pattern / Chase 9"
+          "effectName": "Pattern / Chase 9"
         },
         {
           "dmxRange": [194, 214],
           "type": "Effect",
-          "comment": "Pattern / Chase 10"
+          "effectName": "Pattern / Chase 10"
         },
         {
           "dmxRange": [215, 235],
           "type": "Effect",
-          "comment": "Pattern / Chase 11"
+          "effectName": "Pattern / Chase 11"
         },
         {
           "dmxRange": [236, 255],
           "type": "Effect",
-          "comment": "Pattern / Chase 12"
+          "effectName": "Pattern / Chase 12"
         }
       ]
     },

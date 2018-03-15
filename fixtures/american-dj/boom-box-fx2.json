@@ -28,52 +28,52 @@
         {
           "dmxRange": [70, 79],
           "type": "Effect",
-          "comment": "Show 1"
+          "effectName": "Show 1"
         },
         {
           "dmxRange": [80, 89],
           "type": "Effect",
-          "comment": "Show 2"
+          "effectName": "Show 2"
         },
         {
           "dmxRange": [90, 99],
           "type": "Effect",
-          "comment": "Show 3"
+          "effectName": "Show 3"
         },
         {
           "dmxRange": [100, 109],
           "type": "Effect",
-          "comment": "Show 4"
+          "effectName": "Show 4"
         },
         {
           "dmxRange": [110, 119],
           "type": "Effect",
-          "comment": "Show 5"
+          "effectName": "Show 5"
         },
         {
           "dmxRange": [120, 129],
           "type": "Effect",
-          "comment": "Show 6"
+          "effectName": "Show 6"
         },
         {
           "dmxRange": [130, 139],
           "type": "Effect",
-          "comment": "Show 7"
+          "effectName": "Show 7"
         },
         {
           "dmxRange": [140, 209],
           "type": "Effect",
-          "comment": "Show 8"
+          "effectName": "Show 8"
         },
         {
           "dmxRange": [210, 249],
           "type": "Effect",
-          "comment": "Show 9"
+          "effectName": "Show 9"
         },
         {
           "dmxRange": [250, 255],
           "type": "Effect",
-          "comment": "Show 0"
+          "effectName": "Show 0"
         }
       ]
     },
@@ -102,7 +102,7 @@
         {
           "dmxRange": [250, 255],
           "type": "Effect",
-          "comment": "Sound active"
+          "effectPreset": "SoundControl"
         }
       ]
     },
@@ -129,7 +129,7 @@
         {
           "dmxRange": [128, 255],
           "type": "Effect",
-          "comment": "Open"
+          "effectName": "Open"
         }
       ]
     },
@@ -143,13 +143,14 @@
         {
           "dmxRange": [128, 255],
           "type": "Effect",
-          "comment": "Open"
+          "effectName": "Open"
         }
       ]
     },
     "Laser Patterns": {
       "capability": {
-        "type": "Effect"
+        "type": "Effect",
+        "effectName": "Laser patterns"
       }
     },
     "Red Beam": {
@@ -276,7 +277,7 @@
         {
           "dmxRange": [10, 255],
           "type": "Effect",
-          "comment": "Open"
+          "effectName": "Open"
         }
       ]
     },
@@ -290,7 +291,7 @@
         {
           "dmxRange": [10, 255],
           "type": "Effect",
-          "comment": "Open"
+          "effectName": "Open"
         }
       ]
     },
@@ -304,7 +305,7 @@
         {
           "dmxRange": [10, 255],
           "type": "Effect",
-          "comment": "Open"
+          "effectName": "Open"
         }
       ]
     },
@@ -318,7 +319,7 @@
         {
           "dmxRange": [10, 255],
           "type": "Effect",
-          "comment": "Open"
+          "effectName": "Open"
         }
       ]
     },

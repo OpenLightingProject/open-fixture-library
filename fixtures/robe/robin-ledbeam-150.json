@@ -627,14 +627,14 @@
         {
           "dmxRange": [236, 245],
           "type": "Effect",
-          "comment": "Color fade",
+          "effectPreset": "ColorFade",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [246, 255],
           "type": "Effect",
-          "comment": "Color jump",
+          "effectPreset": "ColorJump",
           "speedStart": "slow",
           "speedEnd": "fast"
         }

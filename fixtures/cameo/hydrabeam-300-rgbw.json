@@ -70,7 +70,7 @@
         {
           "dmxRange": [8, 22],
           "type": "Effect",
-          "comment": "Show mode 1",
+          "effectName": "Show mode 1",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
@@ -78,7 +78,7 @@
         {
           "dmxRange": [23, 37],
           "type": "Effect",
-          "comment": "Show mode 2",
+          "effectName": "Show mode 2",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
@@ -86,7 +86,7 @@
         {
           "dmxRange": [38, 52],
           "type": "Effect",
-          "comment": "Show mode 3",
+          "effectName": "Show mode 3",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
@@ -94,7 +94,7 @@
         {
           "dmxRange": [53, 67],
           "type": "Effect",
-          "comment": "Show mode 4",
+          "effectName": "Show mode 4",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
@@ -102,7 +102,7 @@
         {
           "dmxRange": [68, 82],
           "type": "Effect",
-          "comment": "Show mode 5",
+          "effectName": "Show mode 5",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
@@ -110,7 +110,7 @@
         {
           "dmxRange": [83, 97],
           "type": "Effect",
-          "comment": "Show mode 6",
+          "effectName": "Show mode 6",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
@@ -118,7 +118,7 @@
         {
           "dmxRange": [98, 112],
           "type": "Effect",
-          "comment": "Show mode 7",
+          "effectName": "Show mode 7",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
@@ -126,7 +126,7 @@
         {
           "dmxRange": [113, 127],
           "type": "Effect",
-          "comment": "Show mode 8",
+          "effectName": "Show mode 8",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
@@ -134,7 +134,7 @@
         {
           "dmxRange": [128, 142],
           "type": "Effect",
-          "comment": "Show mode 9",
+          "effectName": "Show mode 9",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
@@ -142,7 +142,7 @@
         {
           "dmxRange": [143, 157],
           "type": "Effect",
-          "comment": "Show mode 10",
+          "effectName": "Show mode 10",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
@@ -150,7 +150,7 @@
         {
           "dmxRange": [158, 172],
           "type": "Effect",
-          "comment": "Show mode 11",
+          "effectName": "Show mode 11",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
@@ -158,7 +158,7 @@
         {
           "dmxRange": [173, 187],
           "type": "Effect",
-          "comment": "Show mode 12",
+          "effectName": "Show mode 12",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
@@ -166,7 +166,7 @@
         {
           "dmxRange": [188, 202],
           "type": "Effect",
-          "comment": "Show mode 13",
+          "effectName": "Show mode 13",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
@@ -174,7 +174,7 @@
         {
           "dmxRange": [203, 217],
           "type": "Effect",
-          "comment": "Show mode 14",
+          "effectName": "Show mode 14",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
@@ -182,7 +182,7 @@
         {
           "dmxRange": [218, 232],
           "type": "Effect",
-          "comment": "Show mode 15",
+          "effectName": "Show mode 15",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
@@ -190,7 +190,7 @@
         {
           "dmxRange": [233, 247],
           "type": "Effect",
-          "comment": "Show mode 16",
+          "effectName": "Show mode 16",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
@@ -198,7 +198,7 @@
         {
           "dmxRange": [248, 255],
           "type": "Effect",
-          "comment": "Sound control mode",
+          "effectPreset": "SoundControl",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Sound sensitivity"
           }
@@ -224,7 +224,7 @@
         {
           "dmxRange": [0, 30],
           "type": "Effect",
-          "comment": "Auto color change"
+          "effectName": "Auto color change"
         },
         {
           "dmxRange": [31, 45],
@@ -405,7 +405,7 @@
         {
           "dmxRange": [241, 255],
           "type": "Effect",
-          "comment": "Sound control mode"
+          "effectPreset": "SoundControl"
         }
       ]
     }
@@ -608,7 +608,7 @@
         {
           "dmxRange": [8, 30],
           "type": "Effect",
-          "comment": "show mode 1",
+          "effectName": "show mode 1",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
@@ -616,7 +616,7 @@
         {
           "dmxRange": [31, 53],
           "type": "Effect",
-          "comment": "show mode 2",
+          "effectName": "show mode 2",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
@@ -624,7 +624,7 @@
         {
           "dmxRange": [54, 76],
           "type": "Effect",
-          "comment": "show mode 3",
+          "effectName": "show mode 3",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
@@ -632,7 +632,7 @@
         {
           "dmxRange": [77, 99],
           "type": "Effect",
-          "comment": "show mode 4",
+          "effectName": "show mode 4",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
@@ -640,7 +640,7 @@
         {
           "dmxRange": [100, 122],
           "type": "Effect",
-          "comment": "sound control mode",
+          "effectPreset": "SoundControl",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Sound sensitivity $pixelKey"
           }
