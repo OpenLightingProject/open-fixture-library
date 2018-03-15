@@ -66,7 +66,18 @@
         "durationEnd": { "$ref": "definitions.json#/entities/time" }
       },
       "required": ["shutterEffect"],
-      "not": { "required": ["speed", "duration"] },
+      "not": {
+        "anyOf": [
+          { "required": ["speed", "speedStart"] },
+          { "required": ["duration", "durationStart"] }
+        ]
+      },
+      "dependencies": {
+        "speedStart": ["speedEnd"],
+        "speedEnd": ["speedStart"],
+        "durationStart": ["durationEnd"],
+        "durationEnd": ["durationStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -82,8 +93,13 @@
       },
       "oneOf": [
         { "required": ["speed"] },
-        { "required": ["speedStart", "speedEnd"] }
+        { "required": ["speedStart"] }
       ],
+      "not": { "required": ["speed", "speedStart"] },
+      "dependencies": {
+        "speedStart": ["speedEnd"],
+        "speedEnd": ["speedStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -99,8 +115,13 @@
       },
       "oneOf": [
         { "required": ["duration"] },
-        { "required": ["durationStart", "durationEnd"] }
+        { "required": ["durationStart"] }
       ],
+      "not": { "required": ["duration", "durationStart"] },
+      "dependencies": {
+        "durationStart": ["durationEnd"],
+        "durationEnd": ["durationStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -113,6 +134,11 @@
         "brightness": { "$ref": "definitions.json#/entities/brightness" },
         "brightnessStart": { "$ref": "definitions.json#/entities/brightness" },
         "brightnessEnd": { "$ref": "definitions.json#/entities/brightness" }
+      },
+      "not": { "required": ["brightness", "brightnessStart"] },
+      "dependencies": {
+        "brightnessStart": ["brightnessEnd"],
+        "brightnessEnd": ["brightnessStart"]
       },
       "additionalProperties": false
     },
@@ -143,6 +169,11 @@
         "brightnessEnd": { "$ref": "definitions.json#/entities/brightness" }
       },
       "required": ["color"],
+      "not": { "required": ["brightness", "brightnessStart"] },
+      "dependencies": {
+        "brightnessStart": ["brightnessEnd"],
+        "brightnessEnd": ["brightnessStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -171,6 +202,18 @@
         "colorTemperatureStart": { "$ref": "definitions.json#/entities/colorTemperature" },
         "colorTemperatureEnd": { "$ref": "definitions.json#/entities/colorTemperature" }
       },
+      "not": {
+        "anyOf": [
+          { "required": ["colors", "colorsStart"] },
+          { "required": ["colorTemperature", "colorTemperatureStart"] }
+        ]
+      },
+      "dependencies": {
+        "colorsStart": ["colorsEnd"],
+        "colorsEnd": ["colorsStart"],
+        "colorTemperatureStart": ["colorTemperatureEnd"],
+        "colorTemperatureEnd": ["colorTemperatureStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -186,8 +229,13 @@
       },
       "oneOf": [
         { "required": ["index"] },
-        { "required": ["indexStart", "indexEnd"] }
+        { "required": ["indexStart"] }
       ],
+      "not": { "required": ["index", "indexStart"] },
+      "dependencies": {
+        "indexStart": ["indexEnd"],
+        "indexEnd": ["indexStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -203,8 +251,13 @@
       },
       "oneOf": [
         { "required": ["angle"] },
-        { "required": ["angleStart", "angleEnd"] }
+        { "required": ["angleStart"] }
       ],
+      "not": { "required": ["angle", "angleStart"] },
+      "dependencies": {
+        "angleStart": ["angleEnd"],
+        "angleEnd": ["angleStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -220,8 +273,13 @@
       },
       "oneOf": [
         { "required": ["speed"] },
-        { "required": ["speedStart", "speedEnd"] }
+        { "required": ["speedStart"] }
       ],
+      "not": { "required": ["speed", "speedStart"] },
+      "dependencies": {
+        "speedStart": ["speedEnd"],
+        "speedEnd": ["speedStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -237,8 +295,13 @@
       },
       "oneOf": [
         { "required": ["colorTemperature"] },
-        { "required": ["colorTemperatureStart", "colorTemperatureEnd"] }
+        { "required": ["colorTemperatureStart"] }
       ],
+      "not": { "required": ["colorTemperature", "colorTemperatureStart"] },
+      "dependencies": {
+        "colorTemperatureStart": ["colorTemperatureEnd"],
+        "colorTemperatureEnd": ["colorTemperatureStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -254,8 +317,13 @@
       },
       "oneOf": [
         { "required": ["angle"] },
-        { "required": ["angleStart", "angleEnd"] }
+        { "required": ["angleStart"] }
       ],
+      "not": { "required": ["angle", "angleStart"] },
+      "dependencies": {
+        "angleStart": ["angleEnd"],
+        "angleEnd": ["angleStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -271,8 +339,13 @@
       },
       "oneOf": [
         { "required": ["speed"] },
-        { "required": ["speedStart", "speedEnd"] }
+        { "required": ["speedStart"] }
       ],
+      "not": { "required": ["speed", "speedStart"] },
+      "dependencies": {
+        "speedStart": ["speedEnd"],
+        "speedEnd": ["speedStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -288,8 +361,13 @@
       },
       "oneOf": [
         { "required": ["angle"] },
-        { "required": ["angleStart", "angleEnd"] }
+        { "required": ["angleStart"] }
       ],
+      "not": { "required": ["angle", "angleStart"] },
+      "dependencies": {
+        "angleStart": ["angleEnd"],
+        "angleEnd": ["angleStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -305,8 +383,13 @@
       },
       "oneOf": [
         { "required": ["speed"] },
-        { "required": ["speedStart", "speedEnd"] }
+        { "required": ["speedStart"] }
       ],
+      "not": { "required": ["speed", "speedStart"] },
+      "dependencies": {
+        "speedStart": ["speedEnd"],
+        "speedEnd": ["speedStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -322,8 +405,13 @@
       },
       "oneOf": [
         { "required": ["speed"] },
-        { "required": ["speedStart", "speedEnd"] }
+        { "required": ["speedStart"] }
       ],
+      "not": { "required": ["speed", "speedStart"] },
+      "dependencies": {
+        "speedStart": ["speedEnd"],
+        "speedEnd": ["speedStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -352,6 +440,18 @@
         { "required": ["effectName"] },
         { "required": ["effectPreset"] }
       ],
+      "not": {
+        "anyOf": [
+          { "required": ["effectIntensity", "effectIntensityStart"] },
+          { "required": ["speed", "speedStart"] }
+        ]
+      },
+      "dependencies": {
+        "effectIntensityStart": ["effectIntensityEnd"],
+        "effectIntensityEnd": ["effectIntensityStart"],
+        "speedStart": ["speedEnd"],
+        "speedEnd": ["speedStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -367,8 +467,13 @@
       },
       "oneOf": [
         { "required": ["effectIntensity"] },
-        { "required": ["effectIntensityStart", "effectIntensityEnd"] }
+        { "required": ["effectIntensityStart"] }
       ],
+      "not": { "required": ["effectIntensity", "effectIntensityStart"] },
+      "dependencies": {
+        "effectIntensityStart": ["effectIntensityEnd"],
+        "effectIntensityEnd": ["effectIntensityStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -384,8 +489,13 @@
       },
       "oneOf": [
         { "required": ["speed"] },
-        { "required": ["speedStart", "speedEnd"] }
+        { "required": ["speedStart"] }
       ],
+      "not": { "required": ["speed", "speedStart"] },
+      "dependencies": {
+        "speedStart": ["speedEnd"],
+        "speedEnd": ["speedStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -401,8 +511,13 @@
       },
       "oneOf": [
         { "required": ["sensitivity"] },
-        { "required": ["sensitivityStart", "sensitivityEnd"] }
+        { "required": ["sensitivityStart"] }
       ],
+      "not": { "required": ["sensitivity", "sensitivityStart"] },
+      "dependencies": {
+        "sensitivityStart": ["sensitivityEnd"],
+        "sensitivityEnd": ["sensitivityStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -418,8 +533,13 @@
       },
       "oneOf": [
         { "required": ["index"] },
-        { "required": ["indexStart", "indexEnd"] }
+        { "required": ["indexStart"] }
       ],
+      "not": { "required": ["index", "indexStart"] },
+      "dependencies": {
+        "indexStart": ["indexEnd"],
+        "indexEnd": ["indexStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -438,8 +558,20 @@
       },
       "oneOf": [
         { "required": ["index"] },
-        { "required": ["indexStart", "indexEnd"] }
+        { "required": ["indexStart"] }
       ],
+      "not": {
+        "anyOf": [
+          { "required": ["index", "indexStart"] },
+          { "required": ["speed", "speedStart"] }
+        ]
+      },
+      "dependencies": {
+        "indexStart": ["indexEnd"],
+        "indexEnd": ["indexStart"],
+        "speedStart": ["speedEnd"],
+        "speedEnd": ["speedStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -455,8 +587,13 @@
       },
       "oneOf": [
         { "required": ["angle"] },
-        { "required": ["angleStart", "angleEnd"] }
+        { "required": ["angleStart"] }
       ],
+      "not": { "required": ["angle", "angleStart"] },
+      "dependencies": {
+        "angleStart": ["angleEnd"],
+        "angleEnd": ["angleStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -472,8 +609,13 @@
       },
       "oneOf": [
         { "required": ["speed"] },
-        { "required": ["speedStart", "speedEnd"] }
+        { "required": ["speedStart"] }
       ],
+      "not": { "required": ["speed", "speedStart"] },
+      "dependencies": {
+        "speedStart": ["speedEnd"],
+        "speedEnd": ["speedStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -489,8 +631,13 @@
       },
       "oneOf": [
         { "required": ["angle"] },
-        { "required": ["angleStart", "angleEnd"] }
+        { "required": ["angleStart"] }
       ],
+      "not": { "required": ["angle", "angleStart"] },
+      "dependencies": {
+        "angleStart": ["angleEnd"],
+        "angleEnd": ["angleStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -506,8 +653,13 @@
       },
       "oneOf": [
         { "required": ["speed"] },
-        { "required": ["speedStart", "speedEnd"] }
+        { "required": ["speedStart"] }
       ],
+      "not": { "required": ["speed", "speedStart"] },
+      "dependencies": {
+        "speedStart": ["speedEnd"],
+        "speedEnd": ["speedStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -523,8 +675,13 @@
       },
       "oneOf": [
         { "required": ["distance"] },
-        { "required": ["distanceStart", "distanceEnd"] }
+        { "required": ["distanceStart"] }
       ],
+      "not": { "required": ["distance", "distanceStart"] },
+      "dependencies": {
+        "distanceStart": ["distanceEnd"],
+        "distanceEnd": ["distanceStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -540,8 +697,13 @@
       },
       "oneOf": [
         { "required": ["angle"] },
-        { "required": ["angleStart", "angleEnd"] }
+        { "required": ["angleStart"] }
       ],
+      "not": { "required": ["angle", "angleStart"] },
+      "dependencies": {
+        "angleStart": ["angleEnd"],
+        "angleEnd": ["angleStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -557,8 +719,13 @@
       },
       "oneOf": [
         { "required": ["openPercent"] },
-        { "required": ["openPercentStart", "openPercentEnd"] }
+        { "required": ["openPercentStart"] }
       ],
+      "not": { "required": ["openPercent", "openPercentStart"] },
+      "dependencies": {
+        "openPercentStart": ["openPercentEnd"],
+        "openPercentEnd": ["openPercentStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -574,8 +741,13 @@
       },
       "oneOf": [
         { "required": ["speed"] },
-        { "required": ["speedStart", "speedEnd"] }
+        { "required": ["speedStart"] }
       ],
+      "not": { "required": ["speed", "speedStart"] },
+      "dependencies": {
+        "speedStart": ["speedEnd"],
+        "speedEnd": ["speedStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -591,8 +763,13 @@
       },
       "oneOf": [
         { "required": ["frostIntensity"] },
-        { "required": ["frostIntensityStart", "frostIntensityEnd"] }
+        { "required": ["frostIntensityStart"] }
       ],
+      "not": { "required": ["frostIntensity", "frostIntensityStart"] },
+      "dependencies": {
+        "frostIntensityStart": ["frostIntensityEnd"],
+        "frostIntensityEnd": ["frostIntensityStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -608,8 +785,13 @@
       },
       "oneOf": [
         { "required": ["speed"] },
-        { "required": ["speedStart", "speedEnd"] }
+        { "required": ["speedStart"] }
       ],
+      "not": { "required": ["speed", "speedStart"] },
+      "dependencies": {
+        "speedStart": ["speedEnd"],
+        "speedEnd": ["speedStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -636,6 +818,18 @@
         "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
         "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" }
       },
+      "not": {
+        "anyOf": [
+          { "required": ["angle", "angleStart"] },
+          { "required": ["speed", "speedStart"] }
+        ]
+      },
+      "dependencies": {
+        "angleStart": ["angleEnd"],
+        "angleEnd": ["angleStart"],
+        "speedStart": ["speedEnd"],
+        "speedEnd": ["speedStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -651,8 +845,13 @@
       },
       "oneOf": [
         { "required": ["angle"] },
-        { "required": ["angleStart", "angleEnd"] }
+        { "required": ["angleStart"] }
       ],
+      "not": { "required": ["angle", "angleStart"] },
+      "dependencies": {
+        "angleStart": ["angleEnd"],
+        "angleEnd": ["angleStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -668,8 +867,13 @@
       },
       "oneOf": [
         { "required": ["speed"] },
-        { "required": ["speedStart", "speedEnd"] }
+        { "required": ["speedStart"] }
       ],
+      "not": { "required": ["speed", "speedStart"] },
+      "dependencies": {
+        "speedStart": ["speedEnd"],
+        "speedEnd": ["speedStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -679,19 +883,24 @@
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
-        "insertion": { "$ref": "definitions.json#/entities/insertion" },
-        "insertionStart": { "$ref": "definitions.json#/entities/insertion" },
-        "insertionEnd": { "$ref": "definitions.json#/entities/insertion" },
         "blade": { "oneOf": [
           { "enum": ["Top", "Right", "Bottom", "Left"] },
           { "$ref": "definitions.json#/units/positiveInteger" }
-        ]}
+        ]},
+        "insertion": { "$ref": "definitions.json#/entities/insertion" },
+        "insertionStart": { "$ref": "definitions.json#/entities/insertion" },
+        "insertionEnd": { "$ref": "definitions.json#/entities/insertion" }
       },
+      "required": ["blade"],
       "oneOf": [
         { "required": ["insertion"] },
-        { "required": ["insertionStart", "insertionEnd"] }
+        { "required": ["insertionStart"] }
       ],
-      "required": ["blade"],
+      "not": { "required": ["insertion", "insertionStart"] },
+      "dependencies": {
+        "insertionStart": ["insertionEnd"],
+        "insertionEnd": ["insertionStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -701,19 +910,24 @@
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
-        "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
-        "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
-        "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
         "blade": { "oneOf": [
           { "enum": ["Top", "Right", "Bottom", "Left"] },
           { "$ref": "definitions.json#/units/positiveInteger" }
-        ]}
+        ]},
+        "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
+        "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
+        "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" }
       },
+      "required": ["blade"],
       "oneOf": [
         { "required": ["angle"] },
-        { "required": ["angleStart", "angleEnd"] }
+        { "required": ["angleStart"] }
       ],
-      "required": ["blade"],
+      "not": { "required": ["angle", "angleStart"] },
+      "dependencies": {
+        "angleStart": ["angleEnd"],
+        "angleEnd": ["angleStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -729,8 +943,13 @@
       },
       "oneOf": [
         { "required": ["angle"] },
-        { "required": ["angleStart", "angleEnd"] }
+        { "required": ["angleStart"] }
       ],
+      "not": { "required": ["angle", "angleStart"] },
+      "dependencies": {
+        "angleStart": ["angleEnd"],
+        "angleEnd": ["angleStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -755,6 +974,11 @@
         "fogOutputEnd": { "$ref": "definitions.json#/entities/fogOutput" },
         "fogType": { "enum": ["Fog", "Haze"] }
       },
+      "not": { "required": ["fogOutput", "fogOutputStart"] },
+      "dependencies": {
+        "fogOutputStart": ["fogOutputEnd"],
+        "fogOutputEnd": ["fogOutputStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -770,8 +994,13 @@
       },
       "oneOf": [
         { "required": ["fogOutput"] },
-        { "required": ["fogOutputStart", "fogOutputEnd"] }
+        { "required": ["fogOutputStart"] }
       ],
+      "not": { "required": ["fogOutput", "fogOutputStart"] },
+      "dependencies": {
+        "fogOutputStart": ["fogOutputEnd"],
+        "fogOutputEnd": ["fogOutputStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -799,8 +1028,13 @@
       },
       "oneOf": [
         { "required": ["angle"] },
-        { "required": ["angleStart", "angleEnd"] }
+        { "required": ["angleStart"] }
       ],
+      "not": { "required": ["angle", "angleStart"] },
+      "dependencies": {
+        "angleStart": ["angleEnd"],
+        "angleEnd": ["angleStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -816,8 +1050,13 @@
       },
       "oneOf": [
         { "required": ["speed"] },
-        { "required": ["speedStart", "speedEnd"] }
+        { "required": ["speedStart"] }
       ],
+      "not": { "required": ["speed", "speedStart"] },
+      "dependencies": {
+        "speedStart": ["speedEnd"],
+        "speedEnd": ["speedStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -833,8 +1072,13 @@
       },
       "oneOf": [
         { "required": ["speed"] },
-        { "required": ["speedStart", "speedEnd"] }
+        { "required": ["speedStart"] }
       ],
+      "not": { "required": ["speed", "speedStart"] },
+      "dependencies": {
+        "speedStart": ["speedEnd"],
+        "speedEnd": ["speedStart"]
+      },
       "additionalProperties": false
     },
     {
@@ -848,6 +1092,11 @@
         "parameterStart": { "$ref": "definitions.json#/entities/factor" },
         "parameterEnd": { "$ref": "definitions.json#/entities/factor" },
         "hold": { "$ref": "definitions.json#/entities/time" }
+      },
+      "not": { "required": ["parameter", "parameterStart"] },
+      "dependencies": {
+        "parameterStart": ["parameterEnd"],
+        "parameterEnd": ["parameterStart"]
       },
       "additionalProperties": false
     },

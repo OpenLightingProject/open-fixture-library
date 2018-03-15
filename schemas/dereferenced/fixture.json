@@ -618,9 +618,33 @@
                       "shutterEffect"
                     ],
                     "not": {
-                      "required": [
-                        "speed",
-                        "duration"
+                      "anyOf": [
+                        {
+                          "required": [
+                            "speed",
+                            "speedStart"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "duration",
+                            "durationStart"
+                          ]
+                        }
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ],
+                      "durationStart": [
+                        "durationEnd"
+                      ],
+                      "durationEnd": [
+                        "durationStart"
                       ]
                     },
                     "additionalProperties": false
@@ -708,11 +732,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -804,11 +841,24 @@
                       },
                       {
                         "required": [
-                          "durationStart",
-                          "durationEnd"
+                          "durationStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "duration",
+                        "durationStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "durationStart": [
+                        "durationEnd"
+                      ],
+                      "durationEnd": [
+                        "durationStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -879,6 +929,20 @@
                           }
                         ]
                       }
+                    },
+                    "not": {
+                      "required": [
+                        "brightness",
+                        "brightnessStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "brightnessStart": [
+                        "brightnessEnd"
+                      ],
+                      "brightnessEnd": [
+                        "brightnessStart"
+                      ]
                     },
                     "additionalProperties": false
                   },
@@ -969,6 +1033,20 @@
                     "required": [
                       "color"
                     ],
+                    "not": {
+                      "required": [
+                        "brightness",
+                        "brightnessStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "brightnessStart": [
+                        "brightnessEnd"
+                      ],
+                      "brightnessEnd": [
+                        "brightnessStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -1100,6 +1178,36 @@
                         ]
                       }
                     },
+                    "not": {
+                      "anyOf": [
+                        {
+                          "required": [
+                            "colors",
+                            "colorsStart"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "colorTemperature",
+                            "colorTemperatureStart"
+                          ]
+                        }
+                      ]
+                    },
+                    "dependencies": {
+                      "colorsStart": [
+                        "colorsEnd"
+                      ],
+                      "colorsEnd": [
+                        "colorsStart"
+                      ],
+                      "colorTemperatureStart": [
+                        "colorTemperatureEnd"
+                      ],
+                      "colorTemperatureEnd": [
+                        "colorTemperatureStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -1134,11 +1242,24 @@
                       },
                       {
                         "required": [
-                          "indexStart",
-                          "indexEnd"
+                          "indexStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "index",
+                        "indexStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "indexStart": [
+                        "indexEnd"
+                      ],
+                      "indexEnd": [
+                        "indexStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -1197,11 +1318,24 @@
                       },
                       {
                         "required": [
-                          "angleStart",
-                          "angleEnd"
+                          "angleStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "angle",
+                        "angleStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -1287,11 +1421,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -1377,11 +1524,24 @@
                       },
                       {
                         "required": [
-                          "colorTemperatureStart",
-                          "colorTemperatureEnd"
+                          "colorTemperatureStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "colorTemperature",
+                        "colorTemperatureStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "colorTemperatureStart": [
+                        "colorTemperatureEnd"
+                      ],
+                      "colorTemperatureEnd": [
+                        "colorTemperatureStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -1440,11 +1600,24 @@
                       },
                       {
                         "required": [
-                          "angleStart",
-                          "angleEnd"
+                          "angleStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "angle",
+                        "angleStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -1530,11 +1703,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -1593,11 +1779,24 @@
                       },
                       {
                         "required": [
-                          "angleStart",
-                          "angleEnd"
+                          "angleStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "angle",
+                        "angleStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -1683,11 +1882,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -1773,11 +1985,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -1935,6 +2160,36 @@
                         ]
                       }
                     ],
+                    "not": {
+                      "anyOf": [
+                        {
+                          "required": [
+                            "effectIntensity",
+                            "effectIntensityStart"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "speed",
+                            "speedStart"
+                          ]
+                        }
+                      ]
+                    },
+                    "dependencies": {
+                      "effectIntensityStart": [
+                        "effectIntensityEnd"
+                      ],
+                      "effectIntensityEnd": [
+                        "effectIntensityStart"
+                      ],
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -2014,11 +2269,24 @@
                       },
                       {
                         "required": [
-                          "effectIntensityStart",
-                          "effectIntensityEnd"
+                          "effectIntensityStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "effectIntensity",
+                        "effectIntensityStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "effectIntensityStart": [
+                        "effectIntensityEnd"
+                      ],
+                      "effectIntensityEnd": [
+                        "effectIntensityStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -2104,11 +2372,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -2176,11 +2457,24 @@
                       },
                       {
                         "required": [
-                          "sensitivityStart",
-                          "sensitivityEnd"
+                          "sensitivityStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "sensitivity",
+                        "sensitivityStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "sensitivityStart": [
+                        "sensitivityEnd"
+                      ],
+                      "sensitivityEnd": [
+                        "sensitivityStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -2215,11 +2509,24 @@
                       },
                       {
                         "required": [
-                          "indexStart",
-                          "indexEnd"
+                          "indexStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "index",
+                        "indexStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "indexStart": [
+                        "indexEnd"
+                      ],
+                      "indexEnd": [
+                        "indexStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -2317,11 +2624,40 @@
                       },
                       {
                         "required": [
-                          "indexStart",
-                          "indexEnd"
+                          "indexStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "anyOf": [
+                        {
+                          "required": [
+                            "index",
+                            "indexStart"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "speed",
+                            "speedStart"
+                          ]
+                        }
+                      ]
+                    },
+                    "dependencies": {
+                      "indexStart": [
+                        "indexEnd"
+                      ],
+                      "indexEnd": [
+                        "indexStart"
+                      ],
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -2380,11 +2716,24 @@
                       },
                       {
                         "required": [
-                          "angleStart",
-                          "angleEnd"
+                          "angleStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "angle",
+                        "angleStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -2470,11 +2819,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -2533,11 +2895,24 @@
                       },
                       {
                         "required": [
-                          "angleStart",
-                          "angleEnd"
+                          "angleStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "angle",
+                        "angleStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -2623,11 +2998,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -2704,11 +3092,24 @@
                       },
                       {
                         "required": [
-                          "distanceStart",
-                          "distanceEnd"
+                          "distanceStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "distance",
+                        "distanceStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "distanceStart": [
+                        "distanceEnd"
+                      ],
+                      "distanceEnd": [
+                        "distanceStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -2788,11 +3189,24 @@
                       },
                       {
                         "required": [
-                          "angleStart",
-                          "angleEnd"
+                          "angleStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "angle",
+                        "angleStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -2857,11 +3271,24 @@
                       },
                       {
                         "required": [
-                          "openPercentStart",
-                          "openPercentEnd"
+                          "openPercentStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "openPercent",
+                        "openPercentStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "openPercentStart": [
+                        "openPercentEnd"
+                      ],
+                      "openPercentEnd": [
+                        "openPercentStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -2947,11 +3374,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -3019,11 +3459,24 @@
                       },
                       {
                         "required": [
-                          "frostIntensityStart",
-                          "frostIntensityEnd"
+                          "frostIntensityStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "frostIntensity",
+                        "frostIntensityStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "frostIntensityStart": [
+                        "frostIntensityEnd"
+                      ],
+                      "frostIntensityEnd": [
+                        "frostIntensityStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -3109,11 +3562,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -3241,6 +3707,36 @@
                         ]
                       }
                     },
+                    "not": {
+                      "anyOf": [
+                        {
+                          "required": [
+                            "angle",
+                            "angleStart"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "speed",
+                            "speedStart"
+                          ]
+                        }
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ],
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -3299,11 +3795,24 @@
                       },
                       {
                         "required": [
-                          "angleStart",
-                          "angleEnd"
+                          "angleStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "angle",
+                        "angleStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -3389,11 +3898,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -3407,6 +3929,23 @@
                       "comment": {},
                       "menuClick": {},
                       "switchChannels": {},
+                      "blade": {
+                        "oneOf": [
+                          {
+                            "enum": [
+                              "Top",
+                              "Right",
+                              "Bottom",
+                              "Left"
+                            ]
+                          },
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "exclusiveMinimum": 0
+                          }
+                        ]
+                      },
                       "insertion": {
                         "oneOf": [
                           {
@@ -3448,7 +3987,50 @@
                             ]
                           }
                         ]
+                      }
+                    },
+                    "required": [
+                      "blade"
+                    ],
+                    "oneOf": [
+                      {
+                        "required": [
+                          "insertion"
+                        ]
                       },
+                      {
+                        "required": [
+                          "insertionStart"
+                        ]
+                      }
+                    ],
+                    "not": {
+                      "required": [
+                        "insertion",
+                        "insertionStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "insertionStart": [
+                        "insertionEnd"
+                      ],
+                      "insertionEnd": [
+                        "insertionStart"
+                      ]
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "dmxRange": {},
+                      "type": {
+                        "enum": [
+                          "BladeRotation"
+                        ]
+                      },
+                      "comment": {},
+                      "menuClick": {},
+                      "switchChannels": {},
                       "blade": {
                         "oneOf": [
                           {
@@ -3465,37 +4047,7 @@
                             "exclusiveMinimum": 0
                           }
                         ]
-                      }
-                    },
-                    "oneOf": [
-                      {
-                        "required": [
-                          "insertion"
-                        ]
                       },
-                      {
-                        "required": [
-                          "insertionStart",
-                          "insertionEnd"
-                        ]
-                      }
-                    ],
-                    "required": [
-                      "blade"
-                    ],
-                    "additionalProperties": false
-                  },
-                  {
-                    "properties": {
-                      "dmxRange": {},
-                      "type": {
-                        "enum": [
-                          "BladeRotation"
-                        ]
-                      },
-                      "comment": {},
-                      "menuClick": {},
-                      "switchChannels": {},
                       "angle": {
                         "oneOf": [
                           {
@@ -3531,25 +4083,11 @@
                             "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
                           }
                         ]
-                      },
-                      "blade": {
-                        "oneOf": [
-                          {
-                            "enum": [
-                              "Top",
-                              "Right",
-                              "Bottom",
-                              "Left"
-                            ]
-                          },
-                          {
-                            "type": "integer",
-                            "minimum": 0,
-                            "exclusiveMinimum": 0
-                          }
-                        ]
                       }
                     },
+                    "required": [
+                      "blade"
+                    ],
                     "oneOf": [
                       {
                         "required": [
@@ -3558,14 +4096,24 @@
                       },
                       {
                         "required": [
-                          "angleStart",
-                          "angleEnd"
+                          "angleStart"
                         ]
                       }
                     ],
-                    "required": [
-                      "blade"
-                    ],
+                    "not": {
+                      "required": [
+                        "angle",
+                        "angleStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -3624,11 +4172,24 @@
                       },
                       {
                         "required": [
-                          "angleStart",
-                          "angleEnd"
+                          "angleStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "angle",
+                        "angleStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -3720,6 +4281,20 @@
                         ]
                       }
                     },
+                    "not": {
+                      "required": [
+                        "fogOutput",
+                        "fogOutputStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "fogOutputStart": [
+                        "fogOutputEnd"
+                      ],
+                      "fogOutputEnd": [
+                        "fogOutputStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -3799,11 +4374,24 @@
                       },
                       {
                         "required": [
-                          "fogOutputStart",
-                          "fogOutputEnd"
+                          "fogOutputStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "fogOutput",
+                        "fogOutputStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "fogOutputStart": [
+                        "fogOutputEnd"
+                      ],
+                      "fogOutputEnd": [
+                        "fogOutputStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -3885,11 +4473,24 @@
                       },
                       {
                         "required": [
-                          "angleStart",
-                          "angleEnd"
+                          "angleStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "angle",
+                        "angleStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -3975,11 +4576,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -4065,11 +4679,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -4163,6 +4790,20 @@
                           }
                         ]
                       }
+                    },
+                    "not": {
+                      "required": [
+                        "parameter",
+                        "parameterStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "parameterStart": [
+                        "parameterEnd"
+                      ],
+                      "parameterEnd": [
+                        "parameterStart"
+                      ]
                     },
                     "additionalProperties": false
                   },
@@ -4435,9 +5076,33 @@
                         "shutterEffect"
                       ],
                       "not": {
-                        "required": [
-                          "speed",
-                          "duration"
+                        "anyOf": [
+                          {
+                            "required": [
+                              "speed",
+                              "speedStart"
+                            ]
+                          },
+                          {
+                            "required": [
+                              "duration",
+                              "durationStart"
+                            ]
+                          }
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ],
+                        "durationStart": [
+                          "durationEnd"
+                        ],
+                        "durationEnd": [
+                          "durationStart"
                         ]
                       },
                       "additionalProperties": false
@@ -4525,11 +5190,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -4621,11 +5299,24 @@
                         },
                         {
                           "required": [
-                            "durationStart",
-                            "durationEnd"
+                            "durationStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "duration",
+                          "durationStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "durationStart": [
+                          "durationEnd"
+                        ],
+                        "durationEnd": [
+                          "durationStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -4696,6 +5387,20 @@
                             }
                           ]
                         }
+                      },
+                      "not": {
+                        "required": [
+                          "brightness",
+                          "brightnessStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "brightnessStart": [
+                          "brightnessEnd"
+                        ],
+                        "brightnessEnd": [
+                          "brightnessStart"
+                        ]
                       },
                       "additionalProperties": false
                     },
@@ -4786,6 +5491,20 @@
                       "required": [
                         "color"
                       ],
+                      "not": {
+                        "required": [
+                          "brightness",
+                          "brightnessStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "brightnessStart": [
+                          "brightnessEnd"
+                        ],
+                        "brightnessEnd": [
+                          "brightnessStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -4917,6 +5636,36 @@
                           ]
                         }
                       },
+                      "not": {
+                        "anyOf": [
+                          {
+                            "required": [
+                              "colors",
+                              "colorsStart"
+                            ]
+                          },
+                          {
+                            "required": [
+                              "colorTemperature",
+                              "colorTemperatureStart"
+                            ]
+                          }
+                        ]
+                      },
+                      "dependencies": {
+                        "colorsStart": [
+                          "colorsEnd"
+                        ],
+                        "colorsEnd": [
+                          "colorsStart"
+                        ],
+                        "colorTemperatureStart": [
+                          "colorTemperatureEnd"
+                        ],
+                        "colorTemperatureEnd": [
+                          "colorTemperatureStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -4951,11 +5700,24 @@
                         },
                         {
                           "required": [
-                            "indexStart",
-                            "indexEnd"
+                            "indexStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "index",
+                          "indexStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "indexStart": [
+                          "indexEnd"
+                        ],
+                        "indexEnd": [
+                          "indexStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -5014,11 +5776,24 @@
                         },
                         {
                           "required": [
-                            "angleStart",
-                            "angleEnd"
+                            "angleStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "angle",
+                          "angleStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -5104,11 +5879,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -5194,11 +5982,24 @@
                         },
                         {
                           "required": [
-                            "colorTemperatureStart",
-                            "colorTemperatureEnd"
+                            "colorTemperatureStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "colorTemperature",
+                          "colorTemperatureStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "colorTemperatureStart": [
+                          "colorTemperatureEnd"
+                        ],
+                        "colorTemperatureEnd": [
+                          "colorTemperatureStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -5257,11 +6058,24 @@
                         },
                         {
                           "required": [
-                            "angleStart",
-                            "angleEnd"
+                            "angleStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "angle",
+                          "angleStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -5347,11 +6161,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -5410,11 +6237,24 @@
                         },
                         {
                           "required": [
-                            "angleStart",
-                            "angleEnd"
+                            "angleStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "angle",
+                          "angleStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -5500,11 +6340,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -5590,11 +6443,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -5752,6 +6618,36 @@
                           ]
                         }
                       ],
+                      "not": {
+                        "anyOf": [
+                          {
+                            "required": [
+                              "effectIntensity",
+                              "effectIntensityStart"
+                            ]
+                          },
+                          {
+                            "required": [
+                              "speed",
+                              "speedStart"
+                            ]
+                          }
+                        ]
+                      },
+                      "dependencies": {
+                        "effectIntensityStart": [
+                          "effectIntensityEnd"
+                        ],
+                        "effectIntensityEnd": [
+                          "effectIntensityStart"
+                        ],
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -5831,11 +6727,24 @@
                         },
                         {
                           "required": [
-                            "effectIntensityStart",
-                            "effectIntensityEnd"
+                            "effectIntensityStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "effectIntensity",
+                          "effectIntensityStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "effectIntensityStart": [
+                          "effectIntensityEnd"
+                        ],
+                        "effectIntensityEnd": [
+                          "effectIntensityStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -5921,11 +6830,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -5993,11 +6915,24 @@
                         },
                         {
                           "required": [
-                            "sensitivityStart",
-                            "sensitivityEnd"
+                            "sensitivityStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "sensitivity",
+                          "sensitivityStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "sensitivityStart": [
+                          "sensitivityEnd"
+                        ],
+                        "sensitivityEnd": [
+                          "sensitivityStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -6032,11 +6967,24 @@
                         },
                         {
                           "required": [
-                            "indexStart",
-                            "indexEnd"
+                            "indexStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "index",
+                          "indexStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "indexStart": [
+                          "indexEnd"
+                        ],
+                        "indexEnd": [
+                          "indexStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -6134,11 +7082,40 @@
                         },
                         {
                           "required": [
-                            "indexStart",
-                            "indexEnd"
+                            "indexStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "anyOf": [
+                          {
+                            "required": [
+                              "index",
+                              "indexStart"
+                            ]
+                          },
+                          {
+                            "required": [
+                              "speed",
+                              "speedStart"
+                            ]
+                          }
+                        ]
+                      },
+                      "dependencies": {
+                        "indexStart": [
+                          "indexEnd"
+                        ],
+                        "indexEnd": [
+                          "indexStart"
+                        ],
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -6197,11 +7174,24 @@
                         },
                         {
                           "required": [
-                            "angleStart",
-                            "angleEnd"
+                            "angleStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "angle",
+                          "angleStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -6287,11 +7277,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -6350,11 +7353,24 @@
                         },
                         {
                           "required": [
-                            "angleStart",
-                            "angleEnd"
+                            "angleStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "angle",
+                          "angleStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -6440,11 +7456,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -6521,11 +7550,24 @@
                         },
                         {
                           "required": [
-                            "distanceStart",
-                            "distanceEnd"
+                            "distanceStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "distance",
+                          "distanceStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "distanceStart": [
+                          "distanceEnd"
+                        ],
+                        "distanceEnd": [
+                          "distanceStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -6605,11 +7647,24 @@
                         },
                         {
                           "required": [
-                            "angleStart",
-                            "angleEnd"
+                            "angleStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "angle",
+                          "angleStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -6674,11 +7729,24 @@
                         },
                         {
                           "required": [
-                            "openPercentStart",
-                            "openPercentEnd"
+                            "openPercentStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "openPercent",
+                          "openPercentStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "openPercentStart": [
+                          "openPercentEnd"
+                        ],
+                        "openPercentEnd": [
+                          "openPercentStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -6764,11 +7832,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -6836,11 +7917,24 @@
                         },
                         {
                           "required": [
-                            "frostIntensityStart",
-                            "frostIntensityEnd"
+                            "frostIntensityStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "frostIntensity",
+                          "frostIntensityStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "frostIntensityStart": [
+                          "frostIntensityEnd"
+                        ],
+                        "frostIntensityEnd": [
+                          "frostIntensityStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -6926,11 +8020,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -7058,6 +8165,36 @@
                           ]
                         }
                       },
+                      "not": {
+                        "anyOf": [
+                          {
+                            "required": [
+                              "angle",
+                              "angleStart"
+                            ]
+                          },
+                          {
+                            "required": [
+                              "speed",
+                              "speedStart"
+                            ]
+                          }
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ],
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -7116,11 +8253,24 @@
                         },
                         {
                           "required": [
-                            "angleStart",
-                            "angleEnd"
+                            "angleStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "angle",
+                          "angleStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -7206,11 +8356,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -7224,6 +8387,23 @@
                         "comment": {},
                         "menuClick": {},
                         "switchChannels": {},
+                        "blade": {
+                          "oneOf": [
+                            {
+                              "enum": [
+                                "Top",
+                                "Right",
+                                "Bottom",
+                                "Left"
+                              ]
+                            },
+                            {
+                              "type": "integer",
+                              "minimum": 0,
+                              "exclusiveMinimum": 0
+                            }
+                          ]
+                        },
                         "insertion": {
                           "oneOf": [
                             {
@@ -7265,7 +8445,50 @@
                               ]
                             }
                           ]
+                        }
+                      },
+                      "required": [
+                        "blade"
+                      ],
+                      "oneOf": [
+                        {
+                          "required": [
+                            "insertion"
+                          ]
                         },
+                        {
+                          "required": [
+                            "insertionStart"
+                          ]
+                        }
+                      ],
+                      "not": {
+                        "required": [
+                          "insertion",
+                          "insertionStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "insertionStart": [
+                          "insertionEnd"
+                        ],
+                        "insertionEnd": [
+                          "insertionStart"
+                        ]
+                      },
+                      "additionalProperties": false
+                    },
+                    {
+                      "properties": {
+                        "dmxRange": {},
+                        "type": {
+                          "enum": [
+                            "BladeRotation"
+                          ]
+                        },
+                        "comment": {},
+                        "menuClick": {},
+                        "switchChannels": {},
                         "blade": {
                           "oneOf": [
                             {
@@ -7282,37 +8505,7 @@
                               "exclusiveMinimum": 0
                             }
                           ]
-                        }
-                      },
-                      "oneOf": [
-                        {
-                          "required": [
-                            "insertion"
-                          ]
                         },
-                        {
-                          "required": [
-                            "insertionStart",
-                            "insertionEnd"
-                          ]
-                        }
-                      ],
-                      "required": [
-                        "blade"
-                      ],
-                      "additionalProperties": false
-                    },
-                    {
-                      "properties": {
-                        "dmxRange": {},
-                        "type": {
-                          "enum": [
-                            "BladeRotation"
-                          ]
-                        },
-                        "comment": {},
-                        "menuClick": {},
-                        "switchChannels": {},
                         "angle": {
                           "oneOf": [
                             {
@@ -7348,25 +8541,11 @@
                               "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
                             }
                           ]
-                        },
-                        "blade": {
-                          "oneOf": [
-                            {
-                              "enum": [
-                                "Top",
-                                "Right",
-                                "Bottom",
-                                "Left"
-                              ]
-                            },
-                            {
-                              "type": "integer",
-                              "minimum": 0,
-                              "exclusiveMinimum": 0
-                            }
-                          ]
                         }
                       },
+                      "required": [
+                        "blade"
+                      ],
                       "oneOf": [
                         {
                           "required": [
@@ -7375,14 +8554,24 @@
                         },
                         {
                           "required": [
-                            "angleStart",
-                            "angleEnd"
+                            "angleStart"
                           ]
                         }
                       ],
-                      "required": [
-                        "blade"
-                      ],
+                      "not": {
+                        "required": [
+                          "angle",
+                          "angleStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -7441,11 +8630,24 @@
                         },
                         {
                           "required": [
-                            "angleStart",
-                            "angleEnd"
+                            "angleStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "angle",
+                          "angleStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -7537,6 +8739,20 @@
                           ]
                         }
                       },
+                      "not": {
+                        "required": [
+                          "fogOutput",
+                          "fogOutputStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "fogOutputStart": [
+                          "fogOutputEnd"
+                        ],
+                        "fogOutputEnd": [
+                          "fogOutputStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -7616,11 +8832,24 @@
                         },
                         {
                           "required": [
-                            "fogOutputStart",
-                            "fogOutputEnd"
+                            "fogOutputStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "fogOutput",
+                          "fogOutputStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "fogOutputStart": [
+                          "fogOutputEnd"
+                        ],
+                        "fogOutputEnd": [
+                          "fogOutputStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -7702,11 +8931,24 @@
                         },
                         {
                           "required": [
-                            "angleStart",
-                            "angleEnd"
+                            "angleStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "angle",
+                          "angleStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -7792,11 +9034,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -7882,11 +9137,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -7980,6 +9248,20 @@
                             }
                           ]
                         }
+                      },
+                      "not": {
+                        "required": [
+                          "parameter",
+                          "parameterStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "parameterStart": [
+                          "parameterEnd"
+                        ],
+                        "parameterEnd": [
+                          "parameterStart"
+                        ]
                       },
                       "additionalProperties": false
                     },
@@ -8363,9 +9645,33 @@
                       "shutterEffect"
                     ],
                     "not": {
-                      "required": [
-                        "speed",
-                        "duration"
+                      "anyOf": [
+                        {
+                          "required": [
+                            "speed",
+                            "speedStart"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "duration",
+                            "durationStart"
+                          ]
+                        }
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ],
+                      "durationStart": [
+                        "durationEnd"
+                      ],
+                      "durationEnd": [
+                        "durationStart"
                       ]
                     },
                     "additionalProperties": false
@@ -8453,11 +9759,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -8549,11 +9868,24 @@
                       },
                       {
                         "required": [
-                          "durationStart",
-                          "durationEnd"
+                          "durationStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "duration",
+                        "durationStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "durationStart": [
+                        "durationEnd"
+                      ],
+                      "durationEnd": [
+                        "durationStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -8624,6 +9956,20 @@
                           }
                         ]
                       }
+                    },
+                    "not": {
+                      "required": [
+                        "brightness",
+                        "brightnessStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "brightnessStart": [
+                        "brightnessEnd"
+                      ],
+                      "brightnessEnd": [
+                        "brightnessStart"
+                      ]
                     },
                     "additionalProperties": false
                   },
@@ -8714,6 +10060,20 @@
                     "required": [
                       "color"
                     ],
+                    "not": {
+                      "required": [
+                        "brightness",
+                        "brightnessStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "brightnessStart": [
+                        "brightnessEnd"
+                      ],
+                      "brightnessEnd": [
+                        "brightnessStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -8845,6 +10205,36 @@
                         ]
                       }
                     },
+                    "not": {
+                      "anyOf": [
+                        {
+                          "required": [
+                            "colors",
+                            "colorsStart"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "colorTemperature",
+                            "colorTemperatureStart"
+                          ]
+                        }
+                      ]
+                    },
+                    "dependencies": {
+                      "colorsStart": [
+                        "colorsEnd"
+                      ],
+                      "colorsEnd": [
+                        "colorsStart"
+                      ],
+                      "colorTemperatureStart": [
+                        "colorTemperatureEnd"
+                      ],
+                      "colorTemperatureEnd": [
+                        "colorTemperatureStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -8879,11 +10269,24 @@
                       },
                       {
                         "required": [
-                          "indexStart",
-                          "indexEnd"
+                          "indexStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "index",
+                        "indexStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "indexStart": [
+                        "indexEnd"
+                      ],
+                      "indexEnd": [
+                        "indexStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -8942,11 +10345,24 @@
                       },
                       {
                         "required": [
-                          "angleStart",
-                          "angleEnd"
+                          "angleStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "angle",
+                        "angleStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -9032,11 +10448,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -9122,11 +10551,24 @@
                       },
                       {
                         "required": [
-                          "colorTemperatureStart",
-                          "colorTemperatureEnd"
+                          "colorTemperatureStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "colorTemperature",
+                        "colorTemperatureStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "colorTemperatureStart": [
+                        "colorTemperatureEnd"
+                      ],
+                      "colorTemperatureEnd": [
+                        "colorTemperatureStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -9185,11 +10627,24 @@
                       },
                       {
                         "required": [
-                          "angleStart",
-                          "angleEnd"
+                          "angleStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "angle",
+                        "angleStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -9275,11 +10730,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -9338,11 +10806,24 @@
                       },
                       {
                         "required": [
-                          "angleStart",
-                          "angleEnd"
+                          "angleStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "angle",
+                        "angleStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -9428,11 +10909,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -9518,11 +11012,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -9680,6 +11187,36 @@
                         ]
                       }
                     ],
+                    "not": {
+                      "anyOf": [
+                        {
+                          "required": [
+                            "effectIntensity",
+                            "effectIntensityStart"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "speed",
+                            "speedStart"
+                          ]
+                        }
+                      ]
+                    },
+                    "dependencies": {
+                      "effectIntensityStart": [
+                        "effectIntensityEnd"
+                      ],
+                      "effectIntensityEnd": [
+                        "effectIntensityStart"
+                      ],
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -9759,11 +11296,24 @@
                       },
                       {
                         "required": [
-                          "effectIntensityStart",
-                          "effectIntensityEnd"
+                          "effectIntensityStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "effectIntensity",
+                        "effectIntensityStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "effectIntensityStart": [
+                        "effectIntensityEnd"
+                      ],
+                      "effectIntensityEnd": [
+                        "effectIntensityStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -9849,11 +11399,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -9921,11 +11484,24 @@
                       },
                       {
                         "required": [
-                          "sensitivityStart",
-                          "sensitivityEnd"
+                          "sensitivityStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "sensitivity",
+                        "sensitivityStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "sensitivityStart": [
+                        "sensitivityEnd"
+                      ],
+                      "sensitivityEnd": [
+                        "sensitivityStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -9960,11 +11536,24 @@
                       },
                       {
                         "required": [
-                          "indexStart",
-                          "indexEnd"
+                          "indexStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "index",
+                        "indexStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "indexStart": [
+                        "indexEnd"
+                      ],
+                      "indexEnd": [
+                        "indexStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -10062,11 +11651,40 @@
                       },
                       {
                         "required": [
-                          "indexStart",
-                          "indexEnd"
+                          "indexStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "anyOf": [
+                        {
+                          "required": [
+                            "index",
+                            "indexStart"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "speed",
+                            "speedStart"
+                          ]
+                        }
+                      ]
+                    },
+                    "dependencies": {
+                      "indexStart": [
+                        "indexEnd"
+                      ],
+                      "indexEnd": [
+                        "indexStart"
+                      ],
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -10125,11 +11743,24 @@
                       },
                       {
                         "required": [
-                          "angleStart",
-                          "angleEnd"
+                          "angleStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "angle",
+                        "angleStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -10215,11 +11846,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -10278,11 +11922,24 @@
                       },
                       {
                         "required": [
-                          "angleStart",
-                          "angleEnd"
+                          "angleStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "angle",
+                        "angleStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -10368,11 +12025,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -10449,11 +12119,24 @@
                       },
                       {
                         "required": [
-                          "distanceStart",
-                          "distanceEnd"
+                          "distanceStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "distance",
+                        "distanceStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "distanceStart": [
+                        "distanceEnd"
+                      ],
+                      "distanceEnd": [
+                        "distanceStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -10533,11 +12216,24 @@
                       },
                       {
                         "required": [
-                          "angleStart",
-                          "angleEnd"
+                          "angleStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "angle",
+                        "angleStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -10602,11 +12298,24 @@
                       },
                       {
                         "required": [
-                          "openPercentStart",
-                          "openPercentEnd"
+                          "openPercentStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "openPercent",
+                        "openPercentStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "openPercentStart": [
+                        "openPercentEnd"
+                      ],
+                      "openPercentEnd": [
+                        "openPercentStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -10692,11 +12401,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -10764,11 +12486,24 @@
                       },
                       {
                         "required": [
-                          "frostIntensityStart",
-                          "frostIntensityEnd"
+                          "frostIntensityStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "frostIntensity",
+                        "frostIntensityStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "frostIntensityStart": [
+                        "frostIntensityEnd"
+                      ],
+                      "frostIntensityEnd": [
+                        "frostIntensityStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -10854,11 +12589,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -10986,6 +12734,36 @@
                         ]
                       }
                     },
+                    "not": {
+                      "anyOf": [
+                        {
+                          "required": [
+                            "angle",
+                            "angleStart"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "speed",
+                            "speedStart"
+                          ]
+                        }
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ],
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -11044,11 +12822,24 @@
                       },
                       {
                         "required": [
-                          "angleStart",
-                          "angleEnd"
+                          "angleStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "angle",
+                        "angleStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -11134,11 +12925,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -11152,6 +12956,23 @@
                       "comment": {},
                       "menuClick": {},
                       "switchChannels": {},
+                      "blade": {
+                        "oneOf": [
+                          {
+                            "enum": [
+                              "Top",
+                              "Right",
+                              "Bottom",
+                              "Left"
+                            ]
+                          },
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "exclusiveMinimum": 0
+                          }
+                        ]
+                      },
                       "insertion": {
                         "oneOf": [
                           {
@@ -11193,7 +13014,50 @@
                             ]
                           }
                         ]
+                      }
+                    },
+                    "required": [
+                      "blade"
+                    ],
+                    "oneOf": [
+                      {
+                        "required": [
+                          "insertion"
+                        ]
                       },
+                      {
+                        "required": [
+                          "insertionStart"
+                        ]
+                      }
+                    ],
+                    "not": {
+                      "required": [
+                        "insertion",
+                        "insertionStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "insertionStart": [
+                        "insertionEnd"
+                      ],
+                      "insertionEnd": [
+                        "insertionStart"
+                      ]
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "dmxRange": {},
+                      "type": {
+                        "enum": [
+                          "BladeRotation"
+                        ]
+                      },
+                      "comment": {},
+                      "menuClick": {},
+                      "switchChannels": {},
                       "blade": {
                         "oneOf": [
                           {
@@ -11210,37 +13074,7 @@
                             "exclusiveMinimum": 0
                           }
                         ]
-                      }
-                    },
-                    "oneOf": [
-                      {
-                        "required": [
-                          "insertion"
-                        ]
                       },
-                      {
-                        "required": [
-                          "insertionStart",
-                          "insertionEnd"
-                        ]
-                      }
-                    ],
-                    "required": [
-                      "blade"
-                    ],
-                    "additionalProperties": false
-                  },
-                  {
-                    "properties": {
-                      "dmxRange": {},
-                      "type": {
-                        "enum": [
-                          "BladeRotation"
-                        ]
-                      },
-                      "comment": {},
-                      "menuClick": {},
-                      "switchChannels": {},
                       "angle": {
                         "oneOf": [
                           {
@@ -11276,25 +13110,11 @@
                             "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
                           }
                         ]
-                      },
-                      "blade": {
-                        "oneOf": [
-                          {
-                            "enum": [
-                              "Top",
-                              "Right",
-                              "Bottom",
-                              "Left"
-                            ]
-                          },
-                          {
-                            "type": "integer",
-                            "minimum": 0,
-                            "exclusiveMinimum": 0
-                          }
-                        ]
                       }
                     },
+                    "required": [
+                      "blade"
+                    ],
                     "oneOf": [
                       {
                         "required": [
@@ -11303,14 +13123,24 @@
                       },
                       {
                         "required": [
-                          "angleStart",
-                          "angleEnd"
+                          "angleStart"
                         ]
                       }
                     ],
-                    "required": [
-                      "blade"
-                    ],
+                    "not": {
+                      "required": [
+                        "angle",
+                        "angleStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -11369,11 +13199,24 @@
                       },
                       {
                         "required": [
-                          "angleStart",
-                          "angleEnd"
+                          "angleStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "angle",
+                        "angleStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -11465,6 +13308,20 @@
                         ]
                       }
                     },
+                    "not": {
+                      "required": [
+                        "fogOutput",
+                        "fogOutputStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "fogOutputStart": [
+                        "fogOutputEnd"
+                      ],
+                      "fogOutputEnd": [
+                        "fogOutputStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -11544,11 +13401,24 @@
                       },
                       {
                         "required": [
-                          "fogOutputStart",
-                          "fogOutputEnd"
+                          "fogOutputStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "fogOutput",
+                        "fogOutputStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "fogOutputStart": [
+                        "fogOutputEnd"
+                      ],
+                      "fogOutputEnd": [
+                        "fogOutputStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -11630,11 +13500,24 @@
                       },
                       {
                         "required": [
-                          "angleStart",
-                          "angleEnd"
+                          "angleStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "angle",
+                        "angleStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "angleStart": [
+                        "angleEnd"
+                      ],
+                      "angleEnd": [
+                        "angleStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -11720,11 +13603,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -11810,11 +13706,24 @@
                       },
                       {
                         "required": [
-                          "speedStart",
-                          "speedEnd"
+                          "speedStart"
                         ]
                       }
                     ],
+                    "not": {
+                      "required": [
+                        "speed",
+                        "speedStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "speedStart": [
+                        "speedEnd"
+                      ],
+                      "speedEnd": [
+                        "speedStart"
+                      ]
+                    },
                     "additionalProperties": false
                   },
                   {
@@ -11908,6 +13817,20 @@
                           }
                         ]
                       }
+                    },
+                    "not": {
+                      "required": [
+                        "parameter",
+                        "parameterStart"
+                      ]
+                    },
+                    "dependencies": {
+                      "parameterStart": [
+                        "parameterEnd"
+                      ],
+                      "parameterEnd": [
+                        "parameterStart"
+                      ]
                     },
                     "additionalProperties": false
                   },
@@ -12180,9 +14103,33 @@
                         "shutterEffect"
                       ],
                       "not": {
-                        "required": [
-                          "speed",
-                          "duration"
+                        "anyOf": [
+                          {
+                            "required": [
+                              "speed",
+                              "speedStart"
+                            ]
+                          },
+                          {
+                            "required": [
+                              "duration",
+                              "durationStart"
+                            ]
+                          }
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ],
+                        "durationStart": [
+                          "durationEnd"
+                        ],
+                        "durationEnd": [
+                          "durationStart"
                         ]
                       },
                       "additionalProperties": false
@@ -12270,11 +14217,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -12366,11 +14326,24 @@
                         },
                         {
                           "required": [
-                            "durationStart",
-                            "durationEnd"
+                            "durationStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "duration",
+                          "durationStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "durationStart": [
+                          "durationEnd"
+                        ],
+                        "durationEnd": [
+                          "durationStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -12441,6 +14414,20 @@
                             }
                           ]
                         }
+                      },
+                      "not": {
+                        "required": [
+                          "brightness",
+                          "brightnessStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "brightnessStart": [
+                          "brightnessEnd"
+                        ],
+                        "brightnessEnd": [
+                          "brightnessStart"
+                        ]
                       },
                       "additionalProperties": false
                     },
@@ -12531,6 +14518,20 @@
                       "required": [
                         "color"
                       ],
+                      "not": {
+                        "required": [
+                          "brightness",
+                          "brightnessStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "brightnessStart": [
+                          "brightnessEnd"
+                        ],
+                        "brightnessEnd": [
+                          "brightnessStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -12662,6 +14663,36 @@
                           ]
                         }
                       },
+                      "not": {
+                        "anyOf": [
+                          {
+                            "required": [
+                              "colors",
+                              "colorsStart"
+                            ]
+                          },
+                          {
+                            "required": [
+                              "colorTemperature",
+                              "colorTemperatureStart"
+                            ]
+                          }
+                        ]
+                      },
+                      "dependencies": {
+                        "colorsStart": [
+                          "colorsEnd"
+                        ],
+                        "colorsEnd": [
+                          "colorsStart"
+                        ],
+                        "colorTemperatureStart": [
+                          "colorTemperatureEnd"
+                        ],
+                        "colorTemperatureEnd": [
+                          "colorTemperatureStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -12696,11 +14727,24 @@
                         },
                         {
                           "required": [
-                            "indexStart",
-                            "indexEnd"
+                            "indexStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "index",
+                          "indexStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "indexStart": [
+                          "indexEnd"
+                        ],
+                        "indexEnd": [
+                          "indexStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -12759,11 +14803,24 @@
                         },
                         {
                           "required": [
-                            "angleStart",
-                            "angleEnd"
+                            "angleStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "angle",
+                          "angleStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -12849,11 +14906,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -12939,11 +15009,24 @@
                         },
                         {
                           "required": [
-                            "colorTemperatureStart",
-                            "colorTemperatureEnd"
+                            "colorTemperatureStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "colorTemperature",
+                          "colorTemperatureStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "colorTemperatureStart": [
+                          "colorTemperatureEnd"
+                        ],
+                        "colorTemperatureEnd": [
+                          "colorTemperatureStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -13002,11 +15085,24 @@
                         },
                         {
                           "required": [
-                            "angleStart",
-                            "angleEnd"
+                            "angleStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "angle",
+                          "angleStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -13092,11 +15188,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -13155,11 +15264,24 @@
                         },
                         {
                           "required": [
-                            "angleStart",
-                            "angleEnd"
+                            "angleStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "angle",
+                          "angleStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -13245,11 +15367,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -13335,11 +15470,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -13497,6 +15645,36 @@
                           ]
                         }
                       ],
+                      "not": {
+                        "anyOf": [
+                          {
+                            "required": [
+                              "effectIntensity",
+                              "effectIntensityStart"
+                            ]
+                          },
+                          {
+                            "required": [
+                              "speed",
+                              "speedStart"
+                            ]
+                          }
+                        ]
+                      },
+                      "dependencies": {
+                        "effectIntensityStart": [
+                          "effectIntensityEnd"
+                        ],
+                        "effectIntensityEnd": [
+                          "effectIntensityStart"
+                        ],
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -13576,11 +15754,24 @@
                         },
                         {
                           "required": [
-                            "effectIntensityStart",
-                            "effectIntensityEnd"
+                            "effectIntensityStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "effectIntensity",
+                          "effectIntensityStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "effectIntensityStart": [
+                          "effectIntensityEnd"
+                        ],
+                        "effectIntensityEnd": [
+                          "effectIntensityStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -13666,11 +15857,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -13738,11 +15942,24 @@
                         },
                         {
                           "required": [
-                            "sensitivityStart",
-                            "sensitivityEnd"
+                            "sensitivityStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "sensitivity",
+                          "sensitivityStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "sensitivityStart": [
+                          "sensitivityEnd"
+                        ],
+                        "sensitivityEnd": [
+                          "sensitivityStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -13777,11 +15994,24 @@
                         },
                         {
                           "required": [
-                            "indexStart",
-                            "indexEnd"
+                            "indexStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "index",
+                          "indexStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "indexStart": [
+                          "indexEnd"
+                        ],
+                        "indexEnd": [
+                          "indexStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -13879,11 +16109,40 @@
                         },
                         {
                           "required": [
-                            "indexStart",
-                            "indexEnd"
+                            "indexStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "anyOf": [
+                          {
+                            "required": [
+                              "index",
+                              "indexStart"
+                            ]
+                          },
+                          {
+                            "required": [
+                              "speed",
+                              "speedStart"
+                            ]
+                          }
+                        ]
+                      },
+                      "dependencies": {
+                        "indexStart": [
+                          "indexEnd"
+                        ],
+                        "indexEnd": [
+                          "indexStart"
+                        ],
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -13942,11 +16201,24 @@
                         },
                         {
                           "required": [
-                            "angleStart",
-                            "angleEnd"
+                            "angleStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "angle",
+                          "angleStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -14032,11 +16304,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -14095,11 +16380,24 @@
                         },
                         {
                           "required": [
-                            "angleStart",
-                            "angleEnd"
+                            "angleStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "angle",
+                          "angleStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -14185,11 +16483,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -14266,11 +16577,24 @@
                         },
                         {
                           "required": [
-                            "distanceStart",
-                            "distanceEnd"
+                            "distanceStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "distance",
+                          "distanceStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "distanceStart": [
+                          "distanceEnd"
+                        ],
+                        "distanceEnd": [
+                          "distanceStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -14350,11 +16674,24 @@
                         },
                         {
                           "required": [
-                            "angleStart",
-                            "angleEnd"
+                            "angleStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "angle",
+                          "angleStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -14419,11 +16756,24 @@
                         },
                         {
                           "required": [
-                            "openPercentStart",
-                            "openPercentEnd"
+                            "openPercentStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "openPercent",
+                          "openPercentStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "openPercentStart": [
+                          "openPercentEnd"
+                        ],
+                        "openPercentEnd": [
+                          "openPercentStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -14509,11 +16859,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -14581,11 +16944,24 @@
                         },
                         {
                           "required": [
-                            "frostIntensityStart",
-                            "frostIntensityEnd"
+                            "frostIntensityStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "frostIntensity",
+                          "frostIntensityStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "frostIntensityStart": [
+                          "frostIntensityEnd"
+                        ],
+                        "frostIntensityEnd": [
+                          "frostIntensityStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -14671,11 +17047,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -14803,6 +17192,36 @@
                           ]
                         }
                       },
+                      "not": {
+                        "anyOf": [
+                          {
+                            "required": [
+                              "angle",
+                              "angleStart"
+                            ]
+                          },
+                          {
+                            "required": [
+                              "speed",
+                              "speedStart"
+                            ]
+                          }
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ],
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -14861,11 +17280,24 @@
                         },
                         {
                           "required": [
-                            "angleStart",
-                            "angleEnd"
+                            "angleStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "angle",
+                          "angleStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -14951,11 +17383,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -14969,6 +17414,23 @@
                         "comment": {},
                         "menuClick": {},
                         "switchChannels": {},
+                        "blade": {
+                          "oneOf": [
+                            {
+                              "enum": [
+                                "Top",
+                                "Right",
+                                "Bottom",
+                                "Left"
+                              ]
+                            },
+                            {
+                              "type": "integer",
+                              "minimum": 0,
+                              "exclusiveMinimum": 0
+                            }
+                          ]
+                        },
                         "insertion": {
                           "oneOf": [
                             {
@@ -15010,7 +17472,50 @@
                               ]
                             }
                           ]
+                        }
+                      },
+                      "required": [
+                        "blade"
+                      ],
+                      "oneOf": [
+                        {
+                          "required": [
+                            "insertion"
+                          ]
                         },
+                        {
+                          "required": [
+                            "insertionStart"
+                          ]
+                        }
+                      ],
+                      "not": {
+                        "required": [
+                          "insertion",
+                          "insertionStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "insertionStart": [
+                          "insertionEnd"
+                        ],
+                        "insertionEnd": [
+                          "insertionStart"
+                        ]
+                      },
+                      "additionalProperties": false
+                    },
+                    {
+                      "properties": {
+                        "dmxRange": {},
+                        "type": {
+                          "enum": [
+                            "BladeRotation"
+                          ]
+                        },
+                        "comment": {},
+                        "menuClick": {},
+                        "switchChannels": {},
                         "blade": {
                           "oneOf": [
                             {
@@ -15027,37 +17532,7 @@
                               "exclusiveMinimum": 0
                             }
                           ]
-                        }
-                      },
-                      "oneOf": [
-                        {
-                          "required": [
-                            "insertion"
-                          ]
                         },
-                        {
-                          "required": [
-                            "insertionStart",
-                            "insertionEnd"
-                          ]
-                        }
-                      ],
-                      "required": [
-                        "blade"
-                      ],
-                      "additionalProperties": false
-                    },
-                    {
-                      "properties": {
-                        "dmxRange": {},
-                        "type": {
-                          "enum": [
-                            "BladeRotation"
-                          ]
-                        },
-                        "comment": {},
-                        "menuClick": {},
-                        "switchChannels": {},
                         "angle": {
                           "oneOf": [
                             {
@@ -15093,25 +17568,11 @@
                               "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
                             }
                           ]
-                        },
-                        "blade": {
-                          "oneOf": [
-                            {
-                              "enum": [
-                                "Top",
-                                "Right",
-                                "Bottom",
-                                "Left"
-                              ]
-                            },
-                            {
-                              "type": "integer",
-                              "minimum": 0,
-                              "exclusiveMinimum": 0
-                            }
-                          ]
                         }
                       },
+                      "required": [
+                        "blade"
+                      ],
                       "oneOf": [
                         {
                           "required": [
@@ -15120,14 +17581,24 @@
                         },
                         {
                           "required": [
-                            "angleStart",
-                            "angleEnd"
+                            "angleStart"
                           ]
                         }
                       ],
-                      "required": [
-                        "blade"
-                      ],
+                      "not": {
+                        "required": [
+                          "angle",
+                          "angleStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -15186,11 +17657,24 @@
                         },
                         {
                           "required": [
-                            "angleStart",
-                            "angleEnd"
+                            "angleStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "angle",
+                          "angleStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -15282,6 +17766,20 @@
                           ]
                         }
                       },
+                      "not": {
+                        "required": [
+                          "fogOutput",
+                          "fogOutputStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "fogOutputStart": [
+                          "fogOutputEnd"
+                        ],
+                        "fogOutputEnd": [
+                          "fogOutputStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -15361,11 +17859,24 @@
                         },
                         {
                           "required": [
-                            "fogOutputStart",
-                            "fogOutputEnd"
+                            "fogOutputStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "fogOutput",
+                          "fogOutputStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "fogOutputStart": [
+                          "fogOutputEnd"
+                        ],
+                        "fogOutputEnd": [
+                          "fogOutputStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -15447,11 +17958,24 @@
                         },
                         {
                           "required": [
-                            "angleStart",
-                            "angleEnd"
+                            "angleStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "angle",
+                          "angleStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "angleStart": [
+                          "angleEnd"
+                        ],
+                        "angleEnd": [
+                          "angleStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -15537,11 +18061,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -15627,11 +18164,24 @@
                         },
                         {
                           "required": [
-                            "speedStart",
-                            "speedEnd"
+                            "speedStart"
                           ]
                         }
                       ],
+                      "not": {
+                        "required": [
+                          "speed",
+                          "speedStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "speedStart": [
+                          "speedEnd"
+                        ],
+                        "speedEnd": [
+                          "speedStart"
+                        ]
+                      },
                       "additionalProperties": false
                     },
                     {
@@ -15725,6 +18275,20 @@
                             }
                           ]
                         }
+                      },
+                      "not": {
+                        "required": [
+                          "parameter",
+                          "parameterStart"
+                        ]
+                      },
+                      "dependencies": {
+                        "parameterStart": [
+                          "parameterEnd"
+                        ],
+                        "parameterEnd": [
+                          "parameterStart"
+                        ]
                       },
                       "additionalProperties": false
                     },
