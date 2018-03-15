@@ -1035,75 +1035,75 @@
                             }
                           ]
                         }
+                      },
+                      "colorTemperature": {
+                        "oneOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^-?[0-9]+(\\.[0-9]+)?K$"
+                          },
+                          {
+                            "type": "string",
+                            "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                          },
+                          {
+                            "enum": [
+                              "warm",
+                              "default",
+                              "cold"
+                            ]
+                          }
+                        ]
+                      },
+                      "colorTemperatureStart": {
+                        "oneOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^-?[0-9]+(\\.[0-9]+)?K$"
+                          },
+                          {
+                            "type": "string",
+                            "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                          },
+                          {
+                            "enum": [
+                              "warm",
+                              "default",
+                              "cold"
+                            ]
+                          }
+                        ]
+                      },
+                      "colorTemperatureEnd": {
+                        "oneOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^-?[0-9]+(\\.[0-9]+)?K$"
+                          },
+                          {
+                            "type": "string",
+                            "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                          },
+                          {
+                            "enum": [
+                              "warm",
+                              "default",
+                              "cold"
+                            ]
+                          }
+                        ]
                       }
                     },
                     "oneOf": [
                       {
-                        "$comment": "No color information",
-                        "allOf": [
-                          {
-                            "not": {
-                              "required": [
-                                "colors"
-                              ]
-                            }
-                          },
-                          {
-                            "not": {
-                              "required": [
-                                "colorsStart"
-                              ]
-                            }
-                          },
-                          {
-                            "not": {
-                              "required": [
-                                "colorsEnd"
-                              ]
-                            }
-                          }
+                        "required": [
+                          "colors"
                         ]
                       },
                       {
-                        "$comment": "Step color",
-                        "allOf": [
-                          {
-                            "required": [
-                              "colors"
-                            ]
-                          },
-                          {
-                            "not": {
-                              "required": [
-                                "colorsStart"
-                              ]
-                            }
-                          },
-                          {
-                            "not": {
-                              "required": [
-                                "colorsEnd"
-                              ]
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "$comment": "Proportional color",
-                        "allOf": [
-                          {
-                            "not": {
-                              "required": [
-                                "colors"
-                              ]
-                            }
-                          },
-                          {
-                            "required": [
-                              "colorsStart",
-                              "colorsEnd"
-                            ]
-                          }
+                        "required": [
+                          "colorsStart",
+                          "colorsEnd"
                         ]
                       }
                     ],
@@ -4830,75 +4830,75 @@
                               }
                             ]
                           }
+                        },
+                        "colorTemperature": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^-?[0-9]+(\\.[0-9]+)?K$"
+                            },
+                            {
+                              "type": "string",
+                              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                            },
+                            {
+                              "enum": [
+                                "warm",
+                                "default",
+                                "cold"
+                              ]
+                            }
+                          ]
+                        },
+                        "colorTemperatureStart": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^-?[0-9]+(\\.[0-9]+)?K$"
+                            },
+                            {
+                              "type": "string",
+                              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                            },
+                            {
+                              "enum": [
+                                "warm",
+                                "default",
+                                "cold"
+                              ]
+                            }
+                          ]
+                        },
+                        "colorTemperatureEnd": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^-?[0-9]+(\\.[0-9]+)?K$"
+                            },
+                            {
+                              "type": "string",
+                              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                            },
+                            {
+                              "enum": [
+                                "warm",
+                                "default",
+                                "cold"
+                              ]
+                            }
+                          ]
                         }
                       },
                       "oneOf": [
                         {
-                          "$comment": "No color information",
-                          "allOf": [
-                            {
-                              "not": {
-                                "required": [
-                                  "colors"
-                                ]
-                              }
-                            },
-                            {
-                              "not": {
-                                "required": [
-                                  "colorsStart"
-                                ]
-                              }
-                            },
-                            {
-                              "not": {
-                                "required": [
-                                  "colorsEnd"
-                                ]
-                              }
-                            }
+                          "required": [
+                            "colors"
                           ]
                         },
                         {
-                          "$comment": "Step color",
-                          "allOf": [
-                            {
-                              "required": [
-                                "colors"
-                              ]
-                            },
-                            {
-                              "not": {
-                                "required": [
-                                  "colorsStart"
-                                ]
-                              }
-                            },
-                            {
-                              "not": {
-                                "required": [
-                                  "colorsEnd"
-                                ]
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "$comment": "Proportional color",
-                          "allOf": [
-                            {
-                              "not": {
-                                "required": [
-                                  "colors"
-                                ]
-                              }
-                            },
-                            {
-                              "required": [
-                                "colorsStart",
-                                "colorsEnd"
-                              ]
-                            }
+                          "required": [
+                            "colorsStart",
+                            "colorsEnd"
                           ]
                         }
                       ],
@@ -8736,75 +8736,75 @@
                             }
                           ]
                         }
+                      },
+                      "colorTemperature": {
+                        "oneOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^-?[0-9]+(\\.[0-9]+)?K$"
+                          },
+                          {
+                            "type": "string",
+                            "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                          },
+                          {
+                            "enum": [
+                              "warm",
+                              "default",
+                              "cold"
+                            ]
+                          }
+                        ]
+                      },
+                      "colorTemperatureStart": {
+                        "oneOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^-?[0-9]+(\\.[0-9]+)?K$"
+                          },
+                          {
+                            "type": "string",
+                            "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                          },
+                          {
+                            "enum": [
+                              "warm",
+                              "default",
+                              "cold"
+                            ]
+                          }
+                        ]
+                      },
+                      "colorTemperatureEnd": {
+                        "oneOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^-?[0-9]+(\\.[0-9]+)?K$"
+                          },
+                          {
+                            "type": "string",
+                            "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                          },
+                          {
+                            "enum": [
+                              "warm",
+                              "default",
+                              "cold"
+                            ]
+                          }
+                        ]
                       }
                     },
                     "oneOf": [
                       {
-                        "$comment": "No color information",
-                        "allOf": [
-                          {
-                            "not": {
-                              "required": [
-                                "colors"
-                              ]
-                            }
-                          },
-                          {
-                            "not": {
-                              "required": [
-                                "colorsStart"
-                              ]
-                            }
-                          },
-                          {
-                            "not": {
-                              "required": [
-                                "colorsEnd"
-                              ]
-                            }
-                          }
+                        "required": [
+                          "colors"
                         ]
                       },
                       {
-                        "$comment": "Step color",
-                        "allOf": [
-                          {
-                            "required": [
-                              "colors"
-                            ]
-                          },
-                          {
-                            "not": {
-                              "required": [
-                                "colorsStart"
-                              ]
-                            }
-                          },
-                          {
-                            "not": {
-                              "required": [
-                                "colorsEnd"
-                              ]
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "$comment": "Proportional color",
-                        "allOf": [
-                          {
-                            "not": {
-                              "required": [
-                                "colors"
-                              ]
-                            }
-                          },
-                          {
-                            "required": [
-                              "colorsStart",
-                              "colorsEnd"
-                            ]
-                          }
+                        "required": [
+                          "colorsStart",
+                          "colorsEnd"
                         ]
                       }
                     ],
@@ -12531,75 +12531,75 @@
                               }
                             ]
                           }
+                        },
+                        "colorTemperature": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^-?[0-9]+(\\.[0-9]+)?K$"
+                            },
+                            {
+                              "type": "string",
+                              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                            },
+                            {
+                              "enum": [
+                                "warm",
+                                "default",
+                                "cold"
+                              ]
+                            }
+                          ]
+                        },
+                        "colorTemperatureStart": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^-?[0-9]+(\\.[0-9]+)?K$"
+                            },
+                            {
+                              "type": "string",
+                              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                            },
+                            {
+                              "enum": [
+                                "warm",
+                                "default",
+                                "cold"
+                              ]
+                            }
+                          ]
+                        },
+                        "colorTemperatureEnd": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^-?[0-9]+(\\.[0-9]+)?K$"
+                            },
+                            {
+                              "type": "string",
+                              "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+                            },
+                            {
+                              "enum": [
+                                "warm",
+                                "default",
+                                "cold"
+                              ]
+                            }
+                          ]
                         }
                       },
                       "oneOf": [
                         {
-                          "$comment": "No color information",
-                          "allOf": [
-                            {
-                              "not": {
-                                "required": [
-                                  "colors"
-                                ]
-                              }
-                            },
-                            {
-                              "not": {
-                                "required": [
-                                  "colorsStart"
-                                ]
-                              }
-                            },
-                            {
-                              "not": {
-                                "required": [
-                                  "colorsEnd"
-                                ]
-                              }
-                            }
+                          "required": [
+                            "colors"
                           ]
                         },
                         {
-                          "$comment": "Step color",
-                          "allOf": [
-                            {
-                              "required": [
-                                "colors"
-                              ]
-                            },
-                            {
-                              "not": {
-                                "required": [
-                                  "colorsStart"
-                                ]
-                              }
-                            },
-                            {
-                              "not": {
-                                "required": [
-                                  "colorsEnd"
-                                ]
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "$comment": "Proportional color",
-                          "allOf": [
-                            {
-                              "not": {
-                                "required": [
-                                  "colors"
-                                ]
-                              }
-                            },
-                            {
-                              "required": [
-                                "colorsStart",
-                                "colorsEnd"
-                              ]
-                            }
+                          "required": [
+                            "colorsStart",
+                            "colorsEnd"
                           ]
                         }
                       ],

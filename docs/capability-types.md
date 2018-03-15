@@ -42,10 +42,11 @@ Required properties are _italic_, the entity is written in (parentheses).
   * _color_: one of our predefined Single Colors: `Red`, `Green`, `Blue`, `Cyan`, `Magenta`, `Yellow`, `Amber`, `White`, `UV`, `Lime`, `Indigo`
   * brightness (Brightness): Defaults to `brightnessStart: "off", brightnessEnd: "bright`
 * ColorPreset
-  * colors: array of individual color beams, either as hex code or color name (like `Red` or `Lavender`) that will be automatically resolved to a hex code if possible. "Individual color beams" means that is visually distinguishable from the other colors, i.e.:
+  * _colors_: array of individual color beams, either as hex code or color name (like `Red` or `Lavender`) that will be automatically resolved to a hex code if possible. "Individual color beams" means that is visually distinguishable from the other colors, i.e.:
     * A Red/Green/Blue/White/Amber LED produces a single color beam, as all these color components are mixed together. For a color preset "Red+White", `colors` should be set to `["#ffaaaa"]` or `["Lightred"]`.
     * A laser device has seperate light beams that don't mix. If red and green lasers are active, `colors` should be set to `["Red", "Green"]`.
     * UV is always counted as seperate color as the ultraviolet light doesn't really mix with normal RGB colors. For a color preset "Red+Green+UV", `colors` should be set to `["Yellow", "UV"]`.
+  * colorTemperature (ColorTemperature)
 * ColorWheelIndex
   * _index_ (Index): `0` for open, `1` for Color 1, `1.5` for Color 1/2 split, etc.
 * ColorWheelRotationAngle

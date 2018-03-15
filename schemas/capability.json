@@ -166,32 +166,14 @@
           "type": "array",
           "minItems": 1,
           "items": { "$ref": "definitions.json#/colorString" }
-        }
+        },
+        "colorTemperature": { "$ref": "definitions.json#/entities/colorTemperature" },
+        "colorTemperatureStart": { "$ref": "definitions.json#/entities/colorTemperature" },
+        "colorTemperatureEnd": { "$ref": "definitions.json#/entities/colorTemperature" }
       },
       "oneOf": [
-        {
-          "$comment": "No color information",
-          "allOf": [
-            { "not": { "required": ["colors"] } },
-            { "not": { "required": ["colorsStart"] } },
-            { "not": { "required": ["colorsEnd"] } }
-          ]
-        },
-        {
-          "$comment": "Step color",
-          "allOf": [
-            { "required": ["colors"] },
-            { "not": { "required": ["colorsStart"] } },
-            { "not": { "required": ["colorsEnd"] } }
-          ]
-        },
-        {
-          "$comment": "Proportional color",
-          "allOf": [
-            { "not": { "required": ["colors"] } },
-            { "required": ["colorsStart", "colorsEnd"] }
-          ]
-        }
+        { "required": ["colors"] },
+        { "required": ["colorsStart", "colorsEnd"] }
       ],
       "additionalProperties": false
     },
