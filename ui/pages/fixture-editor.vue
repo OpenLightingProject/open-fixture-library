@@ -427,8 +427,12 @@ export default {
       if (modeUuid) {
         const mode = this.fixture.modes.find(mode => mode.uuid === modeUuid);
 
-        // remove channel reference from mode
-        mode.channels.splice(mode.channels.indexOf(channelUuid), 1);
+        const channelPosition = mode.channels.indexOf(channelUuid);
+        if (channelPosition > -1) {
+          // remove channel reference from mode
+          mode.channels.splice(channelPosition, 1);
+        }
+
         return;
       }
 

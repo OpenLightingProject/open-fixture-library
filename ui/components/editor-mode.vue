@@ -215,6 +215,7 @@ export default {
 
             const channelUuid = dragElem.getAttribute(`data-channel-uuid`);
             const channelAlreadyExists = to.el.querySelectorAll(`[data-channel-uuid="${channelUuid}"]`).length > 0;
+            // TODO: test if all coarser channels are there
 
             return !channelAlreadyExists;
           },

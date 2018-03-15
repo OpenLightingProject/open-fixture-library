@@ -437,20 +437,20 @@ export default {
     },
 
     saveEditedChannel() {
+      const previousFineness = this.fixture.availableChannels[this.channel.uuid].fineness;
       this.fixture.availableChannels[this.channel.uuid] = getSanitizedChannel(this.channel);
 
-      let maxFoundFineness = 0;
-      for (const chId of Object.keys(this.fixture.availableChannels)) {
-        const fineChannel = this.fixture.availableChannels[chId];
-        if (`coarseChannelId` in fineChannel && fineChannel.coarseChannelId === this.channel.uuid) {
-          maxFoundFineness = Math.max(maxFoundFineness, fineChannel.fineness);
-          if (fineChannel.fineness > this.channel.fineness) {
+      if (previousFineness > this.channel.fineness) {
+        for (const chId of Object.keys(this.fixture.availableChannels)) {
+          const channel = this.fixture.availableChannels[chId];
+          if (channel.coarseChannelId === this.channel.uuid && channel.fineness > this.channel.fineness) {
             this.$emit(`remove-channel`, chId);
           }
         }
       }
-
-      this.addFineChannels(this.channel, maxFoundFineness + 1, false);
+      else {
+        this.addFineChannels(this.channel, previousFineness + 1, false);
+      }
     },
 
     saveDuplicatedChannel() {
@@ -467,6 +467,8 @@ export default {
         if (key === oldChannelKey) {
           return newChannelKey;
         }
+
+        // TODO: handle copied fine channels
 
         return key;
       });
