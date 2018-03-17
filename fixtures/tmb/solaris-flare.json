@@ -1,0 +1,850 @@
+{
+  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json",
+  "name": "Solaris Flare",
+  "shortName": "TMBFlare",
+  "categories": ["Strobe", "Blinder", "Color Changer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2018-03-15",
+    "lastModifyDate": "2018-03-15"
+  },
+  "comment": "Flares with serial numbers that contain “14R” have RDM functionality.\nExample: xxxxxx-14R-xxxx",
+  "manualURL": "http://pub.tmb.com/solaris/pdf/Solaris-Flare-Manual.pdf",
+  "rdm": {
+    "modelId": 1703,
+    "softwareVersion": "9.3C"
+  },
+  "physical": {
+    "dimensions": [210, 232, 497],
+    "weight": 9.5,
+    "power": 1000,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "96 10W RGBW Cree LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [36, 36]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "matrix": {
+    "pixelCount": [16, 6, 1],
+    "pixelGroups": {
+      "1-Pixel": [
+        "(1, 1)", "(2, 1)", "(3, 1)", "(4, 1)", "(5, 1)", "(6, 1)", "(7, 1)", "(8, 1)", "(9, 1)", "(10, 1)", "(11, 1)", "(12, 1)", "(13, 1)", "(14, 1)", "(15, 1)", "(16, 1)",
+        "(1, 2)", "(2, 2)", "(3, 2)", "(4, 2)", "(5, 2)", "(6, 2)", "(7, 2)", "(8, 2)", "(9, 2)", "(10, 2)", "(11, 2)", "(12, 2)", "(13, 2)", "(14, 2)", "(15, 2)", "(16, 2)",
+        "(1, 3)", "(2, 3)", "(3, 3)", "(4, 3)", "(5, 3)", "(6, 3)", "(7, 3)", "(8, 3)", "(9, 3)", "(10, 3)", "(11, 3)", "(12, 3)", "(13, 3)", "(14, 3)", "(15, 3)", "(16, 3)",
+        "(1, 4)", "(2, 4)", "(3, 4)", "(4, 4)", "(5, 4)", "(6, 4)", "(7, 4)", "(8, 4)", "(9, 4)", "(10, 4)", "(11, 4)", "(12, 4)", "(13, 4)", "(14, 4)", "(15, 4)", "(16, 4)",
+        "(1, 5)", "(2, 5)", "(3, 5)", "(4, 5)", "(5, 5)", "(6, 5)", "(7, 5)", "(8, 5)", "(9, 5)", "(10, 5)", "(11, 5)", "(12, 5)", "(13, 5)", "(14, 5)", "(15, 5)", "(16, 5)",
+        "(1, 6)", "(2, 6)", "(3, 6)", "(4, 6)", "(5, 6)", "(6, 6)", "(7, 6)", "(8, 6)", "(9, 6)", "(10, 6)", "(11, 6)", "(12, 6)", "(13, 6)", "(14, 6)", "(15, 6)", "(16, 6)"
+      ],
+      "2V-Pixel 1": [
+        "(1, 1)", "(2, 1)", "(3, 1)", "(4, 1)", "(5, 1)", "(6, 1)", "(7, 1)", "(8, 1)",
+        "(1, 2)", "(2, 2)", "(3, 2)", "(4, 2)", "(5, 2)", "(6, 2)", "(7, 2)", "(8, 2)",
+        "(1, 3)", "(2, 3)", "(3, 3)", "(4, 3)", "(5, 3)", "(6, 3)", "(7, 3)", "(8, 3)",
+        "(1, 4)", "(2, 4)", "(3, 4)", "(4, 4)", "(5, 4)", "(6, 4)", "(7, 4)", "(8, 4)",
+        "(1, 5)", "(2, 5)", "(3, 5)", "(4, 5)", "(5, 5)", "(6, 5)", "(7, 5)", "(8, 5)",
+        "(1, 6)", "(2, 6)", "(3, 6)", "(4, 6)", "(5, 6)", "(6, 6)", "(7, 6)", "(8, 6)"
+      ],
+      "2V-Pixel 2": [
+        "(9, 1)", "(10, 1)", "(11, 1)", "(12, 1)", "(13, 1)", "(14, 1)", "(15, 1)", "(16, 1)",
+        "(9, 2)", "(10, 2)", "(11, 2)", "(12, 2)", "(13, 2)", "(14, 2)", "(15, 2)", "(16, 2)",
+        "(9, 3)", "(10, 3)", "(11, 3)", "(12, 3)", "(13, 3)", "(14, 3)", "(15, 3)", "(16, 3)",
+        "(9, 4)", "(10, 4)", "(11, 4)", "(12, 4)", "(13, 4)", "(14, 4)", "(15, 4)", "(16, 4)",
+        "(9, 5)", "(10, 5)", "(11, 5)", "(12, 5)", "(13, 5)", "(14, 5)", "(15, 5)", "(16, 5)",
+        "(9, 6)", "(10, 6)", "(11, 6)", "(12, 6)", "(13, 6)", "(14, 6)", "(15, 6)", "(16, 6)"
+      ],
+      "2H-Pixel 1": [
+        "(1, 1)", "(2, 1)", "(3, 1)", "(4, 1)", "(5, 1)", "(6, 1)", "(7, 1)", "(8, 1)", "(9, 1)", "(10, 1)", "(11, 1)", "(12, 1)", "(13, 1)", "(14, 1)", "(15, 1)", "(16, 1)",
+        "(1, 2)", "(2, 2)", "(3, 2)", "(4, 2)", "(5, 2)", "(6, 2)", "(7, 2)", "(8, 2)", "(9, 2)", "(10, 2)", "(11, 2)", "(12, 2)", "(13, 2)", "(14, 2)", "(15, 2)", "(16, 2)",
+        "(1, 3)", "(2, 3)", "(3, 3)", "(4, 3)", "(5, 3)", "(6, 3)", "(7, 3)", "(8, 3)", "(9, 3)", "(10, 3)", "(11, 3)", "(12, 3)", "(13, 3)", "(14, 3)", "(15, 3)", "(16, 3)"
+      ],
+      "2H-Pixel 2": [
+        "(1, 4)", "(2, 4)", "(3, 4)", "(4, 4)", "(5, 4)", "(6, 4)", "(7, 4)", "(8, 4)", "(9, 4)", "(10, 4)", "(11, 4)", "(12, 4)", "(13, 4)", "(14, 4)", "(15, 4)", "(16, 4)",
+        "(1, 5)", "(2, 5)", "(3, 5)", "(4, 5)", "(5, 5)", "(6, 5)", "(7, 5)", "(8, 5)", "(9, 5)", "(10, 5)", "(11, 5)", "(12, 5)", "(13, 5)", "(14, 5)", "(15, 5)", "(16, 5)",
+        "(1, 6)", "(2, 6)", "(3, 6)", "(4, 6)", "(5, 6)", "(6, 6)", "(7, 6)", "(8, 6)", "(9, 6)", "(10, 6)", "(11, 6)", "(12, 6)", "(13, 6)", "(14, 6)", "(15, 6)", "(16, 6)"
+      ],
+      "3-Pixel 1": [
+        "(1, 1)", "(2, 1)", "(3, 1)", "(4, 1)", "(5, 1)", "(6, 1)", "(7, 1)", "(8, 1)", "(9, 1)", "(10, 1)", "(11, 1)", "(12, 1)", "(13, 1)", "(14, 1)", "(15, 1)", "(16, 1)",
+        "(1, 2)", "(2, 2)", "(3, 2)", "(4, 2)", "(5, 2)", "(6, 2)", "(7, 2)", "(8, 2)", "(9, 2)", "(10, 2)", "(11, 2)", "(12, 2)", "(13, 2)", "(14, 2)", "(15, 2)", "(16, 2)"
+      ],
+      "3-Pixel 2": [
+        "(1, 3)", "(2, 3)", "(3, 3)", "(4, 3)", "(5, 3)", "(6, 3)", "(7, 3)", "(8, 3)", "(9, 3)", "(10, 3)", "(11, 3)", "(12, 3)", "(13, 3)", "(14, 3)", "(15, 3)", "(16, 3)",
+        "(1, 4)", "(2, 4)", "(3, 4)", "(4, 4)", "(5, 4)", "(6, 4)", "(7, 4)", "(8, 4)", "(9, 4)", "(10, 4)", "(11, 4)", "(12, 4)", "(13, 4)", "(14, 4)", "(15, 4)", "(16, 4)"
+      ],
+      "3-Pixel 3": [
+        "(1, 5)", "(2, 5)", "(3, 5)", "(4, 5)", "(5, 5)", "(6, 5)", "(7, 5)", "(8, 5)", "(9, 5)", "(10, 5)", "(11, 5)", "(12, 5)", "(13, 5)", "(14, 5)", "(15, 5)", "(16, 5)",
+        "(1, 6)", "(2, 6)", "(3, 6)", "(4, 6)", "(5, 6)", "(6, 6)", "(7, 6)", "(8, 6)", "(9, 6)", "(10, 6)", "(11, 6)", "(12, 6)", "(13, 6)", "(14, 6)", "(15, 6)", "(16, 6)"
+      ],
+      "4-Pixel 1": [
+        "(1, 1)", "(2, 1)", "(3, 1)", "(4, 1)", "(5, 1)", "(6, 1)", "(7, 1)", "(8, 1)",
+        "(1, 2)", "(2, 2)", "(3, 2)", "(4, 2)", "(5, 2)", "(6, 2)", "(7, 2)", "(8, 2)",
+        "(1, 3)", "(2, 3)", "(3, 3)", "(4, 3)", "(5, 3)", "(6, 3)", "(7, 3)", "(8, 3)"
+      ],
+      "4-Pixel 2": [
+        "(9, 1)", "(10, 1)", "(11, 1)", "(12, 1)", "(13, 1)", "(14, 1)", "(15, 1)", "(16, 1)",
+        "(9, 2)", "(10, 2)", "(11, 2)", "(12, 2)", "(13, 2)", "(14, 2)", "(15, 2)", "(16, 2)",
+        "(9, 3)", "(10, 3)", "(11, 3)", "(12, 3)", "(13, 3)", "(14, 3)", "(15, 3)", "(16, 3)"
+      ],
+      "4-Pixel 3": [
+        "(1, 4)", "(2, 4)", "(3, 4)", "(4, 4)", "(5, 4)", "(6, 4)", "(7, 4)", "(8, 4)",
+        "(1, 5)", "(2, 5)", "(3, 5)", "(4, 5)", "(5, 5)", "(6, 5)", "(7, 5)", "(8, 5)",
+        "(1, 6)", "(2, 6)", "(3, 6)", "(4, 6)", "(5, 6)", "(6, 6)", "(7, 6)", "(8, 6)"
+      ],
+      "4-Pixel 4": [
+        "(9, 4)", "(10, 4)", "(11, 4)", "(12, 4)", "(13, 4)", "(14, 4)", "(15, 4)", "(16, 4)",
+        "(9, 5)", "(10, 5)", "(11, 5)", "(12, 5)", "(13, 5)", "(14, 5)", "(15, 5)", "(16, 5)",
+        "(9, 6)", "(10, 6)", "(11, 6)", "(12, 6)", "(13, 6)", "(14, 6)", "(15, 6)", "(16, 6)"
+      ],
+      "6V-Pixel 1": [
+        "(1, 1)", "(2, 1)", "(3, 1)", "(4, 1)", "(5, 1)", "(6, 1)", "(7, 1)", "(8, 1)",
+        "(1, 2)", "(2, 2)", "(3, 2)", "(4, 2)", "(5, 2)", "(6, 2)", "(7, 2)", "(8, 2)"
+      ],
+      "6V-Pixel 2": [
+        "(9, 1)", "(10, 1)", "(11, 1)", "(12, 1)", "(13, 1)", "(14, 1)", "(15, 1)", "(16, 1)",
+        "(9, 2)", "(10, 2)", "(11, 2)", "(12, 2)", "(13, 2)", "(14, 2)", "(15, 2)", "(16, 2)"
+      ],
+      "6V-Pixel 3": [
+        "(1, 3)", "(2, 3)", "(3, 3)", "(4, 3)", "(5, 3)", "(6, 3)", "(7, 3)", "(8, 3)",
+        "(1, 4)", "(2, 4)", "(3, 4)", "(4, 4)", "(5, 4)", "(6, 4)", "(7, 4)", "(8, 4)"
+      ],
+      "6V-Pixel 4": [
+        "(9, 3)", "(10, 3)", "(11, 3)", "(12, 3)", "(13, 3)", "(14, 3)", "(15, 3)", "(16, 3)",
+        "(9, 4)", "(10, 4)", "(11, 4)", "(12, 4)", "(13, 4)", "(14, 4)", "(15, 4)", "(16, 4)"
+      ],
+      "6V-Pixel 5": [
+        "(1, 5)", "(2, 5)", "(3, 5)", "(4, 5)", "(5, 5)", "(6, 5)", "(7, 5)", "(8, 5)",
+        "(1, 6)", "(2, 6)", "(3, 6)", "(4, 6)", "(5, 6)", "(6, 6)", "(7, 6)", "(8, 6)"
+      ],
+      "6V-Pixel 6": [
+        "(9, 5)", "(10, 5)", "(11, 5)", "(12, 5)", "(13, 5)", "(14, 5)", "(15, 5)", "(16, 5)",
+        "(9, 6)", "(10, 6)", "(11, 6)", "(12, 6)", "(13, 6)", "(14, 6)", "(15, 6)", "(16, 6)"
+      ],
+      "6H-Pixel 1": [
+        "(1, 1)", "(2, 1)", "(3, 1)", "(4, 1)", "(5, 1)", "(6, 1)", "(7, 1)", "(8, 1)", "(9, 1)", "(10, 1)", "(11, 1)", "(12, 1)", "(13, 1)", "(14, 1)", "(15, 1)", "(16, 1)"
+      ],
+      "6H-Pixel 2": [
+        "(1, 2)", "(2, 2)", "(3, 2)", "(4, 2)", "(5, 2)", "(6, 2)", "(7, 2)", "(8, 2)", "(9, 2)", "(10, 2)", "(11, 2)", "(12, 2)", "(13, 2)", "(14, 2)", "(15, 2)", "(16, 2)"
+      ],
+      "6H-Pixel 3": [
+        "(1, 3)", "(2, 3)", "(3, 3)", "(4, 3)", "(5, 3)", "(6, 3)", "(7, 3)", "(8, 3)", "(9, 3)", "(10, 3)", "(11, 3)", "(12, 3)", "(13, 3)", "(14, 3)", "(15, 3)", "(16, 3)"
+      ],
+      "6H-Pixel 4": [
+        "(1, 4)", "(2, 4)", "(3, 4)", "(4, 4)", "(5, 4)", "(6, 4)", "(7, 4)", "(8, 4)", "(9, 4)", "(10, 4)", "(11, 4)", "(12, 4)", "(13, 4)", "(14, 4)", "(15, 4)", "(16, 4)"
+      ],
+      "6H-Pixel 5": [
+        "(1, 5)", "(2, 5)", "(3, 5)", "(4, 5)", "(5, 5)", "(6, 5)", "(7, 5)", "(8, 5)", "(9, 5)", "(10, 5)", "(11, 5)", "(12, 5)", "(13, 5)", "(14, 5)", "(15, 5)", "(16, 5)"
+      ],
+      "6H-Pixel 6": [
+        "(1, 6)", "(2, 6)", "(3, 6)", "(4, 6)", "(5, 6)", "(6, 6)", "(7, 6)", "(8, 6)", "(9, 6)", "(10, 6)", "(11, 6)", "(12, 6)", "(13, 6)", "(14, 6)", "(15, 6)", "(16, 6)"
+      ],
+      "12-Pixel 1": [
+        "(1, 1)", "(2, 1)", "(3, 1)", "(4, 1)", "(5, 1)", "(6, 1)", "(7, 1)", "(8, 1)"
+      ],
+      "12-Pixel 2": [
+        "(1, 2)", "(2, 2)", "(3, 2)", "(4, 2)", "(5, 2)", "(6, 2)", "(7, 2)", "(8, 2)"
+      ],
+      "12-Pixel 3": [
+        "(9, 1)", "(10, 1)", "(11, 1)", "(12, 1)", "(13, 1)", "(14, 1)", "(15, 1)", "(16, 1)"
+      ],
+      "12-Pixel 4": [
+        "(9, 2)", "(10, 2)", "(11, 2)", "(12, 2)", "(13, 2)", "(14, 2)", "(15, 2)", "(16, 2)"
+      ],
+      "12-Pixel 5": [
+        "(1, 3)", "(2, 3)", "(3, 3)", "(4, 3)", "(5, 3)", "(6, 3)", "(7, 3)", "(8, 3)"
+      ],
+      "12-Pixel 6": [
+        "(1, 4)", "(2, 4)", "(3, 4)", "(4, 4)", "(5, 4)", "(6, 4)", "(7, 4)", "(8, 4)"
+      ],
+      "12-Pixel 7": [
+        "(9, 3)", "(10, 3)", "(11, 3)", "(12, 3)", "(13, 3)", "(14, 3)", "(15, 3)", "(16, 3)"
+      ],
+      "12-Pixel 8": [
+        "(9, 4)", "(10, 4)", "(11, 4)", "(12, 4)", "(13, 4)", "(14, 4)", "(15, 4)", "(16, 4)"
+      ],
+      "12-Pixel 9": [
+        "(1, 5)", "(2, 5)", "(3, 5)", "(4, 5)", "(5, 5)", "(6, 5)", "(7, 5)", "(8, 5)"
+      ],
+      "12-Pixel 10": [
+        "(1, 6)", "(2, 6)", "(3, 6)", "(4, 6)", "(5, 6)", "(6, 6)", "(7, 6)", "(8, 6)"
+      ],
+      "12-Pixel 11": [
+        "(9, 5)", "(10, 5)", "(11, 5)", "(12, 5)", "(13, 5)", "(14, 5)", "(15, 5)", "(16, 5)"
+      ],
+      "12-Pixel 12": [
+        "(9, 6)", "(10, 6)", "(11, 6)", "(12, 6)", "(13, 6)", "(14, 6)", "(15, 6)", "(16, 6)"
+      ]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "fineChannelAliases": ["Red fine"]
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "fineChannelAliases": ["Green fine"]
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "fineChannelAliases": ["Blue fine"]
+    },
+    "White": {
+      "type": "Single Color",
+      "color": "White",
+      "fineChannelAliases": ["White fine"]
+    },
+    "Flash intensity": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "Blackout"
+        },
+        {
+          "range": [6, 255],
+          "name": "Intensity level"
+        }
+      ]
+    },
+    "Flash duration": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 254],
+          "name": "0 - 650ms"
+        },
+        {
+          "range": [255, 255],
+          "name": "HYPER"
+        }
+      ]
+    },
+    "Flash rate": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "No flash"
+        },
+        {
+          "range": [6, 255],
+          "name": "0.5 - 25Hz"
+        }
+      ]
+    },
+    "Flash effects": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "No effect"
+        },
+        {
+          "range": [5, 5],
+          "name": "Wash Override (only in RGB/RGBW Strobe modes)"
+        },
+        {
+          "range": [6, 42],
+          "name": "Ramp up"
+        },
+        {
+          "range": [43, 85],
+          "name": "Ramp down"
+        },
+        {
+          "range": [86, 128],
+          "name": "Ramp up - down"
+        },
+        {
+          "range": [129, 171],
+          "name": "Random"
+        },
+        {
+          "range": [172, 214],
+          "name": "Lightning"
+        },
+        {
+          "range": [215, 240],
+          "name": "Spikes"
+        },
+        {
+          "range": [241, 245],
+          "name": "Burst (use rate at full)"
+        },
+        {
+          "range": [246, 250],
+          "name": "Meltdown: Random Pixels with solid background"
+        },
+        {
+          "range": [251, 255],
+          "name": "Meltdown: Random pixels with burst background"
+        }
+      ]
+    },
+    "Red Strobe": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green Strobe": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue Strobe": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "White Strobe": {
+      "type": "Single Color",
+      "color": "White"
+    }
+  },
+  "templateChannels": {
+    "$pixelKey Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "$pixelKey Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "$pixelKey Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "$pixelKey White": {
+      "type": "Single Color",
+      "color": "White"
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic RGB 8bit",
+      "shortName": "RGB8bit",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "Basic RGB 16bit",
+      "shortName": "RGB16bit",
+      "rdmPersonalityIndex": 2,
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine"
+      ]
+    },
+    {
+      "name": "Basic RGBW 8bit",
+      "shortName": "RGBW8bit",
+      "rdmPersonalityIndex": 3,
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "Basic RGBW 16bit",
+      "shortName": "RGBW16bit",
+      "rdmPersonalityIndex": 4,
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine"
+      ]
+    },
+    {
+      "name": "Strobe Only",
+      "shortName": "strobe",
+      "rdmPersonalityIndex": 5,
+      "channels": [
+        "Flash intensity",
+        "Flash duration",
+        "Flash rate",
+        "Flash effects"
+      ]
+    },
+    {
+      "name": "RGB Strobe",
+      "shortName": "RGBstrobe",
+      "rdmPersonalityIndex": 6,
+      "channels": [
+        "Red Strobe",
+        "Green Strobe",
+        "Blue Strobe",
+        "Flash intensity",
+        "Flash duration",
+        "Flash rate",
+        "Flash effects"
+      ]
+    },
+    {
+      "name": "RGBW Strobe",
+      "shortName": "RGBWstrobe",
+      "rdmPersonalityIndex": 7,
+      "channels": [
+        "Red Strobe",
+        "Green Strobe",
+        "Blue Strobe",
+        "White Strobe",
+        "Flash intensity",
+        "Flash duration",
+        "Flash rate",
+        "Flash effects"
+      ]
+    },
+    {
+      "name": "Advanced RGB Strobe 1-Pixel",
+      "shortName": "RGBstrobe1pix",
+      "rdmPersonalityIndex": 8,
+      "channels": [
+        "Red Strobe",
+        "Green Strobe",
+        "Blue Strobe",
+        "Flash intensity",
+        "Flash duration",
+        "Flash rate",
+        "Flash effects",
+        "1-Pixel Red",
+        "1-Pixel Green",
+        "1-Pixel Blue"
+      ]
+    },
+    {
+      "name": "Advanced RGB Strobe 2V-Pixel",
+      "shortName": "RGBstrobe2pixV",
+      "rdmPersonalityIndex": 9,
+      "channels": [
+        "Red Strobe",
+        "Green Strobe",
+        "Blue Strobe",
+        "Flash intensity",
+        "Flash duration",
+        "Flash rate",
+        "Flash effects",
+        "2V-Pixel 1 Red",
+        "2V-Pixel 1 Green",
+        "2V-Pixel 1 Blue",
+        "2V-Pixel 2 Red",
+        "2V-Pixel 2 Green",
+        "2V-Pixel 2 Blue"
+      ]
+    },
+    {
+      "name": "Advanced RGB Strobe 2H-Pixel",
+      "shortName": "RGBstrobe2pixH",
+      "channels": [
+        "Red Strobe",
+        "Green Strobe",
+        "Blue Strobe",
+        "Flash intensity",
+        "Flash duration",
+        "Flash rate",
+        "Flash effects",
+        "2H-Pixel 1 Red",
+        "2H-Pixel 1 Green",
+        "2H-Pixel 1 Blue",
+        "2H-Pixel 2 Red",
+        "2H-Pixel 2 Green",
+        "2H-Pixel 2 Blue"
+      ]
+    },
+    {
+      "name": "Advanced RGB Strobe 3-Pixel",
+      "shortName": "RGBstrobe3pix",
+      "channels": [
+        "Red Strobe",
+        "Green Strobe",
+        "Blue Strobe",
+        "Flash intensity",
+        "Flash duration",
+        "Flash rate",
+        "Flash effects",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "3-Pixel 1",
+            "3-Pixel 2",
+            "3-Pixel 3"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Advanced RGB Strobe 4-Pixel",
+      "shortName": "RGBstrobe4pix",
+      "rdmPersonalityIndex": 10,
+      "channels": [
+        "Red Strobe",
+        "Green Strobe",
+        "Blue Strobe",
+        "Flash intensity",
+        "Flash duration",
+        "Flash rate",
+        "Flash effects",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "4-Pixel 1",
+            "4-Pixel 2",
+            "4-Pixel 3",
+            "4-Pixel 4"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Advanced RGB Strobe 6V-Pixel",
+      "shortName": "RGBstrobe6pixV",
+      "channels": [
+        "Red Strobe",
+        "Green Strobe",
+        "Blue Strobe",
+        "Flash intensity",
+        "Flash duration",
+        "Flash rate",
+        "Flash effects",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "6V-Pixel 1",
+            "6V-Pixel 2",
+            "6V-Pixel 3",
+            "6V-Pixel 4",
+            "6V-Pixel 5",
+            "6V-Pixel 6"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Advanced RGB Strobe 6H-Pixel",
+      "shortName": "RGBstrobe6pixH",
+      "channels": [
+        "Red Strobe",
+        "Green Strobe",
+        "Blue Strobe",
+        "Flash intensity",
+        "Flash duration",
+        "Flash rate",
+        "Flash effects",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "6H-Pixel 1",
+            "6H-Pixel 2",
+            "6H-Pixel 3",
+            "6H-Pixel 4",
+            "6H-Pixel 5",
+            "6H-Pixel 6"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Advanced RGB Strobe 12-Pixel",
+      "shortName": "RGBstrobe12pix",
+      "channels": [
+        "Red Strobe",
+        "Green Strobe",
+        "Blue Strobe",
+        "Flash intensity",
+        "Flash duration",
+        "Flash rate",
+        "Flash effects",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "12-Pixel 1",
+            "12-Pixel 2",
+            "12-Pixel 3",
+            "12-Pixel 4",
+            "12-Pixel 5",
+            "12-Pixel 6",
+            "12-Pixel 7",
+            "12-Pixel 8",
+            "12-Pixel 9",
+            "12-Pixel 10",
+            "12-Pixel 11",
+            "12-Pixel 12"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Advanced RGBW Strobe 1-Pixel",
+      "shortName": "RGBWstrobe1pix",
+      "rdmPersonalityIndex": 11,
+      "channels": [
+        "Red Strobe",
+        "Green Strobe",
+        "Blue Strobe",
+        "White Strobe",
+        "Flash intensity",
+        "Flash duration",
+        "Flash rate",
+        "Flash effects",
+        "1-Pixel Red",
+        "1-Pixel Green",
+        "1-Pixel Blue",
+        "1-Pixel White"
+      ]
+    },
+    {
+      "name": "Advanced RGBW Strobe 2V-Pixel",
+      "shortName": "RGBWstrobe2pixV",
+      "rdmPersonalityIndex": 12,
+      "channels": [
+        "Red Strobe",
+        "Green Strobe",
+        "Blue Strobe",
+        "White Strobe",
+        "Flash intensity",
+        "Flash duration",
+        "Flash rate",
+        "Flash effects",
+        "2V-Pixel 1 Red",
+        "2V-Pixel 1 Green",
+        "2V-Pixel 1 Blue",
+        "2V-Pixel 1 White",
+        "2V-Pixel 2 Red",
+        "2V-Pixel 2 Green",
+        "2V-Pixel 2 Blue",
+        "2V-Pixel 2 White"
+      ]
+    },
+    {
+      "name": "Advanced RGBW Strobe 2H-Pixel",
+      "shortName": "RGBWstrobe2pixH",
+      "channels": [
+        "Red Strobe",
+        "Green Strobe",
+        "Blue Strobe",
+        "White Strobe",
+        "Flash intensity",
+        "Flash duration",
+        "Flash rate",
+        "Flash effects",
+        "2H-Pixel 1 Red",
+        "2H-Pixel 1 Green",
+        "2H-Pixel 1 Blue",
+        "2H-Pixel 1 White",
+        "2H-Pixel 2 Red",
+        "2H-Pixel 2 Green",
+        "2H-Pixel 2 Blue",
+        "2H-Pixel 2 White"
+      ]
+    },
+    {
+      "name": "Advanced RGBW Strobe 3-Pixel",
+      "shortName": "RGBWstrobe3pix",
+      "channels": [
+        "Red Strobe",
+        "Green Strobe",
+        "Blue Strobe",
+        "White Strobe",
+        "Flash intensity",
+        "Flash duration",
+        "Flash rate",
+        "Flash effects",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "3-Pixel 1",
+            "3-Pixel 2",
+            "3-Pixel 3"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Advanced RGBW Strobe 4-Pixel",
+      "shortName": "RGBWstrobe4pix",
+      "rdmPersonalityIndex": 13,
+      "channels": [
+        "Red Strobe",
+        "Green Strobe",
+        "Blue Strobe",
+        "White Strobe",
+        "Flash intensity",
+        "Flash duration",
+        "Flash rate",
+        "Flash effects",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "4-Pixel 1",
+            "4-Pixel 2",
+            "4-Pixel 3",
+            "4-Pixel 4"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Advanced RGBW Strobe 6V-Pixel",
+      "shortName": "RGBWstrobe6pixV",
+      "channels": [
+        "Red Strobe",
+        "Green Strobe",
+        "Blue Strobe",
+        "White Strobe",
+        "Flash intensity",
+        "Flash duration",
+        "Flash rate",
+        "Flash effects",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "6V-Pixel 1",
+            "6V-Pixel 2",
+            "6V-Pixel 3",
+            "6V-Pixel 4",
+            "6V-Pixel 5",
+            "6V-Pixel 6"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Advanced RGBW Strobe 6H-Pixel",
+      "shortName": "RGBWstrobe6pixH",
+      "channels": [
+        "Red Strobe",
+        "Green Strobe",
+        "Blue Strobe",
+        "White Strobe",
+        "Flash intensity",
+        "Flash duration",
+        "Flash rate",
+        "Flash effects",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "6H-Pixel 1",
+            "6H-Pixel 2",
+            "6H-Pixel 3",
+            "6H-Pixel 4",
+            "6H-Pixel 5",
+            "6H-Pixel 6"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Advanced RGBW Strobe 12-Pixel",
+      "shortName": "RGBWstrobe12pix",
+      "channels": [
+        "Red Strobe",
+        "Green Strobe",
+        "Blue Strobe",
+        "White Strobe",
+        "Flash intensity",
+        "Flash duration",
+        "Flash rate",
+        "Flash effects",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "12-Pixel 1",
+            "12-Pixel 2",
+            "12-Pixel 3",
+            "12-Pixel 4",
+            "12-Pixel 5",
+            "12-Pixel 6",
+            "12-Pixel 7",
+            "12-Pixel 8",
+            "12-Pixel 9",
+            "12-Pixel 10",
+            "12-Pixel 11",
+            "12-Pixel 12"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White"
+          ]
+        }
+      ]
+    }
+  ]
+}
