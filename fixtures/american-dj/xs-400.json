@@ -15,292 +15,342 @@
     "power": 45,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "4x 10W RGBW LEDs"
+      "type": "4x 10W RGBW LEDs",
+      "lumens": 454
+    },
+    "lens": {
+      "degreesMinMax": [5, 5]
     },
     "focus": {
-      "type": "Head"
+      "type": "Head",
+      "panMax": 540
     }
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan",
-      "fineChannelAliases": ["Pan fine"]
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
-      "fineChannelAliases": ["Tilt fine"]
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
     },
     "Tilt Continuous Rotation": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 55],
-          "name": "No function"
+          "dmxRange": [0, 55],
+          "type": "Nothing"
         },
         {
-          "range": [56, 127],
-          "name": "Clockwise rotation"
+          "dmxRange": [56, 127],
+          "type": "TiltContinuous",
+          "speed": "fast CW"
         },
         {
-          "range": [128, 199],
-          "name": "Counter-clockwise rotation"
+          "dmxRange": [128, 199],
+          "type": "TiltContinuous",
+          "speed": "fast CCW"
         },
         {
-          "range": [200, 255],
-          "name": "No function"
+          "dmxRange": [200, 255],
+          "type": "Nothing"
         }
       ]
     },
     "Tilt Continuous Rotation Speed": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "slow - fast"
-        }
-      ]
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Red": {
-      "type": "Single Color",
-      "color": "Red"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White": {
-      "type": "Single Color",
-      "color": "White"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "Color Macros & Effects": {
-      "type": "Multi-Color",
-      "crossfade": false,
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "No function",
-          "color": "#000000"
+          "dmxRange": [0, 10],
+          "type": "Nothing"
         },
         {
-          "range": [11, 20],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [11, 20],
+          "type": "ColorPreset",
+          "colors": ["Red"]
         },
         {
-          "range": [21, 30],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [21, 30],
+          "type": "ColorPreset",
+          "colors": ["Green"]
         },
         {
-          "range": [31, 40],
-          "name": "Red & Green",
-          "color": "#ffff00"
+          "dmxRange": [31, 40],
+          "type": "ColorPreset",
+          "colors": ["Red", "Green"]
         },
         {
-          "range": [41, 50],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [41, 50],
+          "type": "ColorPreset",
+          "colors": ["Blue"]
         },
         {
-          "range": [51, 60],
-          "name": "Red & Blue",
-          "color": "#ff00ff"
+          "dmxRange": [51, 60],
+          "type": "ColorPreset",
+          "colors": ["Red", "Blue"]
         },
         {
-          "range": [61, 70],
-          "name": "Green & Blue",
-          "color": "#00ffff"
+          "dmxRange": [61, 70],
+          "type": "ColorPreset",
+          "colors": ["Green", "Blue"]
         },
         {
-          "range": [71, 80],
-          "name": "Red & Green & Blue",
-          "color": "#ffffff"
+          "dmxRange": [71, 80],
+          "type": "ColorPreset",
+          "colors": ["Red", "Green", "Blue"]
         },
         {
-          "range": [81, 123],
-          "name": "Single color change slow - fast"
+          "dmxRange": [81, 123],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [124, 166],
-          "name": "Color mix slow - fast"
+          "dmxRange": [124, 166],
+          "type": "Effect",
+          "effectName": "Color Mix",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [167, 209],
-          "name": "Color fade slow - fast"
+          "dmxRange": [167, 209],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [210, 249],
-          "name": "Color change slow - fast"
+          "dmxRange": [210, 249],
+          "type": "Effect",
+          "effectName": "Color Change",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [250, 255],
-          "name": "Sound active color effect"
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectPreset": "SoundControl"
         }
       ]
     },
     "Strobing": {
-      "type": "Strobe",
-      "crossfade": false,
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "Blackout"
+          "dmxRange": [0, 7],
+          "type": "Nothing",
         },
         {
-          "range": [8, 139],
-          "name": "Strobing slow - fast"
+          "dmxRange": [8, 139],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [140, 189],
-          "name": "Slow open - fast close"
+          "dmxRange": [140, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [190, 239],
-          "name": "Fast open - slow close"
+          "dmxRange": [190, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [240, 255],
-          "name": "Random strobe"
+          "dmxRange": [240, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "StrobeRandom"
         }
       ]
     },
     "Master Dimmer": {
-      "type": "Intensity"
+      "capability": {
+        "type": "Nothing"
+      }
     },
     "Programs": {
-      "type": "Effect",
-      "crossfade": false,
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "Nothing"
+          "dmxRange": [0, 15],
+          "type": "Nothing"
         },
         {
-          "range": [16, 40],
-          "name": "Program 1"
+          "dmxRange": [16, 40],
+          "type": "Effect",
+          "effectName": "Program 1"
         },
         {
-          "range": [41, 65],
-          "name": "Program 2"
+          "dmxRange": [41, 65],
+          "type": "Effect",
+          "effectName": "Program 2"
         },
         {
-          "range": [66, 90],
-          "name": "Program 3"
+          "dmxRange": [66, 90],
+          "type": "Effect",
+          "effectName": "Program 3"
         },
         {
-          "range": [91, 115],
-          "name": "Program 4"
+          "dmxRange": [91, 115],
+          "type": "Effect",
+          "effectName": "Program 4"
         },
         {
-          "range": [116, 140],
-          "name": "Program 5"
+          "dmxRange": [116, 140],
+          "type": "Effect",
+          "effectName": "Program 5"
         },
         {
-          "range": [141, 165],
-          "name": "Program 6"
+          "dmxRange": [141, 165],
+          "type": "Effect",
+          "effectName": "Program 6"
         },
         {
-          "range": [166, 190],
-          "name": "Program 7"
+          "dmxRange": [166, 190],
+          "type": "Effect",
+          "effectName": "Program 7"
         },
         {
-          "range": [191, 215],
-          "name": "Program 8"
+          "dmxRange": [191, 215],
+          "type": "Effect",
+          "effectName": "Program 8"
         },
         {
-          "range": [216, 240],
-          "name": "Random program playing 5 times each"
+          "dmxRange": [216, 240],
+          "type": "Effect",
+          "effectName": "Random program playing 5 times each"
         },
         {
-          "range": [241, 255],
-          "name": "Random program 2min each"
+          "dmxRange": [241, 255],
+          "type": "Effect",
+          "effectName": "Random program 2min each"
         }
       ]
     },
     "Program Speed": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "slow - fast"
-        }
-      ]
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Pan / Tilt Speed": {
-      "type": "Speed",
       "defaultValue": 0,
-      "invert": true,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "fast - slow"
-        }
-      ]
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
     },
     "Special Functions": {
-      "type": "Maintenance",
       "capabilities": [
         {
-          "range": [0, 69],
-          "name": "No function"
+          "dmxRange": [0, 69],
+          "type": "Nothing"
         },
         {
-          "range": [70, 79],
-          "name": "Blackout with Pan / Tilt movement"
+          "dmxRange": [70, 79],
+          "type": "Maintenance",
+          "comment": "Blackout with Pan / Tilt movement"
         },
         {
-          "range": [80, 89],
-          "name": "No function"
+          "dmxRange": [80, 89],
+          "type": "Nothing"
         },
         {
-          "range": [90, 99],
-          "name": "Blackout with RGBW value change"
+          "dmxRange": [90, 99],
+          "type": "Maintenance",
+          "comment": "Blackout with RGBW value change"
         },
         {
-          "range": [100, 199],
-          "name": "No function"
+          "dmxRange": [100, 199],
+          "type": "Nothing"
         },
         {
-          "range": [200, 209],
-          "name": "Reset all"
+          "dmxRange": [200, 209],
+          "type": "Maintenance",
+          "comment": "Reset all"
         },
         {
-          "range": [210, 255],
-          "name": "No function"
+          "dmxRange": [210, 255],
+          "type": "Nothing"
         }
       ]
     },
     "Dimmer Curve": {
-      "type": "Maintenance",
       "defaultValue": 255,
       "capabilities": [
         {
-          "range": [0, 20],
-          "name": "Standard"
+          "dmxRange": [0, 20],
+          "type": "Maintenance",
+          "comment": "Standard"
         },
         {
-          "range": [21, 40],
-          "name": "Stage"
+          "dmxRange": [21, 40],
+          "type": "Maintenance",
+          "comment": "Stage"
         },
         {
-          "range": [41, 60],
-          "name": "TV"
+          "dmxRange": [41, 60],
+          "type": "Maintenance",
+          "comment": "TV"
         },
         {
-          "range": [61, 80],
-          "name": "Architectural"
+          "dmxRange": [61, 80],
+          "type": "Maintenance",
+          "comment": "Architectural"
         },
         {
-          "range": [81, 100],
-          "name": "Theatre"
+          "dmxRange": [81, 100],
+          "type": "Maintenance",
+          "comment": "Theatre"
         },
         {
-          "range": [101, 255],
-          "name": "Default setting"
+          "dmxRange": [101, 255],
+          "type": "Maintenance",
+          "comment": "Default setting"
         }
       ]
     }
