@@ -1,0 +1,48 @@
+/* Font faces for all Lato font flavors and their italic variant */
+@mixin lato-font($flavor) {
+  $url: '/fonts/LatoLatin/LatoLatin-' + $flavor;
+  @font-face {
+    font-family: 'LatoLatin' + $flavor;
+    src: local("Lato #{$flavor}"),
+         local("Lato-#{$flavor}"),
+         url($url + '.woff2') format('woff2'),
+         url($url + '.woff')  format('woff');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+  }
+  @font-face {
+    font-family: 'LatoLatin' + $flavor;
+    src: local("Lato #{$flavor} Italic"),
+         local("Lato-#{$flavor}Italic"),
+         url($url + 'Italic.woff2') format('woff2'),
+         url($url + 'Italic.woff')  format('woff');
+    font-style: italic;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+$lato-flavor-list: 'Light', 'Regular', 'Semibold', 'Heavy';
+
+@each $flavor in $lato-flavor-list {
+  @include lato-font($flavor);
+}
+
+/* Font faces for both Inconsolata weights */
+@font-face {
+  font-family: Inconsolata;
+  src: local('Inconsolata Regular'),
+       local('Inconsolata-Regular'),
+       url('/fonts/Inconsolata/Inconsolata-Regular.ttf')  format('truetype');
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+}
+@font-face {
+  font-family: Inconsolata;
+  src: local('Inconsolata Bold'),
+       local('Inconsolata-Bold'),
+       url('/fonts/Inconsolata/Inconsolata-Bold.ttf')  format('truetype');
+  font-weight: 700;
+  text-rendering: optimizeLegibility;
+}

@@ -3,12 +3,17 @@
     "es6": true,
     "node": true
   },
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
   "plugins": [
-    "security"
+    "security",
+    "vue"
   ],
   "extends": [
     "eslint:recommended",
-    "plugin:security/recommended"
+    "plugin:security/recommended",
+    "plugin:vue/recommended"
   ],
   "rules": {
     "accessor-pairs": "error",
@@ -111,6 +116,10 @@
         "Object": "object",
         "String": "string"
       }
-    }]
+    }],
+    "vue/max-attributes-per-line": ["error", { "singleline": 3 }],
+    "vue/html-closing-bracket-newline": "error",
+    "vue/html-closing-bracket-spacing": "error",
+    "vue/prop-name-casing": "error"
   }
 }
