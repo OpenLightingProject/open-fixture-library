@@ -5,7 +5,7 @@
         v-model="capability.range"
         :formstate="formstate"
         :name="`capability${capability.uuid}-range`"
-        :schema-property="properties.capability.range"
+        :schema-property="properties.capability.dmxRange"
         :range-min="min"
         :range-max="max"
         :required="isChanged"
