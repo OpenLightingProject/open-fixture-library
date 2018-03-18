@@ -27,89 +27,99 @@
   },
   "availableChannels": {
     "UV": {
-      "type": "Single Color",
-      "color": "UV",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
     },
     "Strobe": {
-      "type": "Strobe",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "No function"
+          "dmxRange": [0, 15],
+          "type": "Nothing"
         },
         {
-          "range": [16, 255],
-          "name": "Slow-fast"
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Program Speed": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Slow-fast"
-        }
-      ]
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Sound Sensitivity": {
-      "type": "Intensity",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "Off"
+          "dmxRange": [0, 10],
+          "type": "SoundSensitivity",
+          "sensitivity": "off"
         },
         {
-          "range": [11, 255],
-          "name": "Sound sensitivity low-high"
+          "dmxRange": [11, 255],
+          "type": "SoundSensitivity",
+          "sensitivityStart": "low",
+          "sensitivityEnd": "high"
         }
       ]
     },
     "Programs": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 31],
-          "name": "No function",
+          "dmxRange": [0, 31],
+          "type": "Nothing",
           "switchChannels": {
             "Strobe / Program Speed / Sound Sensitivity": "Strobe"
           }
         },
         {
-          "range": [32, 95],
-          "name": "Pulse effect 0-100%",
+          "dmxRange": [32, 95],
+          "type": "Effect",
+          "effectName": "Pulse effect 0-100%",
           "switchChannels": {
             "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [96, 159],
-          "name": "Pulse effect 100-0%",
+          "dmxRange": [96, 159],
+          "type": "Effect",
+          "effectName": "Pulse effect 100-0%",
           "switchChannels": {
             "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [160, 223],
-          "name": "Pulse effect 100-0-100%",
+          "dmxRange": [160, 223],
+          "type": "Effect",
+          "effectName": "Pulse effect 100-0-100%",
           "switchChannels": {
             "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [224, 240],
-          "name": "Sound mode 1",
+          "dmxRange": [224, 240],
+          "type": "Effect",
+          "effectPreset": "SoundControl",
+          "comment": "Sound mode 1",
           "switchChannels": {
             "Strobe / Program Speed / Sound Sensitivity": "Sound Sensitivity"
           }
         },
         {
-          "range": [241, 255],
-          "name": "Sound mode 2",
+          "dmxRange": [241, 255],
+          "type": "Effect",
+          "effectPreset": "SoundControl",
+          "comment": "Sound mode 2",
           "switchChannels": {
             "Strobe / Program Speed / Sound Sensitivity": "Sound Sensitivity"
           }
@@ -117,32 +127,39 @@
       ]
     },
     "Dimmer": {
-      "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Dimmer Speed": {
-      "type": "Maintenance",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 51],
-          "name": "Default dimmer speed"
+          "dmxRange": [0, 51],
+          "type": "Maintenance",
+          "comment": "default"
         },
         {
-          "range": [52, 101],
-          "name": "Dimmer speed off"
+          "dmxRange": [52, 101],
+          "type": "Speed",
+          "speed": "stop"
         },
         {
-          "range": [102, 152],
-          "name": "Dimmer speed fast"
+          "dmxRange": [102, 152],
+          "type": "Speed",
+          "speed": "fast"
         },
         {
-          "range": [153, 204],
-          "name": "Dimmer speed medium"
+          "dmxRange": [153, 204],
+          "type": "Speed",
+          "speed": "50%",
+          "comment": "medium"
         },
         {
-          "range": [205, 255],
-          "name": "Dimmer speed slow"
+          "dmxRange": [205, 255],
+          "type": "Speed",
+          "speed": "slow"
         }
       ]
     }
