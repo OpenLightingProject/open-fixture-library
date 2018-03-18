@@ -23,63 +23,76 @@
   },
   "availableChannels": {
     "Motor Speed": {
-      "type": "Speed",
       "defaultValue": 128,
-      "crossfade": true,
       "capabilities": [
         {
-          "range": [0, 3],
-          "name": "Off"
+          "dmxRange": [0, 3],
+          "type": "RotationSpeed",
+          "speed": "stop"
         },
         {
-          "range": [4, 4],
-          "name": "CCW full speed"
+          "dmxRange": [4, 119],
+          "type": "RotationSpeed",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
         },
         {
-          "range": [5, 119],
-          "name": "CCW",
+          "dmxRange": [120, 139],
+          "type": "RotationSpeed",
+          "speed": "stop",
           "menuClick": "center"
         },
         {
-          "range": [120, 139],
-          "name": "Off",
-          "menuClick": "center"
-        },
-        {
-          "range": [140, 254],
-          "name": "CW",
-          "menuClick": "center"
-        },
-        {
-          "range": [255, 255],
-          "name": "CW full speed"
+          "dmxRange": [140, 255],
+          "type": "RotationSpeed",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         }
       ]
     },
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
       "highlightValue": 255,
-      "crossfade": true,
-      "precedence": "HTP"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green",
       "highlightValue": 255,
-      "crossfade": true,
-      "precedence": "HTP"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
       "highlightValue": 255,
-      "crossfade": true,
-      "precedence": "HTP"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "Strobe": {
-      "type": "Strobe",
-      "highlightValue": 230
+      "highlightValue": 230,
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [30, 244],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "fast"
+        }
+      ]
     }
   },
   "modes": [
