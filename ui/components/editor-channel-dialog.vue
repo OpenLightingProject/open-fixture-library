@@ -39,7 +39,7 @@
             class="channelName" />
         </app-simple-label>
 
-        <app-simple-label :formstate="formstate" name="type" label="Type">
+        <!-- <app-simple-label :formstate="formstate" name="type" label="Type">
           <app-property-input-select
             v-model="channel.type"
             :schema-property="properties.channel.type"
@@ -85,7 +85,7 @@
               hint="other channel color"
               class="addition" />
           </validate>
-        </app-simple-label>
+        </app-simple-label> -->
 
         <h3>DMX values</h3>
 
@@ -117,12 +117,12 @@
             step="1">
         </app-simple-label>
 
-        <app-simple-label :formstate="formstate" name="invert" label="Invert?">
+        <!-- <app-simple-label :formstate="formstate" name="invert" label="Invert?">
           <app-property-input-boolean
             v-model="channel.invert"
             :schema-property="properties.channel.invert"
             name="invert" />
-        </app-simple-label>
+        </app-simple-label> -->
 
         <app-simple-label :formstate="formstate" name="constant" label="Constant?">
           <app-property-input-boolean
@@ -131,12 +131,12 @@
             name="constant" />
         </app-simple-label>
 
-        <app-simple-label :formstate="formstate" name="crossfade" label="Crossfade?">
+        <!-- <app-simple-label :formstate="formstate" name="crossfade" label="Crossfade?">
           <app-property-input-boolean
             v-model="channel.crossfade"
             :schema-property="properties.channel.crossfade"
             name="crossfade" />
-        </app-simple-label>
+        </app-simple-label> -->
 
         <app-simple-label :formstate="formstate" name="precedence" label="Precedence">
           <app-property-input-select
