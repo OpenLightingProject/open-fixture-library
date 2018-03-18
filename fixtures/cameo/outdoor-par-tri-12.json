@@ -27,124 +27,132 @@
   },
   "availableChannels": {
     "Master dimmer": {
-      "type": "Intensity",
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Color Macro Simple": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 31],
-          "name": "Blackout",
-          "color": "#000000"
+          "dmxRange": [0, 31],
+          "type": "ColorPreset",
+          "colors": ["Black"]
         },
         {
-          "range": [32, 63],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [32, 63],
+          "type": "ColorPreset",
+          "colors": ["Red"]
         },
         {
-          "range": [64, 95],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [64, 95],
+          "type": "ColorPreset",
+          "colors": ["Green"]
         },
         {
-          "range": [96, 127],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [96, 127],
+          "type": "ColorPreset",
+          "colors": ["Blue"]
         },
         {
-          "range": [128, 159],
-          "name": "Yellow",
-          "color": "#ffff00"
+          "dmxRange": [128, 159],
+          "type": "ColorPreset",
+          "colors": ["Yellow"]
         },
         {
-          "range": [160, 191],
-          "name": "Cyan",
-          "color": "#00ffff"
+          "dmxRange": [160, 191],
+          "type": "ColorPreset",
+          "colors": ["Cyan"]
         },
         {
-          "range": [192, 223],
-          "name": "Magenta",
-          "color": "#ff00ff"
+          "dmxRange": [192, 223],
+          "type": "ColorPreset",
+          "colors": ["Magenta"]
         },
         {
-          "range": [224, 255],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [224, 255],
+          "type": "ColorPreset",
+          "colors": ["White"]
         }
       ]
     },
     "Strobe": {
-      "type": "Strobe"
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
     },
     "Color Macro Advanced": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 4],
-          "name": "Blackout",
-          "color": "#000000"
+          "dmxRange": [0, 4],
+          "type": "Nothing"
         },
         {
-          "range": [5, 15],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [5, 15],
+          "type": "ColorPreset",
+          "colors": ["Red"]
         },
         {
-          "range": [16, 26],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [16, 26],
+          "type": "ColorPreset",
+          "colors": ["Green"]
         },
         {
-          "range": [27, 37],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [27, 37],
+          "type": "ColorPreset",
+          "colors": ["Blue"]
         },
         {
-          "range": [38, 48],
-          "name": "Yellow",
-          "color": "#ffff00"
+          "dmxRange": [38, 48],
+          "type": "ColorPreset",
+          "colors": ["Yellow"]
         },
         {
-          "range": [49, 59],
-          "name": "Cyan",
-          "color": "#00ffff"
+          "dmxRange": [49, 59],
+          "type": "ColorPreset",
+          "colors": ["Cyan"]
         },
         {
-          "range": [60, 70],
-          "name": "Magenta",
-          "color": "#ff00ff"
+          "dmxRange": [60, 70],
+          "type": "ColorPreset",
+          "colors": ["Magenta"]
         },
         {
-          "range": [71, 80],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [71, 80],
+          "type": "ColorPreset",
+          "colors": ["White"]
         },
         {
-          "range": [81, 150],
-          "name": "Color change"
+          "dmxRange": [81, 150],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
         },
         {
-          "range": [151, 255],
-          "name": "Color blending"
+          "dmxRange": [151, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
         }
       ]
     },
     "Red": {
-      "type": "Single Color",
-      "crossfade": true,
-      "color": "Red"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "crossfade": true,
-      "color": "Green"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "crossfade": true,
-      "color": "Blue"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     }
   },
   "modes": [
