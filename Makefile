@@ -4,13 +4,31 @@ schema-files := $(wildcard schemas/*.json)
 # replace schemas/ with schemas/dereferenced/
 dereferenced-schema-files := $(schema-files:schemas/%=schemas/dereferenced/%)
 
-all: \
-fixtures/register.json \
-plugins/plugins.json \
-tests/test-fixtures.json \
-tests/test-fixtures.md \
-$(dereferenced-schema-files) \
+
+
+### PHONY rules, see https://stackoverflow.com/a/2145605/451391
+
+.PHONY: all register plugin-data test-fixtures schemas nuxt-build clean
+
+all: register plugin-data test-fixtures schemas nuxt-build
+
+register: fixtures/register.json
+
+plugin-data: plugins/plugins.json
+
+test-fixtures: tests/test-fixtures.json tests/test-fixtures.md
+
+schemas: $(dereferenced-schema-files)
+
+nuxt-build:
 	$$(npm bin)/nuxt build
+
+clean:
+	rm -rf schemas/dereferenced
+	rm -rf .nuxt
+
+
+### file rules
 
 fixtures/register.json: \
 fixtures/*/*.json \
