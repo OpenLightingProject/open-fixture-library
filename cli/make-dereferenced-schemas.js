@@ -7,9 +7,15 @@ const schemaRefParser = require(`json-schema-ref-parser`);
 
 const schemaDir = path.join(__dirname, `../schemas/`);
 
-const schemaFiles = fs.readdirSync(schemaDir).filter(
-  schemaFile => path.extname(schemaFile) === `.json`
-);
+let schemaFiles;
+if (process.argv.length > 2) {
+  schemaFiles = process.argv.slice(2);
+}
+else {
+  schemaFiles = fs.readdirSync(schemaDir).filter(
+    schemaFile => path.extname(schemaFile) === `.json`
+  );
+}
 
 process.chdir(schemaDir);
 for (const schemaFile of schemaFiles) {

@@ -23,9 +23,9 @@ This document gives a high-level overview of the concepts used in the JSON forma
 
 ## Schema
 
-The [JSON Schema](http://json-schema.org/) can be found in the [`schemas/fixture.json`](../schemas/fixture.json) and [`schemas/manufacturers.json`](../schemas/manufacturers.json) files. It is a declarative way to describe allowed JSON properties and values. The [`fixtures-valid.js` test](../tests/fixtures-valid.js) automatically checks the fixtures against these schemas and additionally tests things like the correct use of channel keys etc. programmatically.
+The [JSON Schema](http://json-schema.org/) files can be found in the [`schemas/`](../schemas/) directory. JSON Schema is a declarative way to describe allowed JSON properties and values. The [`fixtures-valid.js` test](../tests/fixtures-valid.js) automatically checks the fixtures against these schemas and additionally tests things like the correct use of channel keys etc. programmatically.
 
-The schema files have a `version` property. Every time the schema is updated, this version needs to be incremented in both files using [semantic versioning](http://semver.org).
+The schema files have a `version` property. Every time the schema is updated, this version needs to be incremented in all schema files using [semantic versioning](http://semver.org).
 
 Given a version number MAJOR.MINOR.PATCH, increment the:
 1. MAJOR version when you make incompatible schema changes.  
