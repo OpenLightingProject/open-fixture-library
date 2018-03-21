@@ -33,116 +33,128 @@
   },
   "availableChannels": {
     "Preset programs": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Off",
+          "dmxRange": [0, 9],
+          "type": "Nothing",
           "switchChannels": {
             "Red 1 / Running Speed": "Red 1",
             "Green 1 / Fade Time": "Green 1"
           }
         },
         {
-          "range": [10, 29],
-          "name": "Program 1",
+          "dmxRange": [10, 29],
+          "type": "Effect",
+          "effectName": "Program 1",
           "switchChannels": {
             "Red 1 / Running Speed": "Running Speed",
             "Green 1 / Fade Time": "Fade Time"
           }
         },
         {
-          "range": [30, 49],
-          "name": "Program 2",
+          "dmxRange": [30, 49],
+          "type": "Effect",
+          "effectName": "Program 2",
           "switchChannels": {
             "Red 1 / Running Speed": "Running Speed",
             "Green 1 / Fade Time": "Fade Time"
           }
         },
         {
-          "range": [50, 69],
-          "name": "Program 3",
+          "dmxRange": [50, 69],
+          "type": "Effect",
+          "effectName": "Program 3",
           "switchChannels": {
             "Red 1 / Running Speed": "Running Speed",
             "Green 1 / Fade Time": "Fade Time"
           }
         },
         {
-          "range": [70, 89],
-          "name": "Program 4",
+          "dmxRange": [70, 89],
+          "type": "Effect",
+          "effectName": "Program 4",
           "switchChannels": {
             "Red 1 / Running Speed": "Running Speed",
             "Green 1 / Fade Time": "Fade Time"
           }
         },
         {
-          "range": [90, 109],
-          "name": "Program 5",
+          "dmxRange": [90, 109],
+          "type": "Effect",
+          "effectName": "Program 5",
           "switchChannels": {
             "Red 1 / Running Speed": "Running Speed",
             "Green 1 / Fade Time": "Fade Time"
           }
         },
         {
-          "range": [110, 129],
-          "name": "Program 6",
+          "dmxRange": [110, 129],
+          "type": "Effect",
+          "effectName": "Program 6",
           "switchChannels": {
             "Red 1 / Running Speed": "Running Speed",
             "Green 1 / Fade Time": "Fade Time"
           }
         },
         {
-          "range": [130, 149],
-          "name": "Program 7",
+          "dmxRange": [130, 149],
+          "type": "Effect",
+          "effectName": "Program 7",
           "switchChannels": {
             "Red 1 / Running Speed": "Running Speed",
             "Green 1 / Fade Time": "Fade Time"
           }
         },
         {
-          "range": [150, 169],
-          "name": "Program 8",
+          "dmxRange": [150, 169],
+          "type": "Effect",
+          "effectName": "Program 8",
           "switchChannels": {
             "Red 1 / Running Speed": "Running Speed",
             "Green 1 / Fade Time": "Fade Time"
           }
         },
         {
-          "range": [170, 189],
-          "name": "Program 9",
+          "dmxRange": [170, 189],
+          "type": "Effect",
+          "effectName": "Program 9",
           "switchChannels": {
             "Red 1 / Running Speed": "Running Speed",
             "Green 1 / Fade Time": "Fade Time"
           }
         },
         {
-          "range": [190, 209],
-          "name": "Program 10",
+          "dmxRange": [190, 209],
+          "type": "Effect",
+          "effectName": "Program 10",
           "switchChannels": {
             "Red 1 / Running Speed": "Running Speed",
             "Green 1 / Fade Time": "Fade Time"
           }
         },
         {
-          "range": [210, 229],
-          "name": "Program 11",
+          "dmxRange": [210, 229],
+          "type": "Effect",
+          "effectName": "Program 11",
           "switchChannels": {
             "Red 1 / Running Speed": "Running Speed",
             "Green 1 / Fade Time": "Fade Time"
           }
         },
         {
-          "range": [230, 249],
-          "name": "Automatic mode",
+          "dmxRange": [230, 249],
+          "type": "Effect",
+          "effectName": "Automatic mode",
           "switchChannels": {
             "Red 1 / Running Speed": "Running Speed",
             "Green 1 / Fade Time": "Fade Time"
           }
         },
         {
-          "range": [250, 255],
-          "name": "Sound control",
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectPreset": "SoundControl",
           "switchChannels": {
             "Red 1 / Running Speed": "Running Speed",
             "Green 1 / Fade Time": "Fade Time"
@@ -151,64 +163,64 @@
       ]
     },
     "Master Dimmer": {
-      "type": "Intensity",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Strobe": {
-      "type": "Strobe",
       "highlightValue": 220,
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Strobe off"
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [10, 255],
-          "name": "Strobe slow-fast",
-          "menuClick": "center"
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Running Speed": {
-      "type": "Speed",
-      "crossfade": true,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "slow-fast"
-        }
-      ]
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Fade Time": {
-      "type": "Speed",
-      "crossfade": true,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "slow-fast"
-        }
-      ]
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
     }
   },
   "templateChannels": {
     "Red $pixelKey": {
-      "type": "Single Color",
-      "color": "Red",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green $pixelKey": {
-      "type": "Single Color",
-      "color": "Green",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue $pixelKey": {
-      "type": "Single Color",
-      "color": "Blue",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     }
   },
   "modes": [
