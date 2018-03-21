@@ -28,7 +28,8 @@ tests/test-fixtures.json: \
 lib/fixture-features/*.js \
 fixtures/register.json \
 lib/model/*.mjs \
-cli/make-test-fixtures.js
+cli/make-test-fixtures.js \
+$(dereferenced-schema-files)
 	node cli/make-test-fixtures.js
 	@echo ""
 
@@ -38,5 +39,6 @@ tests/test-fixtures.json
 schemas/dereferenced/%.json: \
 $(schema-files) \
 cli/make-dereferenced-schemas.js
+	@mkdir -p schemas/dereferenced
 	node cli/make-dereferenced-schemas.js "$*.json"
 	@echo ""

@@ -12,7 +12,7 @@
   "main": "main.js",
   "scripts": {
     "dev": "node main.js --dev",
-    "postinstall": "nuxt build",
+    "postinstall": "make --always-make && nuxt build",
     "start": "node main.js"
   },
   "dependencies": {
@@ -26,6 +26,7 @@
     "compression": "^1.7.1",
     "details-polyfill": "^1.1.0",
     "express": "^4.16.2",
+    "json-schema-ref-parser": "^5.0.0",
     "node-env-file": "^0.1.8",
     "node-sass": "^4.7.2",
     "node-zip": "^1.1.1",
@@ -51,7 +52,6 @@
     "eslint": "^4.19.0",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-vue": "^4.3.0",
-    "json-schema-ref-parser": "^5.0.0",
     "libxml-xsd": "^0.5.2",
     "minimist": "^1.2.0",
     "node-delete": "^0.1.2"
