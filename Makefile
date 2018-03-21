@@ -9,7 +9,8 @@ fixtures/register.json \
 plugins/plugins.json \
 tests/test-fixtures.json \
 tests/test-fixtures.md \
-$(dereferenced-schema-files)
+$(dereferenced-schema-files) \
+	$$(npm bin)/nuxt build
 
 fixtures/register.json: \
 fixtures/*/*.json \
