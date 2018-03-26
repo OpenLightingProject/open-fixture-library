@@ -1,5 +1,5 @@
 <template>
-  <span class="range" complete-range valid-range>
+  <span class="range">
     <validate :state="formstate" tag="span">
       <app-property-input-number
         v-model="start"
@@ -92,6 +92,14 @@ export default {
       required: true
     }
   },
+  data() {
+    return {
+      validationData: {
+        'complete-range': ``,
+        'valid-range': ``
+      }
+    };
+  },
   computed: {
     start: {
       get() {
@@ -114,6 +122,9 @@ export default {
     rangeIncomplete() {
       return this.range && (this.start === null || this.end === null);
     }
+  },
+  mounted() {
+    this.$emit(`vf:validate`, this.validationData);
   },
   methods: {
     onFocus(event) {
