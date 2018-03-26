@@ -24,9 +24,12 @@
 
             <!-- general validators -->
             <div v-else-if="fieldErrors.number">Please enter a number.</div>
-            <div v-else-if="fieldErrors.min || fieldErrors[`data-exclusive-minimum`]">Too small.</div> <!-- TODO: include min value -->
-            <div v-else-if="fieldErrors.max || fieldErrors[`data-exclusive-maximum`]">Too big.</div> <!-- TODO: include max value -->
-            <div v-else-if="fieldErrors.step">Please only enter integers.</div> <!-- assume step="1" everywhere. TODO: make flexible -->
+            <div v-else-if="fieldErrors[`data-exclusive-minimum`]">Please enter a value greater than {{ fieldState.$attrs[`data-exclusive-minimum`] }}.</div>
+            <div v-else-if="fieldErrors.min ">Please enter a value greater or equal to {{ fieldState.$attrs.min }}.</div>
+            <div v-else-if="fieldErrors[`data-exclusive-maximum`]">Please enter a value less than {{ fieldState.$attrs[`data-exclusive-maximum`] }}.</div>
+            <div v-else-if="fieldErrors.max ">Please enter a value less or equal to {{ fieldState.$attrs.max }}.</div>
+            <div v-else-if="fieldErrors.step && Number(fieldState.$attrs.step) === 1">Please enter a whole number.</div>
+            <div v-else-if="fieldErrors.step">Please enter a multiple of {{ fieldState.$attrs.step }}.</div>
             <div v-else-if="fieldErrors.email">Please enter an email address.</div>
             <div v-else-if="fieldErrors.url">Please enter a URL.</div>
             <div v-else-if="fieldErrors.pattern">Has to match pattern.</div> <!-- TODO: include title -->
