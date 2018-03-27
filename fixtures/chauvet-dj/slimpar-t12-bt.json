@@ -80,8 +80,12 @@
       "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 255],
+          "range": [0, 250],
           "name": "slow - fast"
+        },
+        {
+          "range": [251, 255],
+          "name": "Sound active mode"
         }
       ]
     },
