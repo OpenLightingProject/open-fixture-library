@@ -14,7 +14,7 @@
 
     <h3>Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!</h3>
 
-    <p><abbr title="Open Fixture Library">OFL</abbr> collects DMX fixture definitions in a JSON format and automatically exports them to the right format for every supported lighting software. Everybody can <a href="https://github.com/FloEdelmann/open-fixture-library">contribute</a> and help to improve! Thanks!</p>
+    <p><abbr title="Open Fixture Library">OFL</abbr> collects DMX fixture definitions in a JSON format and automatically exports them to the right format for every supported lighting software. Everybody can <a href="https://github.com/OpenLightingProject/open-fixture-library">contribute</a> and help to improve! Thanks!</p>
 
 
     <div class="grid centered">
@@ -67,15 +67,15 @@
     </div>
 
     <div class="list grid centered">
-      <a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+-label%3Atype-bug" rel="nofollow" class="card">
+      <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+-label%3Atype-bug" rel="nofollow" class="card">
         <app-svg name="lightbulb-on-outline" class="left" />
         <span>Request feature</span>
       </a>
-      <a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card">
+      <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card">
         <app-svg name="bug" class="left" />
         <span>Report problem</span>
       </a>
-      <a href="https://github.com/FloEdelmann/open-fixture-library" class="card">
+      <a href="https://github.com/OpenLightingProject/open-fixture-library" class="card">
         <app-svg name="github-circle" class="left" />
         <span>View source</span>
       </a>

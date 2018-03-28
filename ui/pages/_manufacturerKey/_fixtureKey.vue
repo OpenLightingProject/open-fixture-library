@@ -87,7 +87,7 @@
       <h2>Something wrong with this fixture definition?</h2>
       <p>It does not work in your lighting software or you see another problem? Then please help correct it!</p>
       <div class="grid list">
-        <a href="https://github.com/FloEdelmann/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card"><app-svg name="bug" class="left" /><span>Report issue on GitHub</span></a>
+        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card"><app-svg name="bug" class="left" /><span>Report issue on GitHub</span></a>
         <a href="/about#contact" class="card"><app-svg name="email" class="left" /><span>Contact</span></a>
       </div>
     </section>
@@ -171,7 +171,7 @@ export default {
       return getDateHtml(this.fixture.meta.lastModifyDate);
     },
     githubRepoPath() {
-      return `https://github.com/${process.env.TRAVIS_REPO_SLUG || `FloEdelmann/open-fixture-library`}`;
+      return `https://github.com/${process.env.TRAVIS_REPO_SLUG || `OpenLightingProject/open-fixture-library`}`;
     },
     branch() {
       return process.env.TRAVIS_PULL_REQUEST_BRANCH || process.env.TRAVIS_BRANCH || `master`;

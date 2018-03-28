@@ -47,7 +47,7 @@ function addFixture(fixture) {
   const key = `${manKey}/${fixKey}`;
 
   out.fixtures[key] = {
-    $schema: `https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json`
+    $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`
   };
 
   for (const prop of Object.keys(properties.fixture)) {
