@@ -135,6 +135,11 @@
       "lastModifyDate": "2017-03-09",
       "lastAction": "modified"
     },
+    "chauvet-dj/corepar-uv-usb": {
+      "name": "COREpar UV USB",
+      "lastModifyDate": "2018-03-15",
+      "lastAction": "created"
+    },
     "chauvet-dj/gigbar-2": {
       "name": "GigBAR 2",
       "lastModifyDate": "2017-12-31",
@@ -153,6 +158,16 @@
     "chauvet-dj/slimpar-pro-w": {
       "name": "SlimPAR Pro W",
       "lastModifyDate": "2018-01-01",
+      "lastAction": "created"
+    },
+    "chauvet-dj/slimpar-q12-bt": {
+      "name": "SlimPAR Q12 BT",
+      "lastModifyDate": "2018-03-28",
+      "lastAction": "created"
+    },
+    "chauvet-dj/slimpar-t12-bt": {
+      "name": "SlimPAR T12 BT",
+      "lastModifyDate": "2018-03-27",
       "lastAction": "created"
     },
     "chauvet-dj/washfx": {
@@ -550,6 +565,11 @@
       "lastModifyDate": "2018-01-30",
       "lastAction": "created"
     },
+    "tmb/solaris-flare": {
+      "name": "Solaris Flare",
+      "lastModifyDate": "2018-03-15",
+      "lastAction": "created"
+    },
     "venue/thintri64": {
       "name": "ThinTri64",
       "lastModifyDate": "2018-02-04",
@@ -602,10 +622,13 @@
       "thunder-wash-600-w"
     ],
     "chauvet-dj": [
+      "corepar-uv-usb",
       "gigbar-2",
       "slimpar-pro-h-usb",
       "slimpar-pro-qz12",
       "slimpar-pro-w",
+      "slimpar-q12-bt",
+      "slimpar-t12-bt",
       "washfx"
     ],
     "chroma-q": [
@@ -734,6 +757,9 @@
       "mh-x25",
       "stage-tri-led"
     ],
+    "tmb": [
+      "solaris-flare"
+    ],
     "venue": [
       "thintri64",
       "tristrip3z"
@@ -749,7 +775,8 @@
       "cameo/thunder-wash-600-rgb",
       "cameo/thunder-wash-600-w",
       "showtec/horizon-8",
-      "stairville/led-flood-panel-150"
+      "stairville/led-flood-panel-150",
+      "tmb/solaris-flare"
     ],
     "Color Changer": [
       "5star-systems/spica-250m",
@@ -776,6 +803,8 @@
       "chauvet-dj/slimpar-pro-h-usb",
       "chauvet-dj/slimpar-pro-qz12",
       "chauvet-dj/slimpar-pro-w",
+      "chauvet-dj/slimpar-q12-bt",
+      "chauvet-dj/slimpar-t12-bt",
       "chauvet-dj/washfx",
       "chroma-q/color-force-ii-12",
       "chroma-q/color-force-ii-48",
@@ -842,6 +871,7 @@
       "stairville/mh-100",
       "stairville/mh-x25",
       "stairville/stage-tri-led",
+      "tmb/solaris-flare",
       "venue/thintri64",
       "venue/tristrip3z"
     ],
@@ -938,6 +968,9 @@
       "stairville/mh-100",
       "stairville/mh-x25"
     ],
+    "Other": [
+      "chauvet-dj/corepar-uv-usb"
+    ],
     "Scanner": [
       "cameo/gobo-scanner-80",
       "futurelight/sc-250-scanner",
@@ -959,7 +992,8 @@
       "cameo/thunder-wash-600-w",
       "eurolite/led-fe-1500",
       "futurelight/stb-648-led-strobe-smd-5050",
-      "martin/atomic-3000"
+      "martin/atomic-3000",
+      "tmb/solaris-flare"
     ]
   },
   "contributors": {
@@ -979,6 +1013,8 @@
       "cameo/thunder-wash-600-rgb",
       "cameo/thunder-wash-600-w",
       "chauvet-dj/gigbar-2",
+      "chauvet-dj/slimpar-q12-bt",
+      "chauvet-dj/slimpar-t12-bt",
       "clay-paky/sharpy",
       "coemar/prospot-250-lx",
       "elation/platinum-hfx",
@@ -1018,6 +1054,7 @@
       "showtec/phantom-50-led-spot",
       "stairville/mh-x25",
       "stairville/stage-tri-led",
+      "tmb/solaris-flare",
       "venue/tristrip3z"
     ],
     "Felix Edelmann": [
@@ -1037,6 +1074,7 @@
       "cameo/nanospot-120",
       "cameo/outdoor-par-tri-12",
       "cameo/storm",
+      "chauvet-dj/corepar-uv-usb",
       "chauvet-dj/gigbar-2",
       "chauvet-dj/slimpar-pro-h-usb",
       "chauvet-dj/slimpar-pro-qz12",
@@ -1139,6 +1177,12 @@
       "key": "prolights",
       "models": {}
     },
+    "6906": {
+      "key": "tmb",
+      "models": {
+        "1703": "solaris-flare"
+      }
+    },
     "8612": {
       "key": "chauvet-dj",
       "models": {}
@@ -1194,6 +1238,10 @@
     }
   },
   "lastUpdated": [
+    "chauvet-dj/slimpar-q12-bt",
+    "chauvet-dj/slimpar-t12-bt",
+    "chauvet-dj/corepar-uv-usb",
+    "tmb/solaris-flare",
     "stairville/led-flood-panel-150",
     "adb/alc4",
     "look/viper-nt",

@@ -14,8 +14,13 @@ package-lock.json
 Dockerfile
 docker-compose.yml
 
-# Generated stylesheet
-static/style.css
+# Generated files
+.nuxt/
+schemas/dereferenced/*.json
 
 # Temporary files
 tmp/
+
+# secret files
+server/ofl-secrets.json
+server/*.log
