@@ -1,6 +1,6 @@
 # User Interface (UI) / Website
 
-Our website [open-fixture-library.herokuapp.com/](https://open-fixture-library.herokuapp.com/) is a [Nuxt](https://nuxtjs.org/) instance running on an [Express](http://expressjs.com/) server. That means that every page is a [Vue](https://vuejs.org/) component that is rendered on the server. Users that have JavaScript enabled can navigate purely on the client-side though, so only a small page-specific JavaScript file is downloaded via [XHR](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) and rendered in the browser. All that is handled automatically by Nuxt.
+Our website [open-fixture-library.org/](https://open-fixture-library.org/) is a [Nuxt](https://nuxtjs.org/) instance running on an [Express](http://expressjs.com/) server. That means that every page is a [Vue](https://vuejs.org/) component that is rendered on the server. Users that have JavaScript enabled can navigate purely on the client-side though, so only a small page-specific JavaScript file is downloaded via [XHR](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) and rendered in the browser. All that is handled automatically by Nuxt.
 
 
 ## Local development server
@@ -39,7 +39,6 @@ Please stick to the [code style guidelines](CONTRIBUTING.md#code-style). If a fu
 
 ## Deployment
 
-We use [Heroku](https://www.heroku.com/) (configurable with [`app.json`](../app.json)) for automatic deployment:
+Every time the [Travis tests](testing.md) for the commits in the **master branch** have passed, the new version is automatically deployed to <https://open-fixture-library.org/> (see the [`server/` directory](../server/)).
 
-* The **master branch** is deployed to <https://open-fixture-library.herokuapp.com/>. It is refreshed with each commit to master, but only after the [Travis tests](testing.md) for the commits have passed.
-* Each **pull request** `#xyz` (e.g. [#223](https://github.com/FloEdelmann/open-fixture-library/pull/223)) is deployed to `https://open-fixture-library-pr-xyz.herokuapp.com/`. It is refreshed with each commit to the feature branch without waiting for any tests to pass.
+Each **pull request** `#xyz` (e.g. [#223](https://github.com/FloEdelmann/open-fixture-library/pull/223)) is automatically deployed to `https://open-fixture-library-pr-xyz.herokuapp.com/` on [Heroku](https://www.heroku.com/) (configurable with [`app.json`](../app.json)). It is refreshed with each commit to the feature branch without waiting for any tests to pass.
