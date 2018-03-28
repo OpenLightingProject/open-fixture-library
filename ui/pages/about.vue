@@ -18,7 +18,7 @@
     <p>See the <a href="https://github.com/FloEdelmann/open-fixture-library#contribute">project page on GitHub</a> to see how you can help.</p>
 
     <h2 id="contact">Contact</h2>
-    <p><a href="mailto:&#x66;&#x6c;&#x6f;&#x72;&#x69;&#x61;&#x6e;&#x2d;&#x65;&#x64;&#x65;&#x6c;&#x6d;&#x61;&#x6e;&#x6e;&#x40;&#x6f;&#x6e;&#x6c;&#x69;&#x6e;&#x65;&#x2e;&#x64;&#x65;">&#x66;&#x6c;&#x6f;&#x72;&#x69;&#x61;&#x6e;&#x2d;&#x65;&#x64;&#x65;&#x6c;&#x6d;&#x61;&#x6e;&#x6e;&#x40;&#x6f;&#x6e;&#x6c;&#x69;&#x6e;&#x65;&#x2e;&#x64;&#x65;</a> or via <a href="https://github.com/FloEdelmann">GitHub</a></p>
+    <p><a href="mailto:florian-edelmann@online.de">florian-edelmann@online.de</a> or via <a href="https://github.com/FloEdelmann">GitHub</a></p>
 
   </div>
 </template>
