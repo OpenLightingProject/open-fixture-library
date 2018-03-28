@@ -12,6 +12,7 @@ This is the developer documentation for the *Open Fixture Library*. Please follo
   - `model/` – Classes of the [fixture model](fixture-model.md) that help ease processing fixture data
 * `plugins/` – [Plugins](plugins.md) for export / import to / from other software's fixture formats
 * `schemas/` – Schemas for the [fixture definitions](fixture-format.md#schema)
+* `server/` – Load balancer config and auto-deploy script for everyone interested
 * `tests/` – [Unit tests](testing.md), much of them run automatically in GitHub with Travis
   - `github/` – Special kind of tests which shouldn't be called manually and create comments in GitHub pull requests
 * `ui/` – Everything related to the [UI / Website](ui.md) (see docs there for subfolders)
