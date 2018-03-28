@@ -12,12 +12,16 @@ const servers = [];
 const webhooks = {};
 
 for (const deployment of Object.keys(pm2config.deploy)) {
-  if (!pm2config.deploy[deployment].webhook) {
-    console.log(`No webhook config for '${deployment}' deployment`);
+  if (!pm2config.deploy[deployment]._webhook_port) {
+    console.log(`No webhook port configured for '${deployment}' deployment`);
     continue;
   }
 
-  webhooks[deployment] = pm2config.deploy[deployment].webhook;
+  webhooks[deployment] = {
+    port: pm2config.deploy[deployment]._webhook_port,
+    path: pm2config.deploy[deployment]._webhook_path,
+    secret: pm2config.deploy[deployment]._webhook_secret
+  };
 
   startServer(webhooks[deployment].port, deployment);
 }

@@ -43,12 +43,12 @@ module.exports = {
       ref: "origin/master",
       repo: "git@github.com:FloEdelmann/open-fixture-library.git",
       path: "/home/flo/open-fixture-library",
-      "post-deploy": "npm install && cp server/* /home/flo && pm2 reload /home/flo/ecosystem.config.js",
-      webhook: {
-        port: secrets.OFL_WEBHOOK_PORT,
-        path: "/webhook",
-        secret: secrets.OFL_WEBHOOK_SECRET
-      }
+      "post-deploy": "npm install && (if [ -e server ]; then cp ./server/* /home/flo; fi) && pm2 reload /home/flo/ecosystem.config.js",
+
+      // used in webhook.js
+      _webhook_port: secrets.OFL_WEBHOOK_PORT,
+      _webhook_path: "/webhook",
+      _webhook_secret: secrets.OFL_WEBHOOK_SECRET
     }
   }
 };
