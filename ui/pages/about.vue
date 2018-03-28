@@ -3,7 +3,7 @@
     <h1>About</h1>
 
     <p>Created by Florian and Felix Edelmann.</p>
-    <p>The full code of the <em>Open Fixture Library</em> is <a href="https://github.com/FloEdelmann/open-fixture-library">open source</a> (licensed under the <a href="https://tldrlegal.com/license/mit-license" title="Massachusetts Institute of Technology License">MIT License</a>) and everybody is invited to contribute!</p>
+    <p>The full code of the <em>Open Fixture Library</em> is <a href="https://github.com/OpenLightingProject/open-fixture-library">open source</a> (licensed under the <a href="https://tldrlegal.com/license/mit-license" title="Massachusetts Institute of Technology License">MIT License</a>) and everybody is invited to contribute!</p>
 
     <h2>History</h2>
     <p>We were used to programming lighting shows with the <a href="http://www.ecue.de/">e:cue</a> software and – because at some point we found it being limited in functionality – wanted to try out other programs. I built a <a href="https://github.com/FloEdelmann/bachelor">DMX interface</a> with <a href="https://www.openlighting.org/ola/">Open Lighting Architecture</a> to be able to try <a href="http://www.qlcplus.org/">QLC+</a> and we kept on using that combination since then.</p>
@@ -16,7 +16,7 @@
     <p>Icons: <a href="https://materialdesignicons.com/">Material Design Icons</a></p>
 
     <h2>Contribute</h2>
-    <p>See the <a href="https://github.com/FloEdelmann/open-fixture-library#contribute">project page on GitHub</a> to see how you can help.</p>
+    <p>See the <a href="https://github.com/OpenLightingProject/open-fixture-library#contribute">project page on GitHub</a> to see how you can help.</p>
 
     <h2 id="contact">Contact</h2>
     <p><a href="mailto:florian-edelmann@online.de">florian-edelmann@online.de</a> or via <a href="https://github.com/FloEdelmann">GitHub</a></p>

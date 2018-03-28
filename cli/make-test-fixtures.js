@@ -134,7 +134,7 @@ function getMarkdownCode() {
   // Header
   mdLines[0] = `|`;
   for (const fixture of fixtures) {
-    mdLines[0] += ` | [*${fixture.man}* ${fixture.name}](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/${fixture.man}/${fixture.key}.json)`;
+    mdLines[0] += ` | [*${fixture.man}* ${fixture.name}](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/${fixture.man}/${fixture.key}.json)`;
   }
   mdLines[1] = `|-`.repeat(fixtures.length + 1);
 

@@ -41,7 +41,7 @@ module.exports = {
       user: "flo",
       host: "localhost",
       ref: "origin/master",
-      repo: "git@github.com:FloEdelmann/open-fixture-library.git",
+      repo: "git@github.com:OpenLightingProject/open-fixture-library.git",
       path: "/home/flo/open-fixture-library",
       "post-deploy": "npm install && (if [ -e server ]; then cp ./server/* /home/flo; fi) && pm2 reload /home/flo/ecosystem.config.js",
 

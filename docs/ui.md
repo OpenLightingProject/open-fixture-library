@@ -41,4 +41,4 @@ Please stick to the [code style guidelines](CONTRIBUTING.md#code-style). If a fu
 
 Every time the [Travis tests](testing.md) for the commits in the **master branch** have passed, the new version is automatically deployed to <https://open-fixture-library.org/> (see the [`server/` directory](../server/)).
 
-Each **pull request** `#xyz` (e.g. [#223](https://github.com/FloEdelmann/open-fixture-library/pull/223)) is automatically deployed to `https://open-fixture-library-pr-xyz.herokuapp.com/` on [Heroku](https://www.heroku.com/) (configurable with [`app.json`](../app.json)). It is refreshed with each commit to the feature branch without waiting for any tests to pass.
+Each **pull request** `#xyz` (e.g. [#223](https://github.com/OpenLightingProject/open-fixture-library/pull/223)) is automatically deployed to `https://open-fixture-library-pr-xyz.herokuapp.com/` on [Heroku](https://www.heroku.com/) (configurable with [`app.json`](../app.json)). It is refreshed with each commit to the feature branch without waiting for any tests to pass.
