@@ -19,10 +19,6 @@
       "type": "halogen",
       "colorTemperature": 3200
     },
-    "lens": {
-      "name": "WARP/M/12-30",
-      "degreesMinMax": [12, 30]
-    },
     "focus": {
       "panMax": 400,
       "tiltMax": 275
@@ -142,21 +138,9 @@
       "name": "12-30",
       "shortName": "warpm1230",
       "physical": {
-        "dimensions": [549, 695, 448],
-        "weight": 32,
-        "power": 900,
-        "DMXconnector": "5-pin",
-        "bulb": {
-          "type": "halogen",
-          "colorTemperature": 3200
-        },
         "lens": {
           "name": "WARP/M/12-30",
           "degreesMinMax": [12, 30]
-        },
-        "focus": {
-          "panMax": 400,
-          "tiltMax": 275
         }
       },
       "channels": [
@@ -200,21 +184,9 @@
       "name": "22-50",
       "shortName": "warpm2250",
       "physical": {
-        "dimensions": [549, 695, 448],
-        "weight": 32,
-        "power": 900,
-        "DMXconnector": "5-pin",
-        "bulb": {
-          "type": "halogen",
-          "colorTemperature": 3200
-        },
         "lens": {
           "name": "WARP/M/22-50",
           "degreesMinMax": [22, 50]
-        },
-        "focus": {
-          "panMax": 400,
-          "tiltMax": 275
         }
       },
       "channels": [
