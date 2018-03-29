@@ -20,6 +20,11 @@
       "lastModifyDate": "2018-02-15",
       "lastAction": "created"
     },
+    "adb/warp-m": {
+      "name": "WARP/M",
+      "lastModifyDate": "2018-03-29",
+      "lastAction": "created"
+    },
     "american-dj/auto-spot-150": {
       "name": "Auto Spot 150",
       "lastModifyDate": "2018-01-18",
@@ -590,7 +595,8 @@
     ],
     "adb": [
       "alc4",
-      "europe-105"
+      "europe-105",
+      "warp-m"
     ],
     "american-dj": [
       "auto-spot-150",
@@ -923,6 +929,7 @@
     ],
     "Moving Head": [
       "5star-systems/spica-250m",
+      "adb/warp-m",
       "american-dj/auto-spot-150",
       "american-dj/xs-400",
       "cameo/hydrabeam-100",
@@ -1128,15 +1135,16 @@
       "mdg/hazer-atmosphere-aps",
       "robe/colorspot-2500e-at"
     ],
+    "ameisso": [
+      "adb/alc4",
+      "adb/europe-105",
+      "adb/warp-m",
+      "generic/drgbw-fader"
+    ],
     "Justin Hornsby": [
       "chauvet-dj/washfx",
       "equinox/gigabar",
       "kam/gobotracer"
-    ],
-    "ameisso": [
-      "adb/alc4",
-      "adb/europe-105",
-      "generic/drgbw-fader"
     ],
     "Nerijus Mongirdas": [
       "jb-systems/twin-effect-laser",
@@ -1238,6 +1246,7 @@
     }
   },
   "lastUpdated": [
+    "adb/warp-m",
     "chauvet-dj/slimpar-q12-bt",
     "chauvet-dj/slimpar-t12-bt",
     "chauvet-dj/corepar-uv-usb",
