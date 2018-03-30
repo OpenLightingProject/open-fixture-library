@@ -12,10 +12,10 @@ module.exports.export = function exportOFL(fixtures, options) {
 
 
     const jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
-    jsonData.$schema = `https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/schema-${module.exports.version}/schemas/fixture.json`;
+    jsonData.$schema = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${module.exports.version}/schemas/fixture.json`;
     jsonData.manufacturer = fixture.manufacturer.key;
     const urlName = fixture.name.toLowerCase().replace(/[^a-z0-9-]+/g, `-`)
-    jsonData.oflLink = 'https://open-fixture-library.org/'+fixture.manufacturer.key+'/'+urlName;  
+    jsonData.oflLink = 'https://open-fixture-library.org/'+fixture.manufacturer.key+'/'+urlName;
     return {
       name: `${fixture.manufacturer.key}/${fixture.key}.json`,
       content: JSON.stringify(jsonData, null, 2),
@@ -25,7 +25,7 @@ module.exports.export = function exportOFL(fixtures, options) {
 
   // manufacturers.json file
   const usedManufacturerData = {
-    $schema: `https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/schema-${module.exports.version}/schemas/manufacturers.json`
+    $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${module.exports.version}/schemas/manufacturers.json`
   };
   for (const man of Object.keys(manufacturers).sort()) {
     if (usedManufacturers.has(man)) {
