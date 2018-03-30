@@ -1,0 +1,201 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Wash 84W",
+  "shortName": "wash84w",
+  "categories": ["Color Changer", "Moving Head"],
+  "meta": {
+    "authors": ["Millumin"],
+    "createDate": "2018-03-30",
+    "lastModifyDate": "2018-03-30"
+  },
+  "physical": {
+    "dimensions": [177, 230, 177],
+    "weight": 4.5,
+    "power": 115,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 180
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "stop"
+        },
+        {
+          "range": [1, 255],
+          "name": "pan"
+        }
+      ]
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "stop"
+        },
+        {
+          "range": [1, 255],
+          "name": "tilt"
+        }
+      ]
+    },
+    "Speed": {
+      "type": "Speed",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "stop"
+        },
+        {
+          "range": [1, 255],
+          "name": "speed"
+        }
+      ]
+    },
+    "Dimming": {
+      "type": "Intensity",
+      "defaultValue": 0
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "White": {
+      "type": "Single Color",
+      "color": "White"
+    },
+    "RGBW preset": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 4],
+          "name": "bypass"
+        },
+        {
+          "range": [5, 44],
+          "name": "color preset (static)"
+        },
+        {
+          "range": [45, 49],
+          "name": "bypass"
+        },
+        {
+          "range": [50, 94],
+          "name": "color preset (cut)"
+        },
+        {
+          "range": [95, 99],
+          "name": "bypass"
+        },
+        {
+          "range": [100, 149],
+          "name": "color preset (smooth)"
+        },
+        {
+          "range": [150, 154],
+          "name": "bypass"
+        },
+        {
+          "range": [155, 255],
+          "name": "color preset (soft)"
+        }
+      ]
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 6],
+          "name": "closed"
+        },
+        {
+          "range": [7, 65],
+          "name": "strobe (flash)"
+        },
+        {
+          "range": [66, 69],
+          "name": "closed"
+        },
+        {
+          "range": [70, 128],
+          "name": "strobe (random)"
+        },
+        {
+          "range": [129, 132],
+          "name": "closed"
+        },
+        {
+          "range": [133, 191],
+          "name": "strobe (smooth in)"
+        },
+        {
+          "range": [192, 195],
+          "name": "closed"
+        },
+        {
+          "range": [196, 255],
+          "name": "strobe (smooth out)"
+        }
+      ]
+    },
+    "Music control": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "closed"
+        },
+        {
+          "range": [128, 255],
+          "name": "open"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "default",
+      "shortName": "default",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Speed",
+        "Dimming",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "RGBW preset",
+        "Strobe",
+        "Music control"
+      ]
+    }
+  ]
+}
