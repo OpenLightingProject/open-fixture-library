@@ -25,7 +25,6 @@
   "availableChannels": {
     "Control": {
       "type": "Maintenance",
-      "constant": true,
       "capabilities": [
         {
           "range": [0, 23],
@@ -143,19 +142,18 @@
     },
     "Gobo All": {
       "type": "Gobo",
-      "constant": true,
       "capabilities": [
         {
           "range": [0, 36],
-          "name": "1 Beam "
+          "name": "1 Beam"
         },
         {
           "range": [37, 73],
-          "name": "2 Beam "
+          "name": "2 Beam"
         },
         {
           "range": [74, 110],
-          "name": "3 Beam "
+          "name": "3 Beam"
         },
         {
           "range": [111, 147],
@@ -163,7 +161,7 @@
         },
         {
           "range": [148, 184],
-          "name": "16 Beam "
+          "name": "16 Beam"
         },
         {
           "range": [185, 255],
@@ -222,7 +220,6 @@
     },
     "Red Gobo": {
       "type": "Gobo",
-      "constant": true,
       "capabilities": [
         {
           "range": [0, 36],
@@ -267,19 +264,18 @@
     },
     "Green Gobo": {
       "type": "Gobo",
-      "constant": true,
       "capabilities": [
         {
           "range": [0, 36],
-          "name": "1 Beam "
+          "name": "1 Beam"
         },
         {
           "range": [37, 73],
-          "name": "2 Beam "
+          "name": "2 Beam"
         },
         {
           "range": [74, 110],
-          "name": "3 Beam "
+          "name": "3 Beam"
         },
         {
           "range": [111, 147],
@@ -287,7 +283,7 @@
         },
         {
           "range": [148, 184],
-          "name": "16 Beam "
+          "name": "16 Beam"
         },
         {
           "range": [185, 221],
@@ -295,7 +291,7 @@
         },
         {
           "range": [222, 255],
-          "name": "64 Beam "
+          "name": "64 Beam"
         }
       ]
     },
@@ -364,19 +360,18 @@
     },
     "Blue Gobo": {
       "type": "Gobo",
-      "constant": true,
       "capabilities": [
         {
           "range": [0, 36],
-          "name": "1 Beam "
+          "name": "1 Beam"
         },
         {
           "range": [37, 73],
-          "name": "2 Beam "
+          "name": "2 Beam"
         },
         {
           "range": [74, 110],
-          "name": "3 Beam "
+          "name": "3 Beam"
         },
         {
           "range": [111, 147],
@@ -384,7 +379,7 @@
         },
         {
           "range": [148, 184],
-          "name": "16 Beam "
+          "name": "16 Beam"
         },
         {
           "range": [185, 221],
