@@ -1,0 +1,464 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "M-Carré",
+  "shortName": "mcarre",
+  "categories": ["Laser", "Effect"],
+  "meta": {
+    "authors": ["ameisso"],
+    "createDate": "2018-03-30",
+    "lastModifyDate": "2018-03-30"
+  },
+  "manualURL": "https://minuitune.com/content/uploads/2018/03/Minuit-Une-M-Pyramide-M-Carre-́-Users-Manual-v2-10012018.pdf",
+  "physical": {
+    "dimensions": [594.3, 551.9, 200],
+    "weight": 13,
+    "power": 125,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "Laser"
+    }
+  },
+  "availableChannels": {
+    "Control": {
+      "type": "Maintenance",
+      "constant": true,
+      "capabilities": [
+        {
+          "range": [0, 23],
+          "name": "Off"
+        },
+        {
+          "range": [24, 49],
+          "name": "Reset"
+        },
+        {
+          "range": [50, 255],
+          "name": "On"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity"
+    },
+    "Blade": {
+      "type": "blade",
+      "fineChannelAliases": ["Blade fine"]
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Shutter": {
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 14],
+          "name": "Open"
+        },
+        {
+          "range": [15, 27],
+          "name": "Closed"
+        },
+        {
+          "range": [28, 227],
+          "name": "30 - 1440 bpm"
+        },
+        {
+          "range": [228, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Tilt All": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt All fine"],
+      "capabilities": [
+        {
+          "range": [0, 12],
+          "name": "Off"
+        },
+        {
+          "range": [13, 255],
+          "name": "0 - 360°"
+        }
+      ]
+    },
+    "Tilt 1": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt 1 fine"]
+    },
+    "Tilt 2": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"]
+    },
+    "Tilt 3 ": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt 3  fine"]
+    },
+    "Tilt 4": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt 4 fine"]
+    },
+    "Gobo All": {
+      "type": "Gobo",
+      "constant": true,
+      "capabilities": [
+        {
+          "range": [0, 36],
+          "name": "1 Beam "
+        },
+        {
+          "range": [37, 73],
+          "name": "2 Beam "
+        },
+        {
+          "range": [74, 110],
+          "name": "3 Beam "
+        },
+        {
+          "range": [111, 147],
+          "name": "8 Beam"
+        },
+        {
+          "range": [148, 184],
+          "name": "16 Beam "
+        },
+        {
+          "range": [185, 255],
+          "name": "32 Beam"
+        }
+      ]
+    },
+    "Index": {
+      "type": "Pan",
+      "fineChannelAliases": ["Index fine"],
+      "defaultValue": 32767
+    },
+    "Rotation": {
+      "type": "Pan",
+      "capabilities": [
+        {
+          "range": [0, 12],
+          "name": "Off"
+        },
+        {
+          "range": [13, 122],
+          "name": "CCW"
+        },
+        {
+          "range": [123, 133],
+          "name": "Stop"
+        },
+        {
+          "range": [134, 242],
+          "name": "CW"
+        },
+        {
+          "range": [243, 255],
+          "name": "Off"
+        }
+      ]
+    },
+    "Gobo Size all": {
+      "type": "Gobo",
+      "fineChannelAliases": ["Gobo Size all fine"]
+    },
+    "Reserved": {
+      "type": "Nothing"
+    },
+    "Red Gobo": {
+      "type": "Gobo",
+      "constant": true,
+      "capabilities": [
+        {
+          "range": [0, 36],
+          "name": "1 Beam"
+        },
+        {
+          "range": [37, 73],
+          "name": "2 Beam"
+        },
+        {
+          "range": [74, 110],
+          "name": "4 Beam"
+        },
+        {
+          "range": [111, 147],
+          "name": "8 Beam"
+        },
+        {
+          "range": [148, 184],
+          "name": "16 Beam"
+        },
+        {
+          "range": [185, 221],
+          "name": "32 Beam"
+        },
+        {
+          "range": [222, 255],
+          "name": "64 Beam"
+        }
+      ]
+    },
+    "Index Red": {
+      "type": "Pan",
+      "fineChannelAliases": ["Index Red fine"],
+      "defaultValue": 32767
+    },
+    "Green Gobo": {
+      "type": "Gobo",
+      "constant": true,
+      "capabilities": [
+        {
+          "range": [0, 36],
+          "name": "1 Beam "
+        },
+        {
+          "range": [37, 73],
+          "name": "2 Beam "
+        },
+        {
+          "range": [74, 110],
+          "name": "3 Beam "
+        },
+        {
+          "range": [111, 147],
+          "name": "8 Beam"
+        },
+        {
+          "range": [148, 184],
+          "name": "16 Beam "
+        },
+        {
+          "range": [185, 221],
+          "name": "32 Beam"
+        },
+        {
+          "range": [222, 255],
+          "name": "64 Beam "
+        }
+      ]
+    },
+    "Rotation Red": {
+      "type": "Pan",
+      "fineChannelAliases": ["Rotation Red fine"],
+      "capabilities": [
+        {
+          "range": [0, 12],
+          "name": "Off"
+        },
+        {
+          "range": [13, 122],
+          "name": "CCW"
+        },
+        {
+          "range": [123, 133],
+          "name": "Stop"
+        },
+        {
+          "range": [134, 242],
+          "name": "CW"
+        },
+        {
+          "range": [243, 255],
+          "name": "Off"
+        }
+      ]
+    },
+    "Index Green": {
+      "type": "Pan",
+      "fineChannelAliases": ["Index Green fine"],
+      "defaultValue": 32767
+    },
+    "Rotation Green": {
+      "type": "Pan",
+      "fineChannelAliases": ["Rotation Green fine"],
+      "capabilities": [
+        {
+          "range": [0, 12],
+          "name": "Off"
+        },
+        {
+          "range": [13, 122],
+          "name": "CCW"
+        },
+        {
+          "range": [123, 133],
+          "name": "Stop"
+        },
+        {
+          "range": [134, 242],
+          "name": "CW"
+        },
+        {
+          "range": [243, 255],
+          "name": "Off"
+        }
+      ]
+    },
+    "Blue Gobo": {
+      "type": "Gobo",
+      "constant": true,
+      "capabilities": [
+        {
+          "range": [0, 36],
+          "name": "1 Beam "
+        },
+        {
+          "range": [37, 73],
+          "name": "2 Beam "
+        },
+        {
+          "range": [74, 110],
+          "name": "3 Beam "
+        },
+        {
+          "range": [111, 147],
+          "name": "8 Beam"
+        },
+        {
+          "range": [148, 184],
+          "name": "16 Beam "
+        },
+        {
+          "range": [185, 221],
+          "name": "32 Beam"
+        },
+        {
+          "range": [222, 255],
+          "name": "64 Beam"
+        }
+      ]
+    },
+    "Index Blue": {
+      "type": "Pan",
+      "fineChannelAliases": ["Index Blue fine"],
+      "defaultValue": 32767
+    },
+    "Rotation Blue": {
+      "type": "Pan",
+      "fineChannelAliases": ["Rotation Blue fine"],
+      "capabilities": [
+        {
+          "range": [0, 12],
+          "name": "Off"
+        },
+        {
+          "range": [13, 122],
+          "name": "CCW"
+        },
+        {
+          "range": [123, 133],
+          "name": "Stop"
+        },
+        {
+          "range": [134, 242],
+          "name": "CW"
+        },
+        {
+          "range": [243, 255],
+          "name": "Off"
+        }
+      ]
+    },
+    "Gobo Size Red": {
+      "type": "Gobo",
+      "fineChannelAliases": ["Gobo Size Red fine"]
+    },
+    "Gobo Size Green": {
+      "type": "Gobo",
+      "fineChannelAliases": ["Gobo Size Green fine"]
+    },
+    "Gobo Size Blue": {
+      "type": "Gobo",
+      "fineChannelAliases": ["Gobo Size Blue fine"]
+    }
+  },
+  "modes": [
+    {
+      "name": "25 channels",
+      "shortName": "25channels",
+      "channels": [
+        "Control",
+        "Dimmer",
+        "Blade",
+        "Blade fine",
+        "Red",
+        "Green",
+        "Blue",
+        "Shutter",
+        "Tilt All",
+        "Tilt All fine",
+        "Tilt 1",
+        "Tilt 1 fine",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Tilt 3 ",
+        "Tilt 3  fine",
+        "Tilt 4",
+        "Tilt 4 fine",
+        "Gobo All",
+        "Index",
+        "Index fine",
+        "Rotation",
+        "Gobo Size all",
+        "Gobo Size all fine",
+        "Reserved"
+      ]
+    },
+    {
+      "name": "40 channels",
+      "shortName": "40channels",
+      "channels": [
+        "Control",
+        "Dimmer",
+        "Blade",
+        "Blade fine",
+        "Red",
+        "Green",
+        "Blue",
+        "Shutter",
+        "Tilt All",
+        "Tilt All fine",
+        "Tilt 1",
+        "Tilt 1 fine",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Tilt 3 ",
+        "Tilt 3  fine",
+        "Tilt 4",
+        "Tilt 4 fine",
+        "Red Gobo",
+        "Index Red",
+        "Index Red fine",
+        "Rotation Red",
+        "Rotation Red fine",
+        "Gobo Size Red",
+        "Gobo Size Red fine",
+        "Green Gobo",
+        "Index Green",
+        "Index Green fine",
+        "Rotation Green",
+        "Rotation Green fine",
+        "Gobo Size Green",
+        "Gobo Size Green fine",
+        "Blue Gobo",
+        "Index Blue",
+        "Index Blue fine",
+        "Rotation Blue",
+        "Rotation Blue fine",
+        "Gobo Size Blue",
+        "Gobo Size Blue fine",
+        "Reserved"
+      ]
+    }
+  ]
+}
