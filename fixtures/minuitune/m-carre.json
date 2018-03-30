@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "M-Carré",
   "shortName": "mcarre",
-  "categories": ["Laser", "Effect"],
+  "categories": ["Laser", "Effect", "Color Changer"],
   "meta": {
     "authors": ["ameisso"],
     "createDate": "2018-03-30",
@@ -467,7 +467,7 @@
   "modes": [
     {
       "name": "25 channels",
-      "shortName": "25channels",
+      "shortName": "25ch",
       "channels": [
         "Control",
         "Dimmer",
@@ -498,7 +498,7 @@
     },
     {
       "name": "40 channels",
-      "shortName": "40channels",
+      "shortName": "40ch",
       "channels": [
         "Control",
         "Dimmer",
