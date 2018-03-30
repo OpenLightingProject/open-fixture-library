@@ -2,6 +2,27 @@
   <span class="icon" v-html="svgMarkup" />
 </template>
 
+<style lang="scss" scoped>
+@import '~assets/styles/vars.scss';
+
+.icon {
+  display: inline-block;
+  height: 1.4em;
+  width: 1.4em;
+  vertical-align: middle;
+
+  &.inactive {
+    fill: $icon-inactive-dark;
+  }
+
+  & svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}
+</style>
+
 <script>
 import icons from '~/assets/icons/icons.mjs';
 
@@ -76,7 +97,7 @@ export default {
  * @returns {!string} The inline <svg> tag or an empty string if the file was not found.
  */
 function getSvg(svgBasename, classNames = []) {
-  let svg = icons[svgBasename].replace(/\s+$/, ``);
+  let svg = svgBasename in icons ? icons[svgBasename].replace(/\s+$/, ``) : ``;
 
   if (classNames.length > 0) {
     svg = svg.replace(/<svg([^>]*)>/, `<svg$1 class="${classNames.join(` `)}">`);
