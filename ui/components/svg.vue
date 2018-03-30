@@ -2,7 +2,7 @@
   <span class="icon" v-html="svgMarkup" />
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '~assets/styles/vars.scss';
 
 .icon {
@@ -115,7 +115,7 @@ function getSvg(svgBasename, classNames = []) {
  */
 function getCategoryIcon(categoryName, classNames = []) {
   const sanitzedCategoryName = categoryName.toLowerCase().replace(/[^\w]+/g, `-`);
-  classNames.push(`category-${sanitzedCategoryName}`, `category-icon`, `icon`);
+  classNames.push(`category-${sanitzedCategoryName}`, `category-icon`);
 
   const svg = getSvg(`categories/${sanitzedCategoryName}`, classNames);
   return svg.replace(/(<svg[^>]*>)/, `$1<title>Category: ${categoryName}</title>`);
@@ -130,7 +130,7 @@ function getCategoryIcon(categoryName, classNames = []) {
  */
 function getChannelTypeIcon(channelType, classNames = []) {
   const sanitzedChannelType = channelType.toLowerCase().replace(/[^\w]+/g, `-`);
-  classNames.push(`channel${sanitzedChannelType}`, `channel-icon`, `icon`);
+  classNames.push(`channel${sanitzedChannelType}`, `channel-icon`);
 
   const svg = getSvg(`channel-types/${sanitzedChannelType}`, classNames);
   return svg.replace(/(<svg[^>]*>)/, `$1<title>Channel type: ${channelType}</title>`);
