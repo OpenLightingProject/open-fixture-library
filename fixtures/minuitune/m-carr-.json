@@ -16,6 +16,10 @@
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "Laser"
+    },
+    "focus": {
+      "panMax": 360,
+      "tiltMax": 360
     }
   },
   "availableChannels": {
@@ -41,8 +45,14 @@
       "type": "Intensity"
     },
     "Blade": {
-      "type": "blade",
-      "fineChannelAliases": ["Blade fine"]
+      "type": "Shutter",
+      "fineChannelAliases": ["Blade fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0 - 360°"
+        }
+      ]
     },
     "Red": {
       "type": "Single Color",
@@ -93,19 +103,43 @@
     },
     "Tilt 1": {
       "type": "Tilt",
-      "fineChannelAliases": ["Tilt 1 fine"]
+      "fineChannelAliases": ["Tilt 1 fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0 - 360°"
+        }
+      ]
     },
     "Tilt 2": {
       "type": "Tilt",
-      "fineChannelAliases": ["Tilt 2 fine"]
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0 - 360°"
+        }
+      ]
     },
     "Tilt 3 ": {
       "type": "Tilt",
-      "fineChannelAliases": ["Tilt 3  fine"]
+      "fineChannelAliases": ["Tilt 3  fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0 - 360°"
+        }
+      ]
     },
     "Tilt 4": {
       "type": "Tilt",
-      "fineChannelAliases": ["Tilt 4 fine"]
+      "fineChannelAliases": ["Tilt 4 fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0 - 360°"
+        }
+      ]
     },
     "Gobo All": {
       "type": "Gobo",
@@ -140,7 +174,13 @@
     "Index": {
       "type": "Pan",
       "fineChannelAliases": ["Index fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0 - 360°"
+        }
+      ]
     },
     "Rotation": {
       "type": "Pan",
@@ -169,7 +209,13 @@
     },
     "Gobo Size all": {
       "type": "Gobo",
-      "fineChannelAliases": ["Gobo Size all fine"]
+      "fineChannelAliases": ["Gobo Size all fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0 - 360°"
+        }
+      ]
     },
     "Reserved": {
       "type": "Nothing"
@@ -211,7 +257,13 @@
     "Index Red": {
       "type": "Pan",
       "fineChannelAliases": ["Index Red fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0 - 360°"
+        }
+      ]
     },
     "Green Gobo": {
       "type": "Gobo",
@@ -276,7 +328,13 @@
     "Index Green": {
       "type": "Pan",
       "fineChannelAliases": ["Index Green fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0 - 360°"
+        }
+      ]
     },
     "Rotation Green": {
       "type": "Pan",
@@ -341,7 +399,13 @@
     "Index Blue": {
       "type": "Pan",
       "fineChannelAliases": ["Index Blue fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0 - 360°"
+        }
+      ]
     },
     "Rotation Blue": {
       "type": "Pan",
@@ -371,15 +435,33 @@
     },
     "Gobo Size Red": {
       "type": "Gobo",
-      "fineChannelAliases": ["Gobo Size Red fine"]
+      "fineChannelAliases": ["Gobo Size Red fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0 - 360°"
+        }
+      ]
     },
     "Gobo Size Green": {
       "type": "Gobo",
-      "fineChannelAliases": ["Gobo Size Green fine"]
+      "fineChannelAliases": ["Gobo Size Green fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0 - 360°"
+        }
+      ]
     },
     "Gobo Size Blue": {
       "type": "Gobo",
-      "fineChannelAliases": ["Gobo Size Blue fine"]
+      "fineChannelAliases": ["Gobo Size Blue fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0 - 360°"
+        }
+      ]
     }
   },
   "modes": [
