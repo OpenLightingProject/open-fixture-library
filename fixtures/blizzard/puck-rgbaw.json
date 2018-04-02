@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Puck RGBAW",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["smokris"],
+    "createDate": "2018-04-02",
+    "lastModifyDate": "2018-04-02"
+  },
+  "manualURL": "https://www.blizzardlighting.com/collections/discontinued/products/puck-rgbaw-couch-potato-series#downloader",
+  "physical": {
+    "dimensions": [210, 210, 64],
+    "weight": 1.8,
+    "power": 20,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "type": "Intensity",
+      "defaultValue": 1
+    },
+    "Green": {
+      "type": "Intensity",
+      "defaultValue": 2
+    },
+    "Blue": {
+      "type": "Intensity",
+      "defaultValue": 3
+    },
+    "Amber": {
+      "type": "Intensity",
+      "defaultValue": 4
+    },
+    "White": {
+      "type": "Intensity",
+      "defaultValue": 5
+    }
+  },
+  "modes": [
+    {
+      "name": "5-Channel",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White"
+      ]
+    }
+  ]
+}
