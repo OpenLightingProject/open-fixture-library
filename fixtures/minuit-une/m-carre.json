@@ -10,7 +10,7 @@
   },
   "manualURL": "https://minuitune.com/content/uploads/2018/03/Minuit-Une-M-Pyramide-M-Carre-́-Users-Manual-v2-10012018.pdf",
   "physical": {
-    "dimensions": [594.3, 551.9, 200],
+    "dimensions": [594.3, 200, 551.9],
     "weight": 13,
     "power": 125,
     "DMXconnector": "5-pin",
@@ -25,6 +25,7 @@
   "availableChannels": {
     "Control": {
       "type": "Maintenance",
+      "defaultValue": 191,
       "capabilities": [
         {
           "range": [0, 23],
@@ -41,7 +42,8 @@
       ]
     },
     "Dimmer": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "defaultValue": 0
     },
     "Blade": {
       "type": "Shutter",
@@ -55,18 +57,22 @@
     },
     "Red": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "defaultValue": 0
     },
     "Green": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "defaultValue": 0
     },
     "Blue": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "defaultValue": 0
     },
     "Shutter": {
       "type": "Shutter",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 14],
@@ -88,7 +94,8 @@
     },
     "Tilt All": {
       "type": "Tilt",
-      "fineChannelAliases": ["Tilt All fine"],
+      "fineChannelAliases": ["Tilt All fine"],,
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 12],
@@ -205,9 +212,9 @@
         }
       ]
     },
-    "Gobo Size all": {
+    "Gobo Angle all": {
       "type": "Gobo",
-      "fineChannelAliases": ["Gobo Size all fine"],
+      "fineChannelAliases": ["Gobo Angle all fine"],
       "capabilities": [
         {
           "range": [0, 255],
@@ -428,9 +435,9 @@
         }
       ]
     },
-    "Gobo Size Red": {
+    "Gobo Angle Red": {
       "type": "Gobo",
-      "fineChannelAliases": ["Gobo Size Red fine"],
+      "fineChannelAliases": ["Gobo Angle Red fine"],
       "capabilities": [
         {
           "range": [0, 255],
@@ -438,9 +445,9 @@
         }
       ]
     },
-    "Gobo Size Green": {
+    "Gobo Angle Green": {
       "type": "Gobo",
-      "fineChannelAliases": ["Gobo Size Green fine"],
+      "fineChannelAliases": ["Gobo Angle Green fine"],
       "capabilities": [
         {
           "range": [0, 255],
@@ -448,9 +455,9 @@
         }
       ]
     },
-    "Gobo Size Blue": {
+    "Gobo Angle Blue": {
       "type": "Gobo",
-      "fineChannelAliases": ["Gobo Size Blue fine"],
+      "fineChannelAliases": ["Gobo Angle Blue fine"],
       "capabilities": [
         {
           "range": [0, 255],
@@ -486,8 +493,8 @@
         "Index",
         "Index fine",
         "Rotation",
-        "Gobo Size all",
-        "Gobo Size all fine",
+        "Gobo Angle all",
+        "Gobo Angle all fine",
         "Reserved"
       ]
     },
@@ -518,22 +525,22 @@
         "Index Red fine",
         "Rotation Red",
         "Rotation Red fine",
-        "Gobo Size Red",
-        "Gobo Size Red fine",
+        "Gobo Angle Red",
+        "Gobo Angle Red fine",
         "Green Gobo",
         "Index Green",
         "Index Green fine",
         "Rotation Green",
         "Rotation Green fine",
-        "Gobo Size Green",
-        "Gobo Size Green fine",
+        "Gobo Angle Green",
+        "Gobo Angle Green fine",
         "Blue Gobo",
         "Index Blue",
         "Index Blue fine",
         "Rotation Blue",
         "Rotation Blue fine",
-        "Gobo Size Blue",
-        "Gobo Size Blue fine",
+        "Gobo Angle Blue",
+        "Gobo Angle Blue fine",
         "Reserved"
       ]
     }
