@@ -1,53 +1,138 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Puck RGBAW",
-  "categories": ["Color Changer", "Dimmer"],
+  "categories": ["Color Changer"],
   "meta": {
     "authors": ["smokris"],
     "createDate": "2018-04-02",
     "lastModifyDate": "2018-04-02"
   },
-  "manualURL": "https://www.blizzardlighting.com/collections/discontinued/products/puck-rgbaw-couch-potato-series#downloader",
+  "manualURL": "https://cdn.shopify.com/s/files/1/1741/5055/files/puck-rgbaw-couch-potato-series_manual_rev_c.pdf",
   "physical": {
-    "dimensions": [210, 210, 64],
+    "dimensions": [210, 210, 63.5],
     "weight": 1.8,
     "power": 20,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "198x 10mm RGBWA LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [21, 32]
     }
   },
   "availableChannels": {
-    "Red": {
+    "Dimmer": {
       "type": "Intensity",
-      "defaultValue": 1
+      "defaultValue": 0
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Strobe slow-fast"
+        }
+      ]
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0
     },
     "Green": {
-      "type": "Intensity",
-      "defaultValue": 2
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0
     },
     "Blue": {
-      "type": "Intensity",
-      "defaultValue": 3
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0
     },
     "Amber": {
-      "type": "Intensity",
-      "defaultValue": 4
+      "type": "Single Color",
+      "color": "Amber",
+      "defaultValue": 0
     },
     "White": {
-      "type": "Intensity",
-      "defaultValue": 5
+      "type": "Single Color",
+      "color": "White",
+      "defaultValue": 0
+    },
+    "Color Snap": {
+      "type": "Effect"
+    },
+    "Snap Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow-fast"
+        }
+      ]
+    },
+    "Color Fade": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow-fast"
+        }
+      ]
+    },
+    "Fade Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow-fast"
+        }
+      ]
+    },
+    "Microphone Sensitivity": {
+      "type": "Maintenance"
+    },
+    "Built-in Programs": {
+      "type": "Effect"
     }
   },
   "modes": [
     {
-      "name": "5-Channel",
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White",
+        "Color Snap",
+        "Snap Speed",
+        "Color Fade",
+        "Fade Speed",
+        "Microphone Sensitivity"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
       "channels": [
         "Red",
         "Green",
         "Blue",
         "Amber",
         "White"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Built-in Programs"
       ]
     }
   ]
