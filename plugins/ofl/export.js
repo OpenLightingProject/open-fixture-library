@@ -16,7 +16,7 @@ module.exports.export = function exportOFL(fixtures, options) {
 
     return {
       name: `${fixture.manufacturer.key}/${fixture.key}.json`,
-      content: JSON.stringify(jsonData, null, 2),
+      content: `${JSON.stringify(jsonData, null, 2)}\n`,
       mimetype: `application/ofl-fixture`
     };
   });
@@ -32,7 +32,7 @@ module.exports.export = function exportOFL(fixtures, options) {
   }
   files.push({
     name: `manufacturers.json`,
-    content: JSON.stringify(usedManufacturerData, null, 2),
+    content: `${JSON.stringify(usedManufacturerData, null, 2)}\n`,
     mimetype: `application/ofl-manufacturers`
   });
 
