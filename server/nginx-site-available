@@ -1,0 +1,94 @@
+##
+# You should look at the following URL's in order to grasp a solid understanding
+# of Nginx configuration files in order to fully unleash the power of Nginx.
+# http://wiki.nginx.org/Pitfalls
+# http://wiki.nginx.org/QuickStart
+# http://wiki.nginx.org/Configuration
+#
+# Generally, you will want to move this file somewhere, and start with a clean
+# file but keep this around for reference. Or just disable in sites-enabled.
+#
+# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
+##
+
+
+# requests to https://open-fixture-library.org (without subdomain)
+# proxied to http://localhost:5000
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+
+    server_name open-fixture-library.org;
+
+    ssl_certificate /etc/letsencrypt/live/open-fixture-library.org/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/open-fixture-library.org/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+    # drop connection for all subdomains (if not handled elsewhere anyway)
+    if ($host != open-fixture-library.org) {
+        return 444;
+    }
+
+    location / {
+        proxy_pass http://localhost:5000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+
+# redirect HTTPS requests from www subdomain to main domain
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+
+    server_name www.open-fixture-library.org;
+
+    return 301 https://open-fixture-library.org$request_uri;
+}
+
+
+# all HTTP requests that don't match another rule
+server {
+    listen 80 default_server;
+    listen [::]:80;
+
+    server_name _;
+
+    # drop connection
+    return 444;
+}
+
+
+# redirect requests to http://[www.]open-fixture-library.org to HTTPS version
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name open-fixture-library.org www.open-fixture-library.org;
+
+    return 301 https://open-fixture-library.org$request_uri;
+}
+
+
+# requests to https://webhooks.open-fixture-library.org
+# proxied to http://localhost:40010
+server {
+    listen [::]:443 ssl;
+    listen 443 ssl;
+
+    server_name webhooks.open-fixture-library.org;
+
+    location / {
+        proxy_pass http://localhost:40010;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
