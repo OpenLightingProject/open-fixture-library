@@ -36,7 +36,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
         const manKey = manName.toLowerCase().replace(/[^a-z0-9-]+/g, `-`);
 
         out.manufacturers[manKey] = {
-          $schema: `https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schemas/fixture.json`,
+          $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
           name: manName
         };
 

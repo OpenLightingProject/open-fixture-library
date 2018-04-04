@@ -4,9 +4,9 @@
     :required="required"
     :min="min"
     :max="max"
-    :data-exclusive-minimum="schemaProperty.exclusiveMinimum"
-    :data-exclusive-maximum="schemaProperty.exclusiveMaximum"
-    :step="schemaProperty.type === `integer` ? 1 : `any`"
+    :data-exclusive-minimum="exclusiveMinimum"
+    :data-exclusive-maximum="exclusiveMaximum"
+    :step="step"
     :placeholder="hint"
     :value="value === `invalid` ? `` : value"
     type="number"
@@ -60,11 +60,7 @@ export default {
         return this.schemaProperty.minimum;
       }
 
-      if (`exclusiveMinimum` in this.schemaProperty) {
-        return this.schemaProperty.exclusiveMinimum;
-      }
-
-      return null;
+      return this.exclusiveMinimum;
     },
     max() {
       if (this.maximum !== null && this.maximum !== `invalid`) {
@@ -75,17 +71,47 @@ export default {
         return this.schemaProperty.maximum;
       }
 
+      return this.exclusiveMaximum;
+    },
+    exclusiveMinimum() {
+      if (`exclusiveMinimum` in this.schemaProperty) {
+        return this.schemaProperty.exclusiveMinimum;
+      }
+
+      return null;
+    },
+    exclusiveMaximum() {
       if (`exclusiveMaximum` in this.schemaProperty) {
         return this.schemaProperty.exclusiveMaximum;
       }
 
       return null;
+    },
+    step() {
+      return this.schemaProperty.type === `integer` ? 1 : `any`;
+    },
+    validationData() {
+      return {
+        min: this.min === null ? null : `${this.min}`,
+        max: this.max === null ? null : `${this.max}`,
+        'data-exclusive-minimum': this.exclusiveMinimum === null ? null : `${this.exclusiveMinimum}`,
+        'data-exclusive-maximum': this.exclusiveMaximum === null ? null : `${this.exclusiveMaximum}`,
+        step: `${this.step}`,
+        type: `number`
+      };
     }
   },
   mounted() {
     if (this.autoFocus) {
       this.focus();
     }
+
+    this.$watch(`validationData`, function(newValidationData) {
+      this.$emit(`vf:validate`, newValidationData);
+    }, {
+      deep: true,
+      immediate: true
+    });
   },
   methods: {
     focus() {

@@ -20,3 +20,7 @@ schemas/dereferenced/*.json
 
 # Temporary files
 tmp/
+
+# secret files
+server/ofl-secrets.json
+server/*.log

@@ -1,5 +1,5 @@
 <template>
-  <span class="dimensions" complete-dimensions>
+  <span class="dimensions">
     <validate :state="formstate" tag="span">
       <app-property-input-number
         ref="xInput"
@@ -87,6 +87,13 @@ export default {
       required: true
     }
   },
+  data() {
+    return {
+      validationData: {
+        'complete-dimensions': ``
+      }
+    };
+  },
   computed: {
     x: {
       get() {
@@ -115,6 +122,9 @@ export default {
     dimensionsSpecified() {
       return this.dimensions !== null;
     }
+  },
+  mounted() {
+    this.$emit(`vf:validate`, this.validationData);
   },
   methods: {
     onFocus(event) {

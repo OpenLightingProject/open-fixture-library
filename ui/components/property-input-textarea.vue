@@ -36,10 +36,25 @@ export default {
       required: true
     }
   },
+  computed: {
+    validationData() {
+      return {
+        minlength: `minLength` in this.schemaProperty ? `${this.schemaProperty.minLength}` : null,
+        maxlength: `maxLength` in this.schemaProperty ? `${this.schemaProperty.maxLength}` : null
+      };
+    }
+  },
   mounted() {
     if (this.autoFocus) {
       this.focus();
     }
+
+    this.$watch(`validationData`, function(newValidationData) {
+      this.$emit(`vf:validate`, newValidationData);
+    }, {
+      deep: true,
+      immediate: true
+    });
   },
   methods: {
     focus() {

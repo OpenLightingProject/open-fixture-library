@@ -1,6 +1,6 @@
 {
   "name": "open-fixture-library",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "An open source library for lighting technology's fixture definition files",
   "author": "Florian Edelmann <florian-edelmann@online.de>",
   "contributors": [
@@ -37,7 +37,7 @@
     "sitemap": "^1.13.0",
     "svg-inline-loader": "^0.8.0",
     "uuid": "^3.1.0",
-    "vue-form": "FloEdelmann/vue-form",
+    "vue-form": "^4.8.1",
     "vuedraggable": "^2.15.0",
     "xml2js": "^0.4.19",
     "xmlbuilder": "^9.0.4"
@@ -56,10 +56,10 @@
     "minimist": "^1.2.0",
     "node-delete": "^0.1.2"
   },
-  "homepage": "https://open-fixture-library.herokuapp.com/",
+  "homepage": "https://open-fixture-library.org/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/FloEdelmann/open-fixture-library"
+    "url": "https://github.com/OpenLightingProject/open-fixture-library"
   },
   "keywords": [
     "dmx",

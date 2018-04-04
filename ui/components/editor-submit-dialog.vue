@@ -18,13 +18,13 @@
     </div>
 
     <div v-if="submit.state === `error`">
-      Unfortunately, there was an error while uploading. Please copy the following data and <a href="https://github.com/FloEdelmann/open-fixture-library/issues/new" target="_blank">manually submit them to GitHub</a>.
+      Unfortunately, there was an error while uploading. Please copy the following data and <a href="https://github.com/OpenLightingProject/open-fixture-library/issues/new" target="_blank">manually submit them to GitHub</a>.
 
       <textarea v-model="submit.rawData" readonly />
 
       <div class="button-bar right">
         <nuxt-link to="/" class="button secondary">Back to homepage</nuxt-link>
-        <a href="https://github.com/FloEdelmann/open-fixture-library/issues/new" class="button primary" target="_blank">Submit manually</a>
+        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues/new" class="button primary" target="_blank">Submit manually</a>
       </div>
     </div>
 

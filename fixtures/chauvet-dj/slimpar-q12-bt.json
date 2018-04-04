@@ -1,0 +1,126 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SlimPAR Q12 BT",
+  "shortName": "ChauvetSlimPARQ12BT",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2018-03-28",
+    "lastModifyDate": "2018-03-28"
+  },
+  "manualURL": "https://www.chauvetdj.com/wp-content/uploads/2018/03/SlimPAR_Q12_BT_UM_Rev2_WO.pdf",
+  "physical": {
+    "dimensions": [275, 74, 279],
+    "weight": 1.5,
+    "power": 48,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12x 3.5W RGBA LED",
+      "lumens": 895
+    },
+    "lens": {
+      "degreesMinMax": [18, 35]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Amber": {
+      "type": "Single Color",
+      "color": "Amber"
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0 - 20Hz"
+        }
+      ]
+    },
+    "Auto Program": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 5],
+          "name": "No function"
+        },
+        {
+          "range": [6, 55],
+          "name": "Program 1"
+        },
+        {
+          "range": [56, 106],
+          "name": "Program 2"
+        },
+        {
+          "range": [107, 157],
+          "name": "Program 3"
+        },
+        {
+          "range": [158, 208],
+          "name": "Program 4"
+        },
+        {
+          "range": [209, 255],
+          "name": "Program 5"
+        }
+      ]
+    },
+    "Auto Program Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 250],
+          "name": "slow - fast"
+        },
+        {
+          "range": [251, 255],
+          "name": "Sound Active Mode"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity"
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Strobe",
+        "Auto Program",
+        "Auto Program Speed",
+        "Dimmer"
+      ]
+    }
+  ]
+}
