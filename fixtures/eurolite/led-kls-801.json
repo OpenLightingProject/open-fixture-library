@@ -194,9 +194,9 @@
     },
     "Fade Time": {
       "capability": {
-        "type": "EffectSpeed",
-        "speedStart": "fast",
-        "speedEnd": "slow"
+        "type": "EffectDuration",
+        "durationStart": "short",
+        "durationEnd": "long"
       }
     }
   },

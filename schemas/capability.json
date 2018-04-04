@@ -452,7 +452,10 @@
         "effectIntensityEnd": { "$ref": "definitions.json#/entities/factor" },
         "speed": { "$ref": "definitions.json#/entities/speed" },
         "speedStart": { "$ref": "definitions.json#/entities/speed" },
-        "speedEnd": { "$ref": "definitions.json#/entities/speed" }
+        "speedEnd": { "$ref": "definitions.json#/entities/speed" },
+        "duration": { "$ref": "definitions.json#/entities/time" },
+        "durationStart": { "$ref": "definitions.json#/entities/time" },
+        "durationEnd": { "$ref": "definitions.json#/entities/time" }
       },
       "oneOf": [
         { "required": ["effectName"] },
@@ -461,14 +464,17 @@
       "not": {
         "anyOf": [
           { "required": ["effectIntensity", "effectIntensityStart"] },
-          { "required": ["speed", "speedStart"] }
+          { "required": ["speed", "speedStart"] },
+          { "required": ["duration", "durationStart"] }
         ]
       },
       "dependencies": {
         "effectIntensityStart": ["effectIntensityEnd"],
         "effectIntensityEnd": ["effectIntensityStart"],
         "speedStart": ["speedEnd"],
-        "speedEnd": ["speedStart"]
+        "speedEnd": ["speedStart"],
+        "durationStart": ["durationEnd"],
+        "durationEnd": ["durationStart"]
       },
       "additionalProperties": false
     },
@@ -515,6 +521,29 @@
       "dependencies": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
+      },
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "dmxRange": {},
+        "type": { "enum": ["EffectDuration"] },
+        "comment": {},
+        "menuClick": {},
+        "switchChannels": {},
+        "helpWanted": {},
+        "duration": { "$ref": "definitions.json#/entities/time" },
+        "durationStart": { "$ref": "definitions.json#/entities/time" },
+        "durationEnd": { "$ref": "definitions.json#/entities/time" }
+      },
+      "oneOf": [
+        { "required": ["duration"] },
+        { "required": ["durationStart"] }
+      ],
+      "not": { "required": ["duration", "durationStart"] },
+      "dependencies": {
+        "durationStart": ["durationEnd"],
+        "durationEnd": ["durationStart"]
       },
       "additionalProperties": false
     },

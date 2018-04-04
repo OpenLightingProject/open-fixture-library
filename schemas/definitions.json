@@ -132,7 +132,7 @@
         { "$ref": "#/units/seconds" },
         { "$ref": "#/units/milliSeconds" },
         { "$ref": "#/units/percent" },
-        { "enum": ["instant", "slow", "fast"] }
+        { "enum": ["instant", "short", "long"] }
       ]
     },
     "distance": {

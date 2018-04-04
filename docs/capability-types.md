@@ -69,11 +69,14 @@ Required properties are _italic_, the entity is written in (parentheses).
   * _effectName_: Free text describing the effect
   * _effectPreset_: one of `SoundControl`, `ColorJump`, `ColorFade`
   * effectIntensity (Factor)
-  * speed (Speed)
+  * speed (Speed) (can't be used together with time)
+  * duration (Time) (can't be used together with speed)
 * EffectIntensity (global, doesn't activate an effect directly)
   * _effectIntensity_ (Factor)
 * EffectSpeed (global, doesn't activate an effect directly)
   * _speed_ (Speed)
+* EffectDuration (global, doesn't activate an effect directly)
+  * _duration_ (Duration)
 * SoundSensitivity
   * _sensitivity_ (Percent)
 * GoboIndex
