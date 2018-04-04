@@ -34,8 +34,8 @@
       "defaultValue": 32767,
       "capability": {
         "type": "Pan",
-        "angleStart": "0%",
-        "angleEnd": "100%"
+        "angleStart": "0°",
+        "angleEnd": "540°"
       }
     },
     "Tilt": {
@@ -43,8 +43,8 @@
       "defaultValue": 32767,
       "capability": {
         "type": "Tilt",
-        "angleStart": "0%",
-        "angleEnd": "100%"
+        "angleStart": "0°",
+        "angleEnd": "270°"
       }
     },
     "Pan/Tilt Speed": {

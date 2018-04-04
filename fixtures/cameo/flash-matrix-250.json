@@ -76,29 +76,29 @@
           "dmxRange": [11, 33],
           "type": "ShutterStrobe",
           "shutterEffect": "PulseRandom",
-          "speedStart": "0%",
-          "speedEnd": "100%"
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [34, 56],
           "type": "ShutterStrobe",
           "shutterEffect": "RampUpRandom",
-          "speedStart": "0%",
-          "speedEnd": "100%"
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [57, 79],
           "type": "ShutterStrobe",
           "shutterEffect": "RampDownRandom",
-          "speedStart": "0%",
-          "speedEnd": "100%"
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [80, 102],
           "type": "ShutterStrobe",
           "shutterEffect": "StrobeRandom",
-          "speedStart": "0%",
-          "speedEnd": "100%"
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [103, 127],

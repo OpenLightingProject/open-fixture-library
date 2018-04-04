@@ -84,24 +84,24 @@
         },
         {
           "dmxRange": [32, 95],
-          "type": "Effect",
-          "effectName": "Pulse effect 0-100%",
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
           "switchChannels": {
             "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [96, 159],
-          "type": "Effect",
-          "effectName": "Pulse effect 100-0%",
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
           "switchChannels": {
             "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
           "dmxRange": [160, 223],
-          "type": "Effect",
-          "effectName": "Pulse effect 100-0-100%",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
           "switchChannels": {
             "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
           }

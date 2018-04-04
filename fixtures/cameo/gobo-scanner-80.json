@@ -32,16 +32,16 @@
       "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
-        "angleStart": "0%",
-        "angleEnd": "100%"
+        "angleStart": "0°",
+        "angleEnd": "180°"
       }
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angleStart": "0%",
-        "angleEnd": "100%"
+        "angleStart": "0°",
+        "angleEnd": "90°"
       }
     },
     "Dimmer": {
@@ -341,7 +341,7 @@
     },
     "Pan/Tilt Speed": {
       "capability": {
-        "type": "EffectSpeed",
+        "type": "PanTiltSpeed",
         "speedStart": "fast",
         "speedEnd": "slow"
       }

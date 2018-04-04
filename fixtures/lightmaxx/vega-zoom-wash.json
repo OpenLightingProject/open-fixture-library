@@ -31,16 +31,16 @@
       "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
-        "angleStart": "0%",
-        "angleEnd": "100%"
+        "angleStart": "0°",
+        "angleEnd": "540°"
       }
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angleStart": "0%",
-        "angleEnd": "100%"
+        "angleStart": "0°",
+        "angleEnd": "190°"
       }
     },
     "Pan / Tilt Speed": {
@@ -137,32 +137,38 @@
         {
           "dmxRange": [51, 60],
           "type": "ColorPreset",
-          "colors": ["Yellow"]
+          "colors": ["Yellow"],
+          "comment": "RG"
         },
         {
           "dmxRange": [61, 70],
           "type": "ColorPreset",
-          "colors": ["Cyan"]
+          "colors": ["Cyan"],
+          "comment": "GB"
         },
         {
           "dmxRange": [71, 80],
           "type": "ColorPreset",
-          "colors": ["Lightblue"]
+          "colors": ["Lightblue"],
+          "comment": "BW"
         },
         {
           "dmxRange": [81, 90],
           "type": "ColorPreset",
-          "colors": ["Pink"]
+          "colors": ["Pink"],
+          "comment": "RB"
         },
         {
           "dmxRange": [91, 100],
           "type": "ColorPreset",
-          "colors": ["Lightgreen"]
+          "colors": ["Lightgreen"],
+          "comment": "GW"
         },
         {
           "dmxRange": [101, 110],
           "type": "ColorPreset",
-          "colors": ["Lightred"]
+          "colors": ["Lightred"],
+          "comment": "RW"
         },
         {
           "dmxRange": [111, 120],
@@ -173,23 +179,27 @@
         {
           "dmxRange": [121, 130],
           "type": "ColorPreset",
-          "colors": ["Lightyellow"]
+          "colors": ["Lightyellow"],
+          "comment": "RGW"
         },
         {
           "dmxRange": [131, 140],
           "type": "ColorPreset",
-          "colors": ["Lightcyan"]
+          "colors": ["Lightcyan"],
+          "comment": "GBW"
         },
         {
           "dmxRange": [141, 150],
           "type": "ColorPreset",
           "colors": ["White"],
-          "comment": "RGB + White"
+          "comment": "RGBW"
         },
         {
           "dmxRange": [151, 255],
           "type": "Effect",
-          "effectPreset": "ColorJump"
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
