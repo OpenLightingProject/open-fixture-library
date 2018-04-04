@@ -49,8 +49,8 @@ module.exports = {
       env: envVariables,
 
       // used in webhook.js
-      _webhook_port: secrets.OFL_WEBHOOK_PORT,
-      _webhook_path: "/webhook",
+      _webhook_port: 40010,
+      _webhook_path: "/",
       _webhook_secret: secrets.OFL_WEBHOOK_SECRET
     }
   }
