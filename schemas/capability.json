@@ -455,7 +455,10 @@
         "speedEnd": { "$ref": "definitions.json#/entities/speed" },
         "duration": { "$ref": "definitions.json#/entities/time" },
         "durationStart": { "$ref": "definitions.json#/entities/time" },
-        "durationEnd": { "$ref": "definitions.json#/entities/time" }
+        "durationEnd": { "$ref": "definitions.json#/entities/time" },
+        "soundSensitivity": { "$ref": "definitions.json#/entities/percent" },
+        "soundSensitivityStart": { "$ref": "definitions.json#/entities/percent" },
+        "soundSensitivityEnd": { "$ref": "definitions.json#/entities/percent" }
       },
       "oneOf": [
         { "required": ["effectName"] },
@@ -465,7 +468,8 @@
         "anyOf": [
           { "required": ["effectIntensity", "effectIntensityStart"] },
           { "required": ["speed", "speedStart"] },
-          { "required": ["duration", "durationStart"] }
+          { "required": ["duration", "durationStart"] },
+          { "required": ["soundSensitivity", "soundSensitivityStart"] }
         ]
       },
       "dependencies": {
@@ -474,7 +478,9 @@
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"],
         "durationStart": ["durationEnd"],
-        "durationEnd": ["durationStart"]
+        "durationEnd": ["durationStart"],
+        "soundSensitivityStart": ["soundSensitivityEnd"],
+        "soundSensitivityEnd": ["soundSensitivityStart"]
       },
       "additionalProperties": false
     },

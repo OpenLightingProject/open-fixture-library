@@ -71,6 +71,7 @@ Required properties are _italic_, the entity is written in (parentheses).
   * effectIntensity (Factor)
   * speed (Speed) (can't be used together with time)
   * duration (Time) (can't be used together with speed)
+  * soundSensitivity (Percent)
 * EffectIntensity (global, doesn't activate an effect directly)
   * _effectIntensity_ (Factor)
 * EffectSpeed (global, doesn't activate an effect directly)
