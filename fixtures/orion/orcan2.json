@@ -1,0 +1,85 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ORCAN2",
+  "shortName": "OrionOrcan2",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-04-04",
+    "lastModifyDate": "2018-04-04"
+  },
+  "manualURL": "http://orion-fxlights.com/downloads/ownersman/om_orcan2.pdf?v=1427215602",
+  "physical": {
+    "dimensions": [255, 365, 255],
+    "weight": 2.8,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "36 x 3W RGB LEDs (12 x Red / 12 x Green / 12 x Blue)"
+    }
+  },
+  "availableChannels": {
+    "Master Dimmr": {
+      "type": "Intensity",
+      "defaultValue": 0
+    },
+    "Strobe": {
+      "type": "Strobe"
+    },
+    "Effects": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 50],
+          "name": "Nothing"
+        },
+        {
+          "range": [51, 100],
+          "name": "Color Jump"
+        },
+        {
+          "range": [101, 150],
+          "name": "Color Fade"
+        },
+        {
+          "range": [151, 200],
+          "name": "Color Pulse"
+        },
+        {
+          "range": [201, 255],
+          "name": "Sound Control"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "type": "Speed"
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    }
+  },
+  "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Master Dimmr",
+        "Strobe",
+        "Effects",
+        "Effect Speed",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
