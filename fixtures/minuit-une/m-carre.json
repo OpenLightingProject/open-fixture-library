@@ -212,9 +212,9 @@
         }
       ]
     },
-    "Gobo Angle all": {
+    "Gobo Beam Angle all": {
       "type": "Gobo",
-      "fineChannelAliases": ["Gobo Angle all fine"],
+      "fineChannelAliases": ["Gobo Beam Angle all fine"],
       "capabilities": [
         {
           "range": [0, 255],
@@ -435,9 +435,9 @@
         }
       ]
     },
-    "Gobo Angle Red": {
+    "Gobo Beam Angle Red": {
       "type": "Gobo",
-      "fineChannelAliases": ["Gobo Angle Red fine"],
+      "fineChannelAliases": ["Gobo Beam Angle Red fine"],
       "capabilities": [
         {
           "range": [0, 255],
@@ -445,9 +445,9 @@
         }
       ]
     },
-    "Gobo Angle Green": {
+    "Gobo Beam Angle Green": {
       "type": "Gobo",
-      "fineChannelAliases": ["Gobo Angle Green fine"],
+      "fineChannelAliases": ["Gobo Beam Angle Green fine"],
       "capabilities": [
         {
           "range": [0, 255],
@@ -455,9 +455,9 @@
         }
       ]
     },
-    "Gobo Angle Blue": {
+    "Gobo Beam Angle Blue": {
       "type": "Gobo",
-      "fineChannelAliases": ["Gobo Angle Blue fine"],
+      "fineChannelAliases": ["Gobo Beam Angle Blue fine"],
       "capabilities": [
         {
           "range": [0, 255],
@@ -493,8 +493,8 @@
         "Index",
         "Index fine",
         "Rotation",
-        "Gobo Angle all",
-        "Gobo Angle all fine",
+        "Gobo Beam Angle all",
+        "Gobo Beam Angle all fine",
         "Reserved"
       ]
     },
@@ -525,22 +525,22 @@
         "Index Red fine",
         "Rotation Red",
         "Rotation Red fine",
-        "Gobo Angle Red",
-        "Gobo Angle Red fine",
+        "Gobo Beam Angle Red",
+        "Gobo Beam Angle Red fine",
         "Green Gobo",
         "Index Green",
         "Index Green fine",
         "Rotation Green",
         "Rotation Green fine",
-        "Gobo Angle Green",
-        "Gobo Angle Green fine",
+        "Gobo Beam Angle Green",
+        "Gobo Beam Angle Green fine",
         "Blue Gobo",
         "Index Blue",
         "Index Blue fine",
         "Rotation Blue",
         "Rotation Blue fine",
-        "Gobo Angle Blue",
-        "Gobo Angle Blue fine",
+        "Gobo Beam Angle Blue",
+        "Gobo Beam Angle Blue fine",
         "Reserved"
       ]
     }
