@@ -6,22 +6,22 @@ Most type-specific properties refer to one of the following entities, which allo
 
 To make common percentage values more readable, one can use specific keywords to replace them. For example, `"speed": "fast"` has the same effect as `"speed": "100%"`.
 
-| Entity           | Allowed Units  | `-100%`      | `-1%`        | `0%`    | `1%`    | `100%`
-| -                | -              | -            | -            | -       | -       | -
-| Speed            | `Hz`, `%`      | fast reverse | slow reverse | stop    | slow    | fast
-| RotationSpeed    | `Hz`, `%`      | fast CCW     | slow CCW     | stop    | slow CW | fast CW
-| Time             | `s`, `ms`, `%` | –            | –            | instant | short   | long
-| Distance         | `m`, `%`       | –            | –            | –       | near    | far
-| Brightness       | `lm`, `%`      | –            | –            | off     | dark    | bright
-| ColorTemperature | `K`, `%`       | warm / CTO   | –            | default | –       | cold / CTB
-| FogOutput        | `m^3/min`, `%` | –            | –            | off     | weak    | strong
-| RotationAngle    | `°`, `%`       | –            | –            | –       | –       | –
-| BeamAngle        | `°`, `%`       | –            | –            | closed  | narrow  | wide
-| Factor           | (no unit), `%` | –            | –            | off     | low     | high
-| Index            | (no unit)      | –            | –            | –       | –       | –
-| Percent          | `%`            | –            | –            | off     | low     | high
-| Insertion        | `%`            | –            | –            | out     | –       | in
-| IrisPercent      | `%`            | –            | –            | closed  | –       | open
+| Entity           | Allowed Units    | `-100%`      | `-1%`        | `0%`    | `1%`    | `100%`
+| -                | -                | -            | -            | -       | -       | -
+| Speed            | `Hz`, `bpm`, `%` | fast reverse | slow reverse | stop    | slow    | fast
+| RotationSpeed    | `Hz`, `bpm`, `%` | fast CCW     | slow CCW     | stop    | slow CW | fast CW
+| Time             | `s`, `ms`, `%`   | –            | –            | instant | short   | long
+| Distance         | `m`, `%`         | –            | –            | –       | near    | far
+| Brightness       | `lm`, `%`        | –            | –            | off     | dark    | bright
+| ColorTemperature | `K`, `%`         | warm / CTO   | –            | default | –       | cold / CTB
+| FogOutput        | `m^3/min`, `%`   | –            | –            | off     | weak    | strong
+| RotationAngle    | `°`, `%`         | –            | –            | –       | –       | –
+| BeamAngle        | `°`, `%`         | –            | –            | closed  | narrow  | wide
+| Factor           | (no unit), `%`   | –            | –            | off     | low     | high
+| Index            | (no unit)        | –            | –            | –       | –       | –
+| Percent          | `%`              | –            | –            | off     | low     | high
+| Insertion        | `%`              | –            | –            | out     | –       | in
+| IrisPercent      | `%`              | –            | –            | closed  | –       | open
 
 ### Possible capability types
 
