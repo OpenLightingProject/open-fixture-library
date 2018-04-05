@@ -150,7 +150,7 @@ function getPhysical(from) {
         }
       }
 
-      if (JSON.stringify(physical[prop]) === `{}`) {
+      if (isEmptyObject(physical[prop])) {
         delete physical[prop];
       }
     }
