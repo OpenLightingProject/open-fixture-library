@@ -7,8 +7,7 @@ module.exports.export = function exportOFL(fixtures, options) {
     const jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
     jsonData.$schema = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${module.exports.version}/schemas/fixture.json`;
     jsonData.manufacturer = fixture.manufacturer.key;
-    const urlName = fixture.name.toLowerCase().replace(/[^a-z0-9-]+/g, `-`)
-    jsonData.oflURL = 'https://open-fixture-library.org/'+fixture.manufacturer.key+'/'+urlName;
+    jsonData.oflURL = 'https://open-fixture-library.org/'+fixture.manufacturer.key+'/'+fixture.key;
     return {
       name: `${fixture.manufacturer.key}/${fixture.key}.json`,
       content: JSON.stringify(jsonData, null, 2),
