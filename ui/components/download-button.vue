@@ -25,7 +25,7 @@
     padding: 0.5ex 2ex;
     border-radius: 2px;
     background: $orange-500;
-    font-family: LatoLatinSemibold;
+    font-weight: 600;
     color: $primary-text-light;
     cursor: pointer;
     box-shadow: 0 2px 2px rgba(#000, 0.2);
