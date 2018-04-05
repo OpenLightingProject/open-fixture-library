@@ -49,6 +49,7 @@ Required properties are _italic_, the entity is written in (parentheses).
   * colorTemperature (ColorTemperature)
 * ColorWheelIndex
   * _index_ (Index): `0` for open, `1` for Color 1, `1.5` for Color 1/2 split, etc.
+  * colors: See above
 * ColorWheelRotationAngle
   * _angle_ (RotationAngle)
 * ColorWheelRotationSpeed

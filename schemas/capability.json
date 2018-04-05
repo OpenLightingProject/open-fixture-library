@@ -232,15 +232,33 @@
         "helpWanted": {},
         "index": { "$ref": "definitions.json#/entities/index" },
         "indexStart": { "$ref": "definitions.json#/entities/index" },
-        "indexEnd": { "$ref": "definitions.json#/entities/index" }
+        "indexEnd": { "$ref": "definitions.json#/entities/index" },
+        "colors": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "definitions.json#/colorString" }
+        },
+        "colorsStart": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "definitions.json#/colorString" }
+        },
+        "colorsEnd": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "definitions.json#/colorString" }
+        }
       },
       "oneOf": [
         { "required": ["index"] },
         { "required": ["indexStart"] }
       ],
+      "not": { "required": ["colors", "colorsStart"] },
       "dependencies": {
         "indexStart": ["indexEnd"],
-        "indexEnd": ["indexStart"]
+        "indexEnd": ["indexStart"],
+        "colorsStart": ["colorsEnd"],
+        "colorsEnd": ["colorsStart"]
       },
       "additionalProperties": false
     },

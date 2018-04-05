@@ -558,122 +558,125 @@
         {
           "dmxRange": [0, 1],
           "type": "ColorWheelIndex",
-          "comment": "White (#ffffff)",
-          "index": 0
+          "index": 0,
+          "colors": ["White"]
         },
         {
           "dmxRange": [2, 3],
           "type": "ColorWheelIndex",
-          "comment": "White-Red",
-          "index": 0.5
+          "index": 0.5,
+          "colors": ["White", "Red"]
         },
         {
           "dmxRange": [4, 5],
           "type": "ColorWheelIndex",
-          "comment": "Red (#ff0000)",
-          "index": 1
+          "index": 1,
+          "colors": ["Red"]
         },
         {
           "dmxRange": [6, 7],
           "type": "ColorWheelIndex",
-          "comment": "Red-Yellow",
-          "index": 1.5
+          "index": 1.5,
+          "colors": ["Red", "Yellow"]
         },
         {
           "dmxRange": [8, 9],
           "type": "ColorWheelIndex",
-          "comment": "Yellow (#ffff00)",
-          "index": 2
+          "index": 2,
+          "colors": ["Yellow"]
         },
         {
           "dmxRange": [10, 11],
           "type": "ColorWheelIndex",
-          "comment": "Yellow-Magenta",
-          "index": 2.5
+          "index": 2.5,
+          "colors": ["Yellow", "Magenta"]
         },
         {
           "dmxRange": [12, 13],
           "type": "ColorWheelIndex",
-          "comment": "Magenta (#ff00ff)",
-          "index": 3
+          "index": 3,
+          "colors": ["Magenta"]
         },
         {
           "dmxRange": [14, 15],
           "type": "ColorWheelIndex",
-          "comment": "Magenta-Green",
-          "index": 3.5
+          "index": 3.5,
+          "colors": ["Magenta", "Green"]
         },
         {
           "dmxRange": [16, 17],
           "type": "ColorWheelIndex",
-          "comment": "Green (#00ff00)",
-          "index": 4
+          "index": 4,
+          "colors": ["Green"]
         },
         {
           "dmxRange": [18, 19],
           "type": "ColorWheelIndex",
-          "comment": "Green-Amber",
-          "index": 4.5
+          "index": 4.5,
+          "colors": ["Green", "Amber"]
         },
         {
           "dmxRange": [20, 21],
           "type": "ColorWheelIndex",
-          "comment": "Amber (#ffbf00)",
-          "index": 5
+          "index": 5,
+          "colors": ["Amber"]
         },
         {
           "dmxRange": [22, 23],
           "type": "ColorWheelIndex",
-          "comment": "Amber-Darkblue",
-          "index": 5.5
+          "index": 5.5,
+          "colors": ["Amber", "Darkblue"]
         },
         {
           "dmxRange": [24, 25],
           "type": "ColorWheelIndex",
-          "comment": "Darkblue (#0000aa)",
-          "index": 6
+          "index": 6,
+          "colors": ["Darkblue"]
         },
         {
           "dmxRange": [26, 27],
           "type": "ColorWheelIndex",
-          "comment": "Darkblue-Turquoise",
-          "index": 6.5
+          "index": 6.5,
+          "colors": ["Darkblue", "Turquoise"]
         },
         {
           "dmxRange": [28, 29],
           "type": "ColorWheelIndex",
-          "comment": "Turquoise (#40e0d0)",
-          "index": 7
+          "index": 7,
+          "colors": ["Turquoise"]
         },
         {
           "dmxRange": [30, 31],
           "type": "ColorWheelIndex",
-          "comment": "Turquoise-Pink",
-          "index": 7.5
+          "index": 7.5,
+          "colors": ["Turquoise", "Pink"]
         },
         {
           "dmxRange": [32, 33],
           "type": "ColorWheelIndex",
-          "comment": "Pink (#ffaaaa)",
-          "index": 8
+          "index": 8,
+          "colors": ["Pink"]
         },
         {
           "dmxRange": [34, 35],
           "type": "ColorWheelIndex",
           "comment": "Pink-CTO",
-          "index": 8.5
+          "index": 8.5,
+          "colors": ["Pink", "#ffd2b0"]
         },
         {
           "dmxRange": [36, 37],
           "type": "ColorWheelIndex",
-          "comment": "CTO (#ffd2b0)",
-          "index": 9
+          "comment": "CTO",
+          "index": 9,
+          "colors": ["#ffd2b0"]
         },
         {
           "dmxRange": [38, 39],
           "type": "ColorWheelIndex",
           "comment": "CTO-White",
-          "index": 9.5
+          "index": 9.5,
+          "colors": ["#ffd2b0", "White"]
         },
         {
           "dmxRange": [40, 63],

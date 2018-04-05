@@ -12,7 +12,7 @@
       "date": "2017-01-24"
     }
   },
-  "manualURL": "http://www.sabretechnology.co.uk/pdfs/hptwis.pdf",
+  "manualURL": "http://www.sabretechnology.co.uk/pdfs/allman2.pdf",
   "physical": {
     "dimensions": [200, 200, 400],
     "weight": 5,
@@ -69,87 +69,97 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "ColorWheelIndex",
-          "index": 0,
-          "comment": "Blackout #000000]"
+          "type": "Nothing"
         },
         {
           "dmxRange": [10, 25],
           "type": "ColorWheelIndex",
-          "index": 1,
-          "comment": "White #ffffff [Open]"
+          "index": 0,
+          "comment": "Open",
+          "colors": ["White"]
         },
         {
           "dmxRange": [26, 42],
           "type": "ColorWheelIndex",
-          "index": 2,
-          "comment": "Red #ff0000 [Dot Tunnel]"
+          "index": 1,
+          "comment": "Dot Tunnel",
+          "colors": ["Red"]
         },
         {
           "dmxRange": [43, 58],
           "type": "ColorWheelIndex",
-          "index": 3,
-          "comment": "Blue #0000ff [Slash]"
+          "index": 2,
+          "comment": "Slash",
+          "colors": ["Blue"]
         },
         {
           "dmxRange": [59, 74],
           "type": "ColorWheelIndex",
-          "index": 4,
-          "comment": "Green #00ff00 [Segment]"
+          "index": 3,
+          "comment": "Segment",
+          "colors": ["Green"]
         },
         {
           "dmxRange": [75, 90],
           "type": "ColorWheelIndex",
-          "index": 5,
-          "comment": "Yellow #ffff00 [Triangle]"
+          "index": 4,
+          "comment": "Triangle",
+          "colors": ["Yellow"]
         },
         {
           "dmxRange": [91, 107],
           "type": "ColorWheelIndex",
-          "index": 6,
-          "comment": "Cyan #00ffff [Tunnel]"
+          "index": 5,
+          "comment": "Tunnel",
+          "colors": ["Cyan"]
         },
         {
           "dmxRange": [108, 123],
           "type": "ColorWheelIndex",
-          "index": 7,
-          "comment": "Orange #ffaa00 [Bubbles]"
+          "index": 6,
+          "comment": "Bubbles",
+          "colors": ["Orange"]
         },
         {
           "dmxRange": [124, 139],
           "type": "ColorWheelIndex",
-          "index": 8,
-          "comment": "Pink #ff557f [Stars]"
+          "index": 7,
+          "comment": "Stars",
+          "colors": ["Pink"]
         },
         {
           "dmxRange": [140, 155],
           "type": "ColorWheelIndex",
-          "index": 13,
-          "comment": "Multicolor [Quadrant]"
+          "index": 7,
+          "comment": "Quadrant [Multicolor]"
         },
         {
           "dmxRange": [156, 172],
           "type": "ColorWheelIndex",
-          "index": 9,
-          "comment": "Orange #ffaa00 [Bubbles]"
+          "index": 8,
+          "comment": "Bubbles",
+          "colors": ["Orange"]
         },
         {
           "dmxRange": [173, 188],
           "type": "ColorWheelIndex",
-          "index": 10,
-          "comment": "Cyan #00ffff [Tunnel]"
+          "index": 9,
+          "comment": "Tunnel",
+          "colors": ["Cyan"]
         },
         {
           "dmxRange": [189, 220],
           "type": "ColorWheelIndex",
-          "index": 11,
-          "comment": "Yellow #ffff00 [Triangle]"
+          "index": 10,
+          "comment": "Triangle",
+          "colors": ["Yellow"]
         },
         {
           "dmxRange": [221, 237],
           "type": "ColorWheelIndex",
-          "index": 12,
-          "comment": "Blue #0000ff [Slash]"
+          "index": 11,
+          "comment": "Slash",
+          "colors": ["Blue"]
         },
         {
           "dmxRange": [238, 253],
