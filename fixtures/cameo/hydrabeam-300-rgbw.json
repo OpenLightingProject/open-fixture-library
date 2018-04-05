@@ -198,7 +198,8 @@
         {
           "dmxRange": [248, 255],
           "type": "Effect",
-          "effectPreset": "SoundControl",
+          "effectName": "Sound Control",
+          "soundControlled": true,
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Sound sensitivity"
           }
@@ -405,7 +406,8 @@
         {
           "dmxRange": [241, 255],
           "type": "Effect",
-          "effectPreset": "SoundControl"
+          "effectName": "Sound Control",
+          "soundControlled": true
         }
       ]
     }
@@ -640,7 +642,8 @@
         {
           "dmxRange": [100, 122],
           "type": "Effect",
-          "effectPreset": "SoundControl",
+          "effectName": "Sound Control",
+          "soundControlled": true,
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Sound sensitivity $pixelKey"
           }

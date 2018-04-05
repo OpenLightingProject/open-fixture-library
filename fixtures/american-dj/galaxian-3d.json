@@ -120,7 +120,8 @@
         {
           "dmxRange": [248, 255],
           "type": "Effect",
-          "effectPreset": "SoundControl"
+          "effectName": "Sound Control",
+          "soundControlled": true
         }
       ]
     }
@@ -148,7 +149,8 @@
         {
           "dmxRange": [240, 247],
           "type": "Effect",
-          "effectPreset": "SoundControl"
+          "effectName": "Sound Control",
+          "soundControlled": true
         },
         {
           "dmxRange": [248, 255],

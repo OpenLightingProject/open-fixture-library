@@ -240,7 +240,8 @@
         {
           "dmxRange": [212, 237],
           "type": "Effect",
-          "effectPreset": "SoundControl",
+          "effectName": "Sound Control",
+          "soundControlled": true,
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Mic Sensitivity"
           }

@@ -155,8 +155,8 @@
         {
           "dmxRange": [224, 249],
           "type": "Effect",
-          "comment": "6 colors",
-          "effectPreset": "SoundControl",
+          "effectName": "6 colors",
+          "soundControlled": true,
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Sound Sensitivity"
           }
@@ -164,8 +164,8 @@
         {
           "dmxRange": [250, 255],
           "type": "Effect",
-          "comment": "32 colors",
-          "effectPreset": "SoundControl",
+          "effectName": "32 colors",
+          "soundControlled": true,
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Sound Sensitivity"
           }

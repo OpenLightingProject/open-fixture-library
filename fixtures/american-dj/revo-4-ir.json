@@ -49,7 +49,8 @@
         {
           "dmxRange": [240, 255],
           "type": "Effect",
-          "effectPreset": "SoundControl",
+          "effectName": "Sound Control",
+          "soundControlled": true,
           "switchChannels": {
             "Color / Chase Speed": "Chase Speed"
           }

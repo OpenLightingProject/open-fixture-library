@@ -109,8 +109,8 @@
         {
           "dmxRange": [224, 240],
           "type": "Effect",
-          "effectPreset": "SoundControl",
-          "comment": "Sound mode 1",
+          "effectName": "Sound mode 1",
+          "soundControlled": true,
           "switchChannels": {
             "Strobe / Program Speed / Sound Sensitivity": "Sound Sensitivity"
           }
@@ -118,8 +118,8 @@
         {
           "dmxRange": [241, 255],
           "type": "Effect",
-          "effectPreset": "SoundControl",
-          "comment": "Sound mode 2",
+          "effectName": "Sound mode 2",
+          "soundControlled": true,
           "switchChannels": {
             "Strobe / Program Speed / Sound Sensitivity": "Sound Sensitivity"
           }

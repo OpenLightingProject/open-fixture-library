@@ -431,11 +431,11 @@
         "effectName": { "$ref": "definitions.json#/nonEmptyString" },
         "effectPreset": {
           "enum": [
-            "SoundControl",
             "ColorJump",
             "ColorFade"
           ]
         },
+        "soundControlled": { "type": "boolean" },
         "effectIntensity": { "$ref": "definitions.json#/entities/factor" },
         "effectIntensityStart": { "$ref": "definitions.json#/entities/factor" },
         "effectIntensityEnd": { "$ref": "definitions.json#/entities/factor" },

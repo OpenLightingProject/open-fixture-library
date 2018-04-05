@@ -154,7 +154,8 @@
         {
           "dmxRange": [250, 255],
           "type": "Effect",
-          "effectPreset": "SoundControl",
+          "effectName": "Sound Control",
+          "soundControlled": true,
           "switchChannels": {
             "Red 1 / Running Speed": "Running Speed",
             "Green 1 / Fade Time": "Fade Time"
