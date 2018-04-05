@@ -232,7 +232,7 @@ export default {
      * @returns {!number} DMX value range end of the last generated capability.
      */
     end() {
-      return this.computedCapabilites[this.computedCapabilites.length - 1].range[1];
+      return this.computedCapabilites.length === 0 ? -1 : this.computedCapabilites[this.computedCapabilites.length - 1].range[1];
     },
 
     /**
