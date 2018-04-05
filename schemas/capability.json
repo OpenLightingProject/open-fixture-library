@@ -99,7 +99,6 @@
         { "required": ["speed"] },
         { "required": ["speedStart"] }
       ],
-      "not": { "required": ["speed", "speedStart"] },
       "dependencies": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
@@ -122,7 +121,6 @@
         { "required": ["duration"] },
         { "required": ["durationStart"] }
       ],
-      "not": { "required": ["duration", "durationStart"] },
       "dependencies": {
         "durationStart": ["durationEnd"],
         "durationEnd": ["durationStart"]
@@ -240,7 +238,6 @@
         { "required": ["index"] },
         { "required": ["indexStart"] }
       ],
-      "not": { "required": ["index", "indexStart"] },
       "dependencies": {
         "indexStart": ["indexEnd"],
         "indexEnd": ["indexStart"]
@@ -263,7 +260,6 @@
         { "required": ["angle"] },
         { "required": ["angleStart"] }
       ],
-      "not": { "required": ["angle", "angleStart"] },
       "dependencies": {
         "angleStart": ["angleEnd"],
         "angleEnd": ["angleStart"]
@@ -286,7 +282,6 @@
         { "required": ["speed"] },
         { "required": ["speedStart"] }
       ],
-      "not": { "required": ["speed", "speedStart"] },
       "dependencies": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
@@ -309,7 +304,6 @@
         { "required": ["colorTemperature"] },
         { "required": ["colorTemperatureStart"] }
       ],
-      "not": { "required": ["colorTemperature", "colorTemperatureStart"] },
       "dependencies": {
         "colorTemperatureStart": ["colorTemperatureEnd"],
         "colorTemperatureEnd": ["colorTemperatureStart"]
@@ -332,7 +326,6 @@
         { "required": ["angle"] },
         { "required": ["angleStart"] }
       ],
-      "not": { "required": ["angle", "angleStart"] },
       "dependencies": {
         "angleStart": ["angleEnd"],
         "angleEnd": ["angleStart"]
@@ -355,7 +348,6 @@
         { "required": ["speed"] },
         { "required": ["speedStart"] }
       ],
-      "not": { "required": ["speed", "speedStart"] },
       "dependencies": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
@@ -378,7 +370,6 @@
         { "required": ["angle"] },
         { "required": ["angleStart"] }
       ],
-      "not": { "required": ["angle", "angleStart"] },
       "dependencies": {
         "angleStart": ["angleEnd"],
         "angleEnd": ["angleStart"]
@@ -401,7 +392,6 @@
         { "required": ["speed"] },
         { "required": ["speedStart"] }
       ],
-      "not": { "required": ["speed", "speedStart"] },
       "dependencies": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
@@ -424,7 +414,6 @@
         { "required": ["speed"] },
         { "required": ["speedStart"] }
       ],
-      "not": { "required": ["speed", "speedStart"] },
       "dependencies": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
@@ -500,7 +489,6 @@
         { "required": ["effectIntensity"] },
         { "required": ["effectIntensityStart"] }
       ],
-      "not": { "required": ["effectIntensity", "effectIntensityStart"] },
       "dependencies": {
         "effectIntensityStart": ["effectIntensityEnd"],
         "effectIntensityEnd": ["effectIntensityStart"]
@@ -523,7 +511,6 @@
         { "required": ["speed"] },
         { "required": ["speedStart"] }
       ],
-      "not": { "required": ["speed", "speedStart"] },
       "dependencies": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
@@ -546,7 +533,6 @@
         { "required": ["duration"] },
         { "required": ["durationStart"] }
       ],
-      "not": { "required": ["duration", "durationStart"] },
       "dependencies": {
         "durationStart": ["durationEnd"],
         "durationEnd": ["durationStart"]
@@ -569,7 +555,6 @@
         { "required": ["sensitivity"] },
         { "required": ["sensitivityStart"] }
       ],
-      "not": { "required": ["sensitivity", "sensitivityStart"] },
       "dependencies": {
         "sensitivityStart": ["sensitivityEnd"],
         "sensitivityEnd": ["sensitivityStart"]
@@ -592,7 +577,6 @@
         { "required": ["index"] },
         { "required": ["indexStart"] }
       ],
-      "not": { "required": ["index", "indexStart"] },
       "dependencies": {
         "indexStart": ["indexEnd"],
         "indexEnd": ["indexStart"]
@@ -618,12 +602,7 @@
         { "required": ["index"] },
         { "required": ["indexStart"] }
       ],
-      "not": {
-        "anyOf": [
-          { "required": ["index", "indexStart"] },
-          { "required": ["speed", "speedStart"] }
-        ]
-      },
+      "not": { "required": ["speed", "speedStart"] },
       "dependencies": {
         "indexStart": ["indexEnd"],
         "indexEnd": ["indexStart"],
@@ -648,7 +627,6 @@
         { "required": ["angle"] },
         { "required": ["angleStart"] }
       ],
-      "not": { "required": ["angle", "angleStart"] },
       "dependencies": {
         "angleStart": ["angleEnd"],
         "angleEnd": ["angleStart"]
@@ -671,7 +649,6 @@
         { "required": ["speed"] },
         { "required": ["speedStart"] }
       ],
-      "not": { "required": ["speed", "speedStart"] },
       "dependencies": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
@@ -694,7 +671,6 @@
         { "required": ["angle"] },
         { "required": ["angleStart"] }
       ],
-      "not": { "required": ["angle", "angleStart"] },
       "dependencies": {
         "angleStart": ["angleEnd"],
         "angleEnd": ["angleStart"]
@@ -717,7 +693,6 @@
         { "required": ["speed"] },
         { "required": ["speedStart"] }
       ],
-      "not": { "required": ["speed", "speedStart"] },
       "dependencies": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
@@ -740,7 +715,6 @@
         { "required": ["distance"] },
         { "required": ["distanceStart"] }
       ],
-      "not": { "required": ["distance", "distanceStart"] },
       "dependencies": {
         "distanceStart": ["distanceEnd"],
         "distanceEnd": ["distanceStart"]
@@ -763,7 +737,6 @@
         { "required": ["angle"] },
         { "required": ["angleStart"] }
       ],
-      "not": { "required": ["angle", "angleStart"] },
       "dependencies": {
         "angleStart": ["angleEnd"],
         "angleEnd": ["angleStart"]
@@ -786,7 +759,6 @@
         { "required": ["openPercent"] },
         { "required": ["openPercentStart"] }
       ],
-      "not": { "required": ["openPercent", "openPercentStart"] },
       "dependencies": {
         "openPercentStart": ["openPercentEnd"],
         "openPercentEnd": ["openPercentStart"]
@@ -809,7 +781,6 @@
         { "required": ["speed"] },
         { "required": ["speedStart"] }
       ],
-      "not": { "required": ["speed", "speedStart"] },
       "dependencies": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
@@ -832,7 +803,6 @@
         { "required": ["frostIntensity"] },
         { "required": ["frostIntensityStart"] }
       ],
-      "not": { "required": ["frostIntensity", "frostIntensityStart"] },
       "dependencies": {
         "frostIntensityStart": ["frostIntensityEnd"],
         "frostIntensityEnd": ["frostIntensityStart"]
@@ -855,7 +825,6 @@
         { "required": ["speed"] },
         { "required": ["speedStart"] }
       ],
-      "not": { "required": ["speed", "speedStart"] },
       "dependencies": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
@@ -918,7 +887,6 @@
         { "required": ["angle"] },
         { "required": ["angleStart"] }
       ],
-      "not": { "required": ["angle", "angleStart"] },
       "dependencies": {
         "angleStart": ["angleEnd"],
         "angleEnd": ["angleStart"]
@@ -941,7 +909,6 @@
         { "required": ["speed"] },
         { "required": ["speedStart"] }
       ],
-      "not": { "required": ["speed", "speedStart"] },
       "dependencies": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
@@ -969,7 +936,6 @@
         { "required": ["insertion"] },
         { "required": ["insertionStart"] }
       ],
-      "not": { "required": ["insertion", "insertionStart"] },
       "dependencies": {
         "insertionStart": ["insertionEnd"],
         "insertionEnd": ["insertionStart"]
@@ -997,7 +963,6 @@
         { "required": ["angle"] },
         { "required": ["angleStart"] }
       ],
-      "not": { "required": ["angle", "angleStart"] },
       "dependencies": {
         "angleStart": ["angleEnd"],
         "angleEnd": ["angleStart"]
@@ -1020,7 +985,6 @@
         { "required": ["angle"] },
         { "required": ["angleStart"] }
       ],
-      "not": { "required": ["angle", "angleStart"] },
       "dependencies": {
         "angleStart": ["angleEnd"],
         "angleEnd": ["angleStart"]
@@ -1074,7 +1038,6 @@
         { "required": ["fogOutput"] },
         { "required": ["fogOutputStart"] }
       ],
-      "not": { "required": ["fogOutput", "fogOutputStart"] },
       "dependencies": {
         "fogOutputStart": ["fogOutputEnd"],
         "fogOutputEnd": ["fogOutputStart"]
@@ -1110,7 +1073,6 @@
         { "required": ["angle"] },
         { "required": ["angleStart"] }
       ],
-      "not": { "required": ["angle", "angleStart"] },
       "dependencies": {
         "angleStart": ["angleEnd"],
         "angleEnd": ["angleStart"]
@@ -1133,7 +1095,6 @@
         { "required": ["speed"] },
         { "required": ["speedStart"] }
       ],
-      "not": { "required": ["speed", "speedStart"] },
       "dependencies": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
@@ -1156,7 +1117,6 @@
         { "required": ["speed"] },
         { "required": ["speedStart"] }
       ],
-      "not": { "required": ["speed", "speedStart"] },
       "dependencies": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
