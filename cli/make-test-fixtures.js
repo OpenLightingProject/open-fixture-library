@@ -106,7 +106,7 @@ for (const fixture of fixtures) {
   console.log(` - ${fixture.man}/${fixture.key}`);
 }
 
-fs.writeFile(jsonFile, JSON.stringify(fixtures, null, 2), `utf8`, error => {
+fs.writeFile(jsonFile, `${JSON.stringify(fixtures, null, 2)}\n`, `utf8`, error => {
   if (error) {
     console.error(`${colors.red(`[Fail]`)} Could not write test-fixtures.json`, error);
   }

@@ -58,7 +58,7 @@ fs.readFile(filename, `utf8`, (error, data) => {
       });
     }
     else {
-      console.log(JSON.stringify(result, null, 2));
+      console.log(`${JSON.stringify(result, null, 2)}\n`);
     }
   }).catch(error => {
     console.error(error);
