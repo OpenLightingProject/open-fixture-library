@@ -26,44 +26,20 @@
     "Pan": {
       "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "range": [0, 0],
-          "name": "stop"
-        },
-        {
-          "range": [1, 255],
-          "name": "pan"
-        }
-      ]
+      "defaultValue": 0
     },
     "Tilt": {
       "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "range": [0, 0],
-          "name": "stop"
-        },
-        {
-          "range": [1, 255],
-          "name": "tilt"
-        }
-      ]
+      "defaultValue": 0
     },
     "Speed": {
       "type": "Speed",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "stop"
-        },
-        {
-          "range": [1, 255],
-          "name": "speed"
+          "range": [0, 255],
+          "name": "slow - fast"
         }
       ]
     },
