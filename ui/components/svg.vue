@@ -2,6 +2,27 @@
   <span class="icon" v-html="svgMarkup" />
 </template>
 
+<style lang="scss">
+@import '~assets/styles/vars.scss';
+
+.icon {
+  display: inline-block;
+  height: 1.4em;
+  width: 1.4em;
+  vertical-align: middle;
+
+  &.inactive {
+    fill: $icon-inactive-dark;
+  }
+
+  & svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}
+</style>
+
 <script>
 import icons from '~/assets/icons/icons.mjs';
 
@@ -76,7 +97,7 @@ export default {
  * @returns {!string} The inline <svg> tag or an empty string if the file was not found.
  */
 function getSvg(svgBasename, classNames = []) {
-  let svg = icons[svgBasename].replace(/\s+$/, ``);
+  let svg = svgBasename in icons ? icons[svgBasename].replace(/\s+$/, ``) : ``;
 
   if (classNames.length > 0) {
     svg = svg.replace(/<svg([^>]*)>/, `<svg$1 class="${classNames.join(` `)}">`);
@@ -94,7 +115,7 @@ function getSvg(svgBasename, classNames = []) {
  */
 function getCategoryIcon(categoryName, classNames = []) {
   const sanitzedCategoryName = categoryName.toLowerCase().replace(/[^\w]+/g, `-`);
-  classNames.push(`category-${sanitzedCategoryName}`, `category-icon`, `icon`);
+  classNames.push(`category-${sanitzedCategoryName}`, `category-icon`);
 
   const svg = getSvg(`categories/${sanitzedCategoryName}`, classNames);
   return svg.replace(/(<svg[^>]*>)/, `$1<title>Category: ${categoryName}</title>`);
@@ -109,7 +130,7 @@ function getCategoryIcon(categoryName, classNames = []) {
  */
 function getChannelTypeIcon(channelType, classNames = []) {
   const sanitzedChannelType = channelType.toLowerCase().replace(/[^\w]+/g, `-`);
-  classNames.push(`channel${sanitzedChannelType}`, `channel-icon`, `icon`);
+  classNames.push(`channel${sanitzedChannelType}`, `channel-icon`);
 
   const svg = getSvg(`channel-types/${sanitzedChannelType}`, classNames);
   return svg.replace(/(<svg[^>]*>)/, `$1<title>Channel type: ${channelType}</title>`);
