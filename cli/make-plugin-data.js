@@ -71,7 +71,7 @@ for (const pluginKey of fs.readdirSync(pluginDir)) {
 }
 
 const filename = path.join(pluginDir, `plugins.json`);
-fs.writeFile(filename, JSON.stringify(plugins, null, 2), `utf8`, error => {
+fs.writeFile(filename, `${JSON.stringify(plugins, null, 2)}\n`, `utf8`, error => {
   if (error) {
     console.error(`${colors.red(`[Fail]`)} Could not write plugin data file.`, error);
     process.exit(1);

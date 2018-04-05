@@ -135,7 +135,7 @@ for (const manId of Object.keys(rdm).sort()) {
 
 const filename = path.join(fixturePath, (process.argv.length === 3 ? process.argv[2] : `register.json`));
 
-fs.writeFile(filename, JSON.stringify(register, null, 2), `utf8`, error => {
+fs.writeFile(filename, `${JSON.stringify(register, null, 2)}\n`, `utf8`, error => {
   if (error) {
     console.error(`${colors.red(`[Fail]`)} Could not write register file.`, error);
     process.exit(1);
