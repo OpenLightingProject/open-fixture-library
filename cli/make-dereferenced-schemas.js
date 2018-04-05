@@ -25,7 +25,7 @@ for (const schemaFile of schemaFiles) {
   schemaRefParser.dereference(schema)
     .then(dereferencedSchema => fs.writeFileSync(
       dereferencedSchemaFile,
-      JSON.stringify(dereferencedSchema, null, 2)
+      `${JSON.stringify(dereferencedSchema, null, 2)}\n`
     ))
     .then(() => {
       console.log(`${colors.green(`[Success]`)} Updated dereferenced schema ${dereferencedSchemaFile}.`);
