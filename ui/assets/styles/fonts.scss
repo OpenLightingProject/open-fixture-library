@@ -43,7 +43,7 @@ $lato-flavor-list: (
        url('/fonts/Inconsolata/Inconsolata-Regular.ttf')  format('truetype');
   font-weight: 400;
   text-rendering: optimizeLegibility;
-    font-display: fallback;
+  font-display: fallback;
 }
 @font-face {
   font-family: Inconsolata;
@@ -52,5 +52,5 @@ $lato-flavor-list: (
        url('/fonts/Inconsolata/Inconsolata-Bold.ttf')  format('truetype');
   font-weight: 700;
   text-rendering: optimizeLegibility;
-    font-display: fallback;
+  font-display: fallback;
 }
