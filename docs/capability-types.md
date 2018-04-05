@@ -30,7 +30,7 @@ Required properties are _italic_, the entity is written in (parentheses).
 * Nothing
 * ShutterStrobe
   * _shutterEffect_: one of `Open`, `Closed`, `Strobe`, `StrobeRandom`, `Pulse`, `PulseRandom`, `RampUp`, `RampUpRandom`, `RampDown`, `RampDownRandom`
-  * speed (Speed) (can't be used together with time)
+  * speed (Speed) (can't be used together with duration)
   * duration (Time) (can't be used together with speed)
 * StrobeSpeed (global, doesn't activate strobe directly)
   * _speed_ (Speed)
@@ -69,7 +69,7 @@ Required properties are _italic_, the entity is written in (parentheses).
   * _effectName_: Free text describing the effect
   * _effectPreset_: one of `SoundControl`, `ColorJump`, `ColorFade`
   * effectIntensity (Factor)
-  * speed (Speed) (can't be used together with time)
+  * speed (Speed) (can't be used together with duration)
   * duration (Time) (can't be used together with speed)
   * soundSensitivity (Percent)
 * EffectIntensity (global, doesn't activate an effect directly)
