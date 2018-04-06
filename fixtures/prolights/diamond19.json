@@ -3,9 +3,9 @@
   "name": "DIAMOND19",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["fueller"],
+    "authors": ["fueller","ameisso"],
     "createDate": "2017-08-16",
-    "lastModifyDate": "2018-02-02"
+    "lastModifyDate": "2018-04-06"
   },
   "manualURL": "http://prolights.it/download.php?id=2882",
   "physical": {
@@ -26,18 +26,55 @@
       "tiltMax": 265
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [null,  null,  "10",  null, "11", null, null],
+        [null,   "9",  null,   "3", null, "12", null],
+        [ "8",  null,   "2",  null,  "4", null, "13"],
+        [null,  null,  null,   "1", null, null, null],
+        ["19",  null,  "7" ,  null,  "5", null, "14"],
+        [null,  "18",  null,   "6", null, "15", null],
+        [null,  null,  "17",  null, "16", null, null]
+      ]
+    ],
+    "pixelGroups": {
+      "Center":  ["1"],
+      "Middle ring": ["2", "3", "4", "5", "6", "7"],
+      "Outer ring":  ["8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"]
+    }
+  },
   "availableChannels": {
     "Pan": {
       "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
       "defaultValue": 127
     },
     "Tilt": {
       "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
       "defaultValue": 127
     },
     "Movement Speed": {
       "type": "Speed",
       "defaultValue": 127
+    },
+    "Movement Function": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "Normal Movement Functions"
+        },
+        {
+          "range": [16, 31],
+          "name": "Movement with Blackout"
+        },
+        {
+          "range": [32, 47],
+          "name": "No function (TBD)"
+        }
+      ]
     },
     "Shutter Function": {
       "type": "Shutter",
@@ -557,6 +594,46 @@
         }
       ]
     },
+    "Pattern Byte 1": {
+      "type": "Effect",
+      "defaultValue": 0
+    },
+    "Pattern Byte 2": {
+      "type": "Effect",
+      "defaultValue": 0
+    },
+    "Pattern Byte 3": {
+      "type": "Effect",
+      "defaultValue": 0
+    },
+    "Pattern Byte 4": {
+      "type": "Effect",
+      "defaultValue": 0
+    },
+    "Pattern Byte 5": {
+      "type": "Effect",
+      "defaultValue": 0
+    },
+    "Pattern Byte 6": {
+      "type": "Effect",
+      "defaultValue": 0
+    },
+    "Pattern Byte 7": {
+      "type": "Effect",
+      "defaultValue": 0
+    },
+    "Pattern Byte 8": {
+      "type": "Effect",
+      "defaultValue": 0
+    },
+    "Pattern Byte 9": {
+      "type": "Effect",
+      "defaultValue": 0
+    },
+    "Pattern Byte 10": {
+      "type": "Effect",
+      "defaultValue": 0
+    },
     "Control": {
       "type": "Maintenance",
       "defaultValue": 0,
@@ -608,6 +685,24 @@
       ]
     }
   },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green $pixelKey": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue $pixelKey": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "White $pixelKey": {
+      "type": "Single Color",
+      "color": "White"
+    }
+  },
   "modes": [
     {
       "name": "Standard",
@@ -630,6 +725,129 @@
         "Background",
         "Patterns",
         "Pattern Speed",
+        "Control"
+      ]
+    },
+    {
+      "name": "Basic 8 bits",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Movement Speed",
+        "Shutter",
+        "Dimmer",
+        "Virtual Color Function",
+        "Virtual Color 1",
+        "Virtual Color 2",
+        "Red-All",
+        "Green-All",
+        "Blue-All",
+        "White-All",
+        "Zoom",
+        "Foreground",
+        "Background",
+        "Patterns",
+        "Pattern Speed",
+        "Control"
+      ]
+    },
+    {
+      "name": "Basic 16 bits",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Movement Speed",
+        "Shutter",
+        "Dimmer",
+        "Virtual Color Function",
+        "Virtual Color 1",
+        "Virtual Color 2",
+        "Red-All",
+        "Green-All",
+        "Blue-All",
+        "White-All",
+        "Zoom",
+        "Foreground",
+        "Background",
+        "Patterns",
+        "Pattern Speed",
+        "Control"
+      ]
+    },
+    {
+      "name": "Extended 1",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Movement Speed",
+        "Movement Function",
+        "Shutter Function",
+        "Shutter",
+        "Dimmer",
+        "Virtual Color Function",
+        "Virtual Color 1",
+        "Virtual Color 2",
+        "Red-All",
+        "Green-All",
+        "Blue-All",
+        "White-All",
+        "Zoom",
+        "Foreground",
+        "Background",
+        "Patterns",
+        "Pattern Speed",
+        "Pattern Byte 1",
+        "Pattern Byte 2",
+        "Pattern Byte 3",
+        "Pattern Byte 4",
+        "Pattern Byte 5",
+        "Pattern Byte 6",
+        "Pattern Byte 7",
+        "Pattern Byte 8",
+        "Pattern Byte 9",
+        "Pattern Byte 10",
+        "Control"
+      ]
+    },
+    {
+      "name": "Extended 2",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Movement Speed",
+        "Movement Function",
+        "Shutter Function",
+        "Shutter",
+        "Dimmer",
+        "Virtual Color Function",
+        "Virtual Color 1",
+        "Virtual Color 2",
+        "Red-All",
+        "Green-All",
+        "Blue-All",
+        "White-All",
+        "Zoom",
+        "Foreground",
+        "Background",
+        "Patterns",
+        "Pattern Speed",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        },
         "Control"
       ]
     }
