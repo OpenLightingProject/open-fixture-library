@@ -59,7 +59,13 @@
     },
     "Movement Speed": {
       "type": "Speed",
-      "defaultValue": 127
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "fast-slow"
+        }
+      ]
     },
     "Movement Function": {
       "type": "Effect",
