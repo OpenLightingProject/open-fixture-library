@@ -29,13 +29,15 @@
   "matrix": {
     "pixelKeys": [
       [
-        [null,  null,  "10",  null, "11", null, null],
-        [null,   "9",  null,   "3", null, "12", null],
-        [ "8",  null,   "2",  null,  "4", null, "13"],
-        [null,  null,  null,   "1", null, null, null],
-        ["19",  null,  "7" ,  null,  "5", null, "14"],
-        [null,  "18",  null,   "6", null, "15", null],
-        [null,  null,  "17",  null, "16", null, null]
+        [null, null, null, "10", null, "11", null, null, null],
+        [null,  "9", null, null, null, null, null, "12", null],
+        [null, null, null, null,  "3", null, null, null, null],
+        [ "8", null,  "2", null,  null, null, "4", null, "13"],
+        [null, null, null,  null, "1", null, null, null, null],
+        ["19", null,  "7", null,  null, null, "5", null, "14"],
+        [null, null, null, null,  "6", null, null, null, null],
+        [null, "18", null, null, null, null, null, "15", null],
+        [null, null, null, "17", null, "16", null, null, null]
       ]
     ],
     "pixelGroups": {
