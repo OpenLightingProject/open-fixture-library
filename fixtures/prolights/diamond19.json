@@ -708,6 +708,7 @@
   "modes": [
     {
       "name": "Standard",
+      "shortName": "Stand",
       "channels": [
         "Pan",
         "Tilt",
@@ -731,7 +732,8 @@
       ]
     },
     {
-      "name": "Basic 8 bits",
+      "name": "Basic 8-bit",
+      "shortName": "Bas-8",
       "channels": [
         "Pan",
         "Tilt",
@@ -754,7 +756,8 @@
       ]
     },
     {
-      "name": "Basic 16 bits",
+      "name": "Basic 16-bit",
+      "shortName": "Bas-16",
       "channels": [
         "Pan",
         "Pan fine",
@@ -780,6 +783,7 @@
     },
     {
       "name": "Extended 1",
+      "shortName": "Ext-1",
       "channels": [
         "Pan",
         "Pan fine",
@@ -817,6 +821,7 @@
     },
     {
       "name": "Extended 2",
+      "shortName": "Ext-2",
       "channels": [
         "Pan",
         "Pan fine",
