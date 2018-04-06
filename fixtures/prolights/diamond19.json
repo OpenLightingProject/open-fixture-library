@@ -109,8 +109,47 @@
         }
       ]
     },
-    "Shutter": {
+    "Shutter Basic": {
       "type": "Shutter",
+      "name": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "Closed"
+        },
+        {
+          "range": [32, 63],
+          "name": "Open"
+        },
+        {
+          "range": [64, 95],
+          "name": "Strobe slow-fast"
+        },
+        {
+          "range": [96, 127],
+          "name": "Open"
+        },
+        {
+          "range": [128, 159],
+          "name": "Pulse"
+        },
+        {
+          "range": [160, 191],
+          "name": "Open"
+        },
+        {
+          "range": [192, 223],
+          "name": "Random strobe slow-fast"
+        },
+        {
+          "range": [224, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Shutter Extended": {
+      "type": "Shutter",
+      "name": "Shutter",
       "capabilities": [
         {
           "range": [0, 31],
@@ -720,7 +759,7 @@
         "Tilt",
         "Movement Speed",
         "Shutter Function",
-        "Shutter",
+        "Shutter Extended",
         "Dimmer",
         "Virtual Color Function",
         "Virtual Color 1",
@@ -744,7 +783,7 @@
         "Pan",
         "Tilt",
         "Movement Speed",
-        "Shutter",
+        "Shutter Basic",
         "Dimmer",
         "Virtual Color Function",
         "Virtual Color 1",
@@ -770,7 +809,7 @@
         "Tilt",
         "Tilt fine",
         "Movement Speed",
-        "Shutter",
+        "Shutter Basic",
         "Dimmer",
         "Virtual Color Function",
         "Virtual Color 1",
@@ -798,7 +837,7 @@
         "Movement Speed",
         "Movement Function",
         "Shutter Function",
-        "Shutter",
+        "Shutter Extended",
         "Dimmer",
         "Virtual Color Function",
         "Virtual Color 1",
@@ -836,7 +875,7 @@
         "Movement Speed",
         "Movement Function",
         "Shutter Function",
-        "Shutter",
+        "Shutter Extended",
         "Dimmer",
         "Virtual Color Function",
         "Virtual Color 1",
