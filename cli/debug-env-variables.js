@@ -11,6 +11,7 @@ const usedVariables = [
   `TRAVIS_COMMIT`,
   `TRAVIS_EVENT_TYPE`,
   `TRAVIS_PULL_REQUEST`,
+  `TRAVIS_PULL_REQUESt_SLUG`,
   `TRAVIS_REPO_SLUG`
 ];
 
