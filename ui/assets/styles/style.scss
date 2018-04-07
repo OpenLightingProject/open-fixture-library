@@ -5,10 +5,11 @@
 html, body {
   margin: 0;
   padding: 0;
-  font: 12pt/2 LatoLatinRegular, Helvetica, Arial, sans-serif;
+  font: 12pt/2 LatoLatin, 'Source Sans Pro', Helvetica, Arial, sans-serif;
   color: $primary-text-dark;
   background: $grey-200;
   word-wrap: break-word;
+  text-rendering: optimizeLegibility;
 }
 
 html {
@@ -16,27 +17,26 @@ html {
 }
 
 h1 {
-  font-family: LatoLatinLight;
-  font-weight: normal;
+  font-weight: 300;
   font-size: 2rem;
   line-height: 2.5rem;
   margin: 1.5rem 0 1.5rem;
 }
 
 h2 {
-  font-weight: normal;
+  font-weight: 400;
   margin: 0;
   font-size: 1.5rem;
 }
 
 h3 {
-  font-weight: bold;
+  font-weight: 800;
   font-size: 1.2rem;
   margin: 1rem 0 0;
 }
 
 h4 {
-  font-weight: bold;
+  font-weight: 800;
   font-size: 1rem;
   margin: 0.8rem 0 0;
 }
@@ -132,7 +132,7 @@ input[type=number] {
   border: 1px solid #cfd6e6;
   border-radius: 3px;
   font-size: 0.95em;
-  font-family: LatoLatinRegular;
+  font-family: LatoLatin;
   transition: border-color 0.2s;
 
   &:focus {
@@ -170,7 +170,7 @@ input[type=number] {
     background: red;
     border-radius: 9999px;
     color: white;
-    font-weight: bold;
+    font-weight: 600;
     vertical-align: middle;
   }
 }
@@ -205,7 +205,7 @@ select.empty {
   color: $secondary-text-dark;
   font-style: italic;
 
-  & option {
+  & > option {
     color: $primary-text-dark;
     font-style: normal;
   }
@@ -262,7 +262,7 @@ a.button {
   cursor: pointer;
   color: $primary-text-light;
   fill: $icon-light;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 0.9em;
   line-height: 1.4;
   padding: 0.5em 3ex;
