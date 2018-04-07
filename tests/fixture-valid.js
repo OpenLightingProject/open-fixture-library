@@ -4,6 +4,7 @@ const Ajv = require(`ajv`);
 const fixtureSchema = require(`../schemas/dereferenced/fixture.json`);
 
 const {
+  Capability,
   Channel,
   FineChannel,
   Fixture,
@@ -404,6 +405,40 @@ function checkDmxRange(channel, capNumber, minUsedFineness) {
   return true;
 }
 
+const capabilityTypeChecks = {
+  'Pan': checkPanTiltCapability,
+  'Tilt': checkPanTiltCapability
+};
+
+/**
+ * Checks specific for Pan and Tilt capabilities
+ * @param {!Capability} cap The capability to check.
+ * @param {!string} errorPrefix An identifier for the capability to use in errors and warnings.
+ */
+function checkPanTiltCapability(cap, errorPrefix) {
+  const max = fixture.physical !== null ? fixture.physical[`focus${cap.type}Max`] : null;
+  const usesPercentageValue = cap.angle[0].unit === `%`;
+
+  const panOrTilt = cap.type.toLowerCase();
+
+  if (!usesPercentageValue) {
+    if (max) {
+      if (cap.angle[0] > max) {
+        result.errors.push(`${errorPrefix} uses a start angle that is greater than focus.${panOrTilt}Max in the fixture's physical data.`);
+      }
+      if (!cap.isStep && cap.angle[1] > max) {
+        result.errors.push(`${errorPrefix} uses an end angle that is greater than focus.${panOrTilt}Max in the fixture's physical data.`);
+      }
+    }
+    else {
+      result.warnings.push(`${errorPrefix} defines an exact ${panOrTilt} angle. Setting focus.${panOrTilt}Max in the fixture's physical data is recommended.`);
+    }
+  }
+  else if (max) {
+    result.warnings.push(`${errorPrefix} defines an unprecise percentaged ${panOrTilt} angle. Using the exact value from focus.${panOrTilt}Max in the fixture's physical data is recommended.`);
+  }
+}
+
 /**
  * Check that a capability is valid (except its dmx range).
  * @param {!Capability} cap The capability to check.
@@ -439,6 +474,10 @@ function checkCapability(cap, channel, errorPrefix) {
     else if (startValue.unit !== endValue.unit) {
       result.errors.push(`${errorPrefix} uses different units for ${prop}.`);
     }
+  }
+
+  if (Object.keys(capabilityTypeChecks).includes(cap.type)) {
+    capabilityTypeChecks[cap.type](cap, errorPrefix);
   }
 }
 
