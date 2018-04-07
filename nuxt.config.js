@@ -100,13 +100,13 @@ const nuxtOptions = {
       },
       {
         rel: `preload`,
-        href: `/fonts/LatoLatin-Regular.woff2`,
+        href: `/fonts/LatoLatin/LatoLatin-Regular.woff2`,
         as: `font`,
         type: `font/woff2`
       },
       {
         rel: `preload`,
-        href: `/fonts/LatoLatin-Regular.woff`,
+        href: `/fonts/LatoLatin/LatoLatin-Regular.woff`,
         as: `font`,
         type: `font/woff`
       }
