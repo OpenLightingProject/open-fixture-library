@@ -357,20 +357,7 @@ function checkCapabilities(channel, minUsedFineness) {
       dmxRangesInvalid = !checkDmxRange(channel, i, minUsedFineness);
     }
 
-    const switchingChannelAliases = Object.keys(cap.switchChannels);
-    if (!arraysEqual(switchingChannelAliases, channel.switchingChannelAliases)) {
-      result.errors.push(`Capability '${cap.name}' (#${i + 1}) must define the same switching channel aliases as all other capabilities in channel '${channel.key}'.`);
-    }
-    else {
-      for (const alias of switchingChannelAliases) {
-        const chKey = cap.switchChannels[alias];
-        usedChannelKeys.add(chKey.toLowerCase());
-
-        if (channel.fixture.getChannelByKey(chKey) === null) {
-          result.errors.push(`Channel '${chKey}' is referenced from capability '${cap.name}' (#${i + 1}) in channel '${channel.key}' but is not defined.`);
-        }
-      }
-    }
+    checkCapability(cap, channel, `Capability '${cap.name}' (${cap.rawDmxRange}) in channel '${channel.key}'`);
   }
 }
 
@@ -415,6 +402,29 @@ function checkDmxRange(channel, capNumber, minUsedFineness) {
   }
 
   return true;
+}
+
+/**
+ * Check that a capability is valid (except its dmx range).
+ * @param {!Capability} cap The capability to check.
+ * @param {!Channel} channel The channel that includes the capability.
+ * @param {!string} errorPrefix An identifier for the capability to use in errors and warnings.
+ */
+function checkCapability(cap, channel, errorPrefix) {
+  const switchingChannelAliases = Object.keys(cap.switchChannels);
+  if (!arraysEqual(switchingChannelAliases, channel.switchingChannelAliases)) {
+    result.errors.push(`${errorPrefix} must define the same switching channel aliases as all other capabilities.`);
+  }
+  else {
+    for (const alias of switchingChannelAliases) {
+      const chKey = cap.switchChannels[alias];
+      usedChannelKeys.add(chKey.toLowerCase());
+
+      if (channel.fixture.getChannelByKey(chKey) === null) {
+        result.errors.push(`${errorPrefix} references unknown channel '${chKey}'.`);
+      }
+    }
+  }
 }
 
 /**
