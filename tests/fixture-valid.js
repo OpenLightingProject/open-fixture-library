@@ -425,6 +425,21 @@ function checkCapability(cap, channel, errorPrefix) {
       }
     }
   }
+
+  const startEndEntities = Capability.START_END_PROPERTIES.map(
+    prop => [prop, cap[prop]]
+  ).filter(
+    ([prop, value]) => value !== null
+  );
+
+  for (const [prop, [startValue, endValue]] of startEndEntities) {
+    if ((startValue.keyword === null) !== (endValue.keyword === null)) {
+      result.errors.push(`${errorPrefix} must use keywords for start and end value or for none of them in ${prop}.`);
+    }
+    else if (startValue.unit !== endValue.unit) {
+      result.errors.push(`${errorPrefix} uses different units for ${prop}.`);
+    }
+  }
 }
 
 /**
