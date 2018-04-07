@@ -3,9 +3,9 @@
   "name": "DIAMOND19",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["fueller"],
+    "authors": ["fueller","ameisso"],
     "createDate": "2017-08-16",
-    "lastModifyDate": "2018-02-02"
+    "lastModifyDate": "2018-04-06"
   },
   "manualURL": "http://prolights.it/download.php?id=2882",
   "physical": {
@@ -26,18 +26,63 @@
       "tiltMax": 265
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [null, null, null, "10", null, "11", null, null, null],
+        [null,  "9", null, null, null, null, null, "12", null],
+        [null, null, null, null,  "3", null, null, null, null],
+        [ "8", null,  "2", null,  null, null, "4", null, "13"],
+        [null, null, null,  null, "1", null, null, null, null],
+        ["19", null,  "7", null,  null, null, "5", null, "14"],
+        [null, null, null, null,  "6", null, null, null, null],
+        [null, "18", null, null, null, null, null, "15", null],
+        [null, null, null, "17", null, "16", null, null, null]
+      ]
+    ],
+    "pixelGroups": {
+      "Center":  ["1"],
+      "Middle ring": ["2", "3", "4", "5", "6", "7"],
+      "Outer ring":  ["8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"]
+    }
+  },
   "availableChannels": {
     "Pan": {
       "type": "Pan",
-      "defaultValue": 127
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32767
     },
     "Tilt": {
       "type": "Tilt",
-      "defaultValue": 127
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32767
     },
     "Movement Speed": {
       "type": "Speed",
-      "defaultValue": 127
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "fast-slow"
+        }
+      ]
+    },
+    "Movement Function": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "Normal Movement Functions"
+        },
+        {
+          "range": [16, 31],
+          "name": "Movement with Blackout"
+        },
+        {
+          "range": [32, 255],
+          "name": "No function (TBD)"
+        }
+      ]
     },
     "Shutter Function": {
       "type": "Shutter",
@@ -64,8 +109,47 @@
         }
       ]
     },
-    "Shutter": {
+    "Shutter Basic": {
       "type": "Shutter",
+      "name": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "Closed"
+        },
+        {
+          "range": [32, 63],
+          "name": "Open"
+        },
+        {
+          "range": [64, 95],
+          "name": "Strobe slow-fast"
+        },
+        {
+          "range": [96, 127],
+          "name": "Open"
+        },
+        {
+          "range": [128, 159],
+          "name": "Pulse"
+        },
+        {
+          "range": [160, 191],
+          "name": "Open"
+        },
+        {
+          "range": [192, 223],
+          "name": "Random strobe slow-fast"
+        },
+        {
+          "range": [224, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Shutter Extended": {
+      "type": "Shutter",
+      "name": "Shutter",
       "capabilities": [
         {
           "range": [0, 31],
@@ -557,6 +641,46 @@
         }
       ]
     },
+    "Pattern Byte 1": {
+      "type": "Effect",
+      "defaultValue": 0
+    },
+    "Pattern Byte 2": {
+      "type": "Effect",
+      "defaultValue": 0
+    },
+    "Pattern Byte 3": {
+      "type": "Effect",
+      "defaultValue": 0
+    },
+    "Pattern Byte 4": {
+      "type": "Effect",
+      "defaultValue": 0
+    },
+    "Pattern Byte 5": {
+      "type": "Effect",
+      "defaultValue": 0
+    },
+    "Pattern Byte 6": {
+      "type": "Effect",
+      "defaultValue": 0
+    },
+    "Pattern Byte 7": {
+      "type": "Effect",
+      "defaultValue": 0
+    },
+    "Pattern Byte 8": {
+      "type": "Effect",
+      "defaultValue": 0
+    },
+    "Pattern Byte 9": {
+      "type": "Effect",
+      "defaultValue": 0
+    },
+    "Pattern Byte 10": {
+      "type": "Effect",
+      "defaultValue": 0
+    },
     "Control": {
       "type": "Maintenance",
       "defaultValue": 0,
@@ -608,15 +732,34 @@
       ]
     }
   },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green $pixelKey": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue $pixelKey": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "White $pixelKey": {
+      "type": "Single Color",
+      "color": "White"
+    }
+  },
   "modes": [
     {
       "name": "Standard",
+      "shortName": "std",
       "channels": [
         "Pan",
         "Tilt",
         "Movement Speed",
         "Shutter Function",
-        "Shutter",
+        "Shutter Extended",
         "Dimmer",
         "Virtual Color Function",
         "Virtual Color 1",
@@ -630,6 +773,133 @@
         "Background",
         "Patterns",
         "Pattern Speed",
+        "Control"
+      ]
+    },
+    {
+      "name": "Basic 8-bit",
+      "shortName": "bas8",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Movement Speed",
+        "Shutter Basic",
+        "Dimmer",
+        "Virtual Color Function",
+        "Virtual Color 1",
+        "Virtual Color 2",
+        "Red-All",
+        "Green-All",
+        "Blue-All",
+        "White-All",
+        "Zoom",
+        "Foreground",
+        "Background",
+        "Patterns",
+        "Pattern Speed",
+        "Control"
+      ]
+    },
+    {
+      "name": "Basic 16-bit",
+      "shortName": "bas16",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Movement Speed",
+        "Shutter Basic",
+        "Dimmer",
+        "Virtual Color Function",
+        "Virtual Color 1",
+        "Virtual Color 2",
+        "Red-All",
+        "Green-All",
+        "Blue-All",
+        "White-All",
+        "Zoom",
+        "Foreground",
+        "Background",
+        "Patterns",
+        "Pattern Speed",
+        "Control"
+      ]
+    },
+    {
+      "name": "Extended 1",
+      "shortName": "ext1",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Movement Speed",
+        "Movement Function",
+        "Shutter Function",
+        "Shutter Extended",
+        "Dimmer",
+        "Virtual Color Function",
+        "Virtual Color 1",
+        "Virtual Color 2",
+        "Red-All",
+        "Green-All",
+        "Blue-All",
+        "White-All",
+        "Zoom",
+        "Foreground",
+        "Background",
+        "Patterns",
+        "Pattern Speed",
+        "Pattern Byte 1",
+        "Pattern Byte 2",
+        "Pattern Byte 3",
+        "Pattern Byte 4",
+        "Pattern Byte 5",
+        "Pattern Byte 6",
+        "Pattern Byte 7",
+        "Pattern Byte 8",
+        "Pattern Byte 9",
+        "Pattern Byte 10",
+        "Control"
+      ]
+    },
+    {
+      "name": "Extended 2",
+      "shortName": "ext2",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Movement Speed",
+        "Movement Function",
+        "Shutter Function",
+        "Shutter Extended",
+        "Dimmer",
+        "Virtual Color Function",
+        "Virtual Color 1",
+        "Virtual Color 2",
+        "Red-All",
+        "Green-All",
+        "Blue-All",
+        "White-All",
+        "Zoom",
+        "Foreground",
+        "Background",
+        "Patterns",
+        "Pattern Speed",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        },
         "Control"
       ]
     }
