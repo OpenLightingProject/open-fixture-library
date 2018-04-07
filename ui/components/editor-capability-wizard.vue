@@ -158,14 +158,14 @@ export default {
     /**
      * @returns {!number} Maximum allowed DMX value.
      */
-    dmxMax: function() {
+    dmxMax() {
       return Math.pow(256, this.fineness + 1) - 1;
     },
 
     /**
      * @returns {!number} Index in capabilities array where the generated capabilities need to be inserted.
      */
-    insertIndex: function() {
+    insertIndex() {
       // loop from inherited capabilities array end to start
       for (let i = this.capabilities.length - 1; i >= 0; i--) {
         if (this.capabilities[i].range !== null && this.capabilities[i].range[1] !== null && this.capabilities[i].range[1] < this.wizard.start) {
@@ -179,7 +179,7 @@ export default {
     /**
      * @returns {!Array.<object>} Generated capabilities. An empty capability is prepended to fill the gap if neccessary.
      */
-    computedCapabilites: function() {
+    computedCapabilites() {
       const capabilities = [];
 
       const prevCapability = this.capabilities[this.insertIndex - 1];
@@ -209,7 +209,7 @@ export default {
     /**
      * @returns {!number} Number of (empty) capabilities to remove after the generated ones.
      */
-    removeCount: function() {
+    removeCount() {
       const nextCapability = this.capabilities[this.insertIndex];
       if (nextCapability && isCapabilityChanged(nextCapability)) {
         // non-empty capability (should not occur here, but should not be removed anyway)
@@ -231,14 +231,14 @@ export default {
     /**
      * @returns {!number} DMX value range end of the last generated capability.
      */
-    end: function() {
-      return this.computedCapabilites[this.computedCapabilites.length - 1].range[1];
+    end() {
+      return this.computedCapabilites.length === 0 ? -1 : this.computedCapabilites[this.computedCapabilites.length - 1].range[1];
     },
 
     /**
      * @returns {!Array.<object>} Array with a typed capability object (@see getTypedCapability) for each capability (generated and inherited).
      */
-    allCapabilities: function() {
+    allCapabilities() {
       const inheritedCapabilities = this.capabilities.map(
         cap => getTypedCapability(cap, `inherited`)
       );
@@ -256,11 +256,31 @@ export default {
     },
 
     /**
-     * @returns {?string} A string with an error that prevents the generated capabilities from being saved, or null if there is no error.
+     * Performs validation of the user input.
+     * @returns {?string} A string with an validation error, or null if there is no error.
      */
-    error: function() {
+    validationError() {
       if (this.wizard.start < 0) {
         return `Capabilities must not start below DMX value 0.`;
+      }
+
+      if (this.wizard.width <= 0) {
+        return `Capability width must be greater than zero.`;
+      }
+
+      if (this.wizard.start % 1 !== 0 || this.wizard.width % 1 !== 0 || this.wizard.count % 1 !== 0) {
+        return `Please do only enter whole number values.`;
+      }
+
+      return null;
+    },
+
+    /**
+     * @returns {?string} A string with an error that prevents the generated capabilities from being saved, or null if there is no error.
+     */
+    error() {
+      if (this.validationError) {
+        return this.validationError;
       }
 
       if (this.end > this.dmxMax) {
@@ -285,7 +305,7 @@ export default {
       return null;
     }
   },
-  mounted: function() {
+  mounted() {
     if (this.$root._oflRestoreComplete) {
       this.$refs.firstInput.focus();
     }
@@ -315,7 +335,7 @@ export default {
     /**
      * Applies the generated capabilities into the capabilities prop and emits a "close" event.
      */
-    apply: function() {
+    apply() {
       if (this.error) {
         return;
       }
