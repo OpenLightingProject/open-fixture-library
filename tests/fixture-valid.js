@@ -472,70 +472,67 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
    */
   function checkChannelInsertBlock(insertBlock, mode) {
     if (insertBlock.insert === `matrixChannels`) {
-      checkMatrixInsertBlock(insertBlock, mode);
+      checkMatrixInsertBlock(insertBlock);
     }
     // open for future extensions (invalid values are prohibited by the schema)
-  }
 
-  /**
-   * Checks the given matrix channel insert.
-   * @param {!object} matrixInsertBlock The matrix channel reference specified in the mode's json channel list.
-   * @param {'matrixChannels'} matrixInsertBlock.insert Indicates that this is a matrix insert.
-   * @param {'eachPixel'|'eachPixelGroup'|string[]} matrixInsertBlock.repeatFor The pixelKeys or pixelGroupKeys for which the specified channels should be repeated.
-   * @param {'perPixel'|'perChannel'} matrixInsertBlock.channelOrder Order the channels like RGB1/RGB2/RGB3 or R123/G123/B123.
-   * @param {!Array.<string, null>} matrixInsertBlock.templateChannels The template channel keys (and aliases) or null channels to be repeated.
-   * @param {!Mode} mode The mode in which this insert block is used.
-   */
-  function checkMatrixInsertBlock(matrixInsertBlock, mode) {
-    checkMatrixInsertBlockRepeatFor(matrixInsertBlock.repeatFor, mode);
+    /**
+     * Checks the given matrix channel insert.
+     * @param {!object} matrixInsertBlock The matrix channel reference specified in the mode's json channel list.
+     * @param {'matrixChannels'} matrixInsertBlock.insert Indicates that this is a matrix insert.
+     * @param {'eachPixel'|'eachPixelGroup'|string[]} matrixInsertBlock.repeatFor The pixelKeys or pixelGroupKeys for which the specified channels should be repeated.
+     * @param {'perPixel'|'perChannel'} matrixInsertBlock.channelOrder Order the channels like RGB1/RGB2/RGB3 or R123/G123/B123.
+     * @param {!Array.<string, null>} matrixInsertBlock.templateChannels The template channel keys (and aliases) or null channels to be repeated.
+     */
+    function checkMatrixInsertBlock(matrixInsertBlock) {
+      checkMatrixInsertBlockRepeatFor();
 
-    for (const templateKey of matrixInsertBlock.templateChannels) {
-      const templateChannelExists = fixture.templateChannels.some(ch => ch.allTemplateKeys.includes(templateKey));
-      if (!templateChannelExists) {
-        result.errors.push(`Template channel '${templateKey}' doesn't exist.`);
-      }
-    }
-  }
-
-  /**
-   * Checks the used pixel (group) keys for existance and duplicates. Also respects pixel keys included in a pixel group.
-   * @param {!string|!Array.<string>} repeatFor A matrix insert's repeatFor property.
-   * @param {!Mode} mode The mode in which the insert block is used.
-   */
-  function checkMatrixInsertBlockRepeatFor(repeatFor, mode) {
-    if (typeof repeatFor === `string`) {
-      // no custom pixel key list, keywords are already tested by schema
-      return;
-    }
-
-    const usedPixelKeys = new Set();
-
-    // simple uniqueness is already checked by schema, but this test also checks for pixelKeys in pixelGroups
-    for (const pixelKey of repeatFor) {
-      if (fixture.matrix.pixelKeys.includes(pixelKey)) {
-        module.exports.checkUniqueness(
-          usedPixelKeys,
-          pixelKey,
-          `PixelKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
-        );
-      }
-      else if (pixelKey in fixture.matrix.pixelGroups) {
-        module.exports.checkUniqueness(
-          usedPixelKeys,
-          pixelKey,
-          `PixelGroupKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
-        );
-
-        for (const singlePixelKey of fixture.matrix.pixelGroups[pixelKey]) {
-          module.exports.checkUniqueness(
-            usedPixelKeys,
-            singlePixelKey,
-            `PixelKey '${singlePixelKey}' in group '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
-          );
+      for (const templateKey of matrixInsertBlock.templateChannels) {
+        const templateChannelExists = fixture.templateChannels.some(ch => ch.allTemplateKeys.includes(templateKey));
+        if (!templateChannelExists) {
+          result.errors.push(`Template channel '${templateKey}' doesn't exist.`);
         }
       }
-      else {
-        result.errors.push(`Unknown pixelKey or pixelGroupKey '${pixelKey}'`);
+
+      /**
+       * Checks the used pixel (group) keys for existance and duplicates. Also respects pixel keys included in a pixel group.
+       */
+      function checkMatrixInsertBlockRepeatFor() {
+        if (typeof matrixInsertBlock.repeatFor === `string`) {
+          // no custom pixel key list, keywords are already tested by schema
+          return;
+        }
+
+        const usedPixelKeys = new Set();
+
+        // simple uniqueness is already checked by schema, but this test also checks for pixelKeys in pixelGroups
+        for (const pixelKey of matrixInsertBlock.repeatFor) {
+          if (fixture.matrix.pixelKeys.includes(pixelKey)) {
+            module.exports.checkUniqueness(
+              usedPixelKeys,
+              pixelKey,
+              `PixelKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
+            );
+          }
+          else if (pixelKey in fixture.matrix.pixelGroups) {
+            module.exports.checkUniqueness(
+              usedPixelKeys,
+              pixelKey,
+              `PixelGroupKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
+            );
+
+            for (const singlePixelKey of fixture.matrix.pixelGroups[pixelKey]) {
+              module.exports.checkUniqueness(
+                usedPixelKeys,
+                singlePixelKey,
+                `PixelKey '${singlePixelKey}' in group '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
+              );
+            }
+          }
+          else {
+            result.errors.push(`Unknown pixelKey or pixelGroupKey '${pixelKey}'`);
+          }
+        }
       }
     }
   }
