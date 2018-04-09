@@ -171,7 +171,9 @@ export default {
       return getDateHtml(this.fixture.meta.lastModifyDate);
     },
     githubRepoPath() {
-      return `https://github.com/${process.env.TRAVIS_REPO_SLUG || `OpenLightingProject/open-fixture-library`}`;
+      const slug = process.env.TRAVIS_PULL_REQUEST_SLUG || process.env.TRAVIS_REPO_SLUG || `OpenLightingProject/open-fixture-library`;
+
+      return `https://github.com/${slug}`;
     },
     branch() {
       return process.env.TRAVIS_PULL_REQUEST_BRANCH || process.env.TRAVIS_BRANCH || `master`;
