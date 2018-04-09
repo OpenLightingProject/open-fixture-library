@@ -15,18 +15,19 @@ Please update these docs and [`cli/debug-env-variables.js`](../cli/debug-env-var
 
 ## Environment variables used by OFL
 
-| Name                  | Possible values                            | Description                        |
-|-----------------------|--------------------------------------------|------------------------------------|
-|`ALLOW_SEARCH_INDEXING`| `allowed` or anything else                 | If the value is not `allowed`, a `<meta>` tag is added to tell search engines not to index the page. (This is only `allowed` in the [production deployment](ui.md#deployment)) |
-|`GITHUB_USER_TOKEN`    | A 40-digit [GitHub access token][gh-token] | Used to create pull request when adding fixtures and create/delete comments after running [GitHub tests](testing.md) |
-|`FORCE_HTTPS`          | `force` or anything else                   | If the value is `force`, always redirect to HTTPS. | 
-|`NODE_ENV`             | `production` or `development` (default)    | Introduced by Express.js, `production` enables caching, minimizing and more optimizations [improving the performance a lot][node-env-perf]. |
-|`PORT`                 | A free port number, defaults to `5000`     | On which port to start the server. |
-|`TRAVIS_BRANCH`        |                                            | [Set by Travis][travis-docs]       |
-|`TRAVIS_COMMIT`        |                                            | [Set by Travis][travis-docs]       |
-|`TRAVIS_EVENT_TYPE`    |                                            | [Set by Travis][travis-docs]       |
-|`TRAVIS_PULL_REQUEST`  |                                            | [Set by Travis][travis-docs]       |
-|`TRAVIS_REPO_SLUG`     |                                            | [Set by Travis][travis-docs]       |
+| Name                       | Possible values                            | Description                        |
+|----------------------------|--------------------------------------------|------------------------------------|
+|`ALLOW_SEARCH_INDEXING`     | `allowed` or anything else                 | If the value is not `allowed`, a `<meta>` tag is added to tell search engines not to index the page. (This is only `allowed` in the [production deployment](ui.md#deployment)) |
+|`GITHUB_USER_TOKEN`         | A 40-digit [GitHub access token][gh-token] | Used to create pull request when adding fixtures and create/delete comments after running [GitHub tests](testing.md) |
+|`FORCE_HTTPS`               | `force` or anything else                   | If the value is `force`, always redirect to HTTPS. | 
+|`NODE_ENV`                  | `production` or `development` (default)    | Introduced by Express.js, `production` enables caching, minimizing and more optimizations [improving the performance a lot][node-env-perf]. |
+|`PORT`                      | A free port number, defaults to `5000`     | On which port to start the server. |
+|`TRAVIS_BRANCH`             |                                            | [Set by Travis][travis-docs]       |
+|`TRAVIS_COMMIT`             |                                            | [Set by Travis][travis-docs]       |
+|`TRAVIS_EVENT_TYPE`         |                                            | [Set by Travis][travis-docs]       |
+|`TRAVIS_PULL_REQUEST`       |                                            | [Set by Travis][travis-docs]       |
+|`TRAVIS_PULL_REQUEST_SLUG`  |                                            | [Set by Travis][travis-docs]       |
+|`TRAVIS_REPO_SLUG`          |                                            | [Set by Travis][travis-docs]       |
 
 [gh-token]: <https://github.com/settings/tokens>
 [node-env-perf]: <https://www.dynatrace.com/blog/the-drastic-effects-of-omitting-node_env-in-your-express-js-applications/>
