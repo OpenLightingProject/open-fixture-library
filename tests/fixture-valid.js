@@ -315,6 +315,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
      */
     function checkCapabilities() {
       let rangesInvalid = false;
+      const possibleEndValues = getPossibleEndValues();
 
       for (let i = 0; i < channel.capabilities.length; i++) {
         const cap = channel.capabilities[i];
@@ -340,47 +341,46 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
           }
         }
       }
-    }
 
-    /**
-     * Check that a capability's range is valid.
-     * @param {!number} capNumber The number of the capability in the channel, starting with 0.
-     * @returns {boolean} true if the range is valid, false otherwise. The global `result` object is updated then.
-     */
-    function checkRange(capNumber) {
-      const cap = channel.capabilities[capNumber];
+      /**
+       * Check that a capability's range is valid.
+       * @param {!number} capNumber The number of the capability in the channel, starting with 0.
+       * @returns {boolean} true if the range is valid, false otherwise. The global `result` object is updated then.
+       */
+      function checkRange(capNumber) {
+        const cap = channel.capabilities[capNumber];
 
-      // first capability
-      if (capNumber === 0 && cap.range.start !== 0) {
-        result.errors.push(`The first range has to start at 0 in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
-        return false;
-      }
-
-      // all capabilities
-      if (cap.range.start > cap.range.end) {
-        result.errors.push(`range invalid in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
-        return false;
-      }
-
-      // not first capability
-      const prevCap = capNumber > 0 ? channel.capabilities[capNumber - 1] : null;
-      if (capNumber > 0 && cap.range.start !== prevCap.range.end + 1) {
-        result.errors.push(`ranges must be adjacent in capabilities '${prevCap.name}' (#${capNumber}) and '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
-        return false;
-      }
-
-      // last capability
-      if (capNumber === channel.capabilities.length - 1) {
-        const rawRangeEnd = channel.jsonObject.capabilities[capNumber].range[1];
-        const possibleEndValues = getPossibleEndValues();
-
-        if (!possibleEndValues.includes(rawRangeEnd)) {
-          result.errors.push(`The last range has to end at ${possibleEndValues.join(` or `)} in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'`);
+        // first capability
+        if (capNumber === 0 && cap.range.start !== 0) {
+          result.errors.push(`The first range has to start at 0 in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
           return false;
         }
-      }
 
-      return true;
+        // all capabilities
+        if (cap.range.start > cap.range.end) {
+          result.errors.push(`range invalid in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
+          return false;
+        }
+
+        // not first capability
+        const prevCap = capNumber > 0 ? channel.capabilities[capNumber - 1] : null;
+        if (capNumber > 0 && cap.range.start !== prevCap.range.end + 1) {
+          result.errors.push(`ranges must be adjacent in capabilities '${prevCap.name}' (#${capNumber}) and '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
+          return false;
+        }
+
+        // last capability
+        if (capNumber === channel.capabilities.length - 1) {
+          const rawRangeEnd = channel.jsonObject.capabilities[capNumber].range[1];
+
+          if (!possibleEndValues.includes(rawRangeEnd)) {
+            result.errors.push(`The last range has to end at ${possibleEndValues.join(` or `)} in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'`);
+            return false;
+          }
+        }
+
+        return true;
+      }
 
       /**
        * @returns {!Array.<number>} All DMX values that would be valid maximum DMX bounds, sorted ascending.
