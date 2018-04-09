@@ -60,9 +60,19 @@
       "defaultValue": 0
     },
     "Color Snap": {
-      "type": "Effect"
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "off"
+        },
+        {
+          "range": [16, 255],
+          "name": "Color Snap on"
+        }
+      ]
     },
-    "Snap Speed": {
+    "Color Snap Speed": {
       "type": "Speed",
       "capabilities": [
         {
@@ -75,12 +85,16 @@
       "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 255],
-          "name": "slow-fast"
+          "range": [0, 15],
+          "name": "off"
+        },
+        {
+          "range": [16, 255],
+          "name": "Color Fade on"
         }
       ]
     },
-    "Fade Speed": {
+    "Color Fade Speed": {
       "type": "Speed",
       "capabilities": [
         {
@@ -109,9 +123,9 @@
         "Amber",
         "White",
         "Color Snap",
-        "Snap Speed",
+        "Color Snap Speed",
         "Color Fade",
-        "Fade Speed",
+        "Color Fade Speed",
         "Microphone Sensitivity"
       ]
     },
