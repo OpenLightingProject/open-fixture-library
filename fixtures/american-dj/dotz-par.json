@@ -279,8 +279,35 @@
         }
       ]
     },
-    "Dimmer": {
-      "type": "Nothing"
+    "Dimmer Curves": {
+      "type": "Maintenance",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 41],
+          "name": "Standard"
+        },
+        {
+          "range": [42, 84],
+          "name": "Stage"
+        },
+        {
+          "range": [85, 127],
+          "name": "TV"
+        },
+        {
+          "range": [128, 170],
+          "name": "Architectural"
+        },
+        {
+          "range": [171, 213],
+          "name": "Theatre"
+        },
+        {
+          "range": [214, 255],
+          "name": "Default to unit curve setting"
+        }
+      ]
     }
   },
   "modes": [
@@ -296,7 +323,7 @@
         "Programs",
         "Program Speed / Sound Sensitivity",
         "Strobe",
-        "Dimmer"
+        "Dimmer Curves"
       ]
     }
   ]
