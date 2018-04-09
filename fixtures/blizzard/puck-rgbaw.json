@@ -27,6 +27,7 @@
     },
     "Strobe": {
       "type": "Strobe",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 15],
@@ -65,6 +66,7 @@
     },
     "Color Snap": {
       "type": "Effect",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 15],
@@ -87,6 +89,7 @@
     },
     "Color Fade": {
       "type": "Effect",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 15],
@@ -109,6 +112,7 @@
     },
     "Sound Control": {
       "type": "Effect",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 127],
@@ -122,6 +126,7 @@
     },
     "Color Macros": {
       "type": "Multi-Color",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 0],
