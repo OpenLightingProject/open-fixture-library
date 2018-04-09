@@ -604,49 +604,47 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
 
     for (let j = 0; j < mode.getChannelIndex(channel); j++) {
       const otherChannel = mode.channels[j];
-      checkSwitchingChannelReferenceDuplicate(channel, otherChannel, mode);
-    }
-  }
-
-  /**
-   * Check all switched channels in the switching channels against another channel
-   * for duplicate channel usage (either directly or in another switching channel).
-   * @param {!SwitchingChannel} channel The channel that should be checked.
-   * @param {!AbstractChannel} otherChannel The channel that should be checked against.
-   * @param {!Mode} mode The mode in which to check.
-   */
-  function checkSwitchingChannelReferenceDuplicate(channel, otherChannel, mode) {
-    if (channel.switchToChannels.includes(otherChannel)) {
-      result.errors.push(`Channel '${otherChannel.key}' is referenced more than once from mode '${mode.shortName}' through switching channel '${channel.key}'.`);
-      return;
+      checkSwitchingChannelReferenceDuplicate(otherChannel);
     }
 
-    if (!(otherChannel instanceof SwitchingChannel)) {
-      return;
-    }
+    /**
+     * Check all switched channels in the switching channels against another channel
+     * for duplicate channel usage (either directly or in another switching channel).
+     * @param {!AbstractChannel} otherChannel The channel that should be checked against.
+     */
+    function checkSwitchingChannelReferenceDuplicate(otherChannel) {
+      if (channel.switchToChannels.includes(otherChannel)) {
+        result.errors.push(`Channel '${otherChannel.key}' is referenced more than once from mode '${mode.shortName}' through switching channel '${channel.key}'.`);
+        return;
+      }
 
-    if (otherChannel.triggerChannel === channel.triggerChannel) {
-      // compare ranges
-      for (const switchToChannelKey of channel.switchToChannelKeys) {
-        if (!otherChannel.switchToChannelKeys.includes(switchToChannelKey)) {
-          return;
-        }
+      if (!(otherChannel instanceof SwitchingChannel)) {
+        return;
+      }
 
-        const overlap = channel.triggerRanges[switchToChannelKey].some(
-          range => range.overlapsWithOneOf(otherChannel.triggerRanges[switchToChannelKey])
-        );
-        if (overlap) {
-          result.errors.push(`Channel '${switchToChannelKey}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
+      if (otherChannel.triggerChannel === channel.triggerChannel) {
+        // compare ranges
+        for (const switchToChannelKey of channel.switchToChannelKeys) {
+          if (!otherChannel.switchToChannelKeys.includes(switchToChannelKey)) {
+            return;
+          }
+
+          const overlap = channel.triggerRanges[switchToChannelKey].some(
+            range => range.overlapsWithOneOf(otherChannel.triggerRanges[switchToChannelKey])
+          );
+          if (overlap) {
+            result.errors.push(`Channel '${switchToChannelKey}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
+          }
         }
       }
-    }
-    else {
-      // fail if one of this channel's switchToChannels appears anywhere
-      const firstDuplicate = channel.switchToChannels.find(
-        ch => otherChannel.usesChannelKey(ch.key, `all`)
-      );
-      if (firstDuplicate !== undefined) {
-        result.errors.push(`Channel '${firstDuplicate.key}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
+      else {
+        // fail if one of this channel's switchToChannels appears anywhere
+        const firstDuplicate = channel.switchToChannels.find(
+          ch => otherChannel.usesChannelKey(ch.key, `all`)
+        );
+        if (firstDuplicate !== undefined) {
+          result.errors.push(`Channel '${firstDuplicate.key}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
+        }
       }
     }
   }
