@@ -565,7 +565,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
         checkSwitchingChannelReference();
       }
       else if (channel instanceof FineChannel) {
-        checkCoarserChannelsInMode();
+        checkCoarserChannelsInMode(channel);
       }
       else {
         // that's already checked for switched channels and we don't need to check it for fine channels
@@ -589,7 +589,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
 
           // if the channel can be switched to a fine channel, the mode must also contain coarser channels
           if (switchToChannel instanceof FineChannel) {
-            checkCoarserChannelsInMode(switchToChannel, mode);
+            checkCoarserChannelsInMode(switchToChannel);
             continue;
           }
 
@@ -643,10 +643,10 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
         }
       }
 
-      function checkCoarserChannelsInMode() {
-        const coarseChannel = channel.coarseChannel;
+      function checkCoarserChannelsInMode(fineChannel) {
+        const coarseChannel = fineChannel.coarseChannel;
         const coarserChannelKeys = coarseChannel.fineChannelAliases.filter(
-          (alias, index) => index < channel.fineness - 1
+          (alias, index) => index < fineChannel.fineness - 1
         ).concat(coarseChannel.key);
 
         const notInMode = coarserChannelKeys.filter(
@@ -654,7 +654,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
         );
 
         if (notInMode.length > 0) {
-          result.errors.push(`Mode '${mode.shortName}' contains the fine channel '${channel.key}' but is missing its coarser channels ${notInMode}.`);
+          result.errors.push(`Mode '${mode.shortName}' contains the fine channel '${fineChannel.key}' but is missing its coarser channels ${notInMode}.`);
         }
       }
 
