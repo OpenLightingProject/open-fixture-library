@@ -178,8 +178,47 @@
         }
       ]
     },
-    "Program": {
-      "type": "Color Temperature"
+    "Programs": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Nothing"
+        },
+        {
+          "range": [1, 20],
+          "name": "Color fade/change"
+        },
+        {
+          "range": [21, 40],
+          "name": "7 color change"
+        },
+        {
+          "range": [41, 60],
+          "name": "7 color fade"
+        },
+        {
+          "range": [61, 80],
+          "name": "3 color change"
+        },
+        {
+          "range": [81, 100],
+          "name": "3 color fade"
+        },
+        {
+          "range": [101, 120],
+          "name": "Sound active color fade"
+        },
+        {
+          "range": [121, 140],
+          "name": "Sound active color change"
+        },
+        {
+          "range": [141, 255],
+          "name": "Nothing"
+        }
+      ]
     },
     "Speed": {
       "type": "Speed"
@@ -201,7 +240,7 @@
         "Blue",
         "Master",
         "Color Macros",
-        "Program",
+        "Programs",
         "Speed",
         "Strobe",
         "Dimmer"
