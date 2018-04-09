@@ -286,9 +286,6 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
         `Fine channel alias '${alias}' in channel '${channel.key}' is already defined (maybe in another letter case).`
       );
     }
-    const minUsedFineness = Math.min(...fixture.modes.map(
-      mode => channel.getFinenessInMode(mode)
-    ));
 
     // Switching channels
     for (const alias of channel.switchingChannelAliases) {
@@ -310,14 +307,13 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     }
 
     if (channel.hasCapabilities) {
-      checkCapabilities(channel, minUsedFineness);
+      checkCapabilities(channel);
     }
 
     /**
      * Check that the channel's capabilities are valid.
-     * @param {number} minUsedFineness The smallest fineness that the channel is used in a mode. This controls how the capability ranges have to look like.
      */
-    function checkCapabilities(minUsedFineness) {
+    function checkCapabilities() {
       let rangesInvalid = false;
 
       for (let i = 0; i < channel.capabilities.length; i++) {
@@ -326,7 +322,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
         // if one of the previous capabilities had an invalid range,
         // it doesn't make sense to check later ranges
         if (!rangesInvalid) {
-          rangesInvalid = !checkRange(channel, i, minUsedFineness);
+          rangesInvalid = !checkRange(i);
         }
 
         const switchingChannelAliases = Object.keys(cap.switchChannels);
@@ -349,10 +345,9 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     /**
      * Check that a capability's range is valid.
      * @param {!number} capNumber The number of the capability in the channel, starting with 0.
-     * @param {number} minUsedFineness The smallest fineness that the channel is used in a mode.This controls if this range can be from 0 up to channel.maxDmxBound or less.
      * @returns {boolean} true if the range is valid, false otherwise. The global `result` object is updated then.
      */
-    function checkRange(capNumber, minUsedFineness) {
+    function checkRange(capNumber) {
       const cap = channel.capabilities[capNumber];
 
       // first capability
@@ -377,7 +372,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
       // last capability
       if (capNumber === channel.capabilities.length - 1) {
         const rawRangeEnd = channel.jsonObject.capabilities[capNumber].range[1];
-        const possibleEndValues = getPossibleEndValues(minUsedFineness);
+        const possibleEndValues = getPossibleEndValues();
 
         if (!possibleEndValues.includes(rawRangeEnd)) {
           result.errors.push(`The last range has to end at ${possibleEndValues.join(` or `)} in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'`);
@@ -386,6 +381,23 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
       }
 
       return true;
+
+      /**
+       * @returns {!Array.<number>} All DMX values that would be valid maximum DMX bounds, sorted ascending.
+       * Depends on the lowest fineness with which the channel is used in any mode.
+       */
+      function getPossibleEndValues() {
+        const minUsedFineness = Math.min(...fixture.modes.map(
+          mode => channel.getFinenessInMode(mode)
+        ));
+
+        const values = [];
+        for (let i = 0; i <= minUsedFineness; i++) {
+          values.push(Math.pow(256, i + 1) - 1);
+        }
+        
+        return values;
+      }
     }
   }
 
@@ -406,20 +418,6 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
         result.errors.push(`Variable ${allowedVariable} missing in '${str}'`);
       }
     }
-  }
-
-  /**
-   * Get the highest possible DMX value for each fineness up to the specified one.
-   * E.g. fineness=2 -> [255, 65535, 16777215]
-   * @param {!number} fineness The least used fineness in a mode of a channel.
-   * @returns {!Array.<number>} Possible end values, sorted ascending.
-   */
-  function getPossibleEndValues(fineness) {
-    const values = [];
-    for (let i = 0; i <= fineness; i++) {
-      values.push(Math.pow(256, i + 1) - 1);
-    }
-    return values;
   }
 
   /**
