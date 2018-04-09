@@ -563,7 +563,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
       }
 
       if (channel instanceof SwitchingChannel) {
-        checkSwitchingChannelReference(channel, mode, usedChannelKeysInMode);
+        checkSwitchingChannelReference();
       }
       else if (channel instanceof FineChannel) {
         checkCoarserChannelsInMode(channel, mode);
@@ -572,78 +572,75 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
         // that's already checked for switched channels and we don't need to check it for fine channels
         checkPanTiltMaxInPhysical(channel, mode);
       }
-    }
-  }
 
-  /**
-   * Check that a switching channel reference in a mode is valid.
-   * @param {!SwitchingChannel} channel The channel that should be checked.
-   * @param {!Mode} mode The mode in which the channel is used.
-   * @param {!Set<string>} usedChannelKeysInMode Which channels are already used in this mode.
-   */
-  function checkSwitchingChannelReference(channel, mode, usedChannelKeysInMode) {
-    // the mode must also contain the trigger channel
-    if (mode.getChannelIndex(channel.triggerChannel) === -1) {
-      result.errors.push(`mode '${mode.shortName}' uses switching channel '${channel.key}' but is missing its trigger channel '${channel.triggerChannel.key}'`);
-    }
+      /**
+       * Check that a switching channel reference in a mode is valid.
+       */
+      function checkSwitchingChannelReference() {
+        // the mode must also contain the trigger channel
+        if (mode.getChannelIndex(channel.triggerChannel) === -1) {
+          result.errors.push(`mode '${mode.shortName}' uses switching channel '${channel.key}' but is missing its trigger channel '${channel.triggerChannel.key}'`);
+        }
 
-    for (const switchToChannel of channel.switchToChannels) {
-      if (switchToChannel === null) {
-        // channel doesn't exist, but we already added an error when the switching channel was defined
-        continue;
-      }
+        for (const switchToChannel of channel.switchToChannels) {
+          if (switchToChannel === null) {
+            // channel doesn't exist, but we already added an error when the switching channel was defined
+            continue;
+          }
 
-      // if the channel can be switched to a fine channel, the mode must also contain coarser channels
-      if (switchToChannel instanceof FineChannel) {
-        checkCoarserChannelsInMode(switchToChannel, mode);
-        continue;
-      }
+          // if the channel can be switched to a fine channel, the mode must also contain coarser channels
+          if (switchToChannel instanceof FineChannel) {
+            checkCoarserChannelsInMode(switchToChannel, mode);
+            continue;
+          }
 
-      checkPanTiltMaxInPhysical(switchToChannel, mode);
-    }
+          checkPanTiltMaxInPhysical(switchToChannel, mode);
+        }
 
-    for (let j = 0; j < mode.getChannelIndex(channel); j++) {
-      const otherChannel = mode.channels[j];
-      checkSwitchingChannelReferenceDuplicate(otherChannel);
-    }
+        for (let j = 0; j < mode.getChannelIndex(channel); j++) {
+          const otherChannel = mode.channels[j];
+          checkSwitchingChannelReferenceDuplicate(otherChannel);
+        }
 
-    /**
-     * Check all switched channels in the switching channels against another channel
-     * for duplicate channel usage (either directly or in another switching channel).
-     * @param {!AbstractChannel} otherChannel The channel that should be checked against.
-     */
-    function checkSwitchingChannelReferenceDuplicate(otherChannel) {
-      if (channel.switchToChannels.includes(otherChannel)) {
-        result.errors.push(`Channel '${otherChannel.key}' is referenced more than once from mode '${mode.shortName}' through switching channel '${channel.key}'.`);
-        return;
-      }
-
-      if (!(otherChannel instanceof SwitchingChannel)) {
-        return;
-      }
-
-      if (otherChannel.triggerChannel === channel.triggerChannel) {
-        // compare ranges
-        for (const switchToChannelKey of channel.switchToChannelKeys) {
-          if (!otherChannel.switchToChannelKeys.includes(switchToChannelKey)) {
+        /**
+         * Check all switched channels in the switching channels against another channel
+         * for duplicate channel usage (either directly or in another switching channel).
+         * @param {!AbstractChannel} otherChannel The channel that should be checked against.
+         */
+        function checkSwitchingChannelReferenceDuplicate(otherChannel) {
+          if (channel.switchToChannels.includes(otherChannel)) {
+            result.errors.push(`Channel '${otherChannel.key}' is referenced more than once from mode '${mode.shortName}' through switching channel '${channel.key}'.`);
             return;
           }
 
-          const overlap = channel.triggerRanges[switchToChannelKey].some(
-            range => range.overlapsWithOneOf(otherChannel.triggerRanges[switchToChannelKey])
-          );
-          if (overlap) {
-            result.errors.push(`Channel '${switchToChannelKey}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
+          if (!(otherChannel instanceof SwitchingChannel)) {
+            return;
           }
-        }
-      }
-      else {
-        // fail if one of this channel's switchToChannels appears anywhere
-        const firstDuplicate = channel.switchToChannels.find(
-          ch => otherChannel.usesChannelKey(ch.key, `all`)
-        );
-        if (firstDuplicate !== undefined) {
-          result.errors.push(`Channel '${firstDuplicate.key}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
+
+          if (otherChannel.triggerChannel === channel.triggerChannel) {
+            // compare ranges
+            for (const switchToChannelKey of channel.switchToChannelKeys) {
+              if (!otherChannel.switchToChannelKeys.includes(switchToChannelKey)) {
+                return;
+              }
+
+              const overlap = channel.triggerRanges[switchToChannelKey].some(
+                range => range.overlapsWithOneOf(otherChannel.triggerRanges[switchToChannelKey])
+              );
+              if (overlap) {
+                result.errors.push(`Channel '${switchToChannelKey}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
+              }
+            }
+          }
+          else {
+            // fail if one of this channel's switchToChannels appears anywhere
+            const firstDuplicate = channel.switchToChannels.find(
+              ch => otherChannel.usesChannelKey(ch.key, `all`)
+            );
+            if (firstDuplicate !== undefined) {
+              result.errors.push(`Channel '${firstDuplicate.key}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
+            }
+          }
         }
       }
     }
