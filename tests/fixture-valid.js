@@ -402,25 +402,6 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
   }
 
   /**
-   * Checks whether the specified string contains all allowed and no disallowed variables and pushes an error on wrong variable usage.
-   * @param {!string} str The string to be checked.
-   * @param {!Array.<string>} allowedVariables Variables that must be included in the string; all other variables are forbidden. Specify them with leading dollar sign ($var).
-   */
-  function checkTemplateVariables(str, allowedVariables) {
-    const usedVariables = str.match(/\$\w+/g) || [];
-    for (const usedVariable of usedVariables) {
-      if (!allowedVariables.includes(usedVariable)) {
-        result.errors.push(`Variable ${usedVariable} not allowed in '${str}'`);
-      }
-    }
-    for (const allowedVariable of allowedVariables) {
-      if (!usedVariables.includes(allowedVariable)) {
-        result.errors.push(`Variable ${allowedVariable} missing in '${str}'`);
-      }
-    }
-  }
-
-  /**
    * Check that a mode is valid.
    * @param {!Mode} mode The mode to check.
    */
@@ -762,6 +743,25 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
           result,
           `RDM personality index '${mode.rdmPersonalityIndex}' in mode '${mode.shortName}' is not unique in the fixture.`
         );
+      }
+    }
+  }
+
+  /**
+   * Checks whether the specified string contains all allowed and no disallowed variables and pushes an error on wrong variable usage.
+   * @param {!string} str The string to be checked.
+   * @param {!Array.<string>} allowedVariables Variables that must be included in the string; all other variables are forbidden. Specify them with leading dollar sign ($var).
+   */
+  function checkTemplateVariables(str, allowedVariables) {
+    const usedVariables = str.match(/\$\w+/g) || [];
+    for (const usedVariable of usedVariables) {
+      if (!allowedVariables.includes(usedVariable)) {
+        result.errors.push(`Variable ${usedVariable} not allowed in '${str}'`);
+      }
+    }
+    for (const allowedVariable of allowedVariables) {
+      if (!usedVariables.includes(allowedVariable)) {
+        result.errors.push(`Variable ${allowedVariable} missing in '${str}'`);
       }
     }
   }
