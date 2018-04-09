@@ -312,6 +312,81 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     if (channel.hasCapabilities) {
       checkCapabilities(channel, minUsedFineness);
     }
+
+    /**
+     * Check that the channel's capabilities are valid.
+     * @param {number} minUsedFineness The smallest fineness that the channel is used in a mode. This controls how the capability ranges have to look like.
+     */
+    function checkCapabilities(minUsedFineness) {
+      let rangesInvalid = false;
+
+      for (let i = 0; i < channel.capabilities.length; i++) {
+        const cap = channel.capabilities[i];
+
+        // if one of the previous capabilities had an invalid range,
+        // it doesn't make sense to check later ranges
+        if (!rangesInvalid) {
+          rangesInvalid = !checkRange(channel, i, minUsedFineness);
+        }
+
+        const switchingChannelAliases = Object.keys(cap.switchChannels);
+        if (!arraysEqual(switchingChannelAliases, channel.switchingChannelAliases)) {
+          result.errors.push(`Capability '${cap.name}' (#${i + 1}) must define the same switching channel aliases as all other capabilities in channel '${channel.key}'.`);
+        }
+        else {
+          for (const alias of switchingChannelAliases) {
+            const chKey = cap.switchChannels[alias];
+            usedChannelKeys.add(chKey.toLowerCase());
+
+            if (channel.fixture.getChannelByKey(chKey) === null) {
+              result.errors.push(`Channel '${chKey}' is referenced from capability '${cap.name}' (#${i + 1}) in channel '${channel.key}' but is not defined.`);
+            }
+          }
+        }
+      }
+    }
+
+    /**
+     * Check that a capability's range is valid.
+     * @param {!number} capNumber The number of the capability in the channel, starting with 0.
+     * @param {number} minUsedFineness The smallest fineness that the channel is used in a mode.This controls if this range can be from 0 up to channel.maxDmxBound or less.
+     * @returns {boolean} true if the range is valid, false otherwise. The global `result` object is updated then.
+     */
+    function checkRange(capNumber, minUsedFineness) {
+      const cap = channel.capabilities[capNumber];
+
+      // first capability
+      if (capNumber === 0 && cap.range.start !== 0) {
+        result.errors.push(`The first range has to start at 0 in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
+        return false;
+      }
+
+      // all capabilities
+      if (cap.range.start > cap.range.end) {
+        result.errors.push(`range invalid in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
+        return false;
+      }
+
+      // not first capability
+      const prevCap = capNumber > 0 ? channel.capabilities[capNumber - 1] : null;
+      if (capNumber > 0 && cap.range.start !== prevCap.range.end + 1) {
+        result.errors.push(`ranges must be adjacent in capabilities '${prevCap.name}' (#${capNumber}) and '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
+        return false;
+      }
+
+      // last capability
+      if (capNumber === channel.capabilities.length - 1) {
+        const rawRangeEnd = channel.jsonObject.capabilities[capNumber].range[1];
+        const possibleEndValues = getPossibleEndValues(minUsedFineness);
+
+        if (!possibleEndValues.includes(rawRangeEnd)) {
+          result.errors.push(`The last range has to end at ${possibleEndValues.join(` or `)} in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'`);
+          return false;
+        }
+      }
+
+      return true;
+    }
   }
 
   /**
@@ -331,83 +406,6 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
         result.errors.push(`Variable ${allowedVariable} missing in '${str}'`);
       }
     }
-  }
-
-  /**
-   * Check that a channel's capabilities are valid.
-   * @param {!Channel} channel The channel to test.
-   * @param {number} minUsedFineness The smallest fineness that the channel is used in a mode. This controls how the capability ranges have to look like.
-   */
-  function checkCapabilities(channel, minUsedFineness) {
-    let rangesInvalid = false;
-
-    for (let i = 0; i < channel.capabilities.length; i++) {
-      const cap = channel.capabilities[i];
-
-      // if one of the previous capabilities had an invalid range,
-      // it doesn't make sense to check later ranges
-      if (!rangesInvalid) {
-        rangesInvalid = !checkRange(channel, i, minUsedFineness);
-      }
-
-      const switchingChannelAliases = Object.keys(cap.switchChannels);
-      if (!arraysEqual(switchingChannelAliases, channel.switchingChannelAliases)) {
-        result.errors.push(`Capability '${cap.name}' (#${i + 1}) must define the same switching channel aliases as all other capabilities in channel '${channel.key}'.`);
-      }
-      else {
-        for (const alias of switchingChannelAliases) {
-          const chKey = cap.switchChannels[alias];
-          usedChannelKeys.add(chKey.toLowerCase());
-
-          if (channel.fixture.getChannelByKey(chKey) === null) {
-            result.errors.push(`Channel '${chKey}' is referenced from capability '${cap.name}' (#${i + 1}) in channel '${channel.key}' but is not defined.`);
-          }
-        }
-      }
-    }
-  }
-
-  /**
-   * Check that a capability's range is valid.
-   * @param {!Channel} channel The channel the capability belongs to.
-   * @param {!number} capNumber The number of the capability in the channel, starting with 0.
-   * @param {number} minUsedFineness The smallest fineness that the channel is used in a mode.This controls if this range can be from 0 up to channel.maxDmxBound or less.
-   * @returns {boolean} true if the range is valid, false otherwise. The global `result` object is updated then.
-   */
-  function checkRange(channel, capNumber, minUsedFineness) {
-    const cap = channel.capabilities[capNumber];
-
-    // first capability
-    if (capNumber === 0 && cap.range.start !== 0) {
-      result.errors.push(`The first range has to start at 0 in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
-      return false;
-    }
-
-    // all capabilities
-    if (cap.range.start > cap.range.end) {
-      result.errors.push(`range invalid in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
-      return false;
-    }
-
-    // not first capability
-    const prevCap = capNumber > 0 ? channel.capabilities[capNumber - 1] : null;
-    if (capNumber > 0 && cap.range.start !== prevCap.range.end + 1) {
-      result.errors.push(`ranges must be adjacent in capabilities '${prevCap.name}' (#${capNumber}) and '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
-      return false;
-    }
-
-    // last capability
-    if (capNumber === channel.capabilities.length - 1) {
-      const rawRangeEnd = channel.jsonObject.capabilities[capNumber].range[1];
-      const possibleEndValues = getPossibleEndValues(minUsedFineness);
-
-      if (!possibleEndValues.includes(rawRangeEnd)) {
-        result.errors.push(`The last range has to end at ${possibleEndValues.join(` or `)} in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'`);
-        return false;
-      }
-    }
-
-    return true;
   }
 
   /**
