@@ -40,8 +40,143 @@
       "color": "Blue",
       "defaultValue": 0
     },
-    "Macro": {
-      "type": "Multi-Color"
+    "Color Macros": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Nothing"
+        },
+        {
+          "range": [1, 7],
+          "name": "Bastard Amber"
+        },
+        {
+          "range": [8, 15],
+          "name": "Medium Amber"
+        },
+        {
+          "range": [16, 23],
+          "name": "Pale Amber Gold"
+        },
+        {
+          "range": [24, 31],
+          "name": "Gallo Gold"
+        },
+        {
+          "range": [32, 39],
+          "name": "Golden Amber"
+        },
+        {
+          "range": [40, 47],
+          "name": "Light Red"
+        },
+        {
+          "range": [48, 55],
+          "name": "Medium Red"
+        },
+        {
+          "range": [56, 63],
+          "name": "Medium Pink"
+        },
+        {
+          "range": [64, 71],
+          "name": "Broadway Pink"
+        },
+        {
+          "range": [72, 79],
+          "name": "Follies Pink"
+        },
+        {
+          "range": [80, 87],
+          "name": "Light Lavender"
+        },
+        {
+          "range": [88, 95],
+          "name": "Special Lavender"
+        },
+        {
+          "range": [96, 103],
+          "name": "Lavender"
+        },
+        {
+          "range": [104, 111],
+          "name": "Indigo"
+        },
+        {
+          "range": [112, 119],
+          "name": "Hemsley Blue"
+        },
+        {
+          "range": [120, 127],
+          "name": "Tipton Blue"
+        },
+        {
+          "range": [128, 135],
+          "name": "Light Steel Blue"
+        },
+        {
+          "range": [136, 143],
+          "name": "Light Sky Blue"
+        },
+        {
+          "range": [144, 151],
+          "name": "Sky Blue"
+        },
+        {
+          "range": [152, 159],
+          "name": "Brilliant Blue"
+        },
+        {
+          "range": [160, 167],
+          "name": "Light Green Blue"
+        },
+        {
+          "range": [168, 175],
+          "name": "Bright Blue"
+        },
+        {
+          "range": [176, 183],
+          "name": "Primary Blue"
+        },
+        {
+          "range": [184, 191],
+          "name": "Congo Blue"
+        },
+        {
+          "range": [192, 199],
+          "name": "Pale Yellow Green"
+        },
+        {
+          "range": [200, 207],
+          "name": "Moss Green"
+        },
+        {
+          "range": [208, 215],
+          "name": "Primary Green"
+        },
+        {
+          "range": [216, 223],
+          "name": "Double CTB"
+        },
+        {
+          "range": [224, 231],
+          "name": "Full Red"
+        },
+        {
+          "range": [232, 239],
+          "name": "Full Green"
+        },
+        {
+          "range": [240, 247],
+          "name": "Full Blue"
+        },
+        {
+          "range": [248, 255],
+          "name": "White"
+        }
+      ]
     },
     "Program": {
       "type": "Color Temperature"
@@ -65,7 +200,7 @@
         "Green",
         "Blue",
         "Master",
-        "Macro",
+        "Color Macros",
         "Program",
         "Speed",
         "Strobe",
