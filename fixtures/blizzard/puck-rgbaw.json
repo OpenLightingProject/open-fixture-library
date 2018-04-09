@@ -120,8 +120,138 @@
         }
       ]
     },
-    "Built-in Programs": {
-      "type": "Effect"
+    "Color Macros": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [1, 4],
+          "name": "R"
+        },
+        {
+          "range": [5, 8],
+          "name": "G"
+        },
+        {
+          "range": [9, 12],
+          "name": "B"
+        },
+        {
+          "range": [13, 16],
+          "name": "A"
+        },
+        {
+          "range": [17, 20],
+          "name": "W"
+        },
+        {
+          "range": [21, 24],
+          "name": "RG"
+        },
+        {
+          "range": [25, 28],
+          "name": "RB"
+        },
+        {
+          "range": [29, 31],
+          "name": "RA"
+        },
+        {
+          "range": [32, 35],
+          "name": "RW"
+        },
+        {
+          "range": [36, 39],
+          "name": "GB"
+        },
+        {
+          "range": [40, 43],
+          "name": "GA"
+        },
+        {
+          "range": [44, 47],
+          "name": "GW"
+        },
+        {
+          "range": [48, 51],
+          "name": "BA"
+        },
+        {
+          "range": [52, 55],
+          "name": "BW"
+        },
+        {
+          "range": [56, 59],
+          "name": "AW"
+        },
+        {
+          "range": [60, 62],
+          "name": "BAW"
+        },
+        {
+          "range": [63, 66],
+          "name": "GAW"
+        },
+        {
+          "range": [67, 70],
+          "name": "GBW"
+        },
+        {
+          "range": [71, 74],
+          "name": "GBA"
+        },
+        {
+          "range": [75, 78],
+          "name": "RAW"
+        },
+        {
+          "range": [79, 82],
+          "name": "RBW"
+        },
+        {
+          "range": [83, 86],
+          "name": "RBA"
+        },
+        {
+          "range": [87, 90],
+          "name": "RGW"
+        },
+        {
+          "range": [91, 93],
+          "name": "RGA"
+        },
+        {
+          "range": [94, 97],
+          "name": "RGB"
+        },
+        {
+          "range": [98, 101],
+          "name": "RGBA"
+        },
+        {
+          "range": [102, 105],
+          "name": "RGBW"
+        },
+        {
+          "range": [106, 109],
+          "name": "RGAW"
+        },
+        {
+          "range": [110, 113],
+          "name": "RBAW"
+        },
+        {
+          "range": [114, 117],
+          "name": "GBAW"
+        },
+        {
+          "range": [118, 120],
+          "name": "RGBAW"
+        },
+        {
+          "range": [121, 255],
+          "name": "Chase slow-fast"
+        }
+      ]
     }
   },
   "modes": [
@@ -160,7 +290,7 @@
       "channels": [
         "Dimmer",
         "Strobe",
-        "Built-in Programs"
+        "Color Macros"
       ]
     }
   ]
