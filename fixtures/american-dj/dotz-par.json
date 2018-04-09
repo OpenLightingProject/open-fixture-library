@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Dotz Par",
+  "shortName": "Dotz Par",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["TAKU"],
+    "createDate": "2018-04-09",
+    "lastModifyDate": "2018-04-09"
+  },
+  "physical": {
+    "dimensions": [114, 222, 209],
+    "weight": 2,
+    "power": 36,
+    "DMXconnector": "3-pin",
+    "focus": {
+      "type": "Fixed",
+      "panMax": 60,
+      "tiltMax": 25
+    }
+  },
+  "availableChannels": {
+    "Master": {
+      "type": "Intensity",
+      "defaultValue": 4
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 1
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 2
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 3
+    },
+    "Macro": {
+      "type": "Multi-Color"
+    },
+    "Program": {
+      "type": "Color Temperature"
+    },
+    "Speed": {
+      "type": "Speed"
+    },
+    "Strobe": {
+      "type": "Strobe"
+    },
+    "Dimmer": {
+      "type": "Nothing"
+    }
+  },
+  "modes": [
+    {
+      "name": "9ch",
+      "shortName": "9ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Master",
+        "Macro",
+        "Program",
+        "Speed",
+        "Strobe",
+        "Dimmer"
+      ]
+    }
+  ]
+}
