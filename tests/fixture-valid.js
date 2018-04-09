@@ -395,7 +395,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
         for (let i = 0; i <= minUsedFineness; i++) {
           values.push(Math.pow(256, i + 1) - 1);
         }
-        
+
         return values;
       }
     }
