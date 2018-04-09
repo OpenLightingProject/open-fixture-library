@@ -266,7 +266,18 @@
       ]
     },
     "Strobe": {
-      "type": "Strobe"
+      "type": "Strobe",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "off"
+        },
+        {
+          "range": [1, 255],
+          "name": "slow-fast"
+        }
+      ]
     },
     "Dimmer": {
       "type": "Nothing"
