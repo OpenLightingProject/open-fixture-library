@@ -33,13 +33,13 @@
       "fineChannelAliases": ["Tilt fine"],
       "defaultValue": 0
     },
-    "Speed": {
+    "Movement Speed": {
       "type": "Speed",
       "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "slow - fast"
+          "name": "fast - slow"
         }
       ]
     },
@@ -167,7 +167,7 @@
         "Pan fine",
         "Tilt",
         "Tilt fine",
-        "Speed",
+        "Movement Speed",
         "Dimming",
         "Red",
         "Green",
