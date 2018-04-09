@@ -29,7 +29,11 @@
       "type": "Strobe",
       "capabilities": [
         {
-          "range": [0, 255],
+          "range": [0, 15],
+          "name": "No function"
+        },
+        {
+          "range": [16, 255],
           "name": "Strobe slow-fast"
         }
       ]
