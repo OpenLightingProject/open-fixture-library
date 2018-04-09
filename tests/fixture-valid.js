@@ -566,11 +566,11 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
         checkSwitchingChannelReference();
       }
       else if (channel instanceof FineChannel) {
-        checkCoarserChannelsInMode(channel, mode);
+        checkCoarserChannelsInMode();
       }
       else {
         // that's already checked for switched channels and we don't need to check it for fine channels
-        checkPanTiltMaxInPhysical(channel, mode);
+        checkPanTiltMaxInPhysical();
       }
 
       /**
@@ -643,37 +643,37 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
           }
         }
       }
-    }
-  }
 
-  function checkCoarserChannelsInMode(channel, mode) {
-    const coarseChannel = channel.coarseChannel;
-    const coarserChannelKeys = coarseChannel.fineChannelAliases.filter(
-      (alias, index) => index < channel.fineness - 1
-    ).concat(coarseChannel.key);
+      function checkCoarserChannelsInMode() {
+        const coarseChannel = channel.coarseChannel;
+        const coarserChannelKeys = coarseChannel.fineChannelAliases.filter(
+          (alias, index) => index < channel.fineness - 1
+        ).concat(coarseChannel.key);
 
-    const notInMode = coarserChannelKeys.filter(
-      chKey => mode.getChannelIndex(chKey) === -1
-    );
+        const notInMode = coarserChannelKeys.filter(
+          chKey => mode.getChannelIndex(chKey) === -1
+        );
 
-    if (notInMode.length > 0) {
-      result.errors.push(`Mode '${mode.shortName}' contains the fine channel '${channel.key}' but is missing its coarser channels ${notInMode}.`);
-    }
-  }
+        if (notInMode.length > 0) {
+          result.errors.push(`Mode '${mode.shortName}' contains the fine channel '${channel.key}' but is missing its coarser channels ${notInMode}.`);
+        }
+      }
 
-  function checkPanTiltMaxInPhysical(channel, mode) {
-    if (channel.type !== `Pan` && channel.type !== `Tilt`) {
-      return;
-    }
+      function checkPanTiltMaxInPhysical() {
+        if (channel.type !== `Pan` && channel.type !== `Tilt`) {
+          return;
+        }
 
-    const maxProp = channel.type === `Pan` ? `focusPanMax` : `focusTiltMax`;
-    const maxPropDisplay = channel.type === `Pan` ? `panMax` : `tiltMax`;
+        const maxProp = channel.type === `Pan` ? `focusPanMax` : `focusTiltMax`;
+        const maxPropDisplay = channel.type === `Pan` ? `panMax` : `tiltMax`;
 
-    if (mode.physical[maxProp] === null) {
-      result.warnings.push(`physical.${maxPropDisplay} is not defined although there's a ${channel.type} channel '${channel.key}' in mode '${mode.shortName}'.`);
-    }
-    else if (mode.physical[maxProp] === 0) {
-      result.warnings.push(`physical.${maxPropDisplay} is 0 although there's a ${channel.type} channel '${channel.key}' in mode '${mode.shortName}'.`);
+        if (mode.physical[maxProp] === null) {
+          result.warnings.push(`physical.${maxPropDisplay} is not defined although there's a ${channel.type} channel '${channel.key}' in mode '${mode.shortName}'.`);
+        }
+        else if (mode.physical[maxProp] === 0) {
+          result.warnings.push(`physical.${maxPropDisplay} is 0 although there's a ${channel.type} channel '${channel.key}' in mode '${mode.shortName}'.`);
+        }
+      }
     }
   }
 
