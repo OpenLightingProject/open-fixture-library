@@ -107,8 +107,18 @@
         }
       ]
     },
-    "Microphone Sensitivity": {
-      "type": "Maintenance"
+    "Sound Control": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "off"
+        },
+        {
+          "range": [128, 255],
+          "name": "Sound Control on with sensitivity low-high"
+        }
+      ]
     },
     "Built-in Programs": {
       "type": "Effect"
@@ -130,7 +140,7 @@
         "Color Snap Speed",
         "Color Fade",
         "Color Fade Speed",
-        "Microphone Sensitivity"
+        "Sound Control"
       ]
     },
     {
