@@ -173,29 +173,28 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
       result.errors.push(`Matrix must not vary in axis length.`);
     }
 
-    checkPixelGroups(matrix);
-  }
+    checkPixelGroups();
 
-  /**
-   * Check if the referenced pixelKeys from the pixelGroups exist and are not referenced more than once.
-   * @param {Matrix} matrix The Matrix instance
-   */
-  function checkPixelGroups(matrix) {
-    for (const pixelGroupKey of matrix.pixelGroupKeys) {
-      const usedMatrixChannels = new Set();
+    /**
+     * Check if the referenced pixelKeys from the pixelGroups exist and are not referenced more than once.
+     */
+    function checkPixelGroups() {
+      for (const pixelGroupKey of matrix.pixelGroupKeys) {
+        const usedMatrixChannels = new Set();
 
-      if (matrix.pixelKeys.includes(pixelGroupKey)) {
-        result.errors.push(`pixelGroupKey '${pixelGroupKey}' is already used as pixelKey. Please choose a different name.`);
-      }
-
-      for (const pixelKey of matrix.pixelGroups[pixelGroupKey]) {
-        if (!matrix.pixelKeys.includes(pixelKey)) {
-          result.errors.push(`pixelGroup '${pixelGroupKey}' references unknown pixelKey '${pixelKey}'.`);
+        if (matrix.pixelKeys.includes(pixelGroupKey)) {
+          result.errors.push(`pixelGroupKey '${pixelGroupKey}' is already used as pixelKey. Please choose a different name.`);
         }
-        if (usedMatrixChannels.has(pixelKey)) {
-          result.errors.push(`pixelGroup '${pixelGroupKey}' can't reference pixelKey '${pixelKey}' more than once.`);
+
+        for (const pixelKey of matrix.pixelGroups[pixelGroupKey]) {
+          if (!matrix.pixelKeys.includes(pixelKey)) {
+            result.errors.push(`pixelGroup '${pixelGroupKey}' references unknown pixelKey '${pixelKey}'.`);
+          }
+          if (usedMatrixChannels.has(pixelKey)) {
+            result.errors.push(`pixelGroup '${pixelGroupKey}' can't reference pixelKey '${pixelKey}' more than once.`);
+          }
+          usedMatrixChannels.add(pixelKey);
         }
-        usedMatrixChannels.add(pixelKey);
       }
     }
   }
