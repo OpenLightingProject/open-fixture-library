@@ -184,44 +184,86 @@
       "capabilities": [
         {
           "range": [0, 0],
-          "name": "Nothing"
+          "name": "Nothing",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [1, 20],
-          "name": "Color fade/change"
+          "name": "Color fade/change",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [21, 40],
-          "name": "7 color change"
+          "name": "7 color change",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [41, 60],
-          "name": "7 color fade"
+          "name": "7 color fade",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [61, 80],
-          "name": "3 color change"
+          "name": "3 color change",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [81, 100],
-          "name": "3 color fade"
+          "name": "3 color fade",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "range": [101, 120],
-          "name": "Sound active color fade"
+          "name": "Sound active color fade",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         },
         {
           "range": [121, 140],
-          "name": "Sound active color change"
+          "name": "Sound active color change",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         },
         {
           "range": [141, 255],
-          "name": "Nothing"
+          "name": "Nothing",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         }
       ]
     },
-    "Speed": {
-      "type": "Speed"
+    "Program Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow-fast"
+        }
+      ]
+    },
+    "Sound Sensitivity": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "sensitivity low-high"
+        }
+      ]
     },
     "Strobe": {
       "type": "Strobe"
@@ -241,7 +283,7 @@
         "Master",
         "Color Macros",
         "Programs",
-        "Speed",
+        "Program Speed / Sound Sensitivity",
         "Strobe",
         "Dimmer"
       ]
