@@ -458,7 +458,6 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
       }
     }
 
-    const usedChannelKeysInMode = new Set();
     for (let i = 0; i < mode.channelKeys.length; i++) {
       checkModeChannelKey(i);
     }
