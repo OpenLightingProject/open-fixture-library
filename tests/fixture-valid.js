@@ -452,130 +452,126 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
 
     checkPhysical(mode.physicalOverride, ` in mode '${mode.shortName}'`);
 
-    const usedChannelKeysInMode = new Set();
-
     for (const rawReference of mode.jsonObject.channels) {
       if (rawReference !== null && typeof rawReference !== `string`) {
         checkChannelInsertBlock(rawReference, mode);
       }
     }
 
+    const usedChannelKeysInMode = new Set();
     for (let i = 0; i < mode.channelKeys.length; i++) {
-      checkModeChannelKeys(i, mode, usedChannelKeysInMode);
+      checkModeChannelKey(i);
     }
-  }
-
-  /**
-   * Checks if the given complex channel insert block is valid.
-   * @param {!object} insertBlock The raw JSON data of the insert block.
-   * @param {!Mode} mode The mode in which this insert block is used.
-   */
-  function checkChannelInsertBlock(insertBlock, mode) {
-    if (insertBlock.insert === `matrixChannels`) {
-      checkMatrixInsertBlock(insertBlock);
-    }
-    // open for future extensions (invalid values are prohibited by the schema)
 
     /**
-     * Checks the given matrix channel insert.
-     * @param {!object} matrixInsertBlock The matrix channel reference specified in the mode's json channel list.
-     * @param {'matrixChannels'} matrixInsertBlock.insert Indicates that this is a matrix insert.
-     * @param {'eachPixel'|'eachPixelGroup'|string[]} matrixInsertBlock.repeatFor The pixelKeys or pixelGroupKeys for which the specified channels should be repeated.
-     * @param {'perPixel'|'perChannel'} matrixInsertBlock.channelOrder Order the channels like RGB1/RGB2/RGB3 or R123/G123/B123.
-     * @param {!Array.<string, null>} matrixInsertBlock.templateChannels The template channel keys (and aliases) or null channels to be repeated.
+     * Checks if the given complex channel insert block is valid.
+     * @param {!object} insertBlock The raw JSON data of the insert block.
      */
-    function checkMatrixInsertBlock(matrixInsertBlock) {
-      checkMatrixInsertBlockRepeatFor();
-
-      for (const templateKey of matrixInsertBlock.templateChannels) {
-        const templateChannelExists = fixture.templateChannels.some(ch => ch.allTemplateKeys.includes(templateKey));
-        if (!templateChannelExists) {
-          result.errors.push(`Template channel '${templateKey}' doesn't exist.`);
-        }
+    function checkChannelInsertBlock(insertBlock) {
+      if (insertBlock.insert === `matrixChannels`) {
+        checkMatrixInsertBlock(insertBlock);
       }
+      // open for future extensions (invalid values are prohibited by the schema)
 
       /**
-       * Checks the used pixel (group) keys for existance and duplicates. Also respects pixel keys included in a pixel group.
+       * Checks the given matrix channel insert.
+       * @param {!object} matrixInsertBlock The matrix channel reference specified in the mode's json channel list.
+       * @param {'matrixChannels'} matrixInsertBlock.insert Indicates that this is a matrix insert.
+       * @param {'eachPixel'|'eachPixelGroup'|string[]} matrixInsertBlock.repeatFor The pixelKeys or pixelGroupKeys for which the specified channels should be repeated.
+       * @param {'perPixel'|'perChannel'} matrixInsertBlock.channelOrder Order the channels like RGB1/RGB2/RGB3 or R123/G123/B123.
+       * @param {!Array.<string, null>} matrixInsertBlock.templateChannels The template channel keys (and aliases) or null channels to be repeated.
        */
-      function checkMatrixInsertBlockRepeatFor() {
-        if (typeof matrixInsertBlock.repeatFor === `string`) {
-          // no custom pixel key list, keywords are already tested by schema
-          return;
+      function checkMatrixInsertBlock(matrixInsertBlock) {
+        checkMatrixInsertBlockRepeatFor();
+
+        for (const templateKey of matrixInsertBlock.templateChannels) {
+          const templateChannelExists = fixture.templateChannels.some(ch => ch.allTemplateKeys.includes(templateKey));
+          if (!templateChannelExists) {
+            result.errors.push(`Template channel '${templateKey}' doesn't exist.`);
+          }
         }
 
-        const usedPixelKeys = new Set();
-
-        // simple uniqueness is already checked by schema, but this test also checks for pixelKeys in pixelGroups
-        for (const pixelKey of matrixInsertBlock.repeatFor) {
-          if (fixture.matrix.pixelKeys.includes(pixelKey)) {
-            module.exports.checkUniqueness(
-              usedPixelKeys,
-              pixelKey,
-              `PixelKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
-            );
+        /**
+         * Checks the used pixel (group) keys for existance and duplicates. Also respects pixel keys included in a pixel group.
+         */
+        function checkMatrixInsertBlockRepeatFor() {
+          if (typeof matrixInsertBlock.repeatFor === `string`) {
+            // no custom pixel key list, keywords are already tested by schema
+            return;
           }
-          else if (pixelKey in fixture.matrix.pixelGroups) {
-            module.exports.checkUniqueness(
-              usedPixelKeys,
-              pixelKey,
-              `PixelGroupKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
-            );
 
-            for (const singlePixelKey of fixture.matrix.pixelGroups[pixelKey]) {
+          const usedPixelKeys = new Set();
+
+          // simple uniqueness is already checked by schema, but this test also checks for pixelKeys in pixelGroups
+          for (const pixelKey of matrixInsertBlock.repeatFor) {
+            if (fixture.matrix.pixelKeys.includes(pixelKey)) {
               module.exports.checkUniqueness(
                 usedPixelKeys,
-                singlePixelKey,
-                `PixelKey '${singlePixelKey}' in group '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
+                pixelKey,
+                `PixelKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
               );
             }
-          }
-          else {
-            result.errors.push(`Unknown pixelKey or pixelGroupKey '${pixelKey}'`);
+            else if (pixelKey in fixture.matrix.pixelGroups) {
+              module.exports.checkUniqueness(
+                usedPixelKeys,
+                pixelKey,
+                `PixelGroupKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
+              );
+
+              for (const singlePixelKey of fixture.matrix.pixelGroups[pixelKey]) {
+                module.exports.checkUniqueness(
+                  usedPixelKeys,
+                  singlePixelKey,
+                  `PixelKey '${singlePixelKey}' in group '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
+                );
+              }
+            }
+            else {
+              result.errors.push(`Unknown pixelKey or pixelGroupKey '${pixelKey}'`);
+            }
           }
         }
       }
     }
-  }
 
-  /**
-   * Check that a channel reference in a mode is valid.
-   * @param {!number} chIndex The mode's channel index.
-   * @param {!Mode} mode The mode to check.
-   * @param {!Set<string>} usedChannelKeysInMode Which channels are already used in this mode.
-   */
-  function checkModeChannelKeys(chIndex, mode, usedChannelKeysInMode) {
-    const chKey = mode.channelKeys[chIndex];
+    /**
+     * Check that a channel reference in a mode is valid.
+     * @param {!number} chIndex The mode's channel index.
+     */
+    function checkModeChannelKey(chIndex) {
+      const chKey = mode.channelKeys[chIndex];
 
-    if (chKey === null) {
-      return;
-    }
+      if (chKey === null) {
+        return;
+      }
 
-    usedChannelKeys.add(chKey.toLowerCase());
+      usedChannelKeys.add(chKey.toLowerCase());
 
-    let channel = mode.fixture.getChannelByKey(chKey);
-    if (channel === null) {
-      result.errors.push(`Channel '${chKey}' is referenced from mode '${mode.shortName}' but is not defined.`);
-      return;
-    }
+      let channel = mode.fixture.getChannelByKey(chKey);
+      if (channel === null) {
+        result.errors.push(`Channel '${chKey}' is referenced from mode '${mode.shortName}' but is not defined.`);
+        return;
+      }
 
-    // if earliest occurence (including switching channels) is not this one
-    if (mode.getChannelIndex(channel, `all`) < chIndex) {
-      result.errors.push(`Channel '${channel.key}' is referenced more than once from mode '${mode.shortName}' (maybe through switching channels).`);
-    }
+      // if earliest occurence (including switching channels) is not this one
+      if (mode.getChannelIndex(channel, `all`) < chIndex) {
+        result.errors.push(`Channel '${channel.key}' is referenced more than once from mode '${mode.shortName}' (maybe through switching channels).`);
+      }
 
-    if (channel instanceof MatrixChannel) {
-      channel = channel.wrappedChannel;
-    }
+      if (channel instanceof MatrixChannel) {
+        channel = channel.wrappedChannel;
+      }
 
-    if (channel instanceof SwitchingChannel) {
-      checkSwitchingChannelReference(channel, mode, usedChannelKeysInMode);
-    }
-    else if (channel instanceof FineChannel) {
-      checkCoarserChannelsInMode(channel, mode);
-    }
-    else {
-      // that's already checked for switched channels and we don't need to check it for fine channels
-      checkPanTiltMaxInPhysical(channel, mode);
+      if (channel instanceof SwitchingChannel) {
+        checkSwitchingChannelReference(channel, mode, usedChannelKeysInMode);
+      }
+      else if (channel instanceof FineChannel) {
+        checkCoarserChannelsInMode(channel, mode);
+      }
+      else {
+        // that's already checked for switched channels and we don't need to check it for fine channels
+        checkPanTiltMaxInPhysical(channel, mode);
+      }
     }
   }
 
