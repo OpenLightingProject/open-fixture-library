@@ -427,7 +427,9 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
 
         const capabilityTypeChecks = {
           'Pan': checkPanTiltCapability,
-          'Tilt': checkPanTiltCapability
+          'Tilt': checkPanTiltCapability,
+          'PanContinuous': () => checkPanTiltContinuousCapability(`Pan`),
+          'TiltContinuous': () => checkPanTiltContinuousCapability(`Tilt`)
         };
 
         if (Object.keys(capabilityTypeChecks).includes(cap.type)) {
@@ -455,6 +457,18 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
           }
           else if (max) {
             result.warnings.push(`${errorPrefix} defines an unprecise percentaged ${panOrTilt} angle. Using the exact value from focus.${panOrTilt}Max in the fixture's physical data is recommended.`);
+          }
+        }
+
+        /**
+         * Type-specific checks for PanContinuous and TiltContinuous capabilities
+         * @param {'Pan'|'Tilt'} panOrTilt pan for PanContinuous, tilt for TiltContinuous
+         */
+        function checkPanTiltContinuousCapability(panOrTilt) {
+          const max = fixture.physical === null ? null : fixture.physical[`focus${panOrTilt}Max`];
+
+          if (max !== Number.POSITIVE_INFINITY) {
+            result.errors.push(`${errorPrefix} defines continuous ${panOrTilt.toLowerCase()} but focus.${panOrTilt.toLowerCase()}Max in the fixture's physical data is not "infinite".`);
           }
         }
       }
