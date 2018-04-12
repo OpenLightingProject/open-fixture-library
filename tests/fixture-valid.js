@@ -426,10 +426,22 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
         }
 
         const capabilityTypeChecks = {
-          'Pan': checkPanTiltCapability,
-          'Tilt': checkPanTiltCapability,
-          'PanContinuous': () => checkPanTiltContinuousCapability(`Pan`),
-          'TiltContinuous': () => checkPanTiltContinuousCapability(`Tilt`)
+          ShutterStrobe: () => {
+            const hasSpeed = cap.speed !== null;
+            const hasDuration = cap.duration !== null;
+
+            if ([`Closed`, `Open`].includes(cap.shutterEffect) && (hasSpeed || hasDuration)) {
+              result.errors.push(`${errorPrefix}: Shutter open/closed can't define speed or duration.`);
+            }
+
+            if (hasSpeed && hasDuration) {
+              result.errors.push(`${errorPrefix} can't define both speed and duration.`);
+            }
+          },
+          Pan: checkPanTiltCapability,
+          Tilt: checkPanTiltCapability,
+          PanContinuous: () => checkPanTiltContinuousCapability(`Pan`),
+          TiltContinuous: () => checkPanTiltContinuousCapability(`Tilt`)
         };
 
         if (Object.keys(capabilityTypeChecks).includes(cap.type)) {
