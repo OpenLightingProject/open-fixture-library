@@ -281,7 +281,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     checkTemplateVariables(channel.name, []);
 
     // Fine channels
-    for (const alias of channel.fineChannelAliases) {
+    channel.fineChannelAliases.forEach(alias => {
       checkTemplateVariables(alias, []);
       module.exports.checkUniqueness(
         definedChannelKeys,
@@ -289,10 +289,10 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
         result,
         `Fine channel alias '${alias}' in channel '${channel.key}' is already defined (maybe in another letter case).`
       );
-    }
+    });
 
     // Switching channels
-    for (const alias of channel.switchingChannelAliases) {
+    channel.switchingChannelAliases.forEach(alias => {
       checkTemplateVariables(alias, []);
       module.exports.checkUniqueness(
         definedChannelKeys,
@@ -300,7 +300,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
         result,
         `Switching channel alias '${alias}' in channel '${channel.key}' is already defined (maybe in another letter case).`
       );
-    }
+    });
 
     if (channel.hasDefaultValue && channel.defaultValue > channel.maxDmxBound) {
       result.errors.push(`defaultValue must be less or equal to ${channel.maxDmxBound} in channel '${channel.key}'.`);
@@ -328,7 +328,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
           dmxRangesInvalid = !checkDmxRange(i);
         }
 
-        checkCapability(cap, channel, `Capability '${cap.name}' (${cap.rawDmxRange}) in channel '${channel.key}'`);
+        checkCapability(cap, `Capability '${cap.name}' (${cap.rawDmxRange}) in channel '${channel.key}'`);
       }
 
       /**
@@ -392,23 +392,22 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
       /**
        * Check that a capability is valid (except its dmx range).
        * @param {!Capability} cap The capability to check.
-       * @param {!Channel} channel The channel that includes the capability.
        * @param {!string} errorPrefix An identifier for the capability to use in errors and warnings.
        */
-      function checkCapability(cap, channel, errorPrefix) {
+      function checkCapability(cap, errorPrefix) {
         const switchingChannelAliases = Object.keys(cap.switchChannels);
         if (!arraysEqual(switchingChannelAliases, channel.switchingChannelAliases)) {
           result.errors.push(`${errorPrefix} must define the same switching channel aliases as all other capabilities.`);
         }
         else {
-          for (const alias of switchingChannelAliases) {
+          switchingChannelAliases.forEach(alias => {
             const chKey = cap.switchChannels[alias];
             usedChannelKeys.add(chKey.toLowerCase());
 
             if (channel.fixture.getChannelByKey(chKey) === null) {
               result.errors.push(`${errorPrefix} references unknown channel '${chKey}'.`);
             }
-          }
+          });
         }
 
         const startEndEntities = Capability.START_END_PROPERTIES.map(
@@ -447,16 +446,13 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
           const panOrTilt = cap.type.toLowerCase();
 
           if (!usesPercentageValue) {
-            if (max) {
-              if (cap.angle[0] > max) {
-                result.errors.push(`${errorPrefix} uses a start angle that is greater than focus.${panOrTilt}Max in the fixture's physical data.`);
-              }
-              if (!cap.isStep && cap.angle[1] > max) {
-                result.errors.push(`${errorPrefix} uses an end angle that is greater than focus.${panOrTilt}Max in the fixture's physical data.`);
-              }
-            }
-            else {
+            const range = Math.abs(cap.angle[1] - cap.angle[0]);
+
+            if (!max) {
               result.warnings.push(`${errorPrefix} defines an exact ${panOrTilt} angle. Setting focus.${panOrTilt}Max in the fixture's physical data is recommended.`);
+            }
+            else if (range > max) {
+              result.errors.push(`${errorPrefix} uses an angle range that is greater than focus.${panOrTilt}Max in the fixture's physical data.`);
             }
           }
           else if (max) {
