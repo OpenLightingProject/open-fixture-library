@@ -63,6 +63,12 @@
       "minimum": 0
     }
   },
+  "effectPreset": {
+    "enum": [
+      "ColorJump",
+      "ColorFade"
+    ]
+  },
 
   "units": {
     "nonNegativeNumber": {

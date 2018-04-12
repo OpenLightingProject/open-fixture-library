@@ -2,6 +2,7 @@ const util = require(`util`);
 const Ajv = require(`ajv`);
 
 const fixtureSchema = require(`../schemas/dereferenced/fixture.json`);
+const schemaProperties = require(`../lib/schema-properties.js`);
 
 const {
   Capability,
@@ -441,7 +442,16 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
           Pan: checkPanTiltCapability,
           Tilt: checkPanTiltCapability,
           PanContinuous: () => checkPanTiltContinuousCapability(`Pan`),
-          TiltContinuous: () => checkPanTiltContinuousCapability(`Tilt`)
+          TiltContinuous: () => checkPanTiltContinuousCapability(`Tilt`),
+          Effect: () => {
+            if (!cap.hasEffectPreset && schemaProperties.definitions.effectPreset.enum.includes(cap.effectPreset)) {
+              result.errors.push(`${errorPrefix} must use effectPreset instead of effectName with '${cap.effectPreset}'.`);
+            }
+
+            if (cap.speed !== null && cap.duration !== null) {
+              result.errors.push(`${errorPrefix} can't define both speed and duration.`);
+            }
+          }
         };
 
         if (Object.keys(capabilityTypeChecks).includes(cap.type)) {

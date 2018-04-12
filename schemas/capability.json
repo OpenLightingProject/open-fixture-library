@@ -447,12 +447,7 @@
         "switchChannels": {},
         "helpWanted": {},
         "effectName": { "$ref": "definitions.json#/nonEmptyString" },
-        "effectPreset": {
-          "enum": [
-            "ColorJump",
-            "ColorFade"
-          ]
-        },
+        "effectPreset": { "$ref": "definitions.json#/effectPreset" },
         "soundControlled": { "type": "boolean" },
         "effectIntensity": { "$ref": "definitions.json#/entities/factor" },
         "effectIntensityStart": { "$ref": "definitions.json#/entities/factor" },
