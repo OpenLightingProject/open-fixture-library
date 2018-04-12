@@ -161,14 +161,24 @@
               ]
             },
             "panMax": {
-              "$comment": "in degrees",
-              "type": "number",
-              "minimum": 0
+              "oneOf": [
+                {
+                  "$comment": "in degrees",
+                  "type": "number",
+                  "minimum": 0
+                },
+                { "enum": ["infinite"] }
+              ]
             },
             "tiltMax": {
-              "$comment": "in degrees",
-              "type": "number",
-              "minimum": 0
+              "oneOf": [
+                {
+                  "$comment": "in degrees",
+                  "type": "number",
+                  "minimum": 0
+                },
+                { "enum": ["infinite"] }
+              ]
             }
           },
           "additionalProperties": false
