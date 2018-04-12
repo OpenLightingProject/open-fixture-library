@@ -435,17 +435,15 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
         }
 
         /**
-         * Checks specific for Pan and Tilt capabilities
-         * @param {!Capability} cap The capability to check.
-         * @param {!string} errorPrefix An identifier for the capability to use in errors and warnings.
+         * Type-specific checks for Pan and Tilt capabilities
          */
         function checkPanTiltCapability() {
-          const max = fixture.physical !== null ? fixture.physical[`focus${cap.type}Max`] : null;
-          const usesPercentageValue = cap.angle[0].unit === `%`;
+          const max = fixture.physical === null ? null : fixture.physical[`focus${cap.type}Max`];
+          const usesPercentageAngle = cap.angle[0].unit === `%`;
 
           const panOrTilt = cap.type.toLowerCase();
 
-          if (!usesPercentageValue) {
+          if (!usesPercentageAngle) {
             const range = Math.abs(cap.angle[1] - cap.angle[0]);
 
             if (!max) {
