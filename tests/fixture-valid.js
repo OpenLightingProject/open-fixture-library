@@ -25,7 +25,7 @@ const schemaValidate = ajv.compile(fixtureSchema);
  * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurences are appended.
  * @returns {ResultData} The result object containing errors and warnings, if any.
  */
-module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
+function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   /**
    * @typedef ResultData
    * @type {object}
@@ -912,7 +912,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
       }
     }
   }
-};
+}
 
 /**
  * If the Set already contains the given value, add an error. Test is not case-sensitive.
@@ -947,6 +947,7 @@ function arraysEqual(a, b) {
 
 
 module.exports = {
+  checkFixture,
   checkUniqueness,
   getErrorString
 };
