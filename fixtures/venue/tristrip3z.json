@@ -37,215 +37,241 @@
   },
   "availableChannels": {
     "Dimmer": {
-      "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Strobe": {
-      "type": "Strobe",
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "No strobe"
+          "dmxRange": [0, 15],
+          "type": "Nothing"
         },
         {
-          "range": [16, 255],
-          "name": "Strobe 0-20Hz"
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
         }
       ]
     },
     "Dimmer Speed": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 51],
-          "name": "Preset dimmer speed from display menu"
+          "dmxRange": [0, 51],
+          "type": "Maintenance",
+          "comment": "Preset dimmer speed from display menu"
         },
         {
-          "range": [52, 101],
-          "name": "Dimmer speed mode off"
+          "dmxRange": [52, 101],
+          "type": "Maintenance",
+          "comment": "Dimmer speed mode off"
         },
         {
-          "range": [102, 152],
-          "name": "Dimmer speed mode 1 (fast speed)"
+          "dmxRange": [102, 152],
+          "type": "Maintenance",
+          "comment": "Dimmer speed mode 1 (fast speed)"
         },
         {
-          "range": [153, 203],
-          "name": "Dimmer speed mode 2 (medium speed)"
+          "dmxRange": [153, 203],
+          "type": "Maintenance",
+          "comment": "Dimmer speed mode 2 (medium speed)"
         },
         {
-          "range": [204, 255],
-          "name": "Dimmer speed mode 3 (slow speed)"
+          "dmxRange": [204, 255],
+          "type": "Maintenance",
+          "comment": "Dimmer speed mode 3 (slow speed)"
         }
       ]
     },
     "Color Macros": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "No function"
+          "dmxRange": [0, 15],
+          "type": "Nothing"
         },
         {
-          "range": [16, 255],
-          "name": "Color macros"
+          "dmxRange": [16, 255],
+          "type": "ColorPreset",
+          "helpWanted": "Which color macros can be selected at which DMX values?"
         }
       ]
     },
     "RGB / Auto Speed": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "slow - fast"
-        }
-      ]
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Sound Sensitivity": {
-      "type": "Intensity",
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "Sound sensitivity off"
+          "dmxRange": [0, 10],
+          "type": "SoundSensitivity",
+          "sensitivity": "off"
         },
         {
-          "range": [11, 255],
-          "name": "Sound sensitivity control"
+          "dmxRange": [11, 255],
+          "type": "SoundSensitivity",
+          "sensitivityStart": "low",
+          "sensitivityEnd": "high"
         }
       ]
     },
     "RGB / Auto Mode": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 31],
-          "name": "No function",
+          "dmxRange": [0, 31],
+          "type": "Nothing",
           "switchChannels": {
             "Strobe / Speed / Sound Sensitivity": "Strobe"
           }
         },
         {
-          "range": [32, 63],
-          "name": "Pulse effect 0-100%",
+          "dmxRange": [32, 63],
+          "type": "Effect",
+          "effectName": "Pulse effect 0-100%",
           "switchChannels": {
             "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
           }
         },
         {
-          "range": [64, 95],
-          "name": "Pulse effect 100-0%",
+          "dmxRange": [64, 95],
+          "type": "Effect",
+          "effectName": "Pulse effect 100-0%",
           "switchChannels": {
             "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
           }
         },
         {
-          "range": [96, 114],
-          "name": "Pulse effect 100-0-100%",
+          "dmxRange": [96, 114],
+          "type": "Effect",
+          "effectName": "Pulse effect 100-0-100%",
           "switchChannels": {
             "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
           }
         },
         {
-          "range": [115, 122],
-          "name": "Auto program 1",
+          "dmxRange": [115, 122],
+          "type": "Effect",
+          "effectName": "Auto program 1",
           "switchChannels": {
             "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
           }
         },
         {
-          "range": [123, 130],
-          "name": "Auto program 2",
+          "dmxRange": [123, 130],
+          "type": "Effect",
+          "effectName": "Auto program 2",
           "switchChannels": {
             "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
           }
         },
         {
-          "range": [131, 138],
-          "name": "Auto program 3",
+          "dmxRange": [131, 138],
+          "type": "Effect",
+          "effectName": "Auto program 3",
           "switchChannels": {
             "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
           }
         },
         {
-          "range": [139, 146],
-          "name": "Auto program 4",
+          "dmxRange": [139, 146],
+          "type": "Effect",
+          "effectName": "Auto program 4",
           "switchChannels": {
             "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
           }
         },
         {
-          "range": [147, 154],
-          "name": "Auto program 5",
+          "dmxRange": [147, 154],
+          "type": "Effect",
+          "effectName": "Auto program 5",
           "switchChannels": {
             "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
           }
         },
         {
-          "range": [155, 162],
-          "name": "Auto program 6",
+          "dmxRange": [155, 162],
+          "type": "Effect",
+          "effectName": "Auto program 6",
           "switchChannels": {
             "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
           }
         },
         {
-          "range": [163, 170],
-          "name": "Auto program 7",
+          "dmxRange": [163, 170],
+          "type": "Effect",
+          "effectName": "Auto program 7",
           "switchChannels": {
             "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
           }
         },
         {
-          "range": [171, 178],
-          "name": "Auto program 8",
+          "dmxRange": [171, 178],
+          "type": "Effect",
+          "effectName": "Auto program 8",
           "switchChannels": {
             "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
           }
         },
         {
-          "range": [179, 186],
-          "name": "Auto program 9",
+          "dmxRange": [179, 186],
+          "type": "Effect",
+          "effectName": "Auto program 9",
           "switchChannels": {
             "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
           }
         },
         {
-          "range": [187, 194],
-          "name": "Auto program 10",
+          "dmxRange": [187, 194],
+          "type": "Effect",
+          "effectName": "Auto program 10",
           "switchChannels": {
             "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
           }
         },
         {
-          "range": [195, 202],
-          "name": "Auto program 11",
+          "dmxRange": [195, 202],
+          "type": "Effect",
+          "effectName": "Auto program 11",
           "switchChannels": {
             "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
           }
         },
         {
-          "range": [203, 210],
-          "name": "Auto program 12",
+          "dmxRange": [203, 210],
+          "type": "Effect",
+          "effectName": "Auto program 12",
           "switchChannels": {
             "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
           }
         },
         {
-          "range": [211, 218],
-          "name": "Auto program 13",
+          "dmxRange": [211, 218],
+          "type": "Effect",
+          "effectName": "Auto program 13",
           "switchChannels": {
             "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
           }
         },
         {
-          "range": [219, 226],
-          "name": "Auto program 14",
+          "dmxRange": [219, 226],
+          "type": "Effect",
+          "effectName": "Auto program 14",
           "switchChannels": {
             "Strobe / Speed / Sound Sensitivity": "RGB / Auto Speed"
           }
         },
         {
-          "range": [227, 255],
-          "name": "Sound program",
+          "dmxRange": [227, 255],
+          "type": "Effect",
+          "effectName": "Sound program",
+          "soundControlled": true,
           "switchChannels": {
             "Strobe / Speed / Sound Sensitivity": "Sound Sensitivity"
           }
@@ -255,16 +281,22 @@
   },
   "templateChannels": {
     "Red $pixelKey": {
-      "type": "Single Color",
-      "color": "Red"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green $pixelKey": {
-      "type": "Single Color",
-      "color": "Green"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue $pixelKey": {
-      "type": "Single Color",
-      "color": "Blue"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     }
   },
   "modes": [
