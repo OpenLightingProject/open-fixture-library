@@ -26,12 +26,14 @@ const schemaValidate = ajv.compile(fixtureSchema);
  * @returns {ResultData} The result object containing errors and warnings, if any.
  */
 module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
-/**
- * @typedef ResultData
- * @type {object}
- * @property {string[]} errors
- * @property {string[]} warnings
- */
+  /**
+   * @typedef ResultData
+   * @type {object}
+   * @property {string[]} errors
+   * @property {string[]} warnings
+   */
+
+  /** @type ResultData */
   const result = {
     errors: [],
     warnings: []
@@ -54,7 +56,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
 
   const schemaValid = schemaValidate(fixtureJson);
   if (!schemaValid) {
-    result.errors.push(module.exports.getErrorString(`File does not match schema.`, schemaValidate.errors));
+    result.errors.push(getErrorString(`File does not match schema.`, schemaValidate.errors));
     return result;
   }
 
@@ -78,7 +80,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     checkRdm(manKey, uniqueValues);
   }
   catch (error) {
-    result.errors.push(module.exports.getErrorString(`File could not be imported into model.`, error));
+    result.errors.push(getErrorString(`File could not be imported into model.`, error));
   }
 
   return result;
@@ -99,7 +101,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     if (!(manKey in uniqueValues.fixKeysInMan)) {
       uniqueValues.fixKeysInMan[manKey] = new Set();
     }
-    module.exports.checkUniqueness(
+    checkUniqueness(
       uniqueValues.fixKeysInMan[manKey],
       fixture.key,
       result,
@@ -110,7 +112,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     if (!(manKey in uniqueValues.fixNamesInMan)) {
       uniqueValues.fixNamesInMan[manKey] = new Set();
     }
-    module.exports.checkUniqueness(
+    checkUniqueness(
       uniqueValues.fixNamesInMan[manKey],
       fixture.name,
       result,
@@ -118,7 +120,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     );
 
     // fixture.shortName
-    module.exports.checkUniqueness(
+    checkUniqueness(
       uniqueValues.fixShortNames,
       fixture.shortName,
       result,
@@ -235,7 +237,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     }
 
     for (const key of templateChannel.possibleResolvedChannelKeys.keys()) {
-      module.exports.checkUniqueness(
+      checkUniqueness(
         possibleMatrixChKeys,
         key,
         result,
@@ -252,7 +254,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     for (const channel of fixture.availableChannels) {
       // forbid coexistance of channels 'Red' and 'red'
       // for template channels, this is checked by possibleMatrixChKeys
-      module.exports.checkUniqueness(
+      checkUniqueness(
         definedChannelKeys,
         channel.key,
         result,
@@ -284,7 +286,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     // Fine channels
     channel.fineChannelAliases.forEach(alias => {
       checkTemplateVariables(alias, []);
-      module.exports.checkUniqueness(
+      checkUniqueness(
         definedChannelKeys,
         alias,
         result,
@@ -295,7 +297,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     // Switching channels
     channel.switchingChannelAliases.forEach(alias => {
       checkTemplateVariables(alias, []);
-      module.exports.checkUniqueness(
+      checkUniqueness(
         definedChannelKeys,
         alias,
         result,
@@ -374,8 +376,8 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
       }
 
       /**
-         * @returns {!Array.<number>} All DMX values that would be valid maximum DMX bounds, sorted ascending.
-         * Depends on the lowest fineness with which the channel is used in any mode.
+       * @returns {!Array.<number>} All DMX values that would be valid maximum DMX bounds, sorted ascending.
+       * Depends on the lowest fineness with which the channel is used in any mode.
        */
       function getPossibleEndValues() {
         const minUsedFineness = Math.min(...fixture.modes.map(
@@ -391,7 +393,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
       }
 
       /**
-       * Check that a capability is valid (except its dmx range).
+       * Check that a capability is valid (except its DMX range).
        * @param {!Capability} cap The capability to check.
        * @param {!string} errorPrefix An identifier for the capability to use in errors and warnings.
        */
@@ -427,39 +429,37 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
         }
 
         const capabilityTypeChecks = {
-          ShutterStrobe: () => {
-            const hasSpeed = cap.speed !== null;
-            const hasDuration = cap.duration !== null;
-
-            if ([`Closed`, `Open`].includes(cap.shutterEffect) && (hasSpeed || hasDuration)) {
-              result.errors.push(`${errorPrefix}: Shutter open/closed can't define speed or duration.`);
-            }
-
-            if (hasSpeed && hasDuration) {
-              result.errors.push(`${errorPrefix} can't define both speed and duration.`);
-            }
-          },
+          ShutterStrobe: checkShutterStrobeCapability,
           Pan: checkPanTiltCapability,
           Tilt: checkPanTiltCapability,
-          PanContinuous: () => checkPanTiltContinuousCapability(`Pan`),
-          TiltContinuous: () => checkPanTiltContinuousCapability(`Tilt`),
-          Effect: () => {
-            if (!cap.hasEffectPreset && schemaProperties.definitions.effectPreset.enum.includes(cap.effectPreset)) {
-              result.errors.push(`${errorPrefix} must use effectPreset instead of effectName with '${cap.effectPreset}'.`);
-            }
-
-            if (cap.speed !== null && cap.duration !== null) {
-              result.errors.push(`${errorPrefix} can't define both speed and duration.`);
-            }
-          }
+          PanContinuous: checkPanTiltContinuousCapability,
+          TiltContinuous: checkPanTiltContinuousCapability,
+          Effect: checkEffectCapability
         };
 
         if (Object.keys(capabilityTypeChecks).includes(cap.type)) {
           capabilityTypeChecks[cap.type]();
         }
 
+
         /**
-         * Type-specific checks for Pan and Tilt capabilities
+         * Type-specific checks for ShutterStrobe capabilities.
+         */
+        function checkShutterStrobeCapability() {
+          const hasSpeed = cap.speed !== null;
+          const hasDuration = cap.duration !== null;
+
+          if ([`Closed`, `Open`].includes(cap.shutterEffect) && (hasSpeed || hasDuration)) {
+            result.errors.push(`${errorPrefix}: Shutter open/closed can't define speed or duration.`);
+          }
+
+          if (hasSpeed && hasDuration) {
+            result.errors.push(`${errorPrefix} can't define both speed and duration.`);
+          }
+        }
+
+        /**
+         * Type-specific checks for Pan and Tilt capabilities.
          */
         function checkPanTiltCapability() {
           const max = fixture.physical === null ? null : fixture.physical[`focus${cap.type}Max`];
@@ -483,14 +483,28 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
         }
 
         /**
-         * Type-specific checks for PanContinuous and TiltContinuous capabilities
-         * @param {'Pan'|'Tilt'} panOrTilt pan for PanContinuous, tilt for TiltContinuous
+         * Type-specific checks for PanContinuous and TiltContinuous capabilities.
          */
-        function checkPanTiltContinuousCapability(panOrTilt) {
+        function checkPanTiltContinuousCapability() {
+          const panOrTilt = cap.type === `PanContinuous` ? `Pan` : `Tilt`;
+
           const max = fixture.physical === null ? null : fixture.physical[`focus${panOrTilt}Max`];
 
           if (max !== Number.POSITIVE_INFINITY) {
             result.errors.push(`${errorPrefix} defines continuous ${panOrTilt.toLowerCase()} but focus.${panOrTilt.toLowerCase()}Max in the fixture's physical data is not "infinite".`);
+          }
+        }
+
+        /**
+         * Type-specific checks for Effect capabilities.
+         */
+        function checkEffectCapability() {
+          if (!cap.hasEffectPreset && schemaProperties.definitions.effectPreset.enum.includes(cap.effectPreset)) {
+            result.errors.push(`${errorPrefix} must use effectPreset instead of effectName with '${cap.effectPreset}'.`);
+          }
+
+          if (cap.speed !== null && cap.duration !== null) {
+            result.errors.push(`${errorPrefix} can't define both speed and duration.`);
           }
         }
       }
@@ -502,13 +516,13 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
    * @param {!Mode} mode The mode to check.
    */
   function checkMode(mode) {
-    module.exports.checkUniqueness(
+    checkUniqueness(
       modeNames,
       mode.name,
       result,
       `Mode name '${mode.name}' is not unique (test is not case-sensitive).`
     );
-    module.exports.checkUniqueness(
+    checkUniqueness(
       modeShortNames,
       mode.shortName,
       result,
@@ -572,7 +586,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
          */
         function checkMatrixInsertBlockRepeatFor() {
           if (typeof matrixInsertBlock.repeatFor === `string`) {
-          // no custom pixel key list, keywords are already tested by schema
+            // no custom pixel key list, keywords are already tested by schema
             return;
           }
 
@@ -581,21 +595,21 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
           // simple uniqueness is already checked by schema, but this test also checks for pixelKeys in pixelGroups
           for (const pixelKey of matrixInsertBlock.repeatFor) {
             if (fixture.matrix.pixelKeys.includes(pixelKey)) {
-              module.exports.checkUniqueness(
+              checkUniqueness(
                 usedPixelKeys,
                 pixelKey,
                 `PixelKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
               );
             }
             else if (pixelKey in fixture.matrix.pixelGroups) {
-              module.exports.checkUniqueness(
+              checkUniqueness(
                 usedPixelKeys,
                 pixelKey,
                 `PixelGroupKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
               );
 
               for (const singlePixelKey of fixture.matrix.pixelGroups[pixelKey]) {
-                module.exports.checkUniqueness(
+                checkUniqueness(
                   usedPixelKeys,
                   singlePixelKey,
                   `PixelKey '${singlePixelKey}' in group '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
@@ -856,7 +870,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     if (!(manKey in uniqueValues.fixRdmIdsInMan)) {
       uniqueValues.fixRdmIdsInMan[manKey] = new Set();
     }
-    module.exports.checkUniqueness(
+    checkUniqueness(
       uniqueValues.fixRdmIdsInMan[manKey],
       `${fixture.rdm.modelId}`,
       result,
@@ -870,7 +884,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     const rdmPersonalityIndices = new Set();
     for (const mode of fixture.modes) {
       if (mode.rdmPersonalityIndex !== null) {
-        module.exports.checkUniqueness(
+        checkUniqueness(
           rdmPersonalityIndices,
           `${mode.rdmPersonalityIndex}`,
           result,
@@ -907,17 +921,17 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
  * @param {!ResultData} result The object to add the error message to (if any).
  * @param {!string} messageIfNotUnique If the value is not unique, add this message to errors.
  */
-module.exports.checkUniqueness = function checkUniqueness(set, value, result, messageIfNotUnique) {
+function checkUniqueness(set, value, result, messageIfNotUnique) {
   if (set.has(value.toLowerCase())) {
     result.errors.push(messageIfNotUnique);
   }
   set.add(value.toLowerCase());
-};
+}
 
 
-module.exports.getErrorString = function getErrorString(description, error) {
+function getErrorString(description, error) {
   return `${description} ${util.inspect(error, false, null)}`;
-};
+}
 
 function arraysEqual(a, b) {
   if (a === b) {
@@ -930,3 +944,9 @@ function arraysEqual(a, b) {
 
   return a.every((val, index) => val === b[index]);
 }
+
+
+module.exports = {
+  checkUniqueness,
+  getErrorString
+};
