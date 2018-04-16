@@ -2,6 +2,7 @@
 
 const fs = require(`fs`);
 const minimist = require(`minimist`);
+const { execSync } = require(`child_process`);
 
 const args = minimist(process.argv.slice(2), {
   string: `f`,
@@ -14,6 +15,9 @@ if (!args.fixture) {
   console.error(`Usage: ${process.argv[1]} -f <fixture filename>\n\npath relative to working directory`);
   process.exit(1);
 }
+
+// dangerous!
+execSync(`git checkout "${args.fixture}"`);
 
 fs.readFile(args.fixture, `utf8`, (readError, data) => {
   if (readError) {
@@ -35,7 +39,7 @@ fs.readFile(args.fixture, `utf8`, (readError, data) => {
   });
 });
 
-/* eslint-disable require-jsdoc */
+/* eslint-disable require-jsdoc, security/detect-unsafe-regex */
 
 function replaceChannels(match, channelsType, channels) {
   channels = channels.replace(/"range"/g, `"dmxRange"`);
@@ -131,6 +135,25 @@ function replaceChannels(match, channelsType, channels) {
         "angleStart": "0%",
         "angleEnd": "100%"
       }`);
+
+  // migrate to new color syntax (keep hex codes as comment)
+  channels = channels.replace(/( {6}| {8})\{\n\1 {2}("dmxRange": \[.*?\]),\n\1 {2}"type": "Multi-Color",\n\1 {2}"comment": "([^"]+)",\n\1 {2}"color": "([^"]+)"(?:,\n\1 {2}"color2": "([^"]+)")?\n\1\}/g, (match, indentation, range, comment, color, color2) => {
+    return `${indentation}{
+${indentation}  ${range},
+${indentation}  "type": "ColorPreset",
+${indentation}  "colors": ["${comment}"],
+${indentation}  "comment": "${color}${color2 ? ` ${color2}` : ``}"
+${indentation}}`;
+  });
+
+  // recognize speed properties
+  channels = channels.replace(/( {8}| {10})"comment": "([^"]+)( (?:counter)?clockwise| C?CW)? (slow|fast) ?(?:-|to) ?(fast|slow)"/g, (match, indentation, comment, direction, start, end) => {
+    const directionStr = direction ? (direction === `clockwise` || direction === `CW` ? ` CW` : ` CCW`) : ``;
+
+    return `${indentation}"speedStart": "${start}${directionStr}",
+${indentation}"speedEnd": "${end}${directionStr}",
+${indentation}"comment": "${comment}"`;
+  });
 
   return `  "${channelsType}": {\n${channels}\n  }`;
 }
