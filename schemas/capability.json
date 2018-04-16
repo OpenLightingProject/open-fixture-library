@@ -60,7 +60,7 @@
         "menuClick": {},
         "switchChannels": {},
         "helpWanted": {},
-        "shutterEffect": { "enum": ["Open", "Closed", "Strobe", "StrobeRandom", "Pulse", "PulseRandom", "RampUp", "RampUpRandom", "RampDown", "RampDownRandom"] },
+        "shutterEffect": { "enum": ["Open", "Closed", "Strobe", "StrobeRandom", "Pulse", "PulseRandom", "RampUp", "RampUpRandom", "RampDown", "RampDownRandom", "RampUpDown"] },
         "speed": { "$ref": "definitions.json#/entities/speed" },
         "speedStart": { "$ref": "definitions.json#/entities/speed" },
         "speedEnd": { "$ref": "definitions.json#/entities/speed" },
