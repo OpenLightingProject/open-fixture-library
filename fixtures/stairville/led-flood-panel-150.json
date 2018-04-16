@@ -26,290 +26,332 @@
   },
   "availableChannels": {
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "Dimmer": {
-      "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Color Presets": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 8],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [0, 8],
+          "type": "ColorPreset",
+          "colors": ["Red"]
         },
         {
-          "range": [9, 17],
-          "name": "Red: 255, Green: 50",
-          "color": "#ff3200"
+          "dmxRange": [9, 17],
+          "type": "ColorPreset",
+          "colors": ["#ff3200"],
+          "comment": "Red: 255, Green: 50"
         },
         {
-          "range": [18, 26],
-          "name": "Red: 255, Green: 150",
-          "color": "#ff9600"
+          "dmxRange": [18, 26],
+          "type": "ColorPreset",
+          "colors": ["#ff9600"],
+          "comment": "Red: 255, Green: 150"
         },
         {
-          "range": [27, 35],
-          "name": "Yellow",
-          "color": "#ffff00"
+          "dmxRange": [27, 35],
+          "type": "ColorPreset",
+          "colors": ["Yellow"]
         },
         {
-          "range": [36, 44],
-          "name": "Red: 200, Green: 255",
-          "color": "#c8ff00"
+          "dmxRange": [36, 44],
+          "type": "ColorPreset",
+          "colors": ["#c8ff00"],
+          "comment": "Red: 200, Green: 255"
         },
         {
-          "range": [45, 53],
-          "name": "Red: 100, Green: 255",
-          "color": "#64ff00"
+          "dmxRange": [45, 53],
+          "type": "ColorPreset",
+          "colors": ["#64ff00"],
+          "comment": "Red: 100, Green: 255"
         },
         {
-          "range": [54, 62],
-          "name": "Red: 40, Green: 255",
-          "color": "#28ff00"
+          "dmxRange": [54, 62],
+          "type": "ColorPreset",
+          "colors": ["#28ff00"],
+          "comment": "Red: 40, Green: 255"
         },
         {
-          "range": [63, 71],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [63, 71],
+          "type": "ColorPreset",
+          "colors": ["Green"]
         },
         {
-          "range": [72, 80],
-          "name": "Green: 255, Blue: 50",
-          "color": "#00ff32"
+          "dmxRange": [72, 80],
+          "type": "ColorPreset",
+          "colors": ["#00ff32"],
+          "comment": "Green: 255, Blue: 50"
         },
         {
-          "range": [81, 89],
-          "name": "Green: 255, Blue: 150",
-          "color": "#00ff96"
+          "dmxRange": [81, 89],
+          "type": "ColorPreset",
+          "colors": ["#00ff96"],
+          "comment": "Green: 255, Blue: 150"
         },
         {
-          "range": [90, 98],
-          "name": "Cyan",
-          "color": "#00ff00"
+          "dmxRange": [90, 98],
+          "type": "ColorPreset",
+          "colors": ["Cyan"]
         },
         {
-          "range": [99, 107],
-          "name": "Green: 150, Blue: 255",
-          "color": "#0096ff"
+          "dmxRange": [99, 107],
+          "type": "ColorPreset",
+          "colors": ["#0096ff"],
+          "comment": "Green: 150, Blue: 255"
         },
         {
-          "range": [108, 116],
-          "name": "Green: 50, Blue: 255",
-          "color": "#0032ff"
+          "dmxRange": [108, 116],
+          "type": "ColorPreset",
+          "colors": ["#0032ff"],
+          "comment": "Green: 50, Blue: 255"
         },
         {
-          "range": [117, 125],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [117, 125],
+          "type": "ColorPreset",
+          "colors": ["Blue"]
         },
         {
-          "range": [126, 134],
-          "name": "Red: 50, Blue: 255",
-          "color": "#3200ff"
+          "dmxRange": [126, 134],
+          "type": "ColorPreset",
+          "colors": ["#3200ff"],
+          "comment": "Red: 50, Blue: 255"
         },
         {
-          "range": [135, 143],
-          "name": "Red: 150, Blue: 255",
-          "color": "#9600ff"
+          "dmxRange": [135, 143],
+          "type": "ColorPreset",
+          "colors": ["#9600ff"],
+          "comment": "Red: 150, Blue: 255"
         },
         {
-          "range": [144, 152],
-          "name": "Magenta",
-          "color": "#ff00ff"
+          "dmxRange": [144, 152],
+          "type": "ColorPreset",
+          "colors": ["Magenta"]
         },
         {
-          "range": [153, 161],
-          "name": "Red: 220, Blue: 255",
-          "color": "#dc00ff"
+          "dmxRange": [153, 161],
+          "type": "ColorPreset",
+          "colors": ["#dc00ff"],
+          "comment": "Red: 220, Blue: 255"
         },
         {
-          "range": [162, 170],
-          "name": "Red: 150, Green: 50, Blue: 100",
-          "color": "#963264"
+          "dmxRange": [162, 170],
+          "type": "ColorPreset",
+          "colors": ["#963264"],
+          "comment": "Red: 150, Green: 50, Blue: 100"
         },
         {
-          "range": [171, 179],
-          "name": "Red: 50, Green: 180, Blue: 220",
-          "color": "#32b4dc"
+          "dmxRange": [171, 179],
+          "type": "ColorPreset",
+          "colors": ["#32b4dc"],
+          "comment": "Red: 50, Green: 180, Blue: 220"
         },
         {
-          "range": [180, 188],
-          "name": "Red: 50, Green: 220, Blue: 100",
-          "color": "#32dc64"
+          "dmxRange": [180, 188],
+          "type": "ColorPreset",
+          "colors": ["#32dc64"],
+          "comment": "Red: 50, Green: 220, Blue: 100"
         },
         {
-          "range": [189, 197],
-          "name": "Red: 150, Green: 220",
-          "color": "#96dc00"
+          "dmxRange": [189, 197],
+          "type": "ColorPreset",
+          "colors": ["#96dc00"],
+          "comment": "Red: 150, Green: 220"
         },
         {
-          "range": [198, 206],
-          "name": "Red: 150, Blue: 220",
-          "color": "#9600dc"
+          "dmxRange": [198, 206],
+          "type": "ColorPreset",
+          "colors": ["#9600dc"],
+          "comment": "Red: 150, Blue: 220"
         },
         {
-          "range": [207, 215],
-          "name": "Green: 180, Blue: 220",
-          "color": "#00b4dc"
+          "dmxRange": [207, 215],
+          "type": "ColorPreset",
+          "colors": ["#00b4dc"],
+          "comment": "Green: 180, Blue: 220"
         },
         {
-          "range": [216, 224],
-          "name": "Green: 220, Blue: 50",
-          "color": "#00dc32"
+          "dmxRange": [216, 224],
+          "type": "ColorPreset",
+          "colors": ["#00dc32"],
+          "comment": "Green: 220, Blue: 50"
         },
         {
-          "range": [225, 233],
-          "name": "Red: 220, Green: 100, Blue: 50",
-          "color": "#dc6432"
+          "dmxRange": [225, 233],
+          "type": "ColorPreset",
+          "colors": ["#dc6432"],
+          "comment": "Red: 220, Green: 100, Blue: 50"
         },
         {
-          "range": [234, 242],
-          "name": "Red: 220, Green: 200, Blue: 100",
-          "color": "#dcc864"
+          "dmxRange": [234, 242],
+          "type": "ColorPreset",
+          "colors": ["#dcc864"],
+          "comment": "Red: 220, Green: 200, Blue: 100"
         },
         {
-          "range": [243, 251],
-          "name": "Red: 255, Green: 200, Blue: 150",
-          "color": "#ffc896"
+          "dmxRange": [243, 251],
+          "type": "ColorPreset",
+          "colors": ["#ffc896"],
+          "comment": "Red: 255, Green: 200, Blue: 150"
         },
         {
-          "range": [252, 255],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [252, 255],
+          "type": "ColorPreset",
+          "colors": ["White"]
         }
       ]
     },
     "Program Speed": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Speed slow-fast"
-        }
-      ]
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Sound Sensitivity": {
-      "type": "Intensity",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Sensitivity low-high"
-        }
-      ]
+      "capability": {
+        "type": "SoundSensitivity",
+        "sensitivityStart": "low",
+        "sensitivityEnd": "high"
+      }
     },
     "Strobe": {
-      "type": "Strobe",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "No function"
+          "dmxRange": [0, 9],
+          "type": "Nothing"
         },
         {
-          "range": [10, 255],
-          "name": "Strobe slow-fast"
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Internal Programs": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "No function",
+          "dmxRange": [0, 0],
+          "type": "Nothing",
           "switchChannels": {
             "Red / Color Presets / Program Speed / Sound Sensitivity": "Red"
           }
         },
         {
-          "range": [1, 24],
-          "name": "Color presets",
+          "dmxRange": [1, 24],
+          "type": "Effect",
+          "effectName": "Color presets",
           "switchChannels": {
             "Red / Color Presets / Program Speed / Sound Sensitivity": "Color Presets"
           }
         },
         {
-          "range": [25, 49],
-          "name": "Program 2: 7-color fading",
+          "dmxRange": [25, 49],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Program 2: 7-color",
           "switchChannels": {
             "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [50, 74],
-          "name": "Program 3: 3-color fading",
+          "dmxRange": [50, 74],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Program 3: 3-color",
           "switchChannels": {
             "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [75, 99],
-          "name": "Program 4: 7-color jumping change",
+          "dmxRange": [75, 99],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 4: 7-color",
           "switchChannels": {
             "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [100, 124],
-          "name": "Program 5: 3-color jumping change",
+          "dmxRange": [100, 124],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Program 5: 3-color",
           "switchChannels": {
             "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [125, 149],
-          "name": "Program 6: fantasy change 1",
+          "dmxRange": [125, 149],
+          "type": "Effect",
+          "effectName": "Program 6: fantasy change 1",
           "switchChannels": {
             "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [150, 174],
-          "name": "Program 7: fantasy change 2",
+          "dmxRange": [150, 174],
+          "type": "Effect",
+          "effectName": "Program 7: fantasy change 2",
           "switchChannels": {
             "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [175, 199],
-          "name": "Program 8: red fading",
+          "dmxRange": [175, 199],
+          "type": "Effect",
+          "effectName": "Program 8: red fading",
           "switchChannels": {
             "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [200, 224],
-          "name": "Program 9: green fading",
+          "dmxRange": [200, 224],
+          "type": "Effect",
+          "effectName": "Program 9: green fading",
           "switchChannels": {
             "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [225, 249],
-          "name": "Program 10: blue fading",
+          "dmxRange": [225, 249],
+          "type": "Effect",
+          "effectName": "Program 10: blue fading",
           "switchChannels": {
             "Red / Color Presets / Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [250, 255],
-          "name": "Sound control",
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true,
           "switchChannels": {
             "Red / Color Presets / Program Speed / Sound Sensitivity": "Sound Sensitivity"
           }
@@ -317,289 +359,356 @@
       ]
     },
     "ID Select": {
-      "type": "Maintenance",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "All IDs (1-66)"
+          "dmxRange": [0, 9],
+          "type": "Maintenance",
+          "comment": "All IDs (1-66)"
         },
         {
-          "range": [10, 19],
-          "name": "ID 1"
+          "dmxRange": [10, 19],
+          "type": "Maintenance",
+          "comment": "ID 1"
         },
         {
-          "range": [20, 29],
-          "name": "ID 2"
+          "dmxRange": [20, 29],
+          "type": "Maintenance",
+          "comment": "ID 2"
         },
         {
-          "range": [30, 39],
-          "name": "ID 3"
+          "dmxRange": [30, 39],
+          "type": "Maintenance",
+          "comment": "ID 3"
         },
         {
-          "range": [40, 49],
-          "name": "ID 4"
+          "dmxRange": [40, 49],
+          "type": "Maintenance",
+          "comment": "ID 4"
         },
         {
-          "range": [50, 59],
-          "name": "ID 5"
+          "dmxRange": [50, 59],
+          "type": "Maintenance",
+          "comment": "ID 5"
         },
         {
-          "range": [60, 69],
-          "name": "ID 6"
+          "dmxRange": [60, 69],
+          "type": "Maintenance",
+          "comment": "ID 6"
         },
         {
-          "range": [70, 79],
-          "name": "ID 7"
+          "dmxRange": [70, 79],
+          "type": "Maintenance",
+          "comment": "ID 7"
         },
         {
-          "range": [80, 89],
-          "name": "ID 8"
+          "dmxRange": [80, 89],
+          "type": "Maintenance",
+          "comment": "ID 8"
         },
         {
-          "range": [90, 99],
-          "name": "ID 9"
+          "dmxRange": [90, 99],
+          "type": "Maintenance",
+          "comment": "ID 9"
         },
         {
-          "range": [100, 109],
-          "name": "ID 10"
+          "dmxRange": [100, 109],
+          "type": "Maintenance",
+          "comment": "ID 10"
         },
         {
-          "range": [110, 119],
-          "name": "ID 11"
+          "dmxRange": [110, 119],
+          "type": "Maintenance",
+          "comment": "ID 11"
         },
         {
-          "range": [120, 129],
-          "name": "ID 12"
+          "dmxRange": [120, 129],
+          "type": "Maintenance",
+          "comment": "ID 12"
         },
         {
-          "range": [130, 139],
-          "name": "ID 13"
+          "dmxRange": [130, 139],
+          "type": "Maintenance",
+          "comment": "ID 13"
         },
         {
-          "range": [140, 149],
-          "name": "ID 14"
+          "dmxRange": [140, 149],
+          "type": "Maintenance",
+          "comment": "ID 14"
         },
         {
-          "range": [150, 159],
-          "name": "ID 15"
+          "dmxRange": [150, 159],
+          "type": "Maintenance",
+          "comment": "ID 15"
         },
         {
-          "range": [160, 169],
-          "name": "ID 16"
+          "dmxRange": [160, 169],
+          "type": "Maintenance",
+          "comment": "ID 16"
         },
         {
-          "range": [170, 179],
-          "name": "ID 17"
+          "dmxRange": [170, 179],
+          "type": "Maintenance",
+          "comment": "ID 17"
         },
         {
-          "range": [180, 189],
-          "name": "ID 18"
+          "dmxRange": [180, 189],
+          "type": "Maintenance",
+          "comment": "ID 18"
         },
         {
-          "range": [190, 199],
-          "name": "ID 19"
+          "dmxRange": [190, 199],
+          "type": "Maintenance",
+          "comment": "ID 19"
         },
         {
-          "range": [200, 209],
-          "name": "ID 20"
+          "dmxRange": [200, 209],
+          "type": "Maintenance",
+          "comment": "ID 20"
         },
         {
-          "range": [210, 210],
-          "name": "ID 21"
+          "dmxRange": [210, 210],
+          "type": "Maintenance",
+          "comment": "ID 21"
         },
         {
-          "range": [211, 211],
-          "name": "ID 22"
+          "dmxRange": [211, 211],
+          "type": "Maintenance",
+          "comment": "ID 22"
         },
         {
-          "range": [212, 212],
-          "name": "ID 23"
+          "dmxRange": [212, 212],
+          "type": "Maintenance",
+          "comment": "ID 23"
         },
         {
-          "range": [213, 213],
-          "name": "ID 24"
+          "dmxRange": [213, 213],
+          "type": "Maintenance",
+          "comment": "ID 24"
         },
         {
-          "range": [214, 214],
-          "name": "ID 25"
+          "dmxRange": [214, 214],
+          "type": "Maintenance",
+          "comment": "ID 25"
         },
         {
-          "range": [215, 215],
-          "name": "ID 26"
+          "dmxRange": [215, 215],
+          "type": "Maintenance",
+          "comment": "ID 26"
         },
         {
-          "range": [216, 216],
-          "name": "ID 27"
+          "dmxRange": [216, 216],
+          "type": "Maintenance",
+          "comment": "ID 27"
         },
         {
-          "range": [217, 217],
-          "name": "ID 28"
+          "dmxRange": [217, 217],
+          "type": "Maintenance",
+          "comment": "ID 28"
         },
         {
-          "range": [218, 218],
-          "name": "ID 29"
+          "dmxRange": [218, 218],
+          "type": "Maintenance",
+          "comment": "ID 29"
         },
         {
-          "range": [219, 219],
-          "name": "ID 30"
+          "dmxRange": [219, 219],
+          "type": "Maintenance",
+          "comment": "ID 30"
         },
         {
-          "range": [220, 220],
-          "name": "ID 31"
+          "dmxRange": [220, 220],
+          "type": "Maintenance",
+          "comment": "ID 31"
         },
         {
-          "range": [221, 221],
-          "name": "ID 32"
+          "dmxRange": [221, 221],
+          "type": "Maintenance",
+          "comment": "ID 32"
         },
         {
-          "range": [222, 222],
-          "name": "ID 33"
+          "dmxRange": [222, 222],
+          "type": "Maintenance",
+          "comment": "ID 33"
         },
         {
-          "range": [223, 223],
-          "name": "ID 34"
+          "dmxRange": [223, 223],
+          "type": "Maintenance",
+          "comment": "ID 34"
         },
         {
-          "range": [224, 224],
-          "name": "ID 35"
+          "dmxRange": [224, 224],
+          "type": "Maintenance",
+          "comment": "ID 35"
         },
         {
-          "range": [225, 225],
-          "name": "ID 36"
+          "dmxRange": [225, 225],
+          "type": "Maintenance",
+          "comment": "ID 36"
         },
         {
-          "range": [226, 226],
-          "name": "ID 37"
+          "dmxRange": [226, 226],
+          "type": "Maintenance",
+          "comment": "ID 37"
         },
         {
-          "range": [227, 227],
-          "name": "ID 38"
+          "dmxRange": [227, 227],
+          "type": "Maintenance",
+          "comment": "ID 38"
         },
         {
-          "range": [228, 228],
-          "name": "ID 39"
+          "dmxRange": [228, 228],
+          "type": "Maintenance",
+          "comment": "ID 39"
         },
         {
-          "range": [229, 229],
-          "name": "ID 40"
+          "dmxRange": [229, 229],
+          "type": "Maintenance",
+          "comment": "ID 40"
         },
         {
-          "range": [230, 230],
-          "name": "ID 41"
+          "dmxRange": [230, 230],
+          "type": "Maintenance",
+          "comment": "ID 41"
         },
         {
-          "range": [231, 231],
-          "name": "ID 42"
+          "dmxRange": [231, 231],
+          "type": "Maintenance",
+          "comment": "ID 42"
         },
         {
-          "range": [232, 232],
-          "name": "ID 43"
+          "dmxRange": [232, 232],
+          "type": "Maintenance",
+          "comment": "ID 43"
         },
         {
-          "range": [233, 233],
-          "name": "ID 44"
+          "dmxRange": [233, 233],
+          "type": "Maintenance",
+          "comment": "ID 44"
         },
         {
-          "range": [234, 234],
-          "name": "ID 45"
+          "dmxRange": [234, 234],
+          "type": "Maintenance",
+          "comment": "ID 45"
         },
         {
-          "range": [235, 235],
-          "name": "ID 46"
+          "dmxRange": [235, 235],
+          "type": "Maintenance",
+          "comment": "ID 46"
         },
         {
-          "range": [236, 236],
-          "name": "ID 47"
+          "dmxRange": [236, 236],
+          "type": "Maintenance",
+          "comment": "ID 47"
         },
         {
-          "range": [237, 237],
-          "name": "ID 48"
+          "dmxRange": [237, 237],
+          "type": "Maintenance",
+          "comment": "ID 48"
         },
         {
-          "range": [238, 238],
-          "name": "ID 49"
+          "dmxRange": [238, 238],
+          "type": "Maintenance",
+          "comment": "ID 49"
         },
         {
-          "range": [239, 239],
-          "name": "ID 50"
+          "dmxRange": [239, 239],
+          "type": "Maintenance",
+          "comment": "ID 50"
         },
         {
-          "range": [240, 240],
-          "name": "ID 51"
+          "dmxRange": [240, 240],
+          "type": "Maintenance",
+          "comment": "ID 51"
         },
         {
-          "range": [241, 241],
-          "name": "ID 52"
+          "dmxRange": [241, 241],
+          "type": "Maintenance",
+          "comment": "ID 52"
         },
         {
-          "range": [242, 242],
-          "name": "ID 53"
+          "dmxRange": [242, 242],
+          "type": "Maintenance",
+          "comment": "ID 53"
         },
         {
-          "range": [243, 243],
-          "name": "ID 54"
+          "dmxRange": [243, 243],
+          "type": "Maintenance",
+          "comment": "ID 54"
         },
         {
-          "range": [244, 244],
-          "name": "ID 55"
+          "dmxRange": [244, 244],
+          "type": "Maintenance",
+          "comment": "ID 55"
         },
         {
-          "range": [245, 245],
-          "name": "ID 56"
+          "dmxRange": [245, 245],
+          "type": "Maintenance",
+          "comment": "ID 56"
         },
         {
-          "range": [246, 246],
-          "name": "ID 57"
+          "dmxRange": [246, 246],
+          "type": "Maintenance",
+          "comment": "ID 57"
         },
         {
-          "range": [247, 247],
-          "name": "ID 58"
+          "dmxRange": [247, 247],
+          "type": "Maintenance",
+          "comment": "ID 58"
         },
         {
-          "range": [248, 248],
-          "name": "ID 59"
+          "dmxRange": [248, 248],
+          "type": "Maintenance",
+          "comment": "ID 59"
         },
         {
-          "range": [249, 249],
-          "name": "ID 60"
+          "dmxRange": [249, 249],
+          "type": "Maintenance",
+          "comment": "ID 60"
         },
         {
-          "range": [250, 250],
-          "name": "ID 61"
+          "dmxRange": [250, 250],
+          "type": "Maintenance",
+          "comment": "ID 61"
         },
         {
-          "range": [251, 251],
-          "name": "ID 62"
+          "dmxRange": [251, 251],
+          "type": "Maintenance",
+          "comment": "ID 62"
         },
         {
-          "range": [252, 252],
-          "name": "ID 63"
+          "dmxRange": [252, 252],
+          "type": "Maintenance",
+          "comment": "ID 63"
         },
         {
-          "range": [253, 253],
-          "name": "ID 64"
+          "dmxRange": [253, 253],
+          "type": "Maintenance",
+          "comment": "ID 64"
         },
         {
-          "range": [254, 254],
-          "name": "ID 65"
+          "dmxRange": [254, 254],
+          "type": "Maintenance",
+          "comment": "ID 65"
         },
         {
-          "range": [255, 255],
-          "name": "ID 66"
+          "dmxRange": [255, 255],
+          "type": "Maintenance",
+          "comment": "ID 66"
         }
       ]
     },
     "Dimmer Delay": {
-      "type": "Maintenance",
       "capabilities": [
         {
-          "range": [0, 250],
-          "name": "Instant"
+          "dmxRange": [0, 250],
+          "type": "Maintenance",
+          "comment": "Instant"
         },
         {
-          "range": [251, 255],
-          "name": "Delayed"
+          "dmxRange": [251, 255],
+          "type": "Maintenance",
+          "comment": "Delayed"
         }
       ]
     }
