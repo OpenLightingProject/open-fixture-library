@@ -286,9 +286,8 @@
         },
         {
           "dmxRange": [172, 214],
-          "type": "Effect",
-          "effectName": "Lightning",
-          "helpWanted": "Should this be a shutterEffect?"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning"
         },
         {
           "dmxRange": [215, 240],
