@@ -166,7 +166,7 @@ ${indentation}"comment": "${comment}"`;
   channels = channels.replace(/( {8}| {10})"type": "(?:Strobe|Shutter)"/g, `$1"type": "ShutterStrobe",\n$1"shutterEffect": "Strobe"`);
 
   // recognize Nothing capabilities
-  channels = channels.replace(/( {8}| {10})"type": "[^"]+",\n\1"comment": "(?:[Nn]othing|[Nn]o [Ff]unction|[Uu]nused|[Nn]ot [Uused]|[Ee]mpty)"/g, `$1"type": "Nothing"`);
+  channels = channels.replace(/( {8}| {10})"type": "[^"]+",\n\1"comment": "(?:[Nn]othing|[Nn]o [Ff]unction|[Uu]nused|[Nn]ot [Uu]sed|[Ee]mpty)"/g, `$1"type": "Nothing"`);
 
   return `  "${channelsType}": {\n${channels}\n  }`;
 }
