@@ -147,13 +147,26 @@ ${indentation}}`;
   });
 
   // recognize speed properties
-  channels = channels.replace(/( {8}| {10})"comment": "([^"]+)( (?:counter)?clockwise| C?CW)? (slow|fast) ?(?:-|to) ?(fast|slow)"/g, (match, indentation, comment, direction, start, end) => {
+  channels = channels.replace(/( {8}| {10})"comment": "([^"]+?)( (?:counter)?clockwise| C?CW)? (slow|fast|\d+|\d+ ?Hz) ?(?:-|to) ?(fast|slow|\d+ ?Hz)"/g, (match, indentation, comment, direction, start, end) => {
     const directionStr = direction ? (direction === `clockwise` || direction === `CW` ? ` CW` : ` CCW`) : ``;
+
+    const startNumber = parseFloat(start);
+    const endNumber = parseFloat(end);
+    if (!isNaN(startNumber) && !isNaN(endNumber)) {
+      start = `${startNumber}Hz`;
+      end = `${endNumber}Hz`;
+    }
 
     return `${indentation}"speedStart": "${start}${directionStr}",
 ${indentation}"speedEnd": "${end}${directionStr}",
 ${indentation}"comment": "${comment}"`;
   });
+
+  // add shutterEffect to ShutterStrobe capabilities
+  channels = channels.replace(/( {8}| {10})"type": "Strobe"/g, `$1"type": "ShutterStrobe",\n$1"shutterEffect": "Strobe"`);
+
+  // recognize Nothing capabilities
+  channels = channels.replace(/( {8}| {10})"type": "[^"]+",\n\1"comment": "(?:[Nn]othing|[Nn]o [Ff]unction|[Uu]nused|[Ee]mpty)"/g, `$1"type": "Nothing"`);
 
   return `  "${channelsType}": {\n${channels}\n  }`;
 }
