@@ -324,7 +324,7 @@
         {
           "dmxRange": [128, 142],
           "type": "IrisEffect",
-          "comment": "Periodic opening pulse",
+          "effectName": "Periodic opening pulse",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -336,7 +336,7 @@
         {
           "dmxRange": [144, 158],
           "type": "IrisEffect",
-          "comment": "Periodic closing pulse",
+          "effectName": "Periodic closing pulse",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -348,7 +348,7 @@
         {
           "dmxRange": [160, 174],
           "type": "IrisEffect",
-          "comment": "Periodic snap open / ramp shut",
+          "effectName": "Periodic snap open / ramp shut",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -360,7 +360,7 @@
         {
           "dmxRange": [176, 190],
           "type": "IrisEffect",
-          "comment": "Periodic ramp open / snap shut",
+          "effectName": "Periodic ramp open / snap shut",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -372,7 +372,7 @@
         {
           "dmxRange": [192, 206],
           "type": "IrisEffect",
-          "comment": "Random opening pulse",
+          "effectName": "Random opening pulse",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -384,7 +384,7 @@
         {
           "dmxRange": [208, 222],
           "type": "IrisEffect",
-          "comment": "Random closing pulse",
+          "effectName": "Random closing pulse",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -396,7 +396,7 @@
         {
           "dmxRange": [224, 238],
           "type": "IrisEffect",
-          "comment": "Random snap open / ramp shut",
+          "effectName": "Random snap open / ramp shut",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -408,7 +408,7 @@
         {
           "dmxRange": [240, 254],
           "type": "IrisEffect",
-          "comment": "Random ramp open / snap shut",
+          "effectName": "Random ramp open / snap shut",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -822,7 +822,7 @@
         {
           "dmxRange": [128, 142],
           "type": "FrostEffect",
-          "comment": "Periodic opening pulse",
+          "effectName": "Periodic opening pulse",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -834,7 +834,7 @@
         {
           "dmxRange": [144, 158],
           "type": "FrostEffect",
-          "comment": "Periodic closing pulse",
+          "effectName": "Periodic closing pulse",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -846,7 +846,7 @@
         {
           "dmxRange": [160, 174],
           "type": "FrostEffect",
-          "comment": "Periodic ramp in / snap out",
+          "effectName": "Periodic ramp in / snap out",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -858,7 +858,7 @@
         {
           "dmxRange": [176, 190],
           "type": "FrostEffect",
-          "comment": "Periodic snap in / ramp out",
+          "effectName": "Periodic snap in / ramp out",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -870,7 +870,7 @@
         {
           "dmxRange": [192, 206],
           "type": "FrostEffect",
-          "comment": "Random opening pulse",
+          "effectName": "Random opening pulse",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -882,7 +882,7 @@
         {
           "dmxRange": [208, 222],
           "type": "FrostEffect",
-          "comment": "Random closing pulse",
+          "effectName": "Random closing pulse",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -894,7 +894,7 @@
         {
           "dmxRange": [224, 238],
           "type": "FrostEffect",
-          "comment": "Random ramp in / snap out",
+          "effectName": "Random ramp in / snap out",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -906,7 +906,7 @@
         {
           "dmxRange": [240, 254],
           "type": "FrostEffect",
-          "comment": "Random snap in / ramp out",
+          "effectName": "Random snap in / ramp out",
           "speedStart": "fast",
           "speedEnd": "slow"
         },

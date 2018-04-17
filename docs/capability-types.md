@@ -102,10 +102,12 @@ Required properties are _italic_, the entity is written in (parentheses).
 * Iris
   * _openPercent_ (IrisPercent)
 * IrisEffect
+  * _effectName_: Free text describing the effect
   * speed (Speed)
 * Frost
   * _frostIntensity_ (Percent)
 * FrostEffect
+  * _effectName_: Free text describing the effect
   * speed (Speed)
 * PrismOff
 * PrismOn

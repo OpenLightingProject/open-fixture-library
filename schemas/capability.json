@@ -786,10 +786,12 @@
         "menuClick": {},
         "switchChannels": {},
         "helpWanted": {},
+        "effectName": { "$ref": "definitions.json#/nonEmptyString" },
         "speed": { "$ref": "definitions.json#/entities/speed" },
         "speedStart": { "$ref": "definitions.json#/entities/speed" },
         "speedEnd": { "$ref": "definitions.json#/entities/speed" }
       },
+      "required": ["effectName"],
       "oneOf": [
         { "required": ["speed"] },
         { "required": ["speedStart"] }
@@ -830,10 +832,12 @@
         "menuClick": {},
         "switchChannels": {},
         "helpWanted": {},
+        "effectName": { "$ref": "definitions.json#/nonEmptyString" },
         "speed": { "$ref": "definitions.json#/entities/speed" },
         "speedStart": { "$ref": "definitions.json#/entities/speed" },
         "speedEnd": { "$ref": "definitions.json#/entities/speed" }
       },
+      "required": ["effectName"],
       "oneOf": [
         { "required": ["speed"] },
         { "required": ["speedStart"] }
