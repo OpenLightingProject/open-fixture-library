@@ -19,52 +19,72 @@
   },
   "availableChannels": {
     "Master Dimmr": {
-      "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Strobe": {
-      "type": "Strobe"
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "helpWanted": "At which DMX values is Strobe off, where is the speed control?"
+      }
     },
     "Effects": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 50],
-          "name": "Nothing"
+          "dmxRange": [0, 50],
+          "type": "Nothing"
         },
         {
-          "range": [51, 100],
-          "name": "Color Jump"
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
         },
         {
-          "range": [101, 150],
-          "name": "Color Fade"
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
         },
         {
-          "range": [151, 200],
-          "name": "Color Pulse"
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Color Pulse"
         },
         {
-          "range": [201, 255],
-          "name": "Sound Control"
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true
         }
       ]
     },
     "Effect Speed": {
-      "type": "Speed"
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Red": {
-      "type": "Single Color",
-      "color": "Red"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     }
   },
   "modes": [
