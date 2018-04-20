@@ -23,7 +23,7 @@
       <app-download-button :download="`${manKey}/${fixKey}`" />
     </header>
 
-    <section v-if="redirect" class="card">
+    <section v-if="redirect" class="card yellow">
       Redirected from <code>{{ redirect.from }}</code>: {{ redirect.reason }}
     </section>
 
