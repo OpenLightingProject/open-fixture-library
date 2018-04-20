@@ -23,6 +23,10 @@
       <app-download-button :download="`${manKey}/${fixKey}`" />
     </header>
 
+    <section v-if="redirect" class="card">
+      Redirected from <code>{{ redirect.from }}</code>: {{ redirect.reason }}
+    </section>
+
     <section class="fixture-info card">
 
       <section class="categories">
@@ -148,16 +152,38 @@ export default {
   validate({ params }) {
     return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;
   },
-  async asyncData({ params, app }) {
+  async asyncData({ params, query, app, redirect }) {
     const manKey = params.manufacturerKey;
     const fixKey = params.fixtureKey;
 
+    const redirectTo = register.filesystem[`${manKey}/${fixKey}`].redirectTo;
+    if (redirectTo) {
+      redirect(301, `/${redirectTo}?redirectFrom=${manKey}/${fixKey}`);
+      return {};
+    }
+
     const fixtureJson = await app.$axios.$get(`/${manKey}/${fixKey}.json`);
+
+    let redirectObj = null;
+    if (query.redirectFrom) {
+      const redirectJson = await app.$axios.$get(`/${query.redirectFrom}.json`);
+
+      const reasonExplanations = {
+        FixtureRenamed: `The fixture was renamed by the manufacturer.`,
+        SameAsDifferentBrand: `The fixture is the same but sold under different brands / names.`
+      };
+
+      redirectObj = {
+        from: query.redirectFrom,
+        reason: reasonExplanations[redirectJson.reason]
+      };
+    }
 
     return {
       manKey,
       fixKey,
-      fixtureJson
+      fixtureJson,
+      redirect: redirectObj
     };
   },
   computed: {
