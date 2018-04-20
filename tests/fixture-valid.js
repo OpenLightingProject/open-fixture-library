@@ -2,6 +2,7 @@ const util = require(`util`);
 const Ajv = require(`ajv`);
 
 const fixtureSchema = require(`../schemas/dereferenced/fixture.json`);
+const fixtureRedirectSchema = require(`../schemas/dereferenced/fixture-redirect.json`);
 
 const {
   Channel,
@@ -44,6 +45,23 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
   const modeNames = new Set();
   /** @type {Set<string>} */
   const modeShortNames = new Set();
+
+  if (!(`$schema` in fixtureJson)) {
+    result.errors.push(module.exports.getErrorString(`File does not contain '$schema' property.`));
+    return result;
+  }
+
+  if (fixtureJson.$schema.endsWith(`/fixture-redirect.json`)) {
+    const validate = (new Ajv()).compile(fixtureRedirectSchema);
+    const valid = validate(fixtureJson);
+
+    if (!valid) {
+      result.errors.push(module.exports.getErrorString(`File does not match schema.`, validate.errors));
+    }
+
+    result.name = `${manKey}/${fixKey}.json (redirect)`;
+    return result;
+  }
 
 
   const validate = (new Ajv()).compile(fixtureSchema);
