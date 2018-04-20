@@ -36,11 +36,27 @@ try {
       }
 
       for (const filename of fs.readdirSync(manDir).sort()) {
-        const ext = path.extname(filename);
-        if (ext === `.json`) {
-          const fixKey = path.basename(filename, ext);
-          const fixData = JSON.parse(fs.readFileSync(path.join(fixturePath, manKey, filename), `utf8`));
+        if (path.extname(filename) !== `.json`) {
+          continue;
+        }
 
+        const fixKey = path.basename(filename, `.json`);
+        const fixData = JSON.parse(fs.readFileSync(path.join(fixturePath, manKey, filename), `utf8`));
+        let isRedirect = false;
+        let redirectToData = null;
+
+        if (fixData.$schema.endsWith(`/fixture-redirect.json`)) {
+          isRedirect = true;
+          redirectToData = JSON.parse(fs.readFileSync(path.join(fixturePath, `${fixData.redirectTo}.json`), `utf8`));
+
+          // add to filesystem register
+          register.filesystem[`${manKey}/${fixKey}`] = {
+            name: fixData.name,
+            redirectTo: fixData.redirectTo,
+            reason: fixData.reason
+          };
+        }
+        else {
           let lastAction = `modified`;
           if (fixData.meta.lastModifyDate === fixData.meta.createDate) {
             lastAction = `created`;
@@ -55,30 +71,34 @@ try {
             lastModifyDate: fixData.meta.lastModifyDate,
             lastAction: lastAction
           };
+        }
 
+        if (!isRedirect || fixData.reason === `SameAsDifferentBrand`) {
           // add to manufacturer register
           register.manufacturers[manKey].push(fixKey);
 
           // add to category register
-          for (const cat of fixData.categories) {
+          for (const cat of fixData.categories || redirectToData.categories) {
             if (!(cat in categories)) {
               categories[cat] = [];
             }
             categories[cat].push(`${manKey}/${fixKey}`);
           }
+        }
 
-          // add to contributor register
+        // add to contributor register
+        if (!isRedirect) {
           for (const contributor of fixData.meta.authors) {
             if (!(contributor in contributors)) {
               contributors[contributor] = [];
             }
             contributors[contributor].push(`${manKey}/${fixKey}`);
           }
+        }
 
-          // add to rdm register
-          if (`rdm` in fixData) {
-            rdm[manufacturers[manKey].rdmId].models[fixData.rdm.modelId] = fixKey;
-          }
+        // add to rdm register
+        if (`rdm` in fixData) {
+          rdm[manufacturers[manKey].rdmId].models[fixData.rdm.modelId] = fixKey;
         }
       }
     }
@@ -112,7 +132,9 @@ const lastActionRankMapping = {
 };
 
 // add fixture list sorted by lastModifyDate
-register.lastUpdated = Object.keys(register.filesystem).sort((a, b) => {
+register.lastUpdated = Object.keys(register.filesystem).filter(
+  fixtureKey => `lastModifyDate` in register.filesystem[fixtureKey]
+).sort((a, b) => {
   const fixA = register.filesystem[a];
   const fixB = register.filesystem[b];
   const dateDelta = new Date(fixB.lastModifyDate) - new Date(fixA.lastModifyDate);
