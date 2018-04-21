@@ -1,6 +1,7 @@
 const util = require(`util`);
 const Ajv = require(`ajv`);
 
+const register = require(`../fixtures/register.json`);
 const fixtureSchema = require(`../schemas/dereferenced/fixture.json`);
 const fixtureRedirectSchema = require(`../schemas/dereferenced/fixture-redirect.json`);
 
@@ -57,6 +58,10 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
 
     if (!valid) {
       result.errors.push(module.exports.getErrorString(`File does not match schema.`, validate.errors));
+    }
+
+    if (!(fixtureJson.redirectTo in register.filesystem) || `redirectTo` in register.filesystem[fixtureJson.redirectTo]) {
+      result.errors.push(`'redirectTo' is not a valid fixture.`);
     }
 
     result.name = `${manKey}/${fixKey}.json (redirect)`;
