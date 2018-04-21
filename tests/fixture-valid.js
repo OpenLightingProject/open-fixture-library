@@ -13,6 +13,10 @@ const {
   SwitchingChannel
 } = require(`../lib/model.js`);
 
+const ajv = new Ajv();
+const schemaValidate = ajv.compile(fixtureSchema);
+const redirectSchemaValidate = ajv.compile(fixtureRedirectSchema);
+
 /**
  * Checks that a given fixture JSON object is valid.
  * @param {!string} manKey The manufacturer key.
@@ -21,13 +25,15 @@ const {
  * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurences are appended.
  * @returns {ResultData} The result object containing errors and warnings, if any.
  */
-module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
+function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   /**
    * @typedef ResultData
    * @type {object}
    * @property {string[]} errors
    * @property {string[]} warnings
    */
+
+  /** @type ResultData */
   const result = {
     errors: [],
     warnings: []
@@ -48,7 +54,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
   const modeShortNames = new Set();
 
   if (!(`$schema` in fixtureJson)) {
-    result.errors.push(module.exports.getErrorString(`File does not contain '$schema' property.`));
+    result.errors.push(getErrorString(`File does not contain '$schema' property.`));
     return result;
   }
 
@@ -58,10 +64,9 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
   }
 
 
-  const validate = (new Ajv()).compile(fixtureSchema);
-  const valid = validate(fixtureJson);
-  if (!valid) {
-    result.errors.push(module.exports.getErrorString(`File does not match schema.`, validate.errors));
+  const schemaValid = schemaValidate(fixtureJson);
+  if (!schemaValid) {
+    result.errors.push(getErrorString(`File does not match schema.`, schemaValidate.errors));
     return result;
   }
 
@@ -85,7 +90,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     checkRdm(manKey, uniqueValues);
   }
   catch (error) {
-    result.errors.push(module.exports.getErrorString(`File could not be imported into model.`, error));
+    result.errors.push(getErrorString(`File could not be imported into model.`, error));
   }
 
   return result;
@@ -96,11 +101,10 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
    * Checks that a fixture redirect file is valid and redirecting to a fixture correctly.
    */
   function checkFixtureRedirect() {
-    const validate = (new Ajv()).compile(fixtureRedirectSchema);
-    const valid = validate(fixtureJson);
+    const schemaValid = redirectSchemaValidate(fixtureJson);
 
-    if (!valid) {
-      result.errors.push(module.exports.getErrorString(`File does not match schema.`, validate.errors));
+    if (!schemaValid) {
+      result.errors.push(getErrorString(`File does not match schema.`, redirectSchemaValidate.errors));
     }
 
     if (!(fixtureJson.redirectTo in register.filesystem) || `redirectTo` in register.filesystem[fixtureJson.redirectTo]) {
@@ -126,7 +130,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     if (!(manKey in uniqueValues.fixKeysInMan)) {
       uniqueValues.fixKeysInMan[manKey] = new Set();
     }
-    module.exports.checkUniqueness(
+    checkUniqueness(
       uniqueValues.fixKeysInMan[manKey],
       fixture.key,
       result,
@@ -137,7 +141,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     if (!(manKey in uniqueValues.fixNamesInMan)) {
       uniqueValues.fixNamesInMan[manKey] = new Set();
     }
-    module.exports.checkUniqueness(
+    checkUniqueness(
       uniqueValues.fixNamesInMan[manKey],
       fixture.name,
       result,
@@ -145,7 +149,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     );
 
     // fixture.shortName
-    module.exports.checkUniqueness(
+    checkUniqueness(
       uniqueValues.fixShortNames,
       fixture.shortName,
       result,
@@ -262,7 +266,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     }
 
     for (const key of templateChannel.possibleResolvedChannelKeys.keys()) {
-      module.exports.checkUniqueness(
+      checkUniqueness(
         possibleMatrixChKeys,
         key,
         result,
@@ -279,7 +283,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     for (const channel of fixture.availableChannels) {
       // forbid coexistance of channels 'Red' and 'red'
       // for template channels, this is checked by possibleMatrixChKeys
-      module.exports.checkUniqueness(
+      checkUniqueness(
         definedChannelKeys,
         channel.key,
         result,
@@ -309,26 +313,26 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     checkTemplateVariables(channel.name, []);
 
     // Fine channels
-    for (const alias of channel.fineChannelAliases) {
+    channel.fineChannelAliases.forEach(alias => {
       checkTemplateVariables(alias, []);
-      module.exports.checkUniqueness(
+      checkUniqueness(
         definedChannelKeys,
         alias,
         result,
         `Fine channel alias '${alias}' in channel '${channel.key}' is already defined (maybe in another letter case).`
       );
-    }
+    });
 
     // Switching channels
-    for (const alias of channel.switchingChannelAliases) {
+    channel.switchingChannelAliases.forEach(alias => {
       checkTemplateVariables(alias, []);
-      module.exports.checkUniqueness(
+      checkUniqueness(
         definedChannelKeys,
         alias,
         result,
         `Switching channel alias '${alias}' in channel '${channel.key}' is already defined (maybe in another letter case).`
       );
-    }
+    });
 
     if (channel.hasDefaultValue && channel.defaultValue > channel.maxDmxBound) {
       result.errors.push(`defaultValue must be less or equal to ${channel.maxDmxBound} in channel '${channel.key}'.`);
@@ -438,13 +442,13 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
    * @param {!Mode} mode The mode to check.
    */
   function checkMode(mode) {
-    module.exports.checkUniqueness(
+    checkUniqueness(
       modeNames,
       mode.name,
       result,
       `Mode name '${mode.name}' is not unique (test is not case-sensitive).`
     );
-    module.exports.checkUniqueness(
+    checkUniqueness(
       modeShortNames,
       mode.shortName,
       result,
@@ -517,21 +521,21 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
           // simple uniqueness is already checked by schema, but this test also checks for pixelKeys in pixelGroups
           for (const pixelKey of matrixInsertBlock.repeatFor) {
             if (fixture.matrix.pixelKeys.includes(pixelKey)) {
-              module.exports.checkUniqueness(
+              checkUniqueness(
                 usedPixelKeys,
                 pixelKey,
                 `PixelKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
               );
             }
             else if (pixelKey in fixture.matrix.pixelGroups) {
-              module.exports.checkUniqueness(
+              checkUniqueness(
                 usedPixelKeys,
                 pixelKey,
                 `PixelGroupKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
               );
 
               for (const singlePixelKey of fixture.matrix.pixelGroups[pixelKey]) {
-                module.exports.checkUniqueness(
+                checkUniqueness(
                   usedPixelKeys,
                   singlePixelKey,
                   `PixelKey '${singlePixelKey}' in group '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
@@ -755,7 +759,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     if (!(manKey in uniqueValues.fixRdmIdsInMan)) {
       uniqueValues.fixRdmIdsInMan[manKey] = new Set();
     }
-    module.exports.checkUniqueness(
+    checkUniqueness(
       uniqueValues.fixRdmIdsInMan[manKey],
       `${fixture.rdm.modelId}`,
       result,
@@ -769,7 +773,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
     const rdmPersonalityIndices = new Set();
     for (const mode of fixture.modes) {
       if (mode.rdmPersonalityIndex !== null) {
-        module.exports.checkUniqueness(
+        checkUniqueness(
           rdmPersonalityIndices,
           `${mode.rdmPersonalityIndex}`,
           result,
@@ -797,7 +801,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
       }
     }
   }
-};
+}
 
 /**
  * If the Set already contains the given value, add an error. Test is not case-sensitive.
@@ -806,17 +810,17 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
  * @param {!ResultData} result The object to add the error message to (if any).
  * @param {!string} messageIfNotUnique If the value is not unique, add this message to errors.
  */
-module.exports.checkUniqueness = function checkUniqueness(set, value, result, messageIfNotUnique) {
+function checkUniqueness(set, value, result, messageIfNotUnique) {
   if (set.has(value.toLowerCase())) {
     result.errors.push(messageIfNotUnique);
   }
   set.add(value.toLowerCase());
-};
+}
 
 
-module.exports.getErrorString = function getErrorString(description, error) {
+function getErrorString(description, error) {
   return `${description} ${util.inspect(error, false, null)}`;
-};
+}
 
 function arraysEqual(a, b) {
   if (a === b) {
@@ -829,3 +833,10 @@ function arraysEqual(a, b) {
 
   return a.every((val, index) => val === b[index]);
 }
+
+
+module.exports = {
+  checkFixture,
+  checkUniqueness,
+  getErrorString
+};
