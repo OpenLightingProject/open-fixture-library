@@ -470,10 +470,15 @@
       "lastModifyDate": "2017-10-13",
       "lastAction": "created"
     },
+    "minuit-une/ivl-carre": {
+      "name": "IVL Carré",
+      "lastModifyDate": "2018-04-20",
+      "lastAction": "modified"
+    },
     "minuit-une/m-carre": {
       "name": "M-Carré",
-      "lastModifyDate": "2018-03-30",
-      "lastAction": "created"
+      "redirectTo": "minuit-une/ivl-carre",
+      "reason": "FixtureRenamed"
     },
     "orion/orcan2": {
       "name": "ORCAN2",
@@ -754,7 +759,7 @@
       "theone-atmospheric-generator"
     ],
     "minuit-une": [
-      "m-carre"
+      "ivl-carre"
     ],
     "orion": [
       "orcan2"
@@ -891,7 +896,7 @@
       "martin/rush-mh-2-wash",
       "martin/rush-mh-3-beam",
       "martin/rush-mh-7-hybrid",
-      "minuit-une/m-carre",
+      "minuit-une/ivl-carre",
       "orion/orcan2",
       "powerlighting/wash-84w",
       "prolights/diamond19",
@@ -927,7 +932,7 @@
     "Effect": [
       "american-dj/revo-burst",
       "ayra/tdc-triple-burst",
-      "minuit-une/m-carre",
+      "minuit-une/ivl-carre",
       "venue/tristrip3z"
     ],
     "Fan": [
@@ -957,7 +962,7 @@
       "eurolite/led-fe-1500",
       "glp/impression-laser",
       "jb-systems/twin-effect-laser",
-      "minuit-une/m-carre",
+      "minuit-une/ivl-carre",
       "showtec/dominator"
     ],
     "Matrix": [
@@ -1183,7 +1188,7 @@
       "adb/europe-105",
       "adb/warp-m",
       "generic/drgbw-fader",
-      "minuit-une/m-carre",
+      "minuit-une/ivl-carre",
       "prolights/diamond19"
     ],
     "Justin Hornsby": [
@@ -1297,11 +1302,11 @@
     }
   },
   "lastUpdated": [
+    "minuit-une/ivl-carre",
     "american-dj/dotz-par",
     "prolights/diamond19",
     "orion/orcan2",
     "powerlighting/wash-84w",
-    "minuit-une/m-carre",
     "adb/warp-m",
     "chauvet-dj/slimpar-q12-bt",
     "chauvet-dj/slimpar-t12-bt",

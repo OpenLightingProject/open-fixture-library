@@ -44,7 +44,9 @@ app.get(`/download.:format`, (request, response, next) => {
     return;
   }
 
-  const fixtures = Object.keys(register.filesystem).map(fixture => {
+  const fixtures = Object.keys(register.filesystem).filter(
+    fixKey => !(`redirectTo` in register.filesystem[fixKey]) || register.filesystem[fixKey].reason === `SameAsDifferentBrand`
+  ).map(fixture => {
     const [man, key] = fixture.split(`/`);
     return fixtureFromRepository(man, key);
   });

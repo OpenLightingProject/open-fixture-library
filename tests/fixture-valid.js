@@ -1,7 +1,9 @@
 const util = require(`util`);
 const Ajv = require(`ajv`);
 
+const register = require(`../fixtures/register.json`);
 const fixtureSchema = require(`../schemas/dereferenced/fixture.json`);
+const fixtureRedirectSchema = require(`../schemas/dereferenced/fixture-redirect.json`);
 const schemaProperties = require(`../lib/schema-properties.js`);
 
 const {
@@ -16,6 +18,7 @@ const {
 const ajv = new Ajv();
 ajv.addFormat(`color-hex`, ``); // do not crash when `format: color-hex` is used; actual validation is done with an additional pattern, the format is only added for VSCode's color preview
 const schemaValidate = ajv.compile(fixtureSchema);
+const redirectSchemaValidate = ajv.compile(fixtureRedirectSchema);
 
 /**
  * Checks that a given fixture JSON object is valid.
@@ -53,6 +56,16 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   /** @type {Set<string>} */
   const modeShortNames = new Set();
 
+  if (!(`$schema` in fixtureJson)) {
+    result.errors.push(getErrorString(`File does not contain '$schema' property.`));
+    return result;
+  }
+
+  if (fixtureJson.$schema.endsWith(`/fixture-redirect.json`)) {
+    checkFixtureRedirect();
+    return result;
+  }
+
 
   const schemaValid = schemaValidate(fixtureJson);
   if (!schemaValid) {
@@ -84,6 +97,25 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   }
 
   return result;
+
+
+
+  /**
+   * Checks that a fixture redirect file is valid and redirecting to a fixture correctly.
+   */
+  function checkFixtureRedirect() {
+    const schemaValid = redirectSchemaValidate(fixtureJson);
+
+    if (!schemaValid) {
+      result.errors.push(getErrorString(`File does not match schema.`, redirectSchemaValidate.errors));
+    }
+
+    if (!(fixtureJson.redirectTo in register.filesystem) || `redirectTo` in register.filesystem[fixtureJson.redirectTo]) {
+      result.errors.push(`'redirectTo' is not a valid fixture.`);
+    }
+
+    result.name = `${manKey}/${fixKey}.json (redirect)`;
+  }
 
   /**
    * Checks that fixture key, name and shortName are unique.
