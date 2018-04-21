@@ -8,7 +8,7 @@
         <h1>Open Fixture Library</h1>
       </div>
 
-      <app-download-button :download="register.lastUpdated.length" :big="true" />
+      <app-download-button :download="fixtureCount" :big="true" />
     </header>
 
 
@@ -98,8 +98,6 @@ export default {
   },
   data() {
     return {
-      register,
-
       lastUpdated: register.lastUpdated.slice(0, 5).map(
         fixtureKey => ({
           key: fixtureKey,
@@ -120,6 +118,9 @@ export default {
           };
         }
       ),
+      fixtureCount: Object.keys(register.filesystem).filter(
+        fixKey => !(`redirectTo` in register.filesystem[fixKey]) || register.filesystem[fixKey].reason === `SameAsDifferentBrand`
+      ).length,
 
       websiteStructuredData: {
         '@context': `http://schema.org`,

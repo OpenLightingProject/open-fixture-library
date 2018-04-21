@@ -19,6 +19,7 @@ This document gives a high-level overview of the concepts used in the JSON forma
     - [Matrix structure](#matrix-structure)
     - [Template channels](#template-channels)
   - [RDM (Remote Device Management) data](#rdm-remote-device-management-data)
+- [Fixture redirects](#fixture-redirects)
 
 
 ## Schema
@@ -214,9 +215,15 @@ Then, either use the resolved channel keys directly in a mode's channel list, or
   - For the above [matrix structure](#matrix-structure) example, this results in `["Inner ring", "Middle ring", "Outer ring"]`.
 
 
-
 ### RDM (Remote Device Management) data
 
 We link to [Open Lighting's RDM database](http://rdm.openlighting.org) if possible. Thus, we need to specify the RDM manufacturer ID per manufacturer and the RDM model ID per fixture. Additionally, each mode is mapped to the respective RDM personality via the `rdmPersonalityIndex` property. To ensure compatibility, we also track, for which RDM fixture software (firmware) version the mode indices are specified.
 
 If RDM manufacturer and model ID are known, we open the respective fixture page when going to `/rdm` (handled in [`main.js`](../main.js) and `views/pages/rdm-*.js`).
+
+
+## Fixture redirects
+
+Fixtures may be renamed by their manufacturers. If we would just update the fixture definition, links to its old fixture page would now lead to a *404 Not found* error. Instead, we add a fixture redirect JSON file (see [its schema](../schemas/fixture-redirect.json)) with the old manufacturer / fixture key, pointing to the updated fixture definition. See [Minuit Une M-Carré](../fixtures/minuit-une/m-carre.json) (and its [fixture page on OFL](https://open-fixture-library.org/minuit-une/m-carre)) as an example.
+
+Another use case for redirects are fixtures that are sold under different brands, but which are technically the same. We add them to the library only once and let redirects with other names point to it.
