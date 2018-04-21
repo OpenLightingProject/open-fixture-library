@@ -53,18 +53,7 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
   }
 
   if (fixtureJson.$schema.endsWith(`/fixture-redirect.json`)) {
-    const validate = (new Ajv()).compile(fixtureRedirectSchema);
-    const valid = validate(fixtureJson);
-
-    if (!valid) {
-      result.errors.push(module.exports.getErrorString(`File does not match schema.`, validate.errors));
-    }
-
-    if (!(fixtureJson.redirectTo in register.filesystem) || `redirectTo` in register.filesystem[fixtureJson.redirectTo]) {
-      result.errors.push(`'redirectTo' is not a valid fixture.`);
-    }
-
-    result.name = `${manKey}/${fixKey}.json (redirect)`;
+    checkFixtureRedirect();
     return result;
   }
 
@@ -100,6 +89,26 @@ module.exports = function checkFixture(manKey, fixKey, fixtureJson, uniqueValues
   }
 
   return result;
+
+
+
+  /**
+   * Checks that a fixture redirect file is valid and redirecting to a fixture correctly.
+   */
+  function checkFixtureRedirect() {
+    const validate = (new Ajv()).compile(fixtureRedirectSchema);
+    const valid = validate(fixtureJson);
+
+    if (!valid) {
+      result.errors.push(module.exports.getErrorString(`File does not match schema.`, validate.errors));
+    }
+
+    if (!(fixtureJson.redirectTo in register.filesystem) || `redirectTo` in register.filesystem[fixtureJson.redirectTo]) {
+      result.errors.push(`'redirectTo' is not a valid fixture.`);
+    }
+
+    result.name = `${manKey}/${fixKey}.json (redirect)`;
+  }
 
   /**
    * Checks that fixture key, name and shortName are unique.
