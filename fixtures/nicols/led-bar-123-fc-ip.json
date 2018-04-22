@@ -23,34 +23,13 @@
       "type": "Fixed"
     }
   },
+  "matrix": {
+    "pixelCount": [12, 1, 1],
+    "pixelGroups": {
+      "Master": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+    }
+  },
   "availableChannels": {
-    "Red": {
-      "type": "Single Color",
-      "color": "Red",
-      "defaultValue": 0,
-      "invert": false,
-      "constant": false,
-      "crossfade": true,
-      "precedence": "LTP"
-    },
-    "Green": {
-      "type": "Single Color",
-      "color": "Green",
-      "defaultValue": 0,
-      "invert": false,
-      "constant": false,
-      "crossfade": true,
-      "precedence": "LTP"
-    },
-    "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
-      "defaultValue": 0,
-      "invert": false,
-      "constant": false,
-      "crossfade": true,
-      "precedence": "LTP"
-    },
     "Dimmer": {
       "type": "Intensity",
       "defaultValue": 0,
@@ -240,27 +219,72 @@
       ]
     }
   },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0,
+      "invert": false,
+      "constant": false,
+      "crossfade": true,
+      "precedence": "LTP"
+    },
+    "Green $pixelKey": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0,
+      "invert": false,
+      "constant": false,
+      "crossfade": true,
+      "precedence": "LTP"
+    },
+    "Blue $pixelKey": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0,
+      "invert": false,
+      "constant": false,
+      "crossfade": true,
+      "precedence": "LTP"
+    }
+  }
   "modes": [
     {
       "name": "3-channel",
       "shortName": "3ch",
       "channels": [
-        "Red",
-        "Green",
-        "Blue"
+        "Red Master",
+        "Green Master",
+        "Blue Master"
       ]
     },
     {
       "name": "7-channel",
       "shortName": "7ch",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
         "Dimmer",
         "Macro",
         "Macro Speed",
         "Strobe"
+      ]
+    },
+    {
+      "name": "36-channel",
+      "shortName": "36ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     }
   ]
