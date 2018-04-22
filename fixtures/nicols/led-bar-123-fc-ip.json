@@ -1,15 +1,15 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED BAR 123 FC IP",
-  "categories": ["Matrix", "Color Changer", "Effect"],
+  "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Nils VAN ZUIJLEN"],
+    "authors": ["Nils Van Zuijlen"],
     "createDate": "2018-04-22",
     "lastModifyDate": "2018-04-22"
   },
   "manualURL": "http://sunlight-online.de/pdf/LEDBAR123FC.pdf",
   "physical": {
-    "dimensions": [114, 12, 12],
+    "dimensions": [114, 120, 120],
     "weight": 3.8,
     "power": 30,
     "DMXconnector": "3-pin XLR IP65",
@@ -69,7 +69,7 @@
       "capabilities": [
         {
           "range": [0, 6],
-          "name": "Dimmer"
+          "name": "No function"
         },
         {
           "range": [7, 13],
@@ -238,57 +238,12 @@
           "name": "Strobe"
         }
       ]
-    },
-    "Red 2": {
-      "type": "Single Color",
-      "color": "Red",
-      "defaultValue": 0,
-      "invert": false,
-      "constant": false,
-      "crossfade": true,
-      "precedence": "LTP"
-    },
-    "Red 1": {
-      "type": "Single Color",
-      "color": "Red",
-      "defaultValue": 0,
-      "invert": false,
-      "constant": false,
-      "crossfade": true,
-      "precedence": "LTP"
-    },
-    "Green 1": {
-      "type": "Single Color",
-      "color": "Green",
-      "defaultValue": 0,
-      "invert": false,
-      "constant": false,
-      "crossfade": true,
-      "precedence": "LTP"
-    },
-    "Blue 1": {
-      "type": "Single Color",
-      "color": "Blue",
-      "defaultValue": 0,
-      "invert": false,
-      "constant": false,
-      "crossfade": true,
-      "precedence": "LTP"
-    },
-    "Green 2": {
-      "type": "Single Color",
-      "color": "Green",
-      "defaultValue": 0,
-      "invert": false,
-      "constant": false,
-      "crossfade": true,
-      "precedence": "LTP"
     }
   },
   "modes": [
     {
-      "name": "3 channels",
-      "shortName": "03c",
+      "name": "3-channel",
+      "shortName": "3ch",
       "channels": [
         "Red",
         "Green",
@@ -296,8 +251,8 @@
       ]
     },
     {
-      "name": "7 channels",
-      "shortName": "07c",
+      "name": "7-channel",
+      "shortName": "7ch",
       "channels": [
         "Red",
         "Green",
