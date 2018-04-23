@@ -1,0 +1,291 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED BAR 123 FC IP",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Nils Van Zuijlen"],
+    "createDate": "2018-04-22",
+    "lastModifyDate": "2018-04-22"
+  },
+  "manualURL": "http://sunlight-online.de/pdf/LEDBAR123FC.pdf",
+  "physical": {
+    "dimensions": [114, 120, 120],
+    "weight": 3.8,
+    "power": 30,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "12×tri-3W LED"
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "matrix": {
+    "pixelCount": [12, 1, 1],
+    "pixelGroups": {
+      "Master": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "type": "Intensity",
+      "defaultValue": 0,
+      "invert": false,
+      "constant": false,
+      "crossfade": true,
+      "precedence": "LTP"
+    },
+    "Macro": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "invert": false,
+      "constant": false,
+      "crossfade": false,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 6],
+          "name": "No function"
+        },
+        {
+          "range": [7, 13],
+          "name": "Program 1"
+        },
+        {
+          "range": [14, 20],
+          "name": "Program 2"
+        },
+        {
+          "range": [21, 27],
+          "name": "Program 3"
+        },
+        {
+          "range": [28, 34],
+          "name": "Program 4"
+        },
+        {
+          "range": [35, 41],
+          "name": "Program 5"
+        },
+        {
+          "range": [42, 48],
+          "name": "Program 6"
+        },
+        {
+          "range": [49, 55],
+          "name": "Program 7"
+        },
+        {
+          "range": [56, 62],
+          "name": "Program 8"
+        },
+        {
+          "range": [63, 69],
+          "name": "Program 9"
+        },
+        {
+          "range": [70, 76],
+          "name": "Program 10"
+        },
+        {
+          "range": [77, 83],
+          "name": "Program 11"
+        },
+        {
+          "range": [84, 90],
+          "name": "Program 12"
+        },
+        {
+          "range": [91, 97],
+          "name": "Program 13"
+        },
+        {
+          "range": [98, 104],
+          "name": "Program 14"
+        },
+        {
+          "range": [105, 111],
+          "name": "Program 15"
+        },
+        {
+          "range": [112, 118],
+          "name": "Program 16"
+        },
+        {
+          "range": [119, 125],
+          "name": "Program 17"
+        },
+        {
+          "range": [126, 132],
+          "name": "Program 18"
+        },
+        {
+          "range": [133, 139],
+          "name": "Program 19"
+        },
+        {
+          "range": [140, 146],
+          "name": "Program 20"
+        },
+        {
+          "range": [147, 153],
+          "name": "Program 21"
+        },
+        {
+          "range": [154, 160],
+          "name": "Program 22"
+        },
+        {
+          "range": [161, 167],
+          "name": "Program 23"
+        },
+        {
+          "range": [168, 174],
+          "name": "Program 24"
+        },
+        {
+          "range": [175, 181],
+          "name": "Program 25"
+        },
+        {
+          "range": [182, 188],
+          "name": "Program 26"
+        },
+        {
+          "range": [189, 195],
+          "name": "Program 27"
+        },
+        {
+          "range": [196, 202],
+          "name": "Program 28"
+        },
+        {
+          "range": [203, 209],
+          "name": "Program 29"
+        },
+        {
+          "range": [210, 216],
+          "name": "Program 30"
+        },
+        {
+          "range": [217, 223],
+          "name": "Program 31"
+        },
+        {
+          "range": [224, 230],
+          "name": "Program 32"
+        },
+        {
+          "range": [231, 237],
+          "name": "Program 33"
+        },
+        {
+          "range": [238, 244],
+          "name": "Program 34"
+        },
+        {
+          "range": [245, 255],
+          "name": "Program 35"
+        }
+      ]
+    },
+    "Macro Speed": {
+      "type": "Speed",
+      "defaultValue": 0,
+      "invert": false,
+      "constant": false,
+      "crossfade": true,
+      "precedence": "LTP"
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "invert": false,
+      "constant": false,
+      "crossfade": true,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "No Function"
+        },
+        {
+          "range": [16, 255],
+          "name": "Strobe"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0,
+      "invert": false,
+      "constant": false,
+      "crossfade": true,
+      "precedence": "LTP"
+    },
+    "Green $pixelKey": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0,
+      "invert": false,
+      "constant": false,
+      "crossfade": true,
+      "precedence": "LTP"
+    },
+    "Blue $pixelKey": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0,
+      "invert": false,
+      "constant": false,
+      "crossfade": true,
+      "precedence": "LTP"
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Dimmer",
+        "Macro",
+        "Macro Speed",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "36-channel",
+      "shortName": "36ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    }
+  ]
+}
