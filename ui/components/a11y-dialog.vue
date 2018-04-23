@@ -52,6 +52,7 @@
   max-width: 90%;
   max-height: 90%;
   overflow: auto;
+  overscroll-behavior: contain;
   transition: transform 0.1s, -webkit-transform 0.1s;
 }
 

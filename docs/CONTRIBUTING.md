@@ -19,7 +19,7 @@ As soon as an issue is assigned to somebody, it means that this person is respon
 3. Navigate into your clone's directory (probably `open-fixture-library/`)
 4. Run `npm install`
 
-Now, everything's installed and should be working. To start the website server at [`http://localhost:5000/`](http://localhost:5000/), run `npm run watch` (see [UI docs](ui.md)).
+Now, everything's installed and should be working. To start the website server at [`http://localhost:5000/`](http://localhost:5000/), run `npm run dev` (see [UI docs](ui.md)).
 
 ## Where you can help
 

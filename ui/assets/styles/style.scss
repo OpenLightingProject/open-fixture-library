@@ -354,6 +354,10 @@ a.button.secondary:disabled {
     background: $blue-500;
   }
 
+  &.yellow {
+    background: $yellow-300;
+  }
+
   &.orange {
     background: $orange-500;
   }

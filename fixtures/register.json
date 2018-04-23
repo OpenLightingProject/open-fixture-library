@@ -35,6 +35,11 @@
       "lastModifyDate": "2017-11-17",
       "lastAction": "created"
     },
+    "american-dj/dotz-par": {
+      "name": "Dotz Par",
+      "lastModifyDate": "2018-04-09",
+      "lastAction": "created"
+    },
     "american-dj/fog-fury-jett-pro": {
       "name": "Fog Fury Jett Pro",
       "lastModifyDate": "2017-08-06",
@@ -470,10 +475,15 @@
       "lastModifyDate": "2017-10-13",
       "lastAction": "created"
     },
+    "minuit-une/ivl-carre": {
+      "name": "IVL Carré",
+      "lastModifyDate": "2018-04-20",
+      "lastAction": "modified"
+    },
     "minuit-une/m-carre": {
       "name": "M-Carré",
-      "lastModifyDate": "2018-03-30",
-      "lastAction": "created"
+      "redirectTo": "minuit-une/ivl-carre",
+      "reason": "FixtureRenamed"
     },
     "orion/orcan2": {
       "name": "ORCAN2",
@@ -621,6 +631,7 @@
     "american-dj": [
       "auto-spot-150",
       "boom-box-fx2",
+      "dotz-par",
       "fog-fury-jett-pro",
       "galaxian-3d",
       "quad-phase-hp",
@@ -756,7 +767,7 @@
       "theone-atmospheric-generator"
     ],
     "minuit-une": [
-      "m-carre"
+      "ivl-carre"
     ],
     "orion": [
       "orcan2"
@@ -806,6 +817,7 @@
   "categories": {
     "Blinder": [
       "adb/alc4",
+      "american-dj/dotz-par",
       "cameo/flash-matrix-250",
       "cameo/flat-pro-flood-ip65-tri",
       "cameo/thunder-wash-100-rgb",
@@ -822,6 +834,7 @@
       "adb/alc4",
       "american-dj/auto-spot-150",
       "american-dj/boom-box-fx2",
+      "american-dj/dotz-par",
       "american-dj/fog-fury-jett-pro",
       "american-dj/quad-phase-hp",
       "american-dj/revo-4-ir",
@@ -891,7 +904,7 @@
       "martin/rush-mh-2-wash",
       "martin/rush-mh-3-beam",
       "martin/rush-mh-7-hybrid",
-      "minuit-une/m-carre",
+      "minuit-une/ivl-carre",
       "orion/orcan2",
       "powerlighting/wash-84w",
       "prolights/diamond19",
@@ -925,7 +938,7 @@
     "Effect": [
       "american-dj/revo-burst",
       "ayra/tdc-triple-burst",
-      "minuit-une/m-carre",
+      "minuit-une/ivl-carre",
       "venue/tristrip3z"
     ],
     "Fan": [
@@ -955,7 +968,7 @@
       "eurolite/led-fe-1500",
       "glp/impression-laser",
       "jb-systems/twin-effect-laser",
-      "minuit-une/m-carre",
+      "minuit-une/ivl-carre",
       "showtec/dominator"
     ],
     "Matrix": [
@@ -1108,6 +1121,7 @@
       "abstract/twister-4",
       "american-dj/auto-spot-150",
       "american-dj/boom-box-fx2",
+      "american-dj/dotz-par",
       "american-dj/fog-fury-jett-pro",
       "american-dj/galaxian-3d",
       "american-dj/revo-4-ir",
@@ -1180,7 +1194,7 @@
       "adb/europe-105",
       "adb/warp-m",
       "generic/drgbw-fader",
-      "minuit-une/m-carre",
+      "minuit-une/ivl-carre",
       "prolights/diamond19"
     ],
     "Justin Hornsby": [
@@ -1210,6 +1224,9 @@
     ],
     "NiKoyes": [
       "robe/robin-600e-spot"
+    ],
+    "TAKU": [
+      "american-dj/dotz-par"
     ],
     "Thilo Billerbeck": [
       "lightmaxx/dj-scan-led"
@@ -1294,11 +1311,12 @@
     }
   },
   "lastUpdated": [
+    "minuit-une/ivl-carre",
+    "american-dj/dotz-par",
     "prolights/diamond19",
     "blizzard/puck-rgbaw",
     "orion/orcan2",
     "powerlighting/wash-84w",
-    "minuit-une/m-carre",
     "adb/warp-m",
     "chauvet-dj/slimpar-q12-bt",
     "chauvet-dj/slimpar-t12-bt",

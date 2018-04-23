@@ -1,0 +1,366 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Dotz Par",
+  "shortName": "Dotz Par",
+  "categories": ["Blinder", "Color Changer"],
+  "meta": {
+    "authors": ["TAKU", "Felix Edelmann"],
+    "createDate": "2018-04-09",
+    "lastModifyDate": "2018-04-09"
+  },
+  "manualURL": "http://cdb-cdn.adj.com/ItemRelatedFiles/8795/dotz_par_rev_12_14.pdf",
+  "physical": {
+    "dimensions": [114, 222, 209],
+    "weight": 2,
+    "power": 36,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "36W COB Tri LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 60]
+    },
+    "focus": {
+      "type": "Fixed",
+      "panMax": 60,
+      "tiltMax": 25
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "type": "Intensity",
+      "defaultValue": 0
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0
+    },
+    "Color Macros": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Nothing"
+        },
+        {
+          "range": [1, 7],
+          "name": "Bastard Amber"
+        },
+        {
+          "range": [8, 15],
+          "name": "Medium Amber"
+        },
+        {
+          "range": [16, 23],
+          "name": "Pale Amber Gold"
+        },
+        {
+          "range": [24, 31],
+          "name": "Gallo Gold"
+        },
+        {
+          "range": [32, 39],
+          "name": "Golden Amber"
+        },
+        {
+          "range": [40, 47],
+          "name": "Light Red"
+        },
+        {
+          "range": [48, 55],
+          "name": "Medium Red"
+        },
+        {
+          "range": [56, 63],
+          "name": "Medium Pink"
+        },
+        {
+          "range": [64, 71],
+          "name": "Broadway Pink"
+        },
+        {
+          "range": [72, 79],
+          "name": "Follies Pink"
+        },
+        {
+          "range": [80, 87],
+          "name": "Light Lavender"
+        },
+        {
+          "range": [88, 95],
+          "name": "Special Lavender"
+        },
+        {
+          "range": [96, 103],
+          "name": "Lavender"
+        },
+        {
+          "range": [104, 111],
+          "name": "Indigo"
+        },
+        {
+          "range": [112, 119],
+          "name": "Hemsley Blue"
+        },
+        {
+          "range": [120, 127],
+          "name": "Tipton Blue"
+        },
+        {
+          "range": [128, 135],
+          "name": "Light Steel Blue"
+        },
+        {
+          "range": [136, 143],
+          "name": "Light Sky Blue"
+        },
+        {
+          "range": [144, 151],
+          "name": "Sky Blue"
+        },
+        {
+          "range": [152, 159],
+          "name": "Brilliant Blue"
+        },
+        {
+          "range": [160, 167],
+          "name": "Light Green Blue"
+        },
+        {
+          "range": [168, 175],
+          "name": "Bright Blue"
+        },
+        {
+          "range": [176, 183],
+          "name": "Primary Blue"
+        },
+        {
+          "range": [184, 191],
+          "name": "Congo Blue"
+        },
+        {
+          "range": [192, 199],
+          "name": "Pale Yellow Green"
+        },
+        {
+          "range": [200, 207],
+          "name": "Moss Green"
+        },
+        {
+          "range": [208, 215],
+          "name": "Primary Green"
+        },
+        {
+          "range": [216, 223],
+          "name": "Double CTB"
+        },
+        {
+          "range": [224, 231],
+          "name": "Full Red"
+        },
+        {
+          "range": [232, 239],
+          "name": "Full Green"
+        },
+        {
+          "range": [240, 247],
+          "name": "Full Blue"
+        },
+        {
+          "range": [248, 255],
+          "name": "White"
+        }
+      ]
+    },
+    "Programs": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Nothing",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [1, 20],
+          "name": "Color fade/change",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [21, 40],
+          "name": "7 color change",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [41, 60],
+          "name": "7 color fade",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [61, 80],
+          "name": "3 color change",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [81, 100],
+          "name": "3 color fade",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "range": [101, 120],
+          "name": "Sound active color fade",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
+        },
+        {
+          "range": [121, 140],
+          "name": "Sound active color change",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
+        },
+        {
+          "range": [141, 255],
+          "name": "Nothing",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        }
+      ]
+    },
+    "Program Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow-fast"
+        }
+      ]
+    },
+    "Sound Sensitivity": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "sensitivity low-high"
+        }
+      ]
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "off"
+        },
+        {
+          "range": [1, 255],
+          "name": "slow-fast"
+        }
+      ]
+    },
+    "Dimmer Curves": {
+      "type": "Maintenance",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 41],
+          "name": "Standard"
+        },
+        {
+          "range": [42, 84],
+          "name": "Stage"
+        },
+        {
+          "range": [85, 127],
+          "name": "TV"
+        },
+        {
+          "range": [128, 170],
+          "name": "Architectural"
+        },
+        {
+          "range": [171, 213],
+          "name": "Theatre"
+        },
+        {
+          "range": [214, 255],
+          "name": "Default to unit curve setting"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Master Dimmer"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Master Dimmer",
+        "Dimmer Curves"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Master Dimmer",
+        "Color Macros",
+        "Programs",
+        "Program Speed / Sound Sensitivity",
+        "Strobe",
+        "Dimmer Curves"
+      ]
+    }
+  ]
+}
