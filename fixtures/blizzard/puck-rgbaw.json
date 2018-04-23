@@ -1,0 +1,323 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Puck RGBAW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["smokris"],
+    "createDate": "2018-04-23",
+    "lastModifyDate": "2018-04-23"
+  },
+  "comment": "The manual is very vague. See comments in PR #462 (https://github.com/OpenLightingProject/open-fixture-library/pull/462).",
+  "manualURL": "https://cdn.shopify.com/s/files/1/1741/5055/files/puck-rgbaw-couch-potato-series_manual_rev_c.pdf",
+  "physical": {
+    "dimensions": [210, 210, 63.5],
+    "weight": 1.8,
+    "power": 20,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "198x 10mm RGBWA LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [21, 32]
+    }
+  },
+  "availableChannels": {
+    "Dimmer Simple": {
+      "name": "Dimmer",
+      "type": "Intensity",
+      "defaultValue": 0
+    },
+    "Dimmer Extended": {
+      "name": "Dimmer",
+      "type": "Intensity",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "Off"
+        },
+        {
+          "range": [16, 255],
+          "name": "Dark - bright"
+        }
+      ]
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "No function"
+        },
+        {
+          "range": [16, 255],
+          "name": "Strobe slow-fast"
+        }
+      ]
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0
+    },
+    "Amber": {
+      "type": "Single Color",
+      "color": "Amber",
+      "defaultValue": 0
+    },
+    "White": {
+      "type": "Single Color",
+      "color": "White",
+      "defaultValue": 0
+    },
+    "Color Snap": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "off"
+        },
+        {
+          "range": [16, 255],
+          "name": "Color Snap on"
+        }
+      ]
+    },
+    "Color Snap Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow-fast"
+        }
+      ]
+    },
+    "Color Fade": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "off"
+        },
+        {
+          "range": [16, 255],
+          "name": "Color Fade on"
+        }
+      ]
+    },
+    "Color Fade Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow-fast"
+        }
+      ]
+    },
+    "Sound Control": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "off"
+        },
+        {
+          "range": [128, 255],
+          "name": "Sound Control on with sensitivity low-high"
+        }
+      ]
+    },
+    "Color Macros": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Blackout"
+        },
+        {
+          "range": [1, 4],
+          "name": "R"
+        },
+        {
+          "range": [5, 8],
+          "name": "G"
+        },
+        {
+          "range": [9, 12],
+          "name": "B"
+        },
+        {
+          "range": [13, 16],
+          "name": "A"
+        },
+        {
+          "range": [17, 20],
+          "name": "W"
+        },
+        {
+          "range": [21, 24],
+          "name": "RG"
+        },
+        {
+          "range": [25, 28],
+          "name": "RB"
+        },
+        {
+          "range": [29, 31],
+          "name": "RA"
+        },
+        {
+          "range": [32, 35],
+          "name": "RW"
+        },
+        {
+          "range": [36, 39],
+          "name": "GB"
+        },
+        {
+          "range": [40, 43],
+          "name": "GA"
+        },
+        {
+          "range": [44, 47],
+          "name": "GW"
+        },
+        {
+          "range": [48, 51],
+          "name": "BA"
+        },
+        {
+          "range": [52, 55],
+          "name": "BW"
+        },
+        {
+          "range": [56, 59],
+          "name": "AW"
+        },
+        {
+          "range": [60, 62],
+          "name": "BAW"
+        },
+        {
+          "range": [63, 66],
+          "name": "GAW"
+        },
+        {
+          "range": [67, 70],
+          "name": "GBW"
+        },
+        {
+          "range": [71, 74],
+          "name": "GBA"
+        },
+        {
+          "range": [75, 78],
+          "name": "RAW"
+        },
+        {
+          "range": [79, 82],
+          "name": "RBW"
+        },
+        {
+          "range": [83, 86],
+          "name": "RBA"
+        },
+        {
+          "range": [87, 90],
+          "name": "RGW"
+        },
+        {
+          "range": [91, 93],
+          "name": "RGA"
+        },
+        {
+          "range": [94, 97],
+          "name": "RGB"
+        },
+        {
+          "range": [98, 101],
+          "name": "RGBA"
+        },
+        {
+          "range": [102, 105],
+          "name": "RGBW"
+        },
+        {
+          "range": [106, 109],
+          "name": "RGAW"
+        },
+        {
+          "range": [110, 113],
+          "name": "RBAW"
+        },
+        {
+          "range": [114, 117],
+          "name": "GBAW"
+        },
+        {
+          "range": [118, 120],
+          "name": "RGBAW"
+        },
+        {
+          "range": [121, 255],
+          "name": "Chase slow-fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Dimmer Simple",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White",
+        "Color Snap",
+        "Color Snap Speed",
+        "Color Fade",
+        "Color Fade Speed",
+        "Sound Control"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Dimmer Extended",
+        "Strobe",
+        "Color Macros"
+      ]
+    }
+  ]
+}
