@@ -7,6 +7,7 @@
     "createDate": "2018-04-04",
     "lastModifyDate": "2018-04-04"
   },
+  "comment": "The manual is very vague. See comments in PR #462 (https://github.com/OpenLightingProject/open-fixture-library/pull/462).",
   "manualURL": "https://cdn.shopify.com/s/files/1/1741/5055/files/puck-rgbaw-couch-potato-series_manual_rev_c.pdf",
   "physical": {
     "dimensions": [210, 210, 63.5],
@@ -21,9 +22,25 @@
     }
   },
   "availableChannels": {
-    "Dimmer": {
+    "Dimmer Simple": {
+      "name": "Dimmer",
       "type": "Intensity",
       "defaultValue": 0
+    },
+    "Dimmer Extended": {
+      "name": "Dimmer",
+      "type": "Intensity",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "Off"
+        },
+        {
+          "range": [16, 255],
+          "name": "Dark - bright"
+        }
+      ]
     },
     "Strobe": {
       "type": "Strobe",
@@ -268,7 +285,7 @@
       "name": "12-channel",
       "shortName": "12ch",
       "channels": [
-        "Dimmer",
+        "Dimmer Simple",
         "Strobe",
         "Red",
         "Green",
@@ -297,7 +314,7 @@
       "name": "3-channel",
       "shortName": "3ch",
       "channels": [
-        "Dimmer",
+        "Dimmer Extended",
         "Strobe",
         "Color Macros"
       ]
