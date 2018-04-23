@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PARLED",
+  "shortName": "PARLED",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["ANTON"],
+    "createDate": "2018-04-23",
+    "lastModifyDate": "2018-04-23"
+  },
+  "availableChannels": {
+    "RED": {
+      "type": "Single Color",
+      "color": "Red",
+      "highlightValue": 255
+    },
+    "GREEN": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "BLUE": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "WHITE": {
+      "type": "Single Color",
+      "color": "White"
+    },
+    "AMBER": {
+      "type": "Single Color",
+      "color": "Amber"
+    },
+    "DIM": {
+      "type": "Intensity"
+    },
+    "STROB": {
+      "type": "Strobe"
+    },
+    "COLOR": {
+      "type": "Multi-Color"
+    }
+  },
+  "modes": [
+    {
+      "name": "PAR LED ",
+      "channels": [
+        "RED",
+        "GREEN",
+        "BLUE",
+        "WHITE",
+        "AMBER",
+        "DIM",
+        "STROB",
+        "COLOR"
+      ]
+    }
+  ]
+}
