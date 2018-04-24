@@ -16,10 +16,19 @@
   },
   "availableChannels": {
     "Pump": {
-      "type": "Fog"
+      "capability": {
+        "type": "FogOn",
+        "fogType": "Fog",
+        "fogOutputStart": "off",
+        "fogOutputEnd": "strong"
+      }
     },
     "Heat": {
-      "type": "Intensity"
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
     }
   },
   "modes": [
