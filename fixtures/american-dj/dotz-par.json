@@ -28,225 +28,276 @@
   },
   "availableChannels": {
     "Master Dimmer": {
-      "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "Color Macros": {
-      "type": "Multi-Color",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "Nothing"
+          "dmxRange": [0, 0],
+          "type": "Nothing"
         },
         {
-          "range": [1, 7],
-          "name": "Bastard Amber"
+          "dmxRange": [1, 7],
+          "type": "ColorPreset",
+          "comment": "Bastard Amber"
         },
         {
-          "range": [8, 15],
-          "name": "Medium Amber"
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "Medium Amber"
         },
         {
-          "range": [16, 23],
-          "name": "Pale Amber Gold"
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Pale Amber Gold"
         },
         {
-          "range": [24, 31],
-          "name": "Gallo Gold"
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Gallo Gold"
         },
         {
-          "range": [32, 39],
-          "name": "Golden Amber"
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Golden Amber"
         },
         {
-          "range": [40, 47],
-          "name": "Light Red"
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Light Red"
         },
         {
-          "range": [48, 55],
-          "name": "Medium Red"
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Medium Red"
         },
         {
-          "range": [56, 63],
-          "name": "Medium Pink"
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Medium Pink"
         },
         {
-          "range": [64, 71],
-          "name": "Broadway Pink"
+          "dmxRange": [64, 71],
+          "type": "ColorPreset",
+          "comment": "Broadway Pink"
         },
         {
-          "range": [72, 79],
-          "name": "Follies Pink"
+          "dmxRange": [72, 79],
+          "type": "ColorPreset",
+          "comment": "Follies Pink"
         },
         {
-          "range": [80, 87],
-          "name": "Light Lavender"
+          "dmxRange": [80, 87],
+          "type": "ColorPreset",
+          "comment": "Light Lavender"
         },
         {
-          "range": [88, 95],
-          "name": "Special Lavender"
+          "dmxRange": [88, 95],
+          "type": "ColorPreset",
+          "comment": "Special Lavender"
         },
         {
-          "range": [96, 103],
-          "name": "Lavender"
+          "dmxRange": [96, 103],
+          "type": "ColorPreset",
+          "comment": "Lavender"
         },
         {
-          "range": [104, 111],
-          "name": "Indigo"
+          "dmxRange": [104, 111],
+          "type": "ColorPreset",
+          "comment": "Indigo"
         },
         {
-          "range": [112, 119],
-          "name": "Hemsley Blue"
+          "dmxRange": [112, 119],
+          "type": "ColorPreset",
+          "comment": "Hemsley Blue"
         },
         {
-          "range": [120, 127],
-          "name": "Tipton Blue"
+          "dmxRange": [120, 127],
+          "type": "ColorPreset",
+          "comment": "Tipton Blue"
         },
         {
-          "range": [128, 135],
-          "name": "Light Steel Blue"
+          "dmxRange": [128, 135],
+          "type": "ColorPreset",
+          "comment": "Light Steel Blue"
         },
         {
-          "range": [136, 143],
-          "name": "Light Sky Blue"
+          "dmxRange": [136, 143],
+          "type": "ColorPreset",
+          "comment": "Light Sky Blue"
         },
         {
-          "range": [144, 151],
-          "name": "Sky Blue"
+          "dmxRange": [144, 151],
+          "type": "ColorPreset",
+          "comment": "Sky Blue"
         },
         {
-          "range": [152, 159],
-          "name": "Brilliant Blue"
+          "dmxRange": [152, 159],
+          "type": "ColorPreset",
+          "comment": "Brilliant Blue"
         },
         {
-          "range": [160, 167],
-          "name": "Light Green Blue"
+          "dmxRange": [160, 167],
+          "type": "ColorPreset",
+          "comment": "Light Green Blue"
         },
         {
-          "range": [168, 175],
-          "name": "Bright Blue"
+          "dmxRange": [168, 175],
+          "type": "ColorPreset",
+          "comment": "Bright Blue"
         },
         {
-          "range": [176, 183],
-          "name": "Primary Blue"
+          "dmxRange": [176, 183],
+          "type": "ColorPreset",
+          "comment": "Primary Blue"
         },
         {
-          "range": [184, 191],
-          "name": "Congo Blue"
+          "dmxRange": [184, 191],
+          "type": "ColorPreset",
+          "comment": "Congo Blue"
         },
         {
-          "range": [192, 199],
-          "name": "Pale Yellow Green"
+          "dmxRange": [192, 199],
+          "type": "ColorPreset",
+          "comment": "Pale Yellow Green"
         },
         {
-          "range": [200, 207],
-          "name": "Moss Green"
+          "dmxRange": [200, 207],
+          "type": "ColorPreset",
+          "comment": "Moss Green"
         },
         {
-          "range": [208, 215],
-          "name": "Primary Green"
+          "dmxRange": [208, 215],
+          "type": "ColorPreset",
+          "comment": "Primary Green"
         },
         {
-          "range": [216, 223],
-          "name": "Double CTB"
+          "dmxRange": [216, 223],
+          "type": "ColorPreset",
+          "comment": "Double CTB"
         },
         {
-          "range": [224, 231],
-          "name": "Full Red"
+          "dmxRange": [224, 231],
+          "type": "ColorPreset",
+          "comment": "Full Red"
         },
         {
-          "range": [232, 239],
-          "name": "Full Green"
+          "dmxRange": [232, 239],
+          "type": "ColorPreset",
+          "comment": "Full Green"
         },
         {
-          "range": [240, 247],
-          "name": "Full Blue"
+          "dmxRange": [240, 247],
+          "type": "ColorPreset",
+          "comment": "Full Blue"
         },
         {
-          "range": [248, 255],
-          "name": "White"
+          "dmxRange": [248, 255],
+          "type": "ColorPreset",
+          "comment": "White"
         }
       ]
     },
     "Programs": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "Nothing",
+          "dmxRange": [0, 0],
+          "type": "Nothing",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [1, 20],
-          "name": "Color fade/change",
+          "dmxRange": [1, 20],
+          "type": "Effect",
+          "effectName": "Color fade/change",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [21, 40],
-          "name": "7 color change",
+          "dmxRange": [21, 40],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "7 color change",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [41, 60],
-          "name": "7 color fade",
+          "dmxRange": [41, 60],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "7 color fade",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [61, 80],
-          "name": "3 color change",
+          "dmxRange": [61, 80],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "3 color change",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [81, 100],
-          "name": "3 color fade",
+          "dmxRange": [81, 100],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "3 color fade",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [101, 120],
-          "name": "Sound active color fade",
+          "dmxRange": [101, 120],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "soundControlled": true,
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Sound Sensitivity"
           }
         },
         {
-          "range": [121, 140],
-          "name": "Sound active color change",
+          "dmxRange": [121, 140],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true,
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Sound Sensitivity"
           }
         },
         {
-          "range": [141, 255],
-          "name": "Nothing",
+          "dmxRange": [141, 255],
+          "type": "Nothing",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
@@ -254,64 +305,67 @@
       ]
     },
     "Program Speed": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "slow-fast"
-        }
-      ]
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Sound Sensitivity": {
-      "type": "Intensity",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "sensitivity low-high"
-        }
-      ]
+      "capability": {
+        "type": "SoundSensitivity",
+        "sensitivityStart": "low",
+        "sensitivityEnd": "high"
+      }
     },
     "Strobe": {
-      "type": "Strobe",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "off"
+          "dmxRange": [0, 0],
+          "type": "Nothing"
         },
         {
-          "range": [1, 255],
-          "name": "slow-fast"
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Dimmer Curves": {
-      "type": "Maintenance",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 41],
-          "name": "Standard"
+          "dmxRange": [0, 41],
+          "type": "Maintenance",
+          "comment": "Standard"
         },
         {
-          "range": [42, 84],
-          "name": "Stage"
+          "dmxRange": [42, 84],
+          "type": "Maintenance",
+          "comment": "Stage"
         },
         {
-          "range": [85, 127],
-          "name": "TV"
+          "dmxRange": [85, 127],
+          "type": "Maintenance",
+          "comment": "TV"
         },
         {
-          "range": [128, 170],
-          "name": "Architectural"
+          "dmxRange": [128, 170],
+          "type": "Maintenance",
+          "comment": "Architectural"
         },
         {
-          "range": [171, 213],
-          "name": "Theatre"
+          "dmxRange": [171, 213],
+          "type": "Maintenance",
+          "comment": "Theatre"
         },
         {
-          "range": [214, 255],
-          "name": "Default to unit curve setting"
+          "dmxRange": [214, 255],
+          "type": "Maintenance",
+          "comment": "Default to unit curve setting"
         }
       ]
     }
