@@ -35,18 +35,9 @@
     "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
   },
   "colorString": {
-    "oneOf": [
-      {
-        "type": "string",
-        "pattern": "^#[0-9a-f]{6}$",
-        "format": "color-hex"
-      },
-      {
-        "$comment": "Color name",
-        "type": "string",
-        "pattern": "^[a-zA-Z -]+$"
-      }
-    ]
+    "type": "string",
+    "pattern": "^#[0-9a-f]{6}$",
+    "format": "color-hex"
   },
   "dmxValue": {
     "type": "integer",
