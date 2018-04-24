@@ -315,6 +315,10 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
     checkTemplateVariables(channel.name, []);
 
+    if (channel.type === `Unknown`) {
+      result.errors.push(`Channel '${channel.key}' has an unknown type.`);
+    }
+
     // Fine channels
     channel.fineChannelAliases.forEach(alias => {
       checkTemplateVariables(alias, []);
