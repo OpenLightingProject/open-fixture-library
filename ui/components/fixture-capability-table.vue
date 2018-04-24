@@ -24,16 +24,10 @@
           <td class="capability-range1"><code>{{ cap.dmxRangeEnd }}</code></td>
 
           <td
-            v-if="cap.color !== null && cap.color2 !== null"
-            :title="`color: ${cap.color} / ${cap.color2}`"
+            v-if="cap.colors !== null"
+            :title="`colors: ${cap.colors.join(`, `)}`"
             class="capability-color">
-            <app-svg :colors="[cap.color, cap.color2]" type="color-circle" />
-          </td>
-          <td
-            v-else-if="cap.color !== null"
-            :title="`color: ${cap.color}`"
-            class="capability-color">
-            <app-svg :colors="[cap.color]" type="color-circle" />
+            <app-svg :colors="cap.colors" type="color-circle" />
           </td>
           <td v-else />
 
@@ -139,7 +133,7 @@ export default {
     capabilities() {
       return this.channel.capabilities.map(
         cap => {
-          const range = cap.getRangeWithFineness(this.finenessInMode);
+          const dmxRange = cap.getDmxRangeWithFineness(this.finenessInMode);
           const switchChannels = [];
 
           for (const switchingChannelKey of Object.keys(cap.switchChannels)) {
@@ -155,10 +149,9 @@ export default {
           }
 
           return {
-            dmxRangeStart: range.start,
-            dmxRangeEnd: range.end,
-            color: cap.color ? cap.color.rgb().string() : null,
-            color2: cap.color2 ? cap.color2.rgb().string() : null,
+            dmxRangeStart: dmxRange.start,
+            dmxRangeEnd: dmxRange.end,
+            colors: cap._jsonObject.colors || null, // TODO: Use direct 'colors' property as soon as it's added to the model
             image: cap.image,
             name: cap.name,
             menuClick: cap.menuClick,

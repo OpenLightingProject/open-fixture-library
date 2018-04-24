@@ -86,7 +86,6 @@
         </section>
 
         <app-fixture-capability-table
-          v-if="unwrappedChannel.hasCapabilities"
           :channel="unwrappedChannel"
           :mode="mode"
           :fineness-in-mode="finenessInMode" />
