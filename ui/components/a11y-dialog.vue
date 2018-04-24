@@ -1,9 +1,9 @@
 <template>
-  <div class="dialog-container" aria-hidden="true">
-    <div class="dialog-overlay" tabindex="-1" @click="overlayClick" />
+  <div class="dialog-container" tabindex="-1" @click="overlayClick">
+    <div class="dialog-overlay" tabindex="-1" />
 
-    <div :aria-labelledby="id + '-dialog-title'" class="dialog card" role="dialog">
-      <div role="document">
+    <dialog :aria-labelledby="id + '-dialog-title'" class="card">
+      <div>
 
         <a
           v-if="cancellable"
@@ -14,20 +14,21 @@
           <app-svg name="close" />
         </a>
 
-        <h2 :id="`${id}-dialog-title`" tabindex="0">{{ title }}</h2>
+        <h2 :id="`${id}-dialog-title`" tabindex="-1" autofocus>{{ title }}</h2>
 
         <slot />
 
       </div>
-    </div>
+    </dialog>
   </div>
 </template>
 
 <style lang="scss" scoped>
 @import '~assets/styles/vars.scss';
 
-.dialog-container[aria-hidden="true"] {
-  visibility: hidden;
+.dialog-container[aria-hidden=true],
+[data-a11y-dialog-native] > :first-child {
+  display: none;
 }
 
 .dialog-overlay {
@@ -40,43 +41,47 @@
   right: 0;
 }
 
-.dialog {
+dialog {
   background-color: rgb(255, 255, 255);
+  border: 0;
   z-index: 1010;
   position: fixed;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%) scale(0.9);
-  transform: translate(-50%, -50%) scale(0.9);
+  margin: 0;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   min-width: 20rem;
   max-width: 90%;
   max-height: 90%;
   overflow: auto;
   overscroll-behavior: contain;
-  transition: transform 0.1s, -webkit-transform 0.1s;
-}
 
-/* fixes padding not being visible when scrollbar is present */
-.dialog.card {
-  padding-bottom: 0;
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.66);
+  }
 
-  & > div {
-    margin-bottom: 1rem;
+  &[open] {
+    display: block;
+  }
+
+  & h2:focus {
+    outline: none;
   }
 }
 
-.dialog-container:not([aria-hidden="true"]) .dialog {
-  -webkit-transform: translate(-50%, -50%) scale(1);
-  transform: translate(-50%, -50%) scale(1);
-}
+/* fixes padding not being visible when scrollbar is present */
+dialog.card {
+  padding: 0;
 
-.dialog h2:focus {
-  outline: none;
+  & > div {
+    padding: 1rem;
+  }
 }
 
 @media (max-width: $phone) {
   /* make dialogs cover the whole screen */
-  .dialog {
+  dialog {
     box-sizing: border-box;
     max-width: none;
     max-height: none;
@@ -88,7 +93,7 @@
 
 
 <script>
-import A11yDialog from 'a11y-dialog';
+const A11yDialog = process.browser ? require(`a11y-dialog`) : null;
 
 import svgVue from '~/components/svg.vue';
 
@@ -124,16 +129,18 @@ export default {
     shown: `update`
   },
   mounted() {
-    this.dialog = new A11yDialog(this.$el, `#header, #fixture-editor > form`);
+    if (A11yDialog) {
+      this.dialog = new A11yDialog(this.$el, `#header, #fixture-editor > form`);
 
-    this.dialog.on(`show`, node => {
-      node.querySelector(`h2`).focus();
-      this.$emit(`show`);
-    });
+      this.dialog.on(`show`, node => {
+        this.dialog.dialog.scrollTop = 0;
+        this.$emit(`show`);
+      });
 
-    this.dialog.on(`hide`, node => this.$emit(`hide`));
+      this.dialog.on(`hide`, node => this.$emit(`hide`));
 
-    this.update();
+      this.update();
+    }
   },
   methods: {
     update() {
@@ -145,13 +152,17 @@ export default {
       }
     },
     show() {
-      this.dialog.show();
+      if (this.dialog) {
+        this.dialog.show();
+      }
     },
     hide() {
-      this.dialog.hide();
+      if (this.dialog) {
+        this.dialog.hide();
+      }
     },
-    overlayClick() {
-      if (this.cancellable) {
+    overlayClick(event) {
+      if (this.cancellable && event.target.matches(`dialog, .dialog-overlay`)) {
         this.hide();
       }
     }
