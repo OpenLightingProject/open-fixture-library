@@ -141,8 +141,8 @@ function replaceChannels(match, channelsType, channels) {
     return `${indentation}{
 ${indentation}  ${range},
 ${indentation}  "type": "ColorPreset",
-${indentation}  "colors": ["${comment}"],
-${indentation}  "comment": "${color}${color2 ? ` ${color2}` : ``}"
+${indentation}  "colors": ["${color}"${color2 ? `, "${color2}"` : ``}],
+${indentation}  "comment": "${comment}"
 ${indentation}}`;
   });
 

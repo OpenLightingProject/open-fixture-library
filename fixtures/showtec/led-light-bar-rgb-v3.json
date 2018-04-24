@@ -104,7 +104,8 @@
         {
           "dmxRange": [10, 19],
           "type": "ColorPreset",
-          "colors": ["Red"],
+          "colors": ["#ff0000"],
+          "comment": "Red",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
@@ -112,7 +113,8 @@
         {
           "dmxRange": [20, 29],
           "type": "ColorPreset",
-          "colors": ["Yellow"],
+          "colors": ["#ffff00"],
+          "comment": "Yellow",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
@@ -120,7 +122,8 @@
         {
           "dmxRange": [30, 39],
           "type": "ColorPreset",
-          "colors": ["Green"],
+          "colors": ["#00ff00"],
+          "comment": "Green",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
@@ -128,7 +131,8 @@
         {
           "dmxRange": [40, 49],
           "type": "ColorPreset",
-          "colors": ["Cyan"],
+          "colors": ["#00ffff"],
+          "comment": "Cyan",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
@@ -136,7 +140,8 @@
         {
           "dmxRange": [50, 59],
           "type": "ColorPreset",
-          "colors": ["Blue"],
+          "colors": ["#0000ff"],
+          "comment": "Blue",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
@@ -144,7 +149,8 @@
         {
           "dmxRange": [60, 69],
           "type": "ColorPreset",
-          "colors": ["Purple"],
+          "colors": ["#ff00ff"],
+          "comment": "Purple",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
@@ -152,7 +158,8 @@
         {
           "dmxRange": [70, 79],
           "type": "ColorPreset",
-          "colors": ["White"],
+          "colors": ["#ffffff"],
+          "comment": "White",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }

@@ -61,109 +61,127 @@
           "dmxRange": [0, 6],
           "type": "ColorWheelIndex",
           "index": 0,
-          "colors": ["White"]
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
           "dmxRange": [7, 13],
           "type": "ColorWheelIndex",
           "index": 1,
-          "colors": ["Yellow"]
+          "colors": ["#fef201"],
+          "comment": "Yellow"
         },
         {
           "dmxRange": [14, 20],
           "type": "ColorWheelIndex",
           "index": 2,
-          "colors": ["Pink"]
+          "colors": ["#c600ce"],
+          "comment": "Pink"
         },
         {
           "dmxRange": [21, 27],
           "type": "ColorWheelIndex",
           "index": 3,
-          "colors": ["Green"]
+          "colors": ["#017f01"],
+          "comment": "Green"
         },
         {
           "dmxRange": [28, 34],
           "type": "ColorWheelIndex",
           "index": 4,
-          "colors": ["Red"]
+          "colors": ["#941e30"],
+          "comment": "Red"
         },
         {
           "dmxRange": [35, 41],
           "type": "ColorWheelIndex",
           "index": 5,
-          "colors": ["Lightblue"]
+          "colors": ["#0155e9"],
+          "comment": "Light Blue"
         },
         {
           "dmxRange": [42, 48],
           "type": "ColorWheelIndex",
           "index": 6,
-          "colors": ["Lightgreen"]
+          "colors": ["#01c702"],
+          "comment": "Light Green"
         },
         {
           "dmxRange": [49, 55],
           "type": "ColorWheelIndex",
           "index": 7,
-          "colors": ["Orange"]
+          "colors": ["#ca450c"],
+          "comment": "Orange"
         },
         {
           "dmxRange": [56, 64],
           "type": "ColorWheelIndex",
           "index": 8,
-          "colors": ["Darkblue"]
+          "colors": ["#2921d3"],
+          "comment": "Dark Blue"
         },
         {
           "dmxRange": [65, 71],
           "type": "ColorWheelIndex",
           "index": 0.5,
-          "colors": ["White", "Yellow"]
+          "colors": ["#ffffff", "#fef201"],
+          "comment": "Split Color White / Yellow"
         },
         {
           "dmxRange": [72, 78],
           "type": "ColorWheelIndex",
           "index": 1.5,
-          "colors": ["Yellow", "Pink"]
+          "colors": ["#fef201", "#c600ce"],
+          "comment": "Split Color Yellow / Pink"
         },
         {
           "dmxRange": [79, 85],
           "type": "ColorWheelIndex",
           "index": 2.5,
-          "colors": ["Pink", "Green"]
+          "colors": ["#c600ce", "#017f01"],
+          "comment": "Split Color Pink / Green"
         },
         {
           "dmxRange": [86, 92],
           "type": "ColorWheelIndex",
           "index": 3.5,
-          "colors": ["Green", "Red"]
+          "colors": ["#017f01", "#941e30"],
+          "comment": "Split Color Green / Red"
         },
         {
           "dmxRange": [93, 99],
           "type": "ColorWheelIndex",
           "index": 4.5,
-          "colors": ["Red", "Lightblue"]
+          "colors": ["#941e30", "#0155e9"],
+          "comment": "Split Color Red / Light Blue"
         },
         {
           "dmxRange": [100, 106],
           "type": "ColorWheelIndex",
           "index": 5.5,
-          "colors": ["Blue", "Green"]
+          "colors": ["#0155e9", "#01c702"],
+          "comment": "Split Color Light Blue / Light Green"
         },
         {
           "dmxRange": [107, 113],
           "type": "ColorWheelIndex",
           "index": 6.5,
-          "colors": ["Green", "Orange"]
+          "colors": ["#01c702", "#ca450c"],
+          "comment": "Split Color Light Green / Orange"
         },
         {
           "dmxRange": [114, 120],
           "type": "ColorWheelIndex",
           "index": 7.5,
-          "colors": ["Orange", "Darkblue"]
+          "colors": ["#ca450c", "#2921d3"],
+          "comment": "Split Color Orange / Dark Blue"
         },
         {
           "dmxRange": [121, 127],
           "type": "ColorWheelIndex",
           "index": 8.5,
-          "colors": ["Darkblue", "White"]
+          "colors": ["#2921d3", "#ffffff"],
+          "comment": "Split Color Dark Blue / White"
         },
         {
           "dmxRange": [128, 191],

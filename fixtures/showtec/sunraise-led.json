@@ -25,102 +25,122 @@
         {
           "dmxRange": [0, 9],
           "type": "ColorPreset",
-          "colors": ["Black"]
+          "colors": ["#000000"],
+          "comment": "Black"
         },
         {
           "dmxRange": [10, 19],
           "type": "ColorPreset",
-          "colors": ["Red"]
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
           "dmxRange": [20, 29],
           "type": "ColorPreset",
-          "colors": ["Green"]
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
           "dmxRange": [30, 39],
           "type": "ColorPreset",
-          "colors": ["Blue"]
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
           "dmxRange": [40, 49],
           "type": "ColorPreset",
-          "colors": ["White"]
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
           "dmxRange": [50, 59],
           "type": "ColorPreset",
-          "colors": ["Amber"]
+          "colors": ["#ffbf00"],
+          "comment": "Amber"
         },
         {
           "dmxRange": [60, 69],
           "type": "ColorPreset",
-          "colors": ["Red", "Green"]
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Red + Green"
         },
         {
           "dmxRange": [70, 79],
           "type": "ColorPreset",
-          "colors": ["Red", "Blue"]
+          "colors": ["#ff0000", "#0000ff"],
+          "comment": "Red + Blue"
         },
         {
           "dmxRange": [80, 89],
           "type": "ColorPreset",
-          "colors": ["Red", "White"]
+          "colors": ["#ff0000", "#ffffff"],
+          "comment": "Red + White"
         },
         {
           "dmxRange": [90, 99],
           "type": "ColorPreset",
-          "colors": ["Red", "Amber"]
+          "colors": ["#ff0000", "#ffbf00"],
+          "comment": "Red + Amber"
         },
         {
           "dmxRange": [100, 109],
           "type": "ColorPreset",
-          "colors": ["Green", "Blue"]
+          "colors": ["#00ff00", "#0000ff"],
+          "comment": "Green + Blue"
         },
         {
           "dmxRange": [110, 119],
           "type": "ColorPreset",
-          "colors": ["Green", "White"]
+          "colors": ["#00ff00", "#ffffff"],
+          "comment": "Green + White"
         },
         {
           "dmxRange": [120, 129],
           "type": "ColorPreset",
-          "colors": ["Green", "Amber"]
+          "colors": ["#00ff00", "#ffbf00"],
+          "comment": "Green + Amber"
         },
         {
           "dmxRange": [130, 139],
           "type": "ColorPreset",
-          "colors": ["Blue", "White"]
+          "colors": ["#0000ff", "#ffffff"],
+          "comment": "Blue + White"
         },
         {
           "dmxRange": [140, 149],
           "type": "ColorPreset",
-          "colors": ["Blue", "Amber"]
+          "colors": ["#0000ff", "#ffbf00"],
+          "comment": "Blue + Amber"
         },
         {
           "dmxRange": [150, 159],
           "type": "ColorPreset",
-          "colors": ["White", "Amber"]
+          "colors": ["#ffffff", "#ffbf00"],
+          "comment": "White + Amber"
         },
         {
           "dmxRange": [160, 169],
           "type": "ColorPreset",
-          "colors": ["Red", "Green", "Blue"]
+          "colors": ["#ff0000", "#00ff00", "#0000ff"],
+          "comment": "Red + Green + Blue"
         },
         {
           "dmxRange": [170, 179],
           "type": "ColorPreset",
-          "colors": ["Red", "Green", "Blue", "White"]
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff"],
+          "comment": "Red + Green + Blue + White"
         },
         {
           "dmxRange": [180, 189],
           "type": "ColorPreset",
-          "colors": ["Red", "Green", "Blue", "Amber"]
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffbf00"],
+          "comment": "Red + Green + Blue + Amber"
         },
         {
           "dmxRange": [190, 199],
           "type": "ColorPreset",
-          "colors": ["Red", "Green", "Blue", "White", "Amber"]
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff", "#ffbf00"],
+          "comment": "Red + Green + Blue + White + Amber"
         },
         {
           "dmxRange": [200, 229],

@@ -54,7 +54,8 @@
         {
           "dmxRange": [10, 19],
           "type": "ColorPreset",
-          "colors": ["Red"],
+          "colors": ["#ff0000"],
+          "comment": "Red",
           "switchChannels": {
             "Speed / Sound Sensitivity": "Speed"
           }
@@ -62,7 +63,8 @@
         {
           "dmxRange": [20, 29],
           "type": "ColorPreset",
-          "colors": ["Yellow"],
+          "colors": ["#ffff00"],
+          "comment": "Yellow",
           "switchChannels": {
             "Speed / Sound Sensitivity": "Speed"
           }
@@ -70,7 +72,8 @@
         {
           "dmxRange": [30, 39],
           "type": "ColorPreset",
-          "colors": ["Green"],
+          "colors": ["#00ff00"],
+          "comment": "Green",
           "switchChannels": {
             "Speed / Sound Sensitivity": "Speed"
           }
@@ -78,7 +81,8 @@
         {
           "dmxRange": [40, 49],
           "type": "ColorPreset",
-          "colors": ["Cyan"],
+          "colors": ["#00ffff"],
+          "comment": "Cyan",
           "switchChannels": {
             "Speed / Sound Sensitivity": "Speed"
           }
@@ -86,7 +90,8 @@
         {
           "dmxRange": [50, 59],
           "type": "ColorPreset",
-          "colors": ["Blue"],
+          "colors": ["#0000ff"],
+          "comment": "Blue",
           "switchChannels": {
             "Speed / Sound Sensitivity": "Speed"
           }
@@ -94,7 +99,8 @@
         {
           "dmxRange": [60, 69],
           "type": "ColorPreset",
-          "colors": ["Violet"],
+          "colors": ["#ff00ff"],
+          "comment": "Violet",
           "switchChannels": {
             "Speed / Sound Sensitivity": "Speed"
           }
@@ -102,7 +108,8 @@
         {
           "dmxRange": [70, 79],
           "type": "ColorPreset",
-          "colors": ["White"],
+          "colors": ["#ffffff"],
+          "comment": "White",
           "switchChannels": {
             "Speed / Sound Sensitivity": "Speed"
           }

@@ -216,117 +216,135 @@
         {
           "dmxRange": [1, 2],
           "type": "ColorPreset",
-          "colors": ["White"],
+          "colors": ["#ffa757"],
+          "comment": "White 2700K",
           "colorTemperature": "2700K"
         },
         {
           "dmxRange": [3, 3],
           "type": "ColorPreset",
-          "comment": "halogen",
-          "colors": ["White"],
+          "colors": ["#ffa757"],
+          "comment": "White 2700K (halogen)",
           "colorTemperature": "2700K"
         },
         {
           "dmxRange": [4, 5],
           "type": "ColorPreset",
-          "colors": ["White"],
+          "colors": ["#ffb87b"],
+          "comment": "White 3200K",
           "colorTemperature": "3200K"
         },
         {
           "dmxRange": [6, 6],
           "type": "ColorPreset",
-          "comment": "halogen",
-          "colors": ["White"],
+          "colors": ["#ffb87b"],
+          "comment": "White 3200K (halogen)",
           "colorTemperature": "3200K"
         },
         {
           "dmxRange": [7, 9],
           "type": "ColorPreset",
-          "colors": ["White"],
+          "colors": ["#ffd3af"],
+          "comment": "White 4200K",
           "colorTemperature": "4200K"
         },
         {
           "dmxRange": [10, 12],
           "type": "ColorPreset",
-          "colors": ["White"],
+          "colors": ["#ffefe1"],
+          "comment": "White 5600K",
           "colorTemperature": "5600K"
         },
         {
           "dmxRange": [13, 15],
           "type": "ColorPreset",
-          "colors": ["White"],
+          "colors": ["#dde6ff"],
+          "comment": "White 8000K",
           "colorTemperature": "8000K"
         },
         {
           "dmxRange": [16, 16],
           "type": "ColorPreset",
-          "colors": ["Blue"]
+          "colors": ["#007cc3"],
+          "comment": "Blue"
         },
         {
           "dmxRange": [17, 55],
           "type": "ColorPreset",
-          "colorsStart": ["Blue"],
-          "colorsEnd": ["Cyan"]
+          "colorsStart": ["#007cc3"],
+          "colorsEnd": ["#61afca"],
+          "comment": "Blue - Cyan"
         },
         {
           "dmxRange": [56, 56],
           "type": "ColorPreset",
-          "colors": ["Cyan"]
+          "colors": ["#61afca"],
+          "comment": "Cyan"
         },
         {
           "dmxRange": [57, 95],
           "type": "ColorPreset",
-          "colorsStart": ["Cyan"],
-          "colorsEnd": ["Green"]
+          "colorsStart": ["#61afca"],
+          "colorsEnd": ["#87c326"],
+          "comment": "Cyan - Green"
         },
         {
           "dmxRange": [96, 96],
           "type": "ColorPreset",
-          "colors": ["Green"]
+          "colors": ["#87c326"],
+          "comment": "Green"
         },
         {
           "dmxRange": [97, 134],
           "type": "ColorPreset",
-          "colorsStart": ["Green"],
-          "colorsEnd": ["Yellow"]
+          "colorsStart": ["#87c326"],
+          "colorsEnd": ["#ebd82a"],
+          "comment": "Green - Yellow"
         },
         {
           "dmxRange": [135, 135],
           "type": "ColorPreset",
-          "colors": ["Yellow"]
+          "colors": ["#ebd82a"],
+          "comment": "Yellow"
         },
         {
           "dmxRange": [136, 174],
           "type": "ColorPreset",
-          "colorsStart": ["Yellow"],
-          "colorsEnd": ["Red"]
+          "colorsStart": ["#ebd82a"],
+          "colorsEnd": ["#dc2c4e"],
+          "comment": "Yellow - Red"
         },
         {
           "dmxRange": [175, 175],
           "type": "ColorPreset",
-          "colors": ["Red"]
+          "colors": ["#dc2c4e"],
+          "comment": "Red"
         },
         {
           "dmxRange": [176, 214],
           "type": "ColorPreset",
-          "colorsStart": ["Red"],
-          "colorsEnd": ["Magenta"]
+          "colorsStart": ["#dc2c4e"],
+          "colorsEnd": ["#bb4e8b"],
+          "comment": "Red - Magenta"
         },
         {
           "dmxRange": [215, 215],
           "type": "ColorPreset",
-          "colors": ["Magenta"]
+          "colors": ["#bb4e8b"],
+          "comment": "Magenta"
         },
         {
           "dmxRange": [216, 246],
           "type": "ColorPreset",
-          "colorsStart": ["Magenta"],
-          "colorsEnd": ["Blue"]
+          "colorsStart": ["#bb4e8b"],
+          "colorsEnd": ["#0093dc"],
+          "comment": "Magenta - Blue"
         },
         {
           "dmxRange": [247, 247],
           "type": "ColorPreset",
-          "colors": ["Blue"]
+          "colors": ["#0093dc"],
+          "comment": "Blue"
         },
         {
           "dmxRange": [248, 248],
