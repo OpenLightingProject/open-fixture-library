@@ -24,19 +24,19 @@
           <td class="capability-range1"><code>{{ cap.dmxRangeEnd }}</code></td>
 
           <td
-            v-if="cap.colors !== null"
-            :title="`colors: ${cap.colors.join(`, `)}`"
+            v-if="cap.model.colors !== null"
+            :title="`colors: ${cap.model.colors.join(`, `)}`"
             class="capability-color">
-            <app-svg :colors="cap.colors" type="color-circle" />
+            <app-svg :colors="cap.model.colors" type="color-circle" />
           </td>
           <td v-else />
 
-          <td class="capability-name">{{ cap.name }}</td>
+          <td class="capability-name">{{ cap.model.name }}</td>
 
           <td
-            :title="cap.menuClick === `hidden` ? `this capability is hidden in quick menus` : `choosing this capability in a quick menu snaps to ${cap.menuClick} of capability`"
+            :title="cap.model.menuClick === `hidden` ? `this capability is hidden in quick menus` : `choosing this capability in a quick menu snaps to ${cap.model.menuClick} of capability`"
             class="capability-menuClick">
-            <app-svg :name="`capability-${cap.menuClick}`" />
+            <app-svg :name="`capability-${cap.model.menuClick}`" />
           </td>
         </tr>
 
@@ -149,12 +149,9 @@ export default {
           }
 
           return {
+            model: cap,
             dmxRangeStart: dmxRange.start,
             dmxRangeEnd: dmxRange.end,
-            colors: cap._jsonObject.colors || null, // TODO: Use direct 'colors' property as soon as it's added to the model
-            image: cap.image,
-            name: cap.name,
-            menuClick: cap.menuClick,
             switchChannels
           };
         }
