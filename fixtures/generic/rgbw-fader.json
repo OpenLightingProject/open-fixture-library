@@ -10,24 +10,32 @@
   },
   "availableChannels": {
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
-      "fineChannelAliases": ["Red fine", "Red fine^2"]
+      "fineChannelAliases": ["Red fine", "Red fine^2"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green",
-      "fineChannelAliases": ["Green fine", "Green fine^2"]
+      "fineChannelAliases": ["Green fine", "Green fine^2"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
-      "fineChannelAliases": ["Blue fine", "Blue fine^2"]
+      "fineChannelAliases": ["Blue fine", "Blue fine^2"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White": {
-      "type": "Single Color",
-      "color": "White",
-      "fineChannelAliases": ["White fine", "White fine^2"]
+      "fineChannelAliases": ["White fine", "White fine^2"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     }
   },
   "modes": [
