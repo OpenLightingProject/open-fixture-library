@@ -57,176 +57,176 @@
         {
           "dmxRange": [8, 15],
           "type": "ColorPreset",
-          "comment": "Red",
-          "colors": ["Red"]
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
           "dmxRange": [16, 23],
           "type": "ColorPreset",
-          "comment": "Green",
-          "colors": ["Green"]
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
           "dmxRange": [24, 31],
           "type": "ColorPreset",
-          "comment": "Blue+UV",
-          "colors": ["Blue", "UV"]
+          "colors": ["#0000ff", "#8800ff"],
+          "comment": "Blue+UV"
         },
         {
           "dmxRange": [32, 39],
           "type": "ColorPreset",
-          "comment": "Amber",
-          "colors": ["Amber"]
+          "colors": ["#ffbf00"],
+          "comment": "Amber"
         },
         {
           "dmxRange": [40, 47],
           "type": "ColorPreset",
-          "comment": "UV",
-          "colors": ["UV"]
+          "colors": ["#8800ff"],
+          "comment": "UV"
         },
         {
           "dmxRange": [48, 55],
           "type": "ColorPreset",
-          "comment": "Red+Blue+UV",
-          "colors": ["#ff00ff", "UV"]
+          "colors": ["#ff00ff", "#8800ff"],
+          "comment": "Red + Blue + UV"
         },
         {
           "dmxRange": [56, 63],
           "type": "ColorPreset",
-          "comment": "OuterGreen+Amber",
-          "colors": ["#92ff00"]
+          "colors": ["#92ff00"],
+          "comment": "OuterGreen + Amber"
         },
         {
           "dmxRange": [64, 71],
           "type": "ColorPreset",
-          "comment": "Red+UV",
-          "colors": ["Red", "UV"]
+          "colors": ["#ff0000", "#8800ff"],
+          "comment": "Red + UV"
         },
         {
           "dmxRange": [72, 79],
           "type": "ColorPreset",
-          "comment": "Blue+Amber",
-          "colors": ["#ffbfff"]
+          "colors": ["#ffbfff"],
+          "comment": "Blue + Amber"
         },
         {
           "dmxRange": [80, 87],
           "type": "ColorPreset",
-          "comment": "InnerGreen+Blue",
-          "colors": ["#00ffff"]
+          "colors": ["#00ffff"],
+          "comment": "InnerGreen + Blue"
         },
         {
           "dmxRange": [88, 95],
           "type": "ColorPreset",
-          "comment": "Red+InnerGreen",
-          "colors": ["#ffff00"]
+          "colors": ["#ffff00"],
+          "comment": "Red + InnerGreen"
         },
         {
           "dmxRange": [96, 103],
           "type": "ColorPreset",
-          "comment": "Red+InnerGreen+Blue",
-          "colors": ["#ffffff"]
+          "colors": ["#ffffff"],
+          "comment": "Red + InnerGreen + Blue"
         },
         {
           "dmxRange": [104, 111],
           "type": "ColorPreset",
-          "comment": "Colormix 1",
-          "colors": ["#84cf78"]
+          "colors": ["#84cf78"],
+          "comment": "Colormix 1"
         },
         {
           "dmxRange": [112, 119],
           "type": "ColorPreset",
-          "comment": "Colormix 2+UV",
-          "colors": ["#89ff00", "#30005a"]
+          "colors": ["#89ff00", "#30005a"],
+          "comment": "Colormix 2 + UV"
         },
         {
           "dmxRange": [120, 127],
           "type": "ColorPreset",
-          "comment": "Colormix 3+UV",
-          "colors": ["#6bfd00", "#6500be"]
+          "colors": ["#6bfd00", "#6500be"],
+          "comment": "Colormix 3 + UV"
         },
         {
           "dmxRange": [128, 135],
           "type": "ColorPreset",
-          "comment": "Colormix 4+UV",
-          "colors": ["#b98ce9", "#250046"]
+          "colors": ["#b98ce9", "#250046"],
+          "comment": "Colormix 4 + UV"
         },
         {
           "dmxRange": [136, 143],
           "type": "ColorPreset",
-          "comment": "Colormix 5+UV",
-          "colors": ["#ffc916", "#6b00c8"]
+          "colors": ["#ffc916", "#6b00c8"],
+          "comment": "Colormix 5 + UV"
         },
         {
           "dmxRange": [144, 151],
           "type": "ColorPreset",
-          "comment": "Colormix 6+UV",
-          "colors": ["#35ff00", "#500096"]
+          "colors": ["#35ff00", "#500096"],
+          "comment": "Colormix 6 + UV"
         },
         {
           "dmxRange": [152, 159],
           "type": "ColorPreset",
-          "comment": "Colormix 7+UV",
-          "colors": ["#00c8c8", "#6b00c8"]
+          "colors": ["#00c8c8", "#6b00c8"],
+          "comment": "Colormix 7 + UV"
         },
         {
           "dmxRange": [160, 167],
           "type": "ColorPreset",
-          "comment": "Colormix 8+UV",
-          "colors": ["#2d7db4", "#20003c"]
+          "colors": ["#2d7db4", "#20003c"],
+          "comment": "Colormix 8 + UV"
         },
         {
           "dmxRange": [168, 175],
           "type": "ColorPreset",
-          "comment": "Colormix 9",
-          "colors": ["#c8b1eb"]
+          "colors": ["#c8b1eb"],
+          "comment": "Colormix 9"
         },
         {
           "dmxRange": [176, 183],
           "type": "ColorPreset",
-          "comment": "Colormix 10+UV",
-          "colors": ["#c9ff1a", "#1d0037"]
+          "colors": ["#c9ff1a", "#1d0037"],
+          "comment": "Colormix 10 + UV"
         },
         {
           "dmxRange": [184, 191],
           "type": "ColorPreset",
-          "comment": "Colormix 11+UV",
-          "colors": ["#adff14", "#5b00aa"]
+          "colors": ["#adff14", "#5b00aa"],
+          "comment": "Colormix 11 + UV"
         },
         {
           "dmxRange": [192, 199],
           "type": "ColorPreset",
-          "comment": "Colormix 12+UV",
-          "colors": ["#86ff00", "#350064"]
+          "colors": ["#86ff00", "#350064"],
+          "comment": "Colormix 12 + UV"
         },
         {
           "dmxRange": [200, 207],
           "type": "ColorPreset",
-          "comment": "Colormix 13",
-          "colors": ["#ff8a00"]
+          "colors": ["#ff8a00"],
+          "comment": "Colormix 13"
         },
         {
           "dmxRange": [208, 215],
           "type": "ColorPreset",
-          "comment": "Colormix 14+UV",
-          "colors": ["#645096", "#8800ff"]
+          "colors": ["#645096", "#8800ff"],
+          "comment": "Colormix 14 + UV"
         },
         {
           "dmxRange": [216, 223],
           "type": "ColorPreset",
-          "comment": "Colormix 15",
-          "colors": ["#b4ff94"]
+          "colors": ["#b4ff94"],
+          "comment": "Colormix 15"
         },
         {
           "dmxRange": [224, 231],
           "type": "ColorPreset",
-          "comment": "Colormix 16+UV",
-          "colors": ["#becf50", "#7600de"]
+          "colors": ["#becf50", "#7600de"],
+          "comment": "Colormix 16 + UV"
         },
         {
           "dmxRange": [232, 239],
           "type": "ColorPreset",
-          "comment": "All on",
-          "colors": ["#ffffff", "UV"]
+          "colors": ["#ffffff", "#8800ff"],
+          "comment": "All on"
         },
         {
           "dmxRange": [240, 247],

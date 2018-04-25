@@ -112,109 +112,127 @@
           "dmxRange": [0, 6],
           "type": "ColorWheelIndex",
           "index": 0,
-          "colors": ["White"]
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
           "dmxRange": [7, 13],
           "type": "ColorWheelIndex",
           "index": 0.5,
-          "colors": ["White", "Yellow"]
+          "colors": ["#ffffff", "#ffff00"],
+          "comment": "Split White / Yellow"
         },
         {
           "dmxRange": [14, 20],
           "type": "ColorWheelIndex",
           "index": 1,
-          "colors": ["Yellow"]
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
         },
         {
           "dmxRange": [21, 27],
           "type": "ColorWheelIndex",
           "index": 1.5,
-          "colors": ["Yellow", "Orange"]
+          "colors": ["#ffff00", "#ff7f00"],
+          "comment": "Split Yellow / Orange"
         },
         {
           "dmxRange": [28, 34],
           "type": "ColorWheelIndex",
           "index": 2,
-          "colors": ["Orange"]
+          "colors": ["#ff7f00"],
+          "comment": "Orange"
         },
         {
           "dmxRange": [35, 41],
           "type": "ColorWheelIndex",
           "index": 2.5,
-          "colors": ["Orange", "Red"]
+          "colors": ["#ff7f00", "#ff0000"],
+          "comment": "Split Orange / Red"
         },
         {
           "dmxRange": [42, 48],
           "type": "ColorWheelIndex",
           "index": 3,
-          "colors": ["Red"]
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
           "dmxRange": [49, 55],
           "type": "ColorWheelIndex",
           "index": 3.5,
-          "colors": ["Red", "Blue"]
+          "colors": ["#ff0000", "#0000ff"],
+          "comment": "Split Red / Blue"
         },
         {
           "dmxRange": [56, 62],
           "type": "ColorWheelIndex",
           "index": 4,
-          "colors": ["Blue"]
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
           "dmxRange": [63, 69],
           "type": "ColorWheelIndex",
           "index": 4.5,
-          "colors": ["Blue", "Green"]
+          "colors": ["#0000ff", "#00ff00"],
+          "comment": "Split Blue / Green"
         },
         {
           "dmxRange": [70, 76],
           "type": "ColorWheelIndex",
           "index": 5,
-          "colors": ["Green"]
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
           "dmxRange": [77, 83],
           "type": "ColorWheelIndex",
           "index": 5.5,
-          "colors": ["Green", "Pink"]
+          "colors": ["#00ff00", "#ffc0cb"],
+          "comment": "Split Green / Pink"
         },
         {
           "dmxRange": [84, 90],
           "type": "ColorWheelIndex",
           "index": 6,
-          "colors": ["Pink"]
+          "colors": ["#ffc0cb"],
+          "comment": "Pink"
         },
         {
           "dmxRange": [91, 97],
           "type": "ColorWheelIndex",
           "index": 6.5,
-          "colors": ["Pink", "Turqouise"]
+          "colors": ["#ffc0cb", "#40e0d0"],
+          "comment": "Split Pink / Turqouise"
         },
         {
           "dmxRange": [98, 104],
           "type": "ColorWheelIndex",
           "index": 7,
-          "colors": ["Turqouise"]
+          "colors": ["#40e0d0"],
+          "comment": "Turqouise"
         },
         {
           "dmxRange": [105, 111],
           "type": "ColorWheelIndex",
           "index": 7.5,
-          "colors": ["Turqouise", "Purple"]
+          "colors": ["#40e0d0", "#9800ff"],
+          "comment": "Split Turqouise / Purple"
         },
         {
           "dmxRange": [112, 118],
           "type": "ColorWheelIndex",
           "index": 8,
-          "colors": ["Purple"]
+          "colors": ["#9800ff"],
+          "comment": "Purple"
         },
         {
           "dmxRange": [119, 127],
           "type": "ColorWheelIndex",
           "index": 8.5,
-          "colors": ["Purple", "White"]
+          "colors": ["#9800ff", "#ffffff"],
+          "comment": "Split Purple / White"
         },
         {
           "dmxRange": [128, 189],

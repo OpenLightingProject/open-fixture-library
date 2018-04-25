@@ -102,162 +102,194 @@
         {
           "dmxRange": [0, 9],
           "type": "ColorPreset",
-          "colors": ["Black"]
+          "colors": ["#000000"],
+          "comment": "Black"
         },
         {
           "dmxRange": [10, 14],
           "type": "ColorPreset",
-          "colors": ["Red"]
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
           "dmxRange": [15, 19],
           "type": "ColorPreset",
-          "colors": ["Green"]
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
           "dmxRange": [20, 24],
           "type": "ColorPreset",
-          "colors": ["Blue"]
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
           "dmxRange": [25, 29],
           "type": "ColorPreset",
-          "colors": ["Amber"]
+          "colors": ["#ffbf00"],
+          "comment": "Amber"
         },
         {
           "dmxRange": [30, 34],
           "type": "ColorPreset",
-          "colors": ["White"]
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
           "dmxRange": [35, 39],
           "type": "ColorPreset",
-          "colors": ["White", "Red"]
+          "colors": ["#ffffff", "#ff0000"],
+          "comment": "White + Red"
         },
         {
           "dmxRange": [40, 44],
           "type": "ColorPreset",
-          "colors": ["Red", "Green"]
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Red + Green"
         },
         {
           "dmxRange": [45, 49],
           "type": "ColorPreset",
-          "colors": ["Green", "Blue"]
+          "colors": ["#00ff00", "#0000ff"],
+          "comment": "Green + Blue"
         },
         {
           "dmxRange": [50, 54],
           "type": "ColorPreset",
-          "colors": ["Blue", "Amber"]
+          "colors": ["#0000ff", "#ffbf00"],
+          "comment": "Blue + Amber"
         },
         {
           "dmxRange": [55, 59],
           "type": "ColorPreset",
-          "colors": ["Amber", "White"]
+          "colors": ["#ffbf00", "#ffffff"],
+          "comment": "Amber + White"
         },
         {
           "dmxRange": [60, 64],
           "type": "ColorPreset",
-          "colors": ["White", "Green"]
+          "colors": ["#ffffff", "#00ff00"],
+          "comment": "White + Green"
         },
         {
           "dmxRange": [65, 69],
           "type": "ColorPreset",
-          "colors": ["Green", "Amber"]
+          "colors": ["#00ff00", "#ffbf00"],
+          "comment": "Green + Amber"
         },
         {
           "dmxRange": [70, 74],
           "type": "ColorPreset",
-          "colors": ["Amber", "Red"]
+          "colors": ["#ffbf00", "#ff0000"],
+          "comment": "Amber + Red"
         },
         {
           "dmxRange": [75, 79],
           "type": "ColorPreset",
-          "colors": ["Red", "Blue"]
+          "colors": ["#ff0000", "#0000ff"],
+          "comment": "Red + Blue"
         },
         {
           "dmxRange": [80, 84],
           "type": "ColorPreset",
-          "colors": ["Blue", "White"]
+          "colors": ["#0000ff", "#ffffff"],
+          "comment": "Blue + White"
         },
         {
           "dmxRange": [85, 89],
           "type": "ColorPreset",
-          "colors": ["Red", "Green", "Blue"]
+          "colors": ["#ff0000", "#00ff00", "#0000ff"],
+          "comment": "Red + Green + Blue"
         },
         {
           "dmxRange": [90, 94],
           "type": "ColorPreset",
-          "colors": ["Red", "Green", "Amber"]
+          "colors": ["#ff0000", "#00ff00", "#ffbf00"],
+          "comment": "Red + Green + Amber"
         },
         {
           "dmxRange": [95, 99],
           "type": "ColorPreset",
-          "colors": ["Red", "Green", "White"]
+          "colors": ["#ff0000", "#00ff00", "#ffffff"],
+          "comment": "Red + Green + White"
         },
         {
           "dmxRange": [100, 104],
           "type": "ColorPreset",
-          "colors": ["Red", "Amber", "Blue"]
+          "colors": ["#ff0000", "#ffbf00", "#0000ff"],
+          "comment": "Red + Amber + Blue"
         },
         {
           "dmxRange": [105, 109],
           "type": "ColorPreset",
-          "colors": ["Red", "White", "Blue"]
+          "colors": ["#ff0000", "#ffffff", "#0000ff"],
+          "comment": "Red + White + Blue"
         },
         {
           "dmxRange": [110, 114],
           "type": "ColorPreset",
-          "colors": ["Red", "Amber", "White"]
+          "colors": ["#ff0000", "#ffbf00", "#ffffff"],
+          "comment": "Red + Amber + White"
         },
         {
           "dmxRange": [115, 119],
           "type": "ColorPreset",
-          "colors": ["Amber", "Green", "Blue"]
+          "colors": ["#ffbf00", "#00ff00", "#0000ff"],
+          "comment": "Amber + Green + Blue"
         },
         {
           "dmxRange": [120, 124],
           "type": "ColorPreset",
-          "colors": ["Blue", "Green", "White"]
+          "colors": ["#0000ff", "#00ff00", "#ffffff"],
+          "comment": "Blue + Green + White"
         },
         {
           "dmxRange": [125, 129],
           "type": "ColorPreset",
-          "colors": ["Amber", "Green", "White"]
+          "colors": ["#ffbf00", "#00ff00", "#ffffff"],
+          "comment": "Amber + Green + White"
         },
         {
           "dmxRange": [130, 134],
           "type": "ColorPreset",
-          "colors": ["Amber", "White", "Blue"]
+          "colors": ["#ffbf00", "#ffffff", "#0000ff"],
+          "comment": "Amber + White + Blue"
         },
         {
           "dmxRange": [135, 139],
           "type": "ColorPreset",
-          "colors": ["Red", "Green", "Blue", "Amber"]
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffbf00"],
+          "comment": "Red + Green + Blue + Amber"
         },
         {
           "dmxRange": [140, 144],
           "type": "ColorPreset",
-          "colors": ["Red", "Green", "Blue", "White"]
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff"],
+          "comment": "Red + Green + Blue + White"
         },
         {
           "dmxRange": [145, 149],
           "type": "ColorPreset",
-          "colors": ["Blue", "Green", "White", "Amber"]
+          "colors": ["#0000ff", "#00ff00", "#ffffff", "#ffbf00"],
+          "comment": "Blue + Green + White + Amber"
         },
         {
           "dmxRange": [150, 154],
           "type": "ColorPreset",
-          "colors": ["Red", "Green", "Amber", "White"]
+          "colors": ["#ff0000", "#00ff00", "#ffbf00", "#ffffff"],
+          "comment": "Red + Green + Amber + White"
         },
         {
           "dmxRange": [155, 159],
           "type": "ColorPreset",
-          "colors": ["White", "Red", "Blue", "Amber"]
+          "colors": ["#ffffff", "#ff0000", "#0000ff", "#ffbf00"],
+          "comment": "White + Red + Blue + Amber"
         },
         {
           "dmxRange": [160, 164],
           "type": "ColorPreset",
-          "colors": ["Red", "Green", "Blue", "Amber", "White"]
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffbf00", "#ffffff"],
+          "comment": "Red + Green + Blue + Amber + White"
         },
         {
           "dmxRange": [165, 209],
@@ -376,13 +408,13 @@
         {
           "dmxRange": [10, 49],
           "type": "ColorPreset",
-          "colors": ["Red"],
+          "colors": ["#ff0000"],
           "comment": "Red laser on"
         },
         {
           "dmxRange": [50, 89],
           "type": "ColorPreset",
-          "colors": ["Green"],
+          "colors": ["#00ff00"],
           "comment": "Green laser on"
         },
         {

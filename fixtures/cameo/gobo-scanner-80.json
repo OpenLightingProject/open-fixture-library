@@ -78,62 +78,71 @@
           "dmxRange": [0, 5],
           "type": "ColorWheelIndex",
           "index": 0,
-          "comment": "Open",
-          "colors": ["White"]
+          "colors": ["#ffffff"],
+          "comment": "Open / White"
         },
         {
           "dmxRange": [6, 18],
           "type": "ColorWheelIndex",
           "index": 1,
-          "colors": ["Warm Yellow"]
+          "colors": ["#f9d716"],
+          "comment": "Warm Yellow"
         },
         {
           "dmxRange": [19, 31],
           "type": "ColorWheelIndex",
           "index": 2,
-          "colors": ["Lavender"]
+          "colors": ["#e6e6fa"],
+          "comment": "Lavender"
         },
         {
           "dmxRange": [32, 44],
           "type": "ColorWheelIndex",
           "index": 3,
-          "colors": ["Lime"]
+          "colors": ["#bfff00"],
+          "comment": "Lime"
         },
         {
           "dmxRange": [45, 57],
           "type": "ColorWheelIndex",
           "index": 4,
-          "colors": ["Cyan"]
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
         },
         {
           "dmxRange": [58, 70],
           "type": "ColorWheelIndex",
           "index": 5,
-          "colors": ["Amber"]
+          "colors": ["#ffbf00"],
+          "comment": "Amber"
         },
         {
           "dmxRange": [71, 83],
           "type": "ColorWheelIndex",
           "index": 6,
-          "colors": ["Yellow"]
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
         },
         {
           "dmxRange": [84, 96],
           "type": "ColorWheelIndex",
           "index": 7,
-          "colors": ["Blue"]
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
           "dmxRange": [97, 109],
           "type": "ColorWheelIndex",
           "index": 8,
-          "colors": ["Green"]
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
           "dmxRange": [110, 122],
           "type": "ColorWheelIndex",
           "index": 9,
-          "colors": ["Red"]
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
           "dmxRange": [123, 128],
