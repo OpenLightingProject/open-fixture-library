@@ -117,82 +117,86 @@
         {
           "dmxRange": [11, 20],
           "type": "ColorPreset",
-          "colors": ["Red"]
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
           "dmxRange": [21, 30],
           "type": "ColorPreset",
-          "colors": ["Green"]
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
           "dmxRange": [31, 40],
           "type": "ColorPreset",
-          "colors": ["Blue"]
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
           "dmxRange": [41, 50],
           "type": "ColorPreset",
-          "colors": ["White"]
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
           "dmxRange": [51, 60],
           "type": "ColorPreset",
-          "colors": ["Yellow"],
-          "comment": "RG"
+          "colors": ["#ffff00"],
+          "comment": "Yellow (RG)"
         },
         {
           "dmxRange": [61, 70],
           "type": "ColorPreset",
-          "colors": ["Cyan"],
-          "comment": "GB"
+          "colors": ["#00ffff"],
+          "comment": "Cyan (GB)"
         },
         {
           "dmxRange": [71, 80],
           "type": "ColorPreset",
-          "colors": ["Lightblue"],
-          "comment": "BW"
+          "colors": ["#64c8ff"],
+          "comment": "Lightblue (BW)"
         },
         {
           "dmxRange": [81, 90],
           "type": "ColorPreset",
-          "colors": ["Pink"],
-          "comment": "RB"
+          "colors": ["#ff00ff"],
+          "comment": "Pink (RB)"
         },
         {
           "dmxRange": [91, 100],
           "type": "ColorPreset",
-          "colors": ["Lightgreen"],
-          "comment": "GW"
+          "colors": ["#7fff3c"],
+          "comment": "Lightgreen (GW)"
         },
         {
           "dmxRange": [101, 110],
           "type": "ColorPreset",
-          "colors": ["Lightred"],
-          "comment": "RW"
+          "colors": ["#efabab"],
+          "comment": "Lightred (RW)"
         },
         {
           "dmxRange": [111, 120],
           "type": "ColorPreset",
-          "colors": ["White"],
-          "comment": "RGB"
+          "colors": ["#ffffff"],
+          "comment": "White (RGB)"
         },
         {
           "dmxRange": [121, 130],
           "type": "ColorPreset",
-          "colors": ["Lightyellow"],
-          "comment": "RGW"
+          "colors": ["#fff9aa"],
+          "comment": "Lightyellow (RGW)"
         },
         {
           "dmxRange": [131, 140],
           "type": "ColorPreset",
-          "colors": ["Lightcyan"],
-          "comment": "GBW"
+          "colors": ["#aaffff"],
+          "comment": "Lightcyan (GBW)"
         },
         {
           "dmxRange": [141, 150],
           "type": "ColorPreset",
-          "colors": ["White"],
-          "comment": "RGBW"
+          "colors": ["#ffffff"],
+          "comment": "White (RGBW)"
         },
         {
           "dmxRange": [151, 255],

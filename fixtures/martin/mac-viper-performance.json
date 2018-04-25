@@ -104,170 +104,193 @@
         {
           "dmxRange": [0, 0],
           "type": "ColorWheelIndex",
-          "comment": "Open",
           "index": 0,
-          "colors": ["White"]
+          "colors": ["#ffffff"],
+          "comment": "Open / White"
         },
         {
           "dmxRange": [1, 14],
           "type": "ColorWheelIndex",
           "indexStart": 0,
           "indexEnd": 1,
-          "colorsStart": ["Open"],
-          "colorsEnd": ["Blue"]
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#3857ad"],
+          "comment": "Open - Blue"
         },
         {
           "dmxRange": [15, 15],
           "type": "ColorWheelIndex",
           "index": 1,
-          "colors": ["Blue"]
+          "colors": ["#3857ad"],
+          "comment": "Blue"
         },
         {
           "dmxRange": [16, 29],
           "type": "ColorWheelIndex",
           "indexStart": 1,
           "indexEnd": 2,
-          "colorsStart": ["Blue"],
-          "colorsEnd": ["Green"]
+          "colorsStart": ["#3857ad"],
+          "colorsEnd": ["#61c15a"],
+          "comment": "Blue - Green"
         },
         {
           "dmxRange": [30, 30],
           "type": "ColorWheelIndex",
           "index": 2,
-          "colors": ["Green"]
+          "colors": ["#61c15a"],
+          "comment": "Green"
         },
         {
           "dmxRange": [31, 44],
           "type": "ColorWheelIndex",
           "indexStart": 2,
           "indexEnd": 3,
-          "colorsStart": ["Green"],
-          "colorsEnd": ["Orange"]
+          "colorsStart": ["#61c15a"],
+          "colorsEnd": ["#fb9955"],
+          "comment": "Green - Orange"
         },
         {
           "dmxRange": [45, 45],
           "type": "ColorWheelIndex",
           "index": 3,
-          "colors": ["Orange"]
+          "colors": ["#fb9955"],
+          "comment": "Orange"
         },
         {
           "dmxRange": [46, 59],
           "type": "ColorWheelIndex",
           "indexStart": 3,
           "indexEnd": 4,
-          "colorsStart": ["Orange"],
-          "colorsEnd": ["Rose"]
+          "colorsStart": ["#fb9955"],
+          "colorsEnd": ["#fbe7f1"],
+          "comment": "Orange - Rose"
         },
         {
           "dmxRange": [60, 60],
           "type": "ColorWheelIndex",
           "index": 4,
-          "colors": ["Rose"]
+          "colors": ["#fbe7f1"],
+          "comment": "Rose"
         },
         {
           "dmxRange": [61, 74],
           "type": "ColorWheelIndex",
           "indexStart": 4,
           "indexEnd": 5,
-          "colorsStart": ["Rose"],
-          "colorsEnd": ["Magenta"]
+          "colorsStart": ["#fbe7f1"],
+          "colorsEnd": ["#da9ecc"],
+          "comment": "Rose - Magenta"
         },
         {
           "dmxRange": [75, 75],
           "type": "ColorWheelIndex",
           "index": 5,
-          "colors": ["Magenta"]
+          "colors": ["#da9ecc"],
+          "comment": "Magenta"
         },
         {
           "dmxRange": [76, 89],
           "type": "ColorWheelIndex",
           "indexStart": 5,
           "indexEnd": 6,
-          "colorsStart": ["Magenta"],
-          "colorsEnd": ["Deep Blue"]
+          "colorsStart": ["#da9ecc"],
+          "colorsEnd": ["#994ba6"],
+          "comment": "Magenta - Deep Blue"
         },
         {
           "dmxRange": [90, 90],
           "type": "ColorWheelIndex",
           "index": 6,
-          "colors": ["Deep Blue"]
+          "colors": ["#994ba6"],
+          "comment": "Deep Blue"
         },
         {
           "dmxRange": [91, 104],
           "type": "ColorWheelIndex",
           "indexStart": 6,
           "indexEnd": 7,
-          "colorsStart": ["Deep Blue"],
-          "colorsEnd": ["Red"]
+          "colorsStart": ["#994ba6"],
+          "colorsEnd": ["#de4b48"],
+          "comment": "Deep Blue - Red"
         },
         {
           "dmxRange": [105, 105],
           "type": "ColorWheelIndex",
           "index": 7,
-          "colors": ["Red"]
+          "colors": ["#de4b48"],
+          "comment": "Red"
         },
         {
           "dmxRange": [106, 119],
           "type": "ColorWheelIndex",
           "indexStart": 7,
           "indexEnd": 8,
-          "colorsStart": ["Red"],
-          "colorsEnd": ["Open"]
+          "colorsStart": ["#de4b48"],
+          "colorsEnd": ["#ffffff"],
+          "comment": "Red - Open"
         },
         {
           "dmxRange": [120, 160],
           "type": "ColorWheelIndex",
-          "comment": "Open",
           "index": 0,
-          "colors": ["White"]
+          "colors": ["#ffffff"],
+          "comment": "Open / White"
         },
         {
           "dmxRange": [161, 163],
           "type": "ColorWheelIndex",
           "index": 1,
-          "colors": ["Blue"]
+          "colors": ["#3857ad"],
+          "comment": "Blue"
         },
         {
           "dmxRange": [164, 166],
           "type": "ColorWheelIndex",
           "index": 2,
-          "colors": ["Green"]
+          "colors": ["#61c15a"],
+          "comment": "Green"
         },
         {
           "dmxRange": [167, 169],
           "type": "ColorWheelIndex",
           "index": 3,
-          "colors": ["Orange"]
+          "colors": ["#fb9955"],
+          "comment": "Orange"
         },
         {
           "dmxRange": [170, 172],
           "type": "ColorWheelIndex",
           "index": 4,
-          "colors": ["Rose"]
+          "colors": ["#fbe7f1"],
+          "comment": "Rose"
         },
         {
           "dmxRange": [173, 175],
           "type": "ColorWheelIndex",
           "index": 5,
-          "colors": ["Magenta"]
+          "colors": ["#da9ecc"],
+          "comment": "Magenta"
         },
         {
           "dmxRange": [176, 178],
           "type": "ColorWheelIndex",
           "index": 6,
-          "colors": ["Deep Blue"]
+          "colors": ["#994ba6"],
+          "comment": "Deep Blue"
         },
         {
           "dmxRange": [179, 181],
           "type": "ColorWheelIndex",
           "index": 7,
-          "colors": ["Red"]
+          "colors": ["#de4b48"],
+          "comment": "Red"
         },
         {
           "dmxRange": [182, 192],
           "type": "ColorWheelIndex",
           "index": 0,
-          "colors": ["White"]
+          "colors": ["#ffffff"],
+          "comment": "Open / White"
         },
         {
           "dmxRange": [193, 214],

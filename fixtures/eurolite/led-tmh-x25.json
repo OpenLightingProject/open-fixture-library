@@ -121,22 +121,26 @@
         {
           "dmxRange": [5, 29],
           "type": "ColorPreset",
-          "colors": ["Red"]
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
           "dmxRange": [30, 54],
           "type": "ColorPreset",
-          "colors": ["Green"]
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
           "dmxRange": [55, 79],
           "type": "ColorPreset",
-          "colors": ["Blue"]
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
           "dmxRange": [80, 104],
           "type": "ColorPreset",
-          "colors": ["White"]
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
           "dmxRange": [105, 129],

@@ -266,98 +266,166 @@
     "Color Wheel": {
       "capabilities": [
         {
-          "dmxRange": [0, 17],
+          "dmxRange": [0, 0],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "colors": ["#ffffff"],
+          "comment": "Open / White"
+        },
+        {
+          "dmxRange": [1, 17],
           "type": "ColorWheelIndex",
           "indexStart": 0,
           "indexEnd": 1,
-          "colors": ["white"]
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#dd0000"],
+          "comment": "White - Deep Red"
         },
         {
-          "dmxRange": [18, 36],
+          "dmxRange": [18, 18],
+          "type": "ColorWheelIndex",
+          "index": 1,
+          "colors": ["#dd0000"],
+          "comment": "Deep Red"
+        },
+        {
+          "dmxRange": [19, 36],
           "type": "ColorWheelIndex",
           "indexStart": 1,
           "indexEnd": 2,
-          "colors": ["deep red"]
+          "colorsStart": ["#dd0000"],
+          "colorsEnd": ["#0000dd"],
+          "comment": "Deep Red - Deep Blue"
         },
         {
-          "dmxRange": [37, 54],
+          "dmxRange": [37, 37],
+          "type": "ColorWheelIndex",
+          "index": 2,
+          "colors": ["#0000dd"],
+          "comment": "Deep Blue"
+        },
+        {
+          "dmxRange": [38, 54],
           "type": "ColorWheelIndex",
           "indexStart": 2,
           "indexEnd": 3,
-          "colors": ["deep blue"]
+          "colorsStart": ["#0000dd"],
+          "colorsEnd": ["#00ff00"],
+          "comment": "Deep Blue - Green"
         },
         {
-          "dmxRange": [55, 72],
+          "dmxRange": [55, 55],
+          "type": "ColorWheelIndex",
+          "index": 3,
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [56, 72],
           "type": "ColorWheelIndex",
           "indexStart": 3,
           "indexEnd": 4,
-          "colors": ["green"]
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#ff9900"],
+          "comment": "Green - Orange"
         },
         {
-          "dmxRange": [73, 90],
+          "dmxRange": [73, 73],
+          "type": "ColorWheelIndex",
+          "index": 4,
+          "colors": ["#ff9900"],
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [74, 90],
           "type": "ColorWheelIndex",
           "indexStart": 4,
           "indexEnd": 5,
-          "colors": ["orange"]
+          "colorsStart": ["#ff9900"],
+          "colorsEnd": ["#fff6ed"],
+          "comment": "Orange - White (6000K)"
         },
         {
-          "dmxRange": [91, 109],
+          "dmxRange": [91, 91],
           "type": "ColorWheelIndex",
-          "indexStart": 5,
-          "indexEnd": 6,
-          "colors": ["white"],
-          "comment": "6000K",
+          "index": 5,
+          "colors": ["#fff6ed"],
+          "comment": "White (6000K)",
           "helpWanted": "colorTemperature should also be allowed here"
         },
         {
-          "dmxRange": [110, 127],
+          "dmxRange": [92, 109],
+          "type": "ColorWheelIndex",
+          "indexStart": 5,
+          "indexEnd": 6,
+          "colorsStart": ["#fff6ed"],
+          "colorsEnd": ["#8800ff"],
+          "comment": "White (6000K) - UV Filter"
+        },
+        {
+          "dmxRange": [110, 110],
+          "type": "ColorWheelIndex",
+          "index": 6,
+          "colors": ["#8800ff"],
+          "comment": "UV Filter"
+        },
+        {
+          "dmxRange": [111, 127],
           "type": "ColorWheelIndex",
           "indexStart": 6,
           "indexEnd": 7,
-          "colors": ["UV"]
+          "colorsStart": ["#8800ff"],
+          "colorsEnd": ["#ffffff"],
+          "comment": "UV Filter - White"
         },
         {
           "dmxRange": [128, 129],
           "type": "ColorWheelIndex",
           "index": 0,
-          "colors": ["white"]
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
           "dmxRange": [130, 139],
           "type": "ColorWheelIndex",
           "index": 1,
-          "colors": ["deep red"]
+          "colors": ["#dd0000"],
+          "comment": "Deep red"
         },
         {
           "dmxRange": [140, 149],
           "type": "ColorWheelIndex",
           "index": 2,
-          "colors": ["deep blue"]
+          "colors": ["#0000dd"],
+          "comment": "Deep blue"
         },
         {
           "dmxRange": [150, 159],
           "type": "ColorWheelIndex",
           "index": 3,
-          "colors": ["green"]
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
           "dmxRange": [160, 169],
           "type": "ColorWheelIndex",
           "index": 4,
-          "colors": ["orange"]
+          "colors": ["#ff9900"],
+          "comment": "Orange"
         },
         {
           "dmxRange": [170, 179],
           "type": "ColorWheelIndex",
           "index": 5,
-          "colors": ["white"],
-          "comment": "6000K"
+          "colors": ["#ffffff"],
+          "comment": "White (6000K)"
         },
         {
           "dmxRange": [180, 189],
           "type": "ColorWheelIndex",
           "index": 6,
-          "colors": ["UV"]
+          "colors": ["#8800ff"],
+          "comment": "UV Filter"
         },
         {
           "dmxRange": [190, 215],
