@@ -24,258 +24,336 @@
   "availableChannels": {
     "Dimmer Simple": {
       "name": "Dimmer",
-      "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Dimmer Extended": {
       "name": "Dimmer",
-      "type": "Intensity",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "Off"
+          "dmxRange": [0, 15],
+          "type": "Intensity",
+          "brightness": "off"
         },
         {
-          "range": [16, 255],
-          "name": "Dark - bright"
+          "dmxRange": [16, 255],
+          "type": "Intensity",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright"
         }
       ]
     },
     "Strobe": {
-      "type": "Strobe",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "No function"
+          "dmxRange": [0, 15],
+          "type": "Nothing"
         },
         {
-          "range": [16, 255],
-          "name": "Strobe slow-fast"
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "Amber": {
-      "type": "Single Color",
-      "color": "Amber",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
     },
     "White": {
-      "type": "Single Color",
-      "color": "White",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "Color Snap": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "off"
+          "dmxRange": [0, 15],
+          "type": "Nothing"
         },
         {
-          "range": [16, 255],
-          "name": "Color Snap on"
+          "dmxRange": [16, 255],
+          "type": "Effect",
+          "effectName": "Color Snap on"
         }
       ]
     },
     "Color Snap Speed": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "slow-fast"
-        }
-      ]
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Color Fade": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "off"
+          "dmxRange": [0, 15],
+          "type": "Nothing"
         },
         {
-          "range": [16, 255],
-          "name": "Color Fade on"
+          "dmxRange": [16, 255],
+          "type": "Effect",
+          "effectName": "Color Fade on"
         }
       ]
     },
     "Color Fade Speed": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "slow-fast"
-        }
-      ]
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Sound Control": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "off"
+          "dmxRange": [0, 127],
+          "type": "Nothing"
         },
         {
-          "range": [128, 255],
-          "name": "Sound Control on with sensitivity low-high"
+          "dmxRange": [128, 255],
+          "type": "SoundSensitivity",
+          "sensitivityStart": "low",
+          "sensitivityEnd": "high",
+          "comment": "Sound Control on"
         }
       ]
     },
     "Color Macros": {
-      "type": "Multi-Color",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "Blackout"
+          "dmxRange": [0, 0],
+          "type": "Nothing"
         },
         {
-          "range": [1, 4],
-          "name": "R"
+          "dmxRange": [1, 4],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "R"
         },
         {
-          "range": [5, 8],
-          "name": "G"
+          "dmxRange": [5, 8],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "G"
         },
         {
-          "range": [9, 12],
-          "name": "B"
+          "dmxRange": [9, 12],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "B"
         },
         {
-          "range": [13, 16],
-          "name": "A"
+          "dmxRange": [13, 16],
+          "type": "ColorPreset",
+          "colors": ["#ffbf00"],
+          "comment": "A"
         },
         {
-          "range": [17, 20],
-          "name": "W"
+          "dmxRange": [17, 20],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "W"
         },
         {
-          "range": [21, 24],
-          "name": "RG"
+          "dmxRange": [21, 24],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "RG"
         },
         {
-          "range": [25, 28],
-          "name": "RB"
+          "dmxRange": [25, 28],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "RB"
         },
         {
-          "range": [29, 31],
-          "name": "RA"
+          "dmxRange": [29, 31],
+          "type": "ColorPreset",
+          "colors": ["#ff6000"],
+          "comment": "RA"
         },
         {
-          "range": [32, 35],
-          "name": "RW"
+          "dmxRange": [32, 35],
+          "type": "ColorPreset",
+          "colors": ["#ff8080"],
+          "comment": "RW"
         },
         {
-          "range": [36, 39],
-          "name": "GB"
+          "dmxRange": [36, 39],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "GB"
         },
         {
-          "range": [40, 43],
-          "name": "GA"
+          "dmxRange": [40, 43],
+          "type": "ColorPreset",
+          "colors": ["#92ff00"],
+          "comment": "GA"
         },
         {
-          "range": [44, 47],
-          "name": "GW"
+          "dmxRange": [44, 47],
+          "type": "ColorPreset",
+          "colors": ["#80ff80"],
+          "comment": "GW"
         },
         {
-          "range": [48, 51],
-          "name": "BA"
+          "dmxRange": [48, 51],
+          "type": "ColorPreset",
+          "colors": ["#ffbfff"],
+          "comment": "BA"
         },
         {
-          "range": [52, 55],
-          "name": "BW"
+          "dmxRange": [52, 55],
+          "type": "ColorPreset",
+          "colors": ["#8080ff"],
+          "comment": "BW"
         },
         {
-          "range": [56, 59],
-          "name": "AW"
+          "dmxRange": [56, 59],
+          "type": "ColorPreset",
+          "colors": ["#ffdf80"],
+          "comment": "AW"
         },
         {
-          "range": [60, 62],
-          "name": "BAW"
+          "dmxRange": [60, 62],
+          "type": "ColorPreset",
+          "colors": ["#ffdfff"],
+          "comment": "BAW"
         },
         {
-          "range": [63, 66],
-          "name": "GAW"
+          "dmxRange": [63, 66],
+          "type": "ColorPreset",
+          "colors": ["#baff5d"],
+          "comment": "GAW"
         },
         {
-          "range": [67, 70],
-          "name": "GBW"
+          "dmxRange": [67, 70],
+          "type": "ColorPreset",
+          "colors": ["#80ffff"],
+          "comment": "GBW"
         },
         {
-          "range": [71, 74],
-          "name": "GBA"
+          "dmxRange": [71, 74],
+          "type": "ColorPreset",
+          "colors": ["#92ff92"],
+          "comment": "GBA"
         },
         {
-          "range": [75, 78],
-          "name": "RAW"
+          "dmxRange": [75, 78],
+          "type": "ColorPreset",
+          "colors": ["#ff9555"],
+          "comment": "RAW"
         },
         {
-          "range": [79, 82],
-          "name": "RBW"
+          "dmxRange": [79, 82],
+          "type": "ColorPreset",
+          "colors": ["#ff80ff"],
+          "comment": "RBW"
         },
         {
-          "range": [83, 86],
-          "name": "RBA"
+          "dmxRange": [83, 86],
+          "type": "ColorPreset",
+          "colors": ["#ff6080"],
+          "comment": "RBA"
         },
         {
-          "range": [87, 90],
-          "name": "RGW"
+          "dmxRange": [87, 90],
+          "type": "ColorPreset",
+          "colors": ["#ffff80"],
+          "comment": "RGW"
         },
         {
-          "range": [91, 93],
-          "name": "RGA"
+          "dmxRange": [91, 93],
+          "type": "ColorPreset",
+          "colors": ["#ffdf00"],
+          "comment": "RGA"
         },
         {
-          "range": [94, 97],
-          "name": "RGB"
+          "dmxRange": [94, 97],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "RGB"
         },
         {
-          "range": [98, 101],
-          "name": "RGBA"
+          "dmxRange": [98, 101],
+          "type": "ColorPreset",
+          "colors": ["#ffdf80"],
+          "comment": "RGBA"
         },
         {
-          "range": [102, 105],
-          "name": "RGBW"
+          "dmxRange": [102, 105],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "RGBW"
         },
         {
-          "range": [106, 109],
-          "name": "RGAW"
+          "dmxRange": [106, 109],
+          "type": "ColorPreset",
+          "colors": ["#ffea55"],
+          "comment": "RGAW"
         },
         {
-          "range": [110, 113],
-          "name": "RBAW"
+          "dmxRange": [110, 113],
+          "type": "ColorPreset",
+          "colors": ["#ff95aa"],
+          "comment": "RBAW"
         },
         {
-          "range": [114, 117],
-          "name": "GBAW"
+          "dmxRange": [114, 117],
+          "type": "ColorPreset",
+          "colors": ["#baffba"],
+          "comment": "GBAW"
         },
         {
-          "range": [118, 120],
-          "name": "RGBAW"
+          "dmxRange": [118, 120],
+          "type": "ColorPreset",
+          "colors": ["#ffeaaa"],
+          "comment": "RGBAW"
         },
         {
-          "range": [121, 255],
-          "name": "Chase slow-fast"
+          "dmxRange": [121, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     }
