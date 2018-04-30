@@ -32,16 +32,16 @@
       "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
-        "angleStart": "0°",
-        "angleEnd": "180°"
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
       }
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angleStart": "0°",
-        "angleEnd": "90°"
+        "angleStart": "0deg",
+        "angleEnd": "90deg"
       }
     },
     "Dimmer": {

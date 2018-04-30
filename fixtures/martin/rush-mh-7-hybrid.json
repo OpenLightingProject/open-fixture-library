@@ -721,8 +721,8 @@
       "fineChannelAliases": ["Rotating Gobo Indexing fine"],
       "capability": {
         "type": "GoboStencilRotationAngle",
-        "angleStart": "0°",
-        "angleEnd": "360°"
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
       }
     },
     "Rotating Gobo Speed": {
@@ -731,7 +731,7 @@
         {
           "dmxRange": [0, 31],
           "type": "GoboStencilRotationAngle",
-          "angle": "0°"
+          "angle": "0deg"
         },
         {
           "dmxRange": [32, 93],
@@ -753,7 +753,7 @@
         {
           "dmxRange": [190, 255],
           "type": "GoboStencilRotationAngle",
-          "angle": "90°"
+          "angle": "90deg"
         }
       ]
     },
@@ -1108,8 +1108,8 @@
       "fineChannelAliases": ["Rotating Prism Indexing fine"],
       "capability": {
         "type": "PrismRotationAngle",
-        "angleStart": "0°",
-        "angleEnd": "360°"
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
       }
     },
     "Rotating Prism Speed": {
@@ -1118,7 +1118,7 @@
         {
           "dmxRange": [0, 31],
           "type": "PrismRotationAngle",
-          "angle": "0°"
+          "angle": "0deg"
         },
         {
           "dmxRange": [32, 93],
@@ -1140,7 +1140,7 @@
         {
           "dmxRange": [190, 255],
           "type": "PrismRotationAngle",
-          "angle": "90°"
+          "angle": "90deg"
         }
       ]
     },
@@ -1178,16 +1178,16 @@
       "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
-        "angleStart": "0°",
-        "angleEnd": "540°"
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angleStart": "0°",
-        "angleEnd": "250°"
+        "angleStart": "0deg",
+        "angleEnd": "250deg"
       }
     },
     "Maintenance": {

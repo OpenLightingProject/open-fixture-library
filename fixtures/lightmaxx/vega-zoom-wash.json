@@ -31,16 +31,16 @@
       "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
-        "angleStart": "0°",
-        "angleEnd": "540°"
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angleStart": "0°",
-        "angleEnd": "190°"
+        "angleStart": "0deg",
+        "angleEnd": "190deg"
       }
     },
     "Pan / Tilt Speed": {

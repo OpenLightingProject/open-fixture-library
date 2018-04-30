@@ -15,8 +15,8 @@ To make common percentage values more readable, one can use specific keywords to
 | Brightness       | `lm`, `%`        | –            | –            | off     | dark    | bright
 | ColorTemperature | `K`, `%`         | warm / CTO   | –            | default | –       | cold / CTB
 | FogOutput        | `m^3/min`, `%`   | –            | –            | off     | weak    | strong
-| RotationAngle    | `°`, `%`         | –            | –            | –       | –       | –
-| BeamAngle        | `°`, `%`         | –            | –            | closed  | narrow  | wide
+| RotationAngle    | `deg`, `%`       | –            | –            | –       | –       | –
+| BeamAngle        | `deg`, `%`       | –            | –            | closed  | narrow  | wide
 | Factor           | (no unit), `%`   | –            | –            | off     | low     | high
 | Index            | (no unit)        | –            | –            | –       | –       | –
 | Percent          | `%`              | –            | –            | off     | low     | high

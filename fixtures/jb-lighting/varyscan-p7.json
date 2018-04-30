@@ -32,8 +32,8 @@
       "defaultValue": 32767,
       "capability": {
         "type": "Pan",
-        "angleStart": "0°",
-        "angleEnd": "433.6°"
+        "angleStart": "0deg",
+        "angleEnd": "433.6deg"
       }
     },
     "Tilt": {
@@ -41,8 +41,8 @@
       "defaultValue": 32767,
       "capability": {
         "type": "Tilt",
-        "angleStart": "0°",
-        "angleEnd": "280°"
+        "angleStart": "0deg",
+        "angleEnd": "280deg"
       }
     },
     "Control": {
@@ -304,8 +304,8 @@
     "Zoom": {
       "capability": {
         "type": "Zoom",
-        "angleStart": "48°",
-        "angleEnd": "8°"
+        "angleStart": "48deg",
+        "angleEnd": "8deg"
       }
     },
     "Iris": {
@@ -532,8 +532,8 @@
         {
           "dmxRange": [0, 191],
           "type": "GoboStencilRotationAngle",
-          "angleStart": "0°",
-          "angleEnd": "540°"
+          "angleStart": "0deg",
+          "angleEnd": "540deg"
         },
         {
           "dmxRange": [192, 222],
@@ -703,8 +703,8 @@
           "dmxRange": [64, 191],
           "type": "ColorWheelRotationAngle",
           "comment": "Colors linear, beginning from white",
-          "angleStart": "0°",
-          "angleEnd": "360°"
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
         },
         {
           "dmxRange": [192, 223],
@@ -802,8 +802,8 @@
         {
           "dmxRange": [0, 191],
           "type": "PrismRotationAngle",
-          "angleStart": "0°",
-          "angleEnd": "540°"
+          "angleStart": "0deg",
+          "angleEnd": "540deg"
         },
         {
           "dmxRange": [192, 222],

@@ -34,8 +34,8 @@
       "defaultValue": 32768,
       "capability": {
         "type": "Pan",
-        "angleStart": "0°",
-        "angleEnd": "450°"
+        "angleStart": "0deg",
+        "angleEnd": "450deg"
       }
     },
     "Tilt": {
@@ -43,8 +43,8 @@
       "defaultValue": 32768,
       "capability": {
         "type": "Tilt",
-        "angleStart": "0°",
-        "angleEnd": "228°"
+        "angleStart": "0deg",
+        "angleEnd": "228deg"
       }
     },
     "Pan/Tilt Speed": {
@@ -768,8 +768,8 @@
       "defaultValue": 32768,
       "capability": {
         "type": "Zoom",
-        "angleStart": "60°",
-        "angleEnd": "3.8°"
+        "angleStart": "60deg",
+        "angleEnd": "3.8deg"
       }
     },
     "Shutter / Strobe": {

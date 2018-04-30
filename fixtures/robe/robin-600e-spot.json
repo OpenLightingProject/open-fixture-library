@@ -41,16 +41,16 @@
       "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
-        "angleStart": "0°",
-        "angleEnd": "540°"
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angleStart": "0°",
-        "angleEnd": "280°"
+        "angleStart": "0deg",
+        "angleEnd": "280deg"
       }
     },
     "Pan/Tilt Speed": {
@@ -1132,8 +1132,8 @@
       "fineChannelAliases": ["Rotating Gobo Indexing fine"],
       "capability": {
         "type": "GoboStencilRotationAngle",
-        "angleStart": "0°",
-        "angleEnd": "360°"
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
       }
     },
     "Rotating Gobo Rotation": {

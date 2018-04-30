@@ -523,8 +523,8 @@
       "defaultValue": 32768,
       "capability": {
         "type": "GoboStencilRotationAngle",
-        "angleStart": "-197.5°",
-        "angleEnd": "197.5°"
+        "angleStart": "-197.5deg",
+        "angleEnd": "197.5deg"
       }
     },
     "Gobo rotation speed": {
@@ -534,7 +534,7 @@
         {
           "dmxRange": [0, 600],
           "type": "GoboStencilRotationAngle",
-          "angle": "0°"
+          "angle": "0deg"
         },
         {
           "dmxRange": [601, 32130],
@@ -556,7 +556,7 @@
         {
           "dmxRange": [64516, 65535],
           "type": "GoboStencilRotationAngle",
-          "angle": "90°"
+          "angle": "90deg"
         }
       ]
     },
@@ -665,8 +665,8 @@
       "defaultValue": 127,
       "capability": {
         "type": "GoboWheelRotationAngle",
-        "angleStart": "0°",
-        "angleEnd": "360°"
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
       }
     },
     "Animation Wheel Rotation": {
@@ -675,7 +675,7 @@
         {
           "dmxRange": [0, 2],
           "type": "GoboWheelRotationAngle",
-          "angle": "0°"
+          "angle": "0deg"
         },
         {
           "dmxRange": [3, 126],
@@ -697,7 +697,7 @@
         {
           "dmxRange": [254, 255],
           "type": "GoboWheelRotationAngle",
-          "angle": "90°"
+          "angle": "90deg"
         }
       ]
     },
@@ -715,21 +715,21 @@
         {
           "dmxRange": [0, 126],
           "type": "BladeRotation",
-          "angleStart": "-30°",
-          "angleEnd": "0°",
+          "angleStart": "-30deg",
+          "angleEnd": "0deg",
           "blade": 1
         },
         {
           "dmxRange": [127, 128],
           "type": "BladeRotation",
-          "angle": "0°",
+          "angle": "0deg",
           "blade": 1
         },
         {
           "dmxRange": [129, 255],
           "type": "BladeRotation",
-          "angleStart": "0°",
-          "angleEnd": "30°",
+          "angleStart": "0deg",
+          "angleEnd": "30deg",
           "blade": 1
         }
       ]
@@ -748,21 +748,21 @@
         {
           "dmxRange": [0, 126],
           "type": "BladeRotation",
-          "angleStart": "-30°",
-          "angleEnd": "0°",
+          "angleStart": "-30deg",
+          "angleEnd": "0deg",
           "blade": 2
         },
         {
           "dmxRange": [127, 128],
           "type": "BladeRotation",
-          "angle": "0°",
+          "angle": "0deg",
           "blade": 2
         },
         {
           "dmxRange": [129, 255],
           "type": "BladeRotation",
-          "angleStart": "0°",
-          "angleEnd": "30°",
+          "angleStart": "0deg",
+          "angleEnd": "30deg",
           "blade": 2
         }
       ]
@@ -781,21 +781,21 @@
         {
           "dmxRange": [0, 126],
           "type": "BladeRotation",
-          "angleStart": "-30°",
-          "angleEnd": "0°",
+          "angleStart": "-30deg",
+          "angleEnd": "0deg",
           "blade": 3
         },
         {
           "dmxRange": [127, 128],
           "type": "BladeRotation",
-          "angle": "0°",
+          "angle": "0deg",
           "blade": 3
         },
         {
           "dmxRange": [129, 255],
           "type": "BladeRotation",
-          "angleStart": "0°",
-          "angleEnd": "30°",
+          "angleStart": "0deg",
+          "angleEnd": "30deg",
           "blade": 3
         }
       ]
@@ -814,21 +814,21 @@
         {
           "dmxRange": [0, 126],
           "type": "BladeRotation",
-          "angleStart": "-30°",
-          "angleEnd": "0°",
+          "angleStart": "-30deg",
+          "angleEnd": "0deg",
           "blade": 4
         },
         {
           "dmxRange": [127, 128],
           "type": "BladeRotation",
-          "angle": "0°",
+          "angle": "0deg",
           "blade": 4
         },
         {
           "dmxRange": [129, 255],
           "type": "BladeRotation",
-          "angleStart": "0°",
-          "angleEnd": "30°",
+          "angleStart": "0deg",
+          "angleEnd": "30deg",
           "blade": 4
         }
       ]
@@ -839,19 +839,19 @@
         {
           "dmxRange": [0, 126],
           "type": "BladeSystemRotation",
-          "angleStart": "-55°",
-          "angleEnd": "0°"
+          "angleStart": "-55deg",
+          "angleEnd": "0deg"
         },
         {
           "dmxRange": [127, 128],
           "type": "BladeSystemRotation",
-          "angle": "0°"
+          "angle": "0deg"
         },
         {
           "dmxRange": [129, 255],
           "type": "BladeSystemRotation",
-          "angleStart": "0°",
-          "angleEnd": "55°"
+          "angleStart": "0deg",
+          "angleEnd": "55deg"
         }
       ]
     },
@@ -902,7 +902,7 @@
         {
           "dmxRange": [127, 128],
           "type": "PrismRotationAngle",
-          "angle": "0°"
+          "angle": "0deg"
         },
         {
           "dmxRange": [129, 255],
@@ -918,7 +918,7 @@
         {
           "dmxRange": [0, 2],
           "type": "PrismRotationAngle",
-          "angle": "0°"
+          "angle": "0deg"
         },
         {
           "dmxRange": [3, 126],
@@ -940,7 +940,7 @@
         {
           "dmxRange": [254, 255],
           "type": "PrismRotationAngle",
-          "angle": "45°"
+          "angle": "45deg"
         }
       ]
     },
@@ -956,8 +956,8 @@
       "defaultValue": 32768,
       "capability": {
         "type": "Zoom",
-        "angleStart": "44°",
-        "angleEnd": "10°"
+        "angleStart": "44deg",
+        "angleEnd": "10deg"
       }
     },
     "Focus": {
@@ -974,8 +974,8 @@
       "defaultValue": 32768,
       "capability": {
         "type": "Pan",
-        "angleStart": "0°",
-        "angleEnd": "540°"
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
@@ -983,8 +983,8 @@
       "defaultValue": 32768,
       "capability": {
         "type": "Tilt",
-        "angleStart": "0°",
-        "angleEnd": "268°"
+        "angleStart": "0deg",
+        "angleEnd": "268deg"
       }
     },
     "Fixture control/settings": {

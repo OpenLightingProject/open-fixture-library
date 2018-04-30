@@ -254,8 +254,8 @@
       "defaultValue": 32767,
       "capability": {
         "type": "Pan",
-        "angleStart": "0°",
-        "angleEnd": "400°"
+        "angleStart": "0deg",
+        "angleEnd": "400deg"
       }
     },
     "Tilt": {
@@ -263,8 +263,8 @@
       "defaultValue": 32767,
       "capability": {
       "type": "Tilt",
-        "angleStart": "0°",
-        "angleEnd": "275°"
+        "angleStart": "0deg",
+        "angleEnd": "275deg"
       }
     },
     "Zoom": {
@@ -291,8 +291,8 @@
       "capability": {
         "type": "BladeRotation",
         "blade": 1,
-        "angleStart": "0°",
-        "angleEnd": "720°"
+        "angleStart": "0deg",
+        "angleEnd": "720deg"
       }
     },
     "Shutter A Insertion": {
@@ -310,8 +310,8 @@
       "capability": {
         "type": "BladeRotation",
         "blade": 2,
-        "angleStart": "0°",
-        "angleEnd": "720°"
+        "angleStart": "0deg",
+        "angleEnd": "720deg"
       }
     },
     "Shutter B Insertion": {
@@ -329,8 +329,8 @@
       "capability": {
         "type": "BladeRotation",
         "blade": 3,
-        "angleStart": "0°",
-        "angleEnd": "720°"
+        "angleStart": "0deg",
+        "angleEnd": "720deg"
       }
     },
     "Shutter C Insertion": {
@@ -348,8 +348,8 @@
       "capability": {
         "type": "BladeRotation",
         "blade": 4,
-        "angleStart": "0°",
-        "angleEnd": "720°"
+        "angleStart": "0deg",
+        "angleEnd": "720deg"
       }
     },
     "Shutter D Insertion": {
@@ -366,8 +366,8 @@
       "defaultValue": 32767,
       "capability": {
         "type": "BladeSystemRotation",
-        "angleStart": "0°",
-        "angleEnd": "720°"
+        "angleStart": "0deg",
+        "angleEnd": "720deg"
       }
     },
     "Gobo 1 rotation": {
@@ -375,8 +375,8 @@
       "defaultValue": 32767,
       "capability": {
         "type": "GoboWheelRotationAngle",
-        "angleStart": "0°",
-        "angleEnd": "360°"
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
       }
     },
     "Iris": {

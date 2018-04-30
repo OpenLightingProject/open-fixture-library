@@ -54,8 +54,8 @@
       "capability": {
         "type": "BladeRotation",
         "blade": 1,
-        "angleStart": "0°",
-        "angleEnd": "360°"
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
       }
     },
     "Red": {
@@ -117,8 +117,8 @@
         {
           "dmxRange": [13, 255],
           "type": "Tilt",
-          "angleStart": "0°",
-          "angleEnd": "360°"
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
         }
       ]
     },
@@ -126,32 +126,32 @@
       "fineChannelAliases": ["Tilt 1 fine"],
       "capability": {
         "type": "Tilt",
-          "angleStart": "0°",
-          "angleEnd": "360°"
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
       }
     },
     "Tilt 2": {
       "fineChannelAliases": ["Tilt 2 fine"],
       "capability": {
         "type": "Tilt",
-          "angleStart": "0°",
-          "angleEnd": "360°"
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
       }
     },
     "Tilt 3 ": {
       "fineChannelAliases": ["Tilt 3  fine"],
       "capability": {
         "type": "Tilt",
-          "angleStart": "0°",
-          "angleEnd": "360°"
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
       }
     },
     "Tilt 4": {
       "fineChannelAliases": ["Tilt 4 fine"],
       "capability": {
         "type": "Tilt",
-          "angleStart": "0°",
-          "angleEnd": "360°"
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
       }
     },
     "Gobo All": {
@@ -193,8 +193,8 @@
       "defaultValue": 32767,
       "capability": {
         "type": "RotationAngle",
-        "angleStart": "0°",
-        "angleEnd": "360°"
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
       }
     },
     "Rotation": {
@@ -228,8 +228,8 @@
       "fineChannelAliases": ["Gobo Beam Angle all fine"],
       "capability": {
         "type": "Zoom",
-        "angleStart": "0°",
-        "angleEnd": "360°",
+        "angleStart": "0deg",
+        "angleEnd": "360deg",
         "helpWanted": "Maybe add a BeamAngle capability type?"
       }
     },
@@ -277,8 +277,8 @@
       "defaultValue": 32767,
       "capability": {
         "type": "RotationAngle",
-        "angleStart": "0°",
-        "angleEnd": "360°"
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
       }
     },
     "Green Gobo": {
@@ -353,8 +353,8 @@
       "defaultValue": 32767,
       "capability": {
         "type": "RotationAngle",
-        "angleStart": "0°",
-        "angleEnd": "360°"
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
       }
     },
     "Rotation Green": {
@@ -429,8 +429,8 @@
       "defaultValue": 32767,
       "capability": {
         "type": "RotationAngle",
-        "angleStart": "0°",
-        "angleEnd": "360°"
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
       }
     },
     "Rotation Blue": {
@@ -465,24 +465,24 @@
       "fineChannelAliases": ["Gobo Beam Angle Red fine"],
       "capability": {
         "type": "Zoom",
-        "angleStart": "0°",
-        "angleEnd": "360°"
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
       }
     },
     "Gobo Beam Angle Green": {
       "fineChannelAliases": ["Gobo Beam Angle Green fine"],
       "capability": {
         "type": "Zoom",
-        "angleStart": "0°",
-        "angleEnd": "360°"
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
       }
     },
     "Gobo Beam Angle Blue": {
       "fineChannelAliases": ["Gobo Beam Angle Blue fine"],
       "capability": {
         "type": "Zoom",
-        "angleStart": "0°",
-        "angleEnd": "360°"
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
       }
     }
   },

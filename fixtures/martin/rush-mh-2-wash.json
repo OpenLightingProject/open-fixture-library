@@ -8,7 +8,7 @@
     "createDate": "2017-08-07",
     "lastModifyDate": "2017-10-16"
   },
-  "comment": "Rush MH 2 Wash:\n- DMX, music trig and auto trig operation\n- 17° one-tenth peak angle\n- Extremely fast and agile\n- Electronic dimming and strobe\n- 3 & 5 pin XLR",
+  "comment": "Rush MH 2 Wash:\n- DMX, music trig and auto trig operation\n- 17deg one-tenth peak angle\n- Extremely fast and agile\n- Electronic dimming and strobe\n- 3 & 5 pin XLR",
   "manualURL": "http://www.martin.com/files/files/productdocuments/11_MANUALS/999/UM_RUSHMH2Wash_EN_G.pdf",
   "physical": {
     "dimensions": [258, 305, 156],
@@ -189,16 +189,16 @@
       "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
-        "angleStart": "0°",
-        "angleEnd": "540°"
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angleStart": "0°",
-        "angleEnd": "180°"
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
       }
     },
     "Fixture Control Settings": {

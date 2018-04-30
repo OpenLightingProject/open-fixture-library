@@ -33,16 +33,16 @@
       "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
-        "angleStart": "0°",
-        "angleEnd": "540°"
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angleStart": "0°",
-        "angleEnd": "270°"
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
       }
     },
     "Pan/Tilt Speed": {
@@ -553,8 +553,8 @@
         {
           "dmxRange": [64, 127],
           "type": "ColorWheelRotationAngle",
-          "angleStart": "0°",
-          "angleEnd": "360°"
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
         },
         {
           "dmxRange": [128, 189],
@@ -937,8 +937,8 @@
         {
           "dmxRange": [0, 127],
           "type": "PrismRotationAngle",
-          "angleStart": "0°",
-          "angleEnd": "360°"
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
         },
         {
           "dmxRange": [128, 189],

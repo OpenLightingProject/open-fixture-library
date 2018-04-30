@@ -330,16 +330,16 @@
       "fineChannelAliases": ["Master Pan fine"],
       "capability": {
         "type": "Pan",
-        "angleStart": "0°",
-        "angleEnd": "540°"
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
       }
     },
     "Master Tilt": {
       "fineChannelAliases": ["Master Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angleStart": "0°",
-        "angleEnd": "270°"
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
       }
     },
     "Master Red": {
@@ -417,16 +417,16 @@
       "fineChannelAliases": ["Pan $pixelKey fine"],
       "capability": {
         "type": "Pan",
-        "angleStart": "0°",
-        "angleEnd": "540°"
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
       }
     },
     "Tilt $pixelKey": {
       "fineChannelAliases": ["Tilt $pixelKey fine"],
       "capability": {
         "type": "Tilt",
-        "angleStart": "0°",
-        "angleEnd": "270°"
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
       }
     },
     "Dimmer $pixelKey": {

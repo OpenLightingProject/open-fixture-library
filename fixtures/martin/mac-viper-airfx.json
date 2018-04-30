@@ -246,7 +246,7 @@
       "capabilities": [
         {
           "range": [0, 65535],
-          "name": "Gobo indexing, -197.5° > +197.5°"
+          "name": "Gobo indexing, -197.5deg > +197.5deg"
         }
       ]
     },
@@ -257,7 +257,7 @@
       "capabilities": [
         {
           "range": [0, 600],
-          "name": "Stop, gobo indexed at 0°"
+          "name": "Stop, gobo indexed at 0deg"
         },
         {
           "range": [601, 32130],
@@ -273,7 +273,7 @@
         },
         {
           "range": [64516, 65535],
-          "name": "Stop, gobo indexed at 90°"
+          "name": "Stop, gobo indexed at 90deg"
         }
       ]
     },
@@ -372,7 +372,7 @@
         },
         {
           "range": [60, 89],
-          "name": "Gobo 1, 360° slow > 10° fast",
+          "name": "Gobo 1, 360deg slow > 10deg fast",
           "switchChannels": {
             "Aerial effects wheel: gobo indexing / rotation": "Aerial effects wheel: gobo indexing",
             "Aerial effects wheel: gobo indexing / rotation fine": "Aerial effects wheel: gobo indexing fine"
@@ -380,7 +380,7 @@
         },
         {
           "range": [90, 119],
-          "name": "Gobo 2, 360° slow > 10° fast",
+          "name": "Gobo 2, 360deg slow > 10deg fast",
           "switchChannels": {
             "Aerial effects wheel: gobo indexing / rotation": "Aerial effects wheel: gobo indexing",
             "Aerial effects wheel: gobo indexing / rotation fine": "Aerial effects wheel: gobo indexing fine"
@@ -388,7 +388,7 @@
         },
         {
           "range": [120, 149],
-          "name": "Gobo 3, 360° slow > 10° fast",
+          "name": "Gobo 3, 360deg slow > 10deg fast",
           "switchChannels": {
             "Aerial effects wheel: gobo indexing / rotation": "Aerial effects wheel: gobo indexing",
             "Aerial effects wheel: gobo indexing / rotation fine": "Aerial effects wheel: gobo indexing fine"
@@ -396,7 +396,7 @@
         },
         {
           "range": [150, 179],
-          "name": "Gobo 4, 360° slow > 10° fast",
+          "name": "Gobo 4, 360deg slow > 10deg fast",
           "switchChannels": {
             "Aerial effects wheel: gobo indexing / rotation": "Aerial effects wheel: gobo indexing",
             "Aerial effects wheel: gobo indexing / rotation fine": "Aerial effects wheel: gobo indexing fine"
@@ -404,7 +404,7 @@
         },
         {
           "range": [180, 209],
-          "name": "Gobo 5, 360° slow > 10° fast",
+          "name": "Gobo 5, 360deg slow > 10deg fast",
           "switchChannels": {
             "Aerial effects wheel: gobo indexing / rotation": "Aerial effects wheel: gobo indexing",
             "Aerial effects wheel: gobo indexing / rotation fine": "Aerial effects wheel: gobo indexing fine"
@@ -917,7 +917,7 @@
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "0° - 360°"
+          "name": "0deg - 360deg"
         }
       ]
     },
@@ -927,7 +927,7 @@
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "0° - 360°"
+          "name": "0deg - 360deg"
         }
       ]
     },
@@ -937,7 +937,7 @@
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "0° - 360°"
+          "name": "0deg - 360deg"
         }
       ]
     },
@@ -947,7 +947,7 @@
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "0° - 360°"
+          "name": "0deg - 360deg"
         }
       ]
     },

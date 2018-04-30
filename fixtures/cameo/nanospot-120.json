@@ -33,8 +33,8 @@
       "defaultValue": 32767,
       "capability": {
         "type": "Pan",
-        "angleStart": "0°",
-        "angleEnd": "540°"
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
@@ -42,8 +42,8 @@
       "defaultValue": 32767,
       "capability": {
         "type": "Tilt",
-        "angleStart": "0°",
-        "angleEnd": "230°"
+        "angleStart": "0deg",
+        "angleEnd": "230deg"
       }
     },
     "Motor Running Speed": {
@@ -114,8 +114,8 @@
         {
           "dmxRange": [88, 175],
           "type": "ColorWheelRotationAngle",
-          "angleStart": "0°",
-          "angleEnd": "360°"
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
         },
         {
           "dmxRange": [176, 255],

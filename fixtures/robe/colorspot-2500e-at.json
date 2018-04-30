@@ -35,16 +35,16 @@
       "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
-        "angleStart": "0°",
-        "angleEnd": "530°"
+        "angleStart": "0deg",
+        "angleEnd": "530deg"
       }
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angleStart": "0°",
-        "angleEnd": "260°"
+        "angleStart": "0deg",
+        "angleEnd": "260deg"
       }
     },
     "Pan/Tilt Speed": {
@@ -1150,8 +1150,8 @@
       "fineChannelAliases": ["Gobo Wheel 1 indexing fine"],
       "capability": {
         "type": "GoboStencilRotationAngle",
-        "angleStart": "0°",
-        "angleEnd": "360°"
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
       }
     },
     "Gobo Wheel 1 rotation": {
@@ -1496,8 +1496,8 @@
       "fineChannelAliases": ["Gobo Wheel 2 indexing fine"],
       "capability": {
         "type": "GoboStencilRotationAngle",
-        "angleStart": "0°",
-        "angleEnd": "360°"
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
       }
     },
     "Gobo Wheel 2 rotation": {
@@ -1782,8 +1782,8 @@
       "fineChannelAliases": ["Effect indexing fine"],
       "capability": {
         "type": "RotationAngle",
-        "angleStart": "0°",
-        "angleEnd": "360°"
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
       }
     },
     "Effect rotation": {

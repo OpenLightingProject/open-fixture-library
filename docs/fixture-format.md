@@ -110,8 +110,8 @@ Capabilities may be _steps_, which means that the whole DMX range has the same e
   "Pan": {
     "capability": {
       "type": "Pan",
-      "angleStart": "0°",
-      "angleEnd": "530°"
+      "angleStart": "0deg",
+      "angleEnd": "530deg"
 
       // DMX value 0 -> 0°
       // DMX value 127 -> 264°
