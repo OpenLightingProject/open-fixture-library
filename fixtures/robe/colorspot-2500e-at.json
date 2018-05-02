@@ -343,15 +343,16 @@
           "indexEnd": 5,
           "colorsStart": ["#ff9900"],
           "colorsEnd": ["#fff6ed"],
-          "comment": "Orange - White (6000K)"
+          "comment": "Orange - White",
+          "colorTemperature": "6000K"
         },
         {
           "dmxRange": [91, 91],
           "type": "ColorWheelIndex",
           "index": 5,
           "colors": ["#fff6ed"],
-          "comment": "White (6000K)",
-          "helpWanted": "colorTemperature should also be allowed here"
+          "comment": "White",
+          "colorTemperature": "6000K"
         },
         {
           "dmxRange": [92, 109],
@@ -360,7 +361,8 @@
           "indexEnd": 6,
           "colorsStart": ["#fff6ed"],
           "colorsEnd": ["#8800ff"],
-          "comment": "White (6000K) - UV Filter"
+          "comment": "White - UV Filter",
+          "colorTemperature": "6000K"
         },
         {
           "dmxRange": [110, 110],
@@ -418,7 +420,8 @@
           "type": "ColorWheelIndex",
           "index": 5,
           "colors": ["#ffffff"],
-          "comment": "White (6000K)"
+          "comment": "White",
+          "colorTemperature": "6000K"
         },
         {
           "dmxRange": [180, 189],
