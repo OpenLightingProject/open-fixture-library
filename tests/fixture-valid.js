@@ -535,8 +535,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
          * Type-specific checks for Effect capabilities.
          */
         function checkEffectCapability() {
-          if (!cap.hasEffectPreset && schemaProperties.definitions.effectPreset.enum.includes(cap.effectPreset)) {
-            result.errors.push(`${errorPrefix} must use effectPreset instead of effectName with '${cap.effectPreset}'.`);
+          if (cap.effectPreset === null && schemaProperties.definitions.effectPreset.enum.includes(cap.effectName)) {
+            result.errors.push(`${errorPrefix} must use effectPreset instead of effectName with '${cap.effectName}'.`);
           }
 
           if (cap.speed !== null && cap.duration !== null) {
