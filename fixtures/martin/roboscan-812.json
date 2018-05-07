@@ -25,355 +25,626 @@
   },
   "availableChannels": {
     "Strobe": {
-      "type": "Strobe",
       "defaultValue": 0,
-      "highlightValue": 200,
-      "invert": false,
+      "highlightValue": 74,
       "constant": false,
-      "crossfade": false,
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "No strobe"
+          "dmxRange": [0, 10],
+          "type": "Nothing"
         },
         {
-          "range": [11, 74],
-          "name": "Gobo strobe fast-slow"
+          "dmxRange": [11, 74],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Gobo strobe"
         },
         {
-          "range": [75, 138],
-          "name": "Color strobe fast-slow"
+          "dmxRange": [75, 138],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Color strobe"
         },
         {
-          "range": [139, 170],
-          "name": "Remote Autotrigger"
+          "dmxRange": [139, 170],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Remote Auto Trigger"
         },
         {
-          "range": [171, 202],
-          "name": "Remote Musictrigger"
+          "dmxRange": [171, 202],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Remote Music Trigger"
         },
         {
-          "range": [203, 235],
-          "name": "Reset fixture"
+          "dmxRange": [203, 235],
+          "type": "Maintenance",
+          "comment": "Reset fixture"
         },
         {
-          "range": [236, 255],
-          "name": "Lamp on"
+          "dmxRange": [236, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
     "Color": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 8],
-          "name": "Black",
-          "color": "#000000"
+          "dmxRange": [0, 0],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "colors": ["#000000"],
+          "comment": "Black"
         },
         {
-          "range": [9, 22],
-          "name": "White",
-          "color": "#ffffff",
-          "menuClick": "center"
+          "dmxRange": [1, 14],
+          "type": "ColorWheelIndex",
+          "indexStart": 0,
+          "indexEnd": 1,
+          "colorsStart": ["#000000"],
+          "colorsEnd": ["#ffffff"],
+          "comment": "Split Black / White"
         },
         {
-          "range": [23, 37],
-          "name": "Magenta",
-          "color": "#ca1f7b",
-          "menuClick": "center"
+          "dmxRange": [15, 15],
+          "type": "ColorWheelIndex",
+          "index": 1,
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
-          "range": [38, 52],
-          "name": "Pink",
-          "color": "#ffc0cb",
-          "menuClick": "center"
+          "dmxRange": [16, 29],
+          "type": "ColorWheelIndex",
+          "indexStart": 1,
+          "indexEnd": 2,
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#ca1f7b"],
+          "comment": "Split White / Magenta"
         },
         {
-          "range": [53, 67],
-          "name": "Red",
-          "color": "#ff0000",
-          "menuClick": "center"
+          "dmxRange": [30, 30],
+          "type": "ColorWheelIndex",
+          "index": 2,
+          "colors": ["#ca1f7b"],
+          "comment": "Magenta"
         },
         {
-          "range": [68, 82],
-          "name": "Orange",
-          "color": "#ff7f00",
-          "menuClick": "center"
+          "dmxRange": [31, 44],
+          "type": "ColorWheelIndex",
+          "indexStart": 2,
+          "indexEnd": 3,
+          "colorsStart": ["#ca1f7b"],
+          "colorsEnd": ["#ffc0cb"],
+          "comment": "Split Magenta / Pink"
         },
         {
-          "range": [83, 97],
-          "name": "Amber",
-          "color": "#ffbf00",
-          "menuClick": "center"
+          "dmxRange": [45, 45],
+          "type": "ColorWheelIndex",
+          "index": 3,
+          "colors": ["#ffc0cb"],
+          "comment": "Pink"
         },
         {
-          "range": [98, 112],
-          "name": "Yellow",
-          "color": "#ffff00",
-          "menuClick": "center"
+          "dmxRange": [46, 59],
+          "type": "ColorWheelIndex",
+          "indexStart": 3,
+          "indexEnd": 4,
+          "colorsStart": ["#ffc0cb"],
+          "colorsEnd": ["#ff0000"],
+          "comment": "Split Pink / Red"
         },
         {
-          "range": [113, 127],
-          "name": "Light Green",
-          "color": "#90ee90",
-          "menuClick": "center"
+          "dmxRange": [60, 60],
+          "type": "ColorWheelIndex",
+          "index": 4,
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [128, 142],
-          "name": "Green",
-          "color": "#00ff00",
-          "menuClick": "center"
+          "dmxRange": [61, 74],
+          "type": "ColorWheelIndex",
+          "indexStart": 4,
+          "indexEnd": 5,
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ff7f00"],
+          "comment": "Split Red / Orange"
         },
         {
-          "range": [143, 157],
-          "name": "Cyan",
-          "color": "#00ffff",
-          "menuClick": "center"
+          "dmxRange": [75, 75],
+          "type": "ColorWheelIndex",
+          "index": 5,
+          "colors": ["#ff7f00"],
+          "comment": "Orange"
         },
         {
-          "range": [158, 172],
-          "name": "Blue",
-          "color": "#0000ff",
-          "menuClick": "center"
+          "dmxRange": [76, 89],
+          "type": "ColorWheelIndex",
+          "indexStart": 5,
+          "indexEnd": 6,
+          "colorsStart": ["#ff7f00"],
+          "colorsEnd": ["#ffbf00"],
+          "comment": "Split Orange / Amber"
         },
         {
-          "range": [173, 184],
-          "name": "Dark Blue",
-          "color": "#00008b"
+          "dmxRange": [90, 90],
+          "type": "ColorWheelIndex",
+          "index": 6,
+          "colors": ["#ffbf00"],
+          "comment": "Amber"
         },
         {
-          "range": [185, 189],
-          "name": "Blue",
-          "color": "#0000ff",
-          "menuClick": "hidden"
+          "dmxRange": [91, 104],
+          "type": "ColorWheelIndex",
+          "indexStart": 6,
+          "indexEnd": 7,
+          "colorsStart": ["#ffbf00"],
+          "colorsEnd": ["#ffff00"],
+          "comment": "Split Amber / Yellow"
         },
         {
-          "range": [190, 194],
-          "name": "Cyan",
-          "color": "#00ffff",
-          "menuClick": "hidden"
+          "dmxRange": [105, 105],
+          "type": "ColorWheelIndex",
+          "index": 7,
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
         },
         {
-          "range": [195, 199],
-          "name": "Green",
-          "color": "#00ff00",
-          "menuClick": "hidden"
+          "dmxRange": [106, 119],
+          "type": "ColorWheelIndex",
+          "indexStart": 7,
+          "indexEnd": 8,
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#90ee90"],
+          "comment": "Split Yellow / Light Green"
         },
         {
-          "range": [200, 204],
-          "name": "Light Green",
-          "color": "#90ee90",
-          "menuClick": "hidden"
+          "dmxRange": [120, 120],
+          "type": "ColorWheelIndex",
+          "index": 8,
+          "colors": ["#90ee90"],
+          "comment": "Light Green"
         },
         {
-          "range": [205, 209],
-          "name": "Yellow",
-          "color": "#ffff00",
-          "menuClick": "hidden"
+          "dmxRange": [121, 134],
+          "type": "ColorWheelIndex",
+          "indexStart": 8,
+          "indexEnd": 9,
+          "colorsStart": ["#90ee90"],
+          "colorsEnd": ["#00ff00"],
+          "comment": "Split Light Green / Green"
         },
         {
-          "range": [210, 214],
-          "name": "Amber",
-          "color": "#ffbf00",
-          "menuClick": "hidden"
+          "dmxRange": [135, 135],
+          "type": "ColorWheelIndex",
+          "index": 9,
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [215, 219],
-          "name": "Orange",
-          "color": "#ff7f00",
-          "menuClick": "hidden"
+          "dmxRange": [136, 149],
+          "type": "ColorWheelIndex",
+          "indexStart": 9,
+          "indexEnd": 10,
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#00ffff"],
+          "comment": "Split Green / Cyan"
         },
         {
-          "range": [220, 224],
-          "name": "Red",
-          "color": "#ff0000",
-          "menuClick": "hidden"
+          "dmxRange": [150, 150],
+          "type": "ColorWheelIndex",
+          "index": 10,
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
         },
         {
-          "range": [225, 229],
-          "name": "Pink",
-          "color": "#ffc0cb",
-          "menuClick": "hidden"
+          "dmxRange": [151, 164],
+          "type": "ColorWheelIndex",
+          "indexStart": 10,
+          "indexEnd": 11,
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#0000ff"],
+          "comment": "Split Cyan / Blue"
         },
         {
-          "range": [230, 234],
-          "name": "Magenta",
-          "color": "#ca1f7b",
-          "menuClick": "hidden"
+          "dmxRange": [165, 165],
+          "type": "ColorWheelIndex",
+          "index": 11,
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
-          "range": [235, 239],
-          "name": "White",
-          "color": "#ffffff",
-          "menuClick": "hidden"
+          "dmxRange": [166, 179],
+          "type": "ColorWheelIndex",
+          "indexStart": 11,
+          "indexEnd": 12,
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#00008b"],
+          "comment": "Split Blue / Dark Blue"
         },
         {
-          "range": [240, 255],
-          "name": "Black",
-          "color": "#000000",
-          "menuClick": "hidden"
+          "dmxRange": [180, 184],
+          "type": "ColorWheelIndex",
+          "index": 12,
+          "colors": ["#00008b"],
+          "comment": "Dark Blue"
+        },
+        {
+          "dmxRange": [185, 189],
+          "type": "ColorWheelIndex",
+          "index": 11,
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [190, 194],
+          "type": "ColorWheelIndex",
+          "index": 10,
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [195, 199],
+          "type": "ColorWheelIndex",
+          "index": 9,
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [200, 204],
+          "type": "ColorWheelIndex",
+          "index": 8,
+          "colors": ["#90ee90"],
+          "comment": "Light Green"
+        },
+        {
+          "dmxRange": [205, 209],
+          "type": "ColorWheelIndex",
+          "index": 7,
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [210, 214],
+          "type": "ColorWheelIndex",
+          "index": 6,
+          "colors": ["#ffbf00"],
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [215, 219],
+          "type": "ColorWheelIndex",
+          "index": 5,
+          "colors": ["#ff7f00"],
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [220, 224],
+          "type": "ColorWheelIndex",
+          "index": 4,
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [225, 229],
+          "type": "ColorWheelIndex",
+          "index": 3,
+          "colors": ["#ffc0cb"],
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [230, 234],
+          "type": "ColorWheelIndex",
+          "index": 2,
+          "colors": ["#ca1f7b"],
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [235, 239],
+          "type": "ColorWheelIndex",
+          "index": 1,
+          "colors": ["#ffffff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "colors": ["#000000"],
+          "comment": "Black"
         }
       ]
     },
     "Gobo": {
-      "type": "Gobo",
       "capabilities": [
         {
-          "range": [0, 22],
-          "name": "Dimmer"
+          "dmxRange": [0, 0],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Closed"
         },
         {
-          "range": [23, 37],
-          "name": "Dot",
-          "menuClick": "center"
+          "dmxRange": [1, 14],
+          "type": "GoboIndex",
+          "indexStart": 0,
+          "indexEnd": 1,
+          "comment": "Split Closed / Open"
         },
         {
-          "range": [38, 52],
-          "name": "Line",
-          "menuClick": "center"
+          "dmxRange": [15, 15],
+          "type": "GoboIndex",
+          "index": 1,
+          "comment": "Open"
         },
         {
-          "range": [53, 67],
-          "name": "Stars",
-          "menuClick": "center"
+          "dmxRange": [16, 29],
+          "type": "GoboIndex",
+          "indexStart": 1,
+          "indexEnd": 2,
+          "comment": "Split Open / Dot"
         },
         {
-          "range": [68, 82],
-          "name": "Triangles",
-          "menuClick": "center"
+          "dmxRange": [30, 30],
+          "type": "GoboIndex",
+          "index": 2,
+          "comment": "Dot"
         },
         {
-          "range": [83, 97],
-          "name": "Star",
-          "menuClick": "center"
+          "dmxRange": [31, 44],
+          "type": "GoboIndex",
+          "indexStart": 2,
+          "indexEnd": 3,
+          "comment": "Split Dot / Line"
         },
         {
-          "range": [98, 112],
-          "name": "Dots",
-          "menuClick": "center"
+          "dmxRange": [45, 45],
+          "type": "GoboIndex",
+          "index": 3,
+          "comment": "Line"
         },
         {
-          "range": [113, 127],
-          "name": "Bells",
-          "menuClick": "center"
+          "dmxRange": [46, 59],
+          "type": "GoboIndex",
+          "indexStart": 3,
+          "indexEnd": 4,
+          "comment": "Split Line / Stars"
         },
         {
-          "range": [128, 142],
-          "name": "Cone",
-          "menuClick": "center"
+          "dmxRange": [60, 60],
+          "type": "GoboIndex",
+          "index": 4,
+          "comment": "Stars"
         },
         {
-          "range": [143, 157],
-          "name": "Phone",
-          "menuClick": "center"
+          "dmxRange": [61, 74],
+          "type": "GoboIndex",
+          "indexStart": 4,
+          "indexEnd": 5,
+          "comment": "Split Stars / Triangles"
         },
         {
-          "range": [158, 172],
-          "name": "Window",
-          "menuClick": "center"
+          "dmxRange": [75, 75],
+          "type": "GoboIndex",
+          "index": 5,
+          "comment": "Triangles"
         },
         {
-          "range": [173, 184],
-          "name": "Triangle",
-          "menuClick": "center"
+          "dmxRange": [76, 89],
+          "type": "GoboIndex",
+          "indexStart": 5,
+          "indexEnd": 6,
+          "comment": "Split Triangles / Star"
         },
         {
-          "range": [185, 189],
-          "name": "Window",
-          "menuClick": "hidden"
+          "dmxRange": [90, 90],
+          "type": "GoboIndex",
+          "index": 6,
+          "comment": "Star"
         },
         {
-          "range": [190, 194],
-          "name": "Phone",
-          "menuClick": "hidden"
+          "dmxRange": [91, 104],
+          "type": "GoboIndex",
+          "indexStart": 6,
+          "indexEnd": 7,
+          "comment": "Split Star / Dots"
         },
         {
-          "range": [195, 199],
-          "name": "Cone",
-          "menuClick": "hidden"
+          "dmxRange": [105, 105],
+          "type": "GoboIndex",
+          "index": 7,
+          "comment": "Dots"
         },
         {
-          "range": [200, 204],
-          "name": "Bells",
-          "menuClick": "hidden"
+          "dmxRange": [106, 119],
+          "type": "GoboIndex",
+          "indexStart": 7,
+          "indexEnd": 8,
+          "comment": "Split Dots / Bells"
         },
         {
-          "range": [205, 209],
-          "name": "Dots",
-          "menuClick": "hidden"
+          "dmxRange": [120, 120],
+          "type": "GoboIndex",
+          "index": 8,
+          "comment": "Bells"
         },
         {
-          "range": [210, 214],
-          "name": "Star",
-          "menuClick": "hidden"
+          "dmxRange": [121, 134],
+          "type": "GoboIndex",
+          "indexStart": 8,
+          "indexEnd": 9,
+          "comment": "Split Bells / Cone"
         },
         {
-          "range": [215, 219],
-          "name": "Triangles",
-          "menuClick": "hidden"
+          "dmxRange": [135, 135],
+          "type": "GoboIndex",
+          "index": 9,
+          "comment": "Cone"
         },
         {
-          "range": [220, 224],
-          "name": "Stars",
-          "menuClick": "hidden"
+          "dmxRange": [136, 149],
+          "type": "GoboIndex",
+          "indexStart": 9,
+          "indexEnd": 10,
+          "comment": "Split Cone / Phone"
         },
         {
-          "range": [225, 229],
-          "name": "Line",
-          "menuClick": "hidden"
+          "dmxRange": [150, 150],
+          "type": "GoboIndex",
+          "index": 10,
+          "comment": "Phone"
         },
         {
-          "range": [230, 234],
-          "name": "Dot",
-          "menuClick": "hidden"
+          "dmxRange": [151, 164],
+          "type": "GoboIndex",
+          "indexStart": 10,
+          "indexEnd": 11,
+          "comment": "Split Phone / Window"
         },
         {
-          "range": [235, 239],
-          "name": "open",
-          "color": "#ffffff",
-          "menuClick": "hidden"
+          "dmxRange": [165, 165],
+          "type": "GoboIndex",
+          "index": 11,
+          "comment": "Window"
         },
         {
-          "range": [240, 255],
-          "name": "closed",
-          "color": "#000000",
-          "menuClick": "hidden"
+          "dmxRange": [166, 179],
+          "type": "GoboIndex",
+          "indexStart": 11,
+          "indexEnd": 12,
+          "comment": "Split Window / Triangle"
+        },
+        {
+          "dmxRange": [180, 184],
+          "type": "GoboIndex",
+          "index": 12,
+          "comment": "Triangle"
+        },
+        {
+          "dmxRange": [185, 189],
+          "type": "GoboIndex",
+          "index": 11,
+          "comment": "Window"
+        },
+        {
+          "dmxRange": [190, 194],
+          "type": "GoboIndex",
+          "index": 10,
+          "comment": "Phone"
+        },
+        {
+          "dmxRange": [195, 199],
+          "type": "GoboIndex",
+          "index": 9,
+          "comment": "Cone"
+        },
+        {
+          "dmxRange": [200, 204],
+          "type": "GoboIndex",
+          "index": 8,
+          "comment": "Bells"
+        },
+        {
+          "dmxRange": [205, 209],
+          "type": "GoboIndex",
+          "index": 7,
+          "comment": "Dots"
+        },
+        {
+          "dmxRange": [210, 214],
+          "type": "GoboIndex",
+          "index": 6,
+          "comment": "Star"
+        },
+        {
+          "dmxRange": [215, 219],
+          "type": "GoboIndex",
+          "index": 5,
+          "comment": "Triangles"
+        },
+        {
+          "dmxRange": [220, 224],
+          "type": "GoboIndex",
+          "index": 4,
+          "comment": "Stars"
+        },
+        {
+          "dmxRange": [225, 229],
+          "type": "GoboIndex",
+          "index": 3,
+          "comment": "Line"
+        },
+        {
+          "dmxRange": [230, 234],
+          "type": "GoboIndex",
+          "index": 2,
+          "comment": "Dot"
+        },
+        {
+          "dmxRange": [235, 239],
+          "type": "GoboIndex",
+          "index": 1,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Closed"
         }
       ]
     },
     "Pan": {
-      "type": "Pan",
-      "defaultValue": 127
+      "defaultValue": 127,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "173deg"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
-      "defaultValue": 127
+      "defaultValue": 127,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "83deg"
+      }
     },
     "Movement Speed": {
-      "type": "Speed",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "Tracking mode"
+          "dmxRange": [0, 0],
+          "type": "PanTiltSpeed",
+          "speed": "fast",
+          "comment": "Tracking mode"
         },
         {
-          "range": [1, 255],
-          "name": "fast-slow"
+          "dmxRange": [1, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         }
       ]
     },
     "Color/Gobo Speed": {
-      "type": "Speed",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "Tracking mode"
+          "dmxRange": [0, 0],
+          "type": "Speed",
+          "speed": "fast",
+          "comment": "Tracking mode"
         },
         {
-          "range": [1, 255],
-          "name": "fast-slow"
+          "dmxRange": [1, 255],
+          "type": "Speed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         }
       ]
     }
