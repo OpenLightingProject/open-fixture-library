@@ -102,8 +102,9 @@ function addChannel(xml, channel) {
     channel = channel.coarseChannel; // use coarse channel's data from here on
     capabilities = [
       new Capability({
-        range: [0, 255],
-        name: capabilityName
+        dmxRange: [0, 255],
+        type: `Generic`,
+        comment: capabilityName
       }, 0, channel)
     ];
   }
@@ -127,24 +128,21 @@ function addChannel(xml, channel) {
 }
 
 function addCapability(xmlChannel, cap) {
-  const range = cap.getRangeWithFineness(0);
+  const dmxRange = cap.getDmxRangeWithFineness(0);
 
   const xmlCapability = xmlChannel.element({
     Capability: {
-      '@Min': range.start,
-      '@Max': range.end,
+      '@Min': dmxRange.start,
+      '@Max': dmxRange.end,
       '#text': cap.name
     }
   });
 
-  if (cap.image !== null) {
-    xmlCapability.attribute(`Res`, cap.image);
-  }
-  else if (cap.color !== null) {
-    xmlCapability.attribute(`Color`, cap.color.hex().toLowerCase());
+  if (cap.colors !== null) {
+    xmlCapability.attribute(`Color`, cap.colors[0]);
 
-    if (cap.color2 !== null) {
-      xmlCapability.attribute(`Color2`, cap.color2.hex().toLowerCase());
+    if (cap.colors.length > 1) {
+      xmlCapability.attribute(`Color2`, cap.colors[1]);
     }
   }
 }
@@ -277,7 +275,6 @@ function getFixtureType(fixture) {
 function getChannelType(channel) {
   switch (channel.type) {
     case `Single Color`:
-    case `Color Temperature`:
     case `Fog`:
       return `Intensity`;
 
@@ -290,6 +287,7 @@ function getChannelType(channel) {
     case `Zoom`:
     case `Focus`:
     case `Iris`:
+    case `Color Temperature`:
       return `Beam`;
 
     default:
