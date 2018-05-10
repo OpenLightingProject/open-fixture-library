@@ -1,0 +1,109 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Winch LED Ball",
+  "shortName": "W-LED",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["VBT"],
+    "createDate": "2018-05-10",
+    "lastModifyDate": "2018-05-10"
+  },
+  "availableChannels": {
+    "RED": {
+      "type": "Single Color",
+      "color": "Red",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "RED"
+        }
+      ]
+    },
+    "GREEN": {
+      "type": "Single Color",
+      "color": "Green",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "GREEN"
+        }
+      ]
+    },
+    "BLUE": {
+      "type": "Single Color",
+      "color": "Blue",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "BLUE"
+        }
+      ]
+    },
+    "DIMMER": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "DIMMER"
+        }
+      ]
+    },
+    "Shutter/Strobe": {
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Shutter ON"
+        },
+        {
+          "range": [10, 19],
+          "name": "Shutter OFF"
+        },
+        {
+          "range": [20, 209],
+          "name": "Strobe"
+        },
+        {
+          "range": [210, 255],
+          "name": "Shutter ON"
+        }
+      ]
+    },
+    "Winch": {
+      "type": "Winch",
+      "capabilities": [
+        {
+          "range": [0, 180],
+          "name": "Length"
+        },
+        {
+          "range": [181, 255],
+          "name": "DO NOT USE"
+        }
+      ]
+    },
+    "Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Fast->Slow"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8 Channel",
+      "channels": [
+        "RED",
+        "GREEN",
+        "BLUE",
+        "DIMMER",
+        "Shutter/Strobe",
+        "Winch",
+        "Speed"
+      ]
+    }
+  ]
+}
