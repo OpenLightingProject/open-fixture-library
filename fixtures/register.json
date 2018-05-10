@@ -360,6 +360,11 @@
       "lastModifyDate": "2017-12-07",
       "lastAction": "created"
     },
+    "generic/winch-led-ball": {
+      "name": "Winch LED Ball",
+      "lastModifyDate": "2018-05-10",
+      "lastAction": "created"
+    },
     "glp/impression-laser": {
       "name": "impression Laser",
       "lastModifyDate": "2018-02-02",
@@ -728,7 +733,8 @@
       "rgb-fader",
       "rgba-fader",
       "rgbd-fader",
-      "rgbw-fader"
+      "rgbw-fader",
+      "winch-led-ball"
     ],
     "glp": [
       "impression-laser",
@@ -1037,7 +1043,8 @@
       "stairville/mh-x25"
     ],
     "Other": [
-      "chauvet-dj/corepar-uv-usb"
+      "chauvet-dj/corepar-uv-usb",
+      "generic/winch-led-ball"
     ],
     "Scanner": [
       "cameo/gobo-scanner-80",
@@ -1243,6 +1250,9 @@
     "Thilo Billerbeck": [
       "lightmaxx/dj-scan-led"
     ],
+    "VBT": [
+      "generic/winch-led-ball"
+    ],
     "eklynx": [
       "american-dj/galaxian-3d"
     ],
@@ -1323,6 +1333,7 @@
     }
   },
   "lastUpdated": [
+    "generic/winch-led-ball",
     "blizzard/puck-rgbaw",
     "nicols/led-bar-123-fc-ip",
     "minuit-une/ivl-carre",
