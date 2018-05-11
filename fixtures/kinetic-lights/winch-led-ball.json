@@ -12,53 +12,29 @@
   "availableChannels": {
     "Red": {
       "type": "Single Color",
-      "color": "Red",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Red"
-        }
-      ]
+      "color": "Red"
     },
     "Green": {
       "type": "Single Color",
-      "color": "Green",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Green"
-        }
-      ]
+      "color": "Green"
     },
     "Blue": {
       "type": "Single Color",
-      "color": "Blue",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Blue"
-        }
-      ]
+      "color": "Blue"
     },
     "Dimmer": {
-      "type": "Intensity",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Dimmer"
-        }
-      ]
+      "type": "Intensity"
     },
     "Shutter/Strobe": {
       "type": "Shutter",
       "capabilities": [
         {
           "range": [0, 9],
-          "name": "Shutter ON"
+          "name": "Shutter open"
         },
         {
           "range": [10, 19],
-          "name": "Shutter OFF"
+          "name": "Shutter closed"
         },
         {
           "range": [20, 209],
@@ -66,20 +42,21 @@
         },
         {
           "range": [210, 255],
-          "name": "Shutter ON"
+          "name": "Shutter open"
         }
       ]
     },
     "Winch": {
-      "type": "Winch",
+      "type": "Effect",
+      "fineChannelAliases": ["Winch fine"],
       "capabilities": [
         {
           "range": [0, 180],
-          "name": "Length"
+          "name": "Length 0…7m"
         },
         {
           "range": [181, 255],
-          "name": "DO NOT USE"
+          "name": "Reserved"
         }
       ]
     },
@@ -88,14 +65,15 @@
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "Fast->Slow"
+          "name": "0.5…0 m/s"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "8 Channel",
+      "name": "8-channel",
+      "shortName": "8ch",
       "channels": [
         "Red",
         "Green",
@@ -103,6 +81,7 @@
         "Dimmer",
         "Shutter/Strobe",
         "Winch",
+        "Winch fine",
         "Speed"
       ]
     }
