@@ -35,512 +35,660 @@
   },
   "availableChannels": {
     "Strobe / Shutter": {
-      "type": "Strobe",
       "capabilities": [
         {
-          "range": [0, 19],
-          "name": "Shutter closed (Lamp switches to 800 watt mode after shutter is closed for 10 seconds)"
+          "dmxRange": [0, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Lamp switches to 800 watt mode after shutter is closed for 10 seconds"
         },
         {
-          "range": [20, 49],
-          "name": "Shutter open"
+          "dmxRange": [20, 49],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [50, 200],
-          "name": "Strobe, slow>fast"
+          "dmxRange": [50, 200],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [201, 210],
-          "name": "Shutter open"
+          "dmxRange": [201, 210],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [211, 255],
-          "name": "Random strobe, slow>fast"
+          "dmxRange": [211, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "StrobeRandom",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Dimmer": {
-      "type": "Intensity",
-      "fineChannelAliases": ["Dimmer fine"]
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Cyan": {
-      "type": "Single Color",
-      "color": "Cyan"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
     },
     "Magenta": {
-      "type": "Single Color",
-      "color": "Magenta"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
     },
     "Yellow": {
-      "type": "Single Color",
-      "color": "Yellow"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
     },
     "CTO": {
-      "type": "Color Temperature",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "CTO, Open (6000 K)>warm (3200 K)"
-        }
-      ]
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "6000K",
+        "colorTemperatureEnd": "3200K"
+      }
     },
     "Color Wheel": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "Open"
+          "dmxRange": [0, 0],
+          "type": "ColorWheelIndex",
+          "index": 0
         },
         {
-          "range": [1, 14],
-          "name": "Open>Slot1"
+          "dmxRange": [1, 14],
+          "type": "ColorWheelIndex",
+          "indexStart": 0,
+          "indexEnd": 1
         },
         {
-          "range": [15, 15],
-          "name": "Open"
+          "dmxRange": [15, 15],
+          "type": "ColorWheelIndex",
+          "index": 1
         },
         {
-          "range": [16, 29],
-          "name": "Slot1>Slot2"
+          "dmxRange": [16, 29],
+          "type": "ColorWheelIndex",
+          "indexStart": 1,
+          "indexEnd": 2
         },
         {
-          "range": [30, 30],
-          "name": "Slot2"
+          "dmxRange": [30, 30],
+          "type": "ColorWheelIndex",
+          "index": 2
         },
         {
-          "range": [31, 44],
-          "name": "Slot2>Slot3"
+          "dmxRange": [31, 44],
+          "type": "ColorWheelIndex",
+          "indexStart": 2,
+          "indexEnd": 3
         },
         {
-          "range": [45, 45],
-          "name": "Slot3"
+          "dmxRange": [45, 45],
+          "type": "ColorWheelIndex",
+          "index": 3
         },
         {
-          "range": [46, 59],
-          "name": "Slot3>Slot4"
+          "dmxRange": [46, 59],
+          "type": "ColorWheelIndex",
+          "indexStart": 3,
+          "indexEnd": 4
         },
         {
-          "range": [60, 60],
-          "name": "Slot4"
+          "dmxRange": [60, 60],
+          "type": "ColorWheelIndex",
+          "index": 4
         },
         {
-          "range": [61, 74],
-          "name": "Slot4>Slot5"
+          "dmxRange": [61, 74],
+          "type": "ColorWheelIndex",
+          "indexStart": 4,
+          "indexEnd": 5
         },
         {
-          "range": [75, 75],
-          "name": "Slot5"
+          "dmxRange": [75, 75],
+          "type": "ColorWheelIndex",
+          "index": 5
         },
         {
-          "range": [76, 89],
-          "name": "Slot5>Slot6"
+          "dmxRange": [76, 89],
+          "type": "ColorWheelIndex",
+          "indexStart": 5,
+          "indexEnd": 6
         },
         {
-          "range": [90, 90],
-          "name": "Slot6"
+          "dmxRange": [90, 90],
+          "type": "ColorWheelIndex",
+          "index": 6
         },
         {
-          "range": [91, 104],
-          "name": "Slot6>Slot7"
+          "dmxRange": [91, 104],
+          "type": "ColorWheelIndex",
+          "indexStart": 6,
+          "indexEnd": 7
         },
         {
-          "range": [105, 105],
-          "name": "Slot7"
+          "dmxRange": [105, 105],
+          "type": "ColorWheelIndex",
+          "index": 7
         },
         {
-          "range": [106, 119],
-          "name": "Slot7>Open"
+          "dmxRange": [106, 119],
+          "type": "ColorWheelIndex",
+          "indexStart": 7,
+          "indexEnd": 8
         },
         {
-          "range": [120, 120],
-          "name": "Open"
+          "dmxRange": [120, 120],
+          "type": "ColorWheelIndex",
+          "index": 0
         },
         {
-          "range": [121, 125],
-          "name": "Slot1"
+          "dmxRange": [121, 125],
+          "type": "ColorWheelIndex",
+          "index": 1
         },
         {
-          "range": [126, 130],
-          "name": "Slot2"
+          "dmxRange": [126, 130],
+          "type": "ColorWheelIndex",
+          "index": 2
         },
         {
-          "range": [131, 135],
-          "name": "Slot3"
+          "dmxRange": [131, 135],
+          "type": "ColorWheelIndex",
+          "index": 3
         },
         {
-          "range": [136, 140],
-          "name": "Slot4"
+          "dmxRange": [136, 140],
+          "type": "ColorWheelIndex",
+          "index": 4
         },
         {
-          "range": [141, 145],
-          "name": "Slot5"
+          "dmxRange": [141, 145],
+          "type": "ColorWheelIndex",
+          "index": 5
         },
         {
-          "range": [146, 150],
-          "name": "Slot6"
+          "dmxRange": [146, 150],
+          "type": "ColorWheelIndex",
+          "index": 6
         },
         {
-          "range": [151, 155],
-          "name": "Slot7"
+          "dmxRange": [151, 155],
+          "type": "ColorWheelIndex",
+          "index": 7
         },
         {
-          "range": [156, 160],
-          "name": "Open"
+          "dmxRange": [156, 160],
+          "type": "ColorWheelIndex",
+          "index": 0
         },
         {
-          "range": [161, 200],
-          "name": "CW, Fast>Slow"
+          "dmxRange": [161, 200],
+          "type": "ColorWheelRotationSpeed",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
-          "range": [201, 203],
-          "name": "Stop, color wheel stops at current position"
+          "dmxRange": [201, 203],
+          "type": "ColorWheelRotationSpeed",
+          "speed": "stop"
         },
         {
-          "range": [204, 243],
-          "name": "CCW, Slow>Fast"
+          "dmxRange": [204, 243],
+          "type": "ColorWheelRotationSpeed",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         },
         {
-          "range": [244, 247],
-          "name": "Fast random color"
+          "dmxRange": [244, 247],
+          "type": "Effect",
+          "effectName": "Random color",
+          "speed": "fast"
         },
         {
-          "range": [248, 251],
-          "name": "Medium random color"
+          "dmxRange": [248, 251],
+          "type": "Effect",
+          "effectName": "Random color",
+          "speed": "50%"
         },
         {
-          "range": [252, 255],
-          "name": "Slow random color"
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectName": "Random color",
+          "speed": "slow"
         }
       ]
     },
     "Iris": {
-      "type": "Iris",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Iris, Open>Closed"
-        }
-      ]
+      "capability": {
+        "type": "Iris",
+        "openPercentStart": "open",
+        "openPercentEnd": "closed"
+      }
     },
     "Internal barndoor 1": {
-      "type": "Iris",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Barndoor 1, Out>In"
-        }
-      ]
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 1,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
     },
     "Internal barndoor 2": {
-      "type": "Iris",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Barndoor 2, Out>In"
-        }
-      ]
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 2,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
     },
     "Internal barndoors rotation": {
-      "type": "Iris",
       "defaultValue": 100,
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "-10deg > -1deg"
+          "dmxRange": [0, 9],
+          "type": "BladeSystemRotation",
+          "angleStart": "-10deg",
+          "angleEnd": "-1deg"
         },
         {
-          "range": [10, 10],
-          "name": "0deg"
+          "dmxRange": [10, 10],
+          "type": "BladeSystemRotation",
+          "angle": "0deg"
         },
         {
-          "range": [11, 99],
-          "name": "1deg > 89deg"
+          "dmxRange": [11, 99],
+          "type": "BladeSystemRotation",
+          "angleStart": "1deg",
+          "angleEnd": "89deg"
         },
         {
-          "range": [100, 100],
-          "name": "90deg"
+          "dmxRange": [100, 100],
+          "type": "BladeSystemRotation",
+          "angle": "90deg"
         },
         {
-          "range": [101, 189],
-          "name": "91deg > +179deg"
+          "dmxRange": [101, 189],
+          "type": "BladeSystemRotation",
+          "angleStart": "91deg",
+          "angleEnd": "179deg"
         },
         {
-          "range": [190, 190],
-          "name": "180deg"
+          "dmxRange": [190, 190],
+          "type": "BladeSystemRotation",
+          "angle": "180deg"
         },
         {
-          "range": [191, 200],
-          "name": "181deg > 190deg"
+          "dmxRange": [191, 200],
+          "type": "BladeSystemRotation",
+          "angleStart": "181deg",
+          "angleEnd": "190deg"
         },
         {
-          "range": [201, 255],
-          "name": "No function"
+          "dmxRange": [201, 255],
+          "type": "Nothing"
         }
       ]
     },
     "Zoom": {
-      "type": "Zoom",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Zoom, Flood > spot"
-        }
-      ]
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
     },
     "Focus": {
-      "type": "Focus",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Focus, Infinity > near"
-        }
-      ]
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "far",
+        "distanceEnd": "near"
+      }
     },
     "Pan": {
-      "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
       "defaultValue": 32768,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Pan, Left > right"
-        }
-      ]
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
       "defaultValue": 32768,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Tilt, Up > down"
-        }
-      ]
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "268deg"
+      }
     },
     "Fixture control / settings": {
-      "type": "Maintenance",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "No function (disables calibration) – 5 sec."
+          "dmxRange": [0, 9],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "No function (disables calibration)"
         },
         {
-          "range": [10, 14],
-          "name": "Reset entire fixture – 5 sec."
+          "dmxRange": [10, 14],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Reset entire fixture"
         },
         {
-          "range": [15, 19],
-          "name": "Reset dimmer and shutter only – 5 sec."
+          "dmxRange": [15, 19],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Reset dimmer and shutter only"
         },
         {
-          "range": [20, 24],
-          "name": "Reset color (CMY and CTO plus color wheel if fitted) only – 5 sec."
+          "dmxRange": [20, 24],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Reset color (CMY and CTO plus color wheel if fitted) only"
         },
         {
-          "range": [25, 29],
-          "name": "Reset beam (zoom, focus plus iris if fitted) only – 5 sec."
+          "dmxRange": [25, 29],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Reset beam (zoom, focus plus iris if fitted) only"
         },
         {
-          "range": [30, 34],
-          "name": "Reset pan and tilt only – 5 sec."
+          "dmxRange": [30, 34],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Reset pan and tilt only"
         },
         {
-          "range": [35, 39],
-          "name": "No function"
+          "dmxRange": [35, 39],
+          "type": "Nothing"
         },
         {
-          "range": [40, 44],
-          "name": "Lamp on"
+          "dmxRange": [40, 44],
+          "type": "Maintenance",
+          "comment": "Lamp on"
         },
         {
-          "range": [45, 49],
-          "name": "Lamp off – 5 sec."
+          "dmxRange": [45, 49],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Lamp off"
         },
         {
-          "range": [50, 54],
-          "name": "No function"
+          "dmxRange": [50, 54],
+          "type": "Nothing"
         },
         {
-          "range": [55, 59],
-          "name": "Enable calibration – 5 sec."
+          "dmxRange": [55, 59],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Enable calibration"
         },
         {
-          "range": [60, 64],
-          "name": "Linear dimming curve – 1 sec. (menu override, setting unaffected by power off/on)"
+          "dmxRange": [60, 64],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Linear dimming curve (menu override, setting unaffected by power off/on)"
         },
         {
-          "range": [65, 69],
-          "name": "Square law dimming curve – 1 sec. (menu override, factory default setting, setting unaffected by power off/on)"
+          "dmxRange": [65, 69],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Square law dimming curve (menu override, factory default setting, setting unaffected by power off/on)"
         },
         {
-          "range": [70, 74],
-          "name": "Inverse square law dimming curve – 1 sec. (menu override, setting unaffected by power off/on)"
+          "dmxRange": [70, 74],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Inverse square law dimming curve (menu override, setting unaffected by power off/on)"
         },
         {
-          "range": [75, 79],
-          "name": "S-curve dimming curve– 1 sec. (menu override, setting unaffected by power off/on)"
+          "dmxRange": [75, 79],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "S-curve dimming curv (menu override, setting unaffected by power off/on)"
         },
         {
-          "range": [80, 84],
-          "name": "Normal pan and tilt speed – 1 sec. (menu override - setting returns to MENU setting after power on/off)"
+          "dmxRange": [80, 84],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Normal pan and tilt speed (menu override - setting returns to MENU setting after power on/off)"
         },
         {
-          "range": [85, 89],
-          "name": "Fast pan and tilt speed – 1 sec. (default setting, menu override - setting returns to MENU setting after power on/off)"
+          "dmxRange": [85, 89],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Fast pan and tilt speed (default setting, menu override - setting returns to MENU setting after power on/off)"
         },
         {
-          "range": [90, 94],
-          "name": "Slow pan and tilt speed – 1 sec. (menu override - setting returns to MENU setting after power on/off)"
+          "dmxRange": [90, 94],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Slow pan and tilt speed (menu override - setting returns to MENU setting after power on/off)"
         },
         {
-          "range": [95, 99],
-          "name": "Effect shortcuts = ON – 1 sec. (default setting, menu override, setting stays at factory default ON at power off/on)"
+          "dmxRange": [95, 99],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Effect shortcuts = ON (default setting, menu override, setting stays at factory default ON at power off/on)"
         },
         {
-          "range": [100, 104],
-          "name": "Effect shortcuts = OFF – 1 sec. (menu override, setting returns to factory default ON at power off/on)"
+          "dmxRange": [100, 104],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Effect shortcuts = OFF (menu override, setting returns to factory default ON at power off/on)"
         },
         {
-          "range": [105, 109],
-          "name": "Disable zoom/focus linking– 1 sec."
+          "dmxRange": [105, 109],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Disable zoom/focus linkin"
         },
         {
-          "range": [110, 114],
-          "name": "Enable zoom/focus linking, near distance – 1 sec."
+          "dmxRange": [110, 114],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Enable zoom/focus linking, near distance"
         },
         {
-          "range": [115, 119],
-          "name": "Enable zoom/focus linking, medium distance (default setting) – 1 sec."
+          "dmxRange": [115, 119],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Enable zoom/focus linking, medium distance (default setting)"
         },
         {
-          "range": [120, 124],
-          "name": "Enable zoom/focus linking, far distance – 1 sec."
+          "dmxRange": [120, 124],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Enable zoom/focus linking, far distance"
         },
         {
-          "range": [125, 126],
-          "name": "Ballast output full, set to 100% (default setting)"
+          "dmxRange": [125, 126],
+          "type": "Maintenance",
+          "comment": "Ballast output full, set to 100% (default setting)"
         },
         {
-          "range": [127, 128],
-          "name": "Ballast output reduced to 90%"
+          "dmxRange": [127, 128],
+          "type": "Maintenance",
+          "comment": "Ballast output reduced to 90%"
         },
         {
-          "range": [129, 130],
-          "name": "Ballast output reduced to 80%"
+          "dmxRange": [129, 130],
+          "type": "Maintenance",
+          "comment": "Ballast output reduced to 80%"
         },
         {
-          "range": [131, 132],
-          "name": "Ballast output reduced to 70%"
+          "dmxRange": [131, 132],
+          "type": "Maintenance",
+          "comment": "Ballast output reduced to 70%"
         },
         {
-          "range": [133, 134],
-          "name": "Ballast output reduced to 60%"
+          "dmxRange": [133, 134],
+          "type": "Maintenance",
+          "comment": "Ballast output reduced to 60%"
         },
         {
-          "range": [135, 139],
-          "name": "Auto blackout = ON – 1 sec."
+          "dmxRange": [135, 139],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Auto blackout = ON"
         },
         {
-          "range": [140, 144],
-          "name": "Auto blackout = OFF – 1 sec. (default setting)"
+          "dmxRange": [140, 144],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Auto blackout = OFF (default setting)"
         },
         {
-          "range": [145, 149],
-          "name": "No function"
+          "dmxRange": [145, 149],
+          "type": "Nothing"
         },
         {
-          "range": [150, 154],
-          "name": "Turn on control panel display"
+          "dmxRange": [150, 154],
+          "type": "Maintenance",
+          "comment": "Turn on control panel display"
         },
         {
-          "range": [155, 159],
-          "name": "Turn off control panel display – 1 sec."
+          "dmxRange": [155, 159],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Turn off control panel display"
         },
         {
-          "range": [160, 164],
-          "name": "No function"
+          "dmxRange": [160, 164],
+          "type": "Nothing"
         },
         {
-          "range": [165, 169],
-          "name": "Store pan and tilt calibration – 5 sec."
+          "dmxRange": [165, 169],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store pan and tilt calibration"
         },
         {
-          "range": [170, 174],
-          "name": "Store dimmer calibration – 5 sec."
+          "dmxRange": [170, 174],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store dimmer calibration"
         },
         {
-          "range": [175, 179],
-          "name": "Store cyan calibration – 5 sec."
+          "dmxRange": [175, 179],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store cyan calibration"
         },
         {
-          "range": [180, 184],
-          "name": "Store magenta calibration – 5 sec."
+          "dmxRange": [180, 184],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store magenta calibration"
         },
         {
-          "range": [185, 189],
-          "name": "Store yellow calibration – 5 sec."
+          "dmxRange": [185, 189],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store yellow calibration"
         },
         {
-          "range": [190, 194],
-          "name": "Store CTC calibration – 5 sec."
+          "dmxRange": [190, 194],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store CTC calibration"
         },
         {
-          "range": [195, 199],
-          "name": "Store all CMY and CTC calibration – 5 sec."
+          "dmxRange": [195, 199],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store all CMY and CTC calibration"
         },
         {
-          "range": [200, 214],
-          "name": "No function"
+          "dmxRange": [200, 214],
+          "type": "Nothing"
         },
         {
-          "range": [215, 219],
-          "name": "Store internal barndoors calibration – 5 sec."
+          "dmxRange": [215, 219],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store internal barndoors calibration"
         },
         {
-          "range": [220, 224],
-          "name": "Store iris calibration – 5 sec."
+          "dmxRange": [220, 224],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store iris calibration"
         },
         {
-          "range": [225, 229],
-          "name": "Store focus calibration – 5 sec."
+          "dmxRange": [225, 229],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store focus calibration"
         },
         {
-          "range": [230, 234],
-          "name": "Store zoom calibration – 5 sec."
+          "dmxRange": [230, 234],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store zoom calibration"
         },
         {
-          "range": [235, 239],
-          "name": "Store pan calibration – 5 sec."
+          "dmxRange": [235, 239],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store pan calibration"
         },
         {
-          "range": [240, 244],
-          "name": "Store tilt calibration – 5 sec."
+          "dmxRange": [240, 244],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store tilt calibration"
         },
         {
-          "range": [245, 249],
-          "name": "Reset all calibration values to factory defaults – 5 sec."
+          "dmxRange": [245, 249],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Reset all calibration values to factory defaults"
         },
         {
-          "range": [250, 255],
-          "name": "No function"
+          "dmxRange": [250, 255],
+          "type": "Nothing"
         }
       ]
     },
     "Reserved for future use 1": {
-      "type": "Nothing"
+      "capability": {
+        "type": "Nothing"
+      }
     },
     "Reserved for future use 2": {
-      "type": "Nothing"
+      "capability": {
+        "type": "Nothing"
+      }
     },
     "Reserved for future use 3": {
-      "type": "Nothing"
+      "capability": {
+        "type": "Nothing"
+      }
     },
     "Reserved for future use 4": {
-      "type": "Nothing"
+      "capability": {
+        "type": "Nothing"
+      }
     },
     "Reserved for future use 5": {
-      "type": "Nothing"
+      "capability": {
+        "type": "Nothing"
+      }
     }
   },
   "modes": [
