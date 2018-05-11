@@ -9,42 +9,42 @@
     "lastModifyDate": "2018-05-10"
   },
   "availableChannels": {
-    "RED": {
+    "Red": {
       "type": "Single Color",
       "color": "Red",
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "RED"
+          "name": "Red"
         }
       ]
     },
-    "GREEN": {
+    "Green": {
       "type": "Single Color",
       "color": "Green",
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "GREEN"
+          "name": "Green"
         }
       ]
     },
-    "BLUE": {
+    "Blue": {
       "type": "Single Color",
       "color": "Blue",
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "BLUE"
+          "name": "Blue"
         }
       ]
     },
-    "DIMMER": {
+    "Dimmer": {
       "type": "Intensity",
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "DIMMER"
+          "name": "Dimmer"
         }
       ]
     },
@@ -96,10 +96,10 @@
     {
       "name": "8 Channel",
       "channels": [
-        "RED",
-        "GREEN",
-        "BLUE",
-        "DIMMER",
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
         "Shutter/Strobe",
         "Winch",
         "Speed"
