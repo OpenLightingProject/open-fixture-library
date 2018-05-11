@@ -1132,6 +1132,28 @@
     {
       "properties": {
         "dmxRange": {},
+        "type": { "enum": ["BeamAngle"] },
+        "comment": {},
+        "menuClick": {},
+        "switchChannels": {},
+        "helpWanted": {},
+        "angle": { "$ref": "definitions.json#/entities/beamAngle" },
+        "angleStart": { "$ref": "definitions.json#/entities/beamAngle" },
+        "angleEnd": { "$ref": "definitions.json#/entities/beamAngle" }
+      },
+      "oneOf": [
+        { "required": ["angle"] },
+        { "required": ["angleStart"] }
+      ],
+      "dependencies": {
+        "angleStart": ["angleEnd"],
+        "angleEnd": ["angleStart"]
+      },
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "dmxRange": {},
         "type": { "enum": ["RotationSpeed"] },
         "comment": {},
         "menuClick": {},

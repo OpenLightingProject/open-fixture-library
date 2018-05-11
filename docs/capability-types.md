@@ -135,6 +135,8 @@ Required properties are _italic_, the entity is written in (parentheses).
   * _fogOutput_ (FogOutput)
 * FogType
   * _fogType_: either `Fog` or `Haze`
+* BeamAngle
+  * _angle_ (BeamAngle)
 * RotationAngle
   * _angle_ (RotationAngle)
 * RotationSpeed

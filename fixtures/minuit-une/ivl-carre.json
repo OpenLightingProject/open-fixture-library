@@ -227,10 +227,9 @@
     "Gobo Beam Angle all": {
       "fineChannelAliases": ["Gobo Beam Angle all fine"],
       "capability": {
-        "type": "Zoom",
+        "type": "BeamAngle",
         "angleStart": "0deg",
-        "angleEnd": "360deg",
-        "helpWanted": "Maybe add a BeamAngle capability type?"
+        "angleEnd": "360deg"
       }
     },
     "Red Gobo": {
