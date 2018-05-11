@@ -360,11 +360,6 @@
       "lastModifyDate": "2017-12-07",
       "lastAction": "created"
     },
-    "generic/winch-led-ball": {
-      "name": "Winch LED Ball",
-      "lastModifyDate": "2018-05-10",
-      "lastAction": "created"
-    },
     "glp/impression-laser": {
       "name": "impression Laser",
       "lastModifyDate": "2018-02-02",
@@ -393,6 +388,11 @@
     "kam/gobotracer": {
       "name": "GoboTracer",
       "lastModifyDate": "2017-11-16",
+      "lastAction": "created"
+    },
+    "kinetic-lights/winch-led-ball": {
+      "name": "Winch LED",
+      "lastModifyDate": "2018-05-10",
       "lastAction": "created"
     },
     "lightmaxx/dj-scan-led": {
@@ -733,8 +733,7 @@
       "rgb-fader",
       "rgba-fader",
       "rgbd-fader",
-      "rgbw-fader",
-      "winch-led-ball"
+      "rgbw-fader"
     ],
     "glp": [
       "impression-laser",
@@ -751,6 +750,9 @@
     ],
     "kam": [
       "gobotracer"
+    ],
+    "kinetic-lights": [
+      "winch-led-ball"
     ],
     "lightmaxx": [
       "dj-scan-led",
@@ -1044,7 +1046,7 @@
     ],
     "Other": [
       "chauvet-dj/corepar-uv-usb",
-      "generic/winch-led-ball"
+      "kinetic-lights/winch-led-ball"
     ],
     "Scanner": [
       "cameo/gobo-scanner-80",
@@ -1251,7 +1253,7 @@
       "lightmaxx/dj-scan-led"
     ],
     "VBT": [
-      "generic/winch-led-ball"
+      "kinetic-lights/winch-led-ball"
     ],
     "eklynx": [
       "american-dj/galaxian-3d"
@@ -1333,7 +1335,7 @@
     }
   },
   "lastUpdated": [
-    "generic/winch-led-ball",
+    "kinetic-lights/winch-led-ball",
     "blizzard/puck-rgbaw",
     "nicols/led-bar-123-fc-ip",
     "minuit-une/ivl-carre",
