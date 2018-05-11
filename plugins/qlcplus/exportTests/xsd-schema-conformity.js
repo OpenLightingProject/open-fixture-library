@@ -1,7 +1,7 @@
 const https = require(`https`);
 const xsd = require(`libxml-xsd`);
 
-const SCHEMA_URL = `https://raw.githubusercontent.com/mcallegari/qlcplus/master/resources/schemas/fixture.xsd`;
+const SCHEMA_URL = `https://raw.githubusercontent.com/mcallegari/qlcplus/QLC+_4.11.2/resources/schemas/fixture.xsd`;
 
 module.exports = function testSchemaConformity(exportFileData) {
   return new Promise((resolve, reject) => {
