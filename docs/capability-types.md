@@ -88,6 +88,7 @@ Required properties are _italic_, the entity is written in (parentheses).
 * GoboShake
   * _index_ (Index)
   * speed (Speed)
+  * swingAngle (RotationAngle)
 * GoboStencilRotationAngle
   * _angle_ (RotationAngle)
 * GoboStencilRotationSpeed

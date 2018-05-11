@@ -632,18 +632,28 @@
         "indexEnd": { "$ref": "definitions.json#/entities/index" },
         "speed": { "$ref": "definitions.json#/entities/speed" },
         "speedStart": { "$ref": "definitions.json#/entities/speed" },
-        "speedEnd": { "$ref": "definitions.json#/entities/speed" }
+        "speedEnd": { "$ref": "definitions.json#/entities/speed" },
+        "swingAngle": { "$ref": "definitions.json#/entities/rotationAngle" },
+        "swingAngleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
+        "swingAngleEnd": { "$ref": "definitions.json#/entities/rotationAngle" }
       },
       "oneOf": [
         { "required": ["index"] },
         { "required": ["indexStart"] }
       ],
-      "not": { "required": ["speed", "speedStart"] },
+      "not": {
+        "anyOf": [
+          { "required": ["speed", "speedStart"] },
+          { "required": ["swingAngle", "swingAngleStart"] }
+        ]
+      },
       "dependencies": {
         "indexStart": ["indexEnd"],
         "indexEnd": ["indexStart"],
         "speedStart": ["speedEnd"],
-        "speedEnd": ["speedStart"]
+        "speedEnd": ["speedStart"],
+        "swingAngleStart": ["swingAngleEnd"],
+        "swingAngleEnd": ["swingAngleStart"]
       },
       "additionalProperties": false
     },
