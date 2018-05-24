@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Impression X4 Bar 10 (Normal Mode)",
-  "categories": ["Moving Head", "Color Changer", "Effect", "Strobe", "Matrix"],
+  "categories": ["Moving Head", "Color Changer", "Effect", "Strobe"],
   "meta": {
     "authors": ["Rummels Bucht Berlin"],
     "createDate": "2018-05-19",
@@ -12,11 +12,14 @@
   "physical": {
     "dimensions": [500, 240, 100],
     "weight": 8,
-    "power": 280,
+    "power": 200,
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "Osram Ostar RGBW multi-chip LED",
       "colorTemperature": 10000
+    },
+    "focus": {
+      "tiltMax": 210
     }
   },
   "availableChannels": {
