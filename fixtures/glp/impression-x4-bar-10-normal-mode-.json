@@ -23,7 +23,14 @@
     }
   },
   "matrix": {
-    "pixelCount": [10, 1, 1]
+    "pixelCount": [10, 1, 1],
+    "pixelGroups": {
+      "1 & 2": ["1", "2"],
+      "3 & 4": ["3", "4"],
+      "5 & 6": ["5", "6"],
+      "7 & 8": ["7", "8"],
+      "9 & 10": ["9", "10"]
+    }
   },
   "availableChannels": {
     "Tilt": {
@@ -742,7 +749,38 @@
     }
   },
   "templateChannels": {
-
+    "$pixelKey Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "$pixelKey Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "$pixelKey Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "$pixelKey White": {
+      "type": "Single Color",
+      "color": "White",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    }
   },
   "modes": [
     {
@@ -850,20 +888,106 @@
       ]
     },
     {
-      "name": "Single Pixel",
-      "shortName": "SPIX" // 48ch
-    },
-    {
-      "name": "Single Pixel High Resolution",
-      "shortName": "SPIXH" // 49ch
+      "name": "Dual Pixel",
+      "shortName": "DPIX",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Shutter",
+        "Intensity",
+        "CTO",
+        "Special",
+        "Crossfade",
+        "Zoom",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelGroup",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White"
+          ]
+        }
+      ]
     },
     {
       "name": "Dual Pixel High Resolution",
-      "shortName": "DPIXH" // 28ch
+      "shortName": "DPIXH",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Shutter",
+        "Intensity",
+        "Intensity fine",
+        "CTO",
+        "Special",
+        "Crossfade",
+        "Zoom",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelGroup",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White"
+          ]
+        }
+      ]
     },
     {
-      "name": "Dual Pixel",
-      "shortName": "DPIX" // 29ch
+      "name": "Single Pixel",
+      "shortName": "SPIX",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Shutter",
+        "Intensity",
+        "CTO",
+        "Special",
+        "Crossfade",
+        "Zoom",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Single Pixel High Resolution",
+      "shortName": "SPIXH",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Shutter",
+        "Intensity",
+        "Intensity fine",
+        "CTO",
+        "Special",
+        "Crossfade",
+        "Zoom",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White"
+          ]
+        }
+      ]
     }
   ]
 }
