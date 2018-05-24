@@ -83,27 +83,6 @@
     ]
   },
   {
-    "man": "eurolite",
-    "key": "led-tmh-x25",
-    "name": "LED TMH-X25",
-    "features": [
-      "channel-type-intensity",
-      "channel-type-single-color",
-      "channel-type-multi-color",
-      "channel-type-pan",
-      "channel-type-tilt",
-      "channel-type-strobe",
-      "channel-type-speed",
-      "channel-type-effect",
-      "channel-type-maintenance",
-      "fine-channel-alias",
-      "floating-point-weight",
-      "matrix-pixelCount",
-      "multiple-categories",
-      "reused-channels"
-    ]
-  },
-  {
     "man": "generic",
     "key": "rgbd-fader",
     "name": "RGBD Fader",
@@ -112,6 +91,28 @@
       "channel-type-single-color",
       "fine-channel-aliases",
       "no-physical-data",
+      "reused-channels"
+    ]
+  },
+  {
+    "man": "glp",
+    "key": "impression-x4-bar-10",
+    "name": "Impression X4 Bar 10",
+    "features": [
+      "channel-type-intensity",
+      "channel-type-single-color",
+      "channel-type-multi-color",
+      "channel-type-tilt",
+      "channel-type-zoom",
+      "channel-type-shutter",
+      "channel-type-color-temperature",
+      "channel-type-effect",
+      "channel-type-maintenance",
+      "fine-channel-alias",
+      "matrix-pixelCount",
+      "matrix-pixelGroups",
+      "multiple-categories",
+      "null-channels",
       "reused-channels"
     ]
   },
@@ -175,25 +176,30 @@
   },
   {
     "man": "robe",
-    "key": "robin-ledbeam-150",
-    "name": "Robin LEDBeam 150",
+    "key": "robin-600e-spot",
+    "name": "Robin 600E Spot",
     "features": [
       "channel-type-intensity",
       "channel-type-single-color",
       "channel-type-multi-color",
       "channel-type-pan",
       "channel-type-tilt",
+      "channel-type-focus",
       "channel-type-zoom",
-      "channel-type-strobe",
+      "channel-type-iris",
+      "channel-type-gobo",
+      "channel-type-prism",
+      "channel-type-shutter",
       "channel-type-speed",
       "channel-type-color-temperature",
+      "channel-type-effect",
       "channel-type-maintenance",
       "fine-channel-alias",
+      "fine-channel-capabilities",
       "floating-point-dimensions",
       "floating-point-weight",
-      "floating-point-lens-degrees",
       "multiple-categories",
-      "null-channels",
+      "rdm",
       "reused-channels"
     ]
   },
