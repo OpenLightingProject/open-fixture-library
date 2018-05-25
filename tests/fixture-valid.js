@@ -825,23 +825,25 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       },
       'Moving Head': {
         isSuggested: isMovingHead(),
+        isInvalid: isNotMovingHead(),
         suggestedPhrase: `focus.type is 'Head' or there's a Pan(Continuous) and a Tilt(Continuous) capability`,
-        invalidPhrase: `focus.type is not 'Head' or there's not a Pan(Continuous) and a Tilt(Continuous) capability`
+        invalidPhrase: `focus.type is not 'Head'`
       },
       'Scanner': {
         isSuggested: isScanner(),
+        isInvalid: isNotScanner(),
         suggestedPhrase: `focus.type is 'Mirror' or there's a Pan(Continuous) and a Tilt(Continuous) capability`,
-        invalidPhrase: `focus.type is not 'Mirror' or there's not a Pan(Continuous) and a Tilt(Continuous) capability`
+        invalidPhrase: `focus.type is not 'Mirror'`
       },
       'Smoke': {
         isSuggested: hasCapabilityPropertyValue(`fogType`, `Fog`),
-        suggestedPhrase: `a FogOn or FogType capability has fogType='Fog'`,
-        invalidPhrase: `no FogOn or FogType capability has fogType='Fog'`
+        suggestedPhrase: `a FogOn or FogType capability has fogType 'Fog'`,
+        invalidPhrase: `no FogOn or FogType capability has fogType 'Fog'`
       },
       'Hazer': {
         isSuggested: hasCapabilityPropertyValue(`fogType`, `Haze`),
-        suggestedPhrase: `a FogOn or FogType capability has fogType='Haze'`,
-        invalidPhrase: `no FogOn or FogType capability has fogType='Haze'`
+        suggestedPhrase: `a FogOn or FogType capability has fogType 'Haze'`,
+        invalidPhrase: `no FogOn or FogType capability has fogType 'Haze'`
       }
     };
 
@@ -849,11 +851,15 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       const categoryUsed = fixture.categories.includes(categoryName);
       const category = categories[categoryName];
 
+      if (!(`isInvalid` in category)) {
+        category.isInvalid = !category.isSuggested;
+      }
+
       if (!categoryUsed && category.isSuggested) {
         result.warnings.push(`Category '${categoryName}' suggested since ${category.suggestedPhrase}.`);
       }
-      else if (categoryUsed && !category.isSuggested) {
-        result.warnings.push(`Category '${categoryName}' invalid since ${category.invalidPhrase}.`);
+      else if (categoryUsed && category.isInvalid) {
+        result.errors.push(`Category '${categoryName}' invalid since ${category.invalidPhrase}.`);
       }
     }
 
@@ -875,6 +881,13 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
 
     /**
+     * @returns {!boolean} Whether the 'Moving Head' category is invalid.
+    */
+    function isNotMovingHead() {
+      return fixture.physical === null || fixture.physical.focusType !== `Head`;
+    }
+
+    /**
      * @returns {!boolean} Whether the 'Scanner' category is suggested.
     */
     function isScanner() {
@@ -882,6 +895,13 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       const hasOtherFocusType = fixture.physical !== null && fixture.physical.focusType !== null;
 
       return hasFocusTypeMirror || (hasPanTiltChannels() && !hasOtherFocusType);
+    }
+
+    /**
+     * @returns {!boolean} Whether the 'Scanner' category is invalid.
+    */
+    function isNotScanner() {
+      return fixture.physical === null || fixture.physical.focusType !== `Mirror`;
     }
 
     /**
