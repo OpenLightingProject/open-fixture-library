@@ -6,6 +6,7 @@
         <a
           :href="`${baseLink}.${plugin.key}`"
           :title="`Download ${plugin.name} fixture definition${isSingleFixture ? `` : `s`}`"
+          rel="nofollow"
           @click="blur($event)">
           {{ plugin.name }}
         </a>
