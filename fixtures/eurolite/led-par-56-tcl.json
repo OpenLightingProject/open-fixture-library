@@ -26,48 +26,57 @@
   },
   "availableChannels": {
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "Dimmer": {
-      "type": "Intensity",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
-    "Strobe": {
-      "type": "Strobe",
+    "Shutter": {
       "highlightValue": 220,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "ON"
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [1, 5],
-          "name": "Music control"
+          "dmxRange": [1, 5],
+          "type": "Effect",
+          "effectName": "Music control",
+          "soundControlled": true
         },
         {
-          "range": [6, 10],
-          "name": "ON",
-          "menuClick": "hidden"
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [11, 255],
-          "name": "Strobe 0-100%",
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
           "menuClick": "center"
         }
       ]
@@ -82,7 +91,7 @@
         "Green",
         "Blue",
         "Dimmer",
-        "Strobe"
+        "Shutter"
       ]
     },
     {
