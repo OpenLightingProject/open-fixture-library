@@ -828,6 +828,11 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         suggestedPhrase: `focus.type is 'Head' or there's a Pan(Continuous) and a Tilt(Continuous) capability`,
         invalidPhrase: `focus.type is not 'Head' or there's not a Pan(Continuous) and a Tilt(Continuous) capability`
       },
+      'Scanner': {
+        isSuggested: isScanner(),
+        suggestedPhrase: `focus.type is 'Mirror' or there's a Pan(Continuous) and a Tilt(Continuous) capability`,
+        invalidPhrase: `focus.type is not 'Mirror' or there's not a Pan(Continuous) and a Tilt(Continuous) capability`
+      },
       'Smoke': {
         isSuggested: hasCapabilityPropertyValue(`fogType`, `Fog`),
         suggestedPhrase: `a FogOn or FogType capability has fogType='Fog'`,
@@ -864,9 +869,28 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     */
     function isMovingHead() {
       const hasFocusTypeHead = fixture.physical !== null && fixture.physical.focusType === `Head`;
-      const hasPanTilt = (hasCapabilityOfType(`Pan`) || hasCapabilityOfType(`PanContinuous`))
-                      && (hasCapabilityOfType(`Tilt`) || hasCapabilityOfType(`TiltContinuous`));
-      return hasFocusTypeHead || hasPanTilt;
+      const hasOtherFocusType = fixture.physical !== null && fixture.physical.focusType !== null;
+
+      return hasFocusTypeHead || (hasPanTiltChannels() && !hasOtherFocusType);
+    }
+
+    /**
+     * @returns {!boolean} Whether the 'Scanner' category is suggested.
+    */
+    function isScanner() {
+      const hasFocusTypeMirror = fixture.physical !== null && fixture.physical.focusType === `Mirror`;
+      const hasOtherFocusType = fixture.physical !== null && fixture.physical.focusType !== null;
+
+      return hasFocusTypeMirror || (hasPanTiltChannels() && !hasOtherFocusType);
+    }
+
+    /**
+     * @returns {!boolean} Whether the fixture has both a Pan / PanContinuous and a Tilt / TiltContinuous channel.
+     */
+    function hasPanTiltChannels() {
+      const hasPan = hasCapabilityOfType(`Pan`) || hasCapabilityOfType(`PanContinuous`);
+      const hasTilt = hasCapabilityOfType(`Tilt`) || hasCapabilityOfType(`TiltContinuous`);
+      return hasPan && hasTilt;
     }
 
     /**
