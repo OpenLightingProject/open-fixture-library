@@ -1,6 +1,6 @@
 const xml2js = require(`xml2js`);
 
-module.exports.name = `QLC+`;
+module.exports.name = `QLC+ 4.11.2`;
 module.exports.version = `0.4.1`;
 
 module.exports.import = function importQLCplus(str, filename, resolve, reject) {

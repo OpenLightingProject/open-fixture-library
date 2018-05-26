@@ -36,7 +36,7 @@ app.use(compression({
 
 // ROUTES
 
-app.get(`/download.:format`, (request, response, next) => {
+app.get(`/download.:format([a-z0-9_.-]+)`, (request, response, next) => {
   const { format } = request.params;
 
   if (!plugins.exportPlugins.includes(format)) {
@@ -59,7 +59,7 @@ app.get(`/download.:format`, (request, response, next) => {
   downloadFiles(response, outfiles, format);
 });
 
-app.get(`/:manKey/:fixKey.:format`, (request, response, next) => {
+app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, (request, response, next) => {
   const { manKey, fixKey, format } = request.params;
 
   if (!(`${manKey}/${fixKey}` in register.filesystem)) {
