@@ -88,6 +88,10 @@
       "type": "string",
       "pattern": "^-?[0-9]+(\\.[0-9]+)?bpm$"
     },
+    "roundsPerMinute": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?rpm$"
+    },
     "seconds": {
       "type": "string",
       "pattern": "^-?[0-9]+(\\.[0-9]+)?s$"
@@ -130,7 +134,7 @@
     "rotationSpeed": {
       "oneOf": [
         { "$ref": "#/units/hertz" },
-        { "$ref": "#/units/beatsPerMinute" },
+        { "$ref": "#/units/roundsPerMinute" },
         { "$ref": "#/units/percent" },
         { "enum": ["fast CCW", "slow CCW", "stop", "slow CW", "fast CW"] }
       ]
