@@ -338,13 +338,13 @@
         },
         {
           "dmxRange": [128, 191],
-          "type": "GoboWheelRotationSpeed",
+          "type": "GoboWheelRotation",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         },
         {
           "dmxRange": [192, 255],
-          "type": "GoboWheelRotationSpeed",
+          "type": "GoboWheelRotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         }
@@ -355,18 +355,18 @@
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "GoboStencilRotationSpeed",
+          "type": "GoboStencilRotation",
           "speed": "stop"
         },
         {
           "dmxRange": [8, 119],
-          "type": "GoboStencilRotationSpeed",
+          "type": "GoboStencilRotation",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         },
         {
           "dmxRange": [120, 231],
-          "type": "GoboStencilRotationSpeed",
+          "type": "GoboStencilRotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         },

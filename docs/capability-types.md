@@ -91,14 +91,12 @@ Required properties are _italic_, the entity is written in (parentheses).
 * GoboShake
   * shakeAngle (SwingAngle)
   * shakeSpeed (Speed)
-* GoboStencilRotationAngle
-  * _angle_ (RotationAngle)
-* GoboStencilRotationSpeed
-  * _speed_ (RotationSpeed)
-* GoboWheelRotationAngle
-  * _angle_ (RotationAngle)
-* GoboWheelRotationSpeed
-  * _speed_ (RotationSpeed)
+* GoboStencilRotation
+  * _angle_ (RotationAngle) (can't be used together with speed)
+  * _speed_ (RotationSpeed) (can't be used together with angle)
+* GoboWheelRotation
+  * _angle_ (RotationAngle) (can't be used together with speed)
+  * _speed_ (RotationSpeed) (can't be used together with angle)
 * Focus
   * _distance_ (Distance)
 * Zoom
@@ -117,10 +115,9 @@ Required properties are _italic_, the entity is written in (parentheses).
 * PrismOn
   * angle (RotationAngle)
   * speed (RotationSpeed)
-* PrismRotationAngle
-  * _angle_ (RotationAngle)
-* PrismRotationSpeed
-  * _speed_ (RotationSpeed)
+* PrismRotation
+  * _angle_ (RotationAngle) (can't be used together with speed)
+  * _speed_ (RotationSpeed) (can't be used together with angle)
 * BladeInsertion
   * _insertion_ (Insertion)
   * _blade_: one of `Top`, `Right`, `Bottom`, `Left` or a number if the position is unknown
@@ -139,10 +136,9 @@ Required properties are _italic_, the entity is written in (parentheses).
   * _fogType_: either `Fog` or `Haze`
 * BeamAngle
   * _angle_ (BeamAngle)
-* RotationAngle
-  * _angle_ (RotationAngle)
-* RotationSpeed
-  * _speed_ (RotationSpeed)
+* Rotation
+  * _angle_ (RotationAngle) (can't be used together with speed)
+  * _speed_ (RotationSpeed) (can't be used together with angle)
 * Speed
   * _speed_ (Speed)
 * Time

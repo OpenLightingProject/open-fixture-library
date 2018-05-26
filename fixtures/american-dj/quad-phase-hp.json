@@ -125,30 +125,30 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speed": "stop"
         },
         {
           "dmxRange": [10, 120],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speedStart": "fast CW",
           "speedEnd": "slow CW"
         },
         {
           "dmxRange": [121, 134],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speed": "stop",
           "menuClick": "hidden"
         },
         {
           "dmxRange": [135, 245],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         },
         {
           "dmxRange": [246, 249],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speed": "stop",
           "menuClick": "hidden"
         },

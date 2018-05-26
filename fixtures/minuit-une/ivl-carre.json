@@ -192,7 +192,7 @@
       "fineChannelAliases": ["Index fine"],
       "defaultValue": 32767,
       "capability": {
-        "type": "RotationAngle",
+        "type": "Rotation",
         "angleStart": "0deg",
         "angleEnd": "360deg"
       }
@@ -205,17 +205,17 @@
         },
         {
           "dmxRange": [13, 122],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speed": "fast CCW"
         },
         {
           "dmxRange": [123, 133],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speed": "stop"
         },
         {
           "dmxRange": [134, 242],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speed": "fast CW"
         },
         {
@@ -275,7 +275,7 @@
       "fineChannelAliases": ["Index Red fine"],
       "defaultValue": 32767,
       "capability": {
-        "type": "RotationAngle",
+        "type": "Rotation",
         "angleStart": "0deg",
         "angleEnd": "360deg"
       }
@@ -328,17 +328,17 @@
         },
         {
           "dmxRange": [13, 122],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speed": "fast CCW"
         },
         {
           "dmxRange": [123, 133],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speed": "stop"
         },
         {
           "dmxRange": [134, 242],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speed": "fast CW"
         },
         {
@@ -351,7 +351,7 @@
       "fineChannelAliases": ["Index Green fine"],
       "defaultValue": 32767,
       "capability": {
-        "type": "RotationAngle",
+        "type": "Rotation",
         "angleStart": "0deg",
         "angleEnd": "360deg"
       }
@@ -365,17 +365,17 @@
         },
         {
           "dmxRange": [13, 122],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speed": "fast CCW"
         },
         {
           "dmxRange": [123, 133],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speed": "stop"
         },
         {
           "dmxRange": [134, 242],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speed": "fast CW"
         },
         {
@@ -427,7 +427,7 @@
       "fineChannelAliases": ["Index Blue fine"],
       "defaultValue": 32767,
       "capability": {
-        "type": "RotationAngle",
+        "type": "Rotation",
         "angleStart": "0deg",
         "angleEnd": "360deg"
       }
@@ -441,17 +441,17 @@
         },
         {
           "dmxRange": [13, 122],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speed": "fast CCW"
         },
         {
           "dmxRange": [123, 133],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speed": "stop"
         },
         {
           "dmxRange": [134, 242],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speed": "fast CW"
         },
         {

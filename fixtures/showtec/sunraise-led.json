@@ -195,18 +195,18 @@
         },
         {
           "dmxRange": [10, 119],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         },
         {
           "dmxRange": [120, 129],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speed": "stop"
         },
         {
           "dmxRange": [130, 255],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         }

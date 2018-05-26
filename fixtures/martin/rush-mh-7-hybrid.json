@@ -696,7 +696,7 @@
         },
         {
           "dmxRange": [192, 223],
-          "type": "GoboWheelRotationSpeed",
+          "type": "GoboWheelRotation",
           "speedStart": "fast CW",
           "speedEnd": "slow CW",
           "switchChannels": {
@@ -706,7 +706,7 @@
         },
         {
           "dmxRange": [224, 255],
-          "type": "GoboWheelRotationSpeed",
+          "type": "GoboWheelRotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW",
           "switchChannels": {
@@ -719,7 +719,7 @@
     "Rotating Gobo Indexing": {
       "fineChannelAliases": ["Rotating Gobo Indexing fine"],
       "capability": {
-        "type": "GoboStencilRotationAngle",
+        "type": "GoboStencilRotation",
         "angleStart": "0deg",
         "angleEnd": "360deg"
       }
@@ -729,29 +729,29 @@
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "GoboStencilRotationAngle",
+          "type": "GoboStencilRotation",
           "angle": "0deg"
         },
         {
           "dmxRange": [32, 93],
-          "type": "GoboStencilRotationSpeed",
+          "type": "GoboStencilRotation",
           "speedStart": "fast CW",
           "speedEnd": "slow CW"
         },
         {
           "dmxRange": [94, 127],
-          "type": "GoboStencilRotationSpeed",
+          "type": "GoboStencilRotation",
           "speed": "stop"
         },
         {
           "dmxRange": [128, 189],
-          "type": "GoboStencilRotationSpeed",
+          "type": "GoboStencilRotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         },
         {
           "dmxRange": [190, 255],
-          "type": "GoboStencilRotationAngle",
+          "type": "GoboStencilRotation",
           "angle": "90deg"
         }
       ]
@@ -1019,18 +1019,18 @@
         },
         {
           "dmxRange": [196, 217],
-          "type": "GoboWheelRotationSpeed",
+          "type": "GoboWheelRotation",
           "speedStart": "fast CW",
           "speedEnd": "slow CW"
         },
         {
           "dmxRange": [218, 221],
-          "type": "GoboWheelRotationSpeed",
+          "type": "GoboWheelRotation",
           "speed": "stop"
         },
         {
           "dmxRange": [222, 243],
-          "type": "GoboWheelRotationSpeed",
+          "type": "GoboWheelRotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         },
@@ -1106,7 +1106,7 @@
     "Rotating Prism Indexing": {
       "fineChannelAliases": ["Rotating Prism Indexing fine"],
       "capability": {
-        "type": "PrismRotationAngle",
+        "type": "PrismRotation",
         "angleStart": "0deg",
         "angleEnd": "360deg"
       }
@@ -1116,29 +1116,29 @@
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "PrismRotationAngle",
+          "type": "PrismRotation",
           "angle": "0deg"
         },
         {
           "dmxRange": [32, 93],
-          "type": "PrismRotationSpeed",
+          "type": "PrismRotation",
           "speedStart": "fast CW",
           "speedEnd": "slow CW"
         },
         {
           "dmxRange": [94, 127],
-          "type": "PrismRotationSpeed",
+          "type": "PrismRotation",
           "speed": "stop"
         },
         {
           "dmxRange": [128, 189],
-          "type": "PrismRotationSpeed",
+          "type": "PrismRotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         },
         {
           "dmxRange": [190, 255],
-          "type": "PrismRotationAngle",
+          "type": "PrismRotation",
           "angle": "90deg"
         }
       ]

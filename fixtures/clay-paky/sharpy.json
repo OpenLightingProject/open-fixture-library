@@ -424,18 +424,18 @@
         },
         {
           "dmxRange": [72, 113],
-          "type": "GoboWheelRotationSpeed",
+          "type": "GoboWheelRotation",
           "speedStart": "-60rpm",
           "speedEnd": "-5rpm"
         },
         {
           "dmxRange": [114, 117],
-          "type": "GoboWheelRotationSpeed",
+          "type": "GoboWheelRotation",
           "speed": "stop"
         },
         {
           "dmxRange": [118, 159],
-          "type": "GoboWheelRotationSpeed",
+          "type": "GoboWheelRotation",
           "speedStart": "5rpm",
           "speedEnd": "60rpm"
         },
@@ -562,53 +562,53 @@
       "capabilities": [
         {
           "dmxRange": [0, 20],
-          "type": "PrismRotationAngle",
+          "type": "PrismRotation",
           "angle": "0deg"
         },
         {
           "dmxRange": [21, 41],
-          "type": "PrismRotationAngle",
+          "type": "PrismRotation",
           "angle": "90deg"
         },
         {
           "dmxRange": [42, 62],
-          "type": "PrismRotationAngle",
+          "type": "PrismRotation",
           "angle": "180deg"
         },
         {
           "dmxRange": [63, 83],
-          "type": "PrismRotationAngle",
+          "type": "PrismRotation",
           "angle": "270deg"
         },
         {
           "dmxRange": [84, 104],
-          "type": "PrismRotationAngle",
+          "type": "PrismRotation",
           "angle": "360deg"
         },
         {
           "dmxRange": [105, 126],
-          "type": "PrismRotationAngle",
+          "type": "PrismRotation",
           "angle": "450deg"
         },
         {
           "dmxRange": [127, 127],
-          "type": "PrismRotationAngle",
+          "type": "PrismRotation",
           "angle": "540deg"
         },
         {
           "dmxRange": [128, 190],
-          "type": "PrismRotationSpeed",
+          "type": "PrismRotation",
           "speedStart": "-43rpm",
           "speedEnd": "-0.183rpm"
         },
         {
           "dmxRange": [191, 192],
-          "type": "PrismRotationSpeed",
+          "type": "PrismRotation",
           "speed": "stop"
         },
         {
           "dmxRange": [193, 255],
-          "type": "PrismRotationSpeed",
+          "type": "PrismRotation",
           "speedStart": "0.183rpm",
           "speedEnd": "43rpm"
         }

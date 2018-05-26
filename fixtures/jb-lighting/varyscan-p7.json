@@ -475,13 +475,13 @@
         },
         {
           "dmxRange": [192, 223],
-          "type": "GoboWheelRotationSpeed",
+          "type": "GoboWheelRotation",
           "speedStart": "fast CW",
           "speedEnd": "slow CW"
         },
         {
           "dmxRange": [224, 255],
-          "type": "GoboWheelRotationSpeed",
+          "type": "GoboWheelRotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         }
@@ -532,23 +532,23 @@
       "capabilities": [
         {
           "dmxRange": [0, 191],
-          "type": "GoboStencilRotationAngle",
+          "type": "GoboStencilRotation",
           "angleStart": "0deg",
           "angleEnd": "540deg"
         },
         {
           "dmxRange": [192, 222],
-          "type": "GoboStencilRotationSpeed",
+          "type": "GoboStencilRotation",
           "speed": "fast CW"
         },
         {
           "dmxRange": [223, 223],
-          "type": "GoboStencilRotationSpeed",
+          "type": "GoboStencilRotation",
           "speed": "stop"
         },
         {
           "dmxRange": [224, 255],
-          "type": "GoboStencilRotationSpeed",
+          "type": "GoboStencilRotation",
           "speed": "fast CCW"
         }
       ]
@@ -802,23 +802,23 @@
       "capabilities": [
         {
           "dmxRange": [0, 191],
-          "type": "PrismRotationAngle",
+          "type": "PrismRotation",
           "angleStart": "0deg",
           "angleEnd": "540deg"
         },
         {
           "dmxRange": [192, 222],
-          "type": "PrismRotationSpeed",
+          "type": "PrismRotation",
           "speed": "fast CW"
         },
         {
           "dmxRange": [223, 223],
-          "type": "PrismRotationSpeed",
+          "type": "PrismRotation",
           "speed": "stop"
         },
         {
           "dmxRange": [224, 255],
-          "type": "PrismRotationSpeed",
+          "type": "PrismRotation",
           "speed": "fast CCW"
         }
       ]

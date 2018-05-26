@@ -236,25 +236,25 @@
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "GoboStencilRotationAngle",
+          "type": "GoboStencilRotation",
           "angleStart": "0deg",
           "angleEnd": "360deg"
         },
         {
           "dmxRange": [128, 190],
-          "type": "GoboStencilRotationSpeed",
+          "type": "GoboStencilRotation",
           "speedStart": "fast CW",
           "speedEnd": "slow CW",
           "menuClick": "center"
         },
         {
           "dmxRange": [191, 192],
-          "type": "GoboStencilRotationSpeed",
+          "type": "GoboStencilRotation",
           "speed": "stop"
         },
         {
           "dmxRange": [193, 255],
-          "type": "GoboStencilRotationSpeed",
+          "type": "GoboStencilRotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW",
           "menuClick": "center"

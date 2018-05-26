@@ -660,42 +660,27 @@
     {
       "properties": {
         "dmxRange": {},
-        "type": { "enum": ["GoboStencilRotationAngle"] },
+        "type": { "enum": ["GoboStencilRotation"] },
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
         "helpWanted": {},
         "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
         "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
-        "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" }
-      },
-      "oneOf": [
-        { "required": ["angle"] },
-        { "required": ["angleStart"] }
-      ],
-      "dependencies": {
-        "angleStart": ["angleEnd"],
-        "angleEnd": ["angleStart"]
-      },
-      "additionalProperties": false
-    },
-    {
-      "properties": {
-        "dmxRange": {},
-        "type": { "enum": ["GoboStencilRotationSpeed"] },
-        "comment": {},
-        "menuClick": {},
-        "switchChannels": {},
-        "helpWanted": {},
+        "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
         "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
         "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
         "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" }
       },
       "oneOf": [
+        { "required": ["angle"] },
+        { "required": ["angleStart"] },
         { "required": ["speed"] },
         { "required": ["speedStart"] }
       ],
       "dependencies": {
+        "angleStart": ["angleEnd"],
+        "angleEnd": ["angleStart"],
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
       },
@@ -704,42 +689,27 @@
     {
       "properties": {
         "dmxRange": {},
-        "type": { "enum": ["GoboWheelRotationAngle"] },
+        "type": { "enum": ["GoboWheelRotation"] },
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
         "helpWanted": {},
         "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
         "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
-        "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" }
-      },
-      "oneOf": [
-        { "required": ["angle"] },
-        { "required": ["angleStart"] }
-      ],
-      "dependencies": {
-        "angleStart": ["angleEnd"],
-        "angleEnd": ["angleStart"]
-      },
-      "additionalProperties": false
-    },
-    {
-      "properties": {
-        "dmxRange": {},
-        "type": { "enum": ["GoboWheelRotationSpeed"] },
-        "comment": {},
-        "menuClick": {},
-        "switchChannels": {},
-        "helpWanted": {},
+        "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
         "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
         "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
         "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" }
       },
       "oneOf": [
+        { "required": ["angle"] },
+        { "required": ["angleStart"] },
         { "required": ["speed"] },
         { "required": ["speedStart"] }
       ],
       "dependencies": {
+        "angleStart": ["angleEnd"],
+        "angleEnd": ["angleStart"],
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
       },
@@ -924,42 +894,27 @@
     {
       "properties": {
         "dmxRange": {},
-        "type": { "enum": ["PrismRotationAngle"] },
+        "type": { "enum": ["PrismRotation"] },
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
         "helpWanted": {},
         "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
         "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
-        "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" }
-      },
-      "oneOf": [
-        { "required": ["angle"] },
-        { "required": ["angleStart"] }
-      ],
-      "dependencies": {
-        "angleStart": ["angleEnd"],
-        "angleEnd": ["angleStart"]
-      },
-      "additionalProperties": false
-    },
-    {
-      "properties": {
-        "dmxRange": {},
-        "type": { "enum": ["PrismRotationSpeed"] },
-        "comment": {},
-        "menuClick": {},
-        "switchChannels": {},
-        "helpWanted": {},
+        "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
         "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
         "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
         "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" }
       },
       "oneOf": [
+        { "required": ["angle"] },
+        { "required": ["angleStart"] },
         { "required": ["speed"] },
         { "required": ["speedStart"] }
       ],
       "dependencies": {
+        "angleStart": ["angleEnd"],
+        "angleEnd": ["angleStart"],
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
       },
@@ -1110,22 +1065,29 @@
     {
       "properties": {
         "dmxRange": {},
-        "type": { "enum": ["RotationAngle"] },
+        "type": { "enum": ["Rotation"] },
         "comment": {},
         "menuClick": {},
         "switchChannels": {},
         "helpWanted": {},
         "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
         "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
-        "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" }
+        "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
+        "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
+        "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
+        "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" }
       },
       "oneOf": [
         { "required": ["angle"] },
-        { "required": ["angleStart"] }
+        { "required": ["angleStart"] },
+        { "required": ["speed"] },
+        { "required": ["speedStart"] }
       ],
       "dependencies": {
         "angleStart": ["angleEnd"],
-        "angleEnd": ["angleStart"]
+        "angleEnd": ["angleStart"],
+        "speedStart": ["speedEnd"],
+        "speedEnd": ["speedStart"]
       },
       "additionalProperties": false
     },
@@ -1148,28 +1110,6 @@
       "dependencies": {
         "angleStart": ["angleEnd"],
         "angleEnd": ["angleStart"]
-      },
-      "additionalProperties": false
-    },
-    {
-      "properties": {
-        "dmxRange": {},
-        "type": { "enum": ["RotationSpeed"] },
-        "comment": {},
-        "menuClick": {},
-        "switchChannels": {},
-        "helpWanted": {},
-        "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
-        "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
-        "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" }
-      },
-      "oneOf": [
-        { "required": ["speed"] },
-        { "required": ["speedStart"] }
-      ],
-      "dependencies": {
-        "speedStart": ["speedEnd"],
-        "speedEnd": ["speedStart"]
       },
       "additionalProperties": false
     },
