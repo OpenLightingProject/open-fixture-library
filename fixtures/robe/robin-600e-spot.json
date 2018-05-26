@@ -720,48 +720,57 @@
         },
         {
           "dmxRange": [110, 119],
-          "type": "GoboShake",
-          "index": 1
+          "type": "GoboIndex",
+          "index": 1,
+          "shakeAngle": "wide"
         },
         {
           "dmxRange": [120, 129],
-          "type": "GoboShake",
-          "index": 2
+          "type": "GoboIndex",
+          "index": 2,
+          "shakeAngle": "wide"
         },
         {
           "dmxRange": [130, 139],
-          "type": "GoboShake",
-          "index": 3
+          "type": "GoboIndex",
+          "index": 3,
+          "shakeAngle": "wide"
         },
         {
           "dmxRange": [140, 149],
-          "type": "GoboShake",
-          "index": 4
+          "type": "GoboIndex",
+          "index": 4,
+          "shakeAngle": "wide"
         },
         {
           "dmxRange": [150, 159],
-          "type": "GoboShake",
-          "index": 5
+          "type": "GoboIndex",
+          "index": 5,
+          "shakeAngle": "wide"
         },
         {
           "dmxRange": [160, 169],
-          "type": "GoboShake",
-          "index": 6
+          "type": "GoboIndex",
+          "index": 6,
+          "shakeAngle": "wide"
         },
         {
           "dmxRange": [170, 179],
-          "type": "GoboShake",
-          "index": 7
+          "type": "GoboIndex",
+          "index": 7,
+          "shakeAngle": "wide"
         },
         {
           "dmxRange": [180, 189],
-          "type": "GoboShake",
-          "index": 8
+          "type": "GoboIndex",
+          "index": 8,
+          "shakeAngle": "wide"
         },
         {
           "dmxRange": [190, 199],
-          "type": "GoboShake",
-          "index": 9
+          "type": "GoboIndex",
+          "index": 9,
+          "shakeAngle": "wide"
         },
         {
           "dmxRange": [200, 201],
@@ -818,6 +827,7 @@
           "dmxRange": [4, 7],
           "type": "GoboIndex",
           "index": 1,
+          "comment": "Gobo 1 indexing",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Indexing",
             "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
@@ -827,6 +837,7 @@
           "dmxRange": [8, 11],
           "type": "GoboIndex",
           "index": 2,
+          "comment": "Gobo 2 indexing",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Indexing",
             "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
@@ -836,6 +847,7 @@
           "dmxRange": [12, 15],
           "type": "GoboIndex",
           "index": 3,
+          "comment": "Gobo 3 indexing",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Indexing",
             "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
@@ -845,6 +857,7 @@
           "dmxRange": [16, 19],
           "type": "GoboIndex",
           "index": 4,
+          "comment": "Gobo 4 indexing",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Indexing",
             "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
@@ -854,6 +867,7 @@
           "dmxRange": [20, 23],
           "type": "GoboIndex",
           "index": 5,
+          "comment": "Gobo 5 indexing",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Indexing",
             "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
@@ -863,6 +877,7 @@
           "dmxRange": [24, 27],
           "type": "GoboIndex",
           "index": 6,
+          "comment": "Gobo 6 indexing",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Indexing",
             "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
@@ -872,6 +887,7 @@
           "dmxRange": [28, 31],
           "type": "GoboIndex",
           "index": 7,
+          "comment": "Gobo 7 indexing",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Indexing",
             "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
@@ -881,6 +897,7 @@
           "dmxRange": [32, 35],
           "type": "GoboIndex",
           "index": 1,
+          "comment": "Gobo 1 rotation",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Rotation",
             "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
@@ -890,6 +907,7 @@
           "dmxRange": [36, 39],
           "type": "GoboIndex",
           "index": 2,
+          "comment": "Gobo 2 rotation",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Rotation",
             "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
@@ -899,6 +917,7 @@
           "dmxRange": [40, 43],
           "type": "GoboIndex",
           "index": 3,
+          "comment": "Gobo 3 rotation",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Rotation",
             "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
@@ -908,6 +927,7 @@
           "dmxRange": [44, 47],
           "type": "GoboIndex",
           "index": 4,
+          "comment": "Gobo 4 rotation",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Rotation",
             "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
@@ -917,6 +937,7 @@
           "dmxRange": [48, 51],
           "type": "GoboIndex",
           "index": 5,
+          "comment": "Gobo 5 rotation",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Rotation",
             "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
@@ -926,6 +947,7 @@
           "dmxRange": [52, 55],
           "type": "GoboIndex",
           "index": 6,
+          "comment": "Gobo 6 rotation",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Rotation",
             "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
@@ -935,6 +957,7 @@
           "dmxRange": [56, 59],
           "type": "GoboIndex",
           "index": 7,
+          "comment": "Gobo 7 rotation",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Rotation",
             "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
@@ -942,8 +965,10 @@
         },
         {
           "dmxRange": [60, 69],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 1,
+          "shakeAngle": "wide",
+          "comment": "Gobo shake 1 indexing",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Indexing",
             "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
@@ -951,8 +976,10 @@
         },
         {
           "dmxRange": [70, 79],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 2,
+          "shakeAngle": "wide",
+          "comment": "Gobo shake 2 indexing",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Indexing",
             "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
@@ -960,8 +987,10 @@
         },
         {
           "dmxRange": [80, 89],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 3,
+          "shakeAngle": "wide",
+          "comment": "Gobo shake 3 indexing",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Indexing",
             "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
@@ -969,8 +998,10 @@
         },
         {
           "dmxRange": [90, 99],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 4,
+          "shakeAngle": "wide",
+          "comment": "Gobo shake 4 indexing",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Indexing",
             "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
@@ -978,8 +1009,10 @@
         },
         {
           "dmxRange": [100, 109],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 5,
+          "shakeAngle": "wide",
+          "comment": "Gobo shake 5 indexing",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Indexing",
             "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
@@ -987,8 +1020,10 @@
         },
         {
           "dmxRange": [110, 119],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 6,
+          "shakeAngle": "wide",
+          "comment": "Gobo shake 6 indexing",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Indexing",
             "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
@@ -996,8 +1031,10 @@
         },
         {
           "dmxRange": [120, 129],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 7,
+          "shakeAngle": "wide",
+          "comment": "Gobo shake 7 indexing",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Indexing",
             "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
@@ -1005,8 +1042,10 @@
         },
         {
           "dmxRange": [130, 139],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 1,
+          "shakeAngle": "wide",
+          "comment": "Gobo shake 1 rotation",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Rotation",
             "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
@@ -1014,8 +1053,10 @@
         },
         {
           "dmxRange": [140, 149],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 2,
+          "shakeAngle": "wide",
+          "comment": "Gobo shake 2 rotation",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Rotation",
             "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
@@ -1023,8 +1064,10 @@
         },
         {
           "dmxRange": [150, 159],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 3,
+          "shakeAngle": "wide",
+          "comment": "Gobo shake 3 rotation",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Rotation",
             "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
@@ -1032,8 +1075,10 @@
         },
         {
           "dmxRange": [160, 169],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 4,
+          "shakeAngle": "wide",
+          "comment": "Gobo shake 4 rotation",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Rotation",
             "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
@@ -1041,8 +1086,10 @@
         },
         {
           "dmxRange": [170, 179],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 5,
+          "shakeAngle": "wide",
+          "comment": "Gobo shake 5 rotation",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Rotation",
             "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
@@ -1050,8 +1097,10 @@
         },
         {
           "dmxRange": [180, 189],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 6,
+          "shakeAngle": "wide",
+          "comment": "Gobo shake 6 rotation",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Rotation",
             "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
@@ -1059,8 +1108,10 @@
         },
         {
           "dmxRange": [190, 199],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 7,
+          "shakeAngle": "wide",
+          "comment": "Gobo shake 7 rotation",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Rotation",
             "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"

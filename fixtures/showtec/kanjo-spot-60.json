@@ -163,52 +163,59 @@
         },
         {
           "dmxRange": [144, 159],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 1,
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "shakeAngle": "wide",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [160, 175],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 2,
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "shakeAngle": "wide",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [176, 191],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 3,
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "shakeAngle": "wide",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [192, 207],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 4,
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "shakeAngle": "wide",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [208, 223],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 5,
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "shakeAngle": "wide",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [224, 239],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 6,
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "shakeAngle": "wide",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [240, 255],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 7,
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "shakeAngle": "wide",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         }
       ]
     },

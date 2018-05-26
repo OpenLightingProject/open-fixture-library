@@ -147,9 +147,10 @@
         },
         {
           "dmxRange": [125, 234],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "indexStart": 1,
-          "indexEnd": 6
+          "indexEnd": 6,
+          "shakeAngle": "wide"
         },
         {
           "dmxRange": [235, 249],

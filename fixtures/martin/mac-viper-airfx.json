@@ -436,12 +436,12 @@
         },
         {
           "dmxRange": [60, 89],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 1,
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "swingAngleStart": "360deg",
-          "swingAngleEnd": "10deg",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "shakeAngleStart": "360deg",
+          "shakeAngleEnd": "10deg",
           "switchChannels": {
             "Aerial effects wheel: gobo indexing / rotation": "Aerial effects wheel: gobo indexing",
             "Aerial effects wheel: gobo indexing / rotation fine": "Aerial effects wheel: gobo indexing fine"
@@ -449,12 +449,12 @@
         },
         {
           "dmxRange": [90, 119],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 2,
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "swingAngleStart": "360deg",
-          "swingAngleEnd": "10deg",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "shakeAngleStart": "360deg",
+          "shakeAngleEnd": "10deg",
           "switchChannels": {
             "Aerial effects wheel: gobo indexing / rotation": "Aerial effects wheel: gobo indexing",
             "Aerial effects wheel: gobo indexing / rotation fine": "Aerial effects wheel: gobo indexing fine"
@@ -462,12 +462,12 @@
         },
         {
           "dmxRange": [120, 149],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 3,
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "swingAngleStart": "360deg",
-          "swingAngleEnd": "10deg",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "shakeAngleStart": "360deg",
+          "shakeAngleEnd": "10deg",
           "switchChannels": {
             "Aerial effects wheel: gobo indexing / rotation": "Aerial effects wheel: gobo indexing",
             "Aerial effects wheel: gobo indexing / rotation fine": "Aerial effects wheel: gobo indexing fine"
@@ -475,12 +475,12 @@
         },
         {
           "dmxRange": [150, 179],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 4,
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "swingAngleStart": "360deg",
-          "swingAngleEnd": "10deg",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "shakeAngleStart": "360deg",
+          "shakeAngleEnd": "10deg",
           "switchChannels": {
             "Aerial effects wheel: gobo indexing / rotation": "Aerial effects wheel: gobo indexing",
             "Aerial effects wheel: gobo indexing / rotation fine": "Aerial effects wheel: gobo indexing fine"
@@ -488,12 +488,12 @@
         },
         {
           "dmxRange": [180, 209],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 5,
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "swingAngleStart": "360deg",
-          "swingAngleEnd": "10deg",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "shakeAngleStart": "360deg",
+          "shakeAngleEnd": "10deg",
           "switchChannels": {
             "Aerial effects wheel: gobo indexing / rotation": "Aerial effects wheel: gobo indexing",
             "Aerial effects wheel: gobo indexing / rotation fine": "Aerial effects wheel: gobo indexing fine"
