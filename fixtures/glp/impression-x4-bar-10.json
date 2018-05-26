@@ -1,0 +1,997 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Impression X4 Bar 10",
+  "categories": ["Moving Head", "Color Changer", "Effect", "Strobe"],
+  "meta": {
+    "authors": ["Rummels Bucht Berlin"],
+    "createDate": "2018-05-26",
+    "lastModifyDate": "2018-05-26"
+  },
+  "comment": "impression X4 BAR 10 DMX chart (v1.6) from software version: v0.60",
+  "manualURL": "https://www.glp.de/en/products?format=raw&task=download&fid=112",
+  "physical": {
+    "dimensions": [500, 240, 100],
+    "weight": 8,
+    "power": 200,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "Osram Ostar RGBW multi-chip LED",
+      "colorTemperature": 10000
+    },
+    "lens": {
+      "degreesMinMax": [7, 50]
+    },
+    "focus": {
+      "type": "Head",
+      "tiltMax": 210
+    }
+  },
+  "matrix": {
+    "pixelCount": [10, 1, 1],
+    "pixelGroups": {
+      "1 & 2": ["1", "2"],
+      "3 & 4": ["3", "4"],
+      "5 & 6": ["5", "6"],
+      "7 & 8": ["7", "8"],
+      "9 & 10": ["9", "10"]
+    }
+  },
+  "availableChannels": {
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32768,
+      "crossfade": true,
+      "precedence": "LTP"
+    },
+    "Zoom": {
+      "type": "Zoom",
+      "defaultValue": 0,
+      "invert": true,
+      "crossfade": true,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Wide (flood) - narrow (spot)/50° - 7°"
+        }
+      ]
+    },
+    "CTO": {
+      "type": "Color Temperature",
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "No CTO"
+        },
+        {
+          "range": [8, 255],
+          "name": "Continuous color temperature correction"
+        }
+      ]
+    },
+    "Set 1 Color": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Colors adjustable via RGB"
+        },
+        {
+          "range": [8, 15],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [16, 23],
+          "name": "Amber",
+          "color": "#ffbf00"
+        },
+        {
+          "range": [24, 31],
+          "name": "Warm Yellow",
+          "color": "#f6cd8b"
+        },
+        {
+          "range": [32, 39],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [40, 47],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [48, 55],
+          "name": "Turquoise",
+          "color": "#40e0d0"
+        },
+        {
+          "range": [56, 63],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [64, 71],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [72, 79],
+          "name": "Lavender",
+          "color": "#e6e6fa"
+        },
+        {
+          "range": [80, 87],
+          "name": "Malve",
+          "color": "#b24662"
+        },
+        {
+          "range": [88, 95],
+          "name": "Magenta",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [96, 103],
+          "name": "Pink",
+          "color": "#ffc0cb"
+        },
+        {
+          "range": [104, 111],
+          "name": "White - CTO (3200K)",
+          "color": "#fffaf0"
+        },
+        {
+          "range": [112, 119],
+          "name": "White (5600K)",
+          "color": "#ffffff"
+        },
+        {
+          "range": [120, 127],
+          "name": "White - CTB (7200K)",
+          "color": "#f5f5f5"
+        },
+        {
+          "range": [128, 128],
+          "name": "Rainbow Effect Stop"
+        },
+        {
+          "range": [129, 223],
+          "name": "Rainbow Effect slow-fast"
+        },
+        {
+          "range": [224, 255],
+          "name": "Random colors slow-fast"
+        }
+      ]
+    },
+    "Set 1 Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "Set 1 Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "Set 1 Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "Set 1 White": {
+      "type": "Single Color",
+      "color": "White",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "Set 1 Intensity": {
+      "type": "Intensity",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "Shutter": {
+      "type": "Shutter",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": false,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "Shutter closed"
+        },
+        {
+          "range": [16, 47],
+          "name": "Shutter pulse random slow–fast"
+        },
+        {
+          "range": [48, 79],
+          "name": "Fade on, snap off (random patterns) slow–fast"
+        },
+        {
+          "range": [80, 111],
+          "name": "Snap on, fade off (random patterns) slow–fast"
+        },
+        {
+          "range": [112, 143],
+          "name": "Fade on, fade off (random patterns slow–fast"
+        },
+        {
+          "range": [144, 199],
+          "name": "Strobe random (5s - 0.1s)"
+        },
+        {
+          "range": [200, 239],
+          "name": "Strobe effect slow - fast (1Hz - 10Hz)"
+        },
+        {
+          "range": [240, 255],
+          "name": "Shutter open"
+        }
+      ]
+    },
+    "Intensity": {
+      "type": "Intensity",
+      "fineChannelAliases": ["Intensity fine"],
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "Special": {
+      "type": "Maintenance",
+      "defaultValue": 0,
+      "crossfade": false,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 3],
+          "name": "no mirror"
+        },
+        {
+          "range": [4, 7],
+          "name": "mirror color priority"
+        },
+        {
+          "range": [8, 11],
+          "name": "mirror color mixing"
+        },
+        {
+          "range": [12, 119],
+          "name": "nothing"
+        },
+        {
+          "range": [120, 123],
+          "name": "Tilt slow mode off (hold 3s)"
+        },
+        {
+          "range": [124, 127],
+          "name": "Tilt slow mode on (hold 3s)"
+        },
+        {
+          "range": [128, 131],
+          "name": "Tilt current off (hold 3s)"
+        },
+        {
+          "range": [132, 135],
+          "name": "Tilt current on (hold 3s)"
+        },
+        {
+          "range": [136, 139],
+          "name": "Tilt reset off (hold 3s)"
+        },
+        {
+          "range": [140, 143],
+          "name": "Tilt reset on (hold 3s)"
+        },
+        {
+          "range": [144, 147],
+          "name": "Display Flip off (hold 3s)"
+        },
+        {
+          "range": [148, 151],
+          "name": "Display Flip on (hold 3s)"
+        },
+        {
+          "range": [152, 155],
+          "name": "DMX Mode DPixH (HiRes)  (hold 3s)"
+        },
+        {
+          "range": [156, 159],
+          "name": "DMX Mode SPixH (HiRes) (hold 3s)"
+        },
+        {
+          "range": [160, 163],
+          "name": "DMX Mode High Resolution (hold 3s)"
+        },
+        {
+          "range": [164, 167],
+          "name": "DMX Mode Normal (hold 3s)"
+        },
+        {
+          "range": [168, 171],
+          "name": "DMX Mode Compressed  (hold 3s)"
+        },
+        {
+          "range": [172, 175],
+          "name": "DMX Mode DPix (hold 3s)"
+        },
+        {
+          "range": [176, 179],
+          "name": "DMX Mode SPix (hold 3s)"
+        },
+        {
+          "range": [180, 183],
+          "name": "Dimmer Curve ESoft (hold 3s)"
+        },
+        {
+          "range": [184, 187],
+          "name": "Dimmer Curve Soft (hold 3s)"
+        },
+        {
+          "range": [188, 191],
+          "name": "Dimmer Curve Lin  (hold 3s)"
+        },
+        {
+          "range": [192, 195],
+          "name": "X4 Compatibility off (hold 3s)"
+        },
+        {
+          "range": [196, 199],
+          "name": "X4 Compatibility on (hold 3s)"
+        },
+        {
+          "range": [200, 203],
+          "name": "Silent-Mode off (hold 3s)"
+        },
+        {
+          "range": [204, 207],
+          "name": "Silent-Mode on (hold 3s)"
+        },
+        {
+          "range": [208, 211],
+          "name": "Position Feedback off (hold 3s)"
+        },
+        {
+          "range": [212, 215],
+          "name": "Position Feedback on  (hold 3s)"
+        },
+        {
+          "range": [216, 219],
+          "name": "DMX hold off (hold 3s)"
+        },
+        {
+          "range": [220, 223],
+          "name": "DMX hold on (hold 3s)"
+        },
+        {
+          "range": [224, 227],
+          "name": "Tilt inverse off (hold 3s)"
+        },
+        {
+          "range": [228, 231],
+          "name": "Tilt inverse on (hold 3s)"
+        },
+        {
+          "range": [232, 235],
+          "name": "Pixel inverse off (hold 3s)"
+        },
+        {
+          "range": [236, 239],
+          "name": "Pixel inverse on (hold 3s)"
+        },
+        {
+          "range": [240, 243],
+          "name": "Zoom inverse off (hold 3s)"
+        },
+        {
+          "range": [244, 247],
+          "name": "Zoom inverse on (hold 3s)"
+        },
+        {
+          "range": [248, 251],
+          "name": "Fixture default (hold 3s)"
+        },
+        {
+          "range": [252, 255],
+          "name": "Fixture reset (hold 3s)"
+        }
+      ]
+    },
+    "Set 2 Color": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "crossfade": false,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Colors adjustable via RGB"
+        },
+        {
+          "range": [8, 15],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [16, 23],
+          "name": "Amber",
+          "color": "#ffbf00"
+        },
+        {
+          "range": [24, 31],
+          "name": "Warm Yellow",
+          "color": "#f6cd8b"
+        },
+        {
+          "range": [32, 39],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [40, 47],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [48, 55],
+          "name": "Turquoise",
+          "color": "#40e0d0"
+        },
+        {
+          "range": [56, 63],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [64, 71],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [72, 79],
+          "name": "Lavender",
+          "color": "#e6e6fa"
+        },
+        {
+          "range": [80, 87],
+          "name": "Malve",
+          "color": "#b24662"
+        },
+        {
+          "range": [88, 95],
+          "name": "Magenta",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [96, 103],
+          "name": "Pink",
+          "color": "#ffc0cb"
+        },
+        {
+          "range": [104, 111],
+          "name": "White - CTO"
+        },
+        {
+          "range": [112, 119],
+          "name": "White"
+        },
+        {
+          "range": [120, 127],
+          "name": "White - CTB"
+        },
+        {
+          "range": [128, 128],
+          "name": "Rainbow Effect Stop"
+        },
+        {
+          "range": [129, 223],
+          "name": "Rainbow Effect slow-fast"
+        },
+        {
+          "range": [224, 255],
+          "name": "Rainbow Effect slow-fast"
+        }
+      ]
+    },
+    "Set 2 Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "Set 2 Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "Set 2 Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "Set 2 White": {
+      "type": "Single Color",
+      "color": "White",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "Set 2 Intensity": {
+      "type": "Intensity",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "Set 3 Color": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "crossfade": false,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Colors adjustable via RGB"
+        },
+        {
+          "range": [8, 15],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [16, 23],
+          "name": "Amber",
+          "color": "#ffbf00"
+        },
+        {
+          "range": [24, 31],
+          "name": "Warm Yellow",
+          "color": "#f6cd8b"
+        },
+        {
+          "range": [32, 39],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [40, 47],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [48, 55],
+          "name": "Turquoise",
+          "color": "#40e0d0"
+        },
+        {
+          "range": [56, 63],
+          "name": "Cyan",
+          "color": "#00ffff"
+        },
+        {
+          "range": [64, 71],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [72, 79],
+          "name": "Lavender",
+          "color": "#e6e6fa"
+        },
+        {
+          "range": [80, 87],
+          "name": "Malve",
+          "color": "#b24662"
+        },
+        {
+          "range": [88, 95],
+          "name": "Magenta",
+          "color": "#ff00ff"
+        },
+        {
+          "range": [96, 103],
+          "name": "Pink",
+          "color": "#ffc0cb"
+        },
+        {
+          "range": [104, 111],
+          "name": "White - CTO (3200K)"
+        },
+        {
+          "range": [112, 119],
+          "name": "White (5600K)"
+        },
+        {
+          "range": [120, 127],
+          "name": "White - CTB (7200K)"
+        },
+        {
+          "range": [128, 128],
+          "name": "Rainbow Effect Stop"
+        },
+        {
+          "range": [129, 223],
+          "name": "Rainbow Effect slow-fast"
+        },
+        {
+          "range": [224, 255],
+          "name": "Random colors slow-fast"
+        }
+      ]
+    },
+    "Set 3 Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "Set 3 Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "Set 3 Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "Set 3 White": {
+      "type": "Single Color",
+      "color": "White",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "Set 3 Intensity": {
+      "type": "Intensity",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "Crossfade": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0..2 seconds transition time"
+        }
+      ]
+    },
+    "Star Effect": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Random internal shutter effect slow–fast"
+        }
+      ]
+    },
+    "Set 1 Pattern Select": {
+      "type": "Maintenance",
+      "defaultValue": 0,
+      "crossfade": false,
+      "precedence": "LTP"
+    },
+    "Set 1 Pattern Movement": {
+      "type": "Maintenance",
+      "defaultValue": 0,
+      "crossfade": false,
+      "precedence": "LTP"
+    },
+    "Set 2 Pattern Select": {
+      "type": "Maintenance",
+      "defaultValue": 0,
+      "crossfade": false,
+      "precedence": "LTP"
+    },
+    "Set 2 Pattern Movement": {
+      "type": "Maintenance",
+      "defaultValue": 0,
+      "crossfade": false,
+      "precedence": "LTP"
+    },
+    "Pixel Select 1 - 8": {
+      "type": "Maintenance",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": false,
+      "precedence": "LTP"
+    },
+    "Pixel Select 9 - 10": {
+      "type": "Maintenance",
+      "defaultValue": 0,
+      "crossfade": false,
+      "precedence": "LTP"
+    }
+  },
+  "templateChannels": {
+    "$pixelKey Red": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "$pixelKey Green": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "$pixelKey Blue": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "$pixelKey White": {
+      "type": "Single Color",
+      "color": "White",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "crossfade": true,
+      "precedence": "HTP"
+    }
+  },
+  "modes": [
+    {
+      "name": "Normal",
+      "shortName": "NORM",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Zoom",
+        "CTO",
+        "Set 1 Color",
+        "Set 1 Red",
+        "Set 1 Green",
+        "Set 1 Blue",
+        "Set 1 White",
+        "Set 1 Intensity",
+        "Shutter",
+        "Intensity",
+        "Special",
+        "Set 2 Color",
+        "Set 2 Red",
+        "Set 2 Green",
+        "Set 2 Blue",
+        "Set 2 White",
+        "Set 2 Intensity",
+        "Set 3 Color",
+        "Set 3 Red",
+        "Set 3 Green",
+        "Set 3 Blue",
+        "Set 3 White",
+        "Set 3 Intensity",
+        "Crossfade",
+        "Star Effect",
+        "Set 1 Pattern Select",
+        "Set 1 Pattern Movement",
+        "Set 2 Pattern Select",
+        "Set 2 Pattern Movement",
+        "Pixel Select 1 - 8",
+        "Pixel Select 9 - 10"
+      ]
+    },
+    {
+      "name": "Compressed",
+      "shortName": "COMP",
+      "channels": [
+        null,
+        null,
+        "Tilt",
+        "Tilt fine",
+        "Set 1 Color",
+        "Set 1 Red",
+        "Set 1 Green",
+        "Set 1 Blue",
+        "Set 1 White",
+        "Shutter",
+        "Intensity",
+        "CTO",
+        "Special",
+        "Crossfade",
+        "Set 1 Pattern Movement",
+        "Zoom",
+        "Set 1 Pattern Select",
+        "Pixel Select 1 - 8",
+        "Pixel Select 9 - 10"
+      ]
+    },
+    {
+      "name": "High Resolution",
+      "shortName": "HIRES",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Zoom",
+        "CTO",
+        "Set 1 Color",
+        "Set 1 Red",
+        "Set 1 Green",
+        "Set 1 Blue",
+        "Set 1 White",
+        "Set 1 Intensity",
+        "Shutter",
+        "Intensity",
+        "Intensity fine",
+        "Special",
+        "Set 2 Color",
+        "Set 2 Red",
+        "Set 2 Green",
+        "Set 2 Blue",
+        "Set 2 White",
+        "Set 2 Intensity",
+        "Set 3 Color",
+        "Set 3 Red",
+        "Set 3 Green",
+        "Set 3 Blue",
+        "Set 3 White",
+        "Set 3 Intensity",
+        "Crossfade",
+        "Star Effect",
+        "Set 1 Pattern Select",
+        "Set 1 Pattern Movement",
+        "Set 2 Pattern Select",
+        "Set 2 Pattern Movement",
+        "Pixel Select 1 - 8",
+        "Pixel Select 9 - 10"
+      ]
+    },
+    {
+      "name": "Dual Pixel",
+      "shortName": "DPIX",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Shutter",
+        "Intensity",
+        "CTO",
+        "Special",
+        "Crossfade",
+        "Zoom",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelGroup",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dual Pixel High Resolution",
+      "shortName": "DPIXH",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Shutter",
+        "Intensity",
+        "Intensity fine",
+        "CTO",
+        "Special",
+        "Crossfade",
+        "Zoom",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelGroup",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Single Pixel",
+      "shortName": "SPIX",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Shutter",
+        "Intensity",
+        "CTO",
+        "Special",
+        "Crossfade",
+        "Zoom",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Single Pixel High Resolution",
+      "shortName": "SPIXH",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Shutter",
+        "Intensity",
+        "Intensity fine",
+        "CTO",
+        "Special",
+        "Crossfade",
+        "Zoom",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White"
+          ]
+        }
+      ]
+    }
+  ]
+}
