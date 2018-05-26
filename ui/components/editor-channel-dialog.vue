@@ -390,7 +390,7 @@ export default {
       if (this.formstate.$invalid) {
         const firstErrorName = Object.keys(this.formstate.$error)[0];
         const field = document.querySelector(`[name=${firstErrorName}]`);
-        const scrollContainer = field.closest(`.dialog`);
+        const scrollContainer = field.closest(`dialog`);
 
         scrollIntoView(field, {
           time: 300,

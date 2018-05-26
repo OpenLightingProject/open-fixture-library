@@ -9,9 +9,7 @@
         :required="required || dimensionsSpecified"
         :hint="hints[0]"
         @focus.native="onFocus"
-        @blur.native="onBlur($event)"
-        @focusin.native.stop
-        @focusout.native.stop />
+        @blur.native="onBlur($event)" />
     </validate>
     &times;
     <validate :state="formstate" tag="span">
@@ -22,9 +20,7 @@
         :required="required || dimensionsSpecified"
         :hint="hints[1]"
         @focus.native="onFocus"
-        @blur.native="onBlur($event)"
-        @focusin.native.stop
-        @focusout.native.stop />
+        @blur.native="onBlur($event)" />
     </validate>
     &times;
     <validate :state="formstate" tag="span">
@@ -35,9 +31,7 @@
         :required="required || dimensionsSpecified"
         :hint="hints[2]"
         @focus.native="onFocus"
-        @blur.native="onBlur($event)"
-        @focusin.native.stop
-        @focusout.native.stop />
+        @blur.native="onBlur($event)" />
     </validate>
     {{ unit }}
   </span>

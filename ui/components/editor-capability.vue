@@ -229,6 +229,7 @@ export default {
     }
   },
   methods: {
+    // eslint-disable-next-line complexity
     onStartUpdated() {
       if (this.start === null) {
         const prevCap = this.capabilities[this.capIndex - 1];
@@ -257,6 +258,7 @@ export default {
         this.insertCapabilityBefore();
       }
     },
+    // eslint-disable-next-line complexity
     onEndUpdated() {
       if (this.end === null) {
         const nextCap = this.capabilities[this.capIndex + 1];
@@ -314,7 +316,7 @@ export default {
     insertCapabilityBefore() {
       this.spliceCapabilities(this.capIndex, 0, getEmptyCapability());
 
-      const dialog = this.$el.closest(`.dialog`);
+      const dialog = this.$el.closest(`dialog`);
       this.$nextTick(() => {
         const newCapability = dialog.querySelector(`.capability-editor`).children[this.capIndex - 1];
         dialog.scrollTop += newCapability.clientHeight;
