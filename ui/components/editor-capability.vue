@@ -314,7 +314,7 @@ export default {
     insertCapabilityBefore() {
       this.spliceCapabilities(this.capIndex, 0, getEmptyCapability());
 
-      const dialog = this.$el.closest(`.dialog`);
+      const dialog = this.$el.closest(`dialog`);
       this.$nextTick(() => {
         const newCapability = dialog.querySelector(`.capability-editor`).children[this.capIndex - 1];
         dialog.scrollTop += newCapability.clientHeight;
