@@ -152,3 +152,14 @@ Required properties are _italic_, the entity is written in (parentheses).
   * parameter (Factor)
   * hold (Time)
 * Generic
+
+
+### How to add new capability types / type-specific properties
+
+* Update the schema (mainly `capability.json`, `definitions.json` for units / entities)
+* Update this document
+* Add new properties to the model (in `Capability.mjs`)
+* If it's a start/end property, add its name to `Capability.START_END_PROPERTIES`
+* Add new types to capability name generation (in `Capability.mjs`)
+* Add new types to channel type generation (in `Channel.mjs`)
+* Update editor
