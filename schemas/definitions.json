@@ -188,6 +188,13 @@
         { "enum": ["closed", "narrow", "wide"] }
       ]
     },
+    "swingAngle": {
+      "oneOf": [
+        { "$ref": "#/units/degrees" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["closed", "narrow", "wide"] }
+      ]
+    },
     "factor": {
       "oneOf": [
         { "$ref": "#/units/nonNegativeNumber" },

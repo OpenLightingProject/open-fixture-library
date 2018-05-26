@@ -147,9 +147,10 @@
         },
         {
           "dmxRange": [125, 234],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "indexStart": 1,
-          "indexEnd": 6
+          "indexEnd": 6,
+          "shakeAngle": "wide"
         },
         {
           "dmxRange": [235, 249],
@@ -282,8 +283,8 @@
     "Mic Sensitivity": {
       "capability": {
         "type": "SoundSensitivity",
-        "sensitivityStart": "low",
-        "sensitivityEnd": "high"
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
       }
     }
   },

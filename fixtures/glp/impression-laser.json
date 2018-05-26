@@ -21,490 +21,578 @@
     "focus": {
       "type": "Head",
       "panMax": 660,
-      "tiltMax": 290
+      "tiltMax": 300
     }
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 32768
+      "defaultValue": 32768,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "660deg"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 32768
+      "defaultValue": 32768,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "300deg"
+      }
     },
     "Access": {
-      "type": "Maintenance",
       "defaultValue": 255,
       "capabilities": [
         {
-          "range": [0, 31],
-          "name": "Blackout"
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Blackout"
         },
         {
-          "range": [32, 95],
-          "name": "Basic range (8ch)"
+          "dmxRange": [32, 95],
+          "type": "Maintenance",
+          "comment": "Basic range (8ch)"
         },
         {
-          "range": [96, 159],
-          "name": "Standard range (12ch)"
+          "dmxRange": [96, 159],
+          "type": "Maintenance",
+          "comment": "Standard range (12ch)"
         },
         {
-          "range": [160, 223],
-          "name": "Extended range (16ch)"
+          "dmxRange": [160, 223],
+          "type": "Maintenance",
+          "comment": "Extended range (16ch)"
         },
         {
-          "range": [224, 255],
-          "name": "Full range (20ch)"
+          "dmxRange": [224, 255],
+          "type": "Maintenance",
+          "comment": "Full range (20ch)"
         }
       ]
     },
     "Folder": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "Page 1"
+          "dmxRange": [0, 15],
+          "type": "Effect",
+          "effectName": "Page 1"
         },
         {
-          "range": [16, 31],
-          "name": "Page 2"
+          "dmxRange": [16, 31],
+          "type": "Effect",
+          "effectName": "Page 2"
         },
         {
-          "range": [32, 47],
-          "name": "Page 3"
+          "dmxRange": [32, 47],
+          "type": "Effect",
+          "effectName": "Page 3"
         },
         {
-          "range": [48, 63],
-          "name": "Page 4"
+          "dmxRange": [48, 63],
+          "type": "Effect",
+          "effectName": "Page 4"
         },
         {
-          "range": [64, 79],
-          "name": "Page 5"
+          "dmxRange": [64, 79],
+          "type": "Effect",
+          "effectName": "Page 5"
         },
         {
-          "range": [80, 95],
-          "name": "Page 6"
+          "dmxRange": [80, 95],
+          "type": "Effect",
+          "effectName": "Page 6"
         },
         {
-          "range": [96, 111],
-          "name": "Page 7"
+          "dmxRange": [96, 111],
+          "type": "Effect",
+          "effectName": "Page 7"
         },
         {
-          "range": [112, 127],
-          "name": "Page 8"
+          "dmxRange": [112, 127],
+          "type": "Effect",
+          "effectName": "Page 8"
         },
         {
-          "range": [128, 255],
-          "name": "Page 9"
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Page 9"
         }
       ]
     },
     "File": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 32],
-          "name": "Blackout"
+          "dmxRange": [0, 32],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Blackout"
         },
         {
-          "range": [33, 36],
-          "name": "Cue 1"
+          "dmxRange": [33, 36],
+          "type": "Effect",
+          "effectName": "Cue 1"
         },
         {
-          "range": [37, 40],
-          "name": "Cue 2"
+          "dmxRange": [37, 40],
+          "type": "Effect",
+          "effectName": "Cue 2"
         },
         {
-          "range": [41, 44],
-          "name": "Cue 3"
+          "dmxRange": [41, 44],
+          "type": "Effect",
+          "effectName": "Cue 3"
         },
         {
-          "range": [45, 48],
-          "name": "Cue 4"
+          "dmxRange": [45, 48],
+          "type": "Effect",
+          "effectName": "Cue 4"
         },
         {
-          "range": [49, 52],
-          "name": "Cue 5"
+          "dmxRange": [49, 52],
+          "type": "Effect",
+          "effectName": "Cue 5"
         },
         {
-          "range": [53, 56],
-          "name": "Cue 6"
+          "dmxRange": [53, 56],
+          "type": "Effect",
+          "effectName": "Cue 6"
         },
         {
-          "range": [57, 60],
-          "name": "Cue 7"
+          "dmxRange": [57, 60],
+          "type": "Effect",
+          "effectName": "Cue 7"
         },
         {
-          "range": [61, 64],
-          "name": "Cue 8"
+          "dmxRange": [61, 64],
+          "type": "Effect",
+          "effectName": "Cue 8"
         },
         {
-          "range": [65, 68],
-          "name": "Cue 9"
+          "dmxRange": [65, 68],
+          "type": "Effect",
+          "effectName": "Cue 9"
         },
         {
-          "range": [69, 72],
-          "name": "Cue 10"
+          "dmxRange": [69, 72],
+          "type": "Effect",
+          "effectName": "Cue 10"
         },
         {
-          "range": [73, 76],
-          "name": "Cue 11"
+          "dmxRange": [73, 76],
+          "type": "Effect",
+          "effectName": "Cue 11"
         },
         {
-          "range": [77, 80],
-          "name": "Cue 12"
+          "dmxRange": [77, 80],
+          "type": "Effect",
+          "effectName": "Cue 12"
         },
         {
-          "range": [81, 84],
-          "name": "Cue 13"
+          "dmxRange": [81, 84],
+          "type": "Effect",
+          "effectName": "Cue 13"
         },
         {
-          "range": [85, 88],
-          "name": "Cue 14"
+          "dmxRange": [85, 88],
+          "type": "Effect",
+          "effectName": "Cue 14"
         },
         {
-          "range": [89, 92],
-          "name": "Cue 15"
+          "dmxRange": [89, 92],
+          "type": "Effect",
+          "effectName": "Cue 15"
         },
         {
-          "range": [93, 96],
-          "name": "Cue 16"
+          "dmxRange": [93, 96],
+          "type": "Effect",
+          "effectName": "Cue 16"
         },
         {
-          "range": [97, 100],
-          "name": "Cue 17"
+          "dmxRange": [97, 100],
+          "type": "Effect",
+          "effectName": "Cue 17"
         },
         {
-          "range": [101, 104],
-          "name": "Cue 18"
+          "dmxRange": [101, 104],
+          "type": "Effect",
+          "effectName": "Cue 18"
         },
         {
-          "range": [105, 108],
-          "name": "Cue 19"
+          "dmxRange": [105, 108],
+          "type": "Effect",
+          "effectName": "Cue 19"
         },
         {
-          "range": [109, 112],
-          "name": "Cue 20"
+          "dmxRange": [109, 112],
+          "type": "Effect",
+          "effectName": "Cue 20"
         },
         {
-          "range": [113, 116],
-          "name": "Cue 21"
+          "dmxRange": [113, 116],
+          "type": "Effect",
+          "effectName": "Cue 21"
         },
         {
-          "range": [117, 120],
-          "name": "Cue 22"
+          "dmxRange": [117, 120],
+          "type": "Effect",
+          "effectName": "Cue 22"
         },
         {
-          "range": [121, 124],
-          "name": "Cue 23"
+          "dmxRange": [121, 124],
+          "type": "Effect",
+          "effectName": "Cue 23"
         },
         {
-          "range": [125, 128],
-          "name": "Cue 24"
+          "dmxRange": [125, 128],
+          "type": "Effect",
+          "effectName": "Cue 24"
         },
         {
-          "range": [129, 132],
-          "name": "Cue 25"
+          "dmxRange": [129, 132],
+          "type": "Effect",
+          "effectName": "Cue 25"
         },
         {
-          "range": [133, 136],
-          "name": "Cue 26"
+          "dmxRange": [133, 136],
+          "type": "Effect",
+          "effectName": "Cue 26"
         },
         {
-          "range": [137, 140],
-          "name": "Cue 27"
+          "dmxRange": [137, 140],
+          "type": "Effect",
+          "effectName": "Cue 27"
         },
         {
-          "range": [141, 144],
-          "name": "Cue 28"
+          "dmxRange": [141, 144],
+          "type": "Effect",
+          "effectName": "Cue 28"
         },
         {
-          "range": [145, 148],
-          "name": "Cue 29"
+          "dmxRange": [145, 148],
+          "type": "Effect",
+          "effectName": "Cue 29"
         },
         {
-          "range": [149, 152],
-          "name": "Cue 30"
+          "dmxRange": [149, 152],
+          "type": "Effect",
+          "effectName": "Cue 30"
         },
         {
-          "range": [153, 156],
-          "name": "Cue 31"
+          "dmxRange": [153, 156],
+          "type": "Effect",
+          "effectName": "Cue 31"
         },
         {
-          "range": [157, 160],
-          "name": "Cue 32"
+          "dmxRange": [157, 160],
+          "type": "Effect",
+          "effectName": "Cue 32"
         },
         {
-          "range": [161, 164],
-          "name": "Cue 33"
+          "dmxRange": [161, 164],
+          "type": "Effect",
+          "effectName": "Cue 33"
         },
         {
-          "range": [165, 168],
-          "name": "Cue 34"
+          "dmxRange": [165, 168],
+          "type": "Effect",
+          "effectName": "Cue 34"
         },
         {
-          "range": [169, 172],
-          "name": "Cue 35"
+          "dmxRange": [169, 172],
+          "type": "Effect",
+          "effectName": "Cue 35"
         },
         {
-          "range": [173, 176],
-          "name": "Cue 36"
+          "dmxRange": [173, 176],
+          "type": "Effect",
+          "effectName": "Cue 36"
         },
         {
-          "range": [177, 180],
-          "name": "Cue 37"
+          "dmxRange": [177, 180],
+          "type": "Effect",
+          "effectName": "Cue 37"
         },
         {
-          "range": [181, 184],
-          "name": "Cue 38"
+          "dmxRange": [181, 184],
+          "type": "Effect",
+          "effectName": "Cue 38"
         },
         {
-          "range": [185, 188],
-          "name": "Cue 39"
+          "dmxRange": [185, 188],
+          "type": "Effect",
+          "effectName": "Cue 39"
         },
         {
-          "range": [189, 192],
-          "name": "Cue 40"
+          "dmxRange": [189, 192],
+          "type": "Effect",
+          "effectName": "Cue 40"
         },
         {
-          "range": [193, 196],
-          "name": "Cue 41"
+          "dmxRange": [193, 196],
+          "type": "Effect",
+          "effectName": "Cue 41"
         },
         {
-          "range": [197, 200],
-          "name": "Cue 42"
+          "dmxRange": [197, 200],
+          "type": "Effect",
+          "effectName": "Cue 42"
         },
         {
-          "range": [201, 204],
-          "name": "Cue 43"
+          "dmxRange": [201, 204],
+          "type": "Effect",
+          "effectName": "Cue 43"
         },
         {
-          "range": [205, 208],
-          "name": "Cue 44"
+          "dmxRange": [205, 208],
+          "type": "Effect",
+          "effectName": "Cue 44"
         },
         {
-          "range": [209, 212],
-          "name": "Cue 45"
+          "dmxRange": [209, 212],
+          "type": "Effect",
+          "effectName": "Cue 45"
         },
         {
-          "range": [213, 216],
-          "name": "Cue 46"
+          "dmxRange": [213, 216],
+          "type": "Effect",
+          "effectName": "Cue 46"
         },
         {
-          "range": [217, 220],
-          "name": "Cue 47"
+          "dmxRange": [217, 220],
+          "type": "Effect",
+          "effectName": "Cue 47"
         },
         {
-          "range": [221, 255],
-          "name": "Cue 48"
+          "dmxRange": [221, 255],
+          "type": "Effect",
+          "effectName": "Cue 48"
         }
       ]
     },
     "Playback Speed": {
-      "type": "Speed",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 16],
-          "name": "Normal speed"
+          "dmxRange": [0, 16],
+          "type": "EffectSpeed",
+          "speed": "100%",
+          "comment": "Normal speed"
         },
         {
-          "range": [17, 32],
-          "name": "Pause"
+          "dmxRange": [17, 32],
+          "type": "EffectSpeed",
+          "speed": "stop"
         },
         {
-          "range": [33, 127],
-          "name": "Speed 25-99%"
+          "dmxRange": [33, 127],
+          "type": "EffectSpeed",
+          "speedStart": "25%",
+          "speedEnd": "99%"
         },
         {
-          "range": [128, 128],
-          "name": "Speed 100%"
+          "dmxRange": [128, 128],
+          "type": "EffectSpeed",
+          "speed": "100%"
         },
         {
-          "range": [129, 255],
-          "name": "Speed 101-200%"
+          "dmxRange": [129, 255],
+          "type": "EffectSpeed",
+          "speedStart": "101%",
+          "speedEnd": "200%"
         }
       ]
     },
     "Intensity": {
-      "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Zoom": {
-      "type": "Zoom",
       "defaultValue": 128,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Zoom 0-100%"
-        }
-      ]
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow",
+        "helpWanted": "Is this the correct direction?"
+      }
     },
     "X Size": {
-      "type": "Intensity",
       "defaultValue": 0,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Size 0-100%"
-        }
-      ]
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "wide",
+        "angleEnd": "narrow",
+        "helpWanted": "Is this the correct direction?"
+      }
     },
     "Y Size": {
-      "type": "Intensity",
       "defaultValue": 0,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Size 0-100%"
-        }
-      ]
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "wide",
+        "angleEnd": "narrow",
+        "helpWanted": "Is this the correct direction?"
+      }
     },
     "Rotation": {
-      "type": "Intensity",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "0-360deg"
-        }
-      ]
+      "capability": {
+        "type": "RotationAngle",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
     },
     "X Position": {
-      "type": "Intensity",
       "defaultValue": 128,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Position left-right"
-        }
-      ]
+      "capability": {
+        "type": "Generic",
+        "comment": "Position left-right",
+        "helpWanted": "This should be a proportional capability somehow."
+      }
     },
     "Y Position": {
-      "type": "Intensity",
       "defaultValue": 128,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Position down-up"
-        }
-      ]
+      "capability": {
+        "type": "Generic",
+        "comment": "Position down-up",
+        "helpWanted": "This should be a proportional capability somehow."
+      }
     },
     "Visible Points": {
-      "type": "Intensity",
       "defaultValue": 255,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "0-all visible points"
-        }
-      ]
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": "off",
+        "parameterEnd": "high",
+        "comment": "0 … all visible points"
+      }
     },
     "Scan Rate": {
-      "type": "Speed",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 31],
-          "name": "Default (30k)"
+          "dmxRange": [0, 31],
+          "type": "Maintenance",
+          "parameter": 30000,
+          "comment": "Default (30k)"
         },
         {
-          "range": [32, 255],
-          "name": "6-30k"
+          "dmxRange": [32, 255],
+          "type": "Maintenance",
+          "parameterStart": 6000,
+          "parameterEnd": 30000,
+          "comment": "6k…30k"
         }
       ]
     },
     "Color": {
-      "type": "Multi-Color",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 31],
-          "name": "No color"
+          "dmxRange": [0, 31],
+          "type": "Nothing"
         },
         {
-          "range": [32, 42],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [32, 42],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [43, 53],
-          "name": "Orange",
-          "color": "#ffaa00"
+          "dmxRange": [43, 53],
+          "type": "ColorPreset",
+          "colors": ["#ffaa00"],
+          "comment": "Orange"
         },
         {
-          "range": [54, 75],
-          "name": "Yellow",
-          "color": "#ffff00"
+          "dmxRange": [54, 75],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
         },
         {
-          "range": [76, 86],
-          "name": "Lime",
-          "color": "#66ff00"
+          "dmxRange": [76, 86],
+          "type": "ColorPreset",
+          "colors": ["#66ff00"],
+          "comment": "Lime"
         },
         {
-          "range": [87, 109],
-          "name": "Green",
-          "color": "#00dd00"
+          "dmxRange": [87, 109],
+          "type": "ColorPreset",
+          "colors": ["#00dd00"],
+          "comment": "Green"
         },
         {
-          "range": [110, 163],
-          "name": "Cyan",
-          "color": "#00ffff"
+          "dmxRange": [110, 163],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
         },
         {
-          "range": [164, 189],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [164, 189],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
-          "range": [190, 220],
-          "name": "Pink",
-          "color": "#ffbbaa"
+          "dmxRange": [190, 220],
+          "type": "ColorPreset",
+          "colors": ["#ffbbaa"],
+          "comment": "Pink"
         },
         {
-          "range": [221, 228],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [221, 228],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [229, 255],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [229, 255],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
         }
       ]
     },
     "Release": {
-      "type": "Maintenance",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 31],
-          "name": "Default"
+          "dmxRange": [0, 31],
+          "type": "Maintenance",
+          "comment": "Default"
         },
         {
-          "range": [32, 95],
-          "name": "Hold"
+          "dmxRange": [32, 95],
+          "type": "Maintenance",
+          "comment": "Hold"
         },
         {
-          "range": [96, 159],
-          "name": "Loop"
+          "dmxRange": [96, 159],
+          "type": "Maintenance",
+          "comment": "Loop"
         },
         {
-          "range": [160, 223],
-          "name": "Next"
+          "dmxRange": [160, 223],
+          "type": "Maintenance",
+          "comment": "Next"
         },
         {
-          "range": [224, 255],
-          "name": "Stop"
+          "dmxRange": [224, 255],
+          "type": "Maintenance",
+          "comment": "Stop"
         }
       ]
     },
     "Reserved": {
-      "type": "Nothing"
+      "capability": {
+        "type": "Nothing"
+      }
     }
   },
   "modes": [

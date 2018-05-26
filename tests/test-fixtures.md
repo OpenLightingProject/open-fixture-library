@@ -1,42 +1,42 @@
-| | [*5star-systems* Spica 250M](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/5star-systems/spica-250m.json) | [*american-dj* XS 400](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/american-dj/xs-400.json) | [*cameo* Gobo Scanner 80](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/cameo/gobo-scanner-80.json) | [*cameo* Hydrabeam 300 RGBW](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/cameo/hydrabeam-300-rgbw.json) | [*chauvet-dj* SlimPAR Pro H USB](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/chauvet-dj/slimpar-pro-h-usb.json) | [*dts* XR1200 WASH](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/dts/xr1200-wash.json) | [*eurolite* LED TMH-X25](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/eurolite/led-tmh-x25.json) | [*generic* RGBD Fader](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/generic/rgbd-fader.json) | [*jb-lighting* Varyscan P7](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/jb-lighting/varyscan-p7.json) | [*martin* MAC Axiom Hybrid](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/martin/mac-axiom-hybrid.json) | [*martin* MAC Viper AirFX](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/martin/mac-viper-airfx.json) | [*martin* MAC Viper Performance](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/martin/mac-viper-performance.json) | [*mdg* theONE Atmospheric Generator](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/mdg/theone-atmospheric-generator.json) | [*prolights* DIAMOND19](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/prolights/diamond19.json)
+| | [*american-dj* XS 400](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/american-dj/xs-400.json) | [*cameo* Gobo Scanner 80](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/cameo/gobo-scanner-80.json) | [*cameo* Hydrabeam 300 RGBW](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/cameo/hydrabeam-300-rgbw.json) | [*chauvet-dj* SlimPAR Pro H USB](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/chauvet-dj/slimpar-pro-h-usb.json) | [*dts* XR1200 WASH](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/dts/xr1200-wash.json) | [*generic* RGBD Fader](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/generic/rgbd-fader.json) | [*glp* impression Spot One](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/glp/impression-spot-one.json) | [*glp* Impression X4 Bar 10](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/glp/impression-x4-bar-10.json) | [*jb-lighting* Varyscan P7](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/jb-lighting/varyscan-p7.json) | [*martin* MAC Axiom Hybrid](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/martin/mac-axiom-hybrid.json) | [*martin* MAC Viper AirFX](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/martin/mac-viper-airfx.json) | [*martin* MAC Viper Performance](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/martin/mac-viper-performance.json) | [*mdg* theONE Atmospheric Generator](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/mdg/theone-atmospheric-generator.json) | [*prolights* DIAMOND19](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/prolights/diamond19.json)
 |-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
-**Capability type Nothing** [[1]](#user-content-footnote-1) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅
-**Capability type ShutterStrobe** [[2]](#user-content-footnote-2) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅
+**Capability type Nothing** [[1]](#user-content-footnote-1) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅
+**Capability type ShutterStrobe** [[2]](#user-content-footnote-2) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅
 **Capability type StrobeSpeed** [[3]](#user-content-footnote-3) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅
-**Capability type StrobeDuration** [[4]](#user-content-footnote-4) | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Capability type Intensity** [[5]](#user-content-footnote-5) | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅
-**Capability type ColorIntensity** [[6]](#user-content-footnote-6) | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅
-**Capability type ColorPreset** [[7]](#user-content-footnote-7) | ❌ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅
-**Capability type ColorWheelIndex** [[8]](#user-content-footnote-8) | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌
+**Capability type StrobeDuration** [[4]](#user-content-footnote-4) | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Capability type Intensity** [[5]](#user-content-footnote-5) | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅
+**Capability type ColorIntensity** [[6]](#user-content-footnote-6) | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅
+**Capability type ColorPreset** [[7]](#user-content-footnote-7) | ✅ | ❌ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅
+**Capability type ColorWheelIndex** [[8]](#user-content-footnote-8) | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌
 **Capability type ColorWheelRotationAngle** [[9]](#user-content-footnote-9) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌
-**Capability type ColorWheelRotationSpeed** [[10]](#user-content-footnote-10) | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌
-**Capability type ColorTemperature** [[11]](#user-content-footnote-11) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅
-**Capability type Pan** [[12]](#user-content-footnote-12) | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅
+**Capability type ColorWheelRotationSpeed** [[10]](#user-content-footnote-10) | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌
+**Capability type ColorTemperature** [[11]](#user-content-footnote-11) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅
+**Capability type Pan** [[12]](#user-content-footnote-12) | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅
 **Capability type PanContinuous** [[13]](#user-content-footnote-13) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Capability type Tilt** [[14]](#user-content-footnote-14) | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅
-**Capability type TiltContinuous** [[15]](#user-content-footnote-15) | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Capability type PanTiltSpeed** [[16]](#user-content-footnote-16) | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅
-**Capability type Effect** [[17]](#user-content-footnote-17) | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅
+**Capability type Tilt** [[14]](#user-content-footnote-14) | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅
+**Capability type TiltContinuous** [[15]](#user-content-footnote-15) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Capability type PanTiltSpeed** [[16]](#user-content-footnote-16) | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅
+**Capability type Effect** [[17]](#user-content-footnote-17) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅
 **Capability type EffectIntensity** [[18]](#user-content-footnote-18) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
-**Capability type EffectSpeed** [[19]](#user-content-footnote-19) | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅
-**Capability type EffectDuration** [[20]](#user-content-footnote-20) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
-**Capability type SoundSensitivity** [[21]](#user-content-footnote-21) | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Capability type GoboIndex** [[22]](#user-content-footnote-22) | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌
-**Capability type GoboShake** [[23]](#user-content-footnote-23) | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌
-**Capability type GoboStencilRotationAngle** [[24]](#user-content-footnote-24) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌
-**Capability type GoboStencilRotationSpeed** [[25]](#user-content-footnote-25) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌
-**Capability type GoboWheelRotationAngle** [[26]](#user-content-footnote-26) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
-**Capability type GoboWheelRotationSpeed** [[27]](#user-content-footnote-27) | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌
-**Capability type Focus** [[28]](#user-content-footnote-28) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌
-**Capability type Zoom** [[29]](#user-content-footnote-29) | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅
-**Capability type Iris** [[30]](#user-content-footnote-30) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ❌ | ❌
+**Capability type EffectSpeed** [[19]](#user-content-footnote-19) | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅
+**Capability type EffectDuration** [[20]](#user-content-footnote-20) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
+**Capability type SoundSensitivity** [[21]](#user-content-footnote-21) | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Capability type GoboIndex** [[22]](#user-content-footnote-22) | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌
+**Capability type GoboShake** [[23]](#user-content-footnote-23) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Capability type GoboStencilRotationAngle** [[24]](#user-content-footnote-24) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌
+**Capability type GoboStencilRotationSpeed** [[25]](#user-content-footnote-25) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌
+**Capability type GoboWheelRotationAngle** [[26]](#user-content-footnote-26) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
+**Capability type GoboWheelRotationSpeed** [[27]](#user-content-footnote-27) | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌
+**Capability type Focus** [[28]](#user-content-footnote-28) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌
+**Capability type Zoom** [[29]](#user-content-footnote-29) | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅
+**Capability type Iris** [[30]](#user-content-footnote-30) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ❌ | ❌
 **Capability type IrisEffect** [[31]](#user-content-footnote-31) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌
-**Capability type Frost** [[32]](#user-content-footnote-32) | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌
+**Capability type Frost** [[32]](#user-content-footnote-32) | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌
 **Capability type FrostEffect** [[33]](#user-content-footnote-33) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌
-**Capability type PrismOff** [[34]](#user-content-footnote-34) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌
-**Capability type PrismOn** [[35]](#user-content-footnote-35) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌
-**Capability type PrismRotationAngle** [[36]](#user-content-footnote-36) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌
-**Capability type PrismRotationSpeed** [[37]](#user-content-footnote-37) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌
+**Capability type PrismOff** [[34]](#user-content-footnote-34) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌
+**Capability type PrismOn** [[35]](#user-content-footnote-35) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌
+**Capability type PrismRotationAngle** [[36]](#user-content-footnote-36) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌
+**Capability type PrismRotationSpeed** [[37]](#user-content-footnote-37) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌
 **Capability type BladeInsertion** [[38]](#user-content-footnote-38) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
 **Capability type BladeRotation** [[39]](#user-content-footnote-39) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
 **Capability type BladeSystemRotation** [[40]](#user-content-footnote-40) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
@@ -46,40 +46,40 @@
 **Capability type FogType** [[44]](#user-content-footnote-44) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌
 **Capability type RotationAngle** [[45]](#user-content-footnote-45) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
 **Capability type BeamAngle** [[46]](#user-content-footnote-46) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌
-**Capability type RotationSpeed** [[47]](#user-content-footnote-47) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ❌
-**Capability type Speed** [[48]](#user-content-footnote-48) | ❌ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌
-**Capability type Maintenance** [[49]](#user-content-footnote-49) | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅
-**Capability type Generic** [[50]](#user-content-footnote-50) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅
-**Duplicate channel names** | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅
-**Fine channels (16bit)** [[51]](#user-content-footnote-51) | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅
-**Fine channels (>16bit)** [[52]](#user-content-footnote-52) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Capability type RotationSpeed** [[47]](#user-content-footnote-47) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ❌
+**Capability type Speed** [[48]](#user-content-footnote-48) | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌
+**Capability type Maintenance** [[49]](#user-content-footnote-49) | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅
+**Capability type Generic** [[50]](#user-content-footnote-50) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅
+**Duplicate channel names** | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅
+**Fine channels (16bit)** [[51]](#user-content-footnote-51) | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅
+**Fine channels (>16bit)** [[52]](#user-content-footnote-52) | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Fine channel capabilities** [[53]](#user-content-footnote-53) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Fine before coarse** [[54]](#user-content-footnote-54) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Fine not-adjacent after coarse** [[55]](#user-content-footnote-55) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Floating point dimensions** [[56]](#user-content-footnote-56) | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Floating point weight** | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌
-**Floating point power** | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Fine not-adjacent after coarse** [[55]](#user-content-footnote-55) | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Floating point dimensions** [[56]](#user-content-footnote-56) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Floating point weight** | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌
+**Floating point power** | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Floating point color temperature** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Floating point lumens** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Floating point lens degrees** | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Floating point pan/tilt maximum** | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌
-**Uses pixelKeys** [[57]](#user-content-footnote-57) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅
-**Uses pixelCount** [[58]](#user-content-footnote-58) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Uses pixelGroups** [[59]](#user-content-footnote-59) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅
-**Custom matrix layout** [[60]](#user-content-footnote-60) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅
-**Fine matrix channel** [[61]](#user-content-footnote-61) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Switching matrix channel** [[62]](#user-content-footnote-62) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Floating point lens degrees** | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Floating point pan/tilt maximum** | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌
+**Uses pixelKeys** [[57]](#user-content-footnote-57) | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅
+**Uses pixelCount** [[58]](#user-content-footnote-58) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Uses pixelGroups** [[59]](#user-content-footnote-59) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅
+**Custom matrix layout** [[60]](#user-content-footnote-60) | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅
+**Fine matrix channel** [[61]](#user-content-footnote-61) | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Switching matrix channel** [[62]](#user-content-footnote-62) | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Matrix channel used directly** [[63]](#user-content-footnote-63) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
-**Multiple categories** | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅
-**Multiple Focuses** [[64]](#user-content-footnote-64) | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**No physical** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**`null` channels** [[65]](#user-content-footnote-65) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Physical override** [[66]](#user-content-footnote-66) | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**RDM** [[67]](#user-content-footnote-67) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌
+**Multiple categories** | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅
+**Multiple Focuses** [[64]](#user-content-footnote-64) | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**No physical** | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**`null` channels** [[65]](#user-content-footnote-65) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Physical override** [[66]](#user-content-footnote-66) | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**RDM** [[67]](#user-content-footnote-67) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌
 **Reused channels** [[68]](#user-content-footnote-68) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅
-**Switching channels** [[69]](#user-content-footnote-69) | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅
+**Switching channels** [[69]](#user-content-footnote-69) | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅
 **Switches fine channels** [[70]](#user-content-footnote-70) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌
-**Switching channel at different positions** [[71]](#user-content-footnote-71) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ✅
+**Switching channel at different positions** [[71]](#user-content-footnote-71) | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ✅
 
 **<a id="user-content-footnote-1">[1]</a>**: Whether the fixture has at least one capability of type 'Nothing'
 

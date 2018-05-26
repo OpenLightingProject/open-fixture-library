@@ -443,10 +443,11 @@
         },
         {
           "dmxRange": [60, 89],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 1,
-          "speedStart": "slow",
-          "speedEnd": "fast",
+          "shakeAngle": "wide",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
           "switchChannels": {
             "Gobo indexing angle / rotation speed": "Gobo indexing angle",
             "Gobo indexing angle / rotation speed fine": "Gobo indexing angle fine"
@@ -454,10 +455,11 @@
         },
         {
           "dmxRange": [90, 119],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 2,
-          "speedStart": "slow",
-          "speedEnd": "fast",
+          "shakeAngle": "wide",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
           "switchChannels": {
             "Gobo indexing angle / rotation speed": "Gobo indexing angle",
             "Gobo indexing angle / rotation speed fine": "Gobo indexing angle fine"
@@ -465,10 +467,11 @@
         },
         {
           "dmxRange": [120, 149],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 3,
-          "speedStart": "slow",
-          "speedEnd": "fast",
+          "shakeAngle": "wide",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
           "switchChannels": {
             "Gobo indexing angle / rotation speed": "Gobo indexing angle",
             "Gobo indexing angle / rotation speed fine": "Gobo indexing angle fine"
@@ -476,10 +479,11 @@
         },
         {
           "dmxRange": [150, 179],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 4,
-          "speedStart": "slow",
-          "speedEnd": "fast",
+          "shakeAngle": "wide",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
           "switchChannels": {
             "Gobo indexing angle / rotation speed": "Gobo indexing angle",
             "Gobo indexing angle / rotation speed fine": "Gobo indexing angle fine"
@@ -487,10 +491,11 @@
         },
         {
           "dmxRange": [180, 209],
-          "type": "GoboShake",
+          "type": "GoboIndex",
           "index": 5,
-          "speedStart": "slow",
-          "speedEnd": "fast",
+          "shakeAngle": "wide",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
           "switchChannels": {
             "Gobo indexing angle / rotation speed": "Gobo indexing angle",
             "Gobo indexing angle / rotation speed fine": "Gobo indexing angle fine"
