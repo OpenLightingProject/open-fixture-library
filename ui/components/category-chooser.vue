@@ -9,9 +9,7 @@
         :selectable="true"
         @click="deselect(cat)"
         @focus.native="onFocus"
-        @blur.native="onBlur($event)"
-        @focusin.native.stop
-        @focusout.native.stop />
+        @blur.native="onBlur($event)" />
     </draggable>
 
     <app-category-badge
@@ -22,9 +20,7 @@
       :selectable="true"
       @click="select(cat)"
       @focus.native="onFocus"
-      @blur.native="onBlur($event)"
-      @focusin.native.stop
-      @focusout.native.stop />
+      @blur.native="onBlur($event)" />
   </div>
 </template>
 
