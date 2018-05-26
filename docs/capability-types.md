@@ -17,6 +17,7 @@ To make common percentage values more readable, one can use specific keywords to
 | FogOutput        | `m^3/min`, `%`   | –            | –            | off     | weak    | strong
 | RotationAngle    | `deg`, `%`       | –            | –            | –       | –       | –
 | BeamAngle        | `deg`, `%`       | –            | –            | closed  | narrow  | wide
+| SwingAngle       | `deg`, `%`       | –            | –            | off     | narrow  | wide
 | Factor           | (no unit), `%`   | –            | –            | off     | low     | high
 | Index            | (no unit)        | –            | –            | –       | –       | –
 | Percent          | `%`              | –            | –            | off     | low     | high
@@ -85,10 +86,11 @@ Required properties are _italic_, the entity is written in (parentheses).
   * _sensitivity_ (Percent)
 * GoboIndex
   * _index_ (Index): `0` for open, `1` for Gobo 1, `1.5` for Gobo 1/2 split, etc.
+  * shakeAngle (SwingAngle): Default is "off"
+  * shakeSpeed (Speed)
 * GoboShake
-  * _index_ (Index)
-  * speed (Speed)
-  * swingAngle (RotationAngle)
+  * shakeAngle (SwingAngle)
+  * shakeSpeed (Speed)
 * GoboStencilRotationAngle
   * _angle_ (RotationAngle)
 * GoboStencilRotationSpeed

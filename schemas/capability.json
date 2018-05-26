@@ -608,15 +608,31 @@
         "helpWanted": {},
         "index": { "$ref": "definitions.json#/entities/index" },
         "indexStart": { "$ref": "definitions.json#/entities/index" },
-        "indexEnd": { "$ref": "definitions.json#/entities/index" }
+        "indexEnd": { "$ref": "definitions.json#/entities/index" },
+        "shakeSpeed": { "$ref": "definitions.json#/entities/speed" },
+        "shakeSpeedStart": { "$ref": "definitions.json#/entities/speed" },
+        "shakeSpeedEnd": { "$ref": "definitions.json#/entities/speed" },
+        "shakeAngle": { "$ref": "definitions.json#/entities/swingAngle" },
+        "shakeAngleStart": { "$ref": "definitions.json#/entities/swingAngle" },
+        "shakeAngleEnd": { "$ref": "definitions.json#/entities/swingAngle" }
       },
       "oneOf": [
         { "required": ["index"] },
         { "required": ["indexStart"] }
       ],
+      "not": {
+        "anyOf": [
+          { "required": ["shakeSpeed", "shakeSpeedStart"] },
+          { "required": ["shakeAngle", "shakeAngleStart"] }
+        ]
+      },
       "dependencies": {
         "indexStart": ["indexEnd"],
-        "indexEnd": ["indexStart"]
+        "indexEnd": ["indexStart"],
+        "shakeSpeedStart": ["shakeSpeedEnd"],
+        "shakeSpeedEnd": ["shakeSpeedStart"],
+        "shakeAngleStart": ["shakeAngleEnd"],
+        "shakeAngleEnd": ["shakeAngleStart"]
       },
       "additionalProperties": false
     },
@@ -628,33 +644,24 @@
         "menuClick": {},
         "switchChannels": {},
         "helpWanted": {},
-        "index": { "$ref": "definitions.json#/entities/index" },
-        "indexStart": { "$ref": "definitions.json#/entities/index" },
-        "indexEnd": { "$ref": "definitions.json#/entities/index" },
-        "speed": { "$ref": "definitions.json#/entities/speed" },
-        "speedStart": { "$ref": "definitions.json#/entities/speed" },
-        "speedEnd": { "$ref": "definitions.json#/entities/speed" },
-        "swingAngle": { "$ref": "definitions.json#/entities/rotationAngle" },
-        "swingAngleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
-        "swingAngleEnd": { "$ref": "definitions.json#/entities/rotationAngle" }
+        "shakeSpeed": { "$ref": "definitions.json#/entities/speed" },
+        "shakeSpeedStart": { "$ref": "definitions.json#/entities/speed" },
+        "shakeSpeedEnd": { "$ref": "definitions.json#/entities/speed" },
+        "shakeAngle": { "$ref": "definitions.json#/entities/swingAngle" },
+        "shakeAngleStart": { "$ref": "definitions.json#/entities/swingAngle" },
+        "shakeAngleEnd": { "$ref": "definitions.json#/entities/swingAngle" }
       },
-      "oneOf": [
-        { "required": ["index"] },
-        { "required": ["indexStart"] }
-      ],
       "not": {
         "anyOf": [
-          { "required": ["speed", "speedStart"] },
-          { "required": ["swingAngle", "swingAngleStart"] }
+          { "required": ["shakeSpeed", "shakeSpeedStart"] },
+          { "required": ["shakeAngle", "shakeAngleStart"] }
         ]
       },
       "dependencies": {
-        "indexStart": ["indexEnd"],
-        "indexEnd": ["indexStart"],
-        "speedStart": ["speedEnd"],
-        "speedEnd": ["speedStart"],
-        "swingAngleStart": ["swingAngleEnd"],
-        "swingAngleEnd": ["swingAngleStart"]
+        "shakeSpeedStart": ["shakeSpeedEnd"],
+        "shakeSpeedEnd": ["shakeSpeedStart"],
+        "shakeAngleStart": ["shakeAngleEnd"],
+        "shakeAngleEnd": ["shakeAngleStart"]
       },
       "additionalProperties": false
     },
