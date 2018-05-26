@@ -1,0 +1,95 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Winch LED",
+  "shortName": "KLWinchLED",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["VBT"],
+    "createDate": "2018-05-10",
+    "lastModifyDate": "2018-05-11"
+  },
+  "manualURL": "https://www.kinetic-lights.com/products/winches/winch-led/",
+  "physical": {
+    "dimensions": [280, 490, 280],
+    "weight": 8,
+    "power": 312,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Dimmer": {
+      "type": "Intensity"
+    },
+    "Shutter/Strobe": {
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Shutter open"
+        },
+        {
+          "range": [10, 19],
+          "name": "Shutter closed"
+        },
+        {
+          "range": [20, 209],
+          "name": "Strobe"
+        },
+        {
+          "range": [210, 255],
+          "name": "Shutter open"
+        }
+      ]
+    },
+    "Winch": {
+      "type": "Effect",
+      "fineChannelAliases": ["Winch fine"],
+      "capabilities": [
+        {
+          "range": [0, 180],
+          "name": "Length 0…7m"
+        },
+        {
+          "range": [181, 255],
+          "name": "Reserved"
+        }
+      ]
+    },
+    "Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "0.5…0 m/s"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Shutter/Strobe",
+        "Winch",
+        "Winch fine",
+        "Speed"
+      ]
+    }
+  ]
+}

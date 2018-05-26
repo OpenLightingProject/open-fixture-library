@@ -390,6 +390,11 @@
       "lastModifyDate": "2017-11-16",
       "lastAction": "created"
     },
+    "kinetic-lights/winch-led-ball": {
+      "name": "Winch LED",
+      "lastModifyDate": "2018-05-11",
+      "lastAction": "modified"
+    },
     "lightmaxx/dj-scan-led": {
       "name": "DJ Scan LED",
       "lastModifyDate": "2018-02-06",
@@ -746,6 +751,9 @@
     "kam": [
       "gobotracer"
     ],
+    "kinetic-lights": [
+      "winch-led-ball"
+    ],
     "lightmaxx": [
       "dj-scan-led",
       "platinum-mini-tri-par",
@@ -1037,7 +1045,8 @@
       "stairville/mh-x25"
     ],
     "Other": [
-      "chauvet-dj/corepar-uv-usb"
+      "chauvet-dj/corepar-uv-usb",
+      "kinetic-lights/winch-led-ball"
     ],
     "Scanner": [
       "cameo/gobo-scanner-80",
@@ -1243,6 +1252,9 @@
     "Thilo Billerbeck": [
       "lightmaxx/dj-scan-led"
     ],
+    "VBT": [
+      "kinetic-lights/winch-led-ball"
+    ],
     "eklynx": [
       "american-dj/galaxian-3d"
     ],
@@ -1323,6 +1335,7 @@
     }
   },
   "lastUpdated": [
+    "kinetic-lights/winch-led-ball",
     "blizzard/puck-rgbaw",
     "nicols/led-bar-123-fc-ip",
     "minuit-une/ivl-carre",
