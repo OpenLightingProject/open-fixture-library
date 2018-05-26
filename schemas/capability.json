@@ -72,6 +72,7 @@
           "RampDown",
           "RampDownRandom",
           "RampUpDown",
+          "RampUpDownRandom",
           "Lightning"
         ] },
         "speed": { "$ref": "definitions.json#/entities/speed" },
@@ -269,7 +270,7 @@
         { "required": ["index"] },
         { "required": ["indexStart"] }
       ],
-      "not": { 
+      "not": {
         "anyOf": [
           { "required": ["colors", "colorsStart"] },
           { "required": ["colorTemperature", "colorTemperatureStart"] }
