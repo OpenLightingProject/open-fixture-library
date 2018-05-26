@@ -9,7 +9,6 @@
       <a
         v-if="`website` in manufacturer"
         :href="manufacturer.website"
-        rel="nofollow"
         class="card blue dark">
         <app-svg name="earth" class="left" />
         <span>Manufacturer website</span>
