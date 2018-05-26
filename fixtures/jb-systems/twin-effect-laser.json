@@ -26,46 +26,55 @@
   "availableChannels": {
     "laser-mode-1ch": {
       "name": "Laser Mode",
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 24],
-          "name": "Laser off"
+          "dmxRange": [0, 24],
+          "type": "Nothing",
+          "comment": "Laser off"
         },
         {
-          "range": [25, 59],
-          "name": "AUd mode (Auto grating effects show)"
+          "dmxRange": [25, 59],
+          "type": "Effect",
+          "effectName": "AUd mode (Auto grating effects show)"
         },
         {
-          "range": [60, 99],
-          "name": "AUp mode (Auto pattern effects show)"
+          "dmxRange": [60, 99],
+          "type": "Effect",
+          "effectName": "AUp mode (Auto pattern effects show)"
         },
         {
-          "range": [100, 139],
-          "name": "AUn mode (Auto grating + pattern effects show)"
+          "dmxRange": [100, 139],
+          "type": "Effect",
+          "effectName": "AUn mode (Auto grating + pattern effects show)"
         },
         {
-          "range": [140, 179],
-          "name": "Sod mode (Sound active grating effects show)"
+          "dmxRange": [140, 179],
+          "type": "Effect",
+          "effectName": "Sod mode (Sound active grating effects show)",
+          "soundControlled": true
         },
         {
-          "range": [180, 219],
-          "name": "SoP mode (Sound active pattern effects show)"
+          "dmxRange": [180, 219],
+          "type": "Effect",
+          "effectName": "SoP mode (Sound active pattern effects show)",
+          "soundControlled": true
         },
         {
-          "range": [220, 255],
-          "name": "Son mode (Sound active grating / pattern effects show)"
+          "dmxRange": [220, 255],
+          "type": "Effect",
+          "effectName": "Son mode (Sound active grating / pattern effects show)",
+          "soundControlled": true
         }
       ]
     },
     "laser-mode-10ch-combined": {
       "name": "Laser Mode",
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 24],
-          "name": "Laser off",
+          "dmxRange": [0, 24],
+          "type": "Nothing",
+          "comment": "Laser off",
           "switchChannels": {
             "Channel 2": "Unused 1",
             "Channel 3": "Unused 2",
@@ -79,8 +88,9 @@
           }
         },
         {
-          "range": [25, 49],
-          "name": "AUn mode (Auto grating + pattern effects show)",
+          "dmxRange": [25, 49],
+          "type": "Effect",
+          "effectName": "AUn mode (Auto grating + pattern effects show)",
           "switchChannels": {
             "Channel 2": "Unused 1",
             "Channel 3": "Unused 2",
@@ -94,8 +104,10 @@
           }
         },
         {
-          "range": [50, 74],
-          "name": "Son mode (Sound active grating / pattern effects show)",
+          "dmxRange": [50, 74],
+          "type": "Effect",
+          "effectName": "Son mode (Sound active grating / pattern effects show)",
+          "soundControlled": true,
           "switchChannels": {
             "Channel 2": "Unused 1",
             "Channel 3": "Unused 2",
@@ -109,8 +121,9 @@
           }
         },
         {
-          "range": [75, 99],
-          "name": "AUP mode (Auto pattern effects show)",
+          "dmxRange": [75, 99],
+          "type": "Effect",
+          "effectName": "AUP mode (Auto pattern effects show)",
           "switchChannels": {
             "Channel 2": "Unused 1",
             "Channel 3": "Unused 2",
@@ -124,8 +137,10 @@
           }
         },
         {
-          "range": [100, 124],
-          "name": "SoP (Sound active pattern effects show)",
+          "dmxRange": [100, 124],
+          "type": "Effect",
+          "effectName": "SoP (Sound active pattern effects show)",
+          "soundControlled": true,
           "switchChannels": {
             "Channel 2": "Unused 1",
             "Channel 3": "Unused 2",
@@ -139,8 +154,9 @@
           }
         },
         {
-          "range": [125, 149],
-          "name": "AUd mode (Auto grating effects show)",
+          "dmxRange": [125, 149],
+          "type": "Effect",
+          "effectName": "AUd mode (Auto grating effects show)",
           "switchChannels": {
             "Channel 2": "Unused 1",
             "Channel 3": "Unused 2",
@@ -154,8 +170,10 @@
           }
         },
         {
-          "range": [150, 174],
-          "name": "Sod mode (Sound active grating effects show)",
+          "dmxRange": [150, 174],
+          "type": "Effect",
+          "effectName": "Sod mode (Sound active grating effects show)",
+          "soundControlled": true,
           "switchChannels": {
             "Channel 2": "Unused 1",
             "Channel 3": "Unused 2",
@@ -169,8 +187,9 @@
           }
         },
         {
-          "range": [175, 199],
-          "name": "DMX mode with Grating Dot effects",
+          "dmxRange": [175, 199],
+          "type": "Effect",
+          "effectName": "DMX mode with Grating Dot effects",
           "switchChannels": {
             "Channel 2": "X Axis Moving",
             "Channel 3": "Y Axis Moving",
@@ -184,8 +203,9 @@
           }
         },
         {
-          "range": [200, 224],
-          "name": "DMX mode with Grating Pattern effects",
+          "dmxRange": [200, 224],
+          "type": "Effect",
+          "effectName": "DMX mode with Grating Pattern effects",
           "switchChannels": {
             "Channel 2": "Patterns",
             "Channel 3": "Zooming",
@@ -199,8 +219,9 @@
           }
         },
         {
-          "range": [225, 255],
-          "name": "DMX mode with traditional pattern effects",
+          "dmxRange": [225, 255],
+          "type": "Effect",
+          "effectName": "DMX mode with traditional pattern effects",
           "switchChannels": {
             "Channel 2": "Patterns",
             "Channel 3": "Zooming",
@@ -217,433 +238,558 @@
     },
     "laser-mode-10ch-A": {
       "name": "Laser Mode",
-      "type": "Effect",
       "defaultValue": 175,
       "constant": true,
       "capabilities": [
         {
-          "range": [0, 24],
-          "name": "Laser off"
+          "dmxRange": [0, 24],
+          "type": "Nothing",
+          "comment": "Laser off"
         },
         {
-          "range": [25, 49],
-          "name": "AUn mode (Auto grating + pattern effects show)"
+          "dmxRange": [25, 49],
+          "type": "Effect",
+          "effectName": "AUn mode (Auto grating + pattern effects show)"
         },
         {
-          "range": [50, 74],
-          "name": "Son mode (Sound active grating / pattern effects show)"
+          "dmxRange": [50, 74],
+          "type": "Effect",
+          "effectName": "Son mode (Sound active grating / pattern effects show)",
+          "soundControlled": true
         },
         {
-          "range": [75, 99],
-          "name": "AUP mode (Auto pattern effects show)"
+          "dmxRange": [75, 99],
+          "type": "Effect",
+          "effectName": "AUP mode (Auto pattern effects show)"
         },
         {
-          "range": [100, 124],
-          "name": "SoP (Sound active pattern effects show)"
+          "dmxRange": [100, 124],
+          "type": "Effect",
+          "effectName": "SoP (Sound active pattern effects show)",
+          "soundControlled": true
         },
         {
-          "range": [125, 149],
-          "name": "AUd mode (Auto grating effects show)"
+          "dmxRange": [125, 149],
+          "type": "Effect",
+          "effectName": "AUd mode (Auto grating effects show)"
         },
         {
-          "range": [150, 174],
-          "name": "Sod mode (Sound active grating effects show)"
+          "dmxRange": [150, 174],
+          "type": "Effect",
+          "effectName": "Sod mode (Sound active grating effects show)",
+          "soundControlled": true
         },
         {
-          "range": [175, 199],
-          "name": "DMX mode with Grating Dot effects"
+          "dmxRange": [175, 199],
+          "type": "Effect",
+          "effectName": "DMX mode with Grating Dot effects"
         },
         {
-          "range": [200, 224],
-          "name": "DMX mode with Grating Pattern effects"
+          "dmxRange": [200, 224],
+          "type": "Effect",
+          "effectName": "DMX mode with Grating Pattern effects"
         },
         {
-          "range": [225, 255],
-          "name": "DMX mode with traditional pattern effects"
+          "dmxRange": [225, 255],
+          "type": "Effect",
+          "effectName": "DMX mode with traditional pattern effects"
         }
       ]
     },
     "laser-mode-10ch-B": {
       "name": "Laser Mode",
-      "type": "Effect",
       "defaultValue": 200,
       "constant": true,
       "capabilities": [
         {
-          "range": [0, 24],
-          "name": "Laser off"
+          "dmxRange": [0, 24],
+          "type": "Nothing",
+          "comment": "Laser off"
         },
         {
-          "range": [25, 49],
-          "name": "AUn mode (Auto grating + pattern effects show)"
+          "dmxRange": [25, 49],
+          "type": "Effect",
+          "effectName": "AUn mode (Auto grating + pattern effects show)"
         },
         {
-          "range": [50, 74],
-          "name": "Son mode (Sound active grating / pattern effects show)"
+          "dmxRange": [50, 74],
+          "type": "Effect",
+          "effectName": "Son mode (Sound active grating / pattern effects show)",
+          "soundControlled": true
         },
         {
-          "range": [75, 99],
-          "name": "AUP mode (Auto pattern effects show)"
+          "dmxRange": [75, 99],
+          "type": "Effect",
+          "effectName": "AUP mode (Auto pattern effects show)"
         },
         {
-          "range": [100, 124],
-          "name": "SoP (Sound active pattern effects show)"
+          "dmxRange": [100, 124],
+          "type": "Effect",
+          "effectName": "SoP (Sound active pattern effects show)",
+          "soundControlled": true
         },
         {
-          "range": [125, 149],
-          "name": "AUd mode (Auto grating effects show)"
+          "dmxRange": [125, 149],
+          "type": "Effect",
+          "effectName": "AUd mode (Auto grating effects show)"
         },
         {
-          "range": [150, 174],
-          "name": "Sod mode (Sound active grating effects show)"
+          "dmxRange": [150, 174],
+          "type": "Effect",
+          "effectName": "Sod mode (Sound active grating effects show)",
+          "soundControlled": true
         },
         {
-          "range": [175, 199],
-          "name": "DMX mode with Grating Dot effects"
+          "dmxRange": [175, 199],
+          "type": "Effect",
+          "effectName": "DMX mode with Grating Dot effects"
         },
         {
-          "range": [200, 224],
-          "name": "DMX mode with Grating Pattern effects"
+          "dmxRange": [200, 224],
+          "type": "Effect",
+          "effectName": "DMX mode with Grating Pattern effects"
         },
         {
-          "range": [225, 255],
-          "name": "DMX mode with traditional pattern effects"
+          "dmxRange": [225, 255],
+          "type": "Effect",
+          "effectName": "DMX mode with traditional pattern effects"
         }
       ]
     },
     "laser-mode-10ch-C": {
       "name": "Laser Mode",
-      "type": "Effect",
       "defaultValue": 225,
       "constant": true,
       "capabilities": [
         {
-          "range": [0, 24],
-          "name": "Laser off"
+          "dmxRange": [0, 24],
+          "type": "Nothing",
+          "comment": "Laser off"
         },
         {
-          "range": [25, 49],
-          "name": "AUn mode (Auto grating + pattern effects show)"
+          "dmxRange": [25, 49],
+          "type": "Effect",
+          "effectName": "AUn mode (Auto grating + pattern effects show)"
         },
         {
-          "range": [50, 74],
-          "name": "Son mode (Sound active grating / pattern effects show)"
+          "dmxRange": [50, 74],
+          "type": "Effect",
+          "effectName": "Son mode (Sound active grating / pattern effects show)",
+          "soundControlled": true
         },
         {
-          "range": [75, 99],
-          "name": "AUP mode (Auto pattern effects show)"
+          "dmxRange": [75, 99],
+          "type": "Effect",
+          "effectName": "AUP mode (Auto pattern effects show)"
         },
         {
-          "range": [100, 124],
-          "name": "SoP (Sound active pattern effects show)"
+          "dmxRange": [100, 124],
+          "type": "Effect",
+          "effectName": "SoP (Sound active pattern effects show)",
+          "soundControlled": true
         },
         {
-          "range": [125, 149],
-          "name": "AUd mode (Auto grating effects show)"
+          "dmxRange": [125, 149],
+          "type": "Effect",
+          "effectName": "AUd mode (Auto grating effects show)"
         },
         {
-          "range": [150, 174],
-          "name": "Sod mode (Sound active grating effects show)"
+          "dmxRange": [150, 174],
+          "type": "Effect",
+          "effectName": "Sod mode (Sound active grating effects show)",
+          "soundControlled": true
         },
         {
-          "range": [175, 199],
-          "name": "DMX mode with Grating Dot effects"
+          "dmxRange": [175, 199],
+          "type": "Effect",
+          "effectName": "DMX mode with Grating Dot effects"
         },
         {
-          "range": [200, 224],
-          "name": "DMX mode with Grating Pattern effects"
+          "dmxRange": [200, 224],
+          "type": "Effect",
+          "effectName": "DMX mode with Grating Pattern effects"
         },
         {
-          "range": [225, 255],
-          "name": "DMX mode with traditional pattern effects"
+          "dmxRange": [225, 255],
+          "type": "Effect",
+          "effectName": "DMX mode with traditional pattern effects"
         }
       ]
     },
     "X Axis Moving": {
-      "type": "Pan",
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "128 different fixed positions on X-axis"
+          "dmxRange": [0, 127],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "128 different fixed positions on X-axis"
         },
         {
-          "range": [128, 191],
-          "name": "CW moving"
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "Clockwise moving",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [192, 255],
-          "name": "CCW moving"
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Counterclockwise moving",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Y Axis Moving": {
-      "type": "Tilt",
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "128 different fixed positions on Y-axis"
+          "dmxRange": [0, 127],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "128 different fixed positions on Y-axis"
         },
         {
-          "range": [128, 191],
-          "name": "CW moving"
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "Clockwise moving",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [192, 255],
-          "name": "CCW moving"
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Counterclockwise moving",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "X Axis Rolling": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "0º to 359º fixed positions around X axis"
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "0º to 359º fixed positions around X axis"
         },
         {
-          "range": [128, 191],
-          "name": "CW rolling around X axis"
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "CW rolling around X axis"
         },
         {
-          "range": [192, 255],
-          "name": "CCW rolling around X axis"
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "CCW rolling around X axis"
         }
       ]
     },
     "Y Axis Rolling": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "0º to 359º fixed positions around Y axis"
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "0º to 359º fixed positions around Y axis"
         },
         {
-          "range": [128, 191],
-          "name": "CW rolling around Y axis"
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "CW rolling around Y axis"
         },
         {
-          "range": [192, 255],
-          "name": "CCW  rolling around Y axis"
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "CCW  rolling around Y axis"
         }
       ]
     },
     "Z Axis Rolling": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "0º to 359º fixed positions around Z axis"
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "0º to 359º fixed positions around Z axis"
         },
         {
-          "range": [128, 191],
-          "name": "CW rolling around Z axis"
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "CW rolling around Z axis"
         },
         {
-          "range": [192, 255],
-          "name": "CCW rolling around Z axis"
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "CCW rolling around Z axis"
         }
       ]
     },
     "colors-10ch-A": {
       "name": "Colors",
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Laser blackout"
+          "dmxRange": [0, 9],
+          "type": "Nothing",
+          "comment": "Laser blackout"
         },
         {
-          "range": [10, 63],
-          "name": "Red + Green"
+          "dmxRange": [10, 63],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Red & green on OR red & green strobing"
         },
         {
-          "range": [64, 127],
-          "name": "Red"
+          "dmxRange": [64, 127],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red on OR red strobing & green off"
         },
         {
-          "range": [128, 191],
-          "name": "Green"
+          "dmxRange": [128, 191],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green on OR green strobing & red off"
         },
         {
-          "range": [192, 255],
-          "name": "Red + Green (when strobing: alternately)"
+          "dmxRange": [192, 255],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Red & green on OR red & green strobing alternately"
         }
       ]
     },
     "colors-10ch-B": {
       "name": "Colors",
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 16],
-          "name": "Red"
+          "dmxRange": [0, 16],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [17, 31],
-          "name": "Green"
+          "dmxRange": [17, 31],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [32, 49],
-          "name": "Red & Green"
+          "dmxRange": [32, 49],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Red & Green"
         },
         {
-          "range": [50, 255],
-          "name": "Changing colors"
+          "dmxRange": [50, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
         }
       ]
     },
     "colors-10ch-C": {
       "name": "Colors",
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 16],
-          "name": "Original colors"
+          "dmxRange": [0, 16],
+          "type": "Nothing",
+          "comment": "Original colors"
         },
         {
-          "range": [17, 31],
-          "name": "Red"
+          "dmxRange": [17, 31],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [32, 47],
-          "name": "Green"
+          "dmxRange": [32, 47],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [48, 62],
-          "name": "Red + Green (Yellow)"
+          "dmxRange": [48, 62],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Red + Green (Yellow)"
         },
         {
-          "range": [63, 160],
-          "name": "Red / Green alternating, slow - fast"
+          "dmxRange": [63, 160],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Red / Green alternating"
         },
         {
-          "range": [161, 255],
-          "name": "Changing mix of 3 colors, slow - fast"
+          "dmxRange": [161, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Changing mix of 3 colors"
         }
       ]
     },
     "Strobe": {
-      "type": "Strobe",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "No Strobing"
+          "dmxRange": [0, 9],
+          "type": "Nothing",
+          "comment": "No Strobing"
         },
         {
-          "range": [10, 249],
-          "name": "Strobing slow - fast"
+          "dmxRange": [10, 249],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [250, 255],
-          "name": "Strobing to the music"
+          "dmxRange": [250, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobing to the music"
         }
       ]
     },
     "grating-rotation-10ch-A": {
       "name": "Grating Rotation",
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 75],
-          "name": "CW rotation slow - fast"
+          "dmxRange": [0, 75],
+          "type": "RotationSpeed",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         },
         {
-          "range": [76, 150],
-          "name": "No rotation"
+          "dmxRange": [76, 150],
+          "type": "RotationSpeed",
+          "speed": "stop"
         },
         {
-          "range": [151, 255],
-          "name": "CCW rotation slow - fast"
+          "dmxRange": [151, 255],
+          "type": "RotationSpeed",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
     "grating-rotation-10ch-B": {
       "name": "Grating Rotation",
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "No grating rotation"
+          "dmxRange": [0, 0],
+          "type": "RotationSpeed",
+          "speed": "stop"
         },
         {
-          "range": [1, 75],
-          "name": "Clockwise grating rotation"
+          "dmxRange": [1, 75],
+          "type": "RotationSpeed",
+          "speed": "fast CW"
         },
         {
-          "range": [76, 150],
-          "name": "No grating rotation"
+          "dmxRange": [76, 150],
+          "type": "RotationSpeed",
+          "speed": "stop"
         },
         {
-          "range": [151, 255],
-          "name": "Anticlockwise grating rotation"
+          "dmxRange": [151, 255],
+          "type": "RotationSpeed",
+          "speed": "fast CCW"
         }
       ]
     },
     "Patterns": {
-      "type": "Effect",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "11 different patterns"
-        }
-      ]
+      "capability": {
+        "type": "Effect",
+        "effectName": "11 different grating patterns",
+        "helpWanted": "Which patterns can be selected at which DMX values?"
+      }
     },
     "Zooming": {
-      "type": "Zoom",
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "Pattern size: big - small"
+          "dmxRange": [0, 127],
+          "type": "BeamAngle",
+          "angleStart": "wide",
+          "angleEnd": "narrow",
+          "comment": "Pattern size"
         },
         {
-          "range": [128, 169],
-          "name": "Zooming in (big - small), slow - fast"
+          "dmxRange": [128, 169],
+          "type": "Effect",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "effectName": "Zooming in (big - small)"
         },
         {
-          "range": [170, 209],
-          "name": "Zooming out (small - big), slow - fast"
+          "dmxRange": [170, 209],
+          "type": "Effect",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "effectName": "Zooming out (small - big)"
         },
         {
-          "range": [210, 255],
-          "name": "Zooming in & out, slow - fast"
+          "dmxRange": [210, 255],
+          "type": "Effect",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "effectName": "Zooming in & out"
         }
       ]
     },
     "Unused 1": {
       "name": "Unused",
-      "type": "Nothing"
+      "capability": {
+        "type": "Nothing"
+      }
     },
     "Unused 2": {
       "name": "Unused",
-      "type": "Nothing"
+      "capability": {
+        "type": "Nothing"
+      }
     },
     "Unused 3": {
       "name": "Unused",
-      "type": "Nothing"
+      "capability": {
+        "type": "Nothing"
+      }
     },
     "Unused 4": {
       "name": "Unused",
-      "type": "Nothing"
+      "capability": {
+        "type": "Nothing"
+      }
     },
     "Unused 5": {
       "name": "Unused",
-      "type": "Nothing"
+      "capability": {
+        "type": "Nothing"
+      }
     },
     "Unused 6": {
       "name": "Unused",
-      "type": "Nothing"
+      "capability": {
+        "type": "Nothing"
+      }
     },
     "Unused 7": {
       "name": "Unused",
-      "type": "Nothing"
+      "capability": {
+        "type": "Nothing"
+      }
     },
     "Unused 8": {
       "name": "Unused",
-      "type": "Nothing"
+      "capability": {
+        "type": "Nothing"
+      }
     },
     "Unused 9": {
       "name": "Unused",
-      "type": "Nothing"
+      "capability": {
+        "type": "Nothing"
+      }
     }
   },
   "modes": [
