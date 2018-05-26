@@ -83,7 +83,7 @@ Required properties are _italic_, the entity is written in (parentheses).
 * EffectDuration (global, doesn't activate an effect directly)
   * _duration_ (Duration)
 * SoundSensitivity
-  * _sensitivity_ (Percent)
+  * _soundSensitivity_ (Percent)
 * GoboIndex
   * _index_ (Index): `0` for open, `1` for Gobo 1, `1.5` for Gobo 1/2 split, etc.
   * shakeAngle (SwingAngle): Default is "off"

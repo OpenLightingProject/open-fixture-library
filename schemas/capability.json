@@ -584,17 +584,17 @@
         "menuClick": {},
         "switchChannels": {},
         "helpWanted": {},
-        "sensitivity": { "$ref": "definitions.json#/entities/percent" },
-        "sensitivityStart": { "$ref": "definitions.json#/entities/percent" },
-        "sensitivityEnd": { "$ref": "definitions.json#/entities/percent" }
+        "soundSensitivity": { "$ref": "definitions.json#/entities/percent" },
+        "soundSensitivityStart": { "$ref": "definitions.json#/entities/percent" },
+        "soundSensitivityEnd": { "$ref": "definitions.json#/entities/percent" }
       },
       "oneOf": [
-        { "required": ["sensitivity"] },
-        { "required": ["sensitivityStart"] }
+        { "required": ["soundSensitivity"] },
+        { "required": ["soundSensitivityStart"] }
       ],
       "dependencies": {
-        "sensitivityStart": ["sensitivityEnd"],
-        "sensitivityEnd": ["sensitivityStart"]
+        "soundSensitivityStart": ["soundSensitivityEnd"],
+        "soundSensitivityEnd": ["soundSensitivityStart"]
       },
       "additionalProperties": false
     },
