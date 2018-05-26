@@ -148,7 +148,7 @@ ${indentation}}`;
 
   // recognize speed properties
   channels = channels.replace(/( {8}| {10})"comment": "([^"]+? )?((?:counter)?clockwise |C?CW )?(slow|fast|\d+|\d+ ?Hz) ?(?:-|to) ?(fast|slow|\d+ ?Hz)"/g, (match, indentation, comment, direction, start, end) => {
-    const directionStr = direction ? (direction === `clockwise` || direction === `CW` ? ` CW` : ` CCW`) : ``;
+    const directionStr = direction ? (direction === `clockwise ` || direction === `CW ` ? ` CW` : ` CCW`) : ``;
 
     const startNumber = parseFloat(start);
     const endNumber = parseFloat(end);
