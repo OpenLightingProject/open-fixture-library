@@ -344,7 +344,7 @@
         {
           "dmxRange": [10, 14],
           "type": "GoboIndex",
-          "comment": "Indexed",
+          "comment": "1 (indexed)",
           "index": 1,
           "switchChannels": {
             "Gobo indexing angle / rotation speed": "Gobo indexing angle",
@@ -354,7 +354,7 @@
         {
           "dmxRange": [15, 19],
           "type": "GoboIndex",
-          "comment": "Indexed",
+          "comment": "2 (indexed)",
           "index": 2,
           "switchChannels": {
             "Gobo indexing angle / rotation speed": "Gobo indexing angle",
@@ -364,7 +364,7 @@
         {
           "dmxRange": [20, 24],
           "type": "GoboIndex",
-          "comment": "Indexed",
+          "comment": "3 (indexed)",
           "index": 3,
           "switchChannels": {
             "Gobo indexing angle / rotation speed": "Gobo indexing angle",
@@ -374,7 +374,7 @@
         {
           "dmxRange": [25, 29],
           "type": "GoboIndex",
-          "comment": "Indexed",
+          "comment": "4 (indexed)",
           "index": 4,
           "switchChannels": {
             "Gobo indexing angle / rotation speed": "Gobo indexing angle",
@@ -384,7 +384,7 @@
         {
           "dmxRange": [30, 34],
           "type": "GoboIndex",
-          "comment": "Indexed",
+          "comment": "5 (indexed)",
           "index": 5,
           "switchChannels": {
             "Gobo indexing angle / rotation speed": "Gobo indexing angle",
@@ -394,7 +394,7 @@
         {
           "dmxRange": [35, 39],
           "type": "GoboIndex",
-          "comment": "Continuous rotation",
+          "comment": "1 (continuous rotation)",
           "index": 1,
           "switchChannels": {
             "Gobo indexing angle / rotation speed": "Gobo rotation speed",
@@ -404,7 +404,7 @@
         {
           "dmxRange": [40, 44],
           "type": "GoboIndex",
-          "comment": "Continuous rotation",
+          "comment": "2 (continuous rotation)",
           "index": 2,
           "switchChannels": {
             "Gobo indexing angle / rotation speed": "Gobo rotation speed",
@@ -414,7 +414,7 @@
         {
           "dmxRange": [45, 49],
           "type": "GoboIndex",
-          "comment": "Continuous rotation",
+          "comment": "3 (continuous rotation)",
           "index": 3,
           "switchChannels": {
             "Gobo indexing angle / rotation speed": "Gobo rotation speed",
@@ -424,7 +424,7 @@
         {
           "dmxRange": [50, 54],
           "type": "GoboIndex",
-          "comment": "Continuous rotation",
+          "comment": "4 (continuous rotation)",
           "index": 4,
           "switchChannels": {
             "Gobo indexing angle / rotation speed": "Gobo rotation speed",
@@ -434,7 +434,7 @@
         {
           "dmxRange": [55, 59],
           "type": "GoboIndex",
-          "comment": "Continuous rotation",
+          "comment": "5 (continuous rotation)",
           "index": 5,
           "switchChannels": {
             "Gobo indexing angle / rotation speed": "Gobo rotation speed",
@@ -445,7 +445,6 @@
           "dmxRange": [60, 89],
           "type": "GoboIndex",
           "index": 1,
-          "shakeAngle": "wide",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "switchChannels": {
@@ -457,7 +456,6 @@
           "dmxRange": [90, 119],
           "type": "GoboIndex",
           "index": 2,
-          "shakeAngle": "wide",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "switchChannels": {
@@ -469,7 +467,6 @@
           "dmxRange": [120, 149],
           "type": "GoboIndex",
           "index": 3,
-          "shakeAngle": "wide",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "switchChannels": {
@@ -481,7 +478,6 @@
           "dmxRange": [150, 179],
           "type": "GoboIndex",
           "index": 4,
-          "shakeAngle": "wide",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "switchChannels": {
@@ -493,7 +489,6 @@
           "dmxRange": [180, 209],
           "type": "GoboIndex",
           "index": 5,
-          "shakeAngle": "wide",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "switchChannels": {

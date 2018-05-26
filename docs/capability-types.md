@@ -86,7 +86,7 @@ Required properties are _italic_, the entity is written in (parentheses).
   * _soundSensitivity_ (Percent)
 * GoboIndex
   * _index_ (Index): `0` for open, `1` for Gobo 1, `1.5` for Gobo 1/2 split, etc.
-  * shakeAngle (SwingAngle): Default is "off"
+  * shakeAngle (SwingAngle)
   * shakeSpeed (Speed)
 * GoboShake
   * shakeAngle (SwingAngle)
