@@ -2,9 +2,9 @@
   <li class="capability validate-group">
     <validate :state="formstate" tag="span">
       <app-property-input-range
-        v-model="capability.range"
+        v-model="capability.dmxRange"
         :formstate="formstate"
-        :name="`capability${capability.uuid}-range`"
+        :name="`capability${capability.uuid}-dmxRange`"
         :schema-property="properties.capability.dmxRange"
         :range-min="min"
         :range-max="max"
@@ -164,23 +164,23 @@ export default {
       return this.capabilities.some(isCapabilityChanged);
     },
     start() {
-      return this.capability.range !== null ? this.capability.range[0] : null;
+      return this.capability.dmxRange !== null ? this.capability.dmxRange[0] : null;
     },
     end() {
-      return this.capability.range !== null ? this.capability.range[1] : null;
+      return this.capability.dmxRange !== null ? this.capability.dmxRange[1] : null;
     },
     min() {
       let min = this.dmxMin;
       let index = this.capIndex - 1;
       while (index >= 0) {
         const cap = this.capabilities[index];
-        if (cap.range !== null) {
-          if (cap.range[1]) {
-            min = cap.range[1] + 1;
+        if (cap.dmxRange !== null) {
+          if (cap.dmxRange[1]) {
+            min = cap.dmxRange[1] + 1;
             break;
           }
-          if (cap.range[0] !== null) {
-            min = cap.range[0] + 1;
+          if (cap.dmxRange[0] !== null) {
+            min = cap.dmxRange[0] + 1;
             break;
           }
         }
@@ -193,13 +193,13 @@ export default {
       let index = this.capIndex + 1;
       while (index < this.capabilities.length) {
         const cap = this.capabilities[index];
-        if (cap.range !== null) {
-          if (cap.range[0] !== null) {
-            max = cap.range[0] - 1;
+        if (cap.dmxRange !== null) {
+          if (cap.dmxRange[0] !== null) {
+            max = cap.dmxRange[0] - 1;
             break;
           }
-          if (cap.range[1] !== null) {
-            max = cap.range[1] - 1;
+          if (cap.dmxRange[1] !== null) {
+            max = cap.dmxRange[1] - 1;
             break;
           }
         }

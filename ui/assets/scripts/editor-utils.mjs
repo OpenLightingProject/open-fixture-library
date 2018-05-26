@@ -125,7 +125,7 @@ export function getEmptyFineChannel(coarseChannelId, fineness) {
 export function getEmptyCapability() {
   return {
     uuid: uuidV4(),
-    range: null,
+    dmxRange: null,
     name: ``,
     color: ``,
     color2: ``
@@ -170,8 +170,8 @@ export function isCapabilityChanged(cap) {
       return false;
     }
 
-    if (prop === `range`) {
-      return cap.range !== null;
+    if (prop === `dmxRange`) {
+      return cap.dmxRange !== null;
     }
 
     return cap[prop] !== ``;
