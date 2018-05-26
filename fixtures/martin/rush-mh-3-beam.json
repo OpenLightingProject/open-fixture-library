@@ -552,24 +552,24 @@
         },
         {
           "dmxRange": [64, 127],
-          "type": "ColorWheelRotationAngle",
+          "type": "ColorWheelRotation",
           "angleStart": "0deg",
           "angleEnd": "360deg"
         },
         {
           "dmxRange": [128, 189],
-          "type": "ColorWheelRotationSpeed",
+          "type": "ColorWheelRotation",
           "speedStart": "fast CW",
           "speedEnd": "slow CW"
         },
         {
           "dmxRange": [190, 193],
-          "type": "ColorWheelRotationSpeed",
+          "type": "ColorWheelRotation",
           "speed": "stop"
         },
         {
           "dmxRange": [194, 255],
-          "type": "ColorWheelRotationSpeed",
+          "type": "ColorWheelRotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         }

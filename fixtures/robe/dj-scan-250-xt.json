@@ -158,19 +158,19 @@
         },
         {
           "dmxRange": [128, 190],
-          "type": "ColorWheelRotationSpeed",
+          "type": "ColorWheelRotation",
           "speedStart": "fast CW",
           "speedEnd": "slow CW",
           "menuClick": "center"
         },
         {
           "dmxRange": [191, 192],
-          "type": "ColorWheelRotationSpeed",
+          "type": "ColorWheelRotation",
           "speed": "stop"
         },
         {
           "dmxRange": [193, 255],
-          "type": "ColorWheelRotationSpeed",
+          "type": "ColorWheelRotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW",
           "menuClick": "center"
