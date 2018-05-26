@@ -4,8 +4,8 @@
   "categories": ["Moving Head", "Color Changer", "Effect", "Strobe"],
   "meta": {
     "authors": ["Rummels Bucht Berlin"],
-    "createDate": "2018-05-19",
-    "lastModifyDate": "2018-05-19"
+    "createDate": "2018-05-26",
+    "lastModifyDate": "2018-05-26"
   },
   "comment": "impression X4 BAR 10 DMX chart (v1.6) from software version: v0.60",
   "manualURL": "https://www.glp.de/en/products?format=raw&task=download&fid=112",
@@ -18,9 +18,12 @@
       "type": "Osram Ostar RGBW multi-chip LED",
       "colorTemperature": 10000
     },
+    "lens": {
+      "degreesMinMax": [7, 50]
+    },
     "focus": {
-      "tiltMax": 210,
-      "type": "Head"
+      "type": "Head",
+      "tiltMax": 210
     }
   },
   "matrix": {
@@ -37,7 +40,7 @@
     "Tilt": {
       "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 32512,
+      "defaultValue": 32768,
       "crossfade": true,
       "precedence": "LTP"
     },
