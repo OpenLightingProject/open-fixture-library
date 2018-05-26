@@ -656,18 +656,18 @@
       "capabilities": [
         {
           "dmxRange": [0, 75],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         },
         {
           "dmxRange": [76, 150],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speed": "stop"
         },
         {
           "dmxRange": [151, 255],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         }
@@ -678,22 +678,22 @@
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speed": "stop"
         },
         {
           "dmxRange": [1, 75],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speed": "fast CW"
         },
         {
           "dmxRange": [76, 150],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speed": "stop"
         },
         {
           "dmxRange": [151, 255],
-          "type": "RotationSpeed",
+          "type": "Rotation",
           "speed": "fast CCW"
         }
       ]

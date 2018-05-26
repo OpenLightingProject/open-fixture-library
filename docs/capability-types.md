@@ -52,10 +52,9 @@ Required properties are _italic_, the entity is written in (parentheses).
   * _index_ (Index): `0` for open, `1` for Color 1, `1.5` for Color 1/2 split, etc.
   * colors: See above
   * colorTemperature (ColorTemperature)
-* ColorWheelRotationAngle
-  * _angle_ (RotationAngle)
-* ColorWheelRotationSpeed
-  * _speed_ (RotationSpeed)
+* ColorWheelRotation
+  * _angle_ (RotationAngle) (can't be used together with speed)
+  * _speed_ (RotationSpeed) (can't be used together with angle)
 * ColorTemperature
   * _colorTemperature_ (ColorTemperature)
 * Pan
@@ -67,7 +66,8 @@ Required properties are _italic_, the entity is written in (parentheses).
 * TiltContinuous
   * _speed_ (RotationSpeed)
 * PanTiltSpeed
-  * _speed_ (Speed)
+  * _speed_ (Speed) (can't be used together with duration)
+  * _duration_ (Duration) (can't be used together with speed)
 * Effect
   * _effectName_: Free text describing the effect (can't be used together with effectPreset)
   * _effectPreset_: one of `ColorJump`, `ColorFade` (can't be used together with effectName)
@@ -91,14 +91,12 @@ Required properties are _italic_, the entity is written in (parentheses).
 * GoboShake
   * shakeAngle (SwingAngle)
   * shakeSpeed (Speed)
-* GoboStencilRotationAngle
-  * _angle_ (RotationAngle)
-* GoboStencilRotationSpeed
-  * _speed_ (RotationSpeed)
-* GoboWheelRotationAngle
-  * _angle_ (RotationAngle)
-* GoboWheelRotationSpeed
-  * _speed_ (RotationSpeed)
+* GoboStencilRotation
+  * _angle_ (RotationAngle) (can't be used together with speed)
+  * _speed_ (RotationSpeed) (can't be used together with angle)
+* GoboWheelRotation
+  * _angle_ (RotationAngle) (can't be used together with speed)
+  * _speed_ (RotationSpeed) (can't be used together with angle)
 * Focus
   * _distance_ (Distance)
 * Zoom
@@ -117,10 +115,9 @@ Required properties are _italic_, the entity is written in (parentheses).
 * PrismOn
   * angle (RotationAngle)
   * speed (RotationSpeed)
-* PrismRotationAngle
-  * _angle_ (RotationAngle)
-* PrismRotationSpeed
-  * _speed_ (RotationSpeed)
+* PrismRotation
+  * _angle_ (RotationAngle) (can't be used together with speed)
+  * _speed_ (RotationSpeed) (can't be used together with angle)
 * BladeInsertion
   * _insertion_ (Insertion)
   * _blade_: one of `Top`, `Right`, `Bottom`, `Left` or a number if the position is unknown
@@ -139,13 +136,25 @@ Required properties are _italic_, the entity is written in (parentheses).
   * _fogType_: either `Fog` or `Haze`
 * BeamAngle
   * _angle_ (BeamAngle)
-* RotationAngle
-  * _angle_ (RotationAngle)
-* RotationSpeed
-  * _speed_ (RotationSpeed)
+* Rotation
+  * _angle_ (RotationAngle) (can't be used together with speed)
+  * _speed_ (RotationSpeed) (can't be used together with angle)
 * Speed
   * _speed_ (Speed)
+* Time
+  * _time_ (Time)
 * Maintenance
   * parameter (Factor)
   * hold (Time)
 * Generic
+
+
+### How to add new capability types / type-specific properties
+
+* Update the schema (mainly `capability.json`, `definitions.json` for units / entities)
+* Update this document
+* Add new properties to the model (in `Capability.mjs`)
+* If it's a start/end property, add its name to `Capability.START_END_PROPERTIES`
+* Add new types to capability name generation (in `Capability.mjs`)
+* Add new types to channel type generation (in `Channel.mjs`)
+* Update editor

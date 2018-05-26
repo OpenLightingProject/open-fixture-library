@@ -157,7 +157,7 @@
         },
         {
           "dmxRange": [160, 255],
-          "type": "ColorWheelRotationSpeed",
+          "type": "ColorWheelRotation",
           "speedStart": "slow CW",
           "speedEnd": "fast CW",
           "comment": "Color scroll"
@@ -215,7 +215,7 @@
         },
         {
           "dmxRange": [128, 255],
-          "type": "GoboWheelRotationSpeed",
+          "type": "GoboWheelRotation",
           "speedStart": "slow CW",
           "speedEnd": "fast CW",
           "comment": "Gobo scroll"

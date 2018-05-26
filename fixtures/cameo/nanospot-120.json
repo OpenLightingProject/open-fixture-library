@@ -113,13 +113,13 @@
         },
         {
           "dmxRange": [88, 175],
-          "type": "ColorWheelRotationAngle",
+          "type": "ColorWheelRotation",
           "angleStart": "0deg",
           "angleEnd": "360deg"
         },
         {
           "dmxRange": [176, 255],
-          "type": "ColorWheelRotationSpeed",
+          "type": "ColorWheelRotation",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         }
@@ -160,7 +160,7 @@
         },
         {
           "dmxRange": [250, 255],
-          "type": "GoboWheelRotationSpeed",
+          "type": "GoboWheelRotation",
           "speed": "fast CW"
         }
       ]

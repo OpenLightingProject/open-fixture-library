@@ -237,14 +237,14 @@
         },
         {
           "dmxRange": [128, 191],
-          "type": "ColorWheelRotationSpeed",
+          "type": "ColorWheelRotation",
           "speedStart": "slow CW",
           "speedEnd": "fast CW",
           "menuClick": "center"
         },
         {
           "dmxRange": [192, 255],
-          "type": "ColorWheelRotationSpeed",
+          "type": "ColorWheelRotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW",
           "menuClick": "center"
@@ -522,14 +522,14 @@
         },
         {
           "dmxRange": [180, 217],
-          "type": "GoboWheelRotationSpeed",
+          "type": "GoboWheelRotation",
           "speedStart": "slow CW",
           "speedEnd": "fast CW",
           "menuClick": "center"
         },
         {
           "dmxRange": [218, 255],
-          "type": "GoboWheelRotationSpeed",
+          "type": "GoboWheelRotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW",
           "menuClick": "center"
@@ -738,14 +738,14 @@
         },
         {
           "dmxRange": [13, 130],
-          "type": "PrismRotationSpeed",
+          "type": "PrismRotation",
           "speedStart": "slow CW",
           "speedEnd": "fast CW",
           "comment": "Prism rotation"
         },
         {
           "dmxRange": [131, 247],
-          "type": "PrismRotationSpeed",
+          "type": "PrismRotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW",
           "comment": "Prism rotation"
