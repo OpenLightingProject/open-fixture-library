@@ -67,7 +67,8 @@ Required properties are _italic_, the entity is written in (parentheses).
 * TiltContinuous
   * _speed_ (RotationSpeed)
 * PanTiltSpeed
-  * _speed_ (Speed)
+  * _speed_ (Speed) (can't be used together with duration)
+  * _duration_ (Duration) (can't be used together with speed)
 * Effect
   * _effectName_: Free text describing the effect (can't be used together with effectPreset)
   * _effectPreset_: one of `ColorJump`, `ColorFade` (can't be used together with effectName)

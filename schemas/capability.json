@@ -450,15 +450,22 @@
         "helpWanted": {},
         "speed": { "$ref": "definitions.json#/entities/speed" },
         "speedStart": { "$ref": "definitions.json#/entities/speed" },
-        "speedEnd": { "$ref": "definitions.json#/entities/speed" }
+        "speedEnd": { "$ref": "definitions.json#/entities/speed" },
+        "duration": { "$ref": "definitions.json#/entities/time" },
+        "durationStart": { "$ref": "definitions.json#/entities/time" },
+        "durationEnd": { "$ref": "definitions.json#/entities/time" }
       },
       "oneOf": [
         { "required": ["speed"] },
-        { "required": ["speedStart"] }
+        { "required": ["speedStart"] },
+        { "required": ["duration"] },
+        { "required": ["durationStart"] }
       ],
       "dependencies": {
         "speedStart": ["speedEnd"],
-        "speedEnd": ["speedStart"]
+        "speedEnd": ["speedStart"],
+        "durationStart": ["durationEnd"],
+        "durationEnd": ["durationStart"]
       },
       "additionalProperties": false
     },
