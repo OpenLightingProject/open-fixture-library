@@ -69,9 +69,9 @@
       </tr></thead>
       <tbody>
         <tr v-for="capability in allCapabilities" :key="capability.uuid" :class="capability.type">
-          <td class="capability-range0"><code>{{ capability.range[0] }}</code></td>
-          <td class="capability-range-separator"><code>…</code></td>
-          <td class="capability-range1"><code>{{ capability.range[1] }}</code></td>
+          <td class="capability-dmxRange0"><code>{{ capability.dmxRange[0] }}</code></td>
+          <td class="capability-dmxRange-separator"><code>…</code></td>
+          <td class="capability-dmxRange1"><code>{{ capability.dmxRange[1] }}</code></td>
           <td class="capability-name">{{ capability.name }}</td>
         </tr>
       </tbody>
@@ -106,18 +106,18 @@ td, th {
   vertical-align: top;
 }
 
-.capability-range0 {
+.capability-dmxRange0 {
   text-align: right;
   padding-right: 2px;
 }
 
-.capability-range-separator {
+.capability-dmxRange-separator {
   text-align: center;
   padding-left: 0;
   padding-right: 0;
 }
 
-.capability-range1 {
+.capability-dmxRange1 {
   text-align: left;
   padding-left: 2px;
 }
@@ -168,7 +168,7 @@ export default {
     insertIndex() {
       // loop from inherited capabilities array end to start
       for (let i = this.capabilities.length - 1; i >= 0; i--) {
-        if (this.capabilities[i].range !== null && this.capabilities[i].range[1] !== null && this.capabilities[i].range[1] < this.wizard.start) {
+        if (this.capabilities[i].dmxRange !== null && this.capabilities[i].dmxRange[1] !== null && this.capabilities[i].dmxRange[1] < this.wizard.start) {
           return i + 1;
         }
       }
@@ -185,7 +185,7 @@ export default {
       const prevCapability = this.capabilities[this.insertIndex - 1];
       if (
         (!prevCapability && this.wizard.start > 0) ||
-        (prevCapability && prevCapability.range !== null && this.wizard.start > prevCapability.range[1] + 1)
+        (prevCapability && prevCapability.dmxRange !== null && this.wizard.start > prevCapability.dmxRange[1] + 1)
       ) {
         // empty capability filling the gap before generated capabilities
         capabilities.push(getEmptyCapability());
@@ -194,7 +194,7 @@ export default {
       for (let i = 0; i < this.wizard.count; i++) {
         const cap = getEmptyCapability();
 
-        cap.range = [
+        cap.dmxRange = [
           this.wizard.start + (i * this.wizard.width),
           this.wizard.start + ((i + 1) * this.wizard.width) - 1
         ];
@@ -221,7 +221,7 @@ export default {
       }
 
       const nextNonEmptyCapability = this.capabilities[this.insertIndex + 1];
-      if (nextNonEmptyCapability && nextNonEmptyCapability.range !== null && this.end + 1 === nextNonEmptyCapability.range[0]) {
+      if (nextNonEmptyCapability && nextNonEmptyCapability.dmxRange !== null && this.end + 1 === nextNonEmptyCapability.dmxRange[0]) {
         return 1;
       }
 
@@ -232,7 +232,7 @@ export default {
      * @returns {!number} DMX value range end of the last generated capability.
      */
     end() {
-      return this.computedCapabilites.length === 0 ? -1 : this.computedCapabilites[this.computedCapabilites.length - 1].range[1];
+      return this.computedCapabilites.length === 0 ? -1 : this.computedCapabilites[this.computedCapabilites.length - 1].dmxRange[1];
     },
 
     /**
@@ -251,7 +251,7 @@ export default {
       inheritedCapabilities.splice(this.insertIndex, this.removeCount, ...computedCapabilites);
 
       return inheritedCapabilities.filter(
-        cap => cap.range !== null || cap.name !== ``
+        cap => cap.dmxRange !== null
       );
     },
 
@@ -288,13 +288,13 @@ export default {
       }
 
       const collisionDetected = this.capabilities.some(cap => {
-        if (cap.range === null) {
+        if (cap.dmxRange === null) {
           return false;
         }
 
-        // if only start or end is set, assume a one-value range (e.g. [43, 43])
-        const capStart = cap.range[0] === null ? cap.range[1] : cap.range[0];
-        const capEnd = cap.range[1] === null ? cap.range[0] : cap.range[1];
+        // if only start or end is set, assume a one-value dmxRange (e.g. [43, 43])
+        const capStart = cap.dmxRange[0] === null ? cap.dmxRange[1] : cap.dmxRange[0];
+        const capEnd = cap.dmxRange[1] === null ? cap.dmxRange[0] : cap.dmxRange[1];
 
         return capEnd >= this.wizard.start && capStart <= this.end;
       });
@@ -314,17 +314,17 @@ export default {
     for (let i = this.capabilities.length - 1; i >= 0; i--) {
       const cap = this.capabilities[i];
 
-      if (cap.range === null) {
+      if (cap.dmxRange === null) {
         continue;
       }
 
-      if (cap.range[1] !== null) {
-        lastOccupied = cap.range[1];
+      if (cap.dmxRange[1] !== null) {
+        lastOccupied = cap.dmxRange[1];
         break;
       }
 
-      if (cap.range[0] !== null) {
-        lastOccupied = cap.range[0];
+      if (cap.dmxRange[0] !== null) {
+        lastOccupied = cap.dmxRange[0];
         break;
       }
     }

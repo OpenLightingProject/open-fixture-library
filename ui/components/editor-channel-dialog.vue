@@ -13,7 +13,7 @@
       action="#"
       @submit.prevent="onSubmit">
 
-      <div v-if="channel.editMode == `add-existing`" class="validate-group">
+      <div v-if="channel.editMode == `add-existing`">
         <select v-model="channel.uuid" size="10" required>
           <option
             v-for="channelUuid in currentModeUnchosenChannels"
@@ -38,54 +38,6 @@
             title="Please start with an uppercase letter or a number. Don't create fine channels here, set its resolution below instead."
             class="channelName" />
         </app-simple-label>
-
-        <!-- <app-simple-label :formstate="formstate" name="type" label="Type">
-          <app-property-input-select
-            v-model="channel.type"
-            :schema-property="properties.channel.type"
-            :required="true"
-            name="type"
-            addition-hint="other channel type" />
-          <validate
-            v-if="channel.type === `[add-value]`"
-            :state="formstate"
-            tag="span">
-            <app-property-input-text
-              v-model="channel.typeNew"
-              :name="`typeNew`"
-              :schema-property="properties.definitions.nonEmptyString"
-              :required="true"
-              :auto-focus="true"
-              hint="other channel type"
-              class="addition" />
-          </validate>
-        </app-simple-label>
-
-        <app-simple-label
-          v-if="channel.type === `Single Color`"
-          :formstate="formstate"
-          name="color"
-          label="Color">
-          <app-property-input-select
-            v-model="channel.color"
-            :schema-property="properties.channel.color"
-            :required="true"
-            name="color"
-            addition-hint="other channel color" />
-          <validate
-            v-if="channel.color === `[add-value]`"
-            :state="formstate"
-            tag="span">
-            <app-property-input-text
-              v-model="channel.colorNew"
-              :name="`colorNew`"
-              :schema-property="properties.definitions.nonEmptyString"
-              :required="true"
-              :auto-focus="true"
-              hint="other channel color"
-              class="addition" />
-          </validate>
-        </app-simple-label> -->
 
         <h3>DMX values</h3>
 
@@ -117,26 +69,12 @@
             step="1">
         </app-simple-label>
 
-        <!-- <app-simple-label :formstate="formstate" name="invert" label="Invert?">
-          <app-property-input-boolean
-            v-model="channel.invert"
-            :schema-property="properties.channel.invert"
-            name="invert" />
-        </app-simple-label> -->
-
         <app-simple-label :formstate="formstate" name="constant" label="Constant?">
           <app-property-input-boolean
             v-model="channel.constant"
             :schema-property="properties.channel.constant"
             name="constant" />
         </app-simple-label>
-
-        <!-- <app-simple-label :formstate="formstate" name="crossfade" label="Crossfade?">
-          <app-property-input-boolean
-            v-model="channel.crossfade"
-            :schema-property="properties.channel.crossfade"
-            name="crossfade" />
-        </app-simple-label> -->
 
         <app-simple-label :formstate="formstate" name="precedence" label="Precedence">
           <app-property-input-select
@@ -145,7 +83,22 @@
             name="precedence" />
         </app-simple-label>
 
-        <h3>Capabilities</h3>
+        <h3>Capabilities<template v-if="!channel.wizard.show">
+          <a
+            href="#expand-all"
+            class="icon-button expand-all"
+            title="Expand all capabilities"
+            @click.prevent="openDetails">
+            <app-svg name="chevron-double-down" />
+          </a>
+          <a
+            href="#collapse-all"
+            class="icon-button collapse-all"
+            title="Collapse all capabilities"
+            @click.prevent="closeDetails">
+            <app-svg name="chevron-double-up" />
+          </a>
+        </template></h3>
 
         <app-simple-label
           v-if="channel.fineness > 0"
@@ -159,13 +112,6 @@
           </select>
         </app-simple-label>
 
-        <section>
-          <a href="#wizard" class="button secondary" @click.prevent="channel.wizard.show = !channel.wizard.show">
-            <app-svg name="capability-wizard" />
-            {{ channel.wizard.show ? 'Close' : 'Open' }} Capability Wizard
-          </a>
-        </section>
-
         <app-editor-capability-wizard
           v-if="channel.wizard.show"
           :wizard="channel.wizard"
@@ -173,7 +119,7 @@
           :fineness="Math.min(channel.fineness, channel.capFineness)"
           @close="channel.wizard.show = false" />
 
-        <ul v-else class="capability-editor">
+        <div v-else class="capability-editor">
           <app-editor-capability
             v-for="(cap, index) in channel.capabilities"
             :key="cap.uuid"
@@ -181,7 +127,14 @@
             :formstate="formstate"
             :cap-index="index"
             :fineness="Math.min(channel.fineness, channel.capFineness)" />
-        </ul>
+        </div>
+
+        <section>
+          <a href="#wizard" class="button secondary" @click.prevent="channel.wizard.show = !channel.wizard.show">
+            <app-svg name="capability-wizard" />
+            {{ channel.wizard.show ? 'Close' : 'Open' }} Capability Wizard
+          </a>
+        </section>
 
       </div>
 
@@ -195,10 +148,10 @@
 </template>
 
 <style lang="scss" scoped>
-.capability-editor {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.expand-all,
+.collapse-all {
+  margin-left: 1ex;
+  font-size: 0.8rem;
 }
 </style>
 
@@ -390,7 +343,12 @@ export default {
       if (this.formstate.$invalid) {
         const firstErrorName = Object.keys(this.formstate.$error)[0];
         const field = document.querySelector(`[name=${firstErrorName}]`);
-        const scrollContainer = field.closest(`.dialog`);
+        const scrollContainer = field.closest(`dialog`);
+
+        const enclosingDetails = field.closest(`details`);
+        if (enclosingDetails) {
+          enclosingDetails.open = true;
+        }
 
         scrollIntoView(field, {
           time: 300,
@@ -501,6 +459,18 @@ export default {
       this.$emit(`reset-channel`);
       this.$nextTick(() => {
         this.formstate._reset(); // resets validation status
+      });
+    },
+
+    openDetails() {
+      this.$el.querySelectorAll(`details`).forEach(details => {
+        details.open = true;
+      });
+    },
+
+    closeDetails() {
+      this.$el.querySelectorAll(`details`).forEach(details => {
+        details.open = false;
       });
     }
   }

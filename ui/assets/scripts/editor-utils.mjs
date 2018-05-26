@@ -125,10 +125,10 @@ export function getEmptyFineChannel(coarseChannelId, fineness) {
 export function getEmptyCapability() {
   return {
     uuid: uuidV4(),
-    range: null,
-    name: ``,
-    color: ``,
-    color2: ``
+    open: true,
+    dmxRange: null,
+    type: ``,
+    typeData: {}
   };
 }
 
@@ -165,16 +165,16 @@ export function isChannelChanged(channel) {
  * @returns {!boolean} False if the capability object is still empty / unchanged, true otherwise.
  */
 export function isCapabilityChanged(cap) {
-  return Object.keys(cap).some(prop => {
-    if (prop === `uuid`) {
-      return false;
-    }
+  if (cap.dmxRange !== null) {
+    return true;
+  }
 
-    if (prop === `range`) {
-      return cap.range !== null;
-    }
+  if (cap.type !== ``) {
+    return true;
+  }
 
-    return cap[prop] !== ``;
+  return Object.keys(cap.typeData).some(prop => {
+    return cap.typeData[prop] !== ``;
   });
 }
 

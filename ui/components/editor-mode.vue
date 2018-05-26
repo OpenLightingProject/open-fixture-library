@@ -71,7 +71,7 @@
       :state="formstate"
       :custom="{'no-empty-channel-list': channelListNotEmpty}"
       tag="div"
-      class="validate-group mode-channels">
+      class="mode-channels">
       <draggable v-model="mode.channels" :options="dragOptions" :name="`mode-${index}-channels`">
         <transition-group class="mode-channels" tag="ol">
           <li
