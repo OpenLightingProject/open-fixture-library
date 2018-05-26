@@ -1206,6 +1206,28 @@
     {
       "properties": {
         "dmxRange": {},
+        "type": { "enum": ["Time"] },
+        "comment": {},
+        "menuClick": {},
+        "switchChannels": {},
+        "helpWanted": {},
+        "time": { "$ref": "definitions.json#/entities/time" },
+        "timeStart": { "$ref": "definitions.json#/entities/time" },
+        "timeEnd": { "$ref": "definitions.json#/entities/time" }
+      },
+      "oneOf": [
+        { "required": ["time"] },
+        { "required": ["timeStart"] }
+      ],
+      "dependencies": {
+        "timeStart": ["timeEnd"],
+        "timeEnd": ["timeStart"]
+      },
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "dmxRange": {},
         "type": { "enum": ["Maintenance"] },
         "comment": {},
         "menuClick": {},

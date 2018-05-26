@@ -145,6 +145,8 @@ Required properties are _italic_, the entity is written in (parentheses).
   * _speed_ (RotationSpeed)
 * Speed
   * _speed_ (Speed)
+* Time
+  * _time_ (Time)
 * Maintenance
   * parameter (Factor)
   * hold (Time)
