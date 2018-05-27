@@ -31,7 +31,7 @@
     "consistent-return": "error",
     "curly": ["error", "all"],
     "dot-location": ["error", "property"],
-    "dot-notation": "error",
+    "dot-notation": ["error", { "allowKeywords": false }],
     "eol-last": ["error", "always"],
     "eqeqeq": ["error", "always", { "null": "ignore" }],
     "func-call-spacing": "error",
