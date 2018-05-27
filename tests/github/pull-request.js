@@ -11,13 +11,9 @@ const requiredEnvVars = [
 ];
 
 const github = new GitHubApi({
-  debug: false,
-  protocol: `https`,
-  host: `api.github.com`,
   headers: {
     'user-agent': `Open Fixture Library`
   },
-  followRedirects: false,
   timeout: 5000
 });
 
@@ -62,7 +58,7 @@ module.exports.init = function init() {
     });
   })
     .then(pr => {
-    // save PR for later use
+      // save PR for later use
       module.exports.data = pr.data;
       return this.data;
     });
@@ -77,7 +73,7 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
       repo: repoName,
       number: process.env.TRAVIS_PULL_REQUEST,
       'per_page': 100,
-      page: i
+      page: i + 1
     }));
   }
 
@@ -194,7 +190,7 @@ module.exports.updateComment = function updateComment(test) {
         repo: repoName,
         number: process.env.TRAVIS_PULL_REQUEST,
         'per_page': 100,
-        page: i
+        page: i + 1
       })
     );
   }
@@ -206,7 +202,7 @@ module.exports.updateComment = function updateComment(test) {
 
       for (const block of commentBlocks) {
         for (const comment of block.data) {
-        // get rid of \r linebreaks
+          // get rid of \r linebreaks
           comment.body = comment.body.replace(/\r/g, ``);
 
           // the comment was created by this test script

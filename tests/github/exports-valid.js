@@ -6,9 +6,27 @@ const { fixtureFromRepository } = require(`../../lib/model.js`);
 const pullRequest = require(`./pull-request.js`);
 
 const plugins = require(`../../plugins/plugins.json`);
+
+let exportTests = [];
+for (const pluginKey of Object.keys(plugins.data)) {
+  const plugin = plugins.data[pluginKey];
+
+  exportTests = exportTests.concat(plugin.exportTests.map(
+    testKey => [pluginKey, testKey]
+  ));
+}
+
 const testFixtures = require(`../test-fixtures.json`).map(
   fixture => [fixture.man, fixture.key]
 );
+
+/**
+ * @typedef {object} Task
+ * @property {string} manKey
+ * @property {string} fixKey
+ * @property {string} pluginKey
+ * @property {string} testKey
+ */
 
 pullRequest.checkEnv()
   .catch(error => {
@@ -18,40 +36,49 @@ pullRequest.checkEnv()
   .then(() => pullRequest.init())
   .then(prData => pullRequest.fetchChangedComponents())
   .then(changedComponents => {
-    const messagePromises = [];
+    /** @type {Array.<Task>} */
+    const tasks = getTasksForModel(changedComponents)
+      .concat(getTasksForPlugins(changedComponents))
+      .concat(getTasksForExportTests(changedComponents))
+      .concat(getTasksForFixtures(changedComponents))
+      .filter((task, index, arr) => {
+        const firstEqualTask = arr.find(otherTask =>
+          task.manKey === otherTask.manKey &&
+          task.fixKey === otherTask.fixKey &&
+          task.pluginKey === otherTask.pluginKey &&
+          task.testKey === otherTask.testKey
+        );
 
-    if (changedComponents.added.model ||
-      changedComponents.modified.model ||
-      changedComponents.renamed.model ||
-      changedComponents.removed.model) {
-      messagePromises.push(getModelMessagePromise());
-    }
-    else {
-      const changedPlugins = changedComponents.added.exports.concat(changedComponents.modified.exports)
-        .filter(key => plugins.data[key].exportTests.length > 0); // only plugins that have export tests
-      for (const plugin of changedPlugins) {
-        messagePromises.push(getPluginMessagePromise(plugin));
-      }
+        // remove duplicates
+        return task === firstEqualTask;
+      })
+      .sort((a, b) => {
+        const manCompare = a.manKey.localeCompare(b.manKey);
+        const fixCompare = a.fixKey.localeCompare(b.fixKey);
+        const pluginCompare = a.pluginKey.localeCompare(b.pluginKey);
+        const testCompare = a.testKey.localeCompare(b.testKey);
 
-      // only export tests that are not covered by plugin tasks (which run all tests)
-      const exportTests = changedComponents.added.exportTests.concat(changedComponents.modified.exportTests) // stored as [plugin, test]
-        .filter(([plugin, test]) => !changedPlugins.includes(plugin));
-      for (const [plugin, test] of exportTests) {
-        messagePromises.push(getExportTestMessagePromise(plugin, test));
-      }
-    }
+        if (manCompare !== 0) {
+          return manCompare;
+        }
 
-    const fixtures = changedComponents.added.fixtures.concat(changedComponents.modified.fixtures, changedComponents.renamed.fixtures);
-    for (const fixture of fixtures) {
-      messagePromises.push(getFixtureMessagePromise(fixture));
-    }
+        if (fixCompare !== 0) {
+          return fixCompare;
+        }
 
-    return Promise.all(messagePromises);
+        if (pluginCompare !== 0) {
+          return pluginCompare;
+        }
+
+        return testCompare;
+      });
+
+    return Promise.all(tasks.map(task => getTaskPromise(task)));
   })
-  .then(messages => {
+  .then(taskResults => {
     let lines = [];
 
-    if (messages.length > 0) {
+    if (taskResults.some(result => result.length > 0)) {
       lines.push(
         `Test the exported files of selected fixtures against the plugins' export tests.`,
         `You can run a plugin's export tests by executing:`,
@@ -59,8 +86,8 @@ pullRequest.checkEnv()
         ``
       );
 
-      for (const messageLines of messages) {
-        lines = lines.concat(messageLines, ``);
+      for (const taskResult of taskResults) {
+        lines = lines.concat(taskResult);
       }
     }
 
@@ -75,154 +102,129 @@ pullRequest.checkEnv()
     process.exit(1);
   });
 
-function getModelMessagePromise() {
-  const pluginListPromises = Object.keys(plugins.data).map(
-    pluginKey => getPluginListPromise(pluginKey, testFixtures)
-  );
 
-  return Promise.all(pluginListPromises)
-    .then(pluginLists => {
-      let modelMessageLines = [`## Model changed in this PR`];
-      modelMessageLines = modelMessageLines.concat(getTestFixturesInfo(modelMessageLines));
+/**
+ * @param {!object} changedComponents What components have been changed in this PR.
+ * @returns {!Array.<Task>} What export valid tasks have to be done due to changes in the model. May be empty.
+ */
+function getTasksForModel(changedComponents) {
+  let tasks = [];
 
-      for (const pluginListLines of pluginLists) {
-        modelMessageLines = modelMessageLines.concat(pluginListLines);
-      }
+  if (changedComponents.added.model ||
+    changedComponents.modified.model ||
+    changedComponents.renamed.model ||
+    changedComponents.removed.model) {
 
-      return modelMessageLines;
-    });
+    for (const [manKey, fixKey] of testFixtures) {
+      tasks = tasks.concat(exportTests.map(([pluginKey, testKey]) => ({
+        manKey,
+        fixKey,
+        pluginKey,
+        testKey
+      })));
+    }
+  }
+
+  return tasks;
 }
 
-function getPluginMessagePromise(pluginKey) {
-  const exportTestListPromises = plugins.data[pluginKey].exportTests.map(
-    testKey => getExportTestListPromise(pluginKey, testKey, testFixtures)
-  );
+/**
+ * @param {!object} changedComponents What components have been changed in this PR.
+ * @returns {!Array.<Task>} What export valid tasks have to be done due to changes in plugins. May be empty.
+ */
+function getTasksForPlugins(changedComponents) {
+  let tasks = [];
 
-  return Promise.all(exportTestListPromises)
-    .then(exportTestLists => {
-      let pluginMessageLines = [`## Plugin \`${pluginKey}\` changed in this PR`];
-      pluginMessageLines = pluginMessageLines.concat(getTestFixturesInfo(pluginMessageLines));
+  const changedPlugins = changedComponents.added.exports.concat(changedComponents.modified.exports);
 
-      for (const exportTestListLines of exportTestLists) {
-        pluginMessageLines = pluginMessageLines.concat(exportTestListLines);
-      }
+  for (const changedPlugin of changedPlugins) {
+    const pluginExportTests = plugins.data[changedPlugin].exportTests;
 
-      return pluginMessageLines;
-    });
+    for (const [manKey, fixKey] of testFixtures) {
+      tasks = tasks.concat(pluginExportTests.map(testKey => ({
+        manKey,
+        fixKey,
+        pluginKey: changedPlugin,
+        testKey
+      })));
+    }
+  }
+
+  return tasks;
 }
 
-function getExportTestMessagePromise(pluginKey, testKey) {
-  const plugin = require(path.join(__dirname, `../../plugins`, pluginKey, `export.js`));
-  const files = plugin.export(testFixtures.map(
-    fix => fixtureFromRepository(fix[0], fix[1])
-  ));
+/**
+ * @param {!object} changedComponents What components have been changed in this PR.
+ * @returns {!Array.<Task>} What export valid tasks have to be done due to changes in export tests. May be empty.
+ */
+function getTasksForExportTests(changedComponents) {
+  let tasks = [];
 
-  const fileResultPromises = files.map(
-    file => getFileResultPromise(pluginKey, testKey, file)
-  );
+  const changedExportTests = changedComponents.added.exportTests.concat(changedComponents.modified.exportTests);
 
-  return Promise.all(fileResultPromises)
-    .then(fileResults => {
-      let exportTestMessageLines = [`## Export test \`${pluginKey}\`/\`${testKey}\` changed in this PR`];
-      exportTestMessageLines = exportTestMessageLines.concat(getTestFixturesInfo(exportTestMessageLines));
+  for (const [manKey, fixKey] of testFixtures) {
+    tasks = tasks.concat(changedExportTests.map(([pluginKey, testKey]) => ({
+      manKey,
+      fixKey,
+      pluginKey,
+      testKey
+    })));
+  }
 
-      for (const fileResultLines of fileResults) {
-        exportTestMessageLines = exportTestMessageLines.concat(fileResultLines);
-      }
-
-      return exportTestMessageLines;
-    });
+  return tasks;
 }
 
-function getFixtureMessagePromise(fixture) {
-  const pluginListPromises = Object.keys(plugins.data).map(
-    pluginKey => getPluginListPromise(pluginKey, [fixture])
-  );
+/**
+ * @param {!object} changedComponents What components have been changed in this PR.
+ * @returns {!Array.<Task>} What export valid tasks have to be done due to changes in fixtures. May be empty.
+ */
+function getTasksForFixtures(changedComponents) {
+  let tasks = [];
 
-  return Promise.all(pluginListPromises)
-    .then(pluginLists => {
-      let fixtureMessageLines = [`## Fixture \`${fixture[0]}/${fixture[1]}\` changed in this PR`];
+  const fixtures = changedComponents.added.fixtures.concat(changedComponents.modified.fixtures, changedComponents.renamed.fixtures);
 
-      for (const pluginListLines of pluginLists) {
-        fixtureMessageLines = fixtureMessageLines.concat(pluginListLines);
-      }
+  for (const [manKey, fixKey] of fixtures) {
+    tasks = tasks.concat(exportTests.map(([pluginKey, testKey]) => ({
+      manKey,
+      fixKey,
+      pluginKey,
+      testKey
+    })));
+  }
 
-      return fixtureMessageLines;
-    });
+  return tasks;
 }
 
-function getTestFixturesInfo(lines) {
-  return pullRequest.getTestFixturesMessage(
-    testFixtures.map(fix => `${fix[0]}/${fix[1]}`)
-  ).concat(`### Test results`);
-}
+/**
+ * @param {Task} task The export valid task to fulfill.
+ * @returns {Promise} e
+ */
+function getTaskPromise(task) {
+  const plugin = require(path.join(__dirname, `../../plugins/${task.pluginKey}/export.js`));
+  const test = require(path.join(__dirname, `../../plugins/${task.pluginKey}/exportTests/${task.testKey}.js`));
+  const files = plugin.export([fixtureFromRepository(task.manKey, task.fixKey)]);
 
+  let failed = false;
+  return Promise.all(files.map(
+    file => test(file.content)
+      .then(() => {
+        return `    <li>:heavy_check_mark: ${file.name}</li>`;
+      })
+      .catch(err => {
+        failed = true;
+        return `    <li><details><summary>:x: ${file.name}</summary>${err}</details></li>`;
+      })
+  ))
+    .then(resultLines => {
+      const emoji = failed ? `:x:` : `:heavy_check_mark:`;
 
-function getPluginListPromise(pluginKey, fixtures) {
-  const exportTestListPromises = plugins.data[pluginKey].exportTests.map(
-    testKey => getExportTestListPromise(pluginKey, testKey, fixtures, `  `)
-  );
-
-  return Promise.all(exportTestListPromises)
-    .then(exportTestLists => {
-      let pluginListLines = [`- ${pluginKey}`];
-
-      for (const exportTestListLines of exportTestLists) {
-        pluginListLines = pluginListLines.concat(exportTestListLines);
-      }
-
-      return pluginListLines;
-    });
-}
-
-function getExportTestListPromise(pluginKey, testKey, fixtures, indent = ``) {
-  const plugin = require(path.join(__dirname, `../../plugins`, pluginKey, `export.js`));
-  const files = plugin.export(fixtures.map(
-    fix => fixtureFromRepository(fix[0], fix[1])
-  ));
-
-  const fileResultPromises = files.map(
-    file => getFileResultPromise(pluginKey, testKey, file, `${indent}  `)
-  );
-
-  return Promise.all(fileResultPromises)
-    .then(fileResults => {
-      let exportTestLines = [`${indent}- ${testKey}`];
-
-      for (const fileResultLines of fileResults) {
-        exportTestLines = exportTestLines.concat(fileResultLines);
-      }
-
-      return exportTestLines;
-    });
-}
-
-function getFileResultPromise(pluginKey, testKey, file, indent = ``) {
-  const test = require(path.join(__dirname, `../../plugins`, pluginKey, `exportTests/${testKey}.js`));
-  return test(file.content)
-    .then(() => {
-      return [`${indent}- :white_check_mark: ${file.name}`];
-    })
-    .catch(err => {
-      const errors = Array.isArray(err) ? err : [err];
-
-      const fileResultLines = [
-        `${indent}- :x: ${file.name}`,
-        `${indent}  <details>`,
-        `${indent}  <summary>Show errors</summary>`,
-        `${indent}  <ul>`
-      ];
-
-      for (const error of errors) {
-        const errorText = error.replace(`\n`, ``);
-        fileResultLines.push(`${indent}  <li>${errorText}</li>`);
-      }
-
-      fileResultLines.push(
-        `${indent}  </ul>`,
-        `${indent}  </details>`
-      );
-
-      return fileResultLines;
+      return [
+        `<details>`,
+        `  <summary>${emoji} <strong>${task.manKey} / ${task.fixKey}:</strong> ${task.pluginKey} / ${task.testKey}</summary>`,
+        `  <ul>`
+      ].concat(resultLines).concat([
+        `  </ul>`,
+        `</details>`
+      ]);
     });
 }
