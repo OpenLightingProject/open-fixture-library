@@ -49,6 +49,12 @@
         </select>
       </app-simple-label>
 
+      <component
+        v-if="capability.type !== ``"
+        :is="`app-editor-capability-${capability.type}`"
+        :capability="capability"
+        :formstate="formstate" />
+
     </div>
   </app-conditional-details>
 </template>
@@ -116,12 +122,19 @@ import propertyInputRangeVue from '~/components/property-input-range.vue';
 import simpleLabelVue from '~/components/simple-label.vue';
 import svgVue from "~/components/svg.vue";
 
+import editorCapabilityNothing from '~/components/editor-capabilities/Nothing.vue';
+import editorCapabilityShutterStrobe from '~/components/editor-capabilities/ShutterStrobe.vue';
+import editorCapabilityStrobeSpeed from '~/components/editor-capabilities/StrobeSpeed.vue';
+
 export default {
   components: {
     'app-conditional-details': conditionalDetailsVue,
     'app-property-input-range': propertyInputRangeVue,
     'app-simple-label': simpleLabelVue,
-    'app-svg': svgVue
+    'app-svg': svgVue,
+    'app-editor-capability-Nothing': editorCapabilityNothing,
+    'app-editor-capability-ShutterStrobe': editorCapabilityShutterStrobe,
+    'app-editor-capability-StrobeSpeed': editorCapabilityStrobeSpeed
   },
   model: {
     prop: `capabilities`
