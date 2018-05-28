@@ -1,0 +1,59 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "mini beam XS-1rgbw 1x1w",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Jo"],
+    "createDate": "2018-05-28",
+    "lastModifyDate": "2018-05-28"
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan"
+    },
+    "Tilt": {
+      "type": "Tilt"
+    },
+    "Shutter": {
+      "type": "Shutter"
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "White": {
+      "type": "Single Color",
+      "color": "White"
+    },
+    "Dimmer": {
+      "type": "Intensity"
+    },
+    "Channel Functions": {
+      "type": "Nothing"
+    }
+  },
+  "modes": [
+    {
+      "name": "mini beam Showtec XS-1rgbw 1x1w",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Shutter",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Channel Functions"
+      ]
+    }
+  ]
+}
