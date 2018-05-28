@@ -240,8 +240,8 @@
   },
   "modes": [
     {
-      "name": "showtec XS-1rgbw mini beam 1x1w",
-      "shortName": "Mini-beams showtec",
+      "name": "9-channel",
+      "shortName": "9ch",
       "channels": [
         "Pan",
         "Tilt",
@@ -252,6 +252,28 @@
         "White",
         "Dimmer",
         "Channel Functions"
+      ]
+    },
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Pan/Tilt Macros",
+        "Macro Speed",
+        "Channel Functions",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Shutter / Strobe",
+        "Color Programs",
+        "Program Speed"
       ]
     }
   ]
