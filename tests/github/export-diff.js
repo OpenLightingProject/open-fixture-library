@@ -12,6 +12,12 @@ const testFixtures = require(`../test-fixtures.json`).map(
   fixture => `${fixture.man}/${fixture.key}`
 );
 
+/**
+ * @typedef {object} Task
+ * @property {string} manFix
+ * @property {string} pluginKey
+ */
+
 // generate diff tasks describing the diffed plugins, fixtures and the reason for diffing (which component has changed)
 pullRequest.checkEnv()
   .catch(error => {
@@ -21,37 +27,108 @@ pullRequest.checkEnv()
   .then(() => pullRequest.init())
   .then(prData => pullRequest.fetchChangedComponents())
   .then(changedComponents => {
-    const allPlugins = exportPlugins.filter(plugin => !changedComponents.added.exports.includes(plugin));
+    const usablePlugins = exportPlugins.filter(plugin => !changedComponents.added.exports.includes(plugin));
     const addedFixtures = changedComponents.added.fixtures.map(([man, key]) => `${man}/${key}`);
-    const allTestFixtures = testFixtures.filter(testFixture => !addedFixtures.includes(testFixture));
+    const usableTestFixtures = testFixtures.filter(testFixture => !addedFixtures.includes(testFixture));
 
-    let lines = [];
+    /** @type {Array.<Task>} */
+    const tasks = getTasksForModel()
+      .concat(getTasksForPlugins())
+      .concat(getTasksForFixtures())
+      .filter((task, index, arr) => {
+        const firstEqualTask = arr.find(otherTask =>
+          task.manFix === otherTask.manFix &&
+          task.pluginKey === otherTask.pluginKey
+        );
 
-    if (changedComponents.modified.model || changedComponents.renamed.model) {
-      lines = lines.concat(getModelMessage(allPlugins, allTestFixtures));
-    }
-    else {
-      for (const plugin of changedComponents.modified.exports) {
-        lines = lines.concat(getPluginMessage(plugin, allTestFixtures));
+        // remove duplicates
+        return task === firstEqualTask;
+      })
+      .sort((a, b) => {
+        const manFixCompare = a.manFix.localeCompare(b.manFix);
+        const pluginCompare = a.pluginKey.localeCompare(b.pluginKey);
+
+        if (manFixCompare !== 0) {
+          return manFixCompare;
+        }
+
+        return pluginCompare;
+      });
+
+    return tasks;
+
+    /**
+     * @returns {!Array.<Task>} What export diff tasks have to be done due to changes in the model. May be empty.
+     */
+    function getTasksForModel() {
+      let tasks = [];
+
+      if (changedComponents.added.model ||
+        changedComponents.modified.model ||
+        changedComponents.renamed.model ||
+        changedComponents.removed.model) {
+
+        for (const manFix of usableTestFixtures) {
+          tasks = tasks.concat(usablePlugins.map(pluginKey => ({
+            manFix,
+            pluginKey
+          })));
+        }
       }
+
+      return tasks;
     }
 
-    for (const fixture of changedComponents.modified.fixtures) {
-      lines = lines.concat(getFixtureMessage(allPlugins, `${fixture[0]}/${fixture[1]}`));
+    /**
+     * @returns {!Array.<Task>} What export diff tasks have to be done due to changes in plugins. May be empty.
+     */
+    function getTasksForPlugins() {
+      let tasks = [];
+
+      const changedPlugins = changedComponents.added.exports.concat(changedComponents.modified.exports);
+
+      for (const changedPlugin of changedPlugins) {
+        tasks = tasks.concat(usableTestFixtures.map(manFix => ({
+          manFix,
+          pluginKey: changedPlugin
+        })));
+      }
+
+      return tasks;
     }
 
-    if (lines.length > 0) {
-      lines = [
-        `You can run view your uncommited changes in plugin exports manually by executing:`,
-        `\`$ node cli/diff-plugin-outputs.js -p <plugin name> <fixtures>\``,
-        ``
-      ].concat(lines);
+    /**
+     * @returns {!Array.<Task>} What export diff tasks have to be done due to changes in fixtures. May be empty.
+     */
+    function getTasksForFixtures() {
+      let tasks = [];
+
+      const fixtures = changedComponents.added.fixtures.concat(changedComponents.modified.fixtures, changedComponents.renamed.fixtures);
+
+      for (const [manKey, fixKey] of fixtures) {
+        tasks = tasks.concat(usablePlugins.map(pluginKey => ({
+          manFix: `${manKey}/${fixKey}`,
+          pluginKey
+        })));
+      }
+
+      return tasks;
     }
+  })
+  .then(tasks => {
+    let resultLines = [];
+    tasks.forEach(task => {
+      resultLines = resultLines.concat(performTask(task));
+    });
 
     return pullRequest.updateComment({
       filename: path.relative(path.join(__dirname, `../../`), __filename),
       name: `Plugin export diff`,
-      lines: lines
+      lines: [
+        `You can run view your uncommited changes in plugin exports manually by executing:`,
+        `\`$ node cli/diff-plugin-outputs.js -p <plugin name> <fixtures>\``,
+        ``
+      ].concat(resultLines)
     });
   })
   .catch(error => {
@@ -59,74 +136,25 @@ pullRequest.checkEnv()
     process.exit(1);
   });
 
-function getModelMessage(plugins, fixtures) {
-  let lines = [];
 
-  lines.push(`## Model modified in this PR`);
-  lines.push(`As the model affects all plugins, the output of all plugins is checked.`, ``);
-  lines = lines.concat(pullRequest.getTestFixturesMessage(fixtures));
-
-  for (const plugin of plugins) {
-    lines = lines.concat(getSubPluginMessage(plugin, fixtures));
-  }
-
-  return lines;
-}
-
-function getPluginMessage(plugin, fixtures) {
-  let lines = [];
-
-  const diffMessage = getDiffMessage(plugin, fixtures);
-  if (diffMessage.length === 1) {
-    // no changes
-    lines.push(`## :information_source: Plugin \`${plugin}\` modified in this PR`);
-  }
-  else {
-    lines.push(`## :warning: Plugin \`${plugin}\` modified in this PR`);
-  }
-  lines = lines.concat(pullRequest.getTestFixturesMessage(fixtures));
-  lines = lines.concat(diffMessage, ``);
-
-  return lines;
-}
-
-function getFixtureMessage(plugins, fixture) {
-  let lines = [];
-
-  lines.push(`## Fixture \`${fixture}\` modified in this PR`);
-  lines.push(`Fixture output to all plugins is checked.`, ``);
-
-  for (const plugin of plugins) {
-    lines = lines.concat(getSubPluginMessage(plugin, [fixture]));
-  }
-
-  return lines;
-}
-
-function getSubPluginMessage(plugin, fixtures) {
-  let lines = [];
-
-  const diffMessage = getDiffMessage(plugin, fixtures);
-  if (diffMessage.length === 1) {
-    // no changes
-    lines.push(`### :information_source: Plugin \`${plugin}\``);
-  }
-  else {
-    lines.push(`### :warning: Plugin \`${plugin}\``);
-  }
-  lines = lines.concat(diffMessage, ``);
-
-  return lines;
-}
-
-function getDiffMessage(plugin, fixtures) {
-  let lines = [];
-
-  const output = diffPluginOutputs(plugin, process.env.TRAVIS_BRANCH, fixtures);
+/**
+ * @param {Task} task The export diff task to fulfill.
+ * @returns {Array.<string>} An array of message lines.
+ */
+function performTask(task) {
+  const output = diffPluginOutputs(task.pluginKey, process.env.TRAVIS_BRANCH, [task.manFix]);
 
   const hasRemoved = output.removedFiles.length > 0;
   const hasAdded = output.addedFiles.length > 0;
   const hasChanged = Object.keys(output.changedFiles).length > 0;
+
+
+  const emoji = (hasRemoved || hasAdded || hasChanged) ? `:x:` : `:heavy_check_mark:`;
+
+  let lines = [
+    `<details>`,
+    `<summary>${emoji} <strong>${task.manFix} ${task.pluginKey}</strong></summary>`
+  ];
 
   if (!hasRemoved && !hasAdded && !hasChanged) {
     lines.push(`Outputted files not changed.`);
@@ -144,12 +172,14 @@ function getDiffMessage(plugin, fixtures) {
 
   for (const file of Object.keys(output.changedFiles)) {
     lines.push(`<details>`);
-    lines.push(`<summary><b>Changed outputted file <code>${file}</code></b></summary>`, ``);
+    lines.push(`<summary><strong>Changed outputted file <code>${file}</code></strong></summary>`, ``);
     lines.push(`\`\`\`diff`);
     lines.push(output.changedFiles[file]);
     lines.push(`\`\`\``);
     lines.push(`</details>`);
   }
+
+  lines.push(`</details>`);
 
   return lines;
 }
