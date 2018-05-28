@@ -28,13 +28,132 @@
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan"
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"]
     },
     "Tilt": {
-      "type": "Tilt"
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"]
     },
-    "Shutter": {
-      "type": "Shutter"
+    "Pan/Tilt Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "fast-slow"
+        }
+      ]
+    },
+    "Pan/Tilt Macros": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "Not used"
+        },
+        {
+          "range": [16, 35],
+          "name": "Pan/Tilt Macro 1"
+        },
+        {
+          "range": [36, 55],
+          "name": "Pan/Tilt Macro 2"
+        },
+        {
+          "range": [56, 75],
+          "name": "Pan/Tilt Macro 3"
+        },
+        {
+          "range": [76, 95],
+          "name": "Pan/Tilt Macro 4"
+        },
+        {
+          "range": [96, 115],
+          "name": "Pan/Tilt Macro 5"
+        },
+        {
+          "range": [116, 135],
+          "name": "Pan/Tilt Macro 6"
+        },
+        {
+          "range": [136, 155],
+          "name": "Pan/Tilt Macro 7"
+        },
+        {
+          "range": [156, 175],
+          "name": "Pan/Tilt Macro 8"
+        },
+        {
+          "range": [176, 195],
+          "name": "Pan/Tilt Macro 9"
+        },
+        {
+          "range": [196, 215],
+          "name": "Pan/Tilt Macro 10"
+        },
+        {
+          "range": [216, 235],
+          "name": "Pan/Tilt Macro 11"
+        },
+        {
+          "range": [236, 255],
+          "name": "Pan/Tilt Macro 12"
+        }
+      ]
+    },
+    "Macro Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "fast-slow"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Closed"
+        },
+        {
+          "range": [8, 15],
+          "name": "Open"
+        },
+        {
+          "range": [16, 131],
+          "name": "Strobe slow-fast"
+        },
+        {
+          "range": [132, 139],
+          "name": "Open"
+        },
+        {
+          "range": [140, 181],
+          "name": "RampUp slow-fast"
+        },
+        {
+          "range": [182, 189],
+          "name": "Open"
+        },
+        {
+          "range": [190, 231],
+          "name": "RampDown slow-fast"
+        },
+        {
+          "range": [232, 239],
+          "name": "Open"
+        },
+        {
+          "range": [240, 247],
+          "name": "RandomStrobe long-short"
+        },
+        {
+          "range": [248, 255],
+          "name": "Open"
+        }
+      ]
     },
     "Red": {
       "type": "Single Color",
@@ -56,7 +175,67 @@
       "type": "Intensity"
     },
     "Channel Functions": {
-      "type": "Nothing"
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 69],
+          "name": "Not used"
+        },
+        {
+          "range": [70, 79],
+          "name": "Enable Pan/tilt blackout (after 5 seconds)"
+        },
+        {
+          "range": [80, 89],
+          "name": "Disable Pan/tilt blackout (after 5 seconds)"
+        },
+        {
+          "range": [90, 199],
+          "name": "No function"
+        },
+        {
+          "range": [200, 209],
+          "name": "Reset all (after 5 seconds)"
+        },
+        {
+          "range": [210, 249],
+          "name": "No function"
+        },
+        {
+          "range": [250, 255],
+          "name": "Sound-controlled"
+        }
+      ]
+    },
+    "Color Programs": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "No function"
+        },
+        {
+          "range": [8, 127],
+          "name": "Static Colors"
+        },
+        {
+          "range": [128, 191],
+          "name": "ColorJump"
+        },
+        {
+          "range": [192, 255],
+          "name": "ColorFade"
+        }
+      ]
+    },
+    "Program Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow-fast"
+        }
+      ]
     }
   },
   "modes": [
@@ -66,7 +245,7 @@
       "channels": [
         "Pan",
         "Tilt",
-        "Shutter",
+        "Shutter / Strobe",
         "Red",
         "Green",
         "Blue",
