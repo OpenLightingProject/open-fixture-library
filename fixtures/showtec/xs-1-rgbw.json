@@ -9,6 +9,23 @@
     "lastModifyDate": "2018-05-28"
   },
   "manualURL": "https://www.highlite.nl/silver.download/Documents@extern@Manuals/40159_MANUAL_GB_V1.pdf",
+  "physical": {
+    "dimensions": [125, 236, 125],
+    "weight": 2,
+    "power": 25,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "10W RGBW LED"
+    },
+    "lens": {
+      "degreesMinMax": [3, 3]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 270
+    }
+  },
   "availableChannels": {
     "Pan": {
       "type": "Pan"
