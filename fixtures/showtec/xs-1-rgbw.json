@@ -1,14 +1,14 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "XS-1rgbw mini beam 1x1w",
-  "shortName": "Mini-beams showtec",
+  "name": "XS-1 RGBW",
+  "shortName": "ShowtecXS1",
   "categories": ["Moving Head"],
   "meta": {
     "authors": ["Jo"],
     "createDate": "2018-05-28",
     "lastModifyDate": "2018-05-28"
   },
-  "comment": "mini-beams",
+  "manualURL": "https://www.highlite.nl/silver.download/Documents@extern@Manuals/40159_MANUAL_GB_V1.pdf",
   "availableChannels": {
     "Pan": {
       "type": "Pan"
