@@ -157,4 +157,6 @@ Required properties are _italic_, the entity is written in (parentheses).
 * If it's a start/end property, add its name to `Capability.START_END_PROPERTIES`
 * Add new types to capability name generation (in `Capability.mjs`)
 * Add new types to channel type generation (in `Channel.mjs`)
-* Update editor
+* Update editor:
+  * Create new component in `ui/components/editor-capabilities`. Make sure it has a `defaultData` object as component data.
+  * Import the new component in the [capability component](../ui/components/editor-capability.vue) and register it in its `components` section.
