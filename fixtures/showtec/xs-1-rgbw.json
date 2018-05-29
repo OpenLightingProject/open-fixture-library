@@ -28,214 +28,263 @@
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan",
-      "fineChannelAliases": ["Pan fine"]
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
-      "fineChannelAliases": ["Tilt fine"]
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
     },
     "Pan/Tilt Speed": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "fast-slow"
-        }
-      ]
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
     },
     "Pan/Tilt Macros": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "Not used"
+          "dmxRange": [0, 15],
+          "type": "Nothing"
         },
         {
-          "range": [16, 35],
-          "name": "Pan/Tilt Macro 1"
+          "dmxRange": [16, 35],
+          "type": "Effect",
+          "effectName": "Pan/Tilt Macro 1"
         },
         {
-          "range": [36, 55],
-          "name": "Pan/Tilt Macro 2"
+          "dmxRange": [36, 55],
+          "type": "Effect",
+          "effectName": "Pan/Tilt Macro 2"
         },
         {
-          "range": [56, 75],
-          "name": "Pan/Tilt Macro 3"
+          "dmxRange": [56, 75],
+          "type": "Effect",
+          "effectName": "Pan/Tilt Macro 3"
         },
         {
-          "range": [76, 95],
-          "name": "Pan/Tilt Macro 4"
+          "dmxRange": [76, 95],
+          "type": "Effect",
+          "effectName": "Pan/Tilt Macro 4"
         },
         {
-          "range": [96, 115],
-          "name": "Pan/Tilt Macro 5"
+          "dmxRange": [96, 115],
+          "type": "Effect",
+          "effectName": "Pan/Tilt Macro 5"
         },
         {
-          "range": [116, 135],
-          "name": "Pan/Tilt Macro 6"
+          "dmxRange": [116, 135],
+          "type": "Effect",
+          "effectName": "Pan/Tilt Macro 6"
         },
         {
-          "range": [136, 155],
-          "name": "Pan/Tilt Macro 7"
+          "dmxRange": [136, 155],
+          "type": "Effect",
+          "effectName": "Pan/Tilt Macro 7"
         },
         {
-          "range": [156, 175],
-          "name": "Pan/Tilt Macro 8"
+          "dmxRange": [156, 175],
+          "type": "Effect",
+          "effectName": "Pan/Tilt Macro 8"
         },
         {
-          "range": [176, 195],
-          "name": "Pan/Tilt Macro 9"
+          "dmxRange": [176, 195],
+          "type": "Effect",
+          "effectName": "Pan/Tilt Macro 9"
         },
         {
-          "range": [196, 215],
-          "name": "Pan/Tilt Macro 10"
+          "dmxRange": [196, 215],
+          "type": "Effect",
+          "effectName": "Pan/Tilt Macro 10"
         },
         {
-          "range": [216, 235],
-          "name": "Pan/Tilt Macro 11"
+          "dmxRange": [216, 235],
+          "type": "Effect",
+          "effectName": "Pan/Tilt Macro 11"
         },
         {
-          "range": [236, 255],
-          "name": "Pan/Tilt Macro 12"
+          "dmxRange": [236, 255],
+          "type": "Effect",
+          "effectName": "Pan/Tilt Macro 12"
         }
       ]
     },
     "Pan/Tilt Macro Speed": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "fast-slow"
-        }
-      ]
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
     },
     "Shutter / Strobe": {
-      "type": "Strobe",
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "Closed"
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [8, 15],
-          "name": "Open"
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [16, 131],
-          "name": "Strobe slow-fast"
+          "dmxRange": [16, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [132, 139],
-          "name": "Open"
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [140, 181],
-          "name": "RampUp slow-fast"
+          "dmxRange": [140, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [182, 189],
-          "name": "Open"
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [190, 231],
-          "name": "RampDown slow-fast"
+          "dmxRange": [190, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [232, 239],
-          "name": "Open"
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [240, 247],
-          "name": "RandomStrobe long-short"
+          "dmxRange": [240, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "StrobeRandom",
+          "durationStart": "long",
+          "durationEnd": "short"
         },
         {
-          "range": [248, 255],
-          "name": "Open"
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
     "Red": {
-      "type": "Single Color",
-      "color": "Red"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White": {
-      "type": "Single Color",
-      "color": "White"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "Dimmer": {
-      "type": "Intensity"
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Channel Functions": {
-      "type": "Maintenance",
       "capabilities": [
         {
-          "range": [0, 69],
-          "name": "Not used"
+          "dmxRange": [0, 69],
+          "type": "Nothing"
         },
         {
-          "range": [70, 79],
-          "name": "Enable Pan/tilt blackout (after 5 seconds)"
+          "dmxRange": [70, 79],
+          "type": "Maintenance",
+          "comment": "Enable Pan/tilt blackout",
+          "hold": "5s"
         },
         {
-          "range": [80, 89],
-          "name": "Disable Pan/tilt blackout (after 5 seconds)"
+          "dmxRange": [80, 89],
+          "type": "Maintenance",
+          "comment": "Disable Pan/tilt blackout",
+          "hold": "5s"
         },
         {
-          "range": [90, 199],
-          "name": "No function"
+          "dmxRange": [90, 199],
+          "type": "Nothing"
         },
         {
-          "range": [200, 209],
-          "name": "Reset all (after 5 seconds)"
+          "dmxRange": [200, 209],
+          "type": "Maintenance",
+          "comment": "Reset all",
+          "hold": "5s"
         },
         {
-          "range": [210, 249],
-          "name": "No function"
+          "dmxRange": [210, 249],
+          "type": "Nothing"
         },
         {
-          "range": [250, 255],
-          "name": "Sound-controlled"
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound-controlled mode",
+          "soundControlled": true
         }
       ]
     },
     "Color Programs": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "No function"
+          "dmxRange": [0, 7],
+          "type": "Nothing"
         },
         {
-          "range": [8, 127],
-          "name": "Static Colors"
+          "dmxRange": [8, 127],
+          "type": "Effect",
+          "effectName": "Static Colors"
         },
         {
-          "range": [128, 191],
-          "name": "ColorJump"
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
         },
         {
-          "range": [192, 255],
-          "name": "ColorFade"
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
         }
       ]
     },
     "Program Speed": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "slow-fast"
-        }
-      ]
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     }
   },
   "modes": [
