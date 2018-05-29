@@ -37,7 +37,8 @@
           v-model="capability.type"
           :class="{ empty: capability.type === `` }"
           :name="`capability${capability.uuid}-type`"
-          required>
+          required
+          @change="changeCapabilityType">
 
           <option value="" disabled>Please select a capability type</option>
 
@@ -51,6 +52,7 @@
 
       <component
         v-if="capability.type !== ``"
+        ref="capabilityTypeData"
         :is="`app-editor-capability-${capability.type}`"
         :capability="capability"
         :formstate="formstate" />
@@ -349,6 +351,36 @@ export default {
       const capabilities = clone(this.capabilities);
       const newCapabilities = [...capabilities.slice(0, index), ...insertItems, ...capabilities.slice(index + deleteCount)];
       this.$emit(`input`, newCapabilities);
+    },
+
+    /**
+     * Add all properties to capability.typeData that are required by the current capability type and are not yet in there.
+     */
+    changeCapabilityType() {
+      this.$nextTick(() => {
+        const defaultData = this.$refs.capabilityTypeData.defaultData;
+
+        for (const prop of Object.keys(defaultData)) {
+          if (!(prop in this.capability.typeData)) {
+            this.$set(this.capability.typeData, prop, defaultData[prop]);
+          }
+        }
+      });
+    },
+
+    /**
+     * Called when the channel is saved. Removes all properties from capability.typeData that are not relevant for this capability type and sets open to false.
+     */
+    cleanCapabilityData() {
+      const defaultData = this.$refs.capabilityTypeData.defaultData;
+
+      for (const prop of Object.keys(this.capability.typeData)) {
+        if (!(prop in defaultData)) {
+          delete this.capability.typeData[prop];
+        }
+      }
+
+      this.capability.open = false;
     }
   }
 };

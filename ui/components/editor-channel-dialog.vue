@@ -122,6 +122,7 @@
         <div v-else class="capability-editor">
           <app-editor-capability
             v-for="(cap, index) in channel.capabilities"
+            ref="capabilities"
             :key="cap.uuid"
             v-model="channel.capabilities"
             :formstate="formstate"
@@ -362,6 +363,8 @@ export default {
 
         return;
       }
+
+      this.$refs.capabilities.forEach(capability => capability.cleanCapabilityData());
 
       if (this.channel.editMode === `create`) {
         this.saveCreatedChannel();

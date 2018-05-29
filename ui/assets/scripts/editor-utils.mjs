@@ -174,7 +174,7 @@ export function isCapabilityChanged(cap) {
   }
 
   return Object.keys(cap.typeData).some(prop => {
-    return cap.typeData[prop] !== ``;
+    return cap.typeData[prop] !== `` && cap.typeData[prop] !== null;
   });
 }
 

@@ -43,8 +43,6 @@
         :schema-property="properties.definitions.nonEmptyString" />
     </app-simple-label>
 
-    {{  }}
-
   </div>
 </template>
 
@@ -73,25 +71,23 @@ export default {
   },
   data() {
     return {
-      properties: schemaProperties
+      properties: schemaProperties,
+      defaultData: {
+        shutterEffect: ``,
+        speed: ``,
+        speedStart: null,
+        speedEnd: null,
+        duration: ``,
+        durationStart: null,
+        durationEnd: null,
+        comment: ``
+      }
     };
   },
   computed: {
     shutterEffects() {
       return this.properties.capabilityTypes.ShutterStrobe.properties.shutterEffect.enum;
     }
-  },
-  mounted() {
-    this.capability.typeData = {
-      shutterEffect: ``,
-      speed: ``,
-      speedStart: null,
-      speedEnd: null,
-      duration: ``,
-      durationStart: null,
-      durationEnd: null,
-      comment: ``
-    };
   }
 };
 </script>

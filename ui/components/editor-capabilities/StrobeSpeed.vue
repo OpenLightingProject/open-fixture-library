@@ -39,12 +39,10 @@ export default {
   },
   data() {
     return {
-      properties: schemaProperties
-    };
-  },
-  mounted() {
-    this.capability.typeData = {
-      comment: ``
+      properties: schemaProperties,
+      defaultData: {
+        comment: ``
+      }
     };
   }
 };
