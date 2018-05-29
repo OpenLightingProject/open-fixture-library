@@ -1,11 +1,30 @@
 <template>
   <div class="capability-type-data">
 
+    <app-simple-label
+      :formstate="formstate"
+      :name="`capability${capability.uuid}-color`"
+      label="Color">
+      <select
+        v-model="capability.typeData.color"
+        :class="{ empty: capability.typeData.color === `` }"
+        :name="`capability${capability.uuid}-color`"
+        required>
+
+        <option value="" disabled>Please select a color</option>
+        <option
+          v-for="color in colors"
+          :key="color"
+          :value="color">{{ color }}</option>
+
+      </select>
+    </app-simple-label>
+
     <app-editor-proportional-capability-data-switcher
       :capability="capability"
       :formstate="formstate"
-      property-name="speed"
-      property-display-name="Speed" />
+      property-name="brightness"
+      property-display-name="Brightness" />
 
     <app-simple-label
       :formstate="formstate"
@@ -48,12 +67,18 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
-        speed: ``,
-        speedStart: null,
-        speedEnd: null,
+        color: ``,
+        brightness: null,
+        brightnessStart: `off`,
+        brightnessEnd: `bright`,
         comment: ``
       }
     };
+  },
+  computed: {
+    colors() {
+      return this.properties.capabilityTypes.ColorIntensity.properties.color.enum;
+    }
   }
 };
 </script>

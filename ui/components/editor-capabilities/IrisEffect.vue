@@ -1,6 +1,17 @@
 <template>
   <div class="capability-type-data">
 
+    <app-simple-label
+      :formstate="formstate"
+      :name="`capability${capability.uuid}-effectName`"
+      label="Effect Name">
+      <app-property-input-text
+        v-model="capability.typeData.effectName"
+        :formstate="formstate"
+        :name="`capability${capability.uuid}-effectName`"
+        :schema-property="properties.definitions.nonEmptyString" />
+    </app-simple-label>
+
     <app-editor-proportional-capability-data-switcher
       :capability="capability"
       :formstate="formstate"
@@ -48,12 +59,18 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
+        effectName: ``,
         speed: ``,
         speedStart: null,
         speedEnd: null,
         comment: ``
       }
     };
+  },
+  computed: {
+    effectPresets() {
+      return this.properties.definitions.effectPreset.enum;
+    }
   }
 };
 </script>

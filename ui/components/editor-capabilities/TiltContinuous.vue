@@ -54,6 +54,11 @@ export default {
         comment: ``
       }
     };
+  },
+  computed: {
+    colors() {
+      return this.properties.capabilityTypes.ColorIntensity.properties.color.enum;
+    }
   }
 };
 </script>

@@ -4,8 +4,27 @@
     <app-editor-proportional-capability-data-switcher
       :capability="capability"
       :formstate="formstate"
-      property-name="speed"
-      property-display-name="Speed" />
+      property-name="fogOutput"
+      property-display-name="Fog Output" />
+
+    <app-simple-label
+      :formstate="formstate"
+      :name="`capability${capability.uuid}-fogType`"
+      label="Fog Type">
+      <select
+        v-model="capability.typeData.fogType"
+        :class="{ empty: capability.typeData.fogType === `` }"
+        :name="`capability${capability.uuid}-fogType`"
+        required>
+
+        <option value="" disabled>Please select a Fog Type</option>
+        <option
+          v-for="fogType in fogTypes"
+          :key="fogType"
+          :value="fogType">{{ fogType }}</option>
+
+      </select>
+    </app-simple-label>
 
     <app-simple-label
       :formstate="formstate"
@@ -48,12 +67,18 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
-        speed: ``,
-        speedStart: null,
-        speedEnd: null,
+        fogOutput: ``,
+        fogOutputStart: null,
+        fogOutputEnd: null,
+        fogType: ``,
         comment: ``
       }
     };
+  },
+  computed: {
+    fogTypes() {
+      return this.properties.capabilityTypes.FogOn.properties.fogType.enum;
+    }
   }
 };
 </script>

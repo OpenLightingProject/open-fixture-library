@@ -1,12 +1,5 @@
 <template>
   <div class="capability-type-data">
-
-    <app-editor-proportional-capability-data-switcher
-      :capability="capability"
-      :formstate="formstate"
-      property-name="speed"
-      property-display-name="Speed" />
-
     <app-simple-label
       :formstate="formstate"
       :name="`capability${capability.uuid}-comment`"
@@ -17,20 +10,17 @@
         :name="`capability${capability.uuid}-comment`"
         :schema-property="properties.definitions.nonEmptyString" />
     </app-simple-label>
-
   </div>
 </template>
 
 <script>
 import schemaProperties from '~~/lib/schema-properties.js';
 
-import editorProportionalCapabilityDataSwitcher from '~/components/editor-proportional-capability-data-switcher.vue';
 import propertyInputTextVue from '~/components/property-input-text.vue';
 import simpleLabelVue from '~/components/simple-label.vue';
 
 export default {
   components: {
-    'app-editor-proportional-capability-data-switcher': editorProportionalCapabilityDataSwitcher,
     'app-property-input-text': propertyInputTextVue,
     'app-simple-label': simpleLabelVue
   },
@@ -48,9 +38,6 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
-        speed: ``,
-        speedStart: null,
-        speedEnd: null,
         comment: ``
       }
     };

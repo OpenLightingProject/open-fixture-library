@@ -4,8 +4,20 @@
     <app-editor-proportional-capability-data-switcher
       :capability="capability"
       :formstate="formstate"
-      property-name="speed"
-      property-display-name="Speed" />
+      property-name="index"
+      property-display-name="Index" />
+
+    <app-editor-proportional-capability-data-switcher
+      :capability="capability"
+      :formstate="formstate"
+      property-name="colors"
+      property-display-name="Colors" />
+
+    <app-editor-proportional-capability-data-switcher
+      :capability="capability"
+      :formstate="formstate"
+      property-name="colorTemperature"
+      property-display-name="Color Temperature" />
 
     <app-simple-label
       :formstate="formstate"
@@ -24,13 +36,11 @@
 <script>
 import schemaProperties from '~~/lib/schema-properties.js';
 
-import editorProportionalCapabilityDataSwitcher from '~/components/editor-proportional-capability-data-switcher.vue';
 import propertyInputTextVue from '~/components/property-input-text.vue';
 import simpleLabelVue from '~/components/simple-label.vue';
 
 export default {
   components: {
-    'app-editor-proportional-capability-data-switcher': editorProportionalCapabilityDataSwitcher,
     'app-property-input-text': propertyInputTextVue,
     'app-simple-label': simpleLabelVue
   },
@@ -48,9 +58,15 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
-        speed: ``,
-        speedStart: null,
-        speedEnd: null,
+        index: ``,
+        indexStart: null,
+        indexEnd: null,
+        colors: ``, // TODO: should be an array
+        colorsStart: null,
+        colorsEnd: null,
+        colorTemperature: ``,
+        colorTemperatureStart: null,
+        colorTemperatureEnd: null,
         comment: ``
       }
     };

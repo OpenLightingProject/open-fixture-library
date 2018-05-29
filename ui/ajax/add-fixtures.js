@@ -241,6 +241,8 @@ function getCapabilities(channel) {
   ).map(cap => {
     const capability = {};
 
+    // TODO: add type-specific data
+
     for (const capProp of Object.keys(schemaProperties.capability)) {
       if (propExistsIn(capProp, cap)) {
         capability[capProp] = cap[capProp];

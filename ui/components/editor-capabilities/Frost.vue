@@ -4,8 +4,8 @@
     <app-editor-proportional-capability-data-switcher
       :capability="capability"
       :formstate="formstate"
-      property-name="speed"
-      property-display-name="Speed" />
+      property-name="frostIntensity"
+      property-display-name="Frost intensity" />
 
     <app-simple-label
       :formstate="formstate"
@@ -48,12 +48,17 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
-        speed: ``,
-        speedStart: null,
-        speedEnd: null,
+        frostIntensity: ``,
+        frostIntensityStart: null,
+        frostIntensityEnd: null,
         comment: ``
       }
     };
+  },
+  computed: {
+    effectPresets() {
+      return this.properties.definitions.effectPreset.enum;
+    }
   }
 };
 </script>

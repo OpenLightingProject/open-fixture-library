@@ -4,8 +4,8 @@
     <app-editor-proportional-capability-data-switcher
       :capability="capability"
       :formstate="formstate"
-      property-name="speed"
-      property-display-name="Speed" />
+      property-name="brightness"
+      property-display-name="Brightness" />
 
     <app-simple-label
       :formstate="formstate"
@@ -48,9 +48,9 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
-        speed: ``,
-        speedStart: null,
-        speedEnd: null,
+        brightness: null,
+        brightnessStart: `off`,
+        brightnessEnd: `bright`,
         comment: ``
       }
     };

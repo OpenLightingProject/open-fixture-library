@@ -7,6 +7,12 @@
       property-name="speed"
       property-display-name="Speed" />
 
+    <app-editor-proportional-capability-data-switcher
+      :capability="capability"
+      :formstate="formstate"
+      property-name="duration"
+      property-display-name="Duration" />
+
     <app-simple-label
       :formstate="formstate"
       :name="`capability${capability.uuid}-comment`"
@@ -48,12 +54,21 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
+        // TODO: allow either speed or duration
         speed: ``,
         speedStart: null,
         speedEnd: null,
+        duration: ``,
+        durationStart: null,
+        durationEnd: null,
         comment: ``
       }
     };
+  },
+  computed: {
+    shutterEffects() {
+      return this.properties.capabilityTypes.ShutterStrobe.properties.shutterEffect.enum;
+    }
   }
 };
 </script>

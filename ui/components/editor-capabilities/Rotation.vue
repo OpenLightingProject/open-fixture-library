@@ -4,6 +4,12 @@
     <app-editor-proportional-capability-data-switcher
       :capability="capability"
       :formstate="formstate"
+      property-name="angle"
+      property-display-name="Angle" />
+
+    <app-editor-proportional-capability-data-switcher
+      :capability="capability"
+      :formstate="formstate"
       property-name="speed"
       property-display-name="Speed" />
 
@@ -48,6 +54,10 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
+        // TODO: allow either angle or speed
+        angle: ``,
+        angleStart: null,
+        angleEnd: null,
         speed: ``,
         speedStart: null,
         speedEnd: null,

@@ -4,8 +4,14 @@
     <app-editor-proportional-capability-data-switcher
       :capability="capability"
       :formstate="formstate"
-      property-name="speed"
-      property-display-name="Speed" />
+      property-name="parameter"
+      property-display-name="Parameter" />
+
+    <app-editor-proportional-capability-data-switcher
+      :capability="capability"
+      :formstate="formstate"
+      property-name="hold"
+      property-display-name="Hold" />
 
     <app-simple-label
       :formstate="formstate"
@@ -48,9 +54,12 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
-        speed: ``,
-        speedStart: null,
-        speedEnd: null,
+        parameter: ``,
+        parameterStart: null,
+        parameterEnd: null,
+        hold: ``,
+        holdStart: null,
+        holdEnd: null,
         comment: ``
       }
     };

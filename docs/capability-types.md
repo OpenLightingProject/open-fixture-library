@@ -879,18 +879,7 @@ global, doesn't activate an effect directly
 
 #### PrismOff
 
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
+No type-specific properties.
 
 
 #### PrismOn
@@ -1039,18 +1028,7 @@ global, doesn't activate an effect directly
 
 #### FogOff
 
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
+No type-specific properties.
 
 
 #### FogOn

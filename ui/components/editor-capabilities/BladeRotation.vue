@@ -4,8 +4,28 @@
     <app-editor-proportional-capability-data-switcher
       :capability="capability"
       :formstate="formstate"
-      property-name="speed"
-      property-display-name="Speed" />
+      property-name="angle"
+      property-display-name="Angle" />
+
+    <!-- TODO: allow numbers for blade -->
+    <app-simple-label
+      :formstate="formstate"
+      :name="`capability${capability.uuid}-blade`"
+      label="Blade">
+      <select
+        v-model="capability.typeData.blade"
+        :class="{ empty: capability.typeData.blade === `` }"
+        :name="`capability${capability.uuid}-blade`"
+        required>
+
+        <option value="" disabled>Please select a blade</option>
+        <option
+          v-for="blade in blades"
+          :key="blade"
+          :value="blade">{{ blade }}</option>
+
+      </select>
+    </app-simple-label>
 
     <app-simple-label
       :formstate="formstate"
@@ -47,10 +67,17 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+      blades: [
+        `Top`,
+        `Right`,
+        `Bottom`,
+        `Left`
+      ],
       defaultData: {
-        speed: ``,
-        speedStart: null,
-        speedEnd: null,
+        angle: ``,
+        angleStart: null,
+        angleEnd: null,
+        blade: ``,
         comment: ``
       }
     };

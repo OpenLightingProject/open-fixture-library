@@ -12,6 +12,7 @@
       :formstate="formstate"
       :name="`capability${capability.uuid}-${propertyName}`"
       :label="propertyDisplayName">
+      <!-- TODO: required fields, unit inputs, custom inputs (using slots?) -->
       <app-property-input-text
         v-model="propertyDataStepped"
         :formstate="formstate"

@@ -4,8 +4,8 @@
     <app-editor-proportional-capability-data-switcher
       :capability="capability"
       :formstate="formstate"
-      property-name="speed"
-      property-display-name="Speed" />
+      property-name="angle"
+      property-display-name="Angle" />
 
     <app-simple-label
       :formstate="formstate"
@@ -48,12 +48,17 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
-        speed: ``,
-        speedStart: null,
-        speedEnd: null,
+        angle: ``,
+        angleStart: null,
+        angleEnd: null,
         comment: ``
       }
     };
+  },
+  computed: {
+    colors() {
+      return this.properties.capabilityTypes.ColorIntensity.properties.color.enum;
+    }
   }
 };
 </script>
