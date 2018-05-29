@@ -1,0 +1,280 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "XS-1 RGBW",
+  "shortName": "ShowtecXS1",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Jo"],
+    "createDate": "2018-05-28",
+    "lastModifyDate": "2018-05-28"
+  },
+  "manualURL": "https://www.highlite.nl/silver.download/Documents@extern@Manuals/40159_MANUAL_GB_V1.pdf",
+  "physical": {
+    "dimensions": [125, 236, 125],
+    "weight": 2,
+    "power": 25,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "10W RGBW LED"
+    },
+    "lens": {
+      "degreesMinMax": [3, 3]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 270
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"]
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"]
+    },
+    "Pan/Tilt Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "fast-slow"
+        }
+      ]
+    },
+    "Pan/Tilt Macros": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "Not used"
+        },
+        {
+          "range": [16, 35],
+          "name": "Pan/Tilt Macro 1"
+        },
+        {
+          "range": [36, 55],
+          "name": "Pan/Tilt Macro 2"
+        },
+        {
+          "range": [56, 75],
+          "name": "Pan/Tilt Macro 3"
+        },
+        {
+          "range": [76, 95],
+          "name": "Pan/Tilt Macro 4"
+        },
+        {
+          "range": [96, 115],
+          "name": "Pan/Tilt Macro 5"
+        },
+        {
+          "range": [116, 135],
+          "name": "Pan/Tilt Macro 6"
+        },
+        {
+          "range": [136, 155],
+          "name": "Pan/Tilt Macro 7"
+        },
+        {
+          "range": [156, 175],
+          "name": "Pan/Tilt Macro 8"
+        },
+        {
+          "range": [176, 195],
+          "name": "Pan/Tilt Macro 9"
+        },
+        {
+          "range": [196, 215],
+          "name": "Pan/Tilt Macro 10"
+        },
+        {
+          "range": [216, 235],
+          "name": "Pan/Tilt Macro 11"
+        },
+        {
+          "range": [236, 255],
+          "name": "Pan/Tilt Macro 12"
+        }
+      ]
+    },
+    "Pan/Tilt Macro Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "fast-slow"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Closed"
+        },
+        {
+          "range": [8, 15],
+          "name": "Open"
+        },
+        {
+          "range": [16, 131],
+          "name": "Strobe slow-fast"
+        },
+        {
+          "range": [132, 139],
+          "name": "Open"
+        },
+        {
+          "range": [140, 181],
+          "name": "RampUp slow-fast"
+        },
+        {
+          "range": [182, 189],
+          "name": "Open"
+        },
+        {
+          "range": [190, 231],
+          "name": "RampDown slow-fast"
+        },
+        {
+          "range": [232, 239],
+          "name": "Open"
+        },
+        {
+          "range": [240, 247],
+          "name": "RandomStrobe long-short"
+        },
+        {
+          "range": [248, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "White": {
+      "type": "Single Color",
+      "color": "White"
+    },
+    "Dimmer": {
+      "type": "Intensity"
+    },
+    "Channel Functions": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 69],
+          "name": "Not used"
+        },
+        {
+          "range": [70, 79],
+          "name": "Enable Pan/tilt blackout (after 5 seconds)"
+        },
+        {
+          "range": [80, 89],
+          "name": "Disable Pan/tilt blackout (after 5 seconds)"
+        },
+        {
+          "range": [90, 199],
+          "name": "No function"
+        },
+        {
+          "range": [200, 209],
+          "name": "Reset all (after 5 seconds)"
+        },
+        {
+          "range": [210, 249],
+          "name": "No function"
+        },
+        {
+          "range": [250, 255],
+          "name": "Sound-controlled"
+        }
+      ]
+    },
+    "Color Programs": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "No function"
+        },
+        {
+          "range": [8, 127],
+          "name": "Static Colors"
+        },
+        {
+          "range": [128, 191],
+          "name": "ColorJump"
+        },
+        {
+          "range": [192, 255],
+          "name": "ColorFade"
+        }
+      ]
+    },
+    "Program Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "slow-fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Shutter / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Channel Functions"
+      ]
+    },
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Pan/Tilt Macros",
+        "Pan/Tilt Macro Speed",
+        "Channel Functions",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Shutter / Strobe",
+        "Color Programs",
+        "Program Speed"
+      ]
+    }
+  ]
+}
