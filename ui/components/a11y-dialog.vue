@@ -2,7 +2,7 @@
   <div class="dialog-container" tabindex="-1" @click="overlayClick">
     <div class="dialog-overlay" tabindex="-1" />
 
-    <dialog :aria-labelledby="id + '-dialog-title'" class="card">
+    <dialog :id="`${id}-dialog`" :aria-labelledby="id + '-dialog-title'" class="card">
       <div>
 
         <a
