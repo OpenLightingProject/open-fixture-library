@@ -164,8 +164,8 @@ function handleMode(xmlFixture, mode) {
       'DmxByte0': dmxByte0,
       'DmxByte1': dmxByte1,
       'Constant': channel.constant ? 1 : 0,
-      'Crossfade': channel.crossfade ? 1 : 0,
-      'Invert': channel.invert ? 1 : 0,
+      'Crossfade': channel.canCrossfade ? 1 : 0,
+      'Invert': channel.isInverted ? 1 : 0,
       'Precedence': channel.precedence,
       'ClassicPos': viewPosCount
     });
@@ -216,13 +216,13 @@ function getChannelType(channel) {
 }
 
 function addCapabilities(xmlChannel, channel, fineness) {
-  if (channel.hasCapabilities && fineness < 2) {
+  if (fineness < 2) {
     for (const cap of channel.capabilities) {
-      const range = cap.getRangeWithFineness(fineness);
+      const dmxRange = cap.getDmxRangeWithFineness(fineness);
       xmlChannel.element(`Range`, {
         'Name': cap.name,
-        'Start': range.start,
-        'End': range.end,
+        'Start': dmxRange.start,
+        'End': dmxRange.end,
         'AutoMenu': cap.menuClick === `hidden` ? 0 : 1,
         'Centre': cap.menuClick === `center` ? 1 : 0
       });
