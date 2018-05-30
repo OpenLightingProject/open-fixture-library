@@ -119,7 +119,7 @@ function getParameterName(mode, attribute, channel) {
 }
 
 function addCapabilities(xmlChannel, channel) {
-  if (channel instanceof Channel && channel.hasCapabilities) {
+  if (channel instanceof Channel) {
     const caps = channel.capabilities;
 
     const xmlCapabilities = xmlChannel.element({
