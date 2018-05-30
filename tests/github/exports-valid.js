@@ -197,7 +197,7 @@ function getTasksForFixtures(changedComponents) {
 
 /**
  * @param {Task} task The export valid task to fulfill.
- * @returns {Promise} e
+ * @returns {Promise} A promise resolving with an array of message lines.
  */
 function getTaskPromise(task) {
   const plugin = require(path.join(__dirname, `../../plugins/${task.pluginKey}/export.js`));
