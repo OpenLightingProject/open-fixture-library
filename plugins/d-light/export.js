@@ -135,12 +135,23 @@ function addCapabilities(xmlChannel, channel) {
 }
 
 function addCapability(xmlCapabilities, cap) {
+  let hold = `0`;
+
+  if (cap.hold) {
+    if (cap.hold.unit === `ms`) {
+      hold = cap.hold.number;
+    }
+    else if (cap.hold.unit === `s`) {
+      hold = cap.hold.number * 1000;
+    }
+  }
+
   xmlCapabilities.element({
     name: {
-      '@min': cap.range.start,
-      '@max': cap.range.end,
+      '@min': cap.dmxRange.start,
+      '@max': cap.dmxRange.end,
       '@snap': cap.menuClickDmxValue,
-      '@timeHolder': `0`,
+      '@timeHolder': hold,
       '@dummy': `0`,
       '#text': cap.name
     }
