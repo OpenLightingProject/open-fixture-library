@@ -13,8 +13,7 @@ const requiredEnvVars = [
 const github = new GitHubApi({
   headers: {
     'user-agent': `Open Fixture Library`
-  },
-  timeout: 5000
+  }
 });
 
 let repoOwner;
