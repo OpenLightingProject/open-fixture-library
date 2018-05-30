@@ -167,35 +167,41 @@ function performTask(task) {
   const hasAdded = output.addedFiles.length > 0;
   const hasChanged = Object.keys(output.changedFiles).length > 0;
 
+  const nothingChanged = !hasRemoved && !hasAdded && !hasChanged;
 
-  const emoji = (hasRemoved || hasAdded || hasChanged) ? `:x:` : `:heavy_check_mark:`;
+  const emoji = nothingChanged ? `:heavy_check_mark:` : `:x:`;
 
   let lines = [
     `<details>`,
     `<summary>${emoji} <strong>${task.manFix} ${task.pluginKey}</strong></summary>`
   ];
 
-  if (!hasRemoved && !hasAdded && !hasChanged) {
+  if (nothingChanged) {
     lines.push(`Outputted files not changed.`);
   }
+  else {
+    lines.push(`<blockquote>`);
 
-  if (hasRemoved) {
-    lines.push(`*Removed files*`);
-    lines = lines.concat(output.removedFiles.map(file => `- ${file}`), ``);
-  }
+    if (hasRemoved) {
+      lines.push(`*Removed files*`);
+      lines = lines.concat(output.removedFiles.map(file => `- ${file}`), ``);
+    }
 
-  if (hasAdded) {
-    lines.push(`*Added files*`);
-    lines = lines.concat(output.addedFiles.map(file => `- ${file}`), ``);
-  }
+    if (hasAdded) {
+      lines.push(`*Added files*`);
+      lines = lines.concat(output.addedFiles.map(file => `- ${file}`), ``);
+    }
 
-  for (const file of Object.keys(output.changedFiles)) {
-    lines.push(`<details>`);
-    lines.push(`<summary><strong>Changed outputted file <code>${file}</code></strong></summary>`, ``);
-    lines.push(`\`\`\`diff`);
-    lines.push(output.changedFiles[file]);
-    lines.push(`\`\`\``);
-    lines.push(`</details>`);
+    for (const file of Object.keys(output.changedFiles)) {
+      lines.push(`<details>`);
+      lines.push(`<summary><strong>Changed outputted file <code>${file}</code></strong></summary>`, ``);
+      lines.push(`\`\`\`diff`);
+      lines.push(output.changedFiles[file]);
+      lines.push(`\`\`\``);
+      lines.push(`</details>`);
+    }
+
+    lines.push(`</blockquote>`);
   }
 
   lines.push(`</details>`);
