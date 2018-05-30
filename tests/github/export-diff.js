@@ -116,19 +116,38 @@ pullRequest.checkEnv()
     }
   })
   .then(tasks => {
-    let resultLines = [];
-    tasks.forEach(task => {
-      resultLines = resultLines.concat(performTask(task));
-    });
+    if (tasks.length === 0) {
+      return pullRequest.updateComment({
+        filename: path.relative(path.join(__dirname, `../../`), __filename),
+        name: `Plugin export diff`,
+        lines: []
+      });
+    }
+
+    let lines = [
+      `You can run view your uncommited changes in plugin exports manually by executing:`,
+      `\`$ node cli/diff-plugin-outputs.js -p <plugin name> <fixtures>\``,
+      ``
+    ];
+
+    for (const task of tasks) {
+      const taskResultLines = performTask(task);
+      const tooLongMessage = `:warning: The output of the script is too long to fit in this comment, please run it yourself locally or download the raw Travis log.`;
+
+      // GitHub's offical maximum comment length is 2^16=65536, but it's actually 2^18=262144.
+      // We keep 2144 characters extra space as we don't count the comment header (added by our pull request module).
+      if (lines.concat(taskResultLines).concat(tooLongMessage).join(`\r\n`).length > 260000) {
+        lines.push(tooLongMessage);
+        break;
+      }
+
+      lines = lines.concat(taskResultLines);
+    }
 
     return pullRequest.updateComment({
       filename: path.relative(path.join(__dirname, `../../`), __filename),
       name: `Plugin export diff`,
-      lines: [
-        `You can run view your uncommited changes in plugin exports manually by executing:`,
-        `\`$ node cli/diff-plugin-outputs.js -p <plugin name> <fixtures>\``,
-        ``
-      ].concat(resultLines)
+      lines
     });
   })
   .catch(error => {
