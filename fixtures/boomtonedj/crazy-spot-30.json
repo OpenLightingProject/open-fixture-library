@@ -10,15 +10,20 @@
   },
   "manualURL": "http://static.boomtonedj.com/pdf/manual/49/49502_manuelboomtonedjcrazyspot30.pdf",
   "physical": {
-    "dimensions": [300, 210, 265],
-    "weight": 3,
+    "dimensions": [265, 300, 210],
+    "weight": 2.95,
     "power": 50,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "led"
+      "type": "30W Cree LED"
     },
     "lens": {
-      "name": "manual"
+      "degreesMinMax": [15, 15]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 270
     }
   },
   "availableChannels": {
