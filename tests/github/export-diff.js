@@ -130,8 +130,7 @@ pullRequest.checkEnv()
       ``
     ];
 
-    for (const task of tasks) {
-      const taskResultLines = performTask(task);
+    for (const taskResultLines of tasks.map(performTask)) {
       const tooLongMessage = `:warning: The output of the script is too long to fit in this comment, please run it yourself locally or download the raw Travis log.`;
 
       // GitHub's offical maximum comment length is 2^16=65536, but it's actually 2^18=262144.
