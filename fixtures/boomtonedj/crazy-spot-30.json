@@ -35,36 +35,268 @@
       "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"]
     },
-    "Vitesse  Pan/Tilt": {
-      "type": "Speed"
+    "Pan/Tilt Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "fast…slow"
+        }
+      ]
     },
-    "Couleur": {
-      "type": "Multi-Color"
+    "Color": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Color 1"
+        },
+        {
+          "range": [8, 14],
+          "name": "Color 2"
+        },
+        {
+          "range": [15, 21],
+          "name": "Color 3"
+        },
+        {
+          "range": [22, 28],
+          "name": "Color 4"
+        },
+        {
+          "range": [29, 35],
+          "name": "Color 5"
+        },
+        {
+          "range": [36, 42],
+          "name": "Color 6"
+        },
+        {
+          "range": [43, 49],
+          "name": "Color 7"
+        },
+        {
+          "range": [50, 56],
+          "name": "Color 8"
+        },
+        {
+          "range": [57, 127],
+          "name": "Split colors"
+        },
+        {
+          "range": [128, 189],
+          "name": "Wheel rotation"
+        },
+        {
+          "range": [190, 193],
+          "name": "Wheel rotation stop"
+        },
+        {
+          "range": [194, 255],
+          "name": "Wheel rotation"
+        }
+      ]
     },
     "Gobos": {
-      "type": "Gobo"
+      "type": "Gobo",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Gobo 1"
+        },
+        {
+          "range": [8, 15],
+          "name": "Gobo 2"
+        },
+        {
+          "range": [16, 23],
+          "name": "Gobo 3"
+        },
+        {
+          "range": [24, 31],
+          "name": "Gobo 4"
+        },
+        {
+          "range": [32, 39],
+          "name": "Gobo 5"
+        },
+        {
+          "range": [40, 47],
+          "name": "Gobo 6"
+        },
+        {
+          "range": [48, 55],
+          "name": "Gobo 7"
+        },
+        {
+          "range": [56, 63],
+          "name": "Gobo 8"
+        },
+        {
+          "range": [64, 71],
+          "name": "Gobo 1 Shake"
+        },
+        {
+          "range": [72, 79],
+          "name": "Gobo 2 Shake"
+        },
+        {
+          "range": [80, 87],
+          "name": "Gobo 3 Shake"
+        },
+        {
+          "range": [88, 95],
+          "name": "Gobo 4 Shake"
+        },
+        {
+          "range": [96, 103],
+          "name": "Gobo 5 Shake"
+        },
+        {
+          "range": [104, 111],
+          "name": "Gobo 6 Shake"
+        },
+        {
+          "range": [112, 119],
+          "name": "Gobo 7 Shake"
+        },
+        {
+          "range": [120, 127],
+          "name": "Gobo 8 Shake"
+        },
+        {
+          "range": [128, 189],
+          "name": "Wheel rotation fast…slow"
+        },
+        {
+          "range": [190, 193],
+          "name": "Wheel rotation stop"
+        },
+        {
+          "range": [194, 255],
+          "name": "Wheel rotation slow…fast"
+        }
+      ]
     },
     "Dimmer": {
       "type": "Intensity"
     },
     "Shutter": {
-      "type": "Shutter"
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 7],
+          "name": "Closed"
+        },
+        {
+          "range": [8, 15],
+          "name": "Open"
+        },
+        {
+          "range": [16, 131],
+          "name": "Strobe slow…fast"
+        },
+        {
+          "range": [132, 139],
+          "name": "Open"
+        },
+        {
+          "range": [140, 181],
+          "name": "Strobe"
+        },
+        {
+          "range": [182, 189],
+          "name": "Open"
+        },
+        {
+          "range": [190, 231],
+          "name": "Strobe"
+        },
+        {
+          "range": [232, 239],
+          "name": "Open"
+        },
+        {
+          "range": [240, 247],
+          "name": "StrobeRandom"
+        },
+        {
+          "range": [248, 255],
+          "name": "Open"
+        }
+      ]
     },
     "Function": {
-      "type": "Maintenance"
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 69],
+          "name": "Nothing"
+        },
+        {
+          "range": [70, 79],
+          "name": "Blackout on Pan/Tilt"
+        },
+        {
+          "range": [80, 89],
+          "name": "Nothing"
+        },
+        {
+          "range": [90, 99],
+          "name": "Blackout on color change"
+        },
+        {
+          "range": [100, 109],
+          "name": "Nothing"
+        },
+        {
+          "range": [110, 119],
+          "name": "Blackout on gobo change"
+        },
+        {
+          "range": [120, 199],
+          "name": "Nothing"
+        },
+        {
+          "range": [200, 209],
+          "name": "Total reset"
+        },
+        {
+          "range": [210, 249],
+          "name": "Nothing"
+        },
+        {
+          "range": [250, 255],
+          "name": "Sound mode"
+        }
+      ]
     }
   },
   "modes": [
     {
-      "name": "DMX 10 canaux",
-      "shortName": "DMX 10 canaux",
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Color",
+        "Gobos",
+        "Dimmer",
+        "Shutter",
+        "Function"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
       "channels": [
         "Pan",
         "Pan fine",
         "Tilt",
         "Tilt fine",
-        "Vitesse  Pan/Tilt",
-        "Couleur",
+        "Pan/Tilt Speed",
+        "Color",
         "Gobos",
         "Dimmer",
         "Shutter",
