@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Protocole DMX 10 canaux",
+  "shortName": "DMX 10 canaux",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["zampano"],
+    "createDate": "2018-05-30",
+    "lastModifyDate": "2018-05-30"
+  },
+  "comment": "DMX 10 canaux",
+  "manualURL": "http://static.boomtonedj.com/pdf/manual/49/49502_manuelboomtonedjcrazyspot30.pdf",
+  "physical": {
+    "dimensions": [300, 210, 265],
+    "weight": 3,
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "led"
+    },
+    "lens": {
+      "name": "manual"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"]
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"]
+    },
+    "Vitesse  Pan/Tilt": {
+      "type": "Speed"
+    },
+    "Couleur": {
+      "type": "Multi-Color"
+    },
+    "Gobos": {
+      "type": "Gobo"
+    },
+    "Dimmer": {
+      "type": "Intensity"
+    },
+    "Shutter": {
+      "type": "Shutter"
+    },
+    "Function": {
+      "type": "Maintenance"
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX 10 canaux",
+      "shortName": "DMX 10 canaux",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Vitesse  Pan/Tilt",
+        "Couleur",
+        "Gobos",
+        "Dimmer",
+        "Shutter",
+        "Function"
+      ]
+    }
+  ]
+}
