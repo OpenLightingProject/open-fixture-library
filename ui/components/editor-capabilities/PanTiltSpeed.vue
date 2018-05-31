@@ -3,22 +3,32 @@
 
     <app-simple-label
       :formstate="formstate"
-      :name="`capability${capability.uuid}-speed`"
-      label="Speed">
-      <app-editor-proportional-capability-data-switcher
-        :capability="capability"
-        :formstate="formstate"
-        property-name="speed" />
-    </app-simple-label>
+      :name="`capability${capability.uuid}-${capability.typeData.speedOrDuration}`">
 
-    <app-simple-label
-      :formstate="formstate"
-      :name="`capability${capability.uuid}-duration`"
-      label="Duration">
+      <template slot="label">
+        <template v-if="capability.typeData.speedOrDuration === `duration`">
+          Duration / <a
+            href="#speed"
+            class="button secondary inline"
+            title="Specify speed instead of duration"
+            @click.prevent="changeSpeedOrDuration(`speed`)">Speed</a>
+        </template>
+        <template v-else>
+          Speed / <a
+            href="#duration"
+            class="button secondary inline"
+            title="Specify duration instead of speed"
+            @click.prevent="changeSpeedOrDuration(`duration`)">Duration</a>
+        </template>
+      </template>
+
       <app-editor-proportional-capability-data-switcher
+        v-if="capability.typeData.speedOrDuration"
+        ref="speedOrDurationInput"
         :capability="capability"
         :formstate="formstate"
-        property-name="duration" />
+        :property-name="capability.typeData.speedOrDuration" />
+
     </app-simple-label>
 
     <app-simple-label
@@ -62,7 +72,8 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
-        // TODO: allow either speed or duration
+        speedOrDuration: `speed`,
+        // TODO: don't save both speed and duration
         speed: ``,
         speedStart: null,
         speedEnd: null,
@@ -76,6 +87,12 @@ export default {
   computed: {
     shutterEffects() {
       return this.properties.capabilityTypes.ShutterStrobe.properties.shutterEffect.enum;
+    }
+  },
+  methods: {
+    changeSpeedOrDuration(newValue) {
+      this.capability.typeData.speedOrDuration = newValue;
+      this.$nextTick(() => this.$refs.speedOrDurationInput.focus());
     }
   }
 };

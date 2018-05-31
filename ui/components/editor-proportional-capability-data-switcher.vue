@@ -6,12 +6,14 @@
     <template v-if="!hasStartEnd">
       <app-property-input-entity
         v-if="entity"
+        ref="steppedField"
         v-model="propertyDataStepped"
         :name="`capability${capability.uuid}-${propertyName}`"
         :entity="entity" />
 
       <app-property-input-text
         v-else
+        ref="steppedField"
         v-model="propertyDataStepped"
         :name="`capability${capability.uuid}-${propertyName}`"
         :schema-property="properties.definitions.nonEmptyString" />
@@ -23,6 +25,7 @@
       <span class="entity-input">
         <app-property-input-entity
           v-if="entity"
+          ref="startField"
           v-model="propertyDataStart"
           :name="`capability${capability.uuid}-${propertyName}Start`"
           :entity="entity"
@@ -30,6 +33,7 @@
 
         <app-property-input-text
           v-else
+          ref="startField"
           v-model="propertyDataStart"
           :name="`capability${capability.uuid}-${propertyName}Start`"
           :schema-property="properties.definitions.nonEmptyString"
@@ -186,10 +190,19 @@ export default {
     }
   },
   methods: {
+    focus() {
+      for (const field of [`steppedField`, `startField`, `endField`]) {
+        if (this.$refs[field]) {
+          this.$refs[field].focus();
+          return;
+        }
+      }
+    },
     focusEndField() {
       this.$nextTick(() => {
         if (this.hasStartEnd) {
-          this.$refs.endField.focus();
+          const focusField = this.propertyDataStart === `` ? this.$refs.startField : this.$refs.endField;
+          focusField.focus();
         }
       });
     }

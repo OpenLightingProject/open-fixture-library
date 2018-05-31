@@ -2,7 +2,10 @@
   <section :class="name">
     <template v-if="formstate">
       <validate :state="formstate" :custom="customValidators" tag="label">
-        <div class="label" v-html="label" />
+        <div class="label">
+          {{ label }}
+          <slot name="label" />
+        </div>
         <div class="value">
 
           <slot />
@@ -43,7 +46,10 @@
     </template>
     <template v-else>
       <label>
-        <div class="label" v-html="label" />
+        <div class="label">
+          {{ label }}
+          <slot name="label" />
+        </div>
         <div class="value">
           <slot />
           <div v-if="hint" class="hint">{{ hint }}</div>
@@ -63,7 +69,8 @@ export default {
     },
     label: {
       type: String,
-      required: true
+      required: false,
+      default: null
     },
     hint: {
       type: String,
