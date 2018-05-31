@@ -73,7 +73,6 @@ export default {
       properties: schemaProperties,
       defaultData: {
         speedOrDuration: `speed`,
-        // TODO: don't save both speed and duration
         speed: ``,
         speedStart: null,
         speedEnd: null,
@@ -93,6 +92,13 @@ export default {
     changeSpeedOrDuration(newValue) {
       this.capability.typeData.speedOrDuration = newValue;
       this.$nextTick(() => this.$refs.speedOrDurationInput.focus());
+    },
+    cleanCapabilityData() {
+      const resetProp = this.capability.typeData.speedOrDuration === `duration` ? `speed` : `duration`;
+
+      this.capability.typeData[resetProp] = this.defaultData[resetProp];
+      this.capability.typeData[`${resetProp}Start`] = this.defaultData[`${resetProp}Start`];
+      this.capability.typeData[`${resetProp}End`] = this.defaultData[`${resetProp}End`];
     }
   }
 };
