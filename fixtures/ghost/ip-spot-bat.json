@@ -11,11 +11,15 @@
   "comment": "Mode 2",
   "manualURL": "https://www.mhdiffusion.fr/download/notices/MANUEL-IPSPOTBAT-GHOST.pdf",
   "physical": {
+    "dimensions": [240, 165, 210],
     "weight": 3,
     "power": 72,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "led"
+      "type": "6x12W RGWAUV LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
     }
   },
   "availableChannels": {
