@@ -26,6 +26,7 @@
 summary {
   display: block;
   cursor: pointer;
+  transition: background-color 0.2s;
 
   &::-webkit-details-marker {
     display: none;
@@ -49,8 +50,12 @@ summary {
     width: 0.4em;
   }
 
-  &:hover::after {
-    border-color: $icon-dark-hover;
+  &:hover, &:focus {
+    background-color: $grey-100;
+
+    &::after {
+      border-color: $icon-dark-hover;
+    }
   }
 }
 
