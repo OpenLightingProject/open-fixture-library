@@ -365,6 +365,11 @@
       "lastModifyDate": "2017-12-07",
       "lastAction": "created"
     },
+    "ghost/ip-spot-bat": {
+      "name": "IP Spot Bat",
+      "lastModifyDate": "2018-05-30",
+      "lastAction": "created"
+    },
     "glp/impression-laser": {
       "name": "impression Laser",
       "lastModifyDate": "2018-02-02",
@@ -748,6 +753,9 @@
       "rgbd-fader",
       "rgbw-fader"
     ],
+    "ghost": [
+      "ip-spot-bat"
+    ],
     "glp": [
       "impression-laser",
       "impression-spot-one",
@@ -916,6 +924,7 @@
       "generic/rgba-fader",
       "generic/rgbd-fader",
       "generic/rgbw-fader",
+      "ghost/ip-spot-bat",
       "glp/impression-laser",
       "glp/impression-spot-one",
       "glp/impression-x4-bar-10",
@@ -1247,6 +1256,10 @@
       "stairville/mh-x25",
       "stairville/stage-tri-led"
     ],
+    "zampano": [
+      "boomtonedj/crazy-spot-30",
+      "ghost/ip-spot-bat"
+    ],
     "Anonymous": [
       "stairville/mh-100"
     ],
@@ -1285,9 +1298,6 @@
     ],
     "smokris": [
       "blizzard/puck-rgbaw"
-    ],
-    "zampano": [
-      "boomtonedj/crazy-spot-30"
     ]
   },
   "rdm": {
@@ -1361,6 +1371,7 @@
   },
   "lastUpdated": [
     "boomtonedj/crazy-spot-30",
+    "ghost/ip-spot-bat",
     "showtec/xs-1-rgbw",
     "glp/impression-x4-bar-10",
     "blizzard/puck-rgbaw",
