@@ -1,11 +1,15 @@
 <template>
   <div class="capability-type-data">
 
-    <app-editor-proportional-capability-data-switcher
-      :capability="capability"
+    <app-simple-label
       :formstate="formstate"
-      property-name="time"
-      property-display-name="Time" />
+      :name="`capability${capability.uuid}-time`"
+      label="Time">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="time" />
+    </app-simple-label>
 
     <app-simple-label
       :formstate="formstate"

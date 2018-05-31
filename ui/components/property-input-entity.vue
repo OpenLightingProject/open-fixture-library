@@ -17,7 +17,7 @@
 
       <option :disabled="required" value="">unset</option>
 
-      <optgroup label="Keywords">
+      <optgroup v-if="enumValues.length" label="Keywords">
         <option
           v-for="enumValue in enumValues"
           :key="enumValue"
@@ -95,7 +95,7 @@ export default {
     enumValues() {
       const enumSubSchema = this.subSchemas.find(subSchema => `enum` in subSchema);
 
-      return enumSubSchema.enum || null;
+      return enumSubSchema ? enumSubSchema.enum : [];
     },
     unitNames() {
       return this.subSchemas.filter(
@@ -107,6 +107,7 @@ export default {
     units() {
       const units = {};
       for (const unitName of this.unitNames) {
+        // TODO: handle numbers without unit (entities factor and index)
         const unit = this.properties.units[unitName].pattern.replace(`^-?[0-9]+(\\.[0-9]+)?`, ``).replace(/\$$/, ``);
         units[unitName] = unit;
       }

@@ -1,11 +1,15 @@
 <template>
   <div class="capability-type-data">
 
-    <app-editor-proportional-capability-data-switcher
-      :capability="capability"
+    <app-simple-label
       :formstate="formstate"
-      property-name="fogOutput"
-      property-display-name="Fog Output" />
+      :name="`capability${capability.uuid}-fogOutput`"
+      label="Fog Output">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="fogOutput" />
+    </app-simple-label>
 
     <app-simple-label
       :formstate="formstate"

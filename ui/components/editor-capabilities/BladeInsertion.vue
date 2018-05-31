@@ -1,11 +1,15 @@
 <template>
   <div class="capability-type-data">
 
-    <app-editor-proportional-capability-data-switcher
-      :capability="capability"
+    <app-simple-label
       :formstate="formstate"
-      property-name="insertion"
-      property-display-name="Insertion" />
+      :name="`capability${capability.uuid}-insertion`"
+      label="Insertion">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="insertion" />
+    </app-simple-label>
 
     <!-- TODO: allow numbers for blade -->
     <app-simple-label

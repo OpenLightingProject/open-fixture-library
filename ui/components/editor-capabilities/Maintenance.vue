@@ -1,17 +1,25 @@
 <template>
   <div class="capability-type-data">
 
-    <app-editor-proportional-capability-data-switcher
-      :capability="capability"
+    <app-simple-label
       :formstate="formstate"
-      property-name="parameter"
-      property-display-name="Parameter" />
+      :name="`capability${capability.uuid}-parameter`"
+      label="Parameter">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="parameter" />
+    </app-simple-label>
 
-    <app-editor-proportional-capability-data-switcher
-      :capability="capability"
+    <app-simple-label
       :formstate="formstate"
-      property-name="hold"
-      property-display-name="Hold" />
+      :name="`capability${capability.uuid}-hold`"
+      label="Hold">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="hold" />
+    </app-simple-label>
 
     <app-simple-label
       :formstate="formstate"

@@ -12,11 +12,15 @@
         :schema-property="properties.definitions.nonEmptyString" />
     </app-simple-label>
 
-    <app-editor-proportional-capability-data-switcher
-      :capability="capability"
+    <app-simple-label
       :formstate="formstate"
-      property-name="speed"
-      property-display-name="Speed" />
+      :name="`capability${capability.uuid}-speed`"
+      label="Speed">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="speed" />
+    </app-simple-label>
 
     <app-simple-label
       :formstate="formstate"

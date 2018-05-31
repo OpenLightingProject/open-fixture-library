@@ -1,11 +1,15 @@
 <template>
   <div class="capability-type-data">
 
-    <app-editor-proportional-capability-data-switcher
-      :capability="capability"
+    <app-simple-label
       :formstate="formstate"
-      property-name="openPercent"
-      property-display-name="Degree of opening" />
+      :name="`capability${capability.uuid}-openPercent`"
+      label="Degree of opening">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="openPercent" />
+    </app-simple-label>
 
     <app-simple-label
       :formstate="formstate"

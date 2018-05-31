@@ -1,11 +1,15 @@
 <template>
   <div class="capability-type-data">
 
-    <app-editor-proportional-capability-data-switcher
-      :capability="capability"
+    <app-simple-label
       :formstate="formstate"
-      property-name="brightness"
-      property-display-name="Brightness" />
+      :name="`capability${capability.uuid}-brightness`"
+      label="Brightness">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="brightness" />
+    </app-simple-label>
 
     <app-simple-label
       :formstate="formstate"

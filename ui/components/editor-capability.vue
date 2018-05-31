@@ -32,7 +32,7 @@
 
       </app-simple-label>
 
-      <app-simple-label :formstate="formstate" :name="`capability${capability.uuid}-type`" label="Type">
+      <app-simple-label :formstate="formstate" :name="`capability${capability.uuid}-type`" label="Capability type">
         <select
           v-model="capability.type"
           :class="{ empty: capability.type === `` }"

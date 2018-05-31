@@ -1,23 +1,35 @@
 <template>
   <div class="capability-type-data">
 
-    <app-editor-proportional-capability-data-switcher
-      :capability="capability"
+    <app-simple-label
       :formstate="formstate"
-      property-name="index"
-      property-display-name="Index" />
+      :name="`capability${capability.uuid}-index`"
+      label="Index">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="index" />
+    </app-simple-label>
 
-    <app-editor-proportional-capability-data-switcher
-      :capability="capability"
+    <app-simple-label
       :formstate="formstate"
-      property-name="colors"
-      property-display-name="Colors" />
+      :name="`capability${capability.uuid}-colors`"
+      label="Colors">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="colors" />
+    </app-simple-label>
 
-    <app-editor-proportional-capability-data-switcher
-      :capability="capability"
+    <app-simple-label
       :formstate="formstate"
-      property-name="colorTemperature"
-      property-display-name="Color Temperature" />
+      :name="`capability${capability.uuid}-colorTemperature`"
+      label="Color Temperature">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="colorTemperature" />
+    </app-simple-label>
 
     <app-simple-label
       :formstate="formstate"
@@ -36,11 +48,13 @@
 <script>
 import schemaProperties from '~~/lib/schema-properties.js';
 
+import editorProportionalCapabilityDataSwitcher from '~/components/editor-proportional-capability-data-switcher.vue';
 import propertyInputTextVue from '~/components/property-input-text.vue';
 import simpleLabelVue from '~/components/simple-label.vue';
 
 export default {
   components: {
+    'app-editor-proportional-capability-data-switcher': editorProportionalCapabilityDataSwitcher,
     'app-property-input-text': propertyInputTextVue,
     'app-simple-label': simpleLabelVue
   },

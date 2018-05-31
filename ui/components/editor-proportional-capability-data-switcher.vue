@@ -1,60 +1,94 @@
 <template>
   <div class="proportional-capability-data">
+
+    <!-- TODO: required fields, validation, custom inputs (using slots?) -->
+
+    <template v-if="!hasStartEnd">
+      <app-property-input-entity
+        v-if="entity"
+        v-model="propertyDataStepped"
+        :name="`capability${capability.uuid}-${propertyName}`"
+        :entity="entity" />
+
+      <app-property-input-text
+        v-else
+        v-model="propertyDataStepped"
+        :name="`capability${capability.uuid}-${propertyName}`"
+        :schema-property="properties.definitions.nonEmptyString" />
+    </template>
+
+    <template v-else>
+      <span class="entity-input">
+        <app-property-input-entity
+          v-if="entity"
+          v-model="propertyDataStart"
+          :name="`capability${capability.uuid}-${propertyName}Start`"
+          :entity="entity"
+          hint="start" />
+
+        <app-property-input-text
+          v-else
+          v-model="propertyDataStart"
+          :name="`capability${capability.uuid}-${propertyName}Start`"
+          :schema-property="properties.definitions.nonEmptyString"
+          hint="start" />
+
+        <span class="hint">Value at {{ capability.dmxRange ? `DMX value ${capability.dmxRange[0]}` : `capability start` }}</span>
+      </span>
+
+      <span class="separator">…</span>
+
+      <span class="entity-input">
+        <app-property-input-entity
+          v-if="entity"
+          ref="endField"
+          v-model="propertyDataEnd"
+          :name="`capability${capability.uuid}-${propertyName}End`"
+          :entity="entity"
+          hint="end" />
+
+        <app-property-input-text
+          v-else
+          ref="endField"
+          v-model="propertyDataEnd"
+          :name="`capability${capability.uuid}-${propertyName}End`"
+          :schema-property="properties.definitions.nonEmptyString"
+          hint="end" />
+
+        <span class="hint">value at {{ capability.dmxRange ? `DMX value ${capability.dmxRange[1]}` : `capability end` }}</span>
+      </span>
+    </template>
+
     <section>
       <label>
-        <input v-model="hasStartEnd" type="checkbox">
-        Specify {{ propertyDisplayName }} range instead of a single value
+        <input v-model="hasStartEnd" type="checkbox" @change="focusEndField">
+        Specify range instead of a single value
       </label>
     </section>
 
-    <app-simple-label
-      v-if="!hasStartEnd"
-      :formstate="formstate"
-      :name="`capability${capability.uuid}-${propertyName}`"
-      :label="propertyDisplayName">
-      <!-- TODO: required fields, unit inputs, custom inputs (using slots?) -->
-      <app-property-input-text
-        v-model="propertyDataStepped"
-        :formstate="formstate"
-        :name="`capability${capability.uuid}-${propertyName}`"
-        :schema-property="properties.definitions.nonEmptyString" />
-    </app-simple-label>
-
-    <template v-else>
-      <app-simple-label
-        :formstate="formstate"
-        :name="`capability${capability.uuid}-${propertyName}Start`"
-        :label="`${propertyDisplayName} start`">
-        <app-property-input-text
-          v-model="propertyDataStart"
-          :formstate="formstate"
-          :name="`capability${capability.uuid}-${propertyName}Start`"
-          :schema-property="properties.definitions.nonEmptyString" />
-      </app-simple-label>
-      <app-simple-label
-        :formstate="formstate"
-        :name="`capability${capability.uuid}-${propertyName}End`"
-        :label="`${propertyDisplayName} end`">
-        <app-property-input-text
-          v-model="propertyDataEnd"
-          :formstate="formstate"
-          :name="`capability${capability.uuid}-${propertyName}End`"
-          :schema-property="properties.definitions.nonEmptyString" />
-      </app-simple-label>
-    </template>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.entity-input {
+  display: inline-block;
+  vertical-align: top;
+}
+.separator {
+  margin: 0 1ex;
+}
+</style>
 
 <script>
 import schemaProperties from '~~/lib/schema-properties.js';
 
+import propertyInputEntityVue from '~/components/property-input-entity.vue';
 import propertyInputTextVue from '~/components/property-input-text.vue';
-import simpleLabelVue from '~/components/simple-label.vue';
 
 export default {
   components: {
-    'app-property-input-text': propertyInputTextVue,
-    'app-simple-label': simpleLabelVue
+    'app-property-input-entity': propertyInputEntityVue,
+    'app-property-input-text': propertyInputTextVue
   },
   props: {
     capability: {
@@ -62,10 +96,6 @@ export default {
       required: true
     },
     propertyName: {
-      type: String,
-      required: true
-    },
-    propertyDisplayName: {
       type: String,
       required: true
     },
@@ -80,6 +110,24 @@ export default {
     };
   },
   computed: {
+    entity() {
+      const capabilitySchema = this.properties.capabilityTypes[this.capability.type];
+      if (!capabilitySchema) {
+        return null;
+      }
+
+      const propertySchema = capabilitySchema.properties[this.propertyName];
+      if (!propertySchema) {
+        return null;
+      }
+
+      const entity = (propertySchema.$ref || ``).replace(`definitions.json#/entities/`, ``);
+      if (entity === `` || entity === `index` || entity === `factor`) {
+        return null;
+      }
+
+      return entity;
+    },
     propertyDataStepped: {
       get() {
         return this.capability.typeData[this.propertyName];
@@ -124,15 +172,14 @@ export default {
       }
     }
   },
-  render(createElement) {
-    if (this.$slots.default) {
-      return createElement(`details`, [
-        createElement(`summary`, this.$slots.summary),
-        this.$slots.default
-      ]);
+  methods: {
+    focusEndField() {
+      this.$nextTick(() => {
+        if (this.hasStartEnd) {
+          this.$refs.endField.focus();
+        }
+      });
     }
-
-    return createElement(`div`, this.$slots.summary);
   }
 };
 </script>

@@ -1,11 +1,15 @@
 <template>
   <div class="capability-type-data">
 
-    <app-editor-proportional-capability-data-switcher
-      :capability="capability"
+    <app-simple-label
       :formstate="formstate"
-      property-name="soundSensitvity"
-      property-display-name="Sound Sensitivity" />
+      :name="`capability${capability.uuid}-soundSensitvity`"
+      label="Sound Sensitivity">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="soundSensitvity" />
+    </app-simple-label>
 
     <app-simple-label
       :formstate="formstate"

@@ -1,11 +1,15 @@
 <template>
   <div class="capability-type-data">
 
-    <app-editor-proportional-capability-data-switcher
-      :capability="capability"
+    <app-simple-label
       :formstate="formstate"
-      property-name="colorTemperature"
-      property-display-name="Color Temperature" />
+      :name="`capability${capability.uuid}-colorTemperature`"
+      label="Color Temperature">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="colorTemperature" />
+    </app-simple-label>
 
     <app-simple-label
       :formstate="formstate"

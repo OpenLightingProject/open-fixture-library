@@ -40,29 +40,45 @@
         :name="`capability${capability.uuid}-soundControlled`" />
     </app-simple-label>
 
-    <app-editor-proportional-capability-data-switcher
-      :capability="capability"
+    <app-simple-label
       :formstate="formstate"
-      property-name="effectIntensity"
-      property-display-name="Effect Intensity" />
+      :name="`capability${capability.uuid}-effectIntensity`"
+      label="Effect Intensity">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="effectIntensity" />
+    </app-simple-label>
 
-    <app-editor-proportional-capability-data-switcher
-      :capability="capability"
+    <app-simple-label
       :formstate="formstate"
-      property-name="speed"
-      property-display-name="Speed" />
+      :name="`capability${capability.uuid}-speed`"
+      label="Speed">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="speed" />
+    </app-simple-label>
 
-    <app-editor-proportional-capability-data-switcher
-      :capability="capability"
+    <app-simple-label
       :formstate="formstate"
-      property-name="duration"
-      property-display-name="Duration" />
+      :name="`capability${capability.uuid}-duration`"
+      label="Duration">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="duration" />
+    </app-simple-label>
 
-    <app-editor-proportional-capability-data-switcher
-      :capability="capability"
+    <app-simple-label
       :formstate="formstate"
-      property-name="soundSensitvity"
-      property-display-name="Sound Sensitivity" />
+      :name="`capability${capability.uuid}-soundSensitvity`"
+      label="Sound Sensitivity">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="soundSensitvity" />
+    </app-simple-label>
 
     <app-simple-label
       :formstate="formstate"

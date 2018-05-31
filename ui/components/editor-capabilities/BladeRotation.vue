@@ -1,11 +1,15 @@
 <template>
   <div class="capability-type-data">
 
-    <app-editor-proportional-capability-data-switcher
-      :capability="capability"
+    <app-simple-label
       :formstate="formstate"
-      property-name="angle"
-      property-display-name="Angle" />
+      :name="`capability${capability.uuid}-angle`"
+      label="Angle">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="angle" />
+    </app-simple-label>
 
     <!-- TODO: allow numbers for blade -->
     <app-simple-label
