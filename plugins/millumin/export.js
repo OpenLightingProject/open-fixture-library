@@ -93,6 +93,6 @@ function addIfTruthy(sourceObj, sourceProperty, destinationObj, destinationPrope
   destinationProperty = destinationProperty || sourceProperty;
 
   if (sourceObj[sourceProperty]) {
-    destinationObj[sourceProperty] = sourceObj[destinationProperty];
+    destinationObj[destinationProperty] = sourceObj[sourceProperty];
   }
 }
