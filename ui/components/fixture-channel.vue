@@ -65,7 +65,7 @@
           <span class="value">{{ unwrappedChannel.getHighlightValueWithFineness(finenessInMode) }}</span>
         </section>
 
-        <section v-if="unwrappedChannel.invert" class="channel-invert">
+        <section v-if="unwrappedChannel.isInverted" class="channel-invert">
           <span class="label">Invert</span>
           <span class="value">Yes</span>
         </section>
@@ -75,7 +75,7 @@
           <span class="value">Yes</span>
         </section>
 
-        <section v-if="unwrappedChannel.crossfade" class="channel-crossfade">
+        <section v-if="unwrappedChannel.canCrossfade" class="channel-crossfade">
           <span class="label">Crossfade</span>
           <span class="value">Yes</span>
         </section>
