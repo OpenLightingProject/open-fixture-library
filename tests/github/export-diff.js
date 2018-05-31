@@ -103,9 +103,7 @@ pullRequest.checkEnv()
     function getTasksForFixtures() {
       let tasks = [];
 
-      const fixtures = changedComponents.added.fixtures.concat(changedComponents.modified.fixtures, changedComponents.renamed.fixtures);
-
-      for (const [manKey, fixKey] of fixtures) {
+      for (const [manKey, fixKey] of changedComponents.modified.fixtures) {
         tasks = tasks.concat(usablePlugins.map(pluginKey => ({
           manFix: `${manKey}/${fixKey}`,
           pluginKey
@@ -130,7 +128,7 @@ pullRequest.checkEnv()
       ``
     ];
 
-    const tooLongMessage = `:warning: The output of the script is too long to fit in this comment, please run it yourself locally or download the raw Travis log.`;
+    const tooLongMessage = `:warning: The output of the script is too long to fit in this comment, please run it yourself locally!`;
 
     for (const task of tasks) {
       const taskResultLines = performTask(task);
