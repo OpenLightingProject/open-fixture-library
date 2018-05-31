@@ -23,6 +23,11 @@
     }
   },
   "availableChannels": {
+    "Master Intensity": {
+      "type": "Intensity",
+      "defaultValue": 0,
+      "highlightValue": 255
+    },
     "Red": {
       "type": "Single Color",
       "color": "Red",
@@ -58,6 +63,53 @@
       "color": "UV",
       "defaultValue": 0,
       "highlightValue": 255
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Strobe 0…10Hz"
+        }
+      ]
+    },
+    "Programs": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 50],
+          "name": "No function"
+        },
+        {
+          "range": [51, 100],
+          "name": "8 predefined colors"
+        },
+        {
+          "range": [101, 150],
+          "name": "ColorJump"
+        },
+        {
+          "range": [151, 200],
+          "name": "ColorFade"
+        },
+        {
+          "range": [201, 250],
+          "name": "ColorPulse"
+        },
+        {
+          "range": [251, 255],
+          "name": "Sound control"
+        }
+      ]
+    },
+    "Program Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Program Speed slow…fast"
+        }
+      ]
     }
   },
   "modes": [
