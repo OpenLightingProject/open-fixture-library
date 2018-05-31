@@ -23,32 +23,41 @@
     }
   },
   "availableChannels": {
-    "Gradation Rouge": {
-      "type": "Intensity",
+    "Red": {
+      "type": "Single Color",
+      "color": "Red",
       "defaultValue": 0,
       "highlightValue": 255
     },
-    "Gradation Vert": {
-      "type": "Intensity",
+    "Green": {
+      "type": "Single Color",
+      "color": "Green",
       "defaultValue": 0,
       "highlightValue": 255
     },
-    "Gradation Bleu": {
-      "type": "Intensity"
-    },
-    "Gradation Blanc": {
-      "type": "Intensity",
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue",
       "defaultValue": 0,
       "highlightValue": 255
     },
-    "Gradation Ambre": {
-      "type": "Intensity",
+    "White": {
+      "type": "Single Color",
+      "color": "White",
       "defaultValue": 0,
-      "highlightValue": 0
+      "highlightValue": 255
     },
-    "Gradation UV": {
-      "type": "Intensity",
-      "defaultValue": 0
+    "Amber": {
+      "type": "Single Color",
+      "color": "Amber",
+      "defaultValue": 0,
+      "highlightValue": 255
+    },
+    "UV": {
+      "type": "Single Color",
+      "color": "UV",
+      "defaultValue": 0,
+      "highlightValue": 255
     }
   },
   "modes": [
@@ -56,12 +65,12 @@
       "name": "6 channels",
       "shortName": "IP spot bat 6 channels",
       "channels": [
-        "Gradation Rouge",
-        "Gradation Vert",
-        "Gradation Bleu",
-        "Gradation Blanc",
-        "Gradation Ambre",
-        "Gradation UV"
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
       ]
     }
   ]
