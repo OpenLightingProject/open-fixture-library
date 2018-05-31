@@ -128,7 +128,7 @@ pullRequest.checkEnv()
       ``
     ];
 
-    const tooLongMessage = `:warning: The output of the script is too long to fit in this comment, please run it yourself locally or download the raw Travis log.`;
+    const tooLongMessage = `:warning: The output of the script is too long to fit in this comment, please run it yourself locally!`;
 
     for (const task of tasks) {
       const taskResultLines = performTask(task);
