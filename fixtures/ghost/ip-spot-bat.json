@@ -114,8 +114,8 @@
   },
   "modes": [
     {
-      "name": "6 channels",
-      "shortName": "IP spot bat 6 channels",
+      "name": "6-channel",
+      "shortName": "6ch",
       "channels": [
         "Red",
         "Green",
@@ -123,6 +123,22 @@
         "White",
         "Amber",
         "UV"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Master Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Strobe",
+        "Programs",
+        "Program Speed"
       ]
     }
   ]
