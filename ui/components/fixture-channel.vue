@@ -5,11 +5,11 @@
         <app-fixture-channel-type-icon :channel="channel" />{{ unwrappedChannel.name }}<code v-if="channelKey" class="channel-key">{{ channelKey }}</code>{{ appendToHeading ? ` ${appendToHeading}` : `` }}
       </template>
 
-      <div v-if="unwrappedChannel instanceof FineChannel">
+      <div v-if="(unwrappedChannel instanceof FineChannel)">
         Fine channel of {{ unwrappedChannel.coarseChannel.name }} (channel&nbsp;{{ mode.getChannelIndex(unwrappedChannel.coarseChannel.key) + 1 }})
       </div>
 
-      <template v-else-if="unwrappedChannel instanceof SwitchingChannel">
+      <template v-else-if="(unwrappedChannel instanceof SwitchingChannel)">
         <div>Switch depending on {{ unwrappedChannel.triggerChannel.name }}'s value (channel&nbsp;{{ mode.getChannelIndex(unwrappedChannel.triggerChannel.key) + 1 }}):</div>
 
         <ol>
@@ -45,7 +45,7 @@
         </template>
       </template>
 
-      <template v-if="unwrappedChannel instanceof Channel">
+      <template v-if="(unwrappedChannel instanceof Channel)">
         <section v-if="finenessInMode > 0" class="channel-fineChannelAliases">
           <span class="label">Fine channels</span>
           <span class="value">{{
