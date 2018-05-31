@@ -14,7 +14,7 @@
     <app-simple-label
       :formstate="formstate"
       :name="`capability${capability.uuid}-comment`"
-      label="Gobo Index">
+      label="Gobo name">
       <app-property-input-text
         v-model="capability.typeData.comment"
         :formstate="formstate"

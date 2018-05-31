@@ -134,8 +134,8 @@
         <app-simple-label
           :formstate="formstate"
           name="rdmModelId"
-          label="<abbr title='Remote Device Management'>RDM</abbr> model ID"
           hint="The RDM manufacturer ID is saved per manufacturer.">
+          <template slot="label"><abbr title="Remote Device Management">RDM</abbr> model ID</template>
           <app-property-input-number
             v-model="fixture.rdmModelId"
             :schema-property="properties.fixture.rdm.properties.modelId"
