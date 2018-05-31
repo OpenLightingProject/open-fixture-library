@@ -15,6 +15,8 @@
         v-model="propertyDataStepped"
         :name="`capability${capability.uuid}-${propertyName}`"
         :schema-property="properties.definitions.nonEmptyString" />
+
+      <span v-if="hint" class="hint">{{ hint }}</span>
     </template>
 
     <template v-else>
@@ -33,7 +35,10 @@
           :schema-property="properties.definitions.nonEmptyString"
           hint="start" />
 
-        <span class="hint">Value at {{ capability.dmxRange ? `DMX value ${capability.dmxRange[0]}` : `capability start` }}</span>
+        <span class="hint">
+          {{ hint ? hint : `value` }} at
+          {{ capability.dmxRange && capability.dmxRange[0] !== null ? `DMX value ${capability.dmxRange[0]}` : `capability start` }}
+        </span>
       </span>
 
       <span class="separator">…</span>
@@ -55,7 +60,10 @@
           :schema-property="properties.definitions.nonEmptyString"
           hint="end" />
 
-        <span class="hint">value at {{ capability.dmxRange ? `DMX value ${capability.dmxRange[1]}` : `capability end` }}</span>
+        <span class="hint">
+          {{ hint ? hint : `value` }} at
+          {{ capability.dmxRange && capability.dmxRange[1] !== null ? `DMX value ${capability.dmxRange[1]}` : `capability end` }}
+        </span>
       </span>
     </template>
 
@@ -98,6 +106,11 @@ export default {
     propertyName: {
       type: String,
       required: true
+    },
+    hint: {
+      type: String,
+      required: false,
+      default: null
     },
     formstate: {
       type: Object,
