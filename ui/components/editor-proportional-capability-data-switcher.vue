@@ -6,21 +6,26 @@
     <template v-if="!hasStartEnd">
       <app-property-input-entity
         v-if="entity"
+        ref="steppedField"
         v-model="propertyDataStepped"
         :name="`capability${capability.uuid}-${propertyName}`"
         :entity="entity" />
 
       <app-property-input-text
         v-else
+        ref="steppedField"
         v-model="propertyDataStepped"
         :name="`capability${capability.uuid}-${propertyName}`"
         :schema-property="properties.definitions.nonEmptyString" />
+
+      <span v-if="hint" class="hint">{{ hint }}</span>
     </template>
 
     <template v-else>
       <span class="entity-input">
         <app-property-input-entity
           v-if="entity"
+          ref="startField"
           v-model="propertyDataStart"
           :name="`capability${capability.uuid}-${propertyName}Start`"
           :entity="entity"
@@ -28,12 +33,16 @@
 
         <app-property-input-text
           v-else
+          ref="startField"
           v-model="propertyDataStart"
           :name="`capability${capability.uuid}-${propertyName}Start`"
           :schema-property="properties.definitions.nonEmptyString"
           hint="start" />
 
-        <span class="hint">Value at {{ capability.dmxRange ? `DMX value ${capability.dmxRange[0]}` : `capability start` }}</span>
+        <span class="hint">
+          {{ hint ? hint : `value` }} at
+          {{ capability.dmxRange && capability.dmxRange[0] !== null ? `DMX value ${capability.dmxRange[0]}` : `capability start` }}
+        </span>
       </span>
 
       <span class="separator">…</span>
@@ -55,7 +64,10 @@
           :schema-property="properties.definitions.nonEmptyString"
           hint="end" />
 
-        <span class="hint">value at {{ capability.dmxRange ? `DMX value ${capability.dmxRange[1]}` : `capability end` }}</span>
+        <span class="hint">
+          {{ hint ? hint : `value` }} at
+          {{ capability.dmxRange && capability.dmxRange[1] !== null ? `DMX value ${capability.dmxRange[1]}` : `capability end` }}
+        </span>
       </span>
     </template>
 
@@ -98,6 +110,11 @@ export default {
     propertyName: {
       type: String,
       required: true
+    },
+    hint: {
+      type: String,
+      required: false,
+      default: null
     },
     formstate: {
       type: Object,
@@ -173,10 +190,19 @@ export default {
     }
   },
   methods: {
+    focus() {
+      for (const field of [`steppedField`, `startField`, `endField`]) {
+        if (this.$refs[field]) {
+          this.$refs[field].focus();
+          return;
+        }
+      }
+    },
     focusEndField() {
       this.$nextTick(() => {
         if (this.hasStartEnd) {
-          this.$refs.endField.focus();
+          const focusField = this.propertyDataStart === `` ? this.$refs.startField : this.$refs.endField;
+          focusField.focus();
         }
       });
     }

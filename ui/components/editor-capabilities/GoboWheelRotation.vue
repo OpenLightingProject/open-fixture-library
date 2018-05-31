@@ -3,22 +3,32 @@
 
     <app-simple-label
       :formstate="formstate"
-      :name="`capability${capability.uuid}-angle`"
-      label="Angle">
-      <app-editor-proportional-capability-data-switcher
-        :capability="capability"
-        :formstate="formstate"
-        property-name="angle" />
-    </app-simple-label>
+      :name="`capability${capability.uuid}-${capability.typeData.angleOrSpeed}`">
 
-    <app-simple-label
-      :formstate="formstate"
-      :name="`capability${capability.uuid}-speed`"
-      label="Speed">
+      <template slot="label">
+        <template v-if="capability.typeData.angleOrSpeed === `angle`">
+          Angle / <a
+            href="#speed"
+            class="button secondary inline"
+            title="Specify speed instead of angle"
+            @click.prevent="changeAngleOrSpeed(`speed`)">Speed</a>
+        </template>
+        <template v-else>
+          Speed / <a
+            href="#angle"
+            class="button secondary inline"
+            title="Specify angle instead of speed"
+            @click.prevent="changeAngleOrSpeed(`angle`)">Angle</a>
+        </template>
+      </template>
+
       <app-editor-proportional-capability-data-switcher
+        v-if="capability.typeData.angleOrSpeed"
+        ref="angleOrSpeedInput"
         :capability="capability"
         :formstate="formstate"
-        property-name="speed" />
+        :property-name="capability.typeData.angleOrSpeed" />
+
     </app-simple-label>
 
     <app-simple-label
@@ -62,7 +72,8 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
-        // TODO: allow either angle or speed
+        angleOrSpeed: `speed`,
+        // TODO: don't save both angle and speed
         angle: ``,
         angleStart: null,
         angleEnd: null,
@@ -72,6 +83,12 @@ export default {
         comment: ``
       }
     };
+  },
+  methods: {
+    changeAngleOrSpeed(newValue) {
+      this.capability.typeData.angleOrSpeed = newValue;
+      this.$nextTick(() => this.$refs.angleOrSpeedInput.focus());
+    }
   }
 };
 </script>

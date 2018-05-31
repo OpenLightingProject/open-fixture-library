@@ -13,6 +13,17 @@
 
     <app-simple-label
       :formstate="formstate"
+      :name="`capability${capability.uuid}-comment`"
+      label="Gobo Index">
+      <app-property-input-text
+        v-model="capability.typeData.comment"
+        :formstate="formstate"
+        :name="`capability${capability.uuid}-comment`"
+        :schema-property="properties.definitions.nonEmptyString" />
+    </app-simple-label>
+
+    <app-simple-label
+      :formstate="formstate"
       :name="`capability${capability.uuid}-shakeAngle`"
       label="Shake Angle">
       <app-editor-proportional-capability-data-switcher
@@ -29,17 +40,6 @@
         :capability="capability"
         :formstate="formstate"
         property-name="shakeSpeed" />
-    </app-simple-label>
-
-    <app-simple-label
-      :formstate="formstate"
-      :name="`capability${capability.uuid}-comment`"
-      label="Comment">
-      <app-property-input-text
-        v-model="capability.typeData.comment"
-        :formstate="formstate"
-        :name="`capability${capability.uuid}-comment`"
-        :schema-property="properties.definitions.nonEmptyString" />
     </app-simple-label>
 
   </div>

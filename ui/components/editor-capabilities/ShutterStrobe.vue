@@ -83,6 +83,7 @@ export default {
       properties: schemaProperties,
       defaultData: {
         shutterEffect: ``,
+        // TODO: don't save speed or duration when shutterEffect is Open or Closed
         speed: ``,
         speedStart: null,
         speedEnd: null,

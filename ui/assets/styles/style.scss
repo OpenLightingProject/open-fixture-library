@@ -267,6 +267,11 @@ a.button {
   line-height: 1.4;
   padding: 0.5em 3ex;
   transition: 0.1s background-color;
+
+  &.inline {
+    font-size: 0.85em;
+    padding: 4px 6px;
+  }
 }
 button.secondary,
 input.secondary,

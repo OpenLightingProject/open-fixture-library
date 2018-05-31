@@ -180,6 +180,27 @@ export function isCapabilityChanged(cap) {
 
 
 /**
+ * @param {?string} hexString A string of comma-separated hex values, or null.
+ * @returns {?Array.<!string>} The hex codes as array of strings.
+ */
+export function colorHexStringToArray(hexString) {
+  if (typeof hexString !== `string`) {
+    return null;
+  }
+
+  const hexArray = hexString.split(/\s*,\s*/).map(hex => hex.trim()).filter(
+    hex => hex.match(/^#[0-9a-f]{6}$/)
+  );
+
+  if (hexArray.length === 0) {
+    return null;
+  }
+
+  return hexArray;
+}
+
+
+/**
  * @param {!object} channel The channel object that shall be sanitized.
  * @returns {!object} A clone of the channel object without properties that are just relevant for displaying it in the channel dialog.
  */
