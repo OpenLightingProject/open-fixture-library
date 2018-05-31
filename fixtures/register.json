@@ -360,6 +360,11 @@
       "lastModifyDate": "2017-12-07",
       "lastAction": "created"
     },
+    "ghost/ip-spot-bat": {
+      "name": "IP Spot Bat",
+      "lastModifyDate": "2018-05-30",
+      "lastAction": "created"
+    },
     "glp/impression-laser": {
       "name": "impression Laser",
       "lastModifyDate": "2018-02-02",
@@ -379,11 +384,6 @@
       "name": "Ventilator",
       "lastModifyDate": "2017-10-16",
       "lastAction": "modified"
-    },
-    "ipspotbat/6-channels": {
-      "name": "6 channels",
-      "lastModifyDate": "2018-05-30",
-      "lastAction": "created"
     },
     "jb-lighting/varyscan-p7": {
       "name": "Varyscan P7",
@@ -745,6 +745,9 @@
       "rgbd-fader",
       "rgbw-fader"
     ],
+    "ghost": [
+      "ip-spot-bat"
+    ],
     "glp": [
       "impression-laser",
       "impression-spot-one",
@@ -752,9 +755,6 @@
     ],
     "gruft": [
       "ventilator"
-    ],
-    "ipspotbat": [
-      "6-channels"
     ],
     "jb-lighting": [
       "varyscan-p7"
@@ -852,7 +852,7 @@
       "cameo/thunder-wash-100-w",
       "cameo/thunder-wash-600-rgb",
       "cameo/thunder-wash-600-w",
-      "ipspotbat/6-channels",
+      "ghost/ip-spot-bat",
       "showtec/horizon-8",
       "stairville/led-flood-panel-150",
       "tmb/solaris-flare"
@@ -1286,7 +1286,7 @@
       "blizzard/puck-rgbaw"
     ],
     "zampano": [
-      "ipspotbat/6-channels"
+      "ghost/ip-spot-bat"
     ]
   },
   "rdm": {
@@ -1359,7 +1359,7 @@
     }
   },
   "lastUpdated": [
-    "ipspotbat/6-channels",
+    "ghost/ip-spot-bat",
     "showtec/xs-1-rgbw",
     "glp/impression-x4-bar-10",
     "blizzard/puck-rgbaw",
