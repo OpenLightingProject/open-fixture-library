@@ -73,7 +73,6 @@ export default {
       properties: schemaProperties,
       defaultData: {
         angleOrSpeed: `speed`,
-        // TODO: don't save both angle and speed
         angle: ``,
         angleStart: null,
         angleEnd: null,
@@ -88,6 +87,13 @@ export default {
     changeAngleOrSpeed(newValue) {
       this.capability.typeData.angleOrSpeed = newValue;
       this.$nextTick(() => this.$refs.angleOrSpeedInput.focus());
+    },
+    cleanCapabilityData() {
+      const resetProp = this.capability.typeData.angleOrSpeed === `angle` ? `speed` : `angle`;
+
+      this.capability.typeData[resetProp] = this.defaultData[resetProp];
+      this.capability.typeData[`${resetProp}Start`] = this.defaultData[`${resetProp}Start`];
+      this.capability.typeData[`${resetProp}End`] = this.defaultData[`${resetProp}End`];
     }
   }
 };

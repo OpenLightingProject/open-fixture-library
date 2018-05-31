@@ -20,37 +20,39 @@
       </select>
     </app-simple-label>
 
-    <app-simple-label
-      :formstate="formstate"
-      :name="`capability${capability.uuid}-speed`"
-      label="Speed">
-      <app-editor-proportional-capability-data-switcher
-        :capability="capability"
+    <template v-if="isStrobeEffect">
+      <app-simple-label
         :formstate="formstate"
-        property-name="speed"
-        entity="speed" />
-    </app-simple-label>
+        :name="`capability${capability.uuid}-speed`"
+        label="Speed">
+        <app-editor-proportional-capability-data-switcher
+          :capability="capability"
+          :formstate="formstate"
+          property-name="speed"
+          entity="speed" />
+      </app-simple-label>
 
-    <app-simple-label
-      :formstate="formstate"
-      :name="`capability${capability.uuid}-duration`"
-      label="Duration">
-      <app-editor-proportional-capability-data-switcher
-        :capability="capability"
+      <app-simple-label
         :formstate="formstate"
-        property-name="duration" />
-    </app-simple-label>
+        :name="`capability${capability.uuid}-duration`"
+        label="Duration">
+        <app-editor-proportional-capability-data-switcher
+          :capability="capability"
+          :formstate="formstate"
+          property-name="duration" />
+      </app-simple-label>
 
-    <app-simple-label
-      :formstate="formstate"
-      :name="`capability${capability.uuid}-comment`"
-      label="Comment">
-      <app-property-input-text
-        v-model="capability.typeData.comment"
+      <app-simple-label
         :formstate="formstate"
         :name="`capability${capability.uuid}-comment`"
-        :schema-property="properties.definitions.nonEmptyString" />
-    </app-simple-label>
+        label="Comment">
+        <app-property-input-text
+          v-model="capability.typeData.comment"
+          :formstate="formstate"
+          :name="`capability${capability.uuid}-comment`"
+          :schema-property="properties.definitions.nonEmptyString" />
+      </app-simple-label>
+    </template>
 
   </div>
 </template>
@@ -83,7 +85,6 @@ export default {
       properties: schemaProperties,
       defaultData: {
         shutterEffect: ``,
-        // TODO: don't save speed or duration when shutterEffect is Open or Closed
         speed: ``,
         speedStart: null,
         speedEnd: null,
@@ -97,6 +98,19 @@ export default {
   computed: {
     shutterEffects() {
       return this.properties.capabilityTypes.ShutterStrobe.properties.shutterEffect.enum;
+    },
+    isStrobeEffect() {
+      return ![``, `Open`, `Closed`].includes(this.capability.typeData.shutterEffect);
+    }
+  },
+  methods: {
+    cleanCapabilityData() {
+      if (!this.isStrobeEffect) {
+        const resetProps = [`speed`, `speedStart`, `speedEnd`, `duration`, `durationStart`, `durationEnd`];
+        for (const prop of resetProps) {
+          this.capability.typeData[prop] = this.defaultData[prop];
+        }
+      }
     }
   }
 };

@@ -469,6 +469,10 @@ export default {
         }
       }
 
+      if (this.$refs.capabilityTypeData && `cleanCapabilityData` in this.$refs.capabilityTypeData) {
+        this.$refs.capabilityTypeData.cleanCapabilityData();
+      }
+
       this.capability.open = false;
     }
   }
