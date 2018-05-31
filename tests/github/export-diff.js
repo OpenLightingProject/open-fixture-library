@@ -103,9 +103,7 @@ pullRequest.checkEnv()
     function getTasksForFixtures() {
       let tasks = [];
 
-      const fixtures = changedComponents.added.fixtures.concat(changedComponents.modified.fixtures, changedComponents.renamed.fixtures);
-
-      for (const [manKey, fixKey] of fixtures) {
+      for (const [manKey, fixKey] of changedComponents.modified.fixtures) {
         tasks = tasks.concat(usablePlugins.map(pluginKey => ({
           manFix: `${manKey}/${fixKey}`,
           pluginKey
