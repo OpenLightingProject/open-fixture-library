@@ -58,11 +58,6 @@ export default {
         comment: ``
       }
     };
-  },
-  computed: {
-    effectPresets() {
-      return this.properties.definitions.effectPreset.enum;
-    }
   }
 };
 </script>

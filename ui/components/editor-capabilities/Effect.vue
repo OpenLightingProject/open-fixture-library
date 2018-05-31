@@ -3,20 +3,36 @@
 
     <app-simple-label
       :formstate="formstate"
-      :name="`capability${capability.uuid}-effectName`"
-      label="Effect Name">
+      :name="`capability${capability.uuid}-${capability.typeData.effectNameOrPreset}`">
+
+      <template slot="label">
+        <template v-if="capability.typeData.effectNameOrPreset === `effectName`">
+          Effect name / <a
+            href="#effectPreset"
+            class="button secondary inline"
+            title="Choose effect preset instead of entering effect name manually"
+            @click.prevent="changeEffectNameOrPreset(`effectPreset`)">preset</a>
+        </template>
+        <template v-else>
+          Effect preset / <a
+            href="#effectName"
+            class="button secondary inline"
+            title="Specify effect name manually instead of choosing effect preset"
+            @click.prevent="changeEffectNameOrPreset(`effectName`)">name</a>
+        </template>
+      </template>
+
       <app-property-input-text
+        v-if="capability.typeData.effectNameOrPreset === `effectName`"
+        ref="effectNameOrPresetInput"
         v-model="capability.typeData.effectName"
         :formstate="formstate"
         :name="`capability${capability.uuid}-effectName`"
         :schema-property="properties.definitions.nonEmptyString" />
-    </app-simple-label>
 
-    <app-simple-label
-      :formstate="formstate"
-      :name="`capability${capability.uuid}-effectPreset`"
-      label="Effect preset">
       <select
+        v-else
+        ref="effectNameOrPresetInput"
         v-model="capability.typeData.effectPreset"
         :class="{ empty: capability.typeData.effectPreset === `` }"
         :name="`capability${capability.uuid}-effectPreset`">
@@ -28,6 +44,7 @@
           :value="effect">{{ effect }}</option>
 
       </select>
+
     </app-simple-label>
 
     <app-simple-label
@@ -43,7 +60,7 @@
     <app-simple-label
       :formstate="formstate"
       :name="`capability${capability.uuid}-effectIntensity`"
-      label="Effect Intensity">
+      label="Effect intensity">
       <app-editor-proportional-capability-data-switcher
         :capability="capability"
         :formstate="formstate"
@@ -73,7 +90,7 @@
     <app-simple-label
       :formstate="formstate"
       :name="`capability${capability.uuid}-soundSensitvity`"
-      label="Sound Sensitivity">
+      label="Sound sensitivity">
       <app-editor-proportional-capability-data-switcher
         :capability="capability"
         :formstate="formstate"
@@ -123,7 +140,7 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
-        // TODO: allow either effectName or effectPreset
+        effectNameOrPreset: `effectName`,
         effectName: ``,
         effectPreset: ``,
         soundControlled: null,
@@ -146,6 +163,17 @@ export default {
   computed: {
     effectPresets() {
       return this.properties.definitions.effectPreset.enum;
+    }
+  },
+  methods: {
+    changeEffectNameOrPreset(newValue) {
+      this.capability.typeData.effectNameOrPreset = newValue;
+      this.$nextTick(() => this.$refs.effectNameOrPresetInput.focus());
+    },
+    cleanCapabilityData() {
+      const resetProp = this.capability.typeData.effectNameOrPreset === `effectName` ? `effectPreset` : `effectName`;
+
+      this.capability.typeData[resetProp] = this.defaultData[resetProp];
     }
   }
 };
