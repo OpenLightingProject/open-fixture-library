@@ -139,7 +139,7 @@ export default {
       }
 
       const entity = (propertySchema.$ref || ``).replace(`definitions.json#/entities/`, ``);
-      if (entity === `` || entity === `index` || entity === `factor`) {
+      if (entity === `` || entity === `index`) {
         return null;
       }
 

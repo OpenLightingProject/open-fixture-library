@@ -26,9 +26,9 @@
 
       <optgroup v-if="Object.keys(units).length" label="Units">
         <option
-          v-for="(unit, unitName) in units"
+          v-for="({ displayStr }, unitName) in units"
           :key="unitName"
-          :value="unitName">{{ unit }}</option>
+          :value="unitName">{{ displayStr }}</option>
       </optgroup>
 
     </select>
@@ -107,36 +107,47 @@ export default {
     units() {
       const units = {};
       for (const unitName of this.unitNames) {
-        // TODO: handle numbers without unit (entities factor and index)
-        const unit = this.properties.units[unitName].pattern.replace(`^-?[0-9]+(\\.[0-9]+)?`, ``).replace(/\$$/, ``);
-        units[unitName] = unit;
+        const unitSchema = this.properties.units[unitName];
+
+        const unitStr = `pattern` in unitSchema ? unitSchema.pattern.replace(`^-?[0-9]+(\\.[0-9]+)?`, ``).replace(/\$$/, ``) : ``;
+
+        units[unitName] = {
+          unitStr,
+          displayStr: getUnitDisplayString(unitStr)
+        };
       }
 
       return units;
     },
     selectedUnit: {
       get() {
-        if (this.enumValues.includes(this.value)) {
+        if (this.enumValues.includes(this.value) || this.value === ``) {
           return this.value;
+        }
+
+        if (this.value === `[no unit]` || typeof this.value !== `string`) {
+          return this.unitNames.find(name => this.units[name].unitStr === ``);
         }
 
         /* eslint-disable-next-line security/detect-unsafe-regex */ // because it's a bug in safe-regex
         const unit = this.value.replace(/^-?[0-9]+(\.[0-9]+)?/, ``);
 
-        for (const unitName of Object.keys(this.units)) {
-          if (this.units[unitName] === unit) {
-            return unitName;
-          }
-        }
-
-        return ``;
+        return this.unitNames.find(name => this.units[name].unitStr === unit) || ``;
       },
       set(newUnit) {
         if (this.enumValues.includes(newUnit) || newUnit === ``) {
           this.update(newUnit);
         }
+        else if (this.units[newUnit].unitStr === ``) {
+          if (this.selectedNumber === ``) {
+            this.update(`[no unit]`);
+          }
+          else {
+            this.update(parseFloat(this.selectedNumber));
+          }
+        }
         else {
-          this.update(this.selectedNumber + this.units[newUnit]);
+          this.update(this.selectedNumber + this.units[newUnit].unitStr);
         }
       }
     },
@@ -145,10 +156,24 @@ export default {
     },
     selectedNumber: {
       get() {
+        if (typeof this.value !== `string`) {
+          return this.value;
+        }
+
         return parseFloat(this.value.replace(this.selectedUnit, ``)) || ``;
       },
       set(newNumber) {
-        this.update(newNumber + this.units[this.selectedUnit]);
+        if (this.units[this.selectedUnit].unitStr === ``) {
+          if (newNumber === ``) {
+            this.update(`[no unit]`);
+          }
+          else {
+            this.update(parseFloat(newNumber));
+          }
+        }
+        else {
+          this.update(newNumber + this.units[this.selectedUnit].unitStr);
+        }
       }
     }
     // validationData() {
@@ -185,5 +210,17 @@ export default {
     }
   }
 };
+
+/**
+ * @param {!string} unitString The unit string, as required by the schema.
+ * @returns {!string} The unitString if it is not empty, `no unit` otherwise.
+ */
+function getUnitDisplayString(unitString) {
+  if (unitString === ``) {
+    return `no unit`;
+  }
+
+  return unitString;
+}
 </script>
 
