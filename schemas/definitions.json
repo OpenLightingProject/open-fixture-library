@@ -67,6 +67,9 @@
   },
 
   "units": {
+    "number": {
+      "type": "number"
+    },
     "nonNegativeNumber": {
       "type": "number",
       "minimum": 0

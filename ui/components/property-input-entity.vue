@@ -1,12 +1,12 @@
 <template>
   <span :class="{ 'entity-input': true, 'has-number': hasNumber }">
 
-    <input
+    <app-property-input-number
       v-if="hasNumber"
       ref="input"
       v-model="selectedNumber"
-      required
-      type="number">
+      :schema-property="units[selectedUnit].numberSchema"
+      :required="true" />
 
     <select
       ref="select"
@@ -55,8 +55,12 @@
 
 <script>
 import schemaProperties from '~~/lib/schema-properties.js';
+import propertyInputNumberVue from '~/components/property-input-number.vue';
 
 export default {
+  components: {
+    'app-property-input-number': propertyInputNumberVue
+  },
   props: {
     schemaProperty: {
       type: Object,
@@ -110,10 +114,12 @@ export default {
         const unitSchema = this.properties.units[unitName];
 
         const unitStr = `pattern` in unitSchema ? unitSchema.pattern.replace(`^-?[0-9]+(\\.[0-9]+)?`, ``).replace(/\$$/, ``) : ``;
+        const numberSchema = `pattern` in unitSchema ? this.properties.units.number : unitSchema;
 
         units[unitName] = {
           unitStr,
-          displayStr: getUnitDisplayString(unitStr)
+          displayStr: getUnitDisplayString(unitStr),
+          numberSchema
         };
       }
 
