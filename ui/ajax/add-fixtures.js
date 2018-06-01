@@ -174,10 +174,14 @@ function addAvailableChannel(fixKey, availableChannels, chId) {
 
   for (const prop of Object.keys(schemaProperties.channel)) {
     if (prop === `capabilities`) {
-      channel.capabilities = getCapabilities(from);
+      const capabilities = getCapabilities(from);
 
-      if (channel.capabilities.length === 0) {
-        delete channel.capabilities;
+      if (capabilities.length === 1) {
+        delete capabilities[0].dmxRange;
+        channel.capability = capabilities[0];
+      }
+      else {
+        channel.capabilities = capabilities;
       }
     }
     else if (prop === `fineChannelAliases` && from.fineness > 0) {
@@ -236,16 +240,17 @@ function getFineChannelAlias(channelKey, fineness) {
 }
 
 function getCapabilities(channel) {
-  return channel.capabilities.filter(
-    cap => cap.range !== null
-  ).map(cap => {
+  return channel.capabilities.map(cap => {
     const capability = {};
 
-    // TODO: add type-specific data
+    const capabilitySchema = schemaProperties.capabilityTypes[cap.type];
 
-    for (const capProp of Object.keys(schemaProperties.capability)) {
+    for (const capProp of Object.keys(capabilitySchema.properties)) {
       if (propExistsIn(capProp, cap)) {
         capability[capProp] = cap[capProp];
+      }
+      else if (propExistsIn(capProp, cap.typeData)) {
+        capability[capProp] = cap.typeData[capProp];
       }
     }
 
