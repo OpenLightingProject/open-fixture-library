@@ -11,7 +11,6 @@
         property-name="angle" />
     </app-simple-label>
 
-    <!-- TODO: allow numbers for blade -->
     <app-simple-label
       :formstate="formstate"
       :name="`capability${capability.uuid}-blade`"
