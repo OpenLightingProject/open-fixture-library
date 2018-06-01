@@ -153,12 +153,12 @@ export default {
     entity() {
       const capabilitySchema = this.properties.capabilityTypes[this.capability.type];
       if (!capabilitySchema) {
-        return null;
+        return ``;
       }
 
       const propertySchema = capabilitySchema.properties[this.propertyName];
       if (!propertySchema) {
-        return null;
+        return ``;
       }
 
       return (propertySchema.$ref || ``).replace(`definitions.json#/entities/`, ``);

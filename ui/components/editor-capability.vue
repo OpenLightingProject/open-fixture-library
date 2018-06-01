@@ -1,6 +1,11 @@
 <template>
   <app-conditional-details :open="capability.open" class="capability">
-    <template slot="summary">DMX range <code :class="{ 'unset': start === null }">{{ start || min }}</code> … <code :class="{ 'unset': end === null }">{{ end || max }}</code>: <span :class="{ 'unset': capability.type === `` }">{{ capability.type || 'Unset' }}</span></template>
+    <template slot="summary">
+      DMX range
+      <code :class="{ 'unset': start === null }">{{ start !== null ? start : min }}</code> …
+      <code :class="{ 'unset': end === null }">{{ end !== null ? end : max }}</code>:
+      <span :class="{ 'unset': capability.type === `` }">{{ capability.type || 'Unset' }}</span>
+    </template>
 
     <div class="capability-content">
 

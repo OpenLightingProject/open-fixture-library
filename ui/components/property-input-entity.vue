@@ -166,9 +166,15 @@ export default {
           return this.value;
         }
 
-        return parseFloat(this.value.replace(this.selectedUnit, ``)) || ``;
+        const number = parseFloat(this.value.replace(this.selectedUnit, ``));
+
+        return isNaN(number) ? `` : number;
       },
       set(newNumber) {
+        if (newNumber === null) {
+          newNumber = ``;
+        }
+
         if (this.units[this.selectedUnit].unitStr === ``) {
           if (newNumber === ``) {
             this.update(`[no unit]`);
