@@ -4,8 +4,15 @@
     <!-- TODO: required fields, validation, custom inputs (using slots?) -->
 
     <template v-if="!hasStartEnd">
+      <app-property-input-number
+        v-if="entity === `index`"
+        ref="steppedField"
+        v-model="indexStepped"
+        :name="`capability${capability.uuid}-${propertyName}`"
+        :schema-property="indexSchema" />
+
       <app-property-input-entity
-        v-if="entitySchema"
+        v-else-if="entitySchema"
         ref="steppedField"
         v-model="propertyDataStepped"
         :name="`capability${capability.uuid}-${propertyName}`"
@@ -23,8 +30,15 @@
 
     <template v-else>
       <span class="entity-input">
+        <app-property-input-number
+          v-if="entity === `index`"
+          ref="startField"
+          v-model="indexStart"
+          :name="`capability${capability.uuid}-${propertyName}Start`"
+          :schema-property="indexSchema" />
+
         <app-property-input-entity
-          v-if="entitySchema"
+          v-else-if="entitySchema"
           ref="startField"
           v-model="propertyDataStart"
           :name="`capability${capability.uuid}-${propertyName}Start`"
@@ -40,7 +54,7 @@
           hint="start" />
 
         <span class="hint">
-          {{ hint ? hint : `value` }} at
+          {{ hint || `value` }} at
           {{ capability.dmxRange && capability.dmxRange[0] !== null ? `DMX value ${capability.dmxRange[0]}` : `capability start` }}
         </span>
       </span>
@@ -48,8 +62,15 @@
       <span class="separator">…</span>
 
       <span class="entity-input">
+        <app-property-input-number
+          v-if="entity === `index`"
+          ref="endField"
+          v-model="indexEnd"
+          :name="`capability${capability.uuid}-${propertyName}End`"
+          :schema-property="indexSchema" />
+
         <app-property-input-entity
-          v-if="entitySchema"
+          v-else-if="entitySchema"
           ref="endField"
           v-model="propertyDataEnd"
           :name="`capability${capability.uuid}-${propertyName}End`"
@@ -65,7 +86,7 @@
           hint="end" />
 
         <span class="hint">
-          {{ hint ? hint : `value` }} at
+          {{ hint || `value` }} at
           {{ capability.dmxRange && capability.dmxRange[1] !== null ? `DMX value ${capability.dmxRange[1]}` : `capability end` }}
         </span>
       </span>
@@ -95,11 +116,13 @@
 import schemaProperties from '~~/lib/schema-properties.js';
 
 import propertyInputEntityVue from '~/components/property-input-entity.vue';
+import propertyInputNumberVue from '~/components/property-input-number.vue';
 import propertyInputTextVue from '~/components/property-input-text.vue';
 
 export default {
   components: {
     'app-property-input-entity': propertyInputEntityVue,
+    'app-property-input-number': propertyInputNumberVue,
     'app-property-input-text': propertyInputTextVue
   },
   props: {
@@ -127,7 +150,7 @@ export default {
     };
   },
   computed: {
-    entitySchema() {
+    entity() {
       const capabilitySchema = this.properties.capabilityTypes[this.capability.type];
       if (!capabilitySchema) {
         return null;
@@ -138,12 +161,14 @@ export default {
         return null;
       }
 
-      const entity = (propertySchema.$ref || ``).replace(`definitions.json#/entities/`, ``);
-      if (entity === `` || entity === `index`) {
+      return (propertySchema.$ref || ``).replace(`definitions.json#/entities/`, ``);
+    },
+    entitySchema() {
+      if (this.entity === ``) {
         return null;
       }
 
-      return this.properties.entities[entity];
+      return this.properties.entities[this.entity];
     },
     propertyDataStepped: {
       get() {
@@ -186,6 +211,38 @@ export default {
           this.propertyDataStart = null;
           this.propertyDataEnd = null;
         }
+      }
+    },
+
+    // index entity requires a bit of special handling
+    indexSchema() {
+      const unit = this.properties.entities.index.$ref.replace(`#/units/`, ``);
+      console.log(unit);
+
+      return this.properties.units[unit];
+    },
+    indexStepped: {
+      get() {
+        return this.capability.typeData[this.propertyName];
+      },
+      set(newData) {
+        this.capability.typeData[this.propertyName] = newData === null ? `` : newData;
+      }
+    },
+    indexStart: {
+      get() {
+        return this.capability.typeData[`${this.propertyName}Start`];
+      },
+      set(newData) {
+        this.capability.typeData[`${this.propertyName}Start`] = newData === null ? `` : newData;
+      }
+    },
+    indexEnd: {
+      get() {
+        return this.capability.typeData[`${this.propertyName}End`];
+      },
+      set(newData) {
+        this.capability.typeData[`${this.propertyName}End`] = newData === null ? `` : newData;
       }
     }
   },
