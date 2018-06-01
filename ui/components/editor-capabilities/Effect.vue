@@ -89,12 +89,12 @@
 
     <app-simple-label
       :formstate="formstate"
-      :name="`capability${capability.uuid}-soundSensitvity`"
+      :name="`capability${capability.uuid}-soundSensitivity`"
       label="Sound sensitivity">
       <app-editor-proportional-capability-data-switcher
         :capability="capability"
         :formstate="formstate"
-        property-name="soundSensitvity" />
+        property-name="soundSensitivity" />
     </app-simple-label>
 
     <app-simple-label
@@ -153,9 +153,9 @@ export default {
         duration: ``,
         durationStart: null,
         durationEnd: null,
-        soundSensitvity: ``,
-        soundSensitvityStart: null,
-        soundSensitvityEnd: null,
+        soundSensitivity: ``,
+        soundSensitivityStart: null,
+        soundSensitivityEnd: null,
         comment: ``
       }
     };
