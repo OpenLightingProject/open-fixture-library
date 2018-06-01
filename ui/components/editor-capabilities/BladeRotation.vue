@@ -16,19 +16,10 @@
       :formstate="formstate"
       :name="`capability${capability.uuid}-blade`"
       label="Blade">
-      <select
+      <app-property-input-entity
         v-model="capability.typeData.blade"
-        :class="{ empty: capability.typeData.blade === `` }"
         :name="`capability${capability.uuid}-blade`"
-        required>
-
-        <option value="" disabled>Please select a blade</option>
-        <option
-          v-for="blade in blades"
-          :key="blade"
-          :value="blade">{{ blade }}</option>
-
-      </select>
+        :schema-property="bladeSchema" />
     </app-simple-label>
 
     <app-simple-label
@@ -71,12 +62,6 @@ export default {
   data() {
     return {
       properties: schemaProperties,
-      blades: [
-        `Top`,
-        `Right`,
-        `Bottom`,
-        `Left`
-      ],
       defaultData: {
         angle: ``,
         angleStart: null,
@@ -85,6 +70,11 @@ export default {
         comment: ``
       }
     };
+  },
+  computed: {
+    bladeSchema() {
+      return this.properties.capabilityTypes.BladeInsertion.properties.blade;
+    }
   }
 };
 </script>

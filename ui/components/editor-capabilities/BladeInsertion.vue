@@ -16,19 +16,10 @@
       :formstate="formstate"
       :name="`capability${capability.uuid}-blade`"
       label="Blade">
-      <select
+      <app-property-input-entity
         v-model="capability.typeData.blade"
-        :class="{ empty: capability.typeData.blade === `` }"
         :name="`capability${capability.uuid}-blade`"
-        required>
-
-        <option value="" disabled>Please select a blade</option>
-        <option
-          v-for="blade in blades"
-          :key="blade"
-          :value="blade">{{ blade }}</option>
-
-      </select>
+        :schema-property="bladeSchema" />
     </app-simple-label>
 
     <app-simple-label
@@ -49,12 +40,14 @@
 import schemaProperties from '~~/lib/schema-properties.js';
 
 import editorProportionalCapabilityDataSwitcher from '~/components/editor-proportional-capability-data-switcher.vue';
+import propertyInputEntityVue from '~/components/property-input-entity.vue';
 import propertyInputTextVue from '~/components/property-input-text.vue';
 import simpleLabelVue from '~/components/simple-label.vue';
 
 export default {
   components: {
     'app-editor-proportional-capability-data-switcher': editorProportionalCapabilityDataSwitcher,
+    'app-property-input-entity': propertyInputEntityVue,
     'app-property-input-text': propertyInputTextVue,
     'app-simple-label': simpleLabelVue
   },
@@ -71,12 +64,6 @@ export default {
   data() {
     return {
       properties: schemaProperties,
-      blades: [
-        `Top`,
-        `Right`,
-        `Bottom`,
-        `Left`
-      ],
       defaultData: {
         insertion: ``,
         insertionStart: null,
@@ -85,6 +72,11 @@ export default {
         comment: ``
       }
     };
+  },
+  computed: {
+    bladeSchema() {
+      return this.properties.capabilityTypes.BladeInsertion.properties.blade;
+    }
   }
 };
 </script>

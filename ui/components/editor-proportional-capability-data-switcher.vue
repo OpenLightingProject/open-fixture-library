@@ -5,11 +5,11 @@
 
     <template v-if="!hasStartEnd">
       <app-property-input-entity
-        v-if="entity"
+        v-if="entitySchema"
         ref="steppedField"
         v-model="propertyDataStepped"
         :name="`capability${capability.uuid}-${propertyName}`"
-        :entity="entity" />
+        :schema-property="entitySchema" />
 
       <app-property-input-text
         v-else
@@ -24,11 +24,11 @@
     <template v-else>
       <span class="entity-input">
         <app-property-input-entity
-          v-if="entity"
+          v-if="entitySchema"
           ref="startField"
           v-model="propertyDataStart"
           :name="`capability${capability.uuid}-${propertyName}Start`"
-          :entity="entity"
+          :schema-property="entitySchema"
           hint="start" />
 
         <app-property-input-text
@@ -49,11 +49,11 @@
 
       <span class="entity-input">
         <app-property-input-entity
-          v-if="entity"
+          v-if="entitySchema"
           ref="endField"
           v-model="propertyDataEnd"
           :name="`capability${capability.uuid}-${propertyName}End`"
-          :entity="entity"
+          :schema-property="entitySchema"
           hint="end" />
 
         <app-property-input-text
@@ -127,7 +127,7 @@ export default {
     };
   },
   computed: {
-    entity() {
+    entitySchema() {
       const capabilitySchema = this.properties.capabilityTypes[this.capability.type];
       if (!capabilitySchema) {
         return null;
@@ -143,7 +143,7 @@ export default {
         return null;
       }
 
-      return entity;
+      return this.properties.entities[entity];
     },
     propertyDataStepped: {
       get() {

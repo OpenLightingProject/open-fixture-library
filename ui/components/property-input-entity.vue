@@ -24,7 +24,7 @@
           :value="enumValue">{{ enumValue }}</option>
       </optgroup>
 
-      <optgroup label="Units">
+      <optgroup v-if="Object.keys(units).length" label="Units">
         <option
           v-for="(unit, unitName) in units"
           :key="unitName"
@@ -58,8 +58,8 @@ import schemaProperties from '~~/lib/schema-properties.js';
 
 export default {
   props: {
-    entity: {
-      type: String,
+    schemaProperty: {
+      type: Object,
       required: true
     },
     required: {
@@ -90,7 +90,7 @@ export default {
   },
   computed: {
     subSchemas() {
-      return this.properties.entities[this.entity].oneOf || [this.properties.entities[this.entity]];
+      return this.schemaProperty.oneOf || [this.schemaProperty];
     },
     enumValues() {
       const enumSubSchema = this.subSchemas.find(subSchema => `enum` in subSchema);
