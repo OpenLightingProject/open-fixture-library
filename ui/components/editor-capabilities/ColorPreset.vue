@@ -64,6 +64,7 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
+        comment: ``,
         colors: null,
         colorsStart: null,
         colorsEnd: null,
@@ -72,8 +73,7 @@ export default {
         colorsHexStringEnd: null,
         colorTemperature: ``,
         colorTemperatureStart: null,
-        colorTemperatureEnd: null,
-        comment: ``
+        colorTemperatureEnd: null
       }
     };
   },

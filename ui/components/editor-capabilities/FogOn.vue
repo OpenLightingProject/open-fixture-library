@@ -3,16 +3,6 @@
 
     <app-simple-label
       :formstate="formstate"
-      :name="`capability${capability.uuid}-fogOutput`"
-      label="Fog Output">
-      <app-editor-proportional-capability-data-switcher
-        :capability="capability"
-        :formstate="formstate"
-        property-name="fogOutput" />
-    </app-simple-label>
-
-    <app-simple-label
-      :formstate="formstate"
       :name="`capability${capability.uuid}-fogType`"
       label="Fog Type">
       <select
@@ -28,6 +18,16 @@
           :value="fogType">{{ fogType }}</option>
 
       </select>
+    </app-simple-label>
+
+    <app-simple-label
+      :formstate="formstate"
+      :name="`capability${capability.uuid}-fogOutput`"
+      label="Fog Output">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="fogOutput" />
     </app-simple-label>
 
     <app-simple-label
@@ -71,10 +71,10 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
+        fogType: ``,
         fogOutput: ``,
         fogOutputStart: null,
         fogOutputEnd: null,
-        fogType: ``,
         comment: ``
       }
     };

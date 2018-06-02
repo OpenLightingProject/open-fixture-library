@@ -305,16 +305,16 @@ global, doesn't activate strobe directly
 </thead>
 <tbody>
 <tr>
-  <td>angle</td>
-  <td>yes</td>
-  <td>Entity <em>RotationAngle</em></td>
-  <td>can't be used together with <em>speed</em></td>
-</tr>
-<tr>
   <td>speed</td>
   <td>yes</td>
   <td>Entity <em>RotationSpeed</em></td>
   <td>can't be used together with <em>angle</em></td>
+</tr>
+<tr>
+  <td>angle</td>
+  <td>yes</td>
+  <td>Entity <em>RotationAngle</em></td>
+  <td>can't be used together with <em>speed</em></td>
 </tr>
 </tbody>
 </table>
@@ -483,18 +483,6 @@ global, doesn't activate strobe directly
   <td>can't be used together with <em>effectName</em></td>
 </tr>
 <tr>
-  <td>soundControlled</td>
-  <td></td>
-  <td>Entity <em>Boolean</em></td>
-  <td>Defaults to <code>false</code></td>
-</tr>
-<tr>
-  <td>effectIntensity</td>
-  <td></td>
-  <td>Entity <em>Factor</em></td>
-  <td></td>
-</tr>
-<tr>
   <td>speed</td>
   <td></td>
   <td>Entity <em>Speed</em></td>
@@ -505,6 +493,18 @@ global, doesn't activate strobe directly
   <td></td>
   <td>Entity <em>Time</em></td>
   <td>can't be used together with <em>speed</em></td>
+</tr>
+<tr>
+  <td>effectIntensity</td>
+  <td></td>
+  <td>Entity <em>Factor</em></td>
+  <td></td>
+</tr>
+<tr>
+  <td>soundControlled</td>
+  <td></td>
+  <td>Entity <em>Boolean</em></td>
+  <td>Defaults to <code>false</code></td>
 </tr>
 <tr>
   <td>soundSensitivity</td>
@@ -634,15 +634,15 @@ global, doesn't activate an effect directly
   </ul></td>
 </tr>
 <tr>
-  <td>shakeAngle</td>
-  <td></td>
-  <td>Entity <em>SwingAngle</em></td>
-  <td></td>
-</tr>
-<tr>
   <td>shakeSpeed</td>
   <td></td>
   <td>Entity <em>Speed</em></td>
+  <td></td>
+</tr>
+<tr>
+  <td>shakeAngle</td>
+  <td></td>
+  <td>Entity <em>SwingAngle</em></td>
   <td></td>
 </tr>
 </tbody>
@@ -662,15 +662,15 @@ global, doesn't activate an effect directly
 </thead>
 <tbody>
 <tr>
-  <td>shakeAngle</td>
-  <td></td>
-  <td>Entity <em>SwingAngle</em></td>
-  <td></td>
-</tr>
-<tr>
   <td>shakeSpeed</td>
   <td></td>
   <td>Entity <em>Speed</em></td>
+  <td></td>
+</tr>
+<tr>
+  <td>shakeAngle</td>
+  <td></td>
+  <td>Entity <em>SwingAngle</em></td>
   <td></td>
 </tr>
 </tbody>
@@ -690,16 +690,16 @@ global, doesn't activate an effect directly
 </thead>
 <tbody>
 <tr>
-  <td>angle</td>
-  <td>yes</td>
-  <td>Entity <em>RotationAngle</em></td>
-  <td>can't be used together with <em>speed</em></td>
-</tr>
-<tr>
   <td>speed</td>
   <td>yes</td>
   <td>Entity <em>RotationSpeed</em></td>
   <td>can't be used together with <em>angle</em></td>
+</tr>
+<tr>
+  <td>angle</td>
+  <td>yes</td>
+  <td>Entity <em>RotationAngle</em></td>
+  <td>can't be used together with <em>speed</em></td>
 </tr>
 </tbody>
 </table>
@@ -718,16 +718,16 @@ global, doesn't activate an effect directly
 </thead>
 <tbody>
 <tr>
-  <td>angle</td>
-  <td>yes</td>
-  <td>Entity <em>RotationAngle</em></td>
-  <td>can't be used together with <em>speed</em></td>
-</tr>
-<tr>
   <td>speed</td>
   <td>yes</td>
   <td>Entity <em>RotationSpeed</em></td>
   <td>can't be used together with <em>angle</em></td>
+</tr>
+<tr>
+  <td>angle</td>
+  <td>yes</td>
+  <td>Entity <em>RotationAngle</em></td>
+  <td>can't be used together with <em>speed</em></td>
 </tr>
 </tbody>
 </table>
@@ -895,16 +895,16 @@ No type-specific properties.
 </thead>
 <tbody>
 <tr>
-  <td>angle</td>
-  <td></td>
-  <td>Entity <em>RotationAngle</em></td>
-  <td></td>
-</tr>
-<tr>
   <td>speed</td>
   <td></td>
   <td>Entity <em>RotationSpeed</em></td>
+  <td>can't be used together with <em>angle</em></td>
+</tr>
+<tr>
+  <td>angle</td>
   <td></td>
+  <td>Entity <em>RotationAngle</em></td>
+  <td>can't be used together with <em>speed</em></td>
 </tr>
 </tbody>
 </table>
@@ -923,16 +923,16 @@ No type-specific properties.
 </thead>
 <tbody>
 <tr>
-  <td>angle</td>
-  <td>yes</td>
-  <td>Entity <em>RotationAngle</em></td>
-  <td>can't be used together with <em>speed</em></td>
-</tr>
-<tr>
   <td>speed</td>
   <td>yes</td>
   <td>Entity <em>RotationSpeed</em></td>
   <td>can't be used together with <em>angle</em></td>
+</tr>
+<tr>
+  <td>angle</td>
+  <td>yes</td>
+  <td>Entity <em>RotationAngle</em></td>
+  <td>can't be used together with <em>speed</em></td>
 </tr>
 </tbody>
 </table>
@@ -951,12 +951,6 @@ No type-specific properties.
 </thead>
 <tbody>
 <tr>
-  <td>insertion</td>
-  <td>yes</td>
-  <td>Entity <em>Insertion</em></td>
-  <td></td>
-</tr>
-<tr>
   <td>blade</td>
   <td>yes</td>
   <td><ul>
@@ -967,6 +961,13 @@ No type-specific properties.
     <li>number if the position is unknown</li>
   </ul></td>
   <td></td>
+</tr>
+<tr>
+  <td>insertion</td>
+  <td>yes</td>
+  <td>Entity <em>Insertion</em></td>
+  <td></td>
+</tr>
 </tbody>
 </table>
 
@@ -984,12 +985,6 @@ No type-specific properties.
 </thead>
 <tbody>
 <tr>
-  <td>angle</td>
-  <td>yes</td>
-  <td>Entity <em>RotationAngle</em></td>
-  <td></td>
-</tr>
-<tr>
   <td>blade</td>
   <td>yes</td>
   <td><ul>
@@ -1000,6 +995,13 @@ No type-specific properties.
     <li>number if the position is unknown</li>
   </ul></td>
   <td></td>
+</tr>
+<tr>
+  <td>angle</td>
+  <td>yes</td>
+  <td>Entity <em>RotationAngle</em></td>
+  <td></td>
+</tr>
 </tbody>
 </table>
 
@@ -1044,15 +1046,15 @@ No type-specific properties.
 </thead>
 <tbody>
 <tr>
-  <td>fogOutput</td>
-  <td></td>
-  <td>Entity <em>FogOutput</em></td>
-  <td></td>
-</tr>
-<tr>
   <td>fogType</td>
   <td>yes</td>
   <td><code>Fog</code> or <code>Haze</code></td>
+  <td></td>
+</tr>
+<tr>
+  <td>fogOutput</td>
+  <td></td>
+  <td>Entity <em>FogOutput</em></td>
   <td></td>
 </tr>
 </tbody>
@@ -1138,16 +1140,16 @@ No type-specific properties.
 </thead>
 <tbody>
 <tr>
-  <td>angle</td>
-  <td>yes</td>
-  <td>Entity <em>RotationAngle</em></td>
-  <td>can't be used together with <em>speed</em></td>
-</tr>
-<tr>
   <td>speed</td>
   <td>yes</td>
   <td>Entity <em>RotationSpeed</em></td>
   <td>can't be used together with <em>angle</em></td>
+</tr>
+<tr>
+  <td>angle</td>
+  <td>yes</td>
+  <td>Entity <em>RotationAngle</em></td>
+  <td>can't be used together with <em>speed</em></td>
 </tr>
 </tbody>
 </table>

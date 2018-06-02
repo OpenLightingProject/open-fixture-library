@@ -3,22 +3,32 @@
 
     <app-simple-label
       :formstate="formstate"
-      :name="`capability${capability.uuid}-angle`"
-      label="Angle">
-      <app-editor-proportional-capability-data-switcher
-        :capability="capability"
-        :formstate="formstate"
-        property-name="angle" />
-    </app-simple-label>
+      :name="`capability${capability.uuid}-${capability.typeData.speedOrAngle}`">
 
-    <app-simple-label
-      :formstate="formstate"
-      :name="`capability${capability.uuid}-speed`"
-      label="Speed">
+      <template slot="label">
+        <template v-if="capability.typeData.speedOrAngle === `speed`">
+          Speed / <a
+            href="#anglr"
+            class="button secondary inline"
+            title="Specify angle instead of speed"
+            @click.prevent="changeSpeedOrAngle(`angle`)">Angle</a>
+        </template>
+        <template v-else>
+          Angle / <a
+            href="#speed"
+            class="button secondary inline"
+            title="Specify speed instead of angle"
+            @click.prevent="changeSpeedOrAngle(`speed`)">Speed</a>
+        </template>
+      </template>
+
       <app-editor-proportional-capability-data-switcher
+        v-if="capability.typeData.speedOrAngle"
+        ref="speedOrAngleInput"
         :capability="capability"
         :formstate="formstate"
-        property-name="speed" />
+        :property-name="capability.typeData.speedOrAngle" />
+
     </app-simple-label>
 
     <app-simple-label
@@ -62,15 +72,29 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
-        angle: ``,
-        angleStart: null,
-        angleEnd: null,
+        speedOrAngle: `speed`,
         speed: ``,
         speedStart: null,
         speedEnd: null,
+        angle: ``,
+        angleStart: null,
+        angleEnd: null,
         comment: ``
       }
     };
+  },
+  methods: {
+    changeSpeedOrAngle(newValue) {
+      this.capability.typeData.speedOrAngle = newValue;
+      this.$nextTick(() => this.$refs.speedOrAngleInput.focus());
+    },
+    cleanCapabilityData() {
+      const resetProp = this.capability.typeData.speedOrAngle === `speed` ? `angle` : `speed`;
+
+      this.capability.typeData[resetProp] = this.defaultData[resetProp];
+      this.capability.typeData[`${resetProp}Start`] = this.defaultData[`${resetProp}Start`];
+      this.capability.typeData[`${resetProp}End`] = this.defaultData[`${resetProp}End`];
+    }
   }
 };
 </script>

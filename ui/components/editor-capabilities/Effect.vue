@@ -49,26 +49,6 @@
 
     <app-simple-label
       :formstate="formstate"
-      :name="`capability${capability.uuid}-soundControlled`"
-      label="Sound controlled?">
-      <app-property-input-boolean
-        v-model="capability.typeData.soundControlled"
-        :schema-property="properties.capabilityTypes.Effect.properties.soundControlled"
-        :name="`capability${capability.uuid}-soundControlled`" />
-    </app-simple-label>
-
-    <app-simple-label
-      :formstate="formstate"
-      :name="`capability${capability.uuid}-effectIntensity`"
-      label="Effect intensity">
-      <app-editor-proportional-capability-data-switcher
-        :capability="capability"
-        :formstate="formstate"
-        property-name="effectIntensity" />
-    </app-simple-label>
-
-    <app-simple-label
-      :formstate="formstate"
       :name="`capability${capability.uuid}-speed`"
       label="Speed">
       <app-editor-proportional-capability-data-switcher
@@ -85,6 +65,26 @@
         :capability="capability"
         :formstate="formstate"
         property-name="duration" />
+    </app-simple-label>
+
+    <app-simple-label
+      :formstate="formstate"
+      :name="`capability${capability.uuid}-effectIntensity`"
+      label="Effect intensity">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="effectIntensity" />
+    </app-simple-label>
+
+    <app-simple-label
+      :formstate="formstate"
+      :name="`capability${capability.uuid}-soundControlled`"
+      label="Sound controlled?">
+      <app-property-input-boolean
+        v-model="capability.typeData.soundControlled"
+        :schema-property="properties.capabilityTypes.Effect.properties.soundControlled"
+        :name="`capability${capability.uuid}-soundControlled`" />
     </app-simple-label>
 
     <app-simple-label
@@ -143,16 +143,16 @@ export default {
         effectNameOrPreset: `effectName`,
         effectName: ``,
         effectPreset: ``,
-        soundControlled: null,
-        effectIntensity: ``,
-        effectIntensityStart: null,
-        effectIntensityEnd: null,
         speed: ``,
         speedStart: null,
         speedEnd: null,
         duration: ``,
         durationStart: null,
         durationEnd: null,
+        effectIntensity: ``,
+        effectIntensityStart: null,
+        effectIntensityEnd: null,
+        soundControlled: null,
         soundSensitivity: ``,
         soundSensitivityStart: null,
         soundSensitivityEnd: null,

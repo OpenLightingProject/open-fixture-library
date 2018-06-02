@@ -53,14 +53,15 @@
       "FogOn",
       "FogOutput",
       "FogType",
-      "Rotation",
       "BeamAngle",
+      "Rotation",
       "Speed",
       "Time",
       "Maintenance",
       "Generic"
     ] },
     "comment": { "$ref": "definitions.json#/nonEmptyString" },
+    "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
     "menuClick": { "enum": ["start", "center", "end", "hidden"] },
     "switchChannels": {
       "type": "object",
@@ -84,8 +85,7 @@
           }
         ]
       }
-    },
-    "helpWanted": { "$ref": "definitions.json#/nonEmptyString" }
+    }
   },
   "required": ["type"],
   "allOf": [
@@ -100,9 +100,9 @@
           "dmxRange": {},
           "type": {},
           "comment": {},
+          "helpWanted": {},
           "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {}
+          "switchChannels": {}
         },
         "additionalProperties": false
       }
@@ -117,10 +117,6 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "shutterEffect": { "enum": [
             "Open",
             "Closed",
@@ -141,7 +137,11 @@
           "speedEnd": { "$ref": "definitions.json#/entities/speed" },
           "duration": { "$ref": "definitions.json#/entities/time" },
           "durationStart": { "$ref": "definitions.json#/entities/time" },
-          "durationEnd": { "$ref": "definitions.json#/entities/time" }
+          "durationEnd": { "$ref": "definitions.json#/entities/time" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "required": ["shutterEffect"],
         "not": {
@@ -169,13 +169,13 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "speed": { "$ref": "definitions.json#/entities/speed" },
           "speedStart": { "$ref": "definitions.json#/entities/speed" },
-          "speedEnd": { "$ref": "definitions.json#/entities/speed" }
+          "speedEnd": { "$ref": "definitions.json#/entities/speed" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["speed"] },
@@ -198,13 +198,13 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "duration": { "$ref": "definitions.json#/entities/time" },
           "durationStart": { "$ref": "definitions.json#/entities/time" },
-          "durationEnd": { "$ref": "definitions.json#/entities/time" }
+          "durationEnd": { "$ref": "definitions.json#/entities/time" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["duration"] },
@@ -227,13 +227,13 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "brightness": { "$ref": "definitions.json#/entities/brightness" },
           "brightnessStart": { "$ref": "definitions.json#/entities/brightness" },
-          "brightnessEnd": { "$ref": "definitions.json#/entities/brightness" }
+          "brightnessEnd": { "$ref": "definitions.json#/entities/brightness" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "not": { "required": ["brightness", "brightnessStart"] },
         "dependencies": {
@@ -253,10 +253,6 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "color": {
             "enum": [
               "Red",
@@ -274,7 +270,11 @@
           },
           "brightness": { "$ref": "definitions.json#/entities/brightness" },
           "brightnessStart": { "$ref": "definitions.json#/entities/brightness" },
-          "brightnessEnd": { "$ref": "definitions.json#/entities/brightness" }
+          "brightnessEnd": { "$ref": "definitions.json#/entities/brightness" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "required": ["color"],
         "not": { "required": ["brightness", "brightnessStart"] },
@@ -296,9 +296,6 @@
           "dmxRange": {},
           "type": {},
           "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "colors": {
             "type": "array",
             "minItems": 1,
@@ -316,7 +313,10 @@
           },
           "colorTemperature": { "$ref": "definitions.json#/entities/colorTemperature" },
           "colorTemperatureStart": { "$ref": "definitions.json#/entities/colorTemperature" },
-          "colorTemperatureEnd": { "$ref": "definitions.json#/entities/colorTemperature" }
+          "colorTemperatureEnd": { "$ref": "definitions.json#/entities/colorTemperature" },
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "not": {
           "anyOf": [
@@ -343,13 +343,10 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "index": { "$ref": "definitions.json#/entities/index" },
           "indexStart": { "$ref": "definitions.json#/entities/index" },
           "indexEnd": { "$ref": "definitions.json#/entities/index" },
+          "comment": {},
           "colors": {
             "type": "array",
             "minItems": 1,
@@ -367,7 +364,10 @@
           },
           "colorTemperature": { "$ref": "definitions.json#/entities/colorTemperature" },
           "colorTemperatureStart": { "$ref": "definitions.json#/entities/colorTemperature" },
-          "colorTemperatureEnd": { "$ref": "definitions.json#/entities/colorTemperature" }
+          "colorTemperatureEnd": { "$ref": "definitions.json#/entities/colorTemperature" },
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["index"] },
@@ -400,28 +400,28 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
+          "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
+          "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
+          "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" },
           "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
           "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
           "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
-          "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
-          "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
-          "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" }
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
-          { "required": ["angle"] },
-          { "required": ["angleStart"] },
           { "required": ["speed"] },
-          { "required": ["speedStart"] }
+          { "required": ["speedStart"] },
+          { "required": ["angle"] },
+          { "required": ["angleStart"] }
         ],
         "dependencies": {
-          "angleStart": ["angleEnd"],
-          "angleEnd": ["angleStart"],
           "speedStart": ["speedEnd"],
-          "speedEnd": ["speedStart"]
+          "speedEnd": ["speedStart"],
+          "angleStart": ["angleEnd"],
+          "angleEnd": ["angleStart"]
         },
         "additionalProperties": false
       }
@@ -436,13 +436,13 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "colorTemperature": { "$ref": "definitions.json#/entities/colorTemperature" },
           "colorTemperatureStart": { "$ref": "definitions.json#/entities/colorTemperature" },
-          "colorTemperatureEnd": { "$ref": "definitions.json#/entities/colorTemperature" }
+          "colorTemperatureEnd": { "$ref": "definitions.json#/entities/colorTemperature" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["colorTemperature"] },
@@ -465,13 +465,13 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
           "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
-          "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" }
+          "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["angle"] },
@@ -494,13 +494,13 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
           "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
-          "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" }
+          "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["speed"] },
@@ -523,13 +523,13 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
           "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
-          "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" }
+          "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["angle"] },
@@ -552,13 +552,13 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
           "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
-          "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" }
+          "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["speed"] },
@@ -581,16 +581,16 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "speed": { "$ref": "definitions.json#/entities/speed" },
           "speedStart": { "$ref": "definitions.json#/entities/speed" },
           "speedEnd": { "$ref": "definitions.json#/entities/speed" },
           "duration": { "$ref": "definitions.json#/entities/time" },
           "durationStart": { "$ref": "definitions.json#/entities/time" },
-          "durationEnd": { "$ref": "definitions.json#/entities/time" }
+          "durationEnd": { "$ref": "definitions.json#/entities/time" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["speed"] },
@@ -617,25 +617,25 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "effectName": { "$ref": "definitions.json#/nonEmptyString" },
           "effectPreset": { "$ref": "definitions.json#/effectPreset" },
-          "soundControlled": { "type": "boolean" },
-          "effectIntensity": { "$ref": "definitions.json#/entities/factor" },
-          "effectIntensityStart": { "$ref": "definitions.json#/entities/factor" },
-          "effectIntensityEnd": { "$ref": "definitions.json#/entities/factor" },
           "speed": { "$ref": "definitions.json#/entities/speed" },
           "speedStart": { "$ref": "definitions.json#/entities/speed" },
           "speedEnd": { "$ref": "definitions.json#/entities/speed" },
           "duration": { "$ref": "definitions.json#/entities/time" },
           "durationStart": { "$ref": "definitions.json#/entities/time" },
           "durationEnd": { "$ref": "definitions.json#/entities/time" },
+          "effectIntensity": { "$ref": "definitions.json#/entities/factor" },
+          "effectIntensityStart": { "$ref": "definitions.json#/entities/factor" },
+          "effectIntensityEnd": { "$ref": "definitions.json#/entities/factor" },
+          "soundControlled": { "type": "boolean" },
           "soundSensitivity": { "$ref": "definitions.json#/entities/percent" },
           "soundSensitivityStart": { "$ref": "definitions.json#/entities/percent" },
-          "soundSensitivityEnd": { "$ref": "definitions.json#/entities/percent" }
+          "soundSensitivityEnd": { "$ref": "definitions.json#/entities/percent" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["effectName"] },
@@ -643,19 +643,19 @@
         ],
         "not": {
           "anyOf": [
-            { "required": ["effectIntensity", "effectIntensityStart"] },
             { "required": ["speed", "speedStart"] },
             { "required": ["duration", "durationStart"] },
+            { "required": ["effectIntensity", "effectIntensityStart"] },
             { "required": ["soundSensitivity", "soundSensitivityStart"] }
           ]
         },
         "dependencies": {
-          "effectIntensityStart": ["effectIntensityEnd"],
-          "effectIntensityEnd": ["effectIntensityStart"],
           "speedStart": ["speedEnd"],
           "speedEnd": ["speedStart"],
           "durationStart": ["durationEnd"],
           "durationEnd": ["durationStart"],
+          "effectIntensityStart": ["effectIntensityEnd"],
+          "effectIntensityEnd": ["effectIntensityStart"],
           "soundSensitivityStart": ["soundSensitivityEnd"],
           "soundSensitivityEnd": ["soundSensitivityStart"]
         },
@@ -672,13 +672,13 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "effectIntensity": { "$ref": "definitions.json#/entities/factor" },
           "effectIntensityStart": { "$ref": "definitions.json#/entities/factor" },
-          "effectIntensityEnd": { "$ref": "definitions.json#/entities/factor" }
+          "effectIntensityEnd": { "$ref": "definitions.json#/entities/factor" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["effectIntensity"] },
@@ -701,13 +701,13 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "speed": { "$ref": "definitions.json#/entities/speed" },
           "speedStart": { "$ref": "definitions.json#/entities/speed" },
-          "speedEnd": { "$ref": "definitions.json#/entities/speed" }
+          "speedEnd": { "$ref": "definitions.json#/entities/speed" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["speed"] },
@@ -730,13 +730,13 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "duration": { "$ref": "definitions.json#/entities/time" },
           "durationStart": { "$ref": "definitions.json#/entities/time" },
-          "durationEnd": { "$ref": "definitions.json#/entities/time" }
+          "durationEnd": { "$ref": "definitions.json#/entities/time" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["duration"] },
@@ -759,13 +759,13 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "soundSensitivity": { "$ref": "definitions.json#/entities/percent" },
           "soundSensitivityStart": { "$ref": "definitions.json#/entities/percent" },
-          "soundSensitivityEnd": { "$ref": "definitions.json#/entities/percent" }
+          "soundSensitivityEnd": { "$ref": "definitions.json#/entities/percent" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["soundSensitivity"] },
@@ -788,19 +788,19 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "index": { "$ref": "definitions.json#/entities/index" },
           "indexStart": { "$ref": "definitions.json#/entities/index" },
           "indexEnd": { "$ref": "definitions.json#/entities/index" },
+          "comment": {},
           "shakeSpeed": { "$ref": "definitions.json#/entities/speed" },
           "shakeSpeedStart": { "$ref": "definitions.json#/entities/speed" },
           "shakeSpeedEnd": { "$ref": "definitions.json#/entities/speed" },
           "shakeAngle": { "$ref": "definitions.json#/entities/swingAngle" },
           "shakeAngleStart": { "$ref": "definitions.json#/entities/swingAngle" },
-          "shakeAngleEnd": { "$ref": "definitions.json#/entities/swingAngle" }
+          "shakeAngleEnd": { "$ref": "definitions.json#/entities/swingAngle" },
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["index"] },
@@ -833,16 +833,16 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "shakeSpeed": { "$ref": "definitions.json#/entities/speed" },
           "shakeSpeedStart": { "$ref": "definitions.json#/entities/speed" },
           "shakeSpeedEnd": { "$ref": "definitions.json#/entities/speed" },
           "shakeAngle": { "$ref": "definitions.json#/entities/swingAngle" },
           "shakeAngleStart": { "$ref": "definitions.json#/entities/swingAngle" },
-          "shakeAngleEnd": { "$ref": "definitions.json#/entities/swingAngle" }
+          "shakeAngleEnd": { "$ref": "definitions.json#/entities/swingAngle" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "not": {
           "anyOf": [
@@ -869,28 +869,28 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
+          "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
+          "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
+          "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" },
           "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
           "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
           "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
-          "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
-          "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
-          "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" }
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
-          { "required": ["angle"] },
-          { "required": ["angleStart"] },
           { "required": ["speed"] },
-          { "required": ["speedStart"] }
+          { "required": ["speedStart"] },
+          { "required": ["angle"] },
+          { "required": ["angleStart"] }
         ],
         "dependencies": {
-          "angleStart": ["angleEnd"],
-          "angleEnd": ["angleStart"],
           "speedStart": ["speedEnd"],
-          "speedEnd": ["speedStart"]
+          "speedEnd": ["speedStart"],
+          "angleStart": ["angleEnd"],
+          "angleEnd": ["angleStart"]
         },
         "additionalProperties": false
       }
@@ -905,28 +905,28 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
+          "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
+          "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
+          "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" },
           "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
           "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
           "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
-          "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
-          "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
-          "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" }
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
-          { "required": ["angle"] },
-          { "required": ["angleStart"] },
           { "required": ["speed"] },
-          { "required": ["speedStart"] }
+          { "required": ["speedStart"] },
+          { "required": ["angle"] },
+          { "required": ["angleStart"] }
         ],
         "dependencies": {
-          "angleStart": ["angleEnd"],
-          "angleEnd": ["angleStart"],
           "speedStart": ["speedEnd"],
-          "speedEnd": ["speedStart"]
+          "speedEnd": ["speedStart"],
+          "angleStart": ["angleEnd"],
+          "angleEnd": ["angleStart"]
         },
         "additionalProperties": false
       }
@@ -941,13 +941,13 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "distance": { "$ref": "definitions.json#/entities/distance" },
           "distanceStart": { "$ref": "definitions.json#/entities/distance" },
-          "distanceEnd": { "$ref": "definitions.json#/entities/distance" }
+          "distanceEnd": { "$ref": "definitions.json#/entities/distance" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["distance"] },
@@ -970,13 +970,13 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "angle": { "$ref": "definitions.json#/entities/beamAngle" },
           "angleStart": { "$ref": "definitions.json#/entities/beamAngle" },
-          "angleEnd": { "$ref": "definitions.json#/entities/beamAngle" }
+          "angleEnd": { "$ref": "definitions.json#/entities/beamAngle" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["angle"] },
@@ -999,13 +999,13 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "openPercent": { "$ref": "definitions.json#/entities/irisPercent" },
           "openPercentStart": { "$ref": "definitions.json#/entities/irisPercent" },
-          "openPercentEnd": { "$ref": "definitions.json#/entities/irisPercent" }
+          "openPercentEnd": { "$ref": "definitions.json#/entities/irisPercent" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["openPercent"] },
@@ -1028,14 +1028,14 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "effectName": { "$ref": "definitions.json#/nonEmptyString" },
           "speed": { "$ref": "definitions.json#/entities/speed" },
           "speedStart": { "$ref": "definitions.json#/entities/speed" },
-          "speedEnd": { "$ref": "definitions.json#/entities/speed" }
+          "speedEnd": { "$ref": "definitions.json#/entities/speed" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "required": ["effectName"],
         "oneOf": [
@@ -1059,13 +1059,13 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "frostIntensity": { "$ref": "definitions.json#/entities/percent" },
           "frostIntensityStart": { "$ref": "definitions.json#/entities/percent" },
-          "frostIntensityEnd": { "$ref": "definitions.json#/entities/percent" }
+          "frostIntensityEnd": { "$ref": "definitions.json#/entities/percent" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["frostIntensity"] },
@@ -1088,14 +1088,14 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "effectName": { "$ref": "definitions.json#/nonEmptyString" },
           "speed": { "$ref": "definitions.json#/entities/speed" },
           "speedStart": { "$ref": "definitions.json#/entities/speed" },
-          "speedEnd": { "$ref": "definitions.json#/entities/speed" }
+          "speedEnd": { "$ref": "definitions.json#/entities/speed" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "required": ["effectName"],
         "oneOf": [
@@ -1120,9 +1120,9 @@
           "dmxRange": {},
           "type": {},
           "comment": {},
+          "helpWanted": {},
           "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {}
+          "switchChannels": {}
         },
         "additionalProperties": false
       }
@@ -1137,28 +1137,32 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
+          "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
+          "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
+          "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" },
           "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
           "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
           "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
-          "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
-          "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
-          "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" }
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "not": {
           "anyOf": [
+            { "required": ["speed", "speedStart"] },
             { "required": ["angle", "angleStart"] },
-            { "required": ["speed", "speedStart"] }
+            { "required": ["speed", "angle"] },
+            { "required": ["speed", "angleStart"] },
+            { "required": ["speedStart", "angle"] },
+            { "required": ["speedStart", "angleStart"] }
           ]
         },
         "dependencies": {
-          "angleStart": ["angleEnd"],
-          "angleEnd": ["angleStart"],
           "speedStart": ["speedEnd"],
-          "speedEnd": ["speedStart"]
+          "speedEnd": ["speedStart"],
+          "angleStart": ["angleEnd"],
+          "angleEnd": ["angleStart"]
         },
         "additionalProperties": false
       }
@@ -1173,28 +1177,28 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
+          "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
+          "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
+          "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" },
           "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
           "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
           "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
-          "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
-          "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
-          "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" }
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
-          { "required": ["angle"] },
-          { "required": ["angleStart"] },
           { "required": ["speed"] },
-          { "required": ["speedStart"] }
+          { "required": ["speedStart"] },
+          { "required": ["angle"] },
+          { "required": ["angleStart"] }
         ],
         "dependencies": {
-          "angleStart": ["angleEnd"],
-          "angleEnd": ["angleStart"],
           "speedStart": ["speedEnd"],
-          "speedEnd": ["speedStart"]
+          "speedEnd": ["speedStart"],
+          "angleStart": ["angleEnd"],
+          "angleEnd": ["angleStart"]
         },
         "additionalProperties": false
       }
@@ -1209,17 +1213,17 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "blade": { "oneOf": [
             { "enum": ["Top", "Right", "Bottom", "Left"] },
             { "$ref": "definitions.json#/units/positiveInteger" }
           ]},
           "insertion": { "$ref": "definitions.json#/entities/insertion" },
           "insertionStart": { "$ref": "definitions.json#/entities/insertion" },
-          "insertionEnd": { "$ref": "definitions.json#/entities/insertion" }
+          "insertionEnd": { "$ref": "definitions.json#/entities/insertion" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "required": ["blade"],
         "oneOf": [
@@ -1243,17 +1247,17 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "blade": { "oneOf": [
             { "enum": ["Top", "Right", "Bottom", "Left"] },
             { "$ref": "definitions.json#/units/positiveInteger" }
           ]},
           "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
           "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
-          "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" }
+          "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "required": ["blade"],
         "oneOf": [
@@ -1277,13 +1281,13 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
           "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
-          "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" }
+          "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["angle"] },
@@ -1307,9 +1311,9 @@
           "dmxRange": {},
           "type": {},
           "comment": {},
+          "helpWanted": {},
           "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {}
+          "switchChannels": {}
         },
         "additionalProperties": false
       }
@@ -1324,15 +1328,16 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
+          "fogType": { "enum": ["Fog", "Haze"] },
           "fogOutput": { "$ref": "definitions.json#/entities/fogOutput" },
           "fogOutputStart": { "$ref": "definitions.json#/entities/fogOutput" },
           "fogOutputEnd": { "$ref": "definitions.json#/entities/fogOutput" },
-          "fogType": { "enum": ["Fog", "Haze"] }
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
+        "required": ["fogType"],
         "not": { "required": ["fogOutput", "fogOutputStart"] },
         "dependencies": {
           "fogOutputStart": ["fogOutputEnd"],
@@ -1351,13 +1356,13 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "fogOutput": { "$ref": "definitions.json#/entities/fogOutput" },
           "fogOutputStart": { "$ref": "definitions.json#/entities/fogOutput" },
-          "fogOutputEnd": { "$ref": "definitions.json#/entities/fogOutput" }
+          "fogOutputEnd": { "$ref": "definitions.json#/entities/fogOutput" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["fogOutput"] },
@@ -1380,49 +1385,13 @@
         "properties": {
           "dmxRange": {},
           "type": {},
+          "fogType": { "enum": ["Fog", "Haze"] },
           "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
           "helpWanted": {},
-          "fogType": { "enum": ["Fog", "Haze"] }
+          "menuClick": {},
+          "switchChannels": {}
         },
         "required": ["fogType"],
-        "additionalProperties": false
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "type": { "enum": ["Rotation"] }
-        }
-      },
-      "then": {
-        "properties": {
-          "dmxRange": {},
-          "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
-          "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
-          "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
-          "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
-          "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
-          "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
-          "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" }
-        },
-        "oneOf": [
-          { "required": ["angle"] },
-          { "required": ["angleStart"] },
-          { "required": ["speed"] },
-          { "required": ["speedStart"] }
-        ],
-        "dependencies": {
-          "angleStart": ["angleEnd"],
-          "angleEnd": ["angleStart"],
-          "speedStart": ["speedEnd"],
-          "speedEnd": ["speedStart"]
-        },
         "additionalProperties": false
       }
     },
@@ -1436,19 +1405,55 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "angle": { "$ref": "definitions.json#/entities/beamAngle" },
           "angleStart": { "$ref": "definitions.json#/entities/beamAngle" },
-          "angleEnd": { "$ref": "definitions.json#/entities/beamAngle" }
+          "angleEnd": { "$ref": "definitions.json#/entities/beamAngle" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["angle"] },
           { "required": ["angleStart"] }
         ],
         "dependencies": {
+          "angleStart": ["angleEnd"],
+          "angleEnd": ["angleStart"]
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": { "enum": ["Rotation"] }
+        }
+      },
+      "then": {
+        "properties": {
+          "dmxRange": {},
+          "type": {},
+          "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
+          "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
+          "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" },
+          "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
+          "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
+          "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
+        },
+        "oneOf": [
+          { "required": ["speed"] },
+          { "required": ["speedStart"] },
+          { "required": ["angle"] },
+          { "required": ["angleStart"] }
+        ],
+        "dependencies": {
+          "speedStart": ["speedEnd"],
+          "speedEnd": ["speedStart"],
           "angleStart": ["angleEnd"],
           "angleEnd": ["angleStart"]
         },
@@ -1465,13 +1470,13 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "speed": { "$ref": "definitions.json#/entities/speed" },
           "speedStart": { "$ref": "definitions.json#/entities/speed" },
-          "speedEnd": { "$ref": "definitions.json#/entities/speed" }
+          "speedEnd": { "$ref": "definitions.json#/entities/speed" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["speed"] },
@@ -1494,13 +1499,13 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "time": { "$ref": "definitions.json#/entities/time" },
           "timeStart": { "$ref": "definitions.json#/entities/time" },
-          "timeEnd": { "$ref": "definitions.json#/entities/time" }
+          "timeEnd": { "$ref": "definitions.json#/entities/time" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "oneOf": [
           { "required": ["time"] },
@@ -1523,14 +1528,14 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "comment": {},
-          "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {},
           "parameter": { "$ref": "definitions.json#/entities/factor" },
           "parameterStart": { "$ref": "definitions.json#/entities/factor" },
           "parameterEnd": { "$ref": "definitions.json#/entities/factor" },
-          "hold": { "$ref": "definitions.json#/entities/time" }
+          "hold": { "$ref": "definitions.json#/entities/time" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
         },
         "not": { "required": ["parameter", "parameterStart"] },
         "dependencies": {
@@ -1551,9 +1556,9 @@
           "dmxRange": {},
           "type": {},
           "comment": {},
+          "helpWanted": {},
           "menuClick": {},
-          "switchChannels": {},
-          "helpWanted": {}
+          "switchChannels": {}
         },
         "additionalProperties": false
       }

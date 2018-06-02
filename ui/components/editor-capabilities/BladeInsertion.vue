@@ -3,22 +3,22 @@
 
     <app-simple-label
       :formstate="formstate"
-      :name="`capability${capability.uuid}-insertion`"
-      label="Insertion">
-      <app-editor-proportional-capability-data-switcher
-        :capability="capability"
-        :formstate="formstate"
-        property-name="insertion" />
-    </app-simple-label>
-
-    <app-simple-label
-      :formstate="formstate"
       :name="`capability${capability.uuid}-blade`"
       label="Blade">
       <app-property-input-entity
         v-model="capability.typeData.blade"
         :name="`capability${capability.uuid}-blade`"
         :schema-property="bladeSchema" />
+    </app-simple-label>
+
+    <app-simple-label
+      :formstate="formstate"
+      :name="`capability${capability.uuid}-insertion`"
+      label="Insertion">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="insertion" />
     </app-simple-label>
 
     <app-simple-label
@@ -64,10 +64,10 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
+        blade: ``,
         insertion: ``,
         insertionStart: null,
         insertionEnd: null,
-        blade: ``,
         comment: ``
       }
     };

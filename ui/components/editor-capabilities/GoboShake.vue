@@ -3,22 +3,22 @@
 
     <app-simple-label
       :formstate="formstate"
-      :name="`capability${capability.uuid}-shakeAngle`"
-      label="Shake Angle">
-      <app-editor-proportional-capability-data-switcher
-        :capability="capability"
-        :formstate="formstate"
-        property-name="shakeAngle" />
-    </app-simple-label>
-
-    <app-simple-label
-      :formstate="formstate"
       :name="`capability${capability.uuid}-shakeSpeed`"
       label="Shake Speed">
       <app-editor-proportional-capability-data-switcher
         :capability="capability"
         :formstate="formstate"
         property-name="shakeSpeed" />
+    </app-simple-label>
+
+    <app-simple-label
+      :formstate="formstate"
+      :name="`capability${capability.uuid}-shakeAngle`"
+      label="Shake Angle">
+      <app-editor-proportional-capability-data-switcher
+        :capability="capability"
+        :formstate="formstate"
+        property-name="shakeAngle" />
     </app-simple-label>
 
     <app-simple-label
@@ -63,12 +63,12 @@ export default {
       properties: schemaProperties,
       hint: `This capability just enables gobo shaking; the actual gobo selection happens in another channel's GoboIndex capability.`,
       defaultData: {
-        shakeAngle: ``,
-        shakeAngleStart: null,
-        shakeAngleEnd: null,
         shakeSpeed: ``,
         shakeSpeedStart: null,
         shakeSpeedEnd: null,
+        shakeAngle: ``,
+        shakeAngleStart: null,
+        shakeAngleEnd: null,
         comment: ``
       }
     };

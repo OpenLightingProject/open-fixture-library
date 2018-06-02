@@ -31,22 +31,22 @@
     <template v-if="capability.typeData.isShaking">
       <app-simple-label
         :formstate="formstate"
-        :name="`capability${capability.uuid}-shakeAngle`"
-        label="Shake Angle">
-        <app-editor-proportional-capability-data-switcher
-          :capability="capability"
-          :formstate="formstate"
-          property-name="shakeAngle" />
-      </app-simple-label>
-
-      <app-simple-label
-        :formstate="formstate"
         :name="`capability${capability.uuid}-shakeSpeed`"
         label="Shake Speed">
         <app-editor-proportional-capability-data-switcher
           :capability="capability"
           :formstate="formstate"
           property-name="shakeSpeed" />
+      </app-simple-label>
+
+      <app-simple-label
+        :formstate="formstate"
+        :name="`capability${capability.uuid}-shakeAngle`"
+        label="Shake Angle">
+        <app-editor-proportional-capability-data-switcher
+          :capability="capability"
+          :formstate="formstate"
+          property-name="shakeAngle" />
       </app-simple-label>
     </template>
 
@@ -83,14 +83,14 @@ export default {
         index: ``,
         indexStart: null,
         indexEnd: null,
+        comment: ``,
         isShaking: false,
-        shakeAngle: ``,
-        shakeAngleStart: null,
-        shakeAngleEnd: null,
         shakeSpeed: ``,
         shakeSpeedStart: null,
         shakeSpeedEnd: null,
-        comment: ``
+        shakeAngle: ``,
+        shakeAngleStart: null,
+        shakeAngleEnd: null
       }
     };
   },

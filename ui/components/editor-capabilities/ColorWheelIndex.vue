@@ -77,6 +77,7 @@ export default {
         index: ``,
         indexStart: null,
         indexEnd: null,
+        comment: ``,
         colors: null,
         colorsStart: null,
         colorsEnd: null,
@@ -85,8 +86,7 @@ export default {
         colorsHexStringEnd: null,
         colorTemperature: ``,
         colorTemperatureStart: null,
-        colorTemperatureEnd: null,
-        comment: ``
+        colorTemperatureEnd: null
       }
     };
   },

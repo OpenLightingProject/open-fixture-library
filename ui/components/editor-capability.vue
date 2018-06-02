@@ -173,8 +173,8 @@ import editorCapabilityFogOff from '~/components/editor-capabilities/FogOff.vue'
 import editorCapabilityFogOn from '~/components/editor-capabilities/FogOn.vue';
 import editorCapabilityFogOutput from '~/components/editor-capabilities/FogOutput.vue';
 import editorCapabilityFogType from '~/components/editor-capabilities/FogType.vue';
-import editorCapabilityRotation from '~/components/editor-capabilities/Rotation.vue';
 import editorCapabilityBeamAngle from '~/components/editor-capabilities/BeamAngle.vue';
+import editorCapabilityRotation from '~/components/editor-capabilities/Rotation.vue';
 import editorCapabilitySpeed from '~/components/editor-capabilities/Speed.vue';
 import editorCapabilityTime from '~/components/editor-capabilities/Time.vue';
 import editorCapabilityMaintenance from '~/components/editor-capabilities/Maintenance.vue';
@@ -226,8 +226,8 @@ export default {
     'app-editor-capability-FogOn': editorCapabilityFogOn,
     'app-editor-capability-FogOutput': editorCapabilityFogOutput,
     'app-editor-capability-FogType': editorCapabilityFogType,
-    'app-editor-capability-Rotation': editorCapabilityRotation,
     'app-editor-capability-BeamAngle': editorCapabilityBeamAngle,
+    'app-editor-capability-Rotation': editorCapabilityRotation,
     'app-editor-capability-Speed': editorCapabilitySpeed,
     'app-editor-capability-Time': editorCapabilityTime,
     'app-editor-capability-Maintenance': editorCapabilityMaintenance,
