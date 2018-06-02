@@ -336,7 +336,7 @@ export default {
       this.$emit(`input`, newCapabilities);
     },
     cleanCapabilityData() {
-      this.$refs.capabilityTypeData.cleanCapabilityData()
+      this.$refs.capabilityTypeData.cleanCapabilityData();
     }
   }
 };
