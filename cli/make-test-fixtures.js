@@ -62,14 +62,9 @@ for (const man of Object.keys(register.manufacturers)) {
 
     // check all features
     for (const fixFeature of fixFeatures) {
-      try {
-        if (fixFeature.hasFeature(fix)) {
-          fixResult.features.push(fixFeature.id);
-          featuresUsed[fixFeature.id]++;
-        }
-      }
-      catch (e) {
-        // TODO: Remove this as soon all fixtures have been migrated and don't make the feature check crash anymore.
+      if (fixFeature.hasFeature(fix)) {
+        fixResult.features.push(fixFeature.id);
+        featuresUsed[fixFeature.id]++;
       }
     }
 
