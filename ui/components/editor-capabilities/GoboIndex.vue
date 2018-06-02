@@ -22,25 +22,33 @@
         :schema-property="properties.definitions.nonEmptyString" />
     </app-simple-label>
 
-    <app-simple-label
-      :formstate="formstate"
-      :name="`capability${capability.uuid}-shakeAngle`"
-      label="Shake Angle">
-      <app-editor-proportional-capability-data-switcher
-        :capability="capability"
-        :formstate="formstate"
-        property-name="shakeAngle" />
-    </app-simple-label>
+    <section>
+      <label>
+        <input v-model="capability.typeData.isShaking" type="checkbox"> Shaking Gobo
+      </label>
+    </section>
 
-    <app-simple-label
-      :formstate="formstate"
-      :name="`capability${capability.uuid}-shakeSpeed`"
-      label="Shake Speed">
-      <app-editor-proportional-capability-data-switcher
-        :capability="capability"
+    <template v-if="capability.typeData.isShaking">
+      <app-simple-label
         :formstate="formstate"
-        property-name="shakeSpeed" />
-    </app-simple-label>
+        :name="`capability${capability.uuid}-shakeAngle`"
+        label="Shake Angle">
+        <app-editor-proportional-capability-data-switcher
+          :capability="capability"
+          :formstate="formstate"
+          property-name="shakeAngle" />
+      </app-simple-label>
+
+      <app-simple-label
+        :formstate="formstate"
+        :name="`capability${capability.uuid}-shakeSpeed`"
+        label="Shake Speed">
+        <app-editor-proportional-capability-data-switcher
+          :capability="capability"
+          :formstate="formstate"
+          property-name="shakeSpeed" />
+      </app-simple-label>
+    </template>
 
   </div>
 </template>
@@ -75,6 +83,7 @@ export default {
         index: ``,
         indexStart: null,
         indexEnd: null,
+        isShaking: false,
         shakeAngle: ``,
         shakeAngleStart: null,
         shakeAngleEnd: null,
@@ -84,6 +93,16 @@ export default {
         comment: ``
       }
     };
+  },
+  methods: {
+    cleanCapabilityData() {
+      if (!this.capability.typeData.isShaking) {
+        const resetProps = [`shakeAngle`, `shakeAngleStart`, `shakeAngleEnd`, `shakeSpeed`, `shakeSpeedStart`, `shakeSpeedEnd`];
+        for (const prop of resetProps) {
+          this.capability.typeData[prop] = this.defaultData[prop];
+        }
+      }
+    }
   }
 };
 </script>
