@@ -117,6 +117,7 @@
           :wizard="channel.wizard"
           :capabilities="channel.capabilities"
           :fineness="Math.min(channel.fineness, channel.capFineness)"
+          :formstate="formstate"
           @close="channel.wizard.show = false" />
 
         <div v-else class="capability-editor">

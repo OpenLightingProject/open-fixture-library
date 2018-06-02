@@ -1,7 +1,7 @@
 <template>
   <div class="capability-wizard">
 
-    Generate multiple capabilities with same range width.
+    Generate multiple capabilities with same range width. Occurences of '#' in text fields will be replaced by an increasing number.
 
     <section>
       <label>
@@ -46,15 +46,9 @@
       </label>
     </section>
 
-    <section>
-      <label>
-        <span class="label">Name</span>
-        <span class="value">
-          <input v-model.number="wizard.templateName" type="text" required>
-          <span class="hint"># will be replaced with an increasing number</span>
-        </span>
-      </label>
-    </section>
+    <app-editor-capability-type-data
+      v-model="wizard.templateCapability"
+      :formstate="formstate" />
 
     <table class="capabilities-table">
       <colgroup>
@@ -68,11 +62,11 @@
         <th>Capability</th>
       </tr></thead>
       <tbody>
-        <tr v-for="capability in allCapabilities" :key="capability.uuid" :class="capability.type">
+        <tr v-for="capability in allCapabilities" :key="capability.uuid" :class="capability.source">
           <td class="capability-dmxRange0"><code>{{ capability.dmxRange[0] }}</code></td>
           <td class="capability-dmxRange-separator"><code>…</code></td>
           <td class="capability-dmxRange1"><code>{{ capability.dmxRange[1] }}</code></td>
-          <td class="capability-name">{{ capability.name }}</td>
+          <td class="capability-type">{{ capability.type }}</td>
         </tr>
       </tbody>
     </table>
@@ -92,6 +86,7 @@
 /* TODO: a lot of this stuff is duplicated in fixture-capability-table.vue */
 
 .capabilities-table {
+  margin-top: 1em;
   border-collapse: collapse;
   table-layout: fixed;
 }
@@ -122,10 +117,6 @@ td, th {
   padding-left: 2px;
 }
 
-.capability-name {
-  max-width: 20em;
-}
-
 .inherited,
 .inherited code {
   color: $disabled-text-dark;
@@ -137,9 +128,18 @@ td, th {
 </style>
 
 <script>
-import { getEmptyCapability, isCapabilityChanged } from "~/assets/scripts/editor-utils.mjs";
+import {
+  getEmptyCapability,
+  isCapabilityChanged,
+  clone
+} from "~/assets/scripts/editor-utils.mjs";
+
+import editorCapabilityTypeDataVue from '~/components/editor-capability-type-data.vue';
 
 export default {
+  components: {
+    'app-editor-capability-type-data': editorCapabilityTypeDataVue
+  },
   props: {
     capabilities: {
       type: Array,
@@ -147,6 +147,10 @@ export default {
     },
     fineness: {
       type: Number,
+      required: true
+    },
+    formstate: {
+      type: Object,
       required: true
     },
     wizard: {
@@ -198,7 +202,15 @@ export default {
           this.wizard.start + (i * this.wizard.width),
           this.wizard.start + ((i + 1) * this.wizard.width) - 1
         ];
-        cap.name = this.wizard.templateName.replace(/#/g, i + 1);
+        cap.type = this.wizard.templateCapability.type;
+        cap.typeData = clone(this.wizard.templateCapability.typeData);
+
+        const textProperties = [`effectName`, `comment`];
+        textProperties.forEach(textProperty => {
+          if (textProperty in cap.typeData) {
+            cap.typeData[textProperty] = cap.typeData[textProperty].replace(/#/, i + 1);
+          }
+        });
 
         capabilities.push(cap);
       }
@@ -236,15 +248,15 @@ export default {
     },
 
     /**
-     * @returns {!Array.<object>} Array with a typed capability object (@see getTypedCapability) for each capability (generated and inherited).
+     * @returns {!Array.<object>} Array of all capabilities (generated and inherited), combined with their source. @see getCapabilityWithSource
      */
     allCapabilities() {
       const inheritedCapabilities = this.capabilities.map(
-        cap => getTypedCapability(cap, `inherited`)
+        cap => getCapabilityWithSource(cap, `inherited`)
       );
 
       const computedCapabilites = this.computedCapabilites.map(
-        cap => getTypedCapability(cap, `computed`)
+        cap => getCapabilityWithSource(cap, `computed`)
       );
 
       // insert all computed capabilities at insertIndex
@@ -350,10 +362,10 @@ export default {
 
 /**
  * @param {!object} cap The "full" capability object.
- * @param {!string} type The type of the capability (inherited or computed).
- * @returns {!object} A capability object that additionally contains the specified type.
+ * @param {!string} source The source of the capability (inherited or computed).
+ * @returns {!object} A capability object that additionally contains the specified source.
  */
-function getTypedCapability(cap, type) {
-  return Object.assign({}, cap, { type });
+function getCapabilityWithSource(cap, source) {
+  return Object.assign({}, cap, { source });
 }
 </script>

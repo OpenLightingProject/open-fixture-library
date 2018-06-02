@@ -98,7 +98,7 @@ export function getEmptyChannel() {
       start: 0,
       width: 10,
       count: 3,
-      templateName: `Function #`
+      templateCapability: getEmptyCapability()
     },
     capabilities: [getEmptyCapability()]
   };

@@ -9,7 +9,7 @@
         v-model="capability.type"
         :class="{ empty: capability.type === `` }"
         :name="`capability${capability.uuid}-type`"
-        required
+        :required="required"
         @change="changeCapabilityType">
 
         <option value="" disabled>Please select a capability type</option>
@@ -144,6 +144,10 @@ export default {
     formstate: {
       type: Object,
       required: true
+    },
+    required: {
+      type: Boolean,
+      default: false
     }
   },
   data() {

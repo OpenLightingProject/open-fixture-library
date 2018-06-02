@@ -40,7 +40,8 @@
       <app-editor-capability-type-data
         ref="capabilityTypeData"
         v-model="capability"
-        :formstate="formstate" />
+        :formstate="formstate"
+        required />
 
     </div>
   </app-conditional-details>
