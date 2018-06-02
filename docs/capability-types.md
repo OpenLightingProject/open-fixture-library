@@ -1047,7 +1047,7 @@ No type-specific properties.
 <tbody>
 <tr>
   <td>fogType</td>
-  <td>yes</td>
+  <td></td>
   <td><code>Fog</code> or <code>Haze</code></td>
   <td></td>
 </tr>

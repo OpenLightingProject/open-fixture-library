@@ -1337,7 +1337,6 @@
           "menuClick": {},
           "switchChannels": {}
         },
-        "required": ["fogType"],
         "not": { "required": ["fogOutput", "fogOutputStart"] },
         "dependencies": {
           "fogOutputStart": ["fogOutputEnd"],
