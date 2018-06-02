@@ -52,9 +52,9 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
-        duration: ``,
-        durationStart: null,
-        durationEnd: null,
+        duration: null,
+        durationStart: ``,
+        durationEnd: ``,
         comment: ``
       }
     };

@@ -52,9 +52,9 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
-        soundSensitvity: ``,
-        soundSensitvityStart: null,
-        soundSensitvityEnd: null,
+        soundSensitvity: null,
+        soundSensitvityStart: `low`,
+        soundSensitvityEnd: `high`,
         comment: ``
       }
     };

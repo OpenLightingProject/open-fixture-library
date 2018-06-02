@@ -67,9 +67,9 @@ export default {
       properties: schemaProperties,
       defaultData: {
         blade: ``,
-        insertion: ``,
-        insertionStart: null,
-        insertionEnd: null,
+        insertion: null,
+        insertionStart: `out`,
+        insertionEnd: `in`,
         comment: ``
       }
     };

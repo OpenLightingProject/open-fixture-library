@@ -73,9 +73,9 @@ export default {
       properties: schemaProperties,
       defaultData: {
         speedOrDuration: `speed`,
-        speed: ``,
-        speedStart: null,
-        speedEnd: null,
+        speed: null,
+        speedStart: `fast`,
+        speedEnd: `slow`,
         duration: ``,
         durationStart: null,
         durationEnd: null,

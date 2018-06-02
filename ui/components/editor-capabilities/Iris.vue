@@ -52,9 +52,9 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
-        openPercent: ``,
-        openPercentStart: null,
-        openPercentEnd: null,
+        openPercent: null,
+        openPercentStart: `open`,
+        openPercentEnd: `closed`,
         comment: ``
       }
     };

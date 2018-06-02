@@ -52,9 +52,9 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
-        distance: ``,
-        distanceStart: null,
-        distanceEnd: null,
+        distance: null,
+        distanceStart: `near`,
+        distanceEnd: `far`,
         comment: ``
       }
     };

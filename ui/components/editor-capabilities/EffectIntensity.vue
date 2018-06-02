@@ -52,9 +52,9 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
-        effectIntensity: ``,
-        effectIntensityStart: null,
-        effectIntensityEnd: null,
+        effectIntensity: null,
+        effectIntensityStart: `low`,
+        effectIntensityEnd: `high`,
         comment: ``
       }
     };

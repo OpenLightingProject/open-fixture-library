@@ -52,9 +52,9 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
-        colorTemperature: ``,
-        colorTemperatureStart: null,
-        colorTemperatureEnd: null,
+        colorTemperature: null,
+        colorTemperatureStart: ``,
+        colorTemperatureEnd: ``,
         comment: ``
       }
     };

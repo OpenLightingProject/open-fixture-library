@@ -52,9 +52,9 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
-        fogOutput: ``,
-        fogOutputStart: null,
-        fogOutputEnd: null,
+        fogOutput: null,
+        fogOutputStart: `weak`,
+        fogOutputEnd: `strong`,
         comment: ``
       }
     };

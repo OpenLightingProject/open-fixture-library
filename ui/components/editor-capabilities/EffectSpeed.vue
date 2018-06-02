@@ -52,9 +52,9 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
-        speed: ``,
-        speedStart: null,
-        speedEnd: null,
+        speed: null,
+        speedStart: `slow`,
+        speedEnd: `fast`,
         comment: ``
       }
     };

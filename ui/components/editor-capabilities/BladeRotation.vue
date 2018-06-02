@@ -67,9 +67,9 @@ export default {
       properties: schemaProperties,
       defaultData: {
         blade: ``,
-        angle: ``,
-        angleStart: null,
-        angleEnd: null,
+        angle: null,
+        angleStart: `0deg`,
+        angleEnd: `360deg`,
         comment: ``
       }
     };

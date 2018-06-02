@@ -52,9 +52,9 @@ export default {
     return {
       properties: schemaProperties,
       defaultData: {
-        frostIntensity: ``,
-        frostIntensityStart: null,
-        frostIntensityEnd: null,
+        frostIntensity: null,
+        frostIntensityStart: `off`,
+        frostIntensityEnd: `high`,
         comment: ``
       }
     };
