@@ -9,6 +9,7 @@
           v-if="cancellable"
           href="#close"
           class="close"
+          title="Close"
           @click.prevent="hide">
           Close
           <app-svg name="close" />
