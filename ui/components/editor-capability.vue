@@ -37,7 +37,11 @@
 
       </app-simple-label>
 
-      <app-simple-label :formstate="formstate" :name="`capability${capability.uuid}-type`" label="Capability type">
+      <app-simple-label
+        :formstate="formstate"
+        :name="`capability${capability.uuid}-type`"
+        :hint="capabilityTypeHint"
+        label="Capability type">
         <select
           v-model="capability.type"
           :class="{ empty: capability.type === `` }"
@@ -253,7 +257,8 @@ export default {
   data() {
     return {
       dmxMin: 0,
-      properties: schemaProperties
+      properties: schemaProperties,
+      capabilityTypeHint: null
     };
   },
   computed: {
@@ -458,6 +463,13 @@ export default {
           if (!(prop in this.capability.typeData)) {
             this.$set(this.capability.typeData, prop, defaultData[prop]);
           }
+        }
+
+        if (`hint` in this.$refs.capabilityTypeData) {
+          this.capabilityTypeHint = this.$refs.capabilityTypeData.hint;
+        }
+        else {
+          this.capabilityTypeHint = null;
         }
       });
     },

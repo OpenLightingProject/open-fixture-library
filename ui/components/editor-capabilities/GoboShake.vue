@@ -61,6 +61,7 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+      hint: `This capability just enables gobo shaking; the actual gobo selection happens in another channel's GoboIndex capability.`,
       defaultData: {
         shakeAngle: ``,
         shakeAngleStart: null,
