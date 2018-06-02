@@ -65,8 +65,8 @@
           <span class="value">{{ unwrappedChannel.getHighlightValueWithFineness(finenessInMode) }}</span>
         </section>
 
-        <section v-if="unwrappedChannel.invert" class="channel-invert">
-          <span class="label">Invert</span>
+        <section v-if="unwrappedChannel.isInverted" class="channel-isInverted">
+          <span class="label">Is inverted?</span>
           <span class="value">Yes</span>
         </section>
 
