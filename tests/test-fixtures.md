@@ -40,8 +40,8 @@
 **Capability type FogOn** [[38]](#user-content-footnote-38) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
 **Capability type FogOutput** [[39]](#user-content-footnote-39) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
 **Capability type FogType** [[40]](#user-content-footnote-40) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
-**Capability type Rotation** [[41]](#user-content-footnote-41) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌
-**Capability type BeamAngle** [[42]](#user-content-footnote-42) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌
+**Capability type BeamAngle** [[41]](#user-content-footnote-41) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌
+**Capability type Rotation** [[42]](#user-content-footnote-42) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌
 **Capability type Speed** [[43]](#user-content-footnote-43) | ✅ | ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅
 **Capability type Time** [[44]](#user-content-footnote-44) | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Capability type Maintenance** [[45]](#user-content-footnote-45) | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅
@@ -157,9 +157,9 @@
 
 **<a id="user-content-footnote-40">[40]</a>**: Whether the fixture has at least one capability of type 'FogType'
 
-**<a id="user-content-footnote-41">[41]</a>**: Whether the fixture has at least one capability of type 'Rotation'
+**<a id="user-content-footnote-41">[41]</a>**: Whether the fixture has at least one capability of type 'BeamAngle'
 
-**<a id="user-content-footnote-42">[42]</a>**: Whether the fixture has at least one capability of type 'BeamAngle'
+**<a id="user-content-footnote-42">[42]</a>**: Whether the fixture has at least one capability of type 'Rotation'
 
 **<a id="user-content-footnote-43">[43]</a>**: Whether the fixture has at least one capability of type 'Speed'
 
