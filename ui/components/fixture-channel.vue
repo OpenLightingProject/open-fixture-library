@@ -75,8 +75,8 @@
           <span class="value">Yes</span>
         </section>
 
-        <section v-if="unwrappedChannel.crossfade" class="channel-crossfade">
-          <span class="label">Crossfade</span>
+        <section v-if="unwrappedChannel.canCrossfade" class="channel-canCrossfade">
+          <span class="label">Can crossfade?</span>
           <span class="value">Yes</span>
         </section>
 
