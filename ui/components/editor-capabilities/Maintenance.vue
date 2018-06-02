@@ -19,6 +19,8 @@
         :capability="capability"
         :formstate="formstate"
         property-name="hold" />
+
+        <!-- TODO: Forbid proportional usage of hold -->
     </app-simple-label>
 
     <app-simple-label

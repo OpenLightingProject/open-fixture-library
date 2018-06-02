@@ -9,6 +9,8 @@
         v-model="capability.typeData.blade"
         :name="`capability${capability.uuid}-blade`"
         :schema-property="bladeSchema" />
+
+        <!-- TODO: Allow blade numbers -->
     </app-simple-label>
 
     <app-simple-label
