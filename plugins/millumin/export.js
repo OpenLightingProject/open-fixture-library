@@ -57,7 +57,7 @@ function downgradeChannel(channelObject, channelKey) {
 
   channelObject[channelKey] = downgradedChannel;
 
-  if (jsonChannel.capability || jsonChannel.capabilities) {
+  if (capabilitiesNeeded()) {
     downgradedChannel.capabilities = [];
 
     for (const cap of channel.capabilities) {
@@ -78,6 +78,18 @@ function downgradeChannel(channelObject, channelKey) {
 
       downgradedChannel.capabilities.push(downgradedCap);
     }
+  }
+
+  /**
+   * @returns {!boolean} Whether or not it is needed to include capabilities in a downgraded version of this channel
+   */
+  function capabilitiesNeeded() {
+    const trivialCapabilityTypes = [`Intensity`, `ColorIntensity`, `Pan`, `Tilt`, `Nothing`];
+    if (channel.capabilities.length === 1 && trivialCapabilityTypes.includes(channel.capabilities[0].type)) {
+      return false;
+    }
+
+    return true;
   }
 }
 
