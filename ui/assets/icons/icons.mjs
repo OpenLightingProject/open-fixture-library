@@ -19,6 +19,7 @@ export default {
   'ola': require(`./ola.svg`),
   'pencil': require(`./pencil.svg`),
   'plus': require(`./plus.svg`),
+  'swap-horizontal': require(`./swap-horizontal.svg`),
 
   'categories/blinder': require(`./categories/blinder.svg`),
   'categories/color-changer': require(`./categories/color-changer.svg`),

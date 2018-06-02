@@ -59,7 +59,16 @@
         </span>
       </span>
 
-      <span class="separator">…</span>
+      <span class="separator">
+        <a
+          href="#swap"
+          class="swap"
+          title="Swap start and end values"
+          @click.prevent="swapStartEnd">
+          <app-svg name="swap-horizontal" />
+        </a>
+        …
+      </span>
 
       <span class="entity-input">
         <app-property-input-number
@@ -107,20 +116,35 @@
   display: inline-block;
   vertical-align: top;
 }
+
 .separator {
+  position: relative;
+  vertical-align: -8px;
   margin: 0 1ex;
+
+  a.swap {
+    position: absolute;
+    bottom: 4px;
+    left: -1px;
+  }
+}
+
+.proportional-capability-data:not(:hover) a.swap {
+  fill: transparent;
 }
 </style>
 
 <script>
 import schemaProperties from '~~/lib/schema-properties.js';
 
+import appSvg from '~/components/svg.vue';
 import propertyInputEntityVue from '~/components/property-input-entity.vue';
 import propertyInputNumberVue from '~/components/property-input-number.vue';
 import propertyInputTextVue from '~/components/property-input-text.vue';
 
 export default {
   components: {
+    'app-svg': appSvg,
     'app-property-input-entity': propertyInputEntityVue,
     'app-property-input-number': propertyInputNumberVue,
     'app-property-input-text': propertyInputTextVue
@@ -262,6 +286,9 @@ export default {
           focusField.focus();
         }
       });
+    },
+    swapStartEnd() {
+      [this.propertyDataStart, this.propertyDataEnd] = [this.propertyDataEnd, this.propertyDataStart];
     }
   }
 };
