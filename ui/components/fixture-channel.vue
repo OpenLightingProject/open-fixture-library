@@ -70,8 +70,8 @@
           <span class="value">Yes</span>
         </section>
 
-        <section v-if="unwrappedChannel.constant" class="channel-constant">
-          <span class="label">Constant</span>
+        <section v-if="unwrappedChannel.isConstant" class="channel-isConstant">
+          <span class="label">Is constant?</span>
           <span class="value">Yes</span>
         </section>
 
