@@ -63,89 +63,88 @@ function addAttribute(xml, mode, attribute, channels) {
     }
   });
 
-  for (let i = 0; i < channels.length; i++) {
-    addChannel(xmlAttribute, mode, attribute, channels[i], i);
-  }
-}
+  channels.forEach(addChannel);
 
-function addChannel(xmlAttribute, mode, attribute, channel, index) {
-  const xmlChannel = xmlAttribute.element({
-    ThisAttribute: {
-      '@id': index,
-      HOME: {
-        '@id': getDefaultValue(channel)
-      },
-      addressIndex: {
-        '@id': mode.getChannelIndex(channel)
-      },
-      parameterName: {
-        '@id': getParameterName(mode, attribute, channel)
-      },
-      minLevel: {
-        '@id': 0
-      },
-      maxLevel: {
-        '@id': 255
-      }
-    }
-  });
-
-  addCapabilities(xmlChannel, channel);
-}
-
-function getParameterName(mode, attribute, channel) {
-  const uniqueName = channel.uniqueName;
-
-  if (channel instanceof SwitchingChannel) {
-    channel = channel.defaultChannel;
-  }
-  if (channel instanceof FineChannel) {
-    return mode.getChannelIndex(channel.coarseChannel.key) + 1;
-  }
-
-  switch (attribute) {
-    case `FOCUS`:
-      return channel.type.toUpperCase(); // PAN or TILT
-
-    // in all other attributes, custom text is allowed
-    // but we need to use another name syntax
-    default:
-      return uniqueName
-        .toUpperCase()
-        .replace(/ /g, `_`)
-        .replace(/\//g, `|`)
-        .replace(/COLOR/g, `COLOUR`);
-  }
-}
-
-function addCapabilities(xmlChannel, channel) {
-  if (channel instanceof Channel && channel.hasCapabilities) {
-    const caps = channel.capabilities;
-
-    const xmlCapabilities = xmlChannel.element({
-      Definitions: {
-        '@index': caps.length
+  function addChannel(channel, index) {
+    const xmlChannel = xmlAttribute.element({
+      ThisAttribute: {
+        '@id': index,
+        HOME: {
+          '@id': getDefaultValue(channel)
+        },
+        addressIndex: {
+          '@id': mode.getChannelIndex(channel)
+        },
+        parameterName: {
+          '@id': getParameterName()
+        },
+        minLevel: {
+          '@id': 0
+        },
+        maxLevel: {
+          '@id': 255
+        }
       }
     });
 
-    for (const cap of caps) {
-      addCapability(xmlCapabilities, cap);
+    addCapabilities();
+
+    function getParameterName() {
+      const uniqueName = channel.uniqueName;
+
+      if (channel instanceof SwitchingChannel) {
+        channel = channel.defaultChannel;
+      }
+      if (channel instanceof FineChannel) {
+        return mode.getChannelIndex(channel.coarseChannel.key) + 1;
+      }
+
+      switch (attribute) {
+        case `FOCUS`:
+          return channel.type.toUpperCase(); // PAN or TILT
+
+        // in all other attributes, custom text is allowed
+        // but we need to use another name syntax
+        default:
+          return uniqueName
+            .toUpperCase()
+            .replace(/ /g, `_`)
+            .replace(/\//g, `|`)
+            .replace(/COLOR/g, `COLOUR`);
+      }
+    }
+
+    function addCapabilities() {
+      let xmlCapabilities;
+
+      if (channel instanceof Channel && channel.hasCapabilities) {
+        const caps = channel.capabilities;
+
+        xmlCapabilities = xmlChannel.element({
+          Definitions: {
+            '@index': caps.length
+          }
+        });
+
+        caps.forEach(addCapability);
+      }
+
+      function addCapability(cap) {
+        xmlCapabilities.element({
+          name: {
+            '@min': cap.range.start,
+            '@max': cap.range.end,
+            '@snap': cap.menuClickDmxValue,
+            '@timeHolder': `0`,
+            '@dummy': `0`,
+            '#text': cap.name
+          }
+        });
+      }
     }
   }
 }
 
-function addCapability(xmlCapabilities, cap) {
-  xmlCapabilities.element({
-    name: {
-      '@min': cap.range.start,
-      '@max': cap.range.end,
-      '@snap': cap.menuClickDmxValue,
-      '@timeHolder': `0`,
-      '@dummy': `0`,
-      '#text': cap.name
-    }
-  });
-}
 
 function getDefaultValue(channel) {
   if (channel instanceof MatrixChannel) {
@@ -190,37 +189,37 @@ function getChannelsByAttribute(channels) {
   }
 
   return channelsByAttribute;
-}
 
-function getChannelAttribute(channel) {
-  if (channel instanceof SwitchingChannel) {
-    channel = channel.defaultChannel;
+  function getChannelAttribute(channel) {
+    if (channel instanceof SwitchingChannel) {
+      channel = channel.defaultChannel;
 
-    if (channel instanceof MatrixChannel) {
-      channel = channel.wrappedChannel;
+      if (channel instanceof MatrixChannel) {
+        channel = channel.wrappedChannel;
+      }
     }
-  }
-  if (channel instanceof FineChannel) {
-    if (channel.fineness === 1) {
-      return `FINE`;
+    if (channel instanceof FineChannel) {
+      if (channel.fineness === 1) {
+        return `FINE`;
+      }
+      return `EXTRA`;
     }
-    return `EXTRA`;
-  }
 
-  const oflToDLightMap = {
-    INTENSITY: [`Intensity`],
-    COLOUR: [`Single Color`, `Multi-Color`, `Color Temperature`],
-    FOCUS: [`Pan`, `Tilt`],
-    BEAM: [`Iris`, `Focus`, `Zoom`],
-    EFFECT: [`Strobe`, `Shutter`, `Speed`, `Gobo`, `Prism`, `Effect`, `Fog`],
-    CONTROL: [`Maintenance`],
-    EXTRA: [`Nothing`]
-  };
+    const oflToDLightMap = {
+      INTENSITY: [`Intensity`],
+      COLOUR: [`Single Color`, `Multi-Color`, `Color Temperature`],
+      FOCUS: [`Pan`, `Tilt`],
+      BEAM: [`Iris`, `Focus`, `Zoom`],
+      EFFECT: [`Strobe`, `Shutter`, `Speed`, `Gobo`, `Prism`, `Effect`, `Fog`],
+      CONTROL: [`Maintenance`],
+      EXTRA: [`Nothing`]
+    };
 
-  for (const attribute of Object.keys(oflToDLightMap)) {
-    if (oflToDLightMap[attribute].includes(channel.type)) {
-      return attribute;
+    for (const attribute of Object.keys(oflToDLightMap)) {
+      if (oflToDLightMap[attribute].includes(channel.type)) {
+        return attribute;
+      }
     }
+    return `EXTRA`; // default if new types are added to OFL
   }
-  return `EXTRA`; // default if new types are added to OFL
 }
