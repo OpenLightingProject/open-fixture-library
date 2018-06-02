@@ -488,10 +488,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           if ([`Closed`, `Open`].includes(cap.shutterEffect) && (hasSpeed || hasDuration)) {
             result.errors.push(`${errorPrefix}: Shutter open/closed can't define speed or duration.`);
           }
-
-          if (hasSpeed && hasDuration) {
-            result.errors.push(`${errorPrefix} can't define both speed and duration.`);
-          }
         }
 
         /**
@@ -537,10 +533,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         function checkEffectCapability() {
           if (cap.effectPreset === null && schemaProperties.definitions.effectPreset.enum.includes(cap.effectName)) {
             result.errors.push(`${errorPrefix} must use effectPreset instead of effectName with '${cap.effectName}'.`);
-          }
-
-          if (cap.speed !== null && cap.duration !== null) {
-            result.errors.push(`${errorPrefix} can't define both speed and duration.`);
           }
         }
       }

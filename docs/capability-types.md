@@ -97,13 +97,13 @@ No type-specific properties.
   <td>speed</td>
   <td></td>
   <td>Entity <em>Speed</em></td>
-  <td>can't be used together with <em>duration</em></td>
+  <td></td>
 </tr>
 <tr>
   <td>duration</td>
   <td></td>
   <td>Entity <em>Time</em></td>
-  <td>can't be used together with <em>speed</em></td>
+  <td></td>
 </tr>
 </tbody>
 </table>
@@ -486,13 +486,13 @@ global, doesn't activate strobe directly
   <td>speed</td>
   <td></td>
   <td>Entity <em>Speed</em></td>
-  <td>can't be used together with <em>duration</em></td>
+  <td></td>
 </tr>
 <tr>
   <td>duration</td>
   <td></td>
   <td>Entity <em>Time</em></td>
-  <td>can't be used together with <em>speed</em></td>
+  <td></td>
 </tr>
 <tr>
   <td>effectIntensity</td>
