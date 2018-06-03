@@ -253,8 +253,6 @@ global, doesn't activate strobe directly
   * A laser device has seperate light beams that don't mix. If red and green lasers are active, `colors` should be set to `["#ff0000", "#00ff00"]`.
   * UV is always counted as a separate color as the ultraviolet light doesn't really mix with normal RGB colors. For a color preset "Red+Green+UV", `colors` should be set to `["#ffff00", "UV"]`.
 
-**Note:** `comment` is required in ColorPreset capabilities.
-
 
 #### ColorWheelIndex
 
@@ -1228,14 +1226,10 @@ No type-specific properties.
 </tbody>
 </table>
 
-**Note:** `comment` is required in Maintenance capabilities.
-
 
 #### Generic
 
 No type-specific properties.
-
-**Note:** `comment` is required in Generic capabilities.
 
 
 

@@ -318,7 +318,6 @@
           "menuClick": {},
           "switchChannels": {}
         },
-        "required": ["comment"],
         "not": {
           "anyOf": [
             { "required": ["colors", "colorsStart"] },
@@ -1537,7 +1536,6 @@
           "menuClick": {},
           "switchChannels": {}
         },
-        "required": ["comment"],
         "not": { "required": ["parameter", "parameterStart"] },
         "dependencies": {
           "parameterStart": ["parameterEnd"],
@@ -1561,7 +1559,6 @@
           "menuClick": {},
           "switchChannels": {}
         },
-        "required": ["comment"],
         "additionalProperties": false
       }
     }
