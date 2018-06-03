@@ -55,6 +55,14 @@ module.exports.export = function exportDLight(fixtures, options) {
   return deviceFiles;
 };
 
+/**
+ * Channels are grouped in attributes in D::Light.
+ * This function adds the given attribute group along with its channels to the given XML.
+ * @param {!XMLElement} xml The XML parent element.
+ * @param {!Mode} mode The fixture's mode that this definition is representing.
+ * @param {!string} attribute A D::Light attribute name.
+ * @param {!Array.<AbstractChannel|MatrixChannel>} channels All channels of the mode that are associated to the given attribute name.
+ */
 function addAttribute(xml, mode, attribute, channels) {
   const xmlAttribute = xml.element({
     AttributesDefinition: {
@@ -63,20 +71,18 @@ function addAttribute(xml, mode, attribute, channels) {
     }
   });
 
-  channels.forEach(addChannel);
-
-  function addChannel(channel, index) {
+  channels.forEach((channel, index) => {
     const xmlChannel = xmlAttribute.element({
       ThisAttribute: {
         '@id': index,
         HOME: {
-          '@id': getDefaultValue(channel)
+          '@id': getDefaultValue(getUsableChannel(channel))
         },
         addressIndex: {
           '@id': mode.getChannelIndex(channel)
         },
         parameterName: {
-          '@id': getParameterName()
+          '@id': getParameterName(channel)
         },
         minLevel: {
           '@id': 0
@@ -87,79 +93,105 @@ function addAttribute(xml, mode, attribute, channels) {
       }
     });
 
-    addCapabilities();
+    channel = getUsableChannel(channel);
 
-    function getParameterName() {
-      const uniqueName = channel.uniqueName;
+    let xmlCapabilities;
+    if (channel instanceof Channel && channel.hasCapabilities) {
+      const caps = channel.capabilities;
 
-      if (channel instanceof SwitchingChannel) {
-        channel = channel.defaultChannel;
-      }
-      if (channel instanceof FineChannel) {
-        return mode.getChannelIndex(channel.coarseChannel.key) + 1;
-      }
+      xmlCapabilities = xmlChannel.element({
+        Definitions: {
+          '@index': caps.length
+        }
+      });
 
-      switch (attribute) {
-        case `FOCUS`:
-          return channel.type.toUpperCase(); // PAN or TILT
-
-        // in all other attributes, custom text is allowed
-        // but we need to use another name syntax
-        default:
-          return uniqueName
-            .toUpperCase()
-            .replace(/ /g, `_`)
-            .replace(/\//g, `|`)
-            .replace(/COLOR/g, `COLOUR`);
-      }
+      caps.forEach(addCapability);
     }
 
-    function addCapabilities() {
-      let xmlCapabilities;
+    /**
+     * Adds an XML element for the given capability to the XML capability container.
+     * @param {!Capability} cap A capability of a channels capability list.
+     */
+    function addCapability(cap) {
+      xmlCapabilities.element({
+        name: {
+          '@min': cap.range.start,
+          '@max': cap.range.end,
+          '@snap': cap.menuClickDmxValue,
+          '@timeHolder': `0`,
+          '@dummy': `0`,
+          '#text': cap.name
+        }
+      });
+    }
+  });
 
-      if (channel instanceof Channel && channel.hasCapabilities) {
-        const caps = channel.capabilities;
+  /**
+   * @param {AbstractChannel|MatrixChannel} channel Any kind of channel, e.g. an item of a mode's channel list.
+   * @returns {!string} The parameter name (i. e. channel name) that should be used for this channel in D::Light.
+   */
+  function getParameterName(channel) {
+    if (channel instanceof MatrixChannel) {
+      channel = channel.wrappedChannel;
+    }
 
-        xmlCapabilities = xmlChannel.element({
-          Definitions: {
-            '@index': caps.length
-          }
-        });
+    const uniqueName = channel.uniqueName;
 
-        caps.forEach(addCapability);
-      }
+    channel = getUsableChannel(channel);
 
-      function addCapability(cap) {
-        xmlCapabilities.element({
-          name: {
-            '@min': cap.range.start,
-            '@max': cap.range.end,
-            '@snap': cap.menuClickDmxValue,
-            '@timeHolder': `0`,
-            '@dummy': `0`,
-            '#text': cap.name
-          }
-        });
-      }
+    if (channel instanceof FineChannel) {
+      // for fine channels, this is simply the coarse channel's index
+      return `${mode.getChannelIndex(channel.coarseChannel.key) + 1}`;
+    }
+
+    switch (attribute) {
+      case `FOCUS`:
+        return channel.type.toUpperCase(); // PAN or TILT
+
+      // in all other attributes, custom text is allowed
+      // but we need to use another name syntax
+      default:
+        return uniqueName
+          .toUpperCase()
+          .replace(/ /g, `_`)
+          .replace(/\//g, `|`)
+          .replace(/COLOR/g, `COLOUR`);
     }
   }
 }
 
-
+/**
+ * @param {Channel|FineChannel} channel A usable channel, i. e. no matrix or switching channels.
+ * @returns {!number} The DMX value this channel should be set to as default.
+ */
 function getDefaultValue(channel) {
-  if (channel instanceof MatrixChannel) {
-    channel = channel.wrappedChannel;
-  }
-
-  if (channel instanceof SwitchingChannel) {
-    return getDefaultValue(channel.defaultChannel);
-  }
   if (channel instanceof FineChannel) {
     return channel.defaultValue;
   }
+
   return channel.getDefaultValueWithFineness(0);
 }
 
+/**
+ * @param {AbstractChannel|MatrixChannel} channel Any kind of channel, e.g. an item of a mode's channel list.
+ * @returns {Channel|FineChannel} Switching channels resolved to their default channel, matrix channels resolved to their wrapped channel.
+ */
+function getUsableChannel(channel) {
+  if (channel instanceof SwitchingChannel) {
+    return getUsableChannel(channel.defaultChannel);
+  }
+
+  if (channel instanceof MatrixChannel) {
+    return getUsableChannel(channel.wrappedChannel);
+  }
+
+  return channel;
+}
+
+/**
+ * @param {!Array.<AbstractChannel|MatrixChannel>} channels List of channels, e.g. from a mode's channel list.
+ * @returns {!object.<string, AbstractChannel|MatrixChannel>} D::Light attribute names mapped to the corresponding channels of the given list. All channels are included once.
+ */
 function getChannelsByAttribute(channels) {
   const channelsByAttribute = {
     'INTENSITY': [],
@@ -173,12 +205,8 @@ function getChannelsByAttribute(channels) {
     'FINE': []
   };
 
-  for (let channel of channels) {
-    if (channel instanceof MatrixChannel) {
-      channel = channel.wrappedChannel;
-    }
-
-    channelsByAttribute[getChannelAttribute(channel)].push(channel);
+  for (const channel of channels) {
+    channelsByAttribute[getChannelAttribute(getUsableChannel(channel))].push(channel);
   }
 
   const emptyAttributes = Object.keys(channelsByAttribute).filter(
@@ -190,14 +218,11 @@ function getChannelsByAttribute(channels) {
 
   return channelsByAttribute;
 
+  /**
+   * @param {Channel|FineChannel} channel A usable channel, i. e. no matrix or switching channels.
+   * @returns {string} The proper D::Light attribute name for this channel.
+   */
   function getChannelAttribute(channel) {
-    if (channel instanceof SwitchingChannel) {
-      channel = channel.defaultChannel;
-
-      if (channel instanceof MatrixChannel) {
-        channel = channel.wrappedChannel;
-      }
-    }
     if (channel instanceof FineChannel) {
       if (channel.fineness === 1) {
         return `FINE`;
