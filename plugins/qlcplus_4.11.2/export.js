@@ -113,7 +113,7 @@ function addChannel(xml, channel) {
     capabilities = channel.capabilities;
   }
 
-  const chType = getChannelType(channel);
+  const chType = getChannelType(channel.type);
   xmlGroup.text(chType);
 
   if (chType === `Intensity`) {
@@ -271,26 +271,31 @@ function getFixtureType(fixture) {
   return `Other`;
 }
 
-// converts a Channel's type into a valid QLC+ channel type
-function getChannelType(channel) {
-  switch (channel.type) {
-    case `Single Color`:
-    case `Fog`:
-      return `Intensity`;
+/**
+ * Converts a channel's type into a valid QLC+ channel type.
+ * @param {!string} type Our own OFL channel type.
+ * @returns {!string} The corresponding QLC+ channel type.
+ */
+function getChannelType(type) {
+  const qlcplusChannelTypes = {
+    Intensity: [`Intensity`, `Single Color`],
+    Colour: [`Multi-Color`],
+    Pan: [`Pan`],
+    Tilt: [`Tilt`],
+    Beam: [`Focus`, `Zoom`, `Iris`, `Color Temperature`],
+    Gobo: [`Gobo`],
+    Prism: [`Prism`],
+    Shutter: [`Shutter`, `Strobe`],
+    Speed: [`Speed`],
+    Effect: [`Effect`, `Fog`],
+    Maintenance: [`Maintenance`],
+    Nothing: [`Nothing`]
+  };
 
-    case `Multi-Color`:
-      return `Colour`;
-
-    case `Strobe`:
-      return `Shutter`;
-
-    case `Zoom`:
-    case `Focus`:
-    case `Iris`:
-    case `Color Temperature`:
-      return `Beam`;
-
-    default:
-      return channel.type;
+  for (const qlcplusType of Object.keys(qlcplusChannelTypes)) {
+    if (qlcplusChannelTypes[qlcplusType].includes(type)) {
+      return qlcplusType;
+    }
   }
+  return `Effect`; // default if new types are added to OFL
 }
