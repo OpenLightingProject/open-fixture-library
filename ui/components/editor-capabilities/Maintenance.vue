@@ -15,12 +15,10 @@
       :formstate="formstate"
       :name="`capability${capability.uuid}-hold`"
       label="Hold">
-      <app-editor-proportional-capability-data-switcher
-        :capability="capability"
-        :formstate="formstate"
-        property-name="hold" />
-
-        <!-- TODO: Forbid proportional usage of hold -->
+      <app-property-input-entity
+        v-model="capability.typeData.hold"
+        :name="`capability${capability.uuid}-hold`"
+        :schema-property="holdSchema" />
     </app-simple-label>
 
     <app-simple-label
@@ -41,12 +39,14 @@
 import schemaProperties from '~~/lib/schema-properties.js';
 
 import editorProportionalCapabilityDataSwitcher from '~/components/editor-proportional-capability-data-switcher.vue';
+import propertyInputEntityVue from '~/components/property-input-entity.vue';
 import propertyInputTextVue from '~/components/property-input-text.vue';
 import simpleLabelVue from '~/components/simple-label.vue';
 
 export default {
   components: {
     'app-editor-proportional-capability-data-switcher': editorProportionalCapabilityDataSwitcher,
+    'app-property-input-entity': propertyInputEntityVue,
     'app-property-input-text': propertyInputTextVue,
     'app-simple-label': simpleLabelVue
   },
@@ -68,11 +68,17 @@ export default {
         parameterStart: null,
         parameterEnd: null,
         hold: ``,
-        holdStart: null,
-        holdEnd: null,
         comment: ``
       }
     };
+  },
+  computed: {
+    holdSchema() {
+      const propertySchema = this.properties.capabilityTypes.Maintenance.properties.hold;
+      const entityName = propertySchema.$ref.replace(`definitions.json#/entities/`, ``);
+
+      return this.properties.entities[entityName];
+    }
   }
 };
 </script>
