@@ -27,7 +27,8 @@
         ref="speedOrDurationInput"
         :capability="capability"
         :formstate="formstate"
-        :property-name="capability.typeData.speedOrDuration" />
+        :property-name="capability.typeData.speedOrDuration"
+        :required="true" />
 
     </app-simple-label>
 

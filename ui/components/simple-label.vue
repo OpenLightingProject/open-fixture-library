@@ -118,7 +118,7 @@ export default {
       return this.fieldState.$error;
     },
     isSelectField() {
-      return this.name === `manufacturerShortName` || /^capability.*?-(?:type|shutterEffect)$/.test(this.name);
+      return this.name === `manufacturerShortName` || /^capability.*?-(?:type|shutterEffect|color|effectPreset|fogType)$/.test(this.name);
     }
   }
 };

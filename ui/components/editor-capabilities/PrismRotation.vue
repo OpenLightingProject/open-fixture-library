@@ -27,7 +27,8 @@
         ref="speedOrAngleInput"
         :capability="capability"
         :formstate="formstate"
-        :property-name="capability.typeData.speedOrAngle" />
+        :property-name="capability.typeData.speedOrAngle"
+        :required="true" />
 
     </app-simple-label>
 

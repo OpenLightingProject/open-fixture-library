@@ -8,7 +8,8 @@
       <app-property-input-entity
         v-model="capability.typeData.blade"
         :name="`capability${capability.uuid}-blade`"
-        :schema-property="bladeSchema" />
+        :schema-property="bladeSchema"
+        :required="true" />
     </app-simple-label>
 
     <app-simple-label
@@ -18,6 +19,7 @@
       <app-editor-proportional-capability-data-switcher
         :capability="capability"
         :formstate="formstate"
+        :required="true"
         property-name="angle" />
     </app-simple-label>
 

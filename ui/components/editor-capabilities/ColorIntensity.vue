@@ -27,6 +27,7 @@
       <app-editor-proportional-capability-data-switcher
         :capability="capability"
         :formstate="formstate"
+        :required="true"
         property-name="brightness" />
     </app-simple-label>
 

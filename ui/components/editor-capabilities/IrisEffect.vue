@@ -9,7 +9,8 @@
         v-model="capability.typeData.effectName"
         :formstate="formstate"
         :name="`capability${capability.uuid}-effectName`"
-        :schema-property="properties.definitions.nonEmptyString" />
+        :schema-property="properties.definitions.nonEmptyString"
+        :required="true" />
     </app-simple-label>
 
     <app-simple-label

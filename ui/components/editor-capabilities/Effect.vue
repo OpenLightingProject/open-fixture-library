@@ -28,14 +28,16 @@
         v-model="capability.typeData.effectName"
         :formstate="formstate"
         :name="`capability${capability.uuid}-effectName`"
-        :schema-property="properties.definitions.nonEmptyString" />
+        :schema-property="properties.definitions.nonEmptyString"
+        :required="true" />
 
       <select
         v-else
         ref="effectNameOrPresetInput"
         v-model="capability.typeData.effectPreset"
         :class="{ empty: capability.typeData.effectPreset === `` }"
-        :name="`capability${capability.uuid}-effectPreset`">
+        :name="`capability${capability.uuid}-effectPreset`"
+        required>
 
         <option value="" disabled>Please select an effect preset</option>
         <option

@@ -1,14 +1,18 @@
 <template>
   <div class="proportional-capability-data">
 
-    <!-- TODO: required fields, validation, custom inputs (using slots?) -->
+    <validate
+      v-if="!hasStartEnd"
+      :state="formstate"
+      :custom="customValidators"
+      tag="span">
 
-    <template v-if="!hasStartEnd">
       <app-property-input-number
         v-if="entity === `index`"
         ref="steppedField"
         v-model="indexStepped"
         :name="`capability${capability.uuid}-${propertyName}`"
+        :required="required"
         :schema-property="indexSchema" />
 
       <app-property-input-entity
@@ -16,6 +20,7 @@
         ref="steppedField"
         v-model="propertyDataStepped"
         :name="`capability${capability.uuid}-${propertyName}`"
+        :required="required"
         :schema-property="entitySchema" />
 
       <app-property-input-text
@@ -23,18 +28,28 @@
         ref="steppedField"
         v-model="propertyDataStepped"
         :name="`capability${capability.uuid}-${propertyName}`"
+        :required="required"
         :schema-property="properties.definitions.nonEmptyString" />
 
       <span v-if="hint" class="hint">{{ hint }}</span>
-    </template>
+
+    </validate>
 
     <template v-else>
-      <span class="entity-input">
+      <!-- TODO: validate same unit -->
+
+      <validate
+        :state="formstate"
+        :custom="customValidators"
+        tag="span"
+        class="entity-input">
+
         <app-property-input-number
           v-if="entity === `index`"
           ref="startField"
           v-model="indexStart"
           :name="`capability${capability.uuid}-${propertyName}Start`"
+          :required="required"
           :schema-property="indexSchema" />
 
         <app-property-input-entity
@@ -42,6 +57,7 @@
           ref="startField"
           v-model="propertyDataStart"
           :name="`capability${capability.uuid}-${propertyName}Start`"
+          :required="required"
           :schema-property="entitySchema"
           hint="start" />
 
@@ -50,6 +66,7 @@
           ref="startField"
           v-model="propertyDataStart"
           :name="`capability${capability.uuid}-${propertyName}Start`"
+          :required="required"
           :schema-property="properties.definitions.nonEmptyString"
           hint="start" />
 
@@ -57,7 +74,8 @@
           {{ hint || `value` }} at
           {{ capability.dmxRange && capability.dmxRange[0] !== null ? `DMX value ${capability.dmxRange[0]}` : `capability start` }}
         </span>
-      </span>
+
+      </validate>
 
       <span class="separator">
         <a
@@ -70,12 +88,18 @@
         …
       </span>
 
-      <span class="entity-input">
+      <validate
+        :state="formstate"
+        :custom="customValidators"
+        tag="span"
+        class="entity-input">
+
         <app-property-input-number
           v-if="entity === `index`"
           ref="endField"
           v-model="indexEnd"
           :name="`capability${capability.uuid}-${propertyName}End`"
+          :required="required"
           :schema-property="indexSchema" />
 
         <app-property-input-entity
@@ -83,6 +107,7 @@
           ref="endField"
           v-model="propertyDataEnd"
           :name="`capability${capability.uuid}-${propertyName}End`"
+          :required="required"
           :schema-property="entitySchema"
           hint="end" />
 
@@ -91,6 +116,7 @@
           ref="endField"
           v-model="propertyDataEnd"
           :name="`capability${capability.uuid}-${propertyName}End`"
+          :required="required"
           :schema-property="properties.definitions.nonEmptyString"
           hint="end" />
 
@@ -98,7 +124,8 @@
           {{ hint || `value` }} at
           {{ capability.dmxRange && capability.dmxRange[1] !== null ? `DMX value ${capability.dmxRange[1]}` : `capability end` }}
         </span>
-      </span>
+
+      </validate>
     </template>
 
     <section>
@@ -170,6 +197,11 @@ export default {
       type: String,
       required: true
     },
+    required: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
     hint: {
       type: String,
       required: false,
@@ -182,7 +214,8 @@ export default {
   },
   data() {
     return {
-      properties: schemaProperties
+      properties: schemaProperties,
+      customValidators: null
     };
   },
   computed: {

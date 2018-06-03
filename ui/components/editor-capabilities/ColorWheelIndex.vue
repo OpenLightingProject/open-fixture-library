@@ -8,6 +8,7 @@
       <app-editor-proportional-capability-data-switcher
         :capability="capability"
         :formstate="formstate"
+        :required="true"
         property-name="index" />
     </app-simple-label>
 
@@ -22,6 +23,7 @@
         :schema-property="properties.definitions.nonEmptyString" />
     </app-simple-label>
 
+    <!-- TODO: validate pattern -->
     <app-simple-label
       :formstate="formstate"
       :name="`capability${capability.uuid}-colorsHexString`"

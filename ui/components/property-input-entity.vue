@@ -1,6 +1,8 @@
 <template>
   <span :class="{ 'entity-input': true, 'has-number': hasNumber }">
 
+    <!-- TODO: validate empty fields correctly -->
+
     <app-property-input-number
       v-if="hasNumber"
       ref="input"
