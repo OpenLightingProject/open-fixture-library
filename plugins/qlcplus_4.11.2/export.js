@@ -277,8 +277,6 @@ function getFixtureType(fixture) {
 function getChannelType(channel) {
   switch (channel.type) {
     case `Single Color`:
-    case `Color Temperature`:
-    case `Fog`:
       return `Intensity`;
 
     case `Multi-Color`:
@@ -287,10 +285,15 @@ function getChannelType(channel) {
     case `Strobe`:
       return `Shutter`;
 
-    case `Zoom`:
+    case `Color Temperature`:
     case `Focus`:
     case `Iris`:
+    case `Zoom`:
       return `Beam`;
+
+    case `Effect`:
+    case `Fog`:
+      return `Effect`;
 
     default:
       return channel.type;
