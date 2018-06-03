@@ -129,8 +129,20 @@
   }
 }
 
-.proportional-capability-data:not(:hover) a.swap {
-  fill: transparent;
+.proportional-capability-data {
+  & a.swap {
+    opacity: 0;
+    transition-property: opacity, fill;
+  }
+
+  &:hover a.swap,
+  & a.swap:focus {
+    opacity: 1;
+  }
+
+  &:focus-within a.swap {
+    opacity: 1;
+  }
 }
 </style>
 

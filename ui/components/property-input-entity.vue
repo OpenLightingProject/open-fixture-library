@@ -103,9 +103,9 @@ export default {
     },
     unitNames() {
       return this.subSchemas.filter(
-        subSchema => `$ref` in subSchema && subSchema.$ref.startsWith(`#/units/`)
+        subSchema => `$ref` in subSchema && subSchema.$ref.includes(`#/units/`)
       ).map(
-        subSchema => subSchema.$ref.replace(`#/units/`, ``)
+        subSchema => subSchema.$ref.replace(/^(?:definitions\.json)?#\/units\//, ``)
       );
     },
     units() {
@@ -225,11 +225,11 @@ export default {
 
 /**
  * @param {!string} unitString The unit string, as required by the schema.
- * @returns {!string} The unitString if it is not empty, `no unit` otherwise.
+ * @returns {!string} The unitString if it is not empty, `number` otherwise.
  */
 function getUnitDisplayString(unitString) {
   if (unitString === ``) {
-    return `no unit`;
+    return `number`;
   }
 
   return unitString;
