@@ -163,9 +163,9 @@ function handleMode(xmlFixture, mode) {
       'Deflection': 0,
       'DmxByte0': dmxByte0,
       'DmxByte1': dmxByte1,
-      'Constant': channel.constant ? 1 : 0,
-      'Crossfade': channel.crossfade ? 1 : 0,
-      'Invert': channel.invert ? 1 : 0,
+      'Constant': channel.isConstant ? 1 : 0,
+      'Crossfade': channel.canCrossfade ? 1 : 0,
+      'Invert': channel.isInverted ? 1 : 0,
       'Precedence': channel.precedence,
       'ClassicPos': viewPosCount
     });
