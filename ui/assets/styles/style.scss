@@ -149,7 +149,10 @@ input[type=url],
 input[type=number] {
   &.vf-touched.vf-invalid,
   &.vf-submitted.vf-invalid,
-  &.vf-touched[class^=vf-invalid-] {
+  &.vf-touched[class^=vf-invalid-],
+  .vf-touched.vf-invalid &,
+  .vf-submitted.vf-invalid &,
+  .vf-touched[class^=vf-invalid-] & {
     border-color: red;
     box-shadow: 0 0 4px rgba(255, 0, 0, 0.4);
   }
