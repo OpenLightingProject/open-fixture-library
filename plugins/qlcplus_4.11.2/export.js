@@ -273,7 +273,6 @@ function getFixtureType(fixture) {
   return `Other`;
 }
 
-<<<<<<< HEAD
 /**
  * Converts a channel's type into a valid QLC+ channel type.
  * @param {!string} type Our own OFL channel type.
@@ -299,32 +298,6 @@ function getChannelType(type) {
     if (qlcplusChannelTypes[qlcplusType].includes(type)) {
       return qlcplusType;
     }
-=======
-// converts a Channel's type into a valid QLC+ channel type
-function getChannelType(channel) {
-  switch (channel.type) {
-    case `Single Color`:
-      return `Intensity`;
-
-    case `Multi-Color`:
-      return `Colour`;
-
-    case `Strobe`:
-      return `Shutter`;
-
-    case `Color Temperature`:
-    case `Focus`:
-    case `Iris`:
-    case `Zoom`:
-      return `Beam`;
-
-    case `Effect`:
-    case `Fog`:
-      return `Effect`;
-
-    default:
-      return channel.type;
->>>>>>> ae8170c66e3b2a90d307369f03e63137597c24f4
   }
   return `Effect`; // default if new types are added to OFL
 }
