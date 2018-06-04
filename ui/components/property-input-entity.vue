@@ -178,7 +178,7 @@ export default {
         return isNaN(number) ? `` : number;
       },
       set(newNumber) {
-        if (newNumber === null) {
+        if (newNumber === null || newNumber === `invalid`) {
           newNumber = ``;
         }
 
