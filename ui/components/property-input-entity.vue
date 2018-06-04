@@ -89,13 +89,19 @@ export default {
       type: null,
       required: false,
       default: ``
+    },
+    associatedEntityInput: {
+      type: Object,
+      required: false,
+      default: null
     }
   },
   data() {
     return {
       properties: schemaProperties,
       validationData: {
-        'entity-complete': ``
+        'entity-complete': ``,
+        'entities-have-same-units': ``
       }
     };
   },
@@ -194,6 +200,17 @@ export default {
           this.update(newNumber + this.units[this.selectedUnit].unitStr);
         }
       }
+    },
+    hasSameUnit() {
+      if (!this.associatedEntityInput || !this.associatedEntityInput.value) {
+        return true;
+      }
+
+      if (!this.hasNumber && !this.associatedEntityInput.hasNumber) {
+        return true;
+      }
+
+      return this.selectedUnit === this.associatedEntityInput.selectedUnit;
     }
   },
   mounted() {

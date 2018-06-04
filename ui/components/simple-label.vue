@@ -26,6 +26,7 @@
             <div v-else-if="fieldErrors[`no-mode-name`]">Don't include the word "mode", it is appended automatically.</div>
             <div v-else-if="fieldErrors[`no-fine-channel-name`]">Don't create fine channels manually, set the channel resolution below instead.</div>
             <div v-else-if="fieldErrors[`entity-complete`]">Please fill out this field.</div>
+            <div v-else-if="fieldErrors[`entities-have-same-units`]">Please use the same unit or select a keyword for both entities.</div>
 
             <!-- general validators -->
             <div v-else-if="fieldErrors.number">Please enter a number.</div>

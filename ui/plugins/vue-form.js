@@ -60,6 +60,9 @@ Vue.use(VueForm, {
       }
 
       return true;
+    },
+    'entities-have-same-units': function(value, attrValue, vnode) {
+      return vnode.componentInstance.hasSameUnit;
     }
   }
 });

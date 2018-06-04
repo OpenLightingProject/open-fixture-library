@@ -36,8 +36,6 @@
     </validate>
 
     <template v-else>
-      <!-- TODO: validate same unit -->
-
       <validate
         :state="formstate"
         :custom="customValidators"
@@ -59,6 +57,7 @@
           :name="`capability${capability.uuid}-${propertyName}Start`"
           :required="required"
           :schema-property="entitySchema"
+          :associated-entity-input="$refs.endField"
           hint="start" />
 
         <app-property-input-text
@@ -109,6 +108,7 @@
           :name="`capability${capability.uuid}-${propertyName}End`"
           :required="required"
           :schema-property="entitySchema"
+          :associated-entity-input="$refs.startField"
           hint="end" />
 
         <app-property-input-text
