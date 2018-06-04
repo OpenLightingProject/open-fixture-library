@@ -25,6 +25,7 @@
             <div v-else-if="fieldErrors[`no-manufacturer-name`]">Don't include the manufacturer name.</div>
             <div v-else-if="fieldErrors[`no-mode-name`]">Don't include the word "mode", it is appended automatically.</div>
             <div v-else-if="fieldErrors[`no-fine-channel-name`]">Don't create fine channels manually, set the channel resolution below instead.</div>
+            <div v-else-if="fieldErrors[`entity-complete`]">Please fill out this field.</div>
 
             <!-- general validators -->
             <div v-else-if="fieldErrors.number">Please enter a number.</div>

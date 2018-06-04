@@ -1,21 +1,23 @@
 <template>
   <span :class="{ 'entity-input': true, 'has-number': hasNumber }">
 
-    <!-- TODO: validate empty fields correctly -->
-
     <app-property-input-number
       v-if="hasNumber"
       ref="input"
       v-model="selectedNumber"
       :schema-property="units[selectedUnit].numberSchema"
-      :required="true" />
+      :required="true"
+      @focus.native="onFocus"
+      @blur.native="onBlur($event)" />
 
     <select
       ref="select"
       v-model="selectedUnit"
       :required="required"
       :class="{empty: selectedUnit === ``}"
-      @input="unitSelected">
+      @input="unitSelected"
+      @focus.native="onFocus"
+      @blur.native="onBlur($event)">
 
       <option :disabled="required" value="">unset</option>
 
@@ -91,7 +93,10 @@ export default {
   },
   data() {
     return {
-      properties: schemaProperties
+      properties: schemaProperties,
+      validationData: {
+        'entity-complete': ``
+      }
     };
   },
   computed: {
@@ -190,25 +195,13 @@ export default {
         }
       }
     }
-    // validationData() {
-    //   return {
-    //     pattern: `pattern` in this.schemaProperty ? `${this.schemaProperty.pattern}` : null,
-    //     minlength: `minLength` in this.schemaProperty ? `${this.schemaProperty.minLength}` : null,
-    //     maxlength: `maxLength` in this.schemaProperty ? `${this.schemaProperty.maxLength}` : null
-    //   };
-    // }
   },
   mounted() {
     if (this.autoFocus) {
       this.focus();
     }
 
-    // this.$watch(`validationData`, function(newValidationData) {
-    //   this.$emit(`vf:validate`, newValidationData);
-    // }, {
-    //   deep: true,
-    //   immediate: true
-    // });
+    this.$emit(`vf:validate`, this.validationData);
   },
   methods: {
     focus() {
@@ -221,6 +214,14 @@ export default {
     unitSelected() {
       // 1st nextTick for data change locally (emits event), 2nd nextTick for new value from props
       this.$nextTick(() => this.$nextTick(() => this.focus()));
+    },
+    onFocus() {
+      this.$emit(`focus`);
+    },
+    onBlur(event) {
+      if (!(event.target && event.relatedTarget) || event.target.closest(`.entity-input`) !== event.relatedTarget.closest(`.entity-input`)) {
+        this.$emit(`blur`);
+      }
     }
   }
 };

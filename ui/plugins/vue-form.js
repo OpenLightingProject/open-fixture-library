@@ -51,6 +51,15 @@ Vue.use(VueForm, {
       }
 
       return !/\bLSB\b|\bMSB\b/.test(value);
+    },
+    'entity-complete': function(value, attrValue, vnode) {
+      const component = vnode.componentInstance;
+
+      if (component.hasNumber) {
+        return component.selectedNumber !== `` && component.selectedNumber !== null;
+      }
+
+      return true;
     }
   }
 });
