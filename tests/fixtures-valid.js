@@ -43,6 +43,11 @@ for (const manKey of fs.readdirSync(fixturePath)) {
   }
 }
 
+/**
+ * Checks (asynchronously) the given fixture by adding a Promise to the promises array that resolves with a result object.
+ * @param {!string} manKey The manufacturer key.
+ * @param {!string} fixKey The fixture key.
+ */
 function handleFixtureFile(manKey, fixKey) {
   const filename = `${manKey}/${fixKey}.json`;
   const result = {
@@ -109,7 +114,7 @@ promises.push(new Promise((resolve, reject) => {
     const validate = (new Ajv()).compile(manufacturerSchema);
     const valid = validate(manufacturers);
     if (!valid) {
-      result.errors.push(module.exports.getErrorString(`File does not match schema.`, validate.errors));
+      result.errors.push(getErrorString(`File does not match schema.`, validate.errors));
       return resolve(result);
     }
 
