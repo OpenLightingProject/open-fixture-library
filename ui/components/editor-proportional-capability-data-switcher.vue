@@ -57,7 +57,7 @@
           :name="`capability${capability.uuid}-${propertyName}Start`"
           :required="required"
           :schema-property="entitySchema"
-          :associated-entity-input="$refs.endField"
+          :associated-entity="propertyDataEnd"
           hint="start" />
 
         <app-property-input-text
@@ -108,7 +108,7 @@
           :name="`capability${capability.uuid}-${propertyName}End`"
           :required="required"
           :schema-property="entitySchema"
-          :associated-entity-input="$refs.startField"
+          :associated-entity="propertyDataStart"
           hint="end" />
 
         <app-property-input-text
