@@ -362,20 +362,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           rangesInvalid = !checkRange(i);
         }
 
-        const switchingChannelAliases = Object.keys(cap.switchChannels);
-        if (!arraysEqual(switchingChannelAliases, channel.switchingChannelAliases)) {
-          result.errors.push(`Capability '${cap.name}' (#${i + 1}) must define the same switching channel aliases as all other capabilities in channel '${channel.key}'.`);
-        }
-        else {
-          for (const alias of switchingChannelAliases) {
-            const chKey = cap.switchChannels[alias];
-            usedChannelKeys.add(chKey.toLowerCase());
-
-            if (channel.fixture.getChannelByKey(chKey) === null) {
-              result.errors.push(`Channel '${chKey}' is referenced from capability '${cap.name}' (#${i + 1}) in channel '${channel.key}' but is not defined.`);
-            }
-          }
-        }
+        checkCapability(cap, `Capability '${cap.name}' (${cap.rawDmxRange}) in channel '${channel.key}'`);
       }
 
       /**
@@ -433,6 +420,28 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         }
 
         return values;
+      }
+
+      /**
+       * Check that a capability is valid (except its DMX range).
+       * @param {!Capability} cap The capability to check.
+       * @param {!string} errorPrefix An identifier for the capability to use in errors and warnings.
+       */
+      function checkCapability(cap, errorPrefix) {
+        const switchingChannelAliases = Object.keys(cap.switchChannels);
+        if (!arraysEqual(switchingChannelAliases, channel.switchingChannelAliases)) {
+          result.errors.push(`${errorPrefix} must define the same switching channel aliases as all other capabilities.`);
+        }
+        else {
+          switchingChannelAliases.forEach(alias => {
+            const chKey = cap.switchChannels[alias];
+            usedChannelKeys.add(chKey.toLowerCase());
+
+            if (channel.fixture.getChannelByKey(chKey) === null) {
+              result.errors.push(`${errorPrefix} references unknown channel '${chKey}'.`);
+            }
+          });
+        }
       }
     }
   }
