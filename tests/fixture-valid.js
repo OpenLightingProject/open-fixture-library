@@ -716,41 +716,107 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
    * Checks if the used channels fits to the fixture's categories and raise warnings suggesting to add/remove a category.
    */
   function checkCategories() {
-    const fixtureChannels = fixture.availableChannels.concat(fixture.matrixChannels.map(matrixCh => matrixCh.wrappedChannel));
+    const categories = {
+      'Color Changer': {
+        isSuggested: isColorChanger(),
+        suggestedPhrase: `there are at least one 'Multi-Color' or two 'Single Color' channels`,
+        invalidPhrase: `there is no 'Multi-Color' and less than two 'Single Color' channels`
+      },
+      'Moving Head': {
+        isSuggested: isMovingHead(),
+        isInvalid: isNotMovingHead(),
+        suggestedPhrase: `focus.type is 'Head' or there's a 'Pan' and a 'Tilt' capability`,
+        invalidPhrase: `focus.type is not 'Head'`
+      },
+      'Scanner': {
+        isSuggested: isScanner(),
+        isInvalid: isNotScanner(),
+        suggestedPhrase: `focus.type is 'Mirror' or there's a 'Pan' and a 'Tilt' capability`,
+        invalidPhrase: `focus.type is not 'Mirror'`
+      },
+      'Smoke': {
+        isInvalid: !hasChannelOfType(`Fog`),
+        invalidPhrase: `there is not 'Fog' channel.`
+      },
+      'Hazer': {
+        isInvalid: !hasChannelOfType(`Fog`),
+        invalidPhrase: `there is not 'Fog' channel.`
+      }
+    };
 
-    const hasMultiColorChannel = fixtureChannels.some(channel => channel.type === `Multi-Color`);
-    const hasMultipleSingleColorChannels = fixtureChannels.filter(channel => channel.type === `Single Color`).length > 1;
-    const hasColorChangerCategory = fixture.categories.includes(`Color Changer`);
-    if (!hasColorChangerCategory && hasMultiColorChannel) {
-      result.warnings.push(`Category 'Color Changer' suggested since there is a 'Multi-Color' channel.`);
-    }
-    else if (!hasColorChangerCategory && hasMultipleSingleColorChannels) {
-      result.warnings.push(`Category 'Color Changer' suggested since there are multiple 'Single Color' channels.`);
-    }
-    else if (hasColorChangerCategory && !hasMultiColorChannel && !hasMultipleSingleColorChannels) {
-      result.warnings.push(`Category 'Color Changer' invalid since there is no 'Multi-Color' and less than 2 'Single Color' channels.`);
+    for (const categoryName of Object.keys(categories)) {
+      const categoryUsed = fixture.categories.includes(categoryName);
+      const category = categories[categoryName];
+
+      if (!(`isInvalid` in category)) {
+        category.isInvalid = !category.isSuggested;
+      }
+
+      if (!categoryUsed && category.isSuggested) {
+        result.warnings.push(`Category '${categoryName}' suggested since ${category.suggestedPhrase}.`);
+      }
+      else if (categoryUsed && category.isInvalid) {
+        result.errors.push(`Category '${categoryName}' invalid since ${category.invalidPhrase}.`);
+      }
     }
 
-    const hasFocusTypeHead = fixture.physical !== null && fixture.physical.focusType === `Head`;
-    const hasMovingHeadCategory = fixture.categories.includes(`Moving Head`);
-    if (!hasMovingHeadCategory && hasFocusTypeHead) {
-      result.warnings.push(`Category 'Moving Head' suggested since focus.type is 'Head'.`);
-    }
-    else if (hasMovingHeadCategory && !hasFocusTypeHead) {
-      result.warnings.push(`Category 'Moving Head' invalid since focus.type is not 'Head'.`);
+    /**
+     * @returns {!boolean} Whether the 'Color Changer' category is suggested.
+    */
+    function isColorChanger() {
+      return hasChannelOfType(`Multi-Color`) || hasChannelOfType(`Single Color`, 2);
     }
 
-    const hasFogChannel = fixtureChannels.some(channel => channel.type === `Fog`);
-    const hasSmokeCategory = fixture.categories.includes(`Smoke`);
-    const hasHazerCategory = fixture.categories.includes(`Hazer`);
-    if (!(hasSmokeCategory || hasHazerCategory) && hasFogChannel) {
-      result.warnings.push(`Categories 'Smoke' and/or 'Hazer' suggested since there is a 'Fog' channel.`);
+    /**
+     * @returns {!boolean} Whether the 'Moving Head' category is suggested.
+    */
+    function isMovingHead() {
+      const hasFocusTypeHead = fixture.physical !== null && fixture.physical.focusType === `Head`;
+      const hasOtherFocusType = fixture.physical !== null && fixture.physical.focusType !== null;
+
+      return hasFocusTypeHead || (hasPanTiltChannels() && !hasOtherFocusType);
     }
-    else if (hasSmokeCategory && !hasFogChannel) {
-      result.warnings.push(`Category 'Smoke' invalid since there is no 'Fog' channel.`);
+
+    /**
+     * @returns {!boolean} Whether the 'Moving Head' category is invalid.
+    */
+    function isNotMovingHead() {
+      return fixture.physical === null || fixture.physical.focusType !== `Head`;
     }
-    else if (hasHazerCategory && !hasFogChannel) {
-      result.warnings.push(`Category 'Hazer' invalid since there is no 'Fog' channel.`);
+
+    /**
+     * @returns {!boolean} Whether the 'Scanner' category is suggested.
+    */
+    function isScanner() {
+      const hasFocusTypeMirror = fixture.physical !== null && fixture.physical.focusType === `Mirror`;
+      const hasOtherFocusType = fixture.physical !== null && fixture.physical.focusType !== null;
+
+      return hasFocusTypeMirror || (hasPanTiltChannels() && !hasOtherFocusType);
+    }
+
+    /**
+     * @returns {!boolean} Whether the 'Scanner' category is invalid.
+    */
+    function isNotScanner() {
+      return fixture.physical === null || fixture.physical.focusType !== `Mirror`;
+    }
+
+    /**
+     * @returns {!boolean} Whether the fixture has both a Pan and a Tilt channel.
+     */
+    function hasPanTiltChannels() {
+      return hasChannelOfType(`Pan`) && hasChannelOfType(`Tilt`);
+    }
+
+    /**
+     * @param {!string} type What channel type to search for.
+     * @param {!number} [minimum=1] How many occurences are needed to succeed.
+     * @returns {!boolean} Whether the given channel type occurs at least at the given minimum times in the fixture.
+     */
+    function hasChannelOfType(type, minimum = 1) {
+      return fixture.normalizedChannels.filter(
+        ch => ch.type === type
+      ).length >= minimum;
     }
   }
 
