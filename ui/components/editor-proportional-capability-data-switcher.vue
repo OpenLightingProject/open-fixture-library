@@ -39,7 +39,7 @@
       <validate
         :state="formstate"
         :custom="customValidators"
-        tag="span"
+        tag="label"
         class="entity-input">
 
         <app-property-input-number
@@ -90,7 +90,7 @@
       <validate
         :state="formstate"
         :custom="customValidators"
-        tag="span"
+        tag="label"
         class="entity-input">
 
         <app-property-input-number
