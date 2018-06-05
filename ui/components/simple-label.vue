@@ -14,7 +14,8 @@
         <div
           v-show="fieldState.$touched || fieldState.$submitted"
           class="error-message">
-          <div v-if="fieldErrors.required">Please fill out this field.</div>
+          <div v-if="isSelectField && fieldErrors.required">Please select a value.</div>
+          <div v-else-if="fieldErrors.required">Please fill out this field.</div>
 
           <!-- custom validators -->
           <div v-else-if="fieldErrors[`complete-range`]">Please fill out both start and end of the range.</div>
@@ -111,6 +112,9 @@ export default {
       }
 
       return this.fieldState.$error;
+    },
+    isSelectField() {
+      return this.name === `manufacturerShortName` || /^capability.*?-(?:type|shutterEffect|color|effectPreset|fogType)$/.test(this.name);
     }
   }
 };
