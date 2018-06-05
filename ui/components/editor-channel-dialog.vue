@@ -202,6 +202,12 @@
 }
 </style>
 
+<style>
+#channel-dialog {
+  max-width: 700px;
+  width: 80%;
+}
+</style>
 
 <script>
 import scrollIntoView from 'scroll-into-view';
