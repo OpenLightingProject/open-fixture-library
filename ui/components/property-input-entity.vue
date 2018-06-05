@@ -89,13 +89,19 @@ export default {
       type: null,
       required: false,
       default: ``
+    },
+    associatedEntity: {
+      type: null,
+      required: false,
+      default: ``
     }
   },
   data() {
     return {
       properties: schemaProperties,
       validationData: {
-        'entity-complete': ``
+        'entity-complete': ``,
+        'entities-have-same-units': ``
       }
     };
   },
@@ -134,18 +140,7 @@ export default {
     },
     selectedUnit: {
       get() {
-        if (this.enumValues.includes(this.value) || this.value === ``) {
-          return this.value;
-        }
-
-        if (this.value === `[no unit]` || typeof this.value !== `string`) {
-          return this.unitNames.find(name => this.units[name].unitStr === ``);
-        }
-
-        /* eslint-disable-next-line security/detect-unsafe-regex */ // because it's a bug in safe-regex
-        const unit = this.value.replace(/^-?[0-9]+(\.[0-9]+)?/, ``);
-
-        return this.unitNames.find(name => this.units[name].unitStr === unit) || ``;
+        return getSelectedUnit(this.value, this.enumValues, this.unitNames, this.units);
       },
       set(newUnit) {
         if (this.enumValues.includes(newUnit) || newUnit === ``) {
@@ -165,7 +160,7 @@ export default {
       }
     },
     hasNumber() {
-      return this.selectedUnit !== `` && !this.enumValues.includes(this.selectedUnit);
+      return hasNumber(this.selectedUnit, this.enumValues);
     },
     selectedNumber: {
       get() {
@@ -178,7 +173,7 @@ export default {
         return isNaN(number) ? `` : number;
       },
       set(newNumber) {
-        if (newNumber === null) {
+        if (newNumber === null || newNumber === `invalid`) {
           newNumber = ``;
         }
 
@@ -194,6 +189,19 @@ export default {
           this.update(newNumber + this.units[this.selectedUnit].unitStr);
         }
       }
+    },
+    hasSameUnit() {
+      if (!this.associatedEntity) {
+        return true;
+      }
+
+      const otherFieldSelectedUnit = getSelectedUnit(this.associatedEntity, this.enumValues, this.unitNames, this.units);
+
+      if (!this.hasNumber && !hasNumber(otherFieldSelectedUnit, this.enumValues)) {
+        return true;
+      }
+
+      return this.selectedUnit === otherFieldSelectedUnit;
     }
   },
   mounted() {
@@ -237,5 +245,35 @@ function getUnitDisplayString(unitString) {
 
   return unitString;
 }
-</script>
 
+/**
+ * @param {?string|number} value The value to get the unit from.
+ * @param {!Array.<!string>} enumValues List of allowed keywords.
+ * @param {!Array.<!string>} unitNames List of names of allowed units.
+ * @param {!Object.<string, !Object>} units Unit data by unit name.
+ * @returns {!string} The name of value's unit.
+ */
+function getSelectedUnit(value, enumValues, unitNames, units) {
+  if (enumValues.includes(value) || value === ``) {
+    return value;
+  }
+
+  if (value === `[no unit]` || typeof value !== `string`) {
+    return unitNames.find(name => units[name].unitStr === ``);
+  }
+
+  /* eslint-disable-next-line security/detect-unsafe-regex */ // because it's a bug in safe-regex
+  const unit = value.replace(/^-?[0-9]+(\.[0-9]+)?/, ``);
+
+  return unitNames.find(name => units[name].unitStr === unit) || ``;
+}
+
+/**
+ * @param {!string} unitName A unit name or keyword.
+ * @param {!Array.<!string>} enumValues List of allowed keywords.
+ * @returns {!boolean} True if unitName indicates that a number is required.
+ */
+function hasNumber(unitName, enumValues) {
+  return unitName !== `` && !enumValues.includes(unitName);
+}
+</script>

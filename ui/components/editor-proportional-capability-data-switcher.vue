@@ -4,7 +4,6 @@
     <validate
       v-if="!hasStartEnd"
       :state="formstate"
-      :custom="customValidators"
       tag="span">
 
       <app-property-input-number
@@ -29,19 +28,17 @@
         v-model="propertyDataStepped"
         :name="`capability${capability.uuid}-${propertyName}`"
         :required="required"
-        :schema-property="properties.definitions.nonEmptyString" />
+        :schema-property="properties.definitions.nonEmptyString"
+        :valid-color-hex-list="propertyName === `colorsHexString`" />
 
       <span v-if="hint" class="hint">{{ hint }}</span>
 
     </validate>
 
     <template v-else>
-      <!-- TODO: validate same unit -->
-
       <validate
         :state="formstate"
-        :custom="customValidators"
-        tag="span"
+        tag="label"
         class="entity-input">
 
         <app-property-input-number
@@ -59,6 +56,7 @@
           :name="`capability${capability.uuid}-${propertyName}Start`"
           :required="required"
           :schema-property="entitySchema"
+          :associated-entity="propertyDataEnd"
           hint="start" />
 
         <app-property-input-text
@@ -68,6 +66,7 @@
           :name="`capability${capability.uuid}-${propertyName}Start`"
           :required="required"
           :schema-property="properties.definitions.nonEmptyString"
+          :valid-color-hex-list="propertyName === `colorsHexString`"
           hint="start" />
 
         <span class="hint">
@@ -90,8 +89,7 @@
 
       <validate
         :state="formstate"
-        :custom="customValidators"
-        tag="span"
+        tag="label"
         class="entity-input">
 
         <app-property-input-number
@@ -109,6 +107,7 @@
           :name="`capability${capability.uuid}-${propertyName}End`"
           :required="required"
           :schema-property="entitySchema"
+          :associated-entity="propertyDataStart"
           hint="end" />
 
         <app-property-input-text
@@ -118,6 +117,7 @@
           :name="`capability${capability.uuid}-${propertyName}End`"
           :required="required"
           :schema-property="properties.definitions.nonEmptyString"
+          :valid-color-hex-list="propertyName === `colorsHexString`"
           hint="end" />
 
         <span class="hint">
@@ -214,8 +214,7 @@ export default {
   },
   data() {
     return {
-      properties: schemaProperties,
-      customValidators: null
+      properties: schemaProperties
     };
   },
   computed: {

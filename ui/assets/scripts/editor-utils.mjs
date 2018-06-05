@@ -183,12 +183,12 @@ export function isCapabilityChanged(cap) {
  * @param {?string} hexString A string of comma-separated hex values, or null.
  * @returns {?Array.<!string>} The hex codes as array of strings.
  */
-export function colorHexStringToArray(hexString) {
+export function colorsHexStringToArray(hexString) {
   if (typeof hexString !== `string`) {
     return null;
   }
 
-  const hexArray = hexString.split(/\s*,\s*/).map(hex => hex.trim()).filter(
+  const hexArray = hexString.split(/\s*,\s*/).map(hex => hex.trim().toLowerCase()).filter(
     hex => hex.match(/^#[0-9a-f]{6}$/)
   );
 
