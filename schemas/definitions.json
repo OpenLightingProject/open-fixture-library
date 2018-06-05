@@ -22,7 +22,7 @@
   },
   "modeNameString": {
     "allOf": [
-      { "$ref": "definitions.json#/nonEmptyString" },
+      { "$ref": "#/nonEmptyString" },
       { "pattern": "^((?!mode)(?!Mode).)*$" }
     ]
   },
