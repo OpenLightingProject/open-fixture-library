@@ -31,6 +31,7 @@
           <div v-else-if="fieldErrors[`no-fine-channel-name`]">Don't create fine channels manually, set the channel resolution below instead.</div>
           <div v-else-if="fieldErrors[`entity-complete`]">Please fill out this field.</div>
           <div v-else-if="fieldErrors[`entities-have-same-units`]">Please use the same unit or select a keyword for both entities.</div>
+          <div v-else-if="fieldErrors[`valid-color-hex-list`]">Please enter a list of #rrggbb (red, green, blue) hex codes.</div>
 
           <!-- general validators -->
           <div v-else-if="fieldErrors.number">Please enter a number.</div>

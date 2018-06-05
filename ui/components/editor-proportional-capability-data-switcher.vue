@@ -214,8 +214,7 @@ export default {
   },
   data() {
     return {
-      properties: schemaProperties,
-      customValidators: null
+      properties: schemaProperties
     };
   },
   computed: {
@@ -281,6 +280,17 @@ export default {
           this.propertyDataEnd = null;
         }
       }
+    },
+    customValidators() {
+      const validators = {};
+
+      if (this.propertyName === `colorsHexString`) {
+        validators[`valid-color-hex-list`] = value => {
+          return /^\s*#[0-9a-f]{6}(?:\s*,\s*#[0-9a-f]{6})*\s*$/i.test(value);
+        };
+      }
+
+      return validators;
     },
 
     // index entity requires a bit of special handling

@@ -38,7 +38,7 @@
 
 <script>
 import schemaProperties from '~~/lib/schema-properties.js';
-import { colorHexStringToArray } from '~/assets/scripts/editor-utils.mjs';
+import { colorsHexStringToArray } from '~/assets/scripts/editor-utils.mjs';
 
 import editorProportionalCapabilityDataSwitcher from '~/components/editor-proportional-capability-data-switcher.vue';
 import propertyInputTextVue from '~/components/property-input-text.vue';
@@ -85,19 +85,19 @@ export default {
   watch: {
     'capability.typeData.colorsHexString': {
       handler(hexString) {
-        this.capability.typeData.colors = colorHexStringToArray(hexString);
+        this.capability.typeData.colors = colorsHexStringToArray(hexString);
       },
       immediate: true
     },
     'capability.typeData.colorsHexStringStart': {
       handler(hexString) {
-        this.capability.typeData.colorsStart = colorHexStringToArray(hexString);
+        this.capability.typeData.colorsStart = colorsHexStringToArray(hexString);
       },
       immediate: true
     },
     'capability.typeData.colorsHexStringEnd': {
       handler(hexString) {
-        this.capability.typeData.colorsEnd = colorHexStringToArray(hexString);
+        this.capability.typeData.colorsEnd = colorsHexStringToArray(hexString);
       },
       immediate: true
     }
