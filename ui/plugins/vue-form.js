@@ -63,6 +63,9 @@ Vue.use(VueForm, {
     },
     'entities-have-same-units': function(value, attrValue, vnode) {
       return vnode.componentInstance.hasSameUnit;
+    },
+    'valid-color-hex-list': function(value) {
+      return /^\s*#[0-9a-f]{6}(?:\s*,\s*#[0-9a-f]{6})*\s*$/i.test(value);
     }
   }
 });

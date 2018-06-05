@@ -4,7 +4,6 @@
     <validate
       v-if="!hasStartEnd"
       :state="formstate"
-      :custom="customValidators"
       tag="span">
 
       <app-property-input-number
@@ -29,7 +28,8 @@
         v-model="propertyDataStepped"
         :name="`capability${capability.uuid}-${propertyName}`"
         :required="required"
-        :schema-property="properties.definitions.nonEmptyString" />
+        :schema-property="properties.definitions.nonEmptyString"
+        :valid-color-hex-list="propertyName === `colorsHexString`" />
 
       <span v-if="hint" class="hint">{{ hint }}</span>
 
@@ -38,7 +38,6 @@
     <template v-else>
       <validate
         :state="formstate"
-        :custom="customValidators"
         tag="label"
         class="entity-input">
 
@@ -67,6 +66,7 @@
           :name="`capability${capability.uuid}-${propertyName}Start`"
           :required="required"
           :schema-property="properties.definitions.nonEmptyString"
+          :valid-color-hex-list="propertyName === `colorsHexString`"
           hint="start" />
 
         <span class="hint">
@@ -89,7 +89,6 @@
 
       <validate
         :state="formstate"
-        :custom="customValidators"
         tag="label"
         class="entity-input">
 
@@ -118,6 +117,7 @@
           :name="`capability${capability.uuid}-${propertyName}End`"
           :required="required"
           :schema-property="properties.definitions.nonEmptyString"
+          :valid-color-hex-list="propertyName === `colorsHexString`"
           hint="end" />
 
         <span class="hint">
@@ -280,17 +280,6 @@ export default {
           this.propertyDataEnd = null;
         }
       }
-    },
-    customValidators() {
-      const validators = {};
-
-      if (this.propertyName === `colorsHexString`) {
-        validators[`valid-color-hex-list`] = value => {
-          return /^\s*#[0-9a-f]{6}(?:\s*,\s*#[0-9a-f]{6})*\s*$/i.test(value);
-        };
-      }
-
-      return validators;
     },
 
     // index entity requires a bit of special handling
