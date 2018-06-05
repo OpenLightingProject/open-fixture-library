@@ -1,5 +1,5 @@
 const createPullRequest = require(`../../lib/create-github-pr.js`);
-const properties = require(`../../lib/schema-properties.js`);
+const schemaProperties = require(`../../lib/schema-properties.js`);
 
 /**
  * Takes the input from the fixture editor client side script and creates a pull request with the new fixture.
@@ -50,7 +50,7 @@ function addFixture(fixture) {
     $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`
   };
 
-  for (const prop of Object.keys(properties.fixture)) {
+  for (const prop of Object.keys(schemaProperties.fixture)) {
     if (prop === `physical`) {
       const physical = getPhysical(fixture.physical);
       if (!isEmptyObject(physical)) {
@@ -140,11 +140,11 @@ function getFixtureKey(fixture, manKey) {
 function getPhysical(from) {
   const physical = {};
 
-  for (const prop of Object.keys(properties.physical)) {
-    if (properties.physical[prop].type === `object`) {
+  for (const prop of Object.keys(schemaProperties.physical)) {
+    if (schemaProperties.physical[prop].type === `object`) {
       physical[prop] = {};
 
-      for (const subProp of Object.keys(properties.physical[prop].properties)) {
+      for (const subProp of Object.keys(schemaProperties.physical[prop].properties)) {
         if (propExistsIn(subProp, from[prop])) {
           physical[prop][subProp] = getComboboxInput(subProp, from[prop]);
         }
@@ -172,7 +172,7 @@ function addAvailableChannel(fixKey, availableChannels, chId) {
 
   const channel = {};
 
-  for (const prop of Object.keys(properties.channel)) {
+  for (const prop of Object.keys(schemaProperties.channel)) {
     if (prop === `capabilities`) {
       channel.capabilities = getCapabilities(from);
 
@@ -241,7 +241,7 @@ function getCapabilities(channel) {
   ).map(cap => {
     const capability = {};
 
-    for (const capProp of Object.keys(properties.capability)) {
+    for (const capProp of Object.keys(schemaProperties.capability)) {
       if (propExistsIn(capProp, cap)) {
         capability[capProp] = cap[capProp];
       }
@@ -256,7 +256,7 @@ function addMode(fixKey, from) {
 
   const uuidFromMapping = uuid => channelKeyMapping[uuid];
 
-  for (const prop of Object.keys(properties.mode)) {
+  for (const prop of Object.keys(schemaProperties.mode)) {
     if (prop === `physical`) {
       const physical = getPhysical(from.physical);
       if (!isEmptyObject(physical)) {

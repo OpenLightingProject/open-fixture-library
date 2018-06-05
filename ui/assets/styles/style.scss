@@ -138,20 +138,20 @@ input[type=number] {
   &:focus {
     border-color: $blue-300;
   }
-}
 
-select,
-textarea,
-input[type=text],
-input[type=email],
-input[type=search],
-input[type=url],
-input[type=number] {
   &.vf-touched.vf-invalid,
   &.vf-submitted.vf-invalid,
-  &.vf-touched[class^=vf-invalid-] {
+  &.vf-touched[class^=vf-invalid-],
+  .vf-touched.vf-invalid &,
+  .vf-submitted.vf-invalid &,
+  .vf-touched[class^=vf-invalid-] & {
     border-color: red;
     box-shadow: 0 0 4px rgba(255, 0, 0, 0.4);
+  }
+
+  &:disabled {
+    background: $grey-100;
+    opacity: 0.9;
   }
 }
 
@@ -267,6 +267,11 @@ a.button {
   line-height: 1.4;
   padding: 0.5em 3ex;
   transition: 0.1s background-color;
+
+  &.inline {
+    font-size: 0.85em;
+    padding: 4px 6px;
+  }
 }
 button.secondary,
 input.secondary,

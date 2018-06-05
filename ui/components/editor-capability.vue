@@ -1,5 +1,5 @@
 <template>
-  <li class="capability validate-group">
+  <li class="capability">
     <validate :state="formstate" tag="span">
       <app-property-input-range
         v-model="capability.range"
