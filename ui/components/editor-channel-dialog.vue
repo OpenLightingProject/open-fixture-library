@@ -13,7 +13,7 @@
       action="#"
       @submit.prevent="onSubmit">
 
-      <div v-if="channel.editMode == `add-existing`" class="validate-group">
+      <div v-if="channel.editMode == `add-existing`">
         <select v-model="channel.uuid" size="10" required>
           <option
             v-for="channelUuid in currentModeUnchosenChannels"
