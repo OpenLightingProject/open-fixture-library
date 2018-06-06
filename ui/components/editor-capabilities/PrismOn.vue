@@ -84,17 +84,17 @@ export default {
       }
     };
   },
+  computed: {
+    resetProp() {
+      const resetProp = this.capability.typeData.speedOrAngle === `speed` ? `angle` : `speed`;
+
+      return [resetProp, `${resetProp}Start`, `${resetProp}End`];
+    }
+  },
   methods: {
     changeSpeedOrAngle(newValue) {
       this.capability.typeData.speedOrAngle = newValue;
       this.$nextTick(() => this.$refs.speedOrAngleInput.focus());
-    },
-    cleanCapabilityData() {
-      const resetProp = this.capability.typeData.speedOrAngle === `speed` ? `angle` : `speed`;
-
-      this.capability.typeData[resetProp] = this.defaultData[resetProp];
-      this.capability.typeData[`${resetProp}Start`] = this.defaultData[`${resetProp}Start`];
-      this.capability.typeData[`${resetProp}End`] = this.defaultData[`${resetProp}End`];
     }
   }
 };

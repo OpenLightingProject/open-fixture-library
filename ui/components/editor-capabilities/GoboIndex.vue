@@ -95,14 +95,13 @@ export default {
       }
     };
   },
-  methods: {
-    cleanCapabilityData() {
+  computed: {
+    resetProps() {
       if (!this.capability.typeData.isShaking) {
-        const resetProps = [`shakeAngle`, `shakeAngleStart`, `shakeAngleEnd`, `shakeSpeed`, `shakeSpeedStart`, `shakeSpeedEnd`];
-        for (const prop of resetProps) {
-          this.capability.typeData[prop] = this.defaultData[prop];
-        }
+        return [`shakeAngle`, `shakeAngleStart`, `shakeAngleEnd`, `shakeSpeed`, `shakeSpeedStart`, `shakeSpeedEnd`];
       }
+
+      return [];
     }
   }
 };

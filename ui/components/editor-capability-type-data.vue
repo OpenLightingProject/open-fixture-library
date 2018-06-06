@@ -188,7 +188,9 @@ export default {
      * Called when the channel is saved. Removes all properties from capability.typeData that are not relevant for this capability type and sets open to false.
      */
     cleanCapabilityData() {
-      const defaultData = this.$refs.capabilityTypeData.defaultData;
+      const component = this.$refs.capabilityTypeData;
+
+      const defaultData = component.defaultData;
 
       for (const prop of Object.keys(this.capability.typeData)) {
         if (!(prop in defaultData)) {
@@ -196,8 +198,13 @@ export default {
         }
       }
 
-      if (this.$refs.capabilityTypeData && `cleanCapabilityData` in this.$refs.capabilityTypeData) {
-        this.$refs.capabilityTypeData.cleanCapabilityData();
+      if (component && `resetProps` in component) {
+        const resetProps = component.resetProps;
+
+        for (const prop of resetProps) {
+          const defaultPropData = defaultData[prop];
+          this.capability[prop] = typeof defaultPropData === `string` ? `` : defaultPropData;
+        }
       }
 
       this.capability.open = false;

@@ -87,19 +87,17 @@ export default {
   computed: {
     shutterEffects() {
       return this.properties.capabilityTypes.ShutterStrobe.properties.shutterEffect.enum;
+    },
+    resetProps() {
+      const resetProp = this.capability.typeData.speedOrDuration === `duration` ? `speed` : `duration`;
+
+      return [resetProp, `${resetProp}Start`, `${resetProp}End`];
     }
   },
   methods: {
     changeSpeedOrDuration(newValue) {
       this.capability.typeData.speedOrDuration = newValue;
       this.$nextTick(() => this.$refs.speedOrDurationInput.focus());
-    },
-    cleanCapabilityData() {
-      const resetProp = this.capability.typeData.speedOrDuration === `duration` ? `speed` : `duration`;
-
-      this.capability.typeData[resetProp] = this.defaultData[resetProp];
-      this.capability.typeData[`${resetProp}Start`] = this.defaultData[`${resetProp}Start`];
-      this.capability.typeData[`${resetProp}End`] = this.defaultData[`${resetProp}End`];
     }
   }
 };

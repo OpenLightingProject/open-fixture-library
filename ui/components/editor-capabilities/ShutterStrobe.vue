@@ -101,16 +101,13 @@ export default {
     },
     isStrobeEffect() {
       return ![``, `Open`, `Closed`].includes(this.capability.typeData.shutterEffect);
-    }
-  },
-  methods: {
-    cleanCapabilityData() {
+    },
+    resetProps() {
       if (!this.isStrobeEffect) {
-        const resetProps = [`speed`, `speedStart`, `speedEnd`, `duration`, `durationStart`, `durationEnd`];
-        for (const prop of resetProps) {
-          this.capability.typeData[prop] = this.defaultData[prop];
-        }
+        return [`speed`, `speedStart`, `speedEnd`, `duration`, `durationStart`, `durationEnd`];
       }
+
+      return [];
     }
   }
 };

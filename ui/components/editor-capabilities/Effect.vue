@@ -165,17 +165,15 @@ export default {
   computed: {
     effectPresets() {
       return this.properties.definitions.effectPreset.enum;
+    },
+    resetProps() {
+      return this.capability.typeData.effectNameOrPreset === `effectName` ? [`effectPreset`] : [`effectName`];
     }
   },
   methods: {
     changeEffectNameOrPreset(newValue) {
       this.capability.typeData.effectNameOrPreset = newValue;
       this.$nextTick(() => this.$refs.effectNameOrPresetInput.focus());
-    },
-    cleanCapabilityData() {
-      const resetProp = this.capability.typeData.effectNameOrPreset === `effectName` ? `effectPreset` : `effectName`;
-
-      this.capability.typeData[resetProp] = this.defaultData[resetProp];
     }
   }
 };
