@@ -356,8 +356,7 @@ export default {
 
     onSubmit() {
       if (this.formstate.$invalid) {
-        const firstErrorName = Object.keys(this.formstate.$error)[0];
-        const field = document.querySelector(`[name=${firstErrorName}]`);
+        const field = document.querySelector(`#channel-dialog .vf-field-invalid`);
         const scrollContainer = field.closest(`dialog`);
 
         const enclosingDetails = field.closest(`details`);

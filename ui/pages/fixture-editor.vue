@@ -528,8 +528,7 @@ export default {
 
     async onSubmit() {
       if (this.formstate.$invalid) {
-        const firstErrorName = Object.keys(this.formstate.$error)[0];
-        const field = document.querySelector(`[name=${firstErrorName}]`);
+        const field = document.querySelector(`.vf-field-invalid`);
 
         scrollIntoView(field, {
           time: 300,

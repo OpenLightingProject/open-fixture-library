@@ -22,7 +22,9 @@
           :schema-property="properties.capability.dmxRange"
           :range-min="min"
           :range-max="max"
-          required
+          :start-hint="capabilities.length === 1 ? `${min}`: `start`"
+          :end-hint="capabilities.length === 1 ? `${max}`: `end`"
+          :required="capabilities.length > 1"
           @start-updated="onStartUpdated"
           @end-updated="onEndUpdated" />
 
@@ -336,6 +338,16 @@ export default {
       this.$emit(`input`, newCapabilities);
     },
     cleanCapabilityData() {
+      if (this.capability.dmxRange === null) {
+        this.capability.dmxRange = [null, null];
+      }
+      if (this.capability.dmxRange[0] === null) {
+        this.capability.dmxRange[0] = this.min;
+      }
+      if (this.capability.dmxRange[1] === null) {
+        this.capability.dmxRange[1] = this.max;
+      }
+
       this.$refs.capabilityTypeData.cleanCapabilityData();
     }
   }
