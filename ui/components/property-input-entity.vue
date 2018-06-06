@@ -153,9 +153,11 @@ export default {
           else {
             this.update(parseFloat(this.selectedNumber));
           }
+          this.$emit(`unit-selected`, `[no unit]`);
         }
         else {
           this.update(this.selectedNumber + this.units[newUnit].unitStr);
+          this.$emit(`unit-selected`, this.units[newUnit].unitStr);
         }
       }
     },

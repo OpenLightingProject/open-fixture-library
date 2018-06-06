@@ -57,7 +57,8 @@
           :required="required"
           :schema-property="entitySchema"
           :associated-entity="propertyDataEnd"
-          hint="start" />
+          hint="start"
+          @unit-selected="onUnitSelected" />
 
         <app-property-input-text
           v-else
@@ -108,7 +109,8 @@
           :required="required"
           :schema-property="entitySchema"
           :associated-entity="propertyDataStart"
-          hint="end" />
+          hint="end"
+          @unit-selected="onUnitSelected" />
 
         <app-property-input-text
           v-else
@@ -330,6 +332,14 @@ export default {
           focusField.focus();
         }
       });
+    },
+    onUnitSelected(newUnit) {
+      if (this.propertyDataStart === ``) {
+        this.propertyDataStart = newUnit;
+      }
+      if (this.propertyDataEnd === ``) {
+        this.propertyDataEnd = newUnit;
+      }
     },
     swapStartEnd() {
       [this.propertyDataStart, this.propertyDataEnd] = [this.propertyDataEnd, this.propertyDataStart];
