@@ -174,7 +174,7 @@ global, doesn't activate strobe directly
   <td>brightness</td>
   <td></td>
   <td>Entity <em>Brightness</em></td>
-  <td>Defaults to <code>brightnessStart: "off", brightnessEnd: "bright</code></td>
+  <td>Defaults to <code>brightnessStart: "off", brightnessEnd: "bright"</code></td>
 </tr>
 </tbody>
 </table>
@@ -214,7 +214,7 @@ global, doesn't activate strobe directly
   <td>brightness</td>
   <td></td>
   <td>Entity <em>Brightness</em></td>
-  <td>Defaults to <code>brightnessStart: "off", brightnessEnd: "bright</code></td>
+  <td>Defaults to <code>brightnessStart: "off", brightnessEnd: "bright"</code></td>
 </tr>
 </tbody>
 </table>
