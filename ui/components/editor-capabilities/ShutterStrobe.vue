@@ -85,9 +85,9 @@ export default {
       properties: schemaProperties,
       defaultData: {
         shutterEffect: ``,
-        speed: ``,
-        speedStart: null,
-        speedEnd: null,
+        speed: null,
+        speedStart: ``,
+        speedEnd: ``,
         duration: ``,
         durationStart: null,
         durationEnd: null,

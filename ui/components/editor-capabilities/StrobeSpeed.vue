@@ -54,8 +54,8 @@ export default {
       properties: schemaProperties,
       defaultData: {
         speed: null,
-        speedStart: ``,
-        speedEnd: ``,
+        speedStart: `Hz`,
+        speedEnd: `Hz`,
         comment: ``
       }
     };

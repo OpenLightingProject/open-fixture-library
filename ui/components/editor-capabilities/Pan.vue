@@ -54,8 +54,8 @@ export default {
       properties: schemaProperties,
       defaultData: {
         angle: null,
-        angleStart: ``,
-        angleEnd: ``,
+        angleStart: `deg`,
+        angleEnd: `deg`,
         comment: ``
       }
     };
