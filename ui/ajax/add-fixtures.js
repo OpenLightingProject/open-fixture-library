@@ -254,6 +254,11 @@ function getCapabilities(channel) {
       }
     }
 
+    if (capability.brightnessStart === `off` && capability.brightnessEnd === `bright`) {
+      delete capability.brightnessStart;
+      delete capability.brightnessEnd;
+    }
+
     return capability;
   });
 }
