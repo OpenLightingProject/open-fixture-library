@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ACCUPAR Mode5",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Karl Humbug"],
+    "createDate": "2018-06-07",
+    "lastModifyDate": "2018-06-07"
+  },
+  "physical": {
+    "dimensions": [300, 300, 350],
+    "weight": 15,
+    "power": 75,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "RGBW Led",
+      "colorTemperature": 6000,
+      "lumens": 350
+    },
+    "lens": {
+      "name": "PAR",
+      "degreesMinMax": [25, 35]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "RED": {
+      "type": "Single Color",
+      "color": "Red",
+      "defaultValue": 0,
+      "highlightValue": 255
+    },
+    "GREEN": {
+      "type": "Single Color",
+      "color": "Green",
+      "defaultValue": 0,
+      "highlightValue": 255
+    },
+    "BLUE": {
+      "type": "Single Color",
+      "color": "Blue",
+      "defaultValue": 0,
+      "highlightValue": 255
+    },
+    "WHITE": {
+      "type": "Single Color",
+      "color": "White",
+      "defaultValue": 0,
+      "highlightValue": 255
+    },
+    "STROBE": {
+      "type": "Strobe",
+      "defaultValue": 0,
+      "highlightValue": 255
+    },
+    "DIMM": {
+      "type": "Intensity",
+      "defaultValue": 0,
+      "highlightValue": 255
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "shortName": "M 5 - 6 Channels",
+      "channels": [
+        "RED",
+        "GREEN",
+        "BLUE",
+        "WHITE",
+        "STROBE",
+        "DIMM"
+      ]
+    }
+  ]
+}
