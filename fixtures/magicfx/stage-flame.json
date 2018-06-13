@@ -1,13 +1,14 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "StageFlame",
-  "shortName": "StageFlame",
+  "name": "Stage Flame",
+  "shortName": "MFXStageFlame",
   "categories": ["Effect"],
   "meta": {
     "authors": ["Alejo Cervera"],
     "createDate": "2018-06-13",
     "lastModifyDate": "2018-06-13"
   },
+  "manualURL": "https://www.magicfx.eu/media/mconnect_uploadfiles/m/a/manual_stage_flame.pdf",
   "availableChannels": {
     "Safety": {
       "type": "Control",
