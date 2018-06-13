@@ -67,7 +67,7 @@
       ]
     },
     "Control": {
-      "type": "Control",
+      "type": "Maintenance",
       "precedence": "LTP",
       "capabilities": [
         {
@@ -103,8 +103,7 @@
   },
   "modes": [
     {
-      "name": "M1",
-      "shortName": "Default",
+      "name": "Default",
       "channels": [
         "Fountain",
         "Control"
