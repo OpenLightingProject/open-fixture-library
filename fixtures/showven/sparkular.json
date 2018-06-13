@@ -1,0 +1,107 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Sparkular",
+  "shortName": "Sparkular",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["Alejo Cervera"],
+    "createDate": "2018-06-13",
+    "lastModifyDate": "2018-06-13"
+  },
+  "availableChannels": {
+    "Fountain": {
+      "type": "Effect",
+      "precedence": "HTP",
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "Fountain Off"
+        },
+        {
+          "range": [16, 39],
+          "name": "Height 1"
+        },
+        {
+          "range": [40, 63],
+          "name": "Height 2"
+        },
+        {
+          "range": [64, 87],
+          "name": "Height 3"
+        },
+        {
+          "range": [88, 111],
+          "name": "Height 4"
+        },
+        {
+          "range": [112, 135],
+          "name": "Height 5"
+        },
+        {
+          "range": [136, 159],
+          "name": "Height 6"
+        },
+        {
+          "range": [160, 183],
+          "name": "Height 7"
+        },
+        {
+          "range": [184, 207],
+          "name": "Height 8"
+        },
+        {
+          "range": [208, 231],
+          "name": "Height 9"
+        },
+        {
+          "range": [232, 255],
+          "name": "Height 10"
+        }
+      ]
+    },
+    "Control": {
+      "type": "Control",
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "Pre-Heat OFF"
+        },
+        {
+          "range": [11, 19],
+          "name": "No Function"
+        },
+        {
+          "range": [20, 40],
+          "name": "EMERGENCY STOP"
+        },
+        {
+          "range": [41, 59],
+          "name": "No Function"
+        },
+        {
+          "range": [60, 80],
+          "name": "Clear Material"
+        },
+        {
+          "range": [81, 239],
+          "name": "No Function"
+        },
+        {
+          "range": [240, 255],
+          "name": "Pre-Heat ON"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "M1",
+      "shortName": "Default",
+      "channels": [
+        "Fountain",
+        "Control"
+      ]
+    }
+  ]
+}
