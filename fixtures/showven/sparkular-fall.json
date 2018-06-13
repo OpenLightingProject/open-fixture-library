@@ -1,13 +1,13 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Sparkular Fall",
-  "shortName": "sparkular fall",
   "categories": ["Effect"],
   "meta": {
     "authors": ["Alejo Cervera"],
     "createDate": "2018-06-13",
     "lastModifyDate": "2018-06-13"
   },
+  "manualURL": "http://en.showven.com/Download/Attachment?id=56425",
   "physical": {
     "dimensions": [192, 208, 192],
     "weight": 6,
@@ -16,7 +16,7 @@
   },
   "availableChannels": {
     "Fountain": {
-      "type": "Intensity",
+      "type": "Effect",
       "defaultValue": 0,
       "precedence": "HTP",
       "capabilities": [
@@ -35,7 +35,7 @@
       ]
     },
     "Control": {
-      "type": "Control",
+      "type": "Maintenance",
       "precedence": "LTP",
       "capabilities": [
         {
@@ -72,7 +72,6 @@
   "modes": [
     {
       "name": "Default",
-      "shortName": "Default",
       "channels": [
         "Fountain",
         "Control"
