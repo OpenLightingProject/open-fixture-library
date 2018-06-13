@@ -11,9 +11,9 @@
   "manualURL": "https://www.magicfx.eu/media/mconnect_uploadfiles/m/a/manual_stage_flame.pdf",
   "availableChannels": {
     "Safety": {
-      "type": "Control",
+      "type": "Maintenance",
       "defaultValue": 0,
-      "highlightValue": 0,
+      "highlightValue": 150,
       "precedence": "LTP",
       "capabilities": [
         {
@@ -31,12 +31,14 @@
       ]
     },
     "Flame": {
-      "type": "Intensity",
+      "type": "Effect",
+      "defaultValue": 0,
+      "highlightValue": 255,
       "precedence": "HTP",
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "Flame Int"
+          "name": "Flame Intensity"
         }
       ]
     }
