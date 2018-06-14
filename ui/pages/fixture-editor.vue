@@ -128,7 +128,8 @@
             v-model="fixture.manualURL"
             :schema-property="properties.fixture.manualURL"
             type="url"
-            name="manualURL" />
+            name="manualURL"
+            required />
         </app-simple-label>
 
         <app-simple-label
