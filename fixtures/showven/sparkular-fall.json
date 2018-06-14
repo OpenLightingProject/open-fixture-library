@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Sparkular Fall",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["Alejo Cervera"],
+    "createDate": "2018-06-13",
+    "lastModifyDate": "2018-06-13"
+  },
+  "manualURL": "http://en.showven.com/Download/Attachment?id=56425",
+  "physical": {
+    "dimensions": [192, 208, 192],
+    "weight": 6,
+    "power": 400,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Fountain": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "precedence": "HTP",
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "Fountain OFF"
+        },
+        {
+          "range": [16, 135],
+          "name": "Low Level Fountain ON"
+        },
+        {
+          "range": [136, 255],
+          "name": "High Level Fountain ON"
+        }
+      ]
+    },
+    "Control": {
+      "type": "Maintenance",
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 10],
+          "name": "Pre-Heat OFF"
+        },
+        {
+          "range": [11, 19],
+          "name": "No Function"
+        },
+        {
+          "range": [20, 40],
+          "name": "Emergency Stop"
+        },
+        {
+          "range": [41, 59],
+          "name": "No Function"
+        },
+        {
+          "range": [60, 80],
+          "name": "Clear Material"
+        },
+        {
+          "range": [81, 239],
+          "name": "No Function"
+        },
+        {
+          "range": [240, 255],
+          "name": "Pre-Heat ON"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Fountain",
+        "Control"
+      ]
+    }
+  ]
+}
