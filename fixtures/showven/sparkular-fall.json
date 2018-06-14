@@ -16,55 +16,62 @@
   },
   "availableChannels": {
     "Fountain": {
-      "type": "Effect",
       "defaultValue": 0,
       "precedence": "HTP",
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "Fountain OFF"
+          "dmxRange": [0, 15],
+          "type": "Nothing",
+          "comment": "Fountain OFF"
         },
         {
-          "range": [16, 135],
-          "name": "Low Level Fountain ON"
+          "dmxRange": [16, 135],
+          "type": "EffectIntensity",
+          "effectIntensity": "50%",
+          "comment": "Low Level Fountain ON"
         },
         {
-          "range": [136, 255],
-          "name": "High Level Fountain ON"
+          "dmxRange": [136, 255],
+          "type": "EffectIntensity",
+          "effectIntensity": "100%",
+          "comment": "High Level Fountain ON"
         }
       ]
     },
     "Control": {
-      "type": "Maintenance",
       "precedence": "LTP",
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "Pre-Heat OFF"
+          "dmxRange": [0, 10],
+          "type": "Maintenance",
+          "comment": "Pre-Heat OFF"
         },
         {
-          "range": [11, 19],
-          "name": "No Function"
+          "dmxRange": [11, 19],
+          "type": "Nothing"
         },
         {
-          "range": [20, 40],
-          "name": "Emergency Stop"
+          "dmxRange": [20, 40],
+          "type": "Maintenance",
+          "comment": "Emergency Stop"
         },
         {
-          "range": [41, 59],
-          "name": "No Function"
+          "dmxRange": [41, 59],
+          "type": "Nothing"
         },
         {
-          "range": [60, 80],
-          "name": "Clear Material"
+          "dmxRange": [60, 80],
+          "type": "Maintenance",
+          "comment": "Clear Material"
         },
         {
-          "range": [81, 239],
-          "name": "No Function"
+          "dmxRange": [81, 239],
+          "type": "Nothing"
         },
         {
-          "range": [240, 255],
-          "name": "Pre-Heat ON"
+          "dmxRange": [240, 255],
+          "type": "Maintenance",
+          "comment": "Pre-Heat ON"
         }
       ]
     }

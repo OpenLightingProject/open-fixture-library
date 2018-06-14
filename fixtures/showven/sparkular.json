@@ -17,86 +17,109 @@
   },
   "availableChannels": {
     "Fountain": {
-      "type": "Effect",
       "precedence": "HTP",
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "Fountain Off"
+          "dmxRange": [0, 15],
+          "type": "Nothing",
+          "comment": "Fountain Off"
         },
         {
-          "range": [16, 39],
-          "name": "Height 1"
+          "dmxRange": [16, 39],
+          "type": "EffectIntensity",
+          "effectIntensity": "10%",
+          "comment": "Height 1"
         },
         {
-          "range": [40, 63],
-          "name": "Height 2"
+          "dmxRange": [40, 63],
+          "type": "EffectIntensity",
+          "effectIntensity": "20%",
+          "comment": "Height 2"
         },
         {
-          "range": [64, 87],
-          "name": "Height 3"
+          "dmxRange": [64, 87],
+          "type": "EffectIntensity",
+          "effectIntensity": "30%",
+          "comment": "Height 3"
         },
         {
-          "range": [88, 111],
-          "name": "Height 4"
+          "dmxRange": [88, 111],
+          "type": "EffectIntensity",
+          "effectIntensity": "40%",
+          "comment": "Height 4"
         },
         {
-          "range": [112, 135],
-          "name": "Height 5"
+          "dmxRange": [112, 135],
+          "type": "EffectIntensity",
+          "effectIntensity": "50%",
+          "comment": "Height 5"
         },
         {
-          "range": [136, 159],
-          "name": "Height 6"
+          "dmxRange": [136, 159],
+          "type": "EffectIntensity",
+          "effectIntensity": "60%",
+          "comment": "Height 6"
         },
         {
-          "range": [160, 183],
-          "name": "Height 7"
+          "dmxRange": [160, 183],
+          "type": "EffectIntensity",
+          "effectIntensity": "70%",
+          "comment": "Height 7"
         },
         {
-          "range": [184, 207],
-          "name": "Height 8"
+          "dmxRange": [184, 207],
+          "type": "EffectIntensity",
+          "effectIntensity": "80%",
+          "comment": "Height 8"
         },
         {
-          "range": [208, 231],
-          "name": "Height 9"
+          "dmxRange": [208, 231],
+          "type": "EffectIntensity",
+          "effectIntensity": "90%",
+          "comment": "Height 9"
         },
         {
-          "range": [232, 255],
-          "name": "Height 10"
+          "dmxRange": [232, 255],
+          "type": "EffectIntensity",
+          "effectIntensity": "100%",
+          "comment": "Height 10"
         }
       ]
     },
     "Control": {
-      "type": "Maintenance",
       "precedence": "LTP",
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "Pre-Heat OFF"
+          "dmxRange": [0, 10],
+          "type": "Maintenance",
+          "comment": "Pre-Heat OFF"
         },
         {
-          "range": [11, 19],
-          "name": "No Function"
+          "dmxRange": [11, 19],
+          "type": "Nothing"
         },
         {
-          "range": [20, 40],
-          "name": "EMERGENCY STOP"
+          "dmxRange": [20, 40],
+          "type": "Maintenance",
+          "comment": "EMERGENCY STOP"
         },
         {
-          "range": [41, 59],
-          "name": "No Function"
+          "dmxRange": [41, 59],
+          "type": "Nothing"
         },
         {
-          "range": [60, 80],
-          "name": "Clear Material"
+          "dmxRange": [60, 80],
+          "type": "Maintenance",
+          "comment": "Clear Material"
         },
         {
-          "range": [81, 239],
-          "name": "No Function"
+          "dmxRange": [81, 239],
+          "type": "Nothing"
         },
         {
-          "range": [240, 255],
-          "name": "Pre-Heat ON"
+          "dmxRange": [240, 255],
+          "type": "Maintenance",
+          "comment": "Pre-Heat ON"
         }
       ]
     }
