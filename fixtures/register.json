@@ -385,6 +385,11 @@
       "lastModifyDate": "2018-05-26",
       "lastAction": "created"
     },
+    "glp/jdc1": {
+      "name": "JDC1",
+      "lastModifyDate": "2018-06-14",
+      "lastAction": "created"
+    },
     "gruft/ventilator": {
       "name": "Ventilator",
       "lastModifyDate": "2017-10-16",
@@ -759,7 +764,8 @@
     "glp": [
       "impression-laser",
       "impression-spot-one",
-      "impression-x4-bar-10"
+      "impression-x4-bar-10",
+      "jdc1"
     ],
     "gruft": [
       "ventilator"
@@ -860,6 +866,7 @@
       "cameo/thunder-wash-100-w",
       "cameo/thunder-wash-600-rgb",
       "cameo/thunder-wash-600-w",
+      "glp/jdc1",
       "showtec/horizon-8",
       "stairville/led-flood-panel-150",
       "tmb/solaris-flare"
@@ -928,6 +935,7 @@
       "glp/impression-laser",
       "glp/impression-spot-one",
       "glp/impression-x4-bar-10",
+      "glp/jdc1",
       "gruft/ventilator",
       "jb-lighting/varyscan-p7",
       "jb-systems/twin-effect-laser",
@@ -1100,6 +1108,7 @@
       "eurolite/led-fe-1500",
       "futurelight/stb-648-led-strobe-smd-5050",
       "glp/impression-x4-bar-10",
+      "glp/jdc1",
       "martin/atomic-3000",
       "tmb/solaris-flare"
     ]
@@ -1143,6 +1152,7 @@
       "generic/rgba-fader",
       "generic/rgbd-fader",
       "generic/rgbw-fader",
+      "glp/jdc1",
       "gruft/ventilator",
       "jb-systems/twin-effect-laser",
       "lightmaxx/platinum-mini-tri-par",
@@ -1373,6 +1383,7 @@
     }
   },
   "lastUpdated": [
+    "glp/jdc1",
     "boomtonedj/crazy-spot-30",
     "ghost/ip-spot-bat",
     "showtec/xs-1-rgbw",
