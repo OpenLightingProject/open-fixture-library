@@ -1,30 +1,5 @@
 [
   {
-    "man": "american-dj",
-    "key": "xs-400",
-    "name": "XS 400",
-    "features": [
-      "capability-type-Nothing",
-      "capability-type-ShutterStrobe",
-      "capability-type-ColorIntensity",
-      "capability-type-ColorPreset",
-      "capability-type-Pan",
-      "capability-type-Tilt",
-      "capability-type-TiltContinuous",
-      "capability-type-PanTiltSpeed",
-      "capability-type-Effect",
-      "capability-type-Speed",
-      "capability-type-Maintenance",
-      "fine-channel-alias",
-      "floating-point-dimensions",
-      "floating-point-weight",
-      "floating-point-pan-tilt-max",
-      "multiple-categories",
-      "multiple-focuses",
-      "reused-channels"
-    ]
-  },
-  {
     "man": "cameo",
     "key": "gobo-scanner-80",
     "name": "Gobo Scanner 80",
@@ -151,6 +126,36 @@
       "fine-channel-alias",
       "multiple-categories",
       "physical-override",
+      "reused-channels"
+    ]
+  },
+  {
+    "man": "elation",
+    "key": "acl-360-roller",
+    "name": "ACL 360 Roller",
+    "features": [
+      "capability-type-Nothing",
+      "capability-type-ShutterStrobe",
+      "capability-type-Intensity",
+      "capability-type-ColorIntensity",
+      "capability-type-ColorPreset",
+      "capability-type-Pan",
+      "capability-type-PanContinuous",
+      "capability-type-Tilt",
+      "capability-type-TiltContinuous",
+      "capability-type-PanTiltSpeed",
+      "capability-type-Effect",
+      "capability-type-EffectSpeed",
+      "capability-type-Maintenance",
+      "fine-channel-alias",
+      "floating-point-dimensions",
+      "floating-point-pan-tilt-max",
+      "matrix-pixelKeys",
+      "matrix-pixelGroups",
+      "matrix-custom-layout",
+      "matrix-channel-used-directly",
+      "multiple-categories",
+      "multiple-focuses",
       "reused-channels"
     ]
   },
