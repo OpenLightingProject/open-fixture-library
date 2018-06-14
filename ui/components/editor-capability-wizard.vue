@@ -352,6 +352,11 @@ export default {
         return;
       }
 
+      // close all other capabilities
+      for (const cap of this.capabilities) {
+        cap.open = false;
+      }
+
       // insert all computed capabilities at insertIndex
       this.capabilities.splice(this.insertIndex, this.removeCount, ...this.computedCapabilites);
 

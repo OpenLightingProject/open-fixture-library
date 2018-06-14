@@ -39,8 +39,6 @@
             class="channelName" />
         </app-simple-label>
 
-        <h3>DMX values</h3>
-
         <app-simple-label :formstate="formstate" name="fineness" label="Channel resolution">
           <select v-model="channel.fineness" name="fineness">
             <option :value="0">8 bit (No fine channels)</option>
@@ -49,7 +47,7 @@
           </select>
         </app-simple-label>
 
-        <app-simple-label :formstate="formstate" name="defaultValue" label="Default">
+        <app-simple-label :formstate="formstate" name="defaultValue" label="Default DMX value">
           <input
             v-model.number="channel.defaultValue"
             :max="Math.pow(256, channel.fineness + 1) - 1"
@@ -59,31 +57,7 @@
             step="1">
         </app-simple-label>
 
-        <app-simple-label :formstate="formstate" name="highlightValue" label="Highlight">
-          <input
-            v-model.number="channel.highlightValue"
-            :max="Math.pow(256, channel.fineness + 1) - 1"
-            name="highlightValue"
-            type="number"
-            min="0"
-            step="1">
-        </app-simple-label>
-
-        <app-simple-label :formstate="formstate" name="constant" label="Constant?">
-          <app-property-input-boolean
-            v-model="channel.constant"
-            :schema-property="properties.channel.constant"
-            name="constant" />
-        </app-simple-label>
-
-        <app-simple-label :formstate="formstate" name="precedence" label="Precedence">
-          <app-property-input-select
-            v-model="channel.precedence"
-            :schema-property="properties.channel.precedence"
-            name="precedence" />
-        </app-simple-label>
-
-        <h3>Capabilities<template v-if="!channel.wizard.show">
+        <h3>Capabilities<template v-if="!channel.wizard.show && channel.capabilities.length > 1">
           <a
             href="#expand-all"
             class="icon-button expand-all"
@@ -139,6 +113,32 @@
             {{ channel.wizard.show ? 'Close' : 'Open' }} Capability Wizard
           </a>
         </section>
+
+        <h3>Advanced channel settings</h3>
+
+        <app-simple-label :formstate="formstate" name="highlightValue" label="Highlight DMX value">
+          <input
+            v-model.number="channel.highlightValue"
+            :max="Math.pow(256, channel.fineness + 1) - 1"
+            name="highlightValue"
+            type="number"
+            min="0"
+            step="1">
+        </app-simple-label>
+
+        <app-simple-label :formstate="formstate" name="constant" label="Constant?">
+          <app-property-input-boolean
+            v-model="channel.constant"
+            :schema-property="properties.channel.constant"
+            name="constant" />
+        </app-simple-label>
+
+        <app-simple-label :formstate="formstate" name="precedence" label="Precedence">
+          <app-property-input-select
+            v-model="channel.precedence"
+            :schema-property="properties.channel.precedence"
+            name="precedence" />
+        </app-simple-label>
 
       </div>
 
