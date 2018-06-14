@@ -125,10 +125,12 @@
             v-for="(cap, index) in channel.capabilities"
             ref="capabilities"
             :key="cap.uuid"
-            v-model="channel.capabilities"
+            :capabilities="channel.capabilities"
             :formstate="formstate"
             :cap-index="index"
-            :fineness="Math.min(channel.fineness, channel.capFineness)" />
+            :fineness="Math.min(channel.fineness, channel.capFineness)"
+            @insert-capability-before="insertEmptyCapability(index)"
+            @insert-capability-after="insertEmptyCapability(index + 1)" />
         </div>
 
         <section>
@@ -177,6 +179,7 @@ import uuidV4 from 'uuid/v4.js';
 
 import schemaProperties from '~~/lib/schema-properties.js';
 import {
+  getEmptyCapability,
   getEmptyFineChannel,
   getSanitizedChannel,
   isChannelChanged,
@@ -488,6 +491,10 @@ export default {
       this.$el.querySelectorAll(`details`).forEach(details => {
         details.open = false;
       });
+    },
+
+    insertEmptyCapability(index) {
+      this.channel.capabilities.splice(index, 0, getEmptyCapability());
     }
   }
 };

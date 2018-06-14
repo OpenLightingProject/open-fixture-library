@@ -103,8 +103,7 @@ a.remove {
 import schemaProperties from '~~/lib/schema-properties.js';
 import {
   getEmptyCapability,
-  isCapabilityChanged,
-  clone
+  isCapabilityChanged
 } from '~/assets/scripts/editor-utils.mjs';
 
 import conditionalDetailsVue from '~/components/conditional-details.vue';
@@ -121,9 +120,6 @@ export default {
     'app-simple-label': simpleLabelVue,
     'app-svg': svgVue,
     'app-editor-capability-type-data': editorCapabilityTypeData
-  },
-  model: {
-    prop: `capabilities`
   },
   props: {
     capabilities: {
@@ -311,7 +307,7 @@ export default {
       }
     },
     insertCapabilityBefore() {
-      this.spliceCapabilities(this.capIndex, 0, getEmptyCapability());
+      this.$emit(`insert-capability-before`);
 
       const dialog = this.$el.closest(`dialog`);
       this.$nextTick(() => {
@@ -320,22 +316,16 @@ export default {
       });
     },
     insertCapabilityAfter() {
-      this.spliceCapabilities(this.capIndex + 1, 0, getEmptyCapability());
+      this.$emit(`insert-capability-after`);
     },
     removePreviousCapability() {
-      this.spliceCapabilities(this.capIndex - 1, 1);
+      this.$delete(this.capabilities, this.capIndex - 1);
     },
     removeCurrentCapability() {
-      this.spliceCapabilities(this.capIndex, 1);
+      this.$delete(this.capabilities, this.capIndex);
     },
     removeNextCapability() {
-      this.spliceCapabilities(this.capIndex + 1, 1);
-    },
-    spliceCapabilities(index, deleteCount, ...insertItems) {
-      // immutable splice, see https://vincent.billey.me/pure-javascript-immutable-array/
-      const capabilities = clone(this.capabilities);
-      const newCapabilities = [...capabilities.slice(0, index), ...insertItems, ...capabilities.slice(index + deleteCount)];
-      this.$emit(`input`, newCapabilities);
+      this.$delete(this.capabilities, this.capIndex + 1);
     },
     cleanCapabilityData() {
       if (this.capability.dmxRange === null) {
