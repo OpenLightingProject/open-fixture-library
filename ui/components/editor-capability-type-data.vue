@@ -143,7 +143,8 @@ export default {
     },
     formstate: {
       type: Object,
-      required: true
+      required: false,
+      default: null
     },
     required: {
       type: Boolean,

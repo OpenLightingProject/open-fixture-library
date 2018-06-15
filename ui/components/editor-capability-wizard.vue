@@ -47,8 +47,7 @@
     </section>
 
     <app-editor-capability-type-data
-      v-model="wizard.templateCapability"
-      :formstate="formstate" />
+      v-model="wizard.templateCapability" />
 
     <table class="capabilities-table">
       <colgroup>
