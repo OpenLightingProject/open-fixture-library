@@ -2,6 +2,7 @@
   <span class="range">
     <validate :state="formstate" tag="span">
       <app-property-input-number
+        ref="firstInput"
         v-model="start"
         :name="`${name}-start`"
         :schema-property="schemaProperty.items"
@@ -125,6 +126,9 @@ export default {
     this.$emit(`vf:validate`, this.validationData);
   },
   methods: {
+    focus() {
+      this.$refs.firstInput.focus();
+    },
     onFocus(event) {
       this.$emit(`focus`);
     },

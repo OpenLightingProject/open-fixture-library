@@ -16,6 +16,7 @@
         label="DMX range">
 
         <app-property-input-range
+          ref="firstInput"
           v-model="capability.dmxRange"
           :formstate="formstate"
           :name="`capability${capability.uuid}-dmxRange`"

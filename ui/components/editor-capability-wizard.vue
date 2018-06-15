@@ -351,15 +351,17 @@ export default {
         return;
       }
 
-      // close all other capabilities
+      // close other capabilities if they are not empty
       for (const cap of this.capabilities) {
-        cap.open = false;
+        if (cap.type !== ``) {
+          cap.open = false;
+        }
       }
 
       // insert all computed capabilities at insertIndex
       this.capabilities.splice(this.insertIndex, this.removeCount, ...this.computedCapabilites);
 
-      this.$emit(`close`);
+      this.$emit(`close`, this.insertIndex);
     }
   }
 };

@@ -92,7 +92,7 @@
           :capabilities="channel.capabilities"
           :fineness="Math.min(channel.fineness, channel.capFineness)"
           :formstate="formstate"
-          @close="channel.wizard.show = false" />
+          @close="onWizardClose" />
 
         <div v-else class="capability-editor">
           <app-editor-capability
@@ -478,6 +478,25 @@ export default {
       this.$emit(`reset-channel`);
       this.$nextTick(() => {
         this.formstate._reset(); // resets validation status
+      });
+    },
+
+    onWizardClose(insertIndex) {
+      this.channel.wizard.show = false;
+
+      this.$nextTick(() => {
+        const firstNewCap = this.$refs.capabilities[insertIndex];
+        const scrollContainer = firstNewCap.$el.closest(`dialog`);
+
+        scrollIntoView(firstNewCap.$el, {
+          time: 0,
+          align: {
+            top: 0,
+            left: 0,
+            topOffset: 100
+          },
+          isScrollable: target => target === scrollContainer
+        }, () => firstNewCap.$refs.firstInput.focus());
       });
     },
 
