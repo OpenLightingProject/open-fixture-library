@@ -30,7 +30,7 @@ To make common percentage values more readable, one can use specific keywords to
 
 **Table of contents**
 
-* [NoFunction](#nothing)
+* [NoFunction](#nofunction)
 * [ShutterStrobe](#shutterstrobe) / [StrobeSpeed](#strobespeed) / [StrobeDuration](#strobeduration)
 * [Intensity](#intensity)
 * [ColorIntensity](#colorintensity)
