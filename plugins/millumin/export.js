@@ -52,7 +52,7 @@ function downgradeChannel(channelObject, channelKey) {
   addIfTruthy(jsonChannel, `defaultValue`, downgradedChannel);
   addIfTruthy(jsonChannel, `highlightValue`, downgradedChannel);
   addIfTruthy(channel, `isInverted`, downgradedChannel, `invert`);
-  addIfTruthy(channel, `constant`, downgradedChannel);
+  addIfTruthy(channel, `isConstant`, downgradedChannel, `constant`);
   addIfTruthy(channel, `canCrossfade`, downgradedChannel, `crossfade`);
   addIfTruthy(jsonChannel, `precedence`, downgradedChannel);
 
@@ -105,7 +105,7 @@ function downgradeChannel(channelObject, channelKey) {
 function addIfTruthy(sourceObj, sourceProperty, destinationObj, destinationProperty = null) {
   destinationProperty = destinationProperty || sourceProperty;
 
-  if (sourceObj[sourceProperty]) {
+  if (sourceProperty in sourceObj && sourceObj[sourceProperty] !== null && sourceObj[sourceProperty] !== false) {
     destinationObj[destinationProperty] = sourceObj[sourceProperty];
   }
 }
