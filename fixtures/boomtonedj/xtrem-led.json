@@ -1,0 +1,325 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Xtrem LED",
+  "categories": ["Flower", "Color Changer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2018-06-16",
+    "lastModifyDate": "2018-06-16"
+  },
+  "manualURL": "http://static.boomtonedj.com/pdf/manual/44/44625_xtremledmanual.pdf",
+  "physical": {
+    "dimensions": [245, 240, 245],
+    "weight": 3.4,
+    "power": 100,
+    "bulb": {
+      "type": "2x 9W RGB LEDs, 36x White LEDs, 64x R/G/B LEDs"
+    }
+  },
+  "availableChannels": {
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Effect",
+          "effectName": "Custom control",
+          "switchChannels": {
+            "Moon Flower Speed / Motor Speed": "Moon Flower Speed",
+            "Color / Show Speed": "Color",
+            "Color Strobe/Effect Speed / Unused": "Color Strobe/Effect Speed",
+            "Motor Speed / Unused": "Motor Speed",
+            "Strobe / Unused": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [1, 33],
+          "type": "Effect",
+          "effectName": "Auto show 1",
+          "switchChannels": {
+            "Moon Flower Speed / Motor Speed": "Motor Speed",
+            "Color / Show Speed": "Show Speed",
+            "Color Strobe/Effect Speed / Unused": "Unused 1",
+            "Motor Speed / Unused": "Unused 2",
+            "Strobe / Unused": "Unused 3"
+          }
+        },
+        {
+          "dmxRange": [34, 67],
+          "type": "Effect",
+          "effectName": "Auto show 2",
+          "switchChannels": {
+            "Moon Flower Speed / Motor Speed": "Motor Speed",
+            "Color / Show Speed": "Show Speed",
+            "Color Strobe/Effect Speed / Unused": "Unused 1",
+            "Motor Speed / Unused": "Unused 2",
+            "Strobe / Unused": "Unused 3"
+          }
+        },
+        {
+          "dmxRange": [68, 101],
+          "type": "Effect",
+          "effectName": "Auto show 3",
+          "switchChannels": {
+            "Moon Flower Speed / Motor Speed": "Motor Speed",
+            "Color / Show Speed": "Show Speed",
+            "Color Strobe/Effect Speed / Unused": "Unused 1",
+            "Motor Speed / Unused": "Unused 2",
+            "Strobe / Unused": "Unused 3"
+          }
+        },
+        {
+          "dmxRange": [102, 135],
+          "type": "Effect",
+          "effectName": "Auto show 4",
+          "switchChannels": {
+            "Moon Flower Speed / Motor Speed": "Motor Speed",
+            "Color / Show Speed": "Show Speed",
+            "Color Strobe/Effect Speed / Unused": "Unused 1",
+            "Motor Speed / Unused": "Unused 2",
+            "Strobe / Unused": "Unused 3"
+          }
+        },
+        {
+          "dmxRange": [136, 169],
+          "type": "Effect",
+          "effectName": "Auto show 5",
+          "switchChannels": {
+            "Moon Flower Speed / Motor Speed": "Motor Speed",
+            "Color / Show Speed": "Show Speed",
+            "Color Strobe/Effect Speed / Unused": "Unused 1",
+            "Motor Speed / Unused": "Unused 2",
+            "Strobe / Unused": "Unused 3"
+          }
+        },
+        {
+          "dmxRange": [170, 203],
+          "type": "Effect",
+          "effectName": "Auto show 6",
+          "switchChannels": {
+            "Moon Flower Speed / Motor Speed": "Motor Speed",
+            "Color / Show Speed": "Show Speed",
+            "Color Strobe/Effect Speed / Unused": "Unused 1",
+            "Motor Speed / Unused": "Unused 2",
+            "Strobe / Unused": "Unused 3"
+          }
+        },
+        {
+          "dmxRange": [204, 237],
+          "type": "Effect",
+          "effectName": "Auto show 7",
+          "switchChannels": {
+            "Moon Flower Speed / Motor Speed": "Motor Speed",
+            "Color / Show Speed": "Show Speed",
+            "Color Strobe/Effect Speed / Unused": "Unused 1",
+            "Motor Speed / Unused": "Unused 2",
+            "Strobe / Unused": "Unused 3"
+          }
+        },
+        {
+          "dmxRange": [238, 255],
+          "type": "Effect",
+          "effectName": "Sound mode",
+          "soundControlled": true,
+          "switchChannels": {
+            "Moon Flower Speed / Motor Speed": "Motor Speed",
+            "Color / Show Speed": "Show Speed",
+            "Color Strobe/Effect Speed / Unused": "Unused 1",
+            "Motor Speed / Unused": "Unused 2",
+            "Strobe / Unused": "Unused 3"
+          }
+        }
+      ]
+    },
+    "Moon Flower Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Color Strobe/Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [1, 202],
+          "type": "ColorPreset",
+          "comment": "7 colors selection"
+        },
+        {
+          "dmxRange": [203, 231],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "7 colors"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        }
+      ]
+    },
+    "Motor Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Show Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Mode (fixed to 0)": {
+      "defaultValue": 0,
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Effect",
+          "effectName": "Custom control"
+        },
+        {
+          "dmxRange": [1, 33],
+          "type": "Effect",
+          "effectName": "Auto show 1"
+        },
+        {
+          "dmxRange": [34, 67],
+          "type": "Effect",
+          "effectName": "Auto show 2"
+        },
+        {
+          "dmxRange": [68, 101],
+          "type": "Effect",
+          "effectName": "Auto show 3"
+        },
+        {
+          "dmxRange": [102, 135],
+          "type": "Effect",
+          "effectName": "Auto show 4"
+        },
+        {
+          "dmxRange": [136, 169],
+          "type": "Effect",
+          "effectName": "Auto show 5"
+        },
+        {
+          "dmxRange": [170, 203],
+          "type": "Effect",
+          "effectName": "Auto show 6"
+        },
+        {
+          "dmxRange": [204, 237],
+          "type": "Effect",
+          "effectName": "Auto show 7"
+        },
+        {
+          "dmxRange": [238, 255],
+          "type": "Effect",
+          "effectName": "Sound mode",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Unused 1": {
+      "name": "Unused",
+      "capability": {
+        "type": "Nothing"
+      }
+    },
+    "Unused 2": {
+      "name": "Unused",
+      "capability": {
+        "type": "Nothing"
+      }
+    },
+    "Unused 3": {
+      "name": "Unused",
+      "capability": {
+        "type": "Nothing"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Custom control",
+      "shortName": "custom",
+      "channels": [
+        "Mode (fixed to 0)",
+        "Moon Flower Speed",
+        "Color",
+        "Color Strobe/Effect Speed",
+        "Motor Speed",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "Auto",
+      "shortName": "auto",
+      "channels": [
+        "Mode",
+        "Motor Speed",
+        "Show Speed"
+      ]
+    },
+    {
+      "name": "Combined",
+      "shortName": "combined",
+      "channels": [
+        "Mode",
+        "Moon Flower Speed / Motor Speed",
+        "Color / Show Speed",
+        "Color Strobe/Effect Speed / Unused",
+        "Motor Speed / Unused",
+        "Strobe / Unused"
+      ]
+    }
+  ]
+}
