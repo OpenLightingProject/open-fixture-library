@@ -68,13 +68,19 @@
       </section>
 
       <section v-if="physical.focusPanMax !== null" class="focus-panMax">
-        <span class="label">Max. Pan angle</span>
-        <span class="value">{{ physical.focusPanMax }}°</span>
+        <span class="label">Max. pan angle</span>
+        <span class="value">
+          <template v-if="physical.focusPanMax === Number.POSITIVE_INFINITY">Infinite</template>
+          <template v-else>{{ physical.focusPanMax }}°</template>
+        </span>
       </section>
 
       <section v-if="physical.focusTiltMax !== null" class="focus-tiltMax">
-        <span class="label">Max. Tilt angle</span>
-        <span class="value">{{ physical.focusTiltMax }}°</span>
+        <span class="label">Max. tilt angle</span>
+        <span class="value">
+          <template v-if="physical.focusTiltMax === Number.POSITIVE_INFINITY">Infinite</template>
+          <template v-else>{{ physical.focusTiltMax }}°</template>
+        </span>
       </section>
     </section>
 
