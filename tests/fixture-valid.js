@@ -449,7 +449,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           });
         }
 
-        const startEndEntities = Capability.START_END_PROPERTIES.map(
+        const startEndEntities = Capability.START_END_ENTITIES.map(
           prop => [prop, cap[prop]]
         ).filter(
           ([prop, value]) => value !== null
