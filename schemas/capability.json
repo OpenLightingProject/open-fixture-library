@@ -13,7 +13,7 @@
       "items": { "$ref": "definitions.json#/dmxValue" }
     },
     "type": { "enum": [
-      "Nothing",
+      "NoFunction",
       "ShutterStrobe",
       "StrobeSpeed",
       "StrobeDuration",
@@ -92,7 +92,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["Nothing"] }
+          "type": { "enum": ["NoFunction"] }
         }
       },
       "then": {

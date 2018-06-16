@@ -289,7 +289,7 @@ function getChannelType(type) {
     Speed: [`Speed`],
     Effect: [`Effect`, `Fog`],
     Maintenance: [`Maintenance`],
-    Nothing: [`Nothing`]
+    Nothing: [`NoFunction`]
   };
 
   for (const qlcplusType of Object.keys(qlcplusChannelTypes)) {

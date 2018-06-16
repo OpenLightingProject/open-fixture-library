@@ -200,7 +200,7 @@ function getChannelType(channel) {
     case `Effect`:
     case `Speed`:
     case `Maintenance`:
-    case `Nothing`:
+    case `NoFunction`:
       return `ChannelBeam`;
 
     case `Pan`:

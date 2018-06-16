@@ -46,7 +46,7 @@ function downgradeChannel(channelObject, channelKey) {
   const downgradedChannel = {};
 
   addIfTruthy(jsonChannel, `name`, downgradedChannel);
-  downgradedChannel.type = channel.type;
+  downgradedChannel.type = channel.type === `NoFunction` ? `Nothing` : channel.type;
   addIfTruthy(channel, `color`, downgradedChannel);
   addIfTruthy(jsonChannel, `fineChannelAliases`, downgradedChannel);
   addIfTruthy(jsonChannel, `defaultValue`, downgradedChannel);
@@ -85,7 +85,7 @@ function downgradeChannel(channelObject, channelKey) {
    * @returns {!boolean} Whether or not it is needed to include capabilities in a downgraded version of this channel
    */
   function capabilitiesNeeded() {
-    const trivialCapabilityTypes = [`Intensity`, `ColorIntensity`, `Pan`, `Tilt`, `Nothing`];
+    const trivialCapabilityTypes = [`Intensity`, `ColorIntensity`, `Pan`, `Tilt`, `NoFunction`];
     if (channel.capabilities.length === 1 && trivialCapabilityTypes.includes(channel.capabilities[0].type)) {
       return false;
     }

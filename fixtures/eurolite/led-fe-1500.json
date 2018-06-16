@@ -113,7 +113,7 @@
         },
         {
           "dmxRange": [220, 255],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "DMX mode"
         }
       ]
@@ -337,7 +337,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 4],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [5, 254],
@@ -359,7 +359,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Blackout"
         },
         {
@@ -454,7 +454,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Blackout"
         },
         {
@@ -500,7 +500,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 4],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "No strobe"
         },
         {

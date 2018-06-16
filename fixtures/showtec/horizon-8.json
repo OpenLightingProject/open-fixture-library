@@ -81,7 +81,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [11, 30],
@@ -338,7 +338,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [10, 99],
@@ -349,7 +349,7 @@
         },
         {
           "dmxRange": [100, 109],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [110, 179],
@@ -360,7 +360,7 @@
         },
         {
           "dmxRange": [180, 189],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [190, 255],
@@ -376,7 +376,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 40],
-          "type": "Nothing",
+          "type": "NoFunction",
           "switchChannels": {
             "Red / Step Time": "Red",
             "Green / Fade Time": "Green",

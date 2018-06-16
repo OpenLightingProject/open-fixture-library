@@ -47,7 +47,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 15],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [16, 255],
@@ -61,7 +61,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 15],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [16, 255],
@@ -100,7 +100,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "Nothing",
+          "type": "NoFunction",
           "switchChannels": {
             "Strobe / Speed / Sound Sensitivity": "Strobe"
           }

@@ -204,7 +204,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [10, 14],
@@ -213,7 +213,7 @@
         },
         {
           "dmxRange": [15, 39],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [40, 44],
@@ -232,7 +232,7 @@
         },
         {
           "dmxRange": [55, 59],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [60, 64],
@@ -241,7 +241,7 @@
         },
         {
           "dmxRange": [65, 69],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [70, 74],
@@ -250,7 +250,7 @@
         },
         {
           "dmxRange": [75, 89],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [90, 94],
@@ -259,7 +259,7 @@
         },
         {
           "dmxRange": [95, 99],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [100, 104],
@@ -268,7 +268,7 @@
         },
         {
           "dmxRange": [105, 109],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [110, 114],
@@ -277,7 +277,7 @@
         },
         {
           "dmxRange": [115, 119],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [120, 124],
@@ -286,7 +286,7 @@
         },
         {
           "dmxRange": [125, 249],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [250, 255],
@@ -299,7 +299,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [10, 14],
@@ -501,7 +501,7 @@
         },
         {
           "dmxRange": [175, 179],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [180, 201],
@@ -528,7 +528,7 @@
         },
         {
           "dmxRange": [230, 234],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [235, 239],
@@ -550,7 +550,7 @@
         },
         {
           "dmxRange": [250, 255],
-          "type": "Nothing"
+          "type": "NoFunction"
         }
       ]
     },
@@ -582,7 +582,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 19],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [20, 255],
@@ -645,7 +645,7 @@
         },
         {
           "dmxRange": [25, 39],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
             "FX1 adjust": "FX1 adjust n/a"
@@ -693,7 +693,7 @@
         },
         {
           "dmxRange": [55, 60],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
             "FX1 adjust": "FX1 adjust n/a"
@@ -741,7 +741,7 @@
         },
         {
           "dmxRange": [76, 99],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
             "FX1 adjust": "FX1 adjust n/a"
@@ -757,7 +757,7 @@
         },
         {
           "dmxRange": [103, 108],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
             "FX1 adjust": "FX1 adjust n/a"
@@ -781,7 +781,7 @@
         },
         {
           "dmxRange": [115, 126],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
             "FX1 adjust": "FX1 adjust n/a"
@@ -829,7 +829,7 @@
         },
         {
           "dmxRange": [142, 159],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
             "FX1 adjust": "FX1 adjust n/a"
@@ -869,7 +869,7 @@
         },
         {
           "dmxRange": [172, 174],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
             "FX1 adjust": "FX1 adjust n/a"
@@ -893,7 +893,7 @@
         },
         {
           "dmxRange": [181, 219],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
             "FX1 adjust": "FX1 adjust n/a"
@@ -901,7 +901,7 @@
         },
         {
           "dmxRange": [220, 255],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
             "FX1 adjust": "FX1 adjust n/a"
@@ -911,7 +911,7 @@
     },
     "FX1 adjust n/a": {
       "capability": {
-        "type": "Nothing"
+        "type": "NoFunction"
       }
     },
     "FX1 adjust Trigger Delay": {
@@ -1003,7 +1003,7 @@
         },
         {
           "dmxRange": [25, 39],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
             "FX2 adjust": "FX2 adjust n/a"
@@ -1051,7 +1051,7 @@
         },
         {
           "dmxRange": [55, 60],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
             "FX2 adjust": "FX2 adjust n/a"
@@ -1099,7 +1099,7 @@
         },
         {
           "dmxRange": [76, 99],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
             "FX2 adjust": "FX2 adjust n/a"
@@ -1115,7 +1115,7 @@
         },
         {
           "dmxRange": [103, 108],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
             "FX2 adjust": "FX2 adjust n/a"
@@ -1139,7 +1139,7 @@
         },
         {
           "dmxRange": [115, 126],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
             "FX2 adjust": "FX2 adjust n/a"
@@ -1187,7 +1187,7 @@
         },
         {
           "dmxRange": [142, 159],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
             "FX2 adjust": "FX2 adjust n/a"
@@ -1227,7 +1227,7 @@
         },
         {
           "dmxRange": [172, 174],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
             "FX2 adjust": "FX2 adjust n/a"
@@ -1251,7 +1251,7 @@
         },
         {
           "dmxRange": [181, 219],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
             "FX2 adjust": "FX2 adjust n/a"
@@ -1259,7 +1259,7 @@
         },
         {
           "dmxRange": [220, 255],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
             "FX2 adjust": "FX2 adjust n/a"
@@ -1269,7 +1269,7 @@
     },
     "FX2 adjust n/a": {
       "capability": {
-        "type": "Nothing"
+        "type": "NoFunction"
       }
     },
     "FX2 adjust Trigger Delay": {
@@ -1485,7 +1485,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [10, 14],
@@ -1687,7 +1687,7 @@
         },
         {
           "dmxRange": [175, 179],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [180, 201],
@@ -1714,7 +1714,7 @@
         },
         {
           "dmxRange": [230, 234],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [235, 239],
@@ -1736,7 +1736,7 @@
         },
         {
           "dmxRange": [250, 255],
-          "type": "Nothing"
+          "type": "NoFunction"
         }
       ]
     },

@@ -36,7 +36,7 @@ import schemaProperties from '~~/lib/schema-properties.js';
 
 import simpleLabelVue from '~/components/simple-label.vue';
 
-import editorCapabilityNothing from '~/components/editor-capabilities/Nothing.vue';
+import editorCapabilityNoFunction from '~/components/editor-capabilities/NoFunction.vue';
 import editorCapabilityShutterStrobe from '~/components/editor-capabilities/ShutterStrobe.vue';
 import editorCapabilityStrobeSpeed from '~/components/editor-capabilities/StrobeSpeed.vue';
 import editorCapabilityStrobeDuration from '~/components/editor-capabilities/StrobeDuration.vue';
@@ -86,7 +86,7 @@ import editorCapabilityGeneric from '~/components/editor-capabilities/Generic.vu
 export default {
   components: {
     'app-simple-label': simpleLabelVue,
-    'app-editor-capability-Nothing': editorCapabilityNothing,
+    'app-editor-capability-NoFunction': editorCapabilityNoFunction,
     'app-editor-capability-ShutterStrobe': editorCapabilityShutterStrobe,
     'app-editor-capability-StrobeSpeed': editorCapabilityStrobeSpeed,
     'app-editor-capability-StrobeDuration': editorCapabilityStrobeDuration,

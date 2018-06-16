@@ -54,7 +54,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 15],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [16, 255],
@@ -69,7 +69,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 15],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [16, 255],
@@ -85,7 +85,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "Nothing",
+          "type": "NoFunction",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
            }
@@ -184,7 +184,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 51],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Default dimmer speed"
         },
         {

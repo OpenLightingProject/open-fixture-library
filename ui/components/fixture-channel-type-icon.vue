@@ -26,7 +26,7 @@ export default {
       if (channel instanceof NullChannel) {
         return {
           type: `channel-type`,
-          name: `Nothing`
+          name: `NoFunction`
         };
       }
 

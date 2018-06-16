@@ -34,7 +34,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 15],
-          "type": "Nothing",
+          "type": "NoFunction",
           "switchChannels": {
             "Master Dimmer / Program Speed / Sound Sensitivity": "Master Dimmer"
           }
@@ -312,7 +312,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [1, 5],
@@ -322,7 +322,7 @@
         },
         {
           "dmxRange": [6, 10],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [11, 255],

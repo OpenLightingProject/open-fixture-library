@@ -87,7 +87,7 @@
         },
         {
           "dmxRange": [32, 255],
-          "type": "Nothing"
+          "type": "NoFunction"
         }
       ]
     },
@@ -117,7 +117,7 @@
         },
         {
           "dmxRange": [64, 255],
-          "type": "Nothing"
+          "type": "NoFunction"
         }
       ]
     },
@@ -250,7 +250,7 @@
         },
         {
           "dmxRange": [112, 255],
-          "type": "Nothing",
+          "type": "NoFunction",
           "switchChannels": {
             "Virtual Color 1": "Color Function"
           }
@@ -487,7 +487,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 15],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "No Color"
         },
         {
@@ -544,7 +544,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 15],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "No Color"
         },
         {
@@ -845,7 +845,7 @@
         },
         {
           "dmxRange": [24, 47],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [48, 55],
@@ -864,11 +864,11 @@
         },
         {
           "dmxRange": [72, 79],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [80, 87],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [88, 95],
@@ -877,7 +877,7 @@
         },
         {
           "dmxRange": [96, 255],
-          "type": "Nothing"
+          "type": "NoFunction"
         }
       ]
     }

@@ -46,7 +46,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [11, 255],
@@ -62,7 +62,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "Nothing",
+          "type": "NoFunction",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
@@ -392,7 +392,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 199],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [200, 209],
@@ -401,7 +401,7 @@
         },
         {
           "dmxRange": [210, 240],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [241, 255],
@@ -463,7 +463,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [11, 255],
@@ -478,7 +478,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 30],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Use master color dimmers"
         },
         {
@@ -602,7 +602,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "Nothing",
+          "type": "NoFunction",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
@@ -650,7 +650,7 @@
         },
         {
           "dmxRange": [123, 199],
-          "type": "Nothing",
+          "type": "NoFunction",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
@@ -665,7 +665,7 @@
         },
         {
           "dmxRange": [225, 255],
-          "type": "Nothing",
+          "type": "NoFunction",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }

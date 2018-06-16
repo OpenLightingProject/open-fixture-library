@@ -30,7 +30,7 @@ To make common percentage values more readable, one can use specific keywords to
 
 **Table of contents**
 
-* [Nothing](#nothing)
+* [NoFunction](#nothing)
 * [ShutterStrobe](#shutterstrobe) / [StrobeSpeed](#strobespeed) / [StrobeDuration](#strobeduration)
 * [Intensity](#intensity)
 * [ColorIntensity](#colorintensity)
@@ -54,7 +54,7 @@ To make common percentage values more readable, one can use specific keywords to
 * Generic types: [BeamAngle](#beamangle) / [Rotation](#rotation) / [Speed](#speed) / [Time](#time) / [Maintenance](#maintenance) / [Generic](#generic)
 
 
-#### Nothing
+#### NoFunction
 
 No type-specific properties.
 

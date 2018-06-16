@@ -248,7 +248,7 @@ function getChannelsByAttribute(channels) {
       BEAM: [`Iris`, `Focus`, `Zoom`],
       EFFECT: [`Strobe`, `Shutter`, `Speed`, `Gobo`, `Prism`, `Effect`, `Fog`],
       CONTROL: [`Maintenance`],
-      EXTRA: [`Nothing`]
+      EXTRA: [`NoFunction`]
     };
 
     for (const attribute of Object.keys(oflToDLightMap)) {

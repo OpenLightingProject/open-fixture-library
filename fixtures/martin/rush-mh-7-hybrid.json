@@ -437,7 +437,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 11],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Open",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
@@ -1059,7 +1059,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "Nothing",
+          "type": "NoFunction",
           "switchChannels": {
             "Rotating Prism Indexing/Speed": "Rotating Prism Indexing",
             "Rotating Prism Indexing/Speed fine": "Rotating Prism Indexing fine"
@@ -1193,7 +1193,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 19],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [20, 29],
@@ -1267,7 +1267,7 @@
         },
         {
           "dmxRange": [122, 255],
-          "type": "Nothing"
+          "type": "NoFunction"
         }
       ]
     }

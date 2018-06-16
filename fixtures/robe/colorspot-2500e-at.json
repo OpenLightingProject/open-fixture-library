@@ -58,7 +58,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "reserved"
         },
         {
@@ -73,7 +73,7 @@
         },
         {
           "dmxRange": [30, 49],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "reserved"
         },
         {
@@ -158,7 +158,7 @@
         },
         {
           "dmxRange": [210, 229],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "reserved"
         },
         {
@@ -168,7 +168,7 @@
         },
         {
           "dmxRange": [240, 255],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "reserved"
         }
       ]
@@ -177,12 +177,12 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Disabled"
         },
         {
           "dmxRange": [10, 31],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "Reserved"
         },
         {
@@ -241,7 +241,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "No macro"
         },
         {
@@ -489,7 +489,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 3],
-          "type": "Nothing"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [4, 7],
@@ -834,7 +834,7 @@
         },
         {
           "dmxRange": [96, 255],
-          "type": "Nothing"
+          "type": "NoFunction"
         }
       ]
     },
@@ -1535,7 +1535,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 19],
-          "type": "Nothing",
+          "type": "NoFunction",
           "comment": "open",
           "switchChannels": {
             "Effect indexing/rotation": "Effect indexing",
