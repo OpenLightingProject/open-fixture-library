@@ -121,19 +121,34 @@
       <app-property-input-number
         v-model="physical.focus.panMax"
         :name="`${namePrefix}-physical-focus-panMax`"
-        :schema-property="properties.physicalFocus.panMax" /> °
+        :disabled="panMaxInfinite"
+        :schema-property="properties.physicalFocus.panMax.oneOf[0]" /> °
+
+      <label class="infinitePanTilt">
+        <input v-model="panMaxInfinite" type="checkbox"> Infinite pan
+      </label>
     </app-simple-label>
 
     <app-simple-label :formstate="formstate" :name="`${namePrefix}-physical-focus-tiltMax`" label="Tilt maximum">
       <app-property-input-number
         v-model="physical.focus.tiltMax"
         :name="`${namePrefix}-physical-focus-tiltMax`"
-        :schema-property="properties.physicalFocus.tiltMax" /> °
+        :disabled="tiltMaxInfinite"
+        :schema-property="properties.physicalFocus.tiltMax.oneOf[0]" /> °
+
+      <label class="infinitePanTilt">
+        <input v-model="tiltMaxInfinite" type="checkbox"> Infinite tilt
+      </label>
     </app-simple-label>
 
   </div>
 </template>
 
+<style lang="scss" scoped>
+.infinitePanTilt {
+  margin-left: 2ex;
+}
+</style>
 
 <script>
 import schemaProperties from '~~/lib/schema-properties.js';
@@ -179,6 +194,22 @@ export default {
   computed: {
     dimensionRequired() {
       return this.physical.dimensionsWidth !== null || this.physical.dimensionsHeight !== null || this.physical.dimensionsDepth !== null;
+    },
+    panMaxInfinite: {
+      get() {
+        return this.physical.focus.panMax === `infinite`;
+      },
+      set(newIsInfinite) {
+        this.physical.focus.panMax = newIsInfinite ? `infinite` : ``;
+      }
+    },
+    tiltMaxInfinite: {
+      get() {
+        return this.physical.focus.tiltMax === `infinite`;
+      },
+      set(newIsInfinite) {
+        this.physical.focus.tiltMax = newIsInfinite ? `infinite` : ``;
+      }
     }
   },
   mounted: function() {
