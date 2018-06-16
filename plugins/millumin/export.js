@@ -1,3 +1,4 @@
+const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
 const { Channel } = require(`../../lib/model.js`);
 
 module.exports.name = `Millumin`;
@@ -27,7 +28,7 @@ module.exports.export = function exportMillumin(fixtures, options) {
 
     return {
       name: `${fixture.manufacturer.key}/${fixture.key}.json`,
-      content: JSON.stringify(jsonData, null, 2),
+      content: fixtureJsonStringify(jsonData),
       mimetype: `application/ofl-fixture`
     };
   });
