@@ -49,7 +49,7 @@
       "BladeInsertion",
       "BladeRotation",
       "BladeSystemRotation",
-      "FogOn",
+      "Fog",
       "FogOutput",
       "FogType",
       "BeamAngle",
@@ -1302,7 +1302,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["FogOn"] }
+          "type": { "enum": ["Fog"] }
         }
       },
       "then": {

@@ -69,7 +69,7 @@ export default {
   },
   computed: {
     fogTypes() {
-      return this.properties.capabilityTypes.FogOn.properties.fogType.enum;
+      return this.properties.capabilityTypes.Fog.properties.fogType.enum;
     }
   }
 };

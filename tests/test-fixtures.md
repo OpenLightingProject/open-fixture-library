@@ -36,7 +36,7 @@
 **Capability type BladeInsertion** [[34]](#user-content-footnote-34) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
 **Capability type BladeRotation** [[35]](#user-content-footnote-35) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
 **Capability type BladeSystemRotation** [[36]](#user-content-footnote-36) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
-**Capability type FogOn** [[37]](#user-content-footnote-37) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
+**Capability type Fog** [[37]](#user-content-footnote-37) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
 **Capability type FogOutput** [[38]](#user-content-footnote-38) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
 **Capability type FogType** [[39]](#user-content-footnote-39) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
 **Capability type BeamAngle** [[40]](#user-content-footnote-40) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌
@@ -148,7 +148,7 @@
 
 **<a id="user-content-footnote-36">[36]</a>**: Whether the fixture has at least one capability of type 'BladeSystemRotation'
 
-**<a id="user-content-footnote-37">[37]</a>**: Whether the fixture has at least one capability of type 'FogOn'
+**<a id="user-content-footnote-37">[37]</a>**: Whether the fixture has at least one capability of type 'Fog'
 
 **<a id="user-content-footnote-38">[38]</a>**: Whether the fixture has at least one capability of type 'FogOutput'
 

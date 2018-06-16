@@ -50,7 +50,7 @@ To make common percentage values more readable, one can use specific keywords to
 * [PrismOff](#prismoff) / [PrismOn](#prismon) / [PrismRotation](#prismrotation)
 * [BladeInsertion](#bladeinsertion)
  / [BladeRotation](#bladerotation) / [BladeSystemRotation](#bladesystemrotation)
-* [FogOn](#fogon) / [FogOutput](#fogoutput) / [FogType](#fogtype)
+* [Fog](#fog) / [FogOutput](#fogoutput) / [FogType](#fogtype)
 * Generic types: [BeamAngle](#beamangle) / [Rotation](#rotation) / [Speed](#speed) / [Time](#time) / [Maintenance](#maintenance) / [Generic](#generic)
 
 
@@ -1028,7 +1028,7 @@ No type-specific properties.
 </table>
 
 
-#### FogOn
+#### Fog
 
 <table>
 <thead>

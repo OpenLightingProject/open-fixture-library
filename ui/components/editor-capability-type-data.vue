@@ -72,7 +72,7 @@ import editorCapabilityPrismRotation from '~/components/editor-capabilities/Pris
 import editorCapabilityBladeInsertion from '~/components/editor-capabilities/BladeInsertion.vue';
 import editorCapabilityBladeRotation from '~/components/editor-capabilities/BladeRotation.vue';
 import editorCapabilityBladeSystemRotation from '~/components/editor-capabilities/BladeSystemRotation.vue';
-import editorCapabilityFogOn from '~/components/editor-capabilities/FogOn.vue';
+import editorCapabilityFog from '~/components/editor-capabilities/Fog.vue';
 import editorCapabilityFogOutput from '~/components/editor-capabilities/FogOutput.vue';
 import editorCapabilityFogType from '~/components/editor-capabilities/FogType.vue';
 import editorCapabilityBeamAngle from '~/components/editor-capabilities/BeamAngle.vue';
@@ -121,7 +121,7 @@ export default {
     'app-editor-capability-BladeInsertion': editorCapabilityBladeInsertion,
     'app-editor-capability-BladeRotation': editorCapabilityBladeRotation,
     'app-editor-capability-BladeSystemRotation': editorCapabilityBladeSystemRotation,
-    'app-editor-capability-FogOn': editorCapabilityFogOn,
+    'app-editor-capability-Fog': editorCapabilityFog,
     'app-editor-capability-FogOutput': editorCapabilityFogOutput,
     'app-editor-capability-FogType': editorCapabilityFogType,
     'app-editor-capability-BeamAngle': editorCapabilityBeamAngle,

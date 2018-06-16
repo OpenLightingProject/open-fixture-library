@@ -834,13 +834,13 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       },
       'Smoke': {
         isSuggested: hasCapabilityPropertyValue(`fogType`, `Fog`),
-        suggestedPhrase: `a FogOn/FogType capability has fogType 'Fog'`,
-        invalidPhrase: `no FogOn/FogType capability has fogType 'Fog'`
+        suggestedPhrase: `a Fog/FogType capability has fogType 'Fog'`,
+        invalidPhrase: `no Fog/FogType capability has fogType 'Fog'`
       },
       'Hazer': {
         isSuggested: hasCapabilityPropertyValue(`fogType`, `Haze`),
-        suggestedPhrase: `a FogOn/FogType capability has fogType 'Haze'`,
-        invalidPhrase: `no FogOn/FogType capability has fogType 'Haze'`
+        suggestedPhrase: `a Fog/FogType capability has fogType 'Haze'`,
+        invalidPhrase: `no Fog/FogType capability has fogType 'Haze'`
       }
     };
 
