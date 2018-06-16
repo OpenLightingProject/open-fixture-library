@@ -1,0 +1,1183 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "JDC1",
+  "categories": ["Strobe", "Blinder", "Color Changer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2018-06-14",
+    "lastModifyDate": "2018-06-14"
+  },
+  "manualURL": "https://www.glp.de/de/produkte?format=raw&task=download&fid=151",
+  "physical": {
+    "dimensions": [390, 284, 154],
+    "weight": 12,
+    "power": 1200,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "1320x Osram LRTB GVTG RGB LEDs, 216x CREE XP L LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [86, 148]
+    },
+    "focus": {
+      "tiltMax": 185
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["C1a", "C1b", "C2a", "C2b", "C3a", "C3b", "C4a", "C4b", "C5a", "C5b", "C6a", "C6b"],
+        ["White 1", "White 2", "White 3", "White 4", "White 5", "White 6", "White 7", "White 8", "White 9", "White 10", "White 11", "White 12"],
+        ["C7a", "C7b", "C8a", "C8b", "C9a", "C9b", "C10a", "C10b", "C11a", "C11b", "C12a", "C12b"]
+      ]
+    ],
+    "pixelGroups": {
+      "Pixel 1": ["C1a", "C1b"],
+      "Pixel 2": ["C2a", "C2b"],
+      "Pixel 3": ["C3a", "C3b"],
+      "Pixel 4": ["C4a", "C4b"],
+      "Pixel 5": ["C5a", "C5b"],
+      "Pixel 6": ["C6a", "C6b"],
+      "Pixel 7": ["C7a", "C7b"],
+      "Pixel 8": ["C8a", "C8b"],
+      "Pixel 9": ["C9a", "C9b"],
+      "Pixel 10": ["C10a", "C10b"],
+      "Pixel 11": ["C11a", "C11b"],
+      "Pixel 12": ["C12a", "C12b"]
+    }
+  },
+  "availableChannels": {
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
+      "crossfade": true
+    },
+    "Beam Intensity": {
+      "type": "Intensity"
+    },
+    "Beam Duration": {
+      "type": "Strobe",
+      "crossfade": true,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Strobe duration 7…650ms"
+        }
+      ]
+    },
+    "Beam Rate": {
+      "type": "Speed",
+      "crossfade": true,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Strobe speed 0.289…16.67Hz"
+        }
+      ]
+    },
+    "Beam FX Shutter": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 36],
+          "name": "Nothing"
+        },
+        {
+          "range": [37, 40],
+          "name": "Ramp up strobe"
+        },
+        {
+          "range": [41, 44],
+          "name": "Random ramp up strobe"
+        },
+        {
+          "range": [45, 48],
+          "name": "Ramp down strobe"
+        },
+        {
+          "range": [49, 52],
+          "name": "Random ramp down strobe"
+        },
+        {
+          "range": [53, 56],
+          "name": "Ramp up and down strobe"
+        },
+        {
+          "range": [57, 60],
+          "name": "Random ramp up and down strobe"
+        },
+        {
+          "range": [61, 64],
+          "name": "Random strobe (Random white beam)"
+        },
+        {
+          "range": [65, 68],
+          "name": "Random strobe (Random single pixel of the white beam)"
+        },
+        {
+          "range": [69, 72],
+          "name": "Lightning strobe effect"
+        },
+        {
+          "range": [73, 76],
+          "name": "Strobe (Spikes (flash over low light))"
+        },
+        {
+          "range": [77, 80],
+          "name": "Strobe (White beam, left to right)"
+        },
+        {
+          "range": [81, 84],
+          "name": "Strobe (White beam, left to right, random)"
+        },
+        {
+          "range": [85, 88],
+          "name": "Strobe (White beam, right to left)"
+        },
+        {
+          "range": [89, 92],
+          "name": "Strobe (White beam, right to left, random)"
+        },
+        {
+          "range": [93, 96],
+          "name": "Strobe (White beam, left to right, bounce)"
+        },
+        {
+          "range": [97, 100],
+          "name": "Strobe (White beam, left to right, bounce, random)"
+        },
+        {
+          "range": [101, 104],
+          "name": "Strobe (White beam, right to left, bounce)"
+        },
+        {
+          "range": [105, 108],
+          "name": "Strobe (White beam, right to left, bounce, random)"
+        },
+        {
+          "range": [109, 112],
+          "name": "Strobe (Zig, 6 steps)"
+        },
+        {
+          "range": [113, 116],
+          "name": "Strobe (Zig, 6 steps, random)"
+        },
+        {
+          "range": [117, 120],
+          "name": "Strobe (Zig, 6 steps, outer to center pixel)"
+        },
+        {
+          "range": [121, 124],
+          "name": "Strobe (Zig, 6 steps, outer to center pixel, random)"
+        },
+        {
+          "range": [125, 128],
+          "name": "Strobe (Zigzag, 10 steps)"
+        },
+        {
+          "range": [129, 132],
+          "name": "Strobe (Zigzag, 10 steps, random)"
+        },
+        {
+          "range": [133, 179],
+          "name": "Nothing"
+        },
+        {
+          "range": [180, 183],
+          "name": "Strobe (Double flash)"
+        },
+        {
+          "range": [184, 187],
+          "name": "Strobe (Double flash, random)"
+        },
+        {
+          "range": [188, 191],
+          "name": "Strobe (Double flash, beam-color)"
+        },
+        {
+          "range": [192, 195],
+          "name": "Strobe (Double flash, beam-color, random)"
+        },
+        {
+          "range": [196, 199],
+          "name": "Strobe (Double flash, color-beam)"
+        },
+        {
+          "range": [200, 203],
+          "name": "Strobe (Double flash, color-beam, random)"
+        },
+        {
+          "range": [204, 207],
+          "name": "Strobe (Triple flash)"
+        },
+        {
+          "range": [208, 211],
+          "name": "Strobe (Triple flash, random)"
+        },
+        {
+          "range": [212, 215],
+          "name": "Strobe (Triple flash, beam-color-beam)"
+        },
+        {
+          "range": [216, 219],
+          "name": "Strobe (Triple flash, beam-color-beam, random)"
+        },
+        {
+          "range": [220, 223],
+          "name": "Strobe (Triple flash, color-beam-color)"
+        },
+        {
+          "range": [224, 227],
+          "name": "Strobe (Triple flash, color-beam-color, random)"
+        },
+        {
+          "range": [228, 231],
+          "name": "Strobe (Quad flash)"
+        },
+        {
+          "range": [232, 235],
+          "name": "Strobe (Quad flash, random)"
+        },
+        {
+          "range": [236, 239],
+          "name": "Strobe (Quad flash, beam-color-beam-color)"
+        },
+        {
+          "range": [240, 243],
+          "name": "Strobe (Quad flash, beam-color-beam-color, random)"
+        },
+        {
+          "range": [244, 247],
+          "name": "Strobe (Quad flash, color-beam-color-beam)"
+        },
+        {
+          "range": [248, 251],
+          "name": "Strobe (Quad flash, color-beam-color-beam, random)"
+        },
+        {
+          "range": [252, 255],
+          "name": "Nothing"
+        }
+      ]
+    },
+    "Special / Control": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Nothing"
+        },
+        {
+          "range": [1, 1],
+          "name": "Channel 4-6 Offset 10°"
+        },
+        {
+          "range": [2, 2],
+          "name": "Channel 4-6 Offset 20°"
+        },
+        {
+          "range": [3, 3],
+          "name": "Channel 4-6 Offset 30°"
+        },
+        {
+          "range": [4, 4],
+          "name": "Channel 4-6 Offset 40°"
+        },
+        {
+          "range": [5, 5],
+          "name": "Channel 4-6 Offset 50°"
+        },
+        {
+          "range": [6, 6],
+          "name": "Channel 4-6 Offset 60°"
+        },
+        {
+          "range": [7, 7],
+          "name": "Channel 4-6 Offset 70°"
+        },
+        {
+          "range": [8, 8],
+          "name": "Channel 4-6 Offset 80°"
+        },
+        {
+          "range": [9, 9],
+          "name": "Channel 4-6 Offset 90°"
+        },
+        {
+          "range": [10, 10],
+          "name": "Channel 4-6 Offset 100°"
+        },
+        {
+          "range": [11, 11],
+          "name": "Channel 4-6 Offset 110°"
+        },
+        {
+          "range": [12, 12],
+          "name": "Channel 4-6 Offset 120°"
+        },
+        {
+          "range": [13, 13],
+          "name": "Channel 4-6 Offset 130°"
+        },
+        {
+          "range": [14, 14],
+          "name": "Channel 4-6 Offset 140°"
+        },
+        {
+          "range": [15, 15],
+          "name": "Channel 4-6 Offset 150°"
+        },
+        {
+          "range": [16, 16],
+          "name": "Channel 4-6 Offset 160°"
+        },
+        {
+          "range": [17, 17],
+          "name": "Channel 4-6 Offset 170°"
+        },
+        {
+          "range": [18, 18],
+          "name": "Channel 4-6 Offset 180°"
+        },
+        {
+          "range": [19, 19],
+          "name": "Channel 4-6 Offset 190°"
+        },
+        {
+          "range": [20, 20],
+          "name": "Channel 4-6 Offset 200°"
+        },
+        {
+          "range": [21, 21],
+          "name": "Channel 4-6 Offset 210°"
+        },
+        {
+          "range": [22, 22],
+          "name": "Channel 4-6 Offset 220°"
+        },
+        {
+          "range": [23, 23],
+          "name": "Channel 4-6 Offset 230°"
+        },
+        {
+          "range": [24, 24],
+          "name": "Channel 4-6 Offset 240°"
+        },
+        {
+          "range": [25, 25],
+          "name": "Channel 4-6 Offset 250°"
+        },
+        {
+          "range": [26, 26],
+          "name": "Channel 4-6 Offset 260°"
+        },
+        {
+          "range": [27, 27],
+          "name": "Channel 4-6 Offset 270°"
+        },
+        {
+          "range": [28, 28],
+          "name": "Channel 4-6 Offset 280°"
+        },
+        {
+          "range": [29, 29],
+          "name": "Channel 4-6 Offset 290°"
+        },
+        {
+          "range": [30, 30],
+          "name": "Channel 4-6 Offset 300°"
+        },
+        {
+          "range": [31, 31],
+          "name": "Channel 4-6 Offset 310°"
+        },
+        {
+          "range": [32, 32],
+          "name": "Channel 4-6 Offset 320°"
+        },
+        {
+          "range": [33, 33],
+          "name": "Channel 4-6 Offset 330°"
+        },
+        {
+          "range": [34, 34],
+          "name": "Channel 4-6 Offset 340°"
+        },
+        {
+          "range": [35, 35],
+          "name": "Channel 4-6 Offset 350°"
+        },
+        {
+          "range": [36, 36],
+          "name": "Channel 4-6 Offset 360°"
+        },
+        {
+          "range": [37, 39],
+          "name": "Nothing"
+        },
+        {
+          "range": [40, 44],
+          "name": "Position Feedback On"
+        },
+        {
+          "range": [45, 49],
+          "name": "Position Feedback Off"
+        },
+        {
+          "range": [50, 54],
+          "name": "FX/Pattern Color Priority On (hold 3s)"
+        },
+        {
+          "range": [55, 59],
+          "name": "FX/Pattern Control Priority Off (hold 3s)"
+        },
+        {
+          "range": [60, 64],
+          "name": "Pixel H"
+        },
+        {
+          "range": [65, 69],
+          "name": "Pixel V"
+        },
+        {
+          "range": [70, 74],
+          "name": "Normal Tilt Control"
+        },
+        {
+          "range": [75, 79],
+          "name": "Inverse Tilt Control"
+        },
+        {
+          "range": [80, 84],
+          "name": "Normal Pixel Orientation"
+        },
+        {
+          "range": [85, 89],
+          "name": "Inverse Pixel Orientation"
+        },
+        {
+          "range": [90, 94],
+          "name": "Normal Orientation, 2nd Pixel Line"
+        },
+        {
+          "range": [95, 99],
+          "name": "Inverse Orientation, 2nd Pixel Line"
+        },
+        {
+          "range": [100, 102],
+          "name": "PWM Frequency 582Hz"
+        },
+        {
+          "range": [103, 105],
+          "name": "PWM Frequency 583Hz"
+        },
+        {
+          "range": [106, 107],
+          "name": "PWM Frequency 584Hz"
+        },
+        {
+          "range": [108, 110],
+          "name": "PWM Frequency 585Hz"
+        },
+        {
+          "range": [111, 112],
+          "name": "PWM Frequency 586Hz"
+        },
+        {
+          "range": [113, 115],
+          "name": "PWM Frequency 587Hz"
+        },
+        {
+          "range": [116, 118],
+          "name": "PWM Frequency 588Hz"
+        },
+        {
+          "range": [119, 120],
+          "name": "PWM Frequency 589Hz"
+        },
+        {
+          "range": [121, 123],
+          "name": "PWM Frequency 590Hz"
+        },
+        {
+          "range": [124, 125],
+          "name": "PWM Frequency 591Hz"
+        },
+        {
+          "range": [126, 128],
+          "name": "PWM Frequency 592Hz"
+        },
+        {
+          "range": [129, 131],
+          "name": "PWM Frequency 593Hz"
+        },
+        {
+          "range": [132, 133],
+          "name": "PWM Frequency 594Hz"
+        },
+        {
+          "range": [134, 136],
+          "name": "PWM Frequency 595Hz"
+        },
+        {
+          "range": [137, 138],
+          "name": "PWM Frequency 596Hz"
+        },
+        {
+          "range": [139, 141],
+          "name": "PWM Frequency 597Hz"
+        },
+        {
+          "range": [142, 144],
+          "name": "PWM Frequency 598Hz"
+        },
+        {
+          "range": [145, 146],
+          "name": "PWM Frequency 599Hz"
+        },
+        {
+          "range": [147, 149],
+          "name": "PWM Frequency 600Hz"
+        },
+        {
+          "range": [150, 151],
+          "name": "PWM Frequency 601Hz"
+        },
+        {
+          "range": [152, 154],
+          "name": "PWM Frequency 602Hz"
+        },
+        {
+          "range": [155, 157],
+          "name": "PWM Frequency 603Hz"
+        },
+        {
+          "range": [158, 159],
+          "name": "PWM Frequency 604Hz"
+        },
+        {
+          "range": [160, 162],
+          "name": "PWM Frequency 605Hz"
+        },
+        {
+          "range": [163, 164],
+          "name": "PWM Frequency 606Hz"
+        },
+        {
+          "range": [165, 167],
+          "name": "PWM Frequency 607Hz"
+        },
+        {
+          "range": [168, 170],
+          "name": "PWM Frequency 608Hz"
+        },
+        {
+          "range": [171, 172],
+          "name": "PWM Frequency 609Hz"
+        },
+        {
+          "range": [173, 175],
+          "name": "PWM Frequency 610Hz"
+        },
+        {
+          "range": [176, 177],
+          "name": "PWM Frequency 611Hz"
+        },
+        {
+          "range": [178, 180],
+          "name": "PWM Frequency 612Hz"
+        },
+        {
+          "range": [181, 183],
+          "name": "PWM Frequency 613Hz"
+        },
+        {
+          "range": [184, 185],
+          "name": "PWM Frequency 614Hz"
+        },
+        {
+          "range": [186, 188],
+          "name": "PWM Frequency 615Hz"
+        },
+        {
+          "range": [189, 190],
+          "name": "PWM Frequency 616Hz"
+        },
+        {
+          "range": [191, 193],
+          "name": "PWM Frequency 617Hz"
+        },
+        {
+          "range": [194, 194],
+          "name": "PWM Frequency 618Hz"
+        },
+        {
+          "range": [195, 197],
+          "name": "PWM Frequency 1200Hz"
+        },
+        {
+          "range": [198, 200],
+          "name": "PWM Frequency 2400Hz"
+        },
+        {
+          "range": [201, 209],
+          "name": "Nothing"
+        },
+        {
+          "range": [210, 214],
+          "name": "Duration Percentage Mode On"
+        },
+        {
+          "range": [215, 219],
+          "name": "Duration Percentage Mode Off"
+        },
+        {
+          "range": [220, 224],
+          "name": "Dimmer Flash On"
+        },
+        {
+          "range": [225, 229],
+          "name": "Dimmer Flash Off"
+        },
+        {
+          "range": [230, 234],
+          "name": "FX/Plate Color Priority On"
+        },
+        {
+          "range": [235, 239],
+          "name": "FX/Plate Color Priority Off"
+        },
+        {
+          "range": [240, 247],
+          "name": "Nothing"
+        },
+        {
+          "range": [248, 255],
+          "name": "Reset (hold 5s)"
+        }
+      ]
+    },
+    "Color Plate Intensity": {
+      "type": "Intensity"
+    },
+    "Color Flash Duration": {
+      "type": "Strobe",
+      "crossfade": true,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Strobe duration 7…650ms"
+        }
+      ]
+    },
+    "Color Flash Rate": {
+      "type": "Speed",
+      "crossfade": true,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Strobe speed 0.289…16.67Hz"
+        }
+      ]
+    },
+    "Color FX Shutter": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Nothing"
+        },
+        {
+          "range": [1, 1],
+          "name": "Color Plate Offset 10°"
+        },
+        {
+          "range": [2, 2],
+          "name": "Color Plate Offset 20°"
+        },
+        {
+          "range": [3, 3],
+          "name": "Color Plate Offset 30°"
+        },
+        {
+          "range": [4, 4],
+          "name": "Color Plate Offset 40°"
+        },
+        {
+          "range": [5, 5],
+          "name": "Color Plate Offset 50°"
+        },
+        {
+          "range": [6, 6],
+          "name": "Color Plate Offset 60°"
+        },
+        {
+          "range": [7, 7],
+          "name": "Color Plate Offset 70°"
+        },
+        {
+          "range": [8, 8],
+          "name": "Color Plate Offset 80°"
+        },
+        {
+          "range": [9, 9],
+          "name": "Color Plate Offset 90°"
+        },
+        {
+          "range": [10, 10],
+          "name": "Color Plate Offset 100°"
+        },
+        {
+          "range": [11, 11],
+          "name": "Color Plate Offset 110°"
+        },
+        {
+          "range": [12, 12],
+          "name": "Color Plate Offset 120°"
+        },
+        {
+          "range": [13, 13],
+          "name": "Color Plate Offset 130°"
+        },
+        {
+          "range": [14, 14],
+          "name": "Color Plate Offset 140°"
+        },
+        {
+          "range": [15, 15],
+          "name": "Color Plate Offset 150°"
+        },
+        {
+          "range": [16, 16],
+          "name": "Color Plate Offset 160°"
+        },
+        {
+          "range": [17, 17],
+          "name": "Color Plate Offset 170°"
+        },
+        {
+          "range": [18, 18],
+          "name": "Color Plate Offset 180°"
+        },
+        {
+          "range": [19, 19],
+          "name": "Color Plate Offset 190°"
+        },
+        {
+          "range": [20, 20],
+          "name": "Color Plate Offset 200°"
+        },
+        {
+          "range": [21, 21],
+          "name": "Color Plate Offset 210°"
+        },
+        {
+          "range": [22, 22],
+          "name": "Color Plate Offset 220°"
+        },
+        {
+          "range": [23, 23],
+          "name": "Color Plate Offset 230°"
+        },
+        {
+          "range": [24, 24],
+          "name": "Color Plate Offset 240°"
+        },
+        {
+          "range": [25, 25],
+          "name": "Color Plate Offset 250°"
+        },
+        {
+          "range": [26, 26],
+          "name": "Color Plate Offset 260°"
+        },
+        {
+          "range": [27, 27],
+          "name": "Color Plate Offset 270°"
+        },
+        {
+          "range": [28, 28],
+          "name": "Color Plate Offset 280°"
+        },
+        {
+          "range": [29, 29],
+          "name": "Color Plate Offset 290°"
+        },
+        {
+          "range": [30, 30],
+          "name": "Color Plate Offset 300°"
+        },
+        {
+          "range": [31, 31],
+          "name": "Color Plate Offset 310°"
+        },
+        {
+          "range": [32, 32],
+          "name": "Color Plate Offset 320°"
+        },
+        {
+          "range": [33, 33],
+          "name": "Color Plate Offset 330°"
+        },
+        {
+          "range": [34, 34],
+          "name": "Color Plate Offset 340°"
+        },
+        {
+          "range": [35, 35],
+          "name": "Color Plate Offset 350°"
+        },
+        {
+          "range": [36, 36],
+          "name": "Color Plate Offset 360°"
+        },
+        {
+          "range": [37, 40],
+          "name": "Ramp up strobe"
+        },
+        {
+          "range": [41, 44],
+          "name": "Random ramp up strobe"
+        },
+        {
+          "range": [45, 48],
+          "name": "Ramp down strobe"
+        },
+        {
+          "range": [49, 52],
+          "name": "Random ramp down strobe"
+        },
+        {
+          "range": [53, 56],
+          "name": "Ramp up and down strobe"
+        },
+        {
+          "range": [57, 60],
+          "name": "Random ramp up and down strobe"
+        },
+        {
+          "range": [61, 64],
+          "name": "Strobe (Random white beam)"
+        },
+        {
+          "range": [65, 68],
+          "name": "Strobe (Random single pixel of the white beam)"
+        },
+        {
+          "range": [69, 72],
+          "name": "Lightning strobe effect"
+        },
+        {
+          "range": [73, 76],
+          "name": "Strobe (Spikes (flash over low light))"
+        },
+        {
+          "range": [77, 179],
+          "name": "Nothing"
+        },
+        {
+          "range": [180, 191],
+          "name": "Strobe (Double flash)"
+        },
+        {
+          "range": [192, 203],
+          "name": "Strobe (Double flash, random)"
+        },
+        {
+          "range": [204, 215],
+          "name": "Strobe (Trriple flash)"
+        },
+        {
+          "range": [216, 227],
+          "name": "Strobe (Trriple flash, random)"
+        },
+        {
+          "range": [228, 239],
+          "name": "Strobe (Quad flash)"
+        },
+        {
+          "range": [240, 251],
+          "name": "Strobe (Quad flash, random)"
+        },
+        {
+          "range": [252, 255],
+          "name": "No effect"
+        }
+      ]
+    },
+    "Plate Red Intensity": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Plate Green Intensity": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Plate Blue Intensity": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "Color Set 2 Red Intensity": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Color Set 2 Green Intensity": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Color Set 2 Blue Intensity": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "FX Crossfade": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Generic"
+        }
+      ]
+    },
+    "Pattern Color Movement": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Generic"
+        }
+      ]
+    },
+    "Pattern Select Color": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Generic"
+        }
+      ]
+    },
+    "Pattern Beam Movement": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Generic"
+        }
+      ]
+    },
+    "Pattern Select Beam": {
+      "type": "Intensity",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Generic"
+        }
+      ]
+    },
+    "Color Set 2 Master Intensity": {
+      "type": "Intensity"
+    },
+    "Master Pix Intensity": {
+      "type": "Intensity"
+    }
+  },
+  "templateChannels": {
+    "$pixelKey Red Intensity": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "$pixelKey Green Intensity": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "$pixelKey Blue Intensity": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "$pixelKey Intensity": {
+      "type": "Intensity"
+    }
+  },
+  "modes": [
+    {
+      "name": "Compressed Pro 14-channel",
+      "shortName": "M1",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Beam Intensity",
+        "Beam Duration",
+        "Beam Rate",
+        "Beam FX Shutter",
+        "Special / Control",
+        "Color Plate Intensity",
+        "Color Flash Duration",
+        "Color Flash Rate",
+        "Color FX Shutter",
+        "Plate Red Intensity",
+        "Plate Green Intensity",
+        "Plate Blue Intensity"
+      ]
+    },
+    {
+      "name": "Normal 23-channel",
+      "shortName": "M2",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Beam Intensity",
+        "Beam Duration",
+        "Beam Rate",
+        "Beam FX Shutter",
+        "Special / Control",
+        "Color Plate Intensity",
+        "Color Flash Duration",
+        "Color Flash Rate",
+        "Color FX Shutter",
+        "Plate Red Intensity",
+        "Plate Green Intensity",
+        "Plate Blue Intensity",
+        "FX Crossfade",
+        "Pattern Color Movement",
+        "Pattern Select Color",
+        "Pattern Beam Movement",
+        "Pattern Select Beam",
+        "Color Set 2 Master Intensity",
+        "Color Set 2 Red Intensity",
+        "Color Set 2 Green Intensity",
+        "Color Set 2 Blue Intensity"
+      ]
+    },
+    {
+      "name": "SPix 68-channel",
+      "shortName": "M3",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Beam Intensity",
+        "Beam Duration",
+        "Beam Rate",
+        "Beam FX Shutter",
+        "Special / Control",
+        "Color Plate Intensity",
+        "Color Flash Duration",
+        "Color Flash Rate",
+        "Color FX Shutter",
+        "Plate Red Intensity",
+        "Plate Green Intensity",
+        "Plate Blue Intensity",
+        "FX Crossfade",
+        "Pattern Color Movement",
+        "Pattern Select Color",
+        "Pattern Beam Movement",
+        "Pattern Select Beam",
+        "Master Pix Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelGroup",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red Intensity",
+            "$pixelKey Green Intensity",
+            "$pixelKey Blue Intensity"
+          ]
+        },
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "White 1",
+            "White 2",
+            "White 3",
+            "White 4",
+            "White 5",
+            "White 6",
+            "White 7",
+            "White 8",
+            "White 9",
+            "White 10",
+            "White 11",
+            "White 12"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Intensity"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SPix Pro 62-channel",
+      "shortName": "M4",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Beam Intensity",
+        "Beam Duration",
+        "Beam Rate",
+        "Beam FX Shutter",
+        "Special / Control",
+        "Color Plate Intensity",
+        "Color Flash Duration",
+        "Color Flash Rate",
+        "Color FX Shutter",
+        "Plate Red Intensity",
+        "Plate Green Intensity",
+        "Plate Blue Intensity",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelGroup",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red Intensity",
+            "$pixelKey Green Intensity",
+            "$pixelKey Blue Intensity"
+          ]
+        },
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "White 1",
+            "White 2",
+            "White 3",
+            "White 4",
+            "White 5",
+            "White 6",
+            "White 7",
+            "White 8",
+            "White 9",
+            "White 10",
+            "White 11",
+            "White 12"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Intensity"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "1Pix Pro 17-channel",
+      "shortName": "M5",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Beam Intensity",
+        "Beam Duration",
+        "Beam Rate",
+        "Beam FX Shutter",
+        "Special / Control",
+        "Color Plate Intensity",
+        "Color Flash Duration",
+        "Color Flash Rate",
+        "Color FX Shutter",
+        "Plate Red Intensity",
+        "Plate Green Intensity",
+        "Plate Blue Intensity",
+        "Color Set 2 Red Intensity",
+        "Color Set 2 Green Intensity",
+        "Color Set 2 Blue Intensity"
+      ]
+    }
+  ]
+}

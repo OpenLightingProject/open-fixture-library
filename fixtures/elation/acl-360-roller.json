@@ -1,0 +1,676 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ACL 360 Roller",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-06-14",
+    "lastModifyDate": "2018-06-14"
+  },
+  "manualURL": "https://cdb.s3.amazonaws.com/ItemRelatedFiles/9806/elation_ACL_360_ROLLER_user_manual_ver_1.pdf",
+  "physical": {
+    "dimensions": [480.7, 541, 260],
+    "weight": 20,
+    "power": 280,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "20x 15W RGBW LEDs"
+    },
+    "focus": {
+      "type": "Head"
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["1", "2", "3", "4", "5"],
+        [null, null, null, null, null],
+        ["6", "7", "8", "9", "10"]
+      ],
+      [
+        [null, null, null, null, null],
+        [null, null, null, null, null],
+        [null, null, null, null, null]
+      ],
+      [
+        ["11", "12", "13", "14", "15"],
+        [null, null, null, null, null],
+        ["16", "17", "18", "19", "20"]
+      ]
+    ],
+    "pixelGroups": {
+      "Master": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
+      "crossfade": true
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
+      "crossfade": true
+    },
+    "Pan Continuous": {
+      "type": "Pan",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Nothing"
+        },
+        {
+          "range": [128, 189],
+          "name": "Continuous pan CW fast…slow"
+        },
+        {
+          "range": [190, 193],
+          "name": "Continuous pan stop"
+        },
+        {
+          "range": [194, 255],
+          "name": "Continuous pan CCW slow…fast"
+        }
+      ]
+    },
+    "Tilt Continuous": {
+      "type": "Tilt",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Nothing"
+        },
+        {
+          "range": [128, 189],
+          "name": "Continuous tilt CW fast…slow"
+        },
+        {
+          "range": [190, 193],
+          "name": "Continuous tilt stop"
+        },
+        {
+          "range": [194, 255],
+          "name": "Continuous tilt CCW slow…fast"
+        }
+      ]
+    },
+    "Color Macros": {
+      "type": "Multi-Color",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Nothing"
+        },
+        {
+          "range": [1, 4],
+          "name": "Color Macro 1"
+        },
+        {
+          "range": [5, 8],
+          "name": "Color Macro 2"
+        },
+        {
+          "range": [9, 12],
+          "name": "Color Macro 3"
+        },
+        {
+          "range": [13, 16],
+          "name": "Color Macro 4"
+        },
+        {
+          "range": [17, 20],
+          "name": "Color Macro 5"
+        },
+        {
+          "range": [21, 24],
+          "name": "Color Macro 6"
+        },
+        {
+          "range": [25, 28],
+          "name": "Color Macro 7"
+        },
+        {
+          "range": [29, 32],
+          "name": "Color Macro 8"
+        },
+        {
+          "range": [33, 36],
+          "name": "Color Macro 9"
+        },
+        {
+          "range": [37, 40],
+          "name": "Color Macro 10"
+        },
+        {
+          "range": [41, 44],
+          "name": "Color Macro 11"
+        },
+        {
+          "range": [45, 48],
+          "name": "Color Macro 12"
+        },
+        {
+          "range": [49, 52],
+          "name": "Color Macro 13"
+        },
+        {
+          "range": [53, 56],
+          "name": "Color Macro 14"
+        },
+        {
+          "range": [57, 60],
+          "name": "Color Macro 15"
+        },
+        {
+          "range": [61, 64],
+          "name": "Color Macro 16"
+        },
+        {
+          "range": [65, 68],
+          "name": "Color Macro 17"
+        },
+        {
+          "range": [69, 72],
+          "name": "Color Macro 18"
+        },
+        {
+          "range": [73, 76],
+          "name": "Color Macro 19"
+        },
+        {
+          "range": [77, 80],
+          "name": "Color Macro 20"
+        },
+        {
+          "range": [81, 84],
+          "name": "Color Macro 21"
+        },
+        {
+          "range": [85, 88],
+          "name": "Color Macro 22"
+        },
+        {
+          "range": [89, 92],
+          "name": "Color Macro 23"
+        },
+        {
+          "range": [93, 96],
+          "name": "Color Macro 24"
+        },
+        {
+          "range": [97, 100],
+          "name": "Color Macro 25"
+        },
+        {
+          "range": [101, 104],
+          "name": "Color Macro 26"
+        },
+        {
+          "range": [105, 108],
+          "name": "Color Macro 27"
+        },
+        {
+          "range": [109, 112],
+          "name": "Color Macro 28"
+        },
+        {
+          "range": [113, 116],
+          "name": "Color Macro 29"
+        },
+        {
+          "range": [117, 120],
+          "name": "Color Macro 30"
+        },
+        {
+          "range": [121, 124],
+          "name": "Color Macro 31"
+        },
+        {
+          "range": [125, 128],
+          "name": "Color Macro 32"
+        },
+        {
+          "range": [129, 132],
+          "name": "Color Macro 33"
+        },
+        {
+          "range": [133, 136],
+          "name": "Color Macro 34"
+        },
+        {
+          "range": [137, 140],
+          "name": "Color Macro 35"
+        },
+        {
+          "range": [141, 144],
+          "name": "Color Macro 36"
+        },
+        {
+          "range": [145, 148],
+          "name": "Color Macro 37"
+        },
+        {
+          "range": [149, 152],
+          "name": "Color Macro 38"
+        },
+        {
+          "range": [153, 156],
+          "name": "Color Macro 39"
+        },
+        {
+          "range": [157, 160],
+          "name": "Color Macro 40"
+        },
+        {
+          "range": [161, 164],
+          "name": "Color Macro 41"
+        },
+        {
+          "range": [165, 168],
+          "name": "Color Macro 42"
+        },
+        {
+          "range": [169, 172],
+          "name": "Color Macro 43"
+        },
+        {
+          "range": [173, 176],
+          "name": "Color Macro 44"
+        },
+        {
+          "range": [177, 180],
+          "name": "Color Macro 45"
+        },
+        {
+          "range": [181, 184],
+          "name": "Color Macro 46"
+        },
+        {
+          "range": [185, 188],
+          "name": "Color Macro 47"
+        },
+        {
+          "range": [189, 192],
+          "name": "Color Macro 48"
+        },
+        {
+          "range": [193, 196],
+          "name": "Color Macro 49"
+        },
+        {
+          "range": [197, 200],
+          "name": "Color Macro 50"
+        },
+        {
+          "range": [201, 204],
+          "name": "Color Macro 51"
+        },
+        {
+          "range": [205, 208],
+          "name": "Color Macro 52"
+        },
+        {
+          "range": [209, 212],
+          "name": "Color Macro 53"
+        },
+        {
+          "range": [213, 216],
+          "name": "Color Macro 54"
+        },
+        {
+          "range": [217, 220],
+          "name": "Color Macro 55"
+        },
+        {
+          "range": [221, 224],
+          "name": "Color Macro 56"
+        },
+        {
+          "range": [225, 228],
+          "name": "Color Macro 57"
+        },
+        {
+          "range": [229, 232],
+          "name": "Color Macro 58"
+        },
+        {
+          "range": [233, 236],
+          "name": "Color Macro 59"
+        },
+        {
+          "range": [237, 240],
+          "name": "Color Macro 60"
+        },
+        {
+          "range": [241, 244],
+          "name": "Color Macro 61"
+        },
+        {
+          "range": [245, 248],
+          "name": "Color Macro 62"
+        },
+        {
+          "range": [249, 252],
+          "name": "Color Macro 63"
+        },
+        {
+          "range": [253, 255],
+          "name": "Color Macro 64"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "fineChannelAliases": ["Dimmer fine"]
+    },
+    "Auto Programs": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Nothing"
+        },
+        {
+          "range": [1, 20],
+          "name": "Auto Program 1"
+        },
+        {
+          "range": [21, 40],
+          "name": "Auto Program 2"
+        },
+        {
+          "range": [41, 60],
+          "name": "Auto Program 3"
+        },
+        {
+          "range": [61, 80],
+          "name": "Auto Program 4"
+        },
+        {
+          "range": [81, 100],
+          "name": "Auto Program 5"
+        },
+        {
+          "range": [101, 120],
+          "name": "Auto Program 6"
+        },
+        {
+          "range": [121, 140],
+          "name": "Auto Program 7"
+        },
+        {
+          "range": [141, 160],
+          "name": "Auto Program 8"
+        },
+        {
+          "range": [161, 180],
+          "name": "Auto Program 9"
+        },
+        {
+          "range": [181, 200],
+          "name": "Auto Program 10"
+        },
+        {
+          "range": [201, 220],
+          "name": "Auto Program 11"
+        },
+        {
+          "range": [221, 240],
+          "name": "Auto Program 12"
+        },
+        {
+          "range": [241, 250],
+          "name": "Auto Program 13"
+        },
+        {
+          "range": [251, 255],
+          "name": "Auto Program 14"
+        }
+      ]
+    },
+    "Auto Program Speed": {
+      "type": "Speed",
+      "crossfade": true,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Effect speed slow…fast"
+        }
+      ]
+    },
+    "Dimmer Curve Mode": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 20],
+          "name": "Standard"
+        },
+        {
+          "range": [21, 40],
+          "name": "Stage"
+        },
+        {
+          "range": [41, 60],
+          "name": "TV"
+        },
+        {
+          "range": [61, 80],
+          "name": "Architectural"
+        },
+        {
+          "range": [81, 100],
+          "name": "Theatre"
+        },
+        {
+          "range": [101, 255],
+          "name": "Default to unit setting"
+        }
+      ]
+    },
+    "Pan/Tilt Speed": {
+      "type": "Speed",
+      "invert": true,
+      "capabilities": [
+        {
+          "range": [0, 225],
+          "name": "Pan/tilt fast…slow movement"
+        },
+        {
+          "range": [226, 235],
+          "name": "Blackout during movement"
+        },
+        {
+          "range": [236, 255],
+          "name": "Nothing"
+        }
+      ]
+    },
+    "Reset / Internal Programs": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 79],
+          "name": "Normal"
+        },
+        {
+          "range": [80, 84],
+          "name": "All motor reset"
+        },
+        {
+          "range": [85, 99],
+          "name": "Nothing"
+        },
+        {
+          "range": [100, 119],
+          "name": "Internal Program 1 (Scene 1–8)"
+        },
+        {
+          "range": [120, 139],
+          "name": "Internal Program 2 (Scene 9–16)"
+        },
+        {
+          "range": [140, 159],
+          "name": "Internal Program 3 (Scene 17–24)"
+        },
+        {
+          "range": [160, 179],
+          "name": "Internal Program 4 (Scene 25–32)"
+        },
+        {
+          "range": [180, 199],
+          "name": "Internal Program 5 (Scene 33–40)"
+        },
+        {
+          "range": [200, 219],
+          "name": "Internal Program 6 (Scene 41–48)"
+        },
+        {
+          "range": [220, 239],
+          "name": "Internal Program 7 (Scene 49–56)"
+        },
+        {
+          "range": [240, 255],
+          "name": "Nothing"
+        }
+      ]
+    },
+    "Strobe": {
+      "type": "Strobe",
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "Shutter closed"
+        },
+        {
+          "range": [32, 63],
+          "name": "Shutter open"
+        },
+        {
+          "range": [64, 95],
+          "name": "Strobe slow…fast"
+        },
+        {
+          "range": [96, 127],
+          "name": "Shutter open"
+        },
+        {
+          "range": [128, 159],
+          "name": "Pulse strobe"
+        },
+        {
+          "range": [160, 191],
+          "name": "Random strobe slow…fast (Each Side x4)"
+        },
+        {
+          "range": [192, 223],
+          "name": "Random strobe slow…fast (Individual LEDs)"
+        },
+        {
+          "range": [224, 255],
+          "name": "Shutter open"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green $pixelKey": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue $pixelKey": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "White $pixelKey": {
+      "type": "Single Color",
+      "color": "White"
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic",
+      "shortName": "bas",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan Continuous",
+        "Tilt Continuous",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Color Macros",
+        "Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Auto Programs",
+        "Auto Program Speed",
+        "Dimmer Curve Mode",
+        "Pan/Tilt Speed",
+        "Reset / Internal Programs"
+      ]
+    },
+    {
+      "name": "Standard",
+      "shortName": "std",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan Continuous",
+        "Tilt Continuous",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Color Macros",
+        "Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Auto Programs",
+        "Auto Program Speed",
+        "Dimmer Curve Mode",
+        "Pan/Tilt Speed",
+        "Reset / Internal Programs"
+      ]
+    },
+    {
+      "name": "Extended",
+      "shortName": "ext",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan Continuous",
+        "Tilt Continuous",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        },
+        "Color Macros",
+        "Dimmer",
+        "Dimmer fine",
+        "Auto Programs",
+        "Auto Program Speed",
+        "Dimmer Curve Mode",
+        "Pan/Tilt Speed",
+        "Reset / Internal Programs",
+        "Strobe"
+      ]
+    }
+  ]
+}
