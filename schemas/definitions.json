@@ -131,7 +131,7 @@
         { "$ref": "#/units/hertz" },
         { "$ref": "#/units/beatsPerMinute" },
         { "$ref": "#/units/percent" },
-        { "enum": ["fast reverse", "slow reverse", "stop", "slow", "fast"] }
+        { "enum": ["fast", "slow", "stop", "slow reverse", "fast reverse"] }
       ]
     },
     "rotationSpeed": {
@@ -139,7 +139,7 @@
         { "$ref": "#/units/hertz" },
         { "$ref": "#/units/roundsPerMinute" },
         { "$ref": "#/units/percent" },
-        { "enum": ["fast CCW", "slow CCW", "stop", "slow CW", "fast CW"] }
+        { "enum": ["fast CW", "slow CW", "stop", "slow CCW", "fast CCW"] }
       ]
     },
     "time": {
