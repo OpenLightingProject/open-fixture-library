@@ -535,6 +535,10 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           if (cap.effectPreset === null && schemaProperties.definitions.effectPreset.enum.includes(cap.effectName)) {
             result.errors.push(`${errorPrefix} must use effectPreset instead of effectName with '${cap.effectName}'.`);
           }
+
+          if (!cap.isSoundControlled && cap.soundSensitivity !== null) {
+            result.errors.push(`${errorPrefix} can't set soundSensitivity if soundControlled is not true.`);
+          }
         }
       }
     }

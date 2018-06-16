@@ -90,6 +90,7 @@
     </app-simple-label>
 
     <app-simple-label
+      v-if="capability.typeData.soundControlled"
       :formstate="formstate"
       :name="`capability${capability.uuid}-soundSensitivity`"
       label="Sound sensitivity">
@@ -168,7 +169,13 @@ export default {
       return this.properties.definitions.effectPreset.enum;
     },
     resetProps() {
-      return this.capability.typeData.effectNameOrPreset === `effectName` ? [`effectPreset`] : [`effectName`];
+      const resetProps = [this.capability.typeData.effectNameOrPreset === `effectName` ? `effectPreset` : `effectName`];
+
+      if (!this.capability.typeData.soundControlled) {
+        resetProps.push(`soundSensitivity`, `soundSensitivityStart`, `soundSensitivityEnd`);
+      }
+
+      return resetProps;
     }
   },
   methods: {
