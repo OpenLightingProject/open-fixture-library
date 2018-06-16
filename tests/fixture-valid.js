@@ -495,6 +495,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
          */
         function checkPanTiltCapability() {
           const max = fixture.physical === null ? null : fixture.physical[`focus${cap.type}Max`];
+          const isInfinite = max === Number.POSITIVE_INFINITY;
           const usesPercentageAngle = cap.angle[0].unit === `%`;
 
           const panOrTilt = cap.type.toLowerCase();
@@ -509,7 +510,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
               result.errors.push(`${errorPrefix} uses an angle range that is greater than focus.${panOrTilt}Max in the fixture's physical data.`);
             }
           }
-          else if (max) {
+          else if (max && !isInfinite) {
             result.warnings.push(`${errorPrefix} defines an unprecise percentaged ${panOrTilt} angle. Using the exact value from focus.${panOrTilt}Max in the fixture's physical data is recommended.`);
           }
         }
