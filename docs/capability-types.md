@@ -1238,7 +1238,7 @@ No type-specific properties.
 * Update the schema (mainly `capability.json`, `definitions.json` for units / entities)
 * Update this document (both table of contents and the section itself)
 * Add new properties to the model (in `Capability.mjs`)
-* If it's a start/end property, add its name to `Capability.START_END_PROPERTIES`
+* If it's a start/end entity, add its name to `Capability.START_END_ENTITIES`
 * Add new types to capability name generation (in `Capability.mjs`)
 * Add new types to channel type generation (in `Channel.mjs`)
 * Update editor:

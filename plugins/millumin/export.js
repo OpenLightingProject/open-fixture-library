@@ -69,10 +69,10 @@ function downgradeChannel(channelObject, channelKey) {
 
       addIfTruthy(cap.jsonObject, `menuClick`, downgradedCap);
       if (cap.colors) {
-        downgradedCap.color = cap.colors[0];
+        downgradedCap.color = cap.colors.allColors[0];
 
-        if (cap.colors[1]) {
-          downgradedCap.color2 = cap.colors[1];
+        if (cap.colors.allColors[1]) {
+          downgradedCap.color2 = cap.colors.allColors[1];
         }
       }
       addIfTruthy(cap.jsonObject, `switchChannels`, downgradedCap);
