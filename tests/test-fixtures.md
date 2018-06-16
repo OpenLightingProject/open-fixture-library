@@ -1,6 +1,6 @@
 | | [*cameo* Gobo Scanner 80](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/cameo/gobo-scanner-80.json) | [*cameo* Hydrabeam 300 RGBW](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/cameo/hydrabeam-300-rgbw.json) | [*chauvet-dj* SlimPAR Pro H USB](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/chauvet-dj/slimpar-pro-h-usb.json) | [*clay-paky* Sharpy](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/clay-paky/sharpy.json) | [*dts* XR1200 WASH](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/dts/xr1200-wash.json) | [*elation* ACL 360 Roller](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/elation/acl-360-roller.json) | [*futurelight* DMH-75.i LED Moving Head](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/futurelight/dmh-75-i-led-moving-head.json) | [*generic* RGBD Fader](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/generic/rgbd-fader.json) | [*glp* Impression X4 Bar 10](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/glp/impression-x4-bar-10.json) | [*martin* MAC Axiom Hybrid](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/martin/mac-axiom-hybrid.json) | [*martin* MAC Viper AirFX](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/martin/mac-viper-airfx.json) | [*martin* MAC Viper Performance](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/martin/mac-viper-performance.json) | [*mdg* theONE Atmospheric Generator](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/mdg/theone-atmospheric-generator.json) | [*prolights* DIAMOND19](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/prolights/diamond19.json) | [*robe* Robin 600E Spot](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/robe/robin-600e-spot.json)
 |-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
-**Capability type NoFunction** [[1]](#user-content-footnote-1) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅
+**Capability type NoFunction** [[1]](#user-content-footnote-1) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅
 **Capability type ShutterStrobe** [[2]](#user-content-footnote-2) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅
 **Capability type StrobeSpeed** [[3]](#user-content-footnote-3) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌
 **Capability type StrobeDuration** [[4]](#user-content-footnote-4) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
@@ -36,46 +36,45 @@
 **Capability type BladeInsertion** [[34]](#user-content-footnote-34) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
 **Capability type BladeRotation** [[35]](#user-content-footnote-35) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
 **Capability type BladeSystemRotation** [[36]](#user-content-footnote-36) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
-**Capability type FogOff** [[37]](#user-content-footnote-37) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
-**Capability type FogOn** [[38]](#user-content-footnote-38) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
-**Capability type FogOutput** [[39]](#user-content-footnote-39) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
-**Capability type FogType** [[40]](#user-content-footnote-40) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
-**Capability type BeamAngle** [[41]](#user-content-footnote-41) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌
-**Capability type Rotation** [[42]](#user-content-footnote-42) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌
-**Capability type Speed** [[43]](#user-content-footnote-43) | ❌ | ❌ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅
-**Capability type Time** [[44]](#user-content-footnote-44) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Capability type Maintenance** [[45]](#user-content-footnote-45) | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅
-**Capability type Generic** [[46]](#user-content-footnote-46) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌
+**Capability type FogOn** [[37]](#user-content-footnote-37) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
+**Capability type FogOutput** [[38]](#user-content-footnote-38) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
+**Capability type FogType** [[39]](#user-content-footnote-39) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
+**Capability type BeamAngle** [[40]](#user-content-footnote-40) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌
+**Capability type Rotation** [[41]](#user-content-footnote-41) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌
+**Capability type Speed** [[42]](#user-content-footnote-42) | ❌ | ❌ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅
+**Capability type Time** [[43]](#user-content-footnote-43) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Capability type Maintenance** [[44]](#user-content-footnote-44) | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅
+**Capability type Generic** [[45]](#user-content-footnote-45) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌
 **Duplicate channel names** | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ❌
-**Fine channels (16bit)** [[47]](#user-content-footnote-47) | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅
-**Fine channels (>16bit)** [[48]](#user-content-footnote-48) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Fine channel capabilities** [[49]](#user-content-footnote-49) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Fine before coarse** [[50]](#user-content-footnote-50) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Fine not-adjacent after coarse** [[51]](#user-content-footnote-51) | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Floating point dimensions** [[52]](#user-content-footnote-52) | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅
+**Fine channels (16bit)** [[46]](#user-content-footnote-46) | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅
+**Fine channels (>16bit)** [[47]](#user-content-footnote-47) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Fine channel capabilities** [[48]](#user-content-footnote-48) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Fine before coarse** [[49]](#user-content-footnote-49) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Fine not-adjacent after coarse** [[50]](#user-content-footnote-50) | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Floating point dimensions** [[51]](#user-content-footnote-51) | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅
 **Floating point weight** | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅
 **Floating point power** | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Floating point color temperature** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Floating point lumens** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Floating point lens degrees** | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Floating point pan/tilt maximum** | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Uses pixelKeys** [[53]](#user-content-footnote-53) | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌
-**Uses pixelCount** [[54]](#user-content-footnote-54) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Uses pixelGroups** [[55]](#user-content-footnote-55) | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌
-**Custom matrix layout** [[56]](#user-content-footnote-56) | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌
-**Fine matrix channel** [[57]](#user-content-footnote-57) | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Switching matrix channel** [[58]](#user-content-footnote-58) | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Matrix channel used directly** [[59]](#user-content-footnote-59) | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌
+**Uses pixelKeys** [[52]](#user-content-footnote-52) | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌
+**Uses pixelCount** [[53]](#user-content-footnote-53) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Uses pixelGroups** [[54]](#user-content-footnote-54) | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌
+**Custom matrix layout** [[55]](#user-content-footnote-55) | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌
+**Fine matrix channel** [[56]](#user-content-footnote-56) | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Switching matrix channel** [[57]](#user-content-footnote-57) | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Matrix channel used directly** [[58]](#user-content-footnote-58) | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌
 **Multiple categories** | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅
-**Multiple Focuses** [[60]](#user-content-footnote-60) | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Multiple Focuses** [[59]](#user-content-footnote-59) | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **No physical** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**`null` channels** [[61]](#user-content-footnote-61) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Physical override** [[62]](#user-content-footnote-62) | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**RDM** [[63]](#user-content-footnote-63) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅
-**Reused channels** [[64]](#user-content-footnote-64) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅
-**Switching channels** [[65]](#user-content-footnote-65) | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅
-**Switches fine channels** [[66]](#user-content-footnote-66) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅
-**Switching channel at different positions** [[67]](#user-content-footnote-67) | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅
+**`null` channels** [[60]](#user-content-footnote-60) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Physical override** [[61]](#user-content-footnote-61) | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**RDM** [[62]](#user-content-footnote-62) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅
+**Reused channels** [[63]](#user-content-footnote-63) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅
+**Switching channels** [[64]](#user-content-footnote-64) | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅
+**Switches fine channels** [[65]](#user-content-footnote-65) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅
+**Switching channel at different positions** [[66]](#user-content-footnote-66) | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅
 
 **<a id="user-content-footnote-1">[1]</a>**: Whether the fixture has at least one capability of type 'NoFunction'
 
@@ -149,64 +148,62 @@
 
 **<a id="user-content-footnote-36">[36]</a>**: Whether the fixture has at least one capability of type 'BladeSystemRotation'
 
-**<a id="user-content-footnote-37">[37]</a>**: Whether the fixture has at least one capability of type 'FogOff'
+**<a id="user-content-footnote-37">[37]</a>**: Whether the fixture has at least one capability of type 'FogOn'
 
-**<a id="user-content-footnote-38">[38]</a>**: Whether the fixture has at least one capability of type 'FogOn'
+**<a id="user-content-footnote-38">[38]</a>**: Whether the fixture has at least one capability of type 'FogOutput'
 
-**<a id="user-content-footnote-39">[39]</a>**: Whether the fixture has at least one capability of type 'FogOutput'
+**<a id="user-content-footnote-39">[39]</a>**: Whether the fixture has at least one capability of type 'FogType'
 
-**<a id="user-content-footnote-40">[40]</a>**: Whether the fixture has at least one capability of type 'FogType'
+**<a id="user-content-footnote-40">[40]</a>**: Whether the fixture has at least one capability of type 'BeamAngle'
 
-**<a id="user-content-footnote-41">[41]</a>**: Whether the fixture has at least one capability of type 'BeamAngle'
+**<a id="user-content-footnote-41">[41]</a>**: Whether the fixture has at least one capability of type 'Rotation'
 
-**<a id="user-content-footnote-42">[42]</a>**: Whether the fixture has at least one capability of type 'Rotation'
+**<a id="user-content-footnote-42">[42]</a>**: Whether the fixture has at least one capability of type 'Speed'
 
-**<a id="user-content-footnote-43">[43]</a>**: Whether the fixture has at least one capability of type 'Speed'
+**<a id="user-content-footnote-43">[43]</a>**: Whether the fixture has at least one capability of type 'Time'
 
-**<a id="user-content-footnote-44">[44]</a>**: Whether the fixture has at least one capability of type 'Time'
+**<a id="user-content-footnote-44">[44]</a>**: Whether the fixture has at least one capability of type 'Maintenance'
 
-**<a id="user-content-footnote-45">[45]</a>**: Whether the fixture has at least one capability of type 'Maintenance'
+**<a id="user-content-footnote-45">[45]</a>**: Whether the fixture has at least one capability of type 'Generic'
 
-**<a id="user-content-footnote-46">[46]</a>**: Whether the fixture has at least one capability of type 'Generic'
+**<a id="user-content-footnote-46">[46]</a>**: Whether a channel defines exactly one fine channel alias
 
-**<a id="user-content-footnote-47">[47]</a>**: Whether a channel defines exactly one fine channel alias
+**<a id="user-content-footnote-47">[47]</a>**: Whether a channel defines two or more fine channel aliases
 
-**<a id="user-content-footnote-48">[48]</a>**: Whether a channel defines two or more fine channel aliases
+**<a id="user-content-footnote-48">[48]</a>**: Whether a channel with fine channel aliases has capabilities
 
-**<a id="user-content-footnote-49">[49]</a>**: Whether a channel with fine channel aliases has capabilities
+**<a id="user-content-footnote-49">[49]</a>**: Fine channel used in a mode before its coarse channel
 
-**<a id="user-content-footnote-50">[50]</a>**: Fine channel used in a mode before its coarse channel
+**<a id="user-content-footnote-50">[50]</a>**: Coarse channel with fine channels are not directly after each other
 
-**<a id="user-content-footnote-51">[51]</a>**: Coarse channel with fine channels are not directly after each other
+**<a id="user-content-footnote-51">[51]</a>**: In fixture physical or in a mode's physical override. See [#133](https://github.com/OpenLightingProject/open-fixture-library/issues/133).
 
-**<a id="user-content-footnote-52">[52]</a>**: In fixture physical or in a mode's physical override. See [#133](https://github.com/OpenLightingProject/open-fixture-library/issues/133).
+**<a id="user-content-footnote-52">[52]</a>**: The fixture has a matrix and has set the pixelKeys individually.
 
-**<a id="user-content-footnote-53">[53]</a>**: The fixture has a matrix and has set the pixelKeys individually.
+**<a id="user-content-footnote-53">[53]</a>**: The fixture has a matrix and has set the pixelCount property.
 
-**<a id="user-content-footnote-54">[54]</a>**: The fixture has a matrix and has set the pixelCount property.
+**<a id="user-content-footnote-54">[54]</a>**: The fixture has a matrix and has set pixelGroups.
 
-**<a id="user-content-footnote-55">[55]</a>**: The fixture has a matrix and has set pixelGroups.
+**<a id="user-content-footnote-55">[55]</a>**: The fixture has a matrix and it uses null pixelKeys – it is no line, rectangle or cube.
 
-**<a id="user-content-footnote-56">[56]</a>**: The fixture has a matrix and it uses null pixelKeys – it is no line, rectangle or cube.
+**<a id="user-content-footnote-56">[56]</a>**: The fixture repeats fine channels for matrix pixels.
 
-**<a id="user-content-footnote-57">[57]</a>**: The fixture repeats fine channels for matrix pixels.
+**<a id="user-content-footnote-57">[57]</a>**: The fixture repeats switching channels for matrix pixels.
 
-**<a id="user-content-footnote-58">[58]</a>**: The fixture repeats switching channels for matrix pixels.
+**<a id="user-content-footnote-58">[58]</a>**: If a mode contains a resolved matrix channel key in its raw channel list or if a non-matrix switching channel switches to a matrix channel.
 
-**<a id="user-content-footnote-59">[59]</a>**: If a mode contains a resolved matrix channel key in its raw channel list or if a non-matrix switching channel switches to a matrix channel.
+**<a id="user-content-footnote-59">[59]</a>**: True if multiple Pan / Tilt channels are used in some mode.
 
-**<a id="user-content-footnote-60">[60]</a>**: True if multiple Pan / Tilt channels are used in some mode.
+**<a id="user-content-footnote-60">[60]</a>**: Channel list of a mode contains null, so it has an unused channel
 
-**<a id="user-content-footnote-61">[61]</a>**: Channel list of a mode contains null, so it has an unused channel
+**<a id="user-content-footnote-61">[61]</a>**: Whether at least one mode uses the 'physical' property
 
-**<a id="user-content-footnote-62">[62]</a>**: Whether at least one mode uses the 'physical' property
+**<a id="user-content-footnote-62">[62]</a>**: Whether an RDM model ID is set
 
-**<a id="user-content-footnote-63">[63]</a>**: Whether an RDM model ID is set
+**<a id="user-content-footnote-63">[63]</a>**: Whether there is at least one channel that is used in different modes
 
-**<a id="user-content-footnote-64">[64]</a>**: Whether there is at least one channel that is used in different modes
+**<a id="user-content-footnote-64">[64]</a>**: Whether at least one channel defines switching channel aliases
 
-**<a id="user-content-footnote-65">[65]</a>**: Whether at least one channel defines switching channel aliases
+**<a id="user-content-footnote-65">[65]</a>**: Whether at least one switching channel switches fine channels
 
-**<a id="user-content-footnote-66">[66]</a>**: Whether at least one switching channel switches fine channels
-
-**<a id="user-content-footnote-67">[67]</a>**: Whether there is a switching channel that is used at different positions in different modes
+**<a id="user-content-footnote-66">[66]</a>**: Whether there is a switching channel that is used at different positions in different modes

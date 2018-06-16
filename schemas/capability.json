@@ -49,7 +49,6 @@
       "BladeInsertion",
       "BladeRotation",
       "BladeSystemRotation",
-      "FogOff",
       "FogOn",
       "FogOutput",
       "FogType",
@@ -1296,24 +1295,6 @@
         "dependencies": {
           "angleStart": ["angleEnd"],
           "angleEnd": ["angleStart"]
-        },
-        "additionalProperties": false
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "type": { "enum": ["FogOff"] }
-        }
-      },
-      "then": {
-        "properties": {
-          "dmxRange": {},
-          "type": {},
-          "comment": {},
-          "helpWanted": {},
-          "menuClick": {},
-          "switchChannels": {}
         },
         "additionalProperties": false
       }
