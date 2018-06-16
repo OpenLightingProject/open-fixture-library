@@ -203,6 +203,8 @@
     },
     "Mode (fixed to 0)": {
       "type": "Effect",
+      "defaultValue": 0,
+      "constant": true,
       "capabilities": [
         {
           "range": [0, 0],
