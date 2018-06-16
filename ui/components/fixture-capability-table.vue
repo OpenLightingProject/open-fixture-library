@@ -25,9 +25,9 @@
 
           <td
             v-if="cap.model.colors !== null"
-            :title="`colors: ${cap.model.colors.join(`, `)}`"
+            :title="getColorDescription(cap)"
             class="capability-color">
-            <app-svg :colors="cap.model.colors" type="color-circle" />
+            <app-svg :colors="cap.model.colors.allColors" type="color-circle" />
           </td>
           <td v-else />
 
@@ -156,6 +156,15 @@ export default {
           };
         }
       );
+    }
+  },
+  methods: {
+    getColorDescription: capability => {
+      if (capability.model.colors.isStep) {
+        const plural = capability.model.colors.allColors.length > 1 ? `colors` : `color`;
+        return `${plural}: ${capability.model.colors.allColors.join(`, `)}`;
+      }
+      return `transition from ${capability.model.colors.startColors.join(`, `)} to ${capability.model.colors.endColors.join(`, `)}`;
     }
   }
 };
