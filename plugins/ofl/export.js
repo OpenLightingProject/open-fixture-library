@@ -1,3 +1,5 @@
+const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
+
 const manufacturers = require(`../../fixtures/manufacturers.json`);
 
 module.exports.name = `Open Fixture Library JSON`;
@@ -20,7 +22,7 @@ module.exports.export = function exportOFL(fixtures, options) {
 
     return {
       name: `${fixture.manufacturer.key}/${fixture.key}.json`,
-      content: `${JSON.stringify(jsonData, null, 2)}\n`,
+      content: fixtureJsonStringify(jsonData),
       mimetype: `application/ofl-fixture`
     };
   });

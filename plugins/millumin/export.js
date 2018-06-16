@@ -1,3 +1,5 @@
+const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
+
 module.exports.name = `Millumin`;
 module.exports.version = `0.0.1`;
 
@@ -13,7 +15,7 @@ module.exports.export = function exportMillumin(fixtures, options) {
 
     return {
       name: `${fixture.manufacturer.key}/${fixture.key}.json`,
-      content: JSON.stringify(jsonData, null, 2),
+      content: fixtureJsonStringify(jsonData),
       mimetype: `application/ofl-fixture`
     };
   });
