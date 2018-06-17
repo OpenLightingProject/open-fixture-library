@@ -26,17 +26,30 @@
     },
     "focus": {
       "type": "Head",
-      "tiltMax": 270
+      "panMax": "infinite",
+      "tiltMax": "infinite"
     }
   },
   "availableChannels": {
     "Pan": {
       "type": "Pan",
-      "fineChannelAliases": ["Pan fine"]
+      "fineChannelAliases": ["Pan fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Pan 0…540°"
+        }
+      ]
     },
     "Tilt": {
       "type": "Tilt",
-      "fineChannelAliases": ["Tilt fine"]
+      "fineChannelAliases": ["Tilt fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Tilt 0…270°"
+        }
+      ]
     },
     "Red": {
       "type": "Single Color",
