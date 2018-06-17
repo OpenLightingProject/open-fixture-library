@@ -65,6 +65,7 @@
     },
     "comment": { "$ref": "definitions.json#/nonEmptyMultilineString" },
     "manualURL": { "$ref": "definitions.json#/urlString" },
+    "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
     "rdm": {
       "type": "object",
       "properties": {

@@ -17,6 +17,7 @@
     "color": { "$ref": "definitions.json#/colorString" },
     "color2": { "$ref": "definitions.json#/colorString" },
     "image": { "$ref": "definitions.json#/nonEmptyString" },
+    "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
     "switchChannels": {
       "type": "object",
       "minProperties": 1,
