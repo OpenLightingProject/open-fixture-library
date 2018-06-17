@@ -10,6 +10,7 @@ html, body {
   background: $grey-200;
   word-wrap: break-word;
   text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
 }
 
 html {
@@ -500,6 +501,20 @@ a.card, .link, .list a {
 
 .list > .big-button > h2 {
   font-size: 1.2rem;
+}
+
+.help-wanted {
+  position: relative;
+  margin: 1ex 0;
+  padding: 1ex 1ex 1ex calc(1.4em + 2ex);
+  background: $yellow-300;
+  border-radius: 2px;
+  min-height: 32px;
+
+  .icon {
+    margin-left: calc(-1.4em - 1ex);
+    margin-right: 1ex;
+  }
 }
 
 /* display mode cards in a 2-col layout and allow values to wrap below labels */
