@@ -4,7 +4,7 @@ module.exports.name = `Millumin`;
 module.exports.version = `0.1.0`;
 
 // needed for export test
-module.exports.supportedOflVersion = `master`; // TODO: Maybe `schema-7.1.1` if downgrading is needed.
+module.exports.supportedOflVersion = `master`; // TODO: Maybe `schema-7.2.0` if downgrading is needed.
 
 module.exports.export = function exportMillumin(fixtures, options) {
   // one JSON file for each fixture
