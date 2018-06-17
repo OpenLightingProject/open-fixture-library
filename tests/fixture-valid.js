@@ -449,13 +449,9 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           });
         }
 
-        const startEndEntities = Capability.START_END_ENTITIES.map(
-          prop => [prop, cap[prop]]
-        ).filter(
-          ([prop, value]) => value !== null
-        );
+        for (const prop of cap.usedStartEndEntities) {
+          const [startValue, endValue] = cap[prop];
 
-        for (const [prop, [startValue, endValue]] of startEndEntities) {
           if ((startValue.keyword === null) !== (endValue.keyword === null)) {
             result.errors.push(`${errorPrefix} must use keywords for start and end value or for none of them in ${prop}.`);
           }
