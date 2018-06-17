@@ -132,7 +132,7 @@
 }
 
 #contribute:target {
-  animation: contribute-highlight 1.3s ease;
+  animation: contribute-highlight 1.5s ease;
   animation-delay: 0.5s;
   animation-fill-mode: backwards;
 }
