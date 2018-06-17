@@ -228,11 +228,25 @@
     },
     "Zoom": {
       "type": "Zoom",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Zoom narrow…wide",
+          "helpWanted": "Correct direction?"
+        }
+      ]
     },
     "Focus": {
       "type": "Focus",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Focus near…far",
+          "helpWanted": "Correct direction?"
+        }
+      ]
     },
     "Shutter A Rot/Index": {
       "type": "Shutter",

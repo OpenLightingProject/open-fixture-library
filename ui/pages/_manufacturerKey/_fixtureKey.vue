@@ -49,6 +49,11 @@
         <span class="value"><a :href="fixture.manualURL" rel="nofollow">{{ fixture.manualURL }}</a></span>
       </section>
 
+      <section v-if="fixture.isHelpWanted" class="help-wanted">
+        <app-svg name="comment-question-outline" title="Help wanted!" /><a href="#contribute">You can help to improve this fixture definition!</a>
+        {{ fixture.helpWanted !== null ? fixture.helpWanted : `Specific questions are included in the capabilities below.` }}
+      </section>
+
       <section v-if="fixture.rdm !== null" class="rdm">
         <span class="label"><abbr title="Remote Device Management">RDM</abbr> data</span>
         <span class="value">
@@ -87,7 +92,7 @@
       <div class="clearfix" />
     </section>
 
-    <section>
+    <section id="contribute">
       <h2>Something wrong with this fixture definition?</h2>
       <p>It does not work in your lighting software or you see another problem? Then please help correct it!</p>
       <div class="grid list">
@@ -123,6 +128,27 @@
 
   & > .value {
     display: inline;
+  }
+}
+
+#contribute:target {
+  animation: contribute-highlight 1.5s ease;
+  animation-delay: 0.5s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes contribute-highlight {
+  0% {
+    background-color: $blue-100;
+    box-shadow: 0 0 3px 5px $blue-100;
+  }
+  35% {
+    background-color: $blue-100;
+    box-shadow: 0 0 3px 5px $blue-100;
+  }
+  100% {
+    background-color: $grey-200; // page background color
+    box-shadow: 0 0 3px 5px $grey-200;
   }
 }
 </style>
