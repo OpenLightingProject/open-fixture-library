@@ -83,30 +83,30 @@
     ]
   },
   {
-    "man": "elation",
-    "key": "acl-360-roller",
-    "name": "ACL 360 Roller",
+    "man": "futurelight",
+    "key": "dmh-75-i-led-moving-head",
+    "name": "DMH-75.i LED Moving Head",
     "features": [
       "channel-type-intensity",
-      "channel-type-single-color",
       "channel-type-multi-color",
       "channel-type-pan",
       "channel-type-tilt",
+      "channel-type-focus",
+      "channel-type-gobo",
+      "channel-type-prism",
       "channel-type-strobe",
       "channel-type-speed",
       "channel-type-effect",
       "channel-type-maintenance",
+      "duplicate-channel-names",
       "fine-channel-alias",
-      "floating-point-dimensions",
+      "floating-point-weight",
       "infinite-pan",
       "infinite-tilt",
-      "matrix-pixelKeys",
-      "matrix-pixelGroups",
-      "matrix-custom-layout",
-      "matrix-channel-used-directly",
       "multiple-categories",
-      "multiple-focuses",
-      "reused-channels"
+      "reused-channels",
+      "switching-channels",
+      "switching-channel-positions"
     ]
   },
   {
@@ -199,6 +199,63 @@
       "switching-channels",
       "switches-fine-channels",
       "switching-channel-positions"
+    ]
+  },
+  {
+    "man": "robe",
+    "key": "robin-600e-spot",
+    "name": "Robin 600E Spot",
+    "features": [
+      "channel-type-intensity",
+      "channel-type-single-color",
+      "channel-type-multi-color",
+      "channel-type-pan",
+      "channel-type-tilt",
+      "channel-type-focus",
+      "channel-type-zoom",
+      "channel-type-iris",
+      "channel-type-gobo",
+      "channel-type-prism",
+      "channel-type-shutter",
+      "channel-type-speed",
+      "channel-type-color-temperature",
+      "channel-type-effect",
+      "channel-type-maintenance",
+      "fine-channel-alias",
+      "fine-channel-capabilities",
+      "floating-point-dimensions",
+      "floating-point-weight",
+      "multiple-categories",
+      "rdm",
+      "reused-channels"
+    ]
+  },
+  {
+    "man": "robe",
+    "key": "robin-ledwash-600",
+    "name": "Robin LEDWash 600",
+    "features": [
+      "channel-type-intensity",
+      "channel-type-single-color",
+      "channel-type-multi-color",
+      "channel-type-pan",
+      "channel-type-tilt",
+      "channel-type-zoom",
+      "channel-type-strobe",
+      "channel-type-speed",
+      "channel-type-color-temperature",
+      "channel-type-maintenance",
+      "fine-channel-alias",
+      "fine-channel-capabilities",
+      "floating-point-weight",
+      "matrix-pixelKeys",
+      "matrix-pixelGroups",
+      "matrix-custom-layout",
+      "fine-matrix-channel",
+      "matrix-channel-used-directly",
+      "multiple-categories",
+      "rdm",
+      "reused-channels"
     ]
   }
 ]
