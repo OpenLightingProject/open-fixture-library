@@ -506,14 +506,14 @@ a.card, .link, .list a {
 .help-wanted {
   position: relative;
   margin: 1ex 0;
-  padding: 1ex 1ex 1ex calc(1.4em + 2ex);
+  padding: 0.4em 0.5em 0.4em calc(1.4em + 2*0.5em);
   background: $yellow-300;
   border-radius: 2px;
   min-height: 32px;
 
   .icon {
-    margin-left: calc(-1.4em - 1ex);
-    margin-right: 1ex;
+    margin-left: calc(-1.4em - 0.5em);
+    margin-right: 0.5em;
   }
 }
 
