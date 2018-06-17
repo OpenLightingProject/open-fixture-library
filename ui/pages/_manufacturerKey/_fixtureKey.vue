@@ -50,7 +50,7 @@
       </section>
 
       <section v-if="fixture.isHelpWanted" class="help-wanted">
-        <app-svg name="comment-question-outline" title="Help wanted!" /><a href="#contribute">You can help to improve this fixture!</a>
+        <app-svg name="comment-question-outline" title="Help wanted!" /><a href="#contribute">You can help to improve this fixture definition!</a>
         {{ fixture.helpWanted !== null ? fixture.helpWanted : `Specific questions are included in the capabilities below.` }}
       </section>
 
