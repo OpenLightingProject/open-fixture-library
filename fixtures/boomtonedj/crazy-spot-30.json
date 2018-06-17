@@ -248,64 +248,54 @@
         {
           "dmxRange": [0, 7],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Closed"
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [8, 15],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Open"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [16, 131],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Strobe "
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [132, 139],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Open"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [140, 181],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Strobe"
+          "shutterEffect": "Strobe"
         },
         {
           "dmxRange": [182, 189],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Open"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [190, 231],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Strobe"
+          "shutterEffect": "Strobe"
         },
         {
           "dmxRange": [232, 239],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Open"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [240, 247],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "StrobeRandom"
+          "shutterEffect": "StrobeRandom"
         },
         {
           "dmxRange": [248, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Open"
+          "shutterEffect": "Open"
         }
       ]
     },

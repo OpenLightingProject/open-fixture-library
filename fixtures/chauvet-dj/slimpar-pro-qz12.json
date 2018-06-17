@@ -184,32 +184,28 @@
       "capabilities": [
         {
           "dmxRange": [0, 51],
-          "type": "NoFunction",
+          "type": "Maintenance",
           "comment": "Dimmer speed set from display"
         },
         {
           "dmxRange": [52, 101],
-          "type": "Speed",
-          "speed": "0%",
-          "comment": "Dimmer speed mode off"
+          "type": "Maintenance",
+          "comment": "Dimmer speed off"
         },
         {
           "dmxRange": [102, 152],
-          "type": "Speed",
-          "speed": "100%",
-          "comment": "Dimmer speed mode 1 fast"
+          "type": "Maintenance",
+          "comment": "Dimmer speed fast"
         },
         {
           "dmxRange": [153, 203],
-          "type": "Speed",
-          "speed": "66%",
-          "comment": "Dimmer speed mode 2 medium"
+          "type": "Maintenance",
+          "comment": "Dimmer speed medium"
         },
         {
           "dmxRange": [204, 255],
-          "type": "Speed",
-          "speed": "33%",
-          "comment": "Dimmer speed mode 3 slow"
+          "type": "Maintenance",
+          "comment": "Dimmer speed slow"
         }
       ]
     },

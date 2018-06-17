@@ -107,14 +107,14 @@
           "type": "ColorPreset",
           "colors": ["#f2f6fe"],
           "colorTemperature": "cold",
-          "comment": "Cool White"
+          "comment": "White"
         },
         {
           "dmxRange": [238, 255],
           "type": "ColorPreset",
           "colors": ["#fffbf2"],
           "colorTemperature": "warm",
-          "comment": "Warm White"
+          "comment": "White"
         }
       ]
     },
@@ -207,14 +207,14 @@
           "type": "ColorPreset",
           "colors": ["#f2f6fe"],
           "colorTemperature": "cold",
-          "comment": "Cool White"
+          "comment": "White"
         },
         {
           "dmxRange": [76, 80],
           "type": "ColorPreset",
           "colors": ["#fffbf2"],
           "colorTemperature": "warm",
-          "comment": "Warm White"
+          "comment": "White"
         },
         {
           "dmxRange": [81, 150],
@@ -233,7 +233,7 @@
         {
           "dmxRange": [221, 255],
           "type": "Effect",
-          "effectName": "Sound Control",
+          "effectName": "Sound control",
           "soundControlled": true,
           "soundSensitivityStart": "low",
           "soundSensitivityEnd": "high"

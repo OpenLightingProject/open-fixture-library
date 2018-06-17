@@ -137,8 +137,8 @@
         {
           "dmxRange": [160, 191],
           "type": "Effect",
-          "comment": "6 colors",
           "effectPreset": "ColorJump",
+          "comment": "6 colors",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
@@ -146,8 +146,8 @@
         {
           "dmxRange": [192, 223],
           "type": "Effect",
-          "comment": "32 colors",
           "effectPreset": "ColorJump",
+          "comment": "32 colors",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
@@ -155,8 +155,9 @@
         {
           "dmxRange": [224, 249],
           "type": "Effect",
-          "effectName": "6 colors",
+          "effectName": "Sound control",
           "soundControlled": true,
+          "comment": "6 colors",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Sound Sensitivity"
           }
@@ -164,8 +165,9 @@
         {
           "dmxRange": [250, 255],
           "type": "Effect",
-          "effectName": "32 colors",
+          "effectName": "Sound control",
           "soundControlled": true,
+          "comment": "32 colors",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Sound Sensitivity"
           }
@@ -202,27 +204,23 @@
         },
         {
           "dmxRange": [52, 101],
-          "type": "Speed",
-          "comment": "Speed mode off",
-          "speed": "stop"
+          "type": "Maintenance",
+          "comment": "Dimmer speed off"
         },
         {
           "dmxRange": [102, 152],
-          "type": "Speed",
-          "comment": "Speed mode 1 (fast)",
-          "speed": "fast"
+          "type": "Maintenance",
+          "comment": "Dimmer speed fast"
         },
         {
           "dmxRange": [153, 203],
-          "type": "Speed",
-          "comment": "Speed mode 2 (medium)",
-          "speed": "50%"
+          "type": "Maintenance",
+          "comment": "Dimmer speed medium"
         },
         {
           "dmxRange": [204, 255],
-          "type": "Speed",
-          "comment": "Speed mode 3 (slow)",
-          "speed": "slow"
+          "type": "Maintenance",
+          "comment": "Dimmer speed slow"
         }
       ]
     }

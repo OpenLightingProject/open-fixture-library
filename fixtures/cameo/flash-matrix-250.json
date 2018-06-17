@@ -106,7 +106,7 @@
           "shutterEffect": "Strobe",
           "durationStart": "5s",
           "durationEnd": "1s",
-          "comment": "Strobe break"
+          "comment": "break effect"
         },
         {
           "dmxRange": [128, 250],
@@ -294,7 +294,7 @@
         {
           "dmxRange": [234, 255],
           "type": "Effect",
-          "effectName": "Sound Control",
+          "effectName": "Sound Mode",
           "soundControlled": true,
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Sound Sensitivity"
@@ -515,7 +515,7 @@
         {
           "dmxRange": [6, 47],
           "type": "Effect",
-          "effectName": "Position: 0deg / 45deg / 90deg / 135deg / 180deg / 225deg / 270deg / 315deg"
+          "effectName": "Position: 0° / 45° / 90° / 135° / 180° / 225° / 270° / 315°"
         },
         {
           "dmxRange": [48, 69],

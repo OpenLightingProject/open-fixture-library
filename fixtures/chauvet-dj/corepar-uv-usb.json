@@ -138,28 +138,27 @@
         {
           "dmxRange": [0, 51],
           "type": "Maintenance",
-          "comment": "default"
+          "comment": "Default dimmer speed"
         },
         {
           "dmxRange": [52, 101],
-          "type": "Speed",
-          "speed": "stop"
+          "type": "Maintenance",
+          "comment": "Dimmer speed off"
         },
         {
           "dmxRange": [102, 152],
-          "type": "Speed",
-          "speed": "fast"
+          "type": "Maintenance",
+          "comment": "Dimmer speed fast"
         },
         {
           "dmxRange": [153, 204],
-          "type": "Speed",
-          "speed": "50%",
-          "comment": "medium"
+          "type": "Maintenance",
+          "comment": "Dimmer speed medium"
         },
         {
           "dmxRange": [205, 255],
-          "type": "Speed",
-          "speed": "slow"
+          "type": "Maintenance",
+          "comment": "Dimmer speed slow"
         }
       ]
     }

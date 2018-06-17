@@ -70,109 +70,125 @@
         {
           "dmxRange": [0, 9],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
+          "shutterEffect": "Closed",
+          "menuClick": "start"
         },
         {
           "dmxRange": [10, 25],
           "type": "ColorWheelIndex",
           "index": 0,
           "colors": ["#ffffff"],
-          "comment": "Open (White)"
+          "comment": "Open (White)",
+          "menuClick": "start"
         },
         {
           "dmxRange": [26, 42],
           "type": "ColorWheelIndex",
           "index": 1,
           "colors": ["#ff0000"],
-          "comment": "Dot Tunnel (Red)"
+          "comment": "Dot Tunnel (Red)",
+          "menuClick": "start"
         },
         {
           "dmxRange": [43, 58],
           "type": "ColorWheelIndex",
           "index": 2,
           "colors": ["#0000ff"],
-          "comment": "Slash (Blue)"
+          "comment": "Slash (Blue)",
+          "menuClick": "start"
         },
         {
           "dmxRange": [59, 74],
           "type": "ColorWheelIndex",
           "index": 3,
           "colors": ["#00ff00"],
-          "comment": "Segment (Green)"
+          "comment": "Segment (Green)",
+          "menuClick": "start"
         },
         {
           "dmxRange": [75, 90],
           "type": "ColorWheelIndex",
           "index": 4,
           "colors": ["#ffff00"],
-          "comment": "Triangle (Yellow)"
+          "comment": "Triangle (Yellow)",
+          "menuClick": "start"
         },
         {
           "dmxRange": [91, 107],
           "type": "ColorWheelIndex",
           "index": 5,
           "colors": ["#00ffff"],
-          "comment": "Tunnel (Cyan)"
+          "comment": "Tunnel (Cyan)",
+          "menuClick": "start"
         },
         {
           "dmxRange": [108, 123],
           "type": "ColorWheelIndex",
           "index": 6,
           "colors": ["#ff7f00"],
-          "comment": "Bubbles (Orange)"
+          "comment": "Bubbles (Orange)",
+          "menuClick": "start"
         },
         {
           "dmxRange": [124, 139],
           "type": "ColorWheelIndex",
           "index": 7,
           "colors": ["#ff00ff"],
-          "comment": "Stars (Pink)"
+          "comment": "Stars (Pink)",
+          "menuClick": "start"
         },
         {
           "dmxRange": [140, 155],
           "type": "ColorWheelIndex",
           "index": 7,
-          "comment": "Quadrant (Multicolor)"
+          "comment": "Quadrant (Multicolor)",
+          "menuClick": "start"
         },
         {
           "dmxRange": [156, 172],
           "type": "ColorWheelIndex",
           "index": 8,
           "colors": ["#ff7f00"],
-          "comment": "Bubbles (Orange)"
+          "comment": "Bubbles (Orange)",
+          "menuClick": "start"
         },
         {
           "dmxRange": [173, 188],
           "type": "ColorWheelIndex",
           "index": 9,
           "colors": ["#00ffff"],
-          "comment": "Tunnel (Cyan)"
+          "comment": "Tunnel (Cyan)",
+          "menuClick": "start"
         },
         {
           "dmxRange": [189, 220],
           "type": "ColorWheelIndex",
           "index": 10,
           "colors": ["#ffff00"],
-          "comment": "Triangle (Yellow)"
+          "comment": "Triangle (Yellow)",
+          "menuClick": "start"
         },
         {
           "dmxRange": [221, 237],
           "type": "ColorWheelIndex",
           "index": 11,
           "colors": ["#0000ff"],
-          "comment": "Slash (Blue)"
+          "comment": "Slash (Blue)",
+          "menuClick": "start"
         },
         {
           "dmxRange": [238, 253],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speed": "slow"
+          "speed": "slow",
+          "menuClick": "start"
         },
         {
           "dmxRange": [254, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speed": "fast"
+          "speed": "fast",
+          "menuClick": "start"
         }
       ]
     },
