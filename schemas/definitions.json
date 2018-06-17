@@ -35,14 +35,9 @@
     "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
   },
   "colorString": {
-    "anyOf": [
-      {
-        "type": "string",
-        "pattern": "^#[0-9a-f]{6}$",
-        "format": "color-hex"
-      },
-      { "enum": ["User-defined"] }
-    ]
+    "type": "string",
+    "pattern": "^#[0-9a-f]{6}$",
+    "format": "color-hex"
   },
   "dmxValue": {
     "type": "integer",
