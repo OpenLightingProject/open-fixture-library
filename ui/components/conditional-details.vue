@@ -16,7 +16,7 @@
   </app-conditional-details>
 
   renders:
-  <div>Hello</div>
+  <div class="summary">Hello</div>
 
 -->
 
@@ -89,7 +89,9 @@ export default {
       ]);
     }
 
-    return createElement(`div`, this.$slots.summary);
+    return createElement(`div`, {
+      class: `summary`
+    }, this.$slots.summary);
   }
 };
 </script>

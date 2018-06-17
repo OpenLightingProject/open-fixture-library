@@ -170,6 +170,7 @@
 #channel-dialog {
   max-width: 700px;
   width: 80%;
+  scroll-behavior: auto;
 }
 </style>
 

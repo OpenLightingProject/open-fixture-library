@@ -48,6 +48,13 @@
             <span class="switching-channel-key">{{ switchChannel.key }} (channel&nbsp;{{ switchChannel.index + 1 }}) →</span>&nbsp;{{ switchChannel.to }}
           </td>
         </tr>
+
+        <tr
+          v-if="cap.model.helpWanted !== null"
+          :key="`cap-${index}-helpWanted`">
+          <td colspan="4" />
+          <td colspan="2"><div class="help-wanted"><app-svg name="comment-question-outline" title="Help wanted!" />{{ cap.model.helpWanted }}</div></td>
+        </tr>
       </template>
     </tbody>
   </table>

@@ -3,6 +3,11 @@
     <app-conditional-details class="channel">
       <template slot="summary">
         <app-fixture-channel-type-icon :channel="channel" />{{ unwrappedChannel.name }}<code v-if="channelKey" class="channel-key">{{ channelKey }}</code>{{ appendToHeading ? ` ${appendToHeading}` : `` }}
+        <app-svg
+          v-if="channel.isHelpWanted"
+          class="help-wanted-icon"
+          name="comment-question-outline"
+          title="Help wanted!" />
       </template>
 
       <div v-if="(unwrappedChannel instanceof FineChannel)">
@@ -98,9 +103,16 @@
 <style lang="scss" scoped>
 @import '~assets/styles/vars.scss';
 
-summary > .icon,
-div.channel > .icon {
-  margin-right: 1.2ex;
+summary, .summary {
+  & > .icon {
+    margin-right: 1.2ex;
+  }
+
+  & > .help-wanted-icon {
+    fill: $yellow-700;
+    margin-left: 0.7ex;
+    margin-right: 0;
+  }
 }
 
 ol.mode-channels {
@@ -114,7 +126,6 @@ ol.mode-channels {
   }
 }
 </style>
-
 
 <script>
 import svg from '~/components/svg.vue';
