@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["George Qualley IV"],
     "createDate": "2017-09-19",
-    "lastModifyDate": "2017-10-16",
+    "lastModifyDate": "2018-06-18",
     "importPlugin": {
       "plugin": "qlcplus",
       "date": "2017-09-19",
@@ -13,6 +13,7 @@
     }
   },
   "manualURL": "http://cdb.s3.amazonaws.com/ItemRelatedFiles/11195/Stealth%20Beam%20(1st%20Ed.).pdf",
+  "helpWanted": "Is tilt also infinite? Or is the tilt macro just a \"shake\" effect?",
   "physical": {
     "dimensions": [239, 285, 146],
     "weight": 3.8,
@@ -26,6 +27,7 @@
     },
     "focus": {
       "type": "Head",
+      "panMax": "infinite",
       "tiltMax": 270
     }
   },
@@ -34,8 +36,8 @@
       "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
-        "angleStart": "0%",
-        "angleEnd": "100%"
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {

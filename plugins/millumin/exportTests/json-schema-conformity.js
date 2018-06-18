@@ -1,12 +1,13 @@
 const https = require(`https`);
 const Ajv = require(`ajv`);
 
-const SCHEMA_BASE_URL = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-7.0.0/schemas/`;
+const SUPPORTED_OFL_VERSION = require(`../export.js`).supportedOflVersion;
+const SCHEMA_BASE_URL = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${SUPPORTED_OFL_VERSION}/schemas/`;
 const SCHEMA_FILES = [`capability.json`, `channel.json`, `definitions.json`, `fixture.json`];
 
-module.exports = function testSchemaConformity(exportFileData) {
-  const schemaPromises = SCHEMA_FILES.map(filename => getSchema(SCHEMA_BASE_URL + filename));
+const schemaPromises = SCHEMA_FILES.map(filename => getSchema(SCHEMA_BASE_URL + filename));
 
+module.exports = function testSchemaConformity(exportFileData) {
   return Promise.all(schemaPromises).then(schemas => {
     const fixtureSchema = schemas[SCHEMA_FILES.indexOf(`fixture.json`)];
 
@@ -17,10 +18,6 @@ module.exports = function testSchemaConformity(exportFileData) {
 
     // allow changed schema property
     fixtureSchema.patternProperties[`^\\$schema$`].enum[0] = `${SCHEMA_BASE_URL}fixture.json`;
-
-    // TODO: quick fix while #514 is not merged
-    const capabilitySchema = schemas[SCHEMA_FILES.indexOf(`capability.json`)];
-    capabilitySchema.$id = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/capability.json`;
 
     const ajv = new Ajv({ schemas });
     const schemaValidate = ajv.getSchema(`https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`);

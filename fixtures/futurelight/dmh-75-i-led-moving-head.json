@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2017-12-12",
-    "lastModifyDate": "2017-12-12"
+    "lastModifyDate": "2018-06-18"
   },
   "manualURL": "http://media.steinigke.de/download_t/51841840-MANUAL-1.10-de-en_00087817.pdf",
   "physical": {
@@ -21,7 +21,9 @@
       "degreesMinMax": [13, 18]
     },
     "focus": {
-      "type": "Head"
+      "type": "Head",
+      "panMax": "infinite",
+      "tiltMax": "infinite"
     }
   },
   "availableChannels": {
