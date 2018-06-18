@@ -66,15 +66,17 @@ No type-specific properties.
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>shutterEffect</td>
-  <td>yes</td>
-  <td>
+  <td valign="top">shutterEffect</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">
     <ul>
       <li><code>Open</code></li>
       <li><code>Closed</code></li>
@@ -91,19 +93,21 @@ No type-specific properties.
       <li><code>Lightning</code></li>
     </ul>
   </td>
-  <td></td>
+  <td valign="top"></td>
 </tr>
 <tr>
-  <td>speed</td>
-  <td></td>
-  <td>Entity <em>Speed</em></td>
-  <td></td>
+  <td valign="top">speed</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Speed</em></td>
+  <td valign="top"></td>
 </tr>
 <tr>
-  <td>duration</td>
-  <td></td>
-  <td>Entity <em>Time</em></td>
-  <td></td>
+  <td valign="top">duration</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Time</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -118,6 +122,7 @@ global, doesn't activate strobe directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
@@ -125,10 +130,9 @@ global, doesn't activate strobe directly
 <tbody>
 <tr>
 <tr>
-  <td>speed</td>
-  <td></td>
-  <td>Entity <em>Speed</em></td>
-  <td></td>
+  <td valign="top">speed</td>
+  <td valign="top">❌ no</td>   <td valign="top">✅ yes</td>   <td valign="top">Entity <em>Speed</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -143,16 +147,18 @@ global, doesn't activate strobe directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>duration</td>
-  <td></td>
-  <td>Entity <em>Time</em></td>
-  <td></td>
+  <td valign="top">duration</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Time</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -165,16 +171,18 @@ global, doesn't activate strobe directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>brightness</td>
-  <td></td>
-  <td>Entity <em>Brightness</em></td>
-  <td>Defaults to <code>brightnessStart: "off", brightnessEnd: "bright"</code></td>
+  <td valign="top">brightness</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Brightness</em></td>
+  <td valign="top">Defaults to <code>brightnessStart: "off", brightnessEnd: "bright"</code></td>
 </tr>
 </tbody>
 </table>
@@ -187,15 +195,17 @@ global, doesn't activate strobe directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>color</td>
-  <td>yes</td>
-  <td>one of our predefined Single Colors: <ul>
+  <td valign="top">color</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">one of our predefined Single Colors: <ul>
     <li><code>Red</code></li>
     <li><code>Green</code></li>
     <li><code>Blue</code></li>
@@ -208,13 +218,14 @@ global, doesn't activate strobe directly
     <li><code>Lime</code></li>
     <li><code>Indigo</code></li>
   </ul></td>
-  <td></td>
+  <td valign="top"></td>
 </tr>
 <tr>
-  <td>brightness</td>
-  <td></td>
-  <td>Entity <em>Brightness</em></td>
-  <td>Defaults to <code>brightnessStart: "off", brightnessEnd: "bright"</code></td>
+  <td valign="top">brightness</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Brightness</em></td>
+  <td valign="top">Defaults to <code>brightnessStart: "off", brightnessEnd: "bright"</code></td>
 </tr>
 </tbody>
 </table>
@@ -227,22 +238,25 @@ global, doesn't activate strobe directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>colors</td>
-  <td></td>
-  <td>array of individual color beams as hex code</td>
-  <td>see below</td>
+  <td valign="top">colors</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">array of individual color beams as hex code</td>
+  <td valign="top">see below</td>
 </tr>
 <tr>
-  <td>colorTemperature</td>
-  <td></td>
-  <td>Entity <em>ColorTemperature</em></td>
-  <td></td>
+  <td valign="top">colorTemperature</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>ColorTemperature</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -261,32 +275,36 @@ global, doesn't activate strobe directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>index</td>
-  <td>yes</td>
-  <td>Entity <em>Index</em></td>
-  <td><ul>
+  <td valign="top">index</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Index</em></td>
+  <td valign="top"><ul>
     <li><code>0</code> for open</li>
     <li><code>1</code> for Gobo 1</li>
     <li><code>1.5</code> for Gobo 1/2 split</li>
     <li>etc.</li>
   </ul></td>
 </tr>
-  <td>colors</td>
-  <td></td>
-  <td>array of individual color beams as hex code</td>
-  <td>see <a href="#colorpreset"><em>ColorPreset</em></a> capability type</td>
+  <td valign="top">colors</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">array of individual color beams as hex code</td>
+  <td valign="top">see <a href="#colorpreset"><em>ColorPreset</em></a> capability type</td>
 </tr>
 <tr>
-  <td>colorTemperature</td>
-  <td></td>
-  <td>Entity <em>ColorTemperature</em></td>
-  <td></td>
+  <td valign="top">colorTemperature</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>ColorTemperature</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -299,22 +317,25 @@ global, doesn't activate strobe directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>speed</td>
-  <td>yes</td>
-  <td>Entity <em>RotationSpeed</em></td>
-  <td>can't be used together with <em>angle</em></td>
+  <td valign="top">speed</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>RotationSpeed</em></td>
+  <td valign="top">can't be used together with <em>angle</em></td>
 </tr>
 <tr>
-  <td>angle</td>
-  <td>yes</td>
-  <td>Entity <em>RotationAngle</em></td>
-  <td>can't be used together with <em>speed</em></td>
+  <td valign="top">angle</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
+  <td valign="top">can't be used together with <em>speed</em></td>
 </tr>
 </tbody>
 </table>
@@ -327,16 +348,18 @@ global, doesn't activate strobe directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>colorTemperature</td>
-  <td>yes</td>
-  <td>Entity <em>ColorTemperature</em></td>
-  <td></td>
+  <td valign="top">colorTemperature</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>ColorTemperature</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -349,16 +372,18 @@ global, doesn't activate strobe directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>angle</td>
-  <td>yes</td>
-  <td>Entity <em>RotationAngle</em></td>
-  <td></td>
+  <td valign="top">angle</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -371,16 +396,18 @@ global, doesn't activate strobe directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>speed</td>
-  <td>yes</td>
-  <td>Entity <em>RotationSpeed</em></td>
-  <td></td>
+  <td valign="top">speed</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>RotationSpeed</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -393,16 +420,18 @@ global, doesn't activate strobe directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>angle</td>
-  <td>yes</td>
-  <td>Entity <em>RotationAngle</em></td>
-  <td></td>
+  <td valign="top">angle</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -415,16 +444,18 @@ global, doesn't activate strobe directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>speed</td>
-  <td>yes</td>
-  <td>Entity <em>RotationSpeed</em></td>
-  <td></td>
+  <td valign="top">speed</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>RotationSpeed</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -437,22 +468,25 @@ global, doesn't activate strobe directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>speed</td>
-  <td>yes</td>
-  <td>Entity <em>Speed</em></td>
-  <td>can't be used together with <em>duration</em></td>
+  <td valign="top">speed</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Speed</em></td>
+  <td valign="top">can't be used together with <em>duration</em></td>
 </tr>
 <tr>
-  <td>duration</td>
-  <td>yes</td>
-  <td>Entity <em>Duration</em></td>
-  <td>can't be used together with <em>speed</em></td>
+  <td valign="top">duration</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Duration</em></td>
+  <td valign="top">can't be used together with <em>speed</em></td>
 </tr>
 </tbody>
 </table>
@@ -465,52 +499,60 @@ global, doesn't activate strobe directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>effectName</td>
-  <td>yes</td>
-  <td>Free text describing the effect</td>
-  <td>can't be used together with <em>effectPreset</em></td>
+  <td valign="top">effectName</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">Free text describing the effect</td>
+  <td valign="top">can't be used together with <em>effectPreset</em></td>
 </tr>
 <tr>
-  <td>effectPreset</td>
-  <td>yes</td>
-  <td><code>ColorJump</code> or <code>ColorFade</code></td>
-  <td>can't be used together with <em>effectName</em></td>
+  <td valign="top">effectPreset</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">❌ no</td>
+  <td valign="top"><code>ColorJump</code> or <code>ColorFade</code></td>
+  <td valign="top">can't be used together with <em>effectName</em></td>
 </tr>
 <tr>
-  <td>speed</td>
-  <td></td>
-  <td>Entity <em>Speed</em></td>
-  <td></td>
+  <td valign="top">speed</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Speed</em></td>
+  <td valign="top"></td>
 </tr>
 <tr>
-  <td>duration</td>
-  <td></td>
-  <td>Entity <em>Time</em></td>
-  <td></td>
+  <td valign="top">duration</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Time</em></td>
+  <td valign="top"></td>
 </tr>
 <tr>
-  <td>effectIntensity</td>
-  <td></td>
-  <td>Entity <em>Factor</em></td>
-  <td></td>
+  <td valign="top">effectIntensity</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Factor</em></td>
+  <td valign="top"></td>
 </tr>
 <tr>
-  <td>soundControlled</td>
-  <td></td>
-  <td>Entity <em>Boolean</em></td>
-  <td>Defaults to <code>false</code></td>
+  <td valign="top">soundControlled</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Boolean</em></td>
+  <td valign="top">Defaults to <code>false</code></td>
 </tr>
 <tr>
-  <td>soundSensitivity</td>
-  <td></td>
-  <td>Entity <em>Percent</em></td>
-  <td></td>
+  <td valign="top">soundSensitivity</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Percent</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -525,16 +567,18 @@ global, doesn't activate an effect directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>effectIntensity</td>
-  <td>yes</td>
-  <td>Entity <em>Factor</em></td>
-  <td></td>
+  <td valign="top">effectIntensity</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Factor</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -549,16 +593,18 @@ global, doesn't activate an effect directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>speed</td>
-  <td>yes</td>
-  <td>Entity <em>Speed</em></td>
-  <td></td>
+  <td valign="top">speed</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Speed</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -573,16 +619,18 @@ global, doesn't activate an effect directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>duration</td>
-  <td>yes</td>
-  <td>Entity <em>Duration</em></td>
-  <td></td>
+  <td valign="top">duration</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Duration</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -595,16 +643,18 @@ global, doesn't activate an effect directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>soundSensitivity</td>
-  <td>yes</td>
-  <td>Entity <em>Percent</em></td>
-  <td></td>
+  <td valign="top">soundSensitivity</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Percent</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -617,16 +667,18 @@ global, doesn't activate an effect directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>index</td>
-  <td>yes</td>
-  <td>Entity <em>Index</em></td>
-  <td><ul>
+  <td valign="top">index</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Index</em></td>
+  <td valign="top"><ul>
     <li><code>0</code> for open</li>
     <li><code>1</code> for Gobo 1</li>
     <li><code>1.5</code> for Gobo 1/2 split</li>
@@ -634,16 +686,18 @@ global, doesn't activate an effect directly
   </ul></td>
 </tr>
 <tr>
-  <td>shakeSpeed</td>
-  <td></td>
-  <td>Entity <em>Speed</em></td>
-  <td></td>
+  <td valign="top">shakeSpeed</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Speed</em></td>
+  <td valign="top"></td>
 </tr>
 <tr>
-  <td>shakeAngle</td>
-  <td></td>
-  <td>Entity <em>SwingAngle</em></td>
-  <td></td>
+  <td valign="top">shakeAngle</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>SwingAngle</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -656,22 +710,25 @@ global, doesn't activate an effect directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>shakeSpeed</td>
-  <td></td>
-  <td>Entity <em>Speed</em></td>
-  <td></td>
+  <td valign="top">shakeSpeed</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Speed</em></td>
+  <td valign="top"></td>
 </tr>
 <tr>
-  <td>shakeAngle</td>
-  <td></td>
-  <td>Entity <em>SwingAngle</em></td>
-  <td></td>
+  <td valign="top">shakeAngle</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>SwingAngle</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -684,22 +741,25 @@ global, doesn't activate an effect directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>speed</td>
-  <td>yes</td>
-  <td>Entity <em>RotationSpeed</em></td>
-  <td>can't be used together with <em>angle</em></td>
+  <td valign="top">speed</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>RotationSpeed</em></td>
+  <td valign="top">can't be used together with <em>angle</em></td>
 </tr>
 <tr>
-  <td>angle</td>
-  <td>yes</td>
-  <td>Entity <em>RotationAngle</em></td>
-  <td>can't be used together with <em>speed</em></td>
+  <td valign="top">angle</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
+  <td valign="top">can't be used together with <em>speed</em></td>
 </tr>
 </tbody>
 </table>
@@ -712,22 +772,25 @@ global, doesn't activate an effect directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>speed</td>
-  <td>yes</td>
-  <td>Entity <em>RotationSpeed</em></td>
-  <td>can't be used together with <em>angle</em></td>
+  <td valign="top">speed</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>RotationSpeed</em></td>
+  <td valign="top">can't be used together with <em>angle</em></td>
 </tr>
 <tr>
-  <td>angle</td>
-  <td>yes</td>
-  <td>Entity <em>RotationAngle</em></td>
-  <td>can't be used together with <em>speed</em></td>
+  <td valign="top">angle</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
+  <td valign="top">can't be used together with <em>speed</em></td>
 </tr>
 </tbody>
 </table>
@@ -740,16 +803,18 @@ global, doesn't activate an effect directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>distance</td>
-  <td>yes</td>
-  <td>Entity <em>Distance</em></td>
-  <td></td>
+  <td valign="top">distance</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Distance</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -762,16 +827,18 @@ global, doesn't activate an effect directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>angle</td>
-  <td>yes</td>
-  <td>Entity <em>BeamAngle</em></td>
-  <td></td>
+  <td valign="top">angle</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>BeamAngle</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -784,16 +851,18 @@ global, doesn't activate an effect directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>openPercent</td>
-  <td>yes</td>
-  <td>Entity <em>IrisPercent</em></td>
-  <td></td>
+  <td valign="top">openPercent</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>IrisPercent</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -806,22 +875,25 @@ global, doesn't activate an effect directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>effectName</td>
-  <td>yes</td>
-  <td>Free text describing the effect</td>
-  <td></td>
+  <td valign="top">effectName</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">Free text describing the effect</td>
+  <td valign="top"></td>
 </tr>
 <tr>
-  <td>speed</td>
-  <td></td>
-  <td>Entity <em>Speed</em></td>
-  <td></td>
+  <td valign="top">speed</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Speed</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -834,16 +906,18 @@ global, doesn't activate an effect directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>frostIntensity</td>
-  <td>yes</td>
-  <td>Entity <em>Percent</em></td>
-  <td></td>
+  <td valign="top">frostIntensity</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Percent</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -856,22 +930,25 @@ global, doesn't activate an effect directly
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>effectName</td>
-  <td>yes</td>
-  <td>Free text describing the effect</td>
-  <td></td>
+  <td valign="top">effectName</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">Free text describing the effect</td>
+  <td valign="top"></td>
 </tr>
 <tr>
-  <td>speed</td>
-  <td></td>
-  <td>Entity <em>Speed</em></td>
-  <td></td>
+  <td valign="top">speed</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Speed</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -889,22 +966,25 @@ No type-specific properties.
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>speed</td>
-  <td></td>
-  <td>Entity <em>RotationSpeed</em></td>
-  <td>can't be used together with <em>angle</em></td>
+  <td valign="top">speed</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>RotationSpeed</em></td>
+  <td valign="top">can't be used together with <em>angle</em></td>
 </tr>
 <tr>
-  <td>angle</td>
-  <td></td>
-  <td>Entity <em>RotationAngle</em></td>
-  <td>can't be used together with <em>speed</em></td>
+  <td valign="top">angle</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
+  <td valign="top">can't be used together with <em>speed</em></td>
 </tr>
 </tbody>
 </table>
@@ -917,22 +997,25 @@ No type-specific properties.
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>speed</td>
-  <td>yes</td>
-  <td>Entity <em>RotationSpeed</em></td>
-  <td>can't be used together with <em>angle</em></td>
+  <td valign="top">speed</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>RotationSpeed</em></td>
+  <td valign="top">can't be used together with <em>angle</em></td>
 </tr>
 <tr>
-  <td>angle</td>
-  <td>yes</td>
-  <td>Entity <em>RotationAngle</em></td>
-  <td>can't be used together with <em>speed</em></td>
+  <td valign="top">angle</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
+  <td valign="top">can't be used together with <em>speed</em></td>
 </tr>
 </tbody>
 </table>
@@ -945,28 +1028,31 @@ No type-specific properties.
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>blade</td>
-  <td>yes</td>
-  <td><ul>
+  <td valign="top">blade</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">❌ no</td>
+  <td valign="top"><ul>
     <li><code>Top</code></li>
     <li><code>Right</code></li>
     <li><code>Bottom</code></li>
     <li><code>Left</code></li>
     <li>number if the position is unknown</li>
   </ul></td>
-  <td></td>
+  <td valign="top"></td>
 </tr>
 <tr>
-  <td>insertion</td>
-  <td>yes</td>
-  <td>Entity <em>Insertion</em></td>
-  <td></td>
+  <td valign="top">insertion</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Insertion</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -979,28 +1065,31 @@ No type-specific properties.
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>blade</td>
-  <td>yes</td>
-  <td><ul>
+  <td valign="top">blade</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">❌ no</td>
+  <td valign="top"><ul>
     <li><code>Top</code></li>
     <li><code>Right</code></li>
     <li><code>Bottom</code></li>
     <li><code>Left</code></li>
     <li>number if the position is unknown</li>
   </ul></td>
-  <td></td>
+  <td valign="top"></td>
 </tr>
 <tr>
-  <td>angle</td>
-  <td>yes</td>
-  <td>Entity <em>RotationAngle</em></td>
-  <td></td>
+  <td valign="top">angle</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -1013,16 +1102,18 @@ No type-specific properties.
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>angle</td>
-  <td>yes</td>
-  <td>Entity <em>RotationAngle</em></td>
-  <td></td>
+  <td valign="top">angle</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -1035,22 +1126,25 @@ No type-specific properties.
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>fogType</td>
-  <td></td>
-  <td><code>Fog</code> or <code>Haze</code></td>
-  <td></td>
+  <td valign="top">fogType</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">❌ no</td>
+  <td valign="top"><code>Fog</code> or <code>Haze</code></td>
+  <td valign="top"></td>
 </tr>
 <tr>
-  <td>fogOutput</td>
-  <td></td>
-  <td>Entity <em>FogOutput</em></td>
-  <td></td>
+  <td valign="top">fogOutput</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>FogOutput</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -1063,16 +1157,18 @@ No type-specific properties.
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>fogOutput</td>
-  <td>yes</td>
-  <td>Entity <em>FogOutput</em></td>
-  <td></td>
+  <td valign="top">fogOutput</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>FogOutput</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -1085,16 +1181,18 @@ No type-specific properties.
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>fogType</td>
-  <td>yes</td>
-  <td><code>Fog</code> or <code>Haze</code></td>
-  <td></td>
+  <td valign="top">fogType</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">❌ no</td>
+  <td valign="top"><code>Fog</code> or <code>Haze</code></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -1107,16 +1205,18 @@ No type-specific properties.
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>angle</td>
-  <td>yes</td>
-  <td>Entity <em>BeamAngle</em></td>
-  <td></td>
+  <td valign="top">angle</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>BeamAngle</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -1129,22 +1229,25 @@ No type-specific properties.
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>speed</td>
-  <td>yes</td>
-  <td>Entity <em>RotationSpeed</em></td>
-  <td>can't be used together with <em>angle</em></td>
+  <td valign="top">speed</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>RotationSpeed</em></td>
+  <td valign="top">can't be used together with <em>angle</em></td>
 </tr>
 <tr>
-  <td>angle</td>
-  <td>yes</td>
-  <td>Entity <em>RotationAngle</em></td>
-  <td>can't be used together with <em>speed</em></td>
+  <td valign="top">angle</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
+  <td valign="top">can't be used together with <em>speed</em></td>
 </tr>
 </tbody>
 </table>
@@ -1157,16 +1260,18 @@ No type-specific properties.
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>speed</td>
-  <td>yes</td>
-  <td>Entity <em>Speed</em></td>
-  <td></td>
+  <td valign="top">speed</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Speed</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -1179,16 +1284,18 @@ No type-specific properties.
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>time</td>
-  <td>yes</td>
-  <td>Entity <em>Time</em></td>
-  <td></td>
+  <td valign="top">time</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Time</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
@@ -1201,22 +1308,25 @@ No type-specific properties.
 <tr>
   <th>Property</th>
   <th>Required?</th>
+  <th>Start / End allowed?</th>
   <th>Possible values</th>
   <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>parameter</td>
-  <td></td>
-  <td>Entity <em>Factor</em></td>
-  <td></td>
+  <td valign="top">parameter</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Factor</em></td>
+  <td valign="top"></td>
 </tr>
 <tr>
-  <td>hold</td>
-  <td></td>
-  <td>Entity <em>Time</em></td>
-  <td></td>
+  <td valign="top">hold</td>
+  <td valign="top">❌ no</td>
+  <td valign="top">✅ yes</td>
+  <td valign="top">Entity <em>Time</em></td>
+  <td valign="top"></td>
 </tr>
 </tbody>
 </table>
