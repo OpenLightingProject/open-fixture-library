@@ -2,7 +2,7 @@ const https = require(`https`);
 const Ajv = require(`ajv`);
 
 const SUPPORTED_OFL_VERSION = require(`../export.js`).supportedOflVersion;
-const SCHEMA_BASE_URL = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/${SUPPORTED_OFL_VERSION}/schemas/`;
+const SCHEMA_BASE_URL = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${SUPPORTED_OFL_VERSION}/schemas/`;
 const SCHEMA_FILES = [`capability.json`, `channel.json`, `definitions.json`, `fixture.json`];
 
 const schemaPromises = SCHEMA_FILES.map(filename => getSchema(SCHEMA_BASE_URL + filename));
