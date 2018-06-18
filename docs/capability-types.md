@@ -54,212 +54,422 @@ To make common percentage values more readable, one can use specific keywords to
 * Generic types: [BeamAngle](#beamangle) / [Rotation](#rotation) / [Speed](#speed) / [Time](#time) / [Maintenance](#maintenance) / [Generic](#generic)
 
 
-#### NoFunction
-
-No type-specific properties.
-
-
-#### ShutterStrobe
-
 <table>
 <thead>
 <tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
+  <th scope="col">Capability type</th>
+  <th scope="col">Property</th>
+  <th scope="col">Possible values</th>
+  <th scope="col">Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td valign="top">shutterEffect</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">
-    <ul>
-      <li><code>Open</code></li>
-      <li><code>Closed</code></li>
-      <li><code>Strobe</code></li>
-      <li><code>StrobeRandom</code></li>
-      <li><code>Pulse</code></li>
-      <li><code>PulseRandom</code></li>
-      <li><code>RampUp</code></li>
-      <li><code>RampUpRandom</code></li>
-      <li><code>RampDown</code></li>
-      <li><code>RampDownRandom</code></li>
-      <li><code>RampUpDown</code></li>
-      <li><code>RampUpDownRandom</code></li>
-      <li><code>Lightning</code></li>
-    </ul>
-  </td>
+  <th valign="top" scope="row" id="nofunction">NoFunction</th>
+  <td valign="top" colspan="3">No type-specific properties.</td>
+</tr>
+  <th valign="top" scope="row" id="shutterstrobe" rowspan="3">ShutterStrobe</th>
+  <td valign="top">shutterEffect<br><sub>:star2: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top"><code>Open</code>, <code>Closed</code>, <code>Strobe</code>, <code>StrobeRandom</code>, <code>Pulse</code>, <code>PulseRandom</code>, <code>RampUp</code>, <code>RampUpRandom</code>, <code>RampDown</code>, <code>RampDownRandom</code>, <code>RampUpDown</code>, <code>RampUpDownRandom</code>, <code>Lightning</code></td>
   <td valign="top"></td>
 </tr>
 <tr>
-  <td valign="top">speed</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
+  <td valign="top">speed<br><sub>:grey_question: optional</sub></td>
   <td valign="top">Entity <em>Speed</em></td>
   <td valign="top"></td>
 </tr>
 <tr>
-  <td valign="top">duration</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
+  <td valign="top">duration<br><sub>:grey_question: optional</sub></td>
   <td valign="top">Entity <em>Time</em></td>
   <td valign="top"></td>
 </tr>
-</tbody>
-</table>
-
-
-#### StrobeSpeed
-
-global, doesn't activate strobe directly
-
-<table>
-<thead>
 <tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
+  <th valign="top" scope="row" id="strobespeed">StrobeSpeed</th>
+  <td valign="top">speed<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>Speed</em></td>
+  <td valign="top">global, doesn't activate strobe directly</td>
 </tr>
-</thead>
-<tbody>
 <tr>
-<tr>
-  <td valign="top">speed</td>
-  <td valign="top">❌ no</td>   <td valign="top">✅ yes</td>   <td valign="top">Entity <em>Speed</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### StrobeDuration
-
-global, doesn't activate strobe directly
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">duration</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
+  <th valign="top" scope="row" id="strobeduration">StrobeDuration</th>
+  <td valign="top">duration<br><sub>:grey_question: optional</sub></td>
   <td valign="top">Entity <em>Time</em></td>
   <td valign="top"></td>
 </tr>
-</tbody>
-</table>
-
-
-#### Intensity
-
-<table>
-<thead>
 <tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">brightness</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
+  <th valign="top" scope="row" id="intensity">Intensity</th>
+  <td valign="top">brightness<br><sub>:grey_question: optional</sub></td>
   <td valign="top">Entity <em>Brightness</em></td>
   <td valign="top">Defaults to <code>brightnessStart: "off", brightnessEnd: "bright"</code></td>
 </tr>
-</tbody>
-</table>
-
-
-#### ColorIntensity
-
-<table>
-<thead>
 <tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">color</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">one of our predefined Single Colors: <ul>
-    <li><code>Red</code></li>
-    <li><code>Green</code></li>
-    <li><code>Blue</code></li>
-    <li><code>Cyan</code></li>
-    <li><code>Magenta</code></li>
-    <li><code>Yellow</code></li>
-    <li><code>Amber</code></li>
-    <li><code>White</code></li>
-    <li><code>UV</code></li>
-    <li><code>Lime</code></li>
-    <li><code>Indigo</code></li>
-  </ul></td>
+  <th valign="top" scope="row" id="colorintensity" rowspan="2">ColorIntensity</th>
+  <td valign="top">color<br><sub>:star2: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top">one of our predefined Single Colors:
+    <code>Red</code>, <code>Green</code>, <code>Blue</code>, <code>Cyan</code>, <code>Magenta</code>, <code>Yellow</code>, <code>Amber</code>, <code>White</code>, <code>UV</code>, <code>Lime</code>, <code>Indigo</code>
+  </td>
   <td valign="top"></td>
 </tr>
 <tr>
-  <td valign="top">brightness</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
+  <td valign="top">brightness<br><sub>:grey_question: optional</sub></td>
   <td valign="top">Entity <em>Brightness</em></td>
   <td valign="top">Defaults to <code>brightnessStart: "off", brightnessEnd: "bright"</code></td>
 </tr>
-</tbody>
-</table>
-
-
-#### ColorPreset
-
-<table>
-<thead>
 <tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">colors</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
+  <th valign="top" scope="row" id="colorpreset" rowspan="2">ColorPreset</th>
+  <td valign="top">colors<br><sub>:grey_question: optional</sub></td>
   <td valign="top">array of individual color beams as hex code</td>
-  <td valign="top">see below</td>
+  <td valign="top"><a href="#property-colors">see footnote <em>colors</em></a></td>
 </tr>
 <tr>
-  <td valign="top">colorTemperature</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
+  <td valign="top">colorTemperature<br><sub>:grey_question: optional</sub></td>
   <td valign="top">Entity <em>ColorTemperature</em></td>
   <td valign="top"></td>
 </tr>
+<tr>
+  <th valign="top" scope="row" id="colorwheelindex" rowspan="3">ColorWheelIndex</th>
+  <td valign="top">index<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>Index</em></td>
+  <td valign="top"><a href="#property-index">see footnote <em>index</em></a></td>
+</tr>
+  <td valign="top">colors<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">array of individual color beams as hex code</td>
+  <td valign="top"><a href="#property-colors">see footnote <em>colors</em></a></td>
+</tr>
+<tr>
+  <td valign="top">colorTemperature<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>ColorTemperature</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="colorwheelrotation" rowspan="2">ColorWheelRotation</th>
+  <td valign="top">speed<br><sub>:vs: required</sub></td>
+  <td valign="top">Entity <em>RotationSpeed</em></td>
+  <td rowspan="2">either <em>speed</em> or <em>angle</em> is allowed</td>
+</tr>
+<tr>
+  <td valign="top">angle<br><sub>:vs: required</sub></td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="colortemperature">ColorTemperature</th>
+  <td valign="top">colorTemperature<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>ColorTemperature</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="pan">Pan</th>
+  <td valign="top">angle<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="pancontinuous">PanContinuous</th>
+  <td valign="top">speed<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>RotationSpeed</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="tilt">Tilt</th>
+  <td valign="top">angle<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="tiltcontinuous">TiltContinuous</th>
+  <td valign="top">speed<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>RotationSpeed</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="pantiltspeed" rowspan="2">PanTiltSpeed</th>
+  <td valign="top">speed<br><sub>:vs: required</sub></td>
+  <td valign="top">Entity <em>Speed</em></td>
+  <td rowspan="2">either <em>speed</em> or <em>duration</em> is allowed</td>
+</tr>
+<tr>
+  <td valign="top">duration<br><sub>:vs: required</sub></td>
+  <td valign="top">Entity <em>Duration</em></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="effect" rowspan="7">Effect</th>
+  <td valign="top">effectName<br><sub>:vs: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top">Free text describing the effect</td>
+  <td rowspan="2">either <em>effectName</em> or <em>effectPreset</em> is allowed</td>
+</tr>
+<tr>
+  <td valign="top">effectPreset<br><sub>:vs: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top"><code>ColorJump</code> or <code>ColorFade</code></td>
+</tr>
+<tr>
+  <td valign="top">speed<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>Speed</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <td valign="top">duration<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>Time</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <td valign="top">effectIntensity<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>Factor</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <td valign="top">soundControlled<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>Boolean</em></td>
+  <td valign="top">Defaults to <code>false</code></td>
+</tr>
+<tr>
+  <td valign="top">soundSensitivity<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>Percent</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="effectintensity">EffectIntensity</th>
+  <td valign="top">effectIntensity<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>Factor</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="effectspeed">EffectSpeed</th>
+  <td valign="top">speed<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>Speed</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="effectduration">EffectDuration</th>
+  <td valign="top">duration<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>Duration</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="soundsensitivity">SoundSensitivity</th>
+  <td valign="top">soundSensitivity<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>Percent</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="goboindex" rowspan="3">GoboIndex</th>
+  <td valign="top">index<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>Index</em></td>
+  <td valign="top"><a href="#property-index">see footnote <em>index</em></a></td>
+</tr>
+<tr>
+  <td valign="top">shakeSpeed<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>Speed</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <td valign="top">shakeAngle<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>SwingAngle</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="goboshake" rowspan="2">GoboShake</th>
+  <td valign="top">shakeSpeed<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>Speed</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <td valign="top">shakeAngle<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>SwingAngle</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="gobostencilrotation" rowspan="2">GoboStencilRotation</th>
+  <td valign="top">speed<br><sub>:vs: required</sub></td>
+  <td valign="top">Entity <em>RotationSpeed</em></td>
+  <td rowspan="2">either <em>speed</em> or <em>angle</em> is allowed</td>
+</tr>
+<tr>
+  <td valign="top">angle<br><sub>:vs: required</sub></td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="gobowheelrotation" rowspan="2">GoboWheelRotation</th>
+  <td valign="top">speed<br><sub>:vs: required</sub></td>
+  <td valign="top">Entity <em>RotationSpeed</em></td>
+  <td rowspan="2">either <em>speed</em> or <em>angle</em> is allowed</td>
+</tr>
+<tr>
+  <td valign="top">angle<br><sub>:vs: required</sub></td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="focus">Focus</th>
+  <td valign="top">distance<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>Distance</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="zoom">Zoom</th>
+  <td valign="top">angle<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>BeamAngle</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="iris">Iris</th>
+  <td valign="top">openPercent<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>IrisPercent</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="iriseffect" rowspan="2">IrisEffect</th>
+  <td valign="top">effectName<br><sub>:star2: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top">Free text describing the effect</td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <td valign="top">speed<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>Speed</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="frost">Frost</th>
+  <td valign="top">frostIntensity<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>Percent</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="frosteffect" rowspan="2">FrostEffect</th>
+  <td valign="top">effectName<br><sub>:star2: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top">Free text describing the effect</td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <td valign="top">speed<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>Speed</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="prismoff">PrismOff</th>
+  <td valign="top" colspan="3">No type-specific properties.</td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="prismon" rowspan="2">PrismOn</th>
+  <td valign="top">speed<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>RotationSpeed</em></td>
+  <td rowspan="2">either <em>speed</em> or <em>angle</em> is allowed</td>
+</tr>
+<tr>
+  <td valign="top">angle<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="prismrotation" rowspan="2">PrismRotation</th>
+  <td valign="top">speed<br><sub>:vs: required</sub></td>
+  <td valign="top">Entity <em>RotationSpeed</em></td>
+  <td rowspan="2">either <em>speed</em> or <em>angle</em> is allowed</td>
+</tr>
+<tr>
+  <td valign="top">angle<br><sub>:vs: required</sub></td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="bladeinsertion" rowspan="2">BladeInsertion</th>
+  <td valign="top">blade<br><sub>:star2: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top"><code>Top</code>, <code>Right</code>, <code>Bottom</code>, <code>Left</code> or a number if the position is unknown</td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <td valign="top">insertion<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>Insertion</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="bladerotation" rowspan="2">BladeRotation</th>
+  <td valign="top">blade<br><sub>:star2: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top"><code>Top</code>, <code>Right</code>, <code>Bottom</code>, <code>Left</code> or a number if the position is unknown</td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <td valign="top">angle<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="bladesystemrotation">BladeSystemRotation</th>
+  <td valign="top">angle<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="fog" rowspan="2">Fog</th>
+  <td valign="top">fogType<br><sub>:grey_question: optional</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top"><code>Fog</code> or <code>Haze</code></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <td valign="top">fogOutput<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>FogOutput</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="fogoutput">FogOutput</th>
+  <td valign="top">fogOutput<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>FogOutput</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="fogtype">FogType</th>
+  <td valign="top">fogType<br><sub>:star2: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top"><code>Fog</code> or <code>Haze</code></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="beamangle">BeamAngle</th>
+  <td valign="top">angle<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>BeamAngle</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="rotation" rowspan="2">Rotation</th>
+  <td valign="top">speed<br><sub>:vs: required</sub></td>
+  <td valign="top">Entity <em>RotationSpeed</em></td>
+  <td rowspan="2">either <em>speed</em> or <em>angle</em> is allowed</td>
+</tr>
+<tr>
+  <td valign="top">angle<br><sub>:vs: required</sub></td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="speed">Speed</th>
+  <td valign="top">speed<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>Speed</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="time">Time</th>
+  <td valign="top">time<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>Time</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="maintenance" rowspan="2">Maintenance</th>
+  <td valign="top">parameter<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>Factor</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <td valign="top">hold<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>Time</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="generic">Generic</th>
+  <td valign="top" colspan="3">No type-specific properties.</td>
+</tr>
 </tbody>
 </table>
+
+### Footnotes
+
+#### Must be stepped
+
+Properties that must be stepped (they have a :feet: footsteps icon next to them) can't be appended with `Start` or `End`. E.g. only `effectName` (not `effectNameStart`/`effectNameEnd`) is allowed, while both `speed` and `speedStart`/`speedEnd` are valid.
+
+#### Property *colors*
 
 "Individual color beams" means that one beam is visually distinguishable from the others, i.e.:
 
@@ -268,1074 +478,9 @@ global, doesn't activate strobe directly
   * UV is always counted as a separate color as the ultraviolet light doesn't really mix with normal RGB colors. For a color preset "Red+Green+UV", `colors` should be set to `["#ffff00", "UV"]`.
 
 
-#### ColorWheelIndex
+#### Property *index*
 
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">index</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Index</em></td>
-  <td valign="top"><ul>
-    <li><code>0</code> for open</li>
-    <li><code>1</code> for Gobo 1</li>
-    <li><code>1.5</code> for Gobo 1/2 split</li>
-    <li>etc.</li>
-  </ul></td>
-</tr>
-  <td valign="top">colors</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">array of individual color beams as hex code</td>
-  <td valign="top">see <a href="#colorpreset"><em>ColorPreset</em></a> capability type</td>
-</tr>
-<tr>
-  <td valign="top">colorTemperature</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>ColorTemperature</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### ColorWheelRotation
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">speed</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>RotationSpeed</em></td>
-  <td valign="top">can't be used together with <em>angle</em></td>
-</tr>
-<tr>
-  <td valign="top">angle</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>RotationAngle</em></td>
-  <td valign="top">can't be used together with <em>speed</em></td>
-</tr>
-</tbody>
-</table>
-
-
-#### ColorTemperature
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">colorTemperature</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>ColorTemperature</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### Pan
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">angle</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>RotationAngle</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### PanContinuous
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">speed</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>RotationSpeed</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### Tilt
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">angle</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>RotationAngle</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### TiltContinuous
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">speed</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>RotationSpeed</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### PanTiltSpeed
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">speed</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Speed</em></td>
-  <td valign="top">can't be used together with <em>duration</em></td>
-</tr>
-<tr>
-  <td valign="top">duration</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Duration</em></td>
-  <td valign="top">can't be used together with <em>speed</em></td>
-</tr>
-</tbody>
-</table>
-
-
-#### Effect
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">effectName</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">Free text describing the effect</td>
-  <td valign="top">can't be used together with <em>effectPreset</em></td>
-</tr>
-<tr>
-  <td valign="top">effectPreset</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">❌ no</td>
-  <td valign="top"><code>ColorJump</code> or <code>ColorFade</code></td>
-  <td valign="top">can't be used together with <em>effectName</em></td>
-</tr>
-<tr>
-  <td valign="top">speed</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Speed</em></td>
-  <td valign="top"></td>
-</tr>
-<tr>
-  <td valign="top">duration</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Time</em></td>
-  <td valign="top"></td>
-</tr>
-<tr>
-  <td valign="top">effectIntensity</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Factor</em></td>
-  <td valign="top"></td>
-</tr>
-<tr>
-  <td valign="top">soundControlled</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Boolean</em></td>
-  <td valign="top">Defaults to <code>false</code></td>
-</tr>
-<tr>
-  <td valign="top">soundSensitivity</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Percent</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### EffectIntensity
-
-global, doesn't activate an effect directly
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">effectIntensity</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Factor</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### EffectSpeed
-
-global, doesn't activate an effect directly
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">speed</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Speed</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### EffectDuration
-
-global, doesn't activate an effect directly
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">duration</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Duration</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### SoundSensitivity
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">soundSensitivity</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Percent</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### GoboIndex
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">index</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Index</em></td>
-  <td valign="top"><ul>
-    <li><code>0</code> for open</li>
-    <li><code>1</code> for Gobo 1</li>
-    <li><code>1.5</code> for Gobo 1/2 split</li>
-    <li>etc.</li>
-  </ul></td>
-</tr>
-<tr>
-  <td valign="top">shakeSpeed</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Speed</em></td>
-  <td valign="top"></td>
-</tr>
-<tr>
-  <td valign="top">shakeAngle</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>SwingAngle</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### GoboShake
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">shakeSpeed</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Speed</em></td>
-  <td valign="top"></td>
-</tr>
-<tr>
-  <td valign="top">shakeAngle</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>SwingAngle</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### GoboStencilRotation
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">speed</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>RotationSpeed</em></td>
-  <td valign="top">can't be used together with <em>angle</em></td>
-</tr>
-<tr>
-  <td valign="top">angle</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>RotationAngle</em></td>
-  <td valign="top">can't be used together with <em>speed</em></td>
-</tr>
-</tbody>
-</table>
-
-
-#### GoboWheelRotation
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">speed</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>RotationSpeed</em></td>
-  <td valign="top">can't be used together with <em>angle</em></td>
-</tr>
-<tr>
-  <td valign="top">angle</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>RotationAngle</em></td>
-  <td valign="top">can't be used together with <em>speed</em></td>
-</tr>
-</tbody>
-</table>
-
-
-#### Focus
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">distance</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Distance</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### Zoom
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">angle</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>BeamAngle</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### Iris
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">openPercent</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>IrisPercent</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### IrisEffect
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">effectName</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">Free text describing the effect</td>
-  <td valign="top"></td>
-</tr>
-<tr>
-  <td valign="top">speed</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Speed</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### Frost
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">frostIntensity</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Percent</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### FrostEffect
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">effectName</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">Free text describing the effect</td>
-  <td valign="top"></td>
-</tr>
-<tr>
-  <td valign="top">speed</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Speed</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### PrismOff
-
-No type-specific properties.
-
-
-#### PrismOn
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">speed</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>RotationSpeed</em></td>
-  <td valign="top">can't be used together with <em>angle</em></td>
-</tr>
-<tr>
-  <td valign="top">angle</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>RotationAngle</em></td>
-  <td valign="top">can't be used together with <em>speed</em></td>
-</tr>
-</tbody>
-</table>
-
-
-#### PrismRotation
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">speed</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>RotationSpeed</em></td>
-  <td valign="top">can't be used together with <em>angle</em></td>
-</tr>
-<tr>
-  <td valign="top">angle</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>RotationAngle</em></td>
-  <td valign="top">can't be used together with <em>speed</em></td>
-</tr>
-</tbody>
-</table>
-
-
-#### BladeInsertion
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">blade</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">❌ no</td>
-  <td valign="top"><ul>
-    <li><code>Top</code></li>
-    <li><code>Right</code></li>
-    <li><code>Bottom</code></li>
-    <li><code>Left</code></li>
-    <li>number if the position is unknown</li>
-  </ul></td>
-  <td valign="top"></td>
-</tr>
-<tr>
-  <td valign="top">insertion</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Insertion</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### BladeRotation
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">blade</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">❌ no</td>
-  <td valign="top"><ul>
-    <li><code>Top</code></li>
-    <li><code>Right</code></li>
-    <li><code>Bottom</code></li>
-    <li><code>Left</code></li>
-    <li>number if the position is unknown</li>
-  </ul></td>
-  <td valign="top"></td>
-</tr>
-<tr>
-  <td valign="top">angle</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>RotationAngle</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### BladeSystemRotation
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">angle</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>RotationAngle</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### Fog
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">fogType</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">❌ no</td>
-  <td valign="top"><code>Fog</code> or <code>Haze</code></td>
-  <td valign="top"></td>
-</tr>
-<tr>
-  <td valign="top">fogOutput</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>FogOutput</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### FogOutput
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">fogOutput</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>FogOutput</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### FogType
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">fogType</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">❌ no</td>
-  <td valign="top"><code>Fog</code> or <code>Haze</code></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### BeamAngle
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">angle</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>BeamAngle</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### Rotation
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">speed</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>RotationSpeed</em></td>
-  <td valign="top">can't be used together with <em>angle</em></td>
-</tr>
-<tr>
-  <td valign="top">angle</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>RotationAngle</em></td>
-  <td valign="top">can't be used together with <em>speed</em></td>
-</tr>
-</tbody>
-</table>
-
-
-#### Speed
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">speed</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Speed</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### Time
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">time</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Time</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### Maintenance
-
-<table>
-<thead>
-<tr>
-  <th>Property</th>
-  <th>Required?</th>
-  <th>Start / End allowed?</th>
-  <th>Possible values</th>
-  <th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td valign="top">parameter</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Factor</em></td>
-  <td valign="top"></td>
-</tr>
-<tr>
-  <td valign="top">hold</td>
-  <td valign="top">❌ no</td>
-  <td valign="top">✅ yes</td>
-  <td valign="top">Entity <em>Time</em></td>
-  <td valign="top"></td>
-</tr>
-</tbody>
-</table>
-
-
-#### Generic
-
-No type-specific properties.
-
+Use zero-based numbering (e.g. `0` for open, `1` for *Color/Gobo 1*). If the capability shows a split color/gobo, use the value halfway between them (e.g. `1.5` for *Split Color/Gobo 1/2*). If all steps in between can be selected by the proportional capability, use `indexStart` and `indexEnd` (e.g. from *Color/Gobo 1* to *Color/Gobo 2*).
 
 
 ### How to add new capability types / type-specific properties
