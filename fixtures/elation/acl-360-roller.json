@@ -17,15 +17,17 @@
       "type": "20x 15W RGBW LEDs"
     },
     "focus": {
-      "type": "Head"
+      "type": "Head",
+      "panMax": "infinite",
+      "tiltMax": "infinite"
     }
   },
   "matrix": {
     "pixelKeys": [
       [
-        ["1", "2", "3", "4", "5"],
+        ["1",  "2",  "3",  "4",  "5" ],
         [null, null, null, null, null],
-        ["6", "7", "8", "9", "10"]
+        ["6",  "7",  "8",  "9",  "10"]
       ],
       [
         [null, null, null, null, null],

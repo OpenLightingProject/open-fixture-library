@@ -193,8 +193,8 @@ function addPhysical(xmlMode, physical) {
       },
       Focus: {
         '@Type': physical.focusType || `Fixed`,
-        '@PanMax': Math.round(physical.focusPanMax) || 0,
-        '@TiltMax': Math.round(physical.focusTiltMax) || 0
+        '@PanMax': getPanTiltMax(physical.focusPanMax) || 0,
+        '@TiltMax': getPanTiltMax(physical.focusTiltMax) || 0
       }
     }
   });
@@ -206,6 +206,22 @@ function addPhysical(xmlMode, physical) {
         '@PowerConsumption': Math.round(physical.power) || 0
       }
     });
+  }
+
+  /**
+   * @param {?number} panTiltMax A physical's panMax or tiltMax
+   * @returns {!number} The rounded maximum; 9999 for infinite and 0 as default.
+   */
+  function getPanTiltMax(panTiltMax) {
+    if (panTiltMax === Number.POSITIVE_INFINITY) {
+      return 9999;
+    }
+
+    if (panTiltMax !== null) {
+      return Math.round(panTiltMax);
+    }
+
+    return 0;
   }
 }
 

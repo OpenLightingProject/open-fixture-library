@@ -19,7 +19,9 @@
       "type": "4x 10W RGBW LEDs"
     },
     "focus": {
-      "type": "Head"
+      "type": "Head",
+      "panMax": 630,
+      "tiltMax": "infinite"
     }
   },
   "availableChannels": {

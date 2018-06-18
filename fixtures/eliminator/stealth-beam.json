@@ -13,6 +13,7 @@
     }
   },
   "manualURL": "http://cdb.s3.amazonaws.com/ItemRelatedFiles/11195/Stealth%20Beam%20(1st%20Ed.).pdf",
+  "helpWanted": "Is tilt also infinite? Or is the tilt macro just a \"shake\" effect?",
   "physical": {
     "dimensions": [239, 285, 146],
     "weight": 3.8,
@@ -26,17 +27,30 @@
     },
     "focus": {
       "type": "Head",
+      "panMax": "infinite",
       "tiltMax": 270
     }
   },
   "availableChannels": {
     "Pan": {
       "type": "Pan",
-      "fineChannelAliases": ["Pan fine"]
+      "fineChannelAliases": ["Pan fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Pan 0…540°"
+        }
+      ]
     },
     "Tilt": {
       "type": "Tilt",
-      "fineChannelAliases": ["Tilt fine"]
+      "fineChannelAliases": ["Tilt fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Tilt 0…270°"
+        }
+      ]
     },
     "Red": {
       "type": "Single Color",

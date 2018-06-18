@@ -83,6 +83,33 @@
     ]
   },
   {
+    "man": "futurelight",
+    "key": "dmh-75-i-led-moving-head",
+    "name": "DMH-75.i LED Moving Head",
+    "features": [
+      "channel-type-intensity",
+      "channel-type-multi-color",
+      "channel-type-pan",
+      "channel-type-tilt",
+      "channel-type-focus",
+      "channel-type-gobo",
+      "channel-type-prism",
+      "channel-type-strobe",
+      "channel-type-speed",
+      "channel-type-effect",
+      "channel-type-maintenance",
+      "duplicate-channel-names",
+      "fine-channel-alias",
+      "floating-point-weight",
+      "infinite-pan",
+      "infinite-tilt",
+      "multiple-categories",
+      "reused-channels",
+      "switching-channels",
+      "switching-channel-positions"
+    ]
+  },
+  {
     "man": "generic",
     "key": "rgbd-fader",
     "name": "RGBD Fader",
