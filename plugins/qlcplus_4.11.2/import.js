@@ -88,29 +88,25 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
  * @returns {!object} The OFL channel object.
  */
 function getOflChannel(qlcPlusChannel) {
-  const ch = {
+  const channel = {
     type: getOflChannelType(qlcPlusChannel)
   };
 
   if (`Colour` in qlcPlusChannel && qlcPlusChannel.Colour[0] !== `Generic`) {
-    ch.color = qlcPlusChannel.Colour[0];
+    channel.color = qlcPlusChannel.Colour[0];
   }
 
-  ch.fineChannelAliases = [];
+  channel.fineChannelAliases = [];
 
-  if (ch.type === `Intensity`) {
-    ch.crossfade = true;
+  if (channel.type === `Intensity`) {
+    channel.crossfade = true;
   }
 
-  ch.capabilities = [];
-  for (const capability of qlcPlusChannel.Capability || []) {
-    ch.capabilities.push(getOflCapability(capability));
-  }
-  if (ch.capabilities.length === 0) {
-    delete ch.capabilities;
+  if (`Capability` in qlcPlusChannel) {
+    channel.capabilities = qlcPlusChannel.Capability.map(cap => getOflCapability(cap));
   }
 
-  return ch;
+  return channel;
 }
 
 /**
