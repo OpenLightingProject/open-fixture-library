@@ -7,7 +7,6 @@ const fixtureRedirectSchema = require(`../schemas/dereferenced/fixture-redirect.
 const schemaProperties = require(`../lib/schema-properties.js`);
 
 const {
-  Capability,
   Channel,
   FineChannel,
   Fixture,
