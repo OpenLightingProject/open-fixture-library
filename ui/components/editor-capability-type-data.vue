@@ -66,7 +66,6 @@ import editorCapabilityIris from '~/components/editor-capabilities/Iris.vue';
 import editorCapabilityIrisEffect from '~/components/editor-capabilities/IrisEffect.vue';
 import editorCapabilityFrost from '~/components/editor-capabilities/Frost.vue';
 import editorCapabilityFrostEffect from '~/components/editor-capabilities/FrostEffect.vue';
-import editorCapabilityPrismOff from '~/components/editor-capabilities/PrismOff.vue';
 import editorCapabilityPrismOn from '~/components/editor-capabilities/PrismOn.vue';
 import editorCapabilityPrismRotation from '~/components/editor-capabilities/PrismRotation.vue';
 import editorCapabilityBladeInsertion from '~/components/editor-capabilities/BladeInsertion.vue';
@@ -115,7 +114,6 @@ export default {
     'app-editor-capability-IrisEffect': editorCapabilityIrisEffect,
     'app-editor-capability-Frost': editorCapabilityFrost,
     'app-editor-capability-FrostEffect': editorCapabilityFrostEffect,
-    'app-editor-capability-PrismOff': editorCapabilityPrismOff,
     'app-editor-capability-PrismOn': editorCapabilityPrismOn,
     'app-editor-capability-PrismRotation': editorCapabilityPrismRotation,
     'app-editor-capability-BladeInsertion': editorCapabilityBladeInsertion,

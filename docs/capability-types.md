@@ -47,7 +47,7 @@ To make common percentage values more readable, one can use specific keywords to
 * [Zoom](#zoom)
 * [Iris](#iris) / [IrisEffect](#iriseffect)
 * [Frost](#frost) / [FrostEffect](#frosteffect)
-* [PrismOff](#prismoff) / [PrismOn](#prismon) / [PrismRotation](#prismrotation)
+* [PrismOn](#prismon) / [PrismRotation](#prismrotation)
 * [BladeInsertion](#bladeinsertion)
  / [BladeRotation](#bladerotation) / [BladeSystemRotation](#bladesystemrotation)
 * [Fog](#fog) / [FogOutput](#fogoutput) / [FogType](#fogtype)
@@ -341,10 +341,6 @@ To make common percentage values more readable, one can use specific keywords to
   <td valign="top">speed<br><sub>:grey_question: optional</sub></td>
   <td valign="top">Entity <em>Speed</em></td>
   <td valign="top"></td>
-</tr>
-<tr>
-  <th valign="top" scope="row" id="prismoff">PrismOff</th>
-  <td valign="top" colspan="3">No type-specific properties.</td>
 </tr>
 <tr>
   <th valign="top" scope="row" id="prismon" rowspan="2">PrismOn</th>

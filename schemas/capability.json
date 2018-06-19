@@ -43,7 +43,6 @@
       "IrisEffect",
       "Frost",
       "FrostEffect",
-      "PrismOff",
       "PrismOn",
       "PrismRotation",
       "BladeInsertion",
@@ -1104,24 +1103,6 @@
         "dependencies": {
           "speedStart": ["speedEnd"],
           "speedEnd": ["speedStart"]
-        },
-        "additionalProperties": false
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "type": { "enum": ["PrismOff"] }
-        }
-      },
-      "then": {
-        "properties": {
-          "dmxRange": {},
-          "type": {},
-          "comment": {},
-          "helpWanted": {},
-          "menuClick": {},
-          "switchChannels": {}
         },
         "additionalProperties": false
       }
