@@ -1067,7 +1067,7 @@
         },
         {
           "dmxRange": [32, 95],
-          "type": "PrismOn",
+          "type": "Prism",
           "comment": "4-facet prism, indexed",
           "switchChannels": {
             "Rotating Prism Indexing/Speed": "Rotating Prism Indexing",
@@ -1076,7 +1076,7 @@
         },
         {
           "dmxRange": [96, 127],
-          "type": "PrismOn",
+          "type": "Prism",
           "comment": "8-facet prism, indexed",
           "switchChannels": {
             "Rotating Prism Indexing/Speed": "Rotating Prism Indexing",
@@ -1085,7 +1085,7 @@
         },
         {
           "dmxRange": [128, 191],
-          "type": "PrismOn",
+          "type": "Prism",
           "comment": "4-facet prism, rotating",
           "switchChannels": {
             "Rotating Prism Indexing/Speed": "Rotating Prism Speed",
@@ -1094,7 +1094,7 @@
         },
         {
           "dmxRange": [192, 255],
-          "type": "PrismOn",
+          "type": "Prism",
           "comment": "8-facet prism, rotating",
           "switchChannels": {
             "Rotating Prism Indexing/Speed": "Rotating Prism Speed",

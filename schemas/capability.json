@@ -43,7 +43,7 @@
       "IrisEffect",
       "Frost",
       "FrostEffect",
-      "PrismOn",
+      "Prism",
       "PrismRotation",
       "BladeInsertion",
       "BladeRotation",
@@ -1110,7 +1110,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["PrismOn"] }
+          "type": { "enum": ["Prism"] }
         }
       },
       "then": {

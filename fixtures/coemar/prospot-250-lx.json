@@ -261,23 +261,23 @@
         },
         {
           "dmxRange": [11, 20],
-          "type": "PrismOn",
+          "type": "Prism",
           "comment": "3 facet prism"
         },
         {
           "dmxRange": [21, 136],
-          "type": "PrismOn",
+          "type": "Prism",
           "speedStart": "fast CW",
           "speedEnd": "slow CW"
         },
         {
           "dmxRange": [137, 139],
-          "type": "PrismOn",
+          "type": "Prism",
           "speed": "stop"
         },
         {
           "dmxRange": [140, 255],
-          "type": "PrismOn",
+          "type": "Prism",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         }
@@ -551,7 +551,7 @@
         },
         {
           "dmxRange": [96, 159],
-          "type": "PrismOn",
+          "type": "Prism",
           "comment": "3 facet rotating prism"
         },
         {

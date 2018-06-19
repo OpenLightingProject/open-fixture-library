@@ -47,7 +47,7 @@ To make common percentage values more readable, one can use specific keywords to
 * [Zoom](#zoom)
 * [Iris](#iris) / [IrisEffect](#iriseffect)
 * [Frost](#frost) / [FrostEffect](#frosteffect)
-* [PrismOn](#prismon) / [PrismRotation](#prismrotation)
+* [Prism](#prism) / [PrismRotation](#prismrotation)
 * [BladeInsertion](#bladeinsertion)
  / [BladeRotation](#bladerotation) / [BladeSystemRotation](#bladesystemrotation)
 * [Fog](#fog) / [FogOutput](#fogoutput) / [FogType](#fogtype)
@@ -343,10 +343,10 @@ To make common percentage values more readable, one can use specific keywords to
   <td valign="top"></td>
 </tr>
 <tr>
-  <th valign="top" scope="row" id="prismon" rowspan="2">PrismOn</th>
+  <th valign="top" scope="row" id="prism" rowspan="2">Prism</th>
   <td valign="top">speed<br><sub>:grey_question: optional</sub></td>
   <td valign="top">Entity <em>RotationSpeed</em></td>
-  <td rowspan="2">either <em>speed</em> or <em>angle</em> is allowed</td>
+  <td rowspan="2">activates fixture's prism; either <em>speed</em> or <em>angle</em> is allowed</td>
 </tr>
 <tr>
   <td valign="top">angle<br><sub>:grey_question: optional</sub></td>
@@ -356,7 +356,7 @@ To make common percentage values more readable, one can use specific keywords to
   <th valign="top" scope="row" id="prismrotation" rowspan="2">PrismRotation</th>
   <td valign="top">speed<br><sub>:vs: required</sub></td>
   <td valign="top">Entity <em>RotationSpeed</em></td>
-  <td rowspan="2">either <em>speed</em> or <em>angle</em> is allowed</td>
+  <td rowspan="2">doesn't activate prism directly; either <em>speed</em> or <em>angle</em> is allowed</td>
 </tr>
 <tr>
   <td valign="top">angle<br><sub>:vs: required</sub></td>

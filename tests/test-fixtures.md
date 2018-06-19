@@ -30,7 +30,7 @@
 **Capability type IrisEffect** [[28]](#user-content-footnote-28) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌
 **Capability type Frost** [[29]](#user-content-footnote-29) | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌
 **Capability type FrostEffect** [[30]](#user-content-footnote-30) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌
-**Capability type PrismOn** [[31]](#user-content-footnote-31) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌
+**Capability type Prism** [[31]](#user-content-footnote-31) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌
 **Capability type PrismRotation** [[32]](#user-content-footnote-32) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌
 **Capability type BladeInsertion** [[33]](#user-content-footnote-33) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
 **Capability type BladeRotation** [[34]](#user-content-footnote-34) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
@@ -137,7 +137,7 @@
 
 **<a id="user-content-footnote-30">[30]</a>**: Whether the fixture has at least one capability of type 'FrostEffect'
 
-**<a id="user-content-footnote-31">[31]</a>**: Whether the fixture has at least one capability of type 'PrismOn'
+**<a id="user-content-footnote-31">[31]</a>**: Whether the fixture has at least one capability of type 'Prism'
 
 **<a id="user-content-footnote-32">[32]</a>**: Whether the fixture has at least one capability of type 'PrismRotation'
 
