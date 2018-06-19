@@ -1,300 +1,433 @@
 const xml2js = require(`xml2js`);
 
 module.exports.name = `QLC+ 4.11.2`;
-module.exports.version = `0.4.1`;
+module.exports.version = `0.4.2`;
 
 module.exports.import = function importQLCplus(str, filename, resolve, reject) {
   const parser = new xml2js.Parser();
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
-  parser.parseString(str, (parseError, xml) => {
-    if (parseError) {
-      reject(`Error parsing '${filename}' as XML.\n${parseError.toString()}`);
-      return;
-    }
+  const out = {
+    manufacturers: {},
+    fixtures: {},
+    warnings: {}
+  };
+  const fixture = {
+    $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`
+  };
 
-    const out = {
-      manufacturers: {},
-      fixtures: {},
-      warnings: {}
-    };
-    const fix = {
-      $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`
-    };
+  new Promise((res, rej) => {
+    parser.parseString(str, (parseError, xml) => {
+      if (parseError) {
+        rej(parseError);
+      }
+      else {
+        res(xml);
+      }
+    });
+  })
+    .then(xml => {
+      const qlcPlusFixture = xml.FixtureDefinition;
+      fixture.name = qlcPlusFixture.Model[0];
 
-    try {
-      const fixture = xml.FixtureDefinition;
-      fix.name = fixture.Model[0];
-
-      const manKey = fixture.Manufacturer[0].toLowerCase().replace(/[^a-z0-9-]+/g, `-`);
-      const fixKey = `${manKey}/${fix.name.toLowerCase().replace(/[^a-z0-9-]+/g, `-`)}`;
+      const manKey = slugify(qlcPlusFixture.Manufacturer[0]);
+      const fixKey = `${manKey}/${slugify(fixture.name)}`;
       out.warnings[fixKey] = [`Please check if manufacturer is correct.`];
 
-      fix.categories = [fixture.Type[0]];
+      fixture.categories = [qlcPlusFixture.Type[0]];
 
-      fix.meta = {
-        authors: fixture.Creator[0].Author[0].split(/,\s*/),
+      fixture.meta = {
+        authors: qlcPlusFixture.Creator[0].Author[0].split(/,\s*/),
         createDate: timestamp,
         lastModifyDate: timestamp,
         importPlugin: {
           plugin: `qlcplus`,
           date: timestamp,
-          comment: `created by ${fixture.Creator[0].Name[0]} (version ${fixture.Creator[0].Version[0]})`
+          comment: `created by ${qlcPlusFixture.Creator[0].Name[0]} (version ${qlcPlusFixture.Creator[0].Version[0]})`
         }
       };
 
-      fix.physical = {};
-      fix.availableChannels = {};
+      // fill in one empty mode so we don't have to check this case anymore
+      if (!(`Mode` in qlcPlusFixture)) {
+        qlcPlusFixture.Mode = [{
+          Physical: [{}]
+        }];
+      }
+
+      fixture.physical = getOflPhysical(qlcPlusFixture.Mode[0].Physical[0], {});
+      fixture.matrix = {};
+      fixture.availableChannels = {};
+      fixture.templateChannels = {};
 
       const doubleByteChannels = [];
-
-      for (const channel of fixture.Channel || []) {
-        const ch = {
-          type: channel.Group[0]._,
-          fineChannelAliases: []
-        };
+      for (const channel of qlcPlusFixture.Channel || []) {
+        fixture.availableChannels[channel.$.Name] = getOflChannel(channel);
 
         if (channel.Group[0].$.Byte === `1`) {
           doubleByteChannels.push(channel.$.Name);
         }
-
-        if (ch.type === `Colour`) {
-          ch.type = `Multi-Color`;
-        }
-        else if (`Colour` in channel && channel.Colour[0] !== `Generic`) {
-          ch.type = `Single Color`;
-          ch.color = channel.Colour[0];
-        }
-        else if (channel.$.Name.match(/\b(?:temperature|ctc|cto)\b/i)) {
-          ch.type = `Color Temperature`;
-        }
-        else if (channel.$.Name.toLowerCase().includes(`strob`)) {
-          ch.type = `Strobe`;
-        }
-        else if (channel.$.Name.toLowerCase().includes(`iris`)) {
-          ch.type = `Iris`;
-        }
-        else if (channel.$.Name.toLowerCase().includes(`focus`)) {
-          ch.type = `Focus`;
-        }
-        else if (channel.$.Name.toLowerCase().includes(`zoom`)) {
-          ch.type = `Zoom`;
-        }
-        else if (ch.type === `Intensity`) {
-          ch.crossfade = true;
-        }
-
-        ch.capabilities = [];
-        for (const capability of channel.Capability || []) {
-          const cap = {
-            range: [parseInt(capability.$.Min), parseInt(capability.$.Max)],
-            name: capability._
-          };
-
-          if (`Color` in capability.$) {
-            cap.color = capability.$.Color;
-          }
-
-          if (`Color2` in capability.$) {
-            cap.color2 = capability.$.Color2;
-          }
-
-          if (`res` in capability.$) {
-            cap.image = capability.$.res;
-          }
-
-          ch.capabilities.push(cap);
-        }
-        if (ch.capabilities.length === 0) {
-          delete ch.capabilities;
-        }
-
-        fix.availableChannels[channel.$.Name] = ch;
       }
 
-      for (const chKey of doubleByteChannels) {
-        try {
-          const fineChannelRegex = /\sfine$|16[-_\s]*bit$/i;
-          if (!fineChannelRegex.test(chKey)) {
-            throw new Error(`The corresponding coarse channel could not be detected.`);
-          }
+      mergeFineChannels(fixture, doubleByteChannels, out.warnings[fixKey]);
 
-          const coarseChannelKey = chKey.replace(fineChannelRegex, ``);
-          if (!(coarseChannelKey in fix.availableChannels)) {
-            throw new Error(`The corresponding coarse channel could not be detected.`);
-          }
+      fixture.modes = qlcPlusFixture.Mode.map(mode => getOflMode(mode, fixture.physical, out.warnings[fixKey]));
 
-          fix.availableChannels[coarseChannelKey].fineChannelAliases.push(chKey);
+      cleanUpFixture(fixture, qlcPlusFixture);
 
-          if (`capabilities` in fix.availableChannels[chKey]) {
-            throw new Error(`Merge its capabilities into channel '${coarseChannelKey}'.`);
-          }
+      out.fixtures[fixKey] = fixture;
 
-          delete fix.availableChannels[chKey];
-        }
-        catch (error) {
-          out.warnings[fixKey].push(`Please check 16bit channel '${chKey}': ${error.message}`);
-        }
-      }
-
-      for (const chKey in fix.availableChannels) {
-        if (fix.availableChannels[chKey].fineChannelAliases.length === 0) {
-          delete fix.availableChannels[chKey].fineChannelAliases;
-        }
-      }
-
-      fix.heads = {};
-      fix.modes = [];
-
-      for (const mode of fixture.Mode || []) {
-        const mod = {
-          name: mode.$.Name
-        };
-
-        const physical = {};
-
-        if (`Dimensions` in mode.Physical[0]) {
-          const dimWidth = parseInt(mode.Physical[0].Dimensions[0].$.Width);
-          const dimHeight = parseInt(mode.Physical[0].Dimensions[0].$.Height);
-          const dimDepth = parseInt(mode.Physical[0].Dimensions[0].$.Depth);
-          if (dimWidth + dimHeight + dimDepth !== 0
-            && (!(`dimensions` in fix.physical)
-              || fix.physical.dimensions[0] !== dimWidth
-              || fix.physical.dimensions[1] !== dimHeight
-              || fix.physical.dimensions[2] !== dimDepth
-            )) {
-            physical.dimensions = [dimWidth, dimHeight, dimDepth];
-          }
-
-          const weight = parseFloat(mode.Physical[0].Dimensions[0].$.Weight);
-          if (weight !== 0.0 && fix.physical.weight !== weight) {
-            physical.weight = weight;
-          }
-        }
-
-        if (`Technical` in mode.Physical[0]) {
-          const power = parseInt(mode.Physical[0].Technical[0].$.PowerConsumption);
-          if (power !== 0 && fix.physical.power !== power) {
-            physical.power = power;
-          }
-
-          const DMXconnector = mode.Physical[0].Technical[0].$.DmxConnector;
-          if (DMXconnector !== `` && fix.physical.DMXconnector !== DMXconnector) {
-            physical.DMXconnector = DMXconnector;
-          }
-        }
-
-        if (`Bulb` in mode.Physical[0]) {
-          const bulbData = {};
-
-          const bulbType = mode.Physical[0].Bulb[0].$.Type;
-          if (bulbType !== `` && (!(`bulb` in fix.physical) || fix.physical.bulb.type !== bulbType)) {
-            bulbData.type = bulbType;
-          }
-
-          const bulbColorTemp = parseInt(mode.Physical[0].Bulb[0].$.ColourTemperature);
-          if (bulbColorTemp !== 0 && (!(`bulb` in fix.physical) || fix.physical.bulb.colorTemperature !== bulbColorTemp)) {
-            bulbData.colorTemperature = bulbColorTemp;
-          }
-
-          const bulbLumens = parseInt(mode.Physical[0].Bulb[0].$.Lumens);
-          if (bulbLumens !== 0 && (!(`bulb` in fix.physical) || fix.physical.bulb.lumens !== bulbLumens)) {
-            bulbData.lumens = bulbLumens;
-          }
-
-          if (JSON.stringify(bulbData) !== `{}`) {
-            physical.bulb = bulbData;
-          }
-        }
-
-        if (`Lens` in mode.Physical[0]) {
-          const lensData = {};
-
-          const lensName = mode.Physical[0].Lens[0].$.Name;
-          if (lensName !== `` && (!(`lens` in fix.physical) || fix.physical.lens.name !== lensName)) {
-            lensData.name = lensName;
-          }
-
-          const lensDegMin = parseFloat(mode.Physical[0].Lens[0].$.DegreesMin);
-          const lensDegMax = parseFloat(mode.Physical[0].Lens[0].$.DegreesMax);
-          if ((lensDegMin !== 0.0 || lensDegMax !== 0.0)
-            && (!(`lens` in fix.physical)
-              || !(`degreesMinMax` in fix.physical.lens)
-              || fix.physical.lens.degreesMinMax[0] !== lensDegMin
-              || fix.physical.lens.degreesMinMax[1] !== lensDegMax
-            )) {
-            lensData.degreesMinMax = [lensDegMin, lensDegMax];
-          }
-
-          if (JSON.stringify(lensData) !== `{}`) {
-            physical.lens = lensData;
-          }
-        }
-
-        if (`Focus` in mode.Physical[0]) {
-          const focusData = {};
-
-          const focusType = mode.Physical[0].Focus[0].$.Type;
-          if (focusType !== `` && (!(`focus` in fix.physical) || fix.physical.focus.type !== focusType)) {
-            focusData.type = focusType;
-          }
-
-          const focusPanMax = parseInt(mode.Physical[0].Focus[0].$.PanMax);
-          if (focusPanMax !== 0 && (!(`focus` in fix.physical) || fix.physical.focus.panMax !== focusPanMax)) {
-            focusData.panMax = focusPanMax;
-          }
-
-          const focusTiltMax = parseInt(mode.Physical[0].Focus[0].$.TiltMax);
-          if (focusTiltMax !== 0 && (!(`focus` in fix.physical) || fix.physical.focus.tiltMax !== focusTiltMax)) {
-            focusData.tiltMax = focusTiltMax;
-          }
-
-          if (JSON.stringify(focusData) !== `{}`) {
-            physical.focus = focusData;
-          }
-        }
-
-        if (JSON.stringify(physical) !== `{}`) {
-          if (fix.modes.length === 0) {
-            // this is the first mode -> fixture defaults
-            fix.physical = physical;
-          }
-          else {
-            mod.physical = physical;
-          }
-        }
-
-        mod.channels = [];
-        for (const ch of mode.Channel || []) {
-          mod.channels[parseInt(ch.$.Number)] = ch._;
-        }
-
-        if (`Head` in mode) {
-          mode.Head.forEach((head, index) => {
-            if (head.Channel === undefined) {
-              return;
-            }
-
-            const channelList = head.Channel.map(ch => mod.channels[parseInt(ch)]);
-            fix.heads[`${mod.name} Head ${index + 1}`] = channelList;
-          });
-          out.warnings[fixKey].push(`Please rename the heads in a meaningful way.`);
-        }
-
-        fix.modes.push(mod);
-      }
-
-      if (JSON.stringify(fix.heads) === `{}`) {
-        delete fix.heads;
-      }
-
-      out.fixtures[fixKey] = fix;
-    }
-    catch (parseError) {
+      resolve(out);
+    })
+    .catch(parseError => {
       reject(`Error parsing '${filename}'.\n${parseError.toString()}`);
+    });
+};
+
+/**
+ * @param {!object} qlcPlusChannel The QLC+ channel object.
+ * @returns {!object} The OFL channel object.
+ */
+function getOflChannel(qlcPlusChannel) {
+  const ch = {
+    type: getOflChannelType(qlcPlusChannel)
+  };
+
+  if (`Colour` in qlcPlusChannel && qlcPlusChannel.Colour[0] !== `Generic`) {
+    ch.color = qlcPlusChannel.Colour[0];
+  }
+
+  ch.fineChannelAliases = [];
+
+  if (ch.type === `Intensity`) {
+    ch.crossfade = true;
+  }
+
+  ch.capabilities = [];
+  for (const capability of qlcPlusChannel.Capability || []) {
+    ch.capabilities.push(getOflCapability(capability));
+  }
+  if (ch.capabilities.length === 0) {
+    delete ch.capabilities;
+  }
+
+  return ch;
+}
+
+/**
+ * @param {!object} qlcPlusChannel The QLC+ channel object.
+ * @returns {!string} The OFL channel type.
+ */
+function getOflChannelType(qlcPlusChannel) {
+  if (qlcPlusChannel.Group[0]._ === `Colour`) {
+    return `Multi-Color`;
+  }
+
+  if (`Colour` in qlcPlusChannel && qlcPlusChannel.Colour[0] !== `Generic`) {
+    return `Single Color`;
+  }
+
+  const nameRegexps = {
+    'Color Temperature': /\b(?:temperature|ctc|cto)\b/i,
+    'Strobe': /\bstrob/i,
+    'Iris': /\biris\b/i,
+    'Focus': /\bfocus\b/i,
+    'Zoom': /\bzoom\b/i
+  };
+
+  for (const channelType of Object.keys(nameRegexps)) {
+    if (qlcPlusChannel.$.Name.toLowerCase().match(nameRegexps[channelType])) {
+      return channelType;
+    }
+  }
+
+  return qlcPlusChannel.Group[0]._;
+}
+
+/**
+ * @param {!object} qlcPlusCapability The QLC+ capability object.
+ * @returns {!object} The OFL capability object.
+ */
+function getOflCapability(qlcPlusCapability) {
+  const cap = {
+    range: [parseInt(qlcPlusCapability.$.Min), parseInt(qlcPlusCapability.$.Max)],
+    name: qlcPlusCapability._
+  };
+
+  if (`Color` in qlcPlusCapability.$) {
+    cap.color = qlcPlusCapability.$.Color;
+  }
+
+  if (`Color2` in qlcPlusCapability.$) {
+    cap.color2 = qlcPlusCapability.$.Color2;
+  }
+
+  if (`res` in qlcPlusCapability.$) {
+    cap.image = qlcPlusCapability.$.res;
+  }
+
+  return cap;
+}
+
+/**
+ * @param {!object} qlcPlusPhysical The QLC+ mode's physical object.
+ * @param {!object} oflFixPhysical The OFL fixture's physical object.
+ * @returns {!object} The OFL mode's physical object.
+ */
+function getOflPhysical(qlcPlusPhysical, oflFixPhysical) {
+  const physical = {};
+
+  addDimensions();
+  addTechnical();
+
+  if (`Bulb` in qlcPlusPhysical) {
+    physical.bulb = {};
+    addBulb();
+  }
+
+  if (`Lens` in qlcPlusPhysical) {
+    physical.lens = {};
+    addLens();
+  }
+
+  if (`Focus` in qlcPlusPhysical) {
+    physical.focus = {};
+    addFocus();
+  }
+
+  for (const section of [`bulb`, `lens`, `focus`]) {
+    if (JSON.stringify(physical[section]) === `{}`) {
+      delete physical[section];
+    }
+  }
+
+  return physical;
+
+
+  /**
+   * Handles the Dimensions section.
+   */
+  function addDimensions() {
+    if (!(`Dimensions` in qlcPlusPhysical)) {
       return;
     }
 
-    resolve(out);
-  });
-};
+    const width = parseFloat(qlcPlusPhysical.Dimensions[0].$.Width);
+    const height = parseFloat(qlcPlusPhysical.Dimensions[0].$.Height);
+    const depth = parseFloat(qlcPlusPhysical.Dimensions[0].$.Depth);
+    const weight = parseFloat(qlcPlusPhysical.Dimensions[0].$.Weight);
+
+    const dimensionsArray = [width, height, depth];
+
+    if (width + height + depth !== 0 && JSON.stringify(dimensionsArray) !== JSON.stringify(oflFixPhysical.dimensions)) {
+      physical.dimensions = dimensionsArray;
+    }
+
+    if (weight !== 0.0 && oflFixPhysical.weight !== weight) {
+      physical.weight = weight;
+    }
+  }
+
+  /**
+   * Handles the Technical section.
+   */
+  function addTechnical() {
+    if (!(`Technical` in qlcPlusPhysical)) {
+      return;
+    }
+
+    const power = parseFloat(qlcPlusPhysical.Technical[0].$.PowerConsumption);
+    if (power !== 0 && oflFixPhysical.power !== power) {
+      physical.power = power;
+    }
+
+    const DMXconnector = qlcPlusPhysical.Technical[0].$.DmxConnector;
+    if (DMXconnector !== `` && oflFixPhysical.DMXconnector !== DMXconnector) {
+      physical.DMXconnector = DMXconnector;
+    }
+  }
+
+  /**
+   * Handles the Bulb section.
+   */
+  function addBulb() {
+    const type = qlcPlusPhysical.Bulb[0].$.Type;
+    if (type !== `` && getOflPhysicalProperty(`bulb`, `type`) !== type) {
+      physical.bulb.type = type;
+    }
+
+    const colorTemp = parseFloat(qlcPlusPhysical.Bulb[0].$.ColourTemperature);
+    if (colorTemp && getOflPhysicalProperty(`bulb`, `colorTemperature`) !== colorTemp) {
+      physical.bulb.colorTemperature = colorTemp;
+    }
+
+    const lumens = parseFloat(qlcPlusPhysical.Bulb[0].$.Lumens);
+    if (lumens && getOflPhysicalProperty(`bulb`, `lumens`) !== lumens) {
+      physical.bulb.lumens = lumens;
+    }
+  }
+
+  /**
+   * Handles the Lens section.
+   */
+  function addLens() {
+    const name = qlcPlusPhysical.Lens[0].$.Name;
+    if (name !== `` && getOflPhysicalProperty(`lens`, `name`) !== name) {
+      physical.lens.name = name;
+    }
+
+    const degMin = parseFloat(qlcPlusPhysical.Lens[0].$.DegreesMin);
+    const degMax = parseFloat(qlcPlusPhysical.Lens[0].$.DegreesMax);
+    const degreesMinMax = [degMin, degMax];
+
+    if ((degMin !== 0.0 || degMax !== 0.0)
+      && (JSON.stringify(getOflPhysicalProperty(`lens`, `degreesMinMax`)) !== JSON.stringify(degreesMinMax))) {
+      physical.lens.degreesMinMax = degreesMinMax;
+    }
+  }
+
+  /**
+   * Handles the Focus section.
+   */
+  function addFocus() {
+    const type = qlcPlusPhysical.Focus[0].$.Type;
+    if (type && getOflPhysicalProperty(`focus`, `type`) !== type) {
+      physical.focus.type = type;
+    }
+
+    const panMax = parseFloat(qlcPlusPhysical.Focus[0].$.PanMax);
+    if (panMax && getOflPhysicalProperty(`focus`, `panMax`) !== panMax) {
+      physical.focus.panMax = panMax;
+    }
+
+    const tiltMax = parseFloat(qlcPlusPhysical.Focus[0].$.TiltMax);
+    if (tiltMax && getOflPhysicalProperty(`focus`, `tiltMax`) !== tiltMax) {
+      physical.focus.tiltMax = tiltMax;
+    }
+  }
+
+  /**
+   * Helper function to get data from the OFL fixture's physical data.
+   * @param {!string} section The section object property name.
+   * @param {!string} property The property name in the section,
+   * @returns {*} The property data, or undefined.
+   */
+  function getOflPhysicalProperty(section, property) {
+    if (!(section in oflFixPhysical)) {
+      return undefined;
+    }
+
+    return oflFixPhysical[section][property];
+  }
+}
+
+/**
+ * @param {!object} qlcPlusMode The QLC+ mode object.
+ * @param {!object} oflFixPhysical The OFL fixture's physical object.
+ * @param {!Array.<!string>} warningsArray This fixture's warnings array in the `out` object.
+ * @returns {!object} The OFL mode object.
+ */
+function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
+  const mode = {
+    name: qlcPlusMode.$.Name
+  };
+
+  const physical = getOflPhysical(qlcPlusMode.Physical[0], oflFixPhysical);
+
+  if (JSON.stringify(physical) !== `{}`) {
+    mode.physical = physical;
+  }
+
+  mode.channels = [];
+  for (const ch of (qlcPlusMode.Channel || [])) {
+    mode.channels[parseInt(ch.$.Number)] = ch._;
+  }
+
+  if (`Head` in qlcPlusMode) {
+    qlcPlusMode.Head.forEach((head, index) => {
+      if (head.Channel === undefined) {
+        return;
+      }
+
+      const channelList = head.Channel.map(ch => mode.channels[parseInt(ch)]).join(`, `);
+
+      warningsArray.push(`Please add ${mode.name} mode's Head #${index + 1} to the fixture's matrix. The included channels were ${channelList}.`);
+    });
+  }
+
+  return mode;
+}
+
+/**
+ * @param {!object} fixture The OFL fixture object.
+ * @param {!Array.<!string>} doubleByteChannels Array of channel keys for fine channels.
+ * @param {!Array.<!string>} warningsArray This fixture's warnings array in the `out` object.
+ */
+function mergeFineChannels(fixture, doubleByteChannels, warningsArray) {
+  const fineChannelRegex = /\s+fine$|16[-_\s]*bit$/i;
+
+  for (const chKey of doubleByteChannels) {
+    try {
+      if (!fineChannelRegex.test(chKey)) {
+        throw new Error(`The corresponding coarse channel could not be detected.`);
+      }
+
+      const coarseChannelKey = getCoarseChannelKey(chKey);
+      if (!coarseChannelKey) {
+        throw new Error(`The corresponding coarse channel could not be detected.`);
+      }
+
+      fixture.availableChannels[coarseChannelKey].fineChannelAliases.push(chKey);
+
+      const fineChannel = fixture.availableChannels[chKey];
+      if (`capabilities` in fineChannel && fineChannel.capabilities.length > 1) {
+        throw new Error(`Merge its capabilities into channel '${coarseChannelKey}'.`);
+      }
+
+      delete fixture.availableChannels[chKey];
+    }
+    catch (error) {
+      warningsArray.push(`Please check 16bit channel '${chKey}': ${error.message}`);
+    }
+  }
+
+
+  /**
+   * @param {!string} fineChannelKey The key of the fince channel.
+   * @returns {?string} The key of the corresponding coarse channel, or null if it could not be detected.
+   */
+  function getCoarseChannelKey(fineChannelKey) {
+    // e.g. "Pan" instead of "Pan Fine"
+    const coarseChannelKey = fineChannelKey.replace(fineChannelRegex, ``);
+
+    return Object.keys(fixture.availableChannels).find(
+      key => key === coarseChannelKey || key.replace(fineChannelKey, ``).match(/^(?:\s+|\s+coarse)$/i)
+    );
+  }
+}
+
+/**
+ * @param {!object} fixture The OFL fixture object.
+ * @param {!object} qlcPlusFixture The QCL+ fixture object.
+ */
+function cleanUpFixture(fixture, qlcPlusFixture) {
+  // delete empty fineChannelAliases arrays
+  for (const chKey in fixture.availableChannels) {
+    if (fixture.availableChannels[chKey].fineChannelAliases.length === 0) {
+      delete fixture.availableChannels[chKey].fineChannelAliases;
+    }
+  }
+
+  const fixtureUsesHeads = qlcPlusFixture.Mode.some(mode => `Head` in mode);
+  if (!fixtureUsesHeads) {
+    delete fixture.matrix;
+    delete fixture.templateChannels;
+  }
+}
+
+/**
+ * @param {!string} str The string to slugify.
+ * @returns {!string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
+ */
+function slugify(str) {
+  return str.toLowerCase().replace(/[^a-z0-9-]+/g, ` `).trim().replace(/\s+/g, `-`);
+}
