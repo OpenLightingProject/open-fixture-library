@@ -30,7 +30,12 @@
     "precedence": { "enum": ["LTP", "HTP"] },
     "capability": {
       "allOf": [{ "$ref": "capability.json#" }],
-      "not": { "required": ["dmxRange"] }
+      "not": {
+        "anyOf": [
+          { "required": ["dmxRange"] },
+          { "required": ["switchChannels"] }
+        ]
+      }
     },
     "capabilities": {
       "type": "array",
@@ -74,6 +79,25 @@
               "required": ["switchChannels"]
             }
           }
+        }
+      }
+    },
+    {
+      "if": {
+        "$comment": "channel contains only one NoFunction capability",
+        "properties": {
+          "capability": {
+            "properties": {
+              "type": { "const": "NoFunction" }
+            }
+          }
+        },
+        "required": ["capability"]
+      },
+      "then": {
+        "$comment": "fineChannelAliases must not be set",
+        "not": {
+          "required": ["fineChannelAliases"]
         }
       }
     }
