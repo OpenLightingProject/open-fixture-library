@@ -4,8 +4,9 @@ const fs = require(`fs`);
 const path = require(`path`);
 const minimist = require(`minimist`);
 
-const checkFixture = require(`../tests/fixture-valid.js`);
+const { checkFixture } = require(`../tests/fixture-valid.js`);
 const plugins = require(`../plugins/plugins.json`);
+const fixtureJsonStringify = require(`../lib/fixture-json-stringify.js`);
 const createPullRequest = require(`../lib/create-github-pr.js`);
 
 const args = minimist(process.argv.slice(2), {
@@ -49,7 +50,7 @@ fs.readFile(filename, `utf8`, (error, data) => {
     if (args[`create-pull-request`]) {
       createPullRequest(result, (error, pullRequestUrl) => {
         if (error) {
-          console.log(JSON.stringify(result, null, 2));
+          console.log(fixtureJsonStringify(result));
           console.error(`Error: ${error}`);
           return;
         }
@@ -58,7 +59,7 @@ fs.readFile(filename, `utf8`, (error, data) => {
       });
     }
     else {
-      console.log(`${JSON.stringify(result, null, 2)}\n`);
+      console.log(fixtureJsonStringify(result));
     }
   }).catch(error => {
     console.error(error);
