@@ -121,7 +121,8 @@ function getOflChannel(qlcPlusChannel) {
  */
 function getOflCapability(qlcPlusCapability, qlcPlusChannel) {
   const cap = {
-    dmxRange: [parseInt(qlcPlusCapability.$.Min), parseInt(qlcPlusCapability.$.Max)]
+    dmxRange: [parseInt(qlcPlusCapability.$.Min), parseInt(qlcPlusCapability.$.Max)],
+    type: ``
   };
 
   const channelName = qlcPlusChannel.$.Name.trim();
@@ -129,7 +130,7 @@ function getOflCapability(qlcPlusCapability, qlcPlusChannel) {
   const capabilityName = qlcPlusCapability._.trim();
 
   // first check if it can be a NoFunction capability
-  if (capabilityName.match(/^(?:nothing|no function|unused|not used|empty)$/i)) {
+  if (capabilityName.match(/^(?:nothing|no function|unused|not used|empty|no strobe|no prism|no frost)$/i)) {
     cap.type = `NoFunction`;
     return cap;
   }
@@ -147,11 +148,12 @@ function getOflCapability(qlcPlusCapability, qlcPlusChannel) {
       else {
         cap.type = `Intensity`;
       }
-      cap.comment = capabilityName;
+
+      if (!capabilityName.match(/^(?:intensity|dimmer)$/i)) {
+        cap.comment = capabilityName;
+      }
     },
     Colour() {
-      cap.type = `ColorPreset`;
-
       if (`Color` in qlcPlusCapability.$) {
         cap.colors = [qlcPlusCapability.$.Color];
 
@@ -160,11 +162,26 @@ function getOflCapability(qlcPlusCapability, qlcPlusChannel) {
         }
       }
 
-      cap.comment = capabilityName;
+      if (channelName.match(/wheel/i)) {
+        cap.type = `ColorWheelIndex`;
+        cap.comment = getSpeedGuessedComment();
+
+        if (`speedStart` in cap) {
+          cap.type = `ColorWheelRotation`;
+        }
+      }
+      else {
+        cap.type = `ColorPreset`;
+        cap.comment = capabilityName;
+      }
     },
     Gobo() {
       cap.type = `GoboIndex`;
-      cap.comment = capabilityName;
+      cap.comment = getSpeedGuessedComment();
+
+      if (`speedStart` in cap) {
+        cap.type = `GoboWheelRotation`;
+      }
     },
     Effect() {
       cap.type = `Effect`;
@@ -206,18 +223,24 @@ function getOflCapability(qlcPlusCapability, qlcPlusChannel) {
     Shutter() {
       cap.type = `ShutterStrobe`;
 
-      if (capabilityName.match(/^(?:Blackout|Closed?)$/i)) {
+      if (capabilityName.match(/^(?:Blackout|(?:Shutter |Strobe )?Closed?)$/i)) {
         cap.shutterEffect = `Closed`;
         return;
       }
 
-      if (capabilityName.match(/^(?:Open|Full?)$/i)) {
+      if (capabilityName.match(/^(?:(?:Shutter |Strobe )?Open|Full?)$/i)) {
         cap.shutterEffect = `Open`;
         return;
       }
 
-      if (capabilityName.match(/pulse/i)) {
+      if (capabilityName.match(/puls/i)) {
         cap.shutterEffect = `Pulse`;
+      }
+      else if (capabilityName.match(/ramp\s*up/i)) {
+        cap.shutterEffect = `RampUp`;
+      }
+      else if (capabilityName.match(/ramp\s*down/i)) {
+        cap.shutterEffect = `RampDown`;
       }
       else {
         cap.shutterEffect = `Strobe`;
@@ -251,7 +274,7 @@ function getOflCapability(qlcPlusCapability, qlcPlusChannel) {
   }
 
   // delete unnecessary comments
-  if (`comment` in cap && (cap.comment === channelName || cap.comment.match(/^$|^0%?\s*-\s*100%$/))) {
+  if (`comment` in cap && (cap.comment === channelName || cap.comment.match(/^$|^0%?\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*100%$/))) {
     delete cap.comment;
   }
 
@@ -263,8 +286,8 @@ function getOflCapability(qlcPlusCapability, qlcPlusChannel) {
    * @returns {!string} The rest of the capabilityName.
    */
   function getSpeedGuessedComment() {
-    return capabilityName.replace(/^(.+?\s+)?((?:counter-?)?clockwise\s+|C?CW\s+)?(slow|fast|\d+|\d+\s*Hz)\s*(?:-|to|–|…)\s*(fast|slow|\d+\s*Hz)$/i, (match, comment, direction, start, end) => {
-      const directionStr = direction ? (direction.match(/^(?:clockwise|CW)\s+$/i) ? ` CW` : ` CCW`) : ``;
+    return capabilityName.replace(/(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|C?CW)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*Hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*Hz)\)?$/i, (match, direction, start, end) => {
+      const directionStr = direction ? (direction.match(/^(?:clockwise|CW),?\s+$/i) ? ` CW` : ` CCW`) : ``;
 
       if (directionStr !== ``) {
         cap.type = `Rotation`;
@@ -283,9 +306,9 @@ function getOflCapability(qlcPlusCapability, qlcPlusChannel) {
       cap.speedStart = start + directionStr;
       cap.speedEnd = end + directionStr;
 
-      // return the rest of the capabilityName
-      return comment || ``;
-    }).trim();
+      // delete the parsed part
+      return ``;
+    });
   }
 }
 
