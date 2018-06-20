@@ -123,20 +123,16 @@ function getOflChannelType(qlcPlusChannel) {
   }
 
   const nameRegexps = {
-    'Color Temperature': /\b(?:temperature|ctc|cto)\b/i,
-    'Strobe': /\bstrob/i,
-    'Iris': /\biris\b/i,
-    'Focus': /\bfocus\b/i,
-    'Zoom': /\bzoom\b/i
+    'Color Temperature': /\b(?:colou?r[\s-]*temperature|ctc|cto)\b/,
+    Strobe: /\bstrob/,
+    Iris: /\biris\b/,
+    Focus: /\bfocus\b/,
+    Zoom: /\bzoom\b/
   };
 
-  for (const channelType of Object.keys(nameRegexps)) {
-    if (qlcPlusChannel.$.Name.toLowerCase().match(nameRegexps[channelType])) {
-      return channelType;
-    }
-  }
-
-  return qlcPlusChannel.Group[0]._;
+  return Object.keys(nameRegexps).find(
+    channelType => qlcPlusChannel.$.Name.toLowerCase().match(nameRegexps[channelType])
+  ) || qlcPlusChannel.Group[0]._;
 }
 
 /**
