@@ -124,7 +124,7 @@ function getFixtureKey(fixture, manKey) {
     return fixture.key;
   }
 
-  let fixKey = fixture.name.toLowerCase().replace(/[^a-z0-9-]+/g, `-`);
+  let fixKey = fixture.name.toLowerCase().replace(/[^a-z0-9-]+/g, ` `).trim().replace(/\s+/g, `-`);
 
   const otherFixtureKeys = Object.keys(out.fixtures).filter(
     key => key.startsWith(manKey)
