@@ -130,7 +130,7 @@ function getOflCapability(qlcPlusCapability, qlcPlusChannel) {
   const capabilityName = qlcPlusCapability._.trim();
 
   // first check if it can be a NoFunction capability
-  if (capabilityName.match(/^(?:nothing|no function|unused|not used|empty|no strobe|no prism|no frost)$/i)) {
+  if (capabilityName.match(/^(?:nothing|no func(?:tion)?|unused|not used|empty|no strobe|no prism|no frost)$/i)) {
     cap.type = `NoFunction`;
     return cap;
   }
