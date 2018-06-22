@@ -85,7 +85,7 @@
         {
           "dmxRange": [9, 255],
           "type": "Intensity",
-          "brightnessStart": "off",
+          "brightnessStart": "dark",
           "brightnessEnd": "bright"
         }
       ]
@@ -103,102 +103,26 @@
           "shutterEffect": "StrobeRandom"
         },
         {
-          "dmxRange": [24, 37],
+          "dmxRange": [24, 107],
           "type": "ShutterStrobe",
-          "comment": "Strobe speed 1 min.",
           "shutterEffect": "Strobe",
-          "speed": "17%"
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "dmxRange": [38, 51],
+          "dmxRange": [108, 163],
           "type": "ShutterStrobe",
-          "comment": "Strobe speed 2",
           "shutterEffect": "Strobe",
-          "speed": "33%"
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Flash open"
         },
         {
-          "dmxRange": [52, 65],
+          "dmxRange": [164, 210],
           "type": "ShutterStrobe",
-          "comment": "Strobe speed 3",
-          "shutterEffect": "Strobe",
-          "speed": "50%"
-        },
-        {
-          "dmxRange": [66, 79],
-          "type": "ShutterStrobe",
-          "comment": "Strobe speed 4",
-          "shutterEffect": "Strobe",
-          "speed": "67%"
-        },
-        {
-          "dmxRange": [80, 93],
-          "type": "ShutterStrobe",
-          "comment": "Strobe speed 5",
-          "shutterEffect": "Strobe",
-          "speed": "83%"
-        },
-        {
-          "dmxRange": [94, 107],
-          "type": "ShutterStrobe",
-          "comment": "Strobe speed 6 max.",
-          "shutterEffect": "Strobe",
-          "speed": "100%"
-        },
-        {
-          "dmxRange": [108, 121],
-          "type": "ShutterStrobe",
-          "comment": "Flash open speed 1 min.",
-          "shutterEffect": "Strobe",
-          "speed": "25%"
-        },
-        {
-          "dmxRange": [122, 135],
-          "type": "ShutterStrobe",
-          "comment": "Flash open speed 2",
-          "shutterEffect": "Strobe",
-          "speed": "50%"
-        },
-        {
-          "dmxRange": [136, 149],
-          "type": "ShutterStrobe",
-          "comment": "Flash open speed 3",
-          "shutterEffect": "Strobe",
-          "speed": "75%"
-        },
-        {
-          "dmxRange": [150, 163],
-          "type": "ShutterStrobe",
-          "comment": "Flash open speed 4 max.",
-          "shutterEffect": "Strobe",
-          "speed": "100%"
-        },
-        {
-          "dmxRange": [164, 177],
-          "type": "ShutterStrobe",
-          "comment": "Flash closed speed 1 min.",
-          "shutterEffect": "Strobe",
-          "speed": "25%"
-        },
-        {
-          "dmxRange": [178, 191],
-          "type": "ShutterStrobe",
-          "comment": "Flash closed speed 2",
-          "shutterEffect": "Strobe",
-          "speed": "50%"
-        },
-        {
-          "dmxRange": [192, 205],
-          "type": "ShutterStrobe",
-          "comment": "Flash closed speed 3",
-          "shutterEffect": "Strobe",
-          "speed": "75%"
-        },
-        {
-          "dmxRange": [206, 219],
-          "type": "ShutterStrobe",
-          "comment": "Flash closed speed 4 max.",
-          "shutterEffect": "Strobe",
-          "speed": "100%"
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Flash closed"
         },
         {
           "dmxRange": [220, 227],

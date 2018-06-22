@@ -218,7 +218,7 @@
     },
     "Master Dimmer": {
       "capability": {
-        "type": "NoFunction"
+        "type": "Intensity"
       }
     },
     "Programs": {
@@ -281,7 +281,7 @@
     },
     "Program Speed": {
       "capability": {
-        "type": "Speed",
+        "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
       }
