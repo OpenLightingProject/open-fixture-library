@@ -25,7 +25,7 @@
 
           <td
             v-if="cap.model.colors !== null"
-            :title="getColorDescription(cap)"
+            :title="cap.colorDescription"
             class="capability-color">
             <app-svg :colors="cap.model.colors.allColors" type="color-circle" />
           </td>
@@ -159,20 +159,29 @@ export default {
             model: cap,
             dmxRangeStart: dmxRange.start,
             dmxRangeEnd: dmxRange.end,
+            colorDescription: getColorDescription(cap),
             switchChannels
           };
         }
       );
     }
-  },
-  methods: {
-    getColorDescription: capability => {
-      if (capability.model.colors.isStep) {
-        const plural = capability.model.colors.allColors.length > 1 ? `colors` : `color`;
-        return `${plural}: ${capability.model.colors.allColors.join(`, `)}`;
-      }
-      return `transition from ${capability.model.colors.startColors.join(`, `)} to ${capability.model.colors.endColors.join(`, `)}`;
-    }
   }
 };
+
+/**
+ * @param {!Capability} capability The capability model object.
+ * @returns {?string} A string describing the colors of this capability, or null if it has no colors.
+ */
+function getColorDescription(capability) {
+  if (capability.colors === null) {
+    return null;
+  }
+
+  if (capability.colors.isStep) {
+    const plural = capability.colors.allColors.length > 1 ? `colors` : `color`;
+    return `${plural}: ${capability.colors.allColors.join(`, `)}`;
+  }
+
+  return `transition from ${capability.colors.startColors.join(`, `)} to ${capability.colors.endColors.join(`, `)}`;
+}
 </script>
