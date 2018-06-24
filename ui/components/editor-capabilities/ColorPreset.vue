@@ -93,6 +93,7 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+      hint: `This capability enables a static predefined color (mix). Use ColorWheelIndex for color wheel filters.`,
       defaultData: {
         comment: ``,
         colors: null,

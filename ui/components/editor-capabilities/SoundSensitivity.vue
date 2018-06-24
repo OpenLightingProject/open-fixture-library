@@ -53,6 +53,7 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+      hint: `Doesn't activate sound controlled mode (use Effect for this), only controls the microphone sensitivity.`,
       defaultData: {
         soundSensitvity: null,
         soundSensitvityStart: `low`,

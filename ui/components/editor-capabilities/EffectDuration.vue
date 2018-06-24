@@ -53,6 +53,7 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+      hint: `Doesn't activate an effect, only controls the duration of running effects.`,
       defaultData: {
         duration: null,
         durationStart: `short`,
