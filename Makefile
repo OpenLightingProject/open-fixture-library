@@ -8,9 +8,11 @@ dereferenced-schema-files := $(schema-files:schemas/%=schemas/dereferenced/%)
 
 ### PHONY rules, see https://stackoverflow.com/a/2145605/451391
 
-.PHONY: all register plugin-data test-fixtures schemas nuxt-build clean
+.PHONY: all no-nuxt register plugin-data test-fixtures schemas nuxt-build clean
 
 all: register plugin-data test-fixtures schemas nuxt-build
+
+no-nuxt: register plugin-data test-fixtures schemas
 
 register: fixtures/register.json
 
