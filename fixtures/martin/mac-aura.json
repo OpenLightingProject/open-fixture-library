@@ -933,21 +933,24 @@
       "capability": {
         "type": "EffectParameter",
         "parameterStart": "low",
-        "parameterEnd": "high"
+        "parameterEnd": "high",
+        "comment": "Color offset"
       }
     },
     "FX1 adjust Amount": {
       "capability": {
         "type": "EffectParameter",
         "parameterStart": "low",
-        "parameterEnd": "high"
+        "parameterEnd": "high",
+        "comment": "Amount"
       }
     },
     "FX1 adjust Strength": {
       "capability": {
         "type": "EffectParameter",
         "parameterStart": "low",
-        "parameterEnd": "high"
+        "parameterEnd": "high",
+        "comment": "Strength"
       }
     },
     "FX2 select": {
@@ -1291,21 +1294,24 @@
       "capability": {
         "type": "EffectParameter",
         "parameterStart": "low",
-        "parameterEnd": "high"
+        "parameterEnd": "high",
+        "comment": "Color offset"
       }
     },
     "FX2 adjust Amount": {
       "capability": {
         "type": "EffectParameter",
         "parameterStart": "low",
-        "parameterEnd": "high"
+        "parameterEnd": "high",
+        "comment": "Amount"
       }
     },
     "FX2 adjust Strength": {
       "capability": {
         "type": "EffectParameter",
         "parameterStart": "low",
-        "parameterEnd": "high"
+        "parameterEnd": "high",
+        "comment": "Strength"
       }
     },
     "FX sync": {

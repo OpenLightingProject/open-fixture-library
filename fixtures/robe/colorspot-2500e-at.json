@@ -188,52 +188,51 @@
         {
           "dmxRange": [32, 63],
           "type": "Effect",
-          "effectName": "Circle small-large",
-          "parameterStart": "low",
-          "parameterEnd": "high",
-          "helpWanted": "Is there a better way to specify this?"
+          "effectName": "Circle",
+          "parameterStart": "small",
+          "parameterEnd": "big"
         },
         {
           "dmxRange": [64, 95],
           "type": "Effect",
-          "effectName": "Horizontal Eight small-large",
-          "parameterStart": "low",
-          "parameterEnd": "high"
+          "effectName": "Horizontal Eight",
+          "parameterStart": "small",
+          "parameterEnd": "big"
         },
         {
           "dmxRange": [96, 127],
           "type": "Effect",
-          "effectName": "Vertical Eight small-large",
-          "parameterStart": "low",
-          "parameterEnd": "high"
+          "effectName": "Vertical Eight",
+          "parameterStart": "small",
+          "parameterEnd": "big"
         },
         {
           "dmxRange": [128, 159],
           "type": "Effect",
-          "effectName": "Rectangle small-large",
-          "parameterStart": "low",
-          "parameterEnd": "high"
+          "effectName": "Rectangle",
+          "parameterStart": "small",
+          "parameterEnd": "big"
         },
         {
           "dmxRange": [160, 191],
           "type": "Effect",
-          "effectName": "Triangle small-large",
-          "parameterStart": "low",
-          "parameterEnd": "high"
+          "effectName": "Triangle",
+          "parameterStart": "small",
+          "parameterEnd": "big"
         },
         {
           "dmxRange": [192, 223],
           "type": "Effect",
-          "effectName": "Star small-large",
-          "parameterStart": "low",
-          "parameterEnd": "high"
+          "effectName": "Star",
+          "parameterStart": "small",
+          "parameterEnd": "big"
         },
         {
           "dmxRange": [224, 255],
           "type": "Effect",
-          "effectName": "Cross small-large",
-          "parameterStart": "low",
-          "parameterEnd": "high"
+          "effectName": "Cross",
+          "parameterStart": "small",
+          "parameterEnd": "big"
         }
       ]
     },

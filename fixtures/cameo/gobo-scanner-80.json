@@ -301,37 +301,51 @@
         {
           "dmxRange": [6, 40],
           "type": "Effect",
-          "effectName": "Pan small…big"
+          "effectName": "Pan",
+          "parameterStart": "small",
+          "parameterEnd": "big"
         },
         {
           "dmxRange": [41, 75],
           "type": "Effect",
-          "effectName": "Tilt small…big"
+          "effectName": "Tilt",
+          "parameterStart": "small",
+          "parameterEnd": "big"
         },
         {
           "dmxRange": [76, 110],
           "type": "Effect",
-          "effectName": "Pan/Tilt small…big"
+          "effectName": "Pan/Tilt",
+          "parameterStart": "small",
+          "parameterEnd": "big"
         },
         {
           "dmxRange": [111, 145],
           "type": "Effect",
-          "effectName": "Pan/Tilt invers small…big"
+          "effectName": "Pan/Tilt invers",
+          "parameterStart": "small",
+          "parameterEnd": "big"
         },
         {
           "dmxRange": [146, 180],
           "type": "Effect",
-          "effectName": "Circle small…big"
+          "effectName": "Circle",
+          "parameterStart": "small",
+          "parameterEnd": "big"
         },
         {
           "dmxRange": [181, 215],
           "type": "Effect",
-          "effectName": "Circle invers small…big"
+          "effectName": "Circle invers",
+          "parameterStart": "small",
+          "parameterEnd": "big"
         },
         {
           "dmxRange": [216, 255],
           "type": "Effect",
-          "effectName": "Random small…big"
+          "effectName": "Random",
+          "parameterStart": "small",
+          "parameterEnd": "big"
         }
       ]
     },

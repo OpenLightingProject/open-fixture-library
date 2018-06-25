@@ -467,9 +467,9 @@
       "defaultValue": 255,
       "capability": {
         "type": "Maintenance",
-        "parameterStart": "off",
-        "parameterEnd": "high",
-        "comment": "0 … all visible points"
+        "parameterStart": "0%",
+        "parameterEnd": "100%",
+        "comment": "Visible points"
       }
     },
     "Scan Rate": {
@@ -479,14 +479,14 @@
           "dmxRange": [0, 31],
           "type": "Maintenance",
           "parameter": 30000,
-          "comment": "Default (30k)"
+          "comment": "Default Scan Rate"
         },
         {
           "dmxRange": [32, 255],
           "type": "Maintenance",
           "parameterStart": 6000,
           "parameterEnd": 30000,
-          "comment": "6k…30k"
+          "comment": "Scan Rate"
         }
       ]
     },

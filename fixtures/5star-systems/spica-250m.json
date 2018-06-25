@@ -72,9 +72,9 @@
         {
           "dmxRange": [0, 127],
           "type": "Maintenance",
-          "comment": "fan speed",
-          "parameterStart": "100%",
-          "parameterEnd": "0%"
+          "comment": "Fan speed",
+          "parameterStart": "fast",
+          "parameterEnd": "slow"
         },
         {
           "dmxRange": [128, 139],

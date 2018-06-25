@@ -22,19 +22,19 @@
         {
           "dmxRange": [0, 15],
           "type": "NoFunction",
-          "comment": "Fountain OFF"
+          "comment": "Fountain off"
         },
         {
           "dmxRange": [16, 135],
           "type": "EffectParameter",
-          "parameter": "50%",
-          "comment": "Low Level Fountain ON"
+          "parameter": "low",
+          "comment": "Fountain level"
         },
         {
           "dmxRange": [136, 255],
           "type": "EffectParameter",
-          "parameter": "100%",
-          "comment": "High Level Fountain ON"
+          "parameter": "high",
+          "comment": "Fountain level"
         }
       ]
     },
