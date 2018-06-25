@@ -100,7 +100,10 @@
     },
     "Sound Sensitivity": {
       "capability": {
-        "type": "Intensity"
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high",
+        "helpWanted": "Correct direction?"
       }
     },
     "Auto Mode Speed": {
