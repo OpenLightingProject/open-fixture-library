@@ -193,11 +193,11 @@
         { "enum": ["closed", "narrow", "wide"] }
       ]
     },
-    "factor": {
+    "parameter": {
       "oneOf": [
         { "$ref": "#/units/nonNegativeNumber" },
         { "$ref": "#/units/percent" },
-        { "enum": ["off", "low", "high"] }
+        { "enum": ["off", "low", "high", "slow", "fast", "small", "big"] }
       ]
     },
     "index": {
