@@ -697,8 +697,8 @@
       "capability": {
         "type": "Effect",
         "effectName": "Wash",
-        "effectIntensityStart": "off",
-        "effectIntensityEnd": "high"
+        "parameterStart": "off",
+        "parameterEnd": "high"
       }
     },
     "Iris": {
@@ -1206,9 +1206,9 @@
     },
     "Static FX amount": {
       "capability": {
-        "type": "EffectIntensity",
-        "effectIntensityStart": "low",
-        "effectIntensityEnd": "high"
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high"
       }
     }
   },

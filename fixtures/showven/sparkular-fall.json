@@ -26,14 +26,14 @@
         },
         {
           "dmxRange": [16, 135],
-          "type": "EffectIntensity",
-          "effectIntensity": "50%",
+          "type": "EffectParameter",
+          "parameter": "50%",
           "comment": "Low Level Fountain ON"
         },
         {
           "dmxRange": [136, 255],
-          "type": "EffectIntensity",
-          "effectIntensity": "100%",
+          "type": "EffectParameter",
+          "parameter": "100%",
           "comment": "High Level Fountain ON"
         }
       ]

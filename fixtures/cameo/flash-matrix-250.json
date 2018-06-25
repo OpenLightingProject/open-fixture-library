@@ -37,8 +37,8 @@
       "capability": {
         "type": "Effect",
         "effectName": "Invert Dimmer (Switch active and inactive LEDs)",
-        "effectIntensityStart": "0%",
-        "effectIntensityEnd": "100%"
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
       }
     },
     "Strobe Simple": {
@@ -589,15 +589,15 @@
           "dmxRange": [6, 127],
           "type": "Effect",
           "effectName": "Fade",
-          "effectIntensityStart": "low",
-          "effectIntensityEnd": "high"
+          "parameterStart": "low",
+          "parameterEnd": "high"
         },
         {
           "dmxRange": [128, 255],
           "type": "Effect",
           "effectName": "Wake",
-          "effectIntensityStart": "low",
-          "effectIntensityEnd": "high"
+          "parameterStart": "low",
+          "parameterEnd": "high"
         }
       ]
     },
