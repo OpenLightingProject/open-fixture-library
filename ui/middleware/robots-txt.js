@@ -6,13 +6,18 @@ module.exports = function(req, res) {
     `User-agent: *`
   ];
 
-  for (const pluginKey of plugins.exportPlugins) {
-    lines.push(`Disallow: /*.${pluginKey}$`);
-  }
+  if (process.env.ALLOW_SEARCH_INDEXING === `allowed`) {
+    for (const pluginKey of plugins.exportPlugins) {
+      lines.push(`Disallow: /*.${pluginKey}$`);
+    }
 
-  lines.push(`Allow: /`);
-  lines.push(``);
-  lines.push(`Sitemap: ${packageJson.homepage}sitemap.xml`);
+    lines.push(`Allow: /`);
+    lines.push(``);
+    lines.push(`Sitemap: ${packageJson.homepage}sitemap.xml`);
+  }
+  else {
+    lines.push(`Disallow: /`);
+  }
 
   res.set(`Content-Type`, `text/html`);
   res.send(Buffer.from(lines.join(`\n`)));
