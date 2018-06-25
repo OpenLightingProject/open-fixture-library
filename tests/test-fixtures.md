@@ -16,7 +16,7 @@
 **Capability type TiltContinuous** [[14]](#user-content-footnote-14) | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Capability type PanTiltSpeed** [[15]](#user-content-footnote-15) | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅
 **Capability type Effect** [[16]](#user-content-footnote-16) | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅
-**Capability type EffectIntensity** [[17]](#user-content-footnote-17) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
+**Capability type EffectParameter** [[17]](#user-content-footnote-17) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
 **Capability type EffectSpeed** [[18]](#user-content-footnote-18) | ❌ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅
 **Capability type EffectDuration** [[19]](#user-content-footnote-19) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
 **Capability type SoundSensitivity** [[20]](#user-content-footnote-20) | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
@@ -109,7 +109,7 @@
 
 **<a id="user-content-footnote-16">[16]</a>**: Whether the fixture has at least one capability of type 'Effect'
 
-**<a id="user-content-footnote-17">[17]</a>**: Whether the fixture has at least one capability of type 'EffectIntensity'
+**<a id="user-content-footnote-17">[17]</a>**: Whether the fixture has at least one capability of type 'EffectParameter'
 
 **<a id="user-content-footnote-18">[18]</a>**: Whether the fixture has at least one capability of type 'EffectSpeed'
 

@@ -3,13 +3,13 @@
 
     <app-simple-label
       :formstate="formstate"
-      :name="`capability${capability.uuid}-effectIntensity`"
-      label="Effect Intensity">
+      :name="`capability${capability.uuid}-parameter`"
+      label="Parameter">
       <app-editor-proportional-capability-data-switcher
         :capability="capability"
         :formstate="formstate"
         :required="true"
-        property-name="effectIntensity" />
+        property-name="parameter" />
     </app-simple-label>
 
     <app-simple-label
@@ -53,11 +53,11 @@ export default {
   data() {
     return {
       properties: schemaProperties,
-      hint: `Doesn't activate an effect, only controls the intensity of running effects.`,
+      hint: `Doesn't activate an effect, only controls a generic parameter of running effects.`,
       defaultData: {
-        effectIntensity: null,
-        effectIntensityStart: `low`,
-        effectIntensityEnd: `high`,
+        parameter: null,
+        parameterStart: `low`,
+        parameterEnd: `high`,
         comment: ``
       }
     };

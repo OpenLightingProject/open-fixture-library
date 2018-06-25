@@ -443,7 +443,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
             PanTiltSpeed: /\b(?:pan[/ -]?tilt speed|p[/ -]?t speed)\b/,
             PanContinuous: /\bpan continuous\b/,
             TiltContinuous: /\btilt continuous\b/,
-            EffectIntensity: /\beffect intensity\b/,
+            EffectParameter: /\beffect param(eter)?\b/,
             EffectSpeed: /\beffect speed\b/,
             EffectDuration: /\beffect duration\b/,
             Effect: /\beffect\b/,

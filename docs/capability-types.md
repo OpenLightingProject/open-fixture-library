@@ -40,7 +40,7 @@ To make common percentage values more readable, one can use specific keywords to
 * [Pan](#pan) / [PanContinuous](#pancontinuous)
 * [Tilt](#tilt) / [TiltContinuous](#tiltcontinuous)
 * [PanTiltSpeed](#pantiltspeed)
-* [Effect](#effect) / [EffectIntensity](#effectintensity) / [EffectSpeed](#effectspeed) / [EffectDuration](#effectduration)
+* [Effect](#effect) / [EffectParameter](#effectparameter) / [EffectSpeed](#effectspeed) / [EffectDuration](#effectduration)
 * [SoundSensitivity](#soundsensitivity)
 * [GoboIndex](#goboindex) / [GoboShake](#goboshake) / [GoboStencilRotation](#gobostencilrotation) / [GoboWheelRotation](#gobowheelrotation)
 * [Focus](#focus)
@@ -211,7 +211,7 @@ To make common percentage values more readable, one can use specific keywords to
   <td valign="top"></td>
 </tr>
 <tr>
-  <td valign="top">effectIntensity<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">parameter<br><sub>:grey_question: optional</sub></td>
   <td valign="top">Entity <em>Factor</em></td>
   <td valign="top"></td>
 </tr>
@@ -226,8 +226,8 @@ To make common percentage values more readable, one can use specific keywords to
   <td valign="top"></td>
 </tr>
 <tr>
-  <th valign="top" scope="row" id="effectintensity">EffectIntensity</th>
-  <td valign="top">effectIntensity<br><sub>:star2: required</sub></td>
+  <th valign="top" scope="row" id="effectparameter">EffectParameter</th>
+  <td valign="top">parameter<br><sub>:star2: required</sub></td>
   <td valign="top">Entity <em>Factor</em></td>
   <td valign="top"></td>
 </tr>
