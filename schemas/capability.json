@@ -29,9 +29,9 @@
       "TiltContinuous",
       "PanTiltSpeed",
       "Effect",
-      "EffectParameter",
       "EffectSpeed",
       "EffectDuration",
+      "EffectParameter",
       "SoundSensitivity",
       "GoboIndex",
       "GoboShake",
@@ -663,35 +663,6 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["EffectParameter"] }
-        }
-      },
-      "then": {
-        "properties": {
-          "dmxRange": {},
-          "type": {},
-          "parameter": { "$ref": "definitions.json#/entities/parameter" },
-          "parameterStart": { "$ref": "definitions.json#/entities/parameter" },
-          "parameterEnd": { "$ref": "definitions.json#/entities/parameter" },
-          "comment": {},
-          "helpWanted": {},
-          "menuClick": {},
-          "switchChannels": {}
-        },
-        "oneOf": [
-          { "required": ["parameter"] },
-          { "required": ["parameterStart"] }
-        ],
-        "dependencies": {
-          "parameterStart": ["parameterEnd"],
-          "parameterEnd": ["parameterStart"]
-        },
-        "additionalProperties": false
-      }
-    },
-    {
-      "if": {
-        "properties": {
           "type": { "enum": ["EffectSpeed"] }
         }
       },
@@ -743,6 +714,35 @@
         "dependencies": {
           "durationStart": ["durationEnd"],
           "durationEnd": ["durationStart"]
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": { "enum": ["EffectParameter"] }
+        }
+      },
+      "then": {
+        "properties": {
+          "dmxRange": {},
+          "type": {},
+          "parameter": { "$ref": "definitions.json#/entities/parameter" },
+          "parameterStart": { "$ref": "definitions.json#/entities/parameter" },
+          "parameterEnd": { "$ref": "definitions.json#/entities/parameter" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
+        },
+        "oneOf": [
+          { "required": ["parameter"] },
+          { "required": ["parameterStart"] }
+        ],
+        "dependencies": {
+          "parameterStart": ["parameterEnd"],
+          "parameterEnd": ["parameterStart"]
         },
         "additionalProperties": false
       }
