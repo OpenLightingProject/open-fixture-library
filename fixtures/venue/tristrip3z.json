@@ -58,31 +58,36 @@
       ]
     },
     "Dimmer Speed": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 51],
-          "type": "Maintenance",
+          "type": "NoFunction",
           "comment": "Preset dimmer speed from display menu"
         },
         {
           "dmxRange": [52, 101],
           "type": "Maintenance",
-          "comment": "Dimmer speed mode off"
+          "comment": "Dimmer speed",
+          "parameter": "off"
         },
         {
           "dmxRange": [102, 152],
           "type": "Maintenance",
-          "comment": "Dimmer speed mode 1 (fast speed)"
+          "comment": "Dimmer speed",
+          "parameter": "fast"
         },
         {
           "dmxRange": [153, 203],
           "type": "Maintenance",
-          "comment": "Dimmer speed mode 2 (medium speed)"
+          "comment": "Dimmer speed",
+          "parameter": "50%"
         },
         {
           "dmxRange": [204, 255],
           "type": "Maintenance",
-          "comment": "Dimmer speed mode 3 (slow speed)"
+          "comment": "Dimmer speed",
+          "parameter": "slow"
         }
       ]
     },

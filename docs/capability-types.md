@@ -7,23 +7,23 @@ Most type-specific properties refer to one of the following entities, which allo
 
 To make common percentage values more readable, one can use specific keywords to replace them. For example, `"speed": "fast"` has the same effect as `"speed": "100%"`.
 
-| Entity           | Allowed Units    | `-100%`      | `-1%`        | `0%`    | `1%`               | `100%`
-| -                | -                | -            | -            | -       | -                  | -
-| Speed            | `Hz`, `bpm`, `%` | fast reverse | slow reverse | stop    | slow               | fast
-| RotationSpeed    | `Hz`, `rpm`, `%` | fast CCW     | slow CCW     | stop    | slow CW            | fast CW
-| Time             | `s`, `ms`, `%`   | –            | –            | instant | short              | long
-| Distance         | `m`, `%`         | –            | –            | –       | near               | far
-| Brightness       | `lm`, `%`        | –            | –            | off     | dark               | bright
-| ColorTemperature | `K`, `%`         | warm / CTO   | –            | default | –                  | cold / CTB
-| FogOutput        | `m^3/min`, `%`   | –            | –            | off     | weak               | strong
-| RotationAngle    | `deg`, `%`       | –            | –            | –       | –                  | –
-| BeamAngle        | `deg`, `%`       | –            | –            | closed  | narrow             | wide
-| SwingAngle       | `deg`, `%`       | –            | –            | off     | narrow             | wide
-| Parameter        | (no unit), `%`   | –            | –            | off     | low / slow / small | high / fast / big
-| Index            | (no unit)        | –            | –            | –       | –                  | –
-| Percent          | `%`              | –            | –            | off     | low                | high
-| Insertion        | `%`              | –            | –            | out     | –                  | in
-| IrisPercent      | `%`              | –            | –            | closed  | –                  | open
+| Entity           | Allowed Units    | `-100%`      | `-1%`        | `0%`          | `1%`                       | `100%`
+| -                | -                | -            | -            | -             | -                          | -
+| Speed            | `Hz`, `bpm`, `%` | fast reverse | slow reverse | stop          | slow                       | fast
+| RotationSpeed    | `Hz`, `rpm`, `%` | fast CCW     | slow CCW     | stop          | slow CW                    | fast CW
+| Time             | `s`, `ms`, `%`   | –            | –            | instant       | short                      | long
+| Distance         | `m`, `%`         | –            | –            | –             | near                       | far
+| Brightness       | `lm`, `%`        | –            | –            | off           | dark                       | bright
+| ColorTemperature | `K`, `%`         | warm / CTO   | –            | default       | –                          | cold / CTB
+| FogOutput        | `m^3/min`, `%`   | –            | –            | off           | weak                       | strong
+| RotationAngle    | `deg`, `%`       | –            | –            | –             | –                          | –
+| BeamAngle        | `deg`, `%`       | –            | –            | closed        | narrow                     | wide
+| SwingAngle       | `deg`, `%`       | –            | –            | off           | narrow                     | wide
+| Parameter        | (no unit), `%`   | –            | –            | off / instant | low / slow / small / short | high / fast / big / long
+| Index            | (no unit)        | –            | –            | –             | –                          | –
+| Percent          | `%`              | –            | –            | off           | low                        | high
+| Insertion        | `%`              | –            | –            | out           | –                          | in
+| IrisPercent      | `%`              | –            | –            | closed        | –                          | open
 
 
 ### Possible capability types

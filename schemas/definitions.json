@@ -197,7 +197,7 @@
       "oneOf": [
         { "$ref": "#/units/nonNegativeNumber" },
         { "$ref": "#/units/percent" },
-        { "enum": ["off", "low", "high", "slow", "fast", "small", "big"] }
+        { "enum": ["off", "low", "high", "slow", "fast", "small", "big", "instant", "short", "long"] }
       ]
     },
     "index": {

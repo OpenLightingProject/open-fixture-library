@@ -57,13 +57,13 @@
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "Speed",
+          "type": "PanTiltSpeed",
           "speed": "100%",
           "comment": "Tracking Mode"
         },
         {
           "dmxRange": [1, 255],
-          "type": "Speed",
+          "type": "PanTiltSpeed",
           "speedStart": "fast",
           "speedEnd": "slow",
           "comment": "Vector Mode"

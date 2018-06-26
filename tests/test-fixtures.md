@@ -14,11 +14,11 @@
 **Capability type PanContinuous** [[12]](#user-content-footnote-12) | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Capability type Tilt** [[13]](#user-content-footnote-13) | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅
 **Capability type TiltContinuous** [[14]](#user-content-footnote-14) | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Capability type PanTiltSpeed** [[15]](#user-content-footnote-15) | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅
+**Capability type PanTiltSpeed** [[15]](#user-content-footnote-15) | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅
 **Capability type Effect** [[16]](#user-content-footnote-16) | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅
-**Capability type EffectParameter** [[17]](#user-content-footnote-17) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
-**Capability type EffectSpeed** [[18]](#user-content-footnote-18) | ❌ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅
-**Capability type EffectDuration** [[19]](#user-content-footnote-19) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
+**Capability type EffectSpeed** [[17]](#user-content-footnote-17) | ❌ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅
+**Capability type EffectDuration** [[18]](#user-content-footnote-18) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
+**Capability type EffectParameter** [[19]](#user-content-footnote-19) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌
 **Capability type SoundSensitivity** [[20]](#user-content-footnote-20) | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Capability type GoboIndex** [[21]](#user-content-footnote-21) | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌
 **Capability type GoboShake** [[22]](#user-content-footnote-22) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
@@ -40,7 +40,7 @@
 **Capability type FogType** [[38]](#user-content-footnote-38) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌
 **Capability type BeamAngle** [[39]](#user-content-footnote-39) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌
 **Capability type Rotation** [[40]](#user-content-footnote-40) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ❌
-**Capability type Speed** [[41]](#user-content-footnote-41) | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌
+**Capability type Speed** [[41]](#user-content-footnote-41) | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Capability type Time** [[42]](#user-content-footnote-42) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Capability type Maintenance** [[43]](#user-content-footnote-43) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅
 **Capability type Generic** [[44]](#user-content-footnote-44) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅
@@ -109,11 +109,11 @@
 
 **<a id="user-content-footnote-16">[16]</a>**: Whether the fixture has at least one capability of type 'Effect'
 
-**<a id="user-content-footnote-17">[17]</a>**: Whether the fixture has at least one capability of type 'EffectParameter'
+**<a id="user-content-footnote-17">[17]</a>**: Whether the fixture has at least one capability of type 'EffectSpeed'
 
-**<a id="user-content-footnote-18">[18]</a>**: Whether the fixture has at least one capability of type 'EffectSpeed'
+**<a id="user-content-footnote-18">[18]</a>**: Whether the fixture has at least one capability of type 'EffectDuration'
 
-**<a id="user-content-footnote-19">[19]</a>**: Whether the fixture has at least one capability of type 'EffectDuration'
+**<a id="user-content-footnote-19">[19]</a>**: Whether the fixture has at least one capability of type 'EffectParameter'
 
 **<a id="user-content-footnote-20">[20]</a>**: Whether the fixture has at least one capability of type 'SoundSensitivity'
 

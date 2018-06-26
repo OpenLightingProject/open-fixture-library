@@ -516,10 +516,10 @@
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "Speed",
-          "speedStart": "fast",
-          "speedEnd": "slow",
-          "comment": "Fan speed"
+          "type": "Maintenance",
+          "comment": "Fan speed",
+          "parameterStart": "fast",
+          "parameterEnd": "slow"
         },
         {
           "dmxRange": [128, 139],
