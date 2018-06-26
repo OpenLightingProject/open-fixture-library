@@ -6,6 +6,7 @@ const compression = require(`compression`);
 const { Nuxt, Builder } = require(`nuxt`);
 
 const redirectToHttps = require(`./ui/middleware/redirect-to-https.js`);
+const robotsTxtGenerator = require(`./ui/middleware/robots-txt.js`);
 
 const packageJson = require(`./package.json`);
 const plugins = require(`./plugins/plugins.json`);
@@ -35,6 +36,8 @@ app.use(compression({
 
 
 // ROUTES
+
+app.get(`/robots.txt`, robotsTxtGenerator);
 
 app.get(`/download.:format([a-z0-9_.-]+)`, (request, response, next) => {
   const { format } = request.params;
