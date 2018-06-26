@@ -1,6 +1,6 @@
 const path = require(`path`);
 
-const nuxtOptions = {
+module.exports = {
   srcDir: `ui/`,
   modules: [
     [`@nuxtjs/axios`, {
@@ -50,15 +50,17 @@ const nuxtOptions = {
   loading: {
     color: `#1e88e5`
   },
-  head: {
-    htmlAttrs: {
+  head() {
+    const htmlAttrs = {
       lang: `en`
-    },
-    titleTemplate: titleChunk => {
+    };
+
+    const titleTemplate = titleChunk => {
       // If undefined or blank then we don't need the hyphen
       return titleChunk ? `${titleChunk} – Open Fixture Library` : `Open Fixture Library`;
-    },
-    meta: [
+    };
+
+    const meta = [
       {
         charset: `utf-8`
       },
@@ -70,8 +72,22 @@ const nuxtOptions = {
         name: `mobile-web-app-capable`,
         content: `yes`
       }
-    ],
-    link: [
+    ];
+
+    if (process.env.ALLOW_SEARCH_INDEXING !== `allowed`) {
+      meta.push({
+        name: `robots`,
+        content: `noindex, nofollow, none, noodp, noarchive, nosnippet, noimageindex, noydir, nocache`
+      });
+    }
+
+    const path = this.$route.path.replace(/\/$/, ``); // remove trailing slash
+
+    const link = [
+      {
+        rel: `canonical`,
+        href: `https://open-fixture-library.org${path}`
+      },
       {
         rel: `apple-touch-icon`,
         sizes: `180x180`,
@@ -110,16 +126,14 @@ const nuxtOptions = {
         as: `font`,
         type: `font/woff`
       }
-    ]
+    ];
+
+    return {
+      htmlAttrs,
+      titleTemplate,
+      meta,
+      link
+    };
   },
   css: [`~/assets/styles/style.scss`]
 };
-
-if (process.env.ALLOW_SEARCH_INDEXING !== `allowed`) {
-  nuxtOptions.head.meta.push({
-    name: `robots`,
-    content: `noindex, nofollow, none, noodp, noarchive, nosnippet, noimageindex, noydir, nocache`
-  });
-}
-
-module.exports = nuxtOptions;
