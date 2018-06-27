@@ -9,11 +9,9 @@ module.exports = function(req, res) {
   if (process.env.ALLOW_SEARCH_INDEXING === `allowed`) {
     lines = lines.concat(
       plugins.exportPlugins.map(pluginKey => `Disallow: /*.${pluginKey}$`),
-      [
-        `Allow: /`,
-        ``,
-        `Sitemap: ${packageJson.homepage}sitemap.xml`
-      ]
+      `Allow: /`,
+      ``,
+      `Sitemap: ${packageJson.homepage}sitemap.xml`
     );
   }
   else {
