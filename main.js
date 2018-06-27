@@ -5,8 +5,8 @@ const express = require(`express`);
 const compression = require(`compression`);
 const { Nuxt, Builder } = require(`nuxt`);
 
-const redirectToHttps = require(`./ui/middleware/redirect-to-https.js`);
-const robotsTxtGenerator = require(`./ui/middleware/robots-txt.js`);
+const redirectToHttps = require(`./ui/express-middleware/redirect-to-https.js`);
+const robotsTxtGenerator = require(`./ui/express-middleware/robots-txt.js`);
 
 const packageJson = require(`./package.json`);
 const plugins = require(`./plugins/plugins.json`);
