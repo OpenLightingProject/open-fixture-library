@@ -225,6 +225,11 @@
       "lastModifyDate": "2017-10-16",
       "lastAction": "modified"
     },
+    "dts/scena-led-150": {
+      "name": "Scena LED 150",
+      "lastModifyDate": "2018-07-01",
+      "lastAction": "created"
+    },
     "dts/xr1200-wash": {
       "name": "XR1200 WASH",
       "lastModifyDate": "2017-10-16",
@@ -742,6 +747,7 @@
       "prospot-250-lx"
     ],
     "dts": [
+      "scena-led-150",
       "xr1200-wash"
     ],
     "elation": [
@@ -1017,6 +1023,7 @@
     ],
     "Dimmer": [
       "adb/europe-105",
+      "dts/scena-led-150",
       "eurolite/led-sls-6-uv-floor",
       "generic/desk-channel"
     ],
@@ -1173,6 +1180,7 @@
       "chauvet-dj/slimpar-t12-bt",
       "clay-paky/sharpy",
       "coemar/prospot-250-lx",
+      "dts/scena-led-150",
       "elation/platinum-hfx",
       "eurolite/led-kls-801",
       "eurolite/led-par-56-tcl",
@@ -1327,6 +1335,9 @@
     "Jo": [
       "showtec/xs-1-rgbw"
     ],
+    "Karl Humbug": [
+      "dts/scena-led-150"
+    ],
     "Massimo Callegari": [
       "clay-paky/sharpy"
     ],
@@ -1432,6 +1443,7 @@
     }
   },
   "lastUpdated": [
+    "dts/scena-led-150",
     "american-dj/xs-400",
     "elation/acl-360-roller",
     "eliminator/stealth-beam",
