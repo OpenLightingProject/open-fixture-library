@@ -225,6 +225,11 @@
       "lastModifyDate": "2017-10-16",
       "lastAction": "modified"
     },
+    "dts/scena-led-150": {
+      "name": "SCENA LED 150",
+      "lastModifyDate": "2018-07-01",
+      "lastAction": "created"
+    },
     "dts/xr1200-wash": {
       "name": "XR1200 WASH",
       "lastModifyDate": "2017-10-16",
@@ -625,13 +630,13 @@
       "lastModifyDate": "2018-05-28",
       "lastAction": "created"
     },
-    "showven/sparkular-fall": {
-      "name": "Sparkular Fall",
+    "showven/sparkular": {
+      "name": "Sparkular",
       "lastModifyDate": "2018-06-13",
       "lastAction": "created"
     },
-    "showven/sparkular": {
-      "name": "Sparkular",
+    "showven/sparkular-fall": {
+      "name": "Sparkular Fall",
       "lastModifyDate": "2018-06-13",
       "lastAction": "created"
     },
@@ -742,6 +747,7 @@
       "prospot-250-lx"
     ],
     "dts": [
+      "scena-led-150",
       "xr1200-wash"
     ],
     "elation": [
@@ -873,8 +879,8 @@
       "xs-1-rgbw"
     ],
     "showven": [
-      "sparkular-fall",
-      "sparkular"
+      "sparkular",
+      "sparkular-fall"
     ],
     "stairville": [
       "led-flood-panel-150",
@@ -1026,8 +1032,8 @@
       "glp/impression-x4-bar-10",
       "magicfx/stage-flame",
       "minuit-une/ivl-carre",
-      "showven/sparkular-fall",
       "showven/sparkular",
+      "showven/sparkular-fall",
       "venue/tristrip3z"
     ],
     "Fan": [
@@ -1122,7 +1128,8 @@
       "stairville/mh-x25"
     ],
     "Other": [
-      "chauvet-dj/corepar-uv-usb"
+      "chauvet-dj/corepar-uv-usb",
+      "dts/scena-led-150"
     ],
     "Scanner": [
       "cameo/gobo-scanner-80",
@@ -1298,8 +1305,8 @@
     ],
     "Alejo Cervera": [
       "magicfx/stage-flame",
-      "showven/sparkular-fall",
-      "showven/sparkular"
+      "showven/sparkular",
+      "showven/sparkular-fall"
     ],
     "Justin Hornsby": [
       "chauvet-dj/washfx",
@@ -1326,6 +1333,9 @@
     ],
     "Jo": [
       "showtec/xs-1-rgbw"
+    ],
+    "Karl Humbug": [
+      "dts/scena-led-150"
     ],
     "Massimo Callegari": [
       "clay-paky/sharpy"
@@ -1361,7 +1371,9 @@
   "rdm": {
     "1808": {
       "key": "dts",
-      "models": {}
+      "models": {
+        "0": "scena-led-150"
+      }
     },
     "5584": {
       "key": "prolights",
@@ -1432,6 +1444,7 @@
     }
   },
   "lastUpdated": [
+    "dts/scena-led-150",
     "american-dj/xs-400",
     "elation/acl-360-roller",
     "eliminator/stealth-beam",
