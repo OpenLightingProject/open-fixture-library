@@ -226,7 +226,7 @@
       "lastAction": "modified"
     },
     "dts/scena-led-150": {
-      "name": "SCENA LED 150",
+      "name": "Scena LED 150",
       "lastModifyDate": "2018-07-01",
       "lastAction": "created"
     },
@@ -630,13 +630,13 @@
       "lastModifyDate": "2018-05-28",
       "lastAction": "created"
     },
-    "showven/sparkular": {
-      "name": "Sparkular",
+    "showven/sparkular-fall": {
+      "name": "Sparkular Fall",
       "lastModifyDate": "2018-06-13",
       "lastAction": "created"
     },
-    "showven/sparkular-fall": {
-      "name": "Sparkular Fall",
+    "showven/sparkular": {
+      "name": "Sparkular",
       "lastModifyDate": "2018-06-13",
       "lastAction": "created"
     },
@@ -879,8 +879,8 @@
       "xs-1-rgbw"
     ],
     "showven": [
-      "sparkular",
-      "sparkular-fall"
+      "sparkular-fall",
+      "sparkular"
     ],
     "stairville": [
       "led-flood-panel-150",
@@ -1023,6 +1023,7 @@
     ],
     "Dimmer": [
       "adb/europe-105",
+      "dts/scena-led-150",
       "eurolite/led-sls-6-uv-floor",
       "generic/desk-channel"
     ],
@@ -1032,8 +1033,8 @@
       "glp/impression-x4-bar-10",
       "magicfx/stage-flame",
       "minuit-une/ivl-carre",
-      "showven/sparkular",
       "showven/sparkular-fall",
+      "showven/sparkular",
       "venue/tristrip3z"
     ],
     "Fan": [
@@ -1128,8 +1129,7 @@
       "stairville/mh-x25"
     ],
     "Other": [
-      "chauvet-dj/corepar-uv-usb",
-      "dts/scena-led-150"
+      "chauvet-dj/corepar-uv-usb"
     ],
     "Scanner": [
       "cameo/gobo-scanner-80",
@@ -1180,6 +1180,7 @@
       "chauvet-dj/slimpar-t12-bt",
       "clay-paky/sharpy",
       "coemar/prospot-250-lx",
+      "dts/scena-led-150",
       "elation/platinum-hfx",
       "eurolite/led-kls-801",
       "eurolite/led-par-56-tcl",
@@ -1305,8 +1306,8 @@
     ],
     "Alejo Cervera": [
       "magicfx/stage-flame",
-      "showven/sparkular",
-      "showven/sparkular-fall"
+      "showven/sparkular-fall",
+      "showven/sparkular"
     ],
     "Justin Hornsby": [
       "chauvet-dj/washfx",
@@ -1371,9 +1372,7 @@
   "rdm": {
     "1808": {
       "key": "dts",
-      "models": {
-        "0": "scena-led-150"
-      }
+      "models": {}
     },
     "5584": {
       "key": "prolights",
