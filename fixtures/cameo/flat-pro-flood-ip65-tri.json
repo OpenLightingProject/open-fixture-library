@@ -24,7 +24,8 @@
   "availableChannels": {
     "Dimmer": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Color Macros Simple": {
       "name": "Color Macros",

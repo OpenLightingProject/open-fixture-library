@@ -20,7 +20,8 @@
   "availableChannels": {
     "Master Dimmr": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Strobe": {
       "type": "Strobe"

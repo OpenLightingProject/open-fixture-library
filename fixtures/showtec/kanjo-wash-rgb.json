@@ -29,13 +29,15 @@
   "availableChannels": {
     "Pan": {
       "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
       "defaultValue": 32639,
-      "fineChannelAliases": ["Pan fine"]
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
       "defaultValue": 32768,
-      "fineChannelAliases": ["Tilt fine"]
+      "crossfade": true
     },
     "Pan/Tilt Speed": {
       "type": "Speed",

@@ -83,7 +83,8 @@
   "availableChannels": {
     "Derby Dimmer": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Derby Colors": {
       "type": "Multi-Color",

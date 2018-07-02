@@ -28,7 +28,8 @@
   "availableChannels": {
     "Master Dimmer": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Master Dimmer Invert": {
       "type": "Intensity",
@@ -519,7 +520,8 @@
   "templateChannels": {
     "Dimmer LED $pixelKey": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     }
   },
   "modes": [

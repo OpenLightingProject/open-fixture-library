@@ -467,43 +467,50 @@
       "type": "Single Color",
       "color": "Red",
       "fineChannelAliases": ["Red fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Green": {
       "type": "Single Color",
       "color": "Green",
       "fineChannelAliases": ["Green fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Blue": {
       "type": "Single Color",
       "color": "Blue",
       "fineChannelAliases": ["Blue fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "White": {
       "type": "Single Color",
       "color": "White",
       "fineChannelAliases": ["White fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Cyan": {
       "type": "Single Color",
       "color": "Cyan",
       "fineChannelAliases": ["Cyan fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Magenta": {
       "type": "Single Color",
       "color": "Magenta",
       "fineChannelAliases": ["Magenta fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Yellow": {
       "type": "Single Color",
       "color": "Yellow",
       "fineChannelAliases": ["Yellow fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "CTC": {
       "type": "Color Temperature",
@@ -616,7 +623,8 @@
     "Dimmer": {
       "type": "Intensity",
       "fineChannelAliases": ["Dimmer fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     }
   },
   "modes": [

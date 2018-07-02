@@ -26,7 +26,8 @@
   "availableChannels": {
     "Dimmer": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Red": {
       "type": "Single Color",

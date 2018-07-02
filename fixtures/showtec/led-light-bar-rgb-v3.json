@@ -44,18 +44,18 @@
   "availableChannels": {
     "Red": {
       "type": "Single Color",
-      "crossfade": true,
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Green": {
       "type": "Single Color",
-      "crossfade": true,
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Blue": {
       "type": "Single Color",
-      "crossfade": true,
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     },
     "Dimmer": {
       "type": "Intensity",
@@ -302,18 +302,18 @@
   "templateChannels": {
     "Red $pixelKey": {
       "type": "Single Color",
-      "crossfade": true,
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Green $pixelKey": {
       "type": "Single Color",
-      "crossfade": true,
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Blue $pixelKey": {
       "type": "Single Color",
-      "crossfade": true,
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     }
   },
   "modes": [

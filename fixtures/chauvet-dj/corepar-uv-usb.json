@@ -119,7 +119,8 @@
     },
     "Dimmer": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Dimmer Speed": {
       "type": "Maintenance",

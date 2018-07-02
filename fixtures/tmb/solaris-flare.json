@@ -182,22 +182,26 @@
     "Red": {
       "type": "Single Color",
       "color": "Red",
-      "fineChannelAliases": ["Red fine"]
+      "fineChannelAliases": ["Red fine"],
+      "crossfade": true
     },
     "Green": {
       "type": "Single Color",
       "color": "Green",
-      "fineChannelAliases": ["Green fine"]
+      "fineChannelAliases": ["Green fine"],
+      "crossfade": true
     },
     "Blue": {
       "type": "Single Color",
       "color": "Blue",
-      "fineChannelAliases": ["Blue fine"]
+      "fineChannelAliases": ["Blue fine"],
+      "crossfade": true
     },
     "White": {
       "type": "Single Color",
       "color": "White",
-      "fineChannelAliases": ["White fine"]
+      "fineChannelAliases": ["White fine"],
+      "crossfade": true
     },
     "Flash intensity": {
       "type": "Intensity",

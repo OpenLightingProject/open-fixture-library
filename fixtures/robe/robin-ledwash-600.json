@@ -309,7 +309,8 @@
     "Dimmer": {
       "type": "Intensity",
       "fineChannelAliases": ["Dimmer fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     }
   },
   "templateChannels": {
@@ -317,25 +318,29 @@
       "type": "Single Color",
       "color": "Red",
       "fineChannelAliases": ["Red $pixelKey fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Green $pixelKey": {
       "type": "Single Color",
       "color": "Green",
       "fineChannelAliases": ["Green $pixelKey fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Blue $pixelKey": {
       "type": "Single Color",
       "color": "Blue",
       "fineChannelAliases": ["Blue $pixelKey fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "White $pixelKey": {
       "type": "Single Color",
       "color": "White",
       "fineChannelAliases": ["White $pixelKey fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     }
   },
   "modes": [
