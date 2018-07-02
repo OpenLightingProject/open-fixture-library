@@ -9,10 +9,11 @@
     "lastModifyDate": "2018-02-15"
   },
   "comment": "Only controllable via dimmer pack",
-  "manualURL": "http://cdn.adbstagelight.com/wp-content/uploads/2017/04/DS5153-E-Europe105-data-sheet.pdf",
+  "manualURL": "https://www.adbstagelight.com/wp-content/uploads/2017/04/DS5153-E-Europe105-data-sheet.pdf",
   "physical": {
     "bulb": {
-      "type": "Tungsten halogen"
+      "type": "Tungsten halogen",
+      "colorTemperature": 3200
     }
   },
   "availableChannels": {
@@ -48,7 +49,7 @@
       "physical": {
         "dimensions": [340, 420, 710],
         "weight": 14,
-        "power": 1000,
+        "power": 1200,
         "bulb": {
           "lumens": 30000
         },
@@ -86,7 +87,7 @@
       "physical": {
         "dimensions": [340, 420, 600],
         "weight": 13.5,
-        "power": 1000,
+        "power": 1200,
         "bulb": {
           "lumens": 30000
         },
@@ -124,7 +125,7 @@
       "physical": {
         "dimensions": [340, 420, 710],
         "weight": 14,
-        "power": 1000,
+        "power": 1200,
         "bulb": {
           "lumens": 30000
         },
@@ -162,7 +163,7 @@
       "physical": {
         "dimensions": [340, 420, 790],
         "weight": 15.1,
-        "power": 1000,
+        "power": 1200,
         "bulb": {
           "lumens": 30000
         },
@@ -200,7 +201,7 @@
       "physical": {
         "dimensions": [360, 445, 920],
         "weight": 18.4,
-        "power": 1000,
+        "power": 1200,
         "bulb": {
           "lumens": 30000
         },
