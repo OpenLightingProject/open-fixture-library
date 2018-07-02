@@ -94,14 +94,16 @@
       ]
     },
     "Sound Sensitivity": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Auto Mode Speed": {
       "type": "Speed",
       "defaultValue": 127
     },
     "Dimmer": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Pan": {
       "type": "Pan",

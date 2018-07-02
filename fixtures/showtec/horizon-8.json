@@ -38,7 +38,8 @@
   "availableChannels": {
     "Dimmer": {
       "type": "Intensity",
-      "fineChannelAliases": ["Dimmer fine"]
+      "fineChannelAliases": ["Dimmer fine"],
+      "crossfade": true
     },
     "Red": {
       "type": "Single Color",
@@ -540,10 +541,12 @@
       "type": "Multi-Color"
     },
     "Saturation": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Value": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Step Time": {
       "type": "Speed"

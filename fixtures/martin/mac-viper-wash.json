@@ -61,7 +61,8 @@
     },
     "Dimmer": {
       "type": "Intensity",
-      "fineChannelAliases": ["Dimmer fine"]
+      "fineChannelAliases": ["Dimmer fine"],
+      "crossfade": true
     },
     "Cyan": {
       "type": "Single Color",

@@ -234,7 +234,8 @@
       "type": "Multi-Color"
     },
     "Strobe Saturation": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Strobe Intensity": {
       "type": "Intensity",
@@ -266,7 +267,8 @@
       "type": "Multi-Color"
     },
     "Saturation $pixelKey": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Intensity $pixelKey": {
       "type": "Intensity",

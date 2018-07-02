@@ -36,7 +36,8 @@
   },
   "availableChannels": {
     "Master Dimmer": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Strobe": {
       "type": "Strobe",
@@ -189,7 +190,8 @@
       "type": "Speed"
     },
     "Sound sensitivity": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Light control": {
       "type": "Multi-Color",
@@ -371,7 +373,8 @@
       "fineChannelAliases": ["Tilt $pixelKey fine"]
     },
     "Dimmer $pixelKey": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Head Speed $pixelKey simple": {
       "name": "Head Speed $pixelKey",
@@ -599,7 +602,8 @@
       "type": "Speed"
     },
     "Sound sensitivity $pixelKey": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     }
   },
   "modes": [

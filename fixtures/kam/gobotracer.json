@@ -181,7 +181,8 @@
       "type": "Strobe"
     },
     "Dimmer": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Horizontal Vertical Run": {
       "type": "Effect"

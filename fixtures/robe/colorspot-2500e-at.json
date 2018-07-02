@@ -804,7 +804,8 @@
     },
     "Gobo 1 indexing": {
       "type": "Intensity",
-      "fineChannelAliases": ["Gobo 1 indexing fine"]
+      "fineChannelAliases": ["Gobo 1 indexing fine"],
+      "crossfade": true
     },
     "Gobo 1 rotation": {
       "type": "Speed",
@@ -1076,7 +1077,8 @@
     },
     "Gobo 2 indexing": {
       "type": "Intensity",
-      "fineChannelAliases": ["Gobo 2 indexing fine"]
+      "fineChannelAliases": ["Gobo 2 indexing fine"],
+      "crossfade": true
     },
     "Gobo 2 rotation": {
       "type": "Speed",
@@ -1324,7 +1326,8 @@
     },
     "Effect indexing": {
       "type": "Intensity",
-      "fineChannelAliases": ["Effect indexing fine"]
+      "fineChannelAliases": ["Effect indexing fine"],
+      "crossfade": true
     },
     "Effect rotation": {
       "type": "Speed",
@@ -1487,7 +1490,8 @@
     },
     "Dimmer": {
       "type": "Intensity",
-      "fineChannelAliases": ["Dimmer fine"]
+      "fineChannelAliases": ["Dimmer fine"],
+      "crossfade": true
     },
     "Pan/Tilt Macro": {
       "type": "Effect",

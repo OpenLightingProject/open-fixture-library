@@ -301,7 +301,8 @@
       "fineChannelAliases": ["Iris fine"]
     },
     "External dimmer (optional)": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "External DMX output 1": {
       "type": "Maintenance",

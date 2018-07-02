@@ -151,7 +151,8 @@
       ]
     },
     "Beam dimmer": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Zoom": {
       "type": "Zoom",
@@ -790,13 +791,16 @@
       "type": "Speed"
     },
     "FX1 adjust Color offset": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "FX1 adjust Amount": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "FX1 adjust Strength": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "FX2 select": {
       "type": "Effect",
@@ -1088,13 +1092,16 @@
       "type": "Speed"
     },
     "FX2 adjust Color offset": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "FX2 adjust Amount": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "FX2 adjust Strength": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "FX sync": {
       "type": "Effect",
@@ -1240,7 +1247,8 @@
       ]
     },
     "Aura dimmer": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Aura color wheel effect": {
       "type": "Multi-Color",

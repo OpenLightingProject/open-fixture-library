@@ -34,12 +34,14 @@
   },
   "availableChannels": {
     "Master": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     }
   },
   "templateChannels": {
     "Dimmer $pixelKey": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Color Temperature $pixelKey (Linear)": {
       "name": "Color Temperature $pixelKey",

@@ -253,13 +253,15 @@
       ]
     },
     "Master Dimmer": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Program Speed": {
       "type": "Speed"
     },
     "Sound Sensitivity": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Flash": {
       "type": "Strobe"
