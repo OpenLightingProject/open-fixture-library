@@ -259,27 +259,33 @@
     },
     "Red": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Green (Outer LEDs)": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Blue": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     },
     "Amber": {
       "type": "Single Color",
-      "color": "Amber"
+      "color": "Amber",
+      "crossfade": true
     },
     "Green (Inner LEDs)": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "UV": {
       "type": "Single Color",
-      "color": "UV"
+      "color": "UV",
+      "crossfade": true
     },
     "Dimmer": {
       "type": "Intensity",

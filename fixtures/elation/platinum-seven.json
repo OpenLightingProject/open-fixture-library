@@ -616,37 +616,44 @@
     "Red $pixelKey": {
       "type": "Single Color",
       "color": "Red",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Blue $pixelKey": {
       "type": "Single Color",
       "color": "Blue",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Green $pixelKey": {
       "type": "Single Color",
       "color": "Green",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "White $pixelKey": {
       "type": "Single Color",
       "color": "White",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Cyan $pixelKey": {
       "type": "Single Color",
       "color": "Cyan",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Amber $pixelKey": {
       "type": "Single Color",
       "color": "Amber",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "UV $pixelKey": {
       "type": "Single Color",
       "color": "UV",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     }
   },
   "modes": [

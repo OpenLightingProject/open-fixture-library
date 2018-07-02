@@ -907,27 +907,33 @@
     },
     "Plate Red Intensity": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Plate Green Intensity": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Plate Blue Intensity": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     },
     "Color Set 2 Red Intensity": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Color Set 2 Green Intensity": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Color Set 2 Blue Intensity": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     },
     "FX Crossfade": {
       "type": "Intensity",
@@ -984,15 +990,18 @@
   "templateChannels": {
     "$pixelKey Red Intensity": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "$pixelKey Green Intensity": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "$pixelKey Blue Intensity": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     },
     "$pixelKey Intensity": {
       "type": "Intensity"

@@ -305,19 +305,23 @@
     },
     "$pixelKey Red": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "$pixelKey Green": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "$pixelKey Blue": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     },
     "$pixelKey UV": {
       "type": "Single Color",
-      "color": "UV"
+      "color": "UV",
+      "crossfade": true
     },
     "$pixelKey Shutter": {
       "type": "Shutter",

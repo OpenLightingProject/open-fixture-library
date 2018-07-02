@@ -29,17 +29,20 @@
     "Warm White": {
       "type": "Single Color",
       "color": "White",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Cool White": {
       "type": "Single Color",
       "color": "White",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Amber": {
       "type": "Single Color",
       "color": "Amber",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Color Macros": {
       "type": "Multi-Color",

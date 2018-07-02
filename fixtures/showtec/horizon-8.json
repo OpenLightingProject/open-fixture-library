@@ -44,27 +44,32 @@
     "Red": {
       "type": "Single Color",
       "fineChannelAliases": ["Red fine"],
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Green": {
       "type": "Single Color",
       "fineChannelAliases": ["Green fine"],
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Blue": {
       "type": "Single Color",
       "fineChannelAliases": ["Blue fine"],
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     },
     "White": {
       "type": "Single Color",
       "fineChannelAliases": ["White fine"],
-      "color": "White"
+      "color": "White",
+      "crossfade": true
     },
     "Amber": {
       "type": "Single Color",
       "fineChannelAliases": ["Amber fine"],
-      "color": "Amber"
+      "color": "Amber",
+      "crossfade": true
     },
     "Macro Colors": {
       "type": "Multi-Color",
@@ -558,23 +563,28 @@
   "templateChannels": {
     "$pixelKey Red": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "$pixelKey Green": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "$pixelKey Blue": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     },
     "$pixelKey White": {
       "type": "Single Color",
-      "color": "White"
+      "color": "White",
+      "crossfade": true
     },
     "$pixelKey Amber": {
       "type": "Single Color",
-      "color": "Amber"
+      "color": "Amber",
+      "crossfade": true
     }
   },
   "modes": [
