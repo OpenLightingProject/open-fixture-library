@@ -343,11 +343,13 @@
     },
     "Pan": {
       "type": "Pan",
-      "defaultValue": 127
+      "defaultValue": 127,
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
-      "defaultValue": 127
+      "defaultValue": 127,
+      "crossfade": true
     },
     "Movement Speed": {
       "type": "Speed",

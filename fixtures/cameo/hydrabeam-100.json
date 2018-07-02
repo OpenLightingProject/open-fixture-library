@@ -106,12 +106,14 @@
     "Pan": {
       "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 32639
+      "defaultValue": 32639,
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 32639
+      "defaultValue": 32639,
+      "crossfade": true
     },
     "Head Speed": {
       "type": "Speed",

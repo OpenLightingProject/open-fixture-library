@@ -28,11 +28,13 @@
   "availableChannels": {
     "Pan": {
       "type": "Pan",
-      "defaultValue": 128
+      "defaultValue": 128,
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
-      "defaultValue": 128
+      "defaultValue": 128,
+      "crossfade": true
     },
     "Color Wheel": {
       "type": "Multi-Color",
