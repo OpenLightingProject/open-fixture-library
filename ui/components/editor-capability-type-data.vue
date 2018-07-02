@@ -52,9 +52,9 @@ import editorCapabilityTilt from '~/components/editor-capabilities/Tilt.vue';
 import editorCapabilityTiltContinuous from '~/components/editor-capabilities/TiltContinuous.vue';
 import editorCapabilityPanTiltSpeed from '~/components/editor-capabilities/PanTiltSpeed.vue';
 import editorCapabilityEffect from '~/components/editor-capabilities/Effect.vue';
-import editorCapabilityEffectIntensity from '~/components/editor-capabilities/EffectIntensity.vue';
 import editorCapabilityEffectSpeed from '~/components/editor-capabilities/EffectSpeed.vue';
 import editorCapabilityEffectDuration from '~/components/editor-capabilities/EffectDuration.vue';
+import editorCapabilityEffectParameter from '~/components/editor-capabilities/EffectParameter.vue';
 import editorCapabilitySoundSensitivity from '~/components/editor-capabilities/SoundSensitivity.vue';
 import editorCapabilityGoboIndex from '~/components/editor-capabilities/GoboIndex.vue';
 import editorCapabilityGoboShake from '~/components/editor-capabilities/GoboShake.vue';
@@ -100,9 +100,9 @@ export default {
     'app-editor-capability-TiltContinuous': editorCapabilityTiltContinuous,
     'app-editor-capability-PanTiltSpeed': editorCapabilityPanTiltSpeed,
     'app-editor-capability-Effect': editorCapabilityEffect,
-    'app-editor-capability-EffectIntensity': editorCapabilityEffectIntensity,
     'app-editor-capability-EffectSpeed': editorCapabilityEffectSpeed,
     'app-editor-capability-EffectDuration': editorCapabilityEffectDuration,
+    'app-editor-capability-EffectParameter': editorCapabilityEffectParameter,
     'app-editor-capability-SoundSensitivity': editorCapabilitySoundSensitivity,
     'app-editor-capability-GoboIndex': editorCapabilityGoboIndex,
     'app-editor-capability-GoboShake': editorCapabilityGoboShake,

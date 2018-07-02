@@ -71,12 +71,12 @@
 
     <app-simple-label
       :formstate="formstate"
-      :name="`capability${capability.uuid}-effectIntensity`"
-      label="Effect intensity">
+      :name="`capability${capability.uuid}-parameter`"
+      label="Parameter">
       <app-editor-proportional-capability-data-switcher
         :capability="capability"
         :formstate="formstate"
-        property-name="effectIntensity" />
+        property-name="parameter" />
     </app-simple-label>
 
     <app-simple-label
@@ -153,9 +153,9 @@ export default {
         duration: ``,
         durationStart: null,
         durationEnd: null,
-        effectIntensity: ``,
-        effectIntensityStart: null,
-        effectIntensityEnd: null,
+        parameter: ``,
+        parameterStart: null,
+        parameterEnd: null,
         soundControlled: null,
         soundSensitivity: ``,
         soundSensitivityStart: null,

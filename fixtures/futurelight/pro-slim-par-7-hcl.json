@@ -330,27 +330,27 @@
         },
         {
           "dmxRange": [52, 101],
-          "type": "Speed",
-          "comment": "Instant",
-          "speed": "100%"
+          "type": "Maintenance",
+          "comment": "Dimmer speed",
+          "parameter": "instant"
         },
         {
           "dmxRange": [102, 152],
-          "type": "Speed",
-          "comment": "Dimmer Speed 1",
-          "speed": "75%"
+          "type": "Maintenance",
+          "comment": "Dimmer speed",
+          "parameter": 1
         },
         {
           "dmxRange": [153, 203],
-          "type": "Speed",
-          "comment": "Dimmer Speed 2",
-          "speed": "50%"
+          "type": "Maintenance",
+          "comment": "Dimmer speed",
+          "parameter": 2
         },
         {
           "dmxRange": [204, 255],
-          "type": "Speed",
-          "comment": "Dimmer Speed 3",
-          "speed": "25%"
+          "type": "Maintenance",
+          "comment": "Dimmer speed",
+          "parameter": 3
         }
       ]
     },

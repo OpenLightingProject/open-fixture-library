@@ -73,6 +73,7 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+      hint: `Doesn't activate the prism, only controls the prism rotation.`,
       defaultData: {
         speedOrAngle: `speed`,
         speed: ``,

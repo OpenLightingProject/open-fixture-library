@@ -717,16 +717,20 @@
         {
           "dmxRange": [128, 169],
           "type": "Effect",
+          "effectName": "Zooming in",
           "speedStart": "slow",
           "speedEnd": "fast",
-          "effectName": "Zooming in (big - small)"
+          "parameterStart": "big",
+          "parameterEnd": "small"
         },
         {
           "dmxRange": [170, 209],
           "type": "Effect",
+          "effectName": "Zooming out",
           "speedStart": "slow",
           "speedEnd": "fast",
-          "effectName": "Zooming out (small - big)"
+          "parameterStart": "big",
+          "parameterEnd": "small"
         },
         {
           "dmxRange": [210, 255],

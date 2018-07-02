@@ -61,6 +61,7 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+      hint: `Doesn't activate fog, only selects the fog type (Fog or Haze).`,
       defaultData: {
         fogType: ``,
         comment: ``

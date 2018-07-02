@@ -627,27 +627,27 @@
         },
         {
           "dmxRange": [30, 69],
-          "type": "Speed",
-          "speed": "100%",
-          "comment": "Non-linear dimmer 1"
+          "type": "Maintenance",
+          "comment": "Non-linear dimmer speed",
+          "parameter": "fast"
         },
         {
           "dmxRange": [70, 129],
-          "type": "Speed",
-          "speed": "75%",
-          "comment": "Non-linear dimmer 2"
+          "type": "Maintenance",
+          "comment": "Non-linear dimmer speed",
+          "parameter": "66%"
         },
         {
           "dmxRange": [130, 189],
-          "type": "Speed",
-          "speed": "50%",
-          "comment": "Non-linear dimmer 3"
+          "type": "Maintenance",
+          "comment": "Non-linear dimmer speed",
+          "parameter": "33%"
         },
         {
           "dmxRange": [190, 255],
-          "type": "Speed",
-          "speed": "25%",
-          "comment": "Non-linear dimmer 4"
+          "type": "Maintenance",
+          "comment": "Non-linear dimmer speed",
+          "parameter": "slow"
         }
       ]
     },

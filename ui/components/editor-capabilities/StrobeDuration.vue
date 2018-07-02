@@ -53,6 +53,7 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+      hint: `Doesn't activate strobe, only controls the strobe flash duration.`,
       defaultData: {
         duration: null,
         durationStart: `ms`,

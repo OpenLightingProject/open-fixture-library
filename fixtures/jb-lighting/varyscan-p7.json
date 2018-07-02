@@ -51,10 +51,10 @@
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "Speed",
-          "comment": "Dimmer fade out with Fader, reaction fast",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "Maintenance",
+          "comment": "Dimmer fade out with Fader (fast reaction)",
+          "parameterStart": "slow",
+          "parameterEnd": "fast"
         },
         {
           "dmxRange": [8, 31],
@@ -62,10 +62,10 @@
         },
         {
           "dmxRange": [32, 39],
-          "type": "Speed",
-          "comment": "Dimmer fade out with Fader, reaction semi-fast",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "Maintenance",
+          "comment": "Dimmer fade out with Fader (semi-fast reaction)",
+          "parameterStart": "slow",
+          "parameterEnd": "fast"
         },
         {
           "dmxRange": [40, 63],
@@ -73,10 +73,10 @@
         },
         {
           "dmxRange": [64, 71],
-          "type": "Speed",
-          "comment": "Dimmer fade out with Fader, reaction medium",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "Maintenance",
+          "comment": "Dimmer fade out with Fader (medium reaction)",
+          "parameterStart": "slow",
+          "parameterEnd": "fast"
         },
         {
           "dmxRange": [72, 95],
@@ -84,10 +84,10 @@
         },
         {
           "dmxRange": [96, 103],
-          "type": "Speed",
-          "comment": "Dimmer fade out with Fader, reaction semi-slow",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "Maintenance",
+          "comment": "Dimmer fade out with Fader (semi-slow reaction)",
+          "parameterStart": "slow",
+          "parameterEnd": "fast"
         },
         {
           "dmxRange": [104, 127],
@@ -95,10 +95,10 @@
         },
         {
           "dmxRange": [128, 135],
-          "type": "Speed",
-          "comment": "Dimmer fade out with Fader, reaction slow",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "Maintenance",
+          "comment": "Dimmer fade out with Fader (slow reaction)",
+          "parameterStart": "slow",
+          "parameterEnd": "fast"
         },
         {
           "dmxRange": [136, 207],
@@ -756,8 +756,8 @@
           "dmxRange": [1, 255],
           "type": "Effect",
           "effectName": "Sparkle",
-          "effectIntensityStart": "off",
-          "effectIntensityEnd": "high"
+          "parameterStart": "off",
+          "parameterEnd": "high"
         }
       ]
     },

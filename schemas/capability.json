@@ -29,9 +29,9 @@
       "TiltContinuous",
       "PanTiltSpeed",
       "Effect",
-      "EffectIntensity",
       "EffectSpeed",
       "EffectDuration",
+      "EffectParameter",
       "SoundSensitivity",
       "GoboIndex",
       "GoboShake",
@@ -623,9 +623,9 @@
           "duration": { "$ref": "definitions.json#/entities/time" },
           "durationStart": { "$ref": "definitions.json#/entities/time" },
           "durationEnd": { "$ref": "definitions.json#/entities/time" },
-          "effectIntensity": { "$ref": "definitions.json#/entities/factor" },
-          "effectIntensityStart": { "$ref": "definitions.json#/entities/factor" },
-          "effectIntensityEnd": { "$ref": "definitions.json#/entities/factor" },
+          "parameter": { "$ref": "definitions.json#/entities/parameter" },
+          "parameterStart": { "$ref": "definitions.json#/entities/parameter" },
+          "parameterEnd": { "$ref": "definitions.json#/entities/parameter" },
           "soundControlled": { "type": "boolean" },
           "soundSensitivity": { "$ref": "definitions.json#/entities/percent" },
           "soundSensitivityStart": { "$ref": "definitions.json#/entities/percent" },
@@ -643,7 +643,7 @@
           "anyOf": [
             { "required": ["speed", "speedStart"] },
             { "required": ["duration", "durationStart"] },
-            { "required": ["effectIntensity", "effectIntensityStart"] },
+            { "required": ["parameter", "parameterStart"] },
             { "required": ["soundSensitivity", "soundSensitivityStart"] }
           ]
         },
@@ -652,39 +652,10 @@
           "speedEnd": ["speedStart"],
           "durationStart": ["durationEnd"],
           "durationEnd": ["durationStart"],
-          "effectIntensityStart": ["effectIntensityEnd"],
-          "effectIntensityEnd": ["effectIntensityStart"],
+          "parameterStart": ["parameterEnd"],
+          "parameterEnd": ["parameterStart"],
           "soundSensitivityStart": ["soundSensitivityEnd"],
           "soundSensitivityEnd": ["soundSensitivityStart"]
-        },
-        "additionalProperties": false
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "type": { "enum": ["EffectIntensity"] }
-        }
-      },
-      "then": {
-        "properties": {
-          "dmxRange": {},
-          "type": {},
-          "effectIntensity": { "$ref": "definitions.json#/entities/factor" },
-          "effectIntensityStart": { "$ref": "definitions.json#/entities/factor" },
-          "effectIntensityEnd": { "$ref": "definitions.json#/entities/factor" },
-          "comment": {},
-          "helpWanted": {},
-          "menuClick": {},
-          "switchChannels": {}
-        },
-        "oneOf": [
-          { "required": ["effectIntensity"] },
-          { "required": ["effectIntensityStart"] }
-        ],
-        "dependencies": {
-          "effectIntensityStart": ["effectIntensityEnd"],
-          "effectIntensityEnd": ["effectIntensityStart"]
         },
         "additionalProperties": false
       }
@@ -743,6 +714,35 @@
         "dependencies": {
           "durationStart": ["durationEnd"],
           "durationEnd": ["durationStart"]
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": { "enum": ["EffectParameter"] }
+        }
+      },
+      "then": {
+        "properties": {
+          "dmxRange": {},
+          "type": {},
+          "parameter": { "$ref": "definitions.json#/entities/parameter" },
+          "parameterStart": { "$ref": "definitions.json#/entities/parameter" },
+          "parameterEnd": { "$ref": "definitions.json#/entities/parameter" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
+        },
+        "oneOf": [
+          { "required": ["parameter"] },
+          { "required": ["parameterStart"] }
+        ],
+        "dependencies": {
+          "parameterStart": ["parameterEnd"],
+          "parameterEnd": ["parameterStart"]
         },
         "additionalProperties": false
       }
@@ -1489,9 +1489,9 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "parameter": { "$ref": "definitions.json#/entities/factor" },
-          "parameterStart": { "$ref": "definitions.json#/entities/factor" },
-          "parameterEnd": { "$ref": "definitions.json#/entities/factor" },
+          "parameter": { "$ref": "definitions.json#/entities/parameter" },
+          "parameterStart": { "$ref": "definitions.json#/entities/parameter" },
+          "parameterEnd": { "$ref": "definitions.json#/entities/parameter" },
           "hold": { "$ref": "definitions.json#/entities/time" },
           "comment": {},
           "helpWanted": {},

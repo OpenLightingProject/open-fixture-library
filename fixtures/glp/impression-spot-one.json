@@ -878,9 +878,9 @@
     "Effect Wheel Swing": {
       "capability": {
         "type": "Effect",
-        "effectName": "Stepless swing of the Motion Wheel",
-        "effectIntensityStart": "0%",
-        "effectIntensityEnd": "100%"
+        "effectName": "Motion Wheel Swing",
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
       }
     },
     "Effect Wheel Position": {

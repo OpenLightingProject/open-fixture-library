@@ -263,9 +263,9 @@
     },
     "Strobe Density": {
       "capability": {
-        "type": "EffectIntensity",
-        "effectIntensityStart": 1,
-        "effectIntensityEnd": 24,
+        "type": "EffectParameter",
+        "parameterStart": 1,
+        "parameterEnd": 24,
         "comment": "Pixels"
       }
     },

@@ -7,23 +7,23 @@ Most type-specific properties refer to one of the following entities, which allo
 
 To make common percentage values more readable, one can use specific keywords to replace them. For example, `"speed": "fast"` has the same effect as `"speed": "100%"`.
 
-| Entity           | Allowed Units    | `-100%`      | `-1%`        | `0%`    | `1%`    | `100%`
-| -                | -                | -            | -            | -       | -       | -
-| Speed            | `Hz`, `bpm`, `%` | fast reverse | slow reverse | stop    | slow    | fast
-| RotationSpeed    | `Hz`, `rpm`, `%` | fast CCW     | slow CCW     | stop    | slow CW | fast CW
-| Time             | `s`, `ms`, `%`   | –            | –            | instant | short   | long
-| Distance         | `m`, `%`         | –            | –            | –       | near    | far
-| Brightness       | `lm`, `%`        | –            | –            | off     | dark    | bright
-| ColorTemperature | `K`, `%`         | warm / CTO   | –            | default | –       | cold / CTB
-| FogOutput        | `m^3/min`, `%`   | –            | –            | off     | weak    | strong
-| RotationAngle    | `deg`, `%`       | –            | –            | –       | –       | –
-| BeamAngle        | `deg`, `%`       | –            | –            | closed  | narrow  | wide
-| SwingAngle       | `deg`, `%`       | –            | –            | off     | narrow  | wide
-| Factor           | (no unit), `%`   | –            | –            | off     | low     | high
-| Index            | (no unit)        | –            | –            | –       | –       | –
-| Percent          | `%`              | –            | –            | off     | low     | high
-| Insertion        | `%`              | –            | –            | out     | –       | in
-| IrisPercent      | `%`              | –            | –            | closed  | –       | open
+| Entity           | Allowed Units    | `-100%`      | `-1%`        | `0%`          | `1%`                       | `100%`
+| -                | -                | -            | -            | -             | -                          | -
+| Speed            | `Hz`, `bpm`, `%` | fast reverse | slow reverse | stop          | slow                       | fast
+| RotationSpeed    | `Hz`, `rpm`, `%` | fast CCW     | slow CCW     | stop          | slow CW                    | fast CW
+| Time             | `s`, `ms`, `%`   | –            | –            | instant       | short                      | long
+| Distance         | `m`, `%`         | –            | –            | –             | near                       | far
+| Brightness       | `lm`, `%`        | –            | –            | off           | dark                       | bright
+| ColorTemperature | `K`, `%`         | warm / CTO   | –            | default       | –                          | cold / CTB
+| FogOutput        | `m^3/min`, `%`   | –            | –            | off           | weak                       | strong
+| RotationAngle    | `deg`, `%`       | –            | –            | –             | –                          | –
+| BeamAngle        | `deg`, `%`       | –            | –            | closed        | narrow                     | wide
+| SwingAngle       | `deg`, `%`       | –            | –            | off           | narrow                     | wide
+| Parameter        | (no unit), `%`   | –            | –            | off / instant | low / slow / small / short | high / fast / big / long
+| Index            | (no unit)        | –            | –            | –             | –                          | –
+| Percent          | `%`              | –            | –            | off           | low                        | high
+| Insertion        | `%`              | –            | –            | out           | –                          | in
+| IrisPercent      | `%`              | –            | –            | closed        | –                          | open
 
 
 ### Possible capability types
@@ -40,7 +40,7 @@ To make common percentage values more readable, one can use specific keywords to
 * [Pan](#pan) / [PanContinuous](#pancontinuous)
 * [Tilt](#tilt) / [TiltContinuous](#tiltcontinuous)
 * [PanTiltSpeed](#pantiltspeed)
-* [Effect](#effect) / [EffectIntensity](#effectintensity) / [EffectSpeed](#effectspeed) / [EffectDuration](#effectduration)
+* [Effect](#effect) / [EffectSpeed](#effectspeed) / [EffectDuration](#effectduration) / [EffectParameter](#effectparameter)
 * [SoundSensitivity](#soundsensitivity)
 * [GoboIndex](#goboindex) / [GoboShake](#goboshake) / [GoboStencilRotation](#gobostencilrotation) / [GoboWheelRotation](#gobowheelrotation)
 * [Focus](#focus)
@@ -211,8 +211,8 @@ To make common percentage values more readable, one can use specific keywords to
   <td valign="top"></td>
 </tr>
 <tr>
-  <td valign="top">effectIntensity<br><sub>:grey_question: optional</sub></td>
-  <td valign="top">Entity <em>Factor</em></td>
+  <td valign="top">parameter<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>Parameter</em></td>
   <td valign="top"></td>
 </tr>
 <tr>
@@ -226,12 +226,6 @@ To make common percentage values more readable, one can use specific keywords to
   <td valign="top"></td>
 </tr>
 <tr>
-  <th valign="top" scope="row" id="effectintensity">EffectIntensity</th>
-  <td valign="top">effectIntensity<br><sub>:star2: required</sub></td>
-  <td valign="top">Entity <em>Factor</em></td>
-  <td valign="top"></td>
-</tr>
-<tr>
   <th valign="top" scope="row" id="effectspeed">EffectSpeed</th>
   <td valign="top">speed<br><sub>:star2: required</sub></td>
   <td valign="top">Entity <em>Speed</em></td>
@@ -241,6 +235,12 @@ To make common percentage values more readable, one can use specific keywords to
   <th valign="top" scope="row" id="effectduration">EffectDuration</th>
   <td valign="top">duration<br><sub>:star2: required</sub></td>
   <td valign="top">Entity <em>Duration</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="effectparameter">EffectParameter</th>
+  <td valign="top">parameter<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>Parameter</em></td>
   <td valign="top"></td>
 </tr>
 <tr>
@@ -444,7 +444,7 @@ To make common percentage values more readable, one can use specific keywords to
 <tr>
   <th valign="top" scope="row" id="maintenance" rowspan="2">Maintenance</th>
   <td valign="top">parameter<br><sub>:grey_question: optional</sub></td>
-  <td valign="top">Entity <em>Factor</em></td>
+  <td valign="top">Entity <em>Parameter</em></td>
   <td valign="top"></td>
 </tr>
 <tr>

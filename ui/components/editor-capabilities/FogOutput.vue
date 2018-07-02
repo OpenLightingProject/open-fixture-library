@@ -53,6 +53,7 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+      hint: `Doesn't activate fog, only controls the intensity of the fog output.`,
       defaultData: {
         fogOutput: null,
         fogOutputStart: `weak`,

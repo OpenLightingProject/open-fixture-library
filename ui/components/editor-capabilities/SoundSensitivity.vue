@@ -3,13 +3,13 @@
 
     <app-simple-label
       :formstate="formstate"
-      :name="`capability${capability.uuid}-soundSensitvity`"
+      :name="`capability${capability.uuid}-soundSensitivity`"
       label="Sound Sensitivity">
       <app-editor-proportional-capability-data-switcher
         :capability="capability"
         :formstate="formstate"
         :required="true"
-        property-name="soundSensitvity" />
+        property-name="soundSensitivity" />
     </app-simple-label>
 
     <app-simple-label
@@ -53,10 +53,11 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+      hint: `Doesn't activate sound controlled mode (use Effect for this), only controls the microphone sensitivity.`,
       defaultData: {
-        soundSensitvity: null,
-        soundSensitvityStart: `low`,
-        soundSensitvityEnd: `high`,
+        soundSensitivity: null,
+        soundSensitivityStart: `low`,
+        soundSensitivityEnd: `high`,
         comment: ``
       }
     };

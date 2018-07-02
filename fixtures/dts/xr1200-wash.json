@@ -118,8 +118,9 @@
           "comment": "Flash open"
         },
         {
-          "dmxRange": [164, 210],
+          "dmxRange": [164, 219],
           "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast",
           "comment": "Flash closed"

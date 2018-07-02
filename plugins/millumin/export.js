@@ -78,6 +78,7 @@ function downgradeChannel(channelObject, channelKey) {
           downgradedCap.color2 = cap.colors.allColors[1];
         }
       }
+      addIfTruthy(cap.jsonObject, `helpWanted`, downgradedCap);
       addIfTruthy(cap.jsonObject, `switchChannels`, downgradedCap);
 
       downgradedChannel.capabilities.push(downgradedCap);

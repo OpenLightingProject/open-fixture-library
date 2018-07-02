@@ -53,6 +53,7 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+      hint: `Doesn't activate an effect, only controls the speed of running effects.`,
       defaultData: {
         speed: null,
         speedStart: `slow`,

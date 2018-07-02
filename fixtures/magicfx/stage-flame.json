@@ -42,9 +42,9 @@
       "highlightValue": 255,
       "precedence": "HTP",
       "capability": {
-        "type": "EffectIntensity",
-        "effectIntensityStart": "off",
-        "effectIntensityEnd": "high",
+        "type": "EffectParameter",
+        "parameterStart": "off",
+        "parameterEnd": "high",
         "comment": "Flame Intensity"
       }
     }

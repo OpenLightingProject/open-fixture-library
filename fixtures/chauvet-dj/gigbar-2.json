@@ -293,7 +293,7 @@
     },
     "Auto Program Speed": {
       "capability": {
-        "type": "Speed",
+        "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
       }
@@ -661,7 +661,7 @@
     },
     "White / UV $pixelKey Speed": {
       "capability": {
-        "type": "Speed",
+        "type": "StrobeSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
       }

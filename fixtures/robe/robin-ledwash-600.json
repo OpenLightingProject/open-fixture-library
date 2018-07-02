@@ -177,13 +177,13 @@
         {
           "dmxRange": [240, 240],
           "type": "Maintenance",
-          "comment": "Disable \"Silent mode\" of fans",
+          "comment": "Disable \"Silent mode\"",
           "hold": "3s"
         },
         {
           "dmxRange": [241, 255],
           "type": "Maintenance",
-          "comment": "\"Silent mode of fans\":fans noise from min. to max.",
+          "comment": "Silent mode: Fan noise",
           "parameterStart": "low",
           "parameterEnd": "high",
           "hold": "3s"
