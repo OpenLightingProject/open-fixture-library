@@ -1,0 +1,196 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Scena LED 150",
+  "shortName": "DTSScenaLED150",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Karl Humbug", "Flo Edelmann"],
+    "createDate": "2018-07-01",
+    "lastModifyDate": "2018-07-01"
+  },
+  "comment": "Also available with 4000K or 5000K color temperature LED.",
+  "manualURL": "http://www.lightpower-files.de/Assets/DTS_Scena%20LED%20150_Manual%202.1_de.pdf",
+  "physical": {
+    "dimensions": [250, 185, 330],
+    "weight": 5.3,
+    "power": 160,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "150W LED",
+      "colorTemperature": 3000,
+      "lumens": 7000
+    },
+    "lens": {
+      "name": "PC",
+      "degreesMinMax": [8.2, 70]
+    }
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "type": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Blackout"
+        },
+        {
+          "range": [10, 19],
+          "name": "Open"
+        },
+        {
+          "range": [20, 29],
+          "name": "Blackout"
+        },
+        {
+          "range": [30, 119],
+          "name": "Strobe 3.27s…30ms"
+        },
+        {
+          "range": [120, 149],
+          "name": "Opening pulse 42.6s…120ms"
+        },
+        {
+          "range": [150, 179],
+          "name": "Closing pulse 42.6s…120ms"
+        },
+        {
+          "range": [180, 204],
+          "name": "Random strobe (dimmer active)"
+        },
+        {
+          "range": [205, 229],
+          "name": "Random strobe (dimmer inactive)"
+        },
+        {
+          "range": [230, 255],
+          "name": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "fineChannelAliases": ["Dimmer fine"]
+    },
+    "Zoom Fresnel": {
+      "name": "Zoom",
+      "type": "Zoom",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Linear Zoom 12.8…62°"
+        }
+      ]
+    },
+    "Zoom PC": {
+      "name": "Zoom",
+      "type": "Zoom",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Linear Zoom 8.2…70°"
+        }
+      ]
+    },
+    "Reset": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "No function"
+        },
+        {
+          "range": [16, 255],
+          "name": "Zoom Motor Reset (hold 3s)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel (PC lens)",
+      "shortName": "5ch-pc",
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Zoom PC",
+        "Reset"
+      ]
+    },
+    {
+      "name": "4-channel (PC lens)",
+      "shortName": "4ch-pc",
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Zoom PC",
+        "Reset"
+      ]
+    },
+    {
+      "name": "2-channel (PC lens)",
+      "shortName": "2ch-pc",
+      "channels": [
+        "Dimmer",
+        "Zoom PC"
+      ]
+    },
+    {
+      "name": "5-channel (Fresnel lens)",
+      "shortName": "5ch-fres",
+      "physical": {
+        "weight": 5.1,
+        "lens": {
+          "name": "Fresnel",
+          "degreesMinMax": [12.8, 62]
+        }
+      },
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Zoom Fresnel",
+        "Reset"
+      ]
+    },
+    {
+      "name": "4-channel (Fresnel lens)",
+      "shortName": "4ch-fres",
+      "physical": {
+        "weight": 5.1,
+        "lens": {
+          "name": "Fresnel",
+          "degreesMinMax": [12.8, 62]
+        }
+      },
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Zoom Fresnel",
+        "Reset"
+      ]
+    },
+    {
+      "name": "2-channel (Fresnel lens)",
+      "shortName": "2ch-fres",
+      "physical": {
+        "weight": 5.1,
+        "lens": {
+          "name": "Fresnel",
+          "degreesMinMax": [12.8, 62]
+        }
+      },
+      "channels": [
+        "Dimmer",
+        "Zoom Fresnel"
+      ]
+    },
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
