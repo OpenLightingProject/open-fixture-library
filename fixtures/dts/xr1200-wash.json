@@ -27,11 +27,13 @@
   "availableChannels": {
     "Pan": {
       "type": "Pan",
-      "fineChannelAliases": ["Pan fine"]
+      "fineChannelAliases": ["Pan fine"],
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
-      "fineChannelAliases": ["Tilt fine"]
+      "fineChannelAliases": ["Tilt fine"],
+      "crossfade": true
     },
     "Movement Speed": {
       "type": "Speed",
@@ -316,15 +318,18 @@
     },
     "Cyan": {
       "type": "Single Color",
-      "color": "Cyan"
+      "color": "Cyan",
+      "crossfade": true
     },
     "Magenta": {
       "type": "Single Color",
-      "color": "Magenta"
+      "color": "Magenta",
+      "crossfade": true
     },
     "Yellow": {
       "type": "Single Color",
-      "color": "Yellow"
+      "color": "Yellow",
+      "crossfade": true
     },
     "Speed CMY / Dimmer": {
       "type": "Speed",

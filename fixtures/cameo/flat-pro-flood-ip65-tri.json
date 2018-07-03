@@ -24,7 +24,8 @@
   "availableChannels": {
     "Dimmer": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Color Macros Simple": {
       "name": "Color Macros",
@@ -77,7 +78,7 @@
         },
         {
           "range": [1, 255],
-          "name": "Strobe 1-20Hz"
+          "name": "Strobe 1…20Hz"
         }
       ]
     },
@@ -128,28 +129,31 @@
         },
         {
           "range": [81, 150],
-          "name": "Color jump slow-fast"
+          "name": "Color jump slow…fast"
         },
         {
           "range": [151, 255],
-          "name": "Color fade slow-fast"
+          "name": "Color fade slow…fast"
         }
       ]
     },
     "Red": {
       "type": "Single Color",
       "color": "Red",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Green": {
       "type": "Single Color",
       "color": "Green",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Blue": {
       "type": "Single Color",
       "color": "Blue",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     }
   },
   "modes": [

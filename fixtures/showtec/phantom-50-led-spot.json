@@ -32,12 +32,14 @@
     "Pan": {
       "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "crossfade": true
     },
     "Pan/Tilt Speed": {
       "type": "Speed",
@@ -173,7 +175,7 @@
         },
         {
           "range": [8, 215],
-          "name": "Strobe 0-10Hz",
+          "name": "Strobe 0…10Hz",
           "menuClick": "center"
         },
         {

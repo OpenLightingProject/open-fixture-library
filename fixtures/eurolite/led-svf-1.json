@@ -27,7 +27,6 @@
   "availableChannels": {
     "Programs": {
       "type": "Effect",
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 12],
@@ -111,7 +110,7 @@
         },
         {
           "range": [11, 255],
-          "name": "Speed slow-fast"
+          "name": "Speed slow…fast"
         }
       ]
     }

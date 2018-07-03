@@ -29,12 +29,14 @@
     "Pan": {
       "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 32768
+      "defaultValue": 32768,
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 32768
+      "defaultValue": 32768,
+      "crossfade": true
     },
     "Pan / Tilt Speed": {
       "type": "Speed",
@@ -48,15 +50,18 @@
     },
     "Red": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Green": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Blue": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     },
     "Color Macros": {
       "type": "Multi-Color",
@@ -116,12 +121,12 @@
         },
         {
           "range": [31, 200],
-          "name": "Strobe slow - fast",
+          "name": "Strobe slow…fast",
           "menuClick": "center"
         },
         {
           "range": [201, 250],
-          "name": "Random strobe slow - fast",
+          "name": "Random strobe slow…fast",
           "menuClick": "center"
         },
         {
@@ -132,7 +137,8 @@
       ]
     },
     "Dimmer Intensity": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     }
   },
   "modes": [

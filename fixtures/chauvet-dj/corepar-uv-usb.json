@@ -29,7 +29,8 @@
     "UV": {
       "type": "Single Color",
       "color": "UV",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Strobe": {
       "type": "Strobe",
@@ -41,7 +42,7 @@
         },
         {
           "range": [16, 255],
-          "name": "Slow-fast"
+          "name": "slow…fast"
         }
       ]
     },
@@ -50,7 +51,7 @@
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "Slow-fast"
+          "name": "slow…fast"
         }
       ]
     },
@@ -118,7 +119,8 @@
     },
     "Dimmer": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Dimmer Speed": {
       "type": "Maintenance",

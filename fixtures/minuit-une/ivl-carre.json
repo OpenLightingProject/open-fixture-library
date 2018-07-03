@@ -43,7 +43,8 @@
     },
     "Dimmer": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Blade": {
       "type": "Shutter",
@@ -58,17 +59,20 @@
     "Red": {
       "type": "Single Color",
       "color": "Red",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Green": {
       "type": "Single Color",
       "color": "Green",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Blue": {
       "type": "Single Color",
       "color": "Blue",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Shutter": {
       "type": "Shutter",

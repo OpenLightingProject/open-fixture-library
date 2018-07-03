@@ -25,17 +25,20 @@
     "Red": {
       "type": "Single Color",
       "color": "Red",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Green": {
       "type": "Single Color",
       "color": "Green",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Blue": {
       "type": "Single Color",
       "color": "Blue",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Color Macros": {
       "type": "Multi-Color",
@@ -60,7 +63,7 @@
         },
         {
           "range": [16, 255],
-          "name": "Strobe 0-20Hz"
+          "name": "Strobe 0…20Hz"
         }
       ]
     },
@@ -69,7 +72,7 @@
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "Speed slow-fast"
+          "name": "Speed slow…fast"
         }
       ]
     },
@@ -150,7 +153,8 @@
       ]
     },
     "Dimmer": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Dimmer Speed": {
       "type": "Maintenance",

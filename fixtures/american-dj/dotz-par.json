@@ -29,22 +29,26 @@
   "availableChannels": {
     "Master Dimmer": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Red": {
       "type": "Single Color",
       "color": "Red",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Green": {
       "type": "Single Color",
       "color": "Green",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Blue": {
       "type": "Single Color",
       "color": "Blue",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Color Macros": {
       "type": "Multi-Color",
@@ -52,7 +56,7 @@
       "capabilities": [
         {
           "range": [0, 0],
-          "name": "Nothing"
+          "name": "No function"
         },
         {
           "range": [1, 7],
@@ -190,7 +194,7 @@
       "capabilities": [
         {
           "range": [0, 0],
-          "name": "Nothing",
+          "name": "No function",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
@@ -246,7 +250,7 @@
         },
         {
           "range": [141, 255],
-          "name": "Nothing",
+          "name": "No function",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
@@ -258,7 +262,7 @@
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "slow-fast"
+          "name": "slow…fast"
         }
       ]
     },
@@ -281,7 +285,7 @@
         },
         {
           "range": [1, 255],
-          "name": "slow-fast"
+          "name": "slow…fast"
         }
       ]
     },

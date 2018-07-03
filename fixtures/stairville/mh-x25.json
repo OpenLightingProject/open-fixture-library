@@ -25,11 +25,13 @@
   "availableChannels": {
     "Pan": {
       "type": "Pan",
-      "fineChannelAliases": ["Pan fine"]
+      "fineChannelAliases": ["Pan fine"],
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
-      "fineChannelAliases": ["Tilt fine"]
+      "fineChannelAliases": ["Tilt fine"],
+      "crossfade": true
     },
     "Color": {
       "type": "Multi-Color",
@@ -135,11 +137,11 @@
         },
         {
           "range": [128, 191],
-          "name": "Rainbow clockwise slow-fast"
+          "name": "Rainbow clockwise slow…fast"
         },
         {
           "range": [192, 255],
-          "name": "Rainbow counterclockwise slow-fast"
+          "name": "Rainbow counterclockwise slow…fast"
         }
       ]
     },
@@ -156,7 +158,7 @@
         },
         {
           "range": [8, 215],
-          "name": "Strobe slow-fast"
+          "name": "Strobe slow…fast"
         },
         {
           "range": [216, 255],
@@ -233,11 +235,11 @@
         },
         {
           "range": [128, 191],
-          "name": "Rotate clockwise slow-fast"
+          "name": "Rotate clockwise slow…fast"
         },
         {
           "range": [192, 255],
-          "name": "Rotate counterclockwise slow-fast"
+          "name": "Rotate counterclockwise slow…fast"
         }
       ]
     },
@@ -250,11 +252,11 @@
         },
         {
           "range": [64, 147],
-          "name": "Rotate clockwise slow-fast"
+          "name": "Rotate clockwise slow…fast"
         },
         {
           "range": [148, 231],
-          "name": "Rotate counterclockwise slow-fast"
+          "name": "Rotate counterclockwise slow…fast"
         },
         {
           "range": [232, 255],
@@ -266,7 +268,8 @@
       "type": "Speed"
     },
     "Dimmer": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Special functions": {
       "type": "Maintenance",

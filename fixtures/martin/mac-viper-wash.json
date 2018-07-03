@@ -61,19 +61,23 @@
     },
     "Dimmer": {
       "type": "Intensity",
-      "fineChannelAliases": ["Dimmer fine"]
+      "fineChannelAliases": ["Dimmer fine"],
+      "crossfade": true
     },
     "Cyan": {
       "type": "Single Color",
-      "color": "Cyan"
+      "color": "Cyan",
+      "crossfade": true
     },
     "Magenta": {
       "type": "Single Color",
-      "color": "Magenta"
+      "color": "Magenta",
+      "crossfade": true
     },
     "Yellow": {
       "type": "Single Color",
-      "color": "Yellow"
+      "color": "Yellow",
+      "crossfade": true
     },
     "CTO": {
       "type": "Color Temperature",

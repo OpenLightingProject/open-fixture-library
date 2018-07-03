@@ -36,7 +36,8 @@
   },
   "availableChannels": {
     "Master Dimmer": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Strobe": {
       "type": "Strobe",
@@ -189,7 +190,8 @@
       "type": "Speed"
     },
     "Sound sensitivity": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Light control": {
       "type": "Multi-Color",
@@ -303,19 +305,23 @@
     },
     "Master Red": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Master Green": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Master Blue": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     },
     "Master White": {
       "type": "Single Color",
-      "color": "White"
+      "color": "White",
+      "crossfade": true
     },
     "Head speed": {
       "type": "Speed",
@@ -344,7 +350,7 @@
       "capabilities": [
         {
           "range": [0, 199],
-          "name": "no function"
+          "name": "No function"
         },
         {
           "range": [200, 209],
@@ -352,7 +358,7 @@
         },
         {
           "range": [210, 240],
-          "name": "no function"
+          "name": "No function"
         },
         {
           "range": [241, 255],
@@ -371,7 +377,8 @@
       "fineChannelAliases": ["Tilt $pixelKey fine"]
     },
     "Dimmer $pixelKey": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Head Speed $pixelKey simple": {
       "name": "Head Speed $pixelKey",
@@ -512,19 +519,23 @@
     },
     "Red $pixelKey": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Green $pixelKey": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Blue $pixelKey": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     },
     "White $pixelKey": {
       "type": "Single Color",
-      "color": "White"
+      "color": "White",
+      "crossfade": true
     },
     "Mode $pixelKey": {
       "type": "Maintenance",
@@ -532,7 +543,7 @@
       "capabilities": [
         {
           "range": [0, 7],
-          "name": "no function",
+          "name": "No function",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
@@ -574,7 +585,7 @@
         },
         {
           "range": [123, 199],
-          "name": "no function",
+          "name": "No function",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
@@ -588,7 +599,7 @@
         },
         {
           "range": [225, 255],
-          "name": "no function",
+          "name": "No function",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
@@ -599,7 +610,8 @@
       "type": "Speed"
     },
     "Sound sensitivity $pixelKey": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     }
   },
   "modes": [

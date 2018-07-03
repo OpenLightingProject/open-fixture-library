@@ -29,18 +29,20 @@
   "availableChannels": {
     "Pan": {
       "type": "Pan",
-      "fineChannelAliases": ["Pan fine"]
+      "fineChannelAliases": ["Pan fine"],
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
-      "fineChannelAliases": ["Tilt fine"]
+      "fineChannelAliases": ["Tilt fine"],
+      "crossfade": true
     },
     "Pan/Tilt Speed": {
       "type": "Speed",
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "fast-slow"
+          "name": "fast…slow"
         }
       ]
     },
@@ -49,7 +51,7 @@
       "capabilities": [
         {
           "range": [0, 15],
-          "name": "Not used"
+          "name": "No function"
         },
         {
           "range": [16, 35],
@@ -106,7 +108,7 @@
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "fast-slow"
+          "name": "fast…slow"
         }
       ]
     },
@@ -123,7 +125,7 @@
         },
         {
           "range": [16, 131],
-          "name": "Strobe slow-fast"
+          "name": "Strobe slow…fast"
         },
         {
           "range": [132, 139],
@@ -131,7 +133,7 @@
         },
         {
           "range": [140, 181],
-          "name": "RampUp slow-fast"
+          "name": "RampUp slow…fast"
         },
         {
           "range": [182, 189],
@@ -139,7 +141,7 @@
         },
         {
           "range": [190, 231],
-          "name": "RampDown slow-fast"
+          "name": "RampDown slow…fast"
         },
         {
           "range": [232, 239],
@@ -157,29 +159,34 @@
     },
     "Red": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Green": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Blue": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     },
     "White": {
       "type": "Single Color",
-      "color": "White"
+      "color": "White",
+      "crossfade": true
     },
     "Dimmer": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Channel Functions": {
       "type": "Maintenance",
       "capabilities": [
         {
           "range": [0, 69],
-          "name": "Not used"
+          "name": "No function"
         },
         {
           "range": [70, 79],
@@ -233,7 +240,7 @@
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "slow-fast"
+          "name": "slow…fast"
         }
       ]
     }

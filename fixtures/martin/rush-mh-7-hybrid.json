@@ -30,7 +30,8 @@
   "availableChannels": {
     "Dimmer": {
       "type": "Intensity",
-      "fineChannelAliases": ["Dimmer fine"]
+      "fineChannelAliases": ["Dimmer fine"],
+      "crossfade": true
     },
     "Shutter": {
       "type": "Shutter",
@@ -568,7 +569,8 @@
     },
     "Rotating Gobo Indexing": {
       "type": "Intensity",
-      "fineChannelAliases": ["Rotating Gobo Indexing fine"]
+      "fineChannelAliases": ["Rotating Gobo Indexing fine"],
+      "crossfade": true
     },
     "Rotating Gobo Speed": {
       "type": "Speed",
@@ -839,7 +841,8 @@
     },
     "Rotating Prism Indexing": {
       "type": "Intensity",
-      "fineChannelAliases": ["Rotating Prism Indexing fine"]
+      "fineChannelAliases": ["Rotating Prism Indexing fine"],
+      "crossfade": true
     },
     "Rotating Prism Speed": {
       "type": "Speed",
@@ -904,11 +907,13 @@
     },
     "Pan": {
       "type": "Pan",
-      "fineChannelAliases": ["Pan fine"]
+      "fineChannelAliases": ["Pan fine"],
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
-      "fineChannelAliases": ["Tilt fine"]
+      "fineChannelAliases": ["Tilt fine"],
+      "crossfade": true
     },
     "Maintenance": {
       "type": "Maintenance",

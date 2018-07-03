@@ -37,7 +37,6 @@
     "Strobe / Shutter": {
       "type": "Strobe",
       "defaultValue": 30,
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 19],
@@ -68,7 +67,8 @@
     },
     "Dimmer fade": {
       "type": "Intensity",
-      "fineChannelAliases": ["Dimmer fade fine"]
+      "fineChannelAliases": ["Dimmer fade fine"],
+      "crossfade": true
     },
     "Cyan": {
       "type": "Single Color",
@@ -111,7 +111,6 @@
     },
     "Color Wheel": {
       "type": "Multi-Color",
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 0],
@@ -253,7 +252,6 @@
     "Aerial effects wheel: gobo rotation": {
       "type": "Gobo",
       "fineChannelAliases": ["Aerial effects wheel: gobo rotation fine"],
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 600],
@@ -280,7 +278,6 @@
     "Aerial effects wheel: gobo selection": {
       "type": "Gobo",
       "defaultValue": 0,
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 9],
@@ -430,7 +427,6 @@
     },
     "Static gobo wheel": {
       "type": "Gobo",
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 0],
@@ -598,15 +594,16 @@
     },
     "Pan": {
       "type": "Pan",
-      "fineChannelAliases": ["Pan fine"]
+      "fineChannelAliases": ["Pan fine"],
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
-      "fineChannelAliases": ["Tilt fine"]
+      "fineChannelAliases": ["Tilt fine"],
+      "crossfade": true
     },
     "Fixture control / settings": {
       "type": "Maintenance",
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 9],
@@ -836,7 +833,6 @@
     "Quadray control": {
       "type": "Effect",
       "defaultValue": 101,
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 40],
@@ -954,7 +950,6 @@
     "Ray 1 Rotation": {
       "type": "Speed",
       "defaultValue": 128,
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 2],
@@ -986,7 +981,6 @@
     "Ray 2 Rotation": {
       "type": "Speed",
       "defaultValue": 128,
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 2],
@@ -1018,7 +1012,6 @@
     "Ray 3 Rotation": {
       "type": "Speed",
       "defaultValue": 128,
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 2],
@@ -1050,7 +1043,6 @@
     "Ray 4 Rotation": {
       "type": "Speed",
       "defaultValue": 128,
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 2],
@@ -1151,7 +1143,8 @@
       ]
     },
     "Static FX amount": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     }
   },
   "modes": [

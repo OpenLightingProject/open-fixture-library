@@ -27,11 +27,13 @@
   "availableChannels": {
     "Pan": {
       "type": "Pan",
-      "fineChannelAliases": ["Pan fine"]
+      "fineChannelAliases": ["Pan fine"],
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
-      "fineChannelAliases": ["Tilt fine"]
+      "fineChannelAliases": ["Tilt fine"],
+      "crossfade": true
     },
     "Color": {
       "type": "Multi-Color",
@@ -126,7 +128,7 @@
         },
         {
           "range": [160, 255],
-          "name": "Color scroll slow-fast"
+          "name": "Color scroll slow…fast"
         }
       ]
     },
@@ -171,7 +173,7 @@
         },
         {
           "range": [128, 255],
-          "name": "Gobo scroll slow-fast"
+          "name": "Gobo scroll slow…fast"
         }
       ]
     },
@@ -179,7 +181,8 @@
       "type": "Strobe"
     },
     "Dimmer": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Horizontal Vertical Run": {
       "type": "Effect"

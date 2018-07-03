@@ -61,19 +61,23 @@
     },
     "Dimmer fade": {
       "type": "Intensity",
-      "fineChannelAliases": ["Dimmer fade fine"]
+      "fineChannelAliases": ["Dimmer fade fine"],
+      "crossfade": true
     },
     "Cyan": {
       "type": "Single Color",
-      "color": "Cyan"
+      "color": "Cyan",
+      "crossfade": true
     },
     "Magenta": {
       "type": "Single Color",
-      "color": "Magenta"
+      "color": "Magenta",
+      "crossfade": true
     },
     "Yellow": {
       "type": "Single Color",
-      "color": "Yellow"
+      "color": "Yellow",
+      "crossfade": true
     },
     "CTO": {
       "type": "Color Temperature",
@@ -526,7 +530,8 @@
     },
     "Animation Wheel Indexing": {
       "type": "Intensity",
-      "defaultValue": 127
+      "defaultValue": 127,
+      "crossfade": true
     },
     "Animation Wheel Rotation": {
       "type": "Speed",
@@ -812,7 +817,7 @@
       "capabilities": [
         {
           "range": [0, 9],
-          "name": "no function"
+          "name": "No function"
         },
         {
           "range": [10, 14],
@@ -848,7 +853,7 @@
         },
         {
           "range": [50, 54],
-          "name": "no function"
+          "name": "No function"
         },
         {
           "range": [55, 59],
@@ -928,7 +933,7 @@
         },
         {
           "range": [135, 144],
-          "name": "no function"
+          "name": "No function"
         },
         {
           "range": [145, 149],
@@ -980,7 +985,7 @@
         },
         {
           "range": [205, 214],
-          "name": "no function"
+          "name": "No function"
         },
         {
           "range": [215, 219],
@@ -1012,7 +1017,7 @@
         },
         {
           "range": [250, 255],
-          "name": "no function"
+          "name": "No function"
         }
       ]
     },

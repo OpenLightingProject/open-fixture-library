@@ -129,15 +129,18 @@
       ]
     },
     "Dimmer": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Pan": {
       "type": "Pan",
-      "fineChannelAliases": ["Pan fine"]
+      "fineChannelAliases": ["Pan fine"],
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
-      "fineChannelAliases": ["Tilt fine"]
+      "fineChannelAliases": ["Tilt fine"],
+      "crossfade": true
     },
     "Fixture Control Settings": {
       "type": "Maintenance",
@@ -406,19 +409,23 @@
     },
     "Red": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Green": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Blue": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     },
     "White": {
       "type": "Single Color",
-      "color": "White"
+      "color": "White",
+      "crossfade": true
     }
   },
   "modes": [

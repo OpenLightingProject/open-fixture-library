@@ -60,7 +60,7 @@
       "capabilities": [
         {
           "range": [0, 127],
-          "name": "Nothing"
+          "name": "No function"
         },
         {
           "range": [128, 189],
@@ -81,7 +81,7 @@
       "capabilities": [
         {
           "range": [0, 127],
-          "name": "Nothing"
+          "name": "No function"
         },
         {
           "range": [128, 189],
@@ -102,7 +102,7 @@
       "capabilities": [
         {
           "range": [0, 0],
-          "name": "Nothing"
+          "name": "No function"
         },
         {
           "range": [1, 4],
@@ -371,7 +371,7 @@
       "capabilities": [
         {
           "range": [0, 0],
-          "name": "Nothing"
+          "name": "No function"
         },
         {
           "range": [1, 20],
@@ -484,7 +484,7 @@
         },
         {
           "range": [236, 255],
-          "name": "Nothing"
+          "name": "No function"
         }
       ]
     },
@@ -501,7 +501,7 @@
         },
         {
           "range": [85, 99],
-          "name": "Nothing"
+          "name": "No function"
         },
         {
           "range": [100, 119],
@@ -533,7 +533,7 @@
         },
         {
           "range": [240, 255],
-          "name": "Nothing"
+          "name": "No function"
         }
       ]
     },
@@ -578,19 +578,23 @@
   "templateChannels": {
     "Red $pixelKey": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Green $pixelKey": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Blue $pixelKey": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     },
     "White $pixelKey": {
       "type": "Single Color",
-      "color": "White"
+      "color": "White",
+      "crossfade": true
     }
   },
   "modes": [

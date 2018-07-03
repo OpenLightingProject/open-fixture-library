@@ -44,12 +44,14 @@
     "Pan": {
       "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "crossfade": true
     },
     "Red": {
       "type": "Single Color",
@@ -145,7 +147,7 @@
         },
         {
           "range": [232, 255],
-          "name": "Color fade slow-fast"
+          "name": "Color fade slow…fast"
         }
       ]
     },
@@ -329,7 +331,8 @@
     },
     "Color Presets Dimmer": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Shutter": {
       "type": "Shutter",
@@ -345,7 +348,7 @@
         },
         {
           "range": [64, 95],
-          "name": "Strobe 1-25Hz"
+          "name": "Strobe 1…25Hz"
         },
         {
           "range": [96, 127],
@@ -361,7 +364,7 @@
         },
         {
           "range": [192, 223],
-          "name": "Random slow-fast"
+          "name": "Random slow…fast"
         },
         {
           "range": [224, 255],
@@ -490,7 +493,7 @@
       "capabilities": [
         {
           "range": [0, 125],
-          "name": "CW fast-slow"
+          "name": "CW fast…slow"
         },
         {
           "range": [126, 130],
@@ -498,7 +501,7 @@
         },
         {
           "range": [131, 255],
-          "name": "CCW slow-fast"
+          "name": "CCW slow…fast"
         }
       ]
     },
@@ -531,7 +534,7 @@
       "capabilities": [
         {
           "range": [0, 225],
-          "name": "Speed fast-slow"
+          "name": "Speed fast…slow"
         },
         {
           "range": [226, 235],
@@ -614,37 +617,44 @@
     "Red $pixelKey": {
       "type": "Single Color",
       "color": "Red",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Blue $pixelKey": {
       "type": "Single Color",
       "color": "Blue",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Green $pixelKey": {
       "type": "Single Color",
       "color": "Green",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "White $pixelKey": {
       "type": "Single Color",
       "color": "White",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Cyan $pixelKey": {
       "type": "Single Color",
       "color": "Cyan",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Amber $pixelKey": {
       "type": "Single Color",
       "color": "Amber",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "UV $pixelKey": {
       "type": "Single Color",
       "color": "UV",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     }
   },
   "modes": [

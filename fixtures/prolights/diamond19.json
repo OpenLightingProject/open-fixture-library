@@ -50,12 +50,14 @@
     "Pan": {
       "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "crossfade": true
     },
     "Movement Speed": {
       "type": "Speed",
@@ -63,7 +65,7 @@
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "fast-slow"
+          "name": "fast…slow"
         }
       ]
     },
@@ -123,7 +125,7 @@
         },
         {
           "range": [64, 95],
-          "name": "Strobe slow-fast"
+          "name": "Strobe slow…fast"
         },
         {
           "range": [96, 127],
@@ -139,7 +141,7 @@
         },
         {
           "range": [192, 223],
-          "name": "Random strobe slow-fast"
+          "name": "Random strobe slow…fast"
         },
         {
           "range": [224, 255],
@@ -166,7 +168,8 @@
       ]
     },
     "Dimmer": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Virtual Color Function": {
       "type": "Multi-Color",
@@ -385,19 +388,23 @@
     },
     "Red-All": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Green-All": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Blue-All": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     },
     "White-All": {
       "type": "Single Color",
-      "color": "White"
+      "color": "White",
+      "crossfade": true
     },
     "Zoom": {
       "type": "Zoom",
@@ -629,7 +636,7 @@
         },
         {
           "range": [4, 127],
-          "name": "CW slow-fast"
+          "name": "CW slow…fast"
         },
         {
           "range": [128, 131],
@@ -637,7 +644,7 @@
         },
         {
           "range": [132, 255],
-          "name": "CCW slow-fast"
+          "name": "CCW slow…fast"
         }
       ]
     },
@@ -735,19 +742,23 @@
   "templateChannels": {
     "Red $pixelKey": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Green $pixelKey": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Blue $pixelKey": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     },
     "White $pixelKey": {
       "type": "Single Color",
-      "color": "White"
+      "color": "White",
+      "crossfade": true
     }
   },
   "modes": [

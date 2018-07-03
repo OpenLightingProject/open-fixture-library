@@ -26,12 +26,14 @@
     "Pan": {
       "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Movement Speed": {
       "type": "Speed",
@@ -39,33 +41,38 @@
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "fast - slow"
+          "name": "fast…slow"
         }
       ]
     },
     "Dimming": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Red": {
       "type": "Single Color",
       "color": "Red",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Green": {
       "type": "Single Color",
       "color": "Green",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Blue": {
       "type": "Single Color",
       "color": "Blue",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "White": {
       "type": "Single Color",
       "color": "White",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "RGBW preset": {
       "type": "Multi-Color",
@@ -73,7 +80,7 @@
       "capabilities": [
         {
           "range": [0, 4],
-          "name": "no function"
+          "name": "No function"
         },
         {
           "range": [5, 44],
@@ -81,7 +88,7 @@
         },
         {
           "range": [45, 49],
-          "name": "no function"
+          "name": "No function"
         },
         {
           "range": [50, 94],
@@ -89,7 +96,7 @@
         },
         {
           "range": [95, 99],
-          "name": "no function"
+          "name": "No function"
         },
         {
           "range": [100, 149],
@@ -97,7 +104,7 @@
         },
         {
           "range": [150, 154],
-          "name": "no function"
+          "name": "No function"
         },
         {
           "range": [155, 255],

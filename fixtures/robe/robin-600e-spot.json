@@ -39,11 +39,13 @@
   "availableChannels": {
     "Pan": {
       "type": "Pan",
-      "fineChannelAliases": ["Pan fine"]
+      "fineChannelAliases": ["Pan fine"],
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
-      "fineChannelAliases": ["Tilt fine"]
+      "fineChannelAliases": ["Tilt fine"],
+      "crossfade": true
     },
     "Pan/Tilt Speed": {
       "type": "Speed",
@@ -233,7 +235,7 @@
         },
         {
           "range": [190, 215],
-          "name": "Forward Rainbow fast - slow"
+          "name": "Forward Rainbow fast…slow"
         },
         {
           "range": [216, 217],
@@ -241,7 +243,7 @@
         },
         {
           "range": [218, 243],
-          "name": "Backward Rainbow slow - fast"
+          "name": "Backward Rainbow slow…fast"
         },
         {
           "range": [244, 249],
@@ -249,21 +251,24 @@
         },
         {
           "range": [250, 255],
-          "name": "Auto random color selection fast - slow"
+          "name": "Auto random color selection fast…slow"
         }
       ]
     },
     "Cyan": {
       "type": "Single Color",
-      "color": "Cyan"
+      "color": "Cyan",
+      "crossfade": true
     },
     "Magenta": {
       "type": "Single Color",
-      "color": "Magenta"
+      "color": "Magenta",
+      "crossfade": true
     },
     "Yellow": {
       "type": "Single Color",
-      "color": "Yellow"
+      "color": "Yellow",
+      "crossfade": true
     },
     "CTO Filter": {
       "type": "Color Temperature",
@@ -279,7 +284,7 @@
       "capabilities": [
         {
           "range": [0, 7],
-          "name": "No Function"
+          "name": "No function"
         },
         {
           "range": [8, 15],
@@ -407,7 +412,7 @@
         },
         {
           "range": [250, 255],
-          "name": "Auto random selection fast - slow"
+          "name": "Auto random selection fast…slow"
         }
       ]
     },
@@ -546,7 +551,7 @@
         },
         {
           "range": [202, 221],
-          "name": "Forward Gobo wheel rotation fast - slow"
+          "name": "Forward Gobo wheel rotation fast…slow"
         },
         {
           "range": [222, 223],
@@ -554,7 +559,7 @@
         },
         {
           "range": [224, 243],
-          "name": "Backward Gobo wheel rotation slow - fast"
+          "name": "Backward Gobo wheel rotation slow…fast"
         },
         {
           "range": [244, 249],
@@ -562,7 +567,7 @@
         },
         {
           "range": [250, 255],
-          "name": "Auto Random Gobo selection fast - slow"
+          "name": "Auto Random Gobo selection fast…slow"
         }
       ]
     },
@@ -691,7 +696,7 @@
         },
         {
           "range": [202, 221],
-          "name": "Forward Gobo wheel rotation fast - slow"
+          "name": "Forward Gobo wheel rotation fast…slow"
         },
         {
           "range": [222, 223],
@@ -699,7 +704,7 @@
         },
         {
           "range": [224, 243],
-          "name": "Backward Gobo wheel rotation slow - fast"
+          "name": "Backward Gobo wheel rotation slow…fast"
         },
         {
           "range": [244, 249],
@@ -707,7 +712,7 @@
         },
         {
           "range": [250, 255],
-          "name": "Auto Random Gobo selection fast - slow"
+          "name": "Auto Random Gobo selection fast…slow"
         }
       ]
     },
@@ -721,7 +726,7 @@
         },
         {
           "range": [1, 127],
-          "name": "Forward rotation fast - slow"
+          "name": "Forward rotation fast…slow"
         },
         {
           "range": [128, 129],
@@ -729,7 +734,7 @@
         },
         {
           "range": [130, 255],
-          "name": "Backward rotation slow - fast"
+          "name": "Backward rotation slow…fast"
         }
       ]
     },
@@ -819,7 +824,7 @@
         },
         {
           "range": [1, 127],
-          "name": "Forward rotation fast - slow"
+          "name": "Forward rotation fast…slow"
         },
         {
           "range": [128, 129],
@@ -827,7 +832,7 @@
         },
         {
           "range": [130, 255],
-          "name": "Backward rotation slow - fast"
+          "name": "Backward rotation slow…fast"
         }
       ]
     },
@@ -849,11 +854,11 @@
         },
         {
           "range": [192, 219],
-          "name": "Pulse Opening slow - fast"
+          "name": "Pulse Opening slow…fast"
         },
         {
           "range": [220, 247],
-          "name": "Pulse Closing fast - slow"
+          "name": "Pulse Closing fast…slow"
         },
         {
           "range": [248, 249],
@@ -905,7 +910,7 @@
         },
         {
           "range": [64, 95],
-          "name": "Strobe slow - fast"
+          "name": "Strobe slow…fast"
         },
         {
           "range": [96, 127],
@@ -913,19 +918,19 @@
         },
         {
           "range": [128, 143],
-          "name": "Opening Pulse slow - fast"
+          "name": "Opening Pulse slow…fast"
         },
         {
           "range": [144, 159],
-          "name": "Closing Pulse fast - slow"
+          "name": "Closing Pulse fast…slow"
         },
         {
           "range": [160, 191],
-          "name": "Zap slow - fast"
+          "name": "Zap slow…fast"
         },
         {
           "range": [192, 223],
-          "name": "Random Strobe slow - fast"
+          "name": "Random Strobe slow…fast"
         },
         {
           "range": [224, 255],
@@ -955,15 +960,15 @@
         },
         {
           "range": [190, 211],
-          "name": "Pulse Closing slow - fast"
+          "name": "Pulse Closing slow…fast"
         },
         {
           "range": [212, 233],
-          "name": "Pulse Opening fast - slow"
+          "name": "Pulse Opening fast…slow"
         },
         {
           "range": [234, 255],
-          "name": "Ramping fast - slow"
+          "name": "Ramping fast…slow"
         }
       ]
     },

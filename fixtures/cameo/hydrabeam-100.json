@@ -94,24 +94,28 @@
       ]
     },
     "Sound Sensitivity": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Auto Mode Speed": {
       "type": "Speed",
       "defaultValue": 127
     },
     "Dimmer": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Pan": {
       "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 32639
+      "defaultValue": 32639,
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 32639
+      "defaultValue": 32639,
+      "crossfade": true
     },
     "Head Speed": {
       "type": "Speed",
@@ -126,7 +130,7 @@
         },
         {
           "range": [11, 255],
-          "name": "Strobe slow-fast"
+          "name": "Strobe slow…fast"
         }
       ]
     },
@@ -232,19 +236,23 @@
     },
     "Red": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Green": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Blue": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     },
     "White": {
       "type": "Single Color",
-      "color": "White"
+      "color": "White",
+      "crossfade": true
     }
   },
   "modes": [

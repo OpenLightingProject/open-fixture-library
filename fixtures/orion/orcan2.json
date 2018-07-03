@@ -20,7 +20,8 @@
   "availableChannels": {
     "Master Dimmr": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Strobe": {
       "type": "Strobe"
@@ -31,7 +32,7 @@
       "capabilities": [
         {
           "range": [0, 50],
-          "name": "Nothing"
+          "name": "No function"
         },
         {
           "range": [51, 100],
@@ -56,15 +57,18 @@
     },
     "Red": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Green": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Blue": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     }
   },
   "modes": [

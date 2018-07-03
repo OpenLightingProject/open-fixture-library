@@ -28,9 +28,6 @@
       "type": "Strobe",
       "defaultValue": 0,
       "highlightValue": 200,
-      "invert": false,
-      "constant": false,
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 10],
@@ -38,11 +35,11 @@
         },
         {
           "range": [11, 74],
-          "name": "Gobo strobe fast-slow"
+          "name": "Gobo strobe fast…slow"
         },
         {
           "range": [75, 138],
-          "name": "Color strobe fast-slow"
+          "name": "Color strobe fast…slow"
         },
         {
           "range": [139, 170],
@@ -343,11 +340,13 @@
     },
     "Pan": {
       "type": "Pan",
-      "defaultValue": 127
+      "defaultValue": 127,
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
-      "defaultValue": 127
+      "defaultValue": 127,
+      "crossfade": true
     },
     "Movement Speed": {
       "type": "Speed",
@@ -359,7 +358,7 @@
         },
         {
           "range": [1, 255],
-          "name": "fast-slow"
+          "name": "fast…slow"
         }
       ]
     },
@@ -373,7 +372,7 @@
         },
         {
           "range": [1, 255],
-          "name": "fast-slow"
+          "name": "fast…slow"
         }
       ]
     }

@@ -28,13 +28,14 @@
         },
         {
           "range": [1, 255],
-          "name": "Strobe 1-30Hz"
+          "name": "Strobe 1…30Hz"
         }
       ]
     },
     "Brightness": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     }
   },
   "modes": [

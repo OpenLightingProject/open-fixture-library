@@ -31,11 +31,13 @@
   "availableChannels": {
     "Pan": {
       "type": "Pan",
-      "fineChannelAliases": ["Pan fine"]
+      "fineChannelAliases": ["Pan fine"],
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
-      "fineChannelAliases": ["Tilt fine"]
+      "fineChannelAliases": ["Tilt fine"],
+      "crossfade": true
     },
     "Pan / Tilt Speed": {
       "type": "Speed",
@@ -50,11 +52,11 @@
         },
         {
           "range": [26, 127],
-          "name": "Vector mode fast - slow"
+          "name": "Vector mode fast…slow"
         },
         {
           "range": [128, 247],
-          "name": "Tracking mode fast - slow"
+          "name": "Tracking mode fast…slow"
         },
         {
           "range": [248, 255],
@@ -85,7 +87,7 @@
         },
         {
           "range": [10, 66],
-          "name": "Synchro strobe 0 - 10Hz"
+          "name": "Synchro strobe 0…10Hz"
         },
         {
           "range": [67, 68],
@@ -93,7 +95,7 @@
         },
         {
           "range": [69, 125],
-          "name": "Pulse sequences (close slow, open fast) slow - fast"
+          "name": "Pulse sequences (close slow, open fast) slow…fast"
         },
         {
           "range": [126, 127],
@@ -101,7 +103,7 @@
         },
         {
           "range": [128, 184],
-          "name": "Pulse sequences (close fast, open slow) slow - fast"
+          "name": "Pulse sequences (close fast, open slow) slow…fast"
         },
         {
           "range": [185, 187],
@@ -109,7 +111,7 @@
         },
         {
           "range": [188, 244],
-          "name": "Random strobe slow - fast"
+          "name": "Random strobe slow…fast"
         },
         {
           "range": [245, 255],
@@ -157,7 +159,7 @@
         },
         {
           "range": [193, 255],
-          "name": "Gobo wheel rotation slow - fast"
+          "name": "Gobo wheel rotation slow…fast"
         }
       ]
     },
@@ -183,7 +185,7 @@
         },
         {
           "range": [11, 131],
-          "name": "Continuous CW rotation fast - slow"
+          "name": "Continuous CW rotation fast…slow"
         },
         {
           "range": [132, 134],
@@ -191,7 +193,7 @@
         },
         {
           "range": [135, 255],
-          "name": "Continuous CCW rotation slow - fast"
+          "name": "Continuous CCW rotation slow…fast"
         }
       ]
     },
@@ -208,7 +210,7 @@
         },
         {
           "range": [21, 136],
-          "name": "Continuous CW rotation fast - slow"
+          "name": "Continuous CW rotation fast…slow"
         },
         {
           "range": [137, 139],
@@ -216,7 +218,7 @@
         },
         {
           "range": [140, 255],
-          "name": "Continuous CCW rotation slow - fast"
+          "name": "Continuous CCW rotation slow…fast"
         }
       ]
     },
@@ -277,7 +279,7 @@
         },
         {
           "range": [128, 190],
-          "name": "Forwards rainbow effect fast - slow"
+          "name": "Forwards rainbow effect fast…slow"
         },
         {
           "range": [191, 192],
@@ -285,7 +287,7 @@
         },
         {
           "range": [193, 255],
-          "name": "Backwards rainbow effect slow - fast"
+          "name": "Backwards rainbow effect slow…fast"
         }
       ]
     },
@@ -298,7 +300,7 @@
         },
         {
           "range": [10, 249],
-          "name": "Gobo shake slow - fast"
+          "name": "Gobo shake slow…fast"
         },
         {
           "range": [250, 255],
@@ -395,7 +397,7 @@
         },
         {
           "range": [1, 249],
-          "name": "Vector mode fast - slow"
+          "name": "Vector mode fast…slow"
         },
         {
           "range": [250, 255],
@@ -408,7 +410,7 @@
       "capabilities": [
         {
           "range": [0, 127],
-          "name": "Fan speed fast - slow"
+          "name": "Fan speed fast…slow"
         },
         {
           "range": [128, 139],
@@ -498,7 +500,7 @@
         },
         {
           "range": [1, 126],
-          "name": "Forwards rotation fast - slow"
+          "name": "Forwards rotation fast…slow"
         },
         {
           "range": [127, 128],
@@ -506,7 +508,7 @@
         },
         {
           "range": [129, 255],
-          "name": "Backwards rotation slow - fast"
+          "name": "Backwards rotation slow…fast"
         }
       ]
     },
@@ -544,7 +546,7 @@
         },
         {
           "range": [224, 255],
-          "name": "Gobo wheel rotation slow - fast"
+          "name": "Gobo wheel rotation slow…fast"
         }
       ]
     },
@@ -557,7 +559,7 @@
         },
         {
           "range": [128, 190],
-          "name": "Forwards gobo rotation fast - slow"
+          "name": "Forwards gobo rotation fast…slow"
         },
         {
           "range": [191, 192],
@@ -565,7 +567,7 @@
         },
         {
           "range": [193, 255],
-          "name": "Backwards gobo rotation slow - fast"
+          "name": "Backwards gobo rotation slow…fast"
         }
       ]
     },
@@ -584,7 +586,7 @@
         },
         {
           "range": [64, 95],
-          "name": "Strobe 0 - 10Hz"
+          "name": "Strobe 0…10Hz"
         },
         {
           "range": [96, 127],
@@ -592,7 +594,7 @@
         },
         {
           "range": [128, 159],
-          "name": "Pulse sequences slow - fast"
+          "name": "Pulse sequences slow…fast"
         },
         {
           "range": [160, 191],
@@ -600,7 +602,7 @@
         },
         {
           "range": [192, 223],
-          "name": "Random strobe slow - fast"
+          "name": "Random strobe slow…fast"
         },
         {
           "range": [224, 255],

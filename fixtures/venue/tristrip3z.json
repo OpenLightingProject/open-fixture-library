@@ -38,7 +38,8 @@
   "availableChannels": {
     "Dimmer": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Strobe": {
       "type": "Strobe",
@@ -49,7 +50,7 @@
         },
         {
           "range": [16, 255],
-          "name": "Strobe 0-20Hz"
+          "name": "Strobe 0…20Hz"
         }
       ]
     },
@@ -96,7 +97,7 @@
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "slow - fast"
+          "name": "slow…fast"
         }
       ]
     },
@@ -256,15 +257,18 @@
   "templateChannels": {
     "Red $pixelKey": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Green $pixelKey": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Blue $pixelKey": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     }
   },
   "modes": [

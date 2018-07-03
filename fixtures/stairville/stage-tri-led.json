@@ -37,7 +37,8 @@
   },
   "availableChannels": {
     "Dimmer": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Program": {
       "type": "Effect",
@@ -224,7 +225,8 @@
       "type": "Speed"
     },
     "Sound Sensitivity": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Strobe": {
       "type": "Strobe"
@@ -250,15 +252,18 @@
   "templateChannels": {
     "Red $pixelKey": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Green $pixelKey": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Blue $pixelKey": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     }
   },
   "modes": [

@@ -54,19 +54,23 @@
     },
     "Red": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Green": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Blue": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     },
     "White": {
       "type": "Single Color",
-      "color": "White"
+      "color": "White",
+      "crossfade": true
     },
     "Master Dimmer": {
       "type": "Intensity",
@@ -77,7 +81,7 @@
       "capabilities": [
         {
           "range": [0, 7],
-          "name": "Nothing",
+          "name": "No function",
           "color": "#000000"
         },
         {
@@ -170,7 +174,7 @@
         },
         {
           "range": [5, 250],
-          "name": "Strobing slow - fast"
+          "name": "Strobing slow…fast"
         },
         {
           "range": [251, 255],
@@ -187,11 +191,11 @@
         },
         {
           "range": [8, 127],
-          "name": "CW slow - fast"
+          "name": "CW slow…fast"
         },
         {
           "range": [128, 255],
-          "name": "CCW fast - slow"
+          "name": "CCW fast…slow"
         }
       ]
     },
@@ -200,7 +204,7 @@
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "slow - fast"
+          "name": "slow…fast"
         }
       ]
     },
@@ -209,7 +213,7 @@
       "capabilities": [
         {
           "range": [0, 7],
-          "name": "Nothing"
+          "name": "No function"
         },
         {
           "range": [8, 32],
@@ -258,11 +262,11 @@
       "capabilities": [
         {
           "range": [0, 7],
-          "name": "Nothing"
+          "name": "No function"
         },
         {
           "range": [8, 255],
-          "name": "Tilt Move Forward/Back slow - fast"
+          "name": "Tilt Move Forward/Back slow…fast"
         }
       ]
     },
@@ -271,7 +275,7 @@
       "capabilities": [
         {
           "range": [0, 50],
-          "name": "Nothing"
+          "name": "No function"
         },
         {
           "range": [51, 100],
@@ -279,7 +283,7 @@
         },
         {
           "range": [101, 150],
-          "name": "Nothing"
+          "name": "No function"
         },
         {
           "range": [151, 200],
@@ -287,7 +291,7 @@
         },
         {
           "range": [201, 250],
-          "name": "Nothing"
+          "name": "No function"
         },
         {
           "range": [251, 255],

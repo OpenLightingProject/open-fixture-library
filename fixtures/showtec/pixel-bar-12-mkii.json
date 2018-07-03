@@ -49,7 +49,8 @@
   "availableChannels": {
     "Master Dimmer": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Programs": {
       "type": "Effect",
@@ -321,7 +322,7 @@
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "Speed slow-fast"
+          "name": "Speed slow…fast"
         }
       ]
     },
@@ -344,7 +345,7 @@
         },
         {
           "range": [16, 255],
-          "name": "Strobe 0-11Hz"
+          "name": "Strobe 0…11Hz"
         }
       ]
     }
@@ -353,17 +354,20 @@
     "Red $pixelKey": {
       "type": "Single Color",
       "color": "Red",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Green $pixelKey": {
       "type": "Single Color",
       "color": "Green",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Blue $pixelKey": {
       "type": "Single Color",
       "color": "Blue",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     }
   },
   "modes": [

@@ -245,7 +245,7 @@
         },
         {
           "range": [10, 255],
-          "name": "Strobe slow-fast"
+          "name": "Strobe slow…fast"
         }
       ]
     },
@@ -259,7 +259,7 @@
         },
         {
           "range": [10, 255],
-          "name": "Chase speed slow-fast"
+          "name": "Chase speed slow…fast"
         }
       ]
     }
@@ -268,22 +268,26 @@
     "Red $pixelKey": {
       "type": "Single Color",
       "color": "Red",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Green $pixelKey": {
       "type": "Single Color",
       "color": "Green",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Blue $pixelKey": {
       "type": "Single Color",
       "color": "Blue",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "White $pixelKey": {
       "type": "Single Color",
       "color": "White",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     }
   },
   "modes": [

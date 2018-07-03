@@ -33,17 +33,12 @@
     "Dimmer": {
       "type": "Intensity",
       "defaultValue": 0,
-      "invert": false,
-      "constant": false,
       "crossfade": true,
       "precedence": "LTP"
     },
     "Macro": {
       "type": "Multi-Color",
       "defaultValue": 0,
-      "invert": false,
-      "constant": false,
-      "crossfade": false,
       "precedence": "LTP",
       "capabilities": [
         {
@@ -195,22 +190,18 @@
     "Macro Speed": {
       "type": "Speed",
       "defaultValue": 0,
-      "invert": false,
-      "constant": false,
       "crossfade": true,
       "precedence": "LTP"
     },
     "Strobe": {
       "type": "Strobe",
       "defaultValue": 0,
-      "invert": false,
-      "constant": false,
       "crossfade": true,
       "precedence": "LTP",
       "capabilities": [
         {
           "range": [0, 15],
-          "name": "No Function"
+          "name": "No function"
         },
         {
           "range": [16, 255],
@@ -224,8 +215,6 @@
       "type": "Single Color",
       "color": "Red",
       "defaultValue": 0,
-      "invert": false,
-      "constant": false,
       "crossfade": true,
       "precedence": "LTP"
     },
@@ -233,8 +222,6 @@
       "type": "Single Color",
       "color": "Green",
       "defaultValue": 0,
-      "invert": false,
-      "constant": false,
       "crossfade": true,
       "precedence": "LTP"
     },
@@ -242,8 +229,6 @@
       "type": "Single Color",
       "color": "Blue",
       "defaultValue": 0,
-      "invert": false,
-      "constant": false,
       "crossfade": true,
       "precedence": "LTP"
     }

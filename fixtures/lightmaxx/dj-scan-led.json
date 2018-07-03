@@ -22,13 +22,11 @@
   "availableChannels": {
     "Pan": {
       "type": "Pan",
-      "defaultValue": 127,
-      "invert": false
+      "defaultValue": 127
     },
     "Tilt": {
       "type": "Tilt",
-      "defaultValue": 127,
-      "invert": false
+      "defaultValue": 127
     },
     "Color Wheel": {
       "type": "Multi-Color",
@@ -221,7 +219,8 @@
       ]
     },
     "Dimmer": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Function/Program": {
       "type": "Effect",

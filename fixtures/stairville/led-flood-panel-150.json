@@ -28,21 +28,25 @@
     "Red": {
       "type": "Single Color",
       "color": "Red",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Green": {
       "type": "Single Color",
       "color": "Green",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Blue": {
       "type": "Single Color",
       "color": "Blue",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Dimmer": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Color Presets": {
       "type": "Multi-Color",
@@ -199,7 +203,7 @@
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "Speed slow-fast"
+          "name": "Speed slow…fast"
         }
       ]
     },
@@ -222,7 +226,7 @@
         },
         {
           "range": [10, 255],
-          "name": "Strobe slow-fast"
+          "name": "Strobe slow…fast"
         }
       ]
     },

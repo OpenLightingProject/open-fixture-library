@@ -31,25 +31,26 @@
     "Pan": {
       "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "crossfade": true
     },
     "Motor Running Speed": {
       "type": "Speed",
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "Fast-Slow"
+          "name": "fast…slow"
         }
       ]
     },
     "Color Wheel": {
       "type": "Multi-Color",
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 10],
@@ -97,7 +98,7 @@
         },
         {
           "range": [176, 255],
-          "name": "Rotation slow-fast"
+          "name": "Rotation slow…fast"
         }
       ]
     },
@@ -108,7 +109,6 @@
     },
     "Gobo Wheel": {
       "type": "Gobo",
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 15],
@@ -141,7 +141,7 @@
         },
         {
           "range": [10, 255],
-          "name": "Strobe Speed slow-fast"
+          "name": "Strobe Speed slow…fast"
         }
       ]
     },
@@ -233,7 +233,7 @@
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "slow-fast"
+          "name": "slow…fast"
         }
       ]
     },

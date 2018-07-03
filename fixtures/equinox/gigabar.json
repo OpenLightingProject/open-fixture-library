@@ -35,7 +35,7 @@
       "capabilities": [
         {
           "range": [0, 15],
-          "name": "Nothing",
+          "name": "No function",
           "switchChannels": {
             "Master Dimmer / Program Speed / Sound Sensitivity": "Master Dimmer"
           }
@@ -253,13 +253,15 @@
       ]
     },
     "Master Dimmer": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Program Speed": {
       "type": "Speed"
     },
     "Sound Sensitivity": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Flash": {
       "type": "Strobe"
@@ -281,7 +283,7 @@
         },
         {
           "range": [11, 255],
-          "name": "Strobe slow-fast"
+          "name": "Strobe slow…fast"
         }
       ]
     },
@@ -315,15 +317,18 @@
   "templateChannels": {
     "Red $pixelKey": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Green $pixelKey": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Blue $pixelKey": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     },
     "Colors $pixelKey": {
       "type": "Multi-Color",

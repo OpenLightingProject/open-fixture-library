@@ -59,19 +59,21 @@
     "Pan": {
       "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "crossfade": true
     },
     "Pan/Tilt Speed": {
       "type": "Speed",
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "Speed fast-slow / Time 0.1-25.5s"
+          "name": "Speed fast…slow / Time 0.1-25.5s"
         }
       ]
     },
@@ -264,39 +266,39 @@
         },
         {
           "range": [32, 63],
-          "name": "Strobe outer 0.3-20Hz"
+          "name": "Strobe outer 0.3…20Hz"
         },
         {
           "range": [64, 95],
-          "name": "Strobe 0.3-20Hz"
+          "name": "Strobe 0.3…20Hz"
         },
         {
           "range": [96, 111],
-          "name": "Color wheel speed CW slow-fast"
+          "name": "Color wheel speed CW slow…fast"
         },
         {
           "range": [112, 127],
-          "name": "Color wheel speed CCW fast-slow"
+          "name": "Color wheel speed CCW fast…slow"
         },
         {
           "range": [128, 143],
-          "name": "Pulse slow-fast"
+          "name": "Pulse slow…fast"
         },
         {
           "range": [144, 159],
-          "name": "Pulse fast-slow"
+          "name": "Pulse fast…slow"
         },
         {
           "range": [160, 175],
-          "name": "Strobe random zone slow-fast"
+          "name": "Strobe random zone slow…fast"
         },
         {
           "range": [176, 191],
-          "name": "Random strobe/zone slow-fast"
+          "name": "Random strobe/zone slow…fast"
         },
         {
           "range": [192, 223],
-          "name": "Random strobe slow-fast"
+          "name": "Random strobe slow…fast"
         },
         {
           "range": [224, 255],
@@ -307,7 +309,8 @@
     "Dimmer": {
       "type": "Intensity",
       "fineChannelAliases": ["Dimmer fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     }
   },
   "templateChannels": {
@@ -315,25 +318,29 @@
       "type": "Single Color",
       "color": "Red",
       "fineChannelAliases": ["Red $pixelKey fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Green $pixelKey": {
       "type": "Single Color",
       "color": "Green",
       "fineChannelAliases": ["Green $pixelKey fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Blue $pixelKey": {
       "type": "Single Color",
       "color": "Blue",
       "fineChannelAliases": ["Blue $pixelKey fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "White $pixelKey": {
       "type": "Single Color",
       "color": "White",
       "fineChannelAliases": ["White $pixelKey fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     }
   },
   "modes": [

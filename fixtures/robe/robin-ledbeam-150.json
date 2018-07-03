@@ -32,12 +32,14 @@
     "Pan": {
       "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 32768
+      "defaultValue": 32768,
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 32768
+      "defaultValue": 32768,
+      "crossfade": true
     },
     "Pan/Tilt Speed": {
       "type": "Speed",
@@ -49,7 +51,7 @@
         },
         {
           "range": [1, 255],
-          "name": "Speed fast-slow / Time 0.1-25.5s"
+          "name": "Speed fast…slow / Time 0.1-25.5s"
         }
       ]
     },
@@ -453,11 +455,11 @@
         },
         {
           "range": [236, 245],
-          "name": "Color fade slow-fast"
+          "name": "Color fade slow…fast"
         },
         {
           "range": [246, 255],
-          "name": "Color jump slow-fast"
+          "name": "Color jump slow…fast"
         }
       ]
     },
@@ -465,43 +467,50 @@
       "type": "Single Color",
       "color": "Red",
       "fineChannelAliases": ["Red fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Green": {
       "type": "Single Color",
       "color": "Green",
       "fineChannelAliases": ["Green fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Blue": {
       "type": "Single Color",
       "color": "Blue",
       "fineChannelAliases": ["Blue fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "White": {
       "type": "Single Color",
       "color": "White",
       "fineChannelAliases": ["White fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Cyan": {
       "type": "Single Color",
       "color": "Cyan",
       "fineChannelAliases": ["Cyan fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Magenta": {
       "type": "Single Color",
       "color": "Magenta",
       "fineChannelAliases": ["Magenta fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Yellow": {
       "type": "Single Color",
       "color": "Yellow",
       "fineChannelAliases": ["Yellow fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "CTC": {
       "type": "Color Temperature",
@@ -583,7 +592,7 @@
         },
         {
           "range": [64, 95],
-          "name": "Strobe 0.3-20Hz"
+          "name": "Strobe 0.3…20Hz"
         },
         {
           "range": [96, 127],
@@ -591,11 +600,11 @@
         },
         {
           "range": [128, 143],
-          "name": "Opening pulse slow-fast"
+          "name": "Opening pulse slow…fast"
         },
         {
           "range": [144, 159],
-          "name": "Closing pulse fast-slow"
+          "name": "Closing pulse fast…slow"
         },
         {
           "range": [160, 191],
@@ -603,7 +612,7 @@
         },
         {
           "range": [192, 223],
-          "name": "Random strobe slow-fast"
+          "name": "Random strobe slow…fast"
         },
         {
           "range": [224, 255],
@@ -614,7 +623,8 @@
     "Dimmer": {
       "type": "Intensity",
       "fineChannelAliases": ["Dimmer fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     }
   },
   "modes": [

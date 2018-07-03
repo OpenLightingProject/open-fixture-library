@@ -29,12 +29,14 @@
     "Pan": {
       "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 32768
+      "defaultValue": 32768,
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 32768
+      "defaultValue": 32768,
+      "crossfade": true
     },
     "Pan / Tilt Speed": {
       "type": "Speed",
@@ -48,7 +50,6 @@
     },
     "Color Wheel": {
       "type": "Multi-Color",
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 15],
@@ -92,7 +93,7 @@
         },
         {
           "range": [128, 255],
-          "name": "Color rotation slow - fast"
+          "name": "Color rotation slow…fast"
         }
       ]
     },
@@ -133,7 +134,7 @@
         },
         {
           "range": [64, 127],
-          "name": "Gobo rotation slow - fast"
+          "name": "Gobo rotation slow…fast"
         },
         {
           "range": [128, 143],
@@ -141,36 +142,37 @@
         },
         {
           "range": [144, 159],
-          "name": "Gobo 1 shake slow - fast"
+          "name": "Gobo 1 shake slow…fast"
         },
         {
           "range": [160, 175],
-          "name": "Gobo 2 shake slow - fast"
+          "name": "Gobo 2 shake slow…fast"
         },
         {
           "range": [176, 191],
-          "name": "Gobo 3 shake slow - fast"
+          "name": "Gobo 3 shake slow…fast"
         },
         {
           "range": [192, 207],
-          "name": "Gobo 4 shake slow - fast"
+          "name": "Gobo 4 shake slow…fast"
         },
         {
           "range": [208, 223],
-          "name": "Gobo 5 shake slow - fast"
+          "name": "Gobo 5 shake slow…fast"
         },
         {
           "range": [224, 239],
-          "name": "Gobo 6 shake slow - fast"
+          "name": "Gobo 6 shake slow…fast"
         },
         {
           "range": [240, 255],
-          "name": "Gobo 7 shake slow - fast"
+          "name": "Gobo 7 shake slow…fast"
         }
       ]
     },
     "Dimmer": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Strobe / Shutter": {
       "type": "Strobe",
@@ -181,11 +183,11 @@
         },
         {
           "range": [8, 127],
-          "name": "Strobe 0 - 20Hz"
+          "name": "Strobe 0…20Hz"
         },
         {
           "range": [128, 255],
-          "name": "Random strobe 0 - 20Hz"
+          "name": "Random strobe 0…20Hz"
         }
       ]
     },

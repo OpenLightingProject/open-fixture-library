@@ -162,11 +162,11 @@
         },
         {
           "range": [129, 223],
-          "name": "Rainbow Effect slow-fast"
+          "name": "Rainbow Effect slow…fast"
         },
         {
           "range": [224, 255],
-          "name": "Random colors slow-fast"
+          "name": "Random colors slow…fast"
         }
       ]
     },
@@ -213,7 +213,6 @@
       "type": "Shutter",
       "defaultValue": 0,
       "highlightValue": 255,
-      "crossfade": false,
       "precedence": "LTP",
       "capabilities": [
         {
@@ -242,7 +241,7 @@
         },
         {
           "range": [200, 239],
-          "name": "Strobe effect slow - fast (1Hz - 10Hz)"
+          "name": "Strobe effect slow…fast (1…10Hz)"
         },
         {
           "range": [240, 255],
@@ -261,7 +260,6 @@
     "Special": {
       "type": "Maintenance",
       "defaultValue": 0,
-      "crossfade": false,
       "precedence": "LTP",
       "capabilities": [
         {
@@ -278,7 +276,7 @@
         },
         {
           "range": [12, 119],
-          "name": "nothing"
+          "name": "No function"
         },
         {
           "range": [120, 123],
@@ -421,7 +419,6 @@
     "Set 2 Color": {
       "type": "Multi-Color",
       "defaultValue": 0,
-      "crossfade": false,
       "precedence": "LTP",
       "capabilities": [
         {
@@ -506,11 +503,11 @@
         },
         {
           "range": [129, 223],
-          "name": "Rainbow Effect slow-fast"
+          "name": "Rainbow Effect slow…fast"
         },
         {
           "range": [224, 255],
-          "name": "Rainbow Effect slow-fast"
+          "name": "Rainbow Effect slow…fast"
         }
       ]
     },
@@ -556,7 +553,6 @@
     "Set 3 Color": {
       "type": "Multi-Color",
       "defaultValue": 0,
-      "crossfade": false,
       "precedence": "LTP",
       "capabilities": [
         {
@@ -641,11 +637,11 @@
         },
         {
           "range": [129, 223],
-          "name": "Rainbow Effect slow-fast"
+          "name": "Rainbow Effect slow…fast"
         },
         {
           "range": [224, 255],
-          "name": "Random colors slow-fast"
+          "name": "Random colors slow…fast"
         }
       ]
     },
@@ -717,38 +713,32 @@
     "Set 1 Pattern Select": {
       "type": "Maintenance",
       "defaultValue": 0,
-      "crossfade": false,
       "precedence": "LTP"
     },
     "Set 1 Pattern Movement": {
       "type": "Maintenance",
       "defaultValue": 0,
-      "crossfade": false,
       "precedence": "LTP"
     },
     "Set 2 Pattern Select": {
       "type": "Maintenance",
       "defaultValue": 0,
-      "crossfade": false,
       "precedence": "LTP"
     },
     "Set 2 Pattern Movement": {
       "type": "Maintenance",
       "defaultValue": 0,
-      "crossfade": false,
       "precedence": "LTP"
     },
     "Pixel Select 1 - 8": {
       "type": "Maintenance",
       "defaultValue": 0,
       "highlightValue": 255,
-      "crossfade": false,
       "precedence": "LTP"
     },
     "Pixel Select 9 - 10": {
       "type": "Maintenance",
       "defaultValue": 0,
-      "crossfade": false,
       "precedence": "LTP"
     }
   },

@@ -28,22 +28,25 @@
   "availableChannels": {
     "Red": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Green": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Blue": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     },
     "Strobe": {
       "type": "Strobe",
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "0 - 20Hz"
+          "name": "0…20Hz"
         }
       ]
     },
@@ -81,7 +84,7 @@
       "capabilities": [
         {
           "range": [0, 250],
-          "name": "slow - fast"
+          "name": "slow…fast"
         },
         {
           "range": [251, 255],
@@ -90,7 +93,8 @@
       ]
     },
     "Dimmer": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     }
   },
   "modes": [

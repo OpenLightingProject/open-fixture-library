@@ -34,22 +34,25 @@
   "availableChannels": {
     "Red": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Green": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Blue": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     },
     "Strobe": {
       "type": "Strobe",
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "0-20Hz"
+          "name": "0…20Hz"
         }
       ]
     },
@@ -58,7 +61,7 @@
       "capabilities": [
         {
           "range": [0, 5],
-          "name": "No Function"
+          "name": "No function"
         },
         {
           "range": [6, 20],
@@ -138,7 +141,7 @@
       "capabilities": [
         {
           "range": [0, 10],
-          "name": "No Function"
+          "name": "No function"
         },
         {
           "range": [11, 127],
@@ -157,15 +160,18 @@
   "templateChannels": {
     "Red $pixelKey": {
       "type": "Single Color",
-      "color": "Red"
+      "color": "Red",
+      "crossfade": true
     },
     "Green $pixelKey": {
       "type": "Single Color",
-      "color": "Green"
+      "color": "Green",
+      "crossfade": true
     },
     "Blue $pixelKey": {
       "type": "Single Color",
-      "color": "Blue"
+      "color": "Blue",
+      "crossfade": true
     }
   },
   "modes": [

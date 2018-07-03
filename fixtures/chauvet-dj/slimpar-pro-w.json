@@ -24,22 +24,26 @@
   "availableChannels": {
     "Dimmer": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Warm White": {
       "type": "Single Color",
       "color": "White",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Cool White": {
       "type": "Single Color",
       "color": "White",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Amber": {
       "type": "Single Color",
       "color": "Amber",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Color Macros": {
       "type": "Multi-Color",
@@ -65,7 +69,7 @@
         },
         {
           "range": [16, 255],
-          "name": "Strobe 0-31Hz"
+          "name": "Strobe 0…31Hz"
         }
       ]
     },
@@ -143,7 +147,7 @@
       "capabilities": [
         {
           "range": [0, 255],
-          "name": "Speed slow-fast"
+          "name": "Speed slow…fast"
         }
       ]
     },

@@ -189,64 +189,76 @@
     "Strobe Red": {
       "type": "Single Color",
       "color": "Red",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Strobe Green": {
       "type": "Single Color",
       "color": "Green",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Strobe Blue": {
       "type": "Single Color",
       "color": "Blue",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Strobe Amber": {
       "type": "Single Color",
       "color": "Amber",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Strobe Hue": {
       "type": "Multi-Color"
     },
     "Strobe Saturation": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Strobe Intensity": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     }
   },
   "templateChannels": {
     "Red $pixelKey": {
       "type": "Single Color",
       "color": "Red",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Green $pixelKey": {
       "type": "Single Color",
       "color": "Green",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Blue $pixelKey": {
       "type": "Single Color",
       "color": "Blue",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Amber $pixelKey": {
       "type": "Single Color",
       "color": "Amber",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Hue $pixelKey": {
       "type": "Multi-Color"
     },
     "Saturation $pixelKey": {
-      "type": "Intensity"
+      "type": "Intensity",
+      "crossfade": true
     },
     "Intensity $pixelKey": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     }
   },
   "modes": [

@@ -28,12 +28,14 @@
     "Pan": {
       "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 32768
+      "defaultValue": 32768,
+      "crossfade": true
     },
     "Tilt": {
       "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 32768
+      "defaultValue": 32768,
+      "crossfade": true
     },
     "Access": {
       "type": "Maintenance",
@@ -332,7 +334,8 @@
     },
     "Intensity": {
       "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "crossfade": true
     },
     "Zoom": {
       "type": "Zoom",
