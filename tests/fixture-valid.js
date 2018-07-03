@@ -477,11 +477,14 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
          * Type-specific checks for ShutterStrobe capabilities.
          */
         function checkShutterStrobeCapability() {
-          const hasSpeed = cap.speed !== null;
-          const hasDuration = cap.duration !== null;
+          if ([`Closed`, `Open`].includes(cap.shutterEffect)) {
+            if (cap.isSoundControlled) {
+              result.errors.push(`${errorPrefix}: Shutter open/closed can't be sound-controlled.`);
+            }
 
-          if ([`Closed`, `Open`].includes(cap.shutterEffect) && (hasSpeed || hasDuration)) {
-            result.errors.push(`${errorPrefix}: Shutter open/closed can't define speed or duration.`);
+            if (cap.speed !== null || cap.duration !== null) {
+              result.errors.push(`${errorPrefix}: Shutter open/closed can't define speed or duration.`);
+            }
           }
         }
 

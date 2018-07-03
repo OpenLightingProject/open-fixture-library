@@ -130,6 +130,7 @@
             "RampUpDownRandom",
             "Lightning"
           ] },
+          "soundControlled": { "type": "boolean" },
           "speed": { "$ref": "definitions.json#/entities/speed" },
           "speedStart": { "$ref": "definitions.json#/entities/speed" },
           "speedEnd": { "$ref": "definitions.json#/entities/speed" },
