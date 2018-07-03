@@ -32,7 +32,6 @@
   "availableChannels": {
     "Dimmer": {
       "defaultValue": 0,
-      "constant": false,
       "precedence": "LTP",
       "capability": {
         "type": "Intensity"
@@ -40,7 +39,6 @@
     },
     "Macro": {
       "defaultValue": 0,
-      "constant": false,
       "precedence": "LTP",
       "capabilities": [
         {
@@ -226,7 +224,6 @@
     },
     "Macro Speed": {
       "defaultValue": 0,
-      "constant": false,
       "precedence": "LTP",
       "capability": {
         "type": "EffectSpeed",
@@ -236,7 +233,6 @@
     },
     "Strobe": {
       "defaultValue": 0,
-      "constant": false,
       "precedence": "LTP",
       "capabilities": [
         {
@@ -255,7 +251,6 @@
   "templateChannels": {
     "Red $pixelKey": {
       "defaultValue": 0,
-      "constant": false,
       "precedence": "LTP",
       "capability": {
         "type": "ColorIntensity",
@@ -264,7 +259,6 @@
     },
     "Green $pixelKey": {
       "defaultValue": 0,
-      "constant": false,
       "precedence": "LTP",
       "capability": {
         "type": "ColorIntensity",
@@ -273,7 +267,6 @@
     },
     "Blue $pixelKey": {
       "defaultValue": 0,
-      "constant": false,
       "precedence": "LTP",
       "capability": {
         "type": "ColorIntensity",
