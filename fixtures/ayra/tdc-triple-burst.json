@@ -191,8 +191,9 @@
         },
         {
           "dmxRange": [248, 255],
-          "type": "Effect",
-          "effectName": "Sound strobe"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
         }
       ]
     },

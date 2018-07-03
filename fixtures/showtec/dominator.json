@@ -344,8 +344,7 @@
           "dmxRange": [255, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "comment": "Sound activated strobe",
-          "helpWanted": "Maybe add soundControlled to ShutterStrobe capabilities, too?"
+          "soundControlled": true
         }
       ]
     },
@@ -497,7 +496,7 @@
           "dmxRange": [255, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "comment": "Sound activated strobe"
+          "soundControlled": true
         }
       ]
     },
