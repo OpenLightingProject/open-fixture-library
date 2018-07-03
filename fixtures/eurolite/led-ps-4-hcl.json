@@ -24,7 +24,6 @@
   "availableChannels": {
     "Color Presets": {
       "type": "Multi-Color",
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 9],
@@ -136,7 +135,6 @@
       "type": "Strobe",
       "defaultValue": 0,
       "highlightValue": 128,
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 9],
@@ -150,7 +148,6 @@
     },
     "Programs": {
       "type": "Effect",
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 9],

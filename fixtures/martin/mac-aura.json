@@ -36,7 +36,6 @@
   "availableChannels": {
     "Shutter": {
       "type": "Shutter",
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 19],
@@ -175,7 +174,6 @@
     },
     "Fixture control settings": {
       "type": "Maintenance",
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 9],
@@ -261,7 +259,6 @@
     },
     "Beam color wheel effect": {
       "type": "Multi-Color",
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 9],
@@ -508,7 +505,6 @@
     "FX1 select": {
       "type": "Effect",
       "defaultValue": 0,
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 9],
@@ -809,7 +805,6 @@
     "FX2 select": {
       "type": "Effect",
       "defaultValue": 0,
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 9],
@@ -1110,7 +1105,6 @@
     "FX sync": {
       "type": "Effect",
       "defaultValue": 0,
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 49],
@@ -1136,7 +1130,6 @@
     },
     "Aura shutter": {
       "type": "Shutter",
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 19],
@@ -1256,7 +1249,6 @@
     },
     "Aura color wheel effect": {
       "type": "Multi-Color",
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 9],

@@ -12,36 +12,31 @@
     "Dimmer": {
       "type": "Intensity",
       "fineChannelAliases": ["Dimmer fine", "Dimmer fine^2"],
-      "defaultValue": 0,
-      "invert": false
+      "defaultValue": 0
     },
     "Red": {
       "type": "Single Color",
       "color": "Red",
       "fineChannelAliases": ["Red fine", "Red fine^2"],
-      "defaultValue": 0,
-      "invert": false
+      "defaultValue": 0
     },
     "Green": {
       "type": "Single Color",
       "color": "Green",
       "fineChannelAliases": ["Green fine", "Green fine^2"],
-      "defaultValue": 0,
-      "invert": false
+      "defaultValue": 0
     },
     "Blue": {
       "type": "Single Color",
       "color": "Blue",
       "fineChannelAliases": ["Blue fine", "Blue fine^2"],
-      "defaultValue": 0,
-      "invert": false
+      "defaultValue": 0
     },
     "White": {
       "type": "Single Color",
       "color": "White",
       "fineChannelAliases": ["White fine", "White fine^2"],
-      "defaultValue": 0,
-      "invert": false
+      "defaultValue": 0
     }
   },
   "modes": [

@@ -22,7 +22,6 @@
     "Function": {
       "type": "Effect",
       "defaultValue": 0,
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 9],
@@ -56,7 +55,6 @@
     },
     "Pattern / Chase": {
       "type": "Effect",
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 20],
@@ -110,7 +108,6 @@
     },
     "Color": {
       "type": "Multi-Color",
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 17],
@@ -194,7 +191,6 @@
       "type": "Strobe",
       "defaultValue": 0,
       "highlightValue": 128,
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 9],
@@ -213,7 +209,6 @@
       "color": "Red",
       "defaultValue": 0,
       "highlightValue": 255,
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 127],
@@ -230,7 +225,6 @@
       "color": "Green",
       "defaultValue": 0,
       "highlightValue": 255,
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 127],
@@ -247,7 +241,6 @@
       "color": "Blue",
       "defaultValue": 0,
       "highlightValue": 255,
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 127],
@@ -264,7 +257,6 @@
       "color": "White",
       "defaultValue": 0,
       "highlightValue": 255,
-      "crossfade": false,
       "capabilities": [
         {
           "range": [0, 127],

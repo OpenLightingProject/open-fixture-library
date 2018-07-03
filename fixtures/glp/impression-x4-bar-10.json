@@ -213,7 +213,6 @@
       "type": "Shutter",
       "defaultValue": 0,
       "highlightValue": 255,
-      "crossfade": false,
       "precedence": "LTP",
       "capabilities": [
         {
@@ -261,7 +260,6 @@
     "Special": {
       "type": "Maintenance",
       "defaultValue": 0,
-      "crossfade": false,
       "precedence": "LTP",
       "capabilities": [
         {
@@ -421,7 +419,6 @@
     "Set 2 Color": {
       "type": "Multi-Color",
       "defaultValue": 0,
-      "crossfade": false,
       "precedence": "LTP",
       "capabilities": [
         {
@@ -556,7 +553,6 @@
     "Set 3 Color": {
       "type": "Multi-Color",
       "defaultValue": 0,
-      "crossfade": false,
       "precedence": "LTP",
       "capabilities": [
         {
@@ -717,38 +713,32 @@
     "Set 1 Pattern Select": {
       "type": "Maintenance",
       "defaultValue": 0,
-      "crossfade": false,
       "precedence": "LTP"
     },
     "Set 1 Pattern Movement": {
       "type": "Maintenance",
       "defaultValue": 0,
-      "crossfade": false,
       "precedence": "LTP"
     },
     "Set 2 Pattern Select": {
       "type": "Maintenance",
       "defaultValue": 0,
-      "crossfade": false,
       "precedence": "LTP"
     },
     "Set 2 Pattern Movement": {
       "type": "Maintenance",
       "defaultValue": 0,
-      "crossfade": false,
       "precedence": "LTP"
     },
     "Pixel Select 1 - 8": {
       "type": "Maintenance",
       "defaultValue": 0,
       "highlightValue": 255,
-      "crossfade": false,
       "precedence": "LTP"
     },
     "Pixel Select 9 - 10": {
       "type": "Maintenance",
       "defaultValue": 0,
-      "crossfade": false,
       "precedence": "LTP"
     }
   },
