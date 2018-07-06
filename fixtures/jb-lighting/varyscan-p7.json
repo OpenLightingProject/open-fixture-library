@@ -315,7 +315,8 @@
         {
           "dmxRange": [0, 126],
           "type": "Iris",
-          "openPercent": "open"
+          "openPercentStart": "open",
+          "openPercentEnd": "closed"
         },
         {
           "dmxRange": [127, 127],
