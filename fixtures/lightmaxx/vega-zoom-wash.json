@@ -89,73 +89,77 @@
       "capabilities": [
         {
           "range": [0, 10],
-          "name": "open"
+          "name": "Open"
         },
         {
           "range": [11, 20],
-          "name": "red",
+          "name": "Red",
           "color": "#ff0000"
         },
         {
           "range": [21, 30],
-          "name": "green",
+          "name": "Green",
           "color": "#00ff00"
         },
         {
           "range": [31, 40],
-          "name": "blue",
+          "name": "Blue",
           "color": "#0000ff"
         },
         {
           "range": [41, 50],
-          "name": "white",
+          "name": "White",
           "color": "#ffffff"
         },
         {
           "range": [51, 60],
-          "name": "yellow",
+          "name": "Yellow (RG)",
           "color": "#ffff00"
         },
         {
           "range": [61, 70],
-          "name": "cyan",
+          "name": "Cyan (GB)",
           "color": "#00ffff"
         },
         {
           "range": [71, 80],
-          "name": "lightblue",
+          "name": "Lightblue (BW)",
           "color": "#64c8ff"
         },
         {
           "range": [81, 90],
-          "name": "pink",
+          "name": "Pink (RB)",
           "color": "#ff00ff"
         },
         {
           "range": [91, 100],
-          "name": "lightgreen",
+          "name": "Lightgreen (GW)",
           "color": "#7fff3c"
         },
         {
           "range": [101, 110],
-          "name": "lightred",
-          "color": "#ff7f7f"
+          "name": "Lightred (RW)",
+          "color": "#efabab"
         },
         {
           "range": [111, 120],
-          "name": "RGB"
+          "name": "White (RGB)",
+          "color": "#ffffff"
         },
         {
           "range": [121, 130],
-          "name": "RGW"
+          "name": "Lightyellow (RGW)",
+          "color": "#fff9aa"
         },
         {
           "range": [131, 140],
-          "name": "GBW"
+          "name": "Lightcyan (GBW)",
+          "color": "#aaffff"
         },
         {
           "range": [141, 150],
-          "name": "RGBW"
+          "name": "White (RGBW)",
+          "color": "#ffffff"
         },
         {
           "range": [151, 255],
@@ -188,35 +192,35 @@
         },
         {
           "range": [21, 40],
-          "name": "program 1"
+          "name": "Internal Program 1"
         },
         {
           "range": [41, 60],
-          "name": "program 2"
+          "name": "Internal Program 2"
         },
         {
           "range": [61, 80],
-          "name": "program 3"
+          "name": "Internal Program 3"
         },
         {
           "range": [81, 100],
-          "name": "program 4"
+          "name": "Internal Program 4"
         },
         {
           "range": [101, 120],
-          "name": "program 5"
+          "name": "Internal Program 5"
         },
         {
           "range": [121, 140],
-          "name": "program 6"
+          "name": "Internal Program 6"
         },
         {
           "range": [141, 160],
-          "name": "program 7"
+          "name": "Internal Program 7"
         },
         {
           "range": [161, 180],
-          "name": "program 8"
+          "name": "Internal Program 8"
         },
         {
           "range": [181, 200],
@@ -224,7 +228,7 @@
         },
         {
           "range": [201, 225],
-          "name": "motor reset"
+          "name": "Motor reset"
         },
         {
           "range": [226, 255],
