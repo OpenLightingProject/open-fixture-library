@@ -426,8 +426,8 @@
       "defaultValue": 0,
       "capability": {
         "type": "BeamAngle",
-        "angleStart": "wide",
-        "angleEnd": "narrow",
+        "angleStart": "0deg",
+        "angleEnd": "40deg",
         "helpWanted": "Is this the correct direction?"
       }
     },
@@ -435,8 +435,8 @@
       "defaultValue": 0,
       "capability": {
         "type": "BeamAngle",
-        "angleStart": "wide",
-        "angleEnd": "narrow",
+        "angleStart": "0deg",
+        "angleEnd": "40deg",
         "helpWanted": "Is this the correct direction?"
       }
     },
@@ -450,17 +450,17 @@
     "X Position": {
       "defaultValue": 128,
       "capability": {
-        "type": "Generic",
-        "comment": "Position left-right",
-        "helpWanted": "This should be a proportional capability somehow."
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "40deg"
       }
     },
     "Y Position": {
       "defaultValue": 128,
       "capability": {
-        "type": "Generic",
-        "comment": "Position down-up",
-        "helpWanted": "This should be a proportional capability somehow."
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "40deg"
       }
     },
     "Visible Points": {
