@@ -483,6 +483,8 @@ Properties that must be stepped (they have a :feet: footsteps icon next to them)
 
 Use zero-based numbering (e.g. `0` for open, `1` for *Color/Gobo 1*). If the capability shows a split color/gobo, use the value halfway between them (e.g. `1.5` for *Split Color/Gobo 1/2*). If all steps in between can be selected by the proportional capability, use `indexStart` and `indexEnd` (e.g. from *Color/Gobo 1* to *Color/Gobo 2*).
 
+**Note:** If there are e.g. 8 gobo slots, and a capability allows gradually selecting anything between the last slot (Gobo 7) and the first (Gobo 0) in this direction, use `"indexStart": 7, "indexEnd": 8`. If you chose `"indexEnd": 0` instead, that would indicate a rotation in the other direction.
+
 
 ### How to add new capability types / type-specific properties
 

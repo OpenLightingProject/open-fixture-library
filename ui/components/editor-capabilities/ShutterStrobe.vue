@@ -20,6 +20,16 @@
       </select>
     </app-simple-label>
 
+    <app-simple-label
+      :formstate="formstate"
+      :name="`capability${capability.uuid}-soundControlled`"
+      label="Sound controlled?">
+      <app-property-input-boolean
+        v-model="capability.typeData.soundControlled"
+        :schema-property="properties.capabilityTypes.Effect.properties.soundControlled"
+        :name="`capability${capability.uuid}-soundControlled`" />
+    </app-simple-label>
+
     <template v-if="isStrobeEffect">
       <app-simple-label
         :formstate="formstate"
@@ -61,12 +71,14 @@
 import schemaProperties from '~~/lib/schema-properties.js';
 
 import editorProportionalCapabilityDataSwitcher from '~/components/editor-proportional-capability-data-switcher.vue';
+import propertyInputBooleanVue from '~/components/property-input-boolean.vue';
 import propertyInputTextVue from '~/components/property-input-text.vue';
 import simpleLabelVue from '~/components/simple-label.vue';
 
 export default {
   components: {
     'app-editor-proportional-capability-data-switcher': editorProportionalCapabilityDataSwitcher,
+    'app-property-input-boolean': propertyInputBooleanVue,
     'app-property-input-text': propertyInputTextVue,
     'app-simple-label': simpleLabelVue
   },
@@ -86,6 +98,7 @@ export default {
       properties: schemaProperties,
       defaultData: {
         shutterEffect: ``,
+        soundControlled: null,
         speed: null,
         speedStart: ``,
         speedEnd: ``,

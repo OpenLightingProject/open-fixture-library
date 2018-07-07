@@ -156,9 +156,10 @@
         {
           "dmxRange": [124, 166],
           "type": "Effect",
-          "effectName": "Color Mix",
+          "effectName": "Color mix",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "helpWanted": "How does this differ from the other color effects?"
         },
         {
           "dmxRange": [167, 209],
@@ -170,14 +171,15 @@
         {
           "dmxRange": [210, 249],
           "type": "Effect",
-          "effectName": "Color Change",
+          "effectName": "Color change",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "helpWanted": "How does this differ from the other color effects?"
         },
         {
           "dmxRange": [250, 255],
           "type": "Effect",
-          "effectName": "Sound Control",
+          "effectName": "Sound control",
           "soundControlled": true
         }
       ]

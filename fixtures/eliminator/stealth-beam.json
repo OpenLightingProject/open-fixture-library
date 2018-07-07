@@ -313,8 +313,7 @@
           "dmxRange": [51, 100],
           "type": "Maintenance",
           "comment": "Set High Speed Mode",
-          "hold": "10s",
-          "helpWanted": "Maybe also allow 'hold' for 'PanTiltSpeed'?"
+          "hold": "10s"
         },
         {
           "dmxRange": [101, 150],
@@ -324,8 +323,7 @@
           "dmxRange": [151, 200],
           "type": "Maintenance",
           "comment": "Set Low Speed Mode",
-          "hold": "10s",
-          "helpWanted": "Maybe also allow 'hold' for 'PanTiltSpeed'?"
+          "hold": "10s"
         },
         {
           "dmxRange": [201, 250],
@@ -335,8 +333,7 @@
           "dmxRange": [251, 255],
           "type": "Maintenance",
           "comment": "Reset",
-          "hold": "10s",
-          "helpWanted": "Maybe also allow 'hold' for 'PanTiltSpeed'?"
+          "hold": "10s"
         }
       ]
     }
