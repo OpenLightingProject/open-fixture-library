@@ -205,52 +205,11 @@
           "shutterEffect": "Open"
         },
         {
-          "dmxRange": [226, 229],
+          "dmxRange": [226, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speed": "slow"
-        },
-        {
-          "dmxRange": [230, 233],
-          "type": "ShutterStrobe",
-          "comment": "2",
-          "shutterEffect": "Strobe"
-        },
-        {
-          "dmxRange": [234, 237],
-          "type": "ShutterStrobe",
-          "comment": "3",
-          "shutterEffect": "Strobe"
-        },
-        {
-          "dmxRange": [238, 241],
-          "type": "ShutterStrobe",
-          "comment": "4",
-          "shutterEffect": "Strobe"
-        },
-        {
-          "dmxRange": [242, 245],
-          "type": "ShutterStrobe",
-          "comment": "5",
-          "shutterEffect": "Strobe"
-        },
-        {
-          "dmxRange": [246, 249],
-          "type": "ShutterStrobe",
-          "comment": "6",
-          "shutterEffect": "Strobe"
-        },
-        {
-          "dmxRange": [250, 253],
-          "type": "ShutterStrobe",
-          "comment": "7",
-          "shutterEffect": "Strobe"
-        },
-        {
-          "dmxRange": [254, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speed": "fast"
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     }
