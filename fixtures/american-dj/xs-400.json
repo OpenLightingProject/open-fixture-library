@@ -202,14 +202,16 @@
           "type": "ShutterStrobe",
           "shutterEffect": "RampUp",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "helpWanted": "Is the strobe speed controllable here?"
         },
         {
           "dmxRange": [190, 239],
           "type": "ShutterStrobe",
           "shutterEffect": "RampDown",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "helpWanted": "Is the strobe speed controllable here?"
         },
         {
           "dmxRange": [240, 255],
