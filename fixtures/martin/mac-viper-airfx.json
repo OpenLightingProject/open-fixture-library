@@ -116,13 +116,15 @@
         {
           "dmxRange": [0, 0],
           "type": "ColorWheelIndex",
-          "index": 0
+          "index": 0,
+          "comment": "Open"
         },
         {
           "dmxRange": [1, 14],
           "type": "ColorWheelIndex",
           "indexStart": 0,
-          "indexEnd": 1
+          "indexEnd": 1,
+          "comment": "Open…Color 1"
         },
         {
           "dmxRange": [15, 15],
@@ -199,12 +201,14 @@
           "dmxRange": [106, 119],
           "type": "ColorWheelIndex",
           "indexStart": 7,
-          "indexEnd": 8
+          "indexEnd": 8,
+          "comment": "Color 7…Open"
         },
         {
           "dmxRange": [120, 120],
           "type": "ColorWheelIndex",
-          "index": 0
+          "index": 0,
+          "comment": "Open"
         },
         {
           "dmxRange": [121, 125],
@@ -244,7 +248,8 @@
         {
           "dmxRange": [156, 160],
           "type": "ColorWheelIndex",
-          "index": 0
+          "index": 0,
+          "comment": "Open"
         },
         {
           "dmxRange": [161, 200],
@@ -529,13 +534,15 @@
         {
           "dmxRange": [0, 0],
           "type": "GoboIndex",
-          "index": 0
+          "index": 0,
+          "comment": "Open"
         },
         {
           "dmxRange": [1, 14],
           "type": "GoboIndex",
           "indexStart": 0,
-          "indexEnd": 1
+          "indexEnd": 1,
+          "comment": "Open…1"
         },
         {
           "dmxRange": [15, 15],
@@ -612,12 +619,14 @@
           "dmxRange": [106, 119],
           "type": "GoboIndex",
           "indexStart": 7,
-          "indexEnd": 8
+          "indexEnd": 8,
+          "comment": "7…Open"
         },
         {
           "dmxRange": [120, 120],
           "type": "GoboIndex",
-          "index": 0
+          "index": 0,
+          "comment": "Open"
         },
         {
           "dmxRange": [121, 125],
@@ -657,7 +666,8 @@
         {
           "dmxRange": [156, 160],
           "type": "GoboIndex",
-          "index": 0
+          "index": 0,
+          "comment": "Open"
         },
         {
           "dmxRange": [161, 200],
