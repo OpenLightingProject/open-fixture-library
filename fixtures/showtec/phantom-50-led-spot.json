@@ -187,13 +187,15 @@
           "dmxRange": [128, 191],
           "type": "ColorWheelRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "speedEnd": "fast CW",
+          "menuClick": "center"
         },
         {
           "dmxRange": [192, 255],
           "type": "ColorWheelRotation",
           "speedStart": "slow CCW",
-          "speedEnd": "fast CCW"
+          "speedEnd": "fast CCW",
+          "menuClick": "center"
         }
       ]
     },
@@ -216,7 +218,8 @@
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "0Hz",
-          "speedEnd": "10Hz"
+          "speedEnd": "10Hz",
+          "menuClick": "center"
         },
         {
           "dmxRange": [216, 255],
@@ -286,49 +289,56 @@
           "type": "GoboIndex",
           "index": 7,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "menuClick": "center"
         },
         {
           "dmxRange": [72, 79],
           "type": "GoboIndex",
           "index": 6,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "menuClick": "center"
         },
         {
           "dmxRange": [80, 87],
           "type": "GoboIndex",
           "index": 5,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "menuClick": "center"
         },
         {
           "dmxRange": [88, 95],
           "type": "GoboIndex",
           "index": 4,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "menuClick": "center"
         },
         {
           "dmxRange": [96, 103],
           "type": "GoboIndex",
           "index": 3,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "menuClick": "center"
         },
         {
           "dmxRange": [104, 111],
           "type": "GoboIndex",
           "index": 2,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "menuClick": "center"
         },
         {
           "dmxRange": [112, 119],
           "type": "GoboIndex",
           "index": 1,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "menuClick": "center"
         },
         {
           "dmxRange": [120, 127],
@@ -340,13 +350,15 @@
           "dmxRange": [128, 191],
           "type": "GoboWheelRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "speedEnd": "fast CW",
+          "menuClick": "center"
         },
         {
           "dmxRange": [192, 255],
           "type": "GoboWheelRotation",
           "speedStart": "slow CCW",
-          "speedEnd": "fast CCW"
+          "speedEnd": "fast CCW",
+          "menuClick": "center"
         }
       ]
     },
@@ -362,13 +374,15 @@
           "dmxRange": [8, 119],
           "type": "GoboStencilRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "speedEnd": "fast CW",
+          "menuClick": "center"
         },
         {
           "dmxRange": [120, 231],
           "type": "GoboStencilRotation",
           "speedStart": "slow CCW",
-          "speedEnd": "fast CCW"
+          "speedEnd": "fast CCW",
+          "menuClick": "center"
         },
         {
           "dmxRange": [232, 255],

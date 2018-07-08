@@ -61,19 +61,22 @@
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "menuClick": "center"
         },
         {
           "dmxRange": [201, 210],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open"
+          "shutterEffect": "Open",
+          "menuClick": "hidden"
         },
         {
           "dmxRange": [211, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "StrobeRandom",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "menuClick": "center"
         }
       ]
     },
@@ -1159,13 +1162,15 @@
         {
           "dmxRange": [0, 2],
           "type": "Rotation",
-          "speed": "stop"
+          "speed": "stop",
+          "menuClick": "hidden"
         },
         {
           "dmxRange": [3, 126],
           "type": "Rotation",
           "speedStart": "fast CW",
-          "speedEnd": "slow CW"
+          "speedEnd": "slow CW",
+          "menuClick": "center"
         },
         {
           "dmxRange": [127, 129],
@@ -1176,12 +1181,14 @@
           "dmxRange": [130, 253],
           "type": "Rotation",
           "speedStart": "slow CCW",
-          "speedEnd": "fast CCW"
+          "speedEnd": "fast CCW",
+          "menuClick": "center"
         },
         {
           "dmxRange": [254, 255],
           "type": "Rotation",
-          "speed": "stop"
+          "speed": "stop",
+          "menuClick": "hidden"
         }
       ]
     },
@@ -1228,13 +1235,15 @@
         {
           "dmxRange": [0, 2],
           "type": "Rotation",
-          "speed": "stop"
+          "speed": "stop",
+          "menuClick": "hidden"
         },
         {
           "dmxRange": [3, 126],
           "type": "Rotation",
           "speedStart": "fast CW",
-          "speedEnd": "slow CW"
+          "speedEnd": "slow CW",
+          "menuClick": "center"
         },
         {
           "dmxRange": [127, 129],
@@ -1245,12 +1254,14 @@
           "dmxRange": [130, 253],
           "type": "Rotation",
           "speedStart": "slow CCW",
-          "speedEnd": "fast CCW"
+          "speedEnd": "fast CCW",
+          "menuClick": "center"
         },
         {
           "dmxRange": [254, 255],
           "type": "Rotation",
-          "speed": "stop"
+          "speed": "stop",
+          "menuClick": "hidden"
         }
       ]
     },

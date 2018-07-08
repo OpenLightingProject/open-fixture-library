@@ -100,7 +100,8 @@
           "indexStart": 0,
           "indexEnd": 1,
           "colors": ["#ffffff", "#ff0000"],
-          "comment": "Open > Red"
+          "comment": "Open > Red",
+          "menuClick": "center"
         },
         {
           "dmxRange": [12, 12],
@@ -115,7 +116,8 @@
           "indexStart": 1,
           "indexEnd": 2,
           "colors": ["#ff0000", "#0000ff"],
-          "comment": "Red > Blue"
+          "comment": "Red > Blue",
+          "menuClick": "center"
         },
         {
           "dmxRange": [23, 23],
@@ -130,7 +132,8 @@
           "indexStart": 2,
           "indexEnd": 3,
           "colors": ["#0000ff", "#00ff00"],
-          "comment": "Blue > Green"
+          "comment": "Blue > Green",
+          "menuClick": "center"
         },
         {
           "dmxRange": [33, 33],
@@ -145,7 +148,8 @@
           "indexStart": 3,
           "indexEnd": 4,
           "colors": ["#00ff00", "#ff00ff"],
-          "comment": "Green > Magenta"
+          "comment": "Green > Magenta",
+          "menuClick": "center"
         },
         {
           "dmxRange": [43, 43],
@@ -160,7 +164,8 @@
           "indexStart": 4,
           "indexEnd": 5,
           "colors": ["#ff00ff", "#ffff00"],
-          "comment": "Magenta > Yellow"
+          "comment": "Magenta > Yellow",
+          "menuClick": "center"
         },
         {
           "dmxRange": [53, 53],
@@ -175,7 +180,8 @@
           "indexStart": 5,
           "indexEnd": 6,
           "colors": ["#ffff00", "#00ffff"],
-          "comment": "Yellow > Light Blue"
+          "comment": "Yellow > Light Blue",
+          "menuClick": "center"
         },
         {
           "dmxRange": [63, 63],
@@ -190,7 +196,8 @@
           "indexStart": 6,
           "indexEnd": 7,
           "colors": ["#00ffff", "#ffaaff"],
-          "comment": "Light Blue > Pink"
+          "comment": "Light Blue > Pink",
+          "menuClick": "center"
         },
         {
           "dmxRange": [74, 74],
@@ -205,7 +212,8 @@
           "indexStart": 7,
           "indexEnd": 8,
           "colors": ["#ffaaff", "#ffaa00"],
-          "comment": "Pink > Orange"
+          "comment": "Pink > Orange",
+          "menuClick": "center"
         },
         {
           "dmxRange": [85, 85],
@@ -220,7 +228,8 @@
           "indexStart": 8,
           "indexEnd": 9,
           "colors": ["#ffaa00", "#99ddff"],
-          "comment": "Orange > Aqua"
+          "comment": "Orange > Aqua",
+          "menuClick": "center"
         },
         {
           "dmxRange": [96, 96],
@@ -235,7 +244,8 @@
           "indexStart": 9,
           "indexEnd": 10,
           "colors": ["#99ddff", "#aa00ff"],
-          "comment": "Aqua > Purple"
+          "comment": "Aqua > Purple",
+          "menuClick": "center"
         },
         {
           "dmxRange": [106, 106],
@@ -250,7 +260,8 @@
           "indexStart": 10,
           "indexEnd": 11,
           "colors": ["#aa00ff", "#ffcc99"],
-          "comment": "Purple > CTO"
+          "comment": "Purple > CTO",
+          "menuClick": "center"
         },
         {
           "dmxRange": [115, 115],
@@ -265,7 +276,8 @@
           "indexStart": 11,
           "indexEnd": 12,
           "colors": ["#ffcc99", "#88bbdd"],
-          "comment": "CTO > CTB"
+          "comment": "CTO > CTB",
+          "menuClick": "center"
         },
         {
           "dmxRange": [125, 125],
@@ -280,7 +292,8 @@
           "indexStart": 12,
           "indexEnd": 13,
           "colors": ["#88bbdd", "#a996ff"],
-          "comment": "CTB > UV"
+          "comment": "CTB > UV",
+          "menuClick": "center"
         },
         {
           "dmxRange": [137, 137],
@@ -295,7 +308,8 @@
           "indexStart": 13,
           "indexEnd": 14,
           "colors": ["#a996ff", "#ffffff"],
-          "comment": "UV > Open"
+          "comment": "UV > Open",
+          "menuClick": "center"
         },
         {
           "dmxRange": [147, 147],
