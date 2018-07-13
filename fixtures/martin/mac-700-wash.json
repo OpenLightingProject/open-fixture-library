@@ -1,0 +1,365 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MAC 700 WASH",
+  "shortName": "MAC 700 WASH",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Karl Humbug"],
+    "createDate": "2018-07-13",
+    "lastModifyDate": "2018-07-13"
+  },
+  "manualURL": "https://adn.harmanpro.com/site_elements/executables/5947_1526695114/UM_MAC700Wash_DE_C_original.pdf",
+  "physical": {
+    "dimensions": [365, 656, 450],
+    "weight": 32,
+    "power": 950,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "OSRAMHTI700/D4/75",
+      "colorTemperature": 7500,
+      "lumens": 18700
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [12, 66]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 246
+    }
+  },
+  "availableChannels": {
+    "SHUTTER": {
+      "type": "Shutter",
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 19],
+          "name": "SHUTTER CLOSED"
+        },
+        {
+          "range": [20, 49],
+          "name": "SHUTTER OPEN"
+        },
+        {
+          "range": [50, 72],
+          "name": "STROBE FAST TO SLOW"
+        },
+        {
+          "range": [73, 79],
+          "name": "SHUTTER OPEN"
+        },
+        {
+          "range": [80, 99],
+          "name": "PULSE OPEN FAST TO SLOW"
+        },
+        {
+          "range": [100, 119],
+          "name": "PULSE CLOSE FAST TO SLOW"
+        },
+        {
+          "range": [120, 127],
+          "name": "SHUTTER OPEN"
+        },
+        {
+          "range": [128, 147],
+          "name": "STROBE RANDOM FAST"
+        },
+        {
+          "range": [148, 167],
+          "name": "STROBE RANDOM MEDIUM"
+        },
+        {
+          "range": [168, 187],
+          "name": "STROBE RANDOM SLOW"
+        },
+        {
+          "range": [188, 190],
+          "name": "SHUTTER OPEN"
+        },
+        {
+          "range": [191, 193],
+          "name": "PULSE OPEN RANDOM FAST"
+        },
+        {
+          "range": [194, 196],
+          "name": "PULSE OPEN RANDOM SLOW"
+        },
+        {
+          "range": [197, 199],
+          "name": "PULSE CLOSE RANDOM FAST"
+        },
+        {
+          "range": [200, 202],
+          "name": "PULSE CLOSE RANDOM SLOW"
+        },
+        {
+          "range": [203, 207],
+          "name": "SHUTTER OPEN"
+        },
+        {
+          "range": [208, 217],
+          "name": "RESET"
+        },
+        {
+          "range": [218, 227],
+          "name": "SHUTTER OPEN"
+        },
+        {
+          "range": [228, 237],
+          "name": "START LAMP"
+        },
+        {
+          "range": [238, 242],
+          "name": "400 W MODE"
+        },
+        {
+          "range": [243, 247],
+          "name": "700 W MODE"
+        },
+        {
+          "range": [248, 255],
+          "name": "ERASE BULB"
+        }
+      ]
+    },
+    "DIMMER": {
+      "type": "Intensity",
+      "fineChannelAliases": ["DIMMER fine"]
+    },
+    "CYAN": {
+      "type": "Single Color",
+      "color": "Cyan",
+      "fineChannelAliases": ["CYAN fine"]
+    },
+    "DIMMER 2": {
+      "name": "DIMMER",
+      "type": "Intensity",
+      "fineChannelAliases": ["DIMMER 2 fine"]
+    },
+    "CYAN 2": {
+      "name": "CYAN",
+      "type": "Single Color",
+      "color": "Cyan",
+      "fineChannelAliases": ["CYAN 2 fine"]
+    },
+    "MAGENTA": {
+      "type": "Single Color",
+      "color": "Magenta",
+      "fineChannelAliases": ["MAGENTA fine"]
+    },
+    "YELLOW": {
+      "type": "Single Color",
+      "color": "Yellow",
+      "fineChannelAliases": ["YELLOW fine"]
+    },
+    "CTO": {
+      "type": "Color Temperature",
+      "fineChannelAliases": ["CTO fine"]
+    },
+    "COLORWHEEL": {
+      "type": "Multi-Color",
+      "fineChannelAliases": ["COLORWHEEL fine"],
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "OPEN"
+        },
+        {
+          "range": [1, 16],
+          "name": "OPEN TO POS 1"
+        },
+        {
+          "range": [17, 17],
+          "name": "BLUE 110"
+        },
+        {
+          "range": [18, 33],
+          "name": "POS 1 TO POS 2"
+        },
+        {
+          "range": [34, 34],
+          "name": "GREEN 206"
+        },
+        {
+          "range": [35, 50],
+          "name": "POS 2 TO POS 3"
+        },
+        {
+          "range": [51, 51],
+          "name": "PINK 312"
+        },
+        {
+          "range": [52, 67],
+          "name": "POS 3 TO POS 4"
+        },
+        {
+          "range": [68, 68],
+          "name": "ORANGE 306"
+        },
+        {
+          "range": [69, 84],
+          "name": "POS 4 TO POS 5"
+        },
+        {
+          "range": [85, 85],
+          "name": "HALF MINUS GREEN"
+        },
+        {
+          "range": [86, 101],
+          "name": "POS 5 TO POS 6"
+        },
+        {
+          "range": [102, 102],
+          "name": "CTO 3200-4100"
+        },
+        {
+          "range": [103, 118],
+          "name": "POS 6 TO POS 7"
+        },
+        {
+          "range": [119, 119],
+          "name": "UV"
+        },
+        {
+          "range": [120, 135],
+          "name": "POS 7 TO POS 8"
+        },
+        {
+          "range": [136, 136],
+          "name": "RED 308"
+        },
+        {
+          "range": [137, 152],
+          "name": "POS 8 TO OPEN"
+        },
+        {
+          "range": [153, 153],
+          "name": "OPEN"
+        },
+        {
+          "range": [154, 158],
+          "name": "RED 308"
+        },
+        {
+          "range": [159, 163],
+          "name": "UV"
+        },
+        {
+          "range": [164, 168],
+          "name": "CTO 3200-4100"
+        },
+        {
+          "range": [169, 173],
+          "name": "HALF MINUS GREEN"
+        },
+        {
+          "range": [174, 178],
+          "name": "ORANGE 306"
+        },
+        {
+          "range": [179, 183],
+          "name": "PINK 312"
+        },
+        {
+          "range": [184, 188],
+          "name": "GREEN 206"
+        },
+        {
+          "range": [189, 193],
+          "name": "BLUE 110"
+        },
+        {
+          "range": [194, 198],
+          "name": "OPEN"
+        },
+        {
+          "range": [199, 219],
+          "name": "CHANGE COLORWHEEL CLOCKWISE"
+        },
+        {
+          "range": [220, 240],
+          "name": "CHANGE COLORWHEEL UNCLOCKWISE"
+        },
+        {
+          "range": [241, 245],
+          "name": "RANDOM COLOR FAST"
+        },
+        {
+          "range": [246, 250],
+          "name": "RANDOM COLOR MEDIUM"
+        },
+        {
+          "range": [251, 255],
+          "name": "RANDOM COLOR SLOW"
+        }
+      ]
+    },
+    "BEAMSHAPER": {
+      "type": "Effect"
+    },
+    "MAKROS": {
+      "type": "Effect"
+    },
+    "ZOOM": {
+      "type": "Zoom",
+      "fineChannelAliases": ["ZOOM fine"]
+    },
+    "PAN": {
+      "type": "Pan",
+      "fineChannelAliases": ["PAN fine"],
+      "defaultValue": 128
+    },
+    "TILT": {
+      "type": "Tilt",
+      "fineChannelAliases": ["TILT fine"],
+      "defaultValue": 128
+    },
+    "SPEED PAN/TILT": {
+      "type": "Speed"
+    },
+    "SPEED FX": {
+      "type": "Speed"
+    }
+  },
+  "modes": [
+    {
+      "channels": [
+        "SHUTTER",
+        "DIMMER",
+        null
+      ]
+    },
+    {
+      "name": "EXTENDED 23 CHANNEL",
+      "shortName": "EXT 23 CH",
+      "channels": [
+        "SHUTTER",
+        "DIMMER 2",
+        "DIMMER 2 fine",
+        "CYAN 2",
+        "CYAN 2 fine",
+        "MAGENTA",
+        "MAGENTA fine",
+        "YELLOW",
+        "YELLOW fine",
+        "CTO",
+        "CTO fine",
+        "COLORWHEEL",
+        "COLORWHEEL fine",
+        "BEAMSHAPER",
+        "MAKROS",
+        "ZOOM",
+        "ZOOM fine",
+        "PAN",
+        "PAN fine",
+        "TILT",
+        "TILT fine",
+        "SPEED PAN/TILT",
+        "SPEED FX"
+      ]
+    }
+  ]
+}
