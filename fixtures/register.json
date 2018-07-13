@@ -455,6 +455,11 @@
       "lastModifyDate": "2017-07-16",
       "lastAction": "modified"
     },
+    "martin/mac-700-wash": {
+      "name": "MAC 700 WASH",
+      "lastModifyDate": "2018-07-13",
+      "lastAction": "created"
+    },
     "martin/mac-aura": {
       "name": "MAC Aura",
       "lastModifyDate": "2017-12-09",
@@ -630,13 +635,13 @@
       "lastModifyDate": "2018-05-28",
       "lastAction": "created"
     },
-    "showven/sparkular-fall": {
-      "name": "Sparkular Fall",
+    "showven/sparkular": {
+      "name": "Sparkular",
       "lastModifyDate": "2018-06-13",
       "lastAction": "created"
     },
-    "showven/sparkular": {
-      "name": "Sparkular",
+    "showven/sparkular-fall": {
+      "name": "Sparkular Fall",
       "lastModifyDate": "2018-06-13",
       "lastAction": "created"
     },
@@ -825,6 +830,7 @@
     ],
     "martin": [
       "atomic-3000",
+      "mac-700-wash",
       "mac-aura",
       "mac-axiom-hybrid",
       "mac-viper-airfx",
@@ -879,8 +885,8 @@
       "xs-1-rgbw"
     ],
     "showven": [
-      "sparkular-fall",
-      "sparkular"
+      "sparkular",
+      "sparkular-fall"
     ],
     "stairville": [
       "led-flood-panel-150",
@@ -1033,8 +1039,8 @@
       "glp/impression-x4-bar-10",
       "magicfx/stage-flame",
       "minuit-une/ivl-carre",
-      "showven/sparkular-fall",
       "showven/sparkular",
+      "showven/sparkular-fall",
       "venue/tristrip3z"
     ],
     "Fan": [
@@ -1105,6 +1111,7 @@
       "jb-lighting/varyscan-p7",
       "kam/gobotracer",
       "lightmaxx/vega-zoom-wash",
+      "martin/mac-700-wash",
       "martin/mac-aura",
       "martin/mac-axiom-hybrid",
       "martin/mac-viper-airfx",
@@ -1306,13 +1313,17 @@
     ],
     "Alejo Cervera": [
       "magicfx/stage-flame",
-      "showven/sparkular-fall",
-      "showven/sparkular"
+      "showven/sparkular",
+      "showven/sparkular-fall"
     ],
     "Justin Hornsby": [
       "chauvet-dj/washfx",
       "equinox/gigabar",
       "kam/gobotracer"
+    ],
+    "Karl Humbug": [
+      "dts/scena-led-150",
+      "martin/mac-700-wash"
     ],
     "Nerijus Mongirdas": [
       "jb-systems/twin-effect-laser",
@@ -1334,9 +1345,6 @@
     ],
     "Jo": [
       "showtec/xs-1-rgbw"
-    ],
-    "Karl Humbug": [
-      "dts/scena-led-150"
     ],
     "Massimo Callegari": [
       "clay-paky/sharpy"
@@ -1443,6 +1451,7 @@
     }
   },
   "lastUpdated": [
+    "martin/mac-700-wash",
     "dts/scena-led-150",
     "american-dj/xs-400",
     "elation/acl-360-roller",
