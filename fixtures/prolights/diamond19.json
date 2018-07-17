@@ -666,44 +666,104 @@
       ]
     },
     "Pattern Byte 1": {
-      "type": "Effect",
-      "defaultValue": 0
+      "type": "Intensity",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Bit access to LED1 and LED2 RGBW flags"
+        }
+      ]
     },
     "Pattern Byte 2": {
-      "type": "Effect",
-      "defaultValue": 0
+      "type": "Intensity",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Bit access to LED3 and LED4 RGBW flags"
+        }
+      ]
     },
     "Pattern Byte 3": {
-      "type": "Effect",
-      "defaultValue": 0
+      "type": "Intensity",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Bit access to LED5 and LED6 RGBW flags"
+        }
+      ]
     },
     "Pattern Byte 4": {
-      "type": "Effect",
-      "defaultValue": 0
+      "type": "Intensity",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Bit access to LED7 and LED8 RGBW flags"
+        }
+      ]
     },
     "Pattern Byte 5": {
-      "type": "Effect",
-      "defaultValue": 0
+      "type": "Intensity",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Bit access to LED9 and LED10 RGBW flags"
+        }
+      ]
     },
     "Pattern Byte 6": {
-      "type": "Effect",
-      "defaultValue": 0
+      "type": "Intensity",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Bit access to LED11 and LED12 RGBW flags"
+        }
+      ]
     },
     "Pattern Byte 7": {
-      "type": "Effect",
-      "defaultValue": 0
+      "type": "Intensity",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Bit access to LED13 and LED14 RGBW flags"
+        }
+      ]
     },
     "Pattern Byte 8": {
-      "type": "Effect",
-      "defaultValue": 0
+      "type": "Intensity",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Bit access to LED15 and LED16 RGBW flags"
+        }
+      ]
     },
     "Pattern Byte 9": {
-      "type": "Effect",
-      "defaultValue": 0
+      "type": "Intensity",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Bit access to LED17 and LED18 RGBW flags"
+        }
+      ]
     },
     "Pattern Byte 10": {
-      "type": "Effect",
-      "defaultValue": 0
+      "type": "Intensity",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Bit access to LED19 RGBW flags"
+        }
+      ]
     },
     "Control": {
       "type": "Maintenance",
