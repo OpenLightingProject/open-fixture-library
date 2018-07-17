@@ -111,6 +111,24 @@
         }
       ]
     },
+    "Shutter Extended": {
+      "type": "Shutter",
+      "name": "Shutter",
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "Close"
+        },
+        {
+          "range": [32, 223],
+          "name": "Strobe Rate (slow to fast)"
+        },
+        {
+          "range": [224, 255],
+          "name": "Open"
+        }
+      ]
+    },
     "Shutter Basic": {
       "type": "Shutter",
       "name": "Shutter",
@@ -142,24 +160,6 @@
         {
           "range": [192, 223],
           "name": "Random strobe slow…fast"
-        },
-        {
-          "range": [224, 255],
-          "name": "Open"
-        }
-      ]
-    },
-    "Shutter Extended": {
-      "type": "Shutter",
-      "name": "Shutter",
-      "capabilities": [
-        {
-          "range": [0, 31],
-          "name": "Close"
-        },
-        {
-          "range": [32, 223],
-          "name": "Strobe Rate (slow to fast)"
         },
         {
           "range": [224, 255],
