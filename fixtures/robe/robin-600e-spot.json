@@ -1076,6 +1076,35 @@
         }
       ]
     },
+    "Frost": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Open"
+        },
+        {
+          "range": [1, 179],
+          "name": "Frost 0-100%"
+        },
+        {
+          "range": [180, 189],
+          "name": "Frost 100%"
+        },
+        {
+          "range": [190, 211],
+          "name": "Pulse Closing slow…fast"
+        },
+        {
+          "range": [212, 233],
+          "name": "Pulse Opening fast…slow"
+        },
+        {
+          "range": [234, 255],
+          "name": "Ramping fast…slow"
+        }
+      ]
+    },
     "Iris": {
       "type": "Iris",
       "fineChannelAliases": ["Iris fine"],
@@ -1125,6 +1154,16 @@
         {
           "range": [0, 255],
           "name": "Max to Min"
+        }
+      ]
+    },
+    "Focus": {
+      "type": "Focus",
+      "fineChannelAliases": ["Focus fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Far to Near"
         }
       ]
     },
@@ -1182,45 +1221,6 @@
       "type": "Intensity",
       "fineChannelAliases": ["Dimmer fine"],
       "crossfade": true
-    },
-    "Frost": {
-      "type": "Effect",
-      "capabilities": [
-        {
-          "range": [0, 0],
-          "name": "Open"
-        },
-        {
-          "range": [1, 179],
-          "name": "Frost 0-100%"
-        },
-        {
-          "range": [180, 189],
-          "name": "Frost 100%"
-        },
-        {
-          "range": [190, 211],
-          "name": "Pulse Closing slow…fast"
-        },
-        {
-          "range": [212, 233],
-          "name": "Pulse Opening fast…slow"
-        },
-        {
-          "range": [234, 255],
-          "name": "Ramping fast…slow"
-        }
-      ]
-    },
-    "Focus": {
-      "type": "Focus",
-      "fineChannelAliases": ["Focus fine"],
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Far to Near"
-        }
-      ]
     }
   },
   "modes": [
