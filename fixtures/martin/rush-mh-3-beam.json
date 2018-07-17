@@ -506,21 +506,22 @@
           "type": "ColorWheelIndex",
           "index": 11.5,
           "colors": ["#ffff99", "#ffffff"],
-          "comment": "Split Light Yellow / White"
+          "comment": "Split Light Yellow / Off White"
         },
         {
           "dmxRange": [51, 52],
           "type": "ColorWheelIndex",
           "index": 12,
           "colors": ["#ffffff"],
-          "comment": "White"
+          "comment": "Off White",
+          "helpWanted": "What color is \"Off White\"?"
         },
         {
           "dmxRange": [53, 54],
           "type": "ColorWheelIndex",
           "index": 12.5,
           "colors": ["#ffffff", "#00aaff"],
-          "comment": "Split White / Light Blue"
+          "comment": "Split Off White / Light Blue"
         },
         {
           "dmxRange": [55, 56],
