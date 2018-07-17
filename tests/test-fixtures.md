@@ -47,9 +47,9 @@
 **Physical override** [[36]](#user-content-footnote-36) | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **RDM** [[37]](#user-content-footnote-37) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅
 **Reused channels** [[38]](#user-content-footnote-38) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅
-**Switching channels** [[39]](#user-content-footnote-39) | ❌ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌
-**Switches fine channels** [[40]](#user-content-footnote-40) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌
-**Switching channel at different positions** [[41]](#user-content-footnote-41) | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌
+**Switching channels** [[39]](#user-content-footnote-39) | ❌ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ✅
+**Switches fine channels** [[40]](#user-content-footnote-40) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅
+**Switching channel at different positions** [[41]](#user-content-footnote-41) | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ✅
 
 **<a id="user-content-footnote-1">[1]</a>**: Whether the fixture has at least one channel of type 'Intensity'
 
