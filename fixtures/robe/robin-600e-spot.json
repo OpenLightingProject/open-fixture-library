@@ -154,44 +154,92 @@
       "fineChannelAliases": ["Color Wheel fine"],
       "capabilities": [
         {
-          "range": [0, 15],
+          "range": [0, 0],
           "name": "White",
           "color": "#ffffff"
         },
         {
-          "range": [16, 31],
+          "range": [1, 15],
+          "name": "Split White / Deep Red",
+          "color": "#ffffff",
+          "color2": "#aa0000"
+        },
+        {
+          "range": [16, 16],
           "name": "Deep Red",
           "color": "#aa0000"
         },
         {
-          "range": [32, 47],
+          "range": [17, 31],
+          "name": "Split Deep Red / Deep Blue",
+          "color": "#aa0000",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [32, 32],
           "name": "Deep Blue",
           "color": "#0000ff"
         },
         {
-          "range": [48, 63],
+          "range": [33, 47],
+          "name": "Split Deep Blue / Orange",
+          "color": "#0000ff",
+          "color2": "#ff7f00"
+        },
+        {
+          "range": [48, 48],
           "name": "Orange",
           "color": "#ff7f00"
         },
         {
-          "range": [64, 79],
+          "range": [49, 63],
+          "name": "Split Orange / Green",
+          "color": "#ff7f00",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [64, 64],
           "name": "Green",
           "color": "#00ff00"
         },
         {
-          "range": [80, 95],
+          "range": [65, 79],
+          "name": "Split Green / Light Red",
+          "color": "#00ff00",
+          "color2": "#ff4000"
+        },
+        {
+          "range": [80, 80],
           "name": "Light Red",
           "color": "#ff4000"
         },
         {
-          "range": [96, 111],
-          "name": "Amber",
-          "color": "#ffc800"
+          "range": [81, 95],
+          "name": "Split Light Red / Amber",
+          "color": "#ff4000",
+          "color2": "#ffbf00"
         },
         {
-          "range": [112, 127],
+          "range": [96, 96],
+          "name": "Amber",
+          "color": "#ffbf00"
+        },
+        {
+          "range": [97, 111],
+          "name": "Split Amber / UV Filter",
+          "color": "#ffbf00",
+          "color2": "#8800ff"
+        },
+        {
+          "range": [112, 112],
           "name": "UV Filter",
-          "color": "#7300ff"
+          "color": "#8800ff"
+        },
+        {
+          "range": [113, 127],
+          "name": "Split UV Filter / White",
+          "color": "#8800ff",
+          "color2": "#ffffff"
         },
         {
           "range": [128, 129],
@@ -226,12 +274,12 @@
         {
           "range": [172, 181],
           "name": "Amber",
-          "color": "#ffcc00"
+          "color": "#ffbf00"
         },
         {
           "range": [182, 189],
           "name": "UV Filter",
-          "color": "#7f00ff"
+          "color": "#8800ff"
         },
         {
           "range": [190, 215],
@@ -430,44 +478,84 @@
       "fineChannelAliases": ["Static Gobos fine"],
       "capabilities": [
         {
-          "range": [0, 6],
-          "name": "Continuous: Open"
+          "range": [0, 0],
+          "name": "Open"
         },
         {
-          "range": [7, 12],
-          "name": "Continuous: Gobo 1"
+          "range": [1, 6],
+          "name": "Split Open / Gobo 1"
         },
         {
-          "range": [13, 18],
-          "name": "Continuous: Gobo 2"
+          "range": [7, 7],
+          "name": "Gobo 1"
         },
         {
-          "range": [19, 25],
-          "name": "Continuous: Gobo 3"
+          "range": [8, 12],
+          "name": "Split Gobo 1 / Gobo 2"
         },
         {
-          "range": [26, 31],
-          "name": "Continuous: Gobo 4"
+          "range": [13, 13],
+          "name": "Gobo 2"
         },
         {
-          "range": [32, 38],
-          "name": "Continuous: Gobo 5"
+          "range": [14, 18],
+          "name": "Split Gobo 2 / Gobo 3"
         },
         {
-          "range": [39, 44],
-          "name": "Continuous: Gobo 6"
+          "range": [19, 19],
+          "name": "Gobo 3"
         },
         {
-          "range": [45, 50],
-          "name": "Continuous: Gobo 7"
+          "range": [20, 25],
+          "name": "Split Gobo 3 / Gobo 4"
         },
         {
-          "range": [51, 57],
-          "name": "Continuous: Gobo 8"
+          "range": [26, 26],
+          "name": "Gobo 4"
         },
         {
-          "range": [58, 63],
-          "name": "Continuous: Gobo 9"
+          "range": [27, 31],
+          "name": "Split Gobo 4 / Gobo 5"
+        },
+        {
+          "range": [32, 32],
+          "name": "Gobo 5"
+        },
+        {
+          "range": [33, 38],
+          "name": "Split Gobo 5 / Gobo 6"
+        },
+        {
+          "range": [39, 39],
+          "name": "Gobo 6"
+        },
+        {
+          "range": [40, 44],
+          "name": "Split Gobo 6 / Gobo 7"
+        },
+        {
+          "range": [45, 45],
+          "name": "Gobo 7"
+        },
+        {
+          "range": [46, 50],
+          "name": "Split Gobo 7 / Gobo 8"
+        },
+        {
+          "range": [51, 51],
+          "name": "Gobo 8"
+        },
+        {
+          "range": [52, 57],
+          "name": "Split Gobo 8 / Gobo 9"
+        },
+        {
+          "range": [58, 58],
+          "name": "Gobo 9"
+        },
+        {
+          "range": [59, 63],
+          "name": "Split Gobo 9 / Open"
         },
         {
           "range": [64, 64],
