@@ -138,7 +138,7 @@ function addCapability(xmlChannel, cap) {
     }
   });
 
-  if (cap.colors !== null) {
+  if (cap.colors !== null && cap.colors.allColors.length <= 2) {
     xmlCapability.attribute(`Color`, cap.colors.allColors[0]);
 
     if (cap.colors.allColors.length > 1) {
