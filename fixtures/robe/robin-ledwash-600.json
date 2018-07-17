@@ -77,9 +77,9 @@
     "Pan/Tilt Speed": {
       "capability": {
         "type": "PanTiltSpeed",
-        "comment": "Speed fast-slow / Time 0.1-25.5s",
-        "speedStart": "fast",
-        "speedEnd": "slow"
+        "durationStart": "0.1s",
+        "durationEnd": "25.5s",
+        "comment": "fast…slow"
       }
     },
     "Special Functions": {
@@ -200,9 +200,9 @@
         {
           "dmxRange": [1, 255],
           "type": "ColorTemperature",
-          "comment": "15500-2700K or 20000-2700K (with color calibration off)",
           "colorTemperatureStart": "15500K",
-          "colorTemperatureEnd": "2700K"
+          "colorTemperatureEnd": "2700K",
+          "comment": "or 20000…2700K with color calibration off"
         }
       ]
     },
@@ -217,50 +217,50 @@
           "dmxRange": [1, 2],
           "type": "ColorPreset",
           "colors": ["#ffa757"],
-          "comment": "White 2700K",
-          "colorTemperature": "2700K"
+          "colorTemperature": "2700K",
+          "comment": "White"
         },
         {
           "dmxRange": [3, 3],
           "type": "ColorPreset",
           "colors": ["#ffa757"],
-          "comment": "White 2700K (halogen)",
-          "colorTemperature": "2700K"
+          "colorTemperature": "2700K",
+          "comment": "Halogen White"
         },
         {
           "dmxRange": [4, 5],
           "type": "ColorPreset",
           "colors": ["#ffb87b"],
-          "comment": "White 3200K",
-          "colorTemperature": "3200K"
+          "colorTemperature": "3200K",
+          "comment": "White"
         },
         {
           "dmxRange": [6, 6],
           "type": "ColorPreset",
           "colors": ["#ffb87b"],
-          "comment": "White 3200K (halogen)",
-          "colorTemperature": "3200K"
+          "colorTemperature": "3200K",
+          "comment": "Halogen White"
         },
         {
           "dmxRange": [7, 9],
           "type": "ColorPreset",
           "colors": ["#ffd3af"],
-          "comment": "White 4200K",
-          "colorTemperature": "4200K"
+          "colorTemperature": "4200K",
+          "comment": "White"
         },
         {
           "dmxRange": [10, 12],
           "type": "ColorPreset",
           "colors": ["#ffefe1"],
-          "comment": "White 5600K",
-          "colorTemperature": "5600K"
+          "colorTemperature": "5600K",
+          "comment": "White"
         },
         {
           "dmxRange": [13, 15],
           "type": "ColorPreset",
           "colors": ["#dde6ff"],
-          "comment": "White 8000K",
-          "colorTemperature": "8000K"
+          "colorTemperature": "8000K",
+          "comment": "White"
         },
         {
           "dmxRange": [16, 16],
