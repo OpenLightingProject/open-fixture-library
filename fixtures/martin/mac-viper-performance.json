@@ -106,7 +106,7 @@
           "type": "ColorWheelIndex",
           "index": 0,
           "colors": ["#ffffff"],
-          "comment": "Open / White"
+          "comment": "White"
         },
         {
           "dmxRange": [1, 14],
@@ -115,7 +115,7 @@
           "indexEnd": 1,
           "colorsStart": ["#ffffff"],
           "colorsEnd": ["#3857ad"],
-          "comment": "Open - Blue"
+          "comment": "Split White / Blue"
         },
         {
           "dmxRange": [15, 15],
@@ -131,7 +131,7 @@
           "indexEnd": 2,
           "colorsStart": ["#3857ad"],
           "colorsEnd": ["#61c15a"],
-          "comment": "Blue - Green"
+          "comment": "Split Blue / Green"
         },
         {
           "dmxRange": [30, 30],
@@ -147,7 +147,7 @@
           "indexEnd": 3,
           "colorsStart": ["#61c15a"],
           "colorsEnd": ["#fb9955"],
-          "comment": "Green - Orange"
+          "comment": "Split Green / Orange"
         },
         {
           "dmxRange": [45, 45],
@@ -163,7 +163,7 @@
           "indexEnd": 4,
           "colorsStart": ["#fb9955"],
           "colorsEnd": ["#fbe7f1"],
-          "comment": "Orange - Rose"
+          "comment": "Split Orange / Rose"
         },
         {
           "dmxRange": [60, 60],
@@ -179,7 +179,7 @@
           "indexEnd": 5,
           "colorsStart": ["#fbe7f1"],
           "colorsEnd": ["#da9ecc"],
-          "comment": "Rose - Magenta"
+          "comment": "Split Rose / Magenta"
         },
         {
           "dmxRange": [75, 75],
@@ -195,7 +195,7 @@
           "indexEnd": 6,
           "colorsStart": ["#da9ecc"],
           "colorsEnd": ["#994ba6"],
-          "comment": "Magenta - Deep Blue"
+          "comment": "Split Magenta / Deep Blue"
         },
         {
           "dmxRange": [90, 90],
@@ -211,7 +211,7 @@
           "indexEnd": 7,
           "colorsStart": ["#994ba6"],
           "colorsEnd": ["#de4b48"],
-          "comment": "Deep Blue - Red"
+          "comment": "Split Deep Blue / Red"
         },
         {
           "dmxRange": [105, 105],
@@ -227,14 +227,14 @@
           "indexEnd": 8,
           "colorsStart": ["#de4b48"],
           "colorsEnd": ["#ffffff"],
-          "comment": "Red - Open"
+          "comment": "Split Red / White"
         },
         {
           "dmxRange": [120, 160],
           "type": "ColorWheelIndex",
           "index": 0,
           "colors": ["#ffffff"],
-          "comment": "Open / White"
+          "comment": "White"
         },
         {
           "dmxRange": [161, 163],
@@ -290,7 +290,7 @@
           "type": "ColorWheelIndex",
           "index": 0,
           "colors": ["#ffffff"],
-          "comment": "Open / White"
+          "comment": "White"
         },
         {
           "dmxRange": [193, 214],
