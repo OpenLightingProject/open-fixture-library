@@ -139,22 +139,22 @@
           "dmxRange": [104, 111],
           "type": "ColorWheelIndex",
           "index": 13,
-          "colors": ["#ff0000", "#0000ff"],
-          "comment": "Red / Blue"
+          "colors": ["#ff0000", "#00ffff"],
+          "comment": "Split Red / Cyan"
         },
         {
           "dmxRange": [112, 119],
           "type": "ColorWheelIndex",
           "index": 14,
           "colors": ["#ffff00", "#00ff00"],
-          "comment": "Yellow / Green"
+          "comment": "Split Yellow / Green"
         },
         {
           "dmxRange": [120, 127],
           "type": "ColorWheelIndex",
           "index": 15,
-          "colors": ["#0000ff", "#cc00ff"],
-          "comment": "Blue / Purple"
+          "colors": ["#ffc0cb", "#0000ff"],
+          "comment": "Split Pink / Blue"
         },
         {
           "dmxRange": [128, 190],
