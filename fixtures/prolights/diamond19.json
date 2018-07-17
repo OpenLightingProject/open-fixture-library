@@ -193,14 +193,14 @@
           "range": [32, 47],
           "name": "Forward Spin",
           "switchChannels": {
-            "Virtual Color 1": "Rainbow Effect"
+            "Virtual Color 1": "Rainbow Effect Forward"
           }
         },
         {
           "range": [48, 63],
           "name": "Reverse Spin",
           "switchChannels": {
-            "Virtual Color 1": "Rainbow Effect"
+            "Virtual Color 1": "Rainbow Effect Reverse"
           }
         },
         {
@@ -226,8 +226,25 @@
         }
       ]
     },
-    "Rainbow Effect": {
-      "type": "Speed"
+    "Rainbow Effect Forward": {
+      "type": "Speed",
+      "crossfade": true,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Effect speed slow…fast"
+        }
+      ]
+    },
+    "Rainbow Effect Reverse": {
+      "type": "Speed",
+      "crossfade": true,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Effect speed reverse slow…fast"
+        }
+      ]
     },
     "CTC Function": {
       "type": "Color Temperature",
