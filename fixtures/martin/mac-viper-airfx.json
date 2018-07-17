@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["novasfronteiras.co"],
     "createDate": "2017-08-03",
-    "lastModifyDate": "2017-10-16"
+    "lastModifyDate": "2018-07-17"
   },
   "comment": "Viper Air FX:\n- 35000 Lumens \n- 1:5 zoom - Continuous and fast zoom with auto-linked focus\n- 160 mm precision PC front lens for fat beam looks\n- The Martin Quadray Module is available as an accessory for the MAC Viper AirFX. It splits the MAC Viper AirFX beam into four individually controllable rays.",
   "manualURL": "http://www.martin.com/files/files/productdocuments/11_MANUALS/999/UM_MACViperAirFX_EN_B.pdf",
@@ -32,6 +32,14 @@
       "panMax": 540,
       "tiltMax": 268
     }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["1", "2"],
+        ["3", "4"]
+      ]
+    ]
   },
   "availableChannels": {
     "Strobe / Shutter": {
@@ -907,182 +915,6 @@
         }
       ]
     },
-    "Ray 1 Indexing": {
-      "type": "Gobo",
-      "defaultValue": 128,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "0° - 360°"
-        }
-      ]
-    },
-    "Ray 2 Indexing": {
-      "type": "Gobo",
-      "defaultValue": 128,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "0° - 360°"
-        }
-      ]
-    },
-    "Ray 3 Indexing": {
-      "type": "Gobo",
-      "defaultValue": 128,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "0° - 360°"
-        }
-      ]
-    },
-    "Ray 4 Indexing": {
-      "type": "Gobo",
-      "defaultValue": 128,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "0° - 360°"
-        }
-      ]
-    },
-    "Ray 1 Rotation": {
-      "type": "Speed",
-      "defaultValue": 128,
-      "capabilities": [
-        {
-          "range": [0, 2],
-          "name": "No rotation",
-          "menuClick": "start"
-        },
-        {
-          "range": [3, 126],
-          "name": "Rotating CW Fast > CW Slow",
-          "menuClick": "center"
-        },
-        {
-          "range": [127, 129],
-          "name": "No rotation",
-          "menuClick": "hidden"
-        },
-        {
-          "range": [130, 253],
-          "name": "Rotating CCW Slow > CCW Fast",
-          "menuClick": "center"
-        },
-        {
-          "range": [254, 255],
-          "name": "No rotation",
-          "menuClick": "hidden"
-        }
-      ]
-    },
-    "Ray 2 Rotation": {
-      "type": "Speed",
-      "defaultValue": 128,
-      "capabilities": [
-        {
-          "range": [0, 2],
-          "name": "No rotation",
-          "menuClick": "start"
-        },
-        {
-          "range": [3, 126],
-          "name": "Rotating CW Fast > CW Slow",
-          "menuClick": "center"
-        },
-        {
-          "range": [127, 129],
-          "name": "No rotation",
-          "menuClick": "hidden"
-        },
-        {
-          "range": [130, 253],
-          "name": "Rotating CCW Slow > CCW Fast",
-          "menuClick": "center"
-        },
-        {
-          "range": [254, 255],
-          "name": "No rotation",
-          "menuClick": "hidden"
-        }
-      ]
-    },
-    "Ray 3 Rotation": {
-      "type": "Speed",
-      "defaultValue": 128,
-      "capabilities": [
-        {
-          "range": [0, 2],
-          "name": "No rotation",
-          "menuClick": "start"
-        },
-        {
-          "range": [3, 126],
-          "name": "Rotating CW Fast > CW Slow",
-          "menuClick": "center"
-        },
-        {
-          "range": [127, 129],
-          "name": "No rotation",
-          "menuClick": "hidden"
-        },
-        {
-          "range": [130, 253],
-          "name": "Rotating CCW Slow > CCW Fast",
-          "menuClick": "center"
-        },
-        {
-          "range": [254, 255],
-          "name": "No rotation",
-          "menuClick": "hidden"
-        }
-      ]
-    },
-    "Ray 4 Rotation": {
-      "type": "Speed",
-      "defaultValue": 128,
-      "capabilities": [
-        {
-          "range": [0, 2],
-          "name": "No rotation",
-          "menuClick": "start"
-        },
-        {
-          "range": [3, 126],
-          "name": "Rotating CW Fast > CW Slow",
-          "menuClick": "center"
-        },
-        {
-          "range": [127, 129],
-          "name": "No rotation",
-          "menuClick": "hidden"
-        },
-        {
-          "range": [130, 253],
-          "name": "Rotating CCW Slow > CCW Fast",
-          "menuClick": "center"
-        },
-        {
-          "range": [254, 255],
-          "name": "No rotation",
-          "menuClick": "hidden"
-        }
-      ]
-    },
-    "Ray 1 n/a": {
-      "type": "Nothing"
-    },
-    "Ray 2 n/a": {
-      "type": "Nothing"
-    },
-    "Ray 3 n/a": {
-      "type": "Nothing"
-    },
-    "Ray 4 n/a": {
-      "type": "Nothing"
-    },
     "FX fade time": {
       "type": "Speed",
       "defaultValue": 128,
@@ -1145,6 +977,52 @@
     "Static FX amount": {
       "type": "Intensity",
       "crossfade": true
+    }
+  },
+  "templateChannels": {
+    "Ray $pixelKey Indexing": {
+      "type": "Gobo",
+      "defaultValue": 128,
+      "crossfade": true,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Rotation 0…360°"
+        }
+      ]
+    },
+    "Ray $pixelKey Rotation": {
+      "type": "Speed",
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "range": [0, 2],
+          "name": "No rotation",
+          "menuClick": "hidden"
+        },
+        {
+          "range": [3, 126],
+          "name": "Rotation CW fast…slow",
+          "menuClick": "center"
+        },
+        {
+          "range": [127, 129],
+          "name": "Rotation stop"
+        },
+        {
+          "range": [130, 253],
+          "name": "Rotation CCW fast…slow",
+          "menuClick": "center"
+        },
+        {
+          "range": [254, 255],
+          "name": "No rotation",
+          "menuClick": "hidden"
+        }
+      ]
+    },
+    "Ray $pixelKey n/a": {
+      "type": "Nothing"
     }
   },
   "modes": [
