@@ -170,8 +170,8 @@
   },
   {
     "man": "martin",
-    "key": "mac-viper-performance",
-    "name": "MAC Viper Performance",
+    "key": "mac-viper-airfx",
+    "name": "MAC Viper AirFX",
     "features": [
       "channel-type-intensity",
       "channel-type-single-color",
@@ -182,17 +182,17 @@
       "channel-type-zoom",
       "channel-type-iris",
       "channel-type-gobo",
-      "channel-type-prism",
-      "channel-type-shutter",
+      "channel-type-strobe",
       "channel-type-speed",
       "channel-type-color-temperature",
       "channel-type-effect",
       "channel-type-maintenance",
       "channel-type-nothing",
-      "duplicate-channel-names",
       "fine-channel-alias",
       "fine-channel-capabilities",
       "floating-point-weight",
+      "matrix-pixelKeys",
+      "matrix-channel-used-directly",
       "multiple-categories",
       "rdm",
       "reused-channels",
@@ -227,35 +227,10 @@
       "floating-point-weight",
       "multiple-categories",
       "rdm",
-      "reused-channels"
-    ]
-  },
-  {
-    "man": "robe",
-    "key": "robin-ledwash-600",
-    "name": "Robin LEDWash 600",
-    "features": [
-      "channel-type-intensity",
-      "channel-type-single-color",
-      "channel-type-multi-color",
-      "channel-type-pan",
-      "channel-type-tilt",
-      "channel-type-zoom",
-      "channel-type-strobe",
-      "channel-type-speed",
-      "channel-type-color-temperature",
-      "channel-type-maintenance",
-      "fine-channel-alias",
-      "fine-channel-capabilities",
-      "floating-point-weight",
-      "matrix-pixelKeys",
-      "matrix-pixelGroups",
-      "matrix-custom-layout",
-      "fine-matrix-channel",
-      "matrix-channel-used-directly",
-      "multiple-categories",
-      "rdm",
-      "reused-channels"
+      "reused-channels",
+      "switching-channels",
+      "switches-fine-channels",
+      "switching-channel-positions"
     ]
   }
 ]
