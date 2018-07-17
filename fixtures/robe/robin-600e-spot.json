@@ -154,44 +154,92 @@
       "fineChannelAliases": ["Color Wheel fine"],
       "capabilities": [
         {
-          "range": [0, 15],
+          "range": [0, 0],
           "name": "White",
           "color": "#ffffff"
         },
         {
-          "range": [16, 31],
+          "range": [1, 15],
+          "name": "Split White / Deep Red",
+          "color": "#ffffff",
+          "color2": "#aa0000"
+        },
+        {
+          "range": [16, 16],
           "name": "Deep Red",
           "color": "#aa0000"
         },
         {
-          "range": [32, 47],
+          "range": [17, 31],
+          "name": "Split Deep Red / Deep Blue",
+          "color": "#aa0000",
+          "color2": "#0000ff"
+        },
+        {
+          "range": [32, 32],
           "name": "Deep Blue",
           "color": "#0000ff"
         },
         {
-          "range": [48, 63],
+          "range": [33, 47],
+          "name": "Split Deep Blue / Orange",
+          "color": "#0000ff",
+          "color2": "#ff7f00"
+        },
+        {
+          "range": [48, 48],
           "name": "Orange",
           "color": "#ff7f00"
         },
         {
-          "range": [64, 79],
+          "range": [49, 63],
+          "name": "Split Orange / Green",
+          "color": "#ff7f00",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [64, 64],
           "name": "Green",
           "color": "#00ff00"
         },
         {
-          "range": [80, 95],
+          "range": [65, 79],
+          "name": "Split Green / Light Red",
+          "color": "#00ff00",
+          "color2": "#ff4000"
+        },
+        {
+          "range": [80, 80],
           "name": "Light Red",
           "color": "#ff4000"
         },
         {
-          "range": [96, 111],
-          "name": "Amber",
-          "color": "#ffc800"
+          "range": [81, 95],
+          "name": "Split Light Red / Amber",
+          "color": "#ff4000",
+          "color2": "#ffbf00"
         },
         {
-          "range": [112, 127],
+          "range": [96, 96],
+          "name": "Amber",
+          "color": "#ffbf00"
+        },
+        {
+          "range": [97, 111],
+          "name": "Split Amber / UV Filter",
+          "color": "#ffbf00",
+          "color2": "#8800ff"
+        },
+        {
+          "range": [112, 112],
           "name": "UV Filter",
-          "color": "#7300ff"
+          "color": "#8800ff"
+        },
+        {
+          "range": [113, 127],
+          "name": "Split UV Filter / White",
+          "color": "#8800ff",
+          "color2": "#ffffff"
         },
         {
           "range": [128, 129],
@@ -226,12 +274,12 @@
         {
           "range": [172, 181],
           "name": "Amber",
-          "color": "#ffcc00"
+          "color": "#ffbf00"
         },
         {
           "range": [182, 189],
           "name": "UV Filter",
-          "color": "#7f00ff"
+          "color": "#8800ff"
         },
         {
           "range": [190, 215],
@@ -430,44 +478,84 @@
       "fineChannelAliases": ["Static Gobos fine"],
       "capabilities": [
         {
-          "range": [0, 6],
-          "name": "Continuous: Open"
+          "range": [0, 0],
+          "name": "Open"
         },
         {
-          "range": [7, 12],
-          "name": "Continuous: Gobo 1"
+          "range": [1, 6],
+          "name": "Split Open / Gobo 1"
         },
         {
-          "range": [13, 18],
-          "name": "Continuous: Gobo 2"
+          "range": [7, 7],
+          "name": "Gobo 1"
         },
         {
-          "range": [19, 25],
-          "name": "Continuous: Gobo 3"
+          "range": [8, 12],
+          "name": "Split Gobo 1 / Gobo 2"
         },
         {
-          "range": [26, 31],
-          "name": "Continuous: Gobo 4"
+          "range": [13, 13],
+          "name": "Gobo 2"
         },
         {
-          "range": [32, 38],
-          "name": "Continuous: Gobo 5"
+          "range": [14, 18],
+          "name": "Split Gobo 2 / Gobo 3"
         },
         {
-          "range": [39, 44],
-          "name": "Continuous: Gobo 6"
+          "range": [19, 19],
+          "name": "Gobo 3"
         },
         {
-          "range": [45, 50],
-          "name": "Continuous: Gobo 7"
+          "range": [20, 25],
+          "name": "Split Gobo 3 / Gobo 4"
         },
         {
-          "range": [51, 57],
-          "name": "Continuous: Gobo 8"
+          "range": [26, 26],
+          "name": "Gobo 4"
         },
         {
-          "range": [58, 63],
-          "name": "Continuous: Gobo 9"
+          "range": [27, 31],
+          "name": "Split Gobo 4 / Gobo 5"
+        },
+        {
+          "range": [32, 32],
+          "name": "Gobo 5"
+        },
+        {
+          "range": [33, 38],
+          "name": "Split Gobo 5 / Gobo 6"
+        },
+        {
+          "range": [39, 39],
+          "name": "Gobo 6"
+        },
+        {
+          "range": [40, 44],
+          "name": "Split Gobo 6 / Gobo 7"
+        },
+        {
+          "range": [45, 45],
+          "name": "Gobo 7"
+        },
+        {
+          "range": [46, 50],
+          "name": "Split Gobo 7 / Gobo 8"
+        },
+        {
+          "range": [51, 51],
+          "name": "Gobo 8"
+        },
+        {
+          "range": [52, 57],
+          "name": "Split Gobo 8 / Gobo 9"
+        },
+        {
+          "range": [58, 58],
+          "name": "Gobo 9"
+        },
+        {
+          "range": [59, 63],
+          "name": "Split Gobo 9 / Open"
         },
         {
           "range": [64, 64],
@@ -573,168 +661,320 @@
     },
     "Rotating Gobos": {
       "type": "Gobo",
+      "defaultValue": 0,
       "capabilities": [
         {
           "range": [0, 3],
-          "name": "Open"
+          "name": "Open",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Indexing",
+            "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
+          }
         },
         {
           "range": [4, 7],
-          "name": "Gobo 1"
+          "name": "Gobo 1 indexing",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Indexing",
+            "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
+          }
         },
         {
           "range": [8, 11],
-          "name": "Gobo 2"
+          "name": "Gobo 2 indexing",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Indexing",
+            "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
+          }
         },
         {
           "range": [12, 15],
-          "name": "Gobo 3"
+          "name": "Gobo 3 indexing",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Indexing",
+            "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
+          }
         },
         {
           "range": [16, 19],
-          "name": "Gobo 4"
+          "name": "Gobo 4 indexing",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Indexing",
+            "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
+          }
         },
         {
           "range": [20, 23],
-          "name": "Gobo 5"
+          "name": "Gobo 5 indexing",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Indexing",
+            "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
+          }
         },
         {
           "range": [24, 27],
-          "name": "Gobo 6"
+          "name": "Gobo 6 indexing",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Indexing",
+            "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
+          }
         },
         {
           "range": [28, 31],
-          "name": "Gobo 7"
+          "name": "Gobo 7 indexing",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Indexing",
+            "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
+          }
         },
         {
           "range": [32, 35],
-          "name": "Gobo 1 >"
+          "name": "Gobo 1 rotation",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Rotation",
+            "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
+          }
         },
         {
           "range": [36, 39],
-          "name": "Gobo 2 >"
+          "name": "Gobo 2 rotation",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Rotation",
+            "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
+          }
         },
         {
           "range": [40, 43],
-          "name": "Gobo 3 >"
+          "name": "Gobo 3 rotation",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Rotation",
+            "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
+          }
         },
         {
           "range": [44, 47],
-          "name": "Gobo 4 >"
+          "name": "Gobo 4 rotation",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Rotation",
+            "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
+          }
         },
         {
           "range": [48, 51],
-          "name": "Gobo 5 >"
+          "name": "Gobo 5 rotation",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Rotation",
+            "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
+          }
         },
         {
           "range": [52, 55],
-          "name": "Gobo 6 >"
+          "name": "Gobo 6 rotation",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Rotation",
+            "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
+          }
         },
         {
           "range": [56, 59],
-          "name": "Gobo 7 >"
+          "name": "Gobo 7 rotation",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Rotation",
+            "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
+          }
         },
         {
           "range": [60, 69],
-          "name": "Shaking Gobo 1"
+          "name": "Shaking Gobo 1 indexing",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Indexing",
+            "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
+          }
         },
         {
           "range": [70, 79],
-          "name": "Shaking Gobo 2"
+          "name": "Shaking Gobo 2 indexing",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Indexing",
+            "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
+          }
         },
         {
           "range": [80, 89],
-          "name": "Shaking Gobo 3"
+          "name": "Shaking Gobo 3 indexing",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Indexing",
+            "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
+          }
         },
         {
           "range": [90, 99],
-          "name": "Shaking Gobo 4"
+          "name": "Shaking Gobo 4 indexing",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Indexing",
+            "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
+          }
         },
         {
           "range": [100, 109],
-          "name": "Shaking Gobo 5"
+          "name": "Shaking Gobo 5 indexing",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Indexing",
+            "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
+          }
         },
         {
           "range": [110, 119],
-          "name": "Shaking Gobo 6"
+          "name": "Shaking Gobo 6 indexing",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Indexing",
+            "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
+          }
         },
         {
           "range": [120, 129],
-          "name": "Shaking Gobo 7"
+          "name": "Shaking Gobo 7 indexing",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Indexing",
+            "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
+          }
         },
         {
           "range": [130, 139],
-          "name": "Shaking Gobo 1 >"
+          "name": "Shaking Gobo 1 rotation",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Rotation",
+            "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
+          }
         },
         {
           "range": [140, 149],
-          "name": "Shaking Gobo 2 >"
+          "name": "Shaking Gobo 2 rotation",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Rotation",
+            "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
+          }
         },
         {
           "range": [150, 159],
-          "name": "Shaking Gobo 3 >"
+          "name": "Shaking Gobo 3 rotation",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Rotation",
+            "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
+          }
         },
         {
           "range": [160, 169],
-          "name": "Shaking Gobo 4 >"
+          "name": "Shaking Gobo 4 rotation",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Rotation",
+            "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
+          }
         },
         {
           "range": [170, 179],
-          "name": "Shaking Gobo 5 >"
+          "name": "Shaking Gobo 5 rotation",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Rotation",
+            "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
+          }
         },
         {
           "range": [180, 189],
-          "name": "Shaking Gobo 6 >"
+          "name": "Shaking Gobo 6 rotation",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Rotation",
+            "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
+          }
         },
         {
           "range": [190, 199],
-          "name": "Shaking Gobo 7 >"
+          "name": "Shaking Gobo 7 rotation",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Rotation",
+            "Rotating Gobo Control fine": "Rotating Gobo Rotation fine"
+          }
         },
         {
           "range": [200, 201],
-          "name": "Open"
+          "name": "Open",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Indexing",
+            "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
+          }
         },
         {
           "range": [202, 221],
-          "name": "Forward Gobo wheel rotation fast…slow"
+          "name": "Forward Gobo wheel rotation fast…slow",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Indexing",
+            "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
+          }
         },
         {
           "range": [222, 223],
-          "name": "No Rotation"
+          "name": "No Rotation",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Indexing",
+            "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
+          }
         },
         {
           "range": [224, 243],
-          "name": "Backward Gobo wheel rotation slow…fast"
+          "name": "Backward Gobo wheel rotation slow…fast",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Indexing",
+            "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
+          }
         },
         {
           "range": [244, 249],
-          "name": "Random Gobo selection by audio control"
+          "name": "Random Gobo selection by audio control",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Indexing",
+            "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
+          }
         },
         {
           "range": [250, 255],
-          "name": "Auto Random Gobo selection fast…slow"
+          "name": "Auto Random Gobo selection fast…slow",
+          "switchChannels": {
+            "Rotating Gobo Control": "Rotating Gobo Indexing",
+            "Rotating Gobo Control fine": "Rotating Gobo Indexing fine"
+          }
         }
       ]
     },
-    "Gobo Rotation": {
+    "Rotating Gobo Indexing": {
       "type": "Speed",
-      "fineChannelAliases": ["Gobo Rotation fine"],
+      "fineChannelAliases": ["Rotating Gobo Indexing fine"],
+      "crossfade": true,
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Gobo stencil rotation 0…360°"
+        }
+      ]
+    },
+    "Rotating Gobo Rotation": {
+      "type": "Speed",
+      "fineChannelAliases": ["Rotating Gobo Rotation fine"],
       "capabilities": [
         {
           "range": [0, 0],
-          "name": "No rotation"
+          "name": "Gobo stencil rotation stop"
         },
         {
           "range": [1, 127],
-          "name": "Forward rotation fast…slow"
+          "name": "Gobo stencil rotation CW fast…slow"
         },
         {
           "range": [128, 129],
-          "name": "No rotation"
+          "name": "Gobo stencil rotation stop"
         },
         {
           "range": [130, 255],
-          "name": "Backward rotation slow…fast"
+          "name": "Gobo stencil rotation CCW slow…fast"
         }
       ]
     },
@@ -836,6 +1076,35 @@
         }
       ]
     },
+    "Frost": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Open"
+        },
+        {
+          "range": [1, 179],
+          "name": "Frost 0-100%"
+        },
+        {
+          "range": [180, 189],
+          "name": "Frost 100%"
+        },
+        {
+          "range": [190, 211],
+          "name": "Pulse Closing slow…fast"
+        },
+        {
+          "range": [212, 233],
+          "name": "Pulse Opening fast…slow"
+        },
+        {
+          "range": [234, 255],
+          "name": "Ramping fast…slow"
+        }
+      ]
+    },
     "Iris": {
       "type": "Iris",
       "fineChannelAliases": ["Iris fine"],
@@ -885,6 +1154,16 @@
         {
           "range": [0, 255],
           "name": "Max to Min"
+        }
+      ]
+    },
+    "Focus": {
+      "type": "Focus",
+      "fineChannelAliases": ["Focus fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Far to Near"
         }
       ]
     },
@@ -942,45 +1221,6 @@
       "type": "Intensity",
       "fineChannelAliases": ["Dimmer fine"],
       "crossfade": true
-    },
-    "Frost": {
-      "type": "Effect",
-      "capabilities": [
-        {
-          "range": [0, 0],
-          "name": "Open"
-        },
-        {
-          "range": [1, 179],
-          "name": "Frost 0-100%"
-        },
-        {
-          "range": [180, 189],
-          "name": "Frost 100%"
-        },
-        {
-          "range": [190, 211],
-          "name": "Pulse Closing slow…fast"
-        },
-        {
-          "range": [212, 233],
-          "name": "Pulse Opening fast…slow"
-        },
-        {
-          "range": [234, 255],
-          "name": "Ramping fast…slow"
-        }
-      ]
-    },
-    "Focus": {
-      "type": "Focus",
-      "fineChannelAliases": ["Focus fine"],
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Far to Near"
-        }
-      ]
     }
   },
   "modes": [
@@ -1006,8 +1246,8 @@
         "Static Gobos",
         "Static Gobos fine",
         "Rotating Gobos",
-        "Gobo Rotation",
-        "Gobo Rotation fine",
+        "Rotating Gobo Control",
+        "Rotating Gobo Control fine",
         "Prism",
         "Prism Rotation",
         "Frost",
@@ -1043,7 +1283,7 @@
         "Effect Speed",
         "Static Gobos",
         "Rotating Gobos",
-        "Gobo Rotation",
+        "Rotating Gobo Control",
         "Prism",
         "Prism Rotation",
         "Frost",
@@ -1073,7 +1313,7 @@
         "Effect Speed",
         "Static Gobos",
         "Rotating Gobos",
-        "Gobo Rotation",
+        "Rotating Gobo Control",
         "Prism",
         "Prism Rotation",
         "Frost",
