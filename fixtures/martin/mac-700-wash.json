@@ -32,7 +32,6 @@
   "availableChannels": {
     "Shutter / Strobe": {
       "defaultValue": 0,
-      "highlightValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 19],
@@ -446,15 +445,13 @@
           "dmxRange": [199, 219],
           "type": "ColorWheelRotation",
           "speedStart": "fast CW",
-          "speedEnd": "slow CW",
-          "comment": "Color wheel rotation "
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [220, 240],
           "type": "ColorWheelRotation",
           "speedStart": "slow CCW",
-          "speedEnd": "fast CCW",
-          "comment": "Color wheel rotation "
+          "speedEnd": "fast CCW"
         },
         {
           "dmxRange": [241, 245],
