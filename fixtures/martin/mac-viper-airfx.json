@@ -73,9 +73,10 @@
         {
           "dmxRange": [211, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "StrobeRandom",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast",
+          "randomTiming": true,
           "menuClick": "center"
         }
       ]

@@ -88,7 +88,8 @@
         {
           "dmxRange": [41, 44],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampUpRandom"
+          "shutterEffect": "RampUp",
+          "randomTiming": true
         },
         {
           "dmxRange": [45, 48],
@@ -98,7 +99,8 @@
         {
           "dmxRange": [49, 52],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampDownRandom"
+          "shutterEffect": "RampDown",
+          "randomTiming": true
         },
         {
           "dmxRange": [53, 56],
@@ -108,18 +110,21 @@
         {
           "dmxRange": [57, 60],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampUpDownRandom"
+          "shutterEffect": "RampUpDown",
+          "randomTiming": true
         },
         {
           "dmxRange": [61, 64],
           "type": "ShutterStrobe",
-          "shutterEffect": "StrobeRandom",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
           "comment": "Random white beam"
         },
         {
           "dmxRange": [65, 68],
           "type": "ShutterStrobe",
-          "shutterEffect": "StrobeRandom",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
           "comment": "Random single pixel of the white beam"
         },
         {
@@ -1041,7 +1046,8 @@
         {
           "dmxRange": [41, 44],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampUpRandom"
+          "shutterEffect": "RampUp",
+          "randomTiming": true
         },
         {
           "dmxRange": [45, 48],
@@ -1051,7 +1057,8 @@
         {
           "dmxRange": [49, 52],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampDownRandom"
+          "shutterEffect": "RampDown",
+          "randomTiming": true
         },
         {
           "dmxRange": [53, 56],
@@ -1061,7 +1068,8 @@
         {
           "dmxRange": [57, 60],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampUpDownRandom"
+          "shutterEffect": "RampUpDown",
+          "randomTiming": true
         },
         {
           "dmxRange": [61, 64],

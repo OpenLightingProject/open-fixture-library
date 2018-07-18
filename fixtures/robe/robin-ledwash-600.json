@@ -459,16 +459,18 @@
           "dmxRange": [176, 191],
           "type": "ShutterStrobe",
           "comment": "Random zone",
-          "shutterEffect": "StrobeRandom",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [192, 223],
           "type": "ShutterStrobe",
-          "shutterEffect": "StrobeRandom",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [224, 255],

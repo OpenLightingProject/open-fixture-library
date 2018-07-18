@@ -261,9 +261,10 @@
         {
           "dmxRange": [160, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "StrobeRandom",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "randomTiming": true
         }
       ]
     },

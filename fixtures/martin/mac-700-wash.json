@@ -79,20 +79,23 @@
         {
           "dmxRange": [128, 147],
           "type": "ShutterStrobe",
-          "shutterEffect": "StrobeRandom",
-          "speed": "fast"
+          "shutterEffect": "Strobe",
+          "speed": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [148, 167],
           "type": "ShutterStrobe",
-          "shutterEffect": "StrobeRandom",
-          "speed": "50%"
+          "shutterEffect": "Strobe",
+          "speed": "50%",
+          "randomTiming": true
         },
         {
           "dmxRange": [168, 187],
           "type": "ShutterStrobe",
-          "shutterEffect": "StrobeRandom",
-          "speed": "slow"
+          "shutterEffect": "Strobe",
+          "speed": "slow",
+          "randomTiming": true
         },
         {
           "dmxRange": [188, 190],
@@ -102,26 +105,30 @@
         {
           "dmxRange": [191, 193],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampUpRandom",
-          "speed": "fast"
+          "shutterEffect": "RampUp",
+          "speed": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [194, 196],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampUpRandom",
-          "speed": "slow"
+          "shutterEffect": "RampUp",
+          "speed": "slow",
+          "randomTiming": true
         },
         {
           "dmxRange": [197, 199],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampDownRandom",
-          "speed": "fast"
+          "shutterEffect": "RampDown",
+          "speed": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [200, 202],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampDownRandom",
-          "speed": "slow"
+          "shutterEffect": "RampDown",
+          "speed": "slow",
+          "randomTiming": true
         },
         {
           "dmxRange": [203, 207],

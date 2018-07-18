@@ -259,37 +259,42 @@
         {
           "dmxRange": [16, 47],
           "type": "ShutterStrobe",
-          "shutterEffect": "PulseRandom",
+          "shutterEffect": "Pulse",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [48, 79],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampUpRandom",
+          "shutterEffect": "RampUp",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [80, 111],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampDownRandom",
+          "shutterEffect": "RampDown",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [112, 143],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampUpDownRandom",
+          "shutterEffect": "RampUpDown",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [144, 199],
           "type": "ShutterStrobe",
-          "shutterEffect": "StrobeRandom",
+          "shutterEffect": "Strobe",
           "durationStart": "5s",
-          "durationEnd": "0.1s"
+          "durationEnd": "0.1s",
+          "randomTiming": true
         },
         {
           "dmxRange": [200, 239],

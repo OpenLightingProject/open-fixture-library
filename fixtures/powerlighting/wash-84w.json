@@ -144,7 +144,8 @@
         {
           "dmxRange": [70, 128],
           "type": "ShutterStrobe",
-          "shutterEffect": "StrobeRandom"
+          "shutterEffect": "Strobe",
+          "randomTiming": true
         },
         {
           "dmxRange": [129, 132],

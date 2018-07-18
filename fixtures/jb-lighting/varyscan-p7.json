@@ -239,9 +239,10 @@
           "dmxRange": [192, 206],
           "type": "ShutterStrobe",
           "comment": "0%",
-          "shutterEffect": "StrobeRandom",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [207, 207],
@@ -252,9 +253,10 @@
           "dmxRange": [208, 222],
           "type": "ShutterStrobe",
           "comment": "100%",
-          "shutterEffect": "StrobeRandom",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [223, 223],
@@ -265,9 +267,10 @@
           "dmxRange": [224, 238],
           "type": "ShutterStrobe",
           "comment": "Fade 0%",
-          "shutterEffect": "StrobeRandom",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [239, 239],
@@ -278,9 +281,10 @@
           "dmxRange": [240, 254],
           "type": "ShutterStrobe",
           "comment": "Fade 100%",
-          "shutterEffect": "StrobeRandom",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [255, 255],

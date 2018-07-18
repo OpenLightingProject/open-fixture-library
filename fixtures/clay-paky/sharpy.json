@@ -303,20 +303,23 @@
         {
           "dmxRange": [213, 225],
           "type": "ShutterStrobe",
-          "shutterEffect": "StrobeRandom",
-          "speed": "slow"
+          "shutterEffect": "Strobe",
+          "speed": "slow",
+          "randomTiming": true
         },
         {
           "dmxRange": [226, 238],
           "type": "ShutterStrobe",
-          "shutterEffect": "StrobeRandom",
-          "speed": "50%"
+          "shutterEffect": "Strobe",
+          "speed": "50%",
+          "randomTiming": true
         },
         {
           "dmxRange": [239, 251],
           "type": "ShutterStrobe",
-          "shutterEffect": "StrobeRandom",
-          "speed": "fast"
+          "shutterEffect": "Strobe",
+          "speed": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [252, 255],

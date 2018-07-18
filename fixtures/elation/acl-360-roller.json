@@ -672,17 +672,19 @@
         {
           "dmxRange": [160, 191],
           "type": "ShutterStrobe",
-          "shutterEffect": "StrobeRandom",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast",
+          "randomTiming": true,
           "comment": "Each Side x4"
         },
         {
           "dmxRange": [192, 223],
           "type": "ShutterStrobe",
-          "shutterEffect": "StrobeRandom",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast",
+          "randomTiming": true,
           "comment": "Individual LEDs"
         },
         {

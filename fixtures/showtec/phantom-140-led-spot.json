@@ -314,9 +314,10 @@
         {
           "dmxRange": [146, 215],
           "type": "ShutterStrobe",
-          "shutterEffect": "StrobeRandom",
+          "shutterEffect": "Strobe",
           "speedStart": "0Hz",
           "speedEnd": "10Hz",
+          "randomTiming": true,
           "menuClick": "center"
         },
         {

@@ -69,13 +69,15 @@
         {
           "dmxRange": [180, 204],
           "type": "ShutterStrobe",
-          "shutterEffect": "StrobeRandom",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
           "comment": "dimmer active"
         },
         {
           "dmxRange": [205, 229],
           "type": "ShutterStrobe",
-          "shutterEffect": "StrobeRandom",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
           "comment": "dimmer inactive"
         },
         {

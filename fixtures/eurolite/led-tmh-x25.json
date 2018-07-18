@@ -77,9 +77,10 @@
         {
           "dmxRange": [192, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "StrobeRandom",
+          "shutterEffect": "Strobe",
           "speedStart": "0Hz",
-          "speedEnd": "18Hz"
+          "speedEnd": "18Hz",
+          "randomTiming": true
         }
       ]
     },
