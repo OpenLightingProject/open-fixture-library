@@ -1,0 +1,600 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MAC 700 Wash",
+  "shortName": "MartinMAC700Wash",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Karl Humbug"],
+    "createDate": "2018-07-17",
+    "lastModifyDate": "2018-07-17"
+  },
+  "manualURL": "https://adn.harmanpro.com/site_elements/executables/5949_1526695117/UM_MAC700Wash_EN_D_original.pdf",
+  "physical": {
+    "dimensions": [365, 656, 450],
+    "weight": 32,
+    "power": 950,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "OSRAMHTI700/D4/75",
+      "colorTemperature": 7500,
+      "lumens": 18700
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [12.5, 66]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 246
+    }
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "type": "Shutter",
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 19],
+          "name": "Shutter closed"
+        },
+        {
+          "range": [20, 49],
+          "name": "Shutter open"
+        },
+        {
+          "range": [50, 72],
+          "name": "Strobe fast…slow"
+        },
+        {
+          "range": [73, 79],
+          "name": "Shutter open"
+        },
+        {
+          "range": [80, 99],
+          "name": "Pulse open fast…slow"
+        },
+        {
+          "range": [100, 119],
+          "name": "Pulse close fast…slow"
+        },
+        {
+          "range": [120, 127],
+          "name": "Shutter open"
+        },
+        {
+          "range": [128, 147],
+          "name": "Random strobe fst"
+        },
+        {
+          "range": [148, 167],
+          "name": "Random strobe medium"
+        },
+        {
+          "range": [168, 187],
+          "name": "Random strobe slow"
+        },
+        {
+          "range": [188, 190],
+          "name": "Shutter open"
+        },
+        {
+          "range": [191, 193],
+          "name": "Random pulse open fast"
+        },
+        {
+          "range": [194, 196],
+          "name": "Random pulse open slow"
+        },
+        {
+          "range": [197, 199],
+          "name": "Random pulse close fast"
+        },
+        {
+          "range": [200, 202],
+          "name": "Random pulse close slow"
+        },
+        {
+          "range": [203, 207],
+          "name": "Shutter open"
+        },
+        {
+          "range": [208, 217],
+          "name": "Reset fixture"
+        },
+        {
+          "range": [218, 227],
+          "name": "Shutter open"
+        },
+        {
+          "range": [228, 237],
+          "name": "Lamp on"
+        },
+        {
+          "range": [238, 242],
+          "name": "400W mode"
+        },
+        {
+          "range": [243, 247],
+          "name": "700W mode"
+        },
+        {
+          "range": [248, 255],
+          "name": "Lamp off"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "fineChannelAliases": ["Dimmer fine"]
+    },
+    "Cyan Intensity": {
+      "type": "Single Color",
+      "color": "Cyan",
+      "fineChannelAliases": ["Cyan fine"]
+    },
+    "Magenta Intensity": {
+      "type": "Single Color",
+      "color": "Magenta",
+      "fineChannelAliases": ["Magenta fine"]
+    },
+    "Yellow Intensity": {
+      "type": "Single Color",
+      "color": "Yellow",
+      "fineChannelAliases": ["Yellow fine"]
+    },
+    "Random CMY Cyan Range": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Normal (full range)"
+        },
+        {
+          "range": [1, 127],
+          "name": "Minimum cyan setting 0…100%"
+        },
+        {
+          "range": [128, 254],
+          "name": "Maximum cyan setting 0…100%"
+        },
+        {
+          "range": [255, 255],
+          "name": "Normal (full range)"
+        }
+      ]
+    },
+    "Random CMY Magenta Range": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Normal (full range)"
+        },
+        {
+          "range": [1, 127],
+          "name": "Minimum magenta setting 0…100%"
+        },
+        {
+          "range": [128, 254],
+          "name": "Maximum magenta setting 0…100%"
+        },
+        {
+          "range": [255, 255],
+          "name": "Normal (full range)"
+        }
+      ]
+    },
+    "Random CMY Yellow Range": {
+      "type": "Maintenance",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Normal (full range)"
+        },
+        {
+          "range": [1, 127],
+          "name": "Minimum yellow setting 0…100%"
+        },
+        {
+          "range": [128, 254],
+          "name": "Maximum yellow setting 0…100%"
+        },
+        {
+          "range": [255, 255],
+          "name": "Normal (full range)"
+        }
+      ]
+    },
+    "CTO": {
+      "type": "Color Temperature",
+      "fineChannelAliases": ["CTO fine"]
+    },
+    "Color Wheel": {
+      "type": "Multi-Color",
+      "fineChannelAliases": ["Color Wheel fine"],
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "Open"
+        },
+        {
+          "range": [1, 16],
+          "name": "Open … slot 1"
+        },
+        {
+          "range": [17, 17],
+          "name": "Slot 1 (Blue 110)"
+        },
+        {
+          "range": [18, 33],
+          "name": "Slot 1 … slot 2"
+        },
+        {
+          "range": [34, 34],
+          "name": "Slot 2 (Green 206 IAD)"
+        },
+        {
+          "range": [35, 50],
+          "name": "Slot 2 … slot 3"
+        },
+        {
+          "range": [51, 51],
+          "name": "Slot 3 (Pink 312)"
+        },
+        {
+          "range": [52, 67],
+          "name": "Slot 3 … slot 4"
+        },
+        {
+          "range": [68, 68],
+          "name": "Slot 4 (Orange 306M)"
+        },
+        {
+          "range": [69, 84],
+          "name": "Slot 4 … slot 5"
+        },
+        {
+          "range": [85, 85],
+          "name": "Slot 5 (Half minus green)"
+        },
+        {
+          "range": [86, 101],
+          "name": "Slot 5 … slot 6"
+        },
+        {
+          "range": [102, 102],
+          "name": "Slot 6 (CTO 3200-4100)"
+        },
+        {
+          "range": [103, 118],
+          "name": "Slot 6 … slot 7"
+        },
+        {
+          "range": [119, 119],
+          "name": "Slot 7 (UV)"
+        },
+        {
+          "range": [120, 135],
+          "name": "Slot 7 … slot 8"
+        },
+        {
+          "range": [136, 136],
+          "name": "Slot 8 (Red 308)"
+        },
+        {
+          "range": [137, 152],
+          "name": "Slot 8…open"
+        },
+        {
+          "range": [153, 153],
+          "name": "Open"
+        },
+        {
+          "range": [154, 158],
+          "name": "Slot 8 (Red 308)"
+        },
+        {
+          "range": [159, 163],
+          "name": "Slot 7 (UV)"
+        },
+        {
+          "range": [164, 168],
+          "name": "Slot 6 (CTO 3200-4100K)"
+        },
+        {
+          "range": [169, 173],
+          "name": "Slot 5 (Half minus green)"
+        },
+        {
+          "range": [174, 178],
+          "name": "Slot 4 (Orange 306M)"
+        },
+        {
+          "range": [179, 183],
+          "name": "Slot 3 (Pink 312)"
+        },
+        {
+          "range": [184, 188],
+          "name": "Slot 2 (Green 206 IAD)"
+        },
+        {
+          "range": [189, 193],
+          "name": "Slot 1 (Blue 110)"
+        },
+        {
+          "range": [194, 198],
+          "name": "Open"
+        },
+        {
+          "range": [199, 219],
+          "name": "Color wheel rotation CW fast…slow"
+        },
+        {
+          "range": [220, 240],
+          "name": "Color wheel rotation CCW slow…fast"
+        },
+        {
+          "range": [241, 245],
+          "name": "Random color fast"
+        },
+        {
+          "range": [246, 250],
+          "name": "Random color medium"
+        },
+        {
+          "range": [251, 255],
+          "name": "Random color slow"
+        }
+      ]
+    },
+    "Beamshaper Angle": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "No beam shaper"
+        },
+        {
+          "range": [1, 255],
+          "name": "Angle 0…360°"
+        }
+      ]
+    },
+    "Beamshaper Rotation": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "No beam shaper"
+        },
+        {
+          "range": [1, 127],
+          "name": "Rotation CCW fast…slow"
+        },
+        {
+          "range": [128, 128],
+          "name": "Rotation stop"
+        },
+        {
+          "range": [129, 255],
+          "name": "Rotation CW slow…fast"
+        }
+      ]
+    },
+    "Macros": {
+      "type": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "range": [0, 15],
+          "name": "No effect",
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity",
+            "Beamshaper": "Beamshaper Angle"
+          }
+        },
+        {
+          "range": [16, 55],
+          "name": "Color wheel shake slow…fast",
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity",
+            "Beamshaper": "Beamshaper Angle"
+          }
+        },
+        {
+          "range": [56, 95],
+          "name": "Beam shaper continuous rotation",
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity",
+            "Beamshaper": "Beamshaper Rotation"
+          }
+        },
+        {
+          "range": [96, 135],
+          "name": "Color wheel shake slow…fast (plus beam shaper continuous rotation)",
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity",
+            "Beamshaper": "Beamshaper Rotation"
+          }
+        },
+        {
+          "range": [136, 175],
+          "name": "Random CMY fast",
+          "switchChannels": {
+            "Cyan": "Random CMY Cyan Range",
+            "Magenta": "Random CMY Magenta Range",
+            "Yellow": "Random CMY Yellow Range",
+            "Beamshaper": "Beamshaper Angle"
+          }
+        },
+        {
+          "range": [176, 215],
+          "name": "Random CMY fast",
+          "switchChannels": {
+            "Cyan": "Random CMY Cyan Range",
+            "Magenta": "Random CMY Magenta Range",
+            "Yellow": "Random CMY Yellow Range",
+            "Beamshaper": "Beamshaper Angle"
+          }
+        },
+        {
+          "range": [216, 255],
+          "name": "Random CMY fast",
+          "switchChannels": {
+            "Cyan": "Random CMY Cyan Range",
+            "Magenta": "Random CMY Magenta Range",
+            "Yellow": "Random CMY Yellow Range",
+            "Beamshaper": "Beamshaper Angle"
+          }
+        }
+      ]
+    },
+    "Zoom": {
+      "type": "Zoom",
+      "fineChannelAliases": ["Zoom fine"],
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Beam angle wide…narrow"
+        }
+      ]
+    },
+    "Pan": {
+      "type": "Pan",
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 128
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 128
+    },
+    "Pan/Tilt Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 2],
+          "name": "Tracking mode (default speed)"
+        },
+        {
+          "range": [3, 242],
+          "name": "Fast…slow (vector mode)"
+        },
+        {
+          "range": [243, 245],
+          "name": "Tracking mode slow"
+        },
+        {
+          "range": [246, 248],
+          "name": "Tracking mode medium"
+        },
+        {
+          "range": [249, 251],
+          "name": "Tracking mode fast"
+        },
+        {
+          "range": [252, 255],
+          "name": "Blackout while moving"
+        }
+      ]
+    },
+    "Effects Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [
+            0, 2
+          ],
+          "name": "Tracking mode"
+        },
+        {
+          "range": [
+            3, 245
+          ],
+          "name": "Fast…slow (vector mode)"
+        },
+        {
+          "range": [
+            246, 248
+          ],
+          "name": "Tracking mode (color wheel does not turn shortest distance)"
+        },
+        {
+          "range": [
+            249, 251
+          ],
+          "name": "Tracking mode (color wheel turns shortest distance)"
+        },
+        {
+          "range": [
+            252, 255
+          ],
+          "name": "Blackout while moving"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic 16-channel",
+      "shortName": "basic16ch",
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CTO",
+        "Color Wheel",
+        "Beamshaper",
+        "Macros",
+        "Zoom",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Effects Speed"
+      ]
+    },
+    {
+      "name": "Extended 23-channel",
+      "shortName": "ext23ch",
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Cyan",
+        "Cyan fine",
+        "Magenta",
+        "Magenta fine",
+        "Yellow",
+        "Yellow fine",
+        "CTO",
+        "CTO fine",
+        "Color Wheel",
+        "Color Wheel fine",
+        "Beamshaper",
+        "Macros",
+        "Zoom",
+        "Zoom fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Effects Speed"
+      ]
+    }
+  ]
+}
