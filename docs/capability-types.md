@@ -70,7 +70,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
   <th valign="top" scope="row" id="shutterstrobe" rowspan="4">ShutterStrobe</th>
   <td valign="top">shutterEffect<br><sub>:star2: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
-  <td valign="top"><code>Open</code>, <code>Closed</code>, <code>Strobe</code>, <code>StrobeRandom</code>, <code>Pulse</code>, <code>PulseRandom</code>, <code>RampUp</code>, <code>RampUpRandom</code>, <code>RampDown</code>, <code>RampDownRandom</code>, <code>RampUpDown</code>, <code>RampUpDownRandom</code>, <code>Lightning</code></td>
+  <td valign="top"><code>Open</code>, <code>Closed</code>, <code>Strobe</code>, <code>Pulse</code>, <code>RampUp</code>, <code>RampDown</code>, <code>RampUpDown</code>, <code>Lightning</code></td>
   <td valign="top"></td>
 </tr>
 <tr>
@@ -87,6 +87,11 @@ To make common percentage values more readable, one can use specific keywords to
   <td valign="top">duration<br><sub>:grey_question: optional</sub></td>
   <td valign="top">Entity <em>Time</em></td>
   <td valign="top"></td>
+</tr>
+<tr>
+  <td valign="top">randomTiming<br><sub>:grey_question: optional</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></td>
+  <td valign="top">Entity <em>Boolean</em></td>
+  <td valign="top">Defaults to <code>false</code></td>
 </tr>
 <tr>
   <th valign="top" scope="row" id="strobespeed">StrobeSpeed</th>

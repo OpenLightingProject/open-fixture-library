@@ -20,17 +20,17 @@
       </select>
     </app-simple-label>
 
-    <app-simple-label
-      :formstate="formstate"
-      :name="`capability${capability.uuid}-soundControlled`"
-      label="Sound controlled?">
-      <app-property-input-boolean
-        v-model="capability.typeData.soundControlled"
-        :schema-property="properties.capabilityTypes.Effect.properties.soundControlled"
-        :name="`capability${capability.uuid}-soundControlled`" />
-    </app-simple-label>
-
     <template v-if="isStrobeEffect">
+      <app-simple-label
+        :formstate="formstate"
+        :name="`capability${capability.uuid}-soundControlled`"
+        label="Sound controlled?">
+        <app-property-input-boolean
+          v-model="capability.typeData.soundControlled"
+          :schema-property="properties.capabilityTypes.ShutterStrobe.properties.soundControlled"
+          :name="`capability${capability.uuid}-soundControlled`" />
+      </app-simple-label>
+
       <app-simple-label
         :formstate="formstate"
         :name="`capability${capability.uuid}-speed`"
@@ -50,6 +50,16 @@
           :capability="capability"
           :formstate="formstate"
           property-name="duration" />
+      </app-simple-label>
+
+      <app-simple-label
+        :formstate="formstate"
+        :name="`capability${capability.uuid}-randomTiming`"
+        label="Random timing?">
+        <app-property-input-boolean
+          v-model="capability.typeData.randomTiming"
+          :schema-property="properties.capabilityTypes.ShutterStrobe.properties.randomTiming"
+          :name="`capability${capability.uuid}-randomTiming`" />
       </app-simple-label>
 
       <app-simple-label
@@ -105,6 +115,7 @@ export default {
         duration: ``,
         durationStart: null,
         durationEnd: null,
+        randomTiming: null,
         comment: ``
       }
     };
