@@ -254,6 +254,17 @@ function getCapabilities(channel) {
       }
     }
 
+    if ([`Closed`, `Open`].includes(capability.shutterEffect)) {
+      delete capability.soundControlled;
+      delete capability.speed;
+      delete capability.speedStart;
+      delete capability.speedEnd;
+      delete capability.duration;
+      delete capability.durationStart;
+      delete capability.durationEnd;
+      delete capability.randomTiming;
+    }
+
     if (capability.brightnessStart === `off` && capability.brightnessEnd === `bright`) {
       delete capability.brightnessStart;
       delete capability.brightnessEnd;

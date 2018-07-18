@@ -61,18 +61,18 @@
           :schema-property="properties.capabilityTypes.ShutterStrobe.properties.randomTiming"
           :name="`capability${capability.uuid}-randomTiming`" />
       </app-simple-label>
+    </template>
 
-      <app-simple-label
+    <app-simple-label
+      :formstate="formstate"
+      :name="`capability${capability.uuid}-comment`"
+      label="Comment">
+      <app-property-input-text
+        v-model="capability.typeData.comment"
         :formstate="formstate"
         :name="`capability${capability.uuid}-comment`"
-        label="Comment">
-        <app-property-input-text
-          v-model="capability.typeData.comment"
-          :formstate="formstate"
-          :name="`capability${capability.uuid}-comment`"
-          :schema-property="properties.definitions.nonEmptyString" />
-      </app-simple-label>
-    </template>
+        :schema-property="properties.definitions.nonEmptyString" />
+    </app-simple-label>
 
   </div>
 </template>
