@@ -1,0 +1,563 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Vizi Spot LED Pro",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Bram Nauta"],
+    "createDate": "2018-07-19",
+    "lastModifyDate": "2018-07-19"
+  },
+  "manualURL": "http://intranet.americandj.com/ItemRelatedFiles/7080/vizi_spot_led_pro.pdf",
+  "physical": {
+    "dimensions": [303, 442, 253],
+    "weight": 10.5,
+    "power": 130,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [13, 13]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 630,
+      "tiltMax": 270
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "type": "Pan",
+      "defaultValue": 127,
+      "highlightValue": 127,
+      "invert": true,
+      "constant": false,
+      "crossfade": true,
+      "precedence": "LTP"
+    },
+    "Tilt": {
+      "type": "Tilt",
+      "defaultValue": 127,
+      "highlightValue": 127,
+      "invert": true,
+      "constant": false,
+      "crossfade": true,
+      "precedence": "LTP"
+    },
+    "Color": {
+      "type": "Multi-Color",
+      "defaultValue": 0,
+      "highlightValue": 30,
+      "invert": false,
+      "constant": false,
+      "crossfade": false,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 14],
+          "name": "Open",
+          "color": "#ffffff"
+        },
+        {
+          "range": [15, 29],
+          "name": "Red",
+          "color": "#ff0000"
+        },
+        {
+          "range": [30, 44],
+          "name": "Blue",
+          "color": "#0000ff"
+        },
+        {
+          "range": [45, 59],
+          "name": "Green",
+          "color": "#00ff00"
+        },
+        {
+          "range": [60, 74],
+          "name": "Yellow",
+          "color": "#ffff00"
+        },
+        {
+          "range": [75, 89],
+          "name": "Purple",
+          "color": "#800080"
+        },
+        {
+          "range": [90, 104],
+          "name": "Orange",
+          "color": "#ffa500"
+        },
+        {
+          "range": [105, 119],
+          "name": "UV",
+          "color": "#3e0694"
+        },
+        {
+          "range": [120, 127],
+          "name": "Pink",
+          "color": "#ffc0cb"
+        },
+        {
+          "range": [128, 189],
+          "name": "Rotating FW fast...slow"
+        },
+        {
+          "range": [190, 193],
+          "name": "No Rotation"
+        },
+        {
+          "range": [194, 255],
+          "name": "Rotating BW slow...fast"
+        }
+      ]
+    },
+    "Gobo": {
+      "type": "Gobo",
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "invert": false,
+      "constant": false,
+      "crossfade": false,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Open"
+        },
+        {
+          "range": [10, 19],
+          "name": "Rotating gobo 1"
+        },
+        {
+          "range": [20, 29],
+          "name": "Rotating gobo 2"
+        },
+        {
+          "range": [30, 39],
+          "name": "Rotating gobo 3"
+        },
+        {
+          "range": [40, 49],
+          "name": "Rotating gobo 4"
+        },
+        {
+          "range": [50, 59],
+          "name": "Rotating gobo 5"
+        },
+        {
+          "range": [60, 69],
+          "name": "Rotating gobo 6"
+        },
+        {
+          "range": [70, 79],
+          "name": "Rotating gobo 7"
+        },
+        {
+          "range": [80, 95],
+          "name": "Rotating gobo 1 shake"
+        },
+        {
+          "range": [96, 111],
+          "name": "Rotating gobo 2 shake"
+        },
+        {
+          "range": [112, 127],
+          "name": "Rotating gobo 3 shake"
+        },
+        {
+          "range": [128, 143],
+          "name": "Rotating gobo 4 shake"
+        },
+        {
+          "range": [144, 159],
+          "name": "Rotating gobo 5 shake"
+        },
+        {
+          "range": [160, 175],
+          "name": "Rotating gobo 6 shake"
+        },
+        {
+          "range": [176, 191],
+          "name": "Rotating gobo 7 shake"
+        },
+        {
+          "range": [192, 255],
+          "name": "Rotation slow...fast"
+        }
+      ]
+    },
+    "Gobo Rotation": {
+      "type": "Speed",
+      "defaultValue": 121,
+      "highlightValue": 121,
+      "invert": false,
+      "constant": false,
+      "crossfade": false,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Indexing"
+        },
+        {
+          "range": [128, 189],
+          "name": "Rotation FW fast...slow"
+        },
+        {
+          "range": [190, 193],
+          "name": "No Rotation"
+        },
+        {
+          "range": [194, 255],
+          "name": "Rotation BW slow...fast"
+        }
+      ]
+    },
+    "Prism/Gobo Macro": {
+      "type": "Prism",
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "invert": false,
+      "constant": false,
+      "crossfade": false,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "Open"
+        },
+        {
+          "range": [32, 63],
+          "name": "3-Facet Prism"
+        },
+        {
+          "range": [64, 95],
+          "name": "Trapezoid Prism"
+        },
+        {
+          "range": [96, 127],
+          "name": "Frost"
+        },
+        {
+          "range": [128, 135],
+          "name": "Macro 1"
+        },
+        {
+          "range": [136, 143],
+          "name": "Macro 2"
+        },
+        {
+          "range": [144, 151],
+          "name": "Macro 3"
+        },
+        {
+          "range": [152, 159],
+          "name": "Macro 4"
+        },
+        {
+          "range": [160, 167],
+          "name": "Macro 5"
+        },
+        {
+          "range": [168, 175],
+          "name": "Macro 6"
+        },
+        {
+          "range": [176, 183],
+          "name": "Macro 7"
+        },
+        {
+          "range": [184, 191],
+          "name": "Macro 8"
+        },
+        {
+          "range": [192, 199],
+          "name": "Macro 9"
+        },
+        {
+          "range": [200, 207],
+          "name": "Macro 10"
+        },
+        {
+          "range": [208, 215],
+          "name": "Macro 11"
+        },
+        {
+          "range": [216, 223],
+          "name": "Macro 12"
+        },
+        {
+          "range": [224, 231],
+          "name": "Macro 13"
+        },
+        {
+          "range": [232, 239],
+          "name": "Macro 14"
+        },
+        {
+          "range": [240, 247],
+          "name": "Macro 15"
+        },
+        {
+          "range": [248, 255],
+          "name": "Macro 16"
+        }
+      ]
+    },
+    "Prism Rotation": {
+      "type": "Speed",
+      "defaultValue": 190,
+      "highlightValue": 190,
+      "invert": false,
+      "constant": false,
+      "crossfade": false,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 127],
+          "name": "Indexing"
+        },
+        {
+          "range": [128, 189],
+          "name": "Rotation FW fast...slow"
+        },
+        {
+          "range": [190, 193],
+          "name": "No Rotation"
+        },
+        {
+          "range": [194, 255],
+          "name": "Rotation BW slow...fast"
+        }
+      ]
+    },
+    "Focus": {
+      "type": "Focus",
+      "defaultValue": 127,
+      "highlightValue": 127,
+      "invert": false,
+      "constant": false,
+      "crossfade": false,
+      "precedence": "LTP"
+    },
+    "Shutter/Strobe": {
+      "type": "Shutter",
+      "defaultValue": 32,
+      "highlightValue": 32,
+      "invert": false,
+      "constant": false,
+      "crossfade": false,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 31],
+          "name": "Off"
+        },
+        {
+          "range": [32, 63],
+          "name": "On"
+        },
+        {
+          "range": [64, 95],
+          "name": "Strobe slow...fast"
+        },
+        {
+          "range": [96, 127],
+          "name": "On"
+        },
+        {
+          "range": [128, 159],
+          "name": "Pulse Seq"
+        },
+        {
+          "range": [160, 191],
+          "name": "On"
+        },
+        {
+          "range": [192, 223],
+          "name": "Random Strobe slow...fast"
+        },
+        {
+          "range": [224, 255],
+          "name": "On"
+        }
+      ]
+    },
+    "Dimmer": {
+      "type": "Intensity",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "invert": false,
+      "constant": false,
+      "crossfade": true,
+      "precedence": "HTP"
+    },
+    "P/T Speed": {
+      "type": "Speed",
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "invert": false,
+      "constant": false,
+      "crossfade": false,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 225],
+          "name": "Speed fast...slow"
+        },
+        {
+          "range": [226, 235],
+          "name": "BO By Movement"
+        },
+        {
+          "range": [236, 245],
+          "name": "BO By Wheel Changing"
+        },
+        {
+          "range": [246, 255],
+          "name": "No Function"
+        }
+      ]
+    },
+    "Reset & Internal Programs": {
+      "type": "Maintenance",
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "invert": false,
+      "constant": false,
+      "crossfade": false,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 19],
+          "name": "Color Change Normal"
+        },
+        {
+          "range": [20, 39],
+          "name": "Color Change To Any Position"
+        },
+        {
+          "range": [40, 79],
+          "name": "No Function"
+        },
+        {
+          "range": [80, 84],
+          "name": "All Motor Reset"
+        },
+        {
+          "range": [85, 87],
+          "name": "P/T Motor Reset"
+        },
+        {
+          "range": [88, 90],
+          "name": "Color Motor Reset"
+        },
+        {
+          "range": [91, 93],
+          "name": "Gobo Motor Reset"
+        },
+        {
+          "range": [94, 96],
+          "name": "No Function"
+        },
+        {
+          "range": [97, 99],
+          "name": "Other Motor Reset"
+        },
+        {
+          "range": [100, 119],
+          "name": "Internal Program 1"
+        },
+        {
+          "range": [120, 139],
+          "name": "Internal Program 2"
+        },
+        {
+          "range": [140, 159],
+          "name": "Internal Program 3"
+        },
+        {
+          "range": [160, 179],
+          "name": "Internal Program 4"
+        },
+        {
+          "range": [180, 199],
+          "name": "Internal Program 5"
+        },
+        {
+          "range": [200, 219],
+          "name": "Internal Program 6"
+        },
+        {
+          "range": [220, 239],
+          "name": "Internal Program 7"
+        },
+        {
+          "range": [240, 255],
+          "name": "Sound Active Program"
+        }
+      ]
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "type": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "defaultValue": 32767,
+      "highlightValue": 32767,
+      "invert": true,
+      "constant": false,
+      "crossfade": true,
+      "precedence": "LTP"
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "type": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "defaultValue": 32767,
+      "highlightValue": 32767,
+      "invert": true,
+      "constant": false,
+      "crossfade": true,
+      "precedence": "LTP"
+    }
+  },
+  "modes": [
+    {
+      "name": "12 Channel",
+      "shortName": "12CH",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color",
+        "Gobo",
+        "Gobo Rotation",
+        "Prism/Gobo Macro",
+        "Prism Rotation",
+        "Focus",
+        "Shutter/Strobe",
+        "Dimmer",
+        "P/T Speed",
+        "Reset & Internal Programs"
+      ]
+    },
+    {
+      "name": "14 Channel",
+      "shortName": "14CH",
+      "channels": [
+        "Pan 2",
+        "Tilt 2",
+        "Color",
+        "Gobo",
+        "Gobo Rotation",
+        "Prism/Gobo Macro",
+        "Prism Rotation",
+        "Focus",
+        "Shutter/Strobe",
+        "Dimmer",
+        "P/T Speed",
+        "Reset & Internal Programs"
+      ]
+    }
+  ]
+}
