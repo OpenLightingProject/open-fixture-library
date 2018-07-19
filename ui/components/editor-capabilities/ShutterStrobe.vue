@@ -129,7 +129,16 @@ export default {
     },
     resetProps() {
       if (!this.isStrobeEffect) {
-        return [`speed`, `speedStart`, `speedEnd`, `duration`, `durationStart`, `durationEnd`];
+        return [
+          `soundControlled`,
+          `speed`,
+          `speedStart`,
+          `speedEnd`,
+          `duration`,
+          `durationStart`,
+          `durationEnd`,
+          `randomTiming`
+        ];
       }
 
       return [];
