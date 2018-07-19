@@ -560,6 +560,11 @@
       "lastModifyDate": "2017-10-16",
       "lastAction": "modified"
     },
+    "renfotz/dim1": {
+      "name": "dim1",
+      "lastModifyDate": "2018-07-19",
+      "lastAction": "created"
+    },
     "robe/colorspot-2500e-at": {
       "name": "ColorSpot 2500E AT",
       "lastModifyDate": "2017-10-16",
@@ -635,13 +640,13 @@
       "lastModifyDate": "2018-05-28",
       "lastAction": "created"
     },
-    "showven/sparkular-fall": {
-      "name": "Sparkular Fall",
+    "showven/sparkular": {
+      "name": "Sparkular",
       "lastModifyDate": "2018-06-13",
       "lastAction": "created"
     },
-    "showven/sparkular": {
-      "name": "Sparkular",
+    "showven/sparkular-fall": {
+      "name": "Sparkular Fall",
       "lastModifyDate": "2018-06-13",
       "lastAction": "created"
     },
@@ -865,6 +870,9 @@
     "qtx": [
       "lux-ld30w"
     ],
+    "renfotz": [
+      "dim1"
+    ],
     "robe": [
       "colorspot-2500e-at",
       "dj-scan-250-xt",
@@ -885,8 +893,8 @@
       "xs-1-rgbw"
     ],
     "showven": [
-      "sparkular-fall",
-      "sparkular"
+      "sparkular",
+      "sparkular-fall"
     ],
     "stairville": [
       "led-flood-panel-150",
@@ -1032,7 +1040,8 @@
       "adb/europe-105",
       "dts/scena-led-150",
       "eurolite/led-sls-6-uv-floor",
-      "generic/desk-channel"
+      "generic/desk-channel",
+      "renfotz/dim1"
     ],
     "Effect": [
       "american-dj/revo-burst",
@@ -1040,8 +1049,8 @@
       "glp/impression-x4-bar-10",
       "magicfx/stage-flame",
       "minuit-une/ivl-carre",
-      "showven/sparkular-fall",
       "showven/sparkular",
+      "showven/sparkular-fall",
       "venue/tristrip3z"
     ],
     "Fan": [
@@ -1314,8 +1323,8 @@
     ],
     "Alejo Cervera": [
       "magicfx/stage-flame",
-      "showven/sparkular-fall",
-      "showven/sparkular"
+      "showven/sparkular",
+      "showven/sparkular-fall"
     ],
     "Justin Hornsby": [
       "chauvet-dj/washfx",
@@ -1358,6 +1367,9 @@
     ],
     "Nils Van Zuijlen": [
       "nicols/led-bar-123-fc-ip"
+    ],
+    "Renfotz": [
+      "renfotz/dim1"
     ],
     "Rummels Bucht Berlin": [
       "glp/impression-x4-bar-10"
@@ -1452,6 +1464,7 @@
     }
   },
   "lastUpdated": [
+    "renfotz/dim1",
     "martin/mac-700-wash",
     "martin/mac-viper-airfx",
     "dts/scena-led-150",
