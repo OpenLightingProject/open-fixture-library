@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Vizi Spot LED Pro",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Bram Nauta"],
     "createDate": "2018-07-19",
@@ -14,7 +14,8 @@
     "power": 130,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "LED",
+      "lumens": 1480
     },
     "lens": {
       "degreesMinMax": [13, 13]
@@ -28,28 +29,21 @@
   "availableChannels": {
     "Pan": {
       "type": "Pan",
-      "defaultValue": 127,
-      "highlightValue": 127,
-      "invert": true,
-      "constant": false,
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32767,
       "crossfade": true,
       "precedence": "LTP"
     },
     "Tilt": {
       "type": "Tilt",
-      "defaultValue": 127,
-      "highlightValue": 127,
-      "invert": true,
-      "constant": false,
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32767,
       "crossfade": true,
       "precedence": "LTP"
     },
-    "Color": {
+    "Color Wheel": {
       "type": "Multi-Color",
       "defaultValue": 0,
-      "highlightValue": 30,
-      "invert": false,
-      "constant": false,
       "crossfade": false,
       "precedence": "LTP",
       "capabilities": [
@@ -100,7 +94,7 @@
         },
         {
           "range": [128, 189],
-          "name": "Rotating FW fast...slow"
+          "name": "Rotating CW fast…slow"
         },
         {
           "range": [190, 193],
@@ -108,16 +102,13 @@
         },
         {
           "range": [194, 255],
-          "name": "Rotating BW slow...fast"
+          "name": "Rotating CCW slow…fast"
         }
       ]
     },
     "Gobo": {
       "type": "Gobo",
       "defaultValue": 0,
-      "highlightValue": 0,
-      "invert": false,
-      "constant": false,
       "crossfade": false,
       "precedence": "LTP",
       "capabilities": [
@@ -183,16 +174,13 @@
         },
         {
           "range": [192, 255],
-          "name": "Rotation slow...fast"
+          "name": "Rotation slow…fast"
         }
       ]
     },
     "Gobo Rotation": {
       "type": "Speed",
-      "defaultValue": 121,
-      "highlightValue": 121,
-      "invert": false,
-      "constant": false,
+      "defaultValue": 0,
       "crossfade": false,
       "precedence": "LTP",
       "capabilities": [
@@ -202,7 +190,7 @@
         },
         {
           "range": [128, 189],
-          "name": "Rotation FW fast...slow"
+          "name": "Rotation FW fast…slow"
         },
         {
           "range": [190, 193],
@@ -210,16 +198,13 @@
         },
         {
           "range": [194, 255],
-          "name": "Rotation BW slow...fast"
+          "name": "Rotation BW slow…fast"
         }
       ]
     },
     "Prism/Gobo Macro": {
       "type": "Prism",
       "defaultValue": 0,
-      "highlightValue": 0,
-      "invert": false,
-      "constant": false,
       "crossfade": false,
       "precedence": "LTP",
       "capabilities": [
@@ -307,10 +292,7 @@
     },
     "Prism Rotation": {
       "type": "Speed",
-      "defaultValue": 190,
-      "highlightValue": 190,
-      "invert": false,
-      "constant": false,
+      "defaultValue": 0,
       "crossfade": false,
       "precedence": "LTP",
       "capabilities": [
@@ -320,7 +302,7 @@
         },
         {
           "range": [128, 189],
-          "name": "Rotation FW fast...slow"
+          "name": "Rotation FW fast…slow"
         },
         {
           "range": [190, 193],
@@ -328,25 +310,26 @@
         },
         {
           "range": [194, 255],
-          "name": "Rotation BW slow...fast"
+          "name": "Rotation BW slow…fast"
         }
       ]
     },
     "Focus": {
       "type": "Focus",
       "defaultValue": 127,
-      "highlightValue": 127,
-      "invert": false,
-      "constant": false,
       "crossfade": false,
-      "precedence": "LTP"
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "range": [0, 255],
+          "name": "Focus far…near"
+        }
+      ]
     },
     "Shutter/Strobe": {
       "type": "Shutter",
-      "defaultValue": 32,
-      "highlightValue": 32,
-      "invert": false,
-      "constant": false,
+      "defaultValue": 0,
+      "highlightValue": 255,
       "crossfade": false,
       "precedence": "LTP",
       "capabilities": [
@@ -360,7 +343,7 @@
         },
         {
           "range": [64, 95],
-          "name": "Strobe slow...fast"
+          "name": "Strobe slow…fast"
         },
         {
           "range": [96, 127],
@@ -376,7 +359,7 @@
         },
         {
           "range": [192, 223],
-          "name": "Random Strobe slow...fast"
+          "name": "Random Strobe slow…fast"
         },
         {
           "range": [224, 255],
@@ -388,23 +371,18 @@
       "type": "Intensity",
       "defaultValue": 0,
       "highlightValue": 255,
-      "invert": false,
-      "constant": false,
       "crossfade": true,
       "precedence": "HTP"
     },
-    "P/T Speed": {
+    "Pan/Tilt Speed": {
       "type": "Speed",
       "defaultValue": 0,
-      "highlightValue": 0,
-      "invert": false,
-      "constant": false,
       "crossfade": false,
       "precedence": "LTP",
       "capabilities": [
         {
           "range": [0, 225],
-          "name": "Speed fast...slow"
+          "name": "Speed fast…slow"
         },
         {
           "range": [226, 235],
@@ -416,7 +394,7 @@
         },
         {
           "range": [246, 255],
-          "name": "No Function"
+          "name": "No function"
         }
       ]
     },
@@ -424,8 +402,6 @@
       "type": "Maintenance",
       "defaultValue": 0,
       "highlightValue": 0,
-      "invert": false,
-      "constant": false,
       "crossfade": false,
       "precedence": "LTP",
       "capabilities": [
@@ -439,7 +415,7 @@
         },
         {
           "range": [40, 79],
-          "name": "No Function"
+          "name": "No function"
         },
         {
           "range": [80, 84],
@@ -459,7 +435,7 @@
         },
         {
           "range": [94, 96],
-          "name": "No Function"
+          "name": "No function"
         },
         {
           "range": [97, 99],
@@ -498,38 +474,16 @@
           "name": "Sound Active Program"
         }
       ]
-    },
-    "Pan 2": {
-      "name": "Pan",
-      "type": "Pan",
-      "fineChannelAliases": ["Pan 2 fine"],
-      "defaultValue": 32767,
-      "highlightValue": 32767,
-      "invert": true,
-      "constant": false,
-      "crossfade": true,
-      "precedence": "LTP"
-    },
-    "Tilt 2": {
-      "name": "Tilt",
-      "type": "Tilt",
-      "fineChannelAliases": ["Tilt 2 fine"],
-      "defaultValue": 32767,
-      "highlightValue": 32767,
-      "invert": true,
-      "constant": false,
-      "crossfade": true,
-      "precedence": "LTP"
     }
   },
   "modes": [
     {
-      "name": "12 Channel",
-      "shortName": "12CH",
+      "name": "12-channel",
+      "shortName": "12ch",
       "channels": [
         "Pan",
         "Tilt",
-        "Color",
+        "Color Wheel",
         "Gobo",
         "Gobo Rotation",
         "Prism/Gobo Macro",
@@ -537,17 +491,19 @@
         "Focus",
         "Shutter/Strobe",
         "Dimmer",
-        "P/T Speed",
+        "Pan/Tilt Speed",
         "Reset & Internal Programs"
       ]
     },
     {
-      "name": "14 Channel",
-      "shortName": "14CH",
+      "name": "14-channel",
+      "shortName": "14ch",
       "channels": [
-        "Pan 2",
-        "Tilt 2",
-        "Color",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Color Wheel",
         "Gobo",
         "Gobo Rotation",
         "Prism/Gobo Macro",
@@ -555,7 +511,7 @@
         "Focus",
         "Shutter/Strobe",
         "Dimmer",
-        "P/T Speed",
+        "Pan/Tilt Speed",
         "Reset & Internal Programs"
       ]
     }
