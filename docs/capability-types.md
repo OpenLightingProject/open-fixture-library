@@ -70,7 +70,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
   <th valign="top" scope="row" id="shutterstrobe" rowspan="4">ShutterStrobe</th>
   <td valign="top">shutterEffect<br><sub>:star2: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
-  <td valign="top"><code>Open</code>, <code>Closed</code>, <code>Strobe</code>, <code>Pulse</code>, <code>RampUp</code>, <code>RampDown</code>, <code>RampUpDown</code>, <code>Lightning</code></td>
+  <td valign="top"><code>Open</code>, <code>Closed</code>, <code>Strobe</code>, <code>Pulse</code>, <code>RampUp</code>, <code>RampDown</code>, <code>RampUpDown</code>, <code>Lightning</code>, <code>Spikes</code></td>
   <td valign="top"></td>
 </tr>
 <tr>

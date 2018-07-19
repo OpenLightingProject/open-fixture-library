@@ -292,9 +292,8 @@
         },
         {
           "dmxRange": [215, 240],
-          "type": "Effect",
-          "effectName": "Spikes",
-          "helpWanted": "Should this be a shutterEffect?"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes"
         },
         {
           "dmxRange": [241, 245],
