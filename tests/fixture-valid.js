@@ -690,14 +690,14 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           return;
         }
 
-        const maxProp = channel.type === `Pan` ? `focusPanMax` : `focusTiltMax`;
-        const maxPropDisplay = channel.type === `Pan` ? `panMax` : `tiltMax`;
+        const modelMaxProp = `focus${channel.type}Max`;
+        const jsonMaxProp = `${channel.type.toLowerCase()}Max`;
 
-        if (mode.physical[maxProp] === null) {
-          result.warnings.push(`physical.${maxPropDisplay} is not defined although there's a ${channel.type} channel '${channel.key}' in mode '${mode.shortName}'.`);
+        if (mode.physical === null || mode.physical[modelMaxProp] === null) {
+          result.warnings.push(`physical.${jsonMaxProp} is not defined although there's a ${channel.type} channel '${channel.key}' in mode '${mode.shortName}'.`);
         }
-        else if (mode.physical[maxProp] === 0) {
-          result.warnings.push(`physical.${maxPropDisplay} is 0 although there's a ${channel.type} channel '${channel.key}' in mode '${mode.shortName}'.`);
+        else if (mode.physical[modelMaxProp] === 0) {
+          result.warnings.push(`physical.${jsonMaxProp} is 0 although there's a ${channel.type} channel '${channel.key}' in mode '${mode.shortName}'.`);
         }
       }
     }
