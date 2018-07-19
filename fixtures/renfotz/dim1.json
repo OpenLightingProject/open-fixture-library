@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "dim1",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Renfotz"],
+    "createDate": "2018-07-19",
+    "lastModifyDate": "2018-07-19"
+  },
+  "physical": {
+    "dimensions": [1, 1, 1],
+    "weight": 1,
+    "power": 1
+  },
+  "availableChannels": {
+    "Dim": {
+      "type": "Intensity",
+      "defaultValue": 10,
+      "highlightValue": 50
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Dim"
+      ]
+    }
+  ]
+}
