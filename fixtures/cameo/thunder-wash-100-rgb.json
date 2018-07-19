@@ -159,7 +159,9 @@
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "NoFunction"
+          "type": "ColorPreset",
+          "colors": ["#000000"],
+          "comment": "Color off"
         },
         {
           "dmxRange": [6, 13],

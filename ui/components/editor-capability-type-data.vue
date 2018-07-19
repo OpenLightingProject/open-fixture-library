@@ -200,7 +200,7 @@ export default {
 
         for (const prop of resetProps) {
           const defaultPropData = defaultData[prop];
-          this.capability[prop] = typeof defaultPropData === `string` ? `` : defaultPropData;
+          this.capability.typeData[prop] = typeof defaultPropData === `string` ? `` : defaultPropData;
         }
       }
 
