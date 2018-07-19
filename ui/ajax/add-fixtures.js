@@ -1,5 +1,6 @@
 const createPullRequest = require(`../../lib/create-github-pr.js`);
 const schemaProperties = require(`../../lib/schema-properties.js`);
+const { checkFixture } = require(`../../tests/fixture-valid.js`);
 
 /**
  * Takes the input from the fixture editor client side script and creates a pull request with the new fixture.
@@ -26,7 +27,9 @@ function getOutObjectFromEditorData(fixtures) {
   out = {
     manufacturers: {},
     fixtures: {},
-    submitter: null
+    submitter: null,
+    warnings: {},
+    errors: {}
   };
   channelKeyMapping = {};
 
@@ -90,6 +93,12 @@ function addFixture(fixture) {
       out.fixtures[key][prop] = fixture[prop];
     }
   }
+
+
+  const checkResult = checkFixture(manKey, fixKey, out.fixtures[key]);
+
+  out.warnings[key] = checkResult.warnings;
+  out.errors[key] = checkResult.errors;
 }
 
 function getManufacturerKey(fixture) {
