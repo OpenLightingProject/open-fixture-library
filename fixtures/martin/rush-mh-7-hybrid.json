@@ -100,8 +100,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 0,
           "indexEnd": 1,
-          "colors": ["#ffffff", "#ff0000"],
-          "comment": "Open > Red",
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#ff0000"],
+          "comment": "Split Open / Red",
           "menuClick": "center"
         },
         {
@@ -116,8 +117,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 1,
           "indexEnd": 2,
-          "colors": ["#ff0000", "#0000ff"],
-          "comment": "Red > Blue",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#0000ff"],
+          "comment": "Split Red / Blue",
           "menuClick": "center"
         },
         {
@@ -132,8 +134,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 2,
           "indexEnd": 3,
-          "colors": ["#0000ff", "#00ff00"],
-          "comment": "Blue > Green",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#00ff00"],
+          "comment": "Split Blue / Green",
           "menuClick": "center"
         },
         {
@@ -148,8 +151,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 3,
           "indexEnd": 4,
-          "colors": ["#00ff00", "#ff00ff"],
-          "comment": "Green > Magenta",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#ff00ff"],
+          "comment": "Split Green / Magenta",
           "menuClick": "center"
         },
         {
@@ -164,8 +168,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 4,
           "indexEnd": 5,
-          "colors": ["#ff00ff", "#ffff00"],
-          "comment": "Magenta > Yellow",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#ffff00"],
+          "comment": "Split Magenta / Yellow",
           "menuClick": "center"
         },
         {
@@ -180,8 +185,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 5,
           "indexEnd": 6,
-          "colors": ["#ffff00", "#00ffff"],
-          "comment": "Yellow > Light Blue",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#00ffff"],
+          "comment": "Split Yellow / Light Blue",
           "menuClick": "center"
         },
         {
@@ -196,8 +202,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 6,
           "indexEnd": 7,
-          "colors": ["#00ffff", "#ffaaff"],
-          "comment": "Light Blue > Pink",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#ffaaff"],
+          "comment": "Split Light Blue / Pink",
           "menuClick": "center"
         },
         {
@@ -212,8 +219,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 7,
           "indexEnd": 8,
-          "colors": ["#ffaaff", "#ffaa00"],
-          "comment": "Pink > Orange",
+          "colorsStart": ["#ffaaff"],
+          "colorsEnd": ["#ffaa00"],
+          "comment": "Split Pink / Orange",
           "menuClick": "center"
         },
         {
@@ -228,8 +236,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 8,
           "indexEnd": 9,
-          "colors": ["#ffaa00", "#99ddff"],
-          "comment": "Orange > Aqua",
+          "colorsStart": ["#ffaa00"],
+          "colorsEnd": ["#99ddff"],
+          "comment": "Split Orange / Aqua",
           "menuClick": "center"
         },
         {
@@ -244,8 +253,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 9,
           "indexEnd": 10,
-          "colors": ["#99ddff", "#aa00ff"],
-          "comment": "Aqua > Purple",
+          "colorsStart": ["#99ddff"],
+          "colorsEnd": ["#aa00ff"],
+          "comment": "Split Aqua / Purple",
           "menuClick": "center"
         },
         {
@@ -260,8 +270,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 10,
           "indexEnd": 11,
-          "colors": ["#aa00ff", "#ffcc99"],
-          "comment": "Purple > CTO",
+          "colorsStart": ["#aa00ff"],
+          "colorsEnd": ["#ffcc99"],
+          "comment": "Split Purple / CTO",
           "menuClick": "center"
         },
         {
@@ -276,8 +287,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 11,
           "indexEnd": 12,
-          "colors": ["#ffcc99", "#88bbdd"],
-          "comment": "CTO > CTB",
+          "colorsStart": ["#ffcc99"],
+          "colorsEnd": ["#88bbdd"],
+          "comment": "Split CTO / CTB",
           "menuClick": "center"
         },
         {
@@ -292,8 +304,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 12,
           "indexEnd": 13,
-          "colors": ["#88bbdd", "#a996ff"],
-          "comment": "CTB > UV",
+          "colorsStart": ["#88bbdd"],
+          "colorsEnd": ["#a996ff"],
+          "comment": "Split CTB / UV",
           "menuClick": "center"
         },
         {
@@ -308,8 +321,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 13,
           "indexEnd": 14,
-          "colors": ["#a996ff", "#ffffff"],
-          "comment": "UV > Open",
+          "colorsStart": ["#a996ff"],
+          "colorsEnd": ["#ffffff"],
+          "comment": "Split UV / Open",
           "menuClick": "center"
         },
         {

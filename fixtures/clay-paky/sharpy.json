@@ -48,8 +48,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 0,
           "indexEnd": 1,
-          "colors": ["#ffffff", "#c41c1a"],
-          "comment": "White + Red"
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#c41c1a"],
+          "comment": "Split White / Red"
         },
         {
           "dmxRange": [9, 12],
@@ -63,8 +64,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 1,
           "indexEnd": 2,
-          "colors": ["#c41c1a", "#ed8229"],
-          "comment": "Red + Orange"
+          "colorsStart": ["#c41c1a"],
+          "colorsEnd": ["#ed8229"],
+          "comment": "Split Red / Orange"
         },
         {
           "dmxRange": [18, 21],
@@ -78,8 +80,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 2,
           "indexEnd": 3,
-          "colors": ["#ed8229", "#7abd82"],
-          "comment": "Orange + Aquamarine"
+          "colorsStart": ["#ed8229"],
+          "colorsEnd": ["#7abd82"],
+          "comment": "Split Orange / Aquamarine"
         },
         {
           "dmxRange": [26, 29],
@@ -93,8 +96,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 3,
           "indexEnd": 4,
-          "colors": ["#7abd82", "#05822b"],
-          "comment": "Aquamarine + Green"
+          "colorsStart": ["#7abd82"],
+          "colorsEnd": ["#05822b"],
+          "comment": "Split Aquamarine / Green"
         },
         {
           "dmxRange": [35, 38],
@@ -108,8 +112,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 4,
           "indexEnd": 5,
-          "colors": ["#05822b", "#9ec233"],
-          "comment": "Green + Light Green"
+          "colorsStart": ["#05822b"],
+          "colorsEnd": ["#9ec233"],
+          "comment": "Split Green / Light Green"
         },
         {
           "dmxRange": [43, 46],
@@ -123,8 +128,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 5,
           "indexEnd": 6,
-          "colors": ["#9ec233", "#8f73ad"],
-          "comment": "Light Green + Lavender"
+          "colorsStart": ["#9ec233"],
+          "colorsEnd": ["#8f73ad"],
+          "comment": "Split Light Green / Lavender"
         },
         {
           "dmxRange": [52, 55],
@@ -138,8 +144,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 6,
           "indexEnd": 7,
-          "colors": ["#8f73ad", "#ed8080"],
-          "comment": "Lavender + Pink"
+          "colorsStart": ["#8f73ad"],
+          "colorsEnd": ["#ed8080"],
+          "comment": "Split Lavender / Pink"
         },
         {
           "dmxRange": [60, 63],
@@ -153,8 +160,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 7,
           "indexEnd": 8,
-          "colors": ["#ed8080", "#ffed00"],
-          "comment": "Pink + Yellow"
+          "colorsStart": ["#ed8080"],
+          "colorsEnd": ["#ffed00"],
+          "comment": "Split Pink / Yellow"
         },
         {
           "dmxRange": [69, 72],
@@ -168,8 +176,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 8,
           "indexEnd": 9,
-          "colors": ["#ffed00", "#e30082"],
-          "comment": "Yellow + Magenta"
+          "colorsStart": ["#ffed00"],
+          "colorsEnd": ["#e30082"],
+          "comment": "Split Yellow / Magenta"
         },
         {
           "dmxRange": [77, 81],
@@ -183,8 +192,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 9,
           "indexEnd": 10,
-          "colors": ["#e30082", "#00a6eb"],
-          "comment": "Magenta + Cyan"
+          "colorsStart": ["#e30082"],
+          "colorsEnd": ["#00a6eb"],
+          "comment": "Split Magenta / Cyan"
         },
         {
           "dmxRange": [86, 89],
@@ -198,8 +208,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 10,
           "indexEnd": 11,
-          "colors": ["#00a6eb", "#f5c745"],
-          "comment": "Cyan + CTO 260"
+          "colorsStart": ["#00a6eb"],
+          "colorsEnd": ["#f5c745"],
+          "comment": "Split Cyan / CTO 260"
         },
         {
           "dmxRange": [94, 98],
@@ -213,8 +224,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 11,
           "indexEnd": 12,
-          "colors": ["#f5c745", "#f5d985"],
-          "comment": "CTO 260 + CTO 190"
+          "colorsStart": ["#f5c745"],
+          "colorsEnd": ["#f5d985"],
+          "comment": "Split CTO 260 / CTO 190"
         },
         {
           "dmxRange": [103, 106],
@@ -228,8 +240,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 12,
           "indexEnd": 13,
-          "colors": ["#f5d985", "#96c7b8"],
-          "comment": "CTO 190 + CTB 8000"
+          "colorsStart": ["#f5d985"],
+          "colorsEnd": ["#96c7b8"],
+          "comment": "Split CTO 190 / CTB 8000"
         },
         {
           "dmxRange": [111, 115],
@@ -243,8 +256,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 13,
           "indexEnd": 14,
-          "colors": ["#96c7b8", "#004f99"],
-          "comment": "CTB 8000 + Blue"
+          "colorsStart": ["#96c7b8"],
+          "colorsEnd": ["#004f99"],
+          "comment": "Split CTB 8000 / Blue"
         },
         {
           "dmxRange": [120, 123],
@@ -258,8 +272,9 @@
           "type": "ColorWheelIndex",
           "indexStart": 14,
           "indexEnd": 0,
-          "colors": ["#004f99", "#ffffff"],
-          "comment": "Blue + White"
+          "colorsStart": ["#004f99"],
+          "colorsEnd": ["#ffffff"],
+          "comment": "Split Blue / White"
         },
         {
           "dmxRange": [128, 255],
