@@ -43,120 +43,147 @@
       "capabilities": [
         {
           "dmxRange": [0, 4],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "index": 0,
           "colors": ["#ffffff"],
           "comment": "White"
         },
         {
           "dmxRange": [5, 9],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "index": 1,
           "colors": ["#ffff00"],
           "comment": "Yellow"
         },
         {
           "dmxRange": [10, 14],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "index": 2,
           "colors": ["#ff00ff"],
           "comment": "Pink"
         },
         {
           "dmxRange": [15, 19],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "index": 3,
           "colors": ["#00ff00"],
           "comment": "Green"
         },
         {
           "dmxRange": [20, 24],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "index": 4,
           "colors": ["#d7735b"],
           "comment": "Peachblow"
         },
         {
           "dmxRange": [25, 29],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "index": 5,
           "colors": ["#add8e6"],
           "comment": "Light Blue"
         },
         {
           "dmxRange": [30, 34],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "index": 6,
           "colors": ["#ccfe50"],
           "comment": "Yellow-Green"
         },
         {
           "dmxRange": [35, 39],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "index": 7,
           "colors": ["#ff0000"],
           "comment": "Red"
         },
         {
           "dmxRange": [40, 44],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "index": 8,
           "colors": ["#0000ff"],
           "comment": "Blue"
         },
         {
           "dmxRange": [45, 54],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "indexStart": 0,
+          "indexEnd": 1,
           "colorsStart": ["#ffffff"],
           "colorsEnd": ["#ffff00"],
-          "comment": "White - Yellow"
+          "comment": "Split White / Yellow"
         },
         {
           "dmxRange": [55, 64],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "indexStart": 1,
+          "indexEnd": 2,
           "colorsStart": ["#ffff00"],
           "colorsEnd": ["#ff00ff"],
-          "comment": "Yellow - Pink"
+          "comment": "Split Yellow / Pink"
         },
         {
           "dmxRange": [65, 73],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "indexStart": 2,
+          "indexEnd": 3,
           "colorsStart": ["#ff00ff"],
           "colorsEnd": ["#00ff00"],
-          "comment": "Pink - Green"
+          "comment": "Split Pink / Green"
         },
         {
           "dmxRange": [74, 83],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "indexStart": 3,
+          "indexEnd": 4,
           "colorsStart": ["#00ff00"],
           "colorsEnd": ["#d7735b"],
-          "comment": "Green - Peachblow"
+          "comment": "Split Green / Peachblow"
         },
         {
           "dmxRange": [84, 92],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "indexStart": 4,
+          "indexEnd": 5,
           "colorsStart": ["#d7735b"],
           "colorsEnd": ["#add8e6"],
-          "comment": "Peachblow - Light Blue"
+          "comment": "Split Peachblow / Light Blue"
         },
         {
           "dmxRange": [93, 101],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "indexStart": 5,
+          "indexEnd": 6,
           "colorsStart": ["#add8e6"],
           "colorsEnd": ["#ccfe50"],
-          "comment": "Light Blue - Yellow-Green"
+          "comment": "Split Light Blue / Yellow-Green"
         },
         {
           "dmxRange": [102, 110],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "indexStart": 6,
+          "indexEnd": 7,
           "colorsStart": ["#ccfe50"],
           "colorsEnd": ["#ff0000"],
-          "comment": "Yellow-Green - Red"
+          "comment": "Split Yellow-Green / Red"
         },
         {
           "dmxRange": [111, 119],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "indexStart": 7,
+          "indexEnd": 8,
           "colorsStart": ["#ff0000"],
           "colorsEnd": ["#0000ff"],
-          "comment": "Red - Blue"
+          "comment": "Split Red / Blue"
         },
         {
           "dmxRange": [120, 127],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "indexStart": 8,
+          "indexEnd": 9,
           "colorsStart": ["#0000ff"],
           "colorsEnd": ["#ffffff"],
-          "comment": "Blue - White"
+          "comment": "Split Blue / White"
         },
         {
           "dmxRange": [128, 191],
