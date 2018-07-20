@@ -45,98 +45,82 @@
         {
           "range": [0, 15],
           "name": "Blackout",
-          "color": "#000000",
-          "color2": "#000000"
+          "color": "#000000"
         },
         {
           "range": [16, 31],
           "name": "Red",
-          "color": "#ff0000",
-          "color2": "#000000"
+          "color": "#ff0000"
         },
         {
           "range": [32, 47],
           "name": "Green",
-          "color": "#00ff00",
-          "color2": "#000000"
+          "color": "#00ff00"
         },
         {
           "range": [48, 63],
           "name": "Blue",
-          "color": "#0000ff",
-          "color2": "#000000"
+          "color": "#0000ff"
         },
         {
           "range": [64, 79],
           "name": "White",
-          "color": "#000000",
-          "color2": "#ffffff"
+          "color": "#ffffff"
         },
         {
           "range": [80, 95],
-          "name": "Red / green",
-          "color": "#ffff00",
-          "color2": "#000000"
+          "name": "Red + Green",
+          "color": "#ffff00"
         },
         {
           "range": [96, 111],
-          "name": "Red / blue",
-          "color": "#ff00ff",
-          "color2": "#000000"
+          "name": "Red + Blue",
+          "color": "#ff00ff"
         },
         {
           "range": [112, 127],
-          "name": "Red / white",
-          "color": "#ff0000",
-          "color2": "#ffffff"
+          "name": "Red + White",
+          "color": "#ff8080"
         },
         {
           "range": [128, 143],
-          "name": "Green / blue",
-          "color": "#00ffff",
-          "color2": "#000000"
+          "name": "Green + Blue",
+          "color": "#00ffff"
         },
         {
           "range": [144, 159],
-          "name": "Green / white",
-          "color": "#00ff00",
-          "color2": "#ffffff"
+          "name": "Green + White",
+          "color": "#80ff80"
         },
         {
           "range": [160, 175],
-          "name": "Blue / white",
-          "color": "#0000ff",
-          "color2": "#ffffff"
+          "name": "Blue + White",
+          "color": "#8080ff"
         },
         {
           "range": [176, 191],
-          "name": "Red / green / blue",
-          "color": "#ffffff",
-          "color2": "#000000"
+          "name": "Red + Green + Blue",
+          "color": "#ffffff"
         },
         {
           "range": [192, 207],
-          "name": "Red / green / white",
-          "color": "#ffff00",
-          "color2": "#ffffff"
+          "name": "Red + Green + White",
+          "color": "#ffff80"
         },
         {
           "range": [208, 223],
-          "name": "Green / blue / white",
-          "color": "#00ffff",
-          "color2": "#ffffff"
+          "name": "Green + Blue + White",
+          "color": "#80ffff"
         },
         {
           "range": [224, 239],
-          "name": "Blue / red / white",
-          "color": "#ff00ff",
-          "color2": "#ffffff"
+          "name": "Red + Blue + White",
+          "color": "#ff80ff"
         },
         {
           "range": [240, 255],
-          "name": "Red / blue / green / white",
-          "color": "#ffffff",
-          "color2": "#ffffff"
+          "name": "Red + Green + Blue + White",
+          "color": "#ffffff"
         }
       ]
     },

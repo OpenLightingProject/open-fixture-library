@@ -111,73 +111,79 @@
       "capabilities": [
         {
           "range": [0, 17],
-          "name": "R",
+          "name": "Red",
           "color": "#ff0000"
         },
         {
           "range": [18, 34],
-          "name": "G",
+          "name": "Green",
           "color": "#00ff00"
         },
         {
           "range": [35, 51],
-          "name": "B",
+          "name": "Blue",
           "color": "#0000ff"
         },
         {
           "range": [52, 68],
-          "name": "W",
+          "name": "White",
           "color": "#ffffff"
         },
         {
           "range": [69, 85],
-          "name": "R+G",
-          "color": "#ffff00"
+          "name": "Red + Green",
+          "color": "#ff0000",
+          "color2": "#00ff00"
         },
         {
           "range": [86, 102],
-          "name": "R+B",
-          "color": "#ff00ff"
+          "name": "Red + Blue",
+          "color": "#ff0000",
+          "color2": "#0000ff"
         },
         {
           "range": [103, 119],
-          "name": "R+W",
-          "color": "#ffaaaa"
+          "name": "Red + White",
+          "color": "#ff0000",
+          "color2": "#ffffff"
         },
         {
           "range": [120, 136],
-          "name": "G+B",
-          "color": "#00ffff"
+          "name": "Green + Blue",
+          "color": "#00ff00",
+          "color2": "#0000ff"
         },
         {
           "range": [137, 153],
-          "name": "G+W",
-          "color": "#aaffaa"
+          "name": "Green + White",
+          "color": "#00ff00",
+          "color2": "#ffffff"
         },
         {
           "range": [154, 170],
-          "name": "B+W",
-          "color": "#aaaaff"
+          "name": "Blue + White",
+          "color": "#0000ff",
+          "color2": "#ffffff"
         },
         {
           "range": [171, 187],
-          "name": "R+G+B"
+          "name": "Red + Green + Blue"
         },
         {
           "range": [188, 204],
-          "name": "R+G+W"
+          "name": "Red + Green + White"
         },
         {
           "range": [205, 221],
-          "name": "R+B+W"
+          "name": "Red + Blue + White"
         },
         {
           "range": [222, 238],
-          "name": "G+B+W"
+          "name": "Green + Blue + White"
         },
         {
           "range": [239, 255],
-          "name": "R+G+B+W"
+          "name": "Red + Green + Blue + White"
         }
       ]
     },

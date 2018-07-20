@@ -182,43 +182,117 @@
         },
         {
           "range": [1, 2],
-          "name": "White 2700K"
+          "name": "White (2700K)",
+          "color": "#ffa757"
         },
         {
           "range": [3, 3],
-          "name": "White 2700K (halogen)"
+          "name": "Halogen White (2700K)",
+          "color": "#ffa757"
         },
         {
           "range": [4, 5],
-          "name": "White 3200K"
+          "name": "White (3200K)",
+          "color": "#ffb87b"
         },
         {
           "range": [6, 6],
-          "name": "White 3200K (halogen)"
+          "name": "Halogen White (3200K)",
+          "color": "#ffb87b"
         },
         {
           "range": [7, 9],
-          "name": "White 4200K"
+          "name": "White (4200K)",
+          "color": "#ffd3af"
         },
         {
           "range": [10, 12],
-          "name": "White 5600K"
+          "name": "White (5600K)",
+          "color": "#ffefe1"
         },
         {
           "range": [13, 15],
-          "name": "White 8000K"
+          "name": "White (8000K)",
+          "color": "#dde6ff"
         },
         {
-          "range": [16, 247],
-          "name": "Rainbow select Blue-Cyan-Green-Yellow-Red-Magenta-Blue"
+          "range": [16, 16],
+          "name": "Blue",
+          "color": "#007cc3"
+        },
+        {
+          "range": [17, 55],
+          "name": "Blue - Cyan",
+          "color": "#007cc3",
+          "color2": "#61afca"
+        },
+        {
+          "range": [56, 56],
+          "name": "Cyan",
+          "color": "#61afca"
+        },
+        {
+          "range": [57, 95],
+          "name": "Cyan - Green",
+          "color": "#61afca",
+          "color2": "#87c326"
+        },
+        {
+          "range": [96, 96],
+          "name": "Green",
+          "color": "#87c326"
+        },
+        {
+          "range": [97, 134],
+          "name": "Green - Yellow",
+          "color": "#87c326",
+          "color2": "#ebd82a"
+        },
+        {
+          "range": [135, 135],
+          "name": "Yellow",
+          "color": "#ebd82a"
+        },
+        {
+          "range": [136, 174],
+          "name": "Yellow - Red",
+          "color": "#ebd82a",
+          "color2": "#dc2c4e"
+        },
+        {
+          "range": [175, 175],
+          "name": "Red",
+          "color": "#dc2c4e"
+        },
+        {
+          "range": [176, 214],
+          "name": "Red - Magenta",
+          "color": "#dc2c4e",
+          "color2": "#bb4e8b"
+        },
+        {
+          "range": [215, 215],
+          "name": "Magenta",
+          "color": "#bb4e8b"
+        },
+        {
+          "range": [216, 246],
+          "name": "Magenta - Blue",
+          "color": "#bb4e8b",
+          "color2": "#0093dc"
+        },
+        {
+          "range": [247, 247],
+          "name": "Blue",
+          "color": "#0093dc"
         },
         {
           "range": [248, 248],
-          "name": "Rainbow fade"
+          "name": "Color fade"
         },
         {
           "range": [249, 249],
-          "name": "Rainbow jump"
+          "name": "Color jump"
         },
         {
           "range": [250, 250],

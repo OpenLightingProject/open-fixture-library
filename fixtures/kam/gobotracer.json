@@ -35,7 +35,7 @@
       "fineChannelAliases": ["Tilt fine"],
       "crossfade": true
     },
-    "Color": {
+    "Color Wheel": {
       "type": "Multi-Color",
       "capabilities": [
         {
@@ -92,9 +92,9 @@
         },
         {
           "range": [100, 109],
-          "name": "Blue/Green",
-          "color": "#0000ff",
-          "color2": "#00ff00"
+          "name": "Green/Blue",
+          "color": "#00ff00",
+          "color2": "#0000ff"
         },
         {
           "range": [110, 119],
@@ -110,21 +110,21 @@
         },
         {
           "range": [130, 139],
-          "name": "Orange/Purple",
-          "color": "#ffaa00",
-          "color2": "#ff00ff"
-        },
-        {
-          "range": [140, 149],
-          "name": "Cyan/Orange",
-          "color": "#00ffff",
+          "name": "Purple/Orange",
+          "color": "#ff00ff",
           "color2": "#ffaa00"
         },
         {
+          "range": [140, 149],
+          "name": "Orange/Cyan",
+          "color": "#ffaa00",
+          "color2": "#00ffff"
+        },
+        {
           "range": [150, 159],
-          "name": "White/Blue",
-          "color": "#ffffff",
-          "color2": "#0000ff"
+          "name": "Cyan/White",
+          "color": "#00ffff",
+          "color2": "#ffffff"
         },
         {
           "range": [160, 255],
@@ -248,7 +248,7 @@
       "channels": [
         "Pan",
         "Tilt",
-        "Color",
+        "Color Wheel",
         "Gobo",
         "Strobe",
         "Dimmer",
@@ -264,7 +264,7 @@
         "Pan fine",
         "Tilt",
         "Tilt fine",
-        "Color",
+        "Color Wheel",
         "Gobo",
         "Strobe",
         "Dimmer",

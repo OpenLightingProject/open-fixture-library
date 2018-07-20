@@ -238,58 +238,57 @@
         {
           "range": [40, 47],
           "name": "Red-Green",
-          "color": "#ff0000",
-          "color2": "#00ff00"
+          "color": "#ffff00"
         },
         {
           "range": [48, 55],
           "name": "Red-Blue",
-          "color": "#ff0000",
-          "color2": "#0000ff"
+          "color": "#ff00ff"
         },
         {
           "range": [56, 63],
           "name": "Red-White",
-          "color": "#ff0000",
-          "color2": "#ffffff"
+          "color": "#ff8080"
         },
         {
           "range": [64, 71],
           "name": "Green-Blue",
-          "color": "#00ff00",
-          "color2": "#0000ff"
+          "color": "#00ffff"
         },
         {
           "range": [72, 79],
           "name": "Green-White",
-          "color": "#00ff00",
-          "color2": "#ffffff"
+          "color": "#80ff80"
         },
         {
           "range": [80, 87],
           "name": "Blue-White",
-          "color": "#0000ff",
-          "color2": "#ffffff"
+          "color": "#8080ff"
         },
         {
           "range": [88, 95],
-          "name": "Red-Green-Blue"
+          "name": "Red-Green-Blue",
+          "color": "#ffffff"
         },
         {
           "range": [96, 103],
-          "name": "Red-Green-White"
+          "name": "Red-Green-White",
+          "color": "#ffff80"
         },
         {
           "range": [104, 111],
-          "name": "Red-Blue-White"
+          "name": "Red-Blue-White",
+          "color": "#ff80ff"
         },
         {
           "range": [112, 119],
-          "name": "Green-Blue-White"
+          "name": "Green-Blue-White",
+          "color": "#80ffff"
         },
         {
           "range": [120, 127],
-          "name": "Red-Green-Blue-White"
+          "name": "Red-Green-Blue-White",
+          "color": "#ffffff"
         },
         {
           "range": [128, 131],
@@ -418,7 +417,7 @@
         }
       ]
     },
-    "Color Speed": {
+    "Color Macro Speed": {
       "type": "Speed",
       "defaultValue": 128,
       "crossfade": true
@@ -477,7 +476,7 @@
         "Blue",
         "White",
         "Color Macros",
-        "Color Speed"
+        "Color Macro Speed"
       ]
     },
     {
@@ -506,7 +505,7 @@
             ]
           },
           "Color Macros",
-          "Color Speed"
+          "Color Macro Speed"
       ]
     }
   ]

@@ -48,42 +48,42 @@
         {
           "range": [11, 19],
           "name": "red",
-          "color": "#ff0000"
+          "color": "#ed2024"
         },
         {
           "range": [20, 28],
           "name": "blue",
-          "color": "#0000ff"
+          "color": "#20409a"
         },
         {
           "range": [29, 37],
           "name": "green",
-          "color": "#00ff00"
+          "color": "#0ba14b"
         },
         {
           "range": [38, 46],
           "name": "yellow",
-          "color": "#ffff00"
+          "color": "#fff200"
         },
         {
           "range": [47, 55],
           "name": "pink",
-          "color": "#ff00ff"
+          "color": "#d93595"
         },
         {
           "range": [56, 64],
           "name": "orange",
-          "color": "#ffaa00"
+          "color": "#f26522"
         },
         {
           "range": [65, 73],
           "name": "aqua",
-          "color": "#00aaff"
+          "color": "#149389"
         },
         {
           "range": [74, 82],
           "name": "magenta",
-          "color": "#ff00aa"
+          "color": "#ec008c"
         },
         {
           "range": [83, 91],
@@ -92,19 +92,22 @@
         {
           "range": [92, 100],
           "name": "cyan",
-          "color": "#00ffff"
+          "color": "#00aeef"
         },
         {
           "range": [101, 109],
-          "name": "CTO"
+          "name": "CTO",
+          "color": "#f26751"
         },
         {
           "range": [110, 118],
-          "name": "CTB"
+          "name": "CTB",
+          "color": "#c3e7ec"
         },
         {
           "range": [119, 127],
-          "name": "UV"
+          "name": "UV",
+          "color": "#3e69b3"
         },
         {
           "range": [128, 189],
@@ -205,9 +208,9 @@
         }
       ]
     },
-    "Gobo Index": {
+    "Gobo Stencil Rotation": {
       "type": "Gobo",
-      "fineChannelAliases": ["Gobo Index fine"],
+      "fineChannelAliases": ["Gobo Stencil Rotation fine"],
       "capabilities": [
         {
           "range": [0, 127],
@@ -671,8 +674,8 @@
         "Color wheel",
         "Color wheel fine",
         "Rotating Gobos",
-        "Gobo Index",
-        "Gobo Index fine",
+        "Gobo Stencil Rotation",
+        "Gobo Stencil Rotation fine",
         "Static-stamped Gobos (Gobo wheel 2)",
         "Static-stamped Gobos fine",
         "Prism",
@@ -702,7 +705,7 @@
         "Tilt fine",
         "Color wheel",
         "Rotating Gobos",
-        "Gobo Index",
+        "Gobo Stencil Rotation",
         "Static-stamped Gobos (Gobo wheel 2)",
         "Prism",
         "Prism Index",
@@ -725,7 +728,7 @@
         "Tilt",
         "Color wheel",
         "Rotating Gobos",
-        "Gobo Index",
+        "Gobo Stencil Rotation",
         "Static-stamped Gobos (Gobo wheel 2)",
         "Prism",
         "Prism Index",

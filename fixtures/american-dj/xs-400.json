@@ -104,8 +104,9 @@
         },
         {
           "range": [31, 40],
-          "name": "Red & Green",
-          "color": "#ffff00"
+          "name": "Red + Green",
+          "color": "#ff0000",
+          "color2": "#00ff00"
         },
         {
           "range": [41, 50],
@@ -114,17 +115,19 @@
         },
         {
           "range": [51, 60],
-          "name": "Red & Blue",
-          "color": "#ff00ff"
+          "name": "Red + Blue",
+          "color": "#ff0000",
+          "color2": "#0000ff"
         },
         {
           "range": [61, 70],
-          "name": "Green & Blue",
-          "color": "#00ffff"
+          "name": "Green + Blue",
+          "color": "#00ff00",
+          "color2": "#0000ff"
         },
         {
           "range": [71, 80],
-          "name": "Red & Green & Blue",
+          "name": "Red + Green + Blue",
           "color": "#ffffff"
         },
         {
@@ -133,7 +136,8 @@
         },
         {
           "range": [124, 166],
-          "name": "Color mix slow…fast"
+          "name": "Color mix slow…fast",
+          "helpWanted": "How does this differ from the other color effects?"
         },
         {
           "range": [167, 209],
@@ -141,7 +145,8 @@
         },
         {
           "range": [210, 249],
-          "name": "Color change slow…fast"
+          "name": "Color change slow…fast",
+          "helpWanted": "How does this differ from the other color effects?"
         },
         {
           "range": [250, 255],

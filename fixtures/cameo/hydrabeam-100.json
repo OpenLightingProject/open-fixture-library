@@ -144,91 +144,87 @@
         },
         {
           "range": [31, 45],
-          "name": "R (Red)",
-          "color": "#ff0000",
-          "color2": "#000000"
+          "name": "Red",
+          "color": "#ff0000"
         },
         {
           "range": [46, 60],
-          "name": "G (Green)",
-          "color": "#00ff00",
-          "color2": "#000000"
+          "name": "Green",
+          "color": "#00ff00"
         },
         {
           "range": [61, 75],
-          "name": "B (Blue)",
-          "color": "#0000ff",
-          "color2": "#000000"
+          "name": "Blue",
+          "color": "#0000ff"
         },
         {
           "range": [76, 90],
-          "name": "W (White)",
-          "color": "#000000",
-          "color2": "#ffffff"
+          "name": "White",
+          "color": "#ffffff"
         },
         {
           "range": [91, 105],
-          "name": "RG",
-          "color": "#ffff00",
-          "color2": "#000000"
+          "name": "Red + Green",
+          "color": "#ff0000",
+          "color2": "#00ff00"
         },
         {
           "range": [106, 120],
-          "name": "RB",
-          "color": "#ff00ff",
-          "color2": "#000000"
+          "name": "Red + Blue",
+          "color": "#ff0000",
+          "color2": "#0000ff"
         },
         {
           "range": [121, 135],
-          "name": "RW",
+          "name": "Red + White",
           "color": "#ff0000",
           "color2": "#ffffff"
         },
         {
           "range": [136, 150],
-          "name": "GB",
-          "color": "#00ffff",
-          "color2": "#000000"
+          "name": "Green + Blue",
+          "color": "#00ff00",
+          "color2": "#0000ff"
         },
         {
           "range": [151, 165],
-          "name": "GW",
+          "name": "Green + White",
           "color": "#00ff00",
           "color2": "#ffffff"
         },
         {
           "range": [166, 180],
-          "name": "BW",
+          "name": "Blue + White",
           "color": "#0000ff",
           "color2": "#ffffff"
         },
         {
           "range": [181, 195],
-          "name": "RGB",
+          "name": "Red + Green + Blue",
           "color": "#ffffff",
           "color2": "#000000"
         },
         {
           "range": [196, 210],
-          "name": "RGW",
+          "name": "Red + Green + White",
           "color": "#ffff00",
           "color2": "#ffffff"
         },
         {
           "range": [211, 225],
-          "name": "RBW",
+          "name": "Red + Blue + White",
           "color": "#ff00ff",
           "color2": "#ffffff"
         },
         {
           "range": [226, 240],
-          "name": "GBW",
+          "name": "Green + Blue + White",
           "color": "#00ffff",
           "color2": "#ffffff"
         },
         {
           "range": [241, 255],
-          "name": "RGBW",
+          "name": "Red + Green + Blue + White",
           "color": "#ffffff",
           "color2": "#ffffff"
         }

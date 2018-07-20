@@ -75,135 +75,135 @@
       "capabilities": [
         {
           "range": [0, 0],
-          "name": "open",
+          "name": "Open",
           "color": "#ffffff"
         },
         {
           "range": [1, 11],
-          "name": "open > red",
+          "name": "Open / Red",
+          "menuClick": "center",
           "color": "#ffffff",
-          "color2": "#ff0000",
-          "menuClick": "center"
+          "color2": "#ff0000"
         },
         {
           "range": [12, 12],
-          "name": "red",
+          "name": "Red",
           "color": "#ff0000"
         },
         {
           "range": [13, 22],
-          "name": "red > blue",
+          "name": "Red / Blue",
+          "menuClick": "center",
           "color": "#ff0000",
-          "color2": "#0000ff",
-          "menuClick": "center"
+          "color2": "#0000ff"
         },
         {
           "range": [23, 23],
-          "name": "blue",
+          "name": "Blue",
           "color": "#0000ff"
         },
         {
           "range": [24, 32],
-          "name": "blue > green",
+          "name": "Blue / Green",
+          "menuClick": "center",
           "color": "#0000ff",
-          "color2": "#00ff00",
-          "menuClick": "center"
+          "color2": "#00ff00"
         },
         {
           "range": [33, 33],
-          "name": "green",
+          "name": "Green",
           "color": "#00ff00"
         },
         {
           "range": [34, 42],
-          "name": "green > magenta",
+          "name": "Green / Magenta",
+          "menuClick": "center",
           "color": "#00ff00",
-          "color2": "#ff00ff",
-          "menuClick": "center"
+          "color2": "#ff00ff"
         },
         {
           "range": [43, 43],
-          "name": "magenta",
+          "name": "Magenta",
           "color": "#ff00ff"
         },
         {
           "range": [44, 52],
-          "name": "magenta > yellow",
+          "name": "Magenta / Yellow",
+          "menuClick": "center",
           "color": "#ff00ff",
-          "color2": "#ffff00",
-          "menuClick": "center"
+          "color2": "#ffff00"
         },
         {
           "range": [53, 53],
-          "name": "yellow",
+          "name": "Yellow",
           "color": "#ffff00"
         },
         {
           "range": [54, 62],
-          "name": "yellow > light blue",
+          "name": "Yellow / Light Blue",
+          "menuClick": "center",
           "color": "#ffff00",
-          "color2": "#00ffff",
-          "menuClick": "center"
+          "color2": "#00ffff"
         },
         {
           "range": [63, 63],
-          "name": "light blue",
+          "name": "Light Blue",
           "color": "#00ffff"
         },
         {
           "range": [64, 73],
-          "name": "light blue > pink",
+          "name": "Light Blue / Pink",
+          "menuClick": "center",
           "color": "#00ffff",
-          "color2": "#ffaaff",
-          "menuClick": "center"
+          "color2": "#ffaaff"
         },
         {
           "range": [74, 74],
-          "name": "pink",
+          "name": "Pink",
           "color": "#ffaaff"
         },
         {
           "range": [75, 84],
-          "name": "pink > orange",
+          "name": "Pink / Orange",
+          "menuClick": "center",
           "color": "#ffaaff",
-          "color2": "#ffaa00",
-          "menuClick": "center"
+          "color2": "#ffaa00"
         },
         {
           "range": [85, 85],
-          "name": "orange",
+          "name": "Orange",
           "color": "#ffaa00"
         },
         {
           "range": [86, 95],
-          "name": "orange > aqua",
+          "name": "Orange / Aqua",
+          "menuClick": "center",
           "color": "#ffaa00",
-          "color2": "#99ddff",
-          "menuClick": "center"
+          "color2": "#99ddff"
         },
         {
           "range": [96, 96],
-          "name": "aqua",
+          "name": "Aqua",
           "color": "#99ddff"
         },
         {
           "range": [97, 105],
-          "name": "aqua > purple",
+          "name": "Aqua / Purple",
+          "menuClick": "center",
           "color": "#99ddff",
-          "color2": "#aa00ff",
-          "menuClick": "center"
+          "color2": "#aa00ff"
         },
         {
           "range": [106, 106],
-          "name": "purple",
+          "name": "Purple",
           "color": "#aa00ff"
         },
         {
           "range": [107, 114],
-          "name": "purple > CTO",
+          "name": "Purple / CTO",
+          "menuClick": "center",
           "color": "#aa00ff",
-          "color2": "#ffcc99",
-          "menuClick": "center"
+          "color2": "#ffcc99"
         },
         {
           "range": [115, 115],
@@ -212,10 +212,10 @@
         },
         {
           "range": [116, 124],
-          "name": "CTO > CTB",
+          "name": "CTO / CTB",
+          "menuClick": "center",
           "color": "#ffcc99",
-          "color2": "#88bbdd",
-          "menuClick": "center"
+          "color2": "#88bbdd"
         },
         {
           "range": [125, 125],
@@ -224,10 +224,10 @@
         },
         {
           "range": [126, 136],
-          "name": "CTB > UV",
+          "name": "CTB / UV",
+          "menuClick": "center",
           "color": "#88bbdd",
-          "color2": "#a996ff",
-          "menuClick": "center"
+          "color2": "#a996ff"
         },
         {
           "range": [137, 137],
@@ -236,64 +236,64 @@
         },
         {
           "range": [138, 146],
-          "name": "UV > open",
+          "name": "UV / Open",
+          "menuClick": "center",
           "color": "#a996ff",
-          "color2": "#ffffff",
-          "menuClick": "center"
+          "color2": "#ffffff"
         },
         {
           "range": [147, 147],
-          "name": "open",
+          "name": "Open",
           "color": "#ffffff"
         },
         {
           "range": [148, 151],
-          "name": "red",
+          "name": "Red",
           "color": "#ff0000"
         },
         {
           "range": [152, 155],
-          "name": "blue",
+          "name": "Blue",
           "color": "#0000ff"
         },
         {
           "range": [156, 159],
-          "name": "green",
+          "name": "Green",
           "color": "#00ff00"
         },
         {
           "range": [160, 163],
-          "name": "magenta",
+          "name": "Magenta",
           "color": "#ff00ff"
         },
         {
           "range": [164, 167],
-          "name": "yellow",
+          "name": "Yellow",
           "color": "#ffff00"
         },
         {
           "range": [168, 171],
-          "name": "light blue",
+          "name": "Light Blue",
           "color": "#00ffff"
         },
         {
           "range": [172, 175],
-          "name": "pink",
+          "name": "Pink",
           "color": "#ffaaff"
         },
         {
           "range": [176, 179],
-          "name": "orange",
+          "name": "Orange",
           "color": "#ffaa00"
         },
         {
           "range": [180, 183],
-          "name": "aqua",
+          "name": "Aqua",
           "color": "#99ddff"
         },
         {
           "range": [184, 187],
-          "name": "purple",
+          "name": "Purple",
           "color": "#aa00ff"
         },
         {
@@ -343,7 +343,7 @@
       "capabilities": [
         {
           "range": [0, 11],
-          "name": "open",
+          "name": "Open",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
@@ -351,7 +351,7 @@
         },
         {
           "range": [12, 23],
-          "name": "beamsmoother",
+          "name": "Beamsmoother",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
@@ -487,7 +487,7 @@
         },
         {
           "range": [112, 121],
-          "name": "Gobo shake 1",
+          "name": "Gobo 1 shake",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
@@ -495,7 +495,7 @@
         },
         {
           "range": [122, 131],
-          "name": "Gobo shake 2",
+          "name": "Gobo 2 shake",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
@@ -503,7 +503,7 @@
         },
         {
           "range": [132, 141],
-          "name": "Gobo shake 3",
+          "name": "Gobo 3 shake",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
@@ -511,7 +511,7 @@
         },
         {
           "range": [142, 151],
-          "name": "Gobo shake 4",
+          "name": "Gobo 4 shake",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
@@ -519,7 +519,7 @@
         },
         {
           "range": [152, 161],
-          "name": "Gobo shake 5",
+          "name": "Gobo 5 shake",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
@@ -527,7 +527,7 @@
         },
         {
           "range": [162, 171],
-          "name": "Gobo shake 6",
+          "name": "Gobo 6 shake",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
@@ -535,7 +535,7 @@
         },
         {
           "range": [172, 181],
-          "name": "Gobo shake 7",
+          "name": "Gobo 7 shake",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
@@ -543,7 +543,7 @@
         },
         {
           "range": [182, 191],
-          "name": "Gobo shake 8",
+          "name": "Gobo 8 shake",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"

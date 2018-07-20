@@ -101,7 +101,8 @@
       "capabilities": [
         {
           "range": [0, 9],
-          "name": "Blackout"
+          "name": "Blackout",
+          "color": "#000000"
         },
         {
           "range": [10, 14],
@@ -195,7 +196,7 @@
         },
         {
           "range": [90, 94],
-          "name": "Red + green + amber ",
+          "name": "Red + green + amber",
           "color": "#ffff00",
           "color2": "#ffbf00"
         },
@@ -225,7 +226,7 @@
         },
         {
           "range": [115, 119],
-          "name": "Amber + green + blue ",
+          "name": "Amber + green + blue",
           "color": "#ffbf00",
           "color2": "#00ffff"
         },
@@ -285,7 +286,7 @@
         },
         {
           "range": [165, 209],
-          "name": "Automatic color change (one color) "
+          "name": "Automatic color change (one color)"
         },
         {
           "range": [210, 255],

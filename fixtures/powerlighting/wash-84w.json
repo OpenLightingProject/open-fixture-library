@@ -45,7 +45,7 @@
         }
       ]
     },
-    "Dimming": {
+    "Dimmer": {
       "type": "Intensity",
       "defaultValue": 0,
       "crossfade": true
@@ -84,7 +84,7 @@
         },
         {
           "range": [5, 44],
-          "name": "color preset (static)"
+          "name": "static"
         },
         {
           "range": [45, 49],
@@ -92,7 +92,7 @@
         },
         {
           "range": [50, 94],
-          "name": "color preset (cut)"
+          "name": "cut"
         },
         {
           "range": [95, 99],
@@ -100,7 +100,7 @@
         },
         {
           "range": [100, 149],
-          "name": "color preset (smooth)"
+          "name": "smooth"
         },
         {
           "range": [150, 154],
@@ -108,7 +108,7 @@
         },
         {
           "range": [155, 255],
-          "name": "color preset (soft)"
+          "name": "soft"
         }
       ]
     },
@@ -175,7 +175,7 @@
         "Tilt",
         "Tilt fine",
         "Movement Speed",
-        "Dimming",
+        "Dimmer",
         "Red",
         "Green",
         "Blue",

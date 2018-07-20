@@ -297,7 +297,7 @@
         },
         {
           "range": [3, 4],
-          "name": "White-Red",
+          "name": "Split White / Red",
           "color": "#ffffff",
           "color2": "#ff0000"
         },
@@ -308,7 +308,7 @@
         },
         {
           "range": [7, 8],
-          "name": "Red-Yellow",
+          "name": "Split Red / Yellow",
           "color": "#ff0000",
           "color2": "#ffff00"
         },
@@ -319,7 +319,7 @@
         },
         {
           "range": [11, 12],
-          "name": "Yellow-Blue",
+          "name": "Split Yellow / Blue",
           "color": "#ffff00",
           "color2": "#0000ff"
         },
@@ -330,7 +330,7 @@
         },
         {
           "range": [15, 16],
-          "name": "Blue-Turquoise",
+          "name": "Split Blue / Turquoise",
           "color": "#0000ff",
           "color2": "#40e0d0"
         },
@@ -341,7 +341,7 @@
         },
         {
           "range": [19, 21],
-          "name": "Turquoise-Green",
+          "name": "Split Turquoise / Green",
           "color": "#40e0d0",
           "color2": "#00ff00"
         },
@@ -352,51 +352,51 @@
         },
         {
           "range": [24, 25],
-          "name": "Green-Lightblue",
+          "name": "Split Green / Light Blue",
           "color": "#00ff00",
           "color2": "#00aaff"
         },
         {
           "range": [26, 27],
-          "name": "Lightblue",
+          "name": "Light Blue",
           "color": "#00aaff"
         },
         {
           "range": [28, 29],
-          "name": "Lightblue-Lightpink",
+          "name": "Split Light Blue / Light Pink",
           "color": "#00aaff",
           "color2": "#e0b0ff"
         },
         {
           "range": [30, 31],
-          "name": "Lightpink",
+          "name": "Light Pink",
           "color": "#e0b0ff"
         },
         {
           "range": [32, 33],
-          "name": "Lightpink-Yellowgreen",
+          "name": "Split Light Pink / Yellow Green",
           "color": "#e0b0ff",
           "color2": "#ddff00"
         },
         {
           "range": [34, 35],
-          "name": "Yellowgreen",
+          "name": "Yellow Green",
           "color": "#ddff00"
         },
         {
           "range": [36, 37],
-          "name": "Yellowgreen-Darkpink",
+          "name": "Split Yellow Green / Dark Pink",
           "color": "#ddff00",
           "color2": "#ff00ff"
         },
         {
           "range": [38, 39],
-          "name": "Darkpink",
+          "name": "Dark Pink",
           "color": "#ff00ff"
         },
         {
           "range": [40, 42],
-          "name": "Darkpink-Blue",
+          "name": "Split Dark Pink / Blue",
           "color": "#ff00ff",
           "color2": "#0000ff"
         },
@@ -407,51 +407,52 @@
         },
         {
           "range": [45, 46],
-          "name": "Blue-Lightyellow",
+          "name": "Split Blue / Light Yellow",
           "color": "#0000ff",
           "color2": "#ffff99"
         },
         {
           "range": [47, 48],
-          "name": "Lightyellow",
+          "name": "Light Yellow",
           "color": "#ffff99"
         },
         {
           "range": [49, 50],
-          "name": "Lightyellow-White",
+          "name": "Split Light Yellow / Off White",
           "color": "#ffff99",
           "color2": "#ffffff"
         },
         {
           "range": [51, 52],
-          "name": "White",
-          "color": "#ffffff"
+          "name": "Off White",
+          "color": "#ffffff",
+          "helpWanted": "What color is \"Off White\"?"
         },
         {
           "range": [53, 54],
-          "name": "White-Lightblue",
+          "name": "Split Off White / Light Blue",
           "color": "#ffffff",
           "color2": "#00aaff"
         },
         {
           "range": [55, 56],
-          "name": "Lightblue",
+          "name": "Light Blue",
           "color": "#00aaff"
         },
         {
           "range": [57, 58],
-          "name": "Lightblue-Darkblue",
+          "name": "Split Light Blue / Dark Blue",
           "color": "#00aaff",
           "color2": "#0000aa"
         },
         {
           "range": [59, 60],
-          "name": "Darkblue",
+          "name": "Dark Blue",
           "color": "#0000aa"
         },
         {
           "range": [61, 63],
-          "name": "Darkblue-White",
+          "name": "Split Dark Blue / White",
           "color": "#0000aa",
           "color2": "#ffffff"
         },

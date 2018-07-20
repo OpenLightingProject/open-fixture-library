@@ -163,12 +163,12 @@
         }
       ]
     },
-    "Gobo 360° positioning": {
+    "Gobo stencil rotation angle": {
       "type": "Gobo",
       "capabilities": [
         {
           "range": [0, 10],
-          "name": "No effect"
+          "name": "No function"
         },
         {
           "range": [11, 255],
@@ -176,12 +176,12 @@
         }
       ]
     },
-    "Gobo rotation": {
+    "Gobo stencil rotation speed": {
       "type": "Gobo",
       "capabilities": [
         {
           "range": [0, 10],
-          "name": "No effect"
+          "name": "No function"
         },
         {
           "range": [11, 131],
@@ -202,7 +202,7 @@
       "capabilities": [
         {
           "range": [0, 10],
-          "name": "No prism"
+          "name": "No function"
         },
         {
           "range": [11, 20],
@@ -296,7 +296,7 @@
       "capabilities": [
         {
           "range": [0, 9],
-          "name": "No effect"
+          "name": "No function"
         },
         {
           "range": [10, 249],
@@ -367,7 +367,7 @@
         },
         {
           "range": [20, 100],
-          "name": "No effects (idle)"
+          "name": "No function"
         },
         {
           "range": [101, 170],
@@ -550,7 +550,7 @@
         }
       ]
     },
-    "Gobo rotation / positioning": {
+    "Gobo stencil rotation": {
       "type": "Gobo",
       "capabilities": [
         {
@@ -629,8 +629,8 @@
         "Shutter / Strobe",
         "Focus",
         "Gobo selection",
-        "Gobo 360° positioning",
-        "Gobo rotation",
+        "Gobo stencil rotation angle",
+        "Gobo stencil rotation speed",
         "Prism",
         "Colors",
         "Gobo shake / Blackout effect",
@@ -653,7 +653,7 @@
         "Effect wheel",
         "3 facet prism rotation",
         "Gobo selection (Emulation mode)",
-        "Gobo rotation / positioning",
+        "Gobo stencil rotation",
         null,
         "Focus",
         "Shutter / Strobe (Emulation mode)",

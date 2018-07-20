@@ -60,7 +60,7 @@
         },
         {
           "range": [10, 19],
-          "name": "autofocus on "
+          "name": "autofocus on"
         },
         {
           "range": [20, 29],
@@ -148,78 +148,182 @@
         }
       ]
     },
+    "Pan/Tilt Macro": {
+      "type": "Effect",
+      "capabilities": [
+        {
+          "range": [0, 9],
+          "name": "Disabled"
+        },
+        {
+          "range": [10, 31],
+          "name": "Reserved"
+        },
+        {
+          "range": [32, 63],
+          "name": "Circle small-large"
+        },
+        {
+          "range": [64, 95],
+          "name": "Horizontal Eight small-large"
+        },
+        {
+          "range": [96, 127],
+          "name": "Vertical Eight small-large"
+        },
+        {
+          "range": [128, 159],
+          "name": "Rectangle small-large"
+        },
+        {
+          "range": [160, 191],
+          "name": "Triangle small-large"
+        },
+        {
+          "range": [192, 223],
+          "name": "Star small-large"
+        },
+        {
+          "range": [224, 255],
+          "name": "Cross small-large"
+        }
+      ]
+    },
+    "Pan/Tilt Macro Speed": {
+      "type": "Speed",
+      "capabilities": [
+        {
+          "range": [0, 0],
+          "name": "No macro"
+        },
+        {
+          "range": [1, 127],
+          "name": "forwards fast…slow"
+        },
+        {
+          "range": [128, 129],
+          "name": "No macro"
+        },
+        {
+          "range": [130, 255],
+          "name": "backwards slow…fast"
+        }
+      ]
+    },
     "Color Wheel": {
       "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 17],
-          "name": "open/white",
+          "range": [0, 0],
+          "name": "Open / White",
           "color": "#ffffff"
         },
         {
-          "range": [18, 36],
-          "name": "deep red",
-          "color": "#ff0000"
+          "range": [1, 17],
+          "name": "Split White / Deep Red",
+          "color": "#ffffff",
+          "color2": "#dd0000"
         },
         {
-          "range": [37, 54],
-          "name": "deep blue",
-          "color": "#0000ff"
+          "range": [18, 18],
+          "name": "Deep Red",
+          "color": "#dd0000"
         },
         {
-          "range": [55, 72],
-          "name": "green",
+          "range": [19, 36],
+          "name": "Split Deep Red / Deep Blue",
+          "color": "#dd0000",
+          "color2": "#0000dd"
+        },
+        {
+          "range": [37, 37],
+          "name": "Deep Blue",
+          "color": "#0000dd"
+        },
+        {
+          "range": [38, 54],
+          "name": "Split Deep Blue / Green",
+          "color": "#0000dd",
+          "color2": "#00ff00"
+        },
+        {
+          "range": [55, 55],
+          "name": "Green",
           "color": "#00ff00"
         },
         {
-          "range": [73, 90],
-          "name": "orange",
+          "range": [56, 72],
+          "name": "Split Green / Orange",
+          "color": "#00ff00",
+          "color2": "#ff9900"
+        },
+        {
+          "range": [73, 73],
+          "name": "Orange",
           "color": "#ff9900"
         },
         {
-          "range": [91, 109],
-          "name": "6000K filter",
-          "color": "#ffcc99"
+          "range": [74, 90],
+          "name": "Split Orange / White (6000K)",
+          "color": "#ff9900",
+          "color2": "#fff6ed"
         },
         {
-          "range": [110, 127],
-          "name": "uv filter",
-          "color": "#cc99ff"
+          "range": [91, 91],
+          "name": "White (6000K)",
+          "color": "#fff6ed"
+        },
+        {
+          "range": [92, 109],
+          "name": "Split White / UV Filter (6000K)",
+          "color": "#fff6ed",
+          "color2": "#8800ff"
+        },
+        {
+          "range": [110, 110],
+          "name": "UV Filter",
+          "color": "#8800ff"
+        },
+        {
+          "range": [111, 127],
+          "name": "Split UV Filter / White",
+          "color": "#8800ff",
+          "color2": "#ffffff"
         },
         {
           "range": [128, 129],
-          "name": "white",
+          "name": "White",
           "color": "#ffffff"
         },
         {
           "range": [130, 139],
-          "name": "deep red",
-          "color": "#ff0000"
+          "name": "Deep red",
+          "color": "#dd0000"
         },
         {
           "range": [140, 149],
-          "name": "deep blue",
-          "color": "#0000ff"
+          "name": "Deep blue",
+          "color": "#0000dd"
         },
         {
           "range": [150, 159],
-          "name": "green",
+          "name": "Green",
           "color": "#00ff00"
         },
         {
           "range": [160, 169],
-          "name": "orange",
+          "name": "Orange",
           "color": "#ff9900"
         },
         {
           "range": [170, 179],
-          "name": "6000K filter",
-          "color": "#ffcc99"
+          "name": "White (6000K)",
+          "color": "#ffffff"
         },
         {
           "range": [180, 189],
-          "name": "uv filter",
-          "color": "#cc99ff"
+          "name": "UV Filter",
+          "color": "#8800ff"
         },
         {
           "range": [190, 215],
@@ -239,7 +343,7 @@
         },
         {
           "range": [250, 255],
-          "name": "auto random colour"
+          "name": "auto random color"
         }
       ]
     },
@@ -1495,68 +1599,6 @@
       "type": "Intensity",
       "fineChannelAliases": ["Dimmer fine"],
       "crossfade": true
-    },
-    "Pan/Tilt Macro": {
-      "type": "Effect",
-      "capabilities": [
-        {
-          "range": [0, 9],
-          "name": "Disabled"
-        },
-        {
-          "range": [10, 31],
-          "name": "Reserved"
-        },
-        {
-          "range": [32, 63],
-          "name": "Circle small-large"
-        },
-        {
-          "range": [64, 95],
-          "name": "Horizontal Eight small-large"
-        },
-        {
-          "range": [96, 127],
-          "name": "Vertical Eight small-large"
-        },
-        {
-          "range": [128, 159],
-          "name": "Rectangle small-large"
-        },
-        {
-          "range": [160, 191],
-          "name": "Triangle small-large"
-        },
-        {
-          "range": [192, 223],
-          "name": "Star small-large"
-        },
-        {
-          "range": [224, 255],
-          "name": "Cross small-large"
-        }
-      ]
-    },
-    "Pan/Tilt Macro Speed": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 0],
-          "name": "No macro"
-        },
-        {
-          "range": [1, 127],
-          "name": "forwards fast…slow"
-        },
-        {
-          "range": [128, 129],
-          "name": "No macro"
-        },
-        {
-          "range": [130, 255],
-          "name": "backwards slow…fast"
-        }
-      ]
     }
   },
   "modes": [

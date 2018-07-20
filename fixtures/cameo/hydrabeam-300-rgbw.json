@@ -67,112 +67,112 @@
         },
         {
           "range": [8, 22],
-          "name": "show mode 1",
+          "name": "Show mode 1",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
           "range": [23, 37],
-          "name": "show mode 2",
+          "name": "Show mode 2",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
           "range": [38, 52],
-          "name": "show mode 3",
+          "name": "Show mode 3",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
           "range": [53, 67],
-          "name": "show mode 4",
+          "name": "Show mode 4",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
           "range": [68, 82],
-          "name": "show mode 5",
+          "name": "Show mode 5",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
           "range": [83, 97],
-          "name": "show mode 6",
+          "name": "Show mode 6",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
           "range": [98, 112],
-          "name": "show mode 7",
+          "name": "Show mode 7",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
           "range": [113, 127],
-          "name": "show mode 8",
+          "name": "Show mode 8",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
           "range": [128, 142],
-          "name": "show mode 9",
+          "name": "Show mode 9",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
           "range": [143, 157],
-          "name": "show mode 10",
+          "name": "Show mode 10",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
           "range": [158, 172],
-          "name": "show mode 11",
+          "name": "Show mode 11",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
           "range": [173, 187],
-          "name": "show mode 12",
+          "name": "Show mode 12",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
           "range": [188, 202],
-          "name": "show mode 13",
+          "name": "Show mode 13",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
           "range": [203, 217],
-          "name": "show mode 14",
+          "name": "Show mode 14",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
           "range": [218, 232],
-          "name": "show mode 15",
+          "name": "Show mode 15",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
           "range": [233, 247],
-          "name": "show mode 16",
+          "name": "Show mode 16",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
@@ -198,97 +198,82 @@
       "capabilities": [
         {
           "range": [0, 30],
-          "name": "auto color change"
+          "name": "Auto color change"
         },
         {
           "range": [31, 45],
-          "name": "red",
-          "color": "#ff0000",
-          "color2": "#000000"
+          "name": "Red",
+          "color": "#ff0000"
         },
         {
           "range": [46, 60],
-          "name": "green",
-          "color": "#00ff00",
-          "color2": "#000000"
+          "name": "Green",
+          "color": "#00ff00"
         },
         {
           "range": [61, 75],
-          "name": "blue",
-          "color": "#0000ff",
-          "color2": "#000000"
+          "name": "Blue",
+          "color": "#0000ff"
         },
         {
           "range": [76, 90],
-          "name": "white",
-          "color": "#000000",
-          "color2": "#ffffff"
+          "name": "White",
+          "color": "#ffffff"
         },
         {
           "range": [91, 105],
-          "name": "RG",
-          "color": "#ffff00",
-          "color2": "#000000"
+          "name": "Red + Green",
+          "color": "#ffff00"
         },
         {
           "range": [106, 120],
-          "name": "RB",
-          "color": "#ff00ff",
-          "color2": "#000000"
+          "name": "Red + Blue",
+          "color": "#ff00ff"
         },
         {
           "range": [121, 135],
-          "name": "RW",
-          "color": "#ff0000",
-          "color2": "#ffffff"
+          "name": "Red + White",
+          "color": "#ff8080"
         },
         {
           "range": [136, 150],
-          "name": "GB",
-          "color": "#00ffff",
-          "color2": "#000000"
+          "name": "Green + Blue",
+          "color": "#00ffff"
         },
         {
           "range": [151, 165],
-          "name": "GW",
-          "color": "#00ff00",
-          "color2": "#ffffff"
+          "name": "Green + White",
+          "color": "#80ff80"
         },
         {
           "range": [166, 180],
-          "name": "BW",
-          "color": "#0000ff",
-          "color2": "#ffffff"
+          "name": "Blue + White",
+          "color": "#8080ff"
         },
         {
           "range": [181, 195],
-          "name": "RGB",
-          "color": "#ffffff",
-          "color2": "#000000"
+          "name": "Red + Green + Blue",
+          "color": "#ffffff"
         },
         {
           "range": [196, 210],
-          "name": "RGW",
-          "color": "#ffff00",
-          "color2": "#ffffff"
+          "name": "Red + Green + White",
+          "color": "#ffff80"
         },
         {
           "range": [211, 225],
-          "name": "RBW",
-          "color": "#ff00ff",
-          "color2": "#ffffff"
+          "name": "Red + Blue + White",
+          "color": "#ff80ff"
         },
         {
           "range": [226, 240],
-          "name": "GBW",
-          "color": "#00ffff",
-          "color2": "#ffffff"
+          "name": "Green + Blue + White",
+          "color": "#80ffff"
         },
         {
           "range": [241, 255],
-          "name": "RGBW",
-          "color": "#ffffff",
-          "color2": "#ffffff"
+          "name": "Red + Green + Blue + White",
+          "color": "#ffffff"
         }
       ]
     },
@@ -354,7 +339,7 @@
         },
         {
           "range": [200, 209],
-          "name": "reset"
+          "name": "Reset"
         },
         {
           "range": [210, 240],
@@ -362,7 +347,7 @@
         },
         {
           "range": [241, 255],
-          "name": "sound control mode"
+          "name": "Sound control mode"
         }
       ]
     }
@@ -395,7 +380,7 @@
       "capabilities": [
         {
           "range": [0, 10],
-          "name": "use Head Speed 1"
+          "name": "Use Head Speed 1"
         },
         {
           "range": [11, 255],
@@ -423,97 +408,82 @@
       "capabilities": [
         {
           "range": [0, 30],
-          "name": "use master color dimmers"
+          "name": "Use master color dimmers"
         },
         {
           "range": [31, 45],
-          "name": "red",
-          "color": "#ff0000",
-          "color2": "#000000"
+          "name": "Red",
+          "color": "#ff0000"
         },
         {
           "range": [46, 60],
-          "name": "green",
-          "color": "#00ff00",
-          "color2": "#000000"
+          "name": "Green",
+          "color": "#00ff00"
         },
         {
           "range": [61, 75],
-          "name": "blue",
-          "color": "#0000ff",
-          "color2": "#000000"
+          "name": "Blue",
+          "color": "#0000ff"
         },
         {
           "range": [76, 90],
-          "name": "white",
-          "color": "#000000",
-          "color2": "#ffffff"
+          "name": "White",
+          "color": "#ffffff"
         },
         {
           "range": [91, 105],
-          "name": "RG",
-          "color": "#ffff00",
-          "color2": "#000000"
+          "name": "Red + Green",
+          "color": "#ffff00"
         },
         {
           "range": [106, 120],
-          "name": "RB",
-          "color": "#ff00ff",
-          "color2": "#000000"
+          "name": "Red + Blue",
+          "color": "#ff00ff"
         },
         {
           "range": [121, 135],
-          "name": "RW",
-          "color": "#ff0000",
-          "color2": "#ffffff"
+          "name": "Red + White",
+          "color": "#ff8080"
         },
         {
           "range": [136, 150],
-          "name": "GB",
-          "color": "#00ffff",
-          "color2": "#000000"
+          "name": "Green + Blue",
+          "color": "#00ffff"
         },
         {
           "range": [151, 165],
-          "name": "GW",
-          "color": "#00ff00",
-          "color2": "#ffffff"
+          "name": "Green + White",
+          "color": "#80ff80"
         },
         {
           "range": [166, 180],
-          "name": "BW",
-          "color": "#0000ff",
-          "color2": "#ffffff"
+          "name": "Blue + White",
+          "color": "#8080ff"
         },
         {
           "range": [181, 195],
-          "name": "RGB",
-          "color": "#ffffff",
-          "color2": "#000000"
+          "name": "Red + Green + Blue",
+          "color": "#ffffff"
         },
         {
           "range": [196, 210],
-          "name": "RGW",
-          "color": "#ffff00",
-          "color2": "#ffffff"
+          "name": "Red + Green + White",
+          "color": "#ffff80"
         },
         {
           "range": [211, 225],
-          "name": "RBW",
-          "color": "#ff00ff",
-          "color2": "#ffffff"
+          "name": "Red + Blue + White",
+          "color": "#ff80ff"
         },
         {
           "range": [226, 240],
-          "name": "GBW",
-          "color": "#00ffff",
-          "color2": "#ffffff"
+          "name": "Green + Blue + White",
+          "color": "#80ffff"
         },
         {
           "range": [241, 255],
-          "name": "RGBW",
-          "color": "#ffffff",
-          "color2": "#ffffff"
+          "name": "Red + Green + Blue + White",
+          "color": "#ffffff"
         }
       ]
     },
@@ -550,28 +520,28 @@
         },
         {
           "range": [8, 30],
-          "name": "show mode 1",
+          "name": "Show mode 1",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
           "range": [31, 53],
-          "name": "show mode 2",
+          "name": "Show mode 2",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
           "range": [54, 76],
-          "name": "show mode 3",
+          "name": "Show mode 3",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
           "range": [77, 99],
-          "name": "show mode 4",
+          "name": "Show mode 4",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
