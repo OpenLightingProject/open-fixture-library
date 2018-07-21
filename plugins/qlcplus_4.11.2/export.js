@@ -145,6 +145,24 @@ function addCapability(xmlChannel, cap) {
       xmlCapability.attribute(`Color2`, cap.colors.allColors[1]);
     }
   }
+
+  const isNotStopped = cap.speed === null || (cap.speed[0].number !== 0 && cap.speed[1].number !== 0);
+  const effectImage = getEffectImage();
+
+  if (isNotStopped && effectImage) {
+    xmlCapability.attribute(`Res`, effectImage);
+  }
+
+  /**
+   * @returns {?string} The path to a suitable image to be shown in QLC+. null if there's no suitable image.
+   */
+  function getEffectImage() {
+    const presetToImage = {
+      ColorFade: `Others/rainbow.png`
+    };
+
+    return presetToImage[cap.effectPreset] || null;
+  }
 }
 
 function addMode(xml, mode) {
