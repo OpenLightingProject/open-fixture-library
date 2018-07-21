@@ -27,6 +27,12 @@
       "tiltMax": "infinite"
     }
   },
+  "matrix": {
+    "pixelCount": [7, 1, 1],
+    "pixelGroups": {
+      "Master": ["1", "2", "3", "4", "5", "6", "7"]
+    }
+  },
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
@@ -117,34 +123,6 @@
           "speedEnd": "fast CCW"
         }
       ]
-    },
-    "Red $pixelKey": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green $pixelKey": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue $pixelKey": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White $pixelKey": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
     },
     "Shutter / Strobe": {
       "defaultValue": 32,
@@ -733,6 +711,36 @@
       ]
     }
   },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
   "modes": [
     {
       "name": "Standard",
@@ -745,10 +753,10 @@
         "Pan/Tilt Speed",
         "Pan Continuous",
         "Tilt Continuous",
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
-        "White $pixelKey",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
         "Shutter / Strobe",
         "Dimmer",
         "Color Macro",
@@ -771,10 +779,10 @@
         "Pan/Tilt Speed",
         "Pan Continuous",
         "Tilt Continuous",
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
-        "White $pixelKey",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
         "Shutter / Strobe",
         "Dimmer",
         "Color Macro",
@@ -809,10 +817,17 @@
         "Zoom",
         "Zoom fine",
         "Reset / Internal Programs",
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
-        "White $pixelKey"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
       ]
     }
   ]
