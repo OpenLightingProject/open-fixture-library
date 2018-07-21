@@ -648,14 +648,14 @@
         {
           "dmxRange": [192, 223],
           "type": "IrisEffect",
-          "effectName": "Pulse closing",
+          "effectName": "Ramp down",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
         {
           "dmxRange": [224, 255],
           "type": "IrisEffect",
-          "effectName": "Pulse opening",
+          "effectName": "Ramp up",
           "speedStart": "slow",
           "speedEnd": "fast"
         }
@@ -673,14 +673,14 @@
         {
           "dmxRange": [192, 223],
           "type": "FrostEffect",
-          "effectName": "Pulse opening",
+          "effectName": "Ramp up",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
         {
           "dmxRange": [224, 254],
           "type": "FrostEffect",
-          "effectName": "Pulse closing",
+          "effectName": "Ramp down",
           "speedStart": "slow",
           "speedEnd": "fast"
         },

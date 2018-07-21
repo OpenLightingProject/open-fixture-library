@@ -156,10 +156,10 @@
         {
           "dmxRange": [96, 110],
           "type": "ShutterStrobe",
-          "comment": "Pulse opening >20Hz",
           "shutterEffect": "RampUp",
           "speedStart": "fast",
-          "speedEnd": "slow"
+          "speedEnd": "slow",
+          "comment": ">20Hz"
         },
         {
           "dmxRange": [111, 111],
@@ -186,10 +186,10 @@
         {
           "dmxRange": [128, 142],
           "type": "ShutterStrobe",
-          "comment": "Pulse opening <20Hz",
           "shutterEffect": "RampUp",
           "speedStart": "fast",
-          "speedEnd": "slow"
+          "speedEnd": "slow",
+          "comment": "<20Hz"
         },
         {
           "dmxRange": [143, 143],
@@ -199,7 +199,6 @@
         {
           "dmxRange": [144, 158],
           "type": "ShutterStrobe",
-          "comment": "Pulse closing",
           "shutterEffect": "RampDown",
           "speedStart": "fast",
           "speedEnd": "slow"
@@ -330,7 +329,7 @@
         {
           "dmxRange": [128, 142],
           "type": "IrisEffect",
-          "effectName": "Periodic opening pulse",
+          "effectName": "Ramp up",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -342,7 +341,7 @@
         {
           "dmxRange": [144, 158],
           "type": "IrisEffect",
-          "effectName": "Periodic closing pulse",
+          "effectName": "Ramp down",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -378,7 +377,7 @@
         {
           "dmxRange": [192, 206],
           "type": "IrisEffect",
-          "effectName": "Random opening pulse",
+          "effectName": "Random ramp up",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -390,7 +389,7 @@
         {
           "dmxRange": [208, 222],
           "type": "IrisEffect",
-          "effectName": "Random closing pulse",
+          "effectName": "Random ramp down",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -847,7 +846,7 @@
         {
           "dmxRange": [128, 142],
           "type": "FrostEffect",
-          "effectName": "Periodic opening pulse",
+          "effectName": "Ramp up",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -859,7 +858,7 @@
         {
           "dmxRange": [144, 158],
           "type": "FrostEffect",
-          "effectName": "Periodic closing pulse",
+          "effectName": "Ramp down",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -895,7 +894,7 @@
         {
           "dmxRange": [192, 206],
           "type": "FrostEffect",
-          "effectName": "Random opening pulse",
+          "effectName": "Random ramp up",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -907,7 +906,7 @@
         {
           "dmxRange": [208, 222],
           "type": "FrostEffect",
-          "effectName": "Random closing pulse",
+          "effectName": "Random ramp down",
           "speedStart": "fast",
           "speedEnd": "slow"
         },

@@ -1412,14 +1412,14 @@
         {
           "dmxRange": [190, 211],
           "type": "FrostEffect",
-          "effectName": "Pulse Closing",
+          "effectName": "Ramp down",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [212, 233],
           "type": "FrostEffect",
-          "effectName": "Pulse Opening",
+          "effectName": "Ramp up",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -1454,39 +1454,39 @@
         {
           "dmxRange": [192, 219],
           "type": "IrisEffect",
-          "effectName": "Pulse Opening",
+          "effectName": "Ramp up",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [220, 247],
           "type": "IrisEffect",
-          "effectName": "Pulse Closing",
+          "effectName": "Ramp down",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
         {
           "dmxRange": [248, 249],
           "type": "IrisEffect",
-          "effectName": "Random Pulse Opening",
+          "effectName": "Random ramp up",
           "speed": "fast"
         },
         {
           "dmxRange": [250, 251],
           "type": "IrisEffect",
-          "effectName": "Random Pulse Opening",
+          "effectName": "Random ramp up",
           "speed": "slow"
         },
         {
           "dmxRange": [252, 253],
           "type": "IrisEffect",
-          "effectName": "Random Pulse Closing",
+          "effectName": "Random ramp down",
           "speed": "fast"
         },
         {
           "dmxRange": [254, 255],
           "type": "IrisEffect",
-          "effectName": "Random Pulse Closing",
+          "effectName": "Random ramp down",
           "speed": "slow"
         }
       ]
@@ -1544,19 +1544,16 @@
         {
           "dmxRange": [128, 143],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
+          "shutterEffect": "RampUp",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Opening Pulse",
-          "helpWanted": "Should we distinguish between Opening and closing pulse?"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [144, 159],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
+          "shutterEffect": "RampDown",
           "speedStart": "fast",
-          "speedEnd": "slow",
-          "comment": "Closing Pulse"
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [160, 191],
