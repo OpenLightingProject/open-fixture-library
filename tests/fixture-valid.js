@@ -580,7 +580,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       const intendedLength = parseInt(RegExp.$1);
 
       if (mode.channels.length !== intendedLength) {
-        result.warnings.push(`Mode '${mode.name}' should probably have ${RegExp.$1} channels but actually has ${mode.channels.length}.`);
+        result.errors.push(`Mode '${mode.name}' should have ${RegExp.$1} channels but actually has ${mode.channels.length}.`);
       }
       if (mode.shortName !== `${intendedLength}ch`) {
         result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch'.`);
