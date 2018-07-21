@@ -531,25 +531,25 @@
           "dmxRange": [10, 63],
           "type": "ColorPreset",
           "colors": ["#ff0000", "#00ff00"],
-          "comment": "Red & green on OR strobing"
+          "comment": "Red & green on OR red & green strobing"
         },
         {
           "dmxRange": [64, 127],
           "type": "ColorPreset",
           "colors": ["#ff0000"],
-          "comment": "Red on OR strobing"
+          "comment": "Red on OR red strobing"
         },
         {
           "dmxRange": [128, 191],
           "type": "ColorPreset",
           "colors": ["#00ff00"],
-          "comment": "Green on OR strobing"
+          "comment": "Green on OR green strobing"
         },
         {
           "dmxRange": [192, 255],
           "type": "ColorPreset",
           "colors": ["#ff0000", "#00ff00"],
-          "comment": "Red & green on OR strobing alternately"
+          "comment": "Red & green on OR red & green strobing alternately"
         }
       ]
     },
