@@ -10,8 +10,10 @@
   },
   "availableChannels": {
     "Intensity": {
-      "type": "Intensity",
-      "fineChannelAliases": ["Intensity fine", "Intensity fine^2"]
+      "fineChannelAliases": ["Intensity fine", "Intensity fine^2"],
+      "capability": {
+        "type": "Intensity"
+      }
     }
   },
   "modes": [

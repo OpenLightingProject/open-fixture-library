@@ -2,6 +2,7 @@
   <span class="range">
     <validate :state="formstate" tag="span">
       <app-property-input-number
+        ref="firstInput"
         v-model="start"
         :name="`${name}-start`"
         :schema-property="schemaProperty.items"
@@ -9,6 +10,7 @@
         :maximum="end !== `invalid` ? end : rangeMax"
         :required="required || rangeIncomplete"
         :hint="startHint"
+        :lazy="true"
         @focus.native="onFocus"
         @blur.native="onBlur($event)" />
     </validate>
@@ -22,6 +24,7 @@
         :maximum="rangeMax"
         :required="required || rangeIncomplete"
         :hint="endHint"
+        :lazy="true"
         @focus.native="onFocus"
         @blur.native="onBlur($event)" />
     </validate>
@@ -123,6 +126,9 @@ export default {
     this.$emit(`vf:validate`, this.validationData);
   },
   methods: {
+    focus() {
+      this.$refs.firstInput.focus();
+    },
     onFocus(event) {
       this.$emit(`focus`);
     },

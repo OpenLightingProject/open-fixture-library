@@ -19,56 +19,72 @@
   },
   "availableChannels": {
     "Master Dimmr": {
-      "type": "Intensity",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Strobe": {
-      "type": "Strobe"
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "helpWanted": "At which DMX values is Strobe off, where is the speed control?"
+      }
     },
     "Effects": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 50],
-          "name": "No function"
+          "dmxRange": [0, 50],
+          "type": "NoFunction"
         },
         {
-          "range": [51, 100],
-          "name": "Color jump"
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
         },
         {
-          "range": [101, 150],
-          "name": "Color fade"
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
         },
         {
-          "range": [151, 200],
-          "name": "Color pulse"
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Color pulse"
         },
         {
-          "range": [201, 255],
-          "name": "Sound control"
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true
         }
       ]
     },
     "Effect Speed": {
-      "type": "Speed"
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     }
   },
   "modes": [

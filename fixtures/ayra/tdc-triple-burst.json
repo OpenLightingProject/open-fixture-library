@@ -26,212 +26,254 @@
   },
   "availableChannels": {
     "Show": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "Blackout"
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
         },
         {
-          "range": [8, 37],
-          "name": "Show 1"
+          "dmxRange": [8, 37],
+          "type": "Effect",
+          "effectName": "Show 1"
         },
         {
-          "range": [38, 67],
-          "name": "Show 2"
+          "dmxRange": [38, 67],
+          "type": "Effect",
+          "effectName": "Show 2"
         },
         {
-          "range": [68, 97],
-          "name": "Show 3"
+          "dmxRange": [68, 97],
+          "type": "Effect",
+          "effectName": "Show 3"
         },
         {
-          "range": [98, 127],
-          "name": "Show 4"
+          "dmxRange": [98, 127],
+          "type": "Effect",
+          "effectName": "Show 4"
         },
         {
-          "range": [128, 157],
-          "name": "Show 5"
+          "dmxRange": [128, 157],
+          "type": "Effect",
+          "effectName": "Show 5"
         },
         {
-          "range": [158, 187],
-          "name": "Show 6"
+          "dmxRange": [158, 187],
+          "type": "Effect",
+          "effectName": "Show 6"
         },
         {
-          "range": [188, 217],
-          "name": "Show 7"
+          "dmxRange": [188, 217],
+          "type": "Effect",
+          "effectName": "Show 7"
         },
         {
-          "range": [218, 247],
-          "name": "Show 8"
+          "dmxRange": [218, 247],
+          "type": "Effect",
+          "effectName": "Show 8"
         },
         {
-          "range": [248, 255],
-          "name": "Random Show 1 - 8"
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Random Show 1 - 8"
         }
       ]
     },
     "Color chase": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "Manual control"
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
+          "comment": "Manual control"
         },
         {
-          "range": [8, 22],
-          "name": "Color chase 1"
+          "dmxRange": [8, 22],
+          "type": "Effect",
+          "effectName": "Color chase 1"
         },
         {
-          "range": [23, 37],
-          "name": "Color chase 2"
+          "dmxRange": [23, 37],
+          "type": "Effect",
+          "effectName": "Color chase 2"
         },
         {
-          "range": [38, 52],
-          "name": "Color chase 3"
+          "dmxRange": [38, 52],
+          "type": "Effect",
+          "effectName": "Color chase 3"
         },
         {
-          "range": [53, 67],
-          "name": "Color chase 4"
+          "dmxRange": [53, 67],
+          "type": "Effect",
+          "effectName": "Color chase 4"
         },
         {
-          "range": [68, 82],
-          "name": "Color chase 5"
+          "dmxRange": [68, 82],
+          "type": "Effect",
+          "effectName": "Color chase 5"
         },
         {
-          "range": [83, 97],
-          "name": "Color chase 6"
+          "dmxRange": [83, 97],
+          "type": "Effect",
+          "effectName": "Color chase 6"
         },
         {
-          "range": [98, 112],
-          "name": "Color chase 7"
+          "dmxRange": [98, 112],
+          "type": "Effect",
+          "effectName": "Color chase 7"
         },
         {
-          "range": [113, 127],
-          "name": "Color chase 8"
+          "dmxRange": [113, 127],
+          "type": "Effect",
+          "effectName": "Color chase 8"
         },
         {
-          "range": [128, 142],
-          "name": "Color chase 9"
+          "dmxRange": [128, 142],
+          "type": "Effect",
+          "effectName": "Color chase 9"
         },
         {
-          "range": [143, 157],
-          "name": "Color chase 10"
+          "dmxRange": [143, 157],
+          "type": "Effect",
+          "effectName": "Color chase 10"
         },
         {
-          "range": [158, 172],
-          "name": "Color chase 11"
+          "dmxRange": [158, 172],
+          "type": "Effect",
+          "effectName": "Color chase 11"
         },
         {
-          "range": [173, 187],
-          "name": "Color chase 12"
+          "dmxRange": [173, 187],
+          "type": "Effect",
+          "effectName": "Color chase 12"
         },
         {
-          "range": [188, 202],
-          "name": "Color chase 13"
+          "dmxRange": [188, 202],
+          "type": "Effect",
+          "effectName": "Color chase 13"
         },
         {
-          "range": [203, 217],
-          "name": "Color chase 14"
+          "dmxRange": [203, 217],
+          "type": "Effect",
+          "effectName": "Color chase 14"
         },
         {
-          "range": [218, 232],
-          "name": "Color chase 15"
+          "dmxRange": [218, 232],
+          "type": "Effect",
+          "effectName": "Color chase 15"
         },
         {
-          "range": [233, 247],
-          "name": "Color chase 16"
+          "dmxRange": [233, 247],
+          "type": "Effect",
+          "effectName": "Color chase 16"
         },
         {
-          "range": [248, 255],
-          "name": "Stand alone show"
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Stand alone show"
         }
       ]
     },
     "Dimmer": {
-      "type": "Intensity",
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Strobe": {
-      "type": "Strobe",
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "No function"
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
         },
         {
-          "range": [8, 247],
-          "name": "Strobe slow…fast"
+          "dmxRange": [8, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [248, 255],
-          "name": "Sound strobe"
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
         }
       ]
     },
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White": {
-      "type": "Single Color",
-      "color": "White",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "Amber": {
-      "type": "Single Color",
-      "color": "Amber",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
     },
     "Speed": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "Stop"
+          "dmxRange": [0, 7],
+          "type": "Speed",
+          "speed": "stop"
         },
         {
-          "range": [8, 255],
-          "name": "Speed slow…fast"
+          "dmxRange": [8, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     }
   },
   "templateChannels": {
     "Red $pixelKey": {
-      "type": "Single Color",
-      "color": "Red",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green $pixelKey": {
-      "type": "Single Color",
-      "color": "Green",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue $pixelKey": {
-      "type": "Single Color",
-      "color": "Blue",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White $pixelKey": {
-      "type": "Single Color",
-      "color": "White",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "Amber $pixelKey": {
-      "type": "Single Color",
-      "color": "Amber",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
     }
   },
   "modes": [

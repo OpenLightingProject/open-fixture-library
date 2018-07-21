@@ -18,12 +18,12 @@
   },
   "availableChannels": {
     "Mode": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "Custom control",
+          "dmxRange": [0, 0],
+          "type": "Effect",
+          "effectName": "Custom control",
           "switchChannels": {
             "Moon Flower Speed / Motor Speed": "Moon Flower Speed",
             "Color / Show Speed": "Color",
@@ -33,8 +33,9 @@
           }
         },
         {
-          "range": [1, 33],
-          "name": "Auto show 1",
+          "dmxRange": [1, 33],
+          "type": "Effect",
+          "effectName": "Auto show 1",
           "switchChannels": {
             "Moon Flower Speed / Motor Speed": "Motor Speed",
             "Color / Show Speed": "Show Speed",
@@ -44,8 +45,9 @@
           }
         },
         {
-          "range": [34, 67],
-          "name": "Auto show 2",
+          "dmxRange": [34, 67],
+          "type": "Effect",
+          "effectName": "Auto show 2",
           "switchChannels": {
             "Moon Flower Speed / Motor Speed": "Motor Speed",
             "Color / Show Speed": "Show Speed",
@@ -55,8 +57,9 @@
           }
         },
         {
-          "range": [68, 101],
-          "name": "Auto show 3",
+          "dmxRange": [68, 101],
+          "type": "Effect",
+          "effectName": "Auto show 3",
           "switchChannels": {
             "Moon Flower Speed / Motor Speed": "Motor Speed",
             "Color / Show Speed": "Show Speed",
@@ -66,8 +69,9 @@
           }
         },
         {
-          "range": [102, 135],
-          "name": "Auto show 4",
+          "dmxRange": [102, 135],
+          "type": "Effect",
+          "effectName": "Auto show 4",
           "switchChannels": {
             "Moon Flower Speed / Motor Speed": "Motor Speed",
             "Color / Show Speed": "Show Speed",
@@ -77,8 +81,9 @@
           }
         },
         {
-          "range": [136, 169],
-          "name": "Auto show 5",
+          "dmxRange": [136, 169],
+          "type": "Effect",
+          "effectName": "Auto show 5",
           "switchChannels": {
             "Moon Flower Speed / Motor Speed": "Motor Speed",
             "Color / Show Speed": "Show Speed",
@@ -88,8 +93,9 @@
           }
         },
         {
-          "range": [170, 203],
-          "name": "Auto show 6",
+          "dmxRange": [170, 203],
+          "type": "Effect",
+          "effectName": "Auto show 6",
           "switchChannels": {
             "Moon Flower Speed / Motor Speed": "Motor Speed",
             "Color / Show Speed": "Show Speed",
@@ -99,8 +105,9 @@
           }
         },
         {
-          "range": [204, 237],
-          "name": "Auto show 7",
+          "dmxRange": [204, 237],
+          "type": "Effect",
+          "effectName": "Auto show 7",
           "switchChannels": {
             "Moon Flower Speed / Motor Speed": "Motor Speed",
             "Color / Show Speed": "Show Speed",
@@ -110,8 +117,10 @@
           }
         },
         {
-          "range": [238, 255],
-          "name": "Sound mode",
+          "dmxRange": [238, 255],
+          "type": "Effect",
+          "effectName": "Sound mode",
+          "soundControlled": true,
           "switchChannels": {
             "Moon Flower Speed / Motor Speed": "Motor Speed",
             "Color / Show Speed": "Show Speed",
@@ -123,139 +132,159 @@
       ]
     },
     "Moon Flower Speed": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "Rotation stop"
+          "dmxRange": [0, 0],
+          "type": "Rotation",
+          "speed": "stop"
         },
         {
-          "range": [1, 255],
-          "name": "Rotation CW slow…fast"
+          "dmxRange": [1, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         }
       ]
     },
     "Color Strobe/Effect Speed": {
-      "type": "Speed",
-      "crossfade": true,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Effect speed slow…fast"
-        }
-      ]
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Color": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "Shutter closed"
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [1, 202],
-          "name": "7 colors selection"
+          "dmxRange": [1, 202],
+          "type": "ColorPreset",
+          "comment": "7 colors selection"
         },
         {
-          "range": [203, 231],
-          "name": "Color jump (7 colors)"
+          "dmxRange": [203, 231],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "7 colors"
         },
         {
-          "range": [232, 255],
-          "name": "Color fade"
+          "dmxRange": [232, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
         }
       ]
     },
     "Motor Speed": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "Rotation stop"
+          "dmxRange": [0, 0],
+          "type": "Rotation",
+          "speed": "stop"
         },
         {
-          "range": [1, 255],
-          "name": "Rotation CW slow…fast"
+          "dmxRange": [1, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         }
       ]
     },
     "Strobe": {
-      "type": "Strobe",
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "Shutter closed"
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [1, 255],
-          "name": "Strobe slow…fast"
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Show Speed": {
-      "type": "Speed",
-      "crossfade": true,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Effect speed slow…fast"
-        }
-      ]
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Mode (fixed to 0)": {
-      "type": "Effect",
       "defaultValue": 0,
       "constant": true,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "Custom control"
+          "dmxRange": [0, 0],
+          "type": "Effect",
+          "effectName": "Custom control"
         },
         {
-          "range": [1, 33],
-          "name": "Auto show 1"
+          "dmxRange": [1, 33],
+          "type": "Effect",
+          "effectName": "Auto show 1"
         },
         {
-          "range": [34, 67],
-          "name": "Auto show 2"
+          "dmxRange": [34, 67],
+          "type": "Effect",
+          "effectName": "Auto show 2"
         },
         {
-          "range": [68, 101],
-          "name": "Auto show 3"
+          "dmxRange": [68, 101],
+          "type": "Effect",
+          "effectName": "Auto show 3"
         },
         {
-          "range": [102, 135],
-          "name": "Auto show 4"
+          "dmxRange": [102, 135],
+          "type": "Effect",
+          "effectName": "Auto show 4"
         },
         {
-          "range": [136, 169],
-          "name": "Auto show 5"
+          "dmxRange": [136, 169],
+          "type": "Effect",
+          "effectName": "Auto show 5"
         },
         {
-          "range": [170, 203],
-          "name": "Auto show 6"
+          "dmxRange": [170, 203],
+          "type": "Effect",
+          "effectName": "Auto show 6"
         },
         {
-          "range": [204, 237],
-          "name": "Auto show 7"
+          "dmxRange": [204, 237],
+          "type": "Effect",
+          "effectName": "Auto show 7"
         },
         {
-          "range": [238, 255],
-          "name": "Sound mode"
+          "dmxRange": [238, 255],
+          "type": "Effect",
+          "effectName": "Sound mode",
+          "soundControlled": true
         }
       ]
     },
     "Unused 1": {
       "name": "Unused",
-      "type": "Nothing"
+      "capability": {
+        "type": "NoFunction"
+      }
     },
     "Unused 2": {
       "name": "Unused",
-      "type": "Nothing"
+      "capability": {
+        "type": "NoFunction"
+      }
     },
     "Unused 3": {
       "name": "Unused",
-      "type": "Nothing"
+      "capability": {
+        "type": "NoFunction"
+      }
     }
   },
   "modes": [

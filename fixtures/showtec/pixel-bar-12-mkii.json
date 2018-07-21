@@ -48,269 +48,306 @@
   },
   "availableChannels": {
     "Master Dimmer": {
-      "type": "Intensity",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Programs": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 6],
-          "name": "No function",
+          "dmxRange": [0, 6],
+          "type": "NoFunction",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [7, 13],
-          "name": "Program 1",
+          "dmxRange": [7, 13],
+          "type": "Effect",
+          "effectName": "Program 1",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [14, 20],
-          "name": "Program 2",
+          "dmxRange": [14, 20],
+          "type": "Effect",
+          "effectName": "Program 2",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [21, 27],
-          "name": "Program 3",
+          "dmxRange": [21, 27],
+          "type": "Effect",
+          "effectName": "Program 3",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [28, 34],
-          "name": "Program 4",
+          "dmxRange": [28, 34],
+          "type": "Effect",
+          "effectName": "Program 4",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [35, 41],
-          "name": "Program 5",
+          "dmxRange": [35, 41],
+          "type": "Effect",
+          "effectName": "Program 5",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [42, 48],
-          "name": "Program 6",
+          "dmxRange": [42, 48],
+          "type": "Effect",
+          "effectName": "Program 6",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [49, 55],
-          "name": "Program 7",
+          "dmxRange": [49, 55],
+          "type": "Effect",
+          "effectName": "Program 7",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [56, 62],
-          "name": "Program 8",
+          "dmxRange": [56, 62],
+          "type": "Effect",
+          "effectName": "Program 8",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [63, 69],
-          "name": "Program 9",
+          "dmxRange": [63, 69],
+          "type": "Effect",
+          "effectName": "Program 9",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [70, 76],
-          "name": "Program 10",
+          "dmxRange": [70, 76],
+          "type": "Effect",
+          "effectName": "Program 10",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [77, 83],
-          "name": "Program 11",
+          "dmxRange": [77, 83],
+          "type": "Effect",
+          "effectName": "Program 11",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [84, 90],
-          "name": "Program 12",
+          "dmxRange": [84, 90],
+          "type": "Effect",
+          "effectName": "Program 12",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [91, 97],
-          "name": "Program 13",
+          "dmxRange": [91, 97],
+          "type": "Effect",
+          "effectName": "Program 13",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [98, 104],
-          "name": "Program 14",
+          "dmxRange": [98, 104],
+          "type": "Effect",
+          "effectName": "Program 14",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [105, 111],
-          "name": "Program 15",
+          "dmxRange": [105, 111],
+          "type": "Effect",
+          "effectName": "Program 15",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [112, 118],
-          "name": "Program 16",
+          "dmxRange": [112, 118],
+          "type": "Effect",
+          "effectName": "Program 16",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [119, 125],
-          "name": "Program 17",
+          "dmxRange": [119, 125],
+          "type": "Effect",
+          "effectName": "Program 17",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [126, 132],
-          "name": "Program 18",
+          "dmxRange": [126, 132],
+          "type": "Effect",
+          "effectName": "Program 18",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [133, 139],
-          "name": "Program 19",
+          "dmxRange": [133, 139],
+          "type": "Effect",
+          "effectName": "Program 19",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [140, 146],
-          "name": "Program 20",
+          "dmxRange": [140, 146],
+          "type": "Effect",
+          "effectName": "Program 20",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [147, 153],
-          "name": "Program 21",
+          "dmxRange": [147, 153],
+          "type": "Effect",
+          "effectName": "Program 21",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [154, 160],
-          "name": "Program 22",
+          "dmxRange": [154, 160],
+          "type": "Effect",
+          "effectName": "Program 22",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [161, 167],
-          "name": "Program 23",
+          "dmxRange": [161, 167],
+          "type": "Effect",
+          "effectName": "Program 23",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [168, 174],
-          "name": "Program 24",
+          "dmxRange": [168, 174],
+          "type": "Effect",
+          "effectName": "Program 24",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [175, 181],
-          "name": "Program 25",
+          "dmxRange": [175, 181],
+          "type": "Effect",
+          "effectName": "Program 25",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [182, 188],
-          "name": "Program 26",
+          "dmxRange": [182, 188],
+          "type": "Effect",
+          "effectName": "Program 26",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [189, 195],
-          "name": "Program 27",
+          "dmxRange": [189, 195],
+          "type": "Effect",
+          "effectName": "Program 27",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [196, 202],
-          "name": "Program 28",
+          "dmxRange": [196, 202],
+          "type": "Effect",
+          "effectName": "Program 28",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [203, 209],
-          "name": "Program 29",
+          "dmxRange": [203, 209],
+          "type": "Effect",
+          "effectName": "Program 29",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [210, 216],
-          "name": "Program 30",
+          "dmxRange": [210, 216],
+          "type": "Effect",
+          "effectName": "Program 30",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [217, 223],
-          "name": "Program 31",
+          "dmxRange": [217, 223],
+          "type": "Effect",
+          "effectName": "Program 31",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [224, 230],
-          "name": "Program 32",
+          "dmxRange": [224, 230],
+          "type": "Effect",
+          "effectName": "Program 32",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [231, 237],
-          "name": "Program 33",
+          "dmxRange": [231, 237],
+          "type": "Effect",
+          "effectName": "Program 33",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [238, 244],
-          "name": "Program 34",
+          "dmxRange": [238, 244],
+          "type": "Effect",
+          "effectName": "Program 34",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [245, 251],
-          "name": "Program 35",
+          "dmxRange": [245, 251],
+          "type": "Effect",
+          "effectName": "Program 35",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [252, 255],
-          "name": "Sound control",
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true,
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Sound Sensitivity"
           }
@@ -318,56 +355,57 @@
       ]
     },
     "Program Speed": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Speed slow…fast"
-        }
-      ]
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Sound Sensitivity": {
-      "type": "Intensity",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Sensitivity low-high"
-        }
-      ]
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
     },
     "Strobe": {
-      "type": "Strobe",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "No function"
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
         },
         {
-          "range": [16, 255],
-          "name": "Strobe 0…11Hz"
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "11Hz"
         }
       ]
     }
   },
   "templateChannels": {
     "Red $pixelKey": {
-      "type": "Single Color",
-      "color": "Red",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green $pixelKey": {
-      "type": "Single Color",
-      "color": "Green",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue $pixelKey": {
-      "type": "Single Color",
-      "color": "Blue",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     }
   },
   "modes": [

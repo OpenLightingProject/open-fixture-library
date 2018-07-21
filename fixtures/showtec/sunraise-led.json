@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Sunraise LED",
-  "categories": ["Flower"],
+  "categories": ["Flower", "Color Changer"],
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2018-02-06",
@@ -20,177 +20,195 @@
   },
   "availableChannels": {
     "Color Macros": {
-      "type": "Multi-Color",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Black",
-          "color": "#000000"
+          "dmxRange": [0, 9],
+          "type": "ColorPreset",
+          "colors": ["#000000"],
+          "comment": "Black"
         },
         {
-          "range": [10, 19],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [20, 29],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [20, 29],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [30, 39],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
-          "range": [40, 49],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
-          "range": [50, 59],
-          "name": "Amber",
-          "color": "#ffbf00"
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "colors": ["#ffbf00"],
+          "comment": "Amber"
         },
         {
-          "range": [60, 69],
-          "name": "Red + Green",
-          "color": "#ff0000",
-          "color2": "#00ff00"
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Red + Green"
         },
         {
-          "range": [70, 79],
-          "name": "Red + Blue",
-          "color": "#ff0000",
-          "color2": "#0000ff"
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#0000ff"],
+          "comment": "Red + Blue"
         },
         {
-          "range": [80, 89],
-          "name": "Red + White",
-          "color": "#ff0000",
-          "color2": "#ffffff"
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#ffffff"],
+          "comment": "Red + White"
         },
         {
-          "range": [90, 99],
-          "name": "Red + Amber",
-          "color": "#ff0000",
-          "color2": "#ffbf00"
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#ffbf00"],
+          "comment": "Red + Amber"
         },
         {
-          "range": [100, 109],
-          "name": "Green + Blue",
-          "color": "#00ff00",
-          "color2": "#0000ff"
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#0000ff"],
+          "comment": "Green + Blue"
         },
         {
-          "range": [110, 119],
-          "name": "Green + White",
-          "color": "#00ff00",
-          "color2": "#ffffff"
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#ffffff"],
+          "comment": "Green + White"
         },
         {
-          "range": [120, 129],
-          "name": "Green + Amber",
-          "color": "#00ff00",
-          "color2": "#ffbf00"
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#ffbf00"],
+          "comment": "Green + Amber"
         },
         {
-          "range": [130, 139],
-          "name": "Blue + White",
-          "color": "#0000ff",
-          "color2": "#ffffff"
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "colors": ["#0000ff", "#ffffff"],
+          "comment": "Blue + White"
         },
         {
-          "range": [140, 149],
-          "name": "Blue + Amber",
-          "color": "#0000ff",
-          "color2": "#ffbf00"
+          "dmxRange": [140, 149],
+          "type": "ColorPreset",
+          "colors": ["#0000ff", "#ffbf00"],
+          "comment": "Blue + Amber"
         },
         {
-          "range": [150, 159],
-          "name": "White + Amber",
-          "color": "#ffffff",
-          "color2": "#ffbf00"
+          "dmxRange": [150, 159],
+          "type": "ColorPreset",
+          "colors": ["#ffffff", "#ffbf00"],
+          "comment": "White + Amber"
         },
         {
-          "range": [160, 169],
-          "name": "Red + Green + Blue",
-          "color": "#eeeeee"
+          "dmxRange": [160, 169],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"],
+          "comment": "Red + Green + Blue"
         },
         {
-          "range": [170, 179],
-          "name": "Red + Green + Blue + White",
-          "color": "#ffffff"
+          "dmxRange": [170, 179],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff"],
+          "comment": "Red + Green + Blue + White"
         },
         {
-          "range": [180, 189],
-          "name": "Red + Green + Blue + Amber",
-          "color": "#eeeeee",
-          "color2": "#ffbf00"
+          "dmxRange": [180, 189],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffbf00"],
+          "comment": "Red + Green + Blue + Amber"
         },
         {
-          "range": [190, 199],
-          "name": "Red + Green + Blue + White + Amber",
-          "color": "#ffffff",
-          "color2": "#ffbf00"
+          "dmxRange": [190, 199],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff", "#ffbf00"],
+          "comment": "Red + Green + Blue + White + Amber"
         },
         {
-          "range": [200, 229],
-          "name": "Auto"
+          "dmxRange": [200, 229],
+          "type": "Effect",
+          "effectName": "Auto"
         },
         {
-          "range": [230, 255],
-          "name": "Sound-controlled mode"
+          "dmxRange": [230, 255],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true
         }
       ]
     },
     "Strobe": {
-      "type": "Strobe",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "No function"
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
         },
         {
-          "range": [10, 255],
-          "name": "Strobe 0…12Hz"
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "12Hz"
         }
       ]
     },
     "Auto Speed": {
-      "type": "Speed",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "No function"
+          "dmxRange": [0, 9],
+          "type": "EffectSpeed",
+          "speed": "stop"
         },
         {
-          "range": [10, 255],
-          "name": "Speed slow…fast"
+          "dmxRange": [10, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Motor Rotation": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "No function"
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
         },
         {
-          "range": [10, 119],
-          "name": "Rotation CW slow…fast"
+          "dmxRange": [10, 119],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         },
         {
-          "range": [120, 129],
-          "name": "Stop"
+          "dmxRange": [120, 129],
+          "type": "Rotation",
+          "speed": "stop"
         },
         {
-          "range": [130, 255],
-          "name": "Rotation CCW slow…fast"
+          "dmxRange": [130, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     }

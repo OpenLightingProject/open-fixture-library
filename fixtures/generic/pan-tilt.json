@@ -17,12 +17,20 @@
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan",
-      "fineChannelAliases": ["Pan fine", "Pan fine^2"]
+      "fineChannelAliases": ["Pan fine", "Pan fine^2"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
-      "fineChannelAliases": ["Tilt fine", "Tilt fine^2"]
+      "fineChannelAliases": ["Tilt fine", "Tilt fine^2"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
     }
   },
   "modes": [

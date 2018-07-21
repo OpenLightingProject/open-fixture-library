@@ -27,232 +27,279 @@
   },
   "availableChannels": {
     "Master Dimmer": {
-      "type": "Intensity",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Master Dimmer Invert": {
-      "type": "Intensity",
       "defaultValue": 0,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Invert Dimmer 0-100% (Switch active and inactive LEDs)"
-        }
-      ]
+      "capability": {
+        "type": "Effect",
+        "effectName": "Invert Dimmer (Switch active and inactive LEDs)",
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
+      }
     },
     "Strobe Simple": {
       "name": "Strobe",
-      "type": "Strobe",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "Off"
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
         },
         {
-          "range": [6, 255],
-          "name": "Strobe 1…30Hz"
+          "dmxRange": [6, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "30Hz"
         }
       ]
     },
     "Strobe Extended": {
-      "type": "Strobe",
       "name": "Strobe",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "Open"
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [6, 10],
-          "name": "Closed"
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [11, 33],
-          "name": "Pulse random slow…fast"
+          "dmxRange": [11, 33],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
-          "range": [34, 56],
-          "name": "Ramp up random slow…fast"
+          "dmxRange": [34, 56],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
-          "range": [57, 79],
-          "name": "Ramp down random slow…fast"
+          "dmxRange": [57, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
-          "range": [80, 102],
-          "name": "Random strobe slow…fast"
+          "dmxRange": [80, 102],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
-          "range": [103, 127],
-          "name": "Strobe break 5-1s"
+          "dmxRange": [103, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "durationStart": "5s",
+          "durationEnd": "1s",
+          "comment": "break effect"
         },
         {
-          "range": [128, 250],
-          "name": "Strobe 1…30Hz"
+          "dmxRange": [128, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "30Hz"
         },
         {
-          "range": [251, 255],
-          "name": "Open"
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
     "Flash Duration": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "0-510ms"
-        }
-      ]
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "0ms",
+        "durationEnd": "512ms"
+      }
     },
     "Auto Programs": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "Off"
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
         },
         {
-          "range": [6, 28],
-          "name": "Auto Program 1"
+          "dmxRange": [6, 28],
+          "type": "Effect",
+          "effectName": "Auto Program 1"
         },
         {
-          "range": [29, 51],
-          "name": "Auto Program 2"
+          "dmxRange": [29, 51],
+          "type": "Effect",
+          "effectName": "Auto Program 2"
         },
         {
-          "range": [52, 74],
-          "name": "Auto Program 3"
+          "dmxRange": [52, 74],
+          "type": "Effect",
+          "effectName": "Auto Program 3"
         },
         {
-          "range": [75, 97],
-          "name": "Auto Program 4"
+          "dmxRange": [75, 97],
+          "type": "Effect",
+          "effectName": "Auto Program 4"
         },
         {
-          "range": [98, 120],
-          "name": "Auto Program 5"
+          "dmxRange": [98, 120],
+          "type": "Effect",
+          "effectName": "Auto Program 5"
         },
         {
-          "range": [121, 143],
-          "name": "Auto Program 6"
+          "dmxRange": [121, 143],
+          "type": "Effect",
+          "effectName": "Auto Program 6"
         },
         {
-          "range": [144, 166],
-          "name": "Auto Program 7"
+          "dmxRange": [144, 166],
+          "type": "Effect",
+          "effectName": "Auto Program 7"
         },
         {
-          "range": [167, 189],
-          "name": "Auto Program 8"
+          "dmxRange": [167, 189],
+          "type": "Effect",
+          "effectName": "Auto Program 8"
         },
         {
-          "range": [190, 212],
-          "name": "Auto Program 9"
+          "dmxRange": [190, 212],
+          "type": "Effect",
+          "effectName": "Auto Program 9"
         },
         {
-          "range": [213, 235],
-          "name": "Auto Program 10"
+          "dmxRange": [213, 235],
+          "type": "Effect",
+          "effectName": "Auto Program 10"
         },
         {
-          "range": [236, 255],
-          "name": "Auto Program 11"
+          "dmxRange": [236, 255],
+          "type": "Effect",
+          "effectName": "Auto Program 11"
         }
       ]
     },
     "Auto Programs / Sound Mode": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "Off",
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [6, 23],
-          "name": "Auto Program 1",
+          "dmxRange": [6, 23],
+          "type": "Effect",
+          "effectName": "Auto Program 1",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [24, 41],
-          "name": "Auto Program 2",
+          "dmxRange": [24, 41],
+          "type": "Effect",
+          "effectName": "Auto Program 2",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [42, 89],
-          "name": "Auto Program 3",
+          "dmxRange": [42, 89],
+          "type": "Effect",
+          "effectName": "Auto Program 3",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [90, 107],
-          "name": "Auto Program 4",
+          "dmxRange": [90, 107],
+          "type": "Effect",
+          "effectName": "Auto Program 4",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [108, 125],
-          "name": "Auto Program 5",
+          "dmxRange": [108, 125],
+          "type": "Effect",
+          "effectName": "Auto Program 5",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [126, 143],
-          "name": "Auto Program 6",
+          "dmxRange": [126, 143],
+          "type": "Effect",
+          "effectName": "Auto Program 6",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [144, 161],
-          "name": "Auto Program 7",
+          "dmxRange": [144, 161],
+          "type": "Effect",
+          "effectName": "Auto Program 7",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [162, 179],
-          "name": "Auto Program 8",
+          "dmxRange": [162, 179],
+          "type": "Effect",
+          "effectName": "Auto Program 8",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [180, 197],
-          "name": "Auto Program 9",
+          "dmxRange": [180, 197],
+          "type": "Effect",
+          "effectName": "Auto Program 9",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [198, 215],
-          "name": "Auto Program 10",
+          "dmxRange": [198, 215],
+          "type": "Effect",
+          "effectName": "Auto Program 10",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [216, 233],
-          "name": "Auto Program 11",
+          "dmxRange": [216, 233],
+          "type": "Effect",
+          "effectName": "Auto Program 11",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [234, 255],
-          "name": "Sound Mode",
+          "dmxRange": [234, 255],
+          "type": "Effect",
+          "effectName": "Sound Mode",
+          "soundControlled": true,
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Sound Sensitivity"
           }
@@ -260,268 +307,335 @@
       ]
     },
     "Program Speed": {
-      "type": "Speed"
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Sound Sensitivity": {
-      "type": "Intensity",
-      "crossfade": true
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
     },
     "Pattern Type": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "Off"
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
         },
         {
-          "range": [6, 131],
-          "name": "Letters"
+          "dmxRange": [6, 131],
+          "type": "Effect",
+          "effectName": "Letters"
         },
         {
-          "range": [132, 255],
-          "name": "Numbers & Symbols"
+          "dmxRange": [132, 255],
+          "type": "Effect",
+          "effectName": "Numbers & Symbols"
         }
       ]
     },
     "Pattern Select": {
-      "type": "Effect",
       "defaultValue": 160,
       "capabilities": [
         {
-          "range": [0, 4],
-          "name": "A / 0"
+          "dmxRange": [0, 4],
+          "type": "Effect",
+          "effectName": "A / 0"
         },
         {
-          "range": [5, 9],
-          "name": "B / 1"
+          "dmxRange": [5, 9],
+          "type": "Effect",
+          "effectName": "B / 1"
         },
         {
-          "range": [10, 14],
-          "name": "C / 2"
+          "dmxRange": [10, 14],
+          "type": "Effect",
+          "effectName": "C / 2"
         },
         {
-          "range": [15, 19],
-          "name": "D / 3"
+          "dmxRange": [15, 19],
+          "type": "Effect",
+          "effectName": "D / 3"
         },
         {
-          "range": [20, 24],
-          "name": "E / 4"
+          "dmxRange": [20, 24],
+          "type": "Effect",
+          "effectName": "E / 4"
         },
         {
-          "range": [25, 29],
-          "name": "F / 5"
+          "dmxRange": [25, 29],
+          "type": "Effect",
+          "effectName": "F / 5"
         },
         {
-          "range": [30, 34],
-          "name": "G / 6"
+          "dmxRange": [30, 34],
+          "type": "Effect",
+          "effectName": "G / 6"
         },
         {
-          "range": [35, 39],
-          "name": "H / 7"
+          "dmxRange": [35, 39],
+          "type": "Effect",
+          "effectName": "H / 7"
         },
         {
-          "range": [40, 44],
-          "name": "I / 8"
+          "dmxRange": [40, 44],
+          "type": "Effect",
+          "effectName": "I / 8"
         },
         {
-          "range": [45, 49],
-          "name": "J / 9"
+          "dmxRange": [45, 49],
+          "type": "Effect",
+          "effectName": "J / 9"
         },
         {
-          "range": [50, 54],
-          "name": "K / +"
+          "dmxRange": [50, 54],
+          "type": "Effect",
+          "effectName": "K / +"
         },
         {
-          "range": [55, 59],
-          "name": "L / -"
+          "dmxRange": [55, 59],
+          "type": "Effect",
+          "effectName": "L / -"
         },
         {
-          "range": [60, 64],
-          "name": "M / :"
+          "dmxRange": [60, 64],
+          "type": "Effect",
+          "effectName": "M / :"
         },
         {
-          "range": [65, 69],
-          "name": "N / %"
+          "dmxRange": [65, 69],
+          "type": "Effect",
+          "effectName": "N / %"
         },
         {
-          "range": [70, 74],
-          "name": "O / !"
+          "dmxRange": [70, 74],
+          "type": "Effect",
+          "effectName": "O / !"
         },
         {
-          "range": [75, 79],
-          "name": "P / ?"
+          "dmxRange": [75, 79],
+          "type": "Effect",
+          "effectName": "P / ?"
         },
         {
-          "range": [80, 84],
-          "name": "Q / ="
+          "dmxRange": [80, 84],
+          "type": "Effect",
+          "effectName": "Q / ="
         },
         {
-          "range": [85, 89],
-          "name": "R / <"
+          "dmxRange": [85, 89],
+          "type": "Effect",
+          "effectName": "R / <"
         },
         {
-          "range": [90, 94],
-          "name": "S / >"
+          "dmxRange": [90, 94],
+          "type": "Effect",
+          "effectName": "S / >"
         },
         {
-          "range": [95, 99],
-          "name": "T / ^"
+          "dmxRange": [95, 99],
+          "type": "Effect",
+          "effectName": "T / ^"
         },
         {
-          "range": [100, 104],
-          "name": "U / ˅"
+          "dmxRange": [100, 104],
+          "type": "Effect",
+          "effectName": "U / ˅"
         },
         {
-          "range": [105, 109],
-          "name": "V / ["
+          "dmxRange": [105, 109],
+          "type": "Effect",
+          "effectName": "V / ["
         },
         {
-          "range": [110, 114],
-          "name": "W / ]"
+          "dmxRange": [110, 114],
+          "type": "Effect",
+          "effectName": "W / ]"
         },
         {
-          "range": [115, 119],
-          "name": "X / ↑"
+          "dmxRange": [115, 119],
+          "type": "Effect",
+          "effectName": "X / ↑"
         },
         {
-          "range": [120, 124],
-          "name": "Y / →"
+          "dmxRange": [120, 124],
+          "type": "Effect",
+          "effectName": "Y / →"
         },
         {
-          "range": [125, 129],
-          "name": "Z / ←"
+          "dmxRange": [125, 129],
+          "type": "Effect",
+          "effectName": "Z / ←"
         },
         {
-          "range": [130, 134],
-          "name": "Empty / ↓"
+          "dmxRange": [130, 134],
+          "type": "Effect",
+          "effectName": "Empty / ↓"
         },
         {
-          "range": [135, 139],
-          "name": "Empty / ↖"
+          "dmxRange": [135, 139],
+          "type": "Effect",
+          "effectName": "Empty / ↖"
         },
         {
-          "range": [140, 144],
-          "name": "Empty / ↗"
+          "dmxRange": [140, 144],
+          "type": "Effect",
+          "effectName": "Empty / ↗"
         },
         {
-          "range": [145, 149],
-          "name": "Empty / ↙"
+          "dmxRange": [145, 149],
+          "type": "Effect",
+          "effectName": "Empty / ↙"
         },
         {
-          "range": [150, 154],
-          "name": "Empty / ↘"
+          "dmxRange": [150, 154],
+          "type": "Effect",
+          "effectName": "Empty / ↘"
         },
         {
-          "range": [155, 159],
-          "name": "Empty / All on"
+          "dmxRange": [155, 159],
+          "type": "Effect",
+          "effectName": "Empty / All on"
         },
         {
-          "range": [160, 255],
-          "name": "Empty / Empty"
+          "dmxRange": [160, 255],
+          "type": "Effect",
+          "effectName": "Empty / Empty"
         }
       ]
     },
     "Pattern Speed": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "Speed stop"
+          "dmxRange": [0, 5],
+          "type": "EffectSpeed",
+          "speed": "stop"
         },
         {
-          "range": [6, 47],
-          "name": "Position: 0° / 45° / 90° / 135° / 180° / 225° / 270° / 315°"
+          "dmxRange": [6, 47],
+          "type": "Effect",
+          "effectName": "Position: 0° / 45° / 90° / 135° / 180° / 225° / 270° / 315°"
         },
         {
-          "range": [48, 69],
-          "name": "Speed stop"
+          "dmxRange": [48, 69],
+          "type": "EffectSpeed",
+          "speed": "stop"
         },
         {
-          "range": [70, 101],
-          "name": "Speed downwards slow…fast"
+          "dmxRange": [70, 101],
+          "type": "EffectSpeed",
+          "comment": "downwards",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [102, 133],
-          "name": "Speed upwards slow…fast"
+          "dmxRange": [102, 133],
+          "type": "EffectSpeed",
+          "comment": "upwards",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [134, 165],
-          "name": "Speed rightwards slow…fast"
+          "dmxRange": [134, 165],
+          "type": "EffectSpeed",
+          "comment": "rightwards",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [166, 197],
-          "name": "Speed leftwards slow…fast"
+          "dmxRange": [166, 197],
+          "type": "EffectSpeed",
+          "comment": "leftwards",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [198, 229],
-          "name": "Speed stop"
+          "dmxRange": [198, 229],
+          "type": "EffectSpeed",
+          "speed": "stop"
         },
         {
-          "range": [230, 255],
-          "name": "Sound trigger speed low-high"
+          "dmxRange": [230, 255],
+          "type": "EffectSpeed",
+          "comment": "sound trigger",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Pattern Transition": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "off"
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
         },
         {
-          "range": [6, 255],
-          "name": "0-5s"
+          "dmxRange": [6, 255],
+          "type": "EffectDuration",
+          "durationStart": "0s",
+          "durationEnd": "5s"
         }
       ]
     },
     "Pattern Effect": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "Off"
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
         },
         {
-          "range": [6, 127],
-          "name": "Fade less-more"
+          "dmxRange": [6, 127],
+          "type": "Effect",
+          "effectName": "Fade",
+          "parameterStart": "low",
+          "parameterEnd": "high"
         },
         {
-          "range": [128, 255],
-          "name": "Wake less-more"
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Wake",
+          "parameterStart": "low",
+          "parameterEnd": "high"
         }
       ]
     },
     "Pattern Invert / Swap": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "Off"
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
         },
         {
-          "range": [6, 84],
-          "name": "Invert"
+          "dmxRange": [6, 84],
+          "type": "Effect",
+          "effectName": "Invert"
         },
         {
-          "range": [85, 163],
-          "name": "Swap"
+          "dmxRange": [85, 163],
+          "type": "Effect",
+          "effectName": "Swap"
         },
         {
-          "range": [164, 255],
-          "name": "Invert and Swap"
+          "dmxRange": [164, 255],
+          "type": "Effect",
+          "effectName": "Invert and Swap"
         }
       ]
     }
   },
   "templateChannels": {
     "Dimmer LED $pixelKey": {
-      "type": "Intensity",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     }
   },
   "modes": [

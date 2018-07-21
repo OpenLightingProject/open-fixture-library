@@ -77,8 +77,8 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
 
     let fixKey = `${manKey}/${slugify(fixture.name)}`;
     if (fixKey in out.fixtures) {
-      out.warnings[fixKey] = [`Fixture key '${fixKey}' is not unique, appended random characters.`];
       fixKey += `-${Math.random().toString(36).substr(2, 5)}`;
+      out.warnings[fixKey] = [`Fixture key '${fixKey}' is not unique, appended random characters.`];
     }
     else {
       out.warnings[fixKey] = [];
@@ -92,7 +92,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
     out.warnings[fixKey].push(`Please specify categories.`);
 
     fixture.meta = {
-      authors: [],
+      authors: [`TODO: REMOVE ME AGAIN`],
       createDate: ecueFixture.$._CreationDate.replace(/#.*/, ``),
       lastModifyDate: ecueFixture.$._ModifiedDate.replace(/#.*/, ``),
       importPlugin: {
@@ -120,10 +120,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
       channels: []
     }];
 
-
-    const channels = getCombinedEcueChannels(ecueFixture);
-
-    for (const ecueChannel of channels) {
+    for (const ecueChannel of getCombinedEcueChannels(ecueFixture)) {
       addChannelToFixture(ecueChannel, fixture, out.warnings[fixKey]);
     }
 
@@ -192,46 +189,43 @@ function getCombinedEcueChannels(ecueFixture) {
 function addChannelToFixture(ecueChannel, fixture, warningsArray) {
   const channel = {};
 
-  const name = ecueChannel.$.Name;
+  const channelName = ecueChannel.$.Name.trim();
 
-  let channelKey = name;
+  let channelKey = channelName;
   if (channelKey in fixture.availableChannels) {
     warningsArray.push(`Channel key '${channelKey}' is not unique, appended random characters.`);
     channelKey += `-${Math.random().toString(36).substr(2, 5)}`;
-    channel.name = name;
+    channel.name = channelName;
   }
 
-  channel.type = getChannelType(ecueChannel);
-
-  if (channel.type === null) {
-    channel.type = `Intensity`;
-
-    warningsArray.push(`Please check the type of channel '${channelKey}'.`);
-  }
-  else if (channel.type === `Single Color`) {
-    const colorFound = [`Red`, `Green`, `Blue`, `Cyan`, `Magenta`, `Yellow`, `Amber`, `White`, `UV`, `Lime`].some(color => {
-      if (name.toLowerCase().includes(color.toLowerCase())) {
-        channel.color = color;
-        return true;
-      }
-      return false;
-    });
-
-    if (!colorFound) {
-      warningsArray.push(`Please add a color to channel '${channelKey}'.`);
-    }
-  }
-
+  let maxDmxValue = 255;
   if (ecueChannel.$.DmxByte1 !== `0`) {
     const shortNameFine = `${channelKey} fine`;
     channel.fineChannelAliases = [shortNameFine];
+    maxDmxValue = (256 * 256) - 1;
     fixture.modes[0].channels[parseInt(ecueChannel.$.DmxByte1) - 1] = shortNameFine;
   }
 
   addDmxValues();
 
-  if (`Range` in ecueChannel) {
-    channel.capabilities = ecueChannel.Range.map((range, i) => getCapability(range, i, ecueChannel));
+  if (!(`Range` in ecueChannel)) {
+    ecueChannel.Range = [{
+      $: {
+        Start: 0,
+        End: maxDmxValue,
+        Name: `0-100%`,
+        AutoMenu: `1`,
+        Centre: `0`
+      }
+    }];
+  }
+
+  channel.capabilities = ecueChannel.Range.map(getCapability);
+
+  if (channel.capabilities.length === 1) {
+    channel.capability = channel.capabilities[0];
+    delete channel.capabilities;
+    delete channel.capability.dmxRange;
   }
 
   fixture.availableChannels[channelKey] = channel;
@@ -250,93 +244,275 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
       channel.highlightValue = parseInt(ecueChannel.$.Highlight);
     }
 
-    if (ecueChannel.$.Invert === `1`) {
-      channel.invert = true;
-    }
-
     if (ecueChannel.$.Constant === `1`) {
       channel.constant = true;
-    }
-
-    if (ecueChannel.$.Crossfade === `1`) {
-      channel.crossfade = true;
     }
 
     if (ecueChannel.$.Precedence === `HTP`) {
       channel.precedence = `HTP`;
     }
   }
-}
 
-/**
- * @param {!object} ecueChannel The e:cue channel object.
- * @returns {?string} The OFL channel type, or null if it could not be determined.
- */
-function getChannelType(ecueChannel) {
-  const testName = ecueChannel.$.Name.toLowerCase();
+  /**
+   *
+   * @param {*} ecueRange The e:cue range object.
+   * @param {*} index The index of the capability / range.
+   * @returns {!object} The OFL capability object.
+   */
+  function getCapability(ecueRange, index) {
+    const cap = {
+      dmxRange: getDmxRange()
+    };
 
-  if (testName.match(/\b(?:colou?r[\s-]*temperature|ctc|cto)\b/)) {
-    return `Color Temperature`;
-  }
+    const capabilityName = ecueRange.$.Name.trim();
 
-  if (ecueChannel._ecueChannelType === `ChannelColor`) {
-    if ((`Range` in ecueChannel && ecueChannel.Range.length > 1) || /colou?r\s*macro/.test(testName)) {
-      return `Multi-Color`;
+    cap.type = getCapabilityType();
+
+    // capability parsers can rely on the channel type as a first distinctive feature
+    const capabilityTypeParsers = {
+      ColorIntensity() {
+        cap.color = [`Red`, `Green`, `Blue`, `Cyan`, `Magenta`, `Yellow`, `Amber`, `White`, `UV`, `Lime`].find(
+          color => channelName.toLowerCase().includes(color.toLowerCase())
+        );
+
+        cap.comment = capabilityName;
+      },
+      ColorWheelIndex() {
+        const color = capabilityName.toLowerCase().replace(/\s/g, ``);
+        if (color in colors) {
+          cap.color = colors[color];
+        }
+
+        cap.comment = getSpeedGuessedComment();
+
+        if (`speedStart` in cap) {
+          cap.type = `ColorWheelRotation`;
+        }
+      },
+      ColorPreset() {
+        const color = capabilityName.toLowerCase().replace(/\s/g, ``);
+        if (color in colors) {
+          cap.color = colors[color];
+        }
+
+        cap.comment = capabilityName;
+      },
+      ShutterStrobe() {
+        if (capabilityName.match(/^(?:Blackout|(?:Shutter )?Closed?)$/i)) {
+          cap.shutterEffect = `Closed`;
+          return;
+        }
+
+        if (capabilityName.match(/^(?:(?:Shutter )?Open|Full?)$/i)) {
+          cap.shutterEffect = `Open`;
+          return;
+        }
+
+        if (capabilityName.match(/puls/i)) {
+          cap.shutterEffect = `Pulse`;
+        }
+        else if (capabilityName.match(/ramp\s*up/i)) {
+          cap.shutterEffect = `RampUp`;
+        }
+        else if (capabilityName.match(/ramp\s*down/i)) {
+          cap.shutterEffect = `RampDown`;
+        }
+        else {
+          cap.shutterEffect = `Strobe`;
+        }
+
+        if (capabilityName.match(/random/i)) {
+          cap.shutterEffect += `Random`;
+        }
+
+        cap.comment = getSpeedGuessedComment();
+      },
+      Pan() {
+        cap.angleStart = `0%`;
+        cap.angleEnd = `100%`;
+        cap.comment = capabilityName;
+      },
+      Tilt() {
+        cap.angleStart = `0%`;
+        cap.angleEnd = `100%`;
+        cap.comment = capabilityName;
+      },
+      Effect() {
+        cap.effectName = ``; // set it first here so effectName is before speedStart/speedEnd
+        cap.effectName = getSpeedGuessedComment();
+      },
+      NoFunction() {
+        // don't even add a comment
+      }
+    };
+
+    if (cap.type in capabilityTypeParsers) {
+      capabilityTypeParsers[cap.type]();
+    }
+    else {
+      cap.comment = getSpeedGuessedComment();
     }
 
-    return `Single Color`;
+    // delete unnecessary comments
+    if (`comment` in cap && (cap.comment === channelName || cap.comment.match(/^$|^0%?\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*100%$/))) {
+      delete cap.comment;
+    }
+
+    if (ecueRange.$.AutoMenu !== `1`) {
+      cap.menuClick = `hidden`;
+    }
+    else if (ecueRange.$.Centre !== `0`) {
+      cap.menuClick = `center`;
+    }
+
+    return cap;
+
+
+    /**
+     * @returns {!Array.<!number>} The DMX range of this capability.
+     */
+    function getDmxRange() {
+      const dmxRangeStart = parseInt(ecueRange.$.Start);
+      let dmxRangeEnd = parseInt(ecueRange.$.End);
+
+      if (dmxRangeEnd === -1) {
+        dmxRangeEnd = (index + 1 < ecueChannel.Range.length) ? parseInt(ecueChannel.Range[index + 1].$.Start) - 1 : maxDmxValue;
+      }
+
+      return [dmxRangeStart, dmxRangeEnd];
+    }
+
+    /**
+     * @returns {!string} The parsed capability type.
+     */
+    function getCapabilityType() {
+      // capability parsers can rely on the channel type as a first distinctive feature
+      const capabilityTypePerChannelType = {
+        ChannelColor() {
+          if (channelName.match(/\bCTO\b|\bCTB\b|temperature\b/i)) {
+            return `ColorTemperature`;
+          }
+
+          if (ecueChannel.Range.length === 1 && !channelName.match(/macro|wheel\b/i)) {
+            return `ColorIntensity`;
+          }
+
+          if (channelName.match(/wheel\b/i)) {
+            return `ColorWheelIndex`;
+          }
+
+          return `ColorPreset`;
+        },
+        ChannelIntensity() {
+          // fall back to default
+          return capabilityTypePerChannelType.ChannelBeam();
+        },
+        ChannelFocus() {
+          if (channelName.match(/speed/i)) {
+            return `PanTiltSpeed`;
+          }
+
+          const isPan = channelName.match(/pan/i);
+          const isTilt = channelName.match(/tilt/i);
+
+          let panOrTilt = null;
+          if (isPan && !isTilt) {
+            panOrTilt = `Pan`;
+          }
+          else if (isTilt && !isPan) {
+            panOrTilt = `Tilt`;
+          }
+          else {
+            // fall back to default
+            return capabilityTypePerChannelType.ChannelBeam();
+          }
+
+          if (channelName.match(/continuous/i)) {
+            return `${panOrTilt}Continuous`;
+          }
+
+          return panOrTilt;
+        },
+        ChannelBeam() {
+          const capabilityTypeRegexps = {
+            NoFunction: /^(?:nothing|no func(?:tion)?|unused|not used|empty|no strobe|no prism|no frost)$/,
+            StrobeSpeed: /\bstrobe speed\b/,
+            StrobeDuration: /\bstrobe duration\b/,
+            ShutterStrobe: /\b(?:shutter|strobe|strb|strob|strobing)\b/,
+            Intensity: /\b(?:intensity|dimmer)\b/,
+            PanTiltSpeed: /\b(?:pan[/ -]?tilt speed|p[/ -]?t speed)\b/,
+            PanContinuous: /\bpan continuous\b/,
+            TiltContinuous: /\btilt continuous\b/,
+            EffectParameter: /\beffect param(?:eter)?\b/,
+            EffectSpeed: /\beffect speed\b/,
+            EffectDuration: /\beffect duration\b/,
+            Effect: /\beffect\b/,
+            SoundSensitivity: /\b(?:sound|mic|microphone) sensitivity\b/,
+            GoboShake: /\bgobo shake\b/,
+            GoboStencilRotation: /\bgobo rot(?:ation)?\b/,
+            GoboWheelRotation: /\bgobo wheel rot(?:ation)?\b/,
+            GoboIndex: /\bgobo\b/,
+            Focus: /\bfocus\b/,
+            Zoom: /\bzoom\b/,
+            IrisEffect: /\biris effect\b/,
+            Iris: /\biris\b/,
+            FrostEffect: /\bfrost effect\b/,
+            Frost: /\bfrost\b/,
+            PrismRotation: /\bprisma? rot(?:ation)?\b/,
+            Prism: /\bprisma?\b/,
+            BladeInsertion: /\bblade insertion\b/,
+            BladeRotation: /\bblade rot(?:ation)?\b/,
+            BladeSystemRotation: /\bblade system rot(?:ation)?\b/,
+            FogOutput: /\bfog output\b/,
+            FogType: /\bfog type\b/,
+            Fog: /\bfog\b/,
+            BeamAngle: /\bbeam angle\b/,
+            Rotation: /\brotation\b/,
+            Speed: /\bspeed\b/,
+            Time: /\btime\b/,
+            Maintenance: /\b(?:reset|maintenance)\b/
+          };
+
+          return Object.keys(capabilityTypeRegexps).find(
+            channelType => capabilityName.toLowerCase().match(capabilityTypeRegexps[channelType]) ||
+              channelName.toLowerCase().match(capabilityTypeRegexps[channelType])
+          ) || `Generic`;
+        }
+      };
+
+      return capabilityTypePerChannelType[ecueChannel._ecueChannelType]();
+    }
+
+    /**
+     * Try to guess speedStart / speedEnd from the capabilityName. May set cap.type to Rotation.
+     * @returns {!string} The rest of the capabilityName.
+     */
+    function getSpeedGuessedComment() {
+      return capabilityName.replace(/(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|C?CW)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*Hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*Hz)\)?$/i, (match, direction, start, end) => {
+        const directionStr = direction ? (direction.match(/^(?:clockwise|CW),?\s+$/i) ? ` CW` : ` CCW`) : ``;
+
+        if (directionStr !== ``) {
+          cap.type = `Rotation`;
+        }
+
+        start = start.toLowerCase();
+        end = end.toLowerCase();
+
+        const startNumber = parseFloat(start);
+        const endNumber = parseFloat(end);
+        if (!isNaN(startNumber) && !isNaN(endNumber)) {
+          start = `${startNumber}Hz`;
+          end = `${endNumber}Hz`;
+        }
+
+        cap.speedStart = start + directionStr;
+        cap.speedEnd = end + directionStr;
+
+        // delete the parsed part
+        return ``;
+      });
+    }
   }
-
-  const nameRegexps = {
-    Speed: /\bspeed\b/,
-    Gobo: /\bgobo\b/,
-    Effect: /\b(?:program|effect|macro)\b/,
-    Prism: /\bprism\b/,
-    Shutter: /\bshutter\b/,
-    Strobe: /\bstrob/,
-    Iris: /\biris\b/,
-    Focus: /\bfocus\b/,
-    Zoom: /\bzoom\b/,
-    Pan: /\bpan\b/,
-    Tilt: /\btilt\b/,
-    Maintenance: /\b(?:reset|maintenance)\b/,
-    Intensity: /\b(?:intensity|master|dimmer)\b/
-  };
-
-  return Object.keys(nameRegexps).find(channelType => testName.match(nameRegexps[channelType]));
-}
-
-/**
- *
- * @param {*} ecueRange The e:cue range object.
- * @param {*} index The index of the capability / range.
- * @param {!object} ecueChannel The e:cue channel object.
- * @returns {!object} The OFL capability object.
- */
-function getCapability(ecueRange, index, ecueChannel) {
-  const cap = {
-    range: [parseInt(ecueRange.$.Start), parseInt(ecueRange.$.End)],
-    name: ecueRange.$.Name
-  };
-
-  if (cap.range[1] === -1) {
-    cap.range[1] = (index + 1 < ecueChannel.Range.length) ? parseInt(ecueChannel.Range[index + 1].$.Start) - 1 : 255;
-  }
-
-  // try to read a color
-  const color = cap.name.toLowerCase().replace(/\s/g, ``);
-  if (color in colors) {
-    cap.color = colors[color];
-  }
-
-  if (ecueRange.$.AutoMenu !== `1`) {
-    cap.menuClick = `hidden`;
-  }
-  else if (ecueRange.$.Centre !== `0`) {
-    cap.menuClick = `center`;
-  }
-
-  return cap;
 }
 
 /**

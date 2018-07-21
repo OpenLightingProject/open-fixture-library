@@ -1,111 +1,101 @@
 <template>
-  <li class="capability">
-    <validate :state="formstate" tag="span">
-      <app-property-input-range
-        v-model="capability.range"
+  <app-conditional-details :open="capability.open" class="capability">
+    <template slot="summary">
+      DMX range
+      <code :class="{ 'unset': start === null }">{{ start !== null ? start : min }}</code> …
+      <code :class="{ 'unset': end === null }">{{ end !== null ? end : max }}</code>:
+      <span :class="{ 'unset': capability.type === `` }">{{ capability.type || 'Unset' }}</span>
+    </template>
+
+    <div class="capability-content">
+
+      <app-simple-label
         :formstate="formstate"
-        :name="`capability${capability.uuid}-range`"
-        :schema-property="properties.capability.range"
-        :range-min="min"
-        :range-max="max"
-        :required="isChanged"
-        @start-updated="onStartUpdated"
-        @end-updated="onEndUpdated" />
-    </validate>
+        :name="`capability${capability.uuid}-dmxRange`"
+        class="range-label"
+        label="DMX range">
 
-    <span class="capability-data">
-      <validate :state="formstate" tag="span">
-        <input
-          v-model="capability.name"
-          :name="`capability${capability.uuid}-name`"
-          :required="isChanged"
-          type="text"
-          placeholder="name"
-          class="name">
-      </validate>
-      <br>
-      <validate :state="formstate" tag="span">
-        <input
-          v-model="capability.color"
-          :name="`capability${capability.uuid}-color`"
-          type="text"
-          placeholder="color"
-          pattern="^#[0-9a-f]{6}$"
-          title="#rrggbb"
-          class="color">
-      </validate>
-      <validate v-if="capability.color !== ``" :state="formstate" tag="span">
-        <input
-          v-model="capability.color2"
-          :name="`capability${capability.uuid}-color2`"
-          type="text"
-          placeholder="color 2"
-          pattern="^#[0-9a-f]{6}$"
-          title="#rrggbb"
-          class="color">
-      </validate>
-    </span>
+        <app-property-input-range
+          ref="firstInput"
+          v-model="capability.dmxRange"
+          :formstate="formstate"
+          :name="`capability${capability.uuid}-dmxRange`"
+          :schema-property="properties.capability.dmxRange"
+          :range-min="min"
+          :range-max="max"
+          :start-hint="capabilities.length === 1 ? `${min}`: `start`"
+          :end-hint="capabilities.length === 1 ? `${max}`: `end`"
+          :required="capabilities.length > 1"
+          @start-updated="onStartUpdated"
+          @end-updated="onEndUpdated" />
 
-    <span class="buttons">
-      <a
-        v-if="isChanged"
-        href="#remove"
-        class="remove"
-        title="Remove capability"
-        @click.prevent="clear">
-        <app-svg name="close" />
-      </a>
-    </span>
+        <a
+          v-if="isChanged"
+          href="#remove"
+          class="remove"
+          title="Remove capability"
+          @click.prevent="clear">
+          <app-svg name="close" />
+        </a>
 
-    <div
-      v-show="fieldState.$touched || fieldState.$submitted"
-      class="error-message">
-      <div v-if="fieldErrors.required">Please fill out this field.</div>
-      <div v-else-if="fieldErrors.number || fieldErrors.step">Please enter a whole number.</div> <!-- assume step="1" everywhere -->
-      <div v-else-if="fieldErrors.min && capIndex === 0">The first range has to start at 0.</div>
-      <div v-else-if="fieldErrors.max && capIndex === capabilities.length - 1">The last range has to end at {{ dmxMax }}.</div>
-      <div v-else-if="fieldErrors.min || fieldErrors.max">Ranges must not overlap.</div>
-      <div v-else-if="fieldErrors.pattern">Colors must be entered in #rrggbb format.</div> <!-- assume pattern attribute only for color fields -->
+      </app-simple-label>
 
-      <!-- custom validators -->
-      <div v-else-if="fieldErrors[`complete-range`]">Please fill out both start and end of the range.</div>
-      <div v-else-if="fieldErrors[`valid-range`]">The start value of a range must not be greater than its end.</div>
+      <app-editor-capability-type-data
+        ref="capabilityTypeData"
+        v-model="capability"
+        :formstate="formstate"
+        required />
+
     </div>
-  </li>
+  </app-conditional-details>
 </template>
 
 <style lang="scss" scoped>
+@import '~assets/styles/vars.scss';
+
 .capability {
+  margin: 0 -0.5rem;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $divider-dark;
+  }
+
+  &[open] {
+    padding-bottom: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+}
+
+.capability-content {
+  padding: 0 1.5rem;
+}
+
+.unset {
+  color: $disabled-text-dark;
+}
+
+.range-label {
   position: relative;
-  padding: 1rem 2rem 0 0;
 }
 
-.capability-data {
-  margin-left: 2ex;
+a.remove {
   display: inline-block;
-  vertical-align: top;
-}
-
-.name {
-  width: 25ex;
-}
-
-.color {
-  width: 10ex;
-}
-
-.remove {
   position: absolute;
-  top: 1rem;
   right: 0;
-  opacity: 0;
   padding: 0.3rem;
-  transition: opacity 0.1s;
-}
+  width: 1.4rem;
+  height: 1.4rem;
+  vertical-align: middle;
 
-.capability:hover a,
-a:focus {
-  opacity: 1;
+  & > .icon {
+    vertical-align: unset;
+  }
+}
+</style>
+
+<style lang="scss">
+.capability summary {
+  padding: 0.3rem 0.5rem;
 }
 </style>
 
@@ -114,20 +104,23 @@ a:focus {
 import schemaProperties from '~~/lib/schema-properties.js';
 import {
   getEmptyCapability,
-  isCapabilityChanged,
-  clone
+  isCapabilityChanged
 } from '~/assets/scripts/editor-utils.mjs';
 
+import conditionalDetailsVue from '~/components/conditional-details.vue';
 import propertyInputRangeVue from '~/components/property-input-range.vue';
+import simpleLabelVue from '~/components/simple-label.vue';
 import svgVue from "~/components/svg.vue";
+
+import editorCapabilityTypeData from '~/components/editor-capability-type-data.vue';
 
 export default {
   components: {
+    'app-conditional-details': conditionalDetailsVue,
+    'app-property-input-range': propertyInputRangeVue,
+    'app-simple-label': simpleLabelVue,
     'app-svg': svgVue,
-    'app-property-input-range': propertyInputRangeVue
-  },
-  model: {
-    prop: `capabilities`
+    'app-editor-capability-type-data': editorCapabilityTypeData
   },
   props: {
     capabilities: {
@@ -150,7 +143,8 @@ export default {
   data() {
     return {
       dmxMin: 0,
-      properties: schemaProperties
+      properties: schemaProperties,
+      capabilityTypeHint: null
     };
   },
   computed: {
@@ -164,23 +158,23 @@ export default {
       return this.capabilities.some(isCapabilityChanged);
     },
     start() {
-      return this.capability.range !== null ? this.capability.range[0] : null;
+      return this.capability.dmxRange !== null ? this.capability.dmxRange[0] : null;
     },
     end() {
-      return this.capability.range !== null ? this.capability.range[1] : null;
+      return this.capability.dmxRange !== null ? this.capability.dmxRange[1] : null;
     },
     min() {
       let min = this.dmxMin;
       let index = this.capIndex - 1;
       while (index >= 0) {
         const cap = this.capabilities[index];
-        if (cap.range !== null) {
-          if (cap.range[1]) {
-            min = cap.range[1] + 1;
+        if (cap.dmxRange !== null) {
+          if (cap.dmxRange[1]) {
+            min = cap.dmxRange[1] + 1;
             break;
           }
-          if (cap.range[0] !== null) {
-            min = cap.range[0] + 1;
+          if (cap.dmxRange[0] !== null) {
+            min = cap.dmxRange[0] + 1;
             break;
           }
         }
@@ -193,13 +187,13 @@ export default {
       let index = this.capIndex + 1;
       while (index < this.capabilities.length) {
         const cap = this.capabilities[index];
-        if (cap.range !== null) {
-          if (cap.range[0] !== null) {
-            max = cap.range[0] - 1;
+        if (cap.dmxRange !== null) {
+          if (cap.dmxRange[0] !== null) {
+            max = cap.dmxRange[0] - 1;
             break;
           }
-          if (cap.range[1] !== null) {
-            max = cap.range[1] - 1;
+          if (cap.dmxRange[1] !== null) {
+            max = cap.dmxRange[1] - 1;
             break;
           }
         }
@@ -314,7 +308,7 @@ export default {
       }
     },
     insertCapabilityBefore() {
-      this.spliceCapabilities(this.capIndex, 0, getEmptyCapability());
+      this.$emit(`insert-capability-before`);
 
       const dialog = this.$el.closest(`dialog`);
       this.$nextTick(() => {
@@ -323,22 +317,29 @@ export default {
       });
     },
     insertCapabilityAfter() {
-      this.spliceCapabilities(this.capIndex + 1, 0, getEmptyCapability());
+      this.$emit(`insert-capability-after`);
     },
     removePreviousCapability() {
-      this.spliceCapabilities(this.capIndex - 1, 1);
+      this.$delete(this.capabilities, this.capIndex - 1);
     },
     removeCurrentCapability() {
-      this.spliceCapabilities(this.capIndex, 1);
+      this.$delete(this.capabilities, this.capIndex);
     },
     removeNextCapability() {
-      this.spliceCapabilities(this.capIndex + 1, 1);
+      this.$delete(this.capabilities, this.capIndex + 1);
     },
-    spliceCapabilities(index, deleteCount, ...insertItems) {
-      // immutable splice, see https://vincent.billey.me/pure-javascript-immutable-array/
-      const capabilities = clone(this.capabilities);
-      const newCapabilities = [...capabilities.slice(0, index), ...insertItems, ...capabilities.slice(index + deleteCount)];
-      this.$emit(`input`, newCapabilities);
+    cleanCapabilityData() {
+      if (this.capability.dmxRange === null) {
+        this.capability.dmxRange = [null, null];
+      }
+      if (this.capability.dmxRange[0] === null) {
+        this.capability.dmxRange[0] = this.min;
+      }
+      if (this.capability.dmxRange[1] === null) {
+        this.capability.dmxRange[1] = this.max;
+      }
+
+      this.$refs.capabilityTypeData.cleanCapabilityData();
     }
   }
 };

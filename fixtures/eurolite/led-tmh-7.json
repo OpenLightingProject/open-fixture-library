@@ -27,118 +27,135 @@
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
       "defaultValue": 32768,
-      "crossfade": true
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
       "defaultValue": 32768,
-      "crossfade": true
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
     },
     "Pan / Tilt Speed": {
-      "type": "Speed",
-      "invert": true,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Decreasing speed"
-        }
-      ]
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
     },
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "Color Macros": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 40],
-          "name": "Neutral"
+          "dmxRange": [0, 40],
+          "type": "NoFunction"
         },
         {
-          "range": [41, 80],
-          "name": "Macro 1"
+          "dmxRange": [41, 80],
+          "type": "ColorPreset",
+          "comment": "Macro 1"
         },
         {
-          "range": [81, 120],
-          "name": "Macro 2"
+          "dmxRange": [81, 120],
+          "type": "ColorPreset",
+          "comment": "Macro 2"
         },
         {
-          "range": [121, 140],
-          "name": "Macro 3"
+          "dmxRange": [121, 140],
+          "type": "ColorPreset",
+          "comment": "Macro 3"
         },
         {
-          "range": [141, 160],
-          "name": "Macro 4"
+          "dmxRange": [141, 160],
+          "type": "ColorPreset",
+          "comment": "Macro 4"
         },
         {
-          "range": [161, 200],
-          "name": "Macro 5"
+          "dmxRange": [161, 200],
+          "type": "ColorPreset",
+          "comment": "Macro 5"
         },
         {
-          "range": [201, 240],
-          "name": "Macro 6"
+          "dmxRange": [201, 240],
+          "type": "ColorPreset",
+          "comment": "Macro 6"
         },
         {
-          "range": [241, 255],
-          "name": "Neutral"
+          "dmxRange": [241, 255],
+          "type": "NoFunction"
         }
       ]
     },
     "Shutter": {
-      "type": "Shutter",
       "defaultValue": 255,
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "LED off",
-          "menuClick": "start"
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [11, 20],
-          "name": "Neutral",
+          "dmxRange": [11, 20],
+          "type": "NoFunction",
           "menuClick": "hidden"
         },
         {
-          "range": [21, 30],
-          "name": "Reset",
-          "menuClick": "start"
+          "dmxRange": [21, 30],
+          "type": "Maintenance",
+          "comment": "Reset"
         },
         {
-          "range": [31, 200],
-          "name": "Strobe slow…fast",
+          "dmxRange": [31, 200],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
           "menuClick": "center"
         },
         {
-          "range": [201, 250],
-          "name": "Random strobe slow…fast",
+          "dmxRange": [201, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true,
           "menuClick": "center"
         },
         {
-          "range": [251, 255],
-          "name": "Neutral",
-          "menuClick": "start"
+          "dmxRange": [251, 255],
+          "type": "NoFunction"
         }
       ]
     },
     "Dimmer Intensity": {
-      "type": "Intensity",
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     }
   },
   "modes": [

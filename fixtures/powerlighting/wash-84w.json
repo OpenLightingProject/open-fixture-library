@@ -24,143 +24,161 @@
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
     },
     "Movement Speed": {
-      "type": "Speed",
       "defaultValue": 0,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "fast…slow"
-        }
-      ]
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
     },
     "Dimmer": {
-      "type": "Intensity",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White": {
-      "type": "Single Color",
-      "color": "White",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "RGBW preset": {
-      "type": "Multi-Color",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 4],
-          "name": "No function"
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
         },
         {
-          "range": [5, 44],
-          "name": "static"
+          "dmxRange": [5, 44],
+          "type": "ColorPreset",
+          "comment": "static"
         },
         {
-          "range": [45, 49],
-          "name": "No function"
+          "dmxRange": [45, 49],
+          "type": "NoFunction"
         },
         {
-          "range": [50, 94],
-          "name": "cut"
+          "dmxRange": [50, 94],
+          "type": "ColorPreset",
+          "comment": "cut"
         },
         {
-          "range": [95, 99],
-          "name": "No function"
+          "dmxRange": [95, 99],
+          "type": "NoFunction"
         },
         {
-          "range": [100, 149],
-          "name": "smooth"
+          "dmxRange": [100, 149],
+          "type": "ColorPreset",
+          "comment": "smooth"
         },
         {
-          "range": [150, 154],
-          "name": "No function"
+          "dmxRange": [150, 154],
+          "type": "NoFunction"
         },
         {
-          "range": [155, 255],
-          "name": "soft"
+          "dmxRange": [155, 255],
+          "type": "ColorPreset",
+          "comment": "soft"
         }
       ]
     },
     "Strobe": {
-      "type": "Strobe",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 6],
-          "name": "off"
+          "dmxRange": [0, 6],
+          "type": "NoFunction"
         },
         {
-          "range": [7, 65],
-          "name": "strobe (flash)"
+          "dmxRange": [7, 65],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
         },
         {
-          "range": [66, 69],
-          "name": "off"
+          "dmxRange": [66, 69],
+          "type": "NoFunction",
+          "helpWanted": "Or ShutterStrobe: Open / Closed?"
         },
         {
-          "range": [70, 128],
-          "name": "strobe (random)"
+          "dmxRange": [70, 128],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
         },
         {
-          "range": [129, 132],
-          "name": "off"
+          "dmxRange": [129, 132],
+          "type": "NoFunction"
         },
         {
-          "range": [133, 191],
-          "name": "strobe (smooth in)"
+          "dmxRange": [133, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp"
         },
         {
-          "range": [192, 195],
-          "name": "off"
+          "dmxRange": [192, 195],
+          "type": "NoFunction"
         },
         {
-          "range": [196, 255],
-          "name": "strobe (smooth out)"
+          "dmxRange": [196, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown"
         }
       ]
     },
     "Music control": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "off"
+          "dmxRange": [0, 127],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "off"
         },
         {
-          "range": [128, 255],
-          "name": "on"
+          "dmxRange": [128, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "high"
         }
       ]
     }

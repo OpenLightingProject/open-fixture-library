@@ -96,7 +96,7 @@ function addAttribute(xml, mode, attribute, channels) {
     channel = getUsableChannel(channel);
 
     let xmlCapabilities;
-    if (channel instanceof Channel && channel.hasCapabilities) {
+    if (channel instanceof Channel) {
       const caps = channel.capabilities;
 
       xmlCapabilities = xmlChannel.element({
@@ -113,12 +113,23 @@ function addAttribute(xml, mode, attribute, channels) {
      * @param {!Capability} cap A capability of a channels capability list.
      */
     function addCapability(cap) {
+      let hold = `0`;
+
+      if (cap.hold) {
+        if (cap.hold.unit === `ms`) {
+          hold = cap.hold.number;
+        }
+        else if (cap.hold.unit === `s`) {
+          hold = cap.hold.number * 1000;
+        }
+      }
+
       xmlCapabilities.element({
         name: {
-          '@min': cap.range.start,
-          '@max': cap.range.end,
+          '@min': cap.dmxRange.start,
+          '@max': cap.dmxRange.end,
           '@snap': cap.menuClickDmxValue,
-          '@timeHolder': `0`,
+          '@timeHolder': hold,
           '@dummy': `0`,
           '#text': cap.name
         }
@@ -237,7 +248,7 @@ function getChannelsByAttribute(channels) {
       BEAM: [`Iris`, `Focus`, `Zoom`],
       EFFECT: [`Strobe`, `Shutter`, `Speed`, `Gobo`, `Prism`, `Effect`, `Fog`],
       CONTROL: [`Maintenance`],
-      EXTRA: [`Nothing`]
+      EXTRA: [`NoFunction`]
     };
 
     for (const attribute of Object.keys(oflToDLightMap)) {

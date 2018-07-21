@@ -27,80 +27,101 @@
   },
   "availableChannels": {
     "Shutter / Strobe": {
-      "type": "Shutter",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Blackout"
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [10, 19],
-          "name": "Open"
+          "dmxRange": [10, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [20, 29],
-          "name": "Blackout"
+          "dmxRange": [20, 29],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [30, 119],
-          "name": "Strobe 3.27s…30ms"
+          "dmxRange": [30, 119],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.3Hz",
+          "speedEnd": "33.3Hz"
         },
         {
-          "range": [120, 149],
-          "name": "Opening pulse 42.6s…120ms"
+          "dmxRange": [120, 149],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0.02Hz",
+          "speedEnd": "8.3Hz",
+          "comment": "opening pulse"
         },
         {
-          "range": [150, 179],
-          "name": "Closing pulse 42.6s…120ms"
+          "dmxRange": [150, 179],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0.02Hz",
+          "speedEnd": "8.3Hz",
+          "comment": "closing pulse"
         },
         {
-          "range": [180, 204],
-          "name": "Random strobe (dimmer active)"
+          "dmxRange": [180, 204],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "dimmer active"
         },
         {
-          "range": [205, 229],
-          "name": "Random strobe (dimmer inactive)"
+          "dmxRange": [205, 229],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "dimmer inactive"
         },
         {
-          "range": [230, 255],
-          "name": "Open"
+          "dmxRange": [230, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
     "Dimmer": {
-      "type": "Intensity",
-      "fineChannelAliases": ["Dimmer fine"]
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Zoom Fresnel": {
       "name": "Zoom",
-      "type": "Zoom",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Linear Zoom 12.8…62°"
-        }
-      ]
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "12.8deg",
+        "angleEnd": "62deg",
+        "comment": "linear"
+      }
     },
     "Zoom PC": {
       "name": "Zoom",
-      "type": "Zoom",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Linear Zoom 8.2…70°"
-        }
-      ]
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "8.2deg",
+        "angleEnd": "70deg",
+        "comment": "linear"
+      }
     },
     "Reset": {
-      "type": "Maintenance",
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "No function"
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
         },
         {
-          "range": [16, 255],
-          "name": "Zoom Motor Reset (hold 3s)"
+          "dmxRange": [16, 255],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Zoom Motor Reset"
         }
       ]
     }

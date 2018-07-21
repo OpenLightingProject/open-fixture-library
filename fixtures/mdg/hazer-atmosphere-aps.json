@@ -17,28 +17,30 @@
   },
   "availableChannels": {
     "Fog": {
-      "type": "Fog",
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "Fog off"
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
         },
         {
-          "range": [128, 255],
-          "name": "Fog on"
+          "dmxRange": [128, 255],
+          "type": "Fog",
+          "fogType": "Haze"
         }
       ]
     },
     "Fog Emission": {
-      "type": "Intensity",
       "capabilities": [
         {
-          "range": [0, 17],
-          "name": "No fog"
+          "dmxRange": [0, 17],
+          "type": "FogOutput",
+          "fogOutput": "off"
         },
         {
-          "range": [18, 255],
-          "name": "Proportional emission 0-100"
+          "dmxRange": [18, 255],
+          "type": "FogOutput",
+          "fogOutputStart": "weak",
+          "fogOutputEnd": "strong"
         }
       ]
     }

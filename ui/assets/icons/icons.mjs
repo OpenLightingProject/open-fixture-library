@@ -20,6 +20,7 @@ export default {
   'ola': require(`./ola.svg`),
   'pencil': require(`./pencil.svg`),
   'plus': require(`./plus.svg`),
+  'swap-horizontal': require(`./swap-horizontal.svg`),
 
   'categories/blinder': require(`./categories/blinder.svg`),
   'categories/color-changer': require(`./categories/color-changer.svg`),
@@ -45,7 +46,7 @@ export default {
   'channel-types/iris': require(`./channel-types/iris.svg`),
   'channel-types/maintenance': require(`./channel-types/maintenance.svg`),
   'channel-types/multi-color': require(`./channel-types/multi-color.svg`),
-  'channel-types/nothing': require(`./channel-types/nothing.svg`),
+  'channel-types/nofunction': require(`./channel-types/no-function.svg`),
   'channel-types/pan': require(`./channel-types/pan.svg`),
   'channel-types/prism': require(`./channel-types/prism.svg`),
   'channel-types/shutter': require(`./channel-types/shutter.svg`),

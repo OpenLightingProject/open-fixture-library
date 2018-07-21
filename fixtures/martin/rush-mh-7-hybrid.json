@@ -29,537 +29,715 @@
   },
   "availableChannels": {
     "Dimmer": {
-      "type": "Intensity",
       "fineChannelAliases": ["Dimmer fine"],
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Shutter": {
-      "type": "Shutter",
       "capabilities": [
         {
-          "range": [0, 31],
-          "name": "shutter closed"
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [32, 63],
-          "name": "shutter open"
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [64, 95],
-          "name": "strobe effect slow to fast"
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [96, 127],
-          "name": "pulse, fast close & slow open"
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "comment": "pulse, fast close & slow open"
         },
         {
-          "range": [128, 159],
-          "name": "pulse, fast open and slow close"
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "comment": "pulse, fast open and slow close"
         },
         {
-          "range": [160, 191],
-          "name": "sequencial pulse effects"
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "sequencial pulse effects"
         },
         {
-          "range": [192, 223],
-          "name": "random strobe effect slow to fast"
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
-          "range": [224, 255],
-          "name": "shutter open"
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
     "Color Wheel": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "Open",
-          "color": "#ffffff"
+          "dmxRange": [0, 0],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "colors": ["#ffffff"],
+          "comment": "Open"
         },
         {
-          "range": [1, 11],
-          "name": "Open / Red",
-          "menuClick": "center",
-          "color": "#ffffff",
-          "color2": "#ff0000"
+          "dmxRange": [1, 11],
+          "type": "ColorWheelIndex",
+          "indexStart": 0,
+          "indexEnd": 1,
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#ff0000"],
+          "comment": "Split Open / Red",
+          "menuClick": "center"
         },
         {
-          "range": [12, 12],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [12, 12],
+          "type": "ColorWheelIndex",
+          "index": 1,
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [13, 22],
-          "name": "Red / Blue",
-          "menuClick": "center",
-          "color": "#ff0000",
-          "color2": "#0000ff"
+          "dmxRange": [13, 22],
+          "type": "ColorWheelIndex",
+          "indexStart": 1,
+          "indexEnd": 2,
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#0000ff"],
+          "comment": "Split Red / Blue",
+          "menuClick": "center"
         },
         {
-          "range": [23, 23],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [23, 23],
+          "type": "ColorWheelIndex",
+          "index": 2,
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
-          "range": [24, 32],
-          "name": "Blue / Green",
-          "menuClick": "center",
-          "color": "#0000ff",
-          "color2": "#00ff00"
+          "dmxRange": [24, 32],
+          "type": "ColorWheelIndex",
+          "indexStart": 2,
+          "indexEnd": 3,
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#00ff00"],
+          "comment": "Split Blue / Green",
+          "menuClick": "center"
         },
         {
-          "range": [33, 33],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [33, 33],
+          "type": "ColorWheelIndex",
+          "index": 3,
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [34, 42],
-          "name": "Green / Magenta",
-          "menuClick": "center",
-          "color": "#00ff00",
-          "color2": "#ff00ff"
+          "dmxRange": [34, 42],
+          "type": "ColorWheelIndex",
+          "indexStart": 3,
+          "indexEnd": 4,
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#ff00ff"],
+          "comment": "Split Green / Magenta",
+          "menuClick": "center"
         },
         {
-          "range": [43, 43],
-          "name": "Magenta",
-          "color": "#ff00ff"
+          "dmxRange": [43, 43],
+          "type": "ColorWheelIndex",
+          "index": 4,
+          "colors": ["#ff00ff"],
+          "comment": "Magenta"
         },
         {
-          "range": [44, 52],
-          "name": "Magenta / Yellow",
-          "menuClick": "center",
-          "color": "#ff00ff",
-          "color2": "#ffff00"
+          "dmxRange": [44, 52],
+          "type": "ColorWheelIndex",
+          "indexStart": 4,
+          "indexEnd": 5,
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#ffff00"],
+          "comment": "Split Magenta / Yellow",
+          "menuClick": "center"
         },
         {
-          "range": [53, 53],
-          "name": "Yellow",
-          "color": "#ffff00"
+          "dmxRange": [53, 53],
+          "type": "ColorWheelIndex",
+          "index": 5,
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
         },
         {
-          "range": [54, 62],
-          "name": "Yellow / Light Blue",
-          "menuClick": "center",
-          "color": "#ffff00",
-          "color2": "#00ffff"
+          "dmxRange": [54, 62],
+          "type": "ColorWheelIndex",
+          "indexStart": 5,
+          "indexEnd": 6,
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#00ffff"],
+          "comment": "Split Yellow / Light Blue",
+          "menuClick": "center"
         },
         {
-          "range": [63, 63],
-          "name": "Light Blue",
-          "color": "#00ffff"
+          "dmxRange": [63, 63],
+          "type": "ColorWheelIndex",
+          "index": 6,
+          "colors": ["#00ffff"],
+          "comment": "Light Blue"
         },
         {
-          "range": [64, 73],
-          "name": "Light Blue / Pink",
-          "menuClick": "center",
-          "color": "#00ffff",
-          "color2": "#ffaaff"
+          "dmxRange": [64, 73],
+          "type": "ColorWheelIndex",
+          "indexStart": 6,
+          "indexEnd": 7,
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#ffaaff"],
+          "comment": "Split Light Blue / Pink",
+          "menuClick": "center"
         },
         {
-          "range": [74, 74],
-          "name": "Pink",
-          "color": "#ffaaff"
+          "dmxRange": [74, 74],
+          "type": "ColorWheelIndex",
+          "index": 7,
+          "colors": ["#ffaaff"],
+          "comment": "Pink"
         },
         {
-          "range": [75, 84],
-          "name": "Pink / Orange",
-          "menuClick": "center",
-          "color": "#ffaaff",
-          "color2": "#ffaa00"
+          "dmxRange": [75, 84],
+          "type": "ColorWheelIndex",
+          "indexStart": 7,
+          "indexEnd": 8,
+          "colorsStart": ["#ffaaff"],
+          "colorsEnd": ["#ffaa00"],
+          "comment": "Split Pink / Orange",
+          "menuClick": "center"
         },
         {
-          "range": [85, 85],
-          "name": "Orange",
-          "color": "#ffaa00"
+          "dmxRange": [85, 85],
+          "type": "ColorWheelIndex",
+          "index": 8,
+          "colors": ["#ffaa00"],
+          "comment": "Orange"
         },
         {
-          "range": [86, 95],
-          "name": "Orange / Aqua",
-          "menuClick": "center",
-          "color": "#ffaa00",
-          "color2": "#99ddff"
+          "dmxRange": [86, 95],
+          "type": "ColorWheelIndex",
+          "indexStart": 8,
+          "indexEnd": 9,
+          "colorsStart": ["#ffaa00"],
+          "colorsEnd": ["#99ddff"],
+          "comment": "Split Orange / Aqua",
+          "menuClick": "center"
         },
         {
-          "range": [96, 96],
-          "name": "Aqua",
-          "color": "#99ddff"
+          "dmxRange": [96, 96],
+          "type": "ColorWheelIndex",
+          "index": 9,
+          "colors": ["#99ddff"],
+          "comment": "Aqua"
         },
         {
-          "range": [97, 105],
-          "name": "Aqua / Purple",
-          "menuClick": "center",
-          "color": "#99ddff",
-          "color2": "#aa00ff"
+          "dmxRange": [97, 105],
+          "type": "ColorWheelIndex",
+          "indexStart": 9,
+          "indexEnd": 10,
+          "colorsStart": ["#99ddff"],
+          "colorsEnd": ["#aa00ff"],
+          "comment": "Split Aqua / Purple",
+          "menuClick": "center"
         },
         {
-          "range": [106, 106],
-          "name": "Purple",
-          "color": "#aa00ff"
+          "dmxRange": [106, 106],
+          "type": "ColorWheelIndex",
+          "index": 10,
+          "colors": ["#aa00ff"],
+          "comment": "Purple"
         },
         {
-          "range": [107, 114],
-          "name": "Purple / CTO",
-          "menuClick": "center",
-          "color": "#aa00ff",
-          "color2": "#ffcc99"
+          "dmxRange": [107, 114],
+          "type": "ColorWheelIndex",
+          "indexStart": 10,
+          "indexEnd": 11,
+          "colorsStart": ["#aa00ff"],
+          "colorsEnd": ["#ffcc99"],
+          "comment": "Split Purple / CTO",
+          "menuClick": "center"
         },
         {
-          "range": [115, 115],
-          "name": "CTO",
-          "color": "#ffcc99"
+          "dmxRange": [115, 115],
+          "type": "ColorWheelIndex",
+          "index": 11,
+          "colors": ["#ffcc99"],
+          "comment": "CTO"
         },
         {
-          "range": [116, 124],
-          "name": "CTO / CTB",
-          "menuClick": "center",
-          "color": "#ffcc99",
-          "color2": "#88bbdd"
+          "dmxRange": [116, 124],
+          "type": "ColorWheelIndex",
+          "indexStart": 11,
+          "indexEnd": 12,
+          "colorsStart": ["#ffcc99"],
+          "colorsEnd": ["#88bbdd"],
+          "comment": "Split CTO / CTB",
+          "menuClick": "center"
         },
         {
-          "range": [125, 125],
-          "name": "CTB",
-          "color": "#88bbdd"
+          "dmxRange": [125, 125],
+          "type": "ColorWheelIndex",
+          "index": 12,
+          "colors": ["#88bbdd"],
+          "comment": "CTB"
         },
         {
-          "range": [126, 136],
-          "name": "CTB / UV",
-          "menuClick": "center",
-          "color": "#88bbdd",
-          "color2": "#a996ff"
+          "dmxRange": [126, 136],
+          "type": "ColorWheelIndex",
+          "indexStart": 12,
+          "indexEnd": 13,
+          "colorsStart": ["#88bbdd"],
+          "colorsEnd": ["#a996ff"],
+          "comment": "Split CTB / UV",
+          "menuClick": "center"
         },
         {
-          "range": [137, 137],
-          "name": "UV",
-          "color": "#a996ff"
+          "dmxRange": [137, 137],
+          "type": "ColorWheelIndex",
+          "index": 13,
+          "colors": ["#a996ff"],
+          "comment": "UV"
         },
         {
-          "range": [138, 146],
-          "name": "UV / Open",
-          "menuClick": "center",
-          "color": "#a996ff",
-          "color2": "#ffffff"
+          "dmxRange": [138, 146],
+          "type": "ColorWheelIndex",
+          "indexStart": 13,
+          "indexEnd": 14,
+          "colorsStart": ["#a996ff"],
+          "colorsEnd": ["#ffffff"],
+          "comment": "Split UV / Open",
+          "menuClick": "center"
         },
         {
-          "range": [147, 147],
-          "name": "Open",
-          "color": "#ffffff"
+          "dmxRange": [147, 147],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "colors": ["#ffffff"],
+          "comment": "Open"
         },
         {
-          "range": [148, 151],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [148, 151],
+          "type": "ColorWheelIndex",
+          "index": 1,
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [152, 155],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [152, 155],
+          "type": "ColorWheelIndex",
+          "index": 2,
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
-          "range": [156, 159],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [156, 159],
+          "type": "ColorWheelIndex",
+          "index": 3,
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [160, 163],
-          "name": "Magenta",
-          "color": "#ff00ff"
+          "dmxRange": [160, 163],
+          "type": "ColorWheelIndex",
+          "index": 4,
+          "colors": ["#ff00ff"],
+          "comment": "Magenta"
         },
         {
-          "range": [164, 167],
-          "name": "Yellow",
-          "color": "#ffff00"
+          "dmxRange": [164, 167],
+          "type": "ColorWheelIndex",
+          "index": 5,
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
         },
         {
-          "range": [168, 171],
-          "name": "Light Blue",
-          "color": "#00ffff"
+          "dmxRange": [168, 171],
+          "type": "ColorWheelIndex",
+          "index": 6,
+          "colors": ["#00ffff"],
+          "comment": "Light Blue"
         },
         {
-          "range": [172, 175],
-          "name": "Pink",
-          "color": "#ffaaff"
+          "dmxRange": [172, 175],
+          "type": "ColorWheelIndex",
+          "index": 7,
+          "colors": ["#ffaaff"],
+          "comment": "Pink"
         },
         {
-          "range": [176, 179],
-          "name": "Orange",
-          "color": "#ffaa00"
+          "dmxRange": [176, 179],
+          "type": "ColorWheelIndex",
+          "index": 8,
+          "colors": ["#ffaa00"],
+          "comment": "Orange"
         },
         {
-          "range": [180, 183],
-          "name": "Aqua",
-          "color": "#99ddff"
+          "dmxRange": [180, 183],
+          "type": "ColorWheelIndex",
+          "index": 9,
+          "colors": ["#99ddff"],
+          "comment": "Aqua"
         },
         {
-          "range": [184, 187],
-          "name": "Purple",
-          "color": "#aa00ff"
+          "dmxRange": [184, 187],
+          "type": "ColorWheelIndex",
+          "index": 10,
+          "colors": ["#aa00ff"],
+          "comment": "Purple"
         },
         {
-          "range": [188, 191],
-          "name": "CTO",
-          "color": "#ffcc99"
+          "dmxRange": [188, 191],
+          "type": "ColorWheelIndex",
+          "index": 11,
+          "colors": ["#ffcc99"],
+          "comment": "CTO"
         },
         {
-          "range": [192, 195],
-          "name": "CTB",
-          "color": "#88bbdd"
+          "dmxRange": [192, 195],
+          "type": "ColorWheelIndex",
+          "index": 12,
+          "colors": ["#88bbdd"],
+          "comment": "CTB"
         },
         {
-          "range": [196, 199],
-          "name": "UV",
-          "color": "#a996ff"
+          "dmxRange": [196, 199],
+          "type": "ColorWheelIndex",
+          "index": 13,
+          "colors": ["#a996ff"],
+          "comment": "UV"
         },
         {
-          "range": [200, 220],
-          "name": "clockwise color wheel rotation, fast to slow"
+          "dmxRange": [200, 220],
+          "type": "ColorWheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
-          "range": [221, 222],
-          "name": "no rotation"
+          "dmxRange": [221, 222],
+          "type": "ColorWheelRotation",
+          "speed": "stop"
         },
         {
-          "range": [223, 243],
-          "name": "counterclockwise color wheel rotation, slow to fast"
+          "dmxRange": [223, 243],
+          "type": "ColorWheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         },
         {
-          "range": [244, 247],
-          "name": "random colors fast"
+          "dmxRange": [244, 247],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "fast"
         },
         {
-          "range": [248, 251],
-          "name": "random colors medium"
+          "dmxRange": [248, 251],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "50%"
         },
         {
-          "range": [252, 255],
-          "name": "random colors slow"
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "slow"
         }
       ]
     },
     "Rotating Gobos": {
-      "type": "Gobo",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 11],
-          "name": "Open",
+          "dmxRange": [0, 11],
+          "type": "NoFunction",
+          "comment": "Open",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
           }
         },
         {
-          "range": [12, 23],
-          "name": "Beamsmoother",
+          "dmxRange": [12, 23],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Beamsmoother",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
           }
         },
         {
-          "range": [24, 29],
-          "name": "Gobo 1, indexed",
+          "dmxRange": [24, 29],
+          "type": "GoboIndex",
+          "index": 1,
+          "comment": "Gobo 1, indexed",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Indexing",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Indexing fine"
           }
         },
         {
-          "range": [30, 35],
-          "name": "Gobo 2, indexed",
+          "dmxRange": [30, 35],
+          "type": "GoboIndex",
+          "index": 2,
+          "comment": "Gobo 2, indexed",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Indexing",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Indexing fine"
           }
         },
         {
-          "range": [36, 41],
-          "name": "Gobo 3, indexed",
+          "dmxRange": [36, 41],
+          "type": "GoboIndex",
+          "index": 3,
+          "comment": "Gobo 3, indexed",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Indexing",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Indexing fine"
           }
         },
         {
-          "range": [42, 47],
-          "name": "Gobo 4, indexed",
+          "dmxRange": [42, 47],
+          "type": "GoboIndex",
+          "index": 4,
+          "comment": "Gobo 4, indexed",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Indexing",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Indexing fine"
           }
         },
         {
-          "range": [48, 53],
-          "name": "Gobo 5, indexed",
+          "dmxRange": [48, 53],
+          "type": "GoboIndex",
+          "index": 5,
+          "comment": "Gobo 5, indexed",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Indexing",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Indexing fine"
           }
         },
         {
-          "range": [54, 59],
-          "name": "Gobo 6, indexed",
+          "dmxRange": [54, 59],
+          "type": "GoboIndex",
+          "index": 6,
+          "comment": "Gobo 6, indexed",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Indexing",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Indexing fine"
           }
         },
         {
-          "range": [60, 65],
-          "name": "Gobo 7, indexed",
+          "dmxRange": [60, 65],
+          "type": "GoboIndex",
+          "index": 7,
+          "comment": "Gobo 7, indexed",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Indexing",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Indexing fine"
           }
         },
         {
-          "range": [66, 71],
-          "name": "Gobo 8, indexed",
+          "dmxRange": [66, 71],
+          "type": "GoboIndex",
+          "index": 8,
+          "comment": "Gobo 8, indexed",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Indexing",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Indexing fine"
           }
         },
         {
-          "range": [72, 76],
-          "name": "Gobo 1, rotating",
+          "dmxRange": [72, 76],
+          "type": "GoboIndex",
+          "index": 1,
+          "comment": "Gobo 1, rotating",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
           }
         },
         {
-          "range": [77, 81],
-          "name": "Gobo 2, rotating",
+          "dmxRange": [77, 81],
+          "type": "GoboIndex",
+          "index": 2,
+          "comment": "Gobo 2, rotating",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
           }
         },
         {
-          "range": [82, 86],
-          "name": "Gobo 3, rotating",
+          "dmxRange": [82, 86],
+          "type": "GoboIndex",
+          "index": 3,
+          "comment": "Gobo 3, rotating",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
           }
         },
         {
-          "range": [87, 91],
-          "name": "Gobo 4, rotating",
+          "dmxRange": [87, 91],
+          "type": "GoboIndex",
+          "index": 4,
+          "comment": "Gobo 4, rotating",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
           }
         },
         {
-          "range": [92, 96],
-          "name": "Gobo 5, rotating",
+          "dmxRange": [92, 96],
+          "type": "GoboIndex",
+          "index": 5,
+          "comment": "Gobo 5, rotating",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
           }
         },
         {
-          "range": [97, 101],
-          "name": "Gobo 6, rotating",
+          "dmxRange": [97, 101],
+          "type": "GoboIndex",
+          "index": 6,
+          "comment": "Gobo 6, rotating",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
           }
         },
         {
-          "range": [102, 106],
-          "name": "Gobo 7, rotating",
+          "dmxRange": [102, 106],
+          "type": "GoboIndex",
+          "index": 7,
+          "comment": "Gobo 7, rotating",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
           }
         },
         {
-          "range": [107, 111],
-          "name": "Gobo 8, rotating",
+          "dmxRange": [107, 111],
+          "type": "GoboIndex",
+          "index": 8,
+          "comment": "Gobo 8, rotating",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
           }
         },
         {
-          "range": [112, 121],
-          "name": "Gobo 1 shake",
+          "dmxRange": [112, 121],
+          "type": "GoboIndex",
+          "index": 1,
+          "shakeAngle": "wide",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
           }
         },
         {
-          "range": [122, 131],
-          "name": "Gobo 2 shake",
+          "dmxRange": [122, 131],
+          "type": "GoboIndex",
+          "index": 2,
+          "shakeAngle": "wide",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
           }
         },
         {
-          "range": [132, 141],
-          "name": "Gobo 3 shake",
+          "dmxRange": [132, 141],
+          "type": "GoboIndex",
+          "index": 3,
+          "shakeAngle": "wide",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
           }
         },
         {
-          "range": [142, 151],
-          "name": "Gobo 4 shake",
+          "dmxRange": [142, 151],
+          "type": "GoboIndex",
+          "index": 4,
+          "shakeAngle": "wide",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
           }
         },
         {
-          "range": [152, 161],
-          "name": "Gobo 5 shake",
+          "dmxRange": [152, 161],
+          "type": "GoboIndex",
+          "index": 5,
+          "shakeAngle": "wide",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
           }
         },
         {
-          "range": [162, 171],
-          "name": "Gobo 6 shake",
+          "dmxRange": [162, 171],
+          "type": "GoboIndex",
+          "index": 6,
+          "shakeAngle": "wide",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
           }
         },
         {
-          "range": [172, 181],
-          "name": "Gobo 7 shake",
+          "dmxRange": [172, 181],
+          "type": "GoboIndex",
+          "index": 7,
+          "shakeAngle": "wide",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
           }
         },
         {
-          "range": [182, 191],
-          "name": "Gobo 8 shake",
+          "dmxRange": [182, 191],
+          "type": "GoboIndex",
+          "index": 8,
+          "shakeAngle": "wide",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
           }
         },
         {
-          "range": [192, 223],
-          "name": "clockwise rotation, fast to slow",
+          "dmxRange": [192, 223],
+          "type": "GoboWheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
           }
         },
         {
-          "range": [224, 255],
-          "name": "counterclockwise rotation, slow to fast",
+          "dmxRange": [224, 255],
+          "type": "GoboWheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
@@ -568,270 +746,385 @@
       ]
     },
     "Rotating Gobo Indexing": {
-      "type": "Intensity",
       "fineChannelAliases": ["Rotating Gobo Indexing fine"],
-      "crossfade": true
+      "capability": {
+        "type": "GoboStencilRotation",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
     },
     "Rotating Gobo Speed": {
-      "type": "Speed",
       "fineChannelAliases": ["Rotating Gobo Speed fine"],
       "capabilities": [
         {
-          "range": [0, 31],
-          "name": "no rotation"
+          "dmxRange": [0, 31],
+          "type": "GoboStencilRotation",
+          "angle": "0deg"
         },
         {
-          "range": [32, 93],
-          "name": "clockwise gobo rotation, fast to slow"
+          "dmxRange": [32, 93],
+          "type": "GoboStencilRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
-          "range": [94, 127],
-          "name": "no rotation",
-          "menuClick": "hidden"
+          "dmxRange": [94, 127],
+          "type": "GoboStencilRotation",
+          "speed": "stop"
         },
         {
-          "range": [128, 189],
-          "name": "counterclockwise gobo rotation, slow to fast"
+          "dmxRange": [128, 189],
+          "type": "GoboStencilRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         },
         {
-          "range": [190, 255],
-          "name": "no rotation",
-          "menuClick": "hidden"
+          "dmxRange": [190, 255],
+          "type": "GoboStencilRotation",
+          "angle": "90deg"
         }
       ]
     },
     "Fixed gobos": {
-      "type": "Gobo",
       "capabilities": [
         {
-          "range": [0, 2],
-          "name": "open"
+          "dmxRange": [0, 2],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Open"
         },
         {
-          "range": [3, 5],
-          "name": "iris 1 (widest)"
+          "dmxRange": [3, 5],
+          "type": "GoboIndex",
+          "index": 1,
+          "comment": "Iris 1 (widest)"
         },
         {
-          "range": [6, 8],
-          "name": "iris 2"
+          "dmxRange": [6, 8],
+          "type": "GoboIndex",
+          "index": 2,
+          "comment": "Iris 2"
         },
         {
-          "range": [9, 11],
-          "name": "iris 3"
+          "dmxRange": [9, 11],
+          "type": "GoboIndex",
+          "index": 3,
+          "comment": "Iris 3"
         },
         {
-          "range": [12, 14],
-          "name": "iris 4"
+          "dmxRange": [12, 14],
+          "type": "GoboIndex",
+          "index": 4,
+          "comment": "Iris 4"
         },
         {
-          "range": [15, 17],
-          "name": "iris 5 (narrowest)"
+          "dmxRange": [15, 17],
+          "type": "GoboIndex",
+          "index": 5,
+          "comment": "Iris 5 (narrowest)"
         },
         {
-          "range": [18, 20],
-          "name": "gobo 1"
+          "dmxRange": [18, 20],
+          "type": "GoboIndex",
+          "index": 6,
+          "comment": "Gobo 1"
         },
         {
-          "range": [21, 23],
-          "name": "gobo 2"
+          "dmxRange": [21, 23],
+          "type": "GoboIndex",
+          "index": 7,
+          "comment": "Gobo 2"
         },
         {
-          "range": [24, 26],
-          "name": "gobo 3"
+          "dmxRange": [24, 26],
+          "type": "GoboIndex",
+          "index": 8,
+          "comment": "Gobo 3"
         },
         {
-          "range": [27, 29],
-          "name": "gobo 4"
+          "dmxRange": [27, 29],
+          "type": "GoboIndex",
+          "index": 9,
+          "comment": "Gobo 4"
         },
         {
-          "range": [30, 32],
-          "name": "gobo 5"
+          "dmxRange": [30, 32],
+          "type": "GoboIndex",
+          "index": 10,
+          "comment": "Gobo 5"
         },
         {
-          "range": [33, 35],
-          "name": "gobo 6"
+          "dmxRange": [33, 35],
+          "type": "GoboIndex",
+          "index": 11,
+          "comment": "Gobo 6"
         },
         {
-          "range": [36, 38],
-          "name": "gobo 7"
+          "dmxRange": [36, 38],
+          "type": "GoboIndex",
+          "index": 12,
+          "comment": "Gobo 7"
         },
         {
-          "range": [39, 41],
-          "name": "gobo 8"
+          "dmxRange": [39, 41],
+          "type": "GoboIndex",
+          "index": 13,
+          "comment": "Gobo 8"
         },
         {
-          "range": [42, 42],
-          "name": "open"
+          "dmxRange": [42, 42],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "open"
         },
         {
-          "range": [43, 53],
-          "name": "open > iris 1"
+          "dmxRange": [43, 53],
+          "type": "GoboIndex",
+          "indexStart": 0,
+          "indexEnd": 1,
+          "comment": "Open > Iris 1"
         },
         {
-          "range": [54, 54],
-          "name": "iris 1"
+          "dmxRange": [54, 54],
+          "type": "GoboIndex",
+          "index": 1,
+          "comment": "iris 1"
         },
         {
-          "range": [55, 64],
-          "name": "iris 1 > iris 2"
+          "dmxRange": [55, 64],
+          "type": "GoboIndex",
+          "indexStart": 1,
+          "indexEnd": 2,
+          "comment": "Iris 1 > Iris 2"
         },
         {
-          "range": [65, 65],
-          "name": "iris 2"
+          "dmxRange": [65, 65],
+          "type": "GoboIndex",
+          "index": 2,
+          "comment": "iris 2"
         },
         {
-          "range": [66, 76],
-          "name": "iris 2 > iris 3"
+          "dmxRange": [66, 76],
+          "type": "GoboIndex",
+          "indexStart": 2,
+          "indexEnd": 3,
+          "comment": "Iris 2 > Iris 3"
         },
         {
-          "range": [77, 77],
-          "name": "iris 3"
+          "dmxRange": [77, 77],
+          "type": "GoboIndex",
+          "index": 3,
+          "comment": "iris 3"
         },
         {
-          "range": [78, 88],
-          "name": "iris 3 > iris 4"
+          "dmxRange": [78, 88],
+          "type": "GoboIndex",
+          "indexStart": 3,
+          "indexEnd": 4,
+          "comment": "Iris 3 > Iris 4"
         },
         {
-          "range": [89, 89],
-          "name": "iris 4"
+          "dmxRange": [89, 89],
+          "type": "GoboIndex",
+          "index": 4,
+          "comment": "iris 4"
         },
         {
-          "range": [90, 100],
-          "name": "iris 4 > iris 5"
+          "dmxRange": [90, 100],
+          "type": "GoboIndex",
+          "indexStart": 4,
+          "indexEnd": 5,
+          "comment": "Iris 4 > Iris 5"
         },
         {
-          "range": [101, 101],
-          "name": "iris 5"
+          "dmxRange": [101, 101],
+          "type": "GoboIndex",
+          "index": 5,
+          "comment": "iris 5"
         },
         {
-          "range": [102, 112],
-          "name": "iris 5 > gobo 1"
+          "dmxRange": [102, 112],
+          "type": "GoboIndex",
+          "indexStart": 5,
+          "indexEnd": 6,
+          "comment": "Iris 5 > Gobo 1"
         },
         {
-          "range": [113, 113],
-          "name": "gobo 1"
+          "dmxRange": [113, 113],
+          "type": "GoboIndex",
+          "index": 6,
+          "comment": "gobo 1"
         },
         {
-          "range": [114, 123],
-          "name": "gobo 1 > gobo 2"
+          "dmxRange": [114, 123],
+          "type": "GoboIndex",
+          "indexStart": 6,
+          "indexEnd": 7,
+          "comment": "Gobo 1 > Gobo 2"
         },
         {
-          "range": [124, 124],
-          "name": "gobo 2"
+          "dmxRange": [124, 124],
+          "type": "GoboIndex",
+          "index": 7,
+          "comment": "gobo 2"
         },
         {
-          "range": [125, 135],
-          "name": "gobo 2 > gobo 3"
+          "dmxRange": [125, 135],
+          "type": "GoboIndex",
+          "indexStart": 7,
+          "indexEnd": 8,
+          "comment": "Gobo 2 > Gobo 3"
         },
         {
-          "range": [136, 136],
-          "name": "gobo 3"
+          "dmxRange": [136, 136],
+          "type": "GoboIndex",
+          "index": 8,
+          "comment": "gobo 3"
         },
         {
-          "range": [137, 147],
-          "name": "gobo 3 > gobo 4"
+          "dmxRange": [137, 147],
+          "type": "GoboIndex",
+          "indexStart": 8,
+          "indexEnd": 9,
+          "comment": "Gobo 3 > Gobo 4"
         },
         {
-          "range": [148, 148],
-          "name": "gobo 4"
+          "dmxRange": [148, 148],
+          "type": "GoboIndex",
+          "index": 9,
+          "comment": "gobo 4"
         },
         {
-          "range": [149, 159],
-          "name": "gobo 4 > gobo 5"
+          "dmxRange": [149, 159],
+          "type": "GoboIndex",
+          "indexStart": 9,
+          "indexEnd": 10,
+          "comment": "Gobo 4 > Gobo 5"
         },
         {
-          "range": [160, 160],
-          "name": "gobo 5"
+          "dmxRange": [160, 160],
+          "type": "GoboIndex",
+          "index": 10,
+          "comment": "gobo 5"
         },
         {
-          "range": [161, 170],
-          "name": "gobo 5 > gobo 6"
+          "dmxRange": [161, 170],
+          "type": "GoboIndex",
+          "indexStart": 10,
+          "indexEnd": 11,
+          "comment": "Gobo 5 > Gobo 6"
         },
         {
-          "range": [171, 171],
-          "name": "gobo 6"
+          "dmxRange": [171, 171],
+          "type": "GoboIndex",
+          "index": 11,
+          "comment": "gobo 6"
         },
         {
-          "range": [172, 182],
-          "name": "gobo 6 > gobo 7"
+          "dmxRange": [172, 182],
+          "type": "GoboIndex",
+          "indexStart": 11,
+          "indexEnd": 12,
+          "comment": "Gobo 6 > Gobo 7"
         },
         {
-          "range": [183, 183],
-          "name": "gobo 7"
+          "dmxRange": [183, 183],
+          "type": "GoboIndex",
+          "index": 12,
+          "comment": "gobo 7"
         },
         {
-          "range": [184, 194],
-          "name": "gobo 7 > gobo 8"
+          "dmxRange": [184, 194],
+          "type": "GoboIndex",
+          "indexStart": 12,
+          "indexEnd": 13,
+          "comment": "Gobo 7 > Gobo 8"
         },
         {
-          "range": [195, 195],
-          "name": "gobo 8"
+          "dmxRange": [195, 195],
+          "type": "GoboIndex",
+          "index": 13,
+          "comment": "gobo 8"
         },
         {
-          "range": [196, 217],
-          "name": "clockwise rotation, fast to slow"
+          "dmxRange": [196, 217],
+          "type": "GoboWheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
-          "range": [218, 221],
-          "name": "no rotation"
+          "dmxRange": [218, 221],
+          "type": "GoboWheelRotation",
+          "speed": "stop"
         },
         {
-          "range": [222, 243],
-          "name": "counterclockwise rotation, slow to fast"
+          "dmxRange": [222, 243],
+          "type": "GoboWheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         },
         {
-          "range": [244, 247],
-          "name": "random slots fast"
+          "dmxRange": [244, 247],
+          "type": "Effect",
+          "effectName": "Random slots",
+          "speed": "fast"
         },
         {
-          "range": [248, 251],
-          "name": "random slots medium"
+          "dmxRange": [248, 251],
+          "type": "Effect",
+          "effectName": "Random slots",
+          "speed": "50%"
         },
         {
-          "range": [252, 255],
-          "name": "random slots slow"
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectName": "Random slots",
+          "speed": "slow"
         }
       ]
     },
     "Rotating Prisms": {
-      "type": "Prism",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 31],
-          "name": "open (no prism)",
+          "dmxRange": [0, 31],
+          "type": "NoFunction",
           "switchChannels": {
             "Rotating Prism Indexing/Speed": "Rotating Prism Indexing",
             "Rotating Prism Indexing/Speed fine": "Rotating Prism Indexing fine"
           }
         },
         {
-          "range": [32, 95],
-          "name": "4-facet prism, indexed",
+          "dmxRange": [32, 95],
+          "type": "Prism",
+          "comment": "4-facet prism, indexed",
           "switchChannels": {
             "Rotating Prism Indexing/Speed": "Rotating Prism Indexing",
             "Rotating Prism Indexing/Speed fine": "Rotating Prism Indexing fine"
           }
         },
         {
-          "range": [96, 127],
-          "name": "8-facet prism, indexed",
+          "dmxRange": [96, 127],
+          "type": "Prism",
+          "comment": "8-facet prism, indexed",
           "switchChannels": {
             "Rotating Prism Indexing/Speed": "Rotating Prism Indexing",
             "Rotating Prism Indexing/Speed fine": "Rotating Prism Indexing fine"
           }
         },
         {
-          "range": [128, 191],
-          "name": "4-facet prism, rotating",
+          "dmxRange": [128, 191],
+          "type": "Prism",
+          "comment": "4-facet prism, rotating",
           "switchChannels": {
             "Rotating Prism Indexing/Speed": "Rotating Prism Speed",
             "Rotating Prism Indexing/Speed fine": "Rotating Prism Speed fine"
           }
         },
         {
-          "range": [192, 255],
-          "name": "8-facet prism, rotating",
+          "dmxRange": [192, 255],
+          "type": "Prism",
+          "comment": "8-facet prism, rotating",
           "switchChannels": {
             "Rotating Prism Indexing/Speed": "Rotating Prism Speed",
             "Rotating Prism Indexing/Speed fine": "Rotating Prism Speed fine"
@@ -840,147 +1133,170 @@
       ]
     },
     "Rotating Prism Indexing": {
-      "type": "Intensity",
       "fineChannelAliases": ["Rotating Prism Indexing fine"],
-      "crossfade": true
+      "capability": {
+        "type": "PrismRotation",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
     },
     "Rotating Prism Speed": {
-      "type": "Speed",
       "fineChannelAliases": ["Rotating Prism Speed fine"],
       "capabilities": [
         {
-          "range": [0, 31],
-          "name": "no rotation"
+          "dmxRange": [0, 31],
+          "type": "PrismRotation",
+          "angle": "0deg"
         },
         {
-          "range": [32, 93],
-          "name": "forwards prism rotation, fast to slow"
+          "dmxRange": [32, 93],
+          "type": "PrismRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
-          "range": [94, 127],
-          "name": "no rotation",
-          "menuClick": "hidden"
+          "dmxRange": [94, 127],
+          "type": "PrismRotation",
+          "speed": "stop"
         },
         {
-          "range": [128, 189],
-          "name": "backwards prism rotation, slow to fast"
+          "dmxRange": [128, 189],
+          "type": "PrismRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         },
         {
-          "range": [190, 255],
-          "name": "no rotation",
-          "menuClick": "hidden"
+          "dmxRange": [190, 255],
+          "type": "PrismRotation",
+          "angle": "90deg"
         }
       ]
     },
     "Frost": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "no frost"
+          "dmxRange": [0, 127],
+          "type": "Frost",
+          "frostIntensity": "off"
         },
         {
-          "range": [128, 255],
-          "name": "enable frost (wash operation)"
+          "dmxRange": [128, 255],
+          "type": "Frost",
+          "frostIntensity": "high"
         }
       ]
     },
     "Zoom": {
-      "type": "Zoom",
       "fineChannelAliases": ["Zoom fine"],
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "narrow to wide"
-        }
-      ]
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
     },
     "Focus": {
-      "type": "Focus",
       "fineChannelAliases": ["Focus fine"],
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "near to far"
-        }
-      ]
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
     },
     "Pan": {
-      "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
-      "crossfade": true
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "crossfade": true
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "250deg"
+      }
     },
     "Maintenance": {
-      "type": "Maintenance",
       "capabilities": [
         {
-          "range": [0, 19],
-          "name": "reserved"
+          "dmxRange": [0, 19],
+          "type": "NoFunction"
         },
         {
-          "range": [20, 29],
-          "name": "auto-blackout on"
+          "dmxRange": [20, 29],
+          "type": "Maintenance",
+          "comment": "auto-blackout on"
         },
         {
-          "range": [30, 39],
-          "name": "auto-blackout off (default)"
+          "dmxRange": [30, 39],
+          "type": "Maintenance",
+          "comment": "auto-blackout off (default)"
         },
         {
-          "range": [40, 59],
-          "name": "lamp on"
+          "dmxRange": [40, 59],
+          "type": "Maintenance",
+          "comment": "lamp on"
         },
         {
-          "range": [60, 79],
-          "name": "lamp off"
+          "dmxRange": [60, 79],
+          "type": "Maintenance",
+          "comment": "lamp off"
         },
         {
-          "range": [80, 84],
-          "name": "reset all"
+          "dmxRange": [80, 84],
+          "type": "Maintenance",
+          "comment": "reset all"
         },
         {
-          "range": [85, 87],
-          "name": "pan/tilt reset"
+          "dmxRange": [85, 87],
+          "type": "Maintenance",
+          "comment": "pan/tilt reset"
         },
         {
-          "range": [88, 90],
-          "name": "reset color wheel"
+          "dmxRange": [88, 90],
+          "type": "Maintenance",
+          "comment": "reset color wheel"
         },
         {
-          "range": [91, 93],
-          "name": "reset gobos"
+          "dmxRange": [91, 93],
+          "type": "Maintenance",
+          "comment": "reset gobos"
         },
         {
-          "range": [94, 96],
-          "name": "reset shutter"
+          "dmxRange": [94, 96],
+          "type": "Maintenance",
+          "comment": "reset shutter"
         },
         {
-          "range": [97, 99],
-          "name": "reset other effects"
+          "dmxRange": [97, 99],
+          "type": "Maintenance",
+          "comment": "reset other effects"
         },
         {
-          "range": [100, 104],
-          "name": "control panel display on"
+          "dmxRange": [100, 104],
+          "type": "Maintenance",
+          "comment": "control panel display on"
         },
         {
-          "range": [105, 109],
-          "name": "control panel display off"
+          "dmxRange": [105, 109],
+          "type": "Maintenance",
+          "comment": "control panel display off"
         },
         {
-          "range": [110, 115],
-          "name": "parameter shortcuts on (default)"
+          "dmxRange": [110, 115],
+          "type": "Maintenance",
+          "comment": "parameter shortcuts on (default)"
         },
         {
-          "range": [116, 121],
-          "name": "parameter shortcuts off"
+          "dmxRange": [116, 121],
+          "type": "Maintenance",
+          "comment": "parameter shortcuts off"
         },
         {
-          "range": [122, 255],
-          "name": "reserved"
+          "dmxRange": [122, 255],
+          "type": "NoFunction"
         }
       ]
     }

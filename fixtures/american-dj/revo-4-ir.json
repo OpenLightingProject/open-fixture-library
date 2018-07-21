@@ -20,33 +20,37 @@
   },
   "availableChannels": {
     "Function": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Off",
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
           "switchChannels": {
             "Color / Chase Speed": "Color"
           }
         },
         {
-          "range": [10, 99],
-          "name": "Pattern",
+          "dmxRange": [10, 99],
+          "type": "Effect",
+          "effectName": "Pattern",
           "switchChannels": {
             "Color / Chase Speed": "Color"
           }
         },
         {
-          "range": [100, 239],
-          "name": "Chase",
+          "dmxRange": [100, 239],
+          "type": "Effect",
+          "effectName": "Chase",
           "switchChannels": {
             "Color / Chase Speed": "Chase Speed"
           }
         },
         {
-          "range": [240, 255],
-          "name": "Sound Active",
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Sound Active",
+          "soundControlled": true,
           "switchChannels": {
             "Color / Chase Speed": "Chase Speed"
           }
@@ -54,223 +58,252 @@
       ]
     },
     "Pattern / Chase": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 20],
-          "name": "Pattern / Chase 1"
+          "dmxRange": [0, 20],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 1"
         },
         {
-          "range": [21, 41],
-          "name": "Pattern / Chase 2"
+          "dmxRange": [21, 41],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 2"
         },
         {
-          "range": [42, 65],
-          "name": "Pattern / Chase 3"
+          "dmxRange": [42, 65],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 3"
         },
         {
-          "range": [66, 87],
-          "name": "Pattern / Chase 4"
+          "dmxRange": [66, 87],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 4"
         },
         {
-          "range": [88, 108],
-          "name": "Pattern / Chase 5"
+          "dmxRange": [88, 108],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 5"
         },
         {
-          "range": [109, 129],
-          "name": "Pattern / Chase 6"
+          "dmxRange": [109, 129],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 6"
         },
         {
-          "range": [130, 150],
-          "name": "Pattern / Chase 7"
+          "dmxRange": [130, 150],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 7"
         },
         {
-          "range": [151, 172],
-          "name": "Pattern / Chase 8"
+          "dmxRange": [151, 172],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 8"
         },
         {
-          "range": [173, 193],
-          "name": "Pattern / Chase 9"
+          "dmxRange": [173, 193],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 9"
         },
         {
-          "range": [194, 214],
-          "name": "Pattern / Chase 10"
+          "dmxRange": [194, 214],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 10"
         },
         {
-          "range": [215, 235],
-          "name": "Pattern / Chase 11"
+          "dmxRange": [215, 235],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 11"
         },
         {
-          "range": [236, 255],
-          "name": "Pattern / Chase 12"
+          "dmxRange": [236, 255],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 12"
         }
       ]
     },
     "Color": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 17],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [0, 17],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [18, 34],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [18, 34],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [35, 51],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [35, 51],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
-          "range": [52, 68],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [52, 68],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
-          "range": [69, 85],
-          "name": "Red + Green",
-          "color": "#ff0000",
-          "color2": "#00ff00"
+          "dmxRange": [69, 85],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Red + Green"
         },
         {
-          "range": [86, 102],
-          "name": "Red + Blue",
-          "color": "#ff0000",
-          "color2": "#0000ff"
+          "dmxRange": [86, 102],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#0000ff"],
+          "comment": "Red + Blue"
         },
         {
-          "range": [103, 119],
-          "name": "Red + White",
-          "color": "#ff0000",
-          "color2": "#ffffff"
+          "dmxRange": [103, 119],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#ffffff"],
+          "comment": "Red + White"
         },
         {
-          "range": [120, 136],
-          "name": "Green + Blue",
-          "color": "#00ff00",
-          "color2": "#0000ff"
+          "dmxRange": [120, 136],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#0000ff"],
+          "comment": "Green + Blue"
         },
         {
-          "range": [137, 153],
-          "name": "Green + White",
-          "color": "#00ff00",
-          "color2": "#ffffff"
+          "dmxRange": [137, 153],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#ffffff"],
+          "comment": "Green + White"
         },
         {
-          "range": [154, 170],
-          "name": "Blue + White",
-          "color": "#0000ff",
-          "color2": "#ffffff"
+          "dmxRange": [154, 170],
+          "type": "ColorPreset",
+          "colors": ["#0000ff", "#ffffff"],
+          "comment": "Blue + White"
         },
         {
-          "range": [171, 187],
-          "name": "Red + Green + Blue"
+          "dmxRange": [171, 187],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"],
+          "comment": "Red + Green + Blue"
         },
         {
-          "range": [188, 204],
-          "name": "Red + Green + White"
+          "dmxRange": [188, 204],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#ffffff"],
+          "comment": "Red + Green + White"
         },
         {
-          "range": [205, 221],
-          "name": "Red + Blue + White"
+          "dmxRange": [205, 221],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#0000ff", "#ffffff"],
+          "comment": "Red + Blue + White"
         },
         {
-          "range": [222, 238],
-          "name": "Green + Blue + White"
+          "dmxRange": [222, 238],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#0000ff", "#ffffff"],
+          "comment": "Green + Blue + White"
         },
         {
-          "range": [239, 255],
-          "name": "Red + Green + Blue + White"
+          "dmxRange": [239, 255],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff"],
+          "comment": "Red + Green + Blue + White"
         }
       ]
     },
     "Chase Speed": {
-      "type": "Speed",
       "defaultValue": 128,
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Strobe": {
-      "type": "Strobe",
       "defaultValue": 0,
       "highlightValue": 128,
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "stop"
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
         },
         {
-          "range": [10, 255],
-          "name": "slow…fast"
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     }
   },
   "templateChannels": {
     "Red $pixelKey": {
-      "type": "Single Color",
-      "color": "Red",
       "defaultValue": 0,
       "highlightValue": 255,
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "off"
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
         },
         {
-          "range": [128, 255],
-          "name": "on"
+          "dmxRange": [128, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightness": "bright"
         }
       ]
     },
     "Green $pixelKey": {
-      "type": "Single Color",
-      "color": "Green",
       "defaultValue": 0,
       "highlightValue": 255,
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "off"
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
         },
         {
-          "range": [128, 255],
-          "name": "on"
+          "dmxRange": [128, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightness": "bright"
         }
       ]
     },
     "Blue $pixelKey": {
-      "type": "Single Color",
-      "color": "Blue",
       "defaultValue": 0,
       "highlightValue": 255,
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "off"
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
         },
         {
-          "range": [128, 255],
-          "name": "on"
+          "dmxRange": [128, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightness": "bright"
         }
       ]
     },
     "White $pixelKey": {
-      "type": "Single Color",
-      "color": "White",
       "defaultValue": 0,
       "highlightValue": 255,
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "off"
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
         },
         {
-          "range": [128, 255],
-          "name": "on"
+          "dmxRange": [128, 255],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightness": "bright"
         }
       ]
     }

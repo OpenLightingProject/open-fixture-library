@@ -12,7 +12,7 @@
       "date": "2017-01-24"
     }
   },
-  "manualURL": "http://www.sabretechnology.co.uk/pdfs/hptwis.pdf",
+  "manualURL": "http://www.sabretechnology.co.uk/pdfs/allman2.pdf",
   "physical": {
     "dimensions": [200, 200, 400],
     "weight": 5,
@@ -27,178 +27,189 @@
   },
   "availableChannels": {
     "Rotation": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 11],
-          "name": "Stop"
+          "dmxRange": [0, 11],
+          "type": "Rotation",
+          "speed": "stop"
         },
         {
-          "range": [12, 111],
-          "name": "Fast CW"
+          "dmxRange": [12, 111],
+          "type": "Rotation",
+          "speed": "fast CW"
         },
         {
-          "range": [112, 127],
-          "name": "Slow CW"
+          "dmxRange": [112, 127],
+          "type": "Rotation",
+          "speed": "slow CW"
         },
         {
-          "range": [128, 140],
-          "name": "Stop"
+          "dmxRange": [128, 140],
+          "type": "Rotation",
+          "speed": "stop"
         },
         {
-          "range": [141, 243],
-          "name": "Slow CCW"
+          "dmxRange": [141, 243],
+          "type": "Rotation",
+          "speed": "slow CCW"
         },
         {
-          "range": [244, 254],
-          "name": "Fast CCW"
+          "dmxRange": [244, 254],
+          "type": "Rotation",
+          "speed": "fast CCW"
         },
         {
-          "range": [255, 255],
-          "name": "Stop"
+          "dmxRange": [255, 255],
+          "type": "Rotation",
+          "speed": "stop"
         }
       ]
     },
     "Color/Gobo": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Blackout",
-          "menuClick": "start",
-          "color": "#000000"
-        },
-        {
-          "range": [10, 25],
-          "name": "White [Open]",
-          "menuClick": "start",
-          "color": "#ffffff"
-        },
-        {
-          "range": [26, 42],
-          "name": "Red [Dot Tunnel]",
-          "menuClick": "start",
-          "color": "#ff0000"
-        },
-        {
-          "range": [43, 58],
-          "name": "Blue [Slash]",
-          "menuClick": "start",
-          "color": "#0000ff"
-        },
-        {
-          "range": [59, 74],
-          "name": "Green [Segment]",
-          "menuClick": "start",
-          "color": "#00ff00"
-        },
-        {
-          "range": [75, 90],
-          "name": "Yellow [Triangle]",
-          "menuClick": "start",
-          "color": "#ffff00"
-        },
-        {
-          "range": [91, 107],
-          "name": "Cyan [Tunnel]",
-          "menuClick": "start",
-          "color": "#00ffff"
-        },
-        {
-          "range": [108, 123],
-          "name": "Orange [Bubbles]",
-          "menuClick": "start",
-          "color": "#ff7f00"
-        },
-        {
-          "range": [124, 139],
-          "name": "Pink [Stars]",
-          "menuClick": "start",
-          "color": "#ff00ff"
-        },
-        {
-          "range": [140, 155],
-          "name": "Multicolor [Quadrant]",
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
           "menuClick": "start"
         },
         {
-          "range": [156, 172],
-          "name": "Orange [Bubbles]",
-          "menuClick": "start",
-          "color": "#ff7f00"
-        },
-        {
-          "range": [173, 188],
-          "name": "Cyan [Tunnel]",
-          "menuClick": "start",
-          "color": "#00ffff"
-        },
-        {
-          "range": [189, 220],
-          "name": "Yellow [Triangle]",
-          "menuClick": "start",
-          "color": "#ffff00"
-        },
-        {
-          "range": [221, 237],
-          "name": "Blue [Slash]",
-          "menuClick": "start",
-          "color": "#0000ff"
-        },
-        {
-          "range": [238, 253],
-          "name": "Slow Strobe",
+          "dmxRange": [10, 25],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "colors": ["#ffffff"],
+          "comment": "Open",
           "menuClick": "start"
         },
         {
-          "range": [254, 255],
-          "name": "Fast Strobe",
+          "dmxRange": [26, 42],
+          "type": "ColorWheelIndex",
+          "index": 1,
+          "colors": ["#ff0000"],
+          "comment": "Red [Dot Tunnel]",
+          "menuClick": "start"
+        },
+        {
+          "dmxRange": [43, 58],
+          "type": "ColorWheelIndex",
+          "index": 2,
+          "colors": ["#0000ff"],
+          "comment": "Blue [Slash]",
+          "menuClick": "start"
+        },
+        {
+          "dmxRange": [59, 74],
+          "type": "ColorWheelIndex",
+          "index": 3,
+          "colors": ["#00ff00"],
+          "comment": "Green [Segment]",
+          "menuClick": "start"
+        },
+        {
+          "dmxRange": [75, 90],
+          "type": "ColorWheelIndex",
+          "index": 4,
+          "colors": ["#ffff00"],
+          "comment": "Yellow [Triangle]",
+          "menuClick": "start"
+        },
+        {
+          "dmxRange": [91, 107],
+          "type": "ColorWheelIndex",
+          "index": 5,
+          "colors": ["#00ffff"],
+          "comment": "Cyan [Tunnel]",
+          "menuClick": "start"
+        },
+        {
+          "dmxRange": [108, 123],
+          "type": "ColorWheelIndex",
+          "index": 6,
+          "colors": ["#ff7f00"],
+          "comment": "Orange [Bubbles]",
+          "menuClick": "start"
+        },
+        {
+          "dmxRange": [124, 139],
+          "type": "ColorWheelIndex",
+          "index": 7,
+          "colors": ["#ff00ff"],
+          "comment": "Pink [Stars]",
+          "menuClick": "start"
+        },
+        {
+          "dmxRange": [140, 155],
+          "type": "ColorWheelIndex",
+          "index": 7,
+          "comment": "Multicolor [Quadrant]",
+          "menuClick": "start"
+        },
+        {
+          "dmxRange": [156, 172],
+          "type": "ColorWheelIndex",
+          "index": 8,
+          "colors": ["#ff7f00"],
+          "comment": "Orange [Bubbles]",
+          "menuClick": "start"
+        },
+        {
+          "dmxRange": [173, 188],
+          "type": "ColorWheelIndex",
+          "index": 9,
+          "colors": ["#00ffff"],
+          "comment": "Cyan [Tunnel]",
+          "menuClick": "start"
+        },
+        {
+          "dmxRange": [189, 220],
+          "type": "ColorWheelIndex",
+          "index": 10,
+          "colors": ["#ffff00"],
+          "comment": "Yellow [Triangle]",
+          "menuClick": "start"
+        },
+        {
+          "dmxRange": [221, 237],
+          "type": "ColorWheelIndex",
+          "index": 11,
+          "colors": ["#0000ff"],
+          "comment": "Blue [Slash]",
+          "menuClick": "start"
+        },
+        {
+          "dmxRange": [238, 253],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "slow",
+          "menuClick": "start"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "fast",
           "menuClick": "start"
         }
       ]
     },
     "Shutter": {
-      "type": "Shutter",
       "capabilities": [
         {
-          "range": [0, 23],
-          "name": "Blackout"
+          "dmxRange": [0, 23],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [24, 225],
-          "name": "Open"
+          "dmxRange": [24, 225],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [226, 229],
-          "name": "Slow Strobe"
-        },
-        {
-          "range": [230, 233],
-          "name": "Strobe 2"
-        },
-        {
-          "range": [234, 237],
-          "name": "Strobe 3"
-        },
-        {
-          "range": [238, 241],
-          "name": "Strobe 4"
-        },
-        {
-          "range": [242, 245],
-          "name": "Strobe 5"
-        },
-        {
-          "range": [246, 249],
-          "name": "Strobe 6"
-        },
-        {
-          "range": [250, 253],
-          "name": "Strobe 7"
-        },
-        {
-          "range": [254, 255],
-          "name": "Fast Strobe"
+          "dmxRange": [226, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     }

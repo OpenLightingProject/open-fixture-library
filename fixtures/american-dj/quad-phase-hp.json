@@ -26,153 +26,169 @@
   },
   "availableChannels": {
     "Color": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 16],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [0, 16],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [17, 33],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [17, 33],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [34, 50],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [34, 50],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
-          "range": [51, 67],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [51, 67],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
-          "range": [68, 84],
-          "name": "Red + Green",
-          "color": "#ff0000",
-          "color2": "#00ff00"
+          "dmxRange": [68, 84],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Red + Green"
         },
         {
-          "range": [85, 101],
-          "name": "Red + Blue",
-          "color": "#ff0000",
-          "color2": "#0000ff"
+          "dmxRange": [85, 101],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#0000ff"],
+          "comment": "Red + Blue"
         },
         {
-          "range": [102, 118],
-          "name": "Red + White",
-          "color": "#ff0000",
-          "color2": "#ffffff"
+          "dmxRange": [102, 118],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#ffffff"],
+          "comment": "Red + White"
         },
         {
-          "range": [119, 135],
-          "name": "Green + Blue",
-          "color": "#00ff00",
-          "color2": "#0000ff"
+          "dmxRange": [119, 135],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#0000ff"],
+          "comment": "Green + Blue"
         },
         {
-          "range": [136, 152],
-          "name": "Green + White",
-          "color": "#00ff00",
-          "color2": "#ffffff"
+          "dmxRange": [136, 152],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#ffffff"],
+          "comment": "Green + White"
         },
         {
-          "range": [153, 169],
-          "name": "Blue + White",
-          "color": "#0000ff",
-          "color2": "#ffffff"
+          "dmxRange": [153, 169],
+          "type": "ColorPreset",
+          "colors": ["#0000ff", "#ffffff"],
+          "comment": "Blue + White"
         },
         {
-          "range": [170, 186],
-          "name": "Red + Green + Blue",
-          "color": "#dddddd"
+          "dmxRange": [170, 186],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"],
+          "comment": "Red + Green + Blue"
         },
         {
-          "range": [187, 203],
-          "name": "Red + Green + White",
-          "color": "#ffff00",
-          "color2": "#ffffff"
+          "dmxRange": [187, 203],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#ffffff"],
+          "comment": "Red + Green + White"
         },
         {
-          "range": [204, 220],
-          "name": "Red + Blue + White",
-          "color": "#ff00ff",
-          "color2": "#ffffff"
+          "dmxRange": [204, 220],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#0000ff", "#ffffff"],
+          "comment": "Red + Blue + White"
         },
         {
-          "range": [221, 237],
-          "name": "Green + Blue + White",
-          "color": "#00ffff",
-          "color2": "#ffffff"
+          "dmxRange": [221, 237],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#0000ff", "#ffffff"],
+          "comment": "Green + Blue + White"
         },
         {
-          "range": [238, 255],
-          "name": "Red + Green + Blue + White",
-          "color": "#ffffff"
+          "dmxRange": [238, 255],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff"],
+          "comment": "Red + Green + Blue + White"
         }
       ]
     },
     "Rotation": {
-      "type": "Speed",
       "defaultValue": 128,
       "highlightValue": 220,
-      "crossfade": true,
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "No Rotation"
+          "dmxRange": [0, 9],
+          "type": "Rotation",
+          "speed": "stop"
         },
         {
-          "range": [10, 120],
-          "name": "CW fast…slow"
+          "dmxRange": [10, 120],
+          "type": "Rotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
-          "range": [121, 134],
-          "name": "No Rotation",
+          "dmxRange": [121, 134],
+          "type": "Rotation",
+          "speed": "stop",
           "menuClick": "hidden"
         },
         {
-          "range": [135, 245],
-          "name": "CCW slow…fast"
+          "dmxRange": [135, 245],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         },
         {
-          "range": [246, 249],
-          "name": "No Rotation",
+          "dmxRange": [246, 249],
+          "type": "Rotation",
+          "speed": "stop",
           "menuClick": "hidden"
         },
         {
-          "range": [250, 255],
-          "name": "Sound"
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true
         }
       ]
     },
     "Strobe": {
-      "type": "Strobe",
       "highlightValue": 200,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "No Strobe"
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "No Strobe"
         },
         {
-          "range": [1, 255],
-          "name": "Strobe slow…fast"
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Shutter": {
-      "type": "Shutter",
       "highlightValue": 255,
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "Shutter closed"
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [16, 255],
-          "name": "Shutter open"
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     }

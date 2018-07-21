@@ -51,6 +51,21 @@ Vue.use(VueForm, {
       }
 
       return !/\bLSB\b|\bMSB\b/.test(value);
+    },
+    'entity-complete': function(value, attrValue, vnode) {
+      const component = vnode.componentInstance;
+
+      if (component.hasNumber) {
+        return component.selectedNumber !== `` && component.selectedNumber !== null;
+      }
+
+      return true;
+    },
+    'entities-have-same-units': function(value, attrValue, vnode) {
+      return vnode.componentInstance.hasSameUnit;
+    },
+    'valid-color-hex-list': function(value) {
+      return /^\s*#[0-9a-f]{6}(?:\s*,\s*#[0-9a-f]{6})*\s*$/i.test(value);
     }
   }
 });

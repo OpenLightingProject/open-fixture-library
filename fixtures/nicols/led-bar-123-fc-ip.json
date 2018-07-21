@@ -31,206 +31,246 @@
   },
   "availableChannels": {
     "Dimmer": {
-      "type": "Intensity",
       "defaultValue": 0,
-      "crossfade": true,
-      "precedence": "LTP"
+      "precedence": "LTP",
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Macro": {
-      "type": "Multi-Color",
       "defaultValue": 0,
       "precedence": "LTP",
       "capabilities": [
         {
-          "range": [0, 6],
-          "name": "No function"
+          "dmxRange": [0, 6],
+          "type": "NoFunction"
         },
         {
-          "range": [7, 13],
-          "name": "Program 1"
+          "dmxRange": [7, 13],
+          "type": "Effect",
+          "effectName": "Program 1"
         },
         {
-          "range": [14, 20],
-          "name": "Program 2"
+          "dmxRange": [14, 20],
+          "type": "Effect",
+          "effectName": "Program 2"
         },
         {
-          "range": [21, 27],
-          "name": "Program 3"
+          "dmxRange": [21, 27],
+          "type": "Effect",
+          "effectName": "Program 3"
         },
         {
-          "range": [28, 34],
-          "name": "Program 4"
+          "dmxRange": [28, 34],
+          "type": "Effect",
+          "effectName": "Program 4"
         },
         {
-          "range": [35, 41],
-          "name": "Program 5"
+          "dmxRange": [35, 41],
+          "type": "Effect",
+          "effectName": "Program 5"
         },
         {
-          "range": [42, 48],
-          "name": "Program 6"
+          "dmxRange": [42, 48],
+          "type": "Effect",
+          "effectName": "Program 6"
         },
         {
-          "range": [49, 55],
-          "name": "Program 7"
+          "dmxRange": [49, 55],
+          "type": "Effect",
+          "effectName": "Program 7"
         },
         {
-          "range": [56, 62],
-          "name": "Program 8"
+          "dmxRange": [56, 62],
+          "type": "Effect",
+          "effectName": "Program 8"
         },
         {
-          "range": [63, 69],
-          "name": "Program 9"
+          "dmxRange": [63, 69],
+          "type": "Effect",
+          "effectName": "Program 9"
         },
         {
-          "range": [70, 76],
-          "name": "Program 10"
+          "dmxRange": [70, 76],
+          "type": "Effect",
+          "effectName": "Program 10"
         },
         {
-          "range": [77, 83],
-          "name": "Program 11"
+          "dmxRange": [77, 83],
+          "type": "Effect",
+          "effectName": "Program 11"
         },
         {
-          "range": [84, 90],
-          "name": "Program 12"
+          "dmxRange": [84, 90],
+          "type": "Effect",
+          "effectName": "Program 12"
         },
         {
-          "range": [91, 97],
-          "name": "Program 13"
+          "dmxRange": [91, 97],
+          "type": "Effect",
+          "effectName": "Program 13"
         },
         {
-          "range": [98, 104],
-          "name": "Program 14"
+          "dmxRange": [98, 104],
+          "type": "Effect",
+          "effectName": "Program 14"
         },
         {
-          "range": [105, 111],
-          "name": "Program 15"
+          "dmxRange": [105, 111],
+          "type": "Effect",
+          "effectName": "Program 15"
         },
         {
-          "range": [112, 118],
-          "name": "Program 16"
+          "dmxRange": [112, 118],
+          "type": "Effect",
+          "effectName": "Program 16"
         },
         {
-          "range": [119, 125],
-          "name": "Program 17"
+          "dmxRange": [119, 125],
+          "type": "Effect",
+          "effectName": "Program 17"
         },
         {
-          "range": [126, 132],
-          "name": "Program 18"
+          "dmxRange": [126, 132],
+          "type": "Effect",
+          "effectName": "Program 18"
         },
         {
-          "range": [133, 139],
-          "name": "Program 19"
+          "dmxRange": [133, 139],
+          "type": "Effect",
+          "effectName": "Program 19"
         },
         {
-          "range": [140, 146],
-          "name": "Program 20"
+          "dmxRange": [140, 146],
+          "type": "Effect",
+          "effectName": "Program 20"
         },
         {
-          "range": [147, 153],
-          "name": "Program 21"
+          "dmxRange": [147, 153],
+          "type": "Effect",
+          "effectName": "Program 21"
         },
         {
-          "range": [154, 160],
-          "name": "Program 22"
+          "dmxRange": [154, 160],
+          "type": "Effect",
+          "effectName": "Program 22"
         },
         {
-          "range": [161, 167],
-          "name": "Program 23"
+          "dmxRange": [161, 167],
+          "type": "Effect",
+          "effectName": "Program 23"
         },
         {
-          "range": [168, 174],
-          "name": "Program 24"
+          "dmxRange": [168, 174],
+          "type": "Effect",
+          "effectName": "Program 24"
         },
         {
-          "range": [175, 181],
-          "name": "Program 25"
+          "dmxRange": [175, 181],
+          "type": "Effect",
+          "effectName": "Program 25"
         },
         {
-          "range": [182, 188],
-          "name": "Program 26"
+          "dmxRange": [182, 188],
+          "type": "Effect",
+          "effectName": "Program 26"
         },
         {
-          "range": [189, 195],
-          "name": "Program 27"
+          "dmxRange": [189, 195],
+          "type": "Effect",
+          "effectName": "Program 27"
         },
         {
-          "range": [196, 202],
-          "name": "Program 28"
+          "dmxRange": [196, 202],
+          "type": "Effect",
+          "effectName": "Program 28"
         },
         {
-          "range": [203, 209],
-          "name": "Program 29"
+          "dmxRange": [203, 209],
+          "type": "Effect",
+          "effectName": "Program 29"
         },
         {
-          "range": [210, 216],
-          "name": "Program 30"
+          "dmxRange": [210, 216],
+          "type": "Effect",
+          "effectName": "Program 30"
         },
         {
-          "range": [217, 223],
-          "name": "Program 31"
+          "dmxRange": [217, 223],
+          "type": "Effect",
+          "effectName": "Program 31"
         },
         {
-          "range": [224, 230],
-          "name": "Program 32"
+          "dmxRange": [224, 230],
+          "type": "Effect",
+          "effectName": "Program 32"
         },
         {
-          "range": [231, 237],
-          "name": "Program 33"
+          "dmxRange": [231, 237],
+          "type": "Effect",
+          "effectName": "Program 33"
         },
         {
-          "range": [238, 244],
-          "name": "Program 34"
+          "dmxRange": [238, 244],
+          "type": "Effect",
+          "effectName": "Program 34"
         },
         {
-          "range": [245, 255],
-          "name": "Program 35"
+          "dmxRange": [245, 255],
+          "type": "Effect",
+          "effectName": "Program 35"
         }
       ]
     },
     "Macro Speed": {
-      "type": "Speed",
       "defaultValue": 0,
-      "crossfade": true,
-      "precedence": "LTP"
+      "precedence": "LTP",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Strobe": {
-      "type": "Strobe",
       "defaultValue": 0,
-      "crossfade": true,
       "precedence": "LTP",
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "No function"
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
         },
         {
-          "range": [16, 255],
-          "name": "Strobe"
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
         }
       ]
     }
   },
   "templateChannels": {
     "Red $pixelKey": {
-      "type": "Single Color",
-      "color": "Red",
       "defaultValue": 0,
-      "crossfade": true,
-      "precedence": "LTP"
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green $pixelKey": {
-      "type": "Single Color",
-      "color": "Green",
       "defaultValue": 0,
-      "crossfade": true,
-      "precedence": "LTP"
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue $pixelKey": {
-      "type": "Single Color",
-      "color": "Blue",
       "defaultValue": 0,
-      "crossfade": true,
-      "precedence": "LTP"
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     }
   },
   "modes": [

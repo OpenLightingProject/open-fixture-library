@@ -18,8 +18,10 @@
   },
   "availableChannels": {
     "Intensity": {
-      "type": "Intensity",
-      "defaultValue": 1
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
     }
   },
   "modes": [

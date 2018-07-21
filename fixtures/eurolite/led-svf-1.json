@@ -26,91 +26,110 @@
   },
   "availableChannels": {
     "Programs": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 12],
-          "name": "Program 1"
+          "dmxRange": [0, 12],
+          "type": "Effect",
+          "effectName": "Program 1"
         },
         {
-          "range": [13, 25],
-          "name": "Program 2"
+          "dmxRange": [13, 25],
+          "type": "Effect",
+          "effectName": "Program 2"
         },
         {
-          "range": [26, 38],
-          "name": "Program 3"
+          "dmxRange": [26, 38],
+          "type": "Effect",
+          "effectName": "Program 3"
         },
         {
-          "range": [39, 51],
-          "name": "Program 4"
+          "dmxRange": [39, 51],
+          "type": "Effect",
+          "effectName": "Program 4"
         },
         {
-          "range": [52, 64],
-          "name": "Program 5"
+          "dmxRange": [52, 64],
+          "type": "Effect",
+          "effectName": "Program 5"
         },
         {
-          "range": [65, 77],
-          "name": "Program 6"
+          "dmxRange": [65, 77],
+          "type": "Effect",
+          "effectName": "Program 6"
         },
         {
-          "range": [78, 90],
-          "name": "Program 7"
+          "dmxRange": [78, 90],
+          "type": "Effect",
+          "effectName": "Program 7"
         },
         {
-          "range": [91, 103],
-          "name": "Program 8"
+          "dmxRange": [91, 103],
+          "type": "Effect",
+          "effectName": "Program 8"
         },
         {
-          "range": [104, 116],
-          "name": "Program 9"
+          "dmxRange": [104, 116],
+          "type": "Effect",
+          "effectName": "Program 9"
         },
         {
-          "range": [117, 129],
-          "name": "Program 10"
+          "dmxRange": [117, 129],
+          "type": "Effect",
+          "effectName": "Program 10"
         },
         {
-          "range": [130, 142],
-          "name": "Program 11"
+          "dmxRange": [130, 142],
+          "type": "Effect",
+          "effectName": "Program 11"
         },
         {
-          "range": [143, 155],
-          "name": "Program 12"
+          "dmxRange": [143, 155],
+          "type": "Effect",
+          "effectName": "Program 12"
         },
         {
-          "range": [156, 168],
-          "name": "Program 13"
+          "dmxRange": [156, 168],
+          "type": "Effect",
+          "effectName": "Program 13"
         },
         {
-          "range": [169, 181],
-          "name": "Program 14"
+          "dmxRange": [169, 181],
+          "type": "Effect",
+          "effectName": "Program 14"
         },
         {
-          "range": [182, 194],
-          "name": "Program 15"
+          "dmxRange": [182, 194],
+          "type": "Effect",
+          "effectName": "Program 15"
         },
         {
-          "range": [195, 214],
-          "name": "All programs looping"
+          "dmxRange": [195, 214],
+          "type": "Effect",
+          "effectName": "All programs looping"
         },
         {
-          "range": [215, 255],
-          "name": "Sound Control"
+          "dmxRange": [215, 255],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true
         }
       ]
     },
     "Program Speed": {
-      "type": "Speed",
       "defaultValue": 132,
       "highlightValue": 255,
-      "crossfade": true,
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "All LEDs off"
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "All LEDs off"
         },
         {
-          "range": [11, 255],
-          "name": "Speed slow…fast"
+          "dmxRange": [11, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     }

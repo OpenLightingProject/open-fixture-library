@@ -17,15 +17,17 @@
   },
   "availableChannels": {
     "Fog": {
-      "type": "Fog",
       "capabilities": [
         {
-          "range": [0, 29],
-          "name": "No haze"
+          "dmxRange": [0, 29],
+          "type": "NoFunction"
         },
         {
-          "range": [30, 255],
-          "name": "Haze density min-max"
+          "dmxRange": [30, 255],
+          "type": "Fog",
+          "fogOutputStart": "0m^3/min",
+          "fogOutputEnd": "2500m^3/min",
+          "fogType": "Haze"
         }
       ]
     }

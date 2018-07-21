@@ -27,314 +27,419 @@
   },
   "availableChannels": {
     "Control": {
-      "type": "Maintenance",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 20],
-          "name": "Fire"
+          "dmxRange": [0, 20],
+          "type": "Maintenance",
+          "comment": "Fire"
         },
         {
-          "range": [21, 25],
-          "name": "Park"
+          "dmxRange": [21, 25],
+          "type": "Maintenance",
+          "comment": "Park"
         },
         {
-          "range": [26, 30],
-          "name": "Online"
+          "dmxRange": [26, 30],
+          "type": "Maintenance",
+          "comment": "Online"
         },
         {
-          "range": [31, 35],
-          "name": "No function"
+          "dmxRange": [31, 35],
+          "type": "NoFunction"
         },
         {
-          "range": [36, 40],
-          "name": "Stealth Mode"
+          "dmxRange": [36, 40],
+          "type": "Maintenance",
+          "comment": "Stealth Mode"
         },
         {
-          "range": [41, 45],
-          "name": "Quiet Mode"
+          "dmxRange": [41, 45],
+          "type": "Maintenance",
+          "comment": "Quiet Mode"
         },
         {
-          "range": [46, 50],
-          "name": "Fast mode"
+          "dmxRange": [46, 50],
+          "type": "Maintenance",
+          "comment": "Fast mode"
         },
         {
-          "range": [51, 55],
-          "name": "Reset all"
+          "dmxRange": [51, 55],
+          "type": "Maintenance",
+          "comment": "Reset all"
         },
         {
-          "range": [56, 60],
-          "name": "Reset all Shutters"
+          "dmxRange": [56, 60],
+          "type": "Maintenance",
+          "comment": "Reset all Shutters"
         },
         {
-          "range": [61, 65],
-          "name": "Reset Gobo 1"
+          "dmxRange": [61, 65],
+          "type": "Maintenance",
+          "comment": "Reset Gobo 1"
         },
         {
-          "range": [66, 70],
-          "name": "Gobo 2/iris"
+          "dmxRange": [66, 70],
+          "type": "Maintenance",
+          "comment": "Gobo 2/iris"
         },
         {
-          "range": [71, 75],
-          "name": "Reset Zoom"
+          "dmxRange": [71, 75],
+          "type": "Maintenance",
+          "comment": "Reset Zoom"
         },
         {
-          "range": [76, 80],
-          "name": "Reset Focus"
+          "dmxRange": [76, 80],
+          "type": "Maintenance",
+          "comment": "Reset Focus"
         },
         {
-          "range": [81, 85],
-          "name": "Reset Pan"
+          "dmxRange": [81, 85],
+          "type": "Maintenance",
+          "comment": "Reset Pan"
         },
         {
-          "range": [86, 90],
-          "name": "Reset Tilt"
+          "dmxRange": [86, 90],
+          "type": "Maintenance",
+          "comment": "Reset Tilt"
         },
         {
-          "range": [91, 95],
-          "name": "No function"
+          "dmxRange": [91, 95],
+          "type": "NoFunction"
         },
         {
-          "range": [96, 100],
-          "name": "Calibration lens"
+          "dmxRange": [96, 100],
+          "type": "Maintenance",
+          "comment": "Calibration lens"
         },
         {
-          "range": [101, 105],
-          "name": "Calibration of Shutters"
+          "dmxRange": [101, 105],
+          "type": "Maintenance",
+          "comment": "Calibration of Shutters"
         },
         {
-          "range": [106, 110],
-          "name": "Calibration of Pan/Tilt"
+          "dmxRange": [106, 110],
+          "type": "Maintenance",
+          "comment": "Calibration of Pan/Tilt"
         },
         {
-          "range": [111, 115],
-          "name": "Calibration of Iris/Gobo"
+          "dmxRange": [111, 115],
+          "type": "Maintenance",
+          "comment": "Calibration of Iris/Gobo"
         },
         {
-          "range": [116, 120],
-          "name": "No function"
+          "dmxRange": [116, 120],
+          "type": "NoFunction"
         },
         {
-          "range": [121, 125],
-          "name": "Pan invert On"
+          "dmxRange": [121, 125],
+          "type": "Maintenance",
+          "comment": "Pan invert On"
         },
         {
-          "range": [126, 130],
-          "name": "Pan invert Off"
+          "dmxRange": [126, 130],
+          "type": "Maintenance",
+          "comment": "Pan invert Off"
         },
         {
-          "range": [131, 135],
-          "name": "Tilt invert On"
+          "dmxRange": [131, 135],
+          "type": "Maintenance",
+          "comment": "Tilt invert On"
         },
         {
-          "range": [136, 140],
-          "name": "Tilt invert Off"
+          "dmxRange": [136, 140],
+          "type": "Maintenance",
+          "comment": "Tilt invert Off"
         },
         {
-          "range": [141, 145],
-          "name": "Pan/Tilt swap On"
+          "dmxRange": [141, 145],
+          "type": "Maintenance",
+          "comment": "Pan/Tilt swap On"
         },
         {
-          "range": [146, 150],
-          "name": "Pan/Tilt swap Off"
+          "dmxRange": [146, 150],
+          "type": "Maintenance",
+          "comment": "Pan/Tilt swap Off"
         },
         {
-          "range": [151, 155],
-          "name": "Display On"
+          "dmxRange": [151, 155],
+          "type": "Maintenance",
+          "comment": "Display On"
         },
         {
-          "range": [156, 160],
-          "name": "Display Off"
+          "dmxRange": [156, 160],
+          "type": "Maintenance",
+          "comment": "Display Off"
         },
         {
-          "range": [161, 165],
-          "name": "Factory default setting"
+          "dmxRange": [161, 165],
+          "type": "Maintenance",
+          "comment": "Factory default setting"
         },
         {
-          "range": [166, 170],
-          "name": "User setting 1"
+          "dmxRange": [166, 170],
+          "type": "Maintenance",
+          "comment": "User setting 1"
         },
         {
-          "range": [171, 175],
-          "name": "User setting 2"
+          "dmxRange": [171, 175],
+          "type": "Maintenance",
+          "comment": "User setting 2"
         },
         {
-          "range": [176, 180],
-          "name": "User setting 3"
+          "dmxRange": [176, 180],
+          "type": "Maintenance",
+          "comment": "User setting 3"
         },
         {
-          "range": [181, 185],
-          "name": "No function"
+          "dmxRange": [181, 185],
+          "type": "NoFunction"
         },
         {
-          "range": [186, 190],
-          "name": "DMX address setting"
+          "dmxRange": [186, 190],
+          "type": "Maintenance",
+          "comment": "DMX address setting"
         },
         {
-          "range": [191, 195],
-          "name": "Accessory change"
+          "dmxRange": [191, 195],
+          "type": "Maintenance",
+          "comment": "Accessory change"
         },
         {
-          "range": [196, 200],
-          "name": "Gobo Mode indexed"
+          "dmxRange": [196, 200],
+          "type": "Maintenance",
+          "comment": "Gobo Mode indexed"
         },
         {
-          "range": [201, 205],
-          "name": "Gobo Mode indexed and Endless rotation"
+          "dmxRange": [201, 205],
+          "type": "Maintenance",
+          "comment": "Gobo Mode indexed and Endless rotation"
         },
         {
-          "range": [206, 210],
-          "name": "No function"
+          "dmxRange": [206, 210],
+          "type": "NoFunction"
         },
         {
-          "range": [211, 215],
-          "name": "No function"
+          "dmxRange": [211, 215],
+          "type": "NoFunction"
         },
         {
-          "range": [216, 220],
-          "name": "No function"
+          "dmxRange": [216, 220],
+          "type": "NoFunction"
         },
         {
-          "range": [221, 225],
-          "name": "No function"
+          "dmxRange": [221, 225],
+          "type": "NoFunction"
         },
         {
-          "range": [226, 230],
-          "name": "No function"
+          "dmxRange": [226, 230],
+          "type": "NoFunction"
         },
         {
-          "range": [231, 235],
-          "name": "No function"
+          "dmxRange": [231, 235],
+          "type": "NoFunction"
         },
         {
-          "range": [236, 240],
-          "name": "No function"
+          "dmxRange": [236, 240],
+          "type": "NoFunction"
         },
         {
-          "range": [241, 255],
-          "name": "Arm"
+          "dmxRange": [241, 255],
+          "type": "Maintenance",
+          "comment": "Arm"
         }
       ]
     },
     "Pan": {
-      "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
       "defaultValue": 32767,
-      "crossfade": true
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "400deg"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
       "defaultValue": 32767,
-      "crossfade": true
+      "capability": {
+      "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "275deg"
+      }
     },
     "Zoom": {
-      "type": "Zoom",
       "defaultValue": 0,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Zoom narrow…wide",
-          "helpWanted": "Correct direction?"
-        }
-      ]
+      "capability": {
+      "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide",
+        "helpWanted": "Correct direction?"
+      }
     },
     "Focus": {
-      "type": "Focus",
       "defaultValue": 0,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Focus near…far",
-          "helpWanted": "Correct direction?"
-        }
-      ]
+      "capability": {
+      "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far",
+        "helpWanted": "Correct direction?"
+      }
     },
     "Shutter A Rotation": {
-      "type": "Shutter",
       "fineChannelAliases": ["Shutter A Rotation fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 1,
+        "angleStart": "0deg",
+        "angleEnd": "720deg"
+      }
     },
     "Shutter A Insertion": {
-      "type": "Shutter",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 1,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
     },
     "Shutter B Rotation": {
-      "type": "Shutter",
       "fineChannelAliases": ["Shutter B Rotation fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 2,
+        "angleStart": "0deg",
+        "angleEnd": "720deg"
+      }
     },
     "Shutter B Insertion": {
-      "type": "Shutter",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 2,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
     },
     "Shutter C Rotation": {
-      "type": "Shutter",
       "fineChannelAliases": ["Shutter C Rotation fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 3,
+        "angleStart": "0deg",
+        "angleEnd": "720deg"
+      }
     },
     "Shutter C Insertion": {
-      "type": "Shutter",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 3,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
     },
     "Shutter D Rotation": {
-      "type": "Shutter",
       "fineChannelAliases": ["Shutter D Rotation fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 4,
+        "angleStart": "0deg",
+        "angleEnd": "720deg"
+      }
     },
     "Shutter D Insertion": {
-      "type": "Shutter",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 4,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
     },
     "Shutters all rotation offset": {
-      "type": "Shutter",
       "fineChannelAliases": ["Shutters all rotation offset fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "capability": {
+        "type": "BladeSystemRotation",
+        "angleStart": "0deg",
+        "angleEnd": "720deg"
+      }
     },
     "Gobo 1 rotation": {
-      "type": "Gobo",
       "fineChannelAliases": ["Gobo 1 rotation fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "capability": {
+        "type": "GoboStencilRotation",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
     },
     "Iris": {
-      "type": "Iris",
-      "fineChannelAliases": ["Iris fine"]
+      "fineChannelAliases": ["Iris fine"],
+      "capability": {
+        "type": "Iris",
+        "openPercentStart": "open",
+        "openPercentEnd": "closed"
+      }
     },
     "External dimmer (optional)": {
-      "type": "Intensity",
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "External DMX output 1": {
-      "type": "Maintenance",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
     },
     "External DMX output 2": {
-      "type": "Maintenance",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
     },
     "External DMX output 3": {
-      "type": "Maintenance",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
     },
     "External DMX output 4": {
-      "type": "Maintenance",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
     },
     "External DMX output 5": {
-      "type": "Maintenance",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
     },
     "External DMX output 6": {
-      "type": "Maintenance",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
     },
     "External DMX output 7": {
-      "type": "Maintenance",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
     },
     "External DMX output 8": {
-      "type": "Maintenance",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
     }
   },
   "modes": [
