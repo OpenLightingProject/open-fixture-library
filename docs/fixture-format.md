@@ -105,7 +105,7 @@ A channel can do different things depending on which range its DMX value current
 
 If a channel consists of a single 0-255 capability, one should use the `capability` property (instead of `capabilities`), which only needs a single object instead of an array of objects. The `dmxRange` is implicit in this object (see example below).
 
-Capabilities may be _steps_, which means that the whole DMX range has the same effect (e.g. "Gobo 1"), or _proportional_, which means that the effect is increasing / decreasing from the start to the end of the DMX range (e.g. "Intensity 0-100%"). A proportional capability can define a start and an end value of its type-specific properties – note that some properties don't allow start/end values. Example:
+Capabilities may be _steps_, which means that the whole DMX range has the same effect (e.g. "Gobo 1"), or _proportional_, which means that the effect is increasing / decreasing from the start to the end of the DMX range (e.g. "Intensity 0-100%"). A proportional capability can define a start and an end value of its type-specific properties. Example:
 
 ```js
 "availableChannels": {
@@ -123,7 +123,9 @@ Capabilities may be _steps_, which means that the whole DMX range has the same e
 }
 ```
 
-The `menuClick` property defines which DMX value to use if the whole capability is selected: `start` / `center` / `end` sets the channel's DMX value to the start / center / end of the range, respectively. `hidden` hides this capability from the trigger menu. This is a special feature supported only by some lighting programs.
+Please note that some properties don't allow start/end values, for example `hold`.
+
+The `menuClick` property defines which DMX value to use if the whole capability is selected: `start` / `center` / `end` sets the channel's DMX value to the start / center / end of the range, respectively. `hidden` hides this capability from the trigger menu. This is one of those special features that are supported only by some lighting programs.
 
 
 #### Fine channels
@@ -213,9 +215,11 @@ To reuse similar channels for each pixel or pixel group (like "Red&nbsp;1", Red&
 ```js
 "templateChannels": {
   "Red $pixelKey": {
-    "type": "Single Color",
-    "color": "Red",
-    "fineChannelAliases": ["Red $pixelkey fine"]
+    "fineChannelAliases": ["Red $pixelKey fine"],
+    "capability": {
+      "type": "ColorIntensity",
+      "color": "Red"
+    }
   }
 }
 ```
