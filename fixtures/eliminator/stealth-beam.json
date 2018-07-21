@@ -13,7 +13,6 @@
     }
   },
   "manualURL": "http://cdb.s3.amazonaws.com/ItemRelatedFiles/11195/Stealth%20Beam%20(1st%20Ed.).pdf",
-  "helpWanted": "Is tilt also infinite? Or is the tilt macro just a \"shake\" effect?",
   "physical": {
     "dimensions": [239, 285, 146],
     "weight": 3.8,
@@ -200,7 +199,7 @@
         }
       ]
     },
-    "Pan Movement Macro": {
+    "Pan Continuous Movement": {
       "capabilities": [
         {
           "dmxRange": [0, 7],
@@ -208,17 +207,37 @@
         },
         {
           "dmxRange": [8, 127],
-          "type": "Effect",
-          "effectName": "Pan movement",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "PanContinuous",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         },
         {
           "dmxRange": [128, 255],
+          "type": "PanContinuous",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
+        }
+      ]
+    },
+    "Pan Movement Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Tilt Movement Macro": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
           "type": "Effect",
-          "effectName": "Pan movement",
-          "speedStart": "fast reverse",
-          "speedEnd": "slow reverse"
+          "effectName": "Tilt movement forth and back",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
@@ -288,22 +307,7 @@
         }
       ]
     },
-    "Tilt Movement Macro": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 7],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [8, 255],
-          "type": "Effect",
-          "effectName": "Pan movement",
-          "speedStart": "fast",
-          "speedEnd": "fast reverse"
-        }
-      ]
-    },
-    "Pan/Tilt Speed": {
+    "Pan/Tilt Program Speed": {
       "capabilities": [
         {
           "dmxRange": [0, 50],
@@ -351,8 +355,8 @@
       ]
     },
     {
-      "name": "16-channel",
-      "shortName": "16ch",
+      "name": "17-channel",
+      "shortName": "17ch",
       "channels": [
         "Pan",
         "Pan fine",
@@ -365,11 +369,12 @@
         "Color Macro",
         "Master Dimmer",
         "Shutter / Strobe",
-        "Pan Movement Macro",
+        "Pan Continuous Movement",
+        "Pan Movement Speed",
+        "Tilt Movement Macro",
         "Color Change / Fade Speed",
         "Pan/Tilt Programs",
-        "Tilt Movement Macro",
-        "Pan/Tilt Speed"
+        "Pan/Tilt Program Speed"
       ]
     }
   ]

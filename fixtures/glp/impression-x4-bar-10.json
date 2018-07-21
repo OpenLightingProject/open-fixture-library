@@ -53,8 +53,7 @@
       "capability": {
         "type": "Zoom",
         "angleStart": "50deg",
-        "angleEnd": "7deg",
-        "comment": "Wide (flood) - narrow (spot)"
+        "angleEnd": "7deg"
       }
     },
     "CTO": {
@@ -70,8 +69,7 @@
           "dmxRange": [8, 255],
           "type": "ColorTemperature",
           "colorTemperatureStart": "default",
-          "colorTemperatureEnd": "CTO",
-          "comment": "Continuous color temperature correction"
+          "colorTemperatureEnd": "CTO"
         }
       ]
     },

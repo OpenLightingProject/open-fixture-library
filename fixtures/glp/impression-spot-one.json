@@ -494,162 +494,226 @@
         {
           "dmxRange": [1, 7],
           "type": "Effect",
-          "effectName": "Pan size 1 phase 0-270deg"
+          "effectName": "Pan size 1 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [8, 15],
           "type": "Effect",
-          "effectName": "Pan size 2 phase 0-270deg"
+          "effectName": "Pan size 2 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [16, 23],
           "type": "Effect",
-          "effectName": "Pan size 3 phase 0-270deg"
+          "effectName": "Pan size 3 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [24, 31],
           "type": "Effect",
-          "effectName": "Pan size 4 phase 0-270deg"
+          "effectName": "Pan size 4 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [32, 39],
           "type": "Effect",
-          "effectName": "Tilt size 1 phase 0-270deg"
+          "effectName": "Tilt size 1 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [40, 47],
           "type": "Effect",
-          "effectName": "Tilt size 2 phase 0-270deg"
+          "effectName": "Tilt size 2 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [48, 55],
           "type": "Effect",
-          "effectName": "Tilt size 3 phase 0-270deg"
+          "effectName": "Tilt size 3 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [56, 63],
           "type": "Effect",
-          "effectName": "Tilt size 4 phase 0-270deg"
+          "effectName": "Tilt size 4 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [64, 71],
           "type": "Effect",
-          "effectName": "Pan/Tilt size 1 phase 0-270deg"
+          "effectName": "Pan/Tilt size 1 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [72, 79],
           "type": "Effect",
-          "effectName": "Pan/Tilt size 2 phase 0-270deg"
+          "effectName": "Pan/Tilt size 2 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [80, 87],
           "type": "Effect",
-          "effectName": "Pan/Tilt size 3 phase 0-270deg"
+          "effectName": "Pan/Tilt size 3 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [88, 95],
           "type": "Effect",
-          "effectName": "Pan/Tilt size 4 phase 0-270deg"
+          "effectName": "Pan/Tilt size 4 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [96, 103],
           "type": "Effect",
-          "effectName": "Pan/Tilt inverse size 1 phase 0-270deg"
+          "effectName": "Pan/Tilt inverse size 1 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [104, 111],
           "type": "Effect",
-          "effectName": "Pan/Tilt inverse size 2 phase 0-270deg"
+          "effectName": "Pan/Tilt inverse size 2 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [112, 119],
           "type": "Effect",
-          "effectName": "Pan/Tilt inverse size 3 phase 0-270deg"
+          "effectName": "Pan/Tilt inverse size 3 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [120, 127],
           "type": "Effect",
-          "effectName": "Pan/Tilt inverse size 4 phase 0-270deg"
+          "effectName": "Pan/Tilt inverse size 4 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [128, 135],
           "type": "Effect",
-          "effectName": "Circle size 1 phase 0-270deg"
+          "effectName": "Circle size 1 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [136, 143],
           "type": "Effect",
-          "effectName": "Circle size 2 phase 0-270deg"
+          "effectName": "Circle size 2 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [144, 151],
           "type": "Effect",
-          "effectName": "Circle size 3 phase 0-270deg"
+          "effectName": "Circle size 3 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [152, 159],
           "type": "Effect",
-          "effectName": "Circle size 4 phase 0-270deg"
+          "effectName": "Circle size 4 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [160, 167],
           "type": "Effect",
-          "effectName": "Circle inverse size 1 phase 0-270deg"
+          "effectName": "Circle inverse size 1 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [168, 175],
           "type": "Effect",
-          "effectName": "Circle inverse size 2 phase 0-270deg"
+          "effectName": "Circle inverse size 2 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [176, 183],
           "type": "Effect",
-          "effectName": "Circle inverse size 3 phase 0-270deg"
+          "effectName": "Circle inverse size 3 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [184, 191],
           "type": "Effect",
-          "effectName": "Circle inverse size 4 phase 0-270deg"
+          "effectName": "Circle inverse size 4 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [192, 199],
           "type": "Effect",
-          "effectName": "Eight size 1 phase 0-270deg"
+          "effectName": "Eight size 1 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [200, 207],
           "type": "Effect",
-          "effectName": "Eight size 2 phase 0-270deg"
+          "effectName": "Eight size 2 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [208, 215],
           "type": "Effect",
-          "effectName": "Eight size 3 phase 0-270deg"
+          "effectName": "Eight size 3 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [216, 223],
           "type": "Effect",
-          "effectName": "Eight size 4 phase 0-270deg"
+          "effectName": "Eight size 4 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [224, 231],
           "type": "Effect",
-          "effectName": "Random size 1 phase 0-270deg"
+          "effectName": "Random size 1 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [232, 239],
           "type": "Effect",
-          "effectName": "Random size 2 phase 0-270deg"
+          "effectName": "Random size 2 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [240, 247],
           "type": "Effect",
-          "effectName": "Random size 3 phase 0-270deg"
+          "effectName": "Random size 3 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         },
         {
           "dmxRange": [248, 255],
           "type": "Effect",
-          "effectName": "Random size 4 phase 0-270deg"
+          "effectName": "Random size 4 phase",
+          "parameterStart": "0deg",
+          "parameterEnd": "270deg"
         }
       ]
     },

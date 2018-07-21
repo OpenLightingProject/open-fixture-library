@@ -58,7 +58,7 @@
         {
           "dmxRange": [0, 0],
           "type": "PanTiltSpeed",
-          "speed": "100%",
+          "speed": "fast",
           "comment": "Tracking Mode"
         },
         {
@@ -1428,7 +1428,8 @@
           "type": "FrostEffect",
           "effectName": "Ramping",
           "speedStart": "fast",
-          "speedEnd": "slow"
+          "speedEnd": "slow",
+          "helpWanted": "Is this ramp up and down?"
         }
       ]
     },

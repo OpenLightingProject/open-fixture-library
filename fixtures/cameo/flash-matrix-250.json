@@ -509,7 +509,7 @@
         }
       ]
     },
-    "Pattern Speed": {
+    "Pattern Speed / Sound Sensitivity": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -561,10 +561,9 @@
         },
         {
           "dmxRange": [230, 255],
-          "type": "EffectSpeed",
-          "comment": "sound trigger",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
         }
       ]
     },
@@ -682,7 +681,7 @@
         "Strobe Extended",
         "Pattern Type",
         "Pattern Select",
-        "Pattern Speed",
+        "Pattern Speed / Sound Sensitivity",
         "Pattern Transition",
         "Pattern Effect",
         "Pattern Invert / Swap",

@@ -77,9 +77,9 @@
     "Pan/Tilt Speed": {
       "capability": {
         "type": "PanTiltSpeed",
-        "durationStart": "0.1s",
-        "durationEnd": "25.5s",
-        "comment": "fast…slow"
+        "comment": "or Time 0.1…25.5s",
+        "speedStart": "fast",
+        "speedEnd": "slow"
       }
     },
     "Special Functions": {

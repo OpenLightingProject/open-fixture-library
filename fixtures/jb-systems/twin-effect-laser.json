@@ -420,24 +420,22 @@
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "Pan",
+          "type": "Rotation",
           "angleStart": "0%",
           "angleEnd": "100%",
           "comment": "128 different fixed positions on X-axis"
         },
         {
           "dmxRange": [128, 191],
-          "type": "Effect",
-          "effectName": "Clockwise moving",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         },
         {
           "dmxRange": [192, 255],
-          "type": "Effect",
-          "effectName": "Counterclockwise moving",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -445,24 +443,22 @@
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "Tilt",
+          "type": "Rotation",
           "angleStart": "0%",
           "angleEnd": "100%",
           "comment": "128 different fixed positions on Y-axis"
         },
         {
           "dmxRange": [128, 191],
-          "type": "Effect",
-          "effectName": "Clockwise moving",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         },
         {
           "dmxRange": [192, 255],
-          "type": "Effect",
-          "effectName": "Counterclockwise moving",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -535,25 +531,25 @@
           "dmxRange": [10, 63],
           "type": "ColorPreset",
           "colors": ["#ff0000", "#00ff00"],
-          "comment": "Red & green on OR red & green strobing"
+          "comment": "Red & green on OR strobing"
         },
         {
           "dmxRange": [64, 127],
           "type": "ColorPreset",
           "colors": ["#ff0000"],
-          "comment": "Red on OR red strobing & green off"
+          "comment": "Red on OR strobing"
         },
         {
           "dmxRange": [128, 191],
           "type": "ColorPreset",
           "colors": ["#00ff00"],
-          "comment": "Green on OR green strobing & red off"
+          "comment": "Green on OR strobing"
         },
         {
           "dmxRange": [192, 255],
           "type": "ColorPreset",
           "colors": ["#ff0000", "#00ff00"],
-          "comment": "Red & green on OR red & green strobing alternately"
+          "comment": "Red & green on OR strobing alternately"
         }
       ]
     },

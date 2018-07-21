@@ -298,13 +298,17 @@
           "dmxRange": [160, 175],
           "type": "ShutterStrobe",
           "shutterEffect": "Pulse",
-          "comment": "Sequences with increasing speed"
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "in sequences"
         },
         {
           "dmxRange": [176, 191],
           "type": "ShutterStrobe",
           "shutterEffect": "Pulse",
-          "comment": "Sequences with increasing speed"
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "in sequences"
         },
         {
           "dmxRange": [192, 223],
