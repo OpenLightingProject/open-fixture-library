@@ -461,6 +461,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
         const capabilityTypeChecks = {
           ShutterStrobe: checkShutterStrobeCapability,
+          ColorWheelIndex: checkColorWheelIndexCapability,
           Pan: checkPanTiltCapability,
           Tilt: checkPanTiltCapability,
           PanContinuous: checkPanTiltContinuousCapability,
@@ -489,6 +490,16 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
             if (cap.randomTiming) {
               result.errors.push(`${errorPrefix}: Shutter open/closed can't have random timing.`);
             }
+          }
+        }
+
+        /**
+         * Type-specific checks for ColorWheelIndex capabilities.
+         */
+        function checkColorWheelIndexCapability() {
+          if ((cap.index !== null && cap.index[0].number !== cap.index[1].number) &&
+              (cap.colors !== null && cap.colors.isStep)) {
+            result.errors.push(`${errorPrefix}: Must use colorsStart and colorsEnd when index also has start/end values.`);
           }
         }
 
