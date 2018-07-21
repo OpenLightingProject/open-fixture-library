@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2018-02-03",
-    "lastModifyDate": "2018-02-03"
+    "lastModifyDate": "2018-07-21"
   },
   "manualURL": "http://media.steinigke.de/documents_t/51841370-MANUAL-1.00-de-en_00068855.pdf",
   "physical": {
@@ -19,23 +19,26 @@
   },
   "availableChannels": {
     "Strobe": {
-      "type": "Strobe",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "No function"
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
         },
         {
-          "range": [1, 255],
-          "name": "Strobe 1…30Hz"
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "30Hz"
         }
       ]
     },
     "Brightness": {
-      "type": "Intensity",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     }
   },
   "modes": [

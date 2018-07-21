@@ -70,7 +70,8 @@
               name="new-manufacturer-comment" />
           </app-simple-label>
 
-          <app-simple-label :formstate="formstate" name="new-manufacturer-rdmId" label="<abbr title='Remote Device Management'>RDM</abbr> ID">
+          <app-simple-label :formstate="formstate" name="new-manufacturer-rdmId">
+            <template slot="label"><abbr title="Remote Device Management">RDM</abbr> model ID</template>
             <app-property-input-number
               v-model="fixture.newManufacturerRdmId"
               :schema-property="properties.manufacturer.rdmId"
@@ -128,14 +129,15 @@
             v-model="fixture.manualURL"
             :schema-property="properties.fixture.manualURL"
             type="url"
-            name="manualURL" />
+            name="manualURL"
+            required />
         </app-simple-label>
 
         <app-simple-label
           :formstate="formstate"
           name="rdmModelId"
-          label="<abbr title='Remote Device Management'>RDM</abbr> model ID"
           hint="The RDM manufacturer ID is saved per manufacturer.">
+          <template slot="label"><abbr title="Remote Device Management">RDM</abbr> model ID</template>
           <app-property-input-number
             v-model="fixture.rdmModelId"
             :schema-property="properties.fixture.rdm.properties.modelId"
@@ -528,8 +530,7 @@ export default {
 
     async onSubmit() {
       if (this.formstate.$invalid) {
-        const firstErrorName = Object.keys(this.formstate.$error)[0];
-        const field = document.querySelector(`[name=${firstErrorName}]`);
+        const field = document.querySelector(`.vf-field-invalid`);
 
         scrollIntoView(field, {
           time: 300,

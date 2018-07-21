@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["Justin Hornsby", "Felix Edelmann"],
     "createDate": "2017-11-21",
-    "lastModifyDate": "2017-12-31"
+    "lastModifyDate": "2018-07-21"
   },
   "manualURL": "https://www.chauvetdj.com/wp-content/uploads/2015/12/Wash_FX_UM_Rev1_WO-1.pdf",
   "physical": {
@@ -33,145 +33,174 @@
   },
   "availableChannels": {
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "Strobe": {
-      "type": "Strobe",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "0…20Hz"
-        }
-      ]
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0Hz",
+        "speedEnd": "20Hz"
+      }
     },
     "Auto Program": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "No function"
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
         },
         {
-          "range": [6, 20],
-          "name": "Pattern 1"
+          "dmxRange": [6, 20],
+          "type": "Effect",
+          "effectName": "Pattern 1"
         },
         {
-          "range": [21, 35],
-          "name": "Pattern 2"
+          "dmxRange": [21, 35],
+          "type": "Effect",
+          "effectName": "Pattern 2"
         },
         {
-          "range": [36, 50],
-          "name": "Pattern 3"
+          "dmxRange": [36, 50],
+          "type": "Effect",
+          "effectName": "Pattern 3"
         },
         {
-          "range": [51, 65],
-          "name": "Pattern 4"
+          "dmxRange": [51, 65],
+          "type": "Effect",
+          "effectName": "Pattern 4"
         },
         {
-          "range": [66, 80],
-          "name": "Pattern 5"
+          "dmxRange": [66, 80],
+          "type": "Effect",
+          "effectName": "Pattern 5"
         },
         {
-          "range": [81, 95],
-          "name": "Pattern 6"
+          "dmxRange": [81, 95],
+          "type": "Effect",
+          "effectName": "Pattern 6"
         },
         {
-          "range": [96, 110],
-          "name": "Pattern 7"
+          "dmxRange": [96, 110],
+          "type": "Effect",
+          "effectName": "Pattern 7"
         },
         {
-          "range": [111, 125],
-          "name": "Pattern 8"
+          "dmxRange": [111, 125],
+          "type": "Effect",
+          "effectName": "Pattern 8"
         },
         {
-          "range": [126, 140],
-          "name": "Pattern 9"
+          "dmxRange": [126, 140],
+          "type": "Effect",
+          "effectName": "Pattern 9"
         },
         {
-          "range": [141, 155],
-          "name": "Pattern 10"
+          "dmxRange": [141, 155],
+          "type": "Effect",
+          "effectName": "Pattern 10"
         },
         {
-          "range": [156, 170],
-          "name": "Pattern 11"
+          "dmxRange": [156, 170],
+          "type": "Effect",
+          "effectName": "Pattern 11"
         },
         {
-          "range": [171, 185],
-          "name": "Pattern 12"
+          "dmxRange": [171, 185],
+          "type": "Effect",
+          "effectName": "Pattern 12"
         },
         {
-          "range": [186, 200],
-          "name": "Pattern 13"
+          "dmxRange": [186, 200],
+          "type": "Effect",
+          "effectName": "Pattern 13"
         },
         {
-          "range": [201, 215],
-          "name": "Pattern 14"
+          "dmxRange": [201, 215],
+          "type": "Effect",
+          "effectName": "Pattern 14"
         },
         {
-          "range": [216, 230],
-          "name": "Pattern 15"
+          "dmxRange": [216, 230],
+          "type": "Effect",
+          "effectName": "Pattern 15"
         },
         {
-          "range": [231, 245],
-          "name": "Pattern 16"
+          "dmxRange": [231, 245],
+          "type": "Effect",
+          "effectName": "Pattern 16"
         },
         {
-          "range": [246, 255],
-          "name": "Sound Active"
+          "dmxRange": [246, 255],
+          "type": "Effect",
+          "effectName": "Sound Active",
+          "soundControlled": true
         }
       ]
     },
     "Auto Program Speed": {
-      "type": "Speed"
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Auto or Sound Program": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "No function"
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
         },
         {
-          "range": [11, 127],
-          "name": "Auto"
+          "dmxRange": [11, 127],
+          "type": "Effect",
+          "effectName": "Auto Program"
         },
         {
-          "range": [128, 255],
-          "name": "Sound Active"
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Sound Program"
         }
       ]
     },
     "Master Dimmer": {
-      "type": "Intensity"
+      "capability": {
+        "type": "Intensity"
+      }
     }
   },
   "templateChannels": {
     "Red $pixelKey": {
-      "type": "Single Color",
-      "color": "Red",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green $pixelKey": {
-      "type": "Single Color",
-      "color": "Green",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue $pixelKey": {
-      "type": "Single Color",
-      "color": "Blue",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     }
   },
   "modes": [

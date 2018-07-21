@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2018-03-15",
-    "lastModifyDate": "2018-03-15"
+    "lastModifyDate": "2018-07-21"
   },
   "comment": "Flares with serial numbers that contain “14R” have RDM functionality.\nExample: xxxxxx-14R-xxxx",
   "manualURL": "http://pub.tmb.com/solaris/pdf/Solaris-Flare-Manual.pdf",
@@ -180,158 +180,188 @@
   },
   "availableChannels": {
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
       "fineChannelAliases": ["Red fine"],
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green",
       "fineChannelAliases": ["Green fine"],
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
       "fineChannelAliases": ["Blue fine"],
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White": {
-      "type": "Single Color",
-      "color": "White",
       "fineChannelAliases": ["White fine"],
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "Flash intensity": {
-      "type": "Intensity",
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "Blackout"
+          "dmxRange": [0, 5],
+          "type": "Intensity",
+          "brightness": "off"
         },
         {
-          "range": [6, 255],
-          "name": "Intensity level"
+          "dmxRange": [6, 255],
+          "type": "Intensity",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright"
         }
       ]
     },
     "Flash duration": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 254],
-          "name": "0 - 650ms"
+          "dmxRange": [0, 254],
+          "type": "StrobeDuration",
+          "durationStart": "0ms",
+          "durationEnd": "650ms"
         },
         {
-          "range": [255, 255],
-          "name": "HYPER"
+          "dmxRange": [255, 255],
+          "type": "Effect",
+          "effectName": "HYPER"
         }
       ]
     },
     "Flash rate": {
-      "type": "Strobe",
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "No flash"
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [6, 255],
-          "name": "0.5…25Hz"
+          "dmxRange": [6, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.5Hz",
+          "speedEnd": "25Hz"
         }
       ]
     },
     "Flash effects": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 4],
-          "name": "No effect"
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
         },
         {
-          "range": [5, 5],
-          "name": "Wash Override (only in RGB/RGBW Strobe modes)"
+          "dmxRange": [5, 5],
+          "type": "Effect",
+          "effectName": "Wash Override (only in RGB/RGBW Strobe modes)"
         },
         {
-          "range": [6, 42],
-          "name": "Ramp up"
+          "dmxRange": [6, 42],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp"
         },
         {
-          "range": [43, 85],
-          "name": "Ramp down"
+          "dmxRange": [43, 85],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown"
         },
         {
-          "range": [86, 128],
-          "name": "Ramp up - down"
+          "dmxRange": [86, 128],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown"
         },
         {
-          "range": [129, 171],
-          "name": "Random"
+          "dmxRange": [129, 171],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
         },
         {
-          "range": [172, 214],
-          "name": "Lightning"
+          "dmxRange": [172, 214],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning"
         },
         {
-          "range": [215, 240],
-          "name": "Spikes"
+          "dmxRange": [215, 240],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes"
         },
         {
-          "range": [241, 245],
-          "name": "Burst (use rate at full)"
+          "dmxRange": [241, 245],
+          "type": "Effect",
+          "effectName": "Burst",
+          "comment": "use rate at full"
         },
         {
-          "range": [246, 250],
-          "name": "Meltdown: Random Pixels with solid background"
+          "dmxRange": [246, 250],
+          "type": "Effect",
+          "effectName": "Meltdown: Random Pixels with solid background"
         },
         {
-          "range": [251, 255],
-          "name": "Meltdown: Random pixels with burst background"
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "Meltdown: Random pixels with burst background"
         }
       ]
     },
     "Red Strobe": {
-      "type": "Single Color",
-      "color": "Red",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green Strobe": {
-      "type": "Single Color",
-      "color": "Green",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue Strobe": {
-      "type": "Single Color",
-      "color": "Blue",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White Strobe": {
-      "type": "Single Color",
-      "color": "White",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     }
   },
   "templateChannels": {
     "$pixelKey Red": {
-      "type": "Single Color",
-      "color": "Red",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "$pixelKey Green": {
-      "type": "Single Color",
-      "color": "Green",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "$pixelKey Blue": {
-      "type": "Single Color",
-      "color": "Blue",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "$pixelKey White": {
-      "type": "Single Color",
-      "color": "White",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     }
   },
   "modes": [

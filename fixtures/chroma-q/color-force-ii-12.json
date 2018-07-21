@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2018-02-13",
-    "lastModifyDate": "2018-02-13"
+    "lastModifyDate": "2018-07-21"
   },
   "comment": "Look Select capabilities may be inaccurate",
   "manualURL": "http://www.chroma-q.com/support/manuals/CQ_ColorForceII_UserManual_1_1a.pdf",
@@ -38,227 +38,280 @@
   },
   "availableChannels": {
     "Look Select": {
-      "type": "Multi-Color",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "Off"
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
         },
         {
-          "range": [1, 8],
-          "name": "Look 1"
+          "dmxRange": [1, 8],
+          "type": "ColorPreset",
+          "comment": "Look 1"
         },
         {
-          "range": [9, 16],
-          "name": "Look 2"
+          "dmxRange": [9, 16],
+          "type": "ColorPreset",
+          "comment": "Look 2"
         },
         {
-          "range": [17, 25],
-          "name": "Look 3"
+          "dmxRange": [17, 25],
+          "type": "ColorPreset",
+          "comment": "Look 3"
         },
         {
-          "range": [26, 33],
-          "name": "Look 4"
+          "dmxRange": [26, 33],
+          "type": "ColorPreset",
+          "comment": "Look 4"
         },
         {
-          "range": [34, 42],
-          "name": "Look 5"
+          "dmxRange": [34, 42],
+          "type": "ColorPreset",
+          "comment": "Look 5"
         },
         {
-          "range": [43, 51],
-          "name": "Look 6"
+          "dmxRange": [43, 51],
+          "type": "ColorPreset",
+          "comment": "Look 6"
         },
         {
-          "range": [52, 59],
-          "name": "Look 7"
+          "dmxRange": [52, 59],
+          "type": "ColorPreset",
+          "comment": "Look 7"
         },
         {
-          "range": [60, 67],
-          "name": "Look 8"
+          "dmxRange": [60, 67],
+          "type": "ColorPreset",
+          "comment": "Look 8"
         },
         {
-          "range": [68, 75],
-          "name": "Look 9"
+          "dmxRange": [68, 75],
+          "type": "ColorPreset",
+          "comment": "Look 9"
         },
         {
-          "range": [76, 84],
-          "name": "Look 10"
+          "dmxRange": [76, 84],
+          "type": "ColorPreset",
+          "comment": "Look 10"
         },
         {
-          "range": [85, 92],
-          "name": "Look 11"
+          "dmxRange": [85, 92],
+          "type": "ColorPreset",
+          "comment": "Look 11"
         },
         {
-          "range": [93, 100],
-          "name": "Look 12"
+          "dmxRange": [93, 100],
+          "type": "ColorPreset",
+          "comment": "Look 12"
         },
         {
-          "range": [101, 109],
-          "name": "Look 13"
+          "dmxRange": [101, 109],
+          "type": "ColorPreset",
+          "comment": "Look 13"
         },
         {
-          "range": [110, 117],
-          "name": "Look 14"
+          "dmxRange": [110, 117],
+          "type": "ColorPreset",
+          "comment": "Look 14"
         },
         {
-          "range": [118, 125],
-          "name": "Look 15"
+          "dmxRange": [118, 125],
+          "type": "ColorPreset",
+          "comment": "Look 15"
         },
         {
-          "range": [126, 133],
-          "name": "Look 16"
+          "dmxRange": [126, 133],
+          "type": "ColorPreset",
+          "comment": "Look 16"
         },
         {
-          "range": [134, 141],
-          "name": "Look 17"
+          "dmxRange": [134, 141],
+          "type": "ColorPreset",
+          "comment": "Look 17"
         },
         {
-          "range": [142, 149],
-          "name": "Look 18"
+          "dmxRange": [142, 149],
+          "type": "ColorPreset",
+          "comment": "Look 18"
         },
         {
-          "range": [150, 157],
-          "name": "Look 19"
+          "dmxRange": [150, 157],
+          "type": "ColorPreset",
+          "comment": "Look 19"
         },
         {
-          "range": [158, 165],
-          "name": "Look 20"
+          "dmxRange": [158, 165],
+          "type": "ColorPreset",
+          "comment": "Look 20"
         },
         {
-          "range": [166, 174],
-          "name": "Look 21"
+          "dmxRange": [166, 174],
+          "type": "ColorPreset",
+          "comment": "Look 21"
         },
         {
-          "range": [175, 182],
-          "name": "Look 22"
+          "dmxRange": [175, 182],
+          "type": "ColorPreset",
+          "comment": "Look 22"
         },
         {
-          "range": [183, 190],
-          "name": "Look 23"
+          "dmxRange": [183, 190],
+          "type": "ColorPreset",
+          "comment": "Look 23"
         },
         {
-          "range": [191, 199],
-          "name": "Look 24"
+          "dmxRange": [191, 199],
+          "type": "ColorPreset",
+          "comment": "Look 24"
         },
         {
-          "range": [200, 207],
-          "name": "Look 25"
+          "dmxRange": [200, 207],
+          "type": "ColorPreset",
+          "comment": "Look 25"
         },
         {
-          "range": [208, 215],
-          "name": "Look 26"
+          "dmxRange": [208, 215],
+          "type": "ColorPreset",
+          "comment": "Look 26"
         },
         {
-          "range": [216, 223],
-          "name": "Look 27"
+          "dmxRange": [216, 223],
+          "type": "ColorPreset",
+          "comment": "Look 27"
         },
         {
-          "range": [224, 231],
-          "name": "Look 28"
+          "dmxRange": [224, 231],
+          "type": "ColorPreset",
+          "comment": "Look 28"
         },
         {
-          "range": [232, 239],
-          "name": "Look 29"
+          "dmxRange": [232, 239],
+          "type": "ColorPreset",
+          "comment": "Look 29"
         },
         {
-          "range": [240, 247],
-          "name": "Look 30"
+          "dmxRange": [240, 247],
+          "type": "ColorPreset",
+          "comment": "Look 30"
         },
         {
-          "range": [248, 255],
-          "name": "Look 31"
+          "dmxRange": [248, 255],
+          "type": "ColorPreset",
+          "comment": "Look 31"
         }
       ]
     },
     "Strobe Frequency": {
-      "type": "Strobe"
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Strobe Duration": {
-      "type": "Strobe"
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "short",
+        "durationEnd": "long"
+      }
     },
     "Strobe Density": {
-      "type": "Effect",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "1-4 pixels"
-        }
-      ]
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": 1,
+        "parameterEnd": 4,
+        "comment": "Pixels"
+      }
     },
     "Strobe Red": {
-      "type": "Single Color",
-      "color": "Red",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Strobe Green": {
-      "type": "Single Color",
-      "color": "Green",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Strobe Blue": {
-      "type": "Single Color",
-      "color": "Blue",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "Strobe Amber": {
-      "type": "Single Color",
-      "color": "Amber",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
     },
     "Strobe Hue": {
-      "type": "Multi-Color"
+      "capability": {
+        "type": "Generic"
+      }
     },
     "Strobe Saturation": {
-      "type": "Intensity",
-      "crossfade": true
+      "capability": {
+        "type": "Generic"
+      }
     },
     "Strobe Intensity": {
-      "type": "Intensity",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     }
   },
   "templateChannels": {
     "Red $pixelKey": {
-      "type": "Single Color",
-      "color": "Red",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green $pixelKey": {
-      "type": "Single Color",
-      "color": "Green",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue $pixelKey": {
-      "type": "Single Color",
-      "color": "Blue",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "Amber $pixelKey": {
-      "type": "Single Color",
-      "color": "Amber",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
     },
     "Hue $pixelKey": {
-      "type": "Multi-Color"
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Saturation $pixelKey": {
-      "type": "Intensity",
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Intensity $pixelKey": {
-      "type": "Intensity",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     }
   },
   "modes": [

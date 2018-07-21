@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["p_0g_8mm3_", "Flo Edelmann"],
     "createDate": "2018-01-30",
-    "lastModifyDate": "2018-01-30"
+    "lastModifyDate": "2018-07-21"
   },
   "manualURL": "https://images.thomann.de/pics/prod/c_238185_en_online.pdf",
   "physical": {
@@ -24,396 +24,544 @@
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
-      "crossfade": true
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "crossfade": true
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
     },
     "Color": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 4],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [0, 4],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
-          "range": [5, 9],
-          "name": "Yellow",
-          "color": "#ffff00"
+          "dmxRange": [5, 9],
+          "type": "ColorWheelIndex",
+          "index": 1,
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
         },
         {
-          "range": [10, 14],
-          "name": "Pink",
-          "color": "#ff00ff"
+          "dmxRange": [10, 14],
+          "type": "ColorWheelIndex",
+          "index": 2,
+          "colors": ["#ff00ff"],
+          "comment": "Pink"
         },
         {
-          "range": [15, 19],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [15, 19],
+          "type": "ColorWheelIndex",
+          "index": 3,
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [20, 24],
-          "name": "Peachblow",
-          "color": "#d7735b"
+          "dmxRange": [20, 24],
+          "type": "ColorWheelIndex",
+          "index": 4,
+          "colors": ["#d7735b"],
+          "comment": "Peachblow"
         },
         {
-          "range": [25, 29],
-          "name": "Light Blue",
-          "color": "#add8e6"
+          "dmxRange": [25, 29],
+          "type": "ColorWheelIndex",
+          "index": 5,
+          "colors": ["#add8e6"],
+          "comment": "Light Blue"
         },
         {
-          "range": [30, 34],
-          "name": "Yellow-Green",
-          "color": "#ccfe50"
+          "dmxRange": [30, 34],
+          "type": "ColorWheelIndex",
+          "index": 6,
+          "colors": ["#ccfe50"],
+          "comment": "Yellow-Green"
         },
         {
-          "range": [35, 39],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [35, 39],
+          "type": "ColorWheelIndex",
+          "index": 7,
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [40, 44],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [40, 44],
+          "type": "ColorWheelIndex",
+          "index": 8,
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
-          "range": [45, 54],
-          "name": "Split White / Yellow",
-          "color": "#ffffff",
-          "color2": "#ffff00"
+          "dmxRange": [45, 54],
+          "type": "ColorWheelIndex",
+          "indexStart": 0,
+          "indexEnd": 1,
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#ffff00"],
+          "comment": "Split White / Yellow"
         },
         {
-          "range": [55, 64],
-          "name": "Split Yellow / Pink",
-          "color": "#ffff00",
-          "color2": "#ff00ff"
+          "dmxRange": [55, 64],
+          "type": "ColorWheelIndex",
+          "indexStart": 1,
+          "indexEnd": 2,
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#ff00ff"],
+          "comment": "Split Yellow / Pink"
         },
         {
-          "range": [65, 73],
-          "name": "Split Pink / Green",
-          "color": "#ff00ff",
-          "color2": "#00ff00"
+          "dmxRange": [65, 73],
+          "type": "ColorWheelIndex",
+          "indexStart": 2,
+          "indexEnd": 3,
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#00ff00"],
+          "comment": "Split Pink / Green"
         },
         {
-          "range": [74, 83],
-          "name": "Split Green / Peachblow",
-          "color": "#00ff00",
-          "color2": "#d7735b"
+          "dmxRange": [74, 83],
+          "type": "ColorWheelIndex",
+          "indexStart": 3,
+          "indexEnd": 4,
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#d7735b"],
+          "comment": "Split Green / Peachblow"
         },
         {
-          "range": [84, 92],
-          "name": "Split Peachblow / Light Blue",
-          "color": "#d7735b",
-          "color2": "#add8e6"
+          "dmxRange": [84, 92],
+          "type": "ColorWheelIndex",
+          "indexStart": 4,
+          "indexEnd": 5,
+          "colorsStart": ["#d7735b"],
+          "colorsEnd": ["#add8e6"],
+          "comment": "Split Peachblow / Light Blue"
         },
         {
-          "range": [93, 101],
-          "name": "Split Light Blue / Yellow-Green",
-          "color": "#add8e6",
-          "color2": "#ccfe50"
+          "dmxRange": [93, 101],
+          "type": "ColorWheelIndex",
+          "indexStart": 5,
+          "indexEnd": 6,
+          "colorsStart": ["#add8e6"],
+          "colorsEnd": ["#ccfe50"],
+          "comment": "Split Light Blue / Yellow-Green"
         },
         {
-          "range": [102, 110],
-          "name": "Split Yellow-Green / Red",
-          "color": "#ccfe50",
-          "color2": "#ff0000"
+          "dmxRange": [102, 110],
+          "type": "ColorWheelIndex",
+          "indexStart": 6,
+          "indexEnd": 7,
+          "colorsStart": ["#ccfe50"],
+          "colorsEnd": ["#ff0000"],
+          "comment": "Split Yellow-Green / Red"
         },
         {
-          "range": [111, 119],
-          "name": "Split Red / Blue",
-          "color": "#ff0000",
-          "color2": "#0000ff"
+          "dmxRange": [111, 119],
+          "type": "ColorWheelIndex",
+          "indexStart": 7,
+          "indexEnd": 8,
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#0000ff"],
+          "comment": "Split Red / Blue"
         },
         {
-          "range": [120, 127],
-          "name": "Split Blue / White",
-          "color": "#0000ff",
-          "color2": "#ffffff"
+          "dmxRange": [120, 127],
+          "type": "ColorWheelIndex",
+          "indexStart": 8,
+          "indexEnd": 9,
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#ffffff"],
+          "comment": "Split Blue / White"
         },
         {
-          "range": [128, 191],
-          "name": "Rainbow clockwise slow…fast"
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [192, 255],
-          "name": "Rainbow counterclockwise slow…fast"
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow reverse",
+          "speedEnd": "fast reverse"
         }
       ]
     },
     "Shutter": {
-      "type": "Shutter",
       "capabilities": [
         {
-          "range": [0, 3],
-          "name": "Closed"
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [4, 7],
-          "name": "Open"
+          "dmxRange": [4, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [8, 215],
-          "name": "Strobe slow…fast"
+          "dmxRange": [8, 215],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [216, 255],
-          "name": "Open"
+          "dmxRange": [216, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
     "Gobo": {
-      "type": "Gobo",
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "Open"
+          "dmxRange": [0, 7],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Open"
         },
         {
-          "range": [8, 15],
-          "name": "Gobo 2"
+          "dmxRange": [8, 15],
+          "type": "GoboIndex",
+          "index": 1,
+          "comment": "Gobo 2"
         },
         {
-          "range": [16, 23],
-          "name": "Gobo 3"
+          "dmxRange": [16, 23],
+          "type": "GoboIndex",
+          "index": 2,
+          "comment": "Gobo 3"
         },
         {
-          "range": [24, 31],
-          "name": "Gobo 4"
+          "dmxRange": [24, 31],
+          "type": "GoboIndex",
+          "index": 3,
+          "comment": "Gobo 4"
         },
         {
-          "range": [32, 39],
-          "name": "Gobo 5"
+          "dmxRange": [32, 39],
+          "type": "GoboIndex",
+          "index": 4,
+          "comment": "Gobo 5"
         },
         {
-          "range": [40, 47],
-          "name": "Gobo 6"
+          "dmxRange": [40, 47],
+          "type": "GoboIndex",
+          "index": 5,
+          "comment": "Gobo 6"
         },
         {
-          "range": [48, 55],
-          "name": "Gobo 7"
+          "dmxRange": [48, 55],
+          "type": "GoboIndex",
+          "index": 6,
+          "comment": "Gobo 7"
         },
         {
-          "range": [56, 63],
-          "name": "Gobo 8"
+          "dmxRange": [56, 63],
+          "type": "GoboIndex",
+          "index": 7,
+          "comment": "Gobo 8"
         },
         {
-          "range": [64, 71],
-          "name": "Gobo 8 shake"
+          "dmxRange": [64, 71],
+          "type": "GoboIndex",
+          "index": 7,
+          "shakeAngle": "wide",
+          "comment": "Gobo shake 8"
         },
         {
-          "range": [72, 79],
-          "name": "Gobo 7 shake"
+          "dmxRange": [72, 79],
+          "type": "GoboIndex",
+          "index": 6,
+          "shakeAngle": "wide",
+          "comment": "Gobo shake 7"
         },
         {
-          "range": [80, 87],
-          "name": "Gobo 6 shake"
+          "dmxRange": [80, 87],
+          "type": "GoboIndex",
+          "index": 5,
+          "shakeAngle": "wide",
+          "comment": "Gobo shake 6"
         },
         {
-          "range": [88, 95],
-          "name": "Gobo 5 shake"
+          "dmxRange": [88, 95],
+          "type": "GoboIndex",
+          "index": 4,
+          "shakeAngle": "wide",
+          "comment": "Gobo shake 5"
         },
         {
-          "range": [96, 103],
-          "name": "Gobo 4 shake"
+          "dmxRange": [96, 103],
+          "type": "GoboIndex",
+          "index": 3,
+          "shakeAngle": "wide",
+          "comment": "Gobo shake 4"
         },
         {
-          "range": [104, 111],
-          "name": "Gobo 3 shake"
+          "dmxRange": [104, 111],
+          "type": "GoboIndex",
+          "index": 2,
+          "shakeAngle": "wide",
+          "comment": "Gobo shake 3"
         },
         {
-          "range": [112, 119],
-          "name": "Gobo 2 shake"
+          "dmxRange": [112, 119],
+          "type": "GoboIndex",
+          "index": 1,
+          "shakeAngle": "wide",
+          "comment": "Gobo shake 2"
         },
         {
-          "range": [120, 127],
-          "name": "Open"
+          "dmxRange": [120, 127],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Open"
         },
         {
-          "range": [128, 191],
-          "name": "Rotate clockwise slow…fast"
+          "dmxRange": [128, 191],
+          "type": "GoboWheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         },
         {
-          "range": [192, 255],
-          "name": "Rotate counterclockwise slow…fast"
+          "dmxRange": [192, 255],
+          "type": "GoboWheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
     "Gobo rotation": {
-      "type": "Gobo",
       "capabilities": [
         {
-          "range": [0, 63],
-          "name": "Position 0-360°"
+          "dmxRange": [0, 63],
+          "type": "GoboStencilRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
         },
         {
-          "range": [64, 147],
-          "name": "Rotate clockwise slow…fast"
+          "dmxRange": [64, 147],
+          "type": "GoboStencilRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         },
         {
-          "range": [148, 231],
-          "name": "Rotate counterclockwise slow…fast"
+          "dmxRange": [148, 231],
+          "type": "GoboStencilRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         },
         {
-          "range": [232, 255],
-          "name": "Yo-yo effect"
+          "dmxRange": [232, 255],
+          "type": "Effect",
+          "effectName": "Yo-yo effect"
         }
       ]
     },
     "Pan/Tilt Speed": {
-      "type": "Speed"
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
     },
     "Dimmer": {
-      "type": "Intensity",
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Special functions": {
-      "type": "Maintenance",
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "Empty"
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
         },
         {
-          "range": [8, 15],
-          "name": "Blackout while pan / tilt change"
+          "dmxRange": [8, 15],
+          "type": "Maintenance",
+          "comment": "Blackout while pan / tilt change"
         },
         {
-          "range": [16, 23],
-          "name": "No Blackout while move"
+          "dmxRange": [16, 23],
+          "type": "Maintenance",
+          "comment": "No Blackout while move"
         },
         {
-          "range": [24, 31],
-          "name": "Blackout while color change"
+          "dmxRange": [24, 31],
+          "type": "Maintenance",
+          "comment": "Blackout while color change"
         },
         {
-          "range": [32, 39],
-          "name": "No Blackout while color change"
+          "dmxRange": [32, 39],
+          "type": "Maintenance",
+          "comment": "No Blackout while color change"
         },
         {
-          "range": [40, 47],
-          "name": "Blackout while gobo change"
+          "dmxRange": [40, 47],
+          "type": "Maintenance",
+          "comment": "Blackout while gobo change"
         },
         {
-          "range": [48, 55],
-          "name": "No Blackout while gobo change"
+          "dmxRange": [48, 55],
+          "type": "Maintenance",
+          "comment": "No Blackout while gobo change"
         },
         {
-          "range": [56, 87],
-          "name": "Empty"
+          "dmxRange": [56, 87],
+          "type": "NoFunction"
         },
         {
-          "range": [88, 95],
-          "name": "Blackout while movement"
+          "dmxRange": [88, 95],
+          "type": "Maintenance",
+          "comment": "Blackout during movement"
         },
         {
-          "range": [96, 103],
-          "name": "Reset pan and tilt"
+          "dmxRange": [96, 103],
+          "type": "Maintenance",
+          "comment": "Reset pan and tilt"
         },
         {
-          "range": [104, 111],
-          "name": "Empty"
+          "dmxRange": [104, 111],
+          "type": "NoFunction"
         },
         {
-          "range": [112, 119],
-          "name": "Reset color wheel"
+          "dmxRange": [112, 119],
+          "type": "Maintenance",
+          "comment": "Reset color wheel"
         },
         {
-          "range": [120, 127],
-          "name": "Reset gobo wheel"
+          "dmxRange": [120, 127],
+          "type": "Maintenance",
+          "comment": "Reset gobo wheel"
         },
         {
-          "range": [128, 135],
-          "name": "Reset gobo rotation"
+          "dmxRange": [128, 135],
+          "type": "Maintenance",
+          "comment": "Reset gobo rotation"
         },
         {
-          "range": [136, 151],
-          "name": "Empty"
+          "dmxRange": [136, 151],
+          "type": "NoFunction"
         },
         {
-          "range": [152, 159],
-          "name": "Reset all channels"
+          "dmxRange": [152, 159],
+          "type": "Maintenance",
+          "comment": "Reset all channels"
         },
         {
-          "range": [160, 255],
-          "name": "Empty"
+          "dmxRange": [160, 255],
+          "type": "NoFunction"
         }
       ]
     },
     "Programs": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "Off"
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
         },
         {
-          "range": [8, 23],
-          "name": "Program 1"
+          "dmxRange": [8, 23],
+          "type": "Effect",
+          "effectName": "Program 1"
         },
         {
-          "range": [24, 39],
-          "name": "Program 2"
+          "dmxRange": [24, 39],
+          "type": "Effect",
+          "effectName": "Program 2"
         },
         {
-          "range": [40, 55],
-          "name": "Program 3"
+          "dmxRange": [40, 55],
+          "type": "Effect",
+          "effectName": "Program 3"
         },
         {
-          "range": [56, 71],
-          "name": "Program 4"
+          "dmxRange": [56, 71],
+          "type": "Effect",
+          "effectName": "Program 4"
         },
         {
-          "range": [72, 87],
-          "name": "Program 5"
+          "dmxRange": [72, 87],
+          "type": "Effect",
+          "effectName": "Program 5"
         },
         {
-          "range": [88, 103],
-          "name": "Program 6"
+          "dmxRange": [88, 103],
+          "type": "Effect",
+          "effectName": "Program 6"
         },
         {
-          "range": [104, 119],
-          "name": "Program 7"
+          "dmxRange": [104, 119],
+          "type": "Effect",
+          "effectName": "Program 7"
         },
         {
-          "range": [120, 135],
-          "name": "Program 8"
+          "dmxRange": [120, 135],
+          "type": "Effect",
+          "effectName": "Program 8"
         },
         {
-          "range": [136, 150],
-          "name": "Sound control 1"
+          "dmxRange": [136, 150],
+          "type": "Effect",
+          "effectName": "Sound control 1",
+          "soundControlled": true
         },
         {
-          "range": [151, 165],
-          "name": "Sound control 2"
+          "dmxRange": [151, 165],
+          "type": "Effect",
+          "effectName": "Sound control 2",
+          "soundControlled": true
         },
         {
-          "range": [166, 180],
-          "name": "Sound control 3"
+          "dmxRange": [166, 180],
+          "type": "Effect",
+          "effectName": "Sound control 3",
+          "soundControlled": true
         },
         {
-          "range": [181, 195],
-          "name": "Sound control 4"
+          "dmxRange": [181, 195],
+          "type": "Effect",
+          "effectName": "Sound control 4",
+          "soundControlled": true
         },
         {
-          "range": [196, 210],
-          "name": "Sound control 5"
+          "dmxRange": [196, 210],
+          "type": "Effect",
+          "effectName": "Sound control 5",
+          "soundControlled": true
         },
         {
-          "range": [211, 225],
-          "name": "Sound control 6"
+          "dmxRange": [211, 225],
+          "type": "Effect",
+          "effectName": "Sound control 6",
+          "soundControlled": true
         },
         {
-          "range": [226, 240],
-          "name": "Sound control 7"
+          "dmxRange": [226, 240],
+          "type": "Effect",
+          "effectName": "Sound control 7",
+          "soundControlled": true
         },
         {
-          "range": [241, 255],
-          "name": "Sound control 8"
+          "dmxRange": [241, 255],
+          "type": "Effect",
+          "effectName": "Sound control 8",
+          "soundControlled": true
         }
       ]
     }

@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2017-10-13",
-    "lastModifyDate": "2017-10-13"
+    "lastModifyDate": "2018-07-21"
   },
   "comment": "Fog output: 85m³ per minute in Fog mode, at full pressure",
   "manualURL": "http://www.mdgfog.com/c/mdg/file_db/document.file_en/theONE-User-Guide-Rev-Ae.pdf",
@@ -21,61 +21,58 @@
   },
   "availableChannels": {
     "Power": {
-      "type": "Maintenance",
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "Unit off"
+          "dmxRange": [0, 127],
+          "type": "Maintenance",
+          "comment": "Unit off"
         },
         {
-          "range": [128, 255],
-          "name": "Unit On"
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "comment": "Unit On"
         }
       ]
     },
     "Haze / Fog": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "Haze"
+          "dmxRange": [0, 127],
+          "type": "FogType",
+          "fogType": "Haze"
         },
         {
-          "range": [128, 255],
-          "name": "Fog"
+          "dmxRange": [128, 255],
+          "type": "FogType",
+          "fogType": "Fog"
         }
       ]
     },
     "Fog output": {
-      "type": "Intensity",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "0-100%"
-        }
-      ]
+      "capability": {
+        "type": "FogOutput",
+        "fogOutputStart": "weak",
+        "fogOutputEnd": "strong"
+      }
     },
     "Fog on/off": {
-      "type": "Fog",
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "Fog off"
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
         },
         {
-          "range": [128, 255],
-          "name": "Fog on"
+          "dmxRange": [128, 255],
+          "type": "Fog"
         }
       ]
     },
     "External Fan": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "0-100%"
-        }
-      ]
+      "capability": {
+        "type": "Rotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
     }
   },
   "modes": [

@@ -2,11 +2,11 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Varyscan P7",
   "shortName": "JBVaryscanP7",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2018-01-08",
-    "lastModifyDate": "2018-01-08"
+    "lastModifyDate": "2018-07-21"
   },
   "manualURL": "https://www.jb-lighting.de/download/Handbuch/Varyscan_P7_Manual.pdf",
   "physical": {
@@ -29,760 +29,995 @@
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
       "defaultValue": 32767,
-      "crossfade": true
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "433.6deg"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
       "defaultValue": 32767,
-      "crossfade": true
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "280deg"
+      }
     },
     "Control": {
-      "type": "Maintenance",
       "defaultValue": 8,
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "Dimmer fade out with Fader slow…fast, reaction fast"
+          "dmxRange": [0, 7],
+          "type": "Maintenance",
+          "comment": "Dimmer fade out with Fader (fast reaction)",
+          "parameterStart": "slow",
+          "parameterEnd": "fast"
         },
         {
-          "range": [8, 31],
-          "name": "No function"
+          "dmxRange": [8, 31],
+          "type": "NoFunction"
         },
         {
-          "range": [32, 39],
-          "name": "Dimmer fade out with Fader slow…fast, reaction semi-fast"
+          "dmxRange": [32, 39],
+          "type": "Maintenance",
+          "comment": "Dimmer fade out with Fader (semi-fast reaction)",
+          "parameterStart": "slow",
+          "parameterEnd": "fast"
         },
         {
-          "range": [40, 63],
-          "name": "No function"
+          "dmxRange": [40, 63],
+          "type": "NoFunction"
         },
         {
-          "range": [64, 71],
-          "name": "Dimmer fade out with Fader slow…fast, reaction medium"
+          "dmxRange": [64, 71],
+          "type": "Maintenance",
+          "comment": "Dimmer fade out with Fader (medium reaction)",
+          "parameterStart": "slow",
+          "parameterEnd": "fast"
         },
         {
-          "range": [72, 95],
-          "name": "No function"
+          "dmxRange": [72, 95],
+          "type": "NoFunction"
         },
         {
-          "range": [96, 103],
-          "name": "Dimmer fade out with Fader slow…fast, reaction semi-slow"
+          "dmxRange": [96, 103],
+          "type": "Maintenance",
+          "comment": "Dimmer fade out with Fader (semi-slow reaction)",
+          "parameterStart": "slow",
+          "parameterEnd": "fast"
         },
         {
-          "range": [104, 127],
-          "name": "No function"
+          "dmxRange": [104, 127],
+          "type": "NoFunction"
         },
         {
-          "range": [128, 135],
-          "name": "Dimmer fade out with Fader slow…fast, reaction slow"
+          "dmxRange": [128, 135],
+          "type": "Maintenance",
+          "comment": "Dimmer fade out with Fader (slow reaction)",
+          "parameterStart": "slow",
+          "parameterEnd": "fast"
         },
         {
-          "range": [136, 207],
-          "name": "No function"
+          "dmxRange": [136, 207],
+          "type": "NoFunction"
         },
         {
-          "range": [208, 215],
-          "name": "Camera mode, 50Hz (hold 2s)"
+          "dmxRange": [208, 215],
+          "type": "Maintenance",
+          "comment": "Camera mode, 50Hz",
+          "hold": "2s"
         },
         {
-          "range": [216, 223],
-          "name": "Camera mode, 60Hz (hold 2s)"
+          "dmxRange": [216, 223],
+          "type": "Maintenance",
+          "comment": "Camera mode, 60Hz",
+          "hold": "2s"
         },
         {
-          "range": [224, 231],
-          "name": "Camera mode, FLEX (hold 2s)"
+          "dmxRange": [224, 231],
+          "type": "Maintenance",
+          "comment": "Camera mode, FLEX",
+          "hold": "2s"
         },
         {
-          "range": [232, 239],
-          "name": "Save"
+          "dmxRange": [232, 239],
+          "type": "Maintenance",
+          "comment": "Save"
         },
         {
-          "range": [240, 247],
-          "name": "Reset (hold 2s)"
+          "dmxRange": [240, 247],
+          "type": "Maintenance",
+          "comment": "Reset",
+          "hold": "2s"
         },
         {
-          "range": [248, 255],
-          "name": "Save"
+          "dmxRange": [248, 255],
+          "type": "Maintenance",
+          "comment": "Save"
         }
       ]
     },
     "Shutter": {
-      "type": "Shutter",
       "defaultValue": 16,
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "Closed"
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [16, 95],
-          "name": "Open"
+          "dmxRange": [16, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [96, 110],
-          "name": "Pulse opening >20Hz fast…slow"
+          "dmxRange": [96, 110],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": ">20Hz"
         },
         {
-          "range": [111, 111],
-          "name": "Open"
+          "dmxRange": [111, 111],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [112, 125],
-          "name": "Dimmer fade effect slow…fast"
+          "dmxRange": [112, 125],
+          "type": "Effect",
+          "effectName": "Dimmer fade effect",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [126, 126],
-          "name": "Open"
+          "dmxRange": [126, 126],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [127, 127],
-          "name": "Closed"
+          "dmxRange": [127, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [128, 142],
-          "name": "Pulse opening <20Hz fast…slow"
+          "dmxRange": [128, 142],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "<20Hz"
         },
         {
-          "range": [143, 143],
-          "name": "Open"
+          "dmxRange": [143, 143],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [144, 158],
-          "name": "Pulse closing fast…slow"
+          "dmxRange": [144, 158],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [159, 159],
-          "name": "Closed"
+          "dmxRange": [159, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [160, 174],
-          "name": "Fade 0% fast…slow"
+          "dmxRange": [160, 174],
+          "type": "ShutterStrobe",
+          "comment": "Fade 0%",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [175, 175],
-          "name": "Open"
+          "dmxRange": [175, 175],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [176, 190],
-          "name": "Fade 100% fast…slow"
+          "dmxRange": [176, 190],
+          "type": "ShutterStrobe",
+          "comment": "Fade 100%",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [191, 191],
-          "name": "Closed"
+          "dmxRange": [191, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [192, 206],
-          "name": "Random 100% fast…slow"
+          "dmxRange": [192, 206],
+          "type": "ShutterStrobe",
+          "comment": "0%",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
-          "range": [207, 207],
-          "name": "Open"
+          "dmxRange": [207, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [208, 222],
-          "name": "Random 0% fast…slow"
+          "dmxRange": [208, 222],
+          "type": "ShutterStrobe",
+          "comment": "100%",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
-          "range": [223, 223],
-          "name": "Closed"
+          "dmxRange": [223, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [224, 238],
-          "name": "Random fade 0% fast…slow"
+          "dmxRange": [224, 238],
+          "type": "ShutterStrobe",
+          "comment": "Fade 0%",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
-          "range": [239, 239],
-          "name": "Open"
+          "dmxRange": [239, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [240, 254],
-          "name": "Random fade 100% fast…slow"
+          "dmxRange": [240, 254],
+          "type": "ShutterStrobe",
+          "comment": "Fade 100%",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
-          "range": [255, 255],
-          "name": "Open"
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
     "Dimmer": {
-      "type": "Intensity",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Focus": {
-      "type": "Focus",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Focus 0-100%"
-        }
-      ]
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
     },
     "Zoom": {
-      "type": "Zoom",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "wide 48° - narrow 8°"
-        }
-      ]
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "48deg",
+        "angleEnd": "8deg"
+      }
     },
     "Iris": {
-      "type": "Iris",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 126],
-          "name": "Open - closed"
+          "dmxRange": [0, 126],
+          "type": "Iris",
+          "openPercentStart": "open",
+          "openPercentEnd": "closed"
         },
         {
-          "range": [127, 127],
-          "name": "Closed"
+          "dmxRange": [127, 127],
+          "type": "Iris",
+          "openPercent": "closed"
         },
         {
-          "range": [128, 142],
-          "name": "Periodic opening pulse fast…slow"
+          "dmxRange": [128, 142],
+          "type": "IrisEffect",
+          "effectName": "Opening pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [143, 143],
-          "name": "Open"
+          "dmxRange": [143, 143],
+          "type": "Iris",
+          "openPercent": "open"
         },
         {
-          "range": [144, 158],
-          "name": "Periodic closing pulse fast…slow"
+          "dmxRange": [144, 158],
+          "type": "IrisEffect",
+          "effectName": "Closing pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [159, 159],
-          "name": "Closed"
+          "dmxRange": [159, 159],
+          "type": "Iris",
+          "openPercent": "closed"
         },
         {
-          "range": [160, 174],
-          "name": "Periodic snap open / ramp shut fast…slow"
+          "dmxRange": [160, 174],
+          "type": "IrisEffect",
+          "effectName": "Ramp down",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [175, 175],
-          "name": "Open"
+          "dmxRange": [175, 175],
+          "type": "Iris",
+          "openPercent": "open"
         },
         {
-          "range": [176, 190],
-          "name": "Periodic ramp open / snap shut fast…slow"
+          "dmxRange": [176, 190],
+          "type": "IrisEffect",
+          "effectName": "Ramp up",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [191, 191],
-          "name": "Closed"
+          "dmxRange": [191, 191],
+          "type": "Iris",
+          "openPercent": "closed"
         },
         {
-          "range": [192, 206],
-          "name": "Random opening pulse fast…slow"
+          "dmxRange": [192, 206],
+          "type": "IrisEffect",
+          "effectName": "Random opening pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [207, 207],
-          "name": "Open"
+          "dmxRange": [207, 207],
+          "type": "Iris",
+          "openPercent": "open"
         },
         {
-          "range": [208, 222],
-          "name": "Random closing pulse fast…slow"
+          "dmxRange": [208, 222],
+          "type": "IrisEffect",
+          "effectName": "Random closing pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [223, 223],
-          "name": "Closed"
+          "dmxRange": [223, 223],
+          "type": "Iris",
+          "openPercent": "closed"
         },
         {
-          "range": [224, 238],
-          "name": "Random snap open / ramp shut fast…slow"
+          "dmxRange": [224, 238],
+          "type": "IrisEffect",
+          "effectName": "Random ramp down",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [239, 239],
-          "name": "Open"
+          "dmxRange": [239, 239],
+          "type": "Iris",
+          "openPercent": "open"
         },
         {
-          "range": [240, 254],
-          "name": "Random ramo open / snap shut fast…slow"
+          "dmxRange": [240, 254],
+          "type": "IrisEffect",
+          "effectName": "Random ramp up",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [255, 255],
-          "name": "Open"
+          "dmxRange": [255, 255],
+          "type": "Iris",
+          "openPercent": "open"
         }
       ]
     },
     "Gobo Wheel 1": {
-      "type": "Gobo",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "Open"
+          "dmxRange": [0, 7],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Open"
         },
         {
-          "range": [8, 15],
-          "name": "Gobo 1"
+          "dmxRange": [8, 15],
+          "type": "GoboIndex",
+          "index": 1
         },
         {
-          "range": [16, 23],
-          "name": "Gobo 2"
+          "dmxRange": [16, 23],
+          "type": "GoboIndex",
+          "index": 2
         },
         {
-          "range": [24, 31],
-          "name": "Gobo 3"
+          "dmxRange": [24, 31],
+          "type": "GoboIndex",
+          "index": 3
         },
         {
-          "range": [32, 39],
-          "name": "Gobo 4"
+          "dmxRange": [32, 39],
+          "type": "GoboIndex",
+          "index": 4
         },
         {
-          "range": [40, 47],
-          "name": "Gobo 5"
+          "dmxRange": [40, 47],
+          "type": "GoboIndex",
+          "index": 5
         },
         {
-          "range": [48, 55],
-          "name": "Gobo 6"
+          "dmxRange": [48, 55],
+          "type": "GoboIndex",
+          "index": 6
         },
         {
-          "range": [56, 63],
-          "name": "Gobo 7"
+          "dmxRange": [56, 63],
+          "type": "GoboIndex",
+          "index": 7
         },
         {
-          "range": [64, 71],
-          "name": "Gobo 8"
+          "dmxRange": [64, 71],
+          "type": "GoboIndex",
+          "index": 8
         },
         {
-          "range": [72, 191],
-          "name": "Gobo 9"
+          "dmxRange": [72, 191],
+          "type": "GoboIndex",
+          "index": 9
         },
         {
-          "range": [192, 223],
-          "name": "Rotating CW fast…slow"
+          "dmxRange": [192, 223],
+          "type": "GoboWheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
-          "range": [224, 255],
-          "name": "Rotating CCW slow…fast"
+          "dmxRange": [224, 255],
+          "type": "GoboWheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
     "Gobo Wheel 2": {
-      "type": "Gobo",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "Open"
+          "dmxRange": [0, 7],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Open"
         },
         {
-          "range": [8, 15],
-          "name": "Gobo 1"
+          "dmxRange": [8, 15],
+          "type": "GoboIndex",
+          "index": 1
         },
         {
-          "range": [16, 23],
-          "name": "Gobo 2"
+          "dmxRange": [16, 23],
+          "type": "GoboIndex",
+          "index": 2
         },
         {
-          "range": [24, 31],
-          "name": "Gobo 3"
+          "dmxRange": [24, 31],
+          "type": "GoboIndex",
+          "index": 3
         },
         {
-          "range": [32, 39],
-          "name": "Gobo 4"
+          "dmxRange": [32, 39],
+          "type": "GoboIndex",
+          "index": 4
         },
         {
-          "range": [40, 47],
-          "name": "Gobo 5"
+          "dmxRange": [40, 47],
+          "type": "GoboIndex",
+          "index": 5
         },
         {
-          "range": [48, 255],
-          "name": "Gobo 6"
+          "dmxRange": [48, 255],
+          "type": "GoboIndex",
+          "index": 6
         }
       ]
     },
     "Gobo Wheel 2 Position / Rotation": {
-      "type": "Gobo",
       "fineChannelAliases": ["Gobo Wheel 2 Position / Rotation fine"],
       "capabilities": [
         {
-          "range": [0, 191],
-          "name": "Position 0-540°"
+          "dmxRange": [0, 191],
+          "type": "GoboStencilRotation",
+          "angleStart": "0deg",
+          "angleEnd": "540deg"
         },
         {
-          "range": [192, 222],
-          "name": "Rotating CW"
+          "dmxRange": [192, 222],
+          "type": "GoboStencilRotation",
+          "speed": "fast CW"
         },
         {
-          "range": [223, 223],
-          "name": "Rotation stop"
+          "dmxRange": [223, 223],
+          "type": "GoboStencilRotation",
+          "speed": "stop"
         },
         {
-          "range": [224, 255],
-          "name": "Rotating CCW"
+          "dmxRange": [224, 255],
+          "type": "GoboStencilRotation",
+          "speed": "fast CCW"
         }
       ]
     },
     "Color Wheel": {
-      "type": "Multi-Color",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 1],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [0, 1],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
-          "range": [2, 3],
-          "name": "Split White / Red",
-          "color": "#ffffff",
-          "color2": "#ff0000"
+          "dmxRange": [2, 3],
+          "type": "ColorWheelIndex",
+          "index": 0.5,
+          "colors": ["#ffffff", "#ff0000"],
+          "comment": "Split White / Red"
         },
         {
-          "range": [4, 5],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [4, 5],
+          "type": "ColorWheelIndex",
+          "index": 1,
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [6, 7],
-          "name": "Split Red / Yellow",
-          "color": "#ff0000",
-          "color2": "#ffff00"
+          "dmxRange": [6, 7],
+          "type": "ColorWheelIndex",
+          "index": 1.5,
+          "colors": ["#ff0000", "#ffff00"],
+          "comment": "Split Red / Yellow"
         },
         {
-          "range": [8, 9],
-          "name": "Yellow",
-          "color": "#ffff00"
+          "dmxRange": [8, 9],
+          "type": "ColorWheelIndex",
+          "index": 2,
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
         },
         {
-          "range": [10, 11],
-          "name": "Split Yellow / Magenta",
-          "color": "#ffff00",
-          "color2": "#ff00ff"
+          "dmxRange": [10, 11],
+          "type": "ColorWheelIndex",
+          "index": 2.5,
+          "colors": ["#ffff00", "#ff00ff"],
+          "comment": "Split Yellow / Magenta"
         },
         {
-          "range": [12, 13],
-          "name": "Magenta",
-          "color": "#ff00ff"
+          "dmxRange": [12, 13],
+          "type": "ColorWheelIndex",
+          "index": 3,
+          "colors": ["#ff00ff"],
+          "comment": "Magenta"
         },
         {
-          "range": [14, 15],
-          "name": "Split Magenta / Green",
-          "color": "#ff00ff",
-          "color2": "#00ff00"
+          "dmxRange": [14, 15],
+          "type": "ColorWheelIndex",
+          "index": 3.5,
+          "colors": ["#ff00ff", "#00ff00"],
+          "comment": "Split Magenta / Green"
         },
         {
-          "range": [16, 17],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [16, 17],
+          "type": "ColorWheelIndex",
+          "index": 4,
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [18, 19],
-          "name": "Split Green / Amber",
-          "color": "#00ff00",
-          "color2": "#ffbf00"
+          "dmxRange": [18, 19],
+          "type": "ColorWheelIndex",
+          "index": 4.5,
+          "colors": ["#00ff00", "#ffbf00"],
+          "comment": "Split Green / Amber"
         },
         {
-          "range": [20, 21],
-          "name": "Amber",
-          "color": "#ffbf00"
+          "dmxRange": [20, 21],
+          "type": "ColorWheelIndex",
+          "index": 5,
+          "colors": ["#ffbf00"],
+          "comment": "Amber"
         },
         {
-          "range": [22, 23],
-          "name": "Split Amber / Dark Blue",
-          "color": "#ffbf00",
-          "color2": "#0000aa"
+          "dmxRange": [22, 23],
+          "type": "ColorWheelIndex",
+          "index": 5.5,
+          "colors": ["#ffbf00", "#0000aa"],
+          "comment": "Split Amber / Dark Blue"
         },
         {
-          "range": [24, 25],
-          "name": "Dark Blue",
-          "color": "#0000aa"
+          "dmxRange": [24, 25],
+          "type": "ColorWheelIndex",
+          "index": 6,
+          "colors": ["#0000aa"],
+          "comment": "Dark Blue"
         },
         {
-          "range": [26, 27],
-          "name": "Split Dark Blue / Turquoise",
-          "color": "#0000aa",
-          "color2": "#40e0d0"
+          "dmxRange": [26, 27],
+          "type": "ColorWheelIndex",
+          "index": 6.5,
+          "colors": ["#0000aa", "#40e0d0"],
+          "comment": "Split Dark Blue / Turquoise"
         },
         {
-          "range": [28, 29],
-          "name": "Turquoise",
-          "color": "#40e0d0"
+          "dmxRange": [28, 29],
+          "type": "ColorWheelIndex",
+          "index": 7,
+          "colors": ["#40e0d0"],
+          "comment": "Turquoise"
         },
         {
-          "range": [30, 31],
-          "name": "Split Turquoise / Pink",
-          "color": "#40e0d0",
-          "color2": "#ff88cc"
+          "dmxRange": [30, 31],
+          "type": "ColorWheelIndex",
+          "index": 7.5,
+          "colors": ["#40e0d0", "#ff88cc"],
+          "comment": "Split Turquoise / Pink"
         },
         {
-          "range": [32, 33],
-          "name": "Pink",
-          "color": "#ff88cc"
+          "dmxRange": [32, 33],
+          "type": "ColorWheelIndex",
+          "index": 8,
+          "colors": ["#ff88cc"],
+          "comment": "Pink"
         },
         {
-          "range": [34, 35],
-          "name": "Split Pink / CTO",
-          "color": "#ff88cc",
-          "color2": "#ffd2b0"
+          "dmxRange": [34, 35],
+          "type": "ColorWheelIndex",
+          "index": 8.5,
+          "colors": ["#ff88cc", "#ffd2b0"],
+          "comment": "Split Pink / CTO"
         },
         {
-          "range": [36, 37],
-          "name": "CTO",
-          "color": "#ffd2b0"
+          "dmxRange": [36, 37],
+          "type": "ColorWheelIndex",
+          "index": 9,
+          "colors": ["#ffd2b0"],
+          "comment": "CTO"
         },
         {
-          "range": [38, 39],
-          "name": "Split CTO / White",
-          "color": "#ffd2b0",
-          "color2": "#ffffff"
+          "dmxRange": [38, 39],
+          "type": "ColorWheelIndex",
+          "index": 9.5,
+          "colors": ["#ffd2b0", "#ffffff"],
+          "comment": "Split CTO / White"
         },
         {
-          "range": [40, 63],
-          "name": "No function"
+          "dmxRange": [40, 63],
+          "type": "NoFunction"
         },
         {
-          "range": [64, 191],
-          "name": "Colors linear, beginning from white"
+          "dmxRange": [64, 191],
+          "type": "ColorWheelRotation",
+          "comment": "Colors linear, beginning from white",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
         },
         {
-          "range": [192, 223],
-          "name": "Rotating CW fast…slow"
+          "dmxRange": [192, 223],
+          "type": "ColorWheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
-          "range": [224, 255],
-          "name": "Rotating CWW slow…fast"
+          "dmxRange": [224, 255],
+          "type": "ColorWheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
     "Cyan": {
-      "type": "Single Color",
-      "color": "Cyan",
       "fineChannelAliases": ["Cyan fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
     },
     "Magenta": {
-      "type": "Single Color",
-      "color": "Magenta",
       "fineChannelAliases": ["Magenta fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
     },
     "Yellow": {
-      "type": "Single Color",
-      "color": "Yellow",
       "fineChannelAliases": ["Yellow fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
     },
     "Sparkle": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "Sparke off"
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
         },
         {
-          "range": [1, 255],
-          "name": "Sparkle intensity 0-100%"
+          "dmxRange": [1, 255],
+          "type": "Effect",
+          "effectName": "Sparkle",
+          "parameterStart": "off",
+          "parameterEnd": "high"
         }
       ]
     },
     "Sparkle Speed": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 31],
-          "name": "Faded slow…fast"
+          "dmxRange": [0, 31],
+          "type": "EffectSpeed",
+          "comment": "Faded",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [32, 63],
-          "name": "Switched slow…fast"
+          "dmxRange": [32, 63],
+          "type": "EffectSpeed",
+          "comment": "Switched",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [64, 255],
-          "name": "Repeat of fade and switch block"
+          "dmxRange": [64, 255],
+          "type": "Effect",
+          "effectName": "Repeat of fade and switch block"
         }
       ]
     },
     "Prism": {
-      "type": "Prism",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "Open"
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
         },
         {
-          "range": [8, 255],
-          "name": "Prism"
+          "dmxRange": [8, 255],
+          "type": "Prism"
         }
       ]
     },
     "Prism Position / Rotation": {
-      "type": "Prism",
       "fineChannelAliases": ["Prism Position / Rotation fine"],
       "capabilities": [
         {
-          "range": [0, 191],
-          "name": "Position 0-540°"
+          "dmxRange": [0, 191],
+          "type": "PrismRotation",
+          "angleStart": "0deg",
+          "angleEnd": "540deg"
         },
         {
-          "range": [192, 222],
-          "name": "Rotating CW"
+          "dmxRange": [192, 222],
+          "type": "PrismRotation",
+          "speed": "fast CW"
         },
         {
-          "range": [223, 223],
-          "name": "Rotation stop"
+          "dmxRange": [223, 223],
+          "type": "PrismRotation",
+          "speed": "stop"
         },
         {
-          "range": [224, 255],
-          "name": "Rotating CCW"
+          "dmxRange": [224, 255],
+          "type": "PrismRotation",
+          "speed": "fast CCW"
         }
       ]
     },
     "Frost": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 126],
-          "name": "Frost 0-100%"
+          "dmxRange": [0, 126],
+          "type": "Frost",
+          "frostIntensityStart": "off",
+          "frostIntensityEnd": "high"
         },
         {
-          "range": [127, 127],
-          "name": "Frost 100%"
+          "dmxRange": [127, 127],
+          "type": "Frost",
+          "frostIntensity": "high"
         },
         {
-          "range": [128, 142],
-          "name": "Periodic opening pulse fast…slow"
+          "dmxRange": [128, 142],
+          "type": "FrostEffect",
+          "effectName": "Opening pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [143, 143],
-          "name": "Frost 0%"
+          "dmxRange": [143, 143],
+          "type": "Frost",
+          "frostIntensity": "low"
         },
         {
-          "range": [144, 158],
-          "name": "Periodic closing pulse fast…slow"
+          "dmxRange": [144, 158],
+          "type": "FrostEffect",
+          "effectName": "Closing pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [159, 159],
-          "name": "Frost 100%"
+          "dmxRange": [159, 159],
+          "type": "Frost",
+          "frostIntensity": "high"
         },
         {
-          "range": [160, 174],
-          "name": "Periodic ramp in / snap out fast…slow"
+          "dmxRange": [160, 174],
+          "type": "FrostEffect",
+          "effectName": "Ramp up",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [175, 175],
-          "name": "Frost 0%"
+          "dmxRange": [175, 175],
+          "type": "Frost",
+          "frostIntensity": "low"
         },
         {
-          "range": [176, 190],
-          "name": "Periodic snap in / ramp out fast…slow"
+          "dmxRange": [176, 190],
+          "type": "FrostEffect",
+          "effectName": "Ramp down",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [191, 191],
-          "name": "Frost 100%"
+          "dmxRange": [191, 191],
+          "type": "Frost",
+          "frostIntensity": "high"
         },
         {
-          "range": [192, 206],
-          "name": "Random opening pulse fast…slow"
+          "dmxRange": [192, 206],
+          "type": "FrostEffect",
+          "effectName": "Random opening pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [207, 207],
-          "name": "Frost 0%"
+          "dmxRange": [207, 207],
+          "type": "Frost",
+          "frostIntensity": "low"
         },
         {
-          "range": [208, 222],
-          "name": "Random closing pulse fast…slow"
+          "dmxRange": [208, 222],
+          "type": "FrostEffect",
+          "effectName": "Random closing pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [223, 223],
-          "name": "Frost 100%"
+          "dmxRange": [223, 223],
+          "type": "Frost",
+          "frostIntensity": "high"
         },
         {
-          "range": [224, 238],
-          "name": "Random ramp in / snap out fast…slow"
+          "dmxRange": [224, 238],
+          "type": "FrostEffect",
+          "effectName": "Random ramp up",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [239, 239],
-          "name": "Frost 0%"
+          "dmxRange": [239, 239],
+          "type": "Frost",
+          "frostIntensity": "low"
         },
         {
-          "range": [240, 254],
-          "name": "Random snap in / ramp out fast…slow"
+          "dmxRange": [240, 254],
+          "type": "FrostEffect",
+          "effectName": "Random ramp down",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [255, 255],
-          "name": "Aperture for logo projection"
+          "dmxRange": [255, 255],
+          "type": "Effect",
+          "effectName": "Aperture for logo projection"
         }
       ]
     },
     "Macro": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "Off"
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
         },
         {
-          "range": [1, 255],
-          "name": "Macro 001-255"
+          "dmxRange": [1, 255],
+          "type": "Effect",
+          "effectName": "Macro 001-255"
         }
       ]
     },
     "Pan/Tilt Speed": {
-      "type": "Speed",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 3],
-          "name": "Real time"
+          "dmxRange": [0, 3],
+          "type": "PanTiltSpeed",
+          "speed": "fast"
         },
         {
-          "range": [4, 255],
-          "name": "Delay fast…slow"
+          "dmxRange": [4, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         }
       ]
     },
     "Effect Speed": {
-      "type": "Speed",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 3],
-          "name": "Real time"
+          "dmxRange": [0, 3],
+          "type": "EffectSpeed",
+          "speed": "fast"
         },
         {
-          "range": [4, 255],
-          "name": "Delay fast…slow"
+          "dmxRange": [4, 255],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         }
       ]
     },
     "Blackout on Move": {
-      "type": "Maintenance",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 95],
-          "name": "No function"
+          "dmxRange": [0, 95],
+          "type": "NoFunction"
         },
         {
-          "range": [96, 127],
-          "name": "Blackout at pan/tilt"
+          "dmxRange": [96, 127],
+          "type": "Maintenance",
+          "comment": "Blackout at pan/tilt"
         },
         {
-          "range": [128, 159],
-          "name": "Blackout at gobo, color, prism, CMY, iris, frost"
+          "dmxRange": [128, 159],
+          "type": "Maintenance",
+          "comment": "Blackout at gobo, color, prism, CMY, iris, frost"
         },
         {
-          "range": [160, 191],
-          "name": "Blackout at gobo, color, prism, CMY, iris, frost, zoom, focus"
+          "dmxRange": [160, 191],
+          "type": "Maintenance",
+          "comment": "Blackout at gobo, color, prism, CMY, iris, frost, zoom, focus"
         },
         {
-          "range": [192, 223],
-          "name": "Blackout at gobo, color, prism, CMY, iris, frost, pan/tilt"
+          "dmxRange": [192, 223],
+          "type": "Maintenance",
+          "comment": "Blackout at gobo, color, prism, CMY, iris, frost, pan/tilt"
         },
         {
-          "range": [224, 255],
-          "name": "Blackout at gobo, color, prism, CMY, iris, frost, zoom, focus, pan/tilt"
+          "dmxRange": [224, 255],
+          "type": "Maintenance",
+          "comment": "Blackout at gobo, color, prism, CMY, iris, frost, zoom, focus, pan/tilt"
         }
       ]
     }

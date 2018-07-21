@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2017-07-24",
-    "lastModifyDate": "2017-07-25"
+    "lastModifyDate": "2018-07-21"
   },
   "manualURL": "http://adamhall.invaliddomain.de/out/media/downloads/MARKEN/CAMEO/CLHB300W/CLHB300_CAMEO_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.PDF",
   "physical": {
@@ -36,150 +36,170 @@
   },
   "availableChannels": {
     "Master Dimmer": {
-      "type": "Intensity",
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Strobe": {
-      "type": "Strobe",
       "defaultValue": 0,
       "highlightValue": 200,
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "No strobe"
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
         },
         {
-          "range": [11, 255],
-          "name": "slow to fast"
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Show mode": {
-      "type": "Maintenance",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "no movement",
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
-          "range": [8, 22],
-          "name": "Show mode 1",
+          "dmxRange": [8, 22],
+          "type": "Effect",
+          "effectName": "Show mode 1",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
-          "range": [23, 37],
-          "name": "Show mode 2",
+          "dmxRange": [23, 37],
+          "type": "Effect",
+          "effectName": "Show mode 2",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
-          "range": [38, 52],
-          "name": "Show mode 3",
+          "dmxRange": [38, 52],
+          "type": "Effect",
+          "effectName": "Show mode 3",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
-          "range": [53, 67],
-          "name": "Show mode 4",
+          "dmxRange": [53, 67],
+          "type": "Effect",
+          "effectName": "Show mode 4",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
-          "range": [68, 82],
-          "name": "Show mode 5",
+          "dmxRange": [68, 82],
+          "type": "Effect",
+          "effectName": "Show mode 5",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
-          "range": [83, 97],
-          "name": "Show mode 6",
+          "dmxRange": [83, 97],
+          "type": "Effect",
+          "effectName": "Show mode 6",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
-          "range": [98, 112],
-          "name": "Show mode 7",
+          "dmxRange": [98, 112],
+          "type": "Effect",
+          "effectName": "Show mode 7",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
-          "range": [113, 127],
-          "name": "Show mode 8",
+          "dmxRange": [113, 127],
+          "type": "Effect",
+          "effectName": "Show mode 8",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
-          "range": [128, 142],
-          "name": "Show mode 9",
+          "dmxRange": [128, 142],
+          "type": "Effect",
+          "effectName": "Show mode 9",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
-          "range": [143, 157],
-          "name": "Show mode 10",
+          "dmxRange": [143, 157],
+          "type": "Effect",
+          "effectName": "Show mode 10",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
-          "range": [158, 172],
-          "name": "Show mode 11",
+          "dmxRange": [158, 172],
+          "type": "Effect",
+          "effectName": "Show mode 11",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
-          "range": [173, 187],
-          "name": "Show mode 12",
+          "dmxRange": [173, 187],
+          "type": "Effect",
+          "effectName": "Show mode 12",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
-          "range": [188, 202],
-          "name": "Show mode 13",
+          "dmxRange": [188, 202],
+          "type": "Effect",
+          "effectName": "Show mode 13",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
-          "range": [203, 217],
-          "name": "Show mode 14",
+          "dmxRange": [203, 217],
+          "type": "Effect",
+          "effectName": "Show mode 14",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
-          "range": [218, 232],
-          "name": "Show mode 15",
+          "dmxRange": [218, 232],
+          "type": "Effect",
+          "effectName": "Show mode 15",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
-          "range": [233, 247],
-          "name": "Show mode 16",
+          "dmxRange": [233, 247],
+          "type": "Effect",
+          "effectName": "Show mode 16",
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Show mode speed"
           }
         },
         {
-          "range": [248, 255],
-          "name": "sound control mode",
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true,
           "switchChannels": {
             "Show mode speed / Sound sensitivity": "Sound sensitivity"
           }
@@ -187,389 +207,465 @@
       ]
     },
     "Show mode speed": {
-      "type": "Speed"
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Sound sensitivity": {
-      "type": "Intensity",
-      "crossfade": true
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
     },
     "Light control": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 30],
-          "name": "Auto color change"
+          "dmxRange": [0, 30],
+          "type": "Effect",
+          "effectName": "Auto color change"
         },
         {
-          "range": [31, 45],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [31, 45],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
         },
         {
-          "range": [46, 60],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [46, 60],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
         },
         {
-          "range": [61, 75],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [61, 75],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
         },
         {
-          "range": [76, 90],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [76, 90],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
         },
         {
-          "range": [91, 105],
-          "name": "Red + Green",
-          "color": "#ffff00"
+          "dmxRange": [91, 105],
+          "type": "ColorPreset",
+          "comment": "Red + Green",
+          "colors": ["#ffff00"]
         },
         {
-          "range": [106, 120],
-          "name": "Red + Blue",
-          "color": "#ff00ff"
+          "dmxRange": [106, 120],
+          "type": "ColorPreset",
+          "comment": "Red + Blue",
+          "colors": ["#ff00ff"]
         },
         {
-          "range": [121, 135],
-          "name": "Red + White",
-          "color": "#ff8080"
+          "dmxRange": [121, 135],
+          "type": "ColorPreset",
+          "comment": "Red + White",
+          "colors": ["#ff8080"]
         },
         {
-          "range": [136, 150],
-          "name": "Green + Blue",
-          "color": "#00ffff"
+          "dmxRange": [136, 150],
+          "type": "ColorPreset",
+          "comment": "Green + Blue",
+          "colors": ["#00ffff"]
         },
         {
-          "range": [151, 165],
-          "name": "Green + White",
-          "color": "#80ff80"
+          "dmxRange": [151, 165],
+          "type": "ColorPreset",
+          "comment": "Green + White",
+          "colors": ["#80ff80"]
         },
         {
-          "range": [166, 180],
-          "name": "Blue + White",
-          "color": "#8080ff"
+          "dmxRange": [166, 180],
+          "type": "ColorPreset",
+          "comment": "Blue + White",
+          "colors": ["#8080ff"]
         },
         {
-          "range": [181, 195],
-          "name": "Red + Green + Blue",
-          "color": "#ffffff"
+          "dmxRange": [181, 195],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue",
+          "colors": ["#ffffff"]
         },
         {
-          "range": [196, 210],
-          "name": "Red + Green + White",
-          "color": "#ffff80"
+          "dmxRange": [196, 210],
+          "type": "ColorPreset",
+          "comment": "Red + Green + White",
+          "colors": ["#ffff80"]
         },
         {
-          "range": [211, 225],
-          "name": "Red + Blue + White",
-          "color": "#ff80ff"
+          "dmxRange": [211, 225],
+          "type": "ColorPreset",
+          "comment": "Red + Blue + White",
+          "colors": ["#ff80ff"]
         },
         {
-          "range": [226, 240],
-          "name": "Green + Blue + White",
-          "color": "#80ffff"
+          "dmxRange": [226, 240],
+          "type": "ColorPreset",
+          "comment": "Green + Blue + White",
+          "colors": ["#80ffff"]
         },
         {
-          "range": [241, 255],
-          "name": "Red + Green + Blue + White",
-          "color": "#ffffff"
+          "dmxRange": [241, 255],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue + White",
+          "colors": ["#ffffff"]
         }
       ]
     },
     "Auto color change speed": {
-      "type": "Speed"
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Master Pan": {
-      "type": "Pan",
-      "fineChannelAliases": ["Master Pan fine"]
+      "fineChannelAliases": ["Master Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
     },
     "Master Tilt": {
-      "type": "Tilt",
-      "fineChannelAliases": ["Master Tilt fine"]
+      "fineChannelAliases": ["Master Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
     },
     "Master Red": {
-      "type": "Single Color",
-      "color": "Red",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Master Green": {
-      "type": "Single Color",
-      "color": "Green",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Master Blue": {
-      "type": "Single Color",
-      "color": "Blue",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "Master White": {
-      "type": "Single Color",
-      "color": "White",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "Head speed": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "slow to fast"
-        }
-      ]
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
     },
     "Head Speed 1": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "slowest speed"
+          "dmxRange": [0, 10],
+          "type": "PanTiltSpeed",
+          "speed": "slow"
         },
         {
-          "range": [11, 255],
-          "name": "slow to fast"
+          "dmxRange": [11, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Sound mode / Reset": {
-      "type": "Maintenance",
       "capabilities": [
         {
-          "range": [0, 199],
-          "name": "No function"
+          "dmxRange": [0, 199],
+          "type": "NoFunction"
         },
         {
-          "range": [200, 209],
-          "name": "Reset"
+          "dmxRange": [200, 209],
+          "type": "Maintenance",
+          "comment": "Reset"
         },
         {
-          "range": [210, 240],
-          "name": "No function"
+          "dmxRange": [210, 240],
+          "type": "NoFunction"
         },
         {
-          "range": [241, 255],
-          "name": "Sound control mode"
+          "dmxRange": [241, 255],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true
         }
       ]
     }
   },
   "templateChannels": {
     "Pan $pixelKey": {
-      "type": "Pan",
-      "fineChannelAliases": ["Pan $pixelKey fine"]
+      "fineChannelAliases": ["Pan $pixelKey fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
     },
     "Tilt $pixelKey": {
-      "type": "Tilt",
-      "fineChannelAliases": ["Tilt $pixelKey fine"]
+      "fineChannelAliases": ["Tilt $pixelKey fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
     },
     "Dimmer $pixelKey": {
-      "type": "Intensity",
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Head Speed $pixelKey simple": {
       "name": "Head Speed $pixelKey",
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "slow to fast"
-        }
-      ]
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
     },
     "Head Speed $pixelKey": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "Use Head Speed 1"
+          "dmxRange": [0, 10],
+          "type": "Maintenance",
+          "comment": "Use Head Speed 1"
         },
         {
-          "range": [11, 255],
-          "name": "slow to fast"
+          "dmxRange": [11, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         }
       ]
     },
     "Strobe $pixelKey": {
-      "type": "Strobe",
       "defaultValue": 0,
       "highlightValue": 200,
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "No strobe"
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
         },
         {
-          "range": [11, 255],
-          "name": "slow to fast"
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Color $pixelKey": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 30],
-          "name": "Use master color dimmers"
+          "dmxRange": [0, 30],
+          "type": "NoFunction",
+          "comment": "Use master color dimmers"
         },
         {
-          "range": [31, 45],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [31, 45],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
         },
         {
-          "range": [46, 60],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [46, 60],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
         },
         {
-          "range": [61, 75],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [61, 75],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
         },
         {
-          "range": [76, 90],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [76, 90],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
         },
         {
-          "range": [91, 105],
-          "name": "Red + Green",
-          "color": "#ffff00"
+          "dmxRange": [91, 105],
+          "type": "ColorPreset",
+          "comment": "Red + Green",
+          "colors": ["#ffff00"]
         },
         {
-          "range": [106, 120],
-          "name": "Red + Blue",
-          "color": "#ff00ff"
+          "dmxRange": [106, 120],
+          "type": "ColorPreset",
+          "comment": "Red + Blue",
+          "colors": ["#ff00ff"]
         },
         {
-          "range": [121, 135],
-          "name": "Red + White",
-          "color": "#ff8080"
+          "dmxRange": [121, 135],
+          "type": "ColorPreset",
+          "comment": "Red + White",
+          "colors": ["#ff8080"]
         },
         {
-          "range": [136, 150],
-          "name": "Green + Blue",
-          "color": "#00ffff"
+          "dmxRange": [136, 150],
+          "type": "ColorPreset",
+          "comment": "Green + Blue",
+          "colors": ["#00ffff"]
         },
         {
-          "range": [151, 165],
-          "name": "Green + White",
-          "color": "#80ff80"
+          "dmxRange": [151, 165],
+          "type": "ColorPreset",
+          "comment": "Green + White",
+          "colors": ["#80ff80"]
         },
         {
-          "range": [166, 180],
-          "name": "Blue + White",
-          "color": "#8080ff"
+          "dmxRange": [166, 180],
+          "type": "ColorPreset",
+          "comment": "Blue + White",
+          "colors": ["#8080ff"]
         },
         {
-          "range": [181, 195],
-          "name": "Red + Green + Blue",
-          "color": "#ffffff"
+          "dmxRange": [181, 195],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue",
+          "colors": ["#ffffff"]
         },
         {
-          "range": [196, 210],
-          "name": "Red + Green + White",
-          "color": "#ffff80"
+          "dmxRange": [196, 210],
+          "type": "ColorPreset",
+          "comment": "Red + Green + White",
+          "colors": ["#ffff80"]
         },
         {
-          "range": [211, 225],
-          "name": "Red + Blue + White",
-          "color": "#ff80ff"
+          "dmxRange": [211, 225],
+          "type": "ColorPreset",
+          "comment": "Red + Blue + White",
+          "colors": ["#ff80ff"]
         },
         {
-          "range": [226, 240],
-          "name": "Green + Blue + White",
-          "color": "#80ffff"
+          "dmxRange": [226, 240],
+          "type": "ColorPreset",
+          "comment": "Green + Blue + White",
+          "colors": ["#80ffff"]
         },
         {
-          "range": [241, 255],
-          "name": "Red + Green + Blue + White",
-          "color": "#ffffff"
+          "dmxRange": [241, 255],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue + White",
+          "colors": ["#ffffff"]
         }
       ]
     },
     "Red $pixelKey": {
-      "type": "Single Color",
-      "color": "Red",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green $pixelKey": {
-      "type": "Single Color",
-      "color": "Green",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue $pixelKey": {
-      "type": "Single Color",
-      "color": "Blue",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White $pixelKey": {
-      "type": "Single Color",
-      "color": "White",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "Mode $pixelKey": {
-      "type": "Maintenance",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "No function",
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
-          "range": [8, 30],
-          "name": "Show mode 1",
+          "dmxRange": [8, 30],
+          "type": "Effect",
+          "effectName": "Show mode 1",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
-          "range": [31, 53],
-          "name": "Show mode 2",
+          "dmxRange": [31, 53],
+          "type": "Effect",
+          "effectName": "Show mode 2",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
-          "range": [54, 76],
-          "name": "Show mode 3",
+          "dmxRange": [54, 76],
+          "type": "Effect",
+          "effectName": "Show mode 3",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
-          "range": [77, 99],
-          "name": "Show mode 4",
+          "dmxRange": [77, 99],
+          "type": "Effect",
+          "effectName": "Show mode 4",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
-          "range": [100, 122],
-          "name": "sound control mode",
+          "dmxRange": [100, 122],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true,
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Sound sensitivity $pixelKey"
           }
         },
         {
-          "range": [123, 199],
-          "name": "No function",
+          "dmxRange": [123, 199],
+          "type": "NoFunction",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
-          "range": [200, 224],
-          "name": "reset",
+          "dmxRange": [200, 224],
+          "type": "Maintenance",
+          "comment": "reset",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
         },
         {
-          "range": [225, 255],
-          "name": "No function",
+          "dmxRange": [225, 255],
+          "type": "NoFunction",
           "switchChannels": {
             "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
           }
@@ -577,11 +673,16 @@
       ]
     },
     "Show mode speed $pixelKey": {
-      "type": "Speed"
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Sound sensitivity $pixelKey": {
-      "type": "Intensity",
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     }
   },
   "modes": [

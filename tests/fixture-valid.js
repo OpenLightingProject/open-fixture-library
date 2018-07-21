@@ -4,6 +4,7 @@ const Ajv = require(`ajv`);
 const register = require(`../fixtures/register.json`);
 const fixtureSchema = require(`../schemas/dereferenced/fixture.json`);
 const fixtureRedirectSchema = require(`../schemas/dereferenced/fixture-redirect.json`);
+const schemaProperties = require(`../lib/schema-properties.js`);
 
 const {
   Channel,
@@ -313,6 +314,10 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
     checkTemplateVariables(channel.name, []);
 
+    if (channel.type === `Unknown`) {
+      result.errors.push(`Channel '${channel.key}' has an unknown type.`);
+    }
+
     // Fine channels
     channel.fineChannelAliases.forEach(alias => {
       checkTemplateVariables(alias, []);
@@ -343,15 +348,13 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       result.errors.push(`highlightValue must be less or equal to ${channel.maxDmxBound} in channel '${channel.key}'.`);
     }
 
-    if (channel.hasCapabilities) {
-      checkCapabilities(channel);
-    }
+    checkCapabilities(channel);
 
     /**
      * Check that the channel's capabilities are valid.
      */
     function checkCapabilities() {
-      let rangesInvalid = false;
+      let dmxRangesInvalid = false;
       const possibleEndValues = getPossibleEndValues();
 
       for (let i = 0; i < channel.capabilities.length; i++) {
@@ -359,8 +362,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
         // if one of the previous capabilities had an invalid range,
         // it doesn't make sense to check later ranges
-        if (!rangesInvalid) {
-          rangesInvalid = !checkRange(i);
+        if (!dmxRangesInvalid) {
+          dmxRangesInvalid = !checkDmxRange(i);
         }
 
         checkCapability(cap, `Capability '${cap.name}' (${cap.rawDmxRange}) in channel '${channel.key}'`);
@@ -369,36 +372,37 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       /**
        * Check that a capability's range is valid.
        * @param {!number} capNumber The number of the capability in the channel, starting with 0.
+       * @param {number} minUsedFineness The smallest fineness that the channel is used in a mode.This controls if this range can be from 0 up to channel.maxDmxBound or less.
        * @returns {boolean} true if the range is valid, false otherwise. The global `result` object is updated then.
        */
-      function checkRange(capNumber) {
+      function checkDmxRange(capNumber) {
         const cap = channel.capabilities[capNumber];
 
         // first capability
-        if (capNumber === 0 && cap.range.start !== 0) {
-          result.errors.push(`The first range has to start at 0 in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
+        if (capNumber === 0 && cap.dmxRange.start !== 0) {
+          result.errors.push(`The first dmxRange has to start at 0 in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
           return false;
         }
 
         // all capabilities
-        if (cap.range.start > cap.range.end) {
-          result.errors.push(`range invalid in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
+        if (cap.dmxRange.start > cap.dmxRange.end) {
+          result.errors.push(`dmxRange invalid in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
           return false;
         }
 
         // not first capability
         const prevCap = capNumber > 0 ? channel.capabilities[capNumber - 1] : null;
-        if (capNumber > 0 && cap.range.start !== prevCap.range.end + 1) {
-          result.errors.push(`ranges must be adjacent in capabilities '${prevCap.name}' (#${capNumber}) and '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
+        if (capNumber > 0 && cap.dmxRange.start !== prevCap.dmxRange.end + 1) {
+          result.errors.push(`dmxRanges must be adjacent in capabilities '${prevCap.name}' (#${capNumber}) and '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
           return false;
         }
 
         // last capability
         if (capNumber === channel.capabilities.length - 1) {
-          const rawRangeEnd = channel.jsonObject.capabilities[capNumber].range[1];
+          const rawDmxRangeEnd = channel.capabilities[capNumber].jsonObject.dmxRange[1];
 
-          if (!possibleEndValues.includes(rawRangeEnd)) {
-            result.errors.push(`The last range has to end at ${possibleEndValues.join(` or `)} in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'`);
+          if (!possibleEndValues.includes(rawDmxRangeEnd)) {
+            result.errors.push(`The last dmxRange has to end at ${possibleEndValues.join(` or `)} in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'`);
             return false;
           }
         }
@@ -443,6 +447,112 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
             }
           });
         }
+
+        for (const prop of cap.usedStartEndEntities) {
+          const [startValue, endValue] = cap[prop];
+
+          if ((startValue.keyword === null) !== (endValue.keyword === null)) {
+            result.errors.push(`${errorPrefix} must use keywords for start and end value or for none of them in ${prop}.`);
+          }
+          else if (startValue.unit !== endValue.unit) {
+            result.errors.push(`${errorPrefix} uses different units for ${prop}.`);
+          }
+        }
+
+        const capabilityTypeChecks = {
+          ShutterStrobe: checkShutterStrobeCapability,
+          ColorWheelIndex: checkColorWheelIndexCapability,
+          Pan: checkPanTiltCapability,
+          Tilt: checkPanTiltCapability,
+          PanContinuous: checkPanTiltContinuousCapability,
+          TiltContinuous: checkPanTiltContinuousCapability,
+          Effect: checkEffectCapability
+        };
+
+        if (Object.keys(capabilityTypeChecks).includes(cap.type)) {
+          capabilityTypeChecks[cap.type]();
+        }
+
+
+        /**
+         * Type-specific checks for ShutterStrobe capabilities.
+         */
+        function checkShutterStrobeCapability() {
+          if ([`Closed`, `Open`].includes(cap.shutterEffect)) {
+            if (cap.isSoundControlled) {
+              result.errors.push(`${errorPrefix}: Shutter open/closed can't be sound-controlled.`);
+            }
+
+            if (cap.speed !== null || cap.duration !== null) {
+              result.errors.push(`${errorPrefix}: Shutter open/closed can't define speed or duration.`);
+            }
+
+            if (cap.randomTiming) {
+              result.errors.push(`${errorPrefix}: Shutter open/closed can't have random timing.`);
+            }
+          }
+        }
+
+        /**
+         * Type-specific checks for ColorWheelIndex capabilities.
+         */
+        function checkColorWheelIndexCapability() {
+          if ((cap.index !== null && cap.index[0].number !== cap.index[1].number) &&
+              (cap.colors !== null && cap.colors.isStep)) {
+            result.errors.push(`${errorPrefix}: Must use colorsStart and colorsEnd when index also has start/end values.`);
+          }
+        }
+
+        /**
+         * Type-specific checks for Pan and Tilt capabilities.
+         */
+        function checkPanTiltCapability() {
+          const max = fixture.physical === null ? null : fixture.physical[`focus${cap.type}Max`];
+          const isInfinite = max === Number.POSITIVE_INFINITY;
+          const usesPercentageAngle = cap.angle[0].unit === `%`;
+
+          const panOrTilt = cap.type.toLowerCase();
+
+          if (!usesPercentageAngle) {
+            const range = Math.abs(cap.angle[1] - cap.angle[0]);
+
+            if (!max) {
+              result.warnings.push(`${errorPrefix} defines an exact ${panOrTilt} angle. Setting focus.${panOrTilt}Max in the fixture's physical data is recommended.`);
+            }
+            else if (range > max) {
+              result.errors.push(`${errorPrefix} uses an angle range that is greater than focus.${panOrTilt}Max in the fixture's physical data.`);
+            }
+          }
+          else if (max && !isInfinite) {
+            result.warnings.push(`${errorPrefix} defines an unprecise percentaged ${panOrTilt} angle. Using the exact value from focus.${panOrTilt}Max in the fixture's physical data is recommended.`);
+          }
+        }
+
+        /**
+         * Type-specific checks for PanContinuous and TiltContinuous capabilities.
+         */
+        function checkPanTiltContinuousCapability() {
+          const panOrTilt = cap.type === `PanContinuous` ? `Pan` : `Tilt`;
+
+          const max = fixture.physical === null ? null : fixture.physical[`focus${panOrTilt}Max`];
+
+          if (max !== Number.POSITIVE_INFINITY) {
+            result.errors.push(`${errorPrefix} defines continuous ${panOrTilt.toLowerCase()} but focus.${panOrTilt.toLowerCase()}Max in the fixture's physical data is not "infinite".`);
+          }
+        }
+
+        /**
+         * Type-specific checks for Effect capabilities.
+         */
+        function checkEffectCapability() {
+          if (cap.effectPreset === null && schemaProperties.definitions.effectPreset.enum.includes(cap.effectName)) {
+            result.errors.push(`${errorPrefix} must use effectPreset instead of effectName with '${cap.effectName}'.`);
+          }
+
+          if (!cap.isSoundControlled && cap.soundSensitivity !== null) {
+            result.errors.push(`${errorPrefix} can't set soundSensitivity if soundControlled is not true.`);
+          }
+        }
       }
     }
   }
@@ -470,7 +580,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       const intendedLength = parseInt(RegExp.$1);
 
       if (mode.channels.length !== intendedLength) {
-        result.warnings.push(`Mode '${mode.name}' should probably have ${RegExp.$1} channels but actually has ${mode.channels.length}.`);
+        result.errors.push(`Mode '${mode.name}' should have ${RegExp.$1} channels but actually has ${mode.channels.length}.`);
       }
       if (mode.shortName !== `${intendedLength}ch`) {
         result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch'.`);
@@ -720,28 +830,30 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     const categories = {
       'Color Changer': {
         isSuggested: isColorChanger(),
-        suggestedPhrase: `there are at least one 'Multi-Color' or two 'Single Color' channels`,
-        invalidPhrase: `there is no 'Multi-Color' and less than two 'Single Color' channels`
+        suggestedPhrase: `there are at least one ColorPreset, ColorWheelIndex or two ColorIntensity capabilities`,
+        invalidPhrase: `there are no ColorPreset, ColorWheelIndex and less than two ColorIntensity capabilities`
       },
       'Moving Head': {
         isSuggested: isMovingHead(),
         isInvalid: isNotMovingHead(),
-        suggestedPhrase: `focus.type is 'Head' or there's a 'Pan' and a 'Tilt' capability`,
+        suggestedPhrase: `focus.type is 'Head' or there's a Pan(Continuous) and a Tilt(Continuous) capability`,
         invalidPhrase: `focus.type is not 'Head'`
       },
       'Scanner': {
         isSuggested: isScanner(),
         isInvalid: isNotScanner(),
-        suggestedPhrase: `focus.type is 'Mirror' or there's a 'Pan' and a 'Tilt' capability`,
+        suggestedPhrase: `focus.type is 'Mirror' or there's a Pan(Continuous) and a Tilt(Continuous) capability`,
         invalidPhrase: `focus.type is not 'Mirror'`
       },
       'Smoke': {
-        isInvalid: !hasChannelOfType(`Fog`),
-        invalidPhrase: `there is not 'Fog' channel.`
+        isSuggested: hasCapabilityPropertyValue(`fogType`, `Fog`),
+        suggestedPhrase: `a Fog/FogType capability has fogType 'Fog'`,
+        invalidPhrase: `no Fog/FogType capability has fogType 'Fog'`
       },
       'Hazer': {
-        isInvalid: !hasChannelOfType(`Fog`),
-        invalidPhrase: `there is not 'Fog' channel.`
+        isSuggested: hasCapabilityPropertyValue(`fogType`, `Haze`),
+        suggestedPhrase: `a Fog/FogType capability has fogType 'Haze'`,
+        invalidPhrase: `no Fog/FogType capability has fogType 'Haze'`
       }
     };
 
@@ -765,7 +877,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
      * @returns {!boolean} Whether the 'Color Changer' category is suggested.
     */
     function isColorChanger() {
-      return hasChannelOfType(`Multi-Color`) || hasChannelOfType(`Single Color`, 2);
+      return hasCapabilityOfType(`ColorPreset`) || hasCapabilityOfType(`ColorWheelIndex`) || hasCapabilityOfType(`ColorIntensity`, 2);
     }
 
     /**
@@ -803,21 +915,34 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
 
     /**
-     * @returns {!boolean} Whether the fixture has both a Pan and a Tilt channel.
+     * @returns {!boolean} Whether the fixture has both a Pan / PanContinuous and a Tilt / TiltContinuous channel.
      */
     function hasPanTiltChannels() {
-      return hasChannelOfType(`Pan`) && hasChannelOfType(`Tilt`);
+      const hasPan = hasCapabilityOfType(`Pan`) || hasCapabilityOfType(`PanContinuous`);
+      const hasTilt = hasCapabilityOfType(`Tilt`) || hasCapabilityOfType(`TiltContinuous`);
+      return hasPan && hasTilt;
     }
 
     /**
-     * @param {!string} type What channel type to search for.
+     * @param {!string} type What capability type to search for.
      * @param {!number} [minimum=1] How many occurences are needed to succeed.
-     * @returns {!boolean} Whether the given channel type occurs at least at the given minimum times in the fixture.
+     * @returns {!boolean} Whether the given capability type occurs at least at the given minimum times in the fixture.
      */
-    function hasChannelOfType(type, minimum = 1) {
-      return fixture.normalizedChannels.filter(
-        ch => ch.type === type
+    function hasCapabilityOfType(type, minimum = 1) {
+      return fixture.capabilities.filter(
+        cap => cap.type === type
       ).length >= minimum;
+    }
+
+    /**
+     * @param {!string} property The property name of the capability's json data.
+     * @param {!string} value The property value to search for.
+     * @returns {!boolean} Whether the given capability property/value pair occurs in the fixture.
+     */
+    function hasCapabilityPropertyValue(property, value) {
+      return fixture.capabilities.some(
+        cap => cap[property] === value
+      );
     }
   }
 

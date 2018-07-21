@@ -10,7 +10,7 @@
     :placeholder="hint"
     :value="value === `invalid` ? `` : value"
     type="number"
-    @input="update">
+    v-on="lazy ? { change: update } : { input: update }">
 </template>
 
 <script>
@@ -48,6 +48,11 @@ export default {
     value: {
       type: null,
       required: true
+    },
+    lazy: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   computed: {

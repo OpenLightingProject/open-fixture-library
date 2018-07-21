@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2017-12-25",
-    "lastModifyDate": "2017-12-25"
+    "lastModifyDate": "2018-07-21"
   },
   "manualURL": "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLFLOODIP65TRI/CLFLOODIP65TRI_CAMEO_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf",
   "physical": {
@@ -23,137 +23,160 @@
   },
   "availableChannels": {
     "Dimmer": {
-      "type": "Intensity",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Color Macros Simple": {
       "name": "Color Macros",
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 36],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [0, 36],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [37, 73],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [37, 73],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [74, 110],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [74, 110],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
-          "range": [111, 147],
-          "name": "Yellow",
-          "color": "#ffff00"
+          "dmxRange": [111, 147],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
         },
         {
-          "range": [148, 184],
-          "name": "Magenta",
-          "color": "#ff00ff"
+          "dmxRange": [148, 184],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Magenta"
         },
         {
-          "range": [185, 221],
-          "name": "Cyan",
-          "color": "#00ffff"
+          "dmxRange": [185, 221],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
         },
         {
-          "range": [222, 255],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [222, 255],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
         }
       ]
     },
     "Strobe": {
-      "type": "Strobe",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "No function"
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
         },
         {
-          "range": [1, 255],
-          "name": "Strobe 1…20Hz"
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
         }
       ]
     },
     "Color Macros Extended": {
       "name": "Color Macros",
-      "type": "Multi-Color",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 4],
-          "name": "Blackout",
-          "color": "#000000"
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
         },
         {
-          "range": [5, 15],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [5, 15],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [16, 26],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [16, 26],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [27, 37],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [27, 37],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
-          "range": [38, 48],
-          "name": "Yellow",
-          "color": "#ffff00"
+          "dmxRange": [38, 48],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
         },
         {
-          "range": [49, 59],
-          "name": "Magenta",
-          "color": "#ff00ff"
+          "dmxRange": [49, 59],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Magenta"
         },
         {
-          "range": [60, 70],
-          "name": "Cyan",
-          "color": "#00ffff"
+          "dmxRange": [60, 70],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
         },
         {
-          "range": [71, 80],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [71, 80],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
-          "range": [81, 150],
-          "name": "Color jump slow…fast"
+          "dmxRange": [81, 150],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [151, 255],
-          "name": "Color fade slow…fast"
+          "dmxRange": [151, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     }
   },
   "modes": [

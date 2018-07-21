@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2017-07-14",
-    "lastModifyDate": "2017-07-14"
+    "lastModifyDate": "2018-07-21"
   },
   "manualURL": "http://adamhall.invaliddomain.de/out/media/downloads/MARKEN/CAMEO/CLPFLATPRO7/CLPFLATPRO7-12-18_Cameo_Bedienungsanleitung_EN_DE_FR_ES.pdf",
   "physical": {
@@ -17,225 +17,271 @@
   },
   "availableChannels": {
     "Dimmer": {
-      "type": "Intensity",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Color Macro Simple": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 16],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [0, 16],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [17, 33],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [17, 33],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [34, 50],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [34, 50],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
-          "range": [51, 67],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [51, 67],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
-          "range": [68, 84],
-          "name": "Amber",
-          "color": "#ffbf00"
+          "dmxRange": [68, 84],
+          "type": "ColorPreset",
+          "colors": ["#ffbf00"],
+          "comment": "Amber"
         },
         {
-          "range": [85, 101],
-          "name": "Yellow",
-          "color": "#ffff00"
+          "dmxRange": [85, 101],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
         },
         {
-          "range": [102, 118],
-          "name": "Cyan",
-          "color": "#00ffff"
+          "dmxRange": [102, 118],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
         },
         {
-          "range": [119, 135],
-          "name": "Lavender",
-          "color": "#e6e6fa"
+          "dmxRange": [119, 135],
+          "type": "ColorPreset",
+          "colors": ["#e6e6fa"],
+          "comment": "Lavender"
         },
         {
-          "range": [136, 152],
-          "name": "Pink",
-          "color": "#ff8adc"
+          "dmxRange": [136, 152],
+          "type": "ColorPreset",
+          "colors": ["#ff8adc"],
+          "comment": "Pink"
         },
         {
-          "range": [153, 169],
-          "name": "Light Green",
-          "color": "#aaffaa"
+          "dmxRange": [153, 169],
+          "type": "ColorPreset",
+          "colors": ["#aaffaa"],
+          "comment": "Light Green"
         },
         {
-          "range": [170, 186],
-          "name": "Magenta",
-          "color": "#ff00ff"
+          "dmxRange": [170, 186],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Magenta"
         },
         {
-          "range": [187, 203],
-          "name": "Turquoise",
-          "color": "#40e0d0"
+          "dmxRange": [187, 203],
+          "type": "ColorPreset",
+          "colors": ["#40e0d0"],
+          "comment": "Turquoise"
         },
         {
-          "range": [204, 220],
-          "name": "Orange",
-          "color": "#ffcc00"
+          "dmxRange": [204, 220],
+          "type": "ColorPreset",
+          "colors": ["#ffcc00"],
+          "comment": "Orange"
         },
         {
-          "range": [221, 237],
-          "name": "Cool White",
-          "color": "#f2f6fe"
+          "dmxRange": [221, 237],
+          "type": "ColorPreset",
+          "colors": ["#f2f6fe"],
+          "colorTemperature": "cold",
+          "comment": "White"
         },
         {
-          "range": [238, 255],
-          "name": "Warm White",
-          "color": "#fffbf2"
+          "dmxRange": [238, 255],
+          "type": "ColorPreset",
+          "colors": ["#fffbf2"],
+          "colorTemperature": "warm",
+          "comment": "White"
         }
       ]
     },
     "Color Macro Advanced": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 4],
-          "name": "Blackout",
-          "color": "#000000"
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
         },
         {
-          "range": [5, 10],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [5, 10],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [11, 15],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [11, 15],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [16, 20],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [16, 20],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
-          "range": [21, 25],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [21, 25],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
-          "range": [26, 30],
-          "name": "Amber",
-          "color": "#ffbf00"
+          "dmxRange": [26, 30],
+          "type": "ColorPreset",
+          "colors": ["#ffbf00"],
+          "comment": "Amber"
         },
         {
-          "range": [31, 35],
-          "name": "Yellow",
-          "color": "#ffff00"
+          "dmxRange": [31, 35],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
         },
         {
-          "range": [36, 40],
-          "name": "Cyan",
-          "color": "#00ffff"
+          "dmxRange": [36, 40],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
         },
         {
-          "range": [41, 45],
-          "name": "Lavender",
-          "color": "#e6e6fa"
+          "dmxRange": [41, 45],
+          "type": "ColorPreset",
+          "colors": ["#e6e6fa"],
+          "comment": "Lavender"
         },
         {
-          "range": [46, 50],
-          "name": "Pink",
-          "color": "#ff8adc"
+          "dmxRange": [46, 50],
+          "type": "ColorPreset",
+          "colors": ["#ff8adc"],
+          "comment": "Pink"
         },
         {
-          "range": [51, 55],
-          "name": "Light Green",
-          "color": "#aaffaa"
+          "dmxRange": [51, 55],
+          "type": "ColorPreset",
+          "colors": ["#aaffaa"],
+          "comment": "Light Green"
         },
         {
-          "range": [56, 60],
-          "name": "Magenta",
-          "color": "#ff00ff"
+          "dmxRange": [56, 60],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Magenta"
         },
         {
-          "range": [61, 65],
-          "name": "Turquoise",
-          "color": "#40e0d0"
+          "dmxRange": [61, 65],
+          "type": "ColorPreset",
+          "colors": ["#40e0d0"],
+          "comment": "Turquoise"
         },
         {
-          "range": [66, 70],
-          "name": "Orange",
-          "color": "#ffcc00"
+          "dmxRange": [66, 70],
+          "type": "ColorPreset",
+          "colors": ["#ffcc00"],
+          "comment": "Orange"
         },
         {
-          "range": [71, 75],
-          "name": "Cool White",
-          "color": "#f2f6fe"
+          "dmxRange": [71, 75],
+          "type": "ColorPreset",
+          "colors": ["#f2f6fe"],
+          "colorTemperature": "cold",
+          "comment": "White"
         },
         {
-          "range": [76, 80],
-          "name": "Warm White",
-          "color": "#fffbf2"
+          "dmxRange": [76, 80],
+          "type": "ColorPreset",
+          "colors": ["#fffbf2"],
+          "colorTemperature": "warm",
+          "comment": "White"
         },
         {
-          "range": [81, 150],
-          "name": "Color Change slow…fast"
+          "dmxRange": [81, 150],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [151, 220],
-          "name": "Color Blending slow…fast"
+          "dmxRange": [151, 220],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [221, 255],
-          "name": "Sound control (mic sensitivity low-high)"
+          "dmxRange": [221, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
         }
       ]
     },
     "Strobe": {
-      "type": "Strobe",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Strobe rate 0-100%"
-        }
-      ]
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
     },
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White": {
-      "type": "Single Color",
-      "color": "White",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "Amber": {
-      "type": "Single Color",
-      "color": "Amber",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
     }
   },
   "modes": [

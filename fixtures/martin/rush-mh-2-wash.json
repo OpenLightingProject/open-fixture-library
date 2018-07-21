@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["novasfronteiras.co"],
     "createDate": "2017-08-07",
-    "lastModifyDate": "2017-10-16"
+    "lastModifyDate": "2018-07-21"
   },
   "comment": "Rush MH 2 Wash:\n- DMX, music trig and auto trig operation\n- 17° one-tenth peak angle\n- Extremely fast and agile\n- Electronic dimming and strobe\n- 3 & 5 pin XLR",
   "manualURL": "http://www.martin.com/files/files/productdocuments/11_MANUALS/999/UM_RUSHMH2Wash_EN_G.pdf",
@@ -26,410 +26,560 @@
   },
   "availableChannels": {
     "Electronic Shutter Effect": {
-      "type": "Shutter",
       "capabilities": [
         {
-          "range": [0, 19],
-          "name": "Shutter closed"
+          "dmxRange": [0, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [20, 49],
-          "name": "Shutter open"
+          "dmxRange": [20, 49],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [50, 64],
-          "name": "Strobe 1 (fast>slow)"
+          "dmxRange": [50, 64],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [65, 69],
-          "name": "Shutter open",
+          "dmxRange": [65, 69],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
           "menuClick": "hidden"
         },
         {
-          "range": [70, 84],
-          "name": "Strobe 2: opening pulse (fast>slow)"
+          "dmxRange": [70, 84],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [85, 89],
-          "name": "Shutter open",
+          "dmxRange": [85, 89],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
           "menuClick": "hidden"
         },
         {
-          "range": [90, 104],
-          "name": "Strobe 3: closing pulse (fast>slow)"
+          "dmxRange": [90, 104],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [105, 109],
-          "name": "Shutter open",
+          "dmxRange": [105, 109],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
           "menuClick": "hidden"
         },
         {
-          "range": [110, 124],
-          "name": "Strobe 4: random strobe (fast>slow)"
+          "dmxRange": [110, 124],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true
         },
         {
-          "range": [125, 129],
-          "name": "Shutter open",
+          "dmxRange": [125, 129],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
           "menuClick": "hidden"
         },
         {
-          "range": [130, 144],
-          "name": "Strobe 5: random opening pulse (fast>slow)"
+          "dmxRange": [130, 144],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true
         },
         {
-          "range": [145, 149],
-          "name": "Shutter open",
+          "dmxRange": [145, 149],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
           "menuClick": "hidden"
         },
         {
-          "range": [150, 164],
-          "name": "Strobe 6: random closing pulse (fast>slow)"
+          "dmxRange": [150, 164],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true
         },
         {
-          "range": [165, 169],
-          "name": "Shutter open",
+          "dmxRange": [165, 169],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
           "menuClick": "hidden"
         },
         {
-          "range": [170, 184],
-          "name": "Strobe 7: burst pulse (fast>slow)"
+          "dmxRange": [170, 184],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "burst pulse"
         },
         {
-          "range": [185, 189],
-          "name": "Shutter open",
+          "dmxRange": [185, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
           "menuClick": "hidden"
         },
         {
-          "range": [190, 204],
-          "name": "Strobe 8: random burst pulse (fast>slow)"
+          "dmxRange": [190, 204],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true,
+          "comment": "burst pulse"
         },
         {
-          "range": [205, 209],
-          "name": "Shutter open",
+          "dmxRange": [205, 209],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
           "menuClick": "hidden"
         },
         {
-          "range": [210, 224],
-          "name": "Strobe 9: sine wave (fast>slow)"
+          "dmxRange": [210, 224],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "sine wave"
         },
         {
-          "range": [225, 229],
-          "name": "Shutter open",
+          "dmxRange": [225, 229],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
           "menuClick": "hidden"
         },
         {
-          "range": [230, 244],
-          "name": "Strobe 10: burst (fast>slow)"
+          "dmxRange": [230, 244],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "burst"
         },
         {
-          "range": [245, 255],
-          "name": "Shutter open",
+          "dmxRange": [245, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
           "menuClick": "hidden"
         }
       ]
     },
     "Dimmer": {
-      "type": "Intensity",
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Pan": {
-      "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
-      "crossfade": true
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "crossfade": true
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
     },
     "Fixture Control Settings": {
-      "type": "Maintenance",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "No function"
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
         },
         {
-          "range": [10, 14],
-          "name": "Reset entire fixture"
+          "dmxRange": [10, 14],
+          "type": "Maintenance",
+          "comment": "Reset entire fixture"
         },
         {
-          "range": [15, 94],
-          "name": "No function",
+          "dmxRange": [15, 94],
+          "type": "NoFunction",
           "menuClick": "hidden"
         },
         {
-          "range": [95, 99],
-          "name": "Enable blackout during P/T movement"
+          "dmxRange": [95, 99],
+          "type": "Maintenance",
+          "comment": "Enable blackout during P/T movement"
         },
         {
-          "range": [100, 104],
-          "name": "No function",
+          "dmxRange": [100, 104],
+          "type": "NoFunction",
           "menuClick": "hidden"
         },
         {
-          "range": [105, 109],
-          "name": "Disable blackout during P/T movement"
+          "dmxRange": [105, 109],
+          "type": "Maintenance",
+          "comment": "Disable blackout during P/T movement"
         },
         {
-          "range": [110, 114],
-          "name": "Fast dimming, unrestricted effects speed"
+          "dmxRange": [110, 114],
+          "type": "Maintenance",
+          "comment": "Fast dimming, unrestricted effects speed"
         },
         {
-          "range": [115, 119],
-          "name": "No function",
+          "dmxRange": [115, 119],
+          "type": "NoFunction",
           "menuClick": "hidden"
         },
         {
-          "range": [120, 124],
-          "name": "Smooth dimming, slightly reduced effects speed"
+          "dmxRange": [120, 124],
+          "type": "Maintenance",
+          "comment": "Smooth dimming, slightly reduced effects speed"
         },
         {
-          "range": [125, 249],
-          "name": "Illuminate display"
+          "dmxRange": [125, 249],
+          "type": "Maintenance",
+          "comment": "Illuminate display"
         },
         {
-          "range": [250, 255],
-          "name": "Stand-alone"
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "Stand-alone"
         }
       ]
     },
     "Color Wheel Effect": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Open",
-          "color": "#ffffff"
+          "dmxRange": [0, 9],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "colors": ["#ffffff"],
+          "comment": "Open"
         },
         {
-          "range": [10, 14],
-          "name": "LEE 790 - Moroccan pink",
-          "color": "#ffb4a5"
+          "dmxRange": [10, 14],
+          "type": "ColorWheelIndex",
+          "index": 1,
+          "colors": ["#ffb4a5"],
+          "comment": "LEE 790 - Moroccan pink"
         },
         {
-          "range": [15, 19],
-          "name": "LEE 157 - Pink",
-          "color": "#ff92a3"
+          "dmxRange": [15, 19],
+          "type": "ColorWheelIndex",
+          "index": 2,
+          "colors": ["#ff92a3"],
+          "comment": "LEE 157 - Pink"
         },
         {
-          "range": [20, 24],
-          "name": "LEE 332 - Special rose pink",
-          "color": "#ff3787"
+          "dmxRange": [20, 24],
+          "type": "ColorWheelIndex",
+          "index": 3,
+          "colors": ["#ff3787"],
+          "comment": "LEE 332 - Special rose pink"
         },
         {
-          "range": [25, 29],
-          "name": "LEE 328 - Follies pink",
-          "color": "#ff64c8"
+          "dmxRange": [25, 29],
+          "type": "ColorWheelIndex",
+          "index": 4,
+          "colors": ["#ff64c8"],
+          "comment": "LEE 328 - Follies pink"
         },
         {
-          "range": [30, 34],
-          "name": "LEE 345 - Fuchsia pink",
-          "color": "#cd6ed7"
+          "dmxRange": [30, 34],
+          "type": "ColorWheelIndex",
+          "index": 5,
+          "colors": ["#cd6ed7"],
+          "comment": "LEE 345 - Fuchsia pink"
         },
         {
-          "range": [35, 39],
-          "name": "LEE 194 - Surprise pink",
-          "color": "#be8cf0"
+          "dmxRange": [35, 39],
+          "type": "ColorWheelIndex",
+          "index": 6,
+          "colors": ["#be8cf0"],
+          "comment": "LEE 194 - Surprise pink"
         },
         {
-          "range": [40, 44],
-          "name": "LEE 181 - Congo blue",
-          "color": "#5000aa"
+          "dmxRange": [40, 44],
+          "type": "ColorWheelIndex",
+          "index": 7,
+          "colors": ["#5000aa"],
+          "comment": "LEE 181 - Congo blue"
         },
         {
-          "range": [45, 49],
-          "name": "LEE 071 - Tokyo blue",
-          "color": "#0000b4"
+          "dmxRange": [45, 49],
+          "type": "ColorWheelIndex",
+          "index": 8,
+          "colors": ["#0000b4"],
+          "comment": "LEE 071 - Tokyo blue"
         },
         {
-          "range": [50, 54],
-          "name": "LEE 120 - Deep blue",
-          "color": "#005fbe"
+          "dmxRange": [50, 54],
+          "type": "ColorWheelIndex",
+          "index": 9,
+          "colors": ["#005fbe"],
+          "comment": "LEE 120 - Deep blue"
         },
         {
-          "range": [55, 59],
-          "name": "LEE 079 - Just blue",
-          "color": "#3c8cd2"
+          "dmxRange": [55, 59],
+          "type": "ColorWheelIndex",
+          "index": 10,
+          "colors": ["#3c8cd2"],
+          "comment": "LEE 079 - Just blue"
         },
         {
-          "range": [60, 64],
-          "name": "LEE 132 - Medium blue",
-          "color": "#00a0dc"
+          "dmxRange": [60, 64],
+          "type": "ColorWheelIndex",
+          "index": 11,
+          "colors": ["#00a0dc"],
+          "comment": "LEE 132 - Medium blue"
         },
         {
-          "range": [65, 69],
-          "name": "LEE 200 - Double CT blue",
-          "color": "#91bef5"
+          "dmxRange": [65, 69],
+          "type": "ColorWheelIndex",
+          "index": 12,
+          "colors": ["#91bef5"],
+          "comment": "LEE 200 - Double CT blue"
         },
         {
-          "range": [70, 74],
-          "name": "LEE 161 - Slate blue",
-          "color": "#7dd2f5"
+          "dmxRange": [70, 74],
+          "type": "ColorWheelIndex",
+          "index": 13,
+          "colors": ["#7dd2f5"],
+          "comment": "LEE 161 - Slate blue"
         },
         {
-          "range": [75, 79],
-          "name": "LEE 201 - Full CT blue",
-          "color": "#c3e1fa"
+          "dmxRange": [75, 79],
+          "type": "ColorWheelIndex",
+          "index": 14,
+          "colors": ["#c3e1fa"],
+          "comment": "LEE 201 - Full CT blue"
         },
         {
-          "range": [80, 84],
-          "name": "LEE 202 - Half CT blue",
-          "color": "#d7f0ff"
+          "dmxRange": [80, 84],
+          "type": "ColorWheelIndex",
+          "index": 15,
+          "colors": ["#d7f0ff"],
+          "comment": "LEE 202 - Half CT blue"
         },
         {
-          "range": [85, 89],
-          "name": "LEE 117 - Steel blue",
-          "color": "#b4faf5"
+          "dmxRange": [85, 89],
+          "type": "ColorWheelIndex",
+          "index": 16,
+          "colors": ["#b4faf5"],
+          "comment": "LEE 117 - Steel blue"
         },
         {
-          "range": [90, 94],
-          "name": "LEE 353 - Lighter blue",
-          "color": "#61e8e3"
+          "dmxRange": [90, 94],
+          "type": "ColorWheelIndex",
+          "index": 17,
+          "colors": ["#61e8e3"],
+          "comment": "LEE 353 - Lighter blue"
         },
         {
-          "range": [95, 99],
-          "name": "LEE 118 - Light blue",
-          "color": "#00e1eb"
+          "dmxRange": [95, 99],
+          "type": "ColorWheelIndex",
+          "index": 18,
+          "colors": ["#00e1eb"],
+          "comment": "LEE 118 - Light blue"
         },
         {
-          "range": [100, 104],
-          "name": "LEE 116 - Medium blue green",
-          "color": "#00c8b9"
+          "dmxRange": [100, 104],
+          "type": "ColorWheelIndex",
+          "index": 19,
+          "colors": ["#00c8b9"],
+          "comment": "LEE 116 - Medium blue green"
         },
         {
-          "range": [105, 109],
-          "name": "LEE 124 - Dark green",
-          "color": "#00dc78"
+          "dmxRange": [105, 109],
+          "type": "ColorWheelIndex",
+          "index": 20,
+          "colors": ["#00dc78"],
+          "comment": "LEE 124 - Dark green"
         },
         {
-          "range": [110, 114],
-          "name": "LEE 139 - Primary green",
-          "color": "#4bc300"
+          "dmxRange": [110, 114],
+          "type": "ColorWheelIndex",
+          "index": 21,
+          "colors": ["#4bc300"],
+          "comment": "LEE 139 - Primary green"
         },
         {
-          "range": [115, 119],
-          "name": "LEE 089 - Moss green",
-          "color": "#5adc5a"
+          "dmxRange": [115, 119],
+          "type": "ColorWheelIndex",
+          "index": 22,
+          "colors": ["#5adc5a"],
+          "comment": "LEE 089 - Moss green"
         },
         {
-          "range": [120, 124],
-          "name": "LEE 122 - Fern green",
-          "color": "#78fa6e"
+          "dmxRange": [120, 124],
+          "type": "ColorWheelIndex",
+          "index": 23,
+          "colors": ["#78fa6e"],
+          "comment": "LEE 122 - Fern green"
         },
         {
-          "range": [125, 129],
-          "name": "LEE 738 - JAS green",
-          "color": "#aaff00"
+          "dmxRange": [125, 129],
+          "type": "ColorWheelIndex",
+          "index": 24,
+          "colors": ["#aaff00"],
+          "comment": "LEE 738 - JAS green"
         },
         {
-          "range": [130, 134],
-          "name": "LEE 088 - Lime green",
-          "color": "#dcff64"
+          "dmxRange": [130, 134],
+          "type": "ColorWheelIndex",
+          "index": 25,
+          "colors": ["#dcff64"],
+          "comment": "LEE 088 - Lime green"
         },
         {
-          "range": [135, 139],
-          "name": "LEE 100 - Spring yellow",
-          "color": "#f5ff00"
+          "dmxRange": [135, 139],
+          "type": "ColorWheelIndex",
+          "index": 26,
+          "colors": ["#f5ff00"],
+          "comment": "LEE 100 - Spring yellow"
         },
         {
-          "range": [140, 144],
-          "name": "LEE 104 - Deep amber",
-          "color": "#ffdc00"
+          "dmxRange": [140, 144],
+          "type": "ColorWheelIndex",
+          "index": 27,
+          "colors": ["#ffdc00"],
+          "comment": "LEE 104 - Deep amber"
         },
         {
-          "range": [145, 149],
-          "name": "LEE 179 - Chrome orange",
-          "color": "#ffbe00"
+          "dmxRange": [145, 149],
+          "type": "ColorWheelIndex",
+          "index": 28,
+          "colors": ["#ffbe00"],
+          "comment": "LEE 179 - Chrome orange"
         },
         {
-          "range": [150, 154],
-          "name": "LEE 105 - Orange",
-          "color": "#ffa000"
+          "dmxRange": [150, 154],
+          "type": "ColorWheelIndex",
+          "index": 29,
+          "colors": ["#ffa000"],
+          "comment": "LEE 105 - Orange"
         },
         {
-          "range": [155, 159],
-          "name": "LEE 021 - Gold amber",
-          "color": "#ff8c32"
+          "dmxRange": [155, 159],
+          "type": "ColorWheelIndex",
+          "index": 30,
+          "colors": ["#ff8c32"],
+          "comment": "LEE 021 - Gold amber"
         },
         {
-          "range": [160, 164],
-          "name": "LEE 778 - Millennium gold",
-          "color": "#ff7600"
+          "dmxRange": [160, 164],
+          "type": "ColorWheelIndex",
+          "index": 31,
+          "colors": ["#ff7600"],
+          "comment": "LEE 778 - Millennium gold"
         },
         {
-          "range": [165, 169],
-          "name": "LEE 135 - Deep golden amber",
-          "color": "#ff5f00"
+          "dmxRange": [165, 169],
+          "type": "ColorWheelIndex",
+          "index": 32,
+          "colors": ["#ff5f00"],
+          "comment": "LEE 135 - Deep golden amber"
         },
         {
-          "range": [170, 174],
-          "name": "LEE 164 - Flame red",
-          "color": "#ff3200"
+          "dmxRange": [170, 174],
+          "type": "ColorWheelIndex",
+          "index": 33,
+          "colors": ["#ff3200"],
+          "comment": "LEE 164 - Flame red"
         },
         {
-          "range": [175, 179],
-          "name": "Open",
-          "color": "#ffffff",
+          "dmxRange": [175, 179],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "colors": ["#ffffff"],
+          "comment": "Open",
           "menuClick": "hidden"
         },
         {
-          "range": [180, 201],
-          "name": "CW, fast>slow"
+          "dmxRange": [180, 201],
+          "type": "ColorWheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
-          "range": [202, 207],
-          "name": "Stop (wherever the color is at the time)"
+          "dmxRange": [202, 207],
+          "type": "ColorWheelRotation",
+          "speed": "stop"
         },
         {
-          "range": [208, 229],
-          "name": "CCW, slow>fast"
+          "dmxRange": [208, 229],
+          "type": "ColorWheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         },
         {
-          "range": [230, 234],
-          "name": "Open",
-          "color": "#ffffff",
+          "dmxRange": [230, 234],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "colors": ["#ffffff"],
+          "comment": "Open",
           "menuClick": "hidden"
         },
         {
-          "range": [235, 239],
-          "name": "Fast random color"
+          "dmxRange": [235, 239],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "fast"
         },
         {
-          "range": [240, 244],
-          "name": "Medium random color"
+          "dmxRange": [240, 244],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "50%"
         },
         {
-          "range": [245, 249],
-          "name": "Slow random color"
+          "dmxRange": [245, 249],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "slow"
         },
         {
-          "range": [250, 255],
-          "name": "Open",
-          "color": "#ffffff",
+          "dmxRange": [250, 255],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "colors": ["#ffffff"],
+          "comment": "Open",
           "menuClick": "hidden"
         }
       ]
     },
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White": {
-      "type": "Single Color",
-      "color": "White",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     }
   },
   "modes": [

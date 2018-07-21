@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2017-07-08",
-    "lastModifyDate": "2017-07-08"
+    "lastModifyDate": "2018-07-21"
   },
   "comment": "Beam Angle: 45x60°",
   "manualURL": "https://www.highlite.nl/silver.download/Documents@extern@Manuals/43536_MANUAL_GB_V1.pdf",
@@ -37,282 +37,347 @@
   },
   "availableChannels": {
     "Dimmer": {
-      "type": "Intensity",
       "fineChannelAliases": ["Dimmer fine"],
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Red": {
-      "type": "Single Color",
       "fineChannelAliases": ["Red fine"],
-      "color": "Red",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
       "fineChannelAliases": ["Green fine"],
-      "color": "Green",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
       "fineChannelAliases": ["Blue fine"],
-      "color": "Blue",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White": {
-      "type": "Single Color",
       "fineChannelAliases": ["White fine"],
-      "color": "White",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "Amber": {
-      "type": "Single Color",
       "fineChannelAliases": ["Amber fine"],
-      "color": "Amber",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
     },
     "Macro Colors": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "No function"
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
         },
         {
-          "range": [11, 30],
-          "name": "Red 100% / Green Up / Blue 0%",
-          "color": "#ff0000",
-          "color2": "#ffff00"
+          "dmxRange": [11, 30],
+          "type": "ColorPreset",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffff00"],
+          "comment": "Red 100% / Green Up / Blue 0%"
         },
         {
-          "range": [31, 50],
-          "name": "Red Down / Green 100% / Blue 0%",
-          "color": "#ffff00",
-          "color2": "#00ff00"
+          "dmxRange": [31, 50],
+          "type": "ColorPreset",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#00ff00"],
+          "comment": "Red Down / Green 100% / Blue 0%"
         },
         {
-          "range": [51, 70],
-          "name": "Red 0% / Green 100% / Blue Up",
-          "color": "#00ff00",
-          "color2": "#00ffff"
+          "dmxRange": [51, 70],
+          "type": "ColorPreset",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#00ffff"],
+          "comment": "Red 0% / Green 100% / Blue Up"
         },
         {
-          "range": [71, 90],
-          "name": "Red 0% / Green Down / Blue 100%",
-          "color": "#00ffff",
-          "color2": "#0000ff"
+          "dmxRange": [71, 90],
+          "type": "ColorPreset",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#0000ff"],
+          "comment": "Red 0% / Green Down / Blue 100%"
         },
         {
-          "range": [91, 110],
-          "name": "Red Up / Green 0% / Blue 100%",
-          "color": "#0000ff",
-          "color2": "#ff00ff"
+          "dmxRange": [91, 110],
+          "type": "ColorPreset",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#ff00ff"],
+          "comment": "Red Up / Green 0% / Blue 100%"
         },
         {
-          "range": [111, 130],
-          "name": "Red 100% / Green 0% / Blue Down",
-          "color": "#ff00ff",
-          "color2": "#ff0000"
+          "dmxRange": [111, 130],
+          "type": "ColorPreset",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#ff0000"],
+          "comment": "Red 100% / Green 0% / Blue Down"
         },
         {
-          "range": [131, 150],
-          "name": "Red 100% / Green Up / Blue Up",
-          "color": "#ff0000",
-          "color2": "#ffffff"
+          "dmxRange": [131, 150],
+          "type": "ColorPreset",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffffff"],
+          "comment": "Red 100% / Green Up / Blue Up"
         },
         {
-          "range": [151, 170],
-          "name": "Red Down / Green Down / Blue 100%",
-          "color": "#ffffff",
-          "color2": "#0000ff"
+          "dmxRange": [151, 170],
+          "type": "ColorPreset",
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#0000ff"],
+          "comment": "Red Down / Green Down / Blue 100%"
         },
         {
-          "range": [171, 200],
-          "name": "Red 100% / Green 100% / Blue 100% / White 100% / Amber 100%",
-          "color": "#ffeaaa"
+          "dmxRange": [171, 200],
+          "type": "ColorPreset",
+          "colors": ["#ffeaaa"],
+          "comment": "Red 100% / Green 100% / Blue 100% / White 100% / Amber 100%"
         },
         {
-          "range": [201, 205],
-          "name": "White 1 (3200K)",
-          "color": "#ffb87b"
+          "dmxRange": [201, 205],
+          "type": "ColorPreset",
+          "colors": ["#ffb87b"],
+          "colorTemperature": "3200K",
+          "comment": "White 1"
         },
         {
-          "range": [206, 210],
-          "name": "White 2 (3400K)",
-          "color": "#ffbe87"
+          "dmxRange": [206, 210],
+          "type": "ColorPreset",
+          "colors": ["#ffbe87"],
+          "colorTemperature": "3400K",
+          "comment": "White 2"
         },
         {
-          "range": [211, 215],
-          "name": "White 3 (4200K)",
-          "color": "#ffd3af"
+          "dmxRange": [211, 215],
+          "type": "ColorPreset",
+          "colors": ["#ffd3af"],
+          "colorTemperature": "4200K",
+          "comment": "White 3"
         },
         {
-          "range": [216, 220],
-          "name": "White 4 (4900K)",
-          "color": "#ffe2ca"
+          "dmxRange": [216, 220],
+          "type": "ColorPreset",
+          "colors": ["#ffe2ca"],
+          "colorTemperature": "4900K",
+          "comment": "White 4"
         },
         {
-          "range": [221, 225],
-          "name": "White 5 (5600K)",
-          "color": "#ffefe1"
+          "dmxRange": [221, 225],
+          "type": "ColorPreset",
+          "colors": ["#ffefe1"],
+          "colorTemperature": "5600K",
+          "comment": "White 5"
         },
         {
-          "range": [226, 230],
-          "name": "White 6 (5900K)",
-          "color": "#fff4ea"
+          "dmxRange": [226, 230],
+          "type": "ColorPreset",
+          "colors": ["#fff4ea"],
+          "colorTemperature": "5900K",
+          "comment": "White 6"
         },
         {
-          "range": [231, 235],
-          "name": "White 7 (6500K)",
-          "color": "#fffefa"
+          "dmxRange": [231, 235],
+          "type": "ColorPreset",
+          "colors": ["#fffefa"],
+          "colorTemperature": "6500K",
+          "comment": "White 7"
         },
         {
-          "range": [236, 240],
-          "name": "White 8 (7200K)",
-          "color": "#edefff"
+          "dmxRange": [236, 240],
+          "type": "ColorPreset",
+          "colors": ["#edefff"],
+          "colorTemperature": "7200K",
+          "comment": "White 8"
         },
         {
-          "range": [241, 245],
-          "name": "White 9 (8000K)",
-          "color": "#dde6ff"
+          "dmxRange": [241, 245],
+          "type": "ColorPreset",
+          "colors": ["#dde6ff"],
+          "colorTemperature": "8000K",
+          "comment": "White 9"
         },
         {
-          "range": [246, 250],
-          "name": "White 10 (8500K)",
-          "color": "#d7e2ff"
+          "dmxRange": [246, 250],
+          "type": "ColorPreset",
+          "colors": ["#d7e2ff"],
+          "colorTemperature": "8500K",
+          "comment": "White 10"
         },
         {
-          "range": [251, 255],
-          "name": "White 11 (10000K)",
-          "color": "#cadaff"
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "colors": ["#cadaff"],
+          "colorTemperature": "10000K",
+          "comment": "White 11"
         }
       ]
     },
     "Clas Strobe": {
-      "type": "Strobe",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "0"
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "Clas Strobe 0",
+          "helpWanted": "Can we make these Clas Strobe capabilities more informative?"
         },
         {
-          "range": [10, 19],
-          "name": "1"
+          "dmxRange": [10, 19],
+          "type": "Effect",
+          "effectName": "Clas Strobe 1"
         },
         {
-          "range": [20, 29],
-          "name": "2"
+          "dmxRange": [20, 29],
+          "type": "Effect",
+          "effectName": "Clas Strobe 2"
         },
         {
-          "range": [30, 39],
-          "name": "3"
+          "dmxRange": [30, 39],
+          "type": "Effect",
+          "effectName": "Clas Strobe 3"
         },
         {
-          "range": [40, 49],
-          "name": "4"
+          "dmxRange": [40, 49],
+          "type": "Effect",
+          "effectName": "Clas Strobe 4"
         },
         {
-          "range": [50, 59],
-          "name": "5"
+          "dmxRange": [50, 59],
+          "type": "Effect",
+          "effectName": "Clas Strobe 5"
         },
         {
-          "range": [60, 69],
-          "name": "6"
+          "dmxRange": [60, 69],
+          "type": "Effect",
+          "effectName": "Clas Strobe 6"
         },
         {
-          "range": [70, 79],
-          "name": "7"
+          "dmxRange": [70, 79],
+          "type": "Effect",
+          "effectName": "Clas Strobe 7"
         },
         {
-          "range": [80, 89],
-          "name": "8"
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "effectName": "Clas Strobe 8"
         },
         {
-          "range": [90, 99],
-          "name": "9"
+          "dmxRange": [90, 99],
+          "type": "Effect",
+          "effectName": "Clas Strobe 9"
         },
         {
-          "range": [100, 109],
-          "name": "10"
+          "dmxRange": [100, 109],
+          "type": "Effect",
+          "effectName": "Clas Strobe 10"
         },
         {
-          "range": [110, 119],
-          "name": "11"
+          "dmxRange": [110, 119],
+          "type": "Effect",
+          "effectName": "Clas Strobe 11"
         },
         {
-          "range": [120, 129],
-          "name": "12"
+          "dmxRange": [120, 129],
+          "type": "Effect",
+          "effectName": "Clas Strobe 12"
         },
         {
-          "range": [130, 139],
-          "name": "13"
+          "dmxRange": [130, 139],
+          "type": "Effect",
+          "effectName": "Clas Strobe 13"
         },
         {
-          "range": [140, 149],
-          "name": "14"
+          "dmxRange": [140, 149],
+          "type": "Effect",
+          "effectName": "Clas Strobe 14"
         },
         {
-          "range": [150, 159],
-          "name": "15"
+          "dmxRange": [150, 159],
+          "type": "Effect",
+          "effectName": "Clas Strobe 15"
         },
         {
-          "range": [160, 169],
-          "name": "16"
+          "dmxRange": [160, 169],
+          "type": "Effect",
+          "effectName": "Clas Strobe 16"
         },
         {
-          "range": [170, 179],
-          "name": "17"
+          "dmxRange": [170, 179],
+          "type": "Effect",
+          "effectName": "Clas Strobe 17"
         },
         {
-          "range": [180, 189],
-          "name": "18"
+          "dmxRange": [180, 189],
+          "type": "Effect",
+          "effectName": "Clas Strobe 18"
         },
         {
-          "range": [190, 199],
-          "name": "19"
+          "dmxRange": [190, 199],
+          "type": "Effect",
+          "effectName": "Clas Strobe 19"
         },
         {
-          "range": [200, 255],
-          "name": "20"
+          "dmxRange": [200, 255],
+          "type": "Effect",
+          "effectName": "Clas Strobe 20"
         }
       ]
     },
     "Spec Strobe": {
-      "type": "Strobe",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "No strobe"
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
         },
         {
-          "range": [10, 99],
-          "name": "Strobe 0…10Hz"
+          "dmxRange": [10, 99],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "10Hz"
         },
         {
-          "range": [100, 109],
-          "name": "No strobe"
+          "dmxRange": [100, 109],
+          "type": "NoFunction"
         },
         {
-          "range": [110, 179],
-          "name": "Lightning strobe 0…10Hz"
+          "dmxRange": [110, 179],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning",
+          "speedStart": "0Hz",
+          "speedEnd": "10Hz"
         },
         {
-          "range": [180, 189],
-          "name": "No strobe"
+          "dmxRange": [180, 189],
+          "type": "NoFunction"
         },
         {
-          "range": [190, 255],
-          "name": "Random strobe 0…10Hz"
+          "dmxRange": [190, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "10Hz",
+          "randomTiming": true
         }
       ]
     },
     "Auto/Custom Programs": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 40],
-          "name": "No function",
+          "dmxRange": [0, 40],
+          "type": "NoFunction",
           "switchChannels": {
             "Red / Step Time": "Red",
             "Green / Fade Time": "Green",
@@ -321,8 +386,9 @@
           }
         },
         {
-          "range": [41, 50],
-          "name": "Auto 1",
+          "dmxRange": [41, 50],
+          "type": "Effect",
+          "effectName": "Auto 1",
           "switchChannels": {
             "Red / Step Time": "Red",
             "Green / Fade Time": "Green",
@@ -331,8 +397,9 @@
           }
         },
         {
-          "range": [51, 60],
-          "name": "Auto 2",
+          "dmxRange": [51, 60],
+          "type": "Effect",
+          "effectName": "Auto 2",
           "switchChannels": {
             "Red / Step Time": "Red",
             "Green / Fade Time": "Green",
@@ -341,8 +408,9 @@
           }
         },
         {
-          "range": [61, 70],
-          "name": "Auto 3",
+          "dmxRange": [61, 70],
+          "type": "Effect",
+          "effectName": "Auto 3",
           "switchChannels": {
             "Red / Step Time": "Red",
             "Green / Fade Time": "Green",
@@ -351,8 +419,9 @@
           }
         },
         {
-          "range": [71, 80],
-          "name": "Auto 4",
+          "dmxRange": [71, 80],
+          "type": "Effect",
+          "effectName": "Auto 4",
           "switchChannels": {
             "Red / Step Time": "Red",
             "Green / Fade Time": "Green",
@@ -361,8 +430,9 @@
           }
         },
         {
-          "range": [81, 90],
-          "name": "Auto 5",
+          "dmxRange": [81, 90],
+          "type": "Effect",
+          "effectName": "Auto 5",
           "switchChannels": {
             "Red / Step Time": "Red",
             "Green / Fade Time": "Green",
@@ -371,8 +441,9 @@
           }
         },
         {
-          "range": [91, 100],
-          "name": "Auto 6",
+          "dmxRange": [91, 100],
+          "type": "Effect",
+          "effectName": "Auto 6",
           "switchChannels": {
             "Red / Step Time": "Red",
             "Green / Fade Time": "Green",
@@ -381,8 +452,9 @@
           }
         },
         {
-          "range": [101, 110],
-          "name": "Auto 7",
+          "dmxRange": [101, 110],
+          "type": "Effect",
+          "effectName": "Auto 7",
           "switchChannels": {
             "Red / Step Time": "Red",
             "Green / Fade Time": "Green",
@@ -391,8 +463,9 @@
           }
         },
         {
-          "range": [111, 120],
-          "name": "Auto 8",
+          "dmxRange": [111, 120],
+          "type": "Effect",
+          "effectName": "Auto 8",
           "switchChannels": {
             "Red / Step Time": "Red",
             "Green / Fade Time": "Green",
@@ -401,8 +474,9 @@
           }
         },
         {
-          "range": [121, 130],
-          "name": "Auto 9",
+          "dmxRange": [121, 130],
+          "type": "Effect",
+          "effectName": "Auto 9",
           "switchChannels": {
             "Red / Step Time": "Red",
             "Green / Fade Time": "Green",
@@ -411,8 +485,9 @@
           }
         },
         {
-          "range": [131, 140],
-          "name": "Auto 10",
+          "dmxRange": [131, 140],
+          "type": "Effect",
+          "effectName": "Auto 10",
           "switchChannels": {
             "Red / Step Time": "Red",
             "Green / Fade Time": "Green",
@@ -421,8 +496,9 @@
           }
         },
         {
-          "range": [141, 150],
-          "name": "Custom 1",
+          "dmxRange": [141, 150],
+          "type": "Effect",
+          "effectName": "Custom 1",
           "switchChannels": {
             "Red / Step Time": "Step Time",
             "Green / Fade Time": "Fade Time",
@@ -431,8 +507,9 @@
           }
         },
         {
-          "range": [151, 160],
-          "name": "Custom 2",
+          "dmxRange": [151, 160],
+          "type": "Effect",
+          "effectName": "Custom 2",
           "switchChannels": {
             "Red / Step Time": "Step Time",
             "Green / Fade Time": "Fade Time",
@@ -441,8 +518,9 @@
           }
         },
         {
-          "range": [161, 170],
-          "name": "Custom 3",
+          "dmxRange": [161, 170],
+          "type": "Effect",
+          "effectName": "Custom 3",
           "switchChannels": {
             "Red / Step Time": "Step Time",
             "Green / Fade Time": "Fade Time",
@@ -451,8 +529,9 @@
           }
         },
         {
-          "range": [171, 180],
-          "name": "Custom 4",
+          "dmxRange": [171, 180],
+          "type": "Effect",
+          "effectName": "Custom 4",
           "switchChannels": {
             "Red / Step Time": "Step Time",
             "Green / Fade Time": "Fade Time",
@@ -461,8 +540,9 @@
           }
         },
         {
-          "range": [181, 190],
-          "name": "Custom 5",
+          "dmxRange": [181, 190],
+          "type": "Effect",
+          "effectName": "Custom 5",
           "switchChannels": {
             "Red / Step Time": "Step Time",
             "Green / Fade Time": "Fade Time",
@@ -471,8 +551,9 @@
           }
         },
         {
-          "range": [191, 200],
-          "name": "Custom 6",
+          "dmxRange": [191, 200],
+          "type": "Effect",
+          "effectName": "Custom 6",
           "switchChannels": {
             "Red / Step Time": "Step Time",
             "Green / Fade Time": "Fade Time",
@@ -481,8 +562,9 @@
           }
         },
         {
-          "range": [201, 210],
-          "name": "Custom 7",
+          "dmxRange": [201, 210],
+          "type": "Effect",
+          "effectName": "Custom 7",
           "switchChannels": {
             "Red / Step Time": "Step Time",
             "Green / Fade Time": "Fade Time",
@@ -491,8 +573,9 @@
           }
         },
         {
-          "range": [211, 220],
-          "name": "Custom 8",
+          "dmxRange": [211, 220],
+          "type": "Effect",
+          "effectName": "Custom 8",
           "switchChannels": {
             "Red / Step Time": "Step Time",
             "Green / Fade Time": "Fade Time",
@@ -501,8 +584,9 @@
           }
         },
         {
-          "range": [221, 230],
-          "name": "Custom 9",
+          "dmxRange": [221, 230],
+          "type": "Effect",
+          "effectName": "Custom 9",
           "switchChannels": {
             "Red / Step Time": "Step Time",
             "Green / Fade Time": "Fade Time",
@@ -511,8 +595,9 @@
           }
         },
         {
-          "range": [231, 255],
-          "name": "Custom 10",
+          "dmxRange": [231, 255],
+          "type": "Effect",
+          "effectName": "Custom 10",
           "switchChannels": {
             "Red / Step Time": "Step Time",
             "Green / Fade Time": "Fade Time",
@@ -523,80 +608,111 @@
       ]
     },
     "Auto Speed Adjustment": {
-      "type": "Speed"
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Dimmer Speed": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Return settings"
+          "dmxRange": [0, 9],
+          "type": "Maintenance",
+          "comment": "Return settings"
         },
         {
-          "range": [10, 29],
-          "name": "Linear dimmer"
+          "dmxRange": [10, 29],
+          "type": "Maintenance",
+          "comment": "Linear dimmer"
         },
         {
-          "range": [30, 69],
-          "name": "Non-linear dimmer 1 (fastest)"
+          "dmxRange": [30, 69],
+          "type": "Maintenance",
+          "comment": "Non-linear dimmer speed",
+          "parameter": "fast"
         },
         {
-          "range": [70, 129],
-          "name": "Non-linear dimmer 2"
+          "dmxRange": [70, 129],
+          "type": "Maintenance",
+          "comment": "Non-linear dimmer speed",
+          "parameter": "66%"
         },
         {
-          "range": [130, 189],
-          "name": "Non-linear dimmer 3"
+          "dmxRange": [130, 189],
+          "type": "Maintenance",
+          "comment": "Non-linear dimmer speed",
+          "parameter": "33%"
         },
         {
-          "range": [190, 255],
-          "name": "Non-linear dimmer 4 (slowest)"
+          "dmxRange": [190, 255],
+          "type": "Maintenance",
+          "comment": "Non-linear dimmer speed",
+          "parameter": "slow"
         }
       ]
     },
     "Hue": {
-      "type": "Multi-Color"
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Which DMX values correspond to which color?"
+      }
     },
     "Saturation": {
-      "type": "Intensity",
-      "crossfade": true
+      "capability": {
+        "type": "Generic"
+      }
     },
     "Value": {
-      "type": "Intensity",
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Step Time": {
-      "type": "Speed"
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "short",
+        "durationEnd": "long"
+      }
     },
     "Fade Time": {
-      "type": "Speed"
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "short",
+        "durationEnd": "long"
+      }
     }
   },
   "templateChannels": {
     "$pixelKey Red": {
-      "type": "Single Color",
-      "color": "Red",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "$pixelKey Green": {
-      "type": "Single Color",
-      "color": "Green",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "$pixelKey Blue": {
-      "type": "Single Color",
-      "color": "Blue",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "$pixelKey White": {
-      "type": "Single Color",
-      "color": "White",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "$pixelKey Amber": {
-      "type": "Single Color",
-      "color": "Amber",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
     }
   },
   "modes": [

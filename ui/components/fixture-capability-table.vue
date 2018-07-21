@@ -24,25 +24,19 @@
           <td class="capability-range1"><code>{{ cap.dmxRangeEnd }}</code></td>
 
           <td
-            v-if="cap.color !== null && cap.color2 !== null"
-            :title="`color: ${cap.color} / ${cap.color2}`"
+            v-if="cap.model.colors !== null"
+            :title="cap.colorDescription"
             class="capability-color">
-            <app-svg :colors="[cap.color, cap.color2]" type="color-circle" />
-          </td>
-          <td
-            v-else-if="cap.color !== null"
-            :title="`color: ${cap.color}`"
-            class="capability-color">
-            <app-svg :colors="[cap.color]" type="color-circle" />
+            <app-svg :colors="cap.model.colors.allColors" type="color-circle" />
           </td>
           <td v-else />
 
-          <td class="capability-name">{{ cap.name }}</td>
+          <td class="capability-name">{{ cap.model.name }}</td>
 
           <td
-            :title="cap.menuClick === `hidden` ? `this capability is hidden in quick menus` : `choosing this capability in a quick menu snaps to ${cap.menuClick} of capability`"
+            :title="cap.model.menuClick === `hidden` ? `this capability is hidden in quick menus` : `choosing this capability in a quick menu snaps to ${cap.model.menuClick} of capability`"
             class="capability-menuClick">
-            <app-svg :name="`capability-${cap.menuClick}`" />
+            <app-svg :name="`capability-${cap.model.menuClick}`" />
           </td>
         </tr>
 
@@ -56,10 +50,10 @@
         </tr>
 
         <tr
-          v-if="cap.helpWanted !== null"
+          v-if="cap.model.helpWanted !== null"
           :key="`cap-${index}-helpWanted`">
           <td colspan="4" />
-          <td colspan="2"><div class="help-wanted"><app-svg name="comment-question-outline" title="Help wanted!" />{{ cap.helpWanted }}</div></td>
+          <td colspan="2"><div class="help-wanted"><app-svg name="comment-question-outline" title="Help wanted!" />{{ cap.model.helpWanted }}</div></td>
         </tr>
       </template>
     </tbody>
@@ -146,7 +140,7 @@ export default {
     capabilities() {
       return this.channel.capabilities.map(
         cap => {
-          const range = cap.getRangeWithFineness(this.finenessInMode);
+          const dmxRange = cap.getDmxRangeWithFineness(this.finenessInMode);
           const switchChannels = [];
 
           for (const switchingChannelKey of Object.keys(cap.switchChannels)) {
@@ -162,14 +156,10 @@ export default {
           }
 
           return {
-            dmxRangeStart: range.start,
-            dmxRangeEnd: range.end,
-            color: cap.color ? cap.color.rgb().string() : null,
-            color2: cap.color2 ? cap.color2.rgb().string() : null,
-            image: cap.image,
-            name: cap.name,
-            helpWanted: cap.helpWanted,
-            menuClick: cap.menuClick,
+            model: cap,
+            dmxRangeStart: dmxRange.start,
+            dmxRangeEnd: dmxRange.end,
+            colorDescription: getColorDescription(cap),
             switchChannels
           };
         }
@@ -177,4 +167,21 @@ export default {
     }
   }
 };
+
+/**
+ * @param {!Capability} capability The capability model object.
+ * @returns {?string} A string describing the colors of this capability, or null if it has no colors.
+ */
+function getColorDescription(capability) {
+  if (capability.colors === null) {
+    return null;
+  }
+
+  if (capability.colors.isStep) {
+    const plural = capability.colors.allColors.length > 1 ? `colors` : `color`;
+    return `${plural}: ${capability.colors.allColors.join(`, `)}`;
+  }
+
+  return `transition from ${capability.colors.startColors.join(`, `)} to ${capability.colors.endColors.join(`, `)}`;
+}
 </script>

@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Felix Edelmann", "Flo Edelmann"],
     "createDate": "2017-05-16",
-    "lastModifyDate": "2017-12-31"
+    "lastModifyDate": "2018-07-21"
   },
   "manualURL": "http://media.steinigke.de/documents_t/51786060-MANUAL-1.00-de-en_00095278.pdf",
   "physical": {
@@ -31,422 +31,506 @@
   },
   "availableChannels": {
     "Internal Programs": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "No function"
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
         },
         {
-          "range": [8, 67],
-          "name": "Internal program 1"
+          "dmxRange": [8, 67],
+          "type": "Effect",
+          "effectName": "Internal program 1"
         },
         {
-          "range": [68, 127],
-          "name": "Internal program 2"
+          "dmxRange": [68, 127],
+          "type": "Effect",
+          "effectName": "Internal program 2"
         },
         {
-          "range": [128, 187],
-          "name": "Internal program 3"
+          "dmxRange": [128, 187],
+          "type": "Effect",
+          "effectName": "Internal program 3"
         },
         {
-          "range": [188, 247],
-          "name": "Internal program 4"
+          "dmxRange": [188, 247],
+          "type": "Effect",
+          "effectName": "Internal program 4"
         },
         {
-          "range": [248, 255],
-          "name": "Internal program 5"
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Internal program 5"
         }
       ]
     },
     "Pan": {
-      "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
       "defaultValue": 32896,
-      "crossfade": true
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
       "defaultValue": 32896,
-      "crossfade": true
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "200deg"
+      }
     },
     "Pan/Tilt Speed": {
-      "type": "Speed",
-      "defaultValue": 128,
-      "invert": true,
-      "crossfade": true
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
     },
     "Macros": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "No function"
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
         },
         {
-          "range": [16, 35],
-          "name": "Macro 1"
+          "dmxRange": [16, 35],
+          "type": "Effect",
+          "effectName": "Macro 1"
         },
         {
-          "range": [36, 55],
-          "name": "Macro 2"
+          "dmxRange": [36, 55],
+          "type": "Effect",
+          "effectName": "Macro 2"
         },
         {
-          "range": [56, 75],
-          "name": "Macro 3"
+          "dmxRange": [56, 75],
+          "type": "Effect",
+          "effectName": "Macro 3"
         },
         {
-          "range": [76, 95],
-          "name": "Macro 4"
+          "dmxRange": [76, 95],
+          "type": "Effect",
+          "effectName": "Macro 4"
         },
         {
-          "range": [96, 115],
-          "name": "Macro 5"
+          "dmxRange": [96, 115],
+          "type": "Effect",
+          "effectName": "Macro 5"
         },
         {
-          "range": [116, 135],
-          "name": "Macro 6"
+          "dmxRange": [116, 135],
+          "type": "Effect",
+          "effectName": "Macro 6"
         },
         {
-          "range": [136, 155],
-          "name": "Macro 7"
+          "dmxRange": [136, 155],
+          "type": "Effect",
+          "effectName": "Macro 7"
         },
         {
-          "range": [156, 175],
-          "name": "Macro 8"
+          "dmxRange": [156, 175],
+          "type": "Effect",
+          "effectName": "Macro 8"
         },
         {
-          "range": [176, 195],
-          "name": "Macro 9"
+          "dmxRange": [176, 195],
+          "type": "Effect",
+          "effectName": "Macro 9"
         },
         {
-          "range": [196, 215],
-          "name": "Macro 10"
+          "dmxRange": [196, 215],
+          "type": "Effect",
+          "effectName": "Macro 10"
         },
         {
-          "range": [216, 235],
-          "name": "Macro 11"
+          "dmxRange": [216, 235],
+          "type": "Effect",
+          "effectName": "Macro 11"
         },
         {
-          "range": [236, 255],
-          "name": "Macro 12"
+          "dmxRange": [236, 255],
+          "type": "Effect",
+          "effectName": "Macro 12"
         }
       ]
     },
     "Macro Speed": {
-      "type": "Speed",
-      "defaultValue": 128,
-      "crossfade": true
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Function": {
-      "type": "Maintenance",
       "capabilities": [
         {
-          "range": [0, 69],
-          "name": "No function"
+          "dmxRange": [0, 69],
+          "type": "NoFunction"
         },
         {
-          "range": [70, 79],
-          "name": "Dimmer off Pan/Tilt"
+          "dmxRange": [70, 79],
+          "type": "Maintenance",
+          "comment": "Dimmer off Pan/Tilt"
         },
         {
-          "range": [80, 200],
-          "name": "No function",
+          "dmxRange": [80, 200],
+          "type": "NoFunction",
           "menuClick": "hidden"
         },
         {
-          "range": [201, 207],
-          "name": "Reset"
+          "dmxRange": [201, 207],
+          "type": "Maintenance",
+          "comment": "Reset"
         },
         {
-          "range": [208, 255],
-          "name": "No function",
+          "dmxRange": [208, 255],
+          "type": "NoFunction",
           "menuClick": "hidden"
         }
       ]
     },
     "Dimmer": {
-      "type": "Intensity",
-      "crossfade": true
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Strobe": {
-      "type": "Strobe",
       "highlightValue": 200,
       "capabilities": [
         {
-          "range": [0, 3],
-          "name": "No function"
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
         },
         {
-          "range": [4, 255],
-          "name": "Strobe slow–fast"
+          "dmxRange": [4, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White": {
-      "type": "Single Color",
-      "color": "White",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "Color Macros": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "No function"
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
         },
         {
-          "range": [8, 15],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [16, 23],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [24, 31],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
-          "range": [32, 39],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
-          "range": [40, 47],
-          "name": "Red-Green",
-          "color": "#ffff00"
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Red-Green"
         },
         {
-          "range": [48, 55],
-          "name": "Red-Blue",
-          "color": "#ff00ff"
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Red-Blue"
         },
         {
-          "range": [56, 63],
-          "name": "Red-White",
-          "color": "#ff8080"
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "colors": ["#ff8080"],
+          "comment": "Red-White"
         },
         {
-          "range": [64, 71],
-          "name": "Green-Blue",
-          "color": "#00ffff"
+          "dmxRange": [64, 71],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Green-Blue"
         },
         {
-          "range": [72, 79],
-          "name": "Green-White",
-          "color": "#80ff80"
+          "dmxRange": [72, 79],
+          "type": "ColorPreset",
+          "colors": ["#80ff80"],
+          "comment": "Green-White"
         },
         {
-          "range": [80, 87],
-          "name": "Blue-White",
-          "color": "#8080ff"
+          "dmxRange": [80, 87],
+          "type": "ColorPreset",
+          "colors": ["#8080ff"],
+          "comment": "Blue-White"
         },
         {
-          "range": [88, 95],
-          "name": "Red-Green-Blue",
-          "color": "#ffffff"
+          "dmxRange": [88, 95],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "Red-Green-Blue"
         },
         {
-          "range": [96, 103],
-          "name": "Red-Green-White",
-          "color": "#ffff80"
+          "dmxRange": [96, 103],
+          "type": "ColorPreset",
+          "colors": ["#ffff80"],
+          "comment": "Red-Green-White"
         },
         {
-          "range": [104, 111],
-          "name": "Red-Blue-White",
-          "color": "#ff80ff"
+          "dmxRange": [104, 111],
+          "type": "ColorPreset",
+          "colors": ["#ff80ff"],
+          "comment": "Red-Blue-White"
         },
         {
-          "range": [112, 119],
-          "name": "Green-Blue-White",
-          "color": "#80ffff"
+          "dmxRange": [112, 119],
+          "type": "ColorPreset",
+          "colors": ["#80ffff"],
+          "comment": "Green-Blue-White"
         },
         {
-          "range": [120, 127],
-          "name": "Red-Green-Blue-White",
-          "color": "#ffffff"
+          "dmxRange": [120, 127],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "Red-Green-Blue-White"
         },
         {
-          "range": [128, 131],
-          "name": "Program 1"
+          "dmxRange": [128, 131],
+          "type": "Effect",
+          "effectName": "Program 1"
         },
         {
-          "range": [132, 135],
-          "name": "Program 2"
+          "dmxRange": [132, 135],
+          "type": "Effect",
+          "effectName": "Program 2"
         },
         {
-          "range": [136, 139],
-          "name": "Program 3"
+          "dmxRange": [136, 139],
+          "type": "Effect",
+          "effectName": "Program 3"
         },
         {
-          "range": [140, 143],
-          "name": "Program 4"
+          "dmxRange": [140, 143],
+          "type": "Effect",
+          "effectName": "Program 4"
         },
         {
-          "range": [144, 147],
-          "name": "Program 5"
+          "dmxRange": [144, 147],
+          "type": "Effect",
+          "effectName": "Program 5"
         },
         {
-          "range": [148, 151],
-          "name": "Program 6"
+          "dmxRange": [148, 151],
+          "type": "Effect",
+          "effectName": "Program 6"
         },
         {
-          "range": [152, 155],
-          "name": "Program 7"
+          "dmxRange": [152, 155],
+          "type": "Effect",
+          "effectName": "Program 7"
         },
         {
-          "range": [156, 159],
-          "name": "Program 8"
+          "dmxRange": [156, 159],
+          "type": "Effect",
+          "effectName": "Program 8"
         },
         {
-          "range": [160, 167],
-          "name": "Program 9"
+          "dmxRange": [160, 167],
+          "type": "Effect",
+          "effectName": "Program 9"
         },
         {
-          "range": [168, 171],
-          "name": "Program 10"
+          "dmxRange": [168, 171],
+          "type": "Effect",
+          "effectName": "Program 10"
         },
         {
-          "range": [172, 175],
-          "name": "Program 11"
+          "dmxRange": [172, 175],
+          "type": "Effect",
+          "effectName": "Program 11"
         },
         {
-          "range": [176, 179],
-          "name": "Program 12"
+          "dmxRange": [176, 179],
+          "type": "Effect",
+          "effectName": "Program 12"
         },
         {
-          "range": [180, 183],
-          "name": "Program 13"
+          "dmxRange": [180, 183],
+          "type": "Effect",
+          "effectName": "Program 13"
         },
         {
-          "range": [184, 187],
-          "name": "Program 14"
+          "dmxRange": [184, 187],
+          "type": "Effect",
+          "effectName": "Program 14"
         },
         {
-          "range": [188, 191],
-          "name": "Program 15"
+          "dmxRange": [188, 191],
+          "type": "Effect",
+          "effectName": "Program 15"
         },
         {
-          "range": [192, 195],
-          "name": "Program 16"
+          "dmxRange": [192, 195],
+          "type": "Effect",
+          "effectName": "Program 16"
         },
         {
-          "range": [196, 199],
-          "name": "Program 17"
+          "dmxRange": [196, 199],
+          "type": "Effect",
+          "effectName": "Program 17"
         },
         {
-          "range": [200, 203],
-          "name": "Program 18"
+          "dmxRange": [200, 203],
+          "type": "Effect",
+          "effectName": "Program 18"
         },
         {
-          "range": [204, 207],
-          "name": "Program 19"
+          "dmxRange": [204, 207],
+          "type": "Effect",
+          "effectName": "Program 19"
         },
         {
-          "range": [208, 211],
-          "name": "Program 20"
+          "dmxRange": [208, 211],
+          "type": "Effect",
+          "effectName": "Program 20"
         },
         {
-          "range": [212, 215],
-          "name": "Program 21"
+          "dmxRange": [212, 215],
+          "type": "Effect",
+          "effectName": "Program 21"
         },
         {
-          "range": [216, 219],
-          "name": "Program 22"
+          "dmxRange": [216, 219],
+          "type": "Effect",
+          "effectName": "Program 22"
         },
         {
-          "range": [220, 223],
-          "name": "Program 23"
+          "dmxRange": [220, 223],
+          "type": "Effect",
+          "effectName": "Program 23"
         },
         {
-          "range": [224, 227],
-          "name": "Program 24"
+          "dmxRange": [224, 227],
+          "type": "Effect",
+          "effectName": "Program 24"
         },
         {
-          "range": [228, 231],
-          "name": "Program 25"
+          "dmxRange": [228, 231],
+          "type": "Effect",
+          "effectName": "Program 25"
         },
         {
-          "range": [232, 235],
-          "name": "Program 26"
+          "dmxRange": [232, 235],
+          "type": "Effect",
+          "effectName": "Program 26"
         },
         {
-          "range": [236, 239],
-          "name": "Program 27"
+          "dmxRange": [236, 239],
+          "type": "Effect",
+          "effectName": "Program 27"
         },
         {
-          "range": [240, 243],
-          "name": "Program 28"
+          "dmxRange": [240, 243],
+          "type": "Effect",
+          "effectName": "Program 28"
         },
         {
-          "range": [244, 247],
-          "name": "Program 29"
+          "dmxRange": [244, 247],
+          "type": "Effect",
+          "effectName": "Program 29"
         },
         {
-          "range": [248, 251],
-          "name": "Program 30"
+          "dmxRange": [248, 251],
+          "type": "Effect",
+          "effectName": "Program 30"
         },
         {
-          "range": [252, 255],
-          "name": "No function",
+          "dmxRange": [252, 255],
+          "type": "NoFunction",
           "menuClick": "hidden"
         }
       ]
     },
     "Color Macro Speed": {
-      "type": "Speed",
-      "defaultValue": 128,
-      "crossfade": true
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     }
   },
   "templateChannels": {
     "Red $pixelKey": {
-      "type": "Single Color",
-      "color": "Red",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green $pixelKey": {
-      "type": "Single Color",
-      "color": "Green",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue $pixelKey": {
-      "type": "Single Color",
-      "color": "Blue",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White $pixelKey": {
-      "type": "Single Color",
-      "color": "White",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     }
   },
   "modes": [

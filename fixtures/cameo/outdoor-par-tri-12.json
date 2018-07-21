@@ -7,7 +7,7 @@
   "meta": {
     "authors": ["Flo Edelmann", "Felix Edelmann"],
     "createDate": "2017-02-24",
-    "lastModifyDate": "2017-12-26"
+    "lastModifyDate": "2018-07-21"
   },
   "physical": {
     "dimensions": [203, 203, 193],
@@ -27,124 +27,147 @@
   },
   "availableChannels": {
     "Master dimmer": {
-      "type": "Intensity",
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Color Macro Simple": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 31],
-          "name": "Black",
-          "color": "#000000"
+          "dmxRange": [0, 31],
+          "type": "ColorPreset",
+          "colors": ["#000000"],
+          "comment": "Black"
         },
         {
-          "range": [32, 63],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [32, 63],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [64, 95],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [64, 95],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [96, 127],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [96, 127],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
-          "range": [128, 159],
-          "name": "Yellow",
-          "color": "#ffff00"
+          "dmxRange": [128, 159],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
         },
         {
-          "range": [160, 191],
-          "name": "Cyan",
-          "color": "#00ffff"
+          "dmxRange": [160, 191],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
         },
         {
-          "range": [192, 223],
-          "name": "Magenta",
-          "color": "#ff00ff"
+          "dmxRange": [192, 223],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Magenta"
         },
         {
-          "range": [224, 255],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [224, 255],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
         }
       ]
     },
     "Strobe": {
-      "type": "Strobe"
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
     },
     "Color Macro Advanced": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 4],
-          "name": "Blackout",
-          "color": "#000000"
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
         },
         {
-          "range": [5, 15],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [5, 15],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [16, 26],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [16, 26],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [27, 37],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [27, 37],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
-          "range": [38, 48],
-          "name": "Yellow",
-          "color": "#ffff00"
+          "dmxRange": [38, 48],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
         },
         {
-          "range": [49, 59],
-          "name": "Cyan",
-          "color": "#00ffff"
+          "dmxRange": [49, 59],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
         },
         {
-          "range": [60, 70],
-          "name": "Magenta",
-          "color": "#ff00ff"
+          "dmxRange": [60, 70],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Magenta"
         },
         {
-          "range": [71, 80],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [71, 80],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
-          "range": [81, 150],
-          "name": "Color change"
+          "dmxRange": [81, 150],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
         },
         {
-          "range": [151, 255],
-          "name": "Color blending"
+          "dmxRange": [151, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
         }
       ]
     },
     "Red": {
-      "type": "Single Color",
-      "crossfade": true,
-      "color": "Red"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "crossfade": true,
-      "color": "Green"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "crossfade": true,
-      "color": "Blue"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     }
   },
   "modes": [

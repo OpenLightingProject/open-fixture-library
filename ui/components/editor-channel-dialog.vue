@@ -39,56 +39,6 @@
             class="channelName" />
         </app-simple-label>
 
-        <app-simple-label :formstate="formstate" name="type" label="Type">
-          <app-property-input-select
-            v-model="channel.type"
-            :schema-property="properties.channel.type"
-            :required="true"
-            name="type"
-            addition-hint="other channel type" />
-          <validate
-            v-if="channel.type === `[add-value]`"
-            :state="formstate"
-            tag="span">
-            <app-property-input-text
-              v-model="channel.typeNew"
-              :name="`typeNew`"
-              :schema-property="properties.definitions.nonEmptyString"
-              :required="true"
-              :auto-focus="true"
-              hint="other channel type"
-              class="addition" />
-          </validate>
-        </app-simple-label>
-
-        <app-simple-label
-          v-if="channel.type === `Single Color`"
-          :formstate="formstate"
-          name="color"
-          label="Color">
-          <app-property-input-select
-            v-model="channel.color"
-            :schema-property="properties.channel.color"
-            :required="true"
-            name="color"
-            addition-hint="other channel color" />
-          <validate
-            v-if="channel.color === `[add-value]`"
-            :state="formstate"
-            tag="span">
-            <app-property-input-text
-              v-model="channel.colorNew"
-              :name="`colorNew`"
-              :schema-property="properties.definitions.nonEmptyString"
-              :required="true"
-              :auto-focus="true"
-              hint="other channel color"
-              class="addition" />
-          </validate>
-        </app-simple-label>
-
-        <h3>DMX values</h3>
-
         <app-simple-label :formstate="formstate" name="fineness" label="Channel resolution">
           <select v-model="channel.fineness" name="fineness">
             <option :value="0">8 bit (No fine channels)</option>
@@ -97,7 +47,7 @@
           </select>
         </app-simple-label>
 
-        <app-simple-label :formstate="formstate" name="defaultValue" label="Default">
+        <app-simple-label :formstate="formstate" name="defaultValue" label="Default DMX value">
           <input
             v-model.number="channel.defaultValue"
             :max="Math.pow(256, channel.fineness + 1) - 1"
@@ -107,45 +57,22 @@
             step="1">
         </app-simple-label>
 
-        <app-simple-label :formstate="formstate" name="highlightValue" label="Highlight">
-          <input
-            v-model.number="channel.highlightValue"
-            :max="Math.pow(256, channel.fineness + 1) - 1"
-            name="highlightValue"
-            type="number"
-            min="0"
-            step="1">
-        </app-simple-label>
-
-        <app-simple-label :formstate="formstate" name="invert" label="Invert?">
-          <app-property-input-boolean
-            v-model="channel.invert"
-            :schema-property="properties.channel.invert"
-            name="invert" />
-        </app-simple-label>
-
-        <app-simple-label :formstate="formstate" name="constant" label="Constant?">
-          <app-property-input-boolean
-            v-model="channel.constant"
-            :schema-property="properties.channel.constant"
-            name="constant" />
-        </app-simple-label>
-
-        <app-simple-label :formstate="formstate" name="crossfade" label="Crossfade?">
-          <app-property-input-boolean
-            v-model="channel.crossfade"
-            :schema-property="properties.channel.crossfade"
-            name="crossfade" />
-        </app-simple-label>
-
-        <app-simple-label :formstate="formstate" name="precedence" label="Precedence">
-          <app-property-input-select
-            v-model="channel.precedence"
-            :schema-property="properties.channel.precedence"
-            name="precedence" />
-        </app-simple-label>
-
-        <h3>Capabilities</h3>
+        <h3>Capabilities<template v-if="!channel.wizard.show && channel.capabilities.length > 1">
+          <a
+            href="#expand-all"
+            class="icon-button expand-all"
+            title="Expand all capabilities"
+            @click.prevent="openDetails">
+            <app-svg name="chevron-double-down" />
+          </a>
+          <a
+            href="#collapse-all"
+            class="icon-button collapse-all"
+            title="Collapse all capabilities"
+            @click.prevent="closeDetails">
+            <app-svg name="chevron-double-up" />
+          </a>
+        </template></h3>
 
         <app-simple-label
           v-if="channel.fineness > 0"
@@ -159,6 +86,27 @@
           </select>
         </app-simple-label>
 
+        <app-editor-capability-wizard
+          v-if="channel.wizard.show"
+          :wizard="channel.wizard"
+          :capabilities="channel.capabilities"
+          :fineness="Math.min(channel.fineness, channel.capFineness)"
+          :formstate="formstate"
+          @close="onWizardClose" />
+
+        <div v-else class="capability-editor">
+          <app-editor-capability
+            v-for="(cap, index) in channel.capabilities"
+            ref="capabilities"
+            :key="cap.uuid"
+            :capabilities="channel.capabilities"
+            :formstate="formstate"
+            :cap-index="index"
+            :fineness="Math.min(channel.fineness, channel.capFineness)"
+            @insert-capability-before="insertEmptyCapability(index)"
+            @insert-capability-after="insertEmptyCapability(index + 1)" />
+        </div>
+
         <section>
           <a href="#wizard" class="button secondary" @click.prevent="channel.wizard.show = !channel.wizard.show">
             <app-svg name="capability-wizard" />
@@ -166,22 +114,31 @@
           </a>
         </section>
 
-        <app-editor-capability-wizard
-          v-if="channel.wizard.show"
-          :wizard="channel.wizard"
-          :capabilities="channel.capabilities"
-          :fineness="Math.min(channel.fineness, channel.capFineness)"
-          @close="channel.wizard.show = false" />
+        <h3>Advanced channel settings</h3>
 
-        <ul v-else class="capability-editor">
-          <app-editor-capability
-            v-for="(cap, index) in channel.capabilities"
-            :key="cap.uuid"
-            v-model="channel.capabilities"
-            :formstate="formstate"
-            :cap-index="index"
-            :fineness="Math.min(channel.fineness, channel.capFineness)" />
-        </ul>
+        <app-simple-label :formstate="formstate" name="highlightValue" label="Highlight DMX value">
+          <input
+            v-model.number="channel.highlightValue"
+            :max="Math.pow(256, channel.fineness + 1) - 1"
+            name="highlightValue"
+            type="number"
+            min="0"
+            step="1">
+        </app-simple-label>
+
+        <app-simple-label :formstate="formstate" name="constant" label="Constant?">
+          <app-property-input-boolean
+            v-model="channel.constant"
+            :schema-property="properties.channel.constant"
+            name="constant" />
+        </app-simple-label>
+
+        <app-simple-label :formstate="formstate" name="precedence" label="Precedence">
+          <app-property-input-select
+            v-model="channel.precedence"
+            :schema-property="properties.channel.precedence"
+            name="precedence" />
+        </app-simple-label>
 
       </div>
 
@@ -195,18 +152,26 @@
 </template>
 
 <style lang="scss" scoped>
-.capability-editor {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.expand-all,
+.collapse-all {
+  margin-left: 1ex;
+  font-size: 0.8rem;
 }
 </style>
 
-<style>
+<style lang="scss">
+@import '~assets/styles/vars.scss';
+
 #channel-dialog {
-  max-width: 700px;
-  width: 80%;
+  /* prevent smooth scrolling when triggered from capability insertion etc. */
   scroll-behavior: auto;
+}
+
+@media (min-width: $phone) {
+  #channel-dialog {
+    max-width: 700px;
+    width: 80%;
+  }
 }
 </style>
 
@@ -216,6 +181,7 @@ import uuidV4 from 'uuid/v4.js';
 
 import schemaProperties from '~~/lib/schema-properties.js';
 import {
+  getEmptyCapability,
   getEmptyFineChannel,
   getSanitizedChannel,
   isChannelChanged,
@@ -395,9 +361,13 @@ export default {
 
     onSubmit() {
       if (this.formstate.$invalid) {
-        const firstErrorName = Object.keys(this.formstate.$error)[0];
-        const field = document.querySelector(`[name=${firstErrorName}]`);
+        const field = document.querySelector(`#channel-dialog .vf-field-invalid`);
         const scrollContainer = field.closest(`dialog`);
+
+        const enclosingDetails = field.closest(`details`);
+        if (enclosingDetails) {
+          enclosingDetails.open = true;
+        }
 
         scrollIntoView(field, {
           time: 300,
@@ -411,6 +381,8 @@ export default {
 
         return;
       }
+
+      this.$refs.capabilities.forEach(capability => capability.cleanCapabilityData());
 
       if (this.channel.editMode === `create`) {
         this.saveCreatedChannel();
@@ -509,6 +481,41 @@ export default {
       this.$nextTick(() => {
         this.formstate._reset(); // resets validation status
       });
+    },
+
+    onWizardClose(insertIndex) {
+      this.channel.wizard.show = false;
+
+      this.$nextTick(() => {
+        const firstNewCap = this.$refs.capabilities[insertIndex];
+        const scrollContainer = firstNewCap.$el.closest(`dialog`);
+
+        scrollIntoView(firstNewCap.$el, {
+          time: 0,
+          align: {
+            top: 0,
+            left: 0,
+            topOffset: 100
+          },
+          isScrollable: target => target === scrollContainer
+        }, () => firstNewCap.$refs.firstInput.focus());
+      });
+    },
+
+    openDetails() {
+      this.$el.querySelectorAll(`details`).forEach(details => {
+        details.open = true;
+      });
+    },
+
+    closeDetails() {
+      this.$el.querySelectorAll(`details`).forEach(details => {
+        details.open = false;
+      });
+    },
+
+    insertEmptyCapability(index) {
+      this.channel.capabilities.splice(index, 0, getEmptyCapability());
     }
   }
 };

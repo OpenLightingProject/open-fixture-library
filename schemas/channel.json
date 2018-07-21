@@ -10,43 +10,6 @@
       "$comment": "if not set: use channel key",
       "$ref": "definitions.json#/nonEmptyString"
     },
-    "type": {
-      "enum": [
-        "Intensity",
-        "Single Color",
-        "Multi-Color",
-        "Pan",
-        "Tilt",
-        "Focus",
-        "Zoom",
-        "Iris",
-        "Gobo",
-        "Prism",
-        "Shutter",
-        "Strobe",
-        "Speed",
-        "Color Temperature",
-        "Effect",
-        "Fog",
-        "Maintenance",
-        "Nothing"
-      ]
-    },
-    "color": {
-      "enum": [
-        "Red",
-        "Green",
-        "Blue",
-        "Cyan",
-        "Magenta",
-        "Yellow",
-        "Amber",
-        "White",
-        "UV",
-        "Lime",
-        "Indigo"
-      ]
-    },
     "fineChannelAliases": {
       "type": "array",
       "minItems": 1,
@@ -63,49 +26,38 @@
     },
     "defaultValue": { "$ref": "definitions.json#/dmxValue" },
     "highlightValue": { "$ref": "definitions.json#/dmxValue" },
-    "invert": { "type": "boolean" },
     "constant": { "type": "boolean" },
-    "crossfade": { "type": "boolean" },
     "precedence": { "enum": ["LTP", "HTP"] },
-    "capabilities": {
-      "type": "array",
-      "minItems": 1,
-      "uniqueItems": true,
-      "items": { "$ref": "capability.json#" }
-    }
-  },
-  "required": ["type"],
-  "allOf": [
-    {
-      "$comment": "color property is required in Single Color channels, forbidden otherwise",
-      "if": {
-        "properties": { "type": { "enum": ["Single Color"] } }
-      },
-      "then": {
-        "required": ["type", "color"]
-      },
-      "else": {
-        "not": { "required": ["color"] }
-      }
-    },
-    {
-      "if": {
-        "properties": { "type": { "enum": [ "Nothing" ] } }
-      },
-      "then": {
-        "$comment": "only type and name properties are allowed",
-        "oneOf": [
-          {
-            "maxProperties": 1,
-            "required": [ "type" ]
-          },
-          {
-            "maxProperties": 2,
-            "required": [ "name", "type" ]
-          }
+    "capability": {
+      "allOf": [{ "$ref": "capability.json#" }],
+      "not": {
+        "anyOf": [
+          { "required": ["dmxRange"] },
+          { "required": ["switchChannels"] }
         ]
       }
     },
+    "capabilities": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "allOf": [{ "$ref": "capability.json#" }],
+        "required": ["dmxRange"]
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "required": ["capability"],
+      "not": { "required": ["capabilities"] }
+    },
+    {
+      "not": { "required": ["capability"] },
+      "required": ["capabilities"]
+    }
+  ],
+  "allOf": [
     {
       "if": {
         "$comment": "one capability sets switchChannels",
@@ -132,23 +84,22 @@
     },
     {
       "if": {
-        "not": { "properties": { "type": { "enum": [ "Multi-Color", "Effect", "Gobo" ] } } }
-      },
-      "then": {
-        "$comment": "capabilities may not set color or image properties",
+        "$comment": "channel contains only one NoFunction capability",
         "properties": {
-          "capabilities": {
-            "items": {
-              "not": {
-                "anyOf": [
-                { "required": ["color"] },
-                { "required": ["image"] }
-              ]
+          "capability": {
+            "properties": {
+              "type": { "const": "NoFunction" }
             }
           }
+        },
+        "required": ["capability"]
+      },
+      "then": {
+        "$comment": "fineChannelAliases must not be set",
+        "not": {
+          "required": ["fineChannelAliases"]
         }
       }
-    }
     }
   ],
   "additionalProperties": false

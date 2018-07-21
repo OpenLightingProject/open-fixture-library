@@ -98,7 +98,7 @@ export function getEmptyChannel() {
       start: 0,
       width: 10,
       count: 3,
-      templateName: `Function #`
+      templateCapability: getEmptyCapability()
     },
     capabilities: [getEmptyCapability()]
   };
@@ -125,10 +125,10 @@ export function getEmptyFineChannel(coarseChannelId, fineness) {
 export function getEmptyCapability() {
   return {
     uuid: uuidV4(),
-    range: null,
-    name: ``,
-    color: ``,
-    color2: ``
+    open: true,
+    dmxRange: null,
+    type: ``,
+    typeData: {}
   };
 }
 
@@ -165,17 +165,38 @@ export function isChannelChanged(channel) {
  * @returns {!boolean} False if the capability object is still empty / unchanged, true otherwise.
  */
 export function isCapabilityChanged(cap) {
-  return Object.keys(cap).some(prop => {
-    if (prop === `uuid`) {
-      return false;
-    }
+  if (cap.dmxRange !== null) {
+    return true;
+  }
 
-    if (prop === `range`) {
-      return cap.range !== null;
-    }
+  if (cap.type !== ``) {
+    return true;
+  }
 
-    return cap[prop] !== ``;
+  return Object.keys(cap.typeData).some(prop => {
+    return cap.typeData[prop] !== `` && cap.typeData[prop] !== null;
   });
+}
+
+
+/**
+ * @param {?string} hexString A string of comma-separated hex values, or null.
+ * @returns {?Array.<!string>} The hex codes as array of strings.
+ */
+export function colorsHexStringToArray(hexString) {
+  if (typeof hexString !== `string`) {
+    return null;
+  }
+
+  const hexArray = hexString.split(/\s*,\s*/).map(hex => hex.trim().toLowerCase()).filter(
+    hex => hex.match(/^#[0-9a-f]{6}$/)
+  );
+
+  if (hexArray.length === 0) {
+    return null;
+  }
+
+  return hexArray;
 }
 
 

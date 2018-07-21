@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Alejo Cervera"],
     "createDate": "2018-06-13",
-    "lastModifyDate": "2018-06-13"
+    "lastModifyDate": "2018-07-21"
   },
   "manualURL": "http://en.showven.com/Download/Attachment?id=56423",
   "physical": {
@@ -17,86 +17,109 @@
   },
   "availableChannels": {
     "Fountain": {
-      "type": "Effect",
       "precedence": "HTP",
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "Fountain Off"
+          "dmxRange": [0, 15],
+          "type": "NoFunction",
+          "comment": "Fountain Off"
         },
         {
-          "range": [16, 39],
-          "name": "Height 1"
+          "dmxRange": [16, 39],
+          "type": "EffectParameter",
+          "parameter": 1,
+          "comment": "Height"
         },
         {
-          "range": [40, 63],
-          "name": "Height 2"
+          "dmxRange": [40, 63],
+          "type": "EffectParameter",
+          "parameter": 2,
+          "comment": "Height"
         },
         {
-          "range": [64, 87],
-          "name": "Height 3"
+          "dmxRange": [64, 87],
+          "type": "EffectParameter",
+          "parameter": 3,
+          "comment": "Height"
         },
         {
-          "range": [88, 111],
-          "name": "Height 4"
+          "dmxRange": [88, 111],
+          "type": "EffectParameter",
+          "parameter": 4,
+          "comment": "Height"
         },
         {
-          "range": [112, 135],
-          "name": "Height 5"
+          "dmxRange": [112, 135],
+          "type": "EffectParameter",
+          "parameter": 5,
+          "comment": "Height"
         },
         {
-          "range": [136, 159],
-          "name": "Height 6"
+          "dmxRange": [136, 159],
+          "type": "EffectParameter",
+          "parameter": 6,
+          "comment": "Height"
         },
         {
-          "range": [160, 183],
-          "name": "Height 7"
+          "dmxRange": [160, 183],
+          "type": "EffectParameter",
+          "parameter": 7,
+          "comment": "Height"
         },
         {
-          "range": [184, 207],
-          "name": "Height 8"
+          "dmxRange": [184, 207],
+          "type": "EffectParameter",
+          "parameter": 8,
+          "comment": "Height"
         },
         {
-          "range": [208, 231],
-          "name": "Height 9"
+          "dmxRange": [208, 231],
+          "type": "EffectParameter",
+          "parameter": 9,
+          "comment": "Height"
         },
         {
-          "range": [232, 255],
-          "name": "Height 10"
+          "dmxRange": [232, 255],
+          "type": "EffectParameter",
+          "parameter": 10,
+          "comment": "Height"
         }
       ]
     },
     "Control": {
-      "type": "Maintenance",
       "precedence": "LTP",
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "Pre-Heat OFF"
+          "dmxRange": [0, 10],
+          "type": "Maintenance",
+          "comment": "Pre-Heat OFF"
         },
         {
-          "range": [11, 19],
-          "name": "No function"
+          "dmxRange": [11, 19],
+          "type": "NoFunction"
         },
         {
-          "range": [20, 40],
-          "name": "EMERGENCY STOP"
+          "dmxRange": [20, 40],
+          "type": "Maintenance",
+          "comment": "EMERGENCY STOP"
         },
         {
-          "range": [41, 59],
-          "name": "No function"
+          "dmxRange": [41, 59],
+          "type": "NoFunction"
         },
         {
-          "range": [60, 80],
-          "name": "Clear Material"
+          "dmxRange": [60, 80],
+          "type": "Maintenance",
+          "comment": "Clear Material"
         },
         {
-          "range": [81, 239],
-          "name": "No function"
+          "dmxRange": [81, 239],
+          "type": "NoFunction"
         },
         {
-          "range": [240, 255],
-          "name": "Pre-Heat ON"
+          "dmxRange": [240, 255],
+          "type": "Maintenance",
+          "comment": "Pre-Heat ON"
         }
       ]
     }

@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2018-02-18",
-    "lastModifyDate": "2018-02-18"
+    "lastModifyDate": "2018-07-21"
   },
   "manualURL": "http://www.looksolutions.com/uploads/pdf/bed_vipernt_d.pdf",
   "physical": {
@@ -16,11 +16,20 @@
   },
   "availableChannels": {
     "Pump": {
-      "type": "Fog"
+      "capability": {
+        "type": "Fog",
+        "fogType": "Fog",
+        "fogOutputStart": "off",
+        "fogOutputEnd": "strong"
+      }
     },
     "Heat": {
-      "type": "Intensity",
-      "crossfade": true
+      "capability": {
+        "type": "Maintenance",
+        "comment": "Heat",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
     }
   },
   "modes": [

@@ -6,23 +6,29 @@
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2017-12-12",
-    "lastModifyDate": "2017-12-12"
+    "lastModifyDate": "2018-07-21"
   },
   "availableChannels": {
     "Cyan": {
-      "type": "Single Color",
-      "color": "Cyan",
-      "fineChannelAliases": ["Cyan fine", "Cyan fine^2"]
+      "fineChannelAliases": ["Cyan fine", "Cyan fine^2"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
     },
     "Magenta": {
-      "type": "Single Color",
-      "color": "Magenta",
-      "fineChannelAliases": ["Magenta fine", "Magenta fine^2"]
+      "fineChannelAliases": ["Magenta fine", "Magenta fine^2"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
     },
     "Yellow": {
-      "type": "Single Color",
-      "color": "Yellow",
-      "fineChannelAliases": ["Yellow fine", "Yellow fine^2"]
+      "fineChannelAliases": ["Yellow fine", "Yellow fine^2"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
     }
   },
   "modes": [

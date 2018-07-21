@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Alejo Cervera"],
     "createDate": "2018-06-13",
-    "lastModifyDate": "2018-06-13"
+    "lastModifyDate": "2018-07-21"
   },
   "manualURL": "https://www.magicfx.eu/media/mconnect_uploadfiles/m/a/manual_stage_flame.pdf",
   "physical": {
@@ -17,35 +17,36 @@
   },
   "availableChannels": {
     "Safety": {
-      "type": "Maintenance",
       "defaultValue": 0,
       "precedence": "LTP",
       "capabilities": [
         {
-          "range": [0, 139],
-          "name": "Safety ON"
+          "dmxRange": [0, 139],
+          "type": "Maintenance",
+          "comment": "Safety ON"
         },
         {
-          "range": [140, 153],
-          "name": "Safety OFF"
+          "dmxRange": [140, 153],
+          "type": "Maintenance",
+          "comment": "Safety OFF"
         },
         {
-          "range": [154, 255],
-          "name": "Safety ON"
+          "dmxRange": [154, 255],
+          "type": "Maintenance",
+          "comment": "Safety ON"
         }
       ]
     },
     "Flame": {
-      "type": "Effect",
       "defaultValue": 0,
       "highlightValue": 255,
       "precedence": "HTP",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Flame Intensity"
-        }
-      ]
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "off",
+        "parameterEnd": "high",
+        "comment": "Flame Intensity"
+      }
     }
   },
   "modes": [

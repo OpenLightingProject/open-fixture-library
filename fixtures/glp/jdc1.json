@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2018-06-14",
-    "lastModifyDate": "2018-06-14"
+    "lastModifyDate": "2018-07-21"
   },
   "manualURL": "https://www.glp.de/de/produkte?format=raw&task=download&fid=151",
   "physical": {
@@ -48,963 +48,1194 @@
   },
   "availableChannels": {
     "Tilt": {
-      "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "crossfade": true
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "182deg"
+      }
     },
     "Beam Intensity": {
-      "type": "Intensity"
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Beam Duration": {
-      "type": "Strobe",
-      "crossfade": true,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Strobe duration 7…650ms"
-        }
-      ]
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "7ms",
+        "durationEnd": "650ms"
+      }
     },
     "Beam Rate": {
-      "type": "Speed",
-      "crossfade": true,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Strobe speed 0.289…16.67Hz"
-        }
-      ]
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0.289Hz",
+        "speedEnd": "16.67Hz"
+      }
     },
     "Beam FX Shutter": {
-      "type": "Strobe",
       "capabilities": [
         {
-          "range": [0, 36],
-          "name": "No function"
+          "dmxRange": [0, 36],
+          "type": "NoFunction"
         },
         {
-          "range": [37, 40],
-          "name": "Ramp up strobe"
+          "dmxRange": [37, 40],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp"
         },
         {
-          "range": [41, 44],
-          "name": "Random ramp up strobe"
+          "dmxRange": [41, 44],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "randomTiming": true
         },
         {
-          "range": [45, 48],
-          "name": "Ramp down strobe"
+          "dmxRange": [45, 48],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown"
         },
         {
-          "range": [49, 52],
-          "name": "Random ramp down strobe"
+          "dmxRange": [49, 52],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "randomTiming": true
         },
         {
-          "range": [53, 56],
-          "name": "Ramp up and down strobe"
+          "dmxRange": [53, 56],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown"
         },
         {
-          "range": [57, 60],
-          "name": "Random ramp up and down strobe"
+          "dmxRange": [57, 60],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "randomTiming": true
         },
         {
-          "range": [61, 64],
-          "name": "Random strobe (Random white beam)"
+          "dmxRange": [61, 64],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random white beam"
         },
         {
-          "range": [65, 68],
-          "name": "Random strobe (Random single pixel of the white beam)"
+          "dmxRange": [65, 68],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random single pixel of the white beam"
         },
         {
-          "range": [69, 72],
-          "name": "Lightning strobe effect"
+          "dmxRange": [69, 72],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning"
         },
         {
-          "range": [73, 76],
-          "name": "Strobe (Spikes (flash over low light))"
+          "dmxRange": [73, 76],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes",
+          "comment": "flash over low light"
         },
         {
-          "range": [77, 80],
-          "name": "Strobe (White beam, left to right)"
+          "dmxRange": [77, 80],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "White beam, left to right"
         },
         {
-          "range": [81, 84],
-          "name": "Strobe (White beam, left to right, random)"
+          "dmxRange": [81, 84],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "White beam, left to right, random"
         },
         {
-          "range": [85, 88],
-          "name": "Strobe (White beam, right to left)"
+          "dmxRange": [85, 88],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "White beam, right to left"
         },
         {
-          "range": [89, 92],
-          "name": "Strobe (White beam, right to left, random)"
+          "dmxRange": [89, 92],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "White beam, right to left, random"
         },
         {
-          "range": [93, 96],
-          "name": "Strobe (White beam, left to right, bounce)"
+          "dmxRange": [93, 96],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "White beam, left to right, bounce"
         },
         {
-          "range": [97, 100],
-          "name": "Strobe (White beam, left to right, bounce, random)"
+          "dmxRange": [97, 100],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "White beam, left to right, bounce, random"
         },
         {
-          "range": [101, 104],
-          "name": "Strobe (White beam, right to left, bounce)"
+          "dmxRange": [101, 104],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "White beam, right to left, bounce"
         },
         {
-          "range": [105, 108],
-          "name": "Strobe (White beam, right to left, bounce, random)"
+          "dmxRange": [105, 108],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "White beam, right to left, bounce, random"
         },
         {
-          "range": [109, 112],
-          "name": "Strobe (Zig, 6 steps)"
+          "dmxRange": [109, 112],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Zig, 6 steps"
         },
         {
-          "range": [113, 116],
-          "name": "Strobe (Zig, 6 steps, random)"
+          "dmxRange": [113, 116],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Zig, 6 steps, random"
         },
         {
-          "range": [117, 120],
-          "name": "Strobe (Zig, 6 steps, outer to center pixel)"
+          "dmxRange": [117, 120],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Zig, 6 steps, outer to center pixel"
         },
         {
-          "range": [121, 124],
-          "name": "Strobe (Zig, 6 steps, outer to center pixel, random)"
+          "dmxRange": [121, 124],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Zig, 6 steps, outer to center pixel, random"
         },
         {
-          "range": [125, 128],
-          "name": "Strobe (Zigzag, 10 steps)"
+          "dmxRange": [125, 128],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Zigzag, 10 steps"
         },
         {
-          "range": [129, 132],
-          "name": "Strobe (Zigzag, 10 steps, random)"
+          "dmxRange": [129, 132],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Zigzag, 10 steps, random"
         },
         {
-          "range": [133, 179],
-          "name": "No function"
+          "dmxRange": [133, 179],
+          "type": "NoFunction"
         },
         {
-          "range": [180, 183],
-          "name": "Strobe (Double flash)"
+          "dmxRange": [180, 183],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Double flash"
         },
         {
-          "range": [184, 187],
-          "name": "Strobe (Double flash, random)"
+          "dmxRange": [184, 187],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Double flash, random"
         },
         {
-          "range": [188, 191],
-          "name": "Strobe (Double flash, beam-color)"
+          "dmxRange": [188, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Double flash, beam-color"
         },
         {
-          "range": [192, 195],
-          "name": "Strobe (Double flash, beam-color, random)"
+          "dmxRange": [192, 195],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Double flash, beam-color, random"
         },
         {
-          "range": [196, 199],
-          "name": "Strobe (Double flash, color-beam)"
+          "dmxRange": [196, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Double flash, color-beam"
         },
         {
-          "range": [200, 203],
-          "name": "Strobe (Double flash, color-beam, random)"
+          "dmxRange": [200, 203],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Double flash, color-beam, random"
         },
         {
-          "range": [204, 207],
-          "name": "Strobe (Triple flash)"
+          "dmxRange": [204, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Triple flash"
         },
         {
-          "range": [208, 211],
-          "name": "Strobe (Triple flash, random)"
+          "dmxRange": [208, 211],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Triple flash, random"
         },
         {
-          "range": [212, 215],
-          "name": "Strobe (Triple flash, beam-color-beam)"
+          "dmxRange": [212, 215],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Triple flash, beam-color-beam"
         },
         {
-          "range": [216, 219],
-          "name": "Strobe (Triple flash, beam-color-beam, random)"
+          "dmxRange": [216, 219],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Triple flash, beam-color-beam, random"
         },
         {
-          "range": [220, 223],
-          "name": "Strobe (Triple flash, color-beam-color)"
+          "dmxRange": [220, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Triple flash, color-beam-color"
         },
         {
-          "range": [224, 227],
-          "name": "Strobe (Triple flash, color-beam-color, random)"
+          "dmxRange": [224, 227],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Triple flash, color-beam-color, random"
         },
         {
-          "range": [228, 231],
-          "name": "Strobe (Quad flash)"
+          "dmxRange": [228, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Quad flash"
         },
         {
-          "range": [232, 235],
-          "name": "Strobe (Quad flash, random)"
+          "dmxRange": [232, 235],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Quad flash, random"
         },
         {
-          "range": [236, 239],
-          "name": "Strobe (Quad flash, beam-color-beam-color)"
+          "dmxRange": [236, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Quad flash, beam-color-beam-color"
         },
         {
-          "range": [240, 243],
-          "name": "Strobe (Quad flash, beam-color-beam-color, random)"
+          "dmxRange": [240, 243],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Quad flash, beam-color-beam-color, random"
         },
         {
-          "range": [244, 247],
-          "name": "Strobe (Quad flash, color-beam-color-beam)"
+          "dmxRange": [244, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Quad flash, color-beam-color-beam"
         },
         {
-          "range": [248, 251],
-          "name": "Strobe (Quad flash, color-beam-color-beam, random)"
+          "dmxRange": [248, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Quad flash, color-beam-color-beam, random"
         },
         {
-          "range": [252, 255],
-          "name": "No function"
+          "dmxRange": [252, 255],
+          "type": "NoFunction"
         }
       ]
     },
     "Special / Control": {
-      "type": "Maintenance",
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "No function"
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
         },
         {
-          "range": [1, 1],
-          "name": "Channel 4-6 Offset 10°"
+          "dmxRange": [1, 1],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 10°"
         },
         {
-          "range": [2, 2],
-          "name": "Channel 4-6 Offset 20°"
+          "dmxRange": [2, 2],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 20°"
         },
         {
-          "range": [3, 3],
-          "name": "Channel 4-6 Offset 30°"
+          "dmxRange": [3, 3],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 30°"
         },
         {
-          "range": [4, 4],
-          "name": "Channel 4-6 Offset 40°"
+          "dmxRange": [4, 4],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 40°"
         },
         {
-          "range": [5, 5],
-          "name": "Channel 4-6 Offset 50°"
+          "dmxRange": [5, 5],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 50°"
         },
         {
-          "range": [6, 6],
-          "name": "Channel 4-6 Offset 60°"
+          "dmxRange": [6, 6],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 60°"
         },
         {
-          "range": [7, 7],
-          "name": "Channel 4-6 Offset 70°"
+          "dmxRange": [7, 7],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 70°"
         },
         {
-          "range": [8, 8],
-          "name": "Channel 4-6 Offset 80°"
+          "dmxRange": [8, 8],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 80°"
         },
         {
-          "range": [9, 9],
-          "name": "Channel 4-6 Offset 90°"
+          "dmxRange": [9, 9],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 90°"
         },
         {
-          "range": [10, 10],
-          "name": "Channel 4-6 Offset 100°"
+          "dmxRange": [10, 10],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 100°"
         },
         {
-          "range": [11, 11],
-          "name": "Channel 4-6 Offset 110°"
+          "dmxRange": [11, 11],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 110°"
         },
         {
-          "range": [12, 12],
-          "name": "Channel 4-6 Offset 120°"
+          "dmxRange": [12, 12],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 120°"
         },
         {
-          "range": [13, 13],
-          "name": "Channel 4-6 Offset 130°"
+          "dmxRange": [13, 13],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 130°"
         },
         {
-          "range": [14, 14],
-          "name": "Channel 4-6 Offset 140°"
+          "dmxRange": [14, 14],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 140°"
         },
         {
-          "range": [15, 15],
-          "name": "Channel 4-6 Offset 150°"
+          "dmxRange": [15, 15],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 150°"
         },
         {
-          "range": [16, 16],
-          "name": "Channel 4-6 Offset 160°"
+          "dmxRange": [16, 16],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 160°"
         },
         {
-          "range": [17, 17],
-          "name": "Channel 4-6 Offset 170°"
+          "dmxRange": [17, 17],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 170°"
         },
         {
-          "range": [18, 18],
-          "name": "Channel 4-6 Offset 180°"
+          "dmxRange": [18, 18],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 180°"
         },
         {
-          "range": [19, 19],
-          "name": "Channel 4-6 Offset 190°"
+          "dmxRange": [19, 19],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 190°"
         },
         {
-          "range": [20, 20],
-          "name": "Channel 4-6 Offset 200°"
+          "dmxRange": [20, 20],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 200°"
         },
         {
-          "range": [21, 21],
-          "name": "Channel 4-6 Offset 210°"
+          "dmxRange": [21, 21],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 210°"
         },
         {
-          "range": [22, 22],
-          "name": "Channel 4-6 Offset 220°"
+          "dmxRange": [22, 22],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 220°"
         },
         {
-          "range": [23, 23],
-          "name": "Channel 4-6 Offset 230°"
+          "dmxRange": [23, 23],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 230°"
         },
         {
-          "range": [24, 24],
-          "name": "Channel 4-6 Offset 240°"
+          "dmxRange": [24, 24],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 240°"
         },
         {
-          "range": [25, 25],
-          "name": "Channel 4-6 Offset 250°"
+          "dmxRange": [25, 25],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 250°"
         },
         {
-          "range": [26, 26],
-          "name": "Channel 4-6 Offset 260°"
+          "dmxRange": [26, 26],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 260°"
         },
         {
-          "range": [27, 27],
-          "name": "Channel 4-6 Offset 270°"
+          "dmxRange": [27, 27],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 270°"
         },
         {
-          "range": [28, 28],
-          "name": "Channel 4-6 Offset 280°"
+          "dmxRange": [28, 28],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 280°"
         },
         {
-          "range": [29, 29],
-          "name": "Channel 4-6 Offset 290°"
+          "dmxRange": [29, 29],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 290°"
         },
         {
-          "range": [30, 30],
-          "name": "Channel 4-6 Offset 300°"
+          "dmxRange": [30, 30],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 300°"
         },
         {
-          "range": [31, 31],
-          "name": "Channel 4-6 Offset 310°"
+          "dmxRange": [31, 31],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 310°"
         },
         {
-          "range": [32, 32],
-          "name": "Channel 4-6 Offset 320°"
+          "dmxRange": [32, 32],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 320°"
         },
         {
-          "range": [33, 33],
-          "name": "Channel 4-6 Offset 330°"
+          "dmxRange": [33, 33],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 330°"
         },
         {
-          "range": [34, 34],
-          "name": "Channel 4-6 Offset 340°"
+          "dmxRange": [34, 34],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 340°"
         },
         {
-          "range": [35, 35],
-          "name": "Channel 4-6 Offset 350°"
+          "dmxRange": [35, 35],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 350°"
         },
         {
-          "range": [36, 36],
-          "name": "Channel 4-6 Offset 360°"
+          "dmxRange": [36, 36],
+          "type": "Maintenance",
+          "comment": "Channel 4-6 Offset 360°"
         },
         {
-          "range": [37, 39],
-          "name": "No function"
+          "dmxRange": [37, 39],
+          "type": "NoFunction"
         },
         {
-          "range": [40, 44],
-          "name": "Position Feedback On"
+          "dmxRange": [40, 44],
+          "type": "Maintenance",
+          "comment": "Position Feedback On"
         },
         {
-          "range": [45, 49],
-          "name": "Position Feedback Off"
+          "dmxRange": [45, 49],
+          "type": "Maintenance",
+          "comment": "Position Feedback Off"
         },
         {
-          "range": [50, 54],
-          "name": "FX/Pattern Color Priority On (hold 3s)"
+          "dmxRange": [50, 54],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "FX/Pattern Color Priority On"
         },
         {
-          "range": [55, 59],
-          "name": "FX/Pattern Control Priority Off (hold 3s)"
+          "dmxRange": [55, 59],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "FX/Pattern Control Priority Off"
         },
         {
-          "range": [60, 64],
-          "name": "Pixel H"
+          "dmxRange": [60, 64],
+          "type": "Maintenance",
+          "comment": "Pixel H"
         },
         {
-          "range": [65, 69],
-          "name": "Pixel V"
+          "dmxRange": [65, 69],
+          "type": "Maintenance",
+          "comment": "Pixel V"
         },
         {
-          "range": [70, 74],
-          "name": "Normal Tilt Control"
+          "dmxRange": [70, 74],
+          "type": "Maintenance",
+          "comment": "Normal Tilt Control"
         },
         {
-          "range": [75, 79],
-          "name": "Inverse Tilt Control"
+          "dmxRange": [75, 79],
+          "type": "Maintenance",
+          "comment": "Inverse Tilt Control"
         },
         {
-          "range": [80, 84],
-          "name": "Normal Pixel Orientation"
+          "dmxRange": [80, 84],
+          "type": "Maintenance",
+          "comment": "Normal Pixel Orientation"
         },
         {
-          "range": [85, 89],
-          "name": "Inverse Pixel Orientation"
+          "dmxRange": [85, 89],
+          "type": "Maintenance",
+          "comment": "Inverse Pixel Orientation"
         },
         {
-          "range": [90, 94],
-          "name": "Normal Orientation, 2nd Pixel Line"
+          "dmxRange": [90, 94],
+          "type": "Maintenance",
+          "comment": "Normal Orientation, 2nd Pixel Line"
         },
         {
-          "range": [95, 99],
-          "name": "Inverse Orientation, 2nd Pixel Line"
+          "dmxRange": [95, 99],
+          "type": "Maintenance",
+          "comment": "Inverse Orientation, 2nd Pixel Line"
         },
         {
-          "range": [100, 102],
-          "name": "PWM Frequency 582Hz"
+          "dmxRange": [100, 102],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 582Hz"
         },
         {
-          "range": [103, 105],
-          "name": "PWM Frequency 583Hz"
+          "dmxRange": [103, 105],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 583Hz"
         },
         {
-          "range": [106, 107],
-          "name": "PWM Frequency 584Hz"
+          "dmxRange": [106, 107],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 584Hz"
         },
         {
-          "range": [108, 110],
-          "name": "PWM Frequency 585Hz"
+          "dmxRange": [108, 110],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 585Hz"
         },
         {
-          "range": [111, 112],
-          "name": "PWM Frequency 586Hz"
+          "dmxRange": [111, 112],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 586Hz"
         },
         {
-          "range": [113, 115],
-          "name": "PWM Frequency 587Hz"
+          "dmxRange": [113, 115],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 587Hz"
         },
         {
-          "range": [116, 118],
-          "name": "PWM Frequency 588Hz"
+          "dmxRange": [116, 118],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 588Hz"
         },
         {
-          "range": [119, 120],
-          "name": "PWM Frequency 589Hz"
+          "dmxRange": [119, 120],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 589Hz"
         },
         {
-          "range": [121, 123],
-          "name": "PWM Frequency 590Hz"
+          "dmxRange": [121, 123],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 590Hz"
         },
         {
-          "range": [124, 125],
-          "name": "PWM Frequency 591Hz"
+          "dmxRange": [124, 125],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 591Hz"
         },
         {
-          "range": [126, 128],
-          "name": "PWM Frequency 592Hz"
+          "dmxRange": [126, 128],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 592Hz"
         },
         {
-          "range": [129, 131],
-          "name": "PWM Frequency 593Hz"
+          "dmxRange": [129, 131],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 593Hz"
         },
         {
-          "range": [132, 133],
-          "name": "PWM Frequency 594Hz"
+          "dmxRange": [132, 133],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 594Hz"
         },
         {
-          "range": [134, 136],
-          "name": "PWM Frequency 595Hz"
+          "dmxRange": [134, 136],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 595Hz"
         },
         {
-          "range": [137, 138],
-          "name": "PWM Frequency 596Hz"
+          "dmxRange": [137, 138],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 596Hz"
         },
         {
-          "range": [139, 141],
-          "name": "PWM Frequency 597Hz"
+          "dmxRange": [139, 141],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 597Hz"
         },
         {
-          "range": [142, 144],
-          "name": "PWM Frequency 598Hz"
+          "dmxRange": [142, 144],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 598Hz"
         },
         {
-          "range": [145, 146],
-          "name": "PWM Frequency 599Hz"
+          "dmxRange": [145, 146],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 599Hz"
         },
         {
-          "range": [147, 149],
-          "name": "PWM Frequency 600Hz"
+          "dmxRange": [147, 149],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 600Hz"
         },
         {
-          "range": [150, 151],
-          "name": "PWM Frequency 601Hz"
+          "dmxRange": [150, 151],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 601Hz"
         },
         {
-          "range": [152, 154],
-          "name": "PWM Frequency 602Hz"
+          "dmxRange": [152, 154],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 602Hz"
         },
         {
-          "range": [155, 157],
-          "name": "PWM Frequency 603Hz"
+          "dmxRange": [155, 157],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 603Hz"
         },
         {
-          "range": [158, 159],
-          "name": "PWM Frequency 604Hz"
+          "dmxRange": [158, 159],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 604Hz"
         },
         {
-          "range": [160, 162],
-          "name": "PWM Frequency 605Hz"
+          "dmxRange": [160, 162],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 605Hz"
         },
         {
-          "range": [163, 164],
-          "name": "PWM Frequency 606Hz"
+          "dmxRange": [163, 164],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 606Hz"
         },
         {
-          "range": [165, 167],
-          "name": "PWM Frequency 607Hz"
+          "dmxRange": [165, 167],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 607Hz"
         },
         {
-          "range": [168, 170],
-          "name": "PWM Frequency 608Hz"
+          "dmxRange": [168, 170],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 608Hz"
         },
         {
-          "range": [171, 172],
-          "name": "PWM Frequency 609Hz"
+          "dmxRange": [171, 172],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 609Hz"
         },
         {
-          "range": [173, 175],
-          "name": "PWM Frequency 610Hz"
+          "dmxRange": [173, 175],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 610Hz"
         },
         {
-          "range": [176, 177],
-          "name": "PWM Frequency 611Hz"
+          "dmxRange": [176, 177],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 611Hz"
         },
         {
-          "range": [178, 180],
-          "name": "PWM Frequency 612Hz"
+          "dmxRange": [178, 180],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 612Hz"
         },
         {
-          "range": [181, 183],
-          "name": "PWM Frequency 613Hz"
+          "dmxRange": [181, 183],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 613Hz"
         },
         {
-          "range": [184, 185],
-          "name": "PWM Frequency 614Hz"
+          "dmxRange": [184, 185],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 614Hz"
         },
         {
-          "range": [186, 188],
-          "name": "PWM Frequency 615Hz"
+          "dmxRange": [186, 188],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 615Hz"
         },
         {
-          "range": [189, 190],
-          "name": "PWM Frequency 616Hz"
+          "dmxRange": [189, 190],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 616Hz"
         },
         {
-          "range": [191, 193],
-          "name": "PWM Frequency 617Hz"
+          "dmxRange": [191, 193],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 617Hz"
         },
         {
-          "range": [194, 194],
-          "name": "PWM Frequency 618Hz"
+          "dmxRange": [194, 194],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 618Hz"
         },
         {
-          "range": [195, 197],
-          "name": "PWM Frequency 1200Hz"
+          "dmxRange": [195, 197],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 1200Hz"
         },
         {
-          "range": [198, 200],
-          "name": "PWM Frequency 2400Hz"
+          "dmxRange": [198, 200],
+          "type": "Maintenance",
+          "comment": "PWM Frequency 2400Hz"
         },
         {
-          "range": [201, 209],
-          "name": "No function"
+          "dmxRange": [201, 209],
+          "type": "NoFunction"
         },
         {
-          "range": [210, 214],
-          "name": "Duration Percentage Mode On"
+          "dmxRange": [210, 214],
+          "type": "Maintenance",
+          "comment": "Duration Percentage Mode On"
         },
         {
-          "range": [215, 219],
-          "name": "Duration Percentage Mode Off"
+          "dmxRange": [215, 219],
+          "type": "Maintenance",
+          "comment": "Duration Percentage Mode Off"
         },
         {
-          "range": [220, 224],
-          "name": "Dimmer Flash On"
+          "dmxRange": [220, 224],
+          "type": "Maintenance",
+          "comment": "Dimmer Flash On"
         },
         {
-          "range": [225, 229],
-          "name": "Dimmer Flash Off"
+          "dmxRange": [225, 229],
+          "type": "Maintenance",
+          "comment": "Dimmer Flash Off"
         },
         {
-          "range": [230, 234],
-          "name": "FX/Plate Color Priority On"
+          "dmxRange": [230, 234],
+          "type": "Maintenance",
+          "comment": "FX/Plate Color Priority On"
         },
         {
-          "range": [235, 239],
-          "name": "FX/Plate Color Priority Off"
+          "dmxRange": [235, 239],
+          "type": "Maintenance",
+          "comment": "FX/Plate Color Priority Off"
         },
         {
-          "range": [240, 247],
-          "name": "No function"
+          "dmxRange": [240, 247],
+          "type": "NoFunction"
         },
         {
-          "range": [248, 255],
-          "name": "Reset (hold 5s)"
+          "dmxRange": [248, 255],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Reset"
         }
       ]
     },
     "Color Plate Intensity": {
-      "type": "Intensity"
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Color Flash Duration": {
-      "type": "Strobe",
-      "crossfade": true,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Strobe duration 7…650ms"
-        }
-      ]
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "7ms",
+        "durationEnd": "650ms"
+      }
     },
     "Color Flash Rate": {
-      "type": "Speed",
-      "crossfade": true,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Strobe speed 0.289…16.67Hz"
-        }
-      ]
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0.289Hz",
+        "speedEnd": "16.67Hz"
+      }
     },
     "Color FX Shutter": {
-      "type": "Strobe",
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "No function"
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
         },
         {
-          "range": [1, 1],
-          "name": "Color Plate Offset 10°"
+          "dmxRange": [1, 1],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 10°"
         },
         {
-          "range": [2, 2],
-          "name": "Color Plate Offset 20°"
+          "dmxRange": [2, 2],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 20°"
         },
         {
-          "range": [3, 3],
-          "name": "Color Plate Offset 30°"
+          "dmxRange": [3, 3],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 30°"
         },
         {
-          "range": [4, 4],
-          "name": "Color Plate Offset 40°"
+          "dmxRange": [4, 4],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 40°"
         },
         {
-          "range": [5, 5],
-          "name": "Color Plate Offset 50°"
+          "dmxRange": [5, 5],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 50°"
         },
         {
-          "range": [6, 6],
-          "name": "Color Plate Offset 60°"
+          "dmxRange": [6, 6],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 60°"
         },
         {
-          "range": [7, 7],
-          "name": "Color Plate Offset 70°"
+          "dmxRange": [7, 7],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 70°"
         },
         {
-          "range": [8, 8],
-          "name": "Color Plate Offset 80°"
+          "dmxRange": [8, 8],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 80°"
         },
         {
-          "range": [9, 9],
-          "name": "Color Plate Offset 90°"
+          "dmxRange": [9, 9],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 90°"
         },
         {
-          "range": [10, 10],
-          "name": "Color Plate Offset 100°"
+          "dmxRange": [10, 10],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 100°"
         },
         {
-          "range": [11, 11],
-          "name": "Color Plate Offset 110°"
+          "dmxRange": [11, 11],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 110°"
         },
         {
-          "range": [12, 12],
-          "name": "Color Plate Offset 120°"
+          "dmxRange": [12, 12],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 120°"
         },
         {
-          "range": [13, 13],
-          "name": "Color Plate Offset 130°"
+          "dmxRange": [13, 13],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 130°"
         },
         {
-          "range": [14, 14],
-          "name": "Color Plate Offset 140°"
+          "dmxRange": [14, 14],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 140°"
         },
         {
-          "range": [15, 15],
-          "name": "Color Plate Offset 150°"
+          "dmxRange": [15, 15],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 150°"
         },
         {
-          "range": [16, 16],
-          "name": "Color Plate Offset 160°"
+          "dmxRange": [16, 16],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 160°"
         },
         {
-          "range": [17, 17],
-          "name": "Color Plate Offset 170°"
+          "dmxRange": [17, 17],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 170°"
         },
         {
-          "range": [18, 18],
-          "name": "Color Plate Offset 180°"
+          "dmxRange": [18, 18],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 180°"
         },
         {
-          "range": [19, 19],
-          "name": "Color Plate Offset 190°"
+          "dmxRange": [19, 19],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 190°"
         },
         {
-          "range": [20, 20],
-          "name": "Color Plate Offset 200°"
+          "dmxRange": [20, 20],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 200°"
         },
         {
-          "range": [21, 21],
-          "name": "Color Plate Offset 210°"
+          "dmxRange": [21, 21],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 210°"
         },
         {
-          "range": [22, 22],
-          "name": "Color Plate Offset 220°"
+          "dmxRange": [22, 22],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 220°"
         },
         {
-          "range": [23, 23],
-          "name": "Color Plate Offset 230°"
+          "dmxRange": [23, 23],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 230°"
         },
         {
-          "range": [24, 24],
-          "name": "Color Plate Offset 240°"
+          "dmxRange": [24, 24],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 240°"
         },
         {
-          "range": [25, 25],
-          "name": "Color Plate Offset 250°"
+          "dmxRange": [25, 25],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 250°"
         },
         {
-          "range": [26, 26],
-          "name": "Color Plate Offset 260°"
+          "dmxRange": [26, 26],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 260°"
         },
         {
-          "range": [27, 27],
-          "name": "Color Plate Offset 270°"
+          "dmxRange": [27, 27],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 270°"
         },
         {
-          "range": [28, 28],
-          "name": "Color Plate Offset 280°"
+          "dmxRange": [28, 28],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 280°"
         },
         {
-          "range": [29, 29],
-          "name": "Color Plate Offset 290°"
+          "dmxRange": [29, 29],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 290°"
         },
         {
-          "range": [30, 30],
-          "name": "Color Plate Offset 300°"
+          "dmxRange": [30, 30],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 300°"
         },
         {
-          "range": [31, 31],
-          "name": "Color Plate Offset 310°"
+          "dmxRange": [31, 31],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 310°"
         },
         {
-          "range": [32, 32],
-          "name": "Color Plate Offset 320°"
+          "dmxRange": [32, 32],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 320°"
         },
         {
-          "range": [33, 33],
-          "name": "Color Plate Offset 330°"
+          "dmxRange": [33, 33],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 330°"
         },
         {
-          "range": [34, 34],
-          "name": "Color Plate Offset 340°"
+          "dmxRange": [34, 34],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 340°"
         },
         {
-          "range": [35, 35],
-          "name": "Color Plate Offset 350°"
+          "dmxRange": [35, 35],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 350°"
         },
         {
-          "range": [36, 36],
-          "name": "Color Plate Offset 360°"
+          "dmxRange": [36, 36],
+          "type": "Maintenance",
+          "comment": "Color Plate Offset 360°"
         },
         {
-          "range": [37, 40],
-          "name": "Ramp up strobe"
+          "dmxRange": [37, 40],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp"
         },
         {
-          "range": [41, 44],
-          "name": "Random ramp up strobe"
+          "dmxRange": [41, 44],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "randomTiming": true
         },
         {
-          "range": [45, 48],
-          "name": "Ramp down strobe"
+          "dmxRange": [45, 48],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown"
         },
         {
-          "range": [49, 52],
-          "name": "Random ramp down strobe"
+          "dmxRange": [49, 52],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "randomTiming": true
         },
         {
-          "range": [53, 56],
-          "name": "Ramp up and down strobe"
+          "dmxRange": [53, 56],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown"
         },
         {
-          "range": [57, 60],
-          "name": "Random ramp up and down strobe"
+          "dmxRange": [57, 60],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "randomTiming": true
         },
         {
-          "range": [61, 64],
-          "name": "Strobe (Random white beam)"
+          "dmxRange": [61, 64],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Random white beam"
         },
         {
-          "range": [65, 68],
-          "name": "Strobe (Random single pixel of the white beam)"
+          "dmxRange": [65, 68],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Random single pixel of the white beam"
         },
         {
-          "range": [69, 72],
-          "name": "Lightning strobe effect"
+          "dmxRange": [69, 72],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning"
         },
         {
-          "range": [73, 76],
-          "name": "Strobe (Spikes (flash over low light))"
+          "dmxRange": [73, 76],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes",
+          "comment": "flash over low light"
         },
         {
-          "range": [77, 179],
-          "name": "No function"
+          "dmxRange": [77, 179],
+          "type": "NoFunction"
         },
         {
-          "range": [180, 191],
-          "name": "Strobe (Double flash)"
+          "dmxRange": [180, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Double flash"
         },
         {
-          "range": [192, 203],
-          "name": "Strobe (Double flash, random)"
+          "dmxRange": [192, 203],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Double flash, random"
         },
         {
-          "range": [204, 215],
-          "name": "Strobe (Trriple flash)"
+          "dmxRange": [204, 215],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Trriple flash"
         },
         {
-          "range": [216, 227],
-          "name": "Strobe (Trriple flash, random)"
+          "dmxRange": [216, 227],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Trriple flash, random"
         },
         {
-          "range": [228, 239],
-          "name": "Strobe (Quad flash)"
+          "dmxRange": [228, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Quad flash"
         },
         {
-          "range": [240, 251],
-          "name": "Strobe (Quad flash, random)"
+          "dmxRange": [240, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Quad flash, random"
         },
         {
-          "range": [252, 255],
-          "name": "No effect"
+          "dmxRange": [252, 255],
+          "type": "NoFunction",
+          "comment": "No effect"
         }
       ]
     },
     "Plate Red Intensity": {
-      "type": "Single Color",
-      "color": "Red",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Plate Green Intensity": {
-      "type": "Single Color",
-      "color": "Green",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Plate Blue Intensity": {
-      "type": "Single Color",
-      "color": "Blue",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "Color Set 2 Red Intensity": {
-      "type": "Single Color",
-      "color": "Red",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Color Set 2 Green Intensity": {
-      "type": "Single Color",
-      "color": "Green",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Color Set 2 Blue Intensity": {
-      "type": "Single Color",
-      "color": "Blue",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "FX Crossfade": {
-      "type": "Intensity",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Generic"
-        }
-      ]
+      "capability": {
+        "type": "Generic"
+      }
     },
     "Pattern Color Movement": {
-      "type": "Intensity",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Generic"
-        }
-      ]
+      "capability": {
+        "type": "Generic"
+      }
     },
     "Pattern Select Color": {
-      "type": "Intensity",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Generic"
-        }
-      ]
+      "capability": {
+        "type": "Generic"
+      }
     },
     "Pattern Beam Movement": {
-      "type": "Intensity",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Generic"
-        }
-      ]
+      "capability": {
+        "type": "Generic"
+      }
     },
     "Pattern Select Beam": {
-      "type": "Intensity",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Generic"
-        }
-      ]
+      "capability": {
+        "type": "Generic"
+      }
     },
     "Color Set 2 Master Intensity": {
-      "type": "Intensity"
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Master Pix Intensity": {
-      "type": "Intensity"
+      "capability": {
+        "type": "Intensity"
+      }
     }
   },
   "templateChannels": {
     "$pixelKey Red Intensity": {
-      "type": "Single Color",
-      "color": "Red",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "$pixelKey Green Intensity": {
-      "type": "Single Color",
-      "color": "Green",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "$pixelKey Blue Intensity": {
-      "type": "Single Color",
-      "color": "Blue",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "$pixelKey Intensity": {
-      "type": "Intensity"
+      "capability": {
+        "type": "Intensity"
+      }
     }
   },
   "modes": [

@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2017-08-06",
-    "lastModifyDate": "2017-08-06"
+    "lastModifyDate": "2018-07-21"
   },
   "manualURL": "http://cdb-cdn.adj.com/ItemRelatedFiles/10687/fog_fury_jett_pro.pdf",
   "physical": {
@@ -20,264 +20,295 @@
   },
   "availableChannels": {
     "Fog & Color Change": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 31],
-          "name": "Off"
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
         },
         {
-          "range": [32, 255],
-          "name": "Max fog & color change"
+          "dmxRange": [32, 255],
+          "type": "Fog",
+          "comment": "with color change",
+          "fogType": "Fog",
+          "fogOutput": "40000m^3/min"
         }
       ]
     },
     "Fog": {
-      "type": "Fog",
       "capabilities": [
         {
-          "range": [0, 31],
-          "name": "Off"
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
         },
         {
-          "range": [32, 255],
-          "name": "Max fog"
+          "dmxRange": [32, 255],
+          "type": "Fog",
+          "fogType": "Fog",
+          "fogOutput": "40000m^3/min"
         }
       ]
     },
     "Color Macros": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "Off"
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
         },
         {
-          "range": [8, 15],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [16, 23],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [24, 31],
-          "name": "Blue + UV",
-          "color": "#0000ff",
-          "color2": "#8800ff"
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "colors": ["#0000ff", "#8800ff"],
+          "comment": "Blue + UV"
         },
         {
-          "range": [32, 39],
-          "name": "Amber",
-          "color": "#ffbf00"
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "colors": ["#ffbf00"],
+          "comment": "Amber"
         },
         {
-          "range": [40, 47],
-          "name": "UV",
-          "color": "#8800ff"
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "colors": ["#8800ff"],
+          "comment": "UV"
         },
         {
-          "range": [48, 55],
-          "name": "Red + Blue + UV",
-          "color": "#ff00ff",
-          "color2": "#8800ff"
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff", "#8800ff"],
+          "comment": "Red + Blue + UV"
         },
         {
-          "range": [56, 63],
-          "name": "OuterGreen + Amber",
-          "color": "#92ff00"
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "colors": ["#92ff00"],
+          "comment": "OuterGreen + Amber"
         },
         {
-          "range": [64, 71],
-          "name": "Red + UV",
-          "color": "#ff0000",
-          "color2": "#8800ff"
+          "dmxRange": [64, 71],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#8800ff"],
+          "comment": "Red + UV"
         },
         {
-          "range": [72, 79],
-          "name": "Blue + Amber",
-          "color": "#ffbfff"
+          "dmxRange": [72, 79],
+          "type": "ColorPreset",
+          "colors": ["#ffbfff"],
+          "comment": "Blue + Amber"
         },
         {
-          "range": [80, 87],
-          "name": "InnerGreen + Blue",
-          "color": "#00ffff"
+          "dmxRange": [80, 87],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "InnerGreen + Blue"
         },
         {
-          "range": [88, 95],
-          "name": "Red + InnerGreen",
-          "color": "#ffff00"
+          "dmxRange": [88, 95],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Red + InnerGreen"
         },
         {
-          "range": [96, 103],
-          "name": "Red + InnerGreen + Blue",
-          "color": "#ffffff"
+          "dmxRange": [96, 103],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "Red + InnerGreen + Blue"
         },
         {
-          "range": [104, 111],
-          "name": "Colormix 1",
-          "color": "#84cf78"
+          "dmxRange": [104, 111],
+          "type": "ColorPreset",
+          "colors": ["#84cf78"],
+          "comment": "Colormix 1"
         },
         {
-          "range": [112, 119],
-          "name": "Colormix 2 + UV",
-          "color": "#89ff00",
-          "color2": "#30005a"
+          "dmxRange": [112, 119],
+          "type": "ColorPreset",
+          "colors": ["#89ff00", "#30005a"],
+          "comment": "Colormix 2 + UV"
         },
         {
-          "range": [120, 127],
-          "name": "Colormix 3 + UV",
-          "color": "#6bfd00",
-          "color2": "#6500be"
+          "dmxRange": [120, 127],
+          "type": "ColorPreset",
+          "colors": ["#6bfd00", "#6500be"],
+          "comment": "Colormix 3 + UV"
         },
         {
-          "range": [128, 135],
-          "name": "Colormix 4 + UV",
-          "color": "#b98ce9",
-          "color2": "#250046"
+          "dmxRange": [128, 135],
+          "type": "ColorPreset",
+          "colors": ["#b98ce9", "#250046"],
+          "comment": "Colormix 4 + UV"
         },
         {
-          "range": [136, 143],
-          "name": "Colormix 5 + UV",
-          "color": "#ffc916",
-          "color2": "#6b00c8"
+          "dmxRange": [136, 143],
+          "type": "ColorPreset",
+          "colors": ["#ffc916", "#6b00c8"],
+          "comment": "Colormix 5 + UV"
         },
         {
-          "range": [144, 151],
-          "name": "Colormix 6 + UV",
-          "color": "#35ff00",
-          "color2": "#500096"
+          "dmxRange": [144, 151],
+          "type": "ColorPreset",
+          "colors": ["#35ff00", "#500096"],
+          "comment": "Colormix 6 + UV"
         },
         {
-          "range": [152, 159],
-          "name": "Colormix 7 + UV",
-          "color": "#00c8c8",
-          "color2": "#6b00c8"
+          "dmxRange": [152, 159],
+          "type": "ColorPreset",
+          "colors": ["#00c8c8", "#6b00c8"],
+          "comment": "Colormix 7 + UV"
         },
         {
-          "range": [160, 167],
-          "name": "Colormix 8 + UV",
-          "color": "#2d7db4",
-          "color2": "#20003c"
+          "dmxRange": [160, 167],
+          "type": "ColorPreset",
+          "colors": ["#2d7db4", "#20003c"],
+          "comment": "Colormix 8 + UV"
         },
         {
-          "range": [168, 175],
-          "name": "Colormix 9",
-          "color": "#c8b1eb"
+          "dmxRange": [168, 175],
+          "type": "ColorPreset",
+          "colors": ["#c8b1eb"],
+          "comment": "Colormix 9"
         },
         {
-          "range": [176, 183],
-          "name": "Colormix 10 + UV",
-          "color": "#c9ff1a",
-          "color2": "#1d0037"
+          "dmxRange": [176, 183],
+          "type": "ColorPreset",
+          "colors": ["#c9ff1a", "#1d0037"],
+          "comment": "Colormix 10 + UV"
         },
         {
-          "range": [184, 191],
-          "name": "Colormix 11 + UV",
-          "color": "#adff14",
-          "color2": "#5b00aa"
+          "dmxRange": [184, 191],
+          "type": "ColorPreset",
+          "colors": ["#adff14", "#5b00aa"],
+          "comment": "Colormix 11 + UV"
         },
         {
-          "range": [192, 199],
-          "name": "Colormix 12 + UV",
-          "color": "#86ff00",
-          "color2": "#350064"
+          "dmxRange": [192, 199],
+          "type": "ColorPreset",
+          "colors": ["#86ff00", "#350064"],
+          "comment": "Colormix 12 + UV"
         },
         {
-          "range": [200, 207],
-          "name": "Colormix 13",
-          "color": "#ff8a00"
+          "dmxRange": [200, 207],
+          "type": "ColorPreset",
+          "colors": ["#ff8a00"],
+          "comment": "Colormix 13"
         },
         {
-          "range": [208, 215],
-          "name": "Colormix 14 + UV",
-          "color": "#645096",
-          "color2": "#8800ff"
+          "dmxRange": [208, 215],
+          "type": "ColorPreset",
+          "colors": ["#645096", "#8800ff"],
+          "comment": "Colormix 14 + UV"
         },
         {
-          "range": [216, 223],
-          "name": "Colormix 15",
-          "color": "#b4ff94"
+          "dmxRange": [216, 223],
+          "type": "ColorPreset",
+          "colors": ["#b4ff94"],
+          "comment": "Colormix 15"
         },
         {
-          "range": [224, 231],
-          "name": "Colormix 16 + UV",
-          "color": "#becf50",
-          "color2": "#7600de"
+          "dmxRange": [224, 231],
+          "type": "ColorPreset",
+          "colors": ["#becf50", "#7600de"],
+          "comment": "Colormix 16 + UV"
         },
         {
-          "range": [232, 239],
-          "name": "All on",
-          "color": "#ffffff",
-          "color2": "#8800ff"
+          "dmxRange": [232, 239],
+          "type": "ColorPreset",
+          "colors": ["#ffffff", "#8800ff"],
+          "comment": "All on"
         },
         {
-          "range": [240, 247],
-          "name": "Random 1"
+          "dmxRange": [240, 247],
+          "type": "Effect",
+          "effectName": "Random color 1"
         },
         {
-          "range": [248, 255],
-          "name": "Random 2"
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Random color 2"
         }
       ]
     },
     "Strobe": {
-      "type": "Strobe",
       "capabilities": [
         {
-          "range": [0, 31],
-          "name": "Off"
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
         },
         {
-          "range": [32, 95],
-          "name": "Strobe slow…fast"
+          "dmxRange": [32, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [96, 159],
-          "name": "Pulse"
+          "dmxRange": [96, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse"
         },
         {
-          "range": [160, 255],
-          "name": "Random slow…fast"
+          "dmxRange": [160, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
         }
       ]
     },
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green (Outer LEDs)": {
-      "type": "Single Color",
-      "color": "Green",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "Amber": {
-      "type": "Single Color",
-      "color": "Amber",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
     },
     "Green (Inner LEDs)": {
-      "type": "Single Color",
-      "color": "Green",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "UV": {
-      "type": "Single Color",
-      "color": "UV",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
     },
     "Dimmer": {
-      "type": "Intensity",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     }
   },
   "modes": [

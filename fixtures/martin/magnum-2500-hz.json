@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["novasfronteiras.co"],
     "createDate": "2017-08-08",
-    "lastModifyDate": "2017-08-08"
+    "lastModifyDate": "2018-07-21"
   },
   "manualURL": "http://www.martin.com/files/files/productdocuments/11_MANUALS/999/UM_Magnum2500Hz_EN_F.pdf",
   "physical": {
@@ -17,15 +17,17 @@
   },
   "availableChannels": {
     "Fog": {
-      "type": "Fog",
       "capabilities": [
         {
-          "range": [0, 29],
-          "name": "No haze"
+          "dmxRange": [0, 29],
+          "type": "NoFunction"
         },
         {
-          "range": [30, 255],
-          "name": "Haze density min-max"
+          "dmxRange": [30, 255],
+          "type": "Fog",
+          "fogOutputStart": "0m^3/min",
+          "fogOutputEnd": "2500m^3/min",
+          "fogType": "Haze"
         }
       ]
     }

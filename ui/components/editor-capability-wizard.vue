@@ -1,7 +1,7 @@
 <template>
   <div class="capability-wizard">
 
-    Generate multiple capabilities with same range width.
+    Generate multiple capabilities with same range width. Occurences of '#' in text fields will be replaced by an increasing number.
 
     <section>
       <label>
@@ -46,15 +46,8 @@
       </label>
     </section>
 
-    <section>
-      <label>
-        <span class="label">Name</span>
-        <span class="value">
-          <input v-model.number="wizard.templateName" type="text" required>
-          <span class="hint"># will be replaced with an increasing number</span>
-        </span>
-      </label>
-    </section>
+    <app-editor-capability-type-data
+      v-model="wizard.templateCapability" />
 
     <table class="capabilities-table">
       <colgroup>
@@ -68,11 +61,11 @@
         <th>Capability</th>
       </tr></thead>
       <tbody>
-        <tr v-for="capability in allCapabilities" :key="capability.uuid" :class="capability.type">
-          <td class="capability-range0"><code>{{ capability.range[0] }}</code></td>
-          <td class="capability-range-separator"><code>…</code></td>
-          <td class="capability-range1"><code>{{ capability.range[1] }}</code></td>
-          <td class="capability-name">{{ capability.name }}</td>
+        <tr v-for="capability in allCapabilities" :key="capability.uuid" :class="capability.source">
+          <td class="capability-dmxRange0"><code>{{ capability.dmxRange[0] }}</code></td>
+          <td class="capability-dmxRange-separator"><code>…</code></td>
+          <td class="capability-dmxRange1"><code>{{ capability.dmxRange[1] }}</code></td>
+          <td class="capability-type">{{ capability.type }}</td>
         </tr>
       </tbody>
     </table>
@@ -92,6 +85,7 @@
 /* TODO: a lot of this stuff is duplicated in fixture-capability-table.vue */
 
 .capabilities-table {
+  margin-top: 1em;
   border-collapse: collapse;
   table-layout: fixed;
 }
@@ -106,24 +100,20 @@ td, th {
   vertical-align: top;
 }
 
-.capability-range0 {
+.capability-dmxRange0 {
   text-align: right;
   padding-right: 2px;
 }
 
-.capability-range-separator {
+.capability-dmxRange-separator {
   text-align: center;
   padding-left: 0;
   padding-right: 0;
 }
 
-.capability-range1 {
+.capability-dmxRange1 {
   text-align: left;
   padding-left: 2px;
-}
-
-.capability-name {
-  max-width: 20em;
 }
 
 .inherited,
@@ -137,9 +127,18 @@ td, th {
 </style>
 
 <script>
-import { getEmptyCapability, isCapabilityChanged } from "~/assets/scripts/editor-utils.mjs";
+import {
+  getEmptyCapability,
+  isCapabilityChanged,
+  clone
+} from "~/assets/scripts/editor-utils.mjs";
+
+import editorCapabilityTypeDataVue from '~/components/editor-capability-type-data.vue';
 
 export default {
+  components: {
+    'app-editor-capability-type-data': editorCapabilityTypeDataVue
+  },
   props: {
     capabilities: {
       type: Array,
@@ -147,6 +146,10 @@ export default {
     },
     fineness: {
       type: Number,
+      required: true
+    },
+    formstate: {
+      type: Object,
       required: true
     },
     wizard: {
@@ -168,7 +171,7 @@ export default {
     insertIndex() {
       // loop from inherited capabilities array end to start
       for (let i = this.capabilities.length - 1; i >= 0; i--) {
-        if (this.capabilities[i].range !== null && this.capabilities[i].range[1] !== null && this.capabilities[i].range[1] < this.wizard.start) {
+        if (this.capabilities[i].dmxRange !== null && this.capabilities[i].dmxRange[1] !== null && this.capabilities[i].dmxRange[1] < this.wizard.start) {
           return i + 1;
         }
       }
@@ -185,7 +188,7 @@ export default {
       const prevCapability = this.capabilities[this.insertIndex - 1];
       if (
         (!prevCapability && this.wizard.start > 0) ||
-        (prevCapability && prevCapability.range !== null && this.wizard.start > prevCapability.range[1] + 1)
+        (prevCapability && prevCapability.dmxRange !== null && this.wizard.start > prevCapability.dmxRange[1] + 1)
       ) {
         // empty capability filling the gap before generated capabilities
         capabilities.push(getEmptyCapability());
@@ -194,11 +197,19 @@ export default {
       for (let i = 0; i < this.wizard.count; i++) {
         const cap = getEmptyCapability();
 
-        cap.range = [
+        cap.dmxRange = [
           this.wizard.start + (i * this.wizard.width),
           this.wizard.start + ((i + 1) * this.wizard.width) - 1
         ];
-        cap.name = this.wizard.templateName.replace(/#/g, i + 1);
+        cap.type = this.wizard.templateCapability.type;
+        cap.typeData = clone(this.wizard.templateCapability.typeData);
+
+        const textProperties = [`effectName`, `comment`];
+        textProperties.forEach(textProperty => {
+          if (textProperty in cap.typeData) {
+            cap.typeData[textProperty] = cap.typeData[textProperty].replace(/#/, i + 1);
+          }
+        });
 
         capabilities.push(cap);
       }
@@ -221,7 +232,7 @@ export default {
       }
 
       const nextNonEmptyCapability = this.capabilities[this.insertIndex + 1];
-      if (nextNonEmptyCapability && nextNonEmptyCapability.range !== null && this.end + 1 === nextNonEmptyCapability.range[0]) {
+      if (nextNonEmptyCapability && nextNonEmptyCapability.dmxRange !== null && this.end + 1 === nextNonEmptyCapability.dmxRange[0]) {
         return 1;
       }
 
@@ -232,26 +243,26 @@ export default {
      * @returns {!number} DMX value range end of the last generated capability.
      */
     end() {
-      return this.computedCapabilites.length === 0 ? -1 : this.computedCapabilites[this.computedCapabilites.length - 1].range[1];
+      return this.computedCapabilites.length === 0 ? -1 : this.computedCapabilites[this.computedCapabilites.length - 1].dmxRange[1];
     },
 
     /**
-     * @returns {!Array.<object>} Array with a typed capability object (@see getTypedCapability) for each capability (generated and inherited).
+     * @returns {!Array.<object>} Array of all capabilities (generated and inherited), combined with their source. @see getCapabilityWithSource
      */
     allCapabilities() {
       const inheritedCapabilities = this.capabilities.map(
-        cap => getTypedCapability(cap, `inherited`)
+        cap => getCapabilityWithSource(cap, `inherited`)
       );
 
       const computedCapabilites = this.computedCapabilites.map(
-        cap => getTypedCapability(cap, `computed`)
+        cap => getCapabilityWithSource(cap, `computed`)
       );
 
       // insert all computed capabilities at insertIndex
       inheritedCapabilities.splice(this.insertIndex, this.removeCount, ...computedCapabilites);
 
       return inheritedCapabilities.filter(
-        cap => cap.range !== null || cap.name !== ``
+        cap => cap.dmxRange !== null
       );
     },
 
@@ -288,13 +299,13 @@ export default {
       }
 
       const collisionDetected = this.capabilities.some(cap => {
-        if (cap.range === null) {
+        if (cap.dmxRange === null) {
           return false;
         }
 
-        // if only start or end is set, assume a one-value range (e.g. [43, 43])
-        const capStart = cap.range[0] === null ? cap.range[1] : cap.range[0];
-        const capEnd = cap.range[1] === null ? cap.range[0] : cap.range[1];
+        // if only start or end is set, assume a one-value dmxRange (e.g. [43, 43])
+        const capStart = cap.dmxRange[0] === null ? cap.dmxRange[1] : cap.dmxRange[0];
+        const capEnd = cap.dmxRange[1] === null ? cap.dmxRange[0] : cap.dmxRange[1];
 
         return capEnd >= this.wizard.start && capStart <= this.end;
       });
@@ -314,17 +325,17 @@ export default {
     for (let i = this.capabilities.length - 1; i >= 0; i--) {
       const cap = this.capabilities[i];
 
-      if (cap.range === null) {
+      if (cap.dmxRange === null) {
         continue;
       }
 
-      if (cap.range[1] !== null) {
-        lastOccupied = cap.range[1];
+      if (cap.dmxRange[1] !== null) {
+        lastOccupied = cap.dmxRange[1];
         break;
       }
 
-      if (cap.range[0] !== null) {
-        lastOccupied = cap.range[0];
+      if (cap.dmxRange[0] !== null) {
+        lastOccupied = cap.dmxRange[0];
         break;
       }
     }
@@ -340,20 +351,27 @@ export default {
         return;
       }
 
+      // close other capabilities if they are not empty
+      for (const cap of this.capabilities) {
+        if (cap.type !== ``) {
+          cap.open = false;
+        }
+      }
+
       // insert all computed capabilities at insertIndex
       this.capabilities.splice(this.insertIndex, this.removeCount, ...this.computedCapabilites);
 
-      this.$emit(`close`);
+      this.$emit(`close`, this.insertIndex);
     }
   }
 };
 
 /**
  * @param {!object} cap The "full" capability object.
- * @param {!string} type The type of the capability (inherited or computed).
- * @returns {!object} A capability object that additionally contains the specified type.
+ * @param {!string} source The source of the capability (inherited or computed).
+ * @returns {!object} A capability object that additionally contains the specified source.
  */
-function getTypedCapability(cap, type) {
-  return Object.assign({}, cap, { type });
+function getCapabilityWithSource(cap, source) {
+  return Object.assign({}, cap, { source });
 }
 </script>

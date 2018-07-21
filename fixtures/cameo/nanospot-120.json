@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2017-08-05",
-    "lastModifyDate": "2017-10-16"
+    "lastModifyDate": "2018-07-21"
   },
   "manualURL": "http://adamhall.invaliddomain.de/out/media/downloads/MARKEN/CAMEO/CLNS120/CLNS120_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.PDF",
   "physical": {
@@ -29,199 +29,244 @@
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
       "defaultValue": 32767,
-      "crossfade": true
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
       "defaultValue": 32767,
-      "crossfade": true
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "230deg"
+      }
     },
     "Motor Running Speed": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "fast…slow"
-        }
-      ]
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
     },
     "Color Wheel": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [0, 10],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
-          "range": [11, 21],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [11, 21],
+          "type": "ColorWheelIndex",
+          "index": 1,
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [22, 32],
-          "name": "Orange",
-          "color": "#ffaa00"
+          "dmxRange": [22, 32],
+          "type": "ColorWheelIndex",
+          "index": 2,
+          "colors": ["#ffaa00"],
+          "comment": "Orange"
         },
         {
-          "range": [33, 43],
-          "name": "Yellow",
-          "color": "#ffff00"
+          "dmxRange": [33, 43],
+          "type": "ColorWheelIndex",
+          "index": 3,
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
         },
         {
-          "range": [44, 54],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [44, 54],
+          "type": "ColorWheelIndex",
+          "index": 4,
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [55, 65],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [55, 65],
+          "type": "ColorWheelIndex",
+          "index": 5,
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
-          "range": [66, 76],
-          "name": "Cyan",
-          "color": "#00ffff"
+          "dmxRange": [66, 76],
+          "type": "ColorWheelIndex",
+          "index": 6,
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
         },
         {
-          "range": [77, 87],
-          "name": "Purple",
-          "color": "#ff00ff"
+          "dmxRange": [77, 87],
+          "type": "ColorWheelIndex",
+          "index": 7,
+          "colors": ["#ff00ff"],
+          "comment": "Purple"
         },
         {
-          "range": [88, 175],
-          "name": "Color selection (smooth shift)"
+          "dmxRange": [88, 175],
+          "type": "ColorWheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
         },
         {
-          "range": [176, 255],
-          "name": "Rotation slow…fast"
+          "dmxRange": [176, 255],
+          "type": "ColorWheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         }
       ]
     },
     "Dimmer": {
-      "type": "Intensity",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Gobo Wheel": {
-      "type": "Gobo",
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "Open"
+          "dmxRange": [0, 15],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Open"
         },
         {
-          "range": [16, 124],
-          "name": "Gobo Selection"
+          "dmxRange": [16, 124],
+          "type": "GoboIndex",
+          "indexStart": 1,
+          "indexEnd": 6
         },
         {
-          "range": [125, 234],
-          "name": "Shaky Gobo Selection"
+          "dmxRange": [125, 234],
+          "type": "GoboIndex",
+          "indexStart": 1,
+          "indexEnd": 6,
+          "shakeAngle": "wide"
         },
         {
-          "range": [235, 249],
-          "name": "Open"
+          "dmxRange": [235, 249],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Open"
         },
         {
-          "range": [250, 255],
-          "name": "Rotation"
+          "dmxRange": [250, 255],
+          "type": "GoboWheelRotation",
+          "speed": "fast CW"
         }
       ]
     },
     "Strobe": {
-      "type": "Strobe",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "No Strobe"
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
         },
         {
-          "range": [10, 255],
-          "name": "Strobe Speed slow…fast"
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Program": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 29],
-          "name": "No function",
+          "dmxRange": [0, 29],
+          "type": "NoFunction",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [30, 55],
-          "name": "Auto Mode show 1",
+          "dmxRange": [30, 55],
+          "type": "Effect",
+          "effectName": "Auto Mode show 1",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [56, 81],
-          "name": "Auto Mode show 2",
+          "dmxRange": [56, 81],
+          "type": "Effect",
+          "effectName": "Auto Mode show 2",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [82, 107],
-          "name": "Auto Mode show 3",
+          "dmxRange": [82, 107],
+          "type": "Effect",
+          "effectName": "Auto Mode show 3",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [108, 133],
-          "name": "Auto Mode show 4",
+          "dmxRange": [108, 133],
+          "type": "Effect",
+          "effectName": "Auto Mode show 4",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [134, 159],
-          "name": "Auto Mode show 5",
+          "dmxRange": [134, 159],
+          "type": "Effect",
+          "effectName": "Auto Mode show 5",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [160, 185],
-          "name": "Auto Mode show 6",
+          "dmxRange": [160, 185],
+          "type": "Effect",
+          "effectName": "Auto Mode show 6",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [186, 211],
-          "name": "Auto Mode show 7",
+          "dmxRange": [186, 211],
+          "type": "Effect",
+          "effectName": "Auto Mode show 7",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [212, 237],
-          "name": "Sound Mode",
+          "dmxRange": [212, 237],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true,
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Mic Sensitivity"
           }
         },
         {
-          "range": [238, 250],
-          "name": "Reset",
+          "dmxRange": [238, 250],
+          "type": "Maintenance",
+          "comment": "Reset",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [251, 255],
-          "name": "Sync (Head goes to mid position and blackout)",
+          "dmxRange": [251, 255],
+          "type": "Maintenance",
+          "comment": "Sync (Head goes to mid position and blackout)",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
@@ -229,22 +274,18 @@
       ]
     },
     "Program Speed": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "slow…fast"
-        }
-      ]
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Mic Sensitivity": {
-      "type": "Intensity",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "low-high"
-        }
-      ]
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
     }
   },
   "modes": [

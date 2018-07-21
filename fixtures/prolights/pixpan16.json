@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2018-02-02",
-    "lastModifyDate": "2018-02-02"
+    "lastModifyDate": "2018-07-21"
   },
   "manualURL": "http://prolights.it/download.php?id=2249",
   "physical": {
@@ -25,156 +25,179 @@
   },
   "availableChannels": {
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "Dimmer": {
-      "type": "Intensity",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Shutter Extended": {
       "name": "Shutter",
-      "type": "Shutter",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "No function"
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
         },
         {
-          "range": [1, 5],
-          "name": "Random auto show"
+          "dmxRange": [1, 5],
+          "type": "Effect",
+          "effectName": "Random Auto Show"
         },
         {
-          "range": [6, 10],
-          "name": "Open"
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [11, 255],
-          "name": "Strobe slow…fast"
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Chase": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "No function"
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
         },
         {
-          "range": [11, 30],
-          "name": "Chase 1"
+          "dmxRange": [11, 30],
+          "type": "Effect",
+          "effectName": "Chase 1"
         },
         {
-          "range": [31, 50],
-          "name": "Chase 2"
+          "dmxRange": [31, 50],
+          "type": "Effect",
+          "effectName": "Chase 2"
         },
         {
-          "range": [51, 70],
-          "name": "Chase 3"
+          "dmxRange": [51, 70],
+          "type": "Effect",
+          "effectName": "Chase 3"
         },
         {
-          "range": [71, 90],
-          "name": "Chase 4"
+          "dmxRange": [71, 90],
+          "type": "Effect",
+          "effectName": "Chase 4"
         },
         {
-          "range": [91, 110],
-          "name": "Chase 5"
+          "dmxRange": [91, 110],
+          "type": "Effect",
+          "effectName": "Chase 5"
         },
         {
-          "range": [111, 130],
-          "name": "Chase 6"
+          "dmxRange": [111, 130],
+          "type": "Effect",
+          "effectName": "Chase 6"
         },
         {
-          "range": [131, 150],
-          "name": "Chase 7"
+          "dmxRange": [131, 150],
+          "type": "Effect",
+          "effectName": "Chase 7"
         },
         {
-          "range": [151, 170],
-          "name": "Chase 8"
+          "dmxRange": [151, 170],
+          "type": "Effect",
+          "effectName": "Chase 8"
         },
         {
-          "range": [171, 190],
-          "name": "Chase 9"
+          "dmxRange": [171, 190],
+          "type": "Effect",
+          "effectName": "Chase 9"
         },
         {
-          "range": [191, 210],
-          "name": "Chase 10"
+          "dmxRange": [191, 210],
+          "type": "Effect",
+          "effectName": "Chase 10"
         },
         {
-          "range": [211, 230],
-          "name": "Chase 11"
+          "dmxRange": [211, 230],
+          "type": "Effect",
+          "effectName": "Chase 11"
         },
         {
-          "range": [231, 250],
-          "name": "Chase 12"
+          "dmxRange": [231, 250],
+          "type": "Effect",
+          "effectName": "Chase 12"
         },
         {
-          "range": [251, 255],
-          "name": "Random auto show (1-12)"
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "Random auto show (1-12)"
         }
       ]
     },
     "Shutter Simple": {
       "name": "Shutter",
-      "type": "Shutter",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "No function"
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
         },
         {
-          "range": [11, 255],
-          "name": "Strobe slow…fast"
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Speed": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "slow…fast"
-        }
-      ]
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     }
   },
   "templateChannels": {
     "Red $pixelKey": {
-      "type": "Single Color",
-      "color": "Red",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green $pixelKey": {
-      "type": "Single Color",
-      "color": "Green",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue $pixelKey": {
-      "type": "Single Color",
-      "color": "Blue",
       "defaultValue": 0,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     }
   },
   "modes": [
