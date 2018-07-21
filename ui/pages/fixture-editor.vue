@@ -70,7 +70,8 @@
               name="new-manufacturer-comment" />
           </app-simple-label>
 
-          <app-simple-label :formstate="formstate" name="new-manufacturer-rdmId" label="<abbr title='Remote Device Management'>RDM</abbr> ID">
+          <app-simple-label :formstate="formstate" name="new-manufacturer-rdmId">
+            <template slot="label"><abbr title="Remote Device Management">RDM</abbr> model ID</template>
             <app-property-input-number
               v-model="fixture.newManufacturerRdmId"
               :schema-property="properties.manufacturer.rdmId"

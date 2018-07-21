@@ -125,7 +125,7 @@
         :schema-property="properties.physicalFocus.panMax.oneOf[0]" /> °
 
       <label class="infinitePanTilt">
-        <input v-model="panMaxInfinite" type="checkbox"> Infinite pan
+        <input v-model="panMaxInfinite" :name="`${namePrefix}-physical-focus-panMaxInfinite`" type="checkbox"> Infinite pan
       </label>
     </app-simple-label>
 
@@ -137,7 +137,7 @@
         :schema-property="properties.physicalFocus.tiltMax.oneOf[0]" /> °
 
       <label class="infinitePanTilt">
-        <input v-model="tiltMaxInfinite" type="checkbox"> Infinite tilt
+        <input v-model="tiltMaxInfinite" :name="`${namePrefix}-physical-focus-tiltMaxInfinite`" type="checkbox"> Infinite tilt
       </label>
     </app-simple-label>
 

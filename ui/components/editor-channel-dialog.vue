@@ -159,18 +159,19 @@
 }
 </style>
 
-<style>
-#channel-dialog {
-  max-width: 700px;
-  width: 80%;
-}
-</style>
+<style lang="scss">
+@import '~assets/styles/vars.scss';
 
-<style>
 #channel-dialog {
-  max-width: 700px;
-  width: 80%;
+  /* prevent smooth scrolling when triggered from capability insertion etc. */
   scroll-behavior: auto;
+}
+
+@media (min-width: $phone) {
+  #channel-dialog {
+    max-width: 700px;
+    width: 80%;
+  }
 }
 </style>
 

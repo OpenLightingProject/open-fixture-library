@@ -151,6 +151,9 @@ ol.mode-channels {
   padding: 0.3em;
   transition: opacity 0.1s;
 }
+.mode-channels a .icon {
+  vertical-align: unset;
+}
 .mode-channels > li:hover > a,
 .mode-channels a:focus {
   opacity: 1;
