@@ -150,16 +150,14 @@
           "dmxRange": [128, 128],
           "type": "Effect",
           "effectPreset": "ColorFade",
-          "speed": "stop",
-          "comment": "Rainbow effect stop"
+          "speed": "stop"
         },
         {
           "dmxRange": [129, 255],
           "type": "Effect",
           "effectPreset": "ColorFade",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Rainbow effect"
+          "speedEnd": "fast"
         }
       ]
     },

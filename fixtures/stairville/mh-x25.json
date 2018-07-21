@@ -189,7 +189,6 @@
           "dmxRange": [128, 191],
           "type": "Effect",
           "effectPreset": "ColorFade",
-          "comment": "Rainbow clockwise",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
@@ -197,9 +196,8 @@
           "dmxRange": [192, 255],
           "type": "Effect",
           "effectPreset": "ColorFade",
-          "comment": "Rainbow counterclockwise",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "slow reverse",
+          "speedEnd": "fast reverse"
         }
       ]
     },

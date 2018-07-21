@@ -329,7 +329,7 @@
         {
           "dmxRange": [128, 142],
           "type": "IrisEffect",
-          "effectName": "Ramp up",
+          "effectName": "Opening pulse",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -341,7 +341,7 @@
         {
           "dmxRange": [144, 158],
           "type": "IrisEffect",
-          "effectName": "Ramp down",
+          "effectName": "Closing pulse",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -353,7 +353,7 @@
         {
           "dmxRange": [160, 174],
           "type": "IrisEffect",
-          "effectName": "Periodic snap open / ramp shut",
+          "effectName": "Ramp down",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -365,7 +365,7 @@
         {
           "dmxRange": [176, 190],
           "type": "IrisEffect",
-          "effectName": "Periodic ramp open / snap shut",
+          "effectName": "Ramp up",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -377,7 +377,7 @@
         {
           "dmxRange": [192, 206],
           "type": "IrisEffect",
-          "effectName": "Random ramp up",
+          "effectName": "Random opening pulse",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -389,7 +389,7 @@
         {
           "dmxRange": [208, 222],
           "type": "IrisEffect",
-          "effectName": "Random ramp down",
+          "effectName": "Random closing pulse",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -401,7 +401,7 @@
         {
           "dmxRange": [224, 238],
           "type": "IrisEffect",
-          "effectName": "Random snap open / ramp shut",
+          "effectName": "Random ramp down",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -413,7 +413,7 @@
         {
           "dmxRange": [240, 254],
           "type": "IrisEffect",
-          "effectName": "Random ramp open / snap shut",
+          "effectName": "Random ramp up",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -846,7 +846,7 @@
         {
           "dmxRange": [128, 142],
           "type": "FrostEffect",
-          "effectName": "Ramp up",
+          "effectName": "Opening pulse",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -858,7 +858,7 @@
         {
           "dmxRange": [144, 158],
           "type": "FrostEffect",
-          "effectName": "Ramp down",
+          "effectName": "Closing pulse",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -870,7 +870,7 @@
         {
           "dmxRange": [160, 174],
           "type": "FrostEffect",
-          "effectName": "Periodic ramp in / snap out",
+          "effectName": "Ramp up",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -882,7 +882,7 @@
         {
           "dmxRange": [176, 190],
           "type": "FrostEffect",
-          "effectName": "Periodic snap in / ramp out",
+          "effectName": "Ramp down",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -894,7 +894,7 @@
         {
           "dmxRange": [192, 206],
           "type": "FrostEffect",
-          "effectName": "Random ramp up",
+          "effectName": "Random opening pulse",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -906,7 +906,7 @@
         {
           "dmxRange": [208, 222],
           "type": "FrostEffect",
-          "effectName": "Random ramp down",
+          "effectName": "Random closing pulse",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -918,7 +918,7 @@
         {
           "dmxRange": [224, 238],
           "type": "FrostEffect",
-          "effectName": "Random ramp in / snap out",
+          "effectName": "Random ramp up",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
@@ -930,7 +930,7 @@
         {
           "dmxRange": [240, 254],
           "type": "FrostEffect",
-          "effectName": "Random snap in / ramp out",
+          "effectName": "Random ramp down",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
