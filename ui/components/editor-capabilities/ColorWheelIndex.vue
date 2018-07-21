@@ -32,30 +32,30 @@
     </app-simple-label>
 
     <app-simple-label
-      v-if="capability.typeData.colors !== null"
+      v-if="colorPreview !== null"
       :formstate="formstate"
       :name="`capability${capability.uuid}-colorsHexString`"
       label="Color preview">
       <app-svg
-        v-for="color in capability.typeData.colors"
+        v-for="color in colorPreview"
         :key="color"
         :colors="[color]"
         type="color-circle" />
     </app-simple-label>
 
     <app-simple-label
-      v-if="capability.typeData.colorsStart !== null || capability.typeData.colorsEnd !== null"
+      v-if="colorPreviewStart !== null || colorPreviewEnd !== null"
       :formstate="formstate"
       :name="`capability${capability.uuid}-colorsHexString`"
       label="Color preview">
       <app-svg
-        v-for="color in capability.typeData.colorsStart || []"
+        v-for="color in colorPreviewStart || []"
         :key="color"
         :colors="[color]"
         type="color-circle" />
       …
       <app-svg
-        v-for="color in capability.typeData.colorsEnd || []"
+        v-for="color in colorPreviewEnd || []"
         :key="color"
         :colors="[color]"
         type="color-circle" />
@@ -118,25 +118,31 @@ export default {
         colorTemperature: ``,
         colorTemperatureStart: null,
         colorTemperatureEnd: null
-      }
+      },
+      colorPreview: null,
+      colorPreviewStart: null,
+      colorPreviewEnd: null
     };
   },
   watch: {
     'capability.typeData.colorsHexString': {
       handler(hexString) {
         this.capability.typeData.colors = colorsHexStringToArray(hexString);
+        this.colorPreview = this.capability.typeData.colors;
       },
       immediate: true
     },
     'capability.typeData.colorsHexStringStart': {
       handler(hexString) {
         this.capability.typeData.colorsStart = colorsHexStringToArray(hexString);
+        this.colorPreviewStart = this.capability.typeData.colorsStart;
       },
       immediate: true
     },
     'capability.typeData.colorsHexStringEnd': {
       handler(hexString) {
         this.capability.typeData.colorsEnd = colorsHexStringToArray(hexString);
+        this.colorPreviewEnd = this.capability.typeData.colorsEnd;
       },
       immediate: true
     }
