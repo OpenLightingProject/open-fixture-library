@@ -287,8 +287,6 @@ export default {
     // index entity requires a bit of special handling
     indexSchema() {
       const unit = this.properties.entities.index.$ref.replace(`#/units/`, ``);
-      console.log(unit);
-
       return this.properties.units[unit];
     },
     indexStepped: {
@@ -334,11 +332,11 @@ export default {
       });
     },
     onUnitSelected(newUnit) {
-      if (this.propertyDataStart === ``) {
-        this.propertyDataStart = newUnit;
+      if (!this.propertyDataStart.endsWith(newUnit)) {
+        this.$refs.startField.setUnitString(newUnit);
       }
-      if (this.propertyDataEnd === ``) {
-        this.propertyDataEnd = newUnit;
+      if (!this.propertyDataEnd.endsWith(newUnit)) {
+        this.$refs.endField.setUnitString(newUnit);
       }
     },
     swapStartEnd() {

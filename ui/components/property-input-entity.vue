@@ -221,6 +221,14 @@ export default {
     update(newValue) {
       this.$emit(`input`, newValue);
     },
+    setUnitString(newUnitString) {
+      if (newUnitString === `[no unit]`) {
+        newUnitString = ``;
+      }
+
+      const unitName = Object.keys(this.units).find(unitName => this.units[unitName].unitStr === newUnitString);
+      this.selectedUnit = unitName;
+    },
     unitSelected() {
       // 1st nextTick for data change locally (emits event), 2nd nextTick for new value from props
       this.$nextTick(() => this.$nextTick(() => this.focus()));
