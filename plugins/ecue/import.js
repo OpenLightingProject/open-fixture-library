@@ -92,7 +92,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
     out.warnings[fixKey].push(`Please specify categories.`);
 
     fixture.meta = {
-      authors: [`TODO: REMOVE ME AGAIN`],
+      authors: [],
       createDate: ecueFixture.$._CreationDate.replace(/#.*/, ``),
       lastModifyDate: ecueFixture.$._ModifiedDate.replace(/#.*/, ``),
       importPlugin: {
