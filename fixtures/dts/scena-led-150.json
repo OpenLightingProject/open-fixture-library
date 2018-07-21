@@ -53,18 +53,16 @@
         {
           "dmxRange": [120, 149],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
+          "shutterEffect": "RampUp",
           "speedStart": "0.02Hz",
-          "speedEnd": "8.3Hz",
-          "comment": "opening pulse"
+          "speedEnd": "8.3Hz"
         },
         {
           "dmxRange": [150, 179],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
+          "shutterEffect": "RampDown",
           "speedStart": "0.02Hz",
-          "speedEnd": "8.3Hz",
-          "comment": "closing pulse"
+          "speedEnd": "8.3Hz"
         },
         {
           "dmxRange": [180, 204],

@@ -56,20 +56,18 @@
         {
           "dmxRange": [96, 127],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampUp",
-          "comment": "pulse, fast close & slow open"
+          "shutterEffect": "RampUp"
         },
         {
           "dmxRange": [128, 159],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampDown",
-          "comment": "pulse, fast open and slow close"
+          "shutterEffect": "RampDown"
         },
         {
           "dmxRange": [160, 191],
           "type": "ShutterStrobe",
           "shutterEffect": "Pulse",
-          "comment": "sequencial pulse effects"
+          "comment": "sequencial effects"
         },
         {
           "dmxRange": [192, 223],

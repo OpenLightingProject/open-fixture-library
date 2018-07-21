@@ -121,14 +121,12 @@
         {
           "dmxRange": [16, 31],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampUp",
-          "comment": "Opening pulse-effect"
+          "shutterEffect": "RampUp"
         },
         {
           "dmxRange": [32, 47],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampDown",
-          "comment": "Closing pulse effect"
+          "shutterEffect": "RampDown"
         },
         {
           "dmxRange": [48, 63],
