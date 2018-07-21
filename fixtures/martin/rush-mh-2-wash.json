@@ -73,8 +73,7 @@
         {
           "dmxRange": [105, 109],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Shutter open",
+          "shutterEffect": "Open",
           "menuClick": "hidden"
         },
         {
@@ -139,7 +138,8 @@
           "shutterEffect": "Strobe",
           "speedStart": "fast",
           "speedEnd": "slow",
-          "comment": "random burst pulse"
+          "randomTiming": true,
+          "comment": "burst pulse"
         },
         {
           "dmxRange": [205, 209],
