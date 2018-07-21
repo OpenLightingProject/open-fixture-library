@@ -28,12 +28,14 @@
   "availableChannels": {
     "Intensity": {
       "highlightValue": 255,
+      "precedence": "HTP",
       "capability": {
         "type": "Intensity"
       }
     },
     "Red": {
       "highlightValue": 255,
+      "precedence": "HTP",
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
@@ -41,6 +43,7 @@
     },
     "Green": {
       "highlightValue": 255,
+      "precedence": "HTP",
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
@@ -48,6 +51,7 @@
     },
     "Blue": {
       "highlightValue": 255,
+      "precedence": "HTP",
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
