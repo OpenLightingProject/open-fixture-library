@@ -231,8 +231,28 @@ function getChannelPreset(channel) {
     SpeedPanFastSlow: () => capability.type === `PanContinuous` && capability.speed[0].number > capability.speed[1].number,
     SpeedTiltSlowFast: () => capability.type === `TiltContinuous` && capability.speed[0].number < capability.speed[1].number,
     SpeedTiltFastSlow: () => capability.type === `TiltContinuous` && capability.speed[0].number > capability.speed[1].number,
-    SpeedPanTiltSlowFast: () => capability.type === `PanTiltSpeed` && capability.speed[0].number < capability.speed[1].number,
-    SpeedPanTiltFastSlow: () => capability.type === `PanTiltSpeed` && capability.speed[0].number > capability.speed[1].number,
+    SpeedPanTiltSlowFast: () => {
+      if (capability.type !== `PanTiltSpeed`) {
+        return false;
+      }
+
+      if (capability.speed !== null) {
+        return capability.speed[0].number < capability.speed[1].number;
+      }
+
+      return capability.duration[0].number > capability.duration[1].number;
+    },
+    SpeedPanTiltFastSlow: () => {
+      if (capability.type !== `PanTiltSpeed`) {
+        return false;
+      }
+
+      if (capability.speed !== null) {
+        return capability.speed[0].number > capability.speed[1].number;
+      }
+
+      return capability.duration[0].number < capability.duration[1].number;
+    },
     ColorMacro: () => capability.type === `ColorPreset` || capability.type === `ColorWheelIndex`,
     ColorWheel: () => capability.type === `ColorWheelRotation`,
     // ColorWheelFine
@@ -250,8 +270,8 @@ function getChannelPreset(channel) {
     // BeamIrisFine
     BeamZoomSmallBig: () => capability.type === `Zoom` && capability.angle[0].number < capability.angle[1].number,
     BeamZoomBigSmall: () => capability.type === `Zoom` && capability.angle[0].number > capability.angle[1].number,
-    PrismRotationSlowFast: () => capability.type === `PrismRotation` && capability.speed[0] < capability.speed[1].number,
-    PrismRotationFastSlow: () => capability.type === `PrismRotation` && capability.speed[0] > capability.speed[1].number,
+    PrismRotationSlowFast: () => capability.type === `PrismRotation` && capability.speed !== null && capability.speed[0] < capability.speed[1].number,
+    PrismRotationFastSlow: () => capability.type === `PrismRotation` && capability.speed !== null && capability.speed[0] > capability.speed[1].number,
     NoFunction: () => capability.type === `NoFunction`
   };
 
