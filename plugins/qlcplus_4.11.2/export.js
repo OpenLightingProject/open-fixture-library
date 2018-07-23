@@ -63,6 +63,10 @@ module.exports.export = function exportQLCplus(fixtures, options) {
   });
 };
 
+/**
+ * @param {!object} xml The xmlbuilder <FixtureDefinition> object.
+ * @param {!Channel} channel The OFL channel object.
+ */
 function addChannel(xml, channel) {
   if (channel instanceof MatrixChannel) {
     channel = channel.wrappedChannel;
@@ -127,6 +131,10 @@ function addChannel(xml, channel) {
   }
 }
 
+/**
+ * @param {!object} xmlChannel The xmlbuilder <Channel> object.
+ * @param {!Capability} cap The OFL capability object.
+ */
 function addCapability(xmlChannel, cap) {
   const dmxRange = cap.getDmxRangeWithFineness(0);
 
@@ -152,6 +160,10 @@ function addCapability(xmlChannel, cap) {
   }
 }
 
+/**
+ * @param {!object} xml The xmlbuilder <FixtureDefinition> object.
+ * @param {!Mode} mode The OFL mode object.
+ */
 function addMode(xml, mode) {
   const xmlMode = xml.element({
     Mode: {
@@ -175,6 +187,10 @@ function addMode(xml, mode) {
   }
 }
 
+/**
+ * @param {!object} xmlMode The xmlbuilder <Mode> object.
+ * @param {!Physical} physical The OFL physical object.
+ */
 function addPhysical(xmlMode, physical) {
   const xmlPhysical = xmlMode.element({
     Physical: {
