@@ -87,6 +87,10 @@ function addChannel(xml, channel) {
     }
   }
 
+  if (channel.defaultValue !== 0) {
+    xmlChannel.attribute(`Default`, channel.getDefaultValueWithFineness(0));
+  }
+
   const xmlGroup = xmlChannel.element({
     Group: {}
   });
