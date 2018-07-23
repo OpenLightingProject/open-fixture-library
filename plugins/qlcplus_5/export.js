@@ -67,6 +67,10 @@ module.exports.export = function exportQLCplus(fixtures, options) {
   });
 };
 
+/**
+ * @param {!object} xml The xmlbuilder <FixtureDefinition> object.
+ * @param {!Channel} channel The OFL channel object.
+ */
 function addChannel(xml, channel) {
   const chType = getChannelType(channel.type);
 
@@ -97,6 +101,10 @@ function addChannel(xml, channel) {
   channel.fineChannels.forEach(fineChannel => addFineChannel(xml, fineChannel));
 }
 
+/**
+ * @param {!object} xml The xmlbuilder <FixtureDefinition> object.
+ * @param {!FineChannel} fineChannel The OFL fine channel object.
+ */
 function addFineChannel(xml, fineChannel) {
   const chType = getChannelType(fineChannel.coarseChannel.type);
 
@@ -139,6 +147,10 @@ function addFineChannel(xml, fineChannel) {
   }, 0, fineChannel.coarseChannel));
 }
 
+/**
+ * @param {!object} xmlChannel The xmlbuilder <Channel> object.
+ * @param {!Capability} cap The OFL capability object.
+ */
 function addCapability(xmlChannel, cap) {
   const dmxRange = cap.getDmxRangeWithFineness(0);
 
@@ -169,6 +181,11 @@ function addCapability(xmlChannel, cap) {
   }
 }
 
+/**
+ * @param {!object} xmlCapability The xmlbuilder <Capability> object.
+ * @param {!Capability} cap The OFL capability object.
+ * @returns {!boolean} True when one or more <Alias> elements were added to the capability, false otherwise.
+ */
 function addCapabilityAliases(xmlCapability, cap) {
   const fixture = cap._channel.fixture;
 
@@ -201,6 +218,10 @@ function addCapabilityAliases(xmlCapability, cap) {
   return aliasAdded;
 }
 
+/**
+ * @param {!object} xml The xmlbuilder <FixtureDefinition> object.
+ * @param {!Mode} mode The OFL mode object.
+ */
 function addMode(xml, mode) {
   const xmlMode = xml.element({
     Mode: {
@@ -238,6 +259,10 @@ function addMode(xml, mode) {
   }
 }
 
+/**
+ * @param {!object} xmlParentNode The xmlbuilder object where <Physical> should be added (<FixtureDefinition> or <Mode>).
+ * @param {!Physical} physical The OFL physical object.
+ */
 function addPhysical(xmlParentNode, physical) {
   const xmlPhysical = xmlParentNode.element({
     Physical: {
