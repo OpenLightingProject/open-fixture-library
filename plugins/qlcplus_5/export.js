@@ -150,31 +150,7 @@ function addCapability(xmlChannel, cap) {
     }
   });
 
-  const fixture = cap._channel.fixture;
-
-  let aliasAdded = false;
-  for (const alias of Object.keys(cap.switchChannels)) {
-    const switchingChannel = fixture.getChannelByKey(alias);
-    const defaultChannel = switchingChannel.defaultChannel || switchingChannel.wrappedChannel.defaultChannel;
-    const switchedChannel = fixture.getChannelByKey(cap.switchChannels[alias]);
-
-    if (defaultChannel !== switchedChannel) {
-      aliasAdded = true;
-
-      for (const mode of fixture.modes) {
-        if (mode.getChannelIndex(switchingChannel) !== -1) {
-          xmlCapability.element({
-            Alias: {
-              '@Mode': mode.name,
-              '@Channel': defaultChannel.uniqueName || defaultChannel.wrappedChannel.uniqueName,
-              '@With': switchedChannel.uniqueName || switchedChannel.wrappedChannel.uniqueName
-            }
-          });
-        }
-      }
-    }
-  }
-
+  const aliasAdded = addCapabilityAliases(xmlCapability, cap);
   if (aliasAdded) {
     xmlCapability.attribute(`Preset`, `Alias`);
   }
@@ -191,6 +167,38 @@ function addCapability(xmlChannel, cap) {
   if (cap.effectPreset === `ColorFade` && !isStopped) {
     xmlCapability.attribute(`Res`, `Others/rainbow.png`);
   }
+}
+
+function addCapabilityAliases(xmlCapability, cap) {
+  const fixture = cap._channel.fixture;
+
+  let aliasAdded = false;
+  for (const alias of Object.keys(cap.switchChannels)) {
+    const switchingChannel = fixture.getChannelByKey(alias);
+    const defaultChannel = switchingChannel.defaultChannel || switchingChannel.wrappedChannel.defaultChannel;
+    const switchedChannel = fixture.getChannelByKey(cap.switchChannels[alias]);
+
+    if (defaultChannel === switchedChannel) {
+      continue;
+    }
+
+    const modesContainingSwitchingChannel = fixture.modes.filter(
+      mode => mode.getChannelIndex(switchingChannel) !== -1
+    );
+
+    for (const mode of modesContainingSwitchingChannel) {
+      aliasAdded = true;
+      xmlCapability.element({
+        Alias: {
+          '@Mode': mode.name,
+          '@Channel': defaultChannel.uniqueName || defaultChannel.wrappedChannel.uniqueName,
+          '@With': switchedChannel.uniqueName || switchedChannel.wrappedChannel.uniqueName
+        }
+      });
+    }
+  }
+
+  return aliasAdded;
 }
 
 function addMode(xml, mode) {
