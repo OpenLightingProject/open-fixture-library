@@ -43,7 +43,7 @@ module.exports.export = function exportQLCplus(fixtures, options) {
         }
       });
 
-    for (const channel of fixture.allChannels) {
+    for (const channel of fixture.normalizedChannels) {
       addChannel(xml, channel, fixture);
     }
 
@@ -68,61 +68,21 @@ module.exports.export = function exportQLCplus(fixtures, options) {
 };
 
 function addChannel(xml, channel) {
-  if (channel instanceof MatrixChannel) {
-    channel = channel.wrappedChannel;
-  }
+  const chType = getChannelType(channel.type);
 
   const xmlChannel = xml.element({
     Channel: {
-      '@Name': channel.uniqueName
+      '@Name': channel.uniqueName,
+      Group: {
+        '@Byte': 0,
+        '#text': chType
+      }
     }
   });
-
-  // use default channel's data
-  if (channel instanceof SwitchingChannel) {
-    channel = channel.defaultChannel;
-
-    if (channel instanceof MatrixChannel) {
-      channel = channel.wrappedChannel;
-    }
-  }
 
   if (channel.defaultValue !== 0) {
     xmlChannel.attribute(`Default`, channel.getDefaultValueWithFineness(0));
   }
-
-  const xmlGroup = xmlChannel.element({
-    Group: {}
-  });
-
-  let capabilities;
-  if (channel instanceof FineChannel) {
-    let capabilityName;
-    if (channel.fineness > 1) {
-      xmlGroup.attribute(`Byte`, 0); // not a QLC+ fine channel
-      capabilityName = `Fine^${channel.fineness} adjustment for ${channel.coarseChannel.uniqueName}`;
-    }
-    else {
-      xmlGroup.attribute(`Byte`, 1);
-      capabilityName = `Fine adjustment for ${channel.coarseChannel.uniqueName}`;
-    }
-
-    channel = channel.coarseChannel; // use coarse channel's data from here on
-    capabilities = [
-      new Capability({
-        dmxRange: [0, 255],
-        type: `Generic`,
-        comment: capabilityName
-      }, 0, channel)
-    ];
-  }
-  else {
-    xmlGroup.attribute(`Byte`, 0);
-    capabilities = channel.capabilities;
-  }
-
-  const chType = getChannelType(channel.type);
-  xmlGroup.text(chType);
 
   if (chType === `Intensity`) {
     xmlChannel.element({
@@ -130,9 +90,53 @@ function addChannel(xml, channel) {
     });
   }
 
-  for (const cap of capabilities) {
+  for (const cap of channel.capabilities) {
     addCapability(xmlChannel, cap);
   }
+
+  channel.fineChannels.forEach(fineChannel => addFineChannel(xml, fineChannel));
+}
+
+function addFineChannel(xml, fineChannel) {
+  const chType = getChannelType(fineChannel.coarseChannel.type);
+
+  const xmlFineChannel = xml.element({
+    Channel: {
+      '@Name': fineChannel.uniqueName
+    }
+  });
+
+  if (fineChannel.defaultValue !== 0) {
+    xmlFineChannel.attribute(`Default`, fineChannel.defaultValue);
+  }
+
+  const xmlGroup = xmlFineChannel.element({
+    Group: {
+      '#text': chType
+    }
+  });
+
+  let capabilityName;
+  if (fineChannel.fineness > 1) {
+    xmlGroup.attribute(`Byte`, 0); // not a QLC+ fine channel
+    capabilityName = `Fine^${fineChannel.fineness} adjustment for ${fineChannel.coarseChannel.uniqueName}`;
+  }
+  else {
+    xmlGroup.attribute(`Byte`, 1);
+    capabilityName = `Fine adjustment for ${fineChannel.coarseChannel.uniqueName}`;
+  }
+
+  if (chType === `Intensity`) {
+    xmlFineChannel.element({
+      Colour: fineChannel.coarseChannel.color !== null ? fineChannel.coarseChannel.color : `Generic`
+    });
+  }
+
+  addCapability(xmlFineChannel, new Capability({
+    dmxRange: [0, 255],
+    type: `Generic`,
+    comment: capabilityName
+  }, 0, fineChannel.coarseChannel));
 }
 
 function addCapability(xmlChannel, cap) {
@@ -172,10 +176,22 @@ function addMode(xml, mode) {
   }
 
   mode.channels.forEach((channel, index) => {
+    if (channel instanceof MatrixChannel) {
+      channel = channel.wrappedChannel;
+    }
+
+    if (channel instanceof SwitchingChannel) {
+      channel = channel.defaultChannel;
+
+      if (channel instanceof MatrixChannel) {
+        channel = channel.wrappedChannel;
+      }
+    }
+
     xmlMode.element({
       Channel: {
         '@Number': index,
-        '#text': channel.uniqueName || channel.wrappedChannel.uniqueName
+        '#text': channel.uniqueName
       }
     });
   });
