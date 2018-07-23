@@ -51,6 +51,10 @@ module.exports.export = function exportQLCplus(fixtures, options) {
       addMode(xml, mode);
     }
 
+    if (fixture.mode !== null) {
+      addPhysical(xml, fixture.physical);
+    }
+
     xml.doctype(``);
     return {
       name: sanitize(`${fixture.manufacturer.name}-${fixture.name}.qxf`).replace(/\s+/g, `-`),
@@ -159,7 +163,9 @@ function addMode(xml, mode) {
     }
   });
 
-  addPhysical(xmlMode, mode.physical || new Physical({}));
+  if (mode.physicalOverride !== null) {
+    addPhysical(xmlMode, mode.physical);
+  }
 
   mode.channels.forEach((channel, index) => {
     xmlMode.element({
@@ -175,8 +181,8 @@ function addMode(xml, mode) {
   }
 }
 
-function addPhysical(xmlMode, physical) {
-  const xmlPhysical = xmlMode.element({
+function addPhysical(xmlParentNode, physical) {
+  const xmlPhysical = xmlParentNode.element({
     Physical: {
       Bulb: {
         '@Type': physical.bulbType || `Other`,
