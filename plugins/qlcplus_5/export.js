@@ -76,11 +76,7 @@ function addChannel(xml, channel) {
 
   const xmlChannel = xml.element({
     Channel: {
-      '@Name': channel.uniqueName,
-      Group: {
-        '@Byte': 0,
-        '#text': chType
-      }
+      '@Name': channel.uniqueName
     }
   });
 
@@ -88,14 +84,27 @@ function addChannel(xml, channel) {
     xmlChannel.attribute(`Default`, channel.getDefaultValueWithFineness(0));
   }
 
-  if (chType === `Intensity`) {
-    xmlChannel.element({
-      Colour: channel.color !== null ? channel.color : `Generic`
-    });
+  const channelPreset = getChannelPreset(channel);
+  if (channelPreset !== null) {
+    xmlChannel.attribute(`Preset`, channelPreset);
   }
+  else {
+    xmlChannel.element({
+      Group: {
+        '@Byte': 0,
+        '#text': chType
+      }
+    });
 
-  for (const cap of channel.capabilities) {
-    addCapability(xmlChannel, cap);
+    if (chType === `Intensity`) {
+      xmlChannel.element({
+        Colour: channel.color !== null ? channel.color : `Generic`
+      });
+    }
+
+    for (const cap of channel.capabilities) {
+      addCapability(xmlChannel, cap);
+    }
   }
 
   channel.fineChannels.forEach(fineChannel => addFineChannel(xml, fineChannel));
@@ -118,21 +127,38 @@ function addFineChannel(xml, fineChannel) {
     xmlFineChannel.attribute(`Default`, fineChannel.defaultValue);
   }
 
-  const xmlGroup = xmlFineChannel.element({
+  if (fineChannel.fineness > 1) {
+    // QLC+ does not support 24+ bit channels, so let's fake one
+    xmlFineChannel.element({
+      Group: {
+        '@Byte': 0, // not a QLC+ fine channel
+        '#text': chType
+      }
+    });
+
+    addCapability(xmlFineChannel, new Capability({
+      dmxRange: [0, 255],
+      type: `Generic`,
+      comment: `Fine^${fineChannel.fineness} adjustment for ${fineChannel.coarseChannel.uniqueName}`
+    }, 0, fineChannel.coarseChannel));
+
+    return;
+  }
+
+  const channelPreset = getChannelPreset(fineChannel.coarseChannel);
+  if (channelPreset !== null) {
+    // TODO: not all Presets have fine variants; check if the export test gives us errors here
+    xmlFineChannel.attribute(`Preset`, `${channelPreset}Fine`);
+
+    return;
+  }
+
+  xmlFineChannel.element({
     Group: {
+      '@Byte': 1,
       '#text': chType
     }
   });
-
-  let capabilityName;
-  if (fineChannel.fineness > 1) {
-    xmlGroup.attribute(`Byte`, 0); // not a QLC+ fine channel
-    capabilityName = `Fine^${fineChannel.fineness} adjustment for ${fineChannel.coarseChannel.uniqueName}`;
-  }
-  else {
-    xmlGroup.attribute(`Byte`, 1);
-    capabilityName = `Fine adjustment for ${fineChannel.coarseChannel.uniqueName}`;
-  }
 
   if (chType === `Intensity`) {
     xmlFineChannel.element({
@@ -143,8 +169,93 @@ function addFineChannel(xml, fineChannel) {
   addCapability(xmlFineChannel, new Capability({
     dmxRange: [0, 255],
     type: `Generic`,
-    comment: capabilityName
+    comment: `Fine adjustment for ${fineChannel.coarseChannel.uniqueName}`
   }, 0, fineChannel.coarseChannel));
+}
+
+/**
+ * @param {!Channel} channel The OFL channel object.
+ * @returns {?string} The QLC+ channel preset or null, if there is no suitable one.
+ */
+function getChannelPreset(channel) {
+  if (channel.capabilities.length > 1) {
+    return null;
+  }
+
+  const capability = channel.capabilities[0];
+
+  // TODO: try to also detect the `() => false` presets
+  const channelPresets = {
+    IntensityMasterDimmer: () => false,
+    // IntensityMasterDimmerFine
+    IntensityDimmer: () => capability.type === `Intensity`,
+    // IntensityDimmerFine
+    IntensityRed: () => capability.type === `ColorIntensity` && capability.color === `Red`,
+    // IntensityRedFine
+    IntensityGreen: () => capability.type === `ColorIntensity` && capability.color === `Green`,
+    // IntensityGreenFine
+    IntensityBlue: () => capability.type === `ColorIntensity` && capability.color === `Blue`,
+    // IntensityBlueFine
+    IntensityCyan: () => capability.type === `ColorIntensity` && capability.color === `Cyan`,
+    // IntensityCyanFine
+    IntensityMagenta: () => capability.type === `ColorIntensity` && capability.color === `Magenta`,
+    // IntensityMagentaFine
+    IntensityYellow: () => capability.type === `ColorIntensity` && capability.color === `Yellow`,
+    // IntensityYellowFine
+    IntensityAmber: () => capability.type === `ColorIntensity` && capability.color === `Amber`,
+    // IntensityAmberFine
+    IntensityWhite: () => capability.type === `ColorIntensity` && capability.color === `White`,
+    // IntensityWhiteFine
+    IntensityUV: () => capability.type === `ColorIntensity` && capability.color === `UV`,
+    // IntensityUVFine
+    IntensityIndigo: () => capability.type === `ColorIntensity` && capability.color === `Indigo`,
+    // IntensityIndigoFine
+    IntensityLime: () => capability.type === `ColorIntensity` && capability.color === `Lime`,
+    // IntensityLimeFine
+    IntensityHue: () => false,
+    // IntensityHueFine
+    IntensitySaturation: () => false,
+    // IntensitySaturationFine
+    IntensityLightness: () => false,
+    // IntensityLightnessFine
+    IntensityValue: () => false,
+    // IntensityValueFine
+    PositionPan: () => capability.type === `Pan`,
+    PositionPanCounterClockwise: () => false,
+    // PositionPanFine
+    PositionTilt: () => capability.type === `Tilt`,
+    // PositionTiltFine
+    PositionXAxis: () => false,
+    PositionYAxis: () => false,
+    SpeedPanSlowFast: () => capability.type === `PanContinuous` && capability.speed[0].number < capability.speed[1].number,
+    SpeedPanFastSlow: () => capability.type === `PanContinuous` && capability.speed[0].number > capability.speed[1].number,
+    SpeedTiltSlowFast: () => capability.type === `TiltContinuous` && capability.speed[0].number < capability.speed[1].number,
+    SpeedTiltFastSlow: () => capability.type === `TiltContinuous` && capability.speed[0].number > capability.speed[1].number,
+    SpeedPanTiltSlowFast: () => capability.type === `PanTiltSpeed` && capability.speed[0].number < capability.speed[1].number,
+    SpeedPanTiltFastSlow: () => capability.type === `PanTiltSpeed` && capability.speed[0].number > capability.speed[1].number,
+    ColorMacro: () => capability.type === `ColorPreset` || capability.type === `ColorWheelIndex`,
+    ColorWheel: () => capability.type === `ColorWheelRotation`,
+    // ColorWheelFine
+    ColorCTOMixer: () => capability.type === `ColorTemperature` && capability.colorTemperature[0].number === 0 && capability.colorTemperature[1] < 0,
+    ColorCTBMixer: () => capability.type === `ColorTemperature` && capability.colorTemperature[0].number === 0 && capability.colorTemperature[1] > 0,
+    GoboWheel: () => capability.type === `GoboWheelRotation`,
+    // GoboWheelFine
+    GoboIndex: () => capability.type === `GoboIndex`,
+    // GoboIndexFine
+    ShutterStrobeSlowFast: () => capability.type === `ShutterStrobe` && capability.speed !== null && capability.speed[0].number < capability.speed[1],
+    ShutterStrobeFastSlow: () => capability.type === `ShutterStrobe` && capability.speed !== null && capability.speed[0].number > capability.speed[1],
+    BeamFocusNearFar: () => capability.type === `Focus` && capability.distance[0].number < capability.distance[1].number,
+    BeamFocusFarNear: () => capability.type === `Focus` && capability.distance[0].number > capability.distance[1].number,
+    BeamIris: () => capability.type === `Iris`,
+    // BeamIrisFine
+    BeamZoomSmallBig: () => capability.type === `Zoom` && capability.angle[0].number < capability.angle[1].number,
+    BeamZoomBigSmall: () => capability.type === `Zoom` && capability.angle[0].number > capability.angle[1].number,
+    PrismRotationSlowFast: () => capability.type === `PrismRotation` && capability.speed[0] < capability.speed[1].number,
+    PrismRotationFastSlow: () => capability.type === `PrismRotation` && capability.speed[0] > capability.speed[1].number,
+    NoFunction: () => capability.type === `NoFunction`
+  };
+
+  return Object.keys(channelPresets).find(presetName => channelPresets[presetName]()) || null;
 }
 
 /**
