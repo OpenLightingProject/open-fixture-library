@@ -150,6 +150,35 @@ function addCapability(xmlChannel, cap) {
     }
   });
 
+  const fixture = cap._channel.fixture;
+
+  let aliasAdded = false;
+  for (const alias of Object.keys(cap.switchChannels)) {
+    const switchingChannel = fixture.getSwitchingChannelByKey(alias);
+    const defaultChannel = switchingChannel.defaultChannel;
+    const switchedChannel = fixture.getChannelByKey(cap.switchChannels[alias]);
+
+    if (defaultChannel !== switchedChannel) {
+      aliasAdded = true;
+
+      for (const mode of fixture.modes) {
+        if (mode.getChannelIndex(switchingChannel) !== -1) {
+          xmlCapability.element({
+            Alias: {
+              '@Mode': mode.name,
+              '@Channel': defaultChannel.uniqueName || defaultChannel.wrappedChannel.uniqueName,
+              '@With': switchedChannel.uniqueName || switchedChannel.wrappedChannel.uniqueName
+            }
+          });
+        }
+      }
+    }
+  }
+
+  if (aliasAdded) {
+    xmlCapability.attribute(`Preset`, `Alias`);
+  }
+
   if (cap.colors !== null && cap.colors.allColors.length <= 2) {
     xmlCapability.attribute(`Color`, cap.colors.allColors[0]);
 
