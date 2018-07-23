@@ -51,7 +51,7 @@ module.exports.export = function exportQLCplus(fixtures, options) {
       addMode(xml, mode);
     }
 
-    if (fixture.mode !== null) {
+    if (fixture.physical !== null) {
       addPhysical(xml, fixture.physical);
     }
 
