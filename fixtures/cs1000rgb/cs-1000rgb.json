@@ -1,0 +1,103 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "cs 1000rgb",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Jo"],
+    "createDate": "2018-07-23",
+    "lastModifyDate": "2018-07-23"
+  },
+  "manualURL": "https://www.laserworld.com/en/support/downloads/download/79-laserworld-club-series/52-laserworld-manual-club-series-2016-02.html",
+  "availableChannels": {
+    "Mode": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pattern": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Effect": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "RampUp"
+      }
+    },
+    "Horizontal Movement": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "40deg"
+      }
+    },
+    "Vertical Movement": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "40deg"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Width": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Height": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Rotation": {
+      "capability": {
+        "type": "Rotation",
+        "angle": "40deg"
+      }
+    },
+    "Blanking": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Wave": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color": {
+      "capability": {
+        "type": "ColorWheelIndex",
+        "index": 1
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Mode",
+        "Pattern",
+        "Effect",
+        "Horizontal Movement",
+        "Vertical Movement",
+        "Zoom",
+        "Width",
+        "Height",
+        "Rotation",
+        "Blanking",
+        "Wave",
+        "Color"
+      ]
+    }
+  ]
+}
