@@ -154,8 +154,8 @@ function addCapability(xmlChannel, cap) {
 
   let aliasAdded = false;
   for (const alias of Object.keys(cap.switchChannels)) {
-    const switchingChannel = fixture.getSwitchingChannelByKey(alias);
-    const defaultChannel = switchingChannel.defaultChannel;
+    const switchingChannel = fixture.getChannelByKey(alias);
+    const defaultChannel = switchingChannel.defaultChannel || switchingChannel.wrappedChannel.defaultChannel;
     const switchedChannel = fixture.getChannelByKey(cap.switchChannels[alias]);
 
     if (defaultChannel !== switchedChannel) {
