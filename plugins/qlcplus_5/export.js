@@ -22,6 +22,19 @@ const {
 } = require(`../../lib/model.js`);
 /* eslint-enable no-unused-vars */
 
+const capabilityHelpers = {
+  isIncreasingSpeed: cap => cap.speed !== null && Math.abs(cap.speed[0].number) < Math.abs(cap.speed[1].number),
+  isDecreasingSpeed: cap => cap.speed !== null && Math.abs(cap.speed[0].number) > Math.abs(cap.speed[1].number),
+  isStopped: cap => cap.speed !== null && cap.speed[0].number === 0 && cap.speed[1].number === 0,
+  isIncreasingDuration: cap => cap.duration !== null && Math.abs(cap.duration[0].number) < Math.abs(cap.duration[1].number),
+  isDecreasingDuration: cap => cap.duration !== null && Math.abs(cap.duration[0].number) > Math.abs(cap.duration[1].number),
+  isColorIntensity: (cap, color) => cap.type === `ColorIntensity` && cap.color === color,
+  isShutterEffect: (cap, shutterEffect) => cap.type === `ShutterStrobe` && cap.shutterEffect === shutterEffect,
+  hasFrequency: cap => cap.speed !== null && (cap.speed[0].unit === `Hz` || cap.speed[0].unit === `bpm`),
+  isRotationSpeed: cap => (cap.type.endsWith(`Rotation`) || [`PanContinuous`, `TiltContinuous`, `Prism`].includes(cap.type)) && cap.speed !== null,
+  isBeamAngle: cap => (cap.type === `BeamAngle` || cap.type === `Zoom`) && cap.angle !== null
+};
+
 module.exports.name = `QLC+ 5`;
 module.exports.version = `0.1.0`;
 
@@ -211,14 +224,6 @@ function getChannelPreset(channel) {
 
   const capability = channel.capabilities[0];
 
-  const capabilityHelpers = {
-    isColorIntensity: (cap, color) => cap.type === `ColorIntensity` && cap.color === color,
-    isIncreasingSpeed: cap => cap.speed !== null && cap.speed[0].number < cap.speed[1].number,
-    isDecreasingSpeed: cap => cap.speed !== null && cap.speed[0].number > cap.speed[1].number,
-    isIncreasingDuration: cap => cap.duration !== null && cap.duration[0].number < cap.duration[1].number,
-    isDecreasingDuration: cap => cap.duration !== null && cap.duration[0].number > cap.duration[1].number
-  };
-
   // TODO: try to also detect the `cap => false` presets
   const channelPresets = {
     IntensityMasterDimmer: cap => false,
@@ -285,22 +290,39 @@ function addCapability(xmlChannel, cap) {
     }
   });
 
-  const aliasAdded = addCapabilityAliases(xmlCapability, cap);
-  if (aliasAdded) {
-    xmlCapability.attribute(`Preset`, `Alias`);
-  }
+  const preset = addCapabilityAliases(xmlCapability, cap) ? {
+    presetName: `Alias`,
+    res1: null,
+    res2: null
+  } : getCapabilityPreset(cap);
 
+  if (preset !== null) {
+    xmlCapability.attribute(`Preset`, preset.presetName);
+
+    if (preset.res1 !== null) {
+      xmlCapability.attribute(`Res1`, preset.res1);
+    }
+
+    if (preset.res2 !== null) {
+      xmlCapability.attribute(`Res2`, preset.res2);
+    }
+  }
+  else {
+    addCapabilityLegacyAttributes(xmlCapability, cap);
+  }
+}
+
+/**
+ * @param {!object} xmlCapability The xmlbuilder <Capability> object.
+ * @param {!Capability} cap The OFL capability object.
+ */
+function addCapabilityLegacyAttributes(xmlCapability, cap) {
   if (cap.colors !== null && cap.colors.allColors.length <= 2) {
     xmlCapability.attribute(`Color`, cap.colors.allColors[0]);
 
     if (cap.colors.allColors.length > 1) {
       xmlCapability.attribute(`Color2`, cap.colors.allColors[1]);
     }
-  }
-
-  const isStopped = cap.speed !== null && cap.speed[0].number === 0 && cap.speed[1].number === 0;
-  if (cap.effectPreset === `ColorFade` && !isStopped) {
-    xmlCapability.attribute(`Res`, `Others/rainbow.png`);
   }
 }
 
@@ -339,6 +361,144 @@ function addCapabilityAliases(xmlCapability, cap) {
   }
 
   return aliasAdded;
+}
+
+/**
+ * @typedef CapabilityPreset
+ * @type {!object}
+ * @property {!string} presetName The name of the QLC+ capability preset.
+ * @property {?string} res1 A value for the QLC+ capability element's Res1 attribute, or null if the attribute should not be added.
+ * @property {?string} res2 A value for the QLC+ capability element's Res2 attribute, or null if the attribute should not be added.
+ */
+
+/**
+ * @param {!Capability} capability The OFL capability object.
+ * @returns {?CapabilityPreset} The QLC+ capability preset or null, if there is no suitable one.
+ */
+function getCapabilityPreset(capability) {
+  const capabilityPresets = {
+    // shutter capabilities
+    ShutterOpen: cap => capabilityHelpers.isShutterEffect(cap, `Open`),
+    ShutterClose: cap => capabilityHelpers.isShutterEffect(cap, `Closed`),
+
+    // strobe capabilities with specified frequency
+    StrobeFrequency: getStrobeFrequencyPreset(`Strobe`, true),
+    StrobeFreqRange: getStrobeFrequencyPreset(`Strobe`, false),
+    PulseFrequency: getStrobeFrequencyPreset(`Pulse`, true),
+    PulseFreqRange: getStrobeFrequencyPreset(`Pulse`, false),
+    RampUpFrequency: getStrobeFrequencyPreset(`RampUp`, true),
+    RampUpFreqRange: getStrobeFrequencyPreset(`RampUp`, false),
+    RampDownFrequency: getStrobeFrequencyPreset(`RampDown`, true),
+    RampDownFreqRange: getStrobeFrequencyPreset(`RampDown`, false),
+
+    // other strobe capabilities
+    StrobeSlowToFast: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && capabilityHelpers.isIncreasingSpeed(cap),
+    StrobeFastToSlow: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && capabilityHelpers.isDecreasingSpeed(cap),
+    StrobeRandomSlowToFast: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && cap.randomTiming && capabilityHelpers.isIncreasingSpeed(cap),
+    StrobeRandomFastToSlow: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && cap.randomTiming && capabilityHelpers.isDecreasingSpeed(cap),
+    StrobeRandom: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && cap.randomTiming,
+    PulseSlowToFast: cap => capabilityHelpers.isShutterEffect(cap, `Pulse`) && capabilityHelpers.isIncreasingSpeed(cap),
+    PulseFastToSlow: cap => capabilityHelpers.isShutterEffect(cap, `Pulse`) && capabilityHelpers.isDecreasingSpeed(cap),
+    RampUpSlowToFast: cap => capabilityHelpers.isShutterEffect(cap, `RampUp`) && capabilityHelpers.isIncreasingSpeed(cap),
+    RampUpFastToSlow: cap => capabilityHelpers.isShutterEffect(cap, `RampUp`) && capabilityHelpers.isDecreasingSpeed(cap),
+    RampDownSlowToFast: cap => capabilityHelpers.isShutterEffect(cap, `RampDown`) && capabilityHelpers.isIncreasingSpeed(cap),
+    RampDownFastToSlow: cap => capabilityHelpers.isShutterEffect(cap, `RampDown`) && capabilityHelpers.isDecreasingSpeed(cap),
+
+    // rotation capabilities
+    RotationClockwiseSlowToFast: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isIncreasingSpeed(cap) && cap.speed[0] > 0,
+    RotationClockwiseFastToSlow: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isDecreasingSpeed(cap) && cap.speed[1] > 0,
+    RotationClockwise: cap => capabilityHelpers.isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0] > 0,
+    RotationStop: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isStopped(cap),
+    RotationCounterClockwiseSlowToFast: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isIncreasingSpeed(cap) && cap.speed[0] < 0,
+    RotationCounterClockwiseFastToSlow: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isDecreasingSpeed(cap) && cap.speed[1] < 0,
+    RotationCounterClockwise: cap => capabilityHelpers.isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0] < 0,
+
+    // color capabilities
+    ColorMacro: {
+      handler: cap => (cap.type === `ColorPreset` || cap.type === `ColorWheelIndex`) && cap.colors !== null && cap.colors.allColors.length === 1,
+      res1: cap => cap.colors.allColors[0],
+      res2: cap => null
+    },
+    ColorDoubleMacro: {
+      handler: cap => (cap.type === `ColorPreset` || cap.type === `ColorWheelIndex`) && cap.colors !== null && cap.colors.allColors.length === 2,
+      res1: cap => cap.colors.allColors[0],
+      res2: cap => cap.colors.allColors[1]
+    },
+    ColorWheelIndex: cap => false, // seems to be unused in QLC+ for now
+
+    // gobo capabilities
+    // TODO: export a gobo image as res1
+    GoboShakeMacro: cap => cap.type === `GoboIndex` && cap.isShaking,
+    GoboMacro: cap => cap.type === `GoboIndex`,
+
+    // generic / other capabilities
+    GenericPicture: {
+      handler: cap => cap.effectPreset === `ColorFade` && !capabilityHelpers.isStopped(cap),
+      res1: cap => `Others/rainbow.png`,
+      res2: cap => null
+    },
+    SlowToFast: cap => capabilityHelpers.isIncreasingSpeed(cap),
+    FastToSlow: cap => capabilityHelpers.isDecreasingSpeed(cap),
+    NearToFar: cap => cap.distance !== null && cap.distance[0].number < cap.distance[1].number,
+    FarToNear: cap => cap.distance !== null && cap.distance[0].number > cap.distance[1].number,
+    SmallToBig: cap => (capabilityHelpers.isBeamAngle(cap) && cap.angle[0].number < cap.angle[1].number) || (cap.parameter !== null && cap.parameter[0].keyword === `small` && cap.parameter[1].keyword === `big`),
+    BigToSmall: cap => (capabilityHelpers.isBeamAngle(cap) && cap.angle[0].number > cap.angle[1].number) || (cap.parameter !== null && cap.parameter[0].keyword === `big` && cap.parameter[1].keyword === `small`)
+  };
+
+  for (const presetName of Object.keys(capabilityPresets)) {
+    const preset = capabilityPresets[presetName];
+    if (typeof preset === `function`) {
+      capabilityPresets[presetName] = {
+        handler: preset,
+        res1: cap => null,
+        res2: cap => null
+      };
+    }
+  }
+
+  const presetName = Object.keys(capabilityPresets).find(
+    presetName => capabilityPresets[presetName].handler(capability)
+  );
+
+  if (!presetName) {
+    return null;
+  }
+
+  return {
+    presetName,
+    res1: capabilityPresets[presetName].res1(capability),
+    res2: capabilityPresets[presetName].res2(capability)
+  };
+
+
+  /**
+   * @param {!string} shutterEffect The shutter effect to create the preset for.
+   * @param {!boolean} isStep Whether the preset shall only match step capabilities.
+   * @returns {!object} The generated preset with handler, res1 and res2 generation.
+   */
+  function getStrobeFrequencyPreset(shutterEffect, isStep) {
+    return {
+      handler: cap => capabilityHelpers.isShutterEffect(shutterEffect) && capabilityHelpers.hasFrequency(cap) && (!isStep || cap.isStep),
+      res1: cap => getFrequencyInHertz(cap.speed[0]),
+      res2: cap => (isStep ? getFrequencyInHertz(cap.speed[1]) : null)
+    };
+  }
+
+  /**
+   * @param {!Entity} entity The speed Entity object.
+   * @returns {?number} The frequency in Hertz, or null, if the entity's unit is not convertable to Hertz.
+   */
+  function getFrequencyInHertz(entity) {
+    if (entity.unit === `Hz`) {
+      return entity.number;
+    }
+
+    if (entity.unit === `bpm`) {
+      return entity.number / 60;
+    }
+
+    return null;
+  }
 }
 
 /**
