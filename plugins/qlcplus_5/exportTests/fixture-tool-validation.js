@@ -24,8 +24,8 @@ module.exports = function testFixtureToolValidation(exportFileData) {
     })
     .then(() => mkdirp(path.join(directory, `resources/fixtures/scripts`)))
     .then(() => mkdirp(path.join(directory, `resources/fixtures/manufacturer`)))
-    .then(() => mkdirp(path.join(directory, `resources/gobos/Other`)))
-    .then(() => writeFile(path.join(directory, `resources/gobos/Other/rainbow.png`), ``))
+    .then(() => mkdirp(path.join(directory, `resources/gobos/Others`)))
+    .then(() => writeFile(path.join(directory, `resources/gobos/Others/rainbow.png`), ``))
     .then(() => downloadFixtureTool(directory))
     .then(() => writeFile(path.join(directory, EXPORTED_FIXTURE_PATH), exportFileData))
     .then(() => execFile(path.join(directory, FIXTURE_TOOL_PATH), [`--validate`, `.`], {
