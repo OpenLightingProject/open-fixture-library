@@ -43,7 +43,7 @@ module.exports.export = function exportQLCplus(fixtures, options) {
         }
       });
 
-    for (const channel of fixture.normalizedChannels) {
+    for (const channel of fixture.normalizedChannels.concat(fixture.nullChannels)) {
       addChannel(xml, channel, fixture);
     }
 
