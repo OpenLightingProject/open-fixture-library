@@ -130,8 +130,6 @@ function addChannel(xml, channel) {
  * @param {!FineChannel} fineChannel The OFL fine channel object.
  */
 function addFineChannel(xml, fineChannel) {
-  const chType = getChannelType(fineChannel.coarseChannel.type);
-
   const xmlFineChannel = xml.element({
     Channel: {
       '@Name': fineChannel.uniqueName
@@ -147,7 +145,7 @@ function addFineChannel(xml, fineChannel) {
     xmlFineChannel.element({
       Group: {
         '@Byte': 0, // not a QLC+ fine channel
-        '#text': chType
+        '#text': `Maintenance`
       }
     });
 
@@ -192,6 +190,8 @@ function addFineChannel(xml, fineChannel) {
 
     return;
   }
+
+  const chType = getChannelType(fineChannel.coarseChannel.type);
 
   xmlFineChannel.element({
     Group: {
