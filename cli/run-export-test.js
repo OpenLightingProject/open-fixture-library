@@ -1,11 +1,10 @@
 #!/usr/bin/node
-const fs = require(`fs`);
 const path = require(`path`);
 const minimist = require(`minimist`);
 const colors = require(`colors`);
 
 const plugins = require(`../plugins/plugins.json`);
-const { Fixture, fixtureFromRepository } = require(`../lib/model.js`);
+const { fixtureFromFile, fixtureFromRepository } = require(`../lib/model.js`);
 
 const testFixtures = require(`../tests/test-fixtures.json`);
 
@@ -42,14 +41,9 @@ if (args._.length === 0) {
   );
 }
 else {
-  fixtures = args._.map(relativePath => {
-    const absolutePath = path.join(process.cwd(), relativePath);
-    return new Fixture(
-      path.basename(path.dirname(absolutePath)), // man key
-      path.basename(absolutePath, path.extname(absolutePath)), // fix key
-      JSON.parse(fs.readFileSync(absolutePath, `utf-8`))
-    );
-  });
+  fixtures = args._.map(
+    relativePath => fixtureFromFile(path.join(process.cwd(), relativePath))
+  );
 }
 
 const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `export.js`));
