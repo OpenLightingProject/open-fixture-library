@@ -145,9 +145,34 @@ function addFineChannel(xml, fineChannel) {
     return;
   }
 
+  const fineChannelPresets = [
+    `IntensityMasterDimmerFine`,
+    `IntensityDimmerFine`,
+    `IntensityRedFine`,
+    `IntensityGreenFine`,
+    `IntensityBlueFine`,
+    `IntensityCyanFine`,
+    `IntensityMagentaFine`,
+    `IntensityYellowFine`,
+    `IntensityAmberFine`,
+    `IntensityWhiteFine`,
+    `IntensityUVFine`,
+    `IntensityIndigoFine`,
+    `IntensityLimeFine`,
+    `IntensityHueFine`,
+    `IntensitySaturationFine`,
+    `IntensityLightnessFine`,
+    `IntensityValueFine`,
+    `PositionPanFine`,
+    `PositionTiltFine`,
+    `ColorWheelFine`,
+    `GoboWheelFine`,
+    `GoboIndexFine`,
+    `BeamIrisFine`
+  ];
+
   const channelPreset = getChannelPreset(fineChannel.coarseChannel);
-  if (channelPreset !== null) {
-    // TODO: not all Presets have fine variants; check if the export test gives us errors here
+  if (channelPreset !== null && fineChannelPresets.includes(`${channelPreset}Fine`)) {
     xmlFineChannel.attribute(`Preset`, `${channelPreset}Fine`);
 
     return;
@@ -187,44 +212,25 @@ function getChannelPreset(channel) {
   // TODO: try to also detect the `() => false` presets
   const channelPresets = {
     IntensityMasterDimmer: () => false,
-    // IntensityMasterDimmerFine
     IntensityDimmer: () => capability.type === `Intensity`,
-    // IntensityDimmerFine
     IntensityRed: () => capability.type === `ColorIntensity` && capability.color === `Red`,
-    // IntensityRedFine
     IntensityGreen: () => capability.type === `ColorIntensity` && capability.color === `Green`,
-    // IntensityGreenFine
     IntensityBlue: () => capability.type === `ColorIntensity` && capability.color === `Blue`,
-    // IntensityBlueFine
     IntensityCyan: () => capability.type === `ColorIntensity` && capability.color === `Cyan`,
-    // IntensityCyanFine
     IntensityMagenta: () => capability.type === `ColorIntensity` && capability.color === `Magenta`,
-    // IntensityMagentaFine
     IntensityYellow: () => capability.type === `ColorIntensity` && capability.color === `Yellow`,
-    // IntensityYellowFine
     IntensityAmber: () => capability.type === `ColorIntensity` && capability.color === `Amber`,
-    // IntensityAmberFine
     IntensityWhite: () => capability.type === `ColorIntensity` && capability.color === `White`,
-    // IntensityWhiteFine
     IntensityUV: () => capability.type === `ColorIntensity` && capability.color === `UV`,
-    // IntensityUVFine
     IntensityIndigo: () => capability.type === `ColorIntensity` && capability.color === `Indigo`,
-    // IntensityIndigoFine
     IntensityLime: () => capability.type === `ColorIntensity` && capability.color === `Lime`,
-    // IntensityLimeFine
     IntensityHue: () => false,
-    // IntensityHueFine
     IntensitySaturation: () => false,
-    // IntensitySaturationFine
     IntensityLightness: () => false,
-    // IntensityLightnessFine
     IntensityValue: () => false,
-    // IntensityValueFine
     PositionPan: () => capability.type === `Pan`,
     PositionPanCounterClockwise: () => false,
-    // PositionPanFine
     PositionTilt: () => capability.type === `Tilt`,
-    // PositionTiltFine
     PositionXAxis: () => false,
     PositionYAxis: () => false,
     SpeedPanSlowFast: () => capability.type === `PanContinuous` && capability.speed[0].number < capability.speed[1].number,
@@ -255,19 +261,15 @@ function getChannelPreset(channel) {
     },
     ColorMacro: () => capability.type === `ColorPreset` || capability.type === `ColorWheelIndex`,
     ColorWheel: () => capability.type === `ColorWheelRotation`,
-    // ColorWheelFine
     ColorCTOMixer: () => capability.type === `ColorTemperature` && capability.colorTemperature[0].number === 0 && capability.colorTemperature[1] < 0,
     ColorCTBMixer: () => capability.type === `ColorTemperature` && capability.colorTemperature[0].number === 0 && capability.colorTemperature[1] > 0,
     GoboWheel: () => capability.type === `GoboWheelRotation`,
-    // GoboWheelFine
     GoboIndex: () => capability.type === `GoboIndex`,
-    // GoboIndexFine
     ShutterStrobeSlowFast: () => capability.type === `ShutterStrobe` && capability.speed !== null && capability.speed[0].number < capability.speed[1],
     ShutterStrobeFastSlow: () => capability.type === `ShutterStrobe` && capability.speed !== null && capability.speed[0].number > capability.speed[1],
     BeamFocusNearFar: () => capability.type === `Focus` && capability.distance[0].number < capability.distance[1].number,
     BeamFocusFarNear: () => capability.type === `Focus` && capability.distance[0].number > capability.distance[1].number,
     BeamIris: () => capability.type === `Iris`,
-    // BeamIrisFine
     BeamZoomSmallBig: () => capability.type === `Zoom` && capability.angle[0].number < capability.angle[1].number,
     BeamZoomBigSmall: () => capability.type === `Zoom` && capability.angle[0].number > capability.angle[1].number,
     PrismRotationSlowFast: () => capability.type === `PrismRotation` && capability.speed !== null && capability.speed[0] < capability.speed[1].number,
