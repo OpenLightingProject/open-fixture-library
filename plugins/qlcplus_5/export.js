@@ -512,8 +512,13 @@ function addMode(xml, mode) {
     }
   });
 
-  if (mode.physicalOverride !== null) {
-    addPhysical(xmlMode, mode.physical);
+  const hasPanTiltInfinite = mode.physical !== null && (
+    mode.physical.focusPanMax === Number.POSITIVE_INFINITY ||
+    mode.physical.focusTiltMax === Number.POSITIVE_INFINITY
+  );
+
+  if (mode.physicalOverride !== null || hasPanTiltInfinite) {
+    addPhysical(xmlMode, mode.physical, hasPanTiltInfinite ? mode : null);
   }
 
   mode.channels.forEach((channel, index) => {
@@ -545,8 +550,9 @@ function addMode(xml, mode) {
 /**
  * @param {!object} xmlParentNode The xmlbuilder object where <Physical> should be added (<FixtureDefinition> or <Mode>).
  * @param {!Physical} physical The OFL physical object.
+ * @param {?Mode} mode The OFL mode object this physical data section belongs to. Only provide this if panMax and tiltMax should be read from this mode's Pan / Tilt channels.
  */
-function addPhysical(xmlParentNode, physical) {
+function addPhysical(xmlParentNode, physical, mode) {
   const xmlPhysical = xmlParentNode.element({
     Physical: {
       Bulb: {
@@ -567,8 +573,8 @@ function addPhysical(xmlParentNode, physical) {
       },
       Focus: {
         '@Type': physical.focusType || `Fixed`,
-        '@PanMax': getPanTiltMax(physical.focusPanMax) || 0,
-        '@TiltMax': getPanTiltMax(physical.focusTiltMax) || 0
+        '@PanMax': getPanTiltMax(`Pan`),
+        '@TiltMax': getPanTiltMax(`Tilt`)
       }
     }
   });
@@ -583,12 +589,27 @@ function addPhysical(xmlParentNode, physical) {
   }
 
   /**
-   * @param {?number} panTiltMax A physical's panMax or tiltMax
+   * @param {'Pan'|'Tilt'} panOrTilt Whether to check for panMax or tiltMax.
    * @returns {!number} The rounded maximum; 9999 for infinite and 0 as default.
    */
-  function getPanTiltMax(panTiltMax) {
+  function getPanTiltMax(panOrTilt) {
+    const panTiltMax = physical[`focus${panOrTilt}Max`];
+
     if (panTiltMax === Number.POSITIVE_INFINITY) {
-      return 9999;
+      try {
+        const panTiltChannel = mode.channels.find(
+          ch => `capabilities` in ch && ch.capabilities.length === 1 &&
+            ch.capabilities[0].type === panOrTilt && ch.capabilities[0].angle[0].unit === `deg`
+        );
+
+        return Math.max(
+          panTiltChannel.capabilities[0].angle[0].number,
+          panTiltChannel.capabilities[0].angle[1].number
+        );
+      }
+      catch (err) {
+        return 9999;
+      }
     }
 
     if (panTiltMax !== null) {
