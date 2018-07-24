@@ -202,7 +202,7 @@ function addFineChannel(xml, fineChannel) {
 
 /**
  * @param {!Channel} channel The OFL channel object.
- * @returns {?string} The QLC+ channel preset or null, if there is no suitable one.
+ * @returns {?string} The QLC+ channel preset name or null, if there is no suitable one.
  */
 function getChannelPreset(channel) {
   if (channel.capabilities.length > 1) {
@@ -211,75 +211,63 @@ function getChannelPreset(channel) {
 
   const capability = channel.capabilities[0];
 
-  // TODO: try to also detect the `() => false` presets
-  const channelPresets = {
-    IntensityMasterDimmer: () => false,
-    IntensityDimmer: () => capability.type === `Intensity`,
-    IntensityRed: () => capability.type === `ColorIntensity` && capability.color === `Red`,
-    IntensityGreen: () => capability.type === `ColorIntensity` && capability.color === `Green`,
-    IntensityBlue: () => capability.type === `ColorIntensity` && capability.color === `Blue`,
-    IntensityCyan: () => capability.type === `ColorIntensity` && capability.color === `Cyan`,
-    IntensityMagenta: () => capability.type === `ColorIntensity` && capability.color === `Magenta`,
-    IntensityYellow: () => capability.type === `ColorIntensity` && capability.color === `Yellow`,
-    IntensityAmber: () => capability.type === `ColorIntensity` && capability.color === `Amber`,
-    IntensityWhite: () => capability.type === `ColorIntensity` && capability.color === `White`,
-    IntensityUV: () => capability.type === `ColorIntensity` && capability.color === `UV`,
-    IntensityIndigo: () => capability.type === `ColorIntensity` && capability.color === `Indigo`,
-    IntensityLime: () => capability.type === `ColorIntensity` && capability.color === `Lime`,
-    IntensityHue: () => false,
-    IntensitySaturation: () => false,
-    IntensityLightness: () => false,
-    IntensityValue: () => false,
-    PositionPan: () => capability.type === `Pan`,
-    PositionPanCounterClockwise: () => false,
-    PositionTilt: () => capability.type === `Tilt`,
-    PositionXAxis: () => false,
-    PositionYAxis: () => false,
-    SpeedPanSlowFast: () => capability.type === `PanContinuous` && capability.speed[0].number < capability.speed[1].number,
-    SpeedPanFastSlow: () => capability.type === `PanContinuous` && capability.speed[0].number > capability.speed[1].number,
-    SpeedTiltSlowFast: () => capability.type === `TiltContinuous` && capability.speed[0].number < capability.speed[1].number,
-    SpeedTiltFastSlow: () => capability.type === `TiltContinuous` && capability.speed[0].number > capability.speed[1].number,
-    SpeedPanTiltSlowFast: () => {
-      if (capability.type !== `PanTiltSpeed`) {
-        return false;
-      }
-
-      if (capability.speed !== null) {
-        return capability.speed[0].number < capability.speed[1].number;
-      }
-
-      return capability.duration[0].number > capability.duration[1].number;
-    },
-    SpeedPanTiltFastSlow: () => {
-      if (capability.type !== `PanTiltSpeed`) {
-        return false;
-      }
-
-      if (capability.speed !== null) {
-        return capability.speed[0].number > capability.speed[1].number;
-      }
-
-      return capability.duration[0].number < capability.duration[1].number;
-    },
-    ColorMacro: () => capability.type === `ColorPreset` || capability.type === `ColorWheelIndex`,
-    ColorWheel: () => capability.type === `ColorWheelRotation`,
-    ColorCTOMixer: () => capability.type === `ColorTemperature` && capability.colorTemperature[0].number === 0 && capability.colorTemperature[1] < 0,
-    ColorCTBMixer: () => capability.type === `ColorTemperature` && capability.colorTemperature[0].number === 0 && capability.colorTemperature[1] > 0,
-    GoboWheel: () => capability.type === `GoboWheelRotation`,
-    GoboIndex: () => capability.type === `GoboIndex`,
-    ShutterStrobeSlowFast: () => capability.type === `ShutterStrobe` && capability.speed !== null && capability.speed[0].number < capability.speed[1],
-    ShutterStrobeFastSlow: () => capability.type === `ShutterStrobe` && capability.speed !== null && capability.speed[0].number > capability.speed[1],
-    BeamFocusNearFar: () => capability.type === `Focus` && capability.distance[0].number < capability.distance[1].number,
-    BeamFocusFarNear: () => capability.type === `Focus` && capability.distance[0].number > capability.distance[1].number,
-    BeamIris: () => capability.type === `Iris`,
-    BeamZoomSmallBig: () => capability.type === `Zoom` && capability.angle[0].number < capability.angle[1].number,
-    BeamZoomBigSmall: () => capability.type === `Zoom` && capability.angle[0].number > capability.angle[1].number,
-    PrismRotationSlowFast: () => capability.type === `PrismRotation` && capability.speed !== null && capability.speed[0] < capability.speed[1].number,
-    PrismRotationFastSlow: () => capability.type === `PrismRotation` && capability.speed !== null && capability.speed[0] > capability.speed[1].number,
-    NoFunction: () => capability.type === `NoFunction`
+  const capabilityHelpers = {
+    isColorIntensity: (cap, color) => cap.type === `ColorIntensity` && cap.color === color,
+    isIncreasingSpeed: cap => cap.speed !== null && cap.speed[0].number < cap.speed[1].number,
+    isDecreasingSpeed: cap => cap.speed !== null && cap.speed[0].number > cap.speed[1].number,
+    isIncreasingDuration: cap => cap.duration !== null && cap.duration[0].number < cap.duration[1].number,
+    isDecreasingDuration: cap => cap.duration !== null && cap.duration[0].number > cap.duration[1].number
   };
 
-  return Object.keys(channelPresets).find(presetName => channelPresets[presetName]()) || null;
+  // TODO: try to also detect the `cap => false` presets
+  const channelPresets = {
+    IntensityMasterDimmer: cap => false,
+    IntensityDimmer: cap => cap.type === `Intensity`,
+    IntensityRed: cap => capabilityHelpers.isColorIntensity(cap, `Red`),
+    IntensityGreen: cap => capabilityHelpers.isColorIntensity(cap, `Green`),
+    IntensityBlue: cap => capabilityHelpers.isColorIntensity(cap, `Blue`),
+    IntensityCyan: cap => capabilityHelpers.isColorIntensity(cap, `Cyan`),
+    IntensityMagenta: cap => capabilityHelpers.isColorIntensity(cap, `Magenta`),
+    IntensityYellow: cap => capabilityHelpers.isColorIntensity(cap, `Yellow`),
+    IntensityAmber: cap => capabilityHelpers.isColorIntensity(cap, `Amber`),
+    IntensityWhite: cap => capabilityHelpers.isColorIntensity(cap, `White`),
+    IntensityUV: cap => capabilityHelpers.isColorIntensity(cap, `UV`),
+    IntensityIndigo: cap => capabilityHelpers.isColorIntensity(cap, `Indigo`),
+    IntensityLime: cap => capabilityHelpers.isColorIntensity(cap, `Lime`),
+    IntensityHue: cap => false,
+    IntensitySaturation: cap => false,
+    IntensityLightness: cap => false,
+    IntensityValue: cap => false,
+    PositionPan: cap => cap.type === `Pan`,
+    PositionPanCounterClockwise: cap => false,
+    PositionTilt: cap => cap.type === `Tilt`,
+    PositionXAxis: cap => false,
+    PositionYAxis: cap => false,
+    SpeedPanSlowFast: cap => cap.type === `PanContinuous` && capabilityHelpers.isIncreasingSpeed(cap),
+    SpeedPanFastSlow: cap => cap.type === `PanContinuous` && capabilityHelpers.isDecreasingSpeed(cap),
+    SpeedTiltSlowFast: cap => cap.type === `TiltContinuous` && capabilityHelpers.isIncreasingSpeed(cap),
+    SpeedTiltFastSlow: cap => cap.type === `TiltContinuous` && capabilityHelpers.isDecreasingSpeed(cap),
+    SpeedPanTiltSlowFast: cap => cap.type === `PanTiltSpeed` && (capabilityHelpers.isIncreasingSpeed(cap) || capabilityHelpers.isDecreasingDuration(cap)),
+    SpeedPanTiltFastSlow: cap => cap.type !== `PanTiltSpeed` && (capabilityHelpers.isDecreasingSpeed(cap) || capabilityHelpers.isIncreasingDuration(cap)),
+    ColorMacro: cap => cap.type === `ColorPreset` || cap.type === `ColorWheelIndex`,
+    ColorWheel: cap => cap.type === `ColorWheelRotation`,
+    ColorCTOMixer: cap => cap.type === `ColorTemperature` && cap.colorTemperature[0].number === 0 && cap.colorTemperature[1].number < 0,
+    ColorCTBMixer: cap => cap.type === `ColorTemperature` && cap.colorTemperature[0].number === 0 && cap.colorTemperature[1].number > 0,
+    GoboWheel: cap => cap.type === `GoboWheelRotation`,
+    GoboIndex: cap => cap.type === `GoboIndex`,
+    ShutterStrobeSlowFast: cap => cap.type === `ShutterStrobe` && capabilityHelpers.isIncreasingSpeed(cap),
+    ShutterStrobeFastSlow: cap => cap.type === `ShutterStrobe` && capabilityHelpers.isDecreasingSpeed(cap),
+    BeamFocusNearFar: cap => cap.type === `Focus` && cap.distance[0].number < cap.distance[1].number,
+    BeamFocusFarNear: cap => cap.type === `Focus` && cap.distance[0].number > cap.distance[1].number,
+    BeamIris: cap => cap.type === `Iris`,
+    BeamZoomSmallBig: cap => cap.type === `Zoom` && cap.angle[0].number < cap.angle[1].number,
+    BeamZoomBigSmall: cap => cap.type === `Zoom` && cap.angle[0].number > cap.angle[1].number,
+    PrismRotationSlowFast: cap => cap.type === `PrismRotation` && capabilityHelpers.isIncreasingSpeed(cap),
+    PrismRotationFastSlow: cap => cap.type === `PrismRotation` && capabilityHelpers.isDecreasingSpeed(cap),
+    NoFunction: cap => cap.type === `NoFunction`
+  };
+
+  return Object.keys(channelPresets).find(presetName => channelPresets[presetName](capability)) || null;
 }
 
 /**
