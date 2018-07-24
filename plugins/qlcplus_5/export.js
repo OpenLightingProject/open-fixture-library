@@ -478,9 +478,9 @@ function getCapabilityPreset(capability) {
    */
   function getStrobeFrequencyPreset(shutterEffect, isStep) {
     return {
-      handler: cap => capabilityHelpers.isShutterEffect(shutterEffect) && capabilityHelpers.hasFrequency(cap) && (!isStep || cap.isStep),
+      handler: cap => capabilityHelpers.isShutterEffect(cap, shutterEffect) && capabilityHelpers.hasFrequency(cap) && (!isStep || cap.isStep),
       res1: cap => getFrequencyInHertz(cap.speed[0]),
-      res2: cap => (isStep ? getFrequencyInHertz(cap.speed[1]) : null)
+      res2: cap => (isStep ? null : getFrequencyInHertz(cap.speed[1]))
     };
   }
 
