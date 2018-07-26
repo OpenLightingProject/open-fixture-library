@@ -405,13 +405,13 @@ function getCapabilityPreset(capability) {
     RampDownFastToSlow: cap => capabilityHelpers.isShutterEffect(cap, `RampDown`) && capabilityHelpers.isDecreasingSpeed(cap),
 
     // rotation capabilities
-    RotationClockwiseSlowToFast: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isIncreasingSpeed(cap) && cap.speed[0] > 0,
-    RotationClockwiseFastToSlow: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isDecreasingSpeed(cap) && cap.speed[1] > 0,
-    RotationClockwise: cap => capabilityHelpers.isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0] > 0,
+    RotationClockwiseSlowToFast: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isIncreasingSpeed(cap) && cap.speed[0].number > 0,
+    RotationClockwiseFastToSlow: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isDecreasingSpeed(cap) && cap.speed[1].number > 0,
+    RotationClockwise: cap => capabilityHelpers.isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0].number > 0,
     RotationStop: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isStopped(cap),
-    RotationCounterClockwiseSlowToFast: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isIncreasingSpeed(cap) && cap.speed[0] < 0,
-    RotationCounterClockwiseFastToSlow: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isDecreasingSpeed(cap) && cap.speed[1] < 0,
-    RotationCounterClockwise: cap => capabilityHelpers.isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0] < 0,
+    RotationCounterClockwiseSlowToFast: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isIncreasingSpeed(cap) && cap.speed[0].number < 0,
+    RotationCounterClockwiseFastToSlow: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isDecreasingSpeed(cap) && cap.speed[1].number < 0,
+    RotationCounterClockwise: cap => capabilityHelpers.isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0].number < 0,
 
     // color capabilities
     ColorMacro: {
