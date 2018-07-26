@@ -161,34 +161,28 @@ pullRequest.checkEnv()
  */
 function performTask(task) {
   const output = diffPluginOutputs(task.pluginKey, process.env.TRAVIS_BRANCH, [task.manFix]);
-
-  const hasRemoved = output.removedFiles.length > 0;
-  const hasAdded = output.addedFiles.length > 0;
-  const hasChanged = Object.keys(output.changedFiles).length > 0;
-
-  const nothingChanged = !hasRemoved && !hasAdded && !hasChanged;
-
-  const emoji = nothingChanged ? `:heavy_check_mark:` : `:x:`;
+  const changeFlags = getChangeFlags(output);
+  const emoji = getEmoji(changeFlags);
 
   let lines = [
     `<details>`,
-    `<summary>${emoji} <strong>${task.manFix} ${task.pluginKey}</strong></summary>`
+    `<summary>${emoji} <strong>${task.manFix}:</strong> ${task.pluginKey}</summary>`
   ];
 
-  if (nothingChanged) {
+  if (changeFlags.nothingChanged) {
     lines.push(`Outputted files not changed.`);
   }
   else {
     lines.push(`<blockquote>`);
 
-    if (hasRemoved) {
-      lines.push(`*Removed files*`);
-      lines = lines.concat(output.removedFiles.map(file => `- ${file}`), ``);
+    if (changeFlags.hasRemoved) {
+      lines.push(`<strong>Removed files</strong>`);
+      lines = lines.concat(`<ul>`, output.removedFiles.map(file => `<li>${file}</li>`), `</ul>`);
     }
 
-    if (hasAdded) {
-      lines.push(`*Added files*`);
-      lines = lines.concat(output.addedFiles.map(file => `- ${file}`), ``);
+    if (changeFlags.hasAdded) {
+      lines.push(`<strong>Added files</strong>`);
+      lines = lines.concat(`<ul>`, output.addedFiles.map(file => `<li>${file}</li>`), `</ul>`);
     }
 
     for (const file of Object.keys(output.changedFiles)) {
@@ -206,4 +200,50 @@ function performTask(task) {
   lines.push(`</details>`);
 
   return lines;
+}
+
+/**
+ * @typedef ChangeFlags
+ * @type !object
+ * @property {!boolean} hasRemoved Whether any files were removed.
+ * @property {!boolean} hasAdded Whether any files were added.
+ * @property {!boolean} hasChanged Whether any files were changed.
+ * @property {!boolean} nothingChanged Whether changed at all.
+ */
+
+/**
+ * @param {!object} diffOutput Output object from @see diffPluginOutputs.
+ * @returns {!ChangeFlags} Object with change flags.
+ */
+function getChangeFlags(diffOutput) {
+  const hasRemoved = diffOutput.removedFiles.length > 0;
+  const hasAdded = diffOutput.addedFiles.length > 0;
+  const hasChanged = Object.keys(diffOutput.changedFiles).length > 0;
+
+  return {
+    hasRemoved,
+    hasAdded,
+    hasChanged,
+    nothingChanged: !hasRemoved && !hasAdded && !hasChanged
+  };
+}
+
+/**
+ * @param {!ChangeFlags} changeFlags Object with flags that tell what changed.
+ * @returns {!string} String containing a GitHub emoji depicting the changes.
+ */
+function getEmoji(changeFlags) {
+  if (changeFlags.nothingChanged) {
+    return `:zzz:`;
+  }
+
+  if (changeFlags.hasChanged || (changeFlags.hasAdded && changeFlags.hasRemoved)) {
+    return `:vs:`;
+  }
+
+  if (changeFlags.hasAdded) {
+    return `:new:`;
+  }
+
+  return `:x:`;
 }
