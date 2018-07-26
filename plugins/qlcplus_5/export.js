@@ -392,11 +392,11 @@ function getCapabilityPreset(capability) {
     RampDownFreqRange: getStrobeFrequencyPreset(`RampDown`, false),
 
     // other strobe capabilities
-    StrobeSlowToFast: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && capabilityHelpers.isIncreasingSpeed(cap),
-    StrobeFastToSlow: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && capabilityHelpers.isDecreasingSpeed(cap),
     StrobeRandomSlowToFast: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && cap.randomTiming && capabilityHelpers.isIncreasingSpeed(cap),
     StrobeRandomFastToSlow: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && cap.randomTiming && capabilityHelpers.isDecreasingSpeed(cap),
     StrobeRandom: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && cap.randomTiming,
+    StrobeSlowToFast: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && capabilityHelpers.isIncreasingSpeed(cap),
+    StrobeFastToSlow: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && capabilityHelpers.isDecreasingSpeed(cap),
     PulseSlowToFast: cap => capabilityHelpers.isShutterEffect(cap, `Pulse`) && capabilityHelpers.isIncreasingSpeed(cap),
     PulseFastToSlow: cap => capabilityHelpers.isShutterEffect(cap, `Pulse`) && capabilityHelpers.isDecreasingSpeed(cap),
     RampUpSlowToFast: cap => capabilityHelpers.isShutterEffect(cap, `RampUp`) && capabilityHelpers.isIncreasingSpeed(cap),
