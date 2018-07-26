@@ -172,7 +172,7 @@ function performTask(task) {
 
   let lines = [
     `<details>`,
-    `<summary>${emoji} <strong>${task.manFix} ${task.pluginKey}</strong></summary>`
+    `<summary>${emoji} <strong>${task.manFix}:</strong> ${task.pluginKey}</summary>`
   ];
 
   if (nothingChanged) {
@@ -182,13 +182,13 @@ function performTask(task) {
     lines.push(`<blockquote>`);
 
     if (hasRemoved) {
-      lines.push(`*Removed files*`);
-      lines = lines.concat(output.removedFiles.map(file => `- ${file}`), ``);
+      lines.push(`<strong>Removed files</strong>`);
+      lines = lines.concat(`<ul>`, output.removedFiles.map(file => `<li>${file}</li>`), `</ul>`);
     }
 
     if (hasAdded) {
-      lines.push(`*Added files*`);
-      lines = lines.concat(output.addedFiles.map(file => `- ${file}`), ``);
+      lines.push(`<strong>Added files</strong>`);
+      lines = lines.concat(`<ul>`, output.addedFiles.map(file => `<li>${file}</li>`), `</ul>`);
     }
 
     for (const file of Object.keys(output.changedFiles)) {
