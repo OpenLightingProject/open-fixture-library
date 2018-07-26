@@ -33,6 +33,11 @@
         "type": "Generic"
       }
     },
+    "Circular Movement": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
     "Y Rotation": {
       "capability": {
         "type": "Generic"
@@ -87,6 +92,7 @@
       "channels": [
         "Mode",
         "Pattern",
+        "Circular Movement",
         "Y Rotation",
         "X Rotation",
         "Horizontal Movement",
