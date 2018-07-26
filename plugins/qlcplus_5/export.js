@@ -36,7 +36,7 @@ const capabilityHelpers = {
 };
 
 module.exports.name = `QLC+ 5`;
-module.exports.version = `0.1.0`;
+module.exports.version = `1.0.0`;
 
 module.exports.export = function exportQLCplus(fixtures, options) {
   return fixtures.map(fixture => {
