@@ -378,8 +378,12 @@ function addCapabilityAliases(xmlCapability, cap) {
 function getCapabilityPreset(capability) {
   const capabilityPresets = {
     // shutter capabilities
-    ShutterOpen: cap => capabilityHelpers.isShutterEffect(cap, `Open`),
-    ShutterClose: cap => capabilityHelpers.isShutterEffect(cap, `Closed`),
+    ShutterOpen: {
+      handler: cap => capabilityHelpers.isShutterEffect(cap, `Open`)
+    },
+    ShutterClose: {
+      handler: cap => capabilityHelpers.isShutterEffect(cap, `Closed`)
+    },
 
     // strobe capabilities with specified frequency
     StrobeFrequency: getStrobeFrequencyPreset(`Strobe`, true),
@@ -392,69 +396,110 @@ function getCapabilityPreset(capability) {
     RampDownFreqRange: getStrobeFrequencyPreset(`RampDown`, false),
 
     // other strobe capabilities
-    StrobeRandomSlowToFast: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && cap.randomTiming && capabilityHelpers.isIncreasingSpeed(cap),
-    StrobeRandomFastToSlow: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && cap.randomTiming && capabilityHelpers.isDecreasingSpeed(cap),
-    StrobeRandom: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && cap.randomTiming,
-    StrobeSlowToFast: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && capabilityHelpers.isIncreasingSpeed(cap),
-    StrobeFastToSlow: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && capabilityHelpers.isDecreasingSpeed(cap),
-    PulseSlowToFast: cap => capabilityHelpers.isShutterEffect(cap, `Pulse`) && capabilityHelpers.isIncreasingSpeed(cap),
-    PulseFastToSlow: cap => capabilityHelpers.isShutterEffect(cap, `Pulse`) && capabilityHelpers.isDecreasingSpeed(cap),
-    RampUpSlowToFast: cap => capabilityHelpers.isShutterEffect(cap, `RampUp`) && capabilityHelpers.isIncreasingSpeed(cap),
-    RampUpFastToSlow: cap => capabilityHelpers.isShutterEffect(cap, `RampUp`) && capabilityHelpers.isDecreasingSpeed(cap),
-    RampDownSlowToFast: cap => capabilityHelpers.isShutterEffect(cap, `RampDown`) && capabilityHelpers.isIncreasingSpeed(cap),
-    RampDownFastToSlow: cap => capabilityHelpers.isShutterEffect(cap, `RampDown`) && capabilityHelpers.isDecreasingSpeed(cap),
+    StrobeRandomSlowToFast: {
+      handler: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && cap.randomTiming && capabilityHelpers.isIncreasingSpeed(cap)
+    },
+    StrobeRandomFastToSlow: {
+      handler: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && cap.randomTiming && capabilityHelpers.isDecreasingSpeed(cap)
+    },
+    StrobeRandom: {
+      handler: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && cap.randomTiming
+    },
+    StrobeSlowToFast: {
+      handler: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && capabilityHelpers.isIncreasingSpeed(cap)
+    },
+    StrobeFastToSlow: {
+      handler: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && capabilityHelpers.isDecreasingSpeed(cap)
+    },
+    PulseSlowToFast: {
+      handler: cap => capabilityHelpers.isShutterEffect(cap, `Pulse`) && capabilityHelpers.isIncreasingSpeed(cap)
+    },
+    PulseFastToSlow: {
+      handler: cap => capabilityHelpers.isShutterEffect(cap, `Pulse`) && capabilityHelpers.isDecreasingSpeed(cap)
+    },
+    RampUpSlowToFast: {
+      handler: cap => capabilityHelpers.isShutterEffect(cap, `RampUp`) && capabilityHelpers.isIncreasingSpeed(cap)
+    },
+    RampUpFastToSlow: {
+      handler: cap => capabilityHelpers.isShutterEffect(cap, `RampUp`) && capabilityHelpers.isDecreasingSpeed(cap)
+    },
+    RampDownSlowToFast: {
+      handler: cap => capabilityHelpers.isShutterEffect(cap, `RampDown`) && capabilityHelpers.isIncreasingSpeed(cap)
+    },
+    RampDownFastToSlow: {
+      handler: cap => capabilityHelpers.isShutterEffect(cap, `RampDown`) && capabilityHelpers.isDecreasingSpeed(cap)
+    },
 
     // rotation capabilities
-    RotationClockwiseSlowToFast: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isIncreasingSpeed(cap) && cap.speed[0].number > 0,
-    RotationClockwiseFastToSlow: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isDecreasingSpeed(cap) && cap.speed[1].number > 0,
-    RotationClockwise: cap => capabilityHelpers.isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0].number > 0,
-    RotationStop: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isStopped(cap),
-    RotationCounterClockwiseSlowToFast: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isIncreasingSpeed(cap) && cap.speed[0].number < 0,
-    RotationCounterClockwiseFastToSlow: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isDecreasingSpeed(cap) && cap.speed[1].number < 0,
-    RotationCounterClockwise: cap => capabilityHelpers.isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0].number < 0,
+    RotationClockwiseSlowToFast: {
+      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isIncreasingSpeed(cap) && cap.speed[0].number > 0
+    },
+    RotationClockwiseFastToSlow: {
+      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isDecreasingSpeed(cap) && cap.speed[1].number > 0
+    },
+    RotationClockwise: {
+      handler: cap => capabilityHelpers.isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0].number > 0
+    },
+    RotationStop: {
+      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isStopped(cap)
+    },
+    RotationCounterClockwiseSlowToFast: {
+      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isIncreasingSpeed(cap) && cap.speed[0].number < 0
+    },
+    RotationCounterClockwiseFastToSlow: {
+      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isDecreasingSpeed(cap) && cap.speed[1].number < 0
+    },
+    RotationCounterClockwise: {
+      handler: cap => capabilityHelpers.isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0].number < 0
+    },
 
     // color capabilities
     ColorMacro: {
       handler: cap => (cap.type === `ColorPreset` || cap.type === `ColorWheelIndex`) && cap.colors !== null && cap.colors.allColors.length === 1,
-      res1: cap => cap.colors.allColors[0],
-      res2: cap => null
+      res1: cap => cap.colors.allColors[0]
     },
     ColorDoubleMacro: {
       handler: cap => (cap.type === `ColorPreset` || cap.type === `ColorWheelIndex`) && cap.colors !== null && cap.colors.allColors.length === 2,
       res1: cap => cap.colors.allColors[0],
       res2: cap => cap.colors.allColors[1]
     },
-    ColorWheelIndex: cap => false, // seems to be unused in QLC+ for now
+    ColorWheelIndex: {
+      handler: cap => false // seems to be unused in QLC+ for now
+    },
 
     // gobo capabilities
     // TODO: export a gobo image as res1
-    GoboShakeMacro: cap => cap.type === `GoboIndex` && cap.isShaking,
-    GoboMacro: cap => cap.type === `GoboIndex`,
+    GoboShakeMacro: {
+      handler: cap => cap.type === `GoboIndex` && cap.isShaking
+    },
+    GoboMacro: {
+      handler: cap => cap.type === `GoboIndex`
+    },
 
     // generic / other capabilities
     GenericPicture: {
       handler: cap => cap.effectPreset === `ColorFade` && !capabilityHelpers.isStopped(cap),
-      res1: cap => `Others/rainbow.png`,
-      res2: cap => null
+      res1: cap => `Others/rainbow.png`
     },
-    SlowToFast: cap => capabilityHelpers.isIncreasingSpeed(cap),
-    FastToSlow: cap => capabilityHelpers.isDecreasingSpeed(cap),
-    NearToFar: cap => cap.distance !== null && cap.distance[0].number < cap.distance[1].number,
-    FarToNear: cap => cap.distance !== null && cap.distance[0].number > cap.distance[1].number,
-    SmallToBig: cap => (capabilityHelpers.isBeamAngle(cap) && cap.angle[0].number < cap.angle[1].number) || (cap.parameter !== null && cap.parameter[0].keyword === `small` && cap.parameter[1].keyword === `big`),
-    BigToSmall: cap => (capabilityHelpers.isBeamAngle(cap) && cap.angle[0].number > cap.angle[1].number) || (cap.parameter !== null && cap.parameter[0].keyword === `big` && cap.parameter[1].keyword === `small`)
-  };
-
-  for (const presetName of Object.keys(capabilityPresets)) {
-    const preset = capabilityPresets[presetName];
-    if (typeof preset === `function`) {
-      capabilityPresets[presetName] = {
-        handler: preset,
-        res1: cap => null,
-        res2: cap => null
-      };
+    SlowToFast: {
+      handler: cap => capabilityHelpers.isIncreasingSpeed(cap)
+    },
+    FastToSlow: {
+      handler: cap => capabilityHelpers.isDecreasingSpeed(cap)
+    },
+    NearToFar: {
+      handler: cap => cap.distance !== null && cap.distance[0].number < cap.distance[1].number
+    },
+    FarToNear: {
+      handler: cap => cap.distance !== null && cap.distance[0].number > cap.distance[1].number
+    },
+    SmallToBig: {
+      handler: cap => (capabilityHelpers.isBeamAngle(cap) && cap.angle[0].number < cap.angle[1].number) || (cap.parameter !== null && cap.parameter[0].keyword === `small` && cap.parameter[1].keyword === `big`)
+    },
+    BigToSmall: {
+      handler: cap => (capabilityHelpers.isBeamAngle(cap) && cap.angle[0].number > cap.angle[1].number) || (cap.parameter !== null && cap.parameter[0].keyword === `big` && cap.parameter[1].keyword === `small`)
     }
-  }
+  };
 
   const presetName = Object.keys(capabilityPresets).find(
     presetName => capabilityPresets[presetName].handler(capability)
@@ -464,10 +509,11 @@ function getCapabilityPreset(capability) {
     return null;
   }
 
+  const preset = capabilityPresets[presetName];
   return {
     presetName,
-    res1: capabilityPresets[presetName].res1(capability),
-    res2: capabilityPresets[presetName].res2(capability)
+    res1: `res1` in preset ? preset.res1(capability) : null,
+    res2: `res2` in preset ? preset.res2(capability) : null
   };
 
 
