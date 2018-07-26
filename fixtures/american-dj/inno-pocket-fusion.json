@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Inno Pocket Fusion",
   "shortName": "ADJInnoPocketFusion",
-  "categories": ["Flower", "Scanner", "Color Changer"],
+  "categories": ["Flower", "Laser", "Color Changer"],
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2018-07-26",
@@ -22,7 +22,8 @@
       "degreesMinMax": [2, 5]
     },
     "focus": {
-      "type": "Barrel"
+      "type": "Barrel",
+      "tiltMax": "infinite"
     }
   },
   "availableChannels": {
@@ -286,56 +287,87 @@
       ]
     },
     "Show": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
         },
         {
           "dmxRange": [8, 33],
           "type": "Effect",
-          "effectName": "Show 1"
+          "effectName": "Show 1",
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
         },
         {
           "dmxRange": [34, 59],
           "type": "Effect",
-          "effectName": "Show 2"
+          "effectName": "Show 2",
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
         },
         {
           "dmxRange": [60, 85],
           "type": "Effect",
-          "effectName": "Show 3"
+          "effectName": "Show 3",
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
         },
         {
           "dmxRange": [86, 111],
           "type": "Effect",
-          "effectName": "Show 4"
+          "effectName": "Show 4",
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
         },
         {
           "dmxRange": [112, 137],
           "type": "Effect",
-          "effectName": "Show 5"
+          "effectName": "Show 5",
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
         },
         {
           "dmxRange": [138, 163],
           "type": "Effect",
-          "effectName": "Show 6"
+          "effectName": "Show 6",
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
         },
         {
           "dmxRange": [164, 189],
           "type": "Effect",
-          "effectName": "Show 7"
+          "effectName": "Show 7",
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
         },
         {
           "dmxRange": [190, 215],
           "type": "Effect",
-          "effectName": "Show 8"
+          "effectName": "Show 8",
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
         },
         {
           "dmxRange": [216, 255],
           "type": "Effect",
           "effectName": "Sound Active Show",
-          "soundControlled": true
+          "soundControlled": true,
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         }
       ]
     },
@@ -413,11 +445,6 @@
           "type": "NoFunction"
         }
       ]
-    },
-    "Show Speed / Sound Sensitivity": {
-      "capability": {
-        "type": "Generic"
-      }
     }
   },
   "modes": [
