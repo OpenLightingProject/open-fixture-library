@@ -5,9 +5,10 @@
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2018-06-16",
-    "lastModifyDate": "2018-07-21"
+    "lastModifyDate": "2018-07-26"
   },
   "manualURL": "http://static.boomtonedj.com/pdf/manual/44/44625_xtremledmanual.pdf",
+  "comment": "Improved by QLC+ forum user Tsunoo: http://www.qlcplus.org/forum/viewtopic.php?f=6&t=12319&sid=569fbba53f0fb0e93cb7d50899be9f94",
   "physical": {
     "dimensions": [245, 240, 245],
     "weight": 3.4,
@@ -157,19 +158,56 @@
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
+          "type": "NoFunction"
         },
         {
-          "dmxRange": [1, 202],
+          "dmxRange": [1, 28],
           "type": "ColorPreset",
-          "comment": "7 colors selection"
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [29, 57],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [58, 86],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [87, 115],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Red + Green"
+        },
+        {
+          "dmxRange": [116, 144],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#0000ff"],
+          "comment": "Red + Blue"
+        },
+        {
+          "dmxRange": [145, 173],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#0000ff"],
+          "comment": "Green + Blue"
+        },
+        {
+          "dmxRange": [174, 202],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"],
+          "comment": "Red + Green + Blue"
         },
         {
           "dmxRange": [203, 231],
           "type": "Effect",
           "effectPreset": "ColorJump",
-          "comment": "7 colors"
+          "speed": "135bpm",
+          "comment": "cycle through the colors above"
         },
         {
           "dmxRange": [232, 255],
