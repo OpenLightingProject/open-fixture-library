@@ -1,30 +1,46 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "cs 1000rgb",
-  "categories": ["Laser"],
+  "name": "CS-1000RGB",
+  "categories": ["Laser", "Color Changer"],
   "meta": {
     "authors": ["Jo"],
-    "createDate": "2018-07-23",
-    "lastModifyDate": "2018-07-23"
+    "createDate": "2018-07-26",
+    "lastModifyDate": "2018-07-26"
   },
   "manualURL": "https://www.laserworld.com/en/support/downloads/download/79-laserworld-club-series/52-laserworld-manual-club-series-2016-02.html",
+  "helpWanted": "Most information about the capabilities of the channels are missing.",
+  "physical": {
+    "dimensions": [220, 155, 145],
+    "weight": 3.15,
+    "power": 60,
+    "bulb": {
+      "type": "650nm / 532nm / 445nm RGB Laser diodes"
+    },
+    "focus": {
+      "type": "Fixed",
+      "panMax": 40,
+      "tiltMax": 40
+    }
+  },
   "availableChannels": {
     "Mode": {
-      "defaultValue": 1,
       "capability": {
-        "type": "Intensity"
+        "type": "Maintenance"
       }
     },
     "Pattern": {
-      "defaultValue": 2,
       "capability": {
         "type": "Generic"
       }
     },
-    "Effect": {
+    "Y Rotation": {
       "capability": {
-        "type": "ShutterStrobe",
-        "shutterEffect": "RampUp"
+        "type": "Generic"
+      }
+    },
+    "X Rotation": {
+      "capability": {
+        "type": "Generic"
       }
     },
     "Horizontal Movement": {
@@ -41,61 +57,43 @@
         "angleEnd": "40deg"
       }
     },
-    "Zoom": {
+    "Manual Zoom": {
       "capability": {
         "type": "Zoom",
         "angleStart": "narrow",
         "angleEnd": "wide"
       }
     },
-    "Width": {
+    "Pattern Buildup": {
       "capability": {
         "type": "Generic"
       }
     },
-    "Height": {
-      "capability": {
-        "type": "Generic"
-      }
-    },
-    "Rotation": {
-      "capability": {
-        "type": "Rotation",
-        "angle": "40deg"
-      }
-    },
-    "Blanking": {
-      "capability": {
-        "type": "Generic"
-      }
-    },
-    "Wave": {
+    "Dot Effect with Strobe": {
       "capability": {
         "type": "Generic"
       }
     },
     "Color": {
       "capability": {
-        "type": "ColorWheelIndex",
-        "index": 1
+        "type": "ColorPreset"
       }
     }
   },
   "modes": [
     {
-      "name": "1",
+      "name": "11-channel",
+      "shortName": "11ch",
       "channels": [
         "Mode",
         "Pattern",
-        "Effect",
+        "Y Rotation",
+        "X Rotation",
         "Horizontal Movement",
         "Vertical Movement",
-        "Zoom",
-        "Width",
-        "Height",
-        "Rotation",
-        "Blanking",
-        "Wave",
+        "Manual Zoom",
+        "Pattern Buildup",
+        "Dot Effect with Strobe",
         "Color"
       ]
     }

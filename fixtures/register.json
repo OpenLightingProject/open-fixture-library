@@ -235,11 +235,6 @@
       "lastModifyDate": "2018-07-21",
       "lastAction": "modified"
     },
-    "cs1000rgb/cs-1000rgb": {
-      "name": "cs 1000rgb",
-      "lastModifyDate": "2018-07-23",
-      "lastAction": "created"
-    },
     "dts/scena-led-150": {
       "name": "Scena LED 150",
       "lastModifyDate": "2018-07-21",
@@ -439,6 +434,11 @@
       "name": "GoboTracer",
       "lastModifyDate": "2018-07-21",
       "lastAction": "modified"
+    },
+    "laserworld/cs-1000rgb": {
+      "name": "CS-1000RGB",
+      "lastModifyDate": "2018-07-26",
+      "lastAction": "created"
     },
     "lightmaxx/dj-scan-led": {
       "name": "DJ Scan LED",
@@ -650,13 +650,13 @@
       "lastModifyDate": "2018-07-21",
       "lastAction": "modified"
     },
-    "showven/sparkular": {
-      "name": "Sparkular",
+    "showven/sparkular-fall": {
+      "name": "Sparkular Fall",
       "lastModifyDate": "2018-07-21",
       "lastAction": "modified"
     },
-    "showven/sparkular-fall": {
-      "name": "Sparkular Fall",
+    "showven/sparkular": {
+      "name": "Sparkular",
       "lastModifyDate": "2018-07-21",
       "lastAction": "modified"
     },
@@ -770,9 +770,6 @@
     "coemar": [
       "prospot-250-lx"
     ],
-    "cs1000rgb": [
-      "cs-1000rgb"
-    ],
     "dts": [
       "scena-led-150",
       "xr1200-wash"
@@ -838,6 +835,9 @@
     ],
     "kam": [
       "gobotracer"
+    ],
+    "laserworld": [
+      "cs-1000rgb"
     ],
     "lightmaxx": [
       "dj-scan-led",
@@ -907,8 +907,8 @@
       "xs-1-rgbw"
     ],
     "showven": [
-      "sparkular",
-      "sparkular-fall"
+      "sparkular-fall",
+      "sparkular"
     ],
     "stairville": [
       "led-flood-panel-150",
@@ -1012,6 +1012,7 @@
       "jb-lighting/varyscan-p7",
       "jb-systems/twin-effect-laser",
       "kam/gobotracer",
+      "laserworld/cs-1000rgb",
       "lightmaxx/dj-scan-led",
       "lightmaxx/platinum-mini-tri-par",
       "lightmaxx/vega-zoom-wash",
@@ -1067,8 +1068,8 @@
       "glp/impression-x4-bar-10",
       "magicfx/stage-flame",
       "minuit-une/ivl-carre",
-      "showven/sparkular",
       "showven/sparkular-fall",
+      "showven/sparkular",
       "venue/tristrip3z"
     ],
     "Fan": [
@@ -1096,10 +1097,10 @@
       "american-dj/galaxian-3d",
       "cameo/storm",
       "chauvet-dj/gigbar-2",
-      "cs1000rgb/cs-1000rgb",
       "eurolite/led-fe-1500",
       "glp/impression-laser",
       "jb-systems/twin-effect-laser",
+      "laserworld/cs-1000rgb",
       "minuit-une/ivl-carre",
       "showtec/dominator"
     ],
@@ -1345,8 +1346,8 @@
     ],
     "Alejo Cervera": [
       "magicfx/stage-flame",
-      "showven/sparkular",
-      "showven/sparkular-fall"
+      "showven/sparkular-fall",
+      "showven/sparkular"
     ],
     "Justin Hornsby": [
       "chauvet-dj/washfx",
@@ -1354,7 +1355,7 @@
       "kam/gobotracer"
     ],
     "Jo": [
-      "cs1000rgb/cs-1000rgb",
+      "laserworld/cs-1000rgb",
       "showtec/xs-1-rgbw"
     ],
     "Karl Humbug": [
@@ -1487,7 +1488,7 @@
     }
   },
   "lastUpdated": [
-    "cs1000rgb/cs-1000rgb",
+    "laserworld/cs-1000rgb",
     "ayrton/magicblade-fx",
     "5star-systems/spica-250m",
     "abstract/twister-4",
