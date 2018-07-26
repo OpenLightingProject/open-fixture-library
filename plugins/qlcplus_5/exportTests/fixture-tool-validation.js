@@ -18,16 +18,25 @@ const EXPORTED_FIXTURE_PATH = `resources/fixtures/manufacturer/fixture.qxf`;
 module.exports = function testFixtureToolValidation(exportFileData) {
   let directory;
 
+  // create a unique temporary directory to avoid race conditions when multiple running tests access the same files
   return mkdtemp(FIXTURE_TOOL_DIR_PREFIX)
     .then(tmpDir => {
       directory = tmpDir;
     })
+
+    // download fixtures-tool.py into fixtures/scripts directory
     .then(() => mkdirp(path.join(directory, `resources/fixtures/scripts`)))
+    .then(() => downloadFixtureTool(directory))
+
+    // write exported fixture.qxf into fixtures/manufacturer directory
     .then(() => mkdirp(path.join(directory, `resources/fixtures/manufacturer`)))
+    .then(() => writeFile(path.join(directory, EXPORTED_FIXTURE_PATH), exportFileData))
+
+    // store used gobos in the gobos/ directory
     .then(() => mkdirp(path.join(directory, `resources/gobos/Others`)))
     .then(() => writeFile(path.join(directory, `resources/gobos/Others/rainbow.png`), ``))
-    .then(() => downloadFixtureTool(directory))
-    .then(() => writeFile(path.join(directory, EXPORTED_FIXTURE_PATH), exportFileData))
+
+    // call the fixture tool
     .then(() => execFile(path.join(directory, FIXTURE_TOOL_PATH), [`--validate`, `.`], {
       cwd: path.join(directory, `resources/fixtures`)
     }))
