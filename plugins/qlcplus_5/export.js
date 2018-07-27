@@ -70,9 +70,8 @@ module.exports.export = function exportQLCplus(fixtures, options) {
 
     xml.doctype(``);
 
-    const sanitizedManufacturerName = sanitize(fixture.manufacturer.name).replace(/\s+/g, `_`);
     return {
-      name: `${sanitizedManufacturerName}/${sanitizedManufacturerName}-${sanitize(fixture.name)}.qxf`.replace(/\s+/g, `-`),
+      name: sanitize(`${fixture.manufacturer.name}/-${fixture.name}.qxf`).replace(/\s+/g, `-`),
       content: xml.end({
         pretty: true,
         indent: ` `
