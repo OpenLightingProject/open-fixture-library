@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Flat Par QA12XS",
+  "shortName": "QA12XS",
+  "categories": ["Blinder", "Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["TAKU"],
+    "createDate": "2018-07-29",
+    "lastModifyDate": "2018-07-29"
+  },
+  "manualURL": "http://intranet.americandj.com/ItemRelatedFiles/8308/flat_par_qa12xs.pdf",
+  "physical": {
+    "dimensions": [280, 115, 328],
+    "weight": 3.2,
+    "power": 80,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "RGBA QUAD LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Master": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX(5ch)",
+      "shortName": "DMX",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Master"
+      ]
+    }
+  ]
+}
