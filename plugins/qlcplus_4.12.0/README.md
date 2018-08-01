@@ -1,8 +1,8 @@
-# QLC+ v5 plugin
+# QLC+ v4.12.0 plugin
 
 <https://www.qlcplus.org/>
 
-A feature-rich open-source lighting software. This plugin works with QLC+ version 4.11.3 GIT and above, especially version 5 alpha. None of those are released as a stable version yet, so this plugin might change as well.
+A feature-rich open-source lighting software. This plugin works with QLC+ version 4.11.3 GIT and above, but is especially useful for version 5 (alpha). None of those are released as a stable version yet, so this plugin might change as well.
 
 The main library is available in their [GitHub repository](https://github.com/mcallegari/qlcplus/tree/master/resources/fixtures). Many additional fixtures can be found in the [forum](https://www.qlcplus.org/forum/viewforum.php?f=3). To create a new fixture, the `Fixture Editor` program is also included.
 
