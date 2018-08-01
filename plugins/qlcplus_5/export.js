@@ -231,13 +231,15 @@ function getChannelPreset(channel) {
     ColorWheel: cap => cap.type === `ColorWheelRotation`,
     ColorCTOMixer: cap => cap.type === `ColorTemperature` && cap.colorTemperature[0].number === 0 && cap.colorTemperature[1].number < 0,
     ColorCTBMixer: cap => cap.type === `ColorTemperature` && cap.colorTemperature[0].number === 0 && cap.colorTemperature[1].number > 0,
+    ColorCTCMixer: cap => cap.type === `ColorTemperature`,
     GoboWheel: cap => cap.type === `GoboWheelRotation`,
     GoboIndex: cap => cap.type === `GoboIndex`,
     ShutterStrobeSlowFast: cap => cap.type === `ShutterStrobe` && capabilityHelpers.isIncreasingSpeed(cap),
     ShutterStrobeFastSlow: cap => cap.type === `ShutterStrobe` && capabilityHelpers.isDecreasingSpeed(cap),
+    ShutterIrisMinToMax: cap => cap.type === `Iris` && cap.irisPercent[0].number < cap.irisPercent[1].number,
+    ShutterIrisMaxToMin: cap => cap.type === `Iris` && cap.irisPercent[0].number > cap.irisPercent[1].number,
     BeamFocusNearFar: cap => cap.type === `Focus` && cap.distance[0].number < cap.distance[1].number,
     BeamFocusFarNear: cap => cap.type === `Focus` && cap.distance[0].number > cap.distance[1].number,
-    BeamIris: cap => cap.type === `Iris`,
     BeamZoomSmallBig: cap => cap.type === `Zoom` && cap.angle[0].number < cap.angle[1].number,
     BeamZoomBigSmall: cap => cap.type === `Zoom` && cap.angle[0].number > cap.angle[1].number,
     PrismRotationSlowFast: cap => cap.type === `PrismRotation` && capabilityHelpers.isIncreasingSpeed(cap),
@@ -285,7 +287,11 @@ function getFineChannelPreset(fineChannel) {
     ),
     GoboIndexFine: () => coarseChannel.capabilities.every(
       cap => cap.type === `GoboStencilRotation`
-    )
+    ),
+
+    ShutterIrisFine: () => coarseChannel.type === `Iris`,
+    BeamFocusFine: () => coarseChannel.type === `Focus`,
+    BeamZoomFine: () => coarseChannel.type === `Zoom`
   };
 
   // fine channel preset for a group of coarse channels
@@ -471,6 +477,9 @@ function getCapabilityPreset(capability) {
     RotationCounterClockwise: {
       handler: cap => capabilityHelpers.isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0].number < 0
     },
+    RotationIndexed: {
+      handler: cap => false // seems to be unused in QLC+ for now
+    },
 
     // color capabilities
     ColorMacro: {
@@ -493,6 +502,17 @@ function getCapabilityPreset(capability) {
     },
     GoboMacro: {
       handler: cap => cap.type === `GoboIndex`
+    },
+
+    // prism capabilities
+    // TODO: export the number of prism faces as res1
+    PrismEffectOn: {
+      handler: cap => cap.type === `Prism`
+    },
+    PrismEffectOff: {
+      handler: cap => cap.type === `NoFunction` && cap._channel.capabilities.every(
+        otherCap => otherCap === cap || [`Prism`, `Effect`].includes(otherCap.type)
+      )
     },
 
     // generic / other capabilities
