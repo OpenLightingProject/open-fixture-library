@@ -157,35 +157,9 @@ function addFineChannel(xml, fineChannel) {
     return;
   }
 
-  const fineChannelPresets = [
-    `IntensityMasterDimmerFine`,
-    `IntensityDimmerFine`,
-    `IntensityRedFine`,
-    `IntensityGreenFine`,
-    `IntensityBlueFine`,
-    `IntensityCyanFine`,
-    `IntensityMagentaFine`,
-    `IntensityYellowFine`,
-    `IntensityAmberFine`,
-    `IntensityWhiteFine`,
-    `IntensityUVFine`,
-    `IntensityIndigoFine`,
-    `IntensityLimeFine`,
-    `IntensityHueFine`,
-    `IntensitySaturationFine`,
-    `IntensityLightnessFine`,
-    `IntensityValueFine`,
-    `PositionPanFine`,
-    `PositionTiltFine`,
-    `ColorWheelFine`,
-    `GoboWheelFine`,
-    `GoboIndexFine`,
-    `BeamIrisFine`
-  ];
-
-  const channelPreset = getChannelPreset(fineChannel.coarseChannel);
-  if (channelPreset !== null && fineChannelPresets.includes(`${channelPreset}Fine`)) {
-    xmlFineChannel.attribute(`Preset`, `${channelPreset}Fine`);
+  const fineChannelPreset = getFineChannelPreset(fineChannel);
+  if (fineChannelPreset !== null) {
+    xmlFineChannel.attribute(`Preset`, fineChannelPreset);
 
     return;
   }
@@ -272,6 +246,52 @@ function getChannelPreset(channel) {
   };
 
   return Object.keys(channelPresets).find(presetName => channelPresets[presetName](capability)) || null;
+}
+
+/**
+ * @param {!FineChannel} fineChannel The OFL fine channel object.
+ * @returns {?string} The QLC+ channel preset name or null, if there is no suitable one.
+ */
+function getFineChannelPreset(fineChannel) {
+  const coarseChannel = fineChannel.coarseChannel;
+  const channelPreset = getChannelPreset(coarseChannel);
+
+  const fineChannelPresets = {
+    IntensityMasterDimmerFine: () => channelPreset === `IntensityMasterDimmer`,
+    IntensityDimmerFine: () => channelPreset === `IntensityDimmer`,
+    IntensityRedFine: () => channelPreset === `IntensityRed`,
+    IntensityGreenFine: () => channelPreset === `IntensityGreen`,
+    IntensityBlueFine: () => channelPreset === `IntensityBlue`,
+    IntensityCyanFine: () => channelPreset === `IntensityCyan`,
+    IntensityMagentaFine: () => channelPreset === `IntensityMagenta`,
+    IntensityYellowFine: () => channelPreset === `IntensityYellow`,
+    IntensityAmberFine: () => channelPreset === `IntensityAmber`,
+    IntensityWhiteFine: () => channelPreset === `IntensityWhite`,
+    IntensityUVFine: () => channelPreset === `IntensityUV`,
+    IntensityIndigoFine: () => channelPreset === `IntensityIndigo`,
+    IntensityLimeFine: () => channelPreset === `IntensityLime`,
+    IntensityHueFine: () => channelPreset === `IntensityHue`,
+    IntensitySaturationFine: () => channelPreset === `IntensitySaturation`,
+    IntensityLightnessFine: () => channelPreset === `IntensityLightness`,
+    IntensityValueFine: () => channelPreset === `IntensityValue`,
+    PositionPanFine: () => channelPreset === `PositionPan`,
+    PositionTiltFine: () => channelPreset === `PositionTilt`,
+
+    ColorWheelFine: () => coarseChannel.capabilities.every(
+      cap => [`ColorWheelIndex`, `ColorWheelRotation`, `Effect`, `NoFunction`].includes(cap.type)
+    ),
+    GoboWheelFine: () => coarseChannel.capabilities.every(
+      cap => [`GoboIndex`, `GoboWheelRotation`, `Effect`, `NoFunction`].includes(cap.type)
+    ),
+    GoboIndexFine: () => coarseChannel.capabilities.every(
+      cap => cap.type === `GoboStencilRotation`
+    )
+  };
+
+  // fine channel preset for a group of coarse channels
+  return Object.keys(fineChannelPresets).find(
+    fineChannelPreset => fineChannelPresets[fineChannelPreset]()
+  ) || null;
 }
 
 /**
