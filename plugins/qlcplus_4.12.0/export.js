@@ -35,7 +35,7 @@ const capabilityHelpers = {
   isBeamAngle: cap => (cap.type === `BeamAngle` || cap.type === `Zoom`) && cap.angle !== null
 };
 
-module.exports.name = `QLC+ 5`;
+module.exports.name = `QLC+ 4.12.0`;
 module.exports.version = `1.0.0`;
 
 module.exports.export = function exportQLCplus(fixtures, options) {
