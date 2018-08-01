@@ -456,32 +456,6 @@ function getCapabilityPreset(capability) {
       handler: cap => capabilityHelpers.isShutterEffect(cap, `RampDown`) && capabilityHelpers.isDecreasingSpeed(cap)
     },
 
-    // rotation capabilities
-    RotationClockwiseSlowToFast: {
-      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isIncreasingSpeed(cap) && cap.speed[0].number > 0
-    },
-    RotationClockwiseFastToSlow: {
-      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isDecreasingSpeed(cap) && cap.speed[1].number > 0
-    },
-    RotationClockwise: {
-      handler: cap => capabilityHelpers.isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0].number > 0
-    },
-    RotationStop: {
-      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isStopped(cap)
-    },
-    RotationCounterClockwiseSlowToFast: {
-      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isIncreasingSpeed(cap) && cap.speed[0].number < 0
-    },
-    RotationCounterClockwiseFastToSlow: {
-      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isDecreasingSpeed(cap) && cap.speed[1].number < 0
-    },
-    RotationCounterClockwise: {
-      handler: cap => capabilityHelpers.isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0].number < 0
-    },
-    RotationIndexed: {
-      handler: cap => capabilityHelpers.isRotationAngle(cap)
-    },
-
     // color capabilities
     ColorMacro: {
       handler: cap => (cap.type === `ColorPreset` || cap.type === `ColorWheelIndex`) && cap.colors !== null && cap.colors.allColors.length === 1,
@@ -514,6 +488,32 @@ function getCapabilityPreset(capability) {
       handler: cap => cap.type === `NoFunction` && cap._channel.capabilities.every(
         otherCap => otherCap === cap || [`Prism`, `Effect`].includes(otherCap.type)
       )
+    },
+
+    // rotation capabilities
+    RotationClockwiseSlowToFast: {
+      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isIncreasingSpeed(cap) && cap.speed[0].number > 0
+    },
+    RotationClockwiseFastToSlow: {
+      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isDecreasingSpeed(cap) && cap.speed[1].number > 0
+    },
+    RotationClockwise: {
+      handler: cap => capabilityHelpers.isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0].number > 0
+    },
+    RotationStop: {
+      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isStopped(cap)
+    },
+    RotationCounterClockwiseSlowToFast: {
+      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isIncreasingSpeed(cap) && cap.speed[0].number < 0
+    },
+    RotationCounterClockwiseFastToSlow: {
+      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isDecreasingSpeed(cap) && cap.speed[1].number < 0
+    },
+    RotationCounterClockwise: {
+      handler: cap => capabilityHelpers.isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0].number < 0
+    },
+    RotationIndexed: {
+      handler: cap => capabilityHelpers.isRotationAngle(cap)
     },
 
     // generic / other capabilities
