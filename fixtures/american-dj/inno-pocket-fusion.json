@@ -4,12 +4,11 @@
   "shortName": "ADJInnoPocketFusion",
   "categories": ["Flower", "Laser", "Color Changer"],
   "meta": {
-    "authors": ["Flo Edelmann"],
+    "authors": ["Flo Edelmann", "EXELBONSAI"],
     "createDate": "2018-07-26",
-    "lastModifyDate": "2018-07-26"
+    "lastModifyDate": "2018-08-01"
   },
   "manualURL": "http://intranet.americandj.com/ItemRelatedFiles/8780/inno_pocket_fusion.pdf",
-  "helpWanted": "How much does the barrel move to left / right (maximum pan angle)?",
   "physical": {
     "dimensions": [340, 177, 132],
     "weight": 3.4,
@@ -24,23 +23,49 @@
     },
     "focus": {
       "type": "Barrel",
+      "panMax": 180,
       "tiltMax": "infinite"
     }
   },
   "availableChannels": {
     "Pan": {
+      "defaultValue": 127,
       "capability": {
         "type": "Pan",
-        "angleStart": "0%",
-        "angleEnd": "100%"
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
       }
     },
     "Tilt": {
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0%",
-        "angleEnd": "100%"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "TiltContinuous",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [10, 120],
+          "type": "TiltContinuous",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        },
+        {
+          "dmxRange": [121, 134],
+          "type": "TiltContinuous",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [135, 245],
+          "type": "TiltContinuous",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "TiltContinuous",
+          "speed": "stop"
+        }
+      ]
     },
     "Color Wheel": {
       "capabilities": [
