@@ -230,6 +230,7 @@ function getChannelPreset(channel) {
     SpeedPanTiltFastSlow: cap => cap.type === `PanTiltSpeed` && (capabilityHelpers.isDecreasingSpeed(cap) || capabilityHelpers.isIncreasingDuration(cap)),
     ColorMacro: cap => cap.type === `ColorPreset` || cap.type === `ColorWheelIndex`,
     ColorWheel: cap => cap.type === `ColorWheelRotation`,
+    ColorRGBMixer: cap => false,
     ColorCTOMixer: cap => cap.type === `ColorTemperature` && cap.colorTemperature[0].number === 0 && cap.colorTemperature[1].number < 0,
     ColorCTBMixer: cap => cap.type === `ColorTemperature` && cap.colorTemperature[0].number === 0 && cap.colorTemperature[1].number > 0,
     ColorCTCMixer: cap => cap.type === `ColorTemperature`,
