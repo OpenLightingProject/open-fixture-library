@@ -160,7 +160,7 @@ export default {
             dmxRangeStart: dmxRange.start,
             dmxRangeEnd: dmxRange.end,
             colorDescription: getColorDescription(cap),
-            switchChannels
+            switchChannels: switchChannels.sort((a, b) => a.index - b.index) // ascending indices
           };
         }
       );
