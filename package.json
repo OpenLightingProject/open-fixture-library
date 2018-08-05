@@ -16,6 +16,7 @@
     "start": "node main.js"
   },
   "dependencies": {
+    "@heise/embetty-server": "^1.1.2",
     "@nuxtjs/axios": "^5.0.1",
     "@octokit/rest": "^15.1.7",
     "@std/esm": ">=0.23.0 <1.0.0",
