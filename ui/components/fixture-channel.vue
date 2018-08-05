@@ -10,20 +10,32 @@
           title="Help wanted!" />
       </template>
 
+      <slot />
+
       <div v-if="(unwrappedChannel instanceof FineChannel)">
         Fine channel of {{ unwrappedChannel.coarseChannel.name }} (channel&nbsp;{{ mode.getChannelIndex(unwrappedChannel.coarseChannel.key) + 1 }})
       </div>
 
       <template v-else-if="(unwrappedChannel instanceof SwitchingChannel)">
-        <div>Switch depending on {{ unwrappedChannel.triggerChannel.name }}'s value (channel&nbsp;{{ mode.getChannelIndex(unwrappedChannel.triggerChannel.key) + 1 }}):</div>
+        Switches depending on trigger channel's value.
+
+        <section class="switchingChannel-triggerChannel">
+          <span class="label">Trigger channel</span>
+          <span class="value">{{ unwrappedChannel.triggerChannel.name }} (channel&nbsp;{{ mode.getChannelIndex(unwrappedChannel.triggerChannel.key) + 1 }})</span>
+        </section>
 
         <ol>
           <app-fixture-channel
-            v-for="(_, switchToChannelKey) in unwrappedChannel.triggerRanges"
+            v-for="(ranges, switchToChannelKey) in unwrappedChannel.triggerRanges"
             :key="switchToChannelKey"
             :channel="fixture.getChannelByKey(switchToChannelKey)"
             :mode="mode"
-            :append-to-heading="unwrappedChannel.defaultChannel.key === switchToChannelKey ? `(default)` : null" />
+            :append-to-heading="unwrappedChannel.defaultChannel.key === switchToChannelKey ? `(default)` : null">
+            <section class="switchingChannel-triggerRanges">
+              <span class="label">Activated when</span>
+              <span class="value">Trigger channel is set to {{ ranges.map(range => range.toString()).join(` or `) }}</span>
+            </section>
+          </app-fixture-channel>
         </ol>
       </template>
 
