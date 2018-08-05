@@ -281,10 +281,14 @@ function getFineChannelPreset(fineChannel) {
     PositionPanFine: () => channelPreset === `PositionPan`,
     PositionTiltFine: () => channelPreset === `PositionTilt`,
 
-    ColorWheelFine: () => coarseChannel.capabilities.every(
+    ColorWheelFine: () => coarseChannel.capabilities.some(
+      cap => [`ColorWheelIndex`, `ColorWheelRotation`].includes(cap.type)
+    ) && coarseChannel.capabilities.every(
       cap => [`ColorWheelIndex`, `ColorWheelRotation`, `Effect`, `NoFunction`].includes(cap.type)
     ),
-    GoboWheelFine: () => coarseChannel.capabilities.every(
+    GoboWheelFine: () => coarseChannel.capabilities.some(
+      cap => [`GoboIndex`, `GoboWheelRotation`].includes(cap.type)
+    ) && coarseChannel.capabilities.every(
       cap => [`GoboIndex`, `GoboWheelRotation`, `Effect`, `NoFunction`].includes(cap.type)
     ),
     GoboIndexFine: () => coarseChannel.capabilities.every(
@@ -486,9 +490,7 @@ function getCapabilityPreset(capability) {
       handler: cap => cap.type === `Prism`
     },
     PrismEffectOff: {
-      handler: cap => cap.type === `NoFunction` && cap._channel.capabilities.every(
-        otherCap => otherCap === cap || [`Prism`, `Effect`].includes(otherCap.type)
-      )
+      handler: cap => cap.type === `NoFunction` && cap._channel.type === `Prism`
     },
 
     // rotation capabilities
