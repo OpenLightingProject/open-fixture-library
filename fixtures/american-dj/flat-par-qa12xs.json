@@ -119,7 +119,7 @@
           "dmxRange": [240, 255],
           "type": "ColorPreset",
           "colors": ["#ffdf80"],
-          "comment": "Red, Green, Blue, Amber"
+          "comment": "Light Amber"
         }
       ]
     },
@@ -444,82 +444,98 @@
         {
           "dmxRange": [0, 15],
           "type": "Effect",
-          "effectName": "Sound active program 1"
+          "effectName": "Sound active program 1",
+          "soundControlled": true
         },
         {
           "dmxRange": [16, 31],
           "type": "Effect",
-          "effectName": "Sound active program 2"
+          "effectName": "Sound active program 2",
+          "soundControlled": true
         },
         {
           "dmxRange": [32, 47],
           "type": "Effect",
-          "effectName": "Sound active program 3"
+          "effectName": "Sound active program 3",
+          "soundControlled": true
         },
         {
           "dmxRange": [48, 63],
           "type": "Effect",
-          "effectName": "Sound active program 4"
+          "effectName": "Sound active program 4",
+          "soundControlled": true
         },
         {
           "dmxRange": [64, 79],
           "type": "Effect",
-          "effectName": "Sound active program 5"
+          "effectName": "Sound active program 5",
+          "soundControlled": true
         },
         {
           "dmxRange": [80, 95],
           "type": "Effect",
-          "effectName": "Sound active program 6"
+          "effectName": "Sound active program 6",
+          "soundControlled": true
         },
         {
           "dmxRange": [96, 111],
           "type": "Effect",
-          "effectName": "Sound active program 7"
+          "effectName": "Sound active program 7",
+          "soundControlled": true
         },
         {
           "dmxRange": [112, 127],
           "type": "Effect",
-          "effectName": "Sound active program 8"
+          "effectName": "Sound active program 8",
+          "soundControlled": true
         },
         {
           "dmxRange": [128, 143],
           "type": "Effect",
-          "effectName": "Sound active program 9"
+          "effectName": "Sound active program 9",
+          "soundControlled": true
         },
         {
           "dmxRange": [144, 159],
           "type": "Effect",
-          "effectName": "Sound active program 10"
+          "effectName": "Sound active program 10",
+          "soundControlled": true
         },
         {
           "dmxRange": [160, 175],
           "type": "Effect",
-          "effectName": "Sound active program 11"
+          "effectName": "Sound active program 11",
+          "soundControlled": true
         },
         {
           "dmxRange": [176, 191],
           "type": "Effect",
-          "effectName": "Sound active program 12"
+          "effectName": "Sound active program 12",
+          "soundControlled": true
         },
         {
           "dmxRange": [192, 207],
           "type": "Effect",
-          "effectName": "Sound active program 13"
+          "effectName": "Sound active program 13",
+          "soundControlled": true
         },
         {
           "dmxRange": [208, 223],
           "type": "Effect",
-          "effectName": "Sound active program 14"
+          "effectName": "Sound active program 14",
+          "soundControlled": true
         },
         {
           "dmxRange": [224, 239],
           "type": "Effect",
-          "effectName": "Sound active program 15"
+          "effectName": "Sound active program 15",
+          "soundControlled": true
         },
         {
           "dmxRange": [240, 255],
           "type": "Effect",
-          "effectName": "Sound active program 16"
+          "effectName": "Sound active program 16",
+          "soundControlled": true
         }
       ]
     },
