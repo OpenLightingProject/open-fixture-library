@@ -92,3 +92,44 @@ server {
         proxy_cache_bypass $http_upgrade;
     }
 }
+
+
+# requests to https://embetty.open-fixture-library.org
+# proxied to http://localhost:6977
+server {
+    listen [::]:443 ssl;
+    listen 443 ssl;
+
+    server_name embetty.open-fixture-library.org;
+
+    location / {
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+
+        # if request does not have an "Origin" HTTP header (only sent from within fetch / XHR requests)
+        if ($http_origin = '') {
+            set $cors 'allowed';
+        }
+
+        # if request comes from one of these allowed domains:
+        # - https://open-fixture-library.org
+        # - https://*.open-fixture-library.org
+        # - https://open-fixture-library-pr-*.herokuapp.com
+        # - localhost on any port, http and https
+        # (see https://regex101.com/r/B0osaG/1)
+        if ($http_origin ~* (^(?:https:\/\/(?:[a-z0-9_-]+\.)?open-fixture-library(?:\.org|-pr-\d+\.herokuapp\.com)|https?:\/\/localhost)(?::\d+)?$)) {
+            set $cors 'allowed';
+        }
+
+        if ($cors != 'allowed') {
+            add_header 'Access-Control-Allow-Origin' 'https://open-fixture-library.org' always;
+            add_header 'Vary' 'Origin' always;
+            return 403;
+        }
+
+        proxy_pass http://localhost:6977;
+    }
+}
