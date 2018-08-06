@@ -44,13 +44,13 @@
       <template v-if="channel instanceof MatrixChannel && !(unwrappedChannel instanceof SwitchingChannel)">
         <app-labeled-value
           v-if="fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)"
-          :value="channel.pixelKey"
+          :value="`${channel.pixelKey}`"
           name="channel-pixel-group"
           label="Pixel group" />
 
         <template v-else>
           <app-labeled-value
-            :value="channel.pixelKey"
+            :value="`${channel.pixelKey}`"
             name="channel-pixel-key"
             label="Pixel" />
           <app-labeled-value
@@ -75,13 +75,13 @@
 
         <app-labeled-value
           v-if="unwrappedChannel.hasDefaultValue"
-          :value="unwrappedChannel.getDefaultValueWithFineness(finenessInMode)"
+          :value="`${unwrappedChannel.getDefaultValueWithFineness(finenessInMode)}`"
           name="channel-defaultValue"
           label="Default DMX value" />
 
         <app-labeled-value
           v-if="unwrappedChannel.hasHighlightValue"
-          :value="unwrappedChannel.getHighlightValueWithFineness(finenessInMode)"
+          :value="`${unwrappedChannel.getHighlightValueWithFineness(finenessInMode)}`"
           name="channel-highlightValue"
           label="Highlight DMX value" />
 
