@@ -7,8 +7,7 @@
       <p>Find a fixture definition or manufacturer by entering its RDM IDs.</p>
 
       <form action="/rdm" method="get">
-        <app-labeled-input
-          label="Manufacturer ID">
+        <app-labeled-input label="Manufacturer ID">
           <input
             type="number"
             name="manufacturerId"
