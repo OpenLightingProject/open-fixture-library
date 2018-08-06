@@ -44,9 +44,39 @@
         <span class="value">{{ fixture.comment }}</span>
       </section>
 
-      <section v-if="fixture.manualURL !== null" class="manualURL">
-        <span class="label">Manual</span>
-        <span class="value"><a :href="fixture.manualURL" rel="nofollow">{{ fixture.manualURL }}</a></span>
+      <section v-if="fixture.links !== null" class="links">
+        <span class="label">Relevant links</span>
+        <div class="value">
+          <ul class="fixture-links">
+            <li v-for="(link, index) in fixture.getLinksInCategory(`manual`)" :key="link">
+              <a :href="link" rel="nofollow" target="_blank">
+                <app-svg name="file-pdf" />
+                Manual {{ index > 0 ? index + 1 : null }}
+                <span class="hostname">({{ getHostname(link) }})</span>
+              </a>
+            </li>
+            <li v-for="(link, index) in fixture.getLinksInCategory(`productPage`)" :key="link">
+              <a :href="link" rel="nofollow" target="_blank">
+                <app-svg name="web" />
+                Product page {{ index > 0 ? index + 1 : null }}
+                <span class="hostname">({{ getHostname(link) }})</span>
+              </a>
+            </li>
+            <li v-for="(link, index) in fixture.getLinksInCategory(`youtube`)" :key="link">
+              <a :href="link" rel="nofollow" target="_blank">
+                <app-svg name="youtube" />
+                Video {{ index > 0 ? index + 1 : null }}
+                <span class="hostname">(youtube.com)</span>
+              </a>
+            </li>
+            <li v-for="link in fixture.getLinksInCategory(`other`)" :key="link">
+              <a :href="link" rel="nofollow" target="_blank">
+                <app-svg name="link-variant" />
+                {{ link }}
+              </a>
+            </li>
+          </ul>
+        </div>
       </section>
 
       <section v-if="fixture.isHelpWanted" class="help-wanted">
@@ -121,13 +151,15 @@
   white-space: pre-line;
 }
 
-.manualURL {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.fixture-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 
-  & > .value {
-    display: inline;
+  .hostname {
+    color: $secondary-text-dark;
+    font-size: 0.9em;
+    padding-left: 1ex;
   }
 }
 
@@ -290,6 +322,13 @@ export default {
     return {
       title: `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`
     };
+  },
+  methods: {
+    getHostname(url) {
+      // adapted from https://stackoverflow.com/a/21553982/451391
+      const match = url.match(/^.*?\/\/(?:([^:/?#]*)(?::([0-9]+))?)/);
+      return match ? match[1] : url;
+    }
   }
 };
 
