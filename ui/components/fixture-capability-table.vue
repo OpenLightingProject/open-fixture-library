@@ -45,7 +45,7 @@
           :key="`cap-${index}-switch-${switchChannel.key}`">
           <td colspan="4" />
           <td colspan="2" class="switch-to-channel">
-            <span class="switching-channel-key">{{ switchChannel.key }} (channel&nbsp;{{ switchChannel.index + 1 }}) →</span>&nbsp;{{ switchChannel.to }}
+            <span class="switching-channel-key">Channel&nbsp;{{ switchChannel.index + 1 }} →</span>&nbsp;{{ switchChannel.to }}
           </td>
         </tr>
 
@@ -160,7 +160,7 @@ export default {
             dmxRangeStart: dmxRange.start,
             dmxRangeEnd: dmxRange.end,
             colorDescription: getColorDescription(cap),
-            switchChannels
+            switchChannels: switchChannels.sort((a, b) => a.index - b.index) // ascending indices
           };
         }
       );
