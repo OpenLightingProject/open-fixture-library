@@ -12,7 +12,7 @@
 
     <h2>Mode #{{ index + 1 }}</h2>
 
-    <app-simple-label :formstate="formstate" :name="`mode-${index}-name`" label="Name">
+    <app-labeled-input :formstate="formstate" :name="`mode-${index}-name`" label="Name">
       <app-property-input-text
         ref="firstInput"
         :name="`mode-${index}-name`"
@@ -22,9 +22,9 @@
         no-mode-name
         hint="e.g. Extended"
         title="The name must not contain the word 'mode'." />
-    </app-simple-label>
+    </app-labeled-input>
 
-    <app-simple-label :formstate="formstate" :name="`mode-${index}-shortName`" label="Unique short name">
+    <app-labeled-input :formstate="formstate" :name="`mode-${index}-shortName`" label="Unique short name">
       <app-property-input-text
         :name="`mode-${index}-shortName`"
         v-model="mode.shortName"
@@ -32,9 +32,9 @@
         no-mode-name
         hint="e.g. ext; defaults to name"
         title="The short name must not contain the word 'mode'." />
-    </app-simple-label>
+    </app-labeled-input>
 
-    <app-simple-label
+    <app-labeled-input
       v-if="fixture.rdmModelId !== null"
       :formstate="formstate"
       :name="`mode-${index}-rdmPersonalityIndex`"
@@ -43,7 +43,7 @@
         v-model="mode.rdmPersonalityIndex"
         :name="`mode-${index}-rdmPersonalityIndex`"
         :schema-property="properties.mode.rdmPersonalityIndex" />
-    </app-simple-label>
+    </app-labeled-input>
 
 
     <h3>Physical override</h3>
@@ -169,7 +169,7 @@ ol.mode-channels {
 import schemaProperties from '~~/lib/schema-properties.js';
 
 import svgVue from '~/components/svg.vue';
-import simpleLabelVue from '~/components/simple-label.vue';
+import labeledInputVue from '~/components/labeled-input.vue';
 import propertyInputNumberVue from '~/components/property-input-number.vue';
 import propertyInputTextVue from '~/components/property-input-text.vue';
 import editorPhysicalVue from '~/components/editor-physical.vue';
@@ -177,7 +177,7 @@ import editorPhysicalVue from '~/components/editor-physical.vue';
 export default {
   components: {
     'app-svg': svgVue,
-    'app-simple-label': simpleLabelVue,
+    'app-labeled-input': labeledInputVue,
     'app-property-input-number': propertyInputNumberVue,
     'app-property-input-text': propertyInputTextVue,
     'app-editor-physical': editorPhysicalVue

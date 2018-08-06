@@ -14,7 +14,7 @@
         <h2>Manufacturer</h2>
 
         <section v-if="fixture.useExistingManufacturer">
-          <app-simple-label :formstate="formstate" name="manufacturerShortName" label="Choose from list">
+          <app-labeled-input :formstate="formstate" name="manufacturerShortName" label="Choose from list">
             <select
               ref="existingManufacturerSelect"
               v-model="fixture.manufacturerShortName"
@@ -31,52 +31,52 @@
               </template>
 
             </select>
-          </app-simple-label>
+          </app-labeled-input>
 
           <div class="button-bar">or <a href="#add-new-manufacturer" @click.prevent="switchManufacturer(false)">add a new manufacturer</a></div>
         </section>
 
         <div v-else>
-          <app-simple-label :formstate="formstate" name="new-manufacturer-name" label="Name">
+          <app-labeled-input :formstate="formstate" name="new-manufacturer-name" label="Name">
             <app-property-input-text
               ref="newManufacturerNameInput"
               v-model="fixture.newManufacturerName"
               :schema-property="properties.manufacturer.name"
               :required="true"
               name="new-manufacturer-name" />
-          </app-simple-label>
+          </app-labeled-input>
 
-          <app-simple-label :formstate="formstate" name="new-manufacturer-shortName" label="Unique short name">
+          <app-labeled-input :formstate="formstate" name="new-manufacturer-shortName" label="Unique short name">
             <app-property-input-text
               v-model="fixture.newManufacturerShortName"
               :schema-property="properties.manufacturerKey"
               :required="true"
               name="new-manufacturer-shortName"
               title="Use only lowercase letters, numbers and dashes." />
-          </app-simple-label>
+          </app-labeled-input>
 
-          <app-simple-label :formstate="formstate" name="new-manufacturer-website" label="Website">
+          <app-labeled-input :formstate="formstate" name="new-manufacturer-website" label="Website">
             <app-property-input-text
               v-model="fixture.newManufacturerWebsite"
               :schema-property="properties.manufacturer.website"
               type="url"
               name="new-manufacturer-website" />
-          </app-simple-label>
+          </app-labeled-input>
 
-          <app-simple-label :formstate="formstate" name="new-manufacturer-comment" label="Comment">
+          <app-labeled-input :formstate="formstate" name="new-manufacturer-comment" label="Comment">
             <app-property-input-textarea
               v-model="fixture.newManufacturerComment"
               :schema-property="properties.manufacturer.comment"
               name="new-manufacturer-comment" />
-          </app-simple-label>
+          </app-labeled-input>
 
-          <app-simple-label :formstate="formstate" name="new-manufacturer-rdmId">
+          <app-labeled-input :formstate="formstate" name="new-manufacturer-rdmId">
             <template slot="label"><abbr title="Remote Device Management">RDM</abbr> model ID</template>
             <app-property-input-number
               v-model="fixture.newManufacturerRdmId"
               :schema-property="properties.manufacturer.rdmId"
               name="new-manufacturer-rdmId" />
-          </app-simple-label>
+          </app-labeled-input>
 
           <div class="button-bar">or <a href="#use-existing-manufacturer" @click.prevent="switchManufacturer(true)">choose an existing manufacturer</a></div>
         </div>
@@ -85,7 +85,7 @@
       <section class="fixture-info card">
         <h2>Fixture info</h2>
 
-        <app-simple-label
+        <app-labeled-input
           :formstate="formstate"
           :custom-validators="{'no-manufacturer-name': fixtureNameIsWithoutManufacturer}"
           name="fixture-name"
@@ -95,17 +95,17 @@
             :schema-property="properties.fixture.name"
             :required="true"
             name="fixture-name" />
-        </app-simple-label>
+        </app-labeled-input>
 
-        <app-simple-label :formstate="formstate" name="fixture-shortName" label="Unique short name">
+        <app-labeled-input :formstate="formstate" name="fixture-shortName" label="Unique short name">
           <app-property-input-text
             v-model="fixture.shortName"
             :schema-property="properties.fixture.shortName"
             name="fixture-shortName"
             hint="defaults to name" />
-        </app-simple-label>
+        </app-labeled-input>
 
-        <app-simple-label
+        <app-labeled-input
           :formstate="formstate"
           name="fixture-categories"
           label="Categories"
@@ -115,25 +115,25 @@
             :all-categories="properties.fixture.categories.items.enum"
             name="fixture-categories"
             categories-not-empty />
-        </app-simple-label>
+        </app-labeled-input>
 
-        <app-simple-label :formstate="formstate" name="comment" label="Comment">
+        <app-labeled-input :formstate="formstate" name="comment" label="Comment">
           <app-property-input-textarea
             v-model="fixture.comment"
             :schema-property="properties.fixture.comment"
             name="comment" />
-        </app-simple-label>
+        </app-labeled-input>
 
-        <app-simple-label :formstate="formstate" name="manualURL" label="Manual URL">
+        <app-labeled-input :formstate="formstate" name="manualURL" label="Manual URL">
           <app-property-input-text
             v-model="fixture.manualURL"
             :schema-property="properties.fixture.manualURL"
             type="url"
             name="manualURL"
             required />
-        </app-simple-label>
+        </app-labeled-input>
 
-        <app-simple-label
+        <app-labeled-input
           :formstate="formstate"
           name="rdmModelId"
           hint="The RDM manufacturer ID is saved per manufacturer.">
@@ -142,9 +142,9 @@
             v-model="fixture.rdmModelId"
             :schema-property="properties.fixture.rdm.properties.modelId"
             name="rdmModelId" />
-        </app-simple-label>
+        </app-labeled-input>
 
-        <app-simple-label
+        <app-labeled-input
           v-if="fixture.rdmModelId !== null"
           :formstate="formstate"
           name="rdmSoftwareVersion"
@@ -153,7 +153,7 @@
             v-model="fixture.rdmSoftwareVersion"
             :schema-property="properties.fixture.rdm.properties.softwareVersion"
             name="rdmSoftwareVersion" />
-        </app-simple-label>
+        </app-labeled-input>
       </section>
 
       <section class="physical card">
@@ -185,16 +185,16 @@
       <section class="user card">
         <h2>Author data</h2>
 
-        <app-simple-label :formstate="formstate" name="author" label="Your name">
+        <app-labeled-input :formstate="formstate" name="author" label="Your name">
           <app-property-input-text
             v-model="fixture.metaAuthor"
             :schema-property="properties.definitions.nonEmptyString"
             :required="true"
             name="author"
             hint="e.g. Anonymous" />
-        </app-simple-label>
+        </app-labeled-input>
 
-        <app-simple-label
+        <app-labeled-input
           :formstate="formstate"
           name="github-username"
           label="GitHub username"
@@ -203,12 +203,12 @@
             v-model="fixture.metaGithubUsername"
             :schema-property="properties.definitions.nonEmptyString"
             name="github-username" />
-        </app-simple-label>
+        </app-labeled-input>
 
-        <app-simple-label hidden name="honeypot" label="Ignore this!">
+        <app-labeled-input hidden name="honeypot" label="Ignore this!">
           <input v-model="honeypot" type="text">
           <div class="hint">Spammers are likely to fill this field. Leave it empty to show that you're a human.</div>
-        </app-simple-label>
+        </app-labeled-input>
       </section>
 
       <div class="button-bar right">
@@ -253,7 +253,7 @@ import {
 import manufacturers from '~~/fixtures/manufacturers.json';
 import schemaProperties from '~~/lib/schema-properties.js';
 
-import simpleLabelVue from '~/components/simple-label.vue';
+import labeledInputVue from '~/components/labeled-input.vue';
 import propertyInputBooleanVue from '~/components/property-input-boolean.vue';
 import propertyInputNumberVue from '~/components/property-input-number.vue';
 import propertyInputSelectVue from '~/components/property-input-select.vue';
@@ -281,7 +281,7 @@ const storageAvailable = (function() {
 
 export default {
   components: {
-    'app-simple-label': simpleLabelVue,
+    'app-labeled-input': labeledInputVue,
     'app-property-input-boolean': propertyInputBooleanVue,
     'app-property-input-number': propertyInputNumberVue,
     'app-property-input-select': propertyInputSelectVue,

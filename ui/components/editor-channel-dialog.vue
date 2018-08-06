@@ -27,7 +27,7 @@
       </div>
 
       <div v-else>
-        <app-simple-label :formstate="formstate" name="name" label="Name">
+        <app-labeled-input :formstate="formstate" name="name" label="Name">
           <app-property-input-text
             v-model="channel.name"
             :schema-property="properties.channel.name"
@@ -37,17 +37,17 @@
             no-fine-channel-name
             title="Please start with an uppercase letter or a number. Don't create fine channels here, set its resolution below instead."
             class="channelName" />
-        </app-simple-label>
+        </app-labeled-input>
 
-        <app-simple-label :formstate="formstate" name="fineness" label="Channel resolution">
+        <app-labeled-input :formstate="formstate" name="fineness" label="Channel resolution">
           <select v-model="channel.fineness" name="fineness">
             <option :value="0">8 bit (No fine channels)</option>
             <option :value="1">16 bit (1 fine channel)</option>
             <option :value="2">24 bit (2 fine channels)</option>
           </select>
-        </app-simple-label>
+        </app-labeled-input>
 
-        <app-simple-label :formstate="formstate" name="defaultValue" label="Default DMX value">
+        <app-labeled-input :formstate="formstate" name="defaultValue" label="Default DMX value">
           <input
             v-model.number="channel.defaultValue"
             :max="Math.pow(256, channel.fineness + 1) - 1"
@@ -55,7 +55,7 @@
             type="number"
             min="0"
             step="1">
-        </app-simple-label>
+        </app-labeled-input>
 
         <h3>Capabilities<template v-if="!channel.wizard.show && channel.capabilities.length > 1">
           <a
@@ -74,7 +74,7 @@
           </a>
         </template></h3>
 
-        <app-simple-label
+        <app-labeled-input
           v-if="channel.fineness > 0"
           :formstate="formstate"
           name="capFineness"
@@ -84,7 +84,7 @@
             <option v-if="channel.fineness >= 1" :value="1">16 bit (range 0 - 65535)</option>
             <option v-if="channel.fineness >= 2" :value="2">24 bit (range 0 - 16777215)</option>
           </select>
-        </app-simple-label>
+        </app-labeled-input>
 
         <app-editor-capability-wizard
           v-if="channel.wizard.show"
@@ -116,7 +116,7 @@
 
         <h3>Advanced channel settings</h3>
 
-        <app-simple-label :formstate="formstate" name="highlightValue" label="Highlight DMX value">
+        <app-labeled-input :formstate="formstate" name="highlightValue" label="Highlight DMX value">
           <input
             v-model.number="channel.highlightValue"
             :max="Math.pow(256, channel.fineness + 1) - 1"
@@ -124,21 +124,21 @@
             type="number"
             min="0"
             step="1">
-        </app-simple-label>
+        </app-labeled-input>
 
-        <app-simple-label :formstate="formstate" name="constant" label="Constant?">
+        <app-labeled-input :formstate="formstate" name="constant" label="Constant?">
           <app-property-input-boolean
             v-model="channel.constant"
             :schema-property="properties.channel.constant"
             name="constant" />
-        </app-simple-label>
+        </app-labeled-input>
 
-        <app-simple-label :formstate="formstate" name="precedence" label="Precedence">
+        <app-labeled-input :formstate="formstate" name="precedence" label="Precedence">
           <app-property-input-select
             v-model="channel.precedence"
             :schema-property="properties.channel.precedence"
             name="precedence" />
-        </app-simple-label>
+        </app-labeled-input>
 
       </div>
 
@@ -191,7 +191,7 @@ import {
 import a11yDialogVue from '~/components/a11y-dialog.vue';
 import editorCapabilityVue from '~/components/editor-capability.vue';
 import editorCapabilityWizardVue from '~/components/editor-capability-wizard.vue';
-import simpleLabelVue from '~/components/simple-label.vue';
+import labeledInputVue from '~/components/labeled-input.vue';
 import propertyInputBooleanVue from '~/components/property-input-boolean.vue';
 import propertyInputSelectVue from '~/components/property-input-select.vue';
 import propertyInputTextVue from '~/components/property-input-text.vue';
@@ -202,7 +202,7 @@ export default {
     'app-a11y-dialog': a11yDialogVue,
     'app-editor-capability': editorCapabilityVue,
     'app-editor-capability-wizard': editorCapabilityWizardVue,
-    'app-simple-label': simpleLabelVue,
+    'app-labeled-input': labeledInputVue,
     'app-property-input-boolean': propertyInputBooleanVue,
     'app-property-input-select': propertyInputSelectVue,
     'app-property-input-text': propertyInputTextVue,
