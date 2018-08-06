@@ -126,13 +126,11 @@
 
 <style lang="scss">
 /* not scoped because child components would not be covered then */
-.fixture-mode {
-  & .label {
-    display: block;
-  }
+.fixture-mode section {
+  flex-direction: column;
 
-  & .value {
-    max-width: none;
+  & > .label {
+    flex-basis: auto;
   }
 }
 </style>

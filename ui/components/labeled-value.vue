@@ -13,22 +13,22 @@ section {
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: flex-start;
-}
 
-.label {
-  color: $secondary-text-dark;
+  & > .label {
+    color: $secondary-text-dark;
+  }
 }
 
 /* move labels left of values */
-@media (min-width: $phone) {
+@media (min-width: $phone-landscape) {
   section {
     flex-direction: row;
-  }
 
-  .label {
-    flex-basis: 10rem;
-    flex-grow: 0;
-    flex-shrink: 0;
+    & > .label {
+      flex-basis: 10rem;
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
   }
 }
 </style>
@@ -38,7 +38,7 @@ export default {
   props: {
     name: {
       type: String,
-      required: true,
+      required: false,
       default: null
     },
     label: {
