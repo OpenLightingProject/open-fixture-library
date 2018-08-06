@@ -29,43 +29,48 @@
 
     <section class="fixture-info card">
 
-      <section class="categories">
-        <span class="label">Categories</span>
-        <span class="value">
-          <app-category-badge
-            v-for="cat in fixture.categories"
-            :key="cat"
-            :category="cat" />
-        </span>
-      </section>
+      <app-labeled-value
+        name="categories"
+        label="Categories">
+        <app-category-badge
+          v-for="cat in fixture.categories"
+          :key="cat"
+          :category="cat" />
+      </app-labeled-value>
 
-      <section v-if="fixture.hasComment" class="comment">
-        <span class="label">Comment</span>
-        <span class="value">{{ fixture.comment }}</span>
-      </section>
+      <app-labeled-value
+        v-if="fixture.hasComment"
+        :value="fixture.comment"
+        name="comment"
+        label="Comment" />
 
-      <section v-if="fixture.manualURL !== null" class="manualURL">
-        <span class="label">Manual</span>
-        <span class="value"><a :href="fixture.manualURL" rel="nofollow">{{ fixture.manualURL }}</a></span>
-      </section>
+      <app-labeled-value
+        v-if="fixture.manualURL !== null"
+        name="manualURL"
+        label="Manual">
+        <a :href="fixture.manualURL" rel="nofollow">{{ fixture.manualURL }}</a>
+      </app-labeled-value>
 
       <section v-if="fixture.isHelpWanted" class="help-wanted">
         <app-svg name="comment-question-outline" title="Help wanted!" /><a href="#contribute">You can help to improve this fixture definition!</a>
         {{ fixture.helpWanted !== null ? fixture.helpWanted : `Specific questions are included in the capabilities below.` }}
       </section>
 
-      <section v-if="fixture.rdm !== null" class="rdm">
-        <span class="label"><abbr title="Remote Device Management">RDM</abbr> data</span>
-        <span class="value">
-          {{ fixture.manufacturer.rdmId }} /
-          {{ fixture.rdm.modelId }} /
-          {{ `softwareVersion` in fixture.rdm ? fixture.rdm.softwareVersion : `?` }} –
-          <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${fixture.manufacturer.rdmId}&model=${fixture.rdm.modelId}`" rel="nofollow">
-            <app-svg name="ola" /> View in Open Lighting RDM database
-          </a>
-          <span class="hint">manufacturer ID / model ID / software version</span>
-        </span>
-      </section>
+      <app-labeled-value
+        v-if="fixture.rdm !== null"
+        name="rdm">
+        <template slot="label">
+          <abbr title="Remote Device Management">RDM</abbr> data
+        </template>
+
+        {{ fixture.manufacturer.rdmId }} /
+        {{ fixture.rdm.modelId }} /
+        {{ `softwareVersion` in fixture.rdm ? fixture.rdm.softwareVersion : `?` }} –
+        <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${fixture.manufacturer.rdmId}&model=${fixture.rdm.modelId}`" rel="nofollow">
+          <app-svg name="ola" /> View in Open Lighting RDM database
+        </a>
+        <span class="hint">manufacturer ID / model ID / software version</span>
+      </app-labeled-value>
 
       <template v-if="fixture.physical !== null">
         <h3 class="physical">Physical data</h3>
@@ -117,20 +122,6 @@
   }
 }
 
-.comment > .value {
-  white-space: pre-line;
-}
-
-.manualURL {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  & > .value {
-    display: inline;
-  }
-}
-
 #contribute:target {
   animation: contribute-highlight 1.5s ease;
   animation-delay: 0.5s;
@@ -153,6 +144,19 @@
 }
 </style>
 
+<style lang="scss">
+.comment > .value {
+  white-space: pre-line;
+}
+
+.manualURL > .value {
+  display: inline;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+</style>
+
 <script>
 import svg from '~/components/svg.vue';
 import categoryBadge from '~/components/category-badge.vue';
@@ -160,6 +164,7 @@ import downloadButtonVue from '~/components/download-button.vue';
 import fixturePhysical from '~/components/fixture-physical.vue';
 import fixtureMatrix from '~/components/fixture-matrix.vue';
 import fixtureMode from '~/components/fixture-mode.vue';
+import labeledValueVue from '~/components/labeled-value.vue';
 
 import packageJson from '~~/package.json';
 import register from '~~/fixtures/register.json';
@@ -173,7 +178,8 @@ export default {
     'app-download-button': downloadButtonVue,
     'app-fixture-physical': fixturePhysical,
     'app-fixture-matrix': fixtureMatrix,
-    'app-fixture-mode': fixtureMode
+    'app-fixture-mode': fixtureMode,
+    'app-labeled-value': labeledValueVue
   },
   validate({ params }) {
     return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;

@@ -7,49 +7,36 @@
       <p>Find a fixture definition or manufacturer by entering its RDM IDs.</p>
 
       <form action="/rdm" method="get">
-        <section>
-          <label>
-            <span class="label">Manufacturer ID</span>
-            <span class="value">
-              <input
-                type="number"
-                name="manufacturerId"
-                min="0"
-                max="65535"
-                step="1"
-                required>
-            </span>
-          </label>
-        </section>
+        <app-labeled-input label="Manufacturer ID">
+          <input
+            type="number"
+            name="manufacturerId"
+            min="0"
+            max="65535"
+            step="1"
+            required>
+        </app-labeled-input>
 
-        <section>
-          <label>
-            <span class="label">Model ID</span>
-            <span class="value">
-              <input
-                type="number"
-                name="modelId"
-                min="0"
-                max="65535"
-                step="1">
-              <span class="hint">Leave this field empty to find the manufacturer.</span>
-            </span>
-          </label>
-        </section>
+        <app-labeled-input
+          label="Model ID"
+          hint="Leave this field empty to find the manufacturer.">
+          <input
+            type="number"
+            name="modelId"
+            min="0"
+            max="65535"
+            step="1">
+        </app-labeled-input>
 
-        <section>
-          <label>
-            <span class="label">Personality index</span>
-            <span class="value">
-              <input
-                type="number"
-                name="personalityIndex"
-                min="1"
-                step="1">
-              <span class="hint">Optional</span>
-            </span>
-          </label>
-        </section>
+        <app-labeled-input
+          label="Personality index"
+          hint="Optional.">
+          <input
+            type="number"
+            name="modelId"
+            min="1"
+            step="1">
+        </app-labeled-input>
 
         <div class="button-bar">
           <button type="submit" class="primary">Lookup fixture / manufacturer</button>
@@ -81,10 +68,15 @@
 </template>
 
 <script>
+import labeledInputVue from '~/components/labeled-input.vue';
+
 import register from '~~/fixtures/register.json';
 import manufacturers from '~~/fixtures/manufacturers.json';
 
 export default {
+  components: {
+    'app-labeled-input': labeledInputVue
+  },
   head() {
     return {
       title: `RDM Lookup`

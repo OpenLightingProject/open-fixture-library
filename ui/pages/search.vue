@@ -4,12 +4,9 @@
     <h1 v-else>Search</h1>
 
     <form class="filter" action="/search" @submit.prevent="onSubmit">
-      <section>
-        <label>
-          <span class="label">Search query</span>
-          <span class="value"><input v-model="searchQuery" type="search" name="q"></span>
-        </label>
-      </section>
+      <app-labeled-input label="Search query">
+        <input v-model="searchQuery" type="search" name="q">
+      </app-labeled-input>
 
       <app-conditional-details :open="detailsInitiallyOpen">
         <template slot="summary">Filter results</template>
@@ -89,10 +86,12 @@ import register from '~~/fixtures/register.json';
 import manufacturers from '~~/fixtures/manufacturers.json';
 
 import conditionalDetailsVue from '~/components/conditional-details.vue';
+import labeledInputVue from '~/components/labeled-input.vue';
 
 export default {
   components: {
-    'app-conditional-details': conditionalDetailsVue
+    'app-conditional-details': conditionalDetailsVue,
+    'app-labeled-input': labeledInputVue
   },
   head() {
     return {
