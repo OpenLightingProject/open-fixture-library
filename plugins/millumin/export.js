@@ -18,23 +18,21 @@ module.exports.export = function exportMillumin(fixtures, options) {
     jsonData.oflURL = `https://open-fixture-library.org/${fixture.manufacturer.key}/${fixture.key}`;
 
     if (jsonData.links) {
-      const jsonKeys = Object.keys(jsonData);
-      const linksIndex = jsonKeys.indexOf(`links`);
-      delete jsonData.links;
+      if (jsonData.links.manual) {
+        // replace links with manual URL in keys array
+        const jsonKeys = Object.keys(jsonData);
+        jsonKeys[jsonKeys.indexOf(`links`)] = `manualURL`;
+        jsonData.manualURL = fixture.getLinksInCategory(`manual`)[0];
 
-      if (fixture.manualURL) {
-        jsonData.manualURL = fixture.manualURL;
-
-        // insert manualURL at linksIndex
-
+        // reorder JSON properties in jsonKeys order
         const reorderedJsonData = {};
-        jsonKeys[linksIndex] = `manualURL`;
-
         jsonKeys.forEach(key => {
           reorderedJsonData[key] = jsonData[key];
         });
-
         jsonData = reorderedJsonData;
+      }
+      else {
+        delete jsonData.links;
       }
     }
 
