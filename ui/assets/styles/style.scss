@@ -58,28 +58,6 @@ section {
   clear: both;
 }
 
-.label {
-  display: block;
-  color: $secondary-text-dark;
-}
-
-.value {
-  display: block;
-}
-
-/* move labels left of values */
-@media (min-width: 650px) {
-  .label {
-    display: inline-block;
-    min-width: 10rem;
-  }
-  .value {
-    display: inline-block;
-    max-width: calc(100% - 12rem - 1ex);
-    vertical-align: top;
-  }
-}
-
 label {
   max-width: 100%;
 }
