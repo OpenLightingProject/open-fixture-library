@@ -48,28 +48,28 @@
         <span class="label">Relevant links</span>
         <div class="value">
           <ul class="fixture-links">
-            <li v-for="(link, index) in fixture.getLinksInCategory(`manual`)" :key="link">
+            <li v-for="(link, index) in fixture.getLinksOfType(`manual`)" :key="link">
               <a :href="link" rel="nofollow" target="_blank">
                 <app-svg name="file-pdf" />
                 Manual {{ index > 0 ? index + 1 : null }}
                 <span class="hostname">({{ getHostname(link) }})</span>
               </a>
             </li>
-            <li v-for="(link, index) in fixture.getLinksInCategory(`productPage`)" :key="link">
+            <li v-for="(link, index) in fixture.getLinksOfType(`productPage`)" :key="link">
               <a :href="link" rel="nofollow" target="_blank">
                 <app-svg name="web" />
                 Product page {{ index > 0 ? index + 1 : null }}
                 <span class="hostname">({{ getHostname(link) }})</span>
               </a>
             </li>
-            <li v-for="(link, index) in fixture.getLinksInCategory(`youtube`)" :key="link">
+            <li v-for="(link, index) in fixture.getLinksOfType(`youtube`)" :key="link">
               <a :href="link" rel="nofollow" target="_blank">
                 <app-svg name="youtube" />
                 Video {{ index > 0 ? index + 1 : null }}
                 <span class="hostname">(youtube.com)</span>
               </a>
             </li>
-            <li v-for="link in fixture.getLinksInCategory(`other`)" :key="link">
+            <li v-for="link in fixture.getLinksOfType(`other`)" :key="link">
               <a :href="link" rel="nofollow" target="_blank">
                 <app-svg name="link-variant" />
                 {{ link }}

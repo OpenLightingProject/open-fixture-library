@@ -8,10 +8,10 @@
         <option
           v-for="linkType in linkTypes"
           :key="linkType"
-          :value="linkType">{{ linkCategoryNames[linkType] }}</option>
+          :value="linkType">{{ linkTypeNames[linkType] }}</option>
       </select>
 
-      <app-svg :name="linkCategoryIconNames[link.type]" />
+      <app-svg :name="linkTypeIconNames[link.type]" />
 
       <validate
         :state="formstate"
@@ -84,13 +84,13 @@ export default {
     return {
       properties: schemaProperties,
       linkTypes: Object.keys(schemaProperties.fixture.links.properties),
-      linkCategoryIconNames: {
+      linkTypeIconNames: {
         manual: `file-pdf`,
         productPage: `web`,
         youtube: `youtube`,
         other: `link-variant`
       },
-      linkCategoryNames: {
+      linkTypeNames: {
         manual: `Manual`,
         productPage: `Product page`,
         youtube: `YouTube video`,

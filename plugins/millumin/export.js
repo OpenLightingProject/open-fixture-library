@@ -22,7 +22,7 @@ module.exports.export = function exportMillumin(fixtures, options) {
         // replace links with manual URL in keys array
         const jsonKeys = Object.keys(jsonData);
         jsonKeys[jsonKeys.indexOf(`links`)] = `manualURL`;
-        jsonData.manualURL = fixture.getLinksInCategory(`manual`)[0];
+        jsonData.manualURL = fixture.getLinksOfType(`manual`)[0];
 
         // reorder JSON properties in jsonKeys order
         const reorderedJsonData = {};
