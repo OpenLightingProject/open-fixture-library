@@ -13,7 +13,9 @@
     }
   },
   "comment": "40mW Green CW laser (λ = 532nm)\n80mW Red CW laser (λ = 650nm)\nLaser radiation class: 3B",
-  "manualURL": "https://www.manualslib.com/download/1126183/Jbsystems-Light-Twin-Effect.html",
+  "links": {
+    "manual": ["https://www.manualslib.com/download/1126183/Jbsystems-Light-Twin-Effect.html"]
+  },
   "physical": {
     "dimensions": [240, 110, 215],
     "weight": 2.6,
