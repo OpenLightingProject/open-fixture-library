@@ -64,7 +64,22 @@
       "additionalProperties": false
     },
     "comment": { "$ref": "definitions.json#/nonEmptyMultilineString" },
-    "manualURL": { "$ref": "definitions.json#/urlString" },
+    "links": {
+      "type": "object",
+      "properties": {
+        "manual": { "$ref": "definitions.json#/urlArray" },
+        "productPage": { "$ref": "definitions.json#/urlArray" },
+        "youtube": { "$ref": "definitions.json#/urlArray" },
+        "other": { "$ref": "definitions.json#/urlArray" }
+      },
+      "anyOf": [
+        { "required": ["manual"] },
+        { "required": ["productPage"] },
+        { "required": ["youtube"] },
+        { "required": ["other"] }
+      ],
+      "additionalProperties": false
+    },
     "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
     "rdm": {
       "type": "object",
