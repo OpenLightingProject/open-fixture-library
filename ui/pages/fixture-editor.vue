@@ -126,8 +126,8 @@
 
         <app-simple-label :formstate="formstate" name="manualURL" label="Manual URL">
           <app-property-input-text
-            v-model="fixture.manualURL"
-            :schema-property="properties.fixture.manualURL"
+            v-model="fixture.links.manual[0]"
+            :schema-property="properties.definitions.urlString"
             type="url"
             name="manualURL"
             required />

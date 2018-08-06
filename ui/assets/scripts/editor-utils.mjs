@@ -17,7 +17,9 @@ export function getEmptyFixture() {
     shortName: ``,
     categories: [],
     comment: ``,
-    manualURL: ``,
+    links: {
+      manual: [``]
+    },
     rdmModelId: null,
     rdmSoftwareVersion: ``,
     physical: getEmptyPhysical(),

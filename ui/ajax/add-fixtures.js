@@ -69,6 +69,15 @@ function addFixture(fixture) {
         lastModifyDate: now
       };
     }
+    else if (prop === `links`) {
+      out.fixtures[key].links = {};
+
+      for (const category of Object.keys(schemaProperties.fixture.links.properties)) {
+        if (category in fixture.links && fixture.links[category].length > 0) {
+          out.fixtures[key].links[category] = fixture.links[category];
+        }
+      }
+    }
     else if (prop === `availableChannels`) {
       out.fixtures[key].availableChannels = {};
       for (const chId of Object.keys(fixture.availableChannels)) {
