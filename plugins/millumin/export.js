@@ -2,7 +2,7 @@ const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
 const { Channel } = require(`../../lib/model.js`);
 
 module.exports.name = `Millumin`;
-module.exports.version = `0.2.0`;
+module.exports.version = `0.3.0`;
 
 // needed for export test
 module.exports.supportedOflVersion = `7.3.0`;
@@ -10,12 +10,33 @@ module.exports.supportedOflVersion = `7.3.0`;
 module.exports.export = function exportMillumin(fixtures, options) {
   // one JSON file for each fixture
   return fixtures.map(fixture => {
-    const jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
+    let jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
     jsonData.$schema = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${module.exports.supportedOflVersion}/schemas/fixture.json`;
 
     jsonData.fixtureKey = fixture.key;
     jsonData.manufacturerKey = fixture.manufacturer.key;
     jsonData.oflURL = `https://open-fixture-library.org/${fixture.manufacturer.key}/${fixture.key}`;
+
+    if (jsonData.links) {
+      const jsonKeys = Object.keys(jsonData);
+      const linksIndex = jsonKeys.indexOf(`links`);
+      delete jsonData.links;
+
+      if (fixture.manualURL) {
+        jsonData.manualURL = fixture.manualURL;
+
+        // insert manualURL at linksIndex
+
+        const reorderedJsonData = {};
+        jsonKeys[linksIndex] = `manualURL`;
+
+        jsonKeys.forEach(key => {
+          reorderedJsonData[key] = jsonData[key];
+        });
+
+        jsonData = reorderedJsonData;
+      }
+    }
 
     if (jsonData.availableChannels) {
       Object.keys(jsonData.availableChannels).forEach(
