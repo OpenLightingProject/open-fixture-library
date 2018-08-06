@@ -124,13 +124,8 @@
             name="comment" />
         </app-simple-label>
 
-        <app-simple-label :formstate="formstate" name="manualURL" label="Manual URL">
-          <app-property-input-text
-            v-model="fixture.links.manual[0]"
-            :schema-property="properties.definitions.urlString"
-            type="url"
-            name="manualURL"
-            required />
+        <app-simple-label :formstate="formstate" name="links" label="Relevant links">
+          <app-editor-links v-model="fixture.links" :formstate="formstate" />
         </app-simple-label>
 
         <app-simple-label
@@ -165,7 +160,7 @@
       </section>
 
       <section class="fixture-modes">
-        <app-mode
+        <app-editor-mode
           v-for="(mode, index) in fixture.modes"
           :key="mode.uuid"
           v-model="fixture.modes[index]"
@@ -260,6 +255,7 @@ import propertyInputSelectVue from '~/components/property-input-select.vue';
 import propertyInputTextVue from '~/components/property-input-text.vue';
 import propertyInputTextareaVue from '~/components/property-input-textarea.vue';
 import categoryChooserVue from '~/components/category-chooser.vue';
+import editorLinksVue from '~/components/editor-links.vue';
 import editorPhysicalVue from '~/components/editor-physical.vue';
 import editorModeVue from '~/components/editor-mode.vue';
 import editorChannelDialogVue from '~/components/editor-channel-dialog.vue';
@@ -289,7 +285,8 @@ export default {
     'app-property-input-textarea': propertyInputTextareaVue,
     'app-category-chooser': categoryChooserVue,
     'app-editor-physical': editorPhysicalVue,
-    'app-mode': editorModeVue,
+    'app-editor-links': editorLinksVue,
+    'app-editor-mode': editorModeVue,
     'app-editor-channel-dialog': editorChannelDialogVue,
     'app-editor-choose-channel-edit-mode-dialog': editorChooseChannelEditModeDialogVue,
     'app-editor-restore-dialog': editorRestoreDialogVue,

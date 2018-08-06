@@ -17,9 +17,7 @@ export function getEmptyFixture() {
     shortName: ``,
     categories: [],
     comment: ``,
-    links: {
-      manual: [``]
-    },
+    links: [getEmptyLink()],
     rdmModelId: null,
     rdmSoftwareVersion: ``,
     physical: getEmptyPhysical(),
@@ -27,6 +25,18 @@ export function getEmptyFixture() {
     metaAuthor: ``,
     metaGithubUsername: ``,
     availableChannels: {}
+  };
+}
+
+
+/**
+ * @returns {!object} An empty fixture link object.
+ */
+export function getEmptyLink() {
+  return {
+    uuid: uuidV4(),
+    type: `manual`,
+    url: ``
   };
 }
 

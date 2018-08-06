@@ -70,13 +70,7 @@ function addFixture(fixture) {
       };
     }
     else if (prop === `links`) {
-      out.fixtures[key].links = {};
-
-      for (const category of Object.keys(schemaProperties.fixture.links.properties)) {
-        if (category in fixture.links && fixture.links[category].length > 0) {
-          out.fixtures[key].links[category] = fixture.links[category];
-        }
-      }
+      addLinks(out.fixtures[key], fixture.links);
     }
     else if (prop === `availableChannels`) {
       out.fixtures[key].availableChannels = {};
@@ -178,6 +172,22 @@ function getPhysical(from) {
   }
 
   return physical;
+}
+
+function addLinks(fixture, editorLinksArray) {
+  fixture.links = {};
+
+  const linkTypes = Object.keys(schemaProperties.fixture.links.properties);
+
+  for (const linkType of linkTypes) {
+    const linksOfType = editorLinksArray.filter(
+      linkObj => linkObj.type === linkType
+    ).map(linkObj => linkObj.url);
+
+    if (linksOfType.length) {
+      fixture.links[linkType] = linksOfType;
+    }
+  }
 }
 
 function addAvailableChannel(fixKey, availableChannels, chId) {
