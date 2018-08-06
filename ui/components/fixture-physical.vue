@@ -1,36 +1,38 @@
 <template>
   <div class="physical">
 
-    <app-labeled-value
-      v-if="physical.dimensions !== null"
-      name="dimensions"
-      label="Dimensions">
-      {{ physical.width }} &times;
-      {{ physical.height }} &times;
-      {{ physical.depth }}mm
-      <span class="hint">width &times; height &times; depth</span>
-    </app-labeled-value>
+    <section>
+      <app-labeled-value
+        v-if="physical.dimensions !== null"
+        name="dimensions"
+        label="Dimensions">
+        {{ physical.width }} &times;
+        {{ physical.height }} &times;
+        {{ physical.depth }}mm
+        <span class="hint">width &times; height &times; depth</span>
+      </app-labeled-value>
 
-    <app-labeled-value
-      v-if="physical.weight !== null"
-      name="weight"
-      label="Weight">
-      {{ physical.weight }}kg
-    </app-labeled-value>
+      <app-labeled-value
+        v-if="physical.weight !== null"
+        name="weight"
+        label="Weight">
+        {{ physical.weight }}kg
+      </app-labeled-value>
 
-    <app-labeled-value
-      v-if="physical.power !== null"
-      name="power"
-      label="Power">
-      {{ physical.power }}W
-    </app-labeled-value>
+      <app-labeled-value
+        v-if="physical.power !== null"
+        name="power"
+        label="Power">
+        {{ physical.power }}W
+      </app-labeled-value>
 
-    <app-labeled-value
-      v-if="physical.DMXconnector !== null"
-      name="DMXconnector"
-      label="DMX connector">
-      {{ physical.DMXconnector }}
-    </app-labeled-value>
+      <app-labeled-value
+        v-if="physical.DMXconnector !== null"
+        name="DMXconnector"
+        label="DMX connector">
+        {{ physical.DMXconnector }}
+      </app-labeled-value>
+    </section>
 
     <section v-if="physical.hasBulb" class="bulb">
       <h4>Bulb</h4>
@@ -134,8 +136,18 @@
   columns: 2 350px;
   column-gap: 3rem;
 
-  & section {
+  & > section {
+    break-inside: avoid;
     overflow: hidden;
+    padding: 0 0 1.2ex;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  h4 {
+    margin: 0;
   }
 }
 </style>
