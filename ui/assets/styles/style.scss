@@ -522,7 +522,7 @@ a.card, .link, .list a {
   }
 }
 
-/* display mode cards in a 2-col layout and allow values to wrap below labels */
+/* display mode cards in a 2-col layout */
 @media (min-width: $tablet) {
   .fixture-mode {
     width: calc(50% - .5rem);
@@ -536,10 +536,6 @@ a.card, .link, .list a {
       margin-left: .5rem;
       float: right;
       clear: right;
-    }
-
-    & .value {
-      max-width: none;
     }
   }
 }
