@@ -362,49 +362,65 @@
           "dmxRange": [160, 171],
           "type": "GoboIndex",
           "index": 1,
-          "comment": "Small dots"
+          "comment": "Small dots",
+          "shakeSpeedStart": "24bpm",
+          "shakeSpeedEnd": "600bpm"
         },
         {
           "dmxRange": [172, 183],
           "type": "GoboIndex",
           "index": 2,
-          "comment": "Shuffle"
+          "comment": "Shuffle",
+          "shakeSpeedStart": "24bpm",
+          "shakeSpeedEnd": "600bpm"
         },
         {
           "dmxRange": [184, 195],
           "type": "GoboIndex",
           "index": 3,
-          "comment": "Floating Squares"
+          "comment": "Floating Squares",
+          "shakeSpeedStart": "24bpm",
+          "shakeSpeedEnd": "600bpm"
         },
         {
           "dmxRange": [196, 207],
           "type": "GoboIndex",
           "index": 4,
-          "comment": "Random Lines"
+          "comment": "Random Lines",
+          "shakeSpeedStart": "24bpm",
+          "shakeSpeedEnd": "600bpm"
         },
         {
           "dmxRange": [208, 219],
           "type": "GoboIndex",
           "index": 5,
-          "comment": "Large Bubbles"
+          "comment": "Large Bubbles",
+          "shakeSpeedStart": "24bpm",
+          "shakeSpeedEnd": "600bpm"
         },
         {
           "dmxRange": [220, 231],
           "type": "GoboIndex",
           "index": 6,
-          "comment": "Shattered"
+          "comment": "Shattered",
+          "shakeSpeedStart": "24bpm",
+          "shakeSpeedEnd": "600bpm"
         },
         {
           "dmxRange": [232, 243],
           "type": "GoboIndex",
           "index": 7,
-          "comment": "Big Dots"
+          "comment": "Big Dots",
+          "shakeSpeedStart": "24bpm",
+          "shakeSpeedEnd": "600bpm"
         },
         {
           "dmxRange": [244, 255],
           "type": "GoboIndex",
           "index": 8,
-          "comment": "Tunnel"
+          "comment": "Tunnel",
+          "shakeSpeedStart": "24bpm",
+          "shakeSpeedEnd": "600bpm"
         }
       ]
     },
@@ -457,37 +473,49 @@
           "dmxRange": [130, 150],
           "type": "GoboIndex",
           "index": 1,
-          "comment": "Clouds"
+          "comment": "Clouds",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [151, 171],
           "type": "GoboIndex",
           "index": 2,
-          "comment": "Eccentric Circle"
+          "comment": "Eccentric Circle",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [172, 192],
           "type": "GoboIndex",
           "index": 3,
-          "comment": "Multiple Cones"
+          "comment": "Multiple Cones",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [193, 213],
           "type": "GoboIndex",
           "index": 4,
-          "comment": "Fat Line"
+          "comment": "Fat Line",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [214, 234],
           "type": "GoboIndex",
           "index": 5,
-          "comment": "Half Circle"
+          "comment": "Half Circle",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [235, 255],
           "type": "GoboIndex",
           "index": 6,
-          "comment": "Linear Dots"
+          "comment": "Linear Dots",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         }
       ]
     },
