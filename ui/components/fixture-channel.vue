@@ -33,7 +33,7 @@
             :append-to-heading="unwrappedChannel.defaultChannel.key === switchToChannelKey ? `(default)` : null">
             <section class="switchingChannel-triggerRanges">
               <span class="label">Activated when</span>
-              <span class="value">Trigger channel is set to {{ ranges.map(range => range.toString()).join(` or `) }}</span>
+              <span class="value" v-html="`Trigger channel is set to ${ranges.map(range => `<span style='white-space: nowrap;'>${range}</span>`).join(` or `)}`" />
             </section>
           </app-fixture-channel>
         </ol>
