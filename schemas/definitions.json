@@ -28,7 +28,7 @@
   },
   "urlString": {
     "type": "string",
-    "pattern": "^(ftp|http|https):\\/\\/[^ \"]+$"
+    "pattern": "^(ftp|http|https)://[^ \"]+$"
   },
   "urlArray": {
     "type": "array",
