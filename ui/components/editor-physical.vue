@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <app-simple-label :formstate="formstate" :name="`${namePrefix}-physical-dimensions`" label="Dimensions">
+    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-dimensions`" label="Dimensions">
       <app-property-input-dimensions
         ref="firstInput"
         v-model="physical.dimensions"
@@ -10,23 +10,23 @@
         :hints="[`width`, `height`, `depth`]"
         :formstate="formstate"
         unit="mm" />
-    </app-simple-label>
+    </app-labeled-input>
 
-    <app-simple-label :formstate="formstate" :name="`${namePrefix}-physical-weight`" label="Weight">
+    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-weight`" label="Weight">
       <app-property-input-number
         v-model="physical.weight"
         :name="`${namePrefix}-physical-weight`"
         :schema-property="properties.physical.weight" /> kg
-    </app-simple-label>
+    </app-labeled-input>
 
-    <app-simple-label :formstate="formstate" :name="`${namePrefix}-physical-power`" label="Power">
+    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-power`" label="Power">
       <app-property-input-number
         v-model="physical.power"
         :name="`${namePrefix}-physical-power`"
         :schema-property="properties.physical.power" /> W
-    </app-simple-label>
+    </app-labeled-input>
 
-    <app-simple-label :formstate="formstate" :name="`${namePrefix}-physical-DMXconnector`" label="DMX connector">
+    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-DMXconnector`" label="DMX connector">
       <app-property-input-select
         v-model="physical.DMXconnector"
         :name="`${namePrefix}-physical-DMXconnector`"
@@ -45,44 +45,44 @@
           hint="other DMX connector"
           class="addition" />
       </validate>
-    </app-simple-label>
+    </app-labeled-input>
 
 
     <h4>Bulb</h4>
 
-    <app-simple-label :formstate="formstate" :name="`${namePrefix}-physical-bulb-type`" label="Bulb type">
+    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-bulb-type`" label="Bulb type">
       <app-property-input-text
         :name="`${namePrefix}-physical-bulb-type`"
         v-model="physical.bulb.type"
         :schema-property="properties.physicalBulb.type"
         hint="e.g. LED" />
-    </app-simple-label>
+    </app-labeled-input>
 
-    <app-simple-label :formstate="formstate" :name="`${namePrefix}-physical-bulb-colorTemperature`" label="Color temperature">
+    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-bulb-colorTemperature`" label="Color temperature">
       <app-property-input-number
         v-model="physical.bulb.colorTemperature"
         :name="`${namePrefix}-physical-bulb-colorTemperature`"
         :schema-property="properties.physicalBulb.colorTemperature" /> K
-    </app-simple-label>
+    </app-labeled-input>
 
-    <app-simple-label :formstate="formstate" :name="`${namePrefix}-physical-bulb-lumens`" label="Lumens">
+    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-bulb-lumens`" label="Lumens">
       <app-property-input-number
         v-model="physical.bulb.lumens"
         :name="`${namePrefix}-physical-bulb-lumens`"
         :schema-property="properties.physicalBulb.lumens" /> lm
-    </app-simple-label>
+    </app-labeled-input>
 
 
     <h4>Lens</h4>
 
-    <app-simple-label :formstate="formstate" :name="`${namePrefix}-physical-lens-name`" label="Lens name">
+    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-lens-name`" label="Lens name">
       <app-property-input-text
         :name="`${namePrefix}-physical-lens-name`"
         v-model="physical.lens.name"
         :schema-property="properties.physicalLens.name" />
-    </app-simple-label>
+    </app-labeled-input>
 
-    <app-simple-label :formstate="formstate" :name="`${namePrefix}-physical-lens-degreesMinMax`" label="Light cone">
+    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-lens-degreesMinMax`" label="Light cone">
       <app-property-input-range
         v-model="physical.lens.degreesMinMax"
         :name="`${namePrefix}-physical-lens-degreesMinMax`"
@@ -91,12 +91,12 @@
         start-hint="min"
         end-hint="max"
         unit="°" />
-    </app-simple-label>
+    </app-labeled-input>
 
 
     <h4>Focus</h4>
 
-    <app-simple-label :formstate="formstate" :name="`${namePrefix}-physical-focus-type`" label="Focus type">
+    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-focus-type`" label="Focus type">
       <app-property-input-select
         v-model="physical.focus.type"
         :name="`${namePrefix}-physical-focus-type`"
@@ -115,9 +115,9 @@
           hint="other focus type"
           class="addition" />
       </validate>
-    </app-simple-label>
+    </app-labeled-input>
 
-    <app-simple-label :formstate="formstate" :name="`${namePrefix}-physical-focus-panMax`" label="Pan maximum">
+    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-focus-panMax`" label="Pan maximum">
       <app-property-input-number
         v-model="physical.focus.panMax"
         :name="`${namePrefix}-physical-focus-panMax`"
@@ -127,9 +127,9 @@
       <label class="infinitePanTilt">
         <input v-model="panMaxInfinite" :name="`${namePrefix}-physical-focus-panMaxInfinite`" type="checkbox"> Infinite pan
       </label>
-    </app-simple-label>
+    </app-labeled-input>
 
-    <app-simple-label :formstate="formstate" :name="`${namePrefix}-physical-focus-tiltMax`" label="Tilt maximum">
+    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-focus-tiltMax`" label="Tilt maximum">
       <app-property-input-number
         v-model="physical.focus.tiltMax"
         :name="`${namePrefix}-physical-focus-tiltMax`"
@@ -139,7 +139,7 @@
       <label class="infinitePanTilt">
         <input v-model="tiltMaxInfinite" :name="`${namePrefix}-physical-focus-tiltMaxInfinite`" type="checkbox"> Infinite tilt
       </label>
-    </app-simple-label>
+    </app-labeled-input>
 
   </div>
 </template>
@@ -153,7 +153,7 @@
 <script>
 import schemaProperties from '~~/lib/schema-properties.js';
 
-import simpleLabelVue from '~/components/simple-label.vue';
+import labeledInputVue from '~/components/labeled-input.vue';
 import propertyInputDimensionsVue from '~/components/property-input-dimensions.vue';
 import propertyInputNumberVue from '~/components/property-input-number.vue';
 import propertyInputRangeVue from '~/components/property-input-range.vue';
@@ -162,7 +162,7 @@ import propertyInputTextVue from '~/components/property-input-text.vue';
 
 export default {
   components: {
-    'app-simple-label': simpleLabelVue,
+    'app-labeled-input': labeledInputVue,
     'app-property-input-dimensions': propertyInputDimensionsVue,
     'app-property-input-number': propertyInputNumberVue,
     'app-property-input-range': propertyInputRangeVue,
