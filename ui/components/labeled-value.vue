@@ -1,7 +1,13 @@
 <template>
   <section :class="name">
-    <div class="label">{{ label }}<slot name="label" /></div>
-    <div class="value">{{ value }}<slot /></div>
+    <div class="label">
+      <template v-if="label">{{ label }}</template>
+      <slot name="label" />
+    </div>
+    <div class="value">
+      <template v-if="value">{{ value }}</template>
+      <slot />
+    </div>
   </section>
 </template>
 
