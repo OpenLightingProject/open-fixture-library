@@ -5,8 +5,7 @@
 
     <section>
       <label>
-        <span class="label">DMX start value</span>
-        <span class="value">
+        <app-labeled-value label="DMX start value">
           <input
             ref="firstInput"
             v-model.number="wizard.start"
@@ -14,35 +13,33 @@
             type="number"
             min="0"
             step="1">
-        </span>
+        </app-labeled-value>
       </label>
     </section>
 
     <section>
       <label>
-        <span class="label">Range width</span>
-        <span class="value">
+        <app-labeled-value label="Range width">
           <input
             v-model.number="wizard.width"
             :max="dmxMax"
             type="number"
             min="1"
             step="1">
-        </span>
+        </app-labeled-value>
       </label>
     </section>
 
     <section>
       <label>
-        <span class="label">Count</span>
-        <span class="value">
+        <app-labeled-value label="Count">
           <input
             v-model.number="wizard.count"
             :max="dmxMax"
             type="number"
             min="1"
             step="1">
-        </span>
+        </app-labeled-value>
       </label>
     </section>
 
@@ -134,10 +131,12 @@ import {
 } from "~/assets/scripts/editor-utils.mjs";
 
 import editorCapabilityTypeDataVue from '~/components/editor-capability-type-data.vue';
+import labeledValueVue from '~/components/labeled-value.vue';
 
 export default {
   components: {
-    'app-editor-capability-type-data': editorCapabilityTypeDataVue
+    'app-editor-capability-type-data': editorCapabilityTypeDataVue,
+    'app-labeled-value': labeledValueVue
   },
   props: {
     capabilities: {

@@ -9,7 +9,7 @@
 
     <div class="capability-content">
 
-      <app-simple-label
+      <app-labeled-input
         :formstate="formstate"
         :name="`capability${capability.uuid}-dmxRange`"
         class="range-label"
@@ -38,7 +38,7 @@
           <app-svg name="close" />
         </a>
 
-      </app-simple-label>
+      </app-labeled-input>
 
       <app-editor-capability-type-data
         ref="capabilityTypeData"
@@ -109,7 +109,7 @@ import {
 
 import conditionalDetailsVue from '~/components/conditional-details.vue';
 import propertyInputRangeVue from '~/components/property-input-range.vue';
-import simpleLabelVue from '~/components/simple-label.vue';
+import labeledInputVue from '~/components/labeled-input.vue';
 import svgVue from "~/components/svg.vue";
 
 import editorCapabilityTypeData from '~/components/editor-capability-type-data.vue';
@@ -118,7 +118,7 @@ export default {
   components: {
     'app-conditional-details': conditionalDetailsVue,
     'app-property-input-range': propertyInputRangeVue,
-    'app-simple-label': simpleLabelVue,
+    'app-labeled-input': labeledInputVue,
     'app-svg': svgVue,
     'app-editor-capability-type-data': editorCapabilityTypeData
   },

@@ -1,6 +1,6 @@
 <template>
   <div class="editor-capability-type-data">
-    <app-simple-label
+    <app-labeled-input
       :formstate="formstate"
       :name="`capability${capability.uuid}-type`"
       :hint="capabilityTypeHint"
@@ -20,7 +20,7 @@
           :value="type">{{ type }}</option>
 
       </select>
-    </app-simple-label>
+    </app-labeled-input>
 
     <component
       v-if="capability.type !== ``"
@@ -34,7 +34,7 @@
 <script>
 import schemaProperties from '~~/lib/schema-properties.js';
 
-import simpleLabelVue from '~/components/simple-label.vue';
+import labeledInputVue from '~/components/labeled-input.vue';
 
 import editorCapabilityNoFunction from '~/components/editor-capabilities/NoFunction.vue';
 import editorCapabilityShutterStrobe from '~/components/editor-capabilities/ShutterStrobe.vue';
@@ -83,7 +83,7 @@ import editorCapabilityGeneric from '~/components/editor-capabilities/Generic.vu
 
 export default {
   components: {
-    'app-simple-label': simpleLabelVue,
+    'app-labeled-input': labeledInputVue,
     'app-editor-capability-NoFunction': editorCapabilityNoFunction,
     'app-editor-capability-ShutterStrobe': editorCapabilityShutterStrobe,
     'app-editor-capability-StrobeSpeed': editorCapabilityStrobeSpeed,
