@@ -8,7 +8,7 @@ const SCHEMA_FILES = [`capability.json`, `channel.json`, `definitions.json`, `fi
 const schemaPromises = SCHEMA_FILES.map(filename => getSchema(SCHEMA_BASE_URL + filename));
 
 /**
- * @param {object} exportFile The file returned by the plugins' export module.
+ * @param {!object} exportFile The file returned by the plugins' export module.
  * @param {!string} exportFile.name File name, may include slashes to provide a folder structure.
  * @param {!string} exportFile.content File content.
  * @param {!string} exportFile.mimetype File mime type.
