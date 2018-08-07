@@ -287,14 +287,6 @@ export default {
     branch() {
       return process.env.TRAVIS_PULL_REQUEST_BRANCH || process.env.TRAVIS_BRANCH || `master`;
     },
-    importPluginInformation() {
-      if (this.fixture.meta.importPlugin === null) {
-        return null;
-      }
-
-      const pluginData = plugins.data[this.fixture.meta.importPlugin];
-      return `Imported using the ${pluginData.name} plugin on ${this.getDateHtml(this.fixture.meta.importDate)}. ${this.fixture.meta.importComment}`;
-    },
     productModelStructuredData() {
       const data = {
         '@context': `http://schema.org`,
