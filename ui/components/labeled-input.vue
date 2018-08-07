@@ -6,7 +6,10 @@
     tag="label">
 
     <app-labeled-value :name="name">
-      <template slot="label">{{ label }}<slot name="label" /></template>
+      <template slot="label">
+        <template v-if="label">{{ label }}</template>
+        <slot name="label" />
+      </template>
 
       <slot />
 
@@ -50,7 +53,10 @@
 
   <label v-else>
     <app-labeled-value>
-      <template slot="label">{{ label }}<slot name="label" /></template>
+      <template slot="label">
+        <template v-if="label">{{ label }}</template>
+        <slot name="label" />
+      </template>
 
       <slot />
       <div v-if="hint" class="hint">{{ hint }}</div>
