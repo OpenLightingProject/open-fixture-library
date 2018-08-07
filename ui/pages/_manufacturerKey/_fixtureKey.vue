@@ -17,6 +17,11 @@
           <span class="authors">Author{{ fixture.meta.authors.length === 1 ? `` : `s` }}:&nbsp;{{ fixture.meta.authors.join(`, `) }}</span>
           <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manKey}/${fixKey}.json`">Source</a></span>
           <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manKey}/${fixKey}.json`">Revisions</a></span>
+
+          <app-conditional-details v-if="fixture.meta.importPlugin != null">
+            <template slot="summary">Imported using the {{ plugins.data[fixture.meta.importPlugin].name }} plugin on <span v-html="getDateHtml(fixture.meta.importDate)" />.</template>
+            <span v-if="fixture.meta.hasImportComment">{{ fixture.meta.importComment }}</span>
+          </app-conditional-details>
         </section>
       </div>
 
@@ -191,12 +196,14 @@
 <script>
 import packageJson from '~~/package.json';
 import register from '~~/fixtures/register.json';
+import plugins from '~~/plugins/plugins.json';
 
 import schemaProperties from '~~/lib/schema-properties.js';
 import Fixture from '~~/lib/model/Fixture.mjs';
 
 import svg from '~/components/svg.vue';
 import categoryBadge from '~/components/category-badge.vue';
+import conditionalDetailsVue from '~/components/conditional-details.vue';
 import downloadButtonVue from '~/components/download-button.vue';
 import fixturePhysical from '~/components/fixture-physical.vue';
 import fixtureMatrix from '~/components/fixture-matrix.vue';
@@ -209,6 +216,7 @@ export default {
   components: {
     'app-svg': svg,
     'app-category-badge': categoryBadge,
+    'app-conditional-details': conditionalDetailsVue,
     'app-download-button': downloadButtonVue,
     'app-fixture-physical': fixturePhysical,
     'app-fixture-matrix': fixtureMatrix,
@@ -257,7 +265,8 @@ export default {
     return {
       linkTypes: Object.keys(schemaProperties.links).filter(
         linkType => linkType !== `other`
-      )
+      ),
+      plugins
     };
   },
   computed: {
@@ -265,10 +274,10 @@ export default {
       return new Fixture(this.manKey, this.fixKey, this.fixtureJson);
     },
     lastModifyDate() {
-      return getDateHtml(this.fixture.meta.lastModifyDate);
+      return this.getDateHtml(this.fixture.meta.lastModifyDate);
     },
     createDate() {
-      return getDateHtml(this.fixture.meta.lastModifyDate);
+      return this.getDateHtml(this.fixture.meta.createDate);
     },
     githubRepoPath() {
       const slug = process.env.TRAVIS_PULL_REQUEST_SLUG || process.env.TRAVIS_REPO_SLUG || `OpenLightingProject/open-fixture-library`;
@@ -277,6 +286,14 @@ export default {
     },
     branch() {
       return process.env.TRAVIS_PULL_REQUEST_BRANCH || process.env.TRAVIS_BRANCH || `master`;
+    },
+    importPluginInformation() {
+      if (this.fixture.meta.importPlugin === null) {
+        return null;
+      }
+
+      const pluginData = plugins.data[this.fixture.meta.importPlugin];
+      return `Imported using the ${pluginData.name} plugin on ${this.getDateHtml(this.fixture.meta.importDate)}. ${this.fixture.meta.importComment}`;
     },
     productModelStructuredData() {
       const data = {
@@ -344,16 +361,16 @@ export default {
       // adapted from https://stackoverflow.com/a/21553982/451391
       const match = url.match(/^.*?\/\/(?:([^:/?#]*)(?::([0-9]+))?)/);
       return match ? match[1] : url;
+    },
+    /**
+     * Format a date to display as a <time> HTML tag.
+     * @param {!Date} date The Date object to format.
+     * @returns {!string} The <time> HTML tag.
+     */
+    getDateHtml(date) {
+      return `<time datetime="${date.toISOString()}" title="${date.toISOString()}">${date.toISOString().replace(/T.*?$/, ``)}</time>`;
     }
   }
 };
 
-/**
- * Format a date to display as a <time> HTML tag.
- * @param {!Date} date The Date object to format.
- * @returns {!string} The <time> HTML tag.
- */
-function getDateHtml(date) {
-  return `<time datetime="${date.toISOString()}" title="${date.toISOString()}">${date.toISOString().replace(/T.*?$/, ``)}</time>`;
-}
 </script>
