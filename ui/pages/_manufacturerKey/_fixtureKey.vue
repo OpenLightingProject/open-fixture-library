@@ -49,30 +49,26 @@
         name="links"
         label="Relevant links">
         <ul class="fixture-links">
-          <li v-for="(link, index) in fixture.getLinksOfType(`manual`)" :key="link">
-            <a :href="link" rel="nofollow" target="_blank">
-              <app-svg name="file-pdf" />
-              Manual {{ index > 0 ? index + 1 : null }}
-              <span class="hostname">({{ getHostname(link) }})</span>
-            </a>
-          </li>
-          <li v-for="(link, index) in fixture.getLinksOfType(`productPage`)" :key="link">
-            <a :href="link" rel="nofollow" target="_blank">
-              <app-svg name="web" />
-              Product page {{ index > 0 ? index + 1 : null }}
-              <span class="hostname">({{ getHostname(link) }})</span>
-            </a>
-          </li>
-          <li v-for="(link, index) in fixture.getLinksOfType(`video`)" :key="link">
-            <a :href="link" rel="nofollow" target="_blank">
-              <app-svg name="youtube" />
-              Video {{ index > 0 ? index + 1 : null }}
-              <span class="hostname">({{ getHostname(link) }})</span>
-            </a>
-          </li>
+          <template v-for="linkType in linkTypes">
+            <li v-for="(url, index) in fixture.getLinksOfType(linkType)" :key="`${linkType}-${url}`">
+              <a
+                :href="url"
+                :title="`${linkTypeNames[linkType]} at ${url}`"
+                rel="nofollow"
+                target="_blank">
+                <app-svg :name="linkTypeIconNames[linkType]" />
+                {{ linkTypeNames[linkType] }} {{ index > 0 ? index + 1 : null }}
+                <span class="hostname">({{ getHostname(url) }})</span>
+              </a>
+            </li>
+          </template>
           <li v-for="link in fixture.getLinksOfType(`other`)" :key="link">
-            <a :href="link" rel="nofollow" target="_blank">
-              <app-svg name="link-variant" />
+            <a
+              :href="link"
+              rel="nofollow"
+              target="_blank"
+              class="link-other">
+              <app-svg :name="linkTypeIconNames.other" />
               {{ link }}
             </a>
           </li>
@@ -150,10 +146,6 @@
   }
 }
 
-.comment > .value {
-  white-space: pre-line;
-}
-
 .fixture-links {
   margin: 0;
   padding: 0;
@@ -163,6 +155,13 @@
     color: $secondary-text-dark;
     font-size: 0.9em;
     padding-left: 1ex;
+  }
+
+  .link-other {
+    display: inline;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
@@ -192,16 +191,15 @@
 .comment > .value {
   white-space: pre-line;
 }
-
-.manualURL > .value {
-  display: inline;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 </style>
 
 <script>
+import packageJson from '~~/package.json';
+import register from '~~/fixtures/register.json';
+
+import schemaProperties from '~~/lib/schema-properties.js';
+import Fixture from '~~/lib/model/Fixture.mjs';
+
 import svg from '~/components/svg.vue';
 import categoryBadge from '~/components/category-badge.vue';
 import downloadButtonVue from '~/components/download-button.vue';
@@ -209,11 +207,6 @@ import fixturePhysical from '~/components/fixture-physical.vue';
 import fixtureMatrix from '~/components/fixture-matrix.vue';
 import fixtureMode from '~/components/fixture-mode.vue';
 import labeledValueVue from '~/components/labeled-value.vue';
-
-import packageJson from '~~/package.json';
-import register from '~~/fixtures/register.json';
-
-import Fixture from '~~/lib/model/Fixture.mjs';
 
 export default {
   components: {
@@ -260,6 +253,25 @@ export default {
       fixKey,
       fixtureJson,
       redirect: redirectObj
+    };
+  },
+  data() {
+    return {
+      linkTypes: Object.keys(schemaProperties.fixture.links.properties).filter(
+        linkType => linkType !== `other`
+      ),
+      linkTypeIconNames: {
+        manual: `file-pdf`,
+        productPage: `web`,
+        video: `youtube`,
+        other: `link-variant`
+      },
+      linkTypeNames: {
+        manual: `Manual`,
+        productPage: `Product page`,
+        video: `Video`,
+        other: `Other`
+      }
     };
   },
   computed: {
