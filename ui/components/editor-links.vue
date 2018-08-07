@@ -1,10 +1,7 @@
 <template>
   <div class="links">
     <div v-for="(link, index) in links" :key="link.uuid" class="linkRow">
-      <select
-        ref="linkTypeSelect"
-        v-model="link.type"
-        :disabled="index === 0">
+      <select ref="linkTypeSelect" v-model="link.type">
         <option
           v-for="linkType in linkTypes"
           :key="linkType"
@@ -13,9 +10,7 @@
 
       <app-svg :name="linkTypeIconNames[link.type]" />
 
-      <validate
-        :state="formstate"
-        tag="span">
+      <validate :state="formstate" tag="span">
         <app-property-input-text
           v-model="link.url"
           :name="`links-${link.uuid}`"
