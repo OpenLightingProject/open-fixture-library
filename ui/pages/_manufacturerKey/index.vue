@@ -10,7 +10,7 @@
         v-if="`website` in manufacturer"
         :href="manufacturer.website"
         class="card blue dark">
-        <app-svg name="earth" class="left" />
+        <app-svg name="web" class="left" />
         <span>Manufacturer website</span>
       </a>
       <a

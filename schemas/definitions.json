@@ -28,7 +28,13 @@
   },
   "urlString": {
     "type": "string",
-    "pattern": "^(ftp|http|https):\\/\\/[^ \"]+$"
+    "pattern": "^(ftp|http|https)://[^ \"]+$"
+  },
+  "urlArray": {
+    "type": "array",
+    "minItems": 1,
+    "uniqueItems": true,
+    "items": { "$ref": "#/urlString" }
   },
   "isoDateString": {
     "type": "string",

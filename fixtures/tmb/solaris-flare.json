@@ -9,7 +9,9 @@
     "lastModifyDate": "2018-07-21"
   },
   "comment": "Flares with serial numbers that contain “14R” have RDM functionality.\nExample: xxxxxx-14R-xxxx",
-  "manualURL": "http://pub.tmb.com/solaris/pdf/Solaris-Flare-Manual.pdf",
+  "links": {
+    "manual": ["http://pub.tmb.com/solaris/pdf/Solaris-Flare-Manual.pdf"]
+  },
   "rdm": {
     "modelId": 1703,
     "softwareVersion": "9.3C"
