@@ -87,13 +87,13 @@ export default {
       linkTypeIconNames: {
         manual: `file-pdf`,
         productPage: `web`,
-        youtube: `youtube`,
+        video: `youtube`,
         other: `link-variant`
       },
       linkTypeNames: {
         manual: `Manual`,
         productPage: `Product page`,
-        youtube: `YouTube video`,
+        video: `Video`,
         other: `Other`
       }
     };

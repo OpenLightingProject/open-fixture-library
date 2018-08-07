@@ -63,11 +63,11 @@
               <span class="hostname">({{ getHostname(link) }})</span>
             </a>
           </li>
-          <li v-for="(link, index) in fixture.getLinksOfType(`youtube`)" :key="link">
+          <li v-for="(link, index) in fixture.getLinksOfType(`video`)" :key="link">
             <a :href="link" rel="nofollow" target="_blank">
               <app-svg name="youtube" />
               Video {{ index > 0 ? index + 1 : null }}
-              <span class="hostname">(youtube.com)</span>
+              <span class="hostname">({{ getHostname(link) }})</span>
             </a>
           </li>
           <li v-for="link in fixture.getLinksOfType(`other`)" :key="link">

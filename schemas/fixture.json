@@ -69,21 +69,13 @@
       "properties": {
         "manual": { "$ref": "definitions.json#/urlArray" },
         "productPage": { "$ref": "definitions.json#/urlArray" },
-        "youtube": {
-          "type": "array",
-          "minItems": 1,
-          "uniqueItems": true,
-          "items": {
-            "type": "string",
-            "pattern": "^https://(?:youtu\\.be/|www\\.youtube\\.com/watch\\?v=)[a-zA-Z0-9_-]+"
-          }
-        },
+        "video": { "$ref": "definitions.json#/urlArray" },
         "other": { "$ref": "definitions.json#/urlArray" }
       },
       "anyOf": [
         { "required": ["manual"] },
         { "required": ["productPage"] },
-        { "required": ["youtube"] },
+        { "required": ["video"] },
         { "required": ["other"] }
       ],
       "additionalProperties": false
