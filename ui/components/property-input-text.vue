@@ -8,7 +8,8 @@
     :maxlength="schemaProperty.maxLength"
     :value="value"
     type="text"
-    @input="update">
+    @input="update"
+    @blur="onBlur">
 </template>
 
 <script>
@@ -65,6 +66,9 @@ export default {
     },
     update() {
       this.$emit(`input`, this.$refs.input.value);
+    },
+    onBlur() {
+      this.$emit(`blur`, this.$refs.input.value);
     }
   }
 };
