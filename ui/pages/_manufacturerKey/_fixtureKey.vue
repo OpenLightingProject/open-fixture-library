@@ -62,12 +62,8 @@
               </a>
             </li>
           </template>
-          <li v-for="link in fixture.getLinksOfType(`other`)" :key="link">
-            <a
-              :href="link"
-              rel="nofollow"
-              target="_blank"
-              class="link-other">
+          <li v-for="link in fixture.getLinksOfType(`other`)" :key="link" class="link-other">
+            <a :href="link" rel="nofollow" target="_blank">
               <app-svg :name="linkTypeIconNames.other" />
               {{ link }}
             </a>
@@ -158,7 +154,6 @@
   }
 
   .link-other {
-    display: inline;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

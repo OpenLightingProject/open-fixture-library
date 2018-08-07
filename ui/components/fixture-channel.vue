@@ -67,11 +67,12 @@
       <template v-if="(unwrappedChannel instanceof Channel)">
         <app-labeled-value
           v-if="finenessInMode > 0"
-          :value="unwrappedChannel.fineChannels.slice(0, finenessInMode).map(
-            fineChannel => `${fineChannel.name} (channel&nbsp;${mode.getChannelIndex(fineChannel) + 1})`
-          ).join(`, `)"
           name="channel-fineChannelAliases"
-          label="Fine channels" />
+          label="Fine channels">
+          {{ unwrappedChannel.fineChannels.slice(0, finenessInMode).map(
+            fineChannel => `${fineChannel.name} (channel&nbsp;${mode.getChannelIndex(fineChannel) + 1})`
+          ).join(`, `) }}
+        </app-labeled-value>
 
         <app-labeled-value
           v-if="unwrappedChannel.hasDefaultValue"
