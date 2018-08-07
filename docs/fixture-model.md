@@ -4,7 +4,7 @@ Instead of parsing [fixtures' JSON data](fixture-format.md) directly, it is reco
 
 The model uses [ES2015 classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) in [ES2015 modules](https://nodejs.org/api/esm.html) to represent the fixtures. E.g., `fixtureFromRepository('cameo', 'nanospot-120')` returns a [`Fixture`](../lib/model/Fixture.mjs) object, instantiated with the specified fixture's data. These objects have several convenient properties that allow easy usage of the fixture data in [plugins](plugins.md), [UI](ui.md) and more.
 
-All model classes are located in the [`lib/model/`](../lib/model) directory. When using the model, it usally suffices to import the `fixtureFromRepository` function from `model.js` which returns a `Fixture` instance:
+All model classes are located in the [`lib/model/`](../lib/model) directory. When using the model, it usually suffices to import the `fixtureFromRepository` function from `model.js` which returns a `Fixture` instance:
 
 ```js
 const { fixtureFromRepository } = require('./lib/model.js');
@@ -61,8 +61,8 @@ export default class Fixture {
   }
 
   // defaults to null as there is no meaningful other default
-  get manualURL() {
-    return this._jsonObject.manualURL || null;
+  get rdm() {
+    return this._jsonObject.rdm || null;
   }
 
   // ...

@@ -19,10 +19,11 @@
       <template v-else-if="(unwrappedChannel instanceof SwitchingChannel)">
         Switches depending on trigger channel's value.
 
-        <section class="switchingChannel-triggerChannel">
-          <span class="label">Trigger channel</span>
-          <span class="value">{{ unwrappedChannel.triggerChannel.name }} (channel&nbsp;{{ mode.getChannelIndex(unwrappedChannel.triggerChannel.key) + 1 }})</span>
-        </section>
+        <app-labeled-value
+          name="switchingChannel-triggerChannel"
+          label="Trigger channel">
+          {{ unwrappedChannel.triggerChannel.name }} (channel&nbsp;{{ mode.getChannelIndex(unwrappedChannel.triggerChannel.key) + 1 }})
+        </app-labeled-value>
 
         <ol>
           <app-fixture-channel
@@ -31,76 +32,83 @@
             :channel="fixture.getChannelByKey(switchToChannelKey)"
             :mode="mode"
             :append-to-heading="unwrappedChannel.defaultChannel.key === switchToChannelKey ? `(default)` : null">
-            <section class="switchingChannel-triggerRanges">
-              <span class="label">Activated when</span>
-              <span class="value" v-html="`Trigger channel is set to ${ranges.map(range => `<span style='white-space: nowrap;'>${range}</span>`).join(` or `)}`" />
-            </section>
+            <app-labeled-value
+              name="switchingChannel-triggerRanges"
+              label="Activated when">
+              <span v-html="`Trigger channel is set to ${ranges.map(range => `<span style='white-space: nowrap;'>${range}</span>`).join(` or `)}`" />
+            </app-labeled-value>
           </app-fixture-channel>
         </ol>
       </template>
 
       <template v-if="channel instanceof MatrixChannel && !(unwrappedChannel instanceof SwitchingChannel)">
-        <section v-if="fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)" class="channel-pixel-group">
-          <span class="label">Pixel group</span>
-          <span class="value">{{ channel.pixelKey }}</span>
-        </section>
+        <app-labeled-value
+          v-if="fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)"
+          :value="`${channel.pixelKey}`"
+          name="channel-pixel-group"
+          label="Pixel group" />
 
         <template v-else>
-          <section class="channel-pixel-key">
-            <span class="label">Pixel</span>
-            <span class="value">{{ channel.pixelKey }}</span>
-          </section>
-          <section class="channel-pixel-position">
-            <span class="label">Pixel position</span>
-            <span class="value">
-              ({{ fixture.matrix.pixelKeyPositions[channel.pixelKey][0] }},
-              {{ fixture.matrix.pixelKeyPositions[channel.pixelKey][1] }},
-              {{ fixture.matrix.pixelKeyPositions[channel.pixelKey][2] }})
-              <span class="hint">(X, Y, Z)</span>
-            </span>
-          </section>
+          <app-labeled-value
+            :value="`${channel.pixelKey}`"
+            name="channel-pixel-key"
+            label="Pixel" />
+          <app-labeled-value
+            name="channel-pixel-position"
+            label="Pixel position">
+            ({{ fixture.matrix.pixelKeyPositions[channel.pixelKey][0] }},
+            {{ fixture.matrix.pixelKeyPositions[channel.pixelKey][1] }},
+            {{ fixture.matrix.pixelKeyPositions[channel.pixelKey][2] }})
+            <span class="hint">(X, Y, Z)</span>
+          </app-labeled-value>
         </template>
       </template>
 
       <template v-if="(unwrappedChannel instanceof Channel)">
-        <section v-if="finenessInMode > 0" class="channel-fineChannelAliases">
-          <span class="label">Fine channels</span>
-          <span class="value">{{
-            unwrappedChannel.fineChannels.slice(0, finenessInMode).map(
-              fineChannel => `${fineChannel.name} (channel&nbsp;${mode.getChannelIndex(fineChannel) + 1})`
-            ).join(`, `)
-          }}</span>
-        </section>
+        <app-labeled-value
+          v-if="finenessInMode > 0"
+          name="channel-fineChannelAliases"
+          label="Fine channels">
+          {{ unwrappedChannel.fineChannels.slice(0, finenessInMode).map(
+            fineChannel => `${fineChannel.name} (channel&nbsp;${mode.getChannelIndex(fineChannel) + 1})`
+          ).join(`, `) }}
+        </app-labeled-value>
 
-        <section v-if="unwrappedChannel.hasDefaultValue" class="channel-defaultValue">
-          <span class="label">Default DMX value</span>
-          <span class="value">{{ unwrappedChannel.getDefaultValueWithFineness(finenessInMode) }}</span>
-        </section>
+        <app-labeled-value
+          v-if="unwrappedChannel.hasDefaultValue"
+          :value="`${unwrappedChannel.getDefaultValueWithFineness(finenessInMode)}`"
+          name="channel-defaultValue"
+          label="Default DMX value" />
 
-        <section v-if="unwrappedChannel.hasHighlightValue" class="channel-defaultValue">
-          <span class="label">Highlight DMX value</span>
-          <span class="value">{{ unwrappedChannel.getHighlightValueWithFineness(finenessInMode) }}</span>
-        </section>
+        <app-labeled-value
+          v-if="unwrappedChannel.hasHighlightValue"
+          :value="`${unwrappedChannel.getHighlightValueWithFineness(finenessInMode)}`"
+          name="channel-highlightValue"
+          label="Highlight DMX value" />
 
-        <section v-if="unwrappedChannel.isInverted" class="channel-isInverted">
-          <span class="label">Is inverted?</span>
-          <span class="value">Yes</span>
-        </section>
+        <app-labeled-value
+          v-if="unwrappedChannel.isInverted"
+          name="channel-isInverted"
+          label="Is inverted?"
+          value="Yes" />
 
-        <section v-if="unwrappedChannel.isConstant" class="channel-isConstant">
-          <span class="label">Is constant?</span>
-          <span class="value">Yes</span>
-        </section>
+        <app-labeled-value
+          v-if="unwrappedChannel.isConstant"
+          name="channel-isConstant"
+          label="Is constant?"
+          value="Yes" />
 
-        <section v-if="unwrappedChannel.canCrossfade" class="channel-canCrossfade">
-          <span class="label">Can crossfade?</span>
-          <span class="value">Yes</span>
-        </section>
+        <app-labeled-value
+          v-if="unwrappedChannel.canCrossfade"
+          name="channel-canCrossfade"
+          label="Can crossfade?"
+          value="Yes" />
 
-        <section v-if="unwrappedChannel.precedence !== `LTP`" class="channel-precedence">
-          <span class="label">Precedence</span>
-          <span class="value">{{ unwrappedChannel.precedence }}</span>
-        </section>
+        <app-labeled-value
+          v-if="unwrappedChannel.precedence !== `LTP`"
+          :value="unwrappedChannel.precedence"
+          name="channel-precedence"
+          label="Precedence" />
 
         <app-fixture-capability-table
           :channel="unwrappedChannel"
@@ -144,6 +152,7 @@ import svg from '~/components/svg.vue';
 import conditionalDetails from '~/components/conditional-details.vue';
 import fixtureChannelTypeIcon from '~/components/fixture-channel-type-icon.vue';
 import fixtureCapabilityTable from '~/components/fixture-capability-table.vue';
+import labeledValueVue from '~/components/labeled-value.vue';
 
 import AbstractChannel from '~~/lib/model/AbstractChannel.mjs';
 import Channel from '~~/lib/model/Channel.mjs';
@@ -159,7 +168,8 @@ export default {
     'app-svg': svg,
     'app-conditional-details': conditionalDetails,
     'app-fixture-channel-type-icon': fixtureChannelTypeIcon,
-    'app-fixture-capability-table': fixtureCapabilityTable
+    'app-fixture-capability-table': fixtureCapabilityTable,
+    'app-labeled-value': labeledValueVue
   },
   props: {
     channel: {

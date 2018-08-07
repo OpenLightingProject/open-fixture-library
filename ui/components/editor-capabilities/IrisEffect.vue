@@ -1,7 +1,7 @@
 <template>
   <div class="capability-type-data">
 
-    <app-simple-label
+    <app-labeled-input
       :formstate="formstate"
       :name="`capability${capability.uuid}-effectName`"
       label="Effect Name">
@@ -11,9 +11,9 @@
         :name="`capability${capability.uuid}-effectName`"
         :schema-property="properties.definitions.nonEmptyString"
         :required="true" />
-    </app-simple-label>
+    </app-labeled-input>
 
-    <app-simple-label
+    <app-labeled-input
       :formstate="formstate"
       :name="`capability${capability.uuid}-speed`"
       label="Speed">
@@ -21,9 +21,9 @@
         :capability="capability"
         :formstate="formstate"
         property-name="speed" />
-    </app-simple-label>
+    </app-labeled-input>
 
-    <app-simple-label
+    <app-labeled-input
       :formstate="formstate"
       :name="`capability${capability.uuid}-comment`"
       label="Comment">
@@ -32,7 +32,7 @@
         :formstate="formstate"
         :name="`capability${capability.uuid}-comment`"
         :schema-property="properties.definitions.nonEmptyString" />
-    </app-simple-label>
+    </app-labeled-input>
 
   </div>
 </template>
@@ -42,13 +42,13 @@ import schemaProperties from '~~/lib/schema-properties.js';
 
 import editorProportionalCapabilityDataSwitcher from '~/components/editor-proportional-capability-data-switcher.vue';
 import propertyInputTextVue from '~/components/property-input-text.vue';
-import simpleLabelVue from '~/components/simple-label.vue';
+import labeledInputVue from '~/components/labeled-input.vue';
 
 export default {
   components: {
     'app-editor-proportional-capability-data-switcher': editorProportionalCapabilityDataSwitcher,
     'app-property-input-text': propertyInputTextVue,
-    'app-simple-label': simpleLabelVue
+    'app-labeled-input': labeledInputVue
   },
   props: {
     capability: {

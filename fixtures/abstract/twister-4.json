@@ -6,13 +6,19 @@
   "meta": {
     "authors": ["Flo Edelmann", "Felix Edelmann"],
     "createDate": "2017-01-24",
-    "lastModifyDate": "2018-07-21",
+    "lastModifyDate": "2018-08-06",
     "importPlugin": {
       "plugin": "qlcplus",
       "date": "2017-01-24"
     }
   },
-  "manualURL": "http://www.sabretechnology.co.uk/pdfs/allman2.pdf",
+  "links": {
+    "manual": [
+      "http://www.sabretechnology.co.uk/pdfs/allman2.pdf",
+      "http://www.sabretechnology.co.uk/pdfs/hptwis.pdf"
+    ],
+    "video": ["https://www.youtube.com/watch?v=AAx21-IF_zQ"]
+  },
   "physical": {
     "dimensions": [200, 200, 400],
     "weight": 5,

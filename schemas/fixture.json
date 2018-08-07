@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
 
-  "version": "8.0.0",
+  "version": "9.0.0",
 
   "type": "object",
   "properties": {
@@ -64,7 +64,22 @@
       "additionalProperties": false
     },
     "comment": { "$ref": "definitions.json#/nonEmptyMultilineString" },
-    "manualURL": { "$ref": "definitions.json#/urlString" },
+    "links": {
+      "type": "object",
+      "properties": {
+        "manual": { "$ref": "definitions.json#/urlArray" },
+        "productPage": { "$ref": "definitions.json#/urlArray" },
+        "video": { "$ref": "definitions.json#/urlArray" },
+        "other": { "$ref": "definitions.json#/urlArray" }
+      },
+      "anyOf": [
+        { "required": ["manual"] },
+        { "required": ["productPage"] },
+        { "required": ["video"] },
+        { "required": ["other"] }
+      ],
+      "additionalProperties": false
+    },
     "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
     "rdm": {
       "type": "object",

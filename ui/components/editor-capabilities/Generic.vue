@@ -1,6 +1,6 @@
 <template>
   <div class="capability-type-data">
-    <app-simple-label
+    <app-labeled-input
       :formstate="formstate"
       :name="`capability${capability.uuid}-comment`"
       label="Comment">
@@ -9,7 +9,7 @@
         :formstate="formstate"
         :name="`capability${capability.uuid}-comment`"
         :schema-property="properties.definitions.nonEmptyString" />
-    </app-simple-label>
+    </app-labeled-input>
   </div>
 </template>
 
@@ -17,12 +17,12 @@
 import schemaProperties from '~~/lib/schema-properties.js';
 
 import propertyInputTextVue from '~/components/property-input-text.vue';
-import simpleLabelVue from '~/components/simple-label.vue';
+import labeledInputVue from '~/components/labeled-input.vue';
 
 export default {
   components: {
     'app-property-input-text': propertyInputTextVue,
-    'app-simple-label': simpleLabelVue
+    'app-labeled-input': labeledInputVue
   },
   props: {
     capability: {

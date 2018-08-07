@@ -17,15 +17,14 @@
       <h4>Pixel groups</h4>
       <span class="hint only-js">Hover over the pixel groups to highlight the corresponding pixels.</span>
 
-      <section
+      <app-labeled-value
         v-for="key in matrix.pixelGroupKeys"
         :key="key"
-        class="pixel-group"
-        @mouseover="highlightedPixelKeys = matrix.pixelGroups[key]"
-        @mouseout="highlightedPixelKeys = []">
-        <span class="label">{{ key }}</span>
-        <span class="value">{{ matrix.pixelGroups[key].join(`, `) }}</span>
-      </section>
+        :label="key"
+        :value="matrix.pixelGroups[key].join(`, `)"
+        name="pixel-group"
+        @mouseover.native="highlightedPixelKeys = matrix.pixelGroups[key]"
+        @mouseout.native="highlightedPixelKeys = []" />
     </section>
   </div>
 </template>
@@ -78,10 +77,15 @@
 
 
 <script>
+import labeledValueVue from '~/components/labeled-value.vue';
+
 import Matrix from '~~/lib/model/Matrix.mjs';
 import Physical from '~~/lib/model/Physical.mjs';
 
 export default {
+  components: {
+    'app-labeled-value': labeledValueVue
+  },
   props: {
     matrix: {
       type: Matrix,

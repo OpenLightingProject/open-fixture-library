@@ -29,43 +29,68 @@
 
     <section class="fixture-info card">
 
-      <section class="categories">
-        <span class="label">Categories</span>
-        <span class="value">
-          <app-category-badge
-            v-for="cat in fixture.categories"
-            :key="cat"
-            :category="cat" />
-        </span>
-      </section>
+      <app-labeled-value
+        name="categories"
+        label="Categories">
+        <app-category-badge
+          v-for="cat in fixture.categories"
+          :key="cat"
+          :category="cat" />
+      </app-labeled-value>
 
-      <section v-if="fixture.hasComment" class="comment">
-        <span class="label">Comment</span>
-        <span class="value">{{ fixture.comment }}</span>
-      </section>
+      <app-labeled-value
+        v-if="fixture.hasComment"
+        :value="fixture.comment"
+        name="comment"
+        label="Comment" />
 
-      <section v-if="fixture.manualURL !== null" class="manualURL">
-        <span class="label">Manual</span>
-        <span class="value"><a :href="fixture.manualURL" rel="nofollow">{{ fixture.manualURL }}</a></span>
-      </section>
+      <app-labeled-value
+        v-if="fixture.links !== null"
+        name="links"
+        label="Relevant links">
+        <ul class="fixture-links">
+          <template v-for="linkType in linkTypes">
+            <li v-for="(url, index) in fixture.getLinksOfType(linkType)" :key="`${linkType}-${url}`">
+              <a
+                :href="url"
+                :title="`${linkTypeNames[linkType]} at ${url}`"
+                rel="nofollow"
+                target="_blank">
+                <app-svg :name="linkTypeIconNames[linkType]" />
+                {{ linkTypeNames[linkType] }} {{ index > 0 ? index + 1 : null }}
+                <span class="hostname">({{ getHostname(url) }})</span>
+              </a>
+            </li>
+          </template>
+          <li v-for="link in fixture.getLinksOfType(`other`)" :key="link" class="link-other">
+            <a :href="link" rel="nofollow" target="_blank">
+              <app-svg :name="linkTypeIconNames.other" />
+              {{ link }}
+            </a>
+          </li>
+        </ul>
+      </app-labeled-value>
 
       <section v-if="fixture.isHelpWanted" class="help-wanted">
         <app-svg name="comment-question-outline" title="Help wanted!" /><a href="#contribute">You can help to improve this fixture definition!</a>
         {{ fixture.helpWanted !== null ? fixture.helpWanted : `Specific questions are included in the capabilities below.` }}
       </section>
 
-      <section v-if="fixture.rdm !== null" class="rdm">
-        <span class="label"><abbr title="Remote Device Management">RDM</abbr> data</span>
-        <span class="value">
-          {{ fixture.manufacturer.rdmId }} /
-          {{ fixture.rdm.modelId }} /
-          {{ `softwareVersion` in fixture.rdm ? fixture.rdm.softwareVersion : `?` }} –
-          <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${fixture.manufacturer.rdmId}&model=${fixture.rdm.modelId}`" rel="nofollow">
-            <app-svg name="ola" /> View in Open Lighting RDM database
-          </a>
-          <span class="hint">manufacturer ID / model ID / software version</span>
-        </span>
-      </section>
+      <app-labeled-value
+        v-if="fixture.rdm !== null"
+        name="rdm">
+        <template slot="label">
+          <abbr title="Remote Device Management">RDM</abbr> data
+        </template>
+
+        {{ fixture.manufacturer.rdmId }} /
+        {{ fixture.rdm.modelId }} /
+        {{ `softwareVersion` in fixture.rdm ? fixture.rdm.softwareVersion : `?` }} –
+        <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${fixture.manufacturer.rdmId}&model=${fixture.rdm.modelId}`" rel="nofollow">
+          <app-svg name="ola" /> View in Open Lighting RDM database
+        </a>
+        <span class="hint">manufacturer ID / model ID / software version</span>
+      </app-labeled-value>
 
       <template v-if="fixture.physical !== null">
         <h3 class="physical">Physical data</h3>
@@ -117,17 +142,21 @@
   }
 }
 
-.comment > .value {
-  white-space: pre-line;
-}
+.fixture-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 
-.manualURL {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  .hostname {
+    color: $secondary-text-dark;
+    font-size: 0.9em;
+    padding-left: 1ex;
+  }
 
-  & > .value {
-    display: inline;
+  .link-other {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
@@ -153,18 +182,28 @@
 }
 </style>
 
+<style lang="scss">
+.comment > .value {
+  white-space: pre-line;
+}
+</style>
+
 <script>
+import packageJson from '~~/package.json';
+import register from '~~/fixtures/register.json';
+
+import schemaProperties from '~~/lib/schema-properties.js';
+import Fixture from '~~/lib/model/Fixture.mjs';
+
 import svg from '~/components/svg.vue';
 import categoryBadge from '~/components/category-badge.vue';
 import downloadButtonVue from '~/components/download-button.vue';
 import fixturePhysical from '~/components/fixture-physical.vue';
 import fixtureMatrix from '~/components/fixture-matrix.vue';
 import fixtureMode from '~/components/fixture-mode.vue';
+import labeledValueVue from '~/components/labeled-value.vue';
 
-import packageJson from '~~/package.json';
-import register from '~~/fixtures/register.json';
-
-import Fixture from '~~/lib/model/Fixture.mjs';
+import fixtureLinksMixin from '~/assets/scripts/fixture-links-mixin.mjs';
 
 export default {
   components: {
@@ -173,8 +212,10 @@ export default {
     'app-download-button': downloadButtonVue,
     'app-fixture-physical': fixturePhysical,
     'app-fixture-matrix': fixtureMatrix,
-    'app-fixture-mode': fixtureMode
+    'app-fixture-mode': fixtureMode,
+    'app-labeled-value': labeledValueVue
   },
+  mixins: [fixtureLinksMixin],
   validate({ params }) {
     return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;
   },
@@ -210,6 +251,13 @@ export default {
       fixKey,
       fixtureJson,
       redirect: redirectObj
+    };
+  },
+  data() {
+    return {
+      linkTypes: Object.keys(schemaProperties.links).filter(
+        linkType => linkType !== `other`
+      )
     };
   },
   computed: {
@@ -290,6 +338,13 @@ export default {
     return {
       title: `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`
     };
+  },
+  methods: {
+    getHostname(url) {
+      // adapted from https://stackoverflow.com/a/21553982/451391
+      const match = url.match(/^.*?\/\/(?:([^:/?#]*)(?::([0-9]+))?)/);
+      return match ? match[1] : url;
+    }
   }
 };
 
