@@ -4,7 +4,7 @@
     <app-labeled-input
       :formstate="formstate"
       :name="`capability${capability.uuid}-effectName`"
-      label="Effect Name">
+      label="Effect name">
       <app-property-input-text
         v-model="capability.typeData.effectName"
         :formstate="formstate"
