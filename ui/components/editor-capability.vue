@@ -12,7 +12,6 @@
       <app-labeled-input
         :formstate="formstate"
         :name="`capability${capability.uuid}-dmxRange`"
-        class="range-label"
         label="DMX range">
 
         <app-property-input-range
@@ -29,16 +28,16 @@
           @start-updated="onStartUpdated"
           @end-updated="onEndUpdated" />
 
-        <a
-          v-if="isChanged"
-          href="#remove"
-          class="remove"
-          title="Remove capability"
-          @click.prevent="clear">
-          <app-svg name="close" />
-        </a>
-
       </app-labeled-input>
+
+      <a
+        v-if="isChanged"
+        href="#remove"
+        class="remove"
+        title="Remove capability"
+        @click.prevent="clear">
+        <app-svg name="close" />
+      </a>
 
       <app-editor-capability-type-data
         ref="capabilityTypeData"
@@ -55,6 +54,7 @@
 
 .capability {
   margin: 0 -0.5rem;
+  position: relative;
 
   &:not(:last-child) {
     border-bottom: 1px solid $divider-dark;
@@ -74,14 +74,11 @@
   color: $disabled-text-dark;
 }
 
-.range-label {
-  position: relative;
-}
-
 a.remove {
   display: inline-block;
   position: absolute;
   right: 0;
+  top: 0;
   padding: 0.3rem;
   width: 1.4rem;
   height: 1.4rem;

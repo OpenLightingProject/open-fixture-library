@@ -150,7 +150,6 @@
 }
 
 .manualURL > .value {
-  display: inline;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
