@@ -107,10 +107,12 @@ export default {
       );
 
       for (const subFieldName of subFieldNames) {
-        const fieldState = this.formstate[subFieldName];
+        if (this.formstate.$error[subFieldName]) {
+          const fieldState = this.formstate[subFieldName];
 
-        if (fieldState.$touched || fieldState.$submitted) {
-          return fieldState;
+          if (fieldState.$touched || fieldState.$submitted) {
+            return fieldState;
+          }
         }
       }
 
