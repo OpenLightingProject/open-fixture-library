@@ -218,7 +218,6 @@ function getChannelPreset(channel) {
     IntensityLightness: cap => false,
     IntensityValue: cap => false,
     PositionPan: cap => cap.type === `Pan`,
-    PositionPanCounterClockwise: cap => false,
     PositionTilt: cap => cap.type === `Tilt`,
     PositionXAxis: cap => false,
     PositionYAxis: cap => false,
