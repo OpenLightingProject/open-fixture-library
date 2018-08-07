@@ -4,14 +4,14 @@
     <app-labeled-input
       :formstate="formstate"
       :name="`capability${capability.uuid}-fogType`"
-      label="Fog Type">
+      label="Fog type">
       <select
         v-model="capability.typeData.fogType"
         :class="{ empty: capability.typeData.fogType === `` }"
         :name="`capability${capability.uuid}-fogType`"
         required>
 
-        <option value="" disabled>Please select a Fog Type</option>
+        <option value="" disabled>Please select a fog type</option>
         <option
           v-for="fogType in fogTypes"
           :key="fogType"
@@ -23,7 +23,7 @@
     <app-labeled-input
       :formstate="formstate"
       :name="`capability${capability.uuid}-fogOutput`"
-      label="Fog Output">
+      label="Fog output">
       <app-editor-proportional-capability-data-switcher
         :capability="capability"
         :formstate="formstate"
