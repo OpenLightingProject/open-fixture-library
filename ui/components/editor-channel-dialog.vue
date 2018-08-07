@@ -36,7 +36,8 @@
             start-with-uppercase-or-number
             no-fine-channel-name
             title="Please start with an uppercase letter or a number. Don't create fine channels here, set its resolution below instead."
-            class="channelName" />
+            class="channelName"
+            @blur="onChannelNameChanged" />
         </app-labeled-input>
 
         <app-labeled-input :formstate="formstate" name="fineness" label="Channel resolution">
@@ -185,6 +186,7 @@ import {
   getEmptyFineChannel,
   getSanitizedChannel,
   isChannelChanged,
+  isCapabilityChanged,
   clone
 } from '~/assets/scripts/editor-utils.mjs';
 
@@ -296,6 +298,9 @@ export default {
       }
 
       return `Edit channel`;
+    },
+    areCapabilitiesChanged() {
+      return this.channel.capabilities.some(isCapabilityChanged);
     }
   },
   watch: {
@@ -357,6 +362,55 @@ export default {
       }
 
       this.resetChannelForm();
+    },
+
+    onChannelNameChanged(name) {
+      if (!this.areCapabilitiesChanged) {
+        const cap = this.channel.capabilities[0];
+        const changeCapabilityType = this.$refs.capabilities[0].$refs.capabilityTypeData.changeCapabilityType;
+        const singleColors = this.properties.capabilityTypes.ColorIntensity.properties.color.enum;
+
+        const matchingColor = singleColors.find(
+          color => name.toLowerCase().includes(color.toLowerCase())
+        );
+        if (matchingColor) {
+          cap.type = `ColorIntensity`;
+          changeCapabilityType();
+          cap.typeData.color = matchingColor;
+        }
+        else {
+          const capabilityTypeSuggestions = {
+            NoFunction: /^(No function|Nothing|Reserved)$/i,
+            StrobeSpeed: /^(Strobe Speed|Strobe Rate)$/i,
+            StrobeDuration: /^(Strobe Duration|Flash Duration)$/i,
+            Intensity: /^(Intensity|Dimmer|Master Dimmer)$/i,
+            ColorTemperature: /^(Colou?r Temperature( Correction)?|CTC|CTO|CTB)$/i,
+            Pan: /^(Pan|Horizontal Movement)$/i,
+            Tilt: /^(Tilt|Vertical Movement)$/i,
+            PanTiltSpeed: /^(Pan\/?Tilt|Movement) (Speed|Time|Duration)$/i,
+            EffectSpeed: /^(Effect|Program|Macro) Speed$/i,
+            EffectDuration: /^(Effect|Program|Macro) (Time|Duration)$/i,
+            SoundSensitivity: /^(Sound|Mic|Microphone) Sensitivity$/i,
+            Focus: /^Focus$/i,
+            Zoom: /^Zoom$/i,
+            Iris: /^Iris$/i,
+            Frost: /^Frost$/i,
+            Fog: /^(Fog|Haze)$/i,
+            FogOutput: /^(Fog (Output|Intensity|Emission)|Pump)$/i,
+            Speed: /^.*?Speed$/i,
+            Time: /^.*?(Time|Duration)$/i
+          };
+
+          const matchingType = Object.keys(capabilityTypeSuggestions).find(
+            type => name.match(capabilityTypeSuggestions[type])
+          );
+
+          if (matchingType) {
+            cap.type = matchingType;
+            changeCapabilityType();
+          }
+        }
+      }
     },
 
     onSubmit() {
