@@ -4,7 +4,7 @@
     <app-labeled-input
       :formstate="formstate"
       :name="`capability${capability.uuid}-soundSensitivity`"
-      label="Sound Sensitivity">
+      label="Sound sensitivity">
       <app-editor-proportional-capability-data-switcher
         :capability="capability"
         :formstate="formstate"

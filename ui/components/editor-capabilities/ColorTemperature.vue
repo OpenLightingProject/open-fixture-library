@@ -4,7 +4,7 @@
     <app-labeled-input
       :formstate="formstate"
       :name="`capability${capability.uuid}-colorTemperature`"
-      label="Color Temperature">
+      label="Color temperature">
       <app-editor-proportional-capability-data-switcher
         :capability="capability"
         :formstate="formstate"
