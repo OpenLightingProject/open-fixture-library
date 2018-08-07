@@ -76,7 +76,8 @@ module.exports.export = function exportEcue(fixtures, options) {
       pretty: true,
       indent: `    `
     }),
-    mimetype: `application/xml`
+    mimetype: `application/xml`,
+    fixtures: fixtures
   }];
 };
 

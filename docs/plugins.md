@@ -25,17 +25,19 @@ If exporting is supported, create a `plugins/<plugin-key>/export.js` module that
 
 ```js
 {
-  name: 'filename.ext',
-  content: 'file content',
-  mimetype: 'text/plain'
+  name: `filename.ext`, // Required, may include forward slashes to generate a folder structure
+  content: `file content`, // Required
+  mimetype: `text/plain`, // Required
+  fixtures: [fixA, fixB], // Optional, list of Fixture objects that are described in this file; may be ommited if the file doesn't belong to any fixture (e.g. manufacturer information)
+  mode: `8ch` // Optional, mode's shortName if this file only describes a single mode
 }
 ```
 
 A very simple export plugin looks like this:
 
 ```js
-module.exports.name = 'Plugin Name';
-module.exports.version = '0.1.0';  // semantic versioning of export plugin
+module.exports.name = `Plugin Name`;
+module.exports.version = `0.1.0`;  // semantic versioning of export plugin
 
 /**
  * @param {!Array.<Fixture>} fixtures An array of Fixture objects, see our fixture model
@@ -53,7 +55,7 @@ module.exports.export = function exportPluginName(fixtures, options) {
         name: `${fixture.manufacturer.key}-${fixture.key}-${mode.shortName}.xml`,
         // that's just an example, normally, the (way larger) file contents are computated using several helper functions
         content: `<title>${fixture.name}: ${mode.channels.length}ch</title>`,
-        mimetype: 'application/xml'
+        mimetype: `application/xml`
       });
     }
   }
@@ -88,8 +90,8 @@ The `reject` function should be called with an error string if it's not possible
 Example:
 
 ```js
-module.exports.name = 'Plugin Name';
-module.exports.version = '0.1.0';  // semantic versioning of import plugin
+module.exports.name = `Plugin Name`;
+module.exports.version = `0.1.0`;  // semantic versioning of import plugin
 
 /**
  * @param {!string} fileContent The imported file's content
@@ -105,22 +107,22 @@ module.exports.import = function importPluginName(fileContent, fileName, resolve
   };
 
   // just an example
-  const manKey = 'cameo';
-  const fixKey = 'thunder-wash-600-rgb'; // use a sanitized key as it's used as filename!
+  const manKey = `cameo`;
+  const fixKey = `thunder-wash-600-rgb`; // use a sanitized key as it's used as filename!
 
   const fixtureObject = {};
   out.warnings[`${manKey}/${fixKey}`] = [];
 
-  const couldNotParse = fileContent.includes('Error');
+  const couldNotParse = fileContent.includes(`Error`);
   if (couldNotParse) {
     reject(`Could not parse '${fileName}'.`);
     return;
   }
 
-  fixtureObject.name = 'Thunder Wash 600 RGB';
+  fixtureObject.name = `Thunder Wash 600 RGB`;
 
   // Add warning if a necessary property is not included in parsed file
-  out.warnings[`${manKey}/${fixKey}`].push('Could not parse categories, please specify them manually.');
+  out.warnings[`${manKey}/${fixKey}`].push(`Could not parse categories, please specify them manually.`);
 
   // That's the imported fixture
   out.fixtures[`${manKey}/${fixKey}`] = fixtureObject;
@@ -133,31 +135,43 @@ module.exports.import = function importPluginName(fileContent, fileName, resolve
 
 We want to run unit tests whereever possible (see [Testing](testing.md)), that's why it's possible to write plugin specific tests for exported fixtures, so called export tests. Of course they're only possible if the plugin provides an export module.
 
-A plugin's export test takes an exported fixture as argument and evaluates it against plugin-specific requirements. For example, there is a [QLC+ export test](../plugins/qlcplus/exportTests/xsd-schema-conformity.js) that compares the generated xml file with the given QLC+ xsd fixture schema (if an official xml schema is available, it should definitely be used in an export test). We run these export tests automatically using the Travis CI.
+A plugin's export test takes an exported file object as argument and evaluates it against plugin-specific requirements. For example, there is a [QLC+ export test](../plugins/qlcplus/exportTests/xsd-schema-conformity.js) that compares the generated xml file with the given QLC+ xsd fixture schema (if an official xml schema is available, it should definitely be used in an export test). We run these export tests automatically using the Travis CI.
 
 Each test module should be located at `plugins/<plugin-key>/exportTests/<export-test-key>.js`. Here's a dummy test illustrating the structure:
 
 ```js
-const xml2js = require('xml2js');
+const xml2js = require(`xml2js`);
 
 /**
- * @param {string} exportFileData The content of a file returned by the plugins' export module.
- * @returns {Promise} Resolve when the test passes or reject with an error if the test fails.
+ * @param {object} exportFile The file returned by the plugins' export module.
+ * @param {!string} exportFile.name File name, may include slashes to provide a folder structure.
+ * @param {!string} exportFile.content File content.
+ * @param {!string} exportFile.mimetype File mime type.
+ * @param {?Array.<Fixture>} exportFile.fixtures Fixture objects that are described in given file; may be ommited if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @param {?string} exportFile.mode Mode's shortName if given file only describes a single mode.
+ * @returns {!Promise} Resolve when the test passes or reject with an array of errors if the test fails.
 **/
-module.exports = function testValueCorrectness(exportFileData) {
+module.exports = function testValueCorrectness(exportFile) {
   return new Promise((resolve, reject) => {
     const parser = new xml2js.Parser();
 
-    parser.parseString(exportFileData, (parseError, xml) => {
+    parser.parseString(exportFile.content, (parseError, xml) => {
       if (parseError) {
-        reject(`Error parsing XML: ${parseError}`);
+        reject([`Error parsing XML: ${parseError}`]);
         return;
       }
 
-      // the plugin crashes if the name is empty, so we must ensure that this won't happen
+      const errors = [];
+
+      // the lighting software crashes if the name is empty, so we must ensure that this won't happen
       // (just an example)
       if (xml.Fixture.Name[0].length === 0) {
-        reject('Name missing');
+        errors.push(`Name missing`);
+        return;
+      }
+
+      if (errors.length > 0) {
+        reject(errors)
         return;
       }
 

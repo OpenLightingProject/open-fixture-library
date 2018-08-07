@@ -7,7 +7,16 @@ const SCHEMA_FILES = [`capability.json`, `channel.json`, `definitions.json`, `fi
 
 const schemaPromises = SCHEMA_FILES.map(filename => getSchema(SCHEMA_BASE_URL + filename));
 
-module.exports = function testSchemaConformity(exportFileData) {
+/**
+ * @param {object} exportFile The file returned by the plugins' export module.
+ * @param {!string} exportFile.name File name, may include slashes to provide a folder structure.
+ * @param {!string} exportFile.content File content.
+ * @param {!string} exportFile.mimetype File mime type.
+ * @param {?Array.<Fixture>} exportFile.fixtures Fixture objects that are described in given file; may be ommited if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @param {?string} exportFile.mode Mode's shortName if given file only describes a single mode.
+ * @returns {!Promise} Resolve when the test passes or reject with an error or an array of errors if the test fails.
+**/
+module.exports = function testSchemaConformity(exportFile) {
   return Promise.all(schemaPromises).then(schemas => {
     const fixtureSchema = schemas[SCHEMA_FILES.indexOf(`fixture.json`)];
 
@@ -22,7 +31,7 @@ module.exports = function testSchemaConformity(exportFileData) {
     const ajv = new Ajv({ schemas });
     const schemaValidate = ajv.getSchema(`https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`);
 
-    const schemaValid = schemaValidate(JSON.parse(exportFileData));
+    const schemaValid = schemaValidate(JSON.parse(exportFile.content));
     if (!schemaValid) {
       return Promise.reject(JSON.stringify(schemaValidate.errors, null, 2));
     }

@@ -23,7 +23,8 @@ module.exports.export = function exportOFL(fixtures, options) {
     return {
       name: `${fixture.manufacturer.key}/${fixture.key}.json`,
       content: fixtureJsonStringify(jsonData),
-      mimetype: `application/ofl-fixture`
+      mimetype: `application/ofl-fixture`,
+      fixtures: [fixture]
     };
   });
 
