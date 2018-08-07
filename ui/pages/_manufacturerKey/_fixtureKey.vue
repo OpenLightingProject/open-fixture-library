@@ -203,6 +203,8 @@ import fixtureMatrix from '~/components/fixture-matrix.vue';
 import fixtureMode from '~/components/fixture-mode.vue';
 import labeledValueVue from '~/components/labeled-value.vue';
 
+import fixtureLinksMixin from '~/assets/scripts/fixture-links-mixin.mjs';
+
 export default {
   components: {
     'app-svg': svg,
@@ -213,6 +215,7 @@ export default {
     'app-fixture-mode': fixtureMode,
     'app-labeled-value': labeledValueVue
   },
+  mixins: [fixtureLinksMixin],
   validate({ params }) {
     return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;
   },
@@ -252,21 +255,9 @@ export default {
   },
   data() {
     return {
-      linkTypes: Object.keys(schemaProperties.fixture.links.properties).filter(
+      linkTypes: Object.keys(schemaProperties.links).filter(
         linkType => linkType !== `other`
-      ),
-      linkTypeIconNames: {
-        manual: `file-pdf`,
-        productPage: `web`,
-        video: `youtube`,
-        other: `link-variant`
-      },
-      linkTypeNames: {
-        manual: `Manual`,
-        productPage: `Product page`,
-        video: `Video`,
-        other: `Other`
-      }
+      )
     };
   },
   computed: {

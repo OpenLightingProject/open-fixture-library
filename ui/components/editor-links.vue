@@ -62,11 +62,14 @@ import { getEmptyLink } from '~/assets/scripts/editor-utils.mjs';
 import propertyInputTextVue from '~/components/property-input-text.vue';
 import svgVue from '~/components/svg.vue';
 
+import fixtureLinksMixin from '~/assets/scripts/fixture-links-mixin.mjs';
+
 export default {
   components: {
     'app-property-input-text': propertyInputTextVue,
     'app-svg': svgVue
   },
+  mixins: [fixtureLinksMixin],
   model: {
     prop: `links`
   },
@@ -83,19 +86,7 @@ export default {
   data() {
     return {
       properties: schemaProperties,
-      linkTypes: Object.keys(schemaProperties.fixture.links.properties),
-      linkTypeIconNames: {
-        manual: `file-pdf`,
-        productPage: `web`,
-        video: `youtube`,
-        other: `link-variant`
-      },
-      linkTypeNames: {
-        manual: `Manual`,
-        productPage: `Product page`,
-        video: `Video`,
-        other: `Other`
-      }
+      linkTypes: Object.keys(schemaProperties.links)
     };
   },
   methods: {

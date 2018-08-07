@@ -177,7 +177,7 @@ function getPhysical(from) {
 function addLinks(fixture, editorLinksArray) {
   fixture.links = {};
 
-  const linkTypes = Object.keys(schemaProperties.fixture.links.properties);
+  const linkTypes = Object.keys(schemaProperties.links);
 
   for (const linkType of linkTypes) {
     const linksOfType = editorLinksArray.filter(
