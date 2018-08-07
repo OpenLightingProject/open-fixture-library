@@ -20,7 +20,7 @@
       </validate>
 
       <a
-        v-if="index !== 0"
+        v-if="links.length > 1"
         href="#remove-link"
         title="Remove link"
         @click.prevent="removeLink(index)">
