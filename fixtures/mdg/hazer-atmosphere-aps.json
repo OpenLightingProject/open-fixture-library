@@ -1,14 +1,16 @@
 {
-  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Hazer ATMOSPHERE APS",
   "shortName": "MDG-M35A-X",
   "categories": ["Hazer"],
   "meta": {
     "authors": ["novasfronteiras.co"],
     "createDate": "2017-08-08",
-    "lastModifyDate": "2017-08-08"
+    "lastModifyDate": "2018-07-21"
   },
-  "manualURL": "http://www.mdgfog.com/c/mdg/file_db/document.file_en/DMX-M35A-X-2012.pdf",
+  "links": {
+    "manual": ["http://www.mdgfog.com/c/mdg/file_db/document.file_en/DMX-M35A-X-2012.pdf"]
+  },
   "physical": {
     "dimensions": [180, 300, 68.5],
     "weight": 23,
@@ -17,28 +19,30 @@
   },
   "availableChannels": {
     "Fog": {
-      "type": "Fog",
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "Fog off"
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
         },
         {
-          "range": [128, 255],
-          "name": "Fog on"
+          "dmxRange": [128, 255],
+          "type": "Fog",
+          "fogType": "Haze"
         }
       ]
     },
     "Fog Emission": {
-      "type": "Intensity",
       "capabilities": [
         {
-          "range": [0, 17],
-          "name": "No fog"
+          "dmxRange": [0, 17],
+          "type": "FogOutput",
+          "fogOutput": "off"
         },
         {
-          "range": [18, 255],
-          "name": "Proportional emission 0-100"
+          "dmxRange": [18, 255],
+          "type": "FogOutput",
+          "fogOutputStart": "weak",
+          "fogOutputEnd": "strong"
         }
       ]
     }

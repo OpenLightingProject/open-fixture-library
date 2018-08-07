@@ -1,0 +1,559 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "STORM",
+  "shortName": "CLSTORM",
+  "categories": ["Flower", "Laser", "Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-02-03",
+    "lastModifyDate": "2018-07-21"
+  },
+  "links": {
+    "manual": ["https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLSTORM/CLSTORM_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf"]
+  },
+  "physical": {
+    "dimensions": [250, 250, 170],
+    "weight": 4,
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "5x 3W RGBWA Derby LEDs, 8x 1W white LEDs, red & green laser"
+    },
+    "lens": {
+      "degreesMinMax": [74, 74]
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [null, null, "S1",  "D1",   "S2", null, null],
+        [null, "D8", null,  null,   null, "D2", null],
+        ["S8", null, null,  null,   null, null, "S3"],
+        ["D7", null, null, "Laser", null, null, "D3"],
+        ["S7", null, null,  null,   null, null, "S4"],
+        [null, "D6", null,  null,   null, "D4", null],
+        [null, null, "S6",  "D5",   "S5", null, null]
+      ]
+    ],
+    "pixelGroups": {
+      "White Strobe": ["S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8"],
+      "Derby": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8"]
+    }
+  },
+  "templateChannels": {
+    "$pixelKey Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 249],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
+        }
+      ]
+    },
+    "$pixelKey Rotation": {
+      "defaultValue": 130,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [5, 127],
+          "type": "Rotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [128, 133],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [134, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Derby Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Derby Colors": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ColorPreset",
+          "colors": ["#000000"],
+          "comment": "Black"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "ColorPreset",
+          "colors": ["#ffbf00"],
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "ColorPreset",
+          "colors": ["#ffffff", "#ff0000"],
+          "comment": "White + Red"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Red + Green"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#0000ff"],
+          "comment": "Green + Blue"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "ColorPreset",
+          "colors": ["#0000ff", "#ffbf00"],
+          "comment": "Blue + Amber"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "ColorPreset",
+          "colors": ["#ffbf00", "#ffffff"],
+          "comment": "Amber + White"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "ColorPreset",
+          "colors": ["#ffffff", "#00ff00"],
+          "comment": "White + Green"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#ffbf00"],
+          "comment": "Green + Amber"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "ColorPreset",
+          "colors": ["#ffbf00", "#ff0000"],
+          "comment": "Amber + Red"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#0000ff"],
+          "comment": "Red + Blue"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "ColorPreset",
+          "colors": ["#0000ff", "#ffffff"],
+          "comment": "Blue + White"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"],
+          "comment": "Red + Green + Blue"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#ffbf00"],
+          "comment": "Red + Green + Amber"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#ffffff"],
+          "comment": "Red + Green + White"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#ffbf00", "#0000ff"],
+          "comment": "Red + Amber + Blue"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#ffffff", "#0000ff"],
+          "comment": "Red + White + Blue"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#ffbf00", "#ffffff"],
+          "comment": "Red + Amber + White"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "ColorPreset",
+          "colors": ["#ffbf00", "#00ff00", "#0000ff"],
+          "comment": "Amber + Green + Blue"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "ColorPreset",
+          "colors": ["#0000ff", "#00ff00", "#ffffff"],
+          "comment": "Blue + Green + White"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "ColorPreset",
+          "colors": ["#ffbf00", "#00ff00", "#ffffff"],
+          "comment": "Amber + Green + White"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "ColorPreset",
+          "colors": ["#ffbf00", "#ffffff", "#0000ff"],
+          "comment": "Amber + White + Blue"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffbf00"],
+          "comment": "Red + Green + Blue + Amber"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff"],
+          "comment": "Red + Green + Blue + White"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "ColorPreset",
+          "colors": ["#0000ff", "#00ff00", "#ffffff", "#ffbf00"],
+          "comment": "Blue + Green + White + Amber"
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#ffbf00", "#ffffff"],
+          "comment": "Red + Green + Amber + White"
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "ColorPreset",
+          "colors": ["#ffffff", "#ff0000", "#0000ff", "#ffbf00"],
+          "comment": "White + Red + Blue + Amber"
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffbf00", "#ffffff"],
+          "comment": "Red + Green + Blue + Amber + White"
+        },
+        {
+          "dmxRange": [165, 209],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "one color"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "two colors"
+        }
+      ]
+    },
+    "Color Change Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "White LEDs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "LEDs off"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "Effect",
+          "effectName": "Program 1",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [30, 49],
+          "type": "Effect",
+          "effectName": "Program 2",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [50, 69],
+          "type": "Effect",
+          "effectName": "Program 3",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [70, 89],
+          "type": "Effect",
+          "effectName": "Program 4",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [90, 109],
+          "type": "Effect",
+          "effectName": "Program 5",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [110, 129],
+          "type": "Effect",
+          "effectName": "Program 6",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [130, 149],
+          "type": "Effect",
+          "effectName": "Program 7",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [150, 169],
+          "type": "Effect",
+          "effectName": "Program 8",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [170, 189],
+          "type": "Effect",
+          "effectName": "Program 9",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [190, 209],
+          "type": "Effect",
+          "effectName": "Program 10",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "Effect",
+          "effectName": "All LEDs on"
+        }
+      ]
+    },
+    "Laser Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Laser off"
+        },
+        {
+          "dmxRange": [10, 49],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red laser on"
+        },
+        {
+          "dmxRange": [50, 89],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green laser on"
+        },
+        {
+          "dmxRange": [90, 129],
+          "type": "ColorPreset",
+          "colors": ["#aa0000", "#00aa00"],
+          "comment": "Red & green flashing alternately"
+        },
+        {
+          "dmxRange": [130, 169],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00aa00"],
+          "comment": "Red on, green flashing"
+        },
+        {
+          "dmxRange": [170, 209],
+          "type": "ColorPreset",
+          "colors": ["#aa0000", "#00ff00"],
+          "comment": "Red flashing, green on"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "ColorPreset",
+          "colors": ["#aa0000", "#00aa00"],
+          "comment": "Red & green flashing"
+        }
+      ]
+    },
+    "Auto Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "NoFunction",
+          "comment": "DMX mode"
+        },
+        {
+          "dmxRange": [25, 39],
+          "type": "Effect",
+          "effectName": "Auto Program 1"
+        },
+        {
+          "dmxRange": [40, 54],
+          "type": "Effect",
+          "effectName": "Auto Program 2"
+        },
+        {
+          "dmxRange": [55, 69],
+          "type": "Effect",
+          "effectName": "Auto Program 3"
+        },
+        {
+          "dmxRange": [70, 84],
+          "type": "Effect",
+          "effectName": "Auto Program 4"
+        },
+        {
+          "dmxRange": [85, 99],
+          "type": "Effect",
+          "effectName": "Auto Program 5"
+        },
+        {
+          "dmxRange": [100, 114],
+          "type": "Effect",
+          "effectName": "Auto Program 6"
+        },
+        {
+          "dmxRange": [115, 129],
+          "type": "Effect",
+          "effectName": "Auto Program 7"
+        },
+        {
+          "dmxRange": [130, 144],
+          "type": "Effect",
+          "effectName": "Music Program 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [145, 159],
+          "type": "Effect",
+          "effectName": "Music Program 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [160, 174],
+          "type": "Effect",
+          "effectName": "Music Program 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [175, 189],
+          "type": "Effect",
+          "effectName": "Music Program 4",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [190, 204],
+          "type": "Effect",
+          "effectName": "Music Program 5",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [205, 219],
+          "type": "Effect",
+          "effectName": "Music Program 6",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [220, 234],
+          "type": "Effect",
+          "effectName": "Music Program 7",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [235, 255],
+          "type": "Effect",
+          "effectName": "Blackout"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Derby Dimmer",
+        "Derby Colors",
+        "Color Change Speed",
+        "Derby Strobe",
+        "Derby Rotation",
+        "White LEDs",
+        "Laser Color",
+        "Laser Strobe",
+        "Laser Rotation",
+        "Auto Mode"
+      ]
+    }
+  ]
+}

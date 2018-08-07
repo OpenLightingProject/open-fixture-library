@@ -1,7 +1,3 @@
-/* eslint-disable no-unused-vars */
-const Fixture = require(`../../../lib/model/Fixture.js`);
-/* eslint-enable no-unused-vars */
-
 /**
  * @param {object} exportFile The file returned by the plugins' export module.
  * @param {!string} exportFile.name File name, may include slashes to provide a folder structure.

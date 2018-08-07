@@ -3,12 +3,18 @@
     "es6": true,
     "node": true
   },
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
   "plugins": [
-    "security"
+    "json",
+    "security",
+    "vue"
   ],
   "extends": [
     "eslint:recommended",
-    "plugin:security/recommended"
+    "plugin:security/recommended",
+    "plugin:vue/recommended"
   ],
   "rules": {
     "accessor-pairs": "error",
@@ -25,7 +31,8 @@
     "consistent-return": "error",
     "curly": ["error", "all"],
     "dot-location": ["error", "property"],
-    "dot-notation": "error",
+    "dot-notation": ["error", { "allowPattern": "^if$" }],
+    "eol-last": ["error", "always"],
     "eqeqeq": ["error", "always", { "null": "ignore" }],
     "func-call-spacing": "error",
     "getter-return": "error",
@@ -56,7 +63,15 @@
     "prefer-rest-params": "error",
     "prefer-template": "error",
     "quotes": ["error", "backtick", { "allowTemplateLiterals": true }],
-    "require-jsdoc": "warn",
+    "require-jsdoc": ["warn", {
+      "require": {
+        "FunctionDeclaration": true,
+        "MethodDefinition": true,
+        "ClassDeclaration": true,
+        "ArrowFunctionExpression": false,
+        "FunctionExpression": false
+      }
+    }],
     "security/detect-child-process": "off",
     "security/detect-non-literal-fs-filename": "off",
     "security/detect-non-literal-require": "off",
@@ -103,6 +118,10 @@
         "Object": "object",
         "String": "string"
       }
-    }]
+    }],
+    "vue/max-attributes-per-line": ["error", { "singleline": 3 }],
+    "vue/html-closing-bracket-newline": "error",
+    "vue/html-closing-bracket-spacing": "error",
+    "vue/prop-name-casing": "error"
   }
 }

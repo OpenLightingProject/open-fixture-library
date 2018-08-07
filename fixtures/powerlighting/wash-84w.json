@@ -1,0 +1,207 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Wash 84W",
+  "shortName": "wash84w",
+  "categories": ["Color Changer", "Moving Head"],
+  "meta": {
+    "authors": ["Millumin"],
+    "createDate": "2018-04-04",
+    "lastModifyDate": "2018-07-21"
+  },
+  "physical": {
+    "dimensions": [177, 230, 177],
+    "weight": 4.5,
+    "power": 115,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 180
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Movement Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RGBW preset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 44],
+          "type": "ColorPreset",
+          "comment": "static"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [50, 94],
+          "type": "ColorPreset",
+          "comment": "cut"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "ColorPreset",
+          "comment": "smooth"
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [155, 255],
+          "type": "ColorPreset",
+          "comment": "soft"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 6],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [7, 65],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        },
+        {
+          "dmxRange": [66, 69],
+          "type": "NoFunction",
+          "helpWanted": "Or Shutter Open / Closed?"
+        },
+        {
+          "dmxRange": [70, 128],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [129, 132],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [133, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp"
+        },
+        {
+          "dmxRange": [192, 195],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [196, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown"
+        }
+      ]
+    },
+    "Music control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "high"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "default",
+      "shortName": "default",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Movement Speed",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "RGBW preset",
+        "Strobe",
+        "Music control"
+      ]
+    }
+  ]
+}

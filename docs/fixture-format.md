@@ -19,20 +19,21 @@ This document gives a high-level overview of the concepts used in the JSON forma
     - [Matrix structure](#matrix-structure)
     - [Template channels](#template-channels)
   - [RDM (Remote Device Management) data](#rdm-remote-device-management-data)
+- [Fixture redirects](#fixture-redirects)
 
 
 ## Schema
 
-The [JSON Schema](http://json-schema.org/) can be found in the [`schema-fixture.json`](../schema-fixture.json) and [`schema-manufacturers.json`](../schema-manufacturers.json) files. It is a declarative way to describe allowed JSON properties and values. The [`fixtures-valid.js` test](../tests/fixtures-valid.js) automatically checks the fixtures against these schemas and additionally tests things like the correct use of channel keys etc. programmatically.
+The [JSON Schema](http://json-schema.org/) files can be found in the [`schemas/`](../schemas/) directory. JSON Schema is a declarative way to describe allowed JSON properties and values. The [`fixtures-valid.js` test](../tests/fixtures-valid.js) automatically checks the fixtures against these schemas and additionally tests things like the correct use of channel keys etc. programmatically.
 
-The schema files have a `version` property. Every time the schema is updated, this version needs to be incremented in both files using [semantic versioning](http://semver.org).
+The schema files have a `version` property. Every time the schema is updated, this version needs to be incremented in all schema files using [semantic versioning](http://semver.org).
 
 Given a version number MAJOR.MINOR.PATCH, increment the:
 1. MAJOR version when you make incompatible schema changes.  
   i.e. old fixtures are not valid with the new schema anymore.
-2. MINOR version when you add functionality in a backwards-compatible manner.
+2. MINOR version when you add functionality in a backwards-compatible manner.  
   i.e. old fixtures are still valid with the new schema, new fixtures aren't valid with the old schema.
-3. PATCH version when you make backwards-compatible bug fixes.
+3. PATCH version when you make backwards-compatible bug fixes.  
   e.g. an upper bound to an integer value is added, which was likely done right in the past anyway.
 
 
@@ -75,14 +76,56 @@ All channels that are used in one or more modes are listed in `availableChannels
 
 A channel's `defaultValue` is the DMX value that this channel is set to without the user interacting (most often, this will be `0`, but e.g. for Pan and Tilt channels, other values make more sense). Likewise, `highlightValue` specifies the DMX value if a user *highlights* this channel (defaults to the maximum DMX value). This is not available in every software.
 
-`invert` is used to mark a descending value (e.g. Speed from fast to slow). If `constant` is `true`, the channel cannot be changed. Set `crossfade` to `true` if you want to allow smooth transitions between two DMX values being output by the software. This is e.g. not recommended for Gobo wheels, as there can be no *smooth* transition to another Gobo; the wheel will always rotate.
-
-`precedence` specifies to which value the channel should be set if there are two conflicting active cues containing this channel: *HTP* (Highest takes precedence) or *LTP* (Latest (change) takes precedence).
+If `constant` is `true`, the channel cannot be changed. `precedence` specifies to which value the channel should be set if there are two conflicting active cues containing this channel: *HTP* (Highest takes precedence) or *LTP* (Latest (change) takes precedence).
 
 
 #### Capabilities
 
-A channel can do different things depending on which range its DMX value currently is in. Those capabilities can be triggered manually in many programs, and the `menuClick` property defines how: `start` / `center` / `end` sets the channel's DMX value to the start / center / end of the range, respectively. `hidden` hides this capability from the trigger menu.
+A channel can do different things depending on which range its DMX value currently is in. Those ranges, that can be triggered manually in many programs, are called capabilities. Choose a `type` to declare which property of the fixture is changed by this capability, e.g. `ShutterOpen`, `Intensity` or `Pan`. Depending on the type, there exist more properties that further describe the capability, like the pan angle, the strobe rate or the gobo wheel index. Most of these are physical entities that require to be entered using specific units (like `"10.5Hz"` or `"100%"`). Some entities offer keywords to replace specific percentage values, e.g. Distance: `"near"` = `"1%"`, `"far"` = `"100%"`. See the [full list of units, entities and capability types with their properties](capability-types.md). Example:
+
+```js
+"availableChannels": {
+  "Shutter": {
+    "capabilities": [
+      {
+        "dmxRange": [0, 20],
+        "type": "ShutterStrobe",
+        "shutterEffect": "Closed",
+        "comment": "Blackout"
+      },
+      {
+        "dmxRange": [21, 255],
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    ]
+  }
+}
+```
+
+If a channel consists of a single 0-255 capability, one should use the `capability` property (instead of `capabilities`), which only needs a single object instead of an array of objects. The `dmxRange` is implicit in this object (see example below).
+
+Capabilities may be _steps_, which means that the whole DMX range has the same effect (e.g. "Gobo 1"), or _proportional_, which means that the effect is increasing / decreasing from the start to the end of the DMX range (e.g. "Intensity 0-100%"). A proportional capability can define a start and an end value of its type-specific properties. Example:
+
+```js
+"availableChannels": {
+  "Pan": {
+    "capability": {
+      "type": "Pan",
+      "angleStart": "0deg",
+      "angleEnd": "530deg"
+
+      // DMX value 0 -> 0°
+      // DMX value 127 -> 264°
+      // DMX value 255 -> 530°
+    }
+  }
+}
+```
+
+Please note that some properties don't allow start/end values, for example `hold`.
+
+The `menuClick` property defines which DMX value to use if the whole capability is selected: `start` / `center` / `end` sets the channel's DMX value to the start / center / end of the range, respectively. `hidden` hides this capability from the trigger menu. This is one of those special features that are supported only by some lighting programs.
 
 
 #### Fine channels
@@ -172,9 +215,11 @@ To reuse similar channels for each pixel or pixel group (like "Red&nbsp;1", Red&
 ```js
 "templateChannels": {
   "Red $pixelKey": {
-    "type": "Single Color",
-    "color": "Red",
-    "fineChannelAliases": ["Red $pixelkey fine"]
+    "fineChannelAliases": ["Red $pixelKey fine"],
+    "capability": {
+      "type": "ColorIntensity",
+      "color": "Red"
+    }
   }
 }
 ```
@@ -214,9 +259,15 @@ Then, either use the resolved channel keys directly in a mode's channel list, or
   - For the above [matrix structure](#matrix-structure) example, this results in `["Inner ring", "Middle ring", "Outer ring"]`.
 
 
-
 ### RDM (Remote Device Management) data
 
 We link to [Open Lighting's RDM database](http://rdm.openlighting.org) if possible. Thus, we need to specify the RDM manufacturer ID per manufacturer and the RDM model ID per fixture. Additionally, each mode is mapped to the respective RDM personality via the `rdmPersonalityIndex` property. To ensure compatibility, we also track, for which RDM fixture software (firmware) version the mode indices are specified.
 
 If RDM manufacturer and model ID are known, we open the respective fixture page when going to `/rdm` (handled in [`main.js`](../main.js) and `views/pages/rdm-*.js`).
+
+
+## Fixture redirects
+
+Fixtures may be renamed by their manufacturers. If we would just update the fixture definition, links to its old fixture page would now lead to a *404 Not found* error. Instead, we add a fixture redirect JSON file (see [its schema](../schemas/fixture-redirect.json)) with the old manufacturer / fixture key, pointing to the updated fixture definition. See [Minuit Une M-Carré](../fixtures/minuit-une/m-carre.json) (and its [fixture page on OFL](https://open-fixture-library.org/minuit-une/m-carre)) as an example.
+
+Another use case for redirects are fixtures that are sold under different brands, but which are technically the same. We add them to the library only once and let redirects with other names point to it.

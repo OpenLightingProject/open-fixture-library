@@ -1,14 +1,16 @@
 {
-  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Platinum Spot 15R Pro",
   "shortName": "PlatSpot15rPro",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2017-05-23",
-    "lastModifyDate": "2017-10-16"
+    "lastModifyDate": "2018-07-21"
   },
-  "manualURL": "http://cdb.s3.amazonaws.com/ItemRelatedFiles/10038/platinum-spot-15r-pro-v1-user-manual.pdf",
+  "links": {
+    "manual": ["http://cdb.s3.amazonaws.com/ItemRelatedFiles/10038/platinum-spot-15r-pro-v1-user-manual.pdf"]
+  },
   "physical": {
     "dimensions": [50, 72, 46.5],
     "weight": 22.2,
@@ -25,757 +27,964 @@
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
       "defaultValue": 32639,
-      "crossfade": true
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "630deg"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
       "defaultValue": 32639,
-      "crossfade": true
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
     },
     "Color Wheel": {
-      "type": "Multi-Color",
       "fineChannelAliases": ["Color Wheel fine"],
       "capabilities": [
         {
-          "range": [0, 18],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [0, 18],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
-          "range": [19, 37],
-          "name": "Color 1"
+          "dmxRange": [19, 37],
+          "type": "ColorWheelIndex",
+          "index": 1
         },
         {
-          "range": [38, 56],
-          "name": "Color 2"
+          "dmxRange": [38, 56],
+          "type": "ColorWheelIndex",
+          "index": 2
         },
         {
-          "range": [57, 75],
-          "name": "Color 3"
+          "dmxRange": [57, 75],
+          "type": "ColorWheelIndex",
+          "index": 3
         },
         {
-          "range": [76, 94],
-          "name": "Color 4"
+          "dmxRange": [76, 94],
+          "type": "ColorWheelIndex",
+          "index": 4
         },
         {
-          "range": [95, 113],
-          "name": "Color 5"
+          "dmxRange": [95, 113],
+          "type": "ColorWheelIndex",
+          "index": 5
         },
         {
-          "range": [114, 127],
-          "name": "Color 6"
+          "dmxRange": [114, 127],
+          "type": "ColorWheelIndex",
+          "index": 6
         },
         {
-          "range": [128, 189],
-          "name": "Rainbow forwards fast–slow"
+          "dmxRange": [128, 189],
+          "type": "ColorWheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
-          "range": [190, 193],
-          "name": "No rotation"
+          "dmxRange": [190, 193],
+          "type": "ColorWheelRotation",
+          "speed": "stop"
         },
         {
-          "range": [194, 255],
-          "name": "Rainbow backwards slow–fast"
+          "dmxRange": [194, 255],
+          "type": "ColorWheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
     "Cyan": {
-      "type": "Single Color",
       "fineChannelAliases": ["Cyan fine"],
-      "color": "Cyan",
       "highlightValue": 65535,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
     },
     "Magenta": {
-      "type": "Single Color",
       "fineChannelAliases": ["Magenta fine"],
-      "color": "Magenta",
       "highlightValue": 65535,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
     },
     "Yellow": {
-      "type": "Single Color",
       "fineChannelAliases": ["Yellow fine"],
-      "color": "Yellow",
       "highlightValue": 65535,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
     },
     "Rotating Gobo": {
-      "type": "Gobo",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Open"
+          "dmxRange": [0, 9],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Open"
         },
         {
-          "range": [10, 19],
-          "name": "Gobo 1"
+          "dmxRange": [10, 19],
+          "type": "GoboIndex",
+          "index": 1
         },
         {
-          "range": [20, 29],
-          "name": "Gobo 2"
+          "dmxRange": [20, 29],
+          "type": "GoboIndex",
+          "index": 2
         },
         {
-          "range": [30, 39],
-          "name": "Gobo 3"
+          "dmxRange": [30, 39],
+          "type": "GoboIndex",
+          "index": 3
         },
         {
-          "range": [40, 49],
-          "name": "Gobo 4"
+          "dmxRange": [40, 49],
+          "type": "GoboIndex",
+          "index": 4
         },
         {
-          "range": [50, 59],
-          "name": "Gobo 5"
+          "dmxRange": [50, 59],
+          "type": "GoboIndex",
+          "index": 5
         },
         {
-          "range": [60, 69],
-          "name": "Gobo 6"
+          "dmxRange": [60, 69],
+          "type": "GoboIndex",
+          "index": 6
         },
         {
-          "range": [70, 79],
-          "name": "Gobo 7"
+          "dmxRange": [70, 79],
+          "type": "GoboIndex",
+          "index": 7
         },
         {
-          "range": [80, 89],
-          "name": "Gobo 8"
+          "dmxRange": [80, 89],
+          "type": "GoboIndex",
+          "index": 8
         },
         {
-          "range": [90, 104],
-          "name": "Gobo Shake 1"
+          "dmxRange": [90, 104],
+          "type": "GoboIndex",
+          "index": 1,
+          "shakeAngle": "wide"
         },
         {
-          "range": [105, 119],
-          "name": "Gobo Shake 2"
+          "dmxRange": [105, 119],
+          "type": "GoboIndex",
+          "index": 2,
+          "shakeAngle": "wide"
         },
         {
-          "range": [120, 134],
-          "name": "Gobo Shake 3"
+          "dmxRange": [120, 134],
+          "type": "GoboIndex",
+          "index": 3,
+          "shakeAngle": "wide"
         },
         {
-          "range": [135, 149],
-          "name": "Gobo Shake 4"
+          "dmxRange": [135, 149],
+          "type": "GoboIndex",
+          "index": 4,
+          "shakeAngle": "wide"
         },
         {
-          "range": [150, 164],
-          "name": "Gobo Shake 5"
+          "dmxRange": [150, 164],
+          "type": "GoboIndex",
+          "index": 5,
+          "shakeAngle": "wide"
         },
         {
-          "range": [165, 179],
-          "name": "Gobo Shake 6"
+          "dmxRange": [165, 179],
+          "type": "GoboIndex",
+          "index": 6,
+          "shakeAngle": "wide"
         },
         {
-          "range": [180, 194],
-          "name": "Gobo Shake 7"
+          "dmxRange": [180, 194],
+          "type": "GoboIndex",
+          "index": 7,
+          "shakeAngle": "wide"
         },
         {
-          "range": [195, 209],
-          "name": "Gobo Shake 8"
+          "dmxRange": [195, 209],
+          "type": "GoboIndex",
+          "index": 8,
+          "shakeAngle": "wide"
         },
         {
-          "range": [210, 255],
-          "name": "Rotating slow–fast"
+          "dmxRange": [210, 255],
+          "type": "GoboWheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         }
       ]
     },
-    "Gobo Rotation": {
-      "type": "Speed",
-      "fineChannelAliases": ["Gobo Rotation fine"],
-      "crossfade": true,
+    "Gobo Stencil Rotation": {
+      "fineChannelAliases": ["Gobo Stencil Rotation fine"],
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "Fixed angle"
+          "dmxRange": [0, 127],
+          "type": "GoboStencilRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
         },
         {
-          "range": [128, 189],
-          "name": "Rotating fast–slow"
+          "dmxRange": [128, 189],
+          "type": "GoboStencilRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
-          "range": [190, 193],
-          "name": "No rotation"
+          "dmxRange": [190, 193],
+          "type": "GoboStencilRotation",
+          "speed": "stop"
         },
         {
-          "range": [194, 255],
-          "name": "Rotating slow–fast"
+          "dmxRange": [194, 255],
+          "type": "GoboStencilRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
     "Fixed Gobo": {
-      "type": "Gobo",
       "fineChannelAliases": ["Fixed Gobo fine"],
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "Open"
+          "dmxRange": [0, 7],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Open"
         },
         {
-          "range": [8, 15],
-          "name": "Gobo 1"
+          "dmxRange": [8, 15],
+          "type": "GoboIndex",
+          "index": 1
         },
         {
-          "range": [16, 23],
-          "name": "Gobo 2"
+          "dmxRange": [16, 23],
+          "type": "GoboIndex",
+          "index": 2
         },
         {
-          "range": [24, 31],
-          "name": "Gobo 3"
+          "dmxRange": [24, 31],
+          "type": "GoboIndex",
+          "index": 3
         },
         {
-          "range": [32, 39],
-          "name": "Gobo 4"
+          "dmxRange": [32, 39],
+          "type": "GoboIndex",
+          "index": 4
         },
         {
-          "range": [40, 47],
-          "name": "Gobo 5"
+          "dmxRange": [40, 47],
+          "type": "GoboIndex",
+          "index": 5
         },
         {
-          "range": [48, 55],
-          "name": "Gobo 6"
+          "dmxRange": [48, 55],
+          "type": "GoboIndex",
+          "index": 6
         },
         {
-          "range": [56, 63],
-          "name": "Gobo 7"
+          "dmxRange": [56, 63],
+          "type": "GoboIndex",
+          "index": 7
         },
         {
-          "range": [64, 71],
-          "name": "Gobo 8"
+          "dmxRange": [64, 71],
+          "type": "GoboIndex",
+          "index": 8
         },
         {
-          "range": [72, 79],
-          "name": "Gobo 9"
+          "dmxRange": [72, 79],
+          "type": "GoboIndex",
+          "index": 9
         },
         {
-          "range": [80, 87],
-          "name": "Gobo 10"
+          "dmxRange": [80, 87],
+          "type": "GoboIndex",
+          "index": 10
         },
         {
-          "range": [88, 95],
-          "name": "Gobo 11"
+          "dmxRange": [88, 95],
+          "type": "GoboIndex",
+          "index": 11
         },
         {
-          "range": [96, 103],
-          "name": "Gobo 12"
+          "dmxRange": [96, 103],
+          "type": "GoboIndex",
+          "index": 12
         },
         {
-          "range": [104, 111],
-          "name": "Gobo 13"
+          "dmxRange": [104, 111],
+          "type": "GoboIndex",
+          "index": 13
         },
         {
-          "range": [112, 119],
-          "name": "Gobo 14"
+          "dmxRange": [112, 119],
+          "type": "GoboIndex",
+          "index": 14
         },
         {
-          "range": [120, 126],
-          "name": "Gobo shake 1 slow–fast"
+          "dmxRange": [120, 126],
+          "type": "GoboIndex",
+          "index": 1,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
-          "range": [127, 133],
-          "name": "Gobo shake 2 slow–fast"
+          "dmxRange": [127, 133],
+          "type": "GoboIndex",
+          "index": 2,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
-          "range": [134, 140],
-          "name": "Gobo shake 3 slow–fast"
+          "dmxRange": [134, 140],
+          "type": "GoboIndex",
+          "index": 3,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
-          "range": [141, 147],
-          "name": "Gobo shake 4 slow–fast"
+          "dmxRange": [141, 147],
+          "type": "GoboIndex",
+          "index": 4,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
-          "range": [148, 154],
-          "name": "Gobo shake 5 slow–fast"
+          "dmxRange": [148, 154],
+          "type": "GoboIndex",
+          "index": 5,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
-          "range": [155, 161],
-          "name": "Gobo shake 6 slow–fast"
+          "dmxRange": [155, 161],
+          "type": "GoboIndex",
+          "index": 6,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
-          "range": [162, 168],
-          "name": "Gobo shake 7 slow–fast"
+          "dmxRange": [162, 168],
+          "type": "GoboIndex",
+          "index": 7,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
-          "range": [169, 175],
-          "name": "Gobo shake 8 slow–fast"
+          "dmxRange": [169, 175],
+          "type": "GoboIndex",
+          "index": 8,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
-          "range": [176, 182],
-          "name": "Gobo shake 9 slow–fast"
+          "dmxRange": [176, 182],
+          "type": "GoboIndex",
+          "index": 9,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
-          "range": [183, 189],
-          "name": "Gobo shake 10 slow–fast"
+          "dmxRange": [183, 189],
+          "type": "GoboIndex",
+          "index": 10,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
-          "range": [190, 196],
-          "name": "Gobo shake 11 slow–fast"
+          "dmxRange": [190, 196],
+          "type": "GoboIndex",
+          "index": 11,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
-          "range": [197, 203],
-          "name": "Gobo shake 12 slow–fast"
+          "dmxRange": [197, 203],
+          "type": "GoboIndex",
+          "index": 12,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
-          "range": [204, 210],
-          "name": "Gobo shake 13 slow–fast"
+          "dmxRange": [204, 210],
+          "type": "GoboIndex",
+          "index": 13,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
-          "range": [211, 217],
-          "name": "Gobo shake 14 slow–fast"
+          "dmxRange": [211, 217],
+          "type": "GoboIndex",
+          "index": 14,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
-          "range": [218, 255],
-          "name": "Rotating slow–fast"
+          "dmxRange": [218, 255],
+          "type": "GoboWheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         }
       ]
     },
     "Prism/Gobo Macros": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 31],
-          "name": "Open"
+          "dmxRange": [0, 31],
+          "type": "NoFunction",
+          "comment": "Open"
         },
         {
-          "range": [32, 127],
-          "name": "Rotating Prism"
+          "dmxRange": [32, 127],
+          "type": "Prism",
+          "comment": "Rotating"
         },
         {
-          "range": [128, 135],
-          "name": "Macro 1"
+          "dmxRange": [128, 135],
+          "type": "Effect",
+          "effectName": "Macro 1"
         },
         {
-          "range": [136, 143],
-          "name": "Macro 2"
+          "dmxRange": [136, 143],
+          "type": "Effect",
+          "effectName": "Macro 2"
         },
         {
-          "range": [144, 151],
-          "name": "Macro 3"
+          "dmxRange": [144, 151],
+          "type": "Effect",
+          "effectName": "Macro 3"
         },
         {
-          "range": [152, 159],
-          "name": "Macro 4"
+          "dmxRange": [152, 159],
+          "type": "Effect",
+          "effectName": "Macro 4"
         },
         {
-          "range": [160, 167],
-          "name": "Macro 5"
+          "dmxRange": [160, 167],
+          "type": "Effect",
+          "effectName": "Macro 5"
         },
         {
-          "range": [168, 175],
-          "name": "Macro 6"
+          "dmxRange": [168, 175],
+          "type": "Effect",
+          "effectName": "Macro 6"
         },
         {
-          "range": [176, 183],
-          "name": "Macro 7"
+          "dmxRange": [176, 183],
+          "type": "Effect",
+          "effectName": "Macro 7"
         },
         {
-          "range": [184, 191],
-          "name": "Macro 8"
+          "dmxRange": [184, 191],
+          "type": "Effect",
+          "effectName": "Macro 8"
         },
         {
-          "range": [192, 199],
-          "name": "Macro 9"
+          "dmxRange": [192, 199],
+          "type": "Effect",
+          "effectName": "Macro 9"
         },
         {
-          "range": [200, 207],
-          "name": "Macro 10"
+          "dmxRange": [200, 207],
+          "type": "Effect",
+          "effectName": "Macro 10"
         },
         {
-          "range": [208, 215],
-          "name": "Macro 11"
+          "dmxRange": [208, 215],
+          "type": "Effect",
+          "effectName": "Macro 11"
         },
         {
-          "range": [216, 223],
-          "name": "Macro 12"
+          "dmxRange": [216, 223],
+          "type": "Effect",
+          "effectName": "Macro 12"
         },
         {
-          "range": [224, 231],
-          "name": "Macro 13"
+          "dmxRange": [224, 231],
+          "type": "Effect",
+          "effectName": "Macro 13"
         },
         {
-          "range": [232, 239],
-          "name": "Macro 14"
+          "dmxRange": [232, 239],
+          "type": "Effect",
+          "effectName": "Macro 14"
         },
         {
-          "range": [240, 247],
-          "name": "Macro 15"
+          "dmxRange": [240, 247],
+          "type": "Effect",
+          "effectName": "Macro 15"
         },
         {
-          "range": [248, 255],
-          "name": "Macro 16"
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Macro 16"
         }
       ]
     },
     "Rotating Prism": {
-      "type": "Prism",
       "fineChannelAliases": ["Rotating Prism fine"],
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "Fixed angle"
+          "dmxRange": [0, 127],
+          "type": "PrismRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
         },
         {
-          "range": [128, 189],
-          "name": "Rotating fast–slow (CW)"
+          "dmxRange": [128, 189],
+          "type": "PrismRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
-          "range": [190, 193],
-          "name": "No rotation"
+          "dmxRange": [190, 193],
+          "type": "PrismRotation",
+          "speed": "stop"
         },
         {
-          "range": [194, 255],
-          "name": "Rotating slow–fast (CCW)"
+          "dmxRange": [194, 255],
+          "type": "PrismRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
     "Focus": {
-      "type": "Focus",
       "fineChannelAliases": ["Focus fine"],
-      "crossfade": true,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "near–far"
-        }
-      ]
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
     },
     "Zoom": {
-      "type": "Zoom",
       "fineChannelAliases": ["Zoom fine"],
-      "crossfade": true,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "small–big"
-        }
-      ]
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
     },
     "Strobe": {
-      "type": "Strobe",
-      "crossfade": true,
       "capabilities": [
         {
-          "range": [0, 31],
-          "name": "Shutter closed"
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [32, 63],
-          "name": "Shutter open"
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [64, 95],
-          "name": "Strobe 0–13Hz"
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "13Hz"
         },
         {
-          "range": [96, 127],
-          "name": "Shutter open"
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [128, 159],
-          "name": "Pulse"
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse"
         },
         {
-          "range": [160, 191],
-          "name": "Shutter open"
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [192, 223],
-          "name": "Random slow–fast"
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
-          "range": [224, 255],
-          "name": "Shutter open"
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
     "Dimmer": {
-      "type": "Intensity",
       "fineChannelAliases": ["Dimmer fine"],
       "highlightValue": 65535,
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Iris": {
-      "type": "Iris",
       "fineChannelAliases": ["Iris fine"],
-      "crossfade": true,
       "capabilities": [
         {
-          "range": [0, 191],
-          "name": "Diameter max–min"
+          "dmxRange": [0, 191],
+          "type": "Iris",
+          "openPercentStart": "open",
+          "openPercentEnd": "closed"
         },
         {
-          "range": [192, 223],
-          "name": "Pulse closing fast–slow"
+          "dmxRange": [192, 223],
+          "type": "IrisEffect",
+          "effectName": "Ramp down",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [224, 255],
-          "name": "Pulse opening slow–fast"
+          "dmxRange": [224, 255],
+          "type": "IrisEffect",
+          "effectName": "Ramp up",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Frost": {
-      "type": "Intensity",
       "highlightValue": 255,
-      "crossfade": true,
       "capabilities": [
         {
-          "range": [0, 191],
-          "name": "Frost 0–100%"
+          "dmxRange": [0, 191],
+          "type": "Frost",
+          "frostIntensityStart": "off",
+          "frostIntensityEnd": "high"
         },
         {
-          "range": [192, 223],
-          "name": "Pulse opening fast–slow"
+          "dmxRange": [192, 223],
+          "type": "FrostEffect",
+          "effectName": "Ramp up",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [224, 254],
-          "name": "Pulse closing slow–fast"
+          "dmxRange": [224, 254],
+          "type": "FrostEffect",
+          "effectName": "Ramp down",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [255, 255],
-          "name": "Max frost"
+          "dmxRange": [255, 255],
+          "type": "Frost",
+          "frostIntensity": "high"
         }
       ]
     },
     "Color Macro Speed": {
-      "type": "Speed",
       "highlightValue": 127,
-      "invert": true,
-      "crossfade": true
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
     },
     "Pan/Tilt Speed": {
-      "type": "Speed",
-      "crossfade": true,
       "capabilities": [
         {
-          "range": [0, 225],
-          "name": "Speed max–min"
+          "dmxRange": [0, 225],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [226, 235],
-          "name": "Blackout by movement"
+          "dmxRange": [226, 235],
+          "type": "Maintenance",
+          "comment": "Blackout by movement"
         },
         {
-          "range": [236, 245],
-          "name": "Blackout by all wheel changing"
+          "dmxRange": [236, 245],
+          "type": "Maintenance",
+          "comment": "Blackout by all wheel changing"
         },
         {
-          "range": [246, 255],
-          "name": "No function"
+          "dmxRange": [246, 255],
+          "type": "NoFunction"
         }
       ]
     },
     "Color Macros": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "Off"
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
         },
         {
-          "range": [8, 15],
-          "name": "Macro 1"
+          "dmxRange": [8, 15],
+          "type": "Effect",
+          "effectName": "Macro 1"
         },
         {
-          "range": [16, 23],
-          "name": "Macro 2"
+          "dmxRange": [16, 23],
+          "type": "Effect",
+          "effectName": "Macro 2"
         },
         {
-          "range": [24, 31],
-          "name": "Macro 3"
+          "dmxRange": [24, 31],
+          "type": "Effect",
+          "effectName": "Macro 3"
         },
         {
-          "range": [32, 39],
-          "name": "Macro 4"
+          "dmxRange": [32, 39],
+          "type": "Effect",
+          "effectName": "Macro 4"
         },
         {
-          "range": [40, 47],
-          "name": "Macro 5"
+          "dmxRange": [40, 47],
+          "type": "Effect",
+          "effectName": "Macro 5"
         },
         {
-          "range": [48, 55],
-          "name": "Macro 6"
+          "dmxRange": [48, 55],
+          "type": "Effect",
+          "effectName": "Macro 6"
         },
         {
-          "range": [56, 63],
-          "name": "Macro 7"
+          "dmxRange": [56, 63],
+          "type": "Effect",
+          "effectName": "Macro 7"
         },
         {
-          "range": [64, 71],
-          "name": "Macro 8"
+          "dmxRange": [64, 71],
+          "type": "Effect",
+          "effectName": "Macro 8"
         },
         {
-          "range": [72, 79],
-          "name": "Macro 9"
+          "dmxRange": [72, 79],
+          "type": "Effect",
+          "effectName": "Macro 9"
         },
         {
-          "range": [80, 87],
-          "name": "Macro 10"
+          "dmxRange": [80, 87],
+          "type": "Effect",
+          "effectName": "Macro 10"
         },
         {
-          "range": [88, 95],
-          "name": "Macro 11"
+          "dmxRange": [88, 95],
+          "type": "Effect",
+          "effectName": "Macro 11"
         },
         {
-          "range": [96, 103],
-          "name": "Macro 12"
+          "dmxRange": [96, 103],
+          "type": "Effect",
+          "effectName": "Macro 12"
         },
         {
-          "range": [104, 111],
-          "name": "Macro 13"
+          "dmxRange": [104, 111],
+          "type": "Effect",
+          "effectName": "Macro 13"
         },
         {
-          "range": [112, 119],
-          "name": "Macro 14"
+          "dmxRange": [112, 119],
+          "type": "Effect",
+          "effectName": "Macro 14"
         },
         {
-          "range": [120, 127],
-          "name": "Macro 15"
+          "dmxRange": [120, 127],
+          "type": "Effect",
+          "effectName": "Macro 15"
         },
         {
-          "range": [128, 135],
-          "name": "Macro 16"
+          "dmxRange": [128, 135],
+          "type": "Effect",
+          "effectName": "Macro 16"
         },
         {
-          "range": [136, 143],
-          "name": "Macro 17"
+          "dmxRange": [136, 143],
+          "type": "Effect",
+          "effectName": "Macro 17"
         },
         {
-          "range": [144, 151],
-          "name": "Macro 18"
+          "dmxRange": [144, 151],
+          "type": "Effect",
+          "effectName": "Macro 18"
         },
         {
-          "range": [152, 159],
-          "name": "Macro 19"
+          "dmxRange": [152, 159],
+          "type": "Effect",
+          "effectName": "Macro 19"
         },
         {
-          "range": [160, 167],
-          "name": "Macro 20"
+          "dmxRange": [160, 167],
+          "type": "Effect",
+          "effectName": "Macro 20"
         },
         {
-          "range": [168, 175],
-          "name": "Macro 21"
+          "dmxRange": [168, 175],
+          "type": "Effect",
+          "effectName": "Macro 21"
         },
         {
-          "range": [176, 183],
-          "name": "Macro 22"
+          "dmxRange": [176, 183],
+          "type": "Effect",
+          "effectName": "Macro 22"
         },
         {
-          "range": [184, 191],
-          "name": "Macro 23"
+          "dmxRange": [184, 191],
+          "type": "Effect",
+          "effectName": "Macro 23"
         },
         {
-          "range": [192, 199],
-          "name": "Macro 24"
+          "dmxRange": [192, 199],
+          "type": "Effect",
+          "effectName": "Macro 24"
         },
         {
-          "range": [200, 207],
-          "name": "Macro 25"
+          "dmxRange": [200, 207],
+          "type": "Effect",
+          "effectName": "Macro 25"
         },
         {
-          "range": [208, 215],
-          "name": "Macro 26"
+          "dmxRange": [208, 215],
+          "type": "Effect",
+          "effectName": "Macro 26"
         },
         {
-          "range": [216, 223],
-          "name": "Macro 27"
+          "dmxRange": [216, 223],
+          "type": "Effect",
+          "effectName": "Macro 27"
         },
         {
-          "range": [224, 231],
-          "name": "Macro 28"
+          "dmxRange": [224, 231],
+          "type": "Effect",
+          "effectName": "Macro 28"
         },
         {
-          "range": [232, 239],
-          "name": "Macro 29"
+          "dmxRange": [232, 239],
+          "type": "Effect",
+          "effectName": "Macro 29"
         },
         {
-          "range": [240, 247],
-          "name": "Macro 30"
+          "dmxRange": [240, 247],
+          "type": "Effect",
+          "effectName": "Macro 30"
         },
         {
-          "range": [248, 255],
-          "name": "Random CMY"
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Random CMY"
         }
       ]
     },
     "Maintenance / Programs": {
-      "type": "Maintenance",
       "capabilities": [
         {
-          "range": [0, 19],
-          "name": "Colour change normal "
+          "dmxRange": [0, 19],
+          "type": "Maintenance",
+          "comment": "Colour change normal"
         },
         {
-          "range": [20, 29],
-          "name": "Colour change to any position "
+          "dmxRange": [20, 29],
+          "type": "Maintenance",
+          "comment": "Colour change to any position"
         },
         {
-          "range": [30, 39],
-          "name": "Colour & gobo change to any position "
+          "dmxRange": [30, 39],
+          "type": "Maintenance",
+          "comment": "Colour & gobo change to any position"
         },
         {
-          "range": [40, 59],
-          "name": "Lamp on"
+          "dmxRange": [40, 59],
+          "type": "Maintenance",
+          "comment": "Lamp on"
         },
         {
-          "range": [60, 79],
-          "name": "Lamp switch off"
+          "dmxRange": [60, 79],
+          "type": "Maintenance",
+          "comment": "Lamp switch off"
         },
         {
-          "range": [80, 84],
-          "name": "All  motor reset"
+          "dmxRange": [80, 84],
+          "type": "Maintenance",
+          "comment": "All motor reset"
         },
         {
-          "range": [85, 87],
-          "name": "Scan motor reset"
+          "dmxRange": [85, 87],
+          "type": "Maintenance",
+          "comment": "Scan motor reset"
         },
         {
-          "range": [88, 90],
-          "name": "Colors motor reset"
+          "dmxRange": [88, 90],
+          "type": "Maintenance",
+          "comment": "Colors motor reset"
         },
         {
-          "range": [91, 93],
-          "name": "Gobo motor reset"
+          "dmxRange": [91, 93],
+          "type": "Maintenance",
+          "comment": "Gobo motor reset"
         },
         {
-          "range": [94, 96],
-          "name": "Shutter & Dimmer motor reset"
+          "dmxRange": [94, 96],
+          "type": "Maintenance",
+          "comment": "Shutter & Dimmer motor reset"
         },
         {
-          "range": [97, 99],
-          "name": "Other motor reset"
+          "dmxRange": [97, 99],
+          "type": "Maintenance",
+          "comment": "Other motor reset"
         },
         {
-          "range": [100, 119],
-          "name": "Internal program 1"
+          "dmxRange": [100, 119],
+          "type": "Effect",
+          "effectName": "Internal program 1"
         },
         {
-          "range": [120, 139],
-          "name": "Internal program 2"
+          "dmxRange": [120, 139],
+          "type": "Effect",
+          "effectName": "Internal program 2"
         },
         {
-          "range": [140, 159],
-          "name": "Internal program 3"
+          "dmxRange": [140, 159],
+          "type": "Effect",
+          "effectName": "Internal program 3"
         },
         {
-          "range": [160, 179],
-          "name": "Internal program 4"
+          "dmxRange": [160, 179],
+          "type": "Effect",
+          "effectName": "Internal program 4"
         },
         {
-          "range": [180, 199],
-          "name": "Internal program 5"
+          "dmxRange": [180, 199],
+          "type": "Effect",
+          "effectName": "Internal program 5"
         },
         {
-          "range": [200, 219],
-          "name": "Internal program 6"
+          "dmxRange": [200, 219],
+          "type": "Effect",
+          "effectName": "Internal program 6"
         },
         {
-          "range": [220, 239],
-          "name": "Internal program 7"
+          "dmxRange": [220, 239],
+          "type": "Effect",
+          "effectName": "Internal program 7"
         },
         {
-          "range": [240, 255],
-          "name": "Music Control"
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Music Control",
+          "soundControlled": true
         }
       ]
     }
@@ -791,7 +1000,7 @@
         "Magenta",
         "Yellow",
         "Rotating Gobo",
-        "Gobo Rotation",
+        "Gobo Stencil Rotation",
         "Fixed Gobo",
         "Prism/Gobo Macros",
         "Rotating Prism",
@@ -819,7 +1028,7 @@
         "Magenta",
         "Yellow",
         "Rotating Gobo",
-        "Gobo Rotation",
+        "Gobo Stencil Rotation",
         "Fixed Gobo",
         "Prism/Gobo Macros",
         "Rotating Prism",
@@ -851,8 +1060,8 @@
         "Yellow",
         "Yellow fine",
         "Rotating Gobo",
-        "Gobo Rotation",
-        "Gobo Rotation fine",
+        "Gobo Stencil Rotation",
+        "Gobo Stencil Rotation fine",
         "Fixed Gobo",
         "Fixed Gobo fine",
         "Prism/Gobo Macros",

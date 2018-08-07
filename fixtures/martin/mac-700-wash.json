@@ -1,0 +1,763 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MAC 700 Wash",
+  "shortName": "MartinMAC700Wash",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Karl Humbug"],
+    "createDate": "2018-07-17",
+    "lastModifyDate": "2018-07-21"
+  },
+  "links": {
+    "manual": ["https://adn.harmanpro.com/site_elements/executables/5949_1526695117/UM_MAC700Wash_EN_D_original.pdf"]
+  },
+  "physical": {
+    "dimensions": [365, 656, 450],
+    "weight": 32,
+    "power": 950,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "OSRAMHTI700/D4/75",
+      "colorTemperature": 7500,
+      "lumens": 18700
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [12.5, 66]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 246
+    }
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [20, 49],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [50, 72],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [73, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 147],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [148, 167],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "50%",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [168, 187],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "slow",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [188, 190],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [191, 193],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speed": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [194, 196],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speed": "slow",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [197, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speed": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [200, 202],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speed": "slow",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [203, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [208, 217],
+          "type": "Maintenance",
+          "comment": "Reset fixture"
+        },
+        {
+          "dmxRange": [218, 227],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [228, 237],
+          "type": "Maintenance",
+          "comment": "Lamp on"
+        },
+        {
+          "dmxRange": [238, 242],
+          "type": "Maintenance",
+          "comment": "400W mode"
+        },
+        {
+          "dmxRange": [243, 247],
+          "type": "Maintenance",
+          "comment": "700W mode"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Maintenance",
+          "comment": "Lamp off"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Cyan Intensity": {
+      "fineChannelAliases": ["Cyan fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta Intensity": {
+      "fineChannelAliases": ["Magenta fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow Intensity": {
+      "fineChannelAliases": ["Yellow fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "Random CMY Cyan Range": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Maintenance",
+          "comment": "Normal (full range)"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Maintenance",
+          "comment": "Minimum cyan setting 0…100%"
+        },
+        {
+          "dmxRange": [128, 254],
+          "type": "Maintenance",
+          "comment": "Maximum cyan setting 0…100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Maintenance",
+          "comment": "Normal (full range)"
+        }
+      ]
+    },
+    "Random CMY Magenta Range": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Maintenance",
+          "comment": "Normal (full range)"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Maintenance",
+          "comment": "Minimum magenta setting 0…100%"
+        },
+        {
+          "dmxRange": [128, 254],
+          "type": "Maintenance",
+          "comment": "Maximum magenta setting 0…100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Maintenance",
+          "comment": "Normal (full range)"
+        }
+      ]
+    },
+    "Random CMY Yellow Range": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Maintenance",
+          "comment": "Normal (full range)"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Maintenance",
+          "comment": "Minimum yellow setting 0…100%"
+        },
+        {
+          "dmxRange": [128, 254],
+          "type": "Maintenance",
+          "comment": "Maximum yellow setting 0…100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Maintenance",
+          "comment": "Normal (full range)"
+        }
+      ]
+    },
+    "CTO": {
+      "fineChannelAliases": ["CTO fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "default",
+        "colorTemperatureEnd": "warm",
+        "helpWanted": "Is it really CTO (correct to orange)? The manual just mentions CTC (color temperature correction)."
+      }
+    },
+    "Color Wheel": {
+      "fineChannelAliases": ["Color Wheel fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [1, 16],
+          "type": "ColorWheelIndex",
+          "indexStart": 0,
+          "indexEnd": 1,
+          "comment": "Open … Color 1"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "ColorWheelIndex",
+          "index": 1,
+          "comment": "Color 1 (Blue 110)"
+        },
+        {
+          "dmxRange": [18, 33],
+          "type": "ColorWheelIndex",
+          "indexStart": 1,
+          "indexEnd": 2
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "ColorWheelIndex",
+          "index": 2,
+          "comment": "Color 2 (Green 206 IAD)"
+        },
+        {
+          "dmxRange": [35, 50],
+          "type": "ColorWheelIndex",
+          "indexStart": 2,
+          "indexEnd": 3
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "ColorWheelIndex",
+          "index": 3,
+          "comment": "Color 3 (Pink 312)"
+        },
+        {
+          "dmxRange": [52, 67],
+          "type": "ColorWheelIndex",
+          "indexStart": 3,
+          "indexEnd": 4
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "ColorWheelIndex",
+          "index": 4,
+          "comment": "Color 4 (Orange 306M)"
+        },
+        {
+          "dmxRange": [69, 84],
+          "type": "ColorWheelIndex",
+          "indexStart": 4,
+          "indexEnd": 5
+        },
+        {
+          "dmxRange": [85, 85],
+          "type": "ColorWheelIndex",
+          "index": 5,
+          "comment": "Color 5 (Half minus green)"
+        },
+        {
+          "dmxRange": [86, 101],
+          "type": "ColorWheelIndex",
+          "indexStart": 5,
+          "indexEnd": 6
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "ColorWheelIndex",
+          "index": 6,
+          "comment": "Color 6 (CTO 3200-4100)"
+        },
+        {
+          "dmxRange": [103, 118],
+          "type": "ColorWheelIndex",
+          "indexStart": 6,
+          "indexEnd": 7
+        },
+        {
+          "dmxRange": [119, 119],
+          "type": "ColorWheelIndex",
+          "index": 7,
+          "comment": "Color 7 (UV)"
+        },
+        {
+          "dmxRange": [120, 135],
+          "type": "ColorWheelIndex",
+          "indexStart": 7,
+          "indexEnd": 8
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "ColorWheelIndex",
+          "index": 8,
+          "comment": "Color 8 (Red 308)"
+        },
+        {
+          "dmxRange": [137, 152],
+          "type": "ColorWheelIndex",
+          "indexStart": 8,
+          "indexEnd": 9,
+          "comment": "Color 8 … Open"
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [154, 158],
+          "type": "ColorWheelIndex",
+          "index": 8,
+          "comment": "Color 8 (Red 308)"
+        },
+        {
+          "dmxRange": [159, 163],
+          "type": "ColorWheelIndex",
+          "index": 7,
+          "comment": "Color 7 (UV)"
+        },
+        {
+          "dmxRange": [164, 168],
+          "type": "ColorWheelIndex",
+          "index": 6,
+          "comment": "Color 6 (CTO 3200-4100K)"
+        },
+        {
+          "dmxRange": [169, 173],
+          "type": "ColorWheelIndex",
+          "index": 5,
+          "comment": "Color 5 (Half minus green)"
+        },
+        {
+          "dmxRange": [174, 178],
+          "type": "ColorWheelIndex",
+          "index": 4,
+          "comment": "Color 4 (Orange 306M)"
+        },
+        {
+          "dmxRange": [179, 183],
+          "type": "ColorWheelIndex",
+          "index": 3,
+          "comment": "Color 3 (Pink 312)"
+        },
+        {
+          "dmxRange": [184, 188],
+          "type": "ColorWheelIndex",
+          "index": 2,
+          "comment": "Color 2 (Green 206 IAD)"
+        },
+        {
+          "dmxRange": [189, 193],
+          "type": "ColorWheelIndex",
+          "index": 1,
+          "comment": "Color 1 (Blue 110)"
+        },
+        {
+          "dmxRange": [194, 198],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [199, 219],
+          "type": "ColorWheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [220, 240],
+          "type": "ColorWheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "50%"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "slow"
+        }
+      ]
+    },
+    "Beamshaper Angle": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "No beam shaper"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
+        }
+      ]
+    },
+    "Beamshaper Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "No beam shaper"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Rotation",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity",
+            "Beamshaper": "Beamshaper Angle"
+          }
+        },
+        {
+          "dmxRange": [16, 55],
+          "type": "Effect",
+          "effectName": "Color wheel shake",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity",
+            "Beamshaper": "Beamshaper Angle"
+          }
+        },
+        {
+          "dmxRange": [56, 95],
+          "type": "Effect",
+          "effectName": "Beam shaper continuous rotation",
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity",
+            "Beamshaper": "Beamshaper Rotation"
+          }
+        },
+        {
+          "dmxRange": [96, 135],
+          "type": "Effect",
+          "effectName": "Color wheel shake",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "plus beam shaper continuous rotation",
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity",
+            "Beamshaper": "Beamshaper Rotation"
+          }
+        },
+        {
+          "dmxRange": [136, 175],
+          "type": "Effect",
+          "effectName": "Random CMY",
+          "speed": "fast",
+          "switchChannels": {
+            "Cyan": "Random CMY Cyan Range",
+            "Magenta": "Random CMY Magenta Range",
+            "Yellow": "Random CMY Yellow Range",
+            "Beamshaper": "Beamshaper Angle"
+          }
+        },
+        {
+          "dmxRange": [176, 215],
+          "type": "Effect",
+          "effectName": "Random CMY",
+          "speed": "50%",
+          "switchChannels": {
+            "Cyan": "Random CMY Cyan Range",
+            "Magenta": "Random CMY Magenta Range",
+            "Yellow": "Random CMY Yellow Range",
+            "Beamshaper": "Beamshaper Angle"
+          }
+        },
+        {
+          "dmxRange": [216, 255],
+          "type": "Effect",
+          "effectName": "Random CMY",
+          "speed": "slow",
+          "switchChannels": {
+            "Cyan": "Random CMY Cyan Range",
+            "Magenta": "Random CMY Magenta Range",
+            "Yellow": "Random CMY Yellow Range",
+            "Beamshaper": "Beamshaper Angle"
+          }
+        }
+      ]
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 128,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "246deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "NoFunction",
+          "comment": "Tracking mode (default speed)"
+        },
+        {
+          "dmxRange": [3, 242],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "vector mode"
+        },
+        {
+          "dmxRange": [243, 245],
+          "type": "PanTiltSpeed",
+          "speed": "slow",
+          "comment": "tracking mode"
+        },
+        {
+          "dmxRange": [246, 248],
+          "type": "PanTiltSpeed",
+          "speed": "50%",
+          "comment": "tracking mode"
+        },
+        {
+          "dmxRange": [249, 251],
+          "type": "PanTiltSpeed",
+          "speed": "fast",
+          "comment": "tracking mode"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Maintenance",
+          "comment": "Blackout while moving"
+        }
+      ]
+    },
+    "Effects Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "NoFunction",
+          "comment": "Tracking mode"
+        },
+        {
+          "dmxRange": [3, 245],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "vector mode"
+        },
+        {
+          "dmxRange": [246, 248],
+          "type": "Maintenance",
+          "comment": "Tracking mode (color wheel does not turn shortest distance)"
+        },
+        {
+          "dmxRange": [249, 251],
+          "type": "Maintenance",
+          "comment": "Tracking mode (color wheel turns shortest distance)"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Maintenance",
+          "comment": "Blackout while moving"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic 16-channel",
+      "shortName": "basic16ch",
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CTO",
+        "Color Wheel",
+        "Beamshaper",
+        "Macros",
+        "Zoom",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Effects Speed"
+      ]
+    },
+    {
+      "name": "Extended 23-channel",
+      "shortName": "ext23ch",
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Cyan",
+        "Cyan fine",
+        "Magenta",
+        "Magenta fine",
+        "Yellow",
+        "Yellow fine",
+        "CTO",
+        "CTO fine",
+        "Color Wheel",
+        "Color Wheel fine",
+        "Beamshaper",
+        "Macros",
+        "Zoom",
+        "Zoom fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Effects Speed"
+      ]
+    }
+  ]
+}

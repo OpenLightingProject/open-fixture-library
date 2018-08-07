@@ -1,17 +1,19 @@
 {
-  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Desk Channel",
   "shortName": "DeskCh",
   "categories": ["Dimmer"],
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2017-07-17",
-    "lastModifyDate": "2017-07-17"
+    "lastModifyDate": "2018-07-21"
   },
   "availableChannels": {
     "Intensity": {
-      "type": "Intensity",
-      "fineChannelAliases": ["Intensity fine", "Intensity fine^2"]
+      "fineChannelAliases": ["Intensity fine", "Intensity fine^2"],
+      "capability": {
+        "type": "Intensity"
+      }
     }
   },
   "modes": [

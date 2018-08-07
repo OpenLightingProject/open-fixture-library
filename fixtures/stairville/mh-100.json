@@ -1,14 +1,16 @@
 {
-  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "MH-100",
   "shortName": "svlmh100",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Anonymous"],
     "createDate": "2017-10-28",
-    "lastModifyDate": "2017-10-28"
+    "lastModifyDate": "2018-07-21"
   },
-  "manualURL": "https://images.thomann.de/pics/atg/atgdata/document/manual/c_325876_en_online.pdf",
+  "links": {
+    "manual": ["https://images.thomann.de/pics/atg/atgdata/document/manual/c_325876_en_online.pdf"]
+  },
   "physical": {
     "dimensions": [260, 310, 148],
     "weight": 4.9,
@@ -28,130 +30,162 @@
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan",
-      "fineChannelAliases": ["Pan fine"]
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "630deg"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
-      "fineChannelAliases": ["Tilt fine"]
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "220deg"
+      }
     },
     "Pan/Tilt Speed": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Speed fast-slow"
-        }
-      ]
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
     },
     "Dimmer": {
-      "type": "Intensity"
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Red": {
-      "type": "Single Color",
-      "color": "Red"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White": {
-      "type": "Single Color",
-      "color": "White"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "Color Temperature": {
-      "type": "Color Temperature",
       "capabilities": [
         {
-          "range": [0, 35],
-          "name": "Blackout, all LEDs off"
+          "dmxRange": [0, 35],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [36, 55],
-          "name": "Color Temperature 3200K"
+          "dmxRange": [36, 55],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
         },
         {
-          "range": [56, 75],
-          "name": "Color Temperature 3400K"
+          "dmxRange": [56, 75],
+          "type": "ColorTemperature",
+          "colorTemperature": "3400K"
         },
         {
-          "range": [76, 95],
-          "name": "Color Temperature 4200K"
+          "dmxRange": [76, 95],
+          "type": "ColorTemperature",
+          "colorTemperature": "4200K"
         },
         {
-          "range": [96, 115],
-          "name": "Color Temperature 4900K"
+          "dmxRange": [96, 115],
+          "type": "ColorTemperature",
+          "colorTemperature": "4900K"
         },
         {
-          "range": [116, 135],
-          "name": "Color Temperature 5600K"
+          "dmxRange": [116, 135],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
         },
         {
-          "range": [136, 175],
-          "name": "Color Temperature 6500K"
+          "dmxRange": [136, 175],
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K"
         },
         {
-          "range": [176, 195],
-          "name": "Color Temperature 7200K"
+          "dmxRange": [176, 195],
+          "type": "ColorTemperature",
+          "colorTemperature": "7200K"
         },
         {
-          "range": [196, 215],
-          "name": "Color Temperature 8000K"
+          "dmxRange": [196, 215],
+          "type": "ColorTemperature",
+          "colorTemperature": "8000K"
         },
         {
-          "range": [216, 235],
-          "name": "Color Temperature 8500K"
+          "dmxRange": [216, 235],
+          "type": "ColorTemperature",
+          "colorTemperature": "8500K"
         },
         {
-          "range": [236, 255],
-          "name": "Color Temperature 10000K"
+          "dmxRange": [236, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "10000K"
         }
       ]
     },
     "Constant Color": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 14],
-          "name": "Blackout, all LEDs off"
+          "dmxRange": [0, 14],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [15, 255],
-          "name": "One of 28 preprogrammed colors"
+          "dmxRange": [15, 255],
+          "type": "ColorPreset",
+          "comment": "One of 28 preprogrammed colors",
+          "helpWanted": "Which 28 preprogrammed colors?"
         }
       ]
     },
     "Strobe": {
-      "type": "Strobe",
       "capabilities": [
         {
-          "range": [0, 19],
-          "name": "Off"
+          "dmxRange": [0, 19],
+          "type": "NoFunction"
         },
         {
-          "range": [20, 255],
-          "name": "Strobe speed"
+          "dmxRange": [20, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Special Functions": {
-      "type": "Maintenance",
       "capabilities": [
         {
-          "range": [0, 99],
-          "name": "No functions"
+          "dmxRange": [0, 99],
+          "type": "NoFunction"
         },
         {
-          "range": [100, 199],
-          "name": "Sound control"
+          "dmxRange": [100, 199],
+          "type": "Maintenance",
+          "comment": "Sound control"
         },
         {
-          "range": [200, 255],
-          "name": "Reset (hold 5s)"
+          "dmxRange": [200, 255],
+          "type": "Maintenance",
+          "comment": "Reset",
+          "hold": "5s"
         }
       ]
     }

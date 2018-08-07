@@ -1,14 +1,16 @@
 {
-  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Atomic 3000",
-  "shortName": "At3000",
+  "shortName": "MartinAt3000",
   "categories": ["Strobe"],
   "meta": {
     "authors": ["Flo Edelmann", "Felix Edelmann"],
     "createDate": "2017-01-20",
-    "lastModifyDate": "2017-07-16"
+    "lastModifyDate": "2018-07-21"
   },
-  "manualURL": "https://www.martin.com/Martin.Download.aspx?file=/files/files/productdocuments/11_MANUALS/999/35000094G%20UM_Atomic3000DMX_EN_G.pdf",
+  "links": {
+    "manual": ["http://www.martin.com/files/files/productdocuments/11_MANUALS/999/35000094G%20UM_Atomic3000DMX_EN_G.pdf"]
+  },
   "physical": {
     "dimensions": [450, 239, 234],
     "weight": 7.5,
@@ -24,96 +26,104 @@
   },
   "availableChannels": {
     "Strobe": {
-      "type": "Strobe",
-      "highlightValue": 255,
-      "crossfade": true,
+      "highlightValue": 249,
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "Blackout"
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [6, 249],
-          "name": "Strobe slow-fast"
+          "dmxRange": [6, 249],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [250, 255],
-          "name": "Blind"
+          "dmxRange": [250, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Blind"
         }
       ]
     },
     "Intensity": {
-      "type": "Intensity",
       "highlightValue": 255,
-      "crossfade": true,
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "Blackout"
+          "dmxRange": [0, 5],
+          "type": "Intensity",
+          "brightness": "off"
         },
         {
-          "range": [6, 255],
-          "name": "0-100%"
+          "dmxRange": [6, 255],
+          "type": "Intensity",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright"
         }
       ]
     },
     "Flash Duration": {
-      "type": "Speed",
       "highlightValue": 255,
-      "crossfade": true,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "0-650ms"
-        }
-      ]
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "0ms",
+        "durationEnd": "650ms"
+      }
     },
     "Flash Rate": {
-      "type": "Speed",
       "highlightValue": 255,
-      "crossfade": true,
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "Single Flash"
+          "dmxRange": [0, 5],
+          "type": "Effect",
+          "effectName": "Single Flash"
         },
         {
-          "range": [6, 255],
-          "name": "0.5-25Hz"
+          "dmxRange": [6, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0.5Hz",
+          "speedEnd": "25Hz"
         }
       ]
     },
     "Effects": {
-      "type": "Effect",
-      "crossfade": true,
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "No function"
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
         },
         {
-          "range": [6, 42],
-          "name": "Ramp up"
+          "dmxRange": [6, 42],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp"
         },
         {
-          "range": [43, 85],
-          "name": "Ramp down"
+          "dmxRange": [43, 85],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown"
         },
         {
-          "range": [86, 128],
-          "name": "Ramp up/down"
+          "dmxRange": [86, 128],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown"
         },
         {
-          "range": [129, 171],
-          "name": "Random"
+          "dmxRange": [129, 171],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
         },
         {
-          "range": [172, 214],
-          "name": "Storm"
+          "dmxRange": [172, 214],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning"
         },
         {
-          "range": [215, 255],
-          "name": "Single Flash"
+          "dmxRange": [215, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes"
         }
       ]
     }

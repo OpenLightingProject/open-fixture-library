@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Viper NT",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2018-02-18",
+    "lastModifyDate": "2018-07-21"
+  },
+  "links": {
+    "manual": ["http://www.looksolutions.com/uploads/pdf/bed_vipernt_d.pdf"]
+  },
+  "physical": {
+    "dimensions": [230, 240, 470],
+    "weight": 8.6,
+    "power": 1300,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Pump": {
+      "capability": {
+        "type": "Fog",
+        "fogType": "Fog",
+        "fogOutputStart": "off",
+        "fogOutputEnd": "strong"
+      }
+    },
+    "Heat": {
+      "capability": {
+        "type": "Maintenance",
+        "comment": "Heat",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Pump",
+        "Heat"
+      ]
+    }
+  ]
+}

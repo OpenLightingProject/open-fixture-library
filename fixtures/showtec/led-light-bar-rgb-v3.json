@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED Light Bar RGB V3",
   "shortName": "LEDLightBar",
   "comment": "Ordercode 42202",
@@ -7,9 +7,11 @@
   "meta": {
     "authors": ["Flo Edelmann", "Felix Edelmann"],
     "createDate": "2017-01-20",
-    "lastModifyDate": "2017-07-16"
+    "lastModifyDate": "2018-07-21"
   },
-  "manualURL": "http://www.highlite.nl/silver.download/Documents@extern@Manuals/42202_MANUAL_GB_V3.pdf",
+  "links": {
+    "manual": ["http://www.highlite.nl/silver.download/Documents@extern@Manuals/42202_MANUAL_GB_V3.pdf"]
+  },
   "physical": {
     "dimensions": [1070, 65, 88],
     "weight": 1.68,
@@ -43,231 +45,260 @@
   },
   "availableChannels": {
     "Red": {
-      "type": "Single Color",
-      "crossfade": true,
-      "color": "Red"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "crossfade": true,
-      "color": "Green"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "crossfade": true,
-      "color": "Blue"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "Dimmer": {
-      "type": "Intensity",
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Strobe1": {
       "name": "Strobe",
-      "type": "Strobe",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "0-20Hz"
-        }
-      ]
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0Hz",
+        "speedEnd": "20Hz",
+        "helpWanted": "Does this capability really range from DMX value 0 to 255? How to disable strobe?"
+      }
     },
     "Strobe2": {
       "name": "Strobe",
-      "type": "Strobe",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "No function"
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
         },
         {
-          "range": [10, 255],
-          "name": "0-20Hz"
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
         }
       ]
     },
     "Color Programs": {
-      "type": "Multi-Color",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "No function",
-          "color": "#000000",
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [10, 19],
-          "name": "Red",
-          "color": "#ff0000",
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [20, 29],
-          "name": "Yellow",
-          "color": "#ffff00",
+          "dmxRange": [20, 29],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [30, 39],
-          "name": "Green",
-          "color": "#00ff00",
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [40, 49],
-          "name": "Cyan",
-          "color": "#00ffff",
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [50, 59],
-          "name": "Blue",
-          "color": "#5500ff",
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [60, 69],
-          "name": "Purple",
-          "color": "#aa00ff",
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Purple",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [70, 79],
-          "name": "White",
-          "color": "#ffffff",
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [80, 89],
-          "name": "Program 1",
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "effectName": "Program 1",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [90, 99],
-          "name": "Program 2",
+          "dmxRange": [90, 99],
+          "type": "Effect",
+          "effectName": "Program 2",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [100, 109],
-          "name": "Program 3",
+          "dmxRange": [100, 109],
+          "type": "Effect",
+          "effectName": "Program 3",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [110, 119],
-          "name": "Program 4",
+          "dmxRange": [110, 119],
+          "type": "Effect",
+          "effectName": "Program 4",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [120, 129],
-          "name": "Program 5",
+          "dmxRange": [120, 129],
+          "type": "Effect",
+          "effectName": "Program 5",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [130, 139],
-          "name": "Program 6",
+          "dmxRange": [130, 139],
+          "type": "Effect",
+          "effectName": "Program 6",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [140, 149],
-          "name": "Program 7",
+          "dmxRange": [140, 149],
+          "type": "Effect",
+          "effectName": "Program 7",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [150, 159],
-          "name": "Program 8",
+          "dmxRange": [150, 159],
+          "type": "Effect",
+          "effectName": "Program 8",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [160, 169],
-          "name": "Program 9",
+          "dmxRange": [160, 169],
+          "type": "Effect",
+          "effectName": "Program 9",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [170, 179],
-          "name": "Program 10",
+          "dmxRange": [170, 179],
+          "type": "Effect",
+          "effectName": "Program 10",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [180, 189],
-          "name": "Program 11",
+          "dmxRange": [180, 189],
+          "type": "Effect",
+          "effectName": "Program 11",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [190, 199],
-          "name": "Program 12",
+          "dmxRange": [190, 199],
+          "type": "Effect",
+          "effectName": "Program 12",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [200, 209],
-          "name": "Program 13",
+          "dmxRange": [200, 209],
+          "type": "Effect",
+          "effectName": "Program 13",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [210, 219],
-          "name": "Program 14",
+          "dmxRange": [210, 219],
+          "type": "Effect",
+          "effectName": "Program 14",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [220, 229],
-          "name": "Program 15",
+          "dmxRange": [220, 229],
+          "type": "Effect",
+          "effectName": "Program 15",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [230, 239],
-          "name": "Program 16",
+          "dmxRange": [230, 239],
+          "type": "Effect",
+          "effectName": "Program 16",
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Program Speed"
           }
         },
         {
-          "range": [240, 255],
-          "name": "Sound control",
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true,
           "switchChannels": {
             "Program Speed / Mic Sensitivity": "Mic Sensitivity"
           }
@@ -275,44 +306,58 @@
       ]
     },
     "Program Speed": {
-      "type": "Speed"
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Mic Sensitivity": {
-      "type": "Intensity"
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
     },
     "Operation Mode": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "RGB Mode"
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "RGB Mode"
         },
         {
-          "range": [10, 249],
-          "name": "Auto Program"
+          "dmxRange": [10, 249],
+          "type": "Effect",
+          "effectName": "Auto Program"
         },
         {
-          "range": [250, 255],
-          "name": "Sound control"
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true
         }
       ]
     }
   },
   "templateChannels": {
     "Red $pixelKey": {
-      "type": "Single Color",
-      "crossfade": true,
-      "color": "Red"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green $pixelKey": {
-      "type": "Single Color",
-      "crossfade": true,
-      "color": "Green"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue $pixelKey": {
-      "type": "Single Color",
-      "crossfade": true,
-      "color": "Blue"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     }
   },
   "modes": [

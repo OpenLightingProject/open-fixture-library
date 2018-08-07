@@ -1,7 +1,12 @@
 {
-  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-manufacturers.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/manufacturers.json",
   "5star-systems": {
     "name": "5Star Systems"
+  },
+  "adb": {
+    "name": "ADB",
+    "website": "https://www.adbstagelight.com",
+    "rdmId": 16708
   },
   "abstract": {
     "name": "Abstract",
@@ -15,9 +20,31 @@
     "name": "Ayra",
     "website": "https://www.bax-shop.co.uk/ayra"
   },
+  "ayrton": {
+    "name": "Ayrton",
+    "website": "https://www.ayrton.eu/"
+  },
+  "blizzard": {
+    "name": "Blizzard",
+    "website": "https://www.blizzardlighting.com/"
+  },
+  "boomtonedj": {
+    "name": "BoomToneDJ",
+    "website": "http://www.boomtonedj.com/"
+  },
   "cameo": {
     "name": "cameo",
-    "website": "http://www.cameolight.com/"
+    "website": "https://www.cameolight.com/"
+  },
+  "chauvet-dj": {
+    "name": "Chauvet DJ",
+    "website": "https://www.chauvetdj.com/",
+    "rdmId": 8612
+  },
+  "chroma-q": {
+    "name": "Chroma-Q",
+    "website": "https://www.chroma-q.com",
+    "rdmId": 21360
   },
   "clay-paky": {
     "name": "Clay Paky",
@@ -27,11 +54,6 @@
     "name": "Coemar",
     "website": "http://www.coemar.com/",
     "rdmId": 17229
-  },
-  "chauvet-dj": {
-    "name": "Chauvet DJ",
-    "website": "https://www.chauvetdj.com/",
-    "rdmId": 8612
   },
   "dts": {
     "name": "DTS",
@@ -49,19 +71,23 @@
   },
   "equinox": {
     "name": "Equinox",
-    "website": "http://www.prolight.co.uk"
+    "website": "https://prolight.co.uk/"
   },
   "eurolite": {
     "name": "Eurolite",
-    "website": "http://www.steinigke.de/Eurolite/"
+    "website": "https://www.steinigke.de/Eurolite/"
   },
   "futurelight": {
     "name": "Futurelight",
-    "website": "http://www.steinigke.de/futurelight/"
+    "website": "https://www.steinigke.de/futurelight/"
   },
   "generic": {
     "name": "Generic",
     "comment": "Use this pseudo manufacturer if you need to quick patch some channels without having to create a new fixture."
+  },
+  "ghost": {
+    "name": "Ghost",
+    "website": "https://www.mhdiffusion.fr/?page=produits&marque=GHOST"
   },
   "glp": {
     "name": "German Light Products",
@@ -84,9 +110,22 @@
     "name": "KAM",
     "comment": "No website - no longer trading"
   },
+  "laserworld": {
+    "name": "Laserworld",
+    "website": "https://www.laserworld.com/en/"
+  },
   "lightmaxx": {
     "name": "lightmaXX",
     "website": "https://www.musicstore.de/de_DE/EUR/Licht/Lightmaxx/cat-LICHT-LIGLIGHT"
+  },
+  "look": {
+    "name": "Look Solutions",
+    "website": "http://www.looksolutions.com"
+  },
+  "magicfx": {
+    "name": "MagicFX",
+    "website": "https://www.magicfx.eu/",
+    "rdmId": 18008
   },
   "martin": {
     "name": "Martin",
@@ -98,6 +137,17 @@
     "website": "http://www.mdgfog.com/en",
     "rdmId": 19780
   },
+  "minuit-une": {
+    "name": "Minuit Une",
+    "website": "https://minuitune.com/"
+  },
+  "nicols": {
+    "name": "Nicols",
+    "website": "http://www.site-expelec.fr/nicols_en.html"
+  },
+  "powerlighting": {
+    "name": "Power Lighting"
+  },
   "prolights": {
     "name": "Prolights",
     "website": "http://prolights.it/",
@@ -105,7 +155,7 @@
   },
   "qtx": {
     "name": "QTX",
-    "website": "http://www.avsl.com/brands/qtx"
+    "website": "https://www.avsl.com/brands/qtx"
   },
   "robe": {
     "name": "Robe",
@@ -114,16 +164,29 @@
   },
   "showtec": {
     "name": "Showtec",
-    "website": "http://www.highlite.nl/",
+    "website": "https://www.highlite.nl/",
     "rdmId": 10676
+  },
+  "showven": {
+    "name": "Showven",
+    "website": "http://en.showven.com/"
   },
   "stairville": {
     "name": "Stairville",
-    "website": "http://www.thomann.de"
+    "website": "https://www.thomann.de"
+  },
+  "tmb": {
+    "name": "TMB",
+    "website": "https://tmb.com/",
+    "rdmId": 6906
   },
   "venue": {
     "name": "Venue",
     "comment": "Venue by Proline",
-    "website": "http://venuelightingeffects.com/"
+    "website": "https://venuelightingeffects.com/"
+  },
+  "orion": {
+    "name": "Orion Effects Lighting",
+    "website": "http://orion-fxlights.com/"
   }
 }

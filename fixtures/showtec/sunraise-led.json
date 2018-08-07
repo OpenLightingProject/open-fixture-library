@@ -1,0 +1,230 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Sunraise LED",
+  "categories": ["Flower", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-02-06",
+    "lastModifyDate": "2018-07-21"
+  },
+  "links": {
+    "manual": ["https://www.highlite.nl/silver.download/Documents@extern@Manuals/43078_MANUAL_GB_V2.pdf"]
+  },
+  "physical": {
+    "dimensions": [266, 260, 266],
+    "weight": 2.8,
+    "power": 35,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "55 x 3W RGBWA LEDs",
+      "lumens": 1000
+    }
+  },
+  "availableChannels": {
+    "Color Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ColorPreset",
+          "colors": ["#000000"],
+          "comment": "Black"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "colors": ["#ffbf00"],
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Red + Green"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#0000ff"],
+          "comment": "Red + Blue"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#ffffff"],
+          "comment": "Red + White"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#ffbf00"],
+          "comment": "Red + Amber"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#0000ff"],
+          "comment": "Green + Blue"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#ffffff"],
+          "comment": "Green + White"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#ffbf00"],
+          "comment": "Green + Amber"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "colors": ["#0000ff", "#ffffff"],
+          "comment": "Blue + White"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorPreset",
+          "colors": ["#0000ff", "#ffbf00"],
+          "comment": "Blue + Amber"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "ColorPreset",
+          "colors": ["#ffffff", "#ffbf00"],
+          "comment": "White + Amber"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"],
+          "comment": "Red + Green + Blue"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff"],
+          "comment": "Red + Green + Blue + White"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffbf00"],
+          "comment": "Red + Green + Blue + Amber"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff", "#ffbf00"],
+          "comment": "Red + Green + Blue + White + Amber"
+        },
+        {
+          "dmxRange": [200, 229],
+          "type": "Effect",
+          "effectName": "Auto"
+        },
+        {
+          "dmxRange": [230, 255],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "12Hz"
+        }
+      ]
+    },
+    "Auto Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "EffectSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Motor Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 119],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [130, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Color Macros",
+        "Strobe",
+        "Auto Speed",
+        "Motor Rotation"
+      ]
+    }
+  ]
+}

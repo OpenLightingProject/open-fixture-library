@@ -1,14 +1,16 @@
 {
-  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Revo Burst",
   "shortName": "ADJRevoBurst",
   "categories": ["Flower", "Effect"],
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2018-01-24",
-    "lastModifyDate": "2018-01-27"
+    "lastModifyDate": "2018-07-21"
   },
-  "manualURL": "http://adjmedia.s3-website-eu-west-1.amazonaws.com/manuals/Revo%20Burst%20LO.pdf",
+  "links": {
+    "manual": ["http://adjmedia.s3-website-eu-west-1.amazonaws.com/manuals/Revo%20Burst%20LO.pdf"]
+  },
   "physical": {
     "dimensions": [216, 239, 312],
     "weight": 3.2,
@@ -37,26 +39,29 @@
   },
   "availableChannels": {
     "Mode": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 119],
-          "name": "Pattern",
+          "dmxRange": [0, 119],
+          "type": "Effect",
+          "effectName": "Pattern",
           "switchChannels": {
             "Strobe / Chase Speed": "Pattern Strobe"
           }
         },
         {
-          "range": [120, 239],
-          "name": "Chase",
+          "dmxRange": [120, 239],
+          "type": "Effect",
+          "effectName": "Chase",
           "switchChannels": {
             "Strobe / Chase Speed": "Chase Speed"
           }
         },
         {
-          "range": [240, 255],
-          "name": "Sound active",
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Sound active",
+          "soundControlled": true,
           "switchChannels": {
             "Strobe / Chase Speed": "Pattern Strobe"
           }
@@ -64,103 +69,121 @@
       ]
     },
     "Pattern Strobe": {
-      "type": "Strobe",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Strobe off"
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Strobe off"
         },
         {
-          "range": [10, 255],
-          "name": "Strobe slow - fast"
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Chase Speed": {
-      "type": "Speed",
       "defaultValue": 0,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Chase slow - fast"
-        }
-      ]
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Dimmer": {
-      "type": "Intensity",
       "defaultValue": 0,
-      "highlightValue": 255
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
     }
   },
   "templateChannels": {
     "Pattern / Chase $pixelKey": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "Blackout"
+          "dmxRange": [0, 15],
+          "type": "Effect",
+          "effectName": "Blackout"
         },
         {
-          "range": [16, 31],
-          "name": "Pattern / Chase 1"
+          "dmxRange": [16, 31],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 1"
         },
         {
-          "range": [32, 47],
-          "name": "Pattern / Chase 2"
+          "dmxRange": [32, 47],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 2"
         },
         {
-          "range": [48, 63],
-          "name": "Pattern / Chase 3"
+          "dmxRange": [48, 63],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 3"
         },
         {
-          "range": [64, 79],
-          "name": "Pattern / Chase 4"
+          "dmxRange": [64, 79],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 4"
         },
         {
-          "range": [80, 95],
-          "name": "Pattern / Chase 5"
+          "dmxRange": [80, 95],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 5"
         },
         {
-          "range": [96, 111],
-          "name": "Pattern / Chase 6"
+          "dmxRange": [96, 111],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 6"
         },
         {
-          "range": [112, 127],
-          "name": "Pattern / Chase 7"
+          "dmxRange": [112, 127],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 7"
         },
         {
-          "range": [128, 143],
-          "name": "Pattern / Chase 8"
+          "dmxRange": [128, 143],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 8"
         },
         {
-          "range": [144, 159],
-          "name": "Pattern / Chase 9"
+          "dmxRange": [144, 159],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 9"
         },
         {
-          "range": [160, 175],
-          "name": "Pattern / Chase 10"
+          "dmxRange": [160, 175],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 10"
         },
         {
-          "range": [176, 191],
-          "name": "Pattern / Chase 11"
+          "dmxRange": [176, 191],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 11"
         },
         {
-          "range": [192, 207],
-          "name": "Pattern / Chase 12"
+          "dmxRange": [192, 207],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 12"
         },
         {
-          "range": [208, 223],
-          "name": "Pattern / Chase 13"
+          "dmxRange": [208, 223],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 13"
         },
         {
-          "range": [224, 239],
-          "name": "Pattern / Chase 14"
+          "dmxRange": [224, 239],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 14"
         },
         {
-          "range": [240, 255],
-          "name": "Pattern / Chase 15"
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Pattern / Chase 15"
         }
       ]
     }

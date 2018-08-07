@@ -1,4 +1,4 @@
-const GitHubApi = require(`github`);
+const GitHubApi = require(`@octokit/rest`);
 
 require(`../../lib/load-env-file.js`);
 
@@ -11,14 +11,9 @@ const requiredEnvVars = [
 ];
 
 const github = new GitHubApi({
-  debug: false,
-  protocol: `https`,
-  host: `api.github.com`,
   headers: {
     'user-agent': `Open Fixture Library`
-  },
-  followRedirects: false,
-  timeout: 5000
+  }
 });
 
 let repoOwner;
@@ -62,7 +57,7 @@ module.exports.init = function init() {
     });
   })
     .then(pr => {
-    // save PR for later use
+      // save PR for later use
       module.exports.data = pr.data;
       return this.data;
     });
@@ -77,7 +72,7 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
       repo: repoName,
       number: process.env.TRAVIS_PULL_REQUEST,
       'per_page': 100,
-      page: i
+      page: i + 1
     }));
   }
 
@@ -120,53 +115,52 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
       };
 
       for (const block of fileBlocks) {
-        for (const file of block.data) {
-          addFileToChangedData(changedComponents[file.status], file.filename);
-        }
+        block.data.forEach(handleFile);
       }
 
       return changedComponents;
+
+      function handleFile(file) {
+        const changeSummary = changedComponents[file.status];
+        const segments = file.filename.split(`/`);
+
+        if (segments[0] === `lib` && segments[1] === `model`) {
+          changeSummary.model = true;
+          return;
+        }
+
+        if (segments[0] === `plugins` && segments[2] === `import.js`) {
+          changeSummary.imports.push(segments[1]); // plugin key
+          return;
+        }
+
+        if (segments[0] === `plugins` && segments[2] === `export.js`) {
+          changeSummary.exports.push(segments[1]); // plugin key
+          return;
+        }
+
+        if (segments[0] === `plugins` && segments[2] === `exportTests`) {
+          changeSummary.exportTests.push([
+            segments[1], // plugin key
+            segments[3].split(`.`)[0] // test key
+          ]);
+          return;
+        }
+
+        if (segments[0] === `schemas`) {
+          changeSummary.schema = true;
+          return;
+        }
+
+        if (segments[0] === `fixtures` && segments.length === 3) {
+          changeSummary.fixtures.push([
+            segments[1], // man key
+            segments[2].split(`.`)[0] // fix key
+          ]);
+        }
+      }
     });
 };
-
-function addFileToChangedData(changedData, filename) {
-  const segments = filename.split(`/`);
-
-  if (segments[0] === `lib` && segments[1] === `model`) {
-    changedData.model = true;
-    return;
-  }
-
-  if (segments[0] === `plugins` && segments[2] === `import.js`) {
-    changedData.imports.push(segments[1]); // plugin key
-    return;
-  }
-
-  if (segments[0] === `plugins` && segments[2] === `export.js`) {
-    changedData.exports.push(segments[1]); // plugin key
-    return;
-  }
-
-  if (segments[0] === `plugins` && segments[2] === `exportTests`) {
-    changedData.exportTests.push([
-      segments[1], // plugin key
-      segments[3].split(`.`)[0] // test key
-    ]);
-    return;
-  }
-
-  if (segments[0] === `schema-fixture.json` || segments[0] === `schema-manufacturers.json`) {
-    changedData.schema = true;
-    return;
-  }
-
-  if (segments[0] === `fixtures` && segments.length === 3) {
-    changedData.fixtures.push([
-      segments[1], // man key
-      segments[2].split(`.`)[0] // fix key
-    ]);
-  }
-}
 
 /**
  * Creates a new comment in the PR if test.lines is not empty and if there is not already an exactly equal comment.
@@ -195,7 +189,7 @@ module.exports.updateComment = function updateComment(test) {
         repo: repoName,
         number: process.env.TRAVIS_PULL_REQUEST,
         'per_page': 100,
-        page: i
+        page: i + 1
       })
     );
   }
@@ -207,7 +201,7 @@ module.exports.updateComment = function updateComment(test) {
 
       for (const block of commentBlocks) {
         for (const comment of block.data) {
-        // get rid of \r linebreaks
+          // get rid of \r linebreaks
           comment.body = comment.body.replace(/\r/g, ``);
 
           // the comment was created by this test script
@@ -244,7 +238,7 @@ module.exports.updateComment = function updateComment(test) {
 
 module.exports.getTestFixturesMessage = function getTestFixturesMessage(fixtures) {
   let lines = [];
-  lines.push(`Tested with the following minimal collection of [test fixtures](https://github.com/FloEdelmann/open-fixture-library/blob/master/docs/fixture-features.md) that cover all fixture features:`);
+  lines.push(`Tested with the following minimal collection of [test fixtures](https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/fixture-features.md) that cover all fixture features:`);
   lines = lines.concat(fixtures.map(fix => `- ${fix}`), ``);
   return lines;
 };

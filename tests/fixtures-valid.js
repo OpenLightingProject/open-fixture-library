@@ -5,8 +5,8 @@ const path = require(`path`);
 const colors = require(`colors`);
 const Ajv = require(`ajv`);
 
-const manufacturerSchema = require(`../schema-manufacturers.json`);
-const checkFixture = require(`./fixture-valid.js`);
+const manufacturerSchema = require(`../schemas/dereferenced/manufacturers.json`);
+const { checkFixture, checkUniqueness, getErrorString } = require(`./fixture-valid.js`);
 
 /**
  * @typedef UniqueValues
@@ -43,6 +43,11 @@ for (const manKey of fs.readdirSync(fixturePath)) {
   }
 }
 
+/**
+ * Checks (asynchronously) the given fixture by adding a Promise to the promises array that resolves with a result object.
+ * @param {!string} manKey The manufacturer key.
+ * @param {!string} fixKey The fixture key.
+ */
 function handleFixtureFile(manKey, fixKey) {
   const filename = `${manKey}/${fixKey}.json`;
   const result = {
@@ -56,7 +61,7 @@ function handleFixtureFile(manKey, fixKey) {
   promises.push(new Promise((resolve, reject) => {
     fs.readFile(filepath, `utf8`, (readError, data) => {
       if (readError) {
-        result.errors.push(checkFixture.getErrorString(`File could not be read.`, readError));
+        result.errors.push(getErrorString(`File could not be read.`, readError));
         return resolve(result);
       }
 
@@ -65,7 +70,7 @@ function handleFixtureFile(manKey, fixKey) {
         fixtureJson = JSON.parse(data);
       }
       catch (parseError) {
-        result.errors.push(checkFixture.getErrorString(`File could not be parsed as JSON.`, parseError));
+        result.errors.push(getErrorString(`File could not be parsed as JSON.`, parseError));
         return resolve(result);
       }
 
@@ -74,7 +79,7 @@ function handleFixtureFile(manKey, fixKey) {
         Object.assign(result, checkFixture(manKey, fixKey, fixtureJson, uniqueValues));
       }
       catch (validateError) {
-        result.errors.push(checkFixture.getErrorString(`Fixture could not be validated.`, validateError));
+        result.errors.push(getErrorString(`Fixture could not be validated.`, validateError));
       }
       return resolve(result);
     });
@@ -92,7 +97,7 @@ promises.push(new Promise((resolve, reject) => {
 
   fs.readFile(filename, `utf8`, (readError, data) => {
     if (readError) {
-      result.errors.push(checkFixture.getErrorString(`File could not be read.`, readError));
+      result.errors.push(getErrorString(`File could not be read.`, readError));
       return resolve(result);
     }
 
@@ -101,7 +106,7 @@ promises.push(new Promise((resolve, reject) => {
       manufacturers = JSON.parse(data);
     }
     catch (parseError) {
-      result.errors.push(checkFixture.getErrorString(`File could not be parsed.`, parseError));
+      result.errors.push(getErrorString(`File could not be parsed.`, parseError));
       return resolve(result);
     }
 
@@ -109,7 +114,7 @@ promises.push(new Promise((resolve, reject) => {
     const validate = (new Ajv()).compile(manufacturerSchema);
     const valid = validate(manufacturers);
     if (!valid) {
-      result.errors.push(module.exports.getErrorString(`File does not match schema.`, validate.errors));
+      result.errors.push(getErrorString(`File does not match schema.`, validate.errors));
       return resolve(result);
     }
 
@@ -119,7 +124,7 @@ promises.push(new Promise((resolve, reject) => {
         continue;
       }
 
-      checkFixture.checkUniqueness(
+      checkUniqueness(
         uniqueValues.manNames,
         manufacturers[manKey].name,
         result,
@@ -127,7 +132,7 @@ promises.push(new Promise((resolve, reject) => {
       );
 
       if (`rdmId` in manufacturers[manKey]) {
-        checkFixture.checkUniqueness(
+        checkUniqueness(
           uniqueValues.manRdmIds,
           `${manufacturers[manKey].rdmId}`,
           result,

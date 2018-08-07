@@ -1,0 +1,217 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Scena LED 150",
+  "shortName": "DTSScenaLED150",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Karl Humbug", "Flo Edelmann"],
+    "createDate": "2018-07-01",
+    "lastModifyDate": "2018-07-21"
+  },
+  "comment": "Also available with 4000K or 5000K color temperature LED.",
+  "links": {
+    "manual": ["http://www.lightpower-files.de/Assets/DTS_Scena%20LED%20150_Manual%202.1_de.pdf"]
+  },
+  "physical": {
+    "dimensions": [250, 185, 330],
+    "weight": 5.3,
+    "power": 160,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "150W LED",
+      "colorTemperature": 3000,
+      "lumens": 7000
+    },
+    "lens": {
+      "name": "PC",
+      "degreesMinMax": [8.2, 70]
+    }
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [30, 119],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.3Hz",
+          "speedEnd": "33.3Hz"
+        },
+        {
+          "dmxRange": [120, 149],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0.02Hz",
+          "speedEnd": "8.3Hz"
+        },
+        {
+          "dmxRange": [150, 179],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0.02Hz",
+          "speedEnd": "8.3Hz"
+        },
+        {
+          "dmxRange": [180, 204],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "dimmer active"
+        },
+        {
+          "dmxRange": [205, 229],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "dimmer inactive"
+        },
+        {
+          "dmxRange": [230, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Zoom Fresnel": {
+      "name": "Zoom",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "12.8deg",
+        "angleEnd": "62deg",
+        "comment": "linear"
+      }
+    },
+    "Zoom PC": {
+      "name": "Zoom",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "8.2deg",
+        "angleEnd": "70deg",
+        "comment": "linear"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Zoom Motor Reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel (PC lens)",
+      "shortName": "5ch-pc",
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Zoom PC",
+        "Reset"
+      ]
+    },
+    {
+      "name": "4-channel (PC lens)",
+      "shortName": "4ch-pc",
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Zoom PC",
+        "Reset"
+      ]
+    },
+    {
+      "name": "2-channel (PC lens)",
+      "shortName": "2ch-pc",
+      "channels": [
+        "Dimmer",
+        "Zoom PC"
+      ]
+    },
+    {
+      "name": "5-channel (Fresnel lens)",
+      "shortName": "5ch-fres",
+      "physical": {
+        "weight": 5.1,
+        "lens": {
+          "name": "Fresnel",
+          "degreesMinMax": [12.8, 62]
+        }
+      },
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Zoom Fresnel",
+        "Reset"
+      ]
+    },
+    {
+      "name": "4-channel (Fresnel lens)",
+      "shortName": "4ch-fres",
+      "physical": {
+        "weight": 5.1,
+        "lens": {
+          "name": "Fresnel",
+          "degreesMinMax": [12.8, 62]
+        }
+      },
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Zoom Fresnel",
+        "Reset"
+      ]
+    },
+    {
+      "name": "2-channel (Fresnel lens)",
+      "shortName": "2ch-fres",
+      "physical": {
+        "weight": 5.1,
+        "lens": {
+          "name": "Fresnel",
+          "degreesMinMax": [12.8, 62]
+        }
+      },
+      "channels": [
+        "Dimmer",
+        "Zoom Fresnel"
+      ]
+    },
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}

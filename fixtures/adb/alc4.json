@@ -1,0 +1,228 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ALC4",
+  "shortName": "ADBALC4",
+  "categories": ["Blinder", "Color Changer"],
+  "meta": {
+    "authors": ["ameisso"],
+    "createDate": "2018-02-19",
+    "lastModifyDate": "2018-07-21"
+  },
+  "links": {
+    "manual": ["http://www.lsclighting.com/help-centre/downloads/func-startdown/512/"]
+  },
+  "physical": {
+    "dimensions": [496, 268, 182],
+    "weight": 10,
+    "power": 200,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 4000
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["4", "3", "2", "1"]
+      ]
+    ],
+    "pixelGroups": {
+      "Master": ["1", "2", "3", "4"]
+    }
+  },
+  "availableChannels": {
+    "Master": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "templateChannels": {
+    "Dimmer $pixelKey": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature $pixelKey (Linear)": {
+      "name": "Color Temperature $pixelKey",
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Effect",
+          "effectName": "RGB Mode"
+        },
+        {
+          "dmxRange": [51, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2700K",
+          "colorTemperatureEnd": "6500K"
+        }
+      ]
+    },
+    "Color Temperature $pixelKey (7 Presets)": {
+      "name": "Color Temperature $pixelKey",
+      "capabilities": [
+        {
+          "dmxRange": [0, 76],
+          "type": "Effect",
+          "effectName": "RGB Mode"
+        },
+        {
+          "dmxRange": [77, 101],
+          "type": "ColorTemperature",
+          "colorTemperature": "2700K"
+        },
+        {
+          "dmxRange": [102, 127],
+          "type": "ColorTemperature",
+          "colorTemperature": "3000K"
+        },
+        {
+          "dmxRange": [128, 152],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [153, 178],
+          "type": "ColorTemperature",
+          "colorTemperature": "4200K"
+        },
+        {
+          "dmxRange": [179, 203],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [204, 229],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K"
+        },
+        {
+          "dmxRange": [230, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K"
+        }
+      ]
+    },
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard Linear",
+      "shortName": "std-lin",
+      "channels": [
+        "Dimmer Master",
+        "Color Temperature Master (Linear)",
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "Matrix Linear",
+      "shortName": "matrix-lin",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Color Temperature $pixelKey (Linear)",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Extended Linear",
+      "shortName": "ext-lin",
+      "channels": [
+        "Master",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Color Temperature $pixelKey (Linear)",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Standard 7 Presets",
+      "shortName": "std-presets",
+      "channels": [
+        "Dimmer Master",
+        "Color Temperature Master (7 Presets)",
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "Matrix 7 Presets",
+      "shortName": "matrix-presets",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Color Temperature $pixelKey (7 Presets)",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Extended 7 Presets",
+      "shortName": "ext-presets",
+      "channels": [
+        "Master",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Color Temperature $pixelKey (7 Presets)",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    }
+  ]
+}

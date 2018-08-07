@@ -1,14 +1,16 @@
 {
-  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Boom Box Fx2",
   "shortName": "ADJBoomBoxFx2",
   "categories": ["Laser", "Color Changer"],
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2017-11-17",
-    "lastModifyDate": "2017-11-17"
+    "lastModifyDate": "2018-07-21"
   },
-  "manualURL": "http://adjmedia.s3-website-eu-west-1.amazonaws.com/manuals/boom_box_fx2.pdf",
+  "links": {
+    "manual": ["http://adjmedia.s3-website-eu-west-1.amazonaws.com/manuals/boom_box_fx2.pdf"]
+  },
   "physical": {
     "dimensions": [634, 319, 232],
     "weight": 8,
@@ -20,277 +22,336 @@
   },
   "availableChannels": {
     "Show mode": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 69],
-          "name": "No function"
+          "dmxRange": [0, 69],
+          "type": "NoFunction"
         },
         {
-          "range": [70, 79],
-          "name": "Show 1"
+          "dmxRange": [70, 79],
+          "type": "Effect",
+          "effectName": "Show 1"
         },
         {
-          "range": [80, 89],
-          "name": "Show 2"
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "effectName": "Show 2"
         },
         {
-          "range": [90, 99],
-          "name": "Show 3"
+          "dmxRange": [90, 99],
+          "type": "Effect",
+          "effectName": "Show 3"
         },
         {
-          "range": [100, 109],
-          "name": "Show 4"
+          "dmxRange": [100, 109],
+          "type": "Effect",
+          "effectName": "Show 4"
         },
         {
-          "range": [110, 119],
-          "name": "Show 5"
+          "dmxRange": [110, 119],
+          "type": "Effect",
+          "effectName": "Show 5"
         },
         {
-          "range": [120, 129],
-          "name": "Show 6"
+          "dmxRange": [120, 129],
+          "type": "Effect",
+          "effectName": "Show 6"
         },
         {
-          "range": [130, 139],
-          "name": "Show 7"
+          "dmxRange": [130, 139],
+          "type": "Effect",
+          "effectName": "Show 7"
         },
         {
-          "range": [140, 209],
-          "name": "Show 8"
+          "dmxRange": [140, 209],
+          "type": "Effect",
+          "effectName": "Show 8"
         },
         {
-          "range": [210, 249],
-          "name": "Show 9"
+          "dmxRange": [210, 249],
+          "type": "Effect",
+          "effectName": "Show 9"
         },
         {
-          "range": [250, 255],
-          "name": "Show 0"
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Show 0"
         }
       ]
     },
     "Show speed": {
-      "type": "Speed"
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Special Functions": {
-      "type": "Maintenance",
       "capabilities": [
         {
-          "range": [0, 139],
-          "name": "No function"
+          "dmxRange": [0, 139],
+          "type": "NoFunction"
         },
         {
-          "range": [140, 209],
-          "name": "Reset all"
+          "dmxRange": [140, 209],
+          "type": "Maintenance",
+          "comment": "Reset all"
         },
         {
-          "range": [210, 249],
-          "name": "No function"
+          "dmxRange": [210, 249],
+          "type": "NoFunction"
         },
         {
-          "range": [250, 255],
-          "name": "Sound active"
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound active",
+          "soundControlled": true
         }
       ]
     },
     "Center LED": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Blackout",
-          "color": "#000000"
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
         },
         {
-          "range": [10, 255],
-          "name": "Color Macros"
+          "dmxRange": [10, 255],
+          "type": "ColorPreset",
+          "comment": "Color Macros"
         }
       ]
     },
     "Red Laser": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "Closed"
+          "dmxRange": [0, 127],
+          "type": "NoFunction",
+          "comment": "Closed"
         },
         {
-          "range": [128, 255],
-          "name": "Open"
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Open"
         }
       ]
     },
     "Green Laser": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "Closed"
+          "dmxRange": [0, 127],
+          "type": "NoFunction",
+          "comment": "Closed"
         },
         {
-          "range": [128, 255],
-          "name": "Open"
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Open"
         }
       ]
     },
     "Laser Patterns": {
-      "type": "Effect"
+      "capability": {
+        "type": "Effect",
+        "effectName": "Laser patterns"
+      }
     },
     "Red Beam": {
-      "type": "Single Color",
-      "color": "Red"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green Beam": {
-      "type": "Single Color",
-      "color": "Green"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue Beam": {
-      "type": "Single Color",
-      "color": "Blue"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White Beam": {
-      "type": "Single Color",
-      "color": "White"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "Beam Strobe": {
-      "type": "Strobe",
       "defaultValue": 255,
       "capabilities": [
         {
-          "range": [0, 7],
-          "name": "Closed"
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [8, 15],
-          "name": "Open"
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [16, 131],
-          "name": "Strobe slow-fast"
+          "dmxRange": [16, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [132, 139],
-          "name": "Open"
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [140, 181],
-          "name": "Fast close / Slow open"
+          "dmxRange": [140, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp"
         },
         {
-          "range": [182, 189],
-          "name": "Open"
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [190, 231],
-          "name": "Fast open / Slow close"
+          "dmxRange": [190, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown"
         },
         {
-          "range": [232, 239],
-          "name": "Open"
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [240, 247],
-          "name": "Random"
+          "dmxRange": [240, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
         },
         {
-          "range": [248, 255],
-          "name": "Open"
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
     "Beam Rotation": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "Rotation indexing"
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "comment": "indexing",
+          "angleStart": "0%",
+          "angleEnd": "100%"
         },
         {
-          "range": [128, 189],
-          "name": "Rotating CW slow-fast"
+          "dmxRange": [128, 189],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         },
         {
-          "range": [190, 193],
-          "name": "Stop"
+          "dmxRange": [190, 193],
+          "type": "Rotation",
+          "speed": "stop"
         },
         {
-          "range": [194, 255],
-          "name": "Rotating CCW fast-slow"
+          "dmxRange": [194, 255],
+          "type": "Rotation",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
         }
       ]
     },
     "Beam Dimmer": {
-      "type": "Intensity"
+      "capability": {
+        "type": "Intensity"
+      }
     },
-    "Red Gobo": {
-      "type": "Gobo",
+    "Red Gobo Effect": {
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Closed"
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Closed"
         },
         {
-          "range": [10, 255],
-          "name": "Open"
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "effectName": "Open"
         }
       ]
     },
-    "Green Gobo": {
-      "type": "Gobo",
+    "Green Gobo Effect": {
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Closed"
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Closed"
         },
         {
-          "range": [10, 255],
-          "name": "Open"
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "effectName": "Open"
         }
       ]
     },
-    "Blue Gobo": {
-      "type": "Gobo",
+    "Blue Gobo Effect": {
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Closed"
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Closed"
         },
         {
-          "range": [10, 255],
-          "name": "Open"
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "effectName": "Open"
         }
       ]
     },
-    "White Gobo": {
-      "type": "Gobo",
+    "White Gobo Effect": {
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Closed"
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Closed"
         },
         {
-          "range": [10, 255],
-          "name": "Open"
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "effectName": "Open"
         }
       ]
     },
     "Gobo Rotation": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 127],
-          "name": "Rotation indexing"
+          "dmxRange": [0, 127],
+          "type": "GoboStencilRotation",
+          "comment": "indexing",
+          "angleStart": "0%",
+          "angleEnd": "100%"
         },
         {
-          "range": [128, 189],
-          "name": "Rotating CW slow-fast"
+          "dmxRange": [128, 189],
+          "type": "GoboStencilRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         },
         {
-          "range": [190, 193],
-          "name": "Stop"
+          "dmxRange": [190, 193],
+          "type": "GoboStencilRotation",
+          "speed": "stop"
         },
         {
-          "range": [194, 255],
-          "name": "Rotating CCW fast-slow"
+          "dmxRange": [194, 255],
+          "type": "GoboStencilRotation",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
         }
       ]
     }
@@ -320,10 +381,10 @@
         "Beam Strobe",
         "Beam Dimmer",
         "Beam Rotation",
-        "Red Gobo",
-        "Green Gobo",
-        "Blue Gobo",
-        "White Gobo",
+        "Red Gobo Effect",
+        "Green Gobo Effect",
+        "Blue Gobo Effect",
+        "White Gobo Effect",
         "Gobo Rotation",
         "Show mode",
         "Show speed",

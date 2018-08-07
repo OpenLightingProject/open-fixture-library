@@ -1,13 +1,15 @@
 {
-  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Thunder Wash 100 W",
   "shortName": "CLTW100W",
   "categories": ["Strobe", "Blinder"],
-  "manualURL": "http://adamhall.invaliddomain.de/out/media/downloads/MARKEN/CAMEO/CLTW100W/CLTW100W_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf",
+  "links": {
+    "manual": ["http://adamhall.invaliddomain.de/out/media/downloads/MARKEN/CAMEO/CLTW100W/CLTW100W_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf"]
+  },
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2017-02-24",
-    "lastModifyDate": "2017-03-09"
+    "lastModifyDate": "2018-07-21"
   },
   "physical": {
     "dimensions": [310, 70, 70],
@@ -27,119 +29,153 @@
   "availableChannels": {
     "strobe1": {
       "name": "Strobe",
-      "type": "Strobe",
       "highlightValue": 220,
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "Strobe closed"
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [11, 255],
-          "name": "Strobe 0Hz-30Hz",
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz",
           "menuClick": "center"
         }
       ]
     },
     "strobe2": {
       "name": "Strobe",
-      "type": "Strobe",
       "highlightValue": 220,
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "Strobe open"
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [6, 10],
-          "name": "Strobe closed"
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [11, 250],
-          "name": "Strobe 0Hz-30Hz",
+          "dmxRange": [11, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz",
           "menuClick": "center"
         },
         {
-          "range": [251, 255],
-          "name": "Strobe open",
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
           "menuClick": "hidden"
         }
       ]
     },
     "strobe3": {
       "name": "Strobe",
-      "type": "Strobe",
       "highlightValue": 220,
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "Strobe open"
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [6, 10],
-          "name": "Strobe closed"
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [11, 33],
-          "name": "Puls random slow-fast",
+          "dmxRange": [11, 33],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true,
           "menuClick": "center"
         },
         {
-          "range": [34, 56],
-          "name": "Ramp up random slow-fast",
+          "dmxRange": [34, 56],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true,
           "menuClick": "center"
         },
         {
-          "range": [57, 79],
-          "name": "Ramp down random slow-fast",
+          "dmxRange": [57, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true,
           "menuClick": "center"
         },
         {
-          "range": [80, 102],
-          "name": "Random Strobe Effect slow-fast",
+          "dmxRange": [80, 102],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true,
           "menuClick": "center"
         },
         {
-          "range": [103, 127],
-          "name": "Strobe Break Effect 5s-1s",
+          "dmxRange": [103, 127],
+          "type": "ShutterStrobe",
+          "comment": "Break Effect",
+          "shutterEffect": "Strobe",
+          "durationStart": "5s",
+          "durationEnd": "1s",
           "menuClick": "center"
         },
         {
-          "range": [128, 250],
-          "name": "Strobe 0Hz-30Hz",
+          "dmxRange": [128, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz",
           "menuClick": "center"
         },
         {
-          "range": [251, 255],
-          "name": "Strobe open",
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
           "menuClick": "hidden"
         }
       ]
     },
     "Dimmer": {
-      "type": "Intensity",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Flash Duration": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "0-512ms"
-        }
-      ]
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "0ms",
+        "durationEnd": "512ms"
+      }
     },
     "Sound Control": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 5],
-          "name": "Sound Control Off"
+          "dmxRange": [0, 5],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "off"
         },
         {
-          "range": [6, 255],
-          "name": "Mic Sensitivity Low-High",
+          "dmxRange": [6, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
           "menuClick": "center"
         }
       ]

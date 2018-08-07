@@ -1,0 +1,231 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/definitions.json",
+
+  "$comment": "This file is used by another schema file and should not be used directly as a JSON schema.",
+
+  "nonEmptyString": {
+    "type": "string",
+    "pattern": "^[^\n]+$"
+  },
+  "noVariablesString": {
+    "type": "string",
+    "pattern": "^[^$\n]+$"
+  },
+  "variablePixelKeyString": {
+    "type": "string",
+    "pattern": "\\$pixelKey"
+  },
+  "nonEmptyMultilineString": {
+    "type": "string",
+    "minLength": 1
+  },
+  "modeNameString": {
+    "allOf": [
+      { "$ref": "#/nonEmptyString" },
+      { "pattern": "^((?!mode)(?!Mode).)*$" }
+    ]
+  },
+  "urlString": {
+    "type": "string",
+    "pattern": "^(ftp|http|https)://[^ \"]+$"
+  },
+  "urlArray": {
+    "type": "array",
+    "minItems": 1,
+    "uniqueItems": true,
+    "items": { "$ref": "#/urlString" }
+  },
+  "isoDateString": {
+    "type": "string",
+    "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+  },
+  "colorString": {
+    "type": "string",
+    "pattern": "^#[0-9a-f]{6}$",
+    "format": "color-hex"
+  },
+  "dmxValue": {
+    "type": "integer",
+    "minimum": 0,
+    "$comment": "maximum depends on how many fine channels there are (255 if none, 65535 if one, etc.)"
+  },
+  "dimensionsXYZ": {
+    "$comment": "width, height, depth (in mm)",
+    "type": "array",
+    "minItems": 3,
+    "maxItems": 3,
+    "items": {
+      "type": "number",
+      "minimum": 0
+    }
+  },
+  "effectPreset": {
+    "enum": [
+      "ColorJump",
+      "ColorFade"
+    ]
+  },
+
+  "units": {
+    "number": {
+      "type": "number"
+    },
+    "nonNegativeNumber": {
+      "type": "number",
+      "minimum": 0
+    },
+    "positiveInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "exclusiveMinimum": 0
+    },
+    "percent": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?%$"
+    },
+    "hertz": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?Hz$"
+    },
+    "beatsPerMinute": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?bpm$"
+    },
+    "roundsPerMinute": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?rpm$"
+    },
+    "seconds": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?s$"
+    },
+    "milliSeconds": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?ms$"
+    },
+    "meters": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?m$"
+    },
+    "lumens": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?lm$"
+    },
+    "kelvin": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?K$"
+    },
+    "volumePerMinute": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?m\\^3/min$"
+    },
+    "degrees": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?deg$"
+    }
+  },
+
+  "entities": {
+    "speed": {
+      "oneOf": [
+        { "$ref": "#/units/hertz" },
+        { "$ref": "#/units/beatsPerMinute" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["fast", "slow", "stop", "slow reverse", "fast reverse"] }
+      ]
+    },
+    "rotationSpeed": {
+      "oneOf": [
+        { "$ref": "#/units/hertz" },
+        { "$ref": "#/units/roundsPerMinute" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["fast CW", "slow CW", "stop", "slow CCW", "fast CCW"] }
+      ]
+    },
+    "time": {
+      "oneOf": [
+        { "$ref": "#/units/seconds" },
+        { "$ref": "#/units/milliSeconds" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["instant", "short", "long"] }
+      ]
+    },
+    "distance": {
+      "oneOf": [
+        { "$ref": "#/units/meters" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["near", "far"] }
+      ]
+    },
+    "brightness": {
+      "oneOf": [
+        { "$ref": "#/units/lumens" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["off", "dark", "bright"] }
+      ]
+    },
+    "colorTemperature": {
+      "oneOf": [
+        { "$ref": "#/units/kelvin" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["warm", "CTO", "default", "cold", "CTB"] }
+      ]
+    },
+    "fogOutput": {
+      "oneOf": [
+        { "$ref": "#/units/volumePerMinute" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["off", "weak", "strong"] }
+      ]
+    },
+    "rotationAngle": {
+      "oneOf": [
+        { "$ref": "#/units/degrees" },
+        { "$ref": "#/units/percent" }
+      ]
+    },
+    "beamAngle": {
+      "oneOf": [
+        { "$ref": "#/units/degrees" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["closed", "narrow", "wide"] }
+      ]
+    },
+    "swingAngle": {
+      "oneOf": [
+        { "$ref": "#/units/degrees" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["closed", "narrow", "wide"] }
+      ]
+    },
+    "parameter": {
+      "oneOf": [
+        { "$ref": "#/units/nonNegativeNumber" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["off", "low", "high", "slow", "fast", "small", "big", "instant", "short", "long"] }
+      ]
+    },
+    "index": {
+      "$ref": "#/units/nonNegativeNumber"
+    },
+    "percent": {
+      "oneOf": [
+        { "$ref": "#/units/percent" },
+        { "enum": ["off", "low", "high"] }
+      ]
+    },
+    "insertion": {
+      "oneOf": [
+        { "$ref": "#/units/percent" },
+        { "enum": ["out", "in"] }
+      ]
+    },
+    "irisPercent": {
+      "oneOf": [
+        { "$ref": "#/units/percent" },
+        { "enum": ["closed", "open"] }
+      ]
+    }
+  }
+}

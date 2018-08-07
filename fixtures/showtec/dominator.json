@@ -1,15 +1,17 @@
 {
-  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Dominator",
   "shortName": "ShowtecDominator",
-  "categories": ["Laser"],
+  "categories": ["Laser", "Color Changer"],
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2017-11-17",
-    "lastModifyDate": "2017-11-17"
+    "lastModifyDate": "2018-07-21"
   },
   "comment": "Version 1 and 2's DMX protocols are identical, only their physical data differs",
-  "manualURL": "https://www.highlite.nl/silver.download/Documents@extern@Manuals/43153_MANUAL_GB_V2.pdf",
+  "links": {
+    "manual": ["https://www.highlite.nl/silver.download/Documents@extern@Manuals/43153_MANUAL_GB_V2.pdf"]
+  },
   "physical": {
     "dimensions": [298, 310, 225],
     "weight": 4.06,
@@ -21,415 +23,533 @@
   },
   "availableChannels": {
     "Programs": {
-      "type": "Effect",
       "defaultValue": 255,
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Blackout"
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [10, 24],
-          "name": "Auto 1 (Strobe, Derby, Laser)"
+          "dmxRange": [10, 24],
+          "type": "Effect",
+          "effectName": "Auto 1 (Strobe, Derby, Laser)"
         },
         {
-          "range": [25, 39],
-          "name": "Auto 2 (Derby, Laser)"
+          "dmxRange": [25, 39],
+          "type": "Effect",
+          "effectName": "Auto 2 (Derby, Laser)"
         },
         {
-          "range": [40, 54],
-          "name": "Auto 3 (Strobe, Laser)"
+          "dmxRange": [40, 54],
+          "type": "Effect",
+          "effectName": "Auto 3 (Strobe, Laser)"
         },
         {
-          "range": [55, 69],
-          "name": "Auto 4 (Derby, Laser)"
+          "dmxRange": [55, 69],
+          "type": "Effect",
+          "effectName": "Auto 4 (Derby, Laser)"
         },
         {
-          "range": [70, 84],
-          "name": "Auto 5 (Derby)"
+          "dmxRange": [70, 84],
+          "type": "Effect",
+          "effectName": "Auto 5 (Derby)"
         },
         {
-          "range": [85, 99],
-          "name": "Auto 6 (Laser)"
+          "dmxRange": [85, 99],
+          "type": "Effect",
+          "effectName": "Auto 6 (Laser)"
         },
         {
-          "range": [100, 114],
-          "name": "Auto 7 (Strobe)"
+          "dmxRange": [100, 114],
+          "type": "Effect",
+          "effectName": "Auto 7 (Strobe)"
         },
         {
-          "range": [115, 129],
-          "name": "Sound 1 (Strobe, Derby, Laser)"
+          "dmxRange": [115, 129],
+          "type": "Effect",
+          "effectName": "Sound 1 (Strobe, Derby, Laser)",
+          "soundControlled": true
         },
         {
-          "range": [130, 144],
-          "name": "Sound 2 (Derby, Laser)"
+          "dmxRange": [130, 144],
+          "type": "Effect",
+          "effectName": "Sound 2 (Derby, Laser)",
+          "soundControlled": true
         },
         {
-          "range": [145, 159],
-          "name": "Sound 3 (Strobe, Laser)"
+          "dmxRange": [145, 159],
+          "type": "Effect",
+          "effectName": "Sound 3 (Strobe, Laser)",
+          "soundControlled": true
         },
         {
-          "range": [160, 174],
-          "name": "Sound 4 (Derby, Laser)"
+          "dmxRange": [160, 174],
+          "type": "Effect",
+          "effectName": "Sound 4 (Derby, Laser)",
+          "soundControlled": true
         },
         {
-          "range": [175, 189],
-          "name": "Sound 5 (Derby)"
+          "dmxRange": [175, 189],
+          "type": "Effect",
+          "effectName": "Sound 5 (Derby)",
+          "soundControlled": true
         },
         {
-          "range": [190, 204],
-          "name": "Sound 6 (Laser)"
+          "dmxRange": [190, 204],
+          "type": "Effect",
+          "effectName": "Sound 6 (Laser)",
+          "soundControlled": true
         },
         {
-          "range": [205, 219],
-          "name": "Sound 7 (Strobe)"
+          "dmxRange": [205, 219],
+          "type": "Effect",
+          "effectName": "Sound 7 (Strobe)",
+          "soundControlled": true
         },
         {
-          "range": [220, 255],
-          "name": "DMX mode"
+          "dmxRange": [220, 255],
+          "type": "NoFunction",
+          "comment": "DMX mode"
         }
       ]
     },
     "Derby Colors": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Blackout",
-          "color": "#000000"
+          "dmxRange": [0, 9],
+          "type": "ColorPreset",
+          "colors": ["#000000"],
+          "comment": "Blackout"
         },
         {
-          "range": [10, 14],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [10, 14],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [15, 19],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [15, 19],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [20, 24],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [20, 24],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
-          "range": [25, 29],
-          "name": "Amber",
-          "color": "#ffaa00"
+          "dmxRange": [25, 29],
+          "type": "ColorPreset",
+          "colors": ["#ffbf00"],
+          "comment": "Amber"
         },
         {
-          "range": [30, 34],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [30, 34],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
-          "range": [35, 39],
-          "name": "White + Red",
-          "color": "#ffffff",
-          "color2": "#ff0000"
+          "dmxRange": [35, 39],
+          "type": "ColorPreset",
+          "colors": ["#ffffff", "#ff0000"],
+          "comment": "White + Red"
         },
         {
-          "range": [40, 44],
-          "name": "Red + Green",
-          "color": "#ff0000",
-          "color2": "#00ff00"
+          "dmxRange": [40, 44],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Red + Green"
         },
         {
-          "range": [45, 49],
-          "name": "Green + Blue",
-          "color": "#00ff00",
-          "color2": "#0000ff"
+          "dmxRange": [45, 49],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#0000ff"],
+          "comment": "Green + Blue"
         },
         {
-          "range": [50, 54],
-          "name": "Blue + Amber",
-          "color": "#0000ff",
-          "color2": "#ffaa00"
+          "dmxRange": [50, 54],
+          "type": "ColorPreset",
+          "colors": ["#0000ff", "#ffbf00"],
+          "comment": "Blue + Amber"
         },
         {
-          "range": [55, 59],
-          "name": "Amber + White",
-          "color": "#ffaa00",
-          "color2": "#ffffff"
+          "dmxRange": [55, 59],
+          "type": "ColorPreset",
+          "colors": ["#ffbf00", "#ffffff"],
+          "comment": "Amber + White"
         },
         {
-          "range": [60, 64],
-          "name": "White + Green",
-          "color": "#ffffff",
-          "color2": "#00ff00"
+          "dmxRange": [60, 64],
+          "type": "ColorPreset",
+          "colors": ["#ffffff", "#00ff00"],
+          "comment": "White + Green"
         },
         {
-          "range": [65, 69],
-          "name": "Green + Amber",
-          "color": "#00ff00",
-          "color2": "#ffaa00"
+          "dmxRange": [65, 69],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#ffbf00"],
+          "comment": "Green + Amber"
         },
         {
-          "range": [70, 74],
-          "name": "Amber + Red",
-          "color": "#ffaa00",
-          "color2": "#ff0000"
+          "dmxRange": [70, 74],
+          "type": "ColorPreset",
+          "colors": ["#ffbf00", "#ff0000"],
+          "comment": "Amber + Red"
         },
         {
-          "range": [75, 79],
-          "name": "Red + Blue",
-          "color": "#ff0000",
-          "color2": "#0000ff"
+          "dmxRange": [75, 79],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#0000ff"],
+          "comment": "Red + Blue"
         },
         {
-          "range": [80, 84],
-          "name": "Blue + White",
-          "color": "#0000ff",
-          "color2": "#ffffff"
+          "dmxRange": [80, 84],
+          "type": "ColorPreset",
+          "colors": ["#0000ff", "#ffffff"],
+          "comment": "Blue + White"
         },
         {
-          "range": [85, 89],
-          "name": "Red + Green + Blue"
+          "dmxRange": [85, 89],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"],
+          "comment": "Red + Green + Blue"
         },
         {
-          "range": [90, 94],
-          "name": "Red + Green + Amber"
+          "dmxRange": [90, 94],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#ffbf00"],
+          "comment": "Red + Green + Amber"
         },
         {
-          "range": [95, 99],
-          "name": "Red + Green + White"
+          "dmxRange": [95, 99],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#ffffff"],
+          "comment": "Red + Green + White"
         },
         {
-          "range": [100, 104],
-          "name": "Red + Amber + Blue"
+          "dmxRange": [100, 104],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#ffbf00", "#0000ff"],
+          "comment": "Red + Amber + Blue"
         },
         {
-          "range": [105, 109],
-          "name": "Red + Blue + White"
+          "dmxRange": [105, 109],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#0000ff", "#ffffff"],
+          "comment": "Red + Blue + White"
         },
         {
-          "range": [110, 114],
-          "name": "Red + Amber + White"
+          "dmxRange": [110, 114],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#ffbf00", "#ffffff"],
+          "comment": "Red + Amber + White"
         },
         {
-          "range": [115, 119],
-          "name": "Amber + Green + Blue"
+          "dmxRange": [115, 119],
+          "type": "ColorPreset",
+          "colors": ["#ffbf00", "#00ff00", "#0000ff"],
+          "comment": "Amber + Green + Blue"
         },
         {
-          "range": [120, 124],
-          "name": "Green + Blue + White"
+          "dmxRange": [120, 124],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#0000ff", "#ffffff"],
+          "comment": "Green + Blue + White"
         },
         {
-          "range": [125, 129],
-          "name": "Amber + Green + White"
+          "dmxRange": [125, 129],
+          "type": "ColorPreset",
+          "colors": ["#ffbf00", "#00ff00", "#ffffff"],
+          "comment": "Amber + Green + White"
         },
         {
-          "range": [130, 134],
-          "name": "Amber + White + Blue"
+          "dmxRange": [130, 134],
+          "type": "ColorPreset",
+          "colors": ["#ffbf00", "#ffffff", "#0000ff"],
+          "comment": "Amber + White + Blue"
         },
         {
-          "range": [135, 139],
-          "name": "Red + Green + Blue + Amber"
+          "dmxRange": [135, 139],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffbf00"],
+          "comment": "Red + Green + Blue + Amber"
         },
         {
-          "range": [140, 144],
-          "name": "Red + Green + Blue + White"
+          "dmxRange": [140, 144],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff"],
+          "comment": "Red + Green + Blue + White"
         },
         {
-          "range": [145, 149],
-          "name": "Green + Blue + White + Amber"
+          "dmxRange": [145, 149],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#0000ff", "#ffffff", "#ffbf00"],
+          "comment": "Green + Blue + White + Amber"
         },
         {
-          "range": [150, 154],
-          "name": "Red + Green + White + Amber"
+          "dmxRange": [150, 154],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#ffffff", "#ffbf00"],
+          "comment": "Red + Green + White + Amber"
         },
         {
-          "range": [155, 159],
-          "name": "Red + Blue + White + Amber"
+          "dmxRange": [155, 159],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#0000ff", "#ffffff", "#ffbf00"],
+          "comment": "Red + Blue + White + Amber"
         },
         {
-          "range": [160, 164],
-          "name": "Red + Green + Blue + White + Amber"
+          "dmxRange": [160, 164],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff", "#ffbf00"],
+          "comment": "Red + Green + Blue + White + Amber"
         },
         {
-          "range": [165, 209],
-          "name": "Automatic (single color)"
+          "dmxRange": [165, 209],
+          "type": "Effect",
+          "effectName": "Automatic (single color)"
         },
         {
-          "range": [210, 255],
-          "name": "Automatic (two colors)"
+          "dmxRange": [210, 255],
+          "type": "Effect",
+          "effectName": "Automatic (two colors)"
         }
       ]
     },
     "Derby Speed": {
-      "type": "Speed"
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "LED Strobe": {
-      "type": "Strobe",
       "capabilities": [
         {
-          "range": [0, 6],
-          "name": "Close"
+          "dmxRange": [0, 6],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [7, 254],
-          "name": "Strobe 30-0Hz"
+          "dmxRange": [7, 254],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "30Hz",
+          "speedEnd": "0Hz"
         },
         {
-          "range": [255, 255],
-          "name": "Sound activated strobe"
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
         }
       ]
     },
     "LED Programs": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Blackout"
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
         },
         {
-          "range": [10, 19],
-          "name": "Program 1 fast-slow"
+          "dmxRange": [10, 19],
+          "type": "Effect",
+          "effectName": "Program 1",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [20, 29],
-          "name": "Program 2 fast-slow"
+          "dmxRange": [20, 29],
+          "type": "Effect",
+          "effectName": "Program 2",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [30, 39],
-          "name": "Program 3 fast-slow"
+          "dmxRange": [30, 39],
+          "type": "Effect",
+          "effectName": "Program 3",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [40, 49],
-          "name": "Program 4 fast-slow"
+          "dmxRange": [40, 49],
+          "type": "Effect",
+          "effectName": "Program 4",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [50, 59],
-          "name": "Program 5 fast-slow"
+          "dmxRange": [50, 59],
+          "type": "Effect",
+          "effectName": "Program 5",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [60, 69],
-          "name": "Program 6 fast-slow"
+          "dmxRange": [60, 69],
+          "type": "Effect",
+          "effectName": "Program 6",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [70, 79],
-          "name": "Program 7 fast-slow"
+          "dmxRange": [70, 79],
+          "type": "Effect",
+          "effectName": "Program 7",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [80, 89],
-          "name": "Program 8 fast-slow"
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "effectName": "Program 8",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [90, 99],
-          "name": "Program 9 fast-slow"
+          "dmxRange": [90, 99],
+          "type": "Effect",
+          "effectName": "Program 9",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [100, 109],
-          "name": "Program 10 fast-slow"
+          "dmxRange": [100, 109],
+          "type": "Effect",
+          "effectName": "Program 10",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [110, 255],
-          "name": "Full on"
+          "dmxRange": [110, 255],
+          "type": "Effect",
+          "effectName": "Full on"
         }
       ]
     },
     "Laser": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Blackout",
-          "color": "#000000"
+          "dmxRange": [0, 9],
+          "type": "ColorPreset",
+          "colors": ["#000000"],
+          "comment": "Blackout"
         },
         {
-          "range": [10, 49],
-          "name": "Red laser",
-          "color": "#ff0000"
+          "dmxRange": [10, 49],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red laser"
         },
         {
-          "range": [50, 89],
-          "name": "Green laser",
-          "color": "#00ff00"
+          "dmxRange": [50, 89],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green laser"
         },
         {
-          "range": [90, 129],
-          "name": "Red + Green alternating",
-          "color": "#ff0000",
-          "color2": "#00ff00"
+          "dmxRange": [90, 129],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Red + Green alternating"
         },
         {
-          "range": [130, 169],
-          "name": "Red + Green Strobe",
-          "color": "#ff0000",
-          "color2": "#00ff00"
+          "dmxRange": [130, 169],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Red + Green Strobe"
         },
         {
-          "range": [170, 209],
-          "name": "Red Strobe + Green",
-          "color": "#ff0000",
-          "color2": "#00ff00"
+          "dmxRange": [170, 209],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Red Strobe + Green"
         },
         {
-          "range": [210, 255],
-          "name": "Red Strobe + Green Strobe",
-          "color": "#ff0000",
-          "color2": "#00ff00"
+          "dmxRange": [210, 255],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "Red Strobe + Green Strobe"
         }
       ]
     },
     "Laser Strobe": {
-      "type": "Strobe",
       "capabilities": [
         {
-          "range": [0, 4],
-          "name": "Blackout"
+          "dmxRange": [0, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "helpWanted": "Is this really a blackout, or rather a 'No strobe' capability?"
         },
         {
-          "range": [5, 254],
-          "name": "Strobe 0-30Hz"
+          "dmxRange": [5, 254],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz"
         },
         {
-          "range": [255, 255],
-          "name": "Sound activated strobe"
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
         }
       ]
     },
     "Rotating Derby": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 4],
-          "name": "Stop"
+          "dmxRange": [0, 4],
+          "type": "Rotation",
+          "speed": "stop"
         },
         {
-          "range": [5, 127],
-          "name": "Rotate CW slow-fast"
+          "dmxRange": [5, 127],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         },
         {
-          "range": [128, 133],
-          "name": "Stop"
+          "dmxRange": [128, 133],
+          "type": "Rotation",
+          "speed": "stop"
         },
         {
-          "range": [134, 255],
-          "name": "Rotate CCW slow-fast"
+          "dmxRange": [134, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
     "Rotating Laser": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 4],
-          "name": "Stop"
+          "dmxRange": [0, 4],
+          "type": "Rotation",
+          "speed": "stop"
         },
         {
-          "range": [5, 127],
-          "name": "Rotate CW slow-fast"
+          "dmxRange": [5, 127],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         },
         {
-          "range": [128, 133],
-          "name": "Stop"
+          "dmxRange": [128, 133],
+          "type": "Rotation",
+          "speed": "stop"
         },
         {
-          "range": [134, 255],
-          "name": "Rotate CCW slow-fast"
+          "dmxRange": [134, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     }

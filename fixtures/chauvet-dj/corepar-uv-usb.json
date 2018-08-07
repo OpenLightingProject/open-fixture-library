@@ -1,0 +1,192 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "COREpar UV USB",
+  "shortName": "ChauvetCOREparUV",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-03-15",
+    "lastModifyDate": "2018-07-21"
+  },
+  "links": {
+    "manual": ["https://www.chauvetdj.com/wp-content/uploads/2015/12/COREpar_UV_USB_UM_Rev1_WO-1.pdf"]
+  },
+  "physical": {
+    "dimensions": [200, 253, 139],
+    "weight": 2.1,
+    "power": 65,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "70W COB LED"
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [50, 100]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "UV": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "off"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [32, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [96, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [160, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [224, 240],
+          "type": "Effect",
+          "effectName": "Sound mode 1",
+          "soundControlled": true,
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Effect",
+          "effectName": "Sound mode 2",
+          "soundControlled": true,
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction",
+          "comment": "Default dimmer speed"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Maintenance",
+          "comment": "Dimmer speed",
+          "parameter": "off"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Maintenance",
+          "comment": "Dimmer speed",
+          "parameter": "fast"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Maintenance",
+          "comment": "Dimmer speed",
+          "parameter": "50%"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Maintenance",
+          "comment": "Dimmer speed",
+          "parameter": "slow"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "UV",
+        "Strobe / Program Speed / Sound Sensitivity",
+        "Programs",
+        "Dimmer",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "UV"
+      ]
+    }
+  ]
+}

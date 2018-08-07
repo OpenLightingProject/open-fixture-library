@@ -1,14 +1,16 @@
 {
-  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "SlimPAR Pro W",
   "shortName": "ChauvetSlimPARProW",
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2018-01-01",
-    "lastModifyDate": "2018-01-01"
+    "lastModifyDate": "2018-07-21"
   },
-  "manualURL": "https://www.chauvetdj.eu/wp-content/uploads/2016/01/SlimPAR_Pro_W_USB_UM_Rev2_WO-1.pdf",
+  "links": {
+    "manual": ["https://www.chauvetdj.eu/wp-content/uploads/2016/01/SlimPAR_Pro_W_USB_UM_Rev2_WO-1.pdf"]
+  },
   "physical": {
     "dimensions": [253, 290, 98],
     "weight": 3.2,
@@ -23,115 +25,135 @@
   },
   "availableChannels": {
     "Dimmer": {
-      "type": "Intensity",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Warm White": {
-      "type": "Single Color",
-      "color": "White",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "Cool White": {
-      "type": "Single Color",
-      "color": "White",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "Amber": {
-      "type": "Single Color",
-      "color": "Amber",
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
     },
     "Color Macros": {
-      "type": "Multi-Color",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "No function"
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
         },
         {
-          "range": [16, 255],
-          "name": "Color macros"
+          "dmxRange": [16, 255],
+          "type": "ColorPreset",
+          "comment": "Color macros",
+          "helpWanted": "Which colors can be selected here?"
         }
       ]
     },
     "Strobe": {
-      "type": "Strobe",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "No function"
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
         },
         {
-          "range": [16, 255],
-          "name": "Strobe 0-31Hz"
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "31Hz"
         }
       ]
     },
     "Programs": {
-      "type": "Effect",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 31],
-          "name": "No function",
+          "dmxRange": [0, 31],
+          "type": "NoFunction",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
            }
         },
         {
-          "range": [32, 63],
-          "name": "Pulse 0-100%",
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
            }
         },
         {
-          "range": [64, 95],
-          "name": "Pulse 100-0%",
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
            }
         },
         {
-          "range": [96, 127],
-          "name": "Pulse 100-0-100%",
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
            }
         },
         {
-          "range": [128, 159],
-          "name": "Auto fade transition",
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectName": "Auto fade transition",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
            }
         },
         {
-          "range": [160, 191],
-          "name": "Auto snap transition (3-color)",
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectName": "Auto snap transition (3-color)",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
            }
         },
         {
-          "range": [192, 223],
-          "name": "Auto snap transition (7-color)",
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectName": "Auto snap transition (7-color)",
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Program Speed"
            }
         },
         {
-          "range": [224, 249],
-          "name": "Sound mode (3-color)",
+          "dmxRange": [224, 249],
+          "type": "Effect",
+          "effectName": "Sound mode (3-color)",
+          "soundControlled": true,
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Sound Sensitivity"
            }
         },
         {
-          "range": [250, 255],
-          "name": "Sound mode (7-color)",
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound mode (7-color)",
+          "soundControlled": true,
           "switchChannels": {
             "Program Speed / Sound Sensitivity": "Sound Sensitivity"
            }
@@ -139,49 +161,58 @@
       ]
     },
     "Program Speed": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Speed slow-fast"
-        }
-      ]
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Sound Sensitivity": {
-      "type": "Intensity",
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "Off"
+          "dmxRange": [0, 10],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "off"
         },
         {
-          "range": [11, 255],
-          "name": "Sensitivity low-high"
+          "dmxRange": [11, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
         }
       ]
     },
     "Dimmer Speed": {
-      "type": "Maintenance",
+      "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 51],
-          "name": "Default dimmer speed"
+          "dmxRange": [0, 51],
+          "type": "NoFunction",
+          "comment": "Default dimmer speed"
         },
         {
-          "range": [52, 101],
-          "name": "Dimmer speed mode off"
+          "dmxRange": [52, 101],
+          "type": "Maintenance",
+          "comment": "Dimmer speed",
+          "parameter": "off"
         },
         {
-          "range": [102, 152],
-          "name": "Dimmer speed 1 fast"
+          "dmxRange": [102, 152],
+          "type": "Maintenance",
+          "comment": "Dimmer speed",
+          "parameter": "fast"
         },
         {
-          "range": [153, 203],
-          "name": "Dimmer speed 2 medium"
+          "dmxRange": [153, 203],
+          "type": "Maintenance",
+          "comment": "Dimmer speed",
+          "parameter": "50%"
         },
         {
-          "range": [204, 255],
-          "name": "Dimmer speed 3 slow"
+          "dmxRange": [204, 255],
+          "type": "Maintenance",
+          "comment": "Dimmer speed",
+          "parameter": "slow"
         }
       ]
     }

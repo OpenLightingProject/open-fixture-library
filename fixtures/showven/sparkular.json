@@ -1,0 +1,138 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Sparkular",
+  "shortName": "Sparkular",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["Alejo Cervera"],
+    "createDate": "2018-06-13",
+    "lastModifyDate": "2018-07-21"
+  },
+  "links": {
+    "manual": ["http://en.showven.com/Download/Attachment?id=56423"]
+  },
+  "physical": {
+    "dimensions": [200, 215, 285],
+    "weight": 8.5,
+    "power": 365,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Fountain": {
+      "precedence": "HTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction",
+          "comment": "Fountain Off"
+        },
+        {
+          "dmxRange": [16, 39],
+          "type": "EffectParameter",
+          "parameter": 1,
+          "comment": "Height"
+        },
+        {
+          "dmxRange": [40, 63],
+          "type": "EffectParameter",
+          "parameter": 2,
+          "comment": "Height"
+        },
+        {
+          "dmxRange": [64, 87],
+          "type": "EffectParameter",
+          "parameter": 3,
+          "comment": "Height"
+        },
+        {
+          "dmxRange": [88, 111],
+          "type": "EffectParameter",
+          "parameter": 4,
+          "comment": "Height"
+        },
+        {
+          "dmxRange": [112, 135],
+          "type": "EffectParameter",
+          "parameter": 5,
+          "comment": "Height"
+        },
+        {
+          "dmxRange": [136, 159],
+          "type": "EffectParameter",
+          "parameter": 6,
+          "comment": "Height"
+        },
+        {
+          "dmxRange": [160, 183],
+          "type": "EffectParameter",
+          "parameter": 7,
+          "comment": "Height"
+        },
+        {
+          "dmxRange": [184, 207],
+          "type": "EffectParameter",
+          "parameter": 8,
+          "comment": "Height"
+        },
+        {
+          "dmxRange": [208, 231],
+          "type": "EffectParameter",
+          "parameter": 9,
+          "comment": "Height"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "EffectParameter",
+          "parameter": 10,
+          "comment": "Height"
+        }
+      ]
+    },
+    "Control": {
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Maintenance",
+          "comment": "Pre-Heat OFF"
+        },
+        {
+          "dmxRange": [11, 19],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [20, 40],
+          "type": "Maintenance",
+          "comment": "EMERGENCY STOP"
+        },
+        {
+          "dmxRange": [41, 59],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [60, 80],
+          "type": "Maintenance",
+          "comment": "Clear Material"
+        },
+        {
+          "dmxRange": [81, 239],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Maintenance",
+          "comment": "Pre-Heat ON"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Fountain",
+        "Control"
+      ]
+    }
+  ]
+}

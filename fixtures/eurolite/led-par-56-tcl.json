@@ -1,14 +1,16 @@
 {
-  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED PAR-56 TCL",
   "shortName": "PAR56",
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["Flo Edelmann", "Felix Edelmann"],
     "createDate": "2017-05-24",
-    "lastModifyDate": "2017-05-24"
+    "lastModifyDate": "2018-07-21"
   },
-  "manualURL": "http://media.steinigke.de/documents_t/51913611-MANUAL-1.00-de-en_00066247.pdf",
+  "links": {
+    "manual": ["http://media.steinigke.de/documents_t/51913611-MANUAL-1.00-de-en_00066247.pdf"]
+  },
   "physical": {
     "dimensions": [165, 205, 215],
     "weight": 1.5,
@@ -26,48 +28,58 @@
   },
   "availableChannels": {
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "Dimmer": {
-      "type": "Intensity",
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
-    "Strobe": {
-      "type": "Strobe",
+    "Shutter": {
       "highlightValue": 220,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "ON"
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
-          "range": [1, 5],
-          "name": "Music control"
+          "dmxRange": [1, 5],
+          "type": "Effect",
+          "effectName": "Music control",
+          "soundControlled": true
         },
         {
-          "range": [6, 10],
-          "name": "ON",
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
           "menuClick": "hidden"
         },
         {
-          "range": [11, 255],
-          "name": "Strobe 0-100%",
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
           "menuClick": "center"
         }
       ]
@@ -82,7 +94,7 @@
         "Green",
         "Blue",
         "Dimmer",
-        "Strobe"
+        "Shutter"
       ]
     },
     {

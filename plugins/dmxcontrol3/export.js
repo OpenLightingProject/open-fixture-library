@@ -2,20 +2,24 @@ const xmlbuilder = require(`xmlbuilder`);
 const sanitize = require(`sanitize-filename`);
 
 /* eslint-disable no-unused-vars */
-const Manufacturer = require(`../../lib/model/Manufacturer.js`);
-const Fixture = require(`../../lib/model/Fixture.js`);
-const Meta = require(`../../lib/model/Meta.js`);
-const Physical = require(`../../lib/model/Physical.js`);
-const Matrix = require(`../../lib/model/Matrix.js`);
-const Mode = require(`../../lib/model/Mode.js`);
-const MatrixChannel = require(`../../lib/model/MatrixChannel.js`);
-const AbstractChannel = require(`../../lib/model/AbstractChannel.js`);
-const Channel = require(`../../lib/model/Channel.js`);
-const FineChannel = require(`../../lib/model/FineChannel.js`);
-const SwitchingChannel = require(`../../lib/model/SwitchingChannel.js`);
-const NullChannel = require(`../../lib/model/NullChannel.js`);
-const Capability = require(`../../lib/model/Capability.js`);
-const Range = require(`../../lib/model/Range.js`);
+const {
+  AbstractChannel,
+  Capability,
+  Channel,
+  FineChannel,
+  Fixture,
+  Manufacturer,
+  Matrix,
+  MatrixChannel,
+  MatrixChannelReference,
+  Meta,
+  Mode,
+  NullChannel,
+  Physical,
+  Range,
+  SwitchingChannel,
+  TemplateChannel
+} = require(`../../lib/model.js`);
 /* eslint-enable no-unused-vars */
 
 module.exports.name = `DMXControl 3 (DDF3)`;

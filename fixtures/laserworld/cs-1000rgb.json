@@ -1,0 +1,109 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CS-1000RGB",
+  "categories": ["Laser", "Color Changer"],
+  "meta": {
+    "authors": ["Jo"],
+    "createDate": "2018-07-26",
+    "lastModifyDate": "2018-07-26"
+  },
+  "links": {
+    "manual": ["https://www.laserworld.com/en/support/downloads/download/79-laserworld-club-series/52-laserworld-manual-club-series-2016-02.html"]
+  },
+  "helpWanted": "Most information about the capabilities of the channels are missing.",
+  "physical": {
+    "dimensions": [220, 155, 145],
+    "weight": 3.15,
+    "power": 60,
+    "bulb": {
+      "type": "650nm / 532nm / 445nm RGB Laser diodes"
+    },
+    "focus": {
+      "type": "Fixed",
+      "panMax": 40,
+      "tiltMax": 40
+    }
+  },
+  "availableChannels": {
+    "Mode": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Pattern": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Circular Movement": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Y Rotation": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "X Rotation": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Horizontal Movement": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "40deg"
+      }
+    },
+    "Vertical Movement": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "40deg"
+      }
+    },
+    "Manual Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Pattern Buildup": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Dot Effect with Strobe": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Mode",
+        "Pattern",
+        "Circular Movement",
+        "Y Rotation",
+        "X Rotation",
+        "Horizontal Movement",
+        "Vertical Movement",
+        "Manual Zoom",
+        "Pattern Buildup",
+        "Dot Effect with Strobe",
+        "Color"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,399 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+
+  "version": "9.0.0",
+
+  "type": "object",
+  "properties": {
+    "name": {
+      "$comment": "unique in manufacturer",
+      "$ref": "definitions.json#/nonEmptyString"
+    },
+    "shortName": {
+      "$comment": "unique globally; if not set: use name",
+      "$ref": "definitions.json#/nonEmptyString"
+    },
+    "categories": {
+      "type": "array",
+      "$comment": "most important category first",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "Blinder",
+          "Color Changer",
+          "Dimmer",
+          "Effect",
+          "Fan",
+          "Flower",
+          "Hazer",
+          "Laser",
+          "Matrix",
+          "Moving Head",
+          "Scanner",
+          "Smoke",
+          "Strobe",
+          "Other"
+        ]
+      }
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "authors": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "definitions.json#/nonEmptyString" }
+        },
+        "createDate": { "$ref": "definitions.json#/isoDateString" },
+        "lastModifyDate": { "$ref": "definitions.json#/isoDateString" },
+        "importPlugin": {
+          "type": "object",
+          "properties": {
+            "plugin": { "$ref": "definitions.json#/nonEmptyString" },
+            "date": { "$ref": "definitions.json#/isoDateString" },
+            "comment": { "$ref": "definitions.json#/nonEmptyMultilineString" }
+          },
+          "required": ["plugin", "date"],
+          "additionalProperties": false
+        }
+      },
+      "required": ["authors", "createDate", "lastModifyDate"],
+      "additionalProperties": false
+    },
+    "comment": { "$ref": "definitions.json#/nonEmptyMultilineString" },
+    "links": {
+      "type": "object",
+      "properties": {
+        "manual": { "$ref": "definitions.json#/urlArray" },
+        "productPage": { "$ref": "definitions.json#/urlArray" },
+        "video": { "$ref": "definitions.json#/urlArray" },
+        "other": { "$ref": "definitions.json#/urlArray" }
+      },
+      "anyOf": [
+        { "required": ["manual"] },
+        { "required": ["productPage"] },
+        { "required": ["video"] },
+        { "required": ["other"] }
+      ],
+      "additionalProperties": false
+    },
+    "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
+    "rdm": {
+      "type": "object",
+      "properties": {
+        "modelId": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "softwareVersion": { "$ref": "definitions.json#/nonEmptyString" }
+      },
+      "required": ["modelId"],
+      "additionalProperties": false
+    },
+    "physical": {
+      "type": "object",
+      "minProperties": 1,
+      "properties": {
+        "dimensions": {
+          "$ref": "definitions.json#/dimensionsXYZ"
+        },
+        "weight": {
+          "$comment": "in kg",
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "power": {
+          "$comment": "in W",
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "DMXconnector": {
+          "$comment": "additions are welcome",
+          "enum": [
+            "3-pin",
+            "5-pin",
+            "3-pin (swapped +/-)",
+            "3-pin and 5-pin",
+            "3-pin XLR IP65",
+            "3.5mm stereo jack"
+          ]
+        },
+        "bulb": {
+          "type": "object",
+          "minProperties": 1,
+          "properties": {
+            "type": {
+              "$comment": "e.g. 'LED'",
+              "$ref": "definitions.json#/nonEmptyString"
+            },
+            "colorTemperature": {
+              "$comment": "in K",
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "lumens": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "additionalProperties": false
+        },
+        "lens": {
+          "type": "object",
+          "minProperties": 1,
+          "properties": {
+            "name": {
+              "$comment": "e.g. 'PC', 'Fresnel'",
+              "$ref": "definitions.json#/nonEmptyString"
+            },
+            "degreesMinMax": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 360
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "focus": {
+          "type": "object",
+          "minProperties": 1,
+          "properties": {
+            "type": {
+              "$comment": "additions are welcome",
+              "enum": [
+                "Fixed",
+                "Head",
+                "Mirror",
+                "Barrel"
+              ]
+            },
+            "panMax": {
+              "oneOf": [
+                {
+                  "$comment": "in degrees",
+                  "type": "number",
+                  "minimum": 0
+                },
+                { "enum": ["infinite"] }
+              ]
+            },
+            "tiltMax": {
+              "oneOf": [
+                {
+                  "$comment": "in degrees",
+                  "type": "number",
+                  "minimum": 0
+                },
+                { "enum": ["infinite"] }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "matrixPixels": {
+          "type": "object",
+          "properties": {
+            "dimensions": { "$ref": "definitions.json#/dimensionsXYZ" },
+            "spacing": { "$ref": "definitions.json#/dimensionsXYZ" }
+          },
+          "required": ["dimensions", "spacing"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "matrix": {
+      "type": "object",
+      "properties": {
+        "pixelCount": {
+          "$comment": "amount of pixels in X, Y and Z directions",
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "pixelKeys": {
+          "$comment": "pixelKeys in a structure of arrays for the Z, Y and X directions",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "oneOf": [
+                  { "$ref": "definitions.json#/noVariablesString" },
+                  { "type": "null" }
+                ]
+              }
+            }
+          }
+        },
+        "pixelGroups": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "$comment": "pixel group keys",
+            "$ref": "definitions.json#/noVariablesString"
+          },
+          "additionalProperties": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "$ref": "definitions.json#/noVariablesString"
+            }
+          }
+        }
+      },
+      "oneOf": [
+        { "required": ["pixelCount"] },
+        { "required": ["pixelKeys"] }
+      ],
+      "additionalProperties": false
+    },
+    "availableChannels": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "$comment": "channel keys",
+        "$ref": "definitions.json#/noVariablesString"
+      },
+      "additionalProperties": { "$ref": "channel.json#" }
+    },
+    "templateChannels": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "$comment": "template channel keys",
+        "$ref": "definitions.json#/variablePixelKeyString"
+      },
+      "additionalProperties": { "$ref": "channel.json#" }
+    },
+    "modes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "$ref": "definitions.json#/modeNameString" },
+          "shortName": { "$ref": "definitions.json#/modeNameString" },
+          "rdmPersonalityIndex": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "physical": { "$ref": "#/properties/physical" },
+          "channels": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "oneOf": [
+                {
+                  "$comment": "for unused channels",
+                  "type": "null"
+                },
+                {
+                  "$comment": "normal channel keys, resolved template channel keys or channel alias keys",
+                  "$ref": "definitions.json#/noVariablesString"
+                },
+                {
+                  "$comment": "matrix channel insert block",
+                  "type": "object",
+                  "properties": {
+                    "insert": { "enum": ["matrixChannels"] },
+                    "repeatFor": {
+                      "oneOf": [
+                        {
+                          "enum": [
+                            "eachPixelABC",
+                            "eachPixelXYZ",
+                            "eachPixelXZY",
+                            "eachPixelYXZ",
+                            "eachPixelYZX",
+                            "eachPixelZXY",
+                            "eachPixelZYX",
+                            "eachPixelGroup"
+                          ]
+                        },
+                        {
+                          "type": "array",
+                          "minItems": 1,
+                          "uniqueItems": true,
+                          "items": {
+                            "$comment": "pixel key or pixel group key",
+                            "$ref": "definitions.json#/noVariablesString"
+                          }
+                        }
+                      ]
+                    },
+                    "channelOrder": { "enum": ["perPixel", "perChannel"] },
+                    "templateChannels": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "oneOf": [
+                          {
+                            "$comment": "for unused channels",
+                            "type": "null"
+                          },
+                          {
+                            "$comment": "template channel key or template channel alias key",
+                            "$ref": "definitions.json#/variablePixelKeyString"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "required": ["insert", "repeatFor", "channelOrder", "templateChannels"],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          }
+        },
+        "required": ["name", "channels"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "dependencies": {
+    "matrix": ["templateChannels"],
+    "templateChannels": ["matrix"]
+  },
+  "required": ["$schema", "name", "categories", "meta", "modes"],
+  "allOf": [
+    {
+      "if": {
+        "properties": { "modes": { "contains": { "required": ["rdmPersonalityIndex"] } } }
+      },
+      "then": {
+        "required": ["rdm"]
+      }
+    },
+    {
+      "anyOf": [
+        { "required": ["availableChannels"] },
+        { "required": ["templateChannels"] }
+      ]
+    }
+  ],
+  "patternProperties": {
+    "^\\$schema$": {
+      "enum": ["https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json"]
+    }
+  },
+  "additionalProperties": false
+}

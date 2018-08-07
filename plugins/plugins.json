@@ -1,0 +1,48 @@
+{
+  "importPlugins": [
+    "ecue",
+    "qlcplus_4.11.2"
+  ],
+  "exportPlugins": [
+    "d-light",
+    "dmxcontrol3",
+    "ecue",
+    "millumin",
+    "ofl",
+    "qlcplus_4.11.2"
+  ],
+  "data": {
+    "d-light": {
+      "name": "D::Light",
+      "exportTests": [
+        "attributes-correctness"
+      ]
+    },
+    "dmxcontrol3": {
+      "name": "DMXControl 3 (DDF3)",
+      "exportTests": [
+        "channel-numbers"
+      ]
+    },
+    "ecue": {
+      "name": "e:cue",
+      "exportTests": []
+    },
+    "millumin": {
+      "name": "Millumin",
+      "exportTests": [
+        "json-schema-conformity"
+      ]
+    },
+    "ofl": {
+      "name": "Open Fixture Library JSON",
+      "exportTests": []
+    },
+    "qlcplus_4.11.2": {
+      "name": "QLC+ 4.11.2",
+      "exportTests": [
+        "xsd-schema-conformity"
+      ]
+    }
+  }
+}

@@ -1,14 +1,16 @@
 {
-  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED TMH-9",
   "shortName": "LEDTMH9",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2017-09-04",
-    "lastModifyDate": "2017-10-16"
+    "lastModifyDate": "2018-07-21"
   },
-  "manualURL": "http://media.steinigke.de/documents_t/51785964-MANUAL-1.10-de-en_00096748.pdf",
+  "links": {
+    "manual": ["http://media.steinigke.de/documents_t/51785964-MANUAL-1.10-de-en_00096748.pdf"]
+  },
   "physical": {
     "dimensions": [175, 245, 175],
     "weight": 3,
@@ -28,176 +30,195 @@
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
       "defaultValue": 32768,
-      "highlightValue": 65535
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
       "defaultValue": 32768,
-      "highlightValue": 65535
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
     },
     "Color macros": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 15],
-          "name": "Blackout",
-          "color": "#000000",
-          "color2": "#000000"
+          "dmxRange": [0, 15],
+          "type": "ColorPreset",
+          "colors": ["#000000"],
+          "comment": "Blackout"
         },
         {
-          "range": [16, 31],
-          "name": "Red",
-          "color": "#ff0000",
-          "color2": "#000000"
+          "dmxRange": [16, 31],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [32, 47],
-          "name": "Green",
-          "color": "#00ff00",
-          "color2": "#000000"
+          "dmxRange": [32, 47],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [48, 63],
-          "name": "Blue",
-          "color": "#0000ff",
-          "color2": "#000000"
+          "dmxRange": [48, 63],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
-          "range": [64, 79],
-          "name": "White",
-          "color": "#000000",
-          "color2": "#ffffff"
+          "dmxRange": [64, 79],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
-          "range": [80, 95],
-          "name": "Red / green",
-          "color": "#ffff00",
-          "color2": "#000000"
+          "dmxRange": [80, 95],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Red + Green"
         },
         {
-          "range": [96, 111],
-          "name": "Red / blue",
-          "color": "#ff00ff",
-          "color2": "#000000"
+          "dmxRange": [96, 111],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Red + Blue"
         },
         {
-          "range": [112, 127],
-          "name": "Red / white",
-          "color": "#ff0000",
-          "color2": "#ffffff"
+          "dmxRange": [112, 127],
+          "type": "ColorPreset",
+          "colors": ["#ff8080"],
+          "comment": "Red + White"
         },
         {
-          "range": [128, 143],
-          "name": "Green / blue",
-          "color": "#00ffff",
-          "color2": "#000000"
+          "dmxRange": [128, 143],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Green + Blue"
         },
         {
-          "range": [144, 159],
-          "name": "Green / white",
-          "color": "#00ff00",
-          "color2": "#ffffff"
+          "dmxRange": [144, 159],
+          "type": "ColorPreset",
+          "colors": ["#80ff80"],
+          "comment": "Green + White"
         },
         {
-          "range": [160, 175],
-          "name": "Blue / white",
-          "color": "#0000ff",
-          "color2": "#ffffff"
+          "dmxRange": [160, 175],
+          "type": "ColorPreset",
+          "colors": ["#8080ff"],
+          "comment": "Blue + White"
         },
         {
-          "range": [176, 191],
-          "name": "Red / green / blue",
-          "color": "#ffffff",
-          "color2": "#000000"
+          "dmxRange": [176, 191],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "Red + Green + Blue"
         },
         {
-          "range": [192, 207],
-          "name": "Red / green / white",
-          "color": "#ffff00",
-          "color2": "#ffffff"
+          "dmxRange": [192, 207],
+          "type": "ColorPreset",
+          "colors": ["#ffff80"],
+          "comment": "Red + Green + White"
         },
         {
-          "range": [208, 223],
-          "name": "Green / blue / white",
-          "color": "#00ffff",
-          "color2": "#ffffff"
+          "dmxRange": [208, 223],
+          "type": "ColorPreset",
+          "colors": ["#80ffff"],
+          "comment": "Green + Blue + White"
         },
         {
-          "range": [224, 239],
-          "name": "Blue / red / white",
-          "color": "#ff00ff",
-          "color2": "#ffffff"
+          "dmxRange": [224, 239],
+          "type": "ColorPreset",
+          "colors": ["#ff80ff"],
+          "comment": "Red + Blue + White"
         },
         {
-          "range": [240, 255],
-          "name": "Red / blue / green / white",
-          "color": "#ffffff",
-          "color2": "#ffffff"
+          "dmxRange": [240, 255],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "Red + Green + Blue + White"
         }
       ]
     },
     "Shutter": {
-      "type": "Shutter",
       "defaultValue": 0,
       "highlightValue": 255,
-      "crossfade": false,
       "capabilities": [
         {
-          "range": [0, 20],
-          "name": "Neutral"
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
         },
         {
-          "range": [21, 30],
-          "name": "Reset"
+          "dmxRange": [21, 30],
+          "type": "Maintenance",
+          "comment": "Reset"
         },
         {
-          "range": [31, 200],
-          "name": "Strobe slow - fast"
+          "dmxRange": [31, 200],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [201, 250],
-          "name": "Random strobe slow - fast"
+          "dmxRange": [201, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
-          "range": [251, 255],
-          "name": "Open"
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
     "Pan / Tilt Speed": {
-      "type": "Speed",
       "defaultValue": 0,
-      "invert": true,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Decreasing speed"
-        }
-      ]
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
     },
     "Red": {
-      "type": "Single Color",
-      "color": "Red"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White": {
-      "type": "Single Color",
-      "color": "White"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "Dimmer Intensity": {
-      "type": "Intensity",
-      "highlightValue": 255
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
     }
   },
   "modes": [

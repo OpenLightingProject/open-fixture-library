@@ -32,7 +32,7 @@ try {
     cwd: path.join(__dirname, `..`)
   });
 
-  const files = [`**/*.js`];
+  const files = [`**/*.js`, `**/*.mjs`, `**/*.vue`, `**/*.json`];
   const eslintReport = cli.executeOnFiles(files);
 
   if (args.fix) {
@@ -61,6 +61,7 @@ try {
 }
 catch (err) {
   console.error(`Error: `, err);
+  exitcode = 1;
 }
 
 process.exit(exitcode);

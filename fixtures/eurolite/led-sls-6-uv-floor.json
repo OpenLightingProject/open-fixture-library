@@ -1,14 +1,16 @@
 {
-  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED SLS-6 UV Floor",
   "shortName": "LEDSLS6UV",
   "categories": ["Dimmer"],
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2017-05-24",
-    "lastModifyDate": "2017-10-16"
+    "lastModifyDate": "2018-07-21"
   },
-  "manualURL": "http://media.steinigke.de/download_t/51915282-MANUAL-1.10-en-de_00102317.pdf",
+  "links": {
+    "manual": ["http://media.steinigke.de/download_t/51915282-MANUAL-1.10-en-de_00102317.pdf"]
+  },
   "physical": {
     "dimensions": [230, 230, 110],
     "weight": 1,
@@ -20,55 +22,56 @@
   },
   "availableChannels": {
     "UV": {
-      "type": "Single Color",
-      "color": "UV",
       "defaultValue": 0,
       "highlightValue": 255,
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
     },
     "Strobe": {
-      "type": "Strobe",
       "defaultValue": 0,
       "highlightValue": 128,
-      "crossfade": false,
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "No function"
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
         },
         {
-          "range": [10, 255],
-          "name": "slow - fast"
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Programs": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "No function"
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
         },
         {
-          "range": [10, 199],
-          "name": "Auto mode"
+          "dmxRange": [10, 199],
+          "type": "Effect",
+          "effectName": "Auto mode"
         },
         {
-          "range": [200, 255],
-          "name": "Sound mode"
+          "dmxRange": [200, 255],
+          "type": "Effect",
+          "effectName": "Sound mode",
+          "soundControlled": true
         }
       ]
     },
-    "Speed": {
-      "type": "Speed",
+    "Program Speed": {
       "defaultValue": 128,
-      "highlightValue": 255,
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "slow - fast"
-        }
-      ]
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     }
   },
   "modes": [
@@ -87,7 +90,7 @@
         "UV",
         "Strobe",
         "Programs",
-        "Speed"
+        "Program Speed"
       ]
     }
   ]

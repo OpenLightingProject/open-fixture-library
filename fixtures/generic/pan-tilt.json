@@ -1,12 +1,12 @@
 {
-  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Pan/Tilt Fader",
   "shortName": "PanTilt",
   "categories": ["Moving Head"],
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2017-07-17",
-    "lastModifyDate": "2017-10-16"
+    "lastModifyDate": "2018-07-21"
   },
   "physical": {
     "focus": {
@@ -17,12 +17,20 @@
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan",
-      "fineChannelAliases": ["Pan fine", "Pan fine^2"]
+      "fineChannelAliases": ["Pan fine", "Pan fine^2"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
-      "fineChannelAliases": ["Tilt fine", "Tilt fine^2"]
+      "fineChannelAliases": ["Tilt fine", "Tilt fine^2"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
     }
   },
   "modes": [

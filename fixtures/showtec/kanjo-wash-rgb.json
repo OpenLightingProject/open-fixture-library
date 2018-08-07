@@ -1,14 +1,16 @@
 {
-  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Kanjo Wash RGB",
   "shortName": "KanjoWash",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Flo Edelmann", "Felix Edelmann"],
     "createDate": "2017-01-20",
-    "lastModifyDate": "2017-10-16"
+    "lastModifyDate": "2018-07-21"
   },
-  "manualURL": "https://www.highlite.nl/de/silver.download/Documents@extern@Manuals/45000_MANUAL_GB_V1.pdf",
+  "links": {
+    "manual": ["https://www.highlite.nl/de/silver.download/Documents@extern@Manuals/45000_MANUAL_GB_V1.pdf"]
+  },
   "physical": {
     "dimensions": [169, 270, 156],
     "weight": 2.52,
@@ -28,184 +30,226 @@
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan",
       "defaultValue": 32639,
-      "fineChannelAliases": ["Pan fine"]
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
       "defaultValue": 32768,
-      "fineChannelAliases": ["Tilt fine"]
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
     },
     "Pan/Tilt Speed": {
-      "type": "Speed",
-      "defaultValue": 128,
-      "invert": true
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
     },
     "Dimmer": {
-      "type": "Intensity",
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Strobe": {
-      "type": "Strobe",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "0-20Hz"
-        }
-      ]
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0Hz",
+        "speedEnd": "20Hz",
+        "helpWanted": "At which DMX values is the Strobe deactivated?"
+      }
     },
     "Red": {
-      "type": "Single Color",
-      "color": "Red",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "color": "Green",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "color": "Blue",
-      "crossfade": true
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "Color Presets": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "No function",
-          "color": "#000000"
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
         },
         {
-          "range": [1, 13],
-          "name": "Cyan",
-          "color": "#00ffff"
+          "dmxRange": [1, 13],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
         },
         {
-          "range": [14, 26],
-          "name": "Purple",
-          "color": "#aa00ff"
+          "dmxRange": [14, 26],
+          "type": "ColorPreset",
+          "colors": ["#aa00ff"],
+          "comment": "Purple"
         },
         {
-          "range": [27, 39],
-          "name": "Purple / Red",
-          "color": "#aa00ff",
-          "color2": "#ff0000"
+          "dmxRange": [27, 39],
+          "type": "ColorPreset",
+          "colors": ["#ff00ea"],
+          "comment": "Purple / Red"
         },
         {
-          "range": [40, 52],
-          "name": "Orange",
-          "color": "#ffaa00"
+          "dmxRange": [40, 52],
+          "type": "ColorPreset",
+          "colors": ["#ffaa00"],
+          "comment": "Orange"
         },
         {
-          "range": [53, 65],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [53, 65],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
-          "range": [66, 78],
-          "name": "Bright Pink",
-          "color": "#ffaaff"
+          "dmxRange": [66, 78],
+          "type": "ColorPreset",
+          "colors": ["#ffaaff"],
+          "comment": "Bright Pink"
         },
         {
-          "range": [79, 91],
-          "name": "Bright green",
-          "color": "#55ff7f"
+          "dmxRange": [79, 91],
+          "type": "ColorPreset",
+          "colors": ["#55ff7f"],
+          "comment": "Bright green"
         },
         {
-          "range": [92, 104],
-          "name": "Bright blue",
-          "color": "#00aaff"
+          "dmxRange": [92, 104],
+          "type": "ColorPreset",
+          "colors": ["#00aaff"],
+          "comment": "Bright blue"
         },
         {
-          "range": [105, 117],
-          "name": "Yellow",
-          "color": "#ffff00"
+          "dmxRange": [105, 117],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
         },
         {
-          "range": [118, 130],
-          "name": "Warm white",
-          "color": "#fff9e0"
+          "dmxRange": [118, 130],
+          "type": "ColorPreset",
+          "colors": ["#fff9e0"],
+          "comment": "Warm White",
+          "colorTemperature": "warm"
         },
         {
-          "range": [131, 143],
-          "name": "Red",
-          "color": "#ff0000"
+          "dmxRange": [131, 143],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [144, 156],
-          "name": "Green",
-          "color": "#00ff00"
+          "dmxRange": [144, 156],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [157, 169],
-          "name": "Blue",
-          "color": "#0000ff"
+          "dmxRange": [157, 169],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
-          "range": [170, 182],
-          "name": "Amber",
-          "color": "#ffbf00"
+          "dmxRange": [170, 182],
+          "type": "ColorPreset",
+          "colors": ["#ffbf00"],
+          "comment": "Amber"
         },
         {
-          "range": [183, 195],
-          "name": "White",
-          "color": "#ffffff"
+          "dmxRange": [183, 195],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
-          "range": [196, 223],
-          "name": "Seven color gradient"
+          "dmxRange": [196, 223],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "7 colors"
         },
         {
-          "range": [224, 237],
-          "name": "Seven color change"
+          "dmxRange": [224, 237],
+          "type": "Effect",
+          "effectName": "Color Change",
+          "helpWanted": "How does Color Change differ from Jump or Fade (Gradient)?",
+          "comment": "7 colors"
         },
         {
-          "range": [238, 255],
-          "name": "Seven color jump"
+          "dmxRange": [238, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "7 colors"
         }
       ]
     },
     "Color Speed": {
-      "type": "Speed"
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Programs": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 2],
-          "name": "No function"
+          "dmxRange": [0, 2],
+          "type": "NoFunction"
         },
         {
-          "range": [3, 101],
-          "name": "Program 1 (fast)"
+          "dmxRange": [3, 101],
+          "type": "Effect",
+          "effectName": "Program 1 (fast)"
         },
         {
-          "range": [102, 152],
-          "name": "Program 2 (gradient and jump)"
+          "dmxRange": [102, 152],
+          "type": "Effect",
+          "effectName": "Program 2 (gradient and jump)"
         },
         {
-          "range": [153, 203],
-          "name": "Program 3 (slow)"
+          "dmxRange": [153, 203],
+          "type": "Effect",
+          "effectName": "Program 3 (slow)"
         },
         {
-          "range": [204, 255],
-          "name": "Program 4 (sound-controlled)"
+          "dmxRange": [204, 255],
+          "type": "Effect",
+          "effectName": "Program 4 (sound-controlled)",
+          "soundControlled": true
         }
       ]
     },
     "Factory reset": {
-      "type": "Maintenance",
       "capabilities": [
         {
-          "range": [0, 254],
-          "name": "No function"
+          "dmxRange": [0, 254],
+          "type": "NoFunction"
         },
         {
-          "range": [255, 255],
-          "name": "Reset to factory settings"
+          "dmxRange": [255, 255],
+          "type": "Maintenance",
+          "comment": "Reset to factory settings"
         }
       ]
     }

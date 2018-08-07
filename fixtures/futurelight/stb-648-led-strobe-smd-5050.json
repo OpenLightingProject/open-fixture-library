@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "STB-648 LED Strobe SMD 5050",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-02-03",
+    "lastModifyDate": "2018-07-21"
+  },
+  "links": {
+    "manual": ["http://media.steinigke.de/documents_t/51841370-MANUAL-1.00-de-en_00068855.pdf"]
+  },
+  "physical": {
+    "dimensions": [420, 225, 165],
+    "weight": 4.5,
+    "power": 160,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "648x SMD 5050 LEDs"
+    }
+  },
+  "availableChannels": {
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "Brightness": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Strobe",
+        "Brightness"
+      ]
+    }
+  ]
+}

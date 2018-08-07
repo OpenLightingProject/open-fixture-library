@@ -1,0 +1,541 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "WARP/M",
+  "shortName": "ADBWarpM",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["ameisso"],
+    "createDate": "2018-03-29",
+    "lastModifyDate": "2018-07-21"
+  },
+  "comment": "Fully MOTORISED Zoom Profile for the Theatre, the Opera House, the Concert Hall",
+  "links": {
+    "manual": ["https://www.adbstagelight.com/wp-content/uploads/2017/05/M5083-E-user-manual-WARP-M.pdf"]
+  },
+  "physical": {
+    "dimensions": [549, 695, 448],
+    "weight": 32,
+    "power": 900,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "halogen",
+      "colorTemperature": 3200
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 400,
+      "tiltMax": 275
+    }
+  },
+  "availableChannels": {
+    "Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Maintenance",
+          "comment": "Fire"
+        },
+        {
+          "dmxRange": [21, 25],
+          "type": "Maintenance",
+          "comment": "Park"
+        },
+        {
+          "dmxRange": [26, 30],
+          "type": "Maintenance",
+          "comment": "Online"
+        },
+        {
+          "dmxRange": [31, 35],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [36, 40],
+          "type": "Maintenance",
+          "comment": "Stealth Mode"
+        },
+        {
+          "dmxRange": [41, 45],
+          "type": "Maintenance",
+          "comment": "Quiet Mode"
+        },
+        {
+          "dmxRange": [46, 50],
+          "type": "Maintenance",
+          "comment": "Fast mode"
+        },
+        {
+          "dmxRange": [51, 55],
+          "type": "Maintenance",
+          "comment": "Reset all"
+        },
+        {
+          "dmxRange": [56, 60],
+          "type": "Maintenance",
+          "comment": "Reset all Shutters"
+        },
+        {
+          "dmxRange": [61, 65],
+          "type": "Maintenance",
+          "comment": "Reset Gobo 1"
+        },
+        {
+          "dmxRange": [66, 70],
+          "type": "Maintenance",
+          "comment": "Gobo 2/iris"
+        },
+        {
+          "dmxRange": [71, 75],
+          "type": "Maintenance",
+          "comment": "Reset Zoom"
+        },
+        {
+          "dmxRange": [76, 80],
+          "type": "Maintenance",
+          "comment": "Reset Focus"
+        },
+        {
+          "dmxRange": [81, 85],
+          "type": "Maintenance",
+          "comment": "Reset Pan"
+        },
+        {
+          "dmxRange": [86, 90],
+          "type": "Maintenance",
+          "comment": "Reset Tilt"
+        },
+        {
+          "dmxRange": [91, 95],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [96, 100],
+          "type": "Maintenance",
+          "comment": "Calibration lens"
+        },
+        {
+          "dmxRange": [101, 105],
+          "type": "Maintenance",
+          "comment": "Calibration of Shutters"
+        },
+        {
+          "dmxRange": [106, 110],
+          "type": "Maintenance",
+          "comment": "Calibration of Pan/Tilt"
+        },
+        {
+          "dmxRange": [111, 115],
+          "type": "Maintenance",
+          "comment": "Calibration of Iris/Gobo"
+        },
+        {
+          "dmxRange": [116, 120],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [121, 125],
+          "type": "Maintenance",
+          "comment": "Pan invert On"
+        },
+        {
+          "dmxRange": [126, 130],
+          "type": "Maintenance",
+          "comment": "Pan invert Off"
+        },
+        {
+          "dmxRange": [131, 135],
+          "type": "Maintenance",
+          "comment": "Tilt invert On"
+        },
+        {
+          "dmxRange": [136, 140],
+          "type": "Maintenance",
+          "comment": "Tilt invert Off"
+        },
+        {
+          "dmxRange": [141, 145],
+          "type": "Maintenance",
+          "comment": "Pan/Tilt swap On"
+        },
+        {
+          "dmxRange": [146, 150],
+          "type": "Maintenance",
+          "comment": "Pan/Tilt swap Off"
+        },
+        {
+          "dmxRange": [151, 155],
+          "type": "Maintenance",
+          "comment": "Display On"
+        },
+        {
+          "dmxRange": [156, 160],
+          "type": "Maintenance",
+          "comment": "Display Off"
+        },
+        {
+          "dmxRange": [161, 165],
+          "type": "Maintenance",
+          "comment": "Factory default setting"
+        },
+        {
+          "dmxRange": [166, 170],
+          "type": "Maintenance",
+          "comment": "User setting 1"
+        },
+        {
+          "dmxRange": [171, 175],
+          "type": "Maintenance",
+          "comment": "User setting 2"
+        },
+        {
+          "dmxRange": [176, 180],
+          "type": "Maintenance",
+          "comment": "User setting 3"
+        },
+        {
+          "dmxRange": [181, 185],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [186, 190],
+          "type": "Maintenance",
+          "comment": "DMX address setting"
+        },
+        {
+          "dmxRange": [191, 195],
+          "type": "Maintenance",
+          "comment": "Accessory change"
+        },
+        {
+          "dmxRange": [196, 200],
+          "type": "Maintenance",
+          "comment": "Gobo Mode indexed"
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "Maintenance",
+          "comment": "Gobo Mode indexed and Endless rotation"
+        },
+        {
+          "dmxRange": [206, 210],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Maintenance",
+          "comment": "Arm"
+        }
+      ]
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32767,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "400deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32767,
+      "capability": {
+      "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "275deg"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+      "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide",
+        "helpWanted": "Correct direction?"
+      }
+    },
+    "Focus": {
+      "defaultValue": 0,
+      "capability": {
+      "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far",
+        "helpWanted": "Correct direction?"
+      }
+    },
+    "Shutter A Rotation": {
+      "fineChannelAliases": ["Shutter A Rotation fine"],
+      "defaultValue": 32767,
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 1,
+        "angleStart": "0deg",
+        "angleEnd": "720deg"
+      }
+    },
+    "Shutter A Insertion": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 1,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Shutter B Rotation": {
+      "fineChannelAliases": ["Shutter B Rotation fine"],
+      "defaultValue": 32767,
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 2,
+        "angleStart": "0deg",
+        "angleEnd": "720deg"
+      }
+    },
+    "Shutter B Insertion": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 2,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Shutter C Rotation": {
+      "fineChannelAliases": ["Shutter C Rotation fine"],
+      "defaultValue": 32767,
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 3,
+        "angleStart": "0deg",
+        "angleEnd": "720deg"
+      }
+    },
+    "Shutter C Insertion": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 3,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Shutter D Rotation": {
+      "fineChannelAliases": ["Shutter D Rotation fine"],
+      "defaultValue": 32767,
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 4,
+        "angleStart": "0deg",
+        "angleEnd": "720deg"
+      }
+    },
+    "Shutter D Insertion": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 4,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Shutters all rotation offset": {
+      "fineChannelAliases": ["Shutters all rotation offset fine"],
+      "defaultValue": 32767,
+      "capability": {
+        "type": "BladeSystemRotation",
+        "angleStart": "0deg",
+        "angleEnd": "720deg"
+      }
+    },
+    "Gobo 1 rotation": {
+      "fineChannelAliases": ["Gobo 1 rotation fine"],
+      "defaultValue": 32767,
+      "capability": {
+        "type": "GoboStencilRotation",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Iris": {
+      "fineChannelAliases": ["Iris fine"],
+      "capability": {
+        "type": "Iris",
+        "openPercentStart": "open",
+        "openPercentEnd": "closed"
+      }
+    },
+    "External dimmer (optional)": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "External DMX output 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "External DMX output 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "External DMX output 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "External DMX output 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "External DMX output 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "External DMX output 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "External DMX output 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "External DMX output 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "12-30",
+      "shortName": "warpm1230",
+      "physical": {
+        "lens": {
+          "name": "WARP/M/12-30",
+          "degreesMinMax": [12, 30]
+        }
+      },
+      "channels": [
+        "Control",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Zoom",
+        "Focus",
+        "Shutter A Rotation",
+        "Shutter A Rotation fine",
+        "Shutter A Insertion",
+        "Shutter B Rotation",
+        "Shutter B Rotation fine",
+        "Shutter B Insertion",
+        "Shutter C Rotation",
+        "Shutter C Rotation fine",
+        "Shutter C Insertion",
+        "Shutter D Rotation",
+        "Shutter D Rotation fine",
+        "Shutter D Insertion",
+        "Shutters all rotation offset",
+        "Shutters all rotation offset fine",
+        "Gobo 1 rotation",
+        "Gobo 1 rotation fine",
+        "Iris",
+        "Iris fine",
+        "External dimmer (optional)",
+        "External DMX output 1",
+        "External DMX output 2",
+        "External DMX output 3",
+        "External DMX output 4",
+        "External DMX output 5",
+        "External DMX output 6",
+        "External DMX output 7",
+        "External DMX output 8"
+      ]
+    },
+    {
+      "name": "22-50",
+      "shortName": "warpm2250",
+      "physical": {
+        "lens": {
+          "name": "WARP/M/22-50",
+          "degreesMinMax": [22, 50]
+        }
+      },
+      "channels": [
+        "Control",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Zoom",
+        "Focus",
+        "Shutter A Rotation",
+        "Shutter A Rotation fine",
+        "Shutter A Insertion",
+        "Shutter B Rotation",
+        "Shutter B Rotation fine",
+        "Shutter B Insertion",
+        "Shutter C Rotation",
+        "Shutter C Rotation fine",
+        "Shutter C Insertion",
+        "Shutter D Rotation",
+        "Shutter D Rotation fine",
+        "Shutter D Insertion",
+        "Shutters all rotation offset",
+        "Shutters all rotation offset fine",
+        "Gobo 1 rotation",
+        "Gobo 1 rotation fine",
+        "Iris",
+        "Iris fine",
+        "External dimmer (optional)",
+        "External DMX output 1",
+        "External DMX output 2",
+        "External DMX output 3",
+        "External DMX output 4",
+        "External DMX output 5",
+        "External DMX output 6",
+        "External DMX output 7",
+        "External DMX output 8"
+      ]
+    }
+  ]
+}

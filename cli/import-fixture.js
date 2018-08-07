@@ -1,10 +1,12 @@
 #!/usr/bin/node
 
 const fs = require(`fs`);
+const path = require(`path`);
 const minimist = require(`minimist`);
 
-const checkFixture = require(`../tests/fixture-valid.js`);
-const importPlugins = require(`../plugins/plugins.js`).import;
+const { checkFixture } = require(`../tests/fixture-valid.js`);
+const plugins = require(`../plugins/plugins.json`);
+const fixtureJsonStringify = require(`../lib/fixture-json-stringify.js`);
 const createPullRequest = require(`../lib/create-github-pr.js`);
 
 const args = minimist(process.argv.slice(2), {
@@ -18,8 +20,8 @@ const args = minimist(process.argv.slice(2), {
 
 const filename = args._[0];
 
-if (args._.length !== 1 || !(args.plugin in importPlugins)) {
-  console.error(`Usage: ${process.argv[1]} -p <plugin> [--create-pull-request] <filename>\n\navailable plugins: ${Object.keys(importPlugins).join(`, `)}`);
+if (args._.length !== 1 || !plugins.importPlugins.includes(args.plugin)) {
+  console.error(`Usage: ${process.argv[1]} -p <plugin> [--create-pull-request] <filename>\n\navailable plugins: ${plugins.importPlugins.join(`, `)}`);
   process.exit(1);
 }
 
@@ -30,8 +32,9 @@ fs.readFile(filename, `utf8`, (error, data) => {
     return;
   }
 
+  const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `import.js`));
   new Promise((resolve, reject) => {
-    importPlugins[args.plugin].import(data, filename, resolve, reject);
+    plugin.import(data, filename, resolve, reject);
   }).then(result => {
     result.errors = {};
 
@@ -47,7 +50,7 @@ fs.readFile(filename, `utf8`, (error, data) => {
     if (args[`create-pull-request`]) {
       createPullRequest(result, (error, pullRequestUrl) => {
         if (error) {
-          console.log(JSON.stringify(result, null, 2));
+          console.log(fixtureJsonStringify(result));
           console.error(`Error: ${error}`);
           return;
         }
@@ -56,7 +59,7 @@ fs.readFile(filename, `utf8`, (error, data) => {
       });
     }
     else {
-      console.log(JSON.stringify(result, null, 2));
+      console.log(fixtureJsonStringify(result));
     }
   }).catch(error => {
     console.error(error);

@@ -1,13 +1,15 @@
 {
-  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Vega Zoom Wash",
   "shortName": "VegaZoomWash",
   "categories": ["Moving Head", "Color Changer"],
-  "manualURL": "https://www.musicstore.de/INTERSHOP/web/WFS/MusicStore-MusicStoreShop-Site/de_DE/-/EUR/ViewProductAttachment-ResolveManualURL?File=DE_LIG0013617-000.pdf",
+  "links": {
+    "manual": ["https://www.musicstore.de/INTERSHOP/web/WFS/MusicStore-MusicStoreShop-Site/de_DE/-/EUR/ViewProductAttachment-ResolveManualURL?File=DE_LIG0013617-000.pdf"]
+  },
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2017-02-24",
-    "lastModifyDate": "2017-12-07"
+    "lastModifyDate": "2018-07-21"
   },
   "physical": {
     "dimensions": [260, 280, 340],
@@ -28,205 +30,266 @@
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan",
-      "fineChannelAliases": ["Pan fine"]
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
-      "fineChannelAliases": ["Tilt fine"]
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "190deg"
+      }
     },
     "Pan / Tilt Speed": {
-      "type": "Speed"
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
     },
     "Dimmer": {
-      "type": "Intensity",
-      "crossfade": true
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Shutter": {
-      "type": "Shutter",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "closed"
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [10, 245],
-          "name": "strobe"
+          "dmxRange": [10, 245],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [246, 255],
-          "name": "open"
+          "dmxRange": [246, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
     "Red": {
-      "type": "Single Color",
-      "crossfade": true,
-      "color": "Red"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
-      "type": "Single Color",
-      "crossfade": true,
-      "color": "Green"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
-      "type": "Single Color",
-      "crossfade": true,
-      "color": "Blue"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White": {
-      "type": "Single Color",
-      "crossfade": true,
-      "color": "White"
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "Color Temperature": {
-      "type": "Color Temperature"
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "cold",
+        "colorTemperatureEnd": "warm",
+        "helpWanted": "Correct direction?"
+      }
     },
     "Color Macro": {
-      "type": "Multi-Color",
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "open"
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
         },
         {
-          "range": [11, 20],
-          "name": "red",
-          "color": "#ff0000"
+          "dmxRange": [11, 20],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
         },
         {
-          "range": [21, 30],
-          "name": "green",
-          "color": "#00ff00"
+          "dmxRange": [21, 30],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
         },
         {
-          "range": [31, 40],
-          "name": "blue",
-          "color": "#0000ff"
+          "dmxRange": [31, 40],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
         },
         {
-          "range": [41, 50],
-          "name": "white",
-          "color": "#ffffff"
+          "dmxRange": [41, 50],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
         },
         {
-          "range": [51, 60],
-          "name": "yellow",
-          "color": "#ffff00"
+          "dmxRange": [51, 60],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Red + Green"
         },
         {
-          "range": [61, 70],
-          "name": "cyan",
-          "color": "#00ffff"
+          "dmxRange": [61, 70],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Green + Blue"
         },
         {
-          "range": [71, 80],
-          "name": "lightblue",
-          "color": "#64c8ff"
+          "dmxRange": [71, 80],
+          "type": "ColorPreset",
+          "colors": ["#8080ff"],
+          "comment": "Blue + White"
         },
         {
-          "range": [81, 90],
-          "name": "pink",
-          "color": "#ff00ff"
+          "dmxRange": [81, 90],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Red + Blue"
         },
         {
-          "range": [91, 100],
-          "name": "lightgreen",
-          "color": "#7fff3c"
+          "dmxRange": [91, 100],
+          "type": "ColorPreset",
+          "colors": ["#80ff80"],
+          "comment": "Green + White"
         },
         {
-          "range": [101, 110],
-          "name": "lightred",
-          "color": "#ff7f7f"
+          "dmxRange": [101, 110],
+          "type": "ColorPreset",
+          "colors": ["#ff8080"],
+          "comment": "Red + White"
         },
         {
-          "range": [111, 120],
-          "name": "RGB"
+          "dmxRange": [111, 120],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "Red + Green + Blue"
         },
         {
-          "range": [121, 130],
-          "name": "RGW"
+          "dmxRange": [121, 130],
+          "type": "ColorPreset",
+          "colors": ["#ffff80"],
+          "comment": "Red + Green + White"
         },
         {
-          "range": [131, 140],
-          "name": "GBW"
+          "dmxRange": [131, 140],
+          "type": "ColorPreset",
+          "colors": ["#80ffff"],
+          "comment": "Green + Blue + White"
         },
         {
-          "range": [141, 150],
-          "name": "RGBW"
+          "dmxRange": [141, 150],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "Red + Green + Blue + White"
         },
         {
-          "range": [151, 255],
-          "name": "jump"
+          "dmxRange": [151, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Macro Speed": {
-      "type": "Speed",
       "capabilities": [
         {
-          "range": [0, 10],
-          "name": "macro off"
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "Macro off"
         },
         {
-          "range": [11, 255],
-          "name": "speed"
+          "dmxRange": [11, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Focus": {
-      "type": "Focus"
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far",
+        "helpWanted": "Correct direction?"
+      }
     },
     "Program": {
-      "type": "Effect",
       "capabilities": [
         {
-          "range": [0, 20],
-          "name": "no function"
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
         },
         {
-          "range": [21, 40],
-          "name": "program 1"
+          "dmxRange": [21, 40],
+          "type": "Effect",
+          "effectName": "Internal Program 1"
         },
         {
-          "range": [41, 60],
-          "name": "program 2"
+          "dmxRange": [41, 60],
+          "type": "Effect",
+          "effectName": "Internal Program 2"
         },
         {
-          "range": [61, 80],
-          "name": "program 3"
+          "dmxRange": [61, 80],
+          "type": "Effect",
+          "effectName": "Internal Program 3"
         },
         {
-          "range": [81, 100],
-          "name": "program 4"
+          "dmxRange": [81, 100],
+          "type": "Effect",
+          "effectName": "Internal Program 4"
         },
         {
-          "range": [101, 120],
-          "name": "program 5"
+          "dmxRange": [101, 120],
+          "type": "Effect",
+          "effectName": "Internal Program 5"
         },
         {
-          "range": [121, 140],
-          "name": "program 6"
+          "dmxRange": [121, 140],
+          "type": "Effect",
+          "effectName": "Internal Program 6"
         },
         {
-          "range": [141, 160],
-          "name": "program 7"
+          "dmxRange": [141, 160],
+          "type": "Effect",
+          "effectName": "Internal Program 7"
         },
         {
-          "range": [161, 180],
-          "name": "program 8"
+          "dmxRange": [161, 180],
+          "type": "Effect",
+          "effectName": "Internal Program 8"
         },
         {
-          "range": [181, 200],
-          "name": "no function"
+          "dmxRange": [181, 200],
+          "type": "NoFunction"
         },
         {
-          "range": [201, 225],
-          "name": "motor reset"
+          "dmxRange": [201, 225],
+          "type": "Maintenance",
+          "comment": "Motor reset"
         },
         {
-          "range": [226, 255],
-          "name": "no function"
+          "dmxRange": [226, 255],
+          "type": "NoFunction"
         }
       ]
     }

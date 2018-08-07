@@ -9,7 +9,7 @@ const fs = require(`fs`);
 const path = require(`path`);
 const colors = require(`colors`);
 
-const Fixture = require(`../lib/model/Fixture.js`);
+const { fixtureFromRepository } = require(`../lib/model.js`);
 const register = require(`../fixtures/register.json`);
 
 const fixFeaturesDir = path.join(__dirname, `../lib/fixture-features`);
@@ -52,7 +52,7 @@ let fixtures = [];
 for (const man of Object.keys(register.manufacturers)) {
   for (const fixKey of register.manufacturers[man]) {
     // pre-process data
-    const fix = Fixture.fromRepository(man, fixKey);
+    const fix = fixtureFromRepository(man, fixKey);
     const fixResult = {
       man: man,
       key: fixKey,
@@ -106,7 +106,7 @@ for (const fixture of fixtures) {
   console.log(` - ${fixture.man}/${fixture.key}`);
 }
 
-fs.writeFile(jsonFile, JSON.stringify(fixtures, null, 2), `utf8`, error => {
+fs.writeFile(jsonFile, `${JSON.stringify(fixtures, null, 2)}\n`, `utf8`, error => {
   if (error) {
     console.error(`${colors.red(`[Fail]`)} Could not write test-fixtures.json`, error);
   }
@@ -134,7 +134,7 @@ function getMarkdownCode() {
   // Header
   mdLines[0] = `|`;
   for (const fixture of fixtures) {
-    mdLines[0] += ` | [*${fixture.man}* ${fixture.name}](https://github.com/FloEdelmann/open-fixture-library/blob/master/fixtures/${fixture.man}/${fixture.key}.json)`;
+    mdLines[0] += ` | [*${fixture.man}* ${fixture.name}](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/${fixture.man}/${fixture.key}.json)`;
   }
   mdLines[1] = `|-`.repeat(fixtures.length + 1);
 

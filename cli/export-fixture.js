@@ -4,8 +4,8 @@ const path = require(`path`);
 const minimist = require(`minimist`);
 const colors = require(`colors`);
 
-const exportPlugins = require(`../plugins/plugins.js`).export;
-const Fixture = require(`../lib/model/Fixture.js`);
+const plugins = require(`../plugins/plugins.json`);
+const { fixtureFromRepository } = require(`../lib/model.js`);
 
 const args = minimist(process.argv.slice(2), {
   string: [`p`, `o`],
@@ -20,6 +20,7 @@ const helpMessage = [
   `                      E. g. ecue or qlcplus`,
   `  --all-fixtures, -a: Use all fixtures from register`,
   `  --output-dir,   -o: If set, save outputted files in this directory`,
+  `                      instead of printing the contents in the console`,
   `  --help,         -h: Show this help message.`
 ].join(`\n`);
 
@@ -38,8 +39,8 @@ if (args._.length === 0 && !args.a) {
   process.exit(1);
 }
 
-if (!(args.plugin in exportPlugins)) {
-  console.error(`${colors.red(`[Error]`)} Plugin '${args.plugin}' does not exist or does not support exporting.`);
+if (!plugins.exportPlugins.includes(args.plugin)) {
+  console.error(`${colors.red(`[Error]`)} Plugin '${args.plugin}' does not exist or does not support exporting.\n\navailable plugins: ${Object.keys(plugins.exportPlugins).join(`, `)}`);
   process.exit(1);
 }
 
@@ -66,8 +67,9 @@ if (args.o) {
   }
 }
 
-exportPlugins[args.plugin].export(
-  fixtures.map(([man, fix]) => Fixture.fromRepository(man, fix)),
+const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `export.js`));
+plugin.export(
+  fixtures.map(([man, fix]) => fixtureFromRepository(man, fix)),
   {
     baseDir: path.join(__dirname, `..`)
   }

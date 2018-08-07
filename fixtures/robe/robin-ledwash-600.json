@@ -1,14 +1,16 @@
 {
-  "$schema": "https://raw.githubusercontent.com/FloEdelmann/open-fixture-library/master/schema-fixture.json",
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Robin LEDWash 600",
   "shortName": "RobinLEDWash600",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2018-01-01",
-    "lastModifyDate": "2018-01-05"
+    "lastModifyDate": "2018-07-21"
   },
-  "manualURL": "https://www.robe.cz/index.php?type=10898&tx_odproducts_f%5baction%5d=downloadFile&tx_odproducts_f%5bfile%5d=robe/downloads/user_manuals/User_manual_Robin_600_LEDWash.pdf",
+  "links": {
+    "manual": ["https://www.robe.cz/index.php?type=10898&tx_odproducts_f%5baction%5d=downloadFile&tx_odproducts_f%5bfile%5d=robe/downloads/user_manuals/User_manual_Robin_600_LEDWash.pdf"]
+  },
   "rdm": {
     "modelId": 118,
     "softwareVersion": "47"
@@ -57,283 +59,468 @@
   },
   "availableChannels": {
     "Pan": {
-      "type": "Pan",
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "450deg"
+      }
     },
     "Tilt": {
-      "type": "Tilt",
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 32767
+      "defaultValue": 32767,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "300deg"
+      }
     },
     "Pan/Tilt Speed": {
-      "type": "Speed",
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Speed fast-slow / Time 0.1-25.5s"
-        }
-      ]
+      "capability": {
+        "type": "PanTiltSpeed",
+        "comment": "or Time 0.1…25.5s",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
     },
     "Special Functions": {
-      "type": "Maintenance",
       "capabilities": [
         {
-          "range": [0, 9],
-          "name": "Reserve"
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
         },
         {
-          "range": [10, 14],
-          "name": "DMX input: Wired DMX"
+          "dmxRange": [10, 14],
+          "type": "Maintenance",
+          "comment": "DMX input: Wired DMX",
+          "hold": "3s"
         },
         {
-          "range": [15, 19],
-          "name": "DMX input: Wireless DMX"
+          "dmxRange": [15, 19],
+          "type": "Maintenance",
+          "comment": "DMX input: Wireless DMX",
+          "hold": "3s"
         },
         {
-          "range": [20, 49],
-          "name": "Reserved"
+          "dmxRange": [20, 49],
+          "type": "NoFunction"
         },
         {
-          "range": [50, 59],
-          "name": "Pan/Tilt speed mode"
+          "dmxRange": [50, 59],
+          "type": "Maintenance",
+          "comment": "Pan/Tilt speed mode",
+          "hold": "3s"
         },
         {
-          "range": [60, 69],
-          "name": "Pan/Tilt time mode"
+          "dmxRange": [60, 69],
+          "type": "Maintenance",
+          "comment": "Pan/Tilt time mode",
+          "hold": "3s"
         },
         {
-          "range": [70, 79],
-          "name": "Blackout while pan/tilt moving"
+          "dmxRange": [70, 79],
+          "type": "Maintenance",
+          "comment": "Blackout while pan/tilt moving",
+          "hold": "3s"
         },
         {
-          "range": [80, 89],
-          "name": "Disabled blackout while pan/tilt moving"
+          "dmxRange": [80, 89],
+          "type": "Maintenance",
+          "comment": "Disabled blackout while pan/tilt moving",
+          "hold": "3s"
         },
         {
-          "range": [90, 99],
-          "name": "Theatre mode On"
+          "dmxRange": [90, 99],
+          "type": "Maintenance",
+          "comment": "Theatre mode On",
+          "hold": "3s"
         },
         {
-          "range": [100, 109],
-          "name": "Theatre mode Off"
+          "dmxRange": [100, 109],
+          "type": "Maintenance",
+          "comment": "Theatre mode Off",
+          "hold": "3s"
         },
         {
-          "range": [110, 139],
-          "name": "Reserved"
+          "dmxRange": [110, 139],
+          "type": "NoFunction"
         },
         {
-          "range": [140, 149],
-          "name": "Pan/Tilt reset"
+          "dmxRange": [140, 149],
+          "type": "Maintenance",
+          "comment": "Pan/Tilt reset",
+          "hold": "3s"
         },
         {
-          "range": [150, 179],
-          "name": "Reserved"
+          "dmxRange": [150, 179],
+          "type": "NoFunction"
         },
         {
-          "range": [180, 189],
-          "name": "Zoom reset"
+          "dmxRange": [180, 189],
+          "type": "Maintenance",
+          "comment": "Zoom reset",
+          "hold": "3s"
         },
         {
-          "range": [190, 199],
-          "name": "Reserved"
+          "dmxRange": [190, 199],
+          "type": "NoFunction"
         },
         {
-          "range": [200, 209],
-          "name": "Total reset"
+          "dmxRange": [200, 209],
+          "type": "Maintenance",
+          "comment": "Total reset",
+          "hold": "3s"
         },
         {
-          "range": [210, 239],
-          "name": "Reserved"
+          "dmxRange": [210, 239],
+          "type": "NoFunction"
         },
         {
-          "range": [240, 240],
-          "name": "Disable \"Silent mode\" of fans"
+          "dmxRange": [240, 240],
+          "type": "Maintenance",
+          "comment": "Disable \"Silent mode\"",
+          "hold": "3s"
         },
         {
-          "range": [241, 255],
-          "name": "\"Silent mode of fans\":fans noise from min. to max."
+          "dmxRange": [241, 255],
+          "type": "Maintenance",
+          "comment": "Silent mode: Fan noise",
+          "parameterStart": "low",
+          "parameterEnd": "high",
+          "hold": "3s"
         }
       ]
     },
     "CTC": {
-      "type": "Color Temperature",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "No function"
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
         },
         {
-          "range": [1, 255],
-          "name": "20000-2700K (off) /15500-2700K (on)"
+          "dmxRange": [1, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "15500K",
+          "colorTemperatureEnd": "2700K",
+          "comment": "or 20000…2700K with color calibration off"
         }
       ]
     },
     "Virtual Color Wheel": {
-      "type": "Multi-Color",
       "defaultValue": 0,
       "capabilities": [
         {
-          "range": [0, 0],
-          "name": "No function"
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
         },
         {
-          "range": [1, 2],
-          "name": "White 2700K"
+          "dmxRange": [1, 2],
+          "type": "ColorPreset",
+          "colors": ["#ffa757"],
+          "colorTemperature": "2700K",
+          "comment": "White"
         },
         {
-          "range": [3, 3],
-          "name": "White 2700K (halogen)"
+          "dmxRange": [3, 3],
+          "type": "ColorPreset",
+          "colors": ["#ffa757"],
+          "colorTemperature": "2700K",
+          "comment": "Halogen White"
         },
         {
-          "range": [4, 5],
-          "name": "White 3200K"
+          "dmxRange": [4, 5],
+          "type": "ColorPreset",
+          "colors": ["#ffb87b"],
+          "colorTemperature": "3200K",
+          "comment": "White"
         },
         {
-          "range": [6, 6],
-          "name": "White 3200K (halogen)"
+          "dmxRange": [6, 6],
+          "type": "ColorPreset",
+          "colors": ["#ffb87b"],
+          "colorTemperature": "3200K",
+          "comment": "Halogen White"
         },
         {
-          "range": [7, 9],
-          "name": "White 4200K"
+          "dmxRange": [7, 9],
+          "type": "ColorPreset",
+          "colors": ["#ffd3af"],
+          "colorTemperature": "4200K",
+          "comment": "White"
         },
         {
-          "range": [10, 12],
-          "name": "White 5600K"
+          "dmxRange": [10, 12],
+          "type": "ColorPreset",
+          "colors": ["#ffefe1"],
+          "colorTemperature": "5600K",
+          "comment": "White"
         },
         {
-          "range": [13, 15],
-          "name": "White 8000K"
+          "dmxRange": [13, 15],
+          "type": "ColorPreset",
+          "colors": ["#dde6ff"],
+          "colorTemperature": "8000K",
+          "comment": "White"
         },
         {
-          "range": [16, 247],
-          "name": "Rainbow select Blue-Cyan-Green-Yellow-Red-Magenta-Blue"
+          "dmxRange": [16, 16],
+          "type": "ColorPreset",
+          "colors": ["#007cc3"],
+          "comment": "Blue"
         },
         {
-          "range": [248, 248],
-          "name": "Rainbow fade"
+          "dmxRange": [17, 55],
+          "type": "ColorPreset",
+          "colorsStart": ["#007cc3"],
+          "colorsEnd": ["#61afca"],
+          "comment": "Blue - Cyan"
         },
         {
-          "range": [249, 249],
-          "name": "Rainbow jump"
+          "dmxRange": [56, 56],
+          "type": "ColorPreset",
+          "colors": ["#61afca"],
+          "comment": "Cyan"
         },
         {
-          "range": [250, 250],
-          "name": "Zone effect 1"
+          "dmxRange": [57, 95],
+          "type": "ColorPreset",
+          "colorsStart": ["#61afca"],
+          "colorsEnd": ["#87c326"],
+          "comment": "Cyan - Green"
         },
         {
-          "range": [251, 251],
-          "name": "Zone effect 2"
+          "dmxRange": [96, 96],
+          "type": "ColorPreset",
+          "colors": ["#87c326"],
+          "comment": "Green"
         },
         {
-          "range": [252, 252],
-          "name": "Zone effect 3"
+          "dmxRange": [97, 134],
+          "type": "ColorPreset",
+          "colorsStart": ["#87c326"],
+          "colorsEnd": ["#ebd82a"],
+          "comment": "Green - Yellow"
         },
         {
-          "range": [253, 253],
-          "name": "Zone effect 4"
+          "dmxRange": [135, 135],
+          "type": "ColorPreset",
+          "colors": ["#ebd82a"],
+          "comment": "Yellow"
         },
         {
-          "range": [254, 254],
-          "name": "Zone effect 5"
+          "dmxRange": [136, 174],
+          "type": "ColorPreset",
+          "colorsStart": ["#ebd82a"],
+          "colorsEnd": ["#dc2c4e"],
+          "comment": "Yellow - Red"
         },
         {
-          "range": [255, 255],
-          "name": "Zone effect 6"
+          "dmxRange": [175, 175],
+          "type": "ColorPreset",
+          "colors": ["#dc2c4e"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [176, 214],
+          "type": "ColorPreset",
+          "colorsStart": ["#dc2c4e"],
+          "colorsEnd": ["#bb4e8b"],
+          "comment": "Red - Magenta"
+        },
+        {
+          "dmxRange": [215, 215],
+          "type": "ColorPreset",
+          "colors": ["#bb4e8b"],
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [216, 246],
+          "type": "ColorPreset",
+          "colorsStart": ["#bb4e8b"],
+          "colorsEnd": ["#0093dc"],
+          "comment": "Magenta - Blue"
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "ColorPreset",
+          "colors": ["#0093dc"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "Effect",
+          "effectName": "Zone effect 1"
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "Effect",
+          "effectName": "Zone effect 2"
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "Effect",
+          "effectName": "Zone effect 3"
+        },
+        {
+          "dmxRange": [253, 253],
+          "type": "Effect",
+          "effectName": "Zone effect 4"
+        },
+        {
+          "dmxRange": [254, 254],
+          "type": "Effect",
+          "effectName": "Zone effect 5"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Effect",
+          "effectName": "Zone effect 6"
         }
       ]
     },
     "Zoom": {
-      "type": "Zoom",
       "fineChannelAliases": ["Zoom fine"],
-      "capabilities": [
-        {
-          "range": [0, 255],
-          "name": "Zoom 15-63°"
-        }
-      ]
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "15deg",
+        "angleEnd": "63deg"
+      }
     },
     "Shutter / Strobe": {
-      "type": "Strobe",
       "defaultValue": 255,
       "capabilities": [
         {
-          "range": [0, 31],
-          "name": "Closed"
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "range": [32, 63],
-          "name": "Strobe outer 0.3-20Hz"
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "comment": "Outer zone",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.3Hz",
+          "speedEnd": "20Hz"
         },
         {
-          "range": [64, 95],
-          "name": "Strobe 0.3-20Hz"
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.3Hz",
+          "speedEnd": "20Hz"
         },
         {
-          "range": [96, 111],
-          "name": "Color wheel speed CW slow-fast"
+          "dmxRange": [96, 111],
+          "type": "EffectSpeed",
+          "comment": "Color effect speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [112, 127],
-          "name": "Color wheel speed CCW fast-slow"
+          "dmxRange": [112, 127],
+          "type": "EffectSpeed",
+          "comment": "Color effect speed",
+          "speedStart": "fast reverse",
+          "speedEnd": "slow reverse"
         },
         {
-          "range": [128, 143],
-          "name": "Pulse slow-fast"
+          "dmxRange": [128, 143],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [144, 159],
-          "name": "Pulse fast-slow"
+          "dmxRange": [144, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "range": [160, 175],
-          "name": "Strobe random zone slow-fast"
+          "dmxRange": [160, 175],
+          "type": "ShutterStrobe",
+          "comment": "Random zone",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "range": [176, 191],
-          "name": "Random strobe/zone slow-fast"
+          "dmxRange": [176, 191],
+          "type": "ShutterStrobe",
+          "comment": "Random zone",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
-          "range": [192, 223],
-          "name": "Random strobe slow-fast"
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
-          "range": [224, 255],
-          "name": "Open"
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
     "Dimmer": {
-      "type": "Intensity",
       "fineChannelAliases": ["Dimmer fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
     }
   },
   "templateChannels": {
     "Red $pixelKey": {
-      "type": "Single Color",
-      "color": "Red",
       "fineChannelAliases": ["Red $pixelKey fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green $pixelKey": {
-      "type": "Single Color",
-      "color": "Green",
       "fineChannelAliases": ["Green $pixelKey fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue $pixelKey": {
-      "type": "Single Color",
-      "color": "Blue",
       "fineChannelAliases": ["Blue $pixelKey fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White $pixelKey": {
-      "type": "Single Color",
-      "color": "White",
       "fineChannelAliases": ["White $pixelKey fine"],
-      "defaultValue": 0
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     }
   },
   "modes": [
