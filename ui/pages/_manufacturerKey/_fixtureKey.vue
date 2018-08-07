@@ -45,10 +45,30 @@
         label="Comment" />
 
       <app-labeled-value
-        v-if="fixture.manualURL !== null"
-        name="manualURL"
-        label="Manual">
-        <a :href="fixture.manualURL" rel="nofollow">{{ fixture.manualURL }}</a>
+        v-if="fixture.links !== null"
+        name="links"
+        label="Relevant links">
+        <ul class="fixture-links">
+          <template v-for="linkType in linkTypes">
+            <li v-for="(url, index) in fixture.getLinksOfType(linkType)" :key="`${linkType}-${url}`">
+              <a
+                :href="url"
+                :title="`${linkTypeNames[linkType]} at ${url}`"
+                rel="nofollow"
+                target="_blank">
+                <app-svg :name="linkTypeIconNames[linkType]" />
+                {{ linkTypeNames[linkType] }} {{ index > 0 ? index + 1 : null }}
+                <span class="hostname">({{ getHostname(url) }})</span>
+              </a>
+            </li>
+          </template>
+          <li v-for="link in fixture.getLinksOfType(`other`)" :key="link" class="link-other">
+            <a :href="link" rel="nofollow" target="_blank">
+              <app-svg :name="linkTypeIconNames.other" />
+              {{ link }}
+            </a>
+          </li>
+        </ul>
       </app-labeled-value>
 
       <section v-if="fixture.isHelpWanted" class="help-wanted">
@@ -122,6 +142,24 @@
   }
 }
 
+.fixture-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  .hostname {
+    color: $secondary-text-dark;
+    font-size: 0.9em;
+    padding-left: 1ex;
+  }
+
+  .link-other {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
 #contribute:target {
   animation: contribute-highlight 1.5s ease;
   animation-delay: 0.5s;
@@ -148,15 +186,15 @@
 .comment > .value {
   white-space: pre-line;
 }
-
-.manualURL > .value {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 </style>
 
 <script>
+import packageJson from '~~/package.json';
+import register from '~~/fixtures/register.json';
+
+import schemaProperties from '~~/lib/schema-properties.js';
+import Fixture from '~~/lib/model/Fixture.mjs';
+
 import svg from '~/components/svg.vue';
 import categoryBadge from '~/components/category-badge.vue';
 import downloadButtonVue from '~/components/download-button.vue';
@@ -165,10 +203,7 @@ import fixtureMatrix from '~/components/fixture-matrix.vue';
 import fixtureMode from '~/components/fixture-mode.vue';
 import labeledValueVue from '~/components/labeled-value.vue';
 
-import packageJson from '~~/package.json';
-import register from '~~/fixtures/register.json';
-
-import Fixture from '~~/lib/model/Fixture.mjs';
+import fixtureLinksMixin from '~/assets/scripts/fixture-links-mixin.mjs';
 
 export default {
   components: {
@@ -180,6 +215,7 @@ export default {
     'app-fixture-mode': fixtureMode,
     'app-labeled-value': labeledValueVue
   },
+  mixins: [fixtureLinksMixin],
   validate({ params }) {
     return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;
   },
@@ -215,6 +251,13 @@ export default {
       fixKey,
       fixtureJson,
       redirect: redirectObj
+    };
+  },
+  data() {
+    return {
+      linkTypes: Object.keys(schemaProperties.links).filter(
+        linkType => linkType !== `other`
+      )
     };
   },
   computed: {
@@ -295,6 +338,13 @@ export default {
     return {
       title: `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`
     };
+  },
+  methods: {
+    getHostname(url) {
+      // adapted from https://stackoverflow.com/a/21553982/451391
+      const match = url.match(/^.*?\/\/(?:([^:/?#]*)(?::([0-9]+))?)/);
+      return match ? match[1] : url;
+    }
   }
 };
 

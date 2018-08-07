@@ -3,12 +3,14 @@
   "name": "Xtrem LED",
   "categories": ["Flower", "Color Changer"],
   "meta": {
-    "authors": ["Flo Edelmann"],
+    "authors": ["Flo Edelmann", "Tsunoo"],
     "createDate": "2018-06-16",
-    "lastModifyDate": "2018-07-26"
+    "lastModifyDate": "2018-08-06"
   },
-  "manualURL": "http://static.boomtonedj.com/pdf/manual/44/44625_xtremledmanual.pdf",
-  "comment": "Improved by QLC+ forum user Tsunoo: http://www.qlcplus.org/forum/viewtopic.php?f=6&t=12319",
+  "links": {
+    "manual": ["http://static.boomtonedj.com/pdf/manual/44/44625_xtremledmanual.pdf"],
+    "other": ["http://www.qlcplus.org/forum/viewtopic.php?f=6&t=12319"]
+  },
   "physical": {
     "dimensions": [245, 240, 245],
     "weight": 3.4,

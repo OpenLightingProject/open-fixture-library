@@ -8,8 +8,12 @@
     "createDate": "2018-08-06",
     "lastModifyDate": "2018-08-06"
   },
-  "comment": "DMX chart: https://www.claypaky.it/media/documents/Spheriscan_DMX-Channels_08.2016.pdf",
-  "manualURL": "https://www.claypaky.it/media/documents/Spheriscan-Spherilight_Manual_04.2017_EN.pdf",
+  "links": {
+    "manual": [
+      "https://www.claypaky.it/media/documents/Spheriscan-Spherilight_Manual_04.2017_EN.pdf",
+      "https://www.claypaky.it/media/documents/Spheriscan_DMX-Channels_08.2016.pdf"
+    ]
+  },
   "physical": {
     "dimensions": [497, 886, 282],
     "weight": 31.5,
