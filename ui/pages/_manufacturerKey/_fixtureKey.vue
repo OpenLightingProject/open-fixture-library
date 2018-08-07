@@ -18,7 +18,7 @@
           <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manKey}/${fixKey}.json`">Source</a></span>
           <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manKey}/${fixKey}.json`">Revisions</a></span>
 
-          <app-conditional-details v-if="fixture.meta.importPlugin != null">
+          <app-conditional-details v-if="fixture.meta.importPlugin !== null">
             <template slot="summary">Imported using the {{ plugins.data[fixture.meta.importPlugin].name }} plugin on <span v-html="getDateHtml(fixture.meta.importDate)" />.</template>
             <span v-if="fixture.meta.hasImportComment">{{ fixture.meta.importComment }}</span>
           </app-conditional-details>
