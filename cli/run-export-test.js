@@ -61,10 +61,11 @@ for (const testKey of plugins.data[args.plugin].exportTests) {
     test(file)
       .then(() => colors.green(`[PASS] `) + file.name)
       .catch(errors => {
-        const lines = [colors.red(`[FAIL] `) + file.name];
-        for (const error of errors) {
-          lines.push(`- ${error}`);
-        }
+        let lines = [colors.red(`[FAIL] `) + file.name];
+        lines = lines.concat(
+          errors.map(error => `- ${error}`)
+        );
+
         return lines.join(`\n`);
       })
   );

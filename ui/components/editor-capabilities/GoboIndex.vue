@@ -33,7 +33,7 @@
       <app-labeled-input
         :formstate="formstate"
         :name="`capability${capability.uuid}-shakeSpeed`"
-        label="Shake Speed">
+        label="Shake speed">
         <app-editor-proportional-capability-data-switcher
           :capability="capability"
           :formstate="formstate"
@@ -43,7 +43,7 @@
       <app-labeled-input
         :formstate="formstate"
         :name="`capability${capability.uuid}-shakeAngle`"
-        label="Shake Angle">
+        label="Shake angle">
         <app-editor-proportional-capability-data-switcher
           :capability="capability"
           :formstate="formstate"

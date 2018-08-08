@@ -25,19 +25,19 @@ If exporting is supported, create a `plugins/<plugin-key>/export.js` module that
 
 ```js
 {
-  name: 'filename.ext', // Required, may include forward slashes to generate a folder structure
-  content: 'file content', // Required
-  mimetype: 'text/plain', // Required
+  name: `filename.ext`, // Required, may include forward slashes to generate a folder structure
+  content: `file content`, // Required
+  mimetype: `text/plain`, // Required
   fixtures: [fixA, fixB], // Optional, list of Fixture objects that are described in this file; may be ommited if the file doesn't belong to any fixture (e.g. manufacturer information)
-  mode: '8ch' // Optional, mode's shortName if this file only describes a single mode
+  mode: `8ch` // Optional, mode's shortName if this file only describes a single mode
 }
 ```
 
 A very simple export plugin looks like this:
 
 ```js
-module.exports.name = 'Plugin Name';
-module.exports.version = '0.1.0';  // semantic versioning of export plugin
+module.exports.name = `Plugin Name`;
+module.exports.version = `0.1.0`;  // semantic versioning of export plugin
 
 /**
  * @param {!Array.<Fixture>} fixtures An array of Fixture objects, see our fixture model
@@ -55,7 +55,7 @@ module.exports.export = function exportPluginName(fixtures, options) {
         name: `${fixture.manufacturer.key}-${fixture.key}-${mode.shortName}.xml`,
         // that's just an example, normally, the (way larger) file contents are computated using several helper functions
         content: `<title>${fixture.name}: ${mode.channels.length}ch</title>`,
-        mimetype: 'application/xml'
+        mimetype: `application/xml`
       });
     }
   }
@@ -90,8 +90,8 @@ The `reject` function should be called with an error string if it's not possible
 Example:
 
 ```js
-module.exports.name = 'Plugin Name';
-module.exports.version = '0.1.0';  // semantic versioning of import plugin
+module.exports.name = `Plugin Name`;
+module.exports.version = `0.1.0`;  // semantic versioning of import plugin
 
 /**
  * @param {!string} fileContent The imported file's content
@@ -107,22 +107,22 @@ module.exports.import = function importPluginName(fileContent, fileName, resolve
   };
 
   // just an example
-  const manKey = 'cameo';
-  const fixKey = 'thunder-wash-600-rgb'; // use a sanitized key as it's used as filename!
+  const manKey = `cameo`;
+  const fixKey = `thunder-wash-600-rgb`; // use a sanitized key as it's used as filename!
 
   const fixtureObject = {};
   out.warnings[`${manKey}/${fixKey}`] = [];
 
-  const couldNotParse = fileContent.includes('Error');
+  const couldNotParse = fileContent.includes(`Error`);
   if (couldNotParse) {
     reject(`Could not parse '${fileName}'.`);
     return;
   }
 
-  fixtureObject.name = 'Thunder Wash 600 RGB';
+  fixtureObject.name = `Thunder Wash 600 RGB`;
 
   // Add warning if a necessary property is not included in parsed file
-  out.warnings[`${manKey}/${fixKey}`].push('Could not parse categories, please specify them manually.');
+  out.warnings[`${manKey}/${fixKey}`].push(`Could not parse categories, please specify them manually.`);
 
   // That's the imported fixture
   out.fixtures[`${manKey}/${fixKey}`] = fixtureObject;
@@ -140,10 +140,10 @@ A plugin's export test takes an exported file object as argument and evaluates i
 Each test module should be located at `plugins/<plugin-key>/exportTests/<export-test-key>.js`. Here's a dummy test illustrating the structure:
 
 ```js
-const xml2js = require('xml2js');
+const xml2js = require(`xml2js`);
 
 /**
- * @param {object} exportFile The file returned by the plugins' export module.
+ * @param {!object} exportFile The file returned by the plugins' export module.
  * @param {!string} exportFile.name File name, may include slashes to provide a folder structure.
  * @param {!string} exportFile.content File content.
  * @param {!string} exportFile.mimetype File mime type.
@@ -166,7 +166,7 @@ module.exports = function testValueCorrectness(exportFile) {
       // the lighting software crashes if the name is empty, so we must ensure that this won't happen
       // (just an example)
       if (xml.Fixture.Name[0].length === 0) {
-        errors.push('Name missing');
+        errors.push(`Name missing`);
       }
 
       if (errors.length > 0) {

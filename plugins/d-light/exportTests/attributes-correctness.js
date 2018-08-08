@@ -1,7 +1,7 @@
 const xml2js = require(`xml2js`);
 
 /**
- * @param {object} exportFile The file returned by the plugins' export module.
+ * @param {!object} exportFile The file returned by the plugins' export module.
  * @param {!string} exportFile.name File name, may include slashes to provide a folder structure.
  * @param {!string} exportFile.content File content.
  * @param {!string} exportFile.mimetype File mime type.
