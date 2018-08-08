@@ -15,7 +15,16 @@ const FIXTURE_TOOL_DIR_PREFIX = path.join(os.tmpdir(), `ofl-qlcplus5-fixture-too
 const FIXTURE_TOOL_PATH = `resources/fixtures/scripts/fixtures-tool.py`;
 const EXPORTED_FIXTURE_PATH = `resources/fixtures/manufacturer/fixture.qxf`;
 
-module.exports = function testFixtureToolValidation(exportFileData) {
+/**
+ * @param {!object} exportFile The file returned by the plugins' export module.
+ * @param {!string} exportFile.name File name, may include slashes to provide a folder structure.
+ * @param {!string} exportFile.content File content.
+ * @param {!string} exportFile.mimetype File mime type.
+ * @param {?Array.<Fixture>} exportFile.fixtures Fixture objects that are described in given file; may be ommited if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @param {?string} exportFile.mode Mode's shortName if given file only describes a single mode.
+ * @returns {!Promise} Resolve when the test passes or reject with an error or an array of errors if the test fails.
+**/
+module.exports = function testFixtureToolValidation(exportFile) {
   let directory;
 
   // create a unique temporary directory to avoid race conditions when multiple running tests access the same files
@@ -30,7 +39,7 @@ module.exports = function testFixtureToolValidation(exportFileData) {
 
     // write exported fixture.qxf into fixtures/manufacturer directory
     .then(() => mkdirp(path.join(directory, `resources/fixtures/manufacturer`)))
-    .then(() => writeFile(path.join(directory, EXPORTED_FIXTURE_PATH), exportFileData))
+    .then(() => writeFile(path.join(directory, EXPORTED_FIXTURE_PATH), exportFile.content))
 
     // store used gobos in the gobos/ directory
     .then(() => mkdirp(path.join(directory, `resources/gobos/Others`)))

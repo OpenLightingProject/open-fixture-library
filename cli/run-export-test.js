@@ -54,7 +54,9 @@ for (const testKey of plugins.data[args.plugin].exportTests) {
   const filePromises = files.map(file =>
     test(file)
       .then(() => colors.green(`[PASS] `) + file.name)
-      .catch(errors => {
+      .catch(err => {
+        const errors = Array.isArray(err) ? err : [err];
+
         let lines = [colors.red(`[FAIL] `) + file.name];
         lines = lines.concat(
           errors.map(error => `- ${error}`)
