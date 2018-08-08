@@ -21,6 +21,9 @@
     <h2 id="contact">Contact</h2>
     <p><a href="mailto:florian-edelmann@online.de">florian-edelmann@online.de</a> or via <a href="https://github.com/FloEdelmann">GitHub</a></p>
 
+    <h2>Privacy</h2>
+    <p>We respect users' privacy and thus collect as few data as possible. No personal data about our visitors is stored on our server or sent to other sites without users' consent. Videos are embetted with <a href="https://www.heise.de/embetty">embetty</a>, so no information is sent from users' browsers to the video hosting platform (e.g. YouTube) until the video is played. The fixture editor only uses the entered data to open a pull request in our public GitHub repository. Unfinished fixtures (and nothing else) is saved locally in users's browsers, but these data are not sent anywhere until the fixture is submitted.</p>
+
   </div>
 </template>
 
