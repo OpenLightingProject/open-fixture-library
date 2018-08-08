@@ -212,7 +212,8 @@ function getTaskPromise(task) {
       })
       .catch(err => {
         failed = true;
-        return `    <li><details><summary>:x: ${file.name}</summary>${err}</details></li>`;
+        const errors = Array.isArray(err) ? err : [err];
+        return `    <li><details><summary>:x: ${file.name}</summary>${errors.join(`\n`)}</details></li>`;
       })
   ))
     .then(resultLines => {

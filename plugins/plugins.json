@@ -8,7 +8,8 @@
     "ecue",
     "millumin",
     "ofl",
-    "qlcplus_4.11.2"
+    "qlcplus_4.11.2",
+    "qlcplus_4.12.0"
   ],
   "data": {
     "d-light": {
@@ -34,6 +35,13 @@
     "qlcplus_4.11.2": {
       "name": "QLC+ 4.11.2",
       "exportTests": [
+        "xsd-schema-conformity"
+      ]
+    },
+    "qlcplus_4.12.0": {
+      "name": "QLC+ 4.12.0",
+      "exportTests": [
+        "fixture-tool-validation",
         "xsd-schema-conformity"
       ]
     }
