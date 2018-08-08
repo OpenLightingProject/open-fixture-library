@@ -2,6 +2,7 @@ const util = require(`util`);
 const Ajv = require(`ajv`);
 
 const register = require(`../fixtures/register.json`);
+const plugins = require(`../plugins/plugins.json`);
 const fixtureSchema = require(`../schemas/dereferenced/fixture.json`);
 const fixtureRedirectSchema = require(`../schemas/dereferenced/fixture-redirect.json`);
 const schemaProperties = require(`../lib/schema-properties.js`);
@@ -166,6 +167,10 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   function checkMeta(meta) {
     if (meta.lastModifyDate < meta.createDate) {
       result.errors.push(`meta.lastModifyDate is earlier than meta.createDate.`);
+    }
+
+    if (meta.importPlugin && !plugins.importPlugins.includes(meta.importPlugin)) {
+      result.errors.push(`Unknown import plugin ${meta.importPlugin}`);
     }
   }
 

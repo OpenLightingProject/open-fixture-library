@@ -206,7 +206,7 @@ function getTaskPromise(task) {
 
   let failed = false;
   return Promise.all(files.map(
-    file => test(file.content)
+    file => test(file)
       .then(() => {
         return `    <li>:heavy_check_mark: ${file.name}</li>`;
       })

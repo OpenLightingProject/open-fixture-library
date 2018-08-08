@@ -52,14 +52,14 @@ const files = plugin.export(fixtures, {});
 for (const testKey of plugins.data[args.plugin].exportTests) {
   const test = require(path.join(__dirname, `../plugins`, args.plugin, `exportTests/${testKey}.js`));
   const filePromises = files.map(file =>
-    test(file.content)
+    test(file)
       .then(() => colors.green(`[PASS] `) + file.name)
-      .catch(err => {
-        const lines = [colors.red(`[FAIL] `) + file.name];
-        const errors = Array.isArray(err) ? err : [err];
-        for (const error of errors) {
-          lines.push(`- ${error}`);
-        }
+      .catch(errors => {
+        let lines = [colors.red(`[FAIL] `) + file.name];
+        lines = lines.concat(
+          errors.map(error => `- ${error}`)
+        );
+
         return lines.join(`\n`);
       })
   );
