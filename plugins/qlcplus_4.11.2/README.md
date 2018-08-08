@@ -8,7 +8,7 @@ The main library is available in their [GitHub repository](https://github.com/mc
 
 To import a fixture into *QLC+*, copy the `.qxf` file into the right directory (see below).
 
-**File locations:**
+### File locations
 
 Fixtures are always located in the `fixture` subdirectory in one of the following paths. Fixtures in subdirectories of `fixture` (e.g. grouped by manufacturer) aren't recognized!
 
