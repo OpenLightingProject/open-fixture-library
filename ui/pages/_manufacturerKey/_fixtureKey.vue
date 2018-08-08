@@ -49,23 +49,42 @@
         name="comment"
         label="Comment" />
 
+      <section v-if="videos" class="fixture-videos">
+        <template v-for="(video, index) in videos">
+          <div v-if="index < videosToShow" :key="video.url" class="fixture-video">
+            <embetty-video
+              :type="video.type"
+              :video-id="video.videoId" />
+            <a
+              :href="video.url"
+              rel="nofollow"
+              target="_blank">
+              <app-svg name="youtube" />
+              Watch video at {{ video.displayType }}
+            </a>
+          </div>
+        </template>
+      </section>
+
       <app-labeled-value
         v-if="fixture.links !== null"
         name="links"
         label="Relevant links">
         <ul class="fixture-links">
           <template v-for="linkType in linkTypes">
-            <li v-for="(url, index) in fixture.getLinksOfType(linkType)" :key="`${linkType}-${url}`">
-              <a
-                :href="url"
-                :title="`${linkTypeNames[linkType]} at ${url}`"
-                rel="nofollow"
-                target="_blank">
-                <app-svg :name="linkTypeIconNames[linkType]" />
-                {{ linkTypeNames[linkType] }} {{ index > 0 ? index + 1 : null }}
-                <span class="hostname">({{ getHostname(url) }})</span>
-              </a>
-            </li>
+            <template v-for="(url, index) in fixture.getLinksOfType(linkType)">
+              <li v-if="linkType !== `video` || index >= videosToShow" :key="`${linkType}-${url}`">
+                <a
+                  :href="url"
+                  :title="`${linkTypeNames[linkType]} at ${url}`"
+                  rel="nofollow"
+                  target="_blank">
+                  <app-svg :name="linkTypeIconNames[linkType]" />
+                  {{ linkTypeNames[linkType] }} {{ index > 0 ? index + 1 : null }}
+                  <span class="hostname">({{ getHostname(url) }})</span>
+                </a>
+              </li>
+            </template>
           </template>
           <li v-for="link in fixture.getLinksOfType(`other`)" :key="link" class="link-other">
             <a :href="link" rel="nofollow" target="_blank">
@@ -144,6 +163,26 @@
   & > span:not(:last-child)::after {
     content: ' | ';
     padding: 0 0.7ex;
+  }
+}
+
+.fixture-videos {
+  text-align: center;
+  line-height: 1;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+.fixture-video {
+  margin-bottom: 1rem;
+
+  @media screen and (min-width: $tablet) {
+    display: inline-block;
+    width: 50%;
+  }
+
+  & a {
+    display: inline-block;
+    margin-top: 4px;
   }
 }
 
@@ -266,6 +305,7 @@ export default {
       linkTypes: Object.keys(schemaProperties.links).filter(
         linkType => linkType !== `other`
       ),
+      videosToShow: 2,
       plugins
     };
   },
@@ -341,6 +381,33 @@ export default {
           }
         ]
       };
+    },
+
+    /**
+     * @returns {!array.<!object>} Array of videos that can be embetted.
+     */
+    videos() {
+      const videoUrls = this.fixture.getLinksOfType(`video`);
+      const embettableVideoData = [];
+
+      const youtubeRegex = /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/;
+
+      for (const url of videoUrls) {
+        const match = url.match(youtubeRegex);
+
+        if (match !== null) {
+          const [, videoId] = match;
+
+          embettableVideoData.push({
+            url,
+            type: `youtube`,
+            displayType: `YouTube`,
+            videoId
+          });
+        }
+      }
+
+      return embettableVideoData;
     }
   },
   head() {
