@@ -50,20 +50,18 @@
         label="Comment" />
 
       <section v-if="videos" class="fixture-videos">
-        <template v-for="(video, index) in videos">
-          <div v-if="index < videosToShow" :key="video.url" class="fixture-video">
-            <embetty-video
-              :type="video.type"
-              :video-id="video.videoId" />
-            <a
-              :href="video.url"
-              rel="nofollow"
-              target="_blank">
-              <app-svg name="youtube" />
-              Watch video at {{ video.displayType }}
-            </a>
-          </div>
-        </template>
+        <div v-for="video in videos" :key="video.url" class="fixture-video">
+          <embetty-video
+            :type="video.type"
+            :video-id="video.videoId" />
+          <a
+            :href="video.url"
+            rel="nofollow"
+            target="_blank">
+            <app-svg name="youtube" />
+            Watch video at {{ video.displayType }}
+          </a>
+        </div>
       </section>
 
       <app-labeled-value
@@ -71,25 +69,15 @@
         name="links"
         label="Relevant links">
         <ul class="fixture-links">
-          <template v-for="linkType in linkTypes">
-            <template v-for="(url, index) in fixture.getLinksOfType(linkType)">
-              <li v-if="linkType !== `video` || index >= videosToShow" :key="`${linkType}-${url}`">
-                <a
-                  :href="url"
-                  :title="`${linkTypeNames[linkType]} at ${url}`"
-                  rel="nofollow"
-                  target="_blank">
-                  <app-svg :name="linkTypeIconNames[linkType]" />
-                  {{ linkTypeNames[linkType] }} {{ index > 0 ? index + 1 : null }}
-                  <span class="hostname">({{ getHostname(url) }})</span>
-                </a>
-              </li>
-            </template>
-          </template>
-          <li v-for="link in fixture.getLinksOfType(`other`)" :key="link" class="link-other">
-            <a :href="link" rel="nofollow" target="_blank">
-              <app-svg :name="linkTypeIconNames.other" />
-              {{ link }}
+          <li v-for="link in links" :key="`${link.type}-${link.url}`" :class="`link-${link.type}`">
+            <a
+              :href="link.url"
+              :title="link.title"
+              rel="nofollow"
+              target="_blank">
+              <app-svg :name="link.iconName" />
+              {{ link.name }}
+              <span v-if="link.type !== `other`" class="hostname">({{ link.hostname }})</span>
             </a>
           </li>
         </ul>
@@ -251,6 +239,8 @@ import labeledValueVue from '~/components/labeled-value.vue';
 
 import fixtureLinksMixin from '~/assets/scripts/fixture-links-mixin.mjs';
 
+const VIDEOS_TO_EMBED = 2;
+
 export default {
   components: {
     'app-svg': svg,
@@ -302,10 +292,6 @@ export default {
   },
   data() {
     return {
-      linkTypes: Object.keys(schemaProperties.links).filter(
-        linkType => linkType !== `other`
-      ),
-      videosToShow: 2,
       plugins
     };
   },
@@ -390,24 +376,91 @@ export default {
       const videoUrls = this.fixture.getLinksOfType(`video`);
       const embettableVideoData = [];
 
+      /**
+       * YouTube videos can be in one of the following formats:
+       * - https://www.youtube.com/watch?v={videoId}&otherParameters
+       * - https://youtu.be/{videoId]}?otherParameters
+       */
       const youtubeRegex = /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/;
 
+      /**
+       * Vimeo videos can be in one of the following formats:
+       * - https://vimeo.com/{videoId}
+       * - https://vimeo.com/channels/{channelName}/{videoId}
+       * - https://vimeo.com/groups/{groupId}/videos/{videoId}
+       */
+      const vimeoRegex = /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)/;
+
       for (const url of videoUrls) {
-        const match = url.match(youtubeRegex);
+        if (embettableVideoData.length === VIDEOS_TO_EMBED) {
+          break;
+        }
 
+        let match = url.match(youtubeRegex);
         if (match !== null) {
-          const [, videoId] = match;
-
           embettableVideoData.push({
             url,
             type: `youtube`,
             displayType: `YouTube`,
-            videoId
+            videoId: match[1]
           });
+          continue;
+        }
+
+        match = url.match(vimeoRegex);
+        if (match !== null) {
+          embettableVideoData.push({
+            url,
+            type: `vimeo`,
+            displayType: `Vimeo`,
+            videoId: match[1]
+          });
+          continue;
         }
       }
 
       return embettableVideoData;
+    },
+
+    links() {
+      const links = [];
+
+      for (const linkType of Object.keys(schemaProperties.links)) {
+        let linkDisplayNumber = 1;
+        let linksOfType = this.fixture.getLinksOfType(linkType);
+
+        if (linkType === `video`) {
+          linksOfType = linksOfType.filter(
+            url => !this.videos.some(video => video.url === url)
+          );
+          linkDisplayNumber += this.videos.length;
+        }
+
+        for (const url of linksOfType) {
+          let name = this.linkTypeNames[linkType];
+          const title = `${name} at ${url}`;
+
+          if (linkType === `other`) {
+            name = url;
+          }
+          else if (linkDisplayNumber > 1) {
+            name += ` ${linkDisplayNumber}`;
+          }
+
+          links.push({
+            url,
+            name,
+            title,
+            type: linkType,
+            iconName: this.linkTypeIconNames[linkType],
+            hostname: this.getHostname(url)
+          });
+
+          linkDisplayNumber++;
+        }
+      }
+
+      return links;
     }
   },
   head() {
