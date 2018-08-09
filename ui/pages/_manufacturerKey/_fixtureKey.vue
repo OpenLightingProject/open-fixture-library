@@ -53,7 +53,8 @@
         <div v-for="video in videos" :key="video.url" class="fixture-video">
           <embetty-video
             :type="video.type"
-            :video-id="video.videoId" />
+            :video-id="video.videoId"
+            :start-at="video.startAt" />
           <a
             :href="video.url"
             rel="nofollow"
@@ -381,7 +382,7 @@ export default {
        * - https://www.youtube.com/watch?v={videoId}&otherParameters
        * - https://youtu.be/{videoId]}?otherParameters
        */
-      const youtubeRegex = /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/;
+      const youtubeRegex = /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(?:[?&]t=([0-9hms]+))?/;
 
       /**
        * Vimeo videos can be in one of the following formats:
@@ -389,7 +390,7 @@ export default {
        * - https://vimeo.com/channels/{channelName}/{videoId}
        * - https://vimeo.com/groups/{groupId}/videos/{videoId}
        */
-      const vimeoRegex = /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)/;
+      const vimeoRegex = /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([0-9hms]+))?/;
 
       for (const url of videoUrls) {
         if (embettableVideoData.length === VIDEOS_TO_EMBED) {
@@ -402,7 +403,8 @@ export default {
             url,
             type: `youtube`,
             displayType: `YouTube`,
-            videoId: match[1]
+            videoId: match[1],
+            startAt: match[2] || 0
           });
           continue;
         }
@@ -413,7 +415,8 @@ export default {
             url,
             type: `vimeo`,
             displayType: `Vimeo`,
-            videoId: match[1]
+            videoId: match[1],
+            startAt: match[2] || 0
           });
           continue;
         }
