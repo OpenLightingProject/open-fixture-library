@@ -163,7 +163,7 @@
 .fixture-video {
   margin-bottom: 1rem;
 
-  @media screen and (min-width: $tablet) {
+  @media screen and (min-width: $phone-landscape) {
     display: inline-block;
     width: 50%;
   }
