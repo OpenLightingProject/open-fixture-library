@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
 
-  "version": "9.0.0",
+  "version": "9.1.0",
 
   "type": "object",
   "properties": {
@@ -115,11 +115,12 @@
           "$comment": "additions are welcome",
           "enum": [
             "3-pin",
-            "5-pin",
             "3-pin (swapped +/-)",
             "3-pin and 5-pin",
             "3-pin XLR IP65",
-            "3.5mm stereo jack"
+            "3.5mm stereo jack",
+            "5-pin",
+            "5-pin XLR IP65"
           ]
         },
         "bulb": {
