@@ -260,12 +260,30 @@
       ]
     },
     "Color Temperature": {
+      "name": "Color Temperature",
       "defaultValue": 0,
       "capability": {
         "type": "ColorTemperature",
         "colorTemperatureStart": "8500K",
         "colorTemperatureEnd": "3200K"
       }
+    },
+    "Color Temperature 2": {
+      "name": "Color Temperature",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7300K",
+          "colorTemperatureEnd": "3200K"
+        }
+      ]
     },
     "Dimmer Curve": {
       "defaultValue": 0,
@@ -443,7 +461,7 @@
         "Blue",
         "White",
         "Color Macros",
-        "Color Temperature",
+        "Color Temperature 2",
         "Dimmer Curve",
         "Device Settings"
       ]
@@ -464,7 +482,7 @@
         "White",
         "White fine",
         "Color Macros",
-        "Color Temperature",
+        "Color Temperature 2",
         "Dimmer Curve",
         "Device Settings"
       ]
