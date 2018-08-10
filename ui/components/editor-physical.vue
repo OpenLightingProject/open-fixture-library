@@ -82,7 +82,7 @@
         :schema-property="properties.physicalLens.name" />
     </app-labeled-input>
 
-    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-lens-degreesMinMax`" label="Light cone">
+    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-lens-degreesMinMax`" label="Beam angle">
       <app-property-input-range
         v-model="physical.lens.degreesMinMax"
         :name="`${namePrefix}-physical-lens-degreesMinMax`"

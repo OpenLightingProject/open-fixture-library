@@ -926,19 +926,19 @@
         },
         {
           "dmxRange": [6, 127],
-          "type": "PrismRotation",
+          "type": "Prism",
           "angleStart": "0deg",
           "angleEnd": "540deg"
         },
         {
           "dmxRange": [128, 192],
-          "type": "PrismRotation",
+          "type": "Prism",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         },
         {
           "dmxRange": [193, 255],
-          "type": "PrismRotation",
+          "type": "Prism",
           "speedStart": "fast CCW",
           "speedEnd": "slow CCW"
         }
