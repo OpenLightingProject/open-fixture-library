@@ -19,13 +19,7 @@ module.exports = function testChannelNumbers(exportFile) {
 
   for (const attr of dmxChannelAttributes) {
     const channelIndex = parseInt(attr.replace(dmxChannelRegex, `$1`));
-
-    if (usedChannelIndices.has(channelIndex)) {
-      errors.push(`Channel index ${channelIndex} is used more than once.`);
-    }
-    else {
-      usedChannelIndices.add(channelIndex);
-    }
+    usedChannelIndices.add(channelIndex);
 
     if (channelIndex >= mode.channels.length) {
       errors.push(`Channel index ${channelIndex} is out of range (maximum: ${mode.channels.length - 1}).`);
