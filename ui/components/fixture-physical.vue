@@ -72,8 +72,11 @@
       <app-labeled-value
         v-if="physical.lensDegreesMin !== null"
         name="lens-degreesMinMax"
-        label="Light cone">
-        {{ physical.lensDegreesMin }} … {{ physical.lensDegreesMax }}
+        label="Beam angle">
+        {{ physical.lensDegreesMin === physical.lensDegreesMax
+          ? `${physical.lensDegreesMin}°`
+          : `${physical.lensDegreesMin}…${physical.lensDegreesMax}°`
+        }}
       </app-labeled-value>
     </section>
 

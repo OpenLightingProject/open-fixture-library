@@ -12,8 +12,8 @@
     <p>In March 2018, we decided it was time to get our own server and domain – and at the same time were invited to the <a href="https://github.com/OpenLightingProject">Open Lighting Project</a> (see <a href="https://github.com/OpenLightingProject/open-fixture-library/issues/453">issue #453</a> on GitHub), so here we are "under the new flag" at <a href="https://open-fixture-library.org">open-fixture-library.org</a>! Of course there is still more to be improved, so feel free to contribute!</p>
 
     <h2>Used resources</h2>
-    <p>Fonts: <a href="http://www.latofonts.com/">Lato</a> and <a href="http://levien.com/type/myfonts/inconsolata.html" style="font-family: Inconsolata">Inconsolata</a></p>
-    <p>Icons: <a href="https://materialdesignicons.com/">Material Design Icons</a></p>
+    <p>Fonts: <a href="http://www.latofonts.com/">Lato</a> and <a href="http://levien.com/type/myfonts/inconsolata.html" style="font-family: Inconsolata">Inconsolata</a><br>
+      Icons: <a href="https://materialdesignicons.com/">Material Design Icons</a></p>
 
     <h2>Contribute</h2>
     <p>See the <a href="https://github.com/OpenLightingProject/open-fixture-library#contribute">project page on GitHub</a> to see how you can help.</p>
@@ -21,12 +21,20 @@
     <h2 id="contact">Contact</h2>
     <p><a href="mailto:florian-edelmann@online.de">florian-edelmann@online.de</a> or via <a href="https://github.com/FloEdelmann">GitHub</a></p>
 
+    <h2>Privacy</h2>
+    <p>We respect users' privacy and thus collect as few data as possible. No personal data about our visitors is stored on our server or sent to other sites without users' consent. The communication between users' browsers and our server is encrypted via HTTPS. Videos are embetted with <a href="https://www.heise.de/embetty">embetty</a>, so no information is sent from users' browsers to the video hosting platform (e.g. YouTube) until the video is played. The fixture editor only uses the entered data to open a pull request in our public GitHub repository. Unfinished fixtures (and nothing else) are saved locally in users's browsers, but these data are not sent anywhere until the fixture is submitted.</p>
+
   </div>
 </template>
 
 <style lang="scss" scoped>
 p {
   text-align: justify;
+}
+
+h2 {
+  margin: 1.5rem 0 -0.5rem;
+  line-height: 1.3;
 }
 </style>
 

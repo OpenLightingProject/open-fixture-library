@@ -9,6 +9,7 @@ module.exports = {
   ],
   plugins: [
     `~/plugins/draggable.js`,
+    `~/plugins/embetty-vue.js`,
     {
       src: `~/plugins/focus-directive.js`,
       ssr: false
@@ -25,6 +26,11 @@ module.exports = {
       `~~/fixtures/manufacturers.json`,
       `~/components/svg.vue`
     ],
+    babel: {
+      plugins: [
+        `transform-es2015-modules-commonjs`
+      ]
+    },
     extend(config, ctx) {
       // exclude /assets/icons from url-loader
       const urlLoader = config.module.rules.find(rule => rule.loader === `url-loader`);
@@ -135,5 +141,8 @@ module.exports = {
       link
     };
   },
-  css: [`~/assets/styles/style.scss`]
+  css: [
+    `~/assets/styles/style.scss`,
+    `embetty-vue/dist/embetty-vue.css`
+  ]
 };

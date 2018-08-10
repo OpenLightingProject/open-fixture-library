@@ -49,28 +49,36 @@
         name="comment"
         label="Comment" />
 
+      <section v-if="videos" class="fixture-videos">
+        <div v-for="video in videos" :key="video.url" class="fixture-video">
+          <embetty-video
+            :type="video.type"
+            :video-id="video.videoId"
+            :start-at="video.startAt" />
+          <a
+            :href="video.url"
+            rel="nofollow"
+            target="_blank">
+            <app-svg name="youtube" />
+            Watch video at {{ video.displayType }}
+          </a>
+        </div>
+      </section>
+
       <app-labeled-value
         v-if="fixture.links !== null"
         name="links"
         label="Relevant links">
         <ul class="fixture-links">
-          <template v-for="linkType in linkTypes">
-            <li v-for="(url, index) in fixture.getLinksOfType(linkType)" :key="`${linkType}-${url}`">
-              <a
-                :href="url"
-                :title="`${linkTypeNames[linkType]} at ${url}`"
-                rel="nofollow"
-                target="_blank">
-                <app-svg :name="linkTypeIconNames[linkType]" />
-                {{ linkTypeNames[linkType] }} {{ index > 0 ? index + 1 : null }}
-                <span class="hostname">({{ getHostname(url) }})</span>
-              </a>
-            </li>
-          </template>
-          <li v-for="link in fixture.getLinksOfType(`other`)" :key="link" class="link-other">
-            <a :href="link" rel="nofollow" target="_blank">
-              <app-svg :name="linkTypeIconNames.other" />
-              {{ link }}
+          <li v-for="link in links" :key="`${link.type}-${link.url}`" :class="`link-${link.type}`">
+            <a
+              :href="link.url"
+              :title="link.title"
+              rel="nofollow"
+              target="_blank">
+              <app-svg :name="link.iconName" />
+              {{ link.name }}
+              <span v-if="link.type !== `other`" class="hostname">({{ link.hostname }})</span>
             </a>
           </li>
         </ul>
@@ -147,6 +155,26 @@
   }
 }
 
+.fixture-videos {
+  text-align: center;
+  line-height: 1;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+.fixture-video {
+  margin-bottom: 1rem;
+
+  @media screen and (min-width: $phone-landscape) {
+    display: inline-block;
+    width: 50%;
+  }
+
+  & a {
+    display: inline-block;
+    margin-top: 4px;
+  }
+}
+
 .fixture-links {
   margin: 0;
   padding: 0;
@@ -212,6 +240,8 @@ import labeledValueVue from '~/components/labeled-value.vue';
 
 import fixtureLinksMixin from '~/assets/scripts/fixture-links-mixin.mjs';
 
+const VIDEOS_TO_EMBED = 2;
+
 export default {
   components: {
     'app-svg': svg,
@@ -263,9 +293,6 @@ export default {
   },
   data() {
     return {
-      linkTypes: Object.keys(schemaProperties.links).filter(
-        linkType => linkType !== `other`
-      ),
       plugins
     };
   },
@@ -341,6 +368,102 @@ export default {
           }
         ]
       };
+    },
+
+    /**
+     * @returns {!array.<!object>} Array of videos that can be embetted.
+     */
+    videos() {
+      const videoUrls = this.fixture.getLinksOfType(`video`);
+      const embettableVideoData = [];
+
+      /**
+       * YouTube videos can be in one of the following formats:
+       * - https://www.youtube.com/watch?v={videoId}&otherParameters
+       * - https://youtu.be/{videoId]}?otherParameters
+       */
+      const youtubeRegex = /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(?:[?&]t=([0-9hms]+))?/;
+
+      /**
+       * Vimeo videos can be in one of the following formats:
+       * - https://vimeo.com/{videoId}
+       * - https://vimeo.com/channels/{channelName}/{videoId}
+       * - https://vimeo.com/groups/{groupId}/videos/{videoId}
+       */
+      const vimeoRegex = /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([0-9hms]+))?/;
+
+      for (const url of videoUrls) {
+        if (embettableVideoData.length === VIDEOS_TO_EMBED) {
+          break;
+        }
+
+        let match = url.match(youtubeRegex);
+        if (match !== null) {
+          embettableVideoData.push({
+            url,
+            type: `youtube`,
+            displayType: `YouTube`,
+            videoId: match[1],
+            startAt: match[2] || 0
+          });
+          continue;
+        }
+
+        match = url.match(vimeoRegex);
+        if (match !== null) {
+          embettableVideoData.push({
+            url,
+            type: `vimeo`,
+            displayType: `Vimeo`,
+            videoId: match[1],
+            startAt: match[2] || 0
+          });
+          continue;
+        }
+      }
+
+      return embettableVideoData;
+    },
+
+    links() {
+      const links = [];
+
+      for (const linkType of Object.keys(schemaProperties.links)) {
+        let linkDisplayNumber = 1;
+        let linksOfType = this.fixture.getLinksOfType(linkType);
+
+        if (linkType === `video`) {
+          linksOfType = linksOfType.filter(
+            url => !this.videos.some(video => video.url === url)
+          );
+          linkDisplayNumber += this.videos.length;
+        }
+
+        for (const url of linksOfType) {
+          let name = this.linkTypeNames[linkType];
+          const title = `${name} at ${url}`;
+
+          if (linkType === `other`) {
+            name = url;
+          }
+          else if (linkDisplayNumber > 1) {
+            name += ` ${linkDisplayNumber}`;
+          }
+
+          links.push({
+            url,
+            name,
+            title,
+            type: linkType,
+            iconName: this.linkTypeIconNames[linkType],
+            hostname: this.getHostname(url)
+          });
+
+          linkDisplayNumber++;
+        }
+      }
+
+      return links;
     }
   },
   head() {

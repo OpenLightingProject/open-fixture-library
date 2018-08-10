@@ -2,6 +2,10 @@ language: node_js
 node_js:
   #- "node" # latest
   - "8"
+addons:
+  apt:
+    packages:
+      - python-lxml # for QLC+ fixture-tool-validation export test
 env:
   - TESTFILE=tests/http-status.js
   - TESTFILE=tests/fixtures-valid.js
