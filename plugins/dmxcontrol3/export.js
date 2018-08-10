@@ -100,19 +100,22 @@ function addFunctions(xml, mode) {
       continue;
     }
 
-    const xmlFunctions = xml.element(`functions`);
+    const xmlFunctionsContainer = xml.element(`functions`);
 
     if (pixelKey === null && mode.fixture.categories.includes(`Matrix`)) {
-      addMatrix(xmlFunctions, mode, channelsPerPixel);
+      addMatrix(xmlFunctionsContainer, mode, channelsPerPixel);
     }
 
     if (pixelKey !== null) {
-      xmlFunctions.comment(pixelKey);
+      xmlFunctionsContainer.comment(pixelKey);
     }
 
-    addColors(xmlFunctions, mode, pixelChannels);
-    addDimmer(xmlFunctions, mode, pixelChannels);
-    addPosition(xmlFunctions, mode, pixelChannels);
+    let xmlFunctions = [];
+    pixelChannels.forEach(ch => (xmlFunctions = xmlFunctions.concat(getXmlFunctionsFromChannel(ch))));
+
+    // TODO: group xmlFunctions (e.g. rgb, position, goboindex into gobowheel, etc.)
+
+    xmlFunctions.forEach(xmlFunction => xmlFunctionsContainer.importDocument(xmlFunction));
   }
 
   /**
@@ -153,8 +156,8 @@ function addFunctions(xml, mode) {
    * @returns {?Channel} A channel to be used instead of the given one; may be the same or null (to not include in definition).
    */
   function getUsableChannel(channel) {
-    if (channel instanceof MatrixChannel && channel.wrappedChannel instanceof SwitchingChannel) {
-      return getUsableChannel(channel.wrappedChannel.defaultChannel);
+    if (channel instanceof MatrixChannel && !(channel.wrappedChannel instanceof Channel)) {
+      return getUsableChannel(channel.wrappedChannel);
     }
     if (channel instanceof SwitchingChannel) {
       return getUsableChannel(channel.defaultChannel);
@@ -165,7 +168,260 @@ function addFunctions(xml, mode) {
     }
     return channel;
   }
+
+  /**
+   * @param {!Channel} channel The channel that should be represented as one or more DMXControl functions.
+   * @returns {!Array.<XMLElement>} Functions created by this channel. They are not automatically grouped together.
+   */
+  function getXmlFunctionsFromChannel(channel) {
+    const functionToCapabilities = {};
+
+    for (const cap of channel.capabilities) {
+      const properFunction = Object.keys(functions).find(
+        key => functions[key].isCapSuitable(cap)
+      );
+
+      if (properFunction) {
+        if (!Object.keys(functionToCapabilities).includes(properFunction)) {
+          functionToCapabilities[properFunction] = [];
+        }
+        functionToCapabilities[properFunction].push(cap);
+      }
+    }
+
+    let xmlFunctions = [];
+    Object.keys(functionToCapabilities).forEach(functionKey => {
+      const caps = functionToCapabilities[functionKey];
+      xmlFunctions = xmlFunctions.concat(functions[functionKey].create(channel, caps));
+    });
+    xmlFunctions.forEach(xmlFunc => addChannelAttributes(xmlFunc, mode, channel));
+
+    return xmlFunctions;
+  }
 }
+
+const functions = {
+  dimmer: {
+    isCapSuitable: cap => cap.type === `Intensity`,
+    create: (channel, caps) => {
+      const xmlDimmer = xmlbuilder.create(`dimmer`);
+
+      if (channel.capabilities.length > 1 || caps[0].brightness[0].number !== 0) {
+        caps.forEach(cap => {
+          const xmlCap = getBaseXmlCapability(cap);
+          xmlCap.attribute(`type`, `linear`);
+          xmlCap.attribute(`minval`, Math.min(cap.brightness[0].number, 100));
+          xmlCap.attribute(`maxval`, Math.min(cap.brightness[1].number, 100));
+          xmlDimmer.importDocument(xmlCap);
+        });
+      }
+
+      return xmlDimmer;
+    }
+  },
+  shutter: {
+    isCapSuitable: cap => cap.type === `ShutterStrobe` && [`Open`, `Closed`].includes(cap.shutterEffect),
+    create: (channel, caps) => {
+      const xmlShutter = xmlbuilder.create(`shutter`);
+
+      caps.forEach(cap => {
+        const xmlCap = getBaseXmlCapability(cap);
+        xmlCap.attribute(`type`, cap.shutterEffect.toLowerCase());
+        xmlShutter.importDocument(xmlCap);
+      });
+
+      return xmlShutter;
+    }
+  },
+  strobe: {
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  },
+  strobeDuration: {
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  },
+  pan: {
+    isCapSuitable: cap => cap.type === `Pan`,
+    create: (channel, caps) => {
+      const xmlPan = xmlbuilder.create(`pan`);
+
+      caps.forEach(cap => {
+        xmlPan.element(`range`, {
+          range: cap.angle[1].number - cap.angle[0].number
+        });
+      });
+
+      return xmlPan;
+    }
+  },
+  tilt: {
+    isCapSuitable: cap => [`Pan`, `Tilt`].includes(cap.type),
+    create: (channel, caps) => {
+      const xmlTilt = xmlbuilder.create(`tilt`);
+
+      caps.forEach(cap => {
+        xmlTilt.element(`range`, {
+          range: cap.angle[1].number - cap.angle[0].number
+        });
+      });
+
+      return xmlTilt;
+    }
+  },
+  panTiltSpeed: {
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  },
+  color: {
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  },
+  colorWheel: {
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  },
+  colorTemperature: {
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  },
+  goboWheel: {
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  },
+  goboIndex: { // stencil rotation angle
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  },
+  goboRotation: { // stencil rotation speed
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  },
+  goboShake: {
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  },
+  focus: {
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  },
+  frost: {
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  },
+  iris: {
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  },
+  zoom: {
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  },
+  prism: {
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  },
+  prismIndex: { // rotation angle
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  },
+  prismRotation: { // rotation speed
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  },
+  fog: { // fog output
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  },
+  index: { // rotation angle
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  },
+  rotation: { // rotation speed
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  },
+  rawStep: { // only steps
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  },
+  raw: { // steps and ranges
+    isCapSuitable: cap => false,
+    create: (channel, caps) => {
+      return;
+    }
+  }
+};
+
+/**
+ * This function already handles swapping DMX start/end if the given start/end value is inverted (i.e. decreasing).
+ * @param {!Capability} cap The capability to use as data source.
+ * @param {?number} startValue The start value of an start/end entity, e.g. speedStart. Unit can be freely choosen. Omit if minval/maxval should not be added.
+ * @param {*} endValue The end value of an start/end entity, e.g. speedEnd. Unit can be freely choosen. Omit if minval/maxval should not be added.
+ * @returns {XMLElement} A <step> or <range> with mindmx, maxdmx and, optionally, minval and maxval attributes.
+ */
+function getBaseXmlCapability(cap, startValue = null, endValue = null) {
+  const dmxRange = cap.getDmxRangeWithFineness(0);
+
+  if (startValue && startValue < endValue) {
+    [startValue, endValue] = [endValue, startValue];
+    [dmxRange[0], dmxRange[1]] = [dmxRange[1], dmxRange[0]];
+  }
+
+  const xmlCap = xmlbuilder.create(cap.isStep ? `step` : `range`);
+  xmlCap.attribute(`mindmx`, dmxRange.start);
+  xmlCap.attribute(`maxdmx`, dmxRange.end);
+
+  if (startValue) {
+    xmlCap.attribute(`minval`, startValue);
+    xmlCap.attribute(`maxval`, endValue);
+  }
+
+  return xmlCap;
+}
+
 
 /**
  * Adds the matrix function to the xml and inserts suitable color mixings from matrix channels.
