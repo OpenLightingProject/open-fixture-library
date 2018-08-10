@@ -37,14 +37,6 @@
         "type": "Intensity"
       }
     },
-    "Color Temperature": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorTemperature",
-        "colorTemperatureStart": "8500K",
-        "colorTemperatureEnd": "3200K"
-      }
-    },
     "Strobe": {
       "defaultValue": 0,
       "capabilities": [
@@ -111,6 +103,38 @@
           "shutterEffect": "Open"
         }
       ]
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "Color Macros": {
       "defaultValue": 0,
@@ -235,37 +259,42 @@
         }
       ]
     },
-    "Red": {
-      "fineChannelAliases": ["Red fine"],
+    "Color Temperature": {
       "defaultValue": 0,
       "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "8500K",
+        "colorTemperatureEnd": "3200K"
       }
     },
-    "Green": {
-      "fineChannelAliases": ["Green fine"],
+    "Dimmer Curve": {
       "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue": {
-      "fineChannelAliases": ["Blue fine"],
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White": {
-      "fineChannelAliases": ["White fine"],
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 63],
+          "type": "Maintenance",
+          "comment": "Linear Dimmer Curve"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Maintenance",
+          "comment": "Exponential Dimmer Curve"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Maintenance",
+          "comment": "Logarithmic Dimmer Curve"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "comment": "S-Curve Dimmer Curve"
+        }
+      ]
     },
     "Device Settings": {
       "defaultValue": 0,
@@ -343,35 +372,6 @@
         {
           "dmxRange": [249, 255],
           "type": "NoFunction"
-        }
-      ]
-    },
-    "Dimmer Curve": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 5],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [6, 63],
-          "type": "Maintenance",
-          "comment": "Linear Dimmer Curve"
-        },
-        {
-          "dmxRange": [64, 127],
-          "type": "Maintenance",
-          "comment": "Exponential Dimmer Curve"
-        },
-        {
-          "dmxRange": [128, 191],
-          "type": "Maintenance",
-          "comment": "Logarithmic Dimmer Curve"
-        },
-        {
-          "dmxRange": [192, 255],
-          "type": "Maintenance",
-          "comment": "S-Curve Dimmer Curve"
         }
       ]
     }
