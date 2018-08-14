@@ -1,0 +1,93 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Par 8",
+  "shortName": "Par 8ch",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["index"],
+    "createDate": "2018-08-14",
+    "lastModifyDate": "2018-08-14"
+  },
+  "links": {
+    "other": [
+      "http://www.google.com"
+    ]
+  },
+  "physical": {
+    "dimensions": [200, 200, 300],
+    "weight": 1,
+    "power": 500,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Empty": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Empty 2": {
+      "name": "Empty",
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Empty 3": {
+      "name": "Empty",
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Empty 4": {
+      "name": "Empty",
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Par 8bit",
+      "channels": [
+        "Dimmer",
+        "Empty",
+        "Empty 2",
+        "Empty 3",
+        "Red",
+        "Green",
+        "Blue",
+        "Empty 4"
+      ]
+    }
+  ]
+}
