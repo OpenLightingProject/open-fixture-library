@@ -121,7 +121,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
    * Checks that fixture key, name and shortName are unique.
    * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurences are appended.
    */
-  function checkFixIdentifierUniqueness(uniqueValues) {
+  function checkFixIdentifierUniqueness(uniqueValues = null) {
     // test is called for a single fixture, e.g. when importing
     if (uniqueValues === null) {
       return;
@@ -956,8 +956,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
    * @param {!string} manKey The manufacturer key.
    * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurences are appended.
    */
-  function checkRdm(manKey, uniqueValues) {
-    if (fixture.rdm === null) {
+  function checkRdm(manKey, uniqueValues = null) {
+    if (fixture.rdm === null || uniqueValues === null) {
       return;
     }
 
