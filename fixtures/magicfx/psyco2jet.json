@@ -1,0 +1,203 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PSYCO2JET®",
+  "shortName": "PSYCO2JET",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["MAGIC FX B.V."],
+    "createDate": "2018-08-20",
+    "lastModifyDate": "2018-08-20"
+  },
+  "comment": "The latest innovation in CO2 FX. The PSYCO2JET is a moving CO2 Jet which blows CO2 clouds in multiple directions or creates a waving CO2 effect with its 180 degrees rotating nozzle.",
+  "links": {
+    "manual": [
+      "https://www.magicfx.eu/media/mconnect_uploadfiles/m/a/magicfx-psyco2jet-manual.pdf"
+    ],
+    "productPage": [
+      "https://www.magicfx.eu/hardware/co2-fx/psyco2jet"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=l9QZ8UaUbmg",
+      "https://www.youtube.com/watch?v=E4rW5SLIgoo"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "16973824"
+  },
+  "physical": {
+    "dimensions": [250, 165, 330],
+    "weight": 9,
+    "power": 35,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Safety": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 99],
+          "type": "Generic",
+          "comment": "Device disabled"
+        },
+        {
+          "dmxRange": [100, 155],
+          "type": "Generic",
+          "comment": "Device enabled"
+        },
+        {
+          "dmxRange": [156, 255],
+          "type": "Generic",
+          "comment": "Device test mode (CO2 output is disabled)"
+        }
+      ]
+    },
+    "Angle": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-90deg",
+        "angleEnd": "90deg"
+      }
+    },
+    "Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Output": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 199],
+          "type": "Generic",
+          "comment": "Valve off"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Generic",
+          "comment": "Valve on"
+        }
+      ]
+    },
+    "Preset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "Effect",
+          "effectName": "Single pulse straight up (0°)"
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "Effect",
+          "effectName": "2 pulses distributed over 180° (-45° +45°)"
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "Effect",
+          "effectName": "3 pulses distributed over 180° (-90°, 0°, +90°)"
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "Effect",
+          "effectName": "4 pulses distributed over 180° (-90°, -30°, +30°, +90°)"
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "Effect",
+          "effectName": "5 pulses distributed over 180° (-90°, -45°, 0°, +45°, +90°)"
+        },
+        {
+          "dmxRange": [125, 149],
+          "type": "Effect",
+          "effectName": "Random pulses over 180°"
+        },
+        {
+          "dmxRange": [150, 174],
+          "type": "Effect",
+          "effectName": "Pulse at +45°, pulse at -45°, pulse at +45°, sweep from -45° back to +45°"
+        },
+        {
+          "dmxRange": [175, 199],
+          "type": "Effect",
+          "effectName": "Three sweeps over 180° (-90° to -54°, -18° to +18° and +54° to +90°)"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "Effect",
+          "effectName": "Pulse at -90°, pulse at +90°, pulse at -60°, pulse at +60°, pulse at -30°, pulse at +30°, long pulse at 0°"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Effect",
+          "effectName": "Sweep over 180°"
+        }
+      ]
+    },
+    "Direction": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "Preset repeatedly starts from the lef"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Preset repeatedly starts from the left and returns mirrored from the right"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Preset repeatedly starts mirrored from the right and returns from the lef"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Preset repeatedly starts from the right"
+        }
+      ]
+    },
+    "Go": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 199],
+          "type": "Generic",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [200, 249],
+          "type": "Generic",
+          "comment": "Continuous mode"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Step in preset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "RAW",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Safety",
+        "Angle",
+        "Speed",
+        "Output"
+      ]
+    },
+    {
+      "name": "PRESET",
+      "rdmPersonalityIndex": 2,
+      "channels": [
+        "Safety",
+        "Preset",
+        "Speed",
+        "Direction",
+        "Go"
+      ]
+    }
+  ]
+}
