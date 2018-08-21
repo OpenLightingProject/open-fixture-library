@@ -1,14 +1,14 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "PSYCO2JET®",
-  "shortName": "PSYCO2JET",
+  "name": "PSYCO2JET",
+  "shortName": "MFXPSYCO2Jet",
   "categories": ["Effect"],
   "meta": {
     "authors": ["MAGIC FX B.V."],
     "createDate": "2018-08-20",
-    "lastModifyDate": "2018-08-20"
+    "lastModifyDate": "2018-08-21"
   },
-  "comment": "The latest innovation in CO2 FX. The PSYCO2JET is a moving CO2 Jet which blows CO2 clouds in multiple directions or creates a waving CO2 effect with its 180 degrees rotating nozzle.",
+  "comment": "The PSYCO2JET is a moving CO₂ Jet which blows CO₂ clouds in multiple directions or creates a waving CO₂ effect with its 180 degrees rotating nozzle.",
   "links": {
     "manual": [
       "https://www.magicfx.eu/media/mconnect_uploadfiles/m/a/magicfx-psyco2jet-manual.pdf"
@@ -47,11 +47,12 @@
         {
           "dmxRange": [156, 255],
           "type": "Generic",
-          "comment": "Device test mode (CO2 output is disabled)"
+          "comment": "Device test mode (CO₂ output is disabled)"
         }
       ]
     },
     "Angle": {
+      "defaultValue": 127,
       "capability": {
         "type": "Tilt",
         "angleStart": "-90deg",
@@ -60,7 +61,7 @@
     },
     "Speed": {
       "capability": {
-        "type": "Speed",
+        "type": "PanTiltSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
       }
@@ -69,7 +70,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 199],
-          "type": "Generic",
+          "type": "NoFunction",
           "comment": "Valve off"
         },
         {
@@ -138,22 +139,22 @@
         {
           "dmxRange": [0, 63],
           "type": "Generic",
-          "comment": "Preset repeatedly starts from the lef"
+          "comment": "Left to right"
         },
         {
           "dmxRange": [64, 127],
           "type": "Generic",
-          "comment": "Preset repeatedly starts from the left and returns mirrored from the right"
+          "comment": "Bounce, beginning from left"
         },
         {
           "dmxRange": [128, 191],
           "type": "Generic",
-          "comment": "Preset repeatedly starts mirrored from the right and returns from the lef"
+          "comment": "Bounce, beginning from right"
         },
         {
           "dmxRange": [192, 255],
           "type": "Generic",
-          "comment": "Preset repeatedly starts from the right"
+          "comment": "Right to left"
         }
       ]
     },
@@ -179,20 +180,24 @@
   },
   "modes": [
     {
-      "name": "RAW",
+      "name": "Safety",
+      "channels": [
+        "Safety"
+      ]
+    },
+    {
+      "name": "Raw",
       "rdmPersonalityIndex": 1,
       "channels": [
-        "Safety",
         "Angle",
         "Speed",
         "Output"
       ]
     },
     {
-      "name": "PRESET",
+      "name": "Preset",
       "rdmPersonalityIndex": 2,
       "channels": [
-        "Safety",
         "Preset",
         "Speed",
         "Direction",
