@@ -480,9 +480,14 @@
       "lastModifyDate": "2018-08-09",
       "lastAction": "modified"
     },
+    "magicfx/psyco2jet": {
+      "name": "PSYCO2JET",
+      "lastModifyDate": "2018-08-21",
+      "lastAction": "modified"
+    },
     "magicfx/stage-flame": {
       "name": "Stage Flame",
-      "lastModifyDate": "2018-08-09",
+      "lastModifyDate": "2018-08-21",
       "lastAction": "modified"
     },
     "martin/atomic-3000": {
@@ -872,6 +877,7 @@
       "viper-nt"
     ],
     "magicfx": [
+      "psyco2jet",
       "stage-flame"
     ],
     "martin": [
@@ -1096,6 +1102,7 @@
       "american-dj/revo-burst",
       "ayra/tdc-triple-burst",
       "glp/impression-x4-bar-10",
+      "magicfx/psyco2jet",
       "magicfx/stage-flame",
       "minuit-une/ivl-carre",
       "showven/sparkular-fall",
@@ -1428,6 +1435,9 @@
     "George Qualley IV": [
       "eliminator/stealth-beam"
     ],
+    "MAGIC FX B.V.": [
+      "magicfx/psyco2jet"
+    ],
     "Massimo Callegari": [
       "clay-paky/sharpy"
     ],
@@ -1496,7 +1506,9 @@
     },
     "18008": {
       "key": "magicfx",
-      "models": {}
+      "models": {
+        "1": "psyco2jet"
+      }
     },
     "19780": {
       "key": "mdg",
@@ -1533,6 +1545,8 @@
     }
   },
   "lastUpdated": [
+    "magicfx/psyco2jet",
+    "magicfx/stage-flame",
     "cameo/zenit-w600",
     "chauvet-dj/corepar-uv-usb",
     "chauvet-dj/gigbar-2",
@@ -1610,7 +1624,6 @@
     "lightmaxx/platinum-mini-tri-par",
     "lightmaxx/vega-zoom-wash",
     "look/viper-nt",
-    "magicfx/stage-flame",
     "martin/atomic-3000",
     "martin/mac-700-wash",
     "martin/mac-aura",
