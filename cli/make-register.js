@@ -21,7 +21,7 @@ try {
   const manufacturers = JSON.parse(fs.readFileSync(path.join(fixturePath, `manufacturers.json`), `utf8`));
 
   // add all fixture.json files to the register
-  for (const manKey of fs.readdirSync(fixturePath).sort()) {
+  for (const manKey of fs.readdirSync(fixturePath).sort(localeSort)) {
     const manDir = path.join(fixturePath, manKey);
 
     // only directories
@@ -35,7 +35,7 @@ try {
         };
       }
 
-      for (const filename of fs.readdirSync(manDir).sort()) {
+      for (const filename of fs.readdirSync(manDir).sort(localeSort)) {
         if (path.extname(filename) !== `.json`) {
           continue;
         }
@@ -110,7 +110,7 @@ catch (readError) {
 }
 
 // copy sorted categories into register
-for (const cat of Object.keys(categories).sort()) {
+for (const cat of Object.keys(categories).sort(localeSort)) {
   register.categories[cat] = categories[cat];
 }
 
@@ -144,13 +144,13 @@ register.lastUpdated = Object.keys(register.filesystem).filter(
 });
 
 // copy sorted RDM data into register
-for (const manId of Object.keys(rdm).sort()) {
+for (const manId of Object.keys(rdm).sort(localeSort)) {
   register.rdm[manId] = {
     key: rdm[manId].key,
     models: {}
   };
 
-  for (const fixId of Object.keys(rdm[manId].models).sort()) {
+  for (const fixId of Object.keys(rdm[manId].models).sort(localeSort)) {
     register.rdm[manId].models[fixId] = rdm[manId].models[fixId];
   }
 }
@@ -165,3 +165,16 @@ fs.writeFile(filename, `${JSON.stringify(register, null, 2)}\n`, `utf8`, error =
   console.log(`${colors.green(`[Success]`)} Updated register file ${filename}`);
   process.exit(0);
 });
+
+
+/**
+ * Function to pass into Array.sort().
+ * @param {!string} a The first string.
+ * @param {!string} b The second string.
+ * @returns {!number} A number indicating the order of the two strings.
+ */
+function localeSort(a, b) {
+  return a.localeCompare(b, `en`, {
+    numeric: true
+  });
+}
