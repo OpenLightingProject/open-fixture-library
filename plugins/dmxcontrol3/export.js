@@ -469,15 +469,16 @@ function getNormalizedCapabilities(caps, property, maximumValue, properUnit) {
  */
 function getBaseXmlCapability(cap, startValue = null, endValue = null) {
   const dmxRange = cap.getDmxRangeWithFineness(0);
+  let [dmxStart, dmxEnd] = [dmxRange.start, dmxRange.end];
 
-  if (startValue && startValue < endValue) {
+  if (startValue && startValue > endValue) {
     [startValue, endValue] = [endValue, startValue];
-    [dmxRange[0], dmxRange[1]] = [dmxRange[1], dmxRange[0]];
+    [dmxStart, dmxEnd] = [dmxEnd, dmxStart];
   }
 
   const xmlCap = xmlbuilder.create(cap.isStep ? `step` : `range`);
-  xmlCap.attribute(`mindmx`, dmxRange.start);
-  xmlCap.attribute(`maxdmx`, dmxRange.end);
+  xmlCap.attribute(`mindmx`, dmxStart);
+  xmlCap.attribute(`maxdmx`, dmxEnd);
 
   if (startValue) {
     xmlCap.attribute(`minval`, startValue);
