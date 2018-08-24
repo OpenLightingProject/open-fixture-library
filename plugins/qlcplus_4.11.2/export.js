@@ -299,14 +299,7 @@ function addHeads(xmlMode, mode) {
 function getFixtureType(fixture) {
   const ignoredCats = [`Blinder`, `Matrix`, `Pixel Bar`, `Stand`];
 
-  for (const category of fixture.categories) {
-    if (ignoredCats.includes(category)) {
-      continue;
-    }
-    return category;
-  }
-
-  return `Other`;
+  return fixture.categories.find(cat => !ignoredCats.includes(cat)) || `Other`;
 }
 
 /**
