@@ -274,9 +274,31 @@ const functions = {
     }
   },
   panTiltSpeed: {
-    isCapSuitable: cap => false,
+    isCapSuitable: cap => cap.type === `PanTiltSpeed`,
     create: (channel, caps) => {
-      return;
+      const xmlPanTiltSpeed = xmlbuilder.create(`ptspeed`);
+
+      const speedCaps = getNormalizedCapabilities(
+        caps.filter(cap => cap.speed !== null), `speed`, 100, `%`
+      );
+      const durationCaps = getNormalizedCapabilities(
+        caps.filter(cap => cap.duration !== null), `duration`, 100, `%`
+      );
+
+      speedCaps.forEach(cap => {
+        const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
+        xmlCap.attribute(`type`, `linear`);
+        xmlPanTiltSpeed.importDocument(xmlCap);
+      });
+
+      durationCaps.forEach(cap => {
+        // 100% duration means low speed, so we need to invert this
+        const xmlCap = getBaseXmlCapability(cap.capObject, 100 - cap.startValue, 100 - cap.endValue);
+        xmlCap.attribute(`type`, `linear`);
+        xmlPanTiltSpeed.importDocument(xmlCap);
+      });
+
+      return xmlPanTiltSpeed;
     }
   },
   color: {
