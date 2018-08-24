@@ -207,9 +207,9 @@ const functions = {
       const xmlDimmer = xmlbuilder.create(`dimmer`);
 
       if (channel.capabilities.length > 1 || caps[0].brightness[0].number !== 0) {
-        caps.forEach(cap => {
-          const xmlCap = getBaseXmlCapability(cap);
-          xmlCap.attribute(`type`, `linear`);
+        const normalizedCaps = getNormalizedCapabilities(caps, `brightness`, 100, `%`);
+        normalizedCaps.forEach(cap => {
+          const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
           xmlCap.attribute(`minval`, Math.min(cap.brightness[0].number, 100));
           xmlCap.attribute(`maxval`, Math.min(cap.brightness[1].number, 100));
           xmlDimmer.importDocument(xmlCap);
@@ -394,6 +394,71 @@ const functions = {
     }
   }
 };
+
+/**
+ * @typedef {object} NormalizedCapability
+ * @property {!Capability} capObject
+ * @property {!string} unit
+ * @property {!number} startValue
+ * @property {!number} endValue
+ */
+
+/**
+ * Converts all property values to the proper unit and scales them to fit into the maximum value.
+ * @param {!Array.<Capability>} caps Array of capabilities that use the given property.
+ * @param {!string} property Name of the property whose values should be normalized.
+ * @param {!number} maximumValue The highest possible value in DMXControl, in the given unit.
+ * @param {!string} properUnit The unit of the maximum value. Must be a base unit (i. e. no `ms` but `s`) or `%`.
+ * @returns {!Array.<NormalizedCapability>} Array of objects wrapping the original capabilities.
+ */
+function getNormalizedCapabilities(caps, property, maximumValue, properUnit) {
+  const normalizedCaps = caps.map(cap => {
+    const [startEntity, endEntity] = cap[property];
+    let unit = startEntity.unit;
+
+    let [startValue, endValue] = [startEntity.number, endEntity.number];
+
+    const unitConversions = {
+      ms: [`s`, 1000],
+      bpm: [`Hz`, 1 / 60],
+      rpm: [`Hz`, 1 / 60]
+    };
+    if (Object.keys(unitConversions).includes(unit)) {
+      const [newUnit, factor] = unitConversions[unit];
+      unit = newUnit;
+      startValue *= factor;
+      endValue *= factor;
+    }
+
+    return {
+      capObject: cap,
+      unit,
+      startValue,
+      endValue
+    };
+  });
+
+  const capsWithProperUnit = normalizedCaps.filter(cap => cap.unit === properUnit);
+  const maxValueWithProperUnit = Math.max(...(capsWithProperUnit.map(cap => Math.max(cap.startValue, cap.endValue))));
+  if (maxValueWithProperUnit > maximumValue) {
+    capsWithProperUnit.forEach(cap => {
+      cap.startValue = cap.startValue * maxValueWithProperUnit / maximumValue;
+      cap.endValue = cap.endValue * maxValueWithProperUnit / maximumValue;
+    });
+  }
+
+
+  // they should all be of the same (wrong) unit, as we converted to the base unit above
+  const capsWithWrongUnit = normalizedCaps.filter(cap => cap.unit !== properUnit);
+  const maxValueWithWrongUnit = Math.max(...(capsWithWrongUnit.map(cap => Math.max(cap.startValue, cap.endValue))));
+  capsWithWrongUnit.forEach(cap => {
+    cap.unit = properUnit;
+    cap.startValue = cap.startValue * maxValueWithWrongUnit / maximumValue;
+    cap.endValue = cap.endValue * maxValueWithWrongUnit / maximumValue;
+  });
+
+  return normalizedCaps;
+}
 
 /**
  * This function already handles swapping DMX start/end if the given start/end value is inverted (i.e. decreasing).
