@@ -301,9 +301,32 @@ const functions = {
     }
   },
   color: {
-    isCapSuitable: cap => false,
+    isCapSuitable: cap => cap.type === `ColorIntensity`,
     create: (channel, caps) => {
-      return;
+      const capsPerColor = {};
+
+      for (const cap of caps) {
+        if (!(cap.color in capsPerColor)) {
+          capsPerColor[cap.color] = [];
+        }
+        capsPerColor[cap.color].push(cap);
+      }
+
+      return Object.keys(capsPerColor).map(color => {
+        const colorCaps = capsPerColor[color];
+        const xmlColor = xmlbuilder.create(color.toLowerCase());
+
+        if (channel.capabilities.length > 1 || colorCaps[0].brightness[0].number !== 0) {
+          const normalizedCaps = getNormalizedCapabilities(colorCaps, `brightness`, 100, `%`);
+          normalizedCaps.forEach(cap => {
+            const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
+            xmlCap.attribute(`type`, `linear`);
+            xmlColor.importDocument(xmlCap);
+          });
+        }
+
+        return xmlColor;
+      });
     }
   },
   colorWheel: {
