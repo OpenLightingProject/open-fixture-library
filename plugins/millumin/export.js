@@ -17,6 +17,8 @@ module.exports.export = function exportMillumin(fixtures, options) {
     jsonData.manufacturerKey = fixture.manufacturer.key;
     jsonData.oflURL = `https://open-fixture-library.org/${fixture.manufacturer.key}/${fixture.key}`;
 
+    jsonData.categories = getDowngradedCategories(jsonData.categories);
+
     if (jsonData.links) {
       if (jsonData.links.manual) {
         // replace links with manual URL in keys array
@@ -56,6 +58,26 @@ module.exports.export = function exportMillumin(fixtures, options) {
     };
   });
 };
+
+/**
+ * Replaces the fixture's categories array with one that only includes categories
+ * from OFL schema version 7.3.0.
+ * @param {!array.<!string>} categories The fixture's categories array.
+ * @returns {!array.<!string>} A filtered categories array.
+ */
+function getDowngradedCategories(categories) {
+  const addedCategories = [`Pixel Bar`, `Stand`];
+
+  const filteredCategories = categories.filter(
+    category => !addedCategories.includes(category)
+  );
+
+  if (filteredCategories.length === 0) {
+    filteredCategories.push(`Other`);
+  }
+
+  return filteredCategories;
+}
 
 /**
  * Replaces the specified channel in the specified channels object with a downgraded version for schema 7.1.0.
