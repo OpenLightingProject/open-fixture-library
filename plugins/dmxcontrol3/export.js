@@ -210,8 +210,7 @@ const functions = {
         const normalizedCaps = getNormalizedCapabilities(caps, `brightness`, 100, `%`);
         normalizedCaps.forEach(cap => {
           const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
-          xmlCap.attribute(`minval`, Math.min(cap.brightness[0].number, 100));
-          xmlCap.attribute(`maxval`, Math.min(cap.brightness[1].number, 100));
+          xmlCap.attribute(`type`, `linear`);
           xmlDimmer.importDocument(xmlCap);
         });
       }
