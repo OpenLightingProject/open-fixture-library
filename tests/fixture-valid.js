@@ -859,6 +859,16 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         isSuggested: hasCapabilityPropertyValue(`fogType`, `Haze`),
         suggestedPhrase: `a Fog/FogType capability has fogType 'Haze'`,
         invalidPhrase: `no Fog/FogType capability has fogType 'Haze'`
+      },
+      'Matrix': {
+        isInvalid: isNotMatrix(),
+        invalidPhrase: `fixture does not define a matrix`
+      },
+      'Pixel Bar': {
+        isSuggested: isPixelBar(),
+        isInvalid: isNotPixelBar(),
+        suggestedPhrase: `matrix pixels are horizontally aligned`,
+        invalidPhrase: `no horizontally aligned matrix is defined`
       }
     };
 
@@ -948,6 +958,34 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       return fixture.capabilities.some(
         cap => cap[property] === value
       );
+    }
+
+    /**
+     * @returns {!boolean} True if it can't be a matrix.
+     */
+    function isNotMatrix() {
+      return fixture.matrix === null || fixture.matrix.definedAxes.length < 2;
+    }
+
+    /**
+     * @returns {!boolean} True if a matrix with only one axis, which has more than 4 pixels, is defined.
+     */
+    function isPixelBar() {
+      if (fixture.matrix === null || fixture.categories.includes(`Flower`)) {
+        return false;
+      }
+
+      const definedAxes = fixture.matrix.definedAxes;
+      const definedAxis = definedAxes[0];
+
+      return definedAxes.length === 1 && fixture.matrix[`pixelCount${definedAxis}`] > 4;
+    }
+
+    /**
+     * @returns {!boolean} True if it can't be a pixel bar.
+     */
+    function isNotPixelBar() {
+      return fixture.matrix === null || fixture.matrix.definedAxes.length > 1;
     }
   }
 
