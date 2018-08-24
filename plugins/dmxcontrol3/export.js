@@ -492,7 +492,7 @@ function getBaseXmlCapability(cap, startValue = null, endValue = null) {
   const dmxRange = cap.getDmxRangeWithFineness(0);
   let [dmxStart, dmxEnd] = [dmxRange.start, dmxRange.end];
 
-  if (startValue && startValue > endValue) {
+  if (startValue != null && startValue > endValue) {
     [startValue, endValue] = [endValue, startValue];
     [dmxStart, dmxEnd] = [dmxEnd, dmxStart];
   }
@@ -501,7 +501,7 @@ function getBaseXmlCapability(cap, startValue = null, endValue = null) {
   xmlCap.attribute(`mindmx`, dmxStart);
   xmlCap.attribute(`maxdmx`, dmxEnd);
 
-  if (startValue) {
+  if (startValue != null) {
     xmlCap.attribute(`minval`, startValue);
     xmlCap.attribute(`maxval`, endValue);
   }
