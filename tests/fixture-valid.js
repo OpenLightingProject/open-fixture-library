@@ -453,16 +453,20 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           });
         }
 
-        for (const prop of cap.usedStartEndEntities) {
-          const [startValue, endValue] = cap[prop];
+        cap.usedStartEndEntities.forEach(prop => {
+          const [startEntity, endEntity] = cap[prop];
 
-          if ((startValue.keyword === null) !== (endValue.keyword === null)) {
+          if ((startEntity.keyword === null) !== (endEntity.keyword === null)) {
             result.errors.push(`${errorPrefix} must use keywords for start and end value or for none of them in ${prop}.`);
           }
-          else if (startValue.unit !== endValue.unit) {
+          else if (startEntity.unit !== endEntity.unit) {
             result.errors.push(`${errorPrefix} uses different units for ${prop}.`);
           }
-        }
+
+          if (prop === `speed` && startEntity.number * endEntity.number < 0) {
+            result.errors.push(`${errorPrefix} uses different signs (+ or –) in ${prop} (maybe behind a keyword). Consider splitting it into several capabilities.`);
+          }
+        });
 
         const capabilityTypeChecks = {
           ShutterStrobe: checkShutterStrobeCapability,
