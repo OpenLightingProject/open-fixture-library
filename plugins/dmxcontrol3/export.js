@@ -509,9 +509,18 @@ const functions = {
     }
   },
   iris: {
-    isCapSuitable: cap => false,
+    isCapSuitable: cap => cap.type === `Iris`,
     create: (channel, caps) => {
-      return;
+      const xmlDimmer = xmlbuilder.create(`iris`);
+
+      const normalizedCaps = getNormalizedCapabilities(caps, `openPercent`, 100, `%`);
+      normalizedCaps.forEach(cap => {
+        const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
+        xmlCap.attribute(`type`, `linear`);
+        xmlDimmer.importDocument(xmlCap);
+      });
+
+      return xmlDimmer;
     }
   },
   zoom: {
