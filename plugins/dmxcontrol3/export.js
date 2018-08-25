@@ -524,9 +524,18 @@ const functions = {
     }
   },
   zoom: {
-    isCapSuitable: cap => false,
+    isCapSuitable: cap => cap.type === `Zoom`,
     create: (channel, caps) => {
-      return;
+      const xmlDimmer = xmlbuilder.create(`zoom`);
+
+      const normalizedCaps = getNormalizedCapabilities(caps, `angle`, 90, `deg`);
+      normalizedCaps.forEach(cap => {
+        const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
+        xmlCap.attribute(`type`, `linear`);
+        xmlDimmer.importDocument(xmlCap);
+      });
+
+      return xmlDimmer;
     }
   },
   prism: {
