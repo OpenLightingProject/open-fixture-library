@@ -971,7 +971,12 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
      * @returns {!boolean} True if a matrix with only one axis, which has more than 4 pixels, is defined.
      */
     function isPixelBar() {
-      if (fixture.matrix === null || fixture.categories.includes(`Flower`)) {
+      const mutualExclusiveCategories = [`Flower`, `Stand`];
+      const hasMutualExclusiveCategory = fixture.categories.some(
+        cat => mutualExclusiveCategories.includes(cat)
+      );
+
+      if (hasMutualExclusiveCategory || fixture.matrix === null) {
         return false;
       }
 
