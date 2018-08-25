@@ -471,8 +471,8 @@ function getNormalizedCapabilities(caps, property, maximumValue, properUnit) {
   const maxValueWithProperUnit = Math.max(...(capsWithProperUnit.map(cap => Math.max(cap.startValue, cap.endValue))));
   if (maxValueWithProperUnit > maximumValue) {
     capsWithProperUnit.forEach(cap => {
-      cap.startValue = cap.startValue * maxValueWithProperUnit / maximumValue;
-      cap.endValue = cap.endValue * maxValueWithProperUnit / maximumValue;
+      cap.startValue = cap.startValue * maximumValue / maxValueWithProperUnit;
+      cap.endValue = cap.endValue * maximumValue / maxValueWithProperUnit;
     });
   }
 
@@ -482,8 +482,8 @@ function getNormalizedCapabilities(caps, property, maximumValue, properUnit) {
   const maxValueWithWrongUnit = Math.max(...(capsWithWrongUnit.map(cap => Math.max(cap.startValue, cap.endValue))));
   capsWithWrongUnit.forEach(cap => {
     cap.unit = properUnit;
-    cap.startValue = cap.startValue * maxValueWithWrongUnit / maximumValue;
-    cap.endValue = cap.endValue * maxValueWithWrongUnit / maximumValue;
+    cap.startValue = cap.startValue * maximumValue / maxValueWithWrongUnit;
+    cap.endValue = cap.endValue * maximumValue / maxValueWithWrongUnit;
   });
 
   return normalizedCaps;
