@@ -472,9 +472,18 @@ const functions = {
     }
   },
   focus: {
-    isCapSuitable: cap => false,
+    isCapSuitable: cap => cap.type === `Focus`,
     create: (channel, caps) => {
-      return;
+      const xmlDimmer = xmlbuilder.create(`focus`);
+
+      const normalizedCaps = getNormalizedCapabilities(caps, `distance`, 100, `%`);
+      normalizedCaps.forEach(cap => {
+        const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
+        xmlCap.attribute(`type`, `linear`);
+        xmlDimmer.importDocument(xmlCap);
+      });
+
+      return xmlDimmer;
     }
   },
   frost: {
