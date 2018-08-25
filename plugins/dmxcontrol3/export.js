@@ -330,9 +330,115 @@ const functions = {
     }
   },
   colorWheel: {
-    isCapSuitable: cap => false,
+    isCapSuitable: cap => cap.type === `ColorWheelIndex` || (cap.type === `ColorWheelRotation` && cap.speed),
     create: (channel, caps) => {
-      return;
+      const xmlColorWheel = xmlbuilder.create(`colorwheel`);
+
+      // RGB value for dummy colors. Will be decreased by 1 every time a dummy color is created.
+      let greyValue = 0x99;
+
+      const indexCaps = caps.filter(cap => cap.type === `ColorWheelIndex`);
+      const wheelIndices = [];
+
+      // find out which index is activated by which DMX values
+      indexCaps.forEach(cap => {
+        const dmxRange = cap.getDmxRangeWithFineness(0);
+        const isProportional = cap.index[0].number !== cap.index[1].number;
+
+        if (isProportional) {
+          addIndexRange(cap.index[0].number, new Range([dmxRange.start, dmxRange.start]), getColor(cap.colors, `start`), cap.name);
+          addIndexRange(cap.index[1].number, new Range([dmxRange.end, dmxRange.end]), getColor(cap.colors, `end`), cap.name);
+        }
+        else {
+          addIndexRange(cap.index[0].number, dmxRange, getColor(cap.colors, `start`), cap.name, true);
+        }
+      });
+
+      wheelIndices.forEach(indexData => {
+        xmlColorWheel.element(`step`, {
+          type: `color`,
+          val: indexData.color,
+          minDmx: indexData.dmxRange.start,
+          maxDmx: indexData.dmxRange.end,
+          caption: indexData.name
+        });
+      });
+
+
+      const rotationCaps = getNormalizedCapabilities(
+        caps.filter(cap => cap.type === `ColorWheelRotation`), `speed`, 15, `Hz`
+      );
+      if (rotationCaps.length > 0) {
+        const xmlWheelRotation = xmlColorWheel.element(`wheelrotation`);
+
+        rotationCaps.forEach(cap => {
+          if (cap.startValue === 0 && cap.endValue === 0) {
+            const xmlCap = getBaseXmlCapability(cap.capObject);
+            xmlCap.attribute(`type`, `stop`);
+            xmlWheelRotation.importDocument(xmlCap);
+          }
+          else if (cap.startValue > 0) {
+            const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
+            xmlCap.attribute(`type`, `cw`);
+            xmlWheelRotation.importDocument(xmlCap);
+          }
+          else {
+            const xmlCap = getBaseXmlCapability(cap.capObject, Math.abs(cap.startValue), Math.abs(cap.endValue));
+            xmlCap.attribute(`type`, `ccw`);
+            xmlWheelRotation.importDocument(xmlCap);
+          }
+        });
+      }
+
+      return xmlColorWheel;
+
+
+      /**
+       * Add the given range to the given index' data.
+       * @param {!number} index A single index, e.g. 1 or 2.5.
+       * @param {!Range} dmxRange A dmx range in which only the given index is activated.
+       * @param {!string} color The color that correspondends to this index. May be overriden later.
+       * @param {!string} name A color name. May be overriden later.
+       * @param {!boolean} singleRange Whether the original capability generated only this single range.
+       */
+      function addIndexRange(index, dmxRange, color, name, singleRange = false) {
+        const suitableIndexData = wheelIndices.find(indexData => indexData.dmxRange.isAdjacentTo(dmxRange));
+
+        // single ranges don't merge with other single ranges
+        if (suitableIndexData && !(singleRange && suitableIndexData.hasSingleRange)) {
+          suitableIndexData.dmxRange = suitableIndexData.dmxRange.mergeWith(dmxRange);
+
+          // single ranges overwrite index data
+          if (singleRange) {
+            suitableIndexData.color = color;
+            suitableIndexData.name = name;
+            suitableIndexData.hasSingleRange = true;
+          }
+        }
+        else {
+          wheelIndices.push({
+            index,
+            dmxRange,
+            color,
+            name,
+            hasSingleRange: singleRange
+          });
+        }
+      }
+
+      /**
+       * @param {?object} colors A capability's color property.
+       * @param {('start'|'end')} startOrEnd Whether to access start or end colors.
+       * @returns {!string} A color from the given color data if there's only one start/end color. A generic (and probably unique) grey color instead.
+       */
+      function getColor(colors, startOrEnd) {
+        if (colors && colors[`${startOrEnd}Colors`].length === 1) {
+          return colors[`${startOrEnd}Colors`][0];
+        }
+
+        const hex = (greyValue--).toString(16);
+        return `#${hex}${hex}${hex}`;
+      }
     }
   },
   colorTemperature: {
@@ -462,8 +568,10 @@ function getNormalizedCapabilities(caps, property, maximumValue, properUnit) {
     return {
       capObject: cap,
       unit: startEntity.unit,
-      startValue: startEntity.number,
-      endValue: endEntity.number
+      startValue: Math.abs(startEntity.number),
+      endValue: Math.abs(endEntity.number),
+      startSign: Math.sign(startEntity.number),
+      endSign: Math.sign(endEntity.number)
     };
   });
 
@@ -484,6 +592,14 @@ function getNormalizedCapabilities(caps, property, maximumValue, properUnit) {
     cap.unit = properUnit;
     cap.startValue = cap.startValue * maximumValue / maxValueWithWrongUnit;
     cap.endValue = cap.endValue * maximumValue / maxValueWithWrongUnit;
+  });
+
+  // reapply signs (+ or –)
+  normalizedCaps.forEach(cap => {
+    cap.startValue *= cap.startSign;
+    cap.endValue *= cap.endSign;
+    delete cap.startSign;
+    delete cap.endSign;
   });
 
   return normalizedCaps;
