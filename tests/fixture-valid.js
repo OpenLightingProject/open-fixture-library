@@ -25,7 +25,7 @@ const redirectSchemaValidate = ajv.compile(fixtureRedirectSchema);
  * @param {!string} manKey The manufacturer key.
  * @param {!string} fixKey The fixture key.
  * @param {?object} fixtureJson The fixture JSON object.
- * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurences are appended.
+ * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
  * @returns {ResultData} The result object containing errors and warnings, if any.
  */
 function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
@@ -119,7 +119,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   /**
    * Checks that fixture key, name and shortName are unique.
-   * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurences are appended.
+   * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
    */
   function checkFixIdentifierUniqueness(uniqueValues = null) {
     // test is called for a single fixture, e.g. when importing
@@ -288,7 +288,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
    */
   function checkChannels(fixtureJson) {
     for (const channel of fixture.availableChannels) {
-      // forbid coexistance of channels 'Red' and 'red'
+      // forbid coexistence of channels 'Red' and 'red'
       // for template channels, this is checked by possibleMatrixChKeys
       checkUniqueness(
         definedChannelKeys,
@@ -529,7 +529,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
             }
           }
           else if (max && !isInfinite) {
-            result.warnings.push(`${errorPrefix} defines an unprecise percentaged ${panOrTilt} angle. Using the exact value from focus.${panOrTilt}Max in the fixture's physical data is recommended.`);
+            result.warnings.push(`${errorPrefix} defines an imprecise percentaged ${panOrTilt} angle. Using the exact value from focus.${panOrTilt}Max in the fixture's physical data is recommended.`);
           }
         }
 
@@ -633,7 +633,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         }
 
         /**
-         * Checks the used pixel (group) keys for existance and duplicates. Also respects pixel keys included in a pixel group.
+         * Checks the used pixel (group) keys for existence and duplicates. Also respects pixel keys included in a pixel group.
          */
         function checkMatrixInsertBlockRepeatFor() {
           if (typeof matrixInsertBlock.repeatFor === `string`) {
@@ -694,7 +694,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         return;
       }
 
-      // if earliest occurence (including switching channels) is not this one
+      // if earliest occurrence (including switching channels) is not this one
       if (mode.getChannelIndex(channel, `all`) < chIndex) {
         result.errors.push(`Channel '${channel.key}' is referenced more than once from mode '${mode.shortName}' (maybe through switching channels).`);
       }
@@ -940,7 +940,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
     /**
      * @param {!string} type What capability type to search for.
-     * @param {!number} [minimum=1] How many occurences are needed to succeed.
+     * @param {!number} [minimum=1] How many occurrences are needed to succeed.
      * @returns {!boolean} Whether the given capability type occurs at least at the given minimum times in the fixture.
      */
     function hasCapabilityOfType(type, minimum = 1) {
@@ -997,7 +997,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   /**
    * Checks if everything regarding this fixture's RDM data is correct.
    * @param {!string} manKey The manufacturer key.
-   * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurences are appended.
+   * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
    */
   function checkRdm(manKey, uniqueValues = null) {
     if (fixture.rdm === null || uniqueValues === null) {
