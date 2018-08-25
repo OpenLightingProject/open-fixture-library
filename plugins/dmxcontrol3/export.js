@@ -487,9 +487,25 @@ const functions = {
     }
   },
   frost: {
-    isCapSuitable: cap => false,
+    isCapSuitable: cap => cap.type === `Frost`,
     create: (channel, caps) => {
-      return;
+      const xmlDimmer = xmlbuilder.create(`frost`);
+
+      const normalizedCaps = getNormalizedCapabilities(caps, `frostIntensity`, 100, `%`);
+      normalizedCaps.forEach(cap => {
+        if (cap.startValue === 0 && cap.endValue === 0) {
+          const xmlCap = getBaseXmlCapability(cap.capObject);
+          xmlCap.attribute(`type`, `open`);
+          xmlDimmer.importDocument(xmlCap);
+        }
+        else {
+          const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
+          xmlCap.attribute(`type`, `linear`);
+          xmlDimmer.importDocument(xmlCap);
+        }
+      });
+
+      return xmlDimmer;
     }
   },
   iris: {
