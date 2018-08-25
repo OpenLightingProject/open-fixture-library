@@ -378,41 +378,74 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
        * Check that a capability's range is valid.
        * @param {!number} capNumber The number of the capability in the channel, starting with 0.
        * @param {number} minUsedFineness The smallest fineness that the channel is used in a mode.This controls if this range can be from 0 up to channel.maxDmxBound or less.
-       * @returns {boolean} true if the range is valid, false otherwise. The global `result` object is updated then.
+       * @returns {boolean} True if the range is valid, false otherwise. The global `result` object is updated then.
        */
       function checkDmxRange(capNumber) {
         const cap = channel.capabilities[capNumber];
 
-        // first capability
-        if (capNumber === 0 && cap.dmxRange.start !== 0) {
-          result.errors.push(`The first dmxRange has to start at 0 in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
-          return false;
-        }
+        return checkFirstCapabilityRangeStart()
+          && checkRangeValid()
+          && checkRangesAdjacent()
+          && checkLastCapabilityRangeEnd();
 
-        // all capabilities
-        if (cap.dmxRange.start > cap.dmxRange.end) {
-          result.errors.push(`dmxRange invalid in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
-          return false;
-        }
 
-        // not first capability
-        const prevCap = capNumber > 0 ? channel.capabilities[capNumber - 1] : null;
-        if (capNumber > 0 && cap.dmxRange.start !== prevCap.dmxRange.end + 1) {
-          result.errors.push(`dmxRanges must be adjacent in capabilities '${prevCap.name}' (#${capNumber}) and '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
-          return false;
-        }
-
-        // last capability
-        if (capNumber === channel.capabilities.length - 1) {
-          const rawDmxRangeEnd = channel.capabilities[capNumber].jsonObject.dmxRange[1];
-
-          if (!possibleEndValues.includes(rawDmxRangeEnd)) {
-            result.errors.push(`The last dmxRange has to end at ${possibleEndValues.join(` or `)} in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'`);
+        /**
+         * Checks that the first capability's DMX range starts with 0.
+         * @returns {!boolean} True if this is not the first capability or it starts with 0, false otherwise.
+         */
+        function checkFirstCapabilityRangeStart() {
+          if (capNumber === 0 && cap.dmxRange.start !== 0) {
+            result.errors.push(`The first dmxRange has to start at 0 in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
             return false;
           }
+
+          return true;
         }
 
-        return true;
+        /**
+         * @returns {!boolean} True if this capability's DMX range is valid, i.e. the end is greater than or equal to the start, false otherwise.
+         */
+        function checkRangeValid() {
+          if (cap.dmxRange.start > cap.dmxRange.end) {
+            result.errors.push(`dmxRange invalid in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
+            return false;
+          }
+
+          return true;
+        }
+
+        /**
+         * @returns {!boolean} True if this capability's DMX range start is adjacent to the previous capability's DMX range end, false otherwise.
+         */
+        function checkRangesAdjacent() {
+          if (capNumber > 0) {
+            const prevCap = channel.capabilities[capNumber - 1];
+
+            if (cap.dmxRange.start !== prevCap.dmxRange.end + 1) {
+              result.errors.push(`dmxRanges must be adjacent in capabilities '${prevCap.name}' (#${capNumber}) and '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
+              return false;
+            }
+          }
+
+          return true;
+        }
+
+        /**
+         * Checks that the last capability's DMX range is one of the allowed values, e.g. 255 or 65535 for 16bit channels.
+         * @returns {!boolean} True if this is not the last capability or it ends with an allowed value, false otherwise.
+         */
+        function checkLastCapabilityRangeEnd() {
+          if (capNumber === channel.capabilities.length - 1) {
+            const rawDmxRangeEnd = channel.capabilities[capNumber].jsonObject.dmxRange[1];
+
+            if (!possibleEndValues.includes(rawDmxRangeEnd)) {
+              result.errors.push(`The last dmxRange has to end at ${possibleEndValues.join(` or `)} in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'`);
+              return false;
+            }
+          }
+
+          return true;
+        }
       }
 
       /**
@@ -600,9 +633,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       }
     }
 
-    for (let i = 0; i < mode.channelKeys.length; i++) {
-      checkModeChannelKey(i);
-    }
+    mode.channelKeys.forEach((mode, i) => checkModeChannelKey(i));
 
     /**
      * Checks if the given complex channel insert block is valid.
@@ -760,7 +791,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
           if (otherChannel.triggerChannel === channel.triggerChannel) {
             // compare ranges
-            for (const switchToChannelKey of channel.switchToChannelKeys) {
+            channel.switchToChannelKeys.forEach(switchToChannelKey => {
               if (!otherChannel.switchToChannelKeys.includes(switchToChannelKey)) {
                 return;
               }
@@ -771,7 +802,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
               if (overlap) {
                 result.errors.push(`Channel '${switchToChannelKey}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
               }
-            }
+            });
           }
           else {
             // fail if one of this channel's switchToChannels appears anywhere
