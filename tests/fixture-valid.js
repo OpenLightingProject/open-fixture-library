@@ -25,7 +25,7 @@ const redirectSchemaValidate = ajv.compile(fixtureRedirectSchema);
  * @param {!string} manKey The manufacturer key.
  * @param {!string} fixKey The fixture key.
  * @param {?object} fixtureJson The fixture JSON object.
- * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurences are appended.
+ * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
  * @returns {ResultData} The result object containing errors and warnings, if any.
  */
 function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
@@ -119,7 +119,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   /**
    * Checks that fixture key, name and shortName are unique.
-   * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurences are appended.
+   * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
    */
   function checkFixIdentifierUniqueness(uniqueValues = null) {
     // test is called for a single fixture, e.g. when importing
@@ -288,7 +288,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
    */
   function checkChannels(fixtureJson) {
     for (const channel of fixture.availableChannels) {
-      // forbid coexistance of channels 'Red' and 'red'
+      // forbid coexistence of channels 'Red' and 'red'
       // for template channels, this is checked by possibleMatrixChKeys
       checkUniqueness(
         definedChannelKeys,
@@ -378,41 +378,74 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
        * Check that a capability's range is valid.
        * @param {!number} capNumber The number of the capability in the channel, starting with 0.
        * @param {number} minUsedFineness The smallest fineness that the channel is used in a mode.This controls if this range can be from 0 up to channel.maxDmxBound or less.
-       * @returns {boolean} true if the range is valid, false otherwise. The global `result` object is updated then.
+       * @returns {boolean} True if the range is valid, false otherwise. The global `result` object is updated then.
        */
       function checkDmxRange(capNumber) {
         const cap = channel.capabilities[capNumber];
 
-        // first capability
-        if (capNumber === 0 && cap.dmxRange.start !== 0) {
-          result.errors.push(`The first dmxRange has to start at 0 in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
-          return false;
-        }
+        return checkFirstCapabilityRangeStart()
+          && checkRangeValid()
+          && checkRangesAdjacent()
+          && checkLastCapabilityRangeEnd();
 
-        // all capabilities
-        if (cap.dmxRange.start > cap.dmxRange.end) {
-          result.errors.push(`dmxRange invalid in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
-          return false;
-        }
 
-        // not first capability
-        const prevCap = capNumber > 0 ? channel.capabilities[capNumber - 1] : null;
-        if (capNumber > 0 && cap.dmxRange.start !== prevCap.dmxRange.end + 1) {
-          result.errors.push(`dmxRanges must be adjacent in capabilities '${prevCap.name}' (#${capNumber}) and '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
-          return false;
-        }
-
-        // last capability
-        if (capNumber === channel.capabilities.length - 1) {
-          const rawDmxRangeEnd = channel.capabilities[capNumber].jsonObject.dmxRange[1];
-
-          if (!possibleEndValues.includes(rawDmxRangeEnd)) {
-            result.errors.push(`The last dmxRange has to end at ${possibleEndValues.join(` or `)} in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'`);
+        /**
+         * Checks that the first capability's DMX range starts with 0.
+         * @returns {!boolean} True if this is not the first capability or it starts with 0, false otherwise.
+         */
+        function checkFirstCapabilityRangeStart() {
+          if (capNumber === 0 && cap.dmxRange.start !== 0) {
+            result.errors.push(`The first dmxRange has to start at 0 in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
             return false;
           }
+
+          return true;
         }
 
-        return true;
+        /**
+         * @returns {!boolean} True if this capability's DMX range is valid, i.e. the end is greater than or equal to the start, false otherwise.
+         */
+        function checkRangeValid() {
+          if (cap.dmxRange.start > cap.dmxRange.end) {
+            result.errors.push(`dmxRange invalid in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
+            return false;
+          }
+
+          return true;
+        }
+
+        /**
+         * @returns {!boolean} True if this capability's DMX range start is adjacent to the previous capability's DMX range end, false otherwise.
+         */
+        function checkRangesAdjacent() {
+          if (capNumber > 0) {
+            const prevCap = channel.capabilities[capNumber - 1];
+
+            if (cap.dmxRange.start !== prevCap.dmxRange.end + 1) {
+              result.errors.push(`dmxRanges must be adjacent in capabilities '${prevCap.name}' (#${capNumber}) and '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
+              return false;
+            }
+          }
+
+          return true;
+        }
+
+        /**
+         * Checks that the last capability's DMX range is one of the allowed values, e.g. 255 or 65535 for 16bit channels.
+         * @returns {!boolean} True if this is not the last capability or it ends with an allowed value, false otherwise.
+         */
+        function checkLastCapabilityRangeEnd() {
+          if (capNumber === channel.capabilities.length - 1) {
+            const rawDmxRangeEnd = channel.capabilities[capNumber].jsonObject.dmxRange[1];
+
+            if (!possibleEndValues.includes(rawDmxRangeEnd)) {
+              result.errors.push(`The last dmxRange has to end at ${possibleEndValues.join(` or `)} in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'`);
+              return false;
+            }
+          }
+
+          return true;
+        }
       }
 
       /**
@@ -529,7 +562,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
             }
           }
           else if (max && !isInfinite) {
-            result.warnings.push(`${errorPrefix} defines an unprecise percentaged ${panOrTilt} angle. Using the exact value from focus.${panOrTilt}Max in the fixture's physical data is recommended.`);
+            result.warnings.push(`${errorPrefix} defines an imprecise percentaged ${panOrTilt} angle. Using the exact value from focus.${panOrTilt}Max in the fixture's physical data is recommended.`);
           }
         }
 
@@ -600,9 +633,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       }
     }
 
-    for (let i = 0; i < mode.channelKeys.length; i++) {
-      checkModeChannelKey(i);
-    }
+    mode.channelKeys.forEach((mode, i) => checkModeChannelKey(i));
 
     /**
      * Checks if the given complex channel insert block is valid.
@@ -633,7 +664,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         }
 
         /**
-         * Checks the used pixel (group) keys for existance and duplicates. Also respects pixel keys included in a pixel group.
+         * Checks the used pixel (group) keys for existence and duplicates. Also respects pixel keys included in a pixel group.
          */
         function checkMatrixInsertBlockRepeatFor() {
           if (typeof matrixInsertBlock.repeatFor === `string`) {
@@ -694,7 +725,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         return;
       }
 
-      // if earliest occurence (including switching channels) is not this one
+      // if earliest occurrence (including switching channels) is not this one
       if (mode.getChannelIndex(channel, `all`) < chIndex) {
         result.errors.push(`Channel '${channel.key}' is referenced more than once from mode '${mode.shortName}' (maybe through switching channels).`);
       }
@@ -760,7 +791,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
           if (otherChannel.triggerChannel === channel.triggerChannel) {
             // compare ranges
-            for (const switchToChannelKey of channel.switchToChannelKeys) {
+            channel.switchToChannelKeys.forEach(switchToChannelKey => {
               if (!otherChannel.switchToChannelKeys.includes(switchToChannelKey)) {
                 return;
               }
@@ -771,7 +802,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
               if (overlap) {
                 result.errors.push(`Channel '${switchToChannelKey}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
               }
-            }
+            });
           }
           else {
             // fail if one of this channel's switchToChannels appears anywhere
@@ -785,6 +816,10 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         }
       }
 
+      /**
+       * Check that all coarser channels of the given fine channel are present in the current mode.
+       * @param {!FineChannel} fineChannel The fine channel to check.
+       */
       function checkCoarserChannelsInMode(fineChannel) {
         const coarseChannel = fineChannel.coarseChannel;
         const coarserChannelKeys = coarseChannel.fineChannelAliases.filter(
@@ -800,6 +835,9 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         }
       }
 
+      /**
+       * Check that panMax / tiltMax are defined in this mode's physical section (or globally) when there is a Pan / Tilt channel.
+       */
       function checkPanTiltMaxInPhysical() {
         if (channel.type !== `Pan` && channel.type !== `Tilt`) {
           return;
@@ -818,6 +856,9 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
   }
 
+  /**
+   * Add a warning if there are unused channels.
+   */
   function checkUnusedChannels() {
     const unused = [...definedChannelKeys].filter(
       chKey => !usedChannelKeys.has(chKey)
@@ -940,7 +981,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
     /**
      * @param {!string} type What capability type to search for.
-     * @param {!number} [minimum=1] How many occurences are needed to succeed.
+     * @param {!number} [minimum=1] How many occurrences are needed to succeed.
      * @returns {!boolean} Whether the given capability type occurs at least at the given minimum times in the fixture.
      */
     function hasCapabilityOfType(type, minimum = 1) {
@@ -997,7 +1038,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   /**
    * Checks if everything regarding this fixture's RDM data is correct.
    * @param {!string} manKey The manufacturer key.
-   * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurences are appended.
+   * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
    */
   function checkRdm(manKey, uniqueValues = null) {
     if (fixture.rdm === null || uniqueValues === null) {
@@ -1067,10 +1108,20 @@ function checkUniqueness(set, value, result, messageIfNotUnique) {
 }
 
 
+/**
+ * @param {!string} description The error message.
+ * @param {any} error An error object to append to the message.
+ * @returns {!string} A string containing the message and a deep inspection of the given error object.
+ */
 function getErrorString(description, error) {
   return `${description} ${util.inspect(error, false, null)}`;
 }
 
+/**
+ * @param {?array} a An array.
+ * @param {?array} b Another array.
+ * @returns {!boolean} True if both arrays are equal, false if they are null or not equal.
+ */
 function arraysEqual(a, b) {
   if (a === b) {
     return true;
