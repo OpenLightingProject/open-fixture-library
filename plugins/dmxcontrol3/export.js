@@ -457,28 +457,13 @@ const functions = {
  */
 function getNormalizedCapabilities(caps, property, maximumValue, properUnit) {
   const normalizedCaps = caps.map(cap => {
-    const [startEntity, endEntity] = cap[property];
-    let unit = startEntity.unit;
-
-    let [startValue, endValue] = [startEntity.number, endEntity.number];
-
-    const unitConversions = {
-      ms: [`s`, 1000],
-      bpm: [`Hz`, 1 / 60],
-      rpm: [`Hz`, 1 / 60]
-    };
-    if (Object.keys(unitConversions).includes(unit)) {
-      const [newUnit, factor] = unitConversions[unit];
-      unit = newUnit;
-      startValue *= factor;
-      endValue *= factor;
-    }
+    const [startEntity, endEntity] = cap[property].map(entity => entity.toBaseUnit());
 
     return {
       capObject: cap,
-      unit,
-      startValue,
-      endValue
+      unit: startEntity.unit,
+      startValue: startEntity.number,
+      endValue: endEntity.number
     };
   });
 
