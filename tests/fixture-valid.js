@@ -785,6 +785,10 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         }
       }
 
+      /**
+       * Check that all coarser channels of the given fine channel are present in the current mode.
+       * @param {!FineChannel} fineChannel The fine channel to check.
+       */
       function checkCoarserChannelsInMode(fineChannel) {
         const coarseChannel = fineChannel.coarseChannel;
         const coarserChannelKeys = coarseChannel.fineChannelAliases.filter(
@@ -800,6 +804,9 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         }
       }
 
+      /**
+       * Check that panMax / tiltMax are defined in this mode's physical section (or globally) when there is a Pan / Tilt channel.
+       */
       function checkPanTiltMaxInPhysical() {
         if (channel.type !== `Pan` && channel.type !== `Tilt`) {
           return;
@@ -818,6 +825,9 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
   }
 
+  /**
+   * Add a warning if there are unused channels.
+   */
   function checkUnusedChannels() {
     const unused = [...definedChannelKeys].filter(
       chKey => !usedChannelKeys.has(chKey)
@@ -1067,10 +1077,20 @@ function checkUniqueness(set, value, result, messageIfNotUnique) {
 }
 
 
+/**
+ * @param {!string} description The error message.
+ * @param {any} error An error object to append to the message.
+ * @returns {!string} A string containing the message and a deep inspection of the given error object.
+ */
 function getErrorString(description, error) {
   return `${description} ${util.inspect(error, false, null)}`;
 }
 
+/**
+ * @param {?array} a An array.
+ * @param {?array} b Another array.
+ * @returns {!boolean} True if both arrays are equal, false if they are null or not equal.
+ */
 function arraysEqual(a, b) {
   if (a === b) {
     return true;
