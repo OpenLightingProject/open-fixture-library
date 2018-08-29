@@ -1,4 +1,4 @@
-# Open Fixture Library [![Build Status](https://img.shields.io/travis/OpenLightingProject/open-fixture-library/master.svg?label=tests)](https://travis-ci.org/OpenLightingProject/open-fixture-library/branches) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/73096865e9f44a7bb246a318ffc8e68b)](https://www.codacy.com/app/FloEdelmann/open-fixture-library) [![Greenkeeper badge](https://badges.greenkeeper.io/OpenLightingProject/open-fixture-library.svg)](https://greenkeeper.io/)
+# Open Fixture Library [![Build Status](https://img.shields.io/travis/OpenLightingProject/open-fixture-library/master.svg?label=tests)](https://travis-ci.org/OpenLightingProject/open-fixture-library/branches) [![Code quality](https://api.codacy.com/project/badge/Grade/73096865e9f44a7bb246a318ffc8e68b)](https://www.codacy.com/app/FloEdelmann/open-fixture-library) [![Greenkeeper badge](https://badges.greenkeeper.io/OpenLightingProject/open-fixture-library.svg)](https://greenkeeper.io/)
 
 <a href="./ui/static/ofl-logo.svg"><img alt="OFL logo" src="https://cdn.rawgit.com/OpenLightingProject/open-fixture-library/master/ui/static/ofl-logo.svg" width="250" /></a>
 
