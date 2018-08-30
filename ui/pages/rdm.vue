@@ -85,6 +85,10 @@ export default {
   async asyncData({ query, redirect }) {
     const { manufacturerId, modelId, personalityIndex } = query;
 
+    const manufacturerIdNumber = parseInt(manufacturerId);
+    const modelIdNumber = parseInt(modelId);
+    const personalityIndexNumber = parseInt(personalityIndex);
+
     if (isEmpty(manufacturerId)) {
       return {
         notFound: null,
@@ -97,19 +101,19 @@ export default {
         return {
           notFound: `manufacturer`,
           searchFor: `manufacturer`,
-          manufacturerId: manufacturerId
+          manufacturerId: manufacturerIdNumber
         };
       }
 
       return {
         notFound: `manufacturer`,
         searchFor: `fixture`,
-        manufacturerId: manufacturerId,
-        modelId: modelId,
+        manufacturerId: manufacturerIdNumber,
+        modelId: modelIdNumber,
         prefillQuery: encodeURIComponent(JSON.stringify({
           useExistingManufacturer: false,
-          newManufacturerRdmId: parseInt(manufacturerId),
-          rdmModelId: parseInt(modelId)
+          newManufacturerRdmId: manufacturerIdNumber,
+          rdmModelId: modelIdNumber
         }))
       };
     }
@@ -122,7 +126,7 @@ export default {
     }
 
     if (modelId in register.rdm[manufacturerId].models) {
-      const locationHash = isEmpty(personalityIndex) ? `` : `#rdm-personality-${personalityIndex}`;
+      const locationHash = isEmpty(personalityIndex) ? `` : `#rdm-personality-${personalityIndexNumber}`;
 
       redirect(301, `/${manufacturer.key}/${manufacturer.models[modelId]}${locationHash}`);
       return {};
@@ -131,14 +135,14 @@ export default {
     return {
       notFound: `fixture`,
       searchFor: `fixture`,
-      manufacturerId: manufacturerId,
+      manufacturerId: manufacturerIdNumber,
       manufacturerLink: `/${manufacturer.key}`,
       manufacturerName: manufacturers[manufacturer.key].name,
-      modelId: modelId,
+      modelId: modelIdNumber,
       prefillQuery: encodeURIComponent(JSON.stringify({
         useExistingManufacturer: true,
         manufacturerShortName: manufacturer.key,
-        rdmModelId: parseInt(modelId)
+        rdmModelId: modelIdNumber
       }))
     };
   }
