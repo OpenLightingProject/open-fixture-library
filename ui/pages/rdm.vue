@@ -49,18 +49,18 @@
       <h1>RDM {{ searchFor }} not found</h1>
 
       <template v-if="notFound === `fixture`">
-        <p>The requested <a :href="manufacturerLink">{{ manufacturerName }}</a> fixture was not found in the Open Fixture Library. Maybe a fixture in the library is missing the RDM ID?</p>
+        <p>The requested <a :href="manufacturerLink">{{ manufacturerName }}</a> fixture was not found in the Open Fixture Library. Maybe a fixture in the library is missing the RDM ID? It may be included in the <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${manufacturerId}&amp;model=${modelId}`">Open Lighting RDM database</a>.</p>
         <p>Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <nuxt-link :to="`/fixture-editor?prefill=${prefillQuery}`">add it yourself</nuxt-link>!</p>
         <p>Thank you either way!</p>
       </template>
 
       <template v-else-if="searchFor === `fixture`">
-        <p>The manufacturer of the requested fixture was not found in the Open Fixture Library. Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name and manufacturer of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <nuxt-link :to="`/fixture-editor?prefill=${prefillQuery}`">add it yourself</nuxt-link>!</p>
+        <p>The manufacturer of the requested fixture was not found in the Open Fixture Library. The fixture may be included in the <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${manufacturerId}&amp;model=${modelId}`">Open Lighting RDM database</a>. Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name and manufacturer of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <nuxt-link :to="`/fixture-editor?prefill=${prefillQuery}`">add it yourself</nuxt-link>!</p>
         <p>Thank you either way!</p>
       </template>
 
       <template v-else>
-        <p>The requested manufacturer was not found in the Open Fixture Library. Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the manufacturer. Include the full manufacturer name and mention RDM ID <b>{{ manufacturerId }}</b>. Thank you!</p>
+        <p>The requested manufacturer was not found in the Open Fixture Library. It may be included in the <a :href="`http://rdm.openlighting.org/manufacturer/display?manufacturer=${manufacturerId}`">Open Lighting RDM database</a>. Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the manufacturer. Include the full manufacturer name and mention RDM ID <b>{{ manufacturerId }}</b>. Thank you!</p>
       </template>
 
     </template>
