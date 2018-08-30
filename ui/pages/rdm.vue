@@ -33,7 +33,7 @@
           hint="Optional.">
           <input
             type="number"
-            name="modelId"
+            name="personalityIndex"
             min="1"
             step="1">
         </app-labeled-input>
