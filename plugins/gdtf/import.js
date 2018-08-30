@@ -71,6 +71,9 @@ module.exports.import = function importGdtf(str, filename, resolve, reject) {
 
       out.warnings[fixKey].push(`Please add relevant links to the fixture.`);
 
+      addRdmInfo(fixture, manufacturer, gdtfFixture);
+
+
       // // fill in one empty mode so we don't have to check this case anymore
       // if (!(`Mode` in qlcPlusFixture)) {
       //   qlcPlusFixture.Mode = [{
@@ -125,6 +128,26 @@ function getIsoDateFromGtdfDate(dateStr) {
   catch (error) {
     return null;
   }
+}
+
+/**
+ * Adds an RDM section to the OFL fixture and manufacturer if applicable.
+ * @param {!object} fixture The OFL fixture object.
+ * @param {!object} manufacturer The OFL manufacturer object.
+ * @param {!object} gdtfFixture The GDTF fixture object.
+ */
+function addRdmInfo(fixture, manufacturer, gdtfFixture) {
+  if (!(`Protocols` in gdtfFixture) || !(`RDM` in gdtfFixture.Protocols[0])) {
+    return;
+  }
+
+  const rdmData = gdtfFixture.Protocols[0].RDM[0];
+
+  manufacturer.rdmId = parseInt(rdmData.$.ManufacturerID, 16);
+  fixture.rdm = {
+    modelId: parseInt(rdmData.$.DeviceModelID, 16),
+    softwareVersion: rdmData.$.SoftwareVersionID
+  };
 }
 
 
