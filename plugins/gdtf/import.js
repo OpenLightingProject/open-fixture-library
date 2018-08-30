@@ -53,15 +53,16 @@ module.exports.import = function importGdtf(str, filename, resolve, reject) {
       fixture.categories = [`Other`]; // TODO: can we find out categories?
       out.warnings[fixKey].push(`Please add fixture categories.`);
 
+      const timestamp = new Date().toISOString().replace(/T.*/, ``);
       const revisions = gdtfFixture.Revisions[0].Revision;
 
       fixture.meta = {
         authors: [`Anonymous`],
-        createDate: getIsoDateFromGtdfDate(revisions[0].$.Date),
-        lastModifyDate: getIsoDateFromGtdfDate(revisions[revisions.length - 1].$.Date),
+        createDate: getIsoDateFromGdtfDate(revisions[0].$.Date) || timestamp,
+        lastModifyDate: getIsoDateFromGdtfDate(revisions[revisions.length - 1].$.Date) || timestamp,
         importPlugin: {
           plugin: `gdtf`,
-          date: new Date().toISOString().replace(/T.*/, ``),
+          date: timestamp,
           comment: `GDTF fixture type ID: ${gdtfFixture.$.FixtureTypeID}`
         }
       };
@@ -72,6 +73,8 @@ module.exports.import = function importGdtf(str, filename, resolve, reject) {
       out.warnings[fixKey].push(`Please add relevant links to the fixture.`);
 
       addRdmInfo(fixture, manufacturer, gdtfFixture);
+
+      // TODO: import physical data and matrix
 
 
       // // fill in one empty mode so we don't have to check this case anymore
@@ -112,10 +115,10 @@ module.exports.import = function importGdtf(str, filename, resolve, reject) {
 
 
 /**
- * @param {!string} dateStr A date string in the form "dd.MM.yyyy HH:mm:ss", see https://gdtf-share.com/wiki/GDTF_File_Description#Definition
+ * @param {!string} dateStr A date string in the form "dd.MM.yyyy HH:mm:ss", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-date
  * @returns {?string} A date string in the form "YYYY-MM-DD", or null if the string could not be parsed.
  */
-function getIsoDateFromGtdfDate(dateStr) {
+function getIsoDateFromGdtfDate(dateStr) {
   const timeRegex = /^([0-3]?\d)\.([01]?\d)\.(\d{4})\s+\d?\d:\d?\d:\d?\d$/;
   const match = dateStr.match(timeRegex);
 
@@ -149,7 +152,6 @@ function addRdmInfo(fixture, manufacturer, gdtfFixture) {
     softwareVersion: rdmData.$.SoftwareVersionID
   };
 }
-
 
 /**
  * @param {!string} str The string to slugify.
