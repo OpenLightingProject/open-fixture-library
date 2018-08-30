@@ -41,7 +41,7 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
         createDate: timestamp,
         lastModifyDate: timestamp,
         importPlugin: {
-          plugin: `qlcplus`,
+          plugin: `qlcplus_4.11.2`,
           date: timestamp,
           comment: `created by ${qlcPlusFixture.Creator[0].Name[0]} (version ${qlcPlusFixture.Creator[0].Version[0]})`
         }
