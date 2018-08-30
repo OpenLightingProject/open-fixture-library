@@ -76,6 +76,8 @@ module.exports.import = function importGdtf(str, filename, resolve, reject) {
 
       // TODO: import physical data and matrix
 
+      addChannels(fixture, gdtfFixture);
+
 
       // // fill in one empty mode so we don't have to check this case anymore
       // if (!(`Mode` in qlcPlusFixture)) {
@@ -151,6 +153,179 @@ function addRdmInfo(fixture, manufacturer, gdtfFixture) {
     modelId: parseInt(rdmData.$.DeviceModelID, 16),
     softwareVersion: rdmData.$.SoftwareVersionID
   };
+}
+
+/**
+ * @param {!object} fixture The OFL fixture object.
+ * @param {!object} gdtfFixture The GDTF fixture object.
+ */
+function addChannels(fixture, gdtfFixture) {
+  const availableChannels = [];
+  const templateChannels = [];
+
+  gdtfFixture.DMXModes[0].DMXMode.forEach(gdtfMode => {
+    gdtfMode.DMXChannels[0].DMXChannel.forEach(gdtfChannel => {
+      if (gdtfChannel.$.DMXBreak === `Overwrite`) {
+        addChannel(templateChannels, gdtfChannel, gdtfFixture);
+      }
+      else {
+        addChannel(availableChannels, gdtfChannel, gdtfFixture);
+      }
+    });
+  });
+
+  // append $pixelKey to templateChannels' keys and names
+  templateChannels.forEach(channelWrapper => {
+    channelWrapper.key += ` $pixelKey`;
+    channelWrapper.channel.name += ` $pixelKey`;
+  });
+
+  // remove unnecessary name property and fill/remove fineChannelAliases
+  availableChannels.concat(templateChannels).forEach(channelWrapper => {
+    const chKey = channelWrapper.key;
+
+    if (chKey === channelWrapper.channel.name) {
+      delete channelWrapper.channel.name;
+    }
+
+    if (channelWrapper.maxFineness === 0) {
+      delete channelWrapper.channel.fineChannelAliases;
+    }
+    else {
+      channelWrapper.channel.fineChannelAliases.push(`${chKey} fine`);
+
+      for (let i = 2; i <= channelWrapper.maxFineness; i++) {
+        channelWrapper.channel.fineChannelAliases.push(`${chKey} fine^${i}`);
+      }
+    }
+  });
+
+  // convert availableChannels array to object and add it to fixture
+  if (availableChannels.length > 0) {
+    fixture.availableChannels = {};
+    availableChannels.forEach(channelWrapper => {
+      fixture.availableChannels[channelWrapper.key] = channelWrapper.channel;
+    });
+  }
+
+  // convert templateChannels array to object and add it to fixture
+  if (templateChannels.length > 0) {
+    fixture.templateChannels = {};
+    templateChannels.forEach(channelWrapper => {
+      fixture.templateChannels[channelWrapper.key] = channelWrapper.channel;
+    });
+  }
+}
+
+/**
+ * @typedef ChannelWrapper
+ * @type object
+ * @property {!string} key The channel key.
+ * @property {!object} channel The OFL channel object.
+ * @property {!number} maxFineness The highest used fineness of this channel.
+ */
+
+/**
+ * @param {!array.<!Channel>} channels The OFL availableChannels or templateChannels object.
+ * @param {!object} gdtfChannel The GDTF channel object.
+ * @param {!object} gdtfFixture The GDTF fixture object.
+ */
+function addChannel(channels, gdtfChannel, gdtfFixture) {
+  const name = getChannelName();
+
+  const channel = {
+    name: name,
+    fineChannelAliases: []
+  };
+
+  if (`Default` in gdtfChannel.$) {
+    channel.defaultValue = gdtfDmxValueToNumber(gdtfChannel.$.Default)[0];
+  }
+
+  if (`Highlight` in gdtfChannel.$ && gdtfChannel.$.Highlight !== `None`) {
+    channel.highlightValue = gdtfDmxValueToNumber(gdtfChannel.$.Highlight)[0];
+  }
+
+  // check if we already added the same channel
+  const sameChannel = channels.find(
+    ch => JSON.stringify(ch.channel) === JSON.stringify(channel)
+  );
+  if (sameChannel) {
+    gdtfChannel._oflChannelKey = sameChannel.key;
+
+    sameChannel.maxFineness = Math.max(sameChannel.maxFineness, getChannelFineness());
+    return;
+  }
+
+  const channelKey = getChannelKey();
+
+  gdtfChannel._oflChannelKey = channelKey;
+  channels.push({
+    key: channelKey,
+    channel: channel,
+    maxFineness: getChannelFineness()
+  });
+
+
+  /**
+   * @returns {!string} The channel name.
+   */
+  function getChannelName() {
+    const channelAttribute = gdtfChannel.LogicalChannel[0].$.Attribute;
+    return gdtfFixture.AttributeDefinitions[0].Attributes[0].Attribute.find(
+      attribute => attribute.$.Name === channelAttribute
+    ).$.Pretty || channelAttribute;
+  }
+
+  /**
+   * @returns {!number} The fineness of this channel.
+   */
+  function getChannelFineness() {
+    if (`Uber ` in gdtfChannel.$ && gdtfChannel.$.Uber !== `None`) {
+      return 3;
+    }
+
+    if (`Ultra` in gdtfChannel.$ && gdtfChannel.$.Ultra !== `None`) {
+      return 2;
+    }
+
+    if (`Fine` in gdtfChannel.$ && gdtfChannel.$.Fine !== `None`) {
+      return 1;
+    }
+
+    return 0;
+  }
+
+  /**
+   * @returns {!string} The channel key, derived from the name and made unique.
+   */
+  function getChannelKey() {
+    let key = name;
+
+    // make unique by appending ' 2', ' 3', ... if necessary
+    let duplicates = 1;
+    const hasChannelKey = ch => ch.key === key;
+    while (channels.some(hasChannelKey)) {
+      duplicates++;
+      key = `${name} ${duplicates}`;
+    }
+
+    return key;
+  }
+}
+
+/**
+ * @param {!string} dmxValue GDTF DMX value in the form "128/2", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-DMXValue
+ * @returns {!array.<!number>} Array containing DMX value and DMX fineness.
+ */
+function gdtfDmxValueToNumber(dmxValue) {
+  try {
+    const [, value, fineness] = dmxValue.match(/^(\d+)\/(\d)$/);
+    return [parseInt(value), parseInt(fineness)];
+  }
+  catch (error) {
+    return [parseInt(dmxValue), 1];
+  }
 }
 
 /**
