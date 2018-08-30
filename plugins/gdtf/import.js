@@ -78,6 +78,7 @@ module.exports.import = function importGdtf(str, filename, resolve, reject) {
       fixture.matrix = {};
 
       addChannels(fixture, gdtfFixture);
+      addModes(fixture, gdtfFixture);
 
 
       // // fill in one empty mode so we don't have to check this case anymore
@@ -241,7 +242,10 @@ function addChannel(channels, gdtfChannel, gdtfFixture) {
 
   const channel = {
     name: name,
-    fineChannelAliases: []
+    fineChannelAliases: [],
+    capability: {
+      type: `Generic`
+    }
   };
 
   if (`Default` in gdtfChannel.$) {
@@ -318,6 +322,61 @@ function addChannel(channels, gdtfChannel, gdtfFixture) {
 
     return key;
   }
+}
+
+/**
+ * @param {!object} fixture The OFL fixture object.
+ * @param {!object} gdtfFixture The GDTF fixture object.
+ */
+function addModes(fixture, gdtfFixture) {
+  fixture.modes = gdtfFixture.DMXModes[0].DMXMode.map(gdtfMode => {
+    const channelsPerDmxBreak = [];
+
+    // add all channels that are not matrix channels
+    gdtfMode.DMXChannels[0].DMXChannel.forEach(gdtfChannel => {
+      if (gdtfChannel.$.DMXBreak === `Overwrite`) {
+        return;
+      }
+
+      const chKey = gdtfChannel._oflChannelKey;
+      const oflChannel = fixture.availableChannels[chKey];
+
+      const dmxBreak = parseInt(gdtfChannel.$.DMXBreak || `1`) - 1;
+      if (!channelsPerDmxBreak[dmxBreak]) {
+        channelsPerDmxBreak[dmxBreak] = [];
+      }
+
+      channelsPerDmxBreak[dmxBreak][parseInt(gdtfChannel.$.Coarse) - 1] = chKey;
+
+      if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Fine`)) {
+        channelsPerDmxBreak[dmxBreak][parseInt(gdtfChannel.$.Fine) - 1] = oflChannel.fineChannelAliases[0];
+      }
+
+      if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Ultra`)) {
+        channelsPerDmxBreak[dmxBreak][parseInt(gdtfChannel.$.Ultra) - 1] = oflChannel.fineChannelAliases[1];
+      }
+
+      if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Uber`)) {
+        channelsPerDmxBreak[dmxBreak][parseInt(gdtfChannel.$.Uber) - 1] = oflChannel.fineChannelAliases[2];
+      }
+    });
+
+    // TODO: add matrix channel insert blocks from `Overwrite` channels
+
+    return {
+      name: gdtfMode.$.Name,
+      channels: [].concat(...channelsPerDmxBreak)
+    };
+  });
+}
+
+/**
+ * @param {!object} xmlNode An XML node object.
+ * @param {!string} attribute The attribute name to check.
+ * @returns {!boolean} True if the node has the attribute and its value is not "None", false otherwise.
+ */
+function xmlNodeHasNotNoneAttribute(xmlNode, attribute) {
+  return attribute in xmlNode.$ && xmlNode.$[attribute] !== `None`;
 }
 
 /**
