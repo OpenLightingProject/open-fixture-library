@@ -74,7 +74,8 @@ module.exports.import = function importGdtf(str, filename, resolve, reject) {
 
       addRdmInfo(fixture, manufacturer, gdtfFixture);
 
-      // TODO: import physical data and matrix
+      // TODO: import physical data and useful matrix
+      fixture.matrix = {};
 
       addChannels(fixture, gdtfFixture);
 
@@ -104,7 +105,12 @@ module.exports.import = function importGdtf(str, filename, resolve, reject) {
 
       // fixture.modes = qlcPlusFixture.Mode.map(mode => getOflMode(mode, fixture.physical, out.warnings[fixKey]));
 
-      // cleanUpFixture(fixture, qlcPlusFixture);
+      if (`templateChannels` in fixture) {
+        out.warnings[fixKey].push(`Please add matrix information.`);
+      }
+      else {
+        delete fixture.matrix;
+      }
 
       out.fixtures[fixKey] = fixture;
 
