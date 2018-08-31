@@ -47,28 +47,26 @@ else {
 }
 
 const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `export.js`));
-const files = plugin.export(fixtures, {});
+plugin.export(fixtures, {}).then(files => {
+  for (const testKey of plugins.data[args.plugin].exportTests) {
+    const exportTest = require(path.join(__dirname, `../plugins`, args.plugin, `exportTests/${testKey}.js`));
 
-for (const testKey of plugins.data[args.plugin].exportTests) {
-  const test = require(path.join(__dirname, `../plugins`, args.plugin, `exportTests/${testKey}.js`));
-  const filePromises = files.map(file =>
-    test(file)
-      .then(() => colors.green(`[PASS] `) + file.name)
-      .catch(err => {
-        const errors = Array.isArray(err) ? err : [err];
+    const filePromises = files.map(file =>
+      exportTest(file)
+        .then(() => `${colors.green(`[PASS]`)} ${file.name}`)
+        .catch(err => {
+          const errors = Array.isArray(err) ? err : [err];
 
-        let lines = [colors.red(`[FAIL] `) + file.name];
-        lines = lines.concat(
-          errors.map(error => `- ${error}`)
-        );
+          return [].concat(
+            `${colors.red(`[FAIL]`)} ${file.name}`,
+            errors.map(error => `- ${error}`)
+          ).join(`\n`);
+        })
+    );
 
-        return lines.join(`\n`);
-      })
-  );
-
-  Promise.all(filePromises)
-    .then(fileLines => {
+    Promise.all(filePromises).then(outputPerFile => {
       console.log(`\n${colors.yellow(`Test ${testKey}`)}`);
-      console.log(fileLines.join(`\n`));
+      console.log(outputPerFile.join(`\n`));
     });
-}
+  }
+});

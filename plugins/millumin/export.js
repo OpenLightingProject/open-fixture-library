@@ -9,7 +9,7 @@ module.exports.supportedOflVersion = `7.3.0`;
 
 module.exports.export = function exportMillumin(fixtures, options) {
   // one JSON file for each fixture
-  return fixtures.map(fixture => {
+  const outFiles = fixtures.map(fixture => {
     let jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
     jsonData.$schema = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${module.exports.supportedOflVersion}/schemas/fixture.json`;
 
@@ -57,6 +57,8 @@ module.exports.export = function exportMillumin(fixtures, options) {
       fixtures: [fixture]
     };
   });
+
+  return Promise.resolve(outFiles);
 };
 
 /**

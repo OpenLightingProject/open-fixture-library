@@ -43,5 +43,5 @@ module.exports.export = function exportOFL(fixtures, options) {
     mimetype: `application/ofl-manufacturers`
   });
 
-  return files;
+  return Promise.resolve(files);
 };

@@ -70,7 +70,7 @@ module.exports.export = function exportEcue(fixtures, options) {
     }
   }
 
-  return [{
+  return Promise.resolve([{
     name: `UserLibrary.xml`,
     content: xml.end({
       pretty: true,
@@ -78,7 +78,7 @@ module.exports.export = function exportEcue(fixtures, options) {
     }),
     mimetype: `application/xml`,
     fixtures: fixtures
-  }];
+  }]);
 };
 
 /**

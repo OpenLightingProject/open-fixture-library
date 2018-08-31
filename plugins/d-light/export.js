@@ -54,7 +54,7 @@ module.exports.export = function exportDLight(fixtures, options) {
     }
   }
 
-  return deviceFiles;
+  return Promise.resolve(deviceFiles);
 };
 
 /**

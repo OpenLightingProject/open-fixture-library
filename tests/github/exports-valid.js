@@ -202,30 +202,30 @@ function getTasksForFixtures(changedComponents) {
 function getTaskPromise(task) {
   const plugin = require(path.join(__dirname, `../../plugins/${task.pluginKey}/export.js`));
   const test = require(path.join(__dirname, `../../plugins/${task.pluginKey}/exportTests/${task.testKey}.js`));
-  const files = plugin.export([fixtureFromRepository(task.manKey, task.fixKey)]);
 
-  let failed = false;
-  return Promise.all(files.map(
-    file => test(file)
-      .then(() => {
-        return `    <li>:heavy_check_mark: ${file.name}</li>`;
-      })
-      .catch(err => {
-        failed = true;
-        const errors = Array.isArray(err) ? err : [err];
-        return `    <li><details><summary>:x: ${file.name}</summary>${errors.join(`\n`)}</details></li>`;
-      })
-  ))
-    .then(resultLines => {
-      const emoji = failed ? `:x:` : `:heavy_check_mark:`;
+  return plugin.export([fixtureFromRepository(task.manKey, task.fixKey)])
+    .then(files => {
+      let failed = false;
 
-      return [
-        `<details>`,
-        `  <summary>${emoji} <strong>${task.manKey} / ${task.fixKey}:</strong> ${task.pluginKey} / ${task.testKey}</summary>`,
-        `  <ul>`
-      ].concat(resultLines).concat([
-        `  </ul>`,
-        `</details>`
-      ]);
+      return Promise.all(files.map(
+        file => test(file)
+          .then(() => `    <li>:heavy_check_mark: ${file.name}</li>`)
+          .catch(err => {
+            failed = true;
+            const errors = Array.isArray(err) ? err : [err];
+            return `    <li><details><summary>:x: ${file.name}</summary>${errors.join(`\n`)}</details></li>`;
+          })
+      )).then(resultLines => {
+        const emoji = failed ? `:x:` : `:heavy_check_mark:`;
+
+        return [].concat(
+          `<details>`,
+          `  <summary>${emoji} <strong>${task.manKey} / ${task.fixKey}:</strong> ${task.pluginKey} / ${task.testKey}</summary>`,
+          `  <ul>`,
+          resultLines,
+          `  </ul>`,
+          `</details>`
+        );
+      });
     });
 }

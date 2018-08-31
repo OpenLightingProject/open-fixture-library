@@ -55,11 +55,9 @@ app.get(`/download.:format([a-z0-9_.-]+)`, (request, response, next) => {
   });
 
   const plugin = require(path.join(__dirname, `plugins`, format, `export.js`));
-  const outfiles = plugin.export(fixtures, {
+  plugin.export(fixtures, {
     baseDir: __dirname
-  });
-
-  downloadFiles(response, outfiles, format);
+  }).then(outfiles => downloadFiles(response, outfiles, format));
 });
 
 app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, (request, response, next) => {
@@ -81,11 +79,9 @@ app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, (request, response, next) => {
   }
 
   const plugin = require(path.join(__dirname, `plugins`, format, `export.js`));
-  const outfiles = plugin.export([fixtureFromRepository(manKey, fixKey)], {
+  plugin.export([fixtureFromRepository(manKey, fixKey)], {
     baseDir: __dirname
-  });
-
-  downloadFiles(response, outfiles, `${manKey}_${fixKey}_${format}`);
+  }).then(outfiles => downloadFiles(response, outfiles, `${manKey}_${fixKey}_${format}`));
 });
 
 app.get(`/sitemap.xml`, (request, response) => {

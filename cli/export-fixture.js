@@ -68,15 +68,17 @@ plugin.export(
   {
     baseDir: path.join(__dirname, `..`)
   }
-).forEach(file => {
-  if (args.o) {
-    const filePath = path.join(outDir, file.name);
-    mkdirp.sync(path.dirname(filePath));
-    fs.writeFileSync(filePath, file.content);
-    console.log(`Created file ${filePath}`);
-  }
-  else {
-    console.log(`\n${colors.yellow(`File name: '${file.name}'`)}`);
-    console.log(file.content);
-  }
+).then(files => {
+  files.forEach(file => {
+    if (args.o) {
+      const filePath = path.join(outDir, file.name);
+      mkdirp.sync(path.dirname(filePath));
+      fs.writeFileSync(filePath, file.content);
+      console.log(`Created file ${filePath}`);
+    }
+    else {
+      console.log(`\n${colors.yellow(`File name: '${file.name}'`)}`);
+      console.log(file.content);
+    }
+  });
 });

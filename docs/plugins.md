@@ -21,7 +21,7 @@ node cli/export-fixture.js -p <plugin> <fixture> [<more fixtures>]
 
 ## Exporting
 
-If exporting is supported, create a `plugins/<plugin-key>/export.js` module that provides the plugin name, version and a method that generates the needed third-party files out of an given array of fixtures. This method should return an array of objects for each file that should be exported / downloadable; the files are zipped together automatically if necessary. A file object looks like this:
+If exporting is supported, create a `plugins/<plugin-key>/export.js` module that provides the plugin name, version and a method that generates the needed third-party files out of an given array of fixtures. This method should return a Promise of an array of objects for each file that should be exported / downloadable; the files are zipped together automatically if necessary. A file object looks like this:
 
 ```js
 {
@@ -44,7 +44,7 @@ module.exports.version = `0.1.0`;  // semantic versioning of export plugin
  * @param {!object} options Some global options, for example:
  * @param {!string} options.baseDir Absolute path to OFL's root directory
  * @param {?Date} options.date The current time (prefer this over new Date())
- * @returns {!Array.<object>} All generated files (see file schema above)
+ * @returns {!Promise.<!Array.<object>, !Error>} All generated files (see file schema above)
 */
 module.exports.export = function exportPluginName(fixtures, options) {
   const outfiles = [];
@@ -53,14 +53,16 @@ module.exports.export = function exportPluginName(fixtures, options) {
     for (const mode of fixture.modes) {
       outfiles.push({
         name: `${fixture.manufacturer.key}-${fixture.key}-${mode.shortName}.xml`,
-        // that's just an example, normally, the (way larger) file contents are computated using several helper functions
+
+        // That's just an example! Usually, the (way larger) file contents are
+        // computed using several (possibly asynchronous) helper functions
         content: `<title>${fixture.name}: ${mode.channels.length}ch</title>`,
         mimetype: `application/xml`
       });
     }
   }
 
-  return outfiles;
+  return Promise.resolve(outfiles);
 };
 ```
 

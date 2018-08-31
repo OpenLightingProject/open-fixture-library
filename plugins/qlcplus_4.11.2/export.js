@@ -26,7 +26,7 @@ module.exports.name = `QLC+ 4.11.2`;
 module.exports.version = `0.5.0`;
 
 module.exports.export = function exportQLCplus(fixtures, options) {
-  return fixtures.map(fixture => {
+  const outFiles = fixtures.map(fixture => {
     const xml = xmlbuilder.begin()
       .declaration(`1.0`, `UTF-8`)
       .element({
@@ -62,6 +62,8 @@ module.exports.export = function exportQLCplus(fixtures, options) {
       fixtures: [fixture]
     };
   });
+
+  return Promise.resolve(outFiles);
 };
 
 /**
