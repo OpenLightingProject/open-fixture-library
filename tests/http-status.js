@@ -4,7 +4,6 @@ const path = require(`path`);
 const colors = require(`colors`);
 const childProcess = require(`child_process`);
 const blc = require(`broken-link-checker`);
-const promisify = require(`util`).promisify;
 const pullRequest = require(`./github/pull-request.js`);
 
 
