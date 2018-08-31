@@ -3,6 +3,7 @@ const fs = require(`fs`);
 const path = require(`path`);
 const minimist = require(`minimist`);
 const colors = require(`colors`);
+const mkdirp = require(`mkdirp`);
 
 const plugins = require(`../plugins/plugins.json`);
 const { fixtureFromRepository } = require(`../lib/model.js`);
@@ -59,33 +60,31 @@ else {
   });
 }
 
-let outDir;
-if (args.o) {
-  outDir = path.join(process.cwd(), args.o);
-  if (!fs.existsSync(outDir)) {
-    fs.mkdirSync(outDir);
-  }
-}
+const outDir = args.o ? path.join(process.cwd(), args.o) : null;
 
 const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `export.js`));
 plugin.export(
   fixtures.map(([man, fix]) => fixtureFromRepository(man, fix)),
   {
-    baseDir: path.join(__dirname, `..`)
+    baseDir: path.join(__dirname, `..`),
+    date: new Date()
   }
-).forEach(file => {
-  if (args.o) {
-    const filePath = path.join(outDir, file.name);
-
-    if (!fs.existsSync(path.dirname(filePath))) {
-      fs.mkdirSync(path.dirname(filePath));
-    }
-
-    fs.writeFileSync(filePath, file.content);
-    console.log(`Created file ${filePath}`);
-  }
-  else {
-    console.log(`\n${colors.yellow(`File name: '${file.name}'`)}`);
-    console.log(file.content);
-  }
-});
+)
+  .then(files => {
+    files.forEach(file => {
+      if (args.o) {
+        const filePath = path.join(outDir, file.name);
+        mkdirp.sync(path.dirname(filePath));
+        fs.writeFileSync(filePath, file.content);
+        console.log(`Created file ${filePath}`);
+      }
+      else {
+        console.log(`\n${colors.yellow(`File name: '${file.name}'`)}`);
+        console.log(file.content);
+      }
+    });
+  })
+  .catch(error => {
+    console.error(`${colors.red(`[Error]`)} Exporting failed:`, error);
+    process.exit(1);
+  });

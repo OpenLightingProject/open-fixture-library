@@ -21,10 +21,10 @@ const siteChecker = new blc.SiteChecker({
   rateLimit: 25,
   filterLevel: 3
 }, {
-  html: function(tree, robots, response, pageUrl, customData) {
+  html(tree, robots, response, pageUrl, customData) {
     foundLinks[pageUrl] = [];
   },
-  link: function(result, customData) {
+  link(result, customData) {
     let location = colors.cyan(`(ex)`);
     let failStr = colors.yellow(`[WARN]`);
     if (result.internal) {
@@ -41,7 +41,7 @@ const siteChecker = new blc.SiteChecker({
       fails[result.internal ? `internal` : `external`].add(result.url.resolved);
     }
   },
-  page: function(error, pageUrl, customData) {
+  page(error, pageUrl, customData) {
     if (error) {
       console.log(`${colors.red(`[FAIL]`)} ${pageUrl}\n └ ${error}`);
       fails.internal.add(pageUrl);
@@ -51,7 +51,7 @@ const siteChecker = new blc.SiteChecker({
       console.log(foundLinks[pageUrl].join(`\n`));
     }
   },
-  end: function() {
+  end() {
     const testTime = new Date() - startTime;
     console.log(`\nThe test took ${testTime / 1000}s.`);
 
@@ -64,9 +64,9 @@ const siteChecker = new blc.SiteChecker({
 const serverProcess = childProcess.execFile(`node`, [path.join(__dirname, `..`, `main.js`)], {
   env: process.env
 }, (error, stdout, stderr) => {
-  // this is all executed when the process stops
-  console.log();
+  // when the server process stops
 
+  console.log();
   if (stdout) {
     console.log(colors.yellow(`Server output (stdout):`));
     console.log(stdout);
@@ -98,8 +98,8 @@ const serverProcess = childProcess.execFile(`node`, [path.join(__dirname, `..`, 
   }
 
   // try to create/delete a GitHub comment
-  pullRequest.checkEnv().then(() => {
-    return pullRequest.init()
+  pullRequest.checkEnv()
+    .then(() => pullRequest.init()
       .then(prData => pullRequest.updateComment({
         filename: path.relative(path.join(__dirname, `../`), __filename),
         name: `Broken links`,
@@ -107,13 +107,13 @@ const serverProcess = childProcess.execFile(`node`, [path.join(__dirname, `..`, 
       }))
       .catch(error => {
         console.error(`Creating / updating the GitHub PR comment failed.`, error);
-      });
-  })
-    .catch(() => {}) // PR env variables not set, no GitHub comment created/deleted
+      })
+    )
     .then(() => {
       console.log(statusStr, lines.join(`\n`));
       process.exit(exitCode);
-    });
+    })
+    .catch(() => {}); // PR env variables not set, no GitHub comment created/deleted
 });
 console.log(`Started server with process id ${serverProcess.pid}.`);
 

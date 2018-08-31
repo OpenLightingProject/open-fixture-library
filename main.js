@@ -55,11 +55,16 @@ app.get(`/download.:format([a-z0-9_.-]+)`, (request, response, next) => {
   });
 
   const plugin = require(path.join(__dirname, `plugins`, format, `export.js`));
-  const outfiles = plugin.export(fixtures, {
-    baseDir: __dirname
-  });
-
-  downloadFiles(response, outfiles, format);
+  plugin.export(fixtures, {
+    baseDir: __dirname,
+    date: new Date()
+  })
+    .then(outfiles => downloadFiles(response, outfiles, format))
+    .catch(error => {
+      response
+        .status(500)
+        .send(`Exporting all fixtures with ${format} failed: ${error.toString()}`);
+    });
 });
 
 app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, (request, response, next) => {
@@ -81,11 +86,16 @@ app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, (request, response, next) => {
   }
 
   const plugin = require(path.join(__dirname, `plugins`, format, `export.js`));
-  const outfiles = plugin.export([fixtureFromRepository(manKey, fixKey)], {
-    baseDir: __dirname
-  });
-
-  downloadFiles(response, outfiles, `${manKey}_${fixKey}_${format}`);
+  plugin.export([fixtureFromRepository(manKey, fixKey)], {
+    baseDir: __dirname,
+    date: new Date()
+  })
+    .then(outfiles => downloadFiles(response, outfiles, `${manKey}_${fixKey}_${format}`))
+    .catch(error => {
+      response
+        .status(500)
+        .send(`Exporting fixture ${manKey}/${fixKey} with ${format} failed: ${error.toString()}`);
+    });
 });
 
 app.get(`/sitemap.xml`, (request, response) => {
