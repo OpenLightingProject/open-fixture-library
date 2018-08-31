@@ -66,11 +66,6 @@ const serverProcess = childProcess.execFile(`node`, [path.join(__dirname, `..`, 
 }, (error, stdout, stderr) => {
   // when the server process stops
 
-  if (error) {
-    console.log(colors.red(`Error]`), `Server process errored:`, error);
-    process.exit(1);
-  }
-
   console.log();
   if (stdout) {
     console.log(colors.yellow(`Server output (stdout):`));
