@@ -11,6 +11,7 @@ module.exports = function addFixtures(request, response) {
   let pullRequestUrl;
   let error;
 
+  // eslint-disable-next-line promise/catch-or-return
   createPullRequest(getOutObjectFromEditorData(request.body.fixtures))
     .then(prUrl => {
       pullRequestUrl = prUrl;
@@ -18,7 +19,7 @@ module.exports = function addFixtures(request, response) {
     .catch(err => {
       error = err.message;
     })
-    .then(() => response.status(201).json({
+    .finally(() => response.status(201).json({
       pullRequestUrl,
       error
     }));

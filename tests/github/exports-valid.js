@@ -202,14 +202,13 @@ function getTasksForFixtures(changedComponents) {
 function getTaskPromise(task) {
   const plugin = require(path.join(__dirname, `../../plugins/${task.pluginKey}/export.js`));
   const test = require(path.join(__dirname, `../../plugins/${task.pluginKey}/exportTests/${task.testKey}.js`));
+  let failed = false;
 
   return plugin.export([fixtureFromRepository(task.manKey, task.fixKey)], {
     baseDir: path.join(__dirname, `../..`),
     date: new Date()
-  }).then(files => {
-    let failed = false;
-
-    return Promise.all(files.map(
+  })
+    .then(files => Promise.all(files.map(
       file => test(file)
         .then(() => `    <li>:heavy_check_mark: ${file.name}</li>`)
         .catch(err => {
@@ -217,7 +216,8 @@ function getTaskPromise(task) {
           const errors = Array.isArray(err) ? err : [err];
           return `    <li><details><summary>:x: ${file.name}</summary>${errors.join(`\n`)}</details></li>`;
         })
-    )).then(resultLines => {
+    )))
+    .then(resultLines => {
       const emoji = failed ? `:x:` : `:heavy_check_mark:`;
 
       return [].concat(
@@ -229,5 +229,4 @@ function getTaskPromise(task) {
         `</details>`
       );
     });
-  });
 }
