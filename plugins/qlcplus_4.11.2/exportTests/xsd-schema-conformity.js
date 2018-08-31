@@ -26,7 +26,7 @@ module.exports = function testSchemaConformity(exportFile) {
     });
   })
     .then(schemaData => parseXsd(schemaData))
-    .then(schema => promisify(schema.validate)(exportFile.content))
+    .then(schema => schema.validate(exportFile.content))
     .then(validationErrors => {
       if (validationErrors) {
         return Promise.reject(validationErrors.map(err => err.message));
