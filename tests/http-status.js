@@ -109,7 +109,7 @@ const serverProcess = childProcess.execFile(`node`, [path.join(__dirname, `..`, 
         console.error(`Creating / updating the GitHub PR comment failed.`, error);
       })
     )
-    .finally(() => {
+    .then(() => {
       console.log(statusStr, lines.join(`\n`));
       process.exit(exitCode);
     })

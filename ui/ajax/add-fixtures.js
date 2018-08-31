@@ -19,7 +19,7 @@ module.exports = function addFixtures(request, response) {
     .catch(err => {
       error = err.message;
     })
-    .finally(() => response.status(201).json({
+    .then(() => response.status(201).json({
       pullRequestUrl,
       error
     }));
