@@ -98,8 +98,8 @@ module.exports.version = `0.1.0`;  // semantic versioning of import plugin
 /**
  * @param {!Buffer} buffer The imported file.
  * @param {!string} fileName The imported file's name.
- * @returns {!Promise.<!object, !Error} A Promise resolving to an out object
- *                                      (see above) or rejects with an error.
+ * @returns {!Promise.<!object, !Error>} A Promise resolving to an out object
+ *                                       (see above) or rejects with an error.
 **/
 module.exports.import = function importPluginName(buffer, fileName) {
   const out = {

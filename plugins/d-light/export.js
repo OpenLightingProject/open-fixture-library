@@ -11,6 +11,13 @@ const {
 module.exports.name = `D::Light`;
 module.exports.version = `0.1.0`;
 
+/**
+ * @param {!Array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {!object} options Global options, including:
+ * @param {!string} options.baseDir Absolute path to OFL's root directory.
+ * @param {?Date} options.date The current time.
+ * @returns {!Promise.<!Array.<object>, !Error>} The generated files.
+*/
 module.exports.export = function exportDLight(fixtures, options) {
   const deviceFiles = [];
 
