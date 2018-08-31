@@ -21,14 +21,14 @@ node cli/export-fixture.js -p <plugin> <fixture> [<more fixtures>]
 
 ## Exporting
 
-If exporting is supported, create a `plugins/<plugin-key>/export.js` module that provides the plugin name, version and a method that generates the needed third-party files out of an given array of fixtures. This method should return an array of objects for each file that should be exported / downloadable; the files are zipped together automatically if neccessary. A file object looks like this:
+If exporting is supported, create a `plugins/<plugin-key>/export.js` module that provides the plugin name, version and a method that generates the needed third-party files out of an given array of fixtures. This method should return an array of objects for each file that should be exported / downloadable; the files are zipped together automatically if necessary. A file object looks like this:
 
 ```js
 {
   name: `filename.ext`, // Required, may include forward slashes to generate a folder structure
   content: `file content`, // Required
   mimetype: `text/plain`, // Required
-  fixtures: [fixA, fixB], // Optional, list of Fixture objects that are described in this file; may be ommited if the file doesn't belong to any fixture (e.g. manufacturer information)
+  fixtures: [fixA, fixB], // Optional, list of Fixture objects that are described in this file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information)
   mode: `8ch` // Optional, mode's shortName if this file only describes a single mode
 }
 ```
@@ -68,7 +68,7 @@ module.exports.export = function exportPluginName(fixtures, options) {
 
 If importing is supported, create a `plugins/<plugin-key>/import.js` module that exports the plugin name, version and a method that creates OFL fixture definitions out of a given third-party file.
 
-As file parsing (like xml processing) can be asynchronous, the import method returns its results asynchronously using a [Promise](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise) that resolves to an object that looks like this:
+As file parsing (like XML processing) can be asynchronous, the import method returns its results asynchronously using a [Promise](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise) that resolves to an object that looks like this:
 
 ```js
 {
@@ -134,9 +134,9 @@ Note that this example did not use asynchronous functions, so `Promise.resolve` 
 
 ## Export tests
 
-We want to run unit tests whereever possible (see [Testing](testing.md)), that's why it's possible to write plugin specific tests for exported fixtures, so called export tests. Of course they're only possible if the plugin provides an export module.
+We want to run unit tests wherever possible (see [Testing](testing.md)), that's why it's possible to write plugin specific tests for exported fixtures, so called export tests. Of course they're only possible if the plugin provides an export module.
 
-A plugin's export test takes an exported file object as argument and evaluates it against plugin-specific requirements. For example, there is a [QLC+ export test](../plugins/qlcplus/exportTests/xsd-schema-conformity.js) that compares the generated xml file with the given QLC+ xsd fixture schema (if an official xml schema is available, it should definitely be used in an export test). We run these export tests automatically using the Travis CI.
+A plugin's export test takes an exported file object as argument and evaluates it against plugin-specific requirements. For example, there is a [QLC+ export test](../plugins/qlcplus/exportTests/xsd-schema-conformity.js) that compares the generated XML file with the given QLC+ XSD fixture schema (if an official XML schema is available, it should definitely be used in an export test). We run these export tests automatically using the Travis CI.
 
 Each test module should be located at `plugins/<plugin-key>/exportTests/<export-test-key>.js`. Here's a dummy test illustrating the structure:
 
@@ -148,7 +148,7 @@ const xml2js = require(`xml2js`);
  * @param {!string} exportFile.name File name, may include slashes to provide a folder structure.
  * @param {!string} exportFile.content File content.
  * @param {!string} exportFile.mimetype File mime type.
- * @param {?Array.<Fixture>} exportFile.fixtures Fixture objects that are described in given file; may be ommited if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @param {?Array.<Fixture>} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
  * @param {?string} exportFile.mode Mode's shortName if given file only describes a single mode.
  * @returns {!Promise} Resolve when the test passes or reject with an array of errors if the test fails.
 **/
