@@ -1,5 +1,6 @@
 const https = require(`https`);
-const xsd = require(`libxml-xsd`);
+const promisify = require(`util`).promisify;
+const parseXsd = promisify(require(`libxml-xsd`).parse);
 
 const SCHEMA_URL = `https://raw.githubusercontent.com/mcallegari/qlcplus/master/resources/schemas/fixture.xsd`;
 
@@ -8,9 +9,9 @@ const SCHEMA_URL = `https://raw.githubusercontent.com/mcallegari/qlcplus/master/
  * @param {!string} exportFile.name File name, may include slashes to provide a folder structure.
  * @param {!string} exportFile.content File content.
  * @param {!string} exportFile.mimetype File mime type.
- * @param {?Array.<Fixture>} exportFile.fixtures Fixture objects that are described in given file; may be ommited if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @param {?Array.<!Fixture>} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
  * @param {?string} exportFile.mode Mode's shortName if given file only describes a single mode.
- * @returns {!Promise} Resolve when the test passes or reject with an error or an array of errors if the test fails.
+ * @returns {!Promise.<undefined, !Array.<!string>|!string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
 **/
 module.exports = function testSchemaConformity(exportFile) {
   return new Promise((resolve, reject) => {
@@ -24,24 +25,13 @@ module.exports = function testSchemaConformity(exportFile) {
       });
     });
   })
-    .then(schemaData => new Promise((resolve, reject) => {
-      xsd.parse(schemaData, (err, schema) => {
-        if (err) {
-          reject(err);
-        }
-        else {
-          schema.validate(exportFile.content, (err, validationErrors) => {
-            if (err) {
-              reject(err);
-            }
-            else if (validationErrors) {
-              reject(validationErrors.map(err => err.message));
-            }
-            else {
-              resolve();
-            }
-          });
-        }
-      });
-    }));
+    .then(schemaData => parseXsd(schemaData))
+    .then(schema => promisify(schema.validate)(exportFile.content))
+    .then(validationErrors => {
+      if (validationErrors) {
+        return Promise.reject(validationErrors.map(err => err.message));
+      }
+
+      return Promise.resolve();
+    });
 };

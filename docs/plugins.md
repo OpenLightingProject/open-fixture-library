@@ -144,48 +144,42 @@ Each test module should be located at `plugins/<plugin-key>/exportTests/<export-
 
 ```js
 const xml2js = require(`xml2js`);
+const promisify = require(`util`).promisify;
 
 /**
  * @param {!object} exportFile The file returned by the plugins' export module.
  * @param {!string} exportFile.name File name, may include slashes to provide a folder structure.
  * @param {!string} exportFile.content File content.
  * @param {!string} exportFile.mimetype File mime type.
- * @param {?Array.<Fixture>} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @param {?Array.<!Fixture>} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
  * @param {?string} exportFile.mode Mode's shortName if given file only describes a single mode.
- * @returns {!Promise} Resolve when the test passes or reject with an array of errors if the test fails.
+ * @returns {!Promise.<undefined, !Array.<!string>|!string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
 **/
 module.exports = function testValueCorrectness(exportFile) {
-  return new Promise((resolve, reject) => {
-    const parser = new xml2js.Parser();
+  const parser = new xml2js.Parser();
 
-    parser.parseString(exportFile.content, (parseError, xml) => {
-      if (parseError) {
-        reject([`Error parsing XML: ${parseError}`]);
-        return;
-      }
-
+  return promisify(parser.parseString)(exportFile.content)
+    .then(xml => {
       const errors = [];
 
       // the lighting software crashes if the name is empty, so we must ensure that this won't happen
       // (just an example)
-      if (xml.Fixture.Name[0].length === 0) {
+      if (!(Name in xml.Fixture) || xml.Fixture.Name[0] === ``) {
         errors.push(`Name missing`);
-        return;
       }
 
       if (errors.length > 0) {
-        reject(errors)
-        return;
+        return Promise.reject(errors);
       }
 
       // everything's ok
-      resolve();
-    });
-  });
+      return Promise.resolve();
+    })
+    .catch(parseError => Promise.reject(`Error parsing XML: ${parseError}`));
 };
 ```
 
-You can try an export test from the command line:
+You can execute an export test from the command line:
 
 ```bash
 node cli/run-export-test.js -p <plugin> [ <fixtures> ]
