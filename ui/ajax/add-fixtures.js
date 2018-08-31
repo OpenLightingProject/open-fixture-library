@@ -8,12 +8,20 @@ const { checkFixture } = require(`../../tests/fixture-valid.js`);
  * @param {!object} response Passed from Express.
  */
 module.exports = function addFixtures(request, response) {
-  createPullRequest(getOutObjectFromEditorData(request.body.fixtures), (error, pullRequestUrl) => {
-    response.status(201).json({
-      pullRequestUrl: pullRequestUrl,
-      error: error
-    });
-  });
+  let pullRequestUrl;
+  let error;
+
+  createPullRequest(getOutObjectFromEditorData(request.body.fixtures))
+    .then(prUrl => {
+      pullRequestUrl = prUrl;
+    })
+    .catch(err => {
+      error = err.message;
+    })
+    .then(() => response.status(201).json({
+      pullRequestUrl,
+      error
+    }));
 };
 
 

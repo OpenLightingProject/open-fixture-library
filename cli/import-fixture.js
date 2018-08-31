@@ -48,15 +48,12 @@ fs.readFile(filename, `utf8`, (error, data) => {
     }
 
     if (args[`create-pull-request`]) {
-      createPullRequest(result, (error, pullRequestUrl) => {
-        if (error) {
+      createPullRequest(result)
+        .then(pullRequestUrl => console.log(`URL: ${pullRequestUrl}`))
+        .catch(error => {
           console.log(fixtureJsonStringify(result));
-          console.error(`Error: ${error}`);
-          return;
-        }
-
-        console.log(`URL: ${pullRequestUrl}`);
-      });
+          console.error(`Error creating pull request: ${error.message}`);
+        });
     }
     else {
       console.log(fixtureJsonStringify(result));
