@@ -62,65 +62,65 @@ const siteChecker = new blc.SiteChecker({
 
 
 // start server
-const serverProcess = promisify(childProcess.exec)(`node`, [path.join(__dirname, `..`, `main.js`)], {
+const serverProcess = childProcess.execFile(`node`, [path.join(__dirname, `..`, `main.js`)], {
   env: process.env
-})
-  .then((stdout, stderr) => {
-    // when the server process stops
-    console.log();
+}, (error, stdout, stderr) => {
+  // when the server process stops
 
-    if (stdout) {
-      console.log(colors.yellow(`Server output (stdout):`));
-      console.log(stdout);
-    }
-    if (stderr) {
-      console.log(colors.red(`Server errors (stderr):`));
-      console.log(stderr);
-    }
-
-    let statusStr = colors.green(`[PASS]`);
-    let exitCode = 0;
-
-    const lines = [
-      `There were ${fails.internal.size} internal and ${fails.external.size} external links failing.`,
-      ``
-    ];
-    fails.internal.forEach(link => lines.push(`- ${link}`));
-    fails.external.forEach(link => lines.push(`- ${link}`));
-
-    let githubCommentLines = [];
-
-    if (fails.internal.size > 0) {
-      statusStr = colors.red(`[FAIL]`);
-      exitCode = 1;
-    }
-    else if (fails.external.size > 0) {
-      statusStr = colors.yellow(`[WARN]`);
-      githubCommentLines = lines;
-    }
-
-    // try to create/delete a GitHub comment
-    pullRequest.checkEnv()
-      .then(() => pullRequest.init()
-        .then(prData => pullRequest.updateComment({
-          filename: path.relative(path.join(__dirname, `../`), __filename),
-          name: `Broken links`,
-          lines: githubCommentLines
-        }))
-        .catch(error => {
-          console.error(`Creating / updating the GitHub PR comment failed.`, error);
-        })
-      )
-      .finally(() => {
-        console.log(statusStr, lines.join(`\n`));
-        process.exit(exitCode);
-      })
-      .catch(() => {}); // PR env variables not set, no GitHub comment created/deleted
-  })
-  .catch(error => {
+  if (error) {
     console.log(colors.red(`Error]`), `Server process errored:`, error);
     process.exit(1);
-  });
+  }
+
+  console.log();
+  if (stdout) {
+    console.log(colors.yellow(`Server output (stdout):`));
+    console.log(stdout);
+  }
+  if (stderr) {
+    console.log(colors.red(`Server errors (stderr):`));
+    console.log(stderr);
+  }
+
+  let statusStr = colors.green(`[PASS]`);
+  let exitCode = 0;
+
+  const lines = [
+    `There were ${fails.internal.size} internal and ${fails.external.size} external links failing.`,
+    ``
+  ];
+  fails.internal.forEach(link => lines.push(`- ${link}`));
+  fails.external.forEach(link => lines.push(`- ${link}`));
+
+  let githubCommentLines = [];
+
+  if (fails.internal.size > 0) {
+    statusStr = colors.red(`[FAIL]`);
+    exitCode = 1;
+  }
+  else if (fails.external.size > 0) {
+    statusStr = colors.yellow(`[WARN]`);
+    githubCommentLines = lines;
+  }
+
+  // try to create/delete a GitHub comment
+  pullRequest.checkEnv()
+    .then(() => pullRequest.init()
+      .then(prData => pullRequest.updateComment({
+        filename: path.relative(path.join(__dirname, `../`), __filename),
+        name: `Broken links`,
+        lines: githubCommentLines
+      }))
+      .catch(error => {
+        console.error(`Creating / updating the GitHub PR comment failed.`, error);
+      })
+    )
+    .finally(() => {
+      console.log(statusStr, lines.join(`\n`));
+      process.exit(exitCode);
+    })
+    .catch(() => {}); // PR env variables not set, no GitHub comment created/deleted
+});
 console.log(`Started server with process id ${serverProcess.pid}.`);
 
 

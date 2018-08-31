@@ -123,6 +123,7 @@
     }],
     "promise/always-return": "off",
     "promise/no-nesting": "off",
+    "promise/no-promise-in-callback": "off",
     "promise/no-return-in-finally": "error",
     "promise/valid-params": "error",
     "vue/max-attributes-per-line": ["error", { "singleline": 3 }],
