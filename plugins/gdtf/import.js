@@ -1,11 +1,17 @@
 const xml2js = require(`xml2js`);
+const promisify = require(`util`).promisify;
 
 const manufacturers = require(`../../fixtures/manufacturers.json`);
 
 module.exports.name = `GDTF 0.87`;
 module.exports.version = `0.1.0`;
 
-module.exports.import = function importGdtf(str, filename, resolve, reject) {
+/**
+ * @param {!Buffer} buffer The imported file.
+ * @param {!string} filename The imported file's name.
+ * @returns {!Promise.<!object, !Error>} A Promise resolving to an out object
+**/
+module.exports.import = function importGdtf(buffer, filename) {
   const parser = new xml2js.Parser();
 
   const out = {
@@ -17,16 +23,8 @@ module.exports.import = function importGdtf(str, filename, resolve, reject) {
     $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`
   };
 
-  new Promise((res, rej) => {
-    parser.parseString(str, (parseError, xml) => {
-      if (parseError) {
-        rej(parseError);
-      }
-      else {
-        res(xml);
-      }
-    });
-  })
+  // TODO: also allow passing the .gdtf (zip) file directly -> then check its description.xml file
+  return promisify(parser.parseString)(buffer.toString())
     .then(xml => {
       //console.log(JSON.stringify(xml, null, 2));
 
@@ -115,10 +113,7 @@ module.exports.import = function importGdtf(str, filename, resolve, reject) {
 
       out.fixtures[fixKey] = fixture;
 
-      resolve(out);
-    })
-    .catch(parseError => {
-      reject(`Error parsing '${filename}'.\n${parseError.toString()}`);
+      return out;
     });
 };
 
