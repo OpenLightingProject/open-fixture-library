@@ -32,7 +32,7 @@ module.exports.version = `0.5.0`;
  * @param {?Date} options.date The current time.
  * @returns {!Promise.<!Array.<object>, !Error>} The generated files.
 */
-module.exports.export = function exportQLCplus(fixtures, options) {
+module.exports.export = function exportQlcPlus(fixtures, options) {
   const outFiles = fixtures.map(fixture => {
     const xml = xmlbuilder.begin()
       .declaration(`1.0`, `UTF-8`)

@@ -9,7 +9,7 @@ module.exports.version = `0.4.2`;
  * @param {!string} filename The imported file's name.
  * @returns {!Promise.<!object, !Error>} A Promise resolving to an out object
 **/
-module.exports.import = function importQLCplus(buffer, filename) {
+module.exports.import = function importQlcPlus(buffer, filename) {
   const parser = new xml2js.Parser();
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 

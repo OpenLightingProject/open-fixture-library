@@ -12,7 +12,7 @@ module.exports.version = require(`../../schemas/fixture.json`).version;
  * @param {?Date} options.date The current time.
  * @returns {!Promise.<!Array.<object>, !Error>} The generated files.
 */
-module.exports.export = function exportOFL(fixtures, options) {
+module.exports.export = function exportOfl(fixtures, options) {
   const usedManufacturers = new Set();
 
   // one JSON file for each fixture

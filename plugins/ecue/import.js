@@ -15,7 +15,7 @@ for (const hex of Object.keys(colorNames)) {
  * @param {!string} filename The imported file's name.
  * @returns {!Promise.<!object, !Error>} A Promise resolving to an out object
 **/
-module.exports.import = function importEcue(buffer, filename) {
+module.exports.import = function importECue(buffer, filename) {
   const parser = new xml2js.Parser();
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
