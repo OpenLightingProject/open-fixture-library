@@ -21,14 +21,14 @@ node cli/export-fixture.js -p <plugin> <fixture> [<more fixtures>]
 
 ## Exporting
 
-If exporting is supported, create a `plugins/<plugin-key>/export.js` module that provides the plugin name, version and a method that generates the needed third-party files out of an given array of fixtures. This method should return an array of objects for each file that should be exported / downloadable; the files are zipped together automatically if neccessary. A file object looks like this:
+If exporting is supported, create a `plugins/<plugin-key>/export.js` module that provides the plugin name, version and a method that generates the needed third-party files out of an given array of fixtures. This method should return a Promise of an array of objects for each file that should be exported / downloadable; the files are zipped together automatically if necessary. A file object looks like this:
 
 ```js
 {
   name: `filename.ext`, // Required, may include forward slashes to generate a folder structure
   content: `file content`, // Required
   mimetype: `text/plain`, // Required
-  fixtures: [fixA, fixB], // Optional, list of Fixture objects that are described in this file; may be ommited if the file doesn't belong to any fixture (e.g. manufacturer information)
+  fixtures: [fixA, fixB], // Optional, list of Fixture objects that are described in this file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information)
   mode: `8ch` // Optional, mode's shortName if this file only describes a single mode
 }
 ```
@@ -44,7 +44,7 @@ module.exports.version = `0.1.0`;  // semantic versioning of export plugin
  * @param {!object} options Some global options, for example:
  * @param {!string} options.baseDir Absolute path to OFL's root directory
  * @param {?Date} options.date The current time (prefer this over new Date())
- * @returns {!Array.<object>} All generated files (see file schema above)
+ * @returns {!Promise.<!Array.<object>, !Error>} All generated files (see file schema above)
 */
 module.exports.export = function exportPluginName(fixtures, options) {
   const outfiles = [];
@@ -53,14 +53,16 @@ module.exports.export = function exportPluginName(fixtures, options) {
     for (const mode of fixture.modes) {
       outfiles.push({
         name: `${fixture.manufacturer.key}-${fixture.key}-${mode.shortName}.xml`,
-        // that's just an example, normally, the (way larger) file contents are computated using several helper functions
+
+        // That's just an example! Usually, the (way larger) file contents are
+        // computed using several (possibly asynchronous) helper functions
         content: `<title>${fixture.name}: ${mode.channels.length}ch</title>`,
         mimetype: `application/xml`
       });
     }
   }
 
-  return outfiles;
+  return Promise.resolve(outfiles);
 };
 ```
 
@@ -68,7 +70,7 @@ module.exports.export = function exportPluginName(fixtures, options) {
 
 If importing is supported, create a `plugins/<plugin-key>/import.js` module that exports the plugin name, version and a method that creates OFL fixture definitions out of a given third-party file.
 
-As file parsing (like xml processing) can be asynchronous, the import method returns its results asynchronously using the given `resolve` and `reject` functions (see [Promises](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise)). When processing is finished, the `resolve` function should be called with a result object that looks like this:
+As file parsing (like XML processing) can be asynchronous, the import method returns its results asynchronously using a [Promise](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise) that resolves to an object that looks like this:
 
 ```js
 {
@@ -85,7 +87,7 @@ As file parsing (like xml processing) can be asynchronous, the import method ret
 };
 ```
 
-The `reject` function should be called with an error string if it's not possible to parse the given file.
+If the file can not be parsed by the import plugin or contains errors, the returned Promise should reject with an Error.
 
 Example:
 
@@ -94,12 +96,12 @@ module.exports.name = `Plugin Name`;
 module.exports.version = `0.1.0`;  // semantic versioning of import plugin
 
 /**
- * @param {!string} fileContent The imported file's content
- * @param {!string} fileName The imported file's name
- * @param {!Function} resolve For usage, see above
- * @param {!Function} reject For usage, see above
+ * @param {!Buffer} buffer The imported file.
+ * @param {!string} fileName The imported file's name.
+ * @returns {!Promise.<!object, !Error>} A Promise resolving to an out object
+ *                                       (see above) or rejects with an error.
 **/
-module.exports.import = function importPluginName(fileContent, fileName, resolve, reject) {
+module.exports.import = function importPluginName(buffer, fileName) {
   const out = {
     manufacturers: {},
     fixtures: {},
@@ -113,10 +115,10 @@ module.exports.import = function importPluginName(fileContent, fileName, resolve
   const fixtureObject = {};
   out.warnings[`${manKey}/${fixKey}`] = [];
 
+  const fileContent = buffer.toString();
   const couldNotParse = fileContent.includes(`Error`);
   if (couldNotParse) {
-    reject(`Could not parse '${fileName}'.`);
-    return;
+    return Promise.reject(new Error(`Could not parse '${fileName}'.`));
   }
 
   fixtureObject.name = `Thunder Wash 600 RGB`;
@@ -127,62 +129,58 @@ module.exports.import = function importPluginName(fileContent, fileName, resolve
   // That's the imported fixture
   out.fixtures[`${manKey}/${fixKey}`] = fixtureObject;
 
-  resolve(out);
+  return Promise.resolve(out);
 };
 ```
 
+Note that this example did not use asynchronous functions, so `Promise.resolve` and `Promise.reject` are called to wrap the (synchronously obtained) results in a Promise.
+
 ## Export tests
 
-We want to run unit tests whereever possible (see [Testing](testing.md)), that's why it's possible to write plugin specific tests for exported fixtures, so called export tests. Of course they're only possible if the plugin provides an export module.
+We want to run unit tests wherever possible (see [Testing](testing.md)), that's why it's possible to write plugin specific tests for exported fixtures, so called export tests. Of course they're only possible if the plugin provides an export module.
 
-A plugin's export test takes an exported file object as argument and evaluates it against plugin-specific requirements. For example, there is a [QLC+ export test](../plugins/qlcplus/exportTests/xsd-schema-conformity.js) that compares the generated xml file with the given QLC+ xsd fixture schema (if an official xml schema is available, it should definitely be used in an export test). We run these export tests automatically using the Travis CI.
+A plugin's export test takes an exported file object as argument and evaluates it against plugin-specific requirements. For example, there is a [QLC+ export test](../plugins/qlcplus/exportTests/xsd-schema-conformity.js) that compares the generated XML file with the given QLC+ XSD fixture schema (if an official XML schema is available, it should definitely be used in an export test). We run these export tests automatically using the Travis CI.
 
 Each test module should be located at `plugins/<plugin-key>/exportTests/<export-test-key>.js`. Here's a dummy test illustrating the structure:
 
 ```js
 const xml2js = require(`xml2js`);
+const promisify = require(`util`).promisify;
 
 /**
  * @param {!object} exportFile The file returned by the plugins' export module.
  * @param {!string} exportFile.name File name, may include slashes to provide a folder structure.
  * @param {!string} exportFile.content File content.
  * @param {!string} exportFile.mimetype File mime type.
- * @param {?Array.<Fixture>} exportFile.fixtures Fixture objects that are described in given file; may be ommited if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @param {?Array.<!Fixture>} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
  * @param {?string} exportFile.mode Mode's shortName if given file only describes a single mode.
- * @returns {!Promise} Resolve when the test passes or reject with an array of errors if the test fails.
+ * @returns {!Promise.<undefined, !Array.<!string>|!string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
 **/
 module.exports = function testValueCorrectness(exportFile) {
-  return new Promise((resolve, reject) => {
-    const parser = new xml2js.Parser();
+  const parser = new xml2js.Parser();
 
-    parser.parseString(exportFile.content, (parseError, xml) => {
-      if (parseError) {
-        reject([`Error parsing XML: ${parseError}`]);
-        return;
-      }
-
+  return promisify(parser.parseString)(exportFile.content)
+    .then(xml => {
       const errors = [];
 
       // the lighting software crashes if the name is empty, so we must ensure that this won't happen
       // (just an example)
-      if (xml.Fixture.Name[0].length === 0) {
+      if (!(Name in xml.Fixture) || xml.Fixture.Name[0] === ``) {
         errors.push(`Name missing`);
-        return;
       }
 
       if (errors.length > 0) {
-        reject(errors)
-        return;
+        return Promise.reject(errors);
       }
 
       // everything's ok
-      resolve();
-    });
-  });
+      return Promise.resolve();
+    })
+    .catch(parseError => Promise.reject(`Error parsing XML: ${parseError}`));
 };
 ```
 
-You can try an export test from the command line:
+You can execute an export test from the command line:
 
 ```bash
 node cli/run-export-test.js -p <plugin> [ <fixtures> ]

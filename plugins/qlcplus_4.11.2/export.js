@@ -25,8 +25,15 @@ const {
 module.exports.name = `QLC+ 4.11.2`;
 module.exports.version = `0.5.0`;
 
-module.exports.export = function exportQLCplus(fixtures, options) {
-  return fixtures.map(fixture => {
+/**
+ * @param {!Array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {!object} options Global options, including:
+ * @param {!string} options.baseDir Absolute path to OFL's root directory.
+ * @param {?Date} options.date The current time.
+ * @returns {!Promise.<!Array.<object>, !Error>} The generated files.
+*/
+module.exports.export = function exportQlcPlus(fixtures, options) {
+  const outFiles = fixtures.map(fixture => {
     const xml = xmlbuilder.begin()
       .declaration(`1.0`, `UTF-8`)
       .element({
@@ -62,6 +69,8 @@ module.exports.export = function exportQLCplus(fixtures, options) {
       fixtures: [fixture]
     };
   });
+
+  return Promise.resolve(outFiles);
 };
 
 /**
