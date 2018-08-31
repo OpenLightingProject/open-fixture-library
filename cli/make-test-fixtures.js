@@ -35,9 +35,9 @@ for (const featureFile of fs.readdirSync(fixFeaturesDir)) {
         }
       }
 
-      // check uniquness of id
+      // check uniqueness of id
       if (fixFeature.id in featuresUsed) {
-        console.error(`${colors.red(`[Error]`)} Fix feature id ${fixFeature.id} used multiple times.`);
+        console.error(`${colors.red(`[Error]`)} Fixture feature id '${fixFeature.id}' is used multiple times.`);
         process.exit(1);
       }
 
