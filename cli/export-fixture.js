@@ -66,7 +66,8 @@ const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `export.j
 plugin.export(
   fixtures.map(([man, fix]) => fixtureFromRepository(man, fix)),
   {
-    baseDir: path.join(__dirname, `..`)
+    baseDir: path.join(__dirname, `..`),
+    date: new Date()
   }
 ).then(files => {
   files.forEach(file => {

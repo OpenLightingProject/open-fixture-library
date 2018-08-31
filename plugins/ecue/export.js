@@ -19,9 +19,6 @@ module.exports.version = `0.3.0`;
  * @returns {!Promise.<!Array.<object>, !Error>} The generated files.
 */
 module.exports.export = function exportECue(fixtures, options) {
-  if (!(`date` in options)) {
-    options.date = new Date();
-  }
   const timestamp = dateToString(options.date);
 
   const manufacturers = {};

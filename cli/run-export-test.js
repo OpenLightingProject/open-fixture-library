@@ -47,7 +47,10 @@ else {
 }
 
 const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `export.js`));
-plugin.export(fixtures, {}).then(files => {
+plugin.export(fixtures, {
+  baseDir: path.join(__dirname, `..`),
+  date: new Date()
+}).then(files => {
   for (const testKey of plugins.data[args.plugin].exportTests) {
     const exportTest = require(path.join(__dirname, `../plugins`, args.plugin, `exportTests/${testKey}.js`));
 
