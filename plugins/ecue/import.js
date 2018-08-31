@@ -10,7 +10,7 @@ for (const hex of Object.keys(colorNames)) {
   colors[colorNames[hex].toLowerCase().replace(/\s/g, ``)] = hex;
 }
 
-module.exports.import = function importEcue(str, filename) {
+module.exports.import = function importEcue(buffer, filename) {
   const parser = new xml2js.Parser();
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
@@ -20,7 +20,7 @@ module.exports.import = function importEcue(str, filename) {
     warnings: {}
   };
 
-  return promisify(parser.parseString)(str)
+  return promisify(parser.parseString)(buffer.toString())
     .then(xml => {
       if (!(`Library` in xml.Document) || !(`Fixtures` in xml.Document.Library[0]) || !(`Manufacturer` in xml.Document.Library[0].Fixtures[0])) {
         throw new Error(`Nothing to import.`);

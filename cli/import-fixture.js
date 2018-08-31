@@ -26,10 +26,10 @@ if (args._.length !== 1 || !plugins.importPlugins.includes(args.plugin)) {
   process.exit(1);
 }
 
-readFile(filename, `utf8`)
-  .then(data => {
+readFile(filename)
+  .then(buffer => {
     const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `import.js`));
-    return plugin.import(data, filename);
+    return plugin.import(buffer, filename);
   })
   .then(result => {
     result.errors = {};

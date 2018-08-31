@@ -96,12 +96,12 @@ module.exports.name = `Plugin Name`;
 module.exports.version = `0.1.0`;  // semantic versioning of import plugin
 
 /**
- * @param {!string} fileContent The imported file's content
- * @param {!string} fileName The imported file's name
+ * @param {!Buffer} buffer The imported file.
+ * @param {!string} fileName The imported file's name.
  * @returns {!Promise.<!object, !Error} A Promise resolving to an out object
  *                                      (see above) or rejects with an error.
 **/
-module.exports.import = function importPluginName(fileContent, fileName) {
+module.exports.import = function importPluginName(buffer, fileName) {
   const out = {
     manufacturers: {},
     fixtures: {},
@@ -115,6 +115,7 @@ module.exports.import = function importPluginName(fileContent, fileName) {
   const fixtureObject = {};
   out.warnings[`${manKey}/${fixKey}`] = [];
 
+  const fileContent = buffer.toString();
   const couldNotParse = fileContent.includes(`Error`);
   if (couldNotParse) {
     return Promise.reject(new Error(`Could not parse '${fileName}'.`));
