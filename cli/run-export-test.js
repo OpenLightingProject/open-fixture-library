@@ -60,8 +60,7 @@ plugin.export(fixtures, {
         .catch(err => {
           const errors = Array.isArray(err) ? err : [err];
 
-          return [].concat(
-            `${colors.red(`[FAIL]`)} ${file.name}`,
+          return [`${colors.red(`[FAIL]`)} ${file.name}`].concat(
             errors.map(error => `- ${error}`)
           ).join(`\n`);
         })
