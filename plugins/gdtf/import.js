@@ -26,8 +26,6 @@ module.exports.import = function importGdtf(buffer, filename) {
   // TODO: also allow passing the .gdtf (zip) file directly -> then check its description.xml file
   return promisify(parser.parseString)(buffer.toString())
     .then(xml => {
-      //console.log(JSON.stringify(xml, null, 2));
-
       const gdtfFixture = xml.GDTF.FixtureType[0];
       fixture.name = gdtfFixture.$.Name;
       fixture.shortName = gdtfFixture.$.ShortName;
@@ -72,40 +70,14 @@ module.exports.import = function importGdtf(buffer, filename) {
 
       addRdmInfo(fixture, manufacturer, gdtfFixture);
 
-      // TODO: import physical data and useful matrix
+      // TODO: import physical data
       fixture.matrix = {};
 
       addChannels(fixture, gdtfFixture);
       addModes(fixture, gdtfFixture);
 
-
-      // // fill in one empty mode so we don't have to check this case anymore
-      // if (!(`Mode` in qlcPlusFixture)) {
-      //   qlcPlusFixture.Mode = [{
-      //     Physical: [{}]
-      //   }];
-      // }
-
-      // fixture.physical = getOflPhysical(qlcPlusFixture.Mode[0].Physical[0], {});
-      // fixture.matrix = {};
-      // fixture.availableChannels = {};
-      // fixture.templateChannels = {};
-
-      // const doubleByteChannels = [];
-      // for (const channel of qlcPlusFixture.Channel || []) {
-      //   fixture.availableChannels[channel.$.Name] = getOflChannel(channel);
-
-      //   if (channel.Group[0].$.Byte === `1`) {
-      //     doubleByteChannels.push(channel.$.Name);
-      //   }
-      // }
-
-      // mergeFineChannels(fixture, doubleByteChannels, out.warnings[fixKey]);
-
-      // fixture.modes = qlcPlusFixture.Mode.map(mode => getOflMode(mode, fixture.physical, out.warnings[fixKey]));
-
       if (`templateChannels` in fixture) {
-        out.warnings[fixKey].push(`Please add matrix information.`);
+        out.warnings[fixKey].push(`Please fix the visual representation of the matrix.`);
       }
       else {
         delete fixture.matrix;
@@ -325,45 +297,108 @@ function addChannel(channels, gdtfChannel, gdtfFixture) {
  * @param {!object} gdtfFixture The GDTF fixture object.
  */
 function addModes(fixture, gdtfFixture) {
+  // save all matrix pixels that are used in some mode
+  const matrixPixels = new Set();
+
   fixture.modes = gdtfFixture.DMXModes[0].DMXMode.map(gdtfMode => {
-    const channelsPerDmxBreak = [];
+    const dmxBreakWrappers = [];
 
-    // add all channels that are not matrix channels
     gdtfMode.DMXChannels[0].DMXChannel.forEach(gdtfChannel => {
-      if (gdtfChannel.$.DMXBreak === `Overwrite`) {
-        return;
+      if (dmxBreakWrappers.length === 0 || dmxBreakWrappers[dmxBreakWrappers.length - 1].dmxBreak !== gdtfChannel.$.DMXBreak) {
+        dmxBreakWrappers.push({
+          dmxBreak: gdtfChannel.$.DMXBreak,
+          geometry: gdtfChannel.$.Geometry,
+          channels: []
+        });
       }
 
-      const chKey = gdtfChannel._oflChannelKey;
-      const oflChannel = fixture.availableChannels[chKey];
-
-      const dmxBreak = parseInt(gdtfChannel.$.DMXBreak || `1`) - 1;
-      if (!channelsPerDmxBreak[dmxBreak]) {
-        channelsPerDmxBreak[dmxBreak] = [];
-      }
-
-      channelsPerDmxBreak[dmxBreak][parseInt(gdtfChannel.$.Coarse) - 1] = chKey;
-
-      if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Fine`)) {
-        channelsPerDmxBreak[dmxBreak][parseInt(gdtfChannel.$.Fine) - 1] = oflChannel.fineChannelAliases[0];
-      }
-
-      if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Ultra`)) {
-        channelsPerDmxBreak[dmxBreak][parseInt(gdtfChannel.$.Ultra) - 1] = oflChannel.fineChannelAliases[1];
-      }
-
-      if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Uber`)) {
-        channelsPerDmxBreak[dmxBreak][parseInt(gdtfChannel.$.Uber) - 1] = oflChannel.fineChannelAliases[2];
-      }
+      addChannelKeyToDmxBreakWrapper(gdtfChannel, dmxBreakWrappers);
     });
-
-    // TODO: add matrix channel insert blocks from `Overwrite` channels
 
     return {
       name: gdtfMode.$.Name,
-      channels: [].concat(...channelsPerDmxBreak)
+      channels: [].concat(...dmxBreakWrappers.map(channelWrapper => {
+        if (channelWrapper.dmxBreak === `Overwrite`) {
+          const geometryReferences = findGeometryReferences(channelWrapper.geometry);
+          const usedMatrixPixels = geometryReferences.map(
+            (gdtfGeoRef, index) => gdtfGeoRef.$.Name || `${channelWrapper.geometry} ${index + 1}`
+          );
+
+          usedMatrixPixels.forEach(pixelKey => matrixPixels.add(pixelKey));
+
+          return {
+            insert: `matrixChannels`,
+            repeatFor: usedMatrixPixels,
+            channelOrder: `perPixel`,
+            templateChannels: channelWrapper.channels.map(
+              chKey => `${chKey} $pixelKey`
+            )
+          };
+        }
+
+        return channelWrapper.channels;
+      }))
     };
   });
+
+  const matrixPixelList = [...matrixPixels];
+
+  // try to simplify matrix channel insert blocks
+  fixture.modes.forEach(mode => {
+    mode.channels.forEach(channel => {
+      if (typeof channel === `object` && channel.insert === `matrixChannels`
+        && JSON.stringify(matrixPixelList) === JSON.stringify(channel.repeatFor)) {
+        channel.repeatFor = `eachPixelXYZ`;
+      }
+    });
+  });
+
+  fixture.matrix = {
+    pixelKeys: [
+      [
+        matrixPixelList
+      ]
+    ]
+  };
+
+
+  /**
+   * Adds the OFL channel key to dmxBreakWrappers' last entry's channels array.
+   * @param {!object} gdtfChannel The GDTF channel object.
+   * @param {!array.<!object>} dmxBreakWrappers The DMXBreak wrapper array.
+   */
+  function addChannelKeyToDmxBreakWrapper(gdtfChannel, dmxBreakWrappers) {
+    const chKey = gdtfChannel._oflChannelKey;
+    const oflChannel = fixture.availableChannels[chKey];
+
+    const channels = dmxBreakWrappers[dmxBreakWrappers.length - 1].channels;
+
+    channels[parseInt(gdtfChannel.$.Coarse) - 1] = chKey;
+
+    if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Fine`)) {
+      channels[parseInt(gdtfChannel.$.Fine) - 1] = oflChannel.fineChannelAliases[0];
+    }
+
+    if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Ultra`)) {
+      channels[parseInt(gdtfChannel.$.Ultra) - 1] = oflChannel.fineChannelAliases[1];
+    }
+
+    if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Uber`)) {
+      channels[parseInt(gdtfChannel.$.Uber) - 1] = oflChannel.fineChannelAliases[2];
+    }
+  }
+
+  /**
+   * Find all <GeometryReference> XML nodes with a given Name attribute.
+   * @param {!string} geometryName The name of the geometry reference.
+   * @returns {!array.<!object>} An array of all geometry reference XML objects.
+   */
+  function findGeometryReferences(geometryName) {
+    // TODO: this is not generalized!
+    return gdtfFixture.Geometries[0].Geometry[0].GeometryReference.filter(
+      gdtfGeoRef => gdtfGeoRef.$.Geometry === geometryName
+    );
+  }
 }
 
 /**
