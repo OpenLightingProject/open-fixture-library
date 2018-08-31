@@ -3,6 +3,7 @@ const fs = require(`fs`);
 const path = require(`path`);
 const minimist = require(`minimist`);
 const colors = require(`colors`);
+const mkdirp = require(`mkdirp`);
 
 const plugins = require(`../plugins/plugins.json`);
 const { fixtureFromRepository } = require(`../lib/model.js`);
@@ -59,13 +60,7 @@ else {
   });
 }
 
-let outDir;
-if (args.o) {
-  outDir = path.join(process.cwd(), args.o);
-  if (!fs.existsSync(outDir)) {
-    fs.mkdirSync(outDir);
-  }
-}
+const outDir = args.o ? path.join(process.cwd(), args.o) : null;
 
 const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `export.js`));
 plugin.export(
@@ -76,11 +71,7 @@ plugin.export(
 ).forEach(file => {
   if (args.o) {
     const filePath = path.join(outDir, file.name);
-
-    if (!fs.existsSync(path.dirname(filePath))) {
-      fs.mkdirSync(path.dirname(filePath));
-    }
-
+    mkdirp.sync(path.dirname(filePath));
     fs.writeFileSync(filePath, file.content);
     console.log(`Created file ${filePath}`);
   }
