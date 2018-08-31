@@ -242,10 +242,7 @@ function addChannel(channels, gdtfChannel, gdtfFixture) {
 
   const channel = {
     name: name,
-    fineChannelAliases: [],
-    capability: {
-      type: `Generic`
-    }
+    fineChannelAliases: []
   };
 
   if (`Default` in gdtfChannel.$) {
@@ -255,6 +252,10 @@ function addChannel(channels, gdtfChannel, gdtfFixture) {
   if (`Highlight` in gdtfChannel.$ && gdtfChannel.$.Highlight !== `None`) {
     channel.highlightValue = gdtfDmxValueToNumber(gdtfChannel.$.Highlight)[0];
   }
+
+  channel.capability = {
+    type: `Generic`
+  };
 
   // check if we already added the same channel
   const sameChannel = channels.find(
