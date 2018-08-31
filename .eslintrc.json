@@ -8,11 +8,13 @@
   },
   "plugins": [
     "json",
+    "promise",
     "security",
     "vue"
   ],
   "extends": [
     "eslint:recommended",
+    "plugin:promise/recommended",
     "plugin:security/recommended",
     "plugin:vue/recommended"
   ],
@@ -119,6 +121,10 @@
         "String": "string"
       }
     }],
+    "promise/always-return": "off",
+    "promise/no-nesting": "off",
+    "promise/no-return-in-finally": "error",
+    "promise/valid-params": "error",
     "vue/max-attributes-per-line": ["error", { "singleline": 3 }],
     "vue/html-closing-bracket-newline": "error",
     "vue/html-closing-bracket-spacing": "error",
