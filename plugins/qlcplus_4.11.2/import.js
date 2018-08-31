@@ -1,9 +1,10 @@
 const xml2js = require(`xml2js`);
+const promisify = require(`util`).promisify;
 
 module.exports.name = `QLC+ 4.11.2`;
 module.exports.version = `0.4.2`;
 
-module.exports.import = function importQLCplus(str, filename, resolve, reject) {
+module.exports.import = function importQLCplus(str, filename) {
   const parser = new xml2js.Parser();
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
@@ -16,16 +17,7 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
     $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`
   };
 
-  new Promise((res, rej) => {
-    parser.parseString(str, (parseError, xml) => {
-      if (parseError) {
-        rej(parseError);
-      }
-      else {
-        res(xml);
-      }
-    });
-  })
+  return promisify(parser.parseString)(str)
     .then(xml => {
       const qlcPlusFixture = xml.FixtureDefinition;
       fixture.name = qlcPlusFixture.Model[0];
@@ -76,10 +68,7 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
 
       out.fixtures[fixKey] = fixture;
 
-      resolve(out);
-    })
-    .catch(parseError => {
-      reject(`Error parsing '${filename}'.\n${parseError.toString()}`);
+      return out;
     });
 };
 

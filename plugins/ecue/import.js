@@ -1,5 +1,6 @@
 const colorNames = require(`color-names`);
 const xml2js = require(`xml2js`);
+const promisify = require(`util`).promisify;
 
 module.exports.name = `e:cue`;
 module.exports.version = `0.3.1`;
@@ -9,7 +10,7 @@ for (const hex of Object.keys(colorNames)) {
   colors[colorNames[hex].toLowerCase().replace(/\s/g, ``)] = hex;
 }
 
-module.exports.import = function importEcue(str, filename, resolve, reject) {
+module.exports.import = function importEcue(str, filename) {
   const parser = new xml2js.Parser();
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
@@ -19,16 +20,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
     warnings: {}
   };
 
-  new Promise((res, rej) => {
-    parser.parseString(str, (parseError, xml) => {
-      if (parseError) {
-        rej(parseError);
-      }
-      else {
-        res(xml);
-      }
-    });
-  })
+  return promisify(parser.parseString)(str)
     .then(xml => {
       if (!(`Library` in xml.Document) || !(`Fixtures` in xml.Document.Library[0]) || !(`Manufacturer` in xml.Document.Library[0].Fixtures[0])) {
         throw new Error(`Nothing to import.`);
@@ -57,10 +49,7 @@ module.exports.import = function importEcue(str, filename, resolve, reject) {
         }
       }
 
-      resolve(out);
-    })
-    .catch(parseError => {
-      reject(`Error parsing '${filename}'.\n${parseError.toString()}`);
+      return out;
     });
 
 

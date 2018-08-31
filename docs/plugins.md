@@ -68,7 +68,7 @@ module.exports.export = function exportPluginName(fixtures, options) {
 
 If importing is supported, create a `plugins/<plugin-key>/import.js` module that exports the plugin name, version and a method that creates OFL fixture definitions out of a given third-party file.
 
-As file parsing (like xml processing) can be asynchronous, the import method returns its results asynchronously using the given `resolve` and `reject` functions (see [Promises](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise)). When processing is finished, the `resolve` function should be called with a result object that looks like this:
+As file parsing (like xml processing) can be asynchronous, the import method returns its results asynchronously using a [Promise](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise) that resolves to an object that looks like this:
 
 ```js
 {
@@ -85,7 +85,7 @@ As file parsing (like xml processing) can be asynchronous, the import method ret
 };
 ```
 
-The `reject` function should be called with an error string if it's not possible to parse the given file.
+If the file can not be parsed by the import plugin or contains errors, the returned Promise should reject with an Error.
 
 Example:
 
@@ -96,10 +96,10 @@ module.exports.version = `0.1.0`;  // semantic versioning of import plugin
 /**
  * @param {!string} fileContent The imported file's content
  * @param {!string} fileName The imported file's name
- * @param {!Function} resolve For usage, see above
- * @param {!Function} reject For usage, see above
+ * @returns {!Promise.<!object, !Error} A Promise resolving to an out object
+ *                                      (see above) or rejects with an error.
 **/
-module.exports.import = function importPluginName(fileContent, fileName, resolve, reject) {
+module.exports.import = function importPluginName(fileContent, fileName) {
   const out = {
     manufacturers: {},
     fixtures: {},
@@ -115,8 +115,7 @@ module.exports.import = function importPluginName(fileContent, fileName, resolve
 
   const couldNotParse = fileContent.includes(`Error`);
   if (couldNotParse) {
-    reject(`Could not parse '${fileName}'.`);
-    return;
+    return Promise.reject(new Error(`Could not parse '${fileName}'.`));
   }
 
   fixtureObject.name = `Thunder Wash 600 RGB`;
@@ -127,9 +126,11 @@ module.exports.import = function importPluginName(fileContent, fileName, resolve
   // That's the imported fixture
   out.fixtures[`${manKey}/${fixKey}`] = fixtureObject;
 
-  resolve(out);
+  return Promise.resolve(out);
 };
 ```
+
+Note that this example did not use asynchronous functions, so `Promise.resolve` and `Promise.reject` are called to wrap the (synchronously obtained) results in a Promise.
 
 ## Export tests
 

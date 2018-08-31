@@ -29,9 +29,7 @@ if (args._.length !== 1 || !plugins.importPlugins.includes(args.plugin)) {
 readFile(filename, `utf8`)
   .then(data => {
     const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `import.js`));
-    return new Promise((resolve, reject) => {
-      plugin.import(data, filename, resolve, reject);
-    });
+    return plugin.import(data, filename);
   })
   .then(result => {
     result.errors = {};
@@ -58,6 +56,6 @@ readFile(filename, `utf8`)
     }
   })
   .catch(error => {
-    console.error(error);
+    console.error(`Error parsing '${filename}'.\n${error.toString()}`);
     process.exit(1);
   });
