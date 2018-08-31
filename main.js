@@ -58,7 +58,13 @@ app.get(`/download.:format([a-z0-9_.-]+)`, (request, response, next) => {
   plugin.export(fixtures, {
     baseDir: __dirname,
     date: new Date()
-  }).then(outfiles => downloadFiles(response, outfiles, format));
+  })
+    .then(outfiles => downloadFiles(response, outfiles, format))
+    .catch(error => {
+      response
+        .status(500)
+        .send(`Exporting all fixtures with ${format} failed: ${error.toString()}`);
+    });
 });
 
 app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, (request, response, next) => {
@@ -83,7 +89,13 @@ app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, (request, response, next) => {
   plugin.export([fixtureFromRepository(manKey, fixKey)], {
     baseDir: __dirname,
     date: new Date()
-  }).then(outfiles => downloadFiles(response, outfiles, `${manKey}_${fixKey}_${format}`));
+  })
+    .then(outfiles => downloadFiles(response, outfiles, `${manKey}_${fixKey}_${format}`))
+    .catch(error => {
+      response
+        .status(500)
+        .send(`Exporting fixture ${manKey}/${fixKey} with ${format} failed: ${error.toString()}`);
+    });
 });
 
 app.get(`/sitemap.xml`, (request, response) => {
