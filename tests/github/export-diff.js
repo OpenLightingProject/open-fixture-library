@@ -113,7 +113,7 @@ pullRequest.checkEnv()
       return tasks;
     }
   })
-  .then(tasks => {
+  .then(async tasks => {
     if (tasks.length === 0) {
       return pullRequest.updateComment({
         filename: path.relative(path.join(__dirname, `../../`), __filename),
@@ -123,7 +123,7 @@ pullRequest.checkEnv()
     }
 
     let lines = [
-      `You can run view your uncommited changes in plugin exports manually by executing:`,
+      `You can run view your uncommitted changes in plugin exports manually by executing:`,
       `\`$ node cli/diff-plugin-outputs.js -p <plugin name> <fixtures>\``,
       ``
     ];
@@ -131,11 +131,11 @@ pullRequest.checkEnv()
     const tooLongMessage = `:warning: The output of the script is too long to fit in this comment, please run it yourself locally!`;
 
     for (const task of tasks) {
-      const taskResultLines = performTask(task);
+      const taskResultLines = await performTask(task);
 
-      // GitHub's offical maximum comment length is 2^16=65536, but it's actually 2^18=262144.
+      // GitHub's official maximum comment length is 2^16=65536, but it's actually 2^18=262144.
       // We keep 2144 characters extra space as we don't count the comment header (added by our pull request module).
-      if (lines.concat(taskResultLines).concat(tooLongMessage).join(`\r\n`).length > 260000) {
+      if (lines.concat(taskResultLines, tooLongMessage).join(`\r\n`).length > 260000) {
         lines.push(tooLongMessage);
         break;
       }
@@ -156,11 +156,11 @@ pullRequest.checkEnv()
 
 
 /**
- * @param {Task} task The export diff task to fulfill.
- * @returns {Array.<string>} An array of message lines.
+ * @param {!Task} task The export diff task to fulfill.
+ * @returns {!Promise.<!Array.<string>>} An array of message lines.
  */
-function performTask(task) {
-  const output = diffPluginOutputs(task.pluginKey, process.env.TRAVIS_BRANCH, [task.manFix]);
+async function performTask(task) {
+  const output = await diffPluginOutputs(task.pluginKey, process.env.TRAVIS_BRANCH, [task.manFix]);
   const changeFlags = getChangeFlags(output);
   const emoji = getEmoji(changeFlags);
 
