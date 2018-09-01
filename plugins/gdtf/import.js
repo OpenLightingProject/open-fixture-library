@@ -394,15 +394,39 @@ function addModes(fixture, gdtfFixture) {
   }
 
   /**
-   * Find all <GeometryReference> XML nodes with a given Name attribute.
+   * Find all <GeometryReference> XML nodes with a given Geometry attribute.
    * @param {!string} geometryName The name of the geometry reference.
    * @returns {!array.<!object>} An array of all geometry reference XML objects.
    */
   function findGeometryReferences(geometryName) {
-    // TODO: this is not generalized!
-    return gdtfFixture.Geometries[0].Geometry[0].GeometryReference.filter(
-      gdtfGeoRef => gdtfGeoRef.$.Geometry === geometryName
-    );
+    const geometryReferences = [];
+
+    traverseGeometries(gdtfFixture.Geometries[0]);
+
+    return geometryReferences;
+
+
+    /**
+     * Recursively go through the child nodes of a given XML node and add
+     * <GeometryReference> nodes with the correct Geometry attribute to the
+     * geometryReferences array.
+     * @param {!object} xmlNode The XML node object to start traversing at.
+     */
+    function traverseGeometries(xmlNode) {
+      // add all suitable GeometryReference child nodes
+      (xmlNode.GeometryReference || []).forEach(gdtfGeoRef => {
+        if (gdtfGeoRef.$.Geometry === geometryName) {
+          geometryReferences.push(gdtfGeoRef);
+        }
+      });
+
+      // traverse all other child nodes
+      Object.keys(xmlNode).forEach(tagName => {
+        if (tagName !== `$` && tagName !== `GeometryReference`) {
+          xmlNode[tagName].forEach(childNode => traverseGeometries(childNode));
+        }
+      });
+    }
   }
 }
 
