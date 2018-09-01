@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "7LED RGBW Moving Head",
   "shortName": "Lxda MH",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Julian Rixner"],
     "createDate": "2018-09-01",
@@ -17,6 +17,11 @@
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "LED"
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 180
     }
   },
   "availableChannels": {
