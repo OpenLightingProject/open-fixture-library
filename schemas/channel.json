@@ -24,6 +24,7 @@
         ]
       }
     },
+    "definitionFineness": { "$ref": "definitions.json#/units/nonNegativeNumber" },
     "defaultValue": { "$ref": "definitions.json#/dmxValue" },
     "highlightValue": { "$ref": "definitions.json#/dmxValue" },
     "constant": { "type": "boolean" },
@@ -46,6 +47,9 @@
         "required": ["dmxRange"]
       }
     }
+  },
+  "dependencies": {
+    "definitionFineness": ["fineChannelAliases"]
   },
   "oneOf": [
     {
