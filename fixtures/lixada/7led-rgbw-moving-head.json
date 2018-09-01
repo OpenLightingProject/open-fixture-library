@@ -63,7 +63,8 @@
         },
         {
           "dmxRange": [135, 239],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "1Hz",
           "speedEnd": "20Hz"
         },
