@@ -233,9 +233,15 @@ function addChannel(channels, gdtfChannel, gdtfFixture) {
    */
   function getChannelName() {
     const channelAttribute = gdtfChannel.LogicalChannel[0].$.Attribute;
-    return gdtfFixture.AttributeDefinitions[0].Attributes[0].Attribute.find(
-      attribute => attribute.$.Name === channelAttribute
-    ).$.Pretty || channelAttribute;
+
+    try {
+      return gdtfFixture.AttributeDefinitions[0].Attributes[0].Attribute.find(
+        attribute => attribute.$.Name === channelAttribute
+      ).$.Pretty || channelAttribute;
+    }
+    catch (error) {
+      return channelAttribute;
+    }
   }
 
   /**
