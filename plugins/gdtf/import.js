@@ -91,25 +91,6 @@ module.exports.import = function importGdtf(buffer, filename) {
 
 
 /**
- * @param {!string} dateStr A date string in the form "dd.MM.yyyy HH:mm:ss", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-date
- * @returns {?string} A date string in the form "YYYY-MM-DD", or null if the string could not be parsed.
- */
-function getIsoDateFromGdtfDate(dateStr) {
-  const timeRegex = /^([0-3]?\d)\.([01]?\d)\.(\d{4})\s+\d?\d:\d?\d:\d?\d$/;
-  const match = dateStr.match(timeRegex);
-
-  try {
-    const [, day, month, year] = match;
-    const date = new Date(parseInt(year), parseInt(month) - 1, day);
-
-    return date.toISOString().replace(/T.*/, ``);
-  }
-  catch (error) {
-    return null;
-  }
-}
-
-/**
  * Adds an RDM section to the OFL fixture and manufacturer if applicable.
  * @param {!object} fixture The OFL fixture object.
  * @param {!object} manufacturer The OFL manufacturer object.
@@ -130,6 +111,15 @@ function addRdmInfo(fixture, manufacturer, gdtfFixture) {
 }
 
 /**
+ * @typedef ChannelWrapper
+ * @type object
+ * @property {!string} key The channel key.
+ * @property {!object} channel The OFL channel object.
+ * @property {!number} maxFineness The highest used fineness of this channel.
+ */
+
+/**
+ * Add availableChannels and templateChannels to the fixture.
  * @param {!object} fixture The OFL fixture object.
  * @param {!object} gdtfFixture The GDTF fixture object.
  */
@@ -192,14 +182,6 @@ function addChannels(fixture, gdtfFixture) {
 }
 
 /**
- * @typedef ChannelWrapper
- * @type object
- * @property {!string} key The channel key.
- * @property {!object} channel The OFL channel object.
- * @property {!number} maxFineness The highest used fineness of this channel.
- */
-
-/**
  * @param {!array.<!Channel>} channels The OFL availableChannels or templateChannels object.
  * @param {!object} gdtfChannel The GDTF channel object.
  * @param {!object} gdtfFixture The GDTF fixture object.
@@ -220,6 +202,7 @@ function addChannel(channels, gdtfChannel, gdtfFixture) {
     channel.highlightValue = gdtfDmxValueToNumber(gdtfChannel.$.Highlight)[0];
   }
 
+  // TODO: add real capabilities
   channel.capability = {
     type: `Generic`
   };
@@ -259,15 +242,15 @@ function addChannel(channels, gdtfChannel, gdtfFixture) {
    * @returns {!number} The fineness of this channel.
    */
   function getChannelFineness() {
-    if (`Uber ` in gdtfChannel.$ && gdtfChannel.$.Uber !== `None`) {
+    if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Uber`)) {
       return 3;
     }
 
-    if (`Ultra` in gdtfChannel.$ && gdtfChannel.$.Ultra !== `None`) {
+    if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Ultra`)) {
       return 2;
     }
 
-    if (`Fine` in gdtfChannel.$ && gdtfChannel.$.Fine !== `None`) {
+    if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Fine`)) {
       return 1;
     }
 
@@ -293,6 +276,16 @@ function addChannel(channels, gdtfChannel, gdtfFixture) {
 }
 
 /**
+ * @typedef DmxBreakWrapper
+ * @description Holds a list of OFL channel keys belonging to consecutive GDTF channels with the same DMXBreak attribute.
+ * @type object
+ * @property {!string|undefined} dmxBreak The DMXBreak attribute of consecutive DMXChannel nodes.
+ * @property {!string} geometry The Geometry attribute of consecutive DMXChannel nodes.
+ * @property {!array.<!string>} channels The OFL channel keys in this DMX break.
+ */
+
+/**
+ * Add modes and matrix pixel keys (if needed) to the fixture.
  * @param {!object} fixture The OFL fixture object.
  * @param {!object} gdtfFixture The GDTF fixture object.
  */
@@ -301,6 +294,7 @@ function addModes(fixture, gdtfFixture) {
   const matrixPixels = new Set();
 
   fixture.modes = gdtfFixture.DMXModes[0].DMXMode.map(gdtfMode => {
+    /** @type array.<!DmxBreakWrapper> */
     const dmxBreakWrappers = [];
 
     gdtfMode.DMXChannels[0].DMXChannel.forEach(gdtfChannel => {
@@ -315,33 +309,46 @@ function addModes(fixture, gdtfFixture) {
       addChannelKeyToDmxBreakWrapper(gdtfChannel, dmxBreakWrappers);
     });
 
+    // TODO: also look through gdtfMode's Relations to (maybe?) find switching channels
+
     return {
       name: gdtfMode.$.Name,
       channels: [].concat(...dmxBreakWrappers.map(channelWrapper => {
-        if (channelWrapper.dmxBreak === `Overwrite`) {
-          const geometryReferences = findGeometryReferences(channelWrapper.geometry);
-          const usedMatrixPixels = geometryReferences.map(
-            (gdtfGeoRef, index) => gdtfGeoRef.$.Name || `${channelWrapper.geometry} ${index + 1}`
-          );
-
-          usedMatrixPixels.forEach(pixelKey => matrixPixels.add(pixelKey));
-
-          return {
-            insert: `matrixChannels`,
-            repeatFor: usedMatrixPixels,
-            channelOrder: `perPixel`,
-            templateChannels: channelWrapper.channels.map(
-              chKey => `${chKey} $pixelKey`
-            )
-          };
+        if (channelWrapper.dmxBreak !== `Overwrite`) {
+          // just append the channels
+          return channelWrapper.channels;
         }
 
-        return channelWrapper.channels;
+        // append a matrix channel insert block
+
+        const geometryReferences = findGeometryReferences(channelWrapper.geometry);
+        const usedMatrixPixels = geometryReferences.map(
+          (gdtfGeoRef, index) => gdtfGeoRef.$.Name || `${channelWrapper.geometry} ${index + 1}`
+        );
+
+        usedMatrixPixels.forEach(pixelKey => matrixPixels.add(pixelKey));
+
+        return {
+          insert: `matrixChannels`,
+          repeatFor: usedMatrixPixels,
+          channelOrder: `perPixel`,
+          templateChannels: channelWrapper.channels.map(
+            chKey => `${chKey} $pixelKey`
+          )
+        };
       }))
     };
   });
 
   const matrixPixelList = [...matrixPixels];
+
+  fixture.matrix = {
+    pixelKeys: [
+      [
+        matrixPixelList
+      ]
+    ]
+  };
 
   // try to simplify matrix channel insert blocks
   fixture.modes.forEach(mode => {
@@ -353,19 +360,11 @@ function addModes(fixture, gdtfFixture) {
     });
   });
 
-  fixture.matrix = {
-    pixelKeys: [
-      [
-        matrixPixelList
-      ]
-    ]
-  };
-
 
   /**
    * Adds the OFL channel key to dmxBreakWrappers' last entry's channels array.
    * @param {!object} gdtfChannel The GDTF channel object.
-   * @param {!array.<!object>} dmxBreakWrappers The DMXBreak wrapper array.
+   * @param {!array.<!DmxBreakWrapper>} dmxBreakWrappers The DMXBreak wrapper array.
    */
   function addChannelKeyToDmxBreakWrapper(gdtfChannel, dmxBreakWrappers) {
     const chKey = gdtfChannel._oflChannelKey;
@@ -408,6 +407,25 @@ function addModes(fixture, gdtfFixture) {
  */
 function xmlNodeHasNotNoneAttribute(xmlNode, attribute) {
   return attribute in xmlNode.$ && xmlNode.$[attribute] !== `None`;
+}
+
+/**
+ * @param {!string} dateStr A date string in the form "dd.MM.yyyy HH:mm:ss", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-date
+ * @returns {?string} A date string in the form "YYYY-MM-DD", or null if the string could not be parsed.
+ */
+function getIsoDateFromGdtfDate(dateStr) {
+  const timeRegex = /^([0-3]?\d)\.([01]?\d)\.(\d{4})\s+\d?\d:\d?\d:\d?\d$/;
+  const match = dateStr.match(timeRegex);
+
+  try {
+    const [, day, month, year] = match;
+    const date = new Date(parseInt(year), parseInt(month) - 1, day);
+
+    return date.toISOString().replace(/T.*/, ``);
+  }
+  catch (error) {
+    return null;
+  }
 }
 
 /**
