@@ -1,4 +1,5 @@
 const xml2js = require(`xml2js`);
+const Zip = require(`node-zip`);
 const promisify = require(`util`).promisify;
 
 const manufacturers = require(`../../fixtures/manufacturers.json`);
@@ -23,8 +24,20 @@ module.exports.import = function importGdtf(buffer, filename) {
     $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`
   };
 
-  // TODO: also allow passing the .gdtf (zip) file directly -> then check its description.xml file
-  return promisify(parser.parseString)(buffer.toString())
+  let xmlBuffer = buffer;
+
+  if (filename.endsWith(`.gdtf`)) {
+    // unzip the .gdtf (zip) file and check its description.xml file
+    const unzip = new Zip(buffer);
+
+    if (!(`description.xml` in unzip.files)) {
+      return Promise.reject(new Error(`The provided .gdtf (zip) file does not contain a 'description.xml' file in the root directory.`));
+    }
+
+    xmlBuffer = unzip.files[`description.xml`].asNodeBuffer();
+  }
+
+  return promisify(parser.parseString)(xmlBuffer.toString())
     .then(xml => {
       const gdtfFixture = xml.GDTF.FixtureType[0];
       fixture.name = gdtfFixture.$.Name;
