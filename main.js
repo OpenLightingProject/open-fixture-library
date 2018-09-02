@@ -174,8 +174,8 @@ function downloadFiles(response, files, zipName) {
   }
 
   // else zip all together
-  const Zip = require(`node-zip`);
-  const archive = new Zip();
+  const JSZip = require(`jszip`);
+  const archive = new JSZip();
   for (const file of files) {
     archive.file(file.name, file.content);
   }
