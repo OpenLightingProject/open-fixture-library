@@ -66,7 +66,7 @@
 
       <template v-if="(unwrappedChannel instanceof Channel)">
         <app-labeled-value
-          v-if="finenessInMode > 1"
+          v-if="finenessInMode > Channel.FINENESS_8BIT"
           name="channel-fineChannelAliases"
           label="Fine channels">
           {{ unwrappedChannel.fineChannels.slice(0, finenessInMode - 1).map(

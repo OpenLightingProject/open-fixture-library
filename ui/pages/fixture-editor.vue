@@ -247,6 +247,7 @@ import {
 
 import manufacturers from '~~/fixtures/manufacturers.json';
 import schemaProperties from '~~/lib/schema-properties.js';
+import Channel from '~~/lib/model/Channel.mjs';
 
 import labeledInputVue from '~/components/labeled-input.vue';
 import propertyInputBooleanVue from '~/components/property-input-boolean.vue';
@@ -396,7 +397,7 @@ export default {
 
       if (`coarseChannelId` in channel) {
         let name = `${this.getChannelName(channel.coarseChannelId)} fine`;
-        if (channel.fineness > 2) {
+        if (channel.fineness > Channel.FINENESS_16BIT) {
           name += `^${channel.fineness - 1}`;
         }
 

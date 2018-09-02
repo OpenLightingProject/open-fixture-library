@@ -1,4 +1,5 @@
 import uuidV4 from 'uuid/v4.js';
+import Channel from '~~/lib/model/Channel.mjs';
 
 /**
  * @returns {!object} An empty fixture object.
@@ -97,14 +98,14 @@ export function getEmptyChannel() {
     name: ``,
     type: ``,
     color: ``,
-    fineness: 1,
+    fineness: Channel.FINENESS_8BIT,
     defaultValue: null,
     highlightValue: null,
     invert: null,
     constant: null,
     crossfade: null,
     precedence: ``,
-    capFineness: 1,
+    capFineness: Channel.FINENESS_8BIT,
     wizard: {
       show: false,
       start: 0,
@@ -160,7 +161,7 @@ export function isChannelChanged(channel) {
     }
 
     if (prop === `fineness` || prop === `capFineness`) {
-      return channel[prop] !== 1;
+      return channel[prop] !== Channel.FINENESS_8BIT;
     }
 
     if (prop === `capabilities`) {

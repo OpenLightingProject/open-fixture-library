@@ -165,6 +165,7 @@ ol.mode-channels {
 
 <script>
 import schemaProperties from '~~/lib/schema-properties.js';
+import Channel from '~~/lib/model/Channel.mjs';
 
 import svgVue from '~/components/svg.vue';
 import labeledInputVue from '~/components/labeled-input.vue';
@@ -204,6 +205,7 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+      Channel,
       dragOptions: {
         handle: `.drag-handle`,
         group: {
@@ -234,7 +236,7 @@ export default {
               return false;
             }
 
-            if (channel.fineness === 2) {
+            if (channel.fineness === Channel.FINENESS_16BIT) {
               // next coarser channel is coarse channel, which is in target mode
               return true;
             }
@@ -293,7 +295,7 @@ export default {
 
       // first remove the finer channels if any
       let coarseChannelId = channelUuid;
-      let fineness = 1;
+      let fineness = Channel.FINENESS_8BIT;
       if (this.isFineChannel(channelUuid)) {
         coarseChannelId = channel.coarseChannelId;
         fineness = channel.fineness;

@@ -1,6 +1,7 @@
 const xmlbuilder = require(`xmlbuilder`);
 
 const {
+  Channel,
   FineChannel,
   MatrixChannel,
   NullChannel,
@@ -144,7 +145,7 @@ function handleMode(xmlFixture, mode) {
 
     let fineChannelKey = null;
     if (channel instanceof FineChannel) {
-      if (channel.fineness === 2) {
+      if (channel.fineness === Channel.FINENESS_16BIT) {
         // ignore this channel, we handle it together with its coarse channel
         continue;
       }
@@ -156,11 +157,11 @@ function handleMode(xmlFixture, mode) {
 
     const dmxByte0 = dmxCount + 1;
     let dmxByte1 = 0;
-    let fineness = 1;
+    let fineness = Channel.FINENESS_8BIT;
 
     if (fineChannelKey === null && channel.fineChannelAliases.length > 0) {
       dmxByte1 = mode.getChannelIndex(channel.fineChannelAliases[0], `defaultOnly`) + 1;
-      fineness = Math.min(2, channel.getFinenessInMode(mode, `defaultOnly`));
+      fineness = Math.min(Channel.FINENESS_16BIT, channel.getFinenessInMode(mode, `defaultOnly`));
     }
 
     const defaultValue = channel.getDefaultValueWithFineness(fineness);
