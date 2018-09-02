@@ -24,7 +24,7 @@
         ]
       }
     },
-    "dmxValueResolution": { "$ref": "definitions.json#/units/nonNegativeNumber" },
+    "dmxValueResolution": { "enum": ["8bit", "16bit", "24bit"] },
     "defaultValue": { "$ref": "definitions.json#/dmxValue" },
     "highlightValue": { "$ref": "definitions.json#/dmxValue" },
     "constant": { "type": "boolean" },

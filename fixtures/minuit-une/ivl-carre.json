@@ -114,7 +114,7 @@
     },
     "Tilt All": {
       "fineChannelAliases": ["Tilt All fine"],
-      "dmxValueResolution": 0,
+      "dmxValueResolution": "8bit",
       "defaultValue": 0,
       "capabilities": [
         {
@@ -328,7 +328,7 @@
     },
     "Rotation Red": {
       "fineChannelAliases": ["Rotation Red fine"],
-      "dmxValueResolution": 0,
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 12],
@@ -366,7 +366,7 @@
     },
     "Rotation Green": {
       "fineChannelAliases": ["Rotation Green fine"],
-      "dmxValueResolution": 0,
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 12],
@@ -443,7 +443,7 @@
     },
     "Rotation Blue": {
       "fineChannelAliases": ["Rotation Blue fine"],
-      "dmxValueResolution": 0,
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 12],

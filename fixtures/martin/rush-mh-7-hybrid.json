@@ -758,7 +758,7 @@
     },
     "Rotating Gobo Speed": {
       "fineChannelAliases": ["Rotating Gobo Speed fine"],
-      "dmxValueResolution": 0,
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 31],
@@ -1146,7 +1146,7 @@
     },
     "Rotating Prism Speed": {
       "fineChannelAliases": ["Rotating Prism Speed fine"],
-      "dmxValueResolution": 0,
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 31],

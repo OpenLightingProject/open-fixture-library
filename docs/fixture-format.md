@@ -136,7 +136,7 @@ Example: Channel `Dimmer` contains `fineChannelAliases: ["Dimmer 16-bit", "Dimme
 
 See the [Generic Desk Channel fixture](../fixtures/generic/desk-channel.json) for a simple application example.
 
-DMX values (e.g. default / highlight value, capability ranges) have to be entered in the maximum fineness: If one fine channel is defined, DMX values from 0 to 65535 are possible. If a lower fineness is sufficient for entering DMX values, the channel's `dmxValueResolution` property can be set to the desired fineness (`0` for 0…255, `1` for 0…65535, etc.). That means that both of the following examples are equivalent:
+DMX values (e.g. default / highlight value, capability ranges) have to be entered in the maximum fineness: If one fine channel is defined, DMX values from 0 to 65535 are possible. If a lower fineness is sufficient for entering DMX values, the channel's `dmxValueResolution` property can be set to the desired fineness (`8bit` for 0…255, `16bit` for 0…65535, etc.). That means that both of the following examples are equivalent:
 
 ```js
 "Iris": {
@@ -160,7 +160,7 @@ DMX values (e.g. default / highlight value, capability ranges) have to be entere
 ```js
 "Iris": {
   "fineChannelAliases": ["Iris fine"],
-  "dmxValueResolution": 0,
+  "dmxValueResolution": "8bit",
   "defaultValue": 132,
   "capabilities": [
     {

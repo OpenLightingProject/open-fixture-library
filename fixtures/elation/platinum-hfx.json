@@ -50,7 +50,7 @@
     },
     "Color wheel": {
       "fineChannelAliases": ["Color wheel fine"],
-      "dmxValueResolution": 0,
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 10],
@@ -294,7 +294,7 @@
     },
     "Gobo Stencil Rotation": {
       "fineChannelAliases": ["Gobo Stencil Rotation fine"],
-      "dmxValueResolution": 0,
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 127],
@@ -323,7 +323,7 @@
     },
     "Static-stamped Gobos (Gobo wheel 2)": {
       "fineChannelAliases": ["Static-stamped Gobos fine"],
-      "dmxValueResolution": 0,
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 21],
@@ -609,7 +609,7 @@
     },
     "Prism Index": {
       "fineChannelAliases": ["Prism Index fine"],
-      "dmxValueResolution": 0,
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 127],
@@ -654,7 +654,7 @@
     },
     "Auto focus": {
       "fineChannelAliases": ["Auto focus fine"],
-      "dmxValueResolution": 0,
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 50],
