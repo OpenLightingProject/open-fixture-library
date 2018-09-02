@@ -83,7 +83,8 @@ module.exports.import = function importQlcPlus(buffer, filename) {
  */
 function getOflChannel(qlcPlusChannel) {
   const channel = {
-    fineChannelAliases: []
+    fineChannelAliases: [],
+    dmxValueResolution: `8bit`
   };
 
   if (`Capability` in qlcPlusChannel) {
@@ -548,10 +549,16 @@ function mergeFineChannels(fixture, doubleByteChannels, warningsArray) {
  * @param {!object} qlcPlusFixture The QCL+ fixture object.
  */
 function cleanUpFixture(fixture, qlcPlusFixture) {
-  // delete empty fineChannelAliases arrays
-  for (const chKey in fixture.availableChannels) {
-    if (fixture.availableChannels[chKey].fineChannelAliases.length === 0) {
-      delete fixture.availableChannels[chKey].fineChannelAliases;
+  // delete empty fineChannelAliases arrays and unnecessary dmxValueResolution properties
+  for (const chKey of Object.keys(fixture.availableChannels)) {
+    const channel = fixture.availableChannels[chKey];
+
+    if (`capability` in channel) {
+      delete channel.dmxValueResolution;
+    }
+    if (channel.fineChannelAliases.length === 0) {
+      delete channel.fineChannelAliases;
+      delete channel.dmxValueResolution;
     }
   }
 
