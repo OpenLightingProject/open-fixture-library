@@ -162,6 +162,7 @@ function listen() {
  * @param {!express.Response} response Express Response object
  * @param {!Array.<!ExportFile>} files Array of exported files. If more than one is provided, the files are zipped automatically.
  * @param {!string} zipName Name of the zip file (if any).
+ * @returns {!Promise} A Promise that is resolved when the response is sent.
  */
 function downloadFiles(response, files, zipName) {
   if (files.length === 1) {
@@ -170,23 +171,24 @@ function downloadFiles(response, files, zipName) {
       .attachment(files[0].name)
       .type(files[0].mimetype)
       .send(Buffer.from(files[0].content));
-    return;
+    return Promise.resolve();
   }
 
   // else zip all together
-  const Zip = require(`node-zip`);
-  const archive = new Zip();
+  const JSZip = require(`jszip`);
+  const archive = new JSZip();
   for (const file of files) {
     archive.file(file.name, file.content);
   }
-  const data = archive.generate({
-    base64: false,
-    compression: `DEFLATE`
-  });
 
-  response
-    .status(201)
-    .attachment(`ofl_export_${zipName}.zip`)
-    .type(`application/zip`)
-    .send(Buffer.from(data, `binary`));
+  return archive.generateAsync({
+    type: `nodebuffer`,
+    compression: `DEFLATE`
+  }).then(zipBuffer => {
+    response
+      .status(201)
+      .attachment(`ofl_export_${zipName}.zip`)
+      .type(`application/zip`)
+      .send(zipBuffer);
+  });
 }
