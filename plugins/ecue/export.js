@@ -154,20 +154,17 @@ function handleMode(xmlFixture, mode) {
       channel = channel.coarseChannel;
     }
 
-    let dmxByte0 = dmxCount + 1;
+    const dmxByte0 = dmxCount + 1;
     let dmxByte1 = 0;
+    let fineness = 1;
 
-    if (fineChannelKey !== null) {
-      dmxByte0 = mode.getChannelIndex(fineChannelKey) + 1;
-    }
-    else if (channel.fineChannelAliases.length > 0) {
+    if (fineChannelKey === null && channel.fineChannelAliases.length > 0) {
       dmxByte1 = mode.getChannelIndex(channel.fineChannelAliases[0], `defaultOnly`) + 1;
+      fineness = Math.min(2, channel.getFinenessInMode(mode, `defaultOnly`));
     }
 
-    const fineness = channel.getFinenessInMode(mode, `defaultOnly`);
-
-    const defaultValue = channel.getDefaultValueWithFineness(fineness === 2 ? 2 : 1);
-    const highlightValue = channel.getHighlightValueWithFineness(fineness === 2 ? 2 : 1);
+    const defaultValue = channel.getDefaultValueWithFineness(fineness);
+    const highlightValue = channel.getHighlightValueWithFineness(fineness);
 
     const xmlChannel = xmlFixture.element(getChannelType(channel), {
       'Name': switchingChannelName || channel.name,
@@ -183,7 +180,9 @@ function handleMode(xmlFixture, mode) {
       'ClassicPos': viewPosCount
     });
 
-    addCapabilities(xmlChannel, channel, fineness);
+    if (fineChannelKey === null) {
+      addCapabilities(xmlChannel, channel, fineness);
+    }
 
     viewPosCount++;
   }
@@ -242,17 +241,15 @@ function getChannelType(channel) {
  * @param {!number} fineness The fineness of the channel in the current mode.
  */
 function addCapabilities(xmlChannel, channel, fineness) {
-  if (fineness < 3) {
-    for (const cap of channel.capabilities) {
-      const dmxRange = cap.getDmxRangeWithFineness(fineness);
-      xmlChannel.element(`Range`, {
-        'Name': cap.name,
-        'Start': dmxRange.start,
-        'End': dmxRange.end,
-        'AutoMenu': cap.menuClick === `hidden` ? 0 : 1,
-        'Centre': cap.menuClick === `center` ? 1 : 0
-      });
-    }
+  for (const cap of channel.capabilities) {
+    const dmxRange = cap.getDmxRangeWithFineness(fineness);
+    xmlChannel.element(`Range`, {
+      'Name': cap.name,
+      'Start': dmxRange.start,
+      'End': dmxRange.end,
+      'AutoMenu': cap.menuClick === `hidden` ? 0 : 1,
+      'Centre': cap.menuClick === `center` ? 1 : 0
+    });
   }
 }
 
