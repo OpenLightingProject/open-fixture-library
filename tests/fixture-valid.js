@@ -345,7 +345,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       );
     });
 
-    const maxDmxBound = Math.pow(256, channel.dmxValueResolution + 1) - 1;
+    const maxDmxBound = Math.pow(256, channel.dmxValueResolution) - 1;
 
     if (channel.hasDefaultValue && channel.defaultValue > maxDmxBound) {
       result.errors.push(`defaultValue must be less or equal to ${maxDmxBound} in channel '${channel.key}'.`);
@@ -378,7 +378,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       /**
        * Check that a capability's range is valid.
        * @param {!number} capNumber The number of the capability in the channel, starting with 0.
-       * @param {number} minUsedFineness The smallest fineness that the channel is used in a mode.This controls if this range can be from 0 up to channel.maxDmxBound or less.
        * @returns {boolean} True if the range is valid, false otherwise. The global `result` object is updated then.
        */
       function checkDmxRange(capNumber) {
@@ -805,7 +804,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       function checkCoarserChannelsInMode(fineChannel) {
         const coarseChannel = fineChannel.coarseChannel;
         const coarserChannelKeys = coarseChannel.fineChannelAliases.filter(
-          (alias, index) => index < fineChannel.fineness - 1
+          (alias, index) => index < fineChannel.fineness - 2
         ).concat(coarseChannel.key);
 
         const notInMode = coarserChannelKeys.filter(

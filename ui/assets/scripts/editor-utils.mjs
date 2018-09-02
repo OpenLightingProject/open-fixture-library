@@ -97,14 +97,14 @@ export function getEmptyChannel() {
     name: ``,
     type: ``,
     color: ``,
-    fineness: 0,
+    fineness: 1,
     defaultValue: null,
     highlightValue: null,
     invert: null,
     constant: null,
     crossfade: null,
     precedence: ``,
-    capFineness: 0,
+    capFineness: 1,
     wizard: {
       show: false,
       start: 0,
@@ -160,7 +160,7 @@ export function isChannelChanged(channel) {
     }
 
     if (prop === `fineness` || prop === `capFineness`) {
-      return channel[prop] !== 0;
+      return channel[prop] !== 1;
     }
 
     if (prop === `capabilities`) {

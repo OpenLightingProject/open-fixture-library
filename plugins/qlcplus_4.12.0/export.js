@@ -105,7 +105,7 @@ function addChannel(xml, channel) {
   });
 
   if (channel.defaultValue !== 0) {
-    xmlChannel.attribute(`Default`, channel.getDefaultValueWithFineness(0));
+    xmlChannel.attribute(`Default`, channel.getDefaultValueWithFineness(1));
   }
 
   const channelPreset = getChannelPreset(channel);
@@ -149,7 +149,7 @@ function addFineChannel(xml, fineChannel) {
     xmlFineChannel.attribute(`Default`, fineChannel.defaultValue);
   }
 
-  if (fineChannel.fineness > 1) {
+  if (fineChannel.fineness > 2) {
     // QLC+ does not support 24+ bit channels, so let's fake one
     xmlFineChannel.element({
       Group: {
@@ -161,8 +161,8 @@ function addFineChannel(xml, fineChannel) {
     addCapability(xmlFineChannel, new Capability({
       dmxRange: [0, 255],
       type: `Generic`,
-      comment: `Fine^${fineChannel.fineness} adjustment for ${fineChannel.coarseChannel.uniqueName}`
-    }, 0, fineChannel.coarseChannel));
+      comment: `Fine^${fineChannel.fineness - 1} adjustment for ${fineChannel.coarseChannel.uniqueName}`
+    }, 1, fineChannel.coarseChannel));
 
     return;
   }
@@ -193,7 +193,7 @@ function addFineChannel(xml, fineChannel) {
     dmxRange: [0, 255],
     type: `Generic`,
     comment: `Fine adjustment for ${fineChannel.coarseChannel.uniqueName}`
-  }, 0, fineChannel.coarseChannel));
+  }, 1, fineChannel.coarseChannel));
 }
 
 /**
@@ -319,7 +319,7 @@ function getFineChannelPreset(fineChannel) {
  * @param {!Capability} cap The OFL capability object.
  */
 function addCapability(xmlChannel, cap) {
-  const dmxRange = cap.getDmxRangeWithFineness(0);
+  const dmxRange = cap.getDmxRangeWithFineness(1);
 
   const xmlCapability = xmlChannel.element({
     Capability: {

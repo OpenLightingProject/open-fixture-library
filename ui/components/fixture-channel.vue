@@ -66,10 +66,10 @@
 
       <template v-if="(unwrappedChannel instanceof Channel)">
         <app-labeled-value
-          v-if="finenessInMode > 0"
+          v-if="finenessInMode > 1"
           name="channel-fineChannelAliases"
           label="Fine channels">
-          {{ unwrappedChannel.fineChannels.slice(0, finenessInMode).map(
+          {{ unwrappedChannel.fineChannels.slice(0, finenessInMode - 1).map(
             fineChannel => `${fineChannel.name} (channel&nbsp;${mode.getChannelIndex(fineChannel) + 1})`
           ).join(`, `) }}
         </app-labeled-value>

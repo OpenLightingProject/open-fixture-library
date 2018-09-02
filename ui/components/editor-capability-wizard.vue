@@ -161,7 +161,7 @@ export default {
      * @returns {!number} Maximum allowed DMX value.
      */
     dmxMax() {
-      return Math.pow(256, this.fineness + 1) - 1;
+      return Math.pow(256, this.fineness) - 1;
     },
 
     /**

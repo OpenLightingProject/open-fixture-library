@@ -149,7 +149,7 @@ export default {
       return this.capabilities[this.capIndex];
     },
     dmxMax() {
-      return Math.pow(256, this.fineness + 1) - 1;
+      return Math.pow(256, this.fineness) - 1;
     },
     isChanged() {
       return this.capabilities.some(isCapabilityChanged);

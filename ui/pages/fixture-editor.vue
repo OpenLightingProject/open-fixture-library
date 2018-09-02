@@ -396,8 +396,8 @@ export default {
 
       if (`coarseChannelId` in channel) {
         let name = `${this.getChannelName(channel.coarseChannelId)} fine`;
-        if (channel.fineness > 1) {
-          name += `^${channel.fineness}`;
+        if (channel.fineness > 2) {
+          name += `^${channel.fineness - 1}`;
         }
 
         return name;

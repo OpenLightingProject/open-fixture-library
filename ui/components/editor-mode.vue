@@ -234,7 +234,7 @@ export default {
               return false;
             }
 
-            if (channel.fineness === 1) {
+            if (channel.fineness === 2) {
               // next coarser channel is coarse channel, which is in target mode
               return true;
             }
@@ -293,7 +293,7 @@ export default {
 
       // first remove the finer channels if any
       let coarseChannelId = channelUuid;
-      let fineness = 0;
+      let fineness = 1;
       if (this.isFineChannel(channelUuid)) {
         coarseChannelId = channel.coarseChannelId;
         fineness = channel.fineness;

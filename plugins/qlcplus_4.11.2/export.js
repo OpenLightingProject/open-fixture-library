@@ -104,9 +104,9 @@ function addChannel(xml, channel) {
   let capabilities;
   if (channel instanceof FineChannel) {
     let capabilityName;
-    if (channel.fineness > 1) {
+    if (channel.fineness > 2) {
       xmlGroup.attribute(`Byte`, 0); // not a QLC+ fine channel
-      capabilityName = `Fine^${channel.fineness} adjustment for ${channel.coarseChannel.uniqueName}`;
+      capabilityName = `Fine^${channel.fineness - 1} adjustment for ${channel.coarseChannel.uniqueName}`;
     }
     else {
       xmlGroup.attribute(`Byte`, 1);
@@ -119,7 +119,7 @@ function addChannel(xml, channel) {
         dmxRange: [0, 255],
         type: `Generic`,
         comment: capabilityName
-      }, 0, channel)
+      }, 1, channel)
     ];
   }
   else {
@@ -146,7 +146,7 @@ function addChannel(xml, channel) {
  * @param {!Capability} cap The OFL capability object.
  */
 function addCapability(xmlChannel, cap) {
-  const dmxRange = cap.getDmxRangeWithFineness(0);
+  const dmxRange = cap.getDmxRangeWithFineness(1);
 
   const xmlCapability = xmlChannel.element({
     Capability: {

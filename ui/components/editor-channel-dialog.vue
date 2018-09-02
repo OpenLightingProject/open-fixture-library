@@ -42,16 +42,16 @@
 
         <app-labeled-input :formstate="formstate" name="fineness" label="Channel resolution">
           <select v-model="channel.fineness" name="fineness">
-            <option :value="0">8 bit (No fine channels)</option>
-            <option :value="1">16 bit (1 fine channel)</option>
-            <option :value="2">24 bit (2 fine channels)</option>
+            <option :value="1">8 bit (No fine channels)</option>
+            <option :value="2">16 bit (1 fine channel)</option>
+            <option :value="3">24 bit (2 fine channels)</option>
           </select>
         </app-labeled-input>
 
         <app-labeled-input :formstate="formstate" name="defaultValue" label="Default DMX value">
           <input
             v-model.number="channel.defaultValue"
-            :max="Math.pow(256, channel.fineness + 1) - 1"
+            :max="Math.pow(256, channel.fineness) - 1"
             name="defaultValue"
             type="number"
             min="0"
@@ -76,14 +76,14 @@
         </template></h3>
 
         <app-labeled-input
-          v-if="channel.fineness > 0"
+          v-if="channel.fineness > 1"
           :formstate="formstate"
           name="capFineness"
           label="Capability resolution">
           <select v-model="channel.capFineness" name="capFineness" required>
-            <option :value="0">8 bit (range 0 - 255)</option>
-            <option v-if="channel.fineness >= 1" :value="1">16 bit (range 0 - 65535)</option>
-            <option v-if="channel.fineness >= 2" :value="2">24 bit (range 0 - 16777215)</option>
+            <option :value="1">8 bit (range 0 - 255)</option>
+            <option v-if="channel.fineness >= 2" :value="2">16 bit (range 0 - 65535)</option>
+            <option v-if="channel.fineness >= 3" :value="3">24 bit (range 0 - 16777215)</option>
           </select>
         </app-labeled-input>
 
@@ -261,11 +261,11 @@ export default {
             ch => `coarseChannelId` in ch && ch.coarseChannelId === channel.coarseChannelId
           );
 
-          const maxFoundFineness = Math.max(0, ...otherFineChannels.map(
+          const maxFoundFineness = Math.max(1, ...otherFineChannels.map(
             ch => ch.fineness
           ));
 
-          if (maxFoundFineness < channel.fineness - 1) {
+          if (maxFoundFineness !== channel.fineness - 1) {
             // the finest channel currently used is not its next coarser channel
             return false;
           }
@@ -460,7 +460,7 @@ export default {
       this.$set(this.fixture.availableChannels, this.channel.uuid, getSanitizedChannel(this.channel));
       this.currentMode.channels.push(this.channel.uuid);
 
-      this.addFineChannels(this.channel, 1, true);
+      this.addFineChannels(this.channel, 2, true);
     },
 
     saveEditedChannel() {
@@ -488,7 +488,7 @@ export default {
       newChannel.uuid = newChannelKey;
       this.$set(this.fixture.availableChannels, newChannelKey, newChannel);
 
-      const fineChannelUuids = this.addFineChannels(newChannel, 1, false);
+      const fineChannelUuids = this.addFineChannels(newChannel, 2, false);
 
       this.currentMode.channels = this.currentMode.channels.map(key => {
         if (key === oldChannelKey) {

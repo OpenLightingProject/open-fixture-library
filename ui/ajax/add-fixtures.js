@@ -221,7 +221,7 @@ function addAvailableChannel(fixKey, availableChannels, chId) {
         channel.capabilities = capabilities;
       }
     }
-    else if (prop === `fineChannelAliases` && from.fineness > 0) {
+    else if (prop === `fineChannelAliases` && from.fineness > 1) {
       channel.fineChannelAliases = [];
     }
     else if (prop === `color`) {
@@ -243,7 +243,7 @@ function addAvailableChannel(fixKey, availableChannels, chId) {
 
       if (`coarseChannelId` in ch && ch.coarseChannelId === chId) {
         const alias = getFineChannelAlias(chKey, ch.fineness);
-        channel.fineChannelAliases[ch.fineness - 1] = alias;
+        channel.fineChannelAliases[ch.fineness - 2] = alias;
         channelKeyMapping[ch.uuid] = alias;
       }
     }
@@ -273,7 +273,7 @@ function getChannelKey(channel, fixKey) {
 }
 
 function getFineChannelAlias(channelKey, fineness) {
-  return `${channelKey} fine${fineness > 1 ? `^${fineness}` : ``}`;
+  return `${channelKey} fine${fineness > 2 ? `^${fineness - 1}` : ``}`;
 }
 
 function getCapabilities(channel) {

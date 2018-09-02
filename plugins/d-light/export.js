@@ -189,7 +189,7 @@ function getDefaultValue(channel) {
     return channel.defaultValue;
   }
 
-  return channel.getDefaultValueWithFineness(0);
+  return channel.getDefaultValueWithFineness(1);
 }
 
 /**
@@ -244,7 +244,7 @@ function getChannelsByAttribute(channels) {
    */
   function getChannelAttribute(channel) {
     if (channel instanceof FineChannel) {
-      if (channel.fineness === 1) {
+      if (channel.fineness === 2) {
         return `FINE`;
       }
       return `EXTRA`;

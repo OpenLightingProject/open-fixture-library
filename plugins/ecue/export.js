@@ -144,7 +144,7 @@ function handleMode(xmlFixture, mode) {
 
     let fineChannelKey = null;
     if (channel instanceof FineChannel) {
-      if (channel.fineness === 1) {
+      if (channel.fineness === 2) {
         // ignore this channel, we handle it together with its coarse channel
         continue;
       }
@@ -166,8 +166,8 @@ function handleMode(xmlFixture, mode) {
 
     const fineness = channel.getFinenessInMode(mode, `defaultOnly`);
 
-    const defaultValue = channel.getDefaultValueWithFineness(fineness === 1 ? 1 : 0);
-    const highlightValue = channel.getHighlightValueWithFineness(fineness === 1 ? 1 : 0);
+    const defaultValue = channel.getDefaultValueWithFineness(fineness === 2 ? 2 : 1);
+    const highlightValue = channel.getHighlightValueWithFineness(fineness === 2 ? 2 : 1);
 
     const xmlChannel = xmlFixture.element(getChannelType(channel), {
       'Name': switchingChannelName || channel.name,
@@ -242,7 +242,7 @@ function getChannelType(channel) {
  * @param {!number} fineness The fineness of the channel in the current mode.
  */
 function addCapabilities(xmlChannel, channel, fineness) {
-  if (fineness < 2) {
+  if (fineness < 3) {
     for (const cap of channel.capabilities) {
       const dmxRange = cap.getDmxRangeWithFineness(fineness);
       xmlChannel.element(`Range`, {
