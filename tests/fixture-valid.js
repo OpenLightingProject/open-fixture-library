@@ -345,7 +345,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       );
     });
 
-    const maxDmxBound = Math.pow(256, channel.definitionFineness + 1) - 1;
+    const maxDmxBound = Math.pow(256, channel.dmxValueResolution + 1) - 1;
 
     if (channel.hasDefaultValue && channel.defaultValue > maxDmxBound) {
       result.errors.push(`defaultValue must be less or equal to ${maxDmxBound} in channel '${channel.key}'.`);
@@ -438,7 +438,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         function checkLastCapabilityRangeEnd() {
           if (capNumber === channel.capabilities.length - 1) {
             if (channel.capabilities[capNumber].rawDmxRange.end !== maxDmxBound) {
-              result.errors.push(`The last dmxRange has to end at ${maxDmxBound} (or another channel.definitionFineness must be chosen) in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'`);
+              result.errors.push(`The last dmxRange has to end at ${maxDmxBound} (or another channel.dmxValueResolution must be chosen) in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'`);
               return false;
             }
           }
