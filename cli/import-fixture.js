@@ -56,6 +56,7 @@ readFile(filename)
     }
   })
   .catch(error => {
-    console.error(`Error parsing '${filename}'.\n${error.toString()}`);
+    console.error(`Error parsing '${filename}':`);
+    console.error(error);
     process.exit(1);
   });
