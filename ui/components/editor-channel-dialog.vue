@@ -5,6 +5,7 @@
     :cancellable="true"
     :shown="channel.editMode !== `` && channel.editMode !== `edit-?`"
     :title="title"
+    :class="`channel-dialog-${channel.editMode}`"
     @show="onChannelDialogOpen"
     @hide="onChannelDialogClose">
 
@@ -13,17 +14,24 @@
       action="#"
       @submit.prevent="onSubmit">
 
-      <div v-if="channel.editMode == `add-existing`">
-        <select v-model="channel.uuid" size="10" required>
-          <option
-            v-for="channelUuid in currentModeUnchosenChannels"
-            :key="channelUuid"
-            :value="channelUuid">
-            {{ getChannelName(channelUuid) }}
-          </option>
-        </select>
-        <span class="error-message" hidden />
-        or <a href="#create-channel" @click.prevent="setEditModeCreate">create a new channel</a>
+      <div v-if="channel.editMode === `add-existing`">
+        <app-labeled-input :formstate="formstate" name="existingChannelUuid" label="Select an existing channel">
+          <select
+            v-model="channel.uuid"
+            name="existingChannelUuid"
+            size="10"
+            style="width: 100%;"
+            required>
+            <option
+              v-for="channelUuid in currentModeUnchosenChannels"
+              :key="channelUuid"
+              :value="channelUuid">
+              {{ getChannelName(channelUuid) }}
+            </option>
+          </select>
+        </app-labeled-input>
+
+        <p>or <a href="#create-channel" @click.prevent="setEditModeCreate">create a new channel</a></p>
       </div>
 
       <div v-else>
@@ -144,7 +152,7 @@
       </div>
 
       <div class="button-bar right">
-        <button :disabled="channel.wizard.show" type="submit" class="primary">{{ channel.editMode === "add-existing" ? "Add channel" : channel.editMode === "create" ? "Create channel" : "Save changes" }}</button>
+        <button :disabled="channel.wizard.show" type="submit" class="primary">{{ submitButtonTitle }}</button>
       </div>
 
     </vue-form>
@@ -166,6 +174,10 @@
 #channel-dialog {
   /* prevent smooth scrolling when triggered from capability insertion etc. */
   scroll-behavior: auto;
+
+  .existingChannelUuid {
+    display: block;
+  }
 }
 
 @media (min-width: $phone) {
@@ -301,6 +313,17 @@ export default {
     },
     areCapabilitiesChanged() {
       return this.channel.capabilities.some(isCapabilityChanged);
+    },
+    submitButtonTitle() {
+      if (this.channel.editMode === `add-existing`) {
+        return `Add channel`;
+      }
+
+      if (this.channel.editMode === `create`) {
+        return `Create channel`;
+      }
+
+      return `Save changes`;
     }
   },
   watch: {
@@ -334,11 +357,14 @@ export default {
       if (this.channel.editMode === `add-existing` && this.currentModeUnchosenChannels.length === 0) {
         this.channel.editMode = `create`;
       }
+      else if (this.channel.editMode === `add-existing`) {
+        this.channel.uuid = ``;
+      }
       else if (this.channel.editMode === `edit-all` || this.channel.editMode === `edit-duplicate`) {
         const channel = this.fixture.availableChannels[this.channel.uuid];
-        for (const prop of Object.keys(channel)) {
+        Object.keys(channel).forEach(prop => {
           this.channel[prop] = clone(channel[prop]);
-        }
+        });
       }
 
       // after dialog is opened
