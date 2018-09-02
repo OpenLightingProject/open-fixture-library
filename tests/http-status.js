@@ -19,7 +19,16 @@ const siteChecker = new blc.SiteChecker({
   honorRobotExclusions: false,
   maxSocketsPerHost: 3,
   rateLimit: 25,
-  filterLevel: 3
+  filterLevel: 3,
+  excludedKeywords: [
+    // canonical URLs
+    `https://open-fixture-library.org/*`,
+
+    // otherwise these would somehow be checked for every fixture, and we can
+    // safely assume that these are correct and long-lasting links
+    `https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug`,
+    `https://www.heise.de/embetty`
+  ]
 }, {
   html(tree, robots, response, pageUrl, customData) {
     foundLinks[pageUrl] = [];
