@@ -128,7 +128,7 @@ export default {
       type: Number,
       required: true
     },
-    fineness: {
+    resolution: {
       type: Number,
       required: true
     },
@@ -149,7 +149,7 @@ export default {
       return this.capabilities[this.capIndex];
     },
     dmxMax() {
-      return Math.pow(256, this.fineness) - 1;
+      return Math.pow(256, this.resolution) - 1;
     },
     isChanged() {
       return this.capabilities.some(isCapabilityChanged);

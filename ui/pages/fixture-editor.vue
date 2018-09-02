@@ -397,8 +397,8 @@ export default {
 
       if (`coarseChannelId` in channel) {
         let name = `${this.getChannelName(channel.coarseChannelId)} fine`;
-        if (channel.fineness > Channel.FINENESS_16BIT) {
-          name += `^${channel.fineness - 1}`;
+        if (channel.resolution > Channel.RESOLUTION_16BIT) {
+          name += `^${channel.resolution - 1}`;
         }
 
         return name;

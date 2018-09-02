@@ -804,7 +804,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       function checkCoarserChannelsInMode(fineChannel) {
         const coarseChannel = fineChannel.coarseChannel;
         const coarserChannelKeys = coarseChannel.fineChannelAliases.filter(
-          (alias, index) => index < fineChannel.fineness - 2
+          (alias, index) => index < fineChannel.resolution - 2
         ).concat(coarseChannel.key);
 
         const notInMode = coarserChannelKeys.filter(

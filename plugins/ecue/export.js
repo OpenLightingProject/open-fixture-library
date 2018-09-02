@@ -145,7 +145,7 @@ function handleMode(xmlFixture, mode) {
 
     let fineChannelKey = null;
     if (channel instanceof FineChannel) {
-      if (channel.fineness === Channel.FINENESS_16BIT) {
+      if (channel.resolution === Channel.RESOLUTION_16BIT) {
         // ignore this channel, we handle it together with its coarse channel
         continue;
       }
@@ -157,15 +157,15 @@ function handleMode(xmlFixture, mode) {
 
     const dmxByte0 = dmxCount + 1;
     let dmxByte1 = 0;
-    let fineness = Channel.FINENESS_8BIT;
+    let resolution = Channel.RESOLUTION_8BIT;
 
     if (fineChannelKey === null && channel.fineChannelAliases.length > 0) {
       dmxByte1 = mode.getChannelIndex(channel.fineChannelAliases[0], `defaultOnly`) + 1;
-      fineness = Math.min(Channel.FINENESS_16BIT, channel.getFinenessInMode(mode, `defaultOnly`));
+      resolution = Math.min(Channel.RESOLUTION_16BIT, channel.getResolutionInMode(mode, `defaultOnly`));
     }
 
-    const defaultValue = channel.getDefaultValueWithFineness(fineness);
-    const highlightValue = channel.getHighlightValueWithFineness(fineness);
+    const defaultValue = channel.getDefaultValueWithResolution(resolution);
+    const highlightValue = channel.getHighlightValueWithResolution(resolution);
 
     const xmlChannel = xmlFixture.element(getChannelType(channel), {
       'Name': switchingChannelName || channel.name,
@@ -182,7 +182,7 @@ function handleMode(xmlFixture, mode) {
     });
 
     if (fineChannelKey === null) {
-      addCapabilities(xmlChannel, channel, fineness);
+      addCapabilities(xmlChannel, channel, resolution);
     }
 
     viewPosCount++;
@@ -239,11 +239,11 @@ function getChannelType(channel) {
 /**
  * @param {!object} xmlChannel The xmlbuilder <Channel*> object.
  * @param {!Channel} channel The OFL channel object.
- * @param {!number} fineness The fineness of the channel in the current mode.
+ * @param {!number} resolution The resolution of the channel in the current mode.
  */
-function addCapabilities(xmlChannel, channel, fineness) {
+function addCapabilities(xmlChannel, channel, resolution) {
   for (const cap of channel.capabilities) {
-    const dmxRange = cap.getDmxRangeWithFineness(fineness);
+    const dmxRange = cap.getDmxRangeWithResolution(resolution);
     xmlChannel.element(`Range`, {
       'Name': cap.name,
       'Start': dmxRange.start,

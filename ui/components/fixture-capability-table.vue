@@ -131,7 +131,7 @@ export default {
       type: Mode,
       required: true
     },
-    finenessInMode: {
+    resolutionInMode: {
       type: Number,
       required: true
     }
@@ -140,7 +140,7 @@ export default {
     capabilities() {
       return this.channel.capabilities.map(
         cap => {
-          const dmxRange = cap.getDmxRangeWithFineness(this.finenessInMode);
+          const dmxRange = cap.getDmxRangeWithResolution(this.resolutionInMode);
           const switchChannels = [];
 
           for (const switchingChannelKey of Object.keys(cap.switchChannels)) {

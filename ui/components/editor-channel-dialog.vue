@@ -48,18 +48,18 @@
             @blur="onChannelNameChanged" />
         </app-labeled-input>
 
-        <app-labeled-input :formstate="formstate" name="fineness" label="Channel resolution">
-          <select v-model="channel.fineness" name="fineness">
-            <option :value="Channel.FINENESS_8BIT">8 bit (No fine channels)</option>
-            <option :value="Channel.FINENESS_16BIT">16 bit (1 fine channel)</option>
-            <option :value="Channel.FINENESS_24BIT">24 bit (2 fine channels)</option>
+        <app-labeled-input :formstate="formstate" name="resolution" label="Channel resolution">
+          <select v-model="channel.resolution" name="resolution">
+            <option :value="Channel.RESOLUTION_8BIT">8 bit (No fine channels)</option>
+            <option :value="Channel.RESOLUTION_16BIT">16 bit (1 fine channel)</option>
+            <option :value="Channel.RESOLUTION_24BIT">24 bit (2 fine channels)</option>
           </select>
         </app-labeled-input>
 
         <app-labeled-input :formstate="formstate" name="defaultValue" label="Default DMX value">
           <input
             v-model.number="channel.defaultValue"
-            :max="Math.pow(256, channel.fineness) - 1"
+            :max="Math.pow(256, channel.resolution) - 1"
             name="defaultValue"
             type="number"
             min="0"
@@ -84,18 +84,18 @@
         </template></h3>
 
         <app-labeled-input
-          v-if="channel.fineness > 1"
+          v-if="channel.resolution > 1"
           :formstate="formstate"
-          name="capFineness"
+          name="capResolution"
           label="Capability resolution">
           <select
-            v-model="channel.capFineness"
-            name="capFineness"
+            v-model="channel.capResolution"
+            name="capResolution"
             required
-            @change="onCapFinenessChanged">
-            <option :value="Channel.FINENESS_8BIT">8 bit (range 0…255)</option>
-            <option v-if="channel.fineness >= Channel.FINENESS_16BIT" :value="Channel.FINENESS_16BIT">16 bit (range 0…65535)</option>
-            <option v-if="channel.fineness >= Channel.FINENESS_24BIT" :value="Channel.FINENESS_24BIT">24 bit (range 0…16777215)</option>
+            @change="onCapResolutionChanged">
+            <option :value="Channel.RESOLUTION_8BIT">8 bit (range 0…255)</option>
+            <option v-if="channel.resolution >= Channel.RESOLUTION_16BIT" :value="Channel.RESOLUTION_16BIT">16 bit (range 0…65535)</option>
+            <option v-if="channel.resolution >= Channel.RESOLUTION_24BIT" :value="Channel.RESOLUTION_24BIT">24 bit (range 0…16777215)</option>
           </select>
         </app-labeled-input>
 
@@ -103,7 +103,7 @@
           v-if="channel.wizard.show"
           :wizard="channel.wizard"
           :capabilities="channel.capabilities"
-          :fineness="Math.min(channel.fineness, channel.capFineness)"
+          :resolution="Math.min(channel.resolution, channel.capResolution)"
           :formstate="formstate"
           @close="onWizardClose" />
 
@@ -115,7 +115,7 @@
             :capabilities="channel.capabilities"
             :formstate="formstate"
             :cap-index="index"
-            :fineness="Math.min(channel.fineness, channel.capFineness)"
+            :resolution="Math.min(channel.resolution, channel.capResolution)"
             @insert-capability-before="insertEmptyCapability(index)"
             @insert-capability-after="insertEmptyCapability(index + 1)" />
         </div>
@@ -132,7 +132,7 @@
         <app-labeled-input :formstate="formstate" name="highlightValue" label="Highlight DMX value">
           <input
             v-model.number="channel.highlightValue"
-            :max="Math.pow(256, channel.fineness) - 1"
+            :max="Math.pow(256, channel.resolution) - 1"
             name="highlightValue"
             type="number"
             min="0"
@@ -279,11 +279,11 @@ export default {
             ch => `coarseChannelId` in ch && ch.coarseChannelId === channel.coarseChannelId
           );
 
-          const maxFoundFineness = Math.max(Channel.FINENESS_8BIT, ...otherFineChannels.map(
-            ch => ch.fineness
+          const maxFoundResolution = Math.max(Channel.RESOLUTION_8BIT, ...otherFineChannels.map(
+            ch => ch.resolution
           ));
 
-          if (maxFoundFineness !== channel.fineness - 1) {
+          if (maxFoundResolution !== channel.resolution - 1) {
             // the finest channel currently used is not its next coarser channel
             return false;
           }
@@ -451,7 +451,7 @@ export default {
      * Call onEndUpdated() on the last capability component with non-empty
      * DMX end value to add / remove an empty capability at the end.
      */
-    onCapFinenessChanged() {
+    onCapResolutionChanged() {
       this.$nextTick(() => {
         let index = this.channel.capabilities.length - 1;
         while (index >= 0) {
@@ -510,23 +510,23 @@ export default {
       this.$set(this.fixture.availableChannels, this.channel.uuid, getSanitizedChannel(this.channel));
       this.currentMode.channels.push(this.channel.uuid);
 
-      this.addFineChannels(this.channel, Channel.FINENESS_16BIT, true);
+      this.addFineChannels(this.channel, Channel.RESOLUTION_16BIT, true);
     },
 
     saveEditedChannel() {
-      const previousFineness = this.fixture.availableChannels[this.channel.uuid].fineness;
+      const previousResolution = this.fixture.availableChannels[this.channel.uuid].resolution;
       this.fixture.availableChannels[this.channel.uuid] = getSanitizedChannel(this.channel);
 
-      if (previousFineness > this.channel.fineness) {
+      if (previousResolution > this.channel.resolution) {
         for (const chId of Object.keys(this.fixture.availableChannels)) {
           const channel = this.fixture.availableChannels[chId];
-          if (channel.coarseChannelId === this.channel.uuid && channel.fineness > this.channel.fineness) {
+          if (channel.coarseChannelId === this.channel.uuid && channel.resolution > this.channel.resolution) {
             this.$emit(`remove-channel`, chId);
           }
         }
       }
       else {
-        this.addFineChannels(this.channel, previousFineness + 1, false);
+        this.addFineChannels(this.channel, previousResolution + 1, false);
       }
     },
 
@@ -538,7 +538,7 @@ export default {
       newChannel.uuid = newChannelKey;
       this.$set(this.fixture.availableChannels, newChannelKey, newChannel);
 
-      const fineChannelUuids = this.addFineChannels(newChannel, Channel.FINENESS_16BIT, false);
+      const fineChannelUuids = this.addFineChannels(newChannel, Channel.RESOLUTION_16BIT, false);
 
       this.currentMode.channels = this.currentMode.channels.map(key => {
         if (key === oldChannelKey) {
@@ -548,7 +548,7 @@ export default {
         // map each old fine channel to the new fine channel
         const oldFineChannel = this.fixture.availableChannels[key];
         if (oldFineChannel.coarseChannelId === oldChannelKey) {
-          return fineChannelUuids[oldFineChannel.fineness];
+          return fineChannelUuids[oldFineChannel.resolution];
         }
 
         // this channel is not affected by the duplicate at all
@@ -562,14 +562,14 @@ export default {
 
     /**
      * @param {!object} coarseChannel The channel object of the coarse channel.
-     * @param {!number} offset At which fineness should be started.
+     * @param {!number} offset At which resolution should be started.
      * @param {boolean} [addToMode] If true, the fine channel is pushed to the current mode's channels.
-     * @returns {!Array.<string>} Array of added fine channel UUIDs (at the index of their fineness).
+     * @returns {!Array.<string>} Array of added fine channel UUIDs (at the index of their resolution).
      */
     addFineChannels(coarseChannel, offset, addToMode) {
       const addedFineChannelUuids = [];
 
-      for (let i = offset; i <= coarseChannel.fineness; i++) {
+      for (let i = offset; i <= coarseChannel.resolution; i++) {
         const fineChannel = getEmptyFineChannel(coarseChannel.uuid, i);
         this.$set(this.fixture.availableChannels, fineChannel.uuid, getSanitizedChannel(fineChannel));
         addedFineChannelUuids[i] = fineChannel.uuid;
