@@ -5,6 +5,7 @@
     :cancellable="true"
     :shown="channel.editMode !== `` && channel.editMode !== `edit-?`"
     :title="title"
+    :class="`channel-dialog-${channel.editMode}`"
     @show="onChannelDialogOpen"
     @hide="onChannelDialogClose">
 
@@ -13,17 +14,24 @@
       action="#"
       @submit.prevent="onSubmit">
 
-      <div v-if="channel.editMode == `add-existing`">
-        <select v-model="channel.uuid" size="10" required>
-          <option
-            v-for="channelUuid in currentModeUnchosenChannels"
-            :key="channelUuid"
-            :value="channelUuid">
-            {{ getChannelName(channelUuid) }}
-          </option>
-        </select>
-        <span class="error-message" hidden />
-        or <a href="#create-channel" @click.prevent="setEditModeCreate">create a new channel</a>
+      <div v-if="channel.editMode === `add-existing`">
+        <app-labeled-input :formstate="formstate" name="existingChannelUuid" label="Select an existing channel">
+          <select
+            v-model="channel.uuid"
+            name="existingChannelUuid"
+            size="10"
+            style="width: 100%;"
+            required>
+            <option
+              v-for="channelUuid in currentModeUnchosenChannels"
+              :key="channelUuid"
+              :value="channelUuid">
+              {{ getChannelName(channelUuid) }}
+            </option>
+          </select>
+        </app-labeled-input>
+
+        <p>or <a href="#create-channel" @click.prevent="setEditModeCreate">create a new channel</a></p>
       </div>
 
       <div v-else>
@@ -80,10 +88,14 @@
           :formstate="formstate"
           name="capFineness"
           label="Capability resolution">
-          <select v-model="channel.capFineness" name="capFineness" required>
-            <option :value="0">8 bit (range 0 - 255)</option>
-            <option v-if="channel.fineness >= 1" :value="1">16 bit (range 0 - 65535)</option>
-            <option v-if="channel.fineness >= 2" :value="2">24 bit (range 0 - 16777215)</option>
+          <select
+            v-model="channel.capFineness"
+            name="capFineness"
+            required
+            @change="onCapFinenessChanged">
+            <option :value="0">8 bit (range 0…255)</option>
+            <option v-if="channel.fineness >= 1" :value="1">16 bit (range 0…65535)</option>
+            <option v-if="channel.fineness >= 2" :value="2">24 bit (range 0…16777215)</option>
           </select>
         </app-labeled-input>
 
@@ -144,7 +156,7 @@
       </div>
 
       <div class="button-bar right">
-        <button :disabled="channel.wizard.show" type="submit" class="primary">{{ channel.editMode === "add-existing" ? "Add channel" : channel.editMode === "create" ? "Create channel" : "Save changes" }}</button>
+        <button :disabled="channel.wizard.show" type="submit" class="primary">{{ submitButtonTitle }}</button>
       </div>
 
     </vue-form>
@@ -166,6 +178,10 @@
 #channel-dialog {
   /* prevent smooth scrolling when triggered from capability insertion etc. */
   scroll-behavior: auto;
+
+  .existingChannelUuid {
+    display: block;
+  }
 }
 
 @media (min-width: $phone) {
@@ -301,6 +317,17 @@ export default {
     },
     areCapabilitiesChanged() {
       return this.channel.capabilities.some(isCapabilityChanged);
+    },
+    submitButtonTitle() {
+      if (this.channel.editMode === `add-existing`) {
+        return `Add channel`;
+      }
+
+      if (this.channel.editMode === `create`) {
+        return `Create channel`;
+      }
+
+      return `Save changes`;
     }
   },
   watch: {
@@ -334,11 +361,14 @@ export default {
       if (this.channel.editMode === `add-existing` && this.currentModeUnchosenChannels.length === 0) {
         this.channel.editMode = `create`;
       }
+      else if (this.channel.editMode === `add-existing`) {
+        this.channel.uuid = ``;
+      }
       else if (this.channel.editMode === `edit-all` || this.channel.editMode === `edit-duplicate`) {
         const channel = this.fixture.availableChannels[this.channel.uuid];
-        for (const prop of Object.keys(channel)) {
+        Object.keys(channel).forEach(prop => {
           this.channel[prop] = clone(channel[prop]);
-        }
+        });
       }
 
       // after dialog is opened
@@ -413,6 +443,24 @@ export default {
         cap.type = matchingType;
         changeCapabilityType();
       }
+    },
+
+    /**
+     * Call onEndUpdated() on the last capability component with non-empty
+     * DMX end value to add / remove an empty capability at the end.
+     */
+    onCapFinenessChanged() {
+      this.$nextTick(() => {
+        let index = this.channel.capabilities.length - 1;
+        while (index >= 0) {
+          const cap = this.channel.capabilities[index];
+          if (cap.dmxRange !== null && cap.dmxRange[1] !== null) {
+            this.$refs.capabilities[index].onEndUpdated();
+            break;
+          }
+          index--;
+        }
+      });
     },
 
     onSubmit() {
