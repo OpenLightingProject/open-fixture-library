@@ -128,7 +128,7 @@ function addRdmInfo(fixture, manufacturer, gdtfFixture) {
  * @type object
  * @property {!string} key The channel key.
  * @property {!object} channel The OFL channel object.
- * @property {!number} maxFineness The highest used fineness of this channel.
+ * @property {!number} maxResolution The highest used resolution of this channel.
  */
 
 /**
@@ -157,23 +157,28 @@ function addChannels(fixture, gdtfFixture) {
     channelWrapper.channel.name += ` $pixelKey`;
   });
 
-  // remove unnecessary name property and fill/remove fineChannelAliases
+  // remove unnecessary name and dmxValueResolution properties
+  // and fill/remove fineChannelAliases
   availableChannels.concat(templateChannels).forEach(channelWrapper => {
-    const chKey = channelWrapper.key;
+    const { key: chKey, channel, maxResolution } = channelWrapper;
 
-    if (chKey === channelWrapper.channel.name) {
-      delete channelWrapper.channel.name;
+    if (chKey === channel.name) {
+      delete channel.name;
     }
 
-    if (channelWrapper.maxFineness === 0) {
-      delete channelWrapper.channel.fineChannelAliases;
+    if (maxResolution === 1) {
+      delete channel.fineChannelAliases;
     }
     else {
-      channelWrapper.channel.fineChannelAliases.push(`${chKey} fine`);
+      channel.fineChannelAliases.push(`${chKey} fine`);
 
-      for (let i = 2; i <= channelWrapper.maxFineness; i++) {
-        channelWrapper.channel.fineChannelAliases.push(`${chKey} fine^${i}`);
+      for (let i = 2; i < maxResolution; i++) {
+        channel.fineChannelAliases.push(`${chKey} fine^${i}`);
       }
+    }
+
+    if (channel.dmxValueResolution === `${maxResolution * 8}bit`) {
+      delete channel.dmxValueResolution;
     }
   });
 
@@ -204,21 +209,24 @@ function addChannel(channels, gdtfChannel, gdtfFixture) {
 
   const channel = {
     name: name,
-    fineChannelAliases: []
+    fineChannelAliases: [],
+    dmxValueResolution: `8bit`
   };
 
   if (`Default` in gdtfChannel.$) {
-    channel.defaultValue = gdtfDmxValueToNumber(gdtfChannel.$.Default)[0];
+    channel.defaultValue = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannel.$.Default);
   }
 
   if (`Highlight` in gdtfChannel.$ && gdtfChannel.$.Highlight !== `None`) {
-    channel.highlightValue = gdtfDmxValueToNumber(gdtfChannel.$.Highlight)[0];
+    channel.highlightValue = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannel.$.Highlight);
   }
 
   // TODO: add real capabilities
   channel.capability = {
     type: `Generic`
   };
+
+  replaceGdtfDmxValuesWithNumbers();
 
   // check if we already added the same channel
   const sameChannel = channels.find(
@@ -227,7 +235,7 @@ function addChannel(channels, gdtfChannel, gdtfFixture) {
   if (sameChannel) {
     gdtfChannel._oflChannelKey = sameChannel.key;
 
-    sameChannel.maxFineness = Math.max(sameChannel.maxFineness, getChannelFineness());
+    sameChannel.maxResolution = Math.max(sameChannel.maxResolution, getChannelResolution());
     return;
   }
 
@@ -237,7 +245,7 @@ function addChannel(channels, gdtfChannel, gdtfFixture) {
   channels.push({
     key: channelKey,
     channel: channel,
-    maxFineness: getChannelFineness()
+    maxResolution: getChannelResolution()
   });
 
 
@@ -258,22 +266,22 @@ function addChannel(channels, gdtfChannel, gdtfFixture) {
   }
 
   /**
-   * @returns {!number} The fineness of this channel.
+   * @returns {!number} The resolution of this channel.
    */
-  function getChannelFineness() {
+  function getChannelResolution() {
     if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Uber`)) {
-      return 3;
+      return 4;
     }
 
     if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Ultra`)) {
-      return 2;
+      return 3;
     }
 
     if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Fine`)) {
-      return 1;
+      return 2;
     }
 
-    return 0;
+    return 1;
   }
 
   /**
@@ -291,6 +299,75 @@ function addChannel(channels, gdtfChannel, gdtfFixture) {
     }
 
     return key;
+  }
+
+  /**
+   * Look through all GDTF DMX values in this channel (consisting of DMX value
+   * and the resolution in which it is specified), make their resolution equal and
+   * replace them with a number. Then set the channel's dmxValueResolution to
+   * this resolution.
+   */
+  function replaceGdtfDmxValuesWithNumbers() {
+    const maxDmxValueResolution = getMaxDmxValueResolution();
+
+    if (maxDmxValueResolution === 0) {
+      delete channel.dmxValueResolution;
+      return;
+    }
+
+    if (channel.defaultValue) {
+      channel.defaultValue = scaleDmxValue(channel.defaultValue, maxDmxValueResolution);
+    }
+
+    if (channel.highlightValue) {
+      channel.highlightValue = scaleDmxValue(channel.highlightValue, maxDmxValueResolution);
+    }
+
+    if (channel.capabilities) {
+      channel.capabilities.forEach(capability => {
+        capability.dmxRange[0] = scaleDmxValue(capability.dmxRange[0], maxDmxValueResolution);
+        capability.dmxRange[1] = scaleDmxValue(capability.dmxRange[1], maxDmxValueResolution);
+      });
+    }
+
+    channel.dmxValueResolution = `${maxDmxValueResolution * 8}bit`;
+
+
+    /**
+     * @returns {!number} The highest DMX value resolution used in this channel, or 0 if no DMX value is used at all.
+     */
+    function getMaxDmxValueResolution() {
+      const dmxValues = [];
+
+      if (channel.defaultValue) {
+        dmxValues.push(channel.defaultValue);
+      }
+
+      if (channel.highlightValue) {
+        dmxValues.push(channel.highlightValue);
+      }
+
+      if (channel.capabilities) {
+        channel.capabilities.forEach(capability => {
+          dmxValues.push(capability.dmxRange[0]);
+          dmxValues.push(capability.dmxRange[1]);
+        });
+      }
+
+      return Math.max(0, ...dmxValues.map(
+        ([value, resolution]) => resolution
+      ));
+    }
+
+    /**
+     * @param {!array.<!number>} dmxValue GDTF DMX value array ([value, resolution]).
+     * @param {!number} targetResolution The resolution to scale the DMX value to.
+     * @returns {!number} The DMX value scaled to maxResolution.
+     */
+    function scaleDmxValue(dmxValue, targetResolution) {
+      const [value, resolution] = dmxValue;
+      return Math.pow(256, targetResolution - resolution) * value;
+    }
   }
 }
 
@@ -472,16 +549,16 @@ function getIsoDateFromGdtfDate(dateStr) {
 }
 
 /**
- * @param {!string} dmxValue GDTF DMX value in the form "128/2", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-DMXValue
- * @returns {!array.<!number>} Array containing DMX value and DMX fineness.
+ * @param {!string} dmxValueStr GDTF DMX value in the form "128/2", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-DMXValue
+ * @returns {!array.<!number>} Array containing DMX value and DMX resolution.
  */
-function gdtfDmxValueToNumber(dmxValue) {
+function getDmxValueWithResolutionFromGdtfDmxValue(dmxValueStr) {
   try {
-    const [, value, fineness] = dmxValue.match(/^(\d+)\/(\d)$/);
-    return [parseInt(value), parseInt(fineness)];
+    const [, value, resolution] = dmxValueStr.match(/^(\d+)\/(\d)$/);
+    return [parseInt(value), parseInt(resolution)];
   }
   catch (error) {
-    return [parseInt(dmxValue), 1];
+    return [parseInt(dmxValueStr), 1];
   }
 }
 
