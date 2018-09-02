@@ -88,10 +88,14 @@
           :formstate="formstate"
           name="capFineness"
           label="Capability resolution">
-          <select v-model="channel.capFineness" name="capFineness" required>
-            <option :value="0">8 bit (range 0 - 255)</option>
-            <option v-if="channel.fineness >= 1" :value="1">16 bit (range 0 - 65535)</option>
-            <option v-if="channel.fineness >= 2" :value="2">24 bit (range 0 - 16777215)</option>
+          <select
+            v-model="channel.capFineness"
+            name="capFineness"
+            required
+            @change="onCapFinenessChanged">
+            <option :value="0">8 bit (range 0…255)</option>
+            <option v-if="channel.fineness >= 1" :value="1">16 bit (range 0…65535)</option>
+            <option v-if="channel.fineness >= 2" :value="2">24 bit (range 0…16777215)</option>
           </select>
         </app-labeled-input>
 
@@ -439,6 +443,24 @@ export default {
         cap.type = matchingType;
         changeCapabilityType();
       }
+    },
+
+    /**
+     * Call onEndUpdated() on the last capability component with non-empty
+     * DMX end value to add / remove an empty capability at the end.
+     */
+    onCapFinenessChanged() {
+      this.$nextTick(() => {
+        let index = this.channel.capabilities.length - 1;
+        while (index >= 0) {
+          const cap = this.channel.capabilities[index];
+          if (cap.dmxRange !== null && cap.dmxRange[1] !== null) {
+            this.$refs.capabilities[index].onEndUpdated();
+            break;
+          }
+          index--;
+        }
+      });
     },
 
     onSubmit() {
