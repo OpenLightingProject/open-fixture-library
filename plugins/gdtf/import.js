@@ -3,6 +3,7 @@ const JSZip = require(`jszip`);
 const promisify = require(`util`).promisify;
 
 const manufacturers = require(`../../fixtures/manufacturers.json`);
+const { gdtfAttributes, gdtfUnits } = require(`./gdtf-attributes.js`);
 
 module.exports.name = `GDTF 0.87`;
 module.exports.version = `0.1.0`;
@@ -283,9 +284,12 @@ module.exports.import = function importGdtf(buffer, filename) {
      * @returns {!array.<!object>} Array of OFL capability objects (but with GDTF DMX values).
      */
     function getCapabilities() {
+      // save all <ChannelSet> XML nodes in a flat list
       const gdtfCapabilities = [];
 
-      // save all <ChannelSet> XML nodes in a flat list
+      let minPhysicalValue = Number.POSITIVE_INFINITY;
+      let maxPhysicalValue = Number.NEGATIVE_INFINITY;
+
       gdtfChannel.LogicalChannel.forEach(gdtfLogicalChannel => {
         if (!gdtfLogicalChannel.ChannelFunction) {
           throw new Error(`LogicalChannel does not contain any ChannelFunction children in DMXChannel ${JSON.stringify(gdtfChannel, null, 2)}`);
@@ -302,6 +306,7 @@ module.exports.import = function importGdtf(buffer, filename) {
             ];
           }
 
+          // save GDTF attribute for later
           gdtfChannelFunction._attribute = followXmlNodeReference(
             gdtfFixture.AttributeDefinitions[0].Attributes[0],
             gdtfChannelFunction.$.Attribute
@@ -315,31 +320,93 @@ module.exports.import = function importGdtf(buffer, filename) {
             // do some preprocessing
             gdtfChannelSet._dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelSet.$.DMXFrom || `0/1`);
 
+            let physicalFrom = parseFloat(gdtfChannelSet.$.PhysicalFrom);
+            if (isNaN(physicalFrom)) {
+              physicalFrom = 0;
+            }
+            let physicalTo = parseFloat(gdtfChannelSet.$.PhysicalTo);
+            if (isNaN(physicalTo)) {
+              physicalTo = 1;
+            }
+
+            gdtfChannelSet._physicalFrom = physicalFrom;
+            gdtfChannelSet._physicalTo = physicalTo;
+
+            minPhysicalValue = Math.min(minPhysicalValue, physicalFrom, physicalTo);
+            maxPhysicalValue = Math.max(maxPhysicalValue, physicalFrom, physicalTo);
+
             gdtfCapabilities.push(gdtfChannelSet);
           });
         });
       });
 
       return gdtfCapabilities.map((gdtfCapability, index) => {
-        const dmxFrom = gdtfCapability._dmxFrom;
-        let dmxTo;
+        const capability = {
+          dmxRange: [gdtfCapability._dmxFrom, getDmxRangeEnd(index)]
+        };
+
+        const gdtfAttribute = gdtfCapability._channelFunction._attribute || {
+          $: {
+            Name: `NoFeature`
+          }
+        };
+
+        const capabilityTypeData = gdtfAttributes[gdtfAttribute.$.Name];
+
+        if (capabilityTypeData) {
+          capability.type = capabilityTypeData.type;
+
+          let physicalEntity = gdtfAttribute.$.PhysicalUnit;
+          if (!physicalEntity) {
+            if (minPhysicalValue === 0 && maxPhysicalValue === 1) {
+              physicalEntity = `Percent`;
+            }
+            else {
+              physicalEntity = capabilityTypeData.defaultPhysicalEntity;
+            }
+          }
+
+          const physicalFrom = gdtfCapability._physicalFrom;
+          const physicalTo = gdtfCapability._physicalTo;
+          const oflProperty = capabilityTypeData.oflProperty;
+
+          const physicalUnit = gdtfUnits[physicalEntity];
+
+          if (physicalFrom === physicalTo) {
+            capability[oflProperty] = physicalUnit(physicalFrom, null);
+          }
+          else {
+            capability[`${oflProperty}Start`] = physicalUnit(physicalFrom, physicalTo);
+            capability[`${oflProperty}End`] = physicalUnit(physicalTo, physicalFrom);
+          }
+        }
+        else {
+          capability.type = `Generic`;
+          capability.helpWanted = `Please try to improve the type of this capability.`;
+        }
+
+        capability.comment = gdtfCapability.$.Name;
+
+        return capability;
+      });
+
+
+      /**
+       * @param {!number} index The index of the capability.
+       * @returns {!array.<!number>} The GDTF DMX value for this capability's range end.
+       */
+      function getDmxRangeEnd(index) {
+        const dmxFrom = gdtfCapabilities[index]._dmxFrom;
 
         if (index === gdtfCapabilities.length - 1) {
           // last capability
           const resolution = dmxFrom[1];
-          dmxTo = [Math.pow(256, resolution) - 1, resolution];
-        }
-        else {
-          const [nextDmxFromValue, resolution] = gdtfCapabilities[index + 1]._dmxFrom;
-          dmxTo = [nextDmxFromValue - 1, resolution];
+          return [Math.pow(256, resolution) - 1, resolution];
         }
 
-        return {
-          dmxRange: [dmxFrom, dmxTo],
-          type: getCapabilityType(gdtfCapability) || `Generic`,
-          comment: gdtfCapability.$.Name
-        };
-      });
+        const [nextDmxFromValue, resolution] = gdtfCapabilities[index + 1]._dmxFrom;
+        return [nextDmxFromValue - 1, resolution];
+      }
     }
 
     /**
@@ -446,18 +513,6 @@ module.exports.import = function importGdtf(buffer, filename) {
         return Math.pow(256, targetResolution - resolution) * value;
       }
     }
-  }
-
-  /**
-   * @param {!object} gdtfCapability The <ChannelSet> XML object, enhanced by @see getCapabilities.
-   * @returns {?string} The OFL capability type, or null if it could not be determined.
-   */
-  function getCapabilityType(gdtfCapability) {
-    const gdtfAttribute = gdtfCapability._channelFunction._attribute;
-    const gdtfAttributeName = gdtfAttribute ? gdtfAttribute.$.Name : `NoFeature`;
-
-    // TODO: convert from GDTF attribute name to OFL capability type
-    return gdtfAttributeName;
   }
 
   /**
