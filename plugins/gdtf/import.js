@@ -230,10 +230,15 @@ module.exports.import = function importGdtf(buffer, filename) {
       channel.highlightValue = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannel.$.Highlight);
     }
 
-    // TODO: add real capabilities
-    channel.capability = {
-      type: `Generic`
-    };
+    const capabilities = getCapabilities();
+
+    if (capabilities.length === 1) {
+      channel.capability = capabilities[0];
+      delete channel.capability.dmxRange;
+    }
+    else {
+      channel.capabilities = capabilities;
+    }
 
     replaceGdtfDmxValuesWithNumbers();
 
@@ -272,6 +277,60 @@ module.exports.import = function importGdtf(buffer, filename) {
       catch (error) {
         return channelAttribute;
       }
+    }
+
+    /**
+     * @returns {!array.<!object>} Array of OFL capability objects (but with GDTF DMX values).
+     */
+    function getCapabilities() {
+      const gdtfCapabilities = [];
+
+      // save all <ChannelSet> XML nodes in a flat list
+      gdtfChannel.LogicalChannel.forEach(gdtfLogicalChannel => {
+        gdtfLogicalChannel.ChannelFunction.forEach(gdtfChannelFunction => {
+          if (!gdtfChannelFunction.ChannelSet) {
+            // add an empty <ChannelSet />
+            gdtfChannelFunction.ChannelSet = [
+              {
+                $: {
+                }
+              }
+            ];
+          }
+
+          gdtfChannelFunction.ChannelSet.forEach(gdtfChannelSet => {
+            // save parent nodes for future use
+            gdtfChannelSet._logicalChannel = gdtfLogicalChannel;
+            gdtfChannelSet._channelFunction = gdtfChannelFunction;
+
+            // do some preprocessing
+            gdtfChannelSet._dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelSet.$.DMXFrom || `0/1`);
+
+            gdtfCapabilities.push(gdtfChannelSet);
+          });
+        });
+      });
+
+      return gdtfCapabilities.map((gdtfCapability, index) => {
+        const dmxFrom = gdtfCapability._dmxFrom;
+        let dmxTo;
+
+        if (index === gdtfCapabilities.length - 1) {
+          // last capability
+          const resolution = dmxFrom[1];
+          dmxTo = [Math.pow(256, resolution) - 1, resolution];
+        }
+        else {
+          const [nextDmxFromValue, resolution] = gdtfCapabilities[index + 1]._dmxFrom;
+          dmxTo = [nextDmxFromValue - 1, resolution];
+        }
+
+        return {
+          dmxRange: [dmxFrom, dmxTo],
+          type: `Generic`,
+          comment: gdtfCapability.$.Name
+        };
+      });
     }
 
     /**
