@@ -349,14 +349,14 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       result.errors.push(`dmxValueResolution must be less or equal to ${channel.maxResolution * 8}bit in channel '${channel.key}'.`);
     }
 
-    const maxDmxBound = Math.pow(256, channel.dmxValueResolution) - 1;
+    const maxDmxValue = Math.pow(256, channel.dmxValueResolution) - 1;
 
-    if (channel.hasDefaultValue && channel.defaultValue > maxDmxBound) {
-      result.errors.push(`defaultValue must be less or equal to ${maxDmxBound} in channel '${channel.key}'.`);
+    if (channel.hasDefaultValue && channel.getDefaultValueWithResolution(channel.dmxValueResolution) > maxDmxValue) {
+      result.errors.push(`defaultValue must be less or equal to ${maxDmxValue} in channel '${channel.key}'.`);
     }
 
-    if (channel.hasHighlightValue && channel.highlightValue > maxDmxBound) {
-      result.errors.push(`highlightValue must be less or equal to ${maxDmxBound} in channel '${channel.key}'.`);
+    if (channel.hasHighlightValue && channel.getHighlightValueWithResolution(channel.dmxValueResolution) > maxDmxValue) {
+      result.errors.push(`highlightValue must be less or equal to ${maxDmxValue} in channel '${channel.key}'.`);
     }
 
     checkCapabilities(channel);
@@ -440,8 +440,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
          */
         function checkLastCapabilityRangeEnd() {
           if (capNumber === channel.capabilities.length - 1) {
-            if (channel.capabilities[capNumber].rawDmxRange.end !== maxDmxBound) {
-              result.errors.push(`The last dmxRange has to end at ${maxDmxBound} (or another channel.dmxValueResolution must be chosen) in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'`);
+            if (channel.capabilities[capNumber].rawDmxRange.end !== maxDmxValue) {
+              result.errors.push(`The last dmxRange has to end at ${maxDmxValue} (or another channel.dmxValueResolution must be chosen) in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'`);
               return false;
             }
           }
