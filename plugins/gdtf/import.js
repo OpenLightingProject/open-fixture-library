@@ -15,14 +15,11 @@ module.exports.version = `0.1.0`;
 module.exports.import = function importGdtf(buffer, filename) {
   const parser = new xml2js.Parser();
 
-  const out = {
-    manufacturers: {},
-    fixtures: {},
-    warnings: {}
-  };
   const fixture = {
     $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`
   };
+
+  const warnings = [];
 
   let xmlPromise = Promise.resolve(buffer.toString());
 
@@ -48,7 +45,6 @@ module.exports.import = function importGdtf(buffer, filename) {
 
       const manKey = slugify(gdtfFixture.$.Manufacturer);
       const fixKey = `${manKey}/${slugify(fixture.name)}`;
-      out.warnings[fixKey] = [];
 
       let manufacturer;
       if (manKey in manufacturers) {
@@ -58,12 +54,11 @@ module.exports.import = function importGdtf(buffer, filename) {
         manufacturer = {
           name: gdtfFixture.$.Manufacturer
         };
-        out.manufacturers[manKey] = manufacturer;
-        out.warnings[fixKey].push(`Please add manufacturer URL.`);
+        warnings.push(`Please add manufacturer URL.`);
       }
 
       fixture.categories = [`Other`]; // TODO: can we find out categories?
-      out.warnings[fixKey].push(`Please add fixture categories.`);
+      warnings.push(`Please add fixture categories.`);
 
       const timestamp = new Date().toISOString().replace(/T.*/, ``);
       const revisions = gdtfFixture.Revisions[0].Revision;
@@ -78,11 +73,11 @@ module.exports.import = function importGdtf(buffer, filename) {
           comment: `GDTF fixture type ID: ${gdtfFixture.$.FixtureTypeID}`
         }
       };
-      out.warnings[fixKey].push(`Please add yourself as a fixture author.`);
+      warnings.push(`Please add yourself as a fixture author.`);
 
       fixture.comment = gdtfFixture.$.Description;
 
-      out.warnings[fixKey].push(`Please add relevant links to the fixture.`);
+      warnings.push(`Please add relevant links to the fixture.`);
 
       addRdmInfo(fixture, manufacturer, gdtfFixture);
 
@@ -93,15 +88,23 @@ module.exports.import = function importGdtf(buffer, filename) {
       addModes(fixture, gdtfFixture);
 
       if (`templateChannels` in fixture) {
-        out.warnings[fixKey].push(`Please fix the visual representation of the matrix.`);
+        warnings.push(`Please fix the visual representation of the matrix.`);
       }
       else {
         delete fixture.matrix;
       }
 
-      out.fixtures[fixKey] = fixture;
-
-      return out;
+      return {
+        manufacturers: {
+          [manKey]: manufacturer
+        },
+        fixtures: {
+          [fixKey]: fixture
+        },
+        warnings: {
+          [fixKey]: warnings
+        }
+      };
     });
 
 
@@ -208,6 +211,10 @@ module.exports.import = function importGdtf(buffer, filename) {
    */
   function addChannel(channels, gdtfChannel, gdtfFixture) {
     const name = getChannelName();
+
+    if (gdtfChannel.LogicalChannel.length > 1) {
+      warnings.push(`DMXChannel '${name}' has more than one LogicalChannel. This is not supported yet and could lead to undesired results.`);
+    }
 
     const channel = {
       name: name,
