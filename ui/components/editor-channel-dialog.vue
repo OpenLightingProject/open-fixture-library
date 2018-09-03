@@ -121,7 +121,7 @@
         </div>
 
         <section>
-          <a href="#wizard" class="button secondary" @click.prevent="channel.wizard.show = !channel.wizard.show">
+          <a href="#wizard" class="button secondary" @click.prevent="setWizardVisibility(!channel.wizard.show)">
             <app-svg name="capability-wizard" />
             {{ channel.wizard.show ? 'Close' : 'Open' }} Capability Wizard
           </a>
@@ -462,7 +462,7 @@ export default {
         let index = this.channel.capabilities.length - 1;
         while (index >= 0) {
           const cap = this.channel.capabilities[index];
-          if (cap.dmxRange !== null && cap.dmxRange[1] !== null) {
+          if (cap.dmxRange !== null && cap.dmxRange[1] !== null && !this.channel.wizard.show) {
             this.$refs.capabilities[index].onEndUpdated();
             break;
           }
@@ -595,8 +595,19 @@ export default {
       });
     },
 
+    /**
+     * @param {boolean} show Whether to show or hide the Capability Wizard.
+     */
+    setWizardVisibility(show) {
+      this.channel.wizard.show = show;
+
+      if (!show) {
+        this.onDmxValueResolutionChanged(); // maybe DMX value resolution has been changed while wizard was open
+      }
+    },
+
     onWizardClose(insertIndex) {
-      this.channel.wizard.show = false;
+      this.setWizardVisibility(false);
 
       this.$nextTick(() => {
         const firstNewCap = this.$refs.capabilities[insertIndex];
