@@ -554,6 +554,7 @@ function cleanUpFixture(fixture, qlcPlusFixture) {
     const channel = fixture.availableChannels[chKey];
 
     if (`capability` in channel) {
+      // no DMX values used in this channel
       delete channel.dmxValueResolution;
     }
     if (channel.fineChannelAliases.length === 0) {
