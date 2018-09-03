@@ -239,6 +239,7 @@
 <script>
 import scrollIntoView from 'scroll-into-view';
 import {
+  Constants,
   getEmptyFixture,
   getEmptyChannel,
   getEmptyMode,
@@ -247,7 +248,6 @@ import {
 
 import manufacturers from '~~/fixtures/manufacturers.json';
 import schemaProperties from '~~/lib/schema-properties.js';
-import Channel from '~~/lib/model/Channel.mjs';
 
 import labeledInputVue from '~/components/labeled-input.vue';
 import propertyInputBooleanVue from '~/components/property-input-boolean.vue';
@@ -397,7 +397,7 @@ export default {
 
       if (`coarseChannelId` in channel) {
         let name = `${this.getChannelName(channel.coarseChannelId)} fine`;
-        if (channel.resolution > Channel.RESOLUTION_16BIT) {
+        if (channel.resolution > Constants.RESOLUTION_16BIT) {
           name += `^${channel.resolution - 1}`;
         }
 

@@ -1,5 +1,11 @@
 import uuidV4 from 'uuid/v4.js';
-import Channel from '~~/lib/model/Channel.mjs';
+
+export const Constants = {
+  RESOLUTION_8BIT: 1,
+  RESOLUTION_16BIT: 2,
+  RESOLUTION_24BIT: 3,
+  RESOLUTION_32BIT: 4
+};
 
 /**
  * @returns {!object} An empty fixture object.
@@ -98,8 +104,8 @@ export function getEmptyChannel() {
     name: ``,
     type: ``,
     color: ``,
-    resolution: Channel.RESOLUTION_8BIT,
-    dmxValueResolution: Channel.RESOLUTION_8BIT,
+    resolution: Constants.RESOLUTION_8BIT,
+    dmxValueResolution: Constants.RESOLUTION_8BIT,
     defaultValue: null,
     highlightValue: null,
     invert: null,
@@ -161,7 +167,7 @@ export function isChannelChanged(channel) {
     }
 
     if (prop === `resolution` || prop === `dmxValueResolution`) {
-      return channel[prop] !== Channel.RESOLUTION_8BIT;
+      return channel[prop] !== Constants.RESOLUTION_8BIT;
     }
 
     if (prop === `capabilities`) {
