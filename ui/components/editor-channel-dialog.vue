@@ -56,10 +56,26 @@
           </select>
         </app-labeled-input>
 
+        <app-labeled-input
+          v-if="channel.resolution > 1"
+          :formstate="formstate"
+          name="dmxValueResolution"
+          label="DMX value resolution">
+          <select
+            v-model="channel.dmxValueResolution"
+            name="dmxValueResolution"
+            required
+            @change="onDmxValueResolutionChanged">
+            <option :value="Channel.RESOLUTION_8BIT">8 bit (range 0…255)</option>
+            <option v-if="channel.resolution >= Channel.RESOLUTION_16BIT" :value="Channel.RESOLUTION_16BIT">16 bit (range 0…65535)</option>
+            <option v-if="channel.resolution >= Channel.RESOLUTION_24BIT" :value="Channel.RESOLUTION_24BIT">24 bit (range 0…16777215)</option>
+          </select>
+        </app-labeled-input>
+
         <app-labeled-input :formstate="formstate" name="defaultValue" label="Default DMX value">
           <input
             v-model.number="channel.defaultValue"
-            :max="Math.pow(256, channel.resolution) - 1"
+            :max="dmxMax"
             name="defaultValue"
             type="number"
             min="0"
@@ -83,27 +99,11 @@
           </a>
         </template></h3>
 
-        <app-labeled-input
-          v-if="channel.resolution > 1"
-          :formstate="formstate"
-          name="capResolution"
-          label="Capability resolution">
-          <select
-            v-model="channel.capResolution"
-            name="capResolution"
-            required
-            @change="onCapResolutionChanged">
-            <option :value="Channel.RESOLUTION_8BIT">8 bit (range 0…255)</option>
-            <option v-if="channel.resolution >= Channel.RESOLUTION_16BIT" :value="Channel.RESOLUTION_16BIT">16 bit (range 0…65535)</option>
-            <option v-if="channel.resolution >= Channel.RESOLUTION_24BIT" :value="Channel.RESOLUTION_24BIT">24 bit (range 0…16777215)</option>
-          </select>
-        </app-labeled-input>
-
         <app-editor-capability-wizard
           v-if="channel.wizard.show"
           :wizard="channel.wizard"
           :capabilities="channel.capabilities"
-          :resolution="Math.min(channel.resolution, channel.capResolution)"
+          :resolution="capResolution"
           :formstate="formstate"
           @close="onWizardClose" />
 
@@ -115,7 +115,7 @@
             :capabilities="channel.capabilities"
             :formstate="formstate"
             :cap-index="index"
-            :resolution="Math.min(channel.resolution, channel.capResolution)"
+            :resolution="capResolution"
             @insert-capability-before="insertEmptyCapability(index)"
             @insert-capability-after="insertEmptyCapability(index + 1)" />
         </div>
@@ -132,7 +132,7 @@
         <app-labeled-input :formstate="formstate" name="highlightValue" label="Highlight DMX value">
           <input
             v-model.number="channel.highlightValue"
-            :max="Math.pow(256, channel.resolution) - 1"
+            :max="dmxMax"
             name="highlightValue"
             type="number"
             min="0"
@@ -250,6 +250,12 @@ export default {
     };
   },
   computed: {
+    capResolution() {
+      return Math.min(this.channel.resolution, this.channel.dmxValueResolution);
+    },
+    dmxMax() {
+      return Math.pow(256, this.capResolution) - 1;
+    },
     currentMode() {
       const uuid = this.channel.modeId;
       const modeIndex = this.fixture.modes.findIndex(mode => mode.uuid === uuid);
@@ -451,7 +457,7 @@ export default {
      * Call onEndUpdated() on the last capability component with non-empty
      * DMX end value to add / remove an empty capability at the end.
      */
-    onCapResolutionChanged() {
+    onDmxValueResolutionChanged() {
       this.$nextTick(() => {
         let index = this.channel.capabilities.length - 1;
         while (index >= 0) {

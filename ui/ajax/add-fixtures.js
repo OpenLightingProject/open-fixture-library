@@ -225,9 +225,9 @@ function addAvailableChannel(fixKey, availableChannels, chId) {
     else if (prop === `fineChannelAliases` && from.resolution > Channel.RESOLUTION_8BIT) {
       channel.fineChannelAliases = [];
     }
-    else if (prop === `color`) {
-      if (from.type === `Single Color`) {
-        channel.color = getComboboxInput(`color`, from);
+    else if (prop === `dmxValueResolution`) {
+      if (from.resolution !== from.dmxValueResolution) {
+        channel.dmxValueResolution = `${from.dmxValueResolution * 8}bit`;
       }
     }
     else if (propExistsIn(prop, from)) {

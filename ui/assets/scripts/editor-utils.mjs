@@ -99,13 +99,13 @@ export function getEmptyChannel() {
     type: ``,
     color: ``,
     resolution: Channel.RESOLUTION_8BIT,
+    dmxValueResolution: Channel.RESOLUTION_8BIT,
     defaultValue: null,
     highlightValue: null,
     invert: null,
     constant: null,
     crossfade: null,
     precedence: ``,
-    capResolution: Channel.RESOLUTION_8BIT,
     wizard: {
       show: false,
       start: 0,
@@ -160,7 +160,7 @@ export function isChannelChanged(channel) {
       return channel[prop] !== null;
     }
 
-    if (prop === `resolution` || prop === `capResolution`) {
+    if (prop === `resolution` || prop === `dmxValueResolution`) {
       return channel[prop] !== Channel.RESOLUTION_8BIT;
     }
 
