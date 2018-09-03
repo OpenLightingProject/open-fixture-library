@@ -256,7 +256,7 @@ function testRandomChannelDownscaling(resolution) {
     while (remainingDmxValues > 0) {
       let rangeWidth;
       if (remainingDmxValues > maximumRangeWidth) {
-        rangeWidth = Math.floor((Math.random() * (maximumRangeWidth - minimumRangeWidth)) + minimumRangeWidth);
+        rangeWidth = Math.floor((Math.random() * (maximumRangeWidth - (2 * minimumRangeWidth))) + minimumRangeWidth);
       }
       else {
         rangeWidth = remainingDmxValues;
