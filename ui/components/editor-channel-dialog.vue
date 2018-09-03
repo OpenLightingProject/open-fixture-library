@@ -43,10 +43,57 @@
             name="name"
             start-with-uppercase-or-number
             no-fine-channel-name
+            list="channel-name-suggestions"
             title="Please start with an uppercase letter or a number. Don't create fine channels here, set its resolution below instead."
             class="channelName"
             @blur="onChannelNameChanged" />
         </app-labeled-input>
+
+        <datalist id="channel-name-suggestions" hidden>
+          <option>Intensity</option>
+          <option>Dimmer</option>
+          <option>Shutter / Strobe</option>
+          <option>Shutter</option>
+          <option>Strobe</option>
+          <option>Strobe Speed</option>
+          <option>Strobe Duration</option>
+          <option v-for="color in singleColors" :key="color">{{ color }}</option>
+          <option>Color Macros</option>
+          <option>Color Presets</option>
+          <option>Color Wheel</option>
+          <option>Color Wheel Rotation</option>
+          <option>Color Temperature</option>
+          <option>CTC</option>
+          <option>CTO</option>
+          <option>CTB</option>
+          <option>Pan</option>
+          <option>Tilt</option>
+          <option>Pan/Tilt Speed</option>
+          <option>Pan/Tilt Duration</option>
+          <option>Effect Speed</option>
+          <option>Program Speed</option>
+          <option>Effect Duration</option>
+          <option>Program Duration</option>
+          <option>Sound Sensitivity</option>
+          <option>Gobo Wheel</option>
+          <option>Gobo Wheel Rotation</option>
+          <option>Gobo Stencil Rotation</option>
+          <option>Focus</option>
+          <option>Zoom</option>
+          <option>Iris</option>
+          <option>Frost</option>
+          <option>Prism</option>
+          <option>Prism Rotation</option>
+          <option>Blade Insertion</option>
+          <option>Blade Rotation</option>
+          <option>Blade System Rotation</option>
+          <option>Fog</option>
+          <option>Haze</option>
+          <option>Fog Output</option>
+          <option>Fog Intensity</option>
+          <option>No function</option>
+          <option>Reserved</option>
+        </datalist>
 
         <app-labeled-input :formstate="formstate" name="fineness" label="Channel resolution">
           <select v-model="channel.fineness" name="fineness">
@@ -328,6 +375,9 @@ export default {
       }
 
       return `Save changes`;
+    },
+    singleColors() {
+      return this.properties.capabilityTypes.ColorIntensity.properties.color.enum;
     }
   },
   watch: {
@@ -401,9 +451,8 @@ export default {
 
       const cap = this.channel.capabilities[0];
       const changeCapabilityType = this.$refs.capabilities[0].$refs.capabilityTypeData.changeCapabilityType;
-      const singleColors = this.properties.capabilityTypes.ColorIntensity.properties.color.enum;
 
-      const matchingColor = singleColors.find(
+      const matchingColor = this.singleColors.find(
         color => channelName.toLowerCase().includes(color.toLowerCase())
       );
       if (matchingColor) {
