@@ -287,6 +287,10 @@ module.exports.import = function importGdtf(buffer, filename) {
 
       // save all <ChannelSet> XML nodes in a flat list
       gdtfChannel.LogicalChannel.forEach(gdtfLogicalChannel => {
+        if (!gdtfLogicalChannel.ChannelFunction) {
+          throw new Error(`LogicalChannel does not contain any ChannelFunction children in DMXChannel ${JSON.stringify(gdtfChannel, null, 2)}`);
+        }
+
         gdtfLogicalChannel.ChannelFunction.forEach(gdtfChannelFunction => {
           if (!gdtfChannelFunction.ChannelSet) {
             // add an empty <ChannelSet />
@@ -297,6 +301,11 @@ module.exports.import = function importGdtf(buffer, filename) {
               }
             ];
           }
+
+          gdtfChannelFunction._attribute = followXmlNodeReference(
+            gdtfFixture.AttributeDefinitions[0].Attributes[0],
+            gdtfChannelFunction.$.Attribute
+          );
 
           gdtfChannelFunction.ChannelSet.forEach(gdtfChannelSet => {
             // save parent nodes for future use
@@ -327,7 +336,7 @@ module.exports.import = function importGdtf(buffer, filename) {
 
         return {
           dmxRange: [dmxFrom, dmxTo],
-          type: `Generic`,
+          type: getCapabilityType(gdtfCapability) || `Generic`,
           comment: gdtfCapability.$.Name
         };
       });
@@ -437,6 +446,18 @@ module.exports.import = function importGdtf(buffer, filename) {
         return Math.pow(256, targetResolution - resolution) * value;
       }
     }
+  }
+
+  /**
+   * @param {!object} gdtfCapability The <ChannelSet> XML object, enhanced by @see getCapabilities.
+   * @returns {?string} The OFL capability type, or null if it could not be determined.
+   */
+  function getCapabilityType(gdtfCapability) {
+    const gdtfAttribute = gdtfCapability._channelFunction._attribute;
+    const gdtfAttributeName = gdtfAttribute ? gdtfAttribute.$.Name : `NoFeature`;
+
+    // TODO: convert from GDTF attribute name to OFL capability type
+    return gdtfAttributeName;
   }
 
   /**
@@ -629,6 +650,50 @@ function getDmxValueWithResolutionFromGdtfDmxValue(dmxValueStr) {
   }
   catch (error) {
     return [parseInt(dmxValueStr), 1];
+  }
+}
+
+/**
+ * @param {!object} startNode The XML object the reference should be resolved against.
+ * @param {!string} nodeReference A string of the form "Name.Name.Name…", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-node
+ * @returns {?object} The referenced XML node object, or null if it could not be found.
+ */
+function followXmlNodeReference(startNode, nodeReference) {
+  if (!startNode || !nodeReference) {
+    return null;
+  }
+
+  const nameParts = nodeReference.split(`.`);
+  let currentNode = startNode;
+
+  for (const nameAttr of nameParts) {
+    const nodeWithNameAttr = getChildNodes(currentNode).find(
+      node => `$` in node && node.$.Name === nameAttr
+    );
+
+    if (nodeWithNameAttr) {
+      currentNode = nodeWithNameAttr;
+    }
+    else {
+      return null;
+    }
+  }
+
+  return currentNode;
+
+
+  /**
+   * @param {!object} node The XML object.
+   * @returns {!array.<!object>} The XML objects of this node's child nodes.
+   */
+  function getChildNodes(node) {
+    return [].concat(
+      ...Object.keys(node).filter(
+        tagName => tagName !== `$`
+      ).map(
+        tagName => node[tagName]
+      )
+    );
   }
 }
 
