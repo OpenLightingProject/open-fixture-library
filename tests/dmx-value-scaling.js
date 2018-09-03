@@ -85,7 +85,7 @@ function testScaleDmxValuesDown() {
     32767: 127, // [127, 255] -> [127]
     32768: 128, // [128,   0] -> [128]
     65280: 255, // [255,   0] -> [255]
-    65535: 255 //  [255, 255] -> [255]
+    65535: 255  //  [255, 255] -> [255]
     /* eslint-enable indent, no-multi-spaces, key-spacing */
   };
   Object.keys(scale16to8).forEach(dmxValue => testScaleDmxValue(dmxValue, 2, 1, scale16to8[dmxValue]));
@@ -186,18 +186,18 @@ function testScaleDmxRangesDown() {
   scale16to8.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 2, 1, desiredDmxRange));
 
   const scale24to8 = [
-    /* eslint-disable no-multi-spaces, array-bracket-spacing */
+    /* eslint-disable array-bracket-spacing */
     [[ 615605, 1683118], [10, 25]],
     [[1683119, 2244792], [26, 34]]
-    /* eslint-enable no-multi-spaces, array-bracket-spacing */
+    /* eslint-enable array-bracket-spacing */
   ];
   scale24to8.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 3, 1, desiredDmxRange));
 
   const scale24to16 = [
-    /* eslint-disable no-multi-spaces, array-bracket-spacing */
+    /* eslint-disable array-bracket-spacing */
     [[ 615605, 1683118], [2405, 6574]],
     [[1683119, 2244792], [6575, 8768]]
-    /* eslint-enable no-multi-spaces, array-bracket-spacing */
+    /* eslint-enable array-bracket-spacing */
   ];
   scale24to16.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 3, 2, desiredDmxRange));
 }
@@ -305,6 +305,12 @@ function testArraysEqual(description, array, desiredArray) {
   );
 }
 
+/**
+ * Prints the test result (pass or fail) to the console and increase errorCount if needed.
+ * @param {!boolean} passed Whether the test didn't error.
+ * @param {!string} passString The message if the test passed.
+ * @param {!string} failString The message if the test failed.
+ */
 function parseTestResult(passed, passString, failString) {
   if (passed) {
     console.log(`${colors.green(`[PASS]`)} ${passString}`);
