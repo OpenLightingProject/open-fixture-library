@@ -25,8 +25,14 @@
       }
     },
     "dmxValueResolution": { "enum": ["8bit", "16bit", "24bit"] },
-    "defaultValue": { "$ref": "definitions.json#/dmxValue" },
-    "highlightValue": { "$ref": "definitions.json#/dmxValue" },
+    "defaultValue": { "oneOf": [
+      { "$ref": "definitions.json#/dmxValue" },
+      { "$ref": "definitions.json#/dmxValuePercent" }
+    ] },
+    "highlightValue": { "oneOf": [
+      { "$ref": "definitions.json#/dmxValue" },
+      { "$ref": "definitions.json#/dmxValuePercent" }
+    ] },
     "constant": { "type": "boolean" },
     "precedence": { "enum": ["LTP", "HTP"] },
     "capability": {
