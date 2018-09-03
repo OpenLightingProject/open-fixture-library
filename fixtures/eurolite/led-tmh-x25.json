@@ -35,7 +35,8 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 32639,
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -44,7 +45,8 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 32639,
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
