@@ -345,6 +345,10 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       );
     });
 
+    if (channel.dmxValueResolution > channel.maxResolution) {
+      result.errors.push(`dmxValueResolution must be less or equal to ${channel.maxResolution * 8}bit in channel '${channel.key}'.`);
+    }
+
     const maxDmxBound = Math.pow(256, channel.dmxValueResolution) - 1;
 
     if (channel.hasDefaultValue && channel.defaultValue > maxDmxBound) {
