@@ -165,6 +165,7 @@ ol.mode-channels {
 
 <script>
 import schemaProperties from '~~/lib/schema-properties.js';
+import { constants } from '~/assets/scripts/editor-utils.mjs';
 
 import svgVue from '~/components/svg.vue';
 import labeledInputVue from '~/components/labeled-input.vue';
@@ -234,14 +235,14 @@ export default {
               return false;
             }
 
-            if (channel.fineness === 1) {
+            if (channel.resolution === constants.RESOLUTION_16BIT) {
               // next coarser channel is coarse channel, which is in target mode
               return true;
             }
 
             const nextCoarserChannelFound = targetMode.channels.some(uuid => {
               const otherChannel = this.fixture.availableChannels[uuid];
-              return otherChannel.coarseChannelId === channel.coarseChannelId && otherChannel.fineness === channel.fineness - 1;
+              return otherChannel.coarseChannelId === channel.coarseChannelId && otherChannel.resolution === channel.resolution - 1;
             });
 
             return nextCoarserChannelFound;
@@ -293,16 +294,16 @@ export default {
 
       // first remove the finer channels if any
       let coarseChannelId = channelUuid;
-      let fineness = 0;
+      let resolution = constants.RESOLUTION_8BIT;
       if (this.isFineChannel(channelUuid)) {
         coarseChannelId = channel.coarseChannelId;
-        fineness = channel.fineness;
+        resolution = channel.resolution;
       }
 
       for (const chId of Object.keys(this.fixture.availableChannels)) {
         const ch = this.fixture.availableChannels[chId];
         if (`coarseChannelId` in ch && ch.coarseChannelId === coarseChannelId
-          && ch.fineness > fineness) {
+          && ch.resolution > resolution) {
           this.fixtureEditor.removeChannel(ch.uuid, this.mode.uuid);
         }
       }

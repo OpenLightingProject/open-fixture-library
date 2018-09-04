@@ -345,12 +345,18 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       );
     });
 
-    if (channel.hasDefaultValue && channel.defaultValue > channel.maxDmxBound) {
-      result.errors.push(`defaultValue must be less or equal to ${channel.maxDmxBound} in channel '${channel.key}'.`);
+    if (channel.dmxValueResolution > channel.maxResolution) {
+      result.errors.push(`dmxValueResolution must be less or equal to ${channel.maxResolution * 8}bit in channel '${channel.key}'.`);
     }
 
-    if (channel.hasHighlightValue && channel.highlightValue > channel.maxDmxBound) {
-      result.errors.push(`highlightValue must be less or equal to ${channel.maxDmxBound} in channel '${channel.key}'.`);
+    const maxDmxValue = Math.pow(256, channel.dmxValueResolution) - 1;
+
+    if (channel.hasDefaultValue && channel.getDefaultValueWithResolution(channel.dmxValueResolution) > maxDmxValue) {
+      result.errors.push(`defaultValue must be less or equal to ${maxDmxValue} in channel '${channel.key}'.`);
+    }
+
+    if (channel.hasHighlightValue && channel.getHighlightValueWithResolution(channel.dmxValueResolution) > maxDmxValue) {
+      result.errors.push(`highlightValue must be less or equal to ${maxDmxValue} in channel '${channel.key}'.`);
     }
 
     checkCapabilities(channel);
@@ -360,7 +366,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
      */
     function checkCapabilities() {
       let dmxRangesInvalid = false;
-      const possibleEndValues = getPossibleEndValues();
 
       for (let i = 0; i < channel.capabilities.length; i++) {
         const cap = channel.capabilities[i];
@@ -377,7 +382,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       /**
        * Check that a capability's range is valid.
        * @param {!number} capNumber The number of the capability in the channel, starting with 0.
-       * @param {number} minUsedFineness The smallest fineness that the channel is used in a mode.This controls if this range can be from 0 up to channel.maxDmxBound or less.
        * @returns {boolean} True if the range is valid, false otherwise. The global `result` object is updated then.
        */
       function checkDmxRange(capNumber) {
@@ -394,7 +398,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
          * @returns {!boolean} True if this is not the first capability or it starts with 0, false otherwise.
          */
         function checkFirstCapabilityRangeStart() {
-          if (capNumber === 0 && cap.dmxRange.start !== 0) {
+          if (capNumber === 0 && cap.rawDmxRange.start !== 0) {
             result.errors.push(`The first dmxRange has to start at 0 in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
             return false;
           }
@@ -406,7 +410,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
          * @returns {!boolean} True if this capability's DMX range is valid, i.e. the end is greater than or equal to the start, false otherwise.
          */
         function checkRangeValid() {
-          if (cap.dmxRange.start > cap.dmxRange.end) {
+          if (cap.rawDmxRange.start > cap.rawDmxRange.end) {
             result.errors.push(`dmxRange invalid in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
             return false;
           }
@@ -421,7 +425,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           if (capNumber > 0) {
             const prevCap = channel.capabilities[capNumber - 1];
 
-            if (cap.dmxRange.start !== prevCap.dmxRange.end + 1) {
+            if (cap.rawDmxRange.start !== prevCap.rawDmxRange.end + 1) {
               result.errors.push(`dmxRanges must be adjacent in capabilities '${prevCap.name}' (#${capNumber}) and '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'.`);
               return false;
             }
@@ -436,33 +440,14 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
          */
         function checkLastCapabilityRangeEnd() {
           if (capNumber === channel.capabilities.length - 1) {
-            const rawDmxRangeEnd = channel.capabilities[capNumber].jsonObject.dmxRange[1];
-
-            if (!possibleEndValues.includes(rawDmxRangeEnd)) {
-              result.errors.push(`The last dmxRange has to end at ${possibleEndValues.join(` or `)} in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'`);
+            if (channel.capabilities[capNumber].rawDmxRange.end !== maxDmxValue) {
+              result.errors.push(`The last dmxRange has to end at ${maxDmxValue} (or another channel.dmxValueResolution must be chosen) in capability '${cap.name}' (#${capNumber + 1}) in channel '${channel.key}'`);
               return false;
             }
           }
 
           return true;
         }
-      }
-
-      /**
-       * @returns {!Array.<number>} All DMX values that would be valid maximum DMX bounds, sorted ascending.
-       * Depends on the lowest fineness with which the channel is used in any mode.
-       */
-      function getPossibleEndValues() {
-        const minUsedFineness = Math.min(...fixture.modes.map(
-          mode => channel.getFinenessInMode(mode)
-        ));
-
-        const values = [];
-        for (let i = 0; i <= minUsedFineness; i++) {
-          values.push(Math.pow(256, i + 1) - 1);
-        }
-
-        return values;
       }
 
       /**
@@ -823,7 +808,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       function checkCoarserChannelsInMode(fineChannel) {
         const coarseChannel = fineChannel.coarseChannel;
         const coarserChannelKeys = coarseChannel.fineChannelAliases.filter(
-          (alias, index) => index < fineChannel.fineness - 1
+          (alias, index) => index < fineChannel.resolution - 2
         ).concat(coarseChannel.key);
 
         const notInMode = coarserChannelKeys.filter(
