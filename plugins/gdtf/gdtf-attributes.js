@@ -311,33 +311,182 @@ const gdtfAttributes = {
     oflProperty: `speed`,
     defaultPhysicalEntity: `Frequency`
   },
-  Shutter: undefined, // Controls the fixture´s mechanical or electronical shutter feature.
-  ShutterStrobe: undefined, // Controls the frequency/speed of the fixture´s mechanical or electronical strobe shutter feature.
-  ShutterStrobePulse: undefined, // Controls the frequency/speed of the fixture´s mechanical or electronical pulse shutter feature.
-  ShutterStrobePulseClose: undefined, // Controls the frequency/speed of the fixture´s mechanical or electronical closing pulse shutter feature.
-  ShutterStrobePulseOpen: undefined, // Controls the frequency/speed of the fixture´s mechanical or electronical opening pulse shutter feature.
-  ShutterStrobeRandom: undefined, // Controls the frequency/speed of the fixture´s mechanical or electronical random strobe shutter feature.
-  ShutterStrobeRandomPulse: undefined, // Controls the frequency/speed of the fixture´s mechanical or electronical random pulse shutter feature.
-  ShutterStrobeRandomPulseClose: undefined, // Controls the frequency/speed of the fixture´s mechanical or electronical random closing pulse shutter feature.
-  ShutterStrobeRandomPulseOpen: undefined, // Controls the frequency/speed of the fixture´s mechanical or electronical random opening pulse shutter feature.
-  Shutter2: undefined, // Controls the fixture´s mechanical or electronical shutter feature (2). Is used with foreground/background strobe.
-  Shutter2Strobe: undefined, // Controls the frequency/speed of the fixture ́s mechanical or electronical strobe shutter feature (2).
-  Shutter2StrobePulse: undefined, // Controls the frequency/speed of the fixture ́s mechanical or electronical pulse shutter feature (2).
-  Shutter2StrobePulseClose: undefined, // Controls the frequency/speed of the fixture ́s mechanical or electronical closing pulse shutter feature (2).
-  Shutter2StrobePulseOpen: undefined, // Controls the frequency/speed of the fixture ́s mechanical or electronical opening pulse shutter feature (2).
-  Shutter2StrobeRandom: undefined, // Controls the frequency/speed of the fixture ́s mechanical or electronical random strobe shutter feature (2).
-  Shutter2StrobeRandomPulse: undefined, // Controls the frequency/speed of the fixture ́s mechanical or electronical random pulse shutter feature (2).
-  Shutter2StrobeRandomPulseClose: undefined, // Controls the frequency/speed of the fixture ́s mechanical or electronical random closing pulse shutter feature (2).
-  Shutter2StrobeRandomPulseOpen: undefined, // Controls the frequency/speed of the fixture ́s mechanical or electronical random opening pulse shutter feature (2).
-  Shutter3: undefined, // Controls the fixture ´s mechanical or electronical shutter feature (3). Is used with foreground/background strobe.
-  Shutter3Strobe: undefined, // Controls the frequency/speed of the fixture´s mechanical or electronical strobe shutter feature (3).
-  Shutter3StrobePulse: undefined, // Controls the frequency/speed of the fixture´s mechanical or electronical pulse shutter feature (3).
-  Shutter3StrobePulseClose: undefined, // Controls the frequency/speed of the fixture´s mechanical or electronical closing pulse shutter feature (3).
-  Shutter3StrobePulseOpen: undefined, // Controls the frequency/speed of the fixture´s mechanical or electronical opening pulse shutter feature (3).
-  Shutter3StrobeRandom: undefined, // Controls the frequency/speed of the fixture´s mechanical or electronical random strobe shutter feature (3).
-  Shutter3StrobeRandomPulse: undefined, // Controls the frequency/speed of the fixture´s mechanical or electronical random pulse shutter feature (3).
-  Shutter3StrobeRandomPulseClose: undefined, // Controls the frequency/speed of the fixture´s mechanical or electronical random closing pulse shutter feature (3).
-  Shutter3StrobeRandomPulseOpen: undefined, // Controls the frequency/speed of the fixture´s mechanical or electronical random opening pulse shutter feature (3).
+  Shutter: {
+    // Controls the fixture´s mechanical or electronical shutter feature.
+    oflType: `ShutterStrobe`,
+    oflProperty: null,
+    defaultPhysicalEntity: `Frequency`, // although that makes little sense since 0 means closed and 1 means open
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      const physicalFrom = gdtfCapability._physicalFrom;
+      const physicalTo = gdtfCapability._physicalTo;
+
+      if (physicalFrom === 0 && physicalTo === 0) {
+        capability.shutterEffect = `Closed`;
+      }
+      else if (physicalFrom === 1 && physicalTo === 1) {
+        capability.shutterEffect = `Open`;
+      }
+      else {
+        capability.helpWanted = `What does physical value ${physicalFrom}…${physicalTo} mean?`;
+      }
+    }
+  },
+  ShutterStrobe: {
+    // Controls the frequency/speed of the fixture´s mechanical or electronical strobe shutter feature.
+    oflType: `ShutterStrobe`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `Frequency`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.shutterEffect = `Strobe`;
+    }
+  },
+  ShutterStrobePulse: {
+    // Controls the frequency/speed of the fixture´s mechanical or electronical pulse shutter feature.
+    oflType: `ShutterStrobe`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `Frequency`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.shutterEffect = `Pulse`;
+    }
+  },
+  ShutterStrobePulseClose: {
+    // Controls the frequency/speed of the fixture´s mechanical or electronical closing pulse shutter feature.
+    oflType: `ShutterStrobe`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `Frequency`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.shutterEffect = `RampDown`;
+    }
+  },
+  ShutterStrobePulseOpen: {
+    // Controls the frequency/speed of the fixture´s mechanical or electronical opening pulse shutter feature.
+    oflType: `ShutterStrobe`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `Frequency`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.shutterEffect = `RampUp`;
+    }
+  },
+  ShutterStrobeRandom: {
+    // Controls the frequency/speed of the fixture´s mechanical or electronical random strobe shutter feature.
+    oflType: `ShutterStrobe`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `Frequency`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.shutterEffect = `Strobe`;
+    },
+    afterPhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.randomTiming = true;
+    }
+  },
+  ShutterStrobeRandomPulse: {
+    // Controls the frequency/speed of the fixture´s mechanical or electronical random pulse shutter feature.
+    oflType: `ShutterStrobe`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `Frequency`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.shutterEffect = `Pulse`;
+    },
+    afterPhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.randomTiming = true;
+    }
+  },
+  ShutterStrobeRandomPulseClose: {
+    // Controls the frequency/speed of the fixture´s mechanical or electronical random closing pulse shutter feature.
+    oflType: `ShutterStrobe`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `Frequency`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.shutterEffect = `RampDown`;
+    },
+    afterPhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.randomTiming = true;
+    }
+  },
+  ShutterStrobeRandomPulseOpen: {
+    // Controls the frequency/speed of the fixture´s mechanical or electronical random opening pulse shutter feature.
+    oflType: `ShutterStrobe`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `Frequency`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.shutterEffect = `RampUp`;
+    },
+    afterPhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.randomTiming = true;
+    }
+  },
+  Shutter2: {
+    // Controls the fixture´s mechanical or electronical shutter feature (2). Is used with foreground/background strobe.
+    inheritFrom: `Shutter1`
+  },
+  Shutter2Strobe: {
+    // Controls the frequency/speed of the fixture ́s mechanical or electronical strobe shutter feature (2).
+    inheritFrom: `Shutter1Strobe`
+  },
+  Shutter2StrobePulse: {
+    // Controls the frequency/speed of the fixture ́s mechanical or electronical pulse shutter feature (2).
+    inheritFrom: `Shutter1StrobePulse`
+  },
+  Shutter2StrobePulseClose: {
+    // Controls the frequency/speed of the fixture ́s mechanical or electronical closing pulse shutter feature (2).
+    inheritFrom: `Shutter1StrobePulseClose`
+  },
+  Shutter2StrobePulseOpen: {
+    // Controls the frequency/speed of the fixture ́s mechanical or electronical opening pulse shutter feature (2).
+    inheritFrom: `Shutter1StrobePulseOpen`
+  },
+  Shutter2StrobeRandom: {
+    // Controls the frequency/speed of the fixture ́s mechanical or electronical random strobe shutter feature (2).
+    inheritFrom: `Shutter1StrobeRandom`
+  },
+  Shutter2StrobeRandomPulse: {
+    // Controls the frequency/speed of the fixture ́s mechanical or electronical random pulse shutter feature (2).
+    inheritFrom: `Shutter1StrobeRandomPulse`
+  },
+  Shutter2StrobeRandomPulseClose: {
+    // Controls the frequency/speed of the fixture ́s mechanical or electronical random closing pulse shutter feature (2).
+    inheritFrom: `Shutter1StrobeRandomPulseClose`
+  },
+  Shutter2StrobeRandomPulseOpen: {
+    // Controls the frequency/speed of the fixture ́s mechanical or electronical random opening pulse shutter feature (2).
+    inheritFrom: `Shutter1StrobeRandomPulseOpen`
+  },
+  Shutter3: {
+    // Controls the fixture ´s mechanical or electronical shutter feature (3). Is used with foreground/background strobe.
+    inheritFrom: `Shutter1`
+  },
+  Shutter3Strobe: {
+    // Controls the frequency/speed of the fixture´s mechanical or electronical strobe shutter feature (3).
+    inheritFrom: `Shutter1Strobe`
+  },
+  Shutter3StrobePulse: {
+    // Controls the frequency/speed of the fixture´s mechanical or electronical pulse shutter feature (3).
+    inheritFrom: `Shutter1StrobePulse`
+  },
+  Shutter3StrobePulseClose: {
+    // Controls the frequency/speed of the fixture´s mechanical or electronical closing pulse shutter feature (3).
+    inheritFrom: `Shutter1StrobePulseClose`
+  },
+  Shutter3StrobePulseOpen: {
+    // Controls the frequency/speed of the fixture´s mechanical or electronical opening pulse shutter feature (3).
+    inheritFrom: `Shutter1StrobePulseOpen`
+  },
+  Shutter3StrobeRandom: {
+    // Controls the frequency/speed of the fixture´s mechanical or electronical random strobe shutter feature (3).
+    inheritFrom: `Shutter1StrobeRandom`
+  },
+  Shutter3StrobeRandomPulse: {
+    // Controls the frequency/speed of the fixture´s mechanical or electronical random pulse shutter feature (3).
+    inheritFrom: `Shutter1StrobeRandomPulse`
+  },
+  Shutter3StrobeRandomPulseClose: {
+    // Controls the frequency/speed of the fixture´s mechanical or electronical random closing pulse shutter feature (3).
+    inheritFrom: `Shutter1StrobeRandomPulseClose`
+  },
+  Shutter3StrobeRandomPulseOpen: {
+    // Controls the frequency/speed of the fixture´s mechanical or electronical random opening pulse shutter feature (3).
+    inheritFrom: `Shutter1StrobeRandomPulseOpen`
+  },
   Iris: undefined, // Controls the diameter of the fixture's beam.
   IrisStrobe: undefined, // Sets speed of the iris’s strobe feature.
   IrisPulseClose: undefined, // Sets speed of iris‘s closing pulse.
