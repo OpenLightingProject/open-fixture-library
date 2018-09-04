@@ -120,13 +120,12 @@
         </app-labeled-input>
 
         <app-labeled-input :formstate="formstate" name="defaultValue" label="Default DMX value">
-          <input
-            v-model.number="channel.defaultValue"
-            :max="dmxMax"
-            name="defaultValue"
-            type="number"
-            min="0"
-            step="1">
+          <app-property-input-entity
+            v-model="channel.defaultValue"
+            :schema-property="properties.channel.defaultValue"
+            :max-number="dmxMax"
+            class="wide"
+            name="defaultValue" />
         </app-labeled-input>
 
         <h3>Capabilities<template v-if="!channel.wizard.show && channel.capabilities.length > 1">
@@ -177,13 +176,12 @@
         <h3>Advanced channel settings</h3>
 
         <app-labeled-input :formstate="formstate" name="highlightValue" label="Highlight DMX value">
-          <input
-            v-model.number="channel.highlightValue"
-            :max="dmxMax"
-            name="highlightValue"
-            type="number"
-            min="0"
-            step="1">
+          <app-property-input-entity
+            v-model="channel.highlightValue"
+            :schema-property="properties.channel.highlightValue"
+            :max-number="dmxMax"
+            class="wide"
+            name="highlightValue" />
         </app-labeled-input>
 
         <app-labeled-input :formstate="formstate" name="constant" label="Constant?">
@@ -259,6 +257,7 @@ import editorCapabilityVue from '~/components/editor-capability.vue';
 import editorCapabilityWizardVue from '~/components/editor-capability-wizard.vue';
 import labeledInputVue from '~/components/labeled-input.vue';
 import propertyInputBooleanVue from '~/components/property-input-boolean.vue';
+import propertyInputEntityVue from '~/components/property-input-entity.vue';
 import propertyInputSelectVue from '~/components/property-input-select.vue';
 import propertyInputTextVue from '~/components/property-input-text.vue';
 import svgVue from '~/components/svg.vue';
@@ -270,6 +269,7 @@ export default {
     'app-editor-capability-wizard': editorCapabilityWizardVue,
     'app-labeled-input': labeledInputVue,
     'app-property-input-boolean': propertyInputBooleanVue,
+    'app-property-input-entity': propertyInputEntityVue,
     'app-property-input-select': propertyInputSelectVue,
     'app-property-input-text': propertyInputTextVue,
     'app-svg': svgVue
