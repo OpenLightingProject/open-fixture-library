@@ -15,7 +15,7 @@ const gdtfUnits = {
     return `${value}kg`;
   },
   Time(value, otherValue) {
-    if (Math.abs(value) < 1 && (otherValue === null || Math.abs(otherValue) < 1)) {
+    if (physicalValuesFulfillCondition(value, otherValue, val => Math.abs(val) < 1)) {
       return `${value * 1000}ms`;
     }
 
@@ -60,8 +60,13 @@ const gdtfUnits = {
   Acceleration(value) {
     return `${value}m/s2`;
   },
-  AngularSpeed(value) {
-    // value is in deg/s
+  AngularSpeed(value, otherValue) {
+    // values are in deg/s
+
+    if (value === 0 && otherValue === null) {
+      return `stop`;
+    }
+
     return `${value / 360 * 60}rpm`;
   },
   AngularAcc(value) {
@@ -77,6 +82,17 @@ const gdtfUnits = {
     return `${value * 100}%`;
   }
 };
+
+/**
+ * @param {!number} value1 The first physical value.
+ * @param {?number} value2 The second physical value, or null.
+ * @param {!function} predicate A function returning a boolean.
+ * @returns {!boolean} True if all provided values fulfill the condition predicate.
+ */
+function physicalValuesFulfillCondition(value1, value2, predicate) {
+  return predicate(value1) && (value2 === null || predicate(value2));
+}
+
 
 // see https://gdtf-share.com/wiki/GDTF_File_Description#Appendix_A._Attribute_Definitions
 const gdtfAttributes = {
@@ -104,21 +120,109 @@ const gdtfAttributes = {
   XYZ_X: undefined, // Defines a fixture’s x-coordinate within an XYZ coordinate system.
   XYZ_Y: undefined, // Defines a fixture’s y-coordinate within an XYZ coordinate system.
   XYZ_Z: undefined, // Defines a fixture‘s z-coordinate within an XYZ coordinate system.
-  Gobo1: undefined, // Selects gobos in the fixture's gobo wheel 1.
-  Gobo1Spin: undefined, // Controls the speed and direction of the continuous rotation of gobo wheel 1.
-  Gobo1Shake: undefined, // Control the frequency of the shake of gobo wheel 1.
-  Gobo1Pos: undefined, // Controls angle of indexed rotation of gobos in gobo wheel 1.
-  Gobo1PosRotation: undefined, // Controls the speed and direction of continuous rotation of gobos in gobo wheel 1.
-  Gobo2: undefined, // Selects gobos in the fixture's gobo wheel 2.
-  Gobo2Spin: undefined, // Controls the speed and direction of the continuous rotation of gobo wheel 2.
-  Gobo2Shake: undefined, // Control the frequency of the shake of gobo wheel 2.
-  Gobo2Pos: undefined, // Controls the angle of indexed rotation of gobos in gobo wheel 2.
-  Gobo2PosRotation: undefined, // Controls the speed and direction of continuous rotation of gobos in gobo wheel 2.
-  Gobo3: undefined, // Selects gobos in the fixture's gobo wheel 3.
-  Gobo3Spin: undefined, // Controls the speed and direction of the continuous rotation of gobo wheel 3.
-  Gobo3Shake: undefined, // Control the frequency of the shake of gobo wheel 3.
-  Gobo3Pos: undefined, // Controls the angle of indexed rotation of gobos in gobo wheel 3.
-  Gobo3PosRotation: undefined, // Controls the speed and direction of the continuous rotation of gobos in gobo wheel 3.
+  Gobo1: {
+    // Selects gobos in the fixture's gobo wheel 1.
+    oflType: `GoboIndex`,
+    oflProperty: null,
+    defaultPhysicalEntity: `None`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      const index = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
+      capability.index = index;
+
+      if (`Wheel` in gdtfCapability._channelFunction.$) {
+        const gdtfWheel = followXmlNodeReference(gdtfFixture.Wheels[0], gdtfCapability._channelFunction.$.Wheel);
+        const gdtfSlot = gdtfWheel.Slot[index];
+
+        if (gdtfSlot) {
+          if (gdtfCapability.$.Name !== gdtfSlot.$.Name) {
+            gdtfCapability.$.Name += ` (${gdtfSlot.$.Name})`;
+          }
+        }
+      }
+
+      const physicalFrom = gdtfCapability._physicalFrom;
+      const physicalTo = gdtfCapability._physicalTo;
+
+      // TODO: support physical values -0.5…0.5 to specify proportional gobo wheel capabilities
+      if (physicalFrom !== 0 || physicalTo !== 1) {
+        gdtfCapability.$.Name += ` ${physicalFrom}…${physicalTo}`;
+      }
+    }
+  },
+  Gobo1Spin: {
+    // Controls the speed and direction of the continuous rotation of gobo wheel 1.
+    oflType: `GoboWheelRotation`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `AngularSpeed`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      normalizeAngularSpeedDirection(gdtfCapability);
+    }
+  },
+  Gobo1Shake: {
+    // Control the frequency of the shake of gobo wheel 1.
+    inheritFrom: `Gobo1`,
+    oflProperty: `shakeSpeed`,
+    defaultPhysicalEntity: `Frequency`
+  },
+  Gobo1Pos: {
+    // Controls angle of indexed rotation of gobos in gobo wheel 1.
+    oflType: `GoboStencilRotation`,
+    oflProperty: `angle`,
+    defaultPhysicalEntity: `Angle`
+  },
+  Gobo1PosRotation: {
+    // Controls the speed and direction of continuous rotation of gobos in gobo wheel 1.
+    oflType: `GoboStencilRotation`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `AngularSpeed`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      normalizeAngularSpeedDirection(gdtfCapability);
+    }
+  },
+  Gobo2: {
+    // Selects gobos in the fixture's gobo wheel 2.
+    inheritFrom: `Gobo1`
+  },
+  Gobo2Spin: {
+    // Controls the speed and direction of the continuous rotation of gobo wheel 2.
+    inheritFrom: `Gobo1Spin`
+  },
+  Gobo2Shake: {
+    // Control the frequency of the shake of gobo wheel 2.
+    inheritFrom: `Gobo1`,
+    oflProperty: `shakeSpeed`,
+    defaultPhysicalEntity: `Frequency`
+  },
+  Gobo2Pos: {
+    // Controls the angle of indexed rotation of gobos in gobo wheel 2.
+    inheritFrom: `Gobo1Pos`
+  },
+  Gobo2PosRotation: {
+    // Controls the speed and direction of continuous rotation of gobos in gobo wheel 2.
+    inheritFrom: `Gobo1PosRotation`
+  },
+  Gobo3: {
+    // Selects gobos in the fixture's gobo wheel 3.
+    inheritFrom: `Gobo1`
+  },
+  Gobo3Spin: {
+    // Controls the speed and direction of the continuous rotation of gobo wheel 3.
+    inheritFrom: `Gobo1Spin`
+  },
+  Gobo3Shake: {
+    // Control the frequency of the shake of gobo wheel 3.
+    inheritFrom: `Gobo1`,
+    oflProperty: `shakeSpeed`,
+    defaultPhysicalEntity: `Frequency`
+  },
+  Gobo3Pos: {
+    // Controls the angle of indexed rotation of gobos in gobo wheel 3.
+    inheritFrom: `Gobo1Pos`
+  },
+  Gobo3PosRotation: {
+    // Controls the speed and direction of the continuous rotation of gobos in gobo wheel 3.
+    inheritFrom: `Gobo1PosRotation`
+  },
   AnimationWheel: undefined, // Inserts a gobo disk into the beam. The disk has the ability to continuously index and rotate.
   AnimationIndexRotate: undefined, // Controls the animation disk's index or its rotation speed.
   AnimationOffset: undefined, // Controls the animation disk's shaking.
@@ -162,10 +266,7 @@ const gdtfAttributes = {
     oflProperty: `speed`,
     defaultPhysicalEntity: `AngularSpeed`,
     beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
-      if (/CCW|counter[-\s]*clockwise/.test(gdtfCapability.$.Name)) {
-        gdtfCapability._physicalFrom = -Math.abs(gdtfCapability._physicalFrom);
-        gdtfCapability._physicalTo = -Math.abs(gdtfCapability._physicalTo);
-      }
+      normalizeAngularSpeedDirection(gdtfCapability);
     }
   },
   Color2: {
@@ -681,7 +782,10 @@ const gdtfAttributes = {
     // Fog or hazer's Fan feature.
     oflType: `Rotation`,
     oflProperty: `speed`,
-    defaultPhysicalEntity: `AngularSpeed`
+    defaultPhysicalEntity: `AngularSpeed`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      normalizeAngularSpeedDirection(gdtfCapability);
+    }
   },
   Fog: {
     // Fog or hazer's Fog feature.
@@ -818,6 +922,20 @@ const gdtfAttributes = {
   ShaperMacros: undefined, // Predefined presets for shaper positions.
   Video: undefined // Controls video features.
 };
+
+/**
+ * @param {!object} gdtfCapability The enhanced <ChannelSet> XML object.
+ */
+function normalizeAngularSpeedDirection(gdtfCapability) {
+  if (/CCW|counter[-\s]*clockwise/.test(gdtfCapability.$.Name)) {
+    gdtfCapability._physicalFrom = -Math.abs(gdtfCapability._physicalFrom);
+    gdtfCapability._physicalTo = -Math.abs(gdtfCapability._physicalTo);
+  }
+  else if (/CW|clockwise/.test(gdtfCapability.$.Name)) {
+    gdtfCapability._physicalFrom = Math.abs(gdtfCapability._physicalFrom);
+    gdtfCapability._physicalTo = Math.abs(gdtfCapability._physicalTo);
+  }
+}
 
 /**
  * @param {!object} gdtfCapability The enhanced <ChannelSet> XML object.
