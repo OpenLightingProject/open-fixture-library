@@ -96,7 +96,7 @@
         </datalist>
 
         <app-labeled-input :formstate="formstate" name="resolution" label="Channel resolution">
-          <select v-model="channel.resolution" name="resolution">
+          <select v-model="channel.resolution" name="resolution" @change="onResolutionChanged">
             <option :value="Constants.RESOLUTION_8BIT">8 bit (No fine channels)</option>
             <option :value="Constants.RESOLUTION_16BIT">16 bit (1 fine channel)</option>
             <option :value="Constants.RESOLUTION_24BIT">24 bit (2 fine channels)</option>
@@ -149,7 +149,7 @@
           v-if="channel.wizard.show"
           :wizard="channel.wizard"
           :capabilities="channel.capabilities"
-          :resolution="capResolution"
+          :resolution="channel.dmxValueResolution"
           :formstate="formstate"
           @close="onWizardClose" />
 
@@ -161,7 +161,7 @@
             :capabilities="channel.capabilities"
             :formstate="formstate"
             :cap-index="index"
-            :resolution="capResolution"
+            :resolution="channel.dmxValueResolution"
             @insert-capability-before="insertEmptyCapability(index)"
             @insert-capability-after="insertEmptyCapability(index + 1)" />
         </div>
@@ -297,11 +297,8 @@ export default {
     };
   },
   computed: {
-    capResolution() {
-      return Math.min(this.channel.resolution, this.channel.dmxValueResolution);
-    },
     dmxMax() {
-      return Math.pow(256, this.capResolution) - 1;
+      return Math.pow(256, this.channel.dmxValueResolution) - 1;
     },
     currentMode() {
       const uuid = this.channel.modeId;
@@ -499,6 +496,12 @@ export default {
       if (matchingType) {
         cap.type = matchingType;
         changeCapabilityType();
+      }
+    },
+
+    onResolutionChanged() {
+      if (this.channel.dmxValueResolution > this.channel.resolution) {
+        this.channel.dmxValueResolution = this.channel.resolution;
       }
     },
 
