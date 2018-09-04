@@ -1,3 +1,5 @@
+const { followXmlNodeReference, getRgbColorFromGdtfColor } = require(`./gdtf-helpers.js`);
+
 // see https://gdtf-share.com/wiki/GDTF_File_Description#Attribute
 const gdtfUnits = {
   None(value) {
@@ -107,7 +109,38 @@ const gdtfAttributes = {
   AnimationIndexRotate: undefined, // Controls the animation disk's index or its rotation speed.
   AnimationOffset: undefined, // Controls the animation disk's shaking.
   ColorEffects: undefined, // Selects predefined color effects built into the fixture.
-  Color1: undefined, // Selects colors in the fixture's color wheel 1.
+  Color1: {
+    // Selects colors in the fixture's color wheel 1.
+    oflType: `ColorWheelIndex`,
+    oflProperty: null,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      const index = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
+      capability.index = index;
+
+      if (`Wheel` in gdtfCapability._channelFunction.$) {
+        const gdtfWheel = followXmlNodeReference(gdtfFixture.Wheels[0], gdtfCapability._channelFunction.$.Wheel);
+        const gdtfSlot = gdtfWheel.Slot[index];
+
+        if (gdtfSlot) {
+          if (gdtfSlot.$.Name !== gdtfSlot.$.Name) {
+            gdtfCapability.$.Name += ` (${gdtfSlot.$.Name})`;
+          }
+
+          if (gdtfSlot.$.Color) {
+            capability.colors = [getRgbColorFromGdtfColor(gdtfSlot.$.Color)];
+          }
+        }
+      }
+
+      const physicalFrom = gdtfCapability._physicalFrom;
+      const physicalTo = gdtfCapability._physicalTo;
+
+      // TODO: support physical values -0.5…0.5 to specify proportional color wheel capabilities
+      if (physicalFrom !== 0 || physicalTo !== 1) {
+        gdtfCapability.$.Name += ` ${physicalFrom}…${physicalTo}`;
+      }
+    }
+  },
   Color1Spin: undefined, // Controls the speed and direction of the fixture's color wheel 1.
   Color2: undefined, // Selects colors in the fixture's color wheel 2.
   Color2Spin: undefined, // Controls the speed and direction of the fixture's color wheel 2.
