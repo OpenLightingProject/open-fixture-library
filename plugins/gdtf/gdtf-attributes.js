@@ -71,7 +71,8 @@ const gdtfUnits = {
     return `${value}nm`;
   },
   ColorComponent(value) {
-    // this entity is used as a brightness percentage for ColorRGBX attributes (X = 1…16)
+    // this entity is used as a brightness percentage for
+    // ColorRGBX attributes (X = 1…16) and CTO / CTC / CTB attributes
     // or as an "index offset" for ColorX attributes (X = 1…4) -> handled before
     return `${value * 100}%`;
   }
@@ -270,9 +271,20 @@ const gdtfAttributes = {
   },
   ColorMacro: undefined, // Selects predefined colors that are programed in the fixture's firmware.
   ColorMacro2: undefined, // Selects predefined colors that are programed in the fixture's firmware (2).
-  CTO: undefined, // Controls the fixture's "Correct to orange" wheel or mixing system.
-  CTC: undefined, // Controls the fixture's "Correct to color" wheel or mixing system.
-  CTB: undefined, // Controls the fixture's "Correct to blue" wheel or mixing system.
+  CTO: {
+    // Controls the fixture's "Correct to orange" wheel or mixing system.
+    oflType: `ColorTemperature`,
+    oflProperty: `colorTemperature`,
+    defaultPhysicalEntity: `Temperature` // ColorComponent is also common
+  },
+  CTC: {
+    // Controls the fixture's "Correct to color" wheel or mixing system.
+    inheritFrom: `CTO`
+  },
+  CTB: {
+    // Controls the fixture's "Correct to blue" wheel or mixing system.
+    inheritFrom: `CTO`
+  },
   'HSB_Hue': undefined, // Controls the fixture's color attribute regarding the hue.
   'HSB_Saturation': undefined, // Controls the fixture's color attribute regarding the saturation.
   'HSB_Brightness': undefined, // Controls the fixture's color attribute regarding the brightness.
