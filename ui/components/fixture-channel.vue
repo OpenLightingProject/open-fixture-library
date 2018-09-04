@@ -66,23 +66,23 @@
 
       <template v-if="(unwrappedChannel instanceof Channel)">
         <app-labeled-value
-          v-if="finenessInMode > 0"
+          v-if="resolutionInMode > Channel.RESOLUTION_8BIT"
           name="channel-fineChannelAliases"
           label="Fine channels">
-          {{ unwrappedChannel.fineChannels.slice(0, finenessInMode).map(
+          {{ unwrappedChannel.fineChannels.slice(0, resolutionInMode - 1).map(
             fineChannel => `${fineChannel.name} (channel&nbsp;${mode.getChannelIndex(fineChannel) + 1})`
           ).join(`, `) }}
         </app-labeled-value>
 
         <app-labeled-value
           v-if="unwrappedChannel.hasDefaultValue"
-          :value="`${unwrappedChannel.getDefaultValueWithFineness(finenessInMode)}`"
+          :value="`${unwrappedChannel.getDefaultValueWithResolution(resolutionInMode)}`"
           name="channel-defaultValue"
           label="Default DMX value" />
 
         <app-labeled-value
           v-if="unwrappedChannel.hasHighlightValue"
-          :value="`${unwrappedChannel.getHighlightValueWithFineness(finenessInMode)}`"
+          :value="`${unwrappedChannel.getHighlightValueWithResolution(resolutionInMode)}`"
           name="channel-highlightValue"
           label="Highlight DMX value" />
 
@@ -113,7 +113,7 @@
         <app-fixture-capability-table
           :channel="unwrappedChannel"
           :mode="mode"
-          :fineness-in-mode="finenessInMode" />
+          :resolution-in-mode="resolutionInMode" />
       </template>
 
     </app-conditional-details>
@@ -214,8 +214,8 @@ export default {
 
       return ``;
     },
-    finenessInMode() {
-      return this.unwrappedChannel.getFinenessInMode(this.mode);
+    resolutionInMode() {
+      return this.unwrappedChannel.getResolutionInMode(this.mode);
     }
   }
 };

@@ -1,14 +1,17 @@
 <template>
   <span :class="{ 'entity-input': true, 'has-number': hasNumber }">
 
-    <app-property-input-number
-      v-if="hasNumber"
-      ref="input"
-      v-model="selectedNumber"
-      :schema-property="units[selectedUnit].numberSchema"
-      :required="true"
-      @focus.native="onFocus"
-      @blur.native="onBlur($event)" />
+    <validate v-if="hasNumber" tag="span">
+      <app-property-input-number
+        ref="input"
+        v-model="selectedNumber"
+        :schema-property="units[selectedUnit].numberSchema"
+        :required="true"
+        :maximum="selectedUnitIsNumber && maxNumber !== null ? maxNumber : `invalid`"
+        :name="name ? `${name}-number` : null"
+        @focus.native="onFocus"
+        @blur.native="onBlur($event)" />
+    </validate>
 
     <select
       ref="select"
@@ -44,6 +47,9 @@
   & select {
     width: 20ex;
   }
+  &.wide select {
+    width: 30ex;
+  }
 
   &.has-number {
     & select {
@@ -51,6 +57,15 @@
     }
     & input {
       width: 9ex;
+      margin-right: 1ex;
+    }
+  }
+  &.wide.has-number {
+    & select {
+      width: 15ex;
+    }
+    & input {
+      width: 14ex;
       margin-right: 1ex;
     }
   }
@@ -94,6 +109,16 @@ export default {
       type: null,
       required: false,
       default: ``
+    },
+    maxNumber: {
+      type: Number,
+      required: false,
+      default: null
+    },
+    name: {
+      type: String,
+      required: false,
+      default: null
     }
   },
   data() {
@@ -126,7 +151,7 @@ export default {
       for (const unitName of this.unitNames) {
         const unitSchema = this.properties.units[unitName];
 
-        const unitStr = `pattern` in unitSchema ? unitSchema.pattern.replace(`^-?[0-9]+(\\.[0-9]+)?`, ``).replace(/\$$/, ``) : ``;
+        const unitStr = `pattern` in unitSchema ? unitSchema.pattern.replace(/^.*\)\??(.*?)\$$/, `$1`) : ``;
         const numberSchema = `pattern` in unitSchema ? this.properties.units.number : unitSchema;
 
         units[unitName] = {
@@ -163,6 +188,10 @@ export default {
     },
     hasNumber() {
       return hasNumber(this.selectedUnit, this.enumValues);
+    },
+    selectedUnitIsNumber() {
+      const selectedUnitObj = this.properties.units[this.selectedUnit];
+      return selectedUnitObj && !(`pattern` in selectedUnitObj);
     },
     selectedNumber: {
       get() {

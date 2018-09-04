@@ -755,6 +755,7 @@
     },
     "Gobo 1 Position": {
       "fineChannelAliases": ["Gobo 1 Position fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 127],
@@ -850,6 +851,7 @@
     },
     "Gobo 2 Position": {
       "fineChannelAliases": ["Gobo 2 Position fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 127],
@@ -946,6 +948,7 @@
     },
     "Iris": {
       "fineChannelAliases": ["Iris fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 131],

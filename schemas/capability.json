@@ -10,7 +10,7 @@
       "type": "array",
       "minItems": 2,
       "maxItems": 2,
-      "items": { "$ref": "definitions.json#/dmxValue" }
+      "items": { "$ref": "definitions.json#/units/dmxValue" }
     },
     "type": { "enum": [
       "NoFunction",
