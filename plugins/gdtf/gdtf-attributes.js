@@ -634,10 +634,24 @@ const gdtfAttributes = {
   Effects2Rate: undefined, // Speed of running effects (2).
   Effects2Fade: undefined, // Snapping or smooth look of running effects (2).
   EffectsSync: undefined, // Sets offset between running effects and effects 2.
-  Focus: undefined, // Controls the sharpness of the fixture's spot light. Can blur or sharpen the edge of the spot.
-  Focus2: undefined, // Controls the sharpness of the fixture's spot light. Can blur or sharpen the edge of the spot (2).
-  FocusAdjust: undefined, // Autofocuses functionality using presets.
-  FocusDistance: undefined, // Autofocuses functionality using distance.
+  Focus: {
+    // Controls the sharpness of the fixture's spot light. Can blur or sharpen the edge of the spot.
+    oflType: `Focus`,
+    oflProperty: `distance`,
+    defaultPhysicalEntity: `Length`
+  },
+  Focus2: {
+    // Controls the sharpness of the fixture's spot light. Can blur or sharpen the edge of the spot (2).
+    inheritFrom: `Focus`
+  },
+  FocusAdjust: {
+    // Autofocuses functionality using presets.
+    inheritFrom: `Focus`
+  },
+  FocusDistance: {
+    // Autofocuses functionality using distance.
+    inheritFrom: `Focus`
+  },
   Control: undefined, // Controls the channel of a fixture.
   DimmerMode: undefined, // Selects different modes of intensity.
   DimmerCurve: undefined, // Selects different dimmer curves of the fixture.
