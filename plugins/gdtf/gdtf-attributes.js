@@ -279,8 +279,35 @@ const gdtfAttributes = {
     // Controls the intensity of the fixture's color emitters.
     inheritFrom: `ColorRGB6`
   },
-  ColorMacro: undefined, // Selects predefined colors that are programed in the fixture's firmware.
-  ColorMacro2: undefined, // Selects predefined colors that are programed in the fixture's firmware (2).
+  ColorMacro: {
+    // Selects predefined colors that are programed in the fixture's firmware.
+    oflType: `ColorPreset`,
+    oflProperty: null,
+    defaultPhysicalEntity: `ColorComponent`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      // sometimes a workaround to add color information is used: reference a virtual color wheel
+
+      const index = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
+      if (`Wheel` in gdtfCapability._channelFunction.$) {
+        const gdtfWheel = followXmlNodeReference(gdtfFixture.Wheels[0], gdtfCapability._channelFunction.$.Wheel);
+        const gdtfSlot = gdtfWheel.Slot[index];
+
+        if (gdtfSlot) {
+          if (gdtfCapability.$.Name !== gdtfSlot.$.Name) {
+            gdtfCapability.$.Name += ` (${gdtfSlot.$.Name})`;
+          }
+
+          if (gdtfSlot.$.Color) {
+            capability.colors = [getRgbColorFromGdtfColor(gdtfSlot.$.Color)];
+          }
+        }
+      }
+    }
+  },
+  ColorMacro2: {
+    // Selects predefined colors that are programed in the fixture's firmware (2).
+    inheritFrom: `ColorMacro`
+  },
   CTO: {
     // Controls the fixture's "Correct to orange" wheel or mixing system.
     oflType: `ColorTemperature`,
