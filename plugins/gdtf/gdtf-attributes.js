@@ -615,10 +615,39 @@ const gdtfAttributes = {
     // Controls the frequency/speed of the fixture´s mechanical or electronical random opening pulse shutter feature (3).
     inheritFrom: `Shutter1StrobeRandomPulseOpen`
   },
-  Iris: undefined, // Controls the diameter of the fixture's beam.
-  IrisStrobe: undefined, // Sets speed of the iris’s strobe feature.
-  IrisPulseClose: undefined, // Sets speed of iris‘s closing pulse.
-  IrisPulseOpen: undefined, // Sets speed of iris‘s opening pulse.
+  Iris: {
+    // Controls the diameter of the fixture's beam.
+    oflType: `Iris`,
+    oflProperty: `openPercent`,
+    defaultPhysicalEntity: `Angle`
+  },
+  IrisStrobe: {
+    // Sets speed of the iris’s strobe feature.
+    oflType: `IrisEffect`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `Frequency`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.effectName = `Strobe`;
+    }
+  },
+  IrisPulseClose: {
+    // Sets speed of iris‘s closing pulse.
+    oflType: `IrisEffect`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `Frequency`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.effectName = `RampDown`;
+    }
+  },
+  IrisPulseOpen: {
+    // Sets speed of iris‘s opening pulse.
+    oflType: `IrisEffect`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `Frequency`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.effectName = `RampUp`;
+    }
+  },
   Frost: undefined, // The ability to soften the fixture's spot light with a frosted lens.
   Frost2: undefined, // The ability to soften the fixture's spot light with a frosted lens (2).
   Prism: undefined, // Controls the insertion of fixture ́s prism wheel 1. Refracts the beam into multiple beams of light on wheel 1.
