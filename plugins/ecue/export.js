@@ -132,10 +132,10 @@ function handleMode(xmlFixture, mode) {
       continue;
     }
 
-    // ecue doesn't support switching channels, so we just use the default channel but change the name
-    let switchingChannelName = null;
+    const channelName = channel.name;
+
+    // ecue doesn't support switching channels, so we just use the default channel's data
     if (channel instanceof SwitchingChannel) {
-      switchingChannelName = channel.name;
       channel = channel.defaultChannel;
 
       if (channel instanceof MatrixChannel) {
@@ -168,7 +168,7 @@ function handleMode(xmlFixture, mode) {
     const highlightValue = channel.getHighlightValueWithResolution(resolution);
 
     const xmlChannel = xmlFixture.element(getChannelType(channel), {
-      'Name': switchingChannelName || channel.name,
+      'Name': channelName,
       'DefaultValue': defaultValue,
       'Highlight': highlightValue,
       'Deflection': 0,
