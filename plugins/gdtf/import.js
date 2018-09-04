@@ -363,9 +363,7 @@ module.exports.import = function importGdtf(buffer, filename) {
           dmxRange: [gdtfCapability._dmxFrom, getDmxRangeEnd(index)]
         };
 
-        const gdtfAttribute = gdtfCapability._channelFunction._attribute;
-
-        const capabilityTypeData = gdtfAttributes[gdtfAttribute.$.Name];
+        const capabilityTypeData = getCapabilityTypeData(gdtfCapability);
 
         if (capabilityTypeData) {
           capability.type = capabilityTypeData.oflType;
@@ -425,11 +423,40 @@ module.exports.import = function importGdtf(buffer, filename) {
 
       /**
        * @param {!object} gdtfCapability The enhanced <ChannelSet> XML object.
+       * @returns {?object} The capability type data from @file gdtf-attributes.js
+       */
+      function getCapabilityTypeData(gdtfCapability) {
+        const gdtfAttribute = gdtfCapability._channelFunction._attribute;
+        const attrName = gdtfAttribute.$.Name;
+
+        const capabilityTypeData = gdtfAttributes[attrName];
+
+        if (!capabilityTypeData) {
+          return null;
+        }
+
+        if (!capabilityTypeData.inheritFrom) {
+          return capabilityTypeData;
+        }
+
+        // save the inherited result for later access
+        gdtfAttributes[attrName] = Object.assign(
+          {},
+          gdtfAttributes[capabilityTypeData.inheritFrom],
+          capabilityTypeData
+        );
+        delete gdtfAttributes[attrName].inheritFrom;
+
+        return gdtfAttributes[attrName];
+      }
+
+      /**
+       * @param {!object} gdtfCapability The enhanced <ChannelSet> XML object.
        * @returns {!function} The function to turn a physical value into an entity string with the correct unit.
        */
       function getPhysicalUnit(gdtfCapability) {
         const gdtfAttribute = gdtfCapability._channelFunction._attribute;
-        const capabilityTypeData = gdtfAttributes[gdtfAttribute.$.Name];
+        const capabilityTypeData = getCapabilityTypeData(gdtfCapability);
 
         let physicalEntity = gdtfAttribute.$.PhysicalUnit;
 
@@ -437,8 +464,11 @@ module.exports.import = function importGdtf(buffer, filename) {
           if (minPhysicalValue === 0 && maxPhysicalValue === 1) {
             physicalEntity = `Percent`;
           }
-          else {
+          else if (capabilityTypeData) {
             physicalEntity = capabilityTypeData.defaultPhysicalEntity || `None`;
+          }
+          else {
+            physicalEntity = `None`;
           }
         }
 
@@ -586,7 +616,8 @@ module.exports.import = function importGdtf(buffer, filename) {
         addChannelKeyToDmxBreakWrapper(gdtfChannel, dmxBreakWrappers);
       });
 
-      // TODO: also look through gdtfMode's Relations to (maybe?) find switching channels
+      // TODO: also look through gdtfMode's Relations to find switching channels
+      // see https://gdtf-share.com/wiki/Relations#Mode_Dependency
 
       return {
         name: gdtfMode.$.Name,
