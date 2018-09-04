@@ -1,6 +1,6 @@
 import uuidV4 from 'uuid/v4.js';
 
-export const Constants = {
+export const constants = {
   RESOLUTION_8BIT: 1,
   RESOLUTION_16BIT: 2,
   RESOLUTION_24BIT: 3,
@@ -104,8 +104,8 @@ export function getEmptyChannel() {
     name: ``,
     type: ``,
     color: ``,
-    resolution: Constants.RESOLUTION_8BIT,
-    dmxValueResolution: Constants.RESOLUTION_8BIT,
+    resolution: constants.RESOLUTION_8BIT,
+    dmxValueResolution: constants.RESOLUTION_8BIT,
     defaultValue: ``,
     highlightValue: ``,
     invert: null,
@@ -167,7 +167,7 @@ export function isChannelChanged(channel) {
     }
 
     if (prop === `resolution` || prop === `dmxValueResolution`) {
-      return channel[prop] !== Constants.RESOLUTION_8BIT;
+      return channel[prop] !== constants.RESOLUTION_8BIT;
     }
 
     if (prop === `capabilities`) {

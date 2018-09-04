@@ -97,14 +97,14 @@
 
         <app-labeled-input :formstate="formstate" name="resolution" label="Channel resolution">
           <select v-model="channel.resolution" name="resolution" @change="onResolutionChanged">
-            <option :value="Constants.RESOLUTION_8BIT">8 bit (No fine channels)</option>
-            <option :value="Constants.RESOLUTION_16BIT">16 bit (1 fine channel)</option>
-            <option :value="Constants.RESOLUTION_24BIT">24 bit (2 fine channels)</option>
+            <option :value="constants.RESOLUTION_8BIT">8 bit (No fine channels)</option>
+            <option :value="constants.RESOLUTION_16BIT">16 bit (1 fine channel)</option>
+            <option :value="constants.RESOLUTION_24BIT">24 bit (2 fine channels)</option>
           </select>
         </app-labeled-input>
 
         <app-labeled-input
-          v-if="channel.resolution > Constants.RESOLUTION_8BIT"
+          v-if="channel.resolution > constants.RESOLUTION_8BIT"
           :formstate="formstate"
           name="dmxValueResolution"
           label="DMX value resolution">
@@ -113,9 +113,9 @@
             name="dmxValueResolution"
             required
             @change="onDmxValueResolutionChanged">
-            <option :value="Constants.RESOLUTION_8BIT">8 bit (range 0…255)</option>
-            <option v-if="channel.resolution >= Constants.RESOLUTION_16BIT" :value="Constants.RESOLUTION_16BIT">16 bit (range 0…65535)</option>
-            <option v-if="channel.resolution >= Constants.RESOLUTION_24BIT" :value="Constants.RESOLUTION_24BIT">24 bit (range 0…16777215)</option>
+            <option :value="constants.RESOLUTION_8BIT">8 bit (range 0…255)</option>
+            <option v-if="channel.resolution >= constants.RESOLUTION_16BIT" :value="constants.RESOLUTION_16BIT">16 bit (range 0…65535)</option>
+            <option v-if="channel.resolution >= constants.RESOLUTION_24BIT" :value="constants.RESOLUTION_24BIT">24 bit (range 0…16777215)</option>
           </select>
         </app-labeled-input>
 
@@ -243,7 +243,7 @@ import uuidV4 from 'uuid/v4.js';
 
 import schemaProperties from '~~/lib/schema-properties.js';
 import {
-  Constants,
+  constants,
   getEmptyCapability,
   getEmptyFineChannel,
   getSanitizedChannel,
@@ -293,7 +293,7 @@ export default {
       restored: false,
       channelChanged: false,
       properties: schemaProperties,
-      Constants
+      constants
     };
   },
   computed: {
@@ -329,7 +329,7 @@ export default {
             ch => `coarseChannelId` in ch && ch.coarseChannelId === channel.coarseChannelId
           );
 
-          const maxFoundResolution = Math.max(Constants.RESOLUTION_8BIT, ...otherFineChannels.map(
+          const maxFoundResolution = Math.max(constants.RESOLUTION_8BIT, ...otherFineChannels.map(
             ch => ch.resolution
           ));
 
@@ -568,7 +568,7 @@ export default {
       this.$set(this.fixture.availableChannels, this.channel.uuid, getSanitizedChannel(this.channel));
       this.currentMode.channels.push(this.channel.uuid);
 
-      this.addFineChannels(this.channel, Constants.RESOLUTION_16BIT, true);
+      this.addFineChannels(this.channel, constants.RESOLUTION_16BIT, true);
     },
 
     saveEditedChannel() {
@@ -596,7 +596,7 @@ export default {
       newChannel.uuid = newChannelKey;
       this.$set(this.fixture.availableChannels, newChannelKey, newChannel);
 
-      const fineChannelUuids = this.addFineChannels(newChannel, Constants.RESOLUTION_16BIT, false);
+      const fineChannelUuids = this.addFineChannels(newChannel, constants.RESOLUTION_16BIT, false);
 
       this.currentMode.channels = this.currentMode.channels.map(key => {
         if (key === oldChannelKey) {

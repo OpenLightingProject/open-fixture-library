@@ -165,7 +165,7 @@ ol.mode-channels {
 
 <script>
 import schemaProperties from '~~/lib/schema-properties.js';
-import { Constants } from '~/assets/scripts/editor-utils.mjs';
+import { constants } from '~/assets/scripts/editor-utils.mjs';
 
 import svgVue from '~/components/svg.vue';
 import labeledInputVue from '~/components/labeled-input.vue';
@@ -235,7 +235,7 @@ export default {
               return false;
             }
 
-            if (channel.resolution === Constants.RESOLUTION_16BIT) {
+            if (channel.resolution === constants.RESOLUTION_16BIT) {
               // next coarser channel is coarse channel, which is in target mode
               return true;
             }
@@ -294,7 +294,7 @@ export default {
 
       // first remove the finer channels if any
       let coarseChannelId = channelUuid;
-      let resolution = Constants.RESOLUTION_8BIT;
+      let resolution = constants.RESOLUTION_8BIT;
       if (this.isFineChannel(channelUuid)) {
         coarseChannelId = channel.coarseChannelId;
         resolution = channel.resolution;

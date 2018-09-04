@@ -239,7 +239,7 @@
 <script>
 import scrollIntoView from 'scroll-into-view';
 import {
-  Constants,
+  constants,
   getEmptyFixture,
   getEmptyChannel,
   getEmptyMode,
@@ -397,7 +397,7 @@ export default {
 
       if (`coarseChannelId` in channel) {
         let name = `${this.getChannelName(channel.coarseChannelId)} fine`;
-        if (channel.resolution > Constants.RESOLUTION_16BIT) {
+        if (channel.resolution > constants.RESOLUTION_16BIT) {
           name += `^${channel.resolution - 1}`;
         }
 
