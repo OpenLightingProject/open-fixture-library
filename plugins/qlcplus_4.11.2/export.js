@@ -119,7 +119,7 @@ function addChannel(xml, channel) {
         dmxRange: [0, 255],
         type: `Generic`,
         comment: capabilityName
-      }, 1, channel)
+      }, Channel.RESOLUTION_8BIT, channel)
     ];
   }
   else {

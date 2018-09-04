@@ -162,7 +162,7 @@ function addFineChannel(xml, fineChannel) {
       dmxRange: [0, 255],
       type: `Generic`,
       comment: `Fine^${fineChannel.resolution - 1} adjustment for ${fineChannel.coarseChannel.uniqueName}`
-    }, 1, fineChannel.coarseChannel));
+    }, Channel.RESOLUTION_8BIT, fineChannel.coarseChannel));
 
     return;
   }
@@ -193,7 +193,7 @@ function addFineChannel(xml, fineChannel) {
     dmxRange: [0, 255],
     type: `Generic`,
     comment: `Fine adjustment for ${fineChannel.coarseChannel.uniqueName}`
-  }, 1, fineChannel.coarseChannel));
+  }, Channel.RESOLUTION_8BIT, fineChannel.coarseChannel));
 }
 
 /**
