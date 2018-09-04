@@ -76,9 +76,9 @@ const gdtfUnits = {
 const gdtfAttributes = {
   Dimmer: {
     // Controls the intensity of a fixture.
-    type: `Intensity`,
-    defaultPhysicalEntity: `LuminousIntensity`,
-    oflProperty: `brightness`
+    oflType: `Intensity`,
+    oflProperty: `brightness`,
+    defaultPhysicalEntity: `LuminousIntensity`
   },
   Pan: undefined, // Controls the fixture's sideward movement (horizontal axis).
   Tilt: undefined, // Controls the fixture's upward and the downward movement (vertical axis).
@@ -142,15 +142,15 @@ const gdtfAttributes = {
   'HSB_Quality': undefined, // Controls the fixture's color attribute regarding the quality.
   StrobeDuration: {
     // Controls the length of a strobe flash.
-    type: `StrobeDuration`,
-    defaultPhysicalEntity: `Time`,
-    oflProperty: `duration`
+    oflType: `StrobeDuration`,
+    oflProperty: `duration`,
+    defaultPhysicalEntity: `Time`
   },
   StrobeRate: {
     // Controls the time between strobe flashes.
-    type: `StrobeSpeed`,
-    defaultPhysicalEntity: `Frequency`,
-    oflProperty: `speed`
+    oflType: `StrobeSpeed`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `Frequency`
   },
   Shutter: undefined, // Controls the fixture´s mechanical or electronical shutter feature.
   ShutterStrobe: undefined, // Controls the frequency/speed of the fixture´s mechanical or electronical strobe shutter feature.
@@ -259,9 +259,9 @@ const gdtfAttributes = {
   Blower: undefined, // Fog or hazer‘s blower feature.
   Fan: {
     // Fog or hazer's Fan feature.
-    type: `Rotation`,
-    defaultPhysicalEntity: `AngularSpeed`,
-    oflProperty: `speed`
+    oflType: `Rotation`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `AngularSpeed`
   },
   Fog: undefined, // Fog or hazer's Fog feature.
   Haze: undefined, // Fog or hazer's haze feature.

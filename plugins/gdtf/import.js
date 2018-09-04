@@ -313,12 +313,29 @@ module.exports.import = function importGdtf(buffer, filename) {
             gdtfChannelFunction.$.Attribute
           );
 
+          if (!gdtfChannelFunction._attribute) {
+            gdtfChannelFunction._attribute = {
+              $: {
+                Name: `NoFeature`
+              }
+            };
+          }
+
           gdtfChannelFunction.ChannelSet.forEach(gdtfChannelSet => {
             // save parent nodes for future use
             gdtfChannelSet._logicalChannel = gdtfLogicalChannel;
             gdtfChannelSet._channelFunction = gdtfChannelFunction;
 
             // do some preprocessing
+
+            if (!(`$` in gdtfChannelSet)) {
+              gdtfChannelSet.$ = {};
+            }
+
+            if (!(`Name` in gdtfChannelSet.$)) {
+              gdtfChannelSet.$.Name = ``;
+            }
+
             gdtfChannelSet._dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelSet.$.DMXFrom || `0/1`);
 
             let physicalFrom = parseFloat(gdtfChannelSet.$.PhysicalFrom);
@@ -346,39 +363,36 @@ module.exports.import = function importGdtf(buffer, filename) {
           dmxRange: [gdtfCapability._dmxFrom, getDmxRangeEnd(index)]
         };
 
-        const gdtfAttribute = gdtfCapability._channelFunction._attribute || {
-          $: {
-            Name: `NoFeature`
-          }
-        };
+        const gdtfAttribute = gdtfCapability._channelFunction._attribute;
 
         const capabilityTypeData = gdtfAttributes[gdtfAttribute.$.Name];
 
         if (capabilityTypeData) {
-          capability.type = capabilityTypeData.type;
+          capability.type = capabilityTypeData.oflType;
 
-          let physicalEntity = gdtfAttribute.$.PhysicalUnit;
-          if (!physicalEntity) {
-            if (minPhysicalValue === 0 && maxPhysicalValue === 1) {
-              physicalEntity = `Percent`;
-            }
-            else {
-              physicalEntity = capabilityTypeData.defaultPhysicalEntity;
-            }
+          if (`beforePhysicalPropertyHook` in capabilityTypeData) {
+            capabilityTypeData.beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture);
           }
 
-          const physicalFrom = gdtfCapability._physicalFrom;
-          const physicalTo = gdtfCapability._physicalTo;
           const oflProperty = capabilityTypeData.oflProperty;
 
-          const physicalUnit = gdtfUnits[physicalEntity];
+          if (oflProperty !== null) {
+            const physicalUnit = getPhysicalUnit(gdtfCapability);
 
-          if (physicalFrom === physicalTo) {
-            capability[oflProperty] = physicalUnit(physicalFrom, null);
+            const physicalFrom = gdtfCapability._physicalFrom;
+            const physicalTo = gdtfCapability._physicalTo;
+
+            if (physicalFrom === physicalTo) {
+              capability[oflProperty] = physicalUnit(physicalFrom, null);
+            }
+            else {
+              capability[`${oflProperty}Start`] = physicalUnit(physicalFrom, physicalTo);
+              capability[`${oflProperty}End`] = physicalUnit(physicalTo, physicalFrom);
+            }
           }
-          else {
-            capability[`${oflProperty}Start`] = physicalUnit(physicalFrom, physicalTo);
-            capability[`${oflProperty}End`] = physicalUnit(physicalTo, physicalFrom);
+
+          if (`afterPhysicalPropertyHook` in capabilityTypeData) {
+            capabilityTypeData.afterPhysicalPropertyHook(capability, gdtfCapability, gdtfFixture);
           }
         }
         else {
@@ -407,6 +421,28 @@ module.exports.import = function importGdtf(buffer, filename) {
 
         const [nextDmxFromValue, resolution] = gdtfCapabilities[index + 1]._dmxFrom;
         return [nextDmxFromValue - 1, resolution];
+      }
+
+      /**
+       * @param {!object} gdtfCapability The enhanced <ChannelSet> XML object.
+       * @returns {!function} The function to turn a physical value into an entity string with the correct unit.
+       */
+      function getPhysicalUnit(gdtfCapability) {
+        const gdtfAttribute = gdtfCapability._channelFunction._attribute;
+        const capabilityTypeData = gdtfAttributes[gdtfAttribute.$.Name];
+
+        let physicalEntity = gdtfAttribute.$.PhysicalUnit;
+
+        if (!physicalEntity) {
+          if (minPhysicalValue === 0 && maxPhysicalValue === 1) {
+            physicalEntity = `Percent`;
+          }
+          else {
+            physicalEntity = capabilityTypeData.defaultPhysicalEntity || `None`;
+          }
+        }
+
+        return gdtfUnits[physicalEntity];
       }
     }
 
