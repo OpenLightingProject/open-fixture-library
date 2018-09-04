@@ -136,6 +136,48 @@ Example: Channel `Dimmer` contains `fineChannelAliases: ["Dimmer 16-bit", "Dimme
 
 See the [Generic Desk Channel fixture](../fixtures/generic/desk-channel.json) for a simple application example.
 
+DMX values (e.g. default / highlight value, capability ranges) have to be entered in the maximum resolution: If one fine channel is defined, DMX values from 0 to 65535 are possible. If a lower resolution is sufficient for entering DMX values, the channel's `dmxValueResolution` property can be set to the desired resolution (`8bit` for 0…255, `16bit` for 0…65535, etc.). That means that both of the following examples are equivalent:
+
+```js
+"Iris": {
+  "fineChannelAliases": ["Iris fine"],
+  "defaultValue": 33792,
+  "capabilities": [
+    {
+      "dmxRange": [0, 33791],
+      "type": "Iris",
+      "openPercentStart": "100%",
+      "openPercentEnd": "4%"
+    },
+    {
+      "dmxRange": [33792, 65535],
+      "type": "Iris",
+      "openPercent": "4%"
+    }
+  ]
+}
+```
+```js
+"Iris": {
+  "fineChannelAliases": ["Iris fine"],
+  "dmxValueResolution": "8bit",
+  "defaultValue": 132,
+  "capabilities": [
+    {
+      "dmxRange": [0, 131],
+      "type": "Iris",
+      "openPercentStart": "100%",
+      "openPercentEnd": "4%"
+    },
+    {
+      "dmxRange": [132, 255],
+      "type": "Iris",
+      "openPercent": "4%"
+    }
+  ]
+}
+```
+
 
 #### Switching channels
 

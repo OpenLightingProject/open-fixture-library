@@ -1,5 +1,12 @@
 import uuidV4 from 'uuid/v4.js';
 
+export const constants = {
+  RESOLUTION_8BIT: 1,
+  RESOLUTION_16BIT: 2,
+  RESOLUTION_24BIT: 3,
+  RESOLUTION_32BIT: 4
+};
+
 /**
  * @returns {!object} An empty fixture object.
  */
@@ -97,14 +104,14 @@ export function getEmptyChannel() {
     name: ``,
     type: ``,
     color: ``,
-    fineness: 0,
-    defaultValue: null,
-    highlightValue: null,
+    resolution: constants.RESOLUTION_8BIT,
+    dmxValueResolution: constants.RESOLUTION_8BIT,
+    defaultValue: ``,
+    highlightValue: ``,
     invert: null,
     constant: null,
     crossfade: null,
     precedence: ``,
-    capFineness: 0,
     wizard: {
       show: false,
       start: 0,
@@ -119,14 +126,14 @@ export function getEmptyChannel() {
 
 /**
  * @param {!string} coarseChannelId The UUID of the coarse channel.
- * @param {!number} fineness The fineness of the newly created fine channel.
+ * @param {!number} resolution The resolution of the newly created fine channel.
  * @returns {!object} An empty fine channel object for the given coarse channel.
  */
-export function getEmptyFineChannel(coarseChannelId, fineness) {
+export function getEmptyFineChannel(coarseChannelId, resolution) {
   return {
     uuid: uuidV4(),
     coarseChannelId: coarseChannelId,
-    fineness: fineness
+    resolution: resolution
   };
 }
 
@@ -159,8 +166,8 @@ export function isChannelChanged(channel) {
       return channel[prop] !== null;
     }
 
-    if (prop === `fineness` || prop === `capFineness`) {
-      return channel[prop] !== 0;
+    if (prop === `resolution` || prop === `dmxValueResolution`) {
+      return channel[prop] !== constants.RESOLUTION_8BIT;
     }
 
     if (prop === `capabilities`) {

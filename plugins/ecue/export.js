@@ -1,6 +1,7 @@
 const xmlbuilder = require(`xmlbuilder`);
 
 const {
+  Channel,
   FineChannel,
   MatrixChannel,
   NullChannel,
@@ -131,10 +132,10 @@ function handleMode(xmlFixture, mode) {
       continue;
     }
 
-    // ecue doesn't support switching channels, so we just use the default channel but change the name
-    let switchingChannelName = null;
+    const channelName = channel.name;
+
+    // ecue doesn't support switching channels, so we just use the default channel's data
     if (channel instanceof SwitchingChannel) {
-      switchingChannelName = channel.name;
       channel = channel.defaultChannel;
 
       if (channel instanceof MatrixChannel) {
@@ -144,7 +145,7 @@ function handleMode(xmlFixture, mode) {
 
     let fineChannelKey = null;
     if (channel instanceof FineChannel) {
-      if (channel.fineness === 1) {
+      if (channel.resolution === Channel.RESOLUTION_16BIT) {
         // ignore this channel, we handle it together with its coarse channel
         continue;
       }
@@ -154,23 +155,20 @@ function handleMode(xmlFixture, mode) {
       channel = channel.coarseChannel;
     }
 
-    let dmxByte0 = dmxCount + 1;
+    const dmxByte0 = dmxCount + 1;
     let dmxByte1 = 0;
+    let resolution = Channel.RESOLUTION_8BIT;
 
-    if (fineChannelKey !== null) {
-      dmxByte0 = mode.getChannelIndex(fineChannelKey) + 1;
-    }
-    else if (channel.fineChannelAliases.length > 0) {
+    if (fineChannelKey === null && channel.fineChannelAliases.length > 0) {
       dmxByte1 = mode.getChannelIndex(channel.fineChannelAliases[0], `defaultOnly`) + 1;
+      resolution = Math.min(Channel.RESOLUTION_16BIT, channel.getResolutionInMode(mode, `defaultOnly`));
     }
 
-    const fineness = channel.getFinenessInMode(mode, `defaultOnly`);
-
-    const defaultValue = channel.getDefaultValueWithFineness(fineness === 1 ? 1 : 0);
-    const highlightValue = channel.getHighlightValueWithFineness(fineness === 1 ? 1 : 0);
+    const defaultValue = channel.getDefaultValueWithResolution(resolution);
+    const highlightValue = channel.getHighlightValueWithResolution(resolution);
 
     const xmlChannel = xmlFixture.element(getChannelType(channel), {
-      'Name': switchingChannelName || channel.name,
+      'Name': channelName,
       'DefaultValue': defaultValue,
       'Highlight': highlightValue,
       'Deflection': 0,
@@ -183,7 +181,9 @@ function handleMode(xmlFixture, mode) {
       'ClassicPos': viewPosCount
     });
 
-    addCapabilities(xmlChannel, channel, fineness);
+    if (fineChannelKey === null) {
+      addCapabilities(xmlChannel, channel, resolution);
+    }
 
     viewPosCount++;
   }
@@ -239,20 +239,18 @@ function getChannelType(channel) {
 /**
  * @param {!object} xmlChannel The xmlbuilder <Channel*> object.
  * @param {!Channel} channel The OFL channel object.
- * @param {!number} fineness The fineness of the channel in the current mode.
+ * @param {!number} resolution The resolution of the channel in the current mode.
  */
-function addCapabilities(xmlChannel, channel, fineness) {
-  if (fineness < 2) {
-    for (const cap of channel.capabilities) {
-      const dmxRange = cap.getDmxRangeWithFineness(fineness);
-      xmlChannel.element(`Range`, {
-        'Name': cap.name,
-        'Start': dmxRange.start,
-        'End': dmxRange.end,
-        'AutoMenu': cap.menuClick === `hidden` ? 0 : 1,
-        'Centre': cap.menuClick === `center` ? 1 : 0
-      });
-    }
+function addCapabilities(xmlChannel, channel, resolution) {
+  for (const cap of channel.capabilities) {
+    const dmxRange = cap.getDmxRangeWithResolution(resolution);
+    xmlChannel.element(`Range`, {
+      'Name': cap.name,
+      'Start': dmxRange.start,
+      'End': dmxRange.end,
+      'AutoMenu': cap.menuClick === `hidden` ? 0 : 1,
+      'Centre': cap.menuClick === `center` ? 1 : 0
+    });
   }
 }
 

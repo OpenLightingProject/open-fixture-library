@@ -99,16 +99,16 @@ function downgradeChannel(channelObject, channelKey) {
 
   const downgradedChannel = {};
 
-  addIfTruthy(jsonChannel, `name`, downgradedChannel);
+  addIfValidData(downgradedChannel, `name`, jsonChannel.name);
   downgradedChannel.type = channel.type === `NoFunction` ? `Nothing` : channel.type;
-  addIfTruthy(channel, `color`, downgradedChannel);
-  addIfTruthy(jsonChannel, `fineChannelAliases`, downgradedChannel);
-  addIfTruthy(jsonChannel, `defaultValue`, downgradedChannel);
-  addIfTruthy(jsonChannel, `highlightValue`, downgradedChannel);
-  addIfTruthy(channel, `isInverted`, downgradedChannel, `invert`);
-  addIfTruthy(channel, `isConstant`, downgradedChannel, `constant`);
-  addIfTruthy(channel, `canCrossfade`, downgradedChannel, `crossfade`);
-  addIfTruthy(jsonChannel, `precedence`, downgradedChannel);
+  addIfValidData(downgradedChannel, `color`, channel.color);
+  addIfValidData(downgradedChannel, `fineChannelAliases`, jsonChannel.fineChannelAliases);
+  addIfValidData(downgradedChannel, `defaultValue`, channel.hasDefaultValue, channel.defaultValue);
+  addIfValidData(downgradedChannel, `highlightValue`, channel.hasHighlightValue, channel.highlightValue);
+  addIfValidData(downgradedChannel, `invert`, channel.isInverted);
+  addIfValidData(downgradedChannel, `constant`, channel.isConstant);
+  addIfValidData(downgradedChannel, `crossfade`, channel.canCrossfade);
+  addIfValidData(downgradedChannel, `precedence`, jsonChannel.precedence);
 
   channelObject[channelKey] = downgradedChannel;
 
@@ -121,7 +121,7 @@ function downgradeChannel(channelObject, channelKey) {
         name: cap.name
       };
 
-      addIfTruthy(cap.jsonObject, `menuClick`, downgradedCap);
+      addIfValidData(downgradedCap, `menuClick`, cap.jsonObject.menuClick);
       if (cap.colors && cap.colors.allColors.length <= 2) {
         downgradedCap.color = cap.colors.allColors[0];
 
@@ -129,8 +129,8 @@ function downgradeChannel(channelObject, channelKey) {
           downgradedCap.color2 = cap.colors.allColors[1];
         }
       }
-      addIfTruthy(cap.jsonObject, `helpWanted`, downgradedCap);
-      addIfTruthy(cap.jsonObject, `switchChannels`, downgradedCap);
+      addIfValidData(downgradedCap, `helpWanted`, cap.jsonObject.helpWanted);
+      addIfValidData(downgradedCap, `switchChannels`, cap.jsonObject.switchChannels);
 
       downgradedChannel.capabilities.push(downgradedCap);
     }
@@ -150,17 +150,19 @@ function downgradeChannel(channelObject, channelKey) {
 }
 
 /**
- * Copies the contents of sourceObj[sourceProperty] into destinationObj[destinationProperty]
- * if sourceObj[sourceProperty] is truthy, i.e. the property exists and is valid in sourceObj.
- * @param {!object} sourceObj The object where the property value comes from.
- * @param {!string} sourceProperty A property name that may or not be present in sourceObj.
- * @param {!object} destinationObj The object where the property value should be saved to.
- * @param {?string} [destinationProperty=null] The property where the property value should be saved to. Defaults to sourceProperty.
+ * Saves the given data (or value, if given) into obj[property] if data is valid,
+ * i.e. it is neither undefined, nor null, nor false.
+ * @param {!object} obj The object where the property should be created.
+ * @param {!string} property The name of the property added to obj.
+ * @param {*} data If this is valid, the property is added to obj.
+ * @param {*} [value=undefined] The property value, if data is valid. Defaults to data.
  */
-function addIfTruthy(sourceObj, sourceProperty, destinationObj, destinationProperty = null) {
-  destinationProperty = destinationProperty || sourceProperty;
+function addIfValidData(obj, property, data, value = undefined) {
+  if (value === undefined) {
+    value = data;
+  }
 
-  if (sourceProperty in sourceObj && sourceObj[sourceProperty] !== null && sourceObj[sourceProperty] !== false) {
-    destinationObj[destinationProperty] = sourceObj[sourceProperty];
+  if (data !== undefined && data !== null && data !== false) {
+    obj[property] = value;
   }
 }
