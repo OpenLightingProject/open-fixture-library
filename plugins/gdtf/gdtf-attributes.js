@@ -71,7 +71,9 @@ const gdtfUnits = {
     return `${value}nm`;
   },
   ColorComponent(value) {
-    return `${value}`;
+    // this entity is used as a brightness percentage for ColorRGBX attributes (X = 1…16)
+    // or as an "index offset" for ColorX attributes (X = 1…4) -> handled before
+    return `${value * 100}%`;
   }
 };
 
@@ -179,22 +181,93 @@ const gdtfAttributes = {
     // Controls the speed and direction of the fixture's color wheel 4.
     inheritFrom: `Color1Spin`
   },
-  ColorRGB1: undefined, // Controls the intensity of the fixture's red emitters or its cyan CMY-mixing feature.
-  ColorRGB2: undefined, // Controls the intensity of the fixture's green emitters or its magenta CMY-mixing feature.
-  ColorRGB3: undefined, // Controls the intensity of the fixture's blue emitters or its yellow CMY-mixing feature.
-  ColorRGB4: undefined, // Controls the intensity of the fixture's amber emitters.
-  ColorRGB5: undefined, // Controls the intensity of the fixture's white emitters.
-  ColorRGB6: undefined, // Controls the intensity of the fixture's color emitters.
-  ColorRGB7: undefined, // Controls the intensity of the fixture's color emitters.
-  ColorRGB8: undefined, // Controls the intensity of the fixture's color emitters.
-  ColorRGB9: undefined, // Controls the intensity of the fixture's color emitters.
-  ColorRGB10: undefined, // Controls the intensity of the fixture's color emitters.
-  ColorRGB11: undefined, // Controls the intensity of the fixture's color emitters.
-  ColorRGB12: undefined, // Controls the intensity of the fixture's color emitters.
-  ColorRGB13: undefined, // Controls the intensity of the fixture's color emitters.
-  ColorRGB14: undefined, // Controls the intensity of the fixture's color emitters.
-  ColorRGB15: undefined, // Controls the intensity of the fixture's color emitters.
-  ColorRGB16: undefined, // Controls the intensity of the fixture's color emitters.
+  ColorRGB1: {
+    // Controls the intensity of the fixture's red emitters or its cyan CMY-mixing feature.
+    oflType: `ColorIntensity`,
+    oflProperty: `brightness`,
+    defaultPhysicalEntity: `ColorComponent`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.color = guessColorComponentName(gdtfCapability, `Red`, `Cyan`);
+    }
+  },
+  ColorRGB2: {
+    // Controls the intensity of the fixture's green emitters or its magenta CMY-mixing feature.
+    inheritFrom: `ColorRGB1`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.color = guessColorComponentName(gdtfCapability, `Green`, `Magenta`);
+    }
+  },
+  ColorRGB3: {
+    // Controls the intensity of the fixture's blue emitters or its yellow CMY-mixing feature.
+    inheritFrom: `ColorRGB1`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.color = guessColorComponentName(gdtfCapability, `Blue`, `Yellow`);
+    }
+  },
+  ColorRGB4: {
+    // Controls the intensity of the fixture's amber emitters.
+    inheritFrom: `ColorRGB1`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.color = `Amber`;
+    }
+  },
+  ColorRGB5: {
+    // Controls the intensity of the fixture's white emitters.
+    inheritFrom: `ColorRGB1`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.color = `White`;
+    }
+  },
+  ColorRGB6: {
+    // Controls the intensity of the fixture's color emitters.
+    oflType: `ColorIntensity`,
+    oflProperty: `brightness`,
+    defaultPhysicalEntity: `ColorComponent`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      // This is most likely wrong but enables the user to make an informed choice.
+      capability.color = gdtfCapability._channelFunction._attribute.$.Pretty || `Unknown`;
+    }
+  },
+  ColorRGB7: {
+    // Controls the intensity of the fixture's color emitters.
+    inheritFrom: `ColorRGB6`
+  },
+  ColorRGB8: {
+    // Controls the intensity of the fixture's color emitters.
+    inheritFrom: `ColorRGB6`
+  },
+  ColorRGB9: {
+    // Controls the intensity of the fixture's color emitters.
+    inheritFrom: `ColorRGB6`
+  },
+  ColorRGB10: {
+    // Controls the intensity of the fixture's color emitters.
+    inheritFrom: `ColorRGB6`
+  },
+  ColorRGB11: {
+    // Controls the intensity of the fixture's color emitters.
+    inheritFrom: `ColorRGB6`
+  },
+  ColorRGB12: {
+    // Controls the intensity of the fixture's color emitters.
+    inheritFrom: `ColorRGB6`
+  },
+  ColorRGB13: {
+    // Controls the intensity of the fixture's color emitters.
+    inheritFrom: `ColorRGB6`
+  },
+  ColorRGB14: {
+    // Controls the intensity of the fixture's color emitters.
+    inheritFrom: `ColorRGB6`
+  },
+  ColorRGB15: {
+    // Controls the intensity of the fixture's color emitters.
+    inheritFrom: `ColorRGB6`
+  },
+  ColorRGB16: {
+    // Controls the intensity of the fixture's color emitters.
+    inheritFrom: `ColorRGB6`
+  },
   ColorMacro: undefined, // Selects predefined colors that are programed in the fixture's firmware.
   ColorMacro2: undefined, // Selects predefined colors that are programed in the fixture's firmware (2).
   CTO: undefined, // Controls the fixture's "Correct to orange" wheel or mixing system.
@@ -347,6 +420,30 @@ const gdtfAttributes = {
   ShaperMacros: undefined, // Predefined presets for shaper positions.
   Video: undefined // Controls video features.
 };
+
+/**
+ * @param {!object} gdtfCapability The enhanced <ChannelSet> XML object.
+ * @param {!string} primaryColor The color that this capability is most likely.
+ * @param {!string} secondaryColor The color that this capability is second most likely.
+ * @returns {!string} Either the primary, or the secondary color.
+ */
+function guessColorComponentName(gdtfCapability, primaryColor, secondaryColor) {
+  const name = (gdtfCapability._channelFunction._attribute.$.Pretty || ``).toLowerCase();
+
+  if (name.includes(secondaryColor.toLowerCase())) {
+    return secondaryColor;
+  }
+
+  if (name.includes(primaryColor.toLowerCase())) {
+    return primaryColor;
+  }
+
+  if (name.includes(secondaryColor.charAt(0).toLowerCase())) {
+    return secondaryColor;
+  }
+
+  return primaryColor;
+}
 
 module.exports = {
   gdtfUnits,
