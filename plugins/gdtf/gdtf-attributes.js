@@ -61,7 +61,8 @@ const gdtfUnits = {
     return `${value}m/s2`;
   },
   AngularSpeed(value) {
-    return `${value}deg/s`;
+    // value is in deg/s
+    return `${value / 360 * 60}rpm`;
   },
   AngularAcc(value) {
     return `${value}deg/s2`;
@@ -113,6 +114,7 @@ const gdtfAttributes = {
     // Selects colors in the fixture's color wheel 1.
     oflType: `ColorWheelIndex`,
     oflProperty: null,
+    defaultPhysicalEntity: `ColorComponent`,
     beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
       const index = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
       capability.index = index;
@@ -122,7 +124,7 @@ const gdtfAttributes = {
         const gdtfSlot = gdtfWheel.Slot[index];
 
         if (gdtfSlot) {
-          if (gdtfSlot.$.Name !== gdtfSlot.$.Name) {
+          if (gdtfCapability.$.Name !== gdtfSlot.$.Name) {
             gdtfCapability.$.Name += ` (${gdtfSlot.$.Name})`;
           }
 
@@ -141,13 +143,42 @@ const gdtfAttributes = {
       }
     }
   },
-  Color1Spin: undefined, // Controls the speed and direction of the fixture's color wheel 1.
-  Color2: undefined, // Selects colors in the fixture's color wheel 2.
-  Color2Spin: undefined, // Controls the speed and direction of the fixture's color wheel 2.
-  Color3: undefined, // Selects colors in the fixture's color wheel 3.
-  Color3Spin: undefined, // Controls the speed and direction of the fixture's color wheel 3.
-  Color4: undefined, // Selects colors in the fixture's color wheel 4.
-  Color4Spin: undefined, // Controls the speed and direction of the fixture's color wheel 4.
+  Color1Spin: {
+    // Controls the speed and direction of the fixture's color wheel 1.
+    oflType: `ColorWheelRotation`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `AngularSpeed`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      if (/CCW|counter[-\s]*clockwise/.test(gdtfCapability.$.Name)) {
+        gdtfCapability._physicalFrom = -Math.abs(gdtfCapability._physicalFrom);
+        gdtfCapability._physicalTo = -Math.abs(gdtfCapability._physicalTo);
+      }
+    }
+  },
+  Color2: {
+    // Selects colors in the fixture's color wheel 2.
+    inheritFrom: `Color1`
+  },
+  Color2Spin: {
+    // Controls the speed and direction of the fixture's color wheel 2.
+    inheritFrom: `Color1Spin`
+  },
+  Color3: {
+    // Selects colors in the fixture's color wheel 3.
+    inheritFrom: `Color1`
+  },
+  Color3Spin: {
+    // Controls the speed and direction of the fixture's color wheel 3.
+    inheritFrom: `Color1Spin`
+  },
+  Color4: {
+    // Selects colors in the fixture's color wheel 4.
+    inheritFrom: `Color1`
+  },
+  Color4Spin: {
+    // Controls the speed and direction of the fixture's color wheel 4.
+    inheritFrom: `Color1Spin`
+  },
   ColorRGB1: undefined, // Controls the intensity of the fixture's red emitters or its cyan CMY-mixing feature.
   ColorRGB2: undefined, // Controls the intensity of the fixture's green emitters or its magenta CMY-mixing feature.
   ColorRGB3: undefined, // Controls the intensity of the fixture's blue emitters or its yellow CMY-mixing feature.
