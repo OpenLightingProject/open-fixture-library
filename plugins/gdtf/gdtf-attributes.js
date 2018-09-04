@@ -660,19 +660,120 @@ const gdtfAttributes = {
   Haze: undefined, // Fog or hazer's haze feature.
   LampPowerMode: undefined, // Controls the energy consumption of the lamp.
   Fans: undefined, // Fancontrols a fixture or device.
-  Blade1A: undefined, // 1 of 2 shutters that shape the top of the beam.
-  Blade1B: undefined, // 2 of 2 shutters that shape the top of the beam.
-  Blade2A: undefined, // 1 of 2 shutters that shape the right of the beam.
-  Blade2B: undefined, // 2 of 2 shutters that shape the right of the beam.
-  Blade3A: undefined, // 1 of 2 shutters that shape the bottom of the beam.
-  Blade3B: undefined, // 2 of 2 shutters that shape the bottom of the beam.
-  Blade4A: undefined, // 1 of 2 shutters that shape the left of the beam.
-  Blade4B: undefined, // 2 of 2 shutters that shape the left of the beam.
-  Blade1Rot: undefined, // Rotates position of blade1.
-  Blade2Rot: undefined, // Rotates position of blade2.
-  Blade3Rot: undefined, // Rotates position of blade3.
-  Blade4Rot: undefined, // Rotates position of blade4.
-  ShaperRot: undefined, // Rotates position of blade assembly.
+  Blade1A: {
+    // 1 of 2 shutters that shape the top of the beam.
+    oflType: `BladeInsertion`,
+    oflProperty: `insertion`,
+    defaultPhysicalEntity: `Percent`, // Angle is also common
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.blade = `Top`;
+    }
+  },
+  Blade1B: {
+    // 2 of 2 shutters that shape the top of the beam.
+    oflType: `BladeInsertion`,
+    oflProperty: `insertion`,
+    defaultPhysicalEntity: `Percent`, // Angle is also common
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.blade = `Top`;
+    }
+  },
+  Blade2A: {
+    // 1 of 2 shutters that shape the right of the beam.
+    oflType: `BladeInsertion`,
+    oflProperty: `insertion`,
+    defaultPhysicalEntity: `Percent`, // Angle is also common
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.blade = `Right`;
+    }
+  },
+  Blade2B: {
+    // 2 of 2 shutters that shape the right of the beam.
+    oflType: `BladeInsertion`,
+    oflProperty: `insertion`,
+    defaultPhysicalEntity: `Percent`, // Angle is also common
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.blade = `Right`;
+    }
+  },
+  Blade3A: {
+    // 1 of 2 shutters that shape the bottom of the beam.
+    oflType: `BladeInsertion`,
+    oflProperty: `insertion`,
+    defaultPhysicalEntity: `Percent`, // Angle is also common
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.blade = `Bottom`;
+    }
+  },
+  Blade3B: {
+    // 2 of 2 shutters that shape the bottom of the beam.
+    oflType: `BladeInsertion`,
+    oflProperty: `insertion`,
+    defaultPhysicalEntity: `Percent`, // Angle is also common
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.blade = `Bottom`;
+    }
+  },
+  Blade4A: {
+    // 1 of 2 shutters that shape the left of the beam.
+    oflType: `BladeInsertion`,
+    oflProperty: `insertion`,
+    defaultPhysicalEntity: `Percent`, // Angle is also common
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.blade = `Left`;
+    }
+  },
+  Blade4B: {
+    // 2 of 2 shutters that shape the left of the beam.
+    oflType: `BladeInsertion`,
+    oflProperty: `insertion`,
+    defaultPhysicalEntity: `Percent`, // Angle is also common
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.blade = `Left`;
+    }
+  },
+  Blade1Rot: {
+    // Rotates position of blade1.
+    oflType: `BladeRotation`,
+    oflProperty: `angle`,
+    defaultPhysicalEntity: `Angle`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.blade = `Top`;
+    }
+  },
+  Blade2Rot: {
+    // Rotates position of blade2.
+    oflType: `BladeRotation`,
+    oflProperty: `angle`,
+    defaultPhysicalEntity: `Angle`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.blade = `Right`;
+    }
+  },
+  Blade3Rot: {
+    // Rotates position of blade3.
+    oflType: `BladeRotation`,
+    oflProperty: `angle`,
+    defaultPhysicalEntity: `Angle`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.blade = `Bottom`;
+    }
+  },
+  Blade4Rot: {
+    // Rotates position of blade4.
+    oflType: `BladeRotation`,
+    oflProperty: `angle`,
+    defaultPhysicalEntity: `Angle`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.blade = `Left`;
+    }
+  },
+  ShaperRot: {
+    // Rotates position of blade assembly.
+    oflType: `BladeSystemRotation`,
+    oflProperty: `angle`,
+    defaultPhysicalEntity: `Angle`
+  },
   ShaperMacros: undefined, // Predefined presets for shaper positions.
   Video: undefined // Controls video features.
 };
