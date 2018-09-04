@@ -656,8 +656,22 @@ const gdtfAttributes = {
     oflProperty: `speed`,
     defaultPhysicalEntity: `AngularSpeed`
   },
-  Fog: undefined, // Fog or hazer's Fog feature.
-  Haze: undefined, // Fog or hazer's haze feature.
+  Fog: {
+    // Fog or hazer's Fog feature.
+    oflType: `Fog`,
+    oflProperty: `fogOutput`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.fogType = `Fog`;
+    }
+  },
+  Haze: {
+    // Fog or hazer's haze feature.
+    oflType: `Fog`,
+    oflProperty: `fogOutput`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.fogType = `Haze`;
+    }
+  },
   LampPowerMode: undefined, // Controls the energy consumption of the lamp.
   Fans: undefined, // Fancontrols a fixture or device.
   Blade1A: {
