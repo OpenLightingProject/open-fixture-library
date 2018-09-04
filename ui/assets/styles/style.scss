@@ -17,6 +17,11 @@ html {
   overflow-y: scroll;
 }
 
+/* IE9 / IE10 does not do this automatically */
+[hidden] {
+  display: none;
+}
+
 h1 {
   font-weight: 300;
   font-size: 2rem;

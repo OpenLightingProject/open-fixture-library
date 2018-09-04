@@ -1,6 +1,7 @@
 const createPullRequest = require(`../../lib/create-github-pr.js`);
 const schemaProperties = require(`../../lib/schema-properties.js`);
 const { checkFixture } = require(`../../tests/fixture-valid.js`);
+const { Channel } = require(`../../lib/model.js`);
 
 /**
  * Takes the input from the fixture editor client side script and creates a pull request with the new fixture.
@@ -221,12 +222,12 @@ function addAvailableChannel(fixKey, availableChannels, chId) {
         channel.capabilities = capabilities;
       }
     }
-    else if (prop === `fineChannelAliases` && from.fineness > 0) {
+    else if (prop === `fineChannelAliases` && from.resolution > Channel.RESOLUTION_8BIT) {
       channel.fineChannelAliases = [];
     }
-    else if (prop === `color`) {
-      if (from.type === `Single Color`) {
-        channel.color = getComboboxInput(`color`, from);
+    else if (prop === `dmxValueResolution`) {
+      if (from.resolution !== from.dmxValueResolution) {
+        channel.dmxValueResolution = `${from.dmxValueResolution * 8}bit`;
       }
     }
     else if (propExistsIn(prop, from)) {
@@ -242,8 +243,8 @@ function addAvailableChannel(fixKey, availableChannels, chId) {
       const ch = availableChannels[uuid];
 
       if (`coarseChannelId` in ch && ch.coarseChannelId === chId) {
-        const alias = getFineChannelAlias(chKey, ch.fineness);
-        channel.fineChannelAliases[ch.fineness - 1] = alias;
+        const alias = getFineChannelAlias(chKey, ch.resolution);
+        channel.fineChannelAliases[ch.resolution - 2] = alias;
         channelKeyMapping[ch.uuid] = alias;
       }
     }
@@ -272,8 +273,8 @@ function getChannelKey(channel, fixKey) {
   return chKey;
 }
 
-function getFineChannelAlias(channelKey, fineness) {
-  return `${channelKey} fine${fineness > 1 ? `^${fineness}` : ``}`;
+function getFineChannelAlias(channelKey, resolution) {
+  return `${channelKey} fine${resolution > Channel.RESOLUTION_16BIT ? `^${resolution - 1}` : ``}`;
 }
 
 function getCapabilities(channel) {
