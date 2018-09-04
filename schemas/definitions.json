@@ -45,15 +45,6 @@
     "pattern": "^#[0-9a-f]{6}$",
     "format": "color-hex"
   },
-  "dmxValue": {
-    "type": "integer",
-    "minimum": 0,
-    "$comment": "maximum depends on how many fine channels there are (255 if none, 65535 if one, etc.)"
-  },
-  "dmxValuePercent": {
-    "type": "string",
-    "pattern": "^(([1-9][0-9]?|0)(\\.[0-9]+)?|100)%$"
-  },
   "dimensionsXYZ": {
     "$comment": "width, height, depth (in mm)",
     "type": "array",
@@ -83,6 +74,15 @@
       "type": "integer",
       "minimum": 0,
       "exclusiveMinimum": 0
+    },
+    "dmxValue": {
+      "type": "integer",
+      "minimum": 0,
+      "$comment": "maximum depends on how many fine channels there are (255 if none, 65535 if one, etc.)"
+    },
+    "dmxValuePercent": {
+      "type": "string",
+      "pattern": "^(([1-9][0-9]?|0)(\\.[0-9]+)?|100)%$"
     },
     "percent": {
       "type": "string",
