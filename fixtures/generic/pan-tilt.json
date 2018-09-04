@@ -18,7 +18,6 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine", "Pan fine^2"],
-      "defaultValue": "50%",
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -27,7 +26,6 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine", "Tilt fine^2"],
-      "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",

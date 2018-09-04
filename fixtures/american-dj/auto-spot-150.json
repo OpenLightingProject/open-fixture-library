@@ -30,7 +30,7 @@
   },
   "availableChannels": {
     "Pan": {
-      "defaultValue": "50%",
+      "defaultValue": 127,
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -38,7 +38,7 @@
       }
     },
     "Tilt": {
-      "defaultValue": "50%",
+      "defaultValue": 127,
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",

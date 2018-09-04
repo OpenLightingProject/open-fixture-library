@@ -53,11 +53,10 @@
   "availableChannels": {
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
-        "angleEnd": "183.2deg"
+        "angleEnd": "182deg"
       }
     },
     "Beam Intensity": {

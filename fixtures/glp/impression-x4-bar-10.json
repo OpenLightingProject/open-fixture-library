@@ -42,7 +42,7 @@
   "availableChannels": {
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": "50%",
+      "defaultValue": 32768,
       "precedence": "LTP",
       "capability": {
         "type": "Tilt",

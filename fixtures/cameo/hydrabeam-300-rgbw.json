@@ -334,7 +334,6 @@
     },
     "Master Pan": {
       "fineChannelAliases": ["Master Pan fine"],
-      "defaultValue": "50%",
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -343,7 +342,6 @@
     },
     "Master Tilt": {
       "fineChannelAliases": ["Master Tilt fine"],
-      "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -423,7 +421,6 @@
   "templateChannels": {
     "Pan $pixelKey": {
       "fineChannelAliases": ["Pan $pixelKey fine"],
-      "defaultValue": "50%",
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -432,7 +429,6 @@
     },
     "Tilt $pixelKey": {
       "fineChannelAliases": ["Tilt $pixelKey fine"],
-      "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
