@@ -648,8 +648,16 @@ const gdtfAttributes = {
       capability.effectName = `RampUp`;
     }
   },
-  Frost: undefined, // The ability to soften the fixture's spot light with a frosted lens.
-  Frost2: undefined, // The ability to soften the fixture's spot light with a frosted lens (2).
+  Frost: {
+    // The ability to soften the fixture's spot light with a frosted lens.
+    oflType: `Frost`,
+    oflProperty: `frostIntensity`,
+    defaultPhysicalEntity: `Percent`
+  },
+  Frost2: {
+    // The ability to soften the fixture's spot light with a frosted lens (2).
+    inheritFrom: `Frost`
+  },
   Prism: undefined, // Controls the insertion of fixture ́s prism wheel 1. Refracts the beam into multiple beams of light on wheel 1.
   PrismPos: undefined, // Controls the indexed position of fixture‘s prism on prism wheel 1.
   PrismPosRotation: undefined, // Controls the speed and direction of the continuous rotation of the fixture’s prism on prism wheel 1.
