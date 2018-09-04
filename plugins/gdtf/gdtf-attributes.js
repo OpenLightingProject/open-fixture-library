@@ -86,8 +86,18 @@ const gdtfAttributes = {
     oflProperty: `brightness`,
     defaultPhysicalEntity: `LuminousIntensity`
   },
-  Pan: undefined, // Controls the fixture's sideward movement (horizontal axis).
-  Tilt: undefined, // Controls the fixture's upward and the downward movement (vertical axis).
+  Pan: {
+    // Controls the fixture's sideward movement (horizontal axis).
+    oflType: `Pan`,
+    oflProperty: `angle`,
+    defaultPhysicalEntity: `Angle`
+  },
+  Tilt: {
+    // Controls the fixture's upward and the downward movement (vertical axis).
+    oflType: `Tilt`,
+    oflProperty: `angle`,
+    defaultPhysicalEntity: `Angle`
+  },
   PositionEffect: undefined, // Selects the predefined position effects that are built into the fixture.
   PositionEffectRate: undefined, // Controls the speed of the predefined position effects that are built into the fixture.
   PositionEffectFade: undefined, // Snaps or smooth fades with timing in running predefined position effects.
@@ -376,7 +386,12 @@ const gdtfAttributes = {
   IrisMode: undefined, // Changes modes of the fixture’s iris - linear, strobe, pulse.
   BeamEffectIndexRotateMode: undefined, // Changes mode to control either index or rotation of the beam effects.
   IntensityMSpeed: undefined, // Movement speed of the fixture's intensity.
-  PositionMSpeed: undefined, // Movement speed of the fixture's pan/tilt.
+  PositionMSpeed: {
+    // Movement speed of the fixture's pan/tilt.
+    oflType: `PanTiltSpeed`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `Speed`
+  },
   ColorMixMSpeed: undefined, // Movement speed of the fixture's ColorMix presets.
   ColorWheelSelectMSpeed: undefined, // Movement speed of the fixture's color wheel.
   GoboWheelMSpeed: undefined, // Movement speed of the fixture's gobo wheel.
