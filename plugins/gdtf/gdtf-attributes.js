@@ -548,27 +548,107 @@ const gdtfAttributes = {
   FocusMSpeed: undefined, // Movement speed of the fixture's focus.
   FrameMSpeed: undefined, // Movement speed of the fixture's shapers.
   GlobalMSpeed: undefined, // General speed of fixture's features.
-  FixtureGlobalReset: undefined, // Generally resets the entire fixture.
-  ShutterReset: undefined, // Resets the fixture's shutter.
-  BeamReset: undefined, // Resets the fixture's beam features.
-  ColorMixReset: undefined, // Resets the fixture's color mixing system.
-  ColorWheelReset: undefined, // Resets the fixture's color wheel.
-  FocusReset: undefined, // Resets the fixture's focus.
-  FrameReset: undefined, // Resets the fixture's shapers.
-  GoboWheelReset: undefined, // Resets the fixture's gobo wheel.
-  IntensityReset: undefined, // Resets the fixture's intensity.
-  IrisReset: undefined, // Resets the fixture's iris.
-  PositionReset: undefined, // Resets the fixture's pan/tilt.
-  PanReset: undefined, // Resets the fixture's pan.
-  TiltReset: undefined, // Resets the fixture's tilt.
-  ZoomReset: undefined, // Resets the fixture's zoom.
-  CTBReset: undefined, // Resets the fixture's CTB.
-  CTOReset: undefined, // Resets the fixture's CTO.
-  CTCReset: undefined, // Resets the fixture's CTC.
-  FixtureCalibrationReset: undefined, // Resets the fixture's calibration.
+  FixtureGlobalReset: {
+    // Generally resets the entire fixture.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  ShutterReset: {
+    // Resets the fixture's shutter.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  BeamReset: {
+    // Resets the fixture's beam features.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  ColorMixReset: {
+    // Resets the fixture's color mixing system.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  ColorWheelReset: {
+    // Resets the fixture's color wheel.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  FocusReset: {
+    // Resets the fixture's focus.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  FrameReset: {
+    // Resets the fixture's shapers.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  GoboWheelReset: {
+    // Resets the fixture's gobo wheel.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  IntensityReset: {
+    // Resets the fixture's intensity.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  IrisReset: {
+    // Resets the fixture's iris.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  PositionReset: {
+    // Resets the fixture's pan/tilt.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  PanReset: {
+    // Resets the fixture's pan.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  TiltReset: {
+    // Resets the fixture's tilt.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  ZoomReset: {
+    // Resets the fixture's zoom.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  CTBReset: {
+    // Resets the fixture's CTB.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  CTOReset: {
+    // Resets the fixture's CTO.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  CTCReset: {
+    // Resets the fixture's CTC.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  FixtureCalibrationReset: {
+    // Resets the fixture's calibration.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
   Function: undefined, // Generally controls features of the fixture.
-  LampControl: undefined, // Controls the fixture's lamp on/lamp off feature.
-  NoFeature: undefined, // Ranges without a functionality.
+  LampControl: {
+    // Controls the fixture's lamp on/lamp off feature.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  NoFeature: {
+    // Ranges without a functionality.
+    oflType: `NoFunction`,
+    oflProperty: null
+  },
   Blower: undefined, // Fog or hazer‘s blower feature.
   Fan: {
     // Fog or hazer's Fan feature.
