@@ -652,6 +652,12 @@ const gdtfAttributes = {
     // Autofocuses functionality using distance.
     inheritFrom: `Focus`
   },
+  Zoom: {
+    // Undocumented, but used in many fixtures.
+    oflType: `Zoom`,
+    oflProperty: `angle`,
+    defaultPhysicalEntity: `Angle`
+  },
   Control: undefined, // Controls the channel of a fixture.
   DimmerMode: undefined, // Selects different modes of intensity.
   DimmerCurve: undefined, // Selects different dimmer curves of the fixture.
