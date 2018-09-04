@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2017-07-17",
-    "lastModifyDate": "2018-07-21"
+    "lastModifyDate": "2018-09-04"
   },
   "physical": {
     "focus": {
@@ -18,6 +18,7 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine", "Pan fine^2"],
+      "defaultValue": "50%",
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -26,6 +27,7 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine", "Tilt fine^2"],
+      "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
