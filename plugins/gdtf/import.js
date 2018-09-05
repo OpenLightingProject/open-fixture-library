@@ -372,9 +372,13 @@ module.exports.import = function importGdtf(buffer, filename) {
             capabilityTypeData.beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture);
           }
 
-          const oflProperty = capabilityTypeData.oflProperty;
+          let oflProperty = capabilityTypeData.oflProperty;
 
           if (oflProperty !== null) {
+            if (typeof oflProperty === `function`) {
+              oflProperty = oflProperty(gdtfCapability);
+            }
+
             const physicalUnit = getPhysicalUnit(gdtfCapability);
 
             const physicalFrom = gdtfCapability._physicalFrom;
