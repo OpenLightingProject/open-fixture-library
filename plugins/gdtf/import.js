@@ -3,6 +3,7 @@ const JSZip = require(`jszip`);
 const promisify = require(`util`).promisify;
 
 const manufacturers = require(`../../fixtures/manufacturers.json`);
+const { Channel } = require(`../../lib/model.js`);
 const { gdtfAttributes, gdtfUnits } = require(`./gdtf-attributes.js`);
 const { followXmlNodeReference } = require(`./gdtf-helpers.js`);
 
@@ -184,7 +185,7 @@ module.exports.import = function importGdtf(buffer, filename) {
         }
       }
 
-      if (channel.dmxValueResolution === `${maxResolution * 8}bit`) {
+      if (channel.dmxValueResolution === `${maxResolution * 8}bit` || channel.dmxValueResolution === ``) {
         delete channel.dmxValueResolution;
       }
     });
@@ -221,7 +222,7 @@ module.exports.import = function importGdtf(buffer, filename) {
     const channel = {
       name: name,
       fineChannelAliases: [],
-      dmxValueResolution: `8bit`
+      dmxValueResolution: ``
     };
 
     if (`Default` in gdtfChannel.$) {
@@ -524,28 +525,26 @@ module.exports.import = function importGdtf(buffer, filename) {
      */
     function replaceGdtfDmxValuesWithNumbers() {
       const maxDmxValueResolution = getMaxDmxValueResolution();
-
-      if (maxDmxValueResolution === 0) {
-        delete channel.dmxValueResolution;
-        return;
-      }
+      const scaleToResolution = Math.max(Channel.RESOLUTION_8BIT, maxDmxValueResolution);
 
       if (channel.defaultValue) {
-        channel.defaultValue = scaleDmxValue(channel.defaultValue, maxDmxValueResolution);
+        channel.defaultValue = scaleDmxValue(channel.defaultValue, scaleToResolution);
       }
 
       if (channel.highlightValue) {
-        channel.highlightValue = scaleDmxValue(channel.highlightValue, maxDmxValueResolution);
+        channel.highlightValue = scaleDmxValue(channel.highlightValue, scaleToResolution);
       }
 
       if (channel.capabilities) {
         channel.capabilities.forEach(capability => {
-          capability.dmxRange[0] = scaleDmxValue(capability.dmxRange[0], maxDmxValueResolution);
-          capability.dmxRange[1] = scaleDmxValue(capability.dmxRange[1], maxDmxValueResolution);
+          capability.dmxRange[0] = scaleDmxValue(capability.dmxRange[0], scaleToResolution);
+          capability.dmxRange[1] = scaleDmxValue(capability.dmxRange[1], scaleToResolution);
         });
       }
 
-      channel.dmxValueResolution = `${maxDmxValueResolution * 8}bit`;
+      if (maxDmxValueResolution !== 0) {
+        channel.dmxValueResolution = `${maxDmxValueResolution * 8}bit`;
+      }
 
 
       /**
@@ -554,11 +553,11 @@ module.exports.import = function importGdtf(buffer, filename) {
       function getMaxDmxValueResolution() {
         const dmxValues = [];
 
-        if (channel.defaultValue) {
+        if (channel.defaultValue && channel.defaultValue[0] !== 0) {
           dmxValues.push(channel.defaultValue);
         }
 
-        if (channel.highlightValue) {
+        if (channel.highlightValue && channel.highlightValue[0] !== 0) {
           dmxValues.push(channel.highlightValue);
         }
 
