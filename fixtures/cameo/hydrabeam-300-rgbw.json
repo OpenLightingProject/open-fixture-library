@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2017-07-24",
-    "lastModifyDate": "2018-08-09"
+    "lastModifyDate": "2018-09-04"
   },
   "links": {
     "manual": ["http://adamhall.invaliddomain.de/out/media/downloads/MARKEN/CAMEO/CLHB300W/CLHB300_CAMEO_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.PDF"],
@@ -334,6 +334,7 @@
     },
     "Master Pan": {
       "fineChannelAliases": ["Master Pan fine"],
+      "defaultValue": "50%",
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -342,6 +343,7 @@
     },
     "Master Tilt": {
       "fineChannelAliases": ["Master Tilt fine"],
+      "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -421,6 +423,7 @@
   "templateChannels": {
     "Pan $pixelKey": {
       "fineChannelAliases": ["Pan $pixelKey fine"],
+      "defaultValue": "50%",
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -429,6 +432,7 @@
     },
     "Tilt $pixelKey": {
       "fineChannelAliases": ["Tilt $pixelKey fine"],
+      "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",

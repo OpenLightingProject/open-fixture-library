@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Jo"],
     "createDate": "2018-05-28",
-    "lastModifyDate": "2018-08-09"
+    "lastModifyDate": "2018-09-04"
   },
   "links": {
     "manual": ["https://www.highlite.nl/silver.download/Documents@extern@Manuals/40159_MANUAL_GB_V1.pdf"],
@@ -34,6 +34,8 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -42,6 +44,8 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
