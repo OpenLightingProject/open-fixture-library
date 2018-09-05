@@ -658,12 +658,39 @@ const gdtfAttributes = {
     // The ability to soften the fixture's spot light with a frosted lens (2).
     inheritFrom: `Frost`
   },
-  Prism: undefined, // Controls the insertion of fixture ́s prism wheel 1. Refracts the beam into multiple beams of light on wheel 1.
-  PrismPos: undefined, // Controls the indexed position of fixture‘s prism on prism wheel 1.
-  PrismPosRotation: undefined, // Controls the speed and direction of the continuous rotation of the fixture’s prism on prism wheel 1.
-  Prism2: undefined, // Controls the insertion of fixture´s prism wheel 2. Refracts the beam into multiple beams of light on wheel 2.
-  Prism2Pos: undefined, // Controls the indexed position of fixture‘s prism on prism wheel 2.
-  Prism2PosRotation: undefined, // Controls the speed and direction of the continuous rotation of the fixture’s prism on prism wheel 2.
+  Prism: {
+    // Controls the insertion of fixture ́s prism wheel 1. Refracts the beam into multiple beams of light on wheel 1.
+    oflType: `Prism`,
+    oflProperty: null,
+    defaultPhysicalEntity: `None`
+  },
+  PrismPos: {
+    // Controls the indexed position of fixture‘s prism on prism wheel 1.
+    oflType: `PrismRotation`,
+    oflProperty: `angle`,
+    defaultPhysicalEntity: `Angle`
+  },
+  PrismPosRotation: {
+    // Controls the speed and direction of the continuous rotation of the fixture’s prism on prism wheel 1.
+    oflType: `PrismRotation`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `AngularSpeed`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      normalizeAngularSpeedDirection(gdtfCapability);
+    }
+  },
+  Prism2: {
+    // Controls the insertion of fixture´s prism wheel 2. Refracts the beam into multiple beams of light on wheel 2.
+    inheritFrom: `Prism`
+  },
+  Prism2Pos: {
+    // Controls the indexed position of fixture‘s prism on prism wheel 2.
+    inheritFrom: `PrismPos`
+  },
+  Prism2PosRotation: {
+    // Controls the speed and direction of the continuous rotation of the fixture’s prism on prism wheel 2.
+    inheritFrom: `PrismPosRotation`
+  },
   Effects: undefined, // Generically predefined macros and effects of a fixture.
   EffectsRate: undefined, // Speed of running effects.
   EffectsFade: undefined, // Snapping or smooth look of running effects.
