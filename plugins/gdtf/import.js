@@ -369,9 +369,7 @@ module.exports.import = function importGdtf(buffer, filename) {
 
         capability.type = capabilityTypeData.oflType;
 
-        if (`beforePhysicalPropertyHook` in capabilityTypeData) {
-          capabilityTypeData.beforePhysicalPropertyHook(capability, gdtfCapability);
-        }
+        callHook(capabilityTypeData.beforePhysicalPropertyHook, capability, gdtfCapability);
 
         const oflProperty = getOflProperty(capabilityTypeData, gdtfCapability);
 
@@ -395,11 +393,11 @@ module.exports.import = function importGdtf(buffer, filename) {
           }
         }
 
-        if (`afterPhysicalPropertyHook` in capabilityTypeData) {
-          capabilityTypeData.afterPhysicalPropertyHook(capability, gdtfCapability);
-        }
+        callHook(capabilityTypeData.afterPhysicalPropertyHook, capability, gdtfCapability);
 
-        capability.comment = gdtfCapability.$.Name;
+        if (gdtfCapability.$.Name) {
+          capability.comment = gdtfCapability.$.Name;
+        }
 
         return capability;
       });
@@ -452,6 +450,19 @@ module.exports.import = function importGdtf(buffer, filename) {
         delete gdtfAttributes[attrName].inheritFrom;
 
         return gdtfAttributes[attrName];
+      }
+
+      /**
+       * @param {?function} hook The hook function, or a falsy value.
+       * @param  {...any} args The arguments to pass to the hook.
+       * @returns {any} The return value of the hook, or null no hook was called.
+       */
+      function callHook(hook, ...args) {
+        if (hook) {
+          return hook(...args);
+        }
+
+        return null;
       }
 
       /**
