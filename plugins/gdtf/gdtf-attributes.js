@@ -125,12 +125,13 @@ const gdtfAttributes = {
     oflType: `GoboIndex`,
     oflProperty: null,
     defaultPhysicalEntity: `None`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       const index = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
       capability.index = index;
 
       if (`Wheel` in gdtfCapability._channelFunction.$) {
-        const gdtfWheel = followXmlNodeReference(gdtfFixture.Wheels[0], gdtfCapability._channelFunction.$.Wheel);
+        const wheelReference = gdtfCapability._channelFunction.$.Wheel;
+        const gdtfWheel = followXmlNodeReference(gdtfCapability._fixture.Wheels[0], wheelReference);
         const gdtfSlot = gdtfWheel.Slot[index];
 
         if (gdtfSlot) {
@@ -154,7 +155,7 @@ const gdtfAttributes = {
     oflType: `GoboWheelRotation`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `AngularSpeed`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       normalizeAngularSpeedDirection(gdtfCapability);
     }
   },
@@ -175,7 +176,7 @@ const gdtfAttributes = {
     oflType: `GoboStencilRotation`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `AngularSpeed`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       normalizeAngularSpeedDirection(gdtfCapability);
     }
   },
@@ -232,12 +233,13 @@ const gdtfAttributes = {
     oflType: `ColorWheelIndex`,
     oflProperty: null,
     defaultPhysicalEntity: `ColorComponent`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       const index = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
       capability.index = index;
 
       if (`Wheel` in gdtfCapability._channelFunction.$) {
-        const gdtfWheel = followXmlNodeReference(gdtfFixture.Wheels[0], gdtfCapability._channelFunction.$.Wheel);
+        const wheelReference = gdtfCapability._channelFunction.$.Wheel;
+        const gdtfWheel = followXmlNodeReference(gdtfCapability._fixture.Wheels[0], wheelReference);
         const gdtfSlot = gdtfWheel.Slot[index];
 
         if (gdtfSlot) {
@@ -265,7 +267,7 @@ const gdtfAttributes = {
     oflType: `ColorWheelRotation`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `AngularSpeed`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       normalizeAngularSpeedDirection(gdtfCapability);
     }
   },
@@ -298,35 +300,35 @@ const gdtfAttributes = {
     oflType: `ColorIntensity`,
     oflProperty: `brightness`,
     defaultPhysicalEntity: `ColorComponent`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.color = guessColorComponentName(gdtfCapability, `Red`, `Cyan`);
     }
   },
   ColorRGB2: {
     // Controls the intensity of the fixture's green emitters or its magenta CMY-mixing feature.
     inheritFrom: `ColorRGB1`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.color = guessColorComponentName(gdtfCapability, `Green`, `Magenta`);
     }
   },
   ColorRGB3: {
     // Controls the intensity of the fixture's blue emitters or its yellow CMY-mixing feature.
     inheritFrom: `ColorRGB1`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.color = guessColorComponentName(gdtfCapability, `Blue`, `Yellow`);
     }
   },
   ColorRGB4: {
     // Controls the intensity of the fixture's amber emitters.
     inheritFrom: `ColorRGB1`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.color = `Amber`;
     }
   },
   ColorRGB5: {
     // Controls the intensity of the fixture's white emitters.
     inheritFrom: `ColorRGB1`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.color = `White`;
     }
   },
@@ -335,7 +337,7 @@ const gdtfAttributes = {
     oflType: `ColorIntensity`,
     oflProperty: `brightness`,
     defaultPhysicalEntity: `ColorComponent`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       // This is most likely wrong but enables the user to make an informed choice.
       capability.color = gdtfCapability._channelFunction._attribute.$.Pretty || `Unknown`;
     }
@@ -385,12 +387,13 @@ const gdtfAttributes = {
     oflType: `ColorPreset`,
     oflProperty: null,
     defaultPhysicalEntity: `ColorComponent`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       // sometimes a workaround to add color information is used: reference a virtual color wheel
 
       const index = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
       if (`Wheel` in gdtfCapability._channelFunction.$) {
-        const gdtfWheel = followXmlNodeReference(gdtfFixture.Wheels[0], gdtfCapability._channelFunction.$.Wheel);
+        const wheelReference = gdtfCapability._channelFunction.$.Wheel;
+        const gdtfWheel = followXmlNodeReference(gdtfCapability._fixture.Wheels[0], wheelReference);
         const gdtfSlot = gdtfWheel.Slot[index];
 
         if (gdtfSlot) {
@@ -444,7 +447,7 @@ const gdtfAttributes = {
     oflType: `ShutterStrobe`,
     oflProperty: null,
     defaultPhysicalEntity: `Frequency`, // although that makes little sense since 0 means closed and 1 means open
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       const physicalFrom = gdtfCapability._physicalFrom;
       const physicalTo = gdtfCapability._physicalTo;
 
@@ -464,7 +467,7 @@ const gdtfAttributes = {
     oflType: `ShutterStrobe`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `Frequency`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.shutterEffect = `Strobe`;
     }
   },
@@ -473,7 +476,7 @@ const gdtfAttributes = {
     oflType: `ShutterStrobe`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `Frequency`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.shutterEffect = `Pulse`;
     }
   },
@@ -482,7 +485,7 @@ const gdtfAttributes = {
     oflType: `ShutterStrobe`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `Frequency`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.shutterEffect = `RampDown`;
     }
   },
@@ -491,7 +494,7 @@ const gdtfAttributes = {
     oflType: `ShutterStrobe`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `Frequency`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.shutterEffect = `RampUp`;
     }
   },
@@ -500,10 +503,10 @@ const gdtfAttributes = {
     oflType: `ShutterStrobe`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `Frequency`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.shutterEffect = `Strobe`;
     },
-    afterPhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    afterPhysicalPropertyHook(capability, gdtfCapability) {
       capability.randomTiming = true;
     }
   },
@@ -512,10 +515,10 @@ const gdtfAttributes = {
     oflType: `ShutterStrobe`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `Frequency`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.shutterEffect = `Pulse`;
     },
-    afterPhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    afterPhysicalPropertyHook(capability, gdtfCapability) {
       capability.randomTiming = true;
     }
   },
@@ -524,10 +527,10 @@ const gdtfAttributes = {
     oflType: `ShutterStrobe`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `Frequency`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.shutterEffect = `RampDown`;
     },
-    afterPhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    afterPhysicalPropertyHook(capability, gdtfCapability) {
       capability.randomTiming = true;
     }
   },
@@ -536,10 +539,10 @@ const gdtfAttributes = {
     oflType: `ShutterStrobe`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `Frequency`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.shutterEffect = `RampUp`;
     },
-    afterPhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    afterPhysicalPropertyHook(capability, gdtfCapability) {
       capability.randomTiming = true;
     }
   },
@@ -626,7 +629,7 @@ const gdtfAttributes = {
     oflType: `IrisEffect`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `Frequency`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.effectName = `Strobe`;
     }
   },
@@ -635,7 +638,7 @@ const gdtfAttributes = {
     oflType: `IrisEffect`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `Frequency`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.effectName = `RampDown`;
     }
   },
@@ -644,7 +647,7 @@ const gdtfAttributes = {
     oflType: `IrisEffect`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `Frequency`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.effectName = `RampUp`;
     }
   },
@@ -675,7 +678,7 @@ const gdtfAttributes = {
     oflType: `PrismRotation`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `AngularSpeed`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       normalizeAngularSpeedDirection(gdtfCapability);
     }
   },
@@ -696,7 +699,7 @@ const gdtfAttributes = {
     oflType: `Effect`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `Speed`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.effectName = gdtfCapability.$.Name;
       gdtfCapability.$.Name = undefined;
     }
@@ -706,7 +709,7 @@ const gdtfAttributes = {
     oflType: `EffectSpeed`,
     oflProperty: guessSpeedOrDuration,
     defaultPhysicalEntity: `Speed`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       if (gdtfCapability._channelFunction._attribute.$.PhysicalUnit === `Time`) {
         // overwrite capability type
         capability.type = `EffectDuration`;
@@ -1027,7 +1030,7 @@ const gdtfAttributes = {
     oflType: `Rotation`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `AngularSpeed`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       normalizeAngularSpeedDirection(gdtfCapability);
     }
   },
@@ -1035,7 +1038,7 @@ const gdtfAttributes = {
     // Fog or hazer's Fog feature.
     oflType: `Fog`,
     oflProperty: `fogOutput`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.fogType = `Fog`;
     }
   },
@@ -1043,7 +1046,7 @@ const gdtfAttributes = {
     // Fog or hazer's haze feature.
     oflType: `Fog`,
     oflProperty: `fogOutput`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.fogType = `Haze`;
     }
   },
@@ -1058,7 +1061,7 @@ const gdtfAttributes = {
     oflType: `BladeInsertion`,
     oflProperty: `insertion`,
     defaultPhysicalEntity: `Percent`, // Angle is also common
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Top`;
     }
   },
@@ -1067,7 +1070,7 @@ const gdtfAttributes = {
     oflType: `BladeInsertion`,
     oflProperty: `insertion`,
     defaultPhysicalEntity: `Percent`, // Angle is also common
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Top`;
     }
   },
@@ -1076,7 +1079,7 @@ const gdtfAttributes = {
     oflType: `BladeInsertion`,
     oflProperty: `insertion`,
     defaultPhysicalEntity: `Percent`, // Angle is also common
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Right`;
     }
   },
@@ -1085,7 +1088,7 @@ const gdtfAttributes = {
     oflType: `BladeInsertion`,
     oflProperty: `insertion`,
     defaultPhysicalEntity: `Percent`, // Angle is also common
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Right`;
     }
   },
@@ -1094,7 +1097,7 @@ const gdtfAttributes = {
     oflType: `BladeInsertion`,
     oflProperty: `insertion`,
     defaultPhysicalEntity: `Percent`, // Angle is also common
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Bottom`;
     }
   },
@@ -1103,7 +1106,7 @@ const gdtfAttributes = {
     oflType: `BladeInsertion`,
     oflProperty: `insertion`,
     defaultPhysicalEntity: `Percent`, // Angle is also common
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Bottom`;
     }
   },
@@ -1112,7 +1115,7 @@ const gdtfAttributes = {
     oflType: `BladeInsertion`,
     oflProperty: `insertion`,
     defaultPhysicalEntity: `Percent`, // Angle is also common
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Left`;
     }
   },
@@ -1121,7 +1124,7 @@ const gdtfAttributes = {
     oflType: `BladeInsertion`,
     oflProperty: `insertion`,
     defaultPhysicalEntity: `Percent`, // Angle is also common
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Left`;
     }
   },
@@ -1130,7 +1133,7 @@ const gdtfAttributes = {
     oflType: `BladeRotation`,
     oflProperty: `angle`,
     defaultPhysicalEntity: `Angle`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Top`;
     }
   },
@@ -1139,7 +1142,7 @@ const gdtfAttributes = {
     oflType: `BladeRotation`,
     oflProperty: `angle`,
     defaultPhysicalEntity: `Angle`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Right`;
     }
   },
@@ -1148,7 +1151,7 @@ const gdtfAttributes = {
     oflType: `BladeRotation`,
     oflProperty: `angle`,
     defaultPhysicalEntity: `Angle`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Bottom`;
     }
   },
@@ -1157,7 +1160,7 @@ const gdtfAttributes = {
     oflType: `BladeRotation`,
     oflProperty: `angle`,
     defaultPhysicalEntity: `Angle`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Left`;
     }
   },

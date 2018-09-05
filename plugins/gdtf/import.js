@@ -326,6 +326,7 @@ module.exports.import = function importGdtf(buffer, filename) {
             // save parent nodes for future use
             gdtfChannelSet._logicalChannel = gdtfLogicalChannel;
             gdtfChannelSet._channelFunction = gdtfChannelFunction;
+            gdtfChannelSet._fixture = gdtfFixture;
 
             // do some preprocessing
 
@@ -366,41 +367,36 @@ module.exports.import = function importGdtf(buffer, filename) {
 
         const capabilityTypeData = getCapabilityTypeData(gdtfCapability);
 
-        if (capabilityTypeData) {
-          capability.type = capabilityTypeData.oflType;
+        capability.type = capabilityTypeData.oflType;
 
-          if (`beforePhysicalPropertyHook` in capabilityTypeData) {
-            capabilityTypeData.beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture);
+        if (`beforePhysicalPropertyHook` in capabilityTypeData) {
+          capabilityTypeData.beforePhysicalPropertyHook(capability, gdtfCapability);
+        }
+
+        const oflProperty = getOflProperty(capabilityTypeData, gdtfCapability);
+
+        if (oflProperty !== null) {
+          const physicalUnit = getPhysicalUnit(gdtfCapability);
+
+          const physicalFrom = gdtfCapability._physicalFrom;
+          const physicalTo = gdtfCapability._physicalTo;
+
+          if (physicalFrom === physicalTo) {
+            capability[oflProperty] = physicalUnit(physicalFrom, null);
           }
+          else {
+            capability[`${oflProperty}Start`] = physicalUnit(physicalFrom, physicalTo);
+            capability[`${oflProperty}End`] = physicalUnit(physicalTo, physicalFrom);
 
-          let oflProperty = capabilityTypeData.oflProperty;
-
-          if (oflProperty !== null) {
-            if (typeof oflProperty === `function`) {
-              oflProperty = oflProperty(gdtfCapability);
+            if (capability.brightnessStart === `0%` && capability.brightnessEnd === `100%`) {
+              delete capability.brightnessStart;
+              delete capability.brightnessEnd;
             }
-
-            const physicalUnit = getPhysicalUnit(gdtfCapability);
-
-            const physicalFrom = gdtfCapability._physicalFrom;
-            const physicalTo = gdtfCapability._physicalTo;
-
-            if (physicalFrom === physicalTo) {
-              capability[oflProperty] = physicalUnit(physicalFrom, null);
-            }
-            else {
-              capability[`${oflProperty}Start`] = physicalUnit(physicalFrom, physicalTo);
-              capability[`${oflProperty}End`] = physicalUnit(physicalTo, physicalFrom);
-            }
-          }
-
-          if (`afterPhysicalPropertyHook` in capabilityTypeData) {
-            capabilityTypeData.afterPhysicalPropertyHook(capability, gdtfCapability, gdtfFixture);
           }
         }
-        else {
-          capability.type = `Generic`;
-          capability.helpWanted = `Please try to improve the type of this capability.`;
+
+        if (`afterPhysicalPropertyHook` in capabilityTypeData) {
+          capabilityTypeData.afterPhysicalPropertyHook(capability, gdtfCapability);
         }
 
         capability.comment = gdtfCapability.$.Name;
@@ -428,7 +424,7 @@ module.exports.import = function importGdtf(buffer, filename) {
 
       /**
        * @param {!object} gdtfCapability The enhanced <ChannelSet> XML object.
-       * @returns {?object} The capability type data from @file gdtf-attributes.js
+       * @returns {!object} The capability type data from @file gdtf-attributes.js
        */
       function getCapabilityTypeData(gdtfCapability) {
         const gdtfAttribute = gdtfCapability._channelFunction._attribute;
@@ -437,7 +433,10 @@ module.exports.import = function importGdtf(buffer, filename) {
         const capabilityTypeData = gdtfAttributes[attrName];
 
         if (!capabilityTypeData) {
-          return null;
+          return {
+            oflType: `Unknown`, // will trigger an error in the validation
+            oflProperty: null
+          };
         }
 
         if (!capabilityTypeData.inheritFrom) {
@@ -453,6 +452,23 @@ module.exports.import = function importGdtf(buffer, filename) {
         delete gdtfAttributes[attrName].inheritFrom;
 
         return gdtfAttributes[attrName];
+      }
+
+      /**
+       * @param {!object} capabilityTypeData The capability type data from @file gdtf-attributes.js
+       * @param {!object} gdtfCapability The enhanced <ChannelSet> XML object.
+       * @returns {?string} The OFL property name, or null.
+       */
+      function getOflProperty(capabilityTypeData, gdtfCapability) {
+        if (!(`oflProperty` in capabilityTypeData)) {
+          return null;
+        }
+
+        if (typeof capabilityTypeData.oflProperty === `function`) {
+          return capabilityTypeData.oflProperty(gdtfCapability);
+        }
+
+        return capabilityTypeData.oflProperty;
       }
 
       /**
