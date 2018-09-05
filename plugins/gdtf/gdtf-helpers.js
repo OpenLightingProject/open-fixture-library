@@ -50,75 +50,61 @@ function followXmlNodeReference(startNode, nodeReference) {
  * @returns {!string} The RGB hex code string in the form "#rrggbb".
  */
 function getRgbColorFromGdtfColor(gdtfColorStr) {
-  // TODO: This is not correct at all :(
-
-
   /* eslint-disable camelcase, space-in-parens */
 
-  let X, Y, Z;
+  // functions ported from https://github.com/njsmith/colorspacious
+  const sRGB1_to_sRGB255 = RGB1 => RGB1.map(c => c * 255);
+  const sRGB1_linear_to_sRGB1 = RGB_linear => RGB_linear.map(c => {
+    if (c <= 0.0031308) {
+      return 12.92 * c;
+    }
 
-  const [x, y, Y_orig] = gdtfColorStr.split(/\s*,\s*/).map(parseFloat);
-  // console.log(gdtfColorStr, gdtfColorStr.split(/\s*,\s*/), x, y, Y_orig);
+    const a = 0.055;
 
-  // see http://www.brucelindbloom.com/index.html?Eqn_xyY_to_XYZ.html
-  if (y === 0) {
-    X = 0;
-    Y = 0;
-    Z = 0;
+    return ((1 + a) * Math.pow(c, 1 / 2.4)) - a;
+  });
+  const XYZ100_to_sRGB1_linear = ([X, Y, Z]) => {
+    const R = ( 3.2406 * X / 100) + (-1.5372 * Y / 100) + (-0.4986 * Z / 100);
+    const G = (-0.9689 * X / 100) + ( 1.8758 * Y / 100) + ( 0.0415 * Z / 100);
+    const B = ( 0.0557 * X / 100) + (-0.2040 * Y / 100) + ( 1.0570 * Z / 100);
+    return [R, G, B];
+  };
+  const XYZ1_to_XYZ100 = XYZ1 => XYZ1.map(c => c * 100);
+  const xyY_to_XYZ = ([x, y, Y]) => {
+    const X = Y / y * x;
+    const Z = Y / y * (1 - x - y);
+    return [X, Y, Z];
+  };
+  const cspace_convert = xyY1 => sRGB1_to_sRGB255(sRGB1_linear_to_sRGB1(XYZ100_to_sRGB1_linear(XYZ1_to_XYZ100(xyY_to_XYZ(xyY1)))));
+
+
+  // parse starting values as array
+  const [x, y, Y] = gdtfColorStr.split(/\s*,\s*/).map(parseFloat);
+
+
+  // ported from https://gitlab.com/petrvanek/gdtf-libraries/blob/e3194638c552321ad06af630ba83f49dcf5b0016/gdtf2json.py#L10-25
+  const RGB = cspace_convert([x, y, Y]);
+
+  let r, g, b;
+  if (Y > 1) {
+    [r, g, b] = RGB.map(x => (x > 0 ? x / 255 : 0));
   }
   else {
-    X = x * Y_orig / y;
-    Y = Y_orig;
-    Z = (1 - x - y) * Y_orig / y;
+    [r, g, b] = RGB;
   }
 
-  X /= 100;
-  Y /= 100;
-  Z /= 100;
+  let count = 0;
+  while (Math.max(r, g, b) < 127 && count < 5) {
+    r *= 2;
+    g *= 2;
+    b *= 2;
+    count++;
+  }
 
-  // console.log(X, Y, Z);
+  // clip to integers in range 0…255
+  [r, g, b] = [r, g, b].map(c => Math.floor(Math.min(255, Math.max(0, c || 0))));
 
-  // see http://www.brucelindbloom.com/index.html?Eqn_XYZ_to_RGB.html
-  // and http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html
-
-  // CIE RGB
-  //          [  2.3706743 -0.9000405 -0.4706338 ]
-  // M^(-1) = [ -0.5138850  1.4253036  0.0885814 ]
-  //          [  0.0052982 -0.0146949  1.0093968 ]
-
-  const r = ( 2.3706743 * X) + (-0.9000405 * Y) + (-0.4706338 * Z);
-  const g = (-0.5138850 * X) + ( 1.4253036 * Y) + ( 0.0885814 * Z);
-  const b = ( 0.0052982 * X) + (-0.0146949 * Y) + ( 1.0093968 * Z);
-
-  // Wide Gamut RGB
-  //          [  1.4628067 -0.1840623 -0.2743606 ]
-  // M^(-1) = [ -0.5217933  1.4472381  0.0677227 ]
-  //          [  0.0349342 -0.0968930  1.2884099 ]
-
-  // const r = ( 1.4628067 * X) + (-0.1840623 * Y) + (-0.2743606 * Z);
-  // const g = (-0.5217933 * X) + ( 1.4472381 * Y) + ( 0.0677227 * Z);
-  // const b = ( 0.0349342 * X) + (-0.0968930 * Y) + ( 1.2884099 * Z);
-
-
-  const gamma = 2.2;
-
-  const R = Math.min(255, Math.max(Math.floor((Math.pow(r, 1 / gamma) || 0) * 255 * 5), 0));
-  const G = Math.min(255, Math.max(Math.floor((Math.pow(g, 1 / gamma) || 0) * 255 * 5), 0));
-  const B = Math.min(255, Math.max(Math.floor((Math.pow(b, 1 / gamma) || 0) * 255 * 5), 0));
-
-  // see https://en.wikipedia.org/wiki/CIE_1931_color_space
-  //          [  0.41847    -0.15866   -0.082835 ]
-  // M^(-1) = [ -0.091169    0.25243    0.015708 ]
-  //          [  0.00092090 -0.0025498  0.17860  ]
-
-  // const R = (0.41847 * X) + (-0.15866 * Y) + (-0.082835 * Z);
-  // const G = (-0.091169 * X) + (0.25243 * Y) + (0.015708 * Z);
-  // const B = (0.00092090 * X) + (-0.0025498 * Y) + (0.17860 * Z);
-
-  // console.log(R, G, B);
-  // console.log();
-
-  return `#${getHexComponent(R)}${getHexComponent(G)}${getHexComponent(B)}`;
+  return `#${getHexComponent(r)}${getHexComponent(g)}${getHexComponent(b)}`;
 
   /* eslint-enable camelcase, space-in-parens */
 
