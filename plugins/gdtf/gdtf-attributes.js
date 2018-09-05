@@ -691,12 +691,46 @@ const gdtfAttributes = {
     // Controls the speed and direction of the continuous rotation of the fixture’s prism on prism wheel 2.
     inheritFrom: `PrismPosRotation`
   },
-  Effects: undefined, // Generically predefined macros and effects of a fixture.
-  EffectsRate: undefined, // Speed of running effects.
-  EffectsFade: undefined, // Snapping or smooth look of running effects.
-  Effects2: undefined, // Generically predefined macros and effects of a fixture (2).
-  Effects2Rate: undefined, // Speed of running effects (2).
-  Effects2Fade: undefined, // Snapping or smooth look of running effects (2).
+  Effects: {
+    // Generically predefined macros and effects of a fixture.
+    oflType: `Effect`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `Speed`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      capability.effectName = gdtfCapability.$.Name;
+      gdtfCapability.$.Name = undefined;
+    }
+  },
+  EffectsRate: {
+    // Speed of running effects.
+    oflType: `EffectSpeed`,
+    oflProperty: guessSpeedOrDuration,
+    defaultPhysicalEntity: `Speed`,
+    beforePhysicalPropertyHook(capability, gdtfCapability, gdtfFixture) {
+      if (gdtfCapability._channelFunction._attribute.$.PhysicalUnit === `Time`) {
+        // overwrite capability type
+        capability.type = `EffectDuration`;
+      }
+    }
+  },
+  EffectsFade: {
+    // Snapping or smooth look of running effects.
+    oflType: `EffectDuration`,
+    oflProperty: `duration`,
+    defaultPhysicalEntity: `Time`
+  },
+  Effects2: {
+    // Generically predefined macros and effects of a fixture (2).
+    inheritFrom: `Effects`
+  },
+  Effects2Rate: {
+    // Speed of running effects (2).
+    inheritFrom: `EffectsRate`
+  },
+  Effects2Fade: {
+    // Snapping or smooth look of running effects (2).
+    inheritFrom: `EffectsFade`
+  },
   EffectsSync: undefined, // Sets offset between running effects and effects 2.
   Focus: {
     // Controls the sharpness of the fixture's spot light. Can blur or sharpen the edge of the spot.
@@ -846,7 +880,7 @@ const gdtfAttributes = {
   IntensityMSpeed: {
     // Movement speed of the fixture's intensity.
     oflType: `Speed`,
-    oflProperty: gdtfCapability => (gdtfCapability._channelFunction._attribute.$.PhysicalUnit === `Time` ? `duration` : `speed`),
+    oflProperty: guessSpeedOrDuration,
     defaultPhysicalEntity: `Speed`
   },
   PositionMSpeed: {
@@ -1173,6 +1207,14 @@ function guessColorComponentName(gdtfCapability, primaryColor, secondaryColor) {
   }
 
   return primaryColor;
+}
+
+/**
+ * @param {!object} gdtfCapability The enhanced <ChannelSet> XML object.
+ * @returns {'speed'|'duration'} The OFL property to use for this capability.
+ */
+function guessSpeedOrDuration(gdtfCapability) {
+  return gdtfCapability._channelFunction._attribute.$.PhysicalUnit === `Time` ? `duration` : `speed`;
 }
 
 module.exports = {
