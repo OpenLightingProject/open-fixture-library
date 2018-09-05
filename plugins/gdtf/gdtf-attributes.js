@@ -722,30 +722,127 @@ const gdtfAttributes = {
     oflProperty: `angle`,
     defaultPhysicalEntity: `Angle`
   },
-  Control: undefined, // Controls the channel of a fixture.
-  DimmerMode: undefined, // Selects different modes of intensity.
-  DimmerCurve: undefined, // Selects different dimmer curves of the fixture.
-  PanMode: undefined, // Selects fixture's pan mode. Selects between a limited pan range (e.g. -270 to 270) or a continuous pan range.
-  TiltMode: undefined, // Selects fixture's pan mode. Selects between a limited tilt range (e.g. -130 to 130) or a continuous tilt range.
-  PositionModes: undefined, // Selects the fixture's position mode.
-  Gobo1WheelMode: undefined, // Changes control between selecting, indexing, and rotating the gobos of gobowheel1.
-  Gobo2WheelMode: undefined, // Changes control between selecting, indexing, and rotating the gobos of gobowheel2.
-  Gobo3WheelMode: undefined, // Changes control between selecting, indexing, and rotating the gobos of gobowheel3.
-  AnimationIndexRotateMode: undefined, // Changes control between selecting, indexing, and rotating the animation wheel.
-  AnimationWheelShortcutMode: undefined, // Defines whether the animation wheel takes the shortest distance between two positions.
-  Color1Mode: undefined, // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 1.
-  Color2Mode: undefined, // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 2.
-  Color3Mode: undefined, // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 3.
-  Color4Mode: undefined, // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 4.
-  ColorWheelShortcutMode: undefined, // Defines whether the color wheel takes the shortest distance between two colors.
-  CyanMode: undefined, // Controls how Cyan is used within the fixture's cyan CMY-mixing feature.
-  MagentaMode: undefined, // Controls how Cyan is used within the fixture's magenta CMY-mixing.
-  YellowMode: undefined, // Controls how Cyan is used within the fixture's yellow CMY-mixing feature.
-  ColorMixMode: undefined, // Changes control between selecting continuous selection, half selection, random selection, color spinning, etc. in color mixing.
-  StrobeMode: undefined, // Changes strobe style - strobe, pulse, random strobe, etc. - of the shutter attribute.
-  FocusMode: undefined, // Changes modes of the fixture’s focus - manual or auto- focus.
-  IrisMode: undefined, // Changes modes of the fixture’s iris - linear, strobe, pulse.
-  BeamEffectIndexRotateMode: undefined, // Changes mode to control either index or rotation of the beam effects.
+  Control: {
+    // Controls the channel of a fixture.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  DimmerMode: {
+    // Selects different modes of intensity.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  DimmerCurve: {
+    // Selects different dimmer curves of the fixture.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  PanMode: {
+    // Selects fixture's pan mode. Selects between a limited pan range (e.g. -270 to 270) or a continuous pan range.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  TiltMode: {
+    // Selects fixture's pan mode. Selects between a limited tilt range (e.g. -130 to 130) or a continuous tilt range.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  PositionModes: {
+    // Selects the fixture's position mode.
+    // TODO: Is this a typo in the GDTF Wiki and it should be "PositionMode"?
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  Gobo1WheelMode: {
+    // Changes control between selecting, indexing, and rotating the gobos of gobowheel1.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  Gobo2WheelMode: {
+    // Changes control between selecting, indexing, and rotating the gobos of gobowheel2.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  Gobo3WheelMode: {
+    // Changes control between selecting, indexing, and rotating the gobos of gobowheel3.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  AnimationIndexRotateMode: {
+    // Changes control between selecting, indexing, and rotating the animation wheel.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  AnimationWheelShortcutMode: {
+    // Defines whether the animation wheel takes the shortest distance between two positions.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  Color1Mode: {
+    // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 1.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  Color2Mode: {
+    // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 2.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  Color3Mode: {
+    // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 3.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  Color4Mode: {
+    // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 4.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  ColorWheelShortcutMode: {
+    // Defines whether the color wheel takes the shortest distance between two colors.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  CyanMode: {
+    // Controls how Cyan is used within the fixture's cyan CMY-mixing feature.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  MagentaMode: {
+    // Controls how Cyan is used within the fixture's magenta CMY-mixing.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  YellowMode: {
+    // Controls how Cyan is used within the fixture's yellow CMY-mixing feature.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  ColorMixMode: {
+    // Changes control between selecting continuous selection, half selection, random selection, color spinning, etc. in color mixing.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  StrobeMode: {
+    // Changes strobe style - strobe, pulse, random strobe, etc. - of the shutter attribute.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  FocusMode: {
+    // Changes modes of the fixture’s focus - manual or auto- focus.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  IrisMode: {
+    // Changes modes of the fixture’s iris - linear, strobe, pulse.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  BeamEffectIndexRotateMode: {
+    // Changes mode to control either index or rotation of the beam effects.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
   IntensityMSpeed: {
     // Movement speed of the fixture's intensity.
     oflType: `Speed`,
@@ -875,7 +972,11 @@ const gdtfAttributes = {
     oflType: `Maintenance`,
     oflProperty: null
   },
-  Function: undefined, // Generally controls features of the fixture.
+  Function: {
+    // Generally controls features of the fixture.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
   LampControl: {
     // Controls the fixture's lamp on/lamp off feature.
     oflType: `Maintenance`,
@@ -912,7 +1013,11 @@ const gdtfAttributes = {
       capability.fogType = `Haze`;
     }
   },
-  LampPowerMode: undefined, // Controls the energy consumption of the lamp.
+  LampPowerMode: {
+    // Controls the energy consumption of the lamp.
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
   Fans: undefined, // Fancontrols a fixture or device.
   Blade1A: {
     // 1 of 2 shutters that shape the top of the beam.
