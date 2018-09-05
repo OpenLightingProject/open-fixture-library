@@ -208,11 +208,11 @@ module.exports.import = function importGdtf(buffer, filename) {
   }
 
   /**
-   * @param {!array.<!Channel>} channels The OFL availableChannels or templateChannels object.
+   * @param {!array.<!ChannelWrapper>} channelWrappers The OFL availableChannels or templateChannels object.
    * @param {!object} gdtfChannel The GDTF channel object.
    * @param {!object} gdtfFixture The GDTF fixture object.
    */
-  function addChannel(channels, gdtfChannel, gdtfFixture) {
+  function addChannel(channelWrappers, gdtfChannel, gdtfFixture) {
     const name = getChannelName();
 
     if (gdtfChannel.LogicalChannel.length > 1) {
@@ -246,7 +246,7 @@ module.exports.import = function importGdtf(buffer, filename) {
     replaceGdtfDmxValuesWithNumbers();
 
     // check if we already added the same channel
-    const sameChannel = channels.find(
+    const sameChannel = channelWrappers.find(
       ch => JSON.stringify(ch.channel) === JSON.stringify(channel)
     );
     if (sameChannel) {
@@ -259,7 +259,7 @@ module.exports.import = function importGdtf(buffer, filename) {
     const channelKey = getChannelKey();
 
     gdtfChannel._oflChannelKey = channelKey;
-    channels.push({
+    channelWrappers.push({
       key: channelKey,
       channel: channel,
       maxResolution: getChannelResolution()
@@ -509,7 +509,7 @@ module.exports.import = function importGdtf(buffer, filename) {
       // make unique by appending ' 2', ' 3', ... if necessary
       let duplicates = 1;
       const hasChannelKey = ch => ch.key === key;
-      while (channels.some(hasChannelKey)) {
+      while (channelWrappers.some(hasChannelKey)) {
         duplicates++;
         key = `${name} ${duplicates}`;
       }
