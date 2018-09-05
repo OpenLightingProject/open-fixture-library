@@ -746,20 +746,45 @@ const gdtfAttributes = {
   FocusMode: undefined, // Changes modes of the fixture’s focus - manual or auto- focus.
   IrisMode: undefined, // Changes modes of the fixture’s iris - linear, strobe, pulse.
   BeamEffectIndexRotateMode: undefined, // Changes mode to control either index or rotation of the beam effects.
-  IntensityMSpeed: undefined, // Movement speed of the fixture's intensity.
-  PositionMSpeed: {
-    // Movement speed of the fixture's pan/tilt.
-    oflType: `PanTiltSpeed`,
-    oflProperty: `speed`,
+  IntensityMSpeed: {
+    // Movement speed of the fixture's intensity.
+    oflType: `Speed`,
+    oflProperty: gdtfCapability => (gdtfCapability._channelFunction._attribute.$.PhysicalUnit === `Time` ? `duration` : `speed`),
     defaultPhysicalEntity: `Speed`
   },
-  ColorMixMSpeed: undefined, // Movement speed of the fixture's ColorMix presets.
-  ColorWheelSelectMSpeed: undefined, // Movement speed of the fixture's color wheel.
-  GoboWheelMSpeed: undefined, // Movement speed of the fixture's gobo wheel.
-  IrisMSpeed: undefined, // Movement speed of the fixture's iris.
-  FocusMSpeed: undefined, // Movement speed of the fixture's focus.
-  FrameMSpeed: undefined, // Movement speed of the fixture's shapers.
-  GlobalMSpeed: undefined, // General speed of fixture's features.
+  PositionMSpeed: {
+    // Movement speed of the fixture's pan/tilt.
+    inheritFrom: `IntensityMSpeed`,
+    oflType: `PanTiltSpeed`
+  },
+  ColorMixMSpeed: {
+    // Movement speed of the fixture's ColorMix presets.
+    inheritFrom: `IntensityMSpeed`
+  },
+  ColorWheelSelectMSpeed: {
+    // Movement speed of the fixture's color wheel.
+    inheritFrom: `IntensityMSpeed`
+  },
+  GoboWheelMSpeed: {
+    // Movement speed of the fixture's gobo wheel.
+    inheritFrom: `IntensityMSpeed`
+  },
+  IrisMSpeed: {
+    // Movement speed of the fixture's iris.
+    inheritFrom: `IntensityMSpeed`
+  },
+  FocusMSpeed: {
+    // Movement speed of the fixture's focus.
+    inheritFrom: `IntensityMSpeed`
+  },
+  FrameMSpeed: {
+    // Movement speed of the fixture's shapers.
+    inheritFrom: `IntensityMSpeed`
+  },
+  GlobalMSpeed: {
+    // General speed of fixture's features.
+    inheritFrom: `IntensityMSpeed`
+  },
   FixtureGlobalReset: {
     // Generally resets the entire fixture.
     oflType: `Maintenance`,
