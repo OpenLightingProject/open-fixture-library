@@ -930,6 +930,8 @@ module.exports.import = function importGdtf(buffer, filename) {
 
     // switch channels in trigger channels' capabilities
     Object.keys(relationsPerMaster).forEach(triggerChannelKey => {
+      const triggerChannelRelations = simplifySwitchingChannelRelations(relationsPerMaster[triggerChannelKey]);
+
       let triggerChannel;
       if (fixture.availableChannels && triggerChannelKey in fixture.availableChannels) {
         triggerChannel = fixture.availableChannels[triggerChannelKey];
@@ -947,8 +949,8 @@ module.exports.import = function importGdtf(buffer, filename) {
       triggerChannel.capabilities.forEach(capability => {
         capability.switchChannels = {};
 
-        Object.keys(relationsPerMaster[triggerChannelKey]).forEach(switchingChannelKey => {
-          relationsPerMaster[triggerChannelKey][switchingChannelKey].forEach(relation => {
+        Object.keys(triggerChannelRelations).forEach(switchingChannelKey => {
+          triggerChannelRelations[switchingChannelKey].forEach(relation => {
             const [dmxFrom, dmxTo] = scaleDmxRangeIndividually(...relation.dmxFrom, ...relation.dmxTo, channelResolution);
 
             if (capability.dmxRange[0] >= dmxFrom && capability.dmxRange[1] <= dmxTo) {
@@ -970,6 +972,41 @@ module.exports.import = function importGdtf(buffer, filename) {
       });
     });
 
+
+    /**
+     * @param {!object} switchingChannelRelations Switching channel's relations.
+     * @returns {!object} Simplified switching channel's relations.
+     */
+    function simplifySwitchingChannelRelations(switchingChannelRelations) {
+      const simplifiedRelations = {};
+
+      Object.keys(switchingChannelRelations).forEach(switchingChannelKey => {
+        const relations = switchingChannelRelations[switchingChannelKey];
+
+        // were this switching channel's relations already added?
+        const addedSwitchingChannelKey = Object.keys(simplifiedRelations).find(
+          otherKey => JSON.stringify(switchingChannelRelations[otherKey]) === JSON.stringify(relations)
+        );
+
+        if (addedSwitchingChannelKey) {
+          // already added switching channel has the same relations, so we don't need to add it
+          // but we need to update modeChannelReplacements
+          modeChannelReplacements.forEach(mode => {
+            Object.keys(mode).forEach(channelKey => {
+              if (mode[channelKey] === switchingChannelKey) {
+                mode[channelKey] = addedSwitchingChannelKey;
+              }
+            });
+          });
+        }
+        else {
+          // add the new switching channel
+          simplifiedRelations[switchingChannelKey] = relations;
+        }
+      });
+
+      return simplifiedRelations;
+    }
 
     /**
      * @param {!Channel} channel The OFL channel object.
