@@ -120,7 +120,7 @@ function getManufacturerKey(fixture) {
   }
 
   // add new manufacturer
-  const manKey = fixture.newManufacturerShortName;
+  const manKey = slugify(fixture.newManufacturerName);
 
   out.manufacturers[manKey] = {
     name: fixture.newManufacturerName
@@ -146,7 +146,7 @@ function getFixtureKey(fixture, manKey) {
     return fixture.key;
   }
 
-  let fixKey = fixture.name.toLowerCase().replace(/[^a-z0-9-]+/g, ` `).trim().replace(/\s+/g, `-`);
+  let fixKey = slugify(fixture.name);
 
   const otherFixtureKeys = Object.keys(out.fixtures).filter(
     key => key.startsWith(manKey)
@@ -350,3 +350,12 @@ function propExistsIn(prop, object) {
 function getComboboxInput(prop, from) {
   return (from[prop] === `[add-value]` && from[`${prop}New`] !== ``) ? from[`${prop}New`] : from[prop];
 }
+
+/**
+ * @param {!string} str The string to slugify.
+ * @returns {!string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
+ */
+function slugify(str) {
+  return str.toLowerCase().replace(/[^a-z0-9-]+/g, ` `).trim().replace(/\s+/g, `-`);
+}
+

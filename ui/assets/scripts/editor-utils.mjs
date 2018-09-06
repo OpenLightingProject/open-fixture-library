@@ -16,7 +16,6 @@ export function getEmptyFixture() {
     useExistingManufacturer: true,
     manufacturerShortName: ``,
     newManufacturerName: ``,
-    newManufacturerShortName: ``,
     newManufacturerWebsite: ``,
     newManufacturerComment: ``,
     newManufacturerRdmId: null,

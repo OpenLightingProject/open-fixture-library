@@ -46,15 +46,6 @@
               name="new-manufacturer-name" />
           </app-labeled-input>
 
-          <app-labeled-input :formstate="formstate" name="new-manufacturer-shortName" label="Unique short name">
-            <app-property-input-text
-              v-model="fixture.newManufacturerShortName"
-              :schema-property="properties.manufacturerKey"
-              :required="true"
-              name="new-manufacturer-shortName"
-              title="Use only lowercase letters, numbers and dashes." />
-          </app-labeled-input>
-
           <app-labeled-input :formstate="formstate" name="new-manufacturer-website" label="Website">
             <app-property-input-text
               v-model="fixture.newManufacturerWebsite"
