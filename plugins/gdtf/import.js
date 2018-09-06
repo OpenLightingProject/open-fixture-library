@@ -4,6 +4,7 @@ const promisify = require(`util`).promisify;
 
 const manufacturers = require(`../../fixtures/manufacturers.json`);
 const { Channel } = require(`../../lib/model.js`);
+const { scaleDmxValue, scaleDmxRangeIndividually } = require(`../../lib/scale-dmx-values.js`);
 const { gdtfAttributes, gdtfUnits } = require(`./gdtf-attributes.js`);
 const { followXmlNodeReference } = require(`./gdtf-helpers.js`);
 
@@ -555,17 +556,21 @@ module.exports.import = function importGdtf(buffer, filename) {
       const scaleToResolution = Math.max(Channel.RESOLUTION_8BIT, maxDmxValueResolution);
 
       if (channel.defaultValue) {
-        channel.defaultValue = scaleDmxValue(channel.defaultValue, scaleToResolution);
+        channel.defaultValue = scaleDmxValue(...channel.defaultValue, scaleToResolution);
       }
 
       if (channel.highlightValue) {
-        channel.highlightValue = scaleDmxValue(channel.highlightValue, scaleToResolution);
+        channel.highlightValue = scaleDmxValue(...channel.highlightValue, scaleToResolution);
       }
 
       if (channel.capabilities) {
         channel.capabilities.forEach(capability => {
-          capability.dmxRange[0] = scaleDmxValue(capability.dmxRange[0], scaleToResolution);
-          capability.dmxRange[1] = scaleDmxValue(capability.dmxRange[1], scaleToResolution);
+          const startValue = capability.dmxRange[0][0];
+          const startResolution = capability.dmxRange[0][1];
+          const endValue = capability.dmxRange[1][0];
+          const endResolution = capability.dmxRange[1][1];
+
+          capability.dmxRange = scaleDmxRangeIndividually(startValue, startResolution, endValue, endResolution, scaleToResolution);
         });
       }
 
@@ -598,16 +603,6 @@ module.exports.import = function importGdtf(buffer, filename) {
         return Math.max(0, ...dmxValues.map(
           ([value, resolution]) => resolution
         ));
-      }
-
-      /**
-       * @param {!array.<!number>} dmxValue GDTF DMX value array ([value, resolution]).
-       * @param {!number} targetResolution The resolution to scale the DMX value to.
-       * @returns {!number} The DMX value scaled to maxResolution.
-       */
-      function scaleDmxValue(dmxValue, targetResolution) {
-        const [value, resolution] = dmxValue;
-        return Math.pow(256, targetResolution - resolution) * value;
       }
     }
   }
