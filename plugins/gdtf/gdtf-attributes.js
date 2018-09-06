@@ -97,7 +97,15 @@ function physicalValuesFulfillCondition(value1, value2, predicate) {
 // see https://gdtf-share.com/wiki/GDTF_File_Description#Appendix_A._Attribute_Definitions
 const gdtfAttributes = {
   ActiveZone: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  AnimationIndexRotate: undefined, // Controls the animation disk's index or its rotation speed.
+  AnimationIndexRotate: {
+    // Controls the animation disk's index or its rotation speed.
+    oflType: `Rotation`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `AngularSpeed`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      normalizeAngularSpeedDirection(gdtfCapability);
+    }
+  },
   AnimationIndexRotateMode: {
     // Changes control between selecting, indexing, and rotating the animation wheel.
     oflType: `Maintenance`,
@@ -106,8 +114,21 @@ const gdtfAttributes = {
   AnimationOffset: undefined, // Controls the animation disk's shaking.
   AnimationWheel: undefined, // Inserts a gobo disk into the beam. The disk has the ability to continuously index and rotate.
   AnimationWheelMacro: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  AnimationWheelPos: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  AnimationWheelPosSpin: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  AnimationWheelPos: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    oflType: `Rotation`,
+    oflProperty: `angle`,
+    defaultPhysicalEntity: `Angle`
+  },
+  AnimationWheelPosSpin: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    oflType: `Rotation`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `AngularSpeed`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      normalizeAngularSpeedDirection(gdtfCapability);
+    }
+  },
   AnimationWheelShortcutMode: {
     // Defines whether the animation wheel takes the shortest distance between two positions.
     oflType: `Maintenance`,
@@ -118,7 +139,11 @@ const gdtfAttributes = {
     oflType: `Maintenance`,
     oflProperty: null
   },
-  BeamMode: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  BeamMode: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
   BeamReset: {
     // Resets the fixture's beam features.
     oflType: `Maintenance`,
@@ -274,7 +299,10 @@ const gdtfAttributes = {
     oflType: `Maintenance`,
     oflProperty: null
   },
-  Color1Random: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  Color1Random: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Effects`
+  },
   Color1Select: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   Color1Spin: {
     // Controls the speed and direction of the fixture's color wheel 1.
@@ -324,8 +352,15 @@ const gdtfAttributes = {
     // Controls the speed and direction of the fixture's color wheel 4.
     inheritFrom: `Color1Spin`
   },
-  ColorControl: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  ColorEffects: undefined, // Selects predefined color effects built into the fixture.
+  ColorControl: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    oflType: `Maintenance`,
+    oflProperty: null
+  },
+  ColorEffects: {
+    // Selects predefined color effects built into the fixture.
+    inheritFrom: `Effects`
+  },
   ColorMacro: {
     // Selects predefined colors that are programed in the fixture's firmware.
     oflType: `ColorPreset`,
@@ -356,7 +391,10 @@ const gdtfAttributes = {
     // Selects predefined colors that are programed in the fixture's firmware (2).
     inheritFrom: `ColorMacro`
   },
-  ColorMacroMSpeed: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  ColorMacroMSpeed: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `IntensityMSpeed`
+  },
   ColorMixMode: {
     // Changes control between selecting continuous selection, half selection, random selection, color spinning, etc. in color mixing.
     oflType: `Maintenance`,
@@ -477,22 +515,70 @@ const gdtfAttributes = {
     oflType: `Maintenance`,
     oflProperty: null
   },
-  ControlAutofocus: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  ControlBlackout: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  ControlCalibrationMode: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  ControlColorMode: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  ControlCRIMode: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  ControlDimmerCurve: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  ControlDisplayIntensity: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  ControlDMXInput: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  ControlFanMode: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  ControlFollowSpotMode: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  ControlLamp: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  ControlLampMode: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  ControlPanTiltMode: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  ControlParking: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  ControlReset: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  ControlWhiteCount: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  ControlAutofocus: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Control`
+  },
+  ControlBlackout: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Control`
+  },
+  ControlCalibrationMode: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Control`
+  },
+  ControlColorMode: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Control`
+  },
+  ControlCRIMode: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Control`
+  },
+  ControlDimmerCurve: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Control`
+  },
+  ControlDisplayIntensity: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Control`
+  },
+  ControlDMXInput: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Control`
+  },
+  ControlFanMode: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Control`
+  },
+  ControlFollowSpotMode: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Control`
+  },
+  ControlLamp: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Control`
+  },
+  ControlLampMode: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Control`
+  },
+  ControlPanTiltMode: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Control`
+  },
+  ControlParking: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Control`
+  },
+  ControlReset: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Control`
+  },
+  ControlWhiteCount: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Control`
+  },
   CTB: {
     // Controls the fixture's "Correct to blue" wheel or mixing system.
     inheritFrom: `CTO`
@@ -511,7 +597,10 @@ const gdtfAttributes = {
     oflType: `Maintenance`,
     oflProperty: null
   },
-  CTG: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  CTG: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `CTO`
+  },
   CTO: {
     // Controls the fixture's "Correct to orange" wheel or mixing system.
     oflType: `ColorTemperature`,
@@ -561,12 +650,36 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Time`
   },
   EffectsIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  EffectsMacro: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  EffectsPar1: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  EffectsPar2: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  EffectsPos: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  EffectsMacro: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Effects`
+  },
+  EffectsPar1: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    oflType: `EffectParameter`,
+    oflProperty: `parameter`,
+    defaultPhysicalEntity: `None`
+  },
+  EffectsPar2: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `EffectsPar1`
+  },
+  EffectsPos: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    oflType: `Rotation`,
+    oflProperty: `angle`,
+    defaultPhysicalEntity: `Angle`
+  },
   EffectsPosIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  EffectsPosSpin: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  EffectsPosSpin: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    oflType: `Rotation`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `AngularSpeed`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      normalizeAngularSpeedDirection(gdtfCapability);
+    }
+  },
   EffectsRate: {
     // Speed of running effects.
     oflType: `EffectSpeed`,
@@ -593,13 +706,22 @@ const gdtfAttributes = {
     inheritFrom: `EffectsFade`
   },
   Effects2Macro: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Effects2Par2: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Effects2Pos: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  Effects2Par2: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `EffectsPar2`
+  },
+  Effects2Pos: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `EffectsPos`
+  },
   Effects2Rate: {
     // Speed of running effects (2).
     inheritFrom: `EffectsRate`
   },
-  Effects3: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  Effects3: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Effects`
+  },
   Fan: {
     // Fog or hazer's Fan feature.
     oflType: `Rotation`,
@@ -679,11 +801,17 @@ const gdtfAttributes = {
     // The ability to soften the fixture's spot light with a frosted lens (2).
     inheritFrom: `Frost`
   },
-  Frost3: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  Frost3: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Frost`
+  },
   FrostHeavy: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   FrostLight: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   FrostMedium: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  FrostMSpeed: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  FrostMSpeed: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `IrisMSpeed`
+  },
   Function: {
     // Generally controls features of the fixture.
     oflType: `Maintenance`,
@@ -762,7 +890,11 @@ const gdtfAttributes = {
     oflType: `Maintenance`,
     oflProperty: null
   },
-  Gobo1WheelShake: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  Gobo1WheelShake: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    oflType: `GoboShake`,
+    oflProperty: `shakeSpeed`
+  },
   Gobo1WheelSpin: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   Gobo2: {
     // Selects gobos in the fixture's gobo wheel 2.
@@ -943,12 +1075,21 @@ const gdtfAttributes = {
     oflType: `Maintenance`,
     oflProperty: null
   },
-  PositionEffect: undefined, // Selects the predefined position effects that are built into the fixture.
-  PositionEffectRate: undefined, // Controls the speed of the predefined position effects that are built into the fixture.
-  PositionEffectFade: undefined, // Snaps or smooth fades with timing in running predefined position effects.
+  PositionEffect: {
+    // Selects the predefined position effects that are built into the fixture.
+    inheritFrom: `Effects`
+  },
+  PositionEffectRate: {
+    // Controls the speed of the predefined position effects that are built into the fixture.
+    inheritFrom: `EffectsRate`
+  },
+  PositionEffectFade: {
+    // Snaps or smooth fades with timing in running predefined position effects.
+    inheritFrom: `EffectsFade`
+  },
   PositionModes: {
     // Selects the fixture's position mode.
-    // TODO: Is this a typo in the GDTF Wiki and it should be "PositionMode"?
+    // TODO: Is this a typo in the GDTF wiki / schema and it should be "PositionMode"?
     oflType: `Maintenance`,
     oflProperty: null
   },
@@ -985,8 +1126,14 @@ const gdtfAttributes = {
     }
   },
   PrismPrismIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Prism1: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Prism1Pos: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  Prism1: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Prism`
+  },
+  Prism1Pos: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `PrismPos`
+  },
   Prism1PosIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   Prism1PosSpin: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   Prism1SelectIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -1008,10 +1155,16 @@ const gdtfAttributes = {
   Prism2PrismIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   Prism2SelectIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   Prism2SelectSpin: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  PrismMSpeed: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  PrismMSpeed: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `IrisMSpeed`
+  },
   Shaper: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   ShaperIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  ShaperMacros: undefined, // Predefined presets for shaper positions.
+  ShaperMacros: {
+    // Predefined presets for shaper positions.
+    inheritFrom: `Effects`
+  },
   ShaperPos: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   ShaperPosIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   ShaperPosSpin: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -1253,7 +1406,10 @@ const gdtfAttributes = {
     oflProperty: `angle`,
     defaultPhysicalEntity: `Angle`
   },
-  ZoomMSpeed: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  ZoomMSpeed: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `IrisMSpeed`
+  },
   ZoomReset: {
     // Resets the fixture's zoom.
     oflType: `Maintenance`,
