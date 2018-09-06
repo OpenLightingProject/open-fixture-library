@@ -116,7 +116,7 @@ function addFixture(fixture) {
 
 function getManufacturerKey(fixture) {
   if (fixture.useExistingManufacturer) {
-    return fixture.manufacturerShortName;
+    return fixture.manufacturerKey;
   }
 
   // add new manufacturer

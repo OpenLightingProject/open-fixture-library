@@ -14,13 +14,13 @@
         <h2>Manufacturer</h2>
 
         <section v-if="fixture.useExistingManufacturer">
-          <app-labeled-input :formstate="formstate" name="manufacturerShortName" label="Choose from list">
+          <app-labeled-input :formstate="formstate" name="manufacturerKey" label="Choose from list">
             <select
               ref="existingManufacturerSelect"
-              v-model="fixture.manufacturerShortName"
-              :class="{ empty: fixture.manufacturerShortName === `` }"
+              v-model="fixture.manufacturerKey"
+              :class="{ empty: fixture.manufacturerKey === `` }"
               required
-              name="manufacturerShortName">
+              name="manufacturerKey">
 
               <option value="" disabled>Please select a manufacturer</option>
 
@@ -327,7 +327,7 @@ export default {
       let manufacturerName;
 
       if (this.fixture.useExistingManufacturer) {
-        const manKey = this.fixture.manufacturerShortName;
+        const manKey = this.fixture.manufacturerKey;
 
         if (manKey === ``) {
           return true;
@@ -600,7 +600,7 @@ export default {
 function isPrefillable(prefillObject, key) {
   const allowedPrefillValues = {
     useExistingManufacturer: `boolean`,
-    manufacturerShortName: `string`,
+    manufacturerKey: `string`,
     newManufacturerRdmId: `number`,
     rdmModelId: `number`
   };
