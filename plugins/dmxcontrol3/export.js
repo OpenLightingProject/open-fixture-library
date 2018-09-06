@@ -406,7 +406,7 @@ const functions = {
 
         // single ranges don't merge with other single ranges
         if (suitableIndexData && !(singleRange && suitableIndexData.hasSingleRange)) {
-          suitableIndexData.dmxRange = suitableIndexData.dmxRange.mergeWith(dmxRange);
+          suitableIndexData.dmxRange = suitableIndexData.dmxRange.getRangeMergedWith(dmxRange);
 
           // single ranges overwrite index data
           if (singleRange) {
@@ -606,7 +606,7 @@ const functions = {
  */
 function getNormalizedCapabilities(caps, property, maximumValue, properUnit) {
   const normalizedCaps = caps.map(cap => {
-    const [startEntity, endEntity] = cap[property].map(entity => entity.toBaseUnit());
+    const [startEntity, endEntity] = cap[property].map(entity => entity.getBaseUnitEntity());
 
     return {
       capObject: cap,
@@ -659,7 +659,7 @@ function getBaseXmlCapability(cap, startValue = null, endValue = null) {
   const dmxRange = cap.getDmxRangeWithResolution(Channel.RESOLUTION_8BIT);
   let [dmxStart, dmxEnd] = [dmxRange.start, dmxRange.end];
 
-  if (startValue != null && startValue > endValue) {
+  if (startValue !== null && startValue > endValue) {
     [startValue, endValue] = [endValue, startValue];
     [dmxStart, dmxEnd] = [dmxEnd, dmxStart];
   }
@@ -668,7 +668,7 @@ function getBaseXmlCapability(cap, startValue = null, endValue = null) {
   xmlCap.attribute(`mindmx`, dmxStart);
   xmlCap.attribute(`maxdmx`, dmxEnd);
 
-  if (startValue != null) {
+  if (startValue !== null) {
     xmlCap.attribute(`minval`, +startValue.toFixed(3));
     xmlCap.attribute(`maxval`, +endValue.toFixed(3));
   }
