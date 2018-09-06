@@ -31,15 +31,12 @@
       "capabilities": [
         {
           "dmxRange": [0, 4],
-          "type": "FogOutput",
-          "fogOutput": "off",
-          "comment": "Fog Off"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [5, 255],
-          "type": "FogOutput",
-          "fogOutput": "strong",
-          "comment": "Fog On"
+          "type": "Fog",
+          "fogType": "Fog"
         }
       ]
     },
