@@ -28,9 +28,9 @@ module.exports.version = `0.1.0`;
 /**
  * @param {!Array.<Fixture>} fixtures The fixtures to convert into DMXControl device definitions
  * @param {!options} options Some global options
- * @returns {!Array.<object>} All generated files
+ * @returns {!Promise.<!Array.<object>, !Error>} The generated files
  */
-module.exports.export = function exportDMXControl3(fixtures, options) {
+module.exports.export = async function exportDMXControl3(fixtures, options) {
   const deviceDefinitions = [];
 
   for (const fixture of fixtures) {
@@ -342,7 +342,7 @@ const functions = {
 
       // find out which index is activated by which DMX values
       indexCaps.forEach(cap => {
-        const dmxRange = cap.getDmxRangeWithFineness(0);
+        const dmxRange = cap.getDmxRangeWithResolution(Channel.RESOLUTION_8BIT);
         const isProportional = cap.index[0].number !== cap.index[1].number;
 
         if (isProportional) {
@@ -358,8 +358,8 @@ const functions = {
         xmlColorWheel.element(`step`, {
           type: `color`,
           val: indexData.color,
-          minDmx: indexData.dmxRange.start,
-          maxDmx: indexData.dmxRange.end,
+          mindmx: indexData.dmxRange.start,
+          maxdmx: indexData.dmxRange.end,
           caption: indexData.name
         });
       });
@@ -656,7 +656,7 @@ function getNormalizedCapabilities(caps, property, maximumValue, properUnit) {
  * @returns {XMLElement} A <step> or <range> with mindmx, maxdmx and, optionally, minval and maxval attributes.
  */
 function getBaseXmlCapability(cap, startValue = null, endValue = null) {
-  const dmxRange = cap.getDmxRangeWithFineness(0);
+  const dmxRange = cap.getDmxRangeWithResolution(Channel.RESOLUTION_8BIT);
   let [dmxStart, dmxEnd] = [dmxRange.start, dmxRange.end];
 
   if (startValue != null && startValue > endValue) {
