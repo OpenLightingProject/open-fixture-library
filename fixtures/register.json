@@ -485,6 +485,11 @@
       "lastModifyDate": "2018-08-21",
       "lastAction": "modified"
     },
+    "magicfx/smokejet": {
+      "name": "SMOKEJET",
+      "lastModifyDate": "2018-09-06",
+      "lastAction": "created"
+    },
     "magicfx/stage-flame": {
       "name": "Stage Flame",
       "lastModifyDate": "2018-08-21",
@@ -675,13 +680,13 @@
       "lastModifyDate": "2018-09-04",
       "lastAction": "modified"
     },
-    "showven/sparkular-fall": {
-      "name": "Sparkular Fall",
+    "showven/sparkular": {
+      "name": "Sparkular",
       "lastModifyDate": "2018-08-09",
       "lastAction": "modified"
     },
-    "showven/sparkular": {
-      "name": "Sparkular",
+    "showven/sparkular-fall": {
+      "name": "Sparkular Fall",
       "lastModifyDate": "2018-08-09",
       "lastAction": "modified"
     },
@@ -878,6 +883,7 @@
     ],
     "magicfx": [
       "psyco2jet",
+      "smokejet",
       "stage-flame"
     ],
     "martin": [
@@ -937,8 +943,8 @@
       "xs-1-rgbw"
     ],
     "showven": [
-      "sparkular-fall",
-      "sparkular"
+      "sparkular",
+      "sparkular-fall"
     ],
     "stairville": [
       "led-flood-panel-150",
@@ -1052,6 +1058,7 @@
       "lightmaxx/dj-scan-led",
       "lightmaxx/platinum-mini-tri-par",
       "lightmaxx/vega-zoom-wash",
+      "magicfx/smokejet",
       "martin/mac-700-wash",
       "martin/mac-aura",
       "martin/mac-axiom-hybrid",
@@ -1097,7 +1104,8 @@
       "american-dj/flat-par-qa12xs",
       "dts/scena-led-150",
       "eurolite/led-sls-6-uv-floor",
-      "generic/desk-channel"
+      "generic/desk-channel",
+      "magicfx/smokejet"
     ],
     "Effect": [
       "american-dj/revo-burst",
@@ -1105,8 +1113,8 @@
       "magicfx/psyco2jet",
       "magicfx/stage-flame",
       "minuit-une/ivl-carre",
-      "showven/sparkular-fall",
       "showven/sparkular",
+      "showven/sparkular-fall",
       "venue/tristrip3z"
     ],
     "Fan": [
@@ -1234,6 +1242,7 @@
     "Smoke": [
       "american-dj/fog-fury-jett-pro",
       "look/viper-nt",
+      "magicfx/smokejet",
       "mdg/theone-atmospheric-generator"
     ],
     "Stand": [
@@ -1410,8 +1419,8 @@
     ],
     "Alejo Cervera": [
       "magicfx/stage-flame",
-      "showven/sparkular-fall",
-      "showven/sparkular"
+      "showven/sparkular",
+      "showven/sparkular-fall"
     ],
     "Justin Hornsby": [
       "chauvet-dj/washfx",
@@ -1425,6 +1434,10 @@
     "Karl Humbug": [
       "dts/scena-led-150",
       "martin/mac-700-wash"
+    ],
+    "MAGIC FX B.V.": [
+      "magicfx/psyco2jet",
+      "magicfx/smokejet"
     ],
     "Nerijus Mongirdas": [
       "jb-systems/twin-effect-laser",
@@ -1453,9 +1466,6 @@
     ],
     "George Qualley IV": [
       "eliminator/stealth-beam"
-    ],
-    "MAGIC FX B.V.": [
-      "magicfx/psyco2jet"
     ],
     "Massimo Callegari": [
       "clay-paky/sharpy"
@@ -1564,6 +1574,7 @@
     }
   },
   "lastUpdated": [
+    "magicfx/smokejet",
     "american-dj/xs-400",
     "boomtonedj/crazy-spot-30",
     "cameo/gobo-scanner-80",
