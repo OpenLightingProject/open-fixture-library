@@ -107,8 +107,8 @@ app.get(`/sitemap.xml`, (request, response) => {
   }));
 });
 
-app.post(`/ajax/add-fixtures`, (request, response) => {
-  require(`./ui/ajax/add-fixtures.js`)(request, response);
+app.post(`/ajax/submit-editor`, (request, response) => {
+  require(`./ui/ajax/submit-editor.js`)(request, response);
 });
 
 app.post(`/ajax/get-search-results`, (request, response) => {
