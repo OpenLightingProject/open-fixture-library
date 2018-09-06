@@ -904,6 +904,28 @@ module.exports.import = function importGdtf(buffer, filename) {
       }
 
       modeChannelReplacements[modeIndex][switchToChannelKey] = switchingChannelKey;
+
+      const switchToChannel = fixture.availableChannels[switchToChannelKey];
+
+      if (switchToChannel && `fineChannelAliases` in switchToChannel) {
+        switchToChannel.fineChannelAliases.forEach((fineChannelAlias, fineness) => {
+          let switchingFineChannelKey = `${switchingChannelKey} fine`;
+          if (fineness > 0) {
+            switchingFineChannelKey += `^${fineness + 1}`;
+          }
+
+          if (!(switchingFineChannelKey in relationsPerMaster[masterKey])) {
+            relationsPerMaster[masterKey][switchingFineChannelKey] = [];
+          }
+
+          relationsPerMaster[masterKey][switchingFineChannelKey].push({
+            dmxFrom: relation.dmxFrom,
+            dmxTo: relation.dmxTo,
+            switchToChannelKey: fineChannelAlias
+          });
+          modeChannelReplacements[modeIndex][fineChannelAlias] = switchingFineChannelKey;
+        });
+      }
     });
 
     // switch channels in trigger channels' capabilities
