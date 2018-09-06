@@ -564,7 +564,7 @@ module.exports.import = function importGdtf(buffer, filename) {
       /**
        * @param {?function} hook The hook function, or a falsy value.
        * @param  {...any} args The arguments to pass to the hook.
-       * @returns {any} The return value of the hook, or null no hook was called.
+       * @returns {any} The return value of the hook, or null if no hook was called.
        */
       function callHook(hook, ...args) {
         if (hook) {
