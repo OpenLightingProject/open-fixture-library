@@ -95,8 +95,24 @@ module.exports.import = function importGdtf(buffer, filename) {
 
       linkSwitchingChannels(fixture, relations);
 
+      if (`availableChannels` in fixture) {
+        Object.keys(fixture.availableChannels).forEach(chKey => {
+          const channel = fixture.availableChannels[chKey];
+          if (channel.defaultValue === null) {
+            delete channel.defaultValue;
+          }
+        });
+      }
+
       if (`templateChannels` in fixture) {
         warnings.push(`Please fix the visual representation of the matrix.`);
+
+        Object.keys(fixture.templateChannels).forEach(chKey => {
+          const channel = fixture.templateChannels[chKey];
+          if (channel.defaultValue === null) {
+            delete channel.defaultValue;
+          }
+        });
       }
       else {
         delete fixture.matrix;
@@ -314,7 +330,8 @@ module.exports.import = function importGdtf(buffer, filename) {
     const channel = {
       name: name,
       fineChannelAliases: [],
-      dmxValueResolution: ``
+      dmxValueResolution: ``,
+      defaultValue: null
     };
 
     if (`Default` in gdtfChannel.$) {
@@ -897,6 +914,10 @@ module.exports.import = function importGdtf(buffer, filename) {
       }
       else if (fixture.templateChannels && `${triggerChannelKey} $pixelKey` in fixture.templateChannels) {
         triggerChannel = fixture.templateChannels[`${triggerChannelKey} $pixelKey`];
+      }
+
+      if (triggerChannel.defaultValue === null) {
+        triggerChannel.defaultValue = 0;
       }
 
       const channelResolution = getChannelResolution(triggerChannel);
