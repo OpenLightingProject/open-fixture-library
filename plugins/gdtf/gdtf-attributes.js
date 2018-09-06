@@ -113,7 +113,10 @@ const gdtfAttributes = {
   },
   AnimationOffset: undefined, // Controls the animation disk's shaking.
   AnimationWheel: undefined, // Inserts a gobo disk into the beam. The disk has the ability to continuously index and rotate.
-  AnimationWheelMacro: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  AnimationWheelMacro: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Effects`
+  },
   AnimationWheelPos: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     oflType: `Rotation`,
@@ -292,8 +295,21 @@ const gdtfAttributes = {
       }
     }
   },
-  Color1Audio: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Color1Index: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  Color1Audio: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    oflType: `Effect`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `Speed`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.effectName = gdtfCapability.$.Name;
+      capability.soundControlled = true;
+      gdtfCapability.$.Name = undefined;
+    }
+  },
+  Color1Index: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Color1`
+  },
   Color1Mode: {
     // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 1.
     oflType: `Maintenance`,
@@ -303,7 +319,10 @@ const gdtfAttributes = {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `Effects`
   },
-  Color1Select: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  Color1Select: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Color1`
+  },
   Color1Spin: {
     // Controls the speed and direction of the fixture's color wheel 1.
     oflType: `ColorWheelRotation`,
@@ -670,7 +689,10 @@ const gdtfAttributes = {
     oflProperty: `angle`,
     defaultPhysicalEntity: `Angle`
   },
-  EffectsPosIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  EffectsPosIndex: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `EffectsPos`
+  },
   EffectsPosSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     oflType: `Rotation`,
@@ -693,9 +715,18 @@ const gdtfAttributes = {
     }
   },
   EffectsRateIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  EffectsSelectIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  EffectsSelectSpin: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  EffectsSelectSpinDynamic: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  EffectsSelectIndex: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Effects`
+  },
+  EffectsSelectSpin: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Effects`
+  },
+  EffectsSelectSpinDynamic: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Effects`
+  },
   EffectsSync: undefined, // Sets offset between running effects and effects 2.
   Effects2: {
     // Generically predefined macros and effects of a fixture (2).
@@ -805,9 +836,18 @@ const gdtfAttributes = {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `Frost`
   },
-  FrostHeavy: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  FrostLight: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  FrostMedium: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  FrostHeavy: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Frost`
+  },
+  FrostLight: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Frost`
+  },
+  FrostMedium: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Frost`
+  },
   FrostMSpeed: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `IrisMSpeed`
@@ -851,7 +891,17 @@ const gdtfAttributes = {
       }
     }
   },
-  Gobo1Audio: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  Gobo1Audio: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    oflType: `Effect`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `Speed`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.effectName = gdtfCapability.$.Name;
+      capability.soundControlled = true;
+      gdtfCapability.$.Name = undefined;
+    }
+  },
   Gobo1Pos: {
     // Controls angle of indexed rotation of gobos in gobo wheel 1.
     oflType: `GoboStencilRotation`,
@@ -867,9 +917,25 @@ const gdtfAttributes = {
       normalizeAngularSpeedDirection(gdtfCapability);
     }
   },
-  Gobo1Random: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Gobo1RandomAudio: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Gobo1Select: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  Gobo1Random: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Effects`
+  },
+  Gobo1RandomAudio: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    oflType: `Effect`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `Speed`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.effectName = gdtfCapability.$.Name;
+      capability.soundControlled = true;
+      gdtfCapability.$.Name = undefined;
+    }
+  },
+  Gobo1Select: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Gobo1`
+  },
   Gobo1Shake: {
     // Control the frequency of the shake of gobo wheel 1.
     inheritFrom: `Gobo1`,
@@ -895,7 +961,10 @@ const gdtfAttributes = {
     oflType: `GoboShake`,
     oflProperty: `shakeSpeed`
   },
-  Gobo1WheelSpin: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  Gobo1WheelSpin: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Gobo1Spin`
+  },
   Gobo2: {
     // Selects gobos in the fixture's gobo wheel 2.
     inheritFrom: `Gobo1`
@@ -906,17 +975,38 @@ const gdtfAttributes = {
     // Controls the angle of indexed rotation of gobos in gobo wheel 2.
     inheritFrom: `Gobo1Pos`
   },
-  Gobo2PosIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  Gobo2PosIndex: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Gobo1Pos`
+  },
   Gobo2PosRotation: {
     // Controls the speed and direction of continuous rotation of gobos in gobo wheel 2.
     inheritFrom: `Gobo1PosRotation`
   },
-  Gobo2PosSpin: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Gobo2Random: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Gobo2SelectIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Gobo2SelectShakeIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Gobo2SelectShakeSpin: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Gobo2SelectSpin: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  Gobo2PosSpin: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Gobo1PosRotation`
+  },
+  Gobo2Random: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Gobo1Random`
+  },
+  Gobo2SelectIndex: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Gobo2`
+  },
+  Gobo2SelectShakeIndex: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Gobo2Shake`
+  },
+  Gobo2SelectShakeSpin: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Gobo2Shake`
+  },
+  Gobo2SelectSpin: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Gobo2`
+  },
   Gobo2Shake: {
     // Control the frequency of the shake of gobo wheel 2.
     inheritFrom: `Gobo1`,
@@ -932,7 +1022,10 @@ const gdtfAttributes = {
     oflType: `Maintenance`,
     oflProperty: null
   },
-  Gobo2WheelSpin: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  Gobo2WheelSpin: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Gobo1WheelSpin`
+  },
   Gobo3: {
     // Selects gobos in the fixture's gobo wheel 3.
     inheritFrom: `Gobo1`
@@ -1134,10 +1227,22 @@ const gdtfAttributes = {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `PrismPos`
   },
-  Prism1PosIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Prism1PosSpin: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Prism1SelectIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Prism1SelectSpin: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  Prism1PosIndex: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Prism1Pos`
+  },
+  Prism1PosSpin: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Prism1PosRotation`
+  },
+  Prism1SelectIndex: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Prism1`
+  },
+  Prism1SelectSpin: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Prism1`
+  },
   Prism2: {
     // Controls the insertion of fixture´s prism wheel 2. Refracts the beam into multiple beams of light on wheel 2.
     inheritFrom: `Prism`
@@ -1146,15 +1251,27 @@ const gdtfAttributes = {
     // Controls the indexed position of fixture‘s prism on prism wheel 2.
     inheritFrom: `PrismPos`
   },
-  Prism2PosIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  Prism2PosIndex: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Prism2Pos`
+  },
   Prism2PosRotation: {
     // Controls the speed and direction of the continuous rotation of the fixture’s prism on prism wheel 2.
     inheritFrom: `PrismPosRotation`
   },
-  Prism2PosSpin: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  Prism2PosSpin: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Prism2PosRotation`
+  },
   Prism2PrismIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Prism2SelectIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Prism2SelectSpin: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  Prism2SelectIndex: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Prism2`
+  },
+  Prism2SelectSpin: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    inheritFrom: `Prism2`
+  },
   PrismMSpeed: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `IrisMSpeed`
@@ -1165,9 +1282,27 @@ const gdtfAttributes = {
     // Predefined presets for shaper positions.
     inheritFrom: `Effects`
   },
-  ShaperPos: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  ShaperPosIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  ShaperPosSpin: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  ShaperPos: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    oflType: `Rotation`,
+    oflProperty: `angle`,
+    defaultPhysicalEntity: `Angle`
+  },
+  ShaperPosIndex: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    oflType: `Rotation`,
+    oflProperty: `angle`,
+    defaultPhysicalEntity: `Angle`
+  },
+  ShaperPosSpin: {
+    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+    oflType: `Rotation`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `AngularSpeed`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      normalizeAngularSpeedDirection(gdtfCapability);
+    }
+  },
   ShaperRot: {
     // Rotates position of blade assembly.
     oflType: `BladeSystemRotation`,
