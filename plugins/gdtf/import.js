@@ -747,35 +747,37 @@ module.exports.import = function importGdtf(buffer, filename) {
         addChannelKeyToDmxBreakWrapper(gdtfChannel, dmxBreakWrappers);
       });
 
-      // TODO: also look through gdtfMode's Relations to find switching channels
-      // see https://gdtf-share.com/wiki/Relations#Mode_Dependency
+      const channels = [];
+
+      dmxBreakWrappers.forEach(channelWrapper => {
+        if (channelWrapper.dmxBreak !== `Overwrite`) {
+          // just append the channels
+          channels.push(...channelWrapper.channels);
+          return;
+        }
+
+        // append a matrix channel insert block
+
+        const geometryReferences = findGeometryReferences(channelWrapper.geometry);
+        const usedMatrixPixels = geometryReferences.map(
+          (gdtfGeoRef, index) => gdtfGeoRef.$.Name || `${channelWrapper.geometry} ${index + 1}`
+        );
+
+        usedMatrixPixels.forEach(pixelKey => matrixPixels.add(pixelKey));
+
+        channels.push({
+          insert: `matrixChannels`,
+          repeatFor: usedMatrixPixels,
+          channelOrder: `perPixel`,
+          templateChannels: channelWrapper.channels.map(
+            chKey => `${chKey} $pixelKey`
+          )
+        });
+      });
 
       return {
         name: gdtfMode.$.Name,
-        channels: [].concat(...dmxBreakWrappers.map(channelWrapper => {
-          if (channelWrapper.dmxBreak !== `Overwrite`) {
-            // just append the channels
-            return channelWrapper.channels;
-          }
-
-          // append a matrix channel insert block
-
-          const geometryReferences = findGeometryReferences(channelWrapper.geometry);
-          const usedMatrixPixels = geometryReferences.map(
-            (gdtfGeoRef, index) => gdtfGeoRef.$.Name || `${channelWrapper.geometry} ${index + 1}`
-          );
-
-          usedMatrixPixels.forEach(pixelKey => matrixPixels.add(pixelKey));
-
-          return {
-            insert: `matrixChannels`,
-            repeatFor: usedMatrixPixels,
-            channelOrder: `perPixel`,
-            templateChannels: channelWrapper.channels.map(
-              chKey => `${chKey} $pixelKey`
-            )
-          };
-        }))
+        channels
       };
     });
 
