@@ -141,7 +141,7 @@ export default {
       modelId: modelIdNumber,
       prefillQuery: encodeURIComponent(JSON.stringify({
         useExistingManufacturer: true,
-        manufacturerShortName: manufacturer.key,
+        manufacturerKey: manufacturer.key,
         rdmModelId: modelIdNumber
       }))
     };

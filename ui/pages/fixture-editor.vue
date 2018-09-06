@@ -14,13 +14,13 @@
         <h2>Manufacturer</h2>
 
         <section v-if="fixture.useExistingManufacturer">
-          <app-labeled-input :formstate="formstate" name="manufacturerShortName" label="Choose from list">
+          <app-labeled-input :formstate="formstate" name="manufacturerKey" label="Choose from list">
             <select
               ref="existingManufacturerSelect"
-              v-model="fixture.manufacturerShortName"
-              :class="{ empty: fixture.manufacturerShortName === `` }"
+              v-model="fixture.manufacturerKey"
+              :class="{ empty: fixture.manufacturerKey === `` }"
               required
-              name="manufacturerShortName">
+              name="manufacturerKey">
 
               <option value="" disabled>Please select a manufacturer</option>
 
@@ -44,15 +44,6 @@
               :schema-property="properties.manufacturer.name"
               :required="true"
               name="new-manufacturer-name" />
-          </app-labeled-input>
-
-          <app-labeled-input :formstate="formstate" name="new-manufacturer-shortName" label="Unique short name">
-            <app-property-input-text
-              v-model="fixture.newManufacturerShortName"
-              :schema-property="properties.manufacturerKey"
-              :required="true"
-              name="new-manufacturer-shortName"
-              title="Use only lowercase letters, numbers and dashes." />
           </app-labeled-input>
 
           <app-labeled-input :formstate="formstate" name="new-manufacturer-website" label="Website">
@@ -336,7 +327,7 @@ export default {
       let manufacturerName;
 
       if (this.fixture.useExistingManufacturer) {
-        const manKey = this.fixture.manufacturerShortName;
+        const manKey = this.fixture.manufacturerKey;
 
         if (manKey === ``) {
           return true;
@@ -559,7 +550,7 @@ export default {
       this.submit.state = `loading`;
 
       try {
-        const response = await this.$axios.post(`/ajax/add-fixtures`, sendObject);
+        const response = await this.$axios.post(`/ajax/submit-editor`, sendObject);
 
         if (response.data.error) {
           throw new Error(response.data.error);
@@ -609,7 +600,7 @@ export default {
 function isPrefillable(prefillObject, key) {
   const allowedPrefillValues = {
     useExistingManufacturer: `boolean`,
-    manufacturerShortName: `string`,
+    manufacturerKey: `string`,
     newManufacturerRdmId: `number`,
     rdmModelId: `number`
   };
