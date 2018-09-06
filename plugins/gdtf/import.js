@@ -174,7 +174,9 @@ module.exports.import = function importGdtf(buffer, filename) {
       // add default Name attributes, so that the references work later
       gdtfMode.DMXChannels[0].DMXChannel.forEach(gdtfChannel => {
         // auto-generate <DMXChannel> Name attribute
-        gdtfChannel.$.Name = `${gdtfChannel.$.Geometry}_${gdtfChannel.LogicalChannel[0].$.Attribute}`;
+        const geometryParts = gdtfChannel.$.Geometry.split(`.`);
+        const geometry = geometryParts[geometryParts.length - 1];
+        gdtfChannel.$.Name = `${geometry}_${gdtfChannel.LogicalChannel[0].$.Attribute}`;
 
         gdtfChannel.LogicalChannel.forEach(gdtfLogicalChannel => {
           // auto-generate <LogicalChannel> Name attribute
