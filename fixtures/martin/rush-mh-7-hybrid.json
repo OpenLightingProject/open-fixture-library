@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["novasfronteiras.co"],
     "createDate": "2017-09-08",
-    "lastModifyDate": "2018-08-09"
+    "lastModifyDate": "2018-09-04"
   },
   "links": {
     "manual": ["http://www.martin.com/files/files/productdocuments/11_MANUALS/999/UM_RUSHMH7_EN_D.pdf"],
@@ -758,6 +758,7 @@
     },
     "Rotating Gobo Speed": {
       "fineChannelAliases": ["Rotating Gobo Speed fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 31],
@@ -1145,6 +1146,7 @@
     },
     "Rotating Prism Speed": {
       "fineChannelAliases": ["Rotating Prism Speed fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 31],
@@ -1207,6 +1209,7 @@
     },
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "50%",
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -1215,6 +1218,7 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",

@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2017-05-26",
-    "lastModifyDate": "2018-08-09"
+    "lastModifyDate": "2018-09-04"
   },
   "links": {
     "manual": ["https://cdb.s3.amazonaws.com/ItemRelatedFiles/9814/elation_platinum_HFX_user_manual_012717.pdf"],
@@ -32,7 +32,7 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 32639,
+      "defaultValue": "50%",
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -41,7 +41,7 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 32639,
+      "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -50,6 +50,7 @@
     },
     "Color wheel": {
       "fineChannelAliases": ["Color wheel fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 10],
@@ -293,6 +294,7 @@
     },
     "Gobo Stencil Rotation": {
       "fineChannelAliases": ["Gobo Stencil Rotation fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 127],
@@ -321,6 +323,7 @@
     },
     "Static-stamped Gobos (Gobo wheel 2)": {
       "fineChannelAliases": ["Static-stamped Gobos fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 21],
@@ -606,6 +609,7 @@
     },
     "Prism Index": {
       "fineChannelAliases": ["Prism Index fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 127],
@@ -650,6 +654,7 @@
     },
     "Auto focus": {
       "fineChannelAliases": ["Auto focus fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 50],

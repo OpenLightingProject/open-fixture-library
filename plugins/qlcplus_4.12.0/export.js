@@ -39,8 +39,15 @@ const capabilityHelpers = {
 module.exports.name = `QLC+ 4.12.0`;
 module.exports.version = `1.0.0`;
 
-module.exports.export = function exportQLCplus(fixtures, options) {
-  return fixtures.map(fixture => {
+/**
+ * @param {!Array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {!object} options Global options, including:
+ * @param {!string} options.baseDir Absolute path to OFL's root directory.
+ * @param {?Date} options.date The current time.
+ * @returns {!Promise.<!Array.<object>, !Error>} The generated files.
+*/
+module.exports.export = function exportQlcPlus(fixtures, options) {
+  const outFiles = fixtures.map(fixture => {
     const xml = xmlbuilder.begin()
       .declaration(`1.0`, `UTF-8`)
       .element({
@@ -80,6 +87,8 @@ module.exports.export = function exportQLCplus(fixtures, options) {
       mimetype: `application/x-qlc-fixture`
     };
   });
+
+  return Promise.resolve(outFiles);
 };
 
 /**
@@ -96,7 +105,7 @@ function addChannel(xml, channel) {
   });
 
   if (channel.defaultValue !== 0) {
-    xmlChannel.attribute(`Default`, channel.getDefaultValueWithFineness(0));
+    xmlChannel.attribute(`Default`, channel.getDefaultValueWithResolution(Channel.RESOLUTION_8BIT));
   }
 
   const channelPreset = getChannelPreset(channel);
@@ -140,7 +149,7 @@ function addFineChannel(xml, fineChannel) {
     xmlFineChannel.attribute(`Default`, fineChannel.defaultValue);
   }
 
-  if (fineChannel.fineness > 1) {
+  if (fineChannel.resolution > Channel.RESOLUTION_16BIT) {
     // QLC+ does not support 24+ bit channels, so let's fake one
     xmlFineChannel.element({
       Group: {
@@ -152,8 +161,8 @@ function addFineChannel(xml, fineChannel) {
     addCapability(xmlFineChannel, new Capability({
       dmxRange: [0, 255],
       type: `Generic`,
-      comment: `Fine^${fineChannel.fineness} adjustment for ${fineChannel.coarseChannel.uniqueName}`
-    }, 0, fineChannel.coarseChannel));
+      comment: `Fine^${fineChannel.resolution - 1} adjustment for ${fineChannel.coarseChannel.uniqueName}`
+    }, Channel.RESOLUTION_8BIT, fineChannel.coarseChannel));
 
     return;
   }
@@ -184,7 +193,7 @@ function addFineChannel(xml, fineChannel) {
     dmxRange: [0, 255],
     type: `Generic`,
     comment: `Fine adjustment for ${fineChannel.coarseChannel.uniqueName}`
-  }, 0, fineChannel.coarseChannel));
+  }, Channel.RESOLUTION_8BIT, fineChannel.coarseChannel));
 }
 
 /**
@@ -310,7 +319,7 @@ function getFineChannelPreset(fineChannel) {
  * @param {!Capability} cap The OFL capability object.
  */
 function addCapability(xmlChannel, cap) {
-  const dmxRange = cap.getDmxRangeWithFineness(0);
+  const dmxRange = cap.getDmxRangeWithResolution(Channel.RESOLUTION_8BIT);
 
   const xmlCapability = xmlChannel.element({
     Capability: {
@@ -760,7 +769,7 @@ function addHeads(xmlMode, mode) {
  * @returns {!string} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
  */
 function getFixtureType(fixture) {
-  const ignoredCats = [`Blinder`, `Matrix`];
+  const ignoredCats = [`Blinder`, `Matrix`, `Pixel Bar`, `Stand`];
 
   for (const category of fixture.categories) {
     if (ignoredCats.includes(category)) {

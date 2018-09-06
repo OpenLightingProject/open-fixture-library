@@ -36,8 +36,10 @@ export default {
   'categories/matrix': require(`./categories/matrix.svg`),
   'categories/moving-head': require(`./categories/moving-head.svg`),
   'categories/other': require(`./categories/other.svg`),
+  'categories/pixel-bar': require(`./categories/pixel-bar.svg`),
   'categories/scanner': require(`./categories/scanner.svg`),
   'categories/smoke': require(`./categories/smoke.svg`),
+  'categories/stand': require(`./categories/stand.svg`),
   'categories/strobe': require(`./categories/strobe.svg`),
 
   'channel-types/color-temperature': require(`./channel-types/color-temperature.svg`),

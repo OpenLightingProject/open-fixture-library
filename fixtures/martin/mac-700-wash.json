@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Karl Humbug"],
     "createDate": "2018-07-17",
-    "lastModifyDate": "2018-08-09"
+    "lastModifyDate": "2018-09-04"
   },
   "links": {
     "manual": ["https://adn.harmanpro.com/site_elements/executables/5949_1526695117/UM_MAC700Wash_EN_D_original.pdf"],
@@ -280,6 +280,7 @@
     },
     "Color Wheel": {
       "fineChannelAliases": ["Color Wheel fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 0],
@@ -623,6 +624,7 @@
     },
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
+      "dmxValueResolution": "8bit",
       "defaultValue": 128,
       "capability": {
         "type": "Pan",
@@ -632,6 +634,7 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
+      "dmxValueResolution": "8bit",
       "defaultValue": 128,
       "capability": {
         "type": "Tilt",

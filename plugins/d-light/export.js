@@ -11,6 +11,13 @@ const {
 module.exports.name = `D::Light`;
 module.exports.version = `0.1.0`;
 
+/**
+ * @param {!Array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {!object} options Global options, including:
+ * @param {!string} options.baseDir Absolute path to OFL's root directory.
+ * @param {?Date} options.date The current time.
+ * @returns {!Promise.<!Array.<object>, !Error>} The generated files.
+*/
 module.exports.export = function exportDLight(fixtures, options) {
   const deviceFiles = [];
 
@@ -54,7 +61,7 @@ module.exports.export = function exportDLight(fixtures, options) {
     }
   }
 
-  return deviceFiles;
+  return Promise.resolve(deviceFiles);
 };
 
 /**
@@ -182,7 +189,7 @@ function getDefaultValue(channel) {
     return channel.defaultValue;
   }
 
-  return channel.getDefaultValueWithFineness(0);
+  return channel.getDefaultValueWithResolution(Channel.RESOLUTION_8BIT);
 }
 
 /**
@@ -237,7 +244,7 @@ function getChannelsByAttribute(channels) {
    */
   function getChannelAttribute(channel) {
     if (channel instanceof FineChannel) {
-      if (channel.fineness === 1) {
+      if (channel.resolution === Channel.RESOLUTION_16BIT) {
         return `FINE`;
       }
       return `EXTRA`;

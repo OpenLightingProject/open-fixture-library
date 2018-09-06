@@ -35,7 +35,7 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 32767,
+      "defaultValue": "50%",
       "precedence": "LTP",
       "capability": {
         "type": "Pan",
@@ -45,7 +45,7 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 32767,
+      "defaultValue": "50%",
       "precedence": "LTP",
       "capability": {
         "type": "Tilt",

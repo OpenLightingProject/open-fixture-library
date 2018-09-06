@@ -1,8 +1,9 @@
 #!/usr/bin/node
 
-const fs = require(`fs`);
 const path = require(`path`);
 const minimist = require(`minimist`);
+const promisify = require(`util`).promisify;
+const readFile = promisify(require(`fs`).readFile);
 
 const { checkFixture } = require(`../tests/fixture-valid.js`);
 const plugins = require(`../plugins/plugins.json`);
@@ -25,17 +26,12 @@ if (args._.length !== 1 || !plugins.importPlugins.includes(args.plugin)) {
   process.exit(1);
 }
 
-fs.readFile(filename, `utf8`, (error, data) => {
-  if (error) {
-    console.error(`read error`, error);
-    process.exit(1);
-    return;
-  }
-
-  const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `import.js`));
-  new Promise((resolve, reject) => {
-    plugin.import(data, filename, resolve, reject);
-  }).then(result => {
+readFile(filename)
+  .then(buffer => {
+    const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `import.js`));
+    return plugin.import(buffer, filename);
+  })
+  .then(result => {
     result.errors = {};
 
     for (const key of Object.keys(result.fixtures)) {
@@ -48,20 +44,19 @@ fs.readFile(filename, `utf8`, (error, data) => {
     }
 
     if (args[`create-pull-request`]) {
-      createPullRequest(result, (error, pullRequestUrl) => {
-        if (error) {
+      createPullRequest(result)
+        .then(pullRequestUrl => console.log(`URL: ${pullRequestUrl}`))
+        .catch(error => {
           console.log(fixtureJsonStringify(result));
-          console.error(`Error: ${error}`);
-          return;
-        }
-
-        console.log(`URL: ${pullRequestUrl}`);
-      });
+          console.error(`Error creating pull request: ${error.message}`);
+        });
     }
     else {
       console.log(fixtureJsonStringify(result));
     }
-  }).catch(error => {
+  })
+  .catch(error => {
+    console.error(`Error parsing '${filename}':`);
     console.error(error);
+    process.exit(1);
   });
-});

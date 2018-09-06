@@ -152,7 +152,7 @@ Promise.all(promises).then(results => {
   let totalWarnings = 0;
 
   // each file
-  for (const result of results) {
+  results.forEach(result => {
     const failed = result.errors.length > 0;
 
     console.log(
@@ -169,7 +169,7 @@ Promise.all(promises).then(results => {
     for (const warning of result.warnings) {
       console.log(`└`, colors.yellow(`Warning:`), warning);
     }
-  }
+  });
 
   // newline
   console.log();
@@ -186,4 +186,4 @@ Promise.all(promises).then(results => {
 
   console.error(colors.red(`[FAIL]`), `${totalFails} of ${results.length} tested files failed.`);
   process.exit(1);
-});
+}).catch(error => console.error(colors.red(`[Error]`), `Test errored:`, error));

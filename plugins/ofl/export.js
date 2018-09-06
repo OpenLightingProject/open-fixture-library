@@ -5,7 +5,14 @@ const manufacturers = require(`../../fixtures/manufacturers.json`);
 module.exports.name = `Open Fixture Library JSON`;
 module.exports.version = require(`../../schemas/fixture.json`).version;
 
-module.exports.export = function exportOFL(fixtures, options) {
+/**
+ * @param {!Array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {!object} options Global options, including:
+ * @param {!string} options.baseDir Absolute path to OFL's root directory.
+ * @param {?Date} options.date The current time.
+ * @returns {!Promise.<!Array.<object>, !Error>} The generated files.
+*/
+module.exports.export = function exportOfl(fixtures, options) {
   const usedManufacturers = new Set();
 
   // one JSON file for each fixture
@@ -43,5 +50,5 @@ module.exports.export = function exportOFL(fixtures, options) {
     mimetype: `application/ofl-manufacturers`
   });
 
-  return files;
+  return Promise.resolve(files);
 };

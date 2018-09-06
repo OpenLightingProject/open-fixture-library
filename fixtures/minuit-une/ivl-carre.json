@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["ameisso"],
     "createDate": "2018-03-30",
-    "lastModifyDate": "2018-08-09"
+    "lastModifyDate": "2018-09-04"
   },
   "links": {
     "manual": ["https://minuitune.com/wp-content/uploads/2018/04/DMX_sheet_IVL_Carre_and_IVL_Pyramide.pdf"],
@@ -114,6 +114,7 @@
     },
     "Tilt All": {
       "fineChannelAliases": ["Tilt All fine"],
+      "dmxValueResolution": "8bit",
       "defaultValue": 0,
       "capabilities": [
         {
@@ -130,6 +131,7 @@
     },
     "Tilt 1": {
       "fineChannelAliases": ["Tilt 1 fine"],
+      "defaultValue": 0,
       "capability": {
         "type": "Tilt",
           "angleStart": "0deg",
@@ -138,6 +140,7 @@
     },
     "Tilt 2": {
       "fineChannelAliases": ["Tilt 2 fine"],
+      "defaultValue": 0,
       "capability": {
         "type": "Tilt",
           "angleStart": "0deg",
@@ -146,6 +149,7 @@
     },
     "Tilt 3": {
       "fineChannelAliases": ["Tilt 3 fine"],
+      "defaultValue": 0,
       "capability": {
         "type": "Tilt",
           "angleStart": "0deg",
@@ -154,6 +158,7 @@
     },
     "Tilt 4": {
       "fineChannelAliases": ["Tilt 4 fine"],
+      "defaultValue": 0,
       "capability": {
         "type": "Tilt",
           "angleStart": "0deg",
@@ -327,6 +332,7 @@
     },
     "Rotation Red": {
       "fineChannelAliases": ["Rotation Red fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 12],
@@ -364,6 +370,7 @@
     },
     "Rotation Green": {
       "fineChannelAliases": ["Rotation Green fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 12],
@@ -440,6 +447,7 @@
     },
     "Rotation Blue": {
       "fineChannelAliases": ["Rotation Blue fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 12],

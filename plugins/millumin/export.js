@@ -7,15 +7,24 @@ module.exports.version = `0.3.0`;
 // needed for export test
 module.exports.supportedOflVersion = `7.3.0`;
 
+/**
+ * @param {!Array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {!object} options Global options, including:
+ * @param {!string} options.baseDir Absolute path to OFL's root directory.
+ * @param {?Date} options.date The current time.
+ * @returns {!Promise.<!Array.<object>, !Error>} The generated files.
+*/
 module.exports.export = function exportMillumin(fixtures, options) {
   // one JSON file for each fixture
-  return fixtures.map(fixture => {
+  const outFiles = fixtures.map(fixture => {
     let jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
     jsonData.$schema = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${module.exports.supportedOflVersion}/schemas/fixture.json`;
 
     jsonData.fixtureKey = fixture.key;
     jsonData.manufacturerKey = fixture.manufacturer.key;
     jsonData.oflURL = `https://open-fixture-library.org/${fixture.manufacturer.key}/${fixture.key}`;
+
+    jsonData.categories = getDowngradedCategories(jsonData.categories);
 
     if (jsonData.links) {
       if (jsonData.links.manual) {
@@ -55,7 +64,29 @@ module.exports.export = function exportMillumin(fixtures, options) {
       fixtures: [fixture]
     };
   });
+
+  return Promise.resolve(outFiles);
 };
+
+/**
+ * Replaces the fixture's categories array with one that only includes categories
+ * from OFL schema version 7.3.0.
+ * @param {!array.<!string>} categories The fixture's categories array.
+ * @returns {!array.<!string>} A filtered categories array.
+ */
+function getDowngradedCategories(categories) {
+  const addedCategories = [`Pixel Bar`, `Stand`];
+
+  const filteredCategories = categories.filter(
+    category => !addedCategories.includes(category)
+  );
+
+  if (filteredCategories.length === 0) {
+    filteredCategories.push(`Other`);
+  }
+
+  return filteredCategories;
+}
 
 /**
  * Replaces the specified channel in the specified channels object with a downgraded version for schema 7.1.0.
@@ -68,16 +99,16 @@ function downgradeChannel(channelObject, channelKey) {
 
   const downgradedChannel = {};
 
-  addIfTruthy(jsonChannel, `name`, downgradedChannel);
+  addIfValidData(downgradedChannel, `name`, jsonChannel.name);
   downgradedChannel.type = channel.type === `NoFunction` ? `Nothing` : channel.type;
-  addIfTruthy(channel, `color`, downgradedChannel);
-  addIfTruthy(jsonChannel, `fineChannelAliases`, downgradedChannel);
-  addIfTruthy(jsonChannel, `defaultValue`, downgradedChannel);
-  addIfTruthy(jsonChannel, `highlightValue`, downgradedChannel);
-  addIfTruthy(channel, `isInverted`, downgradedChannel, `invert`);
-  addIfTruthy(channel, `isConstant`, downgradedChannel, `constant`);
-  addIfTruthy(channel, `canCrossfade`, downgradedChannel, `crossfade`);
-  addIfTruthy(jsonChannel, `precedence`, downgradedChannel);
+  addIfValidData(downgradedChannel, `color`, channel.color);
+  addIfValidData(downgradedChannel, `fineChannelAliases`, jsonChannel.fineChannelAliases);
+  addIfValidData(downgradedChannel, `defaultValue`, channel.hasDefaultValue, channel.defaultValue);
+  addIfValidData(downgradedChannel, `highlightValue`, channel.hasHighlightValue, channel.highlightValue);
+  addIfValidData(downgradedChannel, `invert`, channel.isInverted);
+  addIfValidData(downgradedChannel, `constant`, channel.isConstant);
+  addIfValidData(downgradedChannel, `crossfade`, channel.canCrossfade);
+  addIfValidData(downgradedChannel, `precedence`, jsonChannel.precedence);
 
   channelObject[channelKey] = downgradedChannel;
 
@@ -90,7 +121,7 @@ function downgradeChannel(channelObject, channelKey) {
         name: cap.name
       };
 
-      addIfTruthy(cap.jsonObject, `menuClick`, downgradedCap);
+      addIfValidData(downgradedCap, `menuClick`, cap.jsonObject.menuClick);
       if (cap.colors && cap.colors.allColors.length <= 2) {
         downgradedCap.color = cap.colors.allColors[0];
 
@@ -98,8 +129,8 @@ function downgradeChannel(channelObject, channelKey) {
           downgradedCap.color2 = cap.colors.allColors[1];
         }
       }
-      addIfTruthy(cap.jsonObject, `helpWanted`, downgradedCap);
-      addIfTruthy(cap.jsonObject, `switchChannels`, downgradedCap);
+      addIfValidData(downgradedCap, `helpWanted`, cap.jsonObject.helpWanted);
+      addIfValidData(downgradedCap, `switchChannels`, cap.jsonObject.switchChannels);
 
       downgradedChannel.capabilities.push(downgradedCap);
     }
@@ -119,17 +150,19 @@ function downgradeChannel(channelObject, channelKey) {
 }
 
 /**
- * Copies the contents of sourceObj[sourceProperty] into destinationObj[destinationProperty]
- * if sourceObj[sourceProperty] is truthy, i.e. the property exists and is valid in sourceObj.
- * @param {!object} sourceObj The object where the property value comes from.
- * @param {!string} sourceProperty A property name that may or not be present in sourceObj.
- * @param {!object} destinationObj The object where the property value should be saved to.
- * @param {?string} [destinationProperty=null] The property where the property value should be saved to. Defaults to sourceProperty.
+ * Saves the given data (or value, if given) into obj[property] if data is valid,
+ * i.e. it is neither undefined, nor null, nor false.
+ * @param {!object} obj The object where the property should be created.
+ * @param {!string} property The name of the property added to obj.
+ * @param {*} data If this is valid, the property is added to obj.
+ * @param {*} [value=undefined] The property value, if data is valid. Defaults to data.
  */
-function addIfTruthy(sourceObj, sourceProperty, destinationObj, destinationProperty = null) {
-  destinationProperty = destinationProperty || sourceProperty;
+function addIfValidData(obj, property, data, value = undefined) {
+  if (value === undefined) {
+    value = data;
+  }
 
-  if (sourceProperty in sourceObj && sourceObj[sourceProperty] !== null && sourceObj[sourceProperty] !== false) {
-    destinationObj[destinationProperty] = sourceObj[sourceProperty];
+  if (data !== undefined && data !== null && data !== false) {
+    obj[property] = value;
   }
 }

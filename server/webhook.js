@@ -26,9 +26,9 @@ for (const deployment of Object.keys(pm2config.deploy)) {
   startServer(webhooks[deployment].port, deployment);
 }
 
-Promise.all(servers).then(
-  () => console.log(`Exited`)
-);
+Promise.all(servers)
+  .then(() => console.log(`Exited`))
+  .catch(error => console.error(`Exited with error`, error));
 
 
 /**

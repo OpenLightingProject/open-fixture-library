@@ -55,11 +55,16 @@ app.get(`/download.:format([a-z0-9_.-]+)`, (request, response, next) => {
   });
 
   const plugin = require(path.join(__dirname, `plugins`, format, `export.js`));
-  const outfiles = plugin.export(fixtures, {
-    baseDir: __dirname
-  });
-
-  downloadFiles(response, outfiles, format);
+  plugin.export(fixtures, {
+    baseDir: __dirname,
+    date: new Date()
+  })
+    .then(outfiles => downloadFiles(response, outfiles, format))
+    .catch(error => {
+      response
+        .status(500)
+        .send(`Exporting all fixtures with ${format} failed: ${error.toString()}`);
+    });
 });
 
 app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, (request, response, next) => {
@@ -81,11 +86,16 @@ app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, (request, response, next) => {
   }
 
   const plugin = require(path.join(__dirname, `plugins`, format, `export.js`));
-  const outfiles = plugin.export([fixtureFromRepository(manKey, fixKey)], {
-    baseDir: __dirname
-  });
-
-  downloadFiles(response, outfiles, `${manKey}_${fixKey}_${format}`);
+  plugin.export([fixtureFromRepository(manKey, fixKey)], {
+    baseDir: __dirname,
+    date: new Date()
+  })
+    .then(outfiles => downloadFiles(response, outfiles, `${manKey}_${fixKey}_${format}`))
+    .catch(error => {
+      response
+        .status(500)
+        .send(`Exporting fixture ${manKey}/${fixKey} with ${format} failed: ${error.toString()}`);
+    });
 });
 
 app.get(`/sitemap.xml`, (request, response) => {
@@ -152,6 +162,7 @@ function listen() {
  * @param {!express.Response} response Express Response object
  * @param {!Array.<!ExportFile>} files Array of exported files. If more than one is provided, the files are zipped automatically.
  * @param {!string} zipName Name of the zip file (if any).
+ * @returns {!Promise} A Promise that is resolved when the response is sent.
  */
 function downloadFiles(response, files, zipName) {
   if (files.length === 1) {
@@ -160,23 +171,24 @@ function downloadFiles(response, files, zipName) {
       .attachment(files[0].name)
       .type(files[0].mimetype)
       .send(Buffer.from(files[0].content));
-    return;
+    return Promise.resolve();
   }
 
   // else zip all together
-  const Zip = require(`node-zip`);
-  const archive = new Zip();
+  const JSZip = require(`jszip`);
+  const archive = new JSZip();
   for (const file of files) {
     archive.file(file.name, file.content);
   }
-  const data = archive.generate({
-    base64: false,
-    compression: `DEFLATE`
-  });
 
-  response
-    .status(201)
-    .attachment(`ofl_export_${zipName}.zip`)
-    .type(`application/zip`)
-    .send(Buffer.from(data, `binary`));
+  return archive.generateAsync({
+    type: `nodebuffer`,
+    compression: `DEFLATE`
+  }).then(zipBuffer => {
+    response
+      .status(201)
+      .attachment(`ofl_export_${zipName}.zip`)
+      .type(`application/zip`)
+      .send(zipBuffer);
+  });
 }

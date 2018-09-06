@@ -25,8 +25,15 @@ const {
 module.exports.name = `QLC+ 4.11.2`;
 module.exports.version = `0.5.0`;
 
-module.exports.export = function exportQLCplus(fixtures, options) {
-  return fixtures.map(fixture => {
+/**
+ * @param {!Array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {!object} options Global options, including:
+ * @param {!string} options.baseDir Absolute path to OFL's root directory.
+ * @param {?Date} options.date The current time.
+ * @returns {!Promise.<!Array.<object>, !Error>} The generated files.
+*/
+module.exports.export = function exportQlcPlus(fixtures, options) {
+  const outFiles = fixtures.map(fixture => {
     const xml = xmlbuilder.begin()
       .declaration(`1.0`, `UTF-8`)
       .element({
@@ -62,6 +69,8 @@ module.exports.export = function exportQLCplus(fixtures, options) {
       fixtures: [fixture]
     };
   });
+
+  return Promise.resolve(outFiles);
 };
 
 /**
@@ -95,9 +104,9 @@ function addChannel(xml, channel) {
   let capabilities;
   if (channel instanceof FineChannel) {
     let capabilityName;
-    if (channel.fineness > 1) {
+    if (channel.resolution > Channel.RESOLUTION_16BIT) {
       xmlGroup.attribute(`Byte`, 0); // not a QLC+ fine channel
-      capabilityName = `Fine^${channel.fineness} adjustment for ${channel.coarseChannel.uniqueName}`;
+      capabilityName = `Fine^${channel.resolution - 1} adjustment for ${channel.coarseChannel.uniqueName}`;
     }
     else {
       xmlGroup.attribute(`Byte`, 1);
@@ -110,7 +119,7 @@ function addChannel(xml, channel) {
         dmxRange: [0, 255],
         type: `Generic`,
         comment: capabilityName
-      }, 0, channel)
+      }, Channel.RESOLUTION_8BIT, channel)
     ];
   }
   else {
@@ -137,7 +146,7 @@ function addChannel(xml, channel) {
  * @param {!Capability} cap The OFL capability object.
  */
 function addCapability(xmlChannel, cap) {
-  const dmxRange = cap.getDmxRangeWithFineness(0);
+  const dmxRange = cap.getDmxRangeWithResolution(Channel.RESOLUTION_8BIT);
 
   const xmlCapability = xmlChannel.element({
     Capability: {
@@ -297,16 +306,9 @@ function addHeads(xmlMode, mode) {
  * @returns {!string} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
  */
 function getFixtureType(fixture) {
-  const ignoredCats = [`Blinder`, `Matrix`];
+  const ignoredCats = [`Blinder`, `Matrix`, `Pixel Bar`, `Stand`];
 
-  for (const category of fixture.categories) {
-    if (ignoredCats.includes(category)) {
-      continue;
-    }
-    return category;
-  }
-
-  return `Other`;
+  return fixture.categories.find(cat => !ignoredCats.includes(cat)) || `Other`;
 }
 
 /**

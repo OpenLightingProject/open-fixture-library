@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["Nerijus Mongirdas", "Flo Edelmann"],
     "createDate": "2017-09-19",
-    "lastModifyDate": "2018-07-21",
+    "lastModifyDate": "2018-09-04",
     "importPlugin": {
       "plugin": "qlcplus_4.11.2",
       "date": "2017-09-19",
@@ -205,6 +205,7 @@
     },
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "50%",
       "capability": {
         "type": "Pan",
         "angleStart": "0%",
@@ -213,6 +214,7 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
         "angleStart": "0%",

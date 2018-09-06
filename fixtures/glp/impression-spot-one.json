@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2017-10-12",
-    "lastModifyDate": "2018-08-09"
+    "lastModifyDate": "2018-09-04"
   },
   "links": {
     "manual": ["https://www.glp.de/de/produkte?task=download&fid=4"],
@@ -36,7 +36,7 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 32767,
+      "defaultValue": 32768,
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -45,7 +45,7 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 32767,
+      "defaultValue": 32768,
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -755,6 +755,7 @@
     },
     "Gobo 1 Position": {
       "fineChannelAliases": ["Gobo 1 Position fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 127],
@@ -850,6 +851,7 @@
     },
     "Gobo 2 Position": {
       "fineChannelAliases": ["Gobo 2 Position fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 127],
@@ -946,6 +948,7 @@
     },
     "Iris": {
       "fineChannelAliases": ["Iris fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 131],

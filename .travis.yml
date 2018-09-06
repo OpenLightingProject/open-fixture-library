@@ -10,6 +10,7 @@ env:
   - TESTFILE=tests/http-status.js
   - TESTFILE=tests/fixtures-valid.js
   - TESTFILE=tests/lint.js
+  - TESTFILE=tests/dmx-value-scaling.js
   - TESTFILE=tests/make-targets-updated.js
   - TESTFILE=tests/github/export-diff.js
   - TESTFILE=tests/github/exports-valid.js

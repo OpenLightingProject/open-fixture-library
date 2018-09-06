@@ -1,9 +1,15 @@
 const xml2js = require(`xml2js`);
+const promisify = require(`util`).promisify;
 
 module.exports.name = `QLC+ 4.11.2`;
 module.exports.version = `0.4.2`;
 
-module.exports.import = function importQLCplus(str, filename, resolve, reject) {
+/**
+ * @param {!Buffer} buffer The imported file.
+ * @param {!string} filename The imported file's name.
+ * @returns {!Promise.<!object, !Error>} A Promise resolving to an out object
+**/
+module.exports.import = function importQlcPlus(buffer, filename) {
   const parser = new xml2js.Parser();
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
@@ -16,16 +22,7 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
     $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`
   };
 
-  new Promise((res, rej) => {
-    parser.parseString(str, (parseError, xml) => {
-      if (parseError) {
-        rej(parseError);
-      }
-      else {
-        res(xml);
-      }
-    });
-  })
+  return promisify(parser.parseString)(buffer.toString())
     .then(xml => {
       const qlcPlusFixture = xml.FixtureDefinition;
       fixture.name = qlcPlusFixture.Model[0];
@@ -41,7 +38,7 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
         createDate: timestamp,
         lastModifyDate: timestamp,
         importPlugin: {
-          plugin: `qlcplus`,
+          plugin: `qlcplus_4.11.2`,
           date: timestamp,
           comment: `created by ${qlcPlusFixture.Creator[0].Name[0]} (version ${qlcPlusFixture.Creator[0].Version[0]})`
         }
@@ -76,10 +73,7 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
 
       out.fixtures[fixKey] = fixture;
 
-      resolve(out);
-    })
-    .catch(parseError => {
-      reject(`Error parsing '${filename}'.\n${parseError.toString()}`);
+      return out;
     });
 };
 
@@ -89,7 +83,8 @@ module.exports.import = function importQLCplus(str, filename, resolve, reject) {
  */
 function getOflChannel(qlcPlusChannel) {
   const channel = {
-    fineChannelAliases: []
+    fineChannelAliases: [],
+    dmxValueResolution: `8bit`
   };
 
   if (`Capability` in qlcPlusChannel) {
@@ -554,10 +549,17 @@ function mergeFineChannels(fixture, doubleByteChannels, warningsArray) {
  * @param {!object} qlcPlusFixture The QCL+ fixture object.
  */
 function cleanUpFixture(fixture, qlcPlusFixture) {
-  // delete empty fineChannelAliases arrays
-  for (const chKey in fixture.availableChannels) {
-    if (fixture.availableChannels[chKey].fineChannelAliases.length === 0) {
-      delete fixture.availableChannels[chKey].fineChannelAliases;
+  // delete empty fineChannelAliases arrays and unnecessary dmxValueResolution properties
+  for (const chKey of Object.keys(fixture.availableChannels)) {
+    const channel = fixture.availableChannels[chKey];
+
+    if (`capability` in channel) {
+      // no DMX values used in this channel
+      delete channel.dmxValueResolution;
+    }
+    if (channel.fineChannelAliases.length === 0) {
+      delete channel.fineChannelAliases;
+      delete channel.dmxValueResolution;
     }
   }
 

@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2017-05-23",
-    "lastModifyDate": "2018-08-09"
+    "lastModifyDate": "2018-09-04"
   },
   "links": {
     "manual": ["http://cdb.s3.amazonaws.com/ItemRelatedFiles/10038/platinum-spot-15r-pro-v1-user-manual.pdf"],
@@ -29,7 +29,7 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": 32639,
+      "defaultValue": "50%",
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -38,7 +38,7 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": 32639,
+      "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -47,6 +47,7 @@
     },
     "Color Wheel": {
       "fineChannelAliases": ["Color Wheel fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 18],
@@ -234,6 +235,7 @@
     },
     "Gobo Stencil Rotation": {
       "fineChannelAliases": ["Gobo Stencil Rotation fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 127],
@@ -262,6 +264,7 @@
     },
     "Fixed Gobo": {
       "fineChannelAliases": ["Fixed Gobo fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 7],
@@ -541,6 +544,7 @@
     },
     "Rotating Prism": {
       "fineChannelAliases": ["Rotating Prism fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 127],
@@ -641,6 +645,7 @@
     },
     "Iris": {
       "fineChannelAliases": ["Iris fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 191],

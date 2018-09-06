@@ -33,7 +33,7 @@
           hint="Optional.">
           <input
             type="number"
-            name="modelId"
+            name="personalityIndex"
             min="1"
             step="1">
         </app-labeled-input>
@@ -49,18 +49,18 @@
       <h1>RDM {{ searchFor }} not found</h1>
 
       <template v-if="notFound === `fixture`">
-        <p>The requested <a :href="manufacturerLink">{{ manufacturerName }}</a> fixture was not found in the Open Fixture Library. Maybe a fixture in the library is missing the RDM ID?</p>
+        <p>The requested <a :href="manufacturerLink">{{ manufacturerName }}</a> fixture was not found in the Open Fixture Library. Maybe a fixture in the library is missing the RDM ID? It may be included in the <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${manufacturerId}&amp;model=${modelId}`">Open Lighting RDM database</a>.</p>
         <p>Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <nuxt-link :to="`/fixture-editor?prefill=${prefillQuery}`">add it yourself</nuxt-link>!</p>
         <p>Thank you either way!</p>
       </template>
 
       <template v-else-if="searchFor === `fixture`">
-        <p>The manufacturer of the requested fixture was not found in the Open Fixture Library. Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name and manufacturer of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <nuxt-link :to="`/fixture-editor?prefill=${prefillQuery}`">add it yourself</nuxt-link>!</p>
+        <p>The manufacturer of the requested fixture was not found in the Open Fixture Library. The fixture may be included in the <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${manufacturerId}&amp;model=${modelId}`">Open Lighting RDM database</a>. Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name and manufacturer of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <nuxt-link :to="`/fixture-editor?prefill=${prefillQuery}`">add it yourself</nuxt-link>!</p>
         <p>Thank you either way!</p>
       </template>
 
       <template v-else>
-        <p>The requested manufacturer was not found in the Open Fixture Library. Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the manufacturer. Include the full manufacturer name and mention RDM ID <b>{{ manufacturerId }}</b>. Thank you!</p>
+        <p>The requested manufacturer was not found in the Open Fixture Library. It may be included in the <a :href="`http://rdm.openlighting.org/manufacturer/display?manufacturer=${manufacturerId}`">Open Lighting RDM database</a>. Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the manufacturer. Include the full manufacturer name and mention RDM ID <b>{{ manufacturerId }}</b>. Thank you!</p>
       </template>
 
     </template>
@@ -85,6 +85,10 @@ export default {
   async asyncData({ query, redirect }) {
     const { manufacturerId, modelId, personalityIndex } = query;
 
+    const manufacturerIdNumber = parseInt(manufacturerId);
+    const modelIdNumber = parseInt(modelId);
+    const personalityIndexNumber = parseInt(personalityIndex);
+
     if (isEmpty(manufacturerId)) {
       return {
         notFound: null,
@@ -97,19 +101,19 @@ export default {
         return {
           notFound: `manufacturer`,
           searchFor: `manufacturer`,
-          manufacturerId: manufacturerId
+          manufacturerId: manufacturerIdNumber
         };
       }
 
       return {
         notFound: `manufacturer`,
         searchFor: `fixture`,
-        manufacturerId: manufacturerId,
-        modelId: modelId,
+        manufacturerId: manufacturerIdNumber,
+        modelId: modelIdNumber,
         prefillQuery: encodeURIComponent(JSON.stringify({
           useExistingManufacturer: false,
-          newManufacturerRdmId: parseInt(manufacturerId),
-          rdmModelId: parseInt(modelId)
+          newManufacturerRdmId: manufacturerIdNumber,
+          rdmModelId: modelIdNumber
         }))
       };
     }
@@ -122,7 +126,7 @@ export default {
     }
 
     if (modelId in register.rdm[manufacturerId].models) {
-      const locationHash = isEmpty(personalityIndex) ? `` : `#rdm-personality-${personalityIndex}`;
+      const locationHash = isEmpty(personalityIndex) ? `` : `#rdm-personality-${personalityIndexNumber}`;
 
       redirect(301, `/${manufacturer.key}/${manufacturer.models[modelId]}${locationHash}`);
       return {};
@@ -131,14 +135,14 @@ export default {
     return {
       notFound: `fixture`,
       searchFor: `fixture`,
-      manufacturerId: manufacturerId,
+      manufacturerId: manufacturerIdNumber,
       manufacturerLink: `/${manufacturer.key}`,
       manufacturerName: manufacturers[manufacturer.key].name,
-      modelId: modelId,
+      modelId: modelIdNumber,
       prefillQuery: encodeURIComponent(JSON.stringify({
         useExistingManufacturer: true,
         manufacturerShortName: manufacturer.key,
-        rdmModelId: parseInt(modelId)
+        rdmModelId: modelIdNumber
       }))
     };
   }

@@ -24,8 +24,15 @@
         ]
       }
     },
-    "defaultValue": { "$ref": "definitions.json#/dmxValue" },
-    "highlightValue": { "$ref": "definitions.json#/dmxValue" },
+    "dmxValueResolution": { "enum": ["8bit", "16bit", "24bit"] },
+    "defaultValue": { "oneOf": [
+      { "$ref": "definitions.json#/units/dmxValue" },
+      { "$ref": "definitions.json#/units/dmxValuePercent" }
+    ] },
+    "highlightValue": { "oneOf": [
+      { "$ref": "definitions.json#/units/dmxValue" },
+      { "$ref": "definitions.json#/units/dmxValuePercent" }
+    ] },
     "constant": { "type": "boolean" },
     "precedence": { "enum": ["LTP", "HTP"] },
     "capability": {
@@ -46,6 +53,9 @@
         "required": ["dmxRange"]
       }
     }
+  },
+  "dependencies": {
+    "dmxValueResolution": ["fineChannelAliases"]
   },
   "oneOf": [
     {
