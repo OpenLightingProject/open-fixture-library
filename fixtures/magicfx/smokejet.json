@@ -1,0 +1,205 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SMOKEJET",
+  "shortName": "SMOKEJET",
+  "categories": ["Smoke", "Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["MAGIC FX B.V."],
+    "createDate": "2018-09-06",
+    "lastModifyDate": "2018-09-06"
+  },
+  "comment": "Smoke machine with built-in power LED’s which blows coloured smoked on stages. Can also be mounted in trusses and blow smoke downwards and sideways.",
+  "links": {
+    "manual": [
+      "https://www.magicfx.eu/media/mconnect_uploadfiles/m/a/magicfx_smokejet_user_and_installation_manual_en_v01-00.pdf"
+    ],
+    "productPage": [
+      "https://www.magicfx.eu/hardware/smoke-fx/magicfx-reg-smokejet"
+    ],
+    "video": [
+      "https://youtu.be/amAVrtUQr4g"
+    ]
+  },
+  "physical": {
+    "dimensions": [193, 380, 345],
+    "weight": 12.6,
+    "power": 1420,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Fog": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "FogOutput",
+          "fogOutput": "off",
+          "comment": "Fog Off"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "FogOutput",
+          "fogOutput": "strong",
+          "comment": "Fog On"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Chase": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 15],
+          "type": "Effect",
+          "effectName": "Chase 1",
+          "comment": "Chase 1"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "Effect",
+          "effectName": "Chase 2",
+          "comment": "Chase 2"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "Effect",
+          "effectName": "Chase 3",
+          "comment": "Chase 3"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "Effect",
+          "effectName": "Chase 4",
+          "comment": "Chase 4"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Effect",
+          "effectName": "Chase 5",
+          "comment": "Chase 5"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Effect",
+          "effectName": "Chase 6",
+          "comment": "Chase 6"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Effect",
+          "effectName": "Chase 7",
+          "comment": "Chase 7"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "Effect",
+          "effectName": "Chase 8",
+          "comment": "Chase 8"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "Effect",
+          "effectName": "Chase 9",
+          "comment": "Chase 9"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "Effect",
+          "effectName": "Chase 10",
+          "comment": "Chase 10"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "Effect",
+          "effectName": "Chase 11",
+          "comment": "Chase 11"
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "Effect",
+          "effectName": "Chase 12",
+          "comment": "Chase 12"
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "Effect",
+          "effectName": "Chase 13",
+          "comment": "Chase 13"
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "Effect",
+          "effectName": "Chase 14",
+          "comment": "Chase 14"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Chase 15",
+          "comment": "Chase 15"
+        }
+      ]
+    },
+    "Chase Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "0-255 steps per min"
+      }
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "20Hz"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "SMOKEJET",
+      "channels": [
+        "Fog",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Chase",
+        "Chase Speed",
+        "Master Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}
