@@ -474,7 +474,8 @@ module.exports.import = function importGdtf(buffer, filename) {
           dmxRange: [gdtfCapability._dmxFrom, getDmxRangeEnd(index)]
         };
 
-        const capabilityTypeData = getCapabilityTypeData(gdtfCapability);
+        const gdtfAttribute = gdtfCapability._channelFunction._attribute;
+        const capabilityTypeData = getCapabilityTypeData(gdtfAttribute.$.Name);
 
         capability.type = capabilityTypeData.oflType;
 
@@ -530,13 +531,10 @@ module.exports.import = function importGdtf(buffer, filename) {
       }
 
       /**
-       * @param {!object} gdtfCapability The enhanced <ChannelSet> XML object.
+       * @param {!string} attrName The GDTF attribute name.
        * @returns {!object} The capability type data from @file gdtf-attributes.js
        */
-      function getCapabilityTypeData(gdtfCapability) {
-        const gdtfAttribute = gdtfCapability._channelFunction._attribute;
-        const attrName = gdtfAttribute.$.Name;
-
+      function getCapabilityTypeData(attrName) {
         const capabilityTypeData = gdtfAttributes[attrName];
 
         if (!capabilityTypeData) {
@@ -553,7 +551,7 @@ module.exports.import = function importGdtf(buffer, filename) {
         // save the inherited result for later access
         gdtfAttributes[attrName] = Object.assign(
           {},
-          gdtfAttributes[capabilityTypeData.inheritFrom],
+          getCapabilityTypeData(capabilityTypeData.inheritFrom),
           capabilityTypeData
         );
         delete gdtfAttributes[attrName].inheritFrom;
@@ -597,7 +595,7 @@ module.exports.import = function importGdtf(buffer, filename) {
        */
       function getPhysicalUnit(gdtfCapability) {
         const gdtfAttribute = gdtfCapability._channelFunction._attribute;
-        const capabilityTypeData = getCapabilityTypeData(gdtfCapability);
+        const capabilityTypeData = getCapabilityTypeData(gdtfAttribute.$.Name);
 
         let physicalEntity = gdtfAttribute.$.PhysicalUnit;
 
