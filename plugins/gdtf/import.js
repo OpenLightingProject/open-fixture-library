@@ -88,8 +88,12 @@ module.exports.import = function importGdtf(buffer, filename) {
       // TODO: import physical data
       fixture.matrix = {};
 
+      const relations = splitSwitchingChannels(gdtfFixture);
+
       addChannels(fixture, gdtfFixture);
       addModes(fixture, gdtfFixture);
+
+      linkSwitchingChannels(fixture, relations);
 
       if (`templateChannels` in fixture) {
         warnings.push(`Please fix the visual representation of the matrix.`);
@@ -130,6 +134,93 @@ module.exports.import = function importGdtf(buffer, filename) {
       modelId: parseInt(rdmData.$.DeviceModelID, 16),
       softwareVersion: rdmData.$.SoftwareVersionID
     };
+  }
+
+  /**
+   * @typedef Relation
+   * @type object
+   * @property {!number} modeIndex
+   * @property {!object} masterGdtfChannel
+   * @property {!string} switchingChannelName
+   * @property {!object} slaveGdtfChannel
+   * @property {!number} dmxFrom
+   * @property {!number} dmxTo
+   */
+
+  /**
+   * @param {!object} gdtfFixture The GDTF fixture object.
+   * @returns {!array.<!Relation>} An array of relations.
+   */
+  function splitSwitchingChannels(gdtfFixture) {
+    const relations = [];
+
+    gdtfFixture.DMXModes[0].DMXMode.forEach((gdtfMode, modeIndex) => {
+      // add default Name attributes, so that the references work later
+      gdtfMode.DMXChannels[0].DMXChannel.forEach(gdtfChannel => {
+        // auto-generate <DMXChannel> Name attribute
+        gdtfChannel.$.Name = `${gdtfChannel.$.Geometry}_${gdtfChannel.LogicalChannel[0].$.Attribute}`;
+
+        gdtfChannel.LogicalChannel.forEach(gdtfLogicalChannel => {
+          // auto-generate <LogicalChannel> Name attribute
+          gdtfLogicalChannel.$.Name = gdtfLogicalChannel.$.Attribute;
+
+          gdtfLogicalChannel.ChannelFunction.forEach((gdtfChannelFunction, channelFunctionIndex) => {
+            // auto-generate <ChannelFunction> Name attribute if not already defined
+            if (!(`Name` in gdtfChannelFunction.$)) {
+              gdtfChannelFunction.$.Name = `${gdtfChannelFunction.$.Attribute} ${channelFunctionIndex + 1}`;
+            }
+          });
+        });
+      });
+
+      if (`Relation` in gdtfMode.Relations[0]) {
+        gdtfMode.Relations[0].Relation.forEach(gdtfRelation => {
+          if (gdtfRelation.$.Type !== `Mode`) {
+            return;
+          }
+
+          const masterChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfRelation.$.Master);
+          const slaveChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfRelation.$.Slave.split(`.`)[0]);
+          const slaveChannelFunction = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfRelation.$.Slave);
+
+          const dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfRelation.$.DMXFrom || `0/1`);
+          const maxDmxValue = Math.pow(256, dmxFrom[1]) - 1;
+          const dmxTo = getDmxValueWithResolutionFromGdtfDmxValue(gdtfRelation.$.DMXTo || `${maxDmxValue}/${dmxFrom[1]}`);
+
+          const relation = {
+            modeIndex,
+            masterGdtfChannel: masterChannel,
+            switchingChannelName: slaveChannel.$.Name,
+            slaveGdtfChannel: slaveChannel,
+            dmxFrom,
+            dmxTo
+          };
+
+          if (slaveChannel.LogicalChannel[0].ChannelFunction.length > 1) {
+            // split channel such that slaveChannelFunction is the only child
+
+            const channelCopy = JSON.parse(JSON.stringify(slaveChannel));
+            channelCopy.$.Name += `_OflSplit`;
+            relation.slaveGdtfChannel = channelCopy;
+
+            // remove slaveChannelFunction from slaveChannel and all others from the copy
+            const channelFunctionIndex = slaveChannel.LogicalChannel[0].ChannelFunction.indexOf(slaveChannelFunction);
+            slaveChannel.LogicalChannel[0].ChannelFunction.splice(channelFunctionIndex, 1);
+            channelCopy.LogicalChannel[0].ChannelFunction = [
+              channelCopy.LogicalChannel[0].ChannelFunction[channelFunctionIndex]
+            ];
+
+            // insert channelCopy before the slaveChannel
+            const channelIndex = gdtfMode.DMXChannels[0].DMXChannel.indexOf(slaveChannel);
+            gdtfMode.DMXChannels[0].DMXChannel.splice(channelIndex, 0, channelCopy);
+          }
+
+          relations.push(relation);
+        });
+      }
+    });
+
+    return relations;
   }
 
   /**
@@ -705,7 +796,9 @@ module.exports.import = function importGdtf(buffer, filename) {
 
       const channels = dmxBreakWrappers[dmxBreakWrappers.length - 1].channels;
 
-      channels[parseInt(gdtfChannel.$.Coarse) - 1] = chKey;
+      if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Coarse`)) {
+        channels[parseInt(gdtfChannel.$.Coarse) - 1] = chKey;
+      }
 
       if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Fine`)) {
         channels[parseInt(gdtfChannel.$.Fine) - 1] = oflChannel.fineChannelAliases[0];
@@ -754,6 +847,101 @@ module.exports.import = function importGdtf(buffer, filename) {
           }
         });
       }
+    }
+  }
+
+  /**
+   * Adds switchChannels property to all master channels' capabilities and use
+   * the switching channel key in modes' channel lists.
+   * @param {!object} fixture The OFL fixture object.
+   * @param {!array.<!Relation>} relations The array of relations.
+   */
+  function linkSwitchingChannels(fixture, relations) {
+    const relationsPerMaster = {};
+    const modeChannelReplacements = [];
+
+    // bring relations into a structure we can work with
+    relations.forEach(relation => {
+      const masterKey = relation.masterGdtfChannel._oflChannelKey;
+
+      if (!(masterKey in relationsPerMaster)) {
+        relationsPerMaster[masterKey] = {};
+      }
+
+      const modeIndex = relation.modeIndex;
+      const switchingChannelKey = `${modeIndex}_${relation.switchingChannelName}`;
+      const switchToChannelKey = relation.slaveGdtfChannel._oflChannelKey;
+
+      if (!(switchingChannelKey in relationsPerMaster[masterKey])) {
+        relationsPerMaster[masterKey][switchingChannelKey] = [];
+      }
+
+      relationsPerMaster[masterKey][switchingChannelKey].push({
+        dmxFrom: relation.dmxFrom,
+        dmxTo: relation.dmxTo,
+        switchToChannelKey
+      });
+
+      if (!modeChannelReplacements[modeIndex]) {
+        modeChannelReplacements[modeIndex] = {};
+      }
+
+      modeChannelReplacements[modeIndex][switchToChannelKey] = switchingChannelKey;
+    });
+
+    // switch channels in trigger channels' capabilities
+    Object.keys(relationsPerMaster).forEach(triggerChannelKey => {
+      let triggerChannel;
+      if (fixture.availableChannels && triggerChannelKey in fixture.availableChannels) {
+        triggerChannel = fixture.availableChannels[triggerChannelKey];
+      }
+      else if (fixture.templateChannels && `${triggerChannelKey} $pixelKey` in fixture.templateChannels) {
+        triggerChannel = fixture.templateChannels[`${triggerChannelKey} $pixelKey`];
+      }
+
+      const channelResolution = getChannelResolution(triggerChannel);
+
+      triggerChannel.capabilities.forEach(capability => {
+        capability.switchChannels = {};
+
+        Object.keys(relationsPerMaster[triggerChannelKey]).forEach(switchingChannelKey => {
+          relationsPerMaster[triggerChannelKey][switchingChannelKey].forEach(relation => {
+            const [dmxFrom, dmxTo] = scaleDmxRangeIndividually(...relation.dmxFrom, ...relation.dmxTo, channelResolution);
+
+            if (capability.dmxRange[0] >= dmxFrom && capability.dmxRange[1] <= dmxTo) {
+              capability.switchChannels[switchingChannelKey] = relation.switchToChannelKey;
+            }
+          });
+        });
+      });
+    });
+
+    // replace normal channels with switching channels in modes
+    fixture.modes.forEach((mode, modeIndex) => {
+      Object.keys(modeChannelReplacements[modeIndex]).forEach(switchToChannelKey => {
+        const channelIndex = mode.channels.indexOf(switchToChannelKey);
+
+        if (channelIndex !== -1) {
+          mode.channels[channelIndex] = modeChannelReplacements[modeIndex][switchToChannelKey];
+        }
+      });
+    });
+
+
+    /**
+     * @param {!Channel} channel The OFL channel object.
+     * @returns {!number} The fineness of the channel.
+     */
+    function getChannelResolution(channel) {
+      if (`dmxValueResolution` in channel) {
+        return parseInt(channel.dmxValueResolution) * 8;
+      }
+
+      if (`fineChannelAliases` in channel) {
+        return channel.fineChannelAliases.length + 1;
+      }
+
+      return Channel.RESOLUTION_8BIT;
     }
   }
 };
