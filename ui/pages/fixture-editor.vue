@@ -550,7 +550,7 @@ export default {
       this.submit.state = `loading`;
 
       try {
-        const response = await this.$axios.post(`/ajax/add-fixtures`, sendObject);
+        const response = await this.$axios.post(`/ajax/submit-editor`, sendObject);
 
         if (response.data.error) {
           throw new Error(response.data.error);
