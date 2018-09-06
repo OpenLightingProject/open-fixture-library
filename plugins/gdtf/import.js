@@ -540,7 +540,7 @@ module.exports.import = function importGdtf(buffer, filename) {
         if (!capabilityTypeData) {
           return {
             oflType: `Unknown`, // will trigger an error in the validation
-            oflProperty: null
+            oflProperty: `physical` // will also trigger an error, but the information could be useful
           };
         }
 
