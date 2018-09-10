@@ -332,7 +332,7 @@ module.exports.import = async function importGdtf(buffer, filename) {
 
   /**
    * @param {!array.<!ChannelWrapper>} channelWrappers The OFL availableChannels or templateChannels object.
-   * @param {!object} gdtfChannel The GDTF channel object.
+   * @param {!object} gdtfChannel The GDTF <DMXChannel> XML object.
    * @param {!object} gdtfFixture The GDTF fixture object.
    */
   function addChannel(channelWrappers, gdtfChannel, gdtfFixture) {
@@ -432,8 +432,7 @@ module.exports.import = async function importGdtf(buffer, filename) {
             // add an empty <ChannelSet />
             gdtfChannelFunction.ChannelSet = [
               {
-                $: {
-                }
+                $: {}
               }
             ];
           }
