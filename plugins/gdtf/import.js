@@ -226,9 +226,9 @@ module.exports.import = async function importGdtf(buffer, filename) {
           dmxTo
         };
 
+        // if channel was already split, skip splitting it again, else
+        // split channel such that slaveChannelFunction is the only child
         if (slaveChannel.LogicalChannel[0].ChannelFunction.length > 1) {
-          // split channel such that slaveChannelFunction is the only child
-
           const channelCopy = JSON.parse(JSON.stringify(slaveChannel));
           channelCopy.$.Name += `_OflSplit`;
           relation.slaveGdtfChannel = channelCopy;
