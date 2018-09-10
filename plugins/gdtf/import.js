@@ -84,7 +84,8 @@ module.exports.import = async function importGdtf(buffer, filename) {
 
       addRdmInfo(fixture, manufacturer, gdtfFixture);
 
-      // TODO: import physical data
+      warnings.push(`Please add physical data to the fixture.`);
+
       fixture.matrix = {};
 
       const relations = splitSwitchingChannels(gdtfFixture);
