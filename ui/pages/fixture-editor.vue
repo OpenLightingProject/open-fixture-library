@@ -2,7 +2,9 @@
   <div id="fixture-editor">
     <h1>Fixture Editor</h1>
 
-    <noscript>Please enable JavaScript to use the Fixture Editor!</noscript>
+    <noscript class="card yellow">
+      Please enable JavaScript to use the Fixture Editor!
+    </noscript>
 
     <vue-form
       :state="formstate"
@@ -223,6 +225,11 @@
 <style lang="scss" scoped>
 .add-mode-link {
   text-align: center;
+}
+
+noscript.card {
+  display: block;
+  margin-top: 1rem;
 }
 </style>
 
