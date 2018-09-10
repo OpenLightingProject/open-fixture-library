@@ -510,11 +510,6 @@ export default {
       this.readyToAutoSave = true;
       this.$root._oflRestoreComplete = true;
       window.scrollTo(0, 0);
-
-      // focus first input if no dialog is open
-      if (this.channel.editMode === ``) {
-        this.switchManufacturer(this.fixture.useExistingManufacturer);
-      }
     },
 
     async onSubmit() {
