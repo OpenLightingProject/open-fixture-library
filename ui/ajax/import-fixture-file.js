@@ -46,14 +46,17 @@ module.exports = async function importFixtureFile(request, response) {
 
     fixtureResult.errors = {};
 
-    for (const key of Object.keys(fixtureResult.fixtures)) {
+    Object.keys(fixtureResult.fixtures).forEach(key => {
       const [manKey, fixKey] = key.split(`/`);
 
       const checkResult = checkFixture(manKey, fixKey, fixtureResult.fixtures[key]);
 
       fixtureResult.warnings[key] = fixtureResult.warnings[key].concat(checkResult.warnings);
       fixtureResult.errors[key] = checkResult.errors;
-    }
+    });
+
+    fixtureResult.submitter = request.body.githubUsername;
+    fixtureResult.comment = request.body.comment;
 
     pullRequestUrl = await createPullRequest(fixtureResult);
   }

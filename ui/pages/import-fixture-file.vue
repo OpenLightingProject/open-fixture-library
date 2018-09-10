@@ -14,6 +14,8 @@
       @submit.prevent="onSubmit($event.target)">
 
       <section class="card">
+        <h2>File information</h2>
+
         <app-labeled-input :formstate="formstate" name="plugin" label="Import file type">
           <select
             v-model="plugin"
@@ -37,8 +39,36 @@
           <input type="file" required name="file">
         </app-labeled-input>
 
-        <app-labeled-input hidden label="Ignore this!">
-          <input v-model="honeypot" type="text" name="honeypot">
+        <app-labeled-input :formstate="formstate" name="comment" label="Comment">
+          <textarea v-model="comment" name="comment" />
+        </app-labeled-input>
+      </section>
+
+      <section class="user card">
+        <h2>Author data</h2>
+
+        <app-labeled-input :formstate="formstate" name="author" label="Your name">
+          <input
+            v-model="author"
+            type="text"
+            required
+            name="author"
+            placeholder="e.g. Anonymous">
+        </app-labeled-input>
+
+        <app-labeled-input
+          :formstate="formstate"
+          name="githubUsername"
+          label="GitHub username"
+          hint="If you want to be mentioned in the pull request.">
+          <input
+            v-model="githubUsername"
+            type="text"
+            name="githubUsername">
+        </app-labeled-input>
+
+        <app-labeled-input hidden name="honeypot" label="Ignore this!">
+          <input v-model="honeypot" type="text">
           <div class="hint">Spammers are likely to fill this field. Leave it empty to show that you're a human.</div>
         </app-labeled-input>
       </section>
@@ -108,6 +138,9 @@ export default {
       formstate: {},
       plugins,
       plugin: ``,
+      comment: ``,
+      author: ``,
+      githubUsername: ``,
       honeypot: ``,
       pullRequestUrl: pullRequestUrl || null,
       error: query.error || null,
