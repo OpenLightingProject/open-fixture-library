@@ -109,7 +109,8 @@ const gdtfAttributes = {
   AnimationIndexRotateMode: {
     // Changes control between selecting, indexing, and rotating the animation wheel.
     oflType: `Maintenance`,
-    oflProperty: null
+    oflProperty: `parameter`,
+    defaultPhysicalEntity: `Percent`
   },
   AnimationOffset: undefined, // Controls the animation disk's shaking.
   AnimationWheel: undefined, // Inserts a gobo disk into the beam. The disk has the ability to continuously index and rotate.
@@ -134,23 +135,21 @@ const gdtfAttributes = {
   },
   AnimationWheelShortcutMode: {
     // Defines whether the animation wheel takes the shortest distance between two positions.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `AnimationIndexRotateMode`
   },
   BeamEffectIndexRotateMode: {
     // Changes mode to control either index or rotation of the beam effects.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `AnimationIndexRotateMode`
   },
   BeamMode: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `AnimationIndexRotateMode`
   },
   BeamReset: {
     // Resets the fixture's beam features.
     oflType: `Maintenance`,
-    oflProperty: null
+    oflProperty: `parameter`,
+    defaultPhysicalEntity: `Percent`
   },
   Blade1A: {
     // 1 of 2 shutters that shape the top of the beam.
@@ -323,8 +322,7 @@ const gdtfAttributes = {
   },
   Color1Mode: {
     // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 1.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `AnimationIndexRotateMode`
   },
   Color1Random: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -349,8 +347,7 @@ const gdtfAttributes = {
   },
   Color2Mode: {
     // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 2.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `Color1Mode`
   },
   Color2Spin: {
     // Controls the speed and direction of the fixture's color wheel 2.
@@ -362,8 +359,7 @@ const gdtfAttributes = {
   },
   Color3Mode: {
     // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 3.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `Color1Mode`
   },
   Color3Spin: {
     // Controls the speed and direction of the fixture's color wheel 3.
@@ -375,8 +371,7 @@ const gdtfAttributes = {
   },
   Color4Mode: {
     // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 4.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `Color1Mode`
   },
   Color4Spin: {
     // Controls the speed and direction of the fixture's color wheel 4.
@@ -385,7 +380,8 @@ const gdtfAttributes = {
   ColorControl: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     oflType: `Maintenance`,
-    oflProperty: null
+    oflProperty: `parameter`,
+    defaultPhysicalEntity: `Percent`
   },
   ColorEffects: {
     // Selects predefined color effects built into the fixture.
@@ -427,8 +423,7 @@ const gdtfAttributes = {
   },
   ColorMixMode: {
     // Changes control between selecting continuous selection, half selection, random selection, color spinning, etc. in color mixing.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `AnimationIndexRotateMode`
   },
   ColorMixMSpeed: {
     // Movement speed of the fixture's ColorMix presets.
@@ -436,8 +431,7 @@ const gdtfAttributes = {
   },
   ColorMixReset: {
     // Resets the fixture's color mixing system.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `BeamReset`
   },
   ColorRGB1: {
     // Controls the intensity of the fixture's red emitters or its cyan CMY-mixing feature.
@@ -528,8 +522,7 @@ const gdtfAttributes = {
   },
   ColorWheelReset: {
     // Resets the fixture's color wheel.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `BeamReset`
   },
   ColorWheelSelectMSpeed: {
     // Movement speed of the fixture's color wheel.
@@ -537,13 +530,13 @@ const gdtfAttributes = {
   },
   ColorWheelShortcutMode: {
     // Defines whether the color wheel takes the shortest distance between two colors.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `AnimationIndexRotateMode`
   },
   Control: {
     // Controls the channel of a fixture.
     oflType: `Maintenance`,
-    oflProperty: null
+    oflProperty: `parameter`,
+    defaultPhysicalEntity: `Percent`
   },
   ControlAutofocus: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -615,8 +608,7 @@ const gdtfAttributes = {
   },
   CTBReset: {
     // Resets the fixture's CTB.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `BeamReset`
   },
   CTC: {
     // Controls the fixture's "Correct to color" wheel or mixing system.
@@ -624,8 +616,7 @@ const gdtfAttributes = {
   },
   CTCReset: {
     // Resets the fixture's CTC.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `BeamReset`
   },
   CTG: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -639,13 +630,11 @@ const gdtfAttributes = {
   },
   CTOReset: {
     // Resets the fixture's CTO.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `BeamReset`
   },
   CyanMode: {
     // Controls how Cyan is used within the fixture's cyan CMY-mixing feature.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `AnimationIndexRotateMode`
   },
   Dimmer: {
     // Controls the intensity of a fixture.
@@ -656,12 +645,12 @@ const gdtfAttributes = {
   DimmerCurve: {
     // Selects different dimmer curves of the fixture.
     oflType: `Maintenance`,
-    oflProperty: null
+    oflProperty: `parameter`,
+    defaultPhysicalEntity: `Percent`
   },
   DimmerMode: {
     // Selects different modes of intensity.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `AnimationIndexRotateMode`
   },
   Effects: {
     // Generically predefined macros and effects of a fixture.
@@ -776,13 +765,11 @@ const gdtfAttributes = {
   Fans: undefined, // Fancontrols a fixture or device.
   FixtureCalibrationReset: {
     // Resets the fixture's calibration.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `BeamReset`
   },
   FixtureGlobalReset: {
     // Generally resets the entire fixture.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `BeamReset`
   },
   Focus: {
     // Controls the sharpness of the fixture's spot light. Can blur or sharpen the edge of the spot.
@@ -800,8 +787,7 @@ const gdtfAttributes = {
   },
   FocusMode: {
     // Changes modes of the fixture’s focus - manual or auto- focus.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `AnimationIndexRotateMode`
   },
   FocusMSpeed: {
     // Movement speed of the fixture's focus.
@@ -809,8 +795,7 @@ const gdtfAttributes = {
   },
   FocusReset: {
     // Resets the fixture's focus.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `BeamReset`
   },
   Focus2: {
     // Controls the sharpness of the fixture's spot light. Can blur or sharpen the edge of the spot (2).
@@ -830,8 +815,7 @@ const gdtfAttributes = {
   },
   FrameReset: {
     // Resets the fixture's shapers.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `BeamReset`
   },
   Frost: {
     // The ability to soften the fixture's spot light with a frosted lens.
@@ -866,7 +850,8 @@ const gdtfAttributes = {
   Function: {
     // Generally controls features of the fixture.
     oflType: `Maintenance`,
-    oflProperty: null
+    oflProperty: `parameter`,
+    defaultPhysicalEntity: `Percent`
   },
   GlobalMSpeed: {
     // General speed of fixture's features.
@@ -982,8 +967,7 @@ const gdtfAttributes = {
   },
   Gobo1WheelMode: {
     // Changes control between selecting, indexing, and rotating the gobos of gobo wheel 1.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `AnimationIndexRotateMode`
   },
   Gobo1WheelShake: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -1046,8 +1030,7 @@ const gdtfAttributes = {
   },
   Gobo2WheelMode: {
     // Changes control between selecting, indexing, and rotating the gobos of gobo wheel 2.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `Gobo1WheelMode`
   },
   Gobo2WheelSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -1075,8 +1058,7 @@ const gdtfAttributes = {
   },
   Gobo3WheelMode: {
     // Changes control between selecting, indexing, and rotating the gobos of gobo wheel 3.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `Gobo1WheelMode`
   },
   GoboWheelMSpeed: {
     // Movement speed of the fixture's gobo wheel.
@@ -1084,8 +1066,7 @@ const gdtfAttributes = {
   },
   GoboWheelReset: {
     // Resets the fixture's gobo wheel.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `BeamReset`
   },
   Haze: {
     // Fog or hazer's haze feature.
@@ -1107,8 +1088,7 @@ const gdtfAttributes = {
   },
   IntensityReset: {
     // Resets the fixture's intensity.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `BeamReset`
   },
   Iris: {
     // Controls the diameter of the fixture's beam.
@@ -1118,8 +1098,7 @@ const gdtfAttributes = {
   },
   IrisMode: {
     // Changes modes of the fixture’s iris - linear, strobe, pulse.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `AnimationIndexRotateMode`
   },
   IrisMSpeed: {
     // Movement speed of the fixture's iris.
@@ -1145,8 +1124,7 @@ const gdtfAttributes = {
   },
   IrisReset: {
     // Resets the fixture's iris.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `BeamReset`
   },
   IrisStrobe: {
     // Sets speed of the iris’s strobe feature.
@@ -1160,17 +1138,16 @@ const gdtfAttributes = {
   LampControl: {
     // Controls the fixture's lamp on/lamp off feature.
     oflType: `Maintenance`,
-    oflProperty: null
+    oflProperty: `parameter`,
+    defaultPhysicalEntity: `Percent`
   },
   LampPowerMode: {
     // Controls the energy consumption of the lamp.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `AnimationIndexRotateMode`
   },
   MagentaMode: {
     // Controls how Cyan is used within the fixture's magenta CMY-mixing.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `AnimationIndexRotateMode`
   },
   NoFeature: {
     // Ranges without a functionality.
@@ -1185,13 +1162,11 @@ const gdtfAttributes = {
   },
   PanMode: {
     // Selects fixture's pan mode. Selects between a limited pan range (e.g. -270 to 270) or a continuous pan range.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `AnimationIndexRotateMode`
   },
   PanReset: {
     // Resets the fixture's pan.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `BeamReset`
   },
   PositionEffect: {
     // Selects the predefined position effects that are built into the fixture.
@@ -1209,7 +1184,8 @@ const gdtfAttributes = {
     // Selects the fixture's position mode.
     // TODO: Is this a typo in the GDTF wiki / schema and it should be "PositionMode"?
     oflType: `Maintenance`,
-    oflProperty: null
+    oflProperty: `parameter`,
+    defaultPhysicalEntity: `Percent`
   },
   PositionMSpeed: {
     // Movement speed of the fixture's pan/tilt.
@@ -1218,8 +1194,7 @@ const gdtfAttributes = {
   },
   PositionReset: {
     // Resets the fixture's pan/tilt.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `BeamReset`
   },
   Prism: {
     // Controls the insertion of fixture ́s prism wheel 1. Refracts the beam into multiple beams of light on wheel 1.
@@ -1359,8 +1334,7 @@ const gdtfAttributes = {
   },
   ShutterReset: {
     // Resets the fixture's shutter.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `BeamReset`
   },
   ShutterStrobe: {
     // Controls the frequency/speed of the fixture´s mechanical or electronical strobe shutter feature.
@@ -1526,8 +1500,7 @@ const gdtfAttributes = {
   },
   StrobeMode: {
     // Changes strobe style - strobe, pulse, random strobe, etc. - of the shutter attribute.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `AnimationIndexRotateMode`
   },
   StrobeRate: {
     // Controls the time between strobe flashes.
@@ -1543,13 +1516,11 @@ const gdtfAttributes = {
   },
   TiltMode: {
     // Selects fixture's pan mode. Selects between a limited tilt range (e.g. -130 to 130) or a continuous tilt range.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `AnimationIndexRotateMode`
   },
   TiltReset: {
     // Resets the fixture's tilt.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `BeamReset`
   },
   Video: undefined, // Controls video features.
   XYZ_X: undefined, // Defines a fixture’s x-coordinate within an XYZ coordinate system.
@@ -1557,8 +1528,7 @@ const gdtfAttributes = {
   XYZ_Z: undefined, // Defines a fixture‘s z-coordinate within an XYZ coordinate system.
   YellowMode: {
     // Controls how Cyan is used within the fixture's yellow CMY-mixing feature.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `AnimationIndexRotateMode`
   },
   Zoom: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -1572,8 +1542,7 @@ const gdtfAttributes = {
   },
   ZoomReset: {
     // Resets the fixture's zoom.
-    oflType: `Maintenance`,
-    oflProperty: null
+    inheritFrom: `BeamReset`
   }
 };
 
