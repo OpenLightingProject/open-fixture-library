@@ -66,6 +66,22 @@ Vue.use(VueForm, {
     },
     'valid-color-hex-list': function(value) {
       return /^\s*#[0-9a-f]{6}(?:\s*,\s*#[0-9a-f]{6})*\s*$/i.test(value);
+    },
+    'max-file-size': function(file, attrValue) {
+      if (typeof file === `object`) {
+        let maxSize = parseInt(attrValue);
+
+        if (attrValue.includes(`M`)) {
+          maxSize *= 1000 * 1000;
+        }
+        else if (attrValue.includes(`k`)) {
+          maxSize *= 1000;
+        }
+
+        return file.size <= maxSize;
+      }
+
+      return true;
     }
   }
 });

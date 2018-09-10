@@ -34,9 +34,16 @@
           </select>
         </app-labeled-input>
 
-        <!-- TODO: validate with vue-form, see https://jsfiddle.net/fergal_doyle/L1socc1p/ -->
-        <app-labeled-input label="Fixture definition file" hint="The file must be 1MB maximum.">
-          <input type="file" required name="file">
+        <app-labeled-input
+          :formstate="formstate"
+          name="file"
+          label="Fixture definition file"
+          hint="The file must be 1MB maximum.">
+          <app-editor-file-upload
+            v-model="file"
+            :required="true"
+            name="file"
+            max-file-size="1MB" />
         </app-labeled-input>
 
         <app-labeled-input :formstate="formstate" name="comment" label="Comment">
@@ -115,11 +122,13 @@ import scrollIntoView from 'scroll-into-view';
 import plugins from '~~/plugins/plugins.json';
 
 import a11yDialogVue from '~/components/a11y-dialog.vue';
+import editorFileUploadVue from '~/components/editor-file-upload.vue';
 import labeledInputVue from '~/components/labeled-input.vue';
 
 export default {
   components: {
     'app-a11y-dialog': a11yDialogVue,
+    'app-editor-file-upload': editorFileUploadVue,
     'app-labeled-input': labeledInputVue
   },
   head() {
@@ -138,6 +147,7 @@ export default {
       formstate: {},
       plugins,
       plugin: ``,
+      file: null,
       comment: ``,
       author: ``,
       githubUsername: ``,
