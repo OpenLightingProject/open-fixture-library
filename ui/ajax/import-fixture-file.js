@@ -37,7 +37,7 @@ module.exports = async function importFixtureFile(request, response) {
     }
 
     const plugin = require(path.join(__dirname, `../../plugins`, request.body.plugin, `import.js`));
-    fixtureResult = await plugin.import(request.file.buffer, request.file.originalname).catch(
+    fixtureResult = await plugin.import(request.file.buffer, request.file.originalname, request.body.author).catch(
       parseError => {
         parseError.message = `Parse error (${parseError.message})`;
         throw parseError;
