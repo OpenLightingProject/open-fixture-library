@@ -295,14 +295,15 @@ module.exports.import = async function importGdtf(buffer, filename) {
         delete channel.name;
       }
 
-      if (maxResolution === 1) {
+      if (maxResolution === Channel.RESOLUTION_8BIT) {
         delete channel.fineChannelAliases;
       }
       else {
+        // Channel.RESOLUTION_16BIT
         channel.fineChannelAliases.push(`${chKey} fine`);
 
-        for (let i = 2; i < maxResolution; i++) {
-          channel.fineChannelAliases.push(`${chKey} fine^${i}`);
+        for (let i = Channel.RESOLUTION_24BIT; i <= maxResolution; i++) {
+          channel.fineChannelAliases.push(`${chKey} fine^${i - 1}`);
         }
       }
 
