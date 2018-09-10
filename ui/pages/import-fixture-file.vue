@@ -68,7 +68,7 @@
         </app-labeled-input>
 
         <app-labeled-input hidden name="honeypot" label="Ignore this!">
-          <input v-model="honeypot" type="text">
+          <input v-model="honeypot" type="text" name="honeypot">
           <div class="hint">Spammers are likely to fill this field. Leave it empty to show that you're a human.</div>
         </app-labeled-input>
       </section>
@@ -191,7 +191,7 @@ export default {
 
       // submit via AJAX
 
-      this.loading = true;
+      this.uploading = true;
 
       const formData = new FormData(formElement);
       formData.append(`isAjax`, `true`);
@@ -204,17 +204,15 @@ export default {
         }
 
         this.pullRequestUrl = response.data.pullRequestUrl;
-        this.loading = false;
+        this.uploading = false;
       }
       catch (error) {
         console.error(error);
         this.error = error.message;
-        this.loading = false;
+        this.uploading = false;
       }
     },
     reset() {
-      this.plugin = ``;
-      // TODO: reset file input
       this.pullRequestUrl = null;
       this.error = null;
       this.uploading = false;
