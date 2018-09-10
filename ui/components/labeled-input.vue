@@ -132,7 +132,7 @@ export default {
       return this.fieldState.$error;
     },
     isSelectField() {
-      return this.name === `manufacturerKey` || /^capability.*?-(?:type|shutterEffect|color|effectPreset|fogType)$/.test(this.name);
+      return this.name === `manufacturerKey` || this.name === `plugin` || /^capability.*?-(?:type|shutterEffect|color|effectPreset|fogType)$/.test(this.name);
     }
   }
 };

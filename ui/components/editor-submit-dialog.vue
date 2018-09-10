@@ -7,7 +7,7 @@
 
     <div v-if="submit.state === `loading`">Uploading…</div>
 
-    <div v-if="submit.state === `success`">
+    <div v-else-if="submit.state === `success`">
       Your fixture was successfully uploaded to GitHub (see the <a :href="submit.pullRequestUrl" target="_blank">pull request</a>). It will be now reviewed and then merged into the library. Thank you for your contribution!
 
       <div class="button-bar right">
@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <div v-if="submit.state === `error`">
+    <div v-else-if="submit.state === `error`">
       Unfortunately, there was an error while uploading. Please copy the following data and <a href="https://github.com/OpenLightingProject/open-fixture-library/issues/new" target="_blank">manually submit them to GitHub</a>.
 
       <textarea v-model="submit.rawData" readonly />
@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <!-- <div v-if="submit.state === `invalid`">
+    <!-- <div v-else-if="submit.state === `invalid`">
     Unfortunately, the fixture you uploaded was invalid. Please correct the following mistakes before trying again.
     <textarea v-model="submit.mistakes" readonly />
     <textarea v-model="submit.rawData" readonly />
