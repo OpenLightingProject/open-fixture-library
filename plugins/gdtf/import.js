@@ -16,7 +16,7 @@ module.exports.version = `0.1.0`;
  * @param {!string} filename The imported file's name.
  * @returns {!Promise.<!object, !Error>} A Promise resolving to an out object
 **/
-module.exports.import = function importGdtf(buffer, filename) {
+module.exports.import = async function importGdtf(buffer, filename) {
   const parser = new xml2js.Parser();
 
   const fixture = {
@@ -25,11 +25,11 @@ module.exports.import = function importGdtf(buffer, filename) {
 
   const warnings = [];
 
-  let xmlPromise = Promise.resolve(buffer.toString());
+  let xmlStr = buffer.toString();
 
   if (filename.endsWith(`.gdtf`)) {
     // unzip the .gdtf (zip) file and check its description.xml file
-    xmlPromise = JSZip.loadAsync(buffer).then(zip => {
+    xmlStr = await JSZip.loadAsync(buffer).then(zip => {
       const descriptionFile = zip.file(`description.xml`);
 
       if (descriptionFile === null) {
@@ -40,8 +40,7 @@ module.exports.import = function importGdtf(buffer, filename) {
     });
   }
 
-  return xmlPromise
-    .then(xmlStr => promisify(parser.parseString)(xmlStr))
+  return promisify(parser.parseString)(xmlStr)
     .then(xml => {
       const gdtfFixture = xml.GDTF.FixtureType[0];
       fixture.name = gdtfFixture.$.Name;
