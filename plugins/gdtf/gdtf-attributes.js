@@ -302,8 +302,10 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Speed`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.effectName = gdtfCapability.$.Name;
-      capability.soundControlled = true;
       gdtfCapability.$.Name = undefined;
+    },
+    afterPhysicalPropertyHook(capability, gdtfCapability) {
+      capability.soundControlled = true;
     }
   },
   Color1Index: {
@@ -898,8 +900,10 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Speed`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.effectName = gdtfCapability.$.Name;
-      capability.soundControlled = true;
       gdtfCapability.$.Name = undefined;
+    },
+    afterPhysicalPropertyHook(capability, gdtfCapability) {
+      capability.soundControlled = true;
     }
   },
   Gobo1Pos: {
@@ -928,8 +932,10 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Speed`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.effectName = gdtfCapability.$.Name;
-      capability.soundControlled = true;
       gdtfCapability.$.Name = undefined;
+    },
+    afterPhysicalPropertyHook(capability, gdtfCapability) {
+      capability.soundControlled = true;
     }
   },
   Gobo1Select: {
