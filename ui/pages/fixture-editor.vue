@@ -2,6 +2,11 @@
   <div id="fixture-editor">
     <h1>Fixture Editor</h1>
 
+    <section class="card">
+      <h2>Import fixture</h2>
+      Instead of creating a new fixture definition in the editor below, you can also <nuxt-link to="/import-fixture-file">import an existing fixture definition file</nuxt-link>.
+    </section>
+
     <noscript class="card yellow">
       Please enable JavaScript to use the Fixture Editor!
     </noscript>
