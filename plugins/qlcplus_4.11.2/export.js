@@ -10,7 +10,6 @@ const {
   Fixture,
   Manufacturer,
   Matrix,
-  MatrixChannel,
   MatrixChannelReference,
   Meta,
   Mode,
@@ -78,10 +77,6 @@ module.exports.export = function exportQlcPlus(fixtures, options) {
  * @param {!Channel} channel The OFL channel object.
  */
 function addChannel(xml, channel) {
-  if (channel instanceof MatrixChannel) {
-    channel = channel.wrappedChannel;
-  }
-
   const xmlChannel = xml.element({
     Channel: {
       '@Name': channel.uniqueName
@@ -91,10 +86,6 @@ function addChannel(xml, channel) {
   // use default channel's data
   if (channel instanceof SwitchingChannel) {
     channel = channel.defaultChannel;
-
-    if (channel instanceof MatrixChannel) {
-      channel = channel.wrappedChannel;
-    }
   }
 
   const xmlGroup = xmlChannel.element({
@@ -187,7 +178,7 @@ function addMode(xml, mode) {
     xmlMode.element({
       Channel: {
         '@Number': index,
-        '#text': channel.uniqueName || channel.wrappedChannel.uniqueName
+        '#text': channel.uniqueName
       }
     });
   });
@@ -261,7 +252,7 @@ function addPhysical(xmlMode, physical) {
  */
 function addHeads(xmlMode, mode) {
   const hasMatrixChannels = mode.channels.some(
-    ch => ch instanceof MatrixChannel || (ch instanceof SwitchingChannel && ch.defaultChannel instanceof MatrixChannel)
+    ch => ch.pixelKey !== null || (ch instanceof SwitchingChannel && ch.defaultChannel.pixelKey !== null)
   );
 
   if (hasMatrixChannels) {
@@ -279,16 +270,16 @@ function addHeads(xmlMode, mode) {
   }
 
   /**
-   * @param {AbstractChannel|MatrixChannel} channel A channel from a mode's channel list.
+   * @param {AbstractChannel} channel A channel from a mode's channel list.
    * @param {!string} pixelKey The pixel to check for.
    * @returns {boolean} Whether the given channel controls the given pixel key, either directly or as part of a pixel group.
    */
   function controlsPixelKey(channel, pixelKey) {
     if (channel instanceof SwitchingChannel) {
-      return controlsPixelKey(channel.defaultChannel, pixelKey);
+      channel = channel.defaultChannel;
     }
 
-    if (channel instanceof MatrixChannel) {
+    if (channel.pixelKey !== null) {
       if (mode.fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)) {
         return mode.fixture.matrix.pixelGroups[channel.pixelKey].includes(pixelKey);
       }

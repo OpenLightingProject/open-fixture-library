@@ -10,7 +10,6 @@ const {
   Fixture,
   Manufacturer,
   Matrix,
-  MatrixChannel,
   MatrixChannelReference,
   Meta,
   Mode,
@@ -376,7 +375,7 @@ function addCapabilityAliases(xmlCapability, cap) {
   let aliasAdded = false;
   for (const alias of Object.keys(cap.switchChannels)) {
     const switchingChannel = fixture.getChannelByKey(alias);
-    const defaultChannel = switchingChannel.defaultChannel || switchingChannel.wrappedChannel.defaultChannel;
+    const defaultChannel = switchingChannel.defaultChannel;
     const switchedChannel = fixture.getChannelByKey(cap.switchChannels[alias]);
 
     if (defaultChannel === switchedChannel) {
@@ -392,8 +391,8 @@ function addCapabilityAliases(xmlCapability, cap) {
       xmlCapability.element({
         Alias: {
           '@Mode': mode.name,
-          '@Channel': defaultChannel.uniqueName || defaultChannel.wrappedChannel.uniqueName,
-          '@With': switchedChannel.uniqueName || switchedChannel.wrappedChannel.uniqueName
+          '@Channel': defaultChannel.uniqueName,
+          '@With': switchedChannel.uniqueName
         }
       });
     }
@@ -619,16 +618,8 @@ function addMode(xml, mode) {
   }
 
   mode.channels.forEach((channel, index) => {
-    if (channel instanceof MatrixChannel) {
-      channel = channel.wrappedChannel;
-    }
-
     if (channel instanceof SwitchingChannel) {
       channel = channel.defaultChannel;
-
-      if (channel instanceof MatrixChannel) {
-        channel = channel.wrappedChannel;
-      }
     }
 
     xmlMode.element({
@@ -724,7 +715,7 @@ function addPhysical(xmlParentNode, physical, mode) {
  */
 function addHeads(xmlMode, mode) {
   const hasMatrixChannels = mode.channels.some(
-    ch => ch instanceof MatrixChannel || (ch instanceof SwitchingChannel && ch.defaultChannel instanceof MatrixChannel)
+    ch => ch.pixelKey !== null || (ch instanceof SwitchingChannel && ch.defaultChannel.pixelKey !== null)
   );
 
   if (hasMatrixChannels) {
@@ -742,16 +733,16 @@ function addHeads(xmlMode, mode) {
   }
 
   /**
-   * @param {AbstractChannel|MatrixChannel} channel A channel from a mode's channel list.
+   * @param {AbstractChannel} channel A channel from a mode's channel list.
    * @param {!string} pixelKey The pixel to check for.
    * @returns {boolean} Whether the given channel controls the given pixel key, either directly or as part of a pixel group.
    */
   function controlsPixelKey(channel, pixelKey) {
     if (channel instanceof SwitchingChannel) {
-      return controlsPixelKey(channel.defaultChannel, pixelKey);
+      channel = channel.defaultChannel;
     }
 
-    if (channel instanceof MatrixChannel) {
+    if (channel.pixelKey !== null) {
       if (mode.fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)) {
         return mode.fixture.matrix.pixelGroups[channel.pixelKey].includes(pixelKey);
       }

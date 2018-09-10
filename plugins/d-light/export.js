@@ -4,7 +4,6 @@ const sanitize = require(`sanitize-filename`);
 const {
   Channel,
   FineChannel,
-  MatrixChannel,
   SwitchingChannel
 } = require(`../../lib/model.js`);
 
@@ -70,7 +69,7 @@ module.exports.export = function exportDLight(fixtures, options) {
  * @param {!XMLElement} xml The XML parent element.
  * @param {!Mode} mode The fixture's mode that this definition is representing.
  * @param {!string} attribute A D::Light attribute name.
- * @param {!Array.<AbstractChannel|MatrixChannel>} channels All channels of the mode that are associated to the given attribute name.
+ * @param {!Array.<AbstractChannel>} channels All channels of the mode that are associated to the given attribute name.
  */
 function addAttribute(xml, mode, attribute, channels) {
   const xmlAttribute = xml.element({
@@ -147,14 +146,10 @@ function addAttribute(xml, mode, attribute, channels) {
   });
 
   /**
-   * @param {AbstractChannel|MatrixChannel} channel Any kind of channel, e.g. an item of a mode's channel list.
+   * @param {AbstractChannel} channel Any kind of channel, e.g. an item of a mode's channel list.
    * @returns {!string} The parameter name (i. e. channel name) that should be used for this channel in D::Light.
    */
   function getParameterName(channel) {
-    if (channel instanceof MatrixChannel) {
-      channel = channel.wrappedChannel;
-    }
-
     const uniqueName = channel.uniqueName;
 
     channel = getUsableChannel(channel);
@@ -193,24 +188,20 @@ function getDefaultValue(channel) {
 }
 
 /**
- * @param {AbstractChannel|MatrixChannel} channel Any kind of channel, e.g. an item of a mode's channel list.
- * @returns {Channel|FineChannel} Switching channels resolved to their default channel, matrix channels resolved to their wrapped channel.
+ * @param {AbstractChannel} channel Any kind of channel, e.g. an item of a mode's channel list.
+ * @returns {Channel|FineChannel} Switching channels resolved to their default channel.
  */
 function getUsableChannel(channel) {
   if (channel instanceof SwitchingChannel) {
-    return getUsableChannel(channel.defaultChannel);
-  }
-
-  if (channel instanceof MatrixChannel) {
-    return getUsableChannel(channel.wrappedChannel);
+    return channel.defaultChannel;
   }
 
   return channel;
 }
 
 /**
- * @param {!Array.<AbstractChannel|MatrixChannel>} channels List of channels, e.g. from a mode's channel list.
- * @returns {!object.<string, AbstractChannel|MatrixChannel>} D::Light attribute names mapped to the corresponding channels of the given list. All channels are included once.
+ * @param {!Array.<AbstractChannel>} channels List of channels, e.g. from a mode's channel list.
+ * @returns {!object.<string, AbstractChannel>} D::Light attribute names mapped to the corresponding channels of the given list. All channels are included once.
  */
 function getChannelsByAttribute(channels) {
   const channelsByAttribute = {

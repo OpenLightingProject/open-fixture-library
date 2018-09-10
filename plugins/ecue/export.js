@@ -3,7 +3,6 @@ const xmlbuilder = require(`xmlbuilder`);
 const {
   Channel,
   FineChannel,
-  MatrixChannel,
   NullChannel,
   Physical,
   SwitchingChannel
@@ -123,12 +122,9 @@ function handleMode(xmlFixture, mode) {
   let viewPosCount = 1;
   for (let dmxCount = 0; dmxCount < mode.channels.length; dmxCount++) {
     let channel = mode.channels[dmxCount];
-    if (channel instanceof MatrixChannel) {
-      channel = channel.wrappedChannel;
-    }
 
     // skip unused channels
-    if (mode.channels[dmxCount] instanceof NullChannel) {
+    if (channel instanceof NullChannel) {
       continue;
     }
 
@@ -137,10 +133,6 @@ function handleMode(xmlFixture, mode) {
     // ecue doesn't support switching channels, so we just use the default channel's data
     if (channel instanceof SwitchingChannel) {
       channel = channel.defaultChannel;
-
-      if (channel instanceof MatrixChannel) {
-        channel = channel.wrappedChannel;
-      }
     }
 
     let fineChannelKey = null;

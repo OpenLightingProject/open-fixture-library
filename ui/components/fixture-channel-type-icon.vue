@@ -3,7 +3,6 @@ import svg from '~/components/svg.vue';
 
 import AbstractChannel from '~~/lib/model/AbstractChannel.mjs';
 import FineChannel from '~~/lib/model/FineChannel.mjs';
-import MatrixChannel from '~~/lib/model/MatrixChannel.mjs';
 import NullChannel from '~~/lib/model/NullChannel.mjs';
 import SwitchingChannel from '~~/lib/model/SwitchingChannel.mjs';
 
@@ -13,13 +12,13 @@ export default {
   },
   props: {
     channel: {
-      type: [AbstractChannel, MatrixChannel],
+      type: AbstractChannel,
       required: true
     }
   },
   methods: {
     /**
-     * @param {!AbstractChannel|MatrixChannel} channel The channel to get an icon for.
+     * @param {!AbstractChannel} channel The channel to get an icon for.
      * @returns {!object} Object containing the props to pass to <app-svg />
      */
     getIconProps(channel) {
@@ -28,10 +27,6 @@ export default {
           type: `channel-type`,
           name: `NoFunction`
         };
-      }
-
-      if (channel instanceof MatrixChannel) {
-        return this.getIconProps(channel.wrappedChannel);
       }
 
       if (channel instanceof FineChannel) {

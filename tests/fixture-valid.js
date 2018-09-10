@@ -11,7 +11,6 @@ const {
   Channel,
   FineChannel,
   Fixture,
-  MatrixChannel,
   SwitchingChannel
 } = require(`../lib/model.js`);
 
@@ -299,11 +298,9 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       checkChannel(channel);
     }
 
-    for (const channel of fixture.matrixChannels) {
-      if (channel.wrappedChannel instanceof Channel) {
-        checkChannel(channel.wrappedChannel);
-      }
-    }
+    fixture.matrixChannels.filter(
+      ch => ch instanceof Channel
+    ).forEach(checkChannel);
   }
 
   /**
@@ -704,7 +701,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
       usedChannelKeys.add(chKey.toLowerCase());
 
-      let channel = mode.fixture.getChannelByKey(chKey);
+      const channel = mode.fixture.getChannelByKey(chKey);
       if (channel === null) {
         result.errors.push(`Channel '${chKey}' is referenced from mode '${mode.shortName}' but is not defined.`);
         return;
@@ -713,10 +710,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       // if earliest occurrence (including switching channels) is not this one
       if (mode.getChannelIndex(channel, `all`) < chIndex) {
         result.errors.push(`Channel '${channel.key}' is referenced more than once from mode '${mode.shortName}' (maybe through switching channels).`);
-      }
-
-      if (channel instanceof MatrixChannel) {
-        channel = channel.wrappedChannel;
       }
 
       if (channel instanceof SwitchingChannel) {
