@@ -9,7 +9,7 @@ const createPullRequest = require(`../../lib/create-github-pr.js`);
 
 const upload = multer({
   limits: {
-    fileSize: 1024 * 1024 // 1MB
+    fileSize: 5 * 1024 * 1024 // 5MB
   }
 }).single(`file`);
 

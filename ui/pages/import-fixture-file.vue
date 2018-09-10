@@ -38,12 +38,12 @@
           :formstate="formstate"
           name="file"
           label="Fixture definition file"
-          hint="The file must be 1MB maximum.">
+          hint="The file must be 5MB maximum.">
           <app-editor-file-upload
             v-model="file"
             :required="true"
             name="file"
-            max-file-size="1MB" />
+            max-file-size="5MB" />
         </app-labeled-input>
 
         <app-labeled-input :formstate="formstate" name="comment" label="Comment">
