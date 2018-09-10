@@ -258,6 +258,7 @@ module.exports.import = async function importGdtf(buffer, filename) {
    * @property {!string} key The channel key.
    * @property {!object} channel The OFL channel object.
    * @property {!number} maxResolution The highest used resolution of this channel.
+   * @property {!array.<!number>} modeIndices The indices of the modes that this channel is used in.
    */
 
   /**
@@ -341,6 +342,10 @@ module.exports.import = async function importGdtf(buffer, filename) {
       warnings.push(`DMXChannel '${name}' has more than one LogicalChannel. This is not supported yet and could lead to undesired results.`);
     }
 
+    const modeIndex = gdtfFixture.DMXModes[0].DMXMode.findIndex(
+      gdtfMode => gdtfMode.DMXChannels[0].DMXChannel.includes(gdtfChannel)
+    );
+
     const channel = {
       name: name,
       fineChannelAliases: [],
@@ -368,14 +373,15 @@ module.exports.import = async function importGdtf(buffer, filename) {
 
     replaceGdtfDmxValuesWithNumbers();
 
-    // check if we already added the same channel
+    // check if we already added the same channel in another mode
     const sameChannel = channelWrappers.find(
-      ch => JSON.stringify(ch.channel) === JSON.stringify(channel)
+      ch => JSON.stringify(ch.channel) === JSON.stringify(channel) && !ch.modeIndices.includes(modeIndex)
     );
     if (sameChannel) {
       gdtfChannel._oflChannelKey = sameChannel.key;
 
       sameChannel.maxResolution = Math.max(sameChannel.maxResolution, getChannelResolution());
+      sameChannel.modeIndices.push(modeIndex);
       return;
     }
 
@@ -385,7 +391,8 @@ module.exports.import = async function importGdtf(buffer, filename) {
     channelWrappers.push({
       key: channelKey,
       channel: channel,
-      maxResolution: getChannelResolution()
+      maxResolution: getChannelResolution(),
+      modeIndices: [modeIndex]
     });
 
 
