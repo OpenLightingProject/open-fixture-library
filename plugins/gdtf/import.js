@@ -617,17 +617,20 @@ module.exports.import = async function importGdtf(buffer, filename) {
         const gdtfAttribute = gdtfCapability._channelFunction._attribute;
         const capabilityTypeData = getCapabilityTypeData(gdtfAttribute.$.Name);
 
+        if (capabilityTypeData.oflProperty === `index`) {
+          return gdtfUnits.None;
+        }
+
         let physicalEntity = gdtfAttribute.$.PhysicalUnit;
 
         if (!physicalEntity) {
+          physicalEntity = `None`;
+
           if (minPhysicalValue === 0 && maxPhysicalValue === 1) {
             physicalEntity = `Percent`;
           }
-          else if (capabilityTypeData) {
-            physicalEntity = capabilityTypeData.defaultPhysicalEntity || `None`;
-          }
-          else {
-            physicalEntity = `None`;
+          else if (capabilityTypeData.defaultPhysicalEntity) {
+            physicalEntity = capabilityTypeData.defaultPhysicalEntity;
           }
         }
 

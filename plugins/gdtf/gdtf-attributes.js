@@ -3,7 +3,7 @@ const { followXmlNodeReference, getRgbColorFromGdtfColor } = require(`./gdtf-hel
 // see https://gdtf-share.com/wiki/GDTF_File_Description#Attribute
 const gdtfUnits = {
   None(value) {
-    return `${value}`;
+    return value;
   },
   Percent(value) {
     return `${value * 100}%`;
@@ -264,16 +264,33 @@ const gdtfAttributes = {
   Color1: {
     // Selects colors in the fixture's color wheel 1.
     oflType: `ColorWheelIndex`,
-    oflProperty: null,
-    defaultPhysicalEntity: `ColorComponent`,
+    oflProperty: `index`,
+    defaultPhysicalEntity: `None`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
-      const index = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
-      capability.index = index;
+      const gdtfIndex = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
+
+      let indexStart = gdtfIndex;
+      let indexEnd = gdtfIndex;
+
+      const physicalFrom = gdtfCapability._physicalFrom;
+      const physicalTo = gdtfCapability._physicalTo;
+
+      if (physicalFrom !== 0 || physicalTo !== 1) {
+        indexStart += physicalFrom;
+        indexEnd += physicalTo;
+      }
+
+      // write back physical values so that they can be assigned to index or indexStart/indexEnd
+      gdtfCapability._physicalFrom = indexStart;
+      gdtfCapability._physicalTo = indexEnd;
+    },
+    afterPhysicalPropertyHook(capability, gdtfCapability) {
+      const gdtfIndex = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
 
       if (`Wheel` in gdtfCapability._channelFunction.$) {
         const wheelReference = gdtfCapability._channelFunction.$.Wheel;
         const gdtfWheel = followXmlNodeReference(gdtfCapability._fixture.Wheels[0], wheelReference);
-        const gdtfSlot = gdtfWheel.Slot[index];
+        const gdtfSlot = gdtfWheel.Slot[gdtfIndex];
 
         if (gdtfSlot) {
           if (gdtfCapability.$.Name !== gdtfSlot.$.Name) {
@@ -284,14 +301,6 @@ const gdtfAttributes = {
             capability.colors = [getRgbColorFromGdtfColor(gdtfSlot.$.Color)];
           }
         }
-      }
-
-      const physicalFrom = gdtfCapability._physicalFrom;
-      const physicalTo = gdtfCapability._physicalTo;
-
-      // TODO: support physical values -0.5…0.5 to specify proportional color wheel capabilities
-      if (physicalFrom !== 0 || physicalTo !== 1) {
-        gdtfCapability.$.Name += ` ${physicalFrom}…${physicalTo}`;
       }
     }
   },
@@ -866,30 +875,39 @@ const gdtfAttributes = {
   Gobo1: {
     // Selects gobos in the fixture's gobo wheel 1.
     oflType: `GoboIndex`,
-    oflProperty: null,
+    oflProperty: `index`,
     defaultPhysicalEntity: `None`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
-      const index = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
-      capability.index = index;
+      const gdtfIndex = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
+
+      let indexStart = gdtfIndex;
+      let indexEnd = gdtfIndex;
+
+      const physicalFrom = gdtfCapability._physicalFrom;
+      const physicalTo = gdtfCapability._physicalTo;
+
+      if (physicalFrom !== 0 || physicalTo !== 1) {
+        indexStart += physicalFrom;
+        indexEnd += physicalTo;
+      }
+
+      // write back physical values so that they can be assigned to index or indexStart/indexEnd
+      gdtfCapability._physicalFrom = indexStart;
+      gdtfCapability._physicalTo = indexEnd;
+    },
+    afterPhysicalPropertyHook(capability, gdtfCapability) {
+      const gdtfIndex = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
 
       if (`Wheel` in gdtfCapability._channelFunction.$) {
         const wheelReference = gdtfCapability._channelFunction.$.Wheel;
         const gdtfWheel = followXmlNodeReference(gdtfCapability._fixture.Wheels[0], wheelReference);
-        const gdtfSlot = gdtfWheel.Slot[index];
+        const gdtfSlot = gdtfWheel.Slot[gdtfIndex];
 
         if (gdtfSlot) {
           if (gdtfCapability.$.Name !== gdtfSlot.$.Name) {
             gdtfCapability.$.Name += ` (${gdtfSlot.$.Name})`;
           }
         }
-      }
-
-      const physicalFrom = gdtfCapability._physicalFrom;
-      const physicalTo = gdtfCapability._physicalTo;
-
-      // TODO: support physical values -0.5…0.5 to specify proportional gobo wheel capabilities
-      if (physicalFrom !== 0 || physicalTo !== 1) {
-        gdtfCapability.$.Name += ` ${physicalFrom}…${physicalTo}`;
       }
     }
   },
@@ -946,7 +964,12 @@ const gdtfAttributes = {
     // Control the frequency of the shake of gobo wheel 1.
     inheritFrom: `Gobo1`,
     oflProperty: `shakeSpeed`,
-    defaultPhysicalEntity: `Frequency`
+    defaultPhysicalEntity: `Frequency`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      const gdtfIndex = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
+
+      capability.index = gdtfIndex;
+    }
   },
   Gobo1Spin: {
     // Controls the speed and direction of the continuous rotation of gobo wheel 1.
@@ -1015,9 +1038,7 @@ const gdtfAttributes = {
   },
   Gobo2Shake: {
     // Control the frequency of the shake of gobo wheel 2.
-    inheritFrom: `Gobo1`,
-    oflProperty: `shakeSpeed`,
-    defaultPhysicalEntity: `Frequency`
+    inheritFrom: `Gobo1Shake`
   },
   Gobo2Spin: {
     // Controls the speed and direction of the continuous rotation of gobo wheel 2.
@@ -1046,9 +1067,7 @@ const gdtfAttributes = {
   },
   Gobo3Shake: {
     // Control the frequency of the shake of gobo wheel 3.
-    inheritFrom: `Gobo1`,
-    oflProperty: `shakeSpeed`,
-    defaultPhysicalEntity: `Frequency`
+    inheritFrom: `Gobo1Shake`
   },
   Gobo3Spin: {
     // Controls the speed and direction of the continuous rotation of gobo wheel 3.
