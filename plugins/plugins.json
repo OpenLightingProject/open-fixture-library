@@ -1,6 +1,7 @@
 {
   "importPlugins": [
     "ecue",
+    "gdtf",
     "qlcplus_4.11.2"
   ],
   "exportPlugins": [
@@ -20,6 +21,10 @@
     },
     "ecue": {
       "name": "e:cue",
+      "exportTests": []
+    },
+    "gdtf": {
+      "name": "GDTF 0.87",
       "exportTests": []
     },
     "millumin": {
