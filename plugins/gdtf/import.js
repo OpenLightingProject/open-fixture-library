@@ -88,6 +88,7 @@ module.exports.import = async function importGdtf(buffer, filename) {
 
       fixture.matrix = {};
 
+      autoGenerateGdtfNameAttributes(gdtfFixture);
       const relations = splitSwitchingChannels(gdtfFixture);
 
       addChannels(fixture, gdtfFixture);
@@ -152,24 +153,11 @@ module.exports.import = async function importGdtf(buffer, filename) {
     };
   }
 
-  /**
-   * @typedef Relation
-   * @type object
-   * @property {!number} modeIndex
-   * @property {!object} masterGdtfChannel
-   * @property {!string} switchingChannelName
-   * @property {!object} slaveGdtfChannel
-   * @property {!number} dmxFrom
-   * @property {!number} dmxTo
-   */
 
   /**
    * @param {!object} gdtfFixture The GDTF fixture object.
-   * @returns {!array.<!Relation>} An array of relations.
    */
-  function splitSwitchingChannels(gdtfFixture) {
-    const relations = [];
-
+  function autoGenerateGdtfNameAttributes(gdtfFixture) {
     gdtfFixture.DMXModes[0].DMXMode.forEach((gdtfMode, modeIndex) => {
       // add default Name attributes, so that the references work later
       gdtfMode.DMXChannels[0].DMXChannel.forEach(gdtfChannel => {
@@ -190,52 +178,75 @@ module.exports.import = async function importGdtf(buffer, filename) {
           });
         });
       });
+    });
+  }
 
-      if (`Relation` in gdtfMode.Relations[0]) {
-        gdtfMode.Relations[0].Relation.forEach(gdtfRelation => {
-          if (gdtfRelation.$.Type !== `Mode`) {
-            return;
-          }
+  /**
+   * @typedef Relation
+   * @type object
+   * @property {!number} modeIndex
+   * @property {!object} masterGdtfChannel
+   * @property {!string} switchingChannelName
+   * @property {!object} slaveGdtfChannel
+   * @property {!number} dmxFrom
+   * @property {!number} dmxTo
+   */
 
-          const masterChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfRelation.$.Master);
-          const slaveChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfRelation.$.Slave.split(`.`)[0]);
-          const slaveChannelFunction = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfRelation.$.Slave);
+  /**
+   * @param {!object} gdtfFixture The GDTF fixture object.
+   * @returns {!array.<!Relation>} An array of relations.
+   */
+  function splitSwitchingChannels(gdtfFixture) {
+    const relations = [];
 
-          const dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfRelation.$.DMXFrom || `0/1`);
-          const maxDmxValue = Math.pow(256, dmxFrom[1]) - 1;
-          const dmxTo = getDmxValueWithResolutionFromGdtfDmxValue(gdtfRelation.$.DMXTo || `${maxDmxValue}/${dmxFrom[1]}`);
-
-          const relation = {
-            modeIndex,
-            masterGdtfChannel: masterChannel,
-            switchingChannelName: slaveChannel.$.Name,
-            slaveGdtfChannel: slaveChannel,
-            dmxFrom,
-            dmxTo
-          };
-
-          if (slaveChannel.LogicalChannel[0].ChannelFunction.length > 1) {
-            // split channel such that slaveChannelFunction is the only child
-
-            const channelCopy = JSON.parse(JSON.stringify(slaveChannel));
-            channelCopy.$.Name += `_OflSplit`;
-            relation.slaveGdtfChannel = channelCopy;
-
-            // remove slaveChannelFunction from slaveChannel and all others from the copy
-            const channelFunctionIndex = slaveChannel.LogicalChannel[0].ChannelFunction.indexOf(slaveChannelFunction);
-            slaveChannel.LogicalChannel[0].ChannelFunction.splice(channelFunctionIndex, 1);
-            channelCopy.LogicalChannel[0].ChannelFunction = [
-              channelCopy.LogicalChannel[0].ChannelFunction[channelFunctionIndex]
-            ];
-
-            // insert channelCopy before the slaveChannel
-            const channelIndex = gdtfMode.DMXChannels[0].DMXChannel.indexOf(slaveChannel);
-            gdtfMode.DMXChannels[0].DMXChannel.splice(channelIndex, 0, channelCopy);
-          }
-
-          relations.push(relation);
-        });
+    gdtfFixture.DMXModes[0].DMXMode.forEach((gdtfMode, modeIndex) => {
+      if (!(`Relation` in gdtfMode.Relations[0])) {
+        return;
       }
+
+      gdtfMode.Relations[0].Relation.forEach(gdtfRelation => {
+        if (gdtfRelation.$.Type !== `Mode`) {
+          return;
+        }
+
+        const masterChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfRelation.$.Master);
+        const slaveChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfRelation.$.Slave.split(`.`)[0]);
+        const slaveChannelFunction = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfRelation.$.Slave);
+
+        const dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfRelation.$.DMXFrom || `0/1`);
+        const maxDmxValue = Math.pow(256, dmxFrom[1]) - 1;
+        const dmxTo = getDmxValueWithResolutionFromGdtfDmxValue(gdtfRelation.$.DMXTo || `${maxDmxValue}/${dmxFrom[1]}`);
+
+        const relation = {
+          modeIndex,
+          masterGdtfChannel: masterChannel,
+          switchingChannelName: slaveChannel.$.Name,
+          slaveGdtfChannel: slaveChannel,
+          dmxFrom,
+          dmxTo
+        };
+
+        if (slaveChannel.LogicalChannel[0].ChannelFunction.length > 1) {
+          // split channel such that slaveChannelFunction is the only child
+
+          const channelCopy = JSON.parse(JSON.stringify(slaveChannel));
+          channelCopy.$.Name += `_OflSplit`;
+          relation.slaveGdtfChannel = channelCopy;
+
+          // remove slaveChannelFunction from slaveChannel and all others from the copy
+          const channelFunctionIndex = slaveChannel.LogicalChannel[0].ChannelFunction.indexOf(slaveChannelFunction);
+          slaveChannel.LogicalChannel[0].ChannelFunction.splice(channelFunctionIndex, 1);
+          channelCopy.LogicalChannel[0].ChannelFunction = [
+            channelCopy.LogicalChannel[0].ChannelFunction[channelFunctionIndex]
+          ];
+
+          // insert channelCopy before the slaveChannel
+          const channelIndex = gdtfMode.DMXChannels[0].DMXChannel.indexOf(slaveChannel);
+          gdtfMode.DMXChannels[0].DMXChannel.splice(channelIndex, 0, channelCopy);
+        }
+
+        relations.push(relation);
+      });
     });
 
     return relations;
