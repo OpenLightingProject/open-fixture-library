@@ -107,12 +107,16 @@ app.get(`/sitemap.xml`, (request, response) => {
   }));
 });
 
-app.post(`/ajax/submit-editor`, (request, response) => {
-  require(`./ui/ajax/submit-editor.js`)(request, response);
+app.post(`/ajax/import-fixture-file`, (request, response) => {
+  require(`./ui/ajax/import-fixture-file.js`)(request, response);
 });
 
 app.post(`/ajax/get-search-results`, (request, response) => {
   require(`./ui/ajax/get-search-results.js`)(request, response);
+});
+
+app.post(`/ajax/submit-editor`, (request, response) => {
+  require(`./ui/ajax/submit-editor.js`)(request, response);
 });
 
 
