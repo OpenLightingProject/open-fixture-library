@@ -200,7 +200,7 @@ module.exports.import = async function importGdtf(buffer, filename) {
     const relations = [];
 
     gdtfFixture.DMXModes[0].DMXMode.forEach((gdtfMode, modeIndex) => {
-      if (!(`Relation` in gdtfMode.Relations[0])) {
+      if (!(`Relations` in gdtfMode) || typeof gdtfMode.Relations[0] !== `object`) {
         return;
       }
 
@@ -699,7 +699,13 @@ module.exports.import = async function importGdtf(buffer, filename) {
           const endValue = capability.dmxRange[1][0];
           const endResolution = capability.dmxRange[1][1];
 
-          capability.dmxRange = scaleDmxRangeIndividually(startValue, startResolution, endValue, endResolution, scaleToResolution);
+          try {
+            capability.dmxRange = scaleDmxRangeIndividually(startValue, startResolution, endValue, endResolution, scaleToResolution);
+          }
+          catch (valueOutsideResolutionError) {
+            // will be caught by validation
+            capability.dmxRange = [startValue, endValue];
+          }
         });
       }
 
@@ -986,6 +992,10 @@ module.exports.import = async function importGdtf(buffer, filename) {
 
     // replace normal channels with switching channels in modes
     fixture.modes.forEach((mode, modeIndex) => {
+      if (!(modeIndex in modeChannelReplacements)) {
+        return;
+      }
+
       Object.keys(modeChannelReplacements[modeIndex]).forEach(switchToChannelKey => {
         const channelIndex = mode.channels.indexOf(switchToChannelKey);
 
@@ -1088,7 +1098,7 @@ function getDmxValueWithResolutionFromGdtfDmxValue(dmxValueStr) {
     return [parseInt(value), parseInt(resolution)];
   }
   catch (error) {
-    return [parseInt(dmxValueStr), 1];
+    return [parseInt(dmxValueStr) || 0, 1];
   }
 }
 
