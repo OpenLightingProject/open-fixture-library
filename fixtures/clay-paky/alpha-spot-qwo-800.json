@@ -1187,82 +1187,39 @@
       ]
     },
     "Frost": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "Frost",
-          "frostIntensity": "0%",
-          "comment": "min Frost"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "Frost",
-          "frostIntensityStart": "0%",
-          "frostIntensityEnd": "100%"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "Frost",
-          "frostIntensity": "0%",
-          "comment": "max Frost"
-        }
-      ]
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "0%",
+        "frostIntensityEnd": "100%"
+      }
     },
     "Anim": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "Unknown",
-          "physical": "0%",
-          "comment": "Open"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "Unknown",
-          "physicalStart": "0%",
-          "physicalEnd": "100%"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "Unknown",
-          "physical": "100%",
-          "comment": "Animation"
-        }
-      ]
+      "capability": {
+        "type": "Effect",
+        "effectName": "Animation Disk",
+        "parameterStart": "0%",
+        "parameterEnd": "100%",
+        "comment": "Disk excluded … inserted"
+      }
     },
     "Anim <>": {
       "capabilities": [
         {
-          "dmxRange": [1, 1],
+          "dmxRange": [0, 124],
           "type": "Rotation",
-          "speed": "-2.0943333333333336rpm",
-          "comment": "max CCW"
-        },
-        {
-          "dmxRange": [2, 124],
-          "type": "Rotation",
-          "speedStart": "-2.0943333333333336rpm",
-          "speedEnd": "-0.0012833333333333334rpm",
-          "comment": "CCW"
+          "speedStart": "-120rpm",
+          "speedEnd": "-0.0733rpm"
         },
         {
           "dmxRange": [125, 125],
           "type": "Rotation",
-          "speed": "stop",
-          "comment": "Stop"
+          "speed": "stop"
         },
         {
-          "dmxRange": [126, 254],
+          "dmxRange": [126, 255],
           "type": "Rotation",
-          "speedStart": "0.0012833333333333334rpm",
-          "speedEnd": "2.0943333333333336rpm",
-          "comment": "CW"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "Rotation",
-          "speed": "2.0943333333333336rpm",
-          "comment": "max CW"
+          "speedStart": "0.0733rpm",
+          "speedEnd": "120rpm"
         }
       ]
     },
