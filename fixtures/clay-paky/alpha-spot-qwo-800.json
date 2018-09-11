@@ -1429,74 +1429,20 @@
     "P": {
       "fineChannelAliases": ["P fine"],
       "defaultValue": 32768,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "Pan",
-          "angle": "270deg",
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 32767],
-          "type": "Pan",
-          "angleStart": "0deg",
-          "angleEnd": "1deg"
-        },
-        {
-          "dmxRange": [32768, 32768],
-          "type": "Pan",
-          "angle": "0deg",
-          "comment": "Center"
-        },
-        {
-          "dmxRange": [32769, 65534],
-          "type": "Pan",
-          "angleStart": "0deg",
-          "angleEnd": "1deg"
-        },
-        {
-          "dmxRange": [65535, 65535],
-          "type": "Pan",
-          "angle": "-270deg",
-          "comment": "Max"
-        }
-      ]
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
     },
     "T": {
       "fineChannelAliases": ["T fine"],
       "defaultValue": 32768,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "Tilt",
-          "angle": "-125deg",
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 32767],
-          "type": "Tilt",
-          "angleStart": "0deg",
-          "angleEnd": "1deg"
-        },
-        {
-          "dmxRange": [32768, 32768],
-          "type": "Tilt",
-          "angle": "0deg",
-          "comment": "Center"
-        },
-        {
-          "dmxRange": [32769, 65534],
-          "type": "Tilt",
-          "angleStart": "0deg",
-          "angleEnd": "1deg"
-        },
-        {
-          "dmxRange": [65535, 65535],
-          "type": "Tilt",
-          "angle": "125deg",
-          "comment": "Max"
-        }
-      ]
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "250deg"
+      }
     },
     "Dim Curve": {
       "capabilities": [
