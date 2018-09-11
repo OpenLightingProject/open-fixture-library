@@ -21,28 +21,28 @@
     ]
   },
   "availableChannels": {
-    "R": {
+    "Cyan": {
       "defaultValue": 255,
       "highlightValue": 255,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red"
+        "color": "Cyan"
       }
     },
-    "G": {
+    "Magenta": {
       "defaultValue": 255,
       "highlightValue": 255,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green"
+        "color": "Magenta"
       }
     },
-    "B": {
+    "Yellow": {
       "defaultValue": 255,
       "highlightValue": 255,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue"
+        "color": "Yellow"
       }
     },
     "CTO": {
@@ -1531,9 +1531,9 @@
     {
       "name": "Standard Mode (32 ch)",
       "channels": [
-        "R",
-        "G",
-        "B",
+        "Cyan",
+        "Magenta",
+        "Yellow",
         "CTO",
         "C1",
         "Color Macro",
