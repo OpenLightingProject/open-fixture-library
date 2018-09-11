@@ -735,91 +735,36 @@
       "highlightValue": 128,
       "capabilities": [
         {
-          "dmxRange": [0, 0],
+          "dmxRange": [0, 131],
           "type": "Iris",
-          "openPercent": "0deg",
-          "comment": "Closed Iris"
-        },
-        {
-          "dmxRange": [1, 127],
-          "type": "Iris",
-          "openPercentStart": "0deg",
-          "openPercentEnd": "1deg"
-        },
-        {
-          "dmxRange": [128, 131],
-          "type": "Iris",
-          "openPercent": "1deg",
-          "comment": "Open Iris"
+          "openPercentStart": "closed",
+          "openPercentEnd": "open"
         },
         {
           "dmxRange": [132, 132],
           "type": "IrisEffect",
           "effectName": "Strobe",
-          "speed": "0.1Hz",
-          "comment": "min Strobe"
+          "speedStart": "0.1Hz",
+          "speedEnd": "10Hz"
         },
         {
-          "dmxRange": [133, 170],
-          "type": "IrisEffect",
-          "effectName": "Strobe",
-          "speedStart": "0Hz",
-          "speedEnd": "1Hz"
-        },
-        {
-          "dmxRange": [171, 171],
-          "type": "IrisEffect",
-          "effectName": "Strobe",
-          "speed": "10Hz",
-          "comment": "max Strobe"
-        },
-        {
-          "dmxRange": [172, 172],
+          "dmxRange": [172, 211],
           "type": "IrisEffect",
           "effectName": "RampDown",
-          "speed": "0.1Hz",
-          "comment": "min Strobe Pulse Close"
+          "speedStart": "0.1Hz",
+          "speedEnd": "10Hz"
         },
         {
-          "dmxRange": [173, 210],
-          "type": "IrisEffect",
-          "effectName": "RampDown",
-          "speedStart": "0Hz",
-          "speedEnd": "1Hz"
-        },
-        {
-          "dmxRange": [211, 211],
-          "type": "IrisEffect",
-          "effectName": "RampDown",
-          "speed": "10Hz",
-          "comment": "max Strobe Pulse Close"
-        },
-        {
-          "dmxRange": [212, 212],
+          "dmxRange": [212, 251],
           "type": "IrisEffect",
           "effectName": "RampUp",
-          "speed": "0.1Hz",
-          "comment": "min Strobe Pulse Open"
-        },
-        {
-          "dmxRange": [213, 250],
-          "type": "IrisEffect",
-          "effectName": "RampUp",
-          "speedStart": "0Hz",
-          "speedEnd": "1Hz"
-        },
-        {
-          "dmxRange": [251, 251],
-          "type": "IrisEffect",
-          "effectName": "RampUp",
-          "speed": "10Hz",
-          "comment": "max Strobe Pulse Open"
+          "speedStart": "0.1Hz",
+          "speedEnd": "10Hz"
         },
         {
           "dmxRange": [252, 255],
           "type": "Iris",
-          "openPercent": "1deg",
-          "comment": "Open Iris (2)"
+          "openPercent": "open"
         }
       ]
     },
