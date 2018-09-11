@@ -229,7 +229,7 @@
           "type": "ColorWheelRotation",
           "speedStart": "-5rpm",
           "speedEnd": "0rpm",
-          "helpWanted": "Can the color wheel rotate in both directions? The manual only mentions slow to fast rotation in the DMX range 128…255. These capabilities were imported from GDTF file and manually edited instead."
+          "helpWanted": "Can the color wheel rotate in both directions? The manual only mentions slow to fast rotation in the DMX range 128…255. The capabilities here were imported from the GDTF file and manually edited instead."
         },
         {
           "dmxRange": [191, 192],
@@ -1221,10 +1221,9 @@
     "Animation Disk": {
       "capability": {
         "type": "Effect",
-        "effectName": "Animation Disk",
+        "effectName": "Animation Disk insertion",
         "parameterStart": "0%",
-        "parameterEnd": "100%",
-        "comment": "Disk excluded … inserted"
+        "parameterEnd": "100%"
       }
     },
     "Animation Disk Rotation": {
