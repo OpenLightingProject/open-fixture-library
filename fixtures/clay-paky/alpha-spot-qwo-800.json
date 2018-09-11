@@ -24,99 +24,33 @@
     "R": {
       "defaultValue": 255,
       "highlightValue": 255,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "brightness": "0%",
-          "comment": "min"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "ColorIntensity",
-          "color": "Red"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "brightness": "100%",
-          "comment": "max"
-        }
-      ]
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "G": {
       "defaultValue": 255,
       "highlightValue": 255,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Green",
-          "brightness": "0%",
-          "comment": "min"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "ColorIntensity",
-          "color": "Green"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "ColorIntensity",
-          "color": "Green",
-          "brightness": "100%",
-          "comment": "max"
-        }
-      ]
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "B": {
       "defaultValue": 255,
       "highlightValue": 255,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Blue",
-          "brightness": "0%",
-          "comment": "min"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "ColorIntensity",
-          "color": "Blue"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "ColorIntensity",
-          "color": "Blue",
-          "brightness": "100%",
-          "comment": "max"
-        }
-      ]
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "CTO": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorTemperature",
-          "colorTemperature": "0%",
-          "comment": "min CTO"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "ColorTemperature",
-          "colorTemperatureStart": "0%",
-          "colorTemperatureEnd": "100%"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "ColorTemperature",
-          "colorTemperature": "0%",
-          "comment": "max CTO"
-        }
-      ]
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "default",
+        "colorTemperatureEnd": "CTO"
+      }
     },
     "C1": {
       "highlightValue": 0,
