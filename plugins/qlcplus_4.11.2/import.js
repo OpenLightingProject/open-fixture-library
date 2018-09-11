@@ -35,7 +35,9 @@ module.exports.import = function importQlcPlus(buffer, filename, authorName) {
       fixture.categories = [qlcPlusFixture.Type[0]];
 
       const authors = qlcPlusFixture.Creator[0].Author[0].split(/,\s*/);
-      authors.push(authorName);
+      if (!authors.includes(authorName)) {
+        authors.push(authorName);
+      }
 
       fixture.meta = {
         authors: authors,
