@@ -12,6 +12,7 @@
       "comment": "GDTF fixture type ID: 00 1B 21 63 BA 95 00 00 8E 2D C1 C7 3A F9 7D 46"
     }
   },
+  "comment": "The ST version has a 6000K lamp.",
   "links": {
     "manual": [
       "https://www.claypaky.it/media/documents/HR_AlphaSpotQWO800_and_ST_Manual_04.2016_EN.pdf"
@@ -24,6 +25,24 @@
       "https://www.youtube.com/watch?v=539x-P1G4Bo",
       "https://www.youtube.com/watch?v=GHIqWbGhKKA"
     ]
+  },
+  "physical": {
+    "dimensions": [385, 405, 650],
+    "weight": 30,
+    "power": 1200,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "MSR Platinum 35 discharge lamp",
+      "colorTemperature": 7750
+    },
+    "lens": {
+      "degreesMinMax": [11, 55]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 250
+    }
   },
   "availableChannels": {
     "Cyan": {
