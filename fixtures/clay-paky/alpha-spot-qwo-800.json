@@ -682,92 +682,44 @@
         {
           "dmxRange": [0, 3],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed",
-          "comment": "Closed"
+          "shutterEffect": "Closed"
         },
         {
-          "dmxRange": [4, 50504],
+          "dmxRange": [4, 103],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speed": "1Hz",
-          "comment": "min Strobe"
-        },
-        {
-          "dmxRange": [50505, 102],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "0Hz",
-          "speedEnd": "1Hz"
-        },
-        {
-          "dmxRange": [103, 103],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speed": "12Hz",
-          "comment": "max Strobe"
+          "speedStart": "1Hz",
+          "speedEnd": "12Hz"
         },
         {
           "dmxRange": [104, 107],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Open"
+          "shutterEffect": "Open"
         },
         {
-          "dmxRange": [108, 5],
+          "dmxRange": [108, 207],
           "type": "ShutterStrobe",
           "shutterEffect": "Pulse",
-          "speed": "0.1Hz",
-          "comment": "min Pulse"
-        },
-        {
-          "dmxRange": [6, 206],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
-          "speedStart": "0Hz",
-          "speedEnd": "1Hz"
-        },
-        {
-          "dmxRange": [207, 207],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
-          "speed": "10Hz",
-          "comment": "max Pulse"
+          "speedStart": "0.1Hz",
+          "speedEnd": "10Hz"
         },
         {
           "dmxRange": [208, 212],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Open (2)"
+          "shutterEffect": "Open"
         },
         {
-          "dmxRange": [213, -1],
+          "dmxRange": [213, 251],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speed": "0.1Hz",
-          "randomTiming": true,
-          "comment": "min Rndm"
-        },
-        {
-          "dmxRange": [0, 250],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "0Hz",
-          "speedEnd": "1Hz",
+          "speedStart": "0.1Hz",
+          "speedEnd": "10Hz",
           "randomTiming": true
-        },
-        {
-          "dmxRange": [251, 251],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speed": "10Hz",
-          "randomTiming": true,
-          "comment": "max Rndm"
         },
         {
           "dmxRange": [252, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Open (3)"
+          "shutterEffect": "Open"
         }
       ]
     },
