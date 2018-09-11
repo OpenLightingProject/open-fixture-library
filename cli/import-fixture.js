@@ -11,25 +11,27 @@ const fixtureJsonStringify = require(`../lib/fixture-json-stringify.js`);
 const createPullRequest = require(`../lib/create-github-pr.js`);
 
 const args = minimist(process.argv.slice(2), {
-  string: `p`,
+  string: [`p`, `a`],
   boolean: `c`,
   alias: {
+    a: `author-name`,
     p: `plugin`,
     c: `create-pull-request`
   }
 });
 
 const filename = args._[0];
+const authorName = args[`author-name`];
 
-if (args._.length !== 1 || !plugins.importPlugins.includes(args.plugin)) {
-  console.error(`Usage: ${process.argv[1]} -p <plugin> [--create-pull-request] <filename>\n\navailable plugins: ${plugins.importPlugins.join(`, `)}`);
+if (args._.length !== 1 || !plugins.importPlugins.includes(args.plugin) || !authorName) {
+  console.error(`Usage: ${process.argv[1]} -p <plugin> -a <author name> [--create-pull-request] <filename>\n\navailable plugins: ${plugins.importPlugins.join(`, `)}`);
   process.exit(1);
 }
 
 readFile(filename)
   .then(buffer => {
     const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `import.js`));
-    return plugin.import(buffer, filename);
+    return plugin.import(buffer, filename, authorName);
   })
   .then(result => {
     result.errors = {};

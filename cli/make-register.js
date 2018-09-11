@@ -58,18 +58,20 @@ try {
         }
         else {
           let lastAction = `modified`;
+          let lastModifyDate = fixData.meta.lastModifyDate;
           if (fixData.meta.lastModifyDate === fixData.meta.createDate) {
             lastAction = `created`;
           }
-          else if (`importPlugin` in fixData.meta && fixData.meta.lastModifyDate === fixData.meta.importPlugin) {
+          else if (`importPlugin` in fixData.meta && new Date(fixData.meta.lastModifyDate) <= new Date(fixData.meta.importPlugin.date)) {
             lastAction = `imported`;
+            lastModifyDate = fixData.meta.importPlugin.date;
           }
 
           // add to filesystem register
           register.filesystem[`${manKey}/${fixKey}`] = {
             name: fixData.name,
-            lastModifyDate: fixData.meta.lastModifyDate,
-            lastAction: lastAction
+            lastModifyDate,
+            lastAction
           };
         }
 

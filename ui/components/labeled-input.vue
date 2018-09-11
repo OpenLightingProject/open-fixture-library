@@ -31,6 +31,7 @@
         <div v-else-if="fieldErrors[`entity-complete`]">Please fill out this field.</div>
         <div v-else-if="fieldErrors[`entities-have-same-units`]">Please use the same unit or select a keyword for both entities.</div>
         <div v-else-if="fieldErrors[`valid-color-hex-list`]">Please enter a list of #rrggbb (red, green, blue) hex codes.</div>
+        <div v-else-if="fieldErrors[`max-file-size`]">The file size must be less or equal to {{ fieldState.$attrs[`max-file-size`] }}.</div>
 
         <!-- general validators -->
         <div v-else-if="fieldErrors.number">Please enter a number.</div>
@@ -132,7 +133,7 @@ export default {
       return this.fieldState.$error;
     },
     isSelectField() {
-      return this.name === `manufacturerKey` || /^capability.*?-(?:type|shutterEffect|color|effectPreset|fogType)$/.test(this.name);
+      return this.name === `manufacturerKey` || this.name === `plugin` || /^capability.*?-(?:type|shutterEffect|color|effectPreset|fogType)$/.test(this.name);
     }
   }
 };

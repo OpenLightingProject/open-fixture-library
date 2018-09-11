@@ -3,7 +3,7 @@ module.exports = function redirectToHttps(req, res, next) {
   const noHttpsUsed = req.headers[`x-forwarded-proto`] !== `https`;
 
   if (forceHttps && noHttpsUsed) {
-    return res.redirect(`https://${req.get(`Host`)}${req.url}`);
+    return res.redirect(301, `https://${req.get(`Host`)}${req.url}`);
   }
 
   return next();
