@@ -24,6 +24,9 @@ const siteChecker = new blc.SiteChecker({
     // canonical URLs
     `https://open-fixture-library.org/*`,
 
+    // form targets are not meant to be called without parameters / with GET instead of POST
+    `/ajax/*`,
+
     // otherwise these would somehow be checked for every fixture, and we can
     // safely assume that these are correct and long-lasting links
     `https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug`,

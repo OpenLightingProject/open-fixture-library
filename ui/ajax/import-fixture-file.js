@@ -17,6 +17,7 @@ const upload = multer({
  * Takes the input from the "import fixture file" form and creates a pull request with the new fixtures.
  * @param {!object} request Passed from Express.
  * @param {!object} response Passed from Express.
+ * @returns {!Promise} Promise that is resolved after the response is sent.
  */
 module.exports = async function importFixtureFile(request, response) {
   let pullRequestUrl = null;
