@@ -7,9 +7,10 @@ module.exports.version = `0.4.2`;
 /**
  * @param {!Buffer} buffer The imported file.
  * @param {!string} filename The imported file's name.
+ * @param {!string} authorName The importer's name.
  * @returns {!Promise.<!object, !Error>} A Promise resolving to an out object
 **/
-module.exports.import = function importQlcPlus(buffer, filename) {
+module.exports.import = function importQlcPlus(buffer, filename, authorName) {
   const parser = new xml2js.Parser();
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
@@ -33,8 +34,13 @@ module.exports.import = function importQlcPlus(buffer, filename) {
 
       fixture.categories = [qlcPlusFixture.Type[0]];
 
+      const authors = qlcPlusFixture.Creator[0].Author[0].split(/,\s*/);
+      if (!authors.includes(authorName)) {
+        authors.push(authorName);
+      }
+
       fixture.meta = {
-        authors: qlcPlusFixture.Creator[0].Author[0].split(/,\s*/),
+        authors: authors,
         createDate: timestamp,
         lastModifyDate: timestamp,
         importPlugin: {

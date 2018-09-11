@@ -226,7 +226,8 @@ input::placeholder {
     text-align: right;
 
     & button,
-    & input {
+    & input,
+    & .button {
       margin-left: 1ex;
     }
   }

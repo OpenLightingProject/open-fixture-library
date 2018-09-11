@@ -14,9 +14,10 @@ module.exports.version = `0.1.0`;
 /**
  * @param {!Buffer} buffer The imported file.
  * @param {!string} filename The imported file's name.
+ * @param {!string} authorName The importer's name.
  * @returns {!Promise.<!object, !Error>} A Promise resolving to an out object
 **/
-module.exports.import = async function importGdtf(buffer, filename) {
+module.exports.import = async function importGdtf(buffer, filename, authorName) {
   const parser = new xml2js.Parser();
 
   const fixture = {
@@ -67,7 +68,7 @@ module.exports.import = async function importGdtf(buffer, filename) {
       const revisions = gdtfFixture.Revisions[0].Revision;
 
       fixture.meta = {
-        authors: [`Anonymous`],
+        authors: [authorName],
         createDate: getIsoDateFromGdtfDate(revisions[0].$.Date) || timestamp,
         lastModifyDate: getIsoDateFromGdtfDate(revisions[revisions.length - 1].$.Date) || timestamp,
         importPlugin: {
@@ -76,7 +77,6 @@ module.exports.import = async function importGdtf(buffer, filename) {
           comment: `GDTF fixture type ID: ${gdtfFixture.$.FixtureTypeID}`
         }
       };
-      warnings.push(`Please add yourself as a fixture author.`);
 
       fixture.comment = gdtfFixture.$.Description;
 

@@ -2,7 +2,14 @@
   <div id="fixture-editor">
     <h1>Fixture Editor</h1>
 
-    <noscript>Please enable JavaScript to use the Fixture Editor!</noscript>
+    <section class="card">
+      <h2>Import fixture</h2>
+      Instead of creating a new fixture definition in the editor below, you can also <nuxt-link to="/import-fixture-file">import an existing fixture definition file</nuxt-link>.
+    </section>
+
+    <noscript class="card yellow">
+      Please enable JavaScript to use the Fixture Editor!
+    </noscript>
 
     <vue-form
       :state="formstate"
@@ -223,6 +230,11 @@
 <style lang="scss" scoped>
 .add-mode-link {
   text-align: center;
+}
+
+noscript.card {
+  display: block;
+  margin-top: 1rem;
 }
 </style>
 
@@ -510,11 +522,6 @@ export default {
       this.readyToAutoSave = true;
       this.$root._oflRestoreComplete = true;
       window.scrollTo(0, 0);
-
-      // focus first input if no dialog is open
-      if (this.channel.editMode === ``) {
-        this.switchManufacturer(this.fixture.useExistingManufacturer);
-      }
     },
 
     async onSubmit() {

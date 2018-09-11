@@ -1,8 +1,16 @@
 <template>
-  <div class="dialog-container" tabindex="-1" @click="overlayClick">
+  <div
+    :aria-hidden="shown ? `false` : `true`"
+    class="dialog-container"
+    tabindex="-1"
+    @click="overlayClick">
     <div class="dialog-overlay" tabindex="-1" />
 
-    <dialog :id="`${id}-dialog`" :aria-labelledby="id + '-dialog-title'" class="card">
+    <dialog
+      :id="`${id}-dialog`"
+      :aria-labelledby="id + '-dialog-title'"
+      :open="shown"
+      class="card">
       <div>
 
         <a
@@ -28,7 +36,7 @@
 @import '~assets/styles/vars.scss';
 
 .dialog-container[aria-hidden=true],
-[data-a11y-dialog-native] > :first-child {
+[data-a11y-dialog-native] > .dialog-overlay {
   display: none;
 }
 

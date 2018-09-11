@@ -13,9 +13,10 @@ for (const hex of Object.keys(colorNames)) {
 /**
  * @param {!Buffer} buffer The imported file.
  * @param {!string} filename The imported file's name.
+ * @param {!string} authorName The importer's name.
  * @returns {!Promise.<!object, !Error>} A Promise resolving to an out object
 **/
-module.exports.import = function importECue(buffer, filename) {
+module.exports.import = function importECue(buffer, filename, authorName) {
   const parser = new xml2js.Parser();
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
@@ -86,7 +87,7 @@ module.exports.import = function importECue(buffer, filename) {
     out.warnings[fixKey].push(`Please specify categories.`);
 
     fixture.meta = {
-      authors: [],
+      authors: [authorName],
       createDate: ecueFixture.$._CreationDate.replace(/#.*/, ``),
       lastModifyDate: ecueFixture.$._ModifiedDate.replace(/#.*/, ``),
       importPlugin: {
@@ -94,7 +95,6 @@ module.exports.import = function importECue(buffer, filename) {
         date: timestamp
       }
     };
-    out.warnings[fixKey].push(`Please specify your name in meta.authors.`);
 
     if (ecueFixture.$.Comment !== ``) {
       fixture.comment = ecueFixture.$.Comment;
