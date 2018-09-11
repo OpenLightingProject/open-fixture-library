@@ -68,14 +68,14 @@
           "indexStart": 0,
           "indexEnd": 1,
           "colorsStart": ["#ffffff"],
-          "colorsEnd": ["#ff0000"],
+          "colorsEnd": ["#ee262d"],
           "comment": "Split White … Red"
         },
         {
           "dmxRange": [15, 15],
           "type": "ColorWheelIndex",
           "index": 1,
-          "colors": ["#ff0000"],
+          "colors": ["#ee262d"],
           "comment": "Red"
         },
         {
@@ -83,15 +83,15 @@
           "type": "ColorWheelIndex",
           "indexStart": 1,
           "indexEnd": 2,
-          "colorsStart": ["#ff0000"],
-          "colorsEnd": ["#ffcaae"],
+          "colorsStart": ["#ee262d"],
+          "colorsEnd": ["#f1c136"],
           "comment": "Split Red … CTO 2600"
         },
         {
           "dmxRange": [30, 30],
           "type": "ColorWheelIndex",
           "index": 2,
-          "colors": ["#ffcaae"],
+          "colors": ["#f1c136"],
           "comment": "CTO 2600"
         },
         {
@@ -99,15 +99,15 @@
           "type": "ColorWheelIndex",
           "indexStart": 2,
           "indexEnd": 3,
-          "colorsStart": ["#ffcaae"],
-          "colorsEnd": ["#009911"],
+          "colorsStart": ["#f1c136"],
+          "colorsEnd": ["#08954d"],
           "comment": "Split CTO 2600 … Green"
         },
         {
           "dmxRange": [45, 45],
           "type": "ColorWheelIndex",
           "index": 3,
-          "colors": ["#009911"],
+          "colors": ["#08954d"],
           "comment": "Green"
         },
         {
@@ -115,15 +115,15 @@
           "type": "ColorWheelIndex",
           "indexStart": 3,
           "indexEnd": 4,
-          "colorsStart": ["#009911"],
-          "colorsEnd": ["#99d200"],
+          "colorsStart": ["#08954d"],
+          "colorsEnd": ["#87cf34"],
           "comment": "Split Green … Light Green"
         },
         {
           "dmxRange": [60, 60],
           "type": "ColorWheelIndex",
           "index": 4,
-          "colors": ["#99d200"],
+          "colors": ["#87cf34"],
           "comment": "Light Green"
         },
         {
@@ -131,15 +131,15 @@
           "type": "ColorWheelIndex",
           "indexStart": 4,
           "indexEnd": 5,
-          "colorsStart": ["#99d200"],
-          "colorsEnd": ["#c079c5"],
+          "colorsStart": ["#87cf34"],
+          "colorsEnd": ["#8566ba"],
           "comment": "Split Light Green … Lavender"
         },
         {
           "dmxRange": [75, 75],
           "type": "ColorWheelIndex",
           "index": 5,
-          "colors": ["#c079c5"],
+          "colors": ["#8566ba"],
           "comment": "Lavender"
         },
         {
@@ -147,15 +147,15 @@
           "type": "ColorWheelIndex",
           "indexStart": 5,
           "indexEnd": 6,
-          "colorsStart": ["#c079c5"],
-          "colorsEnd": ["#00b593"],
+          "colorsStart": ["#8566ba"],
+          "colorsEnd": ["#69c981"],
           "comment": "Split Lavender … Aquamarine"
         },
         {
           "dmxRange": [90, 90],
           "type": "ColorWheelIndex",
           "index": 6,
-          "colors": ["#00b593"],
+          "colors": ["#69c981"],
           "comment": "Aquamarine"
         },
         {
@@ -163,15 +163,15 @@
           "type": "ColorWheelIndex",
           "indexStart": 6,
           "indexEnd": 7,
-          "colorsStart": ["#00b593"],
-          "colorsEnd": ["#fc9713"],
+          "colorsStart": ["#69c981"],
+          "colorsEnd": ["#f47327"],
           "comment": "Split Aquamarine … Orange"
         },
         {
           "dmxRange": [105, 105],
           "type": "ColorWheelIndex",
           "index": 7,
-          "colors": ["#fc9713"],
+          "colors": ["#f47327"],
           "comment": "Orange"
         },
         {
@@ -179,15 +179,15 @@
           "type": "ColorWheelIndex",
           "indexStart": 7,
           "indexEnd": 8,
-          "colorsStart": ["#fc9713"],
-          "colorsEnd": ["#001691"],
+          "colorsStart": ["#f47327"],
+          "colorsEnd": ["#2e52ab"],
           "comment": "Split Orange … Blue"
         },
         {
           "dmxRange": [120, 120],
           "type": "ColorWheelIndex",
           "index": 8,
-          "colors": ["#001691"],
+          "colors": ["#2e52ab"],
           "comment": "Blue"
         },
         {
@@ -195,8 +195,8 @@
           "type": "ColorWheelIndex",
           "indexStart": 8,
           "indexEnd": 8.5,
-          "colorsStart": ["#001691"],
-          "colorsEnd": ["#001691", "#ffffff"],
+          "colorsStart": ["#2e52ab"],
+          "colorsEnd": ["#2e52ab", "#ffffff"],
           "comment": "Split Blue … White"
         },
         {
