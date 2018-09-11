@@ -25,7 +25,7 @@ const siteChecker = new blc.SiteChecker({
     `https://open-fixture-library.org/*`,
 
     // form targets are not meant to be called without parameters / with GET instead of POST
-    `/ajax/*`,
+    `http://localhost:5000/ajax/*`,
 
     // otherwise these would somehow be checked for every fixture, and we can
     // safely assume that these are correct and long-lasting links
