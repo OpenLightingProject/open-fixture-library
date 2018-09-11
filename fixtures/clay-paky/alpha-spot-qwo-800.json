@@ -1085,13 +1085,12 @@
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "Prism",
-          "comment": "Open"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [128, 255],
           "type": "Prism",
-          "comment": "3 facet prism"
+          "comment": "3 facet"
         }
       ]
     },
@@ -1100,112 +1099,90 @@
         {
           "dmxRange": [0, 0],
           "type": "PrismRotation",
-          "angle": "0deg",
-          "comment": "0 deg"
+          "angle": "0deg"
         },
         {
           "dmxRange": [1, 20],
           "type": "PrismRotation",
           "angleStart": "0deg",
-          "angleEnd": "1deg"
+          "angleEnd": "90deg"
         },
         {
           "dmxRange": [21, 21],
           "type": "PrismRotation",
-          "angle": "90deg",
-          "comment": "90 deg"
+          "angle": "90deg"
         },
         {
           "dmxRange": [22, 41],
           "type": "PrismRotation",
-          "angleStart": "0deg",
-          "angleEnd": "1deg"
+          "angleStart": "90deg",
+          "angleEnd": "180deg"
         },
         {
           "dmxRange": [42, 42],
           "type": "PrismRotation",
-          "angle": "180deg",
-          "comment": "180 deg"
+          "angle": "180deg"
         },
         {
           "dmxRange": [43, 62],
           "type": "PrismRotation",
-          "angleStart": "0deg",
-          "angleEnd": "1deg"
+          "angleStart": "180deg",
+          "angleEnd": "270deg"
         },
         {
           "dmxRange": [63, 63],
           "type": "PrismRotation",
-          "angle": "270deg",
-          "comment": "270 deg"
+          "angle": "270deg"
         },
         {
           "dmxRange": [64, 83],
           "type": "PrismRotation",
-          "angleStart": "0deg",
-          "angleEnd": "1deg"
+          "angleStart": "2700deg",
+          "angleEnd": "360deg"
         },
         {
           "dmxRange": [84, 84],
           "type": "PrismRotation",
-          "angle": "360deg",
-          "comment": "360 deg"
+          "angle": "360deg"
         },
         {
           "dmxRange": [85, 104],
           "type": "PrismRotation",
-          "angleStart": "0deg",
-          "angleEnd": "1deg"
+          "angleStart": "360deg",
+          "angleEnd": "450deg"
         },
         {
           "dmxRange": [105, 105],
           "type": "PrismRotation",
-          "angle": "450deg",
-          "comment": "450 deg"
+          "angle": "450deg"
         },
         {
           "dmxRange": [106, 126],
           "type": "PrismRotation",
-          "angleStart": "0deg",
-          "angleEnd": "1deg"
+          "angleStart": "450deg",
+          "angleEnd": "540deg"
         },
         {
           "dmxRange": [127, 127],
           "type": "PrismRotation",
-          "angle": "540deg",
-          "comment": "540 deg"
+          "angle": "540deg"
         },
         {
-          "dmxRange": [128, 128],
+          "dmxRange": [128, 190],
           "type": "PrismRotation",
-          "speed": "-2.0943333333333336rpm",
-          "comment": "max CCW"
-        },
-        {
-          "dmxRange": [129, 190],
-          "type": "PrismRotation",
-          "speedStart": "-2.0943333333333336rpm",
-          "speedEnd": "-0.0008666666666666666rpm",
-          "comment": "CCW"
+          "speedStart": "-120rpm",
+          "speedEnd": "-0.05rpm"
         },
         {
           "dmxRange": [191, 192],
           "type": "PrismRotation",
-          "speed": "stop",
-          "comment": "Stop"
+          "speed": "stop"
         },
         {
-          "dmxRange": [193, 254],
+          "dmxRange": [193, 255],
           "type": "PrismRotation",
-          "speedStart": "0.0008666666666666666rpm",
-          "speedEnd": "2.0943333333333336rpm",
-          "comment": "CW"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "PrismRotation",
-          "speed": "2.0943333333333336rpm",
-          "comment": "max CW"
+          "speedStart": "0.05rpm",
+          "speedEnd": "120rpm"
         }
       ]
     },
