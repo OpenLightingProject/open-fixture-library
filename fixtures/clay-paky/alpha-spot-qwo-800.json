@@ -726,62 +726,9 @@
     "Dim": {
       "fineChannelAliases": ["Dim fine"],
       "highlightValue": 65535,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "Intensity",
-          "brightness": "0cd",
-          "comment": "Closed"
-        },
-        {
-          "dmxRange": [1, 16383],
-          "type": "Intensity",
-          "brightnessStart": "0cd",
-          "brightnessEnd": "1cd"
-        },
-        {
-          "dmxRange": [16384, 16385],
-          "type": "Intensity",
-          "brightness": "0.25cd",
-          "comment": "25%"
-        },
-        {
-          "dmxRange": [16386, 32767],
-          "type": "Intensity",
-          "brightnessStart": "0cd",
-          "brightnessEnd": "1cd"
-        },
-        {
-          "dmxRange": [32768, 32768],
-          "type": "Intensity",
-          "brightness": "0.5cd",
-          "comment": "50%"
-        },
-        {
-          "dmxRange": [32769, 50175],
-          "type": "Intensity",
-          "brightnessStart": "0cd",
-          "brightnessEnd": "1cd"
-        },
-        {
-          "dmxRange": [50176, 50176],
-          "type": "Intensity",
-          "brightness": "0.75cd",
-          "comment": "75%"
-        },
-        {
-          "dmxRange": [50177, 65534],
-          "type": "Intensity",
-          "brightnessStart": "0cd",
-          "brightnessEnd": "1cd"
-        },
-        {
-          "dmxRange": [65535, 65535],
-          "type": "Intensity",
-          "brightness": "1cd",
-          "comment": "Open"
-        }
-      ]
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Iris": {
       "defaultValue": 128,
