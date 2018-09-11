@@ -242,8 +242,8 @@
     },
     "clay-paky/alpha-spot-qwo-800": {
       "name": "Alpha Spot QWO 800",
-      "lastModifyDate": "2018-08-30",
-      "lastAction": "modified"
+      "lastModifyDate": "2018-09-11",
+      "lastAction": "imported"
     },
     "clay-paky/sharpy": {
       "name": "Sharpy",
@@ -685,13 +685,13 @@
       "lastModifyDate": "2018-09-04",
       "lastAction": "modified"
     },
-    "showven/sparkular": {
-      "name": "Sparkular",
+    "showven/sparkular-fall": {
+      "name": "Sparkular Fall",
       "lastModifyDate": "2018-08-09",
       "lastAction": "modified"
     },
-    "showven/sparkular-fall": {
-      "name": "Sparkular Fall",
+    "showven/sparkular": {
+      "name": "Sparkular",
       "lastModifyDate": "2018-08-09",
       "lastAction": "modified"
     },
@@ -949,8 +949,8 @@
       "xs-1-rgbw"
     ],
     "showven": [
-      "sparkular",
-      "sparkular-fall"
+      "sparkular-fall",
+      "sparkular"
     ],
     "stairville": [
       "led-flood-panel-150",
@@ -1023,6 +1023,7 @@
       "chroma-q/color-force-ii-12",
       "chroma-q/color-force-ii-48",
       "chroma-q/color-force-ii-72",
+      "clay-paky/alpha-spot-qwo-800",
       "clay-paky/sharpy",
       "clay-paky/spheriscan",
       "coemar/prospot-250-lx",
@@ -1119,8 +1120,8 @@
       "magicfx/psyco2jet",
       "magicfx/stage-flame",
       "minuit-une/ivl-carre",
-      "showven/sparkular",
       "showven/sparkular-fall",
+      "showven/sparkular",
       "venue/tristrip3z"
     ],
     "Fan": [
@@ -1176,6 +1177,7 @@
       "cameo/hydrabeam-100",
       "cameo/hydrabeam-300-rgbw",
       "cameo/nanospot-120",
+      "clay-paky/alpha-spot-qwo-800",
       "clay-paky/sharpy",
       "coemar/prospot-250-lx",
       "dts/xr1200-wash",
@@ -1223,8 +1225,7 @@
       "stairville/mh-x25"
     ],
     "Other": [
-      "chauvet-dj/corepar-uv-usb",
-      "clay-paky/alpha-spot-qwo-800"
+      "chauvet-dj/corepar-uv-usb"
     ],
     "Pixel Bar": [
       "adb/alc4",
@@ -1427,8 +1428,8 @@
     ],
     "Alejo Cervera": [
       "magicfx/stage-flame",
-      "showven/sparkular",
-      "showven/sparkular-fall"
+      "showven/sparkular-fall",
+      "showven/sparkular"
     ],
     "Justin Hornsby": [
       "chauvet-dj/washfx",
@@ -1541,6 +1542,10 @@
       "key": "coemar",
       "models": {}
     },
+    "17232": {
+      "key": "clay-paky",
+      "models": {}
+    },
     "18008": {
       "key": "magicfx",
       "models": {
@@ -1582,6 +1587,7 @@
     }
   },
   "lastUpdated": [
+    "clay-paky/alpha-spot-qwo-800",
     "magicfx/smokejet",
     "american-dj/xs-400",
     "boomtonedj/crazy-spot-30",
@@ -1623,7 +1629,6 @@
     "showtec/xs-1-rgbw",
     "stairville/mh-100",
     "stairville/mh-x25",
-    "clay-paky/alpha-spot-qwo-800",
     "adb/alc4",
     "american-dj/revo-sweep",
     "ayrton/magicblade-fx",
