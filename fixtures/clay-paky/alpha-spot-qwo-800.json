@@ -1448,39 +1448,31 @@
       "capabilities": [
         {
           "dmxRange": [0, 11],
-          "type": "Maintenance",
-          "parameter": "0%",
-          "comment": "Unused Range"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [12, 24],
           "type": "Maintenance",
-          "parameter": "0%",
           "comment": "Pan Tilt Fast"
         },
         {
           "dmxRange": [25, 37],
           "type": "Maintenance",
-          "parameter": "0%",
           "comment": "Pan Tilt Normal"
         },
         {
           "dmxRange": [38, 50],
           "type": "Maintenance",
-          "parameter": "0%",
           "comment": "Dimmer Curve Conventional"
         },
         {
           "dmxRange": [51, 62],
           "type": "Maintenance",
-          "parameter": "0%",
           "comment": "Dimmer Curve Linear"
         },
         {
           "dmxRange": [63, 255],
-          "type": "Maintenance",
-          "parameter": "0%",
-          "comment": "Unused Range (2)"
+          "type": "NoFunction"
         }
       ]
     },
@@ -1488,26 +1480,24 @@
       "capabilities": [
         {
           "dmxRange": [0, 25],
-          "type": "Maintenance",
-          "parameter": "0%",
-          "comment": "Unused Range"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [26, 76],
           "type": "Maintenance",
-          "parameter": "0%",
+          "hold": "5s",
           "comment": "Effects Reset"
         },
         {
           "dmxRange": [77, 127],
           "type": "Maintenance",
-          "parameter": "0%",
+          "hold": "5s",
           "comment": "Pan/Tilt Reset"
         },
         {
           "dmxRange": [128, 255],
           "type": "Maintenance",
-          "parameter": "0%",
+          "hold": "5s",
           "comment": "Complete Reset"
         }
       ]
@@ -1516,26 +1506,22 @@
       "capabilities": [
         {
           "dmxRange": [0, 25],
-          "type": "Maintenance",
-          "parameter": "0%",
-          "comment": "Unused Range"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [26, 100],
           "type": "Maintenance",
-          "parameter": "0%",
+          "hold": "5s",
           "comment": "Lamp Off"
         },
         {
           "dmxRange": [101, 179],
-          "type": "Maintenance",
-          "parameter": "0%",
-          "comment": "Unused Range (2)"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [180, 255],
           "type": "Maintenance",
-          "parameter": "0%",
+          "hold": "5s",
           "comment": "Lamp On"
         }
       ]
