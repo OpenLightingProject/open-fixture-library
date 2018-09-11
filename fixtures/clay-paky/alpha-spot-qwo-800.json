@@ -780,138 +780,115 @@
         {
           "dmxRange": [8, 15],
           "type": "GoboIndex",
-          "index": 1,
-          "comment": "Gobo 1 (Gobo1)"
+          "index": 1
         },
         {
           "dmxRange": [16, 23],
           "type": "GoboIndex",
-          "index": 2,
-          "comment": "Gobo 2 (Gobo2)"
+          "index": 2
         },
         {
           "dmxRange": [24, 31],
           "type": "GoboIndex",
-          "index": 3,
-          "comment": "Gobo 3 (Gobo3)"
+          "index": 3
         },
         {
           "dmxRange": [32, 39],
           "type": "GoboIndex",
-          "index": 4,
-          "comment": "Gobo 4 (Gobo4)"
+          "index": 4
         },
         {
           "dmxRange": [40, 47],
           "type": "GoboIndex",
-          "index": 5,
-          "comment": "Gobo 5 (Gobo5)"
+          "index": 5
         },
         {
           "dmxRange": [48, 55],
           "type": "GoboIndex",
-          "index": 6,
-          "comment": "Gobo 6 (Gobo6)"
+          "index": 6
         },
         {
           "dmxRange": [56, 63],
           "type": "GoboIndex",
-          "index": 7,
-          "comment": "Gobo 7 (Gobo7)"
+          "index": 7
         },
         {
           "dmxRange": [64, 71],
           "type": "GoboIndex",
-          "index": 8,
-          "comment": "Gobo 8 (Gobo8)"
+          "index": 8
         },
         {
-          "dmxRange": [72, 72],
+          "dmxRange": [72, 113],
           "type": "GoboWheelRotation",
-          "speed": "-0.5236666666666666rpm",
-          "comment": "max CCW"
-        },
-        {
-          "dmxRange": [73, 113],
-          "type": "GoboWheelRotation",
-          "speedStart": "-0.5236666666666666rpm",
-          "speedEnd": "-0.005233333333333333rpm",
-          "comment": "CCW"
+          "speedStart": "-100rpm",
+          "speedEnd": "-5rpm"
         },
         {
           "dmxRange": [114, 117],
           "type": "GoboWheelRotation",
-          "speed": "stop",
-          "comment": "Stop"
+          "speed": "stop"
         },
         {
-          "dmxRange": [118, 158],
+          "dmxRange": [118, 159],
           "type": "GoboWheelRotation",
-          "speedStart": "0.005233333333333333rpm",
-          "speedEnd": "0.5236666666666666rpm",
-          "comment": "CW"
-        },
-        {
-          "dmxRange": [159, 159],
-          "type": "GoboWheelRotation",
-          "speed": "0.5236666666666666rpm",
-          "comment": "max CW"
+          "speedStart": "5rpm",
+          "speedEnd": "100rpm"
         },
         {
           "dmxRange": [160, 171],
           "type": "GoboIndex",
           "index": 1,
-          "shakeSpeed": "0Hz",
-          "comment": "Gobo 1 Shake (Gobo1)"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [172, 183],
           "type": "GoboIndex",
           "index": 2,
-          "shakeSpeed": "0Hz",
-          "comment": "Gobo 2 Shake (Gobo2)"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [184, 195],
           "type": "GoboIndex",
           "index": 3,
-          "shakeSpeed": "0Hz",
-          "comment": "Gobo 3 Shake (Gobo3)"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [196, 207],
           "type": "GoboIndex",
           "index": 4,
-          "shakeSpeed": "0Hz",
-          "comment": "Gobo 4 Shake (Gobo4)"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [208, 219],
           "type": "GoboIndex",
           "index": 5,
-          "shakeSpeed": "0Hz",
-          "comment": "Gobo 5 Shake (Gobo5)"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [220, 231],
           "type": "GoboIndex",
           "index": 6,
-          "shakeSpeed": "0Hz",
-          "comment": "Gobo 6 Shake (Gobo6)"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [232, 243],
           "type": "GoboIndex",
           "index": 7,
-          "shakeSpeed": "0Hz",
-          "comment": "Gobo 7 Shake (Gobo7)"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [244, 255],
           "type": "GoboIndex",
           "index": 8,
-          "shakeSpeed": "0Hz",
-          "comment": "Gobo 8 Shake (Gobo8)"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         }
       ]
     },
@@ -927,93 +904,86 @@
         {
           "dmxRange": [17, 32],
           "type": "GoboIndex",
-          "index": 1,
-          "comment": "Gobo 1 (Gobo1)"
+          "index": 1
         },
         {
           "dmxRange": [33, 48],
           "type": "GoboIndex",
-          "index": 2,
-          "comment": "Gobo 2 (Gobo2)"
+          "index": 2
         },
         {
           "dmxRange": [49, 64],
           "type": "GoboIndex",
-          "index": 3,
-          "comment": "Gobo 3 (Gobo3)"
+          "index": 3
         },
         {
           "dmxRange": [65, 81],
           "type": "GoboIndex",
-          "index": 4,
-          "comment": "Gobo 4 (Gobo4)"
+          "index": 4
         },
         {
           "dmxRange": [82, 97],
           "type": "GoboIndex",
-          "index": 5,
-          "comment": "Gobo 5 (Gobo5)"
+          "index": 5
         },
         {
           "dmxRange": [98, 113],
           "type": "GoboIndex",
-          "index": 6,
-          "comment": "Gobo 6 (Gobo6)"
+          "index": 6
         },
         {
           "dmxRange": [114, 129],
           "type": "GoboIndex",
-          "index": 7,
-          "comment": "Gobo 7 (Gobo7)"
+          "index": 7
         },
         {
           "dmxRange": [130, 147],
           "type": "GoboIndex",
           "index": 1,
-          "shakeSpeed": "0Hz",
-          "comment": "Gobo 1 Shake (Gobo1)"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [148, 165],
           "type": "GoboIndex",
           "index": 2,
-          "shakeSpeed": "0Hz",
-          "comment": "Gobo 2 Shake (Gobo2)"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [166, 183],
           "type": "GoboIndex",
           "index": 3,
-          "shakeSpeed": "0Hz",
-          "comment": "Gobo 3 Shake (Gobo3)"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [184, 201],
           "type": "GoboIndex",
           "index": 4,
-          "shakeSpeed": "0Hz",
-          "comment": "Gobo 4 Shake (Gobo4)"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [202, 219],
           "type": "GoboIndex",
           "index": 5,
-          "shakeSpeed": "0Hz",
-          "comment": "Gobo 5 Shake (Gobo5)"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [220, 237],
           "type": "GoboIndex",
           "index": 6,
-          "shakeSpeed": "0Hz",
-          "comment": "Gobo 6 Shake (Gobo6)"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [238, 255],
           "type": "GoboIndex",
           "index": 7,
-          "shakeSpeed": "0Hz",
-          "comment": "Gobo 7 Shake (Gobo7)"
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         }
       ]
     },
@@ -1024,112 +994,90 @@
         {
           "dmxRange": [0, 0],
           "type": "GoboStencilRotation",
-          "angle": "0deg",
-          "comment": "0 deg"
+          "angle": "0deg"
         },
         {
           "dmxRange": [1, 20],
           "type": "GoboStencilRotation",
           "angleStart": "0deg",
-          "angleEnd": "1deg"
+          "angleEnd": "90deg"
         },
         {
           "dmxRange": [21, 21],
           "type": "GoboStencilRotation",
-          "angle": "90deg",
-          "comment": "90 deg"
+          "angle": "90deg"
         },
         {
           "dmxRange": [22, 41],
           "type": "GoboStencilRotation",
-          "angleStart": "0deg",
-          "angleEnd": "1deg"
+          "angleStart": "90deg",
+          "angleEnd": "180deg"
         },
         {
           "dmxRange": [42, 42],
           "type": "GoboStencilRotation",
-          "angle": "180deg",
-          "comment": "180 deg"
+          "angle": "180deg"
         },
         {
           "dmxRange": [43, 62],
           "type": "GoboStencilRotation",
-          "angleStart": "0deg",
-          "angleEnd": "1deg"
+          "angleStart": "180deg",
+          "angleEnd": "270deg"
         },
         {
           "dmxRange": [63, 63],
           "type": "GoboStencilRotation",
-          "angle": "270deg",
-          "comment": "270 deg"
+          "angle": "270deg"
         },
         {
           "dmxRange": [64, 83],
           "type": "GoboStencilRotation",
-          "angleStart": "0deg",
-          "angleEnd": "1deg"
+          "angleStart": "270deg",
+          "angleEnd": "360deg"
         },
         {
           "dmxRange": [84, 84],
           "type": "GoboStencilRotation",
-          "angle": "360deg",
-          "comment": "360 deg"
+          "angle": "360deg"
         },
         {
           "dmxRange": [85, 104],
           "type": "GoboStencilRotation",
-          "angleStart": "0deg",
-          "angleEnd": "1deg"
+          "angleStart": "360deg",
+          "angleEnd": "450deg"
         },
         {
           "dmxRange": [105, 105],
           "type": "GoboStencilRotation",
-          "angle": "450deg",
-          "comment": "450 deg"
+          "angle": "450deg"
         },
         {
           "dmxRange": [106, 126],
           "type": "GoboStencilRotation",
-          "angleStart": "0deg",
-          "angleEnd": "1deg"
+          "angleStart": "450deg",
+          "angleEnd": "540deg"
         },
         {
           "dmxRange": [127, 127],
           "type": "GoboStencilRotation",
-          "angle": "540deg",
-          "comment": "540 deg"
+          "angle": "540deg"
         },
         {
-          "dmxRange": [128, 128],
+          "dmxRange": [128, 190],
           "type": "GoboStencilRotation",
-          "speed": "3.141666666666667rpm",
-          "comment": "max CW"
-        },
-        {
-          "dmxRange": [129, 190],
-          "type": "GoboStencilRotation",
-          "speedStart": "3.141666666666667rpm",
-          "speedEnd": "0.006333333333333333rpm",
-          "comment": "CW"
+          "speedStart": "180rpm",
+          "speedEnd": "0.0367rpm"
         },
         {
           "dmxRange": [191, 192],
           "type": "GoboStencilRotation",
-          "speed": "stop",
-          "comment": "Stop"
+          "speed": "stop"
         },
         {
           "dmxRange": [193, 254],
           "type": "GoboStencilRotation",
-          "speedStart": "-0.006333333333333333rpm",
-          "speedEnd": "-3.141666666666667rpm",
-          "comment": "CCW"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "GoboStencilRotation",
-          "speed": "-3.141666666666667rpm",
-          "comment": "max CCW"
+          "speedStart": "-0.0367rpm",
+          "speedEnd": "-180rpm"
         }
       ]
     },
