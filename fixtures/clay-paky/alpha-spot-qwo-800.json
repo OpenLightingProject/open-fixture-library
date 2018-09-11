@@ -224,13 +224,12 @@
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "ColorPreset",
-          "comment": "Unused Range (1)"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [1, 1],
           "type": "ColorPreset",
-          "comment": "Rdm Macro Color (only for Macro Effects)"
+          "comment": "Random Macro Color (only for Macro Effects)"
         },
         {
           "dmxRange": [2, 3],
@@ -672,8 +671,7 @@
         },
         {
           "dmxRange": [148, 255],
-          "type": "ColorPreset",
-          "comment": "Unused Range (2)"
+          "type": "NoFunction"
         }
       ]
     },
