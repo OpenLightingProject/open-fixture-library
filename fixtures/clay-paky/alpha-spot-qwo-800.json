@@ -52,7 +52,7 @@
         "colorTemperatureEnd": "CTO"
       }
     },
-    "C1": {
+    "Color Wheel": {
       "highlightValue": 0,
       "capabilities": [
         {
@@ -219,7 +219,7 @@
         }
       ]
     },
-    "Color Macro": {
+    "Color Macros": {
       "highlightValue": 0,
       "capabilities": [
         {
@@ -675,7 +675,7 @@
         }
       ]
     },
-    "Sh": {
+    "Shutter / Strobe": {
       "defaultValue": 104,
       "highlightValue": 104,
       "capabilities": [
@@ -723,8 +723,8 @@
         }
       ]
     },
-    "Dim": {
-      "fineChannelAliases": ["Dim fine"],
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
       "highlightValue": 65535,
       "capability": {
         "type": "Intensity"
@@ -768,7 +768,7 @@
         }
       ]
     },
-    "G1": {
+    "Static Gobo Wheel": {
       "highlightValue": 0,
       "capabilities": [
         {
@@ -892,7 +892,7 @@
         }
       ]
     },
-    "G2": {
+    "Rotating Gobo Wheel": {
       "highlightValue": 0,
       "capabilities": [
         {
@@ -987,8 +987,8 @@
         }
       ]
     },
-    "G2 <>": {
-      "fineChannelAliases": ["G2 <> fine"],
+    "Gobo Rotation": {
+      "fineChannelAliases": ["Gobo Rotation fine"],
       "dmxValueResolution": "8bit",
       "capabilities": [
         {
@@ -1094,7 +1094,7 @@
         }
       ]
     },
-    "Prism Pos": {
+    "Prism Rotation": {
       "capabilities": [
         {
           "dmxRange": [0, 0],
@@ -1193,7 +1193,7 @@
         "frostIntensityEnd": "100%"
       }
     },
-    "Anim": {
+    "Animation Disk": {
       "capability": {
         "type": "Effect",
         "effectName": "Animation Disk",
@@ -1202,7 +1202,7 @@
         "comment": "Disk excluded … inserted"
       }
     },
-    "Anim <>": {
+    "Animation Disk Rotation": {
       "capabilities": [
         {
           "dmxRange": [0, 124],
@@ -1240,7 +1240,7 @@
         "helpWanted": "The manual specifies this capability as wide…narrow, the GDTF as narrow…wide (with the given angles). Which one is correct?"
       }
     },
-    "Focus Distance": {
+    "Autofocus Distance": {
       "capabilities": [
         {
           "dmxRange": [0, 6],
@@ -1295,7 +1295,7 @@
         }
       ]
     },
-    "Focus Adjust": {
+    "Autofocus Adjust": {
       "defaultValue": 128,
       "capabilities": [
         {
@@ -1317,7 +1317,7 @@
         }
       ]
     },
-    "FX": {
+    "Effects": {
       "capabilities": [
         {
           "dmxRange": [0, 7],
@@ -1426,8 +1426,8 @@
         }
       ]
     },
-    "P": {
-      "fineChannelAliases": ["P fine"],
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
       "defaultValue": 32768,
       "capability": {
         "type": "Pan",
@@ -1435,8 +1435,8 @@
         "angleEnd": "540deg"
       }
     },
-    "T": {
-      "fineChannelAliases": ["T fine"],
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
       "defaultValue": 32768,
       "capability": {
         "type": "Tilt",
@@ -1444,7 +1444,7 @@
         "angleEnd": "250deg"
       }
     },
-    "Dim Curve": {
+    "Function": {
       "capabilities": [
         {
           "dmxRange": [0, 11],
@@ -1476,7 +1476,7 @@
         }
       ]
     },
-    "Fixture Global Reset": {
+    "Reset": {
       "capabilities": [
         {
           "dmxRange": [0, 25],
@@ -1502,7 +1502,7 @@
         }
       ]
     },
-    "Lamp Ctrl": {
+    "Lamp Control": {
       "capabilities": [
         {
           "dmxRange": [0, 25],
@@ -1535,34 +1535,34 @@
         "Magenta",
         "Yellow",
         "CTO",
-        "C1",
-        "Color Macro",
-        "Sh",
-        "Dim",
-        "Dim fine",
+        "Color Wheel",
+        "Color Macros",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
         "Iris",
-        "G1",
-        "G2",
-        "G2 <>",
-        "G2 <> fine",
+        "Static Gobo Wheel",
+        "Rotating Gobo Wheel",
+        "Gobo Rotation",
+        "Gobo Rotation fine",
         "Prism",
-        "Prism Pos",
+        "Prism Rotation",
         "Frost",
-        "Anim",
-        "Anim <>",
+        "Animation Disk",
+        "Animation Disk Rotation",
         "Focus",
         "Focus fine",
         "Zoom",
-        "Focus Distance",
-        "Focus Adjust",
-        "FX",
-        "P",
-        "P fine",
-        "T",
-        "T fine",
-        "Dim Curve",
-        "Fixture Global Reset",
-        "Lamp Ctrl"
+        "Autofocus Distance",
+        "Autofocus Adjust",
+        "Effects",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Function",
+        "Reset",
+        "Lamp Control"
       ]
     }
   ]
