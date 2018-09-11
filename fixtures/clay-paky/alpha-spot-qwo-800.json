@@ -1225,86 +1225,97 @@
     },
     "Focus": {
       "fineChannelAliases": ["Focus fine"],
-      "dmxValueResolution": "8bit",
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "Focus",
-          "distance": "0%",
-          "comment": "Distant"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "Focus",
-          "distanceStart": "0%",
-          "distanceEnd": "100%"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "Focus",
-          "distance": "0%",
-          "comment": "Near"
-        }
-      ]
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "far",
+        "distanceEnd": "near"
+      }
     },
     "Zoom": {
       "defaultValue": 128,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "Zoom",
-          "angle": "11deg",
-          "comment": "Narrow"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "Zoom",
-          "angleStart": "0deg",
-          "angleEnd": "1deg"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "Zoom",
-          "angle": "55deg",
-          "comment": "Wide"
-        }
-      ]
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "11deg",
+        "angleEnd": "55deg",
+        "helpWanted": "The manual specifies this capability as wide…narrow, the GDTF as narrow…wide (with the given angles). Which one is correct?"
+      }
     },
     "Focus Distance": {
       "capabilities": [
         {
           "dmxRange": [0, 6],
-          "type": "Focus",
-          "distance": "0m",
-          "comment": "AutoFocus Off"
+          "type": "NoFunction",
+          "comment": "Autofocus off"
         },
         {
-          "dmxRange": [7, 7],
+          "dmxRange": [7, 9],
           "type": "Focus",
-          "distance": "0m",
-          "comment": "Near"
+          "distance": "3m"
         },
         {
-          "dmxRange": [8, 254],
+          "dmxRange": [10, 12],
           "type": "Focus",
-          "distanceStart": "0m",
-          "distanceEnd": "1m"
+          "distance": "4m"
         },
         {
-          "dmxRange": [255, 255],
+          "dmxRange": [13, 14],
           "type": "Focus",
-          "distance": "0m",
-          "comment": "Far"
+          "distance": "5m"
+        },
+        {
+          "dmxRange": [15, 17],
+          "type": "Focus",
+          "distance": "6m"
+        },
+        {
+          "dmxRange": [18, 19],
+          "type": "Focus",
+          "distance": "7m"
+        },
+        {
+          "dmxRange": [20, 22],
+          "type": "Focus",
+          "distance": "8m"
+        },
+        {
+          "dmxRange": [23, 25],
+          "type": "Focus",
+          "distance": "9m"
+        },
+        {
+          "dmxRange": [26, 27],
+          "type": "Focus",
+          "distance": "10m"
+        },
+        {
+          "dmxRange": [28, 255],
+          "type": "Focus",
+          "distanceStart": "10m",
+          "distanceEnd": "100m"
         }
       ]
     },
     "Focus Adjust": {
       "defaultValue": 128,
-      "capability": {
-        "type": "Focus",
-        "distanceStart": "0%",
-        "distanceEnd": "100%"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Focus",
+          "distanceStart": "-100%",
+          "distanceEnd": "0%"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Focus",
+          "distance": "0%"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Focus",
+          "distanceStart": "0%",
+          "distanceEnd": "100%"
+        }
+      ]
     },
     "FX": {
       "capabilities": [
