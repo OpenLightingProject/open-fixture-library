@@ -56,95 +56,166 @@
       "highlightValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 8],
+          "dmxRange": [0, 0],
           "type": "ColorWheelIndex",
-          "indexStart": 0,
-          "indexEnd": 0.5,
+          "index": 0,
+          "colors": ["#ffffff"],
           "comment": "Open"
         },
         {
-          "dmxRange": [9, 22],
+          "dmxRange": [1, 14],
           "type": "ColorWheelIndex",
-          "indexStart": 0.5,
-          "indexEnd": 1.5,
-          "colors": ["#640000"],
+          "indexStart": 0,
+          "indexEnd": 1,
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#ff0000"],
+          "comment": "Split White … Red"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "ColorWheelIndex",
+          "index": 1,
+          "colors": ["#ff0000"],
           "comment": "Red"
         },
         {
-          "dmxRange": [23, 37],
+          "dmxRange": [16, 29],
           "type": "ColorWheelIndex",
-          "indexStart": 1.5,
-          "indexEnd": 2.5,
-          "colors": ["#c54400"],
+          "indexStart": 1,
+          "indexEnd": 2,
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffcaae"],
+          "comment": "Split Red … CTO 2600"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "ColorWheelIndex",
+          "index": 2,
+          "colors": ["#ffcaae"],
           "comment": "CTO 2600"
         },
         {
-          "dmxRange": [38, 52],
+          "dmxRange": [31, 44],
           "type": "ColorWheelIndex",
-          "indexStart": 2.5,
-          "indexEnd": 3.5,
+          "indexStart": 2,
+          "indexEnd": 3,
+          "colorsStart": ["#ffcaae"],
+          "colorsEnd": ["#009911"],
+          "comment": "Split CTO 2600 … Green"
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "ColorWheelIndex",
+          "index": 3,
           "colors": ["#009911"],
           "comment": "Green"
         },
         {
-          "dmxRange": [53, 67],
+          "dmxRange": [46, 59],
           "type": "ColorWheelIndex",
-          "indexStart": 3.5,
-          "indexEnd": 4.5,
+          "indexStart": 3,
+          "indexEnd": 4,
+          "colorsStart": ["#009911"],
+          "colorsEnd": ["#99d200"],
+          "comment": "Split Green … Light Green"
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "ColorWheelIndex",
+          "index": 4,
           "colors": ["#99d200"],
           "comment": "Light Green"
         },
         {
-          "dmxRange": [68, 82],
+          "dmxRange": [61, 74],
           "type": "ColorWheelIndex",
-          "indexStart": 4.5,
-          "indexEnd": 5.5,
-          "colors": ["#9e43a5"],
+          "indexStart": 4,
+          "indexEnd": 5,
+          "colorsStart": ["#99d200"],
+          "colorsEnd": ["#c079c5"],
+          "comment": "Split Light Green … Lavender"
+        },
+        {
+          "dmxRange": [75, 75],
+          "type": "ColorWheelIndex",
+          "index": 5,
+          "colors": ["#c079c5"],
           "comment": "Lavender"
         },
         {
-          "dmxRange": [83, 97],
+          "dmxRange": [76, 89],
           "type": "ColorWheelIndex",
-          "indexStart": 5.5,
-          "indexEnd": 6.5,
+          "indexStart": 5,
+          "indexEnd": 6,
+          "colorsStart": ["#c079c5"],
+          "colorsEnd": ["#00b593"],
+          "comment": "Split Lavender … Aquamarine"
+        },
+        {
+          "dmxRange": [90, 90],
+          "type": "ColorWheelIndex",
+          "index": 6,
           "colors": ["#00b593"],
           "comment": "Aquamarine"
         },
         {
-          "dmxRange": [98, 112],
+          "dmxRange": [91, 104],
           "type": "ColorWheelIndex",
-          "indexStart": 6.5,
-          "indexEnd": 7.5,
-          "colors": ["#bd2700"],
+          "indexStart": 6,
+          "indexEnd": 7,
+          "colorsStart": ["#00b593"],
+          "colorsEnd": ["#fc9713"],
+          "comment": "Split Aquamarine … Orange"
+        },
+        {
+          "dmxRange": [105, 105],
+          "type": "ColorWheelIndex",
+          "index": 7,
+          "colors": ["#fc9713"],
           "comment": "Orange"
+        },
+        {
+          "dmxRange": [98, 119],
+          "type": "ColorWheelIndex",
+          "indexStart": 7,
+          "indexEnd": 8,
+          "colorsStart": ["#fc9713"],
+          "colorsEnd": ["#001691"],
+          "comment": "Split Orange … Blue"
+        },
+        {
+          "dmxRange": [120, 120],
+          "type": "ColorWheelIndex",
+          "index": 8,
+          "colors": ["#001691"],
+          "comment": "Blue"
         },
         {
           "dmxRange": [113, 127],
           "type": "ColorWheelIndex",
-          "indexStart": 7.5,
-          "indexEnd": 8,
-          "colors": ["#490064"],
-          "comment": "Blue"
+          "indexStart": 8,
+          "indexEnd": 8.5,
+          "colorsStart": ["#001691"],
+          "colorsEnd": ["#001691", "#ffffff"],
+          "comment": "Split Blue … White"
         },
         {
-          "dmxRange": [128, 128],
+          "dmxRange": [128, 190],
           "type": "ColorWheelRotation",
           "speedStart": "-5rpm",
           "speedEnd": "0rpm",
-          "comment": "CCW;"
+          "helpWanted": "Can the color wheel rotate in both directions? The manual only mentions slow to fast rotation in the DMX range 128…255. These capabilities were imported from GDTF file and manually edited instead."
         },
         {
-          "dmxRange": [129, 254],
+          "dmxRange": [191, 192],
           "type": "ColorWheelRotation",
-          "speedStart": "0rpm",
-          "speedEnd": "0.16666666666666669rpm"
+          "speed": "stop"
         },
         {
-          "dmxRange": [255, 255],
+          "dmxRange": [193, 255],
           "type": "ColorWheelRotation",
           "speedStart": "5rpm",
-          "speedEnd": "0rpm",
-          "comment": "CW"
+          "speedEnd": "0rpm"
         }
       ]
     },
