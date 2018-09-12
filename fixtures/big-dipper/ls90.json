@@ -415,11 +415,25 @@
   },
   "modes": [
     {
-      "name": "LS90(zHeFs)",
-      "shortName": "LS90(zHeFs)",
-      "rdmPersonalityIndex": 1024,
+      "name": "16-channel",
+      "shortName": "16ch",
       "channels": [
-        "Dimmer"
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Strobe",
+        "Color Wheel",
+        "Glass Gobo",
+        "Glass Gobo Rotation",
+        "Glass Gobo Shake",
+        "Metal Gobo",
+        "Metal Gobo Shake",
+        "Focus",
+        "Prism",
+        "Pan/Tilt Speed",
+        "Pan fine",
+        "Tilt fine",
+        "Reset"
       ]
     }
   ]
