@@ -1,7 +1,7 @@
 const createPullRequest = require(`../../lib/create-github-pr.js`);
 const schemaProperties = require(`../../lib/schema-properties.js`);
 const { checkFixture } = require(`../../tests/fixture-valid.js`);
-const { Channel } = require(`../../lib/model.js`);
+const { CoarseChannel } = require(`../../lib/model.js`);
 
 /**
  * Takes the input from the fixture editor client side script and creates a pull request with the new fixture.
@@ -222,7 +222,7 @@ function addAvailableChannel(fixKey, availableChannels, chId) {
         channel.capabilities = capabilities;
       }
     }
-    else if (prop === `fineChannelAliases` && from.resolution > Channel.RESOLUTION_8BIT) {
+    else if (prop === `fineChannelAliases` && from.resolution > CoarseChannel.RESOLUTION_8BIT) {
       channel.fineChannelAliases = [];
     }
     else if (prop === `dmxValueResolution`) {
@@ -274,7 +274,7 @@ function getChannelKey(channel, fixKey) {
 }
 
 function getFineChannelAlias(channelKey, resolution) {
-  return `${channelKey} fine${resolution > Channel.RESOLUTION_16BIT ? `^${resolution - 1}` : ``}`;
+  return `${channelKey} fine${resolution > CoarseChannel.RESOLUTION_16BIT ? `^${resolution - 1}` : ``}`;
 }
 
 function getCapabilities(channel) {

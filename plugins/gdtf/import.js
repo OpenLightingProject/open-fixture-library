@@ -3,7 +3,7 @@ const JSZip = require(`jszip`);
 const promisify = require(`util`).promisify;
 
 const manufacturers = require(`../../fixtures/manufacturers.json`);
-const { Channel } = require(`../../lib/model.js`);
+const { CoarseChannel } = require(`../../lib/model.js`);
 const { scaleDmxValue, scaleDmxRangeIndividually } = require(`../../lib/scale-dmx-values.js`);
 const { gdtfAttributes, gdtfUnits } = require(`./gdtf-attributes.js`);
 const { followXmlNodeReference } = require(`./gdtf-helpers.js`);
@@ -296,14 +296,14 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
         delete channel.name;
       }
 
-      if (maxResolution === Channel.RESOLUTION_8BIT) {
+      if (maxResolution === CoarseChannel.RESOLUTION_8BIT) {
         delete channel.fineChannelAliases;
       }
       else {
-        // Channel.RESOLUTION_16BIT
+        // CoarseChannel.RESOLUTION_16BIT
         channel.fineChannelAliases.push(`${chKey} fine`);
 
-        for (let i = Channel.RESOLUTION_24BIT; i <= maxResolution; i++) {
+        for (let i = CoarseChannel.RESOLUTION_24BIT; i <= maxResolution; i++) {
           channel.fineChannelAliases.push(`${chKey} fine^${i - 1}`);
         }
       }
@@ -682,7 +682,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
      */
     function replaceGdtfDmxValuesWithNumbers() {
       const maxDmxValueResolution = getMaxDmxValueResolution();
-      const scaleToResolution = Math.max(Channel.RESOLUTION_8BIT, maxDmxValueResolution);
+      const scaleToResolution = Math.max(CoarseChannel.RESOLUTION_8BIT, maxDmxValueResolution);
 
       if (channel.defaultValue) {
         channel.defaultValue = scaleDmxValue(...channel.defaultValue, scaleToResolution);
@@ -1042,7 +1042,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
     }
 
     /**
-     * @param {!Channel} channel The OFL channel object.
+     * @param {!CoarseChannel} channel The OFL channel object.
      * @returns {!number} The fineness of the channel.
      */
     function getChannelResolution(channel) {
@@ -1054,7 +1054,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
         return channel.fineChannelAliases.length + 1;
       }
 
-      return Channel.RESOLUTION_8BIT;
+      return CoarseChannel.RESOLUTION_8BIT;
     }
   }
 };

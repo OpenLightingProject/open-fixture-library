@@ -64,9 +64,9 @@
         </template>
       </template>
 
-      <template v-if="(channel instanceof Channel)">
+      <template v-if="(channel instanceof CoarseChannel)">
         <app-labeled-value
-          v-if="resolutionInMode > Channel.RESOLUTION_8BIT"
+          v-if="resolutionInMode > CoarseChannel.RESOLUTION_8BIT"
           name="channel-fineChannelAliases"
           label="Fine channels">
           {{ channel.fineChannels.slice(0, resolutionInMode - 1).map(
@@ -155,7 +155,7 @@ import fixtureCapabilityTable from '~/components/fixture-capability-table.vue';
 import labeledValueVue from '~/components/labeled-value.vue';
 
 import AbstractChannel from '~~/lib/model/AbstractChannel.mjs';
-import Channel from '~~/lib/model/Channel.mjs';
+import CoarseChannel from '~~/lib/model/CoarseChannel.mjs';
 import FineChannel from '~~/lib/model/FineChannel.mjs';
 import Mode from '~~/lib/model/Mode.mjs';
 import NullChannel from '~~/lib/model/NullChannel.mjs';
@@ -187,7 +187,7 @@ export default {
   },
   data() {
     return {
-      Channel,
+      CoarseChannel,
       FineChannel,
       SwitchingChannel,
       fixture: this.mode.fixture

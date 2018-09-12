@@ -1,5 +1,5 @@
 const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
-const { Channel } = require(`../../lib/model.js`);
+const { CoarseChannel } = require(`../../lib/model.js`);
 
 module.exports.name = `Millumin`;
 module.exports.version = `0.3.0`;
@@ -95,7 +95,7 @@ function getDowngradedCategories(categories) {
  */
 function downgradeChannel(channelObject, channelKey) {
   const jsonChannel = channelObject[channelKey];
-  const channel = new Channel(channelKey, jsonChannel, null);
+  const channel = new CoarseChannel(channelKey, jsonChannel, null);
 
   const downgradedChannel = {};
 

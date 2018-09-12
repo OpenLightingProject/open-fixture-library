@@ -5,12 +5,11 @@ const sanitize = require(`sanitize-filename`);
 const {
   AbstractChannel,
   Capability,
-  Channel,
+  CoarseChannel,
   FineChannel,
   Fixture,
   Manufacturer,
   Matrix,
-  MatrixChannelReference,
   Meta,
   Mode,
   NullChannel,
@@ -74,7 +73,7 @@ module.exports.export = function exportQlcPlus(fixtures, options) {
 
 /**
  * @param {!object} xml The xmlbuilder <FixtureDefinition> object.
- * @param {!Channel} channel The OFL channel object.
+ * @param {!CoarseChannel} channel The OFL channel object.
  */
 function addChannel(xml, channel) {
   const xmlChannel = xml.element({
@@ -95,7 +94,7 @@ function addChannel(xml, channel) {
   let capabilities;
   if (channel instanceof FineChannel) {
     let capabilityName;
-    if (channel.resolution > Channel.RESOLUTION_16BIT) {
+    if (channel.resolution > CoarseChannel.RESOLUTION_16BIT) {
       xmlGroup.attribute(`Byte`, 0); // not a QLC+ fine channel
       capabilityName = `Fine^${channel.resolution - 1} adjustment for ${channel.coarseChannel.uniqueName}`;
     }
@@ -110,7 +109,7 @@ function addChannel(xml, channel) {
         dmxRange: [0, 255],
         type: `Generic`,
         comment: capabilityName
-      }, Channel.RESOLUTION_8BIT, channel)
+      }, CoarseChannel.RESOLUTION_8BIT, channel)
     ];
   }
   else {
@@ -137,7 +136,7 @@ function addChannel(xml, channel) {
  * @param {!Capability} cap The OFL capability object.
  */
 function addCapability(xmlChannel, cap) {
-  const dmxRange = cap.getDmxRangeWithResolution(Channel.RESOLUTION_8BIT);
+  const dmxRange = cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
 
   const xmlCapability = xmlChannel.element({
     Capability: {

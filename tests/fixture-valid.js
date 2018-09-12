@@ -8,7 +8,7 @@ const fixtureRedirectSchema = require(`../schemas/dereferenced/fixture-redirect.
 const schemaProperties = require(`../lib/schema-properties.js`);
 
 const {
-  Channel,
+  CoarseChannel,
   FineChannel,
   Fixture,
   SwitchingChannel
@@ -260,35 +260,35 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   function checkTemplateChannel(templateChannel) {
     checkTemplateVariables(templateChannel.name, [`$pixelKey`]);
 
-    for (const key of templateChannel.allTemplateKeys) {
-      checkTemplateVariables(key, [`$pixelKey`]);
+    for (const templateKey of templateChannel.allTemplateKeys) {
+      checkTemplateVariables(templateKey, [`$pixelKey`]);
 
-      const templateChannelUsed = fixture.matrixChannelReferences.some(
-        ref => ref.templateKey === key
+      const possibleMatrixChannelKeys = templateChannel.possibleMatrixChannelKeys.get(templateKey);
+
+      const templateChannelUsed = fixture.allChannelKeys.some(
+        chKey => possibleMatrixChannelKeys.includes(chKey)
       );
       if (!templateChannelUsed) {
-        result.warnings.push(`Template channel '${key}' is never used.`);
+        result.warnings.push(`Template channel '${templateKey}' is never used.`);
       }
-    }
 
-    for (const key of templateChannel.possibleResolvedChannelKeys.keys()) {
-      checkUniqueness(
-        possibleMatrixChKeys,
-        key,
-        result,
-        `Generated channel key ${key} can be produced by multiple template channels (test is not case-sensitive).`
-      );
+      for (const chKey of possibleMatrixChannelKeys) {
+        checkUniqueness(
+          possibleMatrixChKeys,
+          chKey,
+          result,
+          `Generated channel key ${chKey} can be produced by multiple template channels (test is not case-sensitive).`
+        );
+      }
     }
   }
 
   /**
-   * Check if availableChannels and generated matrixChannels are defined correctly.
-   * @param {!object} fixtureJson The fixture's JSON data
+   * Check if all channels are defined correctly.
    */
-  function checkChannels(fixtureJson) {
-    for (const channel of fixture.availableChannels) {
+  function checkChannels() {
+    for (const channel of fixture.coarseChannels) {
       // forbid coexistence of channels 'Red' and 'red'
-      // for template channels, this is checked by possibleMatrixChKeys
       checkUniqueness(
         definedChannelKeys,
         channel.key,
@@ -297,15 +297,11 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       );
       checkChannel(channel);
     }
-
-    fixture.matrixChannels.filter(
-      ch => ch instanceof Channel
-    ).forEach(checkChannel);
   }
 
   /**
    * Check that an available or template channel is valid.
-   * @param {!Channel} channel The channel to test.
+   * @param {!CoarseChannel} channel The channel to test.
    */
   function checkChannel(channel) {
     checkTemplateVariables(channel.key, []);

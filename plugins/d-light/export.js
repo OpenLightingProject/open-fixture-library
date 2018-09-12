@@ -2,7 +2,7 @@ const xmlbuilder = require(`xmlbuilder`);
 const sanitize = require(`sanitize-filename`);
 
 const {
-  Channel,
+  CoarseChannel,
   FineChannel,
   SwitchingChannel
 } = require(`../../lib/model.js`);
@@ -104,7 +104,7 @@ function addAttribute(xml, mode, attribute, channels) {
     channel = getUsableChannel(channel);
 
     let xmlCapabilities;
-    if (channel instanceof Channel) {
+    if (channel instanceof CoarseChannel) {
       const caps = channel.capabilities;
 
       xmlCapabilities = xmlChannel.element({
@@ -184,7 +184,7 @@ function getDefaultValue(channel) {
     return channel.defaultValue;
   }
 
-  return channel.getDefaultValueWithResolution(Channel.RESOLUTION_8BIT);
+  return channel.getDefaultValueWithResolution(CoarseChannel.RESOLUTION_8BIT);
 }
 
 /**
@@ -235,7 +235,7 @@ function getChannelsByAttribute(channels) {
    */
   function getChannelAttribute(channel) {
     if (channel instanceof FineChannel) {
-      if (channel.resolution === Channel.RESOLUTION_16BIT) {
+      if (channel.resolution === CoarseChannel.RESOLUTION_16BIT) {
         return `FINE`;
       }
       return `EXTRA`;

@@ -1,7 +1,7 @@
 const xmlbuilder = require(`xmlbuilder`);
 
 const {
-  Channel,
+  CoarseChannel,
   FineChannel,
   NullChannel,
   Physical,
@@ -137,7 +137,7 @@ function handleMode(xmlFixture, mode) {
 
     let fineChannelKey = null;
     if (channel instanceof FineChannel) {
-      if (channel.resolution === Channel.RESOLUTION_16BIT) {
+      if (channel.resolution === CoarseChannel.RESOLUTION_16BIT) {
         // ignore this channel, we handle it together with its coarse channel
         continue;
       }
@@ -149,11 +149,11 @@ function handleMode(xmlFixture, mode) {
 
     const dmxByte0 = dmxCount + 1;
     let dmxByte1 = 0;
-    let resolution = Channel.RESOLUTION_8BIT;
+    let resolution = CoarseChannel.RESOLUTION_8BIT;
 
     if (fineChannelKey === null && channel.fineChannelAliases.length > 0) {
       dmxByte1 = mode.getChannelIndex(channel.fineChannelAliases[0], `defaultOnly`) + 1;
-      resolution = Math.min(Channel.RESOLUTION_16BIT, channel.getResolutionInMode(mode, `defaultOnly`));
+      resolution = Math.min(CoarseChannel.RESOLUTION_16BIT, channel.getResolutionInMode(mode, `defaultOnly`));
     }
 
     const defaultValue = channel.getDefaultValueWithResolution(resolution);
@@ -194,7 +194,7 @@ function getFixtureComment(fixture) {
 }
 
 /**
- * @param {!Channel} channel The OFL channel object.
+ * @param {!CoarseChannel} channel The OFL channel object.
  * @returns {!string} The e:cue channel type for the channel.
  */
 function getChannelType(channel) {
@@ -230,7 +230,7 @@ function getChannelType(channel) {
 
 /**
  * @param {!object} xmlChannel The xmlbuilder <Channel*> object.
- * @param {!Channel} channel The OFL channel object.
+ * @param {!CoarseChannel} channel The OFL channel object.
  * @param {!number} resolution The resolution of the channel in the current mode.
  */
 function addCapabilities(xmlChannel, channel, resolution) {
