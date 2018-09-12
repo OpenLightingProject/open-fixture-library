@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LS90",
+  "shortName": "LS90",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["zhefskie"],
+    "createDate": "2018-09-12",
+    "lastModifyDate": "2018-09-12"
+  },
+  "links": {
+    "manual": [
+      "http://www.qlcplus.org/forum/viewtopic.php?t=12338"
+    ]
+  },
+  "rdm": {
+    "modelId": 1024,
+    "softwareVersion": "mini pearl"
+  },
+  "physical": {
+    "dimensions": [245, 235, 350],
+    "weight": 7.09,
+    "power": 150,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 8000,
+      "lumens": 4500
+    },
+    "lens": {
+      "name": "LS90",
+      "degreesMinMax": [360, 360]
+    },
+    "focus": {
+      "panMax": 540,
+      "tiltMax": 270
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "LS90(zHeFs)",
+      "shortName": "LS90(zHeFs)",
+      "rdmPersonalityIndex": 1024,
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
