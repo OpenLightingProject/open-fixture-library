@@ -21,19 +21,16 @@
   },
   "physical": {
     "dimensions": [245, 235, 350],
-    "weight": 7.09,
+    "weight": 7,
     "power": 150,
     "DMXconnector": "3-pin XLR IP65",
     "bulb": {
-      "type": "LED",
+      "type": "90W LED",
       "colorTemperature": 8000,
       "lumens": 4500
     },
-    "lens": {
-      "name": "LS90",
-      "degreesMinMax": [360, 360]
-    },
     "focus": {
+      "type": "Head",
       "panMax": 540,
       "tiltMax": 270
     }
