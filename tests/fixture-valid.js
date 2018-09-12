@@ -8,9 +8,9 @@ const fixtureRedirectSchema = require(`../schemas/dereferenced/fixture-redirect.
 const schemaProperties = require(`../lib/schema-properties.js`);
 
 const {
-  CoarseChannel,
   FineChannel,
   Fixture,
+  NullChannel,
   SwitchingChannel
 } = require(`../lib/model.js`);
 
@@ -288,14 +288,16 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
    */
   function checkChannels() {
     for (const channel of fixture.coarseChannels) {
-      // forbid coexistence of channels 'Red' and 'red'
-      checkUniqueness(
-        definedChannelKeys,
-        channel.key,
-        result,
-        `Channel key '${channel.key}' is already defined (maybe in another letter case).`
-      );
-      checkChannel(channel);
+      if (!(channel instanceof NullChannel)) {
+        // forbid coexistence of channels 'Red' and 'red'
+        checkUniqueness(
+          definedChannelKeys,
+          channel.key,
+          result,
+          `Channel key '${channel.key}' is already defined (maybe in another letter case).`
+        );
+        checkChannel(channel);
+      }
     }
   }
 
