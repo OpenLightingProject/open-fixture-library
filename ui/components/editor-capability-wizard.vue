@@ -246,7 +246,8 @@ export default {
     },
 
     /**
-     * @returns {!Array.<object>} Array of all capabilities (generated and inherited), combined with their source. @see getCapabilityWithSource
+     * @see {@link getCapabilityWithSource}
+     * @returns {!Array.<object>} Array of all capabilities (generated and inherited), combined with their source.
      */
     allCapabilities() {
       const inheritedCapabilities = this.capabilities.map(

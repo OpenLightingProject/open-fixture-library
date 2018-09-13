@@ -212,7 +212,7 @@ async function performTask(task) {
  */
 
 /**
- * @param {!object} diffOutput Output object from @see diffPluginOutputs.
+ * @param {!object} diffOutput Output object from {@link diffPluginOutputs}.
  * @returns {!ChangeFlags} Object with change flags.
  */
 function getChangeFlags(diffOutput) {

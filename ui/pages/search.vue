@@ -205,7 +205,7 @@ function getSanitizedQuery(query) {
 /**
  * Request search results from the backend.
  * @param {!object} axios The axios instance to use.
- * @param {!object} sanitizedQuery A query object like returned from @see getSanitizedQuery.
+ * @param {!object} sanitizedQuery A query object like returned from {@link getSanitizedQuery}.
  * @returns {!Promise} The request promise.
  */
 function getSearchResults(axios, sanitizedQuery) {
