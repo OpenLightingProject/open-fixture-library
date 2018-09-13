@@ -84,10 +84,10 @@ const gdtfUnits = {
 };
 
 /**
- * @param {!number} value1 The first physical value.
- * @param {?number} value2 The second physical value, or null.
- * @param {!function} predicate A function returning a boolean.
- * @returns {!boolean} True if all provided values fulfill the condition predicate.
+ * @param {number} value1 The first physical value.
+ * @param {number|null} value2 The second physical value, or null.
+ * @param {function} predicate A function returning a boolean.
+ * @returns {boolean} True if all provided values fulfill the condition predicate.
  */
 function physicalValuesFulfillCondition(value1, value2, predicate) {
   return predicate(value1) && (value2 === null || predicate(value2));
@@ -1547,7 +1547,7 @@ const gdtfAttributes = {
 };
 
 /**
- * @param {!object} gdtfCapability The enhanced <ChannelSet> XML object.
+ * @param {object} gdtfCapability The enhanced <ChannelSet> XML object.
  */
 function normalizeAngularSpeedDirection(gdtfCapability) {
   if (/CCW|counter[-\s]*clockwise/.test(gdtfCapability.$.Name)) {
@@ -1561,10 +1561,10 @@ function normalizeAngularSpeedDirection(gdtfCapability) {
 }
 
 /**
- * @param {!object} gdtfCapability The enhanced <ChannelSet> XML object.
- * @param {!string} primaryColor The color that this capability is most likely.
- * @param {!string} secondaryColor The color that this capability is second most likely.
- * @returns {!string} Either the primary, or the secondary color.
+ * @param {object} gdtfCapability The enhanced <ChannelSet> XML object.
+ * @param {string} primaryColor The color that this capability is most likely.
+ * @param {string} secondaryColor The color that this capability is second most likely.
+ * @returns {string} Either the primary, or the secondary color.
  */
 function guessColorComponentName(gdtfCapability, primaryColor, secondaryColor) {
   const name = (gdtfCapability._channelFunction._attribute.$.Pretty || ``).toLowerCase();
@@ -1585,7 +1585,7 @@ function guessColorComponentName(gdtfCapability, primaryColor, secondaryColor) {
 }
 
 /**
- * @param {!object} gdtfCapability The enhanced <ChannelSet> XML object.
+ * @param {object} gdtfCapability The enhanced <ChannelSet> XML object.
  * @returns {'speed'|'duration'} The OFL property to use for this capability.
  */
 function guessSpeedOrDuration(gdtfCapability) {

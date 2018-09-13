@@ -21,7 +21,7 @@ node cli/export-fixture.js -p <plugin> <fixture> [<more fixtures>]
 
 ## Exporting
 
-If exporting is supported, create a `plugins/<plugin-key>/export.js` module that provides the plugin name, version and a method that generates the needed third-party files out of an given array of fixtures. This method should return a Promise of an array of objects for each file that should be exported / downloadable; the files are zipped together automatically if necessary. A file object looks like this:
+If exporting is supported, create a `plugins/<plugin-key>/export.js` module that provides the plugin name, version and a method that generates the needed third-party files out of an given array of [Fixture](model-api.md#Fixture) objects. This method should return a Promise of an array of objects for each file that should be exported / downloadable; the files are zipped together automatically if necessary. A file object looks like this:
 
 ```js
 {
@@ -40,11 +40,11 @@ module.exports.name = `Plugin Name`;
 module.exports.version = `0.1.0`;  // semantic versioning of export plugin
 
 /**
- * @param {!Array.<Fixture>} fixtures An array of Fixture objects, see our fixture model
- * @param {!object} options Some global options, for example:
- * @param {!string} options.baseDir Absolute path to OFL's root directory
- * @param {?Date} options.date The current time (prefer this over new Date())
- * @returns {!Promise.<!Array.<object>, !Error>} All generated files (see file schema above)
+ * @param {array.<Fixture>} fixtures An array of Fixture objects, see our fixture model
+ * @param {object} options Some global options, for example:
+ * @param {string} options.baseDir Absolute path to OFL's root directory
+ * @param {Date|null} options.date The current time (prefer this over new Date())
+ * @returns {Promise.<array.<object>, Error>} All generated files (see file schema above)
 */
 module.exports.export = function exportPluginName(fixtures, options) {
   const outfiles = [];
@@ -96,11 +96,11 @@ module.exports.name = `Plugin Name`;
 module.exports.version = `0.1.0`;  // semantic versioning of import plugin
 
 /**
- * @param {!Buffer} buffer The imported file.
- * @param {!string} fileName The imported file's name.
- * @param {!string} authorName The importer's name.
- * @returns {!Promise.<!object, !Error>} A Promise resolving to an out object
- *                                       (see above) or rejects with an error.
+ * @param {Buffer} buffer The imported file.
+ * @param {string} fileName The imported file's name.
+ * @param {string} authorName The importer's name.
+ * @returns {Promise.<object, Error>} A Promise resolving to an out object
+ *                                    (see above) or rejects with an error.
 **/
 module.exports.import = function importPluginName(buffer, fileName, authorName) {
   const out = {
@@ -149,13 +149,13 @@ const xml2js = require(`xml2js`);
 const promisify = require(`util`).promisify;
 
 /**
- * @param {!object} exportFile The file returned by the plugins' export module.
- * @param {!string} exportFile.name File name, may include slashes to provide a folder structure.
- * @param {!string} exportFile.content File content.
- * @param {!string} exportFile.mimetype File mime type.
- * @param {?Array.<!Fixture>} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
- * @param {?string} exportFile.mode Mode's shortName if given file only describes a single mode.
- * @returns {!Promise.<undefined, !Array.<!string>|!string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
+ * @param {object} exportFile The file returned by the plugins' export module.
+ * @param {string} exportFile.name File name, may include slashes to provide a folder structure.
+ * @param {string} exportFile.content File content.
+ * @param {string} exportFile.mimetype File mime type.
+ * @param {array.<Fixture>|null} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @param {string|null} exportFile.mode Mode's shortName if given file only describes a single mode.
+ * @returns {Promise.<undefined, array.<string>|string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
 **/
 module.exports = function testValueCorrectness(exportFile) {
   const parser = new xml2js.Parser();

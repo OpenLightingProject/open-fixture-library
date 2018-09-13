@@ -371,7 +371,7 @@ export default {
     },
 
     /**
-     * @returns {!array.<!object>} Array of videos that can be embetted.
+     * @returns {array.<object>} Array of videos that can be embetted.
      */
     videos() {
       const videoUrls = this.fixture.getLinksOfType(`video`);
@@ -479,8 +479,8 @@ export default {
     },
     /**
      * Format a date to display as a <time> HTML tag.
-     * @param {!Date} date The Date object to format.
-     * @returns {!string} The <time> HTML tag.
+     * @param {Date} date The Date object to format.
+     * @returns {string} The <time> HTML tag.
      */
     getDateHtml(date) {
       return `<time datetime="${date.toISOString()}" title="${date.toISOString()}">${date.toISOString().replace(/T.*?$/, ``)}</time>`;

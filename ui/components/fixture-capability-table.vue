@@ -115,7 +115,7 @@ td, th {
 <script>
 import svg from '~/components/svg.vue';
 
-import Channel from '~~/lib/model/Channel.mjs';
+import CoarseChannel from '~~/lib/model/CoarseChannel.mjs';
 import Mode from '~~/lib/model/Mode.mjs';
 
 export default {
@@ -124,7 +124,7 @@ export default {
   },
   props: {
     channel: {
-      type: Channel,
+      type: CoarseChannel,
       required: true
     },
     mode: {
@@ -169,8 +169,8 @@ export default {
 };
 
 /**
- * @param {!Capability} capability The capability model object.
- * @returns {?string} A string describing the colors of this capability, or null if it has no colors.
+ * @param {Capability} capability The capability model object.
+ * @returns {string|null} A string describing the colors of this capability, or null if it has no colors.
  */
 function getColorDescription(capability) {
   if (capability.colors === null) {

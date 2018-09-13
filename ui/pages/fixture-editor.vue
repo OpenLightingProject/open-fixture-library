@@ -392,8 +392,8 @@ export default {
     },
 
     /**
-     * @param {!string} channelUuid The channel's UUID.
-     * @returns {!string} The channel's name.
+     * @param {string} channelUuid The channel's UUID.
+     * @returns {string} The channel's name.
      */
     getChannelName(channelUuid) {
       const channel = this.fixture.availableChannels[channelUuid];
@@ -411,8 +411,8 @@ export default {
     },
 
     /**
-     * @param {!string} channelUuid The channel's UUID.
-     * @returns {!boolean} True if the channel's name is not used in another channel, too.
+     * @param {string} channelUuid The channel's UUID.
+     * @returns {boolean} True if the channel's name is not used in another channel, too.
      */
     isChannelNameUnique(channelUuid) {
       const chName = this.getChannelName(channelUuid);
@@ -423,8 +423,8 @@ export default {
     },
 
     /**
-     * @param {!string} channelUuid The channel's UUID.
-     * @param {?string} [modeUuid] The mode's UUID. If not supplied, remove channel everywhere.
+     * @param {string} channelUuid The channel's UUID.
+     * @param {string|null} [modeUuid] The mode's UUID. If not supplied, remove channel everywhere.
      */
     removeChannel(channelUuid, modeUuid) {
       if (modeUuid) {
@@ -600,9 +600,9 @@ export default {
 };
 
 /**
- * @param {!object} prefillObject The object supplied in the page query.
- * @param {!string} key The key to check.
- * @returns {!boolean} True if the value prefillObject[key] is prefillable, false otherwise.
+ * @param {object} prefillObject The object supplied in the page query.
+ * @param {string} key The key to check.
+ * @returns {boolean} True if the value prefillObject[key] is prefillable, false otherwise.
  */
 function isPrefillable(prefillObject, key) {
   const allowedPrefillValues = {
