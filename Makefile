@@ -69,4 +69,4 @@ cli/make-dereferenced-schemas.js
 docs/model.md: \
 lib/model/*.mjs \
 jsdoc-config.json
-	$$(npm bin)/jsdoc2md --configure jsdoc-config.json --private --files lib/model/*.mjs > docs/model.md
+	$$(npm bin)/jsdoc2md --configure jsdoc-config.json --private --files lib/model/*.mjs > docs/model-api.md

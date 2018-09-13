@@ -2,7 +2,9 @@
 
 Instead of parsing [fixtures' JSON data](fixture-format.md) directly, it is recommended to use the model. We developed it to ease handling complicated fixture features like fine channels or switching channels.
 
-The model uses [ES2015 classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) in [ES2015 modules](https://nodejs.org/api/esm.html) to represent the fixtures. E.g., `fixtureFromRepository('cameo', 'nanospot-120')` returns a [`Fixture`](../lib/model/Fixture.mjs) object, instantiated with the specified fixture's data. These objects have several convenient properties that allow easy usage of the fixture data in [plugins](plugins.md), [UI](ui.md) and more.
+All model functions and classes are documented with [JSDoc](http://usejsdoc.org/). Those annotations are converted to Markdown with [jsdoc2md](https://github.com/jsdoc2md/jsdoc-to-markdown) to obtain an [API reference](model-api.md).
+
+The model uses [ES2015 classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) in [ES2015 modules](https://nodejs.org/api/esm.html) to represent the fixtures. E.g., `fixtureFromRepository('cameo', 'nanospot-120')` returns a [`Fixture`](model-api.md#Fixture) object, instantiated with the specified fixture's data. These objects have several convenient properties that allow easy usage of the fixture data in [plugins](plugins.md), [UI](ui.md) and more.
 
 All model classes are located in the [`lib/model/`](../lib/model) directory. When using the model, it usually suffices to import the `fixtureFromRepository` function from `model.js` which returns a `Fixture` instance:
 
@@ -68,5 +70,3 @@ export default class Fixture {
   // ...
 }
 ```
-
-*It is planned* to document all available classes with their properties and methods using [JSDoc](http://usejsdoc.org/). That's why JSDoc annotations are required for new properties/methods and should be gradually added to existing ones.
