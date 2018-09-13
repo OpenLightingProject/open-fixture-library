@@ -47,82 +47,81 @@
       "fineChannelAliases": ["Pan Fine"],
       "capability": {
         "type": "Pan",
-        "angleStart": "0%",
-        "angleEnd": "100%",
-        "comment": "540°"
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt Fine"],
       "capability": {
         "type": "Tilt",
-        "angleStart": "0%",
-        "angleEnd": "100%",
-        "comment": "270°"
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
       }
     },
     "Pan/Tilt speed": {
       "capability": {
         "type": "PanTiltSpeed",
-        "comment": "fast > slow"
+        "speedStart": "fast",
+        "speedEnd": "slow"
       }
     },
     "Strobe effect": {
       "capability": {
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
-        "comment": "slow > fast"
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     },
     "Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "Red intensity"
+        "color": "Red"
       }
     },
     "Green": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "Green  intensity"
+        "color": "Green"
       }
     },
     "Blue": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "Blue  intensity"
+        "color": "Blue"
       }
     },
     "White": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "comment": "White  intensity"
+        "color": "White"
       }
     },
-    "Mode": {
+    "Program": {
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "Maintenance",
+          "type": "NoFunction",
           "comment": "Manual control"
         },
         {
           "dmxRange": [1, 84],
-          "type": "Maintenance",
-          "comment": "Auto mode slow"
+          "type": "Effect",
+          "effectName": "Auto mode",
+          "speed": "slow"
         },
         {
           "dmxRange": [85, 169],
-          "type": "Maintenance",
-          "comment": "Auto mode fast"
+          "type": "Effect",
+          "effectName": "Auto mode",
+          "speed": "fast"
         },
         {
           "dmxRange": [170, 255],
-          "type": "Maintenance",
-          "comment": "Sound to light"
+          "type": "Effect",
+          "effectName": "Sound to light",
+          "soundControlled": true
         }
       ]
     },
@@ -134,44 +133,49 @@
         },
         {
           "dmxRange": [255, 255],
-          "type": "Maintenance"
+          "type": "Maintenance",
+          "comment": "Reset"
         }
       ]
     },
-    "Colour mode": {
+    "Color mode": {
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "ColorPreset",
-          "comment": "Intensity channels active"
+          "type": "NoFunction",
+          "comment": "Color intensity channels active"
         },
         {
           "dmxRange": [1, 255],
           "type": "ColorPreset",
-          "comment": "Rainbow Effect"
+          "comment": "Rainbow Effect",
+          "helpWanted": "Which colors can be selected at which DMX values?"
         }
       ]
     },
-    "Colour selection": {
+    "Color selection": {
       "capability": {
         "type": "ColorPreset",
-        "comment": "Rainbow Effect"
+        "comment": "Rainbow Effect",
+        "helpWanted": "Which colors can be selected at which DMX values?"
       }
     }
   },
   "modes": [
     {
-      "name": "5 Ch",
+      "name": "5-channel",
+      "shortName": "5ch",
       "channels": [
         "Pan",
         "Tilt",
         "Pan/Tilt speed",
         "Strobe effect",
-        "Colour selection"
+        "Color selection"
       ]
     },
     {
-      "name": "13 Ch",
+      "name": "13-channel",
+      "shortName": "13ch",
       "channels": [
         "Pan",
         "Pan Fine",
@@ -183,8 +187,8 @@
         "Green",
         "Blue",
         "White",
-        "Colour mode",
-        "Mode",
+        "Color mode",
+        "Program",
         "Reset"
       ]
     }
