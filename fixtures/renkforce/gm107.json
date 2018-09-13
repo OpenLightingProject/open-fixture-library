@@ -1,0 +1,183 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "GM107",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Edgar Aichinger"],
+    "createDate": "2018-09-13",
+    "lastModifyDate": "2018-09-13",
+    "importPlugin": {
+      "plugin": "qlcplus_4.11.2",
+      "date": "2018-09-13",
+      "comment": "created by Q Light Controller Plus (version 4.11.1 GIT)"
+    }
+  },
+  "physical": {
+    "dimensions": [180, 243, 180],
+    "weight": 1,
+    "power": 70,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 4500
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [30, 30]
+    },
+    "focus": {
+      "type": "Fixed",
+      "panMax": 540,
+      "tiltMax": 180
+    }
+  },
+  "matrix": {},
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan Fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "comment": "540°"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt Fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "comment": "270°"
+      }
+    },
+    "Pan/Tilt speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "comment": "fast > slow"
+      }
+    },
+    "Strobe effect": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "comment": "slow > fast"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red intensity"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green  intensity"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue  intensity"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White  intensity"
+      }
+    },
+    "Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Maintenance",
+          "comment": "Manual control"
+        },
+        {
+          "dmxRange": [1, 84],
+          "type": "Maintenance",
+          "comment": "Auto mode slow"
+        },
+        {
+          "dmxRange": [85, 169],
+          "type": "Maintenance",
+          "comment": "Auto mode fast"
+        },
+        {
+          "dmxRange": [170, 255],
+          "type": "Maintenance",
+          "comment": "Sound to light"
+        }
+      ]
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 254],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Maintenance"
+        }
+      ]
+    },
+    "Colour mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorPreset",
+          "comment": "Intensity channels active"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorPreset",
+          "comment": "Rainbow Effect"
+        }
+      ]
+    },
+    "Colour selection": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Rainbow Effect"
+      }
+    }
+  },
+  "templateChannels": {},
+  "modes": [
+    {
+      "name": "5 Ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt speed",
+        "Strobe effect",
+        "Colour selection"
+      ]
+    },
+    {
+      "name": "13 Ch",
+      "channels": [
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "Pan/Tilt speed",
+        "Strobe effect",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Colour mode",
+        "Mode",
+        "Reset"
+      ]
+    }
+  ]
+}
