@@ -21,10 +21,10 @@ const redirectSchemaValidate = ajv.compile(fixtureRedirectSchema);
 
 /**
  * Checks that a given fixture JSON object is valid.
- * @param {!string} manKey The manufacturer key.
- * @param {!string} fixKey The fixture key.
- * @param {?object} fixtureJson The fixture JSON object.
- * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
+ * @param {string} manKey The manufacturer key.
+ * @param {string} fixKey The fixture key.
+ * @param {object|null} fixtureJson The fixture JSON object.
+ * @param {UniqueValues|null} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
  * @returns {ResultData} The result object containing errors and warnings, if any.
  */
 function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
@@ -118,7 +118,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   /**
    * Checks that fixture key, name and shortName are unique.
-   * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
+   * @param {UniqueValues|null} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
    */
   function checkFixIdentifierUniqueness(uniqueValues = null) {
     // test is called for a single fixture, e.g. when importing
@@ -161,7 +161,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   /**
    * Check that a fixture's meta block is valid.
-   * @param {!Meta} meta The fixture's Meta object.
+   * @param {Meta} meta The fixture's Meta object.
    */
   function checkMeta(meta) {
     if (meta.lastModifyDate < meta.createDate) {
@@ -175,8 +175,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   /**
    * Checks if the given Physical object is valid.
-   * @param {?Physical} physical A fixture's or a mode's physical data.
-   * @param {!string} [modeDescription=''] Optional information in error messages about current mode.
+   * @param {Physical|null} physical A fixture's or a mode's physical data.
+   * @param {string} [modeDescription=''] Optional information in error messages about current mode.
    */
   function checkPhysical(physical, modeDescription = ``) {
     if (physical === null) {
@@ -194,7 +194,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   /**
    * Checks if the given Matrix object is valid.
-   * @param {?Matrix} matrix A fixture's matrix data.
+   * @param {Matrix|null} matrix A fixture's matrix data.
    */
   function checkMatrix(matrix) {
     if (matrix === null) {
@@ -243,7 +243,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   /**
    * Check if templateChannels are defined correctly. Does not check the channel data itself.
-   * @param {!object} fixtureJson The fixture's JSON data
+   * @param {object} fixtureJson The fixture's JSON data
    */
   function checkTemplateChannels(fixtureJson) {
     if (fixtureJson.templateChannels) {
@@ -255,7 +255,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   /**
    * Check if the templateChannel is defined correctly. Does not check the channel data itself.
-   * @param {!TemplateChannel} templateChannel The templateChannel to examine.
+   * @param {TemplateChannel} templateChannel The templateChannel to examine.
    */
   function checkTemplateChannel(templateChannel) {
     checkTemplateVariables(templateChannel.name, [`$pixelKey`]);
@@ -303,7 +303,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   /**
    * Check that an available or template channel is valid.
-   * @param {!CoarseChannel} channel The channel to test.
+   * @param {CoarseChannel} channel The channel to test.
    */
   function checkChannel(channel) {
     checkTemplateVariables(channel.key, []);
@@ -376,7 +376,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
       /**
        * Check that a capability's range is valid.
-       * @param {!number} capNumber The number of the capability in the channel, starting with 0.
+       * @param {number} capNumber The number of the capability in the channel, starting with 0.
        * @returns {boolean} True if the range is valid, false otherwise. The global `result` object is updated then.
        */
       function checkDmxRange(capNumber) {
@@ -390,7 +390,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
         /**
          * Checks that the first capability's DMX range starts with 0.
-         * @returns {!boolean} True if this is not the first capability or it starts with 0, false otherwise.
+         * @returns {boolean} True if this is not the first capability or it starts with 0, false otherwise.
          */
         function checkFirstCapabilityRangeStart() {
           if (capNumber === 0 && cap.rawDmxRange.start !== 0) {
@@ -402,7 +402,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         }
 
         /**
-         * @returns {!boolean} True if this capability's DMX range is valid, i.e. the end is greater than or equal to the start, false otherwise.
+         * @returns {boolean} True if this capability's DMX range is valid, i.e. the end is greater than or equal to the start, false otherwise.
          */
         function checkRangeValid() {
           if (cap.rawDmxRange.start > cap.rawDmxRange.end) {
@@ -414,7 +414,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         }
 
         /**
-         * @returns {!boolean} True if this capability's DMX range start is adjacent to the previous capability's DMX range end, false otherwise.
+         * @returns {boolean} True if this capability's DMX range start is adjacent to the previous capability's DMX range end, false otherwise.
          */
         function checkRangesAdjacent() {
           if (capNumber > 0) {
@@ -431,7 +431,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
         /**
          * Checks that the last capability's DMX range is one of the allowed values, e.g. 255 or 65535 for 16bit channels.
-         * @returns {!boolean} True if this is not the last capability or it ends with an allowed value, false otherwise.
+         * @returns {boolean} True if this is not the last capability or it ends with an allowed value, false otherwise.
          */
         function checkLastCapabilityRangeEnd() {
           if (capNumber === channel.capabilities.length - 1) {
@@ -447,8 +447,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
       /**
        * Check that a capability is valid (except its DMX range).
-       * @param {!Capability} cap The capability to check.
-       * @param {!string} errorPrefix An identifier for the capability to use in errors and warnings.
+       * @param {Capability} cap The capability to check.
+       * @param {string} errorPrefix An identifier for the capability to use in errors and warnings.
        */
       function checkCapability(cap, errorPrefix) {
         const switchingChannelAliases = Object.keys(cap.switchChannels);
@@ -577,7 +577,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   /**
    * Check that a mode is valid.
-   * @param {!Mode} mode The mode to check.
+   * @param {Mode} mode The mode to check.
    */
   function checkMode(mode) {
     checkUniqueness(
@@ -617,7 +617,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
     /**
      * Checks if the given complex channel insert block is valid.
-     * @param {!object} insertBlock The raw JSON data of the insert block.
+     * @param {object} insertBlock The raw JSON data of the insert block.
      */
     function checkChannelInsertBlock(insertBlock) {
       if (insertBlock.insert === `matrixChannels`) {
@@ -627,11 +627,11 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
       /**
        * Checks the given matrix channel insert.
-       * @param {!object} matrixInsertBlock The matrix channel reference specified in the mode's json channel list.
+       * @param {object} matrixInsertBlock The matrix channel reference specified in the mode's json channel list.
        * @param {'matrixChannels'} matrixInsertBlock.insert Indicates that this is a matrix insert.
        * @param {'eachPixel'|'eachPixelGroup'|string[]} matrixInsertBlock.repeatFor The pixelKeys or pixelGroupKeys for which the specified channels should be repeated.
        * @param {'perPixel'|'perChannel'} matrixInsertBlock.channelOrder Order the channels like RGB1/RGB2/RGB3 or R123/G123/B123.
-       * @param {!Array.<string, null>} matrixInsertBlock.templateChannels The template channel keys (and aliases) or null channels to be repeated.
+       * @param {Array.<string, null>} matrixInsertBlock.templateChannels The template channel keys (and aliases) or null channels to be repeated.
        */
       function checkMatrixInsertBlock(matrixInsertBlock) {
         checkMatrixInsertBlockRepeatFor();
@@ -688,7 +688,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
     /**
      * Check that a channel reference in a mode is valid.
-     * @param {!number} chIndex The mode's channel index.
+     * @param {number} chIndex The mode's channel index.
      */
     function checkModeChannelKey(chIndex) {
       const chKey = mode.channelKeys[chIndex];
@@ -753,7 +753,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         /**
          * Check all switched channels in the switching channels against another channel
          * for duplicate channel usage (either directly or in another switching channel).
-         * @param {!AbstractChannel} otherChannel The channel that should be checked against.
+         * @param {AbstractChannel} otherChannel The channel that should be checked against.
          */
         function checkSwitchingChannelReferenceDuplicate(otherChannel) {
           if (channel.switchToChannels.includes(otherChannel)) {
@@ -794,7 +794,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
       /**
        * Check that all coarser channels of the given fine channel are present in the current mode.
-       * @param {!FineChannel} fineChannel The fine channel to check.
+       * @param {FineChannel} fineChannel The fine channel to check.
        */
       function checkCoarserChannelsInMode(fineChannel) {
         const coarseChannel = fineChannel.coarseChannel;
@@ -906,14 +906,14 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
 
     /**
-     * @returns {!boolean} Whether the 'Color Changer' category is suggested.
+     * @returns {boolean} Whether the 'Color Changer' category is suggested.
     */
     function isColorChanger() {
       return hasCapabilityOfType(`ColorPreset`) || hasCapabilityOfType(`ColorWheelIndex`) || hasCapabilityOfType(`ColorIntensity`, 2);
     }
 
     /**
-     * @returns {!boolean} Whether the 'Moving Head' category is suggested.
+     * @returns {boolean} Whether the 'Moving Head' category is suggested.
     */
     function isMovingHead() {
       const hasFocusTypeHead = fixture.physical !== null && fixture.physical.focusType === `Head`;
@@ -923,14 +923,14 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
 
     /**
-     * @returns {!boolean} Whether the 'Moving Head' category is invalid.
+     * @returns {boolean} Whether the 'Moving Head' category is invalid.
     */
     function isNotMovingHead() {
       return fixture.physical === null || fixture.physical.focusType !== `Head`;
     }
 
     /**
-     * @returns {!boolean} Whether the 'Scanner' category is suggested.
+     * @returns {boolean} Whether the 'Scanner' category is suggested.
     */
     function isScanner() {
       const hasFocusTypeMirror = fixture.physical !== null && fixture.physical.focusType === `Mirror`;
@@ -940,14 +940,14 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
 
     /**
-     * @returns {!boolean} Whether the 'Scanner' category is invalid.
+     * @returns {boolean} Whether the 'Scanner' category is invalid.
     */
     function isNotScanner() {
       return fixture.physical === null || fixture.physical.focusType !== `Mirror`;
     }
 
     /**
-     * @returns {!boolean} Whether the fixture has both a Pan / PanContinuous and a Tilt / TiltContinuous channel.
+     * @returns {boolean} Whether the fixture has both a Pan / PanContinuous and a Tilt / TiltContinuous channel.
      */
     function hasPanTiltChannels() {
       const hasPan = hasCapabilityOfType(`Pan`) || hasCapabilityOfType(`PanContinuous`);
@@ -956,9 +956,9 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
 
     /**
-     * @param {!string} type What capability type to search for.
-     * @param {!number} [minimum=1] How many occurrences are needed to succeed.
-     * @returns {!boolean} Whether the given capability type occurs at least at the given minimum times in the fixture.
+     * @param {string} type What capability type to search for.
+     * @param {number} [minimum=1] How many occurrences are needed to succeed.
+     * @returns {boolean} Whether the given capability type occurs at least at the given minimum times in the fixture.
      */
     function hasCapabilityOfType(type, minimum = 1) {
       return fixture.capabilities.filter(
@@ -967,9 +967,9 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
 
     /**
-     * @param {!string} property The property name of the capability's json data.
-     * @param {!string} value The property value to search for.
-     * @returns {!boolean} Whether the given capability property/value pair occurs in the fixture.
+     * @param {string} property The property name of the capability's json data.
+     * @param {string} value The property value to search for.
+     * @returns {boolean} Whether the given capability property/value pair occurs in the fixture.
      */
     function hasCapabilityPropertyValue(property, value) {
       return fixture.capabilities.some(
@@ -978,14 +978,14 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
 
     /**
-     * @returns {!boolean} True if it can't be a matrix.
+     * @returns {boolean} True if it can't be a matrix.
      */
     function isNotMatrix() {
       return fixture.matrix === null || fixture.matrix.definedAxes.length < 2;
     }
 
     /**
-     * @returns {!boolean} True if a matrix with only one axis, which has more than 4 pixels, is defined.
+     * @returns {boolean} True if a matrix with only one axis, which has more than 4 pixels, is defined.
      */
     function isPixelBar() {
       const mutualExclusiveCategories = [`Flower`, `Stand`];
@@ -1004,7 +1004,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
 
     /**
-     * @returns {!boolean} True if it can't be a pixel bar.
+     * @returns {boolean} True if it can't be a pixel bar.
      */
     function isNotPixelBar() {
       return fixture.matrix === null || fixture.matrix.definedAxes.length > 1;
@@ -1013,8 +1013,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   /**
    * Checks if everything regarding this fixture's RDM data is correct.
-   * @param {!string} manKey The manufacturer key.
-   * @param {?UniqueValues} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
+   * @param {string} manKey The manufacturer key.
+   * @param {UniqueValues|null} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
    */
   function checkRdm(manKey, uniqueValues = null) {
     if (fixture.rdm === null || uniqueValues === null) {
@@ -1051,8 +1051,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   /**
    * Checks whether the specified string contains all allowed and no disallowed variables and pushes an error on wrong variable usage.
-   * @param {!string} str The string to be checked.
-   * @param {!Array.<string>} allowedVariables Variables that must be included in the string; all other variables are forbidden. Specify them with leading dollar sign ($var).
+   * @param {string} str The string to be checked.
+   * @param {Array.<string>} allowedVariables Variables that must be included in the string; all other variables are forbidden. Specify them with leading dollar sign ($var).
    */
   function checkTemplateVariables(str, allowedVariables) {
     const usedVariables = str.match(/\$\w+/g) || [];
@@ -1071,10 +1071,10 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
 /**
  * If the Set already contains the given value, add an error. Test is not case-sensitive.
- * @param {!Set<string>} set The Set in which all unique values are stored.
- * @param {!string} value The string value to examine.
- * @param {!ResultData} result The object to add the error message to (if any).
- * @param {!string} messageIfNotUnique If the value is not unique, add this message to errors.
+ * @param {Set<string>} set The Set in which all unique values are stored.
+ * @param {string} value The string value to examine.
+ * @param {ResultData} result The object to add the error message to (if any).
+ * @param {string} messageIfNotUnique If the value is not unique, add this message to errors.
  */
 function checkUniqueness(set, value, result, messageIfNotUnique) {
   if (set.has(value.toLowerCase())) {
@@ -1085,18 +1085,18 @@ function checkUniqueness(set, value, result, messageIfNotUnique) {
 
 
 /**
- * @param {!string} description The error message.
+ * @param {string} description The error message.
  * @param {any} error An error object to append to the message.
- * @returns {!string} A string containing the message and a deep inspection of the given error object.
+ * @returns {string} A string containing the message and a deep inspection of the given error object.
  */
 function getErrorString(description, error) {
   return `${description} ${util.inspect(error, false, null)}`;
 }
 
 /**
- * @param {?array} a An array.
- * @param {?array} b Another array.
- * @returns {!boolean} True if both arrays are equal, false if they are null or not equal.
+ * @param {array|null} a An array.
+ * @param {array|null} b Another array.
+ * @returns {boolean} True if both arrays are equal, false if they are null or not equal.
  */
 function arraysEqual(a, b) {
   if (a === b) {

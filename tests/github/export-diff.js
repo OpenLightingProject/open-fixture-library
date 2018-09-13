@@ -58,7 +58,7 @@ pullRequest.checkEnv()
     return tasks;
 
     /**
-     * @returns {!Array.<Task>} What export diff tasks have to be done due to changes in the model. May be empty.
+     * @returns {Array.<Task>} What export diff tasks have to be done due to changes in the model. May be empty.
      */
     function getTasksForModel() {
       let tasks = [];
@@ -80,7 +80,7 @@ pullRequest.checkEnv()
     }
 
     /**
-     * @returns {!Array.<Task>} What export diff tasks have to be done due to changes in plugins. May be empty.
+     * @returns {Array.<Task>} What export diff tasks have to be done due to changes in plugins. May be empty.
      */
     function getTasksForPlugins() {
       let tasks = [];
@@ -98,7 +98,7 @@ pullRequest.checkEnv()
     }
 
     /**
-     * @returns {!Array.<Task>} What export diff tasks have to be done due to changes in fixtures. May be empty.
+     * @returns {Array.<Task>} What export diff tasks have to be done due to changes in fixtures. May be empty.
      */
     function getTasksForFixtures() {
       let tasks = [];
@@ -156,8 +156,8 @@ pullRequest.checkEnv()
 
 
 /**
- * @param {!Task} task The export diff task to fulfill.
- * @returns {!Promise.<!Array.<string>>} An array of message lines.
+ * @param {Task} task The export diff task to fulfill.
+ * @returns {Promise.<Array.<string>>} An array of message lines.
  */
 async function performTask(task) {
   const output = await diffPluginOutputs(task.pluginKey, process.env.TRAVIS_BRANCH, [task.manFix]);
@@ -204,16 +204,16 @@ async function performTask(task) {
 
 /**
  * @typedef ChangeFlags
- * @type !object
- * @property {!boolean} hasRemoved Whether any files were removed.
- * @property {!boolean} hasAdded Whether any files were added.
- * @property {!boolean} hasChanged Whether any files were changed.
- * @property {!boolean} nothingChanged Whether changed at all.
+ * @type object
+ * @property {boolean} hasRemoved Whether any files were removed.
+ * @property {boolean} hasAdded Whether any files were added.
+ * @property {boolean} hasChanged Whether any files were changed.
+ * @property {boolean} nothingChanged Whether changed at all.
  */
 
 /**
- * @param {!object} diffOutput Output object from {@link diffPluginOutputs}.
- * @returns {!ChangeFlags} Object with change flags.
+ * @param {object} diffOutput Output object from {@link diffPluginOutputs}.
+ * @returns {ChangeFlags} Object with change flags.
  */
 function getChangeFlags(diffOutput) {
   const hasRemoved = diffOutput.removedFiles.length > 0;
@@ -229,8 +229,8 @@ function getChangeFlags(diffOutput) {
 }
 
 /**
- * @param {!ChangeFlags} changeFlags Object with flags that tell what changed.
- * @returns {!string} String containing a GitHub emoji depicting the changes.
+ * @param {ChangeFlags} changeFlags Object with flags that tell what changed.
+ * @returns {string} String containing a GitHub emoji depicting the changes.
  */
 function getEmoji(changeFlags) {
   if (changeFlags.nothingChanged) {

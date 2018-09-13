@@ -8,11 +8,11 @@ module.exports.version = `0.3.0`;
 module.exports.supportedOflVersion = `7.3.0`;
 
 /**
- * @param {!Array.<Fixture>} fixtures An array of Fixture objects.
- * @param {!object} options Global options, including:
- * @param {!string} options.baseDir Absolute path to OFL's root directory.
- * @param {?Date} options.date The current time.
- * @returns {!Promise.<!Array.<object>, !Error>} The generated files.
+ * @param {Array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {object} options Global options, including:
+ * @param {string} options.baseDir Absolute path to OFL's root directory.
+ * @param {Date|null} options.date The current time.
+ * @returns {Promise.<Array.<object>, Error>} The generated files.
 */
 module.exports.export = function exportMillumin(fixtures, options) {
   // one JSON file for each fixture
@@ -71,8 +71,8 @@ module.exports.export = function exportMillumin(fixtures, options) {
 /**
  * Replaces the fixture's categories array with one that only includes categories
  * from OFL schema version 7.3.0.
- * @param {!array.<!string>} categories The fixture's categories array.
- * @returns {!array.<!string>} A filtered categories array.
+ * @param {array.<string>} categories The fixture's categories array.
+ * @returns {array.<string>} A filtered categories array.
  */
 function getDowngradedCategories(categories) {
   const addedCategories = [`Pixel Bar`, `Stand`];
@@ -90,8 +90,8 @@ function getDowngradedCategories(categories) {
 
 /**
  * Replaces the specified channel in the specified channels object with a downgraded version for schema 7.1.0.
- * @param {!object} channelObject Either availableChannels or templateChannels.
- * @param {!string} channelKey A key that exists in given channelObject and specifies the channel that should be downgraded.
+ * @param {object} channelObject Either availableChannels or templateChannels.
+ * @param {string} channelKey A key that exists in given channelObject and specifies the channel that should be downgraded.
  */
 function downgradeChannel(channelObject, channelKey) {
   const jsonChannel = channelObject[channelKey];
@@ -137,7 +137,7 @@ function downgradeChannel(channelObject, channelKey) {
   }
 
   /**
-   * @returns {!boolean} Whether or not it is needed to include capabilities in a downgraded version of this channel
+   * @returns {boolean} Whether or not it is needed to include capabilities in a downgraded version of this channel
    */
   function capabilitiesNeeded() {
     const trivialCapabilityTypes = [`Intensity`, `ColorIntensity`, `Pan`, `Tilt`, `NoFunction`];
@@ -152,8 +152,8 @@ function downgradeChannel(channelObject, channelKey) {
 /**
  * Saves the given data (or value, if given) into obj[property] if data is valid,
  * i.e. it is neither undefined, nor null, nor false.
- * @param {!object} obj The object where the property should be created.
- * @param {!string} property The name of the property added to obj.
+ * @param {object} obj The object where the property should be created.
+ * @param {string} property The name of the property added to obj.
  * @param {*} data If this is valid, the property is added to obj.
  * @param {*} [value=undefined] The property value, if data is valid. Defaults to data.
  */

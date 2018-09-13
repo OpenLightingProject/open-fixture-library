@@ -104,8 +104,8 @@ pullRequest.checkEnv()
 
 
 /**
- * @param {!object} changedComponents What components have been changed in this PR.
- * @returns {!Array.<Task>} What export valid tasks have to be done due to changes in the model. May be empty.
+ * @param {object} changedComponents What components have been changed in this PR.
+ * @returns {Array.<Task>} What export valid tasks have to be done due to changes in the model. May be empty.
  */
 function getTasksForModel(changedComponents) {
   let tasks = [];
@@ -129,8 +129,8 @@ function getTasksForModel(changedComponents) {
 }
 
 /**
- * @param {!object} changedComponents What components have been changed in this PR.
- * @returns {!Array.<Task>} What export valid tasks have to be done due to changes in plugins. May be empty.
+ * @param {object} changedComponents What components have been changed in this PR.
+ * @returns {Array.<Task>} What export valid tasks have to be done due to changes in plugins. May be empty.
  */
 function getTasksForPlugins(changedComponents) {
   let tasks = [];
@@ -154,8 +154,8 @@ function getTasksForPlugins(changedComponents) {
 }
 
 /**
- * @param {!object} changedComponents What components have been changed in this PR.
- * @returns {!Array.<Task>} What export valid tasks have to be done due to changes in export tests. May be empty.
+ * @param {object} changedComponents What components have been changed in this PR.
+ * @returns {Array.<Task>} What export valid tasks have to be done due to changes in export tests. May be empty.
  */
 function getTasksForExportTests(changedComponents) {
   let tasks = [];
@@ -175,8 +175,8 @@ function getTasksForExportTests(changedComponents) {
 }
 
 /**
- * @param {!object} changedComponents What components have been changed in this PR.
- * @returns {!Array.<Task>} What export valid tasks have to be done due to changes in fixtures. May be empty.
+ * @param {object} changedComponents What components have been changed in this PR.
+ * @returns {Array.<Task>} What export valid tasks have to be done due to changes in fixtures. May be empty.
  */
 function getTasksForFixtures(changedComponents) {
   let tasks = [];

@@ -21,7 +21,7 @@ let repoName;
 
 /**
  * Checks if the environment variables for GitHub operations are correct.
- * @returns {!Promise} Rejects an error message if the environment is not correct.
+ * @returns {Promise} Rejects an error message if the environment is not correct.
  */
 module.exports.checkEnv = function checkEnv() {
   return new Promise((resolve, reject) => {
@@ -165,11 +165,11 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
 /**
  * Creates a new comment in the PR if test.lines is not empty and if there is not already an exactly equal comment.
  * Deletes old comments from the same test (determined by test.filename).
- * @param {!object} test Information about the test script that wants to update the comment.
- * @param {!string} test.filename Relative path from OFL root dir to test file: 'tests/github/test-file-name.js'
- * @param {!string} test.name Heading to be used in the comment
- * @param {!Array.<string>} test.lines The comment's lines of text
- * @returns {!Promise} A Promise that is fulfilled as soon as all GitHub operations have finished
+ * @param {object} test Information about the test script that wants to update the comment.
+ * @param {string} test.filename Relative path from OFL root dir to test file: 'tests/github/test-file-name.js'
+ * @param {string} test.name Heading to be used in the comment
+ * @param {Array.<string>} test.lines The comment's lines of text
+ * @returns {Promise} A Promise that is fulfilled as soon as all GitHub operations have finished
  */
 module.exports.updateComment = function updateComment(test) {
   let lines = [

@@ -169,8 +169,8 @@ export default {
 };
 
 /**
- * @param {!Capability} capability The capability model object.
- * @returns {?string} A string describing the colors of this capability, or null if it has no colors.
+ * @param {Capability} capability The capability model object.
+ * @returns {string|null} A string describing the colors of this capability, or null if it has no colors.
  */
 function getColorDescription(capability) {
   if (capability.colors === null) {

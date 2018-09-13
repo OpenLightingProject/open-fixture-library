@@ -18,8 +18,8 @@ export default {
   },
   methods: {
     /**
-     * @param {!AbstractChannel} channel The channel to get an icon for.
-     * @returns {!object} Object containing the props to pass to <app-svg />
+     * @param {AbstractChannel} channel The channel to get an icon for.
+     * @returns {object} Object containing the props to pass to <app-svg />
      */
     getIconProps(channel) {
       if (channel instanceof NullChannel) {

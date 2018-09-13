@@ -11,11 +11,11 @@ module.exports.name = `D::Light`;
 module.exports.version = `0.1.0`;
 
 /**
- * @param {!Array.<Fixture>} fixtures An array of Fixture objects.
- * @param {!object} options Global options, including:
- * @param {!string} options.baseDir Absolute path to OFL's root directory.
- * @param {?Date} options.date The current time.
- * @returns {!Promise.<!Array.<object>, !Error>} The generated files.
+ * @param {Array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {object} options Global options, including:
+ * @param {string} options.baseDir Absolute path to OFL's root directory.
+ * @param {Date|null} options.date The current time.
+ * @returns {Promise.<Array.<object>, Error>} The generated files.
 */
 module.exports.export = function exportDLight(fixtures, options) {
   const deviceFiles = [];
@@ -66,10 +66,10 @@ module.exports.export = function exportDLight(fixtures, options) {
 /**
  * Channels are grouped in attributes in D::Light.
  * This function adds the given attribute group along with its channels to the given XML.
- * @param {!XMLElement} xml The XML parent element.
- * @param {!Mode} mode The fixture's mode that this definition is representing.
- * @param {!string} attribute A D::Light attribute name.
- * @param {!Array.<AbstractChannel>} channels All channels of the mode that are associated to the given attribute name.
+ * @param {XMLElement} xml The XML parent element.
+ * @param {Mode} mode The fixture's mode that this definition is representing.
+ * @param {string} attribute A D::Light attribute name.
+ * @param {Array.<AbstractChannel>} channels All channels of the mode that are associated to the given attribute name.
  */
 function addAttribute(xml, mode, attribute, channels) {
   const xmlAttribute = xml.element({
@@ -118,7 +118,7 @@ function addAttribute(xml, mode, attribute, channels) {
 
     /**
      * Adds an XML element for the given capability to the XML capability container.
-     * @param {!Capability} cap A capability of a channels capability list.
+     * @param {Capability} cap A capability of a channels capability list.
      */
     function addCapability(cap) {
       let hold = `0`;
@@ -147,7 +147,7 @@ function addAttribute(xml, mode, attribute, channels) {
 
   /**
    * @param {AbstractChannel} channel Any kind of channel, e.g. an item of a mode's channel list.
-   * @returns {!string} The parameter name (i. e. channel name) that should be used for this channel in D::Light.
+   * @returns {string} The parameter name (i. e. channel name) that should be used for this channel in D::Light.
    */
   function getParameterName(channel) {
     const uniqueName = channel.uniqueName;
@@ -177,7 +177,7 @@ function addAttribute(xml, mode, attribute, channels) {
 
 /**
  * @param {Channel|FineChannel} channel A usable channel, i. e. no matrix or switching channels.
- * @returns {!number} The DMX value this channel should be set to as default.
+ * @returns {number} The DMX value this channel should be set to as default.
  */
 function getDefaultValue(channel) {
   if (channel instanceof FineChannel) {
@@ -200,8 +200,8 @@ function getUsableChannel(channel) {
 }
 
 /**
- * @param {!Array.<AbstractChannel>} channels List of channels, e.g. from a mode's channel list.
- * @returns {!object.<string, AbstractChannel>} D::Light attribute names mapped to the corresponding channels of the given list. All channels are included once.
+ * @param {Array.<AbstractChannel>} channels List of channels, e.g. from a mode's channel list.
+ * @returns {object.<string, AbstractChannel>} D::Light attribute names mapped to the corresponding channels of the given list. All channels are included once.
  */
 function getChannelsByAttribute(channels) {
   const channelsByAttribute = {

@@ -1,7 +1,7 @@
 /**
- * @param {!object} startNode The XML object the reference should be resolved against.
- * @param {!string} nodeReference A string of the form "Name.Name.Name…", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-node
- * @returns {?object} The referenced XML node object, or null if it could not be found.
+ * @param {object} startNode The XML object the reference should be resolved against.
+ * @param {string} nodeReference A string of the form "Name.Name.Name…", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-node
+ * @returns {object|null} The referenced XML node object, or null if it could not be found.
  */
 function followXmlNodeReference(startNode, nodeReference) {
   if (!startNode || !nodeReference) {
@@ -28,8 +28,8 @@ function followXmlNodeReference(startNode, nodeReference) {
 
 
   /**
-   * @param {!object} node The XML object.
-   * @returns {!array.<!object>} The XML objects of this node's child nodes.
+   * @param {object} node The XML object.
+   * @returns {array.<object>} The XML objects of this node's child nodes.
    */
   function getChildNodes(node) {
     const childNodes = [];
@@ -48,8 +48,8 @@ function followXmlNodeReference(startNode, nodeReference) {
 /**
  * Convert from CIE color representation xyY 1931 to RGB.
  * See https://wolfcrow.com/blog/what-is-the-difference-between-cie-lab-cie-rgb-cie-xyy-and-cie-xyz/
- * @param {!string} gdtfColorStr A string in the form "0.3127, 0.3290, 100.0", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-colorCIE
- * @returns {!string} The RGB hex code string in the form "#rrggbb".
+ * @param {string} gdtfColorStr A string in the form "0.3127, 0.3290, 100.0", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-colorCIE
+ * @returns {string} The RGB hex code string in the form "#rrggbb".
  */
 function getRgbColorFromGdtfColor(gdtfColorStr) {
   /* eslint-disable camelcase, space-in-parens */
@@ -111,8 +111,8 @@ function getRgbColorFromGdtfColor(gdtfColorStr) {
 
 
   /**
-   * @param {!number} componentValue The red / green /blue component value in the range 0…255.
-   * @returns {!string} The component value encoded as a two-digit hex number.
+   * @param {number} componentValue The red / green /blue component value in the range 0…255.
+   * @returns {string} The component value encoded as a two-digit hex number.
    */
   function getHexComponent(componentValue) {
     const hex = componentValue.toString(16);

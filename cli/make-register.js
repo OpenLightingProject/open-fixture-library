@@ -171,9 +171,9 @@ fs.writeFile(filename, `${JSON.stringify(register, null, 2)}\n`, `utf8`, error =
 
 /**
  * Function to pass into Array.sort().
- * @param {!string} a The first string.
- * @param {!string} b The second string.
- * @returns {!number} A number indicating the order of the two strings.
+ * @param {string} a The first string.
+ * @param {string} b The second string.
+ * @returns {number} A number indicating the order of the two strings.
  */
 function localeSort(a, b) {
   return a.localeCompare(b, `en`, {

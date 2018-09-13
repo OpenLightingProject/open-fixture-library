@@ -5,10 +5,10 @@ module.exports.name = `QLC+ 4.11.2`;
 module.exports.version = `0.4.2`;
 
 /**
- * @param {!Buffer} buffer The imported file.
- * @param {!string} filename The imported file's name.
- * @param {!string} authorName The importer's name.
- * @returns {!Promise.<!object, !Error>} A Promise resolving to an out object
+ * @param {Buffer} buffer The imported file.
+ * @param {string} filename The imported file's name.
+ * @param {string} authorName The importer's name.
+ * @returns {Promise.<object, Error>} A Promise resolving to an out object
 **/
 module.exports.import = function importQlcPlus(buffer, filename, authorName) {
   const parser = new xml2js.Parser();
@@ -84,8 +84,8 @@ module.exports.import = function importQlcPlus(buffer, filename, authorName) {
 };
 
 /**
- * @param {!object} qlcPlusChannel The QLC+ channel object.
- * @returns {!object} The OFL channel object.
+ * @param {object} qlcPlusChannel The QLC+ channel object.
+ * @returns {object} The OFL channel object.
  */
 function getOflChannel(qlcPlusChannel) {
   const channel = {
@@ -116,9 +116,9 @@ function getOflChannel(qlcPlusChannel) {
 }
 
 /**
- * @param {!object} qlcPlusCapability The QLC+ capability object.
- * @param {!object} qlcPlusChannel The QLC+ channel object.
- * @returns {!object} The OFL capability object.
+ * @param {object} qlcPlusCapability The QLC+ capability object.
+ * @param {object} qlcPlusChannel The QLC+ channel object.
+ * @returns {object} The OFL capability object.
  */
 function getOflCapability(qlcPlusCapability, qlcPlusChannel) {
   const cap = {
@@ -284,7 +284,7 @@ function getOflCapability(qlcPlusCapability, qlcPlusChannel) {
 
   /**
    * Try to guess speedStart / speedEnd from the capabilityName. May set cap.type to Rotation.
-   * @returns {!string} The rest of the capabilityName.
+   * @returns {string} The rest of the capabilityName.
    */
   function getSpeedGuessedComment() {
     return capabilityName.replace(/(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|C?CW)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*Hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*Hz)\)?$/i, (match, direction, start, end) => {
@@ -314,9 +314,9 @@ function getOflCapability(qlcPlusCapability, qlcPlusChannel) {
 }
 
 /**
- * @param {!object} qlcPlusPhysical The QLC+ mode's physical object.
- * @param {!object} oflFixPhysical The OFL fixture's physical object.
- * @returns {!object} The OFL mode's physical object.
+ * @param {object} qlcPlusPhysical The QLC+ mode's physical object.
+ * @param {object} oflFixPhysical The OFL fixture's physical object.
+ * @returns {object} The OFL mode's physical object.
  */
 function getOflPhysical(qlcPlusPhysical, oflFixPhysical) {
   const physical = {};
@@ -452,8 +452,8 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical) {
 
   /**
    * Helper function to get data from the OFL fixture's physical data.
-   * @param {!string} section The section object property name.
-   * @param {!string} property The property name in the section,
+   * @param {string} section The section object property name.
+   * @param {string} property The property name in the section,
    * @returns {*} The property data, or undefined.
    */
   function getOflPhysicalProperty(section, property) {
@@ -466,10 +466,10 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical) {
 }
 
 /**
- * @param {!object} qlcPlusMode The QLC+ mode object.
- * @param {!object} oflFixPhysical The OFL fixture's physical object.
- * @param {!Array.<!string>} warningsArray This fixture's warnings array in the `out` object.
- * @returns {!object} The OFL mode object.
+ * @param {object} qlcPlusMode The QLC+ mode object.
+ * @param {object} oflFixPhysical The OFL fixture's physical object.
+ * @param {Array.<string>} warningsArray This fixture's warnings array in the `out` object.
+ * @returns {object} The OFL mode object.
  */
 function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
   const mode = {
@@ -503,9 +503,9 @@ function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
 }
 
 /**
- * @param {!object} fixture The OFL fixture object.
- * @param {!Array.<!string>} doubleByteChannels Array of channel keys for fine channels.
- * @param {!Array.<!string>} warningsArray This fixture's warnings array in the `out` object.
+ * @param {object} fixture The OFL fixture object.
+ * @param {Array.<string>} doubleByteChannels Array of channel keys for fine channels.
+ * @param {Array.<string>} warningsArray This fixture's warnings array in the `out` object.
  */
 function mergeFineChannels(fixture, doubleByteChannels, warningsArray) {
   const fineChannelRegex = /\s+fine$|16[-_\s]*bit$/i;
@@ -537,8 +537,8 @@ function mergeFineChannels(fixture, doubleByteChannels, warningsArray) {
 
 
   /**
-   * @param {!string} fineChannelKey The key of the fince channel.
-   * @returns {?string} The key of the corresponding coarse channel, or null if it could not be detected.
+   * @param {string} fineChannelKey The key of the fince channel.
+   * @returns {string|null} The key of the corresponding coarse channel, or null if it could not be detected.
    */
   function getCoarseChannelKey(fineChannelKey) {
     // e.g. "Pan" instead of "Pan Fine"
@@ -551,8 +551,8 @@ function mergeFineChannels(fixture, doubleByteChannels, warningsArray) {
 }
 
 /**
- * @param {!object} fixture The OFL fixture object.
- * @param {!object} qlcPlusFixture The QCL+ fixture object.
+ * @param {object} fixture The OFL fixture object.
+ * @param {object} qlcPlusFixture The QCL+ fixture object.
  */
 function cleanUpFixture(fixture, qlcPlusFixture) {
   // delete empty fineChannelAliases arrays and unnecessary dmxValueResolution properties
@@ -577,8 +577,8 @@ function cleanUpFixture(fixture, qlcPlusFixture) {
 }
 
 /**
- * @param {!string} str The string to slugify.
- * @returns {!string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
+ * @param {string} str The string to slugify.
+ * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(str) {
   return str.toLowerCase().replace(/[^a-z0-9-]+/g, ` `).trim().replace(/\s+/g, `-`);

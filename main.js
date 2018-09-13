@@ -156,17 +156,17 @@ function listen() {
 /**
  * @typedef ExportFile
  * @type object
- * @property {!string} name filename.ext
- * @property {!string} content file content
- * @property {!string} mimetype e.g. 'text/plain'
+ * @property {string} name filename.ext
+ * @property {string} content file content
+ * @property {string} mimetype e.g. 'text/plain'
  */
 
 /**
  * Instruct Express to initiate a download of one / multiple exported files.
- * @param {!express.Response} response Express Response object
- * @param {!Array.<!ExportFile>} files Array of exported files. If more than one is provided, the files are zipped automatically.
- * @param {!string} zipName Name of the zip file (if any).
- * @returns {!Promise} A Promise that is resolved when the response is sent.
+ * @param {express.Response} response Express Response object
+ * @param {Array.<ExportFile>} files Array of exported files. If more than one is provided, the files are zipped automatically.
+ * @param {string} zipName Name of the zip file (if any).
+ * @returns {Promise} A Promise that is resolved when the response is sent.
  */
 function downloadFiles(response, files, zipName) {
   if (files.length === 1) {
