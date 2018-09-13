@@ -40,11 +40,11 @@ module.exports.name = `Plugin Name`;
 module.exports.version = `0.1.0`;  // semantic versioning of export plugin
 
 /**
- * @param {Array.<Fixture>} fixtures An array of Fixture objects, see our fixture model
+ * @param {array.<Fixture>} fixtures An array of Fixture objects, see our fixture model
  * @param {object} options Some global options, for example:
  * @param {string} options.baseDir Absolute path to OFL's root directory
  * @param {Date|null} options.date The current time (prefer this over new Date())
- * @returns {Promise.<Array.<object>, Error>} All generated files (see file schema above)
+ * @returns {Promise.<array.<object>, Error>} All generated files (see file schema above)
 */
 module.exports.export = function exportPluginName(fixtures, options) {
   const outfiles = [];
@@ -100,7 +100,7 @@ module.exports.version = `0.1.0`;  // semantic versioning of import plugin
  * @param {string} fileName The imported file's name.
  * @param {string} authorName The importer's name.
  * @returns {Promise.<object, Error>} A Promise resolving to an out object
- *                                       (see above) or rejects with an error.
+ *                                    (see above) or rejects with an error.
 **/
 module.exports.import = function importPluginName(buffer, fileName, authorName) {
   const out = {
@@ -153,9 +153,9 @@ const promisify = require(`util`).promisify;
  * @param {string} exportFile.name File name, may include slashes to provide a folder structure.
  * @param {string} exportFile.content File content.
  * @param {string} exportFile.mimetype File mime type.
- * @param {Array.<Fixture>|null} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @param {array.<Fixture>|null} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
  * @param {string|null} exportFile.mode Mode's shortName if given file only describes a single mode.
- * @returns {Promise.<undefined, Array.<string>|string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
+ * @returns {Promise.<undefined, array.<string>|string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
 **/
 module.exports = function testValueCorrectness(exportFile) {
   const parser = new xml2js.Parser();

@@ -143,7 +143,7 @@ export default {
 /**
  * @param {number|null} start Start value of the range or null.
  * @param {number|null} end End value of the range or null.
- * @returns {Array.<number>|null} Range array with the inputs or null if both inputs were null.
+ * @returns {array.<number>|null} Range array with the inputs or null if both inputs were null.
  */
 function getRange(start, end) {
   if (start === null && end === null) {

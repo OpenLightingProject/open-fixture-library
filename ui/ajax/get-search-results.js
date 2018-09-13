@@ -30,7 +30,7 @@ function queryMatch(searchQuery, fixtureKey) {
 
 /**
  * Test if a fixture matches the manufacturer query.
- * @param {Array.<string>} manufacturersQuery Selected manufacturers.
+ * @param {array.<string>} manufacturersQuery Selected manufacturers.
  * @param {string} fixtureKey Key of the fixture to test.
  * @returns {boolean} True if the fixture matches the manufacturer query, false otherwise.
  */
@@ -44,7 +44,7 @@ function manufacturerMatch(manufacturersQuery, fixtureKey) {
 
 /**
  * Test if a fixture matches the category query.
- * @param {Array.<string>} categoriesQuery Selected categories.
+ * @param {array.<string>} categoriesQuery Selected categories.
  * @param {string} fixtureKey Key of the fixture to test.
  * @returns {boolean} True if the fixture matches the category query, false otherwise.
  */

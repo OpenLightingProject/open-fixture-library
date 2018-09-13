@@ -12,11 +12,11 @@ module.exports.name = `e:cue`;
 module.exports.version = `0.3.0`;
 
 /**
- * @param {Array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {array.<Fixture>} fixtures An array of Fixture objects.
  * @param {object} options Global options, including:
  * @param {string} options.baseDir Absolute path to OFL's root directory.
  * @param {Date|null} options.date The current time.
- * @returns {Promise.<Array.<object>, Error>} The generated files.
+ * @returns {Promise.<array.<object>, Error>} The generated files.
 */
 module.exports.export = function exportECue(fixtures, options) {
   const timestamp = dateToString(options.date);

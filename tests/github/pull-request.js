@@ -168,7 +168,7 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
  * @param {object} test Information about the test script that wants to update the comment.
  * @param {string} test.filename Relative path from OFL root dir to test file: 'tests/github/test-file-name.js'
  * @param {string} test.name Heading to be used in the comment
- * @param {Array.<string>} test.lines The comment's lines of text
+ * @param {array.<string>} test.lines The comment's lines of text
  * @returns {Promise} A Promise that is fulfilled as soon as all GitHub operations have finished
  */
 module.exports.updateComment = function updateComment(test) {

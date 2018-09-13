@@ -8,11 +8,11 @@ module.exports.version = `0.3.0`;
 module.exports.supportedOflVersion = `7.3.0`;
 
 /**
- * @param {Array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {array.<Fixture>} fixtures An array of Fixture objects.
  * @param {object} options Global options, including:
  * @param {string} options.baseDir Absolute path to OFL's root directory.
  * @param {Date|null} options.date The current time.
- * @returns {Promise.<Array.<object>, Error>} The generated files.
+ * @returns {Promise.<array.<object>, Error>} The generated files.
 */
 module.exports.export = function exportMillumin(fixtures, options) {
   // one JSON file for each fixture

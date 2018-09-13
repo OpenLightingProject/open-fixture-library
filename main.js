@@ -164,7 +164,7 @@ function listen() {
 /**
  * Instruct Express to initiate a download of one / multiple exported files.
  * @param {express.Response} response Express Response object
- * @param {Array.<ExportFile>} files Array of exported files. If more than one is provided, the files are zipped automatically.
+ * @param {array.<ExportFile>} files Array of exported files. If more than one is provided, the files are zipped automatically.
  * @param {string} zipName Name of the zip file (if any).
  * @returns {Promise} A Promise that is resolved when the response is sent.
  */

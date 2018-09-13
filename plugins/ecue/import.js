@@ -146,7 +146,7 @@ function getPhysical(ecueFixture) {
 
 /**
  * @param {object} ecueFixture The e:cue fixture object.
- * @returns {Array.<object>} An array of all ecue channel objects.
+ * @returns {array.<object>} An array of all ecue channel objects.
  */
 function getCombinedEcueChannels(ecueFixture) {
   let channels = [];
@@ -178,7 +178,7 @@ function getCombinedEcueChannels(ecueFixture) {
  * Parses the e:cue channel and adds it to OFL fixture's availableChannels and the first mode.
  * @param {object} ecueChannel The e:cue channel object.
  * @param {object} fixture The OFL fixture object.
- * @param {Array.<string>} warningsArray This fixture's warnings array in the `out` object.
+ * @param {array.<string>} warningsArray This fixture's warnings array in the `out` object.
  */
 function addChannelToFixture(ecueChannel, fixture, warningsArray) {
   const channel = {};
@@ -363,7 +363,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 
 
     /**
-     * @returns {Array.<number>} The DMX range of this capability.
+     * @returns {array.<number>} The DMX range of this capability.
      */
     function getDmxRange() {
       const dmxRangeStart = parseInt(ecueRange.$.Start);

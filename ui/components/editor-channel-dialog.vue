@@ -622,7 +622,7 @@ export default {
      * @param {object} coarseChannel The channel object of the coarse channel.
      * @param {number} offset At which resolution should be started.
      * @param {boolean} [addToMode] If true, the fine channel is pushed to the current mode's channels.
-     * @returns {Array.<string>} Array of added fine channel UUIDs (at the index of their resolution).
+     * @returns {array.<string>} Array of added fine channel UUIDs (at the index of their resolution).
      */
     addFineChannels(coarseChannel, offset, addToMode) {
       const addedFineChannelUuids = [];

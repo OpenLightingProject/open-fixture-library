@@ -11,11 +11,11 @@ module.exports.name = `D::Light`;
 module.exports.version = `0.1.0`;
 
 /**
- * @param {Array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {array.<Fixture>} fixtures An array of Fixture objects.
  * @param {object} options Global options, including:
  * @param {string} options.baseDir Absolute path to OFL's root directory.
  * @param {Date|null} options.date The current time.
- * @returns {Promise.<Array.<object>, Error>} The generated files.
+ * @returns {Promise.<array.<object>, Error>} The generated files.
 */
 module.exports.export = function exportDLight(fixtures, options) {
   const deviceFiles = [];
@@ -69,7 +69,7 @@ module.exports.export = function exportDLight(fixtures, options) {
  * @param {XMLElement} xml The XML parent element.
  * @param {Mode} mode The fixture's mode that this definition is representing.
  * @param {string} attribute A D::Light attribute name.
- * @param {Array.<AbstractChannel>} channels All channels of the mode that are associated to the given attribute name.
+ * @param {array.<AbstractChannel>} channels All channels of the mode that are associated to the given attribute name.
  */
 function addAttribute(xml, mode, attribute, channels) {
   const xmlAttribute = xml.element({
@@ -200,7 +200,7 @@ function getUsableChannel(channel) {
 }
 
 /**
- * @param {Array.<AbstractChannel>} channels List of channels, e.g. from a mode's channel list.
+ * @param {array.<AbstractChannel>} channels List of channels, e.g. from a mode's channel list.
  * @returns {object.<string, AbstractChannel>} D::Light attribute names mapped to the corresponding channels of the given list. All channels are included once.
  */
 function getChannelsByAttribute(channels) {

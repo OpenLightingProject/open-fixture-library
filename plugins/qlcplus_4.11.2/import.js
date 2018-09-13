@@ -468,7 +468,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical) {
 /**
  * @param {object} qlcPlusMode The QLC+ mode object.
  * @param {object} oflFixPhysical The OFL fixture's physical object.
- * @param {Array.<string>} warningsArray This fixture's warnings array in the `out` object.
+ * @param {array.<string>} warningsArray This fixture's warnings array in the `out` object.
  * @returns {object} The OFL mode object.
  */
 function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
@@ -504,8 +504,8 @@ function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
 
 /**
  * @param {object} fixture The OFL fixture object.
- * @param {Array.<string>} doubleByteChannels Array of channel keys for fine channels.
- * @param {Array.<string>} warningsArray This fixture's warnings array in the `out` object.
+ * @param {array.<string>} doubleByteChannels Array of channel keys for fine channels.
+ * @param {array.<string>} warningsArray This fixture's warnings array in the `out` object.
  */
 function mergeFineChannels(fixture, doubleByteChannels, warningsArray) {
   const fineChannelRegex = /\s+fine$|16[-_\s]*bit$/i;

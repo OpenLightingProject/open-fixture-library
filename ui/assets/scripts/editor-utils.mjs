@@ -199,7 +199,7 @@ export function isCapabilityChanged(cap) {
 
 /**
  * @param {string|null} hexString A string of comma-separated hex values, or null.
- * @returns {Array.<string>|null} The hex codes as array of strings.
+ * @returns {array.<string>|null} The hex codes as array of strings.
  */
 export function colorsHexStringToArray(hexString) {
   if (typeof hexString !== `string`) {

@@ -245,7 +245,7 @@ function testRandomChannelDownscaling(resolution) {
   });
 
   /**
-   * @returns {Array.<Array.<number, number>>} Random list of adjacent capability [start, end] ranges. Together, they fill a whole channel.
+   * @returns {array.<array.<number, number>>} Random list of adjacent capability [start, end] ranges. Together, they fill a whole channel.
    */
   function getRandomCapabilityRanges() {
     const minimumRangeWidth = Math.pow(256, resolution - 1) - 1; // without a minimum, overlaps would not be avoidable
@@ -289,8 +289,8 @@ function testEqual(description, value, desiredValue) {
  * The test passes if the given array equals the desired array (not the identity, but the elements are compared).
  * The description is used to log the test result to console.
  * @param {string} description A string describing the given value. Probably a description of a function call.
- * @param {Array.<*>} array The array with unknown correctness. Probably the return value of a function call.
- * @param {Array.<*>} desiredArray The correct array. Probably filled with hardcoded values.
+ * @param {array.<*>} array The array with unknown correctness. Probably the return value of a function call.
+ * @param {array.<*>} desiredArray The correct array. Probably filled with hardcoded values.
  */
 function testArraysEqual(description, array, desiredArray) {
   const correctLengths = array.length === desiredArray.length;

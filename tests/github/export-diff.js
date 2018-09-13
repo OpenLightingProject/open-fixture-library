@@ -58,7 +58,7 @@ pullRequest.checkEnv()
     return tasks;
 
     /**
-     * @returns {Array.<Task>} What export diff tasks have to be done due to changes in the model. May be empty.
+     * @returns {array.<Task>} What export diff tasks have to be done due to changes in the model. May be empty.
      */
     function getTasksForModel() {
       let tasks = [];
@@ -80,7 +80,7 @@ pullRequest.checkEnv()
     }
 
     /**
-     * @returns {Array.<Task>} What export diff tasks have to be done due to changes in plugins. May be empty.
+     * @returns {array.<Task>} What export diff tasks have to be done due to changes in plugins. May be empty.
      */
     function getTasksForPlugins() {
       let tasks = [];
@@ -98,7 +98,7 @@ pullRequest.checkEnv()
     }
 
     /**
-     * @returns {Array.<Task>} What export diff tasks have to be done due to changes in fixtures. May be empty.
+     * @returns {array.<Task>} What export diff tasks have to be done due to changes in fixtures. May be empty.
      */
     function getTasksForFixtures() {
       let tasks = [];
@@ -157,7 +157,7 @@ pullRequest.checkEnv()
 
 /**
  * @param {Task} task The export diff task to fulfill.
- * @returns {Promise.<Array.<string>>} An array of message lines.
+ * @returns {Promise.<array.<string>>} An array of message lines.
  */
 async function performTask(task) {
   const output = await diffPluginOutputs(task.pluginKey, process.env.TRAVIS_BRANCH, [task.manFix]);
