@@ -25,7 +25,7 @@
   },
   "physical": {
     "dimensions": [180, 243, 180],
-    "weight": 1,
+    "weight": 2.65,
     "power": 70,
     "DMXconnector": "3-pin",
     "bulb": {
@@ -37,9 +37,9 @@
       "degreesMinMax": [30, 30]
     },
     "focus": {
-      "type": "Fixed",
+      "type": "Head",
       "panMax": 540,
-      "tiltMax": 180
+      "tiltMax": 270
     }
   },
   "availableChannels": {
