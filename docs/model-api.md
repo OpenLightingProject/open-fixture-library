@@ -44,7 +44,7 @@ Also called LSB (least significant byte) channel.</p>
 </dd>
 <dt><a href="#SwitchingChannel">SwitchingChannel</a> ⇐ <code><a href="#AbstractChannel">AbstractChannel</a></code></dt>
 <dd><p>Represents a channel that switches its behavior depending on trigger channel&#39;s value.
-The different behaviors are implemented as different <a href="#CoarseChannel">CoarseChannel</a>s.</p>
+The different behaviors are implemented as different <a href="#CoarseChannel">CoarseChannel</a>s or <a href="#FineChannel">FineChannel</a>s.</p>
 </dd>
 <dt><a href="#TemplateChannel">TemplateChannel</a></dt>
 <dd><p>Represents a blueprint channel of which several similar channels can be generated.
@@ -2169,7 +2169,7 @@ Merge specified Range objects. Asserts that ranges don't overlap and that all ra
 
 ## SwitchingChannel ⇐ [<code>AbstractChannel</code>](#AbstractChannel)
 Represents a channel that switches its behavior depending on trigger channel's value.
-The different behaviors are implemented as different [CoarseChannel](#CoarseChannel)s.
+The different behaviors are implemented as different [CoarseChannel](#CoarseChannel)s or [FineChannel](#FineChannel)s.
 
 **Kind**: global class  
 **Extends**: [<code>AbstractChannel</code>](#AbstractChannel)  
