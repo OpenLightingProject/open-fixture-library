@@ -581,8 +581,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
       /**
        * @param {function|null} hook The hook function, or a falsy value.
-       * @param  {...any} args The arguments to pass to the hook.
-       * @returns {any} The return value of the hook, or null if no hook was called.
+       * @param  {...*} args The arguments to pass to the hook.
+       * @returns {*} The return value of the hook, or null if no hook was called.
        */
       function callHook(hook, ...args) {
         if (hook) {
