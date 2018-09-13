@@ -32,8 +32,8 @@ Promise.all(servers)
 
 
 /**
- * @param {!number} port The port that the server should listen at.
- * @param {!string} deployment The name of the deployment this webhook belongs to.
+ * @param {number} port The port that the server should listen at.
+ * @param {string} deployment The name of the deployment this webhook belongs to.
  */
 function startServer(port, deployment) {
   console.log(`Starting webhook listener for ${deployment} on port ${port}`);
@@ -68,10 +68,10 @@ function startServer(port, deployment) {
  * Handle a received request from the server and check if it is valid. If so,
  * call @see redeploy to update the corresponding app.
  *
- * @param {!number} port The port number this request was received in.
- * @param {!string} url The absolute path the request was received at.
- * @param {!string} body The JSON string from GitHub.
- * @param {!Object.<string, string>} headers Headers of the request.
+ * @param {number} port The port number this request was received in.
+ * @param {string} url The absolute path the request was received at.
+ * @param {string} body The JSON string from GitHub.
+ * @param {object.<string, string>} headers Headers of the request.
  */
 function processRequest(port, url, body, headers) { // eslint-disable-line complexity
   console.log(`Received request`, port, url);
@@ -124,7 +124,7 @@ function processRequest(port, url, body, headers) { // eslint-disable-line compl
 /**
  * Calls `pm2 deploy` with the correct ecosystem file and deployment name to
  * fetch the newest git source and redeploy the corresponding app.
- * @param {!string} name Name of the deployment to redeploy.
+ * @param {string} name Name of the deployment to redeploy.
  */
 function redeploy(name) {
   console.log(`redeploy ${name}`);

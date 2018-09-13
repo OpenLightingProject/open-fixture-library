@@ -2,7 +2,7 @@
   <li>
     <app-conditional-details class="channel">
       <template slot="summary">
-        <app-fixture-channel-type-icon :channel="channel" />{{ unwrappedChannel.name }}<code v-if="channelKey" class="channel-key">{{ channelKey }}</code>{{ appendToHeading ? ` ${appendToHeading}` : `` }}
+        <app-fixture-channel-type-icon :channel="channel" />{{ channel.name }}<code v-if="channelKey" class="channel-key">{{ channelKey }}</code>{{ appendToHeading ? ` ${appendToHeading}` : `` }}
         <app-svg
           v-if="channel.isHelpWanted"
           class="help-wanted-icon"
@@ -12,26 +12,26 @@
 
       <slot />
 
-      <div v-if="(unwrappedChannel instanceof FineChannel)">
-        Fine channel of {{ unwrappedChannel.coarseChannel.name }} (channel&nbsp;{{ mode.getChannelIndex(unwrappedChannel.coarseChannel.key) + 1 }})
+      <div v-if="(channel instanceof FineChannel)">
+        Fine channel of {{ channel.coarseChannel.name }} (channel&nbsp;{{ mode.getChannelIndex(channel.coarseChannel.key) + 1 }})
       </div>
 
-      <template v-else-if="(unwrappedChannel instanceof SwitchingChannel)">
+      <template v-else-if="(channel instanceof SwitchingChannel)">
         Switches depending on trigger channel's value.
 
         <app-labeled-value
           name="switchingChannel-triggerChannel"
           label="Trigger channel">
-          {{ unwrappedChannel.triggerChannel.name }} (channel&nbsp;{{ mode.getChannelIndex(unwrappedChannel.triggerChannel.key) + 1 }})
+          {{ channel.triggerChannel.name }} (channel&nbsp;{{ mode.getChannelIndex(channel.triggerChannel.key) + 1 }})
         </app-labeled-value>
 
         <ol>
           <app-fixture-channel
-            v-for="(ranges, switchToChannelKey) in unwrappedChannel.triggerRanges"
+            v-for="(ranges, switchToChannelKey) in channel.triggerRanges"
             :key="switchToChannelKey"
             :channel="fixture.getChannelByKey(switchToChannelKey)"
             :mode="mode"
-            :append-to-heading="unwrappedChannel.defaultChannel.key === switchToChannelKey ? `(default)` : null">
+            :append-to-heading="channel.defaultChannel.key === switchToChannelKey ? `(default)` : null">
             <app-labeled-value
               name="switchingChannel-triggerRanges"
               label="Activated when">
@@ -41,7 +41,7 @@
         </ol>
       </template>
 
-      <template v-if="channel instanceof MatrixChannel && !(unwrappedChannel instanceof SwitchingChannel)">
+      <template v-if="channel.pixelKey !== null && !(channel instanceof SwitchingChannel)">
         <app-labeled-value
           v-if="fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)"
           :value="`${channel.pixelKey}`"
@@ -64,54 +64,54 @@
         </template>
       </template>
 
-      <template v-if="(unwrappedChannel instanceof Channel)">
+      <template v-if="(channel instanceof CoarseChannel)">
         <app-labeled-value
-          v-if="resolutionInMode > Channel.RESOLUTION_8BIT"
+          v-if="resolutionInMode > CoarseChannel.RESOLUTION_8BIT"
           name="channel-fineChannelAliases"
           label="Fine channels">
-          {{ unwrappedChannel.fineChannels.slice(0, resolutionInMode - 1).map(
+          {{ channel.fineChannels.slice(0, resolutionInMode - 1).map(
             fineChannel => `${fineChannel.name} (channel&nbsp;${mode.getChannelIndex(fineChannel) + 1})`
           ).join(`, `) }}
         </app-labeled-value>
 
         <app-labeled-value
-          v-if="unwrappedChannel.hasDefaultValue"
-          :value="`${unwrappedChannel.getDefaultValueWithResolution(resolutionInMode)}`"
+          v-if="channel.hasDefaultValue"
+          :value="`${channel.getDefaultValueWithResolution(resolutionInMode)}`"
           name="channel-defaultValue"
           label="Default DMX value" />
 
         <app-labeled-value
-          v-if="unwrappedChannel.hasHighlightValue"
-          :value="`${unwrappedChannel.getHighlightValueWithResolution(resolutionInMode)}`"
+          v-if="channel.hasHighlightValue"
+          :value="`${channel.getHighlightValueWithResolution(resolutionInMode)}`"
           name="channel-highlightValue"
           label="Highlight DMX value" />
 
         <app-labeled-value
-          v-if="unwrappedChannel.isInverted"
+          v-if="channel.isInverted"
           name="channel-isInverted"
           label="Is inverted?"
           value="Yes" />
 
         <app-labeled-value
-          v-if="unwrappedChannel.isConstant"
+          v-if="channel.isConstant"
           name="channel-isConstant"
           label="Is constant?"
           value="Yes" />
 
         <app-labeled-value
-          v-if="unwrappedChannel.canCrossfade"
+          v-if="channel.canCrossfade"
           name="channel-canCrossfade"
           label="Can crossfade?"
           value="Yes" />
 
         <app-labeled-value
-          v-if="unwrappedChannel.precedence !== `LTP`"
-          :value="unwrappedChannel.precedence"
+          v-if="channel.precedence !== `LTP`"
+          :value="channel.precedence"
           name="channel-precedence"
           label="Precedence" />
 
         <app-fixture-capability-table
-          :channel="unwrappedChannel"
+          :channel="channel"
           :mode="mode"
           :resolution-in-mode="resolutionInMode" />
       </template>
@@ -155,9 +155,8 @@ import fixtureCapabilityTable from '~/components/fixture-capability-table.vue';
 import labeledValueVue from '~/components/labeled-value.vue';
 
 import AbstractChannel from '~~/lib/model/AbstractChannel.mjs';
-import Channel from '~~/lib/model/Channel.mjs';
+import CoarseChannel from '~~/lib/model/CoarseChannel.mjs';
 import FineChannel from '~~/lib/model/FineChannel.mjs';
-import MatrixChannel from '~~/lib/model/MatrixChannel.mjs';
 import Mode from '~~/lib/model/Mode.mjs';
 import NullChannel from '~~/lib/model/NullChannel.mjs';
 import SwitchingChannel from '~~/lib/model/SwitchingChannel.mjs';
@@ -173,7 +172,7 @@ export default {
   },
   props: {
     channel: {
-      type: [AbstractChannel, MatrixChannel],
+      type: AbstractChannel,
       required: true
     },
     mode: {
@@ -188,34 +187,26 @@ export default {
   },
   data() {
     return {
-      Channel,
+      CoarseChannel,
       FineChannel,
-      MatrixChannel,
       SwitchingChannel,
       fixture: this.mode.fixture
     };
   },
   computed: {
-    unwrappedChannel() {
-      if (this.channel instanceof MatrixChannel) {
-        return this.channel.wrappedChannel;
-      }
-
-      return this.channel;
-    },
     channelKey() {
-      if (this.unwrappedChannel instanceof NullChannel) {
+      if (this.channel instanceof NullChannel) {
         return `null`;
       }
 
-      if (this.unwrappedChannel.key !== this.unwrappedChannel.name) {
-        return this.unwrappedChannel.key;
+      if (this.channel.key !== this.channel.name) {
+        return this.channel.key;
       }
 
       return ``;
     },
     resolutionInMode() {
-      return this.unwrappedChannel.getResolutionInMode(this.mode);
+      return this.channel.getResolutionInMode(this.mode);
     }
   }
 };

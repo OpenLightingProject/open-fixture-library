@@ -8,7 +8,7 @@ export const constants = {
 };
 
 /**
- * @returns {!object} An empty fixture object.
+ * @returns {object} An empty fixture object.
  */
 export function getEmptyFixture() {
   return {
@@ -36,7 +36,7 @@ export function getEmptyFixture() {
 
 
 /**
- * @returns {!object} An empty fixture link object.
+ * @returns {object} An empty fixture link object.
  */
 export function getEmptyLink() {
   return {
@@ -48,7 +48,7 @@ export function getEmptyLink() {
 
 
 /**
- * @returns {!object} An empty fixture's or mode's physical object.
+ * @returns {object} An empty fixture's or mode's physical object.
  */
 export function getEmptyPhysical() {
   return {
@@ -77,7 +77,7 @@ export function getEmptyPhysical() {
 
 
 /**
- * @returns {!object} An empty mode object.
+ * @returns {object} An empty mode object.
  */
 export function getEmptyMode() {
   return {
@@ -93,7 +93,7 @@ export function getEmptyMode() {
 
 
 /**
- * @returns {!object} An empty channel object.
+ * @returns {object} An empty channel object.
  */
 export function getEmptyChannel() {
   return {
@@ -124,9 +124,9 @@ export function getEmptyChannel() {
 
 
 /**
- * @param {!string} coarseChannelId The UUID of the coarse channel.
- * @param {!number} resolution The resolution of the newly created fine channel.
- * @returns {!object} An empty fine channel object for the given coarse channel.
+ * @param {string} coarseChannelId The UUID of the coarse channel.
+ * @param {number} resolution The resolution of the newly created fine channel.
+ * @returns {object} An empty fine channel object for the given coarse channel.
  */
 export function getEmptyFineChannel(coarseChannelId, resolution) {
   return {
@@ -138,7 +138,7 @@ export function getEmptyFineChannel(coarseChannelId, resolution) {
 
 
 /**
- * @returns {!object} An empty capability object.
+ * @returns {object} An empty capability object.
  */
 export function getEmptyCapability() {
   return {
@@ -152,8 +152,8 @@ export function getEmptyCapability() {
 
 
 /**
- * @param {!object} channel The channel object.
- * @returns {!boolean} False if the channel object is still empty / unchanged, true otherwise.
+ * @param {object} channel The channel object.
+ * @returns {boolean} False if the channel object is still empty / unchanged, true otherwise.
  */
 export function isChannelChanged(channel) {
   return Object.keys(channel).some(prop => {
@@ -179,8 +179,8 @@ export function isChannelChanged(channel) {
 
 
 /**
- * @param {!object} cap The capability object.
- * @returns {!boolean} False if the capability object is still empty / unchanged, true otherwise.
+ * @param {object} cap The capability object.
+ * @returns {boolean} False if the capability object is still empty / unchanged, true otherwise.
  */
 export function isCapabilityChanged(cap) {
   if (cap.dmxRange !== null) {
@@ -198,8 +198,8 @@ export function isCapabilityChanged(cap) {
 
 
 /**
- * @param {?string} hexString A string of comma-separated hex values, or null.
- * @returns {?Array.<!string>} The hex codes as array of strings.
+ * @param {string|null} hexString A string of comma-separated hex values, or null.
+ * @returns {array.<string>|null} The hex codes as array of strings.
  */
 export function colorsHexStringToArray(hexString) {
   if (typeof hexString !== `string`) {
@@ -219,8 +219,8 @@ export function colorsHexStringToArray(hexString) {
 
 
 /**
- * @param {!object} channel The channel object that shall be sanitized.
- * @returns {!object} A clone of the channel object without properties that are just relevant for displaying it in the channel dialog.
+ * @param {object} channel The channel object that shall be sanitized.
+ * @returns {object} A clone of the channel object without properties that are just relevant for displaying it in the channel dialog.
  */
 export function getSanitizedChannel(channel) {
   const retChannel = clone(channel);

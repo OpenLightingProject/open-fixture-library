@@ -56,8 +56,8 @@ export default {
 };
 
 /**
- * @param {!string} fixtureKey The combined manufacturer / fixture key.
- * @returns {!string} The manufacturer and fixture names, separated by a space.
+ * @param {string} fixtureKey The combined manufacturer / fixture key.
+ * @returns {string} The manufacturer and fixture names, separated by a space.
  */
 function getFixtureName(fixtureKey) {
   const manKey = fixtureKey.split(`/`)[0];

@@ -1,12 +1,12 @@
 const createPullRequest = require(`../../lib/create-github-pr.js`);
 const schemaProperties = require(`../../lib/schema-properties.js`);
 const { checkFixture } = require(`../../tests/fixture-valid.js`);
-const { Channel } = require(`../../lib/model.js`);
+const { CoarseChannel } = require(`../../lib/model.js`);
 
 /**
  * Takes the input from the fixture editor client side script and creates a pull request with the new fixture.
- * @param {!object} request Passed from Express.
- * @param {!object} response Passed from Express.
+ * @param {object} request Passed from Express.
+ * @param {object} response Passed from Express.
  */
 module.exports = function addFixtures(request, response) {
   let pullRequestUrl;
@@ -222,7 +222,7 @@ function addAvailableChannel(fixKey, availableChannels, chId) {
         channel.capabilities = capabilities;
       }
     }
-    else if (prop === `fineChannelAliases` && from.resolution > Channel.RESOLUTION_8BIT) {
+    else if (prop === `fineChannelAliases` && from.resolution > CoarseChannel.RESOLUTION_8BIT) {
       channel.fineChannelAliases = [];
     }
     else if (prop === `dmxValueResolution`) {
@@ -274,7 +274,7 @@ function getChannelKey(channel, fixKey) {
 }
 
 function getFineChannelAlias(channelKey, resolution) {
-  return `${channelKey} fine${resolution > Channel.RESOLUTION_16BIT ? `^${resolution - 1}` : ``}`;
+  return `${channelKey} fine${resolution > CoarseChannel.RESOLUTION_16BIT ? `^${resolution - 1}` : ``}`;
 }
 
 function getCapabilities(channel) {
@@ -329,8 +329,8 @@ function addMode(fixKey, from) {
 // helper functions
 
 /**
- * @param {?object} object The object to check.
- * @returns {!boolean} Whether the given object literal has no own properties, i.e. that its JSON equivalent is '{}'
+ * @param {object|null} object The object to check.
+ * @returns {boolean} Whether the given object literal has no own properties, i.e. that its JSON equivalent is '{}'
  */
 function isEmptyObject(object) {
   return JSON.stringify(object) === `{}`;
@@ -338,8 +338,8 @@ function isEmptyObject(object) {
 
 /**
  * @param {*} prop The property key to check.
- * @param {?object} object The object to check. If it's null, false is returned.
- * @returns {!boolean} Whether the given property key is present in the object and its value is non-null and non-empty.
+ * @param {object|null} object The object to check. If it's null, false is returned.
+ * @returns {boolean} Whether the given property key is present in the object and its value is non-null and non-empty.
  */
 function propExistsIn(prop, object) {
   const objectValid = object !== undefined && object !== null;
@@ -352,8 +352,8 @@ function getComboboxInput(prop, from) {
 }
 
 /**
- * @param {!string} str The string to slugify.
- * @returns {!string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
+ * @param {string} str The string to slugify.
+ * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(str) {
   return str.toLowerCase().replace(/[^a-z0-9-]+/g, ` `).trim().replace(/\s+/g, `-`);
