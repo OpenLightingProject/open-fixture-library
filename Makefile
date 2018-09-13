@@ -22,7 +22,7 @@ test-fixtures: tests/test-fixtures.json tests/test-fixtures.md
 
 schemas: $(dereferenced-schema-files)
 
-model-docs: docs/model.md
+model-docs: docs/model-api.md
 
 nuxt-build:
 	$$(npm bin)/nuxt build
@@ -66,7 +66,12 @@ cli/make-dereferenced-schemas.js
 	node cli/make-dereferenced-schemas.js "$*.json"
 	@echo ""
 
-docs/model.md: \
+
+jsdoc2md := $(shell echo $$(npm bin)/jsdoc2md)
+jsdoc2md-cmd := $(jsdoc2md) --configure jsdoc-config.json --private --files lib/model/*.mjs > docs/model-api.md
+
+docs/model-api.md: \
 lib/model/*.mjs \
 jsdoc-config.json
-	$$(npm bin)/jsdoc2md --configure jsdoc-config.json --private --files lib/model/*.mjs > docs/model-api.md
+	@test -f $(jsdoc2md) && (echo "$(jsdoc2md-cmd)" && $(jsdoc2md-cmd)) || echo "$(jsdoc2md) not available"
+	@echo ""
