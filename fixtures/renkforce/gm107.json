@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "GM107",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Edgar Aichinger"],
     "createDate": "2018-09-13",
@@ -11,6 +11,17 @@
       "date": "2018-09-13",
       "comment": "created by Q Light Controller Plus (version 4.11.1 GIT)"
     }
+  },
+  "links": {
+    "manual": [
+      "http://www.produktinfo.conrad.com/datenblaetter/1300000-1399999/001368692-an-01-ml-RENKFORCE_GM107_LED_MOVING_H_de_en_fr_nl.pdf"
+    ],
+    "productPage": [
+      "https://www.conrad.at/de/led-moving-head-renkforce-gm107-anzahl-leds7-x-10-w-1368692.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=dFLmssf53rc"
+    ]
   },
   "physical": {
     "dimensions": [180, 243, 180],
