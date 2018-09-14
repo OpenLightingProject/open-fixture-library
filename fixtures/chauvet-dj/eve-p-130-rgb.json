@@ -18,7 +18,7 @@
   "physical": {
     "dimensions": [245, 305, 220],
     "weight": 3.5,
-    "power": 111,
+    "power": 122,
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
       "type": "13 red LEDs, 13 green LEDs, 14 blue LEDs",
@@ -63,7 +63,8 @@
         },
         {
           "dmxRange": [16, 255],
-          "type": "ColorPreset"
+          "type": "ColorPreset",
+          "helpWanted": "Which colors can be selected at which DMX values?"
         }
       ]
     },
