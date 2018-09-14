@@ -426,7 +426,7 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": "eachPixelXYZ",
+          "repeatFor": "eachPixelABC",
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -443,7 +443,7 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": "eachPixelXYZ",
+          "repeatFor": "eachPixelABC",
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
