@@ -1,0 +1,229 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EVE P-130 RGB",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2018-09-14",
+    "lastModifyDate": "2018-09-14"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2017/10/EVE_P-130_RGB_UM_Rev3_WO.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/eve-p-130-rgb/"
+    ]
+  },
+  "physical": {
+    "dimensions": [245, 305, 220],
+    "weight": 3.5,
+    "power": 111,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "13 red LEDs, 13 green LEDs, 14 blue LEDs",
+      "lumens": 1390
+    },
+    "lens": {
+      "degreesMinMax": [25, 45]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "34Hz"
+        }
+      ]
+    },
+    "Auto Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Effect",
+          "effectName": "0–100%"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Effect",
+          "effectName": "100–0%"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Effect",
+          "effectName": "100–0–100%"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "7 colors"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "18 colors"
+        },
+        {
+          "dmxRange": [224, 249],
+          "type": "Effect",
+          "effectName": "Sound-active program 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound-active program 2",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "off"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Dimmer Speed Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction",
+          "comment": "Dimmer speed set from display"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Maintenance",
+          "parameter": "off",
+          "comment": "Dimmer speed"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Maintenance",
+          "parameter": "fast",
+          "comment": "Dimmer speed"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Maintenance",
+          "parameter": "50%",
+          "comment": "Dimmer speed"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Maintenance",
+          "parameter": "slow",
+          "comment": "Dimmer speed"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel RGB",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4-channel DRGB",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macros",
+        "Strobe",
+        "Auto Programs",
+        "Program Speed",
+        "Dimmer Speed Mode"
+      ]
+    }
+  ]
+}
