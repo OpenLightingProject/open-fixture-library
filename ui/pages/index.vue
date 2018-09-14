@@ -103,7 +103,7 @@ export default {
           key: fixtureKey,
           name: getFixtureName(fixtureKey),
           action: register.filesystem[fixtureKey].lastAction,
-          date: new Date(register.filesystem[fixtureKey].lastModifyDate)
+          date: new Date(register.filesystem[fixtureKey].lastActionDate)
         })
       ),
       topContributors: Object.keys(register.contributors).slice(0, 5).map(
