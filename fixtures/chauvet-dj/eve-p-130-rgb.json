@@ -83,54 +83,82 @@
       ]
     },
     "Auto Programs": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Speed / Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [32, 63],
           "type": "Effect",
-          "effectName": "0–100%"
+          "effectName": "0–100%",
+          "switchChannels": {
+            "Speed / Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [64, 95],
           "type": "Effect",
-          "effectName": "100–0%"
+          "effectName": "100–0%",
+          "switchChannels": {
+            "Speed / Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [96, 127],
           "type": "Effect",
-          "effectName": "100–0–100%"
+          "effectName": "100–0–100%",
+          "switchChannels": {
+            "Speed / Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [128, 159],
           "type": "Effect",
-          "effectPreset": "ColorFade"
+          "effectPreset": "ColorFade",
+          "switchChannels": {
+            "Speed / Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [160, 191],
           "type": "Effect",
           "effectPreset": "ColorJump",
-          "comment": "7 colors"
+          "comment": "7 colors",
+          "switchChannels": {
+            "Speed / Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [192, 223],
           "type": "Effect",
           "effectPreset": "ColorJump",
-          "comment": "18 colors"
+          "comment": "18 colors",
+          "switchChannels": {
+            "Speed / Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [224, 249],
           "type": "Effect",
           "effectName": "Sound-active program 1",
-          "soundControlled": true
+          "soundControlled": true,
+          "switchChannels": {
+            "Speed / Sensitivity": "Sound Sensitivity"
+          }
         },
         {
           "dmxRange": [250, 255],
           "type": "Effect",
           "effectName": "Sound-active program 2",
-          "soundControlled": true
+          "soundControlled": true,
+          "switchChannels": {
+            "Speed / Sensitivity": "Sound Sensitivity"
+          }
         }
       ]
     },
@@ -221,7 +249,7 @@
         "Color Macros",
         "Strobe",
         "Auto Programs",
-        "Program Speed",
+        "Speed / Sensitivity",
         "Dimmer Speed Mode"
       ]
     }
