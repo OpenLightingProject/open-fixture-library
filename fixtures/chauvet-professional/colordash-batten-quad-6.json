@@ -34,6 +34,13 @@
       "type": "Fixed"
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["6", "5", "4", "3", "2", "1"]
+      ]
+    ]
+  },
   "availableChannels": {
     "Red": {
       "capability": {
@@ -305,30 +312,6 @@
         }
       ]
     },
-    "Red $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Amber $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
-      }
-    },
     "Auto Programs 2": {
       "name": "Auto Programs",
       "capabilities": [
@@ -404,6 +387,32 @@
       ]
     }
   },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    }
+  },
   "modes": [
     {
       "name": "4-channel",
@@ -447,20 +456,34 @@
       "name": "24-channel",
       "shortName": "24ch",
       "channels": [
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
-        "Amber $pixelKey"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
       ]
     },
     {
       "name": "28-channel",
       "shortName": "28ch",
       "channels": [
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
-        "Amber $pixelKey",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        },
         "Auto Programs 2",
         "Program Speed",
         "Dimmer",
