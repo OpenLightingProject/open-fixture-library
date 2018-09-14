@@ -26,7 +26,7 @@
       "lumens": 5048
     },
     "lens": {
-      "degreesMinMax": [35, 35]
+      "degreesMinMax": [25, 45]
     },
     "focus": {
       "type": "Fixed"
@@ -48,8 +48,8 @@
           "dmxRange": [16, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "0Hz",
+          "speedEnd": "25Hz"
         }
       ]
     },
@@ -76,37 +76,56 @@
       ]
     },
     "Auto Programs": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Strobe"
+          }
         },
         {
           "dmxRange": [32, 95],
           "type": "Effect",
-          "effectName": "0–100%"
+          "effectName": "0–100%",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [96, 159],
           "type": "Effect",
-          "effectName": "100–0%"
+          "effectName": "100–0%",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [160, 223],
           "type": "Effect",
-          "effectName": "100–0–100%"
+          "effectName": "100–0–100%",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [224, 240],
           "type": "Effect",
           "effectName": "Sound-active program 1",
-          "soundControlled": true
+          "soundControlled": true,
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Sound Sensitivity"
+          }
         },
         {
           "dmxRange": [241, 255],
           "type": "Effect",
           "effectName": "Sound-active program 2",
-          "soundControlled": true
+          "soundControlled": true,
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Sound Sensitivity"
+          }
         }
       ]
     },
@@ -165,7 +184,7 @@
       "shortName": "4ch",
       "channels": [
         "Dimmer",
-        "Strobe",
+        "Strobe / Speed / Sensitivity",
         "Auto Programs",
         "Dimmer Speed Mode"
       ]
