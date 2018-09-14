@@ -1,0 +1,198 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "GM107",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Edgar Aichinger"],
+    "createDate": "2018-09-13",
+    "lastModifyDate": "2018-09-13",
+    "importPlugin": {
+      "plugin": "qlcplus_4.11.2",
+      "date": "2018-09-13",
+      "comment": "created by Q Light Controller Plus (version 4.11.1 GIT)"
+    }
+  },
+  "links": {
+    "manual": [
+      "http://www.produktinfo.conrad.com/datenblaetter/1300000-1399999/001368692-an-01-ml-RENKFORCE_GM107_LED_MOVING_H_de_en_fr_nl.pdf"
+    ],
+    "productPage": [
+      "https://www.conrad.at/de/led-moving-head-renkforce-gm107-anzahl-leds7-x-10-w-1368692.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=tshDiXa8DkE"
+    ],
+    "other": [
+      "https://github.com/OpenLightingProject/open-fixture-library/pull/612"
+    ]
+  },
+  "physical": {
+    "dimensions": [180, 243, 180],
+    "weight": 2.65,
+    "power": 70,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 4500
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 180
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan/Tilt speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Strobe effect": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "Manual control"
+        },
+        {
+          "dmxRange": [1, 84],
+          "type": "Effect",
+          "effectName": "Auto mode",
+          "speed": "slow"
+        },
+        {
+          "dmxRange": [85, 169],
+          "type": "Effect",
+          "effectName": "Auto mode",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [170, 255],
+          "type": "Effect",
+          "effectName": "Sound to light",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 254],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Maintenance",
+          "comment": "Reset"
+        }
+      ]
+    },
+    "Color mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "Color intensity channels active"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorPreset",
+          "comment": "Rainbow Effect",
+          "helpWanted": "Which colors can be selected at which DMX values?"
+        }
+      ]
+    },
+    "Color selection": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Rainbow Effect",
+        "helpWanted": "Which colors can be selected at which DMX values?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt speed",
+        "Strobe effect",
+        "Color selection"
+      ]
+    },
+    {
+      "name": "13-channel",
+      "shortName": "13ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt speed",
+        "Strobe effect",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color mode",
+        "Program",
+        "Reset"
+      ]
+    }
+  ]
+}
