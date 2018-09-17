@@ -12,7 +12,6 @@
       "comment": "GDTF fixture type ID: 00 1B 21 63 BA 95 00 00 8F 2D C1 C7 D0 41 38 46"
     }
   },
-  "comment": "Fixture has two patch addresses: one for basic functionality, one for pixel engine",
   "links": {
     "manual": [
       "https://www.claypaky.it/media/documents/HR_ShowBatten100_Manual_05.2016_EN.pdf",
@@ -25,6 +24,9 @@
     "video": [
       "https://www.youtube.com/watch?v=2n3CmtSITH0"
     ]
+  },
+  "matrix": {
+    "pixelCount": [10, 1, 1]
   },
   "availableChannels": {
     "Red": {
@@ -841,211 +843,6 @@
         }
       ]
     },
-    "R 3": {
-      "name": "R",
-      "fineChannelAliases": ["R 3 fine"],
-      "highlightValue": 65535,
-      "capability": {
-        "type": "NoFunction"
-      }
-    },
-    "R 4": {
-      "name": "R",
-      "fineChannelAliases": ["R 4 fine"],
-      "highlightValue": 65535,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "brightness": "0%",
-          "comment": "min R"
-        },
-        {
-          "dmxRange": [1, 65534],
-          "type": "ColorIntensity",
-          "color": "Red"
-        },
-        {
-          "dmxRange": [65535, 65535],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "brightness": "0%",
-          "comment": "max R"
-        }
-      ]
-    },
-    "G 3": {
-      "name": "G",
-      "fineChannelAliases": ["G 3 fine"],
-      "highlightValue": 65535,
-      "capability": {
-        "type": "NoFunction"
-      }
-    },
-    "G 4": {
-      "name": "G",
-      "fineChannelAliases": ["G 4 fine"],
-      "highlightValue": 65535,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Green",
-          "brightness": "0%",
-          "comment": "min G"
-        },
-        {
-          "dmxRange": [1, 65534],
-          "type": "ColorIntensity",
-          "color": "Green"
-        },
-        {
-          "dmxRange": [65535, 65535],
-          "type": "ColorIntensity",
-          "color": "Green",
-          "brightness": "0%",
-          "comment": "max G"
-        }
-      ]
-    },
-    "B 3": {
-      "name": "B",
-      "fineChannelAliases": ["B 3 fine"],
-      "highlightValue": 65535,
-      "capability": {
-        "type": "NoFunction"
-      }
-    },
-    "B 4": {
-      "name": "B",
-      "fineChannelAliases": ["B 4 fine"],
-      "highlightValue": 65535,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Blue",
-          "brightness": "0%",
-          "comment": "min B"
-        },
-        {
-          "dmxRange": [1, 65534],
-          "type": "ColorIntensity",
-          "color": "Blue"
-        },
-        {
-          "dmxRange": [65535, 65535],
-          "type": "ColorIntensity",
-          "color": "Blue",
-          "brightness": "0%",
-          "comment": "max B"
-        }
-      ]
-    },
-    "W 3": {
-      "name": "W",
-      "fineChannelAliases": ["W 3 fine"],
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "White",
-          "brightness": "0%",
-          "comment": "min W"
-        },
-        {
-          "dmxRange": [1, 65534],
-          "type": "ColorIntensity",
-          "color": "White"
-        },
-        {
-          "dmxRange": [65535, 65535],
-          "type": "ColorIntensity",
-          "color": "White",
-          "brightness": "0%",
-          "comment": "max W"
-        }
-      ]
-    },
-    "R 5": {
-      "name": "R",
-      "defaultValue": 255,
-      "highlightValue": 255,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "brightness": "0%",
-          "comment": "min"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "ColorIntensity",
-          "color": "Red"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "brightness": "100%",
-          "comment": "max"
-        }
-      ]
-    },
-    "G 5": {
-      "name": "G",
-      "defaultValue": 255,
-      "highlightValue": 255,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Green",
-          "brightness": "0%",
-          "comment": "min"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "ColorIntensity",
-          "color": "Green"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "ColorIntensity",
-          "color": "Green",
-          "brightness": "100%",
-          "comment": "max"
-        }
-      ]
-    },
-    "B 5": {
-      "name": "B",
-      "defaultValue": 255,
-      "highlightValue": 255,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Blue",
-          "brightness": "0%",
-          "comment": "min"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "ColorIntensity",
-          "color": "Blue"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "ColorIntensity",
-          "color": "Blue",
-          "brightness": "100%",
-          "comment": "max"
-        }
-      ]
-    },
     "Dim 2": {
       "name": "Dim",
       "highlightValue": 255,
@@ -1105,35 +902,109 @@
           "comment": "Open"
         }
       ]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightness": "0%",
+          "comment": "min R"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightness": "0%",
+          "comment": "max R"
+        }
+      ]
     },
-    "W 4": {
-      "name": "W",
+    "Green $pixelKey": {
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightness": "0%",
+          "comment": "min G"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightness": "0%",
+          "comment": "max G"
+        }
+      ]
+    },
+    "Blue $pixelKey": {
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightness": "0%",
+          "comment": "min B"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightness": "0%",
+          "comment": "max B"
+        }
+      ]
+    },
+    "White $pixelKey": {
       "capabilities": [
         {
           "dmxRange": [0, 0],
           "type": "ColorIntensity",
           "color": "White",
           "brightness": "0%",
-          "comment": "min"
+          "comment": "min W"
         },
         {
-          "dmxRange": [1, 254],
+          "dmxRange": [1, 65534],
           "type": "ColorIntensity",
           "color": "White"
         },
         {
-          "dmxRange": [255, 255],
+          "dmxRange": [65535, 65535],
           "type": "ColorIntensity",
           "color": "White",
-          "brightness": "100%",
-          "comment": "max"
+          "brightness": "0%",
+          "comment": "max W"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "Basic Engine (18 ch)",
+      "name": "Basic Engine",
+      "shortName": "18ch",
       "channels": [
         "Red",
         "Red fine",
@@ -1156,7 +1027,8 @@
       ]
     },
     {
-      "name": "Pixel Engine RGB (48 ch)",
+      "name": "Pixel Engine RGB",
+      "shortName": "48ch",
       "channels": [
         "Red",
         "Red fine",
@@ -1176,13 +1048,21 @@
         "T fine",
         "Ctrl",
         "Fixture Global Reset",
-        "R 5",
-        "G 5",
-        "B 5"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     },
     {
-      "name": "Pixel Engine RGBW (58 ch)",
+      "name": "Pixel Engine RGBW",
+      "shortName": "58ch",
       "channels": [
         "Red",
         "Red fine",
@@ -1202,10 +1082,17 @@
         "T fine",
         "Ctrl",
         "Fixture Global Reset",
-        "R 5",
-        "G 5",
-        "B 5",
-        "W 4"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
       ]
     }
   ]
