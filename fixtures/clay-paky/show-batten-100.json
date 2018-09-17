@@ -25,6 +25,24 @@
       "https://www.youtube.com/watch?v=2n3CmtSITH0"
     ]
   },
+  "physical": {
+    "dimensions": [1000, 100, 186],
+    "weight": 10,
+    "power": 170,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "10x 15W RGBW LED (Osram Ostar SMT LE RTDUW S2W)",
+      "colorTemperature": 6000,
+      "lumens": 6800
+    },
+    "lens": {
+      "degreesMinMax": [10, 43]
+    },
+    "focus": {
+      "type": "Head",
+      "tiltMax": 240
+    }
+  },
   "matrix": {
     "pixelCount": [10, 1, 1]
   },
