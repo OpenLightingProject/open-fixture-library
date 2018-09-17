@@ -557,57 +557,28 @@
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
       "defaultValue": 32768,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "Tilt",
-          "angle": "-120deg",
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 32767],
-          "type": "Tilt",
-          "angleStart": "0deg",
-          "angleEnd": "1deg"
-        },
-        {
-          "dmxRange": [32768, 32768],
-          "type": "Tilt",
-          "angle": "0deg",
-          "comment": "Center"
-        },
-        {
-          "dmxRange": [32769, 65534],
-          "type": "Tilt",
-          "angleStart": "0deg",
-          "angleEnd": "1deg"
-        },
-        {
-          "dmxRange": [65535, 65535],
-          "type": "Tilt",
-          "angle": "120deg",
-          "comment": "Max"
-        }
-      ]
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "240deg"
+      }
     },
     "Function": {
       "capabilities": [
         {
           "dmxRange": [0, 102],
-          "type": "Maintenance",
-          "parameter": "-12000%",
-          "comment": "Unused Range"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [103, 105],
           "type": "Maintenance",
-          "parameter": "0%",
+          "hold": "5s",
           "comment": "Enable Pixel Mapping"
         },
         {
           "dmxRange": [106, 255],
           "type": "Maintenance",
-          "parameter": "0%",
+          "hold": "5s",
           "comment": "Free"
         }
       ]
@@ -616,26 +587,24 @@
       "capabilities": [
         {
           "dmxRange": [0, 25],
-          "type": "Maintenance",
-          "parameter": "0%",
-          "comment": "Unused Range"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [26, 76],
           "type": "Maintenance",
-          "parameter": "0%",
+          "hold": "5s",
           "comment": "Zoom Reset"
         },
         {
           "dmxRange": [77, 127],
           "type": "Maintenance",
-          "parameter": "0%",
+          "hold": "5s",
           "comment": "Tilt Reset"
         },
         {
           "dmxRange": [128, 255],
           "type": "Maintenance",
-          "parameter": "0%",
+          "hold": "5s",
           "comment": "Tilt and Zoom Reset"
         }
       ]
