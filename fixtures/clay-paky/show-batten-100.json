@@ -31,105 +31,35 @@
   "availableChannels": {
     "Red": {
       "fineChannelAliases": ["Red fine"],
-      "defaultValue": 65535,
       "highlightValue": 65535,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "brightness": "0%",
-          "comment": "min"
-        },
-        {
-          "dmxRange": [1, 65279],
-          "type": "ColorIntensity",
-          "color": "Red"
-        },
-        {
-          "dmxRange": [65280, 65535],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "brightness": "100%",
-          "comment": "max"
-        }
-      ]
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green": {
       "fineChannelAliases": ["Green fine"],
-      "defaultValue": 65535,
       "highlightValue": 65535,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Green",
-          "brightness": "0%",
-          "comment": "min"
-        },
-        {
-          "dmxRange": [1, 65279],
-          "type": "ColorIntensity",
-          "color": "Green"
-        },
-        {
-          "dmxRange": [65280, 65535],
-          "type": "ColorIntensity",
-          "color": "Green",
-          "brightness": "100%",
-          "comment": "max"
-        }
-      ]
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue": {
       "fineChannelAliases": ["Blue fine"],
-      "defaultValue": 65535,
       "highlightValue": 65535,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Blue",
-          "brightness": "0%",
-          "comment": "min"
-        },
-        {
-          "dmxRange": [1, 65534],
-          "type": "ColorIntensity",
-          "color": "Blue"
-        },
-        {
-          "dmxRange": [65535, 65535],
-          "type": "ColorIntensity",
-          "color": "Blue",
-          "brightness": "100%",
-          "comment": "max"
-        }
-      ]
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White": {
       "fineChannelAliases": ["White fine"],
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "White",
-          "brightness": "0%",
-          "comment": "min"
-        },
-        {
-          "dmxRange": [1, 65534],
-          "type": "ColorIntensity",
-          "color": "White"
-        },
-        {
-          "dmxRange": [65535, 65535],
-          "type": "ColorIntensity",
-          "color": "White",
-          "brightness": "100%",
-          "comment": "max"
-        }
-      ]
+      "highlightValue": 65535,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "CTO": {
       "capabilities": [
@@ -906,99 +836,32 @@
   },
   "templateChannels": {
     "Red $pixelKey": {
-      "highlightValue": 65535,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "brightness": "0%",
-          "comment": "min R"
-        },
-        {
-          "dmxRange": [1, 65534],
-          "type": "ColorIntensity",
-          "color": "Red"
-        },
-        {
-          "dmxRange": [65535, 65535],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "brightness": "0%",
-          "comment": "max R"
-        }
-      ]
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "Green $pixelKey": {
-      "highlightValue": 65535,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Green",
-          "brightness": "0%",
-          "comment": "min G"
-        },
-        {
-          "dmxRange": [1, 65534],
-          "type": "ColorIntensity",
-          "color": "Green"
-        },
-        {
-          "dmxRange": [65535, 65535],
-          "type": "ColorIntensity",
-          "color": "Green",
-          "brightness": "0%",
-          "comment": "max G"
-        }
-      ]
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "Blue $pixelKey": {
-      "highlightValue": 65535,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Blue",
-          "brightness": "0%",
-          "comment": "min B"
-        },
-        {
-          "dmxRange": [1, 65534],
-          "type": "ColorIntensity",
-          "color": "Blue"
-        },
-        {
-          "dmxRange": [65535, 65535],
-          "type": "ColorIntensity",
-          "color": "Blue",
-          "brightness": "0%",
-          "comment": "max B"
-        }
-      ]
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White $pixelKey": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "White",
-          "brightness": "0%",
-          "comment": "min W"
-        },
-        {
-          "dmxRange": [1, 65534],
-          "type": "ColorIntensity",
-          "color": "White"
-        },
-        {
-          "dmxRange": [65535, 65535],
-          "type": "ColorIntensity",
-          "color": "White",
-          "brightness": "0%",
-          "comment": "max W"
-        }
-      ]
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     }
   },
   "modes": [
