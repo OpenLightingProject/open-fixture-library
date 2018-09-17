@@ -1,0 +1,2417 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Show-Batten 100",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2018-05-16",
+    "lastModifyDate": "2018-08-09",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2018-09-17",
+      "comment": "GDTF fixture type ID: 00 1B 21 63 BA 95 00 00 8F 2D C1 C7 D0 41 38 46"
+    }
+  },
+  "comment": "Fixture has two patch adresses - one for basic functionality, one for pixel engine",
+  "availableChannels": {
+    "R": {
+      "fineChannelAliases": ["R fine"],
+      "defaultValue": 65535,
+      "highlightValue": 65535,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "R 2": {
+      "name": "R",
+      "fineChannelAliases": ["R 2 fine"],
+      "defaultValue": 65535,
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightness": "0%",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 65279],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [65280, 65535],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightness": "100%",
+          "comment": "max"
+        }
+      ]
+    },
+    "G": {
+      "fineChannelAliases": ["G fine"],
+      "defaultValue": 65535,
+      "highlightValue": 65535,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "G 2": {
+      "name": "G",
+      "fineChannelAliases": ["G 2 fine"],
+      "defaultValue": 65535,
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightness": "0%",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 65279],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [65280, 65535],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightness": "100%",
+          "comment": "max"
+        }
+      ]
+    },
+    "B": {
+      "fineChannelAliases": ["B fine"],
+      "defaultValue": 65535,
+      "highlightValue": 65535,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "B 2": {
+      "name": "B",
+      "fineChannelAliases": ["B 2 fine"],
+      "defaultValue": 65535,
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightness": "0%",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightness": "100%",
+          "comment": "max"
+        }
+      ]
+    },
+    "W": {
+      "fineChannelAliases": ["W fine"],
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "W 2": {
+      "name": "W",
+      "fineChannelAliases": ["W 2 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightness": "0%",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightness": "100%",
+          "comment": "max"
+        }
+      ]
+    },
+    "CTO": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "ColorTemperature",
+          "colorTemperature": "0K",
+          "comment": "Unused Range"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "ColorTemperature",
+          "colorTemperature": "8000K",
+          "comment": "CT 8000K"
+        },
+        {
+          "dmxRange": [10, 254],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8000K",
+          "colorTemperatureEnd": "2500K",
+          "comment": "CT 8000K - 2500K"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "2500K",
+          "comment": "CT 2500K"
+        }
+      ]
+    },
+    "Color Macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ColorPreset",
+          "comment": "Unused Range",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R 2",
+            "0_Body_Basic_ColorRGB1 fine": "R 2 fine",
+            "0_Body_Basic_ColorRGB2": "G 2",
+            "0_Body_Basic_ColorRGB2 fine": "G 2 fine",
+            "0_Body_Basic_ColorRGB3": "B 2",
+            "0_Body_Basic_ColorRGB3 fine": "B 2 fine",
+            "0_Body_Basic_ColorRGB5": "W 2",
+            "0_Body_Basic_ColorRGB5 fine": "W 2 fine",
+            "1_Body_RGB_ColorRGB1": "R 4",
+            "1_Body_RGB_ColorRGB1 fine": "R 4 fine",
+            "1_Body_RGB_ColorRGB3": "B 4",
+            "1_Body_RGB_ColorRGB3 fine": "B 4 fine"
+          }
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "ColorPreset",
+          "colors": ["#e4000a"],
+          "comment": "Red",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "ColorPreset",
+          "colors": ["#00e400"],
+          "comment": "Green",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "ColorPreset",
+          "colors": ["#0000e4"],
+          "comment": "Blue",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "ColorPreset",
+          "colors": ["#00e4e4"],
+          "comment": "Cyan",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "ColorPreset",
+          "colors": ["#e8d100"],
+          "comment": "Yellow",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "ColorPreset",
+          "colors": ["#e403e4"],
+          "comment": "Magenta",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "ColorPreset",
+          "colors": ["#7fe4e4"],
+          "comment": "White 7000K",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "ColorPreset",
+          "colors": ["#e4dabe"],
+          "comment": "White 3700K",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "ColorPreset",
+          "colors": ["#cae4e4"],
+          "comment": "White 5000K",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "ColorPreset",
+          "colors": ["#000000"],
+          "comment": "Black",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [20, 22],
+          "type": "ColorPreset",
+          "colors": ["#e0dc00"],
+          "comment": "Medium Yellow",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [23, 26],
+          "type": "ColorPreset",
+          "colors": ["#e7c08b"],
+          "comment": "Straw Tint",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [27, 28],
+          "type": "ColorPreset",
+          "colors": ["#9b654d"],
+          "comment": "Surprise Peach",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "ColorPreset",
+          "colors": ["#e50009"],
+          "comment": "Fire",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "ColorPreset",
+          "colors": ["#f99119"],
+          "comment": "Medium Amber",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "ColorPreset",
+          "colors": ["#e46300"],
+          "comment": "Gold Amber",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [32, 34],
+          "type": "ColorPreset",
+          "colors": ["#ee1a00"],
+          "comment": "Dark Amber",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [35, 44],
+          "type": "ColorPreset",
+          "colors": ["#db5431"],
+          "comment": "Sunrise Red",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "ColorPreset",
+          "colors": ["#e0a9cb"],
+          "comment": "Light Pink",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [46, 48],
+          "type": "ColorPreset",
+          "colors": ["#e086b9"],
+          "comment": "Medium Pink",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [49, 61],
+          "type": "ColorPreset",
+          "colors": ["#d360cc"],
+          "comment": "Pink Carnation",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [62, 67],
+          "type": "ColorPreset",
+          "colors": ["#9583ce"],
+          "comment": "Light Lavender",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [68, 77],
+          "type": "ColorPreset",
+          "colors": ["#6c1cbe"],
+          "comment": "Lavender",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [78, 88],
+          "type": "ColorPreset",
+          "colors": ["#0060cd"],
+          "comment": "Sky Blue",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [89, 99],
+          "type": "ColorPreset",
+          "colors": ["#002cbd"],
+          "comment": "Just Blue",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "colors": ["#006d21"],
+          "comment": "Dark Yellow Green",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [110, 111],
+          "type": "ColorPreset",
+          "colors": ["#d6dc2d"],
+          "comment": "Spring Yellow",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [112, 112],
+          "type": "ColorPreset",
+          "colors": ["#f1c45b"],
+          "comment": "Light Amber",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [113, 113],
+          "type": "ColorPreset",
+          "colors": ["#d7d1b9"],
+          "comment": "Straw",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [114, 114],
+          "type": "ColorPreset",
+          "colors": ["#f7af00"],
+          "comment": "Deep Amber",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [115, 116],
+          "type": "ColorPreset",
+          "colors": ["#ef7f00"],
+          "comment": "Orange",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [117, 117],
+          "type": "ColorPreset",
+          "colors": ["#f980a9"],
+          "comment": "Light Rose",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [118, 118],
+          "type": "ColorPreset",
+          "colors": ["#eda18e"],
+          "comment": "English Rose",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [119, 119],
+          "type": "ColorPreset",
+          "colors": ["#f892b1"],
+          "comment": "Light Salmon",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [120, 120],
+          "type": "ColorPreset",
+          "colors": ["#e984c9"],
+          "comment": "Middle Rose",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [121, 122],
+          "type": "ColorPreset",
+          "colors": ["#ec47b6"],
+          "comment": "Dark Pink",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [123, 124],
+          "type": "ColorPreset",
+          "colors": ["#c3005a"],
+          "comment": "Magenta (2) (Magenta)",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "ColorPreset",
+          "colors": ["#00afbe"],
+          "comment": "Peacock Blue",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [126, 126],
+          "type": "ColorPreset",
+          "colors": ["#008192"],
+          "comment": "Med Blue Green",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "ColorPreset",
+          "colors": ["#53bddf"],
+          "comment": "Steel Blue",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorPreset",
+          "colors": ["#003987"],
+          "comment": "Light Blue",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [129, 130],
+          "type": "ColorPreset",
+          "colors": ["#0000a8"],
+          "comment": "Dark Blue",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [131, 133],
+          "type": "ColorPreset",
+          "colors": ["#53d655"],
+          "comment": "Leaf Green",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [134, 135],
+          "type": "ColorPreset",
+          "colors": ["#00aa55"],
+          "comment": "Dark Green",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [136, 137],
+          "type": "ColorPreset",
+          "colors": ["#7e008f"],
+          "comment": "Mauve",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [138, 141],
+          "type": "ColorPreset",
+          "colors": ["#cc009e"],
+          "comment": "Bright Pink",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [142, 144],
+          "type": "ColorPreset",
+          "colors": ["#004eb6"],
+          "comment": "Medium Blue",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [145, 145],
+          "type": "ColorPreset",
+          "colors": ["#e30000"],
+          "comment": "Deep Golden Amber",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [146, 146],
+          "type": "ColorPreset",
+          "colors": ["#af95cb"],
+          "comment": "Pale Lavender",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [147, 148],
+          "type": "ColorPreset",
+          "colors": ["#8472db"],
+          "comment": "Special Lavender",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [149, 150],
+          "type": "ColorPreset",
+          "colors": ["#007100"],
+          "comment": "Primary Green",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [151, 156],
+          "type": "ColorPreset",
+          "colors": ["#007ad1"],
+          "comment": "Bright Blue",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [157, 161],
+          "type": "ColorPreset",
+          "colors": ["#eb9b6f"],
+          "comment": "Apricot",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [162, 167],
+          "type": "ColorPreset",
+          "colors": ["#f2b6b4"],
+          "comment": "Pale Gold",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [168, 171],
+          "type": "ColorPreset",
+          "colors": ["#df6300"],
+          "comment": "Deep Orange",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [172, 173],
+          "type": "ColorPreset",
+          "colors": ["#edc3c4"],
+          "comment": "Bastard Amber",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [174, 174],
+          "type": "ColorPreset",
+          "colors": ["#e2001f"],
+          "comment": "Flame Red",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [175, 177],
+          "type": "ColorPreset",
+          "colors": ["#0077d8"],
+          "comment": "Daylight Blue",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [178, 179],
+          "type": "ColorPreset",
+          "colors": ["#beb1d6"],
+          "comment": "Lilac Tint",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [180, 183],
+          "type": "ColorPreset",
+          "colors": ["#996ebb"],
+          "comment": "Deep Lavender",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [184, 190],
+          "type": "ColorPreset",
+          "colors": ["#4c8bd7"],
+          "comment": "Dark Steel Blue",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [191, 206],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Congo Blue",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "ColorPreset",
+          "colors": ["#004fbf"],
+          "comment": "Alice Blue",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [208, 208],
+          "type": "ColorPreset",
+          "colors": ["#dbad6a"],
+          "comment": "Dirty White",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        },
+        {
+          "dmxRange": [209, 255],
+          "type": "ColorPreset",
+          "comment": "White",
+          "switchChannels": {
+            "0_Body_Basic_ColorRGB1": "R",
+            "0_Body_Basic_ColorRGB1 fine": "R fine",
+            "0_Body_Basic_ColorRGB2": "G",
+            "0_Body_Basic_ColorRGB2 fine": "G fine",
+            "0_Body_Basic_ColorRGB3": "B",
+            "0_Body_Basic_ColorRGB3 fine": "B fine",
+            "0_Body_Basic_ColorRGB5": "W",
+            "0_Body_Basic_ColorRGB5 fine": "W fine",
+            "1_Body_RGB_ColorRGB1": "R 3",
+            "1_Body_RGB_ColorRGB1 fine": "R 3 fine",
+            "1_Body_RGB_ColorRGB2": "G 3",
+            "1_Body_RGB_ColorRGB2 fine": "G 3 fine",
+            "1_Body_RGB_ColorRGB3": "B 3",
+            "1_Body_RGB_ColorRGB3 fine": "B 3 fine",
+            "1_Body_RGB_ColorRGB5": "W",
+            "1_Body_RGB_ColorRGB5 fine": "W fine"
+          }
+        }
+      ]
+    },
+    "Sh": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "1Hz",
+          "comment": "min Strobe"
+        },
+        {
+          "dmxRange": [5, 68],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [69, 69],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "24Hz",
+          "comment": "max Strobe"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open (2)"
+        },
+        {
+          "dmxRange": [75, 75],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speed": "0.5Hz",
+          "comment": "min Pulse Open"
+        },
+        {
+          "dmxRange": [76, 139],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speed": "24Hz",
+          "comment": "max Pulse Open"
+        },
+        {
+          "dmxRange": [141, 141],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speed": "24Hz",
+          "comment": "max Pulse Close"
+        },
+        {
+          "dmxRange": [142, 205],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [206, 206],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speed": "0.5Hz",
+          "comment": "max Pulse Close"
+        },
+        {
+          "dmxRange": [207, 211],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open (3)"
+        },
+        {
+          "dmxRange": [212, 224],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "1Hz",
+          "randomTiming": true,
+          "comment": "min Rndm Strobe"
+        },
+        {
+          "dmxRange": [225, 237],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "12.5Hz",
+          "randomTiming": true,
+          "comment": "50% Rndm Strobe"
+        },
+        {
+          "dmxRange": [238, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "24Hz",
+          "randomTiming": true,
+          "comment": "max Rndm Strobe"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open (4)"
+        }
+      ]
+    },
+    "Dim": {
+      "fineChannelAliases": ["Dim fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightness": "0cd",
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 16383],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd"
+        },
+        {
+          "dmxRange": [16384, 16384],
+          "type": "Intensity",
+          "brightness": "0.25cd",
+          "comment": "25%"
+        },
+        {
+          "dmxRange": [16385, 32767],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd"
+        },
+        {
+          "dmxRange": [32768, 32768],
+          "type": "Intensity",
+          "brightness": "0.5cd",
+          "comment": "50%"
+        },
+        {
+          "dmxRange": [32769, 49150],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd"
+        },
+        {
+          "dmxRange": [49151, 49151],
+          "type": "Intensity",
+          "brightness": "0.75cd",
+          "comment": "75%"
+        },
+        {
+          "dmxRange": [49152, 65534],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Intensity",
+          "brightness": "1cd",
+          "comment": "Open"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Zoom",
+          "angle": "10deg",
+          "comment": "Narrow"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Zoom",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Zoom",
+          "angle": "43deg",
+          "comment": "Wide"
+        }
+      ]
+    },
+    "T": {
+      "fineChannelAliases": ["T fine"],
+      "defaultValue": 32768,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Tilt",
+          "angle": "-120deg",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 32767],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [32768, 32768],
+          "type": "Tilt",
+          "angle": "0deg",
+          "comment": "Center"
+        },
+        {
+          "dmxRange": [32769, 65534],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Tilt",
+          "angle": "120deg",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Ctrl": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 102],
+          "type": "Maintenance",
+          "parameter": "-12000%",
+          "comment": "Unused Range"
+        },
+        {
+          "dmxRange": [103, 105],
+          "type": "Maintenance",
+          "parameter": "0%",
+          "comment": "Enable Pixel Mapping"
+        },
+        {
+          "dmxRange": [106, 255],
+          "type": "Maintenance",
+          "parameter": "0%",
+          "comment": "Free"
+        }
+      ]
+    },
+    "Fixture Global Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "Maintenance",
+          "parameter": "0%",
+          "comment": "Unused Range"
+        },
+        {
+          "dmxRange": [26, 76],
+          "type": "Maintenance",
+          "parameter": "0%",
+          "comment": "Zoom Reset"
+        },
+        {
+          "dmxRange": [77, 127],
+          "type": "Maintenance",
+          "parameter": "0%",
+          "comment": "Tilt Reset"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "parameter": "0%",
+          "comment": "Tilt and Zoom Reset"
+        }
+      ]
+    },
+    "R 3": {
+      "name": "R",
+      "fineChannelAliases": ["R 3 fine"],
+      "highlightValue": 65535,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "R 4": {
+      "name": "R",
+      "fineChannelAliases": ["R 4 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightness": "0%",
+          "comment": "min R"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightness": "0%",
+          "comment": "max R"
+        }
+      ]
+    },
+    "G 3": {
+      "name": "G",
+      "fineChannelAliases": ["G 3 fine"],
+      "highlightValue": 65535,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "G 4": {
+      "name": "G",
+      "fineChannelAliases": ["G 4 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightness": "0%",
+          "comment": "min G"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightness": "0%",
+          "comment": "max G"
+        }
+      ]
+    },
+    "B 3": {
+      "name": "B",
+      "fineChannelAliases": ["B 3 fine"],
+      "highlightValue": 65535,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "B 4": {
+      "name": "B",
+      "fineChannelAliases": ["B 4 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightness": "0%",
+          "comment": "min B"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightness": "0%",
+          "comment": "max B"
+        }
+      ]
+    },
+    "W 3": {
+      "name": "W",
+      "fineChannelAliases": ["W 3 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightness": "0%",
+          "comment": "min W"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightness": "0%",
+          "comment": "max W"
+        }
+      ]
+    },
+    "R 5": {
+      "name": "R",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightness": "0%",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightness": "100%",
+          "comment": "max"
+        }
+      ]
+    },
+    "G 5": {
+      "name": "G",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightness": "0%",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightness": "100%",
+          "comment": "max"
+        }
+      ]
+    },
+    "B 5": {
+      "name": "B",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightness": "0%",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightness": "100%",
+          "comment": "max"
+        }
+      ]
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightness": "0cd",
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Intensity",
+          "brightness": "0.25cd",
+          "comment": "25%"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Intensity",
+          "brightness": "0.5cd",
+          "comment": "50%"
+        },
+        {
+          "dmxRange": [129, 191],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd"
+        },
+        {
+          "dmxRange": [192, 192],
+          "type": "Intensity",
+          "brightness": "0.75cd",
+          "comment": "75%"
+        },
+        {
+          "dmxRange": [193, 254],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Intensity",
+          "brightness": "1cd",
+          "comment": "Open"
+        }
+      ]
+    },
+    "W 4": {
+      "name": "W",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightness": "0%",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightness": "100%",
+          "comment": "max"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic Engine (18 ch)",
+      "channels": [
+        "0_Body_Basic_ColorRGB1",
+        "0_Body_Basic_ColorRGB1 fine",
+        "0_Body_Basic_ColorRGB2",
+        "0_Body_Basic_ColorRGB2 fine",
+        "0_Body_Basic_ColorRGB3",
+        "0_Body_Basic_ColorRGB3 fine",
+        "0_Body_Basic_ColorRGB5",
+        "0_Body_Basic_ColorRGB5 fine",
+        "CTO",
+        "Color Macro",
+        "Sh",
+        "Dim",
+        "Dim fine",
+        "Zoom",
+        "T",
+        "T fine",
+        "Ctrl",
+        "Fixture Global Reset"
+      ]
+    },
+    {
+      "name": "Pixel Engine RGB (48 ch)",
+      "channels": [
+        "1_Body_RGB_ColorRGB1",
+        "1_Body_RGB_ColorRGB1 fine",
+        "1_Body_RGB_ColorRGB2",
+        "1_Body_RGB_ColorRGB2 fine",
+        "1_Body_RGB_ColorRGB3",
+        "1_Body_RGB_ColorRGB3 fine",
+        "1_Body_RGB_ColorRGB5",
+        "1_Body_RGB_ColorRGB5 fine",
+        "CTO",
+        "Color Macro",
+        "Sh",
+        "Dim",
+        "Dim fine",
+        "Zoom",
+        "T",
+        "T fine",
+        "Ctrl",
+        "Fixture Global Reset",
+        "R 5",
+        "G 5",
+        "B 5"
+      ]
+    },
+    {
+      "name": "Pixel Engine RGBW (58 ch)",
+      "channels": [
+        "0_Body_Basic_ColorRGB1",
+        "0_Body_Basic_ColorRGB1 fine",
+        "0_Body_Basic_ColorRGB2",
+        "0_Body_Basic_ColorRGB2 fine",
+        "0_Body_Basic_ColorRGB3",
+        "0_Body_Basic_ColorRGB3 fine",
+        "0_Body_Basic_ColorRGB5",
+        "0_Body_Basic_ColorRGB5 fine",
+        "CTO",
+        "Color Macro",
+        "Sh",
+        "Dim",
+        "Dim fine",
+        "Zoom",
+        "T",
+        "T fine",
+        "Ctrl",
+        "Fixture Global Reset",
+        "R 5",
+        "G 5",
+        "B 5",
+        "W 4"
+      ]
+    }
+  ]
+}
