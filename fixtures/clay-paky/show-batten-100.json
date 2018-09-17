@@ -542,85 +542,17 @@
     "Dimmmer": {
       "fineChannelAliases": ["Dimmmer fine"],
       "highlightValue": 65535,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "Intensity",
-          "brightness": "0cd",
-          "comment": "Closed"
-        },
-        {
-          "dmxRange": [1, 16383],
-          "type": "Intensity",
-          "brightnessStart": "0cd",
-          "brightnessEnd": "1cd"
-        },
-        {
-          "dmxRange": [16384, 16384],
-          "type": "Intensity",
-          "brightness": "0.25cd",
-          "comment": "25%"
-        },
-        {
-          "dmxRange": [16385, 32767],
-          "type": "Intensity",
-          "brightnessStart": "0cd",
-          "brightnessEnd": "1cd"
-        },
-        {
-          "dmxRange": [32768, 32768],
-          "type": "Intensity",
-          "brightness": "0.5cd",
-          "comment": "50%"
-        },
-        {
-          "dmxRange": [32769, 49150],
-          "type": "Intensity",
-          "brightnessStart": "0cd",
-          "brightnessEnd": "1cd"
-        },
-        {
-          "dmxRange": [49151, 49151],
-          "type": "Intensity",
-          "brightness": "0.75cd",
-          "comment": "75%"
-        },
-        {
-          "dmxRange": [49152, 65534],
-          "type": "Intensity",
-          "brightnessStart": "0cd",
-          "brightnessEnd": "1cd"
-        },
-        {
-          "dmxRange": [65535, 65535],
-          "type": "Intensity",
-          "brightness": "1cd",
-          "comment": "Open"
-        }
-      ]
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Zoom": {
       "defaultValue": 128,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "Zoom",
-          "angle": "10deg",
-          "comment": "Narrow"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "Zoom",
-          "angleStart": "0deg",
-          "angleEnd": "1deg"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "Zoom",
-          "angle": "43deg",
-          "comment": "Wide"
-        }
-      ]
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "10deg",
+        "angleEnd": "43deg"
+      }
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
