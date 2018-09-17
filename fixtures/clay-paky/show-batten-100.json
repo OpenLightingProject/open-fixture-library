@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Show-Batten 100",
-  "categories": ["Other"],
+  "categories": ["Pixel Bar", "Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2018-05-16",
@@ -12,7 +12,20 @@
       "comment": "GDTF fixture type ID: 00 1B 21 63 BA 95 00 00 8F 2D C1 C7 D0 41 38 46"
     }
   },
-  "comment": "Fixture has two patch adresses - one for basic functionality, one for pixel engine",
+  "comment": "Fixture has two patch addresses: one for basic functionality, one for pixel engine",
+  "links": {
+    "manual": [
+      "https://www.claypaky.it/media/documents/HR_ShowBatten100_Manual_05.2016_EN.pdf",
+      "https://www.claypaky.it/media/documents/ShowBatten100_User-Menu_05.2016_EN.pdf",
+      "https://www.claypaky.it/media/documents/ShowBatten100_DMX-Channels_05.2016.pdf"
+    ],
+    "productPage": [
+      "https://www.claypaky.it/en/products/showbatten100"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=2n3CmtSITH0"
+    ]
+  },
   "availableChannels": {
     "R": {
       "fineChannelAliases": ["R fine"],
