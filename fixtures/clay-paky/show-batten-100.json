@@ -608,66 +608,6 @@
           "comment": "Tilt and Zoom Reset"
         }
       ]
-    },
-    "Dimmmer 2": {
-      "name": "Dimmmer",
-      "highlightValue": 255,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "Intensity",
-          "brightness": "0cd",
-          "comment": "Closed"
-        },
-        {
-          "dmxRange": [1, 63],
-          "type": "Intensity",
-          "brightnessStart": "0cd",
-          "brightnessEnd": "1cd"
-        },
-        {
-          "dmxRange": [64, 64],
-          "type": "Intensity",
-          "brightness": "0.25cd",
-          "comment": "25%"
-        },
-        {
-          "dmxRange": [65, 127],
-          "type": "Intensity",
-          "brightnessStart": "0cd",
-          "brightnessEnd": "1cd"
-        },
-        {
-          "dmxRange": [128, 128],
-          "type": "Intensity",
-          "brightness": "0.5cd",
-          "comment": "50%"
-        },
-        {
-          "dmxRange": [129, 191],
-          "type": "Intensity",
-          "brightnessStart": "0cd",
-          "brightnessEnd": "1cd"
-        },
-        {
-          "dmxRange": [192, 192],
-          "type": "Intensity",
-          "brightness": "0.75cd",
-          "comment": "75%"
-        },
-        {
-          "dmxRange": [193, 254],
-          "type": "Intensity",
-          "brightnessStart": "0cd",
-          "brightnessEnd": "1cd"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "Intensity",
-          "brightness": "1cd",
-          "comment": "Open"
-        }
-      ]
     }
   },
   "templateChannels": {
