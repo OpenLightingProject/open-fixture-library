@@ -559,7 +559,7 @@
         }
       ]
     },
-    "Sh": {
+    "Shutter / Strobe": {
       "capabilities": [
         {
           "dmxRange": [0, 3],
@@ -674,8 +674,8 @@
         }
       ]
     },
-    "Dim": {
-      "fineChannelAliases": ["Dim fine"],
+    "Dimmmer": {
+      "fineChannelAliases": ["Dimmmer fine"],
       "highlightValue": 65535,
       "capabilities": [
         {
@@ -757,8 +757,8 @@
         }
       ]
     },
-    "T": {
-      "fineChannelAliases": ["T fine"],
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
       "defaultValue": 32768,
       "capabilities": [
         {
@@ -793,7 +793,7 @@
         }
       ]
     },
-    "Ctrl": {
+    "Function": {
       "capabilities": [
         {
           "dmxRange": [0, 102],
@@ -815,7 +815,7 @@
         }
       ]
     },
-    "Fixture Global Reset": {
+    "Reset": {
       "capabilities": [
         {
           "dmxRange": [0, 25],
@@ -843,8 +843,8 @@
         }
       ]
     },
-    "Dim 2": {
-      "name": "Dim",
+    "Dimmmer 2": {
+      "name": "Dimmmer",
       "highlightValue": 255,
       "capabilities": [
         {
@@ -1016,14 +1016,14 @@
         "White fine",
         "CTO",
         "Color Macro",
-        "Sh",
-        "Dim",
-        "Dim fine",
+        "Shutter / Strobe",
+        "Dimmmer",
+        "Dimmmer fine",
         "Zoom",
-        "T",
-        "T fine",
-        "Ctrl",
-        "Fixture Global Reset"
+        "Tilt",
+        "Tilt fine",
+        "Function",
+        "Reset"
       ]
     },
     {
@@ -1040,14 +1040,14 @@
         "White fine",
         "CTO",
         "Color Macro",
-        "Sh",
-        "Dim",
-        "Dim fine",
+        "Shutter / Strobe",
+        "Dimmmer",
+        "Dimmmer fine",
         "Zoom",
-        "T",
-        "T fine",
-        "Ctrl",
-        "Fixture Global Reset",
+        "Tilt",
+        "Tilt fine",
+        "Function",
+        "Reset",
         {
           "insert": "matrixChannels",
           "repeatFor": "eachPixelXYZ",
@@ -1074,14 +1074,14 @@
         "White fine",
         "CTO",
         "Color Macro",
-        "Sh",
-        "Dim",
-        "Dim fine",
+        "Shutter / Strobe",
+        "Dimmmer",
+        "Dimmmer fine",
         "Zoom",
-        "T",
-        "T fine",
-        "Ctrl",
-        "Fixture Global Reset",
+        "Tilt",
+        "Tilt fine",
+        "Function",
+        "Reset",
         {
           "insert": "matrixChannels",
           "repeatFor": "eachPixelXYZ",
