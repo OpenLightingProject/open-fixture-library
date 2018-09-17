@@ -65,38 +65,21 @@
       "capabilities": [
         {
           "dmxRange": [0, 8],
-          "type": "ColorTemperature",
-          "colorTemperature": "0K",
-          "comment": "Unused Range"
+          "type": "NoFunction"
         },
         {
-          "dmxRange": [9, 9],
-          "type": "ColorTemperature",
-          "colorTemperature": "8000K",
-          "comment": "CT 8000K"
-        },
-        {
-          "dmxRange": [10, 254],
+          "dmxRange": [9, 255],
           "type": "ColorTemperature",
           "colorTemperatureStart": "8000K",
-          "colorTemperatureEnd": "2500K",
-          "comment": "CT 8000K - 2500K"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "ColorTemperature",
-          "colorTemperature": "2500K",
-          "comment": "CT 2500K"
+          "colorTemperatureEnd": "2500K"
         }
       ]
     },
     "Color Macro": {
-      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "ColorPreset",
-          "comment": "Unused Range"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [10, 10],
@@ -318,7 +301,7 @@
           "dmxRange": [123, 124],
           "type": "ColorPreset",
           "colors": ["#c3005a"],
-          "comment": "Magenta (2) (Magenta)"
+          "comment": "Magenta"
         },
         {
           "dmxRange": [125, 125],
@@ -485,6 +468,7 @@
         {
           "dmxRange": [209, 255],
           "type": "ColorPreset",
+          "colors": ["#ffffff"],
           "comment": "White"
         }
       ]
