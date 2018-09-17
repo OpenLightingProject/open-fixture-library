@@ -22,3 +22,6 @@ cache:
     - node_modules # cache NPM dependencies
 git:
   depth: 3 # makes cloning faster
+branches:
+  only:
+  - master # for other branches, the PR builds are sufficient
