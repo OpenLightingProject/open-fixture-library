@@ -83,7 +83,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "helpWanted": "Does this capability already end at 8?"
         },
         {
           "dmxRange": [10, 255],
@@ -516,16 +517,18 @@
         {
           "dmxRange": [75, 140],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
+          "shutterEffect": "RampUp",
           "speedStart": "0.5Hz",
-          "speedEnd": "24Hz"
+          "speedEnd": "24Hz",
+          "helpWanted": "Maybe 'Pulse' instead of 'Ramp up'?"
         },
         {
           "dmxRange": [141, 206],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
+          "shutterEffect": "RampDown",
           "speedStart": "24Hz",
-          "speedEnd": "0.5Hz"
+          "speedEnd": "0.5Hz",
+          "helpWanted": "Maybe 'Pulse' instead of 'Ramp down'?"
         },
         {
           "dmxRange": [207, 211],
