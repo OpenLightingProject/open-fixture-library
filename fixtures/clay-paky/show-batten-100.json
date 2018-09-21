@@ -15,8 +15,8 @@
   "links": {
     "manual": [
       "https://www.claypaky.it/media/documents/HR_ShowBatten100_Manual_05.2016_EN.pdf",
-      "https://www.claypaky.it/media/documents/ShowBatten100_User-Menu_05.2016_EN.pdf",
-      "https://www.claypaky.it/media/documents/ShowBatten100_DMX-Channels_05.2016.pdf"
+      "https://www.claypaky.it/media/documents/ShowBatten100_DMX-Channels_05.2016.pdf",
+      "https://www.claypaky.it/media/documents/ShowBatten100_User-Menu_05.2016_EN.pdf"
     ],
     "productPage": [
       "https://www.claypaky.it/en/products/showbatten100"
@@ -82,11 +82,11 @@
     "CTO": {
       "capabilities": [
         {
-          "dmxRange": [0, 8],
+          "dmxRange": [0, 9],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [9, 255],
+          "dmxRange": [10, 255],
           "type": "ColorTemperature",
           "colorTemperatureStart": "8000K",
           "colorTemperatureEnd": "2500K"
@@ -139,19 +139,22 @@
           "dmxRange": [16, 16],
           "type": "ColorPreset",
           "colors": ["#7fe4e4"],
-          "comment": "White 7000K"
+          "comment": "White",
+          "colorTemperature": "7000K"
         },
         {
           "dmxRange": [17, 17],
           "type": "ColorPreset",
           "colors": ["#e4dabe"],
-          "comment": "White 3700K"
+          "comment": "White",
+          "colorTemperature": "3700K"
         },
         {
           "dmxRange": [18, 18],
           "type": "ColorPreset",
           "colors": ["#cae4e4"],
-          "comment": "White 5000K"
+          "comment": "White",
+          "colorTemperature": "5000K"
         },
         {
           "dmxRange": [19, 19],
@@ -513,14 +516,14 @@
         {
           "dmxRange": [75, 140],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampUp",
+          "shutterEffect": "Pulse",
           "speedStart": "0.5Hz",
           "speedEnd": "24Hz"
         },
         {
           "dmxRange": [141, 206],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampDown",
+          "shutterEffect": "Pulse",
           "speedStart": "24Hz",
           "speedEnd": "0.5Hz"
         },
@@ -557,8 +560,8 @@
         }
       ]
     },
-    "Dimmmer": {
-      "fineChannelAliases": ["Dimmmer fine"],
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
       "highlightValue": 65535,
       "capability": {
         "type": "Intensity"
@@ -674,8 +677,8 @@
         "CTO",
         "Color Macro",
         "Shutter / Strobe",
-        "Dimmmer",
-        "Dimmmer fine",
+        "Dimmer",
+        "Dimmer fine",
         "Zoom",
         "Tilt",
         "Tilt fine",
@@ -698,8 +701,8 @@
         "CTO",
         "Color Macro",
         "Shutter / Strobe",
-        "Dimmmer",
-        "Dimmmer fine",
+        "Dimmer",
+        "Dimmer fine",
         "Zoom",
         "Tilt",
         "Tilt fine",
@@ -732,8 +735,8 @@
         "CTO",
         "Color Macro",
         "Shutter / Strobe",
-        "Dimmmer",
-        "Dimmmer fine",
+        "Dimmer",
+        "Dimmer fine",
         "Zoom",
         "Tilt",
         "Tilt fine",
