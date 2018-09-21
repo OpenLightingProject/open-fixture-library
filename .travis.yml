@@ -8,17 +8,18 @@ addons:
       - python-lxml # for QLC+ fixture-tool-validation export test
 env:
   - TESTFILE=tests/http-status.js
-  - TESTFILE=tests/fixtures-valid.js
-  - TESTFILE=tests/lint.js
-  - TESTFILE=tests/dmx-value-scaling.js
-  - TESTFILE=tests/make-targets-updated.js
   - TESTFILE=tests/github/export-diff.js
   - TESTFILE=tests/github/exports-valid.js
   - TESTFILE=tests/github/schema-version-reminder.js
+  - TESTFILE=tests/fixtures-valid.js
+  - TESTFILE=tests/make-targets-updated.js
+  - TESTFILE=tests/lint.js
+  - TESTFILE=tests/dmx-value-scaling.js
 script:
   - NODE_ENV=production node "$TESTFILE"
 cache:
   directories:
     - node_modules # cache NPM dependencies
-git:
-  depth: 3 # makes cloning faster
+branches:
+  only:
+  - master # for other branches, the PR builds are sufficient
