@@ -32,12 +32,12 @@
     }
   },
   "availableChannels": {
-    "Master dimmer": {
+    "Master Dimmer": {
       "capability": {
         "type": "Intensity"
       }
     },
-    "Colour macro": {
+    "Color Macro": {
       "capabilities": [
         {
           "dmxRange": [0, 36],
@@ -83,20 +83,21 @@
         }
       ]
     },
-    "Stroboscope": {
+    "Strobe": {
       "capability": {
-        "type": "StrobeSpeed",
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
         "speedStart": "0%",
         "speedEnd": "100%"
       }
     },
-    "Colour macro (advanced)": {
+    "Color Macro Advanced": {
+      "name": "Color Macro",
       "capabilities": [
         {
           "dmxRange": [0, 4],
-          "type": "ColorPreset",
-          "comment": "Blackout",
-          "colors": ["#000000"]
+          "type": "NoFunction",
+          "comment": "Blackout"
         },
         {
           "dmxRange": [5, 15],
@@ -144,14 +145,15 @@
           "dmxRange": [81, 150],
           "type": "Effect",
           "effectPreset": "ColorJump",
-          "speedStart": "0%",
-          "speedEnd": "0%"
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [151, 220],
           "type": "Effect",
           "effectPreset": "ColorFade",
-          "speedStart": "slow"
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [221, 255],
@@ -182,24 +184,24 @@
   },
   "modes": [
     {
-      "name": "2-Channel",
+      "name": "2-channel",
       "shortName": "2ch",
       "channels": [
-        "Master dimmer",
-        "Colour macro"
+        "Master Dimmer",
+        "Color Macro"
       ]
     },
     {
-      "name": "3-Channel 1",
+      "name": "3-channel 1",
       "shortName": "3ch1",
       "channels": [
-        "Master dimmer",
-        "Stroboscope",
-        "Colour macro (advanced)"
+        "Master Dimmer",
+        "Strobe",
+        "Color Macro Advanced"
       ]
     },
     {
-      "name": "3-Channel 2 (RGB)",
+      "name": "3-channel 2 (RGB)",
       "shortName": "3ch2",
       "channels": [
         "Red",
@@ -208,15 +210,15 @@
       ]
     },
     {
-      "name": "6-Channel",
+      "name": "6-channel",
       "shortName": "6ch",
       "channels": [
-        "Master dimmer",
-        "Stroboscope",
+        "Master Dimmer",
+        "Strobe",
         "Red",
         "Green",
         "Blue",
-        "Colour macro (advanced)"
+        "Color Macro Advanced"
       ]
     }
   ]
