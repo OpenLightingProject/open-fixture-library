@@ -22,7 +22,10 @@
     "power": 25,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "7x 3W RGB LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
     }
   },
   "availableChannels": {
