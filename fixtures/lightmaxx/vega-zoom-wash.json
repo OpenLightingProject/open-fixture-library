@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2017-02-24",
-    "lastModifyDate": "2018-09-04"
+    "lastModifyDate": "2018-09-22"
   },
   "links": {
     "manual": ["https://www.musicstore.de/INTERSHOP/web/WFS/MusicStore-MusicStoreShop-Site/de_DE/-/EUR/ViewProductAttachment-ResolveManualURL?File=DE_LIG0013617-000.pdf"],
@@ -112,8 +112,7 @@
       "capability": {
         "type": "ColorTemperature",
         "colorTemperatureStart": "cold",
-        "colorTemperatureEnd": "warm",
-        "helpWanted": "Correct direction?"
+        "colorTemperatureEnd": "warm"
       }
     },
     "Color Macro": {
@@ -230,12 +229,11 @@
         }
       ]
     },
-    "Focus": {
+    "Zoom": {
       "capability": {
-        "type": "Focus",
-        "distanceStart": "near",
-        "distanceEnd": "far",
-        "helpWanted": "Correct direction?"
+        "type": "Zoom",
+        "angleStart": "6deg",
+        "angleEnd": "46deg"
       }
     },
     "Program": {
@@ -320,7 +318,7 @@
         "Color Macro",
         "Macro Speed",
         "Program",
-        "Focus"
+        "Zoom"
       ]
     }
   ]

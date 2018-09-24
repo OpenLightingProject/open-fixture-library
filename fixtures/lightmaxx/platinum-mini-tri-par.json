@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Flo Edelmann", "Felix Edelmann"],
     "createDate": "2017-02-24",
-    "lastModifyDate": "2018-08-09"
+    "lastModifyDate": "2018-09-22"
   },
   "comment": "Platinum Line Mini TRI-PAR 7x3 Watt",
   "links": {
@@ -180,13 +180,20 @@
     },
     "Strobe": {
       "highlightValue": 200,
-      "capability": {
-        "type": "ShutterStrobe",
-        "shutterEffect": "Strobe",
-        "speedStart": "stop",
-        "speedEnd": "fast",
-        "helpWanted": "Does this capability really range from DMX values 0 to 255? How to disable strobe?"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
     }
   },
   "modes": [
