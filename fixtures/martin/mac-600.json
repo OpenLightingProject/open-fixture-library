@@ -1,0 +1,414 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MAC 600",
+  "shortName": "MAC 600",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Karl Humbug"],
+    "createDate": "2018-09-25",
+    "lastModifyDate": "2018-09-25"
+  },
+  "links": {
+    "manual": [
+      "https://adn.harmanpro.com/site_elements/executables/3025_1526061580/UM_MAC600_DE_G_original.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [481, 610, 456],
+    "weight": 31.5,
+    "power": 750,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "OSRAM HSR-575/2",
+      "colorTemperature": 6000,
+      "lumens": 21500
+    },
+    "lens": {
+      "name": "FRESNEL",
+      "degreesMinMax": [25, 25]
+    },
+    "focus": {
+      "panMax": 440,
+      "tiltMax": 306
+    }
+  },
+  "availableChannels": {
+    "LAMP / RESET / SHUTTER": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [20, 49],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [50, 112],
+          "type": "StrobeSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "STROBE ON"
+        },
+        {
+          "dmxRange": [113, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [128, 147],
+          "type": "StrobeSpeed",
+          "speed": "fast",
+          "comment": "RANDOM STROBE FAST"
+        },
+        {
+          "dmxRange": [148, 167],
+          "type": "StrobeSpeed",
+          "speed": "fast",
+          "comment": "RANDOM STROBE MEDIUM"
+        },
+        {
+          "dmxRange": [168, 207],
+          "type": "StrobeSpeed",
+          "speed": "slow",
+          "comment": "RANDOM STROBE SLOW"
+        },
+        {
+          "dmxRange": [208, 217],
+          "type": "Generic",
+          "comment": "RESET"
+        },
+        {
+          "dmxRange": [218, 227],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [228, 237],
+          "type": "Generic",
+          "comment": "LAMP ON"
+        },
+        {
+          "dmxRange": [238, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Generic",
+          "comment": "LAMP OFF"
+        }
+      ]
+    },
+    "BRIGHTNESS": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CYAN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan",
+        "comment": "WHITE TO CYAN"
+      }
+    },
+    "MAGENTA": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta",
+        "comment": "WHITE TO MAGENTA"
+      }
+    },
+    "YELLOW": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow",
+        "comment": "WHITE TO YELLOW"
+      }
+    },
+    "COLOR WHEEL": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 40],
+          "type": "ColorPreset",
+          "comment": "WHITE TO COLOR 1"
+        },
+        {
+          "dmxRange": [41, 80],
+          "type": "ColorPreset",
+          "comment": "COLOR 1 TO COLOR 2"
+        },
+        {
+          "dmxRange": [81, 120],
+          "type": "ColorPreset",
+          "comment": "COLOR 2 TO COLOR 3"
+        },
+        {
+          "dmxRange": [121, 160],
+          "type": "ColorPreset",
+          "comment": "COLOR 3 TO COLOR 4"
+        },
+        {
+          "dmxRange": [161, 165],
+          "type": "ColorWheelIndex",
+          "index": 4,
+          "comment": "COLOR 4"
+        },
+        {
+          "dmxRange": [166, 170],
+          "type": "ColorWheelIndex",
+          "index": 3,
+          "comment": "COLOR 3"
+        },
+        {
+          "dmxRange": [171, 175],
+          "type": "ColorWheelIndex",
+          "index": 2,
+          "comment": "COLOR 2"
+        },
+        {
+          "dmxRange": [176, 180],
+          "type": "ColorWheelIndex",
+          "index": 1,
+          "comment": "COLOR 1"
+        },
+        {
+          "dmxRange": [181, 185],
+          "type": "ColorPreset",
+          "comment": "WHITE"
+        },
+        {
+          "dmxRange": [186, 214],
+          "type": "ColorWheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [215, 243],
+          "type": "ColorWheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "ColorPreset",
+          "comment": "RANDOM COLOR FAST"
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "ColorPreset",
+          "comment": "RANDOM COLOR MEDIUM"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ColorPreset",
+          "comment": "RANDOM COLOR SLOW"
+        }
+      ]
+    },
+    "PROFILFILTER 1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "FrostEffect",
+          "effectName": "OPEN",
+          "comment": "OPEN"
+        },
+        {
+          "dmxRange": [2, 255],
+          "type": "FrostEffect",
+          "effectName": "STRAHLPROFIL",
+          "comment": "BEAMS LEFT TO RIGHT"
+        }
+      ]
+    },
+    "PROFILFILTER 2": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "NoFunction",
+          "comment": "OPEN"
+        },
+        {
+          "dmxRange": [3, 170],
+          "type": "FrostEffect",
+          "effectName": "STRAHLPROFIL",
+          "comment": "BEAMS LEFT TO RIGHT"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "FrostEffect",
+          "effectName": "FROST"
+        }
+      ]
+    },
+    "PAN": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "440deg"
+      }
+    },
+    "TILT": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "306deg"
+      }
+    },
+    "PAN 2": {
+      "name": "PAN",
+      "fineChannelAliases": ["PAN 2 fine"],
+      "dmxValueResolution": "8bit",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "440deg"
+      }
+    },
+    "TILT 2": {
+      "name": "TILT",
+      "fineChannelAliases": ["TILT 2 fine"],
+      "dmxValueResolution": "8bit",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "306deg"
+      }
+    },
+    "MOVING SPEED": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "Generic",
+          "comment": "TRACKING"
+        },
+        {
+          "dmxRange": [3, 245],
+          "type": "Speed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [246, 248],
+          "type": "Generic",
+          "comment": "TRACKING FAST"
+        },
+        {
+          "dmxRange": [249, 251],
+          "type": "Generic",
+          "comment": "TRACKING SLOW"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Generic",
+          "comment": "BLACKOUT BY MOVEMENT"
+        }
+      ]
+    },
+    "CMY/FILTER/DIMMER-SPEED": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "Generic",
+          "comment": "TRACKING"
+        },
+        {
+          "dmxRange": [3, 245],
+          "type": "Speed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [246, 248],
+          "type": "Generic",
+          "comment": "TRACKING NORMAL"
+        },
+        {
+          "dmxRange": [249, 251],
+          "type": "Generic",
+          "comment": "TRACKING MAXIMAL"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Speed",
+          "speed": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX 10CH",
+      "channels": [
+        "LAMP / RESET / SHUTTER",
+        "BRIGHTNESS",
+        "CYAN",
+        "MAGENTA",
+        "YELLOW",
+        "COLOR WHEEL",
+        "PROFILFILTER 1",
+        "PROFILFILTER 2",
+        "PAN",
+        "TILT"
+      ]
+    },
+    {
+      "name": "DMX 12CH",
+      "channels": [
+        "LAMP / RESET / SHUTTER",
+        "BRIGHTNESS",
+        "CYAN",
+        "MAGENTA",
+        "YELLOW",
+        "COLOR WHEEL",
+        "PROFILFILTER 1",
+        "PROFILFILTER 2",
+        "PAN 2",
+        "PAN 2 fine",
+        "TILT 2",
+        "TILT 2 fine"
+      ]
+    },
+    {
+      "name": "DMX 12CH B",
+      "channels": [
+        "LAMP / RESET / SHUTTER",
+        "BRIGHTNESS",
+        "CYAN",
+        "MAGENTA",
+        "YELLOW",
+        "COLOR WHEEL",
+        "PROFILFILTER 1",
+        "PROFILFILTER 2",
+        "PAN",
+        "TILT",
+        "MOVING SPEED",
+        "CMY/FILTER/DIMMER-SPEED"
+      ]
+    },
+    {
+      "name": "DMX 14CH",
+      "channels": [
+        "LAMP / RESET / SHUTTER",
+        "BRIGHTNESS",
+        "CYAN",
+        "MAGENTA",
+        "YELLOW",
+        "COLOR WHEEL",
+        "PROFILFILTER 1",
+        "PROFILFILTER 2",
+        "PAN 2",
+        "PAN 2 fine",
+        "TILT 2",
+        "TILT 2 fine",
+        "MOVING SPEED",
+        "CMY/FILTER/DIMMER-SPEED"
+      ]
+    }
+  ]
+}
