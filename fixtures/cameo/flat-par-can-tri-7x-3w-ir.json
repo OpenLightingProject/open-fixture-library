@@ -157,7 +157,9 @@
         },
         {
           "dmxRange": [221, 255],
-          "type": "SoundSensitivity",
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true,
           "soundSensitivityStart": "low",
           "soundSensitivityEnd": "high"
         }
