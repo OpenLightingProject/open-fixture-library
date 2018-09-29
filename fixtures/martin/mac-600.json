@@ -53,8 +53,8 @@
           "dmxRange": [50, 112],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "fast",
-          "speedEnd": "slow"
+          "speedStart": "8Hz",
+          "speedEnd": "0Hz"
         },
         {
           "dmxRange": [113, 115],
@@ -83,7 +83,7 @@
           "dmxRange": [148, 167],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speed": "fast",
+          "speed": "50%",
           "randomTiming": true
         },
         {
@@ -267,6 +267,7 @@
     },
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "50%",
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -275,6 +276,7 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -308,7 +310,7 @@
         },
         {
           "dmxRange": [252, 255],
-          "type": "Speed",
+          "type": "PanTiltSpeed",
           "speed": "fast",
           "comment": "Blackout while moving"
         }
