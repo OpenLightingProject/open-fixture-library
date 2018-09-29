@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "MAC 600",
   "shortName": "MAC 600",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Karl Humbug"],
     "createDate": "2018-09-25",
@@ -10,7 +10,10 @@
   },
   "links": {
     "manual": [
-      "https://adn.harmanpro.com/site_elements/executables/3025_1526061580/UM_MAC600_DE_G_original.pdf"
+      "https://adn.harmanpro.com/site_elements/executables/3027_1526061584/UM_MAC600_EN_H_original.PDF"
+    ],
+    "productPage": [
+      "https://www.martin.com/en-US/products/mac-600"
     ]
   },
   "physical": {
@@ -19,21 +22,22 @@
     "power": 750,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "OSRAM HSR-575/2",
+      "type": "Osram HSR-575/2",
       "colorTemperature": 6000,
       "lumens": 21500
     },
     "lens": {
-      "name": "FRESNEL",
+      "name": "Fresnel",
       "degreesMinMax": [25, 25]
     },
     "focus": {
+      "type": "Head",
       "panMax": 440,
       "tiltMax": 306
     }
   },
   "availableChannels": {
-    "LAMP / RESET / SHUTTER": {
+    "Shutter / Strobe / Reset / Lamp": {
       "capabilities": [
         {
           "dmxRange": [0, 19],
@@ -47,38 +51,52 @@
         },
         {
           "dmxRange": [50, 112],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "fast",
-          "speedEnd": "slow",
-          "comment": "STROBE ON"
+          "speedEnd": "slow"
         },
         {
-          "dmxRange": [113, 127],
+          "dmxRange": [113, 115],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [116, 122],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Reduced lamp power (MAC 600 E)"
+        },
+        {
+          "dmxRange": [123, 127],
           "type": "ShutterStrobe",
           "shutterEffect": "Closed"
         },
         {
           "dmxRange": [128, 147],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speed": "fast",
-          "comment": "RANDOM STROBE FAST"
+          "randomTiming": true
         },
         {
           "dmxRange": [148, 167],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speed": "fast",
-          "comment": "RANDOM STROBE MEDIUM"
+          "randomTiming": true
         },
         {
           "dmxRange": [168, 207],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speed": "slow",
-          "comment": "RANDOM STROBE SLOW"
+          "randomTiming": true
         },
         {
           "dmxRange": [208, 217],
-          "type": "Generic",
-          "comment": "RESET"
+          "type": "Maintenance",
+          "comment": "Reset fixture"
         },
         {
           "dmxRange": [218, 227],
@@ -87,8 +105,8 @@
         },
         {
           "dmxRange": [228, 237],
-          "type": "Generic",
-          "comment": "LAMP ON"
+          "type": "Maintenance",
+          "comment": "Lamp power on"
         },
         {
           "dmxRange": [238, 247],
@@ -97,89 +115,86 @@
         },
         {
           "dmxRange": [248, 255],
-          "type": "Generic",
-          "comment": "LAMP OFF"
+          "type": "Maintenance",
+          "comment": "Lamp power off"
         }
       ]
     },
-    "BRIGHTNESS": {
+    "Intensity": {
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "type": "Intensity"
       }
     },
-    "CYAN": {
+    "Cyan": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Cyan",
-        "comment": "WHITE TO CYAN"
+        "color": "Cyan"
       }
     },
-    "MAGENTA": {
+    "Magenta": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Magenta",
-        "comment": "WHITE TO MAGENTA"
+        "color": "Magenta"
       }
     },
-    "YELLOW": {
+    "Yellow": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Yellow",
-        "comment": "WHITE TO YELLOW"
+        "color": "Yellow"
       }
     },
-    "COLOR WHEEL": {
+    "Color Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 40],
-          "type": "ColorPreset",
-          "comment": "WHITE TO COLOR 1"
+          "type": "ColorWheelIndex",
+          "indexStart": 0,
+          "indexEnd": 1,
+          "comment": "Open…color 1"
         },
         {
           "dmxRange": [41, 80],
-          "type": "ColorPreset",
-          "comment": "COLOR 1 TO COLOR 2"
+          "type": "ColorWheelIndex",
+          "indexStart": 1,
+          "indexEnd": 2
         },
         {
           "dmxRange": [81, 120],
-          "type": "ColorPreset",
-          "comment": "COLOR 2 TO COLOR 3"
+          "type": "ColorWheelIndex",
+          "indexStart": 2,
+          "indexEnd": 3
         },
         {
           "dmxRange": [121, 160],
-          "type": "ColorPreset",
-          "comment": "COLOR 3 TO COLOR 4"
+          "type": "ColorWheelIndex",
+          "indexStart": 3,
+          "indexEnd": 4
         },
         {
           "dmxRange": [161, 165],
           "type": "ColorWheelIndex",
-          "index": 4,
-          "comment": "COLOR 4"
+          "index": 4
         },
         {
           "dmxRange": [166, 170],
           "type": "ColorWheelIndex",
-          "index": 3,
-          "comment": "COLOR 3"
+          "index": 3
         },
         {
           "dmxRange": [171, 175],
           "type": "ColorWheelIndex",
-          "index": 2,
-          "comment": "COLOR 2"
+          "index": 2
         },
         {
           "dmxRange": [176, 180],
           "type": "ColorWheelIndex",
-          "index": 1,
-          "comment": "COLOR 1"
+          "index": 1
         },
         {
           "dmxRange": [181, 185],
-          "type": "ColorPreset",
-          "comment": "WHITE"
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "comment": "Open"
         },
         {
           "dmxRange": [186, 214],
@@ -195,219 +210,223 @@
         },
         {
           "dmxRange": [244, 247],
-          "type": "ColorPreset",
-          "comment": "RANDOM COLOR FAST"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "fast"
         },
         {
           "dmxRange": [248, 251],
-          "type": "ColorPreset",
-          "comment": "RANDOM COLOR MEDIUM"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "50%"
         },
         {
           "dmxRange": [252, 255],
-          "type": "ColorPreset",
-          "comment": "RANDOM COLOR SLOW"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "slow"
         }
       ]
     },
-    "PROFILFILTER 1": {
+    "Beam Shaper 1": {
       "capabilities": [
         {
-          "dmxRange": [0, 1],
-          "type": "FrostEffect",
-          "effectName": "OPEN",
-          "comment": "OPEN"
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
         },
         {
-          "dmxRange": [2, 255],
-          "type": "FrostEffect",
-          "effectName": "STRAHLPROFIL",
-          "comment": "BEAMS LEFT TO RIGHT"
+          "dmxRange": [1, 255],
+          "type": "BladeInsertion",
+          "blade": 1,
+          "insertionStart": "out",
+          "insertionEnd": "in",
+          "comment": "Beam shaper left…right"
         }
       ]
     },
-    "PROFILFILTER 2": {
+    "Beam Shaper 2": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [3, 170],
+          "type": "BladeInsertion",
+          "blade": 2,
+          "insertionStart": "out",
+          "insertionEnd": "in",
+          "comment": "Beam shaper left…right"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "Frost",
+          "frostIntensity": "high"
+        }
+      ]
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "440deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "306deg"
+      }
+    },
+    "Pan/Tilt Speed": {
       "capabilities": [
         {
           "dmxRange": [0, 2],
           "type": "NoFunction",
-          "comment": "OPEN"
-        },
-        {
-          "dmxRange": [3, 170],
-          "type": "FrostEffect",
-          "effectName": "STRAHLPROFIL",
-          "comment": "BEAMS LEFT TO RIGHT"
-        },
-        {
-          "dmxRange": [171, 255],
-          "type": "FrostEffect",
-          "effectName": "FROST"
-        }
-      ]
-    },
-    "PAN": {
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "440deg"
-      }
-    },
-    "TILT": {
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "306deg"
-      }
-    },
-    "PAN 2": {
-      "name": "PAN",
-      "fineChannelAliases": ["PAN 2 fine"],
-      "dmxValueResolution": "8bit",
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "440deg"
-      }
-    },
-    "TILT 2": {
-      "name": "TILT",
-      "fineChannelAliases": ["TILT 2 fine"],
-      "dmxValueResolution": "8bit",
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "306deg"
-      }
-    },
-    "MOVING SPEED": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 2],
-          "type": "Generic",
-          "comment": "TRACKING"
+          "comment": "Tracking (default speed)"
         },
         {
           "dmxRange": [3, 245],
-          "type": "Speed",
+          "type": "PanTiltSpeed",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
         {
           "dmxRange": [246, 248],
-          "type": "Generic",
-          "comment": "TRACKING FAST"
+          "type": "PanTiltSpeed",
+          "speed": "slow",
+          "comment": "Tracking"
         },
         {
           "dmxRange": [249, 251],
-          "type": "Generic",
-          "comment": "TRACKING SLOW"
+          "type": "PanTiltSpeed",
+          "speed": "fast",
+          "comment": "Tracking"
         },
         {
           "dmxRange": [252, 255],
-          "type": "Generic",
-          "comment": "BLACKOUT BY MOVEMENT"
+          "type": "Speed",
+          "speed": "fast",
+          "comment": "Blackout while moving"
         }
       ]
     },
-    "CMY/FILTER/DIMMER-SPEED": {
+    "Dimmer / CMY / Color Wheel / Beam Shaper speed": {
       "capabilities": [
         {
           "dmxRange": [0, 2],
-          "type": "Generic",
-          "comment": "TRACKING"
+          "type": "NoFunction",
+          "comment": "Tracking (default speed)"
         },
         {
-          "dmxRange": [3, 245],
+          "dmxRange": [3, 239],
           "type": "Speed",
           "speedStart": "fast",
           "speedEnd": "slow"
         },
         {
+          "dmxRange": [240, 242],
+          "type": "Maintenance",
+          "comment": "Tracking, studio mode off"
+        },
+        {
+          "dmxRange": [243, 245],
+          "type": "Maintenance",
+          "comment": "Tracking, studio mode on"
+        },
+        {
           "dmxRange": [246, 248],
-          "type": "Generic",
-          "comment": "TRACKING NORMAL"
+          "type": "Maintenance",
+          "comment": "Tracking, shortcuts off"
         },
         {
           "dmxRange": [249, 251],
-          "type": "Generic",
-          "comment": "TRACKING MAXIMAL"
+          "type": "Maintenance",
+          "comment": "Tracking, shortcuts on"
         },
         {
           "dmxRange": [252, 255],
           "type": "Speed",
-          "speed": "fast"
+          "speed": "fast",
+          "comment": "Blackout while moving"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "DMX 10CH",
+      "name": "DMX1 (10-channel)",
+      "shortName": "DMX1",
       "channels": [
-        "LAMP / RESET / SHUTTER",
-        "BRIGHTNESS",
-        "CYAN",
-        "MAGENTA",
-        "YELLOW",
-        "COLOR WHEEL",
-        "PROFILFILTER 1",
-        "PROFILFILTER 2",
-        "PAN",
-        "TILT"
+        "Shutter / Strobe / Reset / Lamp",
+        "Intensity",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Color Wheel",
+        "Beam Shaper 1",
+        "Beam Shaper 2",
+        "Pan",
+        "Tilt"
       ]
     },
     {
-      "name": "DMX 12CH",
+      "name": "DMX2 (12-channel)",
+      "shortName": "DMX2",
       "channels": [
-        "LAMP / RESET / SHUTTER",
-        "BRIGHTNESS",
-        "CYAN",
-        "MAGENTA",
-        "YELLOW",
-        "COLOR WHEEL",
-        "PROFILFILTER 1",
-        "PROFILFILTER 2",
-        "PAN 2",
-        "PAN 2 fine",
-        "TILT 2",
-        "TILT 2 fine"
+        "Shutter / Strobe / Reset / Lamp",
+        "Intensity",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Color Wheel",
+        "Beam Shaper 1",
+        "Beam Shaper 2",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine"
       ]
     },
     {
-      "name": "DMX 12CH B",
+      "name": "DMX3 (12-channel)",
+      "shortName": "DMX3",
       "channels": [
-        "LAMP / RESET / SHUTTER",
-        "BRIGHTNESS",
-        "CYAN",
-        "MAGENTA",
-        "YELLOW",
-        "COLOR WHEEL",
-        "PROFILFILTER 1",
-        "PROFILFILTER 2",
-        "PAN",
-        "TILT",
-        "MOVING SPEED",
-        "CMY/FILTER/DIMMER-SPEED"
+        "Shutter / Strobe / Reset / Lamp",
+        "Intensity",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Color Wheel",
+        "Beam Shaper 1",
+        "Beam Shaper 2",
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer / CMY / Color Wheel / Beam Shaper speed"
       ]
     },
     {
-      "name": "DMX 14CH",
+      "name": "DMX4 (14-channel)",
+      "shortName": "DMX4",
       "channels": [
-        "LAMP / RESET / SHUTTER",
-        "BRIGHTNESS",
-        "CYAN",
-        "MAGENTA",
-        "YELLOW",
-        "COLOR WHEEL",
-        "PROFILFILTER 1",
-        "PROFILFILTER 2",
-        "PAN 2",
-        "PAN 2 fine",
-        "TILT 2",
-        "TILT 2 fine",
-        "MOVING SPEED",
-        "CMY/FILTER/DIMMER-SPEED"
+        "Shutter / Strobe / Reset / Lamp",
+        "Intensity",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Color Wheel",
+        "Beam Shaper 1",
+        "Beam Shaper 2",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer / CMY / Color Wheel / Beam Shaper speed"
       ]
     }
   ]
