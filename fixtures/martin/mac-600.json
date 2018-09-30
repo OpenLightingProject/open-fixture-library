@@ -1,0 +1,437 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MAC 600",
+  "shortName": "MAC 600",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Karl Humbug"],
+    "createDate": "2018-09-25",
+    "lastModifyDate": "2018-09-25"
+  },
+  "links": {
+    "manual": [
+      "https://adn.harmanpro.com/site_elements/executables/3027_1526061584/UM_MAC600_EN_H_original.PDF"
+    ],
+    "productPage": [
+      "https://www.martin.com/en-US/products/mac-600"
+    ]
+  },
+  "physical": {
+    "dimensions": [481, 610, 456],
+    "weight": 31.5,
+    "power": 750,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Osram HSR-575/2",
+      "colorTemperature": 6000,
+      "lumens": 21500
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [25, 25]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 440,
+      "tiltMax": 306
+    }
+  },
+  "availableChannels": {
+    "Shutter / Strobe / Reset / Lamp": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [20, 49],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [50, 112],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "8Hz",
+          "speedEnd": "0Hz"
+        },
+        {
+          "dmxRange": [113, 115],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [116, 122],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Reduced lamp power (MAC 600 E)"
+        },
+        {
+          "dmxRange": [123, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [128, 147],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [148, 167],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "50%",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [168, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "slow",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [208, 217],
+          "type": "Maintenance",
+          "comment": "Reset fixture"
+        },
+        {
+          "dmxRange": [218, 227],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [228, 237],
+          "type": "Maintenance",
+          "comment": "Lamp power on"
+        },
+        {
+          "dmxRange": [238, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Maintenance",
+          "comment": "Lamp power off"
+        }
+      ]
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 40],
+          "type": "ColorWheelIndex",
+          "indexStart": 0,
+          "indexEnd": 1,
+          "comment": "Open…color 1"
+        },
+        {
+          "dmxRange": [41, 80],
+          "type": "ColorWheelIndex",
+          "indexStart": 1,
+          "indexEnd": 2
+        },
+        {
+          "dmxRange": [81, 120],
+          "type": "ColorWheelIndex",
+          "indexStart": 2,
+          "indexEnd": 3
+        },
+        {
+          "dmxRange": [121, 160],
+          "type": "ColorWheelIndex",
+          "indexStart": 3,
+          "indexEnd": 4
+        },
+        {
+          "dmxRange": [161, 165],
+          "type": "ColorWheelIndex",
+          "index": 4
+        },
+        {
+          "dmxRange": [166, 170],
+          "type": "ColorWheelIndex",
+          "index": 3
+        },
+        {
+          "dmxRange": [171, 175],
+          "type": "ColorWheelIndex",
+          "index": 2
+        },
+        {
+          "dmxRange": [176, 180],
+          "type": "ColorWheelIndex",
+          "index": 1
+        },
+        {
+          "dmxRange": [181, 185],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [186, 214],
+          "type": "ColorWheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [215, 243],
+          "type": "ColorWheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "50%"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "slow"
+        }
+      ]
+    },
+    "Beam Shaper 1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "BladeInsertion",
+          "blade": 1,
+          "insertionStart": "out",
+          "insertionEnd": "in",
+          "comment": "Beam shaper left…right"
+        }
+      ]
+    },
+    "Beam Shaper 2": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [3, 170],
+          "type": "BladeInsertion",
+          "blade": 2,
+          "insertionStart": "out",
+          "insertionEnd": "in",
+          "comment": "Beam shaper left…right"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "Frost",
+          "frostIntensity": "high"
+        }
+      ]
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "440deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "306deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "NoFunction",
+          "comment": "Tracking (default speed)"
+        },
+        {
+          "dmxRange": [3, 245],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [246, 248],
+          "type": "PanTiltSpeed",
+          "speed": "slow",
+          "comment": "Tracking"
+        },
+        {
+          "dmxRange": [249, 251],
+          "type": "PanTiltSpeed",
+          "speed": "fast",
+          "comment": "Tracking"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "PanTiltSpeed",
+          "speed": "fast",
+          "comment": "Blackout while moving"
+        }
+      ]
+    },
+    "Dimmer / CMY / Color Wheel / Beam Shaper speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "NoFunction",
+          "comment": "Tracking (default speed)"
+        },
+        {
+          "dmxRange": [3, 239],
+          "type": "Speed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [240, 242],
+          "type": "Maintenance",
+          "comment": "Tracking, studio mode off"
+        },
+        {
+          "dmxRange": [243, 245],
+          "type": "Maintenance",
+          "comment": "Tracking, studio mode on"
+        },
+        {
+          "dmxRange": [246, 248],
+          "type": "Maintenance",
+          "comment": "Tracking, shortcuts off"
+        },
+        {
+          "dmxRange": [249, 251],
+          "type": "Maintenance",
+          "comment": "Tracking, shortcuts on"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Speed",
+          "speed": "fast",
+          "comment": "Blackout while moving"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX1 (10-channel)",
+      "shortName": "DMX1",
+      "channels": [
+        "Shutter / Strobe / Reset / Lamp",
+        "Intensity",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Color Wheel",
+        "Beam Shaper 1",
+        "Beam Shaper 2",
+        "Pan",
+        "Tilt"
+      ]
+    },
+    {
+      "name": "DMX2 (12-channel)",
+      "shortName": "DMX2",
+      "channels": [
+        "Shutter / Strobe / Reset / Lamp",
+        "Intensity",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Color Wheel",
+        "Beam Shaper 1",
+        "Beam Shaper 2",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine"
+      ]
+    },
+    {
+      "name": "DMX3 (12-channel)",
+      "shortName": "DMX3",
+      "channels": [
+        "Shutter / Strobe / Reset / Lamp",
+        "Intensity",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Color Wheel",
+        "Beam Shaper 1",
+        "Beam Shaper 2",
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer / CMY / Color Wheel / Beam Shaper speed"
+      ]
+    },
+    {
+      "name": "DMX4 (14-channel)",
+      "shortName": "DMX4",
+      "channels": [
+        "Shutter / Strobe / Reset / Lamp",
+        "Intensity",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Color Wheel",
+        "Beam Shaper 1",
+        "Beam Shaper 2",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer / CMY / Color Wheel / Beam Shaper speed"
+      ]
+    }
+  ]
+}
