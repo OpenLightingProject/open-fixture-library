@@ -23,25 +23,15 @@ module.exports = {
     `~/plugins/vue-form.js`
   ],
   build: {
-    vendor: [
-      `~~/fixtures/register.json`,
-      `~~/fixtures/manufacturers.json`,
-      `~/components/svg.vue`
-    ],
     styleResources: {
       scss: [
         `${SRC_DIR}assets/styles/vars.scss`,
         `${SRC_DIR}assets/styles/mixins.scss`
       ]
     },
-    babel: {
-      plugins: [
-        `transform-es2015-modules-commonjs`
-      ]
-    },
     extend(config, ctx) {
       // exclude /assets/icons from url-loader
-      const urlLoader = config.module.rules.find(rule => rule.loader === `url-loader`);
+      const urlLoader = config.module.rules.find(rule => `use` in rule && rule.use[0].loader === `url-loader`);
       urlLoader.exclude = /assets\/icons/;
 
       // include /assets/icons for svg-inline-loader
@@ -57,7 +47,7 @@ module.exports = {
       });
 
       // include .mjs files for babel-loader
-      const babelLoader = config.module.rules.find(rule => rule.loader === `babel-loader`);
+      const babelLoader = config.module.rules.find(rule => rule.test.toString() === `/\\.jsx?$/i`);
       babelLoader.test = /\.jsx?$|\.mjs$/;
     }
   },
