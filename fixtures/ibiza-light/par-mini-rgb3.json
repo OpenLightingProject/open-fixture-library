@@ -1,34 +1,140 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "PAR-MINI-RGB3",
-  "categories": ["Stand"],
+  "name": "LED PAR CAN 12x3W 3-in-1 RGB",
+  "shortName": "Ibiza-PAR-MINI-RGB3",
+  "categories": ["Color Changer"],
   "meta": {
-    "authors": ["RAZAKANIRINA"],
+    "authors": ["RAZAKANIRINA", "Flo Edelmann"],
     "createDate": "2018-10-06",
     "lastModifyDate": "2018-10-06"
   },
   "links": {
     "manual": [
-      "http://www.ibiza-light.com/media/catalog/product//p/a/par-mini-rgb3_man.pdf"
+      "https://www.ibiza-light.com/media/catalog/product/p/a/par-mini-rgb3_man.pdf"
+    ],
+    "productPage": [
+      "http://www.ibiza-light.com/mini-par-12x3w-3-in-1-rgb-led-par-mini-rgb3.html"
     ]
   },
   "availableChannels": {
-    "CH1": {
+    "Mode": {
       "defaultValue": 0,
-      "capability": {
-        "type": "Generic"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "Manual control"
+        },
+        {
+          "dmxRange": [11, 50],
+          "type": "Effect",
+          "effectName": "Color Macro"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        }
+      ]
     },
-    "CH2": {
+    "Color Macro": {
       "defaultValue": 0,
-      "capability": {
-        "type": "Generic"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 39],
+          "type": "Generic",
+          "comment": "7 Color Recycle",
+          "helpWanted": "Does this enable the color jump effect as well?"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00"],
+          "comment": "RG",
+          "helpWanted": "Is this a color jump effect with only these two colors?"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#0000ff"],
+          "comment": "RB",
+          "helpWanted": "Is this a color jump effect with only these two colors?"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "ColorPreset",
+          "colors": ["#00ff00", "#0000ff"],
+          "comment": "GB",
+          "helpWanted": "Is this a color jump effect with only these two colors?"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "ColorPreset",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"],
+          "comment": "RGB",
+          "helpWanted": "Is this a color jump effect with only these three colors?"
+        }
+      ]
     },
-    "CH3": {
+    "Effect Speed": {
       "defaultValue": 0,
       "capability": {
-        "type": "Generic"
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Is it slow…fast or fast…slow?"
       }
     },
     "Dimmer": {
@@ -57,27 +163,19 @@
         "type": "ColorIntensity",
         "color": "Blue"
       }
-    },
-    "White": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
     }
   },
   "modes": [
     {
       "name": "PAR-MINI-RGB3",
       "channels": [
-        "CH1",
-        "CH2",
-        "CH3",
+        "Mode",
+        "Color Macro",
+        "Effect Speed",
         "Dimmer",
         "Red",
         "Green",
-        "Blue",
-        "White"
+        "Blue"
       ]
     }
   ]
