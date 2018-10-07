@@ -16,6 +16,17 @@
       "http://www.ibiza-light.com/mini-par-12x3w-3-in-1-rgb-led-par-mini-rgb3.html"
     ]
   },
+  "physical": {
+    "dimensions": [120, 120, 90],
+    "weight": 0.6,
+    "power": 40,
+    "bulb": {
+      "type": "12x 3W RGB LEDs"
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
   "availableChannels": {
     "Mode": {
       "defaultValue": 0,
