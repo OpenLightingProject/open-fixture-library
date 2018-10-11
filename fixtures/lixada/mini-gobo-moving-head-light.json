@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Mini Gobo Moving Head Light",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Freasy", "edohard"],
     "createDate": "2018-10-10",
@@ -12,6 +12,17 @@
       "comment": "created by Q Light Controller Plus (version 4.10.4)"
     }
   },
+  "links": {
+    "manual": [
+      "https://forums.pioneerdj.com/hc/en-us/community/posts/360000675466-Lixada-25W-DMX-512-Mini-Moving-Head-8-Colours-with-9-11-channels"
+    ],
+    "productPage": [
+      "https://www.lixada.com/p-l0686us.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=LHkJUl2wykI"
+    ]
+  },
   "physical": {
     "dimensions": [210, 260, 280],
     "weight": 2.67,
@@ -21,44 +32,29 @@
       "type": "10W LED"
     },
     "lens": {
-      "name": "Other",
       "degreesMinMax": [11, 11]
     },
     "focus": {
-      "type": "Fixed",
+      "type": "Head",
       "panMax": 540,
       "tiltMax": 180
     }
   },
   "availableChannels": {
     "Pan": {
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
-        "angleStart": "0%",
-        "angleEnd": "100%"
-      }
-    },
-    "Pan Fine": {
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0%",
-        "angleEnd": "100%",
-        "comment": "Pan fine"
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angleStart": "0%",
-        "angleEnd": "100%"
-      }
-    },
-    "Tilt Fine": {
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0%",
-        "angleEnd": "100%",
-        "comment": "Tilt fine"
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
       }
     },
     "Color Wheel": {
@@ -66,26 +62,29 @@
         {
           "dmxRange": [0, 127],
           "type": "ColorWheelIndex",
-          "comment": "Color to select"
+          "indexStart": 0,
+          "indexEnd": 7,
+          "comment": "blue/pink/red/pale blue/yellow/green/orange/white",
+          "helpWanted": "Which color can be selected at which DMX values?"
         },
         {
           "dmxRange": [128, 189],
           "type": "ColorWheelRotation",
-          "speedStart": "fast",
-          "speedEnd": "slow",
-          "comment": "Color Wheel run from"
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW",
+          "helpWanted": "Is this counterclockwise or clockwise?"
         },
         {
           "dmxRange": [190, 193],
-          "type": "ColorWheelIndex",
-          "comment": "Color wheel stop"
+          "type": "ColorWheelRotation",
+          "speed": "stop"
         },
         {
           "dmxRange": [194, 255],
           "type": "ColorWheelRotation",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Color Wheel run from"
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "helpWanted": "Is this counterclockwise or clockwise?"
         }
       ]
     },
@@ -94,31 +93,36 @@
         {
           "dmxRange": [0, 63],
           "type": "GoboIndex",
-          "comment": "Gobo select"
+          "indexStart": 0,
+          "indexEnd": 7,
+          "helpWanted": "Which Gobo can be selected at which DMX values?"
         },
         {
           "dmxRange": [64, 127],
           "type": "GoboIndex",
-          "comment": "Gobo shake select"
+          "indexStart": 0,
+          "indexEnd": 7,
+          "shakeAngle": "wide",
+          "helpWanted": "Which Gobo can be selected at which DMX values?"
         },
         {
           "dmxRange": [128, 189],
           "type": "GoboWheelRotation",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Gobo Wheel run from"
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW",
+          "helpWanted": "Is this counterclockwise or clockwise?"
         },
         {
           "dmxRange": [190, 193],
-          "type": "GoboIndex",
-          "comment": "Gobo Wheel stop"
+          "type": "GoboWheelRotation",
+          "speed": "stop"
         },
         {
           "dmxRange": [194, 255],
           "type": "GoboWheelRotation",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Gobo Wheel run from"
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "helpWanted": "Is this counterclockwise or clockwise?"
         }
       ]
     },
@@ -127,79 +131,67 @@
         {
           "dmxRange": [0, 7],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Closed light"
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [8, 15],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Turn on the light"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [16, 131],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Strobe speed from"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [132, 139],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Turn on the light"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [140, 181],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Turn off the light fast to turn on slow"
+          "shutterEffect": "RampUp"
         },
         {
           "dmxRange": [182, 189],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Turn on the light"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [190, 231],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Turn on the light on fast to turn off slow"
+          "shutterEffect": "RampDown"
         },
         {
           "dmxRange": [232, 239],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Turn on the light"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [240, 247],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Strobe"
+          "shutterEffect": "Strobe"
         },
         {
           "dmxRange": [248, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Turn on the light"
+          "shutterEffect": "Open"
         }
       ]
     },
     "Dimmer": {
       "capability": {
-        "type": "Intensity",
-        "comment": "Dimmer 0-100%"
+        "type": "Intensity"
       }
     },
     "Pan/Tilt Speed": {
       "capability": {
         "type": "PanTiltSpeed",
         "speedStart": "fast",
-        "speedEnd": "slow",
-        "comment": "Pan/Tilt speed control, the run speed from"
+        "speedEnd": "slow"
       }
     },
     "Control": {
@@ -211,7 +203,7 @@
         {
           "dmxRange": [70, 79],
           "type": "Maintenance",
-          "comment": "When Pan/Tilt running, the light turns off"
+          "comment": "Blackout while Pan/Tilt moving"
         },
         {
           "dmxRange": [80, 89],
@@ -220,7 +212,7 @@
         {
           "dmxRange": [90, 99],
           "type": "Maintenance",
-          "comment": "When Color Wheel running, the light turns off"
+          "comment": "Blackout while Color Wheel moving"
         },
         {
           "dmxRange": [100, 109],
@@ -229,7 +221,7 @@
         {
           "dmxRange": [110, 119],
           "type": "Maintenance",
-          "comment": "When Gobo Wheel running, the light turns off"
+          "comment": "Blackout while Gobo Wheel moving"
         },
         {
           "dmxRange": [120, 199],
@@ -246,8 +238,9 @@
         },
         {
           "dmxRange": [250, 255],
-          "type": "Maintenance",
-          "comment": "Sound active mode"
+          "type": "Effect",
+          "effectName": "Sound active mode",
+          "soundControlled": true
         }
       ]
     },
@@ -281,14 +274,16 @@
         {
           "dmxRange": [101, 255],
           "type": "Maintenance",
-          "comment": "Tacitly approve Dimmer"
+          "comment": "Tacitly approve Dimmer",
+          "helpWanted": "What does this mean?"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "9 channel mode",
+      "name": "9-channel",
+      "shortName": "9ch",
       "channels": [
         "Pan",
         "Tilt",
@@ -302,12 +297,13 @@
       ]
     },
     {
-      "name": "11 channel mode",
+      "name": "11-channel",
+      "shortName": "11ch",
       "channels": [
         "Pan",
-        "Pan Fine",
+        "Pan fine",
         "Tilt",
-        "Tilt Fine",
+        "Tilt fine",
         "Color Wheel",
         "Gobo Wheel",
         "Shutter",
