@@ -1,41 +1,27 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Mini Gobo Moving Head Light",
-  "categories": ["Moving Head", "Color Changer"],
+  "name": "Mini Gobo Moving head Light",
+  "shortName": "Mini LedSpot",
+  "categories": ["Moving Head"],
   "meta": {
-    "authors": ["Freasy", "edohard"],
-    "createDate": "2018-10-10",
-    "lastModifyDate": "2018-10-10",
-    "importPlugin": {
-      "plugin": "qlcplus_4.11.2",
-      "date": "2018-10-10",
-      "comment": "created by Q Light Controller Plus (version 4.10.4)"
-    }
+    "authors": ["edohard"],
+    "createDate": "2018-10-12",
+    "lastModifyDate": "2018-10-12"
   },
   "links": {
-    "manual": [
-      "https://forums.pioneerdj.com/hc/en-us/community/posts/360000675466-Lixada-25W-DMX-512-Mini-Moving-Head-8-Colours-with-9-11-channels"
-    ],
     "productPage": [
       "https://www.lixada.com/p-l0686us.html"
-    ],
-    "video": [
-      "https://www.youtube.com/watch?v=LHkJUl2wykI"
     ]
   },
   "physical": {
-    "dimensions": [210, 260, 280],
-    "weight": 2.67,
+    "dimensions": [170, 235, 145],
+    "weight": 3.2,
     "power": 25,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "10W LED"
-    },
-    "lens": {
-      "degreesMinMax": [11, 11]
+      "type": "Led"
     },
     "focus": {
-      "type": "Head",
       "panMax": 540,
       "tiltMax": 180
     }
@@ -43,6 +29,19 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 1,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 2,
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -51,6 +50,29 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 3,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 1,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "dmxValueResolution": "8bit",
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -61,18 +83,12 @@
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "ColorWheelIndex",
-          "indexStart": 0,
-          "indexEnd": 7,
-          "comment": "blue/pink/red/pale blue/yellow/green/orange/white",
-          "helpWanted": "Which color can be selected at which DMX values?"
+          "type": "ColorPreset"
         },
         {
           "dmxRange": [128, 189],
           "type": "ColorWheelRotation",
-          "speedStart": "fast CCW",
-          "speedEnd": "slow CCW",
-          "helpWanted": "Is this counterclockwise or clockwise?"
+          "speed": "fast CW"
         },
         {
           "dmxRange": [190, 193],
@@ -82,9 +98,7 @@
         {
           "dmxRange": [194, 255],
           "type": "ColorWheelRotation",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW",
-          "helpWanted": "Is this counterclockwise or clockwise?"
+          "speed": "slow CW"
         }
       ]
     },
@@ -93,24 +107,17 @@
         {
           "dmxRange": [0, 63],
           "type": "GoboIndex",
-          "indexStart": 0,
-          "indexEnd": 7,
-          "helpWanted": "Which Gobo can be selected at which DMX values?"
+          "index": 1
         },
         {
           "dmxRange": [64, 127],
-          "type": "GoboIndex",
-          "indexStart": 0,
-          "indexEnd": 7,
-          "shakeAngle": "wide",
-          "helpWanted": "Which Gobo can be selected at which DMX values?"
+          "type": "GoboShake",
+          "shakeSpeed": "fast"
         },
         {
           "dmxRange": [128, 189],
           "type": "GoboWheelRotation",
-          "speedStart": "slow CCW",
-          "speedEnd": "fast CCW",
-          "helpWanted": "Is this counterclockwise or clockwise?"
+          "speed": "fast CW"
         },
         {
           "dmxRange": [190, 193],
@@ -120,65 +127,69 @@
         {
           "dmxRange": [194, 255],
           "type": "GoboWheelRotation",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW",
-          "helpWanted": "Is this counterclockwise or clockwise?"
+          "speed": "slow CCW"
         }
       ]
     },
-    "Shutter": {
+    "Light": {
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
+          "type": "Intensity",
+          "brightnessStart": "off",
+          "brightnessEnd": "off"
         },
         {
           "dmxRange": [8, 15],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright"
         },
         {
           "dmxRange": [16, 131],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "StrobeSpeed",
+          "speed": "fast"
         },
         {
           "dmxRange": [132, 139],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright"
         },
         {
           "dmxRange": [140, 181],
-          "type": "ShutterStrobe",
-          "shutterEffect": "RampUp"
+          "type": "Intensity",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright"
         },
         {
           "dmxRange": [182, 189],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright"
         },
         {
           "dmxRange": [190, 231],
-          "type": "ShutterStrobe",
-          "shutterEffect": "RampDown"
+          "type": "Intensity",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright"
         },
         {
           "dmxRange": [232, 239],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright"
         },
         {
           "dmxRange": [240, 247],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe"
+          "type": "StrobeSpeed",
+          "speed": "fast"
         },
         {
           "dmxRange": [248, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright"
         }
       ]
     },
@@ -186,131 +197,21 @@
       "capability": {
         "type": "Intensity"
       }
-    },
-    "Pan/Tilt Speed": {
-      "capability": {
-        "type": "PanTiltSpeed",
-        "speedStart": "fast",
-        "speedEnd": "slow"
-      }
-    },
-    "Control": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 69],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [70, 79],
-          "type": "Maintenance",
-          "comment": "Blackout while Pan/Tilt moving"
-        },
-        {
-          "dmxRange": [80, 89],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [90, 99],
-          "type": "Maintenance",
-          "comment": "Blackout while Color Wheel moving"
-        },
-        {
-          "dmxRange": [100, 109],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [110, 119],
-          "type": "Maintenance",
-          "comment": "Blackout while Gobo Wheel moving"
-        },
-        {
-          "dmxRange": [120, 199],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [200, 209],
-          "type": "Maintenance",
-          "comment": "Reset"
-        },
-        {
-          "dmxRange": [210, 249],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [250, 255],
-          "type": "Effect",
-          "effectName": "Sound active mode",
-          "soundControlled": true
-        }
-      ]
-    },
-    "Dimmer Type": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 20],
-          "type": "Maintenance",
-          "comment": "Standard Dimmer"
-        },
-        {
-          "dmxRange": [21, 40],
-          "type": "Maintenance",
-          "comment": "Stage Dimmer"
-        },
-        {
-          "dmxRange": [41, 60],
-          "type": "Maintenance",
-          "comment": "TV Dimmer"
-        },
-        {
-          "dmxRange": [61, 80],
-          "type": "Maintenance",
-          "comment": "Architectural Dimmer"
-        },
-        {
-          "dmxRange": [81, 100],
-          "type": "Maintenance",
-          "comment": "Theatrical Dimmer"
-        },
-        {
-          "dmxRange": [101, 255],
-          "type": "Maintenance",
-          "comment": "Tacitly approve Dimmer",
-          "helpWanted": "What does this mean?"
-        }
-      ]
     }
   },
   "modes": [
     {
-      "name": "9-channel",
-      "shortName": "9ch",
+      "name": "11 channels",
+      "shortName": "11 channels",
       "channels": [
-        "Pan",
-        "Tilt",
+        "Pan 3",
+        "Pan 3 fine",
+        "Tilt 2",
+        "Tilt 2 fine",
         "Color Wheel",
         "Gobo Wheel",
-        "Shutter",
-        "Dimmer",
-        "Pan/Tilt Speed",
-        "Control",
-        "Dimmer Type"
-      ]
-    },
-    {
-      "name": "11-channel",
-      "shortName": "11ch",
-      "channels": [
-        "Pan",
-        "Pan fine",
-        "Tilt",
-        "Tilt fine",
-        "Color Wheel",
-        "Gobo Wheel",
-        "Shutter",
-        "Dimmer",
-        "Pan/Tilt Speed",
-        "Control",
-        "Dimmer Type"
+        "Light",
+        "Dimmer"
       ]
     }
   ]
